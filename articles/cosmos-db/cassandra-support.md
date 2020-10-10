@@ -92,7 +92,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 |---------|---------|
 | min | 是 |
 | max | 是 |
-| 平均值 | 是 |
+| avg | 是 |
 | count | 是 |
 
 Blob 转换函数：
