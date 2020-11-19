@@ -5,22 +5,25 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: eacdfe663ee3ec323d59daf160fe33af073bc1c5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3a99dd9e69363e8fbb02b7e5e1ac5921d079ba21
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525059"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917864"
 ---
 <!--Create a basic audio transform REST-->
 
-以下 Azure REST 命令创建基本的音频资产。 将 `subscriptionID`、`resourceGroup` 和 `amsAccountName` 值替换为当前正在使用的值。 通过在此处设置 `assetName` 来为资产提供名称。
+以下 Azure REST 命令创建基本的音频资产。 将 `subscriptionID`、`resourceGroup` 和 `amsAccountName` 值替换为当前正在使用的值。 通过设置为转换指定名称 `transformName` 。
 
-```
+```REST
+
 PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Media/mediaServices/{{accountName}}/transforms/{{transformName}}?api-version=2020-05-01
+
 ```
 
 ## <a name="body"></a>正文
+
 ```json
 {
     "properties": {
