@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516435"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916468"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>公共预览版： Azure 混合权益–适用于 Linux 虚拟机的方式
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
 
 ## <a name="overview"></a>概述
 
 Azure 混合权益使你可以通过使用自己预先存在的 Red Hat 或 SUSE 软件订阅，更轻松地将本地 Red Hat Enterprise Linux (RHEL) 并 SUSE Linux Enterprise Server (的虚拟机) 到 Azure。 利用此权益，你只需为 VM 的基础结构成本付费，因为你的 RHEL 或 SLES 订阅会涵盖软件费用。 该权益适用于所有 RHEL 和 SLES Marketplace 即用即付 (PAYG) 映像。
 
 > [!IMPORTANT]
-> 适用于 Linux Vm 的 Azure 混合权益目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 适用于 Linux Vm 的 Azure 混合权益现已公开发布
+
 
 ## <a name="benefit-description"></a>权益说明
 
@@ -44,12 +44,6 @@ Azure 混合权益适用于所有 RHEL 和 SLES Marketplace PAYG 映像。 此�
 如果已在使用 Linux Vm 的权益，则保留实例、专用主机和 SQL 混合权益不符合 Azure 混合权益。
 
 ## <a name="how-to-get-started"></a>如何开始使用
-
-Azure 混合权益目前处于 Linux Vm 的预览阶段。 获取预览版的访问权限后，可以使用 Azure CLI 启用此权益。
-
-### <a name="public-preview"></a>公共预览版
-
-Linux) Azure 混合权益 (目前处于公开预览阶段。 你可以使用以下步骤来启用 Red Hat 和 SUSE 分发的权益。 
 
 ### <a name="red-hat-customers"></a>Red Hat 客户
 

@@ -1,18 +1,18 @@
 ---
 title: 最佳做法
-description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 08/12/2020
+description: 了解用于开发 Azure Batch 解决方案的最佳做法和有用的技巧。
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913222"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916859"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
-本文介绍了有效且高效地使用 Azure Batch 服务的最佳做法集合，这些做法基于使用 Batch 的实际体验。 阅读本文，以避免在开发和使用 Batch 时出现设计缺陷、潜在性能问题和反模式。
+本文介绍了一系列最佳实践和有用的技巧，可帮助你有效地使用 Azure Batch 服务，具体取决于批处理的真实经验。 这些提示有助于提高性能，并避免在 Azure Batch 解决方案中设计缺陷。
 
 ## <a name="pools"></a>池
 
@@ -20,7 +20,7 @@ ms.locfileid: "92913222"
 
 ### <a name="pool-configuration-and-naming"></a>池配置和命名
 
-- **池分配模式** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择： **Batch 服务** 或 **用户订阅** 。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+- **池分配模式** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择：**Batch 服务** 或 **用户订阅**。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
 - **确定用于池映射的作业时考虑作业和任务运行时间。**
     如果作业主要包括短时间运行的任务，且预期的任务总计数较小，因此作业的总预期运行时间不长，那么，请不要为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
@@ -41,7 +41,7 @@ ms.locfileid: "92913222"
 池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，池中的计算节点数可能会变化。 你需要负责显式管理池中的计算节点，或者通过服务提供的功能（自动缩放或自动汇集）进行管理。
 
 - **使池保持最新状态。**
-    应每隔几个月将池的大小调整为零，以确保获取 [最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
+    每隔几个月将池的大小调整为零，以确保获取 [最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
 
 - **重新创建池** 同样需要注意的是，不建议每天删除再重新创建池。 应该创建新池，并将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
 
@@ -175,7 +175,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ## <a name="connectivity"></a>连接
 
-在考虑 Batch 解决方案中的连接性时，请查看以下指导。
+查看以下与 Batch 解决方案中的连接相关的指南。
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>网络安全组 (NSG) 和用户定义的路由 (UDR)
 
@@ -198,6 +198,10 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 通常， Batch 池中的虚拟机是通过公用 IP 地址访问的，这些地址在池的生命周期中会发生更改。 这会使与数据库或其他限制访问某些 IP 地址的外部服务交互变得困难。 若要确保池中的公用 IP 地址不会意外更改，可以使用一组你控制的静态公用 IP 地址创建池。 有关详细信息，请参阅[使用指定的公用 IP 地址创建 Azure Batch 池](create-pool-public-ip.md)。
 
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>测试与云服务配置的连接
+
+不能将正常的 "ping"/ICMP 协议与云服务一起使用，因为不允许通过 Azure 负载均衡器使用 ICMP 协议。 有关详细信息，请参阅 [Azure 云服务的连接和网络](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)。
+
 ## <a name="batch-node-underlying-dependencies"></a>Batch 节点的基本依赖项
 
 设计 Batch 解决方案时，请考虑以下依赖项和限制。
@@ -206,12 +210,12 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 Azure Batch 在 VM 上创建和管理一组用户和组，这些不应受到更改。 这些限制如下：
 
-#### <a name="windows"></a>Windows
+Windows：
 
 - 名为“PoolNonAdmin”的用户
 - 名为“WATaskCommon”的用户组
 
-#### <a name="linux"></a>Linux
+Linux：
 
 - 名为“_azbatch”的用户
 
@@ -220,3 +224,9 @@ Azure Batch 在 VM 上创建和管理一组用户和组，这些不应受到更�
 当任务的保留期到期后，Batch 会主动尝试清理运行任务的工作目录。 [你应负责清理](#manage-task-lifetime)在此目录之外写入的所有文件，以避免占用磁盘空间。
 
 如果在 Windows 上从 startTask 工作目录运行服务，则会阻止对工作目录的自动清理，因为文件夹仍在使用中。 这将导致性能下降。 若要解决此问题，请将该服务的目录更改为不受 Batch 管理的单独目录。
+
+## <a name="next-steps"></a>后续步骤
+
+- [使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)。
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+- 了解 [默认 Azure Batch 配额、限制和约束，以及如何请求提高配额](batch-quota-limit.md)。

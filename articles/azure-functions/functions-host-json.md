@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377116"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917233"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -162,7 +162,9 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
-|属性 | 默认 | 说明 |
+有关这些设置的详细信息，请参阅 [Application Insights 中的采样](../azure-monitor/app/sampling.md)。 
+
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
 | maxTelemetryItemsPerSecond | 20 | 每个服务器主机上每秒记录的遥测项的目标数目。 如果应用在多个主机上运行，请将此值降低至总体目标流量率的范围内。 | 
@@ -369,7 +371,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |制定|null|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
 |maxRetryCount|null|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限期重试。|

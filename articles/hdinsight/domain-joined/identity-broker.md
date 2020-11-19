@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337670"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917760"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID 代理 (HIB) 
 
@@ -137,6 +137,25 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 ``` 
 
 若要使用 Beeline 和 Livy，还可以按照 [此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) 提供的示例代码设置客户端以使用 OAuth 并连接到群集。
+
+## <a name="faq"></a>常见问题解答
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>HDInsight 在 AAD 中创建了哪些应用？
+对于每个群集，会在 AAD 中注册第三方应用程序，并将群集 uri 作为 identifierUri (如 https://clustername.azurehdinsight.net ) 。
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>为什么在使用 HIB 启用群集之前，用户会收到许可提示？
+在 AAD 中，所有第三方应用程序都需要许可才能对用户进行身份验证或访问数据。
+
+### <a name="can-the-consent-be-approved-programatically"></a>同意是否可以按编程方式获得批准？
+Microsoft Graph api 允许您自动进行许可，请参阅 [api 文档](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以自动执行许可的顺序：
+
+* 注册应用并向应用程序授予对应用程序的所有权限，以访问 Microsoft Graph
+* 创建群集后，基于标识符 uri 查询群集应用
+* 注册应用的许可
+
+删除群集后，HDInsight 会删除该应用，无需清除任何许可。
+
+ 
+
 
 ## <a name="next-steps"></a>后续步骤
 

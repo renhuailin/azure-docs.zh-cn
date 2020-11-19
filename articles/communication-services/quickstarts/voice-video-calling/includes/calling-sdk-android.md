@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886481"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915187"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -136,7 +136,7 @@ startCallOptions.setVideoOptions(videoOptions);
 Call call = callAgent.call(context, participants, startCallOptions);
 ```
 
-### <a name="join-a-group-call"></a>加入组调用
+### <a name="join-a-group-call"></a>加入群组通话
 若要启动新组调用或加入正在进行的组调用，必须调用 "join" 方法并使用属性传递对象 `groupId` 。 该值必须是 GUID。
 ```java
 Context appContext = this.getApplicationContext();
@@ -153,7 +153,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 
 ### <a name="prerequisites"></a>先决条件
 
-使用云消息 (FCM) 启用，并将 Firebase 云消息服务连接到 Azure 通知中心实例来设置 Firebase 帐户。 有关详细信息，请参阅 [通信服务通知](https://docs.microsoft.com/azure/communication-services/concepts/notifications) 。
+使用云消息 (FCM) 启用，并将 Firebase 云消息服务连接到 Azure 通知中心实例来设置 Firebase 帐户。 有关详细信息，请参阅 [通信服务通知](../../../concepts/notifications.md) 。
 此外，本教程假定你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
 
 Android 应用程序需要一组权限，以便能够接收来自 Firebase 云消息传送的通知消息。 在 `AndroidManifest.xml` 文件中，在 *<manifest ... >* 或标记下面添加以下权限集 *</application>*

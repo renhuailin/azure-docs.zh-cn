@@ -5,29 +5,33 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 11/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 589420d96a3a6dfcc1c17a1b204765022b1ce412
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269329"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916638"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
 
 若要在逻辑应用中运行一段代码，可以添加内置 **内联代码** 操作，作为逻辑应用工作流中的一个步骤。 当你想要运行适合此方案的代码时，此操作最有效：
 
 * 在 JavaScript 中运行。 即将推出更多语言。
+
 * 在5秒或更少的时间内完成运行。
+
 * 处理最大大小为 50 MB 的数据。
+
 * 不需要使用 [**变量** 操作](../logic-apps/logic-apps-create-variables-store-values.md)，这些操作尚不受支持。
-* 使用 Node.js 版本8.11.1。 有关详细信息，请参阅 [标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
+
+* 使用 Node.js 版本8.11.1。 有关详细信息，请参阅 [标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。
 
   > [!NOTE]
-  > `require()`用于运行 JavaScript 的**内联代码**操作不支持该函数。
+  > `require()`用于运行 JavaScript 的 **内联代码** 操作不支持该函数。
 
-此操作运行代码片段，并将该代码段的输出作为名为 **Result**的令牌返回，可在逻辑应用中的后续操作中使用。 对于想要为代码创建函数的其他方案，请尝试在逻辑应用中 [创建和调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md) 。
+此操作运行代码片段，并将该代码段的输出作为名为 **Result** 的令牌返回，可在逻辑应用中的后续操作中使用。 对于想要为代码创建函数的其他方案，请尝试在逻辑应用中 [创建和调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md) 。
 
 本文介绍了在工作或学校帐户中收到新电子邮件时，将触发示例逻辑应用。 代码段提取并返回电子邮件正文中显示的任何电子邮件地址。
 
@@ -41,7 +45,7 @@ ms.locfileid: "91269329"
 
    本主题中的示例逻辑应用使用此 Office 365 Outlook 触发器： **收到新电子邮件时**
 
-* 链接到逻辑应用的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* 链接到逻辑应用的 [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) 。 如果不想创建或使用集成帐户，请尝试使用新的 [Azure 逻辑应用预览扩展](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)在 Azure 门户中创建逻辑应用， **(预览版)** 资源类型或在 Visual Studio Code 中创建逻辑应用。
 
   > [!NOTE]
   > 请确保使用适合你的用例或方案的集成帐户。 例如， [免费层](../logic-apps/logic-apps-pricing.md#integration-accounts) 集成帐户仅适用于探索方案和工作负载，而不是生产方案，使用和吞吐量有限， (SLA) 不支持服务级别协议。 其他层会产生成本，但包含 SLA 支持，提供更高的吞吐量和更高的限制。 了解有关集成帐户 [层](../logic-apps/logic-apps-pricing.md#integration-accounts)、 [定价](https://azure.microsoft.com/pricing/details/logic-apps/)和 [限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)的详细信息。
@@ -68,7 +72,7 @@ ms.locfileid: "91269329"
 
    ![带有默认示例代码的内联代码操作](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. 在 " **代码** " 框中，删除示例代码，然后输入要运行的代码。 编写要放置在方法中但不定义方法签名的代码。 
+1. 在 " **代码** " 框中，删除示例代码，然后输入要运行的代码。 编写要放置在方法中但不定义方法签名的代码。
 
    键入识别关键字时，将显示自动完成列表，以便您可以从可用关键字中进行选择，例如：
 
@@ -84,8 +88,7 @@ ms.locfileid: "91269329"
 
    ![选择结果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   在 " **代码** " 框中，代码段可以使用只读 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。
-   有关详细信息，请参阅本主题后面的此部分： [代码中的引用触发器和操作结果](#workflowcontext)。
+   在 " **代码** " 框中，代码段可以使用只读 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关详细信息，请参阅本主题后面的此部分： [代码中的引用触发器和操作结果](#workflowcontext)。
 
    > [!NOTE]
    >
@@ -97,8 +100,7 @@ ms.locfileid: "91269329"
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   内联代码操作无需 `return` 语句，但 `return` 可在后续操作中通过 **结果** 令牌引用语句中的结果。 
-   例如，代码段通过调用函数来返回结果 `match()` ，该函数可在电子邮件正文中查找正则表达式的匹配项。 " **撰写** " 操作使用 **结果** 令牌引用内联代码操作的结果，并创建单个结果。
+   内联代码操作无需 `return` 语句，但 `return` 可在后续操作中通过 **结果** 令牌引用语句中的结果。 例如，代码段通过调用函数来返回结果 `match()` ，该函数可在电子邮件正文中查找正则表达式的匹配项。 " **撰写** " 操作使用 **结果** 令牌引用内联代码操作的结果，并创建单个结果。
 
    ![完成的逻辑应用](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -129,11 +131,11 @@ ms.locfileid: "91269329"
 
 此表包含有关这些子属性的详细信息：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |----------|------|-------|
 | `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个 *键-值* 对，其中键是操作的名称，并且值等效于调用 [ ( # A1 函数的操作](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者使用下划线 (_) 替换操作名称中的空格 ( "" ) 。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
-| `trigger` | 对象 | 触发器中的 Result 对象并等效于调用 [ ( # A1 函数的触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
-| `workflow` | 对象 | 工作流对象和等效于调用 [工作流 ( # A1 函数](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 此对象提供对当前工作流实例运行的工作流属性值（如工作流名称、运行 ID 等）的访问权限。 |
+| `trigger` | Object | 触发器中的 Result 对象并等效于调用 [ ( # A1 函数的触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
+| `workflow` | Object | 工作流对象和等效于调用 [工作流 ( # A1 函数](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 此对象提供对当前工作流实例运行的工作流属性值（如工作流名称、运行 ID 等）的访问权限。 |
 |||
 
 在本主题的示例中， `workflowContext` 对象具有您的代码可以访问的以下属性：
@@ -213,7 +215,7 @@ ms.locfileid: "91269329"
 > [!TIP]
 > 如果你计划重用你的代码，则通过使用 " **代码** " 框添加对属性的引用，使你的代码包含解析的令牌引用，而不是作为显式依赖项添加触发器或操作。
 
-例如，假设你有引用 Office 365 Outlook connector 的 "**发送审批电子邮件**" 操作的**SelectedOption**结果的代码。 在创建时，逻辑应用引擎会分析你的代码，以确定是否已引用任何触发器或操作结果并自动包含这些结果。 在运行时，如果遇到所引用的触发器或操作结果在指定对象中不可用的错误， `workflowContext` 则可以将该触发器或操作作为显式依赖项添加。 在此示例中，将添加 **操作** 参数，并指定 **内联代码** 操作显式包括 " **发送审批电子邮件** " 操作的结果。
+例如，假设你有引用 Office 365 Outlook connector 的 "**发送审批电子邮件**" 操作的 **SelectedOption** 结果的代码。 在创建时，逻辑应用引擎会分析你的代码，以确定是否已引用任何触发器或操作结果并自动包含这些结果。 在运行时，如果遇到所引用的触发器或操作结果在指定对象中不可用的错误， `workflowContext` 则可以将该触发器或操作作为显式依赖项添加。 在此示例中，将添加 **操作** 参数，并指定 **内联代码** 操作显式包括 " **发送审批电子邮件** " 操作的结果。
 
 若要添加这些参数，请打开 " **添加新参数** " 列表，然后选择所需的参数：
 

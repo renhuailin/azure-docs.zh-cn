@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 64334b17060879a2e587b13b062c81e86df33831
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743416"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917829"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：在 Azure Vm 上 SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -57,10 +57,12 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 - 现有产品的可支持生命周期
 - 迁移过程中应用程序停机时间的窗口
 
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-individual-databases-guide/virtual-machine-migration-downtime.png" alt-text="虚拟机迁移停机时间":::
+
 下表描述了这两种迁移策略的不同之处：
 <br />
 
-| **迁移策略** | **说明** | **使用时机** |
+| **迁移策略** | **描述** | **使用时机** |
 | --- | --- | --- |
 | **提升 & 班次** | 使用 "提升" 和 "迁移" 迁移策略，将整个物理或虚拟 SQL Server 从其当前位置移动到 Azure VM 上的 SQL Server 实例中，无需对操作系统或 SQL Server 版本进行任何更改。 若要完成提升和转移迁移，请参阅 [Azure Migrate](../../../migrate/migrate-services-overview.md)。 <br /><br /> 源服务器保持联机和服务请求，同时源服务器和目标服务器同步数据，从而实现几乎无缝的迁移。 | 用于单个到非常大规模的迁移，甚至适用于数据中心出口之类的方案。 <br /><br /> 用户 SQL 数据库或应用程序不需要进行任何代码更改，从而提高整体迁移速度。 <br /><br />不需要执行其他步骤来迁移商业智能服务（如  [SSIS](/sql/integration-services/sql-server-integration-services)、 [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)和 [SSAS](/analysis-services/analysis-services-overview)）。 |
 |**迁移** | 如果要升级目标 SQL Server 和/或操作系统版本，请使用迁移策略。 <br /> <br /> 从 Azure Marketplace 中选择一个 Azure VM，或从与源 SQL Server 版本匹配的已准备 SQL Server 映像中选择一个。 | 如果需要使用在 SQL Server 的较新版本中提供的功能，或者如果要求升级不再支持的旧 SQL Server 和/或操作系统版本，则使用。  <br /> <br /> 可能需要对某些应用程序或用户数据库进行更改才能支持 SQL Server 升级。 <br /><br />如果在迁移范围内迁移 [商业智能](#business-intelligence) 服务，可能需要考虑其他一些事项。 |
@@ -71,7 +73,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 下表详细介绍了 " **提升" 和** "迁移" 迁移策略的可用方法，以将 SQL Server 数据库迁移到 Azure vm SQL Server：
 <br />
 
-|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **备注** |
+|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **说明** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -84,7 +86,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 下表详细说明了在 Azure Vm 上将 SQL Server 数据库迁移到 SQL Server 的所有可用方法：
 <br />
 
-|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** | **备注** |
+|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** | **说明** |
 | --- | --- | --- | --- | --- |
 | **[备份到文件](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  这是一种简单且经过测试的技术，用于跨计算机移动数据库。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 为 12.8 TB，否则为 1 TB | 使用 Azure 存储将备份文件移动到 VM 的替代方法。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**：  [t-sql 或维护计划](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |

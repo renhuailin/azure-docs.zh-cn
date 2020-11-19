@@ -2,14 +2,14 @@
 title: 为 Azure 事件网格主题或域配置专用终结点
 description: 本文介绍如何配置 Azure 事件网格主题或域的专用终结点。
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8e0cfc0a850ae15ea6d03ff6ca8b90003adbfc9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324138"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916903"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 你可以使用 [专用终结点](../private-link/private-endpoint-overview.md) 将事件直接从你的虚拟网络直接发送到你的主题和域， [而无需](../private-link/private-link-overview.md) 通过公共 internet。 专用终结点使用来自你的主题或域的 VNet 地址空间中的 IP 地址。 有关更多概念信息，请参阅 [网络安全](network-security.md)。
@@ -20,7 +20,7 @@ ms.locfileid: "91324138"
 本部分演示如何使用 Azure 门户为主题或域创建专用终结点。
 
 > [!NOTE]
-> 本部分中所示的步骤主要用于主题。 你可以使用类似的步骤来创建 **域**的专用终结点。 
+> 本部分中所示的步骤主要用于主题。 你可以使用类似的步骤来创建 **域** 的专用终结点。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com) 并导航到主题或域。
 2. 切换到主题页的 " **网络** " 选项卡。 在工具栏上选择 " **+ 专用终结点** "。
@@ -36,7 +36,7 @@ ms.locfileid: "91324138"
       ![专用终结点-基本页](./media/configure-private-endpoints/basics-page.png)
 3. 在“资源”页上执行以下步骤： 
     1. 对于 "连接方法"，如果在 **"我的目录" 中选择 "连接到 Azure 资源**"，请执行以下步骤。 此示例演示如何在目录中连接到 Azure 资源。 
-        1. 选择**主题/域**所在的**Azure 订阅**。 
+        1. 选择 **主题/域** 所在的 **Azure 订阅**。 
         1. 对于 " **资源类型**"，请选择 " **EventGrid** " 或 " **EventGrid/域** " 作为 **资源类型**。
         2. 对于 " **资源**"，请从下拉列表中选择一个主题/域。 
         3. 根据你) 选择的资源类型，确认 **目标 subresource** 设置为 " **主题** " 或 " **域** ("。    
@@ -44,7 +44,7 @@ ms.locfileid: "91324138"
 
             ![显示 "创建专用终结点-资源" 页的屏幕截图。](./media/configure-private-endpoints/resource-page.png)
     2. 如果选择 " **使用资源 ID 或别名连接到资源**"，请执行以下步骤：
-        1. 输入资源的 ID。 例如： `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
+        1. 输入资源的 ID。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
         2. 对于 " **资源**"，请输入 **主题** 或 **域**。 
         3.  (可选) 添加请求消息。 
         4. 在页面底部选择“下一步:配置 >”按钮。 
@@ -70,7 +70,7 @@ ms.locfileid: "91324138"
 
 | 服务操作 | 服务使用者专用终结点状态 | 说明 |
 |--|--|--|
-| 无 | 挂起 | 将手动创建连接，并等待私有链接资源所有者进行审批。 |
+| 无 | 挂起的 | 将手动创建连接，并等待私有链接资源所有者进行审批。 |
 | 审批 | 已批准 | 连接已自动或手动批准，随时可供使用。 |
 | 拒绝 | 已拒绝 | 连接已被专用链接资源所有者拒绝。 |
 | 删除 | 已断开连接 | 连接已被专用链接资源所有者删除，专用终结点仅供参考，应将其删除以清理资源。 |
@@ -88,7 +88,7 @@ ms.locfileid: "91324138"
 你可以批准处于 "挂起" 状态的私有终结点。 若要批准，请执行以下步骤： 
 
 > [!NOTE]
-> 本部分中所示的步骤主要用于主题。 你可以使用类似的步骤批准 **域**的专用终结点。 
+> 本部分中所示的步骤主要用于主题。 你可以使用类似的步骤批准 **域** 的专用终结点。 
 
 1. 选择要批准的 **专用终结点** ，并在工具栏上选择 " **批准** "。
 
@@ -104,11 +104,11 @@ ms.locfileid: "91324138"
 你可以拒绝处于挂起状态或已批准状态的私有终结点。 若要拒绝，请执行以下步骤： 
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来拒绝 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来拒绝 **域** 的专用终结点。 
 
 1. 选择要拒绝的 **专用终结点** ，然后在工具栏上选择 " **拒绝** "。
 
-    ![屏幕截图，显示 "网络专用终结点连接 (预览") "已选择" 拒绝 "。](./media/configure-private-endpoints/reject-button.png)
+    ![屏幕截图，显示 "网络专用终结点连接"，并选择 "拒绝"。](./media/configure-private-endpoints/reject-button.png)
 1. 在 " **拒绝连接** " 对话框中，输入注释 (可选) ，然后选择 **"是"**。 
 
     ![私有终结点-拒绝](./media/configure-private-endpoints/reject.png)
@@ -121,7 +121,7 @@ ms.locfileid: "91324138"
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) 方法，如以下示例中所示：
+若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 方法，如以下示例中所示：
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,23 +135,23 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-有关此示例中使用的参数的说明，请参阅 [az 网络专用终结点创建](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
+有关此示例中使用的参数的说明，请参阅 [az 网络专用终结点创建](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
 
-- 对于 `private-connection-resource-id` ，请指定 **主题** 或 **域**的资源 ID。 前面的示例使用 type：主题。
+- 对于 `private-connection-resource-id` ，请指定 **主题** 或 **域** 的资源 ID。 前面的示例使用 type：主题。
 - 对于 `group-ids` ，请指定 `topic` 或 `domain` 。 在前面的示例中， `topic` 使用。 
 
-若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) 方法，如以下示例中所示：
+若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) 方法，如以下示例中所示：
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域** 的专用终结点。 
 
 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
 
 ```azurecli-interactive
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>创建专用终结点
-若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) 方法，如以下示例中所示：
+若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 方法，如以下示例中所示：
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,19 +179,19 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-有关此示例中使用的参数的说明，请参阅 [az 网络专用终结点创建](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
+有关此示例中使用的参数的说明，请参阅 [az 网络专用终结点创建](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
 
-- 对于 `private-connection-resource-id` ，请指定 **主题** 或 **域**的资源 ID。 前面的示例使用 type：主题。
+- 对于 `private-connection-resource-id` ，请指定 **主题** 或 **域** 的资源 ID。 前面的示例使用 type：主题。
 - 对于 `group-ids` ，请指定 `topic` 或 `domain` 。 在前面的示例中， `topic` 使用。 
 
-若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) 方法，如以下示例中所示：
+若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) 方法，如以下示例中所示：
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域** 的专用终结点。 
 
 #### <a name="sample-script"></a>示例脚本
 下面是一个示例脚本，用于创建以下 Azure 资源：
@@ -311,7 +311,7 @@ az eventgrid topic update \
 本部分说明如何使用 PowerShell 为主题或域创建专用终结点。 
 
 ### <a name="prerequisite"></a>先决条件
-请按照 [如何：使用门户中的说明创建 Azure AD 应用程序和服务主体，该服务主体可以访问资源](../active-directory/develop/howto-create-service-principal-portal.md) 来创建 Azure Active Directory 应用程序，并记下 **目录 (租户) id**、 **应用程序 (客户端) id**和 **应用程序 (客户端) 机密**的值。 
+请按照 [如何：使用门户中的说明创建 Azure AD 应用程序和服务主体，该服务主体可以访问资源](../active-directory/develop/howto-create-service-principal-portal.md) 来创建 Azure Active Directory 应用程序，并记下 **目录 (租户) id**、 **应用程序 (客户端) id** 和 **应用程序 (客户端) 机密** 的值。 
 
 ### <a name="prepare-token-and-headers-for-rest-api-calls"></a>准备 REST API 调用的令牌和标头 
 运行以下先决条件命令以获取用于 REST API 调用和授权以及其他标头信息的身份验证令牌。 
@@ -358,7 +358,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 ### <a name="create-an-event-grid-topic-with-a-private-endpoint"></a>使用私有终结点创建事件网格主题
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来创建 **域** 的专用终结点。 
 
 
 ```azurepowershell-interactive
@@ -438,7 +438,7 @@ Invoke-RestMethod -Method 'Get'  `
 以下示例 PowerShell 代码段演示如何批准专用终结点。 
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤批准 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤批准 **域** 的专用终结点。 
 
 ```azurepowershell-interactive
 $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"="approved";"description"="connection approved";"actionsRequired"="none"}}} | ConvertTo-Json
@@ -460,7 +460,7 @@ Invoke-RestMethod -Method 'Get'  `
 下面的示例演示如何使用 PowerShell 拒绝专用终结点。 可以从上一个 GET 命令的结果中获取专用终结点的 GUID。 
 
 > [!NOTE]
-> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来拒绝 **域**的专用终结点。 
+> 本部分中所示的步骤适用于主题。 你可以使用类似的步骤来拒绝 **域** 的专用终结点。 
 
 
 ```azurepowershell-interactive

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: d48add78eb73ba1aea248e95ddc5ebc0900ee000
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b900373c7e6a3b3701ae30274ff27629b7f47ef9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888328"
+ms.locfileid: "94916842"
 ---
 # <a name="supported-devices"></a>支持的设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "94888328"
 建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
 
 * Microsoft Edge（最新版本）
-* Internet Explorer 11 (在2021年3月31日前受支持) 
+* Internet Explorer 11
 * Safari（最新版本，仅限 Mac）
 * Chrome（最新版本）
 * Firefox（最新版本）

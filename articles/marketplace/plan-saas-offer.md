@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734389"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917539"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -104,7 +104,26 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 ## <a name="selecting-an-online-store"></a>选择在线商店
 
-发布 SaaS 产品/服务时，它将列在 Microsoft AppSource 和/或 Azure Marketplace 中。 每个在线商店都有独特的客户需求。 AppSource 适用于业务解决方案，Azure Marketplace 适用于 IT 解决方案。 你的产品/服务类型、功能和类别将确定你的产品/服务的发布位置。 类别和子类别基于解决方案类型映射到每个在线商店。 有关列出在线商店支持的选项的详细信息，请参阅 [按在线商店列出和定价选项](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 有关类别和子类别的详细信息，请参阅 [商业应用商店中的类别和子](categories.md)类别。
+发布 SaaS 产品/服务时，它将列在 Microsoft AppSource 和/或 Azure Marketplace 中。 每个在线商店都有独特的客户需求。 AppSource 适用于业务解决方案，Azure Marketplace 适用于 IT 解决方案。 你的产品/服务类型、功能和类别将确定你的产品/服务的发布位置。 类别和子类别基于解决方案类型映射到每个在线商店。 
+
+如果 SaaS 产品 */* 服务是 (Azure Marketplace) 的 IT 解决方案， (AppSource) 的业务解决方案，请选择适用于每个在线商店的类别和子类别。 发布到这两个在线商店的产品/服务的价值主张应为 IT 解决方案 *和* 企业解决方案。
+
+> [!IMPORTANT]
+> 通过 Azure Marketplace 和 Azure 门户提供 [按流量计费](partner-center-portal/saas-metered-billing.md) 的 SaaS 产品/服务。 只有专用计划的 SaaS 产品可通过 Azure 门户提供。
+
+| 计费计费 | 公共计划 | 私有计划 | 可用项： |
+|---|---|---|---|
+| 是             | 是         | 否           | Azure Marketplace 和 Azure 门户 |
+| 是             | 是         | 是          | Azure Marketplace 和 Azure 门户 * |
+| 是             | 否          | 是          | 仅 Azure 门户 |
+| 否              | 否          | 是          | 仅 Azure 门户 |
+|||||
+
+&#42; 产品/服务的私有计划将仅通过 Azure 门户提供
+
+例如，仅 (没有公共计划) 的产品/服务将由 Azure 门户中的客户购买，具有按流量计费的计费和私有计划。 详细了解 [Microsoft 商业 marketplace 中的专用产品/服务](private-offers.md)。
+
+有关列出在线商店支持的选项的详细信息，请参阅 [按在线商店列出和定价选项](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 有关类别和子类别的详细信息，请参阅 [商业应用商店中的类别和子](categories.md)类别。
 
 ## <a name="legal-contracts"></a>法律协定
 
@@ -130,7 +149,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 摘要
+8. 总结
 9. 说明
 10. 屏幕截图/视频
 11. 文档

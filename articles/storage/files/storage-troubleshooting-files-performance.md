@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660281"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916485"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -196,7 +196,7 @@ ms.locfileid: "94660281"
 
 ### <a name="cause"></a>原因  
 
-文件共享上的大文件更改通知可能会导致严重的高延迟。 这通常发生在具有深层嵌套目录结构的文件共享上托管的网站上。 典型方案是 IIS 托管的 web 应用程序，其中，为默认配置中的每个目录设置文件更改通知。 对 SMB 客户端注册的共享上 (ReadDirectoryChangesW) 的每个更改都会将更改通知从文件服务推送到客户端，这会占用系统资源，并发出更为恶化的更改次数。 这可能会导致共享限制，进而导致更高的客户端延迟。 
+文件共享上的大文件更改通知可能会导致严重的高延迟。 这通常发生在具有深层嵌套目录结构的文件共享上托管的网站上。 典型方案是 IIS 托管的 web 应用程序，其中，为默认配置中的每个目录设置文件更改通知。 对 SMB 客户端注册的共享上 ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) 的每个更改都会将更改通知从文件服务推送到客户端，这会占用系统资源，并发出更为恶化的更改次数。 这可能会导致共享限制，进而导致更高的客户端延迟。 
 
 若要确认，可以在门户中使用 Azure 指标- 
 
@@ -213,10 +213,8 @@ ms.locfileid: "94660281"
     - 通过在注册表中设置来将 IIS 工作进程 (W3WP.EXE) 轮询间隔更新为 0 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` ，并重新启动 w3wp.exe 进程。 若要了解有关此设置的详细信息，请参阅 [IIS 的许多部分使用的常见注册表项](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)。
 - 增加文件更改通知轮询间隔的频率以减少卷。
     - 根据要求，将 W3WP.EXE 工作进程轮询间隔更新 (例如10分钟入门或 30mins) 。 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds `[在注册表中](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)设置并重新启动 w3wp.exe 进程。
-- 如果网站的映射物理目录具有嵌套的目录结构，可以尝试限制文件更改通知的范围，以减少通知量。
-    - 默认情况下，IIS 使用虚拟目录映射到的物理目录中 Web.config 文件中的配置，以及该物理目录中的任何子目录。 如果你不希望在子目录中使用 Web.config 文件，请为虚拟目录上的了 allowsubdirconfig 属性指定 false。 [此处](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)提供了更多详细信息。 
-
-将 Web.Config 中的 IIS 虚拟目录 "了 allowsubdirconfig" 设置设置为 "false"，以从作用域中排除映射的物理子目录。  
+- 如果网站的映射物理目录具有嵌套的目录结构，可以尝试限制文件更改通知的范围，以减少通知量。 默认情况下，IIS 使用虚拟目录映射到的物理目录中 Web.config 文件中的配置，以及该物理目录中的任何子目录。 如果你不希望在子目录中使用 Web.config 文件，请为虚拟目录上的了 allowsubdirconfig 属性指定 false。 [此处](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)提供了更多详细信息。 
+    - 将 Web.Config 中的 IIS 虚拟目录 "了 allowsubdirconfig" 设置设置为 " *false* "，以从作用域中排除映射的物理子目录。  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何创建文件共享受到限制时的警报
 
