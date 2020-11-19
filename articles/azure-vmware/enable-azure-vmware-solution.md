@@ -3,12 +3,12 @@ title: 如何启用 Azure VMware 解决方案资源
 description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: c9c31d8ffbf62a511f4f2ab19f995b6bc0ee0ca4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695140"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888430"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
 了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
@@ -78,7 +78,7 @@ Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) �
 
 1. 查看并完成客户的 Azure 计划订阅的常规设置。 有关详细信息，请参阅 [Microsoft 合作伙伴中心文档](https://docs.microsoft.com/partner-center/azure-plan-manage)。
 
-配置 Azure 计划并将所需的 RBAC 权限设置为 CSP 后，你将与 Microsoft 合作，为 Azure 计划订阅启用配额。 请代表 (AOBO) 过程，使用 **管理员** 访问合作伙伴中心的 Azure 门户。
+配置 Azure 计划并将所需的 vSphere RBAC 权限设置为 CSP 后，你将与 Microsoft 合作，以便为 Azure 计划订阅启用配额。 请代表 (AOBO) 过程，使用 **管理员** 访问合作伙伴中心的 Azure 门户。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com)。
 

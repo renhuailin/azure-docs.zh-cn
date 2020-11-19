@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5396845e13e94b4d957f42618baaf19c408f559d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fdd8c752e8cf610ef3c32e1af91b3ad6454c0813
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843768"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887172"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 
@@ -42,6 +42,8 @@ ms.locfileid: "94843768"
 私人计划是产品/服务的组成部分，只由目标客户可购买。 私有计划可以重复使用基本映像和/或提供已为公用计划发布的元数据。 此选项可让发布者创建公共套餐的多个专用变体，而无需发布相同基本映像和套餐元数据的多个版本。 仅适用于虚拟机和 Azure 应用程序的服务，当专用计划与公共计划共享基本映像时，对产品/服务基本映像所做的任何更改都将使用该基本映像传播到所有公用和私有计划。
 
 对于 *仅包含私有计划的新产品*/服务，发布者可以创建其产品/服务作为任何其他产品/服务，然后将计划标记为私有。 仅具有私有计划的产品/服务将无法通过 Microsoft 商用 marketplace 或不与产品/服务关联的客户的 [Azure 门户](https://azure.microsoft.com/features/azure-portal/) 来发现或访问。
+
+私有计划适用于 Azure Global 和 Azure 政府。
 
 >[!NOTE]
 >仅包含私有计划的产品/服务将不会显示在公共 Azure Marketplace 或 AppSource 中。

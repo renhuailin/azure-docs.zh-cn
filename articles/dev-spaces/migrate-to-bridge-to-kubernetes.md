@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: 描述从 Azure Dev Spaces 到 Kubernetes 的迁移过程
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，桥到 Kubernetes
-ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895250"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888515"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Bridge to Kubernetes
 
@@ -85,7 +85,7 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 1. 如果使用的是 Visual Studio，请将 Visual Studio IDE 更新到版本16.7 或更高版本，并从 [Visual Studio Marketplace][vs-marketplace]将桥安装到 Kubernetes 扩展。 如果使用 Visual Studio Code，请将 Bridge 安装 [到 Kubernetes 扩展][vsc-marketplace]。
 1. 使用 Azure 门户或 [AZURE DEV SPACES CLI][azds-delete]禁用 Azure Dev Spaces 控制器。
 1. 使用 [Azure Cloud Shell](https://shell.azure.com)。 或者，在安装了 bash 的 Mac、Linux 或 Windows 上，打开 bash shell 提示。 请确保命令行环境中提供以下工具： Azure CLI、docker、kubectl、卷曲、tar 和 gunzip。
-1. 创建容器注册表，或使用现有容器。 可以使用 [Azure 容器注册表](../container-registry/index.yml) 或使用 [Docker Hub](https://hub.docker.com/)在 azure 中创建容器注册表。 使用 Azure Cloud Shell 时，只有 Azure 容器注册表可用于承载 docker 映像。
+1. 创建容器注册表，或使用现有容器。 可以使用 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/) 或使用 [Docker Hub](https://hub.docker.com/)在 azure 中创建容器注册表。 使用 Azure Cloud Shell 时，只有 Azure 容器注册表可用于承载 docker 映像。
 1. 运行迁移脚本，将 Azure Dev Spaces 资产转换为 Kubernetes 资产。 此脚本会构建一个与 Kubernetes 兼容的新映像，将其上传到指定的注册表，然后使用 [Helm](https://helm.sh) 更新包含该映像的群集。 必须提供资源组、AKS 群集的名称和容器注册表。 还有其他命令行选项，如下所示：
 
    ```azure-cli
@@ -117,7 +117,7 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 
 你还可以将特定于开发人员的路由用于 Kubernetes。 Azure Dev Spaces 团队开发方案使用多个 Kubernetes 命名空间，使用父和子命名空间的概念将服务与应用程序的其余部分隔离开来。 桥接到 Kubernetes 提供了相同的功能，但具有改进的性能特征，并在相同的应用程序命名空间内。
 
-桥接到 Kubernetes 和 Azure Dev Spaces 要求在整个应用程序中存在并传播 HTTP 标头。 如果已将应用程序配置为处理 Azure Dev Spaces 的标头传播，则需要更新该标头。 若要从 Azure Dev Spaces 过渡到 Kubernetes，请将 *azds* 中配置的标头更新为 " *Kubernetes* "。
+桥接到 Kubernetes 和 Azure Dev Spaces 要求在整个应用程序中存在并传播 HTTP 标头。 如果已将应用程序配置为处理 Azure Dev Spaces 的标头传播，则需要更新该标头。 若要从 Azure Dev Spaces 过渡到 Kubernetes，请将 *azds* 中配置的标头更新为 " *Kubernetes*"。
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>评估桥与 Kubernetes
 

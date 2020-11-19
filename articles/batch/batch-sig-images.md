@@ -2,14 +2,14 @@
 title: 使用共享映像库创建自定义映像池
 description: 自定义映像池是配置计算节点以运行 Batch 工作负载的高效方法。
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745523"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888345"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -218,7 +218,7 @@ client.pool.add(new_pool)
 
 如果打算使用共享映像创建包含数百或数千 VM 或更多 VM 的池，请按以下指南操作。
 
-- **共享映像库副本数目。**  对于实例数多达 600 的每个池，我们建议至少保留一个副本。 例如，如果创建的池包含 3000 个 VM，则应保留至少 5 个映像副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
+- **共享映像库副本数目。**  对于每个具有多达300实例的池，建议至少保留一个副本。 例如，如果要创建包含 3000 Vm 的池，则应保留映像的至少10个副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
 
 - **调整超时。** 如果池包含固定数目的节点（如果池不会自动缩放），请根据池大小增大池的 `resizeTimeout` 属性的值。 对于每 1000 个 VM，建议的调整超时值至少为 15 分钟。 例如，如果池包含 2000 个 VM，建议将重设大小超时设置为至少 30 分钟。
 

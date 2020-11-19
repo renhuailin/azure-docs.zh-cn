@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426752"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887223"
 ---
-# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于 Azure 角色的访问控制权限
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的 Azure 基于角色的访问控制权限
 
 通过 Azure 基于角色的访问控制 (Azure RBAC)，你可以将具体操作仅分配给需要完成其分配的职责的组织成员。 若要使用网络观察程序功能，登录 Azure 所使用的帐户必须分配给[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)内置角色，或分配给[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)（已向自定义角色分配了以下各节中为每个网络观察程序功能列出的操作）。 若要了解有关网络观察程序的功能的详细信息，请参阅[什么是网络观察程序？](network-watcher-monitoring-overview.md)。
 
@@ -90,6 +90,7 @@ ms.locfileid: "92426752"
 | 操作                                                              | 说明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | 获取拓扑                                                   |
+| NetworkWatchers/拓扑/读取                     | 同上                                                  |
 
 ## <a name="reachability-report"></a>可访问性报表
 

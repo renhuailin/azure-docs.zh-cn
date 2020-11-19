@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591642"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888770"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协议创建卷。 本文介绍如何创建使用 NFSv3 和 SMB 的双重协议的卷，并支持 LDAP 用户映射。  
 
 
-## <a name="before-you-begin"></a>在开始之前 
+## <a name="before-you-begin"></a>准备阶段 
 
 * 你必须已创建容量池。  
     请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
@@ -51,6 +51,8 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
     |-  |-  |-  |-  |-  |
     | UNIX  | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
     | NTFS  | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
+* 使用 NFS 安装 NTFS 安全样式卷的 UNIX 用户将作为 Windows 用户 `root` FOR unix `root` 和 `pcuser` 所有其他用户进行身份验证。 使用 NFS 时，请确保这些用户帐户存在于你的 Active Directory 中。 
+
 
 ## <a name="create-a-dual-protocol-volume"></a>创建双协议卷
 
@@ -58,7 +60,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 "创建卷" 窗口中，单击 " **创建** "，并在 "基本信息" 选项卡下提供以下字段的信息：   
+2.  在 "创建卷" 窗口中，单击 " **创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -135,7 +137,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     ![证书导出向导](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. 中转到双重协议卷的 NetApp 帐户，单击 **Active Directory 连接** "，然后使用" **加入 Active Directory** "窗口上传根 CA 证书：  
+4. 中转到双重协议卷的 NetApp 帐户，单击 **Active Directory 连接**"，然后使用" **加入 Active Directory** "窗口上传根 CA 证书：  
 
     ![服务器根 CA 证书](../media/azure-netapp-files/server-root-ca-certificate.png)
 

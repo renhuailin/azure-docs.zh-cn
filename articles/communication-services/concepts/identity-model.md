@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651237"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888702"
 ---
 # <a name="identity-model"></a>标识模型
 
@@ -63,7 +63,7 @@ Azure 通信服务不会复制 Azure 标识管理系统的功能。 它不会为
 
 标识需要从服务器端服务请求新的访问令牌的方式。 *Scope* 参数定义可使用的一组非空基元。 Azure 通信服务支持访问令牌的以下作用域。
 
-|名称|说明|
+|名称|描述|
 |---|---|
 |聊天|  授予加入聊天的能力|
 |VoIP|  授予调用标识和电话号码的能力|
@@ -83,6 +83,6 @@ Azure 通信服务不会复制 Azure 标识管理系统的功能。 它不会为
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关访问令牌管理的简介，请参阅 [创建和管理访问令牌](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)。
-* 有关身份验证的简介，请参阅对 [Azure 通信服务进行身份验证](https://docs.microsoft.com/azure/communication-services/concepts/authentication)。
-* 有关数据驻留和隐私的简介，请参阅 [区域可用性和数据驻留](https://docs.microsoft.com/azure/communication-services/concepts/privacy)。
+* 有关访问令牌管理的简介，请参阅 [创建和管理访问令牌](../quickstarts/access-tokens.md)。
+* 有关身份验证的简介，请参阅对 [Azure 通信服务进行身份验证](./authentication.md)。
+* 有关数据驻留和隐私的简介，请参阅 [区域可用性和数据驻留](./privacy.md)。

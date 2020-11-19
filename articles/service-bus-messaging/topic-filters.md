@@ -3,12 +3,12 @@ title: Azure 服务总线主题筛选器 | Microsoft Docs
 description: 本文介绍订阅者如何通过指定筛选器来定义希望从主题接收的消息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ae585c42f8acfbf338bf23befb32a5521fcf57
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066740"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889025"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
@@ -18,7 +18,7 @@ ms.locfileid: "88066740"
 
 服务总线支持三个筛选条件：
 
--   *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。
+-   *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。 这两个筛选器派生自 SQL 筛选器。 
 
 -   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)可测试属性是否存在 (`EXISTS`)，以及是否为 null 值 (`IS NULL`)、逻辑“非”/“与”/“或”、关系运算符、简单数值算术和简单文本模式匹配（使用 `LIKE`）。
 
@@ -52,6 +52,75 @@ ms.locfileid: "88066740"
 分区使用筛选器以可预测且互相排斥的方式在多个现有主题订阅间分发消息。 当系统进行扩大以在功能相同的隔离舱（每个隔离舱包含总体数据的子集；例如客户配置文件信息）中处理许多不同上下文时，可使用分区模式。 借助分区，发布者可将消息提交到主题中，而无需了解分区模型。 消息随后会移动到正确的订阅，分区的消息处理程序随后会从该订阅检索它。
 
 路由使用筛选器以可预测、但不一定独占的方式在主题订阅间分发消息。 通过与[自动转发](service-bus-auto-forwarding.md)功能相结合，主题筛选器可以用于在服务总线命名空间中创建复杂路由图，以便在 Azure 区域中进行消息分发。 通过使 Azure Functions 或 Azure 逻辑应用充当 Azure 服务总线命名空间之间的桥梁，可以创建直接集成到业务线应用程序中的复杂全局拓扑。
+
+## <a name="examples"></a>示例
+
+### <a name="set-rule-action-for-a-sql-filter"></a>为 SQL 筛选器设置规则操作
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>系统属性上的 SQL 筛选器
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>使用或 
+
+```csharp
+sys.Label LIKE '%bus%' OR user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>使用 IN 和 NOT IN
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+有关使用这些筛选器的 c # 示例，请参阅 [GitHub 上的主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
+
+### <a name="correlation-filter-using-correlationid"></a>使用 CorrelationID 的关联筛选器
+
+```csharp
+new CorrelationFilter("Contoso");
+```
+
+它通过 `CorrelationID` 将设置为来筛选消息 `Contoso` 。 
+
+### <a name="correlation-filter-using-system-and-user-properties"></a>使用系统属性和用户属性的关联筛选器
+
+```csharp
+var filter = new CorrelationFilter();
+filter.Label = "Important";
+filter.ReplyTo = "johndoe@contoso.com";
+filter.Properties["color"] = "Red";
+```
+
+它相当于： `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'`
 
 
 > [!NOTE]

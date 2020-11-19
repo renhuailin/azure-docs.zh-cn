@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358110"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887393"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -31,7 +31,7 @@ ms.locfileid: "93358110"
 
 有关低代码体验，请参阅[教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)，里面有关于在 [Azure 机器学习工作室](https://ml.azure.com/)中使用自动化机器学习的时序预测示例。
 
-与经典的时序方法不同，在自动化 ML 中，将“透视”过去的时序值，使其成为回归器与其他预测器的附加维度。 此方法会在训练过程中，将多个上下文变量及其关系彼此整合。 影响预测的因素有很多，因此该方法将自身与真实的预测场景很好地协调起来。 例如，在预测销售额时，历史趋势、汇率和价格相互作用，共同推动着销售结果。 
+与经典的时序方法不同，在自动化 ML 中，将“透视”过去的时序值，使其成为回归器与其他预测器的附加维度。 此方法会在训练过程中，将多个上下文变量及其关系彼此整合。 影响预测的因素有很多，因此该方法将自身与真实的预测场景很好地协调起来。 例如，在预测销售额时，历史趋势、汇率和价格之间的交互都是销售结果。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "93358110"
 AutoML 中预测回归任务类型和回归任务类型之间最重要的区别在于，前者包含数据中表示有效时序的一项特征。 常规时序具有明确定义的一致频率，并且在连续时间范围内的每个采样点上都有一个值。 
 
 将以下快照看作 `sample.csv` 文件。
-此数据集是有两个不同商店（A 和 B）的公司的每日销售数据。 
+此数据集是具有两个不同商店、A 和 B 的公司的每日销售数据。 
 
 此外，还有一些功能适用于
 
@@ -131,14 +131,14 @@ automl_config = AutoMLConfig(task='forecasting',
 模型| 说明 | 优点
 ----|----|---
 Prophet（预览版）|Prophet 最适合用于受季节影响大且包含多个季节历史数据的时序。 若要利用此模型，请使用 `pip install fbprophet` 在本地安装它。 | 准确、快速、可靠地反应时序中的离群值、缺失数据和巨大变化。
-Auto-ARIMA（预览版）|自动回归集成移动平均 (ARIMA) 在数据处于静态时性能最佳。 这意味着其统计属性（例如平均值和方差）在整个集中保持不变。 例如，如果你掷一枚硬币，那么无论是今天掷、明天掷还是明年掷，正面朝上的可能性都是 50%。| 适用于单变量系列，这是因为使用过去的值来预测未来的值。
+Auto-ARIMA（预览版）|自动回归集成移动平均 (ARIMA) 在数据处于静态时性能最佳。 这意味着其统计属性（例如平均值和方差）在整个集中保持不变。 例如，如果您翻了一硬币，那么您将获得机头的概率为50%，而不考虑您是今天、明天还是下一年。| 适用于单变量系列，这是因为使用过去的值来预测未来的值。
 ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处理最苛刻的预测任务，从而捕获数据中的非线性本地和全局趋势以及时序之间的关系。|可利用数据中的复杂趋势并轻松扩展到最大型的数据集。
 
 ### <a name="configuration-settings"></a>配置设置
 
 与回归问题类似，你要定义标准训练参数，例如任务类型、迭代次数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 
 
-下表汇总了这些额外的参数。 有关语法设计模式，请查看[参考文档](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)。
+下表汇总了这些额外的参数。 有关语法设计模式，请参阅 [ForecastingParameter 类参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 。
 
 | 参数&nbsp;名称 | 说明 | 必须 |
 |-------|-------|-------|
@@ -149,13 +149,13 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
 |`feature_lags`| 当设置了 `target_lags` 并且 `feature_lags` 设置为 `auto` 时，要滞后的功能将由自动化 ML 自动确定。 启用功能滞后有助于提高准确性。 默认情况下会禁用功能滞后。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 详细了解[目标滚动窗口聚合](#target-rolling-window-aggregation)。||
-|`short_series_handling`| 启用短时序处理，以避免因数据不足而在定型期间发生故障。 默认情况下，Short 系列处理设置为 True。|
+|`short_series_handling_config`| 启用短时序处理，以避免因数据不足而在定型期间发生故障。 默认情况下，Short 系列处理设置为 `auto` 。 了解有关 [short 系列处理](#short-series-handling)的详细信息。|
 
 
 以下代码 
-* 利用 `ForecastingParameters` 类为实验定型定义预测参数
+* 利用 [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 类为实验定型定义预测参数
 * 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 
-* 将 `time_series_id_column_names` 参数定义为 `"store"`。 这可确保为数据创建 **两个单独的时序组** ，一个用于商店 A，一个用于商店 B。
+* 将 `time_series_id_column_names` 参数定义为 `"store"`。 这可确保为数据创建 **两个单独的时序组**，一个用于商店 A，一个用于商店 B。
 * 将 `forecast_horizon` 设置为 50 以针对整个测试集进行预测。 
 * 使用 `target_rolling_window_size` 将预测窗口设置为 10 个时段
 * 使用 `target_lags` 参数指定目标值滞后两个时段。 
@@ -164,13 +164,12 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 然后，将这些 `forecasting_parameters` 传入到标准 `AutoMLConfig` 对象中，同时还会传入 `forecasting` 任务类型、主要指标、退出标准和训练数据。 
@@ -190,7 +189,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>特征化步骤
@@ -226,12 +225,16 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -245,7 +248,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 ### <a name="enable-deep-learning"></a>启用深度学习
 
 > [!NOTE]
-> DNN 对自动机器学习的预测支持目前为 **预览版** ，不支持本地运行。
+> DNN 对自动机器学习的预测支持目前为 **预览版**，不支持本地运行。
 
 你还可以通过深层神经网络 (DNN) 利用深度学习来改进模型的分数。 通过自动化 ML 的深度学习，可预测单变量和多变量时序数据。
 
@@ -260,7 +263,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > 为使用 SDK 创建的试验启用 DNN 时，系统会禁用[最佳模型说明](how-to-machine-learning-interpretability-automl.md)。
@@ -279,6 +282,35 @@ automl_config = AutoMLConfig(task='forecasting',
 ![目标滚动窗口](./media/how-to-auto-train-forecast/target-roll.svg)
 
 请查看使用[目标滚动窗口聚合特征](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 代码示例。
+
+### <a name="short-series-handling"></a>短序列处理
+
+如果没有足够的数据点来执行模型开发的定型和验证阶段，则自动 ML 会将时间系列视为 **短系列** 。 对于每个试验，数据点的数目各不相同，具体取决于 max_horizon、交叉验证拆分数和模型 lookback 长度，这是构建时序功能所需的最大历史记录。 有关准确的计算，请参阅 [short_series_handling_config 参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
+
+默认情况下，自动 ML 使用对象中的参数提供短序列处理 `short_series_handling_config` `ForecastingParameters` 。 
+
+若要启用短序列处理， `freq` 还必须定义参数。 若要更改默认行为， `short_series_handling_config = auto` 请更新 `short_series_handling_config` 对象中的参数 `ForecastingParameter` 。  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+下表汇总了的可用设置 `short_series_handling_config` 。
+ 
+|设置|描述
+|---|---
+|`auto`| 下面是用于进行短序列处理的默认行为 <li> *如果所有序列都较短*，则填充数据。 <br> <li> *如果并非所有序列都简短*，请删除短序列。 
+|`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会将虚拟值添加到找到的每个短序列。 下面列出了列类型及其填充内容： <li>带有 Nan 的对象列 <li> 带有0的数字列 <li> 带有 False 的布尔/逻辑列 <li> 目标列填充的随机值的平均值为零，标准偏差为1。 
+|`drop`| 如果为 `short_series_handling_config = drop` ，则自动 ML 会丢弃短序列，而不会用于定型或预测。 这些序列的预测将返回 NaN 的。
+|`None`| 未填充或删除序列
+
+>[!WARNING]
+>填充可能会影响生成的模型的准确性，因为我们只是为了获取过去的培训而没有失败。 <br> <br> 如果有很多序列较短，则可能还会在 explainability 结果中看到一些影响
 
 ## <a name="run-the-experiment"></a>运行试验 
 

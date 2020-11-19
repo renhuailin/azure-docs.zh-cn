@@ -103,15 +103,15 @@
     - name: 参考文档概述
       href: concepts/reference.md
     - name: REST API 文档
-      href: 'https://docs.microsoft.com/rest/api/communication/'
+      href: /rest/api/communication/
     - name: 通话库
       items:
         - name: 通话 (JavaScript)
-          href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
         - name: 通话 (Android/Java)
-          href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
         - name: 通话 (iOS)
-          href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+          href: /objectivec/communication-services/calling/
     - name: 聊天库
       items:
         - name: 聊天 (JavaScript)

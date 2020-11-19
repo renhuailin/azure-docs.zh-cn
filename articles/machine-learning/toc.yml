@@ -89,14 +89,9 @@
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: 示例存储库
-      displayName: 'example, examples, jupyter, python, notebook, github'
-      href: 'https://github.com/Azure/azureml-examples'
     - name: 设计器示例和数据集
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
-    - name: 端到端 MLOps 示例
-      href: 'https://github.com/microsoft/MLOps'
     - name: 开放数据集（公共）
       href: ../open-datasets/samples.md?context=azure%252fmachine-learning%252fcontext%252fml-context
 - name: 概念

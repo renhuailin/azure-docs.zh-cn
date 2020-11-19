@@ -4,12 +4,12 @@ description: 本文概述如何使用 Azure 资源管理器管理 Azure Service 
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 886b7d6b40bebf6234064b0627017db1d8cfe31f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681680"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888821"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型
 
@@ -91,6 +91,7 @@ ms.locfileid: "94681680"
 >
 >
 
+
 | 参数              | 说明                                 | 示例                                                      | 注释                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 要部署到的群集的名称 | sf-cluster123                                                |                                                              |
@@ -137,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>使用资源管理器升级 Service Fabric 应用程序
+
+
+> [!IMPORTANT]
+> 必须从相应 ApplicationManifest.xml 文件的 DefaultServices 节中删除通过 ARM JSON 定义部署的任何服务。
+
 
 你可能会出于以下某一原因升级已部署到 Service Fabric 群集的应用程序：
 

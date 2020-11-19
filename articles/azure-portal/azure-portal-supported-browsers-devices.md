@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 11/18/2020
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d48add78eb73ba1aea248e95ddc5ebc0900ee000
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090204"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888328"
 ---
 # <a name="supported-devices"></a>支持的设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "90090204"
 建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
 
 * Microsoft Edge（最新版本）
-* Internet Explorer 11
+* Internet Explorer 11 (在2021年3月31日前受支持) 
 * Safari（最新版本，仅限 Mac）
 * Chrome（最新版本）
 * Firefox（最新版本）

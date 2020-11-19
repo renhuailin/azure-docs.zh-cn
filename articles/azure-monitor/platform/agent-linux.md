@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332495"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886832"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -20,23 +20,27 @@ ms.locfileid: "92332495"
 * [手动下载并安装](#install-the-agent-manually)代理。 如果 Linux 计算机无法访问 Internet，并通过 [Log Analytics 网关](gateway.md)与 Azure Monitor 或 Azure 自动化进行通信，则需要执行此步骤。 
 
 >[!IMPORTANT]
-> 本文中所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效的选项，请参阅 [安装选项](log-analytics-agent.md#installation-options) 。
+> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](log-analytics-agent.md#installation-options)。
 
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-有关 Log Analytics 代理支持的 Linux 发行版列表，请参阅 [Azure Monitor 代理概述](agents-overview.md#supported-operating-systems) 。
+有关 Log Analytics 代理支持的 Linux 发行版的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md#supported-operating-systems)。
 
 >[!NOTE]
 >仅 x86_x64 平台（64 位）支持 OpenSSL 1.1.0，任何平台均不支持早于 1.x 版本的 OpenSSL。
->
+
+>[!NOTE]
+>不支持在容器中运行 Log Analytics Linux 代理。 如果需要监视容器，请利用适用于 Docker 主机的 [容器监视解决方案](../insights/containers.md) 或 Kubernetes 的 [容器 Azure Monitor](../insights/container-insights-overview.md) 。
+
 从 2018 年 8 月之后发布的版本开始，我们对支持模型进行了以下更改：  
 
 * 仅支持服务器版本，不支持客户端版本。  
 * 将支持重点放在任何 [Azure Linux 认可的发行版](../../virtual-machines/linux/endorsed-distros.md)。 请注意，新的发行版/版本被 Azure Linux 认可和其受 Log Analytics Linux 代理支持，这两者之间可能存在一些延迟。
 * 列出的每个主版本支持所有的次版本。
-* 超出制造商终止支持日期的版本不受支持。  
+* 超出制造商终止支持日期的版本不受支持。
+* 仅支持 VM 映像;不支持容器，甚至是从官方发行版发布者映像派生的容器。
 * 不支持新版本的 AMI。  
 * 默认仅支持运行 SSL 1.x 的版本。
 
@@ -45,15 +49,15 @@ ms.locfileid: "92332495"
 
 ### <a name="python-requirement"></a>Python 要求
 
-从代理版本1.13.27 开始，Linux 代理将支持 Python 2 和3。 我们始终建议使用最新的代理。 
+从代理版本 1.13.27 开始，Linux 代理将同时支持 Python 2 和 Python 3。 我们始终建议使用最新代理。 
 
-如果你使用的是较旧版本的代理，则默认情况下，你必须让虚拟机使用 python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须进行安装。 以下示例命令将在不同的发行版上安装 Python 2。
+如果使用的是旧版本的代理，则默认情况下必须让虚拟机使用 Python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须进行安装。 以下示例命令将在不同的发行版上安装 Python 2。
 
  - Red Hat、CentOS、Oracle：`yum install -y python2`
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须化名为 *python*。 下面是可以用来设置此别名的一种方法：
+Python2 可执行文件必须将别名设置为“python”。 下面是可用来设置此别名的一种方法：
 
 1. 运行以下命令以删除所有现有别名。
  
@@ -73,7 +77,7 @@ OMS 代理对 Linux 提供了有限的自定义支持。
 当前支持以下内容： 
 - FIPS
 
-以下是但尚不支持以下内容：
+以下内容正在考虑中，但尚不受支持：
 - CIS
 - SELINUX
 
@@ -81,7 +85,7 @@ OMS 代理不支持且未计划使用其他强化和自定义方法。
 
 ## <a name="agent-prerequisites"></a>代理必备组件
 
-下表突出显示了将在其中安装代理的 [受支持的 Linux 发行版](#supported-operating-systems) 所需的包。
+下表重点介绍了要在其上安装代理的[受支持的 Linux 发行版](#supported-operating-systems)所需的包。
 
 |所需程序包 |说明 |最低版本 |
 |-----------------|------------|----------------|
@@ -96,7 +100,7 @@ OMS 代理不支持且未计划使用其他强化和自定义方法。
 >收集 Syslog 消息时需要 rsyslog 或 syslog ng。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
 
 ## <a name="network-requirements"></a>网络要求
-请参阅 [Log Analytics 代理概述](log-analytics-agent.md#network-requirements) ，了解 Linux 代理的网络要求。
+有关 Linux 代理的网络要求，请参阅 [Log Analytics 代理概述](log-analytics-agent.md#network-requirements)。
 
 ## <a name="agent-install-package"></a>代理安装包
 
@@ -215,11 +219,11 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 从版本 1.0.0-47 开始，每个版本都支持从旧版升级。 使用 `--upgrade` 参数执行安装可将代理的所有组件升级到最新版本。
 
 ## <a name="cache-information"></a>缓存信息
-在本地计算机上，适用于 Linux 的 Log Analytics 代理中的数据缓存在 *% STATE_DIR_WS/out_oms_common*缓冲 * 发送到 Azure Monitor 之前。 自定义日志数据以 *% STATE_DIR_WS/out_oms_blob*缓冲 * 缓冲。 某些 [解决方案和数据类型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)的路径可能不同。
+来自适用于 Linux 的 Log Analytics 代理的数据在发送到 Azure Monitor 之前缓存在本地计算机上的 %STATE_DIR_WS%/out_oms_common.buffer* 中。 自定义日志数据将在 %STATE_DIR_WS%/out_oms_blob.buffer* 中缓冲。 对于某些[解决方案和数据类型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)，路径可能会不同。
 
-代理每隔20秒尝试上传一次。 如果该操作失败，它将等待以指数方式递增的时间长度，直到第二次尝试之前30秒，第三个120秒前为60秒 .。。最多在两次重试之间等待16分钟，直到成功连接。 在放弃并移到下一个数据块之前，代理将对给定的数据块重试最多6次。 此过程将一直继续，直到代理成功上传。 这意味着数据在被丢弃之前可能会缓存大约30分钟。
+该代理会尝试每隔 20 秒上传一次。 如果该操作失败，它将等待以指数级增加的时间，直到成功为止：第二次尝试之前等待 30 秒，第三次尝试之前等待 60 秒，第四次尝试之前等待 120 秒...依此类推，直到再次成功连接为止，两次重试之间的最长间隔为 16 分钟。 对于给定数据块，该代理最多重试 6 次，然后丢弃它并移至下一个数据块。 此过程会一直继续，直到代理可以再次成功上传。 这意味着数据在被丢弃之前可能会被缓冲最多 30 分钟左右。
 
-默认缓存大小为 10 MB，但可在 [omsagent 文件](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)中修改。
+默认缓存大小为 10 MB，但可在 [omsagent.conf 文件](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)中进行修改。
 
 
 ## <a name="next-steps"></a>后续步骤

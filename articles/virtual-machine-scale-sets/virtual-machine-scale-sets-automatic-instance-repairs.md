@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744835"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889008"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>适用于 Azure 虚拟机规模集的自动实例修复
 
@@ -36,9 +36,9 @@ ms.locfileid: "92744835"
 
 对于标记为 "不正常" 的实例，规模集会触发自动修复。 请确保在启用自动修复策略之前正确配置了应用程序终结点，以便在配置终结点时避免意外的实例修复。
 
-**启用单个放置组**
+**规模集中实例的最大数目**
 
-此功能当前仅可用于部署为单个放置组的规模集。 对于规模集，应将 " *singlePlacementGroup* " 属性设置为 " *true* " 以使用自动实例修复功能。 详细了解 [放置组](./virtual-machine-scale-sets-placement-groups.md#placement-groups)。
+此功能目前仅适用于最多为200实例的规模集。 规模集可以部署为单个放置组或多个放置组，但如果为规模集启用了自动实例修复，则实例计数不能超过200。
 
 **API 版本**
 
@@ -66,9 +66,9 @@ Service fabric 规模集当前不支持此功能。
 
 ### <a name="suspension-of-repairs"></a>暂停修复 
 
-虚拟机规模集提供了在需要时临时挂起自动实例修复的功能。 虚拟机规模集的实例视图中属性 *orchestrationServices* 下的 *serviceState* 自动修复显示了自动修复的当前状态。 如果选择将规模集加入自动修复，则将参数 *serviceState* 的值设置为 " *正在运行* "。 如果为规模集挂起了自动修复，则参数 *serviceState* 将设置为 "已 *挂起* "。 如果在规模集上定义 *automaticRepairsPolicy* ，但未启用自动修复功能，则参数 *serviceState* 将设置为 " *未运行* "。
+虚拟机规模集提供了在需要时临时挂起自动实例修复的功能。 虚拟机规模集的实例视图中属性 *orchestrationServices* 下的 *serviceState* 自动修复显示了自动修复的当前状态。 如果选择将规模集加入自动修复，则将参数 *serviceState* 的值设置为 " *正在运行*"。 如果为规模集挂起了自动修复，则参数 *serviceState* 将设置为 "已 *挂起*"。 如果在规模集上定义 *automaticRepairsPolicy* ，但未启用自动修复功能，则参数 *serviceState* 将设置为 " *未运行*"。
 
-如果新创建的实例替换了规模集中的不正常的实例，即使在重复执行修复操作后仍保持不正常，则平台会将自动修复的 *serviceState* 更新为 " *挂起* "。 可以通过将 *serviceState* 的值设置为 "要 *运行* 的自动修复" 来再次恢复自动修复。 有关 [查看和更新规模集的自动修复策略的服务状态](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 一节中提供了详细说明。 
+如果新创建的实例替换了规模集中的不正常的实例，即使在重复执行修复操作后仍保持不正常，则平台会将自动修复的 *serviceState* 更新为 " *挂起*"。 可以通过将 *serviceState* 的值设置为 "要 *运行* 的自动修复" 来再次恢复自动修复。 有关 [查看和更新规模集的自动修复策略的服务状态](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 一节中提供了详细说明。 
 
 自动实例修复过程如下所示：
 
@@ -103,7 +103,7 @@ Service fabric 规模集当前不支持此功能。
 1. 启用 " **监视应用程序运行状况** " 选项。
 1. 找到 **自动修复策略** 部分。
 1. 启用 **"** **自动修复** " 选项。
-1. 在 " **宽限期** " 中 (分钟) ，指定允许值介于30到90分钟之间的宽限期（分钟）。 
+1. 在 " **宽限期**" 中 (分钟) ，指定允许值介于30到90分钟之间的宽限期（分钟）。 
 1. 创建完新的规模集后，选择“查看 + 创建”按钮。
 
 ### <a name="rest-api"></a>REST API
@@ -169,11 +169,11 @@ az vmss create \
 可以通过 Azure 门户修改现有规模集的自动修复策略。 
  
 1. 转到现有虚拟机规模集。
-1. 在左侧菜单的 " **设置** " 下，选择 " **运行状况和修复** "。
+1. 在左侧菜单的 " **设置** " 下，选择 " **运行状况和修复**"。
 1. 启用 " **监视应用程序运行状况** " 选项。
 1. 找到 **自动修复策略** 部分。
 1. 启用 **"** **自动修复** " 选项。
-1. 在 " **宽限期** " 中 (分钟) ，指定允许值介于30到90分钟之间的宽限期（分钟）。 
+1. 在 " **宽限期**" 中 (分钟) ，指定允许值介于30到90分钟之间的宽限期（分钟）。 
 1. 完成后，选择“保存”。 
 
 ### <a name="rest-api"></a>REST API
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-对于虚拟机规模集，使用 API 版本2019-12-01 或更高版本的 " [获取实例" 视图](/rest/api/compute/virtualmachinescalesets/getinstanceview)，在属性 *orchestrationServices* 下查看自动修复的 *serviceState* 。 
+对于虚拟机规模集，使用 API 版本2019-12-01 或更高版本的 "[获取实例" 视图](/rest/api/compute/virtualmachinescalesets/getinstanceview)，在属性 *orchestrationServices* 下查看自动修复的 *serviceState* 。 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'

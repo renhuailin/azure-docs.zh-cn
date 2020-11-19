@@ -3,18 +3,18 @@ title: 集成和管理安全操作 & Microsoft Graph 安全性
 description: 通过使用 Microsoft Graph 安全性和 Azure 逻辑应用来提升应用的威胁防护、检测和响应能力
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873312"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888532"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
@@ -30,7 +30,7 @@ ms.locfileid: "94873312"
 
 逻辑应用的工作流可使用操作，以从 Microsoft Graph 安全性连接器获取响应，并让输出可用于工作流中的其他操作。 另外，还可以让工作流中的其他操作使用 Microsoft Graph 安全性连接器操作的输出。 例如，如果通过 Microsoft Graph 安全性连接器获取非常严重的警报，可使用 Outlook 连接器在电子邮件中发送这些警报。 
 
-若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](/graph/security-concept-overview)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果正在寻找电源自动执行或 PowerApps，请参阅 [什么是电源自动执行？](https://flow.microsoft.com/) 或 [什么是 PowerApps？](https://powerapps.microsoft.com/)
+若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](/graph/security-concept-overview)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果正在寻找电源自动执行或 PowerApps，请参阅 [什么是电源自动执行？](https://flow.microsoft.com/) 或 [什么是电源应用？](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -144,7 +144,7 @@ Microsoft Graph 支持[订阅](/graph/api/resources/subscription)或 [Webhook](/
 
 有关可与此连接器一起使用的查询的详细信息，请参阅 [Microsoft Graph 安全威胁情报指标参考文档中的 "可选查询参数"](/graph/api/tiindicators-list)。 若要构建此连接器的增强体验，请详细了解连接器支持的 [架构属性威胁情报指标](/graph/api/resources/tiindicator) 。
 
-| 操作 | 说明 |
+| 操作 | 描述 |
 |--------|-------------|
 | **获取威胁情报指标** | 基于一个或多个 [tiIndicator 属性](/graph/api/resources/tiindicator)（例如）筛选 tiIndicators `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **按 ID 获取威胁情报指标** | 基于 tiIndicator ID 获取特定的 tiIndicator。 | 

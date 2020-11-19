@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422291"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889076"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>通过专用链接 (预览) 保护和隔离 Azure HDInsight 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "93422291"
 
 ## <a name="remove-public-ip-addresses"></a>删除公共 IP 地址
 
-默认情况下，HDInsight RP 使用公共 Ip 向群集进行 *入站* 连接。 如果 `resourceProviderConnection` 网络属性设置为 " *出站* "，则它会反转到 HDInsight RP 的连接，以便始终从群集内部向 RP 发起连接。 如果没有入站连接，则不需要入站服务标记或公共 IP 地址。
+默认情况下，HDInsight RP 使用公共 Ip 向群集进行 *入站* 连接。 如果 `resourceProviderConnection` 网络属性设置为 " *出站*"，则它会反转到 HDInsight RP 的连接，以便始终从群集内部向 RP 发起连接。 如果没有入站连接，则不需要入站服务标记或公共 IP 地址。
 
 默认虚拟网络体系结构中使用的基本负载均衡器会自动提供公共 NAT (网络地址转换) 来访问所需的出站依赖项，如 HDInsight RP。 如果要限制到公共 internet 的出站连接，可以 [配置防火墙](./hdinsight-restrict-outbound-traffic.md)，但这不是必需的。
 
@@ -54,7 +54,7 @@ ms.locfileid: "93422291"
 
 默认情况下禁用的 "专用链接" 需要广泛的网络知识，以便在创建群集之前正确设置用户定义的路由 (UDR) 和防火墙规则。 使用此设置是可选的，但仅当 `resourceProviderConnection` network 属性设置为 " *出站* " 时才可用，如前一部分中所述。
 
-如果 `privateLink` 设置为 " *启用* "，则会创建内部 [标准负载平衡](../load-balancer/load-balancer-overview.md) 器 (slb) ，并为每个 SLB 预配 Azure 专用链接服务。 专用链接服务可让你从专用终结点访问 HDInsight 群集。
+如果 `privateLink` 设置为 " *启用*"，则会创建内部 [标准负载平衡](../load-balancer/load-balancer-overview.md) 器 (slb) ，并为每个 SLB 预配 Azure 专用链接服务。 专用链接服务可让你从专用终结点访问 HDInsight 群集。
 
 标准负载均衡器不会自动提供 [公共出站 NAT](../load-balancer/load-balancer-outbound-connections.md) （如基本负载均衡器）。 对于出站依赖项，你必须提供自己的 NAT 解决方案，如 [虚拟网络 NAT](../virtual-network/nat-overview.md) 或 [防火墙](./hdinsight-restrict-outbound-traffic.md)。 你的 HDInsight 群集仍需要访问其出站依赖项。 如果不允许这些出站依赖项，则群集创建可能会失败。
 
@@ -86,7 +86,8 @@ ms.locfileid: "93422291"
 
 :::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="专用链接体系结构示意图":::
 
-## <a name="arm-template-properties"></a>ARM 模板属性
+## <a name="how-to-create-clusters"></a>如何创建群集？
+### <a name="use-arm-template-properties"></a>使用 ARM 模板属性
 
 下面的 JSON 代码段包含需要在 ARM 模板中配置以创建专用 HDInsight 群集的两个网络属性。
 
@@ -98,6 +99,13 @@ networkProperties: {
 ```
 
 有关包含许多 HDInsight 企业安全功能（包括私有链接）的完整模板，请参阅 [hdinsight 企业安全模板](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)。
+
+### <a name="use-azure-powershell"></a>使用 Azure PowerShell
+
+若要使用 powershell，请参阅 [此处](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的示例。
+
+### <a name="use-azure-cli"></a>使用 Azure CLI
+若要使用 Azure CLI，请参阅 [此处](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,17 +2,17 @@
 title: Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs
 description: 本文提供了有关 SQLFilter 语法的详细信息。 SqlFilter 支持 SQL-92 标准的子集。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341595"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888464"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+*SqlFilter* 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，它表示基于 SQL 语言的筛选器表达式，该表达式是针对来计算的 [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出有关 SqlFilter 语法的详细信息。  
   
@@ -49,11 +49,11 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ## <a name="arguments"></a>参数  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 如果未指定，则作用域为默认作用域 `<scope>` 。  
   
 ## <a name="remarks"></a>备注
 
-访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
+尝试访问不存在的系统属性是错误的，而尝试访问不存在的用户属性不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   
 ## <a name="property_name"></a>property_name  
   
@@ -81,7 +81,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 `[:IsDigit:]` 是指分类为十进制数字的任何 Unicode 字符。 `System.Char.IsDigit(c)` 返回 `true`（如果 `c` 为 Unicode 数字）。  
   
-`<regular_identifier>` 不能是保留关键字。  
+`<regular_identifier>`不能是保留关键字。  
   
 `<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号以两个右方括号表示。 下面是 `<delimited_identifier>`的示例：  
   
@@ -91,7 +91,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ```  
   
-`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为很容易将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>`的示例：  
+`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为可以轻松地将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是一个示例 `<quoted_identifier>` ：  
   
 ```  
 "Contoso & Northwind"  
@@ -134,7 +134,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ### <a name="arguments"></a>参数  
   
--   `<integer_constant>` 是指不使用引号引起来且不包含小数点的数字字符串。 这些值作为 `System.Int64` 在内部存储，并具有相同的作用域。  
+-   `<integer_constant>` 不是用引号括起来并且不包含小数点的数字字符串。 这些值作为 `System.Int64` 在内部存储，并具有相同的作用域。  
   
      下面是长常量的示例：  
   
@@ -143,9 +143,9 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
     2  
     ```  
   
--   `<decimal_constant>` 是指不使用引号引起来但包含小数点的数字字符串。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 不是用引号括起来并且包含小数点的数字字符串。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
   
-     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
+     在将来的版本中，此数字可能存储在不同的数据类型中以支持确切的数字语义，因此您不应依赖于的基础数据类型 `System.Double` `<decimal_constant>` 。  
   
      下面是十进制常量的示例：  
   
@@ -192,7 +192,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ### <a name="remarks"></a>备注
   
-`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 **System.Guid**。  
+`newid()`函数返回 `System.Guid` 由方法生成的 `System.Guid.NewGuid()` 。  
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
   
@@ -214,17 +214,17 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 - 尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
   
-- 不存在的属性在内部作为 **未知**进行求值。  
+- 不存在的属性在内部被视为 **未知**。  
   
   算术运算符中的未知求值：  
   
-- 对于二元运算符，如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
+- 对于二元运算符，如果操作数的左侧或右侧的求值结果为 " **未知**"，则结果为 " **未知**"。  
   
-- 对于一元运算符，如果操作数的求值结果为**未知**，则结果为**未知**。  
+- 对于一元运算符，如果操作数的求值结果为 **未知**，则结果为 **未知**。  
   
   二进制比较运算符中的未知求值：  
   
-- 如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
+- 如果操作数的左侧或右侧的求值结果为 " **未知**"，则结果为 " **未知**"。  
   
   `[NOT] LIKE`中的未知求值：  
   
@@ -267,6 +267,58 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
 -   在进行数据类型提升和隐式转换时，比较运算符（例如 `>`、`>=`、`<`、`<=`、`!=` 和 `=`）与 C# 运算符绑定遵循相同的语义。  
   
 -   在进行数据类型提升和隐式转换时，算术运算符（例如 `+`、`-`、`*`、`/` 和 `%`）与 C# 运算符绑定遵循相同的语义。
+
+
+## <a name="examples"></a>示例
+
+### <a name="set-rule-action-for-a-sql-filter"></a>为 SQL 筛选器设置规则操作
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>系统属性上的 SQL 筛选器
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>使用或 
+
+```csharp
+ sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>使用 IN 和 NOT IN
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+有关 c # 示例，请参阅 [GitHub 上的主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
+
 
 ## <a name="next-steps"></a>后续步骤
 
