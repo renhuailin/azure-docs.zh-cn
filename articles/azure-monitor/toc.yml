@@ -344,7 +344,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: 监视性能
           href: insights/vminsights-performance.md
-        - name: 监视更改
-          href: insights/vminsights-change-analysis.md
+        - name: 监视来宾运行状态（预览版）
+          items:
+            - name: 概述
+              href: insights/vminsights-health-overview.md
+            - name: 启用
+              href: insights/vminsights-health-enable.md
+            - name: 警报
+              href: insights/vminsights-health-alerts.md
+            - name: 在门户中配置监视器
+              href: insights/vminsights-health-configure.md
+            - name: 大规模配置监视器
+              href: insights/vminsights-health-configure-dcr.md
+            - name: 疑难解答
+              href: insights/vminsights-health-troubleshoot.md
         - name: 使用日志查询分析数据
           href: insights/vminsights-log-search.md
+        - name: 监视性能
+          href: insights/vminsights-alerts.md
+        - name: 监视更改
+          href: insights/vminsights-change-analysis.md
         - name: 通过工作簿实现数据可视化
           href: insights/vminsights-workbooks.md
-        - name: 创建警报规则
-          href: insights/vminsights-alerts.md
         - name: 禁用监视
           href: insights/vminsights-optout.md
     - name: 用于容器的 Azure Monitor

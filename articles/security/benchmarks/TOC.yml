@@ -139,6 +139,8 @@
       href: ../../container-instances/security-baseline.md
     - name: 容器注册表安全基线
       href: ../../container-registry/security-baseline.md
+    - name: 内容分发网络安全基线
+      href: ../../cdn/security-baseline.md
     - name: Cosmos DB 安全基线
       href: ../../cosmos-db/security-baseline.md
     - name: 成本管理安全基线

@@ -115,6 +115,8 @@
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows 停止错误 - 错误系统配置信息
           href: windows-stop-error-bad-system-config-info.md
+        - name: Windows 停止错误 - 硬件故障
+          href: windows-stop-error-hardware-malfunction.md
         - name: Windows 停止错误 - 状态无内存
           href: troubleshoot-windows-stop-error.md
         - name: Windows 停止错误 - 系统进程终止

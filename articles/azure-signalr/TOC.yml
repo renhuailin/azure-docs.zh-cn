@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: 使用 Azure Policy 审核符合性
           href: signalr-howto-azure-policy.md
+    - name: 疑难解答
+      items:
+        - name: 疑难解答指南
+          href: signalr-howto-troubleshoot-guide.md
+        - name: 疑难解答方法
+          href: signalr-howto-troubleshoot-method.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -123,7 +129,7 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
-    - name: 常见问题解答
+    - name: 常见问题
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits

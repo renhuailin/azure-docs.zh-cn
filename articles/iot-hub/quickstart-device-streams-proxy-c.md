@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 35c120b6d7715ac6fefe0e8712040108568ee8de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747424"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831984"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -46,9 +46,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 > [!NOTE]
 > 通过设备流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 有关详细信息，请参阅[使用 IoT 中心设备流的好处](iot-hub-device-streams-overview.md#benefits)。 此外，下图演示了在同一台设备（或计算机）上作为设备本地代理运行的 SSH 守护程序。 在本快速入门中，提供 SSH 守护程序 IP 地址还可让设备本地代理和守护程序在不同的计算机上运行。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,11 +60,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 并启用[使用 C++ 的桌面开发](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
 * [安装最新版本的 Git](https://git-scm.com/download/)。
 
-* 运行以下命令将用于 Azure CLI 的 Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -76,7 +70,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在开始安装 CMake 之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。   安装必备组件并验证下载内容后，安装 CMake 生成系统。
+    在开始安装 CMake 之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 安装必备组件并验证下载内容后，安装 CMake 生成系统。
 
 1. 打开命令提示符或 Git Bash shell。 运行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
 
@@ -88,7 +82,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
     此操作需要花费几分钟时间。
 
-1. 在 git 存储库的根目录中创建 cmake  子目录，并导航到该文件夹。 从 azure-iot-sdk-c  目录运行以下命令：
+1. 在 git 存储库的根目录中创建 cmake 子目录，并导航到该文件夹。 从 azure-iot-sdk-c 目录运行以下命令：
 
     ```cmd/sh
     mkdir cmake
@@ -132,13 +126,13 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
    > [!NOTE]
    > * 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
-   > * 对于正在注册的设备的名称，建议使用 *MyDevice* ，如下所示。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   > * 对于正在注册的设备的名称，建议使用 *MyDevice*，如下所示。 如果为设备选择其他名称，请在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. 若要获取刚刚注册的设备的 *设备连接字符串* ，请在 Cloud Shell 中运行以下命令：
+1. 若要获取刚刚注册的设备的 *设备连接字符串*，请在 Cloud Shell 中运行以下命令：
 
    > [!NOTE]
    > 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
@@ -157,7 +151,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
-1. 在文件夹 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中编辑源文件 **iothub_client_c2d_streaming_proxy_sample.c** ，并提供设备连接字符串、目标设备 IP/主机名，以及 SSH 端口 22：
+1. 在文件夹 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中编辑源文件 **iothub_client_c2d_streaming_proxy_sample.c**，并提供设备连接字符串、目标设备 IP/主机名，以及 SSH 端口 22：
 
    ```C
    /* Paste in your device connection string  */

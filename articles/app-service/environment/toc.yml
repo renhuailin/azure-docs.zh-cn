@@ -3,6 +3,8 @@
   items:
     - name: 关于应用服务环境
       href: intro.md
+    - name: 应用服务环境 v3（预览版）
+      href: overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -10,11 +12,13 @@
       href: create-external-ase.md
     - name: 创建内部 ASE
       href: create-ilb-ase.md
+    - name: 创建 ASEv3（预览版）
+      href: creation.md
 - name: 教程
   items:
     - name: 与 WAF 集成
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: 配置 TLS
+    - name: ASE 自定义设置
       href: app-service-app-service-environment-custom-settings.md
 - name: 示例
   items:
@@ -28,12 +32,12 @@
       href: network-info.md
     - name: 地理上分散的缩放
       href: app-service-app-service-environment-geo-distributed-scale.md
-    - name: ASEv1
-      href: app-service-app-service-environment-intro.md
     - name: 诊断
       href: ../overview-diagnostics.md
     - name: 证书
       href: certificates.md
+    - name: ASEv3（预览版）网络
+      href: networking.md
 - name: 操作指南
   items:
     - name: 使用 ASE
@@ -48,12 +52,16 @@
       href: firewall-integration.md
     - name: 区域冗余
       href: zone-redundancy.md
+    - name: 使用 ASEv3（预览版）
+      href: using.md
 - name: 参考
   items:
     - name: 管理地址
       href: management-addresses.md
     - name: ASEv1 文档
       items:
+        - name: ASEv1
+          href: app-service-app-service-environment-intro.md
         - name: 创建 ASEv1
           href: app-service-web-how-to-create-an-app-service-environment.md
         - name: 配置 ASEv1

@@ -68,8 +68,8 @@
       items:
         - name: 对远程文件 REST 进行编码和流式传输
           href: stream-files-tutorial-with-rest.md
-        - name: 媒体服务的客户管理的密钥
-          href: tutorial-byok.md
+        - name: REST API 的客户管理的密钥
+          href: tutorial-byok-postman.md
     - name: CLI
       items:
         - name: 对远程文件 CLI 进行编码和流式传输
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure 门户
       items:
+        - name: 客户管理的密钥或 BYOK 教程
+          href: tutorial-byok-portal.md
         - name: 在 Azure 日志分析中存储 AMS 事件
           href: tutorial-events-log-analytics.md
 - name: 示例
@@ -102,6 +104,11 @@
         - name: 存储帐户
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: 托管标识和媒体服务
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: 客户管理的密钥
+          href: concept-use-customer-managed-keys-byok.md
     - name: 资产
       items:
         - name: 资产
@@ -178,8 +185,6 @@
         - name: 动态加密和密钥传送
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: 客户管理的密钥
-          href: concept-use-customer-managed-keys-byok.md
         - name: 多 DRM 系统的设计
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

@@ -28,7 +28,7 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
-    - name: 连接监视器（预览版）
+    - name: 连接监视器
       href: connection-monitor-overview.md
     - name: 诊断 VM 网络流量筛选器问题
       href: network-watcher-ip-flow-verify-overview.md
@@ -58,7 +58,7 @@
   items:
     - name: 配置网络观察程序
       href: network-watcher-create.md
-    - name: 创建连接监视器（预览）
+    - name: 创建连接监视器
       items:
         - name: 使用 Azure 门户
           href: connection-monitor-create-using-portal.md
@@ -66,11 +66,11 @@
           href: connection-monitor-create-using-template.md
         - name: 使用 PowerShell
           href: connection-monitor-create-using-powershell.md
-    - name: 迁移到连接监视器（预览）
+    - name: 迁移到连接监视器
       items:
         - name: 来自网络性能监视器
           href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: 来自连接监视器
+        - name: 来自连接监视器（经典）
           href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: 诊断 VM 网络问题
       items:

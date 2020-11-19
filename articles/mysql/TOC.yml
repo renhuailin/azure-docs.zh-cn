@@ -287,6 +287,10 @@
           items:
             - name: 停止启动 MySQL 服务器
               href: how-to-stop-start-server.md
+        - name: 主版本升级
+          items:
+            - name: 主版本升级
+              href: how-to-major-version-upgrade.md
         - name: 自动增长存储
           items:
             - name: Azure 门户
