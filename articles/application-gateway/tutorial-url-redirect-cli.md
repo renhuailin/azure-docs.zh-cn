@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: da6d02e620c33610770c71f0c0e3ae68e70ee317
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 36ba593a1d8cd2e50293eaf77dc9ec864245df4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397036"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566582"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 
@@ -34,13 +34,11 @@ ms.locfileid: "93397036"
 
 如果需要，可以使用 [Azure PowerShell](tutorial-url-redirect-powershell.md) 完成本教程中的步骤。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - 本教程需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -80,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-使用 [az network application-gateway create](/cli/azure/network/application-gateway) 创建名为 myAppGateway 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPAddress* 。
+使用 [az network application-gateway create](/cli/azure/network/application-gateway) 创建名为 myAppGateway 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPAddress*。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -103,7 +101,7 @@ az network application-gateway create \
 - *appGatewayBackendPool* - 应用程序网关必须至少具有一个后端地址池。
 - *appGatewayBackendHttpSettings* - 指定将端口 80 和 HTTP 协议用于通信。
 - *appGatewayHttpListener* - 与 *appGatewayBackendPool* 关联的默认侦听器。
-- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener* 。
+- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener*。
 - *rule1* - 与 *appGatewayHttpListener* 关联的默认路由规则。
 
 
@@ -236,7 +234,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1* 、 *myvmss2* 和 *myvmss3* 。 每个规模集包含两个在其上安装了 NGINX 的虚拟机实例。
+在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1*、*myvmss2* 和 *myvmss3*。 每个规模集包含两个在其上安装了 NGINX 的虚拟机实例。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

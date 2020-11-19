@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604518"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566344"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
@@ -21,13 +21,13 @@ ms.locfileid: "90604518"
 
 本文逐步讲解一个使用 IoT 中心和事件网格的示例配置。 在本文末尾，我们将设置一个 Azure 逻辑应用，使其在每次将设备连接到 IoT 中心或与其断开连接时，都会发送一封通知电子邮件。 事件网格可用于及时通知关键设备断开连接。 指标和诊断可能需要几分钟（即 20 分钟或更长时间 -- 尽管我们不想给它加数字）才会在日志/警报中显示。 对于关键基础结构，这可能是不可接受的。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
-* 一个有效的 Azure 订阅。 如果没有订阅，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook 或 Outlook.com）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。
 
-* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook 或 Outlook.com）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -131,7 +131,7 @@ ms.locfileid: "90604518"
 
    ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/outlook-step.png)
 
-1. 选择“发送电子邮件 (V2)”操作。**** 
+1. 选择“发送电子邮件 (V2)”操作。 
 
 1. 选择“登录”并登录到你的电子邮件帐户。 选择“是”，允许应用访问你的信息。
 
