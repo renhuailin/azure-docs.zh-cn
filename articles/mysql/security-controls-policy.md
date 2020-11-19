@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Database for MySQL 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1bfa02d5d68cd839dfd087f417957b77d28452f9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ae3d0f4401f17224b7a43187386e66d94aac7608
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532590"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699164"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>Azure Database for MySQL 的 Azure Policy 法规遵从性控制措施
 

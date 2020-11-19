@@ -1,18 +1,18 @@
 ---
 title: Azure 逻辑应用的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 逻辑应用的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: ecfan
 ms.author: estfan
 ms.service: logic-apps
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a143d10a93f534397cecc29edd17a918a4f14d48
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 35f976be600ff4c6b965a5ceb4100c62e91e5c0f
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315861"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701904"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-logic-apps"></a>Azure 逻辑应用的 Azure Policy 法规遵从性控制
 

@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 095ea62ee992fa12fc80f715f9e63725e9930595
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322596"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886203"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双因素验证以及工作或学校帐户的常见问题
 
@@ -74,6 +74,7 @@ Azure Active Directory (Azure AD) 组织可以为你的帐户启用双重验证�
 
 尝试此操作 | 指导信息
 --------- | ------------
+使用 Microsoft 验证器应用或验证码 | 您收到了 "已达到验证调用限制" 或 "登录时遇到对文本验证代码的限制" 的错误消息。 <br/><br/>Microsoft 可能会在短时间内限制相同用户执行的重复身份验证尝试。 此限制不适用于 Microsoft Authenticator 或验证代码。 如果达到了这些限制，则可以使用验证器应用、验证代码或在几分钟后尝试再次登录。
 重启移动设备 | 有时，设备只是需要刷新一下。 重启设备时，将结束所有后台进程和服务。 重启还会关闭设备的核心组件。 重启设备时，将刷新任何服务或组件。
 验证安全信息是否正确无误 | 确保你的安全验证方法信息是准确的，特别是你的电话号码。 如果你输入了错误的电话号码，那么所有警报都会发送到这一错误号码。 幸运的是，这名用户无法使用警报执行任何操作，但这也不能帮助你登录帐户。 若要确保你的信息正确无误，请参阅[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文中的说明。
 验证是否已启用通知 | 请确保移动设备启用了通知。 确保允许以下通知模式： <br/><br/> &bull; 电话呼叫 <br/> &bull; 身份验证应用 <br/> &bull; 短信应用 <br/><br/> 请确保这些模式创建在你的设备上可见的警报。

@@ -386,5 +386,7 @@
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: 联合销售状态代码
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
+    - name: 类别和子类别
+      href: categories.md
     - name: 支持的 HTML 标记
       href: supported-html-tags.md

@@ -4,13 +4,13 @@ description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: 6619d7c9f7d2b0cd78f3941ce431e80342b6f563
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576432"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833905"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 现在，请打开本地 Web 浏览器并访问服务的 IP 地址：
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="一个屏幕截图，显示使用本地 Web 浏览器和本地主机打开的已更新容器映像 Azure 投票应用的示例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="一个屏幕截图，显示在本地 Web 浏览器中打开的已更新应用程序 Azure 投票应用的示例。":::
 
 ## <a name="next-steps"></a>后续步骤
 

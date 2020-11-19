@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537926"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844431"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP (Laravel) 应用和 MySQL 灵活服务器（预览版）
 
@@ -134,7 +134,7 @@ php artisan serve
 
 在浏览器中导航到 `http://localhost:8000`。 在页面中添加一些任务。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 已成功连接到 MySQL":::
 
 在终端键入 `Ctrl + C` 可停止 PHP。
 
@@ -221,7 +221,7 @@ MYSQL_SSL=true
 
 默认情况下，MySQL 灵活服务器强制执行来自客户端的 TLS 连接。 若要连接到 Azure 中的 MySQL 数据库，必须使用 Azure Database for MySQL 灵活服务器提供的 [.pem](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 证书。 下载[该证书](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)）并将其放在示例应用存储库本地副本的 ssl 文件夹中。
 
-打开 _config/database.php_ ，将 `sslmode` 和 `options` 参数添加到 `connections.mysql`，如以下代码所示。
+打开 _config/database.php_，将 `sslmode` 和 `options` 参数添加到 `connections.mysql`，如以下代码所示。
 
 ```php
 'mysql' => [
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 在页面中添加一些任务。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 已成功连接到 Azure Database for MySQL":::
 
 在终端键入 `Ctrl + C` 可停止 PHP。
 
@@ -342,7 +342,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-可以使用 PHP [getenv](https://www.php.net/manual/en/function.getenv.php) 方法访问这些设置。 Laravel 代码使用 [env](https://laravel.com/docs/5.4/helpers#method-env) 包装器，而不是 PHP `getenv`。 例如， _config/database.php_ 中的 MySQL 配置如下代码所示：
+可以使用 PHP [getenv](https://www.php.net/manual/en/function.getenv.php) 方法访问这些设置。 Laravel 代码使用 [env](https://laravel.com/docs/5.4/helpers#method-env) 包装器，而不是 PHP `getenv`。 例如，_config/database.php_ 中的 MySQL 配置如下代码所示：
 
 ```php
 'mysql' => [
@@ -359,7 +359,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 在应用服务中，Laravel 需要应用程序密钥。 可以使用应用设置来配置该密钥。
 
-在本地终端窗口中，使用 `php artisan` 生成新的应用程序密钥，但不要将它保存到 _.env_ 。
+在本地终端窗口中，使用 `php artisan` 生成新的应用程序密钥，但不要将它保存到 _.env_。
 
 ```bash
 php artisan key:generate --show
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中的 PHP Web 应用":::
 
 恭喜，你的数据驱动的 PHP 应用正在 Azure 应用服务中运行。
 
@@ -534,7 +534,7 @@ php artisan serve
 
 若要查看任务状态更改，请导航至 `http://localhost:8000` 并选择复选框。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="将复选框添加到任务":::
 
 在终端键入 `Ctrl + C` 可停止 PHP。
 
@@ -556,7 +556,7 @@ git push azure master
 
 `git push` 完成后，请导航至 Azure 应用，测试新功能。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="发布到 Azure 的模型和数据库更改":::
 
 如果添加任何任务，则它们保留在数据库中。 更新数据架构不会改变现有数据。
 

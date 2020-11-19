@@ -4,12 +4,12 @@ description: 了解如何在 Azure Notebooks 预览版中创建并运行一个�
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e9a07c7b8abffc06bfd30a792af46ba04adf5c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589245"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844465"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
@@ -170,7 +170,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 ## <a name="create-a-markdown-cell"></a>创建 Markdown 单元
 
-1. 单击进入 Notebook 画布上显示的第一个空单元。 默认情况下，单元是一种**代码**类型，即，它旨在包含所选内核（Python、R 或 F#）的可运行代码。 当前类型显示在工具栏上的类型下拉列表中：
+1. 单击进入 Notebook 画布上显示的第一个空单元。 默认情况下，单元是一种 **代码** 类型，即，它旨在包含所选内核（Python、R 或 F#）的可运行代码。 当前类型显示在工具栏上的类型下拉列表中：
 
     ![单元类型工具栏下拉列表](media/tutorial/tutorial-cell-type-drop-down.png)
 
@@ -433,4 +433,4 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
 - [处理数据文件](work-with-project-data-files.md)
 - [访问数据资源](access-data-resources-jupyter-notebooks.md)
-- [使用 Azure 机器学习](use-machine-learning-services-jupyter-notebooks.md)
+- [使用 Azure 机器学习](../machine-learning/samples-notebooks.md)
