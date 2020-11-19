@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 61313a1790fe51cb26168622cc871076c40bb511
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c9ae694fefcede599331d5d57a298bda4739f53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887427"
+ms.locfileid: "94920519"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的计划内维护通知
 
@@ -78,7 +78,7 @@ Azure Database for MariaDB 服务执行基础硬件、操作系统和数据库�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 Azure Database for MariaDB 的任何问题或建议，请向 Azure Database for MariaDB 团队发送一封电子邮件，网址为： **AskAzureDBforMariaDB@service.microsoft.com**
+- 有关使用 Azure Database for MariaDB 的任何问题或建议，请向 Azure Database for MariaDB 团队发送一封电子邮件，网址为： AskAzureDBforMariaDB@service.microsoft.com
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-metric.md)。
 - [解决 Azure Databases for MariaDB 的连接问题](howto-troubleshoot-common-connection-issues.md)
 - [处理暂时性错误并高效连接到 Azure Database for MariaDB](concepts-connectivity.md)

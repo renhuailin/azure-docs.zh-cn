@@ -1,21 +1,21 @@
 ---
 title: 导出 Azure Policy 资源
-description: 了解如何将 Azure 策略资源导出到 GitHub，如策略定义和策略分配。
+description: 了解如何将 Azure Policy 资源（例如策略定义和策略分配）导出到 GitHub。
 ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 923b063244f6f47def1c3e6a63d6e4d6b3b88083
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025708"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919559"
 ---
 # <a name="export-azure-policy-resources"></a>导出 Azure Policy 资源
 
-本文提供了有关如何导出现有 Azure 策略资源的信息。 导出资源会很有用，并建议用于备份，但在使用云管理和将 [策略视为代码](../concepts/policy-as-code.md)时，这也是一项重要的一步。 Azure 策略资源可以通过 [Azure 门户](#export-with-azure-portal)、 [Azure CLI](#export-with-azure-cli)、 [Azure PowerShell](#export-with-azure-powershell)和每个受支持的 sdk 进行导出。
+本文介绍了如何导出现有的 Azure Policy 资源。 导出资源很有用，建议将其用于备份，而这也是云治理和处理[策略即代码](../concepts/policy-as-code.md)过程中的一个重要步骤。 Azure Policy 资源可以通过 [Azure 门户](#export-with-azure-portal)、[Azure CLI](#export-with-azure-cli)、[Azure PowerShell](#export-with-azure-powershell) 和每个受支持的 SDK 进行导出。
 
-## <a name="export-with-azure-portal"></a>导出 Azure 门户
+## <a name="export-with-azure-portal"></a>使用 Azure 门户导出
 
 要从 Azure 门户导出策略定义，请按照以下步骤操作：
 
@@ -29,10 +29,10 @@ ms.locfileid: "93025708"
 
 1. 在“基本信息”选项卡上，设置以下选项，然后选择“策略”选项卡或页面底部的“下一步:  策略”按钮。
 
-   - **存储库筛选器** ：设置为“我的存储库”以仅查看自己拥有的存储库，或设置为“所有存储库”以查看为 GitHub 操作授予了访问权限的所有存储库 。
-   - **存储库** ：设置为要将 Azure Policy 资源导出到的存储库。
-   - **分支** ：在存储库中设置分支。 在将更新进一步合并到源代码中之前，非常适合使用非默认分支来验证更新。
-   - **目录** ：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
+   - **存储库筛选器**：设置为“我的存储库”以仅查看自己拥有的存储库，或设置为“所有存储库”以查看为 GitHub 操作授予了访问权限的所有存储库 。
+   - **存储库**：设置为要将 Azure Policy 资源导出到的存储库。
+   - **分支**：在存储库中设置分支。 在将更新进一步合并到源代码中之前，非常适合使用非默认分支来验证更新。
+   - **目录**：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
 
 1. 在“策略”选项卡上，选择省略号，然后选择管理组、订阅或资源组的组合，以设置搜索范围。
    
@@ -59,29 +59,29 @@ ms.locfileid: "93025708"
 |
 ```
 
-## <a name="export-with-azure-cli"></a>导出 Azure CLI
+## <a name="export-with-azure-cli"></a>使用 Azure CLI 导出
 
-每个 Azure 策略定义、计划和分配都可以 [Azure CLI](/cli/azure/install-azure-cli)导出为 JSON。 其中每个命令都使用 **name** 参数来指定要为其获取 JSON 的对象。 **Name** 属性通常是 _GUID_ ，而不是对象的 **displayName** 。
+Azure Policy 定义、计划和分配都可以使用 [Azure CLI](/cli/azure/install-azure-cli) 导出为 JSON。 上述每条命令都使用一个 name 参数来指定要为哪个对象获取 JSON。 name 属性通常是 GUID，而不是对象的 displayName。
 
-- 定义- [az policy definition show](/cli/azure/policy/definition#az-policy-definition-show)
-- 计划- [az policy set-definition show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
-- 分配- [az policy 赋值 show](/cli/azure/policy/assignment#az-policy-assignment-show)
+- 定义 - [az policy definition show](/cli/azure/policy/definition#az_policy_definition_show)
+- 计划 - [az policy set-definition show](/cli/azure/policy/set-definition#az_policy_set_definition_show)
+- 分配 - [az policy assignment show](/cli/azure/policy/assignment#az_policy_assignment_show)
 
-下面是一个示例，说明如何获取 **名** 为 _VirtualMachineStorage_ 的策略定义的 JSON：
+下面是一个示例，说明如何使用 name“VirtualMachineStorage”获取策略定义的 JSON：
 
 ```azurecli-interactive
 az policy definition show --name 'VirtualMachineStorage'
 ```
 
-## <a name="export-with-azure-powershell"></a>导出 Azure PowerShell
+## <a name="export-with-azure-powershell"></a>使用 Azure PowerShell 导出
 
-每个 Azure 策略定义、计划和分配都可以 [Azure PowerShell](/powershell/azure/)导出为 JSON。 其中每个 cmdlet 都使用 **Name** 参数来指定要为其获取 JSON 的对象。 **Name** 属性通常是 _GUID_ ，而不是对象的 **displayName** 。
+Azure Policy 定义、计划和分配都可以使用 [Azure PowerShell](/powershell/azure/) 导出为 JSON。 上述每个 cmdlet 都使用一个 Name 参数来指定要为哪个对象获取 JSON。 Name 属性通常是 GUID，而不是对象的 displayName。
 
-- 定义- [AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition)
-- 计划- [AzPolicySetDefinition](/powershell/module/az.resources/get-azpolicysetdefinition)
-- 分配- [AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)
+- 定义 - [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition)
+- 计划 - [Get-AzPolicySetDefinition](/powershell/module/az.resources/get-azpolicysetdefinition)
+- 分配 - [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)
 
-下面是一个示例，说明如何获取 **名** 为 _VirtualMachineStorage_ 的策略定义的 JSON：
+下面是一个示例，说明如何使用 Name“VirtualMachineStorage”获取策略定义的 JSON：
 
 ```azurepowershell-interactive
 Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10

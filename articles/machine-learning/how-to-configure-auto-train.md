@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535327"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920366"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -69,7 +69,7 @@ automl_config = AutoMLConfig(task = "classification")
 - 数据必须为表格格式。
 - 要预测的值（目标列）必须位于数据中。
 
-**对于远程试验** ，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
+**对于远程试验**，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
 
 Azure 机器学习数据集公开的功能可以：
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**对于本地计算试验** ，我们建议使用 pandas 数据帧以提高处理速度。
+**对于本地计算试验**，我们建议使用 pandas 数据帧以提高处理速度。
 
   ```python
   import pandas as pd
@@ -96,14 +96,14 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>训练、验证和测试数据
 
-可以直接在 `AutoMLConfig` 构造函数中指定单独的 **训练集和验证集** 。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
+可以直接在 `AutoMLConfig` 构造函数中指定单独的 **训练集和验证集**。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
 
 如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则 AutoML 将应用默认技术来决定如何执行验证。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
 
 |训练数据大小| 验证技术 |
 |---|-----|
 |**大于 20,000 行**| 将应用训练/验证数据拆分。 默认行为是将初始训练数据集的 10% 用作验证集。 然后，该验证集将用于指标计算。
-|**小于 20,000 行**| 将应用交叉验证方法。 默认折数取决于行数。 <br> **如果数据集小于 1,000 行** ，则使用 10 折。 <br> **如果行数在 1,000 到 20,000 之间** ，则使用 3 折。
+|**小于 20,000 行**| 将应用交叉验证方法。 默认折数取决于行数。 <br> **如果数据集小于 1,000 行**，则使用 10 折。 <br> **如果行数在 1,000 到 20,000 之间**，则使用 3 折。
 
 此时，你需要提供自己的 **测试数据** 来进行模型评估。 如果需要通过代码示例来演示如何引入你自己的测试数据进行模型评估，请参阅 [此 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的 **Test** 节。
 
@@ -117,7 +117,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
     有关使用 Azure 机器学习托管计算的远程示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
 
-* Azure 订阅中的 **Azure Databricks 群集** 。 可以在 [为自动 ML 设置 Azure Databricks 群集](how-to-configure-databricks-automl-environment.md)中找到更多详细信息。 有关包含 Azure Databricks 的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+* Azure 订阅中的 **Azure Databricks 群集**。 可以在 [为自动 ML 设置 Azure Databricks 群集](how-to-configure-databricks-automl-environment.md)中找到更多详细信息。 有关包含 Azure Databricks 的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 
@@ -130,26 +130,24 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 1. 使用 AUC 作为主要指标加权的分类实验，其中实验超时分钟数设置为 30 分钟，且包含 2 折交叉验证。
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. 下面是设置为 60 分钟后结束的回归试验示例，其中包含 5 折交叉验证。
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -218,7 +216,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习实验中，数据都是 *自动缩放和规范化* ，以帮助对不同规模上的特征敏感的某些算法。 此缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#)。 
+在每个自动化机器学习实验中，数据都是 *自动缩放和规范化*，以帮助对不同规模上的特征敏感的某些算法。 此缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#)。 
 
 在 `AutoMLConfig` 对象中配置试验时，可以启用/禁用设置 `featurization`。 下表列出了 [AutoMLConfig 对象](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的特征化的已接受设置。 
 
@@ -235,7 +233,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="ensemble-configuration"></a> 集成配置
 
-集成模型默认启用，在 AutoML 运行中显示为最终的运行迭代次数。 目前支持 **VotingEnsemble** 和 **StackEnsemble** 。 
+集成模型默认启用，在 AutoML 运行中显示为最终的运行迭代次数。 目前支持 **VotingEnsemble** 和 **StackEnsemble**。 
 
 投票实现了使用加权平均值的软投票。 堆栈实现使用一个两层实现，其中的第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 
 
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>退出条件
+
+可以在 AutoMLConfig 中定义几个选项来结束实验。
+
+|条件| description
+|----|----
+无条件 | 如果未定义任何退出参数，则试验将继续，直到主要指标不再需要执行其他步骤。
+在一段时间后| 在设置中使用 `experiment_timeout_minutes` 来定义试验应继续运行多长时间（以分钟为单位）。 <br><br> 若要避免试验超时失败，最少需要 15 分钟，如果行数乘以列数的大小超过 10,000,000，则最少需要 60 分钟。
+达到某个分数| 使用 `experiment_exit_score` 将在达到指定的主要指标分数后完成试验。
+
 ## <a name="run-experiment"></a>运行试验
 
 对于自动化 ML，可以创建 `Experiment` 对象，这是 `Workspace` 中用于运行实验的命名对象。
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >首先在新的计算机上安装依赖项。  最长可能需要在 10 分钟后才会显示输出。
 >将 `show_output` 设置为 `True` 可在控制台上显示输出。
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>在群集上运行多个子级
 
-### <a name="exit-criteria"></a>退出条件
+自动 ML 试验可以在已在运行其他试验的群集上执行子运行。 但是，计时取决于群集具有的节点数，以及这些节点是否可用于运行不同的实验。
 
-有几个选项可供定义来结束实验。
+群集中的每个节点都充当可以完成单个定型运行的 (VM) 的单个虚拟机;对于自动 ML，这意味着子级运行。 如果所有节点都处于繁忙状态，则新的实验将排队。 但如果有可用节点，新的实验将在可用节点/Vm 中并行运行自动 ML 子运行。
 
-|条件| description
-|----|----
-无条件 | 如果未定义任何退出参数，则试验将继续，直到主要指标不再需要执行其他步骤。
-在一段时间后| 在设置中使用 `experiment_timeout_minutes` 来定义试验应继续运行多长时间（以分钟为单位）。 <br><br> 若要避免试验超时失败，最少需要 15 分钟，如果行数乘以列数的大小超过 10,000,000，则最少需要 60 分钟。
-达到某个分数| 使用 `experiment_exit_score` 将在达到指定的主要指标分数后完成试验。
+为了帮助管理子运行和执行这些运行，我们建议你为每个试验创建一个专用群集，并将实验数与 `max_concurrent_iterations` 群集中的节点数相匹配。 这样一来，就可以同时使用群集的所有节点和所需的并发子运行/迭代数。
+
+`max_concurrent_iterations`在对象中进行配置 `AutoMLConfig` 。 如果未配置此设置，则每个试验仅允许一个并发子运行/迭代。  
 
 ## <a name="explore-models-and-metrics"></a>探索模型和指标
 
@@ -348,7 +356,7 @@ run = experiment.submit(automl_config, show_output=True)
 若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 
 > [!NOTE]
-> 自动 ML ML 使用的算法具有固有的随机性，这可能会导致建议的模型中出现略微变化的最终指标分数，例如准确性。 自动 ML 还会对数据执行操作（例如，定型-测试拆分、定型验证拆分或交叉验证，如有必要）。 因此，如果使用相同的配置设置和主要指标多次运行试验，则可能会因这些因素而导致每个试验最终指标分数发生变化。 
+> 自动 ML ML 使用的算法具有固有的随机性，这可能会导致推荐模型的最终指标分数（如准确性）略有变化。 自动 ML 还会对数据执行操作（例如，定型-测试拆分、定型验证拆分或交叉验证，如有必要）。 因此，如果使用相同的配置设置和主要指标多次运行试验，则可能会因这些因素而导致每个试验最终指标分数发生变化。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
 

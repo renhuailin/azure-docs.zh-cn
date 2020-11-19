@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069749"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919670"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -60,7 +60,7 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 ## <a name="service-issues"></a>服务问题 
 
-**不支持的方案**
+**不受支持的方案**
 
 - 不支持预配密码。 
 - 不支持预配嵌套组。 
@@ -86,6 +86,9 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 当某个组处于范围内并且某个成员超出范围时，将设置该组。 不会设置超出范围的用户。 如果成员返回到范围中，服务将不会立即检测到更改。 重新启动预配将解决此问题。 建议定期重启服务，以确保所有用户均已正确设置。  
 
+**管理器未预配**
+
+如果用户及其经理都处于预配的范围内，则该服务将预配用户，然后更新管理器。 但是，如果在第一天，用户处于范围内，并且管理器超出范围，我们将在不进行经理引用的情况下预配用户。 当经理进入作用域时，在重新启动预配并导致服务重新评估所有用户之前，将不会更新管理器引用。 
 
 ## <a name="next-steps"></a>后续步骤
 - [预配工作原理](how-provisioning-works.md)

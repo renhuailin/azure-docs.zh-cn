@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e0af8e0674a15c98fadbedfa42f735d269b3de2b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128498"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920485"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -63,10 +63,10 @@ ms.locfileid: "93128498"
 
 1. 根据提示提供以下信息：
 
-    - _选择语言_ ：选择 **JavaScript**
-    - _为项目的第一个函数选择模板_ ：选择“HTTP 触发器”
-    - _提供函数名称_ ：输入 **GetMessage**
-    - _授权级别_ ：选择“匿名”，这使任何人都可以调用你的函数终结点。
+    - _选择语言_：选择 **JavaScript**
+    - _为项目的第一个函数选择模板_：选择“HTTP 触发器”
+    - _提供函数名称_：输入 **GetMessage**
+    - _授权级别_：选择“匿名”，这使任何人都可以调用你的函数终结点。
         - 若要了解授权级别，请参阅[授权密钥](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
 Visual Studio Code 使用 HTTP 触发的函数生成 Azure Functions 项目。
@@ -235,7 +235,9 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 1. 选择首选组织
 1. 从“存储库”下拉列表中选择“my-vanilla-api”
 1. 从“分支”下拉列表中选择“master”
-1. 单击“下一步:生成 >”按钮以编辑生成配置
+1. 从 " _生成预设_ " 下拉选项中选择用于生成配置的框架
+
+ > 这些字段将反映应用类型的默认项目结构。 更改值以适合你的应用。
 
 接下来，添加以下生成详细信息。
 
@@ -253,7 +255,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub 工作流":::
 
-1. 部署完成后，ou 可以导航到 web 应用，方法是单击 " _概述_ " 页上显示的 " _URL_ " 链接。
+1. 部署完成后，ou 可以导航到 web 应用，方法是单击 "_概述_" 页上显示的 " _URL_ " 链接。
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="从 Azure 门户访问静态应用 URL":::
 

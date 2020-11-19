@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87617e1cc6910b4c807aa90f413efe94b6e6953
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574309"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920298"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 即插即用体系结构
 
@@ -36,7 +36,7 @@ ms.locfileid: "91574309"
 
 利用 web UI，你可以管理模型和接口。
 
-模型存储库使用 RBAC 来限制对接口定义的访问。
+模型存储库具有内置的基于角色的访问控制，使你可以限制对接口定义的访问。
 
 ## <a name="devices"></a>设备
 
@@ -56,7 +56,7 @@ IoT Edge 网关充当中介，用于连接无法直接连接到 IoT 中心的 Io
 
 利用 _IoT Edge 模块_ ，你可以部署和管理边缘上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。
 
-_IoT Edge 中心_是组成 Azure IoT Edge 运行时的模块之一。 它通过公开与 IoT 中心相同的协议终结点，充当 IoT 中心的本地代理。 这种一致性意味着客户端（无论是设备还是模块）可以连接到 IoT Edge 运行时，就像连接到 IoT 中心一样。
+_IoT Edge 中心_ 是组成 Azure IoT Edge 运行时的模块之一。 它通过公开与 IoT 中心相同的协议终结点，充当 IoT 中心的本地代理。 这种一致性意味着客户端（无论是设备还是模块）可以连接到 IoT Edge 运行时，就像连接到 IoT 中心一样。
 
 设备 Sdk 有助于模块生成器：
 

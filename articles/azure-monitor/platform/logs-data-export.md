@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841801"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920077"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics Azure Monitor (预览中的工作区数据导出) 
 使用 Azure Monitor 中的工作区数据导出，你可以在收集数据时，将数据从 Log Analytics 工作区中的选定表连续导出到 Azure 存储帐户或 Azure 事件中心。 Log Analytics 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -117,7 +117,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>创建或更新数据导出规则
 数据导出规则定义要导出到单个目标的一组表的数据。 可以为每个目标创建一个规则。
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用以下 CLI 命令可查看工作区中的表。 它可帮助复制所需的表并包括在数据导出规则中。
+
 ```azurecli
 az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
@@ -133,6 +137,8 @@ az monitor log-analytics workspace data-export create --resource-group resourceG
 ```azurecli
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 使用以下请求创建使用 REST API 的数据导出规则。 请求应使用持有者令牌授权和内容类型 application/json。
 
@@ -193,26 +199,38 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
   }
 }
 ```
+---
 
 ## <a name="view-data-export-configuration"></a>查看数据导出配置
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用以下命令查看使用 CLI 的数据导出规则的配置。
 
 ```azurecli
 az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 使用以下请求来查看使用 REST API 的数据导出规则的配置。 请求应使用持有者令牌授权。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="disable-an-export-rule"></a>禁用导出规则
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 如果不需要保留特定时间段（例如在执行测试时）的数据，则可以禁用导出规则。 使用以下命令通过 CLI 禁用数据导出规则。
 
 ```azurecli
 az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 使用以下请求通过 REST API 禁用数据导出规则。 请求应使用持有者令牌授权。
 
@@ -234,32 +252,45 @@ Content-type: application/json
     }
 }
 ```
+---
 
 ## <a name="delete-an-export-rule"></a>删除导出规则
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用以下命令删除使用 CLI 的数据导出规则。
 
 ```azurecli
 az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 使用以下请求删除使用 REST API 的数据导出规则。 请求应使用持有者令牌授权。
 
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>查看工作区中的所有数据导出规则
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用以下命令可使用 CLI 查看工作区中的所有数据导出规则。
 
 ```azurecli
 az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 使用以下请求可以使用 REST API 查看工作区中的所有数据导出规则。 请求应使用持有者令牌授权。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+---
 
 ## <a name="unsupported-tables"></a>不支持的表
 如果数据导出规则包含不受支持的表，则配置将会成功，但不会为该表导出任何数据。 如果以后支持该表，则将在此时导出其数据。

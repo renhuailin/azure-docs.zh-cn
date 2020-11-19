@@ -1,14 +1,14 @@
 ---
-title: 在本地开发并运行 Azure Functions
-description: 了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。
+title: 在本地开发和运行 Azure Functions
+description: 了解如何在本地计算机上编写 Azure Functions 代码并对其进行测试，然后再 Azure Functions 上运行它们。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: e8af075f39cf25e39e5098d3c6aa27cac9018d2f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c011dff9f43de59d3f08445a7bbd5387b27563ad
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422937"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920026"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 

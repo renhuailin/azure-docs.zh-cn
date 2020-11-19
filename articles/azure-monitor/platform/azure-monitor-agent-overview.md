@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132697"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919671"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -76,7 +76,7 @@ Azure Monitor 代理无需支付费用，但可能会产生数据引入的费用
 
 Azure Monitor 代理会将数据发送到 Azure Monitor 指标或支持 Azure Monitor 日志的 Log Analytics 工作区。
 
-| 数据源 | Destinations | 描述 |
+| 数据源 | 目标 | 说明 |
 |:---|:---|:---|
 | 性能        | Azure Monitor 指标<br>Log Analytics 工作区 | 测量操作系统和工作负载不同方面性能的数值。 |
 | Windows 事件日志 | Log Analytics 工作区 | 发送到 Windows 事件日志记录系统的信息。 |
@@ -97,7 +97,7 @@ Azure Monitor 代理支持 Azure 服务标记 (需要) AzureMonitor 和 AzureRes
 ## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
 
-| 属性 | Windows | Linux |
+| properties | Windows | Linux |
 |:---|:---|:---|
 | Publisher | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
@@ -134,7 +134,7 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
 ```
 ---
 

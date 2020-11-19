@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: aa45bc9f70bf05074391dd14cc5fc774eb77c762
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536245"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919635"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -80,7 +80,7 @@ ms.locfileid: "94536245"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“ **下一页** ”。
+        选择“**下一页**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。  在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。 
             
@@ -88,7 +88,7 @@ ms.locfileid: "94536245"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
-        选择“ **下一步** ”。
+        选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体中，输入唯一的试验名称。
@@ -113,11 +113,11 @@ ms.locfileid: "94536245"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
-    选择“ **下一步** ”。
+    选择“**下一页**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
-    1. 如需 **分类** ，还可以启用深度学习。
+    1. 如需 **分类**，还可以启用深度学习。
     
         如果启用了深度学习，则只能使用“训练/验证数据拆分”进行验证。 [详细了解验证选项](how-to-configure-cross-validation-data-splits.md)。
 
@@ -137,9 +137,9 @@ ms.locfileid: "94536245"
     主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#primary-metric)。
     解释最佳模型 | 选择启用或禁用，以确定是否显示建议的最佳模型的说明。 <br> 此功能当前不可用于[特定的预测算法](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)。 
     阻止的算法| 选择要从训练作业中排除的算法。 <br><br> 允许算法只适用于 [SDK 试验](how-to-configure-auto-train.md#supported-models)。 <br> 请参阅[每种任务类型支持的模型](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py)。
-    退出条件| 如果满足其中的任一条件，则会停止训练作业。 <br> *训练作业时间(小时)* ：允许训练作业运行多长时间。 <br> *指标评分阈值* ：所有管道的最低指标评分。 这可以确保在你具有一个要实现的已定义目标指标时，无需花费不必要的时间来完成训练作业。
+    退出条件| 如果满足其中的任一条件，则会停止训练作业。 <br> *训练作业时间(小时)* ：允许训练作业运行多长时间。 <br> *指标评分阈值*：所有管道的最低指标评分。 这可以确保在你具有一个要实现的已定义目标指标时，无需花费不必要的时间来完成训练作业。
     验证| 选择要在训练作业中使用的交叉验证选项之一。 <br> [详细了解交叉验证](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>预测只支持 k-折交叉验证。
-    并发| *最大并发迭代数* ：要在训练作业中测试的最大管道（迭代）数。 作业运行的迭代数不会超过指定的数目。
+    并发| *最大并发迭代数*：要在训练作业中测试的最大管道（迭代）数。 作业运行的迭代数不会超过指定的数目。 了解有关自动化 ML 如何 [在群集上执行多个子运行的](how-to-configure-auto-train.md#multiple-child-runs-on-clusters)详细信息。
 
 1. （可选）查看特征化设置：如果选择在“其他配置设置”窗体中启用“自动特征化”，则会应用默认的特征化技术 。 在“查看特征化设置”中，可以更改这些默认设置并相应地进行自定义。 了解如何[自定义特征化](#customize-featurization)。 
 

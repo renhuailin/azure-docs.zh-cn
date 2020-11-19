@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 78c35e42cefa8897d9f93c3a941b4c0e8b81e5f9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4dd4729589e429cb1b028b183fdfd144617d1d1b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686683"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920638"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for MySQL 单一服务器的主版本升级
 
@@ -33,6 +33,9 @@ ms.locfileid: "94686683"
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57"></a>执行从 MySQL 5.6 到 MySQL 5.7 的主要版本升级
 
 按照以下步骤为你的 Azure Database for MySQL 5.6 服务器执行主要版本升级
+
+> [!IMPORTANT]
+> 建议在服务器的还原副本上首先执行升级，而不是直接升级生产。 请参阅 [如何执行时间点还原](howto-restore-server-portal.md#point-in-time-restore)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有的 Azure Database for MySQL 5.6 服务器。
 

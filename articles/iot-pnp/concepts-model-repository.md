@@ -3,16 +3,16 @@ title: 了解设备模型存储库的概念 |Microsoft Docs
 description: 作为解决方案开发人员或 IT 专业人员，请了解有关设备模型存储库的基本概念。
 author: rido-min
 ms.author: rmpablos
-ms.date: 09/30/2020
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131354"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920536"
 ---
 # <a name="device-model-repository"></a>设备模型存储库
 
@@ -30,7 +30,7 @@ Microsoft 托管了具有以下特征的公共 DMR：
 
 ## <a name="custom-device-model-repository"></a>自定义设备模型存储库
 
-可以在任何存储介质（如本地文件系统或自定义 HTTP web 服务器）中使用相同的 DMR 模式来创建自定义 DMR。 只需更改用于访问 DMR 的基 URL，就可以像从公共 DMR 检索设备模型。
+使用相同的 DMR 模式在任何存储介质（例如本地文件系统或自定义 HTTP web 服务器）中创建自定义 DMR。 可以通过更改用于访问 DMR 的基 URL，从自定义 DMR 中检索设备模型，方法与从公共 DMR 检索设备模型的方式相同。
 
 > [!NOTE]
 > Microsoft 提供了用于在公共 DMR 中验证设备模型的工具。 可以在自定义存储库中重复使用这些工具。
@@ -47,9 +47,9 @@ Microsoft 托管了具有以下特征的公共 DMR：
 
 ### <a name="resolve-models"></a>解析模型
 
-若要以编程方式访问这些接口，需要将 DTMI 转换为可用于查询公共终结点的相对路径。 下面的代码示例演示如何执行此操作：
+若要以编程方式访问这些接口，需要将 DTMI 转换为可用于查询公共终结点的相对路径。
 
-若要将 DTMI 转换为绝对路径，我们将使用 `DtmiToPath` 函数，使用 `IsValidDtmi` ：
+若要将 DTMI 转换为绝对路径，请将 `DtmiToPath` 函数用于 `IsValidDtmi` ：
 
 ```cs
 static string DtmiToPath(string dtmi)
@@ -85,47 +85,82 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 > [!Important]
 > 您必须具有 GitHub 帐户才能向公用 DMR 提交模型。
 
-1. 分叉公共 GitHub 存储库： [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) 。
-1. 克隆分叉的存储库。 （可选）创建一个新分支，使更改与 `main` 分支隔离。
-1. `dtmi`使用文件夹/文件名约定将新接口添加到文件夹。 请参阅 [添加模型](#add-model) 工具。
-1. 使用 [脚本验证更改](#validate-files) 部分本地验证设备型号。
+1. 派生公共 GitHub 存储库： [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) 。
+1. 克隆分叉存储库。 （可选）创建一个新分支，使更改与 `main` 分支隔离。
+1. `dtmi`使用文件夹/文件名约定将新接口添加到文件夹。 若要了解详细信息，请参阅将 [模型导入到 `dtmi/` 文件夹](#import-a-model-to-the-dtmi-folder)。
+1. 使用工具在本地验证模型 `dmr-client` 。 若要了解详细信息，请参阅 [验证模型](#validate-models)。
 1. 在本地提交更改并推送到你的分支。
 1. 在分支中，创建一个面向分支的拉取请求 `main` 。 请参阅 [创建问题或](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) 请求文档。
 1. 查看 [拉取请求要求](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)。
 
-拉取请求触发一系列 GitHub 操作，这些操作将验证新提交的接口，并确保拉取请求满足所有检查。
+拉取请求会触发一组 GitHub 操作来验证已提交的接口，并确保拉取请求满足所有要求。
 
 Microsoft 将在三个工作日内通过所有检查来响应拉取请求。
 
-### <a name="add-model"></a>添加模型
+### <a name="dmr-client-tools"></a>`dmr-client` 工具包
 
-以下步骤演示了 add-model.js 脚本如何帮助您添加新的接口。 此脚本需要运行 Node.js：
+在 PR 检查期间用于验证模型的工具也可用于在本地添加和验证 DTDL 接口。
 
-1. 在命令提示符下，导航到本地 git 存储库
-1. `npm install`运行
-1. `npm run add-model <path-to-file-to-add>`运行
+> [!NOTE]
+> 此工具需要 [.NET SDK](https://dotnet.microsoft.com/download) 3.1 版或更高版本。
 
-在控制台输出中查看任何错误消息。
+### <a name="install-dmr-client"></a>安装 `dmr-client`
 
-### <a name="local-validation"></a>本地验证
+```bash
+curl -L https://aka.ms/install-dmr-client-linux | bash
+```
 
-你可以在提交拉取请求之前本地运行相同的验证检查，以帮助提前诊断问题。
+```powershell
+iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+```
 
-#### <a name="validate-files"></a>验证-文件
+### <a name="import-a-model-to-the-dtmi-folder"></a>将模型导入到 `dtmi/` 文件夹
 
-`npm run validate-files <file1.json> <file2.json>` 检查文件路径是否与预期的文件夹和文件名匹配。
+如果已将模型存储在 json 文件中，则可以使用 `dmr-client import` 命令将它们添加到 `dtmi/` 具有正确文件名的文件夹中：
 
-#### <a name="validate-ids"></a>验证 id
+```bash
+# from the local repo root folder
+dmr-client import --model-file "MyThermostat.json"
+```
 
-`npm run validate-ids <file1.json> <file2.json>` 检查文档中定义的所有 Id 是否使用与主 ID 相同的根。
+> [!TIP]
+> 可以使用 `--local-repo` 参数来指定本地存储库根文件夹。
 
-#### <a name="validate-deps"></a>验证-.deps.json
+### <a name="validate-models"></a>验证模型
 
-`npm run validate-deps <file1.json> <file2.json>` 检查文件夹中是否有所有依赖项 `dtmi` 。
+可以通过命令验证模型 `dmr-client validate` ：
 
-#### <a name="validate-models"></a>验证-模型
+```bash
+dmr-client validate --model-file ./my/model/file.json
+```
 
-您可以运行 [DTDL 验证示例](https://github.com/Azure-Samples/DTDL-Validator) 以在本地验证设备型号。
+> [!NOTE]
+> 验证使用最新的 DTDL 分析器版本来确保所有接口都与 DTDL 语言规范兼容。
+
+若要验证外部依赖项，它们必须位于本地存储库中。 若要验证模型，请使用 `--repo` 选项来指定 `local` 或 `remote` 文件夹以解析依赖项：
+
+```bash
+# from the repo root folder
+dmr-client validate --model-file ./my/model/file.json --repo .
+```
+
+### <a name="strict-validation"></a>严格验证
+
+DMR 包括其他 [要求](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)，请使用 `stict` 标志来验证模型：
+
+```bash
+dmr-client validate --model-file ./my/model/file.json --repo . --strict true
+```
+
+检查控制台输出中是否有任何错误消息。
+
+### <a name="export-models"></a>导出模型
+
+可以使用 JSON 数组 (本地或远程) 从给定存储库导出到单个文件：
+
+```bash
+dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886475"
+ms.locfileid: "94919618"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL（单一服务器）中的计划内维护通知
 
@@ -78,7 +78,7 @@ Azure Database for MySQL 服务执行基础硬件、OS 和数据库引擎的自�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 Azure Database for MySQL 的任何问题或建议，请将电子邮件发送到 Azure Database for MySQL 团队 **AskAzureDBforMySQL@service.microsoft.com** 。
+- 有关使用 Azure Database for MySQL 的任何问题或建议，请向 Azure Database for MySQL 团队发送一封电子邮件，网址为： AskAzureDBforMySQL@service.microsoft.com
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - [排查 Azure Database for MySQL（单一服务器）的连接问题](howto-troubleshoot-common-connection-issues.md)
 - [处理暂时性错误并有效地连接到 Azure Database for MySQL（单一服务器）](concepts-connectivity.md)

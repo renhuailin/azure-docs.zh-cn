@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286881"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920434"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -113,7 +113,6 @@ AKV 支持 2 种基于 PEM 的格式。 可以合并单个 PKCS#8 编码的证�
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
-我们目前不支持 PEM 格式的 EC 密钥。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>使用不与 Key Vault 配合使用的 CA 创建证书  
  此方法允许使用除 Key Vault 的合作提供者之外的其他 CA，也就是说，组织可以使用自选的 CA。  

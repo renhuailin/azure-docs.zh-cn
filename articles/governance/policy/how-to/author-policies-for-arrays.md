@@ -3,12 +3,12 @@ title: 为资源上的数组属性创作策略
 description: 了解如何使用数组参数和数组语言表达式，如何计算 [*] 别名，以及如何使用 Azure Policy 定义规则追加元素。
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323227"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920451"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>为 Azure 资源上的数组属性创作策略
 
@@ -28,7 +28,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 ### <a name="define-a-parameter-array"></a>定义参数数组
 
 需要多个值时，将参数定义为数组可以实现策略的灵活性。
-此策略定义允许参数 allowedLocations 的任何单个位置，默认为 _eastus2_ ：
+此策略定义允许参数 allowedLocations 的任何单个位置，默认为 _eastus2_：
 
 ```json
 "parameters": {
@@ -95,7 +95,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 
 若要将此字符串与每个 SDK 一起使用，请使用以下命令：
 
-- Azure CLI：带有参数 params 的命令 [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create)
+- Azure CLI：带有参数 params 的命令 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create)
 - Azure PowerShell：带有参数 PolicyParameter 的 Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)
 - REST API：在 PUT [create](/rest/api/resources/policyassignments/create) 操作中，作为请求正文（作为 properties.parameters 属性的值）的一部分
 
@@ -134,7 +134,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 
 - “由于验证错误，无法对策略‘{GUID}’进行参数化。 请检查策略参数定义是否正确。 内部异常语言表达式‘[parameters('allowedLocations')]’的计算结果为‘数组’类型，预期类型为‘字符串’。”
 
-条件 `equals` 的预期类型为 _字符串_ 。 由于 allowedLocations 被定义为数组类型，因此策略引擎会计算语言表达式并引发错误 。 在 `in` 和 `notIn` 条件下，策略引擎在语言表达式中应为“数组”类型。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
+条件 `equals` 的预期类型为 _字符串_。 由于 allowedLocations 被定义为数组类型，因此策略引擎会计算语言表达式并引发错误 。 在 `in` 和 `notIn` 条件下，策略引擎在语言表达式中应为“数组”类型。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
 
 ## <a name="referencing-array-resource-properties"></a>引用数组资源属性
 
@@ -201,7 +201,7 @@ Azure 策略可以使用 [别名](../concepts/definition-structure.md#aliases) �
 
 #### <a name="referencing-the-array-members-collection"></a>引用数组成员集合
 
-使用语法的别名 `[*]` 表示 **从数组属性中选择的属性值的集合** ，这不同于选择数组属性本身。 对于 `Microsoft.Test/resourceType/stringArray[*]` ，它将返回一个集合，其中包含所有的成员 `stringArray` 。 如前所述， `field` 条件检查所有选定的资源属性是否满足条件，因此仅当的 **所有** 成员 `stringArray` 都等于 "" 值 "" 时，以下条件才为 true。
+使用语法的别名 `[*]` 表示 **从数组属性中选择的属性值的集合**，这不同于选择数组属性本身。 对于 `Microsoft.Test/resourceType/stringArray[*]` ，它将返回一个集合，其中包含所有的成员 `stringArray` 。 如前所述， `field` 条件检查所有选定的资源属性是否满足条件，因此仅当的 **所有** 成员 `stringArray` 都等于 "" 值 "" 时，以下条件才为 true。
 
 ```json
 {
@@ -311,7 +311,7 @@ Azure 策略可以使用 [别名](../concepts/definition-structure.md#aliases) �
 }
 ```
 
-的幂 `count` `where` 。 指定时，Azure 策略将枚举数组成员，并根据条件评估每个成员，计算计算结果为多少数组成员 `true` 。 具体来说，在每次进行 `where` 条件评估时，Azure 策略都会选择单个数组成员 * **i** _，并根据条件计算资源 `where` 内容 _*，就好像 * *_i_*_ 是 array_ * 的唯一成员。 在每个迭代中仅有一个数组成员可提供一种方法，用于对每个单个数组成员应用复杂的条件。
+的幂 `count` `where` 。 指定时，Azure 策略将枚举数组成员，并根据条件评估每个成员，计算计算结果为多少数组成员 `true` 。 具体来说，在每次进行 `where` 条件评估时，Azure 策略都会选择单个数组成员 ***i** _，并根据条件计算资源 `where` 内容 _*，就好像 **_i_*_ 是 array_ * 的唯一成员。 在每个迭代中仅有一个数组成员可提供一种方法，用于对每个单个数组成员应用复杂的条件。
 
 例如：
 ```json
@@ -424,7 +424,7 @@ Azure 策略可以使用 [别名](../concepts/definition-structure.md#aliases) �
 1. `field()` 引用数组别名的函数返回具有选定值的数组。
 1. 引用条件中的计数数组别名将 `where` 返回一个集合，其中包含从当前迭代中计算的数组成员中选择的单个值。
 
-此行为意味着，当使用条件内的函数引用计数数组成员时 `field()` `where` ，它将 **返回一个包含单个成员的数组** 。 虽然这可能并不直观，但它与这一理念一致：数组别名始终返回选定属性的集合。 下面是一个示例：
+此行为意味着，当使用条件内的函数引用计数数组成员时 `field()` `where` ，它将 **返回一个包含单个成员的数组**。 虽然这可能并不直观，但它与这一理念一致：数组别名始终返回选定属性的集合。 下面是一个示例：
 
 ```json
 {
@@ -469,22 +469,22 @@ Azure 策略可以使用 [别名](../concepts/definition-structure.md#aliases) �
 
 ## <a name="modifying-arrays"></a>修改数组
 
-在创建或更新时，对资源 [追加](../concepts/effects.md#append) 和 [修改](../concepts/effects.md#modify) 更改属性。 使用数组属性时，这些效果的行为取决于操作是否试图修改  **\[\*\]** 别名：
+创建或更新期间，[追加](../concepts/effects.md#append)和[修改](../concepts/effects.md#modify)操作会更改资源的属性。 使用数组属性时，这些效果的行为取决于操作是否尝试修改 \[\*\] 别名：
 
 > [!NOTE]
-> 使用 `modify` 别名效果目前处于 **预览阶段** 。
+> 目前，预览版中可使用 `modify` 效果和别名。
 
 |Alias |效果 | 业务成效 |
 |-|-|-|
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | 如果缺少，Azure 策略将追加在效果详细信息中指定的整个数组。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` with `add` 操作 | 如果缺少，Azure 策略将追加在效果详细信息中指定的整个数组。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` with `addOrReplace` 操作 | 如果缺少或替换现有数组，Azure 策略将追加在效果详细信息中指定的整个数组。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure 策略将追加在效果详细信息中指定的数组成员。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` with `add` 操作 | Azure 策略将追加在效果详细信息中指定的数组成员。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` with `addOrReplace` 操作 | Azure 策略将删除所有现有数组成员，并在效果详细信息中追加指定的数组成员。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure 策略将值追加到 `action` 每个数组成员的属性。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` with `add` 操作 | Azure 策略将值追加到 `action` 每个数组成员的属性。 |
-| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` with `addOrReplace` 操作 | Azure 策略将追加或替换 `action` 每个数组成员的现有属性。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | 如果丢失，Azure Policy 将追加效果详细信息中指定的整个数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | 使用 `add` 操作 `modify` | 如果丢失，Azure Policy 将追加效果详细信息中指定的整个数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | 使用 `addOrReplace` 操作 `modify` | 如果缺失，Azure Policy 将追加效果详细信息中指定的整个数组，或替换现有数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy 将追加效果详细信息中指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | 使用 `add` 操作 `modify` | Azure Policy 将追加效果详细信息中指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | 使用 `addOrReplace` 操作 `modify` | Azure Policy 删除所有现有的数组成员，并追加效果详细信息中指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy 为每个数组成员的 `action` 属性追加一个值。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | 使用 `add` 操作 `modify` | Azure Policy 为每个数组成员的 `action` 属性追加一个值。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | 使用 `addOrReplace` 操作 `modify` | Azure Policy 追加或替换每个数组成员的现有 `action` 属性。 |
 
 有关详细信息，请参阅[追加示例](../concepts/effects.md#append-examples)。
 

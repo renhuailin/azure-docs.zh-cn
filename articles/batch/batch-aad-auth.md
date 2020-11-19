@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309370"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920502"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -55,7 +55,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 然后，Azure AD 将提供一个应用程序 ID（也称为“客户端 ID”），在运行时，可以使用该 ID 将应用程序与 Azure AD 相关联。 若要详细信息应用程序 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册批处理应用程序，请遵循[快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)中的 "**注册应用**程序" 部分中的步骤。 如果将应用程序注册为本机应用程序，可以为重定向 URI 指定任何有效 URI。 它不需要是实际的终结点。
+若要注册批处理应用程序，请遵循 [快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)中的 "**注册应用** 程序" 部分中的步骤。 如果将应用程序注册为本机应用程序，可以为重定向 URI 指定任何有效 URI。 它不需要是实际的终结点。
 
 注册应用程序后，会看到应用程序 ID：
 
@@ -87,14 +87,14 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 1. 找到批处理 API 后，将其选中，然后选择 " **选择**"。
 1. 在“选择权限”中，选中“访问 Azure Batch 服务”旁边的复选框，然后选择“添加权限”  。
 
-现在，“API 权限”部分表明 Azure AD 应用程序已有对 Microsoft Graph 和 Batch 服务 API 的访问权限。 首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
+现在，“API 权限”部分表明 Azure AD 应用程序已有对 Microsoft Graph 和 Batch 服务 API 的访问权限。 首次将应用注册到 Azure AD 时，系统会自动向 Microsoft Graph 授予权限。
 
 ## <a name="use-a-service-principal"></a>使用服务主体
 
 若要对以无人参与方式运行的应用程序进行验证，可以使用服务主体。 注册应用程序后，请按照 Azure 门户中的下列步骤配置服务主体：
 
 1. 为应用程序请求一个机密。
-1. 将 Azure RBAC)  (azure RBAC 访问控制分配给应用程序。
+1. 将 Azure 基于角色的访问控制 (Azure RBAC) 分配到应用程序。
 
 ### <a name="request-a-secret-for-your-application"></a>为应用程序请求一个机密
 
@@ -110,16 +110,16 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 ### <a name="assign-azure-rbac-to-your-application"></a>将 Azure RBAC 分配到应用程序
 
-若要使用服务主体进行身份验证，需要将 Azure RBAC 分配给应用程序。 执行以下步骤：
+若要使用服务主体进行身份验证，需要向应用程序分配 Azure RBAC。 执行以下步骤:
 
 1. 在 Azure 门户中，导航到应用程序使用的 Batch 帐户。
 1. 在批处理帐户的“设置”部分中，选择“访问控制(IAM)” 。
 1. 选择“角色分配”选项卡。
 1. 选择“添加角色分配”。
-1. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [在 Azure 门户中开始使用 Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
+1. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中 Azure 基于角色的访问控制入门](../role-based-access-control/overview.md)。
 1. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”。
 
-应用程序现在应显示在已分配 Azure 角色的访问控制设置中。
+现在，应用程序应出现在访问控制设置中，同时已分配有 Azure 角色。
 
 ![将 Azure 角色分配到应用程序](./media/batch-aad-auth/app-rbac-role.png)
 
@@ -127,7 +127,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 自定义角色向用户授予用于提交作业、任务等的粒度权限。 这可以防止用户执行影响成本的操作，例如创建池或修改节点。
 
-你可以使用自定义角色向以下 Azure RBAC 操作的 Azure AD 用户、组或服务主体授予权限：
+可以使用自定义角色向 Azure AD 用户、组或服务主体授予以下 Azure RBAC 操作的权限：
 
 - Microsoft.Batch/batchAccounts/pools/write
 - Microsoft.Batch/batchAccounts/pools/delete
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 构造使用委派作为参数的 **BatchTokenCredentials** 对象。 使用这些凭据打开 **BatchClient** 对象。 可以使用该 BatchClient 对象针对 Batch 服务执行后续操作：
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 构造使用委派作为参数的 **BatchTokenCredentials** 对象。 使用这些凭据打开 **BatchClient** 对象。 然后，使用该 **BatchClient** 对象针对 Batch 服务执行后续操作：
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```

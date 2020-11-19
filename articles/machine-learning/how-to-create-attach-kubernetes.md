@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 0f2b9476c9b8c0b5164bfbf29d65d260340effe4
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873822"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919754"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -43,6 +43,8 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 - 如果附加 AKS 群集（已[启用授权 IP 范围来访问 API 服务器](../aks/api-server-authorized-ip-ranges.md)），请为该 AKS 群集启用 AML 控制平面 IP 范围。 AML 控制平面是跨配对区域部署的，并且会在 AKS 群集上部署推理 Pod。 如果无法访问 API 服务器，则无法部署推理 Pod。 在 AKS 群集中启用 IP 范围时，请对两个[配对区域](../best-practices-availability-paired-regions.md)都使用 [IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=56519)。
 
     授权 IP 范围仅适用于标准负载均衡器。
+
+- **附加** AKS 群集时，它必须与 Azure 机器学习工作区位于同一 Azure 订阅中。
 
 - 如果要使用专用 AKS 群集（使用 Azure 专用链接），则必须先创建群集，然后再将其附加到工作区。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1803a0070321ff4d895203f027f839601bb726ee
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887138"
+ms.locfileid: "94920247"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的计划内维护通知
 
@@ -78,7 +78,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 Azure Database for PostgreSQL 的任何问题或建议，请将电子邮件发送到 Azure Database for PostgreSQL 团队 *AskAzureDBforPostgreSQL@service.microsoft.com* 。
+- 有关使用 Azure Database for PostgreSQL 的任何问题或建议，请向 Azure Database for PostgreSQL 团队发送一封电子邮件，网址为： AskAzureDBforPostgreSQL@service.microsoft.com
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - [排查 Azure Databases for PostgreSQL - 单一服务器的连接问题](howto-troubleshoot-common-connection-issues.md)
 - [处理暂时性错误并有效地连接到 Azure Database for PostgreSQL（单一服务器）](concepts-connectivity.md)
