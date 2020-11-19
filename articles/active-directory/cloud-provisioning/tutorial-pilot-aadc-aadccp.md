@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266490"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651696"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -121,18 +121,18 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 1. 以企业管理员权限登录到要使用的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则该服务器是 CP1。
 2. 使用[此处](how-to-install.md#install-the-agent)列出的步骤下载 Azure AD Connect 云预配代理。
 3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
-3. 在初始屏幕上**接受**许可条款，然后单击“安装”。</br>
-![显示“Microsoft Azure AD Connect 预配代理”初始屏幕的屏幕截图。](media/how-to-install/install1.png)</br>
+3. 在初始屏幕上 **接受** 许可条款，然后单击“安装”。</br>
+![显示“Microsoft Azure AD Connect 预配代理”初始屏幕的屏幕截图。](media/how-to-install/install-1.png)</br>
 
 4. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。
 5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。   此操作将添加本地目录。  单击“下一步”。</br>
-![显示已输入目录值的“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install3.png)</br>
+![显示已输入目录值的“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install-3.png)</br>
 
 6. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
-![屏幕截图，显示已选择“确认”按钮的“配置完成”屏幕。](media/how-to-install/install4.png)</br>
+![屏幕截图，显示已选择“确认”按钮的“配置完成”屏幕。](media/how-to-install/install-4a.png)</br>
 
 7. 完成此操作后，应会看到通知“已成功验证”。  可以单击“退出”。</br>
-![欢迎屏幕](media/how-to-install/install5.png)</br>
+![欢迎屏幕](media/how-to-install/install-5.png)</br>
 8. 如果仍然显示了初始屏幕，请单击“关闭”。
 
 ## <a name="verify-agent-installation"></a>验证代理安装
@@ -143,12 +143,12 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
 1. 登录到 Azure 门户。
 2. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理预配(预览版)”。  </br>
-![Azure 门户](media/how-to-install/install6.png)</br>
+![Azure 门户](media/how-to-install/install-6.png)</br>
 
 3.  在“Azure AD 预配(预览版)”屏幕上，单击“查看所有代理”。 
-![Azure AD 预配](media/how-to-install/install7.png)</br>
+![Azure AD 预配](media/how-to-install/install-7.png)</br>
  
-4. 在**本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“已禁用”。  该代理默认已禁用 ![预配代理](media/how-to-install/verify1.png)</br>
+4. 在 **本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“已禁用”。  该代理默认已禁用 ![预配代理](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本地服务器上
 若要验证代理是否正在运行，请执行以下步骤：
@@ -156,7 +156,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 1.  使用管理员帐户登录到服务器
 2.  导航到“服务”或者转到“开始”>“运行”并输入 Services.msc，打开“服务”。
 3.  确保“Microsoft Azure AD Connect Agent Updater”和“Microsoft Azure AD Connect Provisioning Agent”包含在“服务”中，并且其状态为“正在运行”。   
-![服务](media/how-to-troubleshoot/troubleshoot1.png)
+![服务](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>配置 Azure AD Connect 云预配
 使用以下步骤配置预配：
@@ -168,7 +168,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  ![显示“管理预配(预览版)”链接的屏幕截图。](media/how-to-configure/manage1.png)</br>
  5.  单击“新建配置”
  ![Azure AD 预配（预览版）屏幕的屏幕截图，突出显示了“新建配置”链接。](media/tutorial-single-forest/configure1.png)</br>
- 6.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
+ 6.  在配置屏幕上输入一条 **通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
  ![“配置”屏幕的屏幕截图，已填写通知电子邮件并选择了“启用”。](media/tutorial-single-forest/configure2.png)</br>
  7. 在“配置”下选择“所有用户”，以更改配置规则的范围。 
  ![“配置”屏幕的屏幕截图，突出显示“限定用户范围”旁边的“所有用户”。](media/how-to-configure/scope2.png)</br>

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461152"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660995"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
@@ -133,7 +133,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 ## <a name="view-the-gateway-public-ip-address"></a>查看网关公共 IP 地址
 
-如果知道公共 IP 地址的名称，可使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 来显示分配给网关的公共 IP 地址。
+如果知道公共 IP 地址的名称，可使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 来显示分配给网关的公共 IP 地址。
 
 如果会话超时，请将本教程开头的常用网络参数复制到新会话中，然后继续操作。
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-有关详细信息，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md)。
+有关详细信息，请参阅[重置 VPN 网关](./reset-gateway.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果要转到[下一个教程](vpn-gateway-tutorial-vpnconnection-powershell.md)，你将需要保留这些资源，因为它们是先决条件。
+如果要转到[下一个教程](./vpn-gateway-create-site-to-site-rm-powershell.md)，你将需要保留这些资源，因为它们是先决条件。
 
 但是，如果网关是某个原型、测试或概念证明部署的一部分，则可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令来删除资源组、VPN 网关和所有相关资源。
 

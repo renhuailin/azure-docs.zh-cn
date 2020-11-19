@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791607"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593716"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
@@ -70,17 +70,17 @@ Azure 认知搜索可以导入、分析来自多个数据源的数据，并将�
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="创建新数据库" border="false":::
 
-1. 输入名称 **hotel-rooms-db** 。 对于剩余的设置，请接受默认值。
+1. 输入名称 **hotel-rooms-db**。 对于剩余的设置，请接受默认值。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="配置数据库" border="false":::
 
 1. 创建新容器。 使用刚刚创建的现有数据库。 输入 **hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="添加容器" border="false":::
 
 1. 选择“hotels”下的“项”，然后单击命令栏上的“上传项”。    导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件并将其选中。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="上传到 Azure Cosmos DB 集合" border="false":::
 
 1. 使用“刷新”按钮来刷新酒店集合中的项的视图。 此时应会列出七个新数据库文档。
 
@@ -92,11 +92,11 @@ Azure 认知搜索可以导入、分析来自多个数据源的数据，并将�
 
 1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="创建一个 blob 容器" border="false":::
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。 导航到包含示例文件的文件夹。 选择所有这些文件，然后单击“上传”  。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="上传文件" border="false":::
 
 1. 将存储帐户名和连接字符串从“访问密钥”页复制到记事本。 在稍后的步骤中，需要将这两个值用于“appsettings.json”。
 
@@ -112,7 +112,7 @@ Azure 认知搜索可以导入、分析来自多个数据源的数据，并将�
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -122,7 +122,7 @@ Azure 认知搜索可以导入、分析来自多个数据源的数据，并将�
 
 1. 在“浏览”选项卡中，找到并安装 Azure.Search.Documents（11.0 或更高版本） 。 需要再单击几个对话框来完成安装。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="创建新数据库" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="使用 NuGet 添加 Azure 库" border="false":::
 
 1. 搜索 Microsoft.Extensions.Configuration 和 Microsoft.Extensions.Configuration.Json NuGet 包并安装它们 。
 
@@ -350,7 +350,7 @@ await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
 try
 {
     // Run the indexer.
-    await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
 }
 catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
 {
@@ -369,7 +369,7 @@ catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
 
 在 Azure 门户中，打开搜索服务的“概述”页，在“索引”列表中找到“hotel-rooms-sample”索引    。
 
-  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="创建新数据库" border="false":::
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Azure 认知搜索索引列表" border="false":::
 
 单击列表中的 hotel-rooms-sample 索引。 随即会显示索引的“搜索资源管理器”界面。 输入一个词（如“奢华”）进行查询。 得到的结果中至少会显示一个文档，此文档的房间数组中会显示一系列房间对象。
 

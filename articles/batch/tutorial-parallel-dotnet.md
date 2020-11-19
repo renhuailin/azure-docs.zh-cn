@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335649"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578291"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -35,7 +35,7 @@ ms.locfileid: "94335649"
 
 * Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
-* [Windows 64 位版 ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (.zip)。 将 zip 文件下载到本地计算机。 本教程只需 zip 文件。 不需将文件解压缩或安装在本地。
+* [Windows 64 位版 ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (.zip)。 将 zip 文件下载到本地计算机。 本教程只需 zip 文件。 不需将文件解压缩或安装在本地。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -124,7 +124,7 @@ Elapsed time: 00:09:14.3418742
 
 ![池热度地图](./media/tutorial-parallel-dotnet/pool.png)
 
-以默认配置运行应用程序时，典型的执行时间大约为 **10 分钟** 。 池创建过程需要最多时间。
+以默认配置运行应用程序时，典型的执行时间大约为 **10 分钟**。 池创建过程需要最多时间。
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

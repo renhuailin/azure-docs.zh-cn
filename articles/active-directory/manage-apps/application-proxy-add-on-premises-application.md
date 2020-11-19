@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8b66a8ea3fcc6af62c872a6df6196b97ece2f55a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240913"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656439"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 要为 Azure AD 应用程序代理准备环境，请首先启用与 Azure 数据中心的通信。 如果路径中有防火墙，请确保它已打开。 打开的防火墙允许连接器向应用程序代理发出 HTTPS (TCP) 请求。
 
 > [!IMPORTANT]
-> 如果要为 Azure 政府云安装连接器，请遵循[先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 这需要启用对一组不同 URL 的访问以及运行安装的其他参数。
+> 如果要为 Azure 政府云安装连接器，请遵循[先决条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)和[安装步骤](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。 这需要启用对一组不同 URL 的访问以及运行安装的其他参数。
 
 ### <a name="open-ports"></a>打开端口
 
@@ -202,7 +202,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 默认情况下，后端应用程序超时的长度为 85 秒。 设置为 long 时，后端超时将增加到 180 秒。 |
     | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。|
     | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
-    | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。
+    | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](./application-proxy-configure-cookie-settings.md)。
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”  。 |
     | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”  。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视](application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
 

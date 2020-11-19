@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 1fc8339b3d5d5f02611c750e8016c2fc3df1d8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a17cd1dcf9bca52936a8b10fa45045ff88df1b01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035342"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660740"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>使用 PowerShell 创建 VPN 网关
 
@@ -76,7 +76,7 @@ Remove-AzResourceGroup -Name TestRG1
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。 |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
-|[New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway) | 创建 VPN 网关。 |
+|[New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | 创建 VPN 网关。 |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 设置虚拟网络的子网配置。 |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b1a2f87498d7869b21e6a8ab44fc1f9660456ad
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648287"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 授予组对 Azure 资源的访问权限
 
@@ -40,7 +40,7 @@ ms.locfileid: "82735515"
 若要完成本教程，需要：
 
 - 在 Azure Active Directory 中创建组的权限（或者有现成的组）
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>角色分配
 
@@ -48,7 +48,7 @@ ms.locfileid: "82735515"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 组<br>（RBAC 教程组） | [读取者](built-in-roles.md#reader) | 订阅 |
+| 组<br>（RBAC 教程组） | [读者](built-in-roles.md#reader) | 订阅 |
 | 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
 
    ![组的角色分配](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)

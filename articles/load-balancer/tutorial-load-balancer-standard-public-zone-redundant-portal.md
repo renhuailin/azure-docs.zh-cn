@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048349"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696398"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -37,7 +37,7 @@ ms.locfileid: "92048349"
 
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
-如果需要，也可以使用 [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) 完成本教程中的步骤。
+如果需要，也可以使用 [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) 完成本教程中的步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -200,8 +200,8 @@ ms.locfileid: "92048349"
     - *myHealthProbe* - 运行状况探测的名称。
     - **HTTP** - 协议类型。
     - *80* - 端口号。
-    - *15* - 两次探测尝试之间的**时间间隔**（以秒为单位）。
-    - *2* - 将 VM 视为不正常所对应的**不正常阈值**或连续探测失败次数。
+    - *15* - 两次探测尝试之间的 **时间间隔**（以秒为单位）。
+    - *2* - 将 VM 视为不正常所对应的 **不正常阈值** 或连续探测失败次数。
 4. 单击“确定”。
 
    ![添加探测器](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)

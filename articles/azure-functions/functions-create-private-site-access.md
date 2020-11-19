@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423022"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579124"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教程：建立 Azure Functions 专用站点访问
 
-本教程介绍如何对 Azure Functions 启用[专用站点访问](./functions-networking-options.md#private-site-access)。 使用专用站点访问可以要求仅从特定的虚拟网络触发函数代码。
+本教程介绍如何对 Azure Functions 启用[专用站点访问](./functions-networking-options.md#private-endpoint-connections)。 使用专用站点访问可以要求仅从特定的虚拟网络触发函数代码。
 
 需要将函数应用访问限制到特定的虚拟网络时，专用站点访问很有用。 例如，该函数应用可能仅适用于特定组织的员工，或者仅适用于指定虚拟网络中的服务（如另一 Azure 函数、Azure 虚拟机或 AKS 群集）。
 
@@ -85,7 +85,7 @@ ms.locfileid: "93423022"
     | _名称_ | myResourceGroup-vnet | 可以使用为虚拟网络生成的默认名称。 |
     | _地址范围_ | 10.10.0.0/16 | 为虚拟网络使用单个地址范围。 |
     | _子网名称_ | 教程 | 子网的名称。 |
-    | _地址范围_ （子网） | 10.10.1.0/24 | 子网大小定义了可将多少个接口添加到子网。 VM 将使用此子网。 A/24 子网提供 254 个主机地址。 |
+    | _地址范围_（子网） | 10.10.1.0/24 | 子网大小定义了可将多少个接口添加到子网。 VM 将使用此子网。 A/24 子网提供 254 个主机地址。 |
 
 1. 选择“确定”以创建虚拟网络。
 1. 返回到“网络”选项卡，确保为“公共 IP”选择“无”。
@@ -159,7 +159,7 @@ ms.locfileid: "93423022"
 
 下一步是配置[访问限制](../app-service/app-service-ip-restrictions.md)，以确保只有虚拟网络中的资源能够调用该函数。
 
-通过在函数应用与指定的虚拟网络之间创建 Azure 虚拟网络[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，来启用[专用站点](functions-networking-options.md#private-site-access)访问。 访问限制是通过服务终结点实现的。 服务终结点确保只有源自指定虚拟网络内部的流量可以访问指定的资源。 在本例中，指定的资源是 Azure 函数。
+通过在函数应用与指定的虚拟网络之间创建 Azure 虚拟网络[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，来启用[专用站点](functions-networking-options.md#private-endpoint-connections)访问。 访问限制是通过服务终结点实现的。 服务终结点确保只有源自指定虚拟网络内部的流量可以访问指定的资源。 在本例中，指定的资源是 Azure 函数。
 
 1. 在函数应用中，选择“设置”部分标头下的“网络”链接。
 1. “网络”页面是配置 Azure Front Door、Azure CDN 和访问限制的起点。
@@ -172,7 +172,7 @@ ms.locfileid: "93423022"
 1. “访问限制”页现在会显示有新的限制。 终结点状态从“通过预配禁用”更改为“已启用”可能需要几秒时间。
 
     >[!IMPORTANT]
-    > 每个函数应用都有一个用于管理函数应用部署的[高级工具 (Kudu) 站点](../app-service/app-service-ip-restrictions.md#scm-site)。 可从如下所示的 URL 访问此站点：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 站点上启用访问限制会阻止从本地开发人员工作站部署项目代码，此时在虚拟网络中需要代理来执行部署。
+    > 每个函数应用都有一个用于管理函数应用部署的[高级工具 (Kudu) 站点](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)。 可从如下所示的 URL 访问此站点：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 站点上启用访问限制会阻止从本地开发人员工作站部署项目代码，此时在虚拟网络中需要代理来执行部署。
 
 ## <a name="access-the-functions-app"></a>访问函数应用
 
