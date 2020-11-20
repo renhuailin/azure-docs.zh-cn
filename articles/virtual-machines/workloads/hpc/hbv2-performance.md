@@ -3,26 +3,26 @@ title: HBv2 系列 VM 大小性能
 description: 了解 Azure 中 HBv2 系列 VM 大小的性能测试结果。
 services: virtual-machines
 author: vermagit
-manager: gwallace
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 96c70936d6025ad5c1686f5ebae054d01ae05d07
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b782f3d435b7b3737de09b7a12d0fb17aa5f1edc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332617"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963311"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 系列虚拟机大小
 
 已对 [HBv2 系列的](../../hbv2-series.md) vm 运行多个性能测试。 下面是此性能测试的部分结果。
 
 
-| 工作负载                                        | HBv2                                                              |
+| 工作负荷                                        | HBv2                                                              |
 |-------------------------------------------------|-------------------------------------------------------------------|
 | STREAM Triad                                    | 每 CCX 350 GB/秒 (21-23 GB/秒)                                      |
 | High-Performance Linpack (HPL.DAT)                   | 4兆次 (Rpeak，FP64) ，8兆次 (Rmax，FP32)                |
@@ -52,7 +52,7 @@ ms.locfileid: "92332617"
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ``` 
 
-:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB-ACCT-WC 上的 MPI 延迟。":::
+:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB-ACCT-WC 上的 MPI 带宽。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

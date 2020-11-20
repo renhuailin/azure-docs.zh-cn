@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514654"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961135"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
 
@@ -43,7 +43,7 @@ StorSimple 5000-7000 系列将在 2019 年 7 月[终止支持](https://support.m
 
 此全新迁移选项可让客户在 Azure 文件中存储其组织的文件共享。 然后可以集中这些文件共享，以使用 Azure 文件同步 (AFS) 进行本地访问。 可在 Windows Server 主机上部署 AFS。 然后，可以通过主机复制或迁移工具执行实际的数据迁移。
 
-有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](storsimple-5000-7000-afs-migration.md)。
+有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](../storage/files/storage-files-migration-storsimple-8000.md)。
 
 ### <a name="third-party-options"></a>第三方选项
 
@@ -127,4 +127,4 @@ A. StorSimple 8000 系列的终止支持日期在[此处](https://support.micros
 
 ## <a name="next-steps"></a>后续步骤
  - [将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备](storsimple-8000-migrate-from-5000-7000.md)。
- - [将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](storsimple-5000-7000-afs-migration.md)
+ - [将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](../storage/files/storage-files-migration-storsimple-8000.md)

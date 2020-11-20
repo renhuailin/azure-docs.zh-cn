@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae036b7d893eb268ea55026054bf364dad0b610e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291565"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961543"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑
 
@@ -32,7 +32,7 @@ ms.locfileid: "91291565"
 **要求**
 
 - 在此方案中，SQL 托管实例和 Azure 数据库迁移服务实例在同一 Microsoft Azure 虚拟网络中创建，但它们使用不同的子网。  
-- 本方案中使用的虚拟网络还使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 连接到本地网络。
+- 本方案中使用的虚拟网络还使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 连接到本地网络。
 
 ## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>SQL 托管实例与本地网络隔离
 
@@ -46,8 +46,8 @@ ms.locfileid: "91291565"
 
 **要求**
 
-- 对于此方案，Azure 数据库迁移服务使用的虚拟网络还必须使用 (或 VPN 连接到本地网络 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)
-- 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- 对于此方案，Azure 数据库迁移服务使用的虚拟网络还必须使用 (或 VPN 连接到本地网络 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>云到云的迁移：共享的虚拟网络
 
@@ -71,7 +71,7 @@ ms.locfileid: "91291565"
 
 **要求**
 
-- 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 ## <a name="inbound-security-rules"></a>入站安全规则
 
@@ -92,9 +92,9 @@ ms.locfileid: "91291565"
 
 ## <a name="see-also"></a>另请参阅
 
-- [将 SQL Server 迁移到 SQL 托管实例](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-- [使用 Azure 数据库迁移服务的先决条件概述](https://docs.microsoft.com/azure/dms/pre-reqs)
-- [使用 Azure 门户创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [将 SQL Server 迁移到 SQL 托管实例](./tutorial-sql-server-to-managed-instance.md)
+- [使用 Azure 数据库迁移服务的先决条件概述](./pre-reqs.md)
+- [使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
 
 ## <a name="next-steps"></a>后续步骤
 

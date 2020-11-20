@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: a9ac4830d11aa3360a272ac1feb167eb20c26c9a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962614"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务联机迁移到 Azure DB for MySQL 的问题和限制
 
@@ -32,7 +32,7 @@ ms.locfileid: "92494437"
 - Azure Database for MySQL 支持：
   - MySQL 社区版
   - InnoDB 引擎
-- 相同版本的迁移。 不支持将 MySQL 5.6 迁移到 Azure Database for MySQL 5.7。 不支持向或从 MySQL 8.0 进行迁移。
+- 相同版本的迁移。 不支持将 MySQL 5.6 迁移到 Azure Database for MySQL 5.7。 不支持向/从 MySQL 8.0 进行迁移。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中启用二进制日志记录
   - 将 Server_id 设为大于或等于 1 的任意数字，例如 Server_id=1（仅适用于 MySQL 5.6）
   - 设置 log-bin = \<path>（仅适用于 MySQL 5.6）
@@ -82,12 +82,12 @@ ms.locfileid: "92494437"
 
     **解决方法**：将主键替换为不属于 LOB 的其他数据类型或列。
 
-- **限制**：如果大对象的长度 (LOB) 列大于 "限制 LOB size" 参数 (不应大于 64 KB) ，则在目标位置可能会截断数据。 可使用以下查询检查 LOB 列的长度：
+- **限制**：如果大型对象 (LOB) 列的长度超过“Limit LOB size”参数的长度（不应超过 64 KB），则可能会在目标位置截断数据。 可使用以下查询检查 LOB 列的长度：
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **解决方法**：如果 LOB 对象大于 64 KB，请使用 "允许无限制的 lob 大小" 参数。 请注意，使用 "允许无限制的 LOB 大小" 参数进行的迁移比使用 "限制 LOB 大小" 参数进行的迁移要慢。
+    **解决方法**：如果 LOB 对象大于 64 KB，请使用“Allow unlimited LOB size”参数。 请注意，使用“Allow unlimited LOB size”参数进行的迁移将比使用“Limit LOB size”参数进行的迁移要慢。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 联机迁移时的限制
 
@@ -118,7 +118,7 @@ ms.locfileid: "92494437"
 
   **限制**：如果目标 Azure Database for MySQL 数据库没有所需的架构，则会出现此错误。 若要将数据迁移到目标，需要进行架构迁移。
 
-  **解决方法**：[将架构从源数据库迁移到目标数据库](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)。
+  **解决方法**：[将架构从源数据库迁移到目标数据库](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -136,7 +136,7 @@ ms.locfileid: "92494437"
 
 - 在 Azure 数据库迁移服务中，可在单个迁移活动中迁移的数据库数目限制为 4 个。
 
-- Azure DMS 不支持 CASCADE 引用操作，这有助于当父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参见 MySQL 文档中的[外键约束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)一文中的“引用操作”部分。 Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果你的工作负载依赖于通过此引用操作更新相关子表，建议改为执行[转储并还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
+- Azure DMS 不支持 CASCADE 引用操作，这有助于当父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参见 MySQL 文档中的[外键约束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)一文中的“引用操作”部分。 Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果你的工作负载依赖于通过此引用操作更新相关子表，建议改为执行[转储并还原](../mysql/concepts-migrate-dump-restore.md)。 
 
 - **错误：** 行太大 (> 8126)。 将某些列更改为 TEXT 或 BLOB 可能会有帮助。 在当前的行格式中，0 字节的 BLOB 前缀以内联方式存储。
 

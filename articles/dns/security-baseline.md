@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ed1c183281aea830e9cd61c1d95c6c092adbe05c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328070"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960676"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>适用于 Azure DNS 的 Azure 安全基线
 
@@ -20,11 +20,11 @@ ms.locfileid: "92328070"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：活动日志是 Azure 中的平台日志，可提供对订阅级别事件的见解。 将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志提供对在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 DNS 区域的控制平面级别执行。
+**指南**：活动日志是 Azure 中的平台日志，可提供对订阅级别事件的见解。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供对在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 DNS 区域的控制平面级别执行。
 
 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92328070"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
+**指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "92328070"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：将 Azure 安全中心与 Log Analytics 工作区结合使用，以便在安全日志和事件中发现异常活动时进行监视和警报。
+**指导**：使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。
 
 或者，可以启用数据并将其加入 Azure Sentinel。
 
@@ -90,17 +90,17 @@ ms.locfileid: "92328070"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
+**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
 在 Azure DNS 中，存在 DNS 区域参与者角色，以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，以提供更精细的控制。 请注意，专用 DNS 区域资源使用不同的角色名称，专用 DNS 区域参与者。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [了解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
@@ -128,7 +128,7 @@ ms.locfileid: "92328070"
 
 你还可以使用 Azure AD Privileged Identity Management 和 Azure 资源管理器启用对管理帐户的实时访问。 
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [如何使用 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -178,7 +178,7 @@ ms.locfileid: "92328070"
 
 **指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -210,7 +210,7 @@ ms.locfileid: "92328070"
 
 **指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -224,7 +224,7 @@ ms.locfileid: "92328070"
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -234,7 +234,7 @@ ms.locfileid: "92328070"
 
 **指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -246,13 +246,13 @@ ms.locfileid: "92328070"
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/azure/security/benchmarks/security-control-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -286,17 +286,17 @@ ms.locfileid: "92328070"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Azure Resource Graph 浏览器发现经典 Azure 资源，但我们强烈建议你今后创建并使用 Azure 资源管理器资源。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -306,9 +306,9 @@ ms.locfileid: "92328070"
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：使用 "策略名称"、"描述" 和 "类别" 根据分类逻辑组织资产。
+**指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
 
-- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 **Azure 安全中心监视**：不适用
 
@@ -318,11 +318,11 @@ ms.locfileid: "92328070"
 
 **指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -362,7 +362,7 @@ ms.locfileid: "92328070"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -380,13 +380,13 @@ ms.locfileid: "92328070"
 
 ## <a name="secure-configuration"></a>安全配置
 
-[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](/azure/security/benchmarks/security-control-secure-configuration)。
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现 Azure 策略 Azure DNS 的标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行恢复服务保管库的配置。
+**指南**：定义和实现 Azure 策略 Azure DNS 的标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -414,11 +414,11 @@ ms.locfileid: "92328070"
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：如果你使用的是自定义 azure 策略定义，请使用 Azure DevOps 或 Azure Repos 来安全地存储和管理你的代码。
+**指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -456,7 +456,7 @@ ms.locfileid: "92328070"
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。
+[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
@@ -470,7 +470,7 @@ ms.locfileid: "92328070"
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/azure/security/benchmarks/security-control-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -494,7 +494,7 @@ ms.locfileid: "92328070"
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -544,7 +544,7 @@ ms.locfileid: "92328070"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
@@ -560,5 +560,5 @@ ms.locfileid: "92328070"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

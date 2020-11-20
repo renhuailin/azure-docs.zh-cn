@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962881"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961169"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 设备管理器服务修改 StorSimple 设备配置
 
 ## <a name="overview"></a>概述
 
-Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可以在由 StorSimple 设备管理器服务管理的 StorSimple 设备上重新配置的所有设备参数。******** 本教程介绍如何使用“设置”边栏选项卡执行以下设备级任务：****
+Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可以在由 StorSimple 设备管理器服务管理的 StorSimple 设备上重新配置的所有设备参数。 本教程介绍如何使用“设置”边栏选项卡执行以下设备级任务：
 
 * 修改设备的友好名称
 * 修改设备时间设置
@@ -35,7 +35,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-device-friendly-name"></a>修改设备的友好名称
 
-可以使用 Azure 门户更改设备名称并为其分配选择的唯一友好名称。 使用设备上的“常规设置”边栏选项卡修改设备的友好名称。**** 友好名称可以包含任何字符并且最大长度为 64 个字符。
+可以使用 Azure 门户更改设备名称并为其分配选择的唯一友好名称。 使用设备上的“常规设置”边栏选项卡修改设备的友好名称。 友好名称可以包含任何字符并且最大长度为 64 个字符。
 
 > [!NOTE] 
 > 只能在完成设备设置之前，在 Azure 门户中修改设备名称。 完成最低要求的设备设置后，无法更改设备名称。
@@ -51,7 +51,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-device-description"></a>修改设备说明
 
-使用设备上的“常规设置”边栏选项卡修改设备的说明。****
+使用设备上的“常规设置”边栏选项卡修改设备的说明。
 
 ![“常规设置”中的设备说明](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
@@ -59,13 +59,13 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-time-settings"></a>修改时间设置
 
-设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 使用设备上的“常规设置”边栏选项卡修改设备时间设置。****
+设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 使用设备上的“常规设置”边栏选项卡修改设备时间设置。
 
 ![常规设置中的设备描述2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  从下拉列表中选择所在的时区。 最多可以指定两个网络时间协议 (NTP) 服务器：
 
- - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可将默认的 Windows Server **time.windows.com** 指定为你的 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
+ - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可将默认的 Windows Server **time.windows.com** 指定为你的 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet 的语法。
 
 - **辅助 NTP 服务器** - 该配置是可选的。 可以使用门户来配置辅助 NTP 服务器。
 
@@ -79,25 +79,25 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 ## <a name="modify-dns-settings"></a>修改 DNS 设置
 
-当设备尝试与云存储服务提供程序进行通信时会使用 DNS 服务器。 使用设备上的“网络设置”边栏选项卡查看和修改已配置的 DNS 设置。**** 
+当设备尝试与云存储服务提供程序进行通信时会使用 DNS 服务器。 使用设备上的“网络设置”边栏选项卡查看和修改已配置的 DNS 设置。 
 
 ![“网络设置”中的 DNS 设置](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
 为实现高可用性，在初始设备部署期间必须配置主 DNS 服务器和辅 DNS 服务器。
 
-**主 DNS 服务器** - 在初始设置期间，使用用于 StorSimple 的 Windows PowerShell 来首先指定主 DNS 服务器。 只能通过 Windows PowerShell 界面重新配置主 DNS 服务器。 使用 `Set-HcsDNSClientServerAddress` cmdlet 修改设备的主 DNS 服务器。 有关详细信息，请参阅 [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
+**主 DNS 服务器** - 在初始设置期间，使用用于 StorSimple 的 Windows PowerShell 来首先指定主 DNS 服务器。 只能通过 Windows PowerShell 界面重新配置主 DNS 服务器。 使用 `Set-HcsDNSClientServerAddress` cmdlet 修改设备的主 DNS 服务器。 有关详细信息，请参阅 [Set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet 的语法。
 
-**辅助 DNS 服务器** - 若要修改辅助 DNS 服务器，请在设备的 Windows PowerShell 界面中使用 `Set-HcsDNSClientServerAddress` cmdlet，或者在 Azure 门户中使用 StorSimple 设备的“网络设置”边栏选项卡。****
+**辅助 DNS 服务器** - 若要修改辅助 DNS 服务器，请在设备的 Windows PowerShell 界面中使用 `Set-HcsDNSClientServerAddress` cmdlet，或者在 Azure 门户中使用 StorSimple 设备的“网络设置”边栏选项卡。
 
 若要在 Azure 门户中修改辅助 DNS 服务器，请执行以下步骤。
 
 1. 转到 StorSimple Device Manager 服务。 在设备列表中，选择并单击自己的设备。
 
-2. 在“设置”边栏选项卡中，转到“设备设置”>“网络”。******** 此时会打开“网络设置”边栏选项卡。**** 单击“DNS 设置”磁贴。**** 修改辅助 DNS 服务器的 IP 地址。
+2. 在“设置”边栏选项卡中，转到“设备设置”>“网络”。 此时会打开“网络设置”边栏选项卡。 单击“DNS 设置”磁贴。 修改辅助 DNS 服务器的 IP 地址。
 
     ![修改辅助 DNS 服务器的 IP 地址](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. 在命令栏中单击“保存”，出现确认提示时，单击“确定”。********
+4. 在命令栏中单击“保存”，出现确认提示时，单击“确定”。
 
     ![保存并确认更改](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
@@ -107,7 +107,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 设备具有六个设备网络接口，其中四个为 1 GbE 网络接口，另外两个为 10 GbE 网络接口。 这些接口标记为 DATA 0 – DATA 5。 DATA 0、DATA 1、DATA 4 和 DATA 5 是 1 GbE 网络接口，而 DATA 2 和 DATA 3 是 10 GbE 网络接口。
 
-使用“网络设置”边栏选项卡配置每个要使用的接口。****
+使用“网络设置”边栏选项卡配置每个要使用的接口。
 
 ![通过“网络设置”配置网络接口](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
@@ -169,4 +169,3 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 * 了解如何[为 StorSimple 设备配置 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-

@@ -11,19 +11,19 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961220"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
 本文介绍如何管理 (授权) 到 Azure 机器学习工作区的访问权限。 使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)来管理对 azure 资源的访问，例如创建新资源或使用现有资源的能力。 Azure Active Directory 中 (Azure AD) 的用户将分配特定角色，这将授予对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
 
 > [!TIP]
-> 尽管本文重点介绍了 Azure 机器学习，但 Azure ML 依赖的单个服务提供了其自己的 RBAC 设置。 例如，使用本文中的信息可以配置谁可以将评分请求提交到在 Azure Kubernetes Service 上部署为 web 服务的模型。 但 Azure Kubernetes 服务提供了其自己的 Azure RBAC 角色集。 有关 Azure 机器学习的服务特定 RBAC 信息，请参阅以下链接：
+> 尽管本文重点介绍了 Azure 机器学习，但 Azure ML 依赖的单个服务提供了其自己的 RBAC 设置。 例如，使用本文中的信息可以配置谁可以将评分请求提交到在 Azure Kubernetes Service 上部署为 web 服务的模型。 但 Azure Kubernetes 服务提供了其自己的 Azure 角色集。 有关 Azure 机器学习的服务特定 RBAC 信息，请参阅以下链接：
 >
 > * [控制对 Azure Kubernetes 群集资源的访问](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
@@ -166,7 +166,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用某个工作区作用域（第 4 列）执行某个活动，自然也可以使用具有该权限的所有更高的作用域：
 
 > [!IMPORTANT]
-> 此表中以 `/` 开头的所有路径都是相对于 `Microsoft.MachineLearningServices/` 的 **相对路径** ：
+> 此表中以 `/` 开头的所有路径都是相对于 `Microsoft.MachineLearningServices/` 的 **相对路径**：
 
 | 活动 | 订阅级作用域 | 资源组级作用域 | 工作区级作用域 |
 | ----- | ----- | ----- | ----- |
@@ -247,7 +247,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="data-scientist-restricted"></a>数据科学家限制
 
-允许的操作中不包含通配符的更受限制的角色定义。 它可以在工作区中执行所有操作，但以下操作 **除外** ：
+允许的操作中不包含通配符的更受限制的角色定义。 它可以在工作区中执行所有操作，但以下操作 **除外**：
 
 * 创建计算
 * 将模型部署到生产 AKS 群集
@@ -395,7 +395,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="workspace-admin"></a>工作区管理员
 
-允许你执行工作区范围内的所有操作，但以下情况 **除外** ：
+允许你执行工作区范围内的所有操作，但以下情况 **除外**：
 
 * 创建一个新工作区
 * 分配订阅或工作区级别配额

@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538591"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961322"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>连接到 Azure 上的存储服务
 
-本文介绍如何 **通过 Azure 机器学习数据存储连接到 Azure 上的存储服务** 。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
+本文介绍如何 **通过 Azure 机器学习数据存储连接到 Azure 上的存储服务**。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
 
 如果希望使用 Azure 机器学习 VS Code 扩展来创建和管理数据存储，请访问 [VS Code 资源管理操作指南](how-to-manage-resources-vscode.md#datastores)以了解详细信息。
 
@@ -50,7 +50,7 @@ ms.locfileid: "94538591"
    ws = Workspace.from_config()
    ```
 
-    创建工作区时，会将 Azure Blob 容器和 Azure 文件共享作为数据存储自动注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore` 用于存储工作区项目和机器学习试验日志。 它也已设为 **默认数据存储** ，无法从工作区中删除。 `workspacefilestore` 用于存储通过[计算实例](./concept-compute-instance.md#accessing-files)授权的笔记本和 R 脚本。
+    创建工作区时，会将 Azure Blob 容器和 Azure 文件共享作为数据存储自动注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore` 用于存储工作区项目和机器学习试验日志。 它也已设为 **默认数据存储**，无法从工作区中删除。 `workspacefilestore` 用于存储通过[计算实例](./concept-compute-instance.md#accessing-files)授权的笔记本和 R 脚本。
     
     > [!NOTE]
     > Azure 机器学习设计器会在你打开设计器主页中的示例时自动创建一个名为 azureml_globaldatasets 的数据存储。 此数据存储仅包含示例数据集。 请不要将此数据存储用于任何机密数据访问。
@@ -113,7 +113,7 @@ ms.locfileid: "94538591"
 ### <a name="permissions"></a>权限
 
 对于 Azure blob 容器和 Azure Data Lake 第2代存储，请确保身份验证凭据具有 **存储 Blob 数据读取器** 访问权限。 详细了解[存储 Blob 数据读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帐户 SAS 令牌默认为无权限。 
-* 对于数据 **读取访问** ，你的身份验证凭据必须具有容器和对象的最小列表和读取权限。 
+* 对于数据 **读取访问**，你的身份验证凭据必须具有容器和对象的最小列表和读取权限。 
 
 * 对于数据 **写入访问** 权限，还需要编写和添加权限。
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 对于 Azure Data Lake Storage Gen2 (ADLS Gen 2) 数据存储，请使用 [register_azure_data_lake_gen2()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 通过[服务主体权限](../active-directory/develop/howto-create-service-principal-portal.md)注册连接到 Azure DataLake Gen 2 存储的凭据数据存储。  
 
-若要使用服务主体，你需要 [注册应用程序](../active-directory/develop/app-objects-and-service-principals.md) ，并通过基于角色的访问控制 (Azure RBAC) 或 ACL)  (访问控制列表授予服务主体数据访问权限。 详细了解 [ADLS Gen2 的访问控制设置](../storage/blobs/data-lake-storage-access-control-model.md)。 
+若要利用你的服务主体，你需要 [注册应用程序](../active-directory/develop/app-objects-and-service-principals.md) ，并通过 azure RBAC)  (azure RBAC 访问控制或访问控制列表 (ACL) 授予服务主体数据访问权限。 详细了解 [ADLS Gen2 的访问控制设置](../storage/blobs/data-lake-storage-access-control-model.md)。 
 
 以下代码会创建 `adlsgen2_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储使用提供的服务主体凭据访问 `account_name` 存储帐户中的文件系统 `test`。 请查看[存储访问和权限](#storage-access-and-permissions)部分，以获取有关虚拟网络方案以及在何处查找所需身份验证凭据的指南。 
 

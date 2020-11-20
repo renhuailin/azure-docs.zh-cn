@@ -3,16 +3,17 @@ title: 启用不允许的 H 系列和 N 系列 Azure 虚拟机的配置和优化
 description: 了解如何配置和优化启用了 "不支持" 的 H 系列和 N 系列虚拟机。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b1686b08608e4f1c49cd918e86e8149f0fe2a21c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516844"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963362"
 ---
 # <a name="configure-and-optimize-vms"></a>配置和优化 VM
 

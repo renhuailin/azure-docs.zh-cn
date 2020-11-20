@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e5f9ba7ea4afd81d62cba7b970693f603b53ef9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316080"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962988"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
 
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库托管的目标 SSISDB，可以使用 Integration Services 部署向导来重新部署它们。 可以从 SQL Server Management Studio (SSMS) 中启动向导。
 
-如果使用的 SSIS 版本早于 2012 年版，在将 SSIS 项目/包重新部署到项目部署模型中时，首先需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)。
+如果使用的 SSIS 版本早于 2012 年版，在将 SSIS 项目/包重新部署到项目部署模型中时，首先需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)。
 
 > [!NOTE]
 > Azure 数据库迁移服务 (DMS) 目前不支持将源 SSISDB 迁移到 Azure SQL 数据库，但你可以使用以下过程重新部署 SSIS 项目/包。
@@ -40,7 +40,7 @@ ms.locfileid: "91316080"
 
 * SSMS 17.2 版本或更高版本。
 * 用于托管 SSISDB 的目标数据库服务器的实例。 如果还没有数据库服务器，请通过导航到 SQL Server（仅限逻辑服务器）[表单](https://ms.portal.azure.com/#create/Microsoft.SQLServer)，使用 Azure 门户创建[逻辑 SQL 服务器](../azure-sql/database/logical-servers.md)（不带数据库）。
-* SSIS 必须在包含 Azure-SSIS Integration Runtime (IR) 的 Azure 数据工厂 (ADF) 中进行预配，并且目标 SSISDB 由 SQL 数据库托管（如[在 Azure 数据工厂中预配 Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 一文所述）。
+* SSIS 必须在包含 Azure-SSIS Integration Runtime (IR) 的 Azure 数据工厂 (ADF) 中进行预配，并且目标 SSISDB 由 SQL 数据库托管（如[在 Azure 数据工厂中预配 Azure-SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure.md) 一文所述）。
 
 ## <a name="assess-source-ssis-projectspackages"></a>评估源 SSIS 项目/包
 

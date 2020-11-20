@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514607"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961033"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>修改 StorSimple 8000 系列设备上的 DATA 0 网络接口设置
 
@@ -45,7 +45,7 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
 3. 设置向导随即出现，以帮助配置设备的 DATA 0 接口。 为 IP 地址、网关和网络掩码提供新值。
 
 > [!NOTE]
-> 固定控制器 IP 将需要在 Azure 门户中通过 StorSimple 设备的“网络设置”边栏选项卡进行重新配置。**** 有关详细信息，请转到[修改网络接口](storsimple-8000-modify-device-config.md#modify-network-interfaces)。
+> 固定控制器 IP 将需要在 Azure 门户中通过 StorSimple 设备的“网络设置”边栏选项卡进行重新配置。 有关详细信息，请转到[修改网络接口](storsimple-8000-modify-device-config.md#modify-network-interfaces)。
 
 ## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>通过 Set-HcsNetInterface cmdlet 修改 DATA 0 网络设置
 重新配置 DATA 0 网络接口的另一种方法是使用 `Set-HcsNetInterface` cmdlet。 该 cmdlet 是从 StorSimple 设备的 Windows PowerShell 接口执行的。 当使用此过程时，还可以在此处配置控制器固定 IP。 可以执行以下步骤来修改 DATA 0 设置： 
@@ -64,9 +64,8 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
    * 控制器 0 的固定 IPv4 地址
    * 控制器 1 的固定 IPv4 地址
      
-     有关如何使用此 cmdlet 的详细信息，请转到 [Windows PowerShell for StorSimple cmdlet 参考](https://technet.microsoft.com/library/dn688161.aspx)。
+     有关如何使用此 cmdlet 的详细信息，请转到 [Windows PowerShell for StorSimple cmdlet 参考](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630))。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置 DATA 0 之外的网络接口，可以使用[在 Azure 门户中配置网络设置](storsimple-8000-modify-device-config.md)。 
-* 如果在配置网络接口时遇到任何问题，请参阅[排除部署问题](storsimple-troubleshoot-deployment.md)。
-
+* 如果在配置网络接口时遇到任何问题，请参阅[排除部署问题](./storsimple-8000-troubleshoot-deployment.md)。

@@ -6,12 +6,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.subservice: workloads
+ms.openlocfilehash: 215a17ced6be4cc8792ac1a06115450bfbccac99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61485328"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963260"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Azure 上的 TmaxSoft OpenFrame 入门
 
@@ -31,11 +32,11 @@ ms.locfileid: "61485328"
 以下组件是 Azure 上的 OpenFrame 环境的一部分：
 
 - **迁移工具** （包括 OFMiner），它是一种解决方案，用于分析大型机资产，然后将其迁移到 Azure。
-- **编译器（包括**OFCOBOL），用于解释大型机的 COBOL 程序;OFPLI，用于解释大型机的 PL/I 程序;和 OFASM，它是解释大型机汇编程序程序的编译器。
+- **编译器（包括** OFCOBOL），用于解释大型机的 COBOL 程序;OFPLI，用于解释大型机的 PL/I 程序;和 OFASM，它是解释大型机汇编程序程序的编译器。
 - **前端** 组件，包括 Java 企业用户解决方案 (JEUS ) ，这是针对 Java enterprise EDITION 6 OFGW 的 web 应用程序服务器，以及提供3270侦听器的 OpenFrame 网关组件。
 - **应用程序** 环境。 OpenFrame 是管理整个系统的中间件。 OpenFrame Server Type C (.OSC) 取代了大型机的中间件和 IBM CICS。
 - **关系数据库**，如) 、Oracle Database、MICROSOFT SQL SERVER、IBM Db2 或 MySQL (显示的 Tibero。 OpenFrame 应用程序使用开放式数据库连接 (ODBC) 协议与数据库进行通信。
-- 通过 TACF 的**安全**，该服务模块控制用户对系统和资源的访问。 
+- 通过 TACF 的 **安全**，该服务模块控制用户对系统和资源的访问。 
 - **OFManager** 是一种解决方案，用于在 web 环境中提供 OpenFrame 的操作和管理功能。
 
 ![OpenFrame 体系结构](media/openframe-02.png)

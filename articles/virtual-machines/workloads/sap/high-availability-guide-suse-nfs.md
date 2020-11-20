@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167315"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961951"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -120,7 +121,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    4. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/**&lt; 订阅 ID &gt;**/ResourceGroups/**&lt; 资源组名称 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虚拟网络名称 &gt;**/subnets/**&lt; 子网名称 &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -158,7 +159,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. NW1 的端口 61000
             1. 打开负载均衡器，选择运行状况探测，并单击“添加”
             1. 输入新运行状况探测的名称（例如 **nw1-hp**）
-            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 选择 TCP 作为协议，选择端口 610 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
             1. 单击“确定”
          1. NW2 的端口 61001
             * 重复上述步骤来为 NW2 创建运行状况探测
@@ -192,7 +193,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. NW1 的端口 61000
             1. 打开负载均衡器，选择运行状况探测，并单击“添加”
             1. 输入新运行状况探测的名称（例如 **nw1-hp**）
-            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 选择 TCP 作为协议，选择端口 610 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
             1. 单击“确定”
          1. NW2 的端口 61001
             * 重复上述步骤来为 NW2 创建运行状况探测
@@ -201,7 +202,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
             1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
             1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
             1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
-            1. 将协议保留为“TCP”****，输入端口 **2049**
+            1. 将协议保留为“TCP”，输入端口 **2049**
             1. 将空闲超时增大到 30 分钟
             1. **确保启用浮动 IP**
             1. 单击“确定”
@@ -253,7 +254,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo mkdir /srv/nfs/
    </code></pre>
 
-1. [A] 安装 drbd 组件****
+1. [A] 安装 drbd 组件
 
    <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
@@ -277,7 +278,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
-1. [A] 创建 LVM 配置****
+1. [A] 创建 LVM 配置
 
    列出所有可用的分区
 
@@ -416,25 +417,25 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo drbdadm up <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 跳过初始同步****
+1. [1] 跳过初始同步
 
    <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 设置主节点****
+1. [1] 设置主节点
 
    <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 等待新的 drbd 设备完成同步****
+1. [1] 等待新的 drbd 设备完成同步
 
    <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
-1. [1] 在 drbd 设备上创建文件系统****
+1. [1] 在 drbd 设备上创建文件系统
 
    <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1

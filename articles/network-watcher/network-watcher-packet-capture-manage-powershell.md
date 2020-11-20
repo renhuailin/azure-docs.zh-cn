@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a7af7575fcdd19d83e5a4f38ef03ef8948b8c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737914"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963447"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -48,7 +48,7 @@ ms.locfileid: "84737914"
 * 已启用数据包捕获扩展的虚拟机。
 
 > [!IMPORTANT]
-> 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
+> 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-windows.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-linux.md)。
 
 ## <a name="install-vm-extension"></a>安装 VM 扩展
 
@@ -281,17 +281,3 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，了解是否允许某些流量传入和传出 VM
 
 <!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

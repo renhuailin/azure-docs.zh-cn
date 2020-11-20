@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973812"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960965"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -60,7 +61,7 @@ ms.locfileid: "91973812"
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 不要重启置于脚本内，此操作会导致所安装的其他扩展出现问题。 扩展不会在重启之后继续。
 * 如果你有可导致重启的脚本，则安装应用程序并运行该脚本，可使用 Windows 计划任务或 DSC、Chef 或 Puppet 扩展等工具来计划重启。
-* 不建议运行将导致 VM 代理停止或更新的脚本。 这可以使扩展处于转换状态，从而导致超时。
+* 建议不要运行会导致 VM 代理停止或更新的脚本。 这会使扩展处于“正在转换”状态，从而导致超时。
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
@@ -112,7 +113,7 @@ ms.locfileid: "91973812"
 ```
 
 > [!NOTE]
-> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
+> managedIdentity 属性 **不能** 与 storageAccountName 或 storageAccountKey 属性结合使用
 
 > [!NOTE]
 > 在某个时间点，一个 VM 上只能安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
@@ -197,7 +198,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 > ```
 
 > [!NOTE]
-> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
+> managedIdentity 属性 **不能** 与 storageAccountName 或 storageAccountKey 属性结合使用
 
 ## <a name="template-deployment"></a>模板部署
 

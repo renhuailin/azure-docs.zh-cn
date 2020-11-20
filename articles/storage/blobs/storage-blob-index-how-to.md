@@ -3,18 +3,18 @@ title: 使用 blob 索引标记来管理和查找 Azure Blob 存储上的数据
 description: 请参阅如何使用 blob 索引标记对 blob 对象进行分类、管理和查询的示例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371964"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961781"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 blob 索引标记 (预览) 在 Azure Blob 存储中管理和查找数据
 
@@ -36,7 +36,7 @@ Blob 索引标记使用键-值标记特性对存储帐户中的数据进行分�
 
 1. 将 Visual Studio 项目设置为开始处理适用于 .NET 的 Azure Blob 存储客户端库 v12。 若要了解详细信息，请参阅 [.Net 快速入门](storage-quickstart-blobs-dotnet.md)
 
-2. 在 NuGet 包管理器中，找到 "12.7.0" 包，并安装**项目的版本**"" 或更高版本 **。** 你还可以运行 PowerShell 命令： `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
+2. 在 NuGet 包管理器中，找到 "12.7.0" 包，并安装 **项目的版本**"" 或更高版本 **。** 你还可以运行 PowerShell 命令： `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
    若要了解如何操作，请参阅[查找并安装包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
@@ -56,7 +56,7 @@ Blob 索引标记使用键-值标记特性对存储帐户中的数据进行分�
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>上传带有索引标记的新 blob
 
-使用索引标记上传新 blob 可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)执行。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [基于角色的访问控制](/azure/role-based-access-control/overview) 权限的用户可以执行此操作。
+此任务可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>获取、设置和更新 blob 索引标记
 
-[存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)可以执行获取 blob 索引标记。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [基于角色的访问控制](/azure/role-based-access-control/overview) 权限的用户可以执行此操作。
+获取 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
 
-[存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)可以执行设置和更新 blob 索引标记。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [基于角色的访问控制](/azure/role-based-access-control/overview) 权限的用户可以执行此操作。
+设置和更新 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -132,7 +132,7 @@ static async Task BlobIndexTagsOnCreate()
 
 6. 选择“保存”按钮以确认对 blob 所做的任何更新
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="演示如何上传具有索引标记的 blob 的 Azure 门户屏幕截图。":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="显示如何获取、设置、更新和删除 blob 上索引标记的 Azure 门户屏幕截图。":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>筛选和查找包含 blob 索引标记的数据
 
-搜索和筛选 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)执行。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [基于角色的访问控制](/azure/role-based-access-control/overview) 权限的用户可以执行此操作。
+此任务可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -209,7 +209,7 @@ static async Task BlobIndexTagsExample()
 
 5. 选择“Blob 索引标记筛选器”按钮，以便添加更多标记筛选器（最多 10 个）
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="演示如何上传具有索引标记的 blob 的 Azure 门户屏幕截图。":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="显示如何使用索引标记筛选和查找带标记的 blob 的 Azure 门户屏幕截图":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -303,9 +303,11 @@ static async Task FindBlobsByTagsExample()
 
 4. 选择 " **筛选器** 集"，为前缀匹配和 blob 索引匹配添加可选筛选器
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="演示如何上传具有索引标记的 blob 的 Azure 门户屏幕截图。" 以查看规则设置
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="显示如何为生命周期管理添加索引标记的 Azure 门户屏幕截图。":::
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="演示如何上传具有索引标记的 blob 的 Azure 门户屏幕截图。":::
+5. 选择 "查看" " **+ 添加** " 以查看规则设置
+
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="显示包含 blob 索引标记的生命周期管理规则筛选器示例的 Azure 门户屏幕截图":::
 
 6. 选择“添加”，将新规则应用于生命周期管理策略
 

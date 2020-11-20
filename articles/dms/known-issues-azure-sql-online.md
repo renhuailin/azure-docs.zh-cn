@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 748c3f8e38b98b2cbdcfecdf7d755827230fdb3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291905"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962461"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
@@ -54,7 +54,7 @@ ms.locfileid: "91291905"
 
 **资源**
 
-有关详细信息，请参阅[时态表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)一文。
+有关详细信息，请参阅[时态表](/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)一文。
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>迁移的表中包含一个或多个 hierarchyid 数据类型的列
 
@@ -90,7 +90,7 @@ ms.locfileid: "91291905"
      select * from sys.triggers where is_disabled =0
      ```
 
-2. 使用 [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文中提供的步骤在源数据库中禁用这些触发器。
+2. 使用 [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文中提供的步骤在源数据库中禁用这些触发器。
 
 3. 重新运行迁移活动。
 
