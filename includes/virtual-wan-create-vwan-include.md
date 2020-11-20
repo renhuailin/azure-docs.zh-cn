@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 62d466e81309765540bcbd52714733b97d241ebc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5915830e4521399ad322dd4a6f3926428d811455
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354050"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94942859"
 ---
-从浏览器导航到 Azure 门户并使用 Azure 帐户登录。
+从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择“Enter” 。
+1. 在门户中，选择“+ 创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择“Enter” 。
 1. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，选择“创建”以打开“创建 WAN”页。
 1. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段 ：
 
