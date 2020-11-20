@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094248"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951277"
 ---
-# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台规划和实施指南
+# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台规划和实现指南
 
 ## <a name="overview"></a>概述
 
@@ -137,9 +138,9 @@ BI 平台需要适用于 CMS 和审核数据存储的数据库，该数据库可
 
 - MaxDB
 
-本文档说明了在具有 Azure Database for MySQL 的 Linux 上 **通过 AZURE SQL 数据库** 和 **sap BOBI 平台**部署适用于 Windows 的 sap BOBI 平台的准则。 这也是我们建议在 Azure 上运行 SAP BusinessObjects BI 平台的方法。
+本文档说明了在具有 Azure Database for MySQL 的 Linux 上 **通过 AZURE SQL 数据库** 和 **sap BOBI 平台** 部署适用于 Windows 的 sap BOBI 平台的准则。 这也是我们建议在 Azure 上运行 SAP BusinessObjects BI 平台的方法。
 
-## <a name="sizing"></a>调整大小
+## <a name="sizing"></a>大小调整
 
 调整大小是确定有效运行应用程序的硬件要求的过程。 对于 SAP BOBI 平台，需使用名为 [Quick Sizer](https://www.sap.com/about/benchmark/sizing.quick-sizer.html#quick-sizer)的 SAP 调整工具来完成大小调整。 此工具基于输入提供 SAP，后者需要映射到经过认证的 Azure 虚拟机类型。 SAP 说明 [1928533](https://launchpad.support.sap.com/#/notes/1928533) 提供受支持的 SAP 产品和 Azure VM 类型以及 sap 的列表。 有关调整大小的详细信息，请参阅 [SAP BI 大小调整指南](https://wiki.scn.sap.com/wiki/display/BOBJ/Sizing+and+Deploying+SAP+BusinessObjects+BI+4.x+Platform+and+Add-Ons)。
 
@@ -161,7 +162,7 @@ Azure SQL 数据库提供以下三种购买模型：
   VCore 模型提供三个 [服务层选项](../../../azure-sql/database/service-tiers-vcore.md#service-tiers) ，其中包括-常规用途、业务关键和超大规模。 服务层定义与可用性和灾难恢复相关的存储体系结构、空间、i/o 限制和业务连续性选项。 下面是每个服务层选项的高级详细信息-
 
   1. **常规用途** 服务层最适用于业务工作负荷。 它提供面向预算、平衡和可缩放的计算和存储选项。 有关详细信息，请参阅 [资源选项和限制](../../../azure-sql/database/resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen5)。
-  2. 通过使用多个独立副本，**业务关键**服务层为业务应用程序提供了故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。 有关详细信息，请参阅 [资源选项和限制](../../../azure-sql/database/resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen5)。
+  2. 通过使用多个独立副本，**业务关键** 服务层为业务应用程序提供了故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。 有关详细信息，请参阅 [资源选项和限制](../../../azure-sql/database/resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen5)。
   3. **超大规模** 服务层最适用于具有高度可缩放的存储和读取缩放要求的业务工作负荷。 它通过允许配置多个独立数据库副本来提供更高的故障恢复能力。 有关详细信息，请参阅 [资源选项和限制](../../../azure-sql/database/resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
 
 - 基于 DTU

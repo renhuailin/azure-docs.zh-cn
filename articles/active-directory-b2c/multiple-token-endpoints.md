@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385733"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953927"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>将基于 OWIN 的 web API 迁移到 b2clogin.com
 
-本文介绍了在 web Api 中启用多个令牌颁发者支持的技术，该技术实现 [.net (OWIN) 的开放 Web 界面 ](http://owin.org/)。 将 Azure Active Directory B2C (Azure AD B2C) Api 及其应用程序从 *login.microsoftonline.com* 迁移到 *b2clogin.com*时，支持多个令牌终结点非常有用。
+本文介绍了在 web Api 中启用多个令牌颁发者支持的技术，该技术实现 [.net (OWIN) 的开放 Web 界面 ](http://owin.org/)。 将 Azure Active Directory B2C (Azure AD B2C) Api 及其应用程序从 *login.microsoftonline.com* 迁移到 *b2clogin.com* 时，支持多个令牌终结点非常有用。
 
 通过在接受 b2clogin.com 和 login.microsoftonline.com 颁发的令牌的 API 中添加支持，你可以分阶段迁移 web 应用程序，然后从 API 中删除 login.microsoftonline.com 颁发的令牌支持。
 
@@ -42,8 +42,8 @@ ms.locfileid: "85385733"
 首先选择一个现有的用户流：
 
 1. 导航到[Azure 门户](https://portal.azure.com)中的 Azure AD B2C 租户
-1. 在 " **策略**" 下，选择 " **用户流 (策略") **
-1. 选择现有策略（例如*B2C_1_signupsignin1*），然后选择 "**运行用户流**"
+1. 在 " **策略**" 下，选择 " **用户流 (策略")**
+1. 选择现有策略（例如 *B2C_1_signupsignin1*），然后选择 "**运行用户流**"
 1. 在页面顶部附近的 " **运行用户流** " 标题下，选择超链接以导航到该用户流的 OpenID connect 发现终结点。
 
     ![Azure 门户的“立即运行”页中的“已知 URI”超链接](media/multi-token-endpoints/portal-01-policy-link.png)
@@ -69,7 +69,7 @@ https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
 1. 选择 **标识体验框架**
 1. 选择一个信赖方策略，例如 *B2C_1A_signup_signin*
 1. 使用 " **选择域** " 下拉箭头选择域，例如 *yourtenant.b2clogin.com*
-1. 选择已在**OpenID connect 发现终结点**下显示的超链接
+1. 选择已在 **OpenID connect 发现终结点** 下显示的超链接
 1. 记录 `issuer` 值
 1. 为另一个域执行步骤4-6，例如 *login.microsoftonline.com*
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 在本部分中，将更新代码以指定两个令牌颁发者终结点都是有效的。
 
 1. 在 Visual Studio 中打开 **B2C-WebAPI-DotNet** 解决方案
-1. 在 **TaskService** 项目中，在编辑器中打开 *TaskService \\ App_Start \\ * * Startup.Auth.cs** * 文件
+1. 在 **TaskService** 项目中，在编辑器中打开 * TaskService \\ App_Start \\ **Startup.Auth.cs** _ 文件
 1. 将下面的 `using` 指令添加到文件的顶部：
 
     `using System.Collections.Generic;`
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     };
     ```
 
-`TokenValidationParameters` 由 MSAL.NET 提供，由 *Startup.Auth.cs*中的下一部分代码中的 OWIN 中间件使用。 指定多个有效的颁发者后，OWIN 应用程序管道就会注意到这两个令牌终结点都是有效的颁发者。
+`TokenValidationParameters` 由 MSAL.NET 提供，由 * 中的下一部分 _Startup 代码的 OWIN 中间件使用。 指定多个有效的颁发者后，OWIN 应用程序管道就会注意到这两个令牌终结点都是有效的颁发者。
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -123,7 +123,7 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 由于 web API 现在支持两个 Uri，因此你现在需要更新 web 应用程序，以便从 b2clogin.com 终结点检索令牌。
 
-例如，可以通过修改 `ida:AadInstance` **TaskWebApp**项目的*TaskWebApp \\ * * Web.config** * 文件中的值，将示例 web 应用程序配置为使用新的终结点。
+例如，可以通过修改 `ida:AadInstance` _ TaskWebApp * * 项目的 *TaskWebApp \\ **Web.config** _ 文件* 中的值，将示例 web 应用程序配置为使用新的终结点。
 
 更改 `ida:AadInstance` TaskWebApp 的 *Web.config* 中的值，使其引用 `{your-b2c-tenant-name}.b2clogin.com` 而不是 `login.microsoftonline.com` 。
 
@@ -154,6 +154,6 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

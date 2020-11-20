@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660145"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952533"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 
@@ -32,13 +32,13 @@ ms.locfileid: "94660145"
 
 ## <a name="create-and-install-an-azure-identity"></a>创建并安装 Azure 标识
 
-1. 若要确定是否为 AKS 群集启用了 RBAC，请使用以下命令：
+1. 若要确定 AKS 群集是否启用了 Kubernetes RBAC，请使用以下命令：
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    如果启用了 RBAC，此命令将返回 `true` 值。 此值确定了要在下一步骤中使用的命令。
+    `true`如果启用了 KUBERNETES RBAC，则此命令将返回值。 此值确定了要在下一步骤中使用的命令。
 
 1. 在 AKS 群集中安装 [Azure AD Pod 标识](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) 。
 

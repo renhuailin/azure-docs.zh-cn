@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 54f3f0e1b57525a3bd425575ff03a9f3c91b0044
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926608"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951207"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负载
 在 Azure 中设计 SAP NetWeaver、Business one `Hybris` 或 S/4HANA 系统体系结构可为各种体系结构和工具提供很多不同的机会，以实现可缩放、高效和高度可用的部署。 尽管依赖于所使用的操作系统或 DBMS，但存在一些限制。 此外，Azure 中不支持在本地支持的所有方案。 本文档将通过专门使用 Azure Vm 提供支持的非高可用性配置和高可用性配置和体系结构。 对于 [Hana 大型实例](./hana-overview-architecture.md)支持的方案，请查看文章 [适用于 hana 大型实例的支持方案](./hana-supported-scenario.md)。 

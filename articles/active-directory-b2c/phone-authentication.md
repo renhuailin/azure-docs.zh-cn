@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 096d771cbf6e02a67903da7d5ce495890cc6828d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840485"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953570"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置自定义策略的手机注册和登录
 
@@ -82,7 +82,7 @@ ms.locfileid: "94840485"
 
 ## <a name="deleting-a-user-account"></a>删除用户帐户
 
-在某些情况下，你可能需要从 Azure AD B2C 目录中删除用户和关联的数据。 有关如何通过 Azure 门户删除用户帐户的详细信息，请参阅 [这些说明](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)。 
+在某些情况下，你可能需要从 Azure AD B2C 目录中删除用户和关联的数据。 有关如何通过 Azure 门户删除用户帐户的详细信息，请参阅 [这些说明](/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

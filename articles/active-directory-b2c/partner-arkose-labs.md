@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170218"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953876"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
 
@@ -90,7 +90,7 @@ ms.locfileid: "86170218"
 
 2. 对于 "  **允许的来源**"，输入  `https://your-tenant-name.b2clogin.com` 。 将你的租户-name 替换为你的 Azure AD B2C 租户的名称。 例如： `https://fabrikam.b2clogin.com`。 输入租户名称时全部使用小写字母。
 
-3. 对于 **允许的方法**，请选择 " **获取**"、" **PUT**" 和 " **选项**"。
+3. 对于  **允许的方法**，请选择 " **获取**"、" **PUT**" 和 " **选项**"。
 
 4. 对于“允许的标头”，请输入一个星号 (*)。
 
@@ -100,13 +100,13 @@ ms.locfileid: "86170218"
 
    ![Arkose 实验室注册和登录](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. 选择“保存” 。
+7. 选择“保存”。
 
 ### <a name="part-2--set-up-a-back-end-server"></a>第2部分-设置后端服务器
 
 下载 Git Bash 并按照以下步骤操作：
 
-1. 按照说明 [创建一个 web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
+1. 按照说明 [创建一个 web 应用](../app-service/quickstart-php.md)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
 
 2. 打开本地文件夹，然后将该 verify-token 文件重命名为 " **verify-token.php** **"。**
 
@@ -138,18 +138,18 @@ ms.locfileid: "86170218"
 
 5. 将 index.html 文件上传到上面创建的 blob 存储。
 
-6. 请参阅**存储**  >  **容器**  >  **上传**。
+6. 请参阅 **存储**  >  **容器**  >  **上传**。
 
 #### <a name="set-up-azure-ad-b2c"></a>设置 Azure AD B2C
 
 > [!NOTE]
 > 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
 
-1. 基于 [此处](tutorial-create-user-flows.md)的信息创建用户流。 进入 **测试用户流**部分时停止。
+1. 基于 [此处](tutorial-create-user-flows.md)的信息创建用户流。 进入 **测试用户流** 部分时停止。
 
 2. 在 [用户流](user-flow-javascript-overview.md)中启用 JavaScript。
 
-3. 在同一 "用户流" 页上，启用 "自定义页面 URL：中转到**用户流**  >  **页面布局**  >  "**使用自定义页面内容**  =  **yes**  >  **insert 自定义页面 URL**。
+3. 在同一 "用户流" 页上，启用 "自定义页面 URL：中转到 **用户流**  >  **页面布局**  >  "**使用自定义页面内容**  =  **yes**  >  **insert 自定义页面 URL**。
 此自定义页面 URL 从 blob 存储中 index.html 文件的位置获取  
 
    ![显示 Arkose 实验室存储 url 的屏幕截图](media/partner-arkose-labs/arkose-storage-url.png)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670103"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953349"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的策略密钥概述
 
@@ -28,13 +28,13 @@ Azure Active Directory B2C (Azure AD B2C) 以策略密钥的形式存储机密�
  本文讨论了对于 Azure AD B2C 使用的策略密钥，你需要了解的内容。
 
 > [!NOTE]
-> 目前，策略密钥的配置仅限于 [自定义策略](active-directory-b2c-get-started-custom.md) 。
+> 目前，策略密钥的配置仅限于 [自定义策略](./custom-policy-get-started.md) 。
 
 你可以在 Azure 门户中的“策略密钥”菜单下配置用于在服务之间建立信任的机密和证书。 密钥可以是对称的，也可以是非对称的。 在对称加密或私钥加密中，将使用共享机密来加密和解密数据。 非对称加密或公钥加密这种加密系统使用密钥对，其中包含与信赖方应用程序共享的公钥，以及只有 Azure AD B2C 知道的私钥。
 
 ## <a name="policy-keyset-and-keys"></a>策略密钥集和密钥
 
-Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个密钥集都包含至少一个 **密钥** 。 密钥具有以下属性：
+Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个密钥集都包含至少一个 **密钥**。 密钥具有以下属性：
 
 | Attribute |  必需 | 备注 |
 | --- | --- |--- |
@@ -58,16 +58,16 @@ Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个
 
 如果某个 Azure AD B2C 密钥集包含多个密钥，则每次只有其中一个密钥处于活动状态，具体取决于以下条件：
 
-- 密钥激活基于 **激活日期** 。
+- 密钥激活基于 **激活日期**。
   - 密钥按激活日期以升序排序。 激活日期越靠后，密钥在列表中的位置越靠后。 没有激活日期的密钥位于列表底部。
   - 如果当前日期和时间晚于密钥的激活日期，Azure AD B2C 将激活密钥并停止使用以前的有效密钥。
 - 如果当前密钥的到期时间已过，并且密钥容器包含的新密钥具有有效的“不早于”和“到期”时间，则新密钥将自动变为激活状态。 
 - 如果当前密钥的到期时间已过，并且密钥容器未包含具有有效的“不早于”和“到期”时间的新密钥，则 Azure AD B2C 将无法使用到期的密钥。   Azure AD B2C 将在你的自定义策略的相关组件中引发错误消息。 为了避免此问题，你可以创建不带激活和到期日期的默认密钥作为保障措施。
-- 在 [JwtIssuer 技术配置文件](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)中引用密钥时，OpenId Connect 众所周知的配置终结点的密钥终结点 (JWKS URI) 会反映密钥容器中配置的密钥。 使用 OIDC 库的应用程序将自动提取此元数据，以确保它使用正确的密钥来验证令牌。 有关详细信息，请学习如何使用 [Microsoft 身份验证库](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview)，它会自动提取最新的令牌签名密钥。
+- 在 [JwtIssuer 技术配置文件](./jwt-issuer-technical-profile.md)中引用密钥时，OpenId Connect 众所周知的配置终结点的密钥终结点 (JWKS URI) 会反映密钥容器中配置的密钥。 使用 OIDC 库的应用程序将自动提取此元数据，以确保它使用正确的密钥来验证令牌。 有关详细信息，请学习如何使用 [Microsoft 身份验证库](../active-directory/develop/msal-b2c-overview.md)，它会自动提取最新的令牌签名密钥。
 
 ## <a name="policy-key-management"></a>策略密钥管理
 
-若要获取密钥容器中的当前有效密钥，请使用 Microsoft Graph API [getActiveKey](https://docs.microsoft.com/graph/api/trustframeworkkeyset-getactivekey) 终结点。
+若要获取密钥容器中的当前有效密钥，请使用 Microsoft Graph API [getActiveKey](/graph/api/trustframeworkkeyset-getactivekey) 终结点。
 
 若要添加或删除签名和加密密钥，请执行以下操作：
 
@@ -89,10 +89,3 @@ Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用 Microsoft Graph 自动执行[密钥集](microsoft-graph-operations.md#trust-framework-policy-keyset)和[策略密钥](microsoft-graph-operations.md#trust-framework-policy-key)部署。
-
-
-
-
-
-
-

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259214"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953674"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>有关配置 Onfido 与 Azure Active Directory B2C 的教程
 
@@ -24,13 +24,13 @@ ms.locfileid: "91259214"
 
 在此示例中，我们在注册或登录流中连接 Onfido 的服务，以进行身份验证。 根据 Onfido 的结果，确定用户可以访问的产品和服务的明智决策。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- 链接到 Azure 订阅的[Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 - Onfido [试用帐户](https://onfido.com/signup/)。
 
@@ -74,7 +74,7 @@ Onfido 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-- 将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+- 将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 - 设置 CORS，将允许的 **源** 添加为 https：//{your_tenant_name}. b2clogin .com
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Onfido 集成包括以下组件：
 
 #### <a name="adding-sensitive-configuration-settings"></a>添加敏感配置设置
 
-可以在 [Azure 中的应用服务](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)中配置应用程序设置。 应用服务允许安全配置设置，而无需将其签入存储库。 Rest API 需要以下设置：
+可以在 [Azure 中的应用服务](../app-service/configure-common.md#configure-app-settings)中配置应用程序设置。 应用服务允许安全配置设置，而无需将其签入存储库。 Rest API 需要以下设置：
 
 | 应用程序设置名称 | Source | 注释 |
 |:-------------------------|:-------|:-------|
@@ -92,7 +92,7 @@ Onfido 集成包括以下组件：
 
 #### <a name="configure-your-storage-location"></a>配置存储位置
 
-1. [在存储帐户中设置 blob 存储容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+1. [在存储帐户中设置 blob 存储容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 
 2. 将 ui 文件从 [ui 文件夹](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) 存储到 blob 容器。
 
@@ -106,11 +106,11 @@ Onfido 集成包括以下组件：
 
 #### <a name="update-ui-files"></a>更新 UI 文件
 
-1. 在 UI 文件中，切换到文件夹[ **ocean_blue**](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
+1. 在 UI 文件中，切换到文件夹 [ **ocean_blue**](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
 
 2. 打开每个 html 文件。
 
-3. 查找并将 {ui blob-url} 替换为 UI **ocean_blue**、 **dist**和 **资产** 文件夹所在位置的 url
+3. 查找并将 {ui blob-url} 替换为 UI **ocean_blue**、 **dist** 和 **资产** 文件夹所在位置的 url
 
 4. 查找并将 {中间 api url} 替换为中间 API 应用服务的 URL。
 
@@ -118,7 +118,7 @@ Onfido 集成包括以下组件：
 
 1. 将 ui 文件从 UI 文件夹存储到 blob 容器。
 
-2. 使用 [Azure 存储资源管理器](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) 管理文件和访问权限。
+2. 使用 [Azure 存储资源管理器](../virtual-machines/disks-use-storage-explorer-managed-disks.md) 管理文件和访问权限。
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>第3部分-配置 Azure AD B2C
 
@@ -135,14 +135,14 @@ Onfido 集成包括以下组件：
 | {your_tenant_extensions_appid}                         | 租户的存储应用程序的应用 ID                                      | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_tenant_extensions_app_objectid}                  | 租户的存储应用程序的对象 ID                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | App insights 实例的检测密钥 *| 01234567-89ab-cdef-0123-456789abcdef|
-|{your_ui_file_base_url}| UI **ocean_blue**、 **dist**和 **资产** 文件夹所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
+|{your_ui_file_base_url}| UI **ocean_blue**、 **dist** 和 **资产** 文件夹所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | 已设置的应用服务的 URL                                             | `https://yourapp.azurewebsites.net`          |
 
 * App insights 可以在不同的租户中。 此步骤是可选的。 删除相应的技术配置文件和 OrchestrationSteps （如果不需要）。
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第4部分-配置 Azure AD B2C 策略
 
-请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参阅本 [文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
 > 作为最佳做法，我们建议客户在 "属性集合" 页中添加许可通知。 通知用户信息将发送到第三方服务进行身份验证。
@@ -169,6 +169,6 @@ Onfido 集成包括以下组件：
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

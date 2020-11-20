@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83738551"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952694"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 
 还可以与外部系统相集成。 例如，可以使用 Azure AD B2C 进行身份验证，但将权限委托给用作客户数据的权威来源的外部客户关系管理 (CRM) 或客户忠诚度数据库。 有关详细信息，请参阅[远程配置文件](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile)解决方案。
 
-下表列出了 Azure AD B2C 目录用户配置文件支持的[用户资源类型](https://docs.microsoft.com/graph/api/resources/user)属性。 其中提供了有关每个属性的以下信息：
+下表列出了 Azure AD B2C 目录用户配置文件支持的[用户资源类型](/graph/api/resources/user)属性。 其中提供了有关每个属性的以下信息：
 
 - Azure AD B2C 使用的属性名称（如果不同，后面的括号中会包含 Microsoft Graph 名称）
 - 属性数据类型
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 - 标识提供者具有必须保存的唯一用户标识符，例如 uniqueUserGUID。
 - 自定义用户旅程需要保留用户的状态，例如“migrationStatus”。
 
-Azure AD B2C 扩展存储在每个用户帐户中的属性集。 扩展属性[扩展](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)目录中用户对象的架构。 尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性附加到名为 b2c-extensions-app 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可在 Azure Active Directory 应用注册下找到此应用程序。
+Azure AD B2C 扩展存储在每个用户帐户中的属性集。 扩展属性[扩展](/graph/extensibility-overview#schema-extensions)目录中用户对象的架构。 尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性附加到名为 b2c-extensions-app 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可在 Azure Active Directory 应用注册下找到此应用程序。
 
 > [!NOTE]
 > - 最多可将 100 个扩展属性写入任一用户帐户。
@@ -113,6 +113,6 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 扩展属性[�
 
 ## <a name="next-steps"></a>后续步骤
 了解有关扩展属性的详细信息：
-- [架构扩展](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
+- [架构扩展](/graph/extensibility-overview#schema-extensions)
 - [使用用户流定义自定义属性](user-flow-custom-attributes.md)
 - [使用自定义策略定义自定义属性](custom-policy-custom-attributes.md)

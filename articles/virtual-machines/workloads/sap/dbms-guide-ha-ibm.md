@@ -3,16 +3,17 @@ title: 在 Azure 虚拟机上设置 IBM Db2 HADR (Vm) |Microsoft Docs
 description: 在 Azure 虚拟机 (Vm) 上建立 IBM Db2 LUW 的高可用性。
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146442"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951309"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
@@ -26,7 +27,7 @@ IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HAD
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -100,7 +101,7 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
 | IBM Db2 数据库的虚拟主机名和虚拟 IP| 用于 SAP 应用程序服务器连接的虚拟 IP 或主机名。 **virt-hostname**， **virt-ip**。 |
 | Azure 防护 |  (强烈建议) 的 Azure 防护或 SBD 防护。 避免裂脑情况的方法。 |
 | SBD VM | SBD 虚拟机大小，存储，网络。 |
-| Azure 负载均衡器 | 使用基本或标准 (建议) 、用于 Db2 数据库的探测端口 (建议 62500) **探测**端口。 |
+| Azure 负载均衡器 | 使用基本或标准 (建议) 、用于 Db2 数据库的探测端口 (建议 62500) **探测** 端口。 |
 | 名称解析| 名称解析在环境中的工作方式。 强烈建议使用 DNS 服务。 可以使用本地主机文件。 |
     
 有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在 [azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md)。
@@ -131,7 +132,7 @@ IBM Db2 LUW 的资源代理包含在 SAP 应用程序 SUSE Linux Enterprise Serv
 
 ## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
     
-若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker][sles-pacemaker]。 
+若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker][sles-pacemaker]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安装 IBM Db2 LUW 和 SAP 环境
 
@@ -421,7 +422,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定”  。
+   f. 选择“确定”。
 
 1. 创建运行状况探测：
 
@@ -445,7 +446,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 将“空闲超时”增大到 30 分钟。
 
-   f. 确保**启用浮动 IP**。
+   f. 确保 **启用浮动 IP**。
 
    g. 选择“确定”。
 
@@ -491,7 +492,7 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享，其中的日志从两个节点写入。 NFS 共享必须高度可用。 
 
-可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详情，请参阅：
+可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详细信息，请参阅：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha] 
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](./high-availability-guide-suse-netapp-files.md)
@@ -572,8 +573,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **crm 资源迁移 \<res_name> \<host> ：** 创建位置约束并可能导致接管问题
-- **crm 资源清除 \<res_name> **：清除位置约束
-- **crm 资源清理 \<res_name> **：清除资源的所有错误
+- **crm 资源清除 \<res_name>**：清除位置约束
+- **crm 资源清理 \<res_name>**：清除资源的所有错误
 
 ### <a name="test-the-fencing-agent"></a>测试防护代理
 
@@ -600,7 +601,7 @@ azibmdb01:~ # kill -9 2374
 可以通过停止 *azibmdb01* 节点上的 Pacemaker 服务来测试手动接管：
 <pre><code>service pacemaker stop</code></pre>
 
-*azibmdb02*上的状态
+*azibmdb02* 上的状态
 <pre><code>
 2 nodes configured
 5 resources configured
@@ -619,7 +620,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Stopped: [ azibmdb01 ]
 </code></pre>
 
-故障转移后，可以在 *azibmdb01*上重新启动该服务。
+故障转移后，可以在 *azibmdb01* 上重新启动该服务。
 <pre><code>service pacemaker start</code></pre>
 
 

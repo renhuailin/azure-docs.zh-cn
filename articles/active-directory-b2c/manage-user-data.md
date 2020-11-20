@@ -11,22 +11,22 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9bdf7258296b82e65e03f6b8af8021b9a7be0f0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840536"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952465"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
 
- 本文介绍如何使用 [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) 提供的操作在 Azure Active Directory B2C (Azure AD B2C) 中管理用户数据。 管理用户数据包括从审核日志中删除或导出数据。
+ 本文介绍如何使用 [Microsoft Graph API](/graph/use-the-api) 提供的操作在 Azure Active Directory B2C (Azure AD B2C) 中管理用户数据。 管理用户数据包括从审核日志中删除或导出数据。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>删除用户数据
 
-用户数据存储在 Azure AD B2C 目录，且位于审核日志中。 所有用户审核数据都会在 Azure AD B2C 中保留 7 天。 如果在该 7 天期限内想要删除用户数据，可以使用[删除用户](https://docs.microsoft.com/graph/api/user-delete)操作。 对于数据可能驻留的每个 Azure AD B2C 租户，删除操作是必需的。
+用户数据存储在 Azure AD B2C 目录，且位于审核日志中。 所有用户审核数据都会在 Azure AD B2C 中保留 7 天。 如果在该 7 天期限内想要删除用户数据，可以使用[删除用户](/graph/api/user-delete)操作。 对于数据可能驻留的每个 Azure AD B2C 租户，删除操作是必需的。
 
 Azure AD B2C 中的每个用户都分配有一个对象 ID。 对象 ID 可为你提供明确标识符，以用于删除 Azure AD B2C 中的用户数据。 对象 ID 可以是其他服务（如财务、营销和客户关系管理数据库）中有用的相关标识符，具体取决于你的体系结构。
 

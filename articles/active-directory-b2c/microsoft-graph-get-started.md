@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953995"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -38,7 +38,7 @@ ms.locfileid: "85385920"
 
 * **自动化** - 对于计划的或连续运行的任务，此方法使用你为其配置了执行管理任务所需权限的服务帐户。 通过以下方式在 Azure AD B2C 中创建“服务帐户”：注册一个应用程序，并让你的应用程序和脚本使用其应用程序（客户端）ID 和 OAuth 2.0 客户端凭据授权通过该应用程序进行身份验证。 在这种情况下，应用程序以自己的身份调用 Microsoft Graph API，而不是如前面的交互方式中所述使用管理员用户的身份。
 
-可以通过创建以下各部分中所示的应用程序注册来启用**自动化**交互方案。
+可以通过创建以下各部分中所示的应用程序注册来启用 **自动化** 交互方案。
 
 尽管 Azure AD B2C 身份验证服务目前不直接支持 OAuth 2.0 客户端凭据授权流，但你可以使用 Azure AD 和 Microsoft 标识平台/令牌终结点为 Azure AD B2C 租户中的应用程序设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
 
@@ -70,7 +70,7 @@ ms.locfileid: "85385920"
 
 ## <a name="enable-user-delete-and-password-update"></a>启用用户删除和密码更新
 
-“读取和写入目录数据”权限**未**包括删除用户或更新用户帐户密码的能力。
+“读取和写入目录数据”权限 **未** 包括删除用户或更新用户帐户密码的能力。
 
 如果你的应用程序或脚本需要删除用户或更新其密码，请将“用户管理员”角色分配给你的应用程序：
 
@@ -85,12 +85,12 @@ ms.locfileid: "85385920"
 ## <a name="next-steps"></a>后续步骤
 现在，你已注册了管理应用程序并向其授予了所需的权限，你的应用程序和服务（例如 Azure Pipelines）现在可以使用其凭据和权限与 Microsoft Graph API 进行交互。 
 
-* [从 Azure AD 获取访问令牌](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
-* [使用访问令牌调用 Microsoft Graph](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [从 Azure AD 获取访问令牌](/graph/auth-v2-service#4-get-an-access-token)
+* [使用访问令牌调用 Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph 支持的 B2C 操作](microsoft-graph-operations.md)
 * [使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)
 * [使用 Azure AD 报告 API 获取审核日志](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->
-[ms-graph]: https://docs.microsoft.com/graph/
+[ms-graph]: /graph/
 [ms-graph-api]: https://docs.microsoft.com/graph/api/overview

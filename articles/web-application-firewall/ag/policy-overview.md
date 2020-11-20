@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/19/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566565"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952125"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙 (WAF) 策略概述
 
@@ -53,7 +53,7 @@ Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排�
 
 Adatum.com/payments URI 是需要注意的地方。 因此，请在该 URI 上应用另一个策略并使所有规则保持启用状态，同时删除所有排除项。
 
-在此示例中，你有一个适用于两个站点的全局策略。 你有一个适用于单个站点的每个站点策略，然后是适用于一个基于路径的特定规则的每个 URI 策略。 有关此示例，请参阅此处 (插入链接，) 如何为相应的 PowerShell 创建每个站点和每个 URI 的策略。
+在此示例中，你有一个适用于两个站点的全局策略。 你有一个适用于单个站点的每个站点策略，然后是适用于一个基于路径的特定规则的每个 URI 策略。 有关此示例，请参阅使用 Azure PowerShell 为相应的 PowerShell [配置每站点 WAF 策略](per-site-policies.md) 。
 
 ## <a name="existing-waf-configurations"></a>现有的 WAF 配置
 

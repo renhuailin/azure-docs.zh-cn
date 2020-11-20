@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259265"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953655"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>有关配置 Jumio 与 Azure Active Directory B2C 的教程
 
 在此示例教程中，我们提供了有关如何将 Azure Active Directory B2C (Azure AD B2C) 与 [Jumio](https://www.jumio.com/)集成的指导。 Jumio 是一种 ID 验证服务，它启用实时自动 ID 验证来帮助保护客户数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 。
+- 链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md) 。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -65,7 +65,7 @@ Jumio 集成包括以下组件：
 
 ### <a name="deploy-the-api"></a>部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署到 Azure 服务。 可以按照 [这些说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署到 Azure 服务。 可以按照 [这些说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
@@ -85,7 +85,7 @@ Jumio 集成包括以下组件：
 
    然后，将证书导出到为指定的位置 ``{your-local-path}`` 。
 
-3. 按照 [本文](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#upload-a-private-certificate)中的说明操作，将证书导入 Azure App Service。
+3. 按照 [本文](../app-service/configure-ssl-certificate.md#upload-a-private-certificate)中的说明操作，将证书导入 Azure App Service。
 
 ### <a name="create-a-signingencryption-key"></a>创建签名/加密密钥
 
@@ -102,7 +102,7 @@ Jumio 集成包括以下组件：
 
 ### <a name="configure-the-api"></a>配置 API
 
-可以 [在 Azure App Service 中配置应用程序设置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)。 使用此方法，你可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
+可以 [在 Azure App Service 中配置应用程序设置](../app-service/configure-common.md#configure-app-settings)。 使用此方法，你可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
 | 应用程序设置 | Source | 注释 |
 | :-------- | :------------| :-----------|
@@ -118,7 +118,7 @@ Jumio 集成包括以下组件：
 
 ### <a name="deploy-the-ui"></a>部署 UI
 
-1. [在存储帐户中设置 blob 存储容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。
+1. [在存储帐户中设置 blob 存储容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 
 2. 将 ui 文件从 [用户界面文件夹](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/UI) 存储在 blob 容器中。
 
@@ -139,7 +139,7 @@ Jumio 集成包括以下组件：
 
 1. 在 "策略" 文件夹中转到 " [Azure AD B2C" 策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) 。
 
-2. 请按照 [本文](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) 中的步骤下载 [LocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
+2. 请按照 [本文](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) 中的步骤下载 [LocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
 
 3. 为 Azure AD B2C 租户配置策略。
 
@@ -168,6 +168,6 @@ Jumio 集成包括以下组件：
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

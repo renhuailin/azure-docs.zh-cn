@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363923"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951755"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>利用 Azure Pipelines 部署自定义策略
 
@@ -29,24 +29,24 @@ ms.locfileid: "92363923"
 1. 配置 Azure 管道
 
 > [!IMPORTANT]
-> 使用 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API 终结点上提供的 **预览** 操作 `/beta` 。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 终结点引用](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)。
+> 使用 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API 终结点上提供的 **预览** 操作 `/beta` 。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 终结点引用](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 使用[B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色在目录中为用户[Azure AD B2C 租户](tutorial-create-tenant.md)和凭据
 * 已上传到租户的[自定义策略](custom-policy-get-started.md)
-* 已在你的租户中注册[管理应用](microsoft-graph-get-started.md)，其 Microsoft Graph API 权限*策略。 TrustFramework*
+* 已在你的租户中注册 [管理应用](microsoft-graph-get-started.md)，其 Microsoft Graph API 权限 *策略。 TrustFramework*
 * [Azure 管道](https://azure.microsoft.com/services/devops/pipelines/)和对[Azure DevOps Services 项目][devops-create-project]的访问
 
 ## <a name="client-credentials-grant-flow"></a>客户端凭据授予流
 
-此处所述的方案使用 OAuth 2.0 [客户端凭据授予流](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)在 Azure Pipelines 和 Azure AD B2C 之间使用服务到服务的调用。 此授权流允许 Azure Pipelines) 机密客户端 (的 web 服务使用其自己的凭据，而不是模拟用户在调用另一个 web 服务 (Microsoft Graph API 时进行身份验证，在本例中为) 。 Azure Pipelines 以非交互方式获取令牌，然后向 Microsoft Graph API 发出请求。
+此处所述的方案使用 OAuth 2.0 [客户端凭据授予流](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)在 Azure Pipelines 和 Azure AD B2C 之间使用服务到服务的调用。 此授权流允许 Azure Pipelines) 机密客户端 (的 web 服务使用其自己的凭据，而不是模拟用户在调用另一个 web 服务 (Microsoft Graph API 时进行身份验证，在本例中为) 。 Azure Pipelines 以非交互方式获取令牌，然后向 Microsoft Graph API 发出请求。
 
 ## <a name="register-an-application-for-management-tasks"></a>为管理任务注册应用程序
 
 如 [先决条件](#prerequisites)中所述，你需要一个应用程序注册，你的 PowerShell 脚本（由 Azure Pipelines 执行）可用于访问租户中的资源。
 
-如果你已有一个用于自动化任务的应用程序注册，请确保已向其授予**Microsoft Graph**  >  **Policy**  >  应用注册的**API 权限**中的 Microsoft Graph 策略**TrustFramework**权限。
+如果你已有一个用于自动化任务的应用程序注册，请确保已向其授予 **Microsoft Graph**  >  **Policy**  >  应用注册的 **API 权限** 中的 Microsoft Graph 策略 **TrustFramework** 权限。
 
 有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
@@ -57,10 +57,10 @@ ms.locfileid: "92363923"
 1. 登录到 Azure DevOps Services 组织。
 1. [创建新项目][devops-create-project] 或选择现有项目。
 1. 在项目中，导航到 " **存储库** "，然后选择 " **文件** " 页。 选择现有存储库，或为此练习创建一个。
-1. 创建名为 *B2CAssets*的文件夹。 将所需的占位符文件命名为 *README.md* 并 **提交** 文件。 以后可以根据需要删除此文件。
-1. 将 Azure AD B2C 策略文件添加到 *B2CAssets* 文件夹。 这包括 *TrustFrameworkBase.xml*、 *TrustFrameWorkExtensions.xml*、 *SignUpOrSignin.xml*、 *ProfileEdit.xml*、 *PasswordReset.xml*和已创建的任何其他策略。 记录每个 Azure AD B2C 策略文件的文件名，以便在后面的步骤中使用 (它们用作 PowerShell 脚本参数) 。
+1. 创建名为 *B2CAssets* 的文件夹。 将所需的占位符文件命名为 *README.md* 并 **提交** 文件。 以后可以根据需要删除此文件。
+1. 将 Azure AD B2C 策略文件添加到 *B2CAssets* 文件夹。 这包括 *TrustFrameworkBase.xml*、 *TrustFrameWorkExtensions.xml*、 *SignUpOrSignin.xml*、 *ProfileEdit.xml*、 *PasswordReset.xml* 和已创建的任何其他策略。 记录每个 Azure AD B2C 策略文件的文件名，以便在后面的步骤中使用 (它们用作 PowerShell 脚本参数) 。
 1. 在存储库的根目录中创建一个名为 " *脚本* " 的文件夹，将占位符文件命名 *DeployToB2c.ps1*。 此时不要提交文件，您将在后面的步骤中执行此操作。
-1. 将以下 PowerShell 脚本粘贴到 *DeployToB2c.ps1*中，并 **提交** 文件。 此脚本从 Azure AD 获取一个令牌，并调用 Microsoft Graph API，将 *B2CAssets* 文件夹中的策略上传到 Azure AD B2C 租户。
+1. 将以下 PowerShell 脚本粘贴到 *DeployToB2c.ps1* 中，并 **提交** 文件。 此脚本从 Azure AD 获取一个令牌，并调用 Microsoft Graph API，将 *B2CAssets* 文件夹中的策略上传到 Azure AD B2C 租户。
 
     ```PowerShell
     [Cmdletbinding()]
@@ -120,7 +120,7 @@ ms.locfileid: "92363923"
 1. 选择 " **添加项目**"，然后在 " **源类型**" 下选择 " **Azure 存储库**"。
     1. 选择包含用 PowerShell 脚本填充的 *脚本* 文件夹的源存储库。
     1. 选择 **默认分支**。 如果在上一节中创建了新的存储库，则默认分支为 *master*。
-    1. 保留*默认分支的 "最新***版本" 默认版本**设置。
+    1. 保留 *默认分支的 "最新***版本" 默认版本** 设置。
     1. 输入存储库的 **源别名** 。 例如， *policyRepo*。 不要在别名中包含任何空格。
 1. 选择“添加”
 1. 重命名管道，以反映其意图。 例如， *部署自定义策略管道*。
@@ -131,9 +131,9 @@ ms.locfileid: "92363923"
 1. 选择 " **变量** " 选项卡。
 1. 将以下变量添加到 **管道变量** 下，并按指定设置其值：
 
-    | 名称 | “值” |
+    | 名称 | 值 |
     | ---- | ----- |
-    | `clientId` | **应用程序 (客户端) ** 你之前注册的应用程序的 ID。 |
+    | `clientId` | **应用程序 (客户端)** 你之前注册的应用程序的 ID。 |
     | `clientSecret` | 先前创建的 **客户端密码** 的值。 <br /> 将变量类型更改为 **机密** (选择锁定图标) 。 |
     | `tenantId` | `your-b2c-tenant.onmicrosoft.com`，其中， *-b2c-租户* 是 Azure AD B2C 租户的名称。 |
 
@@ -151,10 +151,10 @@ ms.locfileid: "92363923"
     * **任务版本**： 2. *
     * **显示名称**：此任务应上传的策略的名称。 例如， *B2C_1A_TrustFrameworkBase*。
     * **类型**：文件路径
-    * **脚本路径**：选择省略号 ( **_..._*_) 中，导航到 _Scripts * 文件夹，然后选择 *DeployToB2C.ps1* 文件。
+    * **脚本路径**：选择省略号 ( **_..._* _) 中，导航到 _Scripts * 文件夹，然后选择 *DeployToB2C.ps1* 文件。
     * **参数：**
 
-        输入以下 **参数**值。 将替换 `{alias-name}` 为在上一节中指定的别名。
+        输入以下 **参数** 值。 将替换 `{alias-name}` 为在上一节中指定的别名。
 
         ```PowerShell
         # Before
@@ -211,10 +211,10 @@ PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 
 了解有关以下方面的详细信息：
 
-* [使用客户端凭据的服务到服务调用](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
-* [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
+* [使用客户端凭据的服务到服务调用](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
 
 <!-- LINKS - External -->
-[devops]: https://docs.microsoft.com/azure/devops/?view=azure-devops
-[devops-create-project]:  https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops
-[devops-pipelines]: https://docs.microsoft.com/azure/devops/pipelines
+[devops]: /azure/devops/?view=azure-devops
+[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops-pipelines]: /azure/devops/pipelines

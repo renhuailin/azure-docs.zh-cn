@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214917"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952074"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
 
@@ -39,27 +39,27 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 
 ## <a name="key-new-features"></a>主要的新功能
 
--   **统一的应用列表**会在一个便利位置显示所有使用 Azure AD B2C 和 Azure AD 进行身份验证的应用程序。 此外，可以利用已可用于 Azure AD 应用程序的功能，包括“创建时间”、“证书和密码”状态、搜索栏等等 。
+-   **统一的应用列表** 会在一个便利位置显示所有使用 Azure AD B2C 和 Azure AD 进行身份验证的应用程序。 此外，可以利用已可用于 Azure AD 应用程序的功能，包括“创建时间”、“证书和密码”状态、搜索栏等等 。
 
--   **组合的应用注册**可帮助你快速注册应用，无论该应用是面向客户的还是用于访问 Microsoft Graph 的应用。
+-   **组合的应用注册** 可帮助你快速注册应用，无论该应用是面向客户的还是用于访问 Microsoft Graph 的应用。
 
-- **终结点**窗格有助于快速识别方案的相关终结点，包括 OpenID connect 配置、SAML 元数据、Microsoft Graph API 和 [OAuth 2.0 用户流终结点](tokens-overview.md#endpoints)。
+- **终结点** 窗格有助于快速识别方案的相关终结点，包括 OpenID connect 配置、SAML 元数据、Microsoft Graph API 和 [OAuth 2.0 用户流终结点](tokens-overview.md#endpoints)。
 
-- **API 权限**和**公开 API** 提供更广泛的范围、权限和同意管理。 现在还可将 MS Graph 和 Azure AD Graph 权限分配给应用。
+- **API 权限** 和 **公开 API** 提供更广泛的范围、权限和同意管理。 现在还可将 MS Graph 和 Azure AD Graph 权限分配给应用。
 
--   **所有者**和**清单**现可用于使用 Azure AD B2C 进行身份验证的应用。 可为注册添加所有者，并[使用清单编辑器](../active-directory/develop/reference-app-manifest.md)直接编辑应用程序属性。
+-   **所有者** 和 **清单** 现可用于使用 Azure AD B2C 进行身份验证的应用。 可为注册添加所有者，并[使用清单编辑器](../active-directory/develop/reference-app-manifest.md)直接编辑应用程序属性。
 
 
 ## <a name="new-supported-account-types"></a>新的受支持的帐户类型
 
 在新体验中，从以下选项中选择支持帐户类型：
-- 仅限此组织目录中的帐户
+- 仅此组织目录中的帐户
 - 任何组织目录中的帐户 (任何 Azure AD 目录–多租户) 
-- 任何标识提供者或组织目录中的帐户 (向用户流验证用户) 
+- 任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)
 
 若要了解不同的帐户类型，请选择创建体验中的“帮我选择”。
 
-在旧体验中，创建的应用始终是面向客户的应用程序。 对于这些应用程序，将帐户类型设置为 **任何标识提供者或组织目录 (中的帐户，以便对用户流) 用户进行身份验证 **。
+在旧体验中，创建的应用始终是面向客户的应用程序。 对于这些应用，帐户类型将设置为“任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)”。
 > [!NOTE]
 > 若要对此应用程序的用户进行身份验证，需要此选项才能运行 Azure AD B2C 用户流。 了解[如何注册应用程序以便能使用用户流。](tutorial-register-applications.md)
 
@@ -96,11 +96,11 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>不适用于 Azure AD B2C 租户的功能
 以下 Azure AD 应用注册功能不适用或不可用于 Azure AD B2C 租户：
-- **角色和管理员** -当前不适用于 Azure AD B2C。
+- **角色和管理员** - 当前不可用于 Azure AD B2C。
 - **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-overview.md)。
-- **发布服务器域验证** -你的应用程序在 *onmicrosoft.com*上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。
+- **发布服务器域验证** -你的应用程序在 *onmicrosoft.com* 上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **令牌配置** - 令牌配置为用户流而不是应用的一部分。
-- **快速入门**体验目前不适用于 Azure AD B2C 租户。
+- **快速入门** 体验目前不适用于 Azure AD B2C 租户。
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>限制

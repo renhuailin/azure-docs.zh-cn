@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300439"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954063"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -332,7 +332,7 @@ hcs_startup                                   Stopped hcs_startup
 * 未在门户中启用 DATA 2 - 5。
 * DNS 服务器配置有效，设备可通过 DNS 服务器建立连接。
 * NTP 服务器连接也正常。
-* 已打开端口 80 和 443。 但是，端口 9354 被阻止。 根据[系统网络要求](storsimple-system-requirements.md)，需要打开此端口才能进行服务总线通信。
+* 已打开端口 80 和 443。 但是，端口 9354 被阻止。 根据[系统网络要求](./storsimple-8000-system-requirements.md)，需要打开此端口才能进行服务总线通信。
 * TLS/SSL 证书有效。
 * 设备可连接到存储帐户：_myss8000storageacct_。
 * 与更新服务器的连接有效。
@@ -388,7 +388,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
     如果诊断工具报告的读写延迟较高：
 
-    1. 为 Blob 服务配置存储分析，并分析输出以了解 Azure 存储帐户的延迟。 有关详细说明，请参阅 [enable and configure Storage Analytics](../storage/common/storage-enable-and-view-metrics.md)（启用和配置存储分析）。 如果这些延迟也是很高，与 StorSimple 诊断工具提供的数字相当，则需要提出 Azure 存储相关的服务请求。
+    1. 为 Blob 服务配置存储分析，并分析输出以了解 Azure 存储帐户的延迟。 有关详细说明，请参阅 [enable and configure Storage Analytics](../storage/blobs/monitor-blob-storage.md)（启用和配置存储分析）。 如果这些延迟也是很高，与 StorSimple 诊断工具提供的数字相当，则需要提出 Azure 存储相关的服务请求。
 
     2. 如果存储帐户延迟较低，请联系网络管理员调查网络中的任何延迟问题。
 
@@ -440,6 +440,6 @@ Controller0>
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Invoke-HcsDiagnostics cmdlet 的语法](https://technet.microsoft.com/library/mt795371.aspx)。
+* 了解 [Invoke-HcsDiagnostics cmdlet 的语法](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630))。
 
-* 了解有关如何在 StorSimple 设备上[排查部署问题](storsimple-troubleshoot-deployment.md)。
+* 了解有关如何在 StorSimple 设备上[排查部署问题](./storsimple-8000-troubleshoot-deployment.md)。

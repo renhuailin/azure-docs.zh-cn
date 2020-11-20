@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4f6b09061a4aa98824e176af55efcedfab3df48c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051893"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953757"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>有关配置 HYPR 与 Azure Active Directory B2C 的教程
 
 在此示例教程中，我们提供了有关如何配置 [HYPR](https://get.hypr.com)Azure AD B2C 的指导。 使用 Azure AD B2C 作为标识提供者，你可以将 HYPR 与任何客户应用程序集成，为用户提供真正的无密码身份验证。 HYPR 将密码替换为公钥加密，消除欺诈、仿冒和凭据重用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 租户已链接到 Azure 订阅。
+- [Azure AD B2C 租户](./tutorial-create-tenant.md)。 租户已链接到 Azure 订阅。
 
 - HYPR cloud 租户，获取免费 [试用帐户](https://get.hypr.com/free-trial)。
 
@@ -62,7 +62,7 @@ HYRP 集成包括以下组件：
 
 1. 请在策略文件夹中转到 [AZURE AD B2C HYPR 策略](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy) 。
 
-2. 按照此 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) 下载 [LocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. 按照此 [文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) 下载 [LocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. 为 Azure AD B2C 租户配置策略。
 
@@ -91,6 +91,6 @@ HYRP 集成包括以下组件：
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

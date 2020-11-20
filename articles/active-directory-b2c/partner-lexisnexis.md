@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259248"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953673"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>有关配置 LexisNexis 与 Azure Active Directory B2C 的教程
 
@@ -27,13 +27,13 @@ ms.locfileid: "91259248"
 - 电话号码
 - 从用户的计算机收集的分析信息
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- 链接到 Azure 订阅的[Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -73,14 +73,14 @@ ThreatMetrix 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
 
 ### <a name="part-2---configure-the-api"></a>第2部分-配置 API
 
-可以 [在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。  使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
+可以 [在 Azure 中的应用服务中配置](../app-service/configure-common.md#configure-app-settings)应用程序设置。  使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
 | 应用程序设置 | Source | 注释 |
 | :-------- | :------------| :-----------|
@@ -95,13 +95,13 @@ ThreatMetrix 集成包括以下组件：
 
 此解决方案使用由 Azure AD B2C 加载的自定义 UI 模板。 这些 UI 模板会执行直接发送到 ThreatMetrix 服务的分析。
 
-请参阅这些 [说明](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) ，将包括的 [UI 文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 部署到 blob 存储帐户。 说明包括设置 blob 存储帐户、配置 CORS 和启用公共访问。
+请参阅这些 [说明](./custom-policy-ui-customization.md#custom-page-content-walkthrough) ，将包括的 [UI 文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 部署到 blob 存储帐户。 说明包括设置 blob 存储帐户、配置 CORS 和启用公共访问。
 
 UI 基于 [海蓝色模板](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)。 UI 中的所有链接都应更新以引用部署的位置。 在 UI 文件夹中，查找并 https://yourblobstorage/blobcontainer 将替换为部署位置。
 
 ### <a name="part-4---create-api-policy-keys"></a>第4部分-创建 API 策略密钥
 
-请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) 并创建两个策略密钥–一个用于 api 用户名，另一个用于前面定义的 api 密码。
+请参阅本 [文档](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) 并创建两个策略密钥–一个用于 api 用户名，另一个用于前面定义的 api 密码。
 
 示例策略使用这些密钥名称：
 
@@ -122,7 +122,7 @@ UI 基于 [海蓝色模板](https://github.com/azure-ad-b2c/partner-integrations
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>第7部分-配置 Azure AD B2C 策略
 
-请参阅此 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) 下载 [本地帐户初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) ，并为 Azure AD B2C 租户配置 [策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) 。
+请参阅此 [文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) 下载 [本地帐户初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) ，并为 Azure AD B2C 租户配置 [策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) 。
 
 >[!NOTE]
 >更新提供的策略，使其与你的特定租户相关。
@@ -147,12 +147,12 @@ UI 基于 [海蓝色模板](https://github.com/azure-ad-b2c/partner-integrations
 
 6. 经历登录流  
 
-7. 输入 **continue**后，ThreatMetrix 谜会弹出。
+7. 输入 **continue** 后，ThreatMetrix 谜会弹出。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

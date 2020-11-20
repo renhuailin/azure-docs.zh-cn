@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102045"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951615"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -46,7 +46,7 @@ ms.locfileid: "92102045"
 
 下面是收集家长同意的用户流示例：
 
-1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) 操作将识别用户为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
+1. [Microsoft Graph API](/graph/use-the-api) 操作将识别用户为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
 
 2. 应用程序会处理 JSON 令牌，并向未成年人显示一个屏幕，告知其需要家长同意，以及要求家长在线同意。
 
@@ -56,7 +56,7 @@ ms.locfileid: "92102045"
 
 5. 未成年人或成年人撤消同意时，可以使用 Microsoft Graph API 将 consentProvidedForMinor 更改为 denied。  或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft Graph API 处理扩展属性时，必须使用属性的长版本，例如 extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth:2011-01-01T00:00:00Z。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅 [用户资源类型](/graph/api/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft Graph API 处理扩展属性时，必须使用属性的长版本，例如 extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth:2011-01-01T00:00:00Z。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和国家/地区数据
 
@@ -114,7 +114,7 @@ ms.locfileid: "92102045"
 
 ![显示建议的接受用户流的流程图图表](./media/manage-user-access/user-flow.png)
 
-下面是声明中基于日期的使用条款同意的示例。 如果 `extension_termsOfUseConsentDateTime` 声明早于，则 `2025-01-15T00:00:00` 通过检查 `termsOfUseConsentRequired` 布尔声明并显示自断言屏幕来强制新接受。 
+下面是声明中基于日期的使用条款同意情况示例。 如果 `extension_termsOfUseConsentDateTime` 声明早于 `2025-01-15T00:00:00`，请通过检查 `termsOfUseConsentRequired` 布尔声明并显示一个自断言屏幕来强制重新接受声明。 
 
 ```xml
 <ClaimsTransformations>
@@ -137,7 +137,7 @@ ms.locfileid: "92102045"
 </ClaimsTransformations>
 ```
 
-下面是声明中基于版本的使用条款同意的示例。 如果该 `extension_termsOfUseConsentVersion` 声明不等于，则 `V1` 通过检查 `termsOfUseConsentRequired` 布尔声明并显示自断言屏幕来强制新接受。
+下面是声明中基于版本的使用条款同意情况示例。 如果 `extension_termsOfUseConsentVersion` 声明不等于 `V1`，请通过检查 `termsOfUseConsentRequired` 布尔声明并显示一个自断言屏幕来强制重新接受声明。
 
 ```xml
 <ClaimsTransformations>

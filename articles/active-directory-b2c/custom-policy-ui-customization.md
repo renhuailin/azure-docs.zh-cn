@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388878"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951836"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -34,12 +34,12 @@ ms.locfileid: "85388878"
 
 若要配置 UI 自定义，请将基文件中的 **ContentDefinition** 及其子元素复制到扩展文件中。
 
-1. 打开策略的基文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkBase.xml`</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取 [自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
-1. 搜索并复制 ContentDefinitions**** 元素的全部内容。
-1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml**。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
-1. 粘贴复制为**BuildingBlocks**元素的子元素的**ContentDefinitions**元素的全部内容。
-1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition**** 元素。
-1. 将 LoadUri**** 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+1. 打开策略的基文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkBase.xml`</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取 [自定义策略入门](./custom-policy-get-started.md)。
+1. 搜索并复制 ContentDefinitions 元素的全部内容。
+1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
+1. 粘贴复制为 **BuildingBlocks** 元素的子元素的 **ContentDefinitions** 元素的全部内容。
+1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
+1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     自定义策略应类似于以下代码片段：
 

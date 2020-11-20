@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259367"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953842"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>有关配置 Experian 与 Azure Active Directory B2C 的教程
 
@@ -36,13 +36,13 @@ ms.locfileid: "91259367"
 - 国家/地区
 - 电话号码
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- 链接到 Azure 订阅的[Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -77,14 +77,14 @@ Experian 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
 
 ### <a name="part-2---deploy-the-client-certificate"></a>第2部分-部署客户端证书
 
-Experian API 调用受到客户端证书的保护。 此客户端证书将由 Experian 提供。 按照本 [文档](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)中所述的说明，证书必须上传到 Azure 应用服务。 示例策略在过程中使用以下键步骤：
+Experian API 调用受到客户端证书的保护。 此客户端证书将由 Experian 提供。 按照本 [文档](../app-service/environment/certificates.md#private-client-certificate)中所述的说明，证书必须上传到 Azure 应用服务。 示例策略在过程中使用以下键步骤：
 
 - 上传证书
 
@@ -92,7 +92,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-3---configure-the-api"></a>第3部分-配置 API
 
-可以 [在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
+可以 [在 Azure 中的应用服务中配置](../app-service/configure-common.md#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
 | 应用程序设置 | Source | 注释 |
 | :-------- | :------------| :-----------|
@@ -110,7 +110,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-4---create-api-policy-keys"></a>第4部分-创建 API 策略密钥
 
-请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) 并创建两个策略密钥–一个用于 api 用户名，另一个用于为 HTTP 基本身份验证定义的 api 密码。
+请参阅本 [文档](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) 并创建两个策略密钥–一个用于 api 用户名，另一个用于为 HTTP 基本身份验证定义的 api 密码。
 
 >[!NOTE]
 >稍后需要用到的密钥来配置策略。
@@ -133,7 +133,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>第6部分-配置 Azure AD B2C 策略
 
-请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参阅本 [文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
 >此示例策略基于 [本地帐户 starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
@@ -161,12 +161,12 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 6. 经历登录流  
 
-7. 输入 **continue**后，CrossCore 谜会弹出。
+7. 输入 **continue** 后，CrossCore 谜会弹出。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
