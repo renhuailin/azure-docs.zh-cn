@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288368"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987331"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
 ## <a name="dismiss-user-risk-known-issues"></a>消除用户风险已知问题
 
-消除经典 Identity Protection 中的 **用户风险** 将标识保护的用户风险历史记录中的执行组件设置为 **Azure AD** 。
+消除经典 Identity Protection 中的 **用户风险** 将标识保护的用户风险历史记录中的执行组件设置为 **Azure AD**。
 
 消除 Identity Protection 中的 **用户风险** 将标识保护的用户风险历史记录中的执行组件设置为 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 当前已知问题导致用户风险消除流中的延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="why-is-a-user-is-at-risk"></a>为什么用户面临风险？
 
@@ -38,7 +38,7 @@ ms.locfileid: "93288368"
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
 由于多种原因，登录可能被阻止。 需要特别注意的是，标识保护仅在身份验证请求中使用正确的凭据时才会生成风险检测。 如果用户使用不正确的凭据，则标识保护将不会对其进行标记，因为如果错误的使用者使用正确的凭据，则不存在凭据泄露的风险。 阻止用户签名但不会生成标识保护检测的一些原因包括：
 * 由于来自 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
-* 在多次尝试失败后， **[智能锁定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** 会阻止该帐户登录
+* 在多次尝试失败后，**[智能锁定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** 会阻止该帐户登录
 * 可以强制实施 **条件性访问策略** ，该策略使用风险级别以外的条件来阻止身份验证请求
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何获取特定类型检测的报告？
@@ -69,7 +69,7 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>“标识保护”中的反馈机制是如何工作的？
 
-**确认泄漏** （在登录时） - 通知 Azure AD 标识保护，该登录不是由标识所有者执行的，并指示存在泄漏。
+**确认泄漏**（在登录时） - 通知 Azure AD 标识保护，该登录不是由标识所有者执行的，并指示存在泄漏。
 
 - 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
@@ -78,7 +78,7 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
     > [!NOTE]
     > 如果已对用户采取修正措施，不要单击“确认泄漏”，因为这会将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
-**确认安全** （在登录时） - 通知 Azure AD 标识保护，登录是由标识所有者执行的，不指示存在泄漏。
+**确认安全**（在登录时） - 通知 Azure AD 标识保护，登录是由标识所有者执行的，不指示存在泄漏。
 
 - 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”，将风险级别改为 -。
 
@@ -95,6 +95,4 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>为什么链接到有风险的登录的风险级别不同于登录风险级别 (实时) 的情况？ 
 
-我们最近对如何计算实时登录风险进行了改进。 风险检测级别和登录风险级别之间出现的差异是这些更改的结果。 请注意，实时登录风险是在策略实施期间使用的值。 

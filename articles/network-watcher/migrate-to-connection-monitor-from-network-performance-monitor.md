@@ -1,5 +1,5 @@
 ---
-title: 从网络性能监视器迁移到连接监视器
+title: '从网络性能监视器迁移到连接监视器 (预览) '
 titleSuffix: Azure Network Watcher
 description: 了解如何从网络性能监视器迁移到连接监视器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 949f717c56892f8a1d0826e8e6f1f2164a4a142c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974783"
+ms.locfileid: "94985801"
 ---
-# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
+# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器 (预览) 
 
 你可以通过一次单击和零停机时间，将测试从网络性能监视器 (NPM) 迁移到新的、经过改进的连接监视器。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
+
+> [!IMPORTANT]
+> 连接监视器当前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 >[!NOTE]
 > 只有服务连接监视器中的测试可以迁移到连接监视器。

@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985512"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -37,9 +37,9 @@ ms.locfileid: "94842220"
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
 
-### <a name="rbac-permissions-required"></a>所需的 RBAC 权限
+### <a name="azure-rbac-permissions-required"></a>需要 Azure RBAC 权限
 
-启动故障转移的用户需要具有下列 RBAC 角色之一：
+启动故障转移的用户需要具有以下 Azure 角色之一：
 
 - “订阅所有者”角色或
 - “托管实例参与者”角色或

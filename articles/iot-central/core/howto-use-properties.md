@@ -3,32 +3,32 @@ title: 使用 Azure IoT Central 解决方案中的属性
 description: 了解如何在 Azure IoT Central 解决方案中使用只读和可写属性。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/12/2020
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123777"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986517"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
 本文介绍如何使用 Azure IoT Central 应用程序的设备模板中定义的设备属性。
 
-属性表示时间点值。 例如，设备可使用属性来报告它尝试达到的目标温度。 属性还允许您在设备和 Azure IoT Central 应用程序之间同步状态。 可从 Azure IoT Central 设置可写属性。
+属性表示时间点值。 例如，设备可使用属性来报告它尝试达到的目标温度。 默认情况下，设备属性在 IoT Central 中是只读的。 可写属性使你可以在设备和 Azure IoT Central 应用程序之间同步状态。
 
 你还可以在 Azure IoT Central 应用程序中定义云属性。 云属性值永远不会与设备交换，并超出了本文的范围。
 
 ## <a name="define-your-properties"></a>定义属性
 
-属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，例如设备的开/关状态。 属性还可以表示设备的基本设备属性，例如设备的软件版本。 你可以将属性声明为只读或可写。
+属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，例如设备的开/关状态。 属性还可以表示设备的基本设备属性，例如设备的软件版本。 可以将属性声明为只读或可写。
 
 以下屏幕截图显示 Azure IoT Central 应用程序中的属性定义。
 
-![屏幕截图，显示 Azure IoT Central 应用程序中的属性定义。](./media/howto-use-properties/property-definition.png)
+:::image type="content" source="media/howto-use-properties/property-definition.png" alt-text="屏幕截图，显示 Azure IoT Central 应用程序中的属性定义。":::
 
 下表显示了属性功能的配置设置。
 
@@ -40,94 +40,74 @@ ms.locfileid: "92123777"
 | 语义类型   | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。                                                                       |
 | 架构          | 属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。                                               |
 | 可写       | 如果该属性不是可写的，则设备可以将属性值报告给 Azure IoT Central。 如果该属性是可写的，则设备可以将属性值报告给 Azure IoT Central。 然后，Azure IoT Central 可以将属性更新发送到设备。 |
-| 严重性        | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”************。                                                                                                                         |
+| 严重性        | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”。                                                                                                                         |
 | 状态值    | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。                                                                                   |
-| 单位            | 属性值的单位，如**mph**、 **%** 或** &deg; C**。                                                                                                                                                              |
+| 计价单位            | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 显示单位    | 仪表板和窗体上使用的显示单位。                                                                                                                                                                                    |
 | 评论         | 有关属性功能的任何注释。                                                                                                                                                                                        |
-| 描述     | 属性功能的说明。                                                                                                                                                                                          |
+| 说明     | 属性功能的说明。                                                                                                                                                                                          |
 
 属性还可以在设备模板中的接口中定义，如下所示：
 
 ``` json
 {
-  "@type": "Property",
-  "displayName": "Device State",
-  "description": "The state of the device. Two states online/offline are available.",
-  "name": "state",
-  "schema": "boolean"
-},
-{
-  "@type": "Property",
-  "displayName": "Customer Name",
-  "description": "The name of the customer currently operating the device.",
-  "name": "name",
-  "schema": "string",
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "targetTemperature",
+  "schema": "double",
+  "displayName": "Target Temperature",
+  "description": "Allows to remotely specify the desired target temperature.",
+  "unit" : "degreeCelsius",
   "writable": true
 },
 {
- "@type": "Property",
- "displayName": "Date ",
- "description": "The date on which the device is currently operating",
- "name": "date",
- "writable": true,
- "schema": "date"
-},
-{ 
- "@type": "Property",
- "displayName": "Location",
- "description": "The current location of the device",
- "name": "location",
- "writable": true,
- "schema": "geopoint"
-},
-{
- "@type": "Property",
- "displayName": "Vector Level",
- "description": "The Vector level of the device",
- "name": "vector",
- "writable": true,
- "schema": "vector"
+  "@type": [
+    "Property",
+    "Temperature"
+  ],
+  "name": "maxTempSinceLastReboot",
+  "schema": "double",
+  "unit" : "degreeCelsius",
+  "displayName": "Max temperature since last reboot.",
+  "description": "Returns the max temperature since last device reboot."
 }
 ```
 
-此示例显示了五个属性。 这些属性可与 UI 中的属性定义相关，如下所示：
+此示例显示了两个属性。 这些属性与 UI 中的属性定义相关：
 
-* `@type` 指定功能类型： `Property`
-* `name` 属性值的。
+* `@type` 指定功能类型： `Property` 。 前面的示例还显示了 `Temperature` 这两个属性的语义类型。
+* `name` 属性的。
 * `schema` 指定属性的数据类型。 此值可以是基元类型，如 double、integer、Boolean 或 string。 还支持复杂的对象类型、数组和映射。
 * `writable` 默认情况下，属性是只读的。 您可以使用此字段将属性标记为可写。
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。
 
-当您创建属性时，可以指定复杂的 **架构** 类型（如对象和枚举）。
+当您创建属性时，您可以指定复杂的架构类型（如 **对象** 和 **枚举**）。
 
 ![显示如何添加功能的屏幕截图。](./media/howto-use-properties/property.png)
 
 选择复杂 **架构**（如 **对象**）时，还需要定义对象。
 
-![显示如何定义对象的屏幕截图。](./media/howto-use-properties/object.png)
+:::image type="content" source="media/howto-use-properties/object.png" alt-text="显示如何定义对象的屏幕截图":::
 
 下面的代码演示对象属性类型的定义。 此对象包含两个字段，其类型为 string 和 integer。
 
 ``` json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -135,8 +115,6 @@ ms.locfileid: "92123777"
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -150,15 +128,14 @@ ms.locfileid: "92123777"
 
 ## <a name="implement-read-only-properties"></a>实现只读属性
 
-默认情况下，属性是只读的。 只读属性意味着设备将属性值更新报告给 Azure IoT Central 应用程序。 Azure IoT Central 应用程序无法设置只读属性的值。
+默认情况下，属性是只读的。 只读属性允许将设备报表属性值更新为 Azure IoT Central 应用程序。 Azure IoT Central 应用程序无法设置只读属性的值。
 
 Azure IoT Central 使用设备孪生在设备和 Azure IoT Central 应用程序之间同步属性值。 设备属性值使用设备孪生报告属性。 有关详细信息，请参阅 [设备孪生](../../iot-hub/tutorial-device-twins.md)。
 
-来自设备功能模型的以下代码片段显示了只读属性类型的定义：
+设备模型中的以下代码片段显示了只读属性类型的定义：
 
 ``` json
 {
-  "@type": "Property",
   "name": "model",
   "displayName": "Device model",
   "schema": "string",
@@ -166,7 +143,7 @@ Azure IoT Central 使用设备孪生在设备和 Azure IoT Central 应用程序�
 }
 ```
 
-只读属性由设备发送到 Azure IoT Central。 这些属性作为 JSON 有效负载发送。 有关详细信息，请参阅 [有效负载](./concepts-telemetry-properties-commands.md)。
+属性更新作为 JSON 负载由设备发送。 有关详细信息，请参阅 [有效负载](./concepts-telemetry-properties-commands.md)。
 
 可以使用 Azure IoT 设备 SDK 将属性更新发送到 Azure IoT Central 应用程序。
 
@@ -187,16 +164,17 @@ hubClient.getTwin((err, twin) => {
 
 * [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md)
 * [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python) ](tutorial-connect-device-python.md)
+* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Java) ](tutorial-connect-device-java.md)
 
 Azure IoT Central 应用程序中的以下视图显示了你可以查看的属性。 视图自动使 **设备模型** 属性成为 _只读设备属性_。
 
-![显示只读属性的视图的屏幕截图。](./media/howto-use-properties/read-only.png)
+:::image type="content" source="media/howto-use-properties/read-only.png" alt-text="显示只读属性的视图的屏幕截图":::
 
 ## <a name="implement-writable-properties"></a>实现可写属性
 
 可写属性由 Azure IoT Central 应用程序中的某个运算符在窗体上设置。 Azure IoT Central 会将属性发送到设备。 Azure IoT Central 需要设备的确认。
 
-来自设备功能模型的以下代码片段显示了可写属性类型的定义：
+设备模型中的以下代码片段显示了可写属性类型的定义：
 
 ``` json
 {
@@ -207,12 +185,6 @@ Azure IoT Central 应用程序中的以下视图显示了你可以查看的属�
   "writable": true,
   "schema": "long"
 }
-```
-
-设备客户端应将类似于以下示例的 JSON 有效负载发送到设备克隆中的报告属性：
-
-``` json
-{ "Brightness Level": 2 }
 ```
 
 若要定义和处理设备响应的可写属性，可以使用以下代码：
@@ -245,10 +217,9 @@ hubClient.getTwin((err, twin) => {
 | 值 | Label | 说明 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | 已完成 | 属性更改操作已成功完成。 |
-| `'ac': 202` 或 `'ac': 201` | Pending | 属性更改操作已挂起或正在进行。 |
+| `'ac': 202` 或 `'ac': 201` | 挂起的 | 属性更改操作已挂起或正在进行。 |
 | `'ac': 4xx` | 错误 | 请求的属性更改无效或出现错误。 |
 | `'ac': 5xx` | 错误 | 设备在处理请求的更改时遇到意外错误。 |
-
 
 有关设备孪生的详细信息，请参阅 [通过后端服务配置设备](../../iot-hub/tutorial-device-twins.md)。
 

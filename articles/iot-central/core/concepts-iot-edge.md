@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016854"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987042"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
@@ -23,13 +23,13 @@ ms.locfileid: "90016854"
 
 IoT Edge 包含三个组件：
 
-* IoT Edge 模块是容器，可以运行 Azure 服务、合作伙伴服务或者你自己的代码****。 这些模块部署到 IoT Edge 设备，在设备上以本地方式运行。
-* **IoT Edge 运行时**在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块。
-* 可以通过基于云的界面远程监视和管理 IoT Edge 设备****。 IoT Central 是云接口。
+* IoT Edge 模块是容器，可以运行 Azure 服务、合作伙伴服务或者你自己的代码。 这些模块部署到 IoT Edge 设备，在设备上以本地方式运行。
+* **IoT Edge 运行时** 在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块。
+* 可以通过基于云的界面远程监视和管理 IoT Edge 设备。 IoT Central 是云接口。
 
-Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的网关设备****。 本文共享有关下游设备连接模式的详细信息。
+Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的网关设备。 本文共享有关下游设备连接模式的详细信息。
 
-设备模板定义设备和 IoT Edge 模块的功能****。 功能包括模块发送的遥测数据、模块属性以及模块响应的命令。
+设备模板定义设备和 IoT Edge 模块的功能。 功能包括模块发送的遥测数据、模块属性以及模块响应的命令。
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>下游设备与网关和模块的关系
 
@@ -63,9 +63,9 @@ Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的�
 
 IoT Central 对 IoT Edge 设备建模，如下所示：
 
-* 每个 IoT Edge 设备模板都具有设备功能模型。
+* 每个 IoT Edge 设备模板都有一个设备型号。
 * 对于部署清单中列出的每个自定义模块，都会生成模块功能模型。
-* 在每个模块功能模型和设备功能模型之间建立关系。
+* 在每个模块功能模型和设备模型之间建立关系。
 * 模块功能模型可实现模块接口。
 * 每个模块接口都包含遥测、属性和命令。
 
@@ -73,7 +73,7 @@ IoT Central 对 IoT Edge 设备建模，如下所示：
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge 网关设备
 
-如果选择 IoT Edge 设备作为网关设备，则可以将下游关系添加到将连接到网关设备的设备的设备功能模型。
+如果选择 IoT Edge 设备作为网关设备，则可以为要连接到网关设备的设备将下游关系添加到设备型号。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 从连接监视器迁移到连接监视器
+title: '从连接监视器迁移到连接监视器 (预览) '
 titleSuffix: Azure Network Watcher
 description: 了解如何从连接监视器迁移到连接监视器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 0ae1a1f36b9f81145b49245d8e6ace37ab36f834
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974761"
+ms.locfileid: "94985784"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器迁移到连接监视器 (经典) 
+# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>迁移到连接监视器 (预览) 从连接监视器 (经典) 
 
-只需单击几下鼠标，就能将现有连接监视器迁移到新的、经过改进的连接监视器，并且无需停机。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
+你可以将现有连接监视器迁移到新的、经过改进的连接监视器 (预览) 只需单击几下鼠标，无需停机。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
+
+> [!IMPORTANT]
+> 连接监视器当前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="key-points-to-note"></a>需要注意的要点
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782852"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984424"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "92782852"
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>用于管理长期保留的 Azure 角色
 
-对于 **Get-AzSqlDatabaseLongTermRetentionBackup** 和 **Restore-AzSqlDatabase** ，需要具有以下角色之一：
+对于 **Get-AzSqlDatabaseLongTermRetentionBackup** 和 **Restore-AzSqlDatabase**，需要具有以下角色之一：
 
 - “订阅所有者”角色或
 - “SQL Server 参与者”角色或
@@ -90,7 +90,7 @@ ms.locfileid: "92782852"
 
    Microsoft.Sql/locations/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
 
-对于 **Remove-AzSqlDatabaseLongTermRetentionBackup** ，需要具有以下角色之一：
+对于 **Remove-AzSqlDatabaseLongTermRetentionBackup**，需要具有以下角色之一：
 
 - “订阅所有者”角色或
 - 具有以下权限的自定义角色：
@@ -100,7 +100,7 @@ ms.locfileid: "92782852"
 > [!NOTE]
 > “SQL Server 参与者”角色没有删除 LTR 备份的权限。
 
-可以在订阅或资源组范围内授予 RBAC 权限。 但是，若要访问属于已删除服务器的 LTR 备份，必须在该服务器的“订阅”范围内授予此权限。
+可以在 *订阅* 或 *资源组* 作用域中授予 Azure RBAC 权限。 但是，若要访问属于已删除服务器的 LTR 备份，必须在该服务器的“订阅”范围内授予此权限。
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 

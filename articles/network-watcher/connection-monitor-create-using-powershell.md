@@ -1,5 +1,5 @@
 ---
-title: 创建连接监视器-PowerShell
+title: " (预览创建连接监视器) -PowerShell"
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 PowerShell 创建连接监视器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949031"
+ms.locfileid: "94984237"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>使用 PowerShell 创建连接监视器
+# <a name="create-a-connection-monitor-preview-using-powershell"></a>使用 PowerShell)  (预览创建连接监视器
 
 了解如何使用 PowerShell 创建连接监视器来监视资源之间的通信。
+
+> [!IMPORTANT]
+> 连接监视器当前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>准备阶段 
 
@@ -100,6 +104,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS - 指定是否通过 HTTP 使用 HTTPS
         * port - 指定所选的目标端口。
         * disableTraceRoute - 适用于其协议为 TCP 或 ICMP 的测试组。 它将阻止源发现拓扑和逐跳 RTT。
+        * 方法-适用于其协议为 HTTP 的测试配置。 选择 HTTP 请求方法（GET 或 POST）
+        * 路径-指定要追加到 URL 的路径参数
+        * validStatusCodes-选择适用的状态代码。 如果响应代码不匹配此列表，您将收到一条诊断消息
+        * requestHeaders-指定将传递给目标的自定义请求标头字符串
     * successThreshold - 可以在以下网络参数上设置阈值：
         * checksFailedPercent - 设置在源使用指定条件检查到目标的连接时可能检查失败的百分比。 对于 TCP 或 ICMP 协议，检查失败的百分比可能会与数据包丢失的百分比相同。 对于 HTTP 协议，此字段表示未接收到响应的 HTTP 请求的百分比。
         * roundTripTimeMs - 设置 RTT（以毫秒为单位），用于确定源按测试配置连接到目标所需的时间。

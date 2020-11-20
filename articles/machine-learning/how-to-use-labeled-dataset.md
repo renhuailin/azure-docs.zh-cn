@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 05535f47b212c3f72256dd8b2b8e3923c309a08c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356359"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987365"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -61,11 +61,11 @@ pip install azureml-contrib-dataset
 >[!NOTE]
 >azureml.contrib 命名空间会频繁更改，因为我们正在改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
 
-Azure 机器学习在转换为 pandas 数据帧时为文件流提供以下文件处理选项。
+转换为 pandas 数据帧时，Azure 机器学习针对文件流提供以下文件处理选项。
 * 下载：将数据文件下载到本地路径。
 * 装载：将数据文件装载到装入点。 装载仅适用于基于 Linux 的计算，包括 Azure 机器学习笔记本 VM 和 Azure 机器学习计算。
 
-在下面的代码中， `animal_labels` 数据集是之前保存到工作区的标记项目的输出。
+在以下代码中，`animal_labels` 数据集是之前保存到工作区的标签项目的输出。
 
 ```Python
 import azureml.core
@@ -89,7 +89,7 @@ imgplot = plt.imshow(img)
 
 还可以使用 `azureml-contrib-dataset` 类中的 [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) 方法将带标签的数据集加载到 Torchvision 数据集中。 若要使用此方法，需要安装 [PyTorch](https://pytorch.org/)。 
 
-在下面的代码中， `animal_labels` 数据集是之前保存到工作区的标记项目的输出。
+在以下代码中，`animal_labels` 数据集是之前保存到工作区的标签项目的输出。
 
 ```python
 import azureml.core

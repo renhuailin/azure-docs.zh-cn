@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133522"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984915"
 ---
 # <a name="pronunciation-assessment"></a>发音评估
 
@@ -154,19 +154,19 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 下表列出了用于发音评估的配置参数。
 
-| 参数 | 描述 | 必需/可选 |
+| 参数 | 说明 | 必需？ |
 |-----------|-------------|---------------------|
 | ReferenceText | 用来对发音进行评估的文本。 | 必须 |
-| GradingSystem | 用于分数校准的分数系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
-| 粒度 | 评估粒度。 接受的值为 `Phoneme`（显示全文、单词和音素级别的分数）、`Word`（显示全文和单词级别的分数）、`FullText`（只显示全文级别的分数）。 默认设置为 `Phoneme`。 | 可选 |
-| EnableMiscue | 启用误读计算。 启用此功能后，系统会将发音单词与参考文本进行比较，并会根据比较结果将其标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
+| GradingSystem | 用于分数校准的分数系统。 `FivePoint`系统给出0-5 浮点评分，并 `HundredMark` 提供0-100 浮点分数。 默认值：`FivePoint`。 | 可选 |
+| 粒度 | 评估粒度。 接受的值为 `Phoneme`（显示全文、单词和音素级别的分数）、`Word`（显示全文和单词级别的分数）、`FullText`（只显示全文级别的分数）。 默认值：`Phoneme`。 | 可选 |
+| EnableMiscue | 启用误读计算。 启用此功能后，系统会将发音单词与参考文本进行比较，并会根据比较结果将其标记为省略/插入。 接受的值为 `False` 和 `True`。 默认值：`False`。 | 可选 |
 | ScenarioId | 一个 GUID，表示自定义分数系统。 | 可选 |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>发音评估结果参数
 
 下表列出了发音评估的结果参数。
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | `AccuracyScore` | 语音的发音准确度。 准确度表示音素与母语人士发音的接近程度。 单词级别和全文级别的准确度分数由音素级别的准确度分数聚合而来。 |
 | `FluencyScore` | 给定语音的流畅度。 流畅度表示语音与母语人士在单词之间使用无声停顿的接近程度。 |

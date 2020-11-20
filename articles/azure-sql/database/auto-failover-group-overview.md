@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: e91a3cc0a96add1f53d220e04fb98d63cc7c33f4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841080"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988538"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ ms.locfileid: "94841080"
 
 ### <a name="create-failover-group"></a>创建故障转移组
 
-若要创建某个故障转移组，需要对主服务器和辅助服务器，以及该故障转移组中的所有数据库拥有 RBAC 写入访问权限。 对于 SQL 托管实例，需要对主要和辅助 SQL 托管实例拥有 RBAC 写入访问权限，但对单个数据库的权限无关紧要，因为无法在故障转移组中添加或删除单个 SQL 托管实例数据库。
+若要创建故障转移组，需要对主服务器和辅助服务器以及故障转移组中的所有数据库具有 Azure RBAC 写入访问权限。 对于 SQL 托管实例，你需要具有对主 SQL 托管实例和辅助 SQL 的 Azure RBAC 写入访问权限，但对单个数据库的权限是不相关的，因为无法在故障转移组中添加或删除单个 SQL 托管实例数据库。
 
 ### <a name="update-a-failover-group"></a>更新故障转移组
 
-若要更新某个故障转移组，需要对该故障转移组，以及当前主服务器或托管实例上的所有数据库拥有 RBAC 写入访问权限。  
+若要更新故障转移组，需要对故障转移组以及当前主服务器或托管实例上的所有数据库具有 Azure RBAC 写入访问权限。  
 
 ### <a name="fail-over-a-failover-group"></a>对故障转移组进行故障转移
 
-若要对某个故障转移组进行故障转移，需要对新的主服务器或托管实例上的故障转移组拥有 RBAC 写入访问权限。
+若要对故障转移组进行故障转移，需要在新的主服务器或托管实例上对故障转移组进行 Azure RBAC 写入访问。
 
 ## <a name="best-practices-for-sql-database"></a>SQL 数据库的最佳做法
 
@@ -409,7 +409,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 Api 需要使用资源组，并支持 azure RBAC)  (基于角色的访问控制。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL 数据库故障转移
 

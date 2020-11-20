@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125336"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985750"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,8 +64,8 @@ ms.locfileid: "93125336"
 
 除了灾难恢复外，活动异地复制还可用于以下情况：
 
-- **数据库迁移** ：可以使用活动异地复制将数据库在联机情况下从一台服务器迁移到另一台服务器，只需要极少的停机时间。
-- **应用程序升级** ：可以在应用程序升级期间创建额外的辅助数据库作为故障回复副本。
+- **数据库迁移**：可以使用活动异地复制将数据库在联机情况下从一台服务器迁移到另一台服务器，只需要极少的停机时间。
+- **应用程序升级**：可以在应用程序升级期间创建额外的辅助数据库作为故障回复副本。
 
 若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对用户的服务所依赖的服务执行故障转移期间，用户的服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](designing-cloud-solutions-for-disaster-recovery.md)。
 
@@ -118,7 +118,7 @@ ms.locfileid: "93125336"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 同时，强烈建议使用相同的备份存储冗余和计算大小创建辅助数据库， (Dtu 或 Vcore) 作为主数据库。 如果主数据库遇到很大的写入工作负载，则计算较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会导致辅助数据库不可用。 为了缓解这些风险，必要时，活动异地复制会限制主数据库的事务日志速率，让辅助数据库能够跟上进度。
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同备份存储冗余和计算大小（DTU 或 vCore 数）的辅助数据库。 如果主数据库遇到很大的写入工作负载，则计算较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会导致辅助数据库不可用。 为了缓解这些风险，必要时，活动异地复制会限制主数据库的事务日志速率，让辅助数据库能够跟上进度。
 
 辅助数据库的配置不平衡的另一结果是，在故障转移后，应用程序的性能可能会由于新的主数据库的计算能力不足而受影响。 在这种情况下，需要将数据库服务目标纵向扩展到所需的级别。这可能会占用大量时间和计算资源，并且在纵向扩展过程结束时需要执行[高可用性](high-availability-sla.md)故障转移。
 
@@ -244,7 +244,7 @@ ms.locfileid: "93125336"
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 Api 需要使用资源组，并支持 azure RBAC)  (基于角色的访问控制。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单一数据库和共用数据库的故障转移
 

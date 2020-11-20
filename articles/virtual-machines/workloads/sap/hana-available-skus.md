@@ -12,15 +12,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/23/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964756"
+ms.locfileid: "94985070"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>适用于 HANA 大型实例的 Sku
 
@@ -35,10 +35,13 @@ Azure 上的 SAP HANA (大型实例) 基于修订版本4的服务的服务在 Az
 
 - 美国西部 2
 - 美国东部
-- 美国东部 2
-- 美国中南部
+
+BareMetal 基础结构 (通过基于修订版4.2 戳记) 服务 SAP HANA 认证。 它在的 Azure 区域的几个配置中提供：
 - 西欧
 - 北欧
+- 美国东部 2
+- 美国中南部
+
 
 
 

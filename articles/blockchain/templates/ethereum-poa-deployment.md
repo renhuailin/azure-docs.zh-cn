@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283422"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987059"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -48,7 +48,7 @@ ms.locfileid: "91283422"
 * 用于聚合日志和性能统计信息的 Azure Monitor
 * VNet 网关（可选），允许跨专用 VNet 的 VPN 连接
 
-默认情况下，可以通过公共 IP 访问 RPC 和对等互连终结点，以简化订阅和云之间的连接。 对于应用程序级访问控制，可以使用 [奇偶校验的权限协定](https://wiki.parity.io/Permissioning)。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
+默认情况下，可以通过公共 IP 访问 RPC 和对等互连终结点，以简化订阅和云之间的连接。 对于应用程序级访问控制，可以使用奇偶校验的权限协定。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
 
 Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每个部署的一部分承载和提供版本控制映像。 容器映像包括：
 
@@ -71,10 +71,10 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 1. 三个成员分别使用 MetaMask 生成 Ethereum 帐户
 1. *成员 A* 部署以太坊 PoA，提供其以太坊公用地址
-1. 成员 A 向成员 B 和成员 C 提供联盟 URL******
-1. 成员 B 和成员 C 部署 Ethereum PoA，提供其 Ethereum 公用地址和成员 A 的联盟 URL******
-1. 成员 A 投票赞成成员 B 作为管理员****
-1. 成员 A 和成员 B 都投票赞成成员 C 作为管理员******
+1. 成员 A 向成员 B 和成员 C 提供联盟 URL
+1. 成员 B 和成员 C 部署 Ethereum PoA，提供其 Ethereum 公用地址和成员 A 的联盟 URL
+1. 成员 A 投票赞成成员 B 作为管理员
+1. 成员 A 和成员 B 都投票赞成成员 C 作为管理员
 
 接下来的部分介绍如何在网络中配置第一个成员的占用量。
 
@@ -82,11 +82,11 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 在 [Azure 门户](https://portal.azure.com)中，选择左上角的 " **创建资源** "。
 
-选择**区块链**  >  **以太坊 (preview) **。
+选择 **区块链**  >  **以太坊 (preview)**。
 
 ### <a name="basics"></a>基础
 
-在 " **基本**信息" 下，指定任何部署的标准参数的值。
+在 " **基本** 信息" 下，指定任何部署的标准参数的值。
 
 ![基础](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -98,10 +98,10 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 身份验证类型 | 对虚拟机进行身份验证的方法。 | 密码
 密码 | 部署的每个虚拟机的管理员帐户密码。 所有 Vm 最初都具有相同的密码。 你可以在设置后更改密码。 | 12-72 个字符 
 订阅 | 部署联盟网络的订阅 |
-资源组| 部署联盟网络的资源组。 | myResourceGroup
+资源组| 部署联盟网络的资源组。 | MyResourceGroup
 位置 | 资源组的 Azure 区域。 | 美国西部 2
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="deployment-regions"></a>部署区域
 
@@ -115,7 +115,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 第一个区域 | 部署联盟网络的第一个区域 | 美国西部 2
 第二个区域 | 用于部署联合会网络的第二个区域。 当区域数为2或更大时，其他区域可见。 | 美国东部 2
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="network-size-and-performance"></a>网络规模和性能
 
@@ -135,9 +135,9 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 ---|---|---|---|---
 F1|标准 SSD|low|low|high
 D2_v3|标准 SSD|中|中|中
-F16s|高级 SSD|high|high|low
+F16s|高级·SSD|high|high|low
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="ethereum-settings"></a>Ethereum 设置
 
@@ -156,7 +156,7 @@ F16s|高级 SSD|high|high|low
 区块重新封装时间段（秒） | 网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。 | 15
 事务权限协定 | 事务权限协定的字节码。 将智能协定部署和执行限制到以太坊帐户的允许列表。 |
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="monitoring"></a>监视
 
@@ -172,7 +172,7 @@ F16s|高级 SSD|high|high|low
  (连接到现有 Azure Monitor 日志的现有 log analytics 工作区 ID = 加入现有) |现有 Azure Monitor 日志实例的工作区 ID||NA
 现有的 log analytics 主密钥 (连接到现有 Azure Monitor 日志 = 加入现有) |用于连接到现有 Azure Monitor 日志实例的主键||NA
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="summary"></a>总结
 
@@ -220,10 +220,10 @@ F16s|高级 SSD|high|high|low
 
 部署成员的网络存在时，部署成员应使用相同的 "以太坊" 证书颁发机构协会解决方案模板：
 
-* 选择“加入现有”****
+* 选择“加入现有”
 * 选择与网络上的其他成员数量相同的验证程序节点，以确保公平表示
 * 使用相同的管理员以太坊地址
-* 在*以太坊设置*中使用提供的*联盟数据 Url*
+* 在 *以太坊设置* 中使用提供的 *联盟数据 Url*
 * 如果网络的其余部分位于 VPN 后面，请在 "高级" 部分下选择 " **专用 VNet** "
 
 ### <a name="connecting-vnet-gateways"></a>连接 VNet 网关
@@ -341,7 +341,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 若要转到其他事务节点，请将端口号递增1。
 
-如果部署到多个区域，请将命令更改为该区域中的负载均衡器的 DNS 名称或 IP 地址。 若要查找其他区域的 DNS 名称或 IP 地址，请查找命名约定为** \* \* \* \* \* lbpip \# **的资源，并查看其 "DNS 名称" 和 "IP 地址" 属性。
+如果部署到多个区域，请将命令更改为该区域中的负载均衡器的 DNS 名称或 IP 地址。 若要查找其他区域的 DNS 名称或 IP 地址，请查找命名约定为 **\* \* \* \* \* lbpip \#** 的资源，并查看其 "DNS 名称" 和 "IP 地址" 属性。
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure 流量管理器负载均衡
 
@@ -507,7 +507,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 * **分散管理：** 网络颁发机构的更改是通过 "选择管理员" 通过链投票进行管理。
 * **验证程序委托：** 颁发机构可以管理在每个 PoA 部署中设置的验证程序节点。
-* 可**审核的更改历史记录：** 每个更改都记录在区块链上，提供透明度和可审核性。
+* 可 **审核的更改历史记录：** 每个更改都记录在区块链上，提供透明度和可审核性。
 
 ### <a name="getting-started-with-governance"></a>Governance 入门
 
@@ -535,7 +535,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 ### <a name="validators"></a>验证程序
 
-选择 " **验证** 程序" 选项卡将显示实例的当前已部署的奇偶校验节点及其当前状态 (节点类型) 。 每个联合会成员在此列表中都有一组不同的验证程序，因为此视图表示当前已部署的联合会成员。 如果实例是新部署的，并且尚未添加验证程序，则可以选择 **添加验证**程序。 添加验证器会自动选择突破均衡的奇偶校验集，并将它们分配给验证器集。 如果部署的节点数量超过了允许的容量，则其余节点将成为网络上的事务节点。
+选择 " **验证** 程序" 选项卡将显示实例的当前已部署的奇偶校验节点及其当前状态 (节点类型) 。 每个联合会成员在此列表中都有一组不同的验证程序，因为此视图表示当前已部署的联合会成员。 如果实例是新部署的，并且尚未添加验证程序，则可以选择 **添加验证** 程序。 添加验证器会自动选择突破均衡的奇偶校验集，并将它们分配给验证器集。 如果部署的节点数量超过了允许的容量，则其余节点将成为网络上的事务节点。
 
 每个验证程序的地址将通过 Azure 中的[标识存储区](#identity-store)自动分配。  如果某个节点出现故障，它将让给其标识，允许部署中的另一个节点执行该节点。 此过程可确保你的共识参与高度可用。
 
@@ -561,7 +561,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 在下面的示例中，您将创建一个简单的智能协定。 使用 Truffle 将智能协定编译并部署到区块链网络。 部署后，通过事务调用智能协定函数。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 * 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 选择 "安装" 选项以在路径中包含 Python。
 * 安装 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/)。 有关详细信息，请参阅 [Truffle 文档](https://github.com/trufflesuite/truffle)。
@@ -633,7 +633,7 @@ Truffle 项目包含区块链网络连接详细信息的配置文件。 修改�
 
 Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使用迁移脚本来部署新的智能协定。
 
-1. 添加新的迁移以部署新的协定。 `2_deploy_contracts.js`在 Truffle 项目的**迁移**子目录中创建文件。
+1. 添加新的迁移以部署新的协定。 `2_deploy_contracts.js`在 Truffle 项目的 **迁移** 子目录中创建文件。
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -685,7 +685,7 @@ Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使�
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支持
 
-新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅： [WebAssembly 的奇偶校验概述](https://wiki.parity.io/WebAssembly-Home) 和 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)
+新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)。
 
 ## <a name="faq"></a>常见问题解答
 

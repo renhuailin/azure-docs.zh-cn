@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981181"
+ms.locfileid: "94988215"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用计划的窗口创建维护配置
 
-当 Azure 将对资源应用更新时，可以使用 New-AzMaintenanceConfiguration 创建具有计划窗口的维护配置。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
+你还可以在 Azure 将对资源应用更新时声明计划的窗口。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -85,12 +85,10 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > 维护 **持续时间** 必须是 *2 小时* 或更长时间。 在35天内，必须至少将维护 **重复** 设置为一次。
 
-维护 **循环** 可表示为：
- | 值 | 示例 |
-      |-------|-------------|
-      | 日历 | recurEvery： Day **或** RecurEvery：3Days | 
-      | weekly | recurEvery： 3Weeks **或** RecurEvery： Week 周六，星期日 | 
-      | 次 | recurEvery： Month day23、day24 **或** RecurEvery： Month Last 星期日 **或** RecurEvery： month 第四个月 | 
+可以按每日、每周或每月来表示维护 **定期** 。 一些示例如下：
+ - 每日-"recurEvery： Day" **或** "RecurEvery： 3Days" 
+ - 每周-"recurEvery： 3Weeks" **或** "RecurEvery： Week 周六，星期日" 
+ - 每月-"recurEvery： Month day23、day24" **或** "RecurEvery： month 上月" **或** "RecurEvery： Month 第四个月"  
       
 
 ## <a name="assign-the-configuration"></a>分配此配置
