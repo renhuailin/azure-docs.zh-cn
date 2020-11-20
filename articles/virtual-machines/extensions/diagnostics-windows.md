@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837017"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955967"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 
@@ -40,7 +41,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_na
 ```
 
 
-*$diagnosticsconfig_path* 是指向包含 XML 格式诊断配置的文件的路径，如以下[示例](#sample-diagnostics-configuration)中所述。  
+*$diagnosticsconfig_path* 是指向包含 XML 格式诊断配置的文件的路径，如以下 [示例](#sample-diagnostics-configuration)中所述。  
 
 如果诊断配置文件使用某个存储帐户名称指定了 StorageAccount 元素，则 Set-AzVMDiagnosticsExtension 脚本会自动将诊断扩展设置为将诊断数据发送到该存储帐户   。 为此，存储帐户需位于 VM 所在的同一订阅中。
 

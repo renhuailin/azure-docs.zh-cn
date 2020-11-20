@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742241"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954114"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
 
@@ -28,11 +28,11 @@ ms.locfileid: "91742241"
 
 StorSimple Virtual Array 是一种混合云存储本地虚拟设备，可以配置为文件服务器或 iSCSI 服务器。 虚拟阵列允许用户为设备上的所有共享或卷创建计划备份和手动备份。 当配置为文件服务器时，它还允许项目级恢复。 本教程介绍如何创建计划备份和手动备份，以及如何执行项目级恢复以在虚拟阵列上还原删除的文件。
 
-本教程仅适用于 StorSimple 虚拟阵列。 有关 8000 系列的信息，请转到[创建 8000 系列设备的备份](storsimple-manage-backup-policies-u2.md)
+本教程仅适用于 StorSimple 虚拟阵列。 有关 8000 系列的信息，请转到[创建 8000 系列设备的备份](./storsimple-8000-manage-backup-policies-u2.md)
 
 ## <a name="back-up-shares-and-volumes"></a>备份共享和卷
 
-备份可提供时间点保护，并可提高可恢复性，同时最大限度地降低共享和卷的恢复时间。 可以采用两种方式备份 StorSimple 设备上的共享或卷：**按计划**或**手动**。 以下部分介绍上述每种方法。
+备份可提供时间点保护，并可提高可恢复性，同时最大限度地降低共享和卷的恢复时间。 可以采用两种方式备份 StorSimple 设备上的共享或卷：**按计划** 或 **手动**。 以下部分介绍上述每种方法。
 
 ## <a name="change-the-backup-start-time"></a>更改备份开始时间
 
@@ -46,19 +46,19 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>更改默认备份策略的开始时间
 
-1. 转到“设备”****。 将显示已向 StorSimple Device Manager 服务注册的设备列表。 
+1. 转到“设备”。 将显示已向 StorSimple Device Manager 服务注册的设备列表。 
    
     ![导航到“设备”](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. 选择并单击设备。 将显示“设置”**** 边栏选项卡。 转到“管理”>“备份策略”****。
+2. 选择并单击设备。 将显示“设置”边栏选项卡。 转到“管理”>“备份策略”。
    
     ![选择设备](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. 在“备份策略”**** 边栏选项卡中，默认开始时间为 22:30。 可以在设备时区中为每日计划指定新的开始时间。
+3. 在“备份策略”边栏选项卡中，默认开始时间为 22:30。 可以在设备时区中为每日计划指定新的开始时间。
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 单击 **“保存”** 。
+4. 单击“ **保存**”。
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 
@@ -66,11 +66,11 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-create-a-manual-backup"></a>创建手动备份
 
-1. 转到“设备”****。 选择设备，并右键单击所选行最右端的“...”****。 从上下文菜单中，选择“执行备份”****。
+1. 转到“设备”。 选择设备，并右键单击所选行最右端的“...”。 从上下文菜单中，选择“执行备份”。
    
     ![导航“执行备份”](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. 在“执行备份”**** 边栏选项卡中，单击“执行备份”****。 这会备份文件服务器上的所有共享或 iSCSI 服务器上的所有卷。 
+2. 在“执行备份”边栏选项卡中，单击“执行备份”。 这会备份文件服务器上的所有共享或 iSCSI 服务器上的所有卷。 
    
     ![备份正在启动](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
@@ -82,11 +82,11 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![备份作业已创建](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. 若要跟踪备份进度和查看作业详细信息，请单击“通知”。 这会你将带到“作业详细信息”****。
+3. 若要跟踪备份进度和查看作业详细信息，请单击“通知”。 这会你将带到“作业详细信息”。
    
      ![备份作业详细信息](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. 在备份完成后，请转到“管理”>“备份目录”****。 会看到设备上所有共享（或卷）的云快照。
+4. 在备份完成后，请转到“管理”>“备份目录”。 会看到设备上所有共享（或卷）的云快照。
    
     ![已完成的备份](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
@@ -95,24 +95,23 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-view-existing-backups"></a>查看现有备份
 
-1. 转到“设备”**** 边栏选项卡。 选择并单击设备。 在“设置”**** 边栏选项卡中，转到“管理”>“备份目录”****。
+1. 转到“设备”边栏选项卡。 选择并单击设备。 在“设置”边栏选项卡中，转到“管理”>“备份目录”。
    
     ![导航到“备份目录”](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. 指定要用于筛选的以下条件：
    
-   - **时间范围** - 可以是“过去 1 小时”****、“过去 24 小时”****、“过去 7 天”****、“过去 30 天”****、“过去一年”**** 和“自定义日期”****。
+   - **时间范围** - 可以是“过去 1 小时”、“过去 24 小时”、“过去 7 天”、“过去 30 天”、“过去一年”和“自定义日期”。
     
    - **设备** - 从已向 StorSimple Device Manager 服务注册的文件服务器或 iSCSI 服务器的列表中选择。
    
-   - **启动** - 可以是自动**计划**启动（由备份策略启动）或**手动**启动（由用户启动）。
+   - **启动** - 可以是自动 **计划** 启动（由备份策略启动）或 **手动** 启动（由用户启动）。
    
      ![筛选备份](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. 单击“应用”。 已筛选的备份列表会显示在“备份目录”**** 边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
+3. 单击“应用”。 已筛选的备份列表会显示在“备份目录”边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
    
     ![已更新的备份目录](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解如何[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954505"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
@@ -158,6 +158,6 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 - [教程：配置引用 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
 - [教程：使用流量管理器支持顶点域名的别名记录](tutorial-alias-tm.md)
-- [DNS 常见问题](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS 常见问题](./dns-faq.md#alias-records)
 
 若要了解如何迁移活动 DNS 名称，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](../app-service/manage-custom-dns-migrate-domain.md)。

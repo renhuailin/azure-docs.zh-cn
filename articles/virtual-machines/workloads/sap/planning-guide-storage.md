@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955406"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延迟和价格方面有所不同。 某些存储类型不是或不可用于 SAP 方案。 但对于特定的 SAP 工作负荷方案，多个 Azure 存储类型非常适合或进行了优化。 特别是对于 SAP HANA，某些 Azure 存储类型已通过 SAP HANA 使用进行了认证。 在本文档中，我们将浏览不同类型的存储，并介绍 SAP 工作负荷和 SAP 组件的功能和可用性。
@@ -142,7 +143,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | SAP sapmnt | 适合 | 所有系统 |
 | 备份存储 | 适合 | 用于短期存储备份 |
 | 共享/共享磁盘 | 不可用 | 需要 Azure 高级文件或第三方 |
-| 复原能力 | LRS | 磁盘无可用的 GRS 或 ZRS |
+| 复原 | LRS | 磁盘无可用的 GRS 或 ZRS |
 | 延迟 | 低到中 | - |
 | IOPS SLA | YES | - |
 | 从线性到容量的 IOPS | 方括号中的半线性  | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
@@ -200,7 +201,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | SAP sapmnt | 适合 | 所有系统 |
 | 备份存储 | 适合 | 用于短期存储备份 |
 | 共享/共享磁盘 | 不可用 | 需要第三方 |
-| 复原能力 | LRS | 磁盘无可用的 GRS 或 ZRS |
+| 复原 | LRS | 磁盘无可用的 GRS 或 ZRS |
 | 延迟 | 非常低 | - |
 | IOPS SLA | YES | - |
 | 从线性到容量的 IOPS | 方括号中的半线性  | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
@@ -255,7 +256,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | SAP sapmnt | 适合 | 仅适用于 Windows 的所有系统 SMB (仅) 或 NFS (Linux)  |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | YES | SMB 3.0、NFS v3 和 NFS v2。0 |
-| 复原能力 | LRS | 磁盘无可用的 GRS 或 ZRS |
+| 复原 | LRS | 磁盘无可用的 GRS 或 ZRS |
 | 延迟 | 非常低 | - |
 | IOPS SLA | YES | - |
 | 从线性到容量的 IOPS | 严格线性  | 依赖于 [服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
@@ -273,7 +274,7 @@ SAP 工作负荷的功能矩阵如下所示：
 - 从快照克隆和卷
 - 从快照还原卷 (快照恢复) 
 
-**摘要** ： Azure NetApp 文件是用于部署 NFS 和 SMB 卷或共享的 HANA 认证低延迟存储。 存储提供了三种不同的服务级别，以线性方式为卷的每个 GiB 容量提供不同的吞吐量和 IOPS。 和存储支持使用备用节点部署 SAP HANA 扩展方案。 存储适合为/sapmnt 或 SAP 全局传输目录提供文件共享。 和存储提供了可用作本机 NetApp 功能的功能可用性。  
+**摘要**： Azure NetApp 文件是用于部署 NFS 和 SMB 卷或共享的 HANA 认证低延迟存储。 存储提供了三种不同的服务级别，以线性方式为卷的每个 GiB 容量提供不同的吞吐量和 IOPS。 和存储支持使用备用节点部署 SAP HANA 扩展方案。 存储适合为/sapmnt 或 SAP 全局传输目录提供文件共享。 和存储提供了可用作本机 NetApp 功能的功能可用性。  
 
 
 
@@ -288,7 +289,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | SAP sapmnt | 限制合适 | 非生产系统 |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | 不可用 | 需要第三方 |
-| 复原能力 | LRS、GRS | 磁盘无可用 ZRS |
+| 复原 | LRS、GRS | 磁盘无可用 ZRS |
 | 延迟 | high | SAP 全局传输目录或生产系统的过高 |
 | IOPS SLA | 是 | - |
 | 每个磁盘的最大 IOPS | 500 | 与磁盘大小无关 |
@@ -315,7 +316,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | SAP sapmnt | 是 | 不支持 |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | 不可用 | 需要 Azure 文件或第三方 |
-| 复原能力 | LRS、GRS | 磁盘无可用 ZRS |
+| 复原 | LRS、GRS | 磁盘无可用 ZRS |
 | 延迟 | high | DBMS 使用情况、SAP 全局传输目录或 sapmnt/saploc 太高 |
 | IOPS SLA | 是 | - |
 | 每个磁盘的最大 IOPS | 500 | 与磁盘大小无关 |

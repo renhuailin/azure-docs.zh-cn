@@ -5,15 +5,16 @@ services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e6e3e1769b6043599d606b84b531ec908519d4c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926030"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955559"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -34,9 +35,9 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 - PEM
 
 ## <a name="prerequisities"></a>先决条件
-  - Key Vault 具有证书的实例。 请参阅 [创建 Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
-  - VM/VMSS 必须已分配 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-  - 必须使用 `get` VM/VMSS 托管标识的机密和权限设置 Key Vault 访问策略， `list` 才能检索密钥的证书部分。 请参阅[如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication)和[分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
+  - 具有证书的 Key Vault 实例。 请参阅[创建 Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - VM/VMSS 必须已分配[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  - 必须使用机密 `get` 和 `list` 权限为 VM/VMSS 托管标识设置 Key Vault 访问策略，以检索证书的机密部分。 请参阅[如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication)和[分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -88,10 +89,10 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
+| pollingIntervalInS | 3600 | string |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
@@ -108,7 +109,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体来说是嵌套在虚拟机模板的 `"resources": []` 对象中，对于虚拟机规模集而言，是嵌套在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下。
 
  > [!NOTE]
-> VM 扩展需要分配系统或用户托管标识，才能向密钥保管库进行身份验证。  请参阅 [如何对 Key Vault 进行身份验证并分配 Key Vault 访问策略。](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+> VM 扩展需要分配有系统或用户托管标识，才能向密钥保管库进行身份验证。  请参阅[如何向 Key Vault 进行身份验证和分配 Key Vault 访问策略。](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 > 
 
 ```json
@@ -219,7 +220,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 ### <a name="frequently-asked-questions"></a>常见问题
 
 * 可设置的 observedCertificates 数是否有限制？
-  不可以，Key Vault VM 扩展对 observedCertificates 数没有限制。
+  没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
 
 ### <a name="troubleshoot"></a>疑难解答
@@ -249,7 +250,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ### <a name="frequently-asked-questions"></a>常见问题
 
 * 可设置的 observedCertificates 数是否有限制？
-  不可以，Key Vault VM 扩展对 observedCertificates 数没有限制。
+  没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
 ### <a name="support"></a>支持
 

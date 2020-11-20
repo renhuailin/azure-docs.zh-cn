@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151569"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956426"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
@@ -113,7 +114,7 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
 | 托管 IBM Db2 LUW 的虚拟机 | VM 大小、存储、网络、IP 地址。 |
 | IBM Db2 数据库的虚拟主机名和虚拟 IP| 用于 SAP 应用程序服务器连接的虚拟 IP 或主机名。 **virt-hostname**， **virt-ip**。 |
 | Azure 防护 | 防止出现裂脑情况的方法。 |
-| Azure 负载均衡器 | 使用基本或标准 (建议) 、用于 Db2 数据库的探测端口 (建议 62500) **探测**端口。 |
+| Azure 负载均衡器 | 使用基本或标准 (建议) 、用于 Db2 数据库的探测端口 (建议 62500) **探测** 端口。 |
 | 名称解析| 名称解析在环境中的工作方式。 强烈建议使用 DNS 服务。 可以使用本地主机文件。 |
     
 有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在 [azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。
@@ -144,7 +145,7 @@ Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代�
 
 ## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
     
-若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。 
+若要为此 IBM Db2 服务器创建基本 Pacemaker 群集，请参阅在 [Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安装 IBM Db2 LUW 和 SAP 环境
 
@@ -455,7 +456,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
    e. 将“空闲超时”增大到 30 分钟。
 
-   f. 确保**启用浮动 IP**。
+   f. 确保 **启用浮动 IP**。
 
    g. 选择“确定”。
 
@@ -616,15 +617,15 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
 - **电脑资源移动 \<res_name> <host> ：** 创建位置约束并可能导致接管问题
-- **电脑资源清除 \<res_name> **：清除位置约束
-- **电脑资源清理 \<res_name> **：清除资源的所有错误
+- **电脑资源清除 \<res_name>**：清除位置约束
+- **电脑资源清理 \<res_name>**：清除资源的所有错误
 
 ### <a name="test-a-manual-takeover"></a>测试手动接管
 
 可以通过停止 *az-idb01* 节点上的 Pacemaker 服务来测试手动接管：
 <pre><code>systemctl stop pacemaker</code></pre>
 
-*az-ibdb02 上的*状态
+*az-ibdb02 上的* 状态
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -646,7 +647,7 @@ Daemon Status:
   pacemaker: active/disabled
   pcsd: active/enabled</code></pre>
 
-故障转移后，可以在 *az-idb01*上重新启动该服务。
+故障转移后，可以在 *az-idb01* 上重新启动该服务。
 <pre><code>systemctl start  pacemaker</code></pre>
 
 

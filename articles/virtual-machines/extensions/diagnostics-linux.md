@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956018"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -71,7 +72,7 @@ Linux 诊断扩展支持以下分发和版本。 分发和版本的列表仅适�
 ### <a name="prerequisites"></a>先决条件
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](./update-linux-agent.md)将其更新。
-* **Azure CLI** 。 在计算机上[设置 Azure CLI](/cli/azure/install-azure-cli) 环境。
+* **Azure CLI**。 在计算机上[设置 Azure CLI](/cli/azure/install-azure-cli) 环境。
 * wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`。
 * 现有 Azure 订阅以及用于存储数据的现有常规用途存储帐户。  常规用途存储帐户支持必需的表存储。  Blob 存储帐户将不起作用。
 * Python 2
@@ -84,7 +85,7 @@ Linux 诊断扩展需要 Python 2。 如果虚拟机使用的发行版默认情�
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须化名为 *python* 。 下面是可以用来设置此别名的一种方法：
+Python2 可执行文件必须将别名设置为“python”。 下面是可用来设置此别名的一种方法：
 
 1. 运行以下命令以删除所有现有别名。
  
@@ -245,7 +246,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![屏幕截图显示 "共享访问签名" 页，其中包含 "生成 S"。](./media/diagnostics-linux/make_sas.png)
+![屏幕截图显示了带有“生成 SAS”的“共享访问签名”页。](./media/diagnostics-linux/make_sas.png)
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -370,7 +371,7 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 
 元素 | 值
 ------- | -----
-resourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
+ResourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并将转移到 Azure Metrics 的频率，以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 必须指定至少一个 scheduledTransferPeriod。
 
 performanceCounters 节中指定的指标样本每 15 秒收集一次，或者按计数器明确定义的采样率进行收集。 如果出现多个 scheduledTransferPeriod 频率（如示例所示），则每个聚合都将独立计算。
@@ -604,7 +605,7 @@ TransfersPerSecond | 每秒读取或写入操作数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
 
-**注意** ：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
+**注意**：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 
@@ -803,7 +804,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![屏幕截图显示所选 "已用磁盘空间" 指标和生成的图表的 Azure 门户。](./media/diagnostics-linux/graph_metrics.png)
+![屏幕截图显示了 Azure 门户，其中包含已选择的“已用磁盘空间”指标和生成的图表。](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -812,11 +813,11 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 此外，可使用这些 UI 工具来访问 Azure 存储中的数据：
 
 * Visual Studio 服务器资源管理器。
-* [屏幕截图显示 Azure 存储资源管理器中的容器和表](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")。
+* [屏幕截图显示了 Azure 存储资源管理器中的容器和表。](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![图像](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。
 

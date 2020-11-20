@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056545"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956834"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 > [!NOTE]
-> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](./index.yml)。
 
 ## <a name="overview"></a>概述
 通过 StorSimple 更新功能，可以轻松地让 StorSimple 设备保持最新。 根据更新类型，可以通过 Azure 经典门户或 Windows PowerShell 接口将更新应用于设备。 本教程介绍了更新类型及其安装方式。
@@ -120,6 +120,5 @@ ms.locfileid: "90056545"
 如果将设备恢复出厂设置，则所有更新都将丢失。 注册并配置恢复出厂设置的设备后，将需要通过 Azure 经典门户和/或 Windows PowerShell for StorSimple 手动安装更新。 有关恢复出厂设置的详细信息，请参阅[将设备恢复为出厂默认设置](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)。
-* 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
+* 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](./storsimple-8000-windows-powershell-administration.md)。
+* 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](./storsimple-8000-manager-service-administration.md)的详细信息。

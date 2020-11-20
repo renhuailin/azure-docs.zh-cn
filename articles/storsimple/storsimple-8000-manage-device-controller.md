@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513936"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956987"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "85513936"
 
 本教程提供有关使用以下方式管理设备控制器的分步说明：
 
-* StorSimple 设备管理器服务中设备的“控制器”边栏选项卡。****
+* StorSimple 设备管理器服务中设备的“控制器”边栏选项卡。
 * Windows PowerShell for StorSimple。
 
 我们建议通过 StorSimple 设备管理器服务管理设备控制器。 如果只能使用 Windows PowerShell for StorSimple 执行某个操作，本教程会提供相应的说明。
@@ -54,18 +54,18 @@ ms.locfileid: "85513936"
 若要从 Azure 门户管理设备控制器，请执行以下步骤。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>在 Azure 门户中重启或关闭控制器
-1. 在 StorSimple 设备管理器服务中，转到“设备”。**** 从设备列表中选择自己的设备。 
+1. 在 StorSimple 设备管理器服务中，转到“设备”。 从设备列表中选择自己的设备。 
 
     ![选择设备](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. 转到“设置”>“控制器”。****
+2. 转到“设置”>“控制器”。
    
     ![检查 StorSimple 设备控制器是否正常](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. 在“控制器”边栏选项卡中，检查设备上的两个控制器的状态是否为“正常”。******** 选择一个控制器，单击右键，选择“重启”或“关闭”。********
+3. 在“控制器”边栏选项卡中，检查设备上的两个控制器的状态是否为“正常”。 选择一个控制器，单击右键，选择“重启”或“关闭”。
 
     ![选择重启或关闭 StorSimple 设备控制器](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. 此时会创建一个作业来重启或关闭控制器，同时，会显示适用的警告（如果有）。 若要监视重启或关闭状态，请转到“服务”>“活动日志”，根据服务特定的参数进行筛选。**** 如果控制器已关闭，则需要按下电源按钮将控制器打开。
+4. 此时会创建一个作业来重启或关闭控制器，同时，会显示适用的警告（如果有）。 若要监视重启或关闭状态，请转到“服务”>“活动日志”，根据服务特定的参数进行筛选。 如果控制器已关闭，则需要按下电源按钮将控制器打开。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中重新启动或关闭控制器
 执行以下步骤可以通过 用于 StorSimple 的 Windows PowerShell 关闭或重启 StorSimple 设备上的单个控制器。
@@ -91,7 +91,7 @@ ms.locfileid: "85513936"
 本部分说明如何从远程计算机关闭正在运行的或有故障的 StorSimple 设备。 在关闭两个设备控制器后，设备会关闭。 以物理方式移动设备或者不再使用设备时，才需要执行关闭操作。
 
 > [!IMPORTANT]
-> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。**** 在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。**** 只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，会看到相应组件的状态为故障（红色）或降级（黄色）。
+> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。 在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。 只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，会看到相应组件的状态为故障（红色）或降级（黄色）。
 
 
 #### <a name="to-shut-down-a-storsimple-device"></a>关闭 StorSimple 设备
@@ -117,7 +117,7 @@ ms.locfileid: "85513936"
    
     `Reset-HcsFactoryDefault`
    
-    若要重置单个控制器，请结合 `-scope` 参数使用 [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet。
+    若要重置单个控制器，请结合 `-scope` 参数使用 [Reset-HcsFactoryDefault](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) cmdlet。
    
     系统将重新启动多次。 重置成功完成后，系统会发出通知。 根据系统型号，在 8100 设备上可能需要 45-60 分钟才能完成此过程，而 8600 则需要 60-90 分钟。
    
@@ -148,7 +148,7 @@ ms.locfileid: "85513936"
 
 **Q.** 如何判断控制器是否已重新启动或关闭？
 
-**A.** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。**** 控制器重启和关闭操作也会记录在活动日志中。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
+**A.** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。 控制器重启和关闭操作也会记录在活动日志中。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
 
 **Q.** 控制器故障转移是否对 I/O 造成任何影响？
 
@@ -161,4 +161,3 @@ ms.locfileid: "85513936"
 ## <a name="next-steps"></a>后续步骤
 * 如果使用本教程中所列的过程无法解决你遇到的 StorSimple 设备控制器相关问题，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
 * 有关如何使用 StorSimple 设备管理器服务的详细信息，请转到[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-

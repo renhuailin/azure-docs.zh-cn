@@ -15,19 +15,19 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459957"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956681"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 1.2 发行说明
 
 ## <a name="overview"></a>概述
 以下发行说明描述 StorSimple 8000 系列 Update 1.2 的新功能，并标识其重要的待解决问题。 其中还包含此版本中随附的 StorSimple 软件、驱动程序和磁盘固件更新的列表。 
 
-Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 Update 0.3 软件的 StorSimple 设备。 如果设备运行的是 Update 1 或 Update 1.1，则无法使用 Update 1.2。 如果设备运行的是发行版 (GA)，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以获取有关安装此更新的帮助。
+Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 Update 0.3 软件的 StorSimple 设备。 如果设备运行的是 Update 1 或 Update 1.1，则无法使用 Update 1.2。 如果设备运行的是发行版 (GA)，请[联系 Microsoft 支持部门](./storsimple-8000-contact-microsoft-support.md)以获取有关安装此更新的帮助。
 
 下表列出与 Update 1、1.1 和 1.2 的对应设备软件版本。
 
@@ -37,11 +37,11 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 | Update 1.1 |6.3.9600.17521 |
 | Update 1.0 |6.3.9600.17491 |
 
-在 StorSimple 解决方案中部署更新之前，请查看发行说明中所包含的信息。 有关详细信息，请参阅如何[在 StorSimple 设备上安装 Update 1.2](storsimple-install-update-1.md)。 
+在 StorSimple 解决方案中部署更新之前，请查看发行说明中所包含的信息。 有关详细信息，请参阅如何[在 StorSimple 设备上安装 Update 1.2](./storsimple-8000-install-update-5.md)。 
 
 > [!IMPORTANT]
 > * 安装此更新大约需要 5-10 小时（包括 Windows Update）。 
-> * Update 1.2 具有软件、LSI 驱动程序和磁盘固件更新。 若要安装，请按照[在 StorSimple 设备上安装 Update 1.2](storsimple-install-update-1.md) 中的说明执行操作。
+> * Update 1.2 具有软件、LSI 驱动程序和磁盘固件更新。 若要安装，请按照[在 StorSimple 设备上安装 Update 1.2](./storsimple-8000-install-update-5.md) 中的说明执行操作。
 > * 对于新版本，由于我们分阶段推出更新，可能不能立即看到更新。 请在数天内再次扫描更新，因为很快就会提供这些更新。
 > 
 > 
@@ -55,11 +55,11 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
   * **8000 系列设备产品的改进功能**，例如通过 StorSimple Manager 服务对多个设备进行高效的集中式管理、更好的硬件和更新固件类、虚拟设备、数据移动性，以及未来路线图中的功能。
     
     有关如何将 StorSimple 5000-7000 系列迁移到 8000 系列设备的详细信息，请参阅[迁移指南](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)。 
-* **Azure Government 门户中的可用性** — Azure Government 门户中现已提供 StorSimple。 请参阅如何[在 Azure Government 门户中部署 StorSimple 设备](storsimple-deployment-walkthrough-gov.md)。
+* **Azure Government 门户中的可用性** — Azure Government 门户中现已提供 StorSimple。 请参阅如何[在 Azure Government 门户中部署 StorSimple 设备](./index.yml)。
 * **支持其他云服务提供商** — 支持的其他云服务提供商有 Amazon S3、具有 RRS 的 Amazon S3、HP 和 OpenStack（试用版）。
-* **最新存储 API 的更新** — 通过此版本，StorSimple 已更新到最新的 Azure 存储服务 API。 运行 Update 1 前的软件版本（版本 0.1、0.2 和 0.3）的 StorSimple 8000 系列设备，使用的是 2009 年 7 月 17 日之前的 Azure 存储服务 API 版本。 如更新的[有关存储服务版本删除的公告](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)中所述，这些 API 将于 2016 年 8 月 1 日被弃用。 请务必在 2016 年 8 月 1 日之前应用 StorSimple 8000 系列 Update 1。 如果无法执行此操作，StorSimple 设备将停止正常工作。
+* **最新存储 API 的更新** — 通过此版本，StorSimple 已更新到最新的 Azure 存储服务 API。 运行 Update 1 前的软件版本（版本 0.1、0.2 和 0.3）的 StorSimple 8000 系列设备，使用的是 2009 年 7 月 17 日之前的 Azure 存储服务 API 版本。 如更新的[有关存储服务版本删除的公告](/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)中所述，这些 API 将于 2016 年 8 月 1 日被弃用。 请务必在 2016 年 8 月 1 日之前应用 StorSimple 8000 系列 Update 1。 如果无法执行此操作，StorSimple 设备将停止正常工作。
 * **区域冗余存储空间 (ZRS) 的支持** — 通过升级到最新版本的存储 API，除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还将支持区域冗余存储空间 (ZRS)。 有关 ZRS 的详细信息，请参阅这篇[有关 Azure 存储冗余选项](../storage/common/storage-redundancy.md)的文章。
-* **增强的初始部署和更新体验** — 在此版本中，安装和更新过程已得到增强。 通过安装向导的安装过程已得到了改进，如果网络配置和防火墙设置不正确，可以为用户提供反馈。 提供了更多诊断 cmdlet，以帮助你对设备的网络进行故障排除。 有关用于故障排除的新诊断 cmdlet 的详细信息，请参阅这篇[部署故障排除](storsimple-troubleshoot-deployment.md)文章。
+* **增强的初始部署和更新体验** — 在此版本中，安装和更新过程已得到增强。 通过安装向导的安装过程已得到了改进，如果网络配置和防火墙设置不正确，可以为用户提供反馈。 提供了更多诊断 cmdlet，以帮助你对设备的网络进行故障排除。 有关用于故障排除的新诊断 cmdlet 的详细信息，请参阅这篇[部署故障排除](./storsimple-8000-troubleshoot-deployment.md)文章。
 
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修复的问题
 下表提供在 Update 1.2、1.1 和 1 中已修复问题的摘要。    
@@ -89,7 +89,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 | 3 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 |是 |是 | |
 | 4 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 当设备故障转移是从单个不活动的设备故障转移到多个设备时，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 | |是 |否 |
 | 5 |安装 |安装 StorSimple Adapter for SharePoint 期间，需要提供设备 IP 才能成功完成安装。 | |是 |否 |
-| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](storsimple-configure-web-proxy.md)。 |是 |否 |
+| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](./storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
 | 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
@@ -112,5 +112,4 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 此更新不能应用于虚拟设备。 将需要新建虚拟设备。 
 
 ## <a name="next-steps"></a>后续步骤
-* [在设备上安装 Update 1.2](storsimple-install-update-1.md)。
-
+* [在设备上安装 Update 1.2](./storsimple-8000-install-update-5.md)。

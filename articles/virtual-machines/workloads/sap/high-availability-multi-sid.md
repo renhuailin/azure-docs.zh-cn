@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5c3c0d9872fb4d50a0d4770e2c87b7be16c20bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2362ceb0d19b62eb4c0e8240c613c69782245aa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652944"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956341"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
 
@@ -642,7 +643,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 概要过程如下所述：
 
 1. [安装 SAP 的第一个群集节点][sap-ha-guide-9.1.2]。  
- 此步骤在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
+ 此步骤在 **现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
 

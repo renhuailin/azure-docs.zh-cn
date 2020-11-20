@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 7e42fb43fee4d3f8097b7ac530056d948e3f98c8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 044a8c119c8a881983a7e2bab08c0a670bc3bf0f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486185"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956290"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性
 
@@ -261,13 +262,13 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
       1. 选择 (A)SCS 群集的虚拟机及其 IP 地址。
       1. 单击“添加”
    1. 创建运行状况探测
-      1. ASCS 的端口 620**00**
+      1. ASCS 的端口 620 **00**
          1. 打开负载均衡器，选择运行状况探测，并单击“添加”
          1. 输入新运行状况探测的名称（例如，“health.QAS.ASCS”）
-         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+         1. 选择 TCP 作为协议，选择端口 620 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
          1. 单击“确定”
-      1. ASCS ERS 的端口 621**01**
-            * 重复上述“c”下的步骤，为 ERS 创建运行状况探测（例如，621**01** 和“health.QAS.ERS”）
+      1. ASCS ERS 的端口 621 **01**
+            * 重复上述“c”下的步骤，为 ERS 创建运行状况探测（例如，621 **01** 和“health.QAS.ERS”）
    1. 负载均衡规则
       1. 为 ASCS 创建后端池
          1. 打开负载均衡器、选择负载均衡规则，然后单击“添加”
@@ -295,15 +296,15 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
       1. 选择 (A)SCS 群集的虚拟机
       1. 单击“确定”
    1. 创建运行状况探测
-      1. ASCS 的端口 620**00**
+      1. ASCS 的端口 620 **00**
          1. 打开负载均衡器，选择运行状况探测，并单击“添加”
          1. 输入新运行状况探测的名称（例如，“health.QAS.ASCS”）
-         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+         1. 选择 TCP 作为协议，选择端口 620 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
          1. 单击“确定”
-      1. ASCS ERS 的端口 621**01**
-            * 重复上述“c”下的步骤，为 ERS 创建运行状况探测（例如，621**01** 和“health.QAS.ERS”）
+      1. ASCS ERS 的端口 621 **01**
+            * 重复上述“c”下的步骤，为 ERS 创建运行状况探测（例如，621 **01** 和“health.QAS.ERS”）
    1. 负载均衡规则
-      1. ASCS 的 32**00** TCP
+      1. ASCS 的 32 **00** TCP
          1. 打开负载均衡器、选择负载均衡规则，然后单击“添加”
          1. 输入新负载均衡器规则的名称（例如，“lb.QAS.ASCS.3200”）
          1. 选择先前创建的 ASCS 的前端 IP 地址、后端池和运行状况探测（例如，“frontend.QAS.ASCS”）
@@ -312,9 +313,9 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
          1. **确保启用浮动 IP**
          1. 单击“确定”
       1. ASCS 的其他端口
-         * 针对 ASCS 的端口 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP 重复上述“d”下的步骤
+         * 针对 ASCS 的端口 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 和 TCP 重复上述“d”下的步骤
       1. ASCS ERS 的其他端口
-         * 针对 ASCS ERS 的端口 32**01**、33**01**、5**01**13、5**01**14、5**01**16 和 TCP 重复上述“d”下的步骤
+         * 针对 ASCS ERS 的端口 32 **01**、33 **01**、5 **01** 13、5 **01** 14、5 **01** 16 和 TCP 重复上述“d”下的步骤
 
       
       > [!IMPORTANT]
@@ -560,7 +561,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   如果安装过程无法在 /usr/sap/**QAS**/ASCS**00** 中创建子文件夹，请尝试设置 ASCS**00** 文件夹的所有者和组，然后重试。 
+   如果安装过程无法在 /usr/sap/**QAS**/ASCS **00** 中创建子文件夹，请尝试设置 ASCS **00** 文件夹的所有者和组，然后重试。 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -625,7 +626,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
    > [!NOTE]
    > 使用 SWPM SP 20 PL 05 或更高版本。 较低版本不会正确设置权限，安装将失败。
 
-   如果安装过程无法在 /usr/sap/**QAS**/ERS**01** 中创建子文件夹，请尝试设置 ERS**01** 文件夹的所有者和组，然后重试。
+   如果安装过程无法在 /usr/sap/**QAS**/ERS **01** 中创建子文件夹，请尝试设置 ERS **01** 文件夹的所有者和组，然后重试。
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
