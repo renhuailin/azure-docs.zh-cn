@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: ff8a09e32a44f51571cca93655f91080e5df9a50
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 7c2c6460207538371af2a1deada524313816793b
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186899"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523876"
 ---
 [参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/MetricsAdvisor/) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src) | [项目 (Maven)](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples)
 
@@ -45,21 +45,21 @@ ms.locfileid: "93186899"
 mkdir myapp && cd myapp
 ```
 
-从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts* ，在运行时将使用该文件创建并配置应用程序。
+从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts*，在运行时将使用该文件创建并配置应用程序。
 
 ```console
 gradle init --type basic
 ```
 
-当提示你选择一个 **DSL** 时，选择 **Kotlin** 。
+当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
-找到 *build.gradle.kts* ，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 请确保包含项目依赖项。
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 请确保包含项目依赖项。
 
 ```kotlin
 dependencies {
-    compile("com.azure:azure-ai-metricsadvisor:1.0.0-beta.1")
+    compile("com.azure:azure-ai-metricsadvisor:1.0.0-beta.2")
 }
 ```
 
@@ -106,10 +106,10 @@ static void Main(string[] args){
 
 |名称|说明|
 |---|---|
-| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/MetricsAdvisorClient.html) | 用途： <br> - 列出事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/administration/MetricsAdvisorAdministrationClient.html)| 允许你： <br> - 管理数据馈送 <br> - 配置异常情况检测配置 <br> - 配置异常情况警报配置 <br> - 管理挂钩  |
-| [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/DataFeed.html)| 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
-| [指标](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/Metric.html) | `Metric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
+| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/MetricsAdvisorClient.html) | 用途： <br> - 列出异常事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/administration/MetricsAdvisorAdministrationClient.html)| 允许你： <br> - 管理数据馈送 <br> - 配置异常情况检测配置 <br> - 配置异常情况警报配置 <br> - 管理挂钩  |
+| [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/models/DataFeed.html) | 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
+| [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/models/DataFeedMetric.html) | `DataFeedMetric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
 
 ## <a name="code-examples"></a>代码示例
 
@@ -149,32 +149,32 @@ MetricsAdvisorAdministrationClient metricsAdvisorAdministrationClient =
 
 ## <a name="add-a-data-feed"></a>添加数据馈送
 
-将 `sql_server_connection_string` 替换为你自己的 SQL Server 连接字符串，并将 `query` 替换为在单个时间戳返回数据的查询。 你还需要根据自定义数据调整 `metric` 和 `dimension` 值。
+将 `sql_server_connection_string` 替换为你自己的 SQL Server 连接字符串，并将 `query` 替换为在单个时间戳返回数据的查询。 你还需要根据自定义数据调整 `DataFeedMetric` 和 `DataFeedDimension` 值。
 
 > [!IMPORTANT]
 > 对于每个维度组合，查询应在每个时间戳处最多返回一条记录。 查询返回的所有记录必须具有相同的时间戳。 指标顾问将针对每个时间戳运行此查询以引入数据。 有关详细信息和示例，请参阅[查询常见问题解答部分](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data)。 
 
 ```java
-final DataFeed createdSqlDataFeed = metricsAdvisorAdministrationClient.createDataFeed(
-    "My data feed name",
-    new SQLServerDataFeedSource("sql_server_connection_string", "query"),
-    new DataFeedGranularity().setGranularityType(DataFeedGranularityType.DAILY),
-    new DataFeedSchema(Arrays.asList(
-        new Metric().setName("cost"),
-        new Metric().setName("revenue")))
-        .setDimensions(Arrays.asList(
-            new Dimension().setName("category"),
-            new Dimension().setName("city"))),
-    new DataFeedIngestionSettings(OffsetDateTime.parse("2020-01-01T00:00:00Z")),
-    new DataFeedOptions()
-        .setDescription("My data feed description")
-        .setRollupSettings(
-            new DataFeedRollupSettings()
-                .setAutoRollup(DataFeedAutoRollUpMethod.SUM, Arrays.asList("cost"), "__CUSTOM_SUM__"))
-        .setMissingDataPointFillSettings(
-            new DataFeedMissingDataPointFillSettings()
-                .setFillType(DataSourceMissingDataPointFillType.SMART_FILLING))
-        .setAccessMode(DataFeedAccessMode.PUBLIC));
+DataFeed dataFeed = new DataFeed()
+    .setName("dataFeedName")
+    .setSource(new MySqlDataFeedSource("sql_server_connection_string", "query"))
+    .setGranularity(new DataFeedGranularity().setGranularityType(DataFeedGranularityType.DAILY))
+    .setSchema(new DataFeedSchema(
+        Arrays.asList(
+            new DataFeedMetric().setName("cost"),
+            new DataFeedMetric().setName("revenue")
+        )).setDimensions(
+        Arrays.asList(
+            new DataFeedDimension().setName("city"),
+            new DataFeedDimension().setName("category")
+        ))
+    )
+    .setIngestionSettings(new DataFeedIngestionSettings(OffsetDateTime.parse("2020-01-01T00:00:00Z")))
+    .setOptions(new DataFeedOptions()
+        .setDescription("data feed description")
+        .setRollupSettings(new DataFeedRollupSettings()
+            .setRollupType(DataFeedRollupType.AUTO_ROLLUP)));
+final DataFeed createdSqlDataFeed = metricsAdvisorAdminClient.createDataFeed(dataFeed);
 
 System.out.printf("Data feed Id : %s%n", createdSqlDataFeed.getId());
 System.out.printf("Data feed name : %s%n", createdSqlDataFeed.getName());
@@ -185,14 +185,13 @@ System.out.printf("Data feed granularity type : %s%n",
 System.out.printf("Data feed granularity value : %d%n",
     createdSqlDataFeed.getGranularity().getCustomGranularityValue());
 System.out.println("Data feed related metric Ids:");
-createdSqlDataFeed.getMetricIds().forEach(metricId -> System.out.println(metricId));
+createdSqlDataFeed.getMetricIds().forEach(System.out::println);
 System.out.printf("Data feed source type: %s%n", createdSqlDataFeed.getSourceType());
-createdSqlDataFeed.getSchema().getMetrics().forEach(metric -> {
-    System.out.printf("metric name: %s metric id:%s", metric.getName(), metric.getId());
-});
 
-System.out.printf("Data feed sql server query: %s%n",
-    ((SQLServerDataFeedSource) createdSqlDataFeed.getSource()).getQuery());
+if (SQL_SERVER_DB == createdSqlDataFeed.getSourceType()) {
+    System.out.printf("Data feed sql server query: %s%n",
+        ((SQLServerDataFeedSource) createdSqlDataFeed.getSource()).getQuery());
+}
 ```
 
 ## <a name="check-the-ingestion-status"></a>检查引入状态
@@ -202,7 +201,7 @@ System.out.printf("Data feed sql server query: %s%n",
 ```java
 String dataFeedId = "<use-the-data-feed-id-from-createdSqlDataFeed.getId()"; 
 
-metricsAdvisorAdministrationClient.listDataFeedIngestionStatus(
+metricsAdvisorAdminClient.listDataFeedIngestionStatus(
     dataFeedId,
     new ListDataFeedIngestionOptions(
         OffsetDateTime.parse("2020-01-01T00:00:00Z"),
@@ -238,9 +237,9 @@ SmartDetectionCondition smartDetectionCondition = new SmartDetectionCondition()
     .setSuppressCondition(new SuppressCondition().setMinNumber(1).setMinRatio(2));
 
 final AnomalyDetectionConfiguration anomalyDetectionConfiguration =
-    metricsAdvisorAdministrationClient.createMetricAnomalyDetectionConfiguration(
+    metricsAdvisorAdminClient.createMetricAnomalyDetectionConfig(
         metricId,
-        new AnomalyDetectionConfiguration("My Anomaly detection configuration")
+        new AnomalyDetectionConfiguration("My dataPoint anomaly detection configuration")
             .setDescription("anomaly detection config description")
             .setWholeSeriesDetectionCondition(
                 new MetricWholeSeriesDetectionCondition()
@@ -256,18 +255,19 @@ final AnomalyDetectionConfiguration anomalyDetectionConfiguration =
 此示例创建一个接收异常事件警报的电子邮件挂钩。
 
 ```java
-Hook emailHook = new EmailHook("email hook")
-    .setDescription("my email hook")
+NotificationHook emailNotificationHook = new EmailNotificationHook("email Hook")
+    .setDescription("my email Hook")
     .addEmailToAlert("alertme@alertme.com")
-    .setExternalLink("https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html");
+    .setExternalLink("https://example.com/handleAlerts"); // you must enter a valid webhook url to post the alert payload
 
-final Hook hook = metricsAdvisorAdministrationClient.createHook(emailHook);
-EmailHook createdEmailHook = (EmailHook) hook;
-System.out.printf("Hook Id: %s%n", createdEmailHook.getId());
-System.out.printf("Hook Name: %s%n", createdEmailHook.getName());
-System.out.printf("Hook Description: %s%n", createdEmailHook.getDescription());
-System.out.printf("Hook External Link: %s%n", createdEmailHook.getExternalLink());
-System.out.printf("Hook Emails: %s%n", String.join(",", createdEmailHook.getEmailsToAlert()));
+final NotificationHook notificationHook = metricsAdvisorAdminClient.createHook(emailNotificationHook);
+EmailNotificationHook createdEmailHook = (EmailNotificationHook) notificationHook;
+System.out.printf("Email Hook Id: %s%n", createdEmailHook.getId());
+System.out.printf("Email Hook name: %s%n", createdEmailHook.getName());
+System.out.printf("Email Hook description: %s%n", createdEmailHook.getDescription());
+System.out.printf("Email Hook external Link: %s%n", createdEmailHook.getExternalLink());
+System.out.printf("Email Hook emails to alert: %s%n",
+    String.join(",", createdEmailHook.getEmailsToAlert()));
 ```
 
 ##  <a name="create-an-alert-configuration"></a>创建警报配置
@@ -281,8 +281,8 @@ String hookId1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String hookId2 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 
 final AnomalyAlertConfiguration anomalyAlertConfiguration
-    = metricsAdvisorAdministrationClient.createAnomalyAlertConfiguration(
-        new AnomalyAlertConfiguration("My Alert config name")
+    = metricsAdvisorAdminClient.createAnomalyAlertConfig(
+        new AnomalyAlertConfiguration("My anomaly alert config name")
             .setDescription("alert config description")
             .setMetricAlertConfigurations(
                 Arrays.asList(
@@ -291,8 +291,8 @@ final AnomalyAlertConfiguration anomalyAlertConfiguration
                     new MetricAnomalyAlertConfiguration(detectionConfigurationId2,
                         MetricAnomalyAlertScope.forWholeSeries())
                         .setAlertConditions(new MetricAnomalyAlertConditions()
-                            .setSeverityCondition(new SeverityCondition()
-                                .setMaxAlertSeverity(Severity.HIGH)))
+                            .setSeverityRangeCondition(new SeverityCondition()
+                                .setMaxAlertSeverity(AnomalySeverity.HIGH)))
                 ))
             .setCrossMetricsOperator(MetricAnomalyAlertConfigurationsOperator.AND)
             .setIdOfHooksToAlert(Arrays.asList(hookId1, hookId2)));
@@ -304,24 +304,24 @@ final AnomalyAlertConfiguration anomalyAlertConfiguration
 
 ```java
 String alertConfigurationId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+final OffsetDateTime startTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+final OffsetDateTime endTime = OffsetDateTime.parse("2020-09-09T00:00:00Z");
 metricsAdvisorClient.listAlerts(
     alertConfigurationId,
-    new ListAlertOptions(OffsetDateTime.parse("2020-01-01T00:00:00Z"),
-        OffsetDateTime.now(),
-        TimeMode.ANOMALY_TIME))
+        startTime, endTime)
     .forEach(alert -> {
-        System.out.printf("Alert Id: %s%n", alert.getId());
-        System.out.printf("Alert created on: %s%n", alert.getCreatedTime());
+        System.out.printf("AnomalyAlert Id: %s%n", alert.getId());
+        System.out.printf("AnomalyAlert created on: %s%n", alert.getCreatedTime());
 
         // List anomalies for returned alerts
         metricsAdvisorClient.listAnomaliesForAlert(
             alertConfigurationId,
             alert.getId())
             .forEach(anomaly -> {
-                System.out.printf("Anomaly was created on: %s%n", anomaly.getCreatedTime());
-                System.out.printf("Anomaly severity: %s%n", anomaly.getSeverity().toString());
-                System.out.printf("Anomaly status: %s%n", anomaly.getStatus());
-                System.out.printf("Anomaly related series key: %s%n", anomaly.getSeriesKey().asMap());
+                System.out.printf("DataPoint Anomaly was created on: %s%n", anomaly.getCreatedTime());
+                System.out.printf("DataPoint Anomaly severity: %s%n", anomaly.getSeverity().toString());
+                System.out.printf("DataPoint Anomaly status: %s%n", anomaly.getStatus());
+                System.out.printf("DataPoint Anomaly related series key: %s%n", anomaly.getSeriesKey().asMap());
             });
     });
 ```

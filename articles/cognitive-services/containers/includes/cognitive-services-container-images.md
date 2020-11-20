@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c2ebe9b419100163ae55c1be85dd1464904e841
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94978429"
 ---
 ### <a name="container-repositories-and-images"></a>容器存储库和映像
 
-下表是 Azure 认知服务提供的可用容器映像的列表。 有关所有可用容器映像名称及其可用标记的完整列表，请参阅 [认知服务容器映像标记](../container-image-tags.md)。 
+下表是 Azure 认知服务提供的可用容器映像的列表。 有关所有可用容器映像名称及其可用标记的完整列表，请参阅[认知服务容器映像标记](../container-image-tags.md)。 
 
 #### <a name="generally-available"></a>正式发布 
 
@@ -67,7 +67,7 @@ Microsoft 容器注册表 (MCR) 同步发布了认知服务的所有正式发布
 | [自定义语音转文本](../../speech-service/speech-container-howto.md?tab=cstt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text` |
 | [文本转语音](../../speech-service/speech-container-howto.md?tab=tts) | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` |
 
-#### <a name="ungated-preview"></a>"无选通" 预览版 
+#### <a name="ungated-preview"></a>“非门控式”预览版 
 
 以下预览版容器现已公开提供。 Microsoft 容器注册表 (MCR) 同步发布了认知服务的所有公共可用的“非门控式”容器。 还可直接从 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) 获取容器。
 
@@ -77,21 +77,20 @@ Microsoft 容器注册表 (MCR) 同步发布了认知服务的所有正式发布
 | [文本分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 语言检测 | `mcr.microsoft.com/azure-cognitive-services/textanalytics/language` |
 
 
-#### <a name="gated-preview"></a>"封闭" 预览版
+#### <a name="gated-preview"></a>“门控式”预览版
 
-以前，封闭预览容器承载于 `containerpreview.azurecr.io` 存储库中。 从9月22日2020开始，这些容器 (除了运行状况) 文本分析在 Microsoft 容器注册表 (MCR) 上承载，并不需要使用 docker login 命令下载它们。 若要使用容器，你将需要：
+以前，门控式预览版容器托管在 `containerpreview.azurecr.io` 存储库中。 从 2020 年 9 月 22 日开始，这些容器（“运行状况文本分析”除外）托管在 Microsoft 容器注册表 (MCR) 中，下载它们不需要使用 docker login 命令。 若要使用容器，你将需要：
 
-1. 使用 Azure 订阅 ID 和用户方案填写 [请求窗体](https://aka.ms/csgate) 。 
-2. 批准后，从 MCR 下载容器。 
-3. 使用适当 Azure 资源中的密钥和终结点在运行时对容器进行身份验证。 
+1. 使用 Azure 订阅 ID 和用户方案填写[请求表单](https://aka.ms/csgate)。 
+2. 获得批准后，从 MCR 下载容器。 
+3. 使用相应 Azure 资源中的密钥和终结点在运行时进行容器身份验证。 
 
 | 服务 | 容器 | 容器注册表/存储库/映像名称 |
 |--|--|--|
 | [计算机视觉](../../Computer-vision/computer-vision-how-to-install-containers.md) | 读取 v2。0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [计算机视觉](../../Computer-vision/computer-vision-how-to-install-containers.md) | 读取3.1 版 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
-| [计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | 空间分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
+| [计算机视觉](../../computer-vision/spatial-analysis-container.md) | 空间分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [语音服务 API](../../speech-service/speech-container-howto.md?tab=ctts) | 自定义文本到语音转换 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |
 | [语音服务 API](../../speech-service/speech-container-howto.md?tab=lid) | 语言检测 | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection` |
-| [语音服务 API](../../speech-service/speech-container-howto.md?tab=ntts) | 神经文本到语音转换 | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
+| [语音服务 API](../../speech-service/speech-container-howto.md?tab=ntts) | 神经文本转语音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
 | [运行状况文本分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | 运行状况文本分析 | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
-

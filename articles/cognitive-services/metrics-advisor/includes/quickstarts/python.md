@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: cf4404bbfe7e8f0ad664c9ca8dda07ff61be12d9
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 2c79773d6697ae9fb62e2b7515da60178243fe40
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186901"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523958"
 ---
 [参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html) | [库源代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md) | [包 (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/) | [示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -70,9 +70,9 @@ service_endpoint = "<paste-your-metrics-advisor-endpoint-here>"
 |名称|说明|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | 用途： <br> - 列出事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html?highlight=metricsadvisoradministrationclient#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient)| 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况检测配置 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况检测配置 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  | |
 | [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
-| [指标](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=metric#azure.ai.metricsadvisor.models.Metric) | `Metric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
+| [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | `DataFeedMetric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
 
 ## <a name="code-examples"></a>代码示例
 
@@ -96,7 +96,7 @@ client = MetricsAdvisorAdministrationClient(service_endpoint,
 
 ## <a name="add-a-data-feed"></a>添加数据馈送
 
-在新方法中，创建类似于以下示例的 import 语句。 将 `sql_server_connection_string` 替换为你自己的 SQL Server 连接字符串，并将 `query` 替换为在单个时间戳返回数据的查询。 你还需要根据自定义数据调整 `metric` 和 `dimension` 值。
+在新方法中，创建类似于以下示例的 import 语句。 将 `sql_server_connection_string` 替换为你自己的 SQL Server 连接字符串，并将 `query` 替换为在单个时间戳返回数据的查询。 你还需要根据自定义数据调整 `DataFeedmetric` 和 `DataFeedDimension` 值。
 
 > [!IMPORTANT]
 > 对于每个维度组合，查询应在每个时间戳处最多返回一条记录。 查询返回的所有记录必须具有相同的时间戳。 指标顾问将针对每个时间戳运行此查询以引入数据。 有关详细信息和示例，请参阅[查询常见问题解答部分](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data)。 
@@ -110,11 +110,10 @@ def sample_create_data_feed():
     from azure.ai.metricsadvisor.models import (
         SQLServerDataFeed,
         DataFeedSchema,
-        Metric,
-        Dimension,
+        DataFeedMetric,
+        DataFeedDimension,
         DataFeedOptions,
-        DataFeedRollupSettings,
-        DataFeedMissingDataPointFillSettings
+        DataFeedRollupSettings
     )
     sql_server_connection_string = "<replace-with-your-sql-server-connection-string>"
     query = "<replace-with-metrics-advisor-sql-server-query>"
@@ -123,69 +122,73 @@ def sample_create_data_feed():
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
     data_feed = client.create_data_feed(
-        name="My data feed",
-        source=SQLServerDataFeed(
-            connection_string=sql_server_connection_string,
-            query=query,
+    name="My data feed",
+    source=SQLServerDataFeed(
+        connection_string=sql_server_connection_string,
+        query=query,
+    ),
+    granularity="Daily",
+    schema=DataFeedSchema(
+        metrics=[
+            DataFeedMetric(name="cost", display_name="Cost"),
+            DataFeedMetric(name="revenue", display_name="Revenue")
+        ],
+        dimensions=[
+            DataFeedDimension(name="category", display_name="Category"),
+            DataFeedDimension(name="city", display_name="City")
+        ],
+        timestamp_column="Timestamp"
+    ),
+    ingestion_settings=datetime.datetime(2019, 10, 1),
+    options=DataFeedOptions(
+        data_feed_description="cost/revenue data feed",
+        rollup_settings=DataFeedRollupSettings(
+            rollup_type="AutoRollup",
+            rollup_method="Sum",
+            rollup_identification_value="__CUSTOM_SUM__"
         ),
-        granularity="Daily",
-        schema=DataFeedSchema(
-            metrics=[
-                Metric(name="cost", display_name="Cost"),
-                Metric(name="revenue", display_name="Revenue")
-            ],
-            dimensions=[
-                Dimension(name="category", display_name="Category"),
-                Dimension(name="city", display_name="City")
-            ],
-            timestamp_column="Timestamp"
+        missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
+            fill_type="SmartFilling"
         ),
-        ingestion_settings=datetime.datetime(2019, 10, 1),
-        options=DataFeedOptions(
-            data_feed_description="cost/revenue data feed",
-            rollup_settings=DataFeedRollupSettings(
-                rollup_type="AutoRollup",
-                rollup_method="Sum",
-                rollup_identification_value="__CUSTOM_SUM__"
-            ),
-            missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
-                fill_type="SmartFilling"
-            ),
-            access_mode="Private"
-        )
+        access_mode="Private"
     )
+)
 
-    return data_feed
+return data_feed
 sample_create_data_feed()
 ```
 
 ## <a name="check-the-ingestion-status"></a>检查引入状态
 
-在新方法中，创建类似于以下示例的 import 语句。 将 `data_feed_id` 替换为你创建的数据馈送的 ID。 通过密钥和终结点创建客户端，并使用 `client.get_data_feed_ingestion_progress()` 获取引入进度。 输出详细信息，如最后一个有效且成功的时间戳。
+在新方法中，创建类似于以下示例的 import 语句。 将 `data_feed_id` 替换为你创建的数据馈送的 ID。 通过密钥和终结点创建客户端，并使用 `client.list_data_feed_ingestion_status()` 获取引入进度。 输出详细信息，如最后一个有效且成功的时间戳。
 
 
 ```python
-def sample_get_data_feed_ingestion_progress():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
 
     data_feed_id = "<replace-with-your-metrics-advisor-data-feed-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+   client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    progress = client.get_data_feed_ingestion_progress(data_feed_id)
+ingestion_status = client.list_data_feed_ingestion_status(
+    data_feed_id,
+    datetime.datetime(2020, 9, 20),
+    datetime.datetime(2020, 9, 25)
+)
+for status in ingestion_status:
+    print("Timestamp: {}".format(status.timestamp))
+    print("Status: {}".format(status.status))
+    print("Message: {}\n".format(status.message))
 
-    print("Latest active timestamp: {}".format(progress.latest_active_timestamp))
-    print("Latest successful timestamp: {}".format(progress.latest_success_timestamp))
-sample_get_data_feed_ingestion_progress()
 ```
 
 ## <a name="configure-anomaly-detection"></a>配置异常情况检测
 
-在新方法中，创建类似于以下示例的 import 语句。 将 `metric_id` 替换为要配置的指标的 ID。 通过密钥和终结点创建客户端，并使用 `client.create_metric_anomaly_detection_configuration` 创建新的检测配置。 阈值条件为异常情况检测指定参数。
+在新方法中，创建类似于以下示例的 import 语句。 将 `metric_id` 替换为要配置的指标的 ID。 通过密钥和终结点创建客户端，并使用 `client.create_detection_configuration` 创建新的检测配置。 阈值条件为异常情况检测指定参数。
 
 ```python
-def sample_create_detection_config():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
     from azure.ai.metricsadvisor.models import (
         ChangeThresholdCondition,
@@ -196,52 +199,52 @@ def sample_create_detection_config():
     )
     metric_id = "replace-with-your-metric-id"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    
+client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    change_threshold_condition = ChangeThresholdCondition(
-        anomaly_detector_direction="Both",
-        change_percentage=20,
-        shift_point=10,
-        within_range=True,
-        suppress_condition=SuppressCondition(
-            min_number=5,
-            min_ratio=2
-        )
+change_threshold_condition = ChangeThresholdCondition(
+    anomaly_detector_direction="Both",
+    change_percentage=20,
+    shift_point=10,
+    within_range=True,
+    suppress_condition=SuppressCondition(
+        min_number=5,
+        min_ratio=2
     )
-    hard_threshold_condition = HardThresholdCondition(
-        anomaly_detector_direction="Up",
-        upper_bound=100,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+hard_threshold_condition = HardThresholdCondition(
+    anomaly_detector_direction="Up",
+    upper_bound=100,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
-    smart_detection_condition = SmartDetectionCondition(
-        anomaly_detector_direction="Up",
-        sensitivity=10,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+smart_detection_condition = SmartDetectionCondition(
+    anomaly_detector_direction="Up",
+    sensitivity=10,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
+)
 
-    detection_config = client.create_metric_anomaly_detection_configuration(
-        name="my_detection_config",
-        metric_id=metric_id,
-        description="anomaly detection config for metric",
-        whole_series_detection_condition=MetricDetectionCondition(
-            cross_conditions_operator="OR",
-            change_threshold_condition=change_threshold_condition,
-            hard_threshold_condition=hard_threshold_condition,
-            smart_detection_condition=smart_detection_condition
-        )
+detection_config = client.create_detection_configuration(
+    name="my_detection_config",
+    metric_id=metric_id,
+    description="anomaly detection config for metric",
+    whole_series_detection_condition=MetricDetectionCondition(
+        cross_conditions_operator="OR",
+        change_threshold_condition=change_threshold_condition,
+        hard_threshold_condition=hard_threshold_condition,
+        smart_detection_condition=smart_detection_condition
     )
-
-    return detection_config
-sample_create_detection_config()
+)
+return detection_config
 ```
-
 
 ## <a name="create-a-hook"></a>创建挂钩
 
@@ -251,27 +254,27 @@ sample_create_detection_config()
 def sample_create_hook():
 
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
-    from azure.ai.metricsadvisor.models import EmailHook
+    from azure.ai.metricsadvisor.models import EmailNotificationHook
 
     client = MetricsAdvisorAdministrationClient(service_endpoint,
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    hook = client.create_hook(
-        name="email hook",
-        hook=EmailHook(
-            description="my email hook",
-            emails_to_alert=["alertme@contoso.com"],
-            external_link="https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html"
-        )
-    )
+client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    return hook
-sample_create_hook()
+hook = client.create_hook(
+    hook=EmailNotificationHook(
+        name="email hook",
+        description="my email hook",
+        emails_to_alert=["alertme@alertme.com"],
+        external_link="https://example.com/handleAlerts", # you must enter a valid webhook url to post the alert payload
+    )
+)
 ```
 
 ##  <a name="create-an-alert-configuration"></a>创建警报配置
 
-在新方法中，创建类似于以下示例的 import 语句。 将 `anomaly_detection_configuration_id` 替换为异常情况检测配置的 ID，并将 `hook_id` 替换为之前创建的挂钩。 通过密钥和终结点创建客户端，并使用 `client.create_anomaly_alert_configuration()` 创建警报配置。 `metric_alert_configurations` 是 `MetricAlertConfiguration` 对象的列表，这些对象指定每个配置的条件和范围。
+在新方法中，创建类似于以下示例的 import 语句。 将 `detection_configuration_id` 替换为异常情况检测配置的 ID，并将 `hook_id` 替换为之前创建的挂钩。 通过密钥和终结点创建客户端，并使用 `client.create_alert_configuration()` 创建警报配置。 
 
 ```python
 def sample_create_alert_config():
@@ -288,16 +291,18 @@ def sample_create_alert_config():
     anomaly_detection_configuration_id = "<replace-with-your-detection-configuration-id"
     hook_id = "<replace-with-your-hook-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    alert_config = client.create_anomaly_alert_configuration(
+alert_config = client.create_alert_configuration(
         name="my alert config",
         description="alert config description",
         cross_metrics_operator="AND",
         metric_alert_configurations=[
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="WholeSeries"
                 ),
@@ -309,7 +314,7 @@ def sample_create_alert_config():
                 )
             ),
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="TopN",
                     top_n_group_in_scope=TopNGroupScope(
@@ -339,26 +344,36 @@ def sample_create_alert_config():
 
 ### <a name="query-the-alert"></a>查询警报
 
-在新方法中，创建类似于以下示例的 import 语句。 将 `alert_id` 替换为警报的 ID，并将 `alert_config_id` 替换为警报配置 ID。 通过密钥和终结点创建客户端，并使用 `client.list_anomalies_for_alert()` 列出警报配置。 
+在新方法中，创建类似于以下示例的 import 语句。 将 `alert_id` 替换为警报的 ID，并将 `alert_config_id` 替换为警报配置 ID。 通过密钥和终结点创建客户端，并使用 `client.list_anomalies` 列出要警报的异常。 
 
 ```python
-def sample_list_anomalies_for_alert(alert_config_id, alert_id):
-
-    from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
+from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
     
-    alert_id = "<replace-with-your-alert-id>"
-    alert_config_id = "<replace-with-your-alert-configuration-id"
-    client = MetricsAdvisorClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+alert_id = "<replace-with-your-alert-id>"
+alert_config_id = "<replace-with-your-alert-configuration-id"
 
-    results = client.list_anomalies_for_alert(
-            alert_configuration_id=alert_config_id,
-            alert_id=alert_id,
-        )
-    for result in results:
-        print("Create on: {}".format(result.created_on))
-        print("Severity: {}".format(result.severity))
-        print("Status: {}".format(result.status))
+client = MetricsAdvisorClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
+
+results = client.list_alerts(
+    alert_configuration_id=alert_config_id,
+    start_time=datetime.datetime(2020, 1, 1),
+    end_time=datetime.datetime(2020, 9, 9),
+    time_mode="AnomalyTime",
+)
+for result in results:
+    print("Alert id: {}".format(result.id))
+    print("Create on: {}".format(result.created_on))
+
+results = client.list_anomalies(
+    alert_configuration_id=alert_config_id,
+    alert_id=alert_id,
+)
+for result in results:
+    print("Create on: {}".format(result.created_on))
+    print("Severity: {}".format(result.severity))
+    print("Status: {}".format(result.status))
 ```
 
 ### <a name="run-the-application"></a>运行应用程序

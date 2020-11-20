@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90907073"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629744"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -27,19 +27,19 @@ ms.locfileid: "90907073"
 
 使用 Azure 的计算机视觉服务，你可以访问高级算法，这些算法根据你感兴趣的视觉功能处理图像并返回信息。 例如，计算机视觉可以确定图像是否包含成人内容、查找特定的品牌或物体或查找人脸。
 
-可使用客户端库 SDK 或直接调用 REST API 来创建计算机视觉应用程序。 此页广泛地介绍了计算机视觉的功能。
+可使用[客户端库 SDK](./quickstarts-sdk/client-library.md) 或直接调用 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 来创建计算机视觉应用程序。 此页广泛地介绍了计算机视觉的功能。
+
+## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
+
+计算机视觉包括[光学字符识别 (OCR)](concept-recognizing-text.md) 功能。 可以使用新的 Read API 从图像和文档中提取印刷体文本和手写文本。 它使用最新的模型，可在各种表面和背景上处理文本。 文本类型包括收据、海报、名片、信件和白板。 这两种 OCR API 支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>用于数字资产管理的计算机视觉
 
 计算机视觉可以支持许多数字资产管理 (DAM) 方案。 DAM 是组织、存储和检索富媒体资产以及管理数字权利和权限的业务流程。 例如，公司可能希望基于可见徽标、面部、物体、颜色等来分组和标识图像。 或者，你可能希望自动[生成图像的标题](./Tutorials/storage-lab-tutorial.md)，并附加关键字，使其可供搜索。 有关使用认知服务、Azure 认知搜索和智能报表的一体式 DAM 解决方案，请参阅 GitHub 上的[知识挖掘解决方案加速器指南](https://github.com/Azure-Samples/azure-search-knowledge-mining)。 有关其他 DAM 示例，请参阅[计算机视觉解决方案模板](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates)存储库。
 
-## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
-
-计算机视觉包括[光学字符识别 (OCR)](concept-recognizing-text.md) 功能。 可以使用新的 Read API 从图像和文档中提取印刷体文本和手写文本。 它使用最新的模型，可在各种表面和背景上处理文本。 文本类型包括收据、海报、名片、信件和白板。 这两种 OCR API 支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](#next-steps)的说明开始操作。
-
 ## <a name="analyze-images-for-insight"></a>通过分析图像来获取见解
 
-可以分析图像，以便提供有关视觉特性和特征的见解。 下表中的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 提供。 按[快速入门](#next-steps)的说明开始操作。
+可以分析图像，以便提供有关视觉特性和特征的见解。 下表中的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 提供。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
 
 
 ### <a name="tag-visual-features"></a>标记视觉特性
@@ -113,8 +113,6 @@ ms.locfileid: "90907073"
 
 ## <a name="next-steps"></a>后续步骤
 
-按照快速入门指南操作，完成计算机视觉入门：
+采用所选开发语言按照快速入门指南开始使用计算机视觉：
 
-- [快速入门：计算机视觉 .NET 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [快速入门：计算机视觉 Python 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [快速入门：计算机视觉 Java 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [快速入门：计算机视觉客户端库](./quickstarts-sdk/client-library.md)

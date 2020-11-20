@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: a4426e9ca40b21c79e5e34f782be4ff2d07c7061
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 121f6a876507b84de7a4613fe2158c1953e2d250
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186917"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523861"
 ---
 [参考文档](https://docs.microsoft.com/javascript/api/overview/azure/ai-metrics-advisor-readme-pre?view=azure-node-preview&preserve-view=true) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 
@@ -52,7 +52,7 @@ npm init
 安装 `@azure/ai-metrics-advisor` NPM 包：
 
 ```console
-npm install @azure/ai-metrics-advisor@1.0.0-beta.1
+npm install @azure/ai-metrics-advisor@1.0.0-beta.2
 ```
 
 应用的 `package.json` 文件将使用依赖项进行更新。
@@ -81,10 +81,10 @@ endpoint = "<paste-your-metrics-advisor-endpoint-here>";
 
 |名称|说明|
 |---|---|
-| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-ai-metrics-advisor/1.0.0-beta.1/classes/metricsadvisorclient.html) | 用途： <br> - 列出事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-ai-metrics-advisor/1.0.0-beta.1/classes/metricsadvisoradministrationclient.html)| 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  |
-| [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-ai-metrics-advisor/1.0.0-beta.1/interfaces/datafeed.html)| 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
-| [指标](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-ai-metrics-advisor/1.0.0-beta.1/interfaces/metric.html) | `Metric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
+| MetricsAdvisorClient | 用途： <br> - 列出事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
+| MetricsAdvisorAdministrationClient | 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  |
+| DataFeed | 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
+| DataFeedMetric | `DataFeedMetric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
 
 ## <a name="code-examples"></a>代码示例
 
@@ -144,45 +144,45 @@ async function main() {
 }
 
 async function createDataFeed(adminClient, sqlServerConnectionString, sqlServerQuery) {
-  const metric = [
-    {
-      name: "revenue",
-      displayName: "revenue",
-      description: "Metric1 description"
+  console.log("Creating Datafeed...");
+  const dataFeed = {
+    name: "test_datafeed_" + new Date().getTime().toString(),
+    source: {
+      dataSourceType: "SqlServer",
+      dataSourceParameter: {
+        connectionString: sqlServerConnectionString,
+        query: sqlServerQuery
+      }
     },
-    {
-      name: "cost",
-      displayName: "cost",
-      description: "Metric2 description"
-    }
-  ];
-  const dimension = [
-    { name: "city", displayName: "city display" },
-    { name: "category", displayName: "category display" }
-  ];
-  const dataFeedSchema = {
-    metrics: metric,
-    dimensions: dimension,
-    timestampColumn: null
-  };
-  const dataFeedIngestion = {
-    ingestionStartTime: new Date(Date.UTC(2020, 5, 1)),
-    ingestionStartOffsetInSeconds: 0,
-    dataSourceRequestConcurrency: -1,
-    ingestionRetryDelayInSeconds: -1,
-    stopRetryAfterInSeconds: -1
-  };
-  const granualarity = {
-    granularityType: "Daily"
-  };
-  const source = {
-    dataSourceType: "SqlServer",
-    dataSourceParameter: {
-      connectionString: sqlServerConnectionString,
-      query: sqlServerQuery
-    }
-  };
-  const options = {
+    granularity: {
+      granularityType: "Daily"
+    },
+    schema: {
+      metrics: [
+        {
+          name: "revenue",
+          displayName: "revenue",
+          description: "Metric1 description"
+        },
+        {
+          name: "cost",
+          displayName: "cost",
+          description: "Metric2 description"
+        }
+      ],
+      dimensions: [
+        { name: "city", displayName: "city display" },
+        { name: "category", displayName: "category display" }
+      ],
+      timestampColumn: null
+    },
+    ingestionSettings: {
+      ingestionStartTime: new Date(Date.UTC(2020, 5, 1)),
+      ingestionStartOffsetInSeconds: 0,
+      dataSourceRequestConcurrency: -1,
+      ingestionRetryDelayInSeconds: -1,
+      stopRetryAfterInSeconds: -1
+    },
     rollupSettings: {
       rollupType: "AutoRollup",
       rollupMethod: "Sum",
@@ -192,18 +192,9 @@ async function createDataFeed(adminClient, sqlServerConnectionString, sqlServerQ
       fillType: "SmartFilling"
     },
     accessMode: "Private",
-    admins: ["xyz@example.com"]
+    adminEmails: ["xyz@example.com"]
   };
-
-  console.log("Creating Datafeed...");
-  const result = await adminClient.createDataFeed({
-    name: "test_datafeed_" + new Date().getTime().toFixed(),
-    source,
-    granularity,
-    schema: dataFeedSchema,
-    ingestionSettings: dataFeedIngestion,
-    options
-  });
+  const result = await adminClient.createDataFeed(dataFeed);
 
   return result;
 }
@@ -239,11 +230,8 @@ async function main() {
 async function checkIngestionStatus(adminClient, datafeedId, startTime, endTime) {
   // This shows how to use for-await-of syntax to list status
   console.log("Checking ingestion status...");
-  for await (const status of adminClient.listDataFeedIngestionStatus(
-    datafeedId,
-    startTime,
-    endTime
-  )) {
+  const iterator = adminClient.listDataFeedIngestionStatus(datafeedId, startTime, endTime);
+  for await (const status of iterator) {
     console.log(`  [${status.timestamp}] ${status.status} - ${status.message}`);
   }
 }
@@ -274,7 +262,7 @@ async function main() {
 
 async function configureAnomalyDetectionConfiguration(adminClient, metricId) {
   console.log(`Creating an anomaly detection configuration on metric '${metricId}'...`);
-  return await adminClient.createMetricAnomalyDetectionConfiguration({
+  const detectionConfig = {
     name: "test_detection_configuration" + new Date().getTime().toString(),
     metricId,
     wholeSeriesDetectionCondition: {
@@ -288,7 +276,8 @@ async function configureAnomalyDetectionConfiguration(adminClient, metricId) {
       }
     },
     description: "Detection configuration description"
-  });
+  };
+  return await adminClient.createDetectionConfig(detectionConfig);
 }
 ```
 
@@ -322,7 +311,7 @@ async function createWebhookHook(adminClient) {
     name: "web hook " + new Date().getTime().toFixed(),
     description: "description",
     hookParameter: {
-      endpoint: "https://example.com/handleAlerts",
+      endpoint: "https://example.com/handleAlerts", // you must enter a valid webhook url to post the alert payload
       username: "username",
       password: "password"
       // certificateKey: "certificate key",
@@ -360,27 +349,29 @@ async function main() {
 
 async function configureAlertConfiguration(adminClient, detectionConfigId, hookIds) {
   console.log("Creating a new alerting configuration...");
-  const metricAlertingConfig = {
-    detectionConfigurationId: detectionConfigId,
-    alertScope: {
-      scopeType: "All"
-    },
-    alertConditions: {
-      severityCondition: { minAlertSeverity: "Medium", maxAlertSeverity: "High" }
-    },
-    snoozeCondition: {
-      autoSnooze: 0,
-      snoozeScope: "Metric",
-      onlyForSuccessive: true
-    }
-  };
-  return await adminClient.createAnomalyAlertConfiguration({
+  const anomalyAlertConfig = {
     name: "test_alert_config_" + new Date().getTime().toString(),
     crossMetricsOperator: "AND",
-    metricAlertConfigurations: [metricAlertingConfig],
+    metricAlertConfigurations: [
+      {
+        detectionConfigurationId: detectionConfigId,
+        alertScope: {
+          scopeType: "All"
+        },
+        alertConditions: {
+          severityCondition: { minAlertSeverity: "Medium", maxAlertSeverity: "High" }
+        },
+        snoozeCondition: {
+          autoSnooze: 0,
+          snoozeScope: "Metric",
+          onlyForSuccessive: true
+        }
+      }
+    ],
     hookIds,
     description: "Alerting config description"
-  });
+  };
+  return await adminClient.createAlertConfig(anomalyAlertConfig);
 }
 ```
 
@@ -415,26 +406,23 @@ async function main() {
 }
 
 async function queryAlerts(client, alertConfigId, startTime, endTime) {
-  let alertIds = [];
-  for await (const alert of client.listAlertsForAlertConfiguration(
-    alertConfigId,
-    startTime,
-    endTime,
-    "AnomalyTime"
-  )) {
-    alertIds.push(alert.id);
+  let alerts = [];
+  const iterator = client.listAlerts(alertConfigId, startTime, endTime, "AnomalyTime");
+  for await (const alert of iterator) {
+    alerts.push(alert);
   }
 
-  return alertIds;
+  return alerts;
 }
 
-async function queryAnomaliesByAlert(client, alertConfigId, alertId) {
+async function queryAnomaliesByAlert(client, alert) {
   console.log(
-    `Listing anomalies for alert configuration '${alertConfigId}' and alert '${alertId}'`
+    `Listing anomalies for alert configuration '${alert.alertConfigId}' and alert '${alert.id}'`
   );
-  for await (const anomaly of client.listAnomaliesForAlert(alertConfigId, alertId)) {
+  const iterator = client.listAnomalies(alert);
+  for await (const anomaly of iterator) {
     console.log(
-      `  Anomaly ${anomaly.severity} ${anomaly.status} ${anomaly.dimension} ${anomaly.timestamp}`
+      `  Anomaly ${anomaly.severity} ${anomaly.status} ${anomaly.seriesKey.dimension} ${anomaly.timestamp}`
     );
   }
 }

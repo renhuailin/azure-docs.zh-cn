@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918658"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816703"
 ---
 开始使用适用于 Go 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -169,7 +169,7 @@ touch sample-app.go
 
 ### <a name="create-persongroup"></a>创建 PersonGroup
 
-下载图像后，请将以下代码添加到 **main** 方法的底部。 此代码对 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 对象进行身份验证，然后使用它来定义新的 **PersonGroup** 。
+下载图像后，请将以下代码添加到 **main** 方法的底部。 此代码对 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 对象进行身份验证，然后使用它来定义新的 **PersonGroup**。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_setup)]
 
@@ -190,20 +190,23 @@ touch sample-app.go
 
 ### <a name="train-persongroup"></a>训练 PersonGroup
 
-分配人脸后，请训练 **PersonGroup** ，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
+分配人脸后，请训练 **PersonGroup**，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 
+> [!TIP]
+> 人脸 API 在一组预构建的模型呢上运行，这些模型在本质上是静态的（模型的性能不会因为运行服务而提高或降低）。 如果 Microsoft 更新模型的后端，但不迁移整个新模型版本，那么模型生成的结果可能会变化。 若要使用更新的模型版本，可重新训练 PersonGroup，将更新的模型指定为具有相同注册映像的参数。
+
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup** （面部特征已知的不同 **Person** 对象的数据库）进行比较。
+识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
 > 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-person-group)中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
-以下代码在项目根目录中查找图像 _test-image-person-group.jpg_ ，并将其载入程序内存。 可以在[创建和训练人员组](#create-and-train-a-person-group)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并将其载入程序内存。 可以在[创建和训练人员组](#create-and-train-a-person-group)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -215,7 +218,7 @@ touch sample-app.go
 
 ### <a name="identify-faces"></a>标识人脸
 
-**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup** （已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。
+**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup**（已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id)]
 
