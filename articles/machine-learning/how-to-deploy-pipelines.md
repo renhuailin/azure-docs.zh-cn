@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: fd5c0905b4a5d050eaf35456353122fd26f8cbf7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445262"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960014"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
 
@@ -74,7 +74,7 @@ ms.locfileid: "94445262"
 所有已发布的管道都具有 REST 终结点。 使用管道终结点，可以从任何外部系统（包括非 Python 客户端）触发管道运行。 在批量评分和重新训练方案中，此终结点支持“托管可重复性”。
 
 > [!IMPORTANT]
-> 如果你使用基于角色的访问控制 (RBAC) 来管理对管道的访问，请 [ (定型或评分) 设置管道方案的权限 ](how-to-assign-roles.md#common-scenarios)。
+> 如果使用基于 Azure 角色的访问控制 (Azure RBAC) 来管理对管道的访问，请 [ (定型或评分) 设置管道方案的权限 ](how-to-assign-roles.md#common-scenarios)。
 
 若要调用上述管道的运行，需要 Azure Active Directory 身份验证标头令牌。 [AzureCliAuthentication 类](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py)参考和 [Azure 机器学习中的身份验证](https://aka.ms/pl-restep-auth)笔记本中介绍了如何获取这样的令牌。
 

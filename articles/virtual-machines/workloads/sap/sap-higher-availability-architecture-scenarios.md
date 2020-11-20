@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5d7904b950fa79f9ccbf98ec08f09aa6688f8a99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535597"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957888"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
@@ -216,7 +217,7 @@ ms.locfileid: "92535597"
 如果决定不在 Linux（目前仅支持 SUSE Linux Enterprise Server [SLES] 12 和更高版本）上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure 虚拟机重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
 > [!NOTE]
-> Azure VM 重启主要是保护 VM 而不是应用程序。  虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
+> Azure VM 重启主要是保护 VM 而不是应用程序。 虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
 >
 >
 
@@ -250,13 +251,13 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
     即使使用托管磁盘，这些磁盘也会存储在 Azure 存储帐户中，并可能在出现存储中断时不可用。
 
-* SAP ASCS/SCS 实例的  更高可用性
+* SAP ASCS/SCS 实例的更高可用性
 
-    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。  通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
+    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。 通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
 
     为了确保在 VM 重启后自动启动 ASCS/SCS 实例，请设置[对 SAP 实例使用 Autostart][planning-guide-11.5] 部分所述的 ASCS/SCS 实例启动配置文件中的 Autostart 参数。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
 
-* DBMS 服务器的  更高可用性
+* DBMS 服务器的更高可用性
 
     就像在前述 SAP ASCS/SCS 实例用例中一样，可以使用 Azure VM 重启来保护已安装 DBMS 软件的 VM，并通过 VM 重启实现 DBMS 软件的“更高可用性”。
   

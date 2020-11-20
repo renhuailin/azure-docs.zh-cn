@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e90c78e8e7cb474756c1a5ea03fd90c33e14300
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3ef3fc2afa07590ff676d57c22f05ed723539f9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963578"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957718"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
@@ -80,7 +81,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小介于 50 GB – 250 GB （如 SAP 解决方案管理器）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E4s_v3 (4 vCPU/32 GB RAM)  | E4s_v3 (4 vCPU/32 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -101,7 +102,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 例如，如果数据库大小介于 250 GB – 750 GB 之间，则中型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E16s_v3 (vCPU/128 GB RAM)  | E16s_v3 (vCPU/128 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -121,7 +122,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小介于 750 GB – 2000 GB （如大型 SAP Business Suite system）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E64s_v3 (64 vCPU/432 GB RAM)  | E64s_v3 (64 vCPU/432 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -142,7 +143,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小为 2 TB + 的小型 SAP ASE DB 服务器的配置示例，如更大的全局使用的 SAP 业务套件系统，如下所示
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | M 系列 (1.0 到 4.0 TB RAM)   | M 系列 (1.0 到 4.0 TB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|

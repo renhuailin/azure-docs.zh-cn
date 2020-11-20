@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 205a290d2483a032ed6b5579dbedd555f9f6d02f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682751"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958636"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -264,7 +265,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 - KeepAliveTime
 - KeepAliveInterval
 
-| 路径| 变量名称 | 变量类型  | “值” | 文档 |
+| 路径| 变量名称 | 变量类型  | 值 | 文档 |
 | --- | --- | --- |---| ---|
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD（十进制） |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD（十进制） |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |

@@ -3,16 +3,17 @@ title: Azure 虚拟机上的 SAP Business One | Microsoft Docs
 description: Azure 上的 SAP Business One。
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: b076045f6a106f77717159d3095ffd5973ab27aa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1201ff91634a1f63c8fe0e545ca6d6dee33abe35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359878"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957378"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。

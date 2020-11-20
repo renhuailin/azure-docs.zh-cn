@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797740"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957684"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -54,7 +55,7 @@ Azure 隔离代理不需要部署)  (额外的虚拟机。
 
 1. 部署新的 SLES 12 SP1 或更高版本的虚拟机并通过 SSH 与其建立连接。 不需要很大的虚拟机。 Standard_E2s_v3 或 Standard_D2s_v3 这样的虚拟机大小就足够了。 确保为 OS 磁盘使用高级存储。
 
-在所有 **iSCSI 目标虚拟机**上运行以下命令。
+在所有 **iSCSI 目标虚拟机** 上运行以下命令。
 
 1. 更新 SLES
 
@@ -84,7 +85,7 @@ Azure 隔离代理不需要部署)  (额外的虚拟机。
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>在 iSCSI 目标服务器上创建 iSCSI 设备
 
-在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
+在所有 **iSCSI 目标虚拟机** 上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
 **`nfs`** 用于标识 NFS 群集，ascsnw1 用于标识 NW1 的 ASCS 群集，dbnw1 用于标识 NW1 的数据库群集，nfs-0 和 nfs-1 是 NFS 群集节点的主机名，nw1-xscs-0 和 nw1-xscs-1 是 NW1 ASCS 群集节点的主机名，nw1-db-0 和 nw1-db-1 是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
@@ -442,7 +443,7 @@ o- / ...........................................................................
    >可以通过运行 SUSEConnect---列表扩展来检查扩展。  
    >若要通过 Azure 隔离代理获得更快的故障转移时间：
    > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本 **4.6.2** 或更高版本的包 python-azure 管理-计算  
-   > - 在 SLES 15 上安装版本 **4.6.2** 或更高版本的包 python**3**-azure 管理-计算 
+   > - 在 SLES 15 上安装版本 **4.6.2** 或更高版本的包 python **3**-azure 管理-计算 
 
 1. [A] 设置主机名称解析
 
@@ -583,7 +584,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
-1. 记下值。 此值用作服务主体的**密码**
+1. 记下值。 此值用作服务主体的 **密码**
 1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色

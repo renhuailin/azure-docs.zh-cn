@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: Azure，SQL Server，SAP，AlwaysOn
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef00f33040d30795ae5374b74d0d7a6e9b6e2156
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977300"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957667"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -462,7 +463,7 @@ Microsoft 在 Azure 市场中提供已经包含 SQL Server 版本的 VM。 对�
 Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 ```
 
-如果结果不同，请停止部署 SAP，并调查为什么安装命令未按预期运行。 **不**支持将 SAP NetWeaver 应用程序部署到 SQL Server 代码页与上述代码页不同的 SQL Server 实例。
+如果结果不同，请停止部署 SAP，并调查为什么安装命令未按预期运行。 **不** 支持将 SAP NetWeaver 应用程序部署到 SQL Server 代码页与上述代码页不同的 SQL Server 实例。
 
 ## <a name="sql-server-high-availability-for-sap-in-azure"></a>Azure 中适用于 SAP 的 SQL Server 高可用性
 在针对 SAP 的 Azure IaaS 部署中使用 SQL Server，可增加几种不同的可能性来部署高可用性的 DBMS 层。 如 [Azure 虚拟机 DBMS 部署 SAP 工作负荷的注意事项](dbms_guide_general.md) 中所述，azure 为单个 VM 和在 Azure 可用性集中部署的一对 vm 提供了不同的运行时间 sla。 假设条件是，对于需要在 Azure 可用性集中进行部署的生产部署，努力实现正常运行时间 SLA。 在此情况下，需要在此可用性集中部署至少两个 VM。 一个 VM 将运行主动 SQL Server 实例。 另一个 VM 将运行被动实例

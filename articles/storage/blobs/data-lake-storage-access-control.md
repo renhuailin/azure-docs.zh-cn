@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320479"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959129"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>访问控制列表 (中) 的 Acl Azure Data Lake Storage Gen2
 
@@ -90,9 +90,9 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 下表显示了启用安全主体以执行 " **操作** " 列中列出的操作所需的 ACL 条目。 
 
-此表显示一个表示虚拟目录层次结构的每个级别的列。 容器的根目录有一列 (`\`) ，一个名为 **俄勒冈**的子目录，一个名为 " **上海**" 的俄勒冈目录的子目录，以及名为 " **Data.txt**" 的 "上" 目录中的文本文件。 
+此表显示一个表示虚拟目录层次结构的每个级别的列。 容器的根目录有一列 (`\`) ，一个名为 **俄勒冈** 的子目录，一个名为 " **上海**" 的俄勒冈目录的子目录，以及名为 " **Data.txt**" 的 "上" 目录中的文本文件。 
 
-> [!IMPORANT] 此表假设你 **仅** 在没有任何 Azure RBAC 角色分配的情况下使用 acl。 若要查看结合使用 Azure RBAC 和 Acl 的类似表，请参阅 [权限表：结合使用 AZURE rbac 和 ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
+> [!IMPORANT] 此表假设你 **仅** 使用没有任何 Azure 角色分配的 acl。 若要查看结合使用 Azure RBAC 和 Acl 的类似表，请参阅 [权限表：结合使用 AZURE rbac 和 ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
 
 |    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -147,7 +147,7 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 拥有组无法更改某个文件或目录的 ACL。  虽然拥有组设置为在根目录那一种情况（即上面的**案例 1**）中创建了帐户的用户，但单个用户帐户不能有效地用于通过拥有组提供权限。 可以将此权限分配给有效的用户组（如果适用）。
+> 拥有组无法更改某个文件或目录的 ACL。  虽然拥有组设置为在根目录那一种情况（即上面的 **案例 1**）中创建了帐户的用户，但单个用户帐户不能有效地用于通过拥有组提供权限。 可以将此权限分配给有效的用户组（如果适用）。
 
 ## <a name="access-check-algorithm"></a>访问检查算法
 
@@ -254,7 +254,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
@@ -270,7 +270,7 @@ def set_default_acls_for_new_child(parent, child):
 
 若要了解系统如何将 Azure RBAC 和 Acl 一起评估，以便对存储帐户资源做出授权决策，请参阅 [如何评估权限](data-lake-storage-access-control-model.md#how-permissions-are-evaluated)。
 
-### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC 角色分配和 ACL 条目的限制是什么？
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure 角色分配和 ACL 条目的限制是什么？
 
 下表提供了在使用 Azure RBAC 管理 "粗粒度" 权限 (权限的摘要视图，这些限制适用于存储帐户或容器) 并使用 Acl 来管理应用于文件和目录)  (权限权限。 为 ACL 分配使用安全组。 通过使用组，您不太可能超过每个订阅的角色分配的最大数目，以及每个文件或目录的 ACl 条目的最大数量。 
 

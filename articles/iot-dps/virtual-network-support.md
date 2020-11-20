@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998593"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959775"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中心设备预配服务 (DPS) 对虚拟网络的支持
 
@@ -38,7 +38,7 @@ ms.locfileid: "91998593"
 
 限制连接的常见方法包括 [DPS IP 筛选规则](./iot-dps-ip-filtering.md) 和虚拟网络 (具有 [专用终结点](../private-link/private-endpoint-overview.md)的 VNET) 。 本文的目的是介绍使用专用终结点的 DPS 的 VNET 方法。 
 
-在本地网络中运行的设备可以使用 [虚拟专用网络 (VPN) ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连连接到 Azure 中的 VNET，并通过专用终结点访问 DPS 资源。 
+在本地网络中运行的设备可以使用 [虚拟专用网络 (VPN) ](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连连接到 Azure 中的 VNET，并通过专用终结点访问 DPS 资源。 
 
 专用终结点是在客户拥有的 VNET 中分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过使用 DPS 资源的专用终结点，你可以允许在 VNET 中运行的设备请求你的 DPS 资源进行预配，而不允许向公共终结点发送流量。
 
@@ -51,7 +51,7 @@ ms.locfileid: "91998593"
 
 * 你已设置了一个 Azure VNET，其中包含将在其中创建专用终结点的子网。 有关详细信息，请参阅 [使用 Azure CLI 创建虚拟网络](../virtual-network/quick-create-cli.md)。
 
-* 对于在本地网络内部运行的设备，请在 Azure VNET 中设置 [虚拟专用网络 (VPN) ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连。
+* 对于在本地网络内部运行的设备，请在 Azure VNET 中设置 [虚拟专用网络 (VPN) ](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连。
 
 ## <a name="private-endpoint-limitations"></a>私有终结点限制
 
@@ -81,7 +81,7 @@ ms.locfileid: "91998593"
     | :---- | :-----|
     | **订阅** | 选择要包含专用终结点的所需 Azure 订阅。  |
     | **资源组** | 选择或创建一个资源组以包含专用终结点 |
-    | **名称**       | 输入专用终结点的名称 |
+    | **Name**       | 输入专用终结点的名称 |
     | **区域**     | 选择的区域必须与包含 VNET 的区域相同，但它不一定要与 DPS 资源相同。 |
 
     单击 " **下一步：资源** " 以配置专用终结点将指向的资源。
@@ -98,7 +98,7 @@ ms.locfileid: "91998593"
     | **目标子资源** | 选择 **iotDps**。 |
 
     > [!TIP]
-    > 本文的 "[请求专用终结点](#request-a-private-endpoint)" 部分中提供了**按资源 ID 或别名连接到 Azure 资源**的信息。
+    > 本文的 "[请求专用终结点](#request-a-private-endpoint)" 部分中提供了 **按资源 ID 或别名连接到 Azure 资源** 的信息。
 
 
     单击 " **下一步：配置** " 可为专用终结点配置 VNET。
@@ -123,7 +123,7 @@ ms.locfileid: "91998593"
     > [!CAUTION]
     > 请注意，资源 ID 确实包含订阅 ID。 
 
-2. 获得资源 ID 后，请按照_创建专用终结点资源_页上的步骤3中的 "[设置专用终结点](#set-up-a-private-endpoint)" 中的步骤进行操作。 单击 " **按资源 ID 或别名连接到 Azure 资源** "，并输入下表中的信息。 
+2. 获得资源 ID 后，请按照 _创建专用终结点资源_ 页上的步骤3中的 "[设置专用终结点](#set-up-a-private-endpoint)" 中的步骤进行操作。 单击 " **按资源 ID 或别名连接到 Azure 资源** "，并输入下表中的信息。 
 
     | 字段 | 值 |
     | :---- | :-----|
@@ -154,5 +154,5 @@ ms.locfileid: "91998593"
 
 使用以下链接了解有关 DPS 安全功能的详细信息：
 
-* [安全性](concepts-security.md)
+* [安全性](./concepts-service.md#attestation-mechanism)
 * [TLS 1.2 支持](tls-support.md)

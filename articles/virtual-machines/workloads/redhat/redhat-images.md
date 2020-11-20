@@ -3,16 +3,17 @@ title: Azure 中 Red Hat Enterprise Linux 映像的概述
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像。
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 46504f7d6d3a989119a3c851fc029bdf4494e01f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994303"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957531"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -145,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
-RHEL 8。0      |不适用                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
 
@@ -160,7 +161,7 @@ RHEL 8。0      |不适用                            | Red Hat 中没有可用�
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 

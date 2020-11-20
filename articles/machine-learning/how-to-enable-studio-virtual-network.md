@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554659"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959996"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -36,7 +36,7 @@ ms.locfileid: "94554659"
 
 
 > [!IMPORTANT]
-> 如果你的工作区位于 __主权云中__ ，例如 azure 政府版或 Azure 中国世纪互联，则集成笔记本 _不_ 支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)部分。
+> 如果你的工作区位于 __主权云中__，例如 azure 政府版或 Azure 中国世纪互联，则集成笔记本 _不_ 支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)部分。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -53,7 +53,7 @@ ms.locfileid: "94554659"
 
 如果要从虚拟网络内的资源（例如，计算实例或虚拟机）访问工作室，则必须允许从虚拟网络到工作室的出站流量。 
 
-例如，如果使用网络安全组 (NSG) 来限制出站流量，请将一条规则添加到 __服务标记__ 目标 __AzureFrontDoor.Frontend__ 。
+例如，如果使用网络安全组 (NSG) 来限制出站流量，请将一条规则添加到 __服务标记__ 目标 __AzureFrontDoor.Frontend__。
 
 ## <a name="access-data-using-the-studio"></a>使用工作室访问数据
 
@@ -90,7 +90,7 @@ Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存�
 1. 在数据存储设置中，对于“允许 Azure 机器学习服务使用工作区托管标识来访问存储”，选择“是” 。
 
 
-这些步骤使用 azure RBAC)  (基于 Azure 资源的访问控制将工作区管理的标识作为 __读取器__ 添加到存储服务。 “读取者”访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
+这些步骤使用 Azure RBAC)  (azure RBAC 的访问控制将工作区管理的标识作为 __读取器__ 添加到存储服务。 “读取者”访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
 
 > [!NOTE]
 > 这些更改可能需要长达 10 分钟才能生效。
@@ -131,7 +131,7 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 若要为管道设置新的默认存储，请执行以下操作：
 
 1. 在管道草稿中，选择管道标题附近的“设置”齿轮图标。
-1. 选择 " **选择默认数据存储** "。
+1. 选择 " **选择默认数据存储**"。
 1. 指定新的数据存储。
 
 还可以基于每个模块替代默认数据存储。 这使你可以控制每一单个模块的存储位置。

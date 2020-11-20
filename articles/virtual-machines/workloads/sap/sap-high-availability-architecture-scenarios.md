@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b409254abbde1c1f6156052c49a07e6cc09a4dfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360346"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958772"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
 
@@ -387,11 +388,11 @@ _**图 2：** Azure 可用性集中 SAP 应用程序服务器的高可用性_
 
 WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种变体：
 
-* **使用群集共享磁盘组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅[在 Windows 故障转移群集上使用群集共享磁盘来组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-shared-disk]。   
+* **使用群集共享磁盘组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅 [在 Windows 故障转移群集上使用群集共享磁盘来组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-shared-disk]。   
 
-* **使用文件共享组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅[在 Windows 故障转移群集上使用文件共享组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-file-share]。
+* **使用文件共享组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅 [在 Windows 故障转移群集上使用文件共享组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-file-share]。
 
-* **使用 ANF SMB 共享组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅[在 Windows 故障转移群集上使用 ANF SMB 共享组建 SAP ASCS/SCS 实例的群集](./high-availability-guide-windows-netapp-files-smb.md)。
+* **使用 ANF SMB 共享组建 SAP ASCS/SCS 实例的群集**：有关此体系结构的详细信息，请参阅 [在 Windows 故障转移群集上使用 ANF SMB 共享组建 SAP ASCS/SCS 实例的群集](./high-availability-guide-windows-netapp-files-smb.md)。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 实例的高可用性体系结构
 
@@ -416,7 +417,7 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 > ![Linux 徽标。][Logo_Linux] Linux
 > 
-> 在适用于 SAP ASCS/ERS 的 Linux Pacemaker 群集上支持多 SID 群集，限制为同一群集上**五** 个 SAP SID。
+> 在适用于 SAP ASCS/ERS 的 Linux Pacemaker 群集上支持多 SID 群集，限制为同一群集上 **五** 个 SAP SID。
 > 有关 Linux 上多 SID 高可用性体系结构的详细信息，请参阅：
 
 * [适用于 SAP 应用程序多 SID 的 SLES 上 Azure VM 中的 SAP NW 的 HA 指南](./high-availability-guide-suse-multi-sid.md)

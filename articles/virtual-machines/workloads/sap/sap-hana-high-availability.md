@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9efdbb32683c9a244226012bd2d4bfcab6046678
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2783d9dc7151190857d870b5493465884b82ffcc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151158"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957259"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -111,8 +112,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
     - **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     - **系统可用性**：选择“HA”。
     - **管理员用户名和管理员密码**：创建可用于登录计算机的新用户。
-    - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。****
-    - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。
+    - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
+    - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -143,7 +144,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 1. 如果使用标准负载均衡器，请执行以下配置步骤：
    1. 首先创建前端 IP 池：
    
-      1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
       1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
       1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.13**）。 
       1. 选择“确定”。
@@ -151,7 +152,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    1. 接下来创建后端池：
    
-      1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **后端池**，然后选择“添加”。
       1. 输入新后端池的名称（例如 **hana-backend**）。
       1. 选择 " **虚拟网络**"。
       1. 选择“添加虚拟机”。
@@ -161,25 +162,25 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    1. 接下来创建运行状况探测：
    
-      1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
       1. 输入新运行状况探测的名称（例如 **hana-hp**）。
-      1. 选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
+      1. 选择“TCP”作为协议，并选择端口 625 **03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
       1. 选择“确定”。
    
    1. 接下来，创建负载均衡规则：
    
-      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
       1. 输入新负载均衡器规则的名称（例如 hana-lb）。
       1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend、hana-backend 和 hana-hp）。
       1. 选择“HA 端口”。
       1. 将“空闲超时”增大到 30 分钟。
-      1. 确保**启用浮动 IP**。
+      1. 确保 **启用浮动 IP**。
       1. 选择“确定”。
 
 1. 或者，如果你的方案指示使用基本负载均衡器，请执行以下配置步骤：
    1. 首先创建前端 IP 池：
    
-      1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
       1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
       1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.13**）。 
       1. 选择“确定”。
@@ -187,7 +188,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    1. 接下来创建后端池：
    
-      1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **后端池**，然后选择“添加”。
       1. 输入新后端池的名称（例如 **hana-backend**）。
       1. 选择“添加虚拟机”。
       1. 选择在步骤 3 中创建的可用性集。
@@ -196,43 +197,43 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
    1. 接下来创建运行状况探测：
    
-      1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+      1. 打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
       1. 输入新运行状况探测的名称（例如 **hana-hp**）。
-      1. 选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
+      1. 选择“TCP”作为协议，并选择端口 625 **03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
       1. 选择“确定”。
    
    1. 对于 SAP HANA 1.0，请创建负载均衡规则：
    
-      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）。
+      1. 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 15）。
       1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-      1. 将“协议”保留设置为“TCP”，输入端口 3**03**15。 
+      1. 将“协议”保留设置为“TCP”，输入端口 3 **03** 15。 
       1. 将“空闲超时”增大到 30 分钟。
-      1. 确保**启用浮动 IP**。
+      1. 确保 **启用浮动 IP**。
       1. 选择“确定”。
-      1. 针对端口 3**03**17 重复上述步骤。
+      1. 针对端口 3 **03** 17 重复上述步骤。
    
    1. 对于 SAP HANA 2.0，请为系统数据库创建负载均衡规则：
    
-      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**13）。
+      1. 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 13）。
       1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-      1. 将“协议”保留设置为“TCP”，输入端口 3**03**13。 
+      1. 将“协议”保留设置为“TCP”，输入端口 3 **03** 13。 
       1. 将“空闲超时”增大到 30 分钟。
-      1. 确保**启用浮动 IP**。
+      1. 确保 **启用浮动 IP**。
       1. 选择“确定”。
-      1. 针对端口 3**03**14 重复上述步骤。
+      1. 针对端口 3 **03** 14 重复上述步骤。
    
    1. 对于 SAP HANA 2.0，请先为租户数据库创建负载均衡规则：
    
-      1. 打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-      1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**40）。
+      1. 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+      1. 输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 40）。
       1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-      1. 将“协议”保留设置为“TCP”，输入端口 3**03**40。 
+      1. 将“协议”保留设置为“TCP”，输入端口 3 **03** 40。 
       1. 将“空闲超时”增大到 30 分钟。
-      1. 确保**启用浮动 IP**。
+      1. 确保 **启用浮动 IP**。
       1. 选择“确定”。
-      1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
+      1. 针对端口 3 **03** 41 和 3 **03** 42 重复上述步骤。
 
    有关 SAP HANA 所需端口的详细信息，请参阅 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
 

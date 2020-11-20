@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76271337"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960234"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple 虚拟阵列 Update 1.0 发行说明
 
@@ -21,7 +21,7 @@ ms.locfileid: "76271337"
 
 发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 部署 StorSimple Virtual Array 之前，请仔细查看发行说明中包含的信息。
 
-Update 1.0 对应软件版本 10.0.10296.0****。
+Update 1.0 对应软件版本 10.0.10296.0。
 
 > [!IMPORTANT]
 > - 更新会造成中断，并且会使设备重新启动。 如果正在进行 I/O，则会导致设备停机。 有关如何应用此更新的详细说明，请转到[安装 Update 1.0](storsimple-virtual-array-install-update-1.md)。
@@ -30,17 +30,17 @@ Update 1.0 对应软件版本 10.0.10296.0****。
 
 ## <a name="whats-new-in-update-10"></a>Update 1.0 中的新增功能
 
-Update 1.0 包含与 StorSimple 设备管理器服务的身份验证相关的更改，应在第一时间部署此更新。**** 此更新包含以下增强功能和 bug 修复：
+Update 1.0 包含与 StorSimple 设备管理器服务的身份验证相关的更改，应在第一时间部署此更新。 此更新包含以下增强功能和 bug 修复：
 
- - 使用 Azure Active Directory (AAD) 对 StorSimple 设备管理器服务进行身份验证**** – 从 Update 1.0 开始，使用 Azure Active Directory 对 StorSimple 设备管理器服务进行身份验证。 旧身份验证机制将在 2017 年 12 月弃用。 所有用户必须在其防火墙规则中包含新的身份验证 URL。 有关详细信息，请转到 [StorSimple 虚拟阵列网络要求](storsimple-ova-system-requirements.md)中所列的身份验证 URL。
+ - 使用 Azure Active Directory (AAD) 对 StorSimple 设备管理器服务进行身份验证 – 从 Update 1.0 开始，使用 Azure Active Directory 对 StorSimple 设备管理器服务进行身份验证。 旧身份验证机制将在 2017 年 12 月弃用。 所有用户必须在其防火墙规则中包含新的身份验证 URL。 有关详细信息，请转到 [StorSimple 虚拟阵列网络要求](storsimple-ova-system-requirements.md)中所列的身份验证 URL。
  
     如果未将身份验证 URL 包含在防火墙规则中，用户会看到一条关键警报，指出其 StorSimple 设备无法对服务进行身份验证。 如果用户看到此警报，则需要包含新的身份验证 URL。 有关详细信息，请转到 [StorSimple 网络警报](storsimple-virtual-array-manage-alerts.md)。
 
- - 性能改进**** - 已修复若干 bug，以提高云读取和提供分层细节的速度。 因此，iSCSI 和文件服务器设备的备份和还原性能已得到提高。
+ - 性能改进 - 已修复若干 bug，以提高云读取和提供分层细节的速度。 因此，iSCSI 和文件服务器设备的备份和还原性能已得到提高。
 
- - 垃圾回收改进**** - 此版本以修复 bug，可在设备和存储帐户位于两个相距较远的区域时提高垃圾回收过程的性能。
+ - 垃圾回收改进 - 此版本以修复 bug，可在设备和存储帐户位于两个相距较远的区域时提高垃圾回收过程的性能。
 
- - **** 日志记录改进 - 此版本包含了与垃圾回收和 I/O 路径相关的日志记录改进。
+ - 日志记录改进 - 此版本包含了与垃圾回收和 I/O 路径相关的日志记录改进。
 
 
 ## <a name="issues-fixed-in-update-10"></a>在 Update 1.0 中修复的问题
@@ -90,4 +90,4 @@ Update 1.0 包含与 StorSimple 设备管理器服务的身份验证相关的更
 * [StorSimple 虚拟阵列更新0.4 发行说明](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple 虚拟阵列更新0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
+* [StorSimple Virtual Array 正式版发行说明](./storsimple-virtual-array-update-06-release-notes.md)

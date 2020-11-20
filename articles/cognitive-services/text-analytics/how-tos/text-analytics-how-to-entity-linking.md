@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957089"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-文本分析 API 允许你采用非结构化文本，并会返回一个已消歧实体的列表，其中包含指向 Web 上的详细信息的链接。 此 API 支持命名实体识别 (NER) 和实体链接。
+文本分析 API 允许你采用非结构化文本，并会返回一个已消歧实体的列表，其中包含指向 Web 上的详细信息的链接。 API 为多个实体类别和实体链接都支持命名实体识别 (NER) 。
 
-### <a name="entity-linking"></a>实体链接
+## <a name="entity-linking"></a>实体链接
 
 实体链接是指识别并消除文本 (中找到的实体标识的能力，例如，确定单词 "Mars" 的出现是指行星，还是) 的罗马上帝。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用 [维基百科](https://www.wikipedia.org/) 作为此知识库。
 
+## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
+命名实体识别 (NER) 可以标识文本中的不同实体并将它们分类为预定义的类或类型，例如： person、location、event、product 和组织。  
 
-命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类或类型（例如：人员、位置、事件、产品和组织）的能力。  
+## <a name="personally-identifiable-information-pii"></a>个人身份信息 (PII)
 
-## <a name="named-entity-recognition-versions-and-features"></a>命名实体识别版本和功能
+PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如电话号码、电子邮件地址、电子邮件地址、passport 号码）中识别和标记敏感实体。  
+
+## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| 功能                                                         | NER v3.0 | NER v3.1-preview.2 |
+| 功能                                                         | NER v3.0 | NER 3.1-预览版3 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开的实体识别           | X      | X        |
 | 用于发送实体链接和 NER 请求的不同终结点。 | X      | X        |
 | 个人 (`PII`) 和健康状况 (`PHI`) 信息实体的识别        |        | X        |
+| 密文 `PII`        |        | X        |
 
 有关信息，请参阅[语言支持](../language-support.md)。
 
-## <a name="entity-types"></a>实体类型
-
 命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER v3.0 可以识别[常规实体类别](../named-entity-types.md)中的实体。
 
-命名实体识别 v3.1-preview.2 包含 v3.0 的检测功能，并能够使用 `v3.1-preview.2/entities/recognition/pii` 终结点检测个人信息 (`PII`)。 可以使用可选的 `domain=phi` 参数来检测机密的健康状况信息 (`PHI`)。 有关详细信息，请参阅下面的[实体类别](../named-entity-types.md)一文和[请求终结点](#request-endpoints)部分。
+命名实体识别-3.1-preview。3包括了3.0 的检测功能，以及： 
+* `PII`使用终结点检测) 个人信息 (的功能 `v3.1-preview.3/entities/recognition/pii` 。 
+* `domain=phi`用于检测 () 机密健康信息的可选参数 `PHI` 。
+* 使用终结点的[异步操作](text-analytics-how-to-call-api.md) `/analyze` 。
 
+有关详细信息，请参阅下面的 [实体类别](../named-entity-types.md) 文章和 [请求终结点](#request-endpoints) 部分。 
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 
@@ -68,41 +74,41 @@ ms.locfileid: "94518220"
 
 ### <a name="request-endpoints"></a>请求终结点
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[版本 3.1-预览版3](#tab/version-3-preview)
 
-命名实体识别 `v3.1-preview.2` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式：
+命名实体识别 `v3.1-preview.3` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式。
 
-实体链接
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**实体链接**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[`Linking` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[`Linking` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**命名实体识别**
+* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[`General` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[`General` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-个人身份信息 (PII)
-* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**个人身份信息 (PII)**
+* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 还可以使用可选的 `domain=phi` 参数来检测文本中的健康状况 (`PHI`) 信息。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-请注意，在响应 JSON 中添加了 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 *。
+从开始 `v3.1-preview.3` ，JSON 响应包含一个 `redactedText` 属性，该属性包含已修改的输入文本，检测到的 PII 实体将由 `*` 实体中的每个字符替换为。
 
-[`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 命名实体识别 v3 对 NER 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式：
 
-实体链接
+**实体链接**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [`Linking` 的命名实体识别版本 3.0 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**命名实体识别**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [`General` 的命名实体识别版本 3.0 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ NER
 
 ### <a name="example-ner-request"></a>NER 请求示例 
 
-下面是可能发送到 API 的内容示例。 两个版本的 API 的请求格式相同。
+以下 JSON 是可能发送到 API 的内容示例。 两个版本的 API 的请求格式相同。
 
 ```json
 {
@@ -138,11 +144,11 @@ NER
 
 所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的实体属性。
 
-系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理文本偏移](../concepts/text-offsets.md)。
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅 [如何处理文本偏移量](../concepts/text-offsets.md)。
 
 ### <a name="example-responses"></a>示例响应
 
-版本 3 为常规 NER、PII 和实体链接提供不同的终结点。 这两项操作的响应如下所示。 
+版本3为常规 NER、PII 和实体链接提供单独的终结点。 这两项操作的响应如下所示。 
 
 #### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
 
