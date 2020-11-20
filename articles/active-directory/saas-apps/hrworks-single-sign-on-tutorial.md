@@ -144,7 +144,7 @@ ms.locfileid: "92442518"
 
     d. 在记事本中，打开从 Azure 门户下载的元数据 XML，复制其内容，然后将其粘贴到“元数据”文本框中。 
 
-    e. 单击“ **保存** ”。
+    e. 单击“ **保存**”。
 
 ### <a name="create-hrworks-single-sign-on-test-user"></a>创建 HRworks Single Sign-On 测试用户
 

@@ -86,8 +86,8 @@ az storage account generate-sas \
 
 | 参数        | 值   | 说明  |
 |------------------|---------|---------|
-| *权限*    | racwdl  | 此 SAS 允许 *read* （读取）、 *append* （追加）、 *create* （创建）、 *write* （编写）、 *delete* （删除）和 *list* （列出）功能。 |
-| *resource-types* | sco     | 受 SAS 影响的资源为 *service* （服务）、 *container* （容器）和 *object* （对象）。 |
+| *权限*    | racwdl  | 此 SAS 允许 *read*（读取）、*append*（追加）、*create*（创建）、*write*（编写）、*delete*（删除）和 *list*（列出）功能。 |
+| *resource-types* | sco     | 受 SAS 影响的资源为 *service*（服务）、*container*（容器）和 *object*（对象）。 |
 | *services*       | b       | 受 SAS 影响的服务为 *blob* 服务。 |
 
 生成 SAS 后，复制返回值并将其保存到某个位置，以便在后续步骤中使用。 如果使用 Azure CLI 以外的方法生成了 SAS，则需要删除初始的 `?`（如果存在）。 此字符是已在 URL 模板中提供的 URL 分隔符，本主题稍后用到 SAS 的步骤都会使用它。
@@ -101,7 +101,7 @@ az storage account generate-sas \
 
 ### <a name="set-up-the-web-application"></a>设置 Web 应用程序
 
-首先，创建名为 *azure-blob-javascript* 的新文件夹并在 VS Code 中打开它。 然后在 VS Code 中创建一个新文件，添加以下 HTML，并在 *azure-blob-javascript* 文件夹中将其保存为 *index.html* 。
+首先，创建名为 *azure-blob-javascript* 的新文件夹并在 VS Code 中打开它。 然后在 VS Code 中创建一个新文件，添加以下 HTML，并在 *azure-blob-javascript* 文件夹中将其保存为 *index.html*。
 
 ```html
 <!DOCTYPE html>
@@ -163,7 +163,7 @@ npx http-server
 
 ### <a name="start-debugging"></a>开始调试
 
-若要在附加了 VS Code 调试器的浏览器中启动 *index.html* ，请选择“调试”>“开始调试”，或者在 VS Code 中按 F5。
+若要在附加了 VS Code 调试器的浏览器中启动 *index.html*，请选择“调试”>“开始调试”，或者在 VS Code 中按 F5。
 
 显示的 UI 暂时不起任何作用，但在下一部分，你将会添加 JavaScript 代码以实现所示的每个函数。 然后可以设置断点，并在调试器在代码中暂停时与它交互。
 

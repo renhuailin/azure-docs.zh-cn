@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980909"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -843,6 +843,7 @@ Azure 服务： [应用程序网关](../application-gateway/index.yml)， [azure
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/read | 获取 Azure 防火墙 NetworkRuleCollection |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/write | 创建或更新 Azure 防火墙 NetworkRuleCollection |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/delete | 删除 Azure 防火墙 NetworkRuleCollection |
+> | Microsoft.Network/azureWebCategories/read | 获取 Azure WebCategories |
 > | Microsoft.Network/bastionHosts/read | 获取守护主机 |
 > | Microsoft.Network/bastionHosts/write | 创建或更新守护主机 |
 > | Microsoft.Network/bastionHosts/delete | 删除守护主机 |
@@ -1242,6 +1243,8 @@ Azure 服务： [应用程序网关](../application-gateway/index.yml)， [azure
 > | Microsoft.Network/virtualHubs/bgpConnections/read | 获取虚拟中心的中心 Bgp 连接子资源 |
 > | Microsoft.Network/virtualHubs/bgpConnections/write | 创建或更新虚拟中心的中心 Bgp 连接子资源 |
 > | Microsoft.Network/virtualHubs/bgpConnections/delete | 删除虚拟中心的中心 Bgp 连接子资源 |
+> | Microsoft.Network/virtualHubs/bgpConnections/advertisedRoutes/action | 获取 virtualrouter 播发路由 |
+> | Microsoft.Network/virtualHubs/bgpConnections/learnedRoutes/action | 获取 virtualrouter 获知的路由 |
 > | Microsoft.Network/virtualHubs/hubRouteTables/read | 获取虚拟中心的路由表子资源 |
 > | Microsoft.Network/virtualHubs/hubRouteTables/write | 创建或更新虚拟中心的路由表子资源 |
 > | Microsoft.Network/virtualHubs/hubRouteTables/delete | 删除虚拟中心的路由表子资源 |
@@ -1329,6 +1332,9 @@ Azure 服务： [应用程序网关](../application-gateway/index.yml)， [azure
 > | microsoft.network/vpngateways/startpacketcapture/action | 使用相应资源启动 VPN 网关数据包捕获 |
 > | microsoft.network/vpngateways/stoppacketcapture/action | 使用 sasURL 停止 VPN 网关数据包捕获 |
 > | microsoft.network/vpngateways/listvpnconnectionshealth/action | 获取某个 VpnGateway 上的所有或一部分连接的连接运行状况 |
+> | microsoft.network/vpnGateways/natRules/read | 获取 NAT 规则资源 |
+> | microsoft.network/vpnGateways/natRules/write | 放置 NAT 规则资源 |
+> | microsoft.network/vpnGateways/natRules/delete | 删除 NAT 规则资源 |
 > | microsoft.network/vpnGateways/vpnConnections/read | 获取 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/write | 放置 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/delete | 删除 VpnConnection。 |
@@ -1934,6 +1940,9 @@ Azure 服务： [Azure Maps](../azure-maps/index.yml)
 > | Microsoft.Maps/accounts/delete | 删除 Maps 帐户。 |
 > | Microsoft.Maps/accounts/listKeys/action | 列出 Maps 帐户密钥。 |
 > | Microsoft.Maps/accounts/regenerateKey/action | 生成新的 Maps 帐户主要或辅助密钥。 |
+> | Microsoft. Maps/帐户/创建者/写入 | 创建或更新创建者。 |
+> | Microsoft. Maps/帐户/创建者/读取 | 获取创建者。 |
+> | Microsoft. Maps/accounts/创建者/删除 | 删除创建者。 |
 > | Microsoft.Maps/accounts/eventGridFilters/delete | 删除事件网格筛选器。 |
 > | Microsoft.Maps/accounts/eventGridFilters/read | 获取事件网格筛选器 |
 > | Microsoft.Maps/accounts/eventGridFilters/write | 创建或更新事件网格筛选器。 |
@@ -2103,6 +2112,7 @@ Azure 服务：[Azure SignalR 服务](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/locations/checknameavailability/action | 检查某个名称是否可用于新的 SignalR 服务 |
 > | Microsoft.SignalRService/locations/operationresults/signalr/read | 查询基于位置的异步操作的结果 |
 > | Microsoft.SignalRService/locations/operationStatuses/operationId/read | 查询基于位置的异步操作的状态 |
+> | SignalRService/位置/operationStatuses/signalr/read | 查询基于位置的异步操作的状态 |
 > | Microsoft.SignalRService/locations/usages/read | 获取 Azure SignalR 服务的配额使用情况 |
 > | Microsoft.SignalRService/operationresults/read | 查询提供程序级异步操作的结果 |
 > | Microsoft.SignalRService/operations/read | 列出 Azure SignalR 服务的操作。 |
@@ -2610,6 +2620,7 @@ Azure 服务：[应用服务](../app-service/index.yml)、[Azure Functions](../a
 > | Microsoft.Web/staticSites/getuser/Action | 获取静态站点的用户信息 |
 > | Microsoft.Web/staticSites/listsecrets/action | 列出静态站点的机密 |
 > | Microsoft.Web/staticSites/resetapikey/Action | 重置静态站点的 API 密钥 |
+> | System.web/staticSites/zipdeploy/action | 从压缩内容部署静态站点 |
 > | Microsoft.Web/staticSites/authproviders/listusers/Action | 列出静态站点的用户 |
 > | Microsoft.Web/staticSites/authproviders/users/Delete | 删除静态站点的用户 |
 > | Microsoft.Web/staticSites/authproviders/users/Write | 更新静态站点的用户 |
@@ -2617,6 +2628,7 @@ Azure 服务：[应用服务](../app-service/index.yml)、[Azure Functions](../a
 > | Microsoft.Web/staticSites/build/Delete | 删除静态站点的版本 |
 > | Microsoft.Web/staticSites/builds/listfunctionappsettings/Action | 列出静态站点版本的函数应用设置 |
 > | Microsoft.Web/staticSites/builds/listappsettings/Action | 列出静态站点版本的应用设置 |
+> | System.web/staticSites/build/zipdeploy/action | 从压缩内容部署静态站点生成 |
 > | Microsoft.Web/staticSites/builds/config/Write | 创建或更新静态站点版本的应用设置 |
 > | Microsoft.Web/staticSites/config/Write | 创建或更新静态站点的应用设置 |
 > | Microsoft.Web/staticSites/customdomains/Write | 为静态站点创建自定义域 |
@@ -3931,6 +3943,8 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/locations/serverAdministratorOperationResults/read | 服务器 Azure Active Directory 管理员操作结果 |
 > | Microsoft.Sql/locations/serverKeyAzureAsyncOperation/read | 获取正在对透明数据加密服务器密钥进行的操作 |
 > | Microsoft.Sql/locations/serverKeyOperationResults/read | 获取正在对透明数据加密服务器密钥进行的操作 |
+> | Sql-dmo/位置/serverTrustGroupAzureAsyncOperation/读取 | 获取服务器信任组异步操作的状态 |
+> | Sql-dmo/位置/serverTrustGroupOperationResults/读取 | 获取服务器信任组操作的结果 |
 > | Microsoft.Sql/locations/serverTrustGroups/write | 使用指定的参数创建服务器信任组 |
 > | Microsoft.Sql/locations/serverTrustGroups/delete | 删除现有的 SQL Server 信任组 |
 > | Microsoft.Sql/locations/serverTrustGroups/read | 返回现有的 SQL Server 信任组 |
@@ -3946,12 +3960,12 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | 返回指定虚拟网络规则 Azure 异步操作的详细信息  |
 > | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | 返回指定虚拟网络规则操作的详细信息  |
 > | Microsoft.Sql/managedInstances/tdeCertificates/action | 创建/更新 TDE 证书 |
-> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | 确定是否允许用户加入服务器信任组 |
+> | Microsoft.Sql/managedInstances/failover/action | 客户发起了托管实例故障转移。 |
+> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | 确定是否允许用户将托管服务器加入服务器信任组 |
 > | Microsoft.Sql/managedInstances/export/action | 导出系统数据库和 SMK 密钥 |
 > | Microsoft.Sql/managedInstances/read | 返回托管实例的列表，或获取指定托管实例的属性。 |
 > | Microsoft.Sql/managedInstances/write | 使用指定参数创建托管实例，或更新指定托管实例的属性或标记。 |
 > | Microsoft.Sql/managedInstances/delete | 删除现有托管实例。 |
-> | Microsoft.Sql/managedInstances/failover/action | 客户发起了托管实例故障转移。 |
 > | Microsoft.Sql/managedInstances/administrators/read | 获取托管实例管理员的列表。 |
 > | Microsoft.Sql/managedInstances/administrators/write | 使用指定参数创建或更新托管实例管理员。 |
 > | Microsoft.Sql/managedInstances/administrators/delete | 删除托管实例的现有管理员。 |
@@ -4100,11 +4114,11 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/rules/delete | 删除给定数据库的数据掩码策略规则 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/read | 返回所选查询 ID 的数据仓库分布查询信息 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/dataWarehouseQuerySteps/read | 返回所选步骤 ID 的数据仓库查询的分布式查询步骤信息 |
-> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 检索 Azure Synapse Analytics 专用 SQL 池（包括正在运行和已挂起的查询）的用户活动 |
+> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 检索包含正在运行和已暂停查询的 SQL 数据仓库实例的用户活动 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 检索在给定的数据库上配置的扩展 blob 审核策略的详细信息 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/write | 更改给定数据库的扩展 blob 审核策略 |
-> | Microsoft.Sql/servers/databases/extensions/read | 获取数据库的扩展集合。 |
-> | Microsoft.Sql/servers/databases/extensions/write | 更改给定数据库的扩展 |
+> | Microsoft.Sql/servers/databases/extensions/write | 执行数据库扩展操作。 |
+> | Microsoft.Sql/servers/databases/extensions/read | 获取数据库扩展操作。 |
 > | Microsoft.Sql/servers/databases/extensions/importExtensionOperationResults/read | 获取正在进行的导入操作 |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/read | 检索给定数据库的异地备份策略 |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/write | 创建或更新数据库异地备份策略 |
@@ -5140,6 +5154,7 @@ Azure 服务：[认知服务](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | 该 API 返回给定文档中已知实体和常规命名实体（\"Person\"、\"Location\"、\"Organization\" 等）的列表。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | API 返回表示输入文本中的关键话题的字符串列表。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | 该 API 返回介于 0 与 1 之间的数字评分。<br>接近 1 的分数表示积极情绪，而接近 0 的分数表示消极情绪。<br>评分 0.5 表示缺少情绪（例如<br>factoid 语句）。 |
+> | Cognitiveservices account/accounts/TextAnalytics/分析/操作 | 提交用于分析的文本文档的集合。 指定要执行的一个或多个唯一任务。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/detect/action | 标识一段文本的语言。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/breaksentence/action | 标识文本段中的句子边界的位置。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/translate/action | 翻译文本。 |
@@ -5496,29 +5511,29 @@ Azure 服务：[通知中心](../notification-hubs/index.yml)
 > | Microsoft.NotificationHubs/CheckNamespaceAvailability/action | 检查给定的命名空间资源名称是否在 NotificationHub 服务中可用。 |
 > | Microsoft.NotificationHubs/Namespaces/write | 创建命名空间资源并更新其属性。 命名空间的标记和容量是可更新的属性。 |
 > | Microsoft.NotificationHubs/Namespaces/read | 获取命名空间资源说明列表 |
-> | Microsoft.NotificationHubs/Namespaces/Delete | 删除命名空间资源 |
+> | NotificationHubs/命名空间/删除 | 删除命名空间资源 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/action | 获取命名空间授权规则说明列表。 |
 > | Microsoft.NotificationHubs/Namespaces/CheckNotificationHubAvailability/action | 检查给定的 NotificationHub 名称是否在命名空间中可用。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/write | 创建命名空间级授权规则并更新其属性。 可以更新授权规则访问权限、主密钥和辅助密钥。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/read | 获取命名空间授权规则说明列表。 |
-> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 删除命名空间授权规则。 无法删除默认的命名空间授权规则。  |
+> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 删除命名空间授权规则。 无法删除默认的命名空间授权规则。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/listkeys/action | 获取命名空间的连接字符串 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | 命名空间授权规则再生成主密钥/辅助密钥，指定需要再生成的密钥 |
-> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/read | 获取命名空间诊断设置资源说明列表 |
-> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/write | 获取命名空间诊断设置资源说明列表 |
-> | Microsoft.NotificationHubs/namespaces/logDefinitions/read | 获取命名空间日志资源说明列表 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/write | 创建通知中心并更新其属性。 其属性主要包括 PNS 凭据。 授权规则和 TTL |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | 获取通知中心资源说明列表 |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | 删除通知中心资源 |
+> | NotificationHubs/命名空间/NotificationHubs/delete | 删除通知中心资源 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/action | 获取通知中心授权规则列表 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/pnsCredentials/action | 获取所有通知中心的 PNS 凭据。 这包括 WNS、MPNS、APNS、GCM 和百度凭据 |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | 发送测试推送通知。 |
+> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | 向10个匹配的设备发送测试推送通知。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/write | 创建通知中心授权规则并更新其属性。 可以更新授权规则访问权限、主密钥和辅助密钥。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/read | 获取通知中心授权规则列表 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/delete | 删除通知中心授权规则 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/listkeys/action | 获取通知中心的连接字符串 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/regenerateKeys/action | 通知中心授权规则再生成主密钥/辅助密钥，指定需要再生成的密钥 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/metricDefinitions/read | 获取命名空间指标资源说明列表 |
+> | NotificationHubs/命名空间/提供程序/diagnosticSettings/read | 获取命名空间诊断设置 |
+> | NotificationHubs/命名空间/提供程序/diagnosticSettings/写入 | 创建或更新命名空间诊断设置 |
+> | NotificationHubs/命名空间/提供程序/logDefinitions/read | 获取命名空间的可用日志 |
 > | Microsoft.NotificationHubs/operationResults/read | 返回通知中心提供程序的操作结果 |
 > | Microsoft.NotificationHubs/operations/read | 返回通知中心提供程序支持的操作列表 |
 
@@ -5566,7 +5581,25 @@ Azure 服务： [Azure 空间锚](../spatial-anchors/index.yml)
 > | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.MixedReality/register/action | 注册混合现实资源提供程序的订阅。 |
+> | MixedReality/注销/操作 | 取消注册混合现实资源提供程序的订阅。 |
+> | MixedReality/位置/checknameavailability/读取 | 检查名称可用性 |
+> | MixedReality/ObjectUnderstandingAccounts/delete | 删除对象了解帐户 |
+> | MixedReality/ObjectUnderstandingAccounts/listkeys/action | 列出对象了解帐户的密钥 |
+> | MixedReality/ObjectUnderstandingAccounts/read | 阅读对象了解帐户的属性 |
+> | MixedReality/ObjectUnderstandingAccounts/regeneratekeys/action | 重新生成对象了解帐户的密钥 |
+> | MixedReality/ObjectUnderstandingAccounts/write | 更新对象了解帐户的属性 |
+> | MixedReality/操作/读取 | 列出 Microsoft Mixed Reality 的可用操作 |
+> | MixedReality/RemoteRenderingAccounts/delete | 删除远程呈现帐户 |
+> | MixedReality/RemoteRenderingAccounts/listkeys/action | 列出远程呈现帐户的键 |
+> | MixedReality/RemoteRenderingAccounts/read | 读取远程呈现帐户的属性 |
+> | MixedReality/RemoteRenderingAccounts/regeneratekeys/action | 重新生成远程呈现帐户的密钥 |
+> | MixedReality/RemoteRenderingAccounts/write | 更新远程呈现帐户的属性 |
+> | MixedReality/RemoteRenderingAccounts/keys/read | 读取远程呈现帐户的密钥 |
 > | Microsoft.MixedReality/remoteRenderingAccounts/providers/Microsoft.Insights/metricDefinitions/read | 获取 Microsoft.MixedReality/remoteRenderingAccounts 的可用指标 |
+> | MixedReality/SpatialAnchorsAccounts/listkeys/action | 列出空间锚定帐户的密钥 |
+> | MixedReality/SpatialAnchorsAccounts/read | 读取空间锚定帐户的属性 |
+> | MixedReality/SpatialAnchorsAccounts/regeneratekeys/action | 重新生成空间锚定帐户的密钥 |
+> | MixedReality/SpatialAnchorsAccounts/keys/read | 读取空间锚定帐户的密钥 |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | 获取 Microsoft.MixedReality/spatialAnchorsAccounts 的诊断设置 |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新 Microsoft.MixedReality/spatialAnchorsAccounts 的诊断设置 |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | 获取 Microsoft.MixedReality/spatialAnchorsAccounts 的可用指标 |
@@ -5931,6 +5964,11 @@ Azure 服务： [Azure Stack Edge](../databox-online/azure-stack-edge-overview.m
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | 列出或获取角色 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | 创建或更新角色 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | 删除角色 |
+> | DataBoxEdge/dataBoxEdgeDevices/role/加载项/read | 列出或获取 ArmApiRes_addons |
+> | DataBoxEdge/dataBoxEdgeDevices/role/加载项/read | 列出或获取 ArmApiRes_addons |
+> | DataBoxEdge/dataBoxEdgeDevices/role/加载项/write | 创建或更新 ArmApiRes_addons |
+> | DataBoxEdge/dataBoxEdgeDevices/role/加载项/delete | 删除 ArmApiRes_addons |
+> | DataBoxEdge/dataBoxEdgeDevices/role/加载项/operationResults/read | 列出或获取操作结果 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/write | 创建或更新监视配置 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/delete | 删除监视配置 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/read | 列出或获取监视配置 |
@@ -6543,15 +6581,15 @@ Azure 服务：[密钥保管库](../key-vault/index.yml)
 > | KeyVault/managedHSMs/delete | 删除托管 HSM |
 > | Microsoft.KeyVault/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | Microsoft.KeyVault/vaults/read | 查看密钥保管库的属性 |
-> | Microsoft.KeyVault/vaults/write | 创建新的密钥保管库，或更新现有密钥保管库的属性 |
+> | Microsoft.KeyVault/vaults/write | 创建新的密钥保管库，或更新现有密钥保管库的属性。 某些属性可能需要更多的权限。 |
 > | Microsoft.KeyVault/vaults/delete | 删除密钥保管库 |
 > | Microsoft.KeyVault/vaults/deploy/action | 部署 Azure 资源时启用对密钥保管库中机密的访问 |
-> | Microsoft.KeyVault/vaults/accessPolicies/write | 通过合并或替换操作更新现有的访问策略，或者将新的访问策略添加到保管库。 |
+> | Microsoft.KeyVault/vaults/accessPolicies/write | 通过合并或替换来更新现有的访问策略，或者将新的访问策略添加到密钥保管库。 |
 > | Microsoft.KeyVault/vaults/eventGridFilters/read | 通知 Microsoft.KeyVault 正在查看 Key Vault 的 EventGrid 订阅 |
 > | Microsoft.KeyVault/vaults/eventGridFilters/write | 通知 Microsoft.KeyVault 正在创建 Key Vault 的新 EventGrid 订阅 |
 > | Microsoft.KeyVault/vaults/eventGridFilters/delete | 通知 Microsoft.KeyVault 正在删除 Key Vault 的 EventGrid 订阅 |
 > | Microsoft.KeyVault/vaults/keys/read | 列出指定保管库中的密钥，或读取指定密钥的当前版本。 |
-> | KeyVault/保管库/密钥/写入 | 创建新的密钥或更新现有的密钥。 |
+> | KeyVault/保管库/密钥/写入 | 如果新密钥不存在，则创建它的第一个版本。 如果已存在，则返回现有密钥，而不进行任何修改。 此 API 不会创建后续版本，也不会更新现有的密钥。 |
 > | KeyVault/保管库/密钥/版本/读取 | 列出指定密钥的版本，或读取指定的密钥版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看机密的属性，但不查看其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 创建新的机密，或更新现有机密的值。 |
@@ -6560,48 +6598,48 @@ Azure 服务：[密钥保管库](../key-vault/index.yml)
 > | Microsoft.KeyVault/vaults/certificatecas/read | 读取证书颁发者 |
 > | Microsoft.KeyVault/vaults/certificatecas/write | 写入证书颁发者 |
 > | Microsoft.KeyVault/vaults/certificatecontacts/write | 管理证书联系人 |
-> | Microsoft.KeyVault/vaults/certificates/delete | 删除证书。 |
+> | Microsoft.KeyVault/vaults/certificates/delete | 删除证书。 所有版本都将删除。 |
 > | Microsoft.KeyVault/vaults/certificates/read | 列出指定的 Key Vault 中的证书，或获取有关证书的信息。 |
 > | Microsoft.KeyVault/vaults/certificates/backup/action | 创建证书的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的证书。 可能存在限制。 |
 > | Microsoft.KeyVault/vaults/certificates/purge/action | 清除证书，使其不可恢复。 |
 > | Microsoft.KeyVault/vaults/certificates/update/action | 更新与给定证书关联的指定属性。 |
-> | Microsoft.KeyVault/vaults/certificates/create/action | 创建新证书。 |
-> | Microsoft.KeyVault/vaults/certificates/import/action | 将包含私钥的现有有效证书导入 Azure Key Vault。 要导入的证书可以采用 PFX 或 PEM 格式。 |
+> | Microsoft.KeyVault/vaults/certificates/create/action | 创建新证书。 如果证书不存在，则创建第一个版本。 否则，将创建新版本。 |
+> | Microsoft.KeyVault/vaults/certificates/import/action | 导入包含私钥的现有有效证书。<br>要导入的证书可以采用 PFX 或 PEM 格式。<br>如果 Key Vault 中不存在该证书，则会创建具有指定内容的第一个版本。<br>否则，将使用指定的内容创建新版本。 |
 > | Microsoft.KeyVault/vaults/certificates/recover/action | 恢复已删除的证书。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
-> | Microsoft.KeyVault/vaults/certificates/restore/action | 将已备份的证书及其所有版本还原到保管库。 |
+> | Microsoft.KeyVault/vaults/certificates/restore/action | 从 Key Vault 生成的备份文件中还原证书及其所有版本。 |
 > | Microsoft.KeyVault/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。<br>对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。<br>永远不会公开私钥和对称密钥。 |
 > | Microsoft.KeyVault/vaults/keys/update/action | 更新与给定密钥关联的指定属性。 |
-> | Microsoft.KeyVault/vaults/keys/create/action | 创建新密钥。 |
-> | Microsoft.KeyVault/vaults/keys/import/action | 导入外部创建的密钥，存储它，然后将密钥参数和属性返回给客户端。 |
+> | Microsoft.KeyVault/vaults/keys/create/action | 创建新密钥。 如果该键不存在，则创建第一个版本。 否则，将使用指定的值创建一个新版本。 |
+> | Microsoft.KeyVault/vaults/keys/import/action | 导入外部创建的密钥。 如果该键不存在，则将创建具有导入的材料的第一个版本。 否则，将使用导入的材料创建新版本。 |
 > | Microsoft.KeyVault/vaults/keys/recover/action | 恢复已删除的密钥。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
-> | Microsoft.KeyVault/vaults/keys/restore/action | 将已备份的密钥及其所有版本还原到保管库。 |
-> | Microsoft.KeyVault/vaults/keys/delete | 删除密钥。 |
+> | Microsoft.KeyVault/vaults/keys/restore/action | 从 Key Vault 生成的备份文件中还原密钥及其所有版本。 |
+> | Microsoft.KeyVault/vaults/keys/delete | 删除密钥。 所有版本都将删除。 |
 > | Microsoft.KeyVault/vaults/keys/backup/action | 创建密钥的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的密钥。 可能存在限制。 |
 > | Microsoft.KeyVault/vaults/keys/purge/action | 清除密钥，使其不可恢复。 |
 > | Microsoft.KeyVault/vaults/keys/encrypt/action | 使用密钥加密纯文本。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
-> | Microsoft.KeyVault/vaults/keys/decrypt/action | 使用密钥解密加密文本。 |
-> | Microsoft.KeyVault/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
-> | Microsoft.KeyVault/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
-> | Microsoft.KeyVault/vaults/keys/sign/action | 使用密钥签名哈希。 |
-> | Microsoft.KeyVault/vaults/keys/verify/action | 验证哈希。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
-> | Microsoft.KeyVault/vaults/secrets/delete | 删除机密。 |
+> | Microsoft.KeyVault/vaults/keys/decrypt/action | 使用密钥解密密码文本。 |
+> | Microsoft.KeyVault/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用具有读取权限的主体执行此操作。 |
+> | Microsoft.KeyVault/vaults/keys/unwrap/action | 使用 Key Vault 密钥对对称密钥进行解包。 |
+> | Microsoft.KeyVault/vaults/keys/sign/action | 使用密钥对消息摘要 (哈希) 进行签名。 |
+> | Microsoft.KeyVault/vaults/keys/verify/action | 使用密钥验证消息摘要 (哈希) 的签名。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | Microsoft.KeyVault/vaults/secrets/delete | 删除机密。 所有版本都将删除。 |
 > | Microsoft.KeyVault/vaults/secrets/backup/action | 创建机密的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的机密。 可能存在限制。 |
 > | Microsoft.KeyVault/vaults/secrets/purge/action | 清除机密，使其不可恢复。 |
 > | Microsoft.KeyVault/vaults/secrets/update/action | 更新与给定机密关联的指定属性。 |
 > | Microsoft.KeyVault/vaults/secrets/recover/action | 恢复已删除的机密。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
-> | Microsoft.KeyVault/vaults/secrets/restore/action | 将已备份的机密及其所有版本还原到保管库。 |
+> | Microsoft.KeyVault/vaults/secrets/restore/action | 从 Key Vault 生成的备份文件还原机密及其所有版本。 |
 > | Microsoft.KeyVault/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
-> | Microsoft.KeyVault/vaults/secrets/getSecret/action | 获取机密值。 |
-> | Microsoft.KeyVault/vaults/secrets/setSecret/action | 创建新机密。 |
+> | Microsoft.KeyVault/vaults/secrets/getSecret/action | 获取机密的值。 |
+> | Microsoft.KeyVault/vaults/secrets/setSecret/action | 设置机密的值。 如果机密不存在，则会创建第一个版本。 否则，将使用指定的值创建一个新版本。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/read | 读取托管存储帐户和 SAS 的定义。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/set/action | 创建或更新托管存储帐户的定义。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/delete | 删除托管存储帐户的定义。 |
-> | Microsoft.KeyVault/vaults/storageaccounts/backup/action | 创建托管存储帐户及其 SAS（共享访问签名）的定义的备份。 |
+> | Microsoft.KeyVault/vaults/storageaccounts/backup/action | 创建托管存储帐户的定义及其 SAS (共享访问签名) 的备份文件。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/purge/action | 清除托管存储帐户或 SAS（共享访问签名）的软删除定义。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/regeneratekey/action | 重新生成托管存储帐户的访问密钥。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/recover/action | 恢复托管存储帐户或 SAS（共享访问签名）的软删除定义。 |
-> | Microsoft.KeyVault/vaults/storageaccounts/restore/action | 还原托管存储帐户及其 SAS（共享访问签名）的定义。 |
-> | Microsoft.KeyVault/vaults/storageaccounts/sas/set/action | 创建或更新托管存储帐户的 SAS（共享访问签名）定义。 |
+> | Microsoft.KeyVault/vaults/storageaccounts/restore/action | 从 Key Vault 生成的备份文件中还原托管存储帐户及其 SAS (共享访问签名) 的定义。 |
+> | Microsoft.KeyVault/vaults/storageaccounts/sas/set/action | 创建或更新托管存储帐户) 定义的 SAS (共享访问签名。 |
 > | Microsoft.KeyVault/vaults/storageaccounts/sas/delete | 删除托管存储帐户的 SAS（共享访问签名）定义。 |
 
 ### <a name="microsoftsecurity"></a>Microsoft.Security
@@ -6618,6 +6656,9 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > | Microsoft.Security/advancedThreatProtectionSettings/read | 获取资源的高级威胁防护设置 |
 > | Microsoft.Security/advancedThreatProtectionSettings/write | 更新资源的高级威胁防护设置 |
 > | Microsoft.Security/alerts/read | 获取所有可用的安全警报 |
+> | Microsoft. Security/alertsSuppressionRules/read | 获取所有可用的安全警报抑制规则 |
+> | Microsoft. Security/alertsSuppressionRules/write | 创建新的安全警报抑制规则或更新现有规则 |
+> | AlertsSuppressionRules/删除 | 删除安全警报抑制规则 |
 > | Microsoft.Security/applicationWhitelistings/read | 获取应用程序允许列表 |
 > | Microsoft.Security/applicationWhitelistings/write | 创建新的或更新现有的应用程序允许列表 |
 > | Microsoft.Security/assessmentMetadata/read | 获取订阅中的可用安全评估元数据 |
@@ -6651,6 +6692,8 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > | Microsoft.Security/locations/alerts/read | 获取所有可用的安全警报 |
 > | Microsoft.Security/locations/alerts/dismiss/action | 消除安全警报 |
 > | Microsoft.Security/locations/alerts/activate/action | 激活安全警报 |
+> | Microsoft. 安全性/位置/警报/解决/操作 | 解决安全警报 |
+> | Microsoft. 安全性/位置/警报/模拟/操作 | 模拟安全警报 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/read | 获取实时网络访问策略 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/write | 创建新的或更新现有的实时网络访问策略 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/delete | 删除适时网络访问策略 |
@@ -6665,6 +6708,10 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > | Microsoft.Security/pricings/read | 获取某一范围的定价设置 |
 > | Microsoft.Security/pricings/write | 更新某一范围的定价设置 |
 > | Microsoft.Security/pricings/delete | 删除某一范围的定价设置 |
+> | Microsoft. Security/secureScoreControlDefinitions/read | 获取安全评分控件定义 |
+> | Microsoft. Security/secureScoreControls/read | 获取订阅的计算安全分数控制 |
+> | Microsoft. Security/secureScores/read | 获取订阅的计算安全分数 |
+> | Microsoft. Security/secureScores/secureScoreControls/read | 获取安全分数计算的计算安全分数控制 |
 > | Microsoft.Security/securityContacts/read | 获取安全联系信息 |
 > | Microsoft.Security/securityContacts/write | 更新安全联系信息 |
 > | Microsoft.Security/securityContacts/delete | 删除安全联系信息 |
@@ -6676,6 +6723,12 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > | Microsoft.Security/securityStatusesSummaries/read | 获取某一范围的安全状态摘要 |
 > | Microsoft.Security/settings/read | 获取范围的设置 |
 > | Microsoft.Security/settings/write | 更新范围的设置 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/action | 向基线添加规则结果的列表。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/read | 返回数据库的基线 (添加到基线) 的所有规则或获取指定规则 ID 的规则基准结果。 |
+> | SqlVulnerabilityAssessments/baselineRules/write | 更改规则基线结果。 |
+> | SqlVulnerabilityAssessments/baselineRules/delete | 从基线中删除规则结果。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/扫描/读取 | 返回漏洞评估扫描记录的列表，或获取指定扫描 ID 的扫描记录。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/扫描/scanResults/read | 返回漏洞评估规则结果的列表，或获取指定规则 ID 的规则结果。 |
 > | Microsoft.Security/tasks/read | 获取所有可用的安全建议 |
 > | Microsoft.Security/webApplicationFirewalls/read | 获取 Web 应用程序防火墙 |
 > | Microsoft.Security/webApplicationFirewalls/write | 创建新的或更新现有的 Web 应用程序防火墙 |
@@ -6732,7 +6785,8 @@ Azure 服务： [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/dataConnectors/write | 更新数据连接器 |
 > | Microsoft.SecurityInsights/dataConnectors/delete | 删除数据连接器 |
 > | Microsoft.SecurityInsights/entities/read | 获取 Sentinel 实体关系图 |
-> | Microsoft.SecurityInsights/entities/timeline/action | 获取特定范围的实体时间线 |
+> | SecurityInsights/gettimeline/action | 获取特定范围的实体时间线 |
+> | SecurityInsights/getInsights/action | 获取特定范围的实体见解 |
 > | Microsoft.SecurityInsights/entities/relations/read | 获取实体与相关资源之间的关系 |
 > | Microsoft.SecurityInsights/entities/relations/write | 更新实体与相关资源之间的关系 |
 > | Microsoft.SecurityInsights/entities/relations/delete | 删除实体与相关资源之间的关系 |
@@ -8699,6 +8753,7 @@ Azure 服务： [成本管理 + 计费](../cost-management-billing/index.yml)
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/read |  |
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/move/action |  |
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/validateMoveEligibility/action |  |
+> | BillingAccounts/billingSubscriptions/downloadDocuments/action | 使用列表中的下载链接下载发票 |
 > | Microsoft.Billing/billingAccounts/customers/read |  |
 > | Microsoft.Billing/billingAccounts/customers/billingPermissions/read |  |
 > | Microsoft.Billing/billingAccounts/departments/read |  |
@@ -8712,7 +8767,6 @@ Azure 服务： [成本管理 + 计费](../cost-management-billing/index.yml)
 > | Microsoft.Billing/billingAccounts/products/move/action |  |
 > | Microsoft.Billing/billingAccounts/products/validateMoveEligibility/action |  |
 > | Microsoft.Billing/departments/read |  |
-> | Microsoft.Billing/invoices/download/action | 使用列表中的下载链接下载发票 |
 > | Microsoft.Billing/invoices/download/action | 使用列表中的下载链接下载发票 |
 > | Microsoft.Billing/operations/read |  |
 
@@ -9338,69 +9392,76 @@ Azure 服务：[站点恢复](../site-recovery/index.yml)
 > | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.RecoveryServices/register/action | 注册给定资源提供程序的订阅 |
-> | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | Microsoft.RecoveryServices/Locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
-> | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 验证功能 |
+> | microsoft.recoveryservices/Locations/backupPreValidateProtection/action |  |
+> | microsoft.recoveryservices/Locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
+> | microsoft.recoveryservices/Locations/backupValidateFeatures/action | 验证功能 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
 > | Microsoft.RecoveryServices/locations/checkNameAvailability/action | “检查资源名称性”是一个 API，用于检查资源名称是否可用 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | 创建备份受保护项 |
-> | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | 返回所有受保护项的列表。 |
+> | microsoft.recoveryservices/Locations/backupProtectedItem/write | 创建备份受保护项 |
+> | microsoft.recoveryservices/Locations/backupProtectedItems/read | 返回所有受保护项的列表。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | Microsoft.RecoveryServices/operations/read | 操作返回资源提供程序的操作列表 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | 返回恢复服务保管库的安全 PIN 信息。 |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
+> | microsoft.recoveryservices/保管库/backupCrossRegionRestore/action | 跨区域还原受保护项的恢复点。 |
+> | microsoft.recoveryservices/保管库/backupCrrJob/action | 在恢复服务保管库的次要区域中获取跨区域还原作业详细信息。 |
+> | microsoft.recoveryservices/保管库/backupCrrJobs/action | 在恢复服务保管库的次要区域中列出跨区域还原作业。 |
+> | microsoft.recoveryservices/Vaults/backupJobsExport/action | 导出作业 |
+> | microsoft.recoveryservices/Vaults/backupSecurityPIN/action | 返回恢复服务保管库的安全 PIN 信息。 |
+> | microsoft.recoveryservices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
 > | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作创建“vault”类型的 Azure 资源 |
 > | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/delete | “删除保管库”操作删除“vault”类型的指定 Azure 资源 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/read | 返回恢复服务保管库的配置。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/write | 更新恢复服务保管库的配置。 |
-> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/read | 获取备份资源加密配置。 |
-> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/write | 更新备份资源加密配置 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | 删除备份保护意向 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationsStatus/read | 返回操作状态 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 删除已注册的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 获取对保护容器执行的操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护的项执行备份。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 删除受保护的项 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | 取消作业 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationsStatus/read | 返回作业操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 删除保护策略 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 创建保护策略 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | 返回所有可保护项的列表。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | 返回恢复服务保管库的存储配置。 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | 更新恢复服务保管库的存储配置。 |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
+> | microsoft.recoveryservices/保管库/backupAadProperties/read | 获取用于跨区域还原的第三个区域中的身份验证的 AAD 属性。 |
+> | microsoft.recoveryservices/Vaults/backupconfig/read | 返回恢复服务保管库的配置。 |
+> | microsoft.recoveryservices/Vaults/backupconfig/write | 更新恢复服务保管库的配置。 |
+> | microsoft.recoveryservices/保管库/backupCrrOperationResults/read | 返回恢复服务保管库的 CRR 操作结果。 |
+> | microsoft.recoveryservices/保管库/backupCrrOperationsStatus/read | 返回恢复服务保管库的 CRR 操作状态。 |
+> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/read | 获取备份资源加密配置。 |
+> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/write | 更新备份资源加密配置 |
+> | microsoft.recoveryservices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/delete | 删除备份保护意向 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/operationsStatus/read | 返回操作状态 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/delete | 删除已注册的容器 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 获取对保护容器执行的操作的状态。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护的项执行备份。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 删除受保护的项 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
+> | microsoft.recoveryservices/保管库/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 获取跨区域还原的 AccessToken。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
+> | microsoft.recoveryservices/Vaults/backupJobs/cancel/action | 取消作业 |
+> | microsoft.recoveryservices/Vaults/backupJobs/read | 返回所有作业对象 |
+> | microsoft.recoveryservices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
+> | microsoft.recoveryservices/Vaults/backupJobs/operationsStatus/read | 返回作业操作的状态。 |
+> | microsoft.recoveryservices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
+> | microsoft.recoveryservices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
+> | microsoft.recoveryservices/Vaults/backupPolicies/delete | 删除保护策略 |
+> | microsoft.recoveryservices/Vaults/backupPolicies/read | 返回所有保护策略 |
+> | microsoft.recoveryservices/Vaults/backupPolicies/write | 创建保护策略 |
+> | microsoft.recoveryservices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
+> | microsoft.recoveryservices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
+> | microsoft.recoveryservices/Vaults/backupProtectableItems/read | 返回所有可保护项的列表。 |
+> | microsoft.recoveryservices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
+> | microsoft.recoveryservices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
+> | microsoft.recoveryservices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
+> | microsoft.recoveryservices/Vaults/backupstorageconfig/read | 返回恢复服务保管库的存储配置。 |
+> | microsoft.recoveryservices/Vaults/backupstorageconfig/write | 更新恢复服务保管库的存储配置。 |
+> | microsoft.recoveryservices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
 > | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作更新资源/保管库凭据证书。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象扩展信息 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象扩展信息 |
@@ -9409,14 +9470,14 @@ Azure 服务：[站点恢复](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | 解决警报。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | 获取恢复服务保管库通知配置。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | 配置到恢复服务保管库的电子邮件通知。 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/delete | 等候几分钟时间，并重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/read | 获取所有可保护的容器 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/validate/action | 获取所有可保护的容器 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/write | 获取所有可保护的容器 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | 获取所有可保护的容器 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/delete | 删除专用终结点请求。 此调用由备份管理员执行。 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/write | 批准或拒绝专用终结点请求。 此调用由备份管理员执行。 |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/operationsStatus/read | 返回专用终结点连接的操作状态。 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/delete | 等候几分钟时间，并重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/read | 获取所有可保护的容器 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/validate/action | 获取所有可保护的容器 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/write | 获取所有可保护的容器 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | 获取所有可保护的容器 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/delete | 删除专用终结点请求。 此调用由备份管理员执行。 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/write | 批准或拒绝专用终结点请求。 此调用由备份管理员执行。 |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/operationsStatus/read | 返回专用终结点连接的操作状态。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | “注册服务容器”操作可用于向恢复服务注册容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/delete | “取消注册容器”操作可用于取消注册容器。 |
@@ -9532,7 +9593,7 @@ Azure 服务：[站点恢复](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/read | 读取任何内容  |
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/write | 创建或更新任何  |
 > | Microsoft.RecoveryServices/vaults/replicationvCenters/read | 读取任何 vCenter |
-> | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
+> | microsoft.recoveryservices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.RecoveryServices/vaults/usages/read | 读取任何保管库使用情况 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
 

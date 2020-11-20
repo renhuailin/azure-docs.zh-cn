@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306933"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981181"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
@@ -39,7 +39,7 @@ Install-Module -Name Az.Maintenance
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
-创建一个资源组作为适用于配置的容器。 在此示例中，在*eastus*中创建名为*myMaintenanceRG*的资源组。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
+创建一个资源组作为适用于配置的容器。 在此示例中，在 *eastus* 中创建名为 *myMaintenanceRG* 的资源组。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -67,13 +67,7 @@ $config = New-AzMaintenanceConfiguration `
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>在预览版中使用计划的窗口 (创建维护配置) 
-
-
-> [!IMPORTANT]
-> 计划的窗口功能目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用计划的窗口创建维护配置
 
 当 Azure 将对资源应用更新时，可以使用 New-AzMaintenanceConfiguration 创建具有计划窗口的维护配置。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
 
@@ -91,8 +85,13 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > 维护 **持续时间** 必须是 *2 小时* 或更长时间。 在35天内，必须至少将维护 **重复** 设置为一次。
 
-**定期**维护可以表示为每日、每周或每月计划。 每日计划示例都是 recurEvery： Day，recurEvery：3Days。 每周计划示例是 recurEvery：3Weeks，recurEvery： Week 周六，星期日。 每月计划示例是 recurEvery： Month day23，day24，recurEvery： Month 上月，recurEvery： Month 第四个月。
-
+维护 **循环** 可表示为：
+ | 值 | 示例 |
+      |-------|-------------|
+      | 日历 | recurEvery： Day **或** RecurEvery：3Days | 
+      | weekly | recurEvery： 3Weeks **或** RecurEvery： Week 周六，星期日 | 
+      | 次 | recurEvery： Month day23、day24 **或** RecurEvery： Month Last 星期日 **或** RecurEvery： month 第四个月 | 
+      
 
 ## <a name="assign-the-configuration"></a>分配此配置
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979957"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -85,19 +85,19 @@ ms.locfileid: "92168267"
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Web 应用诊断和解决问题
 
-在 Azure Monitor 中，更改分析也已内置到自助式“诊断并解决问题”体验中。**** 可以从应用服务应用程序的“概述”页访问此体验。****
+在 Azure Monitor 中，更改分析也已内置到自助式“诊断并解决问题”体验中。 可以从应用服务应用程序的“概述”页访问此体验。
 
 ![“概述”按钮和“诊断并解决问题”按钮的屏幕截图](./media/change-analysis/change-analysis.png)
 
 ### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>诊断和解决问题工具中的应用程序更改分析
 
-应用程序更改分析是 Web 应用程序中的独立检测器，诊断并解决问题工具。 它还在 **应用程序崩溃** 和 **Web 应用关闭检测程序**中进行聚合。 输入 "诊断并解决问题" 工具时，将自动注册 **ChangeAnalysis** 资源提供程序。 按照以下说明启用 web 应用来宾内更改跟踪。
+应用程序更改分析是 Web 应用程序中的独立检测器，诊断并解决问题工具。 它还在 **应用程序崩溃** 和 **Web 应用关闭检测程序** 中进行聚合。 输入 "诊断并解决问题" 工具时，将自动注册 **ChangeAnalysis** 资源提供程序。 按照以下说明启用 web 应用来宾内更改跟踪。
 
-1. 选择“可用性和性能”。****
+1. 选择 " **可用性和性能**"。
 
     ![“可用性和性能”故障排除选项的屏幕截图](./media/change-analysis/availability-and-performance.png)
 
-2. 选择“应用程序更改”。**** 此功能在 **应用程序崩溃**中也可用。
+2. 选择“应用程序更改”。 此功能在 **应用程序崩溃** 中也可用。
 
    ![“应用程序崩溃”按钮的屏幕截图](./media/change-analysis/application-changes.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92168267"
 
    ![“应用程序崩溃”选项的屏幕截图](./media/change-analysis/enable-changeanalysis.png)
 
-4. 启用“更改分析”并选择“保存”。******** 该工具显示应用服务计划下的所有 web 应用。 可以使用计划级别开关，为某个计划下的所有 Web 应用启用更改分析。
+4. 启用“更改分析”并选择“保存”。 该工具显示应用服务计划下的所有 web 应用。 可以使用计划级别开关，为某个计划下的所有 Web 应用启用更改分析。
 
     ![“启用更改分析”用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "92168267"
 ![故障排除工具中的更改分析器](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>活动日志更改历史记录
-活动日志中的 " [查看更改历史记录](../platform/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用[Azure 资源关系图](../../governance/resource-graph/overview.md)的**更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自[azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
+活动日志中的 " [查看更改历史记录](../platform/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用 [Azure 资源关系图](../../governance/resource-graph/overview.md)的 **更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自 [azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
 
 ![活动日志更改历史记录集成](./media/change-analysis/activity-log-change-history.png)
 
@@ -183,6 +183,7 @@ foreach ($webapp in $webapp_list)
     ```
 
 - **注册 ChangeAnalysis 资源提供程序失败**。 此消息意味着 UI 发送请求以注册资源提供程序时，会立即失败，这与权限问题无关。 可能是暂时性的 internet 连接问题。 请尝试刷新页面并检查你的 internet 连接。 如果错误仍然存在，请联系 changeanalysishelp@microsoft.com
+- **无法查询 ChangeAnalysis 资源提供程序** *，因为不支持消息 Azure lighthouse 订阅，只能在订阅的 home 租户中使用这些更改*。 现在，对于不在 home 租户中的用户，将通过 Azure Lighthouse 订阅注册更改分析资源提供程序存在限制。 在不久的将来，我们预计会解决此限制。 如果这是你的阻塞问题，则有一种解决方法，涉及到创建服务主体，并显式分配角色以允许访问。  请联系 changeanalysishelp@microsoft.com 以了解更多相关信息。
 
 - **此时间比预期时间长**。 此消息表示注册花费的时间超过2分钟。 这种情况很罕见，但并不一定表示出现了问题。 可以中转到 " **订阅" |** 用于检查 **ChangeAnalysis** 资源提供程序注册状态的资源提供程序。 可以尝试使用 UI 注销、重新注册或刷新，以查看是否有帮助。 如果问题仍然存在，请联系 changeanalysishelp@microsoft.com 以获得支持。
     ![排除 RP 注册花费的时间过长](./media/change-analysis/troubleshoot-registration-taking-too-long.png)

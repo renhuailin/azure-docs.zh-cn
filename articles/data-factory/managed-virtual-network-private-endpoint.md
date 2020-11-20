@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317064"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980349"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -73,6 +73,11 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 
 只有处于已批准状态的托管专用终结点才能将流量发送到给定的专用链接资源。
 
+## <a name="interactive-authoring"></a>交互式创作
+交互式创作功能用于功能，如测试连接、浏览文件夹列表和表列表、获取架构和预览数据。 可以在创建或编辑处于 ADF 托管的虚拟网络中的 Azure Integration Runtime 时启用交互式创作。 后端服务将为交互式创作功能预先分配计算。 否则，每次执行任何交互式操作时都会分配计算，这将花费更多时间。 交互式创作的生存时间 (TTL) 为60分钟，这意味着它将在上次交互创作操作60分钟后自动变为禁用状态。
+
+![交互式创作](./media/managed-vnet/interactive-authoring.png)
+
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 ### <a name="supported-data-sources"></a>支持的数据源
 以下数据源支持通过来自 ADF 托管虚拟网络的私有链接进行连接。
@@ -97,7 +102,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - 美国西部
 - 美国西部 2
 - 美国中南部
-- Central US
+- 美国中部
 - 北欧
 - 西欧
 - 英国南部

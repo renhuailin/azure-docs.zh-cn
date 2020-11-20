@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074244"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980501"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -67,13 +67,13 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
 1. 在 "流分析作业" 页中填写必要的详细信息，如名称、区域和缩放。 
 
-1. 选中 " *保护我的存储帐户中此作业所需的所有专用数据资产* " 的复选框。
+1. 选中 " *保护我的存储帐户中此作业所需的所有专用数据资产*" 的复选框。
 
 1. 从订阅中选择一个存储帐户。 请注意，在作业的整个生命周期内不能修改此设置。 
 
    ![专用数据存储帐户设置](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>存储的专用数据资产
+## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>流分析存储的专用数据资产
 
 流分析需要保存的任何专用数据存储在存储帐户中。 专用数据资产的示例包括： 
 

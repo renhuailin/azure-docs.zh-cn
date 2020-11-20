@@ -97,7 +97,7 @@ ms.locfileid: "92048230"
 |**忽略**     | 忽略所选列。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="连接设置" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="架构配置" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自动汇总设置
 
@@ -117,7 +117,7 @@ ms.locfileid: "92048230"
 - 更新检测配置以满足预期的结果
 - 为检测到的异常设置通知
 
-:::image type="content" source="../media/metric-details.png" alt-text="连接设置" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="指标详细信息" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>查看诊断见解
 
@@ -125,13 +125,13 @@ ms.locfileid: "92048230"
 
 要查看诊断见解，请单击时序可视化效果上的红点，这些红点代表检测到的异常。 将显示一个窗口，其中包含“事件分析”页的链接。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="连接设置" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="事件链接" lightbox="../media/incident-link.png":::
 
 单击此链接后，将切换到事件分析页，该页面将分析相应的异常，并提供一系列诊断见解。 顶部将显示有关事件的统计信息，如“严重性”、“涉及的异常”以及“开始时间”和“结束时间”   。 
 
 接下来，你将看到事件的上级异常，以及自动生成的根本原因建议。 此自动根本原因建议是通过分析所有相关异常的事件树生成的，包括：偏差、分布和对父异常的贡献。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="连接设置" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件诊断" lightbox="../media/incident-diagnostic.png":::
 
 基于这些信息，你已经可以对正在发生的事情和事件的影响以及最潜在的根本原因有一个直观的看法。 这样便能够立即采取行动尽快解决事件。 
 

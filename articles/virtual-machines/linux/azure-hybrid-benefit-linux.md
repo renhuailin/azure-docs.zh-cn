@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916468"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980875"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
 
@@ -146,6 +146,35 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 *问：我已注册 Red Hat 云访问权限，但仍无法启用我的 RHEL Vm 权益。我该怎么办？*
 
 答： Red Hat 云访问订阅注册可能需要一些时间才能从 Red Hat 传播到 Azure。 如果在一个工作日内仍看到此错误，请联系 Microsoft 支持部门。
+
+*问：我已使用 RHEL BYOS "黄金映像" 部署了 VM。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+
+答：不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
+
+*问：我已使用 RHEL BYOS "黄金映像" 部署了 VM。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+
+答：不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
+
+*问：我已通过 ASR 从本地 (上传自己的 RHEL 映像，或者) 到 Azure。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+
+答：不能。 目前，Azure 混合权益功能仅适用于 RHEL 和 SLES Marketplace 映像。 
+
+*问：是否可以在从 Marketplace RHEL 和 SLES SAP 映像部署的 Vm 上使用 Azure 混合权益？*
+
+答：可以。 可以使用 RHEL Vm 的 "RHEL_BYOS" 的许可证类型，使用 "SLES_BYOS" 执行从 Marketplace RHEL 和 SLES SAP 映像部署的 Vm 的转换。
+
+*问：是否可以在 RHEL 和 SLES (VMSS) 上使用虚拟机规模集 Azure 混合权益？*
+
+答：不可以。 VMSS 目前不在 RHEL 和 SLES 的 Azure 混合权益范围内。
+
+*问：是否可以在 RHEL 和 SLES (的 RIs) 上使用 Azure 混合权益保留实例？*
+
+答：不可以。 目前尚不在 RHEL 和 SLES Azure 混合权益范围内的 RIs。
+
+*问：是否可以在部署用于 SQL Server RHEL 映像的虚拟机上使用 Azure 混合权益？*
+
+答：不可以。 无计划支持这些。
+ 
 
 ## <a name="common-issues"></a>常见问题
 本部分包含可能遇到的常见问题的列表以及缓解步骤。
