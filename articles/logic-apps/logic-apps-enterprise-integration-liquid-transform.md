@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716667"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992703"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用液体模板转换 JSON 和 XML
 
@@ -150,9 +150,9 @@ ms.locfileid: "88716667"
 
     DotLiquid 不能以本机方式了解 JSON，因此请确保将反斜杠字符转义 (`\`) 和其他保留的 JSON 字符。
 
-  * 如果模板使用[液体筛选器](https://shopify.github.io/liquid/basics/introduction/#filters)，请确保遵循使用*句子大小写*的[DotLiquid 和 c # 命名约定](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)。 对于所有液体转换，请确保模板中的筛选器名称也使用句子大小写。 否则，筛选器将不起作用。
+  * 如果模板使用 [液体筛选器](https://shopify.github.io/liquid/basics/introduction/#filters)，请确保遵循使用 *句子大小写* 的 [DotLiquid 和 c # 命名约定](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)。 对于所有液体转换，请确保模板中的筛选器名称也使用句子大小写。 否则，筛选器将不起作用。
 
-    例如，使用筛选器时， `replace` `Replace` 请使用，而不是 `replace` 。 如果在 [DotLiquid online](http://dotliquidmarkup.org/try-online)上尝试示例，则会应用相同的规则。 有关详细信息，请参阅 [Shopify 液体滤波器](https://shopify.dev/docs/themes/liquid/reference/filters) 和 [DotLiquid 液滤波器](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters)。 Shopify 规范包含每个筛选器的示例，因此，为了进行比较，可以在 DotLiquid 尝试这些示例 [-请在联机](https://dotliquidmarkup.org/try-online)时尝试。
+    例如，使用筛选器时， `replace` `Replace` 请使用，而不是 `replace` 。 如果在 [DotLiquid online](http://dotliquidmarkup.org/try-online)上尝试示例，则会应用相同的规则。 有关详细信息，请参阅 [Shopify 液体滤波器](https://shopify.dev/docs/themes/liquid/reference/filters) 和 [DotLiquid 液滤波器](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters)。 Shopify 规范包含每个筛选器的示例，因此，为了进行比较，可以在 DotLiquid 尝试这些示例 [-请在联机](http://dotliquidmarkup.org/try-online)时尝试。
 
   * `json`Shopify 扩展筛选器中的筛选器当前[未在 DotLiquid 中实现](https://github.com/dotliquid/dotliquid/issues/384)。 通常，您可以使用此筛选器来准备用于 JSON 字符串分析的文本输出，但您需要改用 `Replace` 筛选器。
 
@@ -244,7 +244,7 @@ ms.locfileid: "88716667"
 
 * [Shopify 液体语言和示例](https://shopify.github.io/liquid/basics/introduction/)
 * [DotLiquid](http://dotliquidmarkup.org/)
-* [DotLiquid-尝试联机](https://dotliquidmarkup.org/try-online)
+* [DotLiquid-尝试联机](http://dotliquidmarkup.org/try-online)
 * [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
 * [DotLiquid GitHub 问题](https://github.com/dotliquid/dotliquid/issues/)
 * 了解有关[地图](../logic-apps/logic-apps-enterprise-integration-maps.md)的详细信息
