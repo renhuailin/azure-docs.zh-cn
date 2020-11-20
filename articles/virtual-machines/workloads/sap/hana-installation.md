@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91529824"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967765"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -50,9 +51,9 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 此步骤对于修补操作系统（客户的责任）是必需的。 对于 SUSE，可在有关 [SMT 安装](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的页面中找到有关安装和配置 SMT 的文档。
 
-**第三步**是检查特定 OS 发行版/版本的新修补程序和修补程序。 验证 HANA 大型实例的修补级别是否处于最新状态。 有时可能未包含最新修补程序。 在接管 HANA 大型实例单元后，必须检查是否需要应用修补程序。
+**第三步** 是检查特定 OS 发行版/版本的新修补程序和修补程序。 验证 HANA 大型实例的修补级别是否处于最新状态。 有时可能未包含最新修补程序。 在接管 HANA 大型实例单元后，必须检查是否需要应用修补程序。
 
-**第四步**是查看相关的 SAP 说明，以便在特定 OS 版本/版本上安装和配置 SAP HANA。 由于建议会不断发生变化，或者与各种安装方案相关的 SAP 说明或配置会发生更改，因此，Microsoft 不一定总能完美配置 HANA 大型实例单元。 
+**第四步** 是查看相关的 SAP 说明，以便在特定 OS 版本/版本上安装和配置 SAP HANA。 由于建议会不断发生变化，或者与各种安装方案相关的 SAP 说明或配置会发生更改，因此，Microsoft 不一定总能完美配置 HANA 大型实例单元。 
 
 因此，作为客户，必须阅读与确切 Linux 发行版上的 SAP HANA 相关的 SAP 说明。 还要检查 OS 发行版/版本的配置，并应用尚未应用的配置设置。
 
@@ -72,11 +73,11 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 - 必须在 in/etc/modprobe.d/sunrpc-local.conf 中设置 sunrpc.tcp_slot_table_entries = 128 参数。 如果该文件不存在，则需要首先通过添加条目来创建它： 
     - options sunrpc tcp_max_slot_table_entries=128
 
-**第五步**是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区。 此时区表示 HANA 大型实例阵列所在 Azure 区域的位置。 可以更改自己拥有的实例的系统时间或时区。 
+**第五步** 是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区。 此时区表示 HANA 大型实例阵列所在 Azure 区域的位置。 可以更改自己拥有的实例的系统时间或时区。 
 
 如果在租户中订购了更多的实例，则需要调整新交付的实例的时区。 在交接后，Microsoft 并不了解你在实例上设置的系统时区。 因此，新部署的实例可能不会在与切换到的实例相同的时区中设置。 在必要时，客户需负责调整交接后的实例的时区。 
 
-**第六步**是检查 etc/hosts。 交接刀片服务器后，会根据不同的用途为它们分配不同的 IP 地址。 检查 etc/hosts 文件。 如果将单元添加到了现有租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 客户需负责确保新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
+**第六步** 是检查 etc/hosts。 交接刀片服务器后，会根据不同的用途为它们分配不同的 IP 地址。 检查 etc/hosts 文件。 如果将单元添加到了现有租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 客户需负责确保新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
 
 
 ## <a name="operating-system"></a>操作系统
@@ -211,7 +212,7 @@ HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为]
 请参阅 [HLI 支持的方案](hana-supported-scenario.md)，详细了解体系结构的存储布局。
 
 
-**后续步骤**
+后续步骤
 
 - 参阅 [HLI 上的 HANA 安装](hana-example-installation.md)
 

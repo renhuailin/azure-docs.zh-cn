@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP，Azure HANA，存储超磁盘，高级存储
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357071"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967459"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -46,7 +47,7 @@ Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 �
 - Azure Ultra 磁盘至少适用于 **/hana/log** 卷。 **/Hana/data** 卷可放置在无 Azure 写入加速器的高级存储上，或者用于获取超磁盘的重新启动时间
 - **NFS** v2.0 上 **/hana/log 和/Hana/data** 的 Azure NetApp 文件的卷。 /Hana/shared 的卷可以使用 NFS v3 或 NFS v2.0 协议
 
-可以组合某些存储类型。 例如，可以将 **/hana/data** 放在高级存储上，而 **/hana/log** 可放置在超小型磁盘存储上，以便达到所需的低延迟。 如果将基于和的卷用于 **/hana/data** ，则  **/hana/log** 卷也需要基于和顶层的 NFS。 **不支持** 在和上将 NFS 用于某个卷 (例如/hana/data) 、Azure 高级存储或超磁盘 (如 **/hana/log** ) ）。
+可以组合某些存储类型。 例如，可以将 **/hana/data** 放在高级存储上，而 **/hana/log** 可放置在超小型磁盘存储上，以便达到所需的低延迟。 如果将基于和的卷用于 **/hana/data**，则  **/hana/log** 卷也需要基于和顶层的 NFS。 **不支持** 在和上将 NFS 用于某个卷 (例如/hana/data) 、Azure 高级存储或超磁盘 (如 **/hana/log**) ）。
 
 在本地环境中，很少需要考虑 I/O 子系统及其功能。 原因在于，设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，你应该注意其中的一些 SAP 颁发的要求。 SAP 所建议的一些最小吞吐量特征包括：
 

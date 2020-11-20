@@ -7,18 +7,19 @@ author: bentrin
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085208"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967680"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure 大型实例上的 SAP HANA 迁移到 Azure 虚拟机
 本文介绍了可能的 Azure 大型实例部署方案，并提供了最小化转换停机时间的规划和迁移方法
@@ -109,7 +110,7 @@ ms.locfileid: "87085208"
 ### <a name="virtual-network"></a>虚拟网络 
 客户需要选择是在现有虚拟网络中运行新的 HANA 数据库，还是创建新的虚拟网络。  主要的决定因素是 SAP 环境的当前网络布局。  此外，当基础结构从一区域部署到两区域部署并使用 PPG 时，它会施加体系结构更改。 有关详细信息，请参阅 Azure PPG 一文， [了解如何通过 SAP 应用程序实现最佳网络延迟](./sap-proximity-placement-scenarios.md)。   
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 无论新 SAP HANA VM 是否在新的或现有的 vnet/子网上登录，它都表示需要保护的新业务关键服务。  应为此新的服务类评估并部署符合公司信息安全策略的访问控制。
 
 ### <a name="vm-sizing-recommendation"></a>VM 大小建议

@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835504"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967663"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -135,7 +136,7 @@ Azure 中 SAP 部署的差别如下：
 
 * 如果在两个不同的 Azure 区域部署了 HANA 大型实例单元用于进行灾难恢复，则会在过去应用相同的暂时性路由限制。 换言之，一个区域中的 HANA 大型实例单元的 IP 地址 (例如，美国西部) 未路由到部署在另一个区域中的 HANA 大型实例单元 (例如，美国东部) 。 此限制独立于跨区域使用 Azure 网络对等互连，或者跨连接 ExpressRoute 线路（将 HANA 大型实例单元连接到虚拟网络）。 有关图形表示形式，请参阅“在多个区域使用 HANA 大型实例单位”部分中的插图。 此限制在已部署的体系结构的基础上，禁止立即将 HANA 系统复制用作灾难恢复功能。 对于最近的更改，查找 "在多个区域使用 HANA 大型实例单元" 一节。 
 
-* Azure 上的 SAP HANA (大型实例) 单位具有从服务器 IP 池地址范围分配的 IP 地址，该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况**。 
+* Azure 上的 SAP HANA (大型实例) 单位具有从服务器 IP 池地址范围分配的 IP 地址，该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>直接路由到 HANA 大型实例
 
@@ -167,7 +168,7 @@ Microsoft 引入了新功能，称为 [ExpressRoute Global Reach](../../../expre
 在提供 Global Reach 的 Azure 区域中，你可以请求为 ExpressRoute 线路启用 Global Reach 功能，将本地网络连接到连接到 HANA 大型实例单元的 Azure 虚拟网络。 ExpressRoute 线路的本地端有一些成本含义。 对于价格，请查看 [Global Reach 外接程序](https://azure.microsoft.com/pricing/details/expressroute/)的价格。 与将 HANA 大型实例 (单元连接到 Azure) 的线路相关的额外成本没有额外的费用。 
 
 > [!IMPORTANT]  
-> 如果使用 Global Reach 在 HANA 大型实例单元和本地资产之间启用直接访问，则 **不会通过 Azure 虚拟网络路由**网络数据和控制流，而直接通过 Microsoft 企业 exchange 路由器进行路由。 因此，在 Azure 虚拟网络中部署的任何 NSG 或 ASG 规则或任何类型的防火墙、NVA 或代理都不会受到接触。 **如果你使用 ExpressRoute Global Reach 允许从本地到 HANA 大型实例单元的直接访问限制和访问 HANA 大型实例单位的权限，则需要在本地端的防火墙中定义。** 
+> 如果使用 Global Reach 在 HANA 大型实例单元和本地资产之间启用直接访问，则 **不会通过 Azure 虚拟网络路由** 网络数据和控制流，而直接通过 Microsoft 企业 exchange 路由器进行路由。 因此，在 Azure 虚拟网络中部署的任何 NSG 或 ASG 规则或任何类型的防火墙、NVA 或代理都不会受到接触。 **如果你使用 ExpressRoute Global Reach 允许从本地到 HANA 大型实例单元的直接访问限制和访问 HANA 大型实例单位的权限，则需要在本地端的防火墙中定义。** 
 
 ##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>连接不同 Azure 区域中的 HANA 大型实例
 同样，与 ExpressRoute Global Reach 可用于将本地连接到 HANA 大型实例单元时，可以使用它来连接两个在两个不同区域中为你部署的 HANA 大型实例租户。 隔离是 HANA 大型实例租户用于连接到 Azure 中两个区域的 ExpressRoute 线路。 连接两个不同区域中部署的两个 HANA 大型实例租户不会产生额外费用。 
@@ -179,7 +180,7 @@ Microsoft 引入了新功能，称为 [ExpressRoute Global Reach](../../../expre
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA 大型实例的 Internet 连接
-HANA 大型实例未建立直接 Internet 连接**。 这会限制某些功能，例如，直接向 OS 供应商注册 OS 映像的功能。 可能需要使用本地 SUSE Linux Enterprise Server 订阅管理工具服务器或 Red Hat Enterprise Linux 订阅管理器。
+HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，例如，直接向 OS 供应商注册 OS 映像的功能。 可能需要使用本地 SUSE Linux Enterprise Server 订阅管理工具服务器或 Red Hat Enterprise Linux 订阅管理器。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 与 HANA 大型实例之间的数据加密
 在 HANA 大型实例与 VM 之间传输的数据不会加密。 但是，仅仅是用于 HANA DBMS 端和基于 JDBC/ODBC 应用程序之间的交换，可以启用加密的流量。 有关详细信息，请参阅[此 SAP 文档](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)。
@@ -199,5 +200,5 @@ HANA 大型实例未建立直接 Internet 连接**。 这会限制某些功能�
 > [!IMPORTANT] 
 > 如果使用了多个 ExpressRoute 线路，则应使用“AS 路径前追加”和“本地首选 BGP”设置来确保正确路由流量。
 
-**后续步骤**
+后续步骤
 - 请参阅 [SAP HANA（大型实例）存储体系结构](hana-storage-architecture.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371063"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967136"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
@@ -30,7 +30,7 @@ ms.locfileid: "92371063"
 
 Azure 安全中心具有两个专用安全控制，可确保满足组织的身份和安全要求： 
 
- - **管理访问权限和权限** -我们鼓励你采用 [最小特权访问模式](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，并确保你只向用户授予完成其工作所需的访问权限。 此控件还包含用于实现 [基于角色的访问控制 (RBAC) ](../role-based-access-control/overview.md) 来控制对资源的访问的建议。
+ - **管理访问权限和权限** -我们鼓励你采用 [最小特权访问模式](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，并确保你只向用户授予完成其工作所需的访问权限。 此控件还包括有关实现 [azure 基于角色的访问控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以控制对资源的访问权限的建议。
  
  - **启用 mfa** [-启用 mfa，你的帐户](https://www.microsoft.com/security/business/identity/mfa) 更安全，用户仍然可以通过单一登录向几乎所有应用程序进行身份验证。
 
@@ -67,7 +67,7 @@ Azure 安全中心具有两个专用安全控制，可确保满足组织的身�
 
 1. 打开 **Azure 资源图资源管理器**。
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="正在启动 Azure 资源图资源管理器 * * 建议页&quot; :::
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="正在启动 Azure 资源图资源管理器 * * 建议页" :::
 
 1. 输入以下查询，然后选择 " **运行查询**"。
 

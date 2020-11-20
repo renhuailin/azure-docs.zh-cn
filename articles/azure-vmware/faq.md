@@ -2,18 +2,18 @@
 title: 常见问题
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920587"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967340"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
-有关 Azure VMware 解决方案的常见问题的解答。
+本文解答了有关 Azure VMware 解决方案的常见问题。
 
 ## <a name="general"></a>常规
 
@@ -33,7 +33,7 @@ ms.locfileid: "94920587"
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>我是否使用与现在相同的工具来管理私有云资源？
 
-是的。 Azure 门户用于部署和大量管理操作。 vCenter 和 NSX Manager 用于管理 vSphere 和 NSX-T 资源。
+是的。 Azure 门户用于部署和多个管理操作。 vCenter 和 NSX Manager 用于管理 vSphere 和 NSX-T 资源。
 
 #### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>可以使用我的本地 vCenter 来管理私有云吗？
 
@@ -53,7 +53,7 @@ ms.locfileid: "94920587"
 
 #### <a name="what-does-the-change-control-process-look-like"></a>变更控制过程是怎样的？
 
-对服务本身所做的更新将遵循 Microsoft Azure 的标准更改管理流程。 所有工作负载管理任务和关联的变更管理过程均由客户负责。
+对服务本身所做的更新将遵循 Microsoft Azure 的标准更改管理过程。 所有工作负载管理任务和关联的变更管理过程均由客户负责。
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>这与 Azure VMware Solution by CloudSimple 有何不同？
 
@@ -65,7 +65,7 @@ ms.locfileid: "94920587"
 是的，如果安装它的系统可以访问私有云 vCenter，并使用公共 DNS 来解析 ESXi 主机名。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有关于在 Azure VMware 解决方案 Vm 中安装和使用 VMRC 的特殊说明？
-否，使用 [VMware 提供的说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，并满足这些说明中指定的 VM 先决条件。 
+不是。 使用 [VMware 提供的说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) 来满足这些说明中指定的 VM 先决条件。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 上是否支持 VMware HCX？
 没有，因为带宽和延迟要求。
@@ -74,7 +74,7 @@ ms.locfileid: "94920587"
 Azure 堡垒是推荐用于连接到跳转盒的服务，以防止向 internet 公开 Azure VMware 解决方案。 不能使用 Azure 堡垒连接到 Azure VMware 解决方案 Vm，因为它们不是 Azure IaaS 对象。
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure 负载均衡器是否可用于 Azure VMware 解决方案 Vm？
-不是。 Azure 负载均衡器内部仅支持 Azure IaaS Vm。 Azure 负载均衡器不支持基于 IP 的后端池;只有 azure 虚拟机或虚拟机规模集对象（其中 Azure VMware 解决方案 Vm 不是 Azure 对象）。
+不是。 Azure 负载均衡器内部-仅支持 Azure IaaS Vm。 Azure 负载均衡器不支持基于 IP 的后端池;只有 azure 虚拟机或虚拟机规模集对象（其中 Azure VMware 解决方案 Vm 不是 Azure 对象）。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用现有 ExpressRoute 网关连接到 Azure VMware 解决方案？
 是的，可以使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，前提是它不超过每个虚拟网络的四个 ExpressRoute 线路的限制。  但是，若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的传递路由。
@@ -105,7 +105,7 @@ Azure VMware 解决方案中的每个 ESXi 主机都配置了 4 25 Gbps Nic，�
 
 是的，默认情况下，使用存储在 Azure Key Vault 中的密钥加密所有 vSAN 数据。
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>你记录了 Commvault、Veritas 和 Veeam 已扩展其备份解决方案，以便与 Azure VMware 解决方案一起使用。 其他独立软件供应商 (ISV) 备份解决方案呢？
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>你记录了 Commvault、Veritas 和 Veeam 已扩展其备份解决方案，以便与 Azure VMware 解决方案一起使用。 其他独立软件供应商 (Isv) 备份解决方案呢？
 
 正如我们所知，使用 VMware VADP 和 HotAdd 传输模式的任何备份解决方案都应直接在 Azure VMware 解决方案中使用。
 
@@ -147,7 +147,7 @@ Azure VMware 解决方案中的每个 ESXi 主机都配置了 4 25 Gbps Nic，�
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>私有云中使用的是哪些版本的 VMware 软件？
 
-私有云使用 vSphere 6.7、vSAN 6.7、VMware HCX 和版本2.5。  
+私有云使用 vSphere 6.7 U3、vSAN 6.7 U3、VMware HCX 和 NSX-T 2.5。  有关详细信息，请参阅 [VMware 软件版本要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>私有云是否使用 VMware NSX？
 
@@ -163,7 +163,7 @@ Azure VMware 解决方案中的每个 ESXi 主机都配置了 4 25 Gbps Nic，�
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>在私有云中，VMware 软件的升级和更新计划是什么？
 
-私有云软件捆绑升级的目的是将软件保存到 VMware 的最新软件捆绑版本之一。 私有云软件版本可能不同于各个软件组件的最新版本， (ESXi，NSX-T，vCenter，vSAN) 。
+私有云软件捆绑升级将软件保存在 VMware 的最新软件捆绑版本中。 私有云软件版本可能与各个软件组件的最新版本不同 (ESXi，NSX-T，vCenter，vSAN) 。
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>私有云软件堆栈的更新频率是多少？
 
@@ -184,7 +184,7 @@ Azure VMware 解决方案中的每个 ESXi 主机都配置了 4 25 Gbps Nic，�
 
 #### <a name="how-do-i-connect-a-workload-vm-to-the-internet-or-an-azure-service-endpoint"></a>如何将工作负载 VM 连接到 Internet 或 Azure 服务终结点？
 
-在 Azure 门户中，为私有云启用 Internet 连接。 使用 NSX-T 管理器，创建一个 NSX-T T1 路由器和逻辑交换机。 然后，使用 vCenter 在逻辑交换机定义的网络段上部署 VM。 该 VM 将具有对 Internet 和 Azure 服务的网络访问权限。
+在 Azure 门户中，为私有云启用 Internet 连接。 使用 NSX-T 管理器，创建一个 NSX-T T1 路由器和逻辑交换机。 然后，使用 vCenter 在逻辑交换机定义的网络段上部署 VM。 该 VM 将具有 internet 和 Azure 服务的网络访问权限。
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>是否需要限制从 Internet 访问私有云中逻辑网络上的 VM？
 
@@ -237,7 +237,7 @@ Azure 虚拟 WAN 不提供两个已连接的 ExpressRoute 线路和非虚拟 WAN
 
 Microsoft 提供对 Azure VMware 解决方案的支持。 你可以提交 [支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 
 
-对于 CSP 托管的订阅，解决方案提供商提供的第一个级别的支持方式与 CSP 对其他 Azure 服务的使用方式相同。
+对于 CSP 托管的订阅，第一级支持提供与 CSP 相同的方式为其他 Azure 服务提供的解决方案提供商。
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>需要哪些帐户才能创建 Azure VMware 解决方案私有云？
 
@@ -245,7 +245,7 @@ Microsoft 提供对 Azure VMware 解决方案的支持。 你可以提交 [支�
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Azure VMware 解决方案是否支持 Red Hat 解决方案？
 
-Microsoft 和 Red Hat 共享集成的定位支持团队，为在 Azure 平台上运行的 Red Hat 生态系统提供统一的联系点。  与其他使用 Red Hat Enterprise Linux 的 Azure 平台服务一样，Azure VMware 解决方案位于云访问和集成的支持涵盖下，并支持 Red Hat Enterprise Linux 在 azure 中的 Azure VMware 解决方案之上运行。
+Microsoft 和 Red Hat 共享一个集成的归置支持团队，该团队为在 Azure 平台上运行的 Red Hat 生态系统提供统一的联系点。  与其他使用 Red Hat Enterprise Linux 的 Azure 平台服务一样，Azure VMware 解决方案受云访问和集成支持服务部门的支持。 支持在 azure 中的 Azure VMware 解决方案之上运行 Red Hat Enterprise Linux。
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise 是否可用，如果是，这会产生多少费用？
 
@@ -260,7 +260,7 @@ VMware HCX Enterprise 提供 Azure VMware 解决方案作为 *预览* 功能/服
 * [Azure 企业协议 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)与 Microsoft 配合使用。
 * Azure 订阅中的一个 Azure 帐户。
 
-在创建 Azure VMware 解决方案资源之前，请提交支持票证以分配节点。 最多需要五个工作日内确认请求并分配节点。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的节点，你会经历相同的过程。
+在创建 Azure VMware 解决方案资源之前，你将提交支持票证以分配你的主机。 最多需要五个工作日内确认并完成你的请求。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的主机，你会经历相同的过程。
 
 1. 在 Azure 门户中，在 " **帮助 + 支持**" 下创建 **[新的支持请求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，并为票证提供以下信息：
    - **问题类型：** 技术方面
@@ -275,46 +275,47 @@ VMware HCX Enterprise 提供 Azure VMware 解决方案作为 *预览* 功能/服
 
    - POC 或生产 
    - 区域名称
-   - 节点数
+   - 主机数
    - 任何其他详细信息
 
    >[!NOTE]
-   >Azure VMware 解决方案建议至少使用三个节点来启动私有云和冗余的 N + 1 节点。 
+   >Azure VMware 解决方案建议至少使用三个主机来启动私有云，并为冗余 N + 1 主机提供支持。 
 
 1. 选择 " **查看 + 创建** " 以提交请求。
 
    支持代表需要5个工作日内确认你的请求。
 
    >[!IMPORTANT] 
-   >如果你已有一个现有的 Azure VMware 解决方案，但你请求的是其他节点，请注意，我们需要5个工作日来分配节点。 
+   >如果你已有现有的 Azure VMware 解决方案并请求其他主机，请注意，我们需要5个工作日来分配主机。 
 
-1. 预配节点之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
+1. 预配主机之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+   有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。 
 
-#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+#### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>是否可通过云解决方案提供商 (CSP) 计划购买保留实例？
 
-Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
+是的。 CSP 可以为其客户购买保留实例。 有关详细信息，请参阅 [使用保留实例节省成本](reserved-instance.md) 一文。 
 
-#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+#### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware 解决方案是否为托管 CSP 合作伙伴提供多租户？
 
-No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+不是。 目前，Azure VMware 解决方案不提供多租户服务。
 
-#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+#### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>基于 ExpressRoute 的本地与 Azure VMware 解决方案之间的流量是否会在计量数据计划中产生任何出站数据传输费用？
 
-Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
+Azure VMware 解决方案 ExpressRoute 线路中的流量不会以任何方式计量。 从 ExpressRoute 线路连接到本地到 Azure 的流量按照 ExpressRoute 定价计划收费。
 
 
-## Customer communication
+## <a name="customer-communication"></a>客户通信
 
-#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+#### <a name="how-can-i-receive-an-alert-when-azure-sends-service-health-notifications-to-my-azure-subscription"></a>Azure 将服务运行状况通知发送到 Azure 订阅时，如何收到警报？
 
-Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+服务问题、计划内维护、运行状况通报、安全提议通知通过 Azure 门户中的 **服务运行状况** 进行发布。  为这些通知设置活动日志警报时，可以执行及时操作。 有关详细信息，请参阅 [使用 Azure 门户创建服务运行状况警报](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal)。
 
-:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+:::image type="content" source="media/service-health.png" alt-text="服务运行状况通知的屏幕截图":::
 
 
 

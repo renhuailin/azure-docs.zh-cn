@@ -3,16 +3,17 @@ title: Azure 上的 Oracle 数据库的参考体系结构 |Microsoft Docs
 description: 引用用于在 Microsoft Azure 虚拟机上运行 Oracle Database Enterprise Edition 数据库的体系结构。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480422"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968717"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -108,7 +109,7 @@ Oracle 数据防护远同步为 Oracle 数据库提供零数据丢失保护功�
 
 GoldenGate 在企业的多个异类平台之间实现数据的交换和操作。 它将提交的事务的事务完整性与现有基础结构的开销降至最低。 它的模块化体系结构使你可以灵活地在各种拓扑中提取并复制所选数据记录、事务更改和 DDL (数据定义语言) 的更改。
 
-Oracle GoldenGate 允许您通过提供双向复制来配置数据库的高可用性。 这允许设置**多主****配置或主动-主动配置**。 以下关系图是 Azure 上 Oracle GoldenGate 主动-主动设置的建议体系结构。 在下面的体系结构中，Oracle 数据库已使用超线程的 [内存优化虚拟机](../../sizes-memory.md) 进行了配置，其中包含 [受约束的核心个 vcpu](../../../virtual-machines/constrained-vcpu.md) ，可节省许可成本并最大限度地提高性能。 多个高级或超磁盘 (托管磁盘) 用于性能和可用性。
+Oracle GoldenGate 允许您通过提供双向复制来配置数据库的高可用性。 这允许设置 **多主****配置或主动-主动配置**。 以下关系图是 Azure 上 Oracle GoldenGate 主动-主动设置的建议体系结构。 在下面的体系结构中，Oracle 数据库已使用超线程的 [内存优化虚拟机](../../sizes-memory.md) 进行了配置，其中包含 [受约束的核心个 vcpu](../../../virtual-machines/constrained-vcpu.md) ，可节省许可成本并最大限度地提高性能。 多个高级或超磁盘 (托管磁盘) 用于性能和可用性。
 
 ![Oracle Database 将可用性区域与 Data Guard Broker 一起使用-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -155,7 +156,7 @@ Oracle 分片主要包含以下组件。 有关这些组件的详细信息，请
 
 * 系统管理的分片-使用分区跨分片自动分发
 * 用户定义的分片-允许您指定数据到分片的映射，当存在法规或数据本地化要求时，此操作很有效) 
-* 复合分片-针对不同_shardspaces_的系统托管和用户定义的分片的组合
+* 复合分片-针对不同 _shardspaces_ 的系统托管和用户定义的分片的组合
 * 表子分区-类似于常规分区表。
 
 阅读有关 Oracle 文档中不同 [分片方法](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-methods.html) 的详细信息。

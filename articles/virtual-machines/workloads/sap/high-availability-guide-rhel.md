@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 9b4684f8d9a6bd04a11961632b616258db7344a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 496b78de869cc213af6b79b3e72016bba3da1266
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487562"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967425"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -150,7 +151,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    1. 管理员用户名、管理员密码或 SSH 密钥  
       将创建一个可用于登录计算机的新用户。
    1. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/**&lt; 订阅 ID &gt;**/ResourceGroups/**&lt; 资源组名称 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虚拟网络名称 &gt;**/subnets/**&lt; 子网名称 &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -185,13 +186,13 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
       1. 选择 (A)SCS 群集的虚拟机及其 IP 地址。
       1. 单击“添加”
    1. 创建运行状况探测
-      1. ASCS 的端口 620**00**
+      1. ASCS 的端口 620 **00**
          1. 打开负载均衡器，选择运行状况探测，并单击“添加”
          1. 输入新运行状况探测的名称（例如 **nw1-ascs-hp**）
-         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+         1. 选择 TCP 作为协议，选择端口 620 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
          1. 单击“确定”
-      1. ASCS ERS 的端口 621**02**
-         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
+      1. ASCS ERS 的端口 621 **02**
+         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621 **02** 和 **nw1-aers-hp**）
    1. 负载均衡算法
       1. ASCS 的负载均衡规则
          1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
@@ -219,15 +220,15 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
       1. 选择 (A)SCS 群集的虚拟机
       1. 单击“确定”
    1. 创建运行状况探测
-      1. ASCS 的端口 620**00**
+      1. ASCS 的端口 620 **00**
          1. 打开负载均衡器，选择运行状况探测，并单击“添加”
          1. 输入新运行状况探测的名称（例如 **nw1-ascs-hp**）
-         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+         1. 选择 TCP 作为协议，选择端口 620 **00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
          1. 单击“确定”
-      1. ASCS ERS 的端口 621**02**
-         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
+      1. ASCS ERS 的端口 621 **02**
+         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621 **02** 和 **nw1-aers-hp**）
    1. 负载均衡规则
-      1. ASCS 的 32**00** TCP
+      1. ASCS 的 32 **00** TCP
          1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
          1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-3200**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-ascs-frontend**）
@@ -236,9 +237,9 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
          1. **确保启用浮动 IP**
          1. 单击“确定”
       1. ASCS 的其他端口
-         * 针对 ASCS 的端口 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP 重复上述步骤
+         * 针对 ASCS 的端口 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 和 TCP 重复上述步骤
       1. ASCS ERS 的其他端口
-         * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
+         * 针对 ASCS ERS 的端口 33 **02**、5 **02** 13、5 **02** 14、5 **02** 16 和 TCP 重复上述步骤
 
 > [!IMPORTANT]
 > 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
@@ -406,7 +407,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   如果安装过程无法在 /usr/sap/**NW1**/ASCS**00** 中创建子文件夹，请尝试设置 ASCS**00** 文件夹的所有者和组，然后重试。
+   如果安装过程无法在 /usr/sap/**NW1**/ASCS **00** 中创建子文件夹，请尝试设置 ASCS **00** 文件夹的所有者和组，然后重试。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -462,7 +463,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   如果安装过程无法在 /usr/sap/**NW1**/ERS**02** 中创建子文件夹，请尝试设置 ERS**02** 文件夹的所有者和组，然后重试。
+   如果安装过程无法在 /usr/sap/**NW1**/ERS **02** 中创建子文件夹，请尝试设置 ERS **02** 文件夹的所有者和组，然后重试。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -761,7 +762,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
      DATABASE: <b>NW1</b>
    </code></pre>
 
-   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）********！
+   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）！
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db</b>:<b>30313@NW1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

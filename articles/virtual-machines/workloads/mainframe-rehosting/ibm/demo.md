@@ -3,6 +3,7 @@ title: 设置应用程序开发人员受控分发 (ADCD) 在 IBM zD&T v1 |Micros
 description: 在 Azure 虚拟机 (Vm)  (zD&T) 环境中运行 IBM Z 开发和测试环境。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052401"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968394"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>设置应用程序开发人员受控分发 (ADCD) 在 IBM zD&T v1
 
@@ -54,11 +55,11 @@ ms.locfileid: "87052401"
 
 3. 选择 " **程序产品和协议编号**"，然后单击 " **继续**"。
 
-4. 输入部件说明或部件号，然后单击 " **查找**器"。
+4. 输入部件说明或部件号，然后单击 " **查找** 器"。
 
 5. 也可以单击 "按字母顺序排序" 列表，按名称显示和查看产品。
 
-6. 在 "**操作系统" 字段**中选择 "**所有操作系统**"，并在 "**语言" 字段**中选择**所有语言**。 然后单击 " **开始**"。
+6. 在 "**操作系统" 字段** 中选择 "**所有操作系统**"，并在 "**语言" 字段** 中选择 **所有语言**。 然后单击 " **开始**"。
 
 7. 单击 " **选择单个文件** " 以展开列表，并显示要下载的单个媒体。
 
@@ -83,7 +84,7 @@ ms.locfileid: "87052401"
 6. 开始上传到所创建的 Azure VM 目录，该目录将成为 zD&T 的映像存储。
 
     > [!NOTE]
-    > 请确保在上传到**home/MyUserID/ZDT/adcd/nov2017**目录中包含**ADCDTOOLS.XML** 。 稍后需要用到此值。
+    > 请确保在上传到 **home/MyUserID/ZDT/adcd/nov2017** 目录中包含 **ADCDTOOLS.XML** 。 稍后需要用到此值。
 
 7. 等待文件上传，这可能需要一些时间，具体取决于与 Azure 的连接。
 
@@ -169,7 +170,7 @@ ms.locfileid: "87052401"
 
 7. 在下一个屏幕上，提供 VM (的凭据，而不是 ztadmin 凭据) 。
 
-8. 在 "属性" 窗格中，输入 ** (CPs) 的中央处理器 **数量、 **系统内存 (GB) **和正在运行的映像的 **部署目录** 。 由于这是一个演示，因此请将其保持为小。
+8. 在 "属性" 窗格中，输入 **(CPs) 的中央处理器** 数量、 **系统内存 (GB)** 和正在运行的映像的 **部署目录** 。 由于这是一个演示，因此请将其保持为小。
 
 9. 请确保已选中此框，以便 **在部署后自动向 z/OS 发出 IPL 命令**。
 
@@ -177,14 +178,14 @@ ms.locfileid: "87052401"
 
 10. 选择 " **完成**"。
 
-11. 从 "将**映像部署到目标环境**" 页中选择 "**部署映像**"。
+11. 从 "将 **映像部署到目标环境**" 页中选择 "**部署映像**"。
 
 映像现在可以部署并准备就绪，可由3270终端模拟器装载。
 
 > [!NOTE]
 > 如果收到一条错误消息，指出没有足够的磁盘空间，请注意，区域需要 151 Gb。
 
-祝贺你！ 你现在正在 Azure 上运行 IBM 主机环境。
+恭喜！ 你现在正在 Azure 上运行 IBM 主机环境。
 
 ## <a name="learn-more"></a>了解详细信息
 

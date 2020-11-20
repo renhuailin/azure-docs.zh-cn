@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617078"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967714"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
 
@@ -107,7 +108,7 @@ ms.locfileid: "77617078"
 
 ## <a name="storage"></a>存储
 
-从最终用户的角度来看，应用程序 (或系统作为一个整体) 运行缓慢，没有响应，如果 i/o 性能出现问题，甚至可能会停止响应。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。****
+从最终用户的角度来看，应用程序 (或系统作为一个整体) 运行缓慢，没有响应，如果 i/o 性能出现问题，甚至可能会停止响应。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。
 
 ![在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -129,13 +130,13 @@ ms.locfileid: "77617078"
 
 选择存储在本地的 SQL Statements.zip 文件，随后将导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
 
-例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。************
+例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。
 
 整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）。
 
 ![整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。**** 从上下文菜单中选择 " **执行** "：
+另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择 " **执行** "：
 
 ![另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -167,6 +168,6 @@ ms.locfileid: "77617078"
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
-**后续步骤**
+后续步骤
 
 - 请参阅[使用 STONITH 在 SUSE 中进行高可用性设置](ha-setup-with-stonith.md)。

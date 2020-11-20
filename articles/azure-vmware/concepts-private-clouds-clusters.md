@@ -3,12 +3,12 @@ title: 概念-私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874009"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967374"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -38,7 +38,7 @@ Azure 订阅、Azure VMware 解决方案私有云、vSAN 群集和主机之间�
 
 ## <a name="hosts"></a>主机
 
-Azure VMware 解决方案私有云群集使用超聚合、裸机基础结构节点。 下表显示了主机的 RAM、CPU 和磁盘容量。 
+Azure VMware 解决方案私有云群集使用超聚合、裸机基础结构主机。 下表显示了主机的 RAM、CPU 和磁盘容量。 
 
 | 主机类型              |             CPU             |   RAM (GB)   |  vSAN NVMe 缓存层 (TB，原始)   |  vSAN SSD 容量层 (TB，原始)   |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |

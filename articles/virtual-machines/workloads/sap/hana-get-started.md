@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c1b19927207e1accb4ae6c47625eed41a6b0b92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509954"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967782"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 SAP HANA
 ## <a name="introduction"></a>简介
@@ -29,7 +30,7 @@ ms.locfileid: "88509954"
 > [!NOTE]
 > 本指南介绍如何将 SAP HANA 部署到 Azure VM 中。 有关如何将 SAP HANA 部署到 HANA 大型实例的信息，请参阅 [如何在 Azure 上) 安装和配置 SAP HANA (大型实例](./hana-installation.md)。
  
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本指南还假定你熟悉以下内容：
 * SAP HANA 和 SAP NetWeaver 以及如何在本地进行安装。
 * 如何在 Azure 上安装和运行 SAP HANA 和 SAP 应用程序实例。

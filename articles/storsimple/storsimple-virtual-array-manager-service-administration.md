@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967085"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 ![安装流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ ms.locfileid: "85515437"
 * 通过 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 
 > [!NOTE]
-> 若要查看可用于 StorSimple 8000 系列设备的管理选项，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
+> 若要查看可用于 StorSimple 8000 系列设备的管理选项，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](./storsimple-8000-manager-service-administration.md)。
 > 
 > 
 
@@ -78,4 +78,3 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Web UI 以及如何使用它的信息，请转到[使用 StorSimple Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-

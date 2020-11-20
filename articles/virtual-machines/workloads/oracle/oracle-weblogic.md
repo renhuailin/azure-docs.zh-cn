@@ -3,16 +3,17 @@ title: 什么是在 Azure 虚拟机上运行 Oracle WebLogic Server 的解决方
 description: 了解如何在 Microsoft Azure 虚拟机上运行 Oracle WebLogic Server。
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927284"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968700"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
 
@@ -52,7 +53,7 @@ _如果你对开发这些产品/服务的工程团队有兴趣密切关注你的
 
 这些解决方案可以相对轻松地启用各种生产就绪部署体系结构。 你可以通过允许关注业务应用程序开发，以最高效的方式满足大多数迁移案例。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="你可以使用 Azure 门户在 Azure 上部署 WebLogic 服务器":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="在 Azure 上启用了复杂的 WebLogic 服务器部署":::
 
 除了解决方案自动设置的功能之外，客户还可以灵活地进一步自定义部署。 部署应用程序很可能会在部署应用程序时将更多 Azure 资源与部署进行集成。 建议客户提供进一步改进解决方案的反馈。
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 9122d6716aa94a7e0164c9c7774c7c8d85be814a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968003"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>创建建议器，以在查询中启用“自动完成”和“建议结果”功能
 
@@ -40,9 +40,11 @@ ms.locfileid: "94917267"
 
 若要创建建议器，请将其添加到 [索引定义](/rest/api/searchservice/create-index)中。 建议器获取启用了 typeahead 体验的名称和字段的集合。 并 [设置每个属性](#property-reference)。 创建建议器的最佳时间是还要定义使用建议器的字段时。
 
-+ 仅使用字符串字段
++ 仅使用字符串字段。
 
-+ 使用字段上默认的标准 Lucene 分析器 (`"analyzer": null`) 或[语言分析器](index-add-language-analyzers.md)（例如 `"analyzer": "en.Microsoft"`）
++ 如果字符串字段是复杂类型的一部分 (例如，地址) 内的 "城市" 字段，请在字段中包含父级： `"Address/City"` (REST 和 c # 和 Python) ，或 `["Address"]["City"]` (JavaScript) 。
+
++ 在字段上使用默认的标准 Lucene 分析器 (`"analyzer": null`) 或 [语言分析器](index-add-language-analyzers.md) (例如 `"analyzer": "en.Microsoft"`) 。
 
 如果尝试使用预先存在的字段创建建议器，API 将不允许这样做。 在编制索引期间，如果两个或更多个字符的组合中的部分字词连同完整字词一起标记化，则会生成前缀。 如果现有字段已标记化，而你想要将其添加到建议器，则必须重新生成索引。 有关详细信息，请参阅[如何重新生成 Azure 认知搜索索引](search-howto-reindex.md)。
 

@@ -9,12 +9,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
-ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846832"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968190"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -143,5 +143,5 @@ Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
+* 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](./dns-getstarted-portal.md)和[创建 DNS 记录](./dns-getstarted-portal.md)。
 * 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。

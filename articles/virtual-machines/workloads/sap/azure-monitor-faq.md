@@ -3,16 +3,17 @@ title: 常见问题解答-SAP 解决方案的 Azure Monitor |Microsoft Docs
 description: 本文介绍有关 SAP 解决方案的 Azure Monitor 常见问题)  (常见问题的解答。
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f872264d5f7bdf4abded516412fe55c417a92e1e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 204b809966fbf63a48f6d1ce1d80f87f706c9a56
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566106"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968564"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP 解决方案的 Azure Monitor 常见问题解答 (预览版) 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -64,7 +65,7 @@ SQL Server 2012 SP4 或更高版本。
 当前可以在公共预览版中监视 HANA 数据库、底层基础结构、高可用性群集和 Microsoft SQL server。  
 
  - **此服务是否替换 SAP 解决方案管理器？**  
-错误。 客户仍可使用 SAP 解决方案管理器进行业务流程监视。  
+不是。 客户仍可使用 SAP 解决方案管理器进行业务流程监视。  
 
  - **此服务与 SAP HANA 考核中心/工作室等传统解决方案的价值是什么？**  
 SAP 解决方案的 Azure Monitor 不特定于 HANA 数据库。 SAP 解决方案 Azure Monitor 也支持 AnyDB。  

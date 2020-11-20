@@ -1,17 +1,17 @@
 ---
 title: 如何启用 Azure VMware 解决方案资源
-description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
+description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888430"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967357"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
-了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
+了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
 
 ## <a name="eligibility-criteria"></a>资格条件
 
@@ -22,7 +22,7 @@ ms.locfileid: "94888430"
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>为 EA 客户启用 Azure VMware 解决方案
-在创建 Azure VMware 解决方案资源之前，你需要提交一个支持票证来分配你的节点。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的节点。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的节点，你会经历相同的过程。
+在创建 Azure VMware 解决方案资源之前，你需要提交支持票证，以分配你的主机。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的主机。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的主机，你会经历相同的过程。
 
 
 1. 在 Azure 门户中，在 " **帮助 + 支持**" 下创建 **[新的支持请求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，并为票证提供以下信息：
@@ -38,20 +38,20 @@ ms.locfileid: "94888430"
 
    - POC 或生产 
    - 区域名称
-   - 节点数
+   - 主机数
    - 任何其他详细信息
 
    >[!NOTE]
-   >Azure VMware 解决方案建议至少使用三个节点来启动私有云和冗余的 N + 1 节点。 
+   >Azure VMware 解决方案建议至少使用三个主机来启动私有云，并为冗余 N + 1 主机提供支持。 
 
 1. 选择 " **查看 + 创建** " 以提交请求。
 
    支持代表需要5个工作日内确认你的请求。
 
    >[!IMPORTANT] 
-   >如果你已有一个现有的 Azure VMware 解决方案，但你请求的是其他节点，请注意，我们需要5个工作日来分配节点。 
+   >如果你已有现有的 Azure VMware 解决方案，但你请求其他主机，请注意，我们需要5个工作日来分配主机。 
 
-1. 预配节点之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
+1. 预配主机之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -99,21 +99,21 @@ Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) �
 
    - POC 或生产 
    - 区域名称
-   - 节点数
+   - 主机数
    - 任何其他详细信息
    - 用于托管多个客户？
 
    >[!NOTE]
-   >Azure VMware 解决方案建议至少使用三个节点来启动私有云和冗余的 N + 1 节点。 
+   >Azure VMware 解决方案建议至少使用三个主机来启动私有云，并为冗余 N + 1 主机提供支持。 
 
 1. 选择 " **查看 + 创建** " 以提交请求。
 
    支持代表需要5个工作日内确认你的请求。
 
    >[!IMPORTANT] 
-   >如果你已有一个现有的 Azure VMware 解决方案，但你请求的是其他节点，请注意，我们需要5个工作日来分配节点。 
+   >如果你已有现有的 Azure VMware 解决方案，但你请求其他主机，请注意，我们需要5个工作日来分配主机。 
 
-1. 添加到 Azure 计划并启用配额后，客户或合作伙伴管理员便可通过 Azure 门户部署 Azure VMware 解决方案私有云。 预配节点之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
+1. 添加到 Azure 计划并启用配额后，客户或合作伙伴管理员便可通过 Azure 门户部署 Azure VMware 解决方案私有云。 预配主机之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>

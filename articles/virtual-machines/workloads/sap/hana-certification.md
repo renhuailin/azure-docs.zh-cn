@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cbd50fae2b53d801f7aa09fae2b4540eef13c9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617228"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967884"
 ---
 # <a name="certification"></a>认证
 
@@ -40,5 +41,5 @@ ms.locfileid: "77617228"
 - 除了此处所述的解决方案以外，还可以在连接到 Azure 上的 SAP HANA（大型实例）的 Azure 订阅中安装其他组件。 例如，用于实现与 SAP HANA 数据库通信的组件或者直接与其通信的组件（跳接服务器、RDP 服务器、SAP HANA Studio、适用于 SAP BI 方案的 SAP 数据服务，或网络监视解决方案）。
 - 与在 Azure 中一样，HANA 大型实例提供支持性的高可用性和灾难恢复功能。
 
-**后续步骤**
+后续步骤
 - 请参阅[对 HLI 可用的 SKU](hana-available-skus.md) 

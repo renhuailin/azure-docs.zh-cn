@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73cec422f581daac66f61476ecd4d934b50096eb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616971"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967629"
 ---
 # <a name="operations-model-and-responsibilities"></a>操作模型和责任
 
@@ -67,5 +68,5 @@ HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的�
 
 请参阅[Azure 上的 SAP HANA（大型实例）的 SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)。
 
-**后续步骤**
+后续步骤
 - 请参阅 [Azure 上的 SAP HANA（大型实例）体系结构](hana-architecture.md)

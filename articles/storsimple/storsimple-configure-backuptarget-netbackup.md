@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710917"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967272"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -79,7 +79,7 @@ StorSimple 提供以下优势：
 
 尽管 StorSimple 提供两种主要部署方案（主备份目标和辅助备份目标），但它本质上是一个普通的块存储设备。 StorSimple 执行所有的压缩和重复数据删除操作。 它在云与应用程序和文件系统之间无缝发送和检索数据。
 
-有关 StorSimple 的详细信息，请参阅 [StorSimple 8000 系列：混合云存储解决方案](storsimple-overview.md)。 另外，还可以参阅 [StorSimple 8000 系列技术规范](storsimple-technical-specifications-and-compliance.md)。
+有关 StorSimple 的详细信息，请参阅 [StorSimple 8000 系列：混合云存储解决方案](storsimple-overview.md)。 另外，还可以参阅 [StorSimple 8000 系列技术规范](./storsimple-8000-technical-specifications-and-compliance.md)。
 
 > [!IMPORTANT]
 > 只有 StorSimple 8000 Update 3 和更高版本才支持使用 StorSimple 设备作为备份目标。
@@ -102,7 +102,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 空值  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -170,7 +170,7 @@ StorSimple 提供以下优势：
 
 ### <a name="deploy-storsimple"></a>部署 StorSimple
 
-有关 StorSimple 分步部署指南，请参阅[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
+有关 StorSimple 分步部署指南，请参阅[部署本地 StorSimple 设备](./storsimple-8000-deployment-walkthrough-u2.md)。
 
 ### <a name="deploy-netbackup"></a>部署 NetBackup
 
@@ -185,9 +185,9 @@ StorSimple 提供以下优势：
 | StorSimple 部署任务  | 附加备注 |
 |---|---|
 | 部署本地 StorSimple 设备。 | 支持的版本：Update 3 和更高版本。 |
-| 打开备份目标。 | 使用以下命令打开或关闭备份目标模式并获取状态。 有关详细信息，请参阅[远程连接到 StorSimple 设备](storsimple-remote-connect.md)。</br> 打开备份模式：`Set-HCSBackupApplianceMode -enable`。 </br> 关闭备份模式：`Set-HCSBackupApplianceMode -disable`。 </br> 获取备份模式设置的当前状态：`Get-HCSBackupApplianceMode`。 |
+| 打开备份目标。 | 使用以下命令打开或关闭备份目标模式并获取状态。 有关详细信息，请参阅[远程连接到 StorSimple 设备](./storsimple-8000-remote-connect.md)。</br> 打开备份模式：`Set-HCSBackupApplianceMode -enable`。 </br> 关闭备份模式：`Set-HCSBackupApplianceMode -disable`。 </br> 获取备份模式设置的当前状态：`Get-HCSBackupApplianceMode`。 |
 | 为存储备份数据的卷创建通用卷容器。 卷容器中的所有数据都已删除重复数据。 | StorSimple 卷容器定义重复数据删除域。  |
-| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。**** </br> 不能只使用本地固定卷。 |
+| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。 </br> 不能只使用本地固定卷。 |
 | 为所有备份目标卷创建唯一的 StorSimple 备份策略。 | StorSimple 备份策略定义卷一致性组。 |
 | 快照过期时禁用计划。 | 快照将作为后处理操作触发。 |
 
@@ -212,16 +212,16 @@ StorSimple 提供以下优势：
 - 在 StorSimple 卷上禁用 Windows Server 碎片整理。
 - 在 StorSimple 卷上禁用 Windows Server 索引编制。
 - 在源主机上运行防病毒扫描（不是针对 StorSimple 卷）。
-- 在任务管理器中关闭默认的[Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
+- 在任务管理器中关闭默认的[Windows Server 维护](/windows/win32/w8cookbook/automatic-maintenance)。 通过以下方式之一执行此操作：
   - 在 Windows 任务计划程序中关闭“维护”配置器。
-  - 通过 Windows Sysinternals 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下载 PsExec 后，以管理员身份运行 Windows PowerShell，键入：
+  - 通过 Windows Sysinternals 下载 [PsExec](/sysinternals/downloads/psexec)。 下载 PsExec 后，以管理员身份运行 Windows PowerShell，键入：
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple 最佳实践
 
--   请务必将 StorSimple 设备更新到 [Update 3 或更高版本](storsimple-install-update-3.md)。
+-   请务必将 StorSimple 设备更新到 [Update 3 或更高版本](./index.yml)。
 -   隔离 iSCSI 和云流量。 使用专用的 iSCSI 连接在 StorSimple 与备份服务器之间传送流量。
 -   确保 StorSimple 设备是专用的备份目标。 不支持混合工作负荷，因为它们会影响 RTO 和 RPO。
 
@@ -265,11 +265,11 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-netbackup-storage"></a>设置 NetBackup 存储
 
-1.  在 NetBackup 管理控制台中，选择 "**媒体和设备管理**  >  **设备**" "  >  **磁盘池**"。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。********
+1.  在 NetBackup 管理控制台中，选择 "**媒体和设备管理**  >  **设备**" "  >  **磁盘池**"。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。
 
     ![NetBackup 管理控制台，磁盘池配置向导](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
-2.  选择服务器，并选择“下一步”。****
+2.  选择服务器，并选择“下一步”。
 
     ![NetBackup 管理控制台，选择服务器](./media/storsimple-configure-backup-target-using-netbackup/nbimage2.png)
 
@@ -277,9 +277,9 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，选择 StorSimple 卷磁盘](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  输入备份目标的名称，**然后选择 "下一步"**  >  **Next**以完成向导。
+4.  输入备份目标的名称，**然后选择 "下一步"**  >  **Next** 以完成向导。
 
-5.  检查设置，并选择“完成”。****
+5.  检查设置，并选择“完成”。
 
 6.  每次分配卷结束时，请根据 [StorSimple 和 NetBackup 的最佳实践](#best-practices-for-storsimple-and-netbackup)中的建议更改存储设备设置。
 
@@ -303,7 +303,7 @@ StorSimple 提供以下优势：
 | 频率/备份类型 | 完整 | 增量备份（第 1-5 天）  |   
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
-| 每月一次  | 星期六  |   |
+| 每月  | 星期六  |   |
 | 每年 | 星期六  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
@@ -312,23 +312,23 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
 
-1. 在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，并选择“新建策略”。************
+1. 在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，并选择“新建策略”。
 
    ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。******** 选择“确定”  。
+2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。 选择“确定”。
 
    ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3. 在备份策略配置向导中，选择所需的备份类型，并选择“下一步”。****
+3. 在备份策略配置向导中，选择所需的备份类型，并选择“下一步”。
 
    ![NetBackup 管理控制台，选择备份类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4. 要设置策略类型，请选择“标准”，并选择“下一步”。********
+4. 要设置策略类型，请选择“标准”，并选择“下一步”。
 
    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“下一步”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一页**”。
 
    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -340,31 +340,31 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，新策略的备份频率和轮转](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. 选择**下**一  >  **步**  >  **完成**。  创建策略后，可以修改计划。
+8. 选择 **下** 一  >  **步**  >  **完成**。  创建策略后，可以修改计划。
 
-9. 选择刚刚创建的策略将它展开，然后选择“计划”。****
+9. 选择刚刚创建的策略将它展开，然后选择“计划”。
 
    ![NetBackup 管理控制台，新策略的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10. 右键单击“Differential-Inc”，选择“复制到新计划”，并选择“确定”。************
+10. 右键单击“Differential-Inc”，选择“复制到新计划”，并选择“确定”。
 
     ![NetBackup 管理控制台，将计划复制到新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11. 右键单击新建的计划，并选择“更改”。****
+11. 右键单击新建的计划，并选择“更改”。
 
-12. 在“属性”选项卡中，选中“覆盖策略存储选择”复选框，并选择星期一增量备份要存储到的卷。********
+12. 在“属性”选项卡中，选中“覆盖策略存储选择”复选框，并选择星期一增量备份要存储到的卷。
 
     ![NetBackup 管理控制台，更改计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13. 在“开始时段”选项卡中选择备份的时段。****
+13. 在“开始时段”选项卡中选择备份的时段。
 
     ![NetBackup 管理控制台，更改开始时段](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. 选择“确定”  。
+14. 选择“确定”。
 
 15. 针对每个增量备份重复步骤 10-14。 针对创建的每个备份选择适当的卷和计划。
 
-16. 右键单击“Differential-Inc”计划并将它删除。****
+16. 右键单击“Differential-Inc”计划并将它删除。
 
 17. 根据备份需要修改完整备份计划。
 
@@ -414,7 +414,7 @@ StorSimple 提供以下优势：
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 3 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 4 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
-| 每月一次 | StorSimple 每月备份 |   |   |   |   |   |
+| 每月 | StorSimple 每月备份 |   |   |   |   |   |
 | 每年 | StorSimple 每年备份  |   |   |   |   |   |
 
 
@@ -434,19 +434,19 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2. 输入快照的名称，并选择“添加”。****
+2. 输入快照的名称，并选择“添加”。
 
-3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。**************** 为“目标存储”、“保留类型”和“保留期”选择所需的值。************ 选择“确定”  。
+3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。 为“目标存储”、“保留类型”和“保留期”选择所需的值。 选择“确定”。
 
    ![NetBackup 管理控制台，“新建操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
    现已定义第一个备份操作和存储库。
 
-4. 突出显示前一个操作将其选中，然后选择“添加”。**** 在“更改存储操作”对话框中，为“目标存储”、“保留类型”和“保留期”选择所需的值。****************
+4. 突出显示前一个操作将其选中，然后选择“添加”。 在“更改存储操作”对话框中，为“目标存储”、“保留类型”和“保留期”选择所需的值。
 
    ![NetBackup 管理控制台，“更改存储操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5. 突出显示前一个操作将其选中，然后选择“添加”。**** 在“新建存储生命周期策略”对话框框中，添加一年的每月备份。****
+5. 突出显示前一个操作将其选中，然后选择“添加”。 在“新建存储生命周期策略”对话框框中，添加一年的每月备份。
 
    ![NetBackup 管理控制台，“新建存储生命周期策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
@@ -454,17 +454,17 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，在“新建存储生命周期策略”对话框中添加策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7. 定义完 SLP 保留策略后，请在“策略”下面，根据[将 StorSimple 卷分配到 NetBackup 备份作业](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中详述的步骤定义备份策略。****
+7. 定义完 SLP 保留策略后，请在“策略”下面，根据[将 StorSimple 卷分配到 NetBackup 备份作业](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中详述的步骤定义备份策略。
 
-8. 在“更改计划”对话框中的“计划”下面，右键单击“完整”，并选择“更改”。****************
+8. 在“更改计划”对话框中的“计划”下面，右键单击“完整”，并选择“更改”。
 
    ![NetBackup 管理控制台，“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9. 选择“覆盖策略存储选择”，并选择在步骤 1-6 中创建的 SLP 保留策略。****
+9. 选择“覆盖策略存储选择”，并选择在步骤 1-6 中创建的 SLP 保留策略。
 
    ![NetBackup 管理控制台，覆盖策略存储选择](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10. 选择“确定”，并针对增量备份计划重复上述步骤。****
+10. 选择“确定”，并针对增量备份计划重复上述步骤。
 
     ![NetBackup 管理控制台，增量备份的“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -529,9 +529,9 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 注意 |
+| 方案 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
-| StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
+| StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](./storsimple-8000-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | NetBackup 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 NetBackup。 | 首先还原 StorSimple，然后还原 NetBackup。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
@@ -539,12 +539,12 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 本文参考了以下文档：
 
-- [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
-- [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
-- [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
+- [StorSimple multipath I/O setup](./storsimple-8000-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
+- [Storage scenarios: Thin provisioning](/windows-hardware/drivers/storage/thin-provisioning)（存储方案：精简预配）
+- [Using GPT drives](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)（使用 GPT 驱动器）
+- [Set up shadow copies for shared folders](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))（设置共享文件夹的卷影副本）
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[从备份集还原](storsimple-restore-from-backup-set-u2.md)。
-- 详细了解如何执行[设备故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。
+- 详细了解如何[从备份集还原](./storsimple-8000-restore-from-backup-set-u2.md)。
+- 详细了解如何执行[设备故障转移和灾难恢复](./storsimple-8000-device-failover-disaster-recovery.md)。

@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f33ef81282dd8e60eba64cc77cbd95ab8dbc557
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507941"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967561"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文介绍了 HANA 大型实例 () 的支持方案和体系结构详细信息。
@@ -34,7 +35,7 @@ ms.locfileid: "86507941"
 - **B-hli**： Hana 大型实例
 - **DR**：灾难恢复
 - **正常 dr**：系统设置，专用资源仅用于 DR 目的
-- 多**用途 dr**：配置为使用非生产环境的 dr 站点系统，以及为 DR 事件配置的生产实例 
+- 多 **用途 dr**：配置为使用非生产环境的 dr 站点系统，以及为 DR 事件配置的生产实例 
 - **单 SID**：安装有一个实例的系统
 - **多 SID**：配置了多个实例的系统;也称为 MCOS 环境
 - **HSR**： SAP HANA 系统复制
@@ -83,7 +84,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 - 以太网 "A" 应有一个分配的 IP 地址，该地址在你提交给 Microsoft 的服务器 IP 池地址范围内。 此 IP 地址应保留在 OS 的 */etc/hosts* 目录中。
 
-- 应为以太网 "C" 分配用于通信到 NFS 的 IP 地址。 *不*需要在*etc/hosts*目录中维护此地址即可在租户中允许实例到实例的通信。
+- 应为以太网 "C" 分配用于通信到 NFS 的 IP 地址。 *不* 需要在 *etc/hosts* 目录中维护此地址即可在租户中允许实例到实例的通信。
 
 对于 HANA 系统复制或 HANA 扩展部署，具有两个分配的 IP 地址的边栏选项卡配置不合适。 如果只有两个分配的 IP 地址，并且想要部署此类配置，请联系 Azure 服务管理上的 SAP HANA。 他们可以在第三个 VLAN 中为你分配第三个 IP 地址。 对于三个 NIC 端口上有三个分配的 IP 地址的 HANA 大型实例单元，以下用法规则适用：
 
@@ -235,7 +236,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅 [概述和体系结构](./hana-overview-architecture.md)。
 - 在灾难恢复站点：将卷和装入点配置 (标记为 "HANA 安装必需" ) ，以便在 DR 中安装生产 HANA 实例。 
 - 在 DR 站点上：数据、日志备份和共享卷 (标记为 "存储复制" ) 通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅 [灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。
-- *SKU 类型 I 类*的启动卷被复制到 DR 节点。
+- *SKU 类型 I 类* 的启动卷被复制到 DR 节点。
 
 
 ## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>使用存储复制) 具有 DR (多用途的单节点
@@ -285,7 +286,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - 在灾难恢复站点：将卷和装入点配置 (标记为 "HANA 安装必需" ) ，以便在 DR 中安装生产 HANA 实例。 
 - 在 DR 站点上：数据、日志备份和共享卷 (标记为 "存储复制" ) 通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅 [灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
 - 在 DR 站点上：为 qa 实例安装配置了 "QA (的数据、日志备份、日志和共享卷" ) 。
-- *SKU 类型 I 类*的启动卷被复制到 DR 节点。
+- *SKU 类型 I 类* 的启动卷被复制到 DR 节点。
 
 ## <a name="hsr-with-stonith-for-high-availability"></a>HSR with STONITH 实现高可用性
  
@@ -393,7 +394,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - 在灾难恢复站点：将卷和装入点配置 (标记为 "HANA 安装必需" ) ，以便在 DR 中安装生产 HANA 实例。 
 - 在 DR 站点上：数据、日志备份和共享卷 (标记为 "存储复制" ) 通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅 [灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
 - 在 DR 站点上：为 qa 实例安装配置了 "QA (的数据、日志备份、日志和共享卷" ) 。
-- *SKU 类型 I 类*的启动卷被复制到 DR 节点。
+- *SKU 类型 I 类* 的启动卷被复制到 DR 节点。
 
 
 ## <a name="host-auto-failover-11"></a>主机自动故障转移 (1+1)
@@ -556,7 +557,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在灾难恢复站点：将卷和装入点配置 (标记为 "HANA 安装必需" ) ，以便在 DR 中安装生产 HANA 实例。 
 - 在 DR 站点上：数据、日志备份和共享卷 (标记为 "存储复制" ) 通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅 [灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
-- *SKU 类型 I 类*的启动卷被复制到 DR 节点。
+- *SKU 类型 I 类* 的启动卷被复制到 DR 节点。
 
 
 ## <a name="single-node-with-dr-using-hsr"></a>使用 HSR 进行灾难恢复的单节点

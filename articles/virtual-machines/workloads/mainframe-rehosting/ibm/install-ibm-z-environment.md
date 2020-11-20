@@ -3,6 +3,7 @@ title: '&Azure 上的开发/测试环境安装 IBM zD |Microsoft Docs'
 description: 在 Azure 虚拟机 (VM 中部署 IBM Z 开发和测试环境 (zD&T) ) IaaS (的基础结构即服务。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499913"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968326"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>&Azure 上的开发/测试环境安装 IBM zD
 
@@ -39,7 +40,7 @@ Azure 和 Azure Stack 支持以下版本：
 
 本文介绍如何在 Azure 上设置 (zD&T) Enterprise Edition 的 Z 开发和测试环境。 然后，可以使用 zD&T Enterprise Edition web 服务器在 Azure 上创建和管理基于 Z 的环境。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > IBM 只允许在开发/测试环境中安装 zD&T Enterprise Edition，*而不* 是在生产环境中安装。
@@ -62,7 +63,7 @@ Azure 和 Azure Stack 支持以下版本：
 
 3. 通过 "**连接**" 按钮获取 VM 的 "**概述**" 边栏选项卡上显示的 SSH 凭据。 选择 " **ssh** " 选项卡，并将 SSH 登录命令复制到剪贴板。
 
-4. 从本地 PC 登录到 [Bash shell](../../../../cloud-shell/quickstart.md) 并粘贴命令。 它采用**ssh \<user id\> \@ \<IP Address\> **格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
+4. 从本地 PC 登录到 [Bash shell](../../../../cloud-shell/quickstart.md) 并粘贴命令。 它采用 **ssh \<user id\> \@ \<IP Address\>** 格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>将安装文件复制到服务器
 
@@ -108,7 +109,7 @@ Web 服务器的安装文件为 **ZDT \_ Install \_ \_ 12.0.0.1. tgz**。 它包
 
 4. 按 **enter** 并仔细阅读许可协议。 在许可证结束时，输入 **"是"** 以继续。
 
-5. 当系统提示更改新创建的用户 **ibmsys1**的密码时，请使用命令 **sudo passwd ibmsys1** ，并输入新密码。
+5. 当系统提示更改新创建的用户 **ibmsys1** 的密码时，请使用命令 **sudo passwd ibmsys1** ，并输入新密码。
 
 6. 若要验证安装是否成功，请输入
 

@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux 自带订阅 Azure 映像 |Microsoft Docs
 description: 了解 Azure 上的 Red Hat Enterprise Linux 的自带订阅映像。
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372789"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968666"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -45,7 +46,7 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过 "即用即付" 或 "�
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 门户中的 Red Hat 黄金映像
 
-1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在 [Azure 门户](https://portal.azure.com)中找到它们。 请参阅 **创建资源**  >  **See all** 。
+1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在 [Azure 门户](https://portal.azure.com)中找到它们。 请参阅 **创建资源**  >  **See all**。
 
 1. 在页面顶部，你会看到你拥有专用产品/服务。
 

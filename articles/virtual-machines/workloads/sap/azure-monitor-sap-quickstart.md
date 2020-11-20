@@ -5,14 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739888"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968581"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>通过 Azure 门户为 SAP 解决方案部署 Azure Monitor
 
@@ -54,11 +55,11 @@ ms.locfileid: "92739888"
 
 4. 输入要使用的数据库租户的名称。 你可以选择任何租户，但我们建议使用 **SYSTEMDB** ，因为它支持更广泛的监视区域。 
 
-5. 输入与 HANA 数据库关联的 SQL 端口号。 端口号的格式应为 **[3]**  +  **[实例 #]**  +  **[13]** 。 例如，30013。 
+5. 输入与 HANA 数据库关联的 SQL 端口号。 端口号的格式应为 **[3]**  +  **[实例 #]**  +  **[13]**。 例如，30013。 
 
 6. 输入要使用的数据库用户名。 确保数据库用户已分配 " **监视** " 和 " **目录读取** " 角色。 
 
-7. 完成后，选择 " **添加提供程序** "。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+7. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="添加提供程序信息时的配置选项图像。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -73,7 +74,7 @@ ms.locfileid: "92739888"
  
 3. 输入系统 ID (SID) ，主机名和群集名称。
 
-4. 完成后，选择 " **添加提供程序** "。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+4. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Image 显示了与 HA 群集 Pacemaker 提供程序相关的选项。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
@@ -111,7 +112,7 @@ ms.locfileid: "92739888"
 
 3. 使用与 Microsoft SQL Server 相关联的信息填写字段。 
 
-4. 完成后，选择 " **添加提供程序** "。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+4. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="图像显示与添加 Microsoft SQL Server 提供程序相关的信息。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

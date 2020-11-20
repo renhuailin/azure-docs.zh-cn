@@ -3,22 +3,23 @@ title: SAP 解决方案提供商的 Azure Monitor |Microsoft Docs
 description: 本文提供了有关 Azure monitor for SAP 解决方案提供商的常见问题的解答。
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356444"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968598"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>适用于 SAP 解决方案提供商的 Azure monitor (预览版) 
 
 ## <a name="overview"></a>概述  
 
-在 SAP 解决方案 Azure Monitor 的上下文中， *提供程序类型* 引用特定的 *提供程序* 。 例如 *SAP HANA* ，该配置针对 SAP 布局中的特定组件（如 SAP HANA 数据库）。 提供程序包含相应组件的连接信息，有助于从该组件收集遥测数据。 SAP 解决方案资源 (的一个 Azure Monitor 也称为 SAP Monitor 资源) 可以配置同一提供程序类型的多个提供程序或多个提供程序类型的多个提供程序。
+在 SAP 解决方案 Azure Monitor 的上下文中， *提供程序类型* 引用特定的 *提供程序*。 例如 *SAP HANA*，该配置针对 SAP 布局中的特定组件（如 SAP HANA 数据库）。 提供程序包含相应组件的连接信息，有助于从该组件收集遥测数据。 SAP 解决方案资源 (的一个 Azure Monitor 也称为 SAP Monitor 资源) 可以配置同一提供程序类型的多个提供程序或多个提供程序类型的多个提供程序。
    
 客户可以选择配置不同的提供程序类型，以在其 SAP 环境中从相应组件启用数据收集。 例如，客户可以为 SAP HANA 提供程序类型配置一个提供程序，为高可用性群集提供程序类型配置一个提供程序，等等。  
 
@@ -66,11 +67,11 @@ ms.locfileid: "94356444"
 
    若要配置高可用性群集提供程序，需要以下信息：
    
-   - **名称** 。 此提供程序的名称。 对于 SAP 解决方案实例，这 Azure Monitor 应是唯一的。
-   - **Prometheus 终结点** 。 通常是 http \: // \<servername or ip address\> ： 9664/指标。
-   - **SID** 。 对于 SAP 系统，请使用 SAP SID。 对于其他系统 (例如，NFS 群集) ，为群集使用三个字符的名称。 SID 必须与受监视的其他群集不同。   
-   - **群集名称** 。 创建群集时使用的群集名称。 群集名称可以在群集属性中找到 `cluster-name` 。
-   - **Hostname** 。 VM 的 Linux 主机名。  
+   - **名称**。 此提供程序的名称。 对于 SAP 解决方案实例，这 Azure Monitor 应是唯一的。
+   - **Prometheus 终结点**。 通常是 http \: // \<servername or ip address\> ： 9664/指标。
+   - **SID**。 对于 SAP 系统，请使用 SAP SID。 对于其他系统 (例如，NFS 群集) ，为群集使用三个字符的名称。 SID 必须与受监视的其他群集不同。   
+   - **群集名称**。 创建群集时使用的群集名称。 群集名称可以在群集属性中找到 `cluster-name` 。
+   - **Hostname**。 VM 的 Linux 主机名。  
 
 ## <a name="provider-type-microsoft-sql-server"></a>提供程序类型 Microsoft SQL server
 

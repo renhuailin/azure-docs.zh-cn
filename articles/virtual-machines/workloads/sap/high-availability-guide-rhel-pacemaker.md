@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598297"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968547"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -169,13 +170,13 @@ ms.locfileid: "91598297"
 
    运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇[适用于 Linux][virtual-machines-linux-maintenance] 的文章。  
    
-   如果在 **RHEL 7、windows**上构建群集，请使用以下命令：  
+   如果在 **RHEL 7、windows** 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   如果在 **RHEL**2.x 上构建群集，请使用以下命令：  
+   如果在 **RHEL** 2.x 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
@@ -234,7 +235,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
-1. 将节点设置为值。 此值用作服务主体的**密码**
+1. 将节点设置为值。 此值用作服务主体的 **密码**
 1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色

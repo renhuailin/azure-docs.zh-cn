@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357838"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967153"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -120,9 +120,9 @@ ms.locfileid: "93357838"
 
 移动的三项建议如下：
 
-- **应在对订阅拥有读取权限的帐户上启用 MFA** （原先位于“启用 MFA”控件中）
-- **应从订阅中删除具有读取权限的外部帐户** （原先位于“管理访问和权限”控件中）
-- **只多只为订阅指定 3 个所有者** （原先位于“管理访问和权限”控件中）
+- **应在对订阅拥有读取权限的帐户上启用 MFA**（原先位于“启用 MFA”控件中）
+- **应从订阅中删除具有读取权限的外部帐户**（原先位于“管理访问和权限”控件中）
+- **只多只为订阅指定 3 个所有者**（原先位于“管理访问和权限”控件中）
 
 添加到控件中的两项新建议如下：
 
@@ -392,7 +392,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 此公共预览版中的新功能包括：
 
 - **发现和可见性** - 在安全中心的已注册订阅中持续发现 AKS 托管实例。
-- **安全评分建议** - 提供可操作的项来帮助客户遵循 AKS 中的安全最佳做法（以客户安全评分提供评估结果），例如“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
+- **安全分数建议** -可操作的项可帮助客户遵守 AKS 的安全最佳做法，并提高其安全分数。 建议包括诸如 "应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问权限之类的项目"。
 - **威胁检测** - 基于主机和群集的分析，例如“检测到特权容器”。
 
 

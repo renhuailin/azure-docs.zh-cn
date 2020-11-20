@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3339f883d177366a64187e0c090752527802c8d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183252"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968768"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -49,7 +49,7 @@ ms.locfileid: "88183252"
 
 此部分通过示例脚本详细介绍了运行脚本时需要执行的各种步骤。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具备以下条件：
 
@@ -57,7 +57,7 @@ ms.locfileid: "88183252"
     * 在 Windows 环境中，按照[安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。 可以在 StorSimple 的 Windows Server 主机（如果使用）上安装 Azure PowerShell。
     * 在 Linux 或 MacOS 环境中，按照[在 MacOS 或 Linux 上安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。
 
-若要详细了解如何使用 Azure PowerShell，请转到 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+若要详细了解如何使用 Azure PowerShell，请转到 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 
 ### <a name="run-azure-powershell-script"></a>运行 Azure PowerShell 脚本
 
@@ -69,7 +69,7 @@ ms.locfileid: "88183252"
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe__ 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe__ 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
+2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
 
     也可以运行下面的命令，将此脚本下载并存储到先前创建的同一个文件夹中。
     

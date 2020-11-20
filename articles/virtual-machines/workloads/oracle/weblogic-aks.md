@@ -2,17 +2,18 @@
 title: 什么是在 Azure Kubernetes Service 上运行 Oracle WebLogic Server 的解决方案
 description: 了解如何在 Azure Kubernetes 服务上运行 Oracle WebLogic Server。
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186666"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968683"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>什么是在 Azure Kubernetes Service 上运行 Oracle WebLogic Server 的解决方案？
 
@@ -34,15 +35,15 @@ WebLogic 服务器群集完全启用为通过 WebLogic Kubernetes 运算符在 K
 
 本指南当前假定在 Docker 映像之外部署域，并使用 Oracle 中的标准 Docker 映像。 我们将添加有关在 Docker 映像中通过域启用自定义映像的指南。 将来可以通过 Azure 虚拟机解决方案中的 Oracle WebLogic Server 镜像，进一步使用和 Azure 服务集成。
 
-_这些解决方案是自带许可证_ 。 它们假设你已有合适的 Oracle 许可证，并获得在 Azure 中运行产品/服务的适当许可。
+_这些解决方案是自带许可证_。 它们假设你已有合适的 Oracle 许可证，并获得在 Azure 中运行产品/服务的适当许可。
 
-_如果你希望与开发这些解决方案的工程团队密切合作迁移方案，请填写 [此简短调查](https://aka.ms/wls-on-azure-survey) ，并提供联系信息_ 。 计划经理、架构师和工程师将尽快进入你，并开始密切合作。 在解决方案处于主动初始开发阶段时，可以自由地在迁移方案中进行协作。
+_如果你希望与开发这些解决方案的工程团队密切合作迁移方案，请填写 [此简短调查](https://aka.ms/wls-on-azure-survey) ，并提供联系信息_。 计划经理、架构师和工程师将尽快进入你，并开始密切合作。 在解决方案处于主动初始开发阶段时，可以自由地在迁移方案中进行协作。
 
 ## <a name="deployment-architectures"></a>部署体系结构
 
 在 Azure Kubernetes Service 上运行 Oracle WebLogic Server 的解决方案可以相对轻松地启用各种生产就绪部署体系结构。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="可以使用示例脚本在 AKS 上部署 WebLogic 服务器":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="在 AKS 上启用了复杂的 WebLogic 服务器部署":::
 
 除了解决方案为客户提供更大的灵活性外，还可以进一步自定义部署。 部署应用程序很可能会在部署应用程序时将更多 Azure 资源与部署进行集成。 建议客户在调查中提供反馈，进一步改善解决方案。
 

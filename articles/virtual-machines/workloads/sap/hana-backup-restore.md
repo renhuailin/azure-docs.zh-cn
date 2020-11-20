@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282686"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968122"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>在 HANA 大型实例上备份和还原 SAP HANA
 
@@ -213,7 +214,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 ## <a name="snapshot-strategies"></a>快照策略
 不同类型快照的频率取决于是否使用 HANA 大型实例灾难恢复功能。 此功能依赖于存储快照，这可能需要实施某些与存储快照频率和执行时间长短相关的特殊建议。 
 
-以下注意事项和建议假设不** 使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 考虑到快照和空间的限制，请考虑以下要求：
+以下注意事项和建议假设不使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 考虑到快照和空间的限制，请考虑以下要求：
 
 - 时间点恢复的恢复时间。
 - 使用的空间。
@@ -338,7 +339,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 有关该脚本的详细信息，请参阅 [azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"删除快照 azure_hana_snapshot_delete"。
 
-以用户 **根**身份运行脚本。
+以用户 **根** 身份运行脚本。
 
 >[!IMPORTANT]
 >如果有数据仅存在于计划删除的快照上，则在删除快照后，该数据将永久丢失。
@@ -352,7 +353,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 在该脚本的当前版本中， *没有* 为快照还原提供作为自助服务的还原脚本。 在故障转移期间，可以在灾难恢复站点上以自助服务灾难恢复脚本的形式执行快照还原。 若要从现有的可用快照还原所需的快照，必须通过打开服务请求联系 Microsoft 运营团队。
 
 >[!NOTE]
->单个文件还原不适用于独立于 HANA 大型实例单元类型的启动 LUN 的快照。 **快照**目录未在启动 LUN 中公开。 
+>单个文件还原不适用于独立于 HANA 大型实例单元类型的启动 LUN 的快照。 **快照** 目录未在启动 LUN 中公开。 
  
 
 ## <a name="recover-to-the-most-recent-hana-snapshot"></a>恢复到最近的 HANA 快照
@@ -434,38 +435,41 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 打开 Azure 门户，导航到 " **订阅** " 页。 在 "订阅" 页上，选择 SAP HANA 订阅，如下所示。
 
-   :::image type="content" source="./media/snapcenter/create-support-case-for-user-role-storage-setup.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="./media/snapcenter/create-support-case-for-user-role-storage-setup.png" alt-text="为用户存储设置创建支持案例":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" **资源组** "子页。
+1. 在 SAP HANA 订阅 "页上，选择" **资源组** "子页。
 
-   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="解决方案实验室订阅资源组" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
 
 1. 在某个区域中选择相应的资源组。
 
-   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="在区域中选择适当的资源组" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
 
 1. 选择与 Azure 存储上的 SAP HANA 相对应的 SKU 条目。
 
-   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="选择与 SAP HANA 相对应的 SKU 条目" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
 
 1. 打开 **新的支持票证** 请求，以红色列出。
 
-   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="打开新支持票证请求":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 选项卡上，提供： 
+1. 在 " **基本** 信息" 选项卡上，为票证提供以下信息：
+
+   * **问题类型：** 技术方面
+   * **订阅：** 你的订阅
+   * **服务：** SAP HANA 大型实例
+   * **资源：** 资源组
+   * **摘要：** 提供用户生成的公钥
+   * **问题类型：** 配置和设置
+   * **问题子类型：** 设置 SnapCenter
+
+
+1. 在支持票证 **说明** 的 " **详细信息** " 选项卡上，提供： 
    
    * 设置 SnapCenter
    * SnapCenter 用户的公钥 (SnapCenter) -请参阅下面的公钥创建示例
 
-     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="./media/snapcenter/new-support-request-details.png":::
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="新的支持请求-详细信息选项卡" lightbox="./media/snapcenter/new-support-request-details.png":::
 
 1. 选择 "查看" 和 " **创建** " 以查看你的支持票证。 
 
@@ -522,9 +526,7 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 配置 SnapCenter 的用户凭据。 默认情况下，它会填充用于安装应用程序的 Windows 用户凭据。 
 
-   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择"::: 
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="安装用户输入对话框"::: 
 
 1. 启动会话时，请保存安全例外，GUI 启动。
 
@@ -535,21 +537,20 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 在 SnapCenter 中，选择 " **存储系统**"，然后选择 " **+ 新建**"。 
 
-   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenter 存储连接" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
 
    默认值为每个租户一个 SVM。 如果客户在多个区域中具有多个租户或 HLIs，则建议配置 SnapCenter 中的所有 Svm。
 
 1. 在 "添加存储系统" 中，提供要添加的存储系统的信息、SnapCenter 用户名和密码，然后选择 " **提交**"。
 
-   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="新建存储连接":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 以设置 HANA 插件和 hana 数据库主机。  最新版本的 SnapCenter 会自动在主机上检测 HANA 数据库。
+   >[!NOTE]
+   >默认值为每个租户一个 SVM。  如果有多个租户，则建议在 SnapCenter 中配置所有 Svm。 
 
-   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="为用户存储设置创建支持案例&quot;:::
+1. 在 SnapCenter 中，选择 " **主机** "，然后选择 " **+ 添加** " 以设置 HANA 插件和 hana 数据库主机。  最新版本的 SnapCenter 会自动在主机上检测 HANA 数据库。
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="在 SnapCenter 中，选择 &quot;主机&quot;，然后选择 &quot;添加&quot;。" lightbox="media/snapcenter/managed-hosts-new-host.png":::
 
 1. 提供新主机的信息：
    1. 选择主机类型的操作系统。
@@ -557,13 +558,16 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
    1. 提供要使用的凭据。
    1. 选择 **Microsoft Windows** 和 **SAP HANA** 选项，然后选择 " **提交**"。
 
-   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="新主机的信息":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 以添加 HANA 节点。
+   >[!IMPORTANT]
+   >安装第一个节点之前，SnapCenter 允许非根用户在数据库上安装插件。  有关如何启用非根用户的信息，请参阅 [添加非根用户和配置 sudo 权限](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html)。
 
-   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="为用户存储设置创建支持案例&quot;:::
+1. 查看主机详细信息，然后选择 " **提交** " 以在 SnapCenter 服务器上安装插件。
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/add-hana-node.png":::
+1. 安装插件后，在 SnapCenter 中选择 " **主机** "，然后选择 " **+ 添加** " 以添加 HANA 节点。
+
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="添加 HANA 节点" lightbox="media/snapcenter/add-hana-node.png":::
 
 1. 提供 HANA 节点的信息：
    1. 选择主机类型的操作系统。
@@ -571,17 +575,15 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
    1. 选择 **+** 以添加在 HANA DB 主机操作系统上配置的凭据，然后选择 **"确定"**。
    1. 选择 **SAP HANA** ，然后选择 " **提交**"。
 
-   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="SAP HANA 节点详细信息":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" **确认并提交**"。
+1. 确认指纹，并选择 " **确认并提交**"。
 
-   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="确认并提交指纹":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 创建 SNAPCENTER 用户。
+1. 在 "HANA" 节点上的 "系统数据库" 下，选择 " **Security**  >  **Users**  >  **SNAPCENTER** " 创建 SNAPCENTER 用户。
 
-   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="在 HANA 中创建 SnapCenter 用户 (系统 db) ":::
 
 
 
@@ -594,19 +596,15 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 在 SnapCenter 的顶部) 选择 " **资源** " 和 " **SAN HANA** ("，然后选择右侧的 " **+ 添加 SAP HANA 数据库** (") 。
 
-   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/manual-hana-setup.png":::
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="手动 HANA 安装" lightbox="media/snapcenter/manual-hana-setup.png":::
 
 1. 指定在 Linux 主机上或在安装了插件的主机上配置的 HANA 管理员用户的资源详细信息。 将从 Linux 系统上的插件管理备份。
 
-   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="指定在 Linux 主机上配置的 HANA 管理员用户的资源详细信息。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" **完成**"。
+1. 选择需要为其拍摄快照的数据卷，选择 " **保存** "，然后选择 " **完成**"。
 
-   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="选择需要为其拍摄快照的数据卷，选择 &quot;保存&quot;，然后选择 &quot;完成&quot;。":::
 
 ### <a name="create-a-snapshot-policy"></a>创建快照策略
 
@@ -614,69 +612,55 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 在 SnapCenter 中，选择 " **资源** "，然后选择数据库。
 
-   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="在 SnapCenter 中，选择 &quot;资源&quot;，然后选择数据库。":::
 
 1. 按照配置向导的工作流配置快照计划程序。
 
-   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="按照配置向导的工作流配置快照计划程序。" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
 
 1. 提供用于配置预/post 命令和专用 SSL 密钥的选项。  在此示例中，我们使用的不是特殊设置。
 
-   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="提供用于配置预先发布命令和专用 SSL 密钥的选项。" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
 
 1. 选择 " **添加** " 以创建快照策略，该策略还可用于其他 HANA 数据库。 
 
-   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="选择 &quot;添加&quot; 以创建快照策略，该策略还可用于其他 HANA 数据库。":::
 
 1. 输入策略名称和描述。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="输入策略名称和描述。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 和 "频率"。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="为用户存储设置创建支持案例&quot;:::
+1. 选择 "备份类型" 和 "频率"。
 
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="选择 &quot;备份类型&quot; 和 &quot;频率&quot;。":::
 
 1. 配置按 **需备份保留设置**。  在我们的示例中，我们要将保留期设置为三个快照副本。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="配置按需备份保留设置。":::
 
 1. 配置 **每小时保留设置**。 
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="配置每小时保留设置。":::
 
 1. 如果配置了 SnapMirror 设置，请 **在创建本地快照副本后选择 "更新 SnapMirror**"。
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="如果需要 SnapMirror，请在创建本地快照副本后选择 &quot;更新 SnapMirror&quot;。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" **添加**"。
+1. 选择 " **完成** " 以查看新备份策略的摘要。 
+1. 在 " **配置计划**" 下，选择 " **添加**"。
 
-   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="在 &quot;配置计划&quot; 下，选择 &quot;添加&quot;。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 和 "频率"。
+1. 选择 " **开始日期**"、" **到期** 日期" 和 "频率"。
 
-   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="选择 &quot;开始日期&quot;、&quot;到期日期&quot; 和 &quot;频率&quot;。":::
 
 1. 提供通知的电子邮件详细信息。
 
-   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="提供通知的电子邮件详细信息。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 以创建备份策略。
+1.  选择 " **完成** " 以创建备份策略。
 
 ### <a name="disable-ems-message-to-netapp-autosupport"></a>禁用 Autosupport 的 EMS 消息
 默认情况下，将启用 EMS 数据收集，并在安装日期后每7天运行一次。  可以通过 PowerShell cmdlet 禁用数据收集 `Disable-SmDataCollectionEms` 。
@@ -721,45 +705,43 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 1. 通过 SnapCenter 还原数据库文件。  选择该数据库，然后选择 " **还原**"。  
 
-   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="选择一个数据库，然后选择 &quot;还原&quot;。" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
 
 1. 选择还原类型。  在我们的示例中，我们将还原整个资源。 
 
-   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="选择还原类型。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" **文件级别**"。
+   >[!NOTE]
+   >如果使用默认设置，则无需指定从磁盘上的快照执行本地还原的命令。 
+
+   >[!TIP]
+   >如果要还原卷内的特定 LUN，请选择 " **文件级别**"。
 
 1. 按照工作流的配置向导执行操作。
    
    SnapCenter 将数据还原到原始位置，以便可以在 HANA 中启动还原过程。 此外，由于 SnapCenter 不能 (数据库关闭) ，因此会显示警告。
 
-   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="由于 SnapCenter 不能修改备份目录，因此会显示警告。 ":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择" 下，右键单击系统数据库，然后选择 "**备份和恢复**  >  **恢复系统数据库**"。
+1. 由于已还原所有数据库文件，因此请在 HANA 中启动还原过程。 在 HANA Studio 中的 "**系统**" 下，右键单击系统数据库，然后选择 "**备份和恢复**  >  **恢复系统数据库**"。
 
-   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="在 HANA 中启动还原过程。":::
 
 1. 选择恢复类型。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="选择恢复类型。":::
 
 1. 选择备份目录的位置。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择":::
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="选择备份目录的位置。":::
 
 1. 选择用于恢复 SAP HANA 数据库的备份。
 
-   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="为用户存储设置创建支持案例&quot;:::
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="选择用于恢复 SAP HANA 数据库的备份。":::
 
-1. 在 SAP HANA 订阅 &quot;页上，选择"  >  **恢复租户数据库**"。
+   恢复数据库后，将显示一条消息，其中包含 **恢复到的时间** 并 **恢复到日志位置** 标记。
+
+1. 在 "**系统**" 下，右键单击系统数据库，并选择 "**备份和恢复**" "  >  **恢复租户数据库**"。
 1. 按照向导的工作流完成租户数据库的恢复。 
 
 有关还原数据库的详细信息，请参阅 [使用 SnapCenter 备份/恢复 SAP HANA](https://www.netapp.com/us/media/tr-4614.pdf)。
@@ -772,9 +754,7 @@ SnapCenter 提供适用于方案的解决方案，包括备份/恢复、灾难�
 
 在克隆之前，必须安装与源数据库相同的 HANA 版本。 SID 和 ID 可能不同。 
 
-:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="为用户存储设置创建支持案例&quot;:::
-
-1. 在 SAP HANA 订阅 &quot;页上，选择" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="SAP HANA 系统克隆" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
 
 1. 从/usr/sap/H34/HDB40. 为 H34 数据库创建 HANA 数据库用户存储
 

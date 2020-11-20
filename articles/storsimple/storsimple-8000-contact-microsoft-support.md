@@ -6,22 +6,22 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960314"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968751"
 ---
 # <a name="contact-microsoft-support"></a>请联系 Microsoft 支持部门
 
-StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录新支持请求**的功能。 若在使用 StorSimple 解决方案时遇到问题，可以创建服务请求以获取技术支持。 在与支持工程师进行联机会话时，可能还需在 StorSimple 设备上启动支持会话。 本文介绍：
+StorSimple Device Manager 在“服务摘要”边栏选项卡中提供 **记录新支持请求** 的功能。 若在使用 StorSimple 解决方案时遇到问题，可以创建服务请求以获取技术支持。 在与支持工程师进行联机会话时，可能还需在 StorSimple 设备上启动支持会话。 本文介绍：
 
 * 如何创建支持请求。
 * 如何从门户内部管理支持请求生命周期。
 * 如何在 StorSimple 设备的 Windows PowerShell 界面中启动支持会话。
 
-在创建支持请求之前查看 [StorSimple 8000 系列支持 SLA 和信息](https://msdn.microsoft.com/library/mt433077.aspx)。
+在创建支持请求之前查看 [StorSimple 8000 系列支持 SLA 和信息](./storsimple-8000-support-options.md)。
 
 ## <a name="create-a-support-request"></a>创建支持请求
 
@@ -29,34 +29,34 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-create-a-support-request"></a>创建支持请求
 
-1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”****，并单击“新建支持请求”****。
+1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，并单击“新建支持请求”。
      
     ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. 在“新建支持请求”**** 边栏选项卡上，选择“基本”****。 在“基本”边栏选项卡中执行以下步骤****：
-   1. 从“颁发类型”下拉列表中，选择“技术”。********
-   2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
-   3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个**支持计划**。 需要付费的支持计划才能启用技术支持。
+2. 在“新建支持请求”边栏选项卡上，选择“基本”。 在“基本”边栏选项卡中执行以下步骤：
+   1. 从“颁发类型”下拉列表中，选择“技术”。
+   2. 将自动选择当前 **订阅**、**服务** 类型和 **资源**（StorSimple Device Manager 服务）。 
+   3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个 **支持计划**。 需要付费的支持计划才能启用技术支持。
    4. 单击“下一步”。
 
        ![通过新门户联系 MS 支持2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. 在“新建支持请求”**** 边栏选项卡中，选择“步骤 2: 问题”****。 在“问题”**** 边栏选项卡中执行以下步骤：
+3. 在“新建支持请求”边栏选项卡中，选择“步骤 2: 问题”。 在“问题”边栏选项卡中执行以下步骤：
     
-    1. 选择“严重性”。****
+    1. 选择“严重性”。
     2. 指定问题是否与设备或 StorSimple 设备管理器服务相关。
-    3. 选择此问题的**类别**，并提供有关此问题的更多**详细信息**。
+    3. 选择此问题的 **类别**，并提供有关此问题的更多 **详细信息**。
     4. 提供问题的开始日期和时间。
-    5. 在“文件上传”中单击文件夹图标，浏览到支持包。****
+    5. 在“文件上传”中单击文件夹图标，浏览到支持包。
     6. 选中“共享诊断信息”。
     7. 单击“下一步”。
 
        ![通过新门户联系 MS 支持3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. 在“新建支持请求”**** 边栏选项卡中，单击“步骤 3: 联系人信息”****。 在“联系人信息”**** 边栏选项卡中，执行以下步骤：
+4. 在“新建支持请求”边栏选项卡中，单击“步骤 3: 联系人信息”。 在“联系人信息”边栏选项卡中，执行以下步骤：
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
-   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。****
+   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
    3. 单击“创建”。
    
        ![通过新门户连接 MS 支持4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
@@ -74,7 +74,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
     ![管理支持请求](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. “帮助 + 支持”边栏选项卡中会显示“所有支持请求”的表格列表。****
+2. “帮助 + 支持”边栏选项卡中会显示“所有支持请求”的表格列表。
 
     ![管理支持请求2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 392e930dcb69392b6f9425abba0efa516d5c82b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60334788"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967051"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 发行说明
 
@@ -53,7 +53,7 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不是。 | 功能 | 问题 |
+| 不是。 | Feature | 问题 |
 | --- | --- | --- |
 | 1 |备份性能|在早期版本中，涉及大量文件的备份将需要很长时间才能完成（在几天之内）。 在此版本中，完整备份和增量备份可看到显著减少完成时间。 |
 | 2 |支持包|现在，磁盘、CPU、内存、网络和云的统计信息将记录到支持日志中，使支持包在排查任何设备问题时非常有效。|
@@ -65,7 +65,7 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 
 
-| 不是。 | 功能 | 问题 | 解决方法/备注 |
+| 不是。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中所创建的虚拟设备更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟设备故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟设备后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |
@@ -92,5 +92,4 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 * [StorSimple 虚拟阵列更新0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 正式版发行说明](./storsimple-virtual-array-update-06-release-notes.md)

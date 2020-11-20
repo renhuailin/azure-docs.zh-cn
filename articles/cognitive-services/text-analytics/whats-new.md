@@ -8,23 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369454"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966881"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
 
+## <a name="november-2020"></a>2020 年 11 月
+
+* 一个 [新的终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) ，具有文本分析 API 的3.1 版-预览版。3对于新的异步 [分析 API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze)，它支持批处理 NER、PII 和关键短语提取操作。
+* 一个 [新的终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) ，具有文本分析 API 的3.1 版-预览版。3对于 [运行状况](how-tos/text-analytics-for-health.md) 托管 API 的新异步文本分析，支持批处理。
+* 上面列出的两项新功能仅在以下区域提供： `West US 2` 、 `East US 2` 、 `Central US` `North Europe` 和 `West Europe` 区域。
+*  (巴西) `pt-BR` 现在支持 [情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md) v3. x，从模型版本开始 `2020-04-01` 。 它增加了对葡萄牙语的现有 `pt-PT` 支持。
+* 更新了客户端库，其中包括异步分析和运行状况操作的文本分析。 可在 GitHub 上找到示例：
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [详细了解文本分析 API 3.1 版-预览版3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+
 ## <a name="october-2020"></a>2020 年 10 月
 
 * 从模型版本开始，对情绪分析 v3. x 的印地语支持 `2020-04-01` 。 
-* `2020-09-01`用于 v3/languages 终结点的模型版本，它添加了更多的语言检测和准确性改进。
+* `2020-09-01`V3/languages 终结点的模型版本，增加了语言检测和准确性改进。
 * 印度中部和阿拉伯联合酋长国北部中的 v3 可用性。
 
 ## <a name="september-2020"></a>2020 年 9 月
@@ -147,7 +164,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 ### <a name="text-analytics-api-v31-public-preview"></a>文本分析 API 3.1 公共预览版
    * 新情绪分析功能- [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * [ `PII`) 域筛选器的新个人 (](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) () 中的受保护的健康信息 `PHI` 。
+   * `PII`) 域筛选器的新个人 ( () 中的受保护的健康信息 `PHI` 。
 
 > [!div class="nextstepaction"]
 > [详细了解文本分析 API v3.1 预览版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [详细了解文本分析 API v3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>命名实体识别 v3 公共预览版
@@ -185,9 +202,6 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 电话号码 (仅限我们) 
     * 代码
     * IP 地址
-
-> [!div class="nextstepaction"]
-> [了解有关命名实体识别 v3 的详细信息](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>2019 年 10 月
 

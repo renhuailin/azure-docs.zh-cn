@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 056009c34aec97a8c5c45aea4b93ba41977fa7a6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 31cba884cff490d43341a4c52f24c32b1e253e42
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518186"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967323"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>迁移到文本分析 API 的版本1。x
 
 [!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
-如果使用文本分析 API 版本2.1，本文将帮助你将应用程序升级为使用版本2.x。 版本3.0 已正式发布，并引入了新功能，例如扩展的 [命名实体识别 (NER) ](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 和 [模型版本控制](concepts/model-versioning.md)。 此外，还提供了版本 3.1)  (的版本3.1 预览版本，它可添加 [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)等功能。 V2 中使用的模型将不会收到将来的更新。 
+如果使用文本分析 API 版本2.1，本文将帮助你将应用程序升级为使用版本2.x。 版本3.0 已正式发布，并引入了新功能，例如扩展的 [命名实体识别 (NER) ](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) 和 [模型版本控制](concepts/model-versioning.md)。 此外，还提供了版本 3.1)  (的版本3.1 预览版本，它可添加 [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)等功能。 V2 中使用的模型将不会收到将来的更新。 
 
 #### <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment-analysis)
 
@@ -38,7 +38,7 @@ ms.locfileid: "94518186"
 有关 JSON 响应的示例，请参阅参考文档。
 * [版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 * [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
-* [版本 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
+* [版本 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
 ### <a name="client-libraries"></a>客户端库
 
@@ -70,7 +70,7 @@ NER
 有关 JSON 响应的示例，请参阅参考文档。
 * [版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 * [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
-* [版本 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/EntitiesRecognitionGeneral)
+* [版本 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>客户端库
 
@@ -92,7 +92,7 @@ NER
 有关 JSON 响应的示例，请参阅参考文档。
 * [版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 * [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
-* [版本 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Languages)
+* [版本 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 
 ### <a name="client-libraries"></a>客户端库
 

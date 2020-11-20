@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096753"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967289"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 证书证明
 
@@ -26,7 +26,7 @@ X.509 证书可以存储在硬件安全模块 HSM 中。
 
 ## <a name="x509-certificates"></a>X.509 证书
 
-将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 此安排会建立一个委托的信任链，该信任链始于受信任根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体“叶”证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](/azure/iot-hub/iot-hub-x509ca-overview)。 
+将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 此安排会建立一个委托的信任链，该信任链始于受信任根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体“叶”证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](../iot-hub/iot-hub-x509ca-overview.md)。 
 
 证书链通常代表与设备关联一些逻辑或物理层次结构。 例如，制造商可以：
 - 颁发自签名根 CA 证书
@@ -34,11 +34,11 @@ X.509 证书可以存储在硬件安全模块 HSM 中。
 - 使用每个工厂的证书为工厂中的每条生产线生成唯一的中间 CA 证书
 - 并最终使用生产线证书为在生产线上制造的每台设备生成唯一的设备（最终实体）证书。 
 
-若要了解详细信息，请参阅[概念性理解 IoT 行业中的 X.509 CA 证书](/azure/iot-hub/iot-hub-x509ca-concept)。 
+若要了解详细信息，请参阅[概念性理解 IoT 行业中的 X.509 CA 证书](../iot-hub/iot-hub-x509ca-concept.md)。 
 
 ### <a name="root-certificate"></a>根证书
 
-根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)。 根证书也可称为根 CA 证书。
+根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates)。 根证书也可称为根 CA 证书。
 
 ### <a name="intermediate-certificate"></a>中间证书
 
@@ -47,16 +47,16 @@ X.509 证书可以存储在硬件安全模块 HSM 中。
 ##### <a name="why-are-intermediate-certs-useful"></a>为什么中间证书有用？
 可以通过多种方式使用中间证书。 例如，可使用中间证书按产品系列、购买设备、公司部门或工厂的客户对设备进行分组。 
 
-假设 Contoso 是一个具有自己的公钥基础结构的大型企业 (PKI) 使用名为 *ContosoRootCert*的根证书。 Contoso 的每个子公司都有自己的由 *ContosoRootCert*签署的中间证书。 然后，每个子公司都将使用其中间证书对每个设备的叶证书进行签名。 在此方案中，Contoso 可以使用单个 DPS 实例，其中 *ContosoRootCert* 已使用 [所有权证明](./how-to-verify-certificates.md)进行验证。 它们可以具有每个子公司的注册组。 这样，每个子公司都无需担心验证证书。
+假设 Contoso 是一个具有自己的公钥基础结构的大型企业 (PKI) 使用名为 *ContosoRootCert* 的根证书。 Contoso 的每个子公司都有自己的由 *ContosoRootCert* 签署的中间证书。 然后，每个子公司都将使用其中间证书对每个设备的叶证书进行签名。 在此方案中，Contoso 可以使用单个 DPS 实例，其中 *ContosoRootCert* 已使用 [所有权证明](./how-to-verify-certificates.md)进行验证。 它们可以具有每个子公司的注册组。 这样，每个子公司都无需担心验证证书。
 
 
 ### <a name="end-entity-leaf-certificate"></a>最终实体“叶”证书
 
 分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。
 
-与[单个注册](./concepts-service.md#individual-enrollment)条目配合使用的页证书有一个要求：必须将“所有者名称”**** 设置为“单个注册”条目的注册 ID。 与 [注册组](./concepts-service.md#enrollment-group) 条目一起使用的叶证书应将 " **使用者名称** " 设置为所需的设备 ID，该 ID 将显示在注册组中经过身份验证的设备的 **注册记录** 中。
+与[单个注册](./concepts-service.md#individual-enrollment)条目配合使用的页证书有一个要求：必须将“所有者名称”设置为“单个注册”条目的注册 ID。 与 [注册组](./concepts-service.md#enrollment-group) 条目一起使用的叶证书应将 " **使用者名称** " 设置为所需的设备 ID，该 ID 将显示在注册组中经过身份验证的设备的 **注册记录** 中。
 
-有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
+有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](../iot-hub/iot-hub-x509ca-overview.md#authenticating-devices-signed-with-x509-ca-certificates)。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>使用 X.509 证书控制设备对设置服务的访问权限
 
@@ -109,4 +109,4 @@ X.509 证书可以存储在硬件安全模块 HSM 中。
 - *设备 4*：根证书 -> 证书 A -> 设备 4 证书
 - *设备 5*：根证书 -> 证书 A -> 设备 5 证书
 
-最开始，可为根证书创建单个启用的组注册条目，让五台设备均获得访问权限。 如果之后证书 B 出现安全风险，可以为证书 B 创建一个禁用的注册组条目，以防止设备 4 和设备 5 进行注册****。 如果之后设备 3 ** 出现安全风险，可为其证书创建一个禁用的单个注册条目。 这会撤消设备 3 的访问权限，但仍允许设备 1 和设备 2 进行注册******。
+最开始，可为根证书创建单个启用的组注册条目，让五台设备均获得访问权限。 如果之后证书 B 出现安全风险，可以为证书 B 创建一个禁用的注册组条目，以防止设备 4 和设备 5 进行注册。 如果之后设备 3 出现安全风险，可为其证书创建一个禁用的单个注册条目。 这会撤消设备 3 的访问权限，但仍允许设备 1 和设备 2 进行注册。

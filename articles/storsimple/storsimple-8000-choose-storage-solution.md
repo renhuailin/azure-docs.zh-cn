@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183269"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968734"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183269"
  
 本文档概述了用于将本地数据传输到 Azure 的选项，比较： Data Box Edge 与 Azure 文件同步与 StorSimple 8000 系列。
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)** - Data Box Edge 是一种本地网络设备，可将数据移入和移出 Azure，它还包含支持 AI 的 Edge 计算，用于在上传期间预处理数据。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。
-- **[Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide)** - 使用 Azure 文件同步可将组织的文件共享集中在 Azure 文件中，同时不会失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 在 2018 年早期已宣布推出 Azure 文件同步的正式版。
-- **[StorSimple](/azure/storsimple/storsimple-overview)** – StorSimple 是与 Azure 存储紧密集成的混合设备，可帮助企业在单个解决方案中整合主要存储的存储基础结构、数据保护、存档和灾难恢复。 在[此处](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)可以找到 StorSimple 的产品生命周期。
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** - Data Box Edge 是一种本地网络设备，可将数据移入和移出 Azure，它还包含支持 AI 的 Edge 计算，用于在上传期间预处理数据。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。
+- **[Azure 文件同步](../storage/files/storage-sync-files-deployment-guide.md)** - 使用 Azure 文件同步可将组织的文件共享集中在 Azure 文件中，同时不会失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 在 2018 年早期已宣布推出 Azure 文件同步的正式版。
+- **[StorSimple](./storsimple-overview.md)** – StorSimple 是与 Azure 存储紧密集成的混合设备，可帮助企业在单个解决方案中整合主要存储的存储基础结构、数据保护、存档和灾难恢复。 在[此处](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)可以找到 StorSimple 的产品生命周期。
 
 ## <a name="comparison-summary"></a>比较摘要
 
@@ -39,5 +39,5 @@ ms.locfileid: "88183269"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) 和 [Azure Data Box Gateway](/azure/databox-online/data-box-gateway-overview)
-- 了解 [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide)
+- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md)
+- 了解 [Azure 文件同步](../storage/files/storage-sync-files-deployment-guide.md)

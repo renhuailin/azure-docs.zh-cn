@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082165"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967867"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>将 Azure VM 连接到 HANA 大型实例
 
@@ -54,28 +55,28 @@ ms.locfileid: "87082165"
 
 在上述两个图形中， **虚拟网络地址空间** 涵盖 **Azure VM 的子网 IP 地址范围和虚拟网关的子网 IP 地址范围** 。
 
-可以将虚拟网络地址空间限制为每个子网使用的特定范围****。 也可将虚拟网络的虚拟网络地址空间定义为多个特定范围，如下所示****：
+可以将虚拟网络地址空间限制为每个子网使用的特定范围。 也可将虚拟网络的虚拟网络地址空间定义为多个特定范围，如下所示：
 
 ![包含两个空间的 Azure 虚拟网络地址空间](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-在本例中，为**虚拟网络地址空间**定义了两个空间。 这两个空间的 IP 地址范围与定义的 Azure VM 子网 IP 地址范围和虚拟网络网关子网 IP 地址范围相同。 
+在本例中，为 **虚拟网络地址空间** 定义了两个空间。 这两个空间的 IP 地址范围与定义的 Azure VM 子网 IP 地址范围和虚拟网络网关子网 IP 地址范围相同。 
 
 对于这些租户子网（VM 子网），可以使用偏好的任何命名标准。 但是，对于连接到 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路的每个虚拟网络，**必须始终只有一个网关子网**。 **此网关子网必须命名为 "GatewaySubnet"** 以确保已正确放置 ExpressRoute 网关。
 
 > [!WARNING] 
 > 网关子网必须始终命名为 "GatewaySubnet"，这一点很重要。
 
-可以使用多个 VM 子网和不连续的地址范围。 虚拟网络的**虚拟网络地址空间**必须涵盖这些地址范围。 可以是以聚合形式。 也可以是以 VM 子网和网关子网的确切范围列表形式。
+可以使用多个 VM 子网和不连续的地址范围。 虚拟网络的 **虚拟网络地址空间** 必须涵盖这些地址范围。 可以是以聚合形式。 也可以是以 VM 子网和网关子网的确切范围列表形式。
 
 下面汇总了有关要连接到 HANA 大型实例的 Azure 虚拟网络的重要事实：
 
 - 执行 HANA 大型实例的初始部署时，必须将 **虚拟网络地址空间** 提交给 Microsoft。 
-- 虚拟网络地址空间可以是涵盖 Azure VM 子网 IP 地址范围和虚拟网络网关子网 IP 地址范围的较大范围****。
+- 虚拟网络地址空间可以是涵盖 Azure VM 子网 IP 地址范围和虚拟网络网关子网 IP 地址范围的较大范围。
 - 或者，可以提交涵盖不同 VM 子网 IP 地址范围和虚拟网络网关 IP 地址范围的多个范围。
-- 定义的**虚拟网络地址空间**用于 BGP 路由传播。
+- 定义的 **虚拟网络地址空间** 用于 BGP 路由传播。
 - 网关子网的名称必须为 **"GatewaySubnet"**。
 - 地址空间用作 HANA 大型实例端上的筛选器，用于允许或禁止 Azure 的流量传入 HANA 大型实例单位。 Azure 虚拟网络的 BGP 路由信息应与配置以用于对 HANA 大型实例进行筛选的 IP 地址范围相匹配。 否则可能会出现连接问题。
-- 后面的“将虚拟网络连接到 HANA 大型实例 ExpressRoute”部分中详细介绍了网关子网。****
+- 后面的“将虚拟网络连接到 HANA 大型实例 ExpressRoute”部分中详细介绍了网关子网。
 
 
 
@@ -127,7 +128,7 @@ ms.locfileid: "87082165"
 建议你将地址空间与你使用的实际子网地址空间紧密对齐。 如果需要，以后随时可以添加新的地址空间值，而不会导致虚拟网络出现故障。
  
 > [!IMPORTANT] 
-> ER-P2P、服务器 IP 池、Azure 虚拟网络地址空间中的每个 IP 地址范围既**不得**相互重叠，也不得与网络中使用的其他任何范围重叠。 每个范围都必须是独立的。 如前面两幅插图所示，它们也不能是其他任何范围的子网。 如果范围之间存在重叠，Azure 虚拟网络可能无法连接到 ExpressRoute 线路。
+> ER-P2P、服务器 IP 池、Azure 虚拟网络地址空间中的每个 IP 地址范围既 **不得** 相互重叠，也不得与网络中使用的其他任何范围重叠。 每个范围都必须是独立的。 如前面两幅插图所示，它们也不能是其他任何范围的子网。 如果范围之间存在重叠，Azure 虚拟网络可能无法连接到 ExpressRoute 线路。
 
 ## <a name="next-steps-after-address-ranges-have-been-defined"></a>定义地址范围后的后续步骤
 定义 IP 地址范围后，需要执行以下操作：

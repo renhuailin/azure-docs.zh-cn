@@ -3,12 +3,12 @@ title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案�
 description: 了解如何在 Azure 上的中心和辐射型体系结构中集成 Azure VMware 解决方案部署。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577713"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967442"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和辐射型体系结构中集成 Azure VMware 解决方案
 
@@ -38,7 +38,7 @@ ms.locfileid: "94577713"
 
 - **本地站点：** 客户本地数据中心 (s) 通过 ExpressRoute 连接连接到 Azure。
 
-- **Azure VMware 解决方案私有云：** 由一个或多个 vSphere 群集构成的 Azure VMware 解决方案 SDDC，每个群集最多包含16个节点。
+- **Azure VMware 解决方案私有云：** 由一个或多个 vSphere 群集构成的 Azure VMware 解决方案 SDDC，其中每个群集最多包含16个主机。
 
 - **ExpressRoute 网关：** 启用 Azure VMware 解决方案私有云之间的通信、中心虚拟网络上的共享服务和在辐射虚拟网络上运行的工作负荷。
 

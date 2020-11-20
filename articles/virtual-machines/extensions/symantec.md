@@ -4,16 +4,17 @@ description: 了解如何在使用经典部署模型创建的新的或现有的 
 author: roiyz
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292425"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967935"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -56,8 +57,8 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 若要验证 Symantec 安全扩展插件是否已安装并处于最新状态：
 
 1. 登录到虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机][Logon]。
-2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”****。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”********。
-3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启********。
+2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”。
+3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启。
 
 ## <a name="additional-resources"></a>其他资源
 [如何登录到运行 Windows Server 的虚拟机][Logon]
