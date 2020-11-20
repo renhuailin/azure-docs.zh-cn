@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359776"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966541"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -56,13 +56,6 @@ ms.locfileid: "94359776"
 
    ![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 检查以确保以下设置在 ServiceNow 为“禁用”状态：
-
-   1. 选择“系统安全性” > “高安全性设置” > “需要对传入的 SCHEMA 请求进行基本身份验证”  。
-   2. 选择“系统属性” > “Web 服务” > “需要对传入的 SOAP 请求进行基本授权”  。
-     
-   > [!IMPORTANT]
-   > 如果启用这些设置，则预配的引擎将无法与 ServiceNow 通信。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 ServiceNow
 

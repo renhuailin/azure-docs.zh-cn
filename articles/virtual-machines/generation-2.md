@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977589"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963821"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -85,7 +85,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| 功能 | 第 1 代 | 第 2 代 |
+| Feature | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -101,7 +101,8 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure 磁盘加密             | :heavy_check_mark: | :x:                |
+| [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [服务器端加密](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>创建第 2 代 VM
 
@@ -114,14 +115,14 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-1. 选择“创建资源”。
-1. 单击左侧的 "在 Azure Marketplace 中 **查看全部** "。
+1. 选择“创建资源”。 
+1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
 1. 单击“创建”。
 1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
-1. 完成其余页面完成创建 VM 的操作。
+1. 浏览其余页面以完成 VM 的创建。
 
 ![选择第 1 代或第 2 代 VM](./media/generation-2/gen1-gen2-select.png)
 
@@ -185,7 +186,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 * **如何增大 OS 磁盘的大小？**  
 
-  大于 2 TiB 的 OS 磁盘是第2代 Vm 的新版本。 默认情况下，第2代 Vm 的 OS 磁盘小于 2 TiB。 最多可将磁盘大小增加到推荐的最大值 4 TiB。 使用 Azure CLI 或 Azure 门户增大 OS 磁盘大小。 有关如何以编程方式扩展磁盘的信息，请参阅为[Windows](./windows/expand-os-disk.md)或[Linux](./linux/resize-os-disk-gpt-partition.md)**调整磁盘大小**。
+  大于 2 TiB 的 OS 磁盘是第 2 代 VM 的新配置。 默认情况下，第 2 代 VM 的 OS 磁盘小于 2 TiB。 可将磁盘大小增大至 4 TiB（建议的最大大小）。 使用 Azure CLI 或 Azure 门户增大 OS 磁盘大小。 有关如何以编程方式扩展磁盘的信息，请参阅为 [Windows](./windows/expand-os-disk.md) 或 [Linux](./linux/resize-os-disk-gpt-partition.md) 调整磁盘大小。
 
   若要在 Azure 门户中增大 OS 磁盘大小：
 
@@ -193,9 +194,9 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   1. 若要关闭并解除分配 VM，请选择“停止”按钮。
   1. 在“磁盘”部分，选择要增大的 OS 磁盘。
   1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。  
-  1. 返回到 VM 属性页并**启动** VM。
+  1. 返回到 VM 属性页并 **启动** VM。
   
-  你可能会看到大于 2 TiB 的 OS 磁盘的警告。 该警告不适用于第 2 代 VM。 但是，不支持大于 4 TiB 的 OS 磁盘大小。
+  你可能会看到一条警告，指出 OS 磁盘大于 2 TiB。 该警告不适用于第 2 代 VM。 但是，不支持使用大于 4 TiB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
     是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../virtual-network/create-vm-accelerated-networking-cli.md)。

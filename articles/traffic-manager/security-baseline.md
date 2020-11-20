@@ -1,5 +1,5 @@
 ---
-title: Azure 流量管理器的 azure 安全基线
+title: 适用于 Azure 流量管理器的 Azure 安全基线
 description: Azure 流量管理器安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: traffic-manager
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ed6a57dadb70daed9cdf02421b91d310b4b0f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4523319c04703c04a293471124329512e31a265
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631454"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964671"
 ---
-# <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azure 流量管理器的 azure 安全基线
+# <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
 
-适用于 Microsoft Azure 流量管理器的 Azure 安全基线包含有助于改进部署安全状况的建议。 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 流量管理器的相关指南进行分组。 排除了不适用于 Azure 流量管理器的**控件**。
+适用于 Microsoft Azure 流量管理器的 Azure 安全基线包含有助于改进部署安全状况的建议。 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。 内容按“安全控制”分组，这些控制按适用于 Azure 流量管理器的 Azure 安全基准和相关指南定义。 已排除了不适用于 Azure 流量管理器的控制。
 
-若要查看 Azure 流量管理器如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 流量管理器安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要了解 Azure 流量管理器如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 流量管理器安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -26,7 +26,7 @@ ms.locfileid: "91631454"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：活动日志是一种 Azure 平台日志，可提供对订阅级别事件的见解。 将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志提供对在控制平面级别对 Azure 流量管理器资源执行的操作的见解。 使用 Azure 活动日志数据，可以为流量管理器配置文件的控制平面级别 (PUT、POST、DELETE) 来确定任何写入操作的 "操作内容、操作人员和操作时间"。
+**指导**：活动日志是一种 Azure 平台日志，可用于深入了解订阅级别的事件。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure 流量管理器资源执行的操作的见解。 通过使用 Azure 活动日志数据，可以确定在控制平面级别针对流量管理器资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
@@ -40,9 +40,9 @@ ms.locfileid: "91631454"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：启用流量管理器中的资源日志记录。 这些是流量管理器配置文件的诊断资源日志和访问日志数据。 此外，流量管理器还提供了每个配置文件的特定指标。
+**指导**：在流量管理器内启用资源日志记录。 这些是流量管理器配置文件的诊断资源日志和访问日志数据。 此外，流量管理器还基于每个配置文件提供特定指标。
 
-在 Azure Monitor 中启用诊断设置，以便访问审核、安全和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
+在 Azure Monitor 内启用诊断设置，以访问审核日志、安全日志和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
 - [如何启用资源日志记录](traffic-manager-diagnostic-logs.md)
 
@@ -70,7 +70,7 @@ ms.locfileid: "91631454"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
+**指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
@@ -86,9 +86,9 @@ ms.locfileid: "91631454"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：除了处理和显示流量管理器中的度量值外，Azure Monitor 允许客户配置和接收与这些指标关联的警报。 你可以选择这些指标需要满足什么条件才会发生警报、需要以何频率监视这些条件，以及应当如何向你发送警报。
+**指导**：除了处理和显示来自流量管理器的指标外，Azure Monitor 还允许客户配置和接收与这些指标关联的警报。 你可以选择这些指标需要满足什么条件才会发生警报、需要以何频率监视这些条件，以及应当如何向你发送警报。
 
-将 Azure 安全中心与 Log Analytics 工作区结合使用，以便在安全日志和事件中发现异常活动时进行监视和警报。
+使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。
 
 或者，可以启用数据并将其加入 Azure Sentinel。
 
@@ -110,7 +110,7 @@ ms.locfileid: "91631454"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组、服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
+**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。
 
@@ -128,13 +128,13 @@ ms.locfileid: "91631454"
 
 **指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
 
-此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心或内置 Azure 策略中的建议，例如：
+此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心或内置的 Azure 策略提供的建议，例如：
 
 - 应该为你的订阅分配了多个所有者
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-你还可以使用 Azure AD Privileged Identity Management 和 Azure 资源管理器启用实时访问。 
+还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。 
 
 - [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
@@ -146,7 +146,7 @@ ms.locfileid: "91631454"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**： Azure 流量管理器通过 AZURE ACTIVE DIRECTORY 支持 SSO 身份验证。 通过使用组织的预先存在的标识启用服务的 SSO，减少用户必须管理的标识和凭据的数量。
+**指导**：Azure 流量管理器支持使用 Azure Active Directory 进行 SSO 身份验证。 通过使用组织的预先存在的标识为服务启用 SSO，减少用户必须管理的标识和凭据的数量。
 
 - [了解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -180,7 +180,7 @@ ms.locfileid: "91631454"
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑或不安全活动时，使用 Azure Active Directory (Azure AD) PRIVILEGED IDENTITY MANAGEMENT (PIM) 生成日志和警报。
+**指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 生成日志和警报。
 
 此外，使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
@@ -266,11 +266,11 @@ ms.locfileid: "91631454"
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
-**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组、服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
+**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。
 
-Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预定义 Azure RBAC 角色，可将其分配给用户。
+Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 Azure 角色，可将其分配给用户。
 
 - [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
 
@@ -286,7 +286,7 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指南**：将 Azure Monitor 与 Azure 活动日志结合使用，为 Azure 流量管理器以及其他关键或相关资源创建发生更改的警报。
+**指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便创建要在 Azure 流量管理器以及其他关键或相关资源发生更改时触发的警报。
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -300,9 +300,9 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Azure Resource Graph 浏览器发现经典 Azure 资源，但我们强烈建议你今后创建并使用 Azure 资源管理器资源。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -316,7 +316,7 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：使用 "策略名称"、"描述" 和 "类别" 根据分类逻辑组织资产。
+**指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
 
 - [有关标记资产的详细信息，请参阅资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
@@ -328,12 +328,12 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 **指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将对可在客户订阅中创建的资源类型限制为使用以下内置策略定义：
+此外，使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 - 允许的资源类型
 
-你还可以创建自定义 Azure 策略定义，以限制更精细的资源设置。
+还可以创建自定义 Azure Policy 定义，以限制更精细的资源设置。
 
 - [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
 
@@ -374,7 +374,7 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 - 不允许的资源类型
 - 允许的资源类型
 
-你还可以创建自定义 Azure 策略定义，以限制更精细的资源设置。
+还可以创建自定义 Azure Policy 定义，以限制更精细的资源设置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -400,7 +400,7 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现 Azure 流量管理器与 azure 策略的标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行恢复服务保管库的配置。
+**指导**：使用 Azure Policy 为 Azure 流量管理器定义并实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
 - [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -424,7 +424,7 @@ Azure 流量管理器具有一个名为 "Azure 流量管理器参与者" 的预�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：如果你使用的是自定义 azure 策略定义，请使用 Azure DevOps 或 Azure Repos 来安全地存储和管理你的代码。
+**指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
 - [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 

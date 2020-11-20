@@ -4,16 +4,17 @@ description: 本文介绍如何在 Azure 中使用经典部署模型创建的 VM
 author: axayjo
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6d80287d05517933f066d5e49fa31e78a48943
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288515"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966372"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
 
@@ -30,21 +31,21 @@ ms.locfileid: "87288515"
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>在新 VM 上安装 Deep Security Agent
 
-使用**市场**中的映像创建虚拟机时，[Azure 门户](https://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
+使用 **市场** 中的映像创建虚拟机时，[Azure 门户](https://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
 
-使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”**** 边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/quick-create-portal.md)。
+使用 **市场** 中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/quick-create-portal.md)。
 
-进入向导的“设置”**** 边栏选项卡时，请执行以下步骤：
+进入向导的“设置”边栏选项卡时，请执行以下步骤：
 
-1. 单击“扩展”****，并在下一个窗格中单击“添加扩展”****。
+1. 单击“扩展”，并在下一个窗格中单击“添加扩展”。
 
    ![开始添加扩展][1]
 
-2. 在“新建资源”**** 窗格中选择“Deep Security Agent”****。 在 Deep Security Agent 窗格中，单击“创建”****。
+2. 在“新建资源”窗格中选择“Deep Security Agent”。 在 Deep Security Agent 窗格中，单击“创建”。
 
    ![标识 Deep Security Agent][2]
 
-3. 为扩展输入“租户标识符”**** 和“租户激活密码”****。 （可选）可输入“安全策略标识符”****。 然后，单击“确定”**** 添加客户端。
+3. 为扩展输入“租户标识符”和“租户激活密码”。 （可选）可输入“安全策略标识符”。 然后，单击“确定”添加客户端。
 
    ![提供扩展详细信息][3]
 

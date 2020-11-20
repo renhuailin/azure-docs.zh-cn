@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 882ed23fe9f7e759bef7464d512685163a26b288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de866faeb706893101020c23bbba353b77148f6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816181"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964892"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
@@ -56,7 +57,7 @@ sudo apt-get -qq update
 sudo apt-get install walinuxagent
 ```
 
-确保启用了自动更新。 首先，检查是否已启用自动更新：
+确保已启用自动更新。 首先，检查是否已启用自动更新：
 
 ```bash
 cat /etc/waagent.conf
@@ -75,13 +76,13 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-为14.04 重新启动 waagengt 服务
+对于 14.04，重启 waagengt 服务
 
 ```bash
 initctl restart walinuxagent
 ```
 
-为 16.04/17.04 重启 waagent 服务
+对于 16.04/17.04，重启 waagent 服务
 
 ```bash
 systemctl restart walinuxagent.service
@@ -156,7 +157,7 @@ sudo yum check-update WALinuxAgent
 sudo yum install WALinuxAgent  
 ```
 
-确保启用了自动更新。 首先，检查是否已启用自动更新：
+确保已启用自动更新。 首先，检查是否已启用自动更新：
 
 ```bash
 cat /etc/waagent.conf
@@ -293,7 +294,7 @@ sudo apt-get -qq update
 sudo apt-get install waagent
 ```
 
-启用代理自动更新此版本的 Debian 没有版本 >= 2.0.16，因此不能对其进行自动更新。 上述命令的输出将显示程序包是否为最新版。
+启用代理自动更新。由于此版本的 Debian 没有 >= 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
 
@@ -315,7 +316,7 @@ sudo apt-get -qq update
 sudo apt-get install waagent
 ```
 
-请确保先启用自动更新，并查看其是否已启用：
+请确保先启用自动更新。检查它是否已启用：
 
 ```bash
 cat /etc/waagent.conf
@@ -403,13 +404,13 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2.安装 Azure Linux 代理
 
-对于版本 2.2. x，请使用：可能需要先安装包， `setuptools` 请参阅 [此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
+对于版本 2.2.x，请使用：可能需要先安装程序包 `setuptools` -- 详情请参阅 [此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
 
 ```bash
 sudo python setup.py install
 ```
 
-确保启用了自动更新。 首先，检查是否已启用自动更新：
+确保已启用自动更新。 首先，检查是否已启用自动更新：
 
 ```bash
 cat /etc/waagent.conf

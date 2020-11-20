@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542127"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965827"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -210,7 +210,7 @@ ms.locfileid: "94542127"
     + 已更新 AzureML MLflow 文档和笔记本示例 
     + 对带有 AzureML 后端的 MLflow 项目的新支持
     + MLflow 模型注册表支持
-    + 为 AzureML-MLflow 操作添加了 RBAC 支持 
+    + 添加了 Azure RBAC 对 AzureML-MLflow 操作的支持 
     
   + **azureml-pipeline-core**
     + 改进了 PipelineOutputFileDataset.parse_* 方法的文档。
@@ -443,7 +443,7 @@ ms.locfileid: "94542127"
   + **azureml-pipeline-steps**
     + 更新了 azureml-pipeline-steps 的文档。
     +  在 ParallelRunConfig 的 `load_yaml()` 中添加了相关支持，允许用户在配置的其余部分中或在单独的文件中定义内联环境
-  + **azureml-train-automl-client** 。
+  + **azureml-train-automl-client**。
     + 删除了在 AutoMLConfig 中指定 `enable_cache` 的功能
   + **azureml-train-automl-runtime**
     + 通过 BERT 添加了可用性有限的多节点、多 gpu 分布式特征化。
@@ -1976,7 +1976,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
   + **azureml-pipeline-steps**
     + DatabricksStep 中的输入和输出现在支持 DBFS 数据存储。
     + 更新了 Azure Batch 步骤的输入/输出相关文档。
-    + 在 AzureBatchStep 中，已将 *delete_batch_job_after_finish* 默认值更改为 *true* 。
+    + 在 AzureBatchStep 中，已将 *delete_batch_job_after_finish* 默认值更改为 *true*。
   + **azureml-telemetry**
     +  已将 azureml-contrib-opendatasets 移到 azureml-opendatasets。
     + 允许将打开的数据集类注册到 Azure 机器学习工作区并无缝利用 AML 数据集功能。
@@ -2008,7 +2008,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 + **新功能**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** 现已作为 **azureml-opendatasets** 提供。 旧包仍可正常运行，但我们建议使用 **azureml-opendatasets** ，以获得更丰富的功能和改进。
+    + **azureml-contrib-opendatasets** 现已作为 **azureml-opendatasets** 提供。 旧包仍可正常运行，但我们建议使用 **azureml-opendatasets**，以获得更丰富的功能和改进。
     + 使用此新包可将打开的数据集注册为 Azure 机器学习工作区中的数据集，并利用数据集提供的任何功能。
     + 它还包括一些现有的功能，例如，将打开的数据集用作 Pandas/SPARK 数据帧，以及某些数据集（如天气）的位置联接。
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP，Azure，Oracle，数据防护
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965249"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
 
@@ -380,7 +381,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 | \oracle\<SID>\origlogaB & mirrlogA | 高级或超磁盘 | 无 | 无需 |
 | \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 可用于高级 |
 | \oracle\<SID>\oraarch | Standard | 无 | 无需 |
-| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | | 无需 |
+| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | | 不需要 |
 
 
 用于托管联机重做日志的磁盘选择应由 IOPS 要求驱动。 只要大小、IOPS 和吞吐量满足要求，就可以将所有 sapdata1...n（表空间）存储在一个已装载的磁盘上。 

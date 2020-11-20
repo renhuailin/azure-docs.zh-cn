@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359604"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964943"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -448,7 +449,7 @@ ms.locfileid: "91359604"
    * **Network**
      * 虚拟网络和子网： 要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
      * **公共 IP 地址**：选择想要使用的公共 IP 地址，或输入参数来创建新的公共 IP 地址。 可以使用公共 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
-     * **网络安全组**：有关详细信息，请参阅[使用网络安全组控制网络流量流][virtual-networks-nsg]。
+     * **网络安全组**：有关详细信息，请参阅 [使用网络安全组控制网络流量流][virtual-networks-nsg]。
    * **扩展**：可以通过将虚拟机扩展添加到部署来安装这些扩展。 不需要在此步骤中添加扩展。 稍后会安装 SAP 支持所需的扩展。 请参阅本指南中的[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]一章。
    * **高可用性**：选择一个可用性集，或输入参数来创建新的可用性集。 有关详细信息，请参阅 [Azure 可用性集][planning-guide-3.2.3]。
    * **Monitoring**
@@ -587,7 +588,7 @@ ms.locfileid: "91359604"
    * **Network**
      * 虚拟网络和子网： 要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
      * **公共 IP 地址**：选择想要使用的公共 IP 地址，或输入参数来创建新的公共 IP 地址。 可以使用公共 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
-     * **网络安全组**：有关详细信息，请参阅[使用网络安全组控制网络流量流][virtual-networks-nsg]。
+     * **网络安全组**：有关详细信息，请参阅 [使用网络安全组控制网络流量流][virtual-networks-nsg]。
    * **扩展**：可以通过将虚拟机扩展添加到部署来安装这些扩展。 不需要在此步骤中添加扩展。 稍后会安装 SAP 支持所需的扩展。 请参阅本指南中的[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]一章。
    * **高可用性**：选择一个可用性集，或输入参数来创建新的可用性集。 有关详细信息，请参阅 [Azure 可用性集][planning-guide-3.2.3]。
    * **Monitoring**
@@ -678,7 +679,7 @@ ms.locfileid: "91359604"
 
 在此方案中，打算将特定的 SAP 系统从本地环境移动到 Azure。 可以通过将包含 OS、SAP 二进制文件并最终包含 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure 来实现此目的。 与[方案 2：使用自定义映像为 SAP 部署 VM][deployment-guide-3.3] 中所述的方案不同，在本例中，需要在 Azure VM 中保留主机名、SAP SID 和 SAP 用户帐户，因为它们已在本地环境中进行了配置。 不需要对 OS 进行通用化。 此方案通常应用于跨界情况，在这种情况下，SAP 布局有一部分在本地运行，另一部分在 Azure 上运行。
 
-在此方案中，在部署期间**不会**自动安装 VM 代理。 由于在 Azure 上运行 SAP NetWeaver 需要 VM 代理和适用于 SAP 的 Azure 扩展，因此，在创建虚拟机后，需要手动下载、安装并启用这两个组件。
+在此方案中，在部署期间 **不会** 自动安装 VM 代理。 由于在 Azure 上运行 SAP NetWeaver 需要 VM 代理和适用于 SAP 的 Azure 扩展，因此，在创建虚拟机后，需要手动下载、安装并启用这两个组件。
 
 有关 Azure VM 代理的详细信息，请参阅以下资源。
 
@@ -856,7 +857,7 @@ az --version
 
 1. 转到“开始”，输入 **gpedit.msc**，并选择 **Enter**。
 1. 选择“计算机配置” > “管理模板” > “Windows 组件” > “Internet Explorer”。    确保“按计算机进行代理设置(而不是按用户)”设置已禁用或者未配置。
-1. 在**控制面板**中，转到“网络和共享中心” > “Internet 选项”。 
+1. 在 **控制面板** 中，转到“网络和共享中心” > “Internet 选项”。 
 1. 在“连接”选项卡上，选择“局域网设置”按钮。 
 1. 清除“自动检测设置”复选框。
 1. 选中“为 LAN 使用代理服务器”复选框，并输入代理地址和端口。

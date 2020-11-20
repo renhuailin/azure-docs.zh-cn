@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: damendo
-ms.openlocfilehash: a6be3a7fd19b43bd1b18af05d0dbfaf5053fb181
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2e6a92a4d08f1603f480a990ad437a90302a8189
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682955"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966082"
 ---
 # <a name="data-residency-for-azure-network-watcher"></a>Azure 网络观察程序的数据驻留
 Azure 网络观察程序不会存储客户数据，连接监视器（预览版）服务除外。
@@ -32,4 +32,4 @@ Azure 网络观察程序不会存储客户数据，连接监视器（预览版�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)的概述。
+* 阅读[网络观察程序](./network-watcher-monitoring-overview.md)的概述。

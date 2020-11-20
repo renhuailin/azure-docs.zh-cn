@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397870"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966150"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
 ## <a name="overview"></a>概述
@@ -83,5 +83,4 @@ ms.locfileid: "80397870"
 | **毫米.** |文件服务器 * |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 
 ## <a name="next-step"></a>后续步骤
-在 StorSimple 虚拟阵列上[安装更新](storsimple-ova-install-update-01.md)。
-
+在 StorSimple 虚拟阵列上[安装更新](./storsimple-virtual-array-install-update-06.md)。

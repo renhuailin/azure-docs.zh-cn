@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874672"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963634"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -436,7 +436,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报表
-标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>Encryption<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 以只读方式访问 Azure AD Privileged Identity Management 中显示的所有信息：Azure AD 角色分配的策略和报告以及安全评审。<br>**无法** 注册 Azure AD Privileged Identity Management 或对其进行任何更改。 充当此角色的人员可以在 Privileged Identity Management 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如，全局管理员或特权角色管理员）。
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报表
 Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP 中启用基于角色的访问控制后，拥有只读权限的用户（例如 Azure AD 安全读取者角色）在被分配到 Windows Defender ATP 角色之前会失去访问权限。
@@ -707,10 +707,11 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/devices/delete | 删除 Azure Active Directory 中的设备。 |
 | microsoft.directory/devices/disable | 禁用 Azure Active Directory 中的设备。 |
 | microsoft.directory/devices/enable | 启用 Azure Active Directory 中的设备。 |
+| microsoft. directory/devices/extensionAttributes/update | 更新 Azure Active Directory 中的 extensionAttributes 属性的所有值。 |
 | microsoft.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
@@ -731,6 +732,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/applications/allProperties/allTasks | 创建和删除应用程序，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/appRoleAssignments/allProperties/allTasks | 创建和删除 appRoleAssignments，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/contacts/allProperties/allTasks | 创建和删除联系人，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/contracts/allProperties/allTasks | 创建和删除协定，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/devices/allProperties/allTasks | 创建和删除设备，然后读取和更新 Azure Active Directory 中的所有属性。 |
@@ -1087,6 +1089,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/applications/basic/read    | 读取 Azure Active Directory 中应用程序的基本属性。 |
 | microsoft.directory/applications/owners/read    | 读取 Azure Active Directory 中的 applications.owners 属性。 |
 | microsoft.directory/applications/policies/read    | 读取 Azure Active Directory 中的 applications.policies 属性。 |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/contacts/basic/read    | 读取 Azure Active Directory 中联系人的基本属性。 |
 | microsoft.directory/contacts/memberOf/read    | 读取 Azure Active Directory 中的 contacts.memberOf 属性。 |
 | microsoft.directory/contracts/basic/read    | 读取 Azure Active Directory 中协定的基本属性。 |
@@ -1267,13 +1270,16 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 | **操作** | **说明** |
 | --- | --- |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
 | microsoft.directory/devices/basic/update | 更新 Azure Active Directory 中设备的基本属性。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
 | microsoft.directory/devices/create | 在 Azure Active Directory 中创建设备。 |
 | microsoft.directory/devices/delete | 删除 Azure Active Directory 中的设备。 |
+| microsoft.directory/devices/disable | 禁用 Azure Active Directory 中的设备。 |
+| microsoft.directory/devices/enable | 启用 Azure Active Directory 中的设备。 |
+| microsoft. directory/devices/extensionAttributes/update | 更新 Azure Active Directory 中的 extensionAttributes 属性的所有值。 |
 | microsoft.directory/devices/registeredOwners/update | 更新 Azure Active Directory 中的 devices.registeredOwners 属性。 |
 | microsoft.directory/devices/registeredUsers/update | 更新 Azure Active Directory 中的 devices.registeredUsers 属性。 |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
@@ -1654,9 +1660,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 属性。 |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
 | microsoft.directory/identityProtection/allProperties/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.directory/identityProtection/allProperties/update | 更新 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.directory/policies/basic/update | 更新 Azure Active Directory 中策略的基本属性。 |
@@ -1706,7 +1712,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
+| bitlockerKeys/key/read | 读取 Azure Active Directory 中包含恢复密钥)  (bitlocker 密钥对象和属性。 |
 | microsoft.directory/policies/conditionalAccess/basic/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |

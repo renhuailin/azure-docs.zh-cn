@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68da6a134f2410ca81ae16b8e00c40d0a9c8f22c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363627"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965011"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
@@ -26,7 +26,8 @@ ms.locfileid: "94363627"
 有关详细信息，请参阅[支持的语言](../language-support.md)。
 
 > [!TIP]
-> 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
+> * 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
+> * 你还可以使用端点 [异步](text-analytics-how-to-call-api.md) 使用此功能 `/analyze` 。
 
 ## <a name="preparation"></a>准备工作
 
@@ -74,7 +75,7 @@ ms.locfileid: "94363627"
 
 有关请求定义的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求  。 查看此请求的 API 文档： [关键短语 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
++ 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
 
 + 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 必须在 URL 中包括 `/text/analytics/v3.0/keyPhrases`。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`。
 
@@ -97,7 +98,7 @@ ms.locfileid: "94363627"
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
-下面显示了从 3.1-preview. 2 终结点提取关键短语的输出示例：
+下面显示的是从 v3.1-preview.2 终结点提取关键短语的输出示例：
 
 ```json
     {

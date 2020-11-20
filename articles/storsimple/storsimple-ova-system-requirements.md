@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80298812"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966167"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 
@@ -29,7 +29,7 @@ ms.locfileid: "80298812"
 
 本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple Virtual Arrays。
 
-* 对于 8000 系列设备，请转到 [System requirements for your StorSimple 8000 series device](storsimple-system-requirements.md)（StorSimple 8000 系列设备的系统要求）。
+* 对于 8000 系列设备，请转到 [System requirements for your StorSimple 8000 series device](./storsimple-8000-system-requirements.md)（StorSimple 8000 系列设备的系统要求）。
 * 对于 7000 系列设备，请转到 [System requirements for your StorSimple 5000-7000 series device](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)（StorSimple 5000-7000 系列设备的系统要求）。
 
 ## <a name="software-requirements"></a>软件要求
@@ -58,7 +58,7 @@ ms.locfileid: "80298812"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件**** | **版本** | **其他要求/说明** |
+| **组件** | **版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -84,12 +84,12 @@ ms.locfileid: "80298812"
 
 
 ### <a name="supported-storage-format"></a>受支持的存储格式
-仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
+仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
 
 ## <a name="networking-requirements"></a>网络要求
-下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
+下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 *出* 或 *出站* 表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
+| **端口号 <sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>出站 Web 代理可由用户配置。 |

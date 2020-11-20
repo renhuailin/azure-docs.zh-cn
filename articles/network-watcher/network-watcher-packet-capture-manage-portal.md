@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84736724"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966439"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
@@ -74,7 +74,7 @@ ms.locfileid: "84736724"
 > [!NOTE]
 > 门户会自动执行以下操作：
 >  * 在你选择的虚拟机所在的区域中创建一个网络观察程序（如果该区域尚没有网络观察程序）。
->  * 向虚拟机中添加 *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) 或 [Windows](../virtual-machines/windows/extensions-nwa.md) 虚拟机扩展（如果尚未安装）。
+>  * 向虚拟机中添加 *AzureNetworkWatcherExtension* [Linux](../virtual-machines/extensions/network-watcher-linux.md) 或 [Windows](../virtual-machines/extensions/network-watcher-windows.md) 虚拟机扩展（如果尚未安装）。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 

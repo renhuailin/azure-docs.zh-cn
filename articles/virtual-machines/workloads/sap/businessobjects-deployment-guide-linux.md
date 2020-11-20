@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427456"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965351"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
 
@@ -113,7 +114,7 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
 本部分中的步骤使用以下前缀：
 
-**[A]** ：该步骤适用于所有主机
+**[A]**：该步骤适用于所有主机
 
 ### <a name="format-and-mount-sap-file-system"></a>格式化和装载 SAP 文件系统
 
@@ -196,7 +197,7 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
    **验证 NFS 域设置**
 
-   请确保将该域配置为默认的 Azure NetApp 文件域，即  **defaultv4iddomain.com** ，并将映射设置为无 **人** 。
+   请确保将该域配置为默认的 Azure NetApp 文件域，即  **defaultv4iddomain.com** ，并将映射设置为无 **人**。
 
    ```bash
    sudo cat /etc/idmapd.conf
@@ -210,7 +211,7 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
    > [!Important]
    >
-   > 确保在 VM 上设置/etc/idmapd.conf 中的 NFS 域，使其与 Azure NetApp 文件上的默认域配置匹配： **defaultv4iddomain.com** 。 如果 NFS 客户端上的域配置不匹配 (例如，VM) 和 NFS 服务器，即 Azure NetApp 配置，则在 Vm 上装载的 Azure NetApp 卷上的文件权限将显示为无人。
+   > 确保在 VM 上设置/etc/idmapd.conf 中的 NFS 域，使其与 Azure NetApp 文件上的默认域配置匹配： **defaultv4iddomain.com**。 如果 NFS 客户端上的域配置不匹配 (例如，VM) 和 NFS 服务器，即 Azure NetApp 配置，则在 Vm 上装载的 Azure NetApp 卷上的文件权限将显示为无人。
 
    验证 `nfs4_disable_idmapping`。 它应设置为“Y”。若要创建 `nfs4_disable_idmapping` 所在的目录结构，请执行 mount 命令。 无法在 /sys/modules 下手动创建目录，因为访问权限是为内核/驱动程序保留的。
 
@@ -282,11 +283,11 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
 3. 在 "计算 + 存储" 中，选择 " **配置服务器** "，并根据调整大小的输出选择适当的定价层。
 
-4. 默认情况下启用 **存储自动增长** 。 请记住， [存储](../../../mysql/concepts-pricing-tiers.md#storage) 只能向上扩展，而不是关闭。
+4. 默认情况下启用 **存储自动增长**。 请记住， [存储](../../../mysql/concepts-pricing-tiers.md#storage) 只能向上扩展，而不是关闭。
 
 5. 默认情况下， **备份保留期** 为七天，但你可以 [根据需要将其配置](../../../mysql/howto-restore-server-portal.md#set-backup-configuration) 为35天。
 
-6. 默认情况下，Azure Database for MySQL 的备份是本地冗余的，因此，如果要在异地冗余存储中备份服务器，请从 **备份冗余选项** 中选择 " **地域冗余** "。
+6. 默认情况下，Azure Database for MySQL 的备份是本地冗余的，因此，如果要在异地冗余存储中备份服务器，请从 **备份冗余选项** 中选择 "**地域冗余**"。
 
 > [!NOTE]
 > 不支持在创建服务器后更改 [备份冗余选项](../../../mysql/concepts-backup.md#backup-redundancy-options) 。
@@ -296,9 +297,9 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 默认情况下，使用防火墙保护创建的服务器，并且无法公开访问。 若要提供对运行 SAP BI 平台应用程序服务器的虚拟网络的访问权限，请执行以下步骤-  
 
 1. 中转到 Azure 门户中的 "服务器资源"，然后从服务器资源的左侧菜单中选择 " **连接安全性** "。
-2. 选择 **"是"** 以 **允许访问 Azure 服务** 。
-3. 在 "VNET 规则" 下，选择 " **添加现有虚拟网络** "。 选择 SAP BI Platform 应用程序服务器的虚拟网络和子网。 此外，还需要提供对跳转框或其他服务器的访问权限，通过这些服务器可将 [MySQL 工作台](../../../mysql/connect-workbench.md) 连接到 Azure Database for MySQL。 MySQL 工作台将用于创建 CMS 和审核数据库
-4. 添加虚拟网络后，请选择 " **保存** "。
+2. 选择 **"是"** 以 **允许访问 Azure 服务**。
+3. 在 "VNET 规则" 下，选择 " **添加现有虚拟网络**"。 选择 SAP BI Platform 应用程序服务器的虚拟网络和子网。 此外，还需要提供对跳转框或其他服务器的访问权限，通过这些服务器可将 [MySQL 工作台](../../../mysql/connect-workbench.md) 连接到 Azure Database for MySQL。 MySQL 工作台将用于创建 CMS 和审核数据库
+4. 添加虚拟网络后，请选择 " **保存**"。
 
 ### <a name="create-cms-and-audit-database"></a>创建 CMS 和审核数据库
 
@@ -395,15 +396,15 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
 本部分中的步骤使用以下前缀：
 
-**[A]** ：该步骤适用于所有主机。
+**[A]**：该步骤适用于所有主机。
 
-1. **[A]** 根据 LINUX (SLES 或 RHEL) 的风格，需要设置内核参数并安装所需的库。 请参阅 [适用于 Unix 的商业智能平台安装指南中的](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)" **系统要求** " 部分。
+1. **[A]** 根据 LINUX (SLES 或 RHEL) 的风格，需要设置内核参数并安装所需的库。 请参阅 [适用于 Unix 的商业智能平台安装指南中的](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)"**系统要求**" 部分。
 
 2. **[A]** 确保计算机上的时区设置正确。 请参阅安装指南中的 " [其他 Unix 和 Linux 要求" 部分](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) 。
 
-3. **[A]** 创建用户帐户 ( **bl1** adm) 并组 (在其下运行软件的后台进程的 sapsys) 。 使用此帐户执行安装并运行软件。 帐户不需要根权限。
+3. **[A]** 创建用户帐户 (**bl1** adm) 并组 (在其下运行软件的后台进程的 sapsys) 。 使用此帐户执行安装并运行软件。 帐户不需要根权限。
 
-4. **[A]** 设置用户帐户 ( **bl1** adm) 环境使用支持的 utf-8 区域设置，并确保控制台软件支持 utf-8 字符集。 若要确保操作系统使用正确的区域设置，请在 ( **bl1** adm) 用户环境中将 LC_ALL 和 LANG 环境变量设置为首选区域设置。
+4. **[A]** 设置用户帐户 (**bl1** adm) 环境使用支持的 utf-8 区域设置，并确保控制台软件支持 utf-8 字符集。 若要确保操作系统使用正确的区域设置，请在 (**bl1** adm) 用户环境中将 LC_ALL 和 LANG 环境变量设置为首选区域设置。
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** 配置用户帐户 ( **bl1** adm) 。
+5. **[A]** 配置用户帐户 (**bl1** adm) 。
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -465,7 +466,7 @@ LC_ALL=en_US.utf8
 
 - 在 " **选择安装类型** " 屏幕上，选择 "在第一台服务器上 **完全** 安装 (azusbosl1") 上，为其他服务器 (Azusbosl2) 选择 " **自定义/展开** "，这将展开现有 BOBI 设置。
 
-- 在 " **选择默认值或现有数据库** " 屏幕上，选择 " **配置现有数据库** "，这将提示你选择 CMS 和审核数据库。 选择 " **MySQL** " "数据库类型" 和 "审核数据库类型"。
+- 在 " **选择默认值或现有数据库** " 屏幕上，选择 " **配置现有数据库**"，这将提示你选择 CMS 和审核数据库。 选择 " **MySQL** " "数据库类型" 和 "审核数据库类型"。
 
   如果不想在安装期间配置审核，还可以选择 "无审核数据库"。
 
@@ -475,7 +476,7 @@ LC_ALL=en_US.utf8
   
   ![Linux 上的 SAP BOBI 部署-CMS 数据库](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-cms.png)
 
--  (可选) 在 " **配置审核存储库数据库-MySQL** " 中输入审核数据库信息。 用于 Linux 安装的审核数据库信息的示例输入。
+-  (可选) 在 " **配置审核存储库数据库-MySQL**" 中输入审核数据库信息。 用于 Linux 安装的审核数据库信息的示例输入。
 
   ![Linux 上的 SAP BOBI 部署-审核数据库](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-audit.png)
 
@@ -557,7 +558,7 @@ Tomcat 支持将两个或更多应用程序服务器用于会话复制和故障�
 
 #### <a name="backup--restore-for-file-repository-server"></a>文件存储库服务器的备份 & 还原
 
-对于 **Azure NetApp 文件** ，可以创建按需快照，并使用快照策略计划自动快照。 快照副本提供和卷的时间点副本。 有关详细信息，请参阅 [使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
+对于 **Azure NetApp 文件**，可以创建按需快照，并使用快照策略计划自动快照。 快照副本提供和卷的时间点副本。 有关详细信息，请参阅 [使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
 
 **Azure 文件** 备份与本机 [Azure 备份](../../../backup/backup-overview.md) 服务集成，该服务将备份和还原功能与 vm 备份一起使用，并简化操作工作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md) 和 [常见问题解答-备份 Azure 文件](../../../backup/backup-azure-files-faq.md)。
 
@@ -584,7 +585,7 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 高可用性是指一组技术，可通过同一数据中心内的冗余、容错或故障转移保护的组件提供应用程序/服务的业务连续性，从而最大程度地降低 IT 中断。 在我们的示例中，数据中心位于一个 Azure 区域内。 适用于 [sap 的高可用性体系结构和方案](sap-high-availability-architecture-scenarios.md) 为 Sap 应用程序提供了针对 Azure 应用程序的不同高可用性技术和建议的初步见解，这将补充本部分中的说明。
 
-根据 SAP BOBI 平台的大小调整结果，你需要设计横向，并确定跨 Azure 虚拟机和子网的 BI 组件分布。 在分布式体系结构中，冗余级别取决于业务所需的恢复时间目标 (RTO) 和恢复点目标 (RPO) 。 SAP BOBI 平台在每个层上都包含不同的层和组件，目的是为了实现冗余。 这样，如果一个组件发生故障，SAP BOBI 应用程序就不会有任何中断。 例如，应用于对象的
+根据 SAP BOBI 平台的大小调整结果，你需要设计横向，并确定跨 Azure 虚拟机和子网的 BI 组件分布。 在分布式体系结构中，冗余级别取决于业务所需的恢复时间目标 (RTO) 和恢复点目标 (RPO) 。 SAP BOBI 平台在每个层上都包含不同的层和组件，目的是为了实现冗余。 这样，如果一个组件发生故障，SAP BOBI 应用程序就不会有任何中断。 例如，
 
 - 冗余应用程序服务器，如 BI 应用程序服务器和 Web 服务器
 - CMS 数据库、文件存储库服务器、负载均衡器等独特组件

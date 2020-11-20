@@ -7,18 +7,19 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964807"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）体系结构
 
@@ -60,5 +61,5 @@ Azure 大型实例模具本身包含以下组件：
 
 可以在[对 HLI 可用的 SKU](hana-available-skus.md) 中找到可用的 SKU。
 
-**后续步骤**
+后续步骤
 - 请参阅 [SAP HANA（大型实例）网络体系结构](hana-network-architecture.md)

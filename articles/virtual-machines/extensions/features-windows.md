@@ -9,18 +9,19 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427371"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966048"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -336,7 +337,7 @@ AutoUpgradeMinorVersion     : True
 
 若要查看何时对扩展执行了更新，请查看 VM 上的代理日志，路径为 *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-在以下示例中，VM 上安装了 *Microsoft.Compute.CustomScriptExtension 1.8* 。 为版本 *1.9* 提供了修补程序：
+在以下示例中，VM 上安装了 *Microsoft.Compute.CustomScriptExtension 1.8*。 为版本 *1.9* 提供了修补程序：
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -371,7 +372,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 ( *Substatuses[1]* )。
+针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

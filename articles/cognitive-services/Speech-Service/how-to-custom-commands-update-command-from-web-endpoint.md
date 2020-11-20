@@ -1,7 +1,7 @@
 ---
 title: 从 web 终结点更新命令
 titleSuffix: Azure Cognitive Services
-description: 从 web 终结点更新命令
+description: 了解如何使用对 web 端点的调用更新命令的状态。
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 4432843ac93002bc92068db191706352234d76e6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571177"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963600"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>从 web 终结点更新命令
 
-如果客户端应用程序需要在不使用语音输入的情况下更新正在进行的命令的状态，则可以使用对 web 端点的调用来更新命令。
+如果客户端应用程序需要对不使用语音输入的正在进行的命令的状态进行更新，则可以使用对 web 端点的调用来更新该命令。
 
 在本文中，你将了解如何从 web 终结点更新正在进行的命令。
 
@@ -29,7 +29,7 @@ ms.locfileid: "94571177"
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数 
 
-在此示例中，我们将需要一个支持以下输入 (的 HTTP-Triggered [Azure 函数](https://docs.microsoft.com/azure/azure-functions/) 或此输入) 的子集。
+在此示例中，你将需要一个支持以下输入 (的 HTTP 触发的 [Azure 函数](https://docs.microsoft.com/azure/azure-functions/) 或此输入) 的一个子集：
 
 ```JSON
 {
@@ -48,16 +48,16 @@ ms.locfileid: "94571177"
 }
 ```
 
-允许查看此输入的键属性。
+让我们查看一下此输入的关键特性：
 
 | Attribute | 说明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **conversationId** | "conversationId" 是会话的唯一标识符，请注意，此 id 可以从客户端应用程序生成。 |
-| **currentCommand** | "currentCommand" 是会话中当前活动的命令。 |
-| **name** | "name" 是命令的名称，"parameters" 是包含参数的当前值的映射。 |
-| **currentGlobalParameters** | "currentGlobalParameters" 也是类似于 "parameters" 但用于全局参数的映射。 |
+| **conversationId** | 会话的唯一标识符。 请注意，此 ID 可以从客户端应用程序生成。 |
+| **currentCommand** | 会话中当前活动的命令。 |
+| **name** | 命令的名称。 `parameters`特性是一个映射，其中包含参数的当前值。 |
+| **currentGlobalParameters** | 类似于的映射 `parameters` ，但用于全局参数。 |
 
-Azure 函数的输出需要支持以下格式。
+Azure 函数的输出需要支持以下格式：
 
 ```JSON
 {
@@ -74,9 +74,9 @@ Azure 函数的输出需要支持以下格式。
 }
 ```
 
-你可能会认识到这种格式，因为它与 [更新客户端中的命令](./how-to-custom-commands-update-command-from-client.md)时使用的格式相同。 
+你可能会识别此格式，因为它与你在 [更新客户端中的命令](./how-to-custom-commands-update-command-from-client.md)时使用的格式相同。 
 
-现在，创建基于 NodeJS 的 Azure 函数并复制并粘贴此代码
+现在，创建基于 Node.js 的 Azure 函数。 复制/粘贴以下代码：
 
 ```nodejs
 module.exports = async function (context, req) {
@@ -94,35 +94,35 @@ module.exports = async function (context, req) {
 }
 ```
 
-当我们从自定义命令中调用此 Azure 函数时，我们将发送会话的当前值，我们将返回要更新的参数，或者如果我们要取消当前命令，则返回。
+从自定义命令调用此 Azure 函数时，将发送会话的当前值。 返回要更新的参数，或者如果要取消当前命令，则返回。
 
 ## <a name="update-the-existing-custom-commands-app"></a>更新现有的自定义命令应用
 
-现在，让我们将 Azure 函数与现有的自定义命令应用程序挂钩。
+让我们将 Azure 函数与现有的自定义命令应用程序挂钩：
 
-1. 添加一个名为 IncrementCounter 的新命令。
-1. 只添加一个值为 "增量" 的示例句子。
-1. 添加一个名为 Counter 的新参数 (与上面的 Azure 函数中指定的名称) ，其默认值为0。
-1. 添加一个名为 IncrementEndpoint 的新 Web 终结点，其中包含 Azure 函数的 URL 和启用了远程更新的。
+1. 添加一个名为的新命令 `IncrementCounter` 。
+1. 只添加一个带有值的示例句子 `increment` 。
+1. 添加一个名为的新参数 `Counter` (与 Azure function) 中指定的名称相同，其 `Number` 默认值为 `0` 。
+1. 使用 Azure 函数的 URL 添加一个名为的新 web 终结点 `IncrementEndpoint` ，其中 " **远程更新** " 设置为 " **已启用**"。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="设置具有远程更新的 web 终结点":::
-1. 创建名为 "IncrementRule" 的新交互规则，并添加一个调用 web 终结点操作。
+    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="屏幕截图，显示如何设置具有远程更新的 web 终结点。":::
+1. 创建名为 **IncrementRule** 的新交互规则并添加 **调用 web 终结点** 操作。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="递增规则":::
-1. 在 "操作配置" 中，选择 "IncrementEndpoint"，将 "成功时配置" 发送具有 "计数器" 和 "失败" 值的语音响应，并提供错误消息。
+    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="显示交互规则创建的屏幕截图。":::
+1. 在 "操作配置" 中，选择 `IncrementEndpoint` 。 **在成功** 时配置以使用的值 **发送语音响应** `Counter` ，并 **在失败** 时配置错误消息。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="设置增量计数器调用终结点":::
-1. 设置规则的执行后状态以等待用户输入
+    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="屏幕截图，显示为调用 web 终结点设置增量计数器。":::
+1. 设置规则的执行后状态，以 **等待用户的输入**。
 
 ## <a name="test-it"></a>测试
 
-1. 保存并训练应用
-1. 单击 "测试"
-1. 发送几次 "递次" (这是 IncrementCounter 命令的示例句子) 
+1. 保存并训练您的应用程序。
+1. 选择“测试”。
+1. 发送 `increment` 几次 (，这是命令) 的示例句子 `IncrementCounter` 。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="递增值计数器示例":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="显示增量计数器示例的屏幕截图。":::
 
-请注意，Azure 函数每次转换时，Counter 参数的值如何递增。
+请注意，Azure 函数每次都会递增参数的值 `Counter` 。
 
 ## <a name="next-steps"></a>后续步骤
 

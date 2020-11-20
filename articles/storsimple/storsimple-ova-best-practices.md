@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81460641"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964977"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 
@@ -43,12 +43,12 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **虚拟机类型** |可以配合 Windows Server 2012 或更高版本和 *.vhdx* 映像使用的**第 2 代** VM。 <br></br> 可以配合 Windows Server 2008 或更高版本和 *.vhd* 映像使用的**第 1 代** VM。 |使用 *.vmdk* 映像时，请使用虚拟机版本 8。 |
-| **内存类型** |配置为**静态内存**。 <br></br> 不要使用**动态内存**选项。 | |
-| **数据磁盘类型** |预配为**动态扩展**。<br></br> 预配**固定大小**需要很长时间。 <br></br> 不要使用**差异**选项。 |使用**精简预配**选项。 |
+| **虚拟机类型** |可以配合 Windows Server 2012 或更高版本和 *.vhdx* 映像使用的 **第 2 代** VM。 <br></br> 可以配合 Windows Server 2008 或更高版本和 *.vhd* 映像使用的 **第 1 代** VM。 |使用 *.vmdk* 映像时，请使用虚拟机版本 8。 |
+| **内存类型** |配置为 **静态内存**。 <br></br> 不要使用 **动态内存** 选项。 | |
+| **数据磁盘类型** |预配为 **动态扩展**。<br></br> 预配 **固定大小** 需要很长时间。 <br></br> 不要使用 **差异** 选项。 |使用 **精简预配** 选项。 |
 | **数据磁盘修改** |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |
 
-### <a name="sizing"></a>调整大小
+### <a name="sizing"></a>大小调整
 调整 StorSimple 虚拟阵列的大小时，请考虑以下因素：
 
 * 卷或共享的本地预留空间。 在本地层保留大约 12% 的空间给每个预配的分层卷或共享。 另外，大约保留 10% 的空间给本地固定卷用于保存文件系统。
@@ -119,7 +119,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 因此，我们建议：
 
 * 确保虚拟阵列位于其自身的 Active Directory 组织单位 (OU) 中。
-* 确保没有对虚拟阵列应用组策略对象 (GPO)。 可以阻止继承，确保虚拟阵列（子节点）不会自动继承父节点的任何 GPO。 有关详细信息，请转到[阻止继承](https://technet.microsoft.com/library/cc731076.aspx)。
+* 确保没有对虚拟阵列应用组策略对象 (GPO)。 可以阻止继承，确保虚拟阵列（子节点）不会自动继承父节点的任何 GPO。 有关详细信息，请转到[阻止继承](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11))。
 
 ### <a name="networking"></a>网络
 虚拟阵列的网络配置是通过本地 Web UI 完成的。 虚拟网络接口是通过虚拟阵列预配所在的虚拟机监控程序启用的。 使用 [网络设置](storsimple-virtual-array-deploy3-fs-setup.md) 页可以配置虚拟网络接口的 IP 地址、子网和网关。  此外，可为设备配置主要和辅助 DNS 服务器、时间设置和可选的代理设置。 大多数网络配置都是一次性的设置。 在部署虚拟阵列之前，请查看 [StorSimple 网络要求](storsimple-ova-system-requirements.md#networking-requirements)。
@@ -133,11 +133,11 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 确保随时都可以连接到 Internet。 设备的 Internet 连接如果断断续续或不可靠，可能导致无法访问云数据，并可能导致配置不受支持。
 * 如果打算将设备部署为 iSCSI 服务器：
   
-  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。****
+  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。
   * 配置静态 IP 地址。 必须配置主要和辅助 DNS 服务器。
-  * 如果在虚拟阵列上定义多个网络接口，只有第一个网络接口（默认情况下，此接口是**以太网**接口）可以连接到云。 要控制流量类型，可以在虚拟阵列上创建多个虚拟网络接口（配置为 iSCSI 服务器），并将这些接口连接到不同的子网。
+  * 如果在虚拟阵列上定义多个网络接口，只有第一个网络接口（默认情况下，此接口是 **以太网** 接口）可以连接到云。 要控制流量类型，可以在虚拟阵列上创建多个虚拟网络接口（配置为 iSCSI 服务器），并将这些接口连接到不同的子网。
 * 若只要限制云带宽（由虚拟阵列使用），可以在路由器或防火墙中配置限制。 如果在虚拟机监控程序中定义限制，它会限制所有协议（包括 iSCSI 和 SMB），而不只是限制云带宽。
-* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。********
+* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。
 
 ### <a name="storage-accounts"></a>存储帐户
 StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以是自动生成的存储帐户、位于服务所在的同一订阅中的帐户，也可以是与另一个订阅相关的存储帐户。 有关详细信息，请参阅有关如何[管理虚拟阵列的存储帐户](storsimple-virtual-array-manage-storage-accounts.md)的主题。
@@ -167,7 +167,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 * 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 
 #### <a name="volumeshare-type"></a>卷/共享类型
-根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然**。
+根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然。
 
 配置 StorSimple 卷/共享时，建议实施以下最佳实践：
 
@@ -226,7 +226,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 * 尝试从备份集中还原卷或共享时，如果还原作业失败，在门户中可能仍然会创建目标卷或共享。 请务必在门户中删除这个未使用的目标卷或共享，以便最大程度地减少此元素引发的任何问题。
 
 ### <a name="failover-and-disaster-recovery"></a>故障转移和灾难恢复
-使用设备故障转移可将数据中心内的*源*设备数据迁移到位于相同或不同地理位置的另一个*目标*设备。 设备故障转移适用于整个设备。 在故障转移期间，源设备的云数据将所有权更改为目标设备云数据。
+使用设备故障转移可将数据中心内的 *源* 设备数据迁移到位于相同或不同地理位置的另一个 *目标* 设备。 设备故障转移适用于整个设备。 在故障转移期间，源设备的云数据将所有权更改为目标设备云数据。
 
 对于 StorSimple 虚拟阵列，只能故障转移到同一 StorSimple Manager 服务管理的另一个虚拟阵列。 不允许故障转移到 8000 系列设备或不同 StorSimple Manager 服务（非源设备的服务）管理的阵列。 有关故障转移注意事项的详细信息，请转到 [prerequisites for the device failover](storsimple-virtual-array-failover-dr.md)（设备故障转移的先决条件）。
 
@@ -289,4 +289,3 @@ StorSimple 虚拟阵列可以自动将数据从本地层分层到 Microsoft Azur
 
 ## <a name="see-also"></a>请参阅
 了解如何通过 StorSimple Manager 服务[管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。
-

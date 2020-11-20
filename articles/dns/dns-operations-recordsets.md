@@ -12,18 +12,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
-ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701726"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965708"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-operations-recordsets-portal.md)
-> * [Azure 经典 CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure 经典 CLI](./dns-operations-recordsets-cli.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -162,7 +162,7 @@ New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -Res
 
 若要检索现有的记录集，请使用 `Get-AzDnsRecordSet`。 此 cmdlet 返回一个本地对象，该对象表示 Azure DNS 中的记录集。
 
-对于 `New-AzDnsRecordSet`，给定的记录集名称必须是*相对* 名称，这意味着它必须排除区域名称。 还需指定记录类型，以及包含记录集的区域。
+对于 `New-AzDnsRecordSet`，给定的记录集名称必须是 *相对* 名称，这意味着它必须排除区域名称。 还需指定记录类型，以及包含记录集的区域。
 
 以下示例说明如何检索记录集。 在此示例中，区域使用 `-ZoneName` 和 `-ResourceGroupName` 参数指定。
 
@@ -230,7 +230,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 使用 `Set-AzDnsRecordSet` 可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换为指定的记录集  。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
-此操作序列也可*通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
+此操作序列也可 *通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
@@ -282,7 +282,7 @@ Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyRes
     * 添加或删除记录
     * 更改现有记录的参数
     * 更改记录集元数据和生存时间 (TTL)
-3. 使用 `Set-AzDnsRecordSet` cmdlet 提交更改。 这样会将 Azure DNS 中的现有记录集*替换* 为指定的记录集。
+3. 使用 `Set-AzDnsRecordSet` cmdlet 提交更改。 这样会将 Azure DNS 中的现有记录集 *替换* 为指定的记录集。
 
 使用 `Set-AzDnsRecordSet` 时，可通过 [Etag 检查](dns-zones-records.md#etags)确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 

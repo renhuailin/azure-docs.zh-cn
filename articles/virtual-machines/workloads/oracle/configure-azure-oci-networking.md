@@ -3,16 +3,17 @@ title: 通过 Oracle 云基础结构连接 Azure ExpressRoute |Microsoft Docs
 description: 连接 Azure ExpressRoute 和 Oracle 云基础结构 (OCI) FastConnect 以启用跨云 Oracle 应用程序解决方案
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.reviewer: cynthn
-ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996223"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963702"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
@@ -48,7 +49,7 @@ ms.locfileid: "91996223"
     ![ExpressRoute 服务密钥](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > 预配 ExpressRoute 线路后，将立即为 ExpressRoute 收费计费 (即使**未**) **提供提供程序状态**。
+    > 预配 ExpressRoute 线路后，将立即为 ExpressRoute 收费计费 (即使 **未**) **提供提供程序状态**。
 
 1. 划分2个专用 IP 地址空间/30，它们不会与 Azure 虚拟网络或 OCI 虚拟云网络 IP 地址空间重叠。 我们会将第一个 IP 地址空间称为主地址空间，并将第二个 IP 地址空间引用为辅助地址空间。 记下配置 FastConnect 线路时所需的地址。
 1.  (.DRG) 创建动态路由网关。 创建 FastConnect 线路时需要用到它。 有关详细信息，请参阅 [动态路由网关](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) 文档。

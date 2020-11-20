@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a07957a75bfe82d8ce350675f0d29b2f03e069
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737353"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966133"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -80,7 +80,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) 上的文档。
 
 1. 下载适用于系统的正确二进制程序包：
 
@@ -236,7 +236,7 @@ tail -f /var/log/suricata/fast.log
 1. 若要查看 Kibana Web 界面，请导航到 `http://localhost:5601`
 1. 对于本方案，用于 Suricata 日志的索引模式为“logstash-*”
 
-1. 如果想要远程查看 Kibana 仪表板，请创建允许访问**端口 5601** 的入站 NSG 规则。
+1. 如果想要远程查看 Kibana 仪表板，请创建允许访问 **端口 5601** 的入站 NSG 规则。
 
 ### <a name="create-a-kibana-dashboard"></a>创建 Kibana 仪表板
 

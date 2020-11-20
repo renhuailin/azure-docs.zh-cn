@@ -8,20 +8,20 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4284956138002d209ab0934cdd052748ef8aab78
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966269"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>动态映射的 StylesObject 架构参考指南
 
-本文是对的 JSON 架构和语法的参考指南 `StylesObject` 。 `StylesObject`是 `StyleObject` 表示 stateset 样式的数组。 使用 Azure Maps 创建者 [功能状态服务](/rest/api/maps/featurestate) 将 stateset 样式应用到室内地图数据功能。 一旦创建了 stateset 样式，并将其与室内地图功能关联，就可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅 [实现 Creator 室内地图的动态样式](indoor-map-dynamic-styling.md)。
+ `StylesObject`是 `StyleObject` 表示 stateset 样式的数组。 使用 Azure Maps 创建者 [功能状态服务](/rest/api/maps/featurestate) 将 stateset 样式应用到室内地图数据功能。 创建 stateset 样式，并将其与室内地图功能关联后，可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅 [实现 Creator 室内地图的动态样式](indoor-map-dynamic-styling.md)。
 
 ## <a name="styleobject"></a>StyleObject
 
-`StyleObject`可以是 [`BooleanTypeStyleRule`](#booleantypestylerule) 或 [`NumericTypeStyleRule`](#numerictypestylerule) 。
+`StyleObject`为 [`BooleanTypeStyleRule`](#booleantypestylerule) 或 [`NumericTypeStyleRule`](#numerictypestylerule) 。
 
 下面的 JSON 显示了一个名为的 `BooleanTypeStyleRule` `occupied` 和名为的 `NumericTypeStyleRule` `temperature` 。
 
@@ -112,10 +112,10 @@ ms.locfileid: "92891693"
 
 | properties | 类型 | 说明 | 必需 |
 |-----------|----------|-------------|-------------|
-| `minimum` | double | X ≥的所有数字 x `minimum` 。| 否 |
-| `maximum` | double | X ≤的所有数字 x `maximum` 。 | 否 |
-| `exclusiveMinimum` | double | X > 的所有数字 x `exclusiveMinimum` 。| 否 |
-| `exclusiveMaximum` | double | X < 的所有数字 x `exclusiveMaximum` 。| 否 |
+| `minimum` | Double | X ≥的所有数字 x `minimum` 。| 否 |
+| `maximum` | Double | X ≤的所有数字 x `maximum` 。 | 否 |
+| `exclusiveMinimum` | Double | X > 的所有数字 x `exclusiveMinimum` 。| 否 |
+| `exclusiveMaximum` | Double | X < 的所有数字 x `exclusiveMaximum` 。| 否 |
 
 ### <a name="example-of-numerictypestylerule"></a>NumericTypeStyleRule 的示例
 

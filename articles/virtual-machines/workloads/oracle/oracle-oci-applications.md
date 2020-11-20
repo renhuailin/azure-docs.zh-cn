@@ -3,16 +3,17 @@ title: 用于在 Azure 虚拟机上部署 Oracle 应用程序的体系结构 |Mi
 description: 应用程序体系结构，用于将 Oracle 应用（包括电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft）部署到 Azure 中的数据库或 Oracle 云基础结构 (OCI) 中 Microsoft Azure 虚拟机。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6261e2b49eda2aead75d080ca3f6c2304bc49d81
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996605"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965912"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>用于在 Azure 上部署 Oracle 应用程序的体系结构
 
@@ -123,11 +124,11 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 
 下面是此层中的组件：
     
-- **应用程序接口服务 (AIS) ** -ais 服务器在 JD Edwards EnterpriseOne mobile 企业应用程序和 JD Edwards EnterpriseOne 之间提供通信接口。
-- **Java 应用程序服务器 (ja) ** -ja 从负载均衡器接收请求，并将其传递给中间层以执行复杂的任务。 JA 可以执行简单的业务逻辑。
-- **BI Publisher Server (BIP) ** -此服务器根据 JD Edwards EnterpriseOne 应用程序收集的数据提供报表。 您可以根据不同的模板来设计和控制报表显示数据的方式。
-- **业务服务服务器 (BSS) ** -bss 允许信息交换和与其他 Oracle 应用程序的互操作性。
-- **实时事件服务器 (rte) ** -rte 服务器允许您设置 JDE EnterpriseOne 系统中发生的事务的外部系统通知。 它使用订阅者模型，并允许第三方系统订阅事件。 若要对两个 RTE 服务器的请求进行负载均衡，请确保服务器位于群集中。
+- **应用程序接口服务 (AIS)** -ais 服务器在 JD Edwards EnterpriseOne mobile 企业应用程序和 JD Edwards EnterpriseOne 之间提供通信接口。
+- **Java 应用程序服务器 (ja)** -ja 从负载均衡器接收请求，并将其传递给中间层以执行复杂的任务。 JA 可以执行简单的业务逻辑。
+- **BI Publisher Server (BIP)** -此服务器根据 JD Edwards EnterpriseOne 应用程序收集的数据提供报表。 您可以根据不同的模板来设计和控制报表显示数据的方式。
+- **业务服务服务器 (BSS)** -bss 允许信息交换和与其他 Oracle 应用程序的互操作性。
+- **实时事件服务器 (rte)** -rte 服务器允许您设置 JDE EnterpriseOne 系统中发生的事务的外部系统通知。 它使用订阅者模型，并允许第三方系统订阅事件。 若要对两个 RTE 服务器的请求进行负载均衡，请确保服务器位于群集中。
 - **应用程序开发框架 (adf) 服务器** -adf 服务器用于运行使用 Oracle ADF 开发的 JD Edwards EnterpriseOne 应用程序。 这是使用 ADF 运行时部署在 Oracle WebLogic 服务器上的。
 
 ### <a name="middle-tier"></a>中间层

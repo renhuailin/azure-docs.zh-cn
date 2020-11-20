@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: 237ca1f0041283bb86b24ad456ab781dc13eeb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 020b0dbc937885923b26c115f91147437b7a0f9b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980530"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964722"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 macOS。 使用 Azure CLI 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
+[Azure CLI](/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 macOS。 使用 Azure CLI 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
 
 IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edge 功能。
 
@@ -33,7 +33,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
+按照[安装说明](/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
 
 ### <a name="install-iot-extension"></a>安装 IoT 扩展
 
@@ -53,7 +53,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 az login
 ```
 
-![屏幕截图显示了一个命令提示符窗口，该窗口运行命令 az login。](./media/how-to-manage-dps-with-cli/login.jpg)
+![屏幕截图显示了一个运行 az login 命令的命令提示符窗口。](./media/how-to-manage-dps-with-cli/login.jpg)
 
 ### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. 在 eastus 中创建资源组 IoTHubBlogDemo
 

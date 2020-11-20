@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 4e2bcb683c9d4c5248315549bf6d6ee26b2a51ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873890"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965028"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure 机器学习的企业安全和管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "94873890"
 
 ## <a name="authentication--authorization"></a>身份验证 & 授权
 
-对 Azure 机器学习资源的大多数身份验证使用 Azure Active Directory 的 (Azure AD) 进行身份验证，并使用基于角色的访问控制 (Azure RBAC) 进行授权。 例外情况如下：
+对 Azure 机器学习资源的大多数身份验证使用 Azure Active Directory 的 (Azure AD) 用于身份验证，Azure RBAC 的访问控制 (Azure RBAC) 用于授权。 例外情况如下：
 
 * __Ssh__：可以启用对某些计算资源（例如 Azure 机器学习计算实例）的 SSH 访问。 SSH 访问使用基于密钥的身份验证。 有关创建 SSH 密钥的详细信息，请参阅 [创建和管理 ssh 密钥](../virtual-machines/linux/create-ssh-keys-detailed.md)。 有关启用 SSH 访问的信息，请参阅 [创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
 * __部署为 web 服务的模型__： web 服务部署可以使用基于 __密钥__ 或 __令牌__ 的访问控制。 键为静态字符串。 使用 Azure AD 帐户检索令牌。 有关详细信息，请参阅为 [部署为 web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
@@ -49,7 +49,7 @@ Azure 机器学习依赖的特定服务（如 Azure 数据存储服务）有自�
 
 ### <a name="azure-rbac"></a>Azure RBAC
 
-你可以创建多个工作区，并且每个工作区可由多个用户共享。 可以通过将 Azure AD 帐户分配给 Azure RBAC 角色，来控制用户可以访问的工作区的哪些功能或操作。 下面是内置角色：
+你可以创建多个工作区，并且每个工作区可由多个用户共享。 可以通过将 Azure AD 帐户分配给 Azure 角色来控制用户可以访问的工作区的功能或操作。 下面是内置角色：
 
 * 所有者
 * 参与者

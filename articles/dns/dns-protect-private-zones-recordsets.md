@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330166"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965691"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保护专用 DNS 区域和记录
 
@@ -100,7 +100,7 @@ az role assignment create \
 
 在记录集级别应用权限。  用户有权对其所需的条目进行控制，但无法进行任何其他更改。
 
-可以使用 "记录集" 页中的 " **访问控制 (IAM) ** " 按钮，通过 Azure 门户配置记录集级别的 Azure RBAC 权限：
+可以使用 "记录集" 页中的 " **访问控制 (IAM)** " 按钮，通过 Azure 门户配置记录集级别的 Azure RBAC 权限：
 
 ![屏幕截图显示了“访问控制(标识和访问管理)”按钮。](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
@@ -204,7 +204,7 @@ Azure 资源管理器支持另一种类型的安全控制：资源锁定功能�
 
 ![使用 Azure 门户的区域级别资源锁](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-也可通过 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest) 创建区域级别的资源锁：
+也可通过 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) 创建区域级别的资源锁：
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-也可[通过 Azure CLI](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create) 提供等效命令：
+也可[通过 Azure CLI](/cli/azure/lock?view=azure-cli-latest#az-lock-create) 提供等效命令：
 
 ```azurecli-interactive
 # Lock a DNS zone

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397804"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966099"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array 更新 0.3 发行说明
 ## <a name="overview"></a>概述
@@ -66,11 +66,10 @@ ms.locfileid: "80397804"
 | **毫米.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 
 ## <a name="next-step"></a>后续步骤
-在 StorSimple Virtual Array 上[安装更新 0.3](storsimple-ova-install-update-01.md)。
+在 StorSimple Virtual Array 上[安装更新 0.3](./storsimple-virtual-array-install-update-06.md)。
 
 ## <a name="references"></a>参考
 查找较旧版本的发行说明？ 请转到： 
 
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 正式版发行说明](./storsimple-virtual-array-update-06-release-notes.md)

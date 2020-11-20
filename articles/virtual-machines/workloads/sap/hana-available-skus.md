@@ -8,18 +8,19 @@ manager: juergent
 editor: ''
 keywords: B-HLI、HANA、Sku、S896、S224、S448、S672、Optane、SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08872b95c4cff3c261a545f117cc4e6bf24e15a5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411467"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964756"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>适用于 HANA 大型实例的 Sku
 
@@ -104,9 +105,9 @@ Azure 上的 SAP HANA (大型实例) 基于修订版本4的服务的服务在 Az
 
 不会将整个 HANA 大型实例模具以独占方式分配给单个客户使用。 此事实也适用于通过 Azure 中部署的网络结构连接的计算和存储资源的机架。 HANA 大型实例基础结构（例如 Azure）部署在以下三个级别中相互隔离的不同客户&quot;租户&quot;：
 
-- **网络** ：在 HANA 大型实例模具中通过虚拟网络实现隔离。
-- **存储** ：通过分配了存储卷的存储虚拟机实现隔离，并在租户之间隔离存储卷。
-- **计算** ：专用于单个租户的服务器单元分配。 不对服务器单元进行硬分区或软分区。 租户之间不共享单个服务器或主机。 
+- **网络**：在 HANA 大型实例模具中通过虚拟网络实现隔离。
+- **存储**：通过分配了存储卷的存储虚拟机实现隔离，并在租户之间隔离存储卷。
+- **计算**：专用于单个租户的服务器单元分配。 不对服务器单元进行硬分区或软分区。 租户之间不共享单个服务器或主机。 
 
 不同租户之间的 HANA 大型实例单元部署相互不可见。 在 HANA 大型实例模具级别上，不同租户中部署的 HANA 大型实例单元也无法直接相互通信。 在 HANA 大型实例模具级别上，只有一个租户中的 HANA 大型实例单元才能相互通信。
 
