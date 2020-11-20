@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514536"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950748"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
@@ -114,7 +114,7 @@ ms.locfileid: "85514536"
 
 若要降低受伤、电击或死亡的可能性：
 
-* 不要从 PCM 取下盖子。 内部存在电击的危险。 若要返回 PCM 并获取更换件，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。
+* 不要从 PCM 取下盖子。 内部存在电击的危险。 若要返回 PCM 并获取更换件，请 [联系 Microsoft 支持部门](./storsimple-8000-contact-microsoft-support.md)。
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 

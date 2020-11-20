@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0eeff0c8c338b09fbe375587db2b955a143138c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214951"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949813"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加 Web API 应用程序
 
  在租户中注册 Web API 资源，以便他们可以接受并响应提供访问令牌的客户端应用程序的请求。 本文介绍如何在 Azure Active Directory B2C (Azure AD B2C) 中注册 Web API。
 
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -34,7 +34,7 @@ ms.locfileid: "92214951"
 1. 选择“注册”。
 1. 记录“应用程序(客户端) ID”，以便在 Web API 的代码中使用。
 
-如果你有一个实现隐式授权流的应用程序（例如， [基于 JavaScript 的单页应用程序 (SPA) ](tutorial-register-spa.md)），则可以按照以下步骤启用此流：
+如果有一个实现隐式授权流的应用程序（例如[基于 JavaScript 的单页应用程序 (SPA)](tutorial-register-spa.md)），可以通过执行以下步骤来启用此流：
 
 1. 在“管理”下，选择“身份验证”。 
 1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框  。
@@ -50,7 +50,7 @@ ms.locfileid: "92214951"
 6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。  
 7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点。 在生产应用程序中，可以将回复 URL 设置为 `https://localhost:44332` 之类的值。 出于测试目的，将回复 URL 设置为 `https://jwt.ms`。
 8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。 包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
-9. 单击**创建**。
+9. 单击 **创建**。
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
 
 * * *

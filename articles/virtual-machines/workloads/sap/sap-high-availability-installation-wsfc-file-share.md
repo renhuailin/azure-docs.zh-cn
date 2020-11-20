@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7df3934862efa9798735d0c163f7fb1bac98423
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760883"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951037"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -199,7 +200,7 @@ ms.locfileid: "87760883"
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看以下文章：
 
@@ -290,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]**），如[为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
+创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]**），如 [为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>在群集中安装 ASCS/SCS 和 ERS 实例
@@ -299,7 +300,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  的**第一个群集节点**。
+**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或 **Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  的 **第一个群集节点**。
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
@@ -309,12 +310,12 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  **附加群集节点**。
+**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或 **Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  **附加群集节点**。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
-更新 SAP ASCS/SCS 实例配置文件 \<SID> _ASCS/scs \<Nr> _中的参数 \<Host> 。
+更新 SAP ASCS/SCS 实例配置文件 \<SID> _ASCS/scs \<Nr>_ 中的参数 \<Host> 。
 
 
 | 参数名称 | 参数值 |

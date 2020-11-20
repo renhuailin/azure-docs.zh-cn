@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be69e7fc0c836257b92aa8573826fe1e8a36d770
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87022457"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948436"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019 年 8 月版架构更新）
 
-[流量分析日志架构](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)包含以下新字段：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s  。 新字段提供有关源和目标 IP 的信息并且可以简化查询。
+[流量分析日志架构](./traffic-analytics-schema.md)包含以下新字段：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s  。 新字段提供有关源和目标 IP 的信息并且可以简化查询。
 
 在接下来的几个月内，以下较旧的字段将弃用：VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d        。
 

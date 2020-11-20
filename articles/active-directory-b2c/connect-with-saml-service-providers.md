@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949643"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -73,7 +73,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 ### <a name="11-prepare-a-self-signed-certificate"></a>1.1 准备自签名证书
 
-如果你还没有证书，则可以在本教程中使用自签名证书。 在 Windows 上，可使用 PowerShell 的 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
+如果你还没有证书，则可以在本教程中使用自签名证书。 在 Windows 上，可使用 PowerShell 的 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
 
 1. 执行此 PowerShell 命令来生成自签名证书。 根据应用程序和 Azure AD B2C 租户名称修改 `-Subject` 参数。 还可调整 `-NotAfter` 日期，为证书指定不同的过期日期。
 

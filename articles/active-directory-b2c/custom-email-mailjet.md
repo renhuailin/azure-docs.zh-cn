@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089649"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949575"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>通过 Mailjet 进行自定义电子邮件验证
 
 使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用当前在预览版中的 [DisplayControls](display-controls.md) () 和第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板， *从：* 地址和主题，以及支持 (OTP) 设置的本地化和自定义一次性密码。
 
-自定义电子邮件验证要求使用第三方电子邮件提供程序，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](custom-email.md)或 [SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 Mailjet 的解决方案。
+自定义电子邮件验证要求使用第三方电子邮件提供程序，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](./custom-email-sendgrid.md)或 [SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 Mailjet 的解决方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -32,25 +32,25 @@ ms.locfileid: "92089649"
 
 1. 按照 [创建 Mailjet 帐户](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)中的设置说明进行操作。
 1. 若要能够发送电子邮件，请 [注册并验证](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) 发件人电子邮件地址或域。
-2. 导航到 [API 密钥管理页](https://app.mailjet.com/account/api_keys)。 记录**API 密钥****和密钥，以便**在后面的步骤中使用。 创建帐户时，会自动生成这两个密钥。  
+2. 导航到 [API 密钥管理页](https://app.mailjet.com/account/api_keys)。 记录 **API 密钥****和密钥，以便** 在后面的步骤中使用。 创建帐户时，会自动生成这两个密钥。  
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
 接下来，将 Mailjet API 密钥存储在 Azure AD B2C 策略密钥中，以供策略参考。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在 " **概述** " 页上，选择 " **标识体验框架**"。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetApiKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`MailjetApiKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录的 Mailjet **API 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetSecretKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`MailjetSecretKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录 **的 Mailjet 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。

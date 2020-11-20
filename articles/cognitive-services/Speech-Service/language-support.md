@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
-ms.custom: seodec18
-ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.custom: references_regions
+ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616784"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949082"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -67,7 +67,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |英语（菲律宾）              |`en-PH` | 语言模型                                   |
 |英语（新加坡）                |`en-SG` | 语言模型                                   |
 |英语（南非）             |`en-ZA` | 语言模型                                   |
-|英语（英国）           |`en-GB` | 声学模型<br>语言模型<br>发音|
+|英语(英国)           |`en-GB` | 声学模型<br>语言模型<br>发音|
 |英语（美国）            |`en-US` | 声学模型<br>语言模型<br>发音|
 |爱沙尼亚语（爱沙尼亚）                  |`et-EE` | 语言模型                                   |
 |芬兰语（芬兰）                  |`fi-FI` | 语言模型                                   |
@@ -86,7 +86,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |立陶宛语（立陶宛）             |`lt-LT` | 语言模型                                   |
 |马耳他语（马耳他）                     |`mt-MT` | 语言模型                                   |
 |马拉地语(印度)                    |`mr-IN` | 语言模型                                   |
-|挪威 (BokmÃ¥ l)  (挪威)        |`nb-NO` | 语言模型                                   |
+|挪威语（博克马尔语，挪威）         |`nb-NO` | 语言模型                                   |
 |波兰语（波兰）                    |`pl-PL` | 语言模型                                   |
 |葡萄牙语（巴西）                |`pt-BR` | 声学模型<br>语言模型<br>发音|
 |葡萄牙语(葡萄牙)              |`pt-PT` | 语言模型                                   |
@@ -134,83 +134,103 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 使用神经语音可使得与聊天机器人和语音助手的交互更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
 
-有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
-
-|语言  | 区域设置 (BCP-47)           | 性别 | 语音名称 | 风格支持 |
-|--|--|--|--|--|
+| 语言 | Locale | 性别 | 语音名称 | 风格支持 |
+|---|---|---|---|---|
 | 阿拉伯语（埃及） | `ar-EG` | Female | `ar-EG-SalmaNeural` | 常规 |
 | 阿拉伯语（沙特阿拉伯） | `ar-SA` | 女 | `ar-SA-ZariyahNeural` | 常规 |
-| 保加利亚语（保加利亚） | `bg-BG` <sup>新建</sup> | 女 | `bg-BG-KalinaNeural` | 常规 |
-| 粤语（繁体中文，香港） | `zh-HK` | 女 | `zh-HK-HiuGaaiNeural` | 常规 |
+| 保加利亚语（保加利亚） | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>新建</sup> | 常规 |
 | 加泰罗尼亚语(西班牙) | `ca-ES` | 女 | `ca-ES-AlbaNeural` | 常规 |
-| 克罗地亚语（克罗地亚） | `hr-HR` <sup>新建</sup> | 女 | `hr-HR-GabrijelaNeural` | 常规 |
-| 捷克语（捷克） | `cs-CZ` <sup>新建</sup> | 女 | `cs-CZ-VlastaNeural` | 常规 |
+| 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 常规 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
+| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
+| 中文（普通话，简体） | `zh-CN` | 男   | `zh-CN-YunyangNeural` | 针对新闻阅读进行了优化，<br /> [使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种语音样式 |
+| 中文（普通话，简体） | `zh-CN` | 男   | `zh-CN-YunyeNeural` | 针对讲故事进行了优化 |
+| 中文(台湾普通话) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 常规 |
+| 克罗地亚语(克罗地亚) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>新建</sup> | 常规 |
+| 捷克语（捷克） | `cs-CZ` | Female | `cs-CZ-VlastaNeural` <sup>新建</sup>    | 常规 |
 | 丹麦语（丹麦） | `da-DK` | 女 | `da-DK-ChristelNeural` | 常规 |
 | 荷兰语（荷兰） | `nl-NL` | 女 | `nl-NL-ColetteNeural` | 常规 |
 | 英语（澳大利亚） | `en-AU` | Female | `en-AU-NatashaNeural` | 常规 |
-| 英语（澳大利亚） | `en-AU` <sup>新建</sup> | 男 | `en-AU-WilliamNeural` | 常规 |
+| 英语（澳大利亚） | `en-AU` | 男   | `en-AU-WilliamNeural` <sup>新建</sup>  | 常规 |
 | 英语（加拿大） | `en-CA` | Female | `en-CA-ClaraNeural` | 常规 |
 | 英语（印度） | `en-IN` | Female | `en-IN-NeerjaNeural` | 常规 |
-| 英语（爱尔兰） | `en-IE` <sup>新建</sup> | 女 | `en-IE-EmilyNeural` | 常规 |
-| 英语（英国） | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
-| 英语（英国） | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
-| 英语（英国） | `en-GB` <sup>新建</sup> | 男 | `en-GB-RyanNeural` | 常规 |
-| 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，提供了多种语音风格 |
+| 英语（爱尔兰） | `en-IE` | Female | `en-IE-EmilyNeural` <sup>新建</sup> | 常规 |
+| 英语(英国) | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
+| 英语(英国) | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
+| 英语(英国) | `en-GB` | 男 | `en-GB-RyanNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-AriaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
 | 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规 |
-| 英语（美国） | `en-US` <sup>新建</sup> | 女 | `en-US-JennyNeural` | 常规，提供了多种语音风格 |
-| 芬兰语（芬兰） | `fi-FI` | 女 | `fi-FI-NooraNeural` | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-JennyNeural` <sup>新建</sup> | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
+| 芬兰语(芬兰) | `fi-FI` | 女 | `fi-FI-NooraNeural` | 常规 |
 | 法语（加拿大） | `fr-CA` | Female | `fr-CA-SylvieNeural` | 常规 |
-| 法语（加拿大） | `fr-CA` <sup>新建</sup> | 男 | `fr-CA-JeanNeural` | 常规 |
+| 法语（加拿大） | `fr-CA` | 男 | `fr-CA-JeanNeural` <sup>新建</sup> | 常规 |
 | 法语（法国） | `fr-FR` | Female | `fr-FR-DeniseNeural` | 常规 |
-| 法语（法国） | `fr-FR` <sup>新建</sup> | 男 | `fr-FR-HenriNeural` | 常规 |
-| 法语（瑞士） | `fr-CH` <sup>新建</sup> | 女 | `fr-CH-ArianeNeural` | 常规 |
-| 德语（奥地利） | `de-AT` <sup>新建</sup> | 女 | `de-AT-IngridNeural` | 常规 |
+| 法语（法国） | `fr-FR` | 男 | `fr-FR-HenriNeural` <sup>新建</sup> | 常规 |
+| 法语（瑞士） | `fr-CH` | Female | `fr-CH-ArianeNeural` <sup>新建</sup> | 常规 |
+| 德语（奥地利） | `de-AT` | Female | `de-AT-IngridNeural` <sup>新建</sup> | 常规 |
 | 德语（德国） | `de-DE` | Female | `de-DE-KatjaNeural` | 常规 |
-| 德语（德国） | `de-DE` <sup>新建</sup> | 男 | `de-DE-ConradNeural` | 常规 |
-| 德语（瑞士） | `de-CH` <sup>新建</sup> | 女 | `de-CH-LeniNeural` | 常规 |
-| 希腊语(希腊) | `el-GR` <sup>新建</sup> | 女 | `el-GR-AthinaNeural` | 常规 |
-| 希伯来语（以色列） | `he-IL` <sup>新建</sup> | 女 | `he-IL-HilaNeural` | 常规 |
+| 德语（德国） | `de-DE` | 男 | `de-DE-ConradNeural` <sup>新建</sup> | 常规 |
+| 德语（瑞士） | `de-CH` | Female | `de-CH-LeniNeural` <sup>新建</sup> | 常规 |
+| 希腊语(希腊) | `el-GR` | Female | `el-GR-AthinaNeural` <sup>新建</sup> | 常规 |
+| 希伯来语(以色列) | `he-IL` | Female | `he-IL-HilaNeural` <sup>新建</sup> | 常规 |
 | 印地语（印度） | `hi-IN` | Female | `hi-IN-SwaraNeural` | 常规 |
-| 匈牙利语(匈牙利) | `hu-HU` <sup>新建</sup> | 女 | `hu-HU-NoemiNeural` | 常规 |
-| 印度尼西亚语(印度尼西亚) | `id-ID` <sup>新建</sup> | 男 | `id-ID-ArdiNeural` | 常规 |
+| 匈牙利语(匈牙利) | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>新建</sup> | 常规 |
+| 印度尼西亚语(印度尼西亚) | `id-ID` | 男 | `id-ID-ArdiNeural` <sup>新建</sup> | 常规 |
 | 意大利语（意大利） | `it-IT` | Female | `it-IT-ElsaNeural` | 常规 |
-| 意大利语（意大利） | `it-IT` <sup>新建</sup> | 女 | `it-IT-IsabellaNeural` | 常规 |
-| 意大利语（意大利） | `it-IT` <sup>新建</sup> | 男 | `it-IT-DiegoNeural` | 常规 |
+| 意大利语（意大利） | `it-IT` | Female | `it-IT-IsabellaNeural` <sup>新建</sup> | 常规 |
+| 意大利语（意大利） | `it-IT` | 男 | `it-IT-DiegoNeural` <sup>新建</sup> | 常规 |
 | 日语（日本） | `ja-JP` | 女 | `ja-JP-NanamiNeural` | 常规 |
-| 日语（日本） | `ja-JP` <sup>新建</sup> | 男 | `ja-JP-KeitaNeural` | 常规 |
+| 日语（日本） | `ja-JP` | 男 | `ja-JP-KeitaNeural` <sup>新建</sup> | 常规 |
 | 韩语(韩国) | `ko-KR` | 女 | `ko-KR-SunHiNeural` | 常规 |
-| 韩语(韩国) | `ko-KR` <sup>新建</sup> | 男 | `ko-KR-InJoonNeural` | 常规 |
-| 马来语（马来西亚） | `ms-MY` <sup>新建</sup> | 女 | `ms-MY-YasminNeural` | 常规 |
-| 普通话（简体中文，中国） | `zh-CN` | 女 | `zh-CN-XiaoxiaoNeural` | 常规，提供了多种语音风格 |
-| 普通话（简体中文，中国） | `zh-CN` | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
-| 普通话（简体中文，中国） | `zh-CN` | 男 | `zh-CN-YunyangNeural` | 针对新闻播报进行了优化，提供了多种语音风格 |
-| 普通话（简体中文，中国） | `zh-CN` | 男 | `zh-CN-YunyeNeural` | 针对讲故事进行了优化 |
-| 普通话（繁体中文，台湾） | `zh-TW` | 女 | `zh-TW-HsiaoYuNeural` | 常规 |
-| 挪威语、BokmÃ¥ (挪威)  | `nb-NO` | 女 | `nb-NO-IselinNeural` | 常规 |
+| 韩语(韩国) | `ko-KR` | 男 | `ko-KR-InJoonNeural` <sup>新建</sup> | 常规 |
+| 马来语（马来西亚） | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>新建</sup> | 常规 |
+| 挪威语（博克马尔语，挪威） | `nb-NO` | 女 | `nb-NO-IselinNeural` | 常规 |
 | 波兰语（波兰） | `pl-PL` | 女 | `pl-PL-ZofiaNeural` | 常规 |
-| 葡萄牙语（巴西） | `pt-BR` | Female | `pt-BR-FranciscaNeural` | 常规，提供了多种语音风格 |
-| 葡萄牙语(巴西) | `pt-BR` <sup>新建</sup> | 男 | `pt-BR-AntonioNeural` | 常规 |
+| 葡萄牙语（巴西） | `pt-BR` | Female | `pt-BR-FranciscaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
+| 葡萄牙语(巴西) | `pt-BR` | 男 | `pt-BR-AntonioNeural` <sup>新建</sup> | 常规 |
 | 葡萄牙语(葡萄牙) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 常规 |
-| 罗马尼亚语（罗马尼亚） | `ro-RO` <sup>新建</sup> | 女 | `ro-RO-AlinaNeural` | 常规 |
+| 罗马尼亚语(罗马尼亚) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>新建</sup> | 常规 |
 | 俄语（俄罗斯） | `ru-RU` | 女 | `ru-RU-DariyaNeural` | 常规 |
-| 斯洛伐克语（斯洛伐克） | `sk-SK` <sup>新建</sup> | 女 | `sk-SK-ViktoriaNeural` | 常规 |
-| 斯洛文尼亚语（斯洛文尼亚） | `sl-SI` <sup>新建</sup> | 女 | `sl-SI-PetraNeural` | 常规 |
+| 斯洛伐克语(斯洛伐克) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` <sup>新建</sup> | 常规 |
+| 斯洛文尼亚语(斯洛文尼亚) | `sl-SI` | Female | `sl-SI-PetraNeural` <sup>新建</sup> | 常规 |
 | 西班牙语（墨西哥） | `es-MX` | Female | `es-MX-DaliaNeural` | 常规 |
-| 西班牙语（墨西哥） | `es-MX` <sup>新建</sup> | 男 | `es-MX-JorgeNeural` | 常规 |
+| 西班牙语（墨西哥） | `es-MX` | 男 | `es-MX-JorgeNeural` <sup>新建</sup> | 常规 |
 | 西班牙语(西班牙) | `es-ES` | Female | `es-ES-ElviraNeural` | 常规 |
-| 西班牙语(西班牙) | `es-ES` <sup>新建</sup> | 男 | `es-ES-AlvaroNeural` | 常规 |
+| 西班牙语(西班牙) | `es-ES` | 男 | `es-ES-AlvaroNeural` <sup>新建</sup> | 常规 |
 | 瑞典语（瑞典） | `sv-SE` | 女 | `sv-SE-HilleviNeural` | 常规 |
-| 泰米尔语（印度） | `ta-IN` <sup>新建</sup> | 女 | `ta-IN-PallaviNeural` | 常规 |
-| 泰卢固语（印度） | `te-IN` <sup>新建</sup> | 女 | `te-IN-ShrutiNeural` | 常规 |
+| 泰米尔语（印度） | `ta-IN` | Female | `ta-IN-PallaviNeural` <sup>新建</sup> | 常规 |
+| 泰卢固语（印度） | `te-IN` | Female | `te-IN-ShrutiNeural` <sup>新建</sup> | 常规 |
 | 泰语（泰国） | `th-TH` | 女 | `th-TH-AcharaNeural` | 常规 |
-| 泰语（泰国） | `th-TH` <sup>新建</sup> | 女 | `th-TH-PremwadeeNeural` | 常规 |
+| 泰语（泰国） | `th-TH` | Female | `th-TH-PremwadeeNeural` <sup>新建</sup> | 常规 |
 | 土耳其语（土耳其） | `tr-TR` | Female | `tr-TR-EmelNeural` | 常规 |
 | 越南语(越南) | `vi-VN` <sup>新建</sup> | 女 | `vi-VN-HoaiMyNeural` | 常规|
 
+#### <a name="neural-voices-in-preview"></a>预览中的神经语音
+
+以下神经声音在公共预览版中。 
+
+| 语言                         | Locale  | 性别 | 语音名称                             | 风格支持 |
+|----------------------------------|---------|--------|----------------------------------------|---------------|
+| 中文（普通话，简体） | `zh-CN` | 男   | `zh-CN-YunxiNeural` <sup>新建</sup> | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>新建</sup> | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>新建</sup> | 一般，[使用 SSML 提供](speech-synthesis-markup.md#adjust-speaking-styles)多种角色扮演和样式 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>新建</sup> | 一般，[使用 SSML 提供](speech-synthesis-markup.md#adjust-speaking-styles)多种角色扮演和样式 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>新建</sup> | 高级语音，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
+| 爱沙尼亚语(爱沙尼亚) | `et-EE` | Female | `et-EE-AnuNeural` <sup>新建</sup> | 常规 |
+| 盖尔语 (爱尔兰)  | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>新建</sup> | 常规 |
+| 立陶宛语(立陶宛) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>新建</sup> | 常规 |
+| 拉脱维亚语(拉脱维亚) | `lv-LV` | Female | `lv-LV-EveritaNeural` <sup>新建</sup> | 常规 |
+| 马耳他语（马耳他） | `mt-MT` | Female | `mt-MT-GraceNeural` <sup>新建</sup> | 常规 |
+
+> [!IMPORTANT]
+> 公开预览版中的语音仅适用于3个服务地区：美国东部、西欧和东南亚。
+
+有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
+
+若要了解如何配置和调整神经声音，如讲话风格，请参阅 [语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
+
 > [!IMPORTANT]
 > `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用了“Jessa”，请转换为“Aria”。
-
-若要了解如何配置和调整神经语音，请参阅[语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
 
 > [!TIP]
 > 可以继续在语音合成请求中使用完整的服务名称映射，如“Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)”。
@@ -221,84 +241,83 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | 语言 | 区域设置 (BCP-47)  | 性别 | 语音名称 |
 |--|--|--|--|
-| 阿拉伯语（阿拉伯）  |  `ar-EG`  |  Female  |  `ar-EG-Hoda`|
-| 阿拉伯语（沙特阿拉伯）  |  `ar-SA`  |  男  |  `ar-SA-Naayf`|
-| 保加利亚语(保加利亚)  |  `bg-BG`  |  男  |  `bg-BG-Ivan`|
-| 粤语（繁体中文，香港）  |  `zh-HK`  |  男  |  `zh-HK-Danny`|
-| 粤语（繁体中文，香港）  |  `zh-HK`  |  Female  |  `zh-HK-TracyRUS`|
-| 加泰罗尼亚语(西班牙)  |  `ca-ES`  |  Female  |  `ca-ES-HerenaRUS`|
-| 克罗地亚语（克罗地亚）  |  `hr-HR`  |  男  |  `hr-HR-Matej`|
-| 捷克语（捷克共和国）  |  `cs-CZ`  |  男  |  `cs-CZ-Jakub`|
-| 丹麦语（丹麦）  |  `da-DK`  |  女  |  `da-DK-HelleRUS`|
-| 荷兰语（荷兰）  |  `nl-NL`  |  Female  |  `nl-NL-HannaRUS`|
-| 英语（澳大利亚）  |  `en-AU`  |  Female  |  `en-AU-Catherine`|
-| 英语（澳大利亚）  |  `en-AU`  |  Female  |  `en-AU-HayleyRUS`|
-| 英语（加拿大）  |  `en-CA`  |  Female  |  `en-CA-HeatherRUS`|
-| 英语（加拿大）  |  `en-CA`  |  Female  |  `en-CA-Linda`|
-| 英语（印度）  |  `en-IN`  |  Female  |  `en-IN-Heera`|
-| 英语（印度）  |  `en-IN`  |  Female  |  `en-IN-PriyaRUS`|
-| 英语（印度）  |  `en-IN`  |  男  |  `en-IN-Ravi`|
-| 英语（爱尔兰）  |  `en-IE`  |  男  |  `en-IE-Sean`|
-| 英语（英国）  |  `en-GB`  |  男  |  `en-GB-George`|
-| 英语（英国）  |  `en-GB`  |  Female  |  `en-GB-HazelRUS`|
-| 英语（英国）  |  `en-GB`  |  Female  |  `en-GB-Susan`|
-| 英语（美国）  |  `en-US`  |  男  |  `en-US-BenjaminRUS`|
-| 英语（美国）  |  `en-US`  |  男  |  `en-US-GuyRUS`|
-| 英语（美国）  |  `en-US`  |  Female  |  `en-US-JessaRUS`|
-| 英语（美国）  |  `en-US`  |  Female  |  `en-US-ZiraRUS`|
-| 芬兰语（芬兰）  |  `fi-FI`  |  Female  |  `fi-FI-HeidiRUS`|
-| 法语（加拿大）  |  `fr-CA`  |  Female  |  `fr-CA-Caroline`|
-| 法语（加拿大）  |  `fr-CA`  |  Female  |  `fr-CA-HarmonieRUS`|
-| 法语（法国）  |  `fr-FR`  |  Female  |  `fr-FR-HortenseRUS`|
-| 法语（法国）  |  `fr-FR`  |  Female  |  `fr-FR-Julie`|
-| 法语（法国）  |  `fr-FR`  |  男  |  `fr-FR-Paul`|
-| 法语（瑞士）  |  `fr-CH`  |  男  |  `fr-CH-Guillaume`|
-| 德语（奥地利）  |  `de-AT`  |  男  |  `de-AT-Michael`|
-| 德语（德国）  |  `de-DE`  |  Female  |  `de-DE-HeddaRUS`|
-| 德语（德国）  |  `de-DE`  |  男  |  `de-DE-Stefan`|
-| 德语（瑞士）  |  `de-CH`  |  男  |  `de-CH-Karsten`|
-| 希腊语(希腊)  |  `el-GR`  |  男  |  `el-GR-Stefanos`|
-| 希伯来语（以色列）  |  `he-IL`  |  男  |  `he-IL-Asaf`|
-| 印地语（印度）  |  `hi-IN`  |  男  |  `hi-IN-Hemant`|
-| 印地语（印度）  |  `hi-IN`  |  Female  |  `hi-IN-Kalpana`|
-| 匈牙利语(匈牙利)  |  `hu-HU`  |  男  |  `hu-HU-Szabolcs`|
-| 印度尼西亚语(印度尼西亚)  |  `id-ID`  |  男  |  `id-ID-Andika`|
-| 意大利语（意大利）  |  `it-IT`  |  男  |  `it-IT-Cosimo`|
-| 意大利语（意大利）  |  `it-IT`  |  Female  |  `it-IT-LuciaRUS`|
-| 日语（日本）  |  `ja-JP`  |  Female  |  `ja-JP-Ayumi`|
-| 日语（日本）  |  `ja-JP`  |  Female  |  `ja-JP-HarukaRUS`|
-| 日语（日本）  |  `ja-JP`  |  男  |  `ja-JP-Ichiro`|
-| 韩语(韩国)  |  `ko-KR`  |  Female  |  `ko-KR-HeamiRUS`|
-| 马来语（马来西亚）  |  `ms-MY`  |  男  |  `ms-MY-Rizwan`|
-| 普通话（简体中文，中国）  |  `zh-CN`  |  Female  |  `zh-CN-HuihuiRUS`|
-| 普通话（简体中文，中国）  |  `zh-CN`  |  男  |  `zh-CN-Kangkang`|
-| 普通话（简体中文，中国）  |  `zh-CN`  |  Female  |  `zh-CN-Yaoyao`|
-| 普通话（繁体中文，台湾）  |  `zh-TW`  |  Female  |  `zh-TW-HanHanRUS`|
-| 普通话（繁体中文，台湾）  |  `zh-TW`  |  Female  |  `zh-TW-Yating`|
-| 普通话（繁体中文，台湾）  |  `zh-TW`  |  男  |  `zh-TW-Zhiwei`|
-| 挪威语、BokmÃ¥ (挪威)   |  `nb-NO`  |  女  |  `nb-NO-HuldaRUS`|
-| 波兰语（波兰）  |  `pl-PL`  |  女  |  `pl-PL-PaulinaRUS`|
-| 葡萄牙语（巴西）  |  `pt-BR`  |  男  |  `pt-BR-Daniel`|
-| 葡萄牙语（巴西）  |  `pt-BR`  |  Female  |  `pt-BR-HeloisaRUS`|
-| 葡萄牙语(葡萄牙)  |  `pt-PT`  |  Female  |  `pt-PT-HeliaRUS`|
-| 罗马尼亚语（罗马尼亚）  |  `ro-RO`  |  男  |  `ro-RO-Andrei`|
-| 俄语（俄罗斯）  |  `ru-RU`  |  Female  |  `ru-RU-EkaterinaRUS`|
-| 俄语（俄罗斯）  |  `ru-RU`  |  Female  |  `ru-RU-Irina`|
-| 俄语（俄罗斯）  |  `ru-RU`  |  男  |  `ru-RU-Pavel`|
-| 斯洛伐克语（斯洛伐克）  |  `sk-SK`  |  男  |  `sk-SK-Filip`|
-| 斯洛文尼亚语（斯洛文尼亚）  |  `sl-SI`  |  男  |  `sl-SI-Lado`|
-| 西班牙语（墨西哥）  |  `es-MX`  |  Female  |  `es-MX-HildaRUS`|
-| 西班牙语（墨西哥）  |  `es-MX`  |  男  |  `es-MX-Raul`|
-| 西班牙语(西班牙)  |  `es-ES`  |  Female  |  `es-ES-HelenaRUS`|
-| 西班牙语(西班牙)  |  `es-ES`  |  Female  |  `es-ES-Laura`|
-| 西班牙语(西班牙)  |  `es-ES`  |  男  |  `es-ES-Pablo`|
-| 瑞典语（瑞典）  |  `sv-SE`  |  女  |  `sv-SE-HedvigRUS`|
-| 泰米尔语（印度）  |  `ta-IN`  |  男  |  `ta-IN-Valluvar`|
-| 泰卢固语（印度）  |  `te-IN`  |  Female  |  `te-IN-Chitra`|
-| 泰语（泰国）  |  `th-TH`  |  男  |  `th-TH-Pattara`|
-| 土耳其语（土耳其）  |  `tr-TR`  |  Female  |  `tr-TR-SedaRUS`|
-| 越南语(越南)  |  `vi-VN`  |  男  |  `vi-VN-An`  |
-
+| 阿拉伯语（阿拉伯） | `ar-EG` | Female | `ar-EG-Hoda`|
+| 阿拉伯语（沙特阿拉伯） | `ar-SA` | 男 | `ar-SA-Naayf`|
+| 保加利亚语(保加利亚) | `bg-BG` | 男 | `bg-BG-Ivan`|
+| 加泰罗尼亚语(西班牙) | `ca-ES` | Female | `ca-ES-HerenaRUS`|
+| 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-Danny`|
+| 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-TracyRUS`|
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-HuihuiRUS`|
+| 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-Kangkang`|
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-Yaoyao`|
+| 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-HanHanRUS`|
+| 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-Yating`|
+| 中文(台湾普通话) |  `zh-TW` | 男 | `zh-TW-Zhiwei`|
+| 克罗地亚语(克罗地亚) | `hr-HR` | 男 | `hr-HR-Matej`|
+| 捷克语（捷克共和国） | `cs-CZ` | 男 | `cs-CZ-Jakub`|
+| 丹麦语（丹麦） | `da-DK` | 女 | `da-DK-HelleRUS`|
+| 荷兰语（荷兰） | `nl-NL` | Female | `nl-NL-HannaRUS`|
+| 英语（澳大利亚） | `en-AU` | Female | `en-AU-Catherine`|
+| 英语（澳大利亚） | `en-AU` | Female | `en-AU-HayleyRUS`|
+| 英语（加拿大） | `en-CA` | Female | `en-CA-HeatherRUS`|
+| 英语（加拿大） | `en-CA` | Female | `en-CA-Linda`|
+| 英语（印度） | `en-IN` | Female | `en-IN-Heera`|
+| 英语（印度） | `en-IN` | Female | `en-IN-PriyaRUS`|
+| 英语（印度） | `en-IN` | 男 | `en-IN-Ravi`|
+| 英语（爱尔兰） | `en-IE` | 男 | `en-IE-Sean`|
+| 英语（英国） | `en-GB` | 男 | `en-GB-George`|
+| 英语（英国） | `en-GB` | Female | `en-GB-HazelRUS`|
+| 英语（英国） | `en-GB` | Female | `en-GB-Susan`|
+| 英语（美国） | `en-US` | 男 | `en-US-BenjaminRUS`|
+| 英语（美国） | `en-US` | 男 | `en-US-GuyRUS`|
+| 英语（美国） | `en-US` | Female | `en-US-JessaRUS`|
+| 英语（美国） | `en-US` | Female | `en-US-ZiraRUS`|
+| 芬兰语(芬兰) | `fi-FI` | Female | `fi-FI-HeidiRUS`|
+| 法语（加拿大） | `fr-CA` | Female | `fr-CA-Caroline`|
+| 法语（加拿大） | `fr-CA` | Female | `fr-CA-HarmonieRUS`|
+| 法语（法国） | `fr-FR` | Female | `fr-FR-HortenseRUS`|
+| 法语（法国） | `fr-FR` | Female | `fr-FR-Julie`|
+| 法语（法国） | `fr-FR` | 男 | `fr-FR-Paul`|
+| 法语（瑞士） | `fr-CH` | 男 | `fr-CH-Guillaume`|
+| 德语（奥地利） | `de-AT` | 男 | `de-AT-Michael`|
+| 德语（德国） | `de-DE` | Female | `de-DE-HeddaRUS`|
+| 德语（德国） | `de-DE` | 男 | `de-DE-Stefan`|
+| 德语（瑞士） | `de-CH` | 男 | `de-CH-Karsten`|
+| 希腊语(希腊) | `el-GR` | 男 | `el-GR-Stefanos`|
+| 希伯来语（以色列） | `he-IL` | 男 | `he-IL-Asaf`|
+| 印地语（印度） | `hi-IN` | 男 | `hi-IN-Hemant`|
+| 印地语（印度） | `hi-IN` | Female | `hi-IN-Kalpana`|
+| 匈牙利语(匈牙利) | `hu-HU` | 男 | `hu-HU-Szabolcs`|
+| 印度尼西亚语(印度尼西亚) | `id-ID` | 男 | `id-ID-Andika`|
+| 意大利语（意大利） | `it-IT` | 男 | `it-IT-Cosimo`|
+| 意大利语（意大利） | `it-IT` | Female | `it-IT-LuciaRUS`|
+| 日语（日本） | `ja-JP` | Female | `ja-JP-Ayumi`|
+| 日语（日本） | `ja-JP` | Female | `ja-JP-HarukaRUS`|
+| 日语（日本） | `ja-JP` | 男 | `ja-JP-Ichiro`|
+| 韩语(韩国) | `ko-KR` | Female | `ko-KR-HeamiRUS`|
+| 马来语（马来西亚） | `ms-MY` | 男 | `ms-MY-Rizwan`|
+| 挪威语（博克马尔语，挪威） | `nb-NO` | 女 | `nb-NO-HuldaRUS`|
+| 波兰语（波兰） | `pl-PL` | 女 | `pl-PL-PaulinaRUS`|
+| 葡萄牙语（巴西） | `pt-BR` | 男 | `pt-BR-Daniel`|
+| 葡萄牙语（巴西） | `pt-BR` | Female | `pt-BR-HeloisaRUS`|
+| 葡萄牙语(葡萄牙) | `pt-PT` | Female | `pt-PT-HeliaRUS`|
+| 罗马尼亚语（罗马尼亚） | `ro-RO` | 男 | `ro-RO-Andrei`|
+| 俄语（俄罗斯） | `ru-RU` | Female | `ru-RU-EkaterinaRUS`|
+| 俄语（俄罗斯） | `ru-RU` | Female | `ru-RU-Irina`|
+| 俄语（俄罗斯） | `ru-RU` | 男 | `ru-RU-Pavel`|
+| 斯洛伐克语（斯洛伐克） | `sk-SK` | 男 | `sk-SK-Filip`|
+| 斯洛文尼亚语（斯洛文尼亚） | `sl-SI` | 男 | `sl-SI-Lado`|
+| 西班牙语（墨西哥） | `es-MX` | Female | `es-MX-HildaRUS`|
+| 西班牙语（墨西哥） | `es-MX` | 男 | `es-MX-Raul`|
+| 西班牙语(西班牙) | `es-ES` | Female | `es-ES-HelenaRUS`|
+| 西班牙语(西班牙) | `es-ES` | Female | `es-ES-Laura`|
+| 西班牙语(西班牙) | `es-ES` | 男 | `es-ES-Pablo`|
+| 瑞典语（瑞典） | `sv-SE` | 女 | `sv-SE-HedvigRUS`|
+| 泰米尔语（印度） | `ta-IN` | 男 | `ta-IN-Valluvar`|
+| 泰卢固语（印度） | `te-IN` | Female | `te-IN-Chitra`|
+| 泰语（泰国） | `th-TH` | 男 | `th-TH-Pattara`|
+| 土耳其语（土耳其） | `tr-TR` | Female | `tr-TR-SedaRUS`|
+| 越南语(越南) | `vi-VN` | 男 | `vi-VN-An` |
 
 > [!IMPORTANT]
 > `en-US-Jessa` 语音已更改为 `en-US-Aria`。 如果以前使用了“Jessa”，请转换为“Aria”。
@@ -399,12 +418,12 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | 语言 | 区域设置 (BCP-47)  | 依赖于文本的验证 | 独立于文本的验证 | 独立于文本的识别 |
 |----|----|----|----|----|
-|英语（美国）  |  zh-CN  |  是  |  是  |  是 |
+|英语（美国）  |  en-US  |  是  |  是  |  是 |
 |中文(普通话，简体) | zh-CN     |     不适用 |     是 |     是|
 |英语（澳大利亚）     | en-AU     | 不适用     | 是     | 是|
 |英语（加拿大）     | en-CA     | 不适用 |     是 |     是|
 |英语(英国)     | en-GB     | 不适用     | 是     | 是|
-|法语（加拿大）     | fr-CA     | 不适用     | 是 |     是|
+|法语(加拿大)     | fr-CA     | 不适用     | 是 |     是|
 |法语（法国）     | fr-FR     | 不适用     | 是     | 是|
 |德语（德国）     | de-DE     | 不适用     | 是     | 是|
 |意大利语 | it-IT     |     不适用     | 是 |     是|

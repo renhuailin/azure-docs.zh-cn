@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647607"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949405"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -35,13 +35,13 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 
 ## <a name="user-management-microsoft-graph-operations"></a>用户管理 Microsoft Graph 操作
 
-在 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user) 中可以使用以下用户管理操作：
+在 [Microsoft Graph API](/graph/api/resources/user) 中可以使用以下用户管理操作：
 
-- [获取用户列表](https://docs.microsoft.com/graph/api/user-list)
-- [创建用户](https://docs.microsoft.com/graph/api/user-post-users)
-- [获取用户](https://docs.microsoft.com/graph/api/user-get)
-- [更新用户](https://docs.microsoft.com/graph/api/user-update)
-- [删除用户](https://docs.microsoft.com/graph/api/user-delete)
+- [获取用户列表](/graph/api/user-list)
+- [创建用户](/graph/api/user-post-users)
+- [获取用户](/graph/api/user-get)
+- [更新用户](/graph/api/user-update)
+- [删除用户](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>用户属性
 
@@ -125,7 +125,7 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 
-此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
+此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
 可以[下载示例存档](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip)，在 GitHub 中[浏览存储库](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)，或克隆存储库：
 
 ```cmd
@@ -152,7 +152,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 ### <a name="code-discussion"></a>代码探讨
 
-示例代码使用 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。
+示例代码使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。
 
 对 Microsoft Graph API 发出的任何请求都需要使用访问令牌进行身份验证。 该解决方案利用 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 包，该包提供 Microsoft 身份验证库 (MSAL) 的基于身份验证方案的包装器，以便与 Microsoft Graph SDK 配合使用。
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[使用 Microsoft Graph SDK 发出 API 调用](https://docs.microsoft.com/graph/sdks/create-requests)中介绍了如何在 Microsoft Graph 中读取和写入信息，使用 `$select` 控制返回的属性，提供自定义查询参数，以及使用 `$filter` 和 `$orderBy` 查询参数。
+[使用 Microsoft Graph SDK 发出 API 调用](/graph/sdks/create-requests)中介绍了如何在 Microsoft Graph 中读取和写入信息，使用 `$select` 控制返回的属性，提供自定义查询参数，以及使用 `$filter` 和 `$orderBy` 查询参数。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -211,5 +211,5 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

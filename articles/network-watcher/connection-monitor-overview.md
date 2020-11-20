@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 13b379fd3b4f788d79cbb6a9bf6d40cb1693eaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699230"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948951"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>用连接监视器监视网络连接
 
@@ -34,7 +34,7 @@ ms.locfileid: "94699230"
 - 混合应用程序需要连接到 Azure 存储终结点。 本地站点和 Azure 应用程序连接到相同的 Azure 存储终结点。 希望比较本地站点的延迟与 Azure 应用程序的延迟。
 - 希望检查本地设置与托管云应用程序的 Azure VM 之间的连接。
 
-连接监视器组合了两个功能的优点：网络观察程序 [连接监视器 (经典) ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和网络性能监视器 (NPM) [服务连接监视器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、 [ExpressRoute 监视](https://docs.microsoft.com/azure/expressroute/how-to-npm)和 [性能监视](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) 功能。
+连接监视器组合了两个功能的优点：网络观察程序 [连接监视器 (经典) ](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和网络性能监视器 (NPM) [服务连接监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md)、 [ExpressRoute 监视](../expressroute/how-to-npm.md)和 [性能监视](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) 功能。
 
 下面是连接监视器的一些优点：
 
@@ -65,7 +65,7 @@ ms.locfileid: "94699230"
 
 若要使连接监视器将 Azure VM 识别为监视源，请在其上安装网络观察程序代理虚拟机扩展。 此扩展也称为 *网络观察程序扩展*。 Azure 虚拟机需要该扩展来触发端对端监控和其他高级功能。 
 
-可以在[创建 VM](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm) 时安装网络观察程序扩展。 还可以为 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) 分别安装、配置网络观察程序扩展并对其进行故障排除。
+可以在[创建 VM](./connection-monitor.md#create-the-first-vm) 时安装网络观察程序扩展。 还可以为 [Linux](../virtual-machines/extensions/network-watcher-linux.md) 和 [Windows](../virtual-machines/extensions/network-watcher-windows.md) 分别安装、配置网络观察程序扩展并对其进行故障排除。
 
 用于网络安全组 (NSG) 或防火墙的规则可以阻止源和目标之间的通信。 连接监视器检测到此问题并将其显示为拓扑中的诊断消息。 若要启用连接监视，请确保 NSG 和防火墙规则允许在源和目标之间使用 TCP 或 ICMP 上的数据包。
 
@@ -73,7 +73,7 @@ ms.locfileid: "94699230"
 
 若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。 然后启用网络性能监视器解决方案。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
 
-若要为 Windows 计算机安装 Log Analytics 代理，请参阅[适用于 Windows 的 Azure Monitor 虚拟机扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)。
+若要为 Windows 计算机安装 Log Analytics 代理，请参阅[适用于 Windows 的 Azure Monitor 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
 
 如果路径包括防火墙或网络虚拟设备 (NVA)，请确保可访问目标。
 
@@ -81,7 +81,7 @@ ms.locfileid: "94699230"
 
 使用网络观察程序启用具有虚拟网络的所有订阅。 在订阅中创建虚拟网络时，虚拟网络的区域和订阅中会自动启用网络观察程序。 这种自动启用不会影响资源，也不会产生费用。 确保未在订阅上显式禁用网络观察程序。 
 
-有关详细信息，请参阅[启用网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)。
+有关详细信息，请参阅[启用网络观察程序](./network-watcher-create.md)。
 
 ## <a name="create-a-connection-monitor"></a>创建连接监视器 
 
@@ -111,7 +111,7 @@ ms.locfileid: "94699230"
 
  ![显示连接监视器的示意图（该图定义了测试组和测试之间的关系）](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-可以使用[Azure 门户](connection-monitor-preview-create-using-portal.md)或[ARMClient](connection-monitor-preview-create-using-arm-client.md)创建连接监视器
+可以使用[Azure 门户](./connection-monitor-create-using-portal.md)或[ARMClient](./connection-monitor-create-using-template.md)创建连接监视器
 
 添加到测试组中的所有源、目标和测试配置将细分为单独的测试。 下面是如何分解源和目标的示例：
 
@@ -213,7 +213,7 @@ ms.locfileid: "94699230"
 仅显示连接监视器中目标为 outlook.office365.com 的失败的测试：
 1. 将视图更改为“测试”。
 1. 对于基于状态的筛选器，请选择“失败”。
-1. 在搜索字段中，输入“outlook.office365.com”
+1. 在搜索字段中，输入 *office.live.com*
 1. 在顶层筛选器的“范围”中，选择“目标” 。
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="显示筛选为仅显示 Outlook.Office365.com 目标测试失败的视图的屏幕截图" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -348,5 +348,5 @@ ms.locfileid: "94699230"
 
 ## <a name="next-steps"></a>后续步骤
     
-   * 了解 [如何使用 Azure 门户创建连接监视器](connection-monitor-preview-create-using-portal.md)  
-   * 了解 [如何使用 ARMClient 创建连接监视器](connection-monitor-preview-create-using-arm-client.md)  
+   * 了解 [如何使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)  
+   * 了解 [如何使用 ARMClient 创建连接监视器](./connection-monitor-create-using-template.md)

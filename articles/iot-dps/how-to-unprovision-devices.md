@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531383"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950714"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 
@@ -25,7 +25,7 @@ ms.locfileid: "90531383"
    - 若要了解如何取消注册某个设备，请参阅[如何从 Azure IoT 中心设备预配服务中取消注册某个设备](how-to-revoke-device-access-portal.md)。
    - 若要了解如何使用某个预配服务 SDK 以编程方式取消注册某个设备，请参阅[使用服务 SDK 管理设备注册](how-to-manage-enrollments-sdks.md)。
 
-2. 从 IoT 中心取消注册设备，防止未来的通信和数据传输。 另外，可以在预配设备的 IoT 中心的标识注册表中临时禁用或永久删除该设备的条目。 若要详细了解禁用，请参阅[禁用设备](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices)。 对于 IoT 中心资源，请参阅 [Azure 门户](https://portal.azure.com)中的“设备管理/IoT 设备”。
+2. 从 IoT 中心取消注册设备，防止未来的通信和数据传输。 另外，可以在预配设备的 IoT 中心的标识注册表中临时禁用或永久删除该设备的条目。 若要详细了解禁用，请参阅[禁用设备](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)。 对于 IoT 中心资源，请参阅 [Azure 门户](https://portal.azure.com)中的“设备管理/IoT 设备”。
 
 取消预配设备所需执行的确切步骤取决于其证明机制和其适用于预配服务的注册条目。 以下部分概述了此过程，具体取决于注册和证明类型。
 
@@ -43,7 +43,7 @@ ms.locfileid: "90531383"
 
 
 ## <a name="enrollment-groups"></a>注册组
-使用 X.509 认证时，也可以通过登记组预配设备。 登记组中配置了一个签名证书（中间证书或根 CA 证书），可以使用其证书链中的该证书来控制设备对预配服务的访问。 若要了解有关具有预配服务的注册组和 x.509 证书的详细信息，请参阅 [x.509 证书证明](concepts-x509-attestation.md)。 
+使用 X.509 认证时，也可以通过登记组预配设备。 登记组中配置了一个签名证书（中间证书或根 CA 证书），可以使用其证书链中的该证书来控制设备对预配服务的访问。 若要详细了解注册组以及预配服务中的 X.509 证书，请参阅 [X.509 证书证明](concepts-x509-attestation.md)。 
 
 若要查看已通过某个登记组预配的设备列表，可以查看该登记组的详细信息。 这样，便可以轻松了解每个设备已预配到哪个 IoT 中心。 查看设备列表： 
 
@@ -63,4 +63,4 @@ ms.locfileid: "90531383"
 
 - 若要从注册组取消预配单个设备，请执行以下操作：
   1. 创建其叶（设备）证书已禁用各个注册。 这会撤销该设备对预配服务的访问权限，同时仍允许链中具有登记组签名证书的其他设备访问。 不要删除设备的已禁用单独登记。 否则，设备会通过登记组重新登记。 
-  2. 然后，可以使用登记组详细信息中的预配设备列表来查找设备已预配到的 IoT 中心，并从该中心的标识注册表中禁用或删除该设备。 
+  2. 然后，可以使用登记组详细信息中的预配设备列表来查找设备已预配到的 IoT 中心，并从该中心的标识注册表中禁用或删除该设备。

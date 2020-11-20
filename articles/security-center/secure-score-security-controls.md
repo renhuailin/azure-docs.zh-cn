@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: fd01e7e6853d69889d0ffba3d8775a0fd92f7cd2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842526"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949371"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -206,8 +206,8 @@ Azure 安全中心有两个主要目标：
     <td class="tg-lboi"; width=55%>- 只能通过 HTTPS 访问 API 应用<br>- 只能通过 HTTPS 访问函数应用<br>- 应仅启用与 Redis 缓存的安全连接<br>- 应启用到存储帐户的安全传输<br>- 只能通过 HTTPS 访问 Web 应用程序<br>- 应为 PostgreSQL 服务器启用专用终结点<br>- 应为 PostgreSQL 数据库服务器启用强制 SSL 连接<br>- 应为 MySQL 数据库服务器启用强制 SSL 连接<br>- TLS 应更新为 API 应用的最新版本<br>- TLS 应该更新到函数应用的最新版本<br>- TLS 应该更新到 web 应用的最新版本<br>- API 应用中应该需要 FTPS<br>- 函数应用中应该需要 FTPS<br>- Web 应用中应该需要 FTPS</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">管理访问和权限（最高 4 分）</p></strong>安全程序的核心是确保用户具有完成其工作（但仅限于此）所需的访问权限：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小特权访问模型</a>。<br>使用<a href="/azure/role-based-access-control/overview">基于角色的访问控制 (RBAC)</a> 来创建角色分配，以此控制对资源的访问。 角色分配由三个元素组成：<br>- <strong>安全主体</strong>：用户请求访问的对象<br>- <strong>角色定义</strong>：他们的权限<br>- <strong>作用域</strong>：权限适用于的资源集</td>
-    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes 服务上使用基于角色的访问控制(RBAC)(预览版)<br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体（而不是管理证书）来保护你的订阅<br>- 应为容器 (预览提供最低权限的 Linux 功能) <br>- (只读) 应为容器 () 预览的根文件系统强制执行<br>- 应避免 (预览中进行特权升级的容器) <br>- 应避免 (预览，以根用户身份运行容器) <br>- 应避免 (预览中共享敏感主机命名空间的容器) <br>- 应将 pod HostPath 卷装载的使用限制为已知列表 (预览) <br>- 应避免 (预览的特权容器) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) <br>- Web apps 应为所有传入请求请求一个 SSL 证书<br>- 应在 API 应用中使用托管标识<br>- 托管标识应在函数应用中使用<br>- 应在 web 应用中使用托管标识</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">管理访问和权限（最高 4 分）</p></strong>安全程序的核心是确保用户具有完成其工作（但仅限于此）所需的访问权限：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小特权访问模型</a>。<br>通过使用 <a href="/azure/role-based-access-control/overview">AZURE RBAC)  (azure 基于角色的访问控制 </a>创建角色分配来控制对资源的访问权限。 角色分配由三个元素组成：<br>- <strong>安全主体</strong>：用户请求访问的对象<br>- <strong>角色定义</strong>：他们的权限<br>- <strong>作用域</strong>：权限适用于的资源集</td>
+    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes Services (预览版上使用 azure RBAC)  (azure 基于角色的访问控制) <br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体（而不是管理证书）来保护你的订阅<br>- 应为容器 (预览提供最低权限的 Linux 功能) <br>- (只读) 应为容器 () 预览的根文件系统强制执行<br>- 应避免 (预览中进行特权升级的容器) <br>- 应避免 (预览，以根用户身份运行容器) <br>- 应避免 (预览中共享敏感主机命名空间的容器) <br>- 应将 pod HostPath 卷装载的使用限制为已知列表 (预览) <br>- 应避免 (预览的特权容器) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) <br>- Web apps 应为所有传入请求请求一个 SSL 证书<br>- 应在 API 应用中使用托管标识<br>- 托管标识应在函数应用中使用<br>- 应在 web 应用中使用托管标识</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">修正安全配置（最高 4 分）</p></strong>配置错误的 IT 资产受到攻击的风险更高。 当部署资产并且必须在截止日期之前完成时，通常会忘记基本的强化措施。 错误的安全配置可能出现在基础结构中的任何级别：从操作系统和网络设备到云资源。<br>Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 配置了对组织而言很重要的相关“合规性包”（标准和基线）后，任何差距都会产生安全建议，其中包括 CCEID 以及对潜在安全影响的说明。<br>常用包为 <a href="/azure/security/benchmarks/introduction">Azure 安全基准</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基础基准版本 1.1.0</a></td>

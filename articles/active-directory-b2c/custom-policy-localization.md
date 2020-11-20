@@ -10,24 +10,24 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cdd7f4957b22eb4c87d60e3d57b0cec675659963
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7ba0604c0fb1a51c5276f2a28fb0e39b878b7639
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131796"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949558"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 提供 [36 种语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
+你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 提供 [36 种语言](./user-flow-language-customization.md#supported-languages)的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
 
 本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要执行三个步骤：设置受支持语言的显式列表，提供特定于语言的字符串和集合，以及编辑页面的[内容定义](contentdefinitions.md)。 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>设置支持的语言的列表
 
-打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
+打开策略的扩展文件。 例如 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 添加包含支持的语言的 `Localization` 元素：英语（默认）和西班牙语。  
@@ -265,4 +265,3 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_s
 
 - 在 IEF 参考中详细了解 [localization](localization.md) 元素。
 - 查看 Azure AD B2C 中可用的[本地化字符串 ID](localization-string-ids.md) 的列表。
-
