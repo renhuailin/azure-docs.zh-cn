@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: 3b1361646bb90677bf97d9666be361d3c439c8a7
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c2ba84c640a8b6666d0829436b552f95289c3816
+  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91728397"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94951598"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     - text: 什么是 Azure AD B2C？
       url: overview.md
     - text: 比较外部标识的解决方案
-      url: https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+      url: ../active-directory/external-identities/compare-with-b2c.md?bc=%252fazure%252factive-directory-b2c%252fbread%252ftoc.json&toc=%252fazure%252factive-directory-b2c%252fTOC.json
     - text: Azure AD B2C 入门
       url: tutorial-create-tenant.md
     - text: 技术和功能概述
@@ -38,15 +38,15 @@ landingContent:
   - linkListType: learn
     links:
     - text: 身份验证和授权
-      url: https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+      url: ../active-directory/develop/authentication-vs-authorization.md?bc=%252fazure%252factive-directory-b2c%252fbread%252ftoc.json&toc=%252fazure%252factive-directory-b2c%252fTOC.json
     - text: 令牌
-      url: https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+      url: ../active-directory/develop/security-tokens.md?bc=%252fazure%252factive-directory-b2c%252fbread%252ftoc.json&toc=%252fazure%252factive-directory-b2c%252fTOC.json
     - text: 协议
-      url: https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+      url: ../active-directory/develop/v2-app-types.md?bc=%252fazure%252factive-directory-b2c%252fbread%252ftoc.json&toc=%252fazure%252factive-directory-b2c%252fTOC.json
     - text: 身份验证库
-      url: https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+      url: ../active-directory/develop/msal-overview.md?bc=%252fazure%252factive-directory-b2c%252fbread%252ftoc.json&toc=%252fazure%252factive-directory-b2c%252fTOC.json
     - text: 构建网站：HTML、CSS、JavaScript
-      url: https://docs.microsoft.com/learn/modules/build-simple-website/
+      url: /learn/modules/build-simple-website/
 - title: 常见用例
   linkLists:
   - linkListType: how-to-guide
@@ -94,7 +94,7 @@ landingContent:
     - text: 了解用户数据的存储位置
       url: data-residency.md
     - text: 法规
-      url: https://docs.microsoft.com/azure/compliance/
+      url: ../compliance/index.yml
     - text: 用户访问和使用条款
       url: manage-user-access.md
 - title: Operations
@@ -106,7 +106,7 @@ landingContent:
     - text: 监视
       url: azure-monitor.md
     - text: 适用于管理员的基于角色的访问控制
-      url: https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles
+      url: ../active-directory/users-groups-roles/directory-assign-admin-roles.md
     - text: 用户管理
       url: manage-user-accounts-graph-api.md
     - text: 疑难解答

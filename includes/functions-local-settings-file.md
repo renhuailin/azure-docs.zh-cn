@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca8d8edd334d89e03624793a35c49971ba8161ec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377126"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94885267"
 ---
 ## <a name="local-settings-file"></a>本地设置文件
 
@@ -52,7 +52,7 @@ local.settings.json 文件存储应用设置、连接字符串和本地开发工
 
 | 设置 | 值 | 说明 |
 |-----|-----|-----|
-|**`AzureWebJobsStorage`**| 存储帐户连接字符串，或者<br/>`UseDevelopmentStorage=true`| 包括 Azure 存储帐户的连接字符串。 如果使用 HTTP 之外的触发器，则是必需的。 有关详细信息，请查看 [`AzureWebJobsStorage`] 参考。<br/>在本地安装 [Azure 存储模拟器](../articles/storage/common/storage-use-emulator.md)后，可以将 [`AzureWebJobsStorage`] 设置为 `UseDevelopmentStorage=true`，以便 Core Tools 使用此模拟器。 此模拟器在开发期间非常有用，但是在部署之前，应当使用实际的存储连接进行测试。| 
+|**`AzureWebJobsStorage`**| 存储帐户连接字符串，或者<br/>`UseDevelopmentStorage=true`| 包括 Azure 存储帐户的连接字符串。 如果使用 HTTP 之外的触发器，则是必需的。 有关详细信息，请查看 [`AzureWebJobsStorage`] 参考。<br/>如果已在本地安装 [Azure 存储仿真器](../articles/storage/common/storage-use-emulator.md)，且已将 [`AzureWebJobsStorage`] 设置为 `UseDevelopmentStorage=true`，则 Core Tools 将使用此仿真器。 此模拟器在开发期间非常有用，但是在部署之前，应当使用实际的存储连接进行测试。| 
 |**`AzureWebJobs.<FUNCTION_NAME>.Disabled`**| `true`\|`false` | 要在本地运行时禁用函数，请向集合添加 `"AzureWebJobs.<FUNCTION_NAME>.Disabled": "true"`，其中 `<FUNCTION_NAME>` 是函数的名称。 要了解详细信息，请参阅[如何在 Azure Functions 中禁用函数](../articles/azure-functions/disable-function.md#localsettingsjson) |
 |**`FUNCTIONS_WORKER_RUNTIME`** | `dotnet`<br/>`node`<br/>`java`<br/>`powershell`<br/>`python`| 指示 Functions 运行时的目标语言。 对于 Functions 运行时版本 2.x 及更高版本来说是必需的。 此设置是 Core Tools 为你的项目生成的。 要了解详细信息，请查看 [`FUNCTIONS_WORKER_RUNTIME`](../articles/azure-functions/functions-app-settings.md#functions_worker_runtime) 参考。|
 | **`FUNCTIONS_WORKER_RUNTIME_VERSION`** | `~7` |指示在本地运行时使用 PowerShell 7。 如果未设置，则使用 PowerShell Core 6。 仅当在本地运行时才使用此设置。 在 Azure 中运行时，PowerShell 运行时版本由 `powerShellVersion` 站点配置设置决定，后者可[在门户中设置](../articles/azure-functions/functions-reference-powershell.md#changing-the-powershell-version)。 | 

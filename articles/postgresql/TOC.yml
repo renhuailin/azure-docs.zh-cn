@@ -106,8 +106,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Azure Policy 内置策略定义
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 服务器
@@ -147,6 +145,9 @@
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全基线
               href: security-baseline.md
         - name: 网络
@@ -638,6 +639,9 @@
       href: /rest/api/postgresql
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

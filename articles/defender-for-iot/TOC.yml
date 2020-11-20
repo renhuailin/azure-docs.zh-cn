@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: 可自定义的安全警报
       href: concept-customizable-security-alerts.md
-    - name: 安全建议
-      href: concept-recommendations.md
+    - name: 安全性
+      items:
+        - name: 安全建议
+          href: concept-recommendations.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 基线
       href: concept-baseline.md
     - name: 事件聚合

@@ -116,8 +116,6 @@
           href: sample-scripts-azure-cli.md
         - name: Java 连接池
           href: sample-scripts-java-connection-pooling.md
-        - name: Azure Policy 内置策略定义
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 服务器
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全基线
               href: security-baseline.md
         - name: 计划内维护
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 部署模板

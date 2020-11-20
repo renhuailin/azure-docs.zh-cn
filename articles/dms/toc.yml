@@ -89,7 +89,7 @@
           href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 将 SSIS 包重新部署到
       items:
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: how-to-migrate-ssis-packages.md
         - name: Azure SQL 托管实例
           href: how-to-migrate-ssis-packages-managed-instance.md
@@ -112,11 +112,11 @@
         - name: Azure 数据库迁移指南
           href: 'https://aka.ms/datamigration'
         - name: 数据迁移助手
-          href: 'https://aka.ms/dma'
+          href: /sql/dma/dma-overview
         - name: SQL Server Migration Assistant
-          href: 'https://aka.ms/ssma'
+          href: /sql/ssma/sql-server-migration-assistant
         - name: 数据库实验助手
-          href: 'https://aka.ms/dea-docs'
+          href: /sql/dea/database-experimentation-assistant-overview
         - name: 数据访问迁移工具包
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: 故障排除和已知问题

@@ -352,19 +352,19 @@
             - name: 更新 1
               href: storsimple-update1-release-notes.md
             - name: Update 0.3
-              href: storsimple-february-2015-release-notes.md
+              href: ./index.yml
             - name: Update 0.2
-              href: storsimple-january-2015-release-notes.md
+              href: ./index.yml
             - name: Update 0.1
-              href: storsimple-october-2014-release-notes.md
+              href: ./index.yml
             - name: 发行版 - 正式版
-              href: storsimple-july-2014-release-notes.md
+              href: ./index.yml
     - name: 参考
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/storsimple'
+          href: /rest/api/storsimple
         - name: 用于 StorSimple 的 Windows PowerShell cmdlet
-          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+          href: /powershell/module/hcs/?viewFallbackFrom=winserverr2-ps
         - name: 资源管理器模板
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple 数据管理器
@@ -398,7 +398,7 @@
     - name: 发行说明
       items:
         - name: StorSimple 发行说明
-          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+          href: ./storsimple-virtual-array-update-04-release-notes.md
         - name: CSP 发行说明
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: StorSimple for CSP：常见问题解答
@@ -412,13 +412,13 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 营销博客
-      href: 'https://blogs.technet.com/b/cis/'
+      href: /archive/blogs/cis/
     - name: Marketing
       href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple 支持选项
       href: storsimple-8000-support-options.md
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
+      href: /answers/topics/azure-storsimple.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: 定价计算器
@@ -426,7 +426,7 @@
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=storsimple'
     - name: 支持博客
-      href: 'https://docs.microsoft.com/archive/blogs/storsimple/'
+      href: /archive/blogs/storsimple/
     - name: 第三方声明
       href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
     - name: 视频
