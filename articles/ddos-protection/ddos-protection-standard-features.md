@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905127"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992380"
 ---
-# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 保护标准功能
+# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 防护标准功能
 
 以下部分概述了标准 Azure DDoS 防护服务的重要功能。
 
@@ -38,7 +38,7 @@ DDoS 保护会阻止攻击流量并将剩余流量转发至其预期目的地。
 
 ## <a name="adaptive-real-time-tuning"></a>自适应实时优化
 
-Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。  一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
+Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
 
 - 自动学习每个客户（每个 IP）的第 3 层和第 4 层流量模式。
 
@@ -48,13 +48,13 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](/azure/azure-monitor/overview) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
+标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 " **监视**  >  **指标** "。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。  DDoS 指标将显示在“可用指标”窗格中。 
+在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。 
+标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
 
 ![可用指标和指标图表](./media/ddos-best-practices/image-7.png)
 
@@ -62,7 +62,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ### <a name="metric-for-an-ip-address-under-ddos-attack"></a>受 DDoS 攻击的 IP 地址的指标
 
-如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。 
+如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。
 
 ![“是否受 DDoS 攻击”指标和图表](./media/ddos-best-practices/image-8.png)
 
@@ -72,7 +72,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>防范资源攻击的 Web 应用程序防火墙
 
-针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](/azure/application-gateway/application-gateway-web-application-firewall-overview)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
+针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](../web-application-firewall/ag/ag-overview.md)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
 
 即使是 Web 应用程序防火墙这样的服务，也很容易遭受容量耗尽和状态耗尽攻击。 我们强烈建议在 WAF 虚拟网络上启用标准 DDoS 防护，以帮助防范容量耗尽攻击和协议攻击。 有关详细信息，请参阅 [DDoS 防护参考体系结构](ddos-protection-reference-architectures.md)部分。
 

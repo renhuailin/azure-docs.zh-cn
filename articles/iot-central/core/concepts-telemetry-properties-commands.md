@@ -3,17 +3,17 @@ title: Azure IoT Central 中的遥测、属性和命令负载 |Microsoft Docs
 description: Azure IoT Central 设备模板使你可以指定设备的遥测、属性和命令必须实现。 了解设备可与 IoT Central 交换的数据的格式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427878"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989541"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
@@ -29,12 +29,12 @@ Azure IoT Central 中的设备模板是用于定义以下内容的蓝图：
 
 本文不介绍每种可能的遥测、属性和命令有效负载类型，但这些示例演示了所有密钥类型。
 
-每个示例显示了来自设备功能模型的代码片段 (DCM) ，用于定义类型和示例 JSON 有效负载，以说明设备应该如何与 IoT Central 应用程序交互。
+每个示例都显示了一个来自设备模型的代码段，它定义了类型和示例 JSON 有效负载，以说明设备应该如何与 IoT Central 应用程序进行交互。
 
 > [!NOTE]
-> IoT Central 接受任何有效的 JSON，但它仅可用于可视化效果（如果它与 DCM 中的定义匹配）。 可以导出与定义不匹配的数据，请参阅 [将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
+> IoT Central 接受任何有效的 JSON，但它仅在与设备模型中的定义匹配时才可用于可视化。 可以导出与定义不匹配的数据，请参阅 [将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
 
-定义 DCM 的 JSON 文件使用 [数字克隆定义语言 (DTDL) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此规范包括属性格式的定义 `@id` 。
+定义设备模型的 JSON 文件使用 [数字克隆定义语言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 有关显示所使用的部分负载的示例设备代码，请参阅 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md) ，并 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 (Python) ](tutorial-connect-device-python.md) 教程。
 
@@ -56,11 +56,10 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 
 本部分说明设备流式传输到 IoT Central 应用程序的基元遥测类型的示例。
 
-DCM 中的以下代码片段显示了 `boolean` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `boolean` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ DCM 中的以下代码片段显示了 `boolean` 遥测类型的定义：
 { "BooleanTelemetry": true }
 ```
 
-DCM 中的以下代码片段显示了 `string` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `string` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ DCM 中的以下代码片段显示了 `string` 遥测类型的定义：
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-DCM 中的以下代码片段显示了 `integer` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `integer` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ DCM 中的以下代码片段显示了 `integer` 遥测类型的定义：
 { "IntegerTelemetry": 23 }
 ```
 
-DCM 中的以下代码片段显示了 `double` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `double` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ DCM 中的以下代码片段显示了 `double` 遥测类型的定义：
 { "DoubleTelemetry": 56.78 }
 ```
 
-DCM 中的以下代码片段显示了 `dateTime` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `dateTime` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ DCM 中的以下代码片段显示了 `dateTime` 遥测类型的定义：
 }
 ```
 
-设备客户端应以 JSON 形式发送遥测数据，如以下示例所示- `DateTime` 类型必须符合 ISO 8061：
+设备客户端应以 JSON 形式发送遥测数据，如以下示例- `DateTime` 类型必须是 ISO 8061 格式：
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-DCM 中的以下代码片段显示了 `duration` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `duration` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ DCM 中的以下代码片段显示了 `duration` 遥测类型的定义：
 }
 ```
 
-设备客户端应发送类似于以下示例的 JSON 的遥测-持续时间必须符合 ISO 8601 持续时间：
+设备客户端应发送类似于以下示例的 JSON：持续时间必须为 ISO 8601 格式：
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ DCM 中的以下代码片段显示了 `duration` 遥测类型的定义：
 
 本部分说明设备流式传输到 IoT Central 应用程序的复杂遥测类型。
 
-DCM 中的以下代码片段显示了 `geopoint` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `geopoint` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ DCM 中的以下代码片段显示了 `geopoint` 遥测类型的定义：
 }
 ```
 
-DCM 中的以下代码片段显示了 `Enum` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `Enum` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ DCM 中的以下代码片段显示了 `Enum` 遥测类型的定义：
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ DCM 中的以下代码片段显示了 `Enum` 遥测类型的定义：
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ DCM 中的以下代码片段显示了 `Enum` 遥测类型的定义：
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ DCM 中的以下代码片段显示了 `Enum` 遥测类型的定义：
 { "EnumTelemetry": 1 }
 ```
 
-DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对象具有三个类型为 `dateTime` 、 `integer` 和的字段 `Enum` ：
+设备模型中的以下代码片段显示了 `Object` 遥测类型的定义。 此对象具有三个类型为 `dateTime` 、 `integer` 和的字段 `Enum` ：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
 }
 ```
 
-DCM 中的以下代码片段显示了 `vector` 遥测类型的定义：
+设备模型中的以下代码片段显示了 `vector` 遥测类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ DCM 中的以下代码片段显示了 `vector` 遥测类型的定义：
 
 本部分演示设备发送到 IoT Central 应用程序的遥测事件和状态的示例。
 
-DCM 中的以下代码片段显示事件类型的定义 `integer` ：
+设备模型中的以下代码片段显示事件类型的定义 `integer` ：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ DCM 中的以下代码片段显示事件类型的定义 `integer` ：
 { "IntegerEvent": 74 }
 ```
 
-DCM 中的以下代码片段显示了 `integer` 状态类型的定义：
+设备模型中的以下代码片段显示了 `integer` 状态类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ DCM 中的以下代码片段显示了 `integer` 状态类型的定义：
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ DCM 中的以下代码片段显示了 `integer` 状态类型的定义：
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ DCM 中的以下代码片段显示了 `integer` 状态类型的定义：
 
 本部分演示设备发送到 IoT Central 应用程序的基元属性类型的示例。
 
-DCM 中的以下代码片段显示了 `boolean` 属性类型的定义：
+设备模型中的以下代码片段显示了 `boolean` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ DCM 中的以下代码片段显示了 `boolean` 属性类型的定义：
 { "BooleanProperty": false }
 ```
 
-DCM 中的以下代码片段显示了 `boolean` 属性类型的定义：
+设备模型中的以下代码片段显示了 `boolean` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ DCM 中的以下代码片段显示了 `boolean` 属性类型的定义：
 { "LongProperty": 439 }
 ```
 
-DCM 中的以下代码片段显示了 `date` 属性类型的定义：
+设备模型中的以下代码片段显示了 `date` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ DCM 中的以下代码片段显示了 `date` 属性类型的定义：
 { "DateProperty": "2020-05-17" }
 ```
 
-DCM 中的以下代码片段显示了 `duration` 属性类型的定义：
+设备模型中的以下代码片段显示了 `duration` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ DCM 中的以下代码片段显示了 `duration` 属性类型的定义：
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-DCM 中的以下代码片段显示了 `float` 属性类型的定义：
+设备模型中的以下代码片段显示了 `float` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ DCM 中的以下代码片段显示了 `float` 属性类型的定义：
 { "FloatProperty": 1.9 }
 ```
 
-DCM 中的以下代码片段显示了 `string` 属性类型的定义：
+设备模型中的以下代码片段显示了 `string` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ DCM 中的以下代码片段显示了 `string` 属性类型的定义：
 
 本部分演示设备发送到 IoT Central 应用程序的复杂属性类型的示例。
 
-DCM 中的以下代码片段显示了 `geopoint` 属性类型的定义：
+设备模型中的以下代码片段显示了 `geopoint` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ DCM 中的以下代码片段显示了 `geopoint` 属性类型的定义：
 }
 ```
 
-DCM 中的以下代码片段显示了 `Enum` 属性类型的定义：
+设备模型中的以下代码片段显示了 `Enum` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ DCM 中的以下代码片段显示了 `Enum` 属性类型的定义：
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ DCM 中的以下代码片段显示了 `Enum` 属性类型的定义：
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ DCM 中的以下代码片段显示了 `Enum` 属性类型的定义：
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ DCM 中的以下代码片段显示了 `Enum` 属性类型的定义：
 { "EnumProperty": 1 }
 ```
 
-DCM 中的以下代码片段显示了 `Object` 属性类型的定义。 此对象包含两个具有类型 `string` 和的字段 `integer` ：
+设备模型中的以下代码片段显示了 `Object` 属性类型的定义。 此对象包含两个具有类型 `string` 和的字段 `integer` ：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ DCM 中的以下代码片段显示了 `Object` 属性类型的定义。 此对�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ DCM 中的以下代码片段显示了 `Object` 属性类型的定义。 此对�
 }
 ```
 
-DCM 中的以下代码片段显示了 `vector` 属性类型的定义：
+设备模型中的以下代码片段显示了 `vector` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -772,7 +720,7 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
 | 值 | Label | 说明 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | 已完成 | 属性更改操作已成功完成。 |
-| `'ac': 202`  或 `'ac': 201` | 挂起 | 属性更改操作已挂起或正在进行 |
+| `'ac': 202`  或 `'ac': 201` | 挂起的 | 属性更改操作已挂起或正在进行 |
 | `'ac': 4xx` | 错误 | 请求的属性更改无效或出现错误 |
 | `'ac': 5xx` | 错误 | 设备在处理请求的更改时遇到意外错误。 |
 
@@ -780,11 +728,10 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
 
 `ad` 是一个选项字符串说明。
 
-DCM 中的以下代码片段显示可写 `string` 属性类型的定义：
+设备模型中的以下代码片段显示可写 `string` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ DCM 中的以下代码片段显示可写 `string` 属性类型的定义：
 }
 ```
 
-DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
+设备模型中的以下代码片段显示可写 `Enum` 属性类型的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
 
 ## <a name="commands"></a>命令
 
-### <a name="synchronous-command-types"></a>同步命令类型
+> [!NOTE]
+> 在 IoT Central web UI 中，你可以选择 " **脱机时队列** " 选项。 如果从设备模板导出模型或接口，则不包含此设置。
 
-DCM 中的以下代码片段显示了不具有参数并且不希望设备返回任何内容的同步命令的定义：
+以下来自设备模型的代码段显示了没有参数并且不希望设备返回任何内容的命令的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 设备在请求中接收空负载，并应在响应中返回空负载，并使用 `200` HTTP 响应代码来指示成功。
 
-DCM 中的以下代码片段显示了具有整数参数并且需要设备返回整数值的同步命令的定义：
+设备模型中的以下代码片段显示了具有 integer 参数并且需要设备返回整数值的命令的定义：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ DCM 中的以下代码片段显示了具有整数参数并且需要设备返回�
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ DCM 中的以下代码片段显示了具有整数参数并且需要设备返回�
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 设备接收一个整数值作为请求负载。 设备应返回整数值作为响应负载，并使用 `200` HTTP 响应代码来指示成功。
 
-DCM 中的以下代码片段显示了具有 object 参数并且需要设备返回对象的同步命令的定义。 在此示例中，两个对象都具有整数和字符串字段：
+设备模型中的以下代码片段显示具有 object 参数并且需要设备返回对象的命令的定义。 在此示例中，两个对象都具有整数和字符串字段：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ DCM 中的以下代码片段显示了具有 object 参数并且需要设备返�
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ DCM 中的以下代码片段显示了具有 object 参数并且需要设备返�
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ DCM 中的以下代码片段显示了具有 object 参数并且需要设备返�
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ DCM 中的以下代码片段显示了具有 object 参数并且需要设备返�
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ DCM 中的以下代码片段显示了具有 object 参数并且需要设备返�
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>异步命令类型
+### <a name="long-running-commands"></a>长时间运行的命令
 
-DCM 中的以下代码片段显示了异步命令的定义。 命令有一个整数参数，并期望设备返回整数值：
+设备模型中的以下代码片段显示了命令的定义。 命令有一个整数参数，并期望设备返回整数值：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ DCM 中的以下代码片段显示了异步命令的定义。 命令有一个整
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,19 +982,19 @@ DCM 中的以下代码片段显示了异步命令的定义。 命令有一个整
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-设备接收一个整数值作为请求负载。 设备应返回一个空的响应有效负载，其中包含 `202` HTTP 响应代码，以指示设备已接受异步处理请求。
+设备接收一个整数值作为请求负载。 如果设备需要时间来处理此命令，则它应返回带有 HTTP 响应代码的空响应有效负载， `202` 以指示设备已接受处理请求。
 
 设备处理完请求后，应将属性发送到 IoT Central，如以下示例所示。 属性名称必须与命令名称相同：
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }

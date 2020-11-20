@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841404"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990085"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -105,7 +105,7 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
 7. 在“Azure AD 管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。
 
-   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations)中受支持的管理员列表。 基于角色的访问控制 (RBAC) 仅适用于 Azure 门户，不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse。
+   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations)中受支持的管理员列表。 Azure RBAC)  (基于角色的访问控制仅适用于 Azure 门户，不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse。
 
     ![添加 Azure Active Directory 管理员](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
@@ -253,7 +253,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
     ![SQL Server 的“设置 Active Directory 管理员”](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 Azure Synapse 进行身份验证结合使用](authentication-aad-overview.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
+5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。  (在 [使用 SQL 数据库或 Azure Synapse 进行身份验证 Azure Active Directory 身份](authentication-aad-overview.md)验证的 " **Azure AD 功能和限制**" 部分中，查看受支持的管理员列表。 ) azure 基于角色的访问控制 (azure RBAC) 仅适用于该门户，不会传播到 SQL Server。
 
     ![选择 Azure Active Directory 管理员](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 

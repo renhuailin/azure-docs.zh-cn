@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905074"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992227"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 响应策略的组件
 
@@ -44,9 +44,9 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 我的服务在跨多个区域故障转移后是否保持主动/主动状态？
 
-务必了解应用程序的正常行为，并在应用程序在 DDoS 攻击期间不按预期方式执行操作。 为模拟客户端行为的业务关键应用程序配置监视器，并在检测到相关异常时通知你。 若要深入了解应用程序的运行状况，请参阅 [监视和诊断最佳实践](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) 。
+务必了解应用程序的正常行为，并在应用程序在 DDoS 攻击期间不按预期方式执行操作。 为模拟客户端行为的业务关键应用程序配置监视器，并在检测到相关异常时通知你。 若要深入了解应用程序的运行状况，请参阅 [监视和诊断最佳实践](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) 。
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 它包含分析工具，可帮助你诊断问题并了解用户对应用执行的操作。 Application Insights 有助于持续提高性能与可用性。
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 它包含分析工具，可帮助你诊断问题并了解用户对应用执行的操作。 Application Insights 有助于持续提高性能与可用性。
 
 ## <a name="customer-ddos-response-team"></a>客户 DDoS 响应团队
 
@@ -56,7 +56,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ## <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标  可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](telemetry-monitoring-alerting.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
 
 ### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 

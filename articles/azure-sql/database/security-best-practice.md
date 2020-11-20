@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c7a94a24bd825249859ff699ab82ce4d3ae8fce1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842237"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992159"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ ms.locfileid: "94842237"
 > [!NOTE]
 >
 > - Azure AD 身份验证记录在 Azure SQL 审核日志中，而不是记录在 Azure AD 登录日志中。
-> - 在 Azure 中授予的 RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
+> - Azure 中授予的 azure RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
 > - 在客户端上，Azure AD 身份验证需要访问 Internet，或通过用户定义的路由 (UDR) 访问虚拟网络。
 > - Azure AD 访问令牌缓存在客户端，其生存期取决于令牌配置。 请参阅[Azure Active Directory 中可配置的令牌生存期](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)一文
 > - 有关解决 Azure AD 身份验证问题的指南，请参阅以下博客： [Azure AD 故障排除](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。

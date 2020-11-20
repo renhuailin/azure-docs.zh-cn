@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS 保护标准概述
-description: 了解 Azure DDoS 防护标准（与应用程序设计最佳做法结合时）如何防御 DDoS 攻击。
+description: 了解 Azure DDoS 防护标准在与应用程序设计最佳做法相结合时如何防范 DDoS 攻击。
 services: virtual-network
 documentationcenter: na
 author: yitoh
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: a8d8a41b5d527833ef071275d90cf9102cec47f7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905148"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992533"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -36,12 +36,12 @@ Azure DDoS 保护不存储客户数据。
 - **全包式保护：** 启用 DDoS 保护标准后，简化的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 - **Always on 流量监视：** 每周7天，你的应用程序流量模式每周监视24小时，寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 - **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
-- **多层保护** ：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+- **多层保护**：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 - **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
-- **攻击分析** ：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将 SIEM) system 的流缓解流日志流式传输到 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) 或脱机安全信息和事件管理 (在攻击期间进行近乎实时的监视。
+- **攻击分析**：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将 SIEM) system 的流缓解流日志流式传输到 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 或脱机安全信息和事件管理 (在攻击期间进行近乎实时的监视。
 - **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
 - **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件，如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
-- **Ddos 快速响应** ：将 Ddos 防护快速响应 (DRR) 团队，以帮助进行攻击调查和分析。 若要了解详细信息，请参阅 [DDoS 快速响应](ddos-rapid-response.md)。
+- **Ddos 快速响应**：将 Ddos 防护快速响应 (DRR) 团队，以帮助进行攻击调查和分析。 若要了解详细信息，请参阅 [DDoS 快速响应](ddos-rapid-response.md)。
 - **成本保证：** 针对所述 DDoS 攻击的数据传输和应用程序扩展服务信用额度。
 
 ## <a name="pricing"></a>定价

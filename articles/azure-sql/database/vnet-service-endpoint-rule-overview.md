@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325004"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990799"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "93325004"
 - **网络管理员：** &nbsp; 启用终结点。
 - **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到服务器。
 
-RBAC 备用：
+Azure RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
@@ -89,7 +89,7 @@ RBAC 备用：
 
 在使用 Azure SQL 数据库的服务终结点时，请查看以下注意事项：
 
-- **需要到 Azure SQL 数据库公共 IP 的出站连接** ：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)执行此操作。
+- **需要到 Azure SQL 数据库公共 IP 的出站连接**：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)执行此操作。
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -129,7 +129,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. 按照此 [指南](../../storage/common/storage-account-create.md)创建 **常规用途 v2 存储帐户** 。
+1. 按照此 [指南](../../storage/common/storage-account-create.md)创建 **常规用途 v2 存储帐户**。
 
    > [!NOTE]
    >

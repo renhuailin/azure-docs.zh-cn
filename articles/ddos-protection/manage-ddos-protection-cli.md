@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989609"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和配置 Azure DDoS 保护标准
 
@@ -39,7 +39,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。
 
-若要创建资源组，请使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)。 在此示例中，我们将命名资源组 _MyResourceGroup_ ，并使用 _美国东部_ 位置：
+若要创建资源组，请使用 [az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)。 在此示例中，我们将命名资源组 _MyResourceGroup_ ，并使用 _美国东部_ 位置：
 
 ```azurecli-interactive
 az group create \
@@ -59,7 +59,7 @@ az network ddos-protection create \
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS 保护
 
-创建虚拟网络时，可以启用 DDoS 保护。 在此示例中，我们将命名为虚拟网络 _MyVnet_ ： 
+创建虚拟网络时，可以启用 DDoS 保护。 在此示例中，我们将命名为虚拟网络 _MyVnet_： 
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,7 +73,7 @@ az network vnet create \
 
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>为现有虚拟网络启用 DDoS 保护
 
-[创建 DDoS 保护计划](#create-a-ddos-protection-plan)时，可以将一个或多个虚拟网络关联到计划。 要添加多个虚拟网络，只需列出以空格分隔的名称或 Id。 在此示例中，我们将添加 _MyVnet_ ：
+[创建 DDoS 保护计划](#create-a-ddos-protection-plan)时，可以将一个或多个虚拟网络关联到计划。 要添加多个虚拟网络，只需列出以空格分隔的名称或 Id。 在此示例中，我们将添加 _MyVnet_：
 
 ```azurecli-interactive
 az group create \
@@ -111,7 +111,7 @@ az network ddos-protection show \
 
 可在下一教程中保留资源。 如果不再需要，请删除 _MyResourceGroup_ 资源组。 删除资源组时，还会删除 DDoS 保护计划及其所有相关资源。 
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)：
+若要删除资源组，请使用 [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete)：
 
 ```azurecli-interactive
 az group delete \

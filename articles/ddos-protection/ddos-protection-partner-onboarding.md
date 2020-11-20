@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 70793b585a11da2eccb43fd6cf47053774f1e991
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905135"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992414"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>与 Azure DDoS 保护标准的合作
 本文介绍 Azure DDoS 保护标准启用的合作机会。 本文旨在帮助产品经理和业务开发角色理解投资途径，并深入了解合作价值主张。
@@ -77,8 +77,8 @@ Azure DDoS 保护标准合作机会可通过 Azure 门户、Api 和 CLI/PS 获�
 
 - [Azure DDoS 防护产品页](https://azure.microsoft.com/services/ddos-protection/)
 - [Azure DDoS 防护文档](ddos-protection-overview.md)
-- [Azure DDoS 保护 API 参考](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
-- [Azure 虚拟网络 API 参考](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
+- [Azure DDoS 保护 API 参考](/rest/api/virtualnetwork/ddosprotectionplans)
+- [Azure 虚拟网络 API 参考](/rest/api/virtualnetwork/virtualnetworks)
 
 ### <a name="get-help"></a>获取帮助
 

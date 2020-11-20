@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905144"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989405"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>管理 DDoS 保护计划：权限和限制
 
@@ -37,7 +37,7 @@ DDoS 防护计划跨区域和订阅工作。 同一计划可从不同区域中�
 | Microsoft.Network/ddosProtectionPlans/delete      | 删除 DDoS 保护计划            |
 | Microsoft.Network/ddosProtectionPlans/join/action | 加入 DDoS 保护计划              |
 
-若要为虚拟网络启用 DDoS 保护，还必须为你的帐户分配[适用于虚拟网络的适当操作](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions)。
+若要为虚拟网络启用 DDoS 保护，还必须为你的帐户分配[适用于虚拟网络的适当操作](../virtual-network/manage-virtual-network.md#permissions)。
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -51,4 +51,4 @@ DDoS 防护计划跨区域和订阅工作。 同一计划可从不同区域中�
 若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
-> [查看和配置 DDoS 保护遥测](telemetry-monitoring-alerting.md)
+> [查看和配置 DDoS 防护遥测](telemetry-monitoring-alerting.md)

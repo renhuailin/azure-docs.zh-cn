@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 871ededce1db5e4c3179c187fc46a828cd157456
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992397"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保护标准常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "94886271"
 Azure DDoS 保护标准与应用程序设计最佳做法相结合，提供增强的 DDoS 缓解功能，防范 DDoS 攻击。 它会自动进行优化，以帮助保护虚拟网络中的特定 Azure 资源。 可在任何新的或现有的虚拟网络上启用保护，且无需对应用程序或资源做出任何更改。 与基本服务相比，该服务具有多种优势，包括日志记录、警报和遥测。 有关更多详细信息，请参阅 [Azure DDoS 保护标准概述](ddos-protection-overview.md) 。 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a> (第7层) ，服务层上的保护是怎样的？
-客户可将 Azure DDoS 保护服务与 [应用程序网关 WAF SKU](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) 结合使用，以实现 (第3层和第4层（由 Azure DDoS 保护) 服务提供）的网络层、 (第7层（由应用程序网关 WAF SKU) 提供）提供保护。
+客户可将 Azure DDoS 保护服务与 [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md) 结合使用，以实现 (第3层和第4层（由 Azure DDoS 保护) 服务提供）的网络层、 (第7层（由应用程序网关 WAF SKU) 提供）提供保护。
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>Azure 中是否不包含服务的服务不安全？
 在 Azure 上运行的服务在本质上受 Azure DDoS 保护基本保护，并已准备好保护 Azure 的基础结构。 但是，保护基础结构的保护的阈值要高得多，但它并不提供遥测或警报，因此，在接收流量时，可能会对接收它的应用程序造成破坏。 
@@ -64,6 +64,3 @@ Azure DDoS 保护标准与应用程序设计最佳做法相结合，提供增强
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>在门户上加载指标需要多长时间？
 指标应在5分钟内显示在门户上。 如果资源受到攻击，其他度量值将在5-7 分钟内开始显示在门户上。 
     
-
-
-

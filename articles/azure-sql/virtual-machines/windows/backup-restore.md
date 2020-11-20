@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789873"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991530"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,23 +55,23 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关如何为 SQL VM 配置自动备份的详细信息，请参阅以下文章之一：
 
-- **SQL Server 2016/2017** ： [适用于 Azure 虚拟机的自动备份 v2](automated-backup.md)
-- **SQL Server 2014** ： [适用于 SQL Server 2014 虚拟机的自动备份](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017**：[适用于 Azure 虚拟机的自动备份 v2](automated-backup.md)
+- **SQL Server 2014**：[适用于 SQL Server 2014 虚拟机的自动备份](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>适用于 SQL VM 的 Azure 备份
 
 [Azure 备份](../../../backup/index.yml)为 Azure VM 上的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
-- **零基础结构备份** ：无需管理备份服务器或存储位置。
-- **缩放** ：保护大量的 SQL VM 和数千个数据库。
-- **即用即付** ：此功能是 Azure 备份提供的独立服务，但与所有 Azure 服务一样，你只需为使用的资源付费。
-- **集中式管理和监视** ：通过 Azure 中的单个仪表板集中管理所有备份，包括 Azure 备份支持的其他工作负荷。
-- **策略驱动的备份和保留** ：为定期备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
-- **支持 SQL Always On** ：检测和保护 SQL Server Always On 配置，并遵循备份可用性组的备份首选项。
+- **零基础结构备份**：无需管理备份服务器或存储位置。
+- **缩放**：保护大量的 SQL VM 和数千个数据库。
+- **即用即付**：此功能是 Azure 备份提供的独立服务，但与所有 Azure 服务一样，你只需为使用的资源付费。
+- **集中式管理和监视**：通过 Azure 中的单个仪表板集中管理所有备份，包括 Azure 备份支持的其他工作负荷。
+- **策略驱动的备份和保留**：为定期备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
+- **支持 SQL Always On**：检测和保护 SQL Server Always On 配置，并遵循备份可用性组的备份首选项。
 - **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
-- **时间点还原** ：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
-- **合并的故障电子邮件警报** ：针对任何故障配置合并的电子邮件通知。
-- **基于角色的访问控制** ：确定谁可以通过门户管理备份和还原操作。
+- **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
+- **合并的故障电子邮件警报**：针对任何故障配置合并的电子邮件通知。
+- **Azure 基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。
 
 有关此解决方案工作原理的简要概述和演示，请观看以下视频：
 
@@ -108,9 +108,9 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关详细信息，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- **SQL Server 2016/2017** ： [SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014** ： [SQL Server 2014 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
-- **SQL Server 2012** ： [SQL Server 2012 备份到 URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
+- **SQL Server 2016/2017**：[SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**：[SQL Server 2014 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**：[SQL Server 2012 备份到 URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>托管备份
 

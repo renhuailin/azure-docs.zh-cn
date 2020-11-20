@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427882"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989524"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书
 
@@ -55,11 +55,11 @@ IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
-    node create_test_cert.js device mytestdevice mytestrootcert
+    node create_test_cert.js device sample-device-01 mytestrootcert
     ```
 
     > [!TIP]
-    > 设备 ID 可以包含字母、数字和 `-` 字符。
+    > 设备 ID 中可以包含字母、数字和 `-` 字符。
 
 这些命令为根和设备证书生成三个文件
 
@@ -73,7 +73,7 @@ filename | 内容
 
 1. 打开 IoT Central 应用程序并导航到左侧窗格中的 " **管理**  "，然后选择 " **设备连接**"。
 
-1. 选择 " **+ 创建注册组**"，然后创建一个名为 _MyX509Group_ 的新注册组，其证明类型为 **证书 (x.509) **。
+1. 选择 " **+ 创建注册组**"，然后创建一个名为 _MyX509Group_ 的新注册组，其证明类型为 **证书 (x.509)**。
 
 1. 打开创建的注册组，并选择 " **管理主要**"。
 
@@ -91,61 +91,70 @@ filename | 内容
 
     ![验证的证书](./media/how-to-connect-devices-x509/verified.png)
 
-你现在可以连接具有派生自此主根证书的 x.509 证书的设备。 保存注册组后，记下 "ID" 范围。
+你现在可以连接具有派生自此主根证书的 x.509 证书的设备。
+
+保存注册组后，记下 "ID" 范围。
 
 ## <a name="run-sample-device-code"></a>运行示例设备代码
 
-1. 在 Azure IoT Central 应用程序中，选择 "**设备**"，并创建一个新设备，其中_Mytestdevice_作为 "**环境传感器**" 设备模板中的**设备 ID** 。
+1. 将 **sampleDevice01_key** 和 **sampleDevice01_cert pem** 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时使用此应用程序。
 
-1. 将 _mytestdevice_key_ 和 _mytestdevice_cert pem_ 文件复制到包含 _environmentalSensor.js_ 应用程序的文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时创建了此应用程序。
-
-1. 导航到包含 environmentalSensor.js 应用程序的文件夹，并运行以下命令安装 x.509 包：
+1. 导航到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹，并运行以下命令安装 x.509 包：
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-1. 编辑 **environmentalSensor.js** 文件。
-    - 将 `idScope` 该值替换为之前记下的 **ID 范围** 。
-    - 将 `registrationId` value 替换为 `mytestdevice` 。
+1. 在文本编辑器中打开 **simple_thermostat.js** 文件。
 
-1. 编辑语句，如下所示 `require` ：
+1. 编辑 `require` 语句，使其包含以下内容：
 
     ```javascript
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    var fs = require('fs');
-    var X509Security = require('azure-iot-security-x509').X509Security;
+    const fs = require('fs');
+    const X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-1. 编辑创建客户端的部分，如下所示：
+1. 将以下四行代码添加到 "DPS 连接信息" 部分以初始化 `deviceCert` 变量：
 
     ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var deviceCert = {
-      cert: fs.readFileSync('mytestdevice_cert.pem').toString(),
-      key: fs.readFileSync('mytestdevice_key.pem').toString()
+    const deviceCert = {
+      cert: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_CERT).toString(),
+      key: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_KEY).toString()
     };
-    var provisioningSecurityClient = new X509Security(registrationId, deviceCert);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
     ```
 
-1. 修改打开连接的部分，如下所示：
+1. `provisionDevice`通过将第一行替换为以下内容，编辑创建客户端的函数：
 
-   ```javascript
-    var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
-    hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-    hubClient.setOptions(deviceCert);
+    ```javascript
+    var provSecurityClient = new X509Security(registrationId, deviceCert);
     ```
+
+1. 在同一函数中，按如下所示修改设置 `deviceConnectionString` 变量的行：
+
+    ```javascript
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
+    ```
+
+1. 在 `main` 函数中，在调用的行后添加以下行 `Client.fromConnectionString` ：
+
+    ```javascript
+    client.setOptions(deviceCert);
+    ```
+
+1. 在 shell 环境中，设置以下两个环境变量：
+
+    ```cmd/sh
+    set IOTHUB_DEVICE_X509_CERT=sampleDevice01_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=sampleDevice01_key.pem
+    ```
+
+    > [!TIP]
+    > 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md) 教程时，可以设置其他所需的环境变量。
 
 1. 执行脚本并验证是否已成功设置设备：
 
     ```cmd/sh
-    node environmentalSensor.js
+    node simple_thermostat.js
     ```
 
     你还可以验证遥测显示在仪表板上。
@@ -170,11 +179,11 @@ filename | 内容
 
 ## <a name="create-individual-enrollment"></a>创建单个注册
 
-1. 在 Azure IoT Central 应用程序中，选择 " **设备**"，然后从环境传感器设备模板中创建 **设备 ID** 为 _mytestselfcertprimary_ 的新设备。 记下 **ID 范围**，稍后使用。
+1. 在 Azure IoT Central 应用程序中，选择 " **设备**"，然后从恒温器设备模板创建 **设备 ID** 为 _mytestselfcertprimary_ 的新设备。 记下 **ID 范围**，稍后使用。
 
 1. 打开所创建的设备，然后选择 " **连接**"。
 
-1. 选择 " **单独注册** " 作为 **Connect 方法** ， ** (的证书) ** 作为机制：
+1. 选择 " **单独注册** " 作为 **Connect 方法** ， **(的证书)** 作为机制：
 
     ![单独注册](./media/how-to-connect-devices-x509/individual-device-connect.png)
 
@@ -188,19 +197,15 @@ filename | 内容
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>运行单个注册设备示例
 
-1. 将 _mytestselfcertprimary_key_ 和 _mytestselfcertprimary_cert pem_ 文件复制到包含 environmentalSensor.js 应用程序的文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时创建了此应用程序。
+1. 将 _mytestselfcertprimary_key_ 和 _mytestselfcertprimary_cert pem_ 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时使用此应用程序。
 
-1. 按如下所示编辑 **environmentalSensor.js** 文件并保存。
-    - 将 `idScope` 该值替换为之前记下的 **ID 范围** 。
-    - 将 `registrationId` value 替换为 `mytestselfcertprimary` 。
-    - 将 **Var deviceCert** 替换为：
+1. 修改中使用的环境变量，如下所示：
 
-        ```javascript
-        var deviceCert = {
-        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-        };
-        ```
+    ```cmd/sh
+    set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary
+    set IOTHUB_DEVICE_X509_CERT=mytestselfcertprimary_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=mytestselfcertprimary_key.pem
+    ```
 
 1. 执行脚本并验证是否已成功设置设备：
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309500"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990561"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS 的 DevOps 实践
 
@@ -74,7 +74,7 @@ LUIS 应用程序的以下类型的文件应在源代码管理下进行维护：
 
 - 用于性能测试的[批处理测试文件](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format)（言语和预期结果）
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>未签入凭据和密钥
+### <a name="credentials-and-keys-are-not-checked-in"></a>未签入凭据和密钥
 
 请勿在签入到存储库的文件中包含订阅密钥或类似的机密值，否则未经授权的人员可能会看到这些信息。 应阻止签入的密钥和其他值包括：
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 11/19/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952125"
+ms.locfileid: "94990119"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙 (WAF) 策略概述
 
@@ -41,9 +41,9 @@ Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排�
 
 若要向下更进一步的自定义，可将 WAF 策略与基于路径的规则相关联。 如果在需要不同策略的单一站点中有某些页面，则可以更改只影响给定 URI 的 WAF 策略。 这可能适用于支付或登录页，或者需要比 WAF 后面的其他站点更具体的 WAF 策略的任何其他 Uri。
 
-与每站点 WAF 策略一样，更具体的策略会覆盖不太具体的策略。 这意味着，URL 路径映射上的每个 URI 策略会重写其上方的任何每个站点或全局 WAF 策略。
+与每站点 WAF 策略一样，更具体的策略会替代更具体的策略。 这意味着，URL 路径映射上的每个 URI 策略会重写其上方的任何每个站点或全局 WAF 策略。
 
-## <a name="example"></a>示例
+### <a name="example"></a>示例
 
 假设有三个站点： contoso.com、fabrikam.com 和 adatum.com 都位于同一应用程序网关后面。 你需要将 WAF 应用于所有三个站点，但你需要增加 adatum.com 的安全性，因为这是客户访问、浏览和购买产品的地方。
 

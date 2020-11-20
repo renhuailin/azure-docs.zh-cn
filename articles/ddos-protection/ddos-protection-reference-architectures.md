@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905131"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992431"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS 防护参考体系结构
 
-标准 DDoS 防护面向[虚拟网络中部署的服务](/azure/virtual-network/virtual-network-for-azure-services)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 以下参考体系结构按场景进行整理，体系结构模式已分组在一起。
+标准 DDoS 防护面向[虚拟网络中部署的服务](../virtual-network/virtual-network-for-azure-services.md)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 以下参考体系结构按场景进行整理，体系结构模式已分组在一起。
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>虚拟机 (Windows/Linux) 工作负荷
 
@@ -54,7 +54,7 @@ ms.locfileid: "92905131"
 
 Azure 流量管理器将传入的请求路由到某个区域中的应用程序网关。 在正常操作期间，它会将请求路由到活动区域中的应用程序网关。 如果该区域不可用，流量管理器会故障转移到备用区域中的应用程序网关。
 
-从 Internet 发往 Web 应用程序的所有流量通过流量管理器路由到[应用程序网关公共 IP 地址](/azure/application-gateway/application-gateway-web-app-overview)。 在此场景中，应用服务（Web 应用）本身不直接面向外部，且受应用程序网关的保护。 
+从 Internet 发往 Web 应用程序的所有流量通过流量管理器路由到[应用程序网关公共 IP 地址](../application-gateway/application-gateway-web-app-overview.md)。 在此场景中，应用服务（Web 应用）本身不直接面向外部，且受应用程序网关的保护。 
 
 我们建议配置应用程序网关 WAF SKU（预防模式）来帮助防范第 7 层（HTTP/HTTPS/Web 套接字）攻击。 此外，Web 应用配置为[仅接受来自应用程序网关 IP 地址的流量](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)。
 
@@ -64,7 +64,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 ### <a name="hdinsight-on-azure"></a>Azure 上的 HDInsight
 
-此参考体系结构显示如何为 [Azure HDInsight 群集](/azure/hdinsight/)配置标准 DDoS 防护。 确保 HDInsight 群集已链接到虚拟网络，并在该虚拟网络上启用了 DDoS 防护。
+此参考体系结构显示如何为 [Azure HDInsight 群集](../hdinsight/index.yml)配置标准 DDoS 防护。 确保 HDInsight 群集已链接到虚拟网络，并在该虚拟网络上启用了 DDoS 防护。
 
 ![“HDInsight”和“高级设置”窗格，其中包含虚拟网络设置](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 在此体系结构中，从 Internet 发往 HDInsight 群集的流量路由到与 HDInsight 网关负载均衡器关联的公共 IP。 然后，网关负载均衡器直接将流量发送到头节点或工作节点。 由于已在 HDInsight 虚拟网络上启用标准 DDoS 防护，虚拟网络中的所有公共 IP 将得到第 3 层和第 4 层 DDoS 防护。 此参考体系结构可与 N 层和多区域参考体系结构相结合。
 
-有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
+有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
 
 
 > [!NOTE]

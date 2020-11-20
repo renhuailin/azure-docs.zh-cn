@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eefb658c689128c1d91858ac906c09e71d05cda6
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 5c80e5e611c275c2a2262963aa0759075fca836b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888940"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989388"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
-Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 丰富的遥测通过 Azure Monitor 公开，包括在 DDoS 攻击期间的详细指标。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断接口，将日志记录与 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection)、Splunk (Azure 事件中心) 、OMS Log Analytics 和 azure 存储进行进一步集成，以实现高级分析。
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 丰富的遥测通过 Azure Monitor 公开，包括在 DDoS 攻击期间的详细指标。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断接口，将日志记录与 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure 事件中心) 、OMS Log Analytics 和 azure 存储进行进一步集成，以实现高级分析。
 
-在本教程中，你将了解：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 配置针对 DDoS 防护指标的警报
@@ -49,7 +49,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
     |名称                     | 输入 _MyDdosAlert_。                                                                                |
     |订阅             | 选择包含希望用于接收警报的公共 IP 地址的订阅。        |
     |资源组           | 选择包含希望用于接收警报的公共 IP 地址的资源组。      |
-    |资源                 | 选择包含希望用于接收警报的公共 IP 地址的公共 IP 地址。 DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 可监视通过[适用于 Azure 服务的虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services#services-that-can-be-deployed-into-a-virtual-network)中列出的资源管理器部署的所有资源的公共 IP 地址，Azure App Service 环境和 Azure VPN 网关除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。                   |
+    |资源                 | 选择包含希望用于接收警报的公共 IP 地址的公共 IP 地址。 DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 可监视通过[适用于 Azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的资源管理器部署的所有资源的公共 IP 地址，Azure App Service 环境和 Azure VPN 网关除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。                   |
     |指标                   | 选择 **"DDoS 攻击"**。                                                                |
     |阈值                | 1 - 1 表示遭到攻击。 0 表示未遭到攻击。                         |
     |周期                   | 选择所选的任何值。                                                                   |
@@ -95,7 +95,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>在 Azure 安全中心查看 DDoS 保护警报
 
-Azure 安全中心提供 [安全警报](/azure/security-center/security-center-managing-and-responding-alerts)的列表，其中包含有助于调查和修正问题的信息。 利用此功能，可以获得警报的统一视图，包括与 DDoS 攻击相关的警报，以及在短期内缓解攻击所采取的措施。
+Azure 安全中心提供 [安全警报](../security-center/security-center-managing-and-responding-alerts.md)的列表，其中包含有助于调查和修正问题的信息。 利用此功能，可以获得警报的统一视图，包括与 DDoS 攻击相关的警报，以及在短期内缓解攻击所采取的措施。
 你将看到两个特定警报，你可以看到这些警报是为了进行 DDoS 攻击检测和缓解：
 
 - **检测到公共 ip 的 DDoS 攻击**：当 ddos 防护服务检测到某个公共 ip 地址是 DDoS 攻击的目标时，会生成此警报。
