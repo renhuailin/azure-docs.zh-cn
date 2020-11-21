@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309449"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018950"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主题域和数据提取规划 LUIS 应用架构
 
@@ -21,7 +21,7 @@ LUIS 应用架构包含与主题 [域](luis-glossary.md#domain)相关的[意向]
 LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票、航班、酒店和租车的旅行应用。 另一应用则用于提供与锻炼、跟踪健身活动和设定目标相关的内容。 标识域可帮助你查找与你的域相关的单词或短语。
 
 > [!TIP]
-> LUIS 提供许多常见场景的[预生成域](luis-how-to-use-prebuilt-domains.md)。 检查是否可使用预生成域作为应用的起始点。
+> LUIS 提供许多常见场景的[预生成域](./howto-add-prebuilt-models.md)。 检查是否可使用预生成域作为应用的起始点。
 
 ## <a name="identify-your-intents"></a>标识意向
 
@@ -38,7 +38,7 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 
 ## <a name="create-example-utterances-for-each-intent"></a>为每个意向创建示例陈述
 
-首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 最谈话中的一个很好的优点包括字数统计、字词选择、动词时态和 [标点](luis-reference-application-settings.md#punctuation-normalization)。
+首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 良好的言语样本包括总体字数统计、选词、动词时态和[标点](luis-reference-application-settings.md#punctuation-normalization)。
 
 有关详细信息，请参阅[了解适用于 LUIS 应用的言语](luis-concept-utterance.md)。
 
@@ -49,34 +49,33 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 确定要在应用中使用哪些实体后，请记住，有不同类型的实体可用于捕获对象类型间的关系。 [LUIS 中的实体](luis-concept-entity-types.md)提供有关不同类型的详细信息。
 
 > [!TIP]
-> LUIS 为常见的对话用户方案提供 [预先构建的实体](luis-prebuilt-entities.md) 。 考虑从使用预生成的实体着手，方便应用程序开发。
+> LUIS 提供[预生成的实体](./howto-add-prebuilt-models.md)，用于常见的聊天式用户方案。 考虑从使用预生成的实体着手，方便应用程序开发。
 
-## <a name="resolution-with-intent-or-entity"></a>用意向或实体解决？
+## <a name="resolution-with-intent-or-entity"></a>使用意向或实体进行解析？
 
-在许多情况下，尤其是在使用自然对话时，用户提供的查询文本可以包含多个函数或意向。 为了解决这种情况，一般的经验法则是了解输出的表示形式可以在意向和实体中完成。 此表示形式应该可映射到客户端应用程序操作，并且无需限制为方法。
+在许多情况下，尤其是在处理自然聊天时，用户提供的言语可能包含多个功能或意向。 若要解决这个问题，通常需要明白：意向和实体中均可表示输出。 此表示形式应可映射到客户端应用程序操作，不必局限于意向。
 
-**Ent 是一** 种概念，即 (通常理解为意向的操作) 也可以作为实体来捕获，并在输出 JSON 中依赖此窗体，然后可以将其映射到特定的操作。 "_求反_" 是一种常见的用法，可以利用这种依赖关系和实体来实现完全提取。
+Int-ent-ties 是一种概念，即操作（通常理解为意向）也可以被捕获为实体，并以这种形式依赖于输出 JSON，你可以在其中将其映射到特定操作。 求反是利用对意向和实体的这种依赖进行完整提取的常见用法。
 
-请考虑以下两个最谈话，它们非常接近 word 选项，但具有不同的结果：
+请考虑以下两个言语，它们在选词方面非常接近，但结果却有所不同：
 
 |话语|
 |--|
 |`Please schedule my flight from Cairo to Seattle`|
 |`Cancel my flight from Cairo to Seattle`|
 
-使用机器学习实体创建单一意图，而不是使用两个不同的方法 `FlightAction` 。 机器学习实体应提取计划和取消请求以及源或目标位置的操作的详细信息。
+与其使用两个单独的意向，不如使用 `FlightAction` 机器学习实体创建单个意向。 机器学习实体应该针对计划请求和取消请求以及源位置或目标位置提取操作的详细信息。
 
-`FlightAction`实体将在机器学习实体和子实体的以下伪架构中进行构造：
+`FlightAction` 实体会在机器学习实体和子实体的以下伪架构中进行构造：
 
 * FlightAction
     * 操作
     * 源
     * 目标
 
-有助于提取向子实体添加功能。 您将根据您希望在用户最谈话中看到的词汇以及您希望在预测响应中返回的值来选择功能。
+请向子实体添加特征，这样有助于提取。 你将根据自己期望在用户言语中看到的词汇和自己希望在预测响应中返回的值来选择特征。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [了解 LUIS 开发生命周期](luis-concept-app-iteration.md)
-

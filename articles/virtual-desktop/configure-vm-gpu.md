@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505302"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018335"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
 
@@ -23,27 +23,27 @@ Windows 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速�
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>选择适当的 GPU 优化的 Azure 虚拟机大小
 
-选择 Azure 的 [NV 系列](/azure/virtual-machines/nv-series)、 [NVv3](/azure/virtual-machines/nvv3-series)或 [NVv4](/azure/virtual-machines/nvv4-series) 的 VM 大小之一。 这些是针对应用和桌面虚拟化定制的，并使应用和 Windows 用户界面能够进行 GPU 加速。 主机池的正确选择取决于多种因素，包括特定的应用工作负荷、所需的用户体验质量和成本。 通常，更大和更强大的 Gpu 在给定用户的密度下提供更好的用户体验，而较小的小数部分的大小则允许更精细地控制成本和质量。
+选择 Azure 的 [NV 系列](../virtual-machines/nv-series.md)、 [NVv3](../virtual-machines/nvv3-series.md)或 [NVv4](../virtual-machines/nvv4-series.md) 的 VM 大小之一。 这些是针对应用和桌面虚拟化定制的，并使应用和 Windows 用户界面能够进行 GPU 加速。 主机池的正确选择取决于多种因素，包括特定的应用工作负荷、所需的用户体验质量和成本。 通常，更大和更强大的 Gpu 在给定用户的密度下提供更好的用户体验，而较小的小数部分的大小则允许更精细地控制成本和质量。
 
 >[!NOTE]
 >Azure 的 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm 通常不适用于 Windows 虚拟桌面会话主机。 这些 Vm 针对专用、高性能计算或机器学习工具定制，如用 NVIDIA CUDA 构建的工具。 带有 NVIDIA Gpu 的常规应用和桌面加速需要 NVIDIA 网格许可;这是由 Azure 提供的建议 VM 大小，但需要单独排列 NC/ND 系列 Vm。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、预配虚拟机并配置应用组
 
-使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure 门户创建主机池](/azure/virtual-desktop/create-host-pools-azure-marketplace)。
+使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 
 Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
 * Windows 10 版本 1511 或更高版本
 * Windows Server 2016 或更高版本
 
-你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Windows 虚拟桌面的应用组](/azure/virtual-desktop/manage-app-groups)。
+你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Windows 虚拟桌面的应用组](./manage-app-groups.md)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在虚拟机中安装受支持的图形驱动程序
 
-若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
+若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
 
-Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 对于带有 NVIDIA Gpu 的 Azure NV 系列 Vm，只有 [NVIDIA 网格驱动程序](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)，而不是 nvidia TESLA (CUDA) 驱动程序，支持通用应用和桌面的 GPU 加速。
+Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 对于带有 NVIDIA Gpu 的 Azure NV 系列 Vm，只有 [NVIDIA 网格驱动程序](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)，而不是 nvidia TESLA (CUDA) 驱动程序，支持通用应用和桌面的 GPU 加速。
 
 安装驱动程序后，需要重启 VM。 使用上述说明中的验证步骤确认图形驱动程序已成功安装。
 
@@ -92,7 +92,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 对于带有 NVIDIA
 
 若要验证应用是否正在使用 GPU 进行渲染，请尝试执行以下任一操作：
 
-* 对于具有 NVIDIA GPU 的 Azure Vm，请使用 `nvidia-smi` 在运行应用时 [验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) 中所述的实用程序来检查 GPU 使用率。
+* 对于具有 NVIDIA GPU 的 Azure Vm，请使用 `nvidia-smi` 在运行应用时 [验证驱动程序安装](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation) 中所述的实用程序来检查 GPU 使用率。
 * 在受支持的操作系统版本上，可以使用任务管理器来检查 GPU 利用率。 在“性能”选项卡中选择 GPU，查看应用是否正在使用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>验证 GPU 加速的帧编码
@@ -115,5 +115,5 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 对于带有 NVIDIA
 
 按照这些说明操作，应当可以让 GPU 加速在一个会话主机（一个 VM）上正常运行。 有关在较大的主机池中启用 GPU 加速的其他一些注意事项如下：
 
-* 请考虑使用 [VM 扩展](/azure/virtual-machines/extensions/overview)来简化多个 VM 上的驱动程序安装和更新。 将 [NVIDIA GPU 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)用于具有 NVIDIA GPU 的 VM，并将 [AMD GPU 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-amd-gpu-windows)用于具有 AMD GPU 的 VM。
-* 请考虑使用 Active Directory 组策略来简化在多个 VM 上配置组策略的过程。 有关在 Active Directory 域中部署组策略的信息，请参阅[使用组策略对象](https://go.microsoft.com/fwlink/p/?LinkId=620889)。
+* 请考虑使用 [VM 扩展](../virtual-machines/extensions/overview.md)来简化多个 VM 上的驱动程序安装和更新。 将 [NVIDIA GPU 驱动程序扩展](../virtual-machines/extensions/hpccompute-gpu-windows.md)用于具有 NVIDIA GPU 的 VM，并将 [AMD GPU 驱动程序扩展](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md)用于具有 AMD GPU 的 VM。
+* 请考虑使用 Active Directory 组策略来简化在多个 VM 上配置组策略的过程。 有关在 Active Directory 域中部署组策略的信息，请参阅[使用组策略对象](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731212(v=ws.11))。

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540893"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018899"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
@@ -66,7 +66,7 @@ ms.locfileid: "91540893"
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory 资源
 
-如果你在组织中使用了 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD)，则在用户希望使用语言理解 (LUIS) 时，LUIS 需要有权访问用户的访问权限相关信息。 LUIS 需要的资源是最少的。
+如果你在组织中使用了 [Azure Active Directory](../../active-directory/index.yml) (Azure AD)，则在用户希望使用语言理解 (LUIS) 时，LUIS 需要有权访问用户的访问权限相关信息。 LUIS 需要的资源是最少的。
 
 尝试使用已获得管理员同意或不需要管理员同意的帐户进行登录时，你将看到详细说明，例如管理员同意：
 
@@ -87,7 +87,7 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 
 如果租户管理员只希望某些用户使用 LUIS，则有几种可能的解决方案：
 * 给予“管理员同意”（同意 Azure AD 的所有用户），但随后在“企业应用程序属性”下将“需要进行用户分配”设置为“是”，最后仅将所需用户分配/添加到应用程序。 使用此方法，管理员仍然向应用提供“管理员同意”，但是，可以控制可以访问应用的用户。
-* 另一种解决方法是使用 [Microsoft Graph 中的 Azure AD 标识和访问管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) 向每个特定用户提供许可。
+* 另一种解决方法是使用 [Microsoft Graph 中的 Azure AD 标识和访问管理 API](/graph/azuread-identity-access-management-concept-overview) 向每个特定用户提供许可。
 
 详细了解 Azure Active Directory 用户和同意：
 * [将应用限制为](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)供一组用户使用

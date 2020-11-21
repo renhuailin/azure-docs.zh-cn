@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536031"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018831"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -40,7 +40,7 @@ ms.locfileid: "91536031"
 * 系统会提示所有者向协作者发送电子邮件，告知他们迁移。
 * 如果你是应用程序的协作者，应用程序将不会迁移。
 * 所有者无法知道协作者已迁移。
-* 迁移不会自动收集协作者，也不会将其移动或添加到 Azure 创作资源。 应用所有者是在迁移后需要完成此步骤的人员。 此步骤需要 [Azure 创作资源的权限](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)。
+* 迁移不会自动收集协作者，也不会将其移动或添加到 Azure 创作资源。 应用所有者是在迁移后需要完成此步骤的人员。 此步骤需要 [Azure 创作资源的权限](./luis-how-to-collaborate.md)。
 * 在将协作者分配到 Azure 资源后，他们需要迁移以访问应用程序。 否则，他们将无权使用创作应用程序。
 * 无法将迁移的用户添加为应用程序的协作者。
 * 如果您拥有分配给其他用户所拥有的应用程序的预测密钥，这会阻止所有者和协作者进行迁移。 请参阅本文后面的建议。
@@ -174,7 +174,7 @@ ms.locfileid: "91536031"
 
 了解如何在创作资源上 [添加参与者](luis-how-to-collaborate.md) 。 参与者将有权访问该资源下的所有应用程序。
 
-可以在该资源的 " **访问控制" (IAM ") ** 页上，将参与者添加到 Azure 门户中的创作资源。 有关详细信息，请参阅 [添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
+可以在该资源的 " **访问控制" (IAM ")** 页上，将参与者添加到 Azure 门户中的创作资源。 有关详细信息，请参阅 [将参与者添加到应用](luis-how-to-collaborate.md)。
 
 > [!Note]
 > 如果 LUIS 应用的所有者将协作者迁移到并添加为 Azure 资源上的参与者，协作者将仍无法访问该应用，除非他们自己也进行迁移。
@@ -214,7 +214,7 @@ ms.locfileid: "91536031"
 
 建议：
 * 将应用程序导出为备份。 这是迁移过程中的可选步骤。
-* 从**管理**  >  **Azure 资源**页取消分配预测资源。
+* 从 **管理**  >  **Azure 资源** 页取消分配预测资源。
 * 迁移过程。
 * 迁移后导入后导入应用程序。
 * 从 "**管理**  >  **Azure 资源**" 页将预测密钥重新分配给应用程序。
@@ -229,7 +229,7 @@ ms.locfileid: "91536031"
 * 确保你处于与有效订阅关联的正确租户中。 你可以在此工具栏上将租户从你姓名首字母的左侧的头像切换到你 ![ 可以切换租户的工具栏](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 如果有现成的创作资源，但在选择 " **使用现有创作资源** " 选项时找不到该资源：
-* 你的资源可能在不同于你登录的门户的位置创建。 检查 [LUIS 创作区域和门户](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)。
+* 你的资源可能在不同于你登录的门户的位置创建。 检查 [LUIS 创作区域和门户](./luis-reference-regions.md#luis-authoring-regions)。
 * 改为通过 LUIS 门户创建新资源。
 
 如果选择 " **创建新的创作资源** " 选项，并且迁移失败，并出现错误消息 "检索用户的 Azure 信息失败，请稍后重试"：

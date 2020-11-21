@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328873"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018369"
 ---
 # <a name="configure-device-redirections"></a>配置设备重定向
 
@@ -19,11 +19,11 @@ ms.locfileid: "92328873"
 
 ## <a name="supported-device-redirections"></a>支持的设备重定向
 
-每个客户端支持不同的设备重定向。 对于每个客户端，请查看 [比较客户端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) 以了解支持的设备重定向的完整列表。
+每个客户端支持不同的设备重定向。 对于每个客户端，请查看 [比较客户端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) 以了解支持的设备重定向的完整列表。
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>为主机池自定义 RDP 属性
 
-若要详细了解如何使用 PowerShell 或 Azure 门户为主机池自定义 RDP 属性，请参阅 [RDP 属性](customize-rdp-properties.md)。 有关受支持的 RDP 属性的完整列表，请参阅 [支持的 rdp 文件设置](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。
+若要详细了解如何使用 PowerShell 或 Azure 门户为主机池自定义 RDP 属性，请参阅 [RDP 属性](customize-rdp-properties.md)。 有关受支持的 RDP 属性的完整列表，请参阅 [支持的 rdp 文件设置](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)。
 
 ## <a name="setup-device-redirections"></a>设置设备重定向
 
@@ -81,7 +81,7 @@ ms.locfileid: "92328873"
 - 导航到 "**计算机配置**  >  **策略**" >  **管理模板**  >  **Windows 组件**  >  **远程桌面服务**  >  **远程桌面连接客户端**  >  **RemoteFX USB 设备重定向**"。
 - 选择 " **允许来自此计算机的其他支持的 REMOTEFX USB 设备的 RDP 重定向**"。
 - 选择 " **已启用** " 选项，然后选择 " **RemoteFX USB 重定向访问权限" 框中的管理员和用户** 。
-- 选择“确定” 。
+- 选择“确定”。
 
 ### <a name="plug-and-play-device-redirection"></a>即插即用设备重定向
 

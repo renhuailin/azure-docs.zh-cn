@@ -10,17 +10,17 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496685"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019443"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>迁移指南：在 Azure Vm 上 SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
-本迁移指南介绍了如何通过使用备份和还原和日志传送 (Vm) ，使用备份和还原和日志 [迁移助手](/sql/dma/dma-overview)传送将用户数据库从 SQL Server 中 **发现** 、 **评估** 和 **迁移** 到 Azure 虚拟机上 SQL Server。 
+本迁移指南介绍了如何通过使用备份和还原和日志传送 (Vm) ，使用备份和还原和日志 [迁移助手](/sql/dma/dma-overview)传送将用户数据库从 SQL Server 中 **发现**、**评估** 和 **迁移** 到 Azure 虚拟机上 SQL Server。 
 
 你可以迁移 SQL Server 本地或上运行的：
 
@@ -40,7 +40,7 @@ ms.locfileid: "94496685"
 - [数据库迁移助手 (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595)。
 - [Azure Migrate 项目](/azure/migrate/create-manage-projects)。
 - [在 AZURE VM 上](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal)准备好的目标 SQL Server 与源 SQL Server 的版本相同或更高。
-- [Azure 与本地之间的连接](/architecture/reference-architectures/hybrid-networking)。
+- [Azure 与本地之间的连接](/azure/architecture/reference-architectures/hybrid-networking)。
 - [选择适当的迁移策略](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
 ## <a name="pre-migration"></a>预迁移
@@ -59,7 +59,7 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 
 ### <a name="assess"></a>评估
 
-发现所有数据源后，使用 [数据迁移助手 (DMA) ](/dma/dma-overview) SQL Server 评估 () 迁移到 Azure VM 上 SQL Server 的实例，以了解源实例和目标实例之间的间隔。 
+发现所有数据源后，使用 [数据迁移助手 (DMA) ](/sql/dma/dma-overview) SQL Server 评估 () 迁移到 Azure VM 上 SQL Server 的实例，以了解源实例和目标实例之间的间隔。 
 
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 > 并非所有 SQL Server 版本都支持所有兼容性模式。 检查 [目标 SQL Server 版本](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) 是否支持所选的数据库兼容性。 例如，SQL Server 2019 不支持级别90兼容性 (的数据库 SQL Server 2005) 。 这些数据库至少需要升级到兼容级别100。
 >
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>迁移
 
 完成预迁移步骤后，即可迁移用户数据库和组件。 使用首选的 [迁移方法](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)迁移数据库。  
 
@@ -123,7 +123,7 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 1. 暂停/停止使用用于迁移的数据库的任何应用程序。 
 1. 使用 [单用户模式](/sql/relational-databases/databases/set-a-database-to-single-user-mode)确保用户数据库 () 处于非活动状态。 
 1. 执行到本地位置的完整数据库备份。
-1. 使用远程桌面、 [Azure 数据资源管理器](/data-explorer/data-explorer-overview)或 [AZCopy 命令行实用工具](../../../storage/common/storage-use-azcopy-v10.md) 将本地备份文件 () 复制到 VM， ( # A0 2 TB 备份建议) 。
+1. 使用远程桌面、 [Azure 数据资源管理器](/azure/data-explorer/data-explorer-overview)或 [AZCopy 命令行实用工具](../../../storage/common/storage-use-azcopy-v10.md) 将本地备份文件 () 复制到 VM， ( # A0 2 TB 备份建议) 。
 1. 将完整数据库备份还原到 Azure VM 上的 SQL Server () 。
 
 ### <a name="log-shipping--minimize-downtime"></a>日志传送 (最大限度地减少停机时间) 
@@ -133,7 +133,7 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 1. 根据你的要求，在 Azure VM 上设置与目标 SQL Server 的连接。 请参阅[连接到 Azure 上的 SQL Server 虚拟机 (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md)。
 1. 确保要迁移的本地用户数据库 () 完整恢复模式或大容量日志恢复模式。
 1. 执行到本地位置的完整数据库备份，并修改现有的任何完整数据库备份作业，使用 [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 关键字来保留日志链。
-1. 使用远程桌面、 [Azure 数据资源管理器](/data-explorer/data-explorer-overview)或 [AZCopy 命令行实用工具](../../../storage/common/storage-use-azcopy-v10.md) 将本地备份文件 () 复制到 VM， ( # B0 1 TB 备份建议) 。
+1. 使用远程桌面、 [Azure 数据资源管理器](/azure/data-explorer/data-explorer-overview)或 [AZCopy 命令行实用工具](../../../storage/common/storage-use-azcopy-v10.md) 将本地备份文件 () 复制到 VM， ( # B0 1 TB 备份建议) 。
 1. 在 Azure VM 上的 SQL Server 上还原 () 的完整数据库备份。
 1. 在本地数据库和 Azure VM 上的目标 SQL Server 之间设置 [日志传送](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) 。 请确保不重新初始化数据库 () ，因为这已在前面的步骤中完成。
 1. **剪切** 到目标服务器。 

@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917829"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019426"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：在 Azure Vm 上 SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -75,9 +75,9 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 |**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **说明** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrate  
+## <a name="migrate"></a>迁移  
 
 由于设置很简单，因此建议的迁移方法是在本地执行本机 SQL Server [备份](/sql/t-sql/statements/backup-transact-sql) ，然后将该文件复制到 Azure。 此方法支持从2008和更大的数据库 ( 备份开始的所有版本 SQL Server ( # B0 1) TB 的数据库，) # B1 1 TB。 但是，对于从 SQL Server 2014 开始、小于 1 TB 的数据库，以及与 Azure 建立良好连接的数据库， [SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 是更好的方法。 
 

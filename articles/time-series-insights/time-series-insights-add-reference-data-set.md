@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614234"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020140"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 门户为 Azure 时序见解 Gen1 环境创建引用数据集
 
@@ -92,7 +92,7 @@ ms.locfileid: "91614234"
 
     [![为数据集命名。](media/add-reference-data-set/enter-reference-data-set-name.png)](media/add-reference-data-set/enter-reference-data-set-name.png#lightbox)
 
-1. 通过选择数据网格上方的下拉列表，提供数据集中的**主键**列。
+1. 通过选择数据网格上方的下拉列表，提供数据集中的 **主键** 列。
 
     [![选择键列。](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
@@ -121,4 +121,4 @@ ms.locfileid: "91614234"
 
 - 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
 
-- 有关完整的 API 参考，请阅读[参考数据 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) 文档。
+- 有关完整的 API 参考，请阅读[参考数据 API](/rest/api/time-series-insights/gen1-reference-data-api) 文档。

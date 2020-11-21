@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意向识别
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174629"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018695"
 ---
 # <a name="what-is-intent-recognition"></a>什么是意向识别？
 
@@ -29,7 +29,7 @@ ms.locfileid: "92174629"
 
 * LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服务订阅，只需要 LUIS。
 * 语音意向识别与 SDK 集成。 可以将 LUIS 密钥用于语音服务。
-* 通过语音 SDK 的意向识别 [在 LUIS 支持的区域子集提供](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition)。
+* 通过语音 SDK 的意向识别 [在 LUIS 支持的区域子集提供](./regions.md#intent-recognition)。
 
 ## <a name="get-started"></a>入门
 
@@ -39,8 +39,8 @@ ms.locfileid: "92174629"
 
 意向识别的示例代码：
 
-* [快速入门：使用预构建的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [使用适用于 C# 的语音 SDK 从语音中识别意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [快速入门：使用预构建的家庭自动化应用](../luis/luis-get-started-create-app.md)
+* [使用适用于 C# 的语音 SDK 从语音中识别意向](./how-to-recognize-intents-from-speech-csharp.md)
 * [在 C 中使用 Unity 的意向识别和其他语音服务#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [使用用于 Python 的语音 SDK 识别意向](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [在 Windows 上使用适用于 c + + 的语音 SDK 实现意向识别和其他语音服务](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,7 +49,7 @@ ms.locfileid: "92174629"
 
 ## <a name="reference-docs"></a>参考文档
 
-* [语音 SDK](speech-sdk-reference.md)
+* [语音 SDK](./speech-sdk.md)
 
 ## <a name="next-steps"></a>后续步骤
 

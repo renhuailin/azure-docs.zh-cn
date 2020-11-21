@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006799"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018284"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
@@ -46,7 +46,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 你需要创建工作区，然后才能使用 Log Analytics。 为此，请按照以下两篇文章之一中的说明进行操作：
 
 - 如果你更喜欢使用 Azure 门户，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
-- 如果喜欢 PowerShell，请参阅 [使用 Powershell 创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace-posh.md)。
+- 如果喜欢 PowerShell，请参阅 [使用 Powershell 创建 Log Analytics 工作区](../azure-monitor/platform/powershell-workspace-configuration.md)。
 
 创建工作区后，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
 
@@ -83,7 +83,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 6. 选择“保存”。
 
 >[!NOTE]
->Log Analytics 提供将数据流式传输到 [事件中心](../event-hubs/event-hubs-about.md) 或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将 [azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) 和 [将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)。
+>Log Analytics 提供将数据流式传输到 [事件中心](../event-hubs/event-hubs-about.md) 或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将 [azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) 和 [将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
 
 ## <a name="how-to-access-log-analytics"></a>如何访问 Log Analytics
 
@@ -114,7 +114,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 5. 你已准备好查询诊断。 所有诊断表都具有 "WVD" 前缀。
 
 >[!NOTE]
->有关 Azure Monitor 日志中存储的表的更多详细信息，请参阅 [Azure Monitor 数据引用](https://docs.microsoft.com/azure/azure-monitor/reference/)。 与 Windows 虚拟桌面相关的所有表都标记为 "WVD"。
+>有关 Azure Monitor 日志中存储的表的更多详细信息，请参阅 [Azure Monitor 数据引用](/azure/azure-monitor/reference/)。 与 Windows 虚拟桌面相关的所有表都标记为 "WVD"。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>用于发送诊断事件的节奏
 
@@ -134,9 +134,9 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机
 1. 选择 **Windows 虚拟桌面** 查看可用查询。
 1. 选择 " **运行** " 以运行所选查询。
 
-请在 Azure Monitor Log Analytics 中详细了解 [已保存查询](../azure-monitor/log-query/saved-queries.md)中的示例查询接口。
+请在 Azure Monitor Log Analytics 中详细了解 [已保存查询](../azure-monitor/log-query/example-queries.md)中的示例查询接口。
 
-下面的查询列表允许您查看单个用户的连接信息或问题。 可以在 [Log Analytics 查询编辑器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
+下面的查询列表允许您查看单个用户的连接信息或问题。 可以在 [Log Analytics 查询编辑器](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
 
 
 查找单个用户的所有连接：

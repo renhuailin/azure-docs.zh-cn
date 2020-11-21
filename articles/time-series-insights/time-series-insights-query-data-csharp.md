@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596436"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020038"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>使用 C Sharp 查询 Azure 时序见解 Gen1 环境中的数据
 
 > [!CAUTION]
 > 这是一篇 Gen1 文章。
 
-本 C# 示例演示如何使用[Gen1 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 查询 Azure 时序见解 Gen1 环境中的数据。
+本 C# 示例演示如何使用[Gen1 查询 API](/rest/api/time-series-insights/gen1-query) 查询 Azure 时序见解 Gen1 环境中的数据。
 
 > [!TIP]
 > 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 查看 Gen1 C# 代码示例。
@@ -37,22 +37,22 @@ ms.locfileid: "91596436"
 * 如何在后续查询 API 请求的 `Authorization` 标头中传递该获得的访问令牌。
 
 * 示例调用每个 Gen1 查询 API，展示如何对以下项发出 HTTP 请求：
-  * [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api)，用于返回用户有权访问的环境
-  * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * [获取环境元数据 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api)，用于检索环境元数据
-  * [获取环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
-  * [获取环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+  * [获取环境 API](/rest/api/time-series-insights/gen1-query-api#get-environments-api)，用于返回用户有权访问的环境
+  * [获取环境可用性 API](/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * [获取环境元数据 API](/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api)，用于检索环境元数据
+  * [获取环境事件 API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [获取环境聚合 API](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
 * 如何使用 WSS 与 Gen1 查询 API 交互以向以下项发送消息：
 
-  * [获取流式处理的环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
-  * [获取流式处理的环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
+  * [获取流式处理的环境事件 API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [获取流式处理的环境聚合 API](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>先决条件和设置
 
 在编译和运行示例代码之前，请完成以下步骤：
 
-1. [预配 Gen1 Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)环境。
+1. [预配 Gen1 Azure 时序见解](./time-series-insights-get-started.md)环境。
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。
 1. 安装必需的项目依赖项。
 1. 编辑下面的示例代码，将每个 **#DUMMY#** 替换为相应的环境标识符。
@@ -82,7 +82,7 @@ ms.locfileid: "91596436"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)。
+* 若要了解有关查询的详细信息，请参阅[查询 API 参考](/rest/api/time-series-insights/gen1-query-api)。
 
 * 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到时序见解](https://github.com/microsoft/tsiclient)。
 Azure-示例/Azure 时间系列-Insights/gen1/gen1-示例/程序 .cs

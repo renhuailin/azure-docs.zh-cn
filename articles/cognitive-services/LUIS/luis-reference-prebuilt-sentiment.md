@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/01/2020
-ms.openlocfilehash: 7c3c0f603b9e7d83e40f43ab00d31f4ca63f2b4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535366"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018661"
 ---
 # <a name="sentiment-analysis"></a>情绪分析
-如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。
+如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](../text-analytics/index.yml)文档中详细了解情绪分析。
 
 LUIS 使用文本分析 V2。 
 
@@ -50,4 +50,3 @@ LUIS 使用文本分析 V2。
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
-

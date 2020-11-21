@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 340f451080f43fab213a3afc69f2adfae83514d7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837322"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019953"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -138,6 +138,9 @@ ms.locfileid: "94837322"
 1. 选择要添加的可选声明。
 1. 选择 **添加** 。
 
+> [!NOTE]
+> 当前在 Azure AD B2C 租户中注册的应用程序的 UI 选项 **标记配置** 边栏选项卡不可用。 对于在 B2C 租户中注册的应用程序，可以通过修改应用程序清单来配置可选声明。 有关详细信息，请参阅 [在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input) 
+
 **通过应用程序清单配置可选声明：**
 
 [![演示如何使用应用清单配置可选声明](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
@@ -175,6 +178,7 @@ ms.locfileid: "94837322"
     ```
 
 2. 完成后，选择“保存”。 现在，指定的可选声明将包含在应用程序的令牌中。
+
 
 ### <a name="optionalclaims-type"></a>OptionalClaims 类型
 

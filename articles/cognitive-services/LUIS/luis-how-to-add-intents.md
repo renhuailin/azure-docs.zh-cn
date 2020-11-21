@@ -9,25 +9,25 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
-ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540925"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018933"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。
 
-在 LUIS 门户中，可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向**** ****。
+在 LUIS 门户中，可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向 。
 
 ## <a name="add-an-intent-to-your-app"></a>向应用程序添加意向
 
-1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”**** 和“创作资源”**** 以查看分配给该创作资源的应用。
-1. 在“我的应用”页上选择应用名称以打开应用****。
-1. 在“意向”页上，选择“+ 创建”**** ****。
-1. 在“创建新意向”对话框中，输入意向名称（例如 `ModifyOrder`），然后选择“完成”**** ****。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 在“我的应用”页上选择应用名称以打开应用。
+1. 在“意向”页上，选择“+ 创建” 。
+1. 在“创建新意向”对话框中，输入意向名称（例如 `ModifyOrder`），然后选择“完成” 。
 
     > [!div class="mx-imgBorder"]
     > ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -51,12 +51,12 @@ ms.locfileid: "91540925"
 
 当未使用受过训练的应用来预测意向的言语时，将确定为一个意向预测错误。
 
-1. 若要找出并解决言语预测错误，请使用“不正确”或“不明确”这两个“筛选器”选项****。
+1. 若要找出并解决言语预测错误，请使用“不正确”或“不明确”这两个“筛选器”选项。
 
     > [!div class="mx-imgBorder"]
     > ![若要找出并修复言语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-1. 若要在“意向详细信息”页面上显示分数值，请从“查看”选项菜单中选择“显示详细意向分数”**** ****。
+1. 若要在“意向详细信息”页面上显示分数值，请从“查看”选项菜单中选择“显示详细意向分数” 。
 
     应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。
 
@@ -81,4 +81,4 @@ ms.locfileid: "91540925"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何添加包含实体的[示例话语](luis-how-to-add-example-utterances.md)。
+详细了解如何添加包含实体的[示例话语](./luis-how-to-add-entities.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458925"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
 
@@ -104,7 +104,7 @@ Kontiki 支持以下功能：
     ![Kontiki 域和 URL 单一登录信息](common/sp-signonurl.png)
 
     > [!NOTE]
-    > 请联系 [Kontiki 客户端支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)获取要使用的正确值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 请联系 [Kontiki 客户端支持团队](https://kollective.com/support/)获取要使用的正确值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，选择“联合元数据 XML”旁边的“下载”     。 根据需要选择下载选项。 将证书保存在计算机上。
 
@@ -120,7 +120,7 @@ Kontiki 支持以下功能：
 
 ### <a name="configure-kontiki-single-sign-on"></a>配置 Kontiki 单一登录
 
-若要在 Kontiki 端配置单一登录，请将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相关 URL 发送给 [Kontiki 支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)。 Kontiki 支持团队使用你发送的信息来确保双方都正确设置 SAML 单一登录连接。
+若要在 Kontiki 端配置单一登录，请将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相关 URL 发送给 [Kontiki 支持团队](https://kollective.com/support/)。 Kontiki 支持团队使用你发送的信息来确保双方都正确设置 SAML 单一登录连接。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -136,7 +136,7 @@ Kontiki 支持以下功能：
 
 1. 在“用户”窗格中完成以下步骤： 
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension> 。 例如，brittasimon\@contoso.com。
 
