@@ -67,7 +67,7 @@
         - name: 安全基线
           href: security-baseline.md
     - name: 缓存体系结构
-      href: /azure/architecture/best-practices/caching?toc=%252fazure%252fredis-cache%252ftoc.json
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: 操作指南
   items:
     - name: 计划

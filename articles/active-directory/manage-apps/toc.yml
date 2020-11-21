@@ -201,7 +201,7 @@
             - name: 使用 PingAccess 与应用程序代理集成
               href: application-proxy-ping-access-publishing-guide.md
             - name: 与 Azure AD 域服务集成
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: 与 Power BI 集成
               href: application-proxy-integrate-with-power-bi.md
             - name: 与 Cloud App Security 集成
@@ -281,7 +281,7 @@
 - name: 资源
   items:
     - name: 开发人员的支持和帮助选项
-      href: ../develop/developer-support-help-options.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 问题页面

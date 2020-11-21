@@ -63,21 +63,21 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/network'
+      href: /cli/azure/network
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.network'
+      href: /powershell/module/az.network
     - name: Java
-      href: 'https://docs.microsoft.com/java/api/'
+      href: /java/api/
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+      href: /javascript/azure#azure-sdk
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: 资源管理器模板
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
+      href: /azure/templates/microsoft.network/allversions
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
-      href: 'https://docs.microsoft.com/learn/browse/'
+      href: /learn/browse/
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 网络博客

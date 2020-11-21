@@ -49,7 +49,7 @@
         - name: 导出和导入配置
           href: export-import-provisioning-configuration.md
         - name: 预配报表
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: 使用 MS Graph 自动执行配置
       href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: 排查应用程序预配问题
@@ -65,7 +65,7 @@
         - name: 缺少源属性
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: “预配”日志
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
 - name: 参考
   items:
     - name: SCIM 2.0 协议符合性

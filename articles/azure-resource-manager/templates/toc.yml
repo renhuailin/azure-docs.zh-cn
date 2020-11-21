@@ -19,12 +19,12 @@
             - name: 认知搜索
               href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 认知服务
-              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%252fazure%252fazure-resource-manager%252ftemplates%252ftoc.json
+              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: 数据科学虚拟机
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: 分析
+        - name: Analytics
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -491,11 +491,11 @@
           href: template-functions-deployment.md
         - name: 逻辑函数
           href: template-functions-logical.md
-        - name: 数字函数
+        - name: 数值函数
           href: template-functions-numeric.md
         - name: 对象函数
           href: template-functions-object.md
-        - name: 资源函数
+        - name: Resource functions
           href: template-functions-resource.md
         - name: 字符串函数
           href: template-functions-string.md
