@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487767"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024987"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>什么是在会议 (预览) 中进行对话对话？
 
@@ -54,7 +54,7 @@ ms.locfileid: "92487767"
 
 ## <a name="expected-inputs"></a>预期输入
 
-- **多通道音频流** –有关规范和设计的详细信息，请参阅 [MICROSOFT Speech Device SDK 麦克风](https://aka.ms/cts/microphone)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](https://aka.ms/cts/getsdk)。
+- **多通道音频流** –有关规范和设计的详细信息，请参阅 [MICROSOFT Speech Device SDK 麦克风](./speech-devices-sdk-microphone.md)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](./get-speech-devices-sdk.md)。
 - **用户语音示例** –对话要求在会话前需要用户配置文件。 需要从每个用户那里收集音频记录，然后将录制发送到 [签名生成服务](https://aka.ms/cts/signaturegenservice) ，以验证音频和生成用户配置文件。
 
 > [!NOTE]

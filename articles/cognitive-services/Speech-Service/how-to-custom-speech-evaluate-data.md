@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555798"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025644"
 ---
-# <a name="evaluate-and-improve-custom-speech-accuracy"></a>评估并改善自定义语音准确性
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>评估并提升自定义语音识别准确度
 
 本文介绍如何而言度量和提高 Microsoft 语音到文本模型或你自己的自定义模型的准确性。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 
@@ -56,7 +56,7 @@ ms.locfileid: "94555798"
 3. 单击“添加测试”。
 4. 选择“评估准确度”。 为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
 5. 选择最多两个要测试的模型。
-6. 单击 **创建** 。
+6. 单击 **创建**。
 
 成功创建测试后，可以并排比较结果。
 
@@ -136,5 +136,5 @@ ms.locfileid: "94555798"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [准备和测试数据](how-to-custom-speech-test-data.md)
+* [准备和测试数据](./how-to-custom-speech-test-and-train.md)
 * [检查数据](how-to-custom-speech-inspect-data.md)

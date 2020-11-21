@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: a4670da5f5e89a4e020e26d1d704f172b8ab0864
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968309"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025270"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -192,9 +192,11 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
-| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat 赋予映像 | Java SE & Tomcat 赋予映像 | 应用程序日志 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat 赋予映像 <sup>1</sup> | Java SE & Tomcat 赋予映像 <sup>1</sup> | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
+
+<sup>1</sup> 对于 Java SE 应用，请将 "$WEBSITE _AZMON_PREVIEW_ENABLED" 添加到应用设置，并将其设置为1或 true。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)

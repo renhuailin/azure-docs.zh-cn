@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565732"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025868"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>以远程技能导出自定义命令应用程序
 
@@ -23,9 +23,9 @@ ms.locfileid: "94565732"
 
 ## <a name="prerequisites"></a>先决条件
 > [!div class="checklist"]
-> * [了解机器人框架技能](https://aka.ms/speech/cc-skill-overview)
+> * [了解机器人框架技能](/azure/bot-service/skills-conceptual)
 > * [了解技能清单](https://aka.ms/speech/cc-skill-manifest)
-> * [如何从机器人框架机器人调用技能](https://aka.ms/speech/cc-skill-consumer)
+> * [如何从机器人框架机器人调用技能](/azure/bot-service/skills-about-skill-consumers)
 > * 现有的自定义命令应用程序。 如果没有任何自定义命令应用程序，请尝试使用- [快速入门：使用自定义命令创建语音助手](quickstart-custom-commands-application.md)
 
 ## <a name="custom-commands-as-remote-skills"></a>自定义命令作为远程技能
@@ -35,8 +35,8 @@ ms.locfileid: "94565732"
 ## <a name="configure-an-application-to-be-exposed-as-a-remote-skill"></a>将应用程序配置为作为远程技能公开
 
 ### <a name="application-level-settings"></a>应用程序级别设置
-1. 在左侧面板中，选择 " **设置** " "  >  **远程技能** "。
-1. **启用 "启用远程技能** " 切换到 "打开"。
+1. 在左侧面板中，选择 "**设置**" "  >  **远程技能**"。
+1. **启用 "启用远程技能**" 切换到 "打开"。
 
 ### <a name="authentication-to-skills"></a>向技能进行身份验证
 1. 若要启用身份验证，请添加要配置的机器人框架 Bot 的 Microsoft 应用程序 Id，以便调用自定义命令应用程序。
@@ -51,7 +51,7 @@ ms.locfileid: "94565732"
 
 您可以选择要通过远程技能导出哪些命令。
 
-1. 若要通过技巧公开命令，请在 " **启用技能命令** " 下选择 " **启用新命令** "。
+1. 若要通过技巧公开命令，请在 "**启用技能命令**" 下选择 "**启用新命令**"。
 1. 从下拉列表中，选择要添加的命令。
 1. 选择“保存”。
 
@@ -60,11 +60,11 @@ ms.locfileid: "94565732"
 
 作为作者，你可能想要控制哪些 **示例句子** 用于生成技能的触发最谈话。
 1. 默认情况下，命令中的所有 **触发示例** 都将包含在清单文件中。
-1. 如果要显式消除任何一个示例，请从 " **技能" 的 "已启用命令** " 部分中选择 " **编辑** " 图标。
+1. 如果要显式消除任何一个示例，请从 "**技能" 的 "已启用命令**" 部分中选择 "**编辑**" 图标。
     > [!div class="mx-imgBorder"]
     > ![编辑启用了技能的命令](media/custom-commands/skill-edit-enabled-command.png)
 
-1. 接下来，在要省略的示例句子上， **右键单击** "  >  **禁用示例句子** "。
+1. 接下来，在要省略的示例句子上，**右键单击**"  >  **禁用示例句子**"。
     > [!div class="mx-imgBorder"]
     > ![禁用示例](media/custom-commands/skill-disable-example-sentences.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "94565732"
 > 此外，如果对应用程序进行了 **任何更改** ，则需要再次发布应用程序，以使最新的更改反映在清单文件中。
 
 > [!NOTE]
-> 如果在发布应用程序时遇到任何问题，并将错误定向到触发最谈话的技能，请重新检查配置以 **了解技能** 。 每个公开的命令都必须至少具有一个有效的触发查询文本。
+> 如果在发布应用程序时遇到任何问题，并将错误定向到触发最谈话的技能，请重新检查配置以 **了解技能**。 每个公开的命令都必须至少具有一个有效的触发查询文本。
 
 
 ## <a name="next-steps"></a>后续步骤

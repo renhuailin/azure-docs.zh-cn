@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997443"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024749"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows 上的语音助手
 
@@ -37,7 +37,7 @@ ms.locfileid: "82997443"
 
 ### <a name="registration"></a>注册
 
-首次运行语音激活的应用程序时，它会通过 ConversationalAgent Api 注册其应用程序 ID 和关键字信息。 AAR 在系统上注册具有硬件或软件关键字 spotter 的全局映射中的所有配置，使其能够检测应用程序的关键字。 该应用程序还 [向后台服务注册](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)。
+首次运行语音激活的应用程序时，它会通过 ConversationalAgent Api 注册其应用程序 ID 和关键字信息。 AAR 在系统上注册具有硬件或软件关键字 spotter 的全局映射中的所有配置，使其能够检测应用程序的关键字。 该应用程序还 [向后台服务注册](/windows/uwp/launch-resume/register-a-background-task)。
 
 请注意，这意味着，应用程序在运行一次且允许注册完成之前，不能通过语音激活。
 

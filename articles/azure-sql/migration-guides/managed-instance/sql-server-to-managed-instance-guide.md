@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496530"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026038"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>迁移指南： SQL 托管实例 SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -68,13 +68,13 @@ ms.locfileid: "94496530"
 若要使用数据库迁移评估评估你的环境，请执行以下步骤： 
 
 1. 打开 [ (DMA) 数据迁移助手 ](https://www.microsoft.com/download/details.aspx?id=53595)。 
-1. 选择 " **文件** "，然后选择 " **新建评估** "。 
+1. 选择 " **文件** "，然后选择 " **新建评估**"。 
 1. 指定项目名称，选择 "SQL Server" 作为 "源服务器类型"，然后选择 "Azure SQL 托管实例作为目标服务器类型"。 
 1. 选择要生成的评估报告) 类型 (。 例如，数据库兼容性和功能奇偶校验。 根据评估类型，SQL Server 源上所需的权限可能有所不同。  在运行评估之前，DMA 将突出显示所选顾问所需的权限。
     - **功能奇偶校验** 类别在 Azure 中提供了一套全面的建议、备选方案，以及可帮助你规划迁移项目的缓解步骤。 需要 (sysadmin 权限) 
     - **兼容性问题** 类别标识部分支持或不受支持的功能兼容性问题，这些问题可能会阻止迁移，并 `CONNECT SQL` 提供 (、 `VIEW SERVER STATE` 和 `VIEW ANY DEFINITION` 权限所需的建议) 。
 1. 指定 SQL Server 的源连接详细信息并连接到源数据库。
-1. 选择 " **开始评估** "。 
+1. 选择 " **开始评估**"。 
 1. 完成此过程后，选择并查看针对迁移阻止和功能奇偶校验问题的评估报告。 评估报表还可以导出到可与组织中的其他团队或人员共享的文件。 
 1. 确定最大程度减少迁移后工作的数据库兼容性级别。  
 1. 确定用于本地工作负荷的最佳 Azure SQL 托管实例 SKU。 
@@ -99,10 +99,10 @@ ms.locfileid: "94496530"
 
 ### <a name="create-sql-managed-instance"></a>创建 SQL 托管实例 
 
-根据 "发现和评估" 阶段中的信息，创建适当大小的目标 SQL 托管实例。 可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure 资源管理器 (ARM) 模板](/../../managed-instance/create-template-quickstart.md)来实现此目的。 
+根据 "发现和评估" 阶段中的信息，创建适当大小的目标 SQL 托管实例。 可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure 资源管理器 (ARM) 模板](/azure/azure-sql/managed-instance/create-template-quickstart)来实现此目的。 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>迁移
 
 完成与预迁移阶段相关的任务后，便可以执行架构和数据迁移。 
 
@@ -116,11 +116,11 @@ ms.locfileid: "94496530"
 
 1. 如果你是第一次执行此项，请在订阅中注册 **microsoft.datamigration** 资源提供程序。
 1. 在所选的所需位置创建 Azure 数据库迁移服务实例 (最好与目标 Azure SQL 托管实例在同一区域中) 并选择现有虚拟网络，或创建新的虚拟网络来托管 DMS 实例。
-1. 创建 DMS 实例后，创建新的迁移项目，并将源服务器类型指定为 **SQL Server** ，将目标服务器类型指定为 **Azure SQL 数据库托管实例** 。 选择 "项目创建" 边栏选项卡-"联机" 或 "脱机数据迁移" 中的活动类型。 
-1.  在 "迁移 **源** 详细信息" 页上指定源 SQL Server 详细信息，并在 " **迁移目标** 详细信息" 页上指定目标 Azure SQL 托管实例详细信息。 选择“ **下一步** ”。
+1. 创建 DMS 实例后，创建新的迁移项目，并将源服务器类型指定为 **SQL Server** ，将目标服务器类型指定为 **Azure SQL 数据库托管实例**。 选择 "项目创建" 边栏选项卡-"联机" 或 "脱机数据迁移" 中的活动类型。 
+1.  在 "迁移 **源** 详细信息" 页上指定源 SQL Server 详细信息，并在 " **迁移目标** 详细信息" 页上指定目标 Azure SQL 托管实例详细信息。 选择“**下一页**”。
 1. 选择要迁移的数据库。 
-1. 提供配置设置以指定包含数据库备份文件的 **SMB 网络共享** 。 通过 DMS 使用 Windows 用户凭据来访问网络共享。 提供 **Azure 存储帐户的详细信息** 。 
-1. 查看迁移摘要，然后选择 " **运行迁移** "。 然后，你可以监视迁移活动，并检查数据库迁移的进度。
+1. 提供配置设置以指定包含数据库备份文件的 **SMB 网络共享** 。 通过 DMS 使用 Windows 用户凭据来访问网络共享。 提供 **Azure 存储帐户的详细信息**。 
+1. 查看迁移摘要，然后选择 " **运行迁移**"。 然后，你可以监视迁移活动，并检查数据库迁移的进度。
 1. 还原数据库后，选择 " **开始** 转换"。 一旦在 SMB 网络共享中提供结尾日志备份并将其还原到目标上，迁移过程就会复制结尾日志备份。 
 1. 停止进入源数据库的所有传入流量，并将连接字符串更新为新的 Azure SQL 托管实例数据库。 
 
@@ -142,7 +142,7 @@ Azure SQL 托管实例的主要功能之一是在 Azure 存储上存储的数据
 
 若要使用备份和还原进行迁移，请执行以下步骤： 
 
-1. 将数据库备份到 Azure blob 存储。 例如，在[SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms)中使用 "[备份到 url](/sql/relational-databases/backup-restore/sql-server-backup-to-url) "。 使用 [Microsoft Azure 工具](https://go.microsoft.com/fwlink/?LinkID=324399) 支持早于 SQL SERVER 2012 SP1 CU2 的数据库。 
+1. 将数据库备份到 Azure blob 存储。 例如，在[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)中使用 "[备份到 url](/sql/relational-databases/backup-restore/sql-server-backup-to-url) "。 使用 [Microsoft Azure 工具](https://go.microsoft.com/fwlink/?LinkID=324399) 支持早于 SQL SERVER 2012 SP1 CU2 的数据库。 
 1. 使用 SQL Server Management Studio 连接到 Azure SQL 托管实例。 
 1. 使用共享访问签名创建凭据，以使用数据库备份访问 Azure Blob 存储帐户。 例如：
 

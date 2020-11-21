@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555781"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025593"
 ---
-# <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音模型
+# <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
 本文介绍如何定型和部署自定义语音模型。 训练语音转文本模型可以提高 Microsoft 的基线模型的识别准确度。 模型使用人为标记的听录和相关的文本进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音转文本模型。
 
@@ -33,12 +33,12 @@ ms.locfileid: "94555781"
 
 ## <a name="train-and-evaluate-a-model"></a>训练和评估模型
 
-训练模型的第一步是上传训练数据。 请参阅[准备和测试数据](how-to-custom-speech-test-data.md)以获取分步说明，了解如何准备人为标记的听录和相关的文本（言语和发音）。 上传训练数据以后，请按以下说明开始训练模型：
+训练模型的第一步是上传训练数据。 请参阅[准备和测试数据](./how-to-custom-speech-test-and-train.md)以获取分步说明，了解如何准备人为标记的听录和相关的文本（言语和发音）。 上传训练数据以后，请按以下说明开始训练模型：
 
 1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
 2. 导航到“语音转文本”>“自定义语音识别”> [项目名称] >“训练”。
 3. 单击“训练模型”。
-4. 接下来，为训练提供 **名称** 和 **说明** 。
+4. 接下来，为训练提供 **名称** 和 **说明**。
 5. 从“方案和基线模型”下拉菜单中，选择最适合你的领域的方案。 如果不确定要选择哪个方案，请选择“通用”。 该基线模型是训练的起点。 最新的模型通常是最佳选择。
 6. 在“选择训练数据”页中，选择一个或多个要用于训练的音频和人为标记的听录数据集。
 7. 完成训练后，可以选择对新训练的模型执行准确度测试。 此步骤是可选的。
@@ -54,7 +54,7 @@ ms.locfileid: "94555781"
 
 若要新建自定义终结点，请登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)，选择页面顶部“自定义语音识别”菜单中的“部署”。  如果是第一次运行，你会注意到表中未列出任何终结点。 创建终结点后，可以使用此页跟踪每个已部署的终结点。
 
-接下来，选择“添加终结点”，并输入自定义终结点的 **名称** 和 **说明** 。  然后选择要与此终结点关联的自定义模型。 也可以通过此页启用日志记录。 可以通过日志记录监视终结点流量。 在禁用的情况下，流量不存储。
+接下来，选择“添加终结点”，并输入自定义终结点的 **名称** 和 **说明**。  然后选择要与此终结点关联的自定义模型。 也可以通过此页启用日志记录。 可以通过日志记录监视终结点流量。 在禁用的情况下，流量不存储。
 
 ![如何部署模型](./media/custom-speech/custom-speech-deploy-model.png)
 
@@ -77,6 +77,6 @@ ms.locfileid: "94555781"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [准备和测试数据](how-to-custom-speech-test-data.md)
+- [准备和测试数据](./how-to-custom-speech-test-and-train.md)
 - [检查数据](how-to-custom-speech-inspect-data.md)
 - [评估数据](how-to-custom-speech-evaluate-data.md)

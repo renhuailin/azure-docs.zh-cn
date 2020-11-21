@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136759"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026431"
 ---
 # <a name="distribute-and-modify-tables"></a>分发和修改表
 
@@ -140,7 +140,7 @@ SELECT create_distributed_table('B', 'other_int_col');
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-将不相关的表拆分为其自己的归置组将改善分片的重新 [平衡](howto-hyperscale-scaling.md#rebalance-shards) 性能，因为同一组中的分片必须一起移动。
+将不相关的表拆分为其自己的归置组将改善分片的重新 [平衡](howto-hyperscale-scale-rebalance.md) 性能，因为同一组中的分片必须一起移动。
 
 如果表确实是相关的 (例如，当它们将联接) 时，显式归置它们可能有意义。 适当的归置收益比任何重新平衡开销更重要。
 
@@ -297,7 +297,7 @@ INSERT INTO users VALUES
    ('foo@example.com'), ('hacker12@aol.com'), ('lol');
 ```
 
-我们想要验证地址，但 PostgreSQL 通常不允许添加对现有行失败的 CHECK 约束。 *但允许标记*为无效的约束：
+我们想要验证地址，但 PostgreSQL 通常不允许添加对现有行失败的 CHECK 约束。 *但允许标记* 为无效的约束：
 
 ```postgres
 ALTER TABLE users

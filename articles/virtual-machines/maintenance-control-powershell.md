@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988215"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026142"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
-维护控制允许你决定何时向隔离的 VM 和 Azure 专用主机应用更新。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
+维护控制允许您决定何时将平台更新应用于隔离 Vm 和 Azure 专用主机的主机基础结构。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
  
 ## <a name="enable-the-powershell-module"></a>启用 PowerShell 模块
 
@@ -86,9 +86,9 @@ $config = New-AzMaintenanceConfiguration `
 > 维护 **持续时间** 必须是 *2 小时* 或更长时间。 在35天内，必须至少将维护 **重复** 设置为一次。
 
 可以按每日、每周或每月来表示维护 **定期** 。 一些示例如下：
- - 每日-"recurEvery： Day" **或** "RecurEvery： 3Days" 
- - 每周-"recurEvery： 3Weeks" **或** "RecurEvery： Week 周六，星期日" 
- - 每月-"recurEvery： Month day23、day24" **或** "RecurEvery： month 上月" **或** "RecurEvery： Month 第四个月"  
+ - **每日**-RecurEvery "Day" **或** "3Days" 
+ - **每周**-RecurEvery "3Weeks" **或** "Week 周六，星期日" 
+ - **每月**-RecurEvery "month day23、day24" **或** "month 上月" **或** "month 第四个月"  
       
 
 ## <a name="assign-the-configuration"></a>分配此配置

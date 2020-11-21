@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e0b9ac3f16a170bb14925b555e8894cb10080488
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658564"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026176"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍了如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -79,7 +79,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 ```
 ### <a name="create-backend-servers"></a>创建后端服务器
 
-在此示例中，我们未包括虚拟机创建。 可以按照 [快速入门：使用 Azure CLI 创建内部负载均衡器来对 vm 进行负载均衡](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) ，以创建两个虚拟机用作负载均衡器的后端服务器。 
+在此示例中，我们未包括虚拟机创建。 可以按照 [快速入门：使用 Azure CLI 创建内部负载均衡器来对 vm 进行负载均衡](/azure/load-balancer/quickstart-load-balancer-standard-internal-cli) ，以创建两个虚拟机用作负载均衡器的后端服务器。 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>在子网上禁用专用链接服务网络策略 

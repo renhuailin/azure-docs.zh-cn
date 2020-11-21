@@ -12,19 +12,19 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f7536034eeac8548304f6a7f861910a99cd72a27
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447643"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024664"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>为网关层次结构方案配置 API 代理模块 (预览) 
 
 API 代理模块允许 IoT Edge 设备通过网关发送 HTTP 请求，而不是直接连接到云服务。 本文将逐步讲解配置选项，以便您可以自定义该模块以支持您的网关层次结构要求。
 
 >[!NOTE]
->此功能需要 IoT Edge 版本1.2，该版本是公共预览版，运行 Linux 容器。
+>此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
 
 在某些网络体系结构中，网关后 IoT Edge 设备不能直接访问云。 尝试连接到云服务的任何模块都将失败。 API 代理模块支持此配置中的下游 IoT Edge 设备，方法是将模块连接重新路由到网关层次结构的各层。 它提供一种安全的方法，使客户端无需隧道即可通过 HTTPS 与多个服务通信，而是通过在每个层终止连接。 API 代理模块在网关层次结构中的 IoT Edge 设备之间充当代理模块，直到它们到达顶层的 IoT Edge 设备。 此时，在顶层运行的服务 IoT Edge 设备处理这些请求，API 代理模块通过单个端口将来自本地服务的所有 HTTP 流量代理到云中。
 
@@ -121,10 +121,10 @@ API 代理模块的一个常见用例是在较低层中启用 IoT Edge 设备来
 * API 代理模块
   * 配置以下环境变量：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
-    | `DOCKER_REQUEST_ROUTE_ADDRESS` | 注册表模块名称和开放端口。 例如 `registry:5000`。 |
-    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如 `8000`。 |
+    | `DOCKER_REQUEST_ROUTE_ADDRESS` | 注册表模块名称和开放端口。 例如，`registry:5000` 。 |
+    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如，`8000` 。 |
 
   * 配置以下 createOptions：
 
@@ -147,9 +147,9 @@ API 代理模块的一个常见用例是在较低层中启用 IoT Edge 设备来
 * API 代理模块
   * 配置以下环境变量：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如 `8000`。 |
+    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如，`8000` 。 |
 
   * 配置以下 createOptions：
 
@@ -179,10 +179,10 @@ API 代理模块的另一个用例是在较低层中启用 IoT Edge 设备上传
 * API 代理模块
   * 配置以下环境变量：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
-    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob 存储模块名称和打开端口。 例如 `azureblobstorageoniotedge:1102`。 |
-    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如 `8000`。 |
+    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob 存储模块名称和打开端口。 例如，`azureblobstorageoniotedge:1102` 。 |
+    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如，`8000` 。 |
 
   * 配置以下 createOptions：
 
@@ -205,9 +205,9 @@ API 代理模块的另一个用例是在较低层中启用 IoT Edge 设备上传
 * API 代理模块
   * 配置以下环境变量：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如 `8000`。 |
+    | `NGINX_DEFAULT_PORT` | Nginx 代理侦听来自下游设备的请求的端口。 例如，`8000` 。 |
 
   * 配置以下 createOptions：
 
@@ -263,7 +263,7 @@ API 代理模块的另一个用例是在较低层中启用 IoT Edge 设备上传
 
 若要动态更新代理配置，请使用以下步骤：
 
-1. 写入配置文件。 可以使用此默认模板作为参考： [nginx_default_config](hhttps://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
+1. 写入配置文件。 可以使用此默认模板作为参考： [nginx_default_config](https://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
 1. 复制配置文件的文本，并将其转换为 base64。
 1. 粘贴编码的配置文件作为模块克隆中所 `proxy_config` 需属性的值。
 

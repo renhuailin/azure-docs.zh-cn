@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871357"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026689"
 ---
 # <a name="peering-service-faq"></a>对等互连服务常见问题解答
 
@@ -36,7 +36,7 @@ A. 是的，客户可这样做。 选择适合你的业务和运营需求的每�
 
 **：.什么是 Microsoft Edge PoP？**
 
-A. 它是 Microsoft 与其他网络互连的物理位置。 在 Microsoft Edge PoP 位置，托管诸如 Azure 前门和 Azure CDN 等服务。 有关详细信息，请参阅 [Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features)。
+A. 它是 Microsoft 与其他网络互连的物理位置。 在 Microsoft Edge PoP 位置，托管诸如 Azure 前门和 Azure CDN 等服务。 有关详细信息，请参阅 [Azure CDN](../cdn/cdn-features.md)。
 
 ## <a name="peering-service-unique-characteristics"></a>对等互连服务：唯一特性
 

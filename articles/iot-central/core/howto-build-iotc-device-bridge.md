@@ -9,18 +9,18 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.custom: device-developer
-ms.openlocfilehash: fb6029a91714ed0229876bbaf6bb0790565be29c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427828"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026244"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>构建 IoT Central 设备网桥以将其他 IoT 云连接到 IoT Central
 
 *本主题适用于管理员。*
 
-IoT Central 设备网桥是一个开源解决方案，可将 Sigfox、Particle、The Things Network 和其他云连接到你的 IoT Central 应用。 无论是使用连接到 Sigfox 低功耗广域网的资产跟踪设备，还是使用 Particle Device Cloud 中的空气质量监测设备，还是使用 TTN 中的土壤湿度监测设备，你都可以通过 IoT Central 设备网桥直接利用 IoT Central 的强大功能。 设备网桥通过将设备发送到其他云的数据转发到 IoT Central 应用，使其他 IoT 云可连接到 IoT Central。 在 IoT Central 应用中，可以生成规则并对该数据运行分析、在 Microsoft Flow 和 Azure 逻辑应用中创建工作流、导出该数据，等等。 从 GitHub 获取 [IoT Central 设备网桥](https://aka.ms/iotcentralgithubdevicebridge)
+IoT Central 设备网桥是一个开源解决方案，可将 Sigfox、Particle、The Things Network 和其他云连接到你的 IoT Central 应用。 无论是使用连接到 Sigfox 低功耗广域网的资产跟踪设备，还是使用 Particle Device Cloud 中的空气质量监测设备，还是使用 TTN 中的土壤湿度监测设备，你都可以通过 IoT Central 设备网桥直接利用 IoT Central 的强大功能。 设备网桥通过将设备发送到其他云的数据转发到 IoT Central 应用，使其他 IoT 云可连接到 IoT Central。 在 IoT Central 应用程序中，你可以构建规则并对该数据运行分析、在电源自动、Azure 逻辑应用和 Azure 逻辑应用中创建工作流、导出该数据等等。 从 GitHub 获取 [IoT Central 设备网桥](https://aka.ms/iotcentralgithubdevicebridge)
 
 ## <a name="what-is-it-and-how-does-it-work"></a>设备网桥及其工作原理是什么？
 IoT Central 设备网桥是 GitHub 中的一个开源解决方案。 随时可以使用“部署到 Azure”按钮将包含多个 Azure 资源的自定义 Azure 资源管理器模板部署到 Azure 订阅。 资源包括：

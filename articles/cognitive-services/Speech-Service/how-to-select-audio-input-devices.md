@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e67d0ae4d875699b26fdcd30093b0c2bf373458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282980"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026601"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用语音 SDK 选择音频输入设备
 
@@ -392,5 +392,5 @@ iOS 不支持通过语音 SDK 来选择音频设备。 但是，使用 SDK 的�
 
 ## <a name="see-also"></a>另请参阅
 
-- [自定义声学模型](how-to-customize-acoustic-models.md)
-- [自定义语言模型](how-to-customize-language-model.md)
+- [自定义声学模型](./how-to-custom-speech-train-model.md)
+- [自定义语言模型](./how-to-custom-speech-train-model.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5c3ac14af6eb863daa9eadd32727f4fb53d2185f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e9ece70d9f980065c719ee1205eb46591b45c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322851"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025236"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>将复合实体升级为机器学习实体
 
@@ -29,7 +29,7 @@ ms.locfileid: "91322851"
     * 如果子实体在复合实体中使用并且作为单独实体（在示例言语中进行标记），则它会作为实体添加到版本中，并作为子实体添加到新的机器学习实体中。
     * 如果子实体使用角色，则每个角色都会转换为具有相同名称的子实体。
     * 如果子实体是非机器学习实体（正则表达式、列表实体或预生成实体），则会使用相同名称创建新的子实体，并且新的子实体具有使用添加了所需功能的非机器学习实体的功能。
-* 名称会保留，但是在相同子实体/同辈级别中必须唯一。 请参阅[唯一命名限制](luis-boundaries.md#name-uniqueness)。
+* 名称会保留，但是在相同子实体/同辈级别中必须唯一。 请参阅[唯一命名限制](./luis-limits.md#name-uniqueness)。
 * 示例言语中的标签会切换到具有子实体的新机器学习实体。
 
 使用下图了解模型如何变化：

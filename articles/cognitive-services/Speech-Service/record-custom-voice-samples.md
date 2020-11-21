@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261578"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026312"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -211,7 +211,7 @@ ms.locfileid: "81261578"
 
 保存前要将每个文件转换成 16 位和 16 kHz 的采样率，如果录制了工作室闲谈，则删除第二个声道。 以 WAV 格式保存每个文件，使用脚本中的语句编号命名文件。
 
-最后，创建脚本，它将每个 WAV 文件与相应语句的文本版本进行关联。 要了解所需格式的详细信息，请参阅[创建自定义语音字体](how-to-customize-voice-font.md)。 可直接从脚本中复制文本。 然后创建 WAV 文件和 文本脚本的 Zip 文件。
+最后，创建脚本，它将每个 WAV 文件与相应语句的文本版本进行关联。 要了解所需格式的详细信息，请参阅[创建自定义语音字体](./how-to-custom-voice-create-voice.md)。 可直接从脚本中复制文本。 然后创建 WAV 文件和 文本脚本的 Zip 文件。
 
 将原始录音存档在安全的地方，以备日后需要时使用。 同时也要保留脚本和注释。
 
@@ -220,4 +220,4 @@ ms.locfileid: "81261578"
 已准备好上传录音和创建自定义语音。
 
 > [!div class="nextstepaction"]
-> [创建自定义语音字体](how-to-customize-voice-font.md)
+> [创建自定义语音字体](./how-to-custom-voice-create-voice.md)

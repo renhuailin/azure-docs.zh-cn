@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 6cb338e8b7baa45e1c84f59a5730a9a500e71a79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486767"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026533"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>实时对话脚本入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "92486767"
 ## <a name="limitations"></a>限制
 
 * 仅可用于以下订阅区域： `centralus` 、 `eastasia` 、 `eastus` 、 `westeurope`
-* 需要一个带有播放引用流的7个 mic 循环多麦克风阵列。 麦克风阵列应满足 [我们的规范](https://aka.ms/sdsdk-microphone)。
+* 需要一个带有播放引用流的7个 mic 循环多麦克风阵列。 麦克风阵列应满足 [我们的规范](./speech-devices-sdk-microphone.md)。
 * [语音设备 SDK](speech-devices-sdk.md)提供了合适的设备和演示会话脚本的示例应用。
 
 ## <a name="prerequisites"></a>先决条件

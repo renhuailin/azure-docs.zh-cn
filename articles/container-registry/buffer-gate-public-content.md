@@ -4,13 +4,13 @@ description: Azure 容器注册表中的做法和工作流，用于管理来自 
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347516"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024732"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>用 Azure 容器注册表管理公共内容
 
@@ -27,6 +27,8 @@ ms.locfileid: "93347516"
 
 第一步，如果你当前要从 Docker 中心拉取公共映像作为生成或部署工作流的一部分，我们建议你 [使用 Docker 中心帐户进行身份验证](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) ，而不是发出匿名拉取请求。
 
+在频繁执行匿名拉取请求时，可能会看到类似于 `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` docker 中心或向 docker 中心进行身份验证的 docker 错误，以防出现这些错误。
+
 > [!NOTE]
 > 从2020年11月2日起生效， [下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit) 适用于来自 Docker 免费计划帐户的对 docker 中心的匿名请求和经过身份验证的请求，并分别由 IP 地址和 Docker ID 强制执行。 
 >
@@ -42,25 +44,25 @@ ms.locfileid: "93347516"
 
 ### <a name="authenticate-from-azure-services"></a>从 Azure 服务进行身份验证
 
-某些 Azure 服务（包括应用服务和 Azure 容器实例）支持从公共注册表（例如用于容器部署的 Docker 中心）提取映像。 如果需要从 Docker 中心部署映像，建议使用 Docker 中心帐户将设置配置为进行身份验证。 示例：
+某些 Azure 服务（包括应用服务和 Azure 容器实例）支持从公共注册表（例如用于容器部署的 Docker 中心）提取映像。 如果需要从 Docker 中心部署映像，建议使用 Docker 中心帐户将设置配置为进行身份验证。 示例:
 
 **应用服务**
 
-* **映像源** ： Docker 中心
-* **存储库访问** ：专用
-* **登录名** ： \<Docker Hub username>
-* **密码** ：\<Docker Hub token>
+* **映像源**： Docker 中心
+* **存储库访问**：专用
+* **登录名**： \<Docker Hub username>
+* **密码**：\<Docker Hub token>
 
 有关详细信息，请参阅 [应用服务上的 Docker 中心经过身份验证的](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html)请求。
 
 **Azure 容器实例**
 
-* **映像源** ： Docker 集线器或其他注册表
-* **映像类型** ：专用
-* **映像注册表登录服务器** ： docker.io
-* **映像注册表用户名** ： \<Docker Hub username>
-* **映像注册表密码** ： \<Docker Hub token>
-* **Image** ： docker.io/ \<repo name\> ：\<tag>
+* **映像源**： Docker 集线器或其他注册表
+* **映像类型**：专用
+* **映像注册表登录服务器**： docker.io
+* **映像注册表用户名**： \<Docker Hub username>
+* **映像注册表密码**： \<Docker Hub token>
+* **Image**： docker.io/ \<repo name\> ：\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>将映像导入到 Azure 容器注册表
  

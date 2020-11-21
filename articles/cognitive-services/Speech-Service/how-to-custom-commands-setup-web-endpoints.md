@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566242"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025885"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
@@ -49,12 +49,12 @@ ms.locfileid: "94566242"
    | 标头 | 键：app，Value：取 applicationId 的前 8 位 | 要包含在请求头中的标头参数。|
 
     > [!NOTE]
-    > - 使用 [Azure Function](https://docs.microsoft.com/azure/azure-functions/) 创建的示例 Web 终结点，该终结点与保存电视和风扇设备状态的数据库挂钩
+    > - 使用 [Azure Function](../../azure-functions/index.yml) 创建的示例 Web 终结点，该终结点与保存电视和风扇设备状态的数据库挂钩
     > - 建议的标头只是示例终结点需要而已
     > - 若要确保标头值在示例终结点中具有唯一性，请使用 applicationId 的前 8 位
-    > - 在实际中，Web 终结点可以是管理设备的 [IoT 中心](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) 的终结点
+    > - 在实际中，Web 终结点可以是管理设备的 [IoT 中心](../../iot-hub/about-iot-hub.md) 的终结点
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 ## <a name="call-web-endpoints"></a>调用 Web 终结点
 

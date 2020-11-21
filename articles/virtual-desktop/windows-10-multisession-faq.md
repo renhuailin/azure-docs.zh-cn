@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008043"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025004"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -80,8 +80,8 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 默认情况下，配置大多数虚拟化环境，以防止用户将其他应用安装到其配置文件。 如果要在用户注销 Windows 虚拟桌面时确保应用不会消失，则必须为环境中的所有用户配置文件预配该应用。 有关设置应用的详细信息，请查看以下资源：
 
 - [在 Windows 虚拟桌面中发布内置应用](publish-apps.md)
-- [DISM 应用程序包服务命令行选项](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [DISM 应用程序包服务命令行选项](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>如何实现确保用户不会从 Microsoft Store 下载和安装应用？
 
@@ -91,7 +91,7 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 
 1. 创建新组策略。
 2. 选择 "**计算机配置**"  >  **管理模板**  >  **Windows 组件**"。
-3. 选择“应用商店”。****
+3. 选择“应用商店”。
 4. 选择 " **应用商店应用程序**"。
 5. 选择 " **禁用**"，然后选择 **"确定"**。
 6. 选择“应用”。

@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987059"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024392"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -48,7 +48,9 @@ ms.locfileid: "94987059"
 * 用于聚合日志和性能统计信息的 Azure Monitor
 * VNet 网关（可选），允许跨专用 VNet 的 VPN 连接
 
-默认情况下，可以通过公共 IP 访问 RPC 和对等互连终结点，以简化订阅和云之间的连接。 对于应用程序级访问控制，可以使用奇偶校验的权限协定。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
+默认情况下，可以通过公共 IP 访问 RPC 和对等终结点，以便能够在
+
+订阅和云。 对于应用程序级访问控制，可以使用 [奇偶校验的权限协定](https://openethereum.github.io/Permissioning.html)。 支持在 Vpn 后面部署的网络，这些网络利用 VNet 网关实现跨订阅连接。 由于 VPN 和 VNet 部署更复杂，因此在原型设计解决方案时，您可能希望从公共 IP 模型开始。
 
 Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每个部署的一部分承载和提供版本控制映像。 容器映像包括：
 
@@ -685,7 +687,7 @@ Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使�
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支持
 
-新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)。
+新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅： [WebAssembly 的奇偶校验概述](https://openethereum.github.io/WebAssembly-Home.html) 和 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)
 
 ## <a name="faq"></a>常见问题解答
 

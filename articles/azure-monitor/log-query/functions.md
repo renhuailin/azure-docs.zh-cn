@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511932"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024358"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -21,7 +21,7 @@ ms.locfileid: "87511932"
 
 在 Azure 门户中单击“保存”，然后提供下表中的信息，使用 Log Analytics 创建函数。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |:---|:---|
 | 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
@@ -56,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>后续步骤
 参阅有关编写 Azure Monitor 日志查询的其他课：
 
-- [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
-- [聚合函数](aggregations.md)
-- [高级聚合](advanced-aggregations.md)
-- [JSON 和数据结构](json-data-structures.md)
-- [联接](joins.md)
-- [图表](charts.md)
+- [字符串操作](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [时间和日期操作](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [聚合函数](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [高级聚合](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON 和数据结构](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [联接](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [图表](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

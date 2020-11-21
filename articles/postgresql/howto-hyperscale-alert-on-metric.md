@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909907"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026448"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户设置 Azure Database for PostgreSQL 超大规模 (Citus 的指标警报) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "92909907"
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="添加指标警报窗体":::
 
-5. 在 " **条件** " 部分中，选择 " **添加** "。
+5. 在 " **条件** " 部分中，选择 " **添加**"。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
@@ -101,8 +101,8 @@ ms.locfileid: "92909907"
 磁盘接近其空间限制时，可以尝试以下方法获取更多的可用空间：
 
 * 查看数据保留策略。 如果可行，请将较旧的数据移到冷存储。
-* 考虑向服务器组 [添加节点](howto-hyperscale-scaling.md#add-worker-nodes) 并重新平衡分片。 重新平衡跨多台计算机分散数据。
-* 考虑 [增加](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) 辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
+* 考虑向服务器组 [添加节点](howto-hyperscale-scale-grow.md#add-worker-nodes) 并重新平衡分片。 重新平衡跨多台计算机分散数据。
+* 考虑 [增加](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) 辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
 
 ### <a name="cpu-usage"></a>CPU 使用率
 

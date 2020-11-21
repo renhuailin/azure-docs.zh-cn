@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 446731e084084ca301b350f6fec0c4065485a40f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564559"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026618"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>群集配置最佳做法（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "94564559"
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>优化故障转移群集网络阈值
 
-使用 SQL Server AlwaysOn 在 Azure Vm 中运行 Windows 故障转移群集节点时，建议将群集设置更改为更宽松的监视状态。  这会使群集更稳定、更可靠。  有关此功能的详细信息，请参阅 [IaaS WITH SQL AlwaysOn-优化故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluser)。
+使用 SQL Server AlwaysOn 在 Azure Vm 中运行 Windows 故障转移群集节点时，建议将群集设置更改为更宽松的监视状态。  这会使群集更稳定、更可靠。  有关此功能的详细信息，请参阅 [IaaS WITH SQL AlwaysOn-优化故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
 
 ## <a name="quorum"></a>Quorum
 
@@ -60,7 +60,7 @@ ms.locfileid: "94564559"
 若要开始，请参阅 [配置磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支持的操作系统** ：All   
+**支持的操作系统**：All   
 
 
 ### <a name="cloud-witness"></a>云见证
@@ -70,7 +70,7 @@ ms.locfileid: "94564559"
 若要开始，请参阅 [配置云见证](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)。
 
 
-**支持的操作系统** ：Windows Server 2016 及更高版本   
+**支持的操作系统**：Windows Server 2016 及更高版本   
 
 
 ### <a name="file-share-witness"></a>文件共享见证
@@ -82,7 +82,7 @@ ms.locfileid: "94564559"
 若要开始，请参阅 [配置文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支持的操作系统** ：Windows Server 2012 和更高版本   
+**支持的操作系统**：Windows Server 2012 和更高版本   
 
 ## <a name="connectivity"></a>连接
 
@@ -108,9 +108,9 @@ ms.locfileid: "94564559"
 
 若要开始操作，请了解如何为[故障转移群集实例](failover-cluster-instance-vnn-azure-load-balancer-configure.md)或[可用性组](availability-group-vnn-azure-load-balancer-configure.md)配置 Azure 负载均衡器
 
-**支持的操作系统** ：All   
-**支持的 SQL 版本** ：All   
-**支持的 HADR 解决方案** ：故障转移群集实例和可用性组   
+**支持的操作系统**：All   
+**支持的 SQL 版本**：All   
+**支持的 HADR 解决方案**：故障转移群集实例和可用性组   
 
 
 ### <a name="distributed-network-name-dnn"></a>分布式网络名称 (DNN)
@@ -128,9 +128,9 @@ ms.locfileid: "94564559"
 
 若要开始，请参阅为[故障转移群集实例](failover-cluster-instance-distributed-network-name-dnn-configure.md)或[可用性组](availability-group-distributed-network-name-dnn-listener-configure.md)配置分布式网络名称资源
 
-**支持的操作系统** ：Windows Server 2016 及更高版本   
-**支持的 SQL 版本** ： SQL SERVER 2019 CU2 (FCI) 和 SQL SERVER 2019 CU8 (AG)    
-**支持的 HADR 解决方案** ：故障转移群集实例和可用性组   
+**支持的操作系统**：Windows Server 2016 及更高版本   
+**支持的 SQL 版本**： SQL SERVER 2019 CU2 (FCI) 和 SQL SERVER 2019 CU8 (AG)    
+**支持的 HADR 解决方案**：故障转移群集实例和可用性组   
 
 
 ## <a name="limitations"></a>限制

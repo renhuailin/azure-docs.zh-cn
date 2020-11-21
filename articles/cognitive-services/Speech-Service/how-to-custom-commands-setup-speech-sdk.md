@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360117"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026021"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
 
@@ -25,7 +25,7 @@ ms.locfileid: "91360117"
 - 发布自定义命令应用程序，并获取应用程序标识符 (应用 ID) 
 - 使用 Speech SDK 创建一个通用 Windows 平台 (UWP) 客户端应用程序，以允许你与自定义命令应用程序通信
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在快速入门中执行以下操作：
 > [!div class = "checklist"]
@@ -35,7 +35,7 @@ ms.locfileid: "91360117"
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南基于 Visual Studio 2019。
 > * 语音服务的 Azure 订阅密钥。 [免费获取一个](overview.md#try-the-speech-service-for-free) 或创建一个 [Azure 门户](https://portal.azure.com)
-> * [启用设备进行开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [启用设备进行开发](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
 
@@ -43,7 +43,7 @@ ms.locfileid: "91360117"
 1. 单击 "**设置**"，选择 " **LUIS 资源**"
 1. 如果未分配 **预测资源** ，请选择查询预测密钥或创建一个新的预测密钥
 
-    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅 [创建 LUIS 资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅 [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)
 
 1. 返回到编辑命令，选择 "**发布**"
 
@@ -65,7 +65,7 @@ ms.locfileid: "91360117"
 
 通过添加 XAML 代码创建应用程序的用户界面。
 
-1. 在 **解决方案资源管理器**中，打开 `MainPage.xaml`
+1. 在 **解决方案资源管理器** 中，打开 `MainPage.xaml`
 
 1. 在设计器的 XAML 视图中，将整个内容替换为以下代码片段：
 
@@ -129,7 +129,7 @@ ms.locfileid: "91360117"
 
 按如下所示添加代码隐藏源：
 
-1. 在**解决方案资源管理器**中，打开代码隐藏源文件 `MainPage.xaml.cs` (在) 下进行分组 `MainPage.xaml`
+1. 在 **解决方案资源管理器** 中，打开代码隐藏源文件 `MainPage.xaml.cs` (在) 下进行分组 `MainPage.xaml`
 
 1. 将文件的内容替换为以下代码： 
 

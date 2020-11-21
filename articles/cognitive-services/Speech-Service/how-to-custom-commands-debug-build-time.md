@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023119"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025695"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>创作自定义命令应用程序时调试错误
 
@@ -24,7 +24,7 @@ ms.locfileid: "86023119"
 ## <a name="errors-when-creating-an-application"></a>创建应用程序时出错
 自定义命令也会在创建自定义命令应用程序时在 [LUIS](https://www.luis.ai/) 中创建应用程序。 
 
-[LUIS 限制每个创作资源的500个应用程序](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits)。 如果使用的是已包含500应用程序的创作资源，则创建 LUIS 应用程序可能会失败。 
+[LUIS 限制每个创作资源的500个应用程序](../luis/luis-limits.md)。 如果使用的是已包含500应用程序的创作资源，则创建 LUIS 应用程序可能会失败。 
 
 请确保所选的 LUIS 创作资源包含少于500个应用程序。 否则，可以创建新的 LUIS 创作资源，切换到另一个资源，或尝试清理 LUIS 应用程序。  
 
@@ -61,7 +61,7 @@ LUIS 内置了 "是/否"。 只有 "是"、"否" 的示例句子将无法进行�
 
 请确保没有在不同命令间共享的常见示例句子。 
 
-若要获得跨不同命令均衡示例句子的最佳实践，请参阅 [LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+若要获得跨不同命令均衡示例句子的最佳实践，请参阅 [LUIS 最佳实践](../luis/luis-concept-best-practices.md)。
 
 ### <a name="empty-sample-sentences"></a>空示例句子
 每个命令都必须至少有一个示例句。
@@ -82,7 +82,7 @@ LUIS 培训旨在快速了解更少的示例。 不要添加太多示例句子�
 | 预订航班 | 预订 {车辆} |
 | 预订出租车 | 预订 {车辆} |
 
-若要获得 LUIS 定型的最佳实践，请参阅 [LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+若要获得 LUIS 定型的最佳实践，请参阅 [LUIS 最佳实践](../luis/luis-concept-best-practices.md)。
 
 ## <a name="cant-update-luis-key"></a>无法更新 LUIS 密钥
 ### <a name="reassign-to-e0-authoring-resource"></a>重新分配给 E0 创作资源

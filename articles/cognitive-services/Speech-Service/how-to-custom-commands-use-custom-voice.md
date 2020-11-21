@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: sausin
-ms.openlocfilehash: b1e488653f210089ee5ed6757fb2f3d1e4fb0fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5c14909606dcb862fcf53d99bc5bc00fba63bd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294021"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025678"
 ---
 # <a name="use-custom-commands-with-custom-voice"></a>通过自定义语音使用自定义命令
 
@@ -32,7 +32,7 @@ ms.locfileid: "87294021"
 > ![带参数的示例句子](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - 对于 **公共语音**， **神经类型** 仅适用于特定区域。 若要查看可用性，请参阅 [按区域/终结点的标准和神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。
-> - 对于 **自定义**语音，可以从自定义语音项目页创建。 请参阅 [自定义语音入门](./how-to-custom-voice.md)。
+> - 对于 **公共语音**， **神经类型** 仅适用于特定区域。 若要查看可用性，请参阅 [按区域/终结点的标准和神经声音](./regions.md#standard-and-neural-voices)。
+> - 对于 **自定义** 语音，可以从自定义语音项目页创建。 请参阅 [自定义语音入门](./how-to-custom-voice.md)。
 
 现在，应用程序将在选定的语音中做出响应，而不是默认的语音。

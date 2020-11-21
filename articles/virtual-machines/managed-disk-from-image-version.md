@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576353"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026125"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>从映像版本创建托管磁盘
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-将 `source` 变量设置为映像版本的 ID，然后使用 [az disk create](//cli/azure/disk#az_disk_create) 创建托管磁盘。 
+将 `source` 变量设置为映像版本的 ID，然后使用 [az disk create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) 创建托管磁盘。 
 
 在此示例中，我们将导出映像版本的 OS 磁盘，以在名为 *myResourceGroup* 的资源组中创建名为 *myManagedOSDisk**的托管* 磁盘。 
 

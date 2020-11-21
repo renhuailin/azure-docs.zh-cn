@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074465"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025389"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "93074465"
 使用相同的工具在一个位置管理不同的 Azure 实体。 可管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器，还可更新其他 Azure 实体（例如存储 Blob 和队列）。 Azure 存储资源管理器支持为 SQL、MongoDB、图形和表 API 配置的 Cosmos 帐户。
 
 > [!NOTE]
-> 与存储资源管理器 Azure Cosmos DB 的集成已弃用。 在此版本中，将不会从至少一年中删除任何现有功能。 应改用 [Azure 门户](https://portal.azure.com/)、 [azure 门户桌面应用](https://portal.azure.com/App/Download) 或独立 [Azure Cosmos 资源管理器](data-explorer.md) 。 替代选项包含存储资源管理器当前不支持的许多新功能。
+> 与存储资源管理器的 Azure Cosmos DB 集成已弃用。 任何现有功能至少在一年内不会从此版本中删除。 应改为使用 [Azure 门户](https://portal.azure.com/)、[Azure 门户桌面应用](https://portal.azure.com/App/Download)或独立的 [Azure Cosmos 资源管理器](data-explorer.md)。 替代选项包含存储资源管理器当前不支持的许多新功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -71,6 +71,9 @@ ms.locfileid: "93074465"
    1. 选择“连接”来连接 Azure Cosmos DB 帐户。
 
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="“连接到 Cosmos DB”窗口的屏幕截图，其中显示 API 下拉菜单、“连接字符串”框和“帐户标签”框。":::
+
+> [!NOTE]
+> 如果 Azure 存储资源管理器显示 Azure Cosmos DB 连接字符串的格式无效，请确保连接字符串的末尾有一个分号 (`;`) 。 有效 Azure Cosmos DB 连接字符串的示例如下： `AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>使用本地模拟器连接到 Azure Cosmos DB
 
