@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357635"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021875"
 ---
 # <a name="what-is-direct-line-speech"></a>什么是 Direct Line 语音？
 
@@ -37,11 +37,11 @@ ms.locfileid: "91357635"
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#、UWP | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [“浏览”](https://aka.ms/csspeech/javaref) |
-| Java | Android | [“浏览”](https://aka.ms/csspeech/javaref) |
+| C#、UWP | Windows | [“浏览”](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows、macOS、Linux | [“浏览”](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [“浏览”](/java/api/com.microsoft.cognitiveservices.speech) |
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 
@@ -50,21 +50,21 @@ GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖
 
 ## <a name="customization"></a>自定义
 
-使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于 [语音到文本](speech-to-text.md)、 [文本到语音](text-to-speech.md)和 [自定义关键字选择](speech-devices-sdk-create-kws.md)。
+使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于 [语音到文本](speech-to-text.md)、 [文本到语音](text-to-speech.md)和 [自定义关键字选择](./custom-keyword-basics.md)。
 
 > [!NOTE]
-> 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。
+> 自定义选项因语言/区域设置而异（请参阅[支持的语言](./language-support.md)）。
 
-"语音助手" 的 "直接行语音" 及其相关功能是 " [虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)" 的理想补充。 尽管直接行语音可以与任何兼容机器人配合使用，但这些资源为高质量的对话体验提供了可重用的基线，并为快速入门提供了常见的支持技能和模型。
+"语音助手" 的 "直接行语音" 及其相关功能是 " [虚拟助手解决方案和企业模板](/azure/bot-service/bot-builder-enterprise-template-overview)" 的理想补充。 尽管直接行语音可以与任何兼容机器人配合使用，但这些资源为高质量的对话体验提供了可重用的基线，并为快速入门提供了常见的支持技能和模型。
 
 ## <a name="reference-docs"></a>参考文档
 
-* [语音 SDK](speech-sdk-reference.md)
-* [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [语音 SDK](./speech-sdk.md)
+* [Azure 机器人服务](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 * [获取语音 SDK](speech-sdk.md)
-* [创建和部署基本机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [创建和部署基本机器人](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [获取虚拟助手解决方案和企业模板](https://github.com/Microsoft/AI)

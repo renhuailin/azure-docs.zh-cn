@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568687"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023082"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项
 
@@ -41,7 +41,7 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 |访问|云、本地和混合 (Azure 文件同步) |云和本地 (通过 ExpressRoute) |云，本地|
 |备份|Azure 备份快照集成|Azure NetApp 文件快照|Azure 备份快照集成|
 |安全性与符合性|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 已完成|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory 集成|[本机 Active Directory 和 Azure Active Directory 域服务](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory 域服务和本机 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|仅限本机 Active Directory 或 Azure Active Directory 域服务支持|
+|Azure Active Directory 集成|[本机 Active Directory 和 Azure Active Directory 域服务](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory 域服务和本机 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|仅限本机 Active Directory 或 Azure Active Directory 域服务支持|
 
 选择存储方法后，请查看 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/) ，了解有关定价计划的信息。
 

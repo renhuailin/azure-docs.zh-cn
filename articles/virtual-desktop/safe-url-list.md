@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875098"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023167"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -33,8 +33,8 @@ ms.locfileid: "91875098"
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 不适用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -55,8 +55,8 @@ ms.locfileid: "91875098"
 |Kms.core.usgovcloudapi.net|1688|Windows 激活|Internet|
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 不适用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
 
 下表列出了 Azure 虚拟机可以访问的可选 URL：
 
@@ -78,7 +78,7 @@ ms.locfileid: "91875098"
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
->2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3701。
+>2. 打开 **事件查看器**，然后切换到 **Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3701。
 >3. 取消阻止在事件 ID 3701 下找到的 Url。 事件 ID 3701 下的 Url 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
 
 ## <a name="remote-desktop-clients"></a>远程桌面客户端

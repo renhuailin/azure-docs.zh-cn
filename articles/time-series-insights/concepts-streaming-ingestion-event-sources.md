@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6bc238389ac470e6127a582eb174ec7bc438e36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650862"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020787"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -27,7 +27,7 @@ ms.locfileid: "91650862"
 
 ## <a name="create-or-edit-event-sources"></a>创建或编辑事件源
 
-你的事件源资源可以与你的 Azure 时序见解 Gen2 环境位于同一 Azure 订阅中，也可以位于其他订阅。你可以使用 [Azure门户](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 来创建、编辑或删除环境的事件源。
+你的事件源资源可以与你的 Azure 时序见解 Gen2 环境位于同一 Azure 订阅中，也可以位于其他订阅。你可以使用 [Azure门户](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 来创建、编辑或删除环境的事件源。
 
 连接事件源时，Azure 时序见解第 2 代环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91650862"
 
 - 请勿超出环境的[吞吐量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每个分区的限制。
 
-- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)。
+- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。
 
 - 流式传输引入仅限用于近实时数据和最新数据，不支持流式传输历史数据。
 
@@ -64,7 +64,7 @@ Azure 时序见解第 2 代目前不支持使用流式传输管道导入历史�
 
 ## <a name="event-source-timestamp"></a>事件源时间戳
 
-配置事件源时，系统会要求你提供时间戳 ID 属性。 时间戳属性用于跟踪一段时间内的事件，这是将要在[查询 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) 中用作 $event.$ts 的时间，并用于在 Azure 时序见解资源管理器中绘制序列。 如果在创建时未提供此属性，或者事件中缺少时间戳属性，则会将事件的 IoT 中心或事件中心排队时间用作默认值。 时间戳属性值以 UTC 格式存储。
+配置事件源时，系统会要求你提供时间戳 ID 属性。 时间戳属性用于跟踪一段时间内的事件，这是将要在[查询 API](/rest/api/time-series-insights/dataaccessgen2/query/execute) 中用作 $event.$ts 的时间，并用于在 Azure 时序见解资源管理器中绘制序列。 如果在创建时未提供此属性，或者事件中缺少时间戳属性，则会将事件的 IoT 中心或事件中心排队时间用作默认值。 时间戳属性值以 UTC 格式存储。
 
 通常情况下，用户会选择自定义时间戳属性，并使用传感器或标记生成读数时的时间，而不是使用默认的中心排队时间。 当设备出现间歇性连接中断，并将一批延迟的消息转发到 Azure 时序见解第 2 代时，尤其需要这样做。
 

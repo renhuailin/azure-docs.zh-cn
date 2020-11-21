@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305895"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021943"
 ---
 # <a name="get-started-with-custom-keyword"></a>自定义关键字入门
 
@@ -37,9 +37,9 @@ ms.locfileid: "93305895"
 
 1. 转到 [Speech Studio](https://aka.ms/sdsdk-speechportal) 并 **登录** ，如果还没有语音订阅，请选择 " [**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
 
-1. 在 " [自定义关键字](https://aka.ms/sdsdk-wakewordportal) " 页上，创建一个 **新项目** 。 
+1. 在 " [自定义关键字](https://aka.ms/sdsdk-wakewordportal) " 页上，创建一个 **新项目**。 
 
-1. 输入 **名称** 和可选 **描述** ，并选择语言。 每种语言都需要一个项目，并且支持目前仅限于该 `en-US` 语言。
+1. 输入 **名称** 和可选 **描述**，并选择语言。 每种语言都需要一个项目，并且支持目前仅限于该 `en-US` 语言。
 
     ![描述关键字项目](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -47,9 +47,9 @@ ms.locfileid: "93305895"
 
     ![选择关键字项目](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. 若要创建新的关键字模型，请单击 " **训练模型** "。
+1. 若要创建新的关键字模型，请单击 " **训练模型**"。
 
-1. 输入模型的 **名称** 、可选 **描述** 和所选 **关键字** ，然后单击 " **下一步** "。 请参阅有关选择有效关键字的 [准则](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) 。
+1. 输入模型的 **名称** 、可选 **描述** 和所选 **关键字** ，然后单击 " **下一步**"。 请参阅有关选择有效关键字的 [准则](./custom-keyword-overview.md#choose-an-effective-keyword) 。
 
     ![输入关键字](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -79,4 +79,4 @@ ms.locfileid: "93305895"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过 [语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)测试自定义关键字。
+通过 [语音设备 SDK 快速入门](./speech-devices-sdk-quickstart.md?pivots=platform-android)测试自定义关键字。

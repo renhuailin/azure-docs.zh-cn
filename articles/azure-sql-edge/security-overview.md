@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394945"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021008"
 ---
 # <a name="securing-azure-sql-edge"></a>保护 Azure SQL Edge
 
@@ -34,14 +34,14 @@ Azure SQL Edge 的平台包括物理 docker 主机、主机上的操作系统，
 - 指定和限制用于 Azure SQL Edge 的主机端口
 - 确保向承载 Azure SQL Edge 数据的所有数据卷应用正确的访问控制。 
 
-有关 Azure SQL Edge 网络协议和 TDS 终结点的详细信息，请参阅[网络协议和 TDS 终结点](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))。
+有关 Azure SQL Edge 网络协议和 TDS 终结点的详细信息，请参阅[网络协议和 TDS 终结点](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))。
 
 ## <a name="authentication-and-authorization"></a>身份验证和授权 
 
 ### <a name="authentication"></a>身份验证  
 身份验证是证明用户所声明身份的过程。 Azure SQL Edge 当前仅支持 `SQL Authentication` 机制。
 
-- *SQL 身份验证* ：
+- *SQL 身份验证*：
 
     SQL 身份验证是指使用用户名和密码连接到 Azure SQL Edge 时对用户进行身份验证。 在 SQL Edge 部署过程中，必须指定 SQL **sa** 登录密码。 之后，服务器管理员可以创建额外的 SQL 登录和用户，以允许用户使用用户名和密码进行连接。
 

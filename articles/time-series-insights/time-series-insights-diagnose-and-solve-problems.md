@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530130"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023269"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>诊断和解决 Azure 时序见解 Gen1 环境中的问题
 
@@ -37,7 +37,7 @@ ms.locfileid: "91530130"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A：事件源数据不是 JSON 格式
 
-Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./concepts-json-flattening-escaping-rules.md)。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B：事件源密钥缺少所需的权限
 
@@ -74,7 +74,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 强制的限制基于环境的 SKU 类型和容量。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超过了实施的限制，则会遇到限制和滞后现象。
 
-下图显示了一个 SKU 为 S1 且容量为3的 Azure 时序见解环境。 它每天可以引入 300 万个事件。
+下图显示了一个 SKU 为 S1 且容量为 3 的 Azure 时序见解环境。 它每天可以引入 300 万个事件。
 
 [![环境容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
@@ -85,7 +85,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 容量为 3 的 S1 SKU 环境每分钟只能流入 2,100 个事件（每天 100 万个事件 = 每分钟 700 个事件，3 个单位 = 每分钟 2,100 个事件）。
 
-有关平展逻辑工作原理的深入介绍，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+有关平展逻辑工作原理的深入介绍，请参阅[支持的 JSON 形状](./concepts-json-flattening-escaping-rules.md)。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>针对过度限制的建议解决方法
 

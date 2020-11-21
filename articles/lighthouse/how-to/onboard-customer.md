@@ -3,12 +3,12 @@ title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042856"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024290"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -67,7 +67,7 @@ az account show
 为了更轻松地进行管理，我们建议为每个角色使用 Azure AD 用户组。 这样，你可以灵活地在组中添加或删除单个用户，这样就无需重复载入过程来进行用户更改。 可以将角色分配给服务主体，这对于自动化方案非常有用。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全** "。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全**"。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 定义授权时，请确保遵循最低权限原则，使用户仅具有完成工作所需的权限。 有关支持的角色的指导和信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
 
@@ -114,21 +114,21 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 **MspOfferName** 和 **mspOfferDescription** 值将在 Azure 门户的 " [服务提供商" 页](view-manage-service-providers.md)中对客户可见。
+若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 **MspOfferName** 和 **mspOfferDescription** 值将在 Azure 门户的 "[服务提供商" 页](view-manage-service-providers.md)中对客户可见。
 
 |字段  |定义  |
 |---------|---------|
 |**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户，并且必须是唯一值。        |
 |**mspOfferDescription**     |产品/服务的简短说明（例如“Contoso VM 管理产品/服务”）。      |
 |**managedByTenantId**     |租户 ID。          |
-|**authorizations**     |租户中用户/组/SPN 的 **principalId** 值，每个值都带有一个 **principalIdDisplayName** （帮助客户了解授权的目的）并且已映射到内置 **roleDefinitionId** 值以指定访问级别。      |
+|**authorizations**     |租户中用户/组/SPN 的 **principalId** 值，每个值都带有一个 **principalIdDisplayName**（帮助客户了解授权的目的）并且已映射到内置 **roleDefinitionId** 值以指定访问级别。      |
 
 加入过程需要 Azure 资源管理器模板（在[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供）以及相应的参数文件（可修改此文件，使其与你的配置匹配并定义你的授权）。
 
 > [!IMPORTANT]
 > 此处所述的过程需要对每个要载入的订阅进行单独部署，即使你是在同一客户租户中加入订阅。 如果要在同一客户租户中加入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
 >
-> 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName** 。
+> 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
 
 所选的模板取决于你是要加入整个订阅，还是要加入订阅中的一个资源组或多个资源组。 我们还提供了一个模板，可供购买了你发布 Azure 市场的托管服务产品/服务的客户使用；如果你偏向于按此方式载入其资源，则可使用它。
 
@@ -211,8 +211,8 @@ az role definition list --name "<roleName>" | grep name
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 在 [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)存储库中，选择要使用的模板旁边的 " **部署到 Azure** " 按钮。 Azure 门户中会打开模板。
-1. 输入 **Msp 产品名称** 、 **msp 提议说明** 、 **租户 Id 管理** 和 **授权** 的值。 如果需要，可以选择 " **编辑参数** " `mspOfferName` ，以 `mspOfferDescription` `managedbyTenantId` `authorizations` 在参数文件中直接输入、、和的值。 请确保更新这些值，而不是使用模板中的默认值。
-1. 依次选择 " **查看" 和 "创建** "，然后选择 " **创建** "。
+1. 输入 **Msp 产品名称**、 **msp 提议说明**、 **租户 Id 管理** 和 **授权** 的值。 如果需要，可以选择 " **编辑参数** " `mspOfferName` ，以 `mspOfferDescription` `managedbyTenantId` `authorizations` 在参数文件中直接输入、、和的值。 请确保更新这些值，而不是使用模板中的默认值。
+1. 依次选择 " **查看" 和 "创建**"，然后选择 " **创建**"。
 
 几分钟后，你会看到部署已完成的通知。
 
@@ -286,6 +286,11 @@ az deployment sub create --name <deploymentName> \
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
 Get-AzContext
+
+# Confirm successful onboarding for Azure Lighthouse
+
+Get-AzManagedServicesDefinition
+Get-AzManagedServicesAssignment
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

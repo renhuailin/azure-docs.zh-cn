@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842628"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023150"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -62,7 +62,7 @@ Windows 虚拟桌面是 Azure 中的一种服务。 若要最大程度地提高 
 
 ### <a name="improve-your-secure-score"></a>提高安全分数
 
-安全评分提供建议和最佳做法建议，以提高总体安全性。 这些建议的优先顺序可帮助您选择最重要的建议，快速修复选项可帮助您快速解决潜在漏洞。 这些建议还会随着时间的推移进行更新，让你保持最新状态，以便保持你的环境安全。 若要了解详细信息，请参阅 [在 Azure 安全中心提高安全分数](../security-center/security-center-secure-score.md)。
+安全评分提供建议和最佳做法建议，以提高总体安全性。 这些建议的优先顺序可帮助您选择最重要的建议，快速修复选项可帮助您快速解决潜在漏洞。 这些建议还会随着时间的推移进行更新，让你保持最新状态，以便保持你的环境安全。 若要了解详细信息，请参阅 [在 Azure 安全中心提高安全分数](../security-center/secure-score-security-controls.md)。
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Windows 虚拟桌面安全性最佳做法
 
@@ -74,13 +74,13 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="enable-conditional-access"></a>启用条件性访问
 
-启用 [条件性访问](../active-directory/conditional-access/best-practices.md) 可让你在向用户授予对 Windows 虚拟桌面环境的访问权限之前管理风险。 在决定要将访问权限授予哪些用户时，我们建议你还考虑用户是谁、他们登录的方式以及他们使用的设备。
+启用 [条件性访问](../active-directory/conditional-access/overview.md) 可让你在向用户授予对 Windows 虚拟桌面环境的访问权限之前管理风险。 在决定要将访问权限授予哪些用户时，我们建议你还考虑用户是谁、他们登录的方式以及他们使用的设备。
 
 ### <a name="collect-audit-logs"></a>收集审核日志
 
 启用审核日志收集可查看与 Windows 虚拟桌面相关的用户和管理活动。 重要审核日志的一些示例如下：
 
--   [Azure 活动日志](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure 活动日志](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory 活动日志](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [会话主机](../azure-monitor/platform/agent-windows.md)
@@ -93,7 +93,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="monitor-usage-with-azure-monitor"></a>使用 Azure Monitor 监视使用情况
 
-使用 [Azure Monitor](https://azure.microsoft.com/services/monitor/)监视 Windows 虚拟桌面服务的使用情况和可用性。 考虑创建 Windows 虚拟桌面服务的 [服务运行状况警报](../service-health/alerts-activity-log-service-notifications.md) ，以便在出现服务影响事件时接收通知。
+使用 [Azure Monitor](https://azure.microsoft.com/services/monitor/)监视 Windows 虚拟桌面服务的使用情况和可用性。 考虑创建 Windows 虚拟桌面服务的 [服务运行状况警报](../service-health/alerts-activity-log-service-notifications-portal.md) ，以便在出现服务影响事件时接收通知。
 
 ## <a name="session-host-security-best-practices"></a>会话主机安全最佳做法
 

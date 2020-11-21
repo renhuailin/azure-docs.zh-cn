@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490604"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023031"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -31,7 +31,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 
 ## <a name="risk-types-and-detection"></a>风险类型和检测
 
-存在两种类型的风险 **用户** 和 **登录** 以及两种类型的检测或计算： **实时** 和 **脱机** 。
+存在两种类型的风险 **用户** 和 **登录** 以及两种类型的检测或计算： **实时** 和 **脱机**。
 
 实时检测可能不会在报告中显示5到10分钟。 脱机检测可能不会在报告中显示两到二十四个小时。
 
@@ -74,7 +74,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 
 ### <a name="risk-levels"></a>风险级别
 
-标识保护将风险分为三个级别：低、中和高。 
+标识保护将风险分为三个级别：低、中和高。 配置 [自定义标识保护策略](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy)时，还可以将其配置为在 **无风险** 级别触发。 无风险意味着没有活动的指示用户的标识已泄露。
 
 虽然 Microsoft 不提供有关风险计算方式的具体详细信息，但可以说每个级别在用户或登录受到攻击时都提供了更高的置信度。 例如，与某用户的一个实例出现不熟悉的登录属性相比，将凭据泄露给另一个用户所带来的威胁性更高。
 

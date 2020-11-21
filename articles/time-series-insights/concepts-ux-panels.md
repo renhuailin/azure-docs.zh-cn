@@ -10,26 +10,26 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653785"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020974"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
 本文介绍 Azure 时序见解 Gen2 [演示环境](https://insights.timeseries.azure.com/preview/demo)中可用的各种功能和选项。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始了解 Azure 时序见解资源管理器，必须执行以下操作：
 
-* 已预配 Azure 时序见解 Gen2 环境。 阅读 [Azure 时序见解 Gen2](./time-series-insights-update-create-environment.md) 教程，详细了解如何设置实例。
-* 提供对为帐户创建的 Azure 时序见解 Gen2 环境的[数据访问权限](./time-series-insights-data-access.md)。 可以向其他人以及自己提供访问。
+* 已预配 Azure 时序见解 Gen2 环境。 阅读 [Azure 时序见解 Gen2](./tutorials-set-up-tsi-environment.md) 教程，详细了解如何设置实例。
+* 提供对为帐户创建的 Azure 时序见解 Gen2 环境的[数据访问权限](./concepts-access-policies.md)。 可以向其他人以及自己提供访问。
 * 将事件源添加到 Azure 时序见解 Gen2 环境，以将数据推送到环境：
-  * 了解 [如何连接到事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)
-  * 了解 [如何连接到 IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)
+  * 了解 [如何连接到事件中心](./how-to-ingest-data-event-hub.md)
+  * 了解 [如何连接到 IoT 中心](./how-to-ingest-data-iot-hub.md)
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>了解 Azure 时序见解资源管理器
 
@@ -137,7 +137,7 @@ Azure 时序见解 Gen2 支持对时序模型 (CRUD) 操作的完全创建、读
 
   [![更多操作选项](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-在[Power BI 连接器](concepts-power-bi.md)中了解有关**连接到 Power BI**选项的详细信息。
+在 [Power BI 连接器](concepts-power-bi.md)中了解有关 **连接到 Power BI** 选项的详细信息。
 
 ## <a name="6-time-editor-panel"></a>6. 时间编辑器面板
 
@@ -160,7 +160,7 @@ Azure 时序见解 Gen2 支持对时序模型 (CRUD) 操作的完全创建、读
 
 1. **外部日期范围滑块控件**：使用端点控件选择外部日期范围，该范围将可用于内部日期范围控件。
 
-1. "**时间范围" 滑块控件**：使用它可以在预设的时间范围选择（如过去**30 分钟**、**最近12个小时**或**自定义范围**）之间快速切换。 更改此值也会更改间隔大小滑块工具中所讨论的可用间隔范围。
+1. "**时间范围" 滑块控件**：使用它可以在预设的时间范围选择（如过去 **30 分钟**、**最近12个小时** 或 **自定义范围**）之间快速切换。 更改此值也会更改间隔大小滑块工具中所讨论的可用间隔范围。
 
    [![与选择面板之间的](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -172,7 +172,7 @@ Azure 时序见解 Gen2 导航面板显示在应用的顶部。 它提供以下�
 
   [![“共享”图标](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
-选择新的“共享”图标可与团队共享 URL 链接。****
+选择新的“共享”图标可与团队共享 URL 链接。
 
   [![共享实例 URL](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png)](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png#lightbox)
 
@@ -186,7 +186,7 @@ Azure 时序见解 Gen2 导航面板显示在应用的顶部。 它提供以下�
 
 ### <a name="theme-selection"></a>主题选择
 
-若要选择新主题，请选择右上角的个人资料图标。 然后选择“更改主题”。****
+若要选择新主题，请选择右上角的个人资料图标。 然后选择“更改主题”。
 
   [![主题选择](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
@@ -221,7 +221,7 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 | `IN` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL | 所有操作数应为同一类型或者是 NULL 常数。 |
 | `HAS` | 字符串 | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
 
-若要了解有关受支持的查询操作和数据类型的详细信息，请参阅 [ (TSX) 的时序表达式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+若要了解有关受支持的查询操作和数据类型的详细信息，请参阅 [ (TSX) 的时序表达式 ](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 ### <a name="examples-of-where-clauses"></a>where 子句示例
 
@@ -229,11 +229,11 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 
 **度量值**：一种下拉列表，其中显示所有数值列 (**双精度** 值，) 可以将其用作当前图表的元素。
 
-**拆分依据**：此下拉列表显示模型中的所有可用分类列 (字符串) ，你可以通过对数据进行分组。 最多可以添加要在同一个 X 轴上查看的五个搜索词。 输入所需的参数，然后选择“添加”**** 以添加新的搜索词。
+**拆分依据**：此下拉列表显示模型中的所有可用分类列 (字符串) ，你可以通过对数据进行分组。 最多可以添加要在同一个 X 轴上查看的五个搜索词。 输入所需的参数，然后选择“添加”以添加新的搜索词。
 
   [![查询和筛选视图一](media/v2-update-explorer/s1-s2-preview-filtered-view.png)](media/v2-update-explorer/s1-s2-preview-filtered-view.png#lightbox)
 
-可以通过选择可见图标，在图表面板中显示或隐藏元素，如下图所示。 若要彻底删除查询，请选择红色的“X”。****
+可以通过选择可见图标，在图表面板中显示或隐藏元素，如下图所示。 若要彻底删除查询，请选择红色的“X”。
 
   [![取消查询和筛选的选项](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
@@ -245,4 +245,4 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 
 * 了解 Azure 时序见解 Gen2 中的 [数据建模](./concepts-model-overview.md) 。
 
-* 了解 [如何诊断和排查环境问题](./time-series-insights-update-how-to-troubleshoot.md) 。
+* 了解 [如何诊断和排查环境问题](./how-to-diagnose-troubleshoot.md) 。

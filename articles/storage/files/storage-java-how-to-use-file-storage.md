@@ -4,47 +4,65 @@ description: 了解如何开发使用 Azure 文件来存储文件数据的 Java 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
+ms.date: 11/18/2020
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 25baa278961b93b04e60f2e997b98753cb6cf3ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629761"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024103"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
+
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
+
+了解开发使用 Azure 文件存储数据的 Java 应用程序的基础知识。 使用 Azure 文件 Api 创建控制台应用程序并了解基本操作：
+
+- 创建和删除 Azure 文件共享
+- 创建和删除目录
+- 枚举 Azure 文件共享中的文件和目录
+- 上传、下载和删除文件
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="about-this-tutorial"></a>关于本教程
-本教程将演示使用 Java 开发应用程序或服务的基础知识，这些应用程序或服务可以使用 Azure 文件来存储文件数据。 在本教程中，我们将创建一个控制台应用程序，并演示如何通过 Java 和 Azure 文件执行基本操作：
-
-* 创建和删除 Azure 文件共享
-* 创建和删除目录
-* 枚举 Azure 文件共享中的文件和目录
-* 上传、下载和删除文件
-
-> [!Note]  
-> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写应用程序，通过标准的 Java I/O 类来访问 Azure 文件共享。 本文介绍如何编写使用 Azure 存储 Java SDK 的应用程序，该 SDK 使用 [Azure 文件 REST API](/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
-
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
-若要生成示例，需要 Java 开发工具包 (JDK) 和[用于 Java 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-java)。 此外，应该已经创建了一个 Azure 存储帐户。
+
+若要生成示例，需要 Java 开发工具包 (JDK) 和适用于 Java 的 [Azure 存储 SDK](https://github.com/azure/azure-sdk-for-java)。 此外，应该已经创建了一个 Azure 存储帐户。
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>设置应用程序以使用 Azure 文件
-要使用 Azure 存储 API，请将下列语句添加到要通过其来访问存储服务的 Java 文件的顶部：
+
+若要使用 Azure 文件 Api，请将以下代码添加到要从中访问 Azure 文件的 Java 文件的顶部。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
-// Include the following imports to use blob APIs.
+// Include the following imports to use Azure Files APIs v11
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
+---
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
-要使用 Azure 文件，需要连接到 Azure 存储帐户。 第一步是配置连接字符串，我们会使用该字符串连接到存储帐户。 为此，我们需要定义一个静态变量。
+
+要使用 Azure 文件，需要连接到 Azure 存储帐户。 配置一个连接字符串，并使用它连接到你的存储帐户。 定义用于保存连接字符串的静态变量。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+将 *\<storage_account_name\>* 和替换为 *\<storage_account_key\>* 存储帐户的实际值。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+将 *your_storage_account_name* 和 *your_storage_account_key* 替换为存储帐户的实际值。
 
 ```java
 // Configure the connection-string with your values
@@ -54,13 +72,19 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-> [!NOTE]
-> 将 your_storage_account_name 和 your_storage_account_key 替换为存储帐户的实际值。
-> 
-> 
+---
 
-## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
-要连接到存储帐户，则需要使用 **CloudStorageAccount** 对象，以便将连接字符串传递到 **parse** 方法。
+## <a name="access-azure-files-storage"></a>访问 Azure 文件存储
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+若要访问 Azure 文件，请创建一个 [ShareClient](/java/api/com.azure.storage.file.share.shareclient) 对象。 使用 [ShareClientBuilder](/java/api/com.azure.storage.file.share.shareclientbuilder) 类生成新的 **ShareClient** 对象。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+若要访问你的存储帐户，请使用 **CloudStorageAccount** 对象，并将连接字符串传递给其 **parse** 方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -73,8 +97,21 @@ try {
 
 **CloudStorageAccount.parse** 会引发 InvalidKeyException，因此需将其置于 try/catch 块内。
 
-## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-Azure 文件中的所有文件和目录都位于名为 Share 的容器内  。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
+---
+
+## <a name="create-a-file-share"></a>创建文件共享
+
+Azure 文件中的所有文件和目录都存储在一个名为 "共享" 的容器中。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+如果共享已存在， [ShareClient](/java/api/com.azure.storage.file.share.shareclient.create) 方法会引发异常。 在块中放入 **create** `try/catch` 并处理异常。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+若要获得共享及其内容的访问权限，请创建 Azure 文件客户端。
 
 ```java
 // Create the Azure Files client.
@@ -88,7 +125,7 @@ CloudFileClient fileClient = storageAccount.createCloudFileClient();
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-实际创建共享时，请使用 CloudFileShare 对象的 **createIfNotExists** 方法。
+若要实际创建共享，请使用 **CloudFileShare** 对象的 **createIfNotExists** 方法。
 
 ```java
 if (share.createIfNotExists()) {
@@ -96,10 +133,23 @@ if (share.createIfNotExists()) {
 }
 ```
 
-而在目前， **share** 保留对名为 **sampleshare** 的共享的引用。
+此时， **share** 保留对名为 **示例共享** 的共享的引用。
 
-## <a name="delete-an-azure-file-share"></a>删除 Azure 文件共享
-删除共享时，可针对 CloudFileShare 对象调用 **deleteIfExists** 方法。 以下是具有此类功能的示例代码。
+---
+
+## <a name="delete-a-file-share"></a>删除文件共享
+
+下面的示例代码删除文件共享。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+通过调用 [ShareClient](/java/api/com.azure.storage.file.share.shareclient.delete) 方法删除共享。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+通过对 **CloudFileShare** 对象调用 **deleteIfExists** 方法来删除共享。
 
 ```java
 try
@@ -121,8 +171,21 @@ try
 }
 ```
 
+---
+
 ## <a name="create-a-directory"></a>创建目录
-也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 以下代码会在根目录下创建名为 **sampledir** 的子目录。
+
+将文件置于子目录中，而不是将所有文件都放在根目录中，从而组织存储。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+下面的代码通过调用 [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient.create)创建目录。 示例方法返回一个 `Boolean` 值，该值指示是否成功创建了目录。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+以下代码在根目录下创建名为 **sampledir** 的子目录。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -138,8 +201,19 @@ if (sampleDir.createIfNotExists()) {
 }
 ```
 
+---
+
 ## <a name="delete-a-directory"></a>删除目录
-删除目录很简单，但需注意的是，不能删除仍然包含文件或其他目录的目录。
+
+删除目录的任务非常简单。 不能删除仍然包含文件或子目录的目录。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+如果目录不存在或不为空，则 [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient.delete) 方法将引发异常。 在块中放入 **删除** `try/catch` 并处理异常。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -154,8 +228,19 @@ if ( containerDir.deleteIfExists() ) {
 }
 ```
 
+---
+
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
-可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法将返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+通过调用 [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient.listfilesanddirectories)获取文件和目录的列表。 方法返回可对其进行循环访问的 [ShareFileItem](/java/api/com.azure.storage.file.share.models.sharefileitem) 对象的列表。 下面的代码列出了 *dirName* 参数所指定的目录中的文件和目录。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+通过对 **需针对 cloudfiledirectory** 引用调用 **listFilesAndDirectories** 来获取文件和目录的列表。 方法返回可对其进行循环访问的 **ListFileItem** 对象的列表。 下面的代码将列出根目录中的文件和目录。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -166,10 +251,21 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>上传文件
-在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
+---
 
-上传文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **getRootDirectoryReference** 方法。
+## <a name="upload-a-file"></a>上传文件
+
+了解如何从本地存储上传文件。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+以下代码通过调用 [ShareFileClient. uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) 方法将本地文件上传到 Azure 文件存储。 下面的示例方法返回一个 `Boolean` 值，该值指示是否已成功上传指定的文件。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+通过对共享对象调用 **getRootDirectoryReference** 方法，获取对要将文件上载到的目录的引用。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -179,15 +275,28 @@ CloudFileDirectory rootDir = share.getRootDirectoryReference();
 现在，你已经有了共享所在的根目录的引用，因此可以使用以下代码来上传文件。
 
 ```java
-        // Define the path to a local file.
-        final String filePath = "C:\\temp\\Readme.txt";
-    
-        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
-        cloudFile.uploadFromFile(filePath);
+// Define the path to a local file.
+final String filePath = "C:\\temp\\Readme.txt";
+
+CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+cloudFile.uploadFromFile(filePath);
 ```
 
+---
+
 ## <a name="download-a-file"></a>下载文件
-对于 Azure 文件，需要更频繁执行的一项操作是下载文件。 在下面的示例中，代码会下载 SampleFile.txt 并显示其内容。
+
+更频繁的操作之一是从 Azure 文件存储下载文件。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+下面的示例将指定的文件下载到在 *destDir* 参数中指定的本地目录。 示例方法通过预先计算日期和时间使下载的文件名唯一。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+下面的示例将 SampleFile.txt 下载并显示其内容。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -203,8 +312,21 @@ CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 System.out.println(file.downloadText());
 ```
 
+---
+
 ## <a name="delete-a-file"></a>删除文件
-另一项常见的 Azure 文件操作是删除文件。 下面的代码会删除名为 SampleFile.txt 的文件，该文件存储在名为 **sampledir** 的目录中。
+
+另一项常见的 Azure 文件操作是删除文件。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+下面的代码删除指定的指定文件。 首先，该示例基于 *dirName* 参数创建 [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient) 。 然后，该代码基于 *fileName* 参数从目录客户端获取 [ShareFileClient](/java/api/com.azure.storage.file.share.sharefileclient) 。 最后，该示例方法会调用 [ShareFileClient](/java/api/com.azure.storage.file.share.sharefileclient.delete) 来删除该文件。
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+下面的代码会删除名为 SampleFile.txt 的文件，该文件存储在名为 **sampledir** 的目录中。
 
 ```java
 // Get a reference to the root directory for the share.
@@ -222,14 +344,17 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
+---
+
 ## <a name="next-steps"></a>后续步骤
+
 如果还想更多地了解其他 Azure 存储 API，请点击以下链接。
 
-* [面向 Java 开发人员的 Azure](/java/azure)/) 
-* [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
-* [用于 Android 的 Azure 存储 SDK](https://github.com/azure/azure-storage-android)
-* [Azure 存储客户端 SDK 参考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure 存储空间服务 REST API](/rest/api/storageservices/)
-* [Azure 存储团队博客](/archive/blogs/windowsazurestorage/)
-* [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy-v10.md)
-* [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [面向 Java 开发人员的 Azure](/azure/developer/java)
+- [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)
+- [适用于 Android 的 Azure SDK](https://github.com/azure/azure-sdk-for-android)
+- [用于 Java SDK 参考的 Azure 文件共享客户端库](/java/api/overview/azure/storage-file-share-readme)
+- [Azure 存储空间服务 REST API](/rest/api/storageservices/)
+- [Azure 存储团队博客](https://azure.microsoft.com/blog/topics/storage-backup-and-recovery/)
+- [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy-v10.md)
+- [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

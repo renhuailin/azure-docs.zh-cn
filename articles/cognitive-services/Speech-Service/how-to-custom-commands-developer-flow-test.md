@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec8e40c0908855cd06d647bdd9121106e3553c11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918904"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021807"
 ---
 # <a name="test-your-custom-commands-application"></a>测试自定义命令应用程序
 
@@ -49,11 +49,10 @@ Windows 语音助手客户端是 c # 中的一种 Windows Presentation Foundatio
 - [如何：设置 web 终结点](./how-to-custom-commands-setup-web-endpoints.md)
 
 对于其他编程语言和平台：
-- [语音 SDK 编程语言、平台和方案容量](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)
+- [语音 SDK 编程语言、平台和方案容量](./speech-sdk.md)
 - [语音助手示例代码](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [请参阅 GitHub 上的示例](https://aka.ms/speech/cc-samples)
-

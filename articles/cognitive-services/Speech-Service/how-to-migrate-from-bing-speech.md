@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825592"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024307"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -25,10 +25,10 @@ ms.locfileid: "91825592"
 
 单个语音服务订阅密钥授予对以下功能的访问权限。 每个功能单独计量，以便仅针对你使用的功能收费。
 
-* [语音到文本](speech-to-text.md)
+* [语音转文本](speech-to-text.md)
 * [自定义语音到文本](https://cris.ai)
-* [文本到语音转换](text-to-speech.md)
-* [自定义文本转语音声音](how-to-customize-voice-font.md)
+* [文本转语音](text-to-speech.md)
+* [自定义文本转语音声音](./how-to-custom-voice-create-voice.md)
 * [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-info-overview.md)）
 
 [语音 SDK](speech-sdk.md) 是必应语音客户端库的功能替换，但使用了不同 API。
@@ -51,7 +51,7 @@ ms.locfileid: "91825592"
 | 简单意向识别 | :heavy_minus_sign: | :heavy_check_mark: |
 | 批量听录长音频文件 | :heavy_minus_sign: | :heavy_check_mark: |
 | 识别模式 | 通过终结点 URI 手动 | 自动 | 语音服务中不提供识别模式。 |
-| 终结点位置 | Global | 区域 | 区域终结点改善延迟。 |
+| 终结点位置 | 全球 | 区域 | 区域终结点改善延迟。 |
 | REST API | :heavy_check_mark: | :heavy_check_mark: | 语音服务 REST Api 与必应语音 (不同的终结点) 兼容。 REST API 支持文本转语音以及限制的语音转文本功能。 |
 | Websocket 协议 | :heavy_check_mark: | :heavy_minus_sign: | 语音 SDK 针对需要与服务建立持续连接的功能对 web 套接字连接进行抽象，因此不再支持手动订阅。 |
 | 服务到服务 API 调用 | :heavy_check_mark: | :heavy_minus_sign: | 通过 C# 服务库在必应语音中提供。 |
@@ -63,7 +63,7 @@ ms.locfileid: "91825592"
 
 如果你或你的组织在开发或生产环境中具有使用必应语音 API 的应用程序，则应将其更新为尽快使用语音服务。 请参阅 [语音服务文档](index.yml) ，了解可用的 sdk、代码示例和教程。
 
-语音服务 [REST api](rest-apis.md) 与必应语音 api 兼容。 如果当前正在使用必应语音 REST Api，只需更改 REST 终结点，并切换到语音服务订阅密钥。
+语音服务 [REST api](./overview.md#reference-docs) 与必应语音 api 兼容。 如果当前正在使用必应语音 REST Api，只需更改 REST 终结点，并切换到语音服务订阅密钥。
 
 如果使用特定编程语言的必应语音客户端库，则迁移到[语音 SDK](speech-sdk.md) 需要更改应用程序，因为 API 不同。 语音 SDK 可以简化代码，同时使你可以访问新功能。 语音 SDK 提供多种编程语言。 所有平台上的 API 均类似，从而简化了多平台开发。
 
@@ -72,14 +72,14 @@ ms.locfileid: "91825592"
 语音 SDK 入门：
 
 1. 下载[语音 SDK](speech-sdk.md)。
-1. 完成语音服务 [快速入门指南](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) 和 [教程](how-to-recognize-intents-from-speech-csharp.md)。 另请查看[代码示例](samples.md)来体验新的 API。
+1. 完成语音服务 [快速入门指南](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) 和 [教程](how-to-recognize-intents-from-speech-csharp.md)。 另请查看[代码示例](./speech-sdk.md#sample-source-code)来体验新的 API。
 1. 更新应用程序以使用语音服务。
 
 ## <a name="support"></a>支持
 
 必应语音客户应通过打开[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来联系客户支持。 如果你的支持需要一个[技术支持计划](https://azure.microsoft.com/support/plans/)，也可以与我们联系。
 
-有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](support.md)。
+有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,7 +87,7 @@ ms.locfileid: "91825592"
 * [语音转文本入门](get-started-speech-to-text.md)
 * [开始使用文本转语音](get-started-text-to-speech.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [语音服务发行说明](releasenotes.md)
 * [什么是语音服务](overview.md)

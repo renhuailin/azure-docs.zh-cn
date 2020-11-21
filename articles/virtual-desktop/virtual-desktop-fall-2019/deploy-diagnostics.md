@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691405"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023065"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
 
@@ -32,7 +32,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -121,7 +121,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
     -   处理器信息 (\*) \\ 处理器时间
     -   每个会话 (的用户输入延迟 \*) \\ 最大输入延迟
 
-[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
+[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)的性能计数器的详细信息。
 
 >[!NOTE]
 >你配置的任何其他计数器将不会显示在诊断工具本身中。 若要使它显示在诊断工具中，需要配置该工具的配置文件。 有关如何使用高级管理完成此操作的说明，可在 GitHub 中的日后使用。
@@ -135,7 +135,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 若要确保你的应用注册具有 API 权限：
 
 1. 打开浏览器并使用管理帐户连接到 [Azure 门户](https://portal.azure.com/) 。
-2. 转到 Azure Active Directory****。
+2. 转到 Azure Active Directory。
 3. 请参阅 **应用注册** ，并选择 " **所有应用程序**"。
 4. 使用在 [创建 Azure Active Directory 应用注册](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)的步骤5中输入的相同应用名称查找 Azure AD 应用注册。
 
@@ -145,7 +145,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中转到 **Log Analytics 工作区** 以查看配置的 Windows 性能计数器。
 2. 在 " **设置**" 下，选择 " **高级设置**"。
-3. 之后，请跳到**数据**  >  **Windows 性能计数器**。
+3. 之后，请跳到 **数据**  >  **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
    - 逻辑磁盘 (\*) \\ % 可用空间：显示磁盘上总可用空间的可用空间量（以百分比表示）。
@@ -162,7 +162,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 2. 中转到 Log Analytics 工作区。
 3. 在左侧面板的 "工作区数据源" 下，选择 " **虚拟机**"。
 4. 选择要连接到的 VM 的名称。
-5. 选择“连接”  。
+5. 选择“连接”。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -191,7 +191,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 4.  在左侧面板的 "管理" 部分下，选择 " **身份验证**"。
 5.  在 " **重定向 uri** " 文本框中输入所需的 "重定向 uri"，并选择菜单左上角的 " **保存** "。
 6. 在 "类型" 下的下拉菜单中选择 " **网站** "。
-7. 输入 "应用概述" 页中的 URL，并将 **/security/signin-callback** 添加到该 URL 的末尾。 例如： `https://<yourappname>.azurewebsites.net/security/signin-callback`。
+7. 输入 "应用概述" 页中的 URL，并将 **/security/signin-callback** 添加到该 URL 的末尾。 例如：`https://<yourappname>.azurewebsites.net/security/signin-callback`。
 
    > [!div class="mx-imgBorder"]
    > !["重定向 URI" 页](../media/redirect-uri-page.png)
@@ -204,7 +204,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
-- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](/azure/azure-monitor/platform/roles-permissions-security)。
+- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../../azure-monitor/platform/roles-permissions-security.md)。
 -  用户还需要对 Windows 虚拟桌面租户的 "读取" 访问权限 ("RDS 读取器角色") 。 有关详细信息，请参阅 [Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
 
 还需要为用户指定以下信息：

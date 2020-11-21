@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578529"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023371"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -350,7 +350,7 @@ SSH2 是一个 Windows 虚拟桌面增值服务提供程序，它为你的 IT �
 appCURE 从运行的应用程序捕获应用程序详细信息，以确保了解可能会影响最终用户的应用程序的所有点。 然后，appCURE 更新并将其传送到新的 Windows 虚拟桌面。 通过捕获当前环境中的所有应用程序集成点，appCURE 提供了优化 IT 资源并规划迁移的速度，并使组织能够更快地投入生产。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)。
-- [请中转到 "合作伙伴" 页](/azure/virtual-desktop/partners#ssh2)。
+- [请中转到 "合作伙伴" 页](#ssh2)。
 
 ## <a name="thinprint"></a>ThinPrint
 

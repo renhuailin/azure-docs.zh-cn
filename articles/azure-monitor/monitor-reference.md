@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461798"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021433"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -126,7 +126,6 @@ ms.locfileid: "92461798"
 |托管应用程序  | 否 | 否 | 否 |  |
 |地图  | 否 | 否 | 否 |  |
 |媒体服务 | 是 | 是 | 否 |  |
-|Microsoft Flow | 否 | 否 | 否 |  |
 |Microsoft 托管桌面 | 否 | 否 | 否 |  |
 |Microsoft PowerApps | 否 | 否 | 否 |  |
 |Microsoft 社交参与 | 否 | 否 | 否 |  |
@@ -137,6 +136,7 @@ ms.locfileid: "92461798"
 |通知中心 | 是 | 否 | 否 |  |
 |开放数据集 | 否 | 否 | 否 |  |
 |策略 | 否 | 否 | 否 |  |
+|Power Automate | 否 | 否 | 否 |  |
 |Power BI Embedded | 是 | 是 | 否 |  |
 |专用链接 | 否 | 否 | 否 |  |
 |项目假脱机通信平台 | 否 | 否 | 否 |  |

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701772"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023133"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虚拟桌面 RDP Shortpath (预览版) 
 
@@ -36,7 +36,7 @@ RDP Shortpath 正在扩展 RDP 多传输功能。 它不会取代反向连接传
 
 UDP 端口3390仅用于通过反向连接传输进行身份验证的传入 Shortpath 流量。 RDP Shortpath 侦听器将忽略与该侦听器的所有连接尝试，除非它们匹配反向连接会话。
 
-RDP Shortpath 使用会话主机的证书在客户端和会话主机之间使用 TLS 连接。 默认情况下，用于 RDP 加密的证书是在部署过程中由操作系统自行生成的。 如果需要，客户可以部署企业证书颁发机构颁发的集中管理的证书。 有关证书配置的详细信息，请参阅 [Windows Server 文档](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md)。
+RDP Shortpath 使用会话主机的证书在客户端和会话主机之间使用 TLS 连接。 默认情况下，用于 RDP 加密的证书是在部署过程中由操作系统自行生成的。 如果需要，客户可以部署企业证书颁发机构颁发的集中管理的证书。 有关证书配置的详细信息，请参阅 [Windows Server 文档](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)。
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath 连接序列
 
@@ -187,7 +187,7 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 * **0** -用户连接未使用 RDP Shortpath
 * **1** -用户连接正在使用 RDP Shortpath
   
-下面的查询列表允许您查看连接信息。 您可以在 [Log Analytics 查询编辑器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中运行此查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
+下面的查询列表允许您查看连接信息。 您可以在 [Log Analytics 查询编辑器](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)中运行此查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

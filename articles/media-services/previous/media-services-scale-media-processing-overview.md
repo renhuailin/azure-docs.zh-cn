@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618499"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020889"
 ---
 # <a name="media-reserved-units"></a>媒体保留单位
 
@@ -59,5 +59,5 @@ ms.locfileid: "91618499"
 [.Net](media-services-dotnet-encoding-units.md) 
 [门户网站](media-services-portal-scale-media-processing.md) 
 [REST](/rest/api/media/operations/encodingreservedunittype) 
-[Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+[Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples) 
 [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

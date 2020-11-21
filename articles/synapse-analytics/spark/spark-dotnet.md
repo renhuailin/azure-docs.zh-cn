@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578606"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023730"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用
 
@@ -74,9 +74,11 @@ ms.locfileid: "94578606"
 
 ### <a name="install-nuget-packages-in-notebooks"></a>在笔记本中安装 NuGet 包
 
-你可以通过在 NuGet 包的名称前面使用符号，将你选择的 NuGet 包安装到你的笔记本中 `#r` 。 下图显示了一个示例：
+你可以通过在 `#r nuget` nuget 包的名称之前使用魔棒命令将所选的 NuGet 包安装到你的笔记本中。 下图显示了一个示例：
 
 ![显示使用 #r 安装 Spark .NET 笔记本 NuGet 包的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
+
+若要详细了解如何使用笔记本中的 NuGet 包，请参阅 [.Net 交互文档](https://github.com/dotnet/interactive/blob/main/docs/nuget-overview.md)。
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>.NET for Apache Spark C# 内核功能
 

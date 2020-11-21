@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425113"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021977"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
 你已经确定了合成语音体验的正确[披露级别](concepts-disclosure-guidelines.md#disclosure-assessment)，现在正是探索潜在设计模式的好时机。
@@ -241,17 +241,17 @@ ms.locfileid: "92425113"
 
 ## <a name="additional-resources"></a>其他资源
 - [Microsoft 机器人指南](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 设计指南](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP 语音设计指南](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows 混合现实语音命令指南](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana 设计指南](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 语音设计指南](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows 混合现实语音命令指南](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>参考文档
 
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [管控概述](concepts-gating-overview.md)
 * [如何披露](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)

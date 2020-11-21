@@ -2,13 +2,14 @@
 title: 概念-监视和修复 Azure VMware 解决方案私有云
 description: 了解 Azure VMware 解决方案如何监视和修复 Azure VMware 解决方案私有云上的 VMware ESXi 服务器。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 11a3c53bff7ce7b67b677977eddb9829f336672d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.custom: contperfq2
+ms.date: 11/20/2020
+ms.openlocfilehash: 6c37ff6cc0715182453669f67306094af2f00cdf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684689"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024341"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>监视和修复 Azure VMware 解决方案私有云
 

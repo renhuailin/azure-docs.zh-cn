@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023017"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021790"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>运行自定义命令应用程序时调试错误
 
@@ -58,9 +58,9 @@ ms.locfileid: "86023017"
 
 - 如果在门户中测试应用程序，它会直接显示取消说明，并 earcon 错误。 
 
-- 如果使用 [Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行应用程序，则会出现错误 earcon。 可以在**活动日志**下找到**事件： CancelledDialog** 。
+- 如果使用 [Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行应用程序，则会出现错误 earcon。 可以在 **活动日志** 下找到 **事件： CancelledDialog** 。
 
-- 如果你在 [使用语音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md)的客户端应用程序示例客户端应用程序 (，则会 earcon 错误。 可以在 "**状态**" 下找到**事件： CancelledDialog** 。
+- 如果你在 [使用语音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md)的客户端应用程序示例客户端应用程序 (，则会 earcon 错误。 可以在 "**状态**" 下找到 **事件： CancelledDialog** 。
 
 - 如果要构建自己的客户端应用程序，你始终可以设计所需的逻辑来处理 CancelledDialog 事件。
 
@@ -86,13 +86,13 @@ CancelledDialog 事件由取消代码和说明组成，如下所示：
 
     将预测资源添加到自定义命令应用程序： 
     1. 中转到 " **设置**"、"LUIS 资源"
-    1. 从**预测资源**中选择预测资源，或单击 "**创建新资源**" 
+    1. 从 **预测资源** 中选择预测资源，或单击 "**创建新资源**" 
 
 - LUIS 预测资源超出限制
 
     如果你使用的是 F0 预测资源，则它的限制为10千/月，5个查询/秒。
 
-有关 LUIS 资源限制的详细信息，请参阅 [语言理解资源使用情况和限制](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)
+有关 LUIS 资源限制的详细信息，请参阅 [语言理解资源使用情况和限制](../luis/luis-limits.md#resource-usage-and-limits)
 
 ### <a name="connection-to-the-recognizer-failed"></a>与识别器的连接失败
 通常，这意味着暂时性连接无法语言理解 (LUIS) 识别器。 请重试，并解决问题。
@@ -123,7 +123,7 @@ LUIS 识别器在尝试识别输入时返回了错误。
 
     当两个命令共享类似意向和示例句子时，LUIS 识别准确性可能会受到影响。 您可以尝试使命令功能和示例句子尽可能不同。
 
-    若要获得提高识别准确性的最佳实践，请参阅 [LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+    若要获得提高识别准确性的最佳实践，请参阅 [LUIS 最佳实践](../luis/luis-concept-best-practices.md)。
 
 - 对话框已取消
     

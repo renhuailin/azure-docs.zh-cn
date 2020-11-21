@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496708"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023712"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述： SQL 托管实例 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "94496708"
 可以在部署期间选择计算和存储资源，然后在使用 [Azure 门户](../../database/scale-resources.md) 后更改它们，而不会导致应用程序停机。 
 
 > [!IMPORTANT]
-> 托管实例中的任何差异 [虚拟网络要求](/../../managed-instance/connectivity-architecture-overview.md#network-requirements) 会阻止你创建新的实例或使用现有的实例。 了解有关 [创建新](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   网络和 [配置现有](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   网络的详细信息。 
+> 托管实例中的任何差异 [虚拟网络要求](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) 会阻止你创建新的实例或使用现有的实例。 了解有关 [创建新](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   网络和 [配置现有](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   网络的详细信息。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代项
 
@@ -168,11 +168,11 @@ SQL Server 高可用性功能 Always On 故障转移群集实例和 Always On �
 
 #### <a name="logins-and-groups"></a>登录名和组
 
-可以使用数据库迁移服务将源 SQL Server 中的 SQL 登录名移动到 Azure SQL 托管实例， (DMS) 处于脱机模式。  使用 **迁移向导** 中的 " **[选择登录名](../../../dms/tutorial-sql-server-to-managed-instance.md#select-logins)** " 边栏选项卡将登录名迁移到目标 SQL 托管实例。 
+可以使用数据库迁移服务将源 SQL Server 中的 SQL 登录名移动到 Azure SQL 托管实例， (DMS) 处于脱机模式。  使用 **迁移向导** 中的 "**[选择登录名](../../../dms/tutorial-sql-server-to-managed-instance.md#select-logins)**" 边栏选项卡将登录名迁移到目标 SQL 托管实例。 
 
 默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 但是，可通过以下方式启用迁移 Windows 登录名的功能：
 
-确保目标 SQL 托管实例具有 Azure AD 读取访问权限，该访问权限可通过具有 " **公司管理员** " 或 " **全局管理员** " 角色的用户 Azure 门户进行配置。
+确保目标 SQL 托管实例具有 Azure AD 读取访问权限，该访问权限可通过具有 " **公司管理员** " 或 " **全局管理员**" 角色的用户 Azure 门户进行配置。
 配置 Azure 数据库迁移服务实例以启用 Windows 用户/组登录名迁移，这通过 Azure 门户在“配置”页上进行设置。 启用此设置后，重启服务以使更改生效。
 
 重启服务后，Windows 用户/组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户/组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。

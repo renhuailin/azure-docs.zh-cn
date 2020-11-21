@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746536"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020821"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
 Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 > [!TIP]
-> 请阅读[规划 Azure 时序见解第 2 代环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)，获取所有限制的完整列表。
+> 请阅读[规划 Azure 时序见解第 2 代环境](./how-to-plan-your-environment.md#review-azure-time-series-insights-gen2-limits)，获取所有限制的完整列表。
 
 ## <a name="per-environment-limitations"></a>基于环境的限制
 
@@ -41,7 +41,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
     Contoso Shipping 有 100,000 台设备，每分钟发出事件三次。 事件的大小为 200 字节。 它们使用包含 4 个分区的 IoT 中心作为 Azure 时序见解第 2 代事件源。
 
-  * 其 Azure 时序见解第 2 代环境的引入速率为： **100,000 个设备 * 200 字节/事件 * (每秒 3 个事件/60) = 1 MBps** 。
+  * 其 Azure 时序见解第 2 代环境的引入速率为：**100,000 个设备 * 200 字节/事件 * (每秒 3 个事件/60) = 1 MBps**。
     * 假设分区平衡，则每个分区的引入速率为 0.25 MBps。
     * Contoso Shipping 的引入率在缩放限制范围内。
 
@@ -59,14 +59,14 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 分区是中心内保留的有序事件。 分区计数是在中心创建阶段设置的，且不可更改。
 
-有关事件中心分区的最佳做法，请参阅[我需要多少分区？](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
+有关事件中心分区的最佳做法，请参阅[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 > [!NOTE]
 > 与 Azure 时序见解第 2 代配合使用的大多数 IoT 中心只需要 4 个分区。
 
 无论是为 Azure 时序见解第 2 代环境创建新的中心还是使用现有的中心，都需要计算每个分区的引入速率，以确定它是否在限制范围内。
 
-在 Azure 时序见解第 2 代中， **每个分区的常规限制目前为 0.5 MBps** 。
+在 Azure 时序见解第 2 代中，**每个分区的常规限制目前为 0.5 MBps**。
 
 ### <a name="iot-hub-specific-considerations"></a>特定于 IoT 中心的注意事项
 
@@ -74,7 +74,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 固定的分区分配也会影响引入下游 IoT 中心发送的数据的 Azure 时序见解第 2 代实例。 使用相同的网关设备 ID 将来自多个设备的消息转发到中心时，这些消息可能抵达同一分区，同时，可能会超出每个分区的规模限制。
 
-**影响** ：
+**影响**：
 
 * 如果单个分区的引入速率持续超出限制，则 Azure 时序见解第 2 代在超出 IoT 中心数据保留期之前可能不会同步所有设备遥测数据。 因此，如果持续超出引入限制，发送的数据可能会丢失。
 
@@ -92,9 +92,9 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 若要详细了解如何优化中心吞吐量和分区，请参阅以下资源：
 
-* [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
-* [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
-* [事件中心分区](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
+* [IoT 中心规模](../iot-hub/iot-hub-scaling.md)
+* [事件中心规模](../event-hubs/event-hubs-scalability.md#throughput-units)
+* [事件中心分区](../event-hubs/event-hubs-features.md#partitions)
 
 ## <a name="next-steps"></a>后续步骤
 

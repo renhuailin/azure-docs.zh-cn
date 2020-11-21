@@ -1,23 +1,23 @@
 ---
 title: 人工智能 (AI)
-description: LUIS 根据你定义的架构，使用人工智能 (AI) 为数据提供语言理解。
+description: LUIS 根据定义的架构，使用人工智能 (AI) 提供对数据的语言理解。
 ms.topic: conceptual
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327198"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021365"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>语言理解 (LUIS) 中的人工智能
 
-LUIS 使用人工智能 (AI) 根据你定义的架构，为你的数据提供自然语言理解 (NLU) 。
+LUIS 根据定义的架构，使用人工智能 (AI) 提供对数据的自然语言理解 (NLU)。
 
-## <a name="natural-language-processing-nlp"></a>自然语言处理 (NLP) 
+## <a name="natural-language-processing-nlp"></a>自然语言处理 (NLP)
 
 自然语言理解 (NLU) 是自然语言处理 (NLP) 的特定子主题。
 
@@ -38,7 +38,7 @@ LUIS 使用人工智能 (AI) 根据你定义的架构，为你的数据提供自
 * LUIS 中可配置的 NLP 特性：
     * [词汇切分](luis-language-support.md#tokenization)
     * 通过音调符号、标点和单词形式 [API 设置](luis-reference-application-settings.md)配置词态
-* 其他[认知服务](../Welcome.md)提供的查询言语的预处理或后期处理，例如：
+* 其他[认知服务](../what-are-cognitive-services.md)提供的查询言语的预处理或后期处理，例如：
     * [翻译](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: bae801ac64950b0b0e9fe45585a3411477ebf12b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2276e66fa47b1c125a8c30f3c73a7c948f65a35d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150850"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021926"
 ---
 # <a name="disclosure-design-guidelines"></a>披露设计准则
 了解如何通过透明化语音体验的合成性质来构建和维护客户给予的信任。
@@ -76,7 +76,7 @@ ms.locfileid: "92150850"
 
 ## <a name="reference-docs"></a>参考文档
 
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [管控概述](concepts-gating-overview.md)
 
