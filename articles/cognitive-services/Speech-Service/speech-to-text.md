@@ -1,7 +1,7 @@
 ---
-title: 语音到文本概述-语音服务
+title: 语音转文本概述 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音到文本软件允许实时将音频流传输到文本中。 应用程序、工具或设备可以使用、显示和处理此文本输入。 本文概述了语音到文本服务的优势和功能。
+description: 使用语音转文本软件，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 本文概述了语音转文本服务的优势和功能。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359930"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015216"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
-在本概述中，你将了解语音到文本服务的优势和功能。
-语音到文本（也称为语音识别）使实时传输音频流进入文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
+本概述介绍语音转文本服务的优势和功能。
+使用语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91359930"
 
 ## <a name="get-started"></a>入门
 
-请参阅 [快速入门](get-started-speech-to-text.md) ，了解语音到文本的入门教程。 此服务可通过 [语音 SDK](speech-sdk.md)、 [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)和 [语音 CLI](spx-overview.md)获得。
+请参阅[快速入门](get-started-speech-to-text.md)以开始使用语音转文本。 该服务通过[语音 SDK](speech-sdk.md)、[REST API](rest-speech-to-text.md#pronunciation-assessment-parameters) 和[语音 CLI](spx-overview.md) 提供。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -48,7 +48,7 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 ## <a name="customization"></a>自定义
 
-除了标准语音服务模型外，还可以创建自定义模型。 自定义有助于克服语音识别障碍，如说话风格、词汇和背景噪音，详见[自定义语音识别](how-to-custom-speech.md)。 自定义选项因语言/区域设置而异，请参阅[支持的语言](supported-languages.md)以验证相关支持。
+除了标准语音服务模型外，还可以创建自定义模型。 自定义有助于克服语音识别障碍，如说话风格、词汇和背景噪音，详见[自定义语音识别](how-to-custom-speech.md)。 自定义选项因语言/区域设置而异，请参阅[支持的语言](./language-support.md)以验证相关支持。
 
 ## <a name="batch-transcription"></a>批量听录
 

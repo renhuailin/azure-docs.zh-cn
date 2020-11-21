@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961220"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012963"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "94961220"
 >
 > * [控制对 Azure Kubernetes 群集资源的访问](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 访问 blob 数据](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [使用 Azure RBAC 访问 blob 数据](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > 应用某些角色可能会限制 Azure 机器学习 studio 中其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，则创建计算实例的选项将无法在 studio 中使用。 此行为是预期行为，并阻止用户尝试尝试返回 "拒绝访问" 错误的操作。

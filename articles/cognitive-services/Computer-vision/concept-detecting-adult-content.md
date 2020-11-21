@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7e41eb0f6a61f7b195e251739ae93207c731cac5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5cc8a4508ceeda245fbc10a81e16f3ecf05284c7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535871"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013605"
 ---
 # <a name="detect-adult-content"></a>检测成人内容
 
 计算机视觉可以检测图像中的成人材料，使开发人员能够限制其软件中显示这些图像。 应用内容标记并使用评分（介于 0 和 1 之间），以便开发人员可以根据自己的偏好来解释结果。
 
 > [!NOTE]
-> 此功能的大部分由 [Azure 内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) 服务提供。 有关更严格的内容审核方案（例如，文本审核和人工审核工作流）的解决方案，请参阅此替代方案。
+> 此功能的大部分由 [Azure 内容审查器](../content-moderator/overview.md) 服务提供。 有关更严格的内容审核方案（例如，文本审核和人工审核工作流）的解决方案，请参阅此替代方案。
 
 ## <a name="content-flag-definitions"></a>内容标记定义
 
@@ -37,5 +37,5 @@ ms.locfileid: "94535871"
 
 你可以通过 " [分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API" 检测成人内容。 将的值添加 `Adult` 到 **visualFeatures** 查询参数时，API 会 &mdash; `isAdultContent` `isRacyContent` `isGoryContent` &mdash; 在其 JSON 响应中返回三个布尔属性：和。 此方法还返回相应的属性 &mdash; `adultScore` ，以及 `racyScore` `goreScore` &mdash; 表示每个相应类别的零和一个的置信度得分。
 
-- [快速入门：在 .NET SDK ( 分析映像) ](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [快速入门：在 .NET SDK ( 分析映像) ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 - [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)

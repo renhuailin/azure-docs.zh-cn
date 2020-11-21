@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a4848f5e8b542d80b382abe39f4882a26e0f534c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874247"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015674"
 ---
 # <a name="troubleshooting-certificate-errors"></a>证书错误疑难解答
 
@@ -58,7 +58,6 @@ ms.locfileid: "94874247"
 | CertificateImportFailure | {0}节点上未导入具有指纹的证书 {1} 。 如果问题持续出现，请联系 Microsoft 支持。 |
 | CertificateApplyFailure | {0}节点上未应用具有指纹的证书 {1} 。 如果问题持续出现，请联系 Microsoft 支持。|
 | NodeNotReachable | 无法在上验证证书 {0} 。 检查系统硬件和软件运行状况。|
-| 获取错误代码 | 此证书的私钥不可访问。 请确保使用的是受支持的证书。 仅支持 Microsoft RSA/Schannel 加密提供程序。 |
 
 
 ## <a name="next-steps"></a>后续步骤

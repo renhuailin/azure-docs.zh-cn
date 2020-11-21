@@ -1,30 +1,30 @@
 ---
-title: Azure Monitor 日志记录中的标准列 |Microsoft Docs
-description: 描述 Azure Monitor 日志中的多种数据类型共有的列。
+title: Azure Monitor 日志记录中的标准列 | Microsoft Docs
+description: 介绍 Azure Monitor 日志中多种数据类型共有的列。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104234"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014214"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
-Azure Monitor 日志中的数据以 [一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序中](./data-platform-logs.md)，每个记录都具有一组唯一的特定数据类型。 许多数据类型都具有跨多种类型通用的标准列。 本文介绍这些列，并提供有关如何在查询中使用它们的示例。
+Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](./data-platform-logs.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的列。 许多数据类型都具有在多种类型中通用的标准列。 本文介绍这些列，并提供如何在查询中使用它们的示例。
 
-中基于工作区的应用程序 Application Insights 将其数据存储在 Log Analytics 工作区中，并使用与工作区中其他任何表相同的标准列。 经典应用程序单独存储其数据，并按本文中所述具有不同的标准列。
+Application Insights 中基于工作区的应用程序将其数据存储在 Log Analytics 工作区中，并使用与该工作区中其他表相同的标准列。 经典应用程序单独存储其数据，并具有本文所述的不同标准列。
 
 > [!NOTE]
-> 某些标准列将不会在 Log Analytics 中的架构视图或 intellisense 中显示，并且它们不会显示在查询结果中，除非在输出中显式指定列。
+> 某些标准列不会显示在 Log Analytics 的架构视图或 intellisense 中，也不会显示在查询结果中，除非在输出中显式指定该列。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
-**TimeGenerated** (Log Analytics 工作区) 和**时间戳** (Application Insights 应用程序) 列包含数据源创建记录的日期和时间。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+TimeGenerated（Log Analytics 工作区）和 timestamp（Application Insights 应用程序）列包含数据源创建记录的日期和时间 。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
-" **TimeGenerated** " 和 "**时间戳**" 提供用于按时间筛选或汇总的通用列。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
+TimeGenerated 和 timestamp 提供了一个用于按时间进行筛选或汇总的常用列 。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
 
 ### <a name="examples"></a>示例
 
@@ -48,7 +48,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-** \_ TimeReceived**列包含 Azure 云中 Azure Monitor 摄取点接收记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**\_TimeReceived** 列包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
 对于某个代理提供的事件记录，以下查询提供了按小时计的的平均延迟。 这包括从代理到云的时间，以及记录可供日志查询使用的总时间。
 
@@ -62,7 +62,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Type 和 itemType
-**类型** (Log Analytics 工作区) 和**itemType** (Application Insights 应用程序) 列保存从中检索记录的表的名称，也可以将其视为记录类型。 此列可用于合并来自多个表（例如使用运算符的记录）的记录， `search` 以区分不同类型的记录。 在某些地方， **$table** 可以用来替代 **Type**。
+Type（Log Analytics 工作区）和 itemType（Application Insights 应用程序）列保存从中检索记录的表的名称，也可以将其视为记录类型 。 此列在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
@@ -74,13 +74,13 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-** \_ ItemId**列保存记录的唯一标识符。
+**\_ItemId** 列保留记录的唯一标识符。
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-** \_ ResourceId**列包含与该记录关联的资源的唯一标识符。 这为您提供了一种标准列，用于将查询的作用域限定为特定资源的记录，或在多个表之间联接相关数据。
+**\_ResourceId** 列包含与记录关联的资源的唯一标识符。 这为你提供了一个标准列，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
-对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此列当前仅限于 Azure 资源，但将扩展到 Azure 之外的资源，例如本地计算机。
+对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该列目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
 
 > [!NOTE]
 > 某些数据类型已具有包含 Azure 资源 ID 或至少包含其一部分（例如订阅 ID）的字段。 虽然为了实现向后兼容而保留了这些字段，但是建议使用 _ResourceId 来执行交叉关联，因为它将更为一致。
@@ -124,7 +124,7 @@ union withsource = tt *
 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。
 
 ## <a name="_isbillable"></a>\_IsBillable
-** \_ IsBillable**列指定引入数据是否可计费。 **\_IsBillable** 等于 `false` 的数据是免费收集的，系统不会向你的 Azure 帐户收费。
+**\_IsBillable** 列指定是否对引入的数据进行计费。 **\_IsBillable** 等于 `false` 的数据是免费收集的，系统不会向你的 Azure 帐户收费。
 
 ### <a name="examples"></a>示例
 若要获取发送计费数据类型的计算机列表，请使用以下查询：
@@ -151,11 +151,11 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-** \_ BilledSize**列指定在** \_ IsBillable**为 true 时，将对 Azure 帐户计费的数据的大小（以字节为单位）。
+**\_BilledSize** 列指定 **\_IsBillable** 为 true 时将向 Azure 帐户计费的数据字节大小。
 
 
 ### <a name="examples"></a>示例
-若要查看每台计算机的可计费事件引入大小，请使用以 `_BilledSize` 字节为单位的大小的列：
+若要查看每台计算机引入的可计费事件的大小，请使用 `_BilledSize` 列（以字节为单位提供大小）：
 
 ```Kusto
 union withsource = tt * 
@@ -211,4 +211,4 @@ union withsource = tt *
 
 - 详细了解如何[存储 Azure Monitor 日志数据](../log-query/log-query-overview.md)。
 - 获取有关[编写日志查询](../log-query/get-started-queries.md)的课程。
-- 获取有关[在日志查询中联接表](../log-query/joins.md)的课程。
+- 获取有关[在日志查询中联接表](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)的课程。

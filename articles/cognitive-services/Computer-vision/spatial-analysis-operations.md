@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628207"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014537"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
@@ -39,7 +39,7 @@ ms.locfileid: "91628207"
 | cognitiveservices account. spatialanalysis-personcrossingpolygon | 跟踪用户在相机的视图字段中跨越指定线条的时间。 <br> 当人员跨越区域并提供方向信息时发出 _personLineEvent_ 事件。 |
 | cognitiveservices account. spatialanalysis-persondistance | 跟踪用户违反距离规则的时间。 <br> 定期发出 _personDistanceEvent_ ，其中包含每个距离冲突的位置。 |
 
-还可以将 [实时视频分析](https://aka.ms/lva-spatial-analysis) 作为视频 AI 模块运行空间分析。 
+还可以将 [实时视频分析](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) 作为视频 AI 模块运行空间分析。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -93,7 +93,7 @@ ms.locfileid: "91628207"
 | `zones` | list| 区域列表。 |
 | `name` | 字符串| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域，并且多边形点基于标准化坐标 (0-1) ，其中左上角 (0.0，0.0) ，右下角 (1.0，1.0) 。   
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcount** `count` 。|
 | `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
 | `interval` | 字符串| 在激发事件之前聚合人员计数的时间（以秒为单位）。 操作将继续以恒定速率分析场景，并返回超过该间隔的最常见计数。 聚合间隔适用于 `event` 和 `interval` 。|
@@ -128,7 +128,7 @@ ms.locfileid: "91628207"
 | `line` | list| 线条的定义。 这是一个方向线，可让你了解 "entry" 与 "exit"。|
 | `start` | 值对| x，y 坐标用于线条的起点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
 | `end` | 值对| x，y 坐标用于线条的终点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcrossingline** `linecrossing` 。|
 |`trigger`|字符串|用于发送事件的触发器的类型。<br>支持的值： "事件"：当有人跨越行时激发。|
 
@@ -157,7 +157,7 @@ ms.locfileid: "91628207"
 | `zones` | list| 区域列表。 |
 | `name` | 字符串| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcrossingpolygon 此项** 应为 `enter` 或 `exit` 。|
 | `trigger`|字符串|用于发送事件的触发器的类型<br>支持的值： "事件"：某人进入或退出区域时触发。|
 
@@ -189,13 +189,13 @@ ms.locfileid: "91628207"
 | `zones` | list| 区域列表。 |
 | `name` | 字符串| 此区域的友好名称。|
 | `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示统计人员的区域，以及用户之间的距离。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
+| `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-persondistance** `people_distance` 。|
 | `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
 | `interval` | 字符串 | 触发事件之前聚合冲突的时间（以秒为单位）。 聚合间隔适用于 `event` 和 `interval` 。|
 | `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 Output_frequency 适用于 `event` 和 `interval` 。|
-| `minimum_distance_threshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximum_distance_threshold` | FLOAT| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
+| `minimum_distance_threshold` | float| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
+| `maximum_distance_threshold` | float| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
 
 这是配置 **cognitiveservices account-persondistance** 区域的 DETECTOR_NODE_CONFIG 参数的 JSON 输入示例。
 
@@ -308,7 +308,7 @@ ms.locfileid: "91628207"
 |---------|---------|---------|
 | `id` | 字符串| 事件 ID|
 | `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
 | `trackinId` | 字符串| 检测到的人员的唯一标识符|
 | `status` | 字符串| "Enter" 或 "Exit"|
@@ -323,7 +323,7 @@ ms.locfileid: "91628207"
 | `region` | collection| 值的集合|
 | `type` | 字符串| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | FLOAT| 算法置信度|
+| `confidence` | float| 算法置信度|
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
@@ -334,9 +334,9 @@ ms.locfileid: "91628207"
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
 | `status` | 字符串 | 指示相机校准到地面的情况是否为 "完成"|
-| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
+| `cameraHeight` | float | 相机上地面的高度。 这是从自动校准推断出来的。 |
+| `focalLength` | float | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
+| `tiltUpAngle` | float | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
@@ -403,7 +403,7 @@ ms.locfileid: "91628207"
 |---------|---------|---------|
 | `id` | 字符串| 事件 ID|
 | `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
 | `trackinId` | 字符串| 检测到的人员的唯一标识符|
 | `status` | 字符串| 交叉行方向，"CrossLeft" 或 "CrossRight"|
@@ -416,7 +416,7 @@ ms.locfileid: "91628207"
 | `region` | collection| 值的集合|
 | `type` | 字符串| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | FLOAT| 算法置信度|
+| `confidence` | float| 算法置信度|
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
@@ -488,7 +488,7 @@ ms.locfileid: "91628207"
 |---------|---------|---------|
 | `id` | 字符串| 事件 ID|
 | `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
 | `trackinId` | 字符串| 检测到的人员的唯一标识符|
 | `status` | 字符串| 多边形交叉的方向，"Enter" 或 "Exit"|
@@ -501,7 +501,7 @@ ms.locfileid: "91628207"
 | `region` | collection| 值的集合|
 | `type` | 字符串| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | FLOAT| 算法置信度|
+| `confidence` | float| 算法置信度|
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-persondistance AI Insights
 
@@ -599,12 +599,12 @@ ms.locfileid: "91628207"
 |---------|---------|---------|
 | `id` | 字符串| 事件 ID|
 | `type` | 字符串| 事件类型|
-| `detectionsId` | array| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
 | `properties` | collection| 值的集合|
 | `personCount` | int| 发出事件时检测到的人员数|
-| `averageDistance` | FLOAT| 所有检测到的人在英尺内的平均距离|
-| `minimumDistanceThreshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximumDistanceThreshold` | FLOAT| 当人们大于距离相隔时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
+| `averageDistance` | float| 所有检测到的人在英尺内的平均距离|
+| `minimumDistanceThreshold` | float| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
+| `maximumDistanceThreshold` | float| 当人们大于距离相隔时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
 | `eventName` | 字符串| 事件名称为 `TooClose` `minimumDistanceThreshold` ，违反，违反 `TooFar` `maximumDistanceThreshold` ，或 `unknown` 在未完成自动校准时|
 | `distanceViolationPersonCount` | int| 在违反或的情况中检测到的用户数 `minimumDistanceThreshold``maximumDistanceThreshold`|
 | `zone` | 字符串 | 多边形的 "名称" 字段，表示为用户之间的 distancing 监视的区域|
@@ -617,7 +617,7 @@ ms.locfileid: "91628207"
 | `region` | collection| 值的集合|
 | `type` | 字符串| 区域类型|
 | `points` | collection| 当区域类型为矩形时，左上方和右下点 |
-| `confidence` | FLOAT| 算法置信度|
+| `confidence` | float| 算法置信度|
 | `centerGroundPoint` | 2浮点值| `x`， `y` 其中的值具有人员在地面上的推断位置的坐标。 `x` 与摄像机的距离是否垂直于在英尺内投影到的相机图像平面。 `y` 与相机的距离是否平行于在英尺内投影到地面上的图像平面。|
 
 | SourceInfo 字段名称 | 类型| 说明|
@@ -629,17 +629,17 @@ ms.locfileid: "91628207"
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
 | `status` | 字符串 | 指示相机校准到地面的情况是否为 "完成"|
-| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
+| `cameraHeight` | float | 相机上地面的高度。 这是从自动校准推断出来的。 |
+| `focalLength` | float | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
+| `tiltUpAngle` | float | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
 
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
 
 你可能想要将空间分析检测或事件集成到你的应用程序中。 下面是几种需要考虑的方法： 
 
-* 使用所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅 [从内置终结点读取设备到云的消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) 。 
-* 在 Azure IoT 中心设置 **消息路由** ，将事件发送到其他终结点，或者将事件保存到数据存储中。 有关详细信息，请参阅 [IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) 。 
+* 使用所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅 [从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。 
+* 在 Azure IoT 中心设置 **消息路由** ，将事件发送到其他终结点，或者将事件保存到数据存储中。 有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md) 。 
 * 设置 Azure 流分析作业，以实时处理事件，并创建可视化效果。 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>大规模部署空间分析操作 (多个相机) 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496104"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014571"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -51,7 +51,7 @@ Telegraf 是适用于空间分析的开源映像，可在 Microsoft 容器注册
 输出：
 1. Azure Monitor
 
-提供的空间分析 telegraf 模块会将空间分析容器发出的所有遥测数据发布到 Azure Monitor。 有关将 Azure Monitor 添加到订阅的信息，请参阅 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 。
+提供的空间分析 telegraf 模块会将空间分析容器发出的所有遥测数据发布到 Azure Monitor。 有关将 Azure Monitor 添加到订阅的信息，请参阅 [Azure Monitor](../../azure-monitor/overview.md) 。
 
 设置 Azure Monitor 后，你将需要创建用于使模块能够发送遥测数据的凭据。 你可以使用 Azure 门户来创建新的服务主体，或使用以下 Azure CLI 命令创建一个。
 
@@ -224,7 +224,8 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 >[!NOTE]
 > `getRTCVLogs`使用空负载调用方法将返回设备上部署的所有容器的列表。 方法名称区分大小写。 如果提供了不正确的方法名称，则会收到501错误。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor 遥测报表" 页](./media/spatial-analysis/direct-log-collection.png)
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="调用 getRTCVLogs 方法 ":::
+![getRTCVLogs "直接方法" 页](./media/spatial-analysis/direct-log-collection.png)
 
  
 ### <a name="logging-syntax"></a>日志记录语法
@@ -238,13 +239,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 | ContainerId | 用于提取日志的目标容器。| `null`如果没有容器 ID，则为。 API 使用 Id 返回所有可用的容器信息。|
 | DoPost | 执行上传操作。 如果此设置为 `false` ，则它将执行所请求的操作并返回上传大小，而不执行上传。 当设置为时 `true` ，它将启动所选日志的异步上传 | `false`，请不要上传。|
 | 限制 | 指示每个批处理要上载多少行日志 | `1000`，请使用此参数调整 post 速度。 |
-| 筛选器 | 筛选要上传的日志 | `null`，可以根据空间分析日志结构将筛选器指定为键值对： `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` 。 例如：`{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
+| 筛选器 | 筛选要上传的日志 | `null`，可以根据空间分析日志结构将筛选器指定为键值对： `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` 。 例如： `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
 
 下表列出了查询响应中的属性。
 
-| 关键字 | 描述|
+| 关键字 | 说明|
 |--|--|
-|DoPost| *True*或*false*。 指示日志是否已上传。 选择不上载日志时，api 会以**同步**方式返回信息 *。 当你选择上传日志时，如果请求有效，则 api 返回200，并以 _*_异步方式_*_ 开始上载日志。|
+|DoPost| *True* 或 *false*。 指示日志是否已上传。 选择不上载日志时，api 会以 **同步** 方式返回信息 *。 当你选择上传日志时，如果请求有效，则 api 返回200，并以 _*_异步方式_*_ 开始上载日志。|
 |TimeFilter| 应用于日志的时间筛选器。|
 |ValueFilters| 应用于日志的关键字筛选器。 |
 |时间戳| 方法执行开始时间。 |
@@ -315,7 +316,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>访问 Kubernetes API 终结点。 
 
-1. 在设备的本地 UI 中，请切换到 "_*设备*" 页。 
+1. 在设备的本地 UI 中，请切换到 "_ *设备*" 页。 
 2. 在 " **设备终结点**" 下，复制 Kubernetes API 服务终结点。 此终结点是采用以下格式的字符串：`https://compute..[device-IP-address]`。
 3. 保存该终结点字符串。 稍后在配置 `kubectl` 以访问 Kubernetes 群集时，将使用此配置。
 
@@ -325,12 +326,12 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 > [!TIP]
 > * 在开始之前，请确保你的 Windows 客户端运行的是 Windows PowerShell 5.0 或更高版本。
-> * [Linux 上也提供](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux)了 PowerShell。
+> * [Linux 上也提供](/powershell/scripting/install/installing-powershell-core-on-linux)了 PowerShell。
 
 1. 以管理员身份运行 Windows PowerShell 会话。 
     1. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符处，键入 `winrm quickconfig`。
 
-2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"`。
+2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"` 。
 
 3. 使用以下命令将设备的 IP 地址添加到客户端的受信任主机列表。 
 
@@ -356,7 +357,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
     New-HcsKubernetesNamespace -Namespace
     ```
 
-2. 创建一个用户并获取一个配置文件。 此命令将输出 Kubernetes 群集的配置信息。 复制此信息并将其保存到名为 *config*的文件中。不要将该文件保存为文件扩展名。
+2. 创建一个用户并获取一个配置文件。 此命令将输出 Kubernetes 群集的配置信息。 复制此信息并将其保存到名为 *config* 的文件中。不要将该文件保存为文件扩展名。
     
     ```powershell
     New-HcsKubernetesUser -UserName
@@ -394,9 +395,9 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|Command  |描述  |
+|命令  |说明  |
 |---------|---------|
-|`Get-HcsKubernetesUserConfig -AseUser`     | 生成 Kubernetes 配置文件。 使用命令时，将信息复制到名为 *config*的文件中。不要使用文件扩展名保存该文件。        |
+|`Get-HcsKubernetesUserConfig -AseUser`     | 生成 Kubernetes 配置文件。 使用命令时，将信息复制到名为 *config* 的文件中。不要使用文件扩展名保存该文件。        |
 | `Get-HcsApplianceInfo` | 返回有关设备的信息。 |
 | `Enable-HcsSupportAccess` | 生成访问凭据以启动支持会话。 |
 

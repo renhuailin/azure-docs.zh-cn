@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/17/2020
-ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/20/2020
+ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738520"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016321"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 
@@ -85,6 +85,13 @@ ms.locfileid: "94738520"
         :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="此图显示了使用 CED 下拉列表来请求共同销售审核。":::
 
     CED 将与你联系以完成此过程。
+
+## <a name="see-your-offers-co-sell-status"></a>查看产品/服务的共同销售状态
+
+对于 [合作伙伴中心提供的共同销售选项](./partner-center-portal/commercial-marketplace-co-sell.md)的产品/服务，你可以在产品/服务概述页上查看产品/服务的当前共同销售状态：
+
+ :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="此图显示了产品/服务的当前共同销售状态。":::
+
 
 ## <a name="next-steps"></a>后续步骤
 

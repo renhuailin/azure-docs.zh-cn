@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357107"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014588"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
 
@@ -34,7 +34,7 @@ ms.locfileid: "94357107"
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack 边缘设备](#tab/azure-stack-edge)
 
-Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的边缘计算设备，具有网络数据传输功能。 有关详细准备和设置说明，请参阅 [Azure Stack Edge 文档](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)。
+Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的边缘计算设备，具有网络数据传输功能。 有关详细准备和设置说明，请参阅 [Azure Stack Edge 文档](../../databox-online/azure-stack-edge-deploy-prep.md)。
 
 #### <a name="desktop-machine"></a>[台式计算机](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 * [Nvidia 图形驱动程序](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) 和 [nvidia CUDA 工具包](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (多进程服务) 的配置。
 * [DOCKER CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) 和 [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 运行时。
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 运行时。
 
 ---
 
@@ -76,7 +76,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交该表单后，Azure 认知服务团队将会对其进行评审，并通过一种决定向你发送电子邮件。
 
 > [!IMPORTANT]
-> * 在窗体上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
+> * 在此表单上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
 > * 用于运行容器的计算机视觉资源必须已使用已批准的 Azure 订阅 ID 创建。
 
 获得批准后，你将能够在从 Microsoft 容器注册表 (MCR) 下载容器后运行该容器，本文稍后将对此进行介绍。
@@ -93,11 +93,11 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
  
 空间分析使用 Azure Stack 边缘的计算功能来运行 AI 解决方案。 若要启用计算功能，请确保： 
 
-* 已 [连接并激活](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) Azure Stack Edge 设备。 
+* 已 [连接并激活](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md) Azure Stack Edge 设备。 
 * 你有运行 PowerShell 5.0 或更高版本的 Windows 客户端系统来访问设备。  
 * 若要部署 Kubernetes 群集，需要通过 [Azure 门户](https://portal.azure.com/)上的 **本地 UI** 配置 Azure Stack Edge 设备： 
   1. 启用 Azure Stack 边缘设备上的计算功能。 若要启用计算，请在设备的 web 界面中转到 **计算** 页。 
-  2. 选择要为计算启用的网络接口，然后单击 " **启用** "。 这会在设备上的该网络接口上创建一个虚拟交换机。
+  2. 选择要为计算启用的网络接口，然后单击 " **启用**"。 这会在设备上的该网络接口上创建一个虚拟交换机。
   3. 将 Kubernetes 测试节点 IP 地址和 Kubernetes 外部服务 IP 地址留空。
   4. 单击“应用”。 此操作可能需要大约两分钟的时间。 
 
@@ -105,19 +105,19 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>设置边缘计算角色并创建 IoT 中心资源
 
-在 [Azure 门户](https://portal.azure.com/)中，导航到 Azure Stack Edge 资源。 在 " **概述** " 页或导航列表中，单击 "边缘计算 **入门** " 按钮。 在 "  **配置边缘计算**   " 磁贴中，单击 " **配置** "。 
+在 [Azure 门户](https://portal.azure.com/)中，导航到 Azure Stack Edge 资源。 在 " **概述** " 页或导航列表中，单击 "边缘计算 **入门** " 按钮。 在 " **配置边缘计算**   " 磁贴中，单击 "**配置**"。 
 
 ![链接](media/spatial-analysis/configure-edge-compute-tile.png)
 
-在 " **配置边缘计算** "   页上，选择现有的 IoT 中心，或选择创建一个新的 IoT 中心。 默认情况下，将使用标准 (S1) 定价层创建 IoT 中心资源。 若要使用免费层 IoT 中心资源，请创建一个，然后选择它。 IoT 中心资源使用的订阅和资源组与 Azure Stack Edge 资源使用的相同 
+在 " **配置边缘计算**"   页上，选择现有的 IoT 中心，或选择创建一个新的 IoT 中心。 默认情况下，将使用标准 (S1) 定价层创建 IoT 中心资源。 若要使用免费层 IoT 中心资源，请创建一个，然后选择它。 IoT 中心资源使用的订阅和资源组与 Azure Stack Edge 资源使用的相同 
 
-单击“创建”。 IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算** " 磁贴上的 " **查看配置** "   。
+单击“创建”。  IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算**" 磁贴上的 " **查看配置**"   。
 
 如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 Azure IoT Edge 运行时将已在 IoT Edge 设备上运行。            
 
 > [!NOTE]
 > * 目前 IoT Edge 设备仅支持 Linux 平台。 有关对 Azure Stack Edge 设备进行故障排除的帮助，请参阅 [日志记录和故障排除](spatial-analysis-logging.md) 一文。
-> * 若要详细了解如何配置 IoT Edge 设备以便通过代理服务器进行通信，请参阅 [将 IoT Edge 设备配置为通过代理服务器进行通信](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
+> * 若要详细了解如何配置 IoT Edge 设备以便通过代理服务器进行通信，请参阅 [将 IoT Edge 设备配置为通过代理服务器进行通信](../../iot-edge/how-to-configure-proxy-support.md#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>在 Azure Stack 边缘上启用 MPS 
 
@@ -129,7 +129,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
     winrm quickconfig
     ```
     
-    如果你看到关于防火墙例外的警告，请检查你的网络连接类型，然后查看 [Windows 远程管理](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) 文档。
+    如果你看到关于防火墙例外的警告，请检查你的网络连接类型，然后查看 [Windows 远程管理](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) 文档。
 
 3. 将变量分配给设备 IP 地址。 
     
@@ -178,7 +178,7 @@ sudo apt-get -y install cuda
 nvidia-smi
 ```
 
-应会看到以下输出：
+你会看到以下输出。
 
 ![NVIDIA 驱动程序输出](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>在主计算机上配置 Azure IoT Edge
 
-若要在主计算机上部署空间分析容器，请使用标准 (S1) 或免费 (F0) 定价层创建 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) 服务的实例。 如果你的主计算机是 Azure Stack 边缘，请使用 Azure Stack Edge 资源使用的同一订阅和资源组。
+若要在主计算机上部署空间分析容器，请使用标准 (S1) 或免费 (F0) 定价层创建 [Azure IoT 中心](../../iot-hub/iot-hub-create-through-portal.md) 服务的实例。 如果你的主计算机是 Azure Stack 边缘，请使用 Azure Stack Edge 资源使用的同一订阅和资源组。
 
 使用 Azure CLI 创建 Azure IoT 中心的实例。 将参数替换为适当的位置。 或者，你可以在 [Azure 门户](https://portal.azure.com/)上创建 Azure IoT 中心。
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-如果主机不是 Azure Stack Edge 设备，则需要安装 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 版本1.0.9。 请按照以下步骤下载正确的版本：
+如果主机不是 Azure Stack Edge 设备，则需要安装 [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 版本1.0.9。 请按照以下步骤下载正确的版本：
 
 Ubuntu Server 18.04：
 ```bash
@@ -292,7 +292,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-接下来，使用 [连接字符串](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)将主机计算机注册为 IoT 中心实例中的 IoT Edge 设备。
+接下来，使用 [连接字符串](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)将主机计算机注册为 IoT 中心实例中的 IoT Edge 设备。
 
 需要将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制连接字符串。 或者，你可以在 Azure CLI 中运行以下命令。
 
@@ -306,7 +306,7 @@ az iot hub device-identity show-connection-string --device-id my-edge-device --h
 sudo systemctl restart iotedge
 ```
 
-将空间分析容器作为 IoT 模块部署在主计算机上，无论是从 [Azure 门户](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) 还是 [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)。 如果使用的是门户，请将映像 URI 设置为 Azure 容器注册表的位置。 
+将空间分析容器作为 IoT 模块部署在主计算机上，无论是从 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md) 还是 [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)。 如果使用的是门户，请将映像 URI 设置为 Azure 容器注册表的位置。 
 
 使用以下步骤使用 Azure CLI 部署容器。
 
@@ -318,7 +318,7 @@ sudo systemctl restart iotedge
 
 下表显示 IoT Edge 模块使用的各种环境变量。 你还可以使用中的属性在上面链接的部署清单中设置它们 `env` `spatialanalysis` ：
 
-| 设置名称 | “值” | 说明|
+| 设置名称 | 值 | 说明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不修改|
@@ -329,13 +329,13 @@ sudo systemctl restart iotedge
 | API_KEY | 你的 API 密钥| 从计算机视觉资源 Azure 门户收集此值。 可以在资源的 " **密钥和终结点** " 部分中找到它。 |
 | BILLING_ENDPOINT | 终结点 URI| 从计算机视觉资源 Azure 门户收集此值。 可以在资源的 " **密钥和终结点** " 部分中找到它。|
 | EULA | accept | 要使容器运行，需要将此值设置为 " *接受* " |
-| DISPLAY |  :1 | 此值需要与主计算机上的的输出相同 `echo $DISPLAY` 。 Azure Stack 边缘设备没有显示。 此设置不适用|
+| DISPLAY | ：1 | 此值需要与主计算机上的的输出相同 `echo $DISPLAY` 。 Azure Stack 边缘设备没有显示。 此设置不适用|
 
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
 
-使用你自己的设置和操作选择更新 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或 [台式计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的部署清单后，可以使用以下 [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) 命令在主计算机上部署容器，如 IoT Edge 模块。
+使用你自己的设置和操作选择更新 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或 [台式计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的部署清单后，可以使用以下 [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) 命令在主计算机上部署容器，如 IoT Edge 模块。
 
 ```azurecli
 az login
@@ -354,7 +354,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="validate-that-the-deployment-is-successful"></a>验证部署是否成功
 
-有几种方法可用于验证容器是否正在运行。 在 Azure 门户上的 Azure IoT 中心实例中的 "空间分析" 模块 **IoT Edge 模块设置** 中找到 " *运行时状态* "。 验证 *运行时状态* 所 **需的值** 和 **报告的值** 是否 *正在运行* 。
+有几种方法可用于验证容器是否正在运行。 在 Azure 门户上的 Azure IoT 中心实例中的 "空间分析" 模块 **IoT Edge 模块设置** 中找到 "*运行时状态*"。 验证 *运行时状态* 所 **需的值** 和 **报告的值** 是否 *正在运行*。
 
 ![部署验证示例](./media/spatial-analysis/deployment-verification.png)
 
@@ -366,14 +366,14 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="redeploy-or-delete-the-deployment"></a>重新部署或删除部署
 
-如果需要更新部署，需要确保已成功部署以前的部署，或者需要删除未完成 IoT Edge 设备部署。 否则，这些部署将继续，使系统处于错误的状态。 您可以使用 Azure 门户或 [Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)。
+如果需要更新部署，需要确保已成功部署以前的部署，或者需要删除未完成 IoT Edge 设备部署。 否则，这些部署将继续，使系统处于错误的状态。 您可以使用 Azure 门户或 [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)。
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
 
 如果要开始使用容器生成的输出，请参阅以下文章：
 
-*   使用所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅 [从内置终结点读取设备到云的消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) 。 
-*   在 Azure IoT 中心设置消息路由，将事件发送到其他终结点，或者将事件保存到 Azure Blob 存储等。有关详细信息，请参阅 [IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) 。 
+*   使用所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅 [从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。 
+*   在 Azure IoT 中心设置消息路由，将事件发送到其他终结点，或者将事件保存到 Azure Blob 存储等。有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md) 。 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>使用录制的视频文件运行空间分析
 
@@ -381,7 +381,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
     1. 更改 **所需的安全传输** **Disabled**
     2. 更改 **允许 Blob 公共访问****已启用**
 
-导航到 " **容器** " 部分，并创建新容器或使用现有容器。 然后将视频文件上传到该容器。 展开已上传文件的文件设置，然后选择 " **生成 SAS** "。 请确保将 **到期日期** 设置为足够长的时间以涵盖测试期间。 ) 不支持将 **允许的协议** 设置为 *HTTP* ( *HTTPS* 。
+导航到 " **容器** " 部分，并创建新容器或使用现有容器。 然后将视频文件上传到该容器。 展开已上传文件的文件设置，然后选择 " **生成 SAS**"。 请确保将 **到期日期** 设置为足够长的时间以涵盖测试期间。 ) 不支持将 **允许的协议** 设置为 *HTTP* (*HTTPS* 。
 
 单击 " **生成 SAS 令牌和 URL** " 并复制 "BLOB SAS URL"。 将开头的替换为 `https` `http` ，并在支持视频播放的浏览器中测试 URL。
 

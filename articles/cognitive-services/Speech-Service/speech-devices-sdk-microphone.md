@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232519"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015335"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -97,7 +97,7 @@ ms.locfileid: "86232519"
 | 采样时钟      | 设备音频不可出现低偏差的抖动和断续 |
 | 录制功能   | 设备必须能够同时录制单个原声道流 |
 | USB                 | 所有 USB 音频输入设备必须根据 [USB 音频设备修订版 3 规范](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)设置描述符 |
-| 麦克风几何结构 | 驱动程序必须正确实现[麦克风阵列几何描述符](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| 麦克风几何结构 | 驱动程序必须正确实现[麦克风阵列几何描述符](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
 | 可发现性     | 设备中不能包含任何不可发现或不可控的硬件、固件或第三方基于软件的非线性音频处理算法 |
 | 捕获格式      | 捕获格式必须使用最小 16 kHz 采样率和建议的 24 位深度 |
 

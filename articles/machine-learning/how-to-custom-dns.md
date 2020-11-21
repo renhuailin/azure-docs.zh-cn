@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/13/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616087"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013001"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
-将 Azure 机器学习与虚拟网络一起使用时， [可以通过多种方式来处理 DNS 名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 默认情况下，Azure 会自动处理工作区和专用终结点的名称解析。 如果你改为 _使用你自己的自定义 DNS 服务器_ _，则必须手动为工作区创建 DNS 条目。
+将 Azure 机器学习工作区与专用终结点一起使用时， [可以通过多种方式来处理 DNS 名称解析](../private-link/private-endpoint-dns.md)。 默认情况下，Azure 会自动处理工作区和专用终结点的名称解析。 如果你改为 _使用你自己的自定义 DNS 服务器_ _，则必须手动为工作区创建 DNS 条目。
 
 > [!IMPORTANT]
 > 本文仅介绍如何查找 (FQDN) 和 IP 地址的完全限定域名，而不提供有关为这些项配置 DNS 记录的信息。 有关如何添加记录的信息，请参阅 DNS 软件的文档。
@@ -33,6 +33,8 @@ ms.locfileid: "94616087"
 
 - 熟悉 [在定型 & 推理期间使用网络隔离](./how-to-network-security-overview.md)。
 
+- 熟悉 [Azure 专用终结点 DNS 区域配置](../private-link/private-endpoint-dns.md)
+
 - （可选） [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="find-the-ip-addresses"></a>查找 IP 地址
@@ -43,7 +45,7 @@ ms.locfileid: "94616087"
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
 * 如果创建计算实例，还必须为添加 `<instance-name>.<region>.instances.azureml.ms` 包含工作区专用终结点专用 IP 的条目。
 
     > [!NOTE]
@@ -69,8 +71,8 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习 __工作区__ 。
-1. 从 " __设置__ " 部分中，选择 " __专用终结点连接__ "。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习 __工作区__。
+1. 从 " __设置__ " 部分中，选择 " __专用终结点连接__"。
 1. 选择显示的 " __专用终结点__ " 列中的链接。
 1. 页面底部的工作区专用终结点 (FQDN) 和 IP 地址的完全限定域名列表。
 

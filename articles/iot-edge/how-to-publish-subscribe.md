@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629642"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015657"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>发布和订阅 Azure IoT Edge
 
@@ -29,14 +29,14 @@ ms.locfileid: "94629642"
 - 具有有效订阅的 Azure 帐户
 - [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` 安装了 CLI 扩展的 Azure CLI。 有关详细信息，请参阅 [适用于 azure Azure CLI 的 Azure IoT 扩展安装步骤](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot)。
 - SKU 的 **IoT 中心** ： F1、S1、S2 或 S3。
-- 具有 **版本1.2 或更高版本的 IoT Edge 设备** 。 由于 IoT Edge MQTT broker 目前为公共预览版，因此请在 edgeHub 容器上将以下环境变量设置为 true，以启用 MQTT broker：
+- 具有 **版本1.2 或更高版本的 IoT Edge 设备**。 由于 IoT Edge MQTT broker 目前为公共预览版，因此请在 edgeHub 容器上将以下环境变量设置为 true，以启用 MQTT broker：
 
    | 名称 | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- IoT Edge 设备上安装了 **Mosquitto 客户端** 。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的常用 Mosquitto 客户端。 可以改为使用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
+- IoT Edge 设备上安装了 **Mosquitto 客户端**。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的常用 Mosquitto 客户端。 可以改为使用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -48,7 +48,7 @@ ms.locfileid: "94629642"
 
 若要连接到 IoT Edge 集线器，请遵循 [使用一般 MQTT 客户端连接到 IoT 中心一文](../iot-hub/iot-hub-mqtt-support.md) 中所述的相同步骤，或 [IoT Edge 中心的概念说明一](iot-edge-runtime.md)文中所述。 这些步骤包括：
 
-1. （可选） MQTT 客户端使用传输层安全性 (TLS 与 IoT Edge 集线器建立 *安全连接* ) 
+1. （可选） MQTT 客户端使用传输层安全性 (TLS 与 IoT Edge 集线器建立 *安全连接*) 
 2. MQTT 客户端向 IoT Edge 中心进行 *身份验证*
 3. IoT Edge 中心按其授权策略 *授权* MQTT 客户端
 
@@ -209,7 +209,7 @@ ms.locfileid: "94629642"
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>发布和订阅用户定义的主题
 
-本文将使用一个名为 **sub_client** 的客户端，该客户端订阅一个主题，另一个名为 **pub_client** 的客户端发布到主题。 我们将使用 [对称密钥身份验证](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，但也可以使用 [x.509 自签名](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) 身份验证或 [x.509 自签名身份](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication)验证实现相同的身份验证。
+本文将使用一个名为 **sub_client** 的客户端，该客户端订阅一个主题，另一个名为 **pub_client** 的客户端发布到主题。 我们将使用 [对称密钥身份验证](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，但也可以使用 [x.509 自签名身份](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) 验证或 [x.509 CA 签名](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication)的身份验证来实现相同的身份验证。
 
 ### <a name="create-publisher-and-subscriber-clients"></a>创建发布服务器和订阅服务器客户端
 

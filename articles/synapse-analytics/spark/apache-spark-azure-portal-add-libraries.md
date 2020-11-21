@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313535"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016252"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 
@@ -68,7 +68,7 @@ alabaster==0.7.10
    
 2.  从 Azure 门户启动 Azure Synapse Analytics 工作区。
 
-3.  从主导航面板中选择 " **管理** "，然后选择 " **Apache Spark 池** "。
+3.  从主导航面板中选择 " **管理** "，然后选择 " **Apache Spark 池**"。
    
 4. 选择单个 Spark 池，并使用页面的 "  **包** " 部分中的文件选择器上载环境配置文件。
 
@@ -81,7 +81,7 @@ alabaster==0.7.10
    
  2. 在 " **Synapse 资源** " 部分下，选择 " **Apache Spark 池** " 选项卡，然后从列表中选择一个 Spark 池。
    
- 3. 从 Spark 池的 " **设置** " 部分中选择 " **包** "。 
+ 3. 从 Spark 池的 "**设置**" 部分中选择 "**包**"。 
 
  4. 使用文件选择器上载环境配置文件。
 
@@ -92,9 +92,9 @@ alabaster==0.7.10
 若要验证是否安装了正确的库版本，请运行以下代码
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>更新 Python 包
 在会话之间随时可以添加或修改包。 上传新的包配置文件时，将覆盖现有的包和版本。  

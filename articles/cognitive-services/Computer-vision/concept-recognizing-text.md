@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538744"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013742"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
@@ -63,7 +63,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | notStarted：操作尚未开始。 |
+|状态 | 字符串 | notStarted：操作尚未开始。 |
 | |  | 正在运行：正在处理操作。 |
 | |  | failed：操作失败。 |
 | |  | succeeded：操作成功。 |
@@ -138,7 +138,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 ## <a name="supported-languages-for-print-text"></a>打印文本支持的语言
 [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)支持以英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语语言提取打印文本。
 
-有关 OCR 支持的语言的完整列表，请参阅 [支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) 。
+有关 OCR 支持的语言的完整列表，请参阅 [支持的语言](./language-support.md#optical-character-recognition-ocr) 。
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>阅读3.2 预览版添加简体中文和日语
 [Read 3.2 API 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)增加了对简体中文和日语的支持。 如果你的方案需要支持更多语言，请参阅 [OCR API](#ocr-api) 部分。 
@@ -150,7 +150,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 对于大多数客户而言， [读取 REST API](./QuickStarts/CSharp-hand-text.md) 是首选选项，因为它易于集成，并可实现快速工作效率。 当你集中精力满足客户需求时，Azure 和计算机视觉服务可处理规模、性能、数据安全和合规性需求。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>在本地部署 Docker 容器
-利用 [读取 Docker 容器 (预览) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) ，你可以在自己的本地环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。
+利用 [读取 Docker 容器 (预览) ](./computer-vision-how-to-install-containers.md) ，你可以在自己的本地环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。
 
 ## <a name="example-outputs"></a>示例输出
 
@@ -186,7 +186,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) 使用较旧的识别模式，仅支持图像，且以同步方式执行，并立即返回检测到的文本。 请参阅 [OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) ，然后阅读 API。
+[OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) 使用较旧的识别模式，仅支持图像，且以同步方式执行，并立即返回检测到的文本。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr) ，然后阅读 API。
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 

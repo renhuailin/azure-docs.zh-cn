@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398226"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012887"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像为模型定型
 
@@ -29,7 +29,7 @@ Azure 机器学习提供了一个默认 Docker 基本映像。 你还可以使�
 
 * Azure 机器学习计算实例 (无需下载或安装) ：
   * 完成 " [设置环境和工作区](tutorial-1st-experiment-sdk-setup.md) " 教程，以创建使用 SDK 和示例存储库预加载的专用笔记本服务器。
-  * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过转到 " **笔记本**  >  **fastai** "  >  **resnet34. ipynb** 目录查找已完成的笔记本。 
+  * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过转到 "**笔记本**  >  **fastai**"  >  **resnet34. ipynb** 目录查找已完成的笔记本。 
 * 你自己的 Jupyter Notebook 服务器：
   * 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
   * 安装 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>配置训练作业
 
-对于本教程，请使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py)上的培训脚本 *train.py* 。 在实践中，您可以采用任何自定义训练脚本，并按原样运行它，Azure 机器学习。
+对于本教程，请使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py)上的培训脚本 *train.py* 。 在实践中，您可以采用任何自定义训练脚本，并按原样运行它，Azure 机器学习。
 
 创建 `ScriptRunConfig` 资源，将作业配置为在所需的 [计算目标](how-to-set-up-training-targets.md)上运行。
 

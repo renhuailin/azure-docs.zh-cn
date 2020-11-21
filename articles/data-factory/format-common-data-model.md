@@ -1,18 +1,18 @@
 ---
 title: Common Data Model 格式
 description: 使用通用数据模型元数据系统转换数据
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636402"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015165"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92636402"
 
 下表列出了 CDM 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
@@ -52,7 +52,11 @@ ms.locfileid: "92636402"
 | 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
-如果要在源转换中使用的实体定义与数据文件夹位于同一目录中，则可以取消选中 "使用语料库中的实体"，只需键入要用作实体引用的实体实体即可。
+在源和接收器转换中选择 "实体引用" 时，可以从以下三个选项中选择实体引用的位置：
+
+* Local 使用 ADF 中已使用的清单文件中定义的实体
+* "自定义" 将要求你指向不同于清单文件 ADF 使用的实体清单文件
+* 标准版将使用中维护的 CDM 实体的标准库中的实体引用 ```Github``` 。
 
 ### <a name="sink-settings"></a>接收器设置
 
@@ -71,7 +75,7 @@ ms.locfileid: "92636402"
 
 #### <a name="import-schema"></a>导入架构
 
-CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构。 若要获取列元数据，请单击 " **投影** " 选项卡中的 " **导入架构** " 按钮。这将允许你引用语料库指定的列名称和数据类型。 若要导入该架构， [数据流调试会话](concepts-data-flow-debug-mode.md) 必须处于活动状态，并且您必须具有现有的 CDM 实体定义文件以指向。
+CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构。 若要获取列元数据，请单击 "**投影**" 选项卡中的 "**导入架构**" 按钮。这将允许你引用语料库指定的列名称和数据类型。 若要导入该架构， [数据流调试会话](concepts-data-flow-debug-mode.md) 必须处于活动状态，并且您必须具有现有的 CDM 实体定义文件以指向。
 
 将数据流列映射到接收器转换中的实体属性时，请单击 "映射" 选项卡，然后选择 "导入架构"。 ADF 将读取你在接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
 
@@ -114,7 +118,7 @@ source(output(
 
 下表列出了 CDM 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |

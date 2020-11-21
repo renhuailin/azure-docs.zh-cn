@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737823"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015521"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
@@ -29,10 +29,10 @@ ms.locfileid: "94737823"
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 |  [4586793]  |  最新累积更新 | 6.25 | 11月10日，2020 |
+|  Rel 20-11 OOB |  [4594442]  |  最新累积更新 | 6.25 | 11月17日2020 |
+|  Rel 20-11 OOB |  [4594441]  |  最新累积更新 | 5.49 | 11月19日2020 |
 |  Rel 20-11 |  [4580325]  |  闪存更新 | 3.91、4.84、5.49、6.25 | 10月13日，2020 |
 |  Rel 20-11 |  [4586768]  |  IE 累积更新 | 2.104、3.91、4.84 | 11月10日，2020 |
-|  Rel 20-11 |  [4586830]  |  最新累积更新 | 5.49 | 11月10日，2020 |
 |  Rel 20-11 |  [4578952]  |  .NET Framework 3.5 安全和质量汇总 | 2.104 | 11月10日，2020 |
 |  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 安全和质量汇总 | 2.104 | 11月10日，2020 |
 |  Rel 20-11 |  [4578953]  |  .NET Framework 3.5 安全和质量汇总 | 4.84 | 11月10日，2020 |
@@ -52,10 +52,10 @@ ms.locfileid: "94737823"
 |  Rel 20-11 |  [4494175]  |  微代码 | 5.49 | Sep 1，2020 |
 |  Rel 20-11 |  [4494174]  |  微代码 | 6.25 | 09月3日2020 |
 
-[4586793]: https://support.microsoft.com/kb/4586793
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
 [4580325]: https://support.microsoft.com/kb/4580325
 [4586768]: https://support.microsoft.com/kb/4586768
-[4586830]: https://support.microsoft.com/kb/4586830
 [4578952]: https://support.microsoft.com/kb/4578952
 [4578955]: https://support.microsoft.com/kb/4578955
 [4578953]: https://support.microsoft.com/kb/4578953

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409784"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014758"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -108,16 +108,16 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 
 Site Recovery：
 
-* **简化 BCDR 策略** ：通过 Site Recovery 可从一个位置轻松处理多个业务工作负荷和应用的复制、故障转移及恢复。 Site Recovery 会协调复制和故障转移，但不会拦截应用程序数据或拥有任何相关信息。
-* **提供灵活的复制** ：借助 Site Recovery，可以复制 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器上运行的工作负荷。
-* **支持故障转移和恢复** ：Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 还可针对预期会出现的中断运行计划内故障转移，确保不丢失任何数据；或者针对意外灾难运行计划外故障转移，尽量减少数据丢失（具体取决于复制频率）。 故障转移之后，可故障回复到主站点。 Site Recovery 提供包含脚本和 Azure 自动化工作簿的恢复计划，以供你自定义多层应用程序的故障转移和恢复。
-* **消除辅助数据中心** ：可复制到辅助本地站点，或复制到 Azure。 使用 Azure 作为灾难恢复的目标可以消除维护辅助站点所带来的成本和复杂性。 复制的数据存储在 Azure 存储中。
-* **与现有 BCDR 技术集成** ：Site Recovery 能够与其他应用程序的 BCDR 功能结合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
+* **简化 BCDR 策略**：通过 Site Recovery 可从一个位置轻松处理多个业务工作负荷和应用的复制、故障转移及恢复。 Site Recovery 会协调复制和故障转移，但不会拦截应用程序数据或拥有任何相关信息。
+* **提供灵活的复制**：借助 Site Recovery，可以复制 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器上运行的工作负荷。
+* **支持故障转移和恢复**：Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 还可针对预期会出现的中断运行计划内故障转移，确保不丢失任何数据；或者针对意外灾难运行计划外故障转移，尽量减少数据丢失（具体取决于复制频率）。 故障转移之后，可故障回复到主站点。 Site Recovery 提供包含脚本和 Azure 自动化工作簿的恢复计划，以供你自定义多层应用程序的故障转移和恢复。
+* **消除辅助数据中心**：可复制到辅助本地站点，或复制到 Azure。 使用 Azure 作为灾难恢复的目标可以消除维护辅助站点所带来的成本和复杂性。 复制的数据存储在 Azure 存储中。
+* **与现有 BCDR 技术集成**：Site Recovery 能够与其他应用程序的 BCDR 功能结合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
 
 了解详细信息：
 
 * [什么是 Azure Site Recovery？](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery 的工作原理是什么？](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Azure Site Recovery 的工作原理是什么？](/azure/site-recovery/azure-to-azure-architecture)
 * [哪些工作负荷受 Azure Site Recovery 保护？](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虚拟网络

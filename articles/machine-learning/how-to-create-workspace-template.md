@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442049"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013028"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -28,7 +28,7 @@ ms.locfileid: "94442049"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅** 。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
@@ -38,6 +38,10 @@ ms.locfileid: "94442049"
     * __虚拟网络后的工作区的 Azure 容器注册表__
 
     有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+
+## <a name="limitations"></a>限制
+
+* 创建新的工作区时，可以允许工作区自动创建所需的 Azure 服务，也可以提供现有服务。 提供现有服务时，这些服务必须与工作区位于同一 Azure 订阅中。
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
@@ -55,11 +59,11 @@ ms.locfileid: "94442049"
 
 示例模板具有两个 **必需** 参数：
 
-* 将在其中创建资源的 **位置** 。
+* 将在其中创建资源的 **位置**。
 
     模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
 
-* **WorkspaceName** ，它是 Azure 机器学习工作区的友好名称。
+* **WorkspaceName**，它是 Azure 机器学习工作区的友好名称。
 
     > [!NOTE]
     > 工作区名称不区分大小写。
@@ -124,7 +128,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，你也可以选择使用现有资源。 可以通过向模板提供其他参数来使用现有资源。 例如，如果你想要使用现有的存储帐户，请将 **storageAccountOption** 值设置为 **existing** ，并在 **storageAccountName** 参数中提供存储帐户的名称。
+默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，你也可以选择使用现有资源。 可以通过向模板提供其他参数来使用现有资源。 例如，如果你想要使用现有的存储帐户，请将 **storageAccountOption** 值设置为 **existing**，并在 **storageAccountName** 参数中提供存储帐户的名称。
 
 > [!IMPORTANT]
 > 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 工作区的默认存储帐户不支持高级存储和分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
@@ -219,7 +223,7 @@ New-AzResourceGroupDeployment `
 
 若要允许使用客户管理的密钥，请在部署该模板时设置以下参数：
 
-* 将 **encryption_status** 设置为 **Enabled** 。
+* 将 **encryption_status** 设置为 **Enabled**。
 * 将 **cmk_keyvault** 设置为在前面的步骤中获取的 `cmk_keyvault` 值。
 * 将 **resource_cmk_uri** 设置为在前面的步骤中获取的 `resource_cmk_uri` 值。
 
@@ -254,7 +258,7 @@ New-AzResourceGroupDeployment `
 
 当使用客户管理的密钥时，Azure 机器学习会创建包含 Cosmos DB 实例的另一个资源组。 有关详细信息，请参阅[静态加密 - Cosmos DB](concept-data-encryption.md#encryption-at-rest)。
 
-你可为数据提供的一个附加配置是将 **confidential_data** 参数设置为 **true** 。 为此，请执行以下操作：
+你可为数据提供的一个附加配置是将 **confidential_data** 参数设置为 **true**。 为此，请执行以下操作：
 
 * 开始加密 Azure 机器学习计算群集的本地暂存磁盘（如果以前未在该订阅中创建任何群集）。 如果你之前在订阅中创建了群集，请创建一个支持票证，为你的计算群集启用暂存磁盘加密。
 * 在各次运行之间清理本地暂存磁盘。
@@ -424,7 +428,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>使用现有虚拟网络和资源
 
-若要使用现有的关联资源来部署工作区，你必须将 **vnetOption** 参数设置为 **existing** ，并设置子网参数。 但是，在进行部署之前，你需要在虚拟网络中为每个资源创建服务终结点。 与使用新的虚拟网络部署类似，在虚拟网络后面可以有一个资源或全部资源。
+若要使用现有的关联资源来部署工作区，你必须将 **vnetOption** 参数设置为 **existing**，并设置子网参数。 但是，在进行部署之前，你需要在虚拟网络中为每个资源创建服务终结点。 与使用新的虚拟网络部署类似，在虚拟网络后面可以有一个资源或全部资源。
 
 > [!IMPORTANT]
 > 子网应具有 `Microsoft.Storage` 服务终结点

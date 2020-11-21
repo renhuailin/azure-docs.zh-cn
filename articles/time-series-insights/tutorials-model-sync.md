@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341552"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014724"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure 数字孪生与时序见解第 2 代之间的模型同步
 
-本文介绍了用于将 Azure)  (孪生中的资产模型转换为 Azure 时序见解 (TSI) 中的资产模型的最佳做法和工具。  本文是两部分系列教程的第二部分，介绍如何将 Azure 数字孪生与 Azure 时序见解相集成。 将 Azure 数字孪生与时序见解相集成，可以存档和跟踪数字孪生的 telemetries 和计算属性的历史记录。 这一系列教程面向开发人员，用于将时序见解与 Azure 数字孪生相集成。 第1部分介绍了  [如何建立数据管道，将 Azure 数字孪生中的实际时序数据引入时序见解](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) ，这是本教程系列的第二部分介绍了 Azure 数字孪生与时序见解之间的资产模型同步。 本教程介绍为时序 ID 选择和建立命名约定 (TS ID) 并在时序模型 (TSM) 中手动建立层次结构的最佳做法。
+本文介绍了用于将 Azure)  (孪生中的资产模型转换为 Azure 时序见解 (TSI) 中的资产模型的最佳做法和工具。  本文是两部分系列教程的第二部分，介绍如何将 Azure 数字孪生与 Azure 时序见解相集成。 将 Azure 数字孪生与时序见解相集成，可以存档和跟踪数字孪生的 telemetries 和计算属性的历史记录。 这一系列教程面向开发人员，用于将时序见解与 Azure 数字孪生相集成。 第1部分介绍了  [如何建立数据管道，将 Azure 数字孪生中的实际时序数据引入时序见解](../digital-twins/how-to-integrate-time-series-insights.md) ，这是本教程系列的第二部分介绍了 Azure 数字孪生与时序见解之间的资产模型同步。 本教程介绍为时序 ID 选择和建立命名约定 (TS ID) 并在时序模型 (TSM) 中手动建立层次结构的最佳做法。
 
 ## <a name="choosing-a-time-series-id"></a>选择时序 ID
 
@@ -29,7 +29,7 @@ ms.locfileid: "91341552"
 
 ## <a name="contextualizing-time-series"></a>Contextualizing 时序
 
-) 时序见解中的 Contextualization 数据 (大部分空间都是通过资产层次结构实现的，并且在时序见解资源管理器的树视图中使用相同的数据轻松导航。 时序类型和层次结构是使用时序模型 (时序见解中的 TSM) 定义的。 TSM 中的类型有助于定义变量，而层次结构级别和实例字段值用于在时序见解资源管理器中构造树视图。 有关 TSM 的详细信息，请参阅 [联机时序见解文档](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview)。
+) 时序见解中的 Contextualization 数据 (大部分空间都是通过资产层次结构实现的，并且在时序见解资源管理器的树视图中使用相同的数据轻松导航。 时序类型和层次结构是使用时序模型 (时序见解中的 TSM) 定义的。 TSM 中的类型有助于定义变量，而层次结构级别和实例字段值用于在时序见解资源管理器中构造树视图。 有关 TSM 的详细信息，请参阅 [联机时序见解文档](./concepts-model-overview.md)。
 
 在 Azure 数字孪生中，资产间的连接使用克隆关系表示。 "克隆关系" 只是连接的资产的关系图。 但在时序见解中，资产之间的关系在本质上是分层的。 也就是说，资产共享父子类型 od 关系，并使用树结构表示。 若要将关系信息从 Azure 数字孪生转换为时序见解层次结构，需要从 Azure 数字孪生选择相关的层次结构关系。 Azure 数字孪生使用开放式标准建模语言（称为数字克隆定义语言 (DTDL) ）。 在 DTDL 模型中，使用名为 JSON 的 JSON 的变体描述。 有关规范的完整详细信息，请参阅 [DTDL 文档](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 。
 
@@ -82,7 +82,7 @@ ms.locfileid: "91341552"
 
 > [!Note]
 >
-> 此代码段示例假设读者熟悉本教程的 [第01部分](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) ，并且在 "ProcessHubToDTEvents" 函数内进行了此代码更改。
+> 此代码段示例假设读者熟悉本教程的 [第01部分](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) ，并且在 "ProcessHubToDTEvents" 函数内进行了此代码更改。
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>使用 Api 更新实例字段
 
-本教程的此部分介绍了如何使用时序见解模型 Api 以编程方式在 Azure 数字孪生中侦听模型更改，如创建、删除孪生或更改孪生和更新实例字段和层次结构之间的关系。 此更新时序见解模型的方法通常是通过 Azure 函数实现的。 在 Azure 数字孪生中，事件通知（如克隆添加或删除）可以是路由下游服务（如事件中心），进而可以送入 Azure 功能。 有关事件路由和筛选的详细信息，请参阅 [此处](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal)。  本部分的其余部分介绍如何在 Azure 函数中使用时序见解模型 Api 来更新时序见解模型，以响应 Azure 数字孪生中一种类型的模型更改) 的克隆 (加法。
+本教程的此部分介绍了如何使用时序见解模型 Api 以编程方式在 Azure 数字孪生中侦听模型更改，如创建、删除孪生或更改孪生和更新实例字段和层次结构之间的关系。 此更新时序见解模型的方法通常是通过 Azure 函数实现的。 在 Azure 数字孪生中，事件通知（如克隆添加或删除）可以是路由下游服务（如事件中心），进而可以送入 Azure 功能。 有关事件路由和筛选的详细信息，请参阅 [此处](../digital-twins/how-to-manage-routes-portal.md)。  本部分的其余部分介绍如何在 Azure 函数中使用时序见解模型 Api 来更新时序见解模型，以响应 Azure 数字孪生中一种类型的模型更改) 的克隆 (加法。
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>接收和识别克隆加法事件通知
 
@@ -227,4 +227,4 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 
 ## <a name="next-steps"></a>后续步骤
 
-第三篇教程介绍了如何使用时序见解 Api 从 Azure 数字孪生查询历史数据。 它是正在进行的工作，并且在准备就绪时将更新该部分。 同时，建议读者参阅 [时序见解数据查询 API 文档](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview)。
+第三篇教程介绍了如何使用时序见解 Api 从 Azure 数字孪生查询历史数据。 它是正在进行的工作，并且在准备就绪时将更新该部分。 同时，建议读者参阅 [时序见解数据查询 API 文档](./concepts-query-overview.md)。

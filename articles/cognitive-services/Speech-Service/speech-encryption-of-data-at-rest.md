@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078089"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015250"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -33,11 +33,11 @@ ms.locfileid: "89078089"
 
 默认情况下，你的数据存储在 Microsoft 的存储中，你的订阅使用 Microsoft 托管的加密密钥。 你还可以选择准备你自己的存储帐户。 对应用商店的访问是由托管标识管理的，语音识别服务无法直接访问你自己的数据，例如语音识别跟踪数据、自定义训练数据和自定义模型。
 
-有关托管标识的详细信息，请参阅[什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+有关托管标识的详细信息，请参阅[什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自带存储 (BYOS) 用于自定义和日志记录
 
-若要请求访问自带存储，请填写并提交 [语音服务-自带存储 (BYOS) 请求窗体](https://aka.ms/cogsvc-cmk)。 批准后，你需要创建自己的存储帐户来存储自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。 启用系统分配的托管标识后，将向 Azure Active Directory (AAD) 注册此资源。 注册后，将向托管标识授予对存储帐户的访问权限。 可在此处了解有关托管标识的详细信息。 有关托管标识的详细信息，请参阅[什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+若要请求访问自带存储，请填写并提交 [语音服务-自带存储 (BYOS) 请求窗体](https://aka.ms/cogsvc-cmk)。 批准后，你需要创建自己的存储帐户来存储自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。 启用系统分配的托管标识后，将向 Azure Active Directory (AAD) 注册此资源。 注册后，将向托管标识授予对存储帐户的访问权限。 可在此处了解有关托管标识的详细信息。 有关托管标识的详细信息，请参阅[什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 > [!IMPORTANT]
 > 如果禁用系统分配的托管标识，则将删除对存储帐户的访问权限。 这将导致需要访问存储帐户的语音服务部分停止工作。  
@@ -50,4 +50,4 @@ ms.locfileid: "89078089"
 ## <a name="next-steps"></a>后续步骤
 
 * [语音服务-自带存储 (BYOS) 请求窗体](https://aka.ms/cogsvc-cmk)
-* [什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+* [什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 87cb0f93201b5111e4d5e954ee62451405436fa0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 46cead6f7b9362dc9b48fda15c0d04b13c2f989c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538721"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013658"
 ---
 # <a name="detect-popular-brands-in-images"></a>检测图像中的流行品牌
 
@@ -23,7 +23,7 @@ ms.locfileid: "94538721"
 
 计算机视觉服务检测给定图像中是否存在品牌徽标；如果存在，则返回品牌名称、置信度分数以及徽标周围边框的坐标。
 
-内置徽标数据库涵盖消费类电子产品、服装等的流行品牌。 如果发现计算机视觉服务未检测到所寻找的品牌，则可能使用[自定义视觉](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)服务创建和训练自己的徽标检测程序的效果会更好。
+内置徽标数据库涵盖消费类电子产品、服装等的流行品牌。 如果发现计算机视觉服务未检测到所寻找的品牌，则可能使用[自定义视觉](../custom-vision-service/index.yml)服务创建和训练自己的徽标检测程序的效果会更好。
 
 ## <a name="brand-detection-example"></a>品牌检测示例
 

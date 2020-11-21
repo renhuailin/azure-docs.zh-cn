@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110340"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015436"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>语音助手常见问题
 
-如果在本文档中找不到问题的答案，请查看 [其他支持选项](support.md)。
+如果在本文档中找不到问题的答案，请查看 [其他支持选项](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="general"></a>常规
 
@@ -29,15 +29,15 @@ ms.locfileid: "74110340"
 
 **问：我是否应使用自定义命令 (预览) 或直接语音语音？区别是什么？**
 
-**答：** [ (预览版的自定义命令) ](custom-commands.md) 是一组较低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md) 提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅 [助手解决方案的比较](voice-assistants.md#choosing-an-assistant-solution) 。
+**答：** [ (预览版的自定义命令)](custom-commands.md) 是一组较低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md) 提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅 [助手解决方案的比较](voice-assistants.md#choosing-an-assistant-solution) 。
 
 **问：如何开始使用？**
 
 **答：** 开始创建自定义命令 (预览) 应用程序或基本机器人框架机器人的最佳方式。
 
-- [) 应用程序 (预览创建自定义命令](quickstart-custom-speech-commands-create-new.md)
-- [创建基本机器人框架机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [将机器人连接到直接连线语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [) 应用程序 (预览创建自定义命令](./quickstart-custom-commands-application.md)
+- [创建基本机器人框架机器人](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [将机器人连接到直接连线语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>调试
 
@@ -62,7 +62,7 @@ ms.locfileid: "74110340"
 **答：** 此错误表示助手和语音助手服务之间存在通信问题。
 
 - 对于 (预览) 的自定义命令，请确保发布 (预览) 应用程序的自定义命令。
-- 对于直接线路语音，请确保已将 [机器人连接到直接线路语音频道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)，并向机器人 ([添加了流式处理协议支持](https://aka.ms/botframework/addstreamingprotocolsupport)) ，并检查机器人是否响应来自通道的传入请求。
+- 对于直接线路语音，请确保已将 [机器人连接到直接线路语音频道](/azure/bot-service/bot-service-channel-connect-directlinespeech)，并向机器人 ([添加了流式处理协议支持](/azure/bot-service/directline-speech-bot)) ，并检查机器人是否响应来自通道的传入请求。
 
 **问：此代码仍不起作用，并且/或者在使用时，我收到了不同的错误 `DialogServiceConnector` 。我该怎么办？**
 

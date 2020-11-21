@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 说话人识别, 语音生物测量
-ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844553"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015318"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>什么是演讲者识别 (预览) ？
 
@@ -70,10 +70,10 @@ ms.locfileid: "94844553"
 | 支持哪些格式的音频？ | Mono 16 位，16kHz PCM-编码的 WAV |
 | **接受** 和 **拒绝** 响应不准确，如何调整阈值？ | 由于最佳阈值因情况而异，因此 API 决定是根据默认阈值 0.5 "接受" 还是 "拒绝"。 建议高级用户覆盖默认决策，并根据自己的方案对结果进行微调。 |
 | 是否可以多次注册一个扬声器？ | 是的，对于文本相关验证，最多可注册50次扬声器。 对于与文本无关的验证或发言人标识，最多可注册300秒的音频。 |
-| Azure 中存储了哪些数据？ | 注册音频存储在服务中，直到 [删除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)语音配置文件。 不保留或存储识别音频示例。 |
+| Azure 中存储了哪些数据？ | 注册音频存储在服务中，直到 [删除](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments)语音配置文件。 不保留或存储识别音频示例。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> * 完成演讲者识别 [基础知识文章](speaker-recognition-basics.md) ，了解可在应用程序中使用的常见设计模式。
+> * 完成演讲者识别 [基础知识文章](./get-started-speaker-recognition.md) ，了解可在应用程序中使用的常见设计模式。
 > * 请参阅 [视频教程](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) ，了解与文本无关的扬声器验证。

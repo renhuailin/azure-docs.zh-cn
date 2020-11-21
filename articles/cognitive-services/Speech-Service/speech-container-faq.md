@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6c899b4f0dd7a3b91521c6d78b531d1c804ac105
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653532"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015301"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题 (常见问题) 
 
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>对于各种音频文件，我应该使用哪种模式？</b>
 </summary>
 
-**答案：** 下面是 [使用 Python 的快速入门](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python)教程。 您可以在文档网站上找到其他所链接的语言。
+**答案：** 下面是 [使用 Python 的快速入门](./get-started-speech-to-text.md?pivots=programming-language-python)教程。 您可以在文档网站上找到其他所链接的语言。
 
 只是为了阐明交互式、对话和听写;这是一个高级方法，用于指定服务处理语音请求的特定方式。 遗憾的是，对于本地容器，我们必须指定完整的 URI (因为它包含本地计算机) ，因此此信息泄露自抽象。 我们正在与 SDK 团队合作，使其更易于使用。
 
@@ -367,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
-**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如，`-p 5001:5000`。
+**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如，`-p 5001:5000` 。
 
 
 <br>

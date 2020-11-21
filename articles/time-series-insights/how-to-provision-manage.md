@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c38c57a8480ef2addde494b94d70bd2eb679373
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667820"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016762"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>预配和管理 Azure 时序见解第 2 代
 
@@ -31,8 +31,8 @@ ms.locfileid: "91667820"
 
 > [!TIP]
 >
-> * 了解[如何规划环境](./time-series-insights-update-plan.md)。
-> * 了解如何[添加事件中心源](./time-series-insights-how-to-add-an-event-source-eventhub.md)或如何[添加 IoT 中心源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+> * 了解[如何规划环境](./how-to-plan-your-environment.md)。
+> * 了解如何[添加事件中心源](./how-to-ingest-data-event-hub.md)或如何[添加 IoT 中心源](./how-to-ingest-data-iot-hub.md)。
 
 将了解如何执行以下操作：
 
@@ -57,18 +57,18 @@ ms.locfileid: "91667820"
 
     > [!NOTE]
     >
-    > * 时序 ID *区分大小写*且*不可变*。 （一经设置，不可更改。）
-    > * 时序 ID 最多可以是*三个*键。 可将其视为数据库中的主键，它唯一地表示会向你的环境发送数据的每个设备传感器。 它可以是一个属性，也可以是最多包含三个属性的组合。
-    > * 有关详细信息，请参阅[如何选择时序 ID](time-series-insights-update-how-to-id.md)
+    > * 时序 ID *区分大小写* 且 *不可变*。 （一经设置，不可更改。）
+    > * 时序 ID 最多可以是 *三个* 键。 可将其视为数据库中的主键，它唯一地表示会向你的环境发送数据的每个设备传感器。 它可以是一个属性，也可以是最多包含三个属性的组合。
+    > * 有关详细信息，请参阅[如何选择时序 ID](./how-to-select-tsid.md)
 
-1. 通过选择存储帐户名称、帐户种类并指定[复制](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal)选项来创建 Azure 存储帐户。 这样做会自动创建一个 Azure 存储帐户。 默认情况下将创建[常规用途 v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) 帐户。 该帐户在之前选择的 Azure 时序见解第 2 代环境所在的区域中创建。
+1. 通过选择存储帐户名称、帐户种类并指定[复制](../storage/common/redundancy-migration.md?tabs=portal)选项来创建 Azure 存储帐户。 这样做会自动创建一个 Azure 存储帐户。 默认情况下将创建[常规用途 v2](../storage/common/storage-account-overview.md) 帐户。 该帐户在之前选择的 Azure 时序见解第 2 代环境所在的区域中创建。
 另外，在创建新的 Azure 时序第 2 代环境时，还可以通过 [ARM 模板](./time-series-insights-manage-resources-using-azure-resource-manager-template.md)自带存储 (BYOS)。
 
 1. **（可选）** 如果需要在环境中对最新数据进行更快且不受限制的查询，请为环境启用暖存储。 也可在创建 Azure 时序第 2 代环境后，在左导航窗格中通过“存储配置”选项创建或删除暖存储。
 
 1. **（可选）** 可以现在就添加事件源， 也可以等到预配完实例后再添加。
 
-   * Azure 时序见解支持使用 [Azure IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)和 [Azure 事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。
+   * Azure 时序见解支持使用 [Azure IoT 中心](./how-to-ingest-data-iot-hub.md)和 [Azure 事件中心](./how-to-ingest-data-event-hub.md)作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。
 
      在添加事件源时，可以选择现有的使用者组，也可以创建新的使用者组。 请注意，事件源需要一个适合你的环境的独特使用者组才能将数据读入其中。
 
@@ -90,21 +90,21 @@ ms.locfileid: "91667820"
 * Azure 门户第 2 代的“概览”边栏选项卡进行了以下更改：
 
   * 删除了容量，因为它不适用于第 2 代环境。
-  * 添加了“时序 ID”属性****。 它决定了数据的分区方式。
+  * 添加了“时序 ID”属性。 它决定了数据的分区方式。
   * 删除了引用数据集。
-  * 显示的 URL 会将您定向到 [Azure 时序见解资源管理器](./time-series-insights-update-explorer.md)。
+  * 显示的 URL 会将您定向到 [Azure 时序见解资源管理器](./concepts-ux-panels.md)。
   * 列出了 Azure 存储帐户名称。
 
-* 删除了Azure 门户的“配置”边栏选项卡，因为缩放单元不适用于 Azure 时序见解第 2 代环境。 但是，可以使用“存储配置”来配置新引入的暖存储。****
+* 删除了Azure 门户的“配置”边栏选项卡，因为缩放单元不适用于 Azure 时序见解第 2 代环境。 但是，可以使用“存储配置”来配置新引入的暖存储。
 
-* Azure 时序见解第 2 代中删除了 Azure 门户的“参考数据”边栏选项卡，因为参考数据概念已被[时序模型 (TSM)](/azure/time-series-insights/concepts-model-overview) 替代。
+* Azure 时序见解第 2 代中删除了 Azure 门户的“参考数据”边栏选项卡，因为参考数据概念已被[时序模型 (TSM)](./concepts-model-overview.md) 替代。
 
 [![Azure 门户中的 Azure 时序见解第 2 代环境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读[规划你的环境](./time-series-insights-update-plan.md)，详细了解 Azure 时序见解正式版环境和第 2 代环境。
+* 阅读[规划你的环境](./how-to-plan-your-environment.md)，详细了解 Azure 时序见解正式版环境和第 2 代环境。
 
-* 了解如何[添加事件中心源](./time-series-insights-how-to-add-an-event-source-eventhub.md)。
+* 了解如何[添加事件中心源](./how-to-ingest-data-event-hub.md)。
 
-* 配置 [IoT 中心源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+* 配置 [IoT 中心源](./how-to-ingest-data-iot-hub.md)。

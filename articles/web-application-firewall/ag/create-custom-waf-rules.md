@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77368299"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015691"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在应用程序网关上创建和使用 Web 应用程序防火墙 v2 自定义规则
 
 Azure 应用程序网关上的 Web 应用程序防火墙 (WAF) v2 可为 Web 应用程序提供保护。 该保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 在某些情况下，可能需要根据具体需求创建自己的自定义规则。 有关 WAF 自定义规则的详细信息，请参阅[自定义 Web 应用程序防火墙规则概述](custom-waf-rules-overview.md)。
 
 本文介绍一些示例性的自定义规则，这些规则可以通过 v2 WAF 创建并使用。 若要了解如何使用 Azure PowerShell 通过自定义规则来部署 WAF，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
+
+本文中所示的 JSON 代码片段派生自 [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 资源。
 
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。
@@ -179,7 +181,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 你想要阻止来自范围 198.168.5.0/24 内 IP 地址的所有请求。
 
-在此示例中，需阻止来自某个 IP 地址范围的所有流量。 规则名称为 myrule1**，优先级设置为 10。
+在此示例中，需阻止来自某个 IP 地址范围的所有流量。 规则名称为 myrule1，优先级设置为 10。
 
 逻辑：p
 
@@ -229,7 +231,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-4"></a>示例 4
 
-在此示例中，需阻止用户代理 evilbot** 和 192.168.5.0/24 范围内的流量。 为此，可以创建两个独立的匹配条件，将其置于同一规则中。 这样可以确保，如果 User-Agent 标头中的 evilbot****与** 192.168.5.0/24 范围内的 IP 地址都匹配，则请求将被阻止。
+在此示例中，需阻止用户代理 evilbot 和 192.168.5.0/24 范围内的流量。 为此，可以创建两个独立的匹配条件，将其置于同一规则中。 这样可以确保，如果 User-Agent 标头中的 evilbot **与** 192.168.5.0/24 范围内的 IP 地址都匹配，则请求将被阻止。
 
 逻辑：p **and** q
 
@@ -301,7 +303,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-5"></a>示例 5
 
-在此示例中，需阻止 IP 地址范围 192.168.5.0/24** 之外的请求，或者阻止用户代理字符串不为 chrome**（即用户不使用 Chrome 浏览器）的请求。 由于此逻辑使用 **or**，因此这两个条件位于不同的规则中，如以下示例所示。 *myrule1* 和 *myrule2* 都需要匹配才能阻止流量。
+在此示例中，需阻止 IP 地址范围 192.168.5.0/24 之外的请求，或者阻止用户代理字符串不为 chrome（即用户不使用 Chrome 浏览器）的请求。 由于此逻辑使用 **or**，因此这两个条件位于不同的规则中，如以下示例所示。 *myrule1* 和 *myrule2* 都需要匹配才能阻止流量。
 
 逻辑：**not** (p **and** q) = **not** p **or not** q。
 

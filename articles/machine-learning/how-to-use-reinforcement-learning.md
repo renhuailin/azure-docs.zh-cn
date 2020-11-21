@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312313"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012913"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -52,7 +52,7 @@ ms.locfileid: "93312313"
     - 安装 [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
     - 安装 [Azure 机器学习 RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
-    - 运行虚拟网络[设置笔记本](https://aka.ms/azure-rl-env-setup)，打开用于分布式强化学习的网络端口。
+    - 运行虚拟网络，打开用于分布式强化学习的网络端口。
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>如何训练 Pong 游戏代理
@@ -67,7 +67,7 @@ RL 使用 **奖励** 来告知代理其决策是否成功。 在此环境中，�
 
 当代理在一个训练时期达到平均奖励评分 18 时，训练即告结束。 这意味着，代理在比赛中，凭借最低 18 分的平均比分（总分 21 分）击败了其对手。
 
-迭代模拟和重新训练 DNN 的过程会消耗大量计算资源，且需要大量数据。 提高 RL 作业性能的一种方法是 **将工作并行化** ，使多个训练代理能够同时做出动作并学习知识。 但是，管理分布式 RL 环境可能是一项复杂的任务。
+迭代模拟和重新训练 DNN 的过程会消耗大量计算资源，且需要大量数据。 提高 RL 作业性能的一种方法是 **将工作并行化**，使多个训练代理能够同时做出动作并学习知识。 但是，管理分布式 RL 环境可能是一项复杂的任务。
 
 Azure 机器学习提供了一个框架，用于处理这种复杂性，以便能够横向扩展 RL 工作负荷。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207486"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015572"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 
@@ -123,7 +123,7 @@ Splunk 似乎没有类似于 `project-away` 的运算符。 可以使用 UI 来�
 | **Azure Monitor** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>聚合
-有关不同的聚合函数，请参阅 [Azure Monitor 日志查询中的聚合](aggregations.md)。
+有关不同的聚合函数，请参阅 [Azure Monitor 日志查询中的聚合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)。
 
 | | 运算符 | 示例 |
 |:---|:---|:---|
