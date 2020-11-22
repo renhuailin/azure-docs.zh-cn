@@ -1,38 +1,38 @@
 ---
 title: Azure 应用配置 REST API-HMAC 身份验证
-description: 使用 HMAC 进行身份验证以使用 REST API Azure 应用配置
+description: 使用 HMAC 通过使用 REST API 对 Azure 应用配置进行身份验证
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423942"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253348"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 身份验证-REST API 引用
 
-可以使用 **HMAC-SHA256** 身份验证方案对 HTTP 请求进行身份验证。 必须通过 TLS 传输这些请求。
+可以使用 HMAC-SHA256 身份验证方案对 HTTP 请求进行身份验证。  (HMAC 是指基于哈希的消息身份验证代码。 ) 必须通过 TLS 传输这些请求。
 
 ## <a name="prerequisites"></a>先决条件
 
 - **Credential** - \<Access Key ID\>
 - **密码** -base64 解码的访问密钥值。 ``base64_decode(<Access Key Value>)``
 
-凭据 (的值也称为 "id" ) 和机密 (也称为 "value" ) ，必须从 Azure 应用配置实例获取，这可以使用 [Azure 门户](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)来完成。
+凭据 (的值也称为 `id`) 和机密 (也称为 `value`) ，必须从 Azure 应用配置的实例获取。 可以通过使用 [Azure 门户](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)来实现此目的。
 
 为每个请求提供身份验证所需的所有 HTTP 标头。 要求的最小值为：
 
 |  请求标头 | 说明  |
 | --------------- | ------------ |
-| **主机** | Internet 主机和端口号。 请参阅[3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2)部分 |
-| **日期** | 发出请求的日期和时间。 它不能比当前 GMT 晚15分钟。 此值为 HTTP 日期，如[3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)部分中所述。
-| **x-ms-date** | 与 ```Date``` 上面相同。 当代理无法直接访问 ```Date``` 请求标头或代理对其进行修改时，可以使用此方法。 如果 ```x-ms-date``` ```Date``` 提供了和，则 ```x-ms-date``` 优先使用。 |
+| **主机** | Internet 主机和端口号。 有关详细信息，请参阅  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2)部分。 |
+| **日期** | 发出请求的日期和时间。 从当前协调世界时开始，该时间不能超过15分钟 (格林尼治标准时间) 。 此值为 HTTP 日期，如 [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)部分中所述。
+| **x-ms-date** | 与 ```Date``` 上面相同。 如果代理无法直接访问 ```Date``` 请求标头，则可以使用它，否则代理会修改它。 如果 ```x-ms-date``` ```Date``` 提供了和，则 ```x-ms-date``` 优先使用。 |
 | **x-ms-内容-sha256** | 请求正文的 base64 编码 SHA256 哈希。 即使没有正文，也必须提供它。 ```base64_encode(SHA256(body))```|
-| **授权** | **HMAC-SHA256** 方案所需的身份验证信息。 格式和详细信息如下所述。 |
+| **授权** | HMAC-SHA256 方案所需的身份验证信息。 格式和详细信息将在本文的后面部分进行说明。 |
 
 **示例：**
 
@@ -51,18 +51,18 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 |  参数 | 说明  |
 | ------ | ------ |
-| **HMAC-SHA256** | 授权方案 _(必需)_ |
+| **HMAC-SHA256** | 授权方案。 _需要 ()_ |
 | **凭据** | 用于计算签名的访问密钥的 ID。 _需要 ()_ |
 | **SignedHeaders** | 添加到签名的 HTTP 请求标头。 _需要 ()_ |
-| **信号** | HMACSHA256 的 base64 编码的 **字符串** 。 _需要 ()_|
+| **信号** | HMACSHA256 的 base64 编码的字符串。 _需要 ()_|
 
 ### <a name="credential"></a>凭据
 
-用于计算 **签名** 的访问密钥的 ID。
+用于计算签名的访问密钥的 ID。
 
 ### <a name="signed-headers"></a>签名标头
 
-为请求签名所需的以分号分隔的 HTTP 请求标头名称。 这些 HTTP 标头必须与请求一起正确提供。 **不要使用空格** 。
+为请求签名所需的 HTTP 请求标头名称（用分号分隔）。 这些 HTTP 标头必须与请求一起正确提供。 不要使用空格。
 
 ### <a name="required-http-request-headers"></a>必需的 HTTP 请求标头
 
@@ -76,7 +76,7 @@ x 毫秒; 主机; x-ms-内容-sha256; ```Content-Type``` ;```Accept```
 
 ### <a name="signature"></a>签名
 
-Base64 编码的字符串的 HMACSHA256 哈希，使用由标识的访问密钥 **进行签名** `Credential` 。
+字符串到签名的 Base64 编码的 HMACSHA256 哈希。 它使用标识的访问密钥 `Credential` 。
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>字符串到符号
@@ -89,9 +89,9 @@ _字符串到符号 =_
 
 |  参数 | 说明  |
 | ------ | ------ |
-| **HTTP_METHOD** | 与请求一起使用的大写 HTTP 方法名称。 请参阅 [第9部分](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) |
-|**path_and_query** | 请求的连接绝对 URI 路径和查询字符串。 请参阅 [3.3 节](https://tools.ietf.org/html/rfc3986#section-3.3)。
-| **signed_headers_values** | **SignedHeaders** 中列出的所有 HTTP 请求标头的以分号分隔的值。 格式遵循 **SignedHeaders** 语义。 |
+| **HTTP_METHOD** | 与请求一起使用的大写 HTTP 方法名称。 有关详细信息，请参阅 [第9部分](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 |
+|**path_and_query** | 请求的连接绝对 URI 路径和查询字符串。 有关详细信息，请参阅 [3.3 节](https://tools.ietf.org/html/rfc3986#section-3.3)。
+| **signed_headers_values** | 中列出的所有 HTTP 请求标头的以分号分隔的值 `SignedHeaders` 。 格式遵循 `SignedHeaders` 语义。 |
 
 **示例：**
 
@@ -111,15 +111,17 @@ WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
 **原因：** 未提供具有 HMAC-SHA256 方案的授权请求标头。
-**解决方案：** 提供有效的 ```Authorization``` HTTP 请求标头
+
+**解决方案：** 提供有效的 ```Authorization``` HTTP 请求标头。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**原因：** ```Date``` 或 ```x-ms-date``` 请求标头的当前 GMT 时间超过15分钟。
-**解决方案：** 提供正确的日期和时间
+**原因：** ```Date``` 或 ```x-ms-date``` 请求标头的当前协调世界时超过15分钟 (格林尼治平均时间) 。
+
+**解决方案：** 提供正确的日期和时间。
 
 
 ```http
@@ -127,22 +129,23 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**原因：** 缺少或无效 ```Date``` 或 ```x-ms-date``` 请求标头
+**原因：** 缺少或无效 ```Date``` 或 ```x-ms-date``` 请求标头。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**原因：** 缺少来自 ```Authorization``` 请求标头的必需参数
+**原因：** 缺少请求标头中的必需参数 ```Authorization``` 。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid Credential", Bearer
 ```
 
-**原因：** 提供 ```Host``` 的 []/[访问密钥 ID] 找不到。
-**解决方案：** 检查 ```Credential``` ```Authorization``` 请求标头的参数，确保它是有效的访问密钥 ID。 请确保 ```Host``` 标头指向注册帐户。
+**原因：** 找不到提供的 [ ```Host``` ]/[访问密钥 ID]。
+
+**解决方案：** 检查 ```Credential``` ```Authorization``` 请求标头的参数。 请确保它是有效的访问密钥 ID，并确保 ```Host``` 标头指向已注册的帐户。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,15 +153,17 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **原因：**```Signature```提供的与服务器预期的不匹配。
-**解决方案：** 请确保 ```String-To-Sign``` 是正确的。 请确保在 ```Secret``` 使用) 之前，正确并正确使用 (base64 解码。 请参阅 **示例** 部分。
+
+**解决方案：** 请确保 ```String-To-Sign``` 是正确的。 请确保在 ```Secret``` 使用) 之前，正确并正确使用 (base64 解码。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed request header 'xxx' is not provided", Bearer
 ```
 
-**原因：** 标头中的参数缺少所需的请求标头 ```SignedHeaders``` ```Authorization``` 。
-**解决方案：** 提供具有正确值的必需标头。
+**原因：**```SignedHeaders```标头中的参数需要缺少请求标头 ```Authorization``` 。
+
+**解决方案：** 提供所需的标头，具有正确的值。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -166,13 +171,14 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **原因：** 中缺少参数 ```SignedHeaders``` 。
-**解决方案：** 检查 **已签名标头** 的最低要求。
+
+**解决方案：** 检查已签名标头的最低要求。
 
 ## <a name="code-snippets"></a>代码片段
 
 ### <a name="javascript"></a>JavaScript
 
-*先决条件* ： [加密-JS](https://code.google.com/archive/p/crypto-js/)
+*先决条件*： [加密-JS](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host
@@ -537,7 +543,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 ### <a name="bash"></a>Bash
 
-*先决条件* ：
+*先决条件*：
 
 | 先决条件 | 命令 | 测试的版本 |
 | ------------ | ------- | --------------- |

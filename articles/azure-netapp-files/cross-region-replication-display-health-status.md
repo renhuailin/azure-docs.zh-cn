@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708552"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249846"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>显示复制关系的运行状况 
 
@@ -42,7 +42,7 @@ ms.locfileid: "90708552"
     * **关系状态** –显示以下值之一： 
         * *空闲*：  
             没有正在进行的传输操作，将来未禁用传输。
-        * 正在*传输*：  
+        * 正在 *传输*：  
             传输操作正在进行中，但未禁用未来传输。
     * **复制计划** -显示初始化 (基准复制) 完成时，将执行增量镜像更新的频率。
 
@@ -58,5 +58,6 @@ ms.locfileid: "90708552"
 * [跨区域复制](cross-region-replication-introduction.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
+* [删除卷复制或卷](cross-region-replication-delete.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)
 

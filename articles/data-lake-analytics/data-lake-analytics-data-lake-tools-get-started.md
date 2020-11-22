@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 83384dd24141cfeb7b03f388e6e3505fea8f496e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221071"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241686"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 
@@ -33,15 +33,15 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 ## <a name="prerequisites"></a>先决条件
 
-* Visual Studio：支持除 Express 以外的所有版本****。
+* Visual Studio：支持除 Express 以外的所有版本。
 
   * Visual Studio 2019
   * Visual Studio 2017
   * Visual Studio 2015
   * Visual Studio 2013
 
-* Microsoft Azure SDK for .NET 2.7.1 版或更高版本****。 使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)进行安装。
-* **Data Lake Analytics**帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
+* Microsoft Azure SDK for .NET 2.7.1 版或更高版本。 使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)进行安装。
+* **Data Lake Analytics** 帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>安装针对 Visual Studio 的 Azure Data Lake 工具
 
@@ -51,11 +51,11 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 1. 打开 Visual Studio。
 
-1. 通过**Server Explorer**选择 "**查看**  >  **服务器资源管理器**" 打开服务器资源管理器。
+1. 通过选择 "**查看** Data Lake Analytics 资源管理器" 打开 **Data Lake Analytics 资源管理器**  >  **Data Lake Analytics Explorer**。
 
 1. 右键单击 " **Azure**"，然后选择 " **连接到 Microsoft Azure 订阅**"。 在 " **登录到你的帐户**" 中，按照说明进行操作。
 
-1. 在**服务器资源管理器**中，选择 " **Azure**  >  **Data Lake Analytics**"。 将看到 Data Lake Analytics 帐户列表。
+1. 在 **服务器资源管理器** 中，选择 " **Azure**  >  **Data Lake Analytics**"。 将看到 Data Lake Analytics 帐户列表。
 
 ## <a name="write-your-first-u-sql-script"></a>编写第一个 U-SQL 脚本
 
@@ -86,21 +86,21 @@ OUTPUT @a
 
 1. 粘贴脚本，将 [第一个 U SQL 脚本写入](#write-your-first-u-sql-script) " **script.usql** " 窗口。
 
-1. 在 **解决方案资源管理器**中，右键单击 **script.usql**，然后选择 " **提交脚本**"。
+1. 在 **解决方案资源管理器** 中，右键单击 **script.usql**，然后选择 " **提交脚本**"。
 
 1. 在 " **提交作业**" 中，选择 Data Lake Analytics 帐户并选择 " **提交**"。
 
    ![提交 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
-作业提交后，将打开“作业视图”**** 选项卡以显示作业进度。
+作业提交后，将打开“作业视图”选项卡以显示作业进度。
 
-* “作业摘要”**** 显示作业的摘要。
-* “作业图”**** 直观显示作业的进度。
-* “元数据操作”**** 显示对 U-SQL 目录已执行的所有操作。
-* “数据”**** 显示所有输入和输出。
-* **状态历史记录**显示时间线和状态详细信息。
+* “作业摘要”显示作业的摘要。
+* “作业图”直观显示作业的进度。
+* “元数据操作”显示对 U-SQL 目录已执行的所有操作。
+* “数据”显示所有输入和输出。
+* **状态历史记录** 显示时间线和状态详细信息。
 * **AU 分析** 显示作业中使用了多少个澳大利亚，并探索了不同 AU 分配策略的模拟。
-* “诊断”**** 提供有助于作业执行和性能优化的高级分析。
+* “诊断”提供有助于作业执行和性能优化的高级分析。
 
 ![U-SQL Visual Studio Data Lake Analytics 作业性能图表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
@@ -108,21 +108,21 @@ OUTPUT @a
 
 ## <a name="check-job-status"></a>检查作业状态
 
-1. 在**服务器资源管理器**中，选择 " **Azure**  >  **Data Lake Analytics**"。
+1. 在 **服务器资源管理器** 中，选择 " **Azure**  >  **Data Lake Analytics**"。
 
 1. 展开 Data Lake Analytics 帐户名。
 
-1. 双击“作业”****。
+1. 双击“作业”。
 
 1. 选择之前提交的作业。
 
 ## <a name="see-the-job-output"></a>查看作业输出
 
-1. 在 **服务器资源管理器**中，浏览到所提交的作业。
+1. 在 **服务器资源管理器** 中，浏览到所提交的作业。
 
-1. 单击“数据”**** 选项卡。
+1. 单击“数据”选项卡。
 
-1. 在“作业输出”**** 选项卡中，选择 `"/data.csv"` 文件。
+1. 在“作业输出”选项卡中，选择 `"/data.csv"` 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

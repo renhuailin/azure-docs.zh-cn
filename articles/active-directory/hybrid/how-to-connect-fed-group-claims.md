@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265463"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247228"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>为应用程序配置组声明 Azure Active Directory
 
@@ -144,8 +144,9 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 |----------|-------------|
 | **一切** | 发出安全组、分发列表和角色 |
 | **"SecurityGroup"** | 在组声明中发出用户所属的安全组 |
-| **"DirectoryRole** | 如果为用户分配了目录角色，则会将其作为 "wids" 声明发出 (不会发出组声明)  |
-| **"ApplicationGroup** | 仅发出显式分配给应用程序的组，并且该用户是其成员 |
+| **"DirectoryRole"** | 如果为用户分配了目录角色，则会将其作为 "wids" 声明发出 (不会发出组声明)  |
+| **ApplicationGroup** | 仅发出显式分配给应用程序的组，并且该用户是其成员 |
+| **内容** | 不返回任何组。 (其不 sensetive，因此它也不会起作用，可以直接在应用程序清单中进行设置。 )  |
 
    例如：
 

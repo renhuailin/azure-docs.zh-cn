@@ -2,13 +2,13 @@
 title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537605"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243063"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -40,7 +40,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 池只能由创建它的 Batch 帐户使用。 Batch 帐户可以创建多个池，以满足将运行的应用程序的资源要求。
 
-可以手动创建池；或者在你指定要完成的工作时，由 Batch 服务自动创建池。 在创建池时，可以指定以下属性：
+可以手动创建池，也可以在指定要完成的工作时， [由 Batch 服务自动](#autopools) 创建池。 在创建池时，可以指定以下属性：
 
 - [节点操作系统和版本](#operating-system-and-version)
 - [节点类型和目标节点数](#node-type-and-target)
@@ -76,11 +76,11 @@ Batch 中提供了两种类型的池配置。
 
 适用于云服务配置池的可用操作系统在 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](../cloud-services/cloud-services-guestos-update-matrix.md)中列出，并且可用计算节点大小在 [云服务的大小](../cloud-services/cloud-services-sizes-specs.md)中列出。 创建包含云服务节点的池时，需要指定节点大小及其 *Os 系列* (来确定随 OS) 一起安装的 .net 版本。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
 
-与云服务中的辅助角色一样，可以指定 *OS 版本* （有关辅助角色的详细信息，请参阅 [云服务概述](../cloud-services/cloud-services-choose-me.md)）。 对于 OS 版本，建议指定 `Latest (*)`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 OS 版本并安装新的 OS 映像。 所有正在运行的任务将会中断并重新排队。
+与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅 [云服务概述](../cloud-services/cloud-services-choose-me.md)）。 对于 OS 版本，建议指定 `Latest (*)`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 OS 版本并安装新的 OS 映像。 所有正在运行的任务将会中断并重新排队。
 
 ### <a name="node-agent-skus"></a>节点代理 SKU
 
-创建池时，需要选择适当的 **nodeAgentSkuId** ，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
+创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>虚拟机池的自定义映像
 
@@ -105,7 +105,7 @@ Batch 中提供了两种类型的池配置。
 
 在同一池中可同时有低优先级计算节点和专用计算节点。 每种类型的节点都有其自己的目标设置，你可以为其指定所需的节点数。
 
-计算节点数之所以称为 *目标* ，是因为在某些情况下，池可能无法达到所需的节点数。 例如，如果池先达到了 Batch 帐户的[核心配额](batch-quota-limit.md)，则该池可能达不到目标。 或者，如果已将限制最大节点数的自动缩放公式应用于池，则该池也可能达不到目标。
+计算节点数之所以称为 *目标*，是因为在某些情况下，池可能无法达到所需的节点数。 例如，如果池先达到了 Batch 帐户的[核心配额](batch-quota-limit.md)，则该池可能达不到目标。 或者，如果已将限制最大节点数的自动缩放公式应用于池，则该池也可能达不到目标。
 
 有关低优先级节点和专用节点的定价信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
 
@@ -184,6 +184,10 @@ Batch 中提供了两种类型的池配置。
 在另一种极端情况下，如果最高优先级是让作业立即启动，则你可以预先创建池，并使其节点在提交作业之前可用。 在此情况下，任务可以立即启动，但节点可能会保持空闲状态以等待分配任务。
 
 通常会使用一种组合方法来处理可变但持续存在的负载。 可以有一个池来容纳提交的多个作业，并且可以根据作业负载扩展或缩减节点数目。 可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。 有关详细信息，请参阅[自动缩放策略](#automatic-scaling-policy)。
+
+## <a name="autopools"></a>Autopools
+
+[Autopool](/rest/api/batchservice/job/add#autopoolspecification)是在提交作业时由 Batch 服务创建的池，而不是在要在池中运行的作业之前创建的池。 批处理服务将根据你指定的特征管理 autopool 的生存期。 大多数情况下，这些池也设置为在作业完成后自动删除。
 
 ## <a name="security-with-certificates"></a>证书的安全性
 

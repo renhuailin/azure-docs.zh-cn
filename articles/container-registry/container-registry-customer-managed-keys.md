@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 11/17/2020
 ms.custom: ''
-ms.openlocfilehash: d145e861859d08b644683ea870a48fe9ef8fa459
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024805"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95255014"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 

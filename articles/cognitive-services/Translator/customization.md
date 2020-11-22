@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368927"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238082"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -38,28 +38,6 @@ ms.locfileid: "94368927"
 考虑到训练数据的适当类型和数量，通过使用自定义翻译，期望在翻译质量上获得 5 到 10 分或甚至更多 BLEU 分数的情况并不罕见。
 
 有关基于可用数据的各种自定义级别的更多详细信息，请参阅[自定义翻译用户指南](./custom-translator/overview.md)。
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
-
-> [!NOTE]
-> 旧版 Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
-
-## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
-
-| 功能 | 集线器 | 自定义翻译 |
-| ------- | :-: | :---------------: |
-|自定义功能状态    | 正式版    | 正式版 |
-| 文本 API 版本    | 仅 V2    | 仅 V3 |
-| SMT 自定义    | 是    | 否 |
-| NMT 自定义    | 否    | 是 |
-| 新的统一语音服务自定义    | 否    | 是 |
-| [无跟踪](https://www.aka.ms/notrace) | 是    | 是 |
-
-## <a name="collaborative-translations-framework"></a>协作翻译框架
-
-> [!NOTE]
-> 从2018年2月1日开始，AddTranslation ( # A1 和 ( AddTranslationArray 不能再与 Translator v2.0 一起使用。 这些方法将失败，不会写入任何内容。 转换器3.0 不支持这些方法。
 
 ## <a name="next-steps"></a>后续步骤
 

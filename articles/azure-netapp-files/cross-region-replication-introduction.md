@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278288"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95245868"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -71,8 +71,8 @@ Azure NetApp 文件卷复制当前提供以下固定区域对：
 
 假设出现以下情况：
 
-* *源*卷来自 Azure NetApp 文件*高级*服务级别。 在一个月的第一天开始时，它的卷配额大小为 1000 GiB，卷使用大小为 500 GiB。 该卷位于 *美国中南部* 区域。
-* *目标*卷来自 Azure NetApp 文件*标准*服务级别。 它位于 *美国东部 2* 区域。
+* *源* 卷来自 Azure NetApp 文件 *高级* 服务级别。 在一个月的第一天开始时，它的卷配额大小为 1000 GiB，卷使用大小为 500 GiB。 该卷位于 *美国中南部* 区域。
+* *目标* 卷来自 Azure NetApp 文件 *标准* 服务级别。 它位于 *美国东部 2* 区域。
 * 在上述两个卷之间配置了基于 *小时* 的跨区域复制。 因此，复制价格为每个 GiB $0.12。
 * 为简单起见，假设源卷每隔0.5 一小时会更改一个 GiB 的数据，但总使用的卷大小不会增长 (保持为 500 GiB) 。 
 
@@ -111,10 +111,11 @@ Azure NetApp 文件卷复制当前提供以下固定区域对：
 
 ## <a name="next-steps"></a>后续步骤
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
-* [创建复制对等互连](cross-region-replication-create-peering.md)
+* [创建卷复制](cross-region-replication-create-peering.md)
 * [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
+* [删除卷复制或卷](cross-region-replication-delete.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)
 
 

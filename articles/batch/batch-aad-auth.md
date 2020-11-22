@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920502"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252634"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -144,7 +144,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 - Microsoft.Batch/batchAccounts/read（适用于任何读取操作）
 - Microsoft.Batch/batchAccounts/listKeys/action（适用于任何操作）
 
-自定义角色适用于通过 Azure AD 进行身份验证的用户，而不是批处理帐户凭据（共享密钥）。 请注意，批处理帐户凭据为批处理帐户提供完全权限。 另请注意，使用自动池的作业需要池级别权限。
+自定义角色适用于通过 Azure AD 进行身份验证的用户，而不是批处理帐户凭据（共享密钥）。 请注意，批处理帐户凭据为批处理帐户提供完全权限。 另请注意，使用 [autopool](nodes-and-pools.md#autopools) 的作业需要池级别权限。
 
 > [!NOTE]
 > 需要在 "操作" 字段中指定某些角色分配，而其他角色分配需要在 DataAction 字段中指定。 有关详细信息，请参阅 [Azure 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftbatch)。

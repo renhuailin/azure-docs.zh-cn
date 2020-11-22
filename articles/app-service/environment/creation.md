@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663439"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238388"
 ---
 # <a name="create-an-app-service-environment"></a>创建应用服务环境
 
@@ -48,7 +48,7 @@ ASEv3 仅在选择区域中提供。 随着预览版的发展，将添加更多�
 
 ## <a name="creating-an-ase-in-the-portal"></a>在门户中创建 ASE
 
-1. 若要创建 ASEv3，请在 marketplace 中搜索 **应用服务环境 v3**。  
+1. 若要创建 ASEv3，请在 marketplace **(预览版)** 中搜索应用服务环境。  
 2. 基础知识：选择订阅，选择或创建资源组，并输入 ASE 的名称。  ASE 名称还将用于 ASE 的域后缀。  如果 ASE 名称为 *contoso* ，则域后缀将为 *contoso.appserviceenvironment.net*。  此名称将在 ASE 部署到的 Vnet 所使用的 Azure DNS 专用区域中自动设置。 
 
     ![应用服务环境创建基本信息选项卡](./media/creation/creation-basics.png)

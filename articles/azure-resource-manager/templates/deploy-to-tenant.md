@@ -2,13 +2,13 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/20/2020
+ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668690"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242655"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>具有 ARM 模板的租户部署
 
@@ -24,7 +24,7 @@ ms.locfileid: "92668690"
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-对于 azure RBAC)  (基于角色的访问控制，请使用：
+对于 Azure 基于角色的访问控制 (Azure RBAC)，请使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -36,11 +36,19 @@ ms.locfileid: "92668690"
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+若要创建订阅，请使用：
+
+* [别名](/azure/templates/microsoft.subscription/aliases)
+
 对于管理成本，请使用：
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [说明](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+若要配置门户，请使用：
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>架构
 
@@ -123,12 +131,12 @@ New-AzTenantDeployment `
 
 ## <a name="deployment-scopes"></a>部署范围
 
-部署到管理组时，可以将资源部署到：
+部署到租户时，可以将资源部署到：
 
 * 租户
 * 租户内的管理组
 * subscriptions
-* 通过两个嵌套部署 (资源组) 
+* 资源组
 * [扩展资源](scope-extension-resources.md) 可以应用于资源
 
 部署模板的用户必须有权访问指定的作用域。
@@ -155,81 +163,33 @@ New-AzTenantDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
+### <a name="scope-to-resource-group"></a>作用域到资源组
+
+你还可以针对租户中的资源组。 部署模板的用户必须有权访问指定的作用域。
+
+若要以租户内的资源组为目标，请使用嵌套的部署。 设置 `subscriptionId` 和 `resourceGroup` 属性。 不要为嵌套部署设置位置，因为它部署在资源组的位置。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
+
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
 对于租户级别的部署，必须提供部署位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy** 。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="create-management-group"></a>创建管理组
 
-[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg)用于创建管理组。
+以下模板用于创建管理组。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>分配角色
 
-[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment)用于在租户范围内分配角色。
+以下模板用于在租户范围内分配角色。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66ad9f84985c7f35d410c6b1c3508efd33526c83
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0b2d18165bf2c5a4f70f1cbc555db79020ce988f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147716"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95250611"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>为容器或 blob 创建服务 SAS
 
@@ -32,7 +32,7 @@ ms.locfileid: "93147716"
 
 使用帐户访问密钥对服务 SAS 进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，创建一个新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -114,13 +114,13 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 下面的代码示例在 blob 上创建 SAS。 如果提供现有存储访问策略的名称，则该策略与 SAS 关联。 如果未提供存储访问策略，则代码会在 Blob 上创建一个临时 SAS。
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 使用帐户访问密钥对服务 SAS 进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，创建一个新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForBlob":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 若要为 blob 创建服务 SAS，请调用 [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) 方法。
 
@@ -203,6 +203,14 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 ```
 
 ---
+
+## <a name="create-a-service-sas-for-a-directory"></a>为目录创建服务 SAS
+
+在启用了分层命名空间的存储帐户中，可以为目录创建服务 SAS。 若要创建服务 SAS，请确保已安装12.5.0 或更高版本的 [DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) 包。
+
+下面的示例演示如何使用适用于 .NET 的 v12 客户端库为目录创建服务 SAS：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForDirectory":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

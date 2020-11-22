@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216260"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241601"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>了解如何排查由运行时更改引起的 SQL 运行时故障
 
@@ -33,7 +33,7 @@ Azure Data Lake U-SQL 运行时（包括编译器、优化器和作业管理器�
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 选择 " **查看所有作业**"。 此时将显示帐户中所有活动和最近完成的作业的列表。
-3. 根据需要单击“筛选器”****，帮助按“时间范围”****、“作业名称”**** 和“作者”**** 值查找作业。
+3. 根据需要单击“筛选器”，帮助按“时间范围”、“作业名称”和“作者”值查找作业。
 4. 您可以看到在已完成的作业中使用的运行时。
 
 ![显示过去作业的运行时版本](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
@@ -51,7 +51,21 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 1. 脚本或某些用户代码将行为从一个版本更改为下一个版本。 此类重大更改通常会在发布发行说明之前提前传达。 如果遇到此类重大更改，请联系 Microsoft 支持部门来报告此重大行为 (以防还) 记录此重大行为，并针对较旧的运行时版本提交作业。
 
-2. 如果已将非默认运行时固定到你的帐户，但在一段时间后删除了该运行时，则表示你已显式或隐式使用了非默认运行时。 如果遇到缺少的运行时，请升级您的脚本以与当前默认运行时一起运行。 如果需要更多时间，请联系 Microsoft 支持部门
+2. 如果已将非默认运行时固定到你的帐户，但在一段时间后删除了该运行时，则表示你已显式或隐式使用了非默认运行时。 如果遇到缺少的运行时，请升级您的脚本以与当前默认运行时一起运行。 如果需要额外的时间，请联系 Microsoft 支持部门
+
+## <a name="known-issues"></a>已知问题
+
+* 在 SCRIPT.USQL 脚本中引用12.0.3 或文件版本的 Newtonsoft.Js将导致以下编译失败：
+
+    *"很抱歉;在 Data Lake Analytics 帐户中运行的作业可能会运行得更慢或无法完成。出现意外问题，导致我们无法自动将此功能还原到 Azure Data Lake Analytics 帐户。已与 Azure Data Lake 工程师联系调查。 "*  
+
+    调用堆栈将包含的位置：  
+    `System.IndexOutOfRangeException: Index was outside the bounds of the array.`  
+    `at Roslyn.Compilers.MetadataReader.PEFile.CustomAttributeTableReader.get_Item(UInt32 rowId)`  
+    `...`
+
+    **解决方案**：请 Newtonsoft.Js使用12.0.2 或更低版本的文件。
+
 
 ## <a name="see-also"></a>另请参阅
 

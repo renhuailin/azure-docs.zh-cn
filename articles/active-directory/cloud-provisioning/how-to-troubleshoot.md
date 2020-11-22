@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650083"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237334"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>云预配故障排除
 
@@ -124,40 +124,17 @@ ms.locfileid: "94650083"
 
 ### <a name="log-files"></a>日志文件
 
-默认情况下，代理发出最少的错误消息和堆栈跟踪信息。 可以在 *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect 预配 Agent\Trace* 文件夹中找到这些跟踪日志。
+默认情况下，代理发出最少的错误消息和堆栈跟踪信息。 可以在 **C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect 预配 Agent\Trace** 文件夹中找到这些跟踪日志。
 
 若要收集用于排查代理相关问题的其他详细信息，请执行以下步骤。
 
-1. 停止服务 **Microsoft Azure AD 连接设置代理**。
-1. 创建原始配置文件的副本： *C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*。
-1. 将现有节替换为 `<system.diagnostics>` 以下内容，并将所有跟踪消息都发送到文件 *ProvAgentTrace*。
+1.  安装 AADCloudSyncTools PowerShell 模块，如 [此处](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)所述。
+2. 使用 `Export-AADCloudSyncToolsLogs` PowerShell cmdlet 捕获信息。  你可以使用以下开关来微调你的数据收集。
+      - SkipVerboseTrace 仅导出当前日志而不捕获详细日志 (默认值 = false) 
+      - TracingDurationMins 指定 (默认值 = 3 分钟的不同捕获持续时间) 
+      - OutputPath 指定不同的输出路径 (默认 = 用户的文档) 
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. 启动服务 **Microsoft Azure AD 连接设置代理**。
-1. 使用以下命令来结尾文件并调试问题。 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>对象同步问题
 
 以下部分包含有关如何对对象同步进行故障排除的信息。
@@ -203,6 +180,22 @@ ms.locfileid: "94650083"
   使用以下请求：
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>正在修复云同步服务帐户
+如果需要修复云同步服务帐户，可以使用 `Repair-AADCloudSyncToolsAccount` 。  
+
+
+   1.  使用 [此处](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) 所述的安装步骤开始，并继续执行剩余的步骤。
+   2.  从具有管理权限的 Windows PowerShell 会话中，键入或复制并粘贴以下内容： 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. 输入 Azure AD 全局管理员凭据
+   4. 键入或复制并粘贴以下内容： 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. 完成此操作后，该帐户应已成功修复。
 
 ## <a name="next-steps"></a>后续步骤 
 

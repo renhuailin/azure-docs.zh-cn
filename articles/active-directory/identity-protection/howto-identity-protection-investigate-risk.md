@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463937"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251087"
 ---
 # <a name="how-to-investigate-risk"></a>如何：调查风险
 
@@ -90,6 +90,10 @@ ms.locfileid: "84463937"
 - 指向 Microsoft Cloud App Security (MCAS) 中更多详细信息的链接。
 
 然后，管理员可选择返回到用户的风险或登录报表，根据收集到的信息采取措施。
+
+> [!NOTE] 
+> 我们的系统可能会检测到风险用户风险评分的风险事件是误报，或是使用策略实施（如完成 MFA 提示或安全密码更改）修正了用户风险。 因此，我们的系统将消除风险状态，"AI 确认登录安全" 的风险详细信息将会出现，并将不再影响用户的风险。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

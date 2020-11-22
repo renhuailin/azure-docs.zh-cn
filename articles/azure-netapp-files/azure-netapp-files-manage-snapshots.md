@@ -12,24 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591729"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253552"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
 Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自动创建快照。 还可以将快照还原到新卷，使用客户端还原单个文件，或者使用快照还原现有的卷。
 
+> [!NOTE] 
+> 有关跨区域复制中快照管理的注意事项，请参阅 [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)。
+
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>为卷创建按需快照
 
 可以按需创建卷快照。 
 
-1.  前往要为其创建快照的卷。 单击 " **快照** "。
+1.  前往要为其创建快照的卷。 单击 " **快照**"。
 
     ![导航到快照](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -71,13 +74,13 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 快照策略允许你按每小时、每天、每周或每月周期来指定快照创建频率。 还需要为卷指定要保留的最大快照数。  
 
-1.  从 "NetApp 帐户" 视图中，单击 " **快照策略** "。
+1.  从 "NetApp 帐户" 视图中，单击 " **快照策略**"。
 
     ![快照策略导航](../media/azure-netapp-files/snapshot-policy-navigation.png)
 
-2.  在 "快照策略" 窗口中，将 "策略状态" 设置为 " **已启用** "。 
+2.  在 "快照策略" 窗口中，将 "策略状态" 设置为 " **已启用**"。 
 
-3.  单击 **每小时** 、 **每日** 、 **每周** 或 **每月** 选项卡，创建每小时、每日、每周或每月快照策略。 指定 **要保留的快照数** 。  
+3.  单击 **每小时**、 **每日**、 **每周** 或 **每月** 选项卡，创建每小时、每日、每周或每月快照策略。 指定 **要保留的快照数**。  
 
     请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md) ，了解卷允许的最大快照数。 
 
@@ -97,7 +100,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“保存”  。  
+4.  单击“ **保存**”。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -110,11 +113,11 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 不能将快照策略应用于跨区域复制中的目标卷。  
 
-1.  请在 " **卷** " 页上，右键单击要向其应用快照策略的卷，然后选择 " **编辑** "。
+1.  请在 " **卷** " 页上，右键单击要向其应用快照策略的卷，然后选择 " **编辑**"。
 
     ![卷右键单击菜单](../media/azure-netapp-files/volume-right-cick-menu.png) 
 
-2.  在 "编辑" 窗口中的 " **快照策略** " 下，选择要用于卷的策略。  单击 **"确定"** 应用该策略。  
+2.  在 "编辑" 窗口中的 " **快照策略**" 下，选择要用于卷的策略。  单击 **"确定"** 应用该策略。  
 
     ![快照策略编辑](../media/azure-netapp-files/snapshot-policy-edit.png) 
 
@@ -122,21 +125,21 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 您可以修改现有的快照策略，以更改策略状态、快照频率 (每小时、每天、每周或每月) 或要保留的快照数。  
  
-1.  从 "NetApp 帐户" 视图中，单击 " **快照策略** "。
+1.  从 "NetApp 帐户" 视图中，单击 " **快照策略**"。
 
-2.  右键单击要修改的快照策略，然后选择 " **编辑** "。
+2.  右键单击要修改的快照策略，然后选择 " **编辑**"。
 
     ![快照策略右键单击菜单](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
-3.  在出现的 "快照策略" 窗口中进行更改，然后单击 " **保存** "。 
+3.  在出现的 "快照策略" 窗口中进行更改，然后单击 " **保存**"。 
 
 ### <a name="delete-a-snapshot-policy"></a>删除快照策略 
 
 你可以删除不再想要保留的快照策略。   
 
-1.  从 "NetApp 帐户" 视图中，单击 " **快照策略** "。
+1.  从 "NetApp 帐户" 视图中，单击 " **快照策略**"。
 
-2.  右键单击要修改的快照策略，然后选择 " **删除** "。
+2.  右键单击要修改的快照策略，然后选择 " **删除**"。
 
     ![快照策略右键单击菜单](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -164,7 +167,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
     ![将快照还原到新卷](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 3. 在 "创建卷" 窗口中，为新卷提供以下信息：  
-    * **Name**   
+    * **名称**   
         指定要创建的卷的名称。  
         
         名称在资源组中必须唯一。 它的长度必须至少为三个字符。  它可以使用任何字母数字字符。
@@ -174,7 +177,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![还原到新卷](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 单击 " **查看 + 创建** "。  单击“创建”。   
+4. 单击 " **查看 + 创建**"。  单击“创建”。    
     新卷使用的协议与快照使用的协议相同。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
 
@@ -226,24 +229,24 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![粘贴要还原的文件](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
 
-4. 你还可以右键单击父目录，选择 " **属性** "，单击 " **以前的版本** " 选项卡以查看快照列表，然后选择 " **还原** " 以还原文件。  
+4. 你还可以右键单击父目录，选择 " **属性**"，单击 " **以前的版本** " 选项卡以查看快照列表，然后选择 " **还原** " 以还原文件。  
 
     ![属性以前的版本](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
 
 ## <a name="revert-a-volume-using-snapshot-revert"></a>使用快照还原还原卷
 
-快照还原功能使你能够快速将卷恢复到创建特定快照时的状态。 在大多数情况下，恢复卷比将单个文件从快照还原到活动文件系统要快得多。 与将快照还原到新卷相比，此方法也更节省空间。 
+快照还原功能使你能够快速将卷还原到创建特定快照时的状态。 在大多数情况下，还原卷比将单个文件从快照还原到活动文件系统要快得多。 与将快照还原到新卷相比，此方法也更节省空间。 
 
 可以在卷的 "快照" 菜单中找到 "恢复卷" 选项。 选择重新确定的快照后，Azure NetApp 文件会将该卷还原到所选快照创建时所包含的数据和时间戳。 
 
 > [!IMPORTANT]
 > 在所选快照创建后拍摄的活动文件系统数据和快照将丢失。 快照还原操作会将目标卷中的 *所有* 数据替换为所选快照中的数据。 选择快照时，应注意快照内容和创建日期。 不能撤消快照还原操作。
 
-1. 中转到卷的 " **快照** " 菜单。  右键单击要用于还原操作的快照。 选择 " **恢复卷** "。 
+1. 中转到卷的 " **快照** " 菜单。  右键单击要用于还原操作的快照。 选择 " **恢复卷**"。 
 
     ![描述快照右键单击菜单的屏幕截图](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 
-2. 在 "将卷还原到快照" 窗口中，键入卷的名称，然后单击 " **还原** "。   
+2. 在 "将卷还原到快照" 窗口中，键入卷的名称，然后单击 " **还原**"。   
 
     卷现在会还原到所选快照的时间点。
 
@@ -253,7 +256,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 您可以删除不再需要保留的快照。 
 
-1. 中转到卷的 " **快照** " 菜单。 右键单击要删除的快照。 选择“删除”。
+1. 中转到卷的 " **快照** " 菜单。 右键单击要删除的快照。 选择“删除” 。
 
     ![描述快照右键单击菜单的屏幕截图](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 

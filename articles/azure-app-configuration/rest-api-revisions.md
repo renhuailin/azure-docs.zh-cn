@@ -6,23 +6,22 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423964"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246378"
 ---
 # <a name="key-value-revisions"></a>键值修订
 
-api 版本：1。0
+*键值修订* 定义键值资源的历史表示形式。 对于免费层商店，修订版本为7天后过期，对于标准层商店则为30天。 修订版本支持该 `List` 操作。
 
-**键值修订** 定义键值资源的历史表示形式。 对于免费层商店，修订版本为7天后过期，对于标准层商店则为30天。 修订版本支持以下操作：
+对于所有操作， ``key`` 是一个可选参数。 如果省略，则表示任意键。
 
-- 列出
+对于所有操作， ``label`` 是一个可选参数。 如果省略，则表示任意标签。
 
-对于所有操作， ``key`` 是一个可选参数。 如果省略，则表示 **任意** 键。
-对于所有操作， ``label`` 是一个可选参数。 如果省略，则表示 **任意** 标签。
+本文适用于 API 版本1.0。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>分页
 
-如果返回的项数超过响应限制，则会对结果进行分页。 遵循可选的 ``Link`` 响应标头并用于 ``rel="next"`` 导航。  或者，内容提供了属性的下一个链接 ``@nextLink`` 。
+如果返回的项数超过响应限制，则会对结果进行分页。 遵循可选的 ``Link`` 响应标头并用于 ``rel="next"`` 导航。 或者，内容提供了属性形式的下一个链接 ``@nextLink`` 。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>列出修订部分
 
-使用 `Range` 请求标头。 响应将包含一个 `Content-Range` 标头。 如果服务器无法满足所请求的范围，则它将通过 HTTP `416` (RangeNotSatisfiable 进行响应) 
+使用 `Range` 请求标头。 响应包含一个 `Content-Range` 标头。 如果服务器无法满足所请求的范围，则它会通过 HTTP () 来做出响应 `416` `RangeNotSatisfiable` 。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,6 +134,8 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>保留字符
 
+保留字符为：
+
 `*`, `\`, `,`
 
 如果保留字符是值的一部分，则必须使用对其进行转义 `\{Reserved Character}` 。 非保留字符也可以转义。
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>示例
 
-- 全部
+- 所有：
 
     ```http
     GET /revisions
     ```
 
-- 项名称以 **abc** 开头的项
+- 项名称以 **abc** 开头的项：
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- 项名称为 **abc** 或 **xyz** 并且标签包含 **生产** 的项
+- 项名称为 **abc** 或 **xyz** 并且标签包含 **生产**：
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -186,9 +187,9 @@ Content-Type: application/problem+json; charset=utf-8
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Time-Based 访问
+## <a name="time-based-access"></a>基于时间的访问
 
-获取结果的表示形式，即过去的时间。 请参阅[2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1)部分
+获取结果的表示形式，即过去的时间。 有关详细信息，请参阅用于 [Time-Based 访问资源状态的 HTTP Framework--名册](https://tools.ietf.org/html/rfc7089#section-2.1)，第2.1.1 部分。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
