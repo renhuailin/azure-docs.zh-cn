@@ -89,6 +89,8 @@
               href: samples/resource-manager-web-app.md
             - name: Azure Functions
               href: samples/resource-manager-function-app.md
+        - name: 数据收集规则
+          href: samples/resource-manager-data-collection-rules.md
         - name: 诊断设置
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics 工作区
@@ -164,6 +166,7 @@
         - name: 部署 Azure Monitor
           href: deploy.md
         - name: 大规模部署
+          displayName: 'Azure Policy, Policy'
           href: deploy-scale.md
     - name: 管理和配置
       items:
@@ -344,13 +347,16 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
             - name: 概述
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
+            - name: 安装
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-install.md
             - name: 数据收集
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
@@ -433,7 +439,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -853,7 +859,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md

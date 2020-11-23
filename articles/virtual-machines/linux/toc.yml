@@ -397,7 +397,7 @@
               href: dedicated-hosts-cli.md
             - name: 门户
               href: ../dedicated-hosts-portal.md
-        - name: 部署点 VM
+        - name: 部署现成 VM
           items:
             - name: CLI
               href: spot-cli.md
