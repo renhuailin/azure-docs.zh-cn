@@ -191,6 +191,8 @@
           href: use-managed-identities-environments.md
         - name: 环境的安全警报
           href: environment-security-alerts.md
+        - name: 创建以应用程序为中心的环境
+          href: create-application-centric-environment.md
     - name: 管理可重用模板
       items:
         - name: 自定义映像和公式

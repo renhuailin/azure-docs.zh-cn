@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: 概述
+      items:
+        - name: Synapse Link for Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 快速入门
       items:
         - name: 连接到 Synapse Link for Cosmos DB
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: 概念
       items:
-        - name: Synapse Link for Azure Cosmos DB
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 分析存储 - 概述
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link 支持的功能
@@ -967,7 +969,7 @@
   items:
     - name: 概述
       items:
-        - name: Synapse Analytics 中的机器学习是指什么？
+        - name: Azure Synapse 中的机器学习是指什么？
           href: machine-learning/what-is-machine-learning.md
     - name: 快速入门
       items:

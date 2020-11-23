@@ -9,7 +9,7 @@
   items:
     - name: 启用自助式密码重置
       href: tutorial-enable-sspr.md
-    - name: 启用 Azure 多重身份验证
+    - name: 启用 Azure AD 多重身份验证
       href: tutorial-enable-azure-mfa.md
     - name: 启用向本地进行密码写回
       href: tutorial-enable-sspr-writeback.md
@@ -80,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: 用于 Windows 客户端的 SSPR
           href: howto-sspr-windows.md
-    - name: Azure 多重身份验证
+    - name: Azure AD 多重身份验证
       items:
         - name: 部署指南
           href: howto-mfa-getstarted.md
@@ -108,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: NPS 扩展的高级配置
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN 与 Azure MFA
+            - name: Azure VPN 和 Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: 远程桌面网关
               href: howto-mfa-nps-extension-rdg.md

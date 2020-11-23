@@ -57,6 +57,12 @@
               href: manage-vm-extensions-template.md
         - name: 管理代理
           href: manage-agent.md
+    - name: 方案
+      items:
+        - name: 加入 Azure Sentinel
+          href: scenario-onboard-azure-sentinel.md
+        - name: 加入 Azure 安全中心
+          href: /security-center/quickstart-onboard-machines.md
     - name: 疑难解答
       items:
         - name: 代理连接问题

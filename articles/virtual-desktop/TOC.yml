@@ -96,7 +96,7 @@
       href: app-attach.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
-    - name: 设置 Azure 多重身份验证
+    - name: 设置 Azure AD 多重身份验证
       href: set-up-mfa.md
     - name: 配置自动更新
       href: configure-automatic-updates.md

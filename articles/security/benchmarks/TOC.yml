@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: API 管理安全基线
       href: ../../api-management/security-baseline.md
+    - name: 应用服务安全基线
+      href: ../../app-service/security-baseline.md
     - name: 应用程序网关安全基线
       href: ../../application-gateway/security-baseline.md
     - name: 自动化安全基线
       href: ../../automation/security-baseline.md
+    - name: Azure 顾问安全基线
+      href: ../../advisor/security-baseline.md
     - name: Azure 备份安全基线
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis 安全基线
@@ -77,6 +81,8 @@
       href: /azure/data-explorer/security-baseline
     - name: Azure 数据工厂安全基线
       href: ../../data-factory/security-baseline.md
+    - name: Azure Data Share 安全基线
+      href: ../../data-share/security-baseline.md
     - name: Azure Database for MySQL 安全基线
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB 安全基线
@@ -87,6 +93,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks 安全基线
       href: /azure/databricks/scenarios/security-baseline
+    - name: Azure Defender for IoT 安全基线
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure DNS 安全基线
       href: ../../dns/security-baseline.md
     - name: Azure 开发测试实验室安全基线
@@ -97,16 +105,24 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全基线
       href: ../../azure-functions/security-baseline.md
+    - name: Azure HPC 缓存安全基线
+      href: ../../hpc-cache/security-baseline.md
+    - name: Azure 信息保护安全基线
+      href: /azure/information-protection/security-baseline
     - name: Azure IoT 中心安全基线
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes 服务安全基线
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse 安全基线
+      href: ../../lighthouse/security-baseline.md
     - name: Azure 负载均衡器安全基线
       href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor 安全基线
       href: ../../azure-monitor/security-baseline.md
     - name: Azure 机器学习安全基线
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Migrate Learning 安全基线
+      href: ../../migrate/security-baseline.md
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure 专用链接安全基线

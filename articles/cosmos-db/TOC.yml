@@ -839,9 +839,9 @@
             - name: Azure 事件中心和 Azure 存储
               href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
             - name: 使用 Spring Boot Starter
-              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: Spring Data 开发人员指南
-              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: ODBC 驱动程序
               href: odbc-driver.md
     - name: 参考
@@ -945,6 +945,8 @@
               href: oracle-migrate-cosmos-db-blitzz.md
             - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Blitzz）
               href: cassandra-migrate-cosmos-db-blitzz.md
+            - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Databricks）
+              href: cassandra-migrate-cosmos-db-databricks.md
         - name: 更改源
           href: cassandra-change-feed.md
         - name: 创建容器 - Cassandra API
@@ -956,7 +958,7 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: 存储和管理 Spring Data
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Cassandra 和 Spark
           items:
             - name: 简介
@@ -1092,7 +1094,7 @@
         - name: 查询性能故障排除
           href: mongodb-troubleshoot-query.md
         - name: 存储和管理 Spring Data
-          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: MongoDB 扩展命令
           href: mongodb-custom-commands.md
           displayName: custom commands
@@ -1173,7 +1175,7 @@
         - name: 将图数据可视化
           href: graph-visualization.md
         - name: 存储和管理 Spring Data
-          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: 使用资源管理器模板进行管理
           href: templates-samples-gremlin.md
           displayName: ARM
