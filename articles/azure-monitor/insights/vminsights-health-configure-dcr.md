@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686702"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318093"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>使用数据收集规则在用于 VM 的 Azure Monitor 来宾健康状况中配置监视 (预览版) 
 [用于 VM 的 Azure Monitor 来宾健康状况](vminsights-health-overview.md) 允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用数据收集规则来修改多个虚拟机上的默认监视。
@@ -30,7 +30,7 @@ ms.locfileid: "94686702"
 ## <a name="monitor-properties"></a>监视器属性
 下表描述了可在每个监视器上配置的属性。
 
-| 属性 | 监视器 | 说明 |
+| Property | 监视器 | 说明 |
 |:---|:---|:---|
 | 已启用 | 聚合<br>计价单位 | 如果为 true，则计算状态监视器并对虚拟机的运行状况进行贡献。 这会触发启用警报警报。 |
 | 警报 | 聚合<br>计价单位 | 如果为 true，则当监视器进入不正常状态时，会触发警报。 如果为 false，则监视器的状态仍会影响虚拟机的运行状况，这可能会触发警报。 |
@@ -47,17 +47,17 @@ ms.locfileid: "94686702"
 下表列出了每个监视器的默认配置。 此默认配置无法直接更改，但你可以定义将修改某些虚拟机的监视配置的 [替代](#overrides) 。
 
 
-| 监视器 | 已启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
+| 监视 | 已启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| CPU 使用率  | True | False | None | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
-| 可用内存 | True | False | None | \< 100 MB | 60 秒 | 240秒 | 最大值 | 2 | 3 |
-| 文件系统      | True | False | None | \< 100 MB | 60 秒 | 120秒 | 最大值 | 1 | 1 |
+| CPU 使用率  | True | False | 无 | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
+| 可用内存 | True | False | 无 | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
+| 文件系统      | True | False | 无 | \< 100 MB | 60 秒 | 120秒 | Max | 1 | 1 |
 
 
 ## <a name="overrides"></a>替代
 *重写* 将更改监视器的一个或多个属性。 例如，重写可以禁用默认情况下启用的监视器、定义监视器的警告标准或修改监视器的严重阈值。 
 
-重写在 [数据收集规则 (DCR) ](../platform/data-collection-rule-overview.md)中定义。 可以使用不同的替代集创建多个 Dcr，并将其应用于多个虚拟机。 按照为 [Azure Monitor 代理 (预览版) 配置数据收集 ](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations)中所述，通过创建关联来将 DCR 应用到虚拟机。
+重写在 [数据收集规则 (DCR) ](../platform/data-collection-rule-overview.md)中定义。 可以使用不同的替代集创建多个 Dcr，并将其应用于多个虚拟机。 按照为 [Azure Monitor 代理 (预览版) 配置数据收集 ](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations)中所述，通过创建关联来将 DCR 应用到虚拟机。
 
 
 ## <a name="multiple-overrides"></a>多次替代
@@ -100,7 +100,7 @@ ms.locfileid: "94686702"
 ]
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `name` | 是 | 扩展的用户定义字符串。 |
 | `streams` | 是 | 来宾运行状况数据将发送到的流的列表。 这必须包括 **HealthStateChange**。  |
@@ -119,7 +119,7 @@ ms.locfileid: "94686702"
 }
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `schemaVersion` | 是 | 由 Microsoft 定义的字符串，用于表示元素的预期架构。 当前必须设置为1。0 |
 | `contentVersion` | 否 | 用户定义的字符串，用于跟踪不同版本的运行状况配置（如果需要）。 |
@@ -140,7 +140,7 @@ ms.locfileid: "94686702"
 ]
 ```
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |:---|:---|:---|
 | `scopes` | 是 | 指定此替代适用的虚拟机的一个或多个作用域的列表。 尽管 DCR 与虚拟机关联，但虚拟机必须在作用域内，才能应用替代。 |
 | `monitors` | 是 | 定义将接收此重写的监视器的一个或多个字符串的列表。  |
@@ -246,7 +246,7 @@ ms.locfileid: "94686702"
 },
 ```
 
-| 属性 | 必需 | 说明 | 
+| Property | 必需 | 说明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否启用条件。 如果设置为 **false**，则禁用条件，即使可以设置阈值和操作员属性。 |
 | `threshold` | 否 | 定义用于比较计算值的阈值。 |
@@ -264,7 +264,7 @@ ms.locfileid: "94686702"
 },
 ```
 
-| 属性 | 必需 | 说明 | 
+| Property | 必需 | 说明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否启用条件。 如果设置为 **false**，则禁用条件，即使可以设置阈值和操作员属性。 |
 | `threshold` | 否 | 定义用于比较计算值的阈值。 |

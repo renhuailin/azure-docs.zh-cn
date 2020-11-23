@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686688"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318127"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>启用用于 VM 的 Azure Monitor 来宾健康状况 (预览版) 
 用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
@@ -24,12 +24,18 @@ ms.locfileid: "94686688"
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更高版本
 - 虚拟机必须位于以下区域之一：
+  - 澳大利亚东部
   - Australia Southeast
+  - 印度中部
   - 美国中部
   - 美国东部
   - 美国东部 2
   - 美国东部 2 EUAP
+  - 德国中西部
+  - 日本东部
+  - 美国中北部
   - 北欧
+  - 美国中南部
   - 东南亚
   - 英国南部
   - 西欧

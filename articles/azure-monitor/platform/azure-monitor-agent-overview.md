@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919671"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315577"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -54,7 +54,7 @@ Azure Monitor 代理使用 Azure Monitor 的 [通用代理进行](agents-overvie
 
 - Azure Monitor 代理不支持用于 VM 的 Azure Monitor 和 Azure 安全中心等解决方案和见解。 当前支持的唯一方案是使用你配置的数据收集规则收集数据。 
 - 数据收集规则必须与用作目标的任何 Log Analytics 工作区在同一区域中创建。
-- 目前仅支持 Azure 虚拟机。 当前不支持本地虚拟机、虚拟机规模集、服务器的 Arc、Azure Kubernetes 服务和其他计算资源类型。
+- 目前支持 azure 虚拟机和启用了 Azure Arc 的服务器。当前不支持虚拟机规模集、Azure Kubernetes 服务和其他计算资源类型。
 - 虚拟机必须具有以下 HTTPS 终结点的访问权限：
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -94,50 +94,8 @@ Azure Monitor 代理无需任何密钥，而是需要 [系统分配的托管标�
 ## <a name="networking"></a>网络
 Azure Monitor 代理支持 Azure 服务标记 (需要) AzureMonitor 和 AzureResourceManager 标记，但尚不能使用 Azure Monitor 私有链接范围或直接代理。
 
-## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
-使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
-
-| properties | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
-| 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
-
-使用任意方法安装 Azure Monitor 代理，使用 PowerShell 或 CLI 安装虚拟机代理，包括以下各项。 另外，还可以使用门户在 Azure 订阅中的虚拟机上安装代理，并使用 [配置 Azure Monitor 代理 (预览版) 的数据收集 ](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)过程中所述的过程来配置数据收集。
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[CLI](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[CLI](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
-```
----
 
 ## <a name="next-steps"></a>后续步骤
 
+- 在 Windows 和 Linux 虚拟机上[安装 Azure Monitor 代理](azure-monitor-agent-install.md)。
 - [创建数据收集规则](data-collection-rule-azure-monitor-agent.md) 以从代理收集数据并将其发送到 Azure Monitor。
