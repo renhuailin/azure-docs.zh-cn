@@ -2,23 +2,25 @@
 title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/20/2020
+ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066332"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95396801"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
-Azure 服务总线云服务和本地 [Windows Server 服务总线（服务总线 1.1）](/previous-versions/service-bus-archive/dn282144(v=azure.100))均支持高级消息队列协议 (AMQP) 1.0。 AMQP 让你能够使用开放标准协议构建跨平台的混合应用程序。 可以借助使用不同语言和框架构建的且运行在不同操作系统上的组件来构建应用程序。 所有这些组件均可连接到服务总线，并且能够高效且完全无损地无缝交换结构化业务消息。
+Azure 服务总线云服务使用 [高级消息队列协议 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作为其主要通信方式。 Microsoft 已与行业中的合作伙伴共同合作，共同的消息传递代理的客户和供应商在过去十年中开发和发展 AMQP，并在 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中开发新扩展。 AMQP 1.0 是 ISO 和 IEC 标准 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
+
+AMQP 使你能够使用非特定于供应商和实现的开放标准协议构建跨平台的混合应用程序。 可以借助使用不同语言和框架构建的且运行在不同操作系统上的组件来构建应用程序。 所有这些组件均可连接到服务总线，并且能够高效且完全无损地无缝交换结构化业务消息。
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>简介：什么是 AMQP 1.0，为何它很重要？
-通常，面向消息的中间件产品始终使用专用协议来支持客户端应用程序和代理之间的通信。 这意味着，在选择特定供应商的消息传递代理后，必须使用该供应商的库将客户端应用程序连接到该代理。 这会导致在一定程度上依赖于该供应商，因为将应用程序传送到其他产品需要对所有已连接应用程序进行代码改写。 
+通常，面向消息的中间件产品始终使用专用协议来支持客户端应用程序和代理之间的通信。 这意味着，在选择特定供应商的消息传递代理后，必须使用该供应商的库将客户端应用程序连接到该代理。 这会导致在一定程度上依赖于该供应商，因为将应用程序传送到其他产品需要对所有已连接应用程序进行代码改写。 Java 社区中的特定于语言的 API 标准（如 Java 消息服务 (JMS) 和弹簧框架的抽象）在某种程度上缓解了这一难题，但其功能范围很窄，并排除了使用其他语言的开发人员。
 
-此外，连接来自不同供应商的消息传递代理比较棘手。 这通常需要通过应用程序级桥接来将消息从一个系统移到另一个系统，并在其专用消息格式之间进行转换。 这是一个常见的要求；例如，在必须向较旧的独立系统提供新的统一接口时，或者在合并后集成 IT 系统时。
+此外，连接来自不同供应商的消息传递代理比较棘手。 这通常需要通过应用程序级桥接来将消息从一个系统移到另一个系统，并在其专用消息格式之间进行转换。 这是一个常见的要求；例如，在必须向较旧的独立系统提供新的统一接口时，或者在合并后集成 IT 系统时。 AMQP 允许直接连接代理，例如使用 [Apache Qpid 调度路由器](https://qpid.apache.org/components/dispatch-router/index.html) 或 broker-本机 "shovels" 之类的路由器，如 [RabbitMQ](service-bus-integrate-with-rabbitmq.md)中的一个。
 
-软件产业是一个飞速发展的产业；新编程语言和应用程序框架的引入速度有时会非常惊人。 同样，IT 系统的要求随着时间不断变化，并且开发人员希望利用最新的平台功能。 但有时候，所选消息传送供应商不支持这些平台。 由于使用的是专用消息协议，其他供应商无法为这些新平台提供库。 因此，必须使用构建网关等手段，或者可让你继续使用消息传递产品的网桥。
+软件产业是一个飞速发展的产业；新编程语言和应用程序框架的引入速度有时会非常惊人。 同样，IT 系统的要求随着时间不断变化，并且开发人员希望利用最新的平台功能。 但有时候，所选消息传送供应商不支持这些平台。 如果消息传递协议是专有的，则其他人不可能为这些新平台提供库。 因此，必须使用构建网关等手段，或者可让你继续使用消息传递产品的网桥。
 
 这些问题推动了高级消息队列协议 (AMQP) 1.0 的开发。 这种协议源于 JP Morgan Chase，像多数金融服务公司一样，该公司大量使用面向消息的中间件。 目标非常简单：就是创建一个开放标准消息传送协议，从而能够借助使用不同语言、框架和操作系统构建的组件来构建基于消息的应用程序，而所有这些应用程序都使用各个供应商提供的同类最佳组件。
 
@@ -40,6 +42,8 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * **技术供应商**：Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
 * **企业用户**：Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
 
+[OASIS AMQP 技术委员会] 的当前椅子 ( # B1 https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) 表示 Red Hat 和 Microsoft。
+
 开放标准的公认好处包括：
 
 * 供应商锁定的几率较低
@@ -50,7 +54,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 风险较低且可控
 
 ## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
-Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
+Azure 服务总线中的 AMQP 1.0 支持意味着可以使用有效的二进制协议，从一系列平台利用服务总线队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
 
@@ -58,21 +62,31 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 **图 1：演示使用服务总线和 AMQP 1.0 进行跨平台消息传送的部署方案示例**
 
-在这种情况下，已知下列客户端库将使用服务总线：
+通过 Azure SDK 提供的所有支持的服务总线客户端库均使用 AMQP 1.0。
+
+- [适用于 .NET 的 Azure 服务总线](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
+- [适用于 Java 的 Azure 服务总线库](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [适用于 Java JMS 2.0 的 Azure 服务总线提供程序](how-to-use-java-message-service-20.md)
+- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
+- [用于 Python 的 Azure 服务总线库](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+
+此外，还可以使用任何 AMQP 1.0 兼容协议堆栈中的服务总线：
 
 | 语言 | 库 |
 | --- | --- |
-| Java |Apache Qpid Java 消息服务 (JMS) 客户端<br/>软件 SwiftMQ IIT Java 客户端 |
-| C |Apache Qpid Proton-C |
-| PHP |Apache Qpid Proton-PHP |
-| Python |Apache Qpid Proton-Python |
-| C# |AMQP .NET Lite |
+| Java | [Apache Qpid Proton-J](https://qpid.apache.org/proton/index.html) |
+| C/C++ |[Azure UAMQP C](https://github.com/azure/azure-uamqp-c/)、 [Apache Qpid Proton-C](https://qpid.apache.org/proton/index.html) |
+| Python |[用于 python 的 Azure uAMQP](https://github.com/azure/azure-uamqp-python/)、 [Apache Qpid Proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
+| PHP | [Azure uAMQP for PHP](https://github.com/vsouz4/azure-uamqp-php/) |
+| Ruby | [Apache Qpid Proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
+| Go | [Azure 中转 AMQP](https://github.com/Azure/go-amqp)， [Apache Qpid Proton](https://github.com/apache/qpid-proton/tree/master/go/examples)
+| C #/F #/VB | [AMQP .Net Lite](https://github.com/Azure/amqpnetlite)， [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
+| JavaScript/节点 | [Rhea](https://github.com/grs/rhea) |
 
 **图 2：AMQP 1.0 客户端库表**
 
 ## <a name="summary"></a>总结
 * AMQP 1.0 是一个开放、可靠的消息传递协议，可用于构建跨平台的混合应用程序。 AMQP 1.0 是一种 OASIS 标准。
-* Azure 服务总线和 Windows Server 服务总线（服务总线 1.1）都支持 AMQP 1.0。 定价与现有协议相同。
 
 ## <a name="next-steps"></a>后续步骤
 准备好了解详细信息？ 请访问以下链接：
@@ -80,10 +94,8 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 * [使用 AMQP 通过 .NET 使用服务总线]
 * [使用 AMQP 通过 Java 使用服务总线]
 * [在 Azure Linux VM 上安装 Apache Qpid Proton-C]
-* [Service Bus for Windows Server 中的 AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [使用 AMQP 通过 .NET 使用服务总线]: service-bus-amqp-dotnet.md
 [使用 AMQP 通过 Java 使用服务总线]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[在 Azure Linux VM 上安装 Apache Qpid Proton-C]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)
+[在 Azure Linux VM 上安装 Apache Qpid Proton-C]：: 

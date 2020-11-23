@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: b03d559b8952a61896fa79a568fb8200b3618fed
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ea0e8c148a847ecc23bab5e87a1dc60a626cf0c1
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968632"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411608"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux (RHEL) Azure 中提供的映像
 Azure 针对不同用例提供各种 RHEL 映像。
@@ -27,7 +27,7 @@ Azure 针对不同用例提供各种 RHEL 映像。
 > [!NOTE]
 > 不会再生成原始映像以支持 LVM 分区映像。 LVM 与较旧的原始 (非 LVM) 分区方案相比，具有多项优势，包括更灵活的分区调整大小选项。
 
-产品/服务| SKU | 分区 | 设置 | 说明
+产品/服务| SKU | 分区 | 设置 | 注释
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理 | 从12月1日起提供扩展生命周期支持。 [此处提供更多详细信息。](redhat-extended-lifecycle-support.md)
 |             | 6.8      | RAW    | Linux 代理 | 从12月1日起提供扩展生命周期支持。 [此处提供更多详细信息。](redhat-extended-lifecycle-support.md)
@@ -55,12 +55,14 @@ RHEL          | 6.7      | RAW    | Linux 代理 | 从12月1日起提供扩展�
 |             | 8-lvm-gen2| LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.x 版映像。 已附加到常规存储库。
 |             | 8        | LVM    | Linux 代理 | RHEL 8.0 映像。
 |             | 8-gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.0 映像。
-|             | 8.1      | LVM    | Linux 代理 | RHEL 8.2 映像。 当前已附加到常规存储库。
-|             | 81gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.1 映像。 当前已附加到常规存储库。
-|             | 8.1-ci   | LVM    | Linux 代理 | RHEL 8.1 映像，使用 cloud init 作为预配代理。 当前已附加到常规存储库。
-|             | 81-ci-gen2| LVM    | Linux 代理 | Hyper-v 第2代-使用 cloud init 作为预配代理的 RHEL 8.1 映像。 当前已附加到常规存储库。
-|             | 8.2      | LVM    | Linux 代理 | RHEL 8.2 映像。 当前已附加到常规存储库。
-|             | 82gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.1 映像。 当前已附加到常规存储库。
+|             | 8.1      | LVM    | Linux 代理 | 默认情况下附加到 EUS 存储库。
+|             | 81gen2   | LVM    | Linux 代理 | Hyper-v 第2代-附加到2020年11月的 EUS 存储库。
+|             | 8.1-ci   | LVM    | Linux 代理 | 附加到 EUS 存储库，截至2020年11月。
+|             | 81-ci-gen2| LVM    | Linux 代理 | Hyper-v 第2代-附加到2020年11月的 EUS 存储库。
+|             | 8.2      | LVM    | Linux 代理 | 附加到 EUS 存储库，截至2020年11月。
+|             | 82gen2   | LVM    | Linux 代理 | Hyper-v 第2代-附加到2020年11月的 EUS 存储库。
+|             | 8.3   | LVM    | Linux 代理 |   (EUS 无法用于 RHEL 8.3) 连接到常规存储库
+|             | 83-gen2   | LVM    | Linux 代理 |Hyper-v 第2代-附加到常规存储库 (EUS 不可用于 RHEL 8.3) 
 RHEL-SAP      | 7.4      | LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.4。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
 |             | 74sap-gen2| LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.4。 第2代映像。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
 |             | 7.5       | LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.5。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
@@ -76,6 +78,11 @@ RHEL-SAP-APPS | 6.8       | RAW    | Linux 代理 | RHEL 6.8 for SAP Business Ap
 |             | 7.4       | LVM    | Linux 代理 | RHEL 7.4 for SAP Business Applications。
 |             | 7.6       | LVM    | Linux 代理 | RHEL 7.6 for SAP Business Applications。
 |             | 7.7       | LVM    | Linux 代理 | RHEL 7.7 for SAP Business Applications。
+|             | 77-gen2       | LVM    | Linux 代理 | RHEL 7.7 for SAP Business Applications。 第2代映像
+|             | 8.1       | LVM    | Linux 代理 | RHEL 8.1 for SAP Business Applications。
+|             | 81-gen2      | LVM    | Linux 代理 | RHEL 8.1 for SAP Business Applications。 第2代映像。
+|             | 8.2       | LVM    | Linux 代理 | RHEL 8.2 for SAP Business Applications。
+|             | 82-gen2      | LVM    | Linux 代理 | RHEL 8.2 for SAP Business Applications。 第2代映像。
 RHEL-HA       | 7.4       | LVM    | Linux 代理 | RHEL 7.4 with HA 加载项。 将根据基础计算费用，对高可用性和 RHEL 的高级版进行收费。 过时，支持 RHEL-SAP-HA 映像。
 |             | 7.5       | LVM    | Linux 代理 | RHEL 7.5 with HA 加载项。 将根据基础计算费用，对高可用性和 RHEL 的高级版进行收费。 过时，支持 RHEL-SAP-HA 映像。
 |             | 7.6       | LVM    | Linux 代理 | RHEL 7.6 with HA 加载项。 将根据基础计算费用，对高可用性和 RHEL 的高级版进行收费。 过时，支持 RHEL-SAP-HA 映像。
@@ -86,6 +93,10 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux 代理 | RHEL 7.4，适用于具�
 |             | 76sapha-gen2 | LVM    | Linux 代理 | RHEL 7.6，适用于具有 HA 和更新服务的 SAP。 第2代映像。 已附加到 E4S 存储库。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
 |             | 7.7          | LVM    | Linux 代理 | RHEL 7.7，适用于具有 HA 和更新服务的 SAP。 已附加到 E4S 存储库。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
 |             | 77sapha-gen2 | LVM    | Linux 代理 | RHEL 7.7，适用于具有 HA 和更新服务的 SAP。 第2代映像。 已附加到 E4S 存储库。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
+|             | 8.1          | LVM    | Linux 代理 | RHEL 8.1，适用于具有 HA 和更新服务的 SAP。 已附加到 E4S 存储库。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
+|             | 81sapha-gen2          | LVM    | Linux 代理 | RHEL 8.1，适用于具有 HA 和更新服务的 SAP。 附加到 E4S 存储库的第2代映像。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
+|             | 8.2          | LVM    | Linux 代理 | RHEL 8.2，适用于具有 HA 和更新服务的 SAP。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
+|             | 82sapha-gen2          | LVM    | Linux 代理 | RHEL 8.2，适用于具有 HA 和更新服务的 SAP。 附加到 E4S 存储库的第2代映像。 将根据基础计算费用，为 SAP 和 HA 存储库以及 RHEL 支付高级版。
 rhel-byos     |rhel-lvm74| LVM    | Linux 代理 | RHEL 7.4 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
 |             |rhel-lvm75| LVM    | Linux 代理 | RHEL 7.5 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
 |             |rhel-lvm76| LVM    | Linux 代理 | RHEL 7.6 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。

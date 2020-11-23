@@ -3,12 +3,12 @@ title: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
 description: 本文解答有关使用 Azure 备份服务备份 SAP HANA 数据库的常见问题。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686100"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95400201"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
 
@@ -52,6 +52,10 @@ ms.locfileid: "94686100"
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>将 SAP HANA 从 SDC 迁移到 MDC 后，备份是否正常进行？
 
 请参考故障排除指南中的[说明](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)。
+
+### <a name="what-should-be-done-while-upgrading-within-the-same-version"></a>在同一版本中升级时应执行的操作
+
+请参阅故障排除指南中的 [此部分](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) 。
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>是否可以针对虚拟 IP（负载均衡器）而不是虚拟机设置 Azure HANA 备份？
 
@@ -135,7 +139,7 @@ RPO (恢复点目标) 指示用户/客户可接受的数据丢失量。 这取�
 
 RTO (恢复时间目标) 指示在数据丢失方案后，应将数据还原到上一个可用时间点的速度。 这取决于 HANA 使用的恢复策略，这通常取决于还原所需的文件数。 这也会影响成本，下表应有助于理解所有方案及其含义。
 
-|备份策略  |RTO  |成本  |
+|备份策略  |RTO  |Cost  |
 |---------|---------|---------|
 |每日完整 + 日志     |   最快，因为我们只需要一个完整副本 + 所需日志来执行时间点还原      |    Costliest 选项，因为每日都要创建一个完整的副本，因此在保留时间   |
 |每周完整 + 每日差异 + 日志     |   比上述选项慢，但比下一选项更快，因为我们需要一个完整副本 + 一个差异副本 + 日志来执行时间点还原      |    成本较低的选项，因为每日差异通常小于 full，每周一次只创建一次完整副本      |
