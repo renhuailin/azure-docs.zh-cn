@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331748"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557667"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>面向哪些区域提供？
 
@@ -89,7 +89,7 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>如何处理部署失败？
 
-查看任何错误消息并根据需要[在 Azure 门户中提出支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 [Azure 订阅限制、配额和约束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)可能会导致部署失败。 具体来说，客户可能会遇到对每个订阅允许的公共 IP 地址数的限制，这会导致 Azure Bastion 部署失败。
+查看任何错误消息并根据需要[在 Azure 门户中提出支持请求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 [Azure 订阅限制、配额和约束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)可能会导致部署失败。 具体来说，客户可能会遇到对每个订阅允许的公共 IP 地址数的限制，这会导致 Azure Bastion 部署失败。
 
 ### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>如何在灾难恢复计划中纳入 Azure Bastion？
 

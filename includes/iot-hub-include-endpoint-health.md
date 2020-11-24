@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 36c05badb3b2292a29b8227c7f03b841474c97ad
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 24a07109fc8f4d6ebd283dee7ee00107f0eb49b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548106"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557828"
 ---
-可以使用 REST API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 获取终结点的运行状况状态。 当终结点运行状况不佳或运行不正常时，建议使用与路由消息延迟相关的 [IoT 中心路由指标](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics) 来识别和调试错误，因为当终结点处于这些状态之一时，会预计延迟较高。 若要了解有关使用 IoT 中心指标的详细信息，请参阅 [监视 Iot 中心](../articles/iot-hub/monitor-iot-hub.md)。
+可以使用 REST API [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 获取终结点的运行状况状态。 我们建议使用与路由消息延迟相关的 [IoT 中心路由指标](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics)来识别和调试终结点运行状况不佳或运行不正常时的错误，因为我们预计当终结点处于其中一种状态时，延迟会更高。 若要详细了解如何使用 IoT 中心指标，请参阅[监视 IoT 中心](../articles/iot-hub/monitor-iot-hub.md)。
 
 |运行状况状态|说明|
 |---|---|

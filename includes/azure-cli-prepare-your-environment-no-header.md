@@ -5,14 +5,14 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a462f27befbe226496f0ffebd3f57c7058664c38
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d6c5efd1c72c4eca7e4cb03043dbe66ca0df491
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354046"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554046"
 ---
-- 在 bash 环境中使用 [Azure Cloud Shell](/azure/cloud-shell/quickstart)。
+- 在 bash 环境中使用 [Azure Cloud Shell](../articles/cloud-shell/quickstart.md)。
 
    [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)   
 - 如果需要，请[安装](/cli/azure/install-azure-cli) Azure CLI 来运行 CLI 参考命令。

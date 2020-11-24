@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755726"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561312"
 ---
 > [!NOTE]
 > 对于不固定的资源，请开具支持票证，要求增加配额。 请勿尝试通过创建更多 Azure 媒体服务帐户的方式来提高配额限制。
@@ -81,7 +81,7 @@ ms.locfileid: "92755726"
 | 流式处理策略 | 100 <sup>(6)</sup> |
 | 一次与一个资产关联的唯一流式处理定位符 | 100<sup>(7)</sup>（固定） |
 
-<sup>6</sup> 使用自定义[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流定位器。 不应为每个流式处理定位符创建新的流式处理策略。
+<sup>6</sup> 使用自定义[流式处理策略](/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流定位器。 不应为每个流式处理定位符创建新的流式处理策略。
 
 <sup>7</sup> 流定位器不适用于管理每个用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。
 

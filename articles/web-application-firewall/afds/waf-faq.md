@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563641"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545663"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure 前门服务上的 Azure Web 应用程序防火墙常见问题解答
 
@@ -57,6 +57,17 @@ Azure 前门是高度可缩放的全球分布式应用程序和内容交付网�
 
 在 Azure 中应用 WAF 策略时，有两个选项可供选择。 使用 Azure 前门的 WAF 是一种全球分布的边缘安全解决方案。 使用应用程序网关的 WAF 是一个区域专用解决方案。 建议选择一个基于整体性能和安全要求的解决方案。 有关详细信息，请参阅 [通过 Azure 的应用程序交付套件进行负载平衡](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)。
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>在前门上启用 WAF 的建议方法是什么？
+
+在现有应用程序上启用 WAF 时，通常会有误报检测，其中 WAF 规则会将合法流量检测为威胁。 若要最大程度地降低对用户的影响，我们建议执行以下过程：
+
+* 启用 WAF [**检测** 模式](./waf-front-door-create-portal.md#change-mode) ，以确保在执行此过程时，WAF 不会阻止请求。
+  > [!IMPORTANT]
+  > 此过程介绍如何在新的或现有的解决方案中启用 WAF，以便将干扰最小化到应用程序的用户。 如果受到攻击或发生了威胁，你可能想要立即在 **防护** 模式下部署 WAF，并使用优化过程监视和优化 WAF 一段时间。 这可能会导致某些合法流量被阻止，这就是我们仅在威胁时才建议这样做的原因。
+* 遵循我们 [的指导来优化 WAF](./waf-front-door-tuning.md)。 此过程要求您启用诊断日志记录、定期检查日志，并添加规则排除和其他缓解措施。
+* 重复此过程，定期检查日志，直到你认为没有合法流量被阻止。 整个过程可能需要几周的时间。 理想情况下，每次进行优化更改后，会看到误报检测值越少。
+* 最后，在 **防护模式下** 启用 WAF。
+* 即使是在生产环境中运行 WAF，也应继续监视日志以识别任何其他误报检测。 定期查看日志还将帮助你确定已阻止的任何实际攻击尝试。
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>是否支持所有集成平台中的相同 WAF 功能？
 

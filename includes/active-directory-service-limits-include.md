@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 5ac49491d8cb8fc81fe01d6f3d0d85456b190ed9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 42dfa499e0a44d0b468d3a234e9dc88904c361b0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329533"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562080"
 ---
 下面是 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。
 
@@ -30,4 +30,4 @@ ms.locfileid: "94329533"
 | 访问面板 |无论分配的许可证如何，每个用户可以在访问面板中看到的应用程序数量都没有限制。  |
 | 报告 | 在报告中最多可查看或下载 1,000 行。 系统会截断其他任何数据。 |
 | 管理单元 | Azure AD 资源可以是不超出 30 个管理单位的成员。 |
-| Azure AD 角色和权限 | <ul><li>最多可在 Azure AD 组织中创建 30 个 [Azure AD 自定义角色](https://docs.microsoft.com/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure/active-directory/users-groups-roles/context/ugr-context)。</li><li>无法将组添加为[组所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>用户读取其他用户租户信息的能力只能通过以下方式限制：使用 Azure AD组织范围内的开关禁用所有非管理员用户对所有租户信息的访问（不推荐使用）。 有关详细信息，请参阅[限制成员用户的默认权限](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>在管理员角色成员身份添加和撤销生效之前，最多可能需要 15 分钟或注销/登录。</li></ul> |
+| Azure AD 角色和权限 | <ul><li>最多可在 Azure AD 组织中创建 30 个 [Azure AD 自定义角色](/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context)。</li><li>无法将组添加为[组所有者](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context#object-ownership)。</li><li>用户读取其他用户租户信息的能力只能通过以下方式限制：使用 Azure AD组织范围内的开关禁用所有非管理员用户对所有租户信息的访问（不推荐使用）。 有关详细信息，请参阅[限制成员用户的默认权限](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context#restrict-member-users-default-permissions)。</li><li>在管理员角色成员身份添加和撤销生效之前，最多可能需要 15 分钟或注销/登录。</li></ul> |

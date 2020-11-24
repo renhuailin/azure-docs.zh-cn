@@ -9,16 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 5ec1f71d13d5d2fb3af86c1c63d5e61ce13d2c82
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553215"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558559"
 ---
 ### <a name="property-limits"></a>属性限制
 
-对于热存储，Azure 时序见解属性限制增加到1000，冷存储无属性限制。 提供的事件属性具有相应的 JSON、CSV 和图表列，你可以在 [Azure 时序见解 Gen2 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)中查看这些列。
+对于热存储，Azure 时序见解属性限制增加到1000，冷存储无属性限制。 提供的事件属性具有相应的 JSON、CSV 和图表列，你可以在 [Azure 时序见解 Gen2 资源管理器](../articles/time-series-insights/quickstart-explore-tsi.md)中查看这些列。
 
 | SKU | 最大属性数 |
 | --- | --- |
@@ -36,4 +36,4 @@ ms.locfileid: "94553215"
 
 ### <a name="api-limits"></a>API 限制
 
-[REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/preview#limits-1)中指定了针对 Azure 时序见解第 2 代的 REST API 限制。
+[REST API 参考文档](/rest/api/time-series-insights/preview#limits-1)中指定了针对 Azure 时序见解第 2 代的 REST API 限制。

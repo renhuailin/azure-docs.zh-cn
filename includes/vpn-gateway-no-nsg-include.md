@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bbd443c13ac0b79c434d294ecd69a64941ab0d36
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 7c70e2e2d61da5a582bbb6d689c02cde7ffa992d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "72935530"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557914"
 ---
 > [!IMPORTANT]
-> 使用网关子网时，避免将网络安全组 (NSG) 与网关子网关联。 将网络安全组与此子网关联可能会导致虚拟网络网关（VPN、Express Route 网关）停止按预期方式工作。 有关网络安全组的详细信息，请参阅[什么是网络安全组？](../articles/virtual-network/security-overview.md)
+> 使用网关子网时，避免将网络安全组 (NSG) 与网关子网关联。 将网络安全组与此子网关联可能会导致虚拟网络网关（VPN、Express Route 网关）停止按预期方式工作。 有关网络安全组的详细信息，请参阅[什么是网络安全组？](../articles/virtual-network/network-security-groups-overview.md)
 > 
-> 
+>

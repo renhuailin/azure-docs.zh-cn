@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: 3b42d5fbcfb19f08b46241dbe92e6a300bec1df6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1858317d40efa59b188ce894534be93a1f11b287
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81275411"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561182"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM 代理服务器在 TLS 握手中如何通过 SSL 证书进行响应
 
@@ -20,9 +20,8 @@ ms.locfileid: "81275411"
 如果客户使用不发送 [SNI](https://tools.ietf.org/html/rfc6066#section-3) 标头的客户端，则 APIM 会根据以下逻辑创建响应：
 
 * 如果服务仅为代理配置了一个自定义域，则默认证书是已颁发给代理自定义域的证书。
-* 如果服务已为代理配置了多个自定义域（在**开发人员**和**高级**层中受支持），则客户可以指定哪个证书应为默认证书。 若要设置默认证书，[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) 属性应当设置为 true ("defaultSslBinding":"true")。 如果客户未设置该属性，则默认证书是颁发给 *.azure api.net 上托管的默认代理域的证书。
+* 如果服务已为代理配置了多个自定义域（在 **开发人员** 和 **高级** 层中受支持），则客户可以指定哪个证书应为默认证书。 若要设置默认证书，[defaultSslBinding](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) 属性应当设置为 true ("defaultSslBinding":"true")。 如果客户未设置该属性，则默认证书是颁发给 *.azure api.net 上托管的默认代理域的证书。
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>对包含大型有效负载的 PUT/POST 请求的支持
 
-当在 HTTPS 中使用客户端证书时，APIM 代理服务器支持包含大型有效负载的请求（例如，有效负载 > 40 KB）。 若要防止服务器的请求被冻结，客户可以在代理主机名上设置属性 ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration)。 如果该属性设置为 true，则在进行 SSL/TLS 连接时将在交换任何 HTTP 请求之前请求证书。 由于该设置是在**代理主机名**级别应用的，因此，所有连接请求都会请求客户端证书。 客户可以为代理配置最多 20 个自定义域（只有**高级**层才支持）并避开此限制。
-
+当在 HTTPS 中使用客户端证书时，APIM 代理服务器支持包含大型有效负载的请求（例如，有效负载 > 40 KB）。 若要防止服务器的请求被冻结，客户可以在代理主机名上设置属性 ["negotiateClientCertificate": "true"](/rest/api/apimanagement/2019-12-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration)。 如果该属性设置为 true，则在进行 SSL/TLS 连接时将在交换任何 HTTP 请求之前请求证书。 由于该设置是在 **代理主机名** 级别应用的，因此，所有连接请求都会请求客户端证书。 客户可以为代理配置最多 20 个自定义域（只有 **高级** 层才支持）并避开此限制。

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050452"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554950"
 ---
 ## <a name="prepare-for-akv-integration"></a>准备 AKV 集成
 若要使用 Azure Key Vault 集成来配置 SQL Server VM，有以下几个先决条件： 
@@ -38,7 +38,7 @@ ms.locfileid: "86050452"
 
 首先，你需要在订阅中 (AAD) [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) 。 其优点之一是允许为特定用户和应用程序授予对密钥保管库的权限。
 
-然后，将应用程序注册到 AAD。 这会提供一个服务主体帐户，使你有权访问 VM 所需的密钥保管库。 在 Azure Key Vault 文章中，用户可以在[将应用程序注册到 Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) 部分中找到这些步骤，或者可以在[此博客文章](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)的获取应用程序的标识部分中看到这些步骤以及屏幕截图。 在完成这些步骤之前，需要在注册期间收集以下信息，之后在 SQL VM 上启用 Azure Key Vault 集成时需要这些信息。
+然后，将应用程序注册到 AAD。 这会提供一个服务主体帐户，使你有权访问 VM 所需的密钥保管库。 在 Azure Key Vault 文章中，用户可以在[将应用程序注册到 Azure Active Directory](../articles/key-vault/general/manage-with-cli2.md#registering-an-application-with-azure-active-directory) 部分中找到这些步骤，或者可以在[此博客文章](/archive/blogs/kv/azure-key-vault-step-by-step)的获取应用程序的标识部分中看到这些步骤以及屏幕截图。 在完成这些步骤之前，需要在注册期间收集以下信息，之后在 SQL VM 上启用 Azure Key Vault 集成时需要这些信息。
 
 * 添加应用程序后，在“已注册应用”边栏选项卡上找到“应用程序 ID”（也称为 AAD ClientID 或 AppID） 。
     稍后会将该应用程序 ID 分配给 PowerShell 脚本中的 $spName（服务主体名称）参数，以启用 Azure 密钥保管库集成  。
@@ -51,10 +51,10 @@ ms.locfileid: "86050452"
 
 * 应用程序 ID 和机密将还可用于在 SQL Server 中创建凭据。
 
-* 必须为此新的应用程序 ID（或客户端 ID）授予以下访问权限：get、wrapKey、unwrapKey  。 可通过 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 实现此操作。 有关详细信息，请参阅 [Azure 密钥保管库概述](../articles/key-vault/key-vault-overview.md)。
+* 必须为此新的应用程序 ID（或客户端 ID）授予以下访问权限：get、wrapKey、unwrapKey  。 可通过 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 实现此操作。 有关详细信息，请参阅 [Azure 密钥保管库概述](../articles/key-vault/general/overview.md)。
 
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a> 创建密钥保管库
-若要使用 Azure Key Vault 来存储将用于在 VM 中加密的密钥，将需要对密钥保管库的访问权限。 如果尚未设置密钥保管库，请按照[开始使用 Azure Key Vault](../articles/key-vault/key-vault-overview.md) 一文中的步骤创建一个。 在完成这些步骤之前，需要在设置期间收集一些信息，之后在 SQL VM 上启用 Azure Key Vault 集成时需要这些信息。
+若要使用 Azure Key Vault 来存储将用于在 VM 中加密的密钥，将需要对密钥保管库的访问权限。 如果尚未设置密钥保管库，请按照[开始使用 Azure Key Vault](../articles/key-vault/general/overview.md) 一文中的步骤创建一个。 在完成这些步骤之前，需要在设置期间收集一些信息，之后在 SQL VM 上启用 Azure Key Vault 集成时需要这些信息。
 
 ```azurepowershell
 New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'

@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: cdf2c3d1840f64b267f1aac1f8877d5f0bf76082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45b30fb16293652e169b89a6d93520509777a40
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841930"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558238"
 ---
-**一个训练作业的计算目标可以在下一个训练作业中重复使用。** 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。 对于机器学习管道，请对每个计算目标使用适当的[管道步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true)。
+**一个训练作业的计算目标可以在下一个训练作业中重复使用。** 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。 对于机器学习管道，请对每个计算目标使用适当的[管道步骤](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)。
 
 可为大多数作业的训练计算目标使用下述任一资源。 但并非所有资源都可用于自动化机器学习、机器学习管道或设计器。
 

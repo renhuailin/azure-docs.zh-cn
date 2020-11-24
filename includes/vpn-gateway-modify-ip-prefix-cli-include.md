@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 2b2c2a8f471aba36592f76caf46b7d26d7e3bb31
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f222d4a7f4724506112a47eff61ccc48354dd622
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755873"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561458"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
 
-如果没有网关连接且需要添加或删除 IP 地址前缀，则可使用 [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway) 命令，该命令也是用来创建本地网关的。 也可使用该命令来更新 VPN 设备的网关 IP 地址。 请使用本地网关的现有名称来覆盖当前设置。 如果使用其他名称，请创建一个新的本地网关，而不是覆盖现有的。
+如果没有网关连接且需要添加或删除 IP 地址前缀，则可使用 [az network local-gateway create](/cli/azure/network/local-gateway) 命令，该命令也是用来创建本地网关的。 也可使用该命令来更新 VPN 设备的网关 IP 地址。 请使用本地网关的现有名称来覆盖当前设置。 如果使用其他名称，请创建一个新的本地网关，而不是覆盖现有的。
 
 每次进行更改时，必须指定前缀的完整列表，不能仅指定要更改的前缀。 仅指定需要保留的前缀。 此例中为 10.0.0.0/24 和 20.0.0.0/24
 
@@ -27,7 +27,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 
 
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
 
-如果有网关连接且需要添加或删除 IP 地址前缀，可使用 [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway) 更新前缀。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。
+如果有网关连接且需要添加或删除 IP 地址前缀，可使用 [az network local-gateway update](/cli/azure/network/local-gateway) 更新前缀。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。
 
 每次进行更改时，必须指定前缀的完整列表，不能仅指定要更改的前缀。 在此示例中，10.0.0.0/24 和 20.0.0.0/24 已存在。 我们会添加前缀 30.0.0.0/24 和 40.0.0.0/24，并在更新时指定所有 4 个前缀。
 

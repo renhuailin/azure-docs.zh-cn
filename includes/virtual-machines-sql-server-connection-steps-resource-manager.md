@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67172905"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555041"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>配置用于公共 IP 地址的 DNS 标签
 
@@ -34,7 +34,7 @@ ms.locfileid: "67172905"
 
 ### <a name="connect-to-the-database-engine-from-another-computer"></a>从其他计算机连接到数据库引擎
 
-1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio (SSMS)。 如果没有 SQL Server Management Studio，可以从[此处](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)下载。
+1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio (SSMS)。 如果没有 SQL Server Management Studio，可以从[此处](/sql/ssms/download-sql-server-management-studio-ssms)下载。
 
 1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值    。 输入虚拟机的 IP 地址或完整 DNS 名称（已在上一个任务中确定）。 也可添加逗号并提供 SQL Server 的 TCP 端口。 例如，`mysqlvmlabel.eastus.cloudapp.azure.com,1433` 。
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 239fcc1e57cb4bd56a8704f8a840689d44617fcf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029416"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558335"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
-如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。   如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
+如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
 
-1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。 
+1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。
 
     选择此选项后，会出现新的选项以进一步优化目录中哪些用户可以请求此访问包。
 
@@ -33,7 +33,7 @@ ms.locfileid: "93029416"
     | **所有成员（不包括来宾）** | 如果希望目录中的所有成员用户都可以请求此访问包，请选择此选项。 此选项不包括你可能已邀请到目录中的任何来宾用户。 |
     | **所有用户（包括来宾）** | 如果希望目录中的所有成员用户和来宾用户都可以请求此访问包，请选择此选项。 |
 
-    来宾用户是指通过 [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md) 邀请到目录中的外部用户。 有关成员用户和来宾用户之间差异的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../articles/active-directory/fundamentals/users-default-permissions.md)。
+    来宾用户是指通过 [Azure AD B2B](../articles/active-directory/external-identities/what-is-b2b.md) 邀请到目录中的外部用户。 有关成员用户和来宾用户之间差异的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../articles/active-directory/fundamentals/users-default-permissions.md)。
 
 1. 如果已选择“特定用户和组”，请单击“添加用户和组” 。
 
@@ -41,16 +41,16 @@ ms.locfileid: "93029416"
 
     ![访问包 - 请求 - 选择用户和组](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. 单击“选择”以添加用户和组。 
+1. 单击“选择”以添加用户和组。
 
 1. 跳到[审批](#approval)部分。
 
 ## <a name="for-users-not-in-your-directory"></a>适用于不在目录中的用户
 
- “不在目录中的用户”是指位于其他 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到目录中。 Azure AD 目录必须配置为允许”协作限制”中的邀请。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../articles/active-directory/b2b/delegate-invitations.md)。
+ “不在目录中的用户”是指位于其他 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到目录中。 Azure AD 目录必须配置为允许”协作限制”中的邀请。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../articles/active-directory/external-identities/delegate-invitations.md)。
 
 > [!NOTE]
-> 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅 [Azure Active Directory B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
+> 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅 [Azure Active Directory B2B 协作用户的属性](../articles/active-directory/external-identities/user-properties.md)。
 
 如果要允许不在目录中的用户请求此访问包，请执行以下步骤：
 
@@ -81,7 +81,7 @@ ms.locfileid: "93029416"
 1. 选择所有已连接的组织后，单击“选择”。
 
     > [!NOTE]
-    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../articles/active-directory/b2b/allow-deny-list.md)。
+    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../articles/active-directory/external-identities/allow-deny-list.md)。
 
 1. 跳到[审批](#approval)部分。
 
@@ -117,7 +117,7 @@ ms.locfileid: "93029416"
 
 请按照以下步骤指定请求访问包的审批设置：
 
-1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。  或者，若要自动审批请求，请将切换开关设置为“否”。
+1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。 或者，若要自动审批请求，请将切换开关设置为“否”。
 
 1. 如果需要用户提供对请求访问包的论证，请将“需要请求者论证”切换开关设置为“是”。 。
     

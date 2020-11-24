@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79500198"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556157"
 ---
 1. 如此[点到站点 VPN 客户端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文章中所述，在 Windows 10 客户端上安装客户端证书。 该证书必须位于当前用户存储中。
 
-1. 按[配置 Windows 10 客户端 Always On VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的说明操作，通过 PowerShell、Configuration Manager 或 Intune 配置 Always On VPN 客户端。
+1. 按[配置 Windows 10 客户端 Always On VPN 连接](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的说明操作，通过 PowerShell、Configuration Manager 或 Intune 配置 Always On VPN 客户端。
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>用户隧道的示例配置
 

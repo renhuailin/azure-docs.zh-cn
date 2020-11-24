@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2ed5cbc8c855d2f81986964c93009d75ed28fb8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92324150"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558899"
 ---
 **数据收集量和保留期** 
 
@@ -73,4 +73,4 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 请参阅 [在 Azure Monitor 中监视 Log Analytics 工作区的运行状况](../articles/azure-monitor/platform/monitor-workspace.md)，以创建在达到任何引入限制时主动通知的警报规则。
 
 >[!NOTE]
->根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 
+>根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](../articles/azure-monitor/platform/manage-cost-storage.md#legacy-pricing-tiers)。

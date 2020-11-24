@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4b93685160250a5abe7c050db89978ae8ceb1a9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173386"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558244"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,7 +21,7 @@ ms.locfileid: "67173386"
 > * [Raspberry Pi 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js（通用）](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Raspberry Pi 上的 Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
 
 本教程实施一个可将以下遥测数据发送到远程监视[解决方案加速器](../articles/iot-accelerators/about-iot-accelerators.md)的“冷却器”设备：
 
@@ -54,7 +54,7 @@ ms.locfileid: "67173386"
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>将设备添加到远程监视解决方案
 
 > [!NOTE]
-> 如果已在解决方案中添加了设备，则可以跳过此步骤。 不过，下一步骤需要设备连接字符串。 可以从 [Azure 门户](https://portal.azure.com)或使用 [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI 工具检索设备的连接字符串。
+> 如果已在解决方案中添加了设备，则可以跳过此步骤。 不过，下一步骤需要设备连接字符串。 可以从 [Azure 门户](https://portal.azure.com)或使用 [az iot](/cli/azure/iot?view=azure-cli-latest) CLI 工具检索设备的连接字符串。
 
 对于连接到解决方案加速器的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含这些凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
 

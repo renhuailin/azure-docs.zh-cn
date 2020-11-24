@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: c4dcc0d578df5dbd693f4f2a05f3e531bb509838
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756081"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562654"
 ---
 ## <a name="update-resources"></a>更新资源
 
@@ -36,7 +36,7 @@ ms.locfileid: "92756081"
 
 如果打算添加副本区域，请勿删除源托管映像。 源托管映像是将映像版本复制到其他区域所需的。 
 
-使用 [az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update) 更新对库的说明。 
+使用 [az sig update](/cli/azure/sig?view=azure-cli-latest#az-sig-update) 更新对库的说明。 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-使用 [az sig image-definition update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新对映像定义的说明。
+使用 [az sig image-definition update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新对映像定义的说明。
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-使用 [az sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新要向其添加需复制的区域的映像版本。 此更改需要一定的时间，因为需将映像复制到新区域。
+使用 [az sig image-version update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新要向其添加需复制的区域的映像版本。 此更改需要一定的时间，因为需将映像复制到新区域。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-此示例显示了如何使用 [az sig 映像版本更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 将此映像版本排除为 *最新* 映像。
+此示例显示了如何使用 [az sig 映像版本更新](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 将此映像版本排除为 *最新* 映像。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-此示例显示了如何使用 [az sig 映像版本更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 将此映像版本纳入考虑 *最新* 映像。
+此示例显示了如何使用 [az sig 映像版本更新](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 将此映像版本纳入考虑 *最新* 映像。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 需按相反的顺序删除资源，先删除映像版本。 删除所有映像版本以后，即可删除映像定义。 删除所有映像定义以后，即可删除库。 
 
-使用 [az sig image-version delete](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete) 删除映像版本。
+使用 [az sig image-version delete](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete) 删除映像版本。
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-使用 [az sig image-definition delete](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete) 删除映像定义。
+使用 [az sig image-definition delete](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete) 删除映像定义。
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-使用 [az sig delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete) 删除映像库。
+使用 [az sig delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete) 删除映像库。
 
 ```azurecli-interactive
 az sig delete \

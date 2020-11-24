@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362774"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555798"
 ---
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -42,12 +42,12 @@ ms.locfileid: "94362774"
 | 每个事件中心的使用者组数 | &nbsp; |1 |20 |
 | 每个命名空间的 AMQP 连接数 | 系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |100 |5,000|
 | 事件数据的最长保留期限 | &nbsp; |1 天 |1-7 天 |
-| 最大吞吐量单位 |超出此限制会导致数据受到限制，并生成[服务器繁忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 要为标准层请求大量的吞吐量单位，可填写[支持请求](/azure/azure-portal/supportability/how-to-create-azure-support-request)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 | 20 | 
+| 最大吞吐量单位 |超出此限制会导致数据受到限制，并生成[服务器繁忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 要为标准层请求大量的吞吐量单位，可填写[支持请求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 | 20 | 
 
 ## <a name="dedicated-tier-vs-standard-tier"></a>专用层和标准层
 事件中心专用层产品/服务按固定的每月价格计费，最少用量为 4 小时。 专用层提供标准计划的所有功能，但具有企业规模容量和限制，以满足客户的工作负荷需求。 
 
-请参阅本[文档](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)，了解如何使用 Azure 门户创建专用“事件中心”群集。
+请参阅本[文档](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md)，了解如何使用 Azure 门户创建专用“事件中心”群集。
 
 | Feature | 标准 | 专用 |
 | --- |:---|:---|
@@ -83,8 +83,3 @@ ms.locfileid: "94362774"
 | 架构注册表（命名空间）的大小（以兆字节为单位） | 25 |  1024 |
 | 架构注册表或命名空间中的架构组数 | 1 - 排除默认组 | 1000 |
 | 所有架构组的架构版本数 | 25 | 10000 |
-
-
-
-
-

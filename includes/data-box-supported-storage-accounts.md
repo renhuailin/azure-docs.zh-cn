@@ -5,18 +5,18 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533172"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556917"
 ---
-下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
+下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
 对于导入顺序，下表显示了支持的存储帐户。
 
-| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**说明**|
+| **存储帐户/支持的存储类型** | **块 blob** |**页 blob** _ |_ *Azure 文件** |**说明**|
 | --- | --- | -- | -- | -- |
 | 经典标准 | Y | Y | Y |
 | 常规用途 v1 标准  | Y | Y | Y | 支持热和冷。|
@@ -29,7 +29,7 @@ ms.locfileid: "90533172"
 
 对于出口订单，下表显示了支持的存储帐户。
 
-| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**支持的访问层**|
+| **存储帐户/支持的存储类型** | **块 blob** |**页 blob** _ |_ *Azure 文件** |**支持的访问层**|
 | --- | --- | -- | -- | -- |
 | 经典标准 | Y | Y | Y | |
 | 常规用途 v1 标准  | Y | Y | Y | 热、冷|
@@ -47,5 +47,3 @@ ms.locfileid: "90533172"
 > - 上传到页 blob 的数据必须为512字节，如 Vhd。
 > - 最多可导出 80 TB。
 > - 不会导出文件历史记录和 blob 快照。
-
-

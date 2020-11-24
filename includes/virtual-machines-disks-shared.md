@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684425"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558681"
 ---
 Azure 共享磁盘是 Azure 托管磁盘的一项新功能，可用于将托管磁盘同时附加到 (Vm) 的多个虚拟机。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
 
@@ -41,7 +41,7 @@ Azure 共享磁盘是 Azure 托管磁盘的一项新功能，可用于将托管�
 
 ### <a name="windows"></a>Windows
 
-Windows Server 2008 和更高版本支持 Azure 共享磁盘。 大多数基于 Windows 的群集构建于 WSFC 上，后者处理群集节点通信的所有核心基础结构，使应用程序能够利用并行访问模式。 WSFC 根据 Windows Server 的版本启用 CSV 和非 CSV 的选项。 有关详细信息，请参阅[创建故障转移群集](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)。
+Windows Server 2008 和更高版本支持 Azure 共享磁盘。 大多数基于 Windows 的群集构建于 WSFC 上，后者处理群集节点通信的所有核心基础结构，使应用程序能够利用并行访问模式。 WSFC 根据 Windows Server 的版本启用 CSV 和非 CSV 的选项。 有关详细信息，请参阅[创建故障转移群集](/windows-server/failover-clustering/create-failover-cluster)。
 
 WSFC 上运行的热门应用程序包括：
 

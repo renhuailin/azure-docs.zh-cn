@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173006"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558463"
 ---
 ### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 1. 访问 StorSimple 设备串行控制台上的 Windows PowerShell 接口。 有关说明，请参阅 [使用 PuTTY 连接到设备串行控制台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **请务必严格遵照该步骤，否则将无法访问控制台。**
@@ -17,7 +17,7 @@ ms.locfileid: "67173006"
 3. 系统会提示选择要为设备设置的语言。 指定语言，然后按 **enter**。
    
     ![StorSimple 配置和注册设备 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”****。
+4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
    
     ![StorSimple 注册设备 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. 执行以下步骤，为设备配置最低要求的网络设置。
@@ -43,7 +43,7 @@ ms.locfileid: "67173006"
    4. 可以选择配置 Web 代理服务器。
       
       > [!IMPORTANT]
-      > 尽管 Web 代理服务器配置是可选项，仍应注意，在使用 Web 代理时，只能在此处配置它。 有关详细信息，请转到[配置设备的 Web 代理](../articles/storsimple/storsimple-configure-web-proxy.md)。
+      > 尽管 Web 代理服务器配置是可选项，仍应注意，在使用 Web 代理时，只能在此处配置它。 有关详细信息，请转到[配置设备的 Web 代理](../articles/storsimple/storsimple-8000-configure-web-proxy.md)。
      
 6. 按 Ctrl + C 可以退出安装向导。
 8. 运行以下 cmdlet，以将设备指向 Microsoft Azure 政府门户（因为它默认指向公共 Azure 经典门户）。 这会重新启动两个控制器。 我们建议使用两个 PuTTY 会话以便同时连接两个控制器，这样可以查看每个控制器何时重新启动。
@@ -73,17 +73,16 @@ ms.locfileid: "67173006"
     > [!IMPORTANT]
     > 要复制串行控制台窗口中的文本，只需选择该文本。 然后应能够将其粘贴到剪贴板或任何文本编辑器中。
     > 
-    > 请勿使用 Ctrl + C 复制服务数据加密密钥。**** 使用 Ctrl+C 会导致退出安装向导。**** 这样做的结果是，不会更改设备管理员密码，并且设备将还原为默认密码。
+    > 请勿使用 Ctrl + C 复制服务数据加密密钥。 使用 Ctrl+C 会导致退出安装向导。 这样做的结果是，不会更改设备管理员密码，并且设备将还原为默认密码。
     
 14. 退出串行控制台。
 15. 返回到 Azure 政府门户，并完成以下步骤：
     
     1. 转到 StorSimple Device Manager 服务。
-    2. 单击“设备”****。 从设备列表中，确定要部署的设备。 通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“ **联机**”。
+    2. 单击“设备”。 从设备列表中，确定要部署的设备。 通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“ **联机**”。
             
         如果设备状态为 **“脱机”**，请等待几分钟以便设备联机。
        
         如果几分钟后设备仍处于脱机状态，需要确保防火墙网络已按 [StorSimple 设备的网络要求](../articles/storsimple/storsimple-8000-system-requirements.md)中所述进行配置。
        
         确认端口 9354 已对出站通信打开，因为 StorSimple Device Manager 服务到设备之间通信的服务总线将使用此端口。
-

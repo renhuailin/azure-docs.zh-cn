@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.date: 07/09/2020
-ms.openlocfilehash: de5d3f8f32e928c77ffd6028ec764793ab7229ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495325"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554111"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
 
@@ -22,10 +22,10 @@ ms.locfileid: "86495325"
 
 通过 Azure 提供的其他高可用性功能（以及同样适用于任何 Azure 时序见解实例的功能）包括：
 
-- **故障转移**： Azure 提供 [异地复制和负载均衡](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。
-- **数据还原** 和 **存储恢复**： Azure 提供 [多个选项用于保留和恢复数据](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)。
-- **Azure Site Recovery**：Azure 通过 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) 提供站点恢复功能。
-- **Azure 备份**：[Azure 备份](https://docs.microsoft.com/azure/backup/backup-architecture)支持 Azure VM 的本地和云中备份。
+- **故障转移**： Azure 提供 [异地复制和负载均衡](/azure/architecture/resiliency/recovery-loss-azure-region)。
+- **数据还原** 和 **存储恢复**： Azure 提供 [多个选项用于保留和恢复数据](/azure/architecture/resiliency/recovery-data-corruption)。
+- **Azure Site Recovery**：Azure 通过 [Azure Site Recovery](../articles/site-recovery/index.yml) 提供站点恢复功能。
+- **Azure 备份**：[Azure 备份](../articles/backup/backup-architecture.md)支持 Azure VM 的本地和云中备份。
 
 请务必启用相关的 Azure 功能，以便为设备和用户提供全局跨区域高可用性。
 
@@ -36,9 +36,9 @@ ms.locfileid: "86495325"
 
 某些 Azure IoT 服务也包含内置的业务灾难恢复功能：
 
-- [Azure IoT 中心高可用性灾难恢复](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)，包括区域内部冗余
-- [Azure 事件中心策略](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure 存储冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure IoT 中心高可用性灾难恢复](../articles/iot-hub/iot-hub-ha-dr.md)，包括区域内部冗余
+- [Azure 事件中心策略](../articles/event-hubs/event-hubs-geo-dr.md)
+- [Azure 存储冗余](../articles/storage/common/storage-redundancy.md)
 
 将 Azure 时序见解与其他服务集成有可能会提供更多的灾难恢复机制。 例如，可将发送到事件中心的遥测数据保留在 Azure Blob 存储备份数据库中。
 
@@ -55,10 +55,10 @@ ms.locfileid: "86495325"
 
 若要创建副本环境：
 
-1. 在另一个区域中创建环境。 有关详细信息，请参阅[在 Azure 门户中创建新的 Azure 时序见解环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)。
+1. 在另一个区域中创建环境。 有关详细信息，请参阅[在 Azure 门户中创建新的 Azure 时序见解环境](../articles/time-series-insights/time-series-insights-get-started.md)。
 1. 为事件源创建另一个专用使用者组。
 1. 将该事件源连接到新环境。 请务必指定第二个专用使用者组。
-1. 请查看 Azure 时序见解 [IoT 中心](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)和[事件中心](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)文档。
+1. 请查看 Azure 时序见解 [IoT 中心](../articles/time-series-insights/how-to-ingest-data-iot-hub.md)和[事件中心](../articles/time-series-insights/concepts-access-policies.md)文档。
 
 发生事件时：
 
@@ -71,5 +71,4 @@ ms.locfileid: "86495325"
 > * 也可能会发生延迟。
 > * 由于需要重新路由操作，还可能会出现短暂的消息处理高峰。
 > 
-> 有关详细信息，请参阅[缓解 Azure 时序见解中的延迟](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)。
-
+> 有关详细信息，请参阅[缓解 Azure 时序见解中的延迟](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md)。

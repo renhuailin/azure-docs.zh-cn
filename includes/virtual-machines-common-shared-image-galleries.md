@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897707"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559481"
 ---
 共享映像库是一种可以帮助你围绕映像构建结构和组织的服务。 共享映像库提供：
 
@@ -33,7 +33,7 @@ ms.locfileid: "92897707"
 | 资源 | 说明|
 |----------|------------|
 | **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是现有的 Azure VM（可以是[通用或专用](#generalized-and-specialized-images)的）、托管映像、快照、VHD 或其他映像库中的映像版本。 |
-| **映像库** | 与 Azure 市场一样， **映像库** 是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
+| **映像库** | 与 Azure 市场一样，**映像库** 是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像定义在库中创建，携带有关该映像以及在内部使用该映像的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用 **映像版本** 创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
@@ -71,7 +71,7 @@ ms.locfileid: "92897707"
 - 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
 - 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 - 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
-- 市场映像的购买计划信息 `-PurchasePlanPublisher`、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 若要详细了解购买计划信息，请参阅[在 Azure 市场中查找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在创建映像时提供 Azure 市场购买计划信息](../articles/virtual-machines/marketplace-images.md)。
+- 市场映像的购买计划信息 `-PurchasePlanPublisher`、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 若要详细了解购买计划信息，请参阅[在 Azure 市场中查找映像](../articles/virtual-machines/windows/cli-ps-findimage.md)和[在创建映像时提供 Azure 市场购买计划信息](../articles/virtual-machines/marketplace-images.md)。
 
 
 ## <a name="image-versions"></a>映像版本
@@ -94,7 +94,7 @@ ms.locfileid: "92897707"
 
 - 从专用映像创建的 VM 和规模集可以更快地启动并运行。 由于它们是从已经开始启动的源创建的，因此从这些映像创建的 VM 启动速度会更快。
 - 可用于登录到 VM 的帐户也可用于通过使用该 VM 创建的专用映像创建的任何 VM。
-- VM 具有用于创建映像的 VM 的 **计算机名** 。 应更改计算机名以避免冲突。
+- VM 具有用于创建映像的 VM 的 **计算机名**。 应更改计算机名以避免冲突。
 - `osProfile` 是使用 `secrets` 将某些敏感信息传递给 VM 的方式。 在使用 KeyVault、WinRM，以及在 `osProfile` 中使用 `secrets` 的其他功能时，这可能会导致出现问题。 在某些情况下，可以使用托管服务标识 (MSI) 解决这些限制。
 
 ## <a name="regional-support"></a>区域支持
@@ -110,7 +110,7 @@ ms.locfileid: "92897707"
 - 每个区域的每个订阅限制为 10 个映像版本副本
 - 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
-有关详细信息，请参阅[根据限制检查资源使用情况](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，以获取有关如何检查当前使用情况的示例。
+有关详细信息，请参阅[根据限制检查资源使用情况](../articles/networking/check-usage-against-limits.md)，以获取有关如何检查当前使用情况的示例。
  
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
@@ -128,7 +128,7 @@ ms.locfileid: "92897707"
 
 [Azure 区域冗余存储 (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) 提供了针对区域中可用性区域故障的恢复能力。 随着共享映像库的正式发布，你可以选择使用可用性区域将映像存储在 ZRS 帐户中。 
 
-你还可以为每个目标区域选择帐户类型。 默认存储帐户类型为 Standard_LRS，但你可以使用可用性区域选择各区域的 Standard_ZRS。 在[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)查看 ZRS 的区域可用性。
+你还可以为每个目标区域选择帐户类型。 默认存储帐户类型为 Standard_LRS，但你可以使用可用性区域选择各区域的 Standard_ZRS。 在[此处](../articles/storage/common/storage-redundancy.md)查看 ZRS 的区域可用性。
 
 ![显示 ZRS 的图形](./media/shared-image-galleries/zrs.png)
 
@@ -183,11 +183,11 @@ ms.locfileid: "92897707"
 
 以下 SDK 支持创建共享映像库：
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](/azure/go/)
 
 ## <a name="templates"></a>模板
 
@@ -244,8 +244,8 @@ ms.locfileid: "92897707"
 
  应用场景 3：如果本地文件系统中包含 VHD，则需要将 VHD 上传到托管映像，然后可以从该映像创建映像定义和映像版本。
 
-- 如果 VHD 适用于 Windows VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
-- 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- 如果 VHD 适用于 Windows VM，请参阅[上传 VHD](../articles/virtual-machines/windows/upload-generalized-managed.md)。
+- 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
@@ -310,4 +310,4 @@ ms.locfileid: "92897707"
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>是否可以将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？
 
-是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。 
+是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。

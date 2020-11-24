@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085223"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560190"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74085223"
 * Azure PowerShell。 有关安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="add-the-extension"></a>添加扩展
-可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 或[服务管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) 添加 AzureLogCollector 扩展。
+可以使用 [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) cmdlet 或[服务管理 REST API](/previous-versions/azure/ee460799(v=azure.100)) 添加 AzureLogCollector 扩展。
 
 对于云服务，可以使用现有的 Azure Powershell cmdlet **Set-AzureServiceExtension** 启用云服务角色实例上的扩展。 每次通过此 cmdlet 启用此扩展时，都会在所选角色的所选角色实例上触发日志收集。
 
@@ -86,7 +86,7 @@ ms.locfileid: "74085223"
 ```
 
 > [!NOTE]
-> 此扩展不需要 privateConfiguration****。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
+> 此扩展不需要 privateConfiguration。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
 > 
 > 
 
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以从一个简单的位置查看或复制日志。
-
