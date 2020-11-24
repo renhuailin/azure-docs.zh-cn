@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b18687c0a6f3e48d94431e88be8ae8137c9dcdb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711154"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564264"
 ---
 | properties | 说明 |
 |:--- |:---|
@@ -33,8 +33,8 @@ ms.locfileid: "91711154"
 |**contentLengthHeader** | 发送到存储服务的请求的 Content-Length 标头值。 如果请求成功，则此值等于 requestBodySize。 如果请求失败，则此值可能不等于 requestBodySize，也可能为空。 |
 |**tlsVersion** | 请求在连接时使用的 TLS 版本。 例如：`TLS 1.2`。 |
 |**smbTreeConnectID** | 在树连接时建立的服务器消息块 (SMB) **treeConnectId**。 例如： `0x3` |
-|**smbPersistentHandleID** | SMB2 CREATE 请求在经历网络重新连接后会保留的持久性句柄 ID。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中称为 **SMB2_FILEID.Persistent**。 例如： `0x6003f` |
-|**smbVolatileHandleID** | SMB2 CREATE 请求在网络重新连接时将回收的易失句柄 ID。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中称为 **SMB2_FILEID.Volatile**。 例如： `0xFFFFFFFF00000065` |
+|**smbPersistentHandleID** | SMB2 CREATE 请求在经历网络重新连接后会保留的持久性句柄 ID。  在 [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中称为 **SMB2_FILEID.Persistent**。 例如： `0x6003f` |
+|**smbVolatileHandleID** | SMB2 CREATE 请求在网络重新连接时将回收的易失句柄 ID。  在 [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中称为 **SMB2_FILEID.Volatile**。 例如： `0xFFFFFFFF00000065` |
 |**smbMessageID** | 连接相关 **MessageId**。 例如： `0x3b165` |
 |**smbCreditsConsumed** | 请求消耗的流入量或流出量（以 64k 为单位）。 例如： `0x3` |
 |**smbCommandDetail** | 有关此特定请求而不是常规类型请求的详细信息。 例如： `0x2000 bytes at offset 0xf2000` |

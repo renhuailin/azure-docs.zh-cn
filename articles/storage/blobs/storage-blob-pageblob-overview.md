@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288330"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545952"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -31,7 +31,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ## <a name="sample-use-cases"></a>示例用例
 
-让我们从 Azure IaaS 磁盘着手，讨论页 Blob 的几种用例。 Azure 页 Blob 是 Azure IaaS 虚拟磁盘平台的主干。 Azure OS 磁盘和数据磁盘都实现为虚拟磁盘，其中的数据持久保存在 Azure 存储平台中，然后传送到虚拟机以获得最大性能。 Azure 磁盘以 Hyper-V [VHD 格式](https://technet.microsoft.com/library/dd979539.aspx)保存，并在 Azure 存储中存储为[页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)。 除了对 Azure IaaS VM 使用虚拟磁盘以外，页 Blob 还可实现 PaaS 和 DBaaS 方案，例如 Azure SQL 数据库服务，该服务目前使用页 Blob 存储 SQL 数据，以便针对数据库快速执行随机读写操作。 另一个示例是，如果使用 PaaS 服务作为共享媒体来访问协作式视频编辑应用程序，则页 Blob 可以实现对媒体中随机位置的快速访问。 此外，多个用户可以使用页 Blob 快速高效地编辑和合并同一媒体。 
+让我们从 Azure IaaS 磁盘着手，讨论页 Blob 的几种用例。 Azure 页 Blob 是 Azure IaaS 虚拟磁盘平台的主干。 Azure OS 磁盘和数据磁盘都实现为虚拟磁盘，其中的数据持久保存在 Azure 存储平台中，然后传送到虚拟机以获得最大性能。 Azure 磁盘以 Hyper-V [VHD 格式](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10))保存，并在 Azure 存储中存储为[页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)。 除了对 Azure IaaS VM 使用虚拟磁盘以外，页 Blob 还可实现 PaaS 和 DBaaS 方案，例如 Azure SQL 数据库服务，该服务目前使用页 Blob 存储 SQL 数据，以便针对数据库快速执行随机读写操作。 另一个示例是，如果使用 PaaS 服务作为共享媒体来访问协作式视频编辑应用程序，则页 Blob 可以实现对媒体中随机位置的快速访问。 此外，多个用户可以使用页 Blob 快速高效地编辑和合并同一媒体。 
 
 第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案： 
 
@@ -47,7 +47,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ### <a name="rest-api"></a>REST API
 
-请参阅以下文档，开始[使用页 Blob 进行开发](storage-dotnet-how-to-use-blobs.md)。 例如，请查看如何使用用于 .NET 的存储客户端库来访问页 Blob。 
+请参阅以下文档，开始[使用页 Blob 进行开发](./storage-quickstart-blobs-dotnet.md)。 例如，请查看如何使用用于 .NET 的存储客户端库来访问页 Blob。 
 
 下图描绘了帐户、容器和页 Blob 之间的整体关系。
 
@@ -63,7 +63,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount* ）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何创建对 **CloudBlobContainer** 对象的引用，然后创建容器 ( *testvhds* )（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何创建对 **CloudBlobContainer** 对象的引用，然后创建容器 (*testvhds*)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.Azure;

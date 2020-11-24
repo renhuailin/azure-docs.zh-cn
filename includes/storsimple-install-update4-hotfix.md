@@ -4,29 +4,29 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050460"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563309"
 ---
 #### <a name="to-download-hotfixes"></a>下载修补程序
 
 执行以下步骤，从 Microsoft 更新目录下载软件更新。
 
 1. 启动 Internet Explorer 并导航到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
-2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。****
+2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **4011839**），并单击“搜索”。****
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **4011839**），并单击“搜索”。
    
-    随后会显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 4.0”。****
+    随后会显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 4.0”。
    
     ![搜索目录](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. 单击“下载”。 指定或**浏览**到下载项要保存到的本地位置。 单击要下载到指定位置和文件夹的文件。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
+4. 单击“下载”。 指定或 **浏览** 到下载项要保存到的本地位置。 单击要下载到指定位置和文件夹的文件。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 5. 搜索上表中列出的任何其他修补程序 (**4011841**)，将相应的文件下载到上表中列出的特定文件夹。
 
 > [!NOTE]
@@ -101,7 +101,7 @@ ms.locfileid: "86050460"
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     如果在应用更新后版本号并未更改，则表示此修补程序未成功应用。 如果出现这种情况，请联系 [Microsoft 支持](../articles/storsimple/storsimple-contact-microsoft-support.md)获取进一步的帮助。
+     如果在应用更新后版本号并未更改，则表示此修补程序未成功应用。 如果出现这种情况，请联系 [Microsoft 支持](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)获取进一步的帮助。
      
      > [!IMPORTANT]
      > 必须先通过 `Restart-HcsController` cmdlet 重启主动控制器，然后应用下一更新。
@@ -169,7 +169,7 @@ ms.locfileid: "86050460"
     ```
 
 3. 使用 `Get-HcsUpdateStatus` 命令监视安装进度。 当 `RunInProgress` 更改为 `False` 时，即表示更新完成。
-4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1“以完全访问权限登录”**** 登录，并验证磁盘固件版本。 类型：
+4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1“以完全访问权限登录”登录，并验证磁盘固件版本。 类型：
    
    `Get-HcsFirmwareVersion`
    
@@ -267,4 +267,3 @@ ms.locfileid: "86050460"
    `Exit-HcsMaintenanceMode`
 
 5. 退出维护模式时，控制器会重新启动。 成功应用磁盘固件更新并且设备退出维护模式后，将返回 Azure 经典门户。 请注意，门户在 24 小时内可能不会显示已安装维护模式更新。
-
