@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174156"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758877"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure Log Analytics 工作区
 
@@ -22,7 +22,7 @@ ms.locfileid: "92174156"
 删除 Log Analytics 工作区时，将执行软删除操作，在 14 天内允许恢复工作区（包括其数据和连接的代理），无论是意外删除还是有意删除。 软删除期之后，工作区资源及其数据将不可恢复 - 其数据将排队等待永久删除，并在 30 天内彻底清除。 工作区名称为“已发布”，你可以使用它来创建新的工作区。
 
 > [!NOTE]
-> 如果要替代软删除行为，并永久删除工作区，请执行 [永久工作区删除](#permanent-workspace-delete)中的步骤。
+> 若要重写软删除行为并永久删除你的工作区，请执行[永久删除工作区](#permanent-workspace-delete)中的步骤。
 
 删除工作区时需谨慎，因为其中可能会含有对服务操作产生不利影响的重要数据和配置。 请了解那些将数据存储在 Log Analytics 中的代理、解决方案以及其他 Azure 服务，例如：
 
@@ -41,14 +41,16 @@ ms.locfileid: "92174156"
 > [!NOTE] 
 > 已安装的解决方案和链接服务（例如 Azure 自动化帐户）在删除时将从工作区中永久删除，并且无法恢复。 应在恢复操作后进行重新配置，使工作区恢复到其以前配置的状态。
 
-可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 门户](https://portal.azure.com)删除工作区。
+可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 门户](https://portal.azure.com)删除工作区。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 3. 在 Log Analytics 工作区的列表中，选择一个工作区，然后从中间窗格的顶端单击“删除”。
-4. 确认页面随即出现，显示过去一周内工作区的数据引入。 键入要确认的工作区的名称，然后单击“删除”。
+4. 确认页面随即出现，显示过去一周内工作区的数据引入。 
+5. 如果要永久删除该工作区，删除该选项以供以后恢复，请选择 " **永久删除工作区"** 复选框。
+6. 键入要确认的工作区的名称，然后单击“删除”。
 
    ![确认删除工作区](media/delete-workspace/workspace-delete.png)
 
@@ -60,11 +62,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="permanent-workspace-delete"></a>永久删除工作区
 软删除方法可能不适用于开发和测试等情况，在这些情况下需要使用相同的设置和工作区名称重复部署。 在这些情况下，可以永久删除工作区并“替换”软删除期。 永久删除工作区操作将释放工作区名称，你可以使用相同的名称创建新的工作区。
 
-
 > [!IMPORTANT]
 > 请谨慎使用永久删除工作区操作，因为这是不可逆的，并且无法恢复工作区及其数据。
 
-添加 "-ForceDelete" 标记以永久删除你的工作区。 "-ForceDelete" 选项当前可用于 Az. Microsoft.operationalinsights 2.3.0 或更高版本。 
+若要使用 Azure 门户永久删除工作区，请选择 " **永久删除工作区** " 复选框，然后单击 " **删除** " 按钮。
+
+若要使用 PowerShell 永久删除工作区，请添加 "-ForceDelete" 标记以永久删除你的工作区。 “-ForceDelete”选项当前在 Az.OperationalInsights 2.3.0 或更高版本中可用。 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -82,15 +85,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。 你将看到所选范围内的工作区列表。
 3. 单击左上侧菜单中的“恢复”，打开包含处于软删除状态且可恢复的工作区页面。
 
-   ![菜单栏上突出显示了 "恢复" Azure 门户中的 "Log Analytics 工作区" 屏幕屏幕截图。](media/delete-workspace/recover-menu.png)
+   ![Azure 门户中“日志分析”工作区屏幕的屏幕截图，其中的菜单栏上突出显示了“恢复”。](media/delete-workspace/recover-menu.png)
 
 4. 选择工作区，然后单击“恢复”以恢复该工作区。
 
-   ![Azure 门户，其中突出显示了工作区并选择了 "恢复" 按钮的 "恢复 Log Analytics 工作区" 对话框的屏幕截图。](media/delete-workspace/recover-workspace.png)
+   ![Azure 门户中“恢复已删除的 Log Analytics 工作区”对话框的屏幕截图，其中突出显示了一个工作区并选择了“恢复”按钮。](media/delete-workspace/recover-workspace.png)
 
 
 ### <a name="powershell"></a>PowerShell
@@ -115,6 +118,6 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
     1. [恢复](#recover-workspace)工作区。
     2. [永久删除](#permanent-workspace-delete)工作区。
     3. 使用相同的工作区名称创建新的工作区。
-* 如果看到显示 "找 *不到资源*" 的204响应代码，则原因可能是连续尝试使用 "删除工作区" 操作。 204为空响应，这通常意味着该资源不存在，因此删除完成，无需执行任何操作。
-  在后端成功完成删除调用后，可以还原工作区，并在前面建议的方法之一中完成永久删除操作。
+* 如果你看到 204 响应代码（显示“未找到资源”），则原因可能是你连续尝试使用“删除工作区”操作。 204 为空响应（通常意味着该资源不存在），因此删除已完成，无需执行任何操作。
+  在后端成功完成删除调用后，可以使用前面建议的方法之一还原工作区并完成永久删除操作。
 
