@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225948"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519058"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
 以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户提供电子邮件值，如以下屏幕截图所示。
@@ -215,11 +215,11 @@ ms.locfileid: "88225948"
 ![发送邮件结果][emailresult]
 
 ## <a name="next-steps"></a>后续步骤
-将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”****，然后在 sendemail.jsp 中查看结果。
+将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”，然后在 sendemail.jsp 中查看结果。
 
 提供这段代码是为了向你演示如何在 Azure 上通过 Java 使用 SendGrid。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如： 
 
-* 你可以使用 Azure 存储 BLOB 或 SQL 数据库（而不是使用 Web 窗体）存储电子邮件地址和电子邮件。 有关通过 Java 使用 Azure Blob 存储 Blob 的信息，请参阅[如何从 Java 使用 Azure Blob 存储服务](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 若要了解如何在 Java 中使用 SQL 数据库，请参阅[在 Java 中使用 SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
+* 你可以使用 Azure 存储 BLOB 或 SQL 数据库（而不是使用 Web 窗体）存储电子邮件地址和电子邮件。 有关通过 Java 使用 Azure Blob 存储 Blob 的信息，请参阅[如何从 Java 使用 Azure Blob 存储服务](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 若要了解如何在 Java 中使用 SQL 数据库，请参阅[在 Java 中使用 SQL 数据库](./azure-sql/database/connect-query-java.md)。
 * 若要了解如何在 Java 中使用 SendGrid，请参阅[如何通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email.md)。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

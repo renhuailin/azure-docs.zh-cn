@@ -2,13 +2,13 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: 54d4c096fab09bf31e121a7aae0eed3d2462e0c4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668936"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519874"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>具有 ARM 模板的管理组部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "92668936"
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-对于 azure RBAC)  (基于角色的访问控制，请使用：
+对于 Azure 基于角色的访问控制 (Azure RBAC)，请使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -113,7 +113,8 @@ New-AzManagementGroupDeployment `
 * 操作的目标管理组
 * 租户中的另一个管理组
 * 管理组中的订阅
-* 管理组中的资源组通过两个嵌套部署 () 
+* 管理组中的资源组
+* 资源组的租户
 * [扩展资源](scope-extension-resources.md) 可以应用于资源
 
 部署模板的用户必须有权访问指定的作用域。
@@ -142,17 +143,31 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-resource-group"></a>作用域到资源组
 
-若要以该订阅中的资源组为目标，请添加两个嵌套部署。 第一个目标是具有资源组的订阅。 第二个目标是通过设置属性来以资源组为目标 `resourceGroup` 。
+你还可以在管理组中以资源组为目标。 部署模板的用户必须有权访问指定的作用域。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+若要以管理组中的资源组为目标，请使用嵌套的部署。 设置 `subscriptionId` 和 `resourceGroup` 属性。 不要为嵌套部署设置位置，因为它部署在资源组的位置。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="9,10,18":::
 
 若要使用管理组部署在订阅中创建资源组并将存储帐户部署到该资源组，请参阅[部署到订阅和资源组](#deploy-to-subscription-and-resource-group)。
+
+### <a name="scope-to-tenant"></a>作用域到租户
+
+可以通过将设置为来在租户中创建资源 `scope` `/` 。 部署模板的用户必须具有 [所需的访问权限才能在租户上进行部署](deploy-to-tenant.md#required-access)。
+
+你可以使用嵌套的部署 `scope` 并 `location` 设置。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
+
+或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
 对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy** 。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -234,77 +249,79 @@ New-AzManagementGroupDeployment `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "nestedsubId": {
-      "type": "string"
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "nestedsubId": {
+            "type": "string"
+        },
+        "nestedRG": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "nestedLocation": {
+            "type": "string"
+        }
     },
-    "nestedRG": {
-      "type": "string"
-    },
-    "storageAccountName": {
-      "type": "string"
-    },
-    "nestedLocation": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "[parameters('nestedLocation')]",
-      "subscriptionId": "[parameters('nestedSubId')]",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-          },
-          "variables": {
-          },
-          "resources": [
-            {
-              "type": "Microsoft.Resources/resourceGroups",
-              "apiVersion": "2020-06-01",
-              "name": "[parameters('nestedRG')]",
-              "location": "[parameters('nestedLocation')]",
-            },
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedSubRG",
-              "resourceGroup": "[parameters('nestedRG')]",
-              "dependsOn": [
-                "[parameters('nestedRG')]"
-              ],
-              "properties": {
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedSub",
+            "location": "[parameters('nestedLocation')]",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "properties": {
                 "mode": "Incremental",
                 "template": {
-                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                  "contentVersion": "1.0.0.0",
-                  "resources": [
-                    {
-                      "type": "Microsoft.Storage/storageAccounts",
-                      "apiVersion": "2019-04-01",
-                      "name": "[parameters('storageAccountName')]",
-                      "location": "[parameters('nestedLocation')]",
-                      "sku": {
-                        "name": "Standard_LRS"
-                      }
-                    }
-                  ]
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                    },
+                    "variables": {
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('nestedRG')]",
+                            "location": "[parameters('nestedLocation')]"
+                        }
+                    ]
                 }
-              }
             }
-          ]
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedRG",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "resourceGroup": "[parameters('nestedRG')]",
+            "dependsOn": [
+                "nestedSub"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "apiVersion": "2019-04-01",
+                            "name": "[parameters('storageAccountName')]",
+                            "location": "[parameters('nestedLocation')]",
+                            "kind": "StorageV2",
+                            "sku": {
+                                "name": "Standard_LRS"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```
 

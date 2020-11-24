@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 群集支持策略
-description: 了解 Red Hat OpenShift 4 的支持策略要求。
+description: 了解 Red Hat OpenShift 4 的支持策略要求
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: e396cfa032a3030467b2e2318d61393713894cd4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/23/2020
+ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628214"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521132"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 ## <a name="cluster-configuration-requirements"></a>群集配置要求
 
 * 所有 OpenShift 群集操作员都必须处于托管状态。 可以通过运行 `oc get clusteroperators` 来返回群集操作员的列表。
-* 群集必须至少有一个辅助角色节点。 不要将群集辅助角色缩放为零。
+* 群集必须至少有两个工作节点。 不要将群集辅助角色缩放为零，或尝试正常的群集关闭。
 * 请勿删除或修改群集 Prometheus 和 Alertmanager 服务。
 * 请勿删除“服务 Alertmanager”规则。
 * 请勿删除或修改 Azure Red Hat OpenShift 服务日志记录 (mdsd pod)。

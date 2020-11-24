@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427502"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522237"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure 专用链接的 azure 安全基线
 
-此安全基线将 [Azure 安全性基准](../security/benchmarks/overview.md) 中的指南应用到 Azure 私有链接。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 专用链接的相关指南进行分组。 排除了不适用于 Azure 专用链接的**控件**。 若要查看 Azure 私有链接如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将 [Azure 安全性基准](../security/benchmarks/overview.md) 中的指南应用到 Azure 私有链接。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 专用链接的相关指南进行分组。 排除了不适用于 Azure 专用链接的 **控件**。 若要查看 Azure 私有链接如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全性
 
@@ -28,7 +28,7 @@ ms.locfileid: "92427502"
 
 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -68,7 +68,7 @@ ms.locfileid: "92427502"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
-- [查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [专用链接的日志记录和监视](private-link-overview.md#logging-and-monitoring)
 
@@ -96,7 +96,7 @@ ms.locfileid: "92427502"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -142,7 +142,7 @@ ms.locfileid: "92427502"
 
 此外，通过使用 Azure Active Directory (Azure AD) Privileged Identity Management Microsoft 服务的特权角色和 Azure 资源管理器来启用实时/刚好足够的访问权限。
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 安全中心监视**：是
 
@@ -186,9 +186,9 @@ ms.locfileid: "92427502"
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：利用 Azure Active Directory (Azure AD) 风险检测功能来查看警报和报告有风险的用户行为。 使用操作组将安全中心风险检测警报引入 Azure Monitor 和配置自定义警报/通知。
+**指南**：利用 Azure Active Directory (Azure AD) 风险检测功能来查看警报和报告有风险的用户行为。 请将 Azure 安全中心风险检测警报引入 Azure Monitor 中，并使用操作组配置自定义警报/通知。
 
-- [了解 Azure 安全中心风险检测 (可疑活动) ](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure 安全中心风险检测 (可疑活动) ](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -210,7 +210,7 @@ ms.locfileid: "92427502"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据，还可以 salts、哈希和安全地存储用户凭据。  
+**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密以及加盐、哈希处理和安全存储用户凭据来保护数据。  
 
 - [如何创建和配置 Azure AD 实例](../active-directory-domain-services/tutorial-create-instance.md)
 
@@ -222,7 +222,7 @@ ms.locfileid: "92427502"
 
 **指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -248,7 +248,7 @@ ms.locfileid: "92427502"
 
 将数据引入 Azure Sentinel 以便进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -270,11 +270,11 @@ ms.locfileid: "92427502"
 
 通过 Azure RBAC)  (的 azure 基于角色的访问控制来控制对 Azure 资源的访问。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -348,7 +348,7 @@ ms.locfileid: "92427502"
 
 **指南**：使用元数据将标记应用于 Azure 资源，以逻辑方式将它们组织到分类。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -360,11 +360,11 @@ ms.locfileid: "92427502"
 
 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -400,7 +400,7 @@ ms.locfileid: "92427502"
 
 ### <a name="67-remove-unapproved-azure-resources"></a>6.7：删除未经批准的 Azure 资源
 
-**指南**：客户可以根据客户公司策略的要求，阻止创建或使用 Azure 策略的资源。 你可以实现自己的过程来删除未经授权的资源。
+**指南**：客户可以根据客户公司策略的要求，阻止创建或使用 Azure 策略的资源。 你可以实施自己的流程来删除未经授权的资源。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -418,7 +418,7 @@ ms.locfileid: "92427502"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 - [用于专用链接的 Azure 策略示例内置项](../governance/policy/samples/built-in-policies.md)
 
@@ -446,7 +446,7 @@ ms.locfileid: "92427502"
 
 Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板。 应查看此项目，以确保配置满足或超过组织的安全要求。
 
-作为 Azure 资源的安全配置基线，实现安全中心提供的建议。
+实现来自安全中心的建议作为 Azure 资源的安全配置基线。
 
 - [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -544,7 +544,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
-- [资源组-导出模板](/rest/api/resources/resourcegroups/exporttemplate)
+- [资源组 - 导出模板](/rest/api/resources/resourcegroups/exporttemplate)
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
@@ -566,7 +566,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
-- [资源组-导出模板](/rest/api/resources/resourcegroups/exporttemplate)
+- [资源组 - 导出模板](/rest/api/resources/resourcegroups/exporttemplate)
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
@@ -592,7 +592,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 azure DevOps 安全地存储和管理你的代码，例如 azure 资源管理器模板。 
+**指导**：使用 Azure DevOps 安全地存储和管理 Azure 资源管理器模板之类的代码。 
 
 如果与 Azure DevOps 集成以获取对这些资源的访问权限，则授予或拒绝特定用户、内置安全组或组的权限，或者在与 Active Directory 集成的情况下，在 Team Foundation Server 中) Azure AD (Azure Active Directory 定义。
 
@@ -626,7 +626,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心为每个警报分配一个严重性，以帮助确定应该首先调查的警报的优先级。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+**指南**：安全中心为每个警报分配一个严重性，以帮助确定应该首先调查的警报的优先级。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 使用标记来清楚地标记订阅 (例如，生产、非生产) ，并创建一个命名系统来明确识别和分类 Azure 资源，尤其是处理敏感数据的资源。  
 
@@ -634,7 +634,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -706,5 +706,5 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

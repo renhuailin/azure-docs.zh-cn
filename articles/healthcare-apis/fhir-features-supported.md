@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026295"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520078"
 ---
 # <a name="features"></a>功能
 
@@ -57,7 +57,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 |-----------------------|-----------|-----------|-----------|---------|
 | 数字                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
-| 字符串                | 是       | 是       | 是       |         |
+| String                | 是       | 是       | 是       |         |
 | 令牌                 | 是       | 是       | 是       |         |
 | 参考             | 是       | 是       | 是       |         |
 | 合成             | 是       | 是       | 是       |         |
@@ -129,7 +129,7 @@ Cosmos DB 是一种全球分布的多模型 (SQL API、MongoDB API 等 ) 数据�
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 进行访问控制。 具体而言，如果将配置参数设置为，则 Role-Based 访问控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 并且 (除) 之外的所有请求都 `/metadata` 必须 `Authorization` 将请求标头设置为 `Bearer <TOKEN>` 。 令牌必须包含声明中定义的一个或多个角色 `roles` 。 如果令牌包含允许指定资源上指定操作的角色，则将允许请求。
+FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 进行访问控制。 具体而言，如果将配置参数设置为，则会强制实施基于角色的访问控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 并且除 `/metadata`) 到 FHIR 服务器的所有 (请求都必须 `Authorization` 将请求标头设置为 `Bearer <TOKEN>` 。 令牌必须包含声明中定义的一个或多个角色 `roles` 。 如果令牌包含允许指定资源上指定操作的角色，则将允许请求。
 
 目前，对给定角色允许的操作在 API 上 *全局* 应用。
 

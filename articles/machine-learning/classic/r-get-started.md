@@ -9,17 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325018"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507215"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 <!-- Stephen F Elston, Ph.D. -->
 本教程介绍如何使用 Azure 机器学习工作室（经典版）创建、测试和执行 R 代码。 学完本教程后，你将获得一个完整的预测解决方案。
@@ -122,9 +121,9 @@ maml.mapOutputPort("data.set")
 
 RStudio 是广泛使用的针对 R 语言的 IDE。我们会使用 RStudio 编辑、测试和调试本指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室（经典版）的[执行 R 脚本][execute-r-script]模块中。
 
-如果还没有在台式计算机上安装 R 编程语言，请立即安装。 可以从 [Comprehensive R Archive Network (CRAN)](https://www.r-project.org/) 免费下载开放源代码 R 语言。 提供了适用于 Windows、Mac OS 和 Linux/UNIX 的下载内容。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
+如果还没有在台式计算机上安装 R 编程语言，请立即安装。 可以从 [Comprehensive R Archive Network (CRAN)](https://www.r-project.org/) 免费下载开放源代码 R 语言。 下载适用于 Windows、macOS 和 Linux/UNIX。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
-如果你是 RStudio 新手，应下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/) 中找到适用于 Windows、Mac OS 和 Linux/UNIX 的 RStudio 下载内容。 按照提供的说明在台式计算机上安装 RStudio。
+如果你是 RStudio 新手，应下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/)中找到适用于 Windows、MacOS 和 LINUX/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。
 
 [使用 RStudio IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio) 中提供了 RStudio 的教程介绍。
 
@@ -1276,9 +1275,9 @@ maml.mapOutputPort('RMS.df')
 
 RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部分的链接，以帮助你入门。
 
-* **创建项目** ：通过使用 RStudio 可以在项目中组织和管理 R 代码。 有关详细信息，请参阅[使用项目](https://support.rstudio.com/hc/articles/200526207-Using-Projects)。 按照文档中的说明进行操作，并为本文中的 R 代码示例创建项目。
-* **编辑和执行 R 代码** ：RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 有关详细信息，请参阅[编辑和执行代码](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)。
-* **调试** ：RStudio 具有强大的调试功能。 有关这些功能的详细信息，请参阅[使用 RStudio 进行调试](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)。 有关断点故障排除功能的信息，请参阅[断点故障排除](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
+* **创建项目**：通过使用 RStudio 可以在项目中组织和管理 R 代码。 有关详细信息，请参阅[使用项目](https://support.rstudio.com/hc/articles/200526207-Using-Projects)。 按照文档中的说明进行操作，并为本文中的 R 代码示例创建项目。
+* **编辑和执行 R 代码**：RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 有关详细信息，请参阅[编辑和执行代码](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)。
+* **调试**：RStudio 具有强大的调试功能。 有关这些功能的详细信息，请参阅[使用 RStudio 进行调试](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)。 有关断点故障排除功能的信息，请参阅[断点故障排除](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
 
 ## <a name="further-reading"></a><a id="appendixb"></a>延伸阅读
 
@@ -1289,9 +1288,9 @@ RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部�
 
 有许多关于 R 的书籍可以帮助你入门：
 
-* Norman Matloff 撰写的 **Art of R Programming:Tour of Statistical Software Design** （R 编程的艺术：统计软件设计指导）对 R 编程做了很全面的介绍。
+* Norman Matloff 撰写的 **Art of R Programming:Tour of Statistical Software Design**（R 编程的艺术：统计软件设计指导）对 R 编程做了很全面的介绍。
 * Paul Teetor 撰写的《R Cookbook》介绍了使用 R 时遇到的问题和解决方法。
-* Robert Kabacoff 撰写的 **R in Action** （R 实战）是另一本有用的简介书籍。 相伴的 [Quick R 网站](https://www.statmethods.net/)是一个很有用的资源。
+* Robert Kabacoff 撰写的 **R in Action**（R 实战）是另一本有用的简介书籍。 相伴的 [Quick R 网站](https://www.statmethods.net/)是一个很有用的资源。
 * Patrick Burns 撰写的《R Inferno》是一本非常幽默的书，书中介绍了如何应对 R 编程中可能遇到的许多棘手而困难的问题。可从 [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/) 免费获取这本书。
 * Hadley Wickham 撰写的《Advanced R》提供了对 R 中高级主题的深入探讨。本书籍的在线版本在 [Advanced R](http://adv-r.had.co.nz/) 免费提供。
 * 由 Paul Cowpertwait 和 Andrew Metcalfe 所著的《Introductory Time Series with R》一书介绍了如何在时序分析中使用 R。 还有更多的理论性文字提供了 R 示例。

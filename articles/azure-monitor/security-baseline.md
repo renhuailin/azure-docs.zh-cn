@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 15026c378c4c399915e99b0910f1e6518f5adfc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8ed791fc9496e67acdcfbfafddad9170ac47535
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151856"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522577"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>适用于 Azure Monitor 的 Azure 安全基线
 
-此安全基线将 [Azure 安全性基准](../security/benchmarks/overview.md) 中的指南应用到 Azure Monitor。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure Monitor 的相关指南进行分组。 排除了不适用于 Azure Monitor 的**控件**。 若要查看 Azure Monitor 完全映射到 Azure 安全基准，请参阅 [完整的 Azure Monitor 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将指南从 [Azure 安全基准](../security/benchmarks/overview.md)应用到 Azure Monitor。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控件”分组，此类控件按适用于 Azure Monitor 的 Azure 安全基准和相关的指南定义。 排除了不适用于 Azure Monitor 的“控件”。 若要查看 Azure Monitor 如何完全映射到 Azure 安全基准，请参阅[完整的 Azure Monitor 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务不能单独部署为服务。 Azure Monitor 组件可能会随资源一起部署，这可能会影响这些资源的安全状况。
+Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单独作为一项服务部署。 Azure Monitor 组件可能会随资源一起部署，这可能会影响这些资源的安全状况。
 
 ## <a name="network-security"></a>网络安全性
 
@@ -26,13 +26,13 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
-**指南**：启用 Azure 专用链接，以允许访问 Azure SaaS 服务 (例如，通过虚拟网络中的专用终结点 Azure Monitor) 和 Azure 托管的客户/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
+**指导**：启用 Azure 专用链接，可以通过虚拟网络中的专用终结点访问 Azure SaaS 服务（例如 Azure Monitor）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
 
-若要允许流量到达 Azure Monitor，请使用 "AzureMonitor" 服务标记允许通过网络安全组进行入站和出站流量。 若要允许可用性监视测试流量到达 Azure Monitor，请使用 "ApplicationInsightsAvailability" 服务标记通过网络安全组发送到所有入站流量。
+若要允许流量到达 Azure Monitor，请使用“AzureMonitor”服务标记来允许入站和出站流量通过网络安全组。 若要允许“可用性监视”测试流量到达 Azure Monitor，请使用“ApplicationInsightsAvailability”服务标记来允许所有入站流量通过网络安全组。
 
-虚拟网络规则使 Azure Monitor 仅接受从虚拟网络中的选定子网发送的通信。
+虚拟网络规则使 Azure Monitor 仅接受从虚拟网络中的所选子网发送的通信。
 
-使用 Log Analytics 网关，以代表无法直接连接到 internet 的计算机的 Azure Monitor 中的 Log Analytics 工作区发送数据，从而阻止需要计算机连接到 internet。 
+使用 Log Analytics 网关，可代表无法直接连接到 Internet 的计算机向 Azure Monitor 中的 Log Analytics 工作区发送数据，而无需将计算机连接到 Internet。 
 
 - [如何为 Azure Monitor 设置专用链接](platform/private-link-security.md)
 
@@ -44,11 +44,11 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
-**指南**： Azure Monitor 是一种核心服务，不支持直接部署到虚拟网络中，它的底层基础结构由 Microsoft 处理。 但是，对于与 Azure Monitor 提供网络连接的资源，请使用网络安全组保护其网络。 启用网络安全组流日志，并将日志发送到存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指导**：Azure Monitor 是一种核心服务，不支持直接部署到虚拟网络中，它的底层基础结构由 Microsoft 负责。 但对于通过网络与 Azure Monitor 产品/服务连接的资源，请使用网络安全组保护其网络。 启用网络安全组流日志，并将日志发送到存储帐户以进行流量审核。 还可以将流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
-将 Azure Monitor 与专用链接一起使用时，你可以访问网络日志记录，如 "由专用终结点处理的数据 (IN/OUT) "。
+将 Azure Monitor 与专用链接结合使用时，可访问网络日志记录，如“专用终结点处理的数据(入站/出站)”。
 
-- [Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
+- [针对 Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
 
 - [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md)
 
@@ -64,7 +64,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：若要允许流量到达 Azure Monitor，请使用 "AzureMonitor" 服务标记允许通过网络安全组进行入站和出站流量。 若要允许可用性监视测试流量到达 Azure Monitor，请使用 "ApplicationInsightsAvailability" 服务标记通过网络安全组发送到所有入站流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指导**：若要允许流量到达 Azure Monitor，请使用“AzureMonitor”服务标记来允许入站和出站流量通过网络安全组。 若要允许“可用性监视”测试流量到达 Azure Monitor，请使用“ApplicationInsightsAvailability”服务标记来允许所有入站流量通过网络安全组。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md) 
 
@@ -74,15 +74,15 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**： Azure Monitor 是 Azure 核心服务的一部分，不能单独部署为服务。 Azure Monitor 组件（包括 Azure Monitor 代理和 Application Insights SDK）可能会随资源一起部署，这可能会影响这些资源的安全状况。
+**指导**：Azure Monitor 属于 Azure 核心服务，并且不能单独作为一项服务进行部署。 Azure Monitor 组件（包括 Azure Monitor 代理）和 Application Insights SDK 可能会随资源一起部署，这可能会影响这些资源的安全状况。
 
-- [Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
+- [针对 Azure Monitor 代理的网络要求](platform/log-analytics-agent.md#network-requirements)
 
 - [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md) 
 
 - [请参阅 Application Insights 入门](./app/app-insights-overview.md#get-started)
 
-- [如何设置可用性 web 测试](app/monitor-web-app-availability.md)
+- [如何设置可用性 Web 测试](app/monitor-web-app-availability.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -90,7 +90,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
-**指南**：使用 Azure 活动日志监视资源配置，并检测对与 Azure Monitor 相关的网络资源所做的更改。 在 Azure Monitor 中创建警报，当对关键网络资源进行更改时将触发此警报。
+**指导**：使用 Azure 活动日志监视资源配置，并检测与 Azure Monitor 相关的网络资源的更改。 在 Azure Monitor 中创建警报，使其在关键网络资源发生更改时触发。
 
 - [如何查看和检索 Azure 活动日志事件](./platform/activity-log.md#view-the-activity-log)
 
@@ -106,7 +106,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**： Azure Monitor 使用活动日志记录对其资源所做的更改。 可以将这些日志导出到 Azure 存储、事件中心或 Log Analytics 工作区。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，可以对数据进行查询和执行分析，将 Azure 存储帐户用于日志的任何长期/存档存储。
+**指导**：Azure Monitor 使用活动日志来记录其资源的更改。 可将这些日志导出到 Azure 存储、事件中心或 Log Analytics 工作区。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，可查询数据并对数据执行分析，并可将 Azure 存储帐户用于日志的任何长期/存档存储。
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
@@ -124,7 +124,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**： Azure Monitor 使用活动日志，会自动启用活动日志，并记录对 Azure Monitor 资源执行的操作，例如：谁启动了该操作、操作发生的时间、操作状态和其他有用的审核信息。 
+**指导**：Azure Monitor 使用活动日志，活动日志会自动启用，并记录对 Azure Monitor 资源执行的操作，例如：谁启动了操作、操作发生的时间、操作状态以及其他有用的审核信息。 
 
 - [如何使用 Azure Monitor 收集平台日志和指标](platform/diagnostic-settings.md)
 
@@ -136,7 +136,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行日志的任何长期/存档存储。
+**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户对日志进行任何长期/存档存储。
 
 - [更改 Log Analytics 中的数据保留期](platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -148,7 +148,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
+**指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
@@ -164,7 +164,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：将 Azure 安全中心与 Log Analytics 工作区结合使用，以便在安全日志和事件中发现异常活动时进行监视和警报。 或者，可以启用数据并将其加入 Azure Sentinel。
+**指导**：使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。 或者，可以启用数据并将其加入 Azure Sentinel。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 Azure AD MFA，并遵循 Azure 安全中心的标识和访问建议。
+**指导**：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问建议。
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -288,7 +288,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure 安全中心监视**：未设置。 请在工作项中提供一个值。
+**Azure 安全中心监视**：取消设置。 请在工作项中提供一个值。
 
 **责任**：客户
 
@@ -312,7 +312,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：尽可能使用标记来帮助跟踪存储或处理敏感信息 Azure Monitor 资源，如 Log Analytics 工作区。
+**指导**：尽可能使用标记来帮助跟踪用于存储或处理敏感信息的 Azure Monitor 资源，如 Log Analytics 工作区。
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -324,7 +324,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对你的应用程序和企业环境所需的 Azure Monitor 和相关资源的访问级别。 可以通过 Azure Active Directory 基于角色的访问控制来控制对 Azure Monitor 的访问。
+**指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需的 Azure Monitor 和相关资源的访问级别。 可以通过 Azure 基于角色的访问控制来控制对 Azure Monitor 的访问。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -338,9 +338,9 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：默认情况下，AZURE MONITOR 协商 TLS 1.2。 确保连接到 Azure 资源的任何客户端能够协商 TLS 1.2 或更高版本。 
+**指导**：Azure Monitor 默认协商 TLS 1.2。 确保连接到 Azure 资源的任何客户端能够协商 TLS 1.2 或更高版本。 
 
-Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数据引入。 通过在客户端配置，可以将数据限制为 TLS 1.2。
+Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 数据。 通过在客户端配置，可以将数据限制为 TLS 1.2。
 
 - [如何使用 TLS 1.2 安全地发送数据](platform/data-security.md#sending-data-securely-using-tls-12)
 
@@ -350,8 +350,8 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
-**指南**：目前尚不 Azure Monitor 支持数据标识、分类和丢失防护功能。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+**指导**：数据标识、分类和丢失防护功能尚不适用于 Azure Monitor。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -361,7 +361,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指南**：使用 Azure 基于角色的访问控制 (RBAC) 来管理对 Azure Monitor 的访问权限。
+**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对 Azure Monitor 的访问权限。
 
 - [Azure Monitor 中的角色、权限和安全性](platform/roles-permissions-security.md)
 
@@ -373,7 +373,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**： Azure Monitor 确保所有数据和保存的查询都使用 Microsoft 托管的密钥 (MMK) 进行静态加密。 Azure Monitor 还提供了使用自己的密钥进行加密的选项，该密钥存储在你的 Azure Key Vault 中，并由存储使用系统分配的托管标识身份验证来访问。 此客户托管的密钥 (CMK) 可以是软件或硬件 HSM 保护的。
+**指导**：Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密，该密钥存储在 Azure Key Vault 中，并且存储可通过系统分配的托管标识身份验证对其进行访问。 此客户管理的密钥 (CMK) 可通过软件或硬件 HSM 保护。
 
 - [Azure Monitor 客户管理的密钥](platform/customer-managed-keys.md)
 
@@ -389,7 +389,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建 Azure Monitor 和相关资源中发生更改的时间的警报。
+**指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在 Azure Monitor 和相关资源发生更改时发出的警报。
 
 - [如何针对 Azure 活动日志事件创建警报](platform/alerts-activity-log.md)
 
@@ -415,7 +415,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure CLI 查询和发现订阅中的 Azure Monitor 资源。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure CLI 查询和发现订阅中的 Azure Monitor 资源。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 - [Azure Monitor CLI](/cli/azure/monitor?view=azure-cli-latest)
 
@@ -431,7 +431,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：将标记应用于 Azure Monitor 资源，使元数据以逻辑方式将它们组织到分类。
+**指导**：将标记应用于 Azure Monitor 资源，从而将元数据按逻辑组织到分类中。
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -441,7 +441,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Monitor 相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指导**：使用标记、管理组和单独订阅（如果适用）来组织和跟踪 Azure Monitor 相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -477,7 +477,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指南**：定期协调清点，并确保从订阅中及时删除未经授权的 Azure Monitor 相关资源。  
+**指导**：定期核对清单，确保及时地从订阅中删除未经授权的 Azure Monitor 相关资源。  
 
 - [删除 Azure Log Analytics 工作区](platform/delete-workspace.md)
 
@@ -487,7 +487,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略限制可在环境中预配 Azure Monitor 相关资源。 
+**指导**：使用 Azure Policy 限制可在环境中预配的 Azure Monitor 相关资源。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -513,13 +513,13 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：使用自定义 Azure 策略定义审核或强制执行 Azure Monitor 相关资源的配置。 你还可以使用内置的 Azure 策略定义。
+**指导**：使用自定义 Azure Policy 定义来审核或强制实施 Azure Monitor 相关资源的配置。 还可使用内置的 Azure Policy 定义（如果可用）。
 
 此外，Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，应该对其进行检查，以确保配置满足/超过组织的安全要求。
 
 还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
-如果使用实时流式处理 APM 功能，请使用机密 API 密钥以及检测密钥来保证通道的安全。
+如果使用实时流式处理 APM 功能，请使用机密 API 密钥以及检测密钥来保护通道的安全。
 
 - [保护 APM 实时指标流](app/live-stream.md#secure-the-control-channel)
 
@@ -537,7 +537,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure 策略 [拒绝] 和 [部署（如果不存在]）跨 Azure Monitor 相关资源强制实施安全设置。  此外，你可以使用 Azure 资源管理器模板来维护你的组织所需的 Azure Monitor 相关资源的安全配置。
+**指导**：使用 Azure Policy [拒绝]和[不存在时部署]在 Azure Monitor 相关资源中强制实施安全设置。  此外，你可以使用 Azure 资源管理器模板维护组织所需的 Azure Monitor 相关资源的安全配置。
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
@@ -563,11 +563,11 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
-**指南**：使用 Azure 策略定义和实现 Azure Monitor 相关资源的标准安全配置。 使用自定义 Azure 策略定义审核或强制实施 Azure Monitor 相关资源的安全配置。 还可以使用与特定资源相关的内置策略定义。
+**指导**：使用 Azure Policy 为 Azure Monitor 相关资源定义和实现标准安全配置。 使用自定义 Azure Policy 定义来审核或强制实施 Azure Monitor 相关资源的安全配置。 还可以使用与特定资源相关的内置策略定义。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure 策略别名](../governance/policy/concepts/definition-structure.md#aliases)
+- [Azure Policy 别名](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Azure 安全中心监视**：不适用
 
@@ -575,7 +575,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指南**：使用 Azure 安全中心对 Azure Monitor 相关资源执行基线扫描。  此外，使用 Azure Policy 警告和审核 Azure 资源配置。
+**指导**：使用 Azure 安全中心对 Azure Monitor 相关资源执行基线扫描。  此外，使用 Azure Policy 警告和审核 Azure 资源配置。
 
 - [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
@@ -585,7 +585,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
-**指南**：将托管服务标识与 Azure Key Vault 结合使用，以简化和保护受支持的 Azure monitor 相关资源的机密管理。
+**指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护受支持的 Azure monitor 相关资源的机密管理。
 
 - [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
@@ -601,7 +601,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识，你可以向支持 Azure AD 身份验证的任何服务（包括 Azure Monitor 资源）进行身份验证，而无需在代码中包含任何凭据。 
+**指导**：使用托管标识在 Azure AD 中为 Azure 服务提供自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Monitor 资源）进行身份验证，无需在代码中放入任何凭据。 
 
 - [如何为 Azure 资源配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
@@ -613,7 +613,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 **指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-- [如何设置凭据扫描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
+- [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：不适用
 
@@ -625,13 +625,13 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如 Azure Monitor 相关资源) ，但它不会在内容上运行。 
+**指导**：Microsoft Anti-malware 已在支持 Azure 服务（例如 Azure Monitor 相关资源）的基础主机上启用，但它不会针对内容运行。 
 
-预先扫描上传到适用 Azure Monitor 相关资源（如 Log Analytics 工作区）的任何文件。
+预先扫描上传到适用的 Azure Monitor 相关资源（如 Log Analytics 工作区）的任何文件。
 
 使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。 
 
-- [了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](../security/fundamentals/antimalware.md)
+- [了解适用于 Azure 云服务和虚拟机的 Microsoft Anti-malware](../security/fundamentals/antimalware.md)
 
 - [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 
@@ -645,7 +645,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**：使用 Azure 资源管理器可以将 Azure Monitor 和相关资源导出 JAVASCRIPT 对象表示法 (JSON) 模板，该模板可用作 Azure Monitor 和相关配置的备份。  使用 Azure 自动化自动运行备份脚本。 
+**指导**：使用 Azure 资源管理器导出 JavaScript 对象表示法 (JSON) 模板中的 Azure Monitor 和相关资源，该模板可用作 Azure Monitor 和相关配置的备份。  使用 Azure 自动化自动运行备份脚本。 
 
 - [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./samples/resource-manager-workspace.md)
 
@@ -659,7 +659,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：使用 Azure 资源管理器可以将 Azure Monitor 和相关资源导出 JAVASCRIPT 对象表示法 (JSON) 模板，该模板可用作 Azure Monitor 和相关配置的备份。  如果 Azure Monitor 相关资源使用客户管理的密钥，请在 Azure Key Vault 中备份客户托管的密钥， 
+**指导**：使用 Azure 资源管理器导出 JavaScript 对象表示法 (JSON) 模板中的 Azure Monitor 和相关资源，该模板可用作 Azure Monitor 和相关配置的备份。  如果 Azure Monitor 相关资源使用客户管理的密钥，请在 Azure Key Vault 中备份客户管理的密钥。 
 
 - [使用 Azure 资源管理器模板管理 Log Analytics 工作区](./samples/resource-manager-workspace.md)
 
@@ -685,7 +685,7 @@ Application Insights 和 Log Analytics 会继续允许 TLS 1.1 和 TLS 1.0 数�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。   使用基于角色的访问控制保护客户管理的密钥。 
+**指南**：使用 Azure DevOps 安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。   使用 Azure 基于角色的访问控制来保护客户管理的密钥。 
 
 此外，在 Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 如果将 Azure 存储用于存储 Azure 资源管理器模板备份，请启用软删除以在 blob 或 blob 快照被删除时保存和恢复数据。 
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061830"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528221"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨区域 (资源组中移动资源) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "90061830"
 - 需要对要移动的资源所在的订阅 *拥有所有者* 访问权限。
     - 第一次在 Azure 订阅中添加特定源和目标映射的资源时，资源移动器会创建一个 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ， (以前称为托管服务标识订阅所信任的 (MSI) # A3。
     - 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 订阅需要足够的配额才能在目标区域中创建源资源。 如果不是，则请求额外的限制。 [了解详细信息](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 订阅需要足够的配额才能在目标区域中创建源资源。 如果不是，则请求额外的限制。 [了解详细信息](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
 - 检查资源移动器是否支持你想要移动的资源：
     - Azure VM 和关联的磁盘
@@ -70,10 +70,10 @@ ms.locfileid: "90061830"
     ![用于选择目标区域的源和目标页](./media/move-region-within-resource-group/source-target.png)
 
 
-7. 在 **要移动的资源**中，选择 " **下一步**"。  
+7. 在 **要移动的资源** 中，选择 " **下一步**"。  
 8. 在 " **选择资源**" 中，选择要移动的资源。 只能添加支持移动的资源。 然后选择“完成”。
 9. 在 " **移动资源**" 中，选择 " **下一步**"。 
-10. 在 **评审 + Add**中，检查源和目标的详细信息。
+10. 在 **评审 + Add** 中，检查源和目标的详细信息。
 11. 确认你了解有关要移动的资源的元数据将存储在为此目的而创建的资源组中，并允许资源移动器创建系统管理的标识来访问订阅资源。
 1. 选择 " **继续** " 开始添加资源。
 

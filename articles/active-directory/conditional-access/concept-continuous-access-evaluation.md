@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837611"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520656"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -26,7 +26,9 @@ ms.locfileid: "94837611"
 
 对策略冲突或安全问题的及时响应实际上需要令牌颁发者（如 Azure AD）和依赖方（如 Exchange Online）之间进行“对话”。 这种双向对话提供了两项重要功能。 信赖方可以注意到事情的变化（比如客户端来自一个新的位置），并通知令牌颁发者。 通过此对话，令牌颁发者也可通知信赖方由于帐户泄露、禁用或其他问题而停止遵从给定用户的令牌。 此对话的机制是连续访问评估 (CAE)。 虽然我们的目标是近乎实时地作出响应，但在某些情况下，由于事件传播时间的原因，延迟可能会长达 15 分钟。
 
-连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。 
+连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。
+
+若要准备应用程序以使用 CAE，请参阅 [如何在应用程序中使用启用了持续存取评估的 api](/develop/app-resilience-continuous-access-evaluation.md)。
 
 ### <a name="key-benefits"></a>主要优点
 

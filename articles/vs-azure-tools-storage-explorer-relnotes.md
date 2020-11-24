@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828772"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520996"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -86,7 +86,7 @@ ms.locfileid: "87828772"
 * Azure Stack 不支持托管磁盘功能。
 * 如果磁盘上传或粘贴失败，并且在失败之前创建了新磁盘，则存储资源管理器不会删除新磁盘。
 * 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -108,7 +108,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 ## <a name="previous-releases"></a>以前的版本
 
@@ -176,7 +176,7 @@ ms.locfileid: "87828772"
   * 创建磁盘的快照
 
 磁盘的上传、下载和跨区域复制由 AzCopy v10 提供支持。
-* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)。 #68
+* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux)。 #68
 * 使用 Azure Active Directory Azure Active Directory (Azure AD) 附加资源的功能已发生两项重大更改，目的是使该功能为 ADLS Gen2 用户提供更大的价值：
   * 现在可以选择要附加的资源所在的租户。 这意味着，不再需要对资源的订阅拥有 RBAC 访问权限。
   * 如果附加 ADLS Gen2 Blob 容器，现在可以附加到容器中的特定路径。
@@ -202,7 +202,7 @@ ms.locfileid: "87828772"
 * 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
 * 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
 * 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -224,7 +224,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 
 ## <a name="version-1100"></a>版本 1.10.0
@@ -250,7 +250,7 @@ ms.locfileid: "87828772"
     * 创建磁盘的快照
 
     磁盘的上传、下载和跨区域复制由 AzCopy v10 提供支持。
-* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](https://aka.ms/storageexplorer/snapinformation)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](./vs-azure-tools-storage-manage-with-storage-explorer.md)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * 使用 Azure Active Directory Azure Active Directory (Azure AD) 附加资源的功能已发生两项重大更改，目的是使该功能为 ADLS Gen2 用户提供更大的价值：* 现在可以选择要附加的资源所在的租户。 这意味着，不再需要对资源的订阅拥有 RBAC 访问权限。
         * 如果附加 ADLS Gen2 Blob 容器，现在可以附加到容器中的特定路径。
 * 管理 ADLS Gen2 文件和文件夹的 ACL 时，存储资源管理器现在会显示 ACL 中实体的易记名称。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ ms.locfileid: "87828772"
 * 如果磁盘上传或粘贴失败，并且在失败之前创建了新磁盘，则存储资源管理器不会删除新磁盘。
 * 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
 * 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -298,7 +298,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 ## <a name="version-190"></a>版本 1.9.0
 2019/7/1
@@ -334,7 +334,7 @@ ms.locfileid: "87828772"
 ### <a name="known-issues"></a>已知问题
 
 * 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
@@ -356,7 +356,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 ## <a name="version-181"></a>版本 1.8.1
 2019/5/13
@@ -391,7 +391,7 @@ ms.locfileid: "87828772"
 ### <a name="known-issues"></a>已知问题
 
 * 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
@@ -413,7 +413,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 ## <a name="version-180"></a>版本 1.8.0
 2019 年 5 月 1 日
@@ -443,7 +443,7 @@ ms.locfileid: "87828772"
 ### <a name="known-issues"></a>已知问题
 
 * 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
@@ -465,7 +465,7 @@ ms.locfileid: "87828772"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)。
 
 ## <a name="version-170"></a>版本 1.7.0
 3/5/2019
@@ -499,7 +499,7 @@ ms.locfileid: "87828772"
 
 ### <a name="known-issues"></a>已知问题
 
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 * 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
@@ -559,7 +559,7 @@ ms.locfileid: "87828772"
         
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）
@@ -628,7 +628,7 @@ ms.locfileid: "87828772"
         
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）
@@ -683,7 +683,7 @@ ms.locfileid: "87828772"
 
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）
@@ -1144,7 +1144,7 @@ ms.locfileid: "87828772"
 
 ### <a name="new"></a>新建
 * 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
-* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
+* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](./storage/blobs/storage-blob-storage-tiers.md)详细了解访问层。
 * 生成 SAS 时不再需要开始时间。
 
 ### <a name="fixes"></a>修复项
@@ -1204,7 +1204,7 @@ ms.locfileid: "87828772"
 * 存储资源管理器反馈现在位于 GitHub 上。 可以通过单击左下方的“反馈”按钮或通过转到 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 来访问我们的问题页面。 请随意提出建议、报告问题、提出问题或留下任何其他形式的反馈。
 * 如果遇到 TLS/SSL 证书问题但找不到有问题的证书，现在可以从命令行使用 `--ignore-certificate-errors` 标志启动存储资源管理器。 使用此标志启动时，存储资源管理器会忽略 TLS/SSL 证书错误。
 * 现在，在 blob 和文件项的上下文菜单中将出现“下载”选项。
-* 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)了解详细信息。
+* 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](./vs-azure-tools-storage-explorer-accessibility.md)了解详细信息。
 * 存储资源管理器现在使用 Electron 1.8.3
 
 ### <a name="breaking-changes"></a>重大更改

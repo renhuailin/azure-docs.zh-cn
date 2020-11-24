@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747683"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530108"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区
 用于 VM 的 Azure Monitor 从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在载入代理之前，必须创建和配置工作区。 本文介绍工作区的要求并对其进行配置以实现用于 VM 的 Azure Monitor。
@@ -41,7 +41,7 @@ ms.locfileid: "94747683"
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Resource Manager](../samples/resource-manager-workspace.md)
+* [Azure 资源管理器](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -68,7 +68,7 @@ ms.locfileid: "94747683"
 - 澳大利亚东部
 - 澳大利亚东南部
 
-## <a name="role-based-access-control"></a>基于角色的访问控制
+## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 若要启用和访问用于 VM 的 Azure Monitor 中的功能，您必须在工作区中具有 " [Log Analytics 参与者" 角色](../platform/manage-access.md#manage-access-using-azure-permissions) 。 若要查看性能、运行状况和映射数据，你必须具有 Azure VM 的 " [监视读取](../platform/roles-permissions-security.md#built-in-monitoring-roles) 者" 角色。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
 
 ## <a name="add-vminsights-solution-to-workspace"></a>将 VMInsights 解决方案添加到工作区

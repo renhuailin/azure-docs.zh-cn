@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444599"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527303"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
@@ -40,7 +40,7 @@ ms.locfileid: "94444599"
 
 1. 从 [Azure 机器学习工作室](https://ml.azure.com)选择 Azure 机器学习计算实例。
 
-1. 打开 `samples-*` 子目录，然后打开 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
+1. 打开 `samples-*` 子目录，然后打开 `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 

@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668891"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519857"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>具有 ARM 模板的订阅部署
 
@@ -37,7 +37,7 @@ ms.locfileid: "92668891"
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-对于 azure RBAC)  (基于角色的访问控制，请使用：
+对于 Azure 基于角色的访问控制 (Azure RBAC)，请使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment** 。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 以下示例会部署一个模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -131,20 +131,28 @@ New-AzSubscriptionDeployment `
 部署到订阅时，可以将资源部署到：
 
 * 操作的目标订阅
-* 订阅中的资源组
+* 租户中的任何订阅
+* 订阅或其他订阅中的资源组
+* 订阅的租户
 * [扩展资源](scope-extension-resources.md) 可以应用于资源
 
-无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
+部署模板的用户必须有权访问指定的作用域。
 
 本部分说明如何指定不同的范围。 可以在单个模板中组合这些不同的范围。
 
-### <a name="scope-to-subscription"></a>作用域到订阅
+### <a name="scope-to-target-subscription"></a>作用域到目标订阅
 
 若要将资源部署到目标订阅，请将这些资源添加到模板的 resources 节中。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
 有关部署到订阅的示例，请参阅 [创建资源组](#create-resource-groups) 和 [分配策略定义](#assign-policy-definition)。
+
+### <a name="scope-to-other-subscription"></a>作用域到其他订阅
+
+若要将资源部署到与操作中的订阅不同的订阅，请添加嵌套部署。 将 `subscriptionId` 属性设置为要部署到的订阅的 ID。 设置 `location` 嵌套部署的属性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
 ### <a name="scope-to-resource-group"></a>作用域到资源组
 
@@ -154,11 +162,23 @@ New-AzSubscriptionDeployment `
 
 有关部署到资源组的示例，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。
 
+### <a name="scope-to-tenant"></a>作用域到租户
+
+可以通过将设置为来在租户中创建资源 `scope` `/` 。 部署模板的用户必须具有 [所需的访问权限才能在租户上进行部署](deploy-to-tenant.md#required-access)。
+
+你可以使用嵌套的部署 `scope` 并 `location` 设置。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
+
+或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
 对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy** 。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 

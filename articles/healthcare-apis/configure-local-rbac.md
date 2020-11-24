@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847000"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524192"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>配置 FHIR 的本地 RBAC 
 
@@ -23,7 +23,7 @@ ms.locfileid: "87847000"
 
 ## <a name="add-service-principal"></a>添加服务主体
 
-本地 RBAC 允许将外部 Azure Active Directory 租户与 FHIR 服务器一起使用。 为了允许 RBAC 系统检查此租户中的组成员身份，Azure API for FHIR 必须在租户中有一个服务主体。 此服务主体将自动在与已部署 Azure API for FHIR 的订阅相关联的租户中自动创建，但如果你的租户没有关联的订阅，则租户管理员将需要使用以下命令之一创建此服务主体：
+本地 RBAC 允许将外部 Azure Active Directory 租户与 FHIR 服务器一起使用。 为了允许本地 RBAC 系统检查此租户中的组成员身份，Azure API for FHIR 必须在租户中有一个服务主体。 此服务主体将自动在与已部署 Azure API for FHIR 的订阅相关联的租户中自动创建，但如果你的租户没有关联的订阅，则租户管理员将需要使用以下命令之一创建此服务主体：
 
 使用 `Az` PowerShell 模块：
 

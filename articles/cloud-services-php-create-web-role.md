@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892977"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519840"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -26,7 +26,7 @@ ms.locfileid: "88892977"
 
 本指南说明如何执行以下操作：在 Windows 开发环境中创建 PHP Web 角色或辅助角色，从提供的“内置”版本中选择特定版本的 PHP，更改 PHP 配置，启用扩展，最后部署到 Azure。 它还介绍了如何将 Web 角色或辅助角色配置为使用你提供的 PHP 运行时（带自定义配置和扩展）。
 
-Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服务、Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)* 。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服务、Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)* 。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
 
 有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](cloud-services/cloud-services-choose-me.md)。
 
@@ -189,9 +189,9 @@ PS C:\MyProject> Stop-AzureEmulator
 有关详细信息，请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[服务定义 (.csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服务配置 (.cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[服务定义 (.csdef)]: /previous-versions/azure/reference/ee758711(v=azure.100)
+[服务配置 (.cscfg)]: /previous-versions/azure/reference/ee758710(v=azure.100)
 [iis.net]: https://www.iis.net/
-[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
+[sql native client]: /sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
 [sqlncli.msi x64 安装程序]: https://go.microsoft.com/fwlink/?LinkID=239648

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c957330fbd54660367fa350d6985929f0bbd3d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874809"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531383"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -38,7 +38,7 @@ Azure 存储预留容量适用于单个订阅或多个订阅 (共享范围) 。 
 
 当你购买 Azure 存储预留容量时，你可以将保留用于块 blob 和 Azure Data Lake Storage Gen2 数据。 预订适用于你在购买范围内的使用情况，并且不能限制为订阅中的特定存储帐户、容器或对象。
 
-Azure 存储预留只包含订阅或共享资源组中存储的数据量。 保留中不包含早期删除、操作、带宽和数据传输费用。 购买预订后，与预订属性匹配的容量费用将按折扣费率收费，而不是按即用即付费率收费。 有关 Azure 预留的详细信息，请参阅 [什么是 Azure 保留？](/azure/billing/billing-save-compute-costs-reservations)。
+Azure 存储预留只包含订阅或共享资源组中存储的数据量。 保留中不包含早期删除、操作、带宽和数据传输费用。 购买预订后，与预订属性匹配的容量费用将按折扣费率收费，而不是按即用即付费率收费。 有关 Azure 预留的详细信息，请参阅 [什么是 Azure 保留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)。
 
 ### <a name="supported-account-types-tiers-and-redundancy-options"></a>支持的帐户类型、层和冗余选项
 
@@ -67,7 +67,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>购买 Azure 存储预留容量
 
-可以通过 [Azure 门户](https://portal.azure.com)购买 Azure 存储预留容量。 通过提前付款或按月付款的方式为预留付款。 若要详细了解每月支付的费用，请参阅 [提前或按月支付购买 Azure 预订](/azure/billing/billing-monthly-payments-reservations)。
+可以通过 [Azure 门户](https://portal.azure.com)购买 Azure 存储预留容量。 通过提前付款或按月付款的方式为预留付款。 若要详细了解每月支付的费用，请参阅 [提前或按月支付购买 Azure 预订](../../cost-management-billing/reservations/prepare-buy-reservation.md)。
 
 若要了解如何识别适用于你的方案的预订条款，请参阅 [了解 Azure 存储预留容量折扣](../../cost-management-billing/reservations/understand-storage-charges.md)。
 
@@ -85,7 +85,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一： <br/><br/>  企业协议 (产品/服务： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ：对于企业订阅，将从注册的货币承诺余额中扣除费用，或者将费用作为超额支付。 <br/><br/> 使用即用即付费率的单个订阅 (产品/服务： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P) ：对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。    |
    | **区域** | 预订有效的区域。 |
    | **访问层** | 其中的预订生效的访问层。 选项包括 " *热*"、" *冷*" 或 " *存档*"。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
-   | **冗余** | 预订的冗余选项。 选项包括 *LRS*、 *ZRS*、 *GRS*、 *GZRS*、 *ra-GRS*和 *ra-GZRS*。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。 |
+   | **冗余** | 预订的冗余选项。 选项包括 *LRS*、 *ZRS*、 *GRS*、 *GZRS*、 *ra-GRS* 和 *ra-GZRS*。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。 |
    | **计费频率** | 指示帐户按预订计费的频率。 选项包括 " *每月* " 或 " *提前*"。 |
    | **大小** | 要预留的容量量。 |
    |**条款**  | 一年或三年。   |

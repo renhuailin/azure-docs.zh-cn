@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465212"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527320"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
@@ -34,11 +34,11 @@ ms.locfileid: "84465212"
 
 1. 指定 CDN 终结点的定价层。 若要了解有关定价的详细信息，请参阅 [内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。 有关每个层提供的功能的详细信息，请参阅 [比较 Azure CDN 产品功能](../../cdn/cdn-features.md)。
 
-1. 在“CDN 终结点名称”字段中，指定 CDN 终结点的名称。**** CDN 终结点在 Azure 中必须是唯一的，并提供终结点 URL 的第一部分。 此窗体验证终结点名称是否是唯一的。
+1. 在“CDN 终结点名称”字段中，指定 CDN 终结点的名称。 CDN 终结点在 Azure 中必须是唯一的，并提供终结点 URL 的第一部分。 此窗体验证终结点名称是否是唯一的。
 
 1. 在 " **源主机名** " 字段中指定静态网站终结点。 
 
-   若要查找静态网站终结点，请导航到存储帐户的“静态网站”设置。****  复制主终结点，并将其粘贴到 CDN 配置中。
+   若要查找静态网站终结点，请导航到存储帐户的“静态网站”设置。  复制主终结点，并将其粘贴到 CDN 配置中。
 
    > [!IMPORTANT]
    > 请确保删除协议标识符 (*例如*，HTTPS) ，以及 URL 中的尾部反斜杠。 例如，如果静态网站终结点为 `https://mystorageaccount.z5.web.core.windows.net/` ，则需 `mystorageaccount.z5.web.core.windows.net` 在 " **源主机名** " 字段中指定。
@@ -55,7 +55,7 @@ ms.locfileid: "84465212"
 
 1. 预配 CDN 终结点后，导航到 CDN 终结点会显示你之前上传到静态网站的 index.html 文件的内容。
 
-1. 若要查看 CDN 终结点的源设置，请导航到 CDN 终结点的“设置”部分下的“源”。******** 此时会看到“源类型”字段设置为“自定义源”，“源主机名”字段显示静态网站终结点。**********
+1. 若要查看 CDN 终结点的源设置，请导航到 CDN 终结点的“设置”部分下的“源”。 此时会看到“源类型”字段设置为“自定义源”，“源主机名”字段显示静态网站终结点。
 
     ![显示 CDN 终结点的源设置的屏幕截图](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "84465212"
 
 如果不再需要在 Azure CDN 中缓存对象，则可以执行以下步骤之一：
 
-* 将容器设为专用容器而不是公用容器。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](storage-manage-access-to-resources.md)。
+* 将容器设为专用容器而不是公用容器。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](./anonymous-read-access-configure.md)。
 * 通过 Azure 门户禁用或删除 CDN 终结点。
 * 将托管服务修改为不再响应此对象的请求。
 

@@ -8,17 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322543"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509500"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中解释模型结果
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 本主题说明如何在 Azure 机器学习工作室（经典版）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
@@ -257,7 +256,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 **向给定用户推荐项目**
 
-选择“推荐器预测类型”下的“项目推荐”即要求推荐器系统向给定用户推荐项目。 此方案中要选择的最后一个参数是 *推荐项目选择* 。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 22。
+选择“推荐器预测类型”下的“项目推荐”即要求推荐器系统向给定用户推荐项目。 此方案中要选择的最后一个参数是 *推荐项目选择*。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 22。
 
 ![推荐器系统的评分结果 - 项目推荐](./media/interpret-model-results/22.png)
 
@@ -267,7 +266,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 **查找与给定用户相关的用户**
 
-选择“推荐器预测类型”下的“相关用户”即要求推荐器系统查找给定用户的相关用户。 相关用户是具有相似偏好的用户。 此方案中要选择的最后一个参数是 *相关用户选择* 。 选项“从已为项目评级的用户(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，选择“从所有用户”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 23。
+选择“推荐器预测类型”下的“相关用户”即要求推荐器系统查找给定用户的相关用户。 相关用户是具有相似偏好的用户。 此方案中要选择的最后一个参数是 *相关用户选择*。 选项“从已为项目评级的用户(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，选择“从所有用户”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 23。
 
 ![推荐器系统的评分结果 --相关用户](./media/interpret-model-results/23.png)
 
@@ -277,7 +276,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 **查找与给定项目相关的项目**
 
-选择“推荐器预测类型”下的“相关项目”即要求推荐器系统查找给定项目的相关项目。 相关项目是同一个用户最有可能喜欢的项目。 此方案中要选择的最后一个参数是 *相关项目选择* 。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 24。
+选择“推荐器预测类型”下的“相关项目”即要求推荐器系统查找给定项目的相关项目。 相关项目是同一个用户最有可能喜欢的项目。 此方案中要选择的最后一个参数是 *相关项目选择*。 选项“从评级项目(用于模型评估)”主要用于训练过程中的模型评估。 对于此预测阶段，我们选择“从所有项目”。 [Matchbox 推荐器评分][score-matchbox-recommender]输出的可视化类似于图 24。
 
 ![推荐器系统的评分结果 --相关项目](./media/interpret-model-results/24.png)
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cad25990d0ba7e27f4a90adc587f0c8a0a2c551a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305901"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521064"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 的 Java 应用程序中使用 Twilio 发起电话呼叫
 以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 最终的应用程序将提示用户输入电话呼叫值，如以下屏幕截图所示。
@@ -169,7 +169,7 @@ catch (Exception e)
 
 ![使用 Twilio 和 Java 的 Azure 呼叫响应][twilio_java_response]
 
-## <a name="run-the-application"></a>运行应用程序
+## <a name="run-the-application"></a>运行此应用程序
 下面是运行应用程序的概要步骤；这些步骤的详细信息可在[使用用于 Eclipse 的 Azure 工具包创建 Hello World 应用程序][azure_java_eclipse_hello_world]中找到。
 
 1. 将 TwilioCloud WAR 导出到 Azure **approot** 文件夹。 
@@ -177,7 +177,7 @@ catch (Exception e)
 3. 针对计算模拟器编译应用程序。
 4. 在计算模拟器中启动部署。
 5. 打开浏览器，并运行 `http://localhost:8080/TwilioCloud/callform.jsp` 。
-6. 在窗体中输入值，单击“发起此呼叫”，并查看 makecall.jsp 中的结果。****
+6. 在窗体中输入值，单击“发起此呼叫”，并查看 makecall.jsp 中的结果。
 
 准备好部署到 Azure 之后，请针对云部署重新进行编译，部署到 Azure，然后在浏览器中运行 http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp（将 *your_hosted_name* 替换为自己的值）。
 
@@ -186,7 +186,7 @@ catch (Exception e)
 
 * 可以使用 Azure 存储 Blob 或 SQL 数据库存储电话号码和呼叫文本，而不使用 Web 窗体。 有关通过 Java 使用 Azure Blob 存储 Blob 的信息，请参阅[如何从 Java 使用 Azure Blob 存储服务][howto_blob_storage_java]。 
 * 可以使用 **RoleEnvironment.getConfigurationSettings** 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在 makecall.jsp 中对这些值进行硬编码。 有关 **RoleEnvironment** 类的信息，请参阅 [在 JSP 中使用 Azure 服务运行时库][azure_runtime_jsp]。
-* makecall.jsp 代码将 Twilio 提供的 URL 分配 [https://twimlets.com/message][twimlet_message_url] 给 **URL** 变量。 此 URL 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可以包含** &lt; &gt; 一个谓词**，该谓词会导致向呼叫接收方口述文本。 可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 Java 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_java]。 有关 TwiML 的详细信息 [https://www.twilio.com/docs/api/twiml][twiml] ，请参阅。有关** &lt; &gt; **详细信息，请参阅 [https://www.twilio.com/docs/api/twiml/say][twilio_say] 。
+* makecall.jsp 代码将 Twilio 提供的 URL 分配 [https://twimlets.com/message][twimlet_message_url] 给 **URL** 变量。 此 URL 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可以包含 **&lt; &gt; 一个谓词**，该谓词会导致向呼叫接收方口述文本。 可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 Java 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_java]。 有关 TwiML 的详细信息 [https://www.twilio.com/docs/api/twiml][twiml] ，请参阅。有关 **&lt; &gt;** 详细信息，请参阅 [https://www.twilio.com/docs/api/twiml/say][twilio_say] 。
 * 阅读 Twilio 安全准则，网址为 [https://www.twilio.com/docs/security][twilio_docs_security] 。
 
 有关 Twilio 的其他信息，请参阅 [https://www.twilio.com/docs][twilio_docs] 。
@@ -203,12 +203,12 @@ catch (Exception e)
 [twimlet_message_url]: https://twimlets.com/message
 [twiml]: https://www.twilio.com/docs/api/twiml
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: java-add-certificate-ca-store.md
-[azure_java_eclipse_hello_world]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app 
+[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
+[azure_java_eclipse_hello_world]: /java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app
 [howto_twilio_voice_sms_java]: partner-twilio-java-how-to-use-voice-sms.md
 [howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
 [howto_sql_azure_java]: https://msdn.microsoft.com/library/windowsazure/hh749029.aspx
-[azure_runtime_jsp]: https://msdn.microsoft.com/library/windowsazure/hh690948.aspx
+[azure_runtime_jsp]: /previous-versions/azure/hh690948(v=azure.100)
 [twilio_docs_security]: https://www.twilio.com/docs/security
 [twilio_docs]: https://www.twilio.com/docs
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say
