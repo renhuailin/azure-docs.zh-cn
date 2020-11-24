@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535854"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751022"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
 
@@ -46,7 +46,7 @@ Bug 修复版本：8.0.15
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 该服务会自动管理针对 Bug 修复版本更新的修补。 例如，5.7.20 到 5.7.21。  
 
-目前，不支持次版本和主版本升级。 例如，不支持从 MySQL 5.6 升级到 MySQL 5.7。 如果要从 5.6 升级到 5.7，请将其[转储和还原](./concepts-migrate-dump-restore.md)到使用新引擎版本创建的服务器。
+当前，服务支持从 MySQL 5.6 版升级到版本5.7 的主要版本升级。 有关更多详细信息，请参阅 [如何执行主要版本升级](how-to-major-version-upgrade.md)。 如果要从5.7 升级到8.0，建议对使用新引擎版本创建的服务器执行 [转储和还原](./concepts-migrate-dump-restore.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 08/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ff97e52d005ba1e91194b449377653317876163
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ab251e9a156005d47a1516d23cb018fb1907ab6e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912797"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744766"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>教程：创建 Windows Presentation Framework (WPF) 应用以显示图像中的人脸数据
 
@@ -62,13 +62,13 @@ ms.locfileid: "92912797"
 
 ### <a name="create-the-ui"></a>创建 UI
 
-打开 *MainWindow.xaml* ，将其中的内容替换为以下代码&mdash;此代码将创建 UI 窗口。 请注意，`FacePhoto_MouseMove` 和 `BrowseButton_Click` 方法是将在稍后定义的事件处理程序。
+打开 *MainWindow.xaml*，将其中的内容替换为以下代码&mdash;此代码将创建 UI 窗口。 请注意，`FacePhoto_MouseMove` 和 `BrowseButton_Click` 方法是将在稍后定义的事件处理程序。
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
 ### <a name="create-the-main-class"></a>创建主类
 
-打开 *MainWindow.xaml.cs* ，添加客户端库命名空间和其他必需的命名空间。 
+打开 *MainWindow.xaml.cs*，添加客户端库命名空间和其他必需的命名空间。 
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
@@ -80,7 +80,7 @@ ms.locfileid: "92912797"
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-最后，向类添加 **BrowseButton_Click** 和 **FacePhoto_MouseMove** 方法。 这两个方法对应于在 *MainWindow.xaml* 中声明的事件处理程序。 **BrowseButton_Click** 方法创建 **OpenFileDialog** ，供用户选择 .jpg 图像。 然后，它会在主窗口中显示图像。 将会在后面的步骤中插入 **BrowseButton_Click** 和 **FacePhoto_MouseMove** 的剩余代码。 另请注意 `faceList` 引用&mdash;**DetectedFace** 对象的列表。 此引用是应用存储和调用实际人脸数据的位置。
+最后，向类添加 **BrowseButton_Click** 和 **FacePhoto_MouseMove** 方法。 这两个方法对应于在 *MainWindow.xaml* 中声明的事件处理程序。 **BrowseButton_Click** 方法创建 **OpenFileDialog**，供用户选择 .jpg 图像。 然后，它会在主窗口中显示图像。 将会在后面的步骤中插入 **BrowseButton_Click** 和 **FacePhoto_MouseMove** 的剩余代码。 另请注意 `faceList` 引用&mdash;**DetectedFace** 对象的列表。 此引用是应用存储和调用实际人脸数据的位置。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 

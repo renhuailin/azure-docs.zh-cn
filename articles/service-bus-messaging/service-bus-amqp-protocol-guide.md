@@ -3,12 +3,12 @@ title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396869"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736708"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -42,7 +42,7 @@ AMQP 1.0 协议被设计为可扩展，允许进一步规范以增强其功能�
 
 本部分说明 AMQP 1.0 与 Azure 服务总线的基本使用方式，其中包括创建连接、会话和链接，以及与服务总线实体（例如队列、主题和订阅）相互传输消息。
 
-了解 AMQP 工作原理的最权威来源是 AMQP 1.0 规范，但此规范是为了精确引导实现而编写，而非用于传授协议知识。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
+了解 AMQP 工作原理的最权威来源是 [AMQP 1.0 规范](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html)，但规范是为了精确引导实现而不是教授协议而编写的。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
 
 ### <a name="connections-and-sessions"></a>连接和会话
 
@@ -67,7 +67,7 @@ Azure 服务总线随时都需要使用 TLS。 它支持通过 TCP 端口 5671 �
 
 这种基于时段的模型大致类似于 TCP 基于时段的流量控制概念，但属于套接字内的会话级别。 协议具有允许多个并发会话的概念，因此高优先级的流量可能冲过限制的正常流量，就像高速公路上的快速车道一样。
 
-Azure 服务总线目前只对每个连接使用一个会话。 服务总线标准版和事件中心的服务总线帧大小上限为 262,144 字节 (256 KB)。 服务总线高级版则为 1,048,576 (1 MB)。 服务总线不强加任何特定会话级别限制时段，但是在链接级别流量控制中定期重置时段（请参阅[下一部分](#links)）。
+Azure 服务总线目前只对每个连接使用一个会话。 Service Bus 最大帧大小为262144字节， (256-K 字节) 用于服务总线标准。 对于服务总线高级和事件中心，1048576 (1 MB) 。 服务总线不强加任何特定会话级别限制时段，但是在链接级别流量控制中定期重置时段（请参阅[下一部分](#links)）。
 
 连接、通道和会话是暂时性的。 如果基础连接失效，则必须重新创建连接、TLS 隧道、SASL 授权上下文和会话。
 

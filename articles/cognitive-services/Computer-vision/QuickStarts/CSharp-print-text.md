@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8755a600a1e6afaae4ebe7451e16f6632073587f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534511"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746585"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>快速入门：使用计算机视觉 2.0 REST API OCR 操作和 C# 提取文本
 
 > [!IMPORTANT]
-> 如果要提取英语、荷兰语、法语、德语、意大利语、葡萄牙语、西班牙语或简体中文（预览版）文本，建议使用较新的 [Read 操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [C# 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可用。 
+> 如果要提取英语、荷兰语、法语、德语、意大利语、葡萄牙语、西班牙语或简体中文（预览版）文本，建议使用较新的 [Read 操作](../concept-recognizing-text.md)。 [C# 快速入门](./csharp-hand-text.md)可用。 
 
 本快速入门将使用计算机视觉 REST API [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)功能从图像中提取印刷体文本。 借助此操作，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -32,7 +32,7 @@ ms.locfileid: "94534511"
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+* 为密钥和终结点 URL [创建环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 

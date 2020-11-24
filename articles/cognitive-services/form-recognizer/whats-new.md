@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95506578"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736591"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -38,13 +38,13 @@ ms.locfileid: "95506578"
   > [了解有关布局提取的详细信息](concept-layout.md)
 
 - **支持的新语言：日语** -现在支持以下新语言：适用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日语 (`ja`) 。 [语言支持](language-support.md)
-- **文本行样式指示 (手写/打印)  (拉丁语仅)** 格式识别器现在会输出一个 `appearance` 对象，该对象会分类每个文本行是否为手写样式，以及置信度分数。 此功能仅支持拉丁语。
+- **文本行样式指示 (手写/其他)  (拉丁语仅)** 格式识别器现在会输出一个 `appearance` 对象，该对象会分类每个文本行是否为手写样式，以及置信度分数。 此功能仅支持拉丁语。
 - **质量改进** -提取改进（包括单个数字提取改进）。
 - **窗体识别器示例标记工具中的新** 的 "试用" 功能-可以使用窗体识别器示例标记工具试用预生成的发票、接收和名片模型以及布局 API。 查看如何提取数据而无需编写任何代码。
 
   > [试用窗体识别器示例工具](https://fott-preview.azurewebsites.net/)
 
-  ![FOTT 示例](./media/fott-preview.jpg)
+  ![FOTT 示例](./media/ui-preview.jpg)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -85,7 +85,7 @@ GitHub 上提供了 **新的示例**。
 * **货币支持** -检测和提取全局货币符号。
 * **Azure Gov** 识别器现已在 azure Gov 中提供。
 * **增强的安全功能**： 
-   * **自带密钥** 格式的识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户管理的密钥 (CMK) ，也称为自带密钥 (BYOK) ](./form-recognizer-encryption-of-data-at-rest.md)，提供更高的灵活性来创建、轮换、禁用和撤消访问控制。 此外，你还可以审核用于保护数据的加密密钥。  
+   * **自带密钥** 格式的识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户托管的密钥（也称为自带密钥 (BYOK) ](./form-recognizer-encryption-of-data-at-rest.md)）提供了更大的灵活性来创建、轮换、禁用和撤消访问控制。 此外，你还可以审核用于保护数据的加密密钥。  
    * **专用终结点** –使你能够在虚拟网络 (VNet) [通过专用链接安全地访问数据。](../../private-link/private-link-overview.md)
 
 

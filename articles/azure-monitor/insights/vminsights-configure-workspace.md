@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530108"
+ms.locfileid: "95750514"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区
 用于 VM 的 Azure Monitor 从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在载入代理之前，必须创建和配置工作区。 本文介绍工作区的要求并对其进行配置以实现用于 VM 的 Azure Monitor。
@@ -80,7 +80,7 @@ ms.locfileid: "95530108"
 ### <a name="azure-portal"></a>Azure 门户
 有三个选项可用于使用 Azure 门户配置现有工作区。 如下所述。
 
-若要配置单个工作区，请选择 **其他载入选项** ，然后 **配置工作区**。 选择订阅和工作区，然后单击 " **配置**"。
+若要配置单个工作区，请在 " **Azure Monitor** " 菜单中，选择 "**虚拟机**" 选项，选择 **其他载入选项**，然后 **配置工作区**。 选择订阅和工作区，然后单击 " **配置**"。
 
 [![配置工作区](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

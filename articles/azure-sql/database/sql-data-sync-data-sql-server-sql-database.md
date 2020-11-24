@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540614"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736470"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -81,7 +81,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | | 数据同步 | 事务复制 |
 |---|---|---|
 | **优点** | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>\- Azure SQL 托管实例支持 |
-| **缺点** | -5 同步之间的最小频率<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
+| **缺点** | - 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
 
 ## <a name="get-started"></a>入门 
 
@@ -166,7 +166,6 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 同步组中的表                                          | 500                    | 创建多个同步组 |
 | 同步组中的表列                              | 1000                   |                             |
 | 表中的数据行大小                                        | 24MB                  |                             |
-| 自上次同步开始后 (的最小同步频率间隔)      | 5 分钟              |                             |
 
 > [!NOTE]
 > 如果只有一个同步组，则单个同步组中最多可能有 30 个终结点。 如果有多个同步组，则所有同步组中的终结点总数不能超过 30。 如果数据库属于多个同步组，则该数据库计算为多个终结点，而不是一个。
@@ -175,8 +174,8 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL server 的设置中必须具有以下配置 `Firewalls and virtual networks` ：
 
- * *拒绝公共网络访问* 必须设置为 *Off* 。
- * " *允许 Azure 服务和资源访问此服务器* " 必须设置为 *"是"* ，或者必须为 [数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
+ * *拒绝公共网络访问* 必须设置为 *Off*。
+ * "*允许 Azure 服务和资源访问此服务器*" 必须设置为 *"是"*，或者必须为 [数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
 
 创建并设置了同步组后，你可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的 [防火墙 IP 规则](firewall-configure.md) 或 [专用终结点](private-endpoint-overview.md) 来允许代理访问中心服务器。
 

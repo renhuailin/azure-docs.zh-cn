@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533270"
+ms.locfileid: "95736522"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -276,7 +276,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> 通过暂时操作系统，可将 VM 和实例映像部署到 VM 缓存大小。 在 AKS 情况下，默认节点 OS 磁盘配置使用100GiB，这意味着需要的 VM 大小的缓存大于 100 GiB。 默认 Standard_DS2_v2 的缓存大小为 86 GiB，这不太大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 还可以通过使用降低 OS 磁盘的默认大小 `--node-osdisk-size` 。 AKS 图像的最小大小为30GiB。 
+> 通过暂时操作系统，可将 VM 和实例映像部署到 VM 缓存大小。 在 AKS 情况下，默认节点 OS 磁盘配置使用128GB，这意味着需要的 VM 大小大于128GB 的缓存。 默认 Standard_DS2_v2 的缓存大小不能超过86GB。 Standard_DS3_v2 的缓存大小为172GB，它足够大。 还可以通过使用降低 OS 磁盘的默认大小 `--node-osdisk-size` 。 AKS 图像的最小大小为30GB。 
 
 如果要使用网络连接的 OS 磁盘创建节点池，则可以通过指定来创建节点池 `--node-osdisk-type Managed` 。
 

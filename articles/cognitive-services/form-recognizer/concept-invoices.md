@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 366826e591ed131ca63dc94eae994773217438d1
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511410"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736659"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>窗体识别器预生成发票型号
 
@@ -107,7 +107,8 @@ JSON 输出包含三个部分：
 ## <a name="next-steps"></a>后续步骤
 
 - 在 [窗体识别器示例 UI](https://fott-preview.azurewebsites.net/)中尝试自己的发票和示例。
-- 或者，按照 [提取发票数据](./QuickStarts/python-invoices.md) 快速入门，使用 Python 和 REST API 来实现发票数据提取。
+- 完成 [表单识别器客户端库快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写发票处理应用。
+- 或者，按照 [提取发票数据](./quickstarts/python-invoices.md) 快速入门，使用 Python 和 REST API 来实现发票数据提取。
 ## <a name="see-also"></a>请参阅
 
 * [什么是表单识别器？](./overview.md)

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c2e691d673b385d597957cf5a4ce3c3f18ba466
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511407"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741723"
 ---
 # <a name="form-recognizer-layout-service"></a>表单识别器布局服务
 
@@ -86,11 +86,10 @@ JSON 输出分为两部分：
 
 布局还从文档中提取选择标记。 提取的选择标记包括边界框、置信度和状态 (选中/未选择) 。 在 JSON 输出的部分提取选择标记信息 `"readResults"` 。 
 
-<<< 添加选择标记示例>>>
-
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[窗体识别器示例 UI](https://fott-preview.azurewebsites.net/)尝试您自己的布局提取
+- 完成 [表单识别器客户端库快速入门](quickstarts/client-library.md) ，开始使用所选的语言提取布局。
 - 或者，按照 [提取布局数据](./QuickStarts/python-layout.md) 快速入门中的步骤，使用 Python 和 REST API 来实现布局数据提取。
 
 ## <a name="see-also"></a>请参阅
