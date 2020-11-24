@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 75aa276fb41ebe717caa5c2f0dbdab5f9709237e
+  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91598050"
+  ms.lasthandoff: 11/23/2020
+  ms.locfileid: "95495230"
 landingContent:
 - title: 关于 IoT 即插即用
   linkLists:
@@ -30,20 +30,12 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 将示例设备连接到 IoT 中心 (C)
-      url: quickstart-connect-device-c.md
-    - text: 将示例设备连接到 IoT 中心 (C#)
-      url: quickstart-connect-device-csharp.md
-    - text: 将示例设备连接到 IoT 中心 (Java)
-      url: quickstart-connect-device-java.md
-    - text: 将示例设备连接到 IoT 中心 (Node.js)
-      url: quickstart-connect-device-node.md
-    - text: 将示例设备连接到 IoT 中心 (Python)
-      url: quickstart-connect-device-python.md
+    - text: 将示例设备连接到 IoT 中心
+      url: quickstart-connect-device.md
   - linkListType: concept
     links:
     - text: 开发人员指南
-      url: concepts-developer-guide-device-csharp.md
+      url: concepts-developer-guide-device.md
     - text: 组件
       url: concepts-components.md
     - text: IoT 即插即用约定
@@ -54,10 +46,8 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 与解决方案中的设备交互 (Node.js)
-      url: quickstart-service-node.md
-    - text: 与解决方案中的设备交互 (Python)
-      url: quickstart-service-python.md
+    - text: 与解决方案中的设备交互
+      url: quickstart-service.md
   - linkListType: concept
     links:
     - text: 体系结构
