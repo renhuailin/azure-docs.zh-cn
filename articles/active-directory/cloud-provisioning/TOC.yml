@@ -62,10 +62,12 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: 参考
   items:
-    - name: Azure AD Connect 云预配代理版本历史记录
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Azure AD Connect 云同步代理版本历史记录
+      href: reference-version-history.md
     - name: Azure AD Connect 云预配常见问题解答
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools PowerShell 模块
+      href: reference-powershell.md
     - name: 同步的属性
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: 基本 Active Directory 和 Azure AD 环境

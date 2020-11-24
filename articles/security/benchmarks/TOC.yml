@@ -69,8 +69,12 @@
       href: ../../automation/security-baseline.md
     - name: Azure 顾问安全基线
       href: ../../advisor/security-baseline.md
+    - name: Azure 应用程序配置安全基线
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Azure 备份安全基线
       href: ../../backup/security-baseline.md
+    - name: Azure Bastion 安全基线
+      href: ../../bastion/security-baseline.md
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure 认知搜索安全基线
@@ -201,5 +205,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: 虚拟网络安全基线
       href: ../../virtual-network/security-baseline.md
+    - name: 虚拟网络 NAT 安全基线
+      href: ../../virtual-network/nat-security-baseline.md
     - name: VPN 网关安全基线
       href: ../../vpn-gateway/security-baseline.md

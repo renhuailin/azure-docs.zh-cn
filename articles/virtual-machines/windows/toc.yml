@@ -379,7 +379,7 @@
               href: dedicated-hosts-powershell.md
             - name: 门户
               href: ../dedicated-hosts-portal.md
-        - name: 部署点 VM
+        - name: 部署现成 VM
           items:
             - name: 门户
               href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json

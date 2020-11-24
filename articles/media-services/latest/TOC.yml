@@ -270,9 +270,13 @@
     - name: 创建转换和作业
       items:
         - name: 创建转换
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
         - name: 使用 REST 创建基本音频转换
           href: how-to-create-basic-audio-transform.md
+        - name: 使用 REST 创建 copyAllBitrateNonInterleaved 转换
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: 复制未使用 REST 编码的视频
+          href: how-to-create-copy-video-audio-transform.md
         - name: 创建作业
           href: cli-create-jobs.md
         - name: 使用本地文件和 .NET 创建作业输入

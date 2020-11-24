@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: 管理跨区域复制
       items:
-        - name: 创建复制对等互连
+        - name: 创建卷复制
           href: cross-region-replication-create-peering.md
         - name: 显示复制关系的运行状况
           href: cross-region-replication-display-health-status.md
         - name: 管理灾难恢复
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: 删除副本
+        - name: 删除卷复制或卷
           href: cross-region-replication-delete.md
     - name: 开发
       items:

@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: 安全性
       items:
-        - name: 安全基线
+        - name: 虚拟网络安全基线
           href: security-baseline.md
+        - name: 虚拟网络 NAT 安全基线
+          href: nat-security-baseline.md
         - name: 网络安全组
           items:
             - name: 概述

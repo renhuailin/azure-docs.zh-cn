@@ -1,4 +1,4 @@
-- name: Azure Synapse（SQL 数据仓库）
+- name: Azure Synapse（前身为 SQL DW）
   href: index.yml
 - name: 切换到 Azure Synapse（工作区预览版）
   href: ../overview-what-is.md

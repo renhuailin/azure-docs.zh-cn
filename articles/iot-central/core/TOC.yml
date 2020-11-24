@@ -51,6 +51,8 @@
           href: tutorial-connect-device-nodejs.md
         - name: 连接设备 (Python)
           href: tutorial-connect-device-python.md
+        - name: 连接设备 (Java)
+          href: tutorial-connect-device-java.md
         - name: 创建网关设备模板
           href: tutorial-define-gateway-device-type.md
         - name: 连接 IoT Edge 设备

@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: 排查 U-SQL 作业问题
       items:
-        - name: 排查 U-SQL 运行时故障
+        - name: 排查 U-SQL 运行时故障和已知问题
           href: runtime-troubleshoot.md
         - name: 排查 .NET 升级问题
           href: dotnet-upgrade-troubleshoot.md
