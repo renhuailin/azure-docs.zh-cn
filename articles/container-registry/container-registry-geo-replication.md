@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486866"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810048"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -18,9 +18,9 @@ ms.locfileid: "92486866"
 
 异地复制注册表有以下优点：
 
-* 单个注册表/映像/标记的名称可跨多个区域使用
-* 由区域部署实现近网络注册表访问
-* 由于是从与容器主机处于相同区域的本地复制注册表中拉取映像，因此无额外传输费用
+* 单个注册表、图像和标记名称可跨多个区域使用
+* 使用网络关闭注册表访问提高区域部署的性能和可靠性
+* 通过从与容器主机相同或邻近的区域中的本地复制注册表中提取映像层，减少数据传输成本
 * 跨多个区域对注册表进行单一管理
 
 > [!NOTE]
@@ -56,8 +56,9 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 使用 Azure 容器注册表的异地复制功能，将实现以下优点：
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
-* 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 推送到单个注册表，而 ACR 管理异地复制。 可以配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
+* 管理映像部署的单个配置，因为所有区域都使用同一映像 URL： `contoso.azurecr.io/public/products/web:1.2`
+* 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制唯一层，减少跨区域的数据传输。 
+* 配置区域 [webhook](container-registry-webhook.md) 以通知你特定副本中的事件。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
@@ -121,7 +122,7 @@ az acr replication delete --name eastus --registry myregistry
 
 ## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>使用异地复制注册表对推送操作进行故障排除
  
-将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个*附近*的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
+将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个 *附近* 的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
  
 如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](../virtual-machines/linux/azure-dns.md)中的选项。
 
@@ -131,7 +132,7 @@ az acr replication delete --name eastus --registry myregistry
 
 若要对针对异地复制注册表的操作进行故障排除，可能需要暂时禁止流量管理器路由到一个或多个副本。 从 Azure CLI 版本 2.8 开始，你可以在创建或更新复制区域时配置 `--region-endpoint-enabled` 选项（预览）。 将副本的 `--region-endpoint-enabled` 选项设置为 `false` 时，流量管理器不再将 docker 推送或拉取请求路由到该区域。 默认情况下，允许路由到所有副本，并且无论启用还是禁用路由，都将在所有副本间实现数据同步。
 
-若要禁止路由到现有副本，请先运行 [az acr replication list][az-acr-replication-list] 以列出注册表中的副本。 然后，运行 [az acr replication update][az-acr-replication-update] 并为特定副本设置 `--region-endpoint-enabled false`。 例如，若要在*myregistry*中配置*westus*复制的设置：
+若要禁止路由到现有副本，请先运行 [az acr replication list][az-acr-replication-list] 以列出注册表中的副本。 然后，运行 [az acr replication update][az-acr-replication-update] 并为特定副本设置 `--region-endpoint-enabled false`。 例如，若要在 *myregistry* 中配置 *westus* 复制的设置：
 
 ```azurecli
 # Show names of existing replications

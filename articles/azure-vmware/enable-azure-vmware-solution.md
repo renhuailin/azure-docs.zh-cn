@@ -3,12 +3,12 @@ title: 如何启用 Azure VMware 解决方案资源
 description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967357"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95794715"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
 了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
@@ -64,7 +64,7 @@ ms.locfileid: "94967357"
 Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) 为其客户启用 Azure VMware 解决方案。 
 
    >[!IMPORTANT] 
-   >Azure VMware 解决方案服务不提供多租户环境，因此尚不支持托管合作伙伴。 
+   >Azure VMware 解决方案服务不提供所需的多租户。 不支持承载需要它的合作伙伴。 
 
 1. 在 " **合作伙伴中心**"，选择 " **CSP** " 以访问 " **客户** " 区域。
 
@@ -113,13 +113,16 @@ Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) �
    >[!IMPORTANT] 
    >如果你已有现有的 Azure VMware 解决方案，但你请求其他主机，请注意，我们需要5个工作日来分配主机。 
 
-1. 添加到 Azure 计划并启用配额后，客户或合作伙伴管理员便可通过 Azure 门户部署 Azure VMware 解决方案私有云。 预配主机之前，请确保在 Azure 门户中注册了 **MICROSOFT AVS** 资源提供程序。  
+1. 如果订阅由服务提供商进行管理，则他们的管理团队 **必须 (AOBO**) 过程从合作伙伴中心访问 Azure 门户。 其中一个 Azure 门户启动 [Cloud Shell](../cloud-shell/overview.md) 实例并注册 **Microsoft AVS** 资源提供程序，并继续部署 Azure VMware 解决方案私有云。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
    有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
+
+1. 如果订阅直接由客户管理，则必须由在订阅中具有足够权限的用户来注册 **MICROSOFT AVS** 资源提供程序，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md) 了解更多详细信息和注册资源提供程序的方法。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

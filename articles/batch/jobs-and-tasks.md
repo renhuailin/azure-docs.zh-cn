@@ -2,13 +2,13 @@
 title: Azure Batch 中的作业和任务
 description: 从开发的角度来了解作业和任务及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955363"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808596"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch 中的作业和任务
 
@@ -18,15 +18,17 @@ ms.locfileid: "85955363"
 
 作业是任务的集合。 作业控制其任务对池中计算节点执行计算的方式。
 
-作业指定要在其上运行工作的[池](nodes-and-pools.md#pools)。 可以为每个作业创建新池，或将池用于多个作业。 可以针对与作业计划关联的每个作业创建池，或者针对与作业计划关联的所有作业创建池。
+作业指定要在其上运行工作的[池](nodes-and-pools.md#pools)。 可以为每个作业创建新池，或将池用于多个作业。 可以为与 [作业计划](#scheduled-jobs)关联的每个作业创建一个池，也可以为与作业计划关联的所有作业创建一个池。
 
 ### <a name="job-priority"></a>作业优先级
 
-可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性](/rest/api/batchservice/job/update)操作 (Batch REST) 或修改 [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) 属性 (Batch .NET)。
+可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定每个池) wtihin 的作业中所有任务的计划 (顺序。
 
-在同一个帐户内，高优先级作业的计划优先顺序高于低优先级作业。 一个帐户中具有较高优先级值的作业，其计划优先级并不高于不同帐户中较低优先级值的另一个作业。 已经运行的低优先级作业中的任务不会预先清空。
+若要更新作业的优先级，请调用 [更新作业](/rest/api/batchservice/job/update) 操作的属性 (batch REST) ，或修改 [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) (batch .net) 。 优先级值范围为-1000 (最低优先级) 到 1000 (最高优先级) 。
 
-不同池的作业计划是独立的。 在不同的池之间，即使作业的优先级较高，如果其关联的池缺少空闲的节点，则不保证此作业优先计划。 在同一个池中，相同优先级的作业有相同的计划机会。
+在同一池中，高优先级作业的计划优先顺序高于低优先级作业。 已在运行的低优先级作业中的任务不会被较高优先级作业中的任务抢占。 具有相同优先级的作业有相同的计划机会，未定义任务执行的顺序。
+
+对于在一个池中运行的高优先级值的作业，不会影响在单独池中或不同批处理帐户中运行的作业的计划。 作业优先级不适用于在提交作业时创建的 [autopools](nodes-and-pools.md#autopools)。
 
 ### <a name="job-constraints"></a>作业约束
 
@@ -39,9 +41,9 @@ ms.locfileid: "85955363"
 
 客户端应用程序可将任务添加到作业，用户也可以指定 [作业管理器任务](#job-manager-task)。 作业管理器任务包含必要的信息用于为池中某个计算节点上运行的包含作业管理器任务的作业创建所需的任务。 作业管理器任务专门由 Batch 来处理；创建作业和重新启动失败的作业后，会立即将任务排队。 [作业计划](#scheduled-jobs)创建的作业需要作业管理器任务，因为它是在实例化作业之前定义任务的唯一方式。
 
-默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 onAllTasksComplete 属性（在 Batch .NET 中为 [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)）设置为 terminatejob，可在作业的所有任务处于已完成状态时自动终止该作业。
+默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 OnAllTasksComplete (属性设置为 Batch .NET [) 中的](/dotnet/api/microsoft.azure.batch.cloudjob)" **onAllTasksComplete** `terminatejob` " 设置为 "*"，以在其所有任务都处于 "已完成" 状态时自动终止作业。
 
-Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
+Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果要在不使用作业管理器的情况下使用自动作业终止，则应该先将新作业的 **onAllTasksComplete** 属性设置为 `noaction` ，然后在 `terminatejob` 完成将任务添加到作业后，将其设置为 * '。
 
 ### <a name="scheduled-jobs"></a>计划的作业
 
@@ -53,7 +55,7 @@ Batch 服务将没有任务的作业视为其所有任务都已完成。 因此�
 
 创建任务时，可以指定：
 
-- 任务的**命令行**。 这是可在计算节点上运行应用程序或脚本的命令行。
+- 任务的 **命令行**。 这是可在计算节点上运行应用程序或脚本的命令行。
 
     请务必注意，命令行不是在 shell 下运行的。 因此无法以本机方式利用 shell 功能，例如[环境变量](#environment-settings-for-tasks)扩展（包括 `PATH`）。 若要利用此类功能，必须在命令行中调用 shell，例如，在 Windows 节点上启动 `cmd.exe`，或者在 Linux 上启动 `/bin/sh`：
 
@@ -66,7 +68,7 @@ Batch 服务将没有任务的作业视为其所有任务都已完成。 因此�
 - 应用程序所需的 **环境变量** 。 有关详细信息，请参阅[任务的环境设置](#environment-settings-for-tasks)。
 - 执行任务所依据的 **约束** 。 例如，约束包括允许运行任务的最长时间、重试失败任务的次数上限，以及文件保留在任务工作目录中的最长时间。
 - **Application packages** 。 [应用程序包](batch-application-packages.md) 提供任务运行的应用程序的简化部署和版本控制。 在共享池的环境中，任务级应用程序包特别有用：不同的作业在一个池上运行，完成某个作业时不删除该池。 如果作业中的任务少于池中的节点，任务应用程序包可以减少数据传输，因为应用程序只部署到运行任务的节点。
-- Docker 中心的**容器映像**引用，或者专用注册表和其他设置，用于创建 Docker 容器，其中的任务运行在节点上。 如果池使用容器配置进行设置，则仅指定此信息。
+- Docker 中心的 **容器映像** 引用，或者专用注册表和其他设置，用于创建 Docker 容器，其中的任务运行在节点上。 如果池使用容器配置进行设置，则仅指定此信息。
 
 > [!NOTE]
 > 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保存 7 天；最长生存期内未完成的任务的数据不可访问。

@@ -4,18 +4,28 @@ description: 了解如何使用 GitHub Actions 将容器部署到 Kubernetes
 services: container-service
 author: azooinmyluggage
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/06/2020
 ms.author: atulmal
-ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: github-actions-azure
+ms.openlocfilehash: a0f64b0d19dd3f65d883237e9ead2c9f1303adaf
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564094"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95794788"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
-可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 Kubernetes 操作 [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) 促进到 Azure Kubernetes 服务群集的部署。 此操作设置目标 AKS 群集上下文，该上下文可供其他操作（例如 [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、[azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) 等）使用，也可运行任何 kubectl 命令。
+可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 可以使用多个 Kubernetes 操作将 Azure 容器注册表中的容器部署到具有 GitHub 操作的 Azure Kubernetes 服务。 
+
+## <a name="prerequisites"></a>先决条件 
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。  
+- 工作 Kubernetes 群集
+    - [教程：为 Azure Kubernetes 服务准备应用程序](tutorial-kubernetes-prepare-app.md)
+
+## <a name="workflow-file-overview"></a>工作流文件概述
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
 
@@ -31,7 +41,7 @@ ms.locfileid: "90564094"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -56,7 +66,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. 在 [GitHub](https://github.com/) 中浏览到存储库，选择“设置”>“机密”>“添加新机密”。 
 
-    ![屏幕截图显示了 "为存储库添加新的机密" 链接。](media/kubernetes-action/secrets.png)
+    ![屏幕截图显示了存储库的“添加新机密”链接。](media/kubernetes-action/secrets.png)
 
 2. 将上述 `az cli` 命令的内容作为机密变量的值粘贴。 例如，`AZURE_CREDENTIALS`。
 
@@ -67,11 +77,44 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 4. 在定义后，会看到如下所示的机密。
 
-    ![屏幕截图显示存储库的现有机密。](media/kubernetes-action/kubernetes-secrets.png)
+    ![屏幕截图显示了存储库的现有机密。](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映像并将其部署到 Azure Kubernetes 服务群集
 
-容器映像的生成和推送使用 `Azure/docker-login@v1` 操作完成。 若要将容器映像部署到 AKS，需使用 `Azure/k8s-deploy@v1` 操作。 该操作有五个参数：
+容器映像的生成和推送使用 `Azure/docker-login@v1` 操作完成。 
+
+
+```yml
+env:
+  REGISTRY_NAME: {registry-name}
+  CLUSTER_NAME: {cluster-name}
+  CLUSTER_RESOURCE_GROUP: {resource-group-name}
+  NAMESPACE: {namespace-name}
+  APP_NAME: {app-name}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    # Connect to Azure Container registry (ACR)
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }} 
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    
+    # Container build and push to a Azure Container registry (ACR)
+    - run: |
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+
+```
+
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>部署到 Azure Kubernetes 服务群集
+
+若要将容器映像部署到 AKS，需使用 `Azure/k8s-deploy@v1` 操作。 该操作有五个参数：
 
 | **参数**  | **解释**  |
 |---------|---------|
@@ -81,68 +124,109 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 | **imagepullsecrets** | （可选）已在群集中设置的 docker 注册表机密的名称。 这些机密名称的每一个都在输入清单文件中的工作负载的 imagePullSecrets 字段下添加 |
 | **kubectl-version** | （可选）安装 kubectl 二进制文件的特定版本 |
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>部署到 Azure Kubernetes 服务群集
 
-用于生成容器映像并将其部署到 Azure Kubernetes 服务群集的端到端工作流。
+在部署到 AKS 之前，需要设置目标 Kubernetes 命名空间，并创建映像请求机密。 若要详细了解如何使用拉取映像，请参阅 [从 Azure 容器注册表将映像提取到 Kubernetes 群集](../container-registry/container-registry-auth-kubernetes.md)。 
 
 ```yaml
+  # Create namespace if doesn't exist
+  - run: |
+      kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+  
+  # Create image pull secret for ACR
+  - uses: azure/k8s-create-secret@v1
+    with:
+      container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
+      container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+      container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+      secret-name: ${{ env.SECRET }}
+      namespace: ${{ env.NAMESPACE }}
+      force: true
+```
+
+
+完成包含操作的部署 `k8s-deploy` 。 将环境变量替换为应用程序的值。 
+
+```yaml
+
 on: [push]
 
+# Environment variables available to all jobs and steps in this workflow
+env:
+  REGISTRY_NAME: {registry-name}
+  CLUSTER_NAME: {cluster-name}
+  CLUSTER_RESOURCE_GROUP: {resource-group-name}
+  NAMESPACE: {namespace-name}
+  SECRET: {secret-name}
+  APP_NAME: {app-name}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     
-    - uses: Azure/docker-login@v1
+    # Connect to Azure Container registry (ACR)
+    - uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
+        login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
+    # Container build and push to a Azure Container registry (ACR)
     - run: |
-        docker build . -t contoso.azurecr.io/k8sdemo:${{ github.sha }}
-        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
-      
-    # Set the target AKS cluster.
-    - uses: Azure/aks-set-context@v1
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+    
+    # Set the target Azure Kubernetes Service (AKS) cluster. 
+    - uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: contoso
-        resource-group: contoso-rg
-        
-    - uses: Azure/k8s-create-secret@v1
+        cluster-name: ${{ env.CLUSTER_NAME }}
+        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+    
+    # Create namespace if doesn't exist
+    - run: |
+        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+    
+    # Create image pull secret for ACR
+    - uses: azure/k8s-create-secret@v1
       with:
-        container-registry-url: contoso.azurecr.io
+        container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
         container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
         container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        secret-name: demo-k8s-secret
-
-    - uses: Azure/k8s-deploy@v1
+        secret-name: ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}
+        force: true
+    
+    # Deploy app to AKS
+    - uses: azure/k8s-deploy@v1
       with:
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          demo.azurecr.io/k8sdemo:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         imagepullsecrets: |
-          demo-k8s-secret
+          ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}
 ```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要 Kubernetes 群集、容器注册表和存储库，请通过删除资源组和 GitHub 存储库来清理部署的资源。 
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以在 GitHub 上的不同存储库中找到我们的 Actions 集，其中的每一个都包含文档和示例，介绍如何将 GitHub 用于 CI/CD 并将应用部署到 Azure。
+> [!div class="nextstepaction"]
+> [了解 Azure Kubernetes 服务](/azure/architecture/reference-architectures/containers/aks-start-here)
 
-- [setup-kubectl](https://github.com/Azure/setup-kubectl)
+### <a name="more-kubernetes-github-actions"></a>更多 Kubernetes GitHub 操作
 
-- [k8s-set-context](https://github.com/Azure/k8s-set-context)
-
-- [aks-set-context](https://github.com/Azure/aks-set-context)
-
-- [k8s-create-secret](https://github.com/Azure/k8s-create-secret)
-
-- [k8s-deploy](https://github.com/Azure/k8s-deploy)
-
-- [webapps-container-deploy](https://github.com/Azure/webapps-container-deploy)
-
-- [actions-workflow-samples](https://github.com/Azure/actions-workflow-samples)
+* [Kubectl 工具安装程序](https://github.com/Azure/setup-kubectl) (`azure/setup-kubectl`) ：在运行程序上安装特定版本的 Kubectl。
+* [Kubernetes 设置上下文](https://github.com/Azure/k8s-set-context) (`azure/k8s-set-context`) ：设置目标 Kubernetes 群集上下文，其他操作将使用此上下文，或者运行任何 kubectl 命令。
+* [AKS 设置上下文](https://github.com/Azure/aks-set-context) (`azure/aks-set-context`) ：设置目标 Azure Kubernetes Service 群集上下文。
+* [Kubernetes 创建机密](https://github.com/Azure/k8s-create-secret) (`azure/k8s-create-secret`) ：在 Kubernetes 群集中创建一般机密或 docker 注册表机密。
+* [Kubernetes 部署](https://github.com/Azure/k8s-deploy) (`azure/k8s-deploy`) ：制作并将清单部署到 Kubernetes 群集。
+* [设置 Helm](https://github.com/Azure/setup-helm) (`azure/setup-helm`) ：在运行程序上安装特定版本的 Helm 二进制文件。
+* [Kubernetes 制作](https://github.com/Azure/k8s-bake) (`azure/k8s-bake`) ：制作用于使用 helm2、kustomize 或 kompose 的部署的清单文件。
+* [Kubernetes](https://github.com/azure/k8s-lint) 不起毛 `azure/k8s-lint` 的 () ：验证/不的清单文件。

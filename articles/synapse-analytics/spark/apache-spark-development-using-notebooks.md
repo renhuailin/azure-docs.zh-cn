@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311143"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95790685"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio (预览版) 笔记本
 
@@ -30,11 +30,29 @@ Synapse Studio (预览版) 笔记本是一个 web 界面，用于创建包含实
 
 本文介绍如何在 Azure Synapse Studio 中使用笔记本。
 
+## <a name="preview-of-the-new-notebook-experience"></a>全新笔记本体验预览
+Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客户提供一致的笔记本体验，并最大限度地提高可发现性、生产力、共享和协作。 全新的笔记本体验已准备就绪，可供预览。 检查笔记本工具栏中的 " **预览功能** " 按钮，将其打开。 下表捕获了现有笔记本 (之间的功能比较，并将其称为 "经典笔记本" ) 新的预览。  
+
+|功能|传统笔记本|预览笔记本|
+|--|--|--|
+|% 运行| 不支持 | &#9745;|
+|% 历史记录| 不支持 |&#9745;
+|负载百分比| 不支持 |&#9745;|
+|%% html| 不支持 |&#9745;|
+|拖放以移动单元| 不支持 |&#9745;|
+|永久性显示 ( # A1 输出|&#9745;| 不可用 |
+|全部取消| &#9745;| 不可用|
+|运行上述所有单元格|&#9745;| 不可用 |
+|运行下面的所有单元格|&#9745;| 不可用 |
+|通过工具栏按钮设置文本单元格的格式|&#9745;| 不可用 |
+|撤消单元格操作| &#9745;| 不可用 |
+
+
 ## <a name="create-a-notebook"></a>创建笔记本
 
 可通过两种方法创建笔记本。 可以从“对象资源管理器”创建新笔记本或将现有笔记本导入到 Azure Synapse 工作区。 Azure Synapse Studio 笔记本可识别标准 Jupyter Notebook IPYNB 文件。
 
-![创建导入笔记本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![创建导入笔记本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>开发笔记本
 
@@ -43,6 +61,8 @@ Synapse Studio (预览版) 笔记本是一个 web 界面，用于创建包含实
 ### <a name="add-a-cell"></a>添加单元格
 
 有多种方法可向笔记本添加新单元格。
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
 1. 展开左上方“+ 单元格”按钮，然后选择“添加代码单元格”或“添加文本单元格”  。
 
@@ -53,6 +73,19 @@ Synapse Studio (预览版) 笔记本是一个 web 界面，用于创建包含实
     ![add-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
 3. 使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 A 在当前单元格上方插入单元格。 按 B 在当前单元格下方插入单元格。
+
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+1. 展开左上方的 " **+ 单元** " 按钮，然后选择 " **代码单元** " 或 " **Markdown 单元**"。
+    ![添加-azure-笔记本-单元按钮](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
+2. 选择单元开头的加号，然后选择 " **代码单元** " 或 " **Markdown 单元**"。
+
+    ![添加-azure-笔记本-跨空间](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
+
+3. [在命令模式下使用 Aznb 快捷键](#shortcut-keys-under-command-mode)。 按 A 在当前单元格上方插入单元格。 按 B 在当前单元格下方插入单元格。
+
+---
 
 ### <a name="set-a-primary-language"></a>设置主要语言
 
@@ -123,16 +156,34 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>通过工具栏按钮设置文本单元格的格式
 
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
 可以使用文本单元格工具栏中的格式按钮执行常见的 markdown 操作。 它包括将文本设为粗体、将文本设为斜体、插入代码片段、插入未排序列表、插入已排序列表以及插入 URL 中的图像。
 
   ![Synapse 文本单元工具栏](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+"格式" 按钮工具栏尚不可用于预览笔记本体验。 
+
+---
+
 ### <a name="undo-cell-operations"></a>撤消单元格操作
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
 选择 " **撤消** " 按钮或按 **Ctrl + Z** 撤销最近的单元格操作。 现在可以撤销最近的 20 个历史单元格操作。 
 
    ![Synapse 撤消单元](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+撤消单元操作尚不可用于预览笔记本体验。 
+
+---
 
 ### <a name="move-a-cell"></a>移动单元格
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
 选择省略号 (…) 以访问最右侧的其他单元格操作菜单。 然后选择“上移单元格”或“下移单元格”移动当前单元格 。 
 
@@ -140,7 +191,16 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
    ![move-a-cell](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+单击单元格的左侧，然后将其拖到所需的位置。 
+    ![Synapse 移动单元](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
+
+---
+
 ### <a name="delete-a-cell"></a>删除单元格
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
 要删除单元格，请选择省略号 (…) 以访问最右侧的其他单元格操作菜单，然后选择“删除单元格”。 
 
@@ -148,16 +208,48 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
   
    ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+若要删除某个单元，请选择该单元格右侧的 "删除" 按钮。 
+
+还可使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 **Shift + D** 删除当前单元格。 
+
+   ![azure-笔记本-删除单元](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
+
+---
+
 ### <a name="collapse-a-cell-input"></a>折叠单元格输入
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
 选择当前单元格底部的箭头按钮以将其折叠。 若要展开它，请在折叠单元格时选择箭头按钮。
 
    ![collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+在单元工具栏上选择 " **更多命令** " 和 " ( ..." ) ，并 **输入** "折叠当前单元格的输入"。 若要展开该单元格，请选择隐藏单元格时 **隐藏的输入** 。
+
+   ![azure-笔记本-折叠-单元-输入](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
+
+---
+
 ### <a name="collapse-a-cell-output"></a>折叠单元格输出
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
 选择当前单元格输出的左上角的 " **折叠输出** " 按钮，以将其折叠。 若要展开它，请选择 "在单元格输出处于折叠状态时 **显示单元格输出** "。
 
    ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+在单元工具栏上选择 " **更多命令** " "省略号 ( ..." ) ，并选择 " **输出** " 以折叠当前单元格的输出。 若要展开它，请在隐藏单元格的输出时选择相同的按钮。
+
+   ![azure-笔记本折叠单元-输出](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
+
+
+---
 
 ## <a name="run-notebooks"></a>运行笔记本
 
@@ -170,19 +262,18 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 1. 将鼠标悬停在要运行的单元格上，并选择“运行单元格”按钮，或按 Ctrl+Enter 。
 
    ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+  
+2. 使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 Shift+Enter 运行当前单元格并选择下面的单元格。 按 Alt+Enter 运行当前单元格并在下面插入一个新单元格。
 
-
-2. 要访问最右侧的其他单元格操作菜单，请选择省略号 (…)。然后选择“运行单元格”。
-
-   ![run-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
-   
-3. 使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 Shift+Enter 运行当前单元格并选择下面的单元格。 按 Alt+Enter 运行当前单元格并在下面插入一个新单元格。
-
+---
 
 ### <a name="run-all-cells"></a>运行所有单元格
 选择 " **全部运行** " 按钮以按顺序运行当前笔记本中的所有单元格。
 
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
 ### <a name="run-all-cells-above-or-below"></a>运行上方或下方的所有单元格
 
@@ -194,6 +285,27 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 ### <a name="cancel-all-running-cells"></a>取消所有正在运行的单元
 选择 " **全部取消** " 按钮可取消正在运行的单元格或在队列中等待的单元格。 
    ![全部取消单元](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+取消所有正在运行的单元格对于预览笔记本体验尚未提供。 
+
+---
+
+
+
+### <a name="reference-notebook"></a>参考笔记本
+
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
+不支持。
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+你可以使用 ```%run <notebook path>``` 魔棒命令在当前笔记本的上下文中引用另一个笔记本。 参考笔记本中定义的所有变量都在当前笔记本中可用。 ```%run``` 幻命令支持嵌套调用，但不支持递归调用。 如果语句深度大于五，则将收到异常。 ```%run``` 命令目前仅支持将笔记本路径作为参数传递。 
+
+---
+
 
 ### <a name="cell-status-indicator"></a>单元格状态指示器
 
@@ -213,11 +325,25 @@ Azure Synapse Studio 笔记本仅基于 Spark。 代码单元远程在无服务�
 
 可以在“配置会话”中为当前 Spark 会话指定超时持续时间、数量和执行器的大小。 重启 Spark 会话，以使配置更改生效。 缓存的所有笔记本变量都将被清除。
 
-[![会话管理](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+[![会话管理](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
-Spark 会话推荐器现已在 Spark 会话配置面板上提供。 你可以直接从 "会话配置" 面板中选择一个 Spark 池，并查看正在使用的节点数以及剩余的执行器数量。 此信息可帮助你设置适当的会话大小，而不是来回修改它。
+#### <a name="spark-session-config-magic-command"></a>Spark 会话配置幻命令
+还可以通过神奇命令 **%% configure** 指定 spark 会话设置。 Spark 会话需要重新启动才能使设置生效。 建议你在笔记本开头运行 **%% 配置** 。 下面是一个示例， https://github.com/cloudera/livy#request-body 有关有效参数的完整列表，请参阅 
 
-![会话-建议](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
+```
+%%configure -f
+{
+    to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":["myjar1.jar","myjar.jar"],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
 
 
 ## <a name="bring-data-to-a-notebook"></a>将数据引入笔记本
@@ -234,9 +360,6 @@ container_name = "Your container name"
 relative_path = "Your path"
 adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
-spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
-spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
-
 df1 = spark.read.option('header', 'true') \
                 .option('delimiter', ',') \
                 .csv(adls_path + '/Testfile.csv')
@@ -248,21 +371,26 @@ df1 = spark.read.option('header', 'true') \
 ```python
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import *
 
-blob_account_name = "Your blob account name"
-blob_container_name = "Your blob container name"
-blob_relative_path = "Your blob relative path"
-blob_sas_token = "Your blob sas token"
+# Azure storage access info
+blob_account_name = 'Your account name' # replace with your blob name
+blob_container_name = 'Your container name' # replace with your container name
+blob_relative_path = 'Your path' # replace with your relative folder path
+linked_service_name = 'Your linked service name' # replace with your linked service name
 
-wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linked_service_name)
+
+# Allow SPARK to access from Blob remotely
+
+wasb_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+
 spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name), blob_sas_token)
+print('Remote blob path: ' + wasb_path)
 
 df = spark.read.option("header", "true") \
             .option("delimiter","|") \
             .schema(schema) \
             .csv(wasbs_path)
-
 ```
 
 ### <a name="read-data-from-the-primary-storage-account"></a>从主存储帐户读取数据
@@ -294,7 +422,7 @@ df = spark.read.option("header", "true") \
 
 ### <a name="render-html-or-interactive-libraries"></a>呈现 HTML 或交互式库
 
-使用 **displayHTML ( # B1** ，可以呈现 HTML 代码（包括 JAVASCRIPT、CSS、D3 或交互式库，如 **bokeh** ）。
+使用 **displayHTML ( # B1**，可以呈现 HTML 代码（包括 JAVASCRIPT、CSS、D3 或交互式库，如 **bokeh**）。
 
 下图是使用 bokeh 在地图上绘制字形的示例。
 
@@ -352,10 +480,21 @@ displayHTML(html)
 ## <a name="magic-commands"></a>magic 命令
 可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter 幻命令。 查看以下列表作为当前可用的幻命令。 告诉我们 [GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new) ，以便我们可以继续构建更复杂的命令来满足你的需求。
 
-可用行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
 
-可用单元格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
+可用行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
+可用单元 magic： [%% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)， [%% capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)， [%% writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)， [%% sql](#use-multiple-languages)， [%% pyspark](#use-multiple-languages)， [%% spark](#use-multiple-languages)， [%% csharp](#use-multiple-languages)，[%% configure](#spark-session-config-magic-command)
+
+
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+可用行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)， [% history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)， [% run](#reference-notebook)， [% load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+
+可用单元 magic： [%% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)， [%% capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)， [%% writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)， [%% sql](#use-multiple-languages)， [%% pyspark](#use-multiple-languages)， [%% spark](#use-multiple-languages)， [%% csharp](#use-multiple-languages)， [%% html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html)， [%% 配置](#spark-session-config-magic-command)
+
+--- 
 
 ## <a name="integrate-a-notebook"></a>集成笔记本
 
@@ -367,15 +506,26 @@ displayHTML(html)
 
 ### <a name="designate-a-parameters-cell"></a>指定参数单元
 
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
 若要参数化笔记本，请选择省略号 ( ... ) 以访问最右侧的其他单元格操作菜单。 然后选择 " **切换参数单元** "，将该单元格指定为参数单元。
 
 ![切换-参数](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+若要参数化笔记本，请选择省略号 ( ... ) ，以访问单元工具栏中的 **更多命令** 。 然后选择 " **切换参数单元** "，将该单元格指定为参数单元。
+
+![azure-笔记本-切换-参数](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
+
+---
+
 Azure 数据工厂将查找参数单元，并将此单元格视为执行时传入的参数的默认值。 执行引擎将使用输入参数在参数单元下面添加一个新的单元格，以覆盖默认值。 如果未指定参数单元，则插入的单元格将插入笔记本的顶部。
+
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>从管道分配参数值
 
-创建带参数的笔记本后，可以使用 Azure Synapse 笔记本活动通过管道执行此操作。 将活动添加到管道画布后，你将能够在 " **设置** " 选项卡上的 " **基本参数** " 部分下设置参数值。 
+创建带参数的笔记本后，可以使用 Azure Synapse 笔记本活动通过管道执行此操作。 将活动添加到管道画布后，你将能够在 "**设置**" 选项卡上的 "**基本参数**" 部分下设置参数值。 
 
 ![分配参数](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -397,6 +547,8 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 
 ### <a name="shortcut-keys-under-command-mode"></a>命令模式下的快捷键
 
+# <a name="classical-notebook"></a>[传统笔记本](#tab/classical)
+
 使用以下击键快捷方式，你可以更轻松地在 Azure Synapse 笔记本中导航并运行代码。
 
 | 操作 |Synapse Studio 笔记本快捷方式  |
@@ -414,7 +566,26 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 |删除所选单元格| D, D |
 |切换到编辑模式| Enter |
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+| 操作 |Synapse Studio 笔记本快捷方式  |
+|--|--|
+|运行当前单元格并选择下方的单元格 | Shift+Enter |
+|运行当前单元格并在下方插入 | Alt+Enter |
+|运行当前单元格| Ctrl+Enter |
+|选择上方的单元格| 向上 |
+|选择下方的单元格| 向下 |
+|选择上一个单元格| K |
+|选择下一个单元格| J |
+|在上方插入单元格| A |
+|在下方插入单元格| B |
+|删除所选单元格| Shift + D |
+|切换到编辑模式| Enter |
+
+---
+
 ### <a name="shortcut-keys-under-edit-mode"></a>编辑模式下的快捷键
+
 
 使用以下击键快捷方式，可以在编辑模式下更轻松地在 Azure Synapse 笔记本中导航并运行代码。
 
@@ -432,9 +603,11 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 |左移一个字|Ctrl+Left|
 |右移一个字|Ctrl+Right|
 |全选|Ctrl+A|
-|缩进| Ctrl+]|
+|缩进| Ctrl +]|
 |取消缩进|Ctrl+[|
 |切换到命令模式| Esc |
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 - [查看 Synapse 示例笔记本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)

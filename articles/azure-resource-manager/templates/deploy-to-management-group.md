@@ -2,13 +2,13 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 54d4c096fab09bf31e121a7aae0eed3d2462e0c4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/24/2020
+ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519874"
+ms.locfileid: "95798590"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>具有 ARM 模板的管理组部署
 
@@ -106,6 +106,14 @@ New-AzManagementGroupDeployment `
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 * [从 Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>部署位置和名称
+
+对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [订阅](deploy-to-subscription.md) 和 [租户](deploy-to-tenant.md) 部署还需要位置。 对于 [资源组](deploy-to-resource-group.md) 部署，资源组的位置用于存储部署数据。
+
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的管理组部署，则以后无法使用 deployment1 的位置创建另一个名为 **deployment1** 的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+
 ## <a name="deployment-scopes"></a>部署范围
 
 部署到管理组时，可以将资源部署到：
@@ -131,7 +139,7 @@ New-AzManagementGroupDeployment `
 
 若要以另一个管理组为目标，请添加嵌套部署并指定 `scope` 属性。 将 `scope` 属性设置为 `Microsoft.Management/managementGroups/<mg-name>` 格式的值。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,18,22":::
 
 ### <a name="scope-to-subscription"></a>作用域到订阅
 
@@ -139,7 +147,7 @@ New-AzManagementGroupDeployment `
 
 若要以管理组中的订阅为目标，请使用嵌套部署和 `subscriptionId` 属性。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="9,10,18":::
 
 ### <a name="scope-to-resource-group"></a>作用域到资源组
 
@@ -162,14 +170,6 @@ New-AzManagementGroupDeployment `
 或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
-
-## <a name="deployment-location-and-name"></a>部署位置和名称
-
-对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
-
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
-
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="azure-policy"></a>Azure Policy
 

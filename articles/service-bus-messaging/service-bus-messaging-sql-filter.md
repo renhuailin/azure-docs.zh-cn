@@ -1,22 +1,23 @@
 ---
-title: Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs
-description: 本文提供了有关 SQLFilter 语法的详细信息。 SqlFilter 支持 SQL-92 标准的子集。
+title: Azure 服务总线订阅规则 SQL 筛选器语法 |Microsoft Docs
+description: 本文提供了有关 SQL 筛选器语法的详细信息。 SQL 筛选器支持 SQL-92 标准的子集。
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888464"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805630"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter 语法
+# <a name="subscription-rule-sql-filter-syntax"></a>订阅规则 SQL 筛选器语法
 
-*SqlFilter* 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，它表示基于 SQL 语言的筛选器表达式，该表达式是针对来计算的 [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 。 SqlFilter 支持 SQL-92 标准的子集。  
+*SQL 筛选器* 是服务总线主题订阅的一个可用筛选器类型。 这是倾向标准的92子集上的文本表达式。 筛选表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "sqlFilter" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
+
+服务总线高级版还支持通过 JMS 2.0 API 的 [JMS SQL 消息选择器语法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) 。
+
   
- 本主题列出有关 SqlFilter 语法的详细信息。  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -51,7 +52,7 @@ ms.locfileid: "94888464"
   
 -   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 如果未指定，则作用域为默认作用域 `<scope>` 。  
   
-## <a name="remarks"></a>备注
+## <a name="remarks"></a>注解
 
 尝试访问不存在的系统属性是错误的，而尝试访问不存在的用户属性不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   
@@ -324,4 +325,7 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 
 - [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction 类](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter 类 (Java) ](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript) ](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az](/cli/azure/servicebus/topic/subscription/rule)
+- [新-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

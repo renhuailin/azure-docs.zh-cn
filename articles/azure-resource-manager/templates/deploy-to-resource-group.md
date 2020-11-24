@@ -2,13 +2,13 @@
 title: 将资源部署到资源组
 description: 介绍如何在 Azure 资源管理器模板中部署资源。 它演示如何将多个资源组作为目标。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 5e33f0d505759944ccaf2233aa122b6ab701c91f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 11/24/2020
+ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917420"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807726"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>具有 ARM 模板的资源组部署
 

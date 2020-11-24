@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509068"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95793407"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -40,15 +40,15 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 ### <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
 
-混合 Runbook 辅助角色功能支持以下分发版：
+混合 Runbook 辅助角色功能支持以下分发版。 所有操作系统都假定为 x64。 任何操作系统均不支持 x86。
 
-* Amazon Linux 2012.09 到 2015.09 (x64) 
-* CentOS Linux 5、6和 7 (x64) 
-* Oracle Linux 5、6和 7 (x64) 
-* Red Hat Enterprise Linux Server 5、6和 7 (x64) 
-* Debian GNU/Linux 6、7和 8 (x64) 
-* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 (x64) 
-* SUSE Linux Enterprise Server 12 (x64)
+* Amazon Linux 2012.09 到2015.09
+* CentOS Linux 5、6 和 7
+* Oracle Linux 5、6 和 7
+* Red Hat Enterprise Linux Server 5、6和7
+* Debian GNU/Linux 6、7 和 8
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 LTS
+* SUSE Linux Enterprise Server 12
 
 ### <a name="minimum-requirements"></a>最低要求
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5fd82105c94bb9be2d07c8843834465821acd8bc
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445585"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803777"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -40,7 +40,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
    
    | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net* 。 | 
+   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net*。 | 
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
@@ -130,8 +130,8 @@ public static ConnectionMultiplexer Connection
 
 | 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
-| 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 | （Redis 子网） |* |
-| 443 | 出站 | TCP | Azure Key Vault 和 Azure Monitor 上的 Redis 依赖关系 | （Redis 子网） | AzureKeyVault，AzureMonitor <sup>1</sup> |
+| 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 | （Redis 子网） |* <sup>4</sup> |
+| 443 | 出站 | TCP | Azure Key Vault 和 Azure Monitor 上的 Redis 依赖关系 | （Redis 子网） | AzureKeyVault、AzureMonitor <sup>1</sup> |
 | 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 | （Redis 子网） | 168.63.129.16 和 169.254.169.254 <sup>2</sup> 以及子网的任何自定义 DNS 服务器 <sup>3</sup> |
 | 8443 |出站 |TCP |Redis 的内部通信 | （Redis 子网） | （Redis 子网） |
 | 10221-10231 |出站 |TCP |Redis 的内部通信 | （Redis 子网） | （Redis 子网） |
@@ -140,11 +140,13 @@ public static ConnectionMultiplexer Connection
 | 15000-15999 |出站 |TCP |Redis 的内部通信和异地复制 | （Redis 子网） |（Redis 子网）（地域副本对等子网） |
 | 6379-6380 |出站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网） |
 
-<sup>1</sup> 可以将服务标记 "AzureKeyVault" 和 "AzureMonitor" 用于资源管理器网络安全组。
+<sup>1</sup> 可以将服务标记“AzureKeyVault”和“AzureMonitor”用于资源管理器网络安全组。
 
 <sup>2</sup> Microsoft 拥有的这些 IP 地址用于对为 Azure DNS 提供服务的主机 VM 进行寻址。
 
 <sup>3</sup> 没有自定义 DNS 服务器的子网或忽略自定义 DNS 的更新 redis 缓存不需要。
+
+<sup>4</sup> 有关详细信息，请参阅 [其他 VNET 网络连接要求](#additional-vnet-network-connectivity-requirements)。
 
 #### <a name="geo-replication-peer-port-requirements"></a>异地复制对等端口要求
 
@@ -156,13 +158,13 @@ public static ConnectionMultiplexer Connection
 
 | 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | （Redis 子网）、虚拟网络、Azure 负载均衡器 <sup>1</sup> |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） |  (Redis 子网) ， (客户端子网) ，AzureLoadBalancer <sup>1</sup> |
 | 8443 |入站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网） |
-| 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
-| 10221-10231 |入站 |TCP |与 Redis 群集的客户端通信、Redis 的内部通信 | （Redis 子网） | (Redis 子网) ，Azure 负载均衡器， (客户端子网)  |
-| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
-| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡和异地复制 | （Redis 子网） |虚拟网络、Azure 负载均衡器（地域副本对等子网） |
-| 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
+| 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） | AzureLoadBalancer |
+| 10221-10231 |入站 |TCP |与 Redis 群集的客户端通信、Redis 的内部通信 | （Redis 子网） | (Redis 子网) ，AzureLoadBalancer， (客户端子网)  |
+| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |  (Redis 子网) ， (客户端子网) ，AzureLoadBalancer |
+| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡和异地复制 | （Redis 子网） |  (Redis 子网) ， (客户端子网) ，AzureLoadBalancer， (异地副本对等子网)  |
+| 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） | AzureLoadBalancer |
 | 20226 |入站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网） |
 
 <sup>1</sup> 可以使用服务标记“AzureLoadBalancer”（资源管理器）或“AZURE_LOADBALANCER”（经典）来创作 NSG 规则。
@@ -171,10 +173,10 @@ public static ConnectionMultiplexer Connection
 
 在虚拟网络中，可能一开始不符合 Azure Redis 缓存的网络连接要求。 在虚拟网络中使用时，Azure Redis 缓存需要以下所有项才能正常运行。
 
-* 与全球 Azure 存储终结点建立的出站网络连接。 这包括位于 Azure Redis 缓存实例区域的终结点，以及位于 **其他** Azure 区域的存储终结点。 Azure 存储终结点在以下 DNS 域下解析： *table.core.windows.net* 、 *blob.core.windows.net* 、 *queue.core.windows.net* 和 *file.core.windows.net* 。 
-* 与 *ocsp.digicert.com* 、 *crl4.digicert.com* 、 *ocsp.msocsp.com* 、 *mscrl.microsoft.com* 、 *crl3.digicert.com* 、 *cacerts.digicert.com* 、 *oneocsp.microsoft.com* 和 *crl.microsoft.com* 的出站网络连接。 需要此连接才能支持 TLS/SSL 功能。
+* 与全球 Azure 存储终结点建立的出站网络连接。 这包括位于 Azure Redis 缓存实例区域的终结点，以及位于 **其他** Azure 区域的存储终结点。 Azure 存储终结点在以下 DNS 域下解析： *table.core.windows.net*、 *blob.core.windows.net*、 *queue.core.windows.net* 和 *file.core.windows.net*。 
+* 与 ocsp.digicert.com、crl4.digicert.com、ocsp.msocsp.com、mscrl.microsoft.com、crl3.digicert.com、cacerts.digicert.com、oneocsp.microsoft.com 和 crl.microsoft.com 之间的出站网络连接       。 需要此连接才能支持 TLS/SSL 功能。
 * 虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。 确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合这些 DNS 要求。
-* 与以下 Azure Monitor 终结点的出站网络连接，这些终结点在以下 DNS 域下解析： *shoebox2-black.shoebox2.metrics.nsatc.net* 、 *north-prod2.prod2.metrics.nsatc.net* 、 *azglobal-black.azglobal.metrics.nsatc.net* 、 *shoebox2-red.shoebox2.metrics.nsatc.net* 、 *east-prod2.prod2.metrics.nsatc.net* 、 *azglobal-red.azglobal.metrics.nsatc.net* 。
+* 与以下Azure Monitor 终结点（在下列 DNS 域下进行解析）的出站网络连接：shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net     。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>如何验证缓存是否在 VNET 中正常工作？
 
@@ -218,19 +220,19 @@ public static ConnectionMultiplexer Connection
 只能对高级缓存使用 VNet。
 
 ### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>为什么在某些子网中创建 Azure Redis 缓存会失败，而在其他子网中不会失败？
-如果要将 Azure Redis 缓存部署到资源管理器 VNet，缓存必须位于不包含其他资源类型的专用子网中。 如果尝试将 Azure Redis 缓存部署到包含其他资源的资源管理器 VNet 子网，部署会失败。 必须先删除该子网中的现有资源，然后才能创建新的 Azure Redis 缓存。
+如果要将适用于 Redis 的 Azure 缓存部署到 VNet，则该缓存必须在不包含任何其他资源类型的专用子网中。 如果尝试将适用于 Redis 的 Azure 缓存部署到包含其他资源的资源管理器 VNet 子网 (例如应用程序网关、出站 NAT 等) ，则部署通常会失败。 必须先删除其他类型的现有资源，然后才能为 Redis 创建新的 Azure 缓存。
 
-只要有足够的可用 IP 地址，就可以将多种类型的资源部署到经典 VNet。
+还必须在子网中提供足够的 IP 地址。
 
 ### <a name="what-are-the-subnet-address-space-requirements"></a>子网地址空间的要求是什么？
 Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-除了 Azure VNET 基础结构使用的 IP 地址以外，子网中的每个 Redis 实例为每个分片使用两个 IP 地址，为负载均衡器使用一个额外的 IP 地址。 非群集缓存被视为包含一个分片。
+除了 Azure VNET 基础结构使用的 IP 地址外，子网中的每个 Redis 实例都使用每个群集的两个 IP 地址分片 (加上其他副本的其他 IP 地址（如果有任何) 和负载均衡器的其他 IP 地址）。 非群集缓存被视为包含一个分片。
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>在 VNET 中托管缓存时，是否可以使用所有缓存功能？
 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。 因此，以下缓存管理功能目前不起作用。
 
-* Redis 控制台 - 由于 Redis 控制台在 VNET 外部的本地浏览器中运行，因此无法连接到缓存。
+* Redis 控制台-由于 Redis 控制台在本地浏览器中运行，该浏览器通常位于未连接到 VNET 的开发人员计算机上，因此它无法连接到缓存。
 
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>将 ExpressRoute 与 Azure Redis 缓存配合使用
@@ -239,7 +241,7 @@ Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址�
 
 默认情况下，新创建的 ExpressRoute 线路不会在 VNET 上执行强制隧道（默认路由播发，0.0.0.0/0）。 因此，出站 Internet 连接可以直接来自 VNET，而客户端应用程序能够连接到其他 Azure 终结点（包括 Azure Redis 缓存）。
 
-但是，常见的客户配置是使用强制隧道（播发默认路由），以强制出站 Internet 流量改为流向本地。 如果接下来出站流量在本地遭到阻止，此流量将断开与 Azure Redis 缓存的连接，这样 Azure Redis 缓存实例将无法与其依赖项通信。
+但是，常见的客户配置是使用强制隧道 (播发默认路由) ，这会强制出站 Internet 流量改为在本地流动。 如果接下来出站流量在本地遭到阻止，此流量将断开与 Azure Redis 缓存的连接，这样 Azure Redis 缓存实例将无法与其依赖项通信。
 
 解决方法是在包含 Azure Redis 缓存的子网上定义一个（或多个）用户定义的路由 (UDR)。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
 

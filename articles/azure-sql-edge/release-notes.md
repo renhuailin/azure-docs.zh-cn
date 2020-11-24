@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395030"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808627"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍每个新的 Azure SQL Edge 内部版本中的新增功能或已更改的内容。
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge-1.0。1
+
+### <a name="sql-engine-build-number---15020001553"></a>SQL 引擎内部版本号-15.0.2000.1553
+
+### <a name="whats-new"></a>新增功能
+
+- 允许在计算列中定义 Datebucket 表达式
+
+### <a name="fixes"></a>修复项
+
+- 保留策略修复了启用了保留策略且具有无限超时的表
+- 在 DacFx 部署中支持流式处理和保留策略功能 
+- DacFx 部署修补程序，用于启用从 SAS URL 中的嵌套文件夹进行部署 
+- 预测修复以支持错误消息中的长列名称
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge - 1.0.0 (RTM)
 

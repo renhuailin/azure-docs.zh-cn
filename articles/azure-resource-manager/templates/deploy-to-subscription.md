@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/24/2020
+ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519857"
+ms.locfileid: "95807708"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>具有 ARM 模板的订阅部署
 
@@ -126,6 +126,14 @@ New-AzSubscriptionDeployment `
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 * [从 Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>部署位置和名称
+
+对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [管理组](deploy-to-management-group.md) 和 [租户](deploy-to-tenant.md) 部署还需要位置。 对于 [资源组](deploy-to-resource-group.md) 部署，资源组的位置用于存储部署数据。
+
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的订阅部署，则以后无法使用 deployment1 的位置创建另一个名为 **deployment1** 的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+
 ## <a name="deployment-scopes"></a>部署范围
 
 部署到订阅时，可以将资源部署到：
@@ -173,14 +181,6 @@ New-AzSubscriptionDeployment `
 或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
-
-## <a name="deployment-location-and-name"></a>部署位置和名称
-
-对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
-
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
-
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="resource-groups"></a>资源组
 
