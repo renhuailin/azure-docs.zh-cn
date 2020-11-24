@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042841"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495263"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 即插即用数字孪生
 
@@ -155,7 +155,7 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 ### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>用于设置数字克隆属性的所需值的规则
 
-**名称**
+**Name**
 
 组件或属性的名称必须是有效的 DTDL v2 name。
 
@@ -193,6 +193,6 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 现在，你已了解数字孪生，下面是一些其他资源：
 
-- [与解决方案中的设备交互](quickstart-service-node.md)
+- [与解决方案中的设备交互](quickstart-service.md)
 - [IoT 数字克隆 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 资源管理器](howto-use-iot-explorer.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658785"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494771"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
 
@@ -205,7 +205,7 @@ Azure Sentinel 根据用户的 Azure AD 安全组成员身份、邮件列表等�
 
 权限分析有助于确定攻击者对组织资产造成的潜在影响。 这种影响也称为资产的 "群发 radius"。 安全分析师可以使用此信息来确定调查和事件处理的优先级。
 
-Azure Sentinel 通过评估用户可以直接或通过组或服务主体访问的 Azure 订阅，确定给定用户对 Azure 资源持有的直接和可传递访问权限。 此信息以及用户 Azure AD 安全组成员身份的完整列表将存储在 **UserAccessAnalytics** 表中。 下面的屏幕截图显示了 UserAccessAnalytics 表中用户 Alex Johnson 的示例行。 **源实体** 是用户或服务主体帐户， **目标实体** 是源实体有权访问的资源。 " **访问级别** " 和 " **访问类型** " 的值取决于目标实体的访问控制模型。 你可以看到，Alex 有权访问 Azure 订阅 *Contoso 酒店租户*。 订阅的访问控制模型为 RBAC。   
+Azure Sentinel 通过评估用户可以直接或通过组或服务主体访问的 Azure 订阅，确定给定用户对 Azure 资源持有的直接和可传递访问权限。 此信息以及用户 Azure AD 安全组成员身份的完整列表将存储在 **UserAccessAnalytics** 表中。 下面的屏幕截图显示了 UserAccessAnalytics 表中用户 Alex Johnson 的示例行。 **源实体** 是用户或服务主体帐户， **目标实体** 是源实体有权访问的资源。 " **访问级别** " 和 " **访问类型** " 的值取决于目标实体的访问控制模型。 你可以看到，Alex 有权访问 Azure 订阅 *Contoso 酒店租户*。 订阅的访问控制模型是 Azure RBAC。   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="用户访问分析表的屏幕截图":::
 

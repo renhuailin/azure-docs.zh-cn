@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517295"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498463"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -74,7 +74,7 @@ Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role
 
 - **Log Analytics 角色：** [Log Analytics 参与者](../role-based-access-control/built-in-roles.md#log-analytics-contributor) 和 [Log Analytics 读者](../role-based-access-control/built-in-roles.md#log-analytics-reader)。 Log Analytics 角色授予对 Log Analytics 工作区的访问权限。 
 
-例如，如果分配了 Azure 级别**参与者**角色，则分配有**azure sentinel 读者**角色但不是**azure sentinel 参与者**角色的用户仍可以编辑 azure sentinel 中的项目。 因此，如果希望仅在 Azure Sentinel 中向用户授予权限，则应仔细删除此用户以前的权限，确保不会中断任何需要访问其他资源的权限。
+例如，如果分配了 Azure 级别 **参与者** 角色，则分配有 **azure sentinel 读者** 角色但不是 **azure sentinel 参与者** 角色的用户仍可以编辑 azure sentinel 中的项目。 因此，如果希望仅在 Azure Sentinel 中向用户授予权限，则应仔细删除此用户以前的权限，确保不会中断任何需要访问其他资源的权限。
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
@@ -91,7 +91,7 @@ Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role
 
 - 除了或使用 Azure 内置角色，你还可以为 Azure Sentinel 创建 Azure 自定义角色。 Azure Sentinel 的 azure 自定义角色的创建方式与创建其他[azure 自定义角色](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)的方式相同，具体取决于 azure Sentinel 和[azure Log Analytics 资源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定权限](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)。
 
-- 可以在 Azure Sentinel 工作区中的数据上使用 Log Analytics 高级基于角色的访问控制。 这包括基于数据类型的 Azure RBAC 和以资源为中心的 Azure RBAC。 有关 Log Analytics 角色的详细信息，请参阅 [在 Azure Monitor 中管理日志数据和工作区](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
+- 可以在 Azure Sentinel 工作区中的数据上使用基于 Log Analytics 高级 Azure 角色的访问控制。 这包括基于数据类型的 Azure RBAC 和以资源为中心的 Azure RBAC。 有关 Log Analytics 角色的详细信息，请参阅 [在 Azure Monitor 中管理日志数据和工作区](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445568"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495281"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解决方案中使用 IoT 即插即用模型
 
@@ -125,7 +125,7 @@ content-encoding:utf-8
 
 1. 使用已连接设备的模型定义，可以枚举设备的功能。
 
-1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service-node.md)。
+1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service.md)。
 
 ### <a name="custom-store"></a>自定义存储
 
@@ -137,12 +137,12 @@ content-encoding:utf-8
 
 1. 使用已连接设备的模型定义，可以枚举设备的功能。 
 
-1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service-node.md)。  
+1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service.md)。  
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解如何在 IoT 解决方案中集成 IoT 即插即用模型，以下是一些建议的后续步骤：
 
-- [与解决方案中的设备交互](quickstart-service-node.md)
+- [与解决方案中的设备交互](quickstart-service.md)
 - [IoT 数字克隆 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 资源管理器](howto-use-iot-explorer.md)

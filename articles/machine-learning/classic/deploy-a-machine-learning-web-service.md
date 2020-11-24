@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322829"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495196"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
@@ -91,7 +91,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 * **训练** - 这些模块用于模型的训练。 单击“设置 Web 服务”时，这些模块会被替换为单个模块，其中包含已训练的模型。 此新模块保存在模块调色板的“训练模型”部分。
 
-* **分数** - 在此示例中， [拆分数据][split]模块用于将数据流划分为测试数据和训练数据。 在预测实验中，我们不再进行训练，因此可删除[拆分数据][split]。 同样，第二个[评分模型][score-model]模块和[评估模型][evaluate-model]模块用于比较测试数据的结果，因此预测实验不需要这些模块。 然而，其余[评分模型][score-model]模块，就需要通过 Web 服务返回分数结果。
+* **分数** - 在此示例中，[拆分数据][split]模块用于将数据流划分为测试数据和训练数据。 在预测实验中，我们不再进行训练，因此可删除[拆分数据][split]。 同样，第二个[评分模型][score-model]模块和[评估模型][evaluate-model]模块用于比较测试数据的结果，因此预测实验不需要这些模块。 然而，其余[评分模型][score-model]模块，就需要通过 Web 服务返回分数结果。
 
 单击“设置 Web 服务”示例如下所示：
 
@@ -212,7 +212,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 7. 在“计划名称”中，键入计划的名称。
 8. 在“计划选项”中，单击新计划的计费级别。
-9. 单击 **创建** 。
+9. 单击 **创建**。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>将 Web 服务部署到另一个区域
 
@@ -250,7 +250,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 在“配置”页上，可以更改服务的显示名称并提供说明。 名称和说明会显示在 [Azure 门户](https://portal.azure.com/)中，可以在其中管理 Web 服务。
 
-可通过在 **输入架构** 、 **输出架构** 和 **Web 服务参数** 下为每列输入字符串来为输入数据、输出数据和 Web 服务参数提供描述。 这些描述用于为 Web 服务提供的示例代码文档中。
+可通过在 **输入架构**、**输出架构** 和 **Web 服务参数** 下为每列输入字符串来为输入数据、输出数据和 Web 服务参数提供描述。 这些描述用于为 Web 服务提供的示例代码文档中。
 
 可启用日志记录来诊断在访问 Web 服务时遇到的任何故障。 有关详细信息，请参阅[为机器学习工作室（经典）Web 服务启用日志记录](web-services-logging.md)。
 

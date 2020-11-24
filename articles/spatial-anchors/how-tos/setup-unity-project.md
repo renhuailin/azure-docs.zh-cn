@@ -1,19 +1,19 @@
 ---
 title: 安装适用于 Unity 的 Azure 空间锚
 description: 配置 Unity 项目以使用 Azure 空间锚。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530404"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496931"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>在 Unity 项目中配置 Azure 空间锚
 
@@ -55,7 +55,7 @@ Azure 空间定位点当前支持具有以下配置的 Unity 2019.4 (LTS) 。
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>仅限 Android：配置 Maintemplate.json. gradle 文件
 
 1. 转到“编辑” > “项目设置” > “播放器”  。
-2. 在 "**播放器设置**" 的**检查器面板**中，选择 " **Android** " 图标。
+2. 在 "**播放器设置**" 的 **检查器面板** 中，选择 " **Android** " 图标。
 3. 在 " **生成** " 部分下，选中 " **自定义主 Gradle 模板** " 复选框，以在处生成自定义 Gradle 模板 `Assets\Plugins\Android\mainTemplate.gradle` 。
 4. 在文本编辑器中打开 `mainTemplate.gradle` 文件。
 5. 在 `dependencies` 部分中，粘贴以下依赖项：

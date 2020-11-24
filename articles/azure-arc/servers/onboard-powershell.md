@@ -3,12 +3,12 @@ title: 使用 PowerShell 将混合计算机连接到 Azure
 description: 本文介绍如何使用启用了 Azure Arc 的服务器安装代理并将计算机连接到 Azure。 可以使用 PowerShell 执行此操作。
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422767"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492935"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>使用 PowerShell 将混合计算机连接到 Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "93422767"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/)。
 
@@ -45,16 +45,16 @@ Install-Module -Name Az.ConnectedMachine
     * 若要在可直接与 Azure 通信的目标计算机上安装已连接的计算机代理，请运行：
 
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region>
         ```
     
     * 若要在通过代理服务器进行通信的目标计算机上安装连接的计算机代理，请运行：
         
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
-如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 上，检查以下文件： *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* 。 在 Linux 上，检查以下文件： */var/opt/azcmagent/log/himds.log* 。
+如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 上，检查以下文件： *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*。 在 Linux 上，检查以下文件： */var/opt/azcmagent/log/himds.log*。
 
 ## <a name="install-and-connect-by-using-powershell-remoting"></a>使用 PowerShell 远程处理进行安装和连接
 
@@ -64,20 +64,20 @@ Install-Module -Name Az.ConnectedMachine
 
 2. 通过运行命令登录到 Azure `Connect-AzAccount` 。
 
-3. 若要安装已连接的计算机代理，请将 `Connect-AzConnectedMachine` 与 `-Name` 、 `-ResourceGroupName` 和参数一起使用 `-Location` 。 使用 `-SubscriptionId` 参数重写默认订阅，作为在登录后创建的 Azure 上下文的结果。
+3. 若要安装已连接的计算机代理，请将 `Connect-AzConnectedMachine` 与 `-ResourceGroupName` 和参数一起使用 `-Location` 。 Azure 资源名称将自动使用每个服务器的主机名。 使用 `-SubscriptionId` 参数重写默认订阅，作为在登录后创建的 Azure 上下文的结果。
 
     * 若要在可直接与 Azure 通信的目标计算机上安装已连接的计算机代理，请运行以下命令：
     
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
     
     * 若要同时在多台远程计算机上安装连接的计算机代理，请添加一组远程计算机名称，每个名称之间用逗号分隔。
 
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
 
     下面的示例显示针对单个计算机的命令的结果：

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309882"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486120"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -41,7 +41,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 使用这些资源可以了解详细信息并开始解决自己的数据分析问题。
 
 可以轻松地在库中找到最近发布的热门资源，或者可以根据名称、标记、算法及其他属性来搜索资源。
-单击库标头中的“ **全部浏览** ”，并选择页面左边的缩小搜索范围，并在顶端输入搜索字词。
+单击库标头中的“**全部浏览**”，并选择页面左边的缩小搜索范围，并在顶端输入搜索字词。
 在任何磁贴中单击作者名称可以查看特定作者的贡献内容。
 可以在每个资源页上评论、提供反馈，或者通过评论部分提问。
 甚至可以使用 LinkedIn 或 Twitter 的共享功能或者通过电子邮件发送链接，将感兴趣的资源与朋友或同事共享。
@@ -49,7 +49,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 在登录到库时你即会成为库社区的一名成员。 这样就可以下载资源或者贡献自己的库项，使其他人可以从你发现的解决方案中受益。
 
 可以下载试验、自定义模块，以便在开发自己的分析解决方案时使用 。
-可以在库中贡献 **试验** 、 **教程** 和 **集合** 。
+可以在库中贡献 **试验**、**教程** 和 **集合**。
 
 ## <a name="download-experiments-modules"></a>下载试验、模块
 
@@ -80,7 +80,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 ## <a name="contribute-experiments"></a>贡献试验
 
-若要演示分析技术或者向其他人提供有关解决方案的快速入门，可以贡献你在工作室（经典）中开发的 **试验** 。
+若要演示分析技术或者向其他人提供有关解决方案的快速入门，可以贡献你在工作室（经典）中开发的 **试验**。
 当其他人在库中浏览你的贡献内容时，你可以跟进贡献内容的查看次数和下载次数。
 用户还可以添加评论并与数据科学社区的其他成员分享你的贡献内容。
 可以登录到 Disqus 等论坛，这样，在有人对你的贡献内容发表评论后，你可以收到通知。
@@ -89,7 +89,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 1. 在试验画布下面的操作列表中，选择“发布到库”。
 
-1. 在库中，输入描述性的 **名称** 和 **标记** 。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是“二元分类：Twitter 情绪分析”。
+1. 在库中，输入描述性的 **名称** 和 **标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是“二元分类：Twitter 情绪分析”。
 
 1. 在“摘要”框中，输入实验的摘要。 简要描述实验解决的问题以及处理方式。
 
@@ -144,7 +144,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 ## <a name="contribute-tutorials-and-collections"></a>贡献教程与集合
 
-可以在库中编写介绍机器学习概念的 **教程** ，或者创建一个可以围绕特定解决方案将多个资源组合到一起的 **集合** ，来为其他人提供帮助。
+可以在库中编写介绍机器学习概念的 **教程**，或者创建一个可以围绕特定解决方案将多个资源组合到一起的 **集合**，来为其他人提供帮助。
 
 1. 使用 Microsoft 帐户登录到库。
 
@@ -202,6 +202,6 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 我们希望库能由用户驱动并能为用户所用。 使用右侧的笑脸告诉我们你喜欢或不喜欢库。  
 
-![反馈](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![使用反馈窗口可以发送笑脸、发送哭脸或输入文本。 有一个 "提交" 按钮。](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[将我转到库 >>](https://gallery.azure.ai)**

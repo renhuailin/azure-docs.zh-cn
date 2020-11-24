@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718809"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486511"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
@@ -41,7 +41,7 @@ ms.locfileid: "88718809"
 1. 你将使用源资源凭据来查询进度 URL，直到操作成功为止。 您还可以在目标资源中查询新的模型 ID 以获取新模型的状态。
 
 > [!CAUTION]
-> 复制 API 目前不支持 [组合自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)的模型 id。 模型撰写是 v 2.1-preview. 1 预览版中的预览功能。 
+> 复制 API 目前不支持 [组合自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)的模型 id。 模型撰写是 v 2.1-preview. 2 预览版中的预览功能。 
 
 ## <a name="generate-copy-authorization-request"></a>生成复制授权请求
 

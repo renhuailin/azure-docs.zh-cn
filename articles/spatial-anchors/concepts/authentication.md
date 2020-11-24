@@ -1,20 +1,20 @@
 ---
 title: 身份验证和授权
 description: 了解应用程序或服务可以对 Azure 空间锚点进行身份验证的各种方式，以及必须对空间锚点进行访问的控制级别。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242341"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484604"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空间定位点身份验证和授权
 
@@ -98,11 +98,11 @@ configuration.AccountKey(LR"(MyAccountKey)");
 1.    在 Azure AD 中将应用程序注册为本机应用程序。 注册过程中，需要确定应用程序是否应为多租户应用程序。 还需要为应用程序提供允许的重定向 Url。
 1.  请访问 **API 权限** 选项卡。
 2.  选择“添加权限”。
-    1.  在 " **我的组织使用的 api** " 选项卡上选择 **混合现实资源提供程序** 。
+    1.  在 "**我的组织使用的 api** " 选项卡上选择 **混合现实资源提供程序**。
     2.  选择“委托的权限”。
     3.  在 **mixedreality** 下选择 " **mixedreality** "。
     4.  选择“添加权限”。
-3.  选择 " **授予管理员许可** "。
+3.  选择 " **授予管理员许可**"。
 
 2. 向应用程序或用户授予对你的资源的访问权限：
    1.    中转到 Azure 门户中的空间锚资源。
@@ -115,10 +115,10 @@ configuration.AccountKey(LR"(MyAccountKey)");
 **在代码中**
 1.    请确保为 MSAL 中的 **客户端 id** 和 **RedirectUri** 参数使用你自己的 Azure AD 应用程序的应用程序 ID 和重定向 URI。
 2.    设置租户信息：
-        1.    如果你的应用程序 **仅支持我的组织** ，请将此值替换为你的 **租户 ID** 或 **租户名称** 。 例如，contoso.microsoft.com。
-        2.    如果你的应用程序支持 **任何组织目录中的帐户** ，请将此值替换为 **组织** 。
-        3.    如果你的应用程序支持 **所有 Microsoft 帐户用户** ，请将此值替换为 **Common** 。
-3.    在令牌请求中，将 **范围** 设置为 **" `https://sts.<account-domain>//.default` "** ，其中，将 `<account-domain>` 替换为 Azure 空间锚定帐户的 **帐户域** 。 美国东部2帐户域中的 Azure 空间标记帐户的示例范围为 **" `https://sts.mixedreality.azure.com//.default` "** 。 此范围告知 Azure AD，应用程序正在请求混合现实安全令牌服务 (STS) 的令牌。
+        1.    如果你的应用程序 **仅支持我的组织**，请将此值替换为你的 **租户 ID** 或 **租户名称**。 例如，contoso.microsoft.com。
+        2.    如果你的应用程序支持 **任何组织目录中的帐户**，请将此值替换为 **组织**。
+        3.    如果你的应用程序支持 **所有 Microsoft 帐户用户**，请将此值替换为 **Common**。
+3.    在令牌请求中，将 **范围** 设置为 **" `https://sts.<account-domain>//.default` "**，其中，将 `<account-domain>` 替换为 Azure 空间锚定帐户的 **帐户域** 。 美国东部2帐户域中的 Azure 空间标记帐户的示例范围为 **" `https://sts.mixedreality.azure.com//.default` "**。 此范围告知 Azure AD，应用程序正在请求混合现实安全令牌服务 (STS) 的令牌。
 
 完成这些步骤后，应用程序应能够从 MSAL 获取 Azure AD 令牌。 可以 `authenticationToken` 在云会话配置对象上将该 Azure AD 标记设置为：
 
@@ -174,10 +174,10 @@ Azure AD 访问令牌通过 [MSAL](../../active-directory/develop/msal-overview.
 
 **在 Azure 门户中**
 1.    在 Azure AD 中注册应用程序：
-        1.    在 Azure 门户中，选择 " **Azure Active Directory** "，然后选择 " **应用注册** "。
+        1.    在 Azure 门户中，选择 " **Azure Active Directory**"，然后选择 " **应用注册**"。
         2.    选择“新注册”。
         3.    输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 选择“创建”  。
-2.    在应用程序中，选择 " **设置** "，然后选择 " **证书和密钥** " 选项卡。创建新的客户端密钥，选择持续时间，然后选择 " **添加** "。 务必保存机密值。 需要将其包含在 web 服务的代码中。
+2.    在应用程序中，选择 " **设置**"，然后选择 " **证书和密钥** " 选项卡。创建新的客户端密钥，选择持续时间，然后选择 " **添加**"。 务必保存机密值。 需要将其包含在 web 服务的代码中。
 3.    向应用程序和/或用户授予对你的资源的访问权限：
         1.    中转到 Azure 门户中的空间锚资源。
         2.    请 **访问 (IAM)** "选项卡上的" 访问控制 "。
@@ -186,7 +186,7 @@ Azure AD 访问令牌通过 [MSAL](../../active-directory/develop/msal-overview.
         5.    在 " **选择** " 框中，输入要向其分配访问权限的应用程序的名称或名称。 如果希望应用的用户具有不同于空间锚点帐户的角色，请在 Azure AD 中注册多个应用程序，并为每个应用程序分配一个单独的角色。 然后实现授权逻辑，以便为用户使用适当的角色。
 
               > [!NOTE]
-              > 在 " **添加角色分配** " 窗格中的 " **分配访问权限** " 中，选择 **Azure AD 用户、组或服务主体** 。
+              > 在 " **添加角色分配** " 窗格中的 " **分配访问权限**" 中，选择 **Azure AD 用户、组或服务主体**。
 
         6.    选择“保存”。
 
@@ -195,9 +195,9 @@ Azure AD 访问令牌通过 [MSAL](../../active-directory/develop/msal-overview.
 >[!NOTE]
 > 您可以使用 GitHub 上提供的服务示例。
 
-1.    请确保使用你自己的 Azure AD 应用程序的应用程序 ID、应用程序密钥和重定向 URI 作为 MSAL 中的 **客户端 ID** 、 **secret** 和 **RedirectUri** 参数。
+1.    请确保使用你自己的 Azure AD 应用程序的应用程序 ID、应用程序密钥和重定向 URI 作为 MSAL 中的 **客户端 ID**、 **secret** 和 **RedirectUri** 参数。
 2.    在 MSAL 中，将租户 ID 设置为你 **自己的 Azure AD** 租户 id。
-3.    在令牌请求中，将 **范围** 设置为 **" `https://sts.<account-domain>//.default` "** ，其中，将 `<account-domain>` 替换为 Azure 空间锚定帐户的 **帐户域** 。 美国东部2帐户域中的 Azure 空间标记帐户的示例范围为 **" `https://sts.mixedreality.azure.com//.default` "** 。
+3.    在令牌请求中，将 **范围** 设置为 **" `https://sts.<account-domain>//.default` "**，其中，将 `<account-domain>` 替换为 Azure 空间锚定帐户的 **帐户域** 。 美国东部2帐户域中的 Azure 空间标记帐户的示例范围为 **" `https://sts.mixedreality.azure.com//.default` "**。
 
 完成这些步骤后，后端服务可以检索 Azure AD 令牌。 然后，该服务会使用该令牌来交换要返回给客户端的 MR 令牌。 使用 Azure AD 令牌检索 MR 令牌的过程是通过 REST 调用完成的。 下面是一个示例调用：
 
@@ -266,8 +266,8 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 为了帮助你控制授予应用程序、服务或 Azure AD 服务用户的访问级别，你可以根据需要为 Azure 空间锚定帐户分配这些预先存在的角色：
 
-- **空间锚定帐户所有者** 。 具有此角色的应用程序或用户可以创建空间锚，对其进行查询，并将其删除。 使用帐户密钥对帐户进行身份验证时，会将空间锚定帐户所有者角色分配给经过身份验证的主体。
-- **空间锚定帐户参与者** 。 具有此角色的应用程序或用户可以创建空间定位点并对其进行查询，但不能删除它们。
+- **空间锚定帐户所有者**。 具有此角色的应用程序或用户可以创建空间锚，对其进行查询，并将其删除。 使用帐户密钥对帐户进行身份验证时，会将空间锚定帐户所有者角色分配给经过身份验证的主体。
+- **空间锚定帐户参与者**。 具有此角色的应用程序或用户可以创建空间定位点并对其进行查询，但不能删除它们。
 - **空间锚定帐户读取** 者。 具有此角色的应用程序或用户只能查询空间锚。 它们无法创建新的文件、删除现有的更新或更新元数据。 此角色通常用于某些用户组织环境的应用程序，但其他用户只能撤回之前放置在环境中的定位点。
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,19 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.topic: how-to
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 158d8731965533b20917a25b72227a92c9638fa7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650302"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488447"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中集成 LinkedIn 帐户连接
 
@@ -94,10 +93,10 @@ ms.locfileid: "94650302"
 1. 使用以下设置创建组策略对象： "**用户配置**  >  "**管理模板**  >  **Microsoft Office 2016**  >  **Miscellaneous**  >  **"在 Office 应用程序中显示 LinkedIn 功能**"。
 1. 选择“已启用”或“已禁用”。
   
-   State | 效果
+   州省/自治区/直辖市 | 效果
    ------ | ------
-   **Enabled** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
-   **禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
 此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用 LinkedIn，它们仍可在 Microsoft 365 中看到 LinkedIn 功能。
 

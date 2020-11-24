@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bb46bc18469638416ff76f84516498e0076c85fd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636854"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500316"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Confluent 架构注册表 Apache Kafka
 
@@ -34,19 +34,19 @@ Kafka 架构注册表提供插入 Apache Kafka 客户端的序列化程序，这
 
 1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
+    [![部署到 Azure](./media/schema-registry/hdi-deploy-to-azure1.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json)
 
 1. 在 "自定义部署" 模板上，按如下所述填充字段：
 
-    |Property |说明 |
+    |属性 |说明 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
     |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
     |区域|从下拉列表中，选择在其中创建群集的区域。|
     |群集名称|输入任何全局唯一的名称。 或者原样保留以使用默认名称。|
-    |群集登录用户名|提供用户名，默认值为 **admin** 。|
+    |群集登录用户名|提供用户名，默认值为 **admin**。|
     |群集登录密码|提供密码。|
-    |SSH 用户名|提供用户名，默认值为 **sshuser** 。|
+    |SSH 用户名|提供用户名，默认值为 **sshuser**。|
     |SSH 密码|提供密码。|
 
     将其他字段保留原样。 选择“查看 + 创建”以继续。
@@ -113,7 +113,7 @@ Kafka 架构注册表提供插入 Apache Kafka 客户端的序列化程序，这
     debug=true
     ```
 
-1. 要保存文件，请使用 **Ctrl + X** 、 **Y** ，并按 **Enter** 。
+1. 要保存文件，请使用 **Ctrl + X**、**Y**，并按 **Enter**。
 
 1. 启动架构注册表并使其指向使用更新后的架构注册表属性文件。 执行以下命令：
 

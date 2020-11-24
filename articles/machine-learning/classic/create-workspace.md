@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 3fc7fd1f3f7615c0622b684e3da4020c7da601f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0e2a67141970d1f5091457066db9b18a00ffecf8
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322866"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486154"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>创建并共享机器学习工作室（经典）工作区
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 若要使用 Azure 机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 
@@ -40,11 +40,11 @@ ms.locfileid: "93322866"
 4. 输入工作区信息：
 
    - *工作区名称* 最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
-   - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划* 以及所选的关联 *定价层* 。
+   - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划* 以及所选的关联 *定价层*。
 
      ![创建新的工作室（经典）工作区](./media/create-workspace/create-new-workspace.png)
 
-5. 单击 **创建** 。
+5. 单击 **创建**。
 
    机器学习当前只允许有限数量的区域。 如果订阅不包括这些区域之一，可能会看到错误消息，“你在允许的区域中没有订阅。”  要请求将某区域添加到订阅，可从 Azure 门户创建新的 Microsoft 支持请求，将“计费”选为问题类型，然后按照提示提交请求。
 
@@ -118,7 +118,7 @@ ms.locfileid: "93322866"
 
    ![Internet 选项](media/troubleshooting-creating-ml-workspace/screen4.png)
 
-2. 在 " **常规** " 选项卡下，单击 " **删除 ...** "
+2. 在 "**常规**" 选项卡下，单击 "**删除 ...** "
 
    ![“常规”选项卡](media/troubleshooting-creating-ml-workspace/screen5.png)
 

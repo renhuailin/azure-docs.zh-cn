@@ -5,17 +5,17 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: victorh
-ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087537"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502201"
 ---
 # <a name="configure-azure-firewall-rules"></a>配置 Azure 防火墙规则
-在 Azure 防火墙上可以配置 NAT 规则、网络规则和应用程序规则。 处理规则集合时，会根据规则类型按优先级顺序（由低编号到高编号，从 100 到 65,000）进行。 规则集合名称只能包含字母、数字、下划线、句点或连字符。 该名称必须以字母或数字开头，并且以字母、数字或下划线结尾。 名称最大长度为 80 个字符。
+在 Azure 防火墙上可以配置 NAT 规则、网络规则和应用程序规则。 处理规则集合时，会根据规则类型按优先级顺序（由低编号到高编号，从 100 到 65,000）进行。 规则集合名称只能包含字母、数字、下划线、句点或连字符。 它必须以字母或数字开头，以字母、数字或下划线结尾。 名称最大长度为 80 个字符。
 
 最好在最初以 100 为增量（100、200、300，依此类推）设置规则集合优先级编号，这样在需要时就还有空间，可以添加更多的规则集合。
 
@@ -26,7 +26,13 @@ ms.locfileid: "87087537"
 
 ### <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
-如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。  如果没有网络规则匹配项，并且，如果协议是 HTTP、HTTPS 或 MSSQL，则应用程序规则会按优先级顺序评估数据包。 如果仍未找到匹配项，则会根据[基础结构规则集合](infrastructure-fqdns.md)评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
+如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。  如果没有匹配的网络规则，且协议为 HTTP、HTTPS 或 MSSQL，则应用程序规则将按优先级顺序对数据包进行评估。 如果仍未找到匹配项，则会根据[基础结构规则集合](infrastructure-fqdns.md)评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
+
+#### <a name="network-rule-protocol"></a>网络规则协议
+
+可以为 **TCP**、 **UDP**、 **ICMP** 或 **任意** IP 协议配置网络规则。 任何 IP 协议都包括在 [Internet 号码分配机构 (IANA) 协议编号](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) 文档中定义的所有 ip 协议。 如果显式配置了目标端口，则会将规则转换为 TCP + UDP 规则。
+
+2020年11月9日之前， **任何** 含义为 **TCP**、 **UDP** 或 **ICMP**。 因此，你可能已在该日期之前配置了协议 = Any 的规则，并且目标端口 = "*"。 如果实际上不打算允许当前定义的任何 IP 协议，请修改该规则以显式配置要 (TCP、UDP 或 ICMP) )  (协议。
 
 ## <a name="inbound-connectivity"></a>入站连接
 

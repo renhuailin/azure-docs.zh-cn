@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913188"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492204"
 ---
 # <a name="receipt-concepts"></a>回执概念
 
@@ -57,6 +57,13 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 * OCR raw 文本 (用于整接收的 OCR 提取文本输出) 
 * 每个值、行和字的边界框
 
+## <a name="try-it-out"></a>试试看
+
+若要试用窗体识别器回执服务，请访问联机示例 UI 工具：
+
+> [!div class="nextstepaction"]
+> [尝试预生成模型](https://fott-preview.azurewebsites.net/)
+
 ## <a name="input-requirements"></a>输入要求
 
 [!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
@@ -64,7 +71,7 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 ## <a name="supported-locales"></a>支持的区域设置 
 
 * **预先构建的接收** V2.0 (GA) 支持 en-us 区域设置中的销售收据
-* **预先生成的收条2.1 版-预览版** (公开预览版) 增加了对以下 EN 收据区域设置的其他支持： 
+* **预先生成的接收方 2.1-预览版** (公开预览版) 增加了对以下 EN 收据区域设置的支持： 
   * EN AU 
   * EN-CA 
   * EN-GB 
@@ -73,12 +80,12 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
   > [!NOTE]
   > 语言输入 
   >
-  > 预生成的收条2.1 版-预览版。1包含一个可选的 request 参数，用于指定来自其他英语市场的回执区域设置。 对于澳大利亚英语 (EN-US) 、加拿大 (EN-CA) 、英国 () 和印度 (EN-US) 中的销售收据，可以指定区域设置以获得改进的结果。 如果未在 v 2.1-preview. 1 中指定区域设置，则模型将默认为 EN-US 模型。
+  > 预生成的收条2.1 版-预览版。2有一个可选的 request 参数，用于指定其他英语市场的回执区域设置。 对于澳大利亚英语 (EN-US) 、加拿大 (EN-CA) 、英国 () 和印度 (EN-US) 中的销售收据，可以指定区域设置以获得改进的结果。 如果在 v-preview. 2 中未指定任何区域设置，则模型将默认为 EN-US 模型。
 
 
 ## <a name="the-analyze-receipt-operation"></a>分析回执操作
 
-[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)采用收据的图像或 PDF 作为输入，并提取相关值和文本。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
+[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)采用收据的图像或 PDF 作为输入，并提取相关值和文本。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
@@ -86,11 +93,11 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>获取分析回执结果操作
 
-第二步是调用 [Get 分析回执结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) 操作。 此操作采用由分析回执操作创建的结果 ID 作为输入。 它将返回一个 JSON 响应，该响应包含具有以下可能值的 **状态** 字段。 此操作以迭代方式调用，直到它返回 **成功** 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
+第二步是调用 [Get 分析回执结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) 操作。 此操作采用由分析回执操作创建的结果 ID 作为输入。 它将返回一个 JSON 响应，该响应包含具有以下可能值的 **状态** 字段。 此操作以迭代方式调用，直到它返回 **成功** 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | notStarted：分析操作尚未开始。 |
+|status | string | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |

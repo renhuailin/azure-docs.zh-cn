@@ -9,20 +9,20 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421628"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486290"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
 通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。 IoT 即插即用的核心是设备模型，设备通过设备模型将其功能告知支持 IoT 即插即用的应用程序。 该模型被构造为一组元素，这些元素定义以下内容：
 
-- _属性_ ：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
-- _遥测_ ：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
-- _命令_ ：描述可在设备上执行的功能或操作。 例如，命令可以重新启动网关，或使用远程相机拍照。
+- _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
+- _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
+- _命令_：描述可在设备上执行的功能或操作。 例如，命令可以重新启动网关，或使用远程相机拍照。
 
 你可以在接口中对这些元素进行分组，以在模型之间重复使用，从而使协作更加轻松并加快开发速度。
 
@@ -72,5 +72,5 @@ IoT 即插即用适用于两种类型的开发人员：
 
 大致了解 IoT 即插即用后，我们建议接下来尝试学习以下快速入门之一：
 
-- [将设备连接到 IoT 中心 (C)](./quickstart-connect-device-c.md)
-- [与解决方案中的设备交互 (Node.js)](./quickstart-service-node.md)
+- [将设备连接到 IoT 中心](./quickstart-connect-device.md)
+- [与解决方案中的设备交互](./quickstart-service.md)

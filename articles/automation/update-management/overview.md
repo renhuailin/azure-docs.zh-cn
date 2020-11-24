@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360779"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488141"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "93360779"
 > 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。
 
 > [!NOTE]
-> 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 若要了解要求以及如何为服务器启用，请参阅 [从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md) 。
+> 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 请参阅[从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md)，以了解要求以及如何为服务器启用更新管理。
 
 若要在 Azure VM 上自动下载并安装可用的 *关键* 修补程序和 *安全* 修补程序，请查看 WINDOWS vm 的 [自动 VM 来宾修补](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
 
@@ -72,7 +72,7 @@ ms.locfileid: "93360779"
 > [!NOTE]
 > 仅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
@@ -88,7 +88,7 @@ ms.locfileid: "93360779"
 
 下表列出了不受支持的操作系统：
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 若要管理更新，请 [Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 适用于 Windows 10 客户端计算机的修补程序管理。 |
 |Windows Server 2016 Nano Server     | 不支持。       |
@@ -132,7 +132,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 启用更新管理后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为支持更新管理的 Runbook 提供支持。
 
-更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。 若要详细了解如何查看配置为混合 Runbook 辅助角色的 Windows 计算机的列表，请参阅[查看混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)。
+更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。 若要详细了解如何查看配置为混合 Runbook 辅助角色的 Windows 计算机的列表，请参阅[查看混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)。
 
 如果为更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的混合 Runbook 辅助角色组来为自动化 Runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
 
@@ -252,7 +252,7 @@ sudo yum -q --security check-update
 
 - 使用 **AutomationSolution** [runbook](enable-from-runbook.md) 方法。
 
-- 对于 "Azure 门户中的" **虚拟机** "页上的 [选定 Azure VM](enable-from-vm.md) 。 此方案适用于 Linux 和 Windows VM。
+- 对于 "Azure 门户中的"**虚拟机**"页上的 [选定 Azure VM](enable-from-vm.md) 。 此方案适用于 Linux 和 Windows VM。
 
 - 可以从 Azure 门户中的“虚拟机”页选择启用[多个 Azure VM](enable-from-portal.md)。
 

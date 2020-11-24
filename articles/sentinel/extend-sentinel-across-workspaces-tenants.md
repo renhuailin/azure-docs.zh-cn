@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658938"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95483907"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
 
@@ -34,7 +34,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 你会注意到，加�
 | 主权和法规遵从性 | 工作区绑定到特定区域。 如果需要将数据保留在不同的 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/) 以满足法规要求，则必须将其拆分为单独的工作区。 |  |
 | 数据所有权 | 例如，通过使用单独的工作区，可以更好地区分数据所有权边界（例如，由子公司或附属公司）。 |  |
 | 多个 Azure 租户 | Azure Sentinel 支持仅在其自己的 Azure Active Directory (Azure AD) 租户边界内收集来自 Microsoft 和 Azure SaaS 资源的数据。 因此，每个 Azure AD 租户都需要一个单独的工作区。 |  |
-| 精细数据访问控制 | 组织可能需要允许组织内部或外部的不同组访问 Azure Sentinel 收集的某些数据。 例如：<br><ul><li>资源所有者对与其资源相关的数据的访问权限</li><li>地区性或子公司 Soc 访问其组织的各个部分的相关数据</li></ul> | 使用 [资源 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [表级别 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| 精细数据访问控制 | 组织可能需要允许组织内部或外部的不同组访问 Azure Sentinel 收集的某些数据。 例如：<br><ul><li>资源所有者对与其资源相关的数据的访问权限</li><li>地区性或子公司 Soc 访问其组织的各个部分的相关数据</li></ul> | 使用 [资源 AZURE rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [表级 azure rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | 精细保留设置 | 过去，有多个工作区是为不同的数据类型设置不同的保持期的唯一方法。 在许多情况下，这在很多情况下都不再需要，这是因为引入了表级别的保留设置。 | 使用 [表级别的保留设置](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) 或自动 [删除数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | 拆分计费 | 通过将工作区放在不同的订阅中，可以对不同的参与方计费。 | 使用情况报告和交叉收费 |
 | 旧体系结构 | 使用多个工作区可能源自一个历史设计，该设计考虑到了不会再用到的限制或最佳做法。 它也可能是一个任意的设计方案，经过修改后可以更好地适应 Azure Sentinel。<br><br>示例包括：<br><ul><li>部署 Azure 安全中心时使用每个订阅默认工作区</li><li>需要精细的访问控制或保留设置，这是相对较新的解决方案</li></ul> | 重新构建工作区 |

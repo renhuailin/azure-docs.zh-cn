@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 61bff59114d25b2f3167a34100ec2f742036bb90
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663433"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503175"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>基于标头的单一登录，适用于具有 Azure AD 应用 Proxy (预览版的本地应用) 
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
 ## <a name="test-your-app"></a>测试应用 
 
 完成所有这些步骤后，应用程序应运行并且可用。 测试应用： 
-1. 打开浏览器并导航到 **External URL**   应用程序代理设置中的外部 URL。 
+1. 打开新的浏览器或专用浏览器窗口，确保清除以前缓存的标头。 然后导航到 **External URL**   应用程序代理设置中的外部 URL。
 2. 使用分配给应用的测试帐户登录。 如果可以使用 SSO 加载并登录到应用程序，那就好了！ 
 
 

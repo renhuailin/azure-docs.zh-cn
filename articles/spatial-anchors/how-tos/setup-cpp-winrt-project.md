@@ -1,25 +1,25 @@
 ---
 title: 为 c + +/WinRT HoloLens 应用程序安装 Azure 空间锚
 description: 将 c + +/WinRT HoloLens 项目配置为使用 Azure 空间锚。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 69134ef87d90fe69de2d9e4e9222e90f65edc785
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096107"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507000"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>在 c + +/WinRT HoloLens 项目中配置 Azure 空间锚
 
 ## <a name="requirements"></a>要求
 
-* 随**通用 Windows 平台开发**工作负荷和**Windows 10 SDK (10.0.18362.0 或更新的) **组件一起安装了[Visual Studio 2019](https://www.visualstudio.com/downloads/) 。
+* 随 **通用 Windows 平台开发** 工作负荷和 **Windows 10 SDK (10.0.18362.0 或更新的)** 组件一起安装了 [Visual Studio 2019](https://www.visualstudio.com/downloads/) 。
 
 ## <a name="configuring-a-project"></a>配置项目
 

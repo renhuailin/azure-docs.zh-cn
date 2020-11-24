@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf0131877e7a333fe2a6f157523da5ad7bcf07b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305562"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95499993"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习 Studio (经典) web 服务
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。  ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio (经典)   ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 将 Azure 机器学习工作室（经典版）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
@@ -100,12 +100,12 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 
 1. 发布 UCI 下载数据集：成人 2 类数据集 Web 服务。
 2. 单击“工具” > “NuGet 包管理器” > “包管理器控制台”。
-3. 选择 **Microsoft.AspNet.WebApi.Client 安装包** 。
+3. 选择 **Microsoft.AspNet.WebApi.Client 安装包**。
 
 **运行代码示例**
 
 1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验、机器学习示例集合的一部分。
-2. 使用 Web 服务密钥分配 API 密钥。 请参阅上面的 **获取授权密钥** 。
+2. 使用 Web 服务密钥分配 API 密钥。 请参阅上面的 **获取授权密钥**。
 3. 使用请求 URI 分配服务 URI。
 
 以下是完整请求的示例。
