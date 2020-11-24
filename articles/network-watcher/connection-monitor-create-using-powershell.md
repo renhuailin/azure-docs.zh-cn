@@ -1,5 +1,5 @@
 ---
-title: " (预览创建连接监视器) -PowerShell"
+title: 创建连接监视器-PowerShell
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 PowerShell 创建连接监视器。
 services: network-watcher
@@ -10,24 +10,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984237"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545527"
 ---
-# <a name="create-a-connection-monitor-preview-using-powershell"></a>使用 PowerShell)  (预览创建连接监视器
+# <a name="create-a-connection-monitor-using-powershell"></a>使用 PowerShell 创建连接监视器
 
 了解如何使用 PowerShell 创建连接监视器来监视资源之间的通信。
 
-> [!IMPORTANT]
-> 连接监视器当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="before-you-begin"></a>准备阶段 
+## <a name="before-you-begin"></a>开始之前 
 
 在连接监视器中创建的连接监视器中，可以将本地计算机和 Azure Vm 添加为源。 这些连接监视器还可以监视与终结点的连接。 终结点可以位于 Azure 上，也可以位于任何其他 URL 或 IP 上。
 

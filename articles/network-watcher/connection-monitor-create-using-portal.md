@@ -1,5 +1,5 @@
 ---
-title: 创建连接监视器 (预览) -Azure 门户
+title: 创建连接监视器-Azure 门户
 titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 门户在连接监视器中创建监视器。
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: f1ba23d53d79587c9d75c1d840c1d3857725d8dd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984373"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545714"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器 (预览) 
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
 了解如何使用连接监视器来监视资源之间的通信。 本文介绍了如何使用 Azure 门户创建监视器。 连接监视器支持混合部署和 Azure 云部署。
 
-> [!IMPORTANT]
-> 连接监视器当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>准备阶段 
 

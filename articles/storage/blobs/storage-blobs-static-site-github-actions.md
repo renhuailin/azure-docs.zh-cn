@@ -9,22 +9,22 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3adbc0a2d55a2adc2ab7c1f82b0a358542eefc2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842441"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543096"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub 操作工作流以部署静态网站
 
 通过使用工作流将静态站点部署到 Azure 存储帐户，开始使用 [GitHub 操作](https://docs.github.com/en/actions) 。 设置 GitHub 操作工作流后，可以在更改网站的代码时，从 GitHub 自动将网站部署到 Azure。
 
 > [!NOTE]
-> 如果你使用的是 [Azure 静态 Web 应用](https://docs.microsoft.com/azure/static-web-apps/)，则无需手动设置 GitHub 操作工作流。
+> 如果你使用的是 [Azure 静态 Web 应用](../../static-web-apps/index.yml)，则无需手动设置 GitHub 操作工作流。
 > Azure 静态 Web 应用会自动为你创建 GitHub 操作工作流。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 订阅和 GitHub 帐户。 
 
@@ -187,4 +187,4 @@ Azure 订阅和 GitHub 帐户。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 Azure 静态 Web 应用](https://docs.microsoft.com/azure/static-web-apps/)
+> [了解 Azure 静态 Web 应用](../../static-web-apps/index.yml)

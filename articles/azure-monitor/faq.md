@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841897"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536279"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
-这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。 如果你有任何其他问题，请前往 [讨论论坛](/answers/questions/topics/single/24223.html) 并发布你的问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。 如果有任何其他问题，请转到[论坛](/answers/questions/topics/single/24223.html)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 
 ## <a name="general"></a>常规
@@ -83,7 +83,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](log-query/log-query-overview.md)。
 p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>能否从 Log Analytics 工作区中删除数据？
-根据数据的 [保留期](platform/manage-cost-storage.md#change-the-data-retention-period)，将数据从工作区中删除。 出于隐私或合规性原因，可以删除特定数据。 有关详细信息，请参阅 [如何导出和删除私有数据](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) 。
+系统会根据数据的[保留期](platform/manage-cost-storage.md#change-the-data-retention-period)从工作区中删除数据。 出于隐私或合规性原因，你可以删除特定数据。 有关详细信息，请参阅[如何导出和删除私人数据](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
 
 
 ### <a name="what-is-a-log-analytics-workspace"></a>什么是 Log Analytics 工作区？
@@ -99,7 +99,7 @@ Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么收到“要使此订阅启用此查询，需注册 Microsoft.Insights”错误？ 
 将自动注册多个资源提供程序，但某些资源提供程序可能需要你手动注册。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么我不会收到访问错误消息？ 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为何出现无访问权限错误消息？ 
 若要查看 VM 日志，需获得存储 VM 日志的工作区的读取权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。
 
 ## <a name="metrics"></a>指标
@@ -154,7 +154,7 @@ Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monito
 * 正在收集的日志和性能计数器的数量
 * 日志中的数据量
 
-有关详细信息，请参阅[通过 Azure Monitor 日志管理使用情况和成本](platform/manage-cost-storage.md)。
+有关详细信息，请参阅[使用 Azure Monitor 日志管理使用情况和成本](platform/manage-cost-storage.md)。
 
 对于能够运行 WireData 代理的计算机，可以使用以下查询了解正在发送的数据量：
 
@@ -397,26 +397,26 @@ WireData
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
-### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>如何实现将 Application Insights 资源移到新区域？
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>如何将 Application Insights 资源移动到新区域？
 
-**当前不支持** 将现有 Application Insights 资源从一个区域移到另一个区域。 你收集的历史数据 **无法迁移** 到新区域。 唯一的部分解决方法是：
+当前不支持将现有 Application Insights 资源从一个区域移动到另一个区域。 你收集的历史数据无法迁移到新区域。 唯一的部分解决方法是：
 
 1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](/azure/azure-monitor/app/create-workspace-resource)) 。
-2. 重新创建特定于新资源中的原始资源的所有唯一自定义项。
-3. 修改应用程序以使用新的区域资源的 [检测密钥](app/create-new-resource.md#copy-the-instrumentation-key) 或 [连接字符串](app/sdk-connection-string.md)。  
-4. 测试以确认所有内容是否都按预期方式按新的 Application Insights 资源工作。 
-5. 此时，您可以删除原始资源，这将导致 **所有历史数据丢失**。 或保留原始资源，用于在其数据保持期设置期间进行历史报告。
+2. 重新创建特定于新资源中原始资源的所有唯一自定义项。
+3. 修改应用程序以使用新区域资源的[检测密钥](app/create-new-resource.md#copy-the-instrumentation-key)或[连接字符串](app/sdk-connection-string.md)。  
+4. 测试以确认所有内容是否都按预期处理新的 Application Insights 资源。 
+5. 此时，你可以删除原始资源，这会导致所有历史数据丢失。 你也可以保留原始资源，用于在其数据保留设置期间进行历史报告。
 
-通常需要在新区域中手动重新创建或更新资源的唯一自定义项包括但不限于：
+通常需要在新区域中为资源手动重新创建或更新的唯一自定义项包括但不限于：
 
 - 重新创建自定义仪表板和工作簿。 
-- 重新创建或更新任何自定义日志/指标警报的作用域。 
+- 重新创建或更新任何自定义日志/指标警报的范围。 
 - 重新创建可用性警报。
-- 重新创建任何自定义 Role-Based 访问控制 (你的用户访问新资源所需的 RBAC) 设置。 
-- 复制涉及引入采样、数据保留、每日上限和自定义指标支持的设置。 这些设置通过 " **使用情况和预估成本** " 窗格进行控制。
-- 依赖于 API 密钥的任何集成，如 [发布批注](/azure/azure-monitor/app/annotations)、 [实时指标安全控制通道](app/live-stream.md#secure-the-control-channel) 等。你将需要生成新的 API 密钥并更新关联的集成。 
+- 重新创建任何自定义 Azure 基于角色的访问控制， (用户访问新资源所需的 Azure RBAC) 设置。 
+- 复制涉及引入采样、数据保留、每日上限和自定义指标启用的设置。 可通过“使用情况和预估成本”窗格控制这些设置。
+- 依赖 API 密钥（如[版本注释](/azure/azure-monitor/app/annotations)、[实时指标安全控制通道](app/live-stream.md#secure-the-control-channel)等）的任何集成。你将需要生成新的 API 密钥并更新关联的集成。 
 - 需要重新配置经典资源中的连续导出。
-- 需要重新配置基于工作区资源的诊断设置。
+- 需要重新配置基于工作区资源中的诊断设置。
 
 > [!NOTE]
 > 如果要在新区域中创建的资源取代了经典资源，我们建议探索 [创建基于工作区的新资源](app/create-workspace-resource.md) 或将 [现有资源迁移到基于工作区](app/convert-classic-resource.md)的好处。 
@@ -597,7 +597,7 @@ OpenTelemetry 收集器在其 [GitHub 自述文件](https://github.com/open-tele
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>节点视图下的“其他进程”表示什么？
 
-**其他过程** 旨在帮助你清楚地了解节点上资源使用率较高的根本原因。 这样，你就能将容器化流程与非容器化流程的使用量区分开。
+“其他进程”旨在帮助你清楚了解节点上资源使用率较高的根本原因。 这样，你就能将容器化流程与非容器化流程的使用量区分开。
 
 这些其他进程是哪些进程？ 
 
@@ -627,7 +627,7 @@ OpenTelemetry 收集器在其 [GitHub 自述文件](https://github.com/open-tele
 
 联接其他表，在结果中包含这些属性值。
 
-联接 ContainerID 属性，将查询修改为包含 ```ContainerInventory``` 表中的 Image 和 ImageTag 属性。 您可以 ```ContainerLog``` 通过在 ContainerID 属性上联接，在 KubepodInventory 表的 ContaineName 字段中包含名称属性 (，就像它之前出现在) 表中一样。 这是建议选项。
+联接 ContainerID 属性，将查询修改为包含 ```ContainerInventory``` 表中的 Image 和 ImageTag 属性。 通过在 ContainerID 属性上进行联接，可以包含 KubepodInventory 表的 ContaineName 字段中的 Name 属性（与以前在 ```ContainerLog``` 表中显示的相同）。 这是建议选项。
 
 下面是一个详细查询示例，说明了如何使用联接来获取这些字段值。
 
@@ -680,9 +680,9 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
 
 如果收到“缺少 Microsoft.OperationsManagement 的订阅注册”错误，可通过在定义工作区的订阅中注册资源提供程序 Microsoft.OperationsManagement 来解决它 。 可以在[此处](../azure-resource-manager/templates/error-register-resource-provider.md)找到介绍如何执行此操作的文档。
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支持已启用 RBAC 的 AKS 群集？
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>是否支持 Kubernetes RBAC 启用 AKS 群集？
 
-容器监视解决方案不支持 RBAC，但用于容器的 Azure Monitor 支持 RBAC。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
+容器监视解决方案不支持 Kubernetes RBAC，但对于容器 Azure Monitor 支持。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>如何通过 Helm 为 kube-system 命名空间中的容器启用日志收集？
 

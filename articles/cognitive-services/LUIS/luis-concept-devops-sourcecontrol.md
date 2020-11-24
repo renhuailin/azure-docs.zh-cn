@@ -4,13 +4,13 @@ description: 如何维护源代码管理下的语言理解 (LUIS) 应用。 如�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019188"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535548"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS 的 DevOps 实践
 
@@ -53,7 +53,7 @@ DevOps 成功的关键因素之一是[源代码管理](/azure/devops/user-guide/
 - 或：使用文本编辑器为 LUIS 应用创建 `.lu` 文件，然后将其添加到源代码管理存储库
 
 > [!TIP]
-> 如果 LUIS 应用是以 JSON 格式导出，则可以使用 [BotBuilder-Tools LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) [将其转换为 LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert)。 使用 `--sort` 选项可确保意向和言语按字母顺序排序。  
+> 如果使用的是 LUIS 应用的 JSON 导出，则可以 [将其转换为 LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert)。  使用 `--sort` 选项可确保意向和言语按字母顺序排序。  
 > 请注意，LUIS 门户中内置的 .LU 导出功能已对输出进行了排序。
 
 ### <a name="build-the-luis-app-from-source"></a>从源生成 LUIS 应用

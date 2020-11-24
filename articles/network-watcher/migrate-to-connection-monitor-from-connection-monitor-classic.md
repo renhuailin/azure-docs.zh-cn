@@ -1,5 +1,5 @@
 ---
-title: '从连接监视器迁移到连接监视器 (预览) '
+title: 从连接监视器迁移到连接监视器
 titleSuffix: Azure Network Watcher
 description: 了解如何从连接监视器迁移到连接监视器。
 services: network-watcher
@@ -10,22 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985784"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522939"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>迁移到连接监视器 (预览) 从连接监视器 (经典) 
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器迁移到连接监视器 (经典) 
 
-你可以将现有连接监视器迁移到新的、经过改进的连接监视器 (预览) 只需单击几下鼠标，无需停机。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
-
-> [!IMPORTANT]
-> 连接监视器当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+只需单击几下鼠标，就能将现有连接监视器迁移到新的、经过改进的连接监视器，并且无需停机。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
 
 ## <a name="key-points-to-note"></a>需要注意的要点
 
@@ -33,12 +29,12 @@ ms.locfileid: "94985784"
 
 * 代理和防火墙设置按原样工作。 不需要进行任何更改。 
 * 现有连接监视器映射到连接监视器 > 测试组 > 测试格式。 通过选择 " **编辑**"，可以查看和修改新连接监视器的属性，下载模板以更改连接监视器，并通过 Azure 资源管理器进行提交。 
-* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器使数据可通过新指标 (ChecksFailedPercent [预览版] 和 RoundTripTimeMs [Preview] ) ，而不是旧指标 (ProbesFailedPercent 和 AverageRoundtripMs) 。 
+* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器使数据可通过新指标 (ChecksFailedPercent 和 RoundTripTimeMs) ，而不是旧指标 (ProbesFailedPercent 和 AverageRoundtripMs) 。 
 * 数据监视：
    * **警报**：自动迁移到新的度量值。
    * **仪表板和集成**：需要手动编辑度量值集。 
     
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果使用的是自定义工作区，请确保在订阅和 Log Analytics 工作区的区域中启用了网络观察程序。 
 

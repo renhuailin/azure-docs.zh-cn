@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746461"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537843"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -28,7 +28,7 @@ ms.locfileid: "92746461"
 
 静态网站托管是必须在存储帐户上启用的一项功能。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)即可开始操作。
 
@@ -38,15 +38,15 @@ ms.locfileid: "92746461"
 
 4. 选择“启用”，启用针对存储帐户的静态网站托管功能。
 
-5. 在“索引文档名称”字段中，指定一个默认索引页（例如： *index.html* ）。 
+5. 在“索引文档名称”字段中，指定一个默认索引页（例如：*index.html*）。 
 
    当用户导航到静态网站的根目录时，会显示默认索引页。  
 
-6. 在“错误文档路径”字段中，指定一个默认错误页（例如： *404.html* ）。 
+6. 在“错误文档路径”字段中，指定一个默认错误页（例如：*404.html*）。 
 
    当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 
-7. 单击“ **保存** ”。 Azure 门户现在会显示静态网站终结点。 
+7. 单击“保存” 。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -54,9 +54,9 @@ ms.locfileid: "92746461"
 
 <a id="cli"></a>
 
-可以使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 来启用静态网站托管。
+可以使用 [Azure 命令行接口 (CLI)](/cli/azure/?view=azure-cli-latest) 来启用静态网站托管。
 
-1. 首先，打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或者，如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
+1. 首先，打开 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)，或者，如果已在本地[安装](/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
 2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
@@ -136,7 +136,7 @@ ms.locfileid: "92746461"
 
 ### <a name="portal"></a>[门户](#tab/azure-portal)
 
-这些说明介绍如何使用 Azure 门户中出现的存储资源管理器版本来上传文件。 不过，也可以使用在 Azure 门户之外运行的[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)版本。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 $web 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)。
+这些说明介绍如何使用 Azure 门户中出现的存储资源管理器版本来上传文件。 不过，也可以使用在 Azure 门户之外运行的[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)版本。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 $web 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](./storage-blob-static-website-host.md)。
 
 1. 选择“存储资源管理器（预览版）”。
 
@@ -173,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > 如果使用的是 Azure CLI 的位置安装，则可以使用本地计算机上的任何位置的路径（例如：`C:\myFolder`）。
 >
-> 如果使用 Azure Cloud Shell，则必须引用对 Cloud Shell 可见的文件共享。 此位置可以是云共享本身的文件共享，也可以是从 Cloud Shell 装载的现有文件共享。 若要了解如何执行此操作，请参阅[在 Azure Cloud Shell 中持久保存文件](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)。
+> 如果使用 Azure Cloud Shell，则必须引用对 Cloud Shell 可见的文件共享。 此位置可以是云共享本身的文件共享，也可以是从 Cloud Shell 装载的现有文件共享。 若要了解如何执行此操作，请参阅[在 Azure Cloud Shell 中持久保存文件](../../cloud-shell/persisting-shell-storage.md)。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -202,7 +202,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 可以使用网站的公共 URL 从浏览器查看网站的页面。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在存储帐户的“帐户概述”页旁显示的窗格中，选择“静态网站”。 你的站点的 URL 显示在“主终结点”字段中。
 
@@ -279,4 +279,3 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何为静态网站配置自定义域。 请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
-

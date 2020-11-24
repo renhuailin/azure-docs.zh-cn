@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698064"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533270"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 如果要创建常规 Gen1 节点池，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。
 
 
-## <a name="ephemeral-os-preview"></a>临时 OS (预览) 
+## <a name="ephemeral-os"></a>临时 OS
 
-默认情况下，Azure 虚拟机的操作系统磁盘会自动复制到 Azure 存储，以避免在 VM 需要重定位到另一台主机时丢失数据。 不过，由于容器不会保留本地状态，因此此行为在提供一些缺点的同时提供了有限的价值，其中包括速度较慢的节点预配和更高的读/写延迟。
+默认情况下，Azure 会自动将虚拟机的操作系统磁盘复制到 Azure 存储，以避免在 VM 需要重定位到另一台主机时丢失数据。 不过，由于容器不会保留本地状态，因此此行为在提供一些缺点的同时提供了有限的价值，其中包括速度较慢的节点预配和更高的读/写延迟。
 
 与此相反，临时 OS 磁盘只存储在主机上，就像临时磁盘一样。 这提供了更低的读/写延迟，还提供了更快的节点缩放和群集升级。
 
 与临时磁盘类似，临时 OS 磁盘包含在虚拟机的价格中，因此不会产生额外的存储成本。
 
-注册 `EnableEphemeralOSDiskPreview` 功能：
+> [!IMPORTANT]
+>如果用户未明确请求操作系统的托管磁盘，则 AKS 会默认为特定 nodepool 配置的暂时操作系统。
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+使用暂时 OS 时，OS 磁盘必须适合 VM 缓存。 [Azure 文档中的 Azure 文档](../virtual-machines/dv3-dsv3-series.md)中提供了 VM 缓存的大小，位于 IO 吞吐量 ( "cache Size in GiB" ) 。
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
+使用 AKS 默认 VM 大小 Standard_DS2_v2，默认 OS 磁盘大小为100GB 作为示例，此 VM 大小支持暂时操作系统，但只有缓存大小的86GB。 如果用户未显式指定，则此配置将默认为托管磁盘。 如果用户显式请求了暂时的操作系统，则会收到验证错误。
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+如果用户请求与 60GB OS 磁盘相同的 Standard_DS2_v2，则此配置将默认为临时操作系统：请求的60GB 大小小于最大缓存大小86GB。
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+将 Standard_D8s_v3 与 100GB OS 磁盘结合使用，此 VM 大小支持暂时操作系统，并200GB 缓存空间。 如果用户未指定 OS 磁盘类型，默认情况下，nodepool 将收到暂时的操作系统。 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+临时操作系统至少需要2.15.0 版本的 Azure CLI。
 
-临时操作系统至少需要0.4.63 版本的 aks CLI 扩展。
-
-若要安装 aks CLI 扩展，请使用以下 Azure CLI 命令：
-
-```azurecli
-az extension add --name aks-preview
-```
-
-若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新群集上使用临时 OS (预览) 
+### <a name="use-ephemeral-os-on-new-clusters"></a>在新群集上使用暂时 OS
 
 将群集配置为在创建群集时使用临时 OS 磁盘。 使用 " `--node-osdisk-type` 标志" 将 "暂时操作系统" 设置为新群集的 os 磁盘类型。
 
@@ -285,9 +266,9 @@ az extension update --name aks-preview
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-如果要使用网络连接的 OS 磁盘创建常规群集，可以通过省略自定义标记或指定来创建常规群集 `--node-osdisk-type` `--node-osdisk-type=Managed` 。 还可以选择添加更多的临时 OS 节点池，如下所示。
+如果要使用网络连接的 OS 磁盘创建常规群集，可以通过指定来执行此操作 `--node-osdisk-type=Managed` 。 还可以选择添加更多的临时 OS 节点池，如下所示。
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在现有群集上使用暂时 OS (预览) 
+### <a name="use-ephemeral-os-on-existing-clusters"></a>在现有群集上使用暂时 OS
 配置一个新的节点池以使用临时 OS 磁盘。 使用 `--node-osdisk-type` 标志设置作为该节点池的 os 磁盘类型。
 
 ```azurecli
@@ -297,7 +278,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 > [!IMPORTANT]
 > 通过暂时操作系统，可将 VM 和实例映像部署到 VM 缓存大小。 在 AKS 情况下，默认节点 OS 磁盘配置使用100GiB，这意味着需要的 VM 大小的缓存大于 100 GiB。 默认 Standard_DS2_v2 的缓存大小为 86 GiB，这不太大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 还可以通过使用降低 OS 磁盘的默认大小 `--node-osdisk-size` 。 AKS 图像的最小大小为30GiB。 
 
-如果要创建包含网络附加 OS 磁盘的节点池，可以通过省略自定义标记来执行此操作 `--node-osdisk-type` 。
+如果要使用网络连接的 OS 磁盘创建节点池，则可以通过指定来创建节点池 `--node-osdisk-type Managed` 。
 
 ## <a name="custom-resource-group-name"></a>自定义资源组名称
 

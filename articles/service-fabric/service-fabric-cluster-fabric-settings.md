@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648219"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542637"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -122,8 +122,8 @@ ms.locfileid: "94648219"
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的是查看已针对群集执行的活动，包括请求的发起者。 请注意，会尽最大努力进行日志记录，但可能会发生跟踪丢失的情况。 不记录使用“用户”身份验证的 HTTP 请求。 |
 |CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据来帮助规划未来的工作并确定问题区域。 遥测不会记录任何个人数据和请求正文。 遥测会捕获所有 HTTP 请求，除非另行配置。 |
-|ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
-|ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
+|ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
+|ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | 静态 |启用/禁用将平台事件写入磁盘的操作 |
@@ -131,7 +131,7 @@ ms.locfileid: "94648219"
 |FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获失败的请求。 这有助于减少为遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为 50 | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获随机百分比的请求。 这有助于减少为遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
-|ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |
+|ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **参数** | **允许的值** |**升级策略**| **指导或简短说明** |
@@ -141,6 +141,7 @@ ms.locfileid: "94648219"
 |IsEnabled|bool，默认值为 FALSE|静态|启用/禁用 DnsService。 默认已禁用 DnsService，需要设置此配置来启用它。 |
 |PartitionPrefix|string，默认值为“--”|静态|控制对分区服务的 DNS 查询中的分区前缀字符串值。 值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>不能为空字符串。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。|
 |PartitionSuffix|string，默认值为“”|静态|控制对分区服务的 DNS 查询中的分区后缀字符串值。值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。 |
+|RetryTransientFabricErrors|Bool，默认值为 true|静态|此设置控制从 DnsService 调用 Service Fabric Api 时的重试功能。 启用后，如果发生暂时性错误，它将重试最多3次。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -170,7 +171,7 @@ ms.locfileid: "94648219"
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Int，默认值为 10 |动态|这是系统在放弃前重试失败的激活的最大计数。 |
-|ActivationMaxRetryInterval |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间范围。 激活的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（ActivationMaxRetryInterval；连续失败计数 * ActivationRetryBackoffInterval）（即取括号中的最小值）。 |
+|ActivationMaxRetryInterval |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间跨度。 激活的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（ActivationMaxRetryInterval；连续失败计数 * ActivationRetryBackoffInterval）（即取括号中的最小值）。 |
 |ActivationRetryBackoffInterval |以秒为单位的时间，默认值为 5 |动态|指定以秒为单位的时间范围。 每次激活失败的回退时间间隔；每次连续激活失败后，系统将重试激活最多 MaxActivationFailureCount 次。 每次尝试的重试间隔是连续激活失败与激活退让间隔的积。 |
 |EnableRestartManagement |Bool，默认值为 false |动态|这会启用服务器重启。 |
 |EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |动态|这会通过 Windows 更新启用 Fabric 自动更新。 |
@@ -423,7 +424,7 @@ ms.locfileid: "94648219"
 |AzureStorageMaxConnections | Int，默认值为 5000 |动态|最大并发 Azure 存储连接数。 |
 |AzureStorageMaxWorkerThreads | Int，默认值为 25 |动态|最大并行工作线程数。 |
 |AzureStorageOperationTimeout | 以秒为单位的时间，默认值为 6000 |动态|指定以秒为单位的时间范围。 完成 xstore 操作的超时时间。 |
-|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|成功预配时启用或禁用应用程序包的自动清理。<br/> *最佳做法是使用 `true` 。*
+|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 true |动态|成功预配时启用或禁用应用程序包的自动清理。
 |CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|如果启用，此配置允许自动取消注册未使用的应用程序类型版本，这会跳过最近三个未使用的版本，然后释放图像存储所占用的磁盘空间。 将在成功预配结束时对该特定应用类型触发自动清理；对于所有应用程序类型，自动清理也将每天定期运行一次。 要跳过的未使用的版本数量可通过参数“MaxUnusedAppTypeVersionsToKeep”进行配置。 <br/> *最佳做法是使用 `true` 。*
 |DisableChecksumValidation | Bool，默认值为 false |静态| 通过此配置可在应用程序预配过程中启用或禁用校验和验证。 |
 |DisableServerSideCopy | Bool，默认值为 false |静态|此配置可以在应用程序预配过程中启用或禁用 ImageStore 上应用程序包的服务器端副本。 |
@@ -505,7 +506,7 @@ ms.locfileid: "94648219"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|计数器 |字符串 | 动态 |要收集的性能计数器的逗号分隔列表。 |
+|计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
 |IsEnabled |Bool，默认值为 true | 动态 |标志指示是否启用本地节点上的性能计数器集合。 |
 |MaxCounterBinaryFileSizeInMB |Int，默认值为 1 | 动态 |每个性能计数器二进制文件的最大大小（以 MB 为单位）。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int，默认值为 10 | 动态 |在其之后创建新的性能计数器二进制文件的最大间隔（以秒为单位）。 |
@@ -520,6 +521,7 @@ ms.locfileid: "94648219"
 |AutoDetectAvailableResources|bool，默认值为 TRUE|静态|此配置会触发对节点上可用资源（CPU 和内存）的自动检测，将此配置设置为 true 时，如果用户已指定错误的节点容量或者根本未定义它们，我们会读取实际容量并更正它们，将此配置设置为 false 时 - 我们会跟踪用户已指定错误的节点容量这一警告；但不会纠正它们；这意味着用户希望将容量指定为 > 节点实际拥有的容量，或者如果未指定容量；它会认为是不限的容量 |
 |BalancingDelayAfterNewNode | 以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 添加新节点后，不在此时间段内启动平衡活动。 |
 |BalancingDelayAfterNodeDown | 以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 发生节点关闭事件后，不在此时间段内启动平衡活动。 |
+|BlockNodeInUpgradeConstraintPriority | Int，默认值为 0 |动态|确定容量约束的优先级：0：硬;1：软;负值：忽略  |
 |CapacityConstraintPriority | Int，默认值为 0 | 动态|确定容量约束的优先级：0：硬；1：软；负值：忽略。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int，默认值为 20 | 动态|定义在进行诊断并发出运行状况警告之前，删除 ResourceBalancer 发出的移动的连续次数。 负值：在此情况下没有发出任何警告。 |
 |ConstraintFixPartialDelayAfterNewNode | 以秒为单位的时间，默认值为 120 |动态| 指定以秒为单位的时间范围。 添加新节点后，不在此时间段内修复 FaultDomain 和 UpgradeDomain 约束冲突。 |
@@ -685,7 +687,7 @@ ms.locfileid: "94648219"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -838,10 +840,10 @@ ms.locfileid: "94648219"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string，默认值为“”| 静态 |设置容器网络时要使用的网络名称。|
 |ContainerNetworkSetup|bool，Linux 的默认值为 FALSE，Windows 的默认值为 TRUE| 静态 |是否设置容器网络。|
-|FabricDataRoot |字符串 | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
-|FabricLogRoot |字符串 | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
+|FabricDataRoot |String | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
+|FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
-|ServiceRunAsAccountName |字符串 | 不允许 |运行 Fabric 主机服务的帐户名称。 |
+|ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
 |SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|NotAllowed|是否在重启时跳过容器网络重置。|
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 
@@ -855,7 +857,7 @@ ms.locfileid: "94648219"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|级别 |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
+|Level |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 

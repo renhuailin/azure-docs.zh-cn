@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 001721ac0fdbbaaf808b962a79353369ab1dddb5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521078"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521948"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>适用于虚拟机的 Azure Automanage 最佳实践
 
@@ -33,6 +33,7 @@ ms.locfileid: "92521078"
 |Microsoft 反恶意软件    |适用于 Azure 的 Microsoft 反恶意软件是一种免费实时保护，可帮助识别并删除病毒、间谍软件和其他恶意软件。 当已知恶意软件或不需要的软件试图在 Azure 系统上安装自己或运行时，该服务会生成警报。 了解[详细信息](../security/fundamentals/antimalware.md)。 |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |是    |
 |更新管理    |可以使用 Azure 自动化中的更新管理来管理虚拟机的操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。 了解[详细信息](../automation/update-management/update-mgmt-overview.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
 |更改跟踪 & 清单    |“更改跟踪和库存”结合了更改跟踪和库存功能，可跟踪虚拟机和服务器基础结构的更改。 该服务支持对环境中的服务、守护程序软件、注册表和文件进行更改跟踪，以帮助你诊断不需要的更改并引发警报。 库存支持可让你查询来宾中的资源，以洞察已安装的应用程序和其他配置项。  了解[详细信息](../automation/change-tracking/overview.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
+|Azure 来宾配置    | 来宾配置策略用于监视配置并报告计算机的符合性。 Automanage 服务将使用来宾配置扩展安装 [Windows 安全基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) 。 了解[详细信息](../governance/policy/concepts/guest-configuration.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
 |Azure 自动化帐户    |Azure 自动化支持在基础结构和应用程序的整个生命周期内进行管理。 了解[详细信息](../automation/automation-intro.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
 |Log Analytics 工作区    |Azure Monitor 将日志数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 了解[详细信息](../azure-monitor/platform/design-logs-deployment.md)。    |Azure VM 最佳做法-生产、Azure VM 最佳做法-开发/测试    |否    |
 

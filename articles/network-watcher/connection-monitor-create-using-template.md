@@ -1,5 +1,5 @@
 ---
-title: 创建连接监视器 (预览) ARM 模板
+title: 创建连接监视器-ARM 模板
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 ARMClient 创建连接监视器。
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: e1a0ecd85d07aa4fdf5482c5104c17eb4a068688
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c3b228d2652d5f7dcf7c6596ee5425b3f5f9a4d8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984220"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543997"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>使用 ARM 模板创建连接监视器
 
 了解如何使用 ARMClient 创建连接监视器来监视资源之间的通信。 它支持混合部署和 Azure 云部署。
 
-> [!IMPORTANT]
-> 连接监视器当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>准备阶段 
 

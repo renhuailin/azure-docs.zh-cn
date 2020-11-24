@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628877"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538371"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -34,17 +34,19 @@ ms.locfileid: "94628877"
 ## <a name="access-your-account-settings"></a>访问你的帐户设置
 
 如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://partner.microsoft.com/dashboard/account/management)，以便：
-- 检查公司的帐户验证状态
-- 确认 Symantec ID、卖家 ID、Microsoft 合作伙伴网络 (MPN) ID、发布者 ID 和联系人信息，包括公司审批者和卖家联系人
-- 为将在合作伙伴中心使用你的业务帐户的任何人创建用户帐户
 
-### <a name="open-developer-settings"></a>打开开发人员设置
+- 检查公司的帐户验证状态。
+- 确认 Symantec ID、卖方 ID Microsoft 合作伙伴网络 (MPN) ID、发布者 ID 和联系人信息，包括公司审批者和卖方联系人。
+- 为将在合作伙伴中心使用你的业务帐户的任何用户创建用户帐户。
 
-在合作伙伴中心的 " [商用 marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，选择右上角的 " **设置** (齿轮" 图标) ，然后选择 " **开发人员设置** "。
+### <a name="open-account-settings"></a>打开帐户设置
+
+在合作伙伴中心的 " [商用 marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，选择右上角的 " **设置** (齿轮" 图标) ，然后选择 " **帐户设置**"。
 
 ![合作伙伴中心的“帐户设置”菜单](./media/dashboard-developer-settings.png)
 
 在 " **帐户设置** " 中，可以查看：
+
 - 帐户详细信息：帐户类型和帐户状态
 - **发布者** id：卖方 ID、用户 Id、发布者 id、Azure AD 租户等
 - 联系人信息：发布者显示名称、卖家联系人姓名、电子邮件、电话和地址
@@ -164,7 +166,7 @@ ms.locfileid: "94628877"
 1. 转到“用户”（在“帐户设置”下），然后选择“添加用户”  。
 2. 从显示的列表中选择一个或多个用户。 可以使用搜索框搜索特定用户。
 *如果选择多个用户添加到合作伙伴中心帐户，则必须为它们分配相同的角色或自定义权限集。 若要添加具有不同角色/权限的多个用户，请对每个角色或自定义权限集重复这些步骤。
-3. 选择 "用户" 后，选择 " **添加** "。
+3. 选择 "用户" 后，选择 " **添加**"。
 4. 在“角色”部分中，为所选用户指定角色或自定义权限。
 5. 选择“保存”。
 
@@ -221,7 +223,7 @@ ms.locfileid: "94628877"
 1. 在“用户”页（在“帐户设置”下）上，选择“添加组”  。
 2. 从显示的列表中选择一个或多个组。 可以使用搜索框搜索特定组。
 *如果选择多个组添加到合作伙伴中心帐户，则必须为它们分配相同的角色或自定义权限集。 若要添加具有不同角色/权限的多个组，请对每个角色或自定义权限集重复这些步骤。
-3. 选择完组后，选择 " **添加** "。
+3. 选择完组后，选择 " **添加**"。
 4. 在“角色”部分中，为所选组指定角色或自定义权限。 无论与个人帐户关联的角色和权限如何，组的所有成员都将能够访问具有应用于组的权限的合作伙伴中心帐户。
 5. 选择“保存”。
 
@@ -255,7 +257,7 @@ ms.locfileid: "94628877"
 
 1. 在“用户”页（在“帐户设置”下）上，选择“添加 Azure AD 应用程序”  。
 2. 从显示的列表中选择一个或多个 Azure AD 应用程序。 可以使用搜索框搜索特定 Azure AD 应用程序。 *如果选择多个 Azure AD 应用程序添加到合作伙伴中心帐户，则必须为它们分配相同的角色或自定义权限集。 若要添加具有不同角色/权限的多个 Azure AD 应用程序，请对每个角色或自定义权限集重复这些步骤。
-3. 选择 Azure AD 应用程序后，选择 " **添加** " "选择"。
+3. 选择 Azure AD 应用程序后，选择 " **添加**" "选择"。
 4. 在“角色”部分中，为所选 Azure AD 应用程序指定角色或自定义权限。
 5. 选择“保存”。
 
@@ -326,7 +328,7 @@ ms.locfileid: "94628877"
 
 1. 在“租户”页（在“帐户设置”下）上，选择“创建新的 Azure AD 租户”  。
 2. 为新的 Azure AD 输入目录信息：
-    - **域名** ：将用于 Azure AD 域的唯一名称，以及“.onmicrosoft.com”。 例如，如果输入了“example”，则 Azure AD 域为“example.onmicrosoft.com”。
+    - **域名**：将用于 Azure AD 域的唯一名称，以及“.onmicrosoft.com”。 例如，如果输入了“example”，则 Azure AD 域为“example.onmicrosoft.com”。
     - 联系人电子邮件：电子邮件地址，我们可以在必要时就帐户相关事宜与你联系。
     - 全局管理员用户帐户信息：要用于新的全局管理员帐户的名字、姓氏、用户名和密码。
 3. 选择“创建”以确认新域和帐户信息。
@@ -345,6 +347,6 @@ ms.locfileid: "94628877"
 
 ## <a name="agreements"></a>协议
 
-使用 " **帐户设置** ") 的 "合作伙伴中心" (的 " **协议** " 部分，您可以查看已授权发布协议的列表。 这些协议根据名称和版本号列出，包括接受协议的日期和接受协议的用户的名称。
+使用 "**帐户设置**") 的 "合作伙伴中心" (的 "**协议**" 部分，您可以查看已授权发布协议的列表。 这些协议根据名称和版本号列出，包括接受协议的日期和接受协议的用户的名称。
 
 如果有需要注意的协议更新，此页顶部可能会显示所需的操作。 若要接受更新的协议，请先阅读链接的协议版本，然后选择“接受协议”。

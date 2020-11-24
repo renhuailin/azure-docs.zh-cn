@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 573d52b836aef36063dd288bf5a5016b98d220ef
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324586"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524124"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure SQL 资源
 
@@ -27,16 +27,16 @@ ms.locfileid: "93324586"
 **Azure SQL 数据库超大规模** | 不支持 | 无法将 Azure SQL 超大规模服务层中的数据库移动到资源移动器。
 **区域冗余** | 支持 |  支持的移动选项：<br/><br/> -在支持区域冗余的区域之间。<br/><br/> -在不支持区域冗余的区域之间。<br/><br/> -在支持区域冗余的区域与不支持区域冗余的区域之间。<br/><br/> -在不支持区域冗余的区域之间，不支持区域冗余。 
 **数据同步** | 中心/同步数据库：不支持<br/><br/> 同步成员：支持。 | 如果移动了同步成员，则需要设置到新目标数据库的数据同步。
-**现有异地复制** | 支持 | 现有异地副本将重新映射到目标区域中的新主副本。<br/><br/> 必须在移动后初始化种子设定。 [了解详细信息](/azure/sql-database/sql-database-active-geo-replication-portal)
+**现有异地复制** | 支持 | 现有异地副本将重新映射到目标区域中的新主副本。<br/><br/> 必须在移动后初始化种子设定。 [了解详细信息](../azure-sql/database/active-geo-replication-configure-portal.md)
 **透明数据加密 (TDE) 与创建自己的密钥 (BYOK)** | 支持 | [了解](../key-vault/general/move-region.md) 有关跨区域移动密钥保管库的详细信息。
 **具有服务托管密钥的 TDE** | 。 |  [了解](../key-vault/general/move-region.md) 有关跨区域移动密钥保管库的详细信息。
-**动态数据掩码规则** | 。 | 在移动过程中，规则将自动复制到目标区域。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started-portal)。
-**高级数据安全性** | 不支持。 | 解决方法：在目标区域中的 SQL Server 级别设置。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
-**防火墙规则** | 不支持。 | 解决方法：设置目标区域中 SQL Server 的防火墙规则。 数据库级防火墙规则从源服务器复制到目标服务器。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-server-level-firewall-rule)。
-**审核策略** | 不支持。 | 移动之后，策略将重置为默认值。 [了解](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) 如何重置。
-**备份保留** | 。 | 源数据库的备份保留策略将转移到目标数据库。 [了解](/azure/sql-database/sql-database-long-term-backup-retention-configure) 如何在移动之后修改设置。
-**自动优化** | 不支持。 | 解决方法：移动后设置自动调整设置。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable)。
-**数据库警报** | 不支持。 | 解决方法：在移动后设置警报。 [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal)。
+**动态数据掩码规则** | 。 | 在移动过程中，规则将自动复制到目标区域。 [了解详细信息](../azure-sql/database/dynamic-data-masking-configure-portal.md)。
+**高级数据安全性** | 不支持。 | 解决方法：在目标区域中的 SQL Server 级别设置。 [了解详细信息](../azure-sql/database/azure-defender-for-sql.md)。
+**防火墙规则** | 不支持。 | 解决方法：设置目标区域中 SQL Server 的防火墙规则。 数据库级防火墙规则从源服务器复制到目标服务器。 [了解详细信息](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)。
+**审核策略** | 不支持。 | 移动之后，策略将重置为默认值。 [了解](../azure-sql/database/auditing-overview.md) 如何重置。
+**备份保留** | 。 | 源数据库的备份保留策略将转移到目标数据库。 [了解](../azure-sql/database/long-term-backup-retention-configure.md) 如何在移动之后修改设置。
+**自动优化** | 不支持。 | 解决方法：移动后设置自动调整设置。 [了解详细信息](../azure-sql/database/automatic-tuning-enable.md)。
+**数据库警报** | 不支持。 | 解决方法：在移动后设置警报。 [了解详细信息](../azure-sql/database/alerts-insights-configure-portal.md)。
 **Azure SQL Server stretch database** | 不支持 | 不能通过资源移动器移动 SQL server stretch database。
 **Azure Synapse Analytics** | 不支持 | 无法将 Synapse Analytics (以前的 SQL 数据仓库) 迁移到资源移动器。
 ## <a name="next-steps"></a>后续步骤

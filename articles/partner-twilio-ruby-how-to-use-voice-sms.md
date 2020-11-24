@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170694"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542671"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅 [后续步骤](#NextSteps) 部分。
@@ -25,7 +25,7 @@ ms.locfileid: "86170694"
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什么是 Twilio？
 Twilio 是一种电话 Web 服务 API，可方便用户利用现有 Web 语言和技能生成语音和短信应用程序。 Twilio 属于第三方服务（而非 Azure 功能和 Microsoft 产品）。
 
-利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端**使用现有 Internet 连接（包括移动连接）启用语音通信。
+利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端** 使用现有 Internet 连接（包括移动连接）启用语音通信。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定价和特惠套餐
 [Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特惠套餐][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册此优惠或获取详细信息，请访问 [https://ahoy.twilio.com/azure][special_offer] 。  
@@ -48,27 +48,27 @@ TwiML 是一组基于 XML 的指令，可指示 Twilio 如何处理呼叫或短�
 所有 TwiML 文档都将 `<Response>` 作为其根元素。 可以在根元素中使用 Twilio 谓词定义应用程序的行为。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 谓词
-Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。 
+Twilio 谓词是指示 Twilio **执行** 哪些操作的 XML 标记。 例如， **&lt; 口述 &gt;** 谓词指示 Twilio 在调用时呼叫时传递一条消息。 
 
 下面是 Twilio 谓词的列表。
 
-* ** &lt; 拨 &gt; **：将呼叫方连接到其他电话。
-* ** &lt; 收集 &gt; **：收集在电话键盘上输入的数字。
-* ** &lt; 挂断 &gt; **：结束呼叫。
-* ** &lt; Play &gt; **：播放音频文件。
-* ** &lt; 暂停 &gt; **：在指定的秒数后自动等待。
-* ** &lt; 记录 &gt; **：记录调用方的声音并返回包含该记录的文件的 URL。
-* ** &lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
-* ** &lt; 拒绝 &gt; **：拒绝对 Twilio 号码的传入呼叫而不向你计费
-* ** &lt; 例如 &gt; **：将文本转换为在调用时发出的语音。
-* ** &lt; Sms &gt; **：发送短信。
+* **&lt; 拨 &gt;**：将呼叫方连接到其他电话。
+* **&lt; 收集 &gt;**：收集在电话键盘上输入的数字。
+* **&lt; 挂断 &gt;**：结束呼叫。
+* **&lt; Play &gt;**：播放音频文件。
+* **&lt; 暂停 &gt;**：在指定的秒数后自动等待。
+* **&lt; 记录 &gt;**：记录调用方的声音并返回包含该记录的文件的 URL。
+* **&lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
+* **&lt; 拒绝 &gt;**：拒绝对 Twilio 号码的传入呼叫而不向你计费
+* **&lt; 例如 &gt;**：将文本转换为在调用时发出的语音。
+* **&lt; Sms &gt;**：发送短信。
 
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到适用于应用程序的一个免费电话号码。 还会收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][twilio_account]（可能为英文页面）上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）**** 的字段中。****
+注册 Twilio 帐户时，将收到适用于应用程序的一个免费电话号码。 还会收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][twilio_account]（可能为英文页面）上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）的字段中。
 
 ### <a name="verify-phone-numbers"></a><a id="VerifyPhoneNumbers"></a>验证电话号码
 除了 Twilio 提供的号码外，还可以验证自己控制用于应用程序的号码（即手机号码或住宅电话号码）。 
@@ -118,7 +118,7 @@ require 'twilio-ruby'
 现在已经可以在 Web 应用程序中使用用于 Ruby 的 Twilio 帮助程序库。
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>如何拨打传出呼叫
-下面演示如何发起传出呼叫。 主要概念包括使用用于 Ruby 的 Twilio 帮助程序调用 REST API 以及呈现 TwiML。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。************
+下面演示如何发起传出呼叫。 主要概念包括使用用于 Ruby 的 Twilio 帮助程序调用 REST API 以及呈现 TwiML。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
 将此函数添加到 `web.md`：
 
@@ -157,7 +157,7 @@ end
 第三个参数 (`url`) 是 Twilio 请求的 URL，以获取有关在连接呼叫后要执行的操作的指令。 在本例中，我们设置的 URL (`http://yourdomain.cloudapp.net`) 会返回一个简单 TwiML 文档，并使用 `<Say>` 谓词进行一些文本到语音转换，以便向接收呼叫的人员说出“Hello Monkey”。
 
 ## <a name="how-to-receive-an-sms-message"></a><a id="howto_receive_sms"></a>如何：接收短信
-在前面的示例中，我们发起了一个**传出**电话呼叫。 这一次，我们使用在注册过程中 Twilio 提供的电话号码来处理**传入**的 SMS 消息。
+在前面的示例中，我们发起了一个 **传出** 电话呼叫。 这一次，我们使用在注册过程中 Twilio 提供的电话号码来处理 **传入** 的 SMS 消息。
 
 首先，登录到 [Twilio 仪表板][twilio_account]（可能为英文页面）。 单击顶部导航栏中的“Numbers”（号码），然后单击提供给 Twilio 号码。 会看到两个可以配置的 URL。 一个语音请求 URL 和一个短信请求 URL。 每当有人拨打号码或向号码发送短信时，Twilio 就会调用这些 URL。 这些 URL 也称为“Web 挂钩”。
 
@@ -206,4 +206,4 @@ end
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app
+[azure_vm_setup]: /previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app

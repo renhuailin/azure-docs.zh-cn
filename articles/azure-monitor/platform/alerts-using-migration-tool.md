@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358655"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536024"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自愿性迁移工具迁移经典警报规则
 
@@ -43,28 +43,28 @@ ms.locfileid: "91358655"
 
 若要在 Azure 门户中触发经典警报规则的迁移，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择“监视”****。
+1. 在 [Azure 门户](https://portal.azure.com)中选择“监视”。
 
-1. 选择“警报”，然后选择“管理警报规则”或“查看经典警报”。************
+1. 选择“警报”，然后选择“管理警报规则”或“查看经典警报”。
 
-1. 选择“迁移到新规则”转到迁移登陆页。**** 此页显示所有订阅的列表及其迁移状态：
+1. 选择“迁移到新规则”转到迁移登陆页。 此页显示所有订阅的列表及其迁移状态：
 
     ![屏幕截图显示 "迁移警报规则" 页。](media/alerts-migration/migration-landing.png "迁移规则")
 
-    可以使用该工具迁移的所有订阅已标记为“准备好迁移”。****
+    可以使用该工具迁移的所有订阅已标记为“准备好迁移”。
 
     > [!NOTE]
     > 迁移工具将分阶段推出到使用经典警报规则的所有订阅。 在推出的早期阶段，可能会看到某些订阅标记为未准备好迁移。
 
-1. 选择一个或多个订阅，然后选择“预览迁移”。****
+1. 选择一个或多个订阅，然后选择“预览迁移”。
 
-    生成的页将显示每次要为一个订阅迁移的经典警报规则的详细信息。 还可以选择“下载此订阅的迁移详细信息”，以获取 CSV 格式的详细信息。****
+    生成的页将显示每次要为一个订阅迁移的经典警报规则的详细信息。 还可以选择“下载此订阅的迁移详细信息”，以获取 CSV 格式的详细信息。
 
     ![屏幕截图显示 "迁移警报规则" 页，其中包含用于下载此订阅的迁移详细信息的链接，你可以指定用于迁移通知的电子邮件。](media/alerts-migration/migration-preview.png "预览迁移")
 
 1. 指定用于接收迁移状态通知的一个或多个电子邮件地址。 迁移完成或者需要你采取任何措施时，你会收到电子邮件。
 
-1. 选择“开始迁移”。**** 阅读确认对话框中显示的信息，并确认已准备好开始迁移。
+1. 选择“开始迁移”。 阅读确认对话框中显示的信息，并确认已准备好开始迁移。
 
     > [!IMPORTANT]
     > 启动订阅迁移后，无法编辑或创建该订阅的经典警报规则。 这种限制可以确保在迁移到新规则期间，不会丢失对经典警报规则所做的任何更改。 尽管无法更改经典警报规则，但在完成迁移之前，这些规则仍会继续运行并提供警报。 完成订阅的迁移后，不再可以使用经典警报规则。
@@ -73,17 +73,17 @@ ms.locfileid: "91358655"
 
 1. 迁移完成或者需要你采取措施时，前面提供的地址会收到电子邮件。 也可以在门户中的迁移登陆页上定期检查状态。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>我的订阅为何列为未准备好迁移？
 
-迁移工具分阶段向客户推出。 在早期阶段，你的大部分或所有订阅可能标记为“尚未准备好迁移”。**** 
+迁移工具分阶段向客户推出。 在早期阶段，你的大部分或所有订阅可能标记为“尚未准备好迁移”。 
 
 当某个订阅已准备好迁移时，订阅所有者会收到一封电子邮件，指出该工具可用。 请密切关注此邮件。
 
 ### <a name="who-can-trigger-the-migration"></a>谁可以触发迁移？
 
-在订阅级别拥有“监视参与者”角色的用户可以触发迁移。 [详细了解迁移过程的基于角色的访问控制](alerts-understand-migration.md#who-can-trigger-the-migration)。
+在订阅级别拥有“监视参与者”角色的用户可以触发迁移。 [详细了解 Azure 基于角色的访问控制的迁移过程](alerts-understand-migration.md#who-can-trigger-the-migration)。
 
 ### <a name="how-long-will-the-migration-take"></a>迁移需要多长时间？
 
@@ -95,5 +95,5 @@ ms.locfileid: "91358655"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [迁移准备](alerts-prepare-migration.md)
+- [准备迁移](alerts-prepare-migration.md)
 - [了解迁移工具的工作原理](alerts-understand-migration.md)

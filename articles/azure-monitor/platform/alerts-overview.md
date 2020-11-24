@@ -4,12 +4,12 @@ description: Azure 中的警报概述。 警报、经典警报和警报界面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108790"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536041"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -17,7 +17,7 @@ ms.locfileid: "92108790"
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 
-当你的基础结构或应用程序使用 Azure Monitor 中的监视数据发现问题时，警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
+在使用 Azure Monitor 中的监视数据发现基础结构或应用程序方面的问题时，警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
 ## <a name="overview"></a>概述
 
@@ -38,19 +38,19 @@ ms.locfileid: "92108790"
 
 对于某些资源（例如虚拟机）来说，可以将多个资源指定为警报规则的目标。
 
-由目标资源发出的**信号**。 信号可以是以下类型：指标、活动日志、Application Insights 和日志。
+信号 - 由目标资源发出。 信号可以是以下类型：指标、活动日志、Application Insights 和日志。
 
-**条件** -应用于目标资源的信号和逻辑的组合。 示例: 
+条件 - 应用于目标资源的信号和逻辑的组合。 示例: 
 
 - CPU 百分比 > 70%
 - 服务器响应时间 > 4 毫秒 
 - 日志查询的结果计数 > 100
 
-**警报名称** -由用户配置的警报规则的特定名称。
+警报名称 - 用户配置的预警规则的具体名称。
 
-**警报描述** -用户配置的警报规则的说明。
+警报说明 - 用户配置的预警规则的说明。
 
-**严重性** -满足警报规则中指定的条件后警报的严重性。 严重性的范围为 0 到 4。
+严重性 - 预警规则中指定的条件符合后确定的警报严重性。 严重性的范围为 0 到 4。
 
 - 严重性为 0 = 严重
 - 严重性为 1 = 错误
@@ -78,18 +78,18 @@ ms.locfileid: "92108790"
 
 | 状态 | 说明 |
 |:---|:---|
-| 新建 | 已检测到该问题，但尚未查看。 |
+| 新建 | 检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个警报后，可通过将其更改为另一种状态来重新打开它。 |
 
-*警报状态*不同于且独立于*监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发时，警报的监视条件设置为 "已 *激发"*; 当导致触发警报的基础条件清除时，监视条件设置为 *"已解决"*。 
+*警报状态* 不同于且独立于 *监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当触发警报时，警报的监视条件设置为“已触发”，当导致警报触发的基础条件解除后，监视条件会设置为“已解决” 。 
 
 在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
 ## <a name="alerts-experience"></a>警报体验 
 默认的“警报”页提供特定时间范围内创建的警报的摘要。 该页显示每种严重性的警报总数，列中会标识处于每种状态的、具有每种严重性的警报总数。 选择任一严重性可打开按该严重性筛选的“[所有警报](#all-alerts-page)”页。
 
-相反，可以 [使用 REST api 以编程方式枚举订阅上生成的警报实例](#manage-your-alert-instances-programmatically)。
+你可以转而[使用 REST API 以编程方式枚举在订阅上生成的警报实例](#manage-your-alert-instances-programmatically)。
 
 > [!NOTE]
    >  只能访问过去 30 天内生成的警报。
@@ -122,7 +122,7 @@ ms.locfileid: "92108790"
 
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
-您可以通过一致的方式创作警报规则，无论监视服务或信号类型是什么。
+可以通过一致的方式创作预警规则，而不管监视服务或信号类型是什么。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
 
@@ -132,7 +132,7 @@ ms.locfileid: "92108790"
 1. 从目标的可用信号中选择信号。
 1. 指定要应用到信号中数据的逻辑。
 
-这个创作过程经过了简化，用户在选择 Azure 资源之前，不再需要知道受支持的监视源或信号。 可用信号列表会根据你选择的目标资源自动筛选。 此外，还基于该目标，指导您自动定义警报规则的逻辑。  
+这个创作过程经过了简化，用户在选择 Azure 资源之前，不再需要知道受支持的监视源或信号。 可用信号列表会根据你选择的目标资源自动筛选。 另外，还将根据该目标引导你自动定义预警规则的逻辑。  
 
 可以在[使用 Azure Monitor 创建、查看和管理警报](./alerts-metric.md)中详细了解如何创建警报规则。
 
@@ -171,19 +171,19 @@ ms.locfileid: "92108790"
 |:---|:---|
 | 摘要 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
-| 诊断 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量。 在过去30天内创建的同一智能组中包含其他警报，警报列表页中的任何时间筛选器都是如此。 选择某个警报以查看其详细信息。 |
+| 诊断 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量。 包括同一智能组中在过去 30 天内创建的其他警报，无论警报列表页面中的时间筛选器是什么。 选择某个警报以查看其详细信息。 |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警报实例的基于角色的访问控制 (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>适用于 azure RBAC)  (警报实例的 azure 基于角色的访问控制
 
 使用和管理警报实例需要用户具有[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)的 Azure 内置角色。 在任何 Azure 资源管理器范围（从订阅级别到资源级别的粒度分配）内都支持这些角色。 例如，如果用户只具有虚拟机 `ContosoVM1` 的“监视参与者”访问权限，则该用户只能使用和管理 `ContosoVM1` 上生成的警报。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以编程方式管理警报实例
 
-你可能希望以编程方式查询针对订阅生成的警报。 查询可能是在 Azure 门户之外创建自定义视图，也可能是为了分析警报来确定模式和趋势。
+你可能希望以编程方式查询针对订阅生成的警报。 查询可以是在 Azure 门户之外创建自定义视图，也可以是分析警报以确定模式和趋势。
 
 可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 或 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和[用于资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 查询针对订阅生成的警报。
 
-用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理多个订阅中生成的警报，则建议使用资源关系图。 
+用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用 Resource Graph。 
 
 以下对 Resource Graph REST API 的示例请求返回一个订阅中的警报计数：
 

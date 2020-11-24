@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832426"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523274"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a> (预览) ，管理和查找包含 Blob 索引标记的 Azure Blob 数据
 
@@ -51,7 +51,7 @@ Blob 索引标记允许：
 Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键-值属性。 你可以使用 [Put blob](/rest/api/storageservices/put-blob)、 [put 块列表](/rest/api/storageservices/put-block-list)或 [复制 Blob](/rest/api/storageservices/copy-blob) 操作和可选标头在上载过程中指定索引标记 `x-ms-tags` 。 如果你的存储帐户中已有 blob，请调用 [Set Blob 标记，将](/rest/api/storageservices/set-blob-tags) 带格式的 XML 文档传递到请求正文中的索引标记。
 
 > [!IMPORTANT]
-> 设置 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权访问 blob 的标记， (`t` SAS 权限) 。
+> 设置 blob 索引标记可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权访问 blob 的标记， (`t` SAS 权限) 。
 >
 > 此外，具有权限的 RBAC 用户 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 可以执行此操作。
 
@@ -87,7 +87,7 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 Blob 索引标记作为 subresource 与 blob 数据一起存储，可独立于基础 blob 数据内容进行检索。 可以使用 [获取 Blob 标记](/rest/api/storageservices/get-blob-tags) 操作检索单个 blob 的 blob 索引标记。 带参数的 [列表 blob](/rest/api/storageservices/list-blobs) 操作 `include:tags` 还会返回容器中的所有 blob 及其 blob 索引标记。
 
 > [!IMPORTANT]
-> 获取和列出 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权访问 blob 的标记， (`t` SAS 权限) 。
+> 获取和列出 blob 索引标记可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权访问 blob 的标记， (`t` SAS 权限) 。
 >
 > 此外，具有权限的 RBAC 用户 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 可以执行此操作。
 
@@ -100,7 +100,7 @@ Blob 索引标记作为 subresource 与 blob 数据一起存储，可独立于�
 [通过 "通过标记查找 blob](/rest/api/storageservices/find-blobs-by-tags) " 操作，你可以获取一组经过筛选的 blob，其索引标记与给定的查询表达式匹配。 `Find Blobs by Tags` 支持在存储帐户中的所有容器之间进行筛选，也可将筛选范围限定为单个容器。 由于所有索引标记键和值都是字符串，因此关系运算符使用字典排序。
 
 > [!IMPORTANT]
-> 使用 blob 索引标记查找数据的方式可由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权按标记查找 blob (`f` SAS 权限) 。
+> 使用 blob 索引标记查找数据的方式可由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 以及具有共享访问签名的任何人执行，该共享访问签名有权按标记查找 blob (`f` SAS 权限) 。
 >
 > 此外，具有权限的 RBAC 用户 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 可以执行此操作。
 
@@ -115,7 +115,7 @@ Blob 索引标记作为 subresource 与 blob 数据一起存储，可独立于�
 
 下表显示了的所有有效运算符 `Find Blobs by Tags` ：
 
-|  运算符  |  说明  | 示例 |
+|  操作员  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     Equal     | `"Status" = 'In Progress'` |
 |     >      |  大于 | `"Date" > '2018-06-18'` |
@@ -140,7 +140,7 @@ Blob 索引标记作为 subresource 与 blob 数据一起存储，可独立于�
 
 下表显示了条件运算的有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  操作员  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     等于     | `"Status" = 'In Progress'` |
 |     <>     |   不等于   | `"Status" <> 'Done'` |
@@ -166,7 +166,7 @@ Blob 索引标记不仅有助于对 blob 数据进行分类、管理和搜索，
 
 以下示例生命周期管理规则适用于名为 *videofiles* 的容器中的块 blob。 仅当数据与的 blob 索引标记条件匹配时，才将规则层用于存档存储 `"Status" == 'Processed' AND "Source" == 'RAW'` 。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ![Azure 门户中的生命周期管理的 Blob 索引匹配规则示例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
@@ -235,7 +235,7 @@ Blob 索引标记是 blob 数据的 subresource。 具有权限的用户或用�
 | [获取 Blob 标记](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [按标记查找 Blob](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-索引标记操作需要额外的权限，与基础 blob 数据分离。 为所有三个 Blob 索引标记操作授予 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 角色的权限。 [存储 Blob 数据读取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)仅为 `Find Blobs by Tags` 和操作授予权限 `Get Blob Tags` 。
+索引标记操作需要额外的权限，与基础 blob 数据分离。 为所有三个 Blob 索引标记操作授予 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 角色的权限。 [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)仅为 `Find Blobs by Tags` 和操作授予权限 `Get Blob Tags` 。
 
 ### <a name="sas-permissions"></a>SAS 权限
 
@@ -265,7 +265,7 @@ Blob 索引标记和元数据都可以将任意用户定义的键/值属性与 b
 
 下表总结了 metadata 和 blob 索引标记之间的差异：
 
-|              |   Metadata   |   Blob 索引标记  |
+|              |   元数据   |   Blob 索引标记  |
 |--------------|--------------|--------------------|
 | **限制**      | 无数值限制，总共 8 KB，不区分大小写 | 每个 blob 最大10个标记，每个标记768字节，区分大小写 |
 | **更新**    | 在存档层上不允许，将 `Set Blob Metadata` 替换所有现有元数据，并 `Set Blob Metadata` 更改 blob 的上次修改时间 | 允许用于所有访问层， `Set Blob Tags` 替换所有现有标记， `Set Blob Tags` 不会更改 blob 的上次修改时间 |
@@ -334,7 +334,7 @@ az provider register --namespace 'Microsoft.Storage'
 - `Copy Blob` 在目标 blob 上应用了标记的另一个存储帐户中 (Async copy) 会导致 blob 索引引擎在筛选器集中返回 blob 及其标记。 `Copy Blob`从 URL (同步副本) 使用。
 - 创建快照时，将保留标记。 但是，升级快照不受支持，并且可能导致空标记集。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **Blob 索引可以帮助我筛选和查询 blob 中的内容吗？**
 

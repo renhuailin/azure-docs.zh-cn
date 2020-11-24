@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案上部署地平线
 description: 了解如何在 Azure VMware 解决方案上部署 VMware 地平线。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423092"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537435"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案上部署地平线 
 
@@ -139,22 +139,6 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 #### <a name="power-worker-workloads"></a>Power worker 工作负荷
 
 :::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="用于 VMware 的常用 VDI 配置文件表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
-
-### <a name="azure-vmware-solution-host-instance"></a>Azure VMware 解决方案主机实例
-
-* PowerEdge R640 服务器-DSS 限制
-
-* 36核心 \@ 2.3 ghz
-
-* 576-GB RAM
-
-* HBA330 12 Gbps SAS HBA 控制器 (非 RAID) 
-
-* 1.92 TB SSD SATA 混合使用热插拔 AG 驱动器中的 6 Gbps 512 2.5，3 DWPD，10512 TBW
-
-* Intel 1.6 TB，NVMe，混合使用 Express 闪存，2.5 SFF 驱动器，U. 2，P4600
-
-* 2 vSAN 磁盘组： 1.6 x 4 (1.92 TB) 
 
 ### <a name="horizon-sizing-inputs"></a>地平线大小调整输入
 

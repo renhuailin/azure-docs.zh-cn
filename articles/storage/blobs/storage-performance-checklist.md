@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714814"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544745"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -59,7 +59,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 如果应用程序接近或超过任何可伸缩性目标，则可能会出现事务处理延迟或限制越来越严重的现象。 当 Azure 存储对应用程序进行限制时，该服务将开始返回 503（服务器繁忙）或 500（操作超时）错误代码。 保持在可伸缩性目标限制范围内，以避免这些错误，是增强应用程序性能的重要组成部分。
 
-有关队列服务可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)。
+有关队列服务可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../queues/scalability-targets.md#scale-targets-for-queue-storage)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>最大存储帐户数
 
@@ -195,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 对于其他编程语言，请参阅文档以确定如何设置连接限制。  
 
-有关详细信息，请参阅博客文章 [Web 服务：并发连接](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
+有关详细信息，请参阅博客文章 [Web 服务：并发连接](/archive/blogs/darrenj/web-services-concurrent-connections)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>增大最小线程数
 
@@ -213,7 +213,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>客户端库和工具
 
-为获得最佳性能，请始终使用 Microsoft 提供的最新客户端库和工具。 Azure 存储客户端库适用于各种语言。 Azure 存储还支持 PowerShell 和 Azure CLI。 Microsoft 正在积极开发这些客户端库和工具，并注重其性能，使用最新服务版本对其进行更新，确保这些工具可以在内部协调好许多经过证实的做法。 有关详细信息，请参阅 [Azure 存储参考文档](/azure/storage/#reference)。
+为获得最佳性能，请始终使用 Microsoft 提供的最新客户端库和工具。 Azure 存储客户端库适用于各种语言。 Azure 存储还支持 PowerShell 和 Azure CLI。 Microsoft 正在积极开发这些客户端库和工具，并注重其性能，使用最新服务版本对其进行更新，确保这些工具可以在内部协调好许多经过证实的做法。
 
 ## <a name="handle-service-errors"></a>处理服务错误
 
@@ -243,11 +243,11 @@ Azure 存储提供多种解决方案用于在存储帐户内部、在存储帐�
 
 ### <a name="use-azcopy"></a>使用 AzCopy
 
-AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](/azure/storage/common/storage-use-azcopy-v10)。  
+AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](../common/storage-use-azcopy-v10.md)。  
 
 ### <a name="use-azure-data-box"></a>使用 Azure Data Box
 
-若要将大量数据导入 Blob 存储，请考虑使用 Azure Data Box 系列进行脱机传输。 当你按时间、网络可用性或成本进行限制时，Microsoft 提供的 Data Box 设备可用于将大量数据移到 Azure。 有关详细信息，请参阅 [Azure DataBox 文档](/azure/databox/)。
+若要将大量数据导入 Blob 存储，请考虑使用 Azure Data Box 系列进行脱机传输。 当你按时间、网络可用性或成本进行限制时，Microsoft 提供的 Data Box 设备可用于将大量数据移到 Azure。 有关详细信息，请参阅 [Azure DataBox 文档](../../databox/index.yml)。
 
 ## <a name="content-distribution"></a>内容分发
 

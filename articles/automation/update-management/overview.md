@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488141"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528238"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -76,10 +76,10 @@ ms.locfileid: "95488141"
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
-|Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
+|CentOS 6 和 7 (x64)       | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
+|Red Hat Enterprise 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x86/x64)      |Linux 代理需要具有访问更新存储库的权限。         |
+|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x64)       |Linux 代理需要具有访问更新存储库的权限。         |
 
 > [!NOTE]
 > Azure 虚拟机规模集可通过更新管理进行管理。 更新管理适用于实例本身，而非基础映像。 需要以增量方式计划更新，以便不会同时更新所有 VM 实例。 可以按照[添加要启用更改跟踪和库存的非 Azure 计算机](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)下的步骤，为虚拟机规模集添加节点。

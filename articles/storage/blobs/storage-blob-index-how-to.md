@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961781"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541243"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 blob 索引标记 (预览) 在 Azure Blob 存储中管理和查找数据
 
@@ -25,7 +25,7 @@ Blob 索引标记使用键-值标记特性对存储帐户中的数据进行分�
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 - 已注册并批准访问 blob 索引预览的 Azure 订阅
 - 访问 [Azure 门户](https://portal.azure.com/)
@@ -38,7 +38,7 @@ Blob 索引标记使用键-值标记特性对存储帐户中的数据进行分�
 
 2. 在 NuGet 包管理器中，找到 "12.7.0" 包，并安装 **项目的版本**"" 或更高版本 **。** 你还可以运行 PowerShell 命令： `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
-   若要了解如何操作，请参阅[查找并安装包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
+   若要了解如何操作，请参阅[查找并安装包](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
 3. 将下列 using 语句添加到你的代码文件的顶部。
 
@@ -56,7 +56,7 @@ Blob 索引标记使用键-值标记特性对存储帐户中的数据进行分�
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>上传带有索引标记的新 blob
 
-此任务可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
+此任务可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>获取、设置和更新 blob 索引标记
 
-获取 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
+获取 blob 索引标记可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
 
-设置和更新 blob 索引标记可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
+设置和更新 blob 索引标记可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 或已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色授予 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 权限的安全主体来执行。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -193,9 +193,9 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>筛选和查找包含 blob 索引标记的数据
 
-此任务可以由 [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
+此任务可以由 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 或安全主体执行，已 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 通过自定义 azure 角色向其授予 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，"blob 索引标记" 筛选器会自动应用 `@container` 参数以限定所选容器的范围。 如果要跨整个存储帐户筛选和查找标记的数据，请使用我们的 REST API、Sdk 或工具。
 

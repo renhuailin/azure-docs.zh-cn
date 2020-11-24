@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842424"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535786"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -52,7 +52,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 ### <a name="destination-requirements"></a>目标要求
 
-在创建诊断设置之前，必须已创建诊断设置的任何目标。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，目标就不必位于发送日志的资源所在的订阅中。 下表提供了每个目标的独特要求，包括任何区域限制。
+在创建诊断设置之前，必须已创建诊断设置的任何目标。 只要配置设置的用户对两个订阅都具有适当的 Azure RBAC 访问权限，目标就不必与资源发送日志位于同一订阅中。 下表提供了每个目标的独特要求，包括任何区域限制。
 
 | 目标 | 要求 |
 |:---|:---|

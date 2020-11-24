@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180399"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544388"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -23,12 +23,12 @@ ms.locfileid: "89180399"
 本指南介绍如何使用 Blobfuse，以及如何在 Linux 上装载 Blob 存储容器并访问数据。 若要详细了解 Blobfuse，请阅读 [Blobfuse 存储库](https://github.com/Azure/azure-storage-fuse)中的详细信息。
 
 > [!WARNING]
-> Blobfuse 不保证 100% 的 POSIX 符合性，因为它只是将请求转换成 [Blob REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)。 例如，重命名操作在 POSIX 中是原子操作，但在 Blobfuse 中不是。
+> Blobfuse 不保证 100% 的 POSIX 符合性，因为它只是将请求转换成 [Blob REST API](/rest/api/storageservices/blob-service-rest-api)。 例如，重命名操作在 POSIX 中是原子操作，但在 Blobfuse 中不是。
 > 有关本机文件系统和 Blobfuse 之间差异的完整列表，请访问 [Blobfuse 源代码存储库](https://github.com/azure/azure-storage-fuse)。
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
-适用于 Ubuntu 和 RHEL 发行版的 Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
+适用于 Ubuntu 和 RHEL 发行版的 Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
 
 Blobfuse 支持在 Ubuntu 14.04、16.04 和18.04 上安装。 运行以下命令以确保你已部署了以下版本之一：
 ```
@@ -36,7 +36,7 @@ lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>配置 Microsoft 包存储库
-配置 [Microsoft 产品的 Linux 包存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
+配置 [Microsoft 产品的 Linux 包存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
 
 例如，在 Enterprise Linux 6 发行版中：
 ```bash
@@ -144,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>后续步骤
 
 * [Blobfuse 主页](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [报告 Blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [报告 Blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)

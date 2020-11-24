@@ -4,12 +4,12 @@ description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 791f95dc75c55c7a5c7c26d0719e186245713fba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2a66f90043e0f544dd86d2ab1245a3d8cbaff3d5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543404"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534562"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
@@ -28,7 +28,7 @@ ms.locfileid: "92543404"
 | time | 必须 | 事件时间戳 (UTC)。 |
 | ResourceId | 必须 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
 | tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
-| operationName | 必须 | 此事件表示的操作的名称。 如果事件表示 RBAC 操作，则这是 RBAC 操作名称（例如，Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | 必须 | 此事件表示的操作的名称。 如果事件代表 Azure RBAC 操作，则这是 Azure RBAC 操作名称 (例如，storageAccounts//blobServices/blob/Read) 。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果 operationName 是使用 API（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）执行的，则为与该操作关联的 api-version。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
 | category | 必须 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
 | resultType | 可选 | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
@@ -48,8 +48,8 @@ ms.locfileid: "92543404"
 
 | 服务 | 架构和文档 |
 | --- | --- |
-| Azure Active Directory | [概述](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、 [审核日志架构](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) 和 [登录架构](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Analysis Services | [Azure Analysis Services 设置诊断日志记录](../../analysis-services/analysis-services-logging.md) |
+| Azure Active Directory | [概述](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[审核日志架构](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)和[登录架构](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Analysis Services | [Azure Analysis Services - 设置诊断日志记录](../../analysis-services/analysis-services-logging.md) |
 | API 管理 | [API 管理资源日志](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | 应用程序网关 |[应用程序网关的日志记录](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[适用于 Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |

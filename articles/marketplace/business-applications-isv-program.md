@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630288"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537129"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
@@ -38,10 +38,10 @@ ms.locfileid: "94630288"
 > 此步骤要求合作伙伴中心的 " *所有者* " 或 " *经理* " 角色对法律协议进行签名。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-1. 选择 " **设置** " (齿轮图标) ，然后选择 " **开发人员设置** "。
-1. 选择 **协议** 。
+1. 选择 " **设置** " (齿轮图标) > **帐户设置**"。
+1. 选择 **协议**。
 1. 选择版本链接并查看协议。
-1. 若要同意并接受协议，请选择 " **接受协议** "。
+1. 若要同意并接受协议，请选择 " **接受协议**"。
 
 ## <a name="set-up-your-billing-information"></a>设置帐单信息
 
@@ -51,12 +51,12 @@ ms.locfileid: "94630288"
 > 此步骤要求合作伙伴中心的 " *所有者* " 或 " *经理* " 角色更新计费信息。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-1. 选择 " **设置** " (齿轮图标) ，然后选择 " **开发人员设置** "。
-1. 在 " **帐户设置** " 下，选择 " **计费配置文件** "。
+1. 选择 " **设置** " (齿轮图标) > **帐户设置**"。
+1. 在 " **组织配置文件**" 下，选择 " **计费配置文件** " 和 " **开发人员** " 选项卡
 1. 查看从你的法律实体填充的主要联系人和计费信息。
-1. 若要进行更改，请选择 " **更新** "。
+1. 若要进行更改，请选择 " **更新**"。
 1. 如果适用，请提供税务 ID/VAT ID 设置。
-1. 若要保存更改，请选择 " **更新** "。
+1. 若要保存更改，请选择 " **更新**"。
 
 > [!NOTE]
 > 你可以随时更新计费配置文件。 但是 *，不能* 在以后更改 *公司名称* 和帐单地址。

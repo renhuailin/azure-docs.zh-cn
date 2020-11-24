@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701307"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543062"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
 
@@ -61,7 +61,7 @@ ms.locfileid: "94701307"
 
 可以返回包含结果的 blob 元数据。
 
-- 如果使用的是 .NET v12 SDK，请为 [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) 枚举指定 Metadata  值。
+- 如果使用的是 .NET v12 SDK，请为 [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) 枚举指定 Metadata  值。
 
 - 如果使用的是 .NET v11 SDK，请为 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 枚举指定 Metadata  值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
 

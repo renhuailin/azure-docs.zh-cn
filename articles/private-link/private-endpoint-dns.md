@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d682495cb7add446adf1634de6e9ed6756d1468e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734372"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544371"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -125,7 +125,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 > [!IMPORTANT]
 > 如果要在不同的订阅中使用中心辐射型模型中的专用终结点，请在中心重复使用相同的专用 DNS 区域。
 
-在此方案中，存在一个[中心辐射型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)网络拓扑，辐射网络共享一个专用终结点，所有辐射虚拟网络链接到同一专用 DNS 区域。 
+在此方案中，存在一个[中心辐射型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)网络拓扑，辐射网络共享一个专用终结点，所有辐射虚拟网络链接到同一专用 DNS 区域。 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供的 DNS 的中心辐射型拓扑":::
 
@@ -141,7 +141,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 若要正确进行配置，需要以下资源：
 
 - 本地网络
-- 虚拟网络 [已连接到本地](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- 虚拟网络 [已连接到本地](/azure/architecture/reference-architectures/hybrid-networking/)
 - 部署在 Azure 中的 DNS 转发器 
 - 使用[类型 A 记录](../dns/dns-zones-records.md#record-types)专用 DNS 区域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 专用终结点信息（FQDN 记录名称和专用 IP 地址）
@@ -158,7 +158,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 若要正确进行配置，需要以下资源：
 
 - 具有自定义 DNS 解决方案的本地网络 
-- 虚拟网络 [已连接到本地](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- 虚拟网络 [已连接到本地](/azure/architecture/reference-architectures/hybrid-networking/)
 - 部署在 Azure 中的 DNS 转发器
 - 使用[类型 A 记录](../dns/dns-zones-records.md#record-types)专用 DNS 区域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 专用终结点信息（FQDN 记录名称和专用 IP 地址）
@@ -187,7 +187,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 若要正确进行配置，需要以下资源：
 
 - 本地网络
-- 虚拟网络 [已连接到本地](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- 虚拟网络 [已连接到本地](/azure/architecture/reference-architectures/hybrid-networking/)
 - [对等的虚拟网络](../virtual-network/virtual-network-peering-overview.md) 
 - 部署在 Azure 中的 DNS 转发器
 - 使用[类型 A 记录](../dns/dns-zones-records.md#record-types)专用 DNS 区域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
