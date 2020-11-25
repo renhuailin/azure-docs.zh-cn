@@ -4,11 +4,11 @@ description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Az
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978346"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -51,7 +51,7 @@ ms.locfileid: "92094086"
     Get-Command *azrecoveryservices*
     ```
 
-    这将显示 Azure 备份、Azure Site Recovery 和恢复服务保管库的别名和 cmdlet。 下图是你将看到的内容的一个示例。 它不是完整的 cmdlet 列表。
+    这将显示 Azure 备份、Azure Site Recovery 和恢复服务保管库的别名和 cmdlet。 下图是你将看到的内容的一个示例。 这不是 cmdlet 的完整列表。
 
     ![恢复服务的列表](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92094086"
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. 如果是首次使用 Azure 备份，则必须使用 **[AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** Cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+5. 首次使用 Azure 备份时，必须使用 [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -96,7 +96,7 @@ ms.locfileid: "92094086"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#geo-redundant-storage)或 [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage)。 以下示例显示，“testvault”的“-BackupStorageRedundancy”选项设置为“GeoRedundant”**********。
+3. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#geo-redundant-storage)或 [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage)。 以下示例显示，“testvault”的“-BackupStorageRedundancy”选项设置为“GeoRedundant”。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -196,7 +196,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 * [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 创建用于保存备份策略信息的 PowerShell 对象。
 * 计划和保留策略对象将用作 New-AzRecoveryServicesBackupProtectionPolicy cmdlet 的输入。
 
-默认情况下，会在“计划策略对象”中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间也应采用 UTC 格式。 下面的示例假定所需的开始时间为每日备份 01:00 AM UTC。
+默认情况下，会在“计划策略对象”中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间也应采用 UTC 格式。 下面的示例假设在进行每日备份时，所需的开始时间为 UTC 时间凌晨 1:00。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -206,7 +206,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，它只能是 "01:00:00" 或 "02:30:00"。 开始时间不能为 "01:15:00"
+> 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，开始时间只能是“01:00:00”或“02:30:00”。 开始时间不能为“01:15:00”
 
 以下示例将计划策略和保留策略存储在变量中。 此示例使用这些变量来定义在创建保护策略 *NewPolicy* 时要使用的参数。
 
@@ -228,11 +228,11 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 在定义保护策略后，还必须为相应的项启用该策略。 请使用 [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 来启用保护。 启用保护需要两个对象 - 项和策略。 将策略与保管库关联之后，将在策略计划中定义的时间触发备份工作流。
 
 > [!IMPORTANT]
-> 当使用 PowerShell 同时为多个 Vm 启用备份时，请确保单个策略没有超过100个关联的 Vm。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果 VM 超过 100 个，PowerShell 客户端不会显式阻止，但计划在将来添加检查。
+> 使用 PowerShell 一次为多个 VM 启用备份时，请确保单个策略关联的 VM 不超过 100 个。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果 VM 超过 100 个，PowerShell 客户端不会显式阻止，但计划在将来添加检查。
 
 以下示例使用策略 NewPolicy 为项 V2VM 启用保护。 根据 VM 是否已加密以及采用了何种加密类型，示例将有所不同。
 
-在**非加密资源管理器 VM** 上启用保护：
+在 **非加密资源管理器 VM** 上启用保护：
 
 ```powershell
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -247,7 +247,7 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1" -VaultId $targetVault.ID
 ```
 
-若要在**加密 VM（仅使用 BEK 加密的）** 上启用保护，必须向 Azure 备份服务授予权限来读取密钥保管库中的机密。
+若要在 **加密 VM（仅使用 BEK 加密的）** 上启用保护，必须向 Azure 备份服务授予权限来读取密钥保管库中的机密。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> 如果你使用的是 Azure 政府云，请使用 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数**ServicePrincipalName**的值。
+> 如果你使用的是 Azure 政府云，请使用 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数 **ServicePrincipalName** 的值。
 >
 
 ## <a name="monitoring-a-backup-job"></a>监视备份作业
@@ -290,7 +290,7 @@ Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200 -VaultId $targe
 
 #### <a name="modifying-scheduled-time"></a>修改计划时间
 
-创建保护策略时，默认情况下会为其分配一个开始时间。 下面的示例演示如何修改保护策略的开始时间。
+创建保护策略时，默认情况下会为其分配开始时间。 下面的示例演示如何修改保护策略的开始时间。
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>配置即时还原快照保留期
 
 > [!NOTE]
-> 从 Azure PowerShell 版本1.6.0 开始，可以使用 PowerShell 在策略中更新即时还原快照保持期
+> 从 Azure PowerShell 版本 1.6.0 开始，可以使用 PowerShell 在策略中更新即时还原快照保留期
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-默认值为2。 最小值为1，最大值为5。 对于每周备份策略，时间段设置为5，并且无法更改。
+默认值将为 2。 可以将值的最小值设置为 1，最大值设置为 5。 每周备份策略的保留期设置为 5，不能更改。
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>在快照保留期间创建 Azure 备份资源组
 
 > [!NOTE]
-> 从 Azure PowerShell 版本3.7.0 开始，可以创建和编辑创建的、用于存储即时快照的资源组。
+> 从 Azure PowerShell 版本 3.7.0 开始，可以创建和编辑为存储即时快照而创建的资源组。
 
 若要详细了解资源组创建规则和其他相关详细信息，请参阅[适用于虚拟机的 Azure 备份资源组](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)文档。
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>保留数据
 
-如果要停止保护，可以使用 [AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell cmdlet。 此命令将停止计划的备份，但到目前为止备份的数据将永远保留。
+如果希望停止保护，可以使用 [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell cmdlet。 此命令将停止计划的备份，但到目前为止备份的数据将永远保留。
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -394,7 +394,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>删除备份数据
 
-若要完全删除保管库中存储的备份数据，请将 "-RemoveRecoveryPoints" 标志/开关添加到 ["disable" 保护命令](#retain-data)。
+若要完全删除保管库中存储的备份数据，请将“-RemoveRecoveryPoints”标志/开关添加到[“disable”保护命令](#retain-data)。
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -402,7 +402,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 ## <a name="restore-an-azure-vm"></a>还原 Azure VM
 
-使用 Azure 门户还原 VM 与使用 PowerShell 还原 VM 之间存在重要差异。 如果使用 PowerShell，从恢复点创建磁盘和配置信息即可完成还原操作。 还原操作不会创建虚拟机。 若要通过磁盘创建虚拟机，请参阅[通过存储磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 部分。 如果不希望还原整个 VM，但希望从 Azure VM 备份还原或恢复几个文件，请参阅[文件恢复部分](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)。
+使用 Azure 门户还原 VM 与使用 PowerShell 还原 VM 存在重要区别。 如果使用 PowerShell，从恢复点创建磁盘和配置信息即可完成还原操作。 还原操作不会创建虚拟机。 若要通过磁盘创建虚拟机，请参阅[通过存储磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 部分。 如果不希望还原整个 VM，但希望从 Azure VM 备份还原或恢复几个文件，请参阅[文件恢复部分](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)。
 
 > [!Tip]
 > 还原操作不会创建虚拟机。
@@ -422,7 +422,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 * 还原磁盘。
 * 基于还原后的磁盘创建 VM。
 
-### <a name="select-the-vm-when-restoring-files"></a>还原文件时选择 VM () 
+### <a name="select-the-vm-when-restoring-files"></a>选择 VM（还原文件时）
 
 若要获取用于标识正确备份项的 PowerShell 对象，请从保管库中的容器开始，按对象层次结构进行操作。 若要选择代表 VM 的容器，请使用 [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) cmdlet，然后通过管道将其传递给 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) cmdlet。
 
@@ -431,9 +431,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point-when-restoring-files"></a> (还原文件时选择恢复点) 
+### <a name="choose-a-recovery-point-when-restoring-files"></a>选择恢复点（还原文件时）
 
-使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果不确定要使用哪种恢复点，最好在列表中选择最新的 RecoveryPointType = AppConsistent 点。
+使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果不确定要使用的恢复点，最好选择列表中最新的 RecoveryPointType = AppConsistent 恢复点。
 
 在以下脚本中，变量 **$rp** 是一个数组，其中包含所选备份项在过去七天的恢复点。 该数组按时间进行反向排序，以最新的恢复点作为索引 0。 使用标准 PowerShell 数组索引选取恢复点。 在示例中，$rp[0] 选择最新的恢复点。
 
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>还原磁盘
 
-请使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet 将备份项的数据和配置还原到某个恢复点。 确定某个恢复点后，即可使用它作为 **-RecoveryPoint** 参数的值。 在上面的示例中， **$rp [0]** 是要使用的恢复点。 在下面的示例代码中， **$rp[0]** 是还原磁盘时要使用的恢复点。
+请使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet 将备份项的数据和配置还原到某个恢复点。 确定某个恢复点后，即可使用它作为 **-RecoveryPoint** 参数的值。 在上面的示例中，$rp[0] 是要使用的恢复点。 在下面的示例代码中， **$rp[0]** 是还原磁盘时要使用的恢复点。
 
 还原磁盘和配置信息：
 
@@ -474,14 +474,14 @@ $restorejob
 #### <a name="restore-managed-disks"></a>还原托管磁盘
 
 > [!NOTE]
-> 如果受支持的 VM 具有托管磁盘，并且你想要将其还原为托管磁盘，则已引入 Azure PowerShell RM 模块 v 6.7.0 中的功能。 开始.
+> 如果备份的 VM 具有托管磁盘，并且你想要将其还原为托管磁盘，我们从 Azure PowerShell RM 模块 v 6.7.0 引入了可供使用的相关功能。 更高版本。
 >
 >
 
 提供了附加参数 TargetResourceGroupName 来指定托管磁盘要还原到的 RG。
 
 > [!IMPORTANT]
-> 强烈建议使用 **TargetResourceGroupName** 参数还原托管磁盘，因为这样可以显著提高性能。 如果未指定此参数，则无法从即时还原功能中受益，还原操作将在比较中变慢。 如果要将托管磁盘还原为非托管磁盘，则不要提供此参数，并通过提供参数来明确目的 `-RestoreAsUnmanagedDisks` 。 `-RestoreAsUnmanagedDisks`参数可从 Azure PowerShell 3.7.0 开始使用。 在将来的版本中，为正确的还原体验提供其中一个参数是必需的。
+> 强烈建议使用 TargetResourceGroupName 参数来还原托管磁盘，因为它可以显著提高性能。 如果未指定此参数，则无法从即时还原功能中受益，并且相比之下，还原操作的速度将更慢。 如果目的是将托管磁盘还原为非托管磁盘，则不要提供此参数，而应通过提供 `-RestoreAsUnmanagedDisks` 参数，使该目的明确。 此 `-RestoreAsUnmanagedDisks` 参数从 Azure PowerShell 3.7.0 开始提供。 在将来的版本中，必须提供其中任意一个参数，以获得正确的还原体验。
 >
 >
 
@@ -516,7 +516,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ## <a name="replace-disks-in-azure-vm"></a>更换 Azure VM 中的磁盘
 
-若要替换磁盘和配置信息，请执行以下步骤：
+若要更换磁盘和配置信息，请执行以下步骤：
 
 * 步骤 1：[还原磁盘](backup-azure-vms-automation.md#restore-the-disks)
 * 步骤 2：[使用 PowerShell 分离数据磁盘](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-powershell)
@@ -529,8 +529,8 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 > [!NOTE]
 >
 > 1. 需要 AzureAz 模块 3.0.0 或更高版本。 <br>
-> 2. 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果你的角色不具有此权限，请使用此操作创建一个自定义角色。 有关详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。 <br>
-> 3. 还原磁盘后，你现在可以获取可以直接用来创建新 VM 的部署模板。 不需要不同的 PowerShell cmdlet 来创建已加密/未加密的托管/非托管 Vm。<br>
+> 2. 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果用户角色不具有此权限，请通过此操作创建自定义角色。 有关详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。 <br>
+> 3. 还原磁盘后，你现在可以获取可以直接用来创建新 VM 的部署模板。 不需要使用不同的 PowerShell cmdlet 来创建加密/未加密的托管/非托管 VM。<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>使用部署模板创建 VM
@@ -546,7 +546,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 模板不能直接访问，因为它在客户的存储帐户和给定容器下。 需要完整的 URL（以及临时 SAS 令牌）才能访问此模板。
 
-1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以在 PowerShell 中使用 split 操作从此 URL 中提取最终模板名称。
+1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以使用 PowerShell 中的拆分操作从该 URL 提取最终模板名称。
 
     ```http
     https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
@@ -570,7 +570,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 以下部分列出了使用“VMConfig”文件创建 VM 所需的步骤。
 
 > [!NOTE]
-> 强烈建议使用上述部署模板来创建 VM。 本部分（要点 1-6）不久将被弃用。
+> 强烈建议使用上面详述的部署模板来创建 VM。 本部分（要点 1-6）不久将被弃用。
 
 1. 查询已还原磁盘属性以获取作业详细信息。
 
@@ -636,7 +636,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         }
     ```
 
-    * **不使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到 Key Vault。 然后，执行以下脚本以在已还原的 OS blob 上设置加密详细信息 (数据 blob) 不需要此步骤。 可从已还原的 keyVault 提取 $dekurl。
+    * **不使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用 [从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。
 
     仅当源 keyVault/机密不可用时，才需要执行以下脚本。
 
@@ -650,9 +650,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         $osBlob.ICloudBlob.SetMetadata()
     ```
 
-    **机密可用**并且同时在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
+    **机密可用** 并且同时在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
 
-    如果源 keyVault/机密已可用，则不需要执行上述脚本。
+    如果源 keyVault/机密已经可用，则不需要执行上述脚本。
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -663,9 +663,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         }
     ```
 
-    * **不使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到 Key Vault。 然后，执行以下脚本以在已还原的 OS blob 上设置加密详细信息 (数据 blob) 不需要此步骤。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
+    * **不使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用 [从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
 
-    仅当源 keyVault/密钥/机密不可用时，才需要执行下面的脚本。
+    仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -678,7 +678,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         $osBlob.ICloudBlob.SetMetadata()
     ```
 
-    **密钥/机密可用**并且在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
+    **密钥/机密可用** 并且在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
 
     如果源 keyVault/密钥/机密可用，则不需要执行上述脚本。
 
@@ -697,9 +697,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     * **使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-    * **不使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到密钥保管库。 然后，执行以下脚本以在还原的 OS 磁盘上设置加密详细信息 (此步骤不是数据磁盘) 所必需的。 可从已还原的 keyVault 提取 $dekurl。
+    * **不使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用 [从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。
 
-    仅当源 keyVault/机密不可用时，才需要执行下面的脚本。  
+    仅当源 keyVault/机密不可用时，才需要执行以下脚本。  
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -718,9 +718,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     机密可用并且在 OS 磁盘上设置加密详细信息之后，若要附加已还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-    * **不使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到密钥保管库。 然后，执行以下脚本以在还原的 OS 磁盘上设置加密详细信息 (此步骤不是数据磁盘) 所必需的。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
+    * **不使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用 [从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
 
-    仅当源 keyVault/密钥/密钥不可用时，才需要执行以下脚本。
+    仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -764,7 +764,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
     ```
 
 7. 推送 ADE 扩展。
-   如果未推送 ADE 扩展，数据磁盘将被标记为未加密，因此，要执行以下步骤，这是必需的：
+   如果未推送 ADE 扩展，则数据磁盘将标记为未加密，因此必须执行以下步骤：
 
    * **对于使用 Azure AD 的 VM** - 可使用以下命令来手动启用数据磁盘的加密。  
 
@@ -811,7 +811,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 * 复制所需的文件
 * 卸载磁盘
 
-### <a name="select-the-vm-when-restoring-the-vm"></a>还原 VM 时选择 VM () 
+### <a name="select-the-vm-when-restoring-the-vm"></a>选择 VM（还原 VM 时）
 
 若要获取用于标识正确备份项的 PowerShell 对象，请从保管库中的容器开始，按对象层次结构进行操作。 若要选择代表 VM 的容器，请使用 [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) cmdlet，然后通过管道将其传递给 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) cmdlet。
 
@@ -820,9 +820,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>恢复 VM 时选择 (恢复点) 
+### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>选择恢复点（还原 VM 时）
 
-使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果不确定要使用哪种恢复点，最好在列表中选择最新的 RecoveryPointType = AppConsistent 点。
+使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果不确定要使用的恢复点，最好选择列表中最新的 RecoveryPointType = AppConsistent 恢复点。
 
 在以下脚本中，变量 **$rp** 是一个数组，其中包含所选备份项在过去七天的恢复点。 该数组按时间进行反向排序，以最新的恢复点作为索引 0。 使用标准 PowerShell 数组索引选取恢复点。 在示例中，$rp[0] 选择最新的恢复点。
 
