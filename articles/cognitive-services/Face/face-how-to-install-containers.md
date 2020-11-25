@@ -1,7 +1,7 @@
 ---
-title: 为人脸 API 安装并运行 Docker 容器
+title: 安装并运行人脸 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 的 Docker 容器来检测和识别图像中的人脸。
+description: 使用人脸 API 的 Docker 容器来检测和标识图像中的人脸。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-keywords: 本地、Docker、容器、标识
+keywords: 本地, Docker, 容器, 标识
 ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461506"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000534"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）
 
 > [!IMPORTANT]
 > 已达到人脸容器用户的限制。 目前不接受用于人脸容器的新应用程序。
 
-Azure 认知服务人脸 API 提供了一个 Linux Docker 容器，用于检测和分析图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
+Azure 认知服务人脸 API 提供 Linux Docker 容器，用于检测和分析图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -36,7 +36,7 @@ Azure 认知服务人脸 API 提供了一个 Linux Docker 容器，用于检测�
 |--|--|
 |Docker 引擎| 必须在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 需对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解。 还需要了解基本的 `docker` 命令。| 
-|人脸资源 |若要使用容器，必须具有：<br><br>Azure 人脸资源和关联的 API 密钥及终结点 URI。 可在资源的“概述”和“密钥”页上获取这两个值 。 必须获取这两个值才能启动容器。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****
+|人脸资源 |若要使用容器，必须具有：<br><br>Azure 人脸资源和关联的 API 密钥及终结点 URI。 可在资源的“概述”和“密钥”页上获取这两个值 。 必须获取这两个值才能启动容器。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 

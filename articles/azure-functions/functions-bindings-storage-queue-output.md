@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087073437fe9d6159422799c04ce095c0aae5eca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317219"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001246"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -41,9 +41,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码**。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项****。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项。
 
-function.json** 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -100,11 +100,29 @@ public static void Run(
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+ 以下示例演示一个 Java 函数，该函数在受到 HTTP 请求触发时创建一个队列消息。
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入队列存储的参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 `T` 是 POJO 的任何本机 Java 类型。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)**。 该函数针对收到的每个 HTTP 请求创建一个队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数针对收到的每个 HTTP 请求创建一个队列项。
 
-function.json** 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -151,11 +169,84 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的代码示例演示如何从 HTTP 触发的函数输出队列消息。 的配置节定义了 `type` `queue` 输出绑定。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "Msg",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+使用此绑定配置，PowerShell 函数可以使用创建队列消息 `Push-OutputBinding` 。 在此示例中，通过查询字符串或正文参数创建消息。
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
+若要同时发送多条消息，请定义消息数组，并使用将 `Push-OutputBinding` 消息发送到队列输出绑定。
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = @("message1", "message2")
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何将单个值和多个值输出到存储队列。 无论哪种方式，function.json** 所需的配置都是相同的。
+下面的示例演示如何将单个值和多个值输出到存储队列。 无论哪种方式，function.json 所需的配置都是相同的。
 
-存储队列绑定在 function.json** 中定义，其中 type** 设置为 `queue`。
+存储队列绑定在 function.json 中定义，其中 type 设置为 `queue`。
 
 ```json
 {
@@ -214,24 +305,6 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
- 以下示例演示一个 Java 函数，该函数在受到 HTTP 请求触发时创建一个队列消息。
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入队列存储的参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 `T` 是 POJO 的任何本机 Java 类型。
-
 ---
 
 ## <a name="attributes-and-annotations"></a>特性和注释
@@ -270,14 +343,6 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支持特性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 不支持特性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 使用 `QueueOutput` 注释可以将一条消息编写为函数的输出。 以下示例演示一个用于创建队列消息的 HTTP 触发的函数。
@@ -309,11 +374,23 @@ public class HttpTriggerQueueOutput {
 
 与 `QueueOutput` 注释关联的参数类型化为 [OutputBinding\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) 实例。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
 ---
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `Queue` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `Queue` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -359,25 +436,29 @@ public class HttpTriggerQueueOutput {
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
+# <a name="java"></a>[Java](#tab/java)
+
+可通过两个选项使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注释从函数输出队列消息：
+
+- **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为队列消息。
+
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为队列消息。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 可通过 `context.bindings.<NAME>` 使用输出队列项，其中，`<NAME>` 与 *function.json* 中定义的名称相匹配。 可对队列项有效负载使用字符串或 JSON 可序列化对象。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+可以通过在 `Push-OutputBinding` `name` 文件中的 *function.js上* 传递与绑定的参数指定的名称相匹配的参数，将输出发送到队列消息。
 
 # <a name="python"></a>[Python](#tab/python)
 
 有两个选项可用于从函数输出队列消息：
 
-- **返回值**：将 `name` *function.js上* 的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
+- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将持久保存为队列存储消息。
 
-- **命令式**：向声明为[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为队列存储消息。
-
-# <a name="java"></a>[Java](#tab/java)
-
-可以通过以下两个选项使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 批注从函数输出队列消息：
-
-- **返回值**：通过将批注应用于函数本身，函数的返回值将持久保存为队列消息。
-
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向方法传递值会 `setValue` 将值作为队列消息保留。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) 方法。 传递给的值 `set` 将持久保存为队列存储消息。
 
 ---
 

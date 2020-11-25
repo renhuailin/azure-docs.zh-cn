@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999597"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用查找必应搜索中的结果
 
@@ -23,7 +23,7 @@ ms.locfileid: "87284058"
 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 如需特定于连接器的技术信息，请参阅[必应搜索连接器参考](/connectors/bingsearch/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [认知服务帐户](../cognitive-services/cognitive-services-apis-create-account.md)
 
@@ -41,7 +41,7 @@ ms.locfileid: "87284058"
 
 2. 在搜索框中，输入“必应搜索”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用此触发器：必应搜索 - 新的新闻文章****
+   此示例使用此触发器：必应搜索 - 新的新闻文章
 
    ![查找必应搜索触发器](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "87284058"
    | 搜索查询 | 是 | <*搜索词*> | 输入要使用的搜索关键字。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | Count | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
    |||||
 
@@ -106,31 +106,31 @@ ms.locfileid: "87284058"
    | 搜索查询 | 是 | <*搜索表达式*> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | Count | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
    |||||
 
    例如，假设需要类别名称包含单词“tech”的结果。
 
-   1. 在“搜索查询”框中单击，以显示动态内容列表****。 
+   1. 在“搜索查询”框中单击，以显示动态内容列表。 
    从该列表中选择 " **表达式** "，以便显示 "表达式生成器"。 
 
       ![必应搜索触发器](./media/connectors-create-api-bing-search/bing-search-action.png)
 
       现在即可开始创建表达式。
 
-   2. 从函数列表中选择“contains()”函数，该函数将显示在表达式框中****。 单击“动态内容”，以便重新显示字段列表，但请确保将光标停留在圆括号内****。
+   2. 从函数列表中选择“contains()”函数，该函数将显示在表达式框中。 单击“动态内容”，以便重新显示字段列表，但请确保将光标停留在圆括号内。
 
       ![选择函数](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. 从字段列表中选择将转换为参数的“类别”****。 
+   3. 从字段列表中选择将转换为参数的“类别”。 
    在第一个参数后添加一个逗号，并在该逗号后加上此单词：`'tech'` 
 
       ![选择字段](./media/connectors-create-api-bing-search/expression-select-field.png)
 
    4. 完成后，请选择“确定”。
 
-      该表达式现在以此格式显示在“搜索查询”框中****：
+      该表达式现在以此格式显示在“搜索查询”框中：
 
       ![已完成的表达式](./media/connectors-create-api-bing-search/resolved-expression.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "87284058"
 
    ![创建连接](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 完成操作后，选择“创建”。
+2. 完成操作后，选择“创建”  。
 
 ## <a name="connector-reference"></a>连接器参考
 

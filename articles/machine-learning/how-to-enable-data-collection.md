@@ -12,11 +12,11 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000447"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 
@@ -89,7 +89,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* 是可选参数。 如果模型不需要此参数，则无需使用它。 使用 *CorrelationId* 确实可以帮助你轻松映射到其他数据，例如 *LoanNumber* 或 *CustomerId* 。
+    *CorrelationId* 是可选参数。 如果模型不需要此参数，则无需使用它。 使用 *CorrelationId* 确实可以帮助你轻松映射到其他数据，例如 *LoanNumber* 或 *CustomerId*。
     
     稍后将使用 *Identifier* 参数在 Blob 中生成文件夹结构。 可以使用此参数将原始数据与已处理的数据区分开来。
 
@@ -102,7 +102,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true** 。 如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。 如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)

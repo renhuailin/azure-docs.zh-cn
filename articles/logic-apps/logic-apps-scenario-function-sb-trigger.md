@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000328"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
@@ -50,7 +50,7 @@ ms.locfileid: "94629727"
 
    1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
-   1. 在 " **输入或粘贴示例 JSON 负载** " 下，输入示例负载，然后选择 " **完成** "。
+   1. 在 " **输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 " **完成**"。
 
       ![输入示例有效负载](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -106,11 +106,11 @@ ms.locfileid: "94629727"
 
 1. 根据你是创建新的函数应用（在其中选择 .NET 作为运行时堆栈）还是使用现有的函数应用来选择此模板。
 
-   * 对于新的函数应用，请选择此模板： **服务总线队列触发器**
+   * 对于新的函数应用，请选择此模板：**服务总线队列触发器**
 
      ![为新的函数应用选择模板](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
 
-   * 对于现有的函数应用，请选择此模板： **服务总线队列触发器 - C#**
+   * 对于现有的函数应用，请选择此模板：**服务总线队列触发器 - C#**
 
      ![为现有的函数应用选择模板](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 

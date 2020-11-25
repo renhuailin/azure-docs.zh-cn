@@ -10,11 +10,11 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999920"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>使用特征增强字词列表的信号
 
@@ -30,12 +30,12 @@ ms.locfileid: "91540874"
 
 1. 在“特征”页上，选择“+ 创建” 。
 
-1. 在“新建短语列表特征”对话框中，输入名称（例如 `Cities`）。 在“值”框中，输入示例城市（例如 `Seattle`）。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter****。
+1. 在“新建短语列表特征”对话框中，输入名称（例如 `Cities`）。 在“值”框中，输入示例城市（例如 `Seattle`）。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
 
     > [!div class="mx-imgBorder"]
     > ![屏幕截图显示添加特征（短语列表）城市的操作](./media/luis-add-features/add-phrase-list-cities.png)
 
-    为 LUIS 输入足够的值后，会显示建议。 对于建议的值，可以单击“+ 全部添加”，也可选择单个术语****。
+    为 LUIS 输入足够的值后，会显示建议。 对于建议的值，可以单击“+ 全部添加”，也可选择单个术语。
 
 1. 如果短语可以交换使用，则让“这些值可以交换”保持选中状态。
 

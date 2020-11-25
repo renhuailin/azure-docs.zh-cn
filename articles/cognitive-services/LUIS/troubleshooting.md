@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566259"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000124"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -108,7 +108,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 * 如果不在最高层，可以[提高定价层](luis-how-to-azure-subscription.md#change-the-pricing-tier)。
 * 如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
-* 收到此状态代码时，可以使用你自己实现的[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。
+* 收到此状态代码时，可以使用你自己实现的[重试策略](/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 
@@ -286,7 +286,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>使用 Bot Framework 在本地计算机上进行调试时解决问题。
 
-若要了解有关本地调试机器人的详细信息，请参阅[调试机器人](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)。
+若要了解有关本地调试机器人的详细信息，请参阅[调试机器人](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)。
 
 ## <a name="integrating-luis"></a>集成 LUIS
 
@@ -296,7 +296,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ![LUIS 模板 Web 应用机器人区域](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>什么 LUIS 区域支持 Bot Framework 语音启动？
-仅中部（美国）实例中的 LUIS 应用支持[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)。
+仅中部（美国）实例中的 LUIS 应用支持[语音启动](/bot-framework/bot-service-manage-speech-priming)。
 
 ## <a name="api-programming-strategies"></a>API 编程策略
 
@@ -334,4 +334,4 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 若要了解有关 LUIS 的详细信息，请参阅以下资源：
 * [标记了 LUIS 的 Stack Overflow 问题](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN 语言理解智能服务 (LUIS) 的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [MSDN 语言理解智能服务 (LUIS) 的 Microsoft Q&A 问题页](/answers/topics/azure-language-understanding.html)

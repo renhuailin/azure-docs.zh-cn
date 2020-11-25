@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776538"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000090"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>编辑知识库中的 QnA 对
 
@@ -60,7 +60,7 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
     |--|--|
     |在富文本编辑器和 markdown 之间切换。 `</>`|Ctrl+M|
     |Bold. **B**|CTR + LB|
-    |** _I_斜体，用斜体显示**|CTRL+I|
+    |**_I_ 斜体，用斜体显示**|CTRL+I|
     |无序列表||
     |有序列表||
     |段落样式||
@@ -87,7 +87,7 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 
 ## <a name="delete-a-qna-pair"></a>删除 QnA 对
 
-要删除 QnA，请单击 QnA 行最右侧的**** 删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”**** 页面导出知识库。
+要删除 QnA，请单击 QnA 行最右侧的删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”页面导出知识库。
 
 ![删除 QnA 对](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 

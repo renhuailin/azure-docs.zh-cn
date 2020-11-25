@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/30/2020
 ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000073"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -28,10 +28,10 @@ ms.locfileid: "93280166"
 
 以下是使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 的优点：
 
-* **轻松设置** ：无需脚本的直观 5 步向导。
-* **丰富的数据存储支持** ：对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
-* **安全且合规** ：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
-* **通过使用 PolyBase 提供无与伦比的性能** ：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store () 。有关详细信息，请参阅 [复制活动性能](copy-activity-performance.md)。
+* **轻松设置**：无需脚本的直观 5 步向导。
+* **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+* **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
+* **通过使用 PolyBase 提供无与伦比的性能**：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store () 。有关详细信息，请参阅 [复制活动性能](copy-activity-performance.md)。
 
 本文介绍如何使用数据工厂复制数据工具将数据从 Azure SQL 数据库加载至 Azure Synapse Analytics。 可以遵循类似步骤，从其他类型的数据存储中复制数据。
 
@@ -42,7 +42,7 @@ ms.locfileid: "93280166"
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Azure Synapse Analytics：此数据仓库保存从 SQL 数据库复制的数据。 如果没有 Azure Synapse Analytics，请参阅[创建 Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md) 中的说明。
-* Azure SQL 数据库：本教程在 Azure SQL 数据库中复制艾德 Works LT 示例数据集的数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。
+* Azure SQL 数据库：本教程从 Azure SQL 数据库中的 Adventure Works LT 示例数据集中复制数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。
 * Azure 存储帐户：Azure 存储用作大容量复制操作中的暂存 blob。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
@@ -51,11 +51,11 @@ ms.locfileid: "93280166"
 
 2. 在“新建数据工厂”页上，为以下项提供值：
 
-    * **名称** ：输入“LoadSQLDWDemo”作为名称。 数据工厂的名称必须全局独一无二。 如果收到错误“数据工厂名称‘LoadSQLDWDemo’不可用”，请为数据工厂输入其他名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory** 。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
-    * **订阅** ：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组** ：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本** ：选择“V2”。
-    * **位置** ：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
+    * **名称**：输入“LoadSQLDWDemo”作为名称。 数据工厂的名称必须全局独一无二。 如果收到错误“数据工厂名称‘LoadSQLDWDemo’不可用”，请为数据工厂输入其他名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+    * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：选择“V2”。
+    * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
 3. 选择“创建” 。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
@@ -140,7 +140,7 @@ ms.locfileid: "93280166"
 
     [![监视管道运行](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
 
-13. 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。 
+13. 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。
 
     ![监视活动运行](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 

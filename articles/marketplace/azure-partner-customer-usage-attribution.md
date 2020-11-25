@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628384"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999869"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
@@ -74,9 +74,9 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
    * 合作伙伴可以注册多个 GUID。
    * 合作伙伴可为非市场解决方案模板和产品/服务注册 GUID。
 
-1. 在右上角选择 " **设置** (齿轮" 图标) > **帐户设置** "。
+1. 在右上角选择 " **设置** (齿轮" 图标) > **帐户设置**"。
 
-1. 在 " **组织配置文件**  >  **标识符** " 中选择 " **添加跟踪 GUID** "。
+1. 在 "**组织配置文件**  >  **标识符**" 中选择 "**添加跟踪 GUID**"。
 
 1. 在“GUID”框中，输入跟踪 GUID。 仅输入不带前缀的 GUID `pid-` 。 在“描述”框中，输入产品/服务名称或描述。
 
@@ -102,7 +102,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 1. 在主模板文件中添加类型为 " [Microsoft. 资源/部署](/azure/templates/microsoft.resources/deployments) " 的新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 输入前缀后的 GUID 值 `pid-` 作为资源的名称。 例如，如果 GUID 为 eb7927c8-dd66-43e1-b0cf-c346a422063，则资源名称将为 _pid-eb7927c8_ -dd66-43e1-b0cf。
+1. 输入前缀后的 GUID 值 `pid-` 作为资源的名称。 例如，如果 GUID 为 eb7927c8-dd66-43e1-b0cf-c346a422063，则资源名称将为 _pid-eb7927c8_-dd66-43e1-b0cf。
 
 1. 检查模板是否存在任何错误。
 
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>报表
 
-你可以在合作伙伴中心仪表板 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)) 中找到客户使用情况归因报告。 若要查看报告，必须使用合作伙伴中心凭据登录。 如果在报告或登录时遇到任何问题，请按照“获取支持”部分中的说明创建支持请求。
-
-在“合作伙伴关联类型”下拉列表中选择“跟踪的模板”以查看报告。
-
-![客户使用情况归因报告](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+你可以在合作伙伴中心仪表板 ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview)) 中找到客户使用情况归因报告。 若要查看报告，必须使用合作伙伴中心凭据登录。 如果在报告或登录时遇到任何问题，请创建 [支持请求](#get-support)。
 
 ## <a name="notify-your-customers"></a>通知客户
 

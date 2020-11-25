@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001314"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用发送推送通知
 
@@ -84,12 +84,12 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 3. 更新新应用的以下三个值，然后选择“Continue”（继续）： 
 
-   - **说明** ：键入应用的描述性名称。
-   - **捆绑 ID** ：按 [应用分发指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所述，输入格式为 **Organization Identifier.Product Name** 的捆绑 ID。 “Organization Identifier”（组织标识符）和“Product Name”（产品名称）值必须与创建 Xcode 项目时使用的组织标识符与产品名称匹配。   在下面的屏幕截图中， **NotificationHubs** 值用作组织标识符， **GetStarted** 值用作产品名称。 确保“Bundle Identifier”（捆绑标识符）值与 Xcode 项目中的值匹配，这样 Xcode 就可以使用正确的发布配置文件。 
+   - **说明**：键入应用的描述性名称。
+   - **捆绑 ID**：按 [应用分发指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所述，输入格式为 **Organization Identifier.Product Name** 的捆绑 ID。 “Organization Identifier”（组织标识符）和“Product Name”（产品名称）值必须与创建 Xcode 项目时使用的组织标识符与产品名称匹配。   在下面的屏幕截图中，**NotificationHubs** 值用作组织标识符，**GetStarted** 值用作产品名称。 确保“Bundle Identifier”（捆绑标识符）值与 Xcode 项目中的值匹配，这样 Xcode 就可以使用正确的发布配置文件。 
 
       :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="注册应用 ID":::
 
-   - **推送通知** ：在“Capabilities”（功能）部分选中“Push Notifications”（推送通知）选项   。
+   - **推送通知**：在“Capabilities”（功能）部分选中“Push Notifications”（推送通知）选项   。
 
       :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="注册新应用 ID":::
 
@@ -139,7 +139,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
    :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="查找证书文件":::
 
-   默认情况下，下载的开发证书名为 **aps_development.cer** 。
+   默认情况下，下载的开发证书名为 **aps_development.cer**。
 
 5. 双击下载的推送证书“aps\_development.cer”。 此操作将在密钥链中安装新证书，如下图所示：
 

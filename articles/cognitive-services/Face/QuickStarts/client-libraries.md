@@ -14,11 +14,11 @@ ms.author: pafarley
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 按图像人脸搜索, 人脸识别搜索, 人脸识别, 人脸识别应用
 ms.openlocfilehash: de9467719c3e88d257edb64d2a9ac2a54412d6ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999311"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>快速入门：使用人脸客户端库
 

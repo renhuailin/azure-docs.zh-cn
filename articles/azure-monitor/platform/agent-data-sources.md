@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000736"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 代理数据源
-使用 [Log Analytics](log-analytics-agent.md) 代理从虚拟机收集的数据由你在 [Log Analytics 工作区](data-platform-logs.md)上配置的数据源定义 Azure Monitor。   每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
+Azure Monitor 通过 [Log Analytics](log-analytics-agent.md) 代理从虚拟机中收集的数据由你在 [Log Analytics 工作区](data-platform-logs.md)上配置的数据源定义。   每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
 
 > [!IMPORTANT]
-> 本文介绍 [Log Analytics 代理](log-analytics-agent.md) 的数据源，它是 Azure Monitor 使用的代理之一。 其他代理收集不同的数据，并以不同的方式进行配置。 请参阅 [Azure Monitor 代理概述](agents-overview.md) ，了解可用代理的列表及其可收集的数据。
+> 本文介绍 [Log Analytics 代理](log-analytics-agent.md)（Azure Monitor 使用的代理之一）的数据源。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md)。
 
 ![日志数据收集](media/agent-data-sources/overview.png)
 
@@ -25,7 +25,7 @@ ms.locfileid: "94490570"
 > 本文中所述的数据源仅适用于运行 Log Analytics 代理的虚拟机。 
 
 ## <a name="summary-of-data-sources"></a>数据源概要介绍
-下表列出了 Log Analytics 代理当前可用的代理数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了有关收集方法和收集频率的信息。 
+下表列出了 Log Analytics 代理当前提供的代理数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了有关收集方法和收集频率的信息。 
 
 
 | 数据源 | 平台 | Log Analytics 代理 | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
@@ -40,9 +40,9 @@ ms.locfileid: "94490570"
 
 
 ## <a name="configuring-data-sources"></a>配置数据源
-若要为 Log Analytics 代理配置数据源，请在 Azure 门户中转到 **Log Analytics 工作区** 菜单，并选择一个工作区。 单击 " **高级设置** "，然后单击 " **数据** "。 选择要配置的数据源。 您可以按照上表中的链接来了解每个数据源的文档以及有关其配置的详细信息。
+若要为 Log Analytics 代理配置数据源，请转到 Azure 门户中的“Log Analytics 工作区”菜单，然后选择一个工作区。 依次单击“高级设置”、“数据”。 选择要配置的数据源。 可以打开上表中的链接来访问每个数据源的文档及其配置的详细信息。
 
-任何配置都将传送到连接到该工作区的所有代理。  不能从此配置中排除任何连接的代理。
+任何配置都会传递到已连接到该工作区的所有代理。  不能从此配置中排除任何已连接的代理。
 
 ![配置 Windows 事件](media/agent-data-sources/configure-events.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "94490570"
 如果代理无法连接到 Azure Monitor 或 Operations Manager，将继续收集在建立连接时传送的数据。  如果数据量达到客户端的最大缓存大小，或者如果代理无法在 24 小时内建立连接，则可能会丢失数据。
 
 ## <a name="log-records"></a>日志记录
-Azure Monitor 收集的所有日志数据都作为记录存储在工作区中。  按不同数据源收集的记录具有其自己的属性集，并由其“ **类型** ”属性来识别。  有关每种记录类型的详细信息，请参阅每个数据源和解决方案的相关文档。
+Azure Monitor 收集的所有日志数据都作为记录存储在工作区中。  按不同数据源收集的记录具有其自己的属性集，并由其“**类型**”属性来识别。  有关每种记录类型的详细信息，请参阅每个数据源和解决方案的相关文档。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[监视解决方案](../insights/solutions.md)如何将功能添加到 Azure Monitor，以及如何将数据收集到工作区中。

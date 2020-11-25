@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321939"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000974"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Process 中的项目主管任务
 
@@ -43,7 +43,7 @@ ms.locfileid: "93321939"
 - 数据单位的 Azure DevOps **组织**
 - 数据科学团队的团队 **项目**
 - 团队模板和实用工具 **存储库**
-- 你对组织帐户的 **权限** ，用于为项目创建和编辑存储库
+- 你对组织帐户的 **权限**，用于为项目创建和编辑存储库
 
 若要克隆存储库并在本地计算机上修改内容或 Data Science Virtual Machine (DSVM) ，或设置 Azure 文件存储并将其装载到 DSVM，还需要考虑此清单：
 
@@ -63,7 +63,7 @@ ms.locfileid: "93321939"
    
    ![选择“新建存储库”](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。    在“存储库名称”下输入 *DSProject1* ，然后选择“创建”。  
+1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。    在“存储库名称”下输入 *DSProject1*，然后选择“创建”。  
    
    ![创建存储库](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -77,13 +77,13 @@ ms.locfileid: "93321939"
 
 1. 在团队项目的“摘要”页上，在左侧导航栏中选择“Repos”。   
    
-1. 在页面顶部选择存储库名称，然后从下拉列表中选择 **DSProject1** 。
+1. 在页面顶部选择存储库名称，然后从下拉列表中选择 **DSProject1**。
    
 1. 在“DSProject1 为空”  页面上，选择“导入”  。 
    
    ![选择“导入”](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. 在“导入 Git 存储库”  对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入 **TeamTemplate** 存储库的 URL。    URL 为 *https： \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name>* 。 例如： **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate** 。 
+1. 在“导入 Git 存储库”  对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入 **TeamTemplate** 存储库的 URL。    URL 为 *https： \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name>*。 例如：**https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**。 
    
 1. 选择“导入”  。 团队模板存储库的内容将导入到项目存储库中。 
    

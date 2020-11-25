@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000668"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>排查 Azure HDInsight 中的脚本操作问题
 
@@ -45,15 +45,15 @@ ms.locfileid: "93284479"
 
     ![脚本操作日志](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    在此目录下，日志分别针对 **头节点** 、 **工作器节点** 和 **Zookeeper 节点** 进行组织。 请看以下示例：
+    在此目录下，日志分别针对 **头节点**、**工作器节点** 和 **Zookeeper 节点** 进行组织。 请看以下示例：
 
-    * **头节点** ：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **头节点**：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **工作节点** ：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **工作节点**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper 节点** ：`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper 节点**：`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* 相应主机的所有 **stdout** 和 **stderr** 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt** 。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
+* 相应主机的所有 **stdout** 和 **stderr** 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
 
     ```output
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
@@ -75,7 +75,7 @@ ms.locfileid: "93284479"
 
 ## <a name="cant-import-name-blobservice"></a>无法导入名称 BlobService
 
-__症状__ 。 脚本操作失败。 在 Ambari 中查看该操作时，显示类似于以下错误的文本：
+__症状__。 脚本操作失败。 在 Ambari 中查看该操作时，显示类似于以下错误的文本：
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__原因__ 。 如果升级 HDInsight 群集中随附的 Python Azure 存储客户端，则会发生此错误。 HDInsight 需要 Azure 存储客户端 0.20.0。
+__原因__。 如果升级 HDInsight 群集中随附的 Python Azure 存储客户端，则会发生此错误。 HDInsight 需要 Azure 存储客户端 0.20.0。
 
-__解决方法__ 。 若要解决此错误，请使用 `ssh` 手动连接到每个群集节点。 运行以下命令重新安装正确的存储客户端版本：
+__解决方法__。 若要解决此错误，请使用 `ssh` 手动连接到每个群集节点。 运行以下命令重新安装正确的存储客户端版本：
 
 ```bash
 sudo pip install azure-storage==0.20.0

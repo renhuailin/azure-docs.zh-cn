@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999257"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>使用 SOLIDWORKS 设置工程类的实验室
 
@@ -76,7 +76,7 @@ SOLIDWORKS 网络许可要求你已在许可证服务器上安装并激活 Solid
     > [!NOTE]
     > 在 " **添加服务器** " 对话框中，系统会提示输入用于许可证服务器的 **端口号** 以及许可证服务器的名称或 IP 地址。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>Cost
 
 我们来介绍此类的可能的成本估算。 此估计不包括运行许可证服务器的成本。 我们将使用一类25名学生。 计划的类时间有20小时。 此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。 我们选择的虚拟机大小为 **小 GPU (可视化)**，即160实验室单元。
 

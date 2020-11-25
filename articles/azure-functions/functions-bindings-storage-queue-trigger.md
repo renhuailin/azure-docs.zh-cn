@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491437"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001229"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 [用法](#usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#message-metadata)解释了所有其他所示变量。
 
+# <a name="java"></a>[Java](#tab/java)
+
+以下 Java 示例显示了一个存储队列触发器函数，该函数用于记录放入队列 `myqueuename` 的触发消息。
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个队列触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
@@ -141,6 +157,42 @@ module.exports = async function (context, message) {
 ```
 
 [用法](#usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#message-metadata)解释了所有其他所示变量。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示如何通过触发器读取传递给函数的队列消息。
+
+在设置为的文件 *function.js* 中定义了存储队列触发器 `type` `queueTrigger` 。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+*Run.ps1* 文件中的代码将参数声明为 `$QueueItem` ，这允许您在函数中读取队列消息。
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-以下 Java 示例显示了一个存储队列触发器函数，该函数用于记录放入队列 `myqueuename` 的触发消息。
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ def main(msg: func.QueueMessage):
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支持特性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 不支持特性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 使用 `QueueTrigger` 注释可以访问触发函数的队列。 以下示例通过 `message` 参数向函数提供队列消息。
@@ -305,15 +333,27 @@ public class QueueTriggerDemo {
 |`queueName`  | 在存储帐户中声明队列名称。 |
 |`connection` | 指向存储帐户连接字符串。 |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
 ---
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `QueueTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**type** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
@@ -327,7 +367,7 @@ public class QueueTriggerDemo {
 
 使用 `string paramName` 等方法参数访问消息数据。 可以绑定到以下任何类型：
 
-* 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
+* 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -345,17 +385,21 @@ public class QueueTriggerDemo {
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
+# <a name="java"></a>[Java](#tab/java)
+
+使用 [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) 注释可以访问触发函数的队列消息。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 可通过 `context.bindings.<NAME>` 使用队列项有效负载，其中，`<NAME>` 与 *function.json* 中定义的名称相匹配。 如果有效负载为 JSON，该值将反序列化为对象。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+通过 string 参数访问队列消息，该参数与 `name` 文件中 *function.js* 的绑定参数指定的名称相匹配。
+
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的参数访问队列消息。
-
-# <a name="java"></a>[Java](#tab/java)
-
-使用 [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注释可以访问触发函数的队列消息。
+通过类型为 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true)的参数访问队列消息。
 
 ---
 
@@ -408,7 +452,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将队列存储消息写入 (输出绑定) ](./functions-bindings-storage-queue-output.md)
+- [向队列存储写入消息（输出绑定）](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

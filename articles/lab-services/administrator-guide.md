@@ -4,11 +4,11 @@ description: 本指南可帮助管理员使用 Azure 实验室服务创建和管
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024630"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999274"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 实验室服务 - 管理员指南
 信息技术 (IT) 管理大学云资源的管理员通常负责为学校设置实验室帐户。 设置实验室帐户后，管理员或教师将创建包含在该帐户内的实验室。 本文详细介绍了所涉及的 Azure 资源以及创建这些资源的指南。
@@ -168,7 +168,7 @@ ms.locfileid: "95024630"
 | 大小 | 规格 | 系列 | 建议用途 |
 | ---- | ----- | ------ | ------------- |
 | 小型| <ul><li>2 &nbsp; 核心</li><li>3.5 gb (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最适用于命令行，打开 web 浏览器，低流量 web 服务器，小型到中型数据库。 |
-| 中型 | <ul><li>4 &nbsp; 核</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最适合用于关系数据库、内存中缓存和分析。 |
+| 中 | <ul><li>4 &nbsp; 核</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最适合用于关系数据库、内存中缓存和分析。 |
 | 中型 (嵌套虚拟化)  | <ul><li>4 &nbsp; 核</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | 最适合用于关系数据库、内存中缓存和分析。
 | 大型 | <ul><li>8 &nbsp; 核</li><li>16 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | 最适合于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大型内存缓存的应用程序。  此大小还支持嵌套虚拟化。 |
 | 大型 (嵌套虚拟化)  | <ul><li>8 &nbsp; 核</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | 最适合于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大型内存缓存的应用程序。 |

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235891"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999415"
 ---
 虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具” > “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡。若要从应用访问 Azure 门户托管的控制台，请转到“工具” > “控制台”。
 
 #### <a name="tools"></a>工具
-在本机 Windows 应用程序中，工具 **ping** 、 **nslookup** 和 **tracert** 不会通过控制台工作，因为它们 (它们在 [自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)) 中工作。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
+在本机 Windows 应用程序中，工具 **ping**、 **nslookup** 和 **tracert** 不会通过控制台工作，因为它们 (它们在 [自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)) 中工作。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -26,7 +26,7 @@ nameresolver.exe hostname [optional: DNS Server]
 > nameresolver.exe 当前不适用于自定义 Windows 容器。
 >
 
-可以使用下一工具测试与主机的 TCP 连接情况，以及端口组合情况。 该工具名为 **tcpping** ，语法为：
+可以使用下一工具测试与主机的 TCP 连接情况，以及端口组合情况。 该工具名为 **tcpping**，语法为：
 
 ```console
 tcpping.exe hostname [optional: port]

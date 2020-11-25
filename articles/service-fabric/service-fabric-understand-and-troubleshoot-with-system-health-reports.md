@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000651"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
@@ -134,7 +134,7 @@ HealthEvents          :
 
 * **SourceId**：System.Hosting
 * **属性**：**ResourceGovernance**。
-* **后续步骤**：此问题可能会造成问题，因为服务包不会按预期进行强制调控并且[资源调控](service-fabric-resource-governance.md)不正常工作。 使用这些指标的正确节点容量更新群集清单，或者不指定节点容量，让 Service Fabric 自动检测可用资源。
+* **后续步骤**：此问题可能会造成问题，因为服务包不会按预期进行强制调控并且 [资源调控](service-fabric-resource-governance.md)不正常工作。 使用这些指标的正确节点容量更新群集清单，或者不指定节点容量，让 Service Fabric 自动检测可用资源。
 
 ## <a name="application-system-health-reports"></a>应用程序系统运行状况报告
 System.CM 表示群集管理器服务，是管理应用程序相关信息的主管服务。
@@ -389,7 +389,7 @@ HealthEvents          :
 * **属性**：以 **ReplicaConstraintViolation** 开头。
 
 ## <a name="replica-system-health-reports"></a>副本系统运行状况报告
-**System.RA**表示重新配置代理组件，是用于处理副本状态的主管组件。
+**System.RA** 表示重新配置代理组件，是用于处理副本状态的主管组件。
 
 ### <a name="state"></a>状态
 在副本创建后，System.RA 报告正常。

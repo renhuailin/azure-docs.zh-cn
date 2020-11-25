@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001042"
 ---
 # <a name="advanced-filtering"></a>高级筛选
 事件网格允许在 json 有效负载中的任何属性上指定筛选器。 这些筛选器将建模为 `AND` 条件集，每个外部条件都有可选的内部 `OR` 条件。 对于每个 `AND` 条件，请指定以下值：

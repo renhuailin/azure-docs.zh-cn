@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999413"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -23,13 +23,13 @@ ms.locfileid: "94523971"
 
 在同一区域中使用 VNet 与 Vnet 的集成时，可以使用以下 Azure 网络功能：
 
-* **网络安全组 (nsg)** ：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
-* **路由表 (udr)** ：可将路由表放置在集成子网上，以便发送出站流量。
+* **网络安全组 (nsg)**：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
+* **路由表 (udr)**：可将路由表放置在集成子网上，以便发送出站流量。
 
 默认情况下，应用仅将流量路由到 VNet 中。 如果要将所有出站流量路由到 VNet，请将应用设置 WEBSITE_VNET_ROUTE_ALL 应用到应用。 配置应用设置：
 
 1. 在应用门户中转到 **配置** UI。 选择“新应用程序设置”。
-1. 在 " **名称** " 框中输入 **WEBSITE_VNET_ROUTE_ALL** ，然后在 " **值** " 框中输入 **1** 。
+1. 在 "**名称**" 框中输入 **WEBSITE_VNET_ROUTE_ALL** ，然后在 "**值**" 框中输入 **1** 。
 
    ![提供应用程序设置][4]
 
@@ -110,5 +110,5 @@ Windows 和 Linux 应用程序（包括 [自定义容器](../articles/app-servic
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[VNETnsg]: /azure/virtual-network/security-overview/
+[privateendpoints]: ../articles/app-service/networking/private-endpoint.md

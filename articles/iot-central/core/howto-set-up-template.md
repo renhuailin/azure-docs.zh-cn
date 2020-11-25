@@ -11,11 +11,11 @@ ms.custom:
 - contperfq1
 - device-developer
 ms.openlocfilehash: f5b3e461408242553822024bc59c56a3feb29c44
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999512"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 

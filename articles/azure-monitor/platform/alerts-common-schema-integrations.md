@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000413"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -31,11 +31,11 @@ ms.locfileid: "92108875"
 
 1. 请按照[概述的步骤创建逻辑应用](./action-groups-logic-app.md)。 
 
-1.  选择触发器：“当收到 HTTP 请求时”****。
+1.  选择触发器：“当收到 HTTP 请求时”。
 
     ![逻辑应用触发器](media/action-groups-logic-app/logic-app-triggers.png "逻辑应用触发器")
 
-1.  选择“编辑”更改 HTTP 请求触发器。****
+1.  选择“编辑”更改 HTTP 请求触发器。
 
     ![HTTP 请求触发器](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
 
@@ -109,7 +109,7 @@ ms.locfileid: "92108875"
         }
     ```
 
-1. 选择 " **+** **新建步骤** "，然后选择 " **添加操作**"。
+1. 依次选择“+ 新建步骤”、“添加操作”  。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -138,4 +138,4 @@ ms.locfileid: "92108875"
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解操作组](./action-groups.md)。
-* [了解有关常见警报架构的详细信息](./alerts-common-schema.md)。
+* [详细了解常见警报架构](./alerts-common-schema.md)。

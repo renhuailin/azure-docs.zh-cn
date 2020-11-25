@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960234"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000889"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple 虚拟阵列 Update 1.0 发行说明
 
@@ -47,7 +47,7 @@ Update 1.0 包含与 StorSimple 设备管理器服务的身份验证相关的更
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不是。 | Feature | 问题 |
+| 不是。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |基于 AAD 的身份验证| 此版本包含允许 AAD 使用 StorSimple 设备管理器进行身份验证的更改。|
 | 2 |垃圾回收| 一个设备和存储帐户位于不同区域的客户站点报告了此问题，并且客户报告了间歇性网络错误对计费也产生了影响。 在此版本中已修复此问题。 |
@@ -58,7 +58,7 @@ Update 1.0 包含与 StorSimple 设备管理器服务的身份验证相关的更
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。
 
-| 不是。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中创建的虚拟阵列更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟阵列故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟阵列后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |

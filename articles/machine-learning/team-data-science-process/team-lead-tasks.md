@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000022"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process 团队主管的任务
 
@@ -29,19 +29,19 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 ![团队主管任务工作流](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. 在小组所在组织的 Azure DevOps 中创建 **团队项目** 。 
+1. 在小组所在组织的 Azure DevOps 中创建 **团队项目**。 
   
-1. 将默认的团队存储库重命名为 **TeamUtilities** 。
+1. 将默认的团队存储库重命名为 **TeamUtilities**。
   
 1. 在团队项目中创建新的 **TeamTemplate** 存储库。 
   
 1. 将小组的 **GroupUtilities** 和 **GroupProjectTemplate** 存储库的内容导入 **TeamUtilities** 和 **TeamTemplate** 存储库。 
   
-1. 通过添加团队成员并配置其权限来设置 **安全控制** 。
+1. 通过添加团队成员并配置其权限来设置 **安全控制**。
   
 1. 根据需要创建团队数据和分析资源：
    - 将团队特定的实用工具添加到 **TeamUtilities** 存储库。 
-   - 创建 **Azure 文件存储** ，用于存储可用于整个团队的数据资产。 
+   - 创建 **Azure 文件存储**，用于存储可用于整个团队的数据资产。 
    - 将 Azure 文件存储装载到团队主管的 **Data Science Virtual Machine** (DSVM) 并在其中添加数据资产。
 
 以下教程详细介绍了相关步骤。
@@ -77,7 +77,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 - 没有多个数据科学团队的小型数据科学小组。 
 - 具有多个数据科学团队的较大型数据科学小组，不过，该科学小组希望通过小组级冲刺规划等活动来优化团队间协作。 
 
-如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于 *\<TeamName> 模板* 和 *\<TeamName> 实用工具* 的名称创建存储库。 例如： *TeamATemplate* 和 *TeamAUtilities* 。 
+如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于 *\<TeamName> 模板* 和 *\<TeamName> 实用工具* 的名称创建存储库。 例如： *TeamATemplate* 和 *TeamAUtilities*。 
 
 在任何情况下，团队主管都需要让其团队成员知道要设置和克隆哪个模板和实用工具存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
@@ -85,17 +85,17 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 为团队创建单独的项目：
 
-1. 在 web 浏览器中，在 URL *https： \/ / \<server name> / \<organization name>* ，中转到你的组的 Azure DevOps 组织主页，然后选择 " **新建项目** "。 
+1. 在 web 浏览器中，在 URL *https： \/ / \<server name> / \<organization name>*，中转到你的组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
    
    ![选择“新建项目”](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. 在“创建项目”对话框中的“项目名称”下输入团队名称（例如 *MyTeam* ），然后选择“高级”。 
+1. 在“创建项目”对话框中的“项目名称”下输入团队名称（例如 *MyTeam*），然后选择“高级”。 
    
-1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。 然后选择“创建”。 
+1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。 然后选择“创建”  。 
    
    ![创建项目](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-此时将打开 "团队项目 **摘要** " 页，其中包含页 URL *https： \/ / \<server name> / \<organization name> / \<team name>* 。
+此时将打开 "团队项目 **摘要**" 页，其中包含页 URL *https： \/ / \<server name> / \<organization name> / \<team name>*。
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>将 MyTeam 默认存储库重命名为 TeamUtilities
 
@@ -110,7 +110,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
    ![选择“重命名存储库”](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. 在“重命名 MyTeam 存储库”弹出窗口中输入 *TeamUtilities* ，然后选择“重命名”。 
+1. 在“重命名 MyTeam 存储库”弹出窗口中输入 *TeamUtilities*，然后选择“重命名”。 
 
 ### <a name="create-the-teamtemplate-repository"></a>创建 TeamTemplate 存储库
 
@@ -120,7 +120,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
    或者，从“MyTeam”项目“摘要”页的左侧导航窗格中选择“存储库”，选择页面顶部的存储库，然后从下拉列表中选择“新建存储库”。
    
-1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。 在“存储库名称”下输入 *TeamTemplate* ，然后选择“创建”。
+1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。 在“存储库名称”下输入 *TeamTemplate*，然后选择“创建”。
    
    ![创建存储库](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -140,7 +140,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
    ![选择“导入”](./media/team-lead-tasks/import-repo.png)
    
-1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。 URL 为 *https： \/ / \<server name> / \<organization name> /_git/ \<repository name>* 。 例如： *https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate* 。 
+1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。 URL 为 *https： \/ / \<server name> / \<organization name> /_git/ \<repository name>*。 例如：*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
    
 1. 选择“导入”  。 小组模板存储库的内容随即会导入到团队模板存储库中。 
    
@@ -148,7 +148,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
 1. 在项目的“存储库”页的顶部，选择“TeamUtilities”存储库。
    
-1. 重复导入过程，将小组通用实用工具存储库（例如 *GroupUtilities* ）的内容导入 **TeamUtilities** 存储库。 
+1. 重复导入过程，将小组通用实用工具存储库（例如 *GroupUtilities*）的内容导入 **TeamUtilities** 存储库。 
    
 两个团队存储库中的每一个现在包含相应小组通用存储库中的文件。 
 
@@ -195,7 +195,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 1. 在本地计算机上创建以下目录：
    
    - 对于 Windows： **C:\GitRepos\MyTeam**
-   - 对于 Linux： **$home/GitRepos/MyTeam** 
+   - 对于 Linux：**$home/GitRepos/MyTeam** 
    
 1. 切换到创建的目录。
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前配置全局参数 *user.name* 和 *user.email* 。 运行以下两个命令：
+> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前配置全局参数 *user.name* 和 *user.email*。 运行以下两个命令：
 > 
 > `git config --global user.name <your name>`
 > 
@@ -296,7 +296,7 @@ git push
    
 1. 在所选订阅下选择要使用的存储帐户或者创建一个新的存储帐户。 对于 Azure 文件存储名称，可以使用小写字符、数字和连字符。
    
-1. 为了方便装载和共享存储，请按 Enter 或输入 *Y* ，将 Azure 文件存储信息保存到当前目录中的某个文本文件内。 可将此文本文件签入 **TeamTemplate** 存储库（最好是在 **Docs\DataDictionaries** 下），以便团队中的所有项目都可以访问它。 在下一部分，也需要使用这些文件信息将 Azure 文件存储装载到 Azure DSVM。 
+1. 为了方便装载和共享存储，请按 Enter 或输入 *Y*，将 Azure 文件存储信息保存到当前目录中的某个文本文件内。 可将此文本文件签入 **TeamTemplate** 存储库（最好是在 **Docs\DataDictionaries** 下），以便团队中的所有项目都可以访问它。 在下一部分，也需要使用这些文件信息将 Azure 文件存储装载到 Azure DSVM。 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>在本地计算机或 DSVM 上装载 Azure 文件存储
 
@@ -318,7 +318,7 @@ git push
    
 1. 如果在上一步骤中保存了 Azure 文件存储信息文件，请按 Enter 或输入 *Y* 继续。 输入创建的文件的完整路径和名称。 
    
-   如果没有 Azure 文件存储信息文件，请输入 *n* ，然后按照说明输入订阅、Azure 存储帐户和 Azure 文件存储信息。
+   如果没有 Azure 文件存储信息文件，请输入 *n*，然后按照说明输入订阅、Azure 存储帐户和 Azure 文件存储信息。
    
 1. 输入要在其上装载文件共享的本地驱动器或 TDSP 驱动器的名称。 屏幕中会显示现有驱动器名称的列表。 提供尚不存在的驱动器名称。
    

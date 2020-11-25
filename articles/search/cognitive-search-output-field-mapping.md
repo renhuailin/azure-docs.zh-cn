@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935358"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001297"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何将 AI 扩充字段映射到可搜索索引
 
@@ -89,7 +89,7 @@ sourceFieldName 中的路径可以表示一个元素或多个元素。 在上述
 
 如果有多个元素，它们将“平展”成包含每个元素的数组。 
 
-更具体地说，对于 ```/document/content/organizations/*/description``` 示例，**“描述”字段中的数据在编制索引之前将类似于说明的平面数组：
+更具体地说，对于 ```/document/content/organizations/*/description``` 示例，“描述”字段中的数据在编制索引之前将类似于说明的平面数组：
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]

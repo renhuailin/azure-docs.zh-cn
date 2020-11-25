@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967017"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000906"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array 更新 0.6 发行说明
 
@@ -52,7 +52,7 @@ ms.locfileid: "94967017"
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不是。 | Feature | 问题 |
+| 不是。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |安全性| 此版本包含重要的 Windows 安全更新。 建议立即安装此更新。|
 | 2 |还原| 还原过程中存在阻止还原工作完成的争用条件。 Bug 修补程序解决了此争用条件。|
@@ -62,7 +62,7 @@ ms.locfileid: "94967017"
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。
 
-| 不是。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中所创建的虚拟设备更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟设备故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟设备后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |

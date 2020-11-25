@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000294"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
@@ -39,7 +39,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 可以通过以下步骤更改服务器上的备份保留期：
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure Database for MySQL 服务器。 此操作将打开“概述”页。
-3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改 **备份保留期** （7 天到 35 天）。
+3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改 **备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
 :::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="增加的备份保留期":::
 
@@ -62,10 +62,10 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 3. 使用必需信息填写“还原”窗体：
 
    :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL - 还原信息":::
-   - **还原点** ：选择要还原到的时间点。
-   - **目标服务器** ：提供新服务器的名称。
-   - **位置** ：不可选择区域。 默认情况下，此值与源服务器相同。
-   - **定价层** ：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
+   - **还原点**：选择要还原到的时间点。
+   - **目标服务器**：提供新服务器的名称。
+   - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。
+   - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
 
 4. 单击“确定”，将服务器还原到某个时间点。 
 
@@ -110,9 +110,9 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="继续进行备份。":::
 
-7. 根据需要填写窗体的其余部分。 可以选择任意 **位置** 。
+7. 根据需要填写窗体的其余部分。 可以选择任意 **位置**。
 
-    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改 **定价层** （“基本”、“常规用途”或“内存优化”）或 **存储** 大小。
+    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改 **定价层**（“基本”、“常规用途”或“内存优化”）或 **存储** 大小。
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="填写表单。"::: 
 

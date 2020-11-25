@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000107"
 ---
 # <a name="question-and-answer-pair-concepts"></a>问题和答案对概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "94576183"
 问答 (QnA) 对中的 **必需** 设置如下：
 
 * 用户查询的 **问题** 文本，用于 QnA Maker 机器学习，与用户的问题文本与不同的措辞保持一致，但回答相同
-* **答案** -该对的答案是在用户查询与关联的问题匹配时返回的响应
+* **答案**-该对的答案是在用户查询与关联的问题匹配时返回的响应
 
 每个对由 **ID** 表示。
 
@@ -29,7 +29,7 @@ ms.locfileid: "94576183"
 
 * **问题的替代形式** -这有助于 QnA Maker 返回更多问题的正确答案句式
 * **元** 数据：元数据是与 QnA 对关联的标记，以键值对的形式表示。 元数据标记用于筛选 QnA 对并限制对其执行查询匹配的集。
-* **多提示** ，用于继续多轮对话
+* **多提示**，用于继续多轮对话
 
 ![QnA Maker 知识库](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

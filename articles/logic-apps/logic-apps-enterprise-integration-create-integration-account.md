@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000041"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中用于 B2B 企业集成的集成帐户
 
@@ -39,17 +39,17 @@ ms.locfileid: "93347823"
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)或 [Azure CLI](/cli/azure/resource#az-resource-create)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 主菜单上选择“创建资源”。 在搜索框中，输入 "集成帐户" 作为筛选器，并选择 " **集成帐户** "。
+1. 在 Azure 主菜单上选择“创建资源”。 在搜索框中，输入 "集成帐户" 作为筛选器，并选择 " **集成帐户**"。
 
    ![创建新的集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-1. 在 " **集成帐户** " 下，选择 " **创建** "。
+1. 在 " **集成帐户**" 下，选择 " **创建**"。
 
    ![选择“添加”以创建集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
@@ -57,13 +57,13 @@ ms.locfileid: "93347823"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | 属性 | 必须 | 值 | 描述 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <*集成帐户-名称*> | 集成帐户的名称，其中只能包含字母、数字、连字符 (`-`) 、下划线 (`_`) 、括号 (`(` 、 `)`) 和句点 (`.`) 。 此示例使用 "Fabrikam-集成"。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md) 的名称。 在此示例中，创建名为 "FabrikamIntegration" 的新资源组。 |
-   | **定价层** | 是 | <*定价级别*> | 可在以后更改的集成帐户的定价层。 对于本示例，请选择 " **免费** "。 有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意** ：若要在 [integration service 环境中 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ise" 作为位置。 有关详细信息，请参阅 [在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+   | **定价层** | 是 | <*定价级别*> | 可在以后更改的集成帐户的定价层。 对于本示例，请选择 " **免费**"。 有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意**：若要在 [integration service 环境中 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ise" 作为位置。 有关详细信息，请参阅 [在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
    | **Log Analytics** | 否 | 关闭，打开 | 对于本示例，请保留 **Off** 设置。 |
    |||||
 
@@ -160,11 +160,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 在 [Azure 门户](https://portal.azure.com)中，打开现有的逻辑应用或创建新的逻辑应用。
 
-1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。 在 " **集成帐户** " 下，打开 " **选择集成帐户** 列表"。 选择要链接到逻辑应用的集成帐户。
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。 在 " **集成帐户**" 下，打开 " **选择集成帐户** 列表"。 选择要链接到逻辑应用的集成帐户。
 
    ![选择集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/select-integration-account.png)
 
-1. 若要完成链接，请选择 " **保存** "。
+1. 若要完成链接，请选择 " **保存**"。
 
    ![屏幕截图，显示选择 "保存" 的位置以选择集成帐户。](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
@@ -189,7 +189,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 若要进行此更改，可以使用 Azure 门户或 Azure CLI。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -203,7 +203,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![在集成帐户菜单中选择“概述”](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 在 "概述" 窗格上，选择 " **升级定价层** "，其中列出了所有可用的更高级别。 选择层时，更改会立即生效。
+1. 在 "概述" 窗格上，选择 " **升级定价层**"，其中列出了所有可用的更高级别。 选择层时，更改会立即生效。
 
 <a name="upgrade-tier-azure-cli"></a>
 
@@ -265,11 +265,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![查找并选择逻辑应用](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-1. 在资源管理器标题栏上，选择 " **读/写** "。
+1. 在资源管理器标题栏上，选择 " **读/写**"。
 
    ![启用“读/写”模式](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-read-write.png)
 
-1. 在 " **数据** " 选项卡上，选择 " **编辑** "。
+1. 在 " **数据** " 选项卡上，选择 " **编辑**"。
 
    ![在 "数据" 选项卡上，选择 "编辑"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
@@ -305,17 +305,17 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 的 Azure 搜索框中输入 "集成帐户" 作为筛选器，并选择 " **集成帐户** "。
+1. 在 Azure 的 Azure 搜索框中输入 "集成帐户" 作为筛选器，并选择 " **集成帐户**"。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure 显示 Azure 订阅中的所有集成帐户。
 
-1. 在“集成帐户”下，选择要移动的集成帐户。 在集成帐户菜单中，选择 " **概述** "。
+1. 在“集成帐户”下，选择要移动的集成帐户。 在集成帐户菜单中，选择 " **概述**"。
 
    ![在 "集成帐户" 菜单上，选择 "概述"](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 选择 " **资源组** " 或 " **订阅名称** " 旁边的 " **更改** "。
+1. 选择 " **资源组** " 或 " **订阅名称**" 旁边的 " **更改**"。
 
    ![更改资源组或订阅](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
 
@@ -323,11 +323,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 根据所做的选择，请按照以下步骤更改资源组或订阅：
 
-   * 资源组：从 " **资源组** " 列表中，选择目标资源组。 或者，若要创建其他资源组，请选择 " **创建新的资源组** "。
+   * 资源组：从 " **资源组** " 列表中，选择目标资源组。 或者，若要创建其他资源组，请选择 " **创建新的资源组**"。
 
-   * 订阅：从 " **订阅** " 列表中，选择目标订阅。 在“资源组”列表中选择目标资源组。 或者，若要创建其他资源组，请选择 " **创建新的资源组** "。
+   * 订阅：从 " **订阅** " 列表中，选择目标订阅。 在“资源组”列表中选择目标资源组。 或者，若要创建其他资源组，请选择 " **创建新的资源组**"。
 
-1. 若要确认你的了解，在使用新的资源 Id 更新它们之前，与所移动资源关联的任何脚本或工具都不起作用，请选择确认框，然后选择 **"确定"** 。
+1. 若要确认你的了解，在使用新的资源 Id 更新它们之前，与所移动资源关联的任何脚本或工具都不起作用，请选择确认框，然后选择 **"确定"**。
 
 1. 完成后，请确保为已移动资源的新资源 Id 更新任何和所有脚本。  
 
@@ -337,21 +337,21 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 的 Azure 搜索框中输入 "集成帐户" 作为筛选器，并选择 " **集成帐户** "。
+1. 在 Azure 的 Azure 搜索框中输入 "集成帐户" 作为筛选器，并选择 " **集成帐户**"。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure 显示 Azure 订阅中的所有集成帐户。
 
-1. 在“集成帐户”下，选择要删除的集成帐户。 在集成帐户菜单中，选择 " **概述** "。
+1. 在“集成帐户”下，选择要删除的集成帐户。 在集成帐户菜单中，选择 " **概述**"。
 
    ![在 "集成帐户" 菜单上，选择 "概述"](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 在 "概述" 窗格上，选择 " **删除** "。
+1. 在 "概述" 窗格上，选择 " **删除**"。
 
    ![在 "概述" 窗格上，选择 "删除"](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
 
-1. 若要确认是否要删除集成帐户，请选择 **"是"** 。
+1. 若要确认是否要删除集成帐户，请选择 **"是"**。
 
    ![若要确认删除，请选择 "是"](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 

@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520709"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000311"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
@@ -110,7 +110,7 @@ ms.locfileid: "86520709"
    此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
 
    > [!IMPORTANT]
-   > *确保*选择“另存为”  ，以便所有连接引用在升级后的逻辑应用中保持有效。
+   > *确保* 选择“另存为”  ，以便所有连接引用在升级后的逻辑应用中保持有效。
 
 3. 在升级边栏选项卡工具栏中，选择“另存为”  。
 
