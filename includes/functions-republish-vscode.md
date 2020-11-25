@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: glenga
 ms.openlocfilehash: 574756aa9d9bac4aa42febf6a4fca4c62014db3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84732459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010434"
 ---
 1. 在 Visual Studio Code 中选择 F1 键，打开命令面板。 在命令面板中，搜索并选择“Azure Functions: 部署到函数应用”。
 

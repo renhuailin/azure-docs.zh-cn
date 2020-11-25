@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 3e6e060f4af2addba66ed02e82d76dd520375f25
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 76af225b6f93e0a47799234e3e2b430344f68787
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516401"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009987"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共 IP 地址
 
@@ -37,6 +37,9 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
     --name myResourceGroup \
     --location eastus2
 ```
+
+## <a name="create-public-ip"></a>创建公共 IP
+
 ---
 # <a name="standard-sku---using-zones"></a>[**标准 SKU-使用区域**](#tab/option-create-public-ip-standard-zones)
 

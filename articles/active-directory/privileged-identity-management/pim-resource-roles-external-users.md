@@ -16,11 +16,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365521"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010633"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中邀请来宾用户并分配 Azure 资源角色
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 来宾用户是 Azure AD 中企业对企业 (B
 
 1. 选择“Azure 资源” 。
 
-1. 使用资源筛选器**** 对托管资源的列表进行筛选。
+1. 使用资源筛选器对托管资源的列表进行筛选。
 
 1. 选择要管理的资源，例如资源、资源组、订阅或管理组。
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 来宾用户是 Azure AD 中企业对企业 (B
 
 1. 在角色页面上，选择“添加成员”以打开“新建分配”窗格。
 
-1. 单击“选择成员或组”。****
+1. 单击“选择成员或组”。
 
     ![“新建分配 - 选择成员或组”窗格，其中列出了用户和组以及一个“邀请”选项](./media/pim-resource-roles-external-users/select-member-group.png)
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) 来宾用户是 Azure AD 中企业对企业 (B
 
 1. 选择电子邮件中的“开始”链接。
 
-1. 查看权限后，单击“接受”。****
+1. 查看权限后，单击“接受”。
 
     ![浏览器中的“查看权限”页面，其中包含组织想要你查看的权限列表](./media/pim-resource-roles-external-users/invite-accept.png)
 
@@ -141,7 +141,7 @@ Azure Active Directory (Azure AD) 来宾用户是 Azure AD 中企业对企业 (B
 
     需要指定一些信息来激活角色，具体取决于角色设置。
 
-1. 指定角色设置后，单击“激活”，以激活角色。****
+1. 指定角色设置后，单击“激活”，以激活角色。
 
     ![“激活”页面，其中列出了作用域和用来指定开始时间、持续时间和原因的选项](./media/pim-resource-roles-external-users/activate-role.png)
 

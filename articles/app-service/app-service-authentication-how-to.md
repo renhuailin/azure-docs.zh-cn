@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010191"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -170,13 +170,13 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用后，应用服务会自动刷新经过身份验证的用户的 [令牌存储](overview-authentication-authorization.md#token-store) 中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
 
-- **Google** ：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
-- **Facebook** ：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
-- **Twitter** ：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
-- **Microsoft 帐户** ： [配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
-- **Azure Active Directory** ：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
+- **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
+- **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
+- **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
+- **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
+- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
     1. 在页面顶部，选择“读/写”。
-    2. 在左侧浏览器中，导航到 " **订阅** " > * * _\<subscription\_name_** > **resourceGroups** > *_ * \<resource\_group\_name> _> **提供商** ">  >  **Microsoft.Web**  >  **sites** >。_ \<app\_name> **config**  >  **authsettings** 
+    2. 在左侧浏览器中，导航到 "**订阅**" > * *_\<subscription\_name_** > **resourceGroups** > *_* \<resource\_group\_name> _>**提供商**">  >  **Microsoft.Web**  >  **sites** >。_ \<app\_name> **config**  >  **authsettings** 
     3. 单击 **“编辑”** 。
     4. 修改以下属性。 替换 _\<app\_id>_ 为要访问的服务的 Azure Active Directory 应用程序 ID。
 
@@ -221,9 +221,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登录帐户的域
 
-Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_ 、 _live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许对登录帐户使用任意数量的自定义域。 但是，建议将用户直接转到自己品牌的 Azure AD 登录页面（如 `contoso.com`）。 若要推荐登录帐户的域名，请执行以下步骤。
+Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许对登录帐户使用任意数量的自定义域。 但是，建议将用户直接转到自己品牌的 Azure AD 登录页面（如 `contoso.com`）。 若要推荐登录帐户的域名，请执行以下步骤。
 
-在中 [https://resources.azure.com](https://resources.azure.com) ，导航到 " **订阅** " > * * _\<subscription\_name_** > **resourceGroups** > *_ * \<resource\_group\_name> _> **提供商** ">  >  **Microsoft.Web**  >  **sites** >。_ \<app\_name> **config**  >  **authsettings** 
+在中 [https://resources.azure.com](https://resources.azure.com) ，导航到 "**订阅**" > * *_\<subscription\_name_** > **resourceGroups** > *_* \<resource\_group\_name> _>**提供商**">  >  **Microsoft.Web**  >  **sites** >。_ \<app\_name> **config**  >  **authsettings** 
 
 单击“编辑”，修改以下属性，然后单击“放置”。 请确保将替换为所 _\<domain\_name>_ 需的域。
 

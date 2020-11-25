@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576438"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010174"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>设置 Azure App Service 访问限制
 
@@ -38,9 +38,9 @@ ms.locfileid: "94576438"
 
 1. 登录到 Azure 门户。
 
-1. 在左侧窗格中，选择 " **网络** "。
+1. 在左侧窗格中，选择 " **网络**"。
 
-1. 在 " **网络** " 窗格的 " **访问限制** " 下，选择 " **配置访问限制** "。
+1. 在 " **网络** " 窗格的 " **访问限制**" 下，选择 " **配置访问限制**"。
 
    ![Azure 门户中的 "应用服务网络选项" 窗格的屏幕截图。](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -52,25 +52,25 @@ ms.locfileid: "94576438"
 
 ### <a name="add-an-access-restriction-rule"></a>添加访问限制规则
 
-若要向应用添加访问限制规则，请在 " **访问限制** " 窗格中选择 " **添加规则** "。 添加规则后，它将立即生效。 
+若要向应用添加访问限制规则，请在 " **访问限制** " 窗格中选择 " **添加规则**"。 添加规则后，它将立即生效。 
 
 规则按优先级顺序强制执行，从 " **优先级** " 列中的最小值开始。 添加甚至单个规则后，隐式 " *全部拒绝* " 会生效。
 
 在 " **添加 IP 限制** " 窗格中创建规则时，请执行以下操作：
 
-1. 在 " **操作** " 下，选择 " **允许** " 或 " **拒绝** "。  
+1. 在 " **操作**" 下，选择 " **允许** " 或 " **拒绝**"。  
 
    !["添加 IP 限制" 窗格的屏幕截图。](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
    
 1. （可选）输入规则的名称和描述。  
 1. 在 " **类型** " 下拉列表中，选择规则的类型。  
 1. 在 " **优先级** " 框中，输入一个优先级值。  
-1. 在 " **订阅** "、" **虚拟网络** " 和 " **子网** " 下拉列表中，选择要限制对其进行访问的内容。  
+1. 在 " **订阅**"、" **虚拟网络**" 和 " **子网** " 下拉列表中，选择要限制对其进行访问的内容。  
 
 ### <a name="set-an-ip-address-based-rule"></a>设置基于 IP 地址的规则
 
 按照上一部分中所述的过程进行操作，但有以下差异：
-* 在步骤3的 " **类型** " 下拉列表中，选择 " **IPv4** " 或 " **IPv6** "。 
+* 在步骤3的 " **类型** " 下拉列表中，选择 " **IPv4** " 或 " **IPv6**"。 
 
 为 IPv4 和 IPv6 地址指定无类别 Inter-Domain 路由 (CIDR) 表示法中的 IP 地址。 若要指定地址，可以使用 *1.2.3.4/32* 等内容，其中前四个八位字节表示你的 IP 地址， */32* 是掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 若要了解有关 CIDR 表示法的详细信息，请参阅无 [类别 Inter-Domain 路由](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
 
@@ -101,7 +101,7 @@ ms.locfileid: "94576438"
 
 1. 若要开始编辑现有的访问限制规则，请在 " **访问限制** " 页上双击要编辑的规则。
 
-1. 在 " **编辑 IP 限制** " 窗格中进行更改，然后选择 " **更新规则** "。 编辑会立即生效，包括优先级排序更改。
+1. 在 " **编辑 IP 限制** " 窗格中进行更改，然后选择 " **更新规则**"。 编辑会立即生效，包括优先级排序更改。
 
    ![Azure 门户中 "编辑 IP 限制" 窗格的屏幕截图，显示现有访问限制规则的字段。](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "94576438"
 
 ### <a name="delete-a-rule"></a>删除规则
 
-若要删除规则，请在 " **访问限制** " 页上，选择要删除的规则旁边的省略号 ( **...** ) ，然后选择 " **删除** "。
+若要删除规则，请在 " **访问限制** " 页上，选择要删除的规则旁边的省略号 (**...**) ，然后选择 " **删除**"。
 
 !["访问限制" 页的屏幕截图，显示要删除的访问限制规则旁边的 "删除" 省略号。](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "94576438"
 
 ## <a name="restrict-access-to-an-scm-site"></a>限制对 SCM 站点的访问 
 
-除了能够控制对应用程序的访问权限外，你还可以限制对你的应用程序使用的 SCM 网站的访问权限。 SCM 站点既是 web 部署终结点，也是 Kudu 控制台。 你可以单独向此应用分配对 SCM 站点的访问限制，或对应用和 SCM 站点使用相同的限制集。 选中 " **限制为 \<app name>** " 复选框时，所有内容都将被遮蔽。如果清除该复选框，则会重新应用 SCM 站点设置。 
+除了能够控制对应用程序的访问权限外，你还可以限制对你的应用程序使用的 SCM 网站的访问权限。 SCM 站点既是 web 部署终结点，也是 Kudu 控制台。 你可以单独向此应用分配对 SCM 站点的访问限制，或对应用和 SCM 站点使用相同的限制集。 选中 "**限制为 \<app name>** " 复选框时，所有内容都将被遮蔽。如果清除该复选框，则会重新应用 SCM 站点设置。 
 
 ![Azure 门户中的 "访问限制" 页的屏幕截图，显示没有为 SCM 站点或应用设置任何访问限制。](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 

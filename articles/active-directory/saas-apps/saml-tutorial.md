@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: 0b15d560e2678772cefdf3d87c047013b24ed467
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010274"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>教程：Azure Active Directory 与 SAML 1.1 Token enabled LOB App 的集成
 
@@ -61,7 +61,7 @@ ms.locfileid: "92675476"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **SAML 1.1 Token enabled LOB App** ，在结果面板中选择“SAML 1.1 Token enabled LOB App”，然后单击“添加”按钮以添加该应用程序。  
+4. 在搜索框中键入 **SAML 1.1 Token enabled LOB App**，在结果面板中选择“SAML 1.1 Token enabled LOB App”，然后单击“添加”按钮以添加该应用程序。  
 
      ![结果列表中的 SAML 1.1 Token enabled LOB App](common/search-new-app.png)
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010439"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -64,9 +64,9 @@ Azure Functions 扩展提供以下优势：
 
     ![创建函数](./media/functions-develop-vs-code/create-function.png)
 
-1. 选择函数应用项目所在的文件夹，然后**选择函数项目的语言**。
+1. 选择函数应用项目所在的文件夹，然后 **选择函数项目的语言**。
 
-1. 如果尚未安装 Core Tools，系统会要求你**选择要安装的 Core Tools 版本**。 选择版本 2.x 或更高版本。 
+1. 如果尚未安装 Core Tools，系统会要求你 **选择要安装的 Core Tools 版本**。 选择版本 2.x 或更高版本。 
 
 1. 选择“HTTP 触发器”函数模板，或者可以选择“暂时跳过”以创建不带函数的项目。  以后始终可以[将函数添加到项目](#add-a-function-to-your-project)。
 
@@ -247,7 +247,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 1. 如果你未登录，系统会提示“登录到 Azure”。 你还可以 **创建免费的 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
 
-1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用...”**_“高级”_**。 使用此“高级”选项可以更好地控制在 Azure 中创建的资源。 
+1. 如果你有多个订阅，请为函数应用 **选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用...”**_“高级”_**。 使用此“高级”选项可以更好地控制在 Azure 中创建的资源。 
 
 1. 按提示操作并提供以下信息：
 
@@ -388,9 +388,9 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 
 ### <a name="application-insights"></a>Application Insights
 
-我们建议通过将函数应用与 Application Insights 集成来监视函数的执行。 在 Azure 门户中创建函数应用时，默认情况下会完成此集成。 在 Visual Studio 发布期间创建函数应用时，需要自己集成 Application Insights。 若要了解如何操作，请参阅 [启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。
+我们建议通过将函数应用与 Application Insights 集成来监视函数的执行。 在 Azure 门户中创建函数应用时，默认情况下会完成此集成。 在 Visual Studio 发布期间创建函数应用时，需要自己集成 Application Insights。 若要了解如何操作，请参阅[启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。
 
-若要了解有关使用 Application Insights 进行监视的详细信息，请参阅 [监视 Azure Functions](functions-monitoring.md)。
+若要详细了解如何使用 Application Insights 进行监视，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="c-script-projects"></a>C\# 脚本项目
 

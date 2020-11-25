@@ -4,11 +4,11 @@ description: 若要通过 Azure Lighthouse 部署使用更正任务的策略，�
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163248"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010089"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
@@ -19,9 +19,9 @@ ms.locfileid: "88163248"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>创建一个可以在客户租户中将角色分配给托管标识的用户
 
-将客户加入 Azure Lighthouse 时，请使用 [azure 资源管理器模板](onboard-customer.md#create-an-azure-resource-manager-template) 以及用于定义管理租户中的用户、用户组和服务主体的参数文件，这些用户、用户组和服务主体将能够访问客户租户中的委派资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的[内置角色](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**)。
+将客户加入 Azure Lighthouse 时，请使用 [azure 资源管理器模板](onboard-customer.md#create-an-azure-resource-manager-template) 以及用于定义管理租户中的用户、用户组和服务主体的参数文件，这些用户、用户组和服务主体将能够访问客户租户中的委派资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的 [内置角色](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**)。
 
-若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。**** 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
+若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
 

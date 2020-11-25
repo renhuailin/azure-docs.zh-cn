@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: ca8d8edd334d89e03624793a35c49971ba8161ec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d944d1d3e9c72471fab2435430a7d13e1770e807
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94885267"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010436"
 ---
 ## <a name="local-settings-file"></a>本地设置文件
 
@@ -46,7 +46,7 @@ local.settings.json 文件存储应用设置、连接字符串和本地开发工
 | **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此设置。 |
 | **`CORS`** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
 | **`CORSCredentials`** |  设置为 `true` 时，允许 `withCredentials` 请求。 |
-| **`ConnectionStrings`** | 一个集合。 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不会使用其他应用设置发布到 Azure。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在门户中的应用程序设置中。 |
+| **`ConnectionStrings`** | 一个集合。 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](/ef/ef6/)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](/dotnet/api/system.data.sqlclient) 的环境中。 此集合中的项不会使用其他应用设置发布到 Azure。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](/dotnet/api/system.data.sqlclient.sqlconnection)，则应将连接字符串值与其他连接一起存储在门户中的应用程序设置中。 |
 
 在本地运行时，以下应用程序设置可包括在 `Values` 中：
 

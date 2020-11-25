@@ -4,11 +4,11 @@ description: 本文介绍如何排查和解决用于容器的 Azure Monitor 存�
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890354"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010582"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
@@ -23,10 +23,10 @@ ms.locfileid: "92890354"
 此外，还可以通过执行以下步骤，在 Azure 门户中手动授予此角色：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户中，单击左上角的“所有服务”  。 在资源列表中，键入 **Kubernetes** 。 开始键入时，会根据输入筛选该列表。 选择“Azure Kubernetes”  。
+2. 在 Azure 门户中，单击左上角的“所有服务”  。 在资源列表中，键入 **Kubernetes**。 开始键入时，会根据输入筛选该列表。 选择“Azure Kubernetes”  。
 3. 从 Kubernetes 群集列表中选择一个群集。
 2. 在左侧菜单中，单击“访问控制 (IAM)”  。
-3. 选择“+ 添加”  以添加角色分配，并选择“监视指标发布服务器”角色  ，然后在“选择”框  下键入 **AKS** ，以仅根据订阅中定义的群集服务主体筛选结果。 从列表中选择特定于该群集的角色。
+3. 选择“+ 添加”  以添加角色分配，并选择“监视指标发布服务器”角色  ，然后在“选择”框  下键入 **AKS**，以仅根据订阅中定义的群集服务主体筛选结果。 从列表中选择特定于该群集的角色。
 4. 选择“保存”  完成角色分配。
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>用于容器的 Azure Monitor 已启用，但未报告任何信息
@@ -92,7 +92,7 @@ ms.locfileid: "92890354"
 | 错误消息 `Error retrieving data` | 为 Azure Kubernetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除时，可能会发生此错误。 检查工作区是否已删除，如果已删除，则需要使用用于容器的 Azure Monitor 重新启用对群集的监视，并指定现有工作区或创建新工作区。 若要重新启用，将需要对该群集[禁用](container-insights-optout.md)监视，然后再次[启用](container-insights-enable-new-cluster.md)用于容器的 Azure Monitor。 |
 | 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 当使用 `az aks cli` 启用监视时，可能无法正确部署用于容器的 Azure Monitor。 请检查是否部署了该解决方案。 若要进行验证，请转到你的 Log Analytics 工作区，从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md) 中的说明重新部署该解决方案。 |
 
-为了帮助诊断问题，我们提供了 [疑难解答脚本](https://aka.ms/troubleshooting-script)。
+为了帮助诊断问题，我们提供了一个[故障排除脚本](https://aka.ms/troubleshooting-script)。
 
 ## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>未在非 Azure Kubernetes 群集上计划用于容器的 Azure Monitor 代理 ReplicaSet Pod
 

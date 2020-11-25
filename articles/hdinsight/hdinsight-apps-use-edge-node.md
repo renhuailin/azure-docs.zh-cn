@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547837"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010106"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -67,7 +67,7 @@ ms.locfileid: "92547837"
 > 如果在使用 Apache 技术，可通过 [https://apache.org](https://apache.org) 上的 Apache 项目站点（如 [Apache Hadoop](https://hadoop.apache.org/) 站点）获取帮助。
 
 > [!IMPORTANT]
-> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补  。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
+> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 
@@ -86,7 +86,7 @@ ms.locfileid: "92547837"
     |位置|选择现有 HDInsight 群集的位置。|
     |群集名称|输入现有 HDInsight 群集的名称。|
 
-1. 选中“我同意上述条款和条件”  ，并选择“购买”  以创建边缘节点。
+1. 选中“我同意上述条款和条件”，并选择“购买”以创建边缘节点。
 
 > [!IMPORTANT]  
 > 请确保选择现有 HDInsight 群集的 Azure 资源组。  否则，会收到错误消息“无法对嵌套资源执行请求的操作。 父资源 '&lt;ClusterName>' 未找到。”
@@ -109,19 +109,19 @@ ms.locfileid: "92547837"
     |资源组|创建用于群集的新资源组。|
     |位置|选择资源组的位置。|
     |群集名称|输入要创建的新群集的名称。|
-    |群集登录用户名|输入 Hadoop HTTP 用户名。  默认名称为 **admin** 。|
+    |群集登录用户名|输入 Hadoop HTTP 用户名。  默认名称为 **admin**。|
     |群集登录密码|输入 Hadoop HTTP 用户密码。|
-    |SSH 用户名|输入 SSH 用户名。 默认名称为 **sshuser** 。|
+    |SSH 用户名|输入 SSH 用户名。 默认名称为 **sshuser**。|
     |SSH 密码|输入 SSH 用户密码。|
     |安装脚本操作|保留默认值以在本文的所有操作中使用。|
 
     某些属性已硬编码在模板中：群集类型、群集工作节点计数、边缘节点大小和边缘节点名称。
 
-1. 选中“我同意上述条款和条件”  ，并选择“购买”  以创建包含该边缘节点的群集。
+1. 选中“我同意上述条款和条件”，并选择“购买”以创建包含该边缘节点的群集。
 
 ## <a name="add-multiple-edge-nodes"></a>添加多个边缘节点
 
-可以向一个 HDInsight 群集添加多个边缘节点。  只能使用 Azure 资源管理器模板进行多边缘节点配置。  请参阅本文开头的模板示例。  更新“targetInstanceCount”，以反映要创建的边缘节点数  。
+可以向一个 HDInsight 群集添加多个边缘节点。  只能使用 Azure 资源管理器模板进行多边缘节点配置。  请参阅本文开头的模板示例。  更新“targetInstanceCount”，以反映要创建的边缘节点数。
 
 ## <a name="access-an-edge-node"></a>访问边缘节点
 
@@ -133,7 +133,7 @@ ms.locfileid: "92547837"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。  此时显示该边缘节点。  默认名称为 **new-edgenode** 。
+3. 选择“应用程序”。 此时显示该边缘节点。  默认名称为 **new-edgenode**。
 4. 选择该边缘节点。 此时显示 SSH 终结点。
 
 **在边缘节点上使用 Hive**
@@ -158,9 +158,9 @@ ms.locfileid: "92547837"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。  此时显示边缘节点的列表。  
-4. 右键单击要删除的边缘节点，并选择“删除”  。
-5. 请选择“是”以确认。 
+3. 选择“应用程序”。 此时显示边缘节点的列表。  
+4. 右键单击要删除的边缘节点，并选择“删除”。
+5. 请选择“是”以确认。
 
 ## <a name="next-steps"></a>后续步骤
 

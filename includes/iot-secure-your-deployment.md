@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76748928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010686"
 ---
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
@@ -53,7 +53,7 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 * AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
-* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”**** 字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”**** 字段中的 SAS 令牌。
+* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”字段中的 SAS 令牌。
 
 * HTTP：有效令牌位于授权请求标头中。
 
@@ -91,7 +91,7 @@ Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../article
 
 * **DeviceConnect**。 授予对面向设备的终结点的访问权限。 例如，它授予发送设备到云的消息和接收云到设备的消息的权限。 此权限由设备使用。
 
-有两种方法可以使用[安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
+有两种方法可以使用 [安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
 
 [服务组件只能使用共享访问策略生成安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)，授予适当权限。
 

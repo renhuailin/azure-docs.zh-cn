@@ -8,11 +8,11 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010565"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -62,7 +62,7 @@ ms.locfileid: "95025389"
 
 1. 在左侧树中找到“本地和附加”，右键单击“Cosmos DB 帐户”，然后选择“连接到 Cosmos DB”  。
 
-    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="右键单击后显示下拉菜单的屏幕截图，其中突出显示了 &quot;连接到 Azure Cosmos D B&quot;。":::
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="此屏幕截图显示了右键单击后的下拉菜单，其中突出显示了“连接到 Azure Cosmos DB”。":::
 
 2. 在“连接到 Cosmos DB”窗口中：
    1. 从下拉菜单中选择 API。

@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658547"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010055"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -76,7 +76,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 ### <a name="allow-protected-append-blobs-writes"></a>允许受保护的追加 Blob 写入
 
-追加 Blob 由数据块组成，并针对审核和日志记录方案所需的数据追加操作进行了优化。 按照设计，追加 Blob 只允许将新块添加到 Blob 末尾。 无论是否不可变，基本上都不允许修改或删除追加 Blob 中的现有块。 若要详细了解追加 Blob，请参阅[关于追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
+追加 Blob 由数据块组成，并针对审核和日志记录方案所需的数据追加操作进行了优化。 按照设计，追加 Blob 只允许将新块添加到 Blob 末尾。 无论是否不可变，基本上都不允许修改或删除追加 Blob 中的现有块。 若要详细了解追加 Blob，请参阅[关于追加 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
 
 仅基于时间的保留策略具有 `allowProtectedAppendWrites` 设置，该设置允许将新块写入追加 Blob，同时维持不可变性保护和符合性。 在启用此设置的情况下，你可以直接在受策略保护的容器中创建追加 Blob，并使用 AppendBlock API 继续向现有追加 Blob 的末尾添加新数据块。 只能添加新块，而不能修改或删除任何现有块。 时间保留不可变性保护仍适用，系统会阻止删除追加 Blob，直到有效的保留期结束。 启用此设置不影响块 Blob 或页 Blob 的不可变性行为。
 
@@ -103,7 +103,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 ## <a name="scenarios"></a>方案
 
-下表显示了会因各种不可变方案而禁用的 Blob 存储操作的类型。 有关详细信息，请参阅 [Azure Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 文档。
+下表显示了会因各种不可变方案而禁用的 Blob 存储操作的类型。 有关详细信息，请参阅 [Azure Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api) 文档。
 
 | 方案 | Blob 状态 | Blob 操作被拒绝 | 容器和帐户保护 |
 |--|--|--|--|
@@ -116,7 +116,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 <sup>2</sup> 追加块只能用于基于时间且启用了 `allowProtectedAppendWrites` 属性的保留策略。 有关详细信息，请参阅[允许受保护的追加 Blob 写入](#allow-protected-append-blobs-writes)部分。
 
 > [!IMPORTANT]
-> 某些工作负荷（如 [SQL 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)）创建 blob，然后将其添加到其中。 如果容器具有活动的基于时间的保留策略或合法保留，此模式将不会成功。
+> 某些工作负荷（如 [SQL 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)）创建 blob，然后将其添加到其中。 如果容器具有活动的基于时间的保留策略或合法保留，此模式将不会成功。
 
 ## <a name="pricing"></a>定价
 
@@ -170,11 +170,11 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **是否可以同时使用软删除和不可变的 Blob 策略？**
 
-是，前提是合规性要求允许启用软删除。 [Azure Blob 存储的软删除](storage-blob-soft-delete.md)适用于存储帐户中的所有容器，无论使用的是法定保留还是基于时间的保留策略。 我们建议在应用并确认任何不可变 WORM 策略之前启用软删除，以提供额外的保护。
+是，前提是合规性要求允许启用软删除。 [Azure Blob 存储的软删除](./soft-delete-blob-overview.md)适用于存储帐户中的所有容器，无论使用的是法定保留还是基于时间的保留策略。 我们建议在应用并确认任何不可变 WORM 策略之前启用软删除，以提供额外的保护。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [为 Blob 存储设置和管理不可变性策略](storage-blob-immutability-policies-manage.md)
 - [设置规则以自动分层和删除使用生命周期管理的 Blob 数据](storage-lifecycle-management-concepts.md)
-- [Azure 存储 Blob 的软删除](../blobs/storage-blob-soft-delete.md)
+- [Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)
 - [使用 Azure 资源管理器锁保护订阅、资源组和资源](../../azure-resource-manager/management/lock-resources.md)
