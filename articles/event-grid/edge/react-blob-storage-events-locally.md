@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87462014"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005055"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：在 IoT Edge (Preview 上对 Blob 存储事件做出反应) 
 本文介绍如何在 IoT 模块上部署 Azure Blob 存储，该模块将充当事件网格发布者，以将 Blob 创建和 Blob 删除事件发送到事件网格。  
@@ -75,7 +75,7 @@ ms.locfileid: "87462014"
         }
     ```    
 
- 1. 单击“保存”
+ 1. 单击“保存” 
  1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ ms.locfileid: "87462014"
    * **名称**：订阅服务器
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器创建选项**：无
-1. 单击“保存”
+1. 单击“保存” 
 1. 转到下一节以添加 Azure Blob 存储模块
 
 ## <a name="deploy-azure-blob-storage-module"></a>部署 Azure Blob 存储模块
@@ -146,7 +146,7 @@ ms.locfileid: "87462014"
      - 对于 Linux 容器， **我的容量：/blobroot**
      - 对于 Windows 容器，**我的卷： C：/BlobRoot**
 
-5. 单击“保存”
+5. 单击“保存” 
 6. 单击 " **下一步** " 以继续转到 "路由" 部分
 
     > [!NOTE]
@@ -159,7 +159,7 @@ ms.locfileid: "87462014"
 ### <a name="review-deployment"></a>评审部署
 
 1. "查看" 部分显示基于你在上一节中所做的选择创建的 JSON 部署清单。 确认你看到以下四个模块： **$edgeAgent**、 **$edgeHub**、 **eventgridmodule**、 **订阅服务器** 和所有正在部署的 **azureblobstorageoniotedge** 。
-2. 审阅部署信息，然后选择“提交”****。
+2. 审阅部署信息，然后选择“提交”。
 
 ## <a name="verify-your-deployment"></a>验证部署
 
@@ -213,7 +213,7 @@ ms.locfileid: "87462014"
        ```
 
        >[!NOTE]
-       > **EndpointType**属性指定订阅服务器是**Webhook**。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure Function 示例。
+       > **EndpointType** 属性指定订阅服务器是 **Webhook**。  **EndpointUrl** 指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure Function 示例。
 
     2. 运行以下命令以创建主题的订阅。 确认显示 HTTP 状态代码为 `200 OK` 。
 
@@ -318,7 +318,7 @@ ms.locfileid: "87462014"
             }
     ```
 
-祝贺你！ 您已经完成了本教程。 以下各节提供了有关事件属性的详细信息。
+恭喜！ 您已经完成了本教程。 以下各节提供了有关事件属性的详细信息。
 
 ### <a name="event-properties"></a>事件属性
 
@@ -346,7 +346,7 @@ ms.locfileid: "87462014"
 | contentType | string | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |
 | blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
-| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
+| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： *\<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\>*。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： *\<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\>*。 |
 
 
 ## <a name="next-steps"></a>后续步骤

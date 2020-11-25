@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/19/2020
-ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/22/2020
+ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025827"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004853"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -81,6 +81,16 @@ ms.locfileid: "93025827"
 
 当你在映射中选择接收器转换图标时，右侧的滑动面板将在底部显示名为 "post 处理时间" 的其他数据点。 这是加载、转换和写入数据 *后* 在 Spark 群集上执行作业所花费的时间。 此时间可能包括关闭连接池、驱动程序关闭、删除文件、合并文件，等等。当你在流中执行操作（如 "移动文件" 和 "输出到单个文件"）时，你可能会看到 post 处理时间值增加。
   
+## <a name="error-rows"></a>错误行
+
+如果在数据流接收器中启用错误行处理，则会在监视输出中反映出来。 将接收器设置为 "错误时报告成功" 时，当你单击 "接收器监视" 节点时，监视输出将显示 "成功" 和 "失败" 行的数目。
+
+![屏幕截图显示错误行。](media/data-flow/error-row-2.png "错误行监视成功")
+
+当您选择 "错误时报告失败" 时，将仅在活动监视输出文本中显示相同的输出。 这是因为数据流活动将返回 "执行失败"，并且 "详细监视" 视图将不可用。
+
+![屏幕截图显示活动中的错误行。](media/data-flow/error-rows-4.png "错误行监视失败")
+
 ## <a name="monitor-icons"></a>监视图标
 
 此图标表示转换数据已在群集中缓存，因此计时和执行路径已考虑到这种情况：

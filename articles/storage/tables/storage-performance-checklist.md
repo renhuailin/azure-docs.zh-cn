@@ -10,11 +10,11 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004698"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
@@ -275,8 +275,8 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 尽可能使用表的“Upsert”操作。 有两种类型的“Upsert”，两种都可能比传统的“插入”和“更新”操作更高效：  
 
-- **InsertOrMerge** ：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
-- **InsertOrReplace** ：若要上传全新实体，但不确定实体是否已存在，请使用此操作。 仅当知道这个刚上传的实体完全正确时才使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
+- **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
+- **InsertOrReplace**：若要上传全新实体，但不确定实体是否已存在，请使用此操作。 仅当知道这个刚上传的实体完全正确时才使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>将数据系列存储在单个实体中
 

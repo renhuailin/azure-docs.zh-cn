@@ -9,11 +9,11 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004290"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>快速入门：在 .NET Core 中使用 Azure Cache for Redis
 
@@ -82,7 +82,7 @@ dotnet restore
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
 ```
 
-将以下 `using` 语句添加到 *Program.cs* ：
+将以下 `using` 语句添加到 *Program.cs*：
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -113,12 +113,12 @@ private static void InitializeConfiguration()
 dotnet add package StackExchange.Redis
 ```
 
-完成安装后， *StackExchange.Redis* 缓存客户端可供与项目一起使用。
+完成安装后，*StackExchange.Redis* 缓存客户端可供与项目一起使用。
 
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-将以下 `using` 语句添加到 *Program.cs* ：
+将以下 `using` 语句添加到 *Program.cs*：
 
 ```csharp
 using StackExchange.Redis;
@@ -234,7 +234,7 @@ dotnet add package Newtonsoft.json
 using Newtonsoft.Json;
 ```
 
-将以下 `Employee` 类定义添加到 *Program.cs* ：
+将以下 `Employee` 类定义添加到 *Program.cs*：
 
 ```csharp
 class Employee

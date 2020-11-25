@@ -5,11 +5,11 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87003060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004834"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure 区块链工作台预览版 REST API
 
@@ -22,9 +22,9 @@ Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提�
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择 " **资源组**"。
 1. 选择部署的区块链工作台的资源组名称。
-1. 选择“类型”列标题，按类型的字母顺序将列表排序。****
-1. 有两个类型为“应用服务”的资源。**** 选择*类型为 "* api" 后缀的**应用服务**的资源。
-1. 在应用服务 **概述**中，将 " **URL** " 值复制到已部署的区块链工作台的 API 终结点 url。
+1. 选择“类型”列标题，按类型的字母顺序将列表排序。
+1. 有两个类型为“应用服务”的资源。 选择 *类型为 "* api" 后缀的 **应用服务** 的资源。
+1. 在应用服务 **概述** 中，将 " **URL** " 值复制到已部署的区块链工作台的 API 终结点 url。
 
     ![应用服务 API 终结点 URL](media/use-api/app-service-api.png)
 
