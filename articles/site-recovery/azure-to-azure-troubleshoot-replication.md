@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007352"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
@@ -35,7 +35,7 @@ Error ID: 153007
 
 如果选择该事件，应会看到确切的磁盘信息：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="显示数据更改率过高的 Azure Site Recovery 页。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="显示数据更改率事件详细信息的页。":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 
@@ -56,7 +56,7 @@ Error ID: 153007
 
 Azure Site Recovery 根据磁盘类型实施数据更改率限制。 若要确定此问题是重复性的还是暂时性的，请确定受影响虚拟机的数据更改率。 请转到源虚拟机，在“监视”下找到指标，然后添加以下屏幕截图所示的指标：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="显示数据更改率过高的 Azure Site Recovery 页。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="显示确定数据更改率的三步过程的页。":::
 
 1. 选择“添加指标”，并添加“OS 磁盘写入字节数/秒”和“数据磁盘写入字节数/秒”。  
 1. 监视屏幕截图中所示的峰值。
@@ -96,7 +96,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
 
-**如何修复：** 请参阅[托管包含 AUTO_CLOSE DB 的 SQL Server 实例上的非组件 VSS 备份（例如 Azure Site Recovery 作业）失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)一文。
+**如何修复：** 请参阅 [托管包含 AUTO_CLOSE DB 的 SQL Server 实例上的非组件 VSS 备份（例如 Azure Site Recovery 作业）失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)一文。
 
 ### <a name="known-issue-in-sql-server-2016-and-2017"></a>SQL Server 2016 和 2017 中的已知问题
 

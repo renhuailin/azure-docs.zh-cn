@@ -4,11 +4,11 @@ description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008287"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -19,8 +19,8 @@ ms.locfileid: "92544199"
 
 可以通过以下几种方式迁移 VMware Vm：
 
-- **使用无代理迁移** ：迁移 vm，无需在其上安装任何内容。 为无代理迁移部署 [Azure Migrate 设备](migrate-appliance.md) 。
-- **使用基于代理的迁移** ：在要复制的 VM 上安装代理。 对于基于代理的迁移，需要部署 [复制设备](migrate-replication-appliance.md)。
+- **使用无代理迁移**：迁移 vm，无需在其上安装任何内容。 为无代理迁移部署 [Azure Migrate 设备](migrate-appliance.md) 。
+- **使用基于代理的迁移**：在要复制的 VM 上安装代理。 对于基于代理的迁移，需要部署 [复制设备](migrate-replication-appliance.md)。
 
 查看 [本文](server-migrate-overview.md) ，了解要使用的方法。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92544199"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5、6.7、7.0。
-**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览** ：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement** ：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪** ：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease** ：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess** ： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead** ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess** ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles** ：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine** ：允许 VM 在迁移到 Azure 期间关闭。
+**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine**：允许 VM 在迁移到 Azure 期间关闭。
 
 
 
@@ -169,7 +169,7 @@ VM | Vm 上运行的移动服务与本地复制设备通信， (配置) 服务�
 FC 磁盘 | 不支持。 
 BitLocker | 不支持。<br/><br/> 在迁移计算机之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/><br/> -迁移之前，请在本地 VM 上启用 RDP。<br/><br/> 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许 **Windows 防火墙** 中  ->  的 rdp 允许用于 **域和专用** 网络的 **应用和功能** 。<br/><br/> 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll** 。 [了解详细信息](prepare-for-migration.md)。
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/><br/> -迁移之前，请在本地 VM 上启用 RDP。<br/><br/> 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许 **Windows 防火墙** 中  ->  的 rdp 允许用于 **域和专用** 网络的 **应用和功能**。<br/><br/> 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll**。 [了解详细信息](prepare-for-migration.md)。
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/><br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/><br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。<br/><br/> 此外，为 VM 添加公共 IP 地址。  
 
 

@@ -4,11 +4,11 @@ description: 如何使用 Azure Site Recovery 免于将磁盘复制到 Azure。
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333658"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008253"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>将磁盘排除在灾难恢复之外
 
@@ -56,13 +56,13 @@ ms.locfileid: "91333658"
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>示例 1：排除 SQL Server tempdb 磁盘
 
-我们来看看如何处理源 SQL Server Windows VM (**SalesDB***) 的磁盘排除和故障转移操作，其中我们要排除 tempdb。 
+让我们看看如何处理 SQL Server Windows VM- **SalesDB** _ 的源的磁盘排除、故障转移和故障转移，我们想要排除 tempdb。 
 
 ### <a name="exclude-disks-from-replication"></a>将磁盘排除在复制之外
 
 源 Windows VM SalesDB 上有以下磁盘。
 
-**磁盘名称** | **来宾 OS 磁盘** | **驱动器号** | **磁盘数据类型**
+_ *磁盘名称** | **来宾 OS 磁盘** | **驱动器号** | **磁盘数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | 操作系统磁盘。
 DB-Disk1| Disk1 | D:\ | SQL 系统数据库和用户数据库 1。

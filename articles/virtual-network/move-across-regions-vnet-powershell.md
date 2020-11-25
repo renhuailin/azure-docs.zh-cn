@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008117"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
 
@@ -60,7 +60,7 @@ ms.locfileid: "84711453"
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到与命令一起导出的* \<resource-group-name> json*文件，然后在编辑器中将其打开：
+1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到与命令一起导出的 *\<resource-group-name> json* 文件，然后在编辑器中将其打开：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ ms.locfileid: "84711453"
     Get-AzLocation | format-table
     ```
 
-1.  (可选) 你还可以根据需要更改* \<resource-group-name> json*文件中的其他参数：
+1.  (可选) 你还可以根据需要更改 *\<resource-group-name> json* 文件中的其他参数：
 
     * **地址空间**：在保存该文件之前，可以更改虚拟网络的地址空间，方法是修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性：
 
@@ -201,7 +201,7 @@ ms.locfileid: "84711453"
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 使用[AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将编辑后的* \<resource-group-name> json*文件部署到你在上一步中创建的资源组：
+1. 使用 [AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将编辑后的 *\<resource-group-name> json* 文件部署到你在上一步中创建的资源组：
 
     ```azurepowershell-interactive
 

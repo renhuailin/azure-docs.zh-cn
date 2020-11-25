@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320416"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007403"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -91,7 +91,7 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
    > 
    > * 示例脚本： `C:\Users\<user_name>\Documents\Data Science Scripts`  
    > * 示例 IPython Notebook：`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
-   >   其中 `<user_name>` 是 VM 的 Windows 登录名。 我们将示例文件夹称为 **示例脚本** 和 **示例 IPython Notebook** 。
+   >   其中 `<user_name>` 是 VM 的 Windows 登录名。 我们将示例文件夹称为 **示例脚本** 和 **示例 IPython Notebook**。
    > 
    > 
 
@@ -114,9 +114,9 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
 4. 解压缩下载的文件。 注意未压缩的文件所在的文件夹。 此文件夹将称为 <path\_to\_data\_files\>。
 
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>将数据批量导入 SQL Server 数据库
-通过使用已 *分区的表和视图* ，可以提高将大量数据加载到 SQL 数据库和后续查询的性能。 在本部分中，我们将按照[使用 SQL 分区表平行批量量导入数据](parallel-load-sql-partitioned-tables.md)中的说明进行操作，创建新数据库并将数据并行加载到分区表。
+通过使用已 *分区的表和视图*，可以提高将大量数据加载到 SQL 数据库和后续查询的性能。 在本部分中，我们将按照[使用 SQL 分区表平行批量量导入数据](parallel-load-sql-partitioned-tables.md)中的说明进行操作，创建新数据库并将数据并行加载到分区表。
 
-1. 登录到 VM 后，启动 **SQL Server Management Studio** 。
+1. 登录到 VM 后，启动 **SQL Server Management Studio**。
 2. 使用 Windows 身份验证进行连接。
    
     ![SSMS 连接][12]
@@ -125,41 +125,41 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
     ![执行脚本][13]
 4. 验证和/或更改 SQL Server 默认数据库和日志文件夹，以确保新创建的数据库将存储在数据磁盘中。 为数据仓库负载优化的 SQL Server VM 映像是预先配置的数据和日志磁盘。 如果 VM 不包含数据磁盘，并且在 VM 安装过程中添加了新的虚拟硬盘，则需按照如下步骤更改默认文件夹：
    
-   * 右键单击左侧面板中的 SQL Server 名称，并单击“ **属性** ”。
+   * 右键单击左侧面板中的 SQL Server 名称，并单击“**属性**”。
      
        ![SQL Server 属性][14]
-   * 从左侧的“ **选择页** ”列表中选择“ **数据库设置** ”。
-   * 验证 **数据库默认位置** ，并/或将其更改为所选的 **数据磁盘** 位置。 此位置是使用默认设置创建的新数据库所在的位置。
+   * 从左侧的“**选择页**”列表中选择“**数据库设置**”。
+   * 验证 **数据库默认位置**，并/或将其更改为所选的 **数据磁盘** 位置。 此位置是使用默认设置创建的新数据库所在的位置。
      
        ![SQL 数据库默认设置][15]  
-5. 若要创建新数据库和一组文件组来保存已分区的表，请打开示例脚本 **create\_db\_default.sql** 。 该脚本会在默认数据位置创建一个名为 **TaxiNYC** 的新数据库和 12 个文件组。 每个文件组将保存一个月内的 trip\_data 和 trip\_fare 数据。 根据需要修改数据库名称。 单击“执行”以运行该脚本。
-6. 接下来，创建两个分区表，一个用于 trip\_data，另一个用于 trip\_fare。 打开示例脚本 **create\_partitioned\_table.sql** ，其功能如下：
+5. 若要创建新数据库和一组文件组来保存已分区的表，请打开示例脚本 **create\_db\_default.sql**。 该脚本会在默认数据位置创建一个名为 **TaxiNYC** 的新数据库和 12 个文件组。 每个文件组将保存一个月内的 trip\_data 和 trip\_fare 数据。 根据需要修改数据库名称。 单击“执行”以运行该脚本。
+6. 接下来，创建两个分区表，一个用于 trip\_data，另一个用于 trip\_fare。 打开示例脚本 **create\_partitioned\_table.sql**，其功能如下：
    
    * 创建分区函数，以按月拆分数据。
    * 创建分区方案，以将每个月的数据映射到不同的文件组。
-   * 创建两个映射到分区方案的分区表： **nyctaxi\_trip** 将保存 trip\_data，而 **nyctaxi\_fare** 将保存 trip\_fare 数据。
+   * 创建两个映射到分区方案的分区表：**nyctaxi\_trip** 将保存 trip\_data，而 **nyctaxi\_fare** 将保存 trip\_fare 数据。
      
      单击“执行”，运行该脚本并创建分区表。
-7. 在“ **示例脚本** ”文件夹中，提供了两个示例 PowerShell 脚本，可用于演示将数据并行批量导入到 SQL Server 表的方式。
+7. 在“**示例脚本**”文件夹中，提供了两个示例 PowerShell 脚本，可用于演示将数据并行批量导入到 SQL Server 表的方式。
    
    * **bcp\_parallel\_generic.ps1** 是将数据并行批量导入到表的通用脚本。 修改此脚本以设置此脚本的注释行中指示的输入和目标变量。
    * **bcp\_parallel\_nyctaxi.ps1** 是通用脚本的预配置版本，可用于为 NYC 出租车行程数据同时加载这两个表。  
-8. 右键单击 **bcp\_parallel\_nyctaxi.ps1** 脚本名称，然后单击“ **编辑** ”可在 PowerShell 中将其打开。 查看预设的变量，并根据所选的数据库名称、输入数据文件夹、目标日志文件夹和到示例格式文件 **nyctaxi_trip.xml** 和 **nyctaxi\_fare.xml** （在“ **示例脚本** ”文件夹中提供）的路径进行修改。
+8. 右键单击 **bcp\_parallel\_nyctaxi.ps1** 脚本名称，然后单击“**编辑**”可在 PowerShell 中将其打开。 查看预设的变量，并根据所选的数据库名称、输入数据文件夹、目标日志文件夹和到示例格式文件 **nyctaxi_trip.xml** 和 **nyctaxi\_fare.xml**（在“**示例脚本**”文件夹中提供）的路径进行修改。
    
     ![批量导入数据][16]
    
     也可以选择身份验证模式，默认值为 Windows 身份验证。 单击工具栏中的绿色箭头运行。 该脚本将启动 24 个并行批量导入操作，每个分区表对应 12 个操作。 也可以通过打开上述步骤中设置的 SQL Server 默认数据文件夹，监测数据导入进度。
 9. PowerShell 脚本将报告起始和结束时间。 所有批量导入完成时，将报告结束时间。 检查目标日志文件夹以验证批量导入成功，即未报告目标日志文件夹存在任何错误。
 10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于这些表是根据 pickup\_datetime 字段进行分区的，因此，将 pickup\_datetime 条件纳入 WHERE 子句的查询将从分区方案获益  。
-11. 在 **SQL Server Management Studio** 中，探索提供的示例脚本 **sample\_queries.sql** 。 要运行任意示例查询，请突出显示查询行，并单击工具栏中的“执行”。
+11. 在 **SQL Server Management Studio** 中，探索提供的示例脚本 **sample\_queries.sql**。 要运行任意示例查询，请突出显示查询行，并单击工具栏中的“执行”。
 12. NYC 出租车行程数据加载到两个独立的表中。 若要改进联接操作，强烈建议为表建立索引。 示例脚本 **create\_partitioned\_index.sql** 会在复合联接键 **medallion、hack\_license 和 pickup\_datetime** 上创建分区索引。
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server 中的数据浏览和功能设计
-在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “ **示例脚本** ”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：TaxiNYC，请修改此脚本以更改数据库名称。
+在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本**”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：TaxiNYC，请修改此脚本以更改数据库名称。
 
 在本练习中，我们将：
 
-* 使用 Windows 身份验证，或 SQL 身份验证及 SQL 登录名和密码，连接到 **SQL Server Management Studio** 。
+* 使用 Windows 身份验证，或 SQL 身份验证及 SQL 登录名和密码，连接到 **SQL Server Management Studio**。
 * 在不同的时间范围中探索几个字段的数据分布。
 * 调查经度和纬度字段的数据质量。
 * 根据 **tip\_amount** 生成二元和多元分类标签。
@@ -261,7 +261,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 标签生成和地理转换浏览查询还可通过删除计数部分，用于生成标签/功能。 其他功能设计 SQL 示例在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分提供。 使用可在 SQL Server 数据库实例直接运行的 SQL 查询，以更高效的方式在完整数据集或其大型子集上运行功能生成查询。 该查询可能在 SQL Server Management Studio、IPython Notebook 或任何可本地或远程访问数据库的开发工具或环境中执行。
 
 #### <a name="preparing-data-for-model-building"></a>准备建模的数据
-下面的查询可联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped** 、多类分类标签 **tip\_class** ，以及从完整联接的数据集中提取 1% 的随机样本。 可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室](https://studio.azureml.net)的[导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询可联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**、多类分类标签 **tip\_class**，以及从完整联接的数据集中提取 1% 的随机样本。 可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室](https://studio.azureml.net)的[导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -281,7 +281,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
-在此部分中，我们会在之前创建的 SQL Server 数据库中使用 Python 和 SQL 查询，执行数据浏览和功能生成。 “ **Sample IPython Notebooks** ”文件夹中提供了名为 **machine-Learning-data-science-process-sql-story.ipynb** 的示例 IPython notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 也提供此 Notebook。
+在此部分中，我们会在之前创建的 SQL Server 数据库中使用 Python 和 SQL 查询，执行数据浏览和功能生成。 “**Sample IPython Notebooks**”文件夹中提供了名为 **machine-Learning-data-science-process-sql-story.ipynb** 的示例 IPython notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 也提供此 Notebook。
 
 使用大数据时，遵循以下建议的顺序：
 
@@ -364,7 +364,7 @@ print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.sha
 检索到的行数和列数 = (84952, 21)
 
 #### <a name="descriptive-statistics"></a>描述性统计信息
-浏览抽样数据现已就绪。 接下来，首先查看 **trip\_distance** （或任何其他）字段的描述性统计信息：
+浏览抽样数据现已就绪。 接下来，首先查看 **trip\_distance**（或任何其他）字段的描述性统计信息：
 
 ```sql
 df1['trip_distance'].describe()
@@ -432,12 +432,12 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 ![Plot #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>二次采样 SQL 中的数据
-在 [Azure 机器学习工作室](https://studio.azureml.net)中准备建模数据时，可以决定 **在“导入数据”模块中直接使用 SQL 查询** ，或者将工程和抽样数据保留在新表中，这样就可以通过简单的“ **SELECT * FROM <your\_new\_table\_name>** ”在 [导入数据][import-data]模块中使用。
+在 [Azure 机器学习工作室](https://studio.azureml.net)中准备建模数据时，可以决定 **在“导入数据”模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，这样就可以通过简单的“**SELECT * FROM <your\_new\_table\_name>** ”在 [导入数据][import-data]模块中使用。
 
 在本部分中，我们将创建新表以保存采样和工程数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>创建取样表，并使用 1% 已联接表的填充。 如果存在此表，请首先将其删除。
-在本部分中，我们会联接表 **nyctaxi\_trip** 和 **nyctaxi\_fare** ，提取 1% 的随机样本，并将抽样数据保存到名为 **nyctaxi\_one\_percent** 的新表中：
+在本部分中，我们会联接表 **nyctaxi\_trip** 和 **nyctaxi\_fare**，提取 1% 的随机样本，并将抽样数据保存到名为 **nyctaxi\_one\_percent** 的新表中：
 
 ```sql
 cursor = conn.cursor()
@@ -495,8 +495,8 @@ pd.read_sql(query,conn)
 #### <a name="label-generation-generate-class-labels"></a>标签生成：生成类标签
 在下面示例中，我们会生成两组用于建模的标签：
 
-1. 二进制类标签 **tipped** （预测是否会支付小费）
-2. 多类标签 **tip\_class** （预测小费的收纳组或范围）
+1. 二进制类标签 **tipped**（预测是否会支付小费）
+2. 多类标签 **tip\_class**（预测小费的收纳组或范围）
 
 ```sql   
     nyctaxi_one_percent_add_col = '''
@@ -634,7 +634,7 @@ pd.read_sql(query,conn)
 
 典型的训练实验由以下步骤组成：
 
-1. “ **新建 +** ”实验。
+1. “**新建 +** ”实验。
 2. 将数据放入 Azure 机器学习。
 3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
@@ -650,10 +650,10 @@ pd.read_sql(query,conn)
 1. 使用 **数据输入和输出** 部分的 [导入数据][import-data]模块，将数据放入 Azure 机器学习。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
    
     ![Azure 机器学习导入数据][17]
-2. 在“ **属性** ”面板中，选择“ **Azure SQL 数据库** ”作为 **数据源** 。
-3. 在“ **数据库服务器名称** ”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
-4. 在相应字段中输入 **数据库名称** 。
-5. 在“服务器用户帐户名”中输入 **SQL 用户名** ，在“服务器用户帐户密码”中输入 **密码** 。
+2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为 **数据源**。
+3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
+4. 在相应字段中输入 **数据库名称**。
+5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入 **密码**。
 7. 在“数据库查询”编辑文本区域中，粘贴提取必要数据库字段（包括任何计算字段，例如标签）的查询，并对数据向下采样至所需样本大小。
 
 二元分类实验直接从 SQL Server 数据库读取数据，示例如下图所示。 可以针对多类分类和回归问题构建类似实验。
@@ -661,7 +661,7 @@ pd.read_sql(query,conn)
 ![Azure 机器学习训练][10]
 
 > [!IMPORTANT]
-> 在上一部分中提供的建模数据提取和采样查询示例中， **这三个建模练习的所有标签都包括在此查询中** 。 每个建模练习的一个重要（必需）步骤是 **排除** 其他两个问题不需要的标签，以及任何其他的 **目标泄漏** 。 例如，使用二元分类时，使用标签 **tipped** 并排除字段 **tip\_class** 、 **tip\_amount** 和 **total\_amount** 。 后者是目标泄漏，因为它们指示支付的小费。
+> 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是 **排除** 其他两个问题不需要的标签，以及任何其他的 **目标泄漏**。 例如，使用二元分类时，使用标签 **tipped** 并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 > 
 > 为了排除不需要的列和/或目标泄漏，可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
 > 
@@ -675,19 +675,19 @@ pd.read_sql(query,conn)
 1. 创建评分实验。
 2. 部署 Web 服务。
 
-若要从 **已完成** 的训练实验中创建评分实验，请单击下方操作栏中的“ **创建评分实验** ”。
+若要从 **已完成** 的训练实验中创建评分实验，请单击下方操作栏中的“**创建评分实验**”。
 
 ![Azure 评分][18]
 
 Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特别是，它将：
 
 1. 保存训练的模型，并删除模型训练模块。
-2. 标识逻辑 **输入端口** ，以表示预期输入数据架构。
-3. 标识逻辑 **输出端口** ，以表示预期 Web 服务输出架构。
+2. 标识逻辑 **输入端口**，以表示预期输入数据架构。
+3. 标识逻辑 **输出端口**，以表示预期 Web 服务输出架构。
 
 创建评分实验后，请检查并根据需要进行调整。 典型调整方式为：将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为调用服务时，这些标签在架构中不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
-评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“ **发布 WEB 服务** ”按钮。
+评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
 ![Azure 机器学习发布][11]
 

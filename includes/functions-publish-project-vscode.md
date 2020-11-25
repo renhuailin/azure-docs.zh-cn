@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
 ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420982"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008144"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -25,15 +25,15 @@ ms.locfileid: "93420982"
 
 1. 根据提示提供以下信息：
 
-    - **选择文件夹** ：从工作区中选择一个文件夹，或浏览到包含函数应用的文件夹。 如果已打开有效的函数应用，则不会看到此信息。
+    - **选择文件夹**：从工作区中选择一个文件夹，或浏览到包含函数应用的文件夹。 如果已打开有效的函数应用，则不会看到此信息。
 
-    - **选择订阅** ：选择要使用的订阅。 如果只有一个订阅，则不会看到此项。
+    - **选择订阅**：选择要使用的订阅。 如果只有一个订阅，则不会看到此项。
 
-    - **在 Azure 中选择函数应用** ：选择`- Create new Function App`。 （请不要选择本文中未介绍的 `Advanced` 选项。）
+    - **在 Azure 中选择函数应用**：选择`- Create new Function App`。 （请不要选择本文中未介绍的 `Advanced` 选项。）
       
-    - **输入函数应用的全局唯一名称** ：键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。
+    - **输入函数应用的全局唯一名称**：键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。
     
-    - **选择新资源的位置** ：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
+    - **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
     
 1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
     

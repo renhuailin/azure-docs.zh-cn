@@ -5,31 +5,20 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.author: victorh
-ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509740"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95802029"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure 防火墙管理器策略概述
 
 防火墙策略是包含 NAT、网络和应用程序规则集合以及威胁情报设置的 Azure 资源。 它是一个全局资源，可跨安全虚拟中心和中心虚拟网络中的多个 Azure 防火墙实例使用。 策略跨区域和订阅工作。
 
 ![Azure 防火墙管理器策略](media/policy-overview/policy-overview.png)
-
-## <a name="availability"></a>可用性
-
-防火墙策略是高度可用且自动复制的资源。 如果发生罕见的区域性灾难，防火墙策略操作会故障转移到 Azure 配对区域。 会同时将同步和异步操作的恢复后操作故障转移到 Azure 主要区域。 
-
-配对区域具有几个优点，包括：
-- 物理隔离距离至少为 300 英里
-- 更快的灾难恢复速度
-- 满足地理区域的数据驻留要求
-
-有关配对区域的详细信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
 ## <a name="policy-creation-and-association"></a>策略的创建和关联
 

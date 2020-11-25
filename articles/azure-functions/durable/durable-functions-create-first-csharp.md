@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890269"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008146"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -86,7 +86,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
     | 选择位置 | *region* | 选择离你较近的区域 |
 
-包含新函数的类会添加到此项目。 VS Code 还将存储帐户连接字符串添加到 *local.settings.json* ，并将对 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet 包的引用添加到 *.csproj* 项目文件。
+包含新函数的类会添加到此项目。 VS Code 还将存储帐户连接字符串添加到 *local.settings.json*，并将对 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet 包的引用添加到 *.csproj* 项目文件。
 
 打开新的 *HelloOrchestration.cs* 文件，查看其内容。 此持久函数是一个简单的函数链接示例，包含以下方法：  
 
@@ -136,7 +136,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     }
     ```
 
-1. 若要停止调试，请在 VS Code 中按 **Shift + F5** 。
+1. 若要停止调试，请在 VS Code 中按 **Shift + F5**。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
@@ -187,7 +187,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![“新建项目”对话框，用于在 Visual Studio 中创建函数](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. 为项目键入 **项目名称** ，然后选择“确定”。 项目名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
+1. 为项目键入 **项目名称**，然后选择“确定”。 项目名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
 
 1. 在“新建 Azure Functions 应用程序”中，使用图片后面的表中指定的设置。
 
@@ -261,7 +261,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
     }
     ```
 
-5. 若要停止调试，请按 **Shift + F5** 。
+5. 若要停止调试，请按 **Shift + F5**。
 
 验证该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
