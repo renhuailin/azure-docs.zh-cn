@@ -12,11 +12,11 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951836"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990864"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -39,7 +39,7 @@ ms.locfileid: "94951836"
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴复制为 **BuildingBlocks** 元素的子元素的 **ContentDefinitions** 元素的全部内容。
 1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如 `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     自定义策略应类似于以下代码片段：
 

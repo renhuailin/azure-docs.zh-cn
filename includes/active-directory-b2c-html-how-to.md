@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376433"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990861"
 ---
 ## <a name="use-custom-page-content"></a>使用自定义页内容
 
@@ -56,7 +56,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 ## <a name="hosting-the-page-content"></a>承载页面内容
 
-使用自己的 HTML 和 CSS 文件自定义 UI 时，请在支持 CORS 的任何公开可用 HTTPS 终结点上托管 UI 内容。 例如， [Azure Blob 存储](../articles/storage/blobs/storage-blobs-introduction.md)、 [Azure 应用服务](/azure/app-service/)、web 服务器、cdn、AWS S3 或文件共享系统。
+使用自己的 HTML 和 CSS 文件自定义 UI 时，请在支持 CORS 的任何公开可用 HTTPS 终结点上托管 UI 内容。 例如， [Azure Blob 存储](../articles/storage/blobs/storage-blobs-introduction.md)、 [Azure 应用服务](../articles/app-service/index.yml)、web 服务器、cdn、AWS S3 或文件共享系统。
 
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自定义页面内容的准则
 
@@ -115,16 +115,16 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 若要在 Blob 存储中托管 HTML 内容，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在**中心**菜单中，选择 "**新建**  >  **存储**" "存储  >  **帐户**"。
+1. 在 **中心** 菜单中，选择 "**新建**  >  **存储**" "存储  >  **帐户**"。
 1. 选择存储帐户的 **订阅** 。
 1. 创建资源组或选择现有 **资源组** 。
 1. 输入存储帐户的唯一 **名称** 。
 1. 选择存储帐户的 **地理位置** 。
-1. “部署模型”可保留为“Resource Manager”。********
-1. “性能”可保留为“标准”。********
-1. 将“帐户类型”更改为“Blob 存储”。********
-1. “复制”可保留为“RA-GRS”。********
-1. “访问层”可保留为“热”。********
+1. “部署模型”可保留为“Resource Manager”。
+1. “性能”可保留为“标准”。
+1. 将“帐户类型”更改为“Blob 存储”。
+1. “复制”可保留为“RA-GRS”。
+1. “访问层”可保留为“热”。
 1. 选择 " **查看 + 创建** " 以创建存储帐户。
     部署完成后，将自动打开 " **存储帐户** " 页。
 
@@ -155,7 +155,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 1. 在菜单中，选择“CORS”。
 1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时全部使用小写字母。
-1. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`****。
+1. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
 1. 对于“允许的标头”，请输入一个星号 (*)。
 1. 对于“公开的标头”，请输入一个星号 (*)。
 1. 对于“最大期限”，请输入 200。
@@ -167,7 +167,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 1. 重复 "配置 CORS" 步骤。 对于 " **允许的来源**"，输入 `https://www.test-cors.org`
 1. 导航到 [www.test-cors.org](https://www.test-cors.org/) 
-1. 对于 " **远程 URL** " 框，请粘贴 HTML 文件的 URL。 例如 `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
+1. 对于 " **远程 URL** " 框，请粘贴 HTML 文件的 URL。 例如： `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. 选择 " **发送请求**"。
     结果应为 `XHR status: 200` 。 
     如果收到错误，请确保 CORS 设置正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
