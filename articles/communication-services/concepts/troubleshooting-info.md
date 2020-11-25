@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357617"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886781"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -23,7 +23,7 @@ ms.locfileid: "93357617"
 
 我们鼓励开发人员在通信服务 [GitHub 存储库](https://github.com/Azure/communication)中提交问题、建议功能以及报告问题。 其他论坛包括：
 
-* [Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/single/101418.html)
+* [Microsoft Q&A](/answers/questions/topics/single/101418.html)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
 
 根据 Azure 订阅[支持计划](https://azure.microsoft.com/support/plans/)，你可以通过 [Azure 门户](https://azure.microsoft.com/support/create-ticket/)直接提交支持工单。

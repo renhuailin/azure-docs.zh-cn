@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309789"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949762"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置标识保护和条件访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "92309789"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure AD B2C 租户必须[关联到 Azure AD 订阅](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
-- 需要 Azure AD B2C Premium P2 才能使用登录和基于用户风险的条件访问。 如有必要，[将 Azure AD B2C 定价层更改为 Premium P2](https://aka.ms/exid-pricing-tier)。 
+- 需要 Azure AD B2C Premium P2 才能使用登录和基于用户风险的条件访问。 如有必要，[将 Azure AD B2C 定价层更改为 Premium P2](./billing.md)。 
 - 若要在 B2C 租户中管理标识保护和条件访问，你需要分配有全局管理员角色或安全管理员角色的帐户。
 - 若要在租户中使用这些功能，首先需要切换到 Azure AD B2C Premium P2 定价层。
 
@@ -136,8 +136,8 @@ Azure AD B2C 当前支持以下风险检测：
 
 6. 查看最多过去 7 天的审核活动。 包括以下类型的活动：
 
-   - **评估条件访问策略** ：此审核日志条目指示在身份验证过程中执行了条件访问评估。
-   - **修正用户** ：此条目指示最终用户符合条件访问策略的授权或要求，并已向风险引擎报告此活动以降低（缓解）用户风险。
+   - **评估条件访问策略**：此审核日志条目指示在身份验证过程中执行了条件访问评估。
+   - **修正用户**：此条目指示最终用户符合条件访问策略的授权或要求，并已向风险引擎报告此活动以降低（缓解）用户风险。
 
 7. 在列表中选择“评估条件访问策略”日志条目以打开“活动详细信息：审核日志” 页，其中显示审核日志标识符，以及“其他详细信息”部分中的以下信息：
 

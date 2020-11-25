@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用 JavaScript 创建管理组
 description: 在本快速入门中，你将使用 JavaScript 创建管理组，将资源整理到资源层次结构中。
-ms.date: 09/30/2020
+ms.date: 11/18/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676223"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886594"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>快速入门：使用 JavaScript 创建管理组
 
@@ -71,7 +71,7 @@ ms.locfileid: "92676223"
        const createMG = async () => {
           const credentials = await authenticator.interactiveLogin();
           const client = new managementGroups.ManagementGroupsAPI(credentials);
-          const result = await client.createOrUpdate(
+          const result = await client.managementGroups.createOrUpdate(
              groupId: argv.groupID,
              {
                  displayName: argv.displayName

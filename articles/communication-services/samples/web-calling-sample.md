@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6fc3441fac5fe037e9a268d26012761d1fece70
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463166"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888957"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
@@ -95,7 +95,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 - 熟悉如何[使用呼叫客户端库](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 了解有关[呼叫工作原理](../concepts/voice-video-calling/about-call-types.md)的详细信息
-- 查看 [API 参考文档](https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
 
 ## <a name="additional-reading"></a>其他阅读材料
 
@@ -103,4 +103,4 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用于构建 Web 应用程序的框架
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - 用于构建 Web 应用程序的框架

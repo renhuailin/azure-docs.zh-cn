@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018605"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874094"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 |-----|-----|
 |增强的安全性|[Extranet 锁定趋势](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[失败的登录报告](how-to-connect-health-adfs-risky-ip.md)</br>[符合隐私标准](reference-connect-health-user-privacy.md)|
 |[出现严重 ADFS 系统问题](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)时会收到通知|服务器配置和可用性</br>[性能和连接](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>定期维护|
-|易于部署和管理|[快速的代理安装](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>代理自动升级到最新版本</br>数据在几分钟后便可出现在门户中|
+|易于部署和管理|[快速的代理安装](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)</br>代理自动升级到最新版本</br>数据在几分钟后便可出现在门户中|
 丰富的[使用情况指标](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|排名靠前的应用程序使用情况</br>网络位置和 TCP 连接</br>每个服务器的令牌请求|
 |出色的用户体验|Azure 门户中的仪表板方式</br>[通过电子邮件提供警报](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 

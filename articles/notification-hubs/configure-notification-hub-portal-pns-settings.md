@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517846"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887257"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
@@ -107,6 +107,8 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 通过 [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) 命令获取其他平台的 Azure CLI 引用。
 
 若要详细了解如何将通知发送到 Android 应用程序，请参阅[使用 Firebase 将推送通知发送到 Android 设备](notification-hubs-android-push-notification-google-fcm-get-started.md)。
+
+---
 
 ## <a name="windows-push-notification-service"></a>Windows 推送通知服务
 

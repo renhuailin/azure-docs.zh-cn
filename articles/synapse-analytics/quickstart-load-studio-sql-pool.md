@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660077"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237470"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入门：使用 Synapse SQL 进行大容量加载
 
@@ -39,7 +39,8 @@ ms.locfileid: "94660077"
 
 ### <a name="steps"></a>步骤
 
-1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹。 向导将自动尝试检测 Parquet 文件。 如果无法确认 Parquet 文件类型，则默认情况下将使用带分隔符的文本 (CSV)。 
+1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹。 向导将自动尝试检测 Parquet 文件。 如果无法确认 Parquet 文件类型，则默认情况下将使用带分隔符的文本 (CSV)。
+
    ![选择源位置](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. 选择文件格式设置，包括要在其中写入被拒绝行（错误文件）的存储帐户。 目前仅支持 CSV 和 Parquet 文件。

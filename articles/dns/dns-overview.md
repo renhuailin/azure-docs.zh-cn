@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87924268"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965640"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
-不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用[应用服务域](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用[应用服务域](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
 
 Azure DNS 附带了以下功能。
 
@@ -29,11 +29,11 @@ Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上�
 
  Azure DNS 基于 Azure 资源管理器，后者提供以下功能：
 
-* [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：控制谁有权访问针对组织的特定操作。
+* [Azure 基于角色的访问控制 (Azure RBAC)](../azure-resource-manager/management/overview.md)：控制谁有权访问针对组织的特定操作。
 
-* [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
+* [活动日志](../azure-resource-manager/management/overview.md)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
 
-* [资源锁定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)：锁定订阅、资源组或资源。 锁定可以防止组织中的其他用户意外删除或修改重要资源。
+* [资源锁定](../azure-resource-manager/management/lock-resources.md)：锁定订阅、资源组或资源。 锁定可以防止组织中的其他用户意外删除或修改重要资源。
 
 有关详细信息，请参阅[如何保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。 
 
@@ -67,6 +67,6 @@ Azure DNS 支持别名记录集。 可以使用别名记录集来引用 Azure �
 
 * 若要了解 DNS 区域和记录，请参阅 [DNS 区域和记录概述](dns-zones-records.md)。
 
-* 若要了解如何在 Azure DNS 中创建区域，请参阅[创建 DNS 区域](./dns-getstarted-create-dnszone-portal.md)。
+* 若要了解如何在 Azure DNS 中创建区域，请参阅[创建 DNS 区域](./dns-getstarted-portal.md)。
 
 * 有关 Azure DNS 的常见问题，请参阅 [Azure DNS 常见问题](dns-faq.md)。

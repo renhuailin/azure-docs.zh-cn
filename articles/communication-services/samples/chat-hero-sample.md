@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677420"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888566"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
@@ -52,9 +52,9 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 主要聊天屏幕的组件：
 
-- **主要聊天区域** ：这是用户可以发送和接收消息的核心聊天体验。 若要发送消息，可以使用输入区域，然后按 Enter（或使用发送按钮）。 发送方使用正确的名称和表情符号对收到的聊天消息进行分类。 聊天区域中会出现两种类型的通知：1) 用户键入信息时的键入通知 2) 消息的发送和读取通知。
-- **标头** ：在这里，用户将看到聊天会话的标题、用于切换参与者和设置侧边栏的控件以及用于退出聊天会话的离开按钮。
-- **侧边栏** ：使用标题中的控件进行切换时，将在此处显示参与者和设置信息。 参与者侧边栏包含聊天的参与者列表以及用于邀请参与者加入聊天会话的链接。 设置侧边栏用于配置聊天会话标题。 
+- **主要聊天区域**：这是用户可以发送和接收消息的核心聊天体验。 若要发送消息，可以使用输入区域，然后按 Enter（或使用发送按钮）。 发送方使用正确的名称和表情符号对收到的聊天消息进行分类。 聊天区域中会出现两种类型的通知：1) 用户键入信息时的键入通知 2) 消息的发送和读取通知。
+- **标头**：在这里，用户将看到聊天会话的标题、用于切换参与者和设置侧边栏的控件以及用于退出聊天会话的离开按钮。
+- **侧边栏**：使用标题中的控件进行切换时，将在此处显示参与者和设置信息。 参与者侧边栏包含聊天的参与者列表以及用于邀请参与者加入聊天会话的链接。 设置侧边栏用于配置聊天会话标题。 
 
 下面你将找到有关设置该示例的先决条件和步骤的详细信息。
 
@@ -118,4 +118,4 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用于构建 Web 应用程序的框架
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - 用于构建 Web 应用程序的框架

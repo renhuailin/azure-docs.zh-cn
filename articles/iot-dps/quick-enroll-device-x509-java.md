@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb6f9f598ef68911a9017dde504a032672dc55a3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094636"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966575"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -80,7 +80,7 @@ ms.locfileid: "93094636"
         5. 出现提示时，可以选择性地为证书输入“公用名称”  。
         6. 此工具在本地生成“客户端证书”、“客户端证书私钥”和“根证书”。   
         7. 复制“根证书”，  包括 **_-----BEGIN CERTIFICATE-----_** 行和 **_-----END CERTIFICATE-----_** 行。 
-        8. 将“根证书”的值指定给  参数 **PUBLIC_KEY_CERTIFICATE_STRING** ，如下所示：
+        8. 将“根证书”的值指定给  参数 **PUBLIC_KEY_CERTIFICATE_STRING**，如下所示：
 
             ```Java
             private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -107,7 +107,7 @@ ms.locfileid: "93094636"
                 ```Java
                 private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
                 ```
-            2. 为 *DEVICE_ID* 参数指定一个友好名称，并保留 *PROVISIONING_STATUS* 的默认值 *ENABLED* 。 
+            2. 为 *DEVICE_ID* 参数指定一个友好名称，并保留 *PROVISIONING_STATUS* 的默认值 *ENABLED*。 
 
         - 或者，如果选择不配置预配服务，请确保注释掉或删除 _ServiceEnrollmentGroupSample.java_ 文件中的以下语句：
 
@@ -165,14 +165,14 @@ Azure IoT 设备预配服务支持两类注册：
 
 若要注册单个 X.509 设备，请修改[使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务](quick-enroll-device-tpm-java.md#javasample)一文中使用的单个注册  示例代码，如下所示：
 
-1.  将 X.509 客户端证书的“公用名称”复制到剪贴板。 如果希望使用 [上一示例代码部分](#javasample)所示的  X.509 证书生成器工具，请输入证书的“公用名称”，或者使用默认的  **microsoftriotcore** 。 将该“公用名称”用作  *REGISTRATION_ID* 变量的值。 
+1.  将 X.509 客户端证书的“公用名称”复制到剪贴板。 如果希望使用 [上一示例代码部分](#javasample)所示的  X.509 证书生成器工具，请输入证书的“公用名称”，或者使用默认的  **microsoftriotcore**。 将该“公用名称”用作  *REGISTRATION_ID* 变量的值。 
 
     ```Java
     // Use common name of your X.509 client certificate
     private static final String REGISTRATION_ID = "[RegistrationId]";
     ```
 
-2. 将变量 *TPM_ENDORSEMENT_KEY* 重命名为 *PUBLIC_KEY_CERTIFICATE_STRING* 。 复制你的客户端证书或者   “X.509 证书生成器”工具的输出中的“客户端证书”，作为 *PUBLIC_KEY_CERTIFICATE_STRING* 变量的值。 
+2. 将变量 *TPM_ENDORSEMENT_KEY* 重命名为 *PUBLIC_KEY_CERTIFICATE_STRING*。 复制你的客户端证书或者   “X.509 证书生成器”工具的输出中的“客户端证书”，作为 *PUBLIC_KEY_CERTIFICATE_STRING* 变量的值。 
 
     ```Java
     // Rename the variable *TPM_ENDORSEMENT_KEY* as *PUBLIC_KEY_CERTIFICATE_STRING*

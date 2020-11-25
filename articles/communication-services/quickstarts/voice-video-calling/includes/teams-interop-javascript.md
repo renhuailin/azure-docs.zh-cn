@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574271"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915207"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 - 正在运行的[通信服务通话应用](../getting-started-with-calling.md)。
-- [Teams 部署](https://docs.microsoft.com/deployoffice/teams-install)。
+- [Teams 部署](/deployoffice/teams-install)。
 
 ## <a name="enable-teams-interoperability"></a>启用 Teams 互操作性
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>获取会议上下文
 
-可以使用图形 API 来检索 Teams 上下文。 [Graph 文档](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http)中对此进行了详细介绍。
+可以使用图形 API 来检索 Teams 上下文。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)中对此进行了详细介绍。
 
 还可以从会议邀请本身的“加入会议”URL 中获取所需的会议信息。
 
@@ -115,4 +115,3 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
 
 将 Teams 上下文插入文本框，然后按“加入 Teams 会议”，从通信服务应用程序中加入 Teams 会议。
-

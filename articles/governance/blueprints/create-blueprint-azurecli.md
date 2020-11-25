@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 790e23897a24ea06565572163b8226af88e0bb7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057954"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920553"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -116,7 +116,7 @@ ms.locfileid: "92057954"
 
      > [!NOTE]
      > 导入蓝图定义时，请使用文件名 blueprint.json。
-     > 调用 [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import) 时使用此文件名。
+     > 调用 [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) 时使用此文件名。
 
      默认情况下，会在默认订阅中创建蓝图对象。 若要指定管理组，请使用参数 managementgroup。 若要指定订阅，请使用参数 subscription。
 
@@ -356,7 +356,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
         --parameters blueprintAssignment.json
      ```
 
-     **用户分配的托管标识**可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
+     **用户分配的托管标识** 可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
 
      > [!IMPORTANT]
      > Azure 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。

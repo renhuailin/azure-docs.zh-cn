@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072112"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888719"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通信服务中的事件处理
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072112"
 
 Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，从而以可靠、可缩放且安全的方式提供实时事件通知。 本文旨在帮助你将应用程序配置为侦听通信服务事件。 例如，你可能要更新数据库、创建工作项以及在每次通过与通信服务资源关联的电话号码收到短信时传递推送通知。
 
-Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 和 [Azure 逻辑应用](https://docs.microsoft.com/azure/azure-functions/functions-overview)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](../../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../../azure-functions/functions-overview.md)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../../event-grid/overview.md)。
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="显示 Azure 事件网格的事件模型的关系图。":::
 
 ## <a name="events-types"></a>事件类型
 
-事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅方。 
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 
 
 Azure 通信服务发出以下事件类型：
 
@@ -50,7 +50,7 @@ Azure 通信服务发出以下事件类型：
 
 ## <a name="event-subjects"></a>事件主题
 
-所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](https://docs.microsoft.com/azure/event-grid/event-filtering)。
+所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](../../event-grid/event-filtering.md)。
 
 | 主题前缀                              | 通信服务实体 |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ Azure 通信服务发出以下事件类型：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](https://docs.microsoft.com/azure/event-grid/overview)
-* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](https://docs.microsoft.com/azure/event-grid/concepts)
-* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](https://docs.microsoft.com/azure/event-grid/system-topics)
+* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](../../event-grid/overview.md)
+* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](../../event-grid/concepts.md)
+* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](../../event-grid/system-topics.md)

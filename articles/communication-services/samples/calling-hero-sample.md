@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233927"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887529"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>群组呼叫英雄示例入门
 
@@ -50,9 +50,9 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 
 主要呼叫屏幕的各个组件：
 
-1. **媒体库** ：显示参与者的主要阶段。 如果参与者启用了摄像头，则会在此处显示其视频源。 每个参与者都有一个单独的磁贴，上面显示了该参与者的显示名称和视频流（如果有）
-2. **标头** ：这是主要呼叫控件所在的位置，这些控件可用来切换设置和参与者侧边栏、打开/关闭视频和混音、共享屏幕以及退出呼叫。
-3. **侧边栏** ：使用标题上的控件进行切换时，会在此处显示参与者和设置信息。 可以使用右上角的“X”关闭该组件。 “参与者”侧边栏将显示参与者列表和邀请更多用户聊天的链接。 “设置”侧边栏可用于配置麦克风和摄像头设置。
+1. **媒体库**：显示参与者的主要阶段。 如果参与者启用了摄像头，则会在此处显示其视频源。 每个参与者都有一个单独的磁贴，上面显示了该参与者的显示名称和视频流（如果有）
+2. **标头**：这是主要呼叫控件所在的位置，这些控件可用来切换设置和参与者侧边栏、打开/关闭视频和混音、共享屏幕以及退出呼叫。
+3. **侧边栏**：使用标题上的控件进行切换时，会在此处显示参与者和设置信息。 可以使用右上角的“X”关闭该组件。 “参与者”侧边栏将显示参与者列表和邀请更多用户聊天的链接。 “设置”侧边栏可用于配置麦克风和摄像头设置。
 
 下面你将找到有关设置该示例的先决条件和步骤的详细信息。
 
@@ -116,4 +116,4 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用于构建 Web 应用程序的框架
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - 用于构建 Web 应用程序的框架
