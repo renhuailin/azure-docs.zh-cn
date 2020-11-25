@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324291"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015071"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 
@@ -26,16 +26,16 @@ ms.locfileid: "91324291"
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> 保留数据湖迁移的元数据
 
-将数据从一个 data lake 迁移到另一个 data lake （包括 [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)和 [Azure 文件存储](connector-azure-file-storage.md)）时，可以选择保留文件元数据和数据。
+在将数据从一个数据湖迁移到另一个数据湖（包括 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) 和 [Azure文件存储](connector-azure-file-storage.md)）时，可选择保留文件元数据和数据。
 
 复制活动支持在数据复制期间保留以下属性：
 
 - **所有客户指定的元数据** 
 - 以及以下五个数据存储内置系统属性： **、** （Amazon S3 除外）、`contentType`、`contentLanguage`、`contentEncoding``contentDisposition``cacheControl`。
 
-**处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据的密钥中设置不同的字符集。 如果选择使用复制活动保存元数据，则 ADF 会自动将无效字符替换为 "_"。
+**处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据键中使用不同的字符集。 选择使用复制活动保留元数据时，ADF 会自动将无效字符替换为“_”。
 
-当你按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/azure blob/azure 文件存储复制到采用二进制格式的 Azure Data Lake Storage Gen2/azure blob/azure 文件存储时，可以在 "活动创作" 的 "**复制活动** **Preserve**  >  **设置**" 选项卡或复制数据工具中的 "**设置**" 页上找到保留选项。
+按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure 文件存储复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob/Azure 文件存储时，可在用于活动创作的“复制活动” > “设置”选项卡中或在复制数据工具的“设置”页面上找到“保留”选项   。
 
 ![复制活动保留元数据](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "91324291"
 >[!IMPORTANT]
 >选择保留 Acl 时，请确保为数据工厂授予足够高的权限，以便在接收器 Data Lake Storage Gen2 帐户上运行。 例如，使用帐户密钥身份验证，或将存储 Blob 数据所有者角色分配给服务主体或托管标识。
 
-当你将源配置为具有二进制格式或二进制复制选项的源作为 Data Lake Storage Gen1/Gen2，并以二进制格式或二进制复制选项接收 Data Lake Storage Gen2 时，你可以在复制数据工具中的 "**设置**" 页上或在活动创作的 "**复制活动**设置" 选项卡上找到**保留**选项  >  **Settings** 。
+当你将源配置为具有二进制格式或二进制复制选项的源作为 Data Lake Storage Gen1/Gen2，并以二进制格式或二进制复制选项接收 Data Lake Storage Gen2 时，你可以在复制数据工具中的 "**设置**" 页上或在活动创作的 "**复制活动** 设置" 选项卡上找到 **保留** 选项  >  **Settings** 。
 
 ![Data Lake Storage Gen1/Gen2 到 Gen2 保留 ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 

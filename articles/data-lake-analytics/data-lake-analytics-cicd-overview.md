@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219320"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015258"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -47,7 +47,7 @@ ms.locfileid: "92219320"
 
 MSBuild 不提供对 U-SQL 项目的内置支持。 若要获取此支持，需要将对解决方案的引用添加到添加所需语言服务的 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 包。
 
-若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案，然后选择“管理 NuGet 包”****。 也可以在解决方案文件夹中添加一个名为 `packages.config` 的文件并将以下内容添加到其中：
+若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案，然后选择“管理 NuGet 包”。 也可以在解决方案文件夹中添加一个名为 `packages.config` 的文件并将以下内容添加到其中：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -430,7 +430,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
    copy USQLSDK\build\runtime\*.* $DBDeploymentTool
    ```
 
-2. 在生成或发布管道中添加“命令行任务”**** 并填写调用 `PackageDeploymentTool.exe` 的脚本。 `PackageDeploymentTool.exe` 位于定义的 **$DBDeploymentTool** 文件夹下。 示例脚本如下所示： 
+2. 在生成或发布管道中添加“命令行任务”并填写调用 `PackageDeploymentTool.exe` 的脚本。 `PackageDeploymentTool.exe` 位于定义的 **$DBDeploymentTool** 文件夹下。 示例脚本如下所示： 
 
    - 在本地部署 U-SQL 数据库：
 
@@ -444,7 +444,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
       ```
 
-   - 使用**机密**身份验证将 U-SQL 数据库部署到 Azure Data Lake Analytics 帐户：
+   - 使用 **机密** 身份验证将 U-SQL 数据库部署到 Azure Data Lake Analytics 帐户：
 
       ```cmd
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
@@ -460,22 +460,22 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="common-parameters"></a>通用参数
 
-| 参数 | 说明 | 默认值 | 必须 |
+| 参数 | 说明 | 默认值 | 必需 |
 |---------|-----------|-------------|--------|
-|程序包|要部署的 U-SQL 数据库部署包的路径。|null|true|
+|包|要部署的 U-SQL 数据库部署包的路径。|null|true|
 |数据库|要部署到或创建的数据库名称。|主|false|
-|LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|null|false|
+|LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|Null|false|
 |LogLevel|日志级别：Verbose、Normal、Warning 或 Error|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>本地部署的参数
 
-|参数|说明|默认值|必须|
+|参数|说明|默认值|必需|
 |---------|-----------|-------------|--------|
 |DataRoot|本地数据根文件夹的路径。|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
-|参数|说明|默认值|必须|
+|参数|说明|默认值|必需|
 |---------|-----------|-------------|--------|
 |帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|null|true|
 |resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|null|true|
@@ -483,10 +483,10 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 |租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|null|true|
 |AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|null|true|
 |交互|是否使用交互模式进行身份验证。|false|false|
-|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|null|非交互式身份验证需要此参数。|
-|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|null|非交互式身份验证需要此参数，或使用 SecreteFile。|
-|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|null|非交互式身份验证需要此参数，或使用机密。|
-|CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|null|false|
+|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|Null|非交互式身份验证需要此参数。|
+|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecreteFile。|
+|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|Null|非交互式身份验证需要此参数，或使用机密。|
+|CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|Null|false|
 | JobPrefix | U-SQL DDL 作业的数据库部署前缀。 | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>后续步骤

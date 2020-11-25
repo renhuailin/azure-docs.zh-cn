@@ -4,11 +4,11 @@ description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015207"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
@@ -16,7 +16,7 @@ ms.locfileid: "86105925"
 
 ## <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件  ：“监视作业状态更改”和“监视作业输出状态更改”。 
+媒体服务会发出如下所述的 **作业** 相关事件类型。 有两类作业相关事件  ：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。   
 
@@ -64,7 +64,7 @@ ms.locfileid: "86105925"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-媒体服务也会发出如下所述的**实时**事件类型。 **实时**事件有两种类别：流级事件和轨迹级事件。 
+媒体服务也会发出如下所述的 **实时** 事件类型。 **实时** 事件有两种类别：流级事件和轨迹级事件。 
 
 ### <a name="stream-level-events"></a>流级事件
 

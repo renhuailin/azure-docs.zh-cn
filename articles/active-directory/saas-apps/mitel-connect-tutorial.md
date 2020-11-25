@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521316"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教程：Azure Active Directory 与 Mitel MiCloud Connect 或 CloudLink Platform 的集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "92521316"
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 依次选择“企业应用程序”、“所有应用程序”。 
+2. 依次选择“企业应用程序”、“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "92521316"
     
     此时会显示“Mitel Connect 单一登录设置”对话框。
     
-3. 选中“启用单一登录”  复选框。
+3. 选中“启用单一登录”复选框。
     
     ![显示选中了“启用单一登录”复选框的 Mitel Connect 单一登录设置页面的屏幕截图。](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
@@ -116,13 +116,13 @@ ms.locfileid: "92521316"
 
     此时会显示“基本 SAML 配置”对话框。
 
-5.  在 Mitel 帐户门户中复制“Mitel 标识符(实体 ID)”字段中的 URL，将其粘贴到 Azure 门户的“标识符(实体 ID)”字段中。 
+5.  在 Mitel 帐户门户中复制“Mitel 标识符(实体 ID)”字段中的 URL，将其粘贴到 Azure 门户的“标识符(实体 ID)”字段中。
 
-6. 在 Mitel 帐户门户中复制“回复 URL (断言使用者服务 URL)”字段中的 URL，将其粘贴到 Azure 门户的“回复 URL (断言使用者服务 URL)”字段中。 
+6. 在 Mitel 帐户门户中复制“回复 URL (断言使用者服务 URL)”字段中的 URL，将其粘贴到 Azure 门户的“回复 URL (断言使用者服务 URL)”字段中。
 
    ![屏幕截图显示了 Azure 门户中的“基本 SAML 配置”和 Mitel 帐户门户中的“设置标识提供者”部分，其中的线条指示了它们之间的关系。](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
-7. 在“登录 URL”文本框中，键入以下 URL 之一： 
+7. 在“登录 URL”文本框中，键入以下 URL 之一：
 
     1. **https://portal.shoretelsky.com** - 将 Mitel 帐户门户用作默认的 Mitel 应用程序
     1. **https://teamwork.shoretel.com** - 将 Teamwork 用作默认的 Mitel 应用程序
@@ -136,15 +136,15 @@ ms.locfileid: "92521316"
 
     ![屏幕截图显示了“SAML 签名证书”窗格，你可以在其中下载证书。](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
-10. 在文本编辑器中打开签名证书文件，复制文件中的所有数据，然后将数据粘贴到 Mitel 帐户门户的“签名证书”字段中。  
+10. 在文本编辑器中打开签名证书文件，复制文件中的所有数据，然后将数据粘贴到 Mitel 帐户门户的“签名证书”字段中。 
 
       ![屏幕截图显示了“签名证书”字段。](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. 在 Azure 门户“基于 SAML 的登录”页的“设置 Mitel Connect”部分，执行以下操作： 
 
-     1. 复制“登录 URL”字段中的 URL，将其粘贴到 Mitel 帐户门户的“登录 URL”字段中。 
+     1. 复制“登录 URL”字段中的 URL，将其粘贴到 Mitel 帐户门户的“登录 URL”字段中。
 
-     1. 复制“Azure AD 标识符”字段中的 URL，将其粘贴到 Mitel 帐户门户的“实体 ID”字段中。 
+     1. 复制“Azure AD 标识符”字段中的 URL，将其粘贴到 Mitel 帐户门户的“实体 ID”字段中。
          
          ![屏幕截图显示了 Azure 门户“基于 SAML 的登录”页面与 Mitel 帐户门户之间的关系。](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "92521316"
   
     1. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如，BrittaSimon@contoso.com。
 
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     1. 选择“创建”。
 
@@ -182,7 +182,7 @@ ms.locfileid: "92521316"
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“Mitel Connect”。 
+2. 在“应用程序”列表中，选择“Mitel Connect”。
 
     ![“应用程序”列表中的“Mitel Connect”链接](common/all-applications.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "92521316"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。 
+4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -321,11 +321,11 @@ ms.locfileid: "92521316"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  字段中，键入输入“BrittaSimon”  。
+    1. 在“姓名”字段中，键入输入“BrittaSimon”。
   
     1. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如，BrittaSimon@contoso.com。
 
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     1. 选择“创建”。
 
@@ -337,7 +337,7 @@ ms.locfileid: "92521316"
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“Mitel Connect”。 
+2. 在“应用程序”列表中，选择“Mitel Connect”。
 
     ![“应用程序”列表中的“Mitel Connect”链接](common/all-applications.png)
 
@@ -345,7 +345,7 @@ ms.locfileid: "92521316"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。 
+4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

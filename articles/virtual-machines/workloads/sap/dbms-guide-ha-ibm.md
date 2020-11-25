@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951309"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015105"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
@@ -492,7 +492,7 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享，其中的日志从两个节点写入。 NFS 共享必须高度可用。 
 
-可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详细信息，请参阅：
+可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详情，请参阅：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha] 
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](./high-availability-guide-suse-netapp-files.md)

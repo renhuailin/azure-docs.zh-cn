@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
 ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015326"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -121,7 +121,7 @@ ms.locfileid: "87318141"
 
 * 建议将经典警报通知用于特定接收人。
 
-* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是_订阅_的_所有_管理员均会收到通知。
+* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是 _订阅_ 的 _所有_ 管理员均会收到通知。
 
 * 对于可用性指标警报，“批量/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或阅读者角色的用户。 实际上，可以访问包含 Application Insights 资源在内的订阅的所有用户均会收到通知。 
 

@@ -10,11 +10,11 @@ ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071500"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015037"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>从头开始部署 OPC 克隆模块和依赖项
 
@@ -176,7 +176,7 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
 11. 查看部署信息和清单。  它应类似于上面的部署清单。  选择“提交”。 
 
-12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块****。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
+12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
 
 ## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 部署
 

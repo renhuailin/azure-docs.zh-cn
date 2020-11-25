@@ -6,11 +6,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015292"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
 了解如何使用 Data Lake Analytics 分析网站日志，尤其是找出尝试访问网站时哪些引用发生了错误。
@@ -19,14 +19,14 @@ ms.locfileid: "92219388"
 * **Visual Studio 2015 或 Visual Studio 2013**。
 * **[适用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
 
-    安装好适用于 Visual Studio 的 Data Lake 工具后，将在 Visual Studio 的“工具”**** 菜单中看到“Data Lake”**** 项：
+    安装好适用于 Visual Studio 的 Data Lake 工具后，将在 Visual Studio 的“工具”菜单中看到“Data Lake”项：
 
     ![U SQL Visual Studio 菜单](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
 * **Data Lake Analytics 和适用于 Visual Studio 的 Data Lake 工具的基本知识**。 如要入门，请参阅：
 
   * [通过适用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 * **Data Lake Analytics 帐户。**  请参阅[创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md)。
-* **安装示例数据。** 在 Azure 门户中，打开 Data Lake Analytics 帐户，再依次单击左侧菜单上的“示例脚本”**** 和“复制示例数据”****。 
+* **安装示例数据。** 在 Azure 门户中，打开 Data Lake Analytics 帐户，再依次单击左侧菜单上的“示例脚本”和“复制示例数据”。 
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 必须先连接到 Azure，才能生成并测试任意 U SQL 脚本。
@@ -34,14 +34,14 @@ ms.locfileid: "92219388"
 ### <a name="to-connect-to-data-lake-analytics"></a>连接到 Data Lake Analytics
 
 1. 打开 Visual Studio。
-2. 单击“Data Lake”>“选项和设置”****。
-3. 如果有人已登录，请按照说明单击“登录”**** 或“更改用户”****。
-4. 单击“确定”**** 以关闭“选项和设置”对话框。
+2. 单击“Data Lake”>“选项和设置”。
+3. 如果有人已登录，请按照说明单击“登录”或“更改用户”。
+4. 单击“确定”以关闭“选项和设置”对话框。
 
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>浏览 Data Lake Analytics 帐户
 
-1. 从 Visual Studio 中，通过按 **CTRL+ALT+S**打开“服务器资源管理器”**** 。
-2. 在“服务器资源管理器”**** 中，展开“Azure”****，并展开“Data Lake Analytics”****。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅使用 [Azure 门户开始 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或 [使用 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
+1. 从 Visual Studio 中，通过按 **CTRL+ALT+S** 打开“服务器资源管理器” 。
+2. 在“服务器资源管理器”中，展开“Azure”，并展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅使用 [Azure 门户开始 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或 [使用 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
 
 ## <a name="develop-u-sql-application"></a>开发 U SQL 应用程序
 U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细信息，请参阅 [Get started with U-SQL](data-lake-analytics-u-sql-get-started.md)（U-SQL 入门）。
@@ -50,7 +50,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
 ### <a name="to-create-and-submit-a-data-lake-analytics-job"></a>创建并提交 Data Lake Analytics 作业
 
-1. 单击“文件”>“新建”>“项目”****。
+1. 单击“文件”>“新建”>“项目”。
 
 2. 选择“U-SQL 项目”类型。
 
@@ -155,13 +155,13 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
    USING Outputters.Tsv();
    ```
 
-6. 切换回“提交”**** 按钮旁边的第一个 U-SQL 脚本，指定 Analytics 帐户。
+6. 切换回“提交”按钮旁边的第一个 U-SQL 脚本，指定 Analytics 帐户。
 
-7. 在“解决方案资源管理器”**** 中，右键单击 “Script.usql”****，并单击“生成脚本”****。 验证“输出”窗格中的结果。
+7. 在“解决方案资源管理器”中，右键单击 “Script.usql”，并单击“生成脚本”。 验证“输出”窗格中的结果。
 
-8. 在“解决方案资源管理器”**** 中，右键单击 “Script.usql”****，并单击“提交脚本”****。
+8. 在“解决方案资源管理器”中，右键单击 “Script.usql”，并单击“提交脚本”。
 
-9. 验证“Analytics 帐户”**** 是否是想要运行作业的帐户，并单击“提交”****。 完成提交后，“适用于 Visual Studio 的 Data Lake 工具结果”窗口中会出现提交结果和作业链接。
+9. 验证“Analytics 帐户” 是否是想要运行作业的帐户，并单击“提交”。 完成提交后，“适用于 Visual Studio 的 Data Lake 工具结果”窗口中会出现提交结果和作业链接。
 
 10. 等待作业成功完成。  如果作业失败，最可能的原因是缺少源文件。  请参阅本教程中的先决条件部分。 有关其他疑难解答信息，请参阅 [Monitor and troubleshoot Azure Data Lake Analytics jobs](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)（对 Azure Data Lake Analytics 作业进行监视和疑难解答）。
 
@@ -173,9 +173,9 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
 ### <a name="to-see-the-job-output"></a>查看作业输出
 
-1. 在“服务器资源管理器”**** 中依次展开 “Azure”****、“Data Lake Analytics”****、Data Lake Analytics 帐户、“存储帐户”****，右键单击默认 Data Lake Storage 帐户，并单击“资源管理器”****。
-2. 双击“示例”**** 打开文件夹，并双击“输出”****。
-3. 双击“UnsuccessfulResponses.log”****。
+1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击默认 Data Lake Storage 帐户，并单击“资源管理器”。
+2. 双击“示例”打开文件夹，并双击“输出”。
+3. 双击“UnsuccessfulResponses.log”。
 4. 也可以双击该作业图形视图中的输出文件直接导航到输出。
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014833"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>更换 StorSimple 设备上的 EBOD 控制器
 
@@ -48,7 +48,7 @@ ms.locfileid: "85564232"
 5. 记下连接到控制器的 EBOD 控制器模块的确切 SAS 端口。 更换 EBOD 模块后，需将系统还原到此配置。
    
    > [!NOTE]
-   > 通常情况下，这会是端口 A，在下图中标记为“主机进”。****
+   > 通常情况下，这会是端口 A，在下图中标记为“主机进”。
    
     ![EBOD 控制器的底板](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
