@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896794"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997267"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -209,19 +209,19 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 7. 选择触发器类型。 向下滚动到“从常见触发器开始”部分。 选择“收到 HTTP 请求时”。
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="创建逻辑应用的屏幕截图。":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="创建逻辑应用 HTTP 触发器的屏幕截图。":::
 
 8. 在逻辑应用设计器的右上角，选择“保存”。 随即自动生成“HTTP POST URL”。 保存 URL。 下一部分中需要用它来创建事件终结点。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="逻辑应用 HTTP 请求 URL 和 JSON 的屏幕截图。":::
 
 9. 选择“+ 新步骤”。 现在选择一项操作。 在搜索框中键入“`outlook.com email`”。 在“操作”列表中，向下滚动并选择“发送电子邮件 (V2)” 。
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="创建逻辑应用设计器的屏幕截图。":::
 
 10. 登录到 Outlook 帐户。 确保选择“是”以允许逻辑应用访问该帐户。 填充用于发送电子邮件的字段。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="创建逻辑应用发送电子邮件步骤的屏幕截图。":::
 
     >[!TIP]
     > 在电子邮件通知中检索 GeoJSON 响应数据（如 `geometryId` 或 `deviceId`）。 可以将逻辑应用配置为读取事件网格发送的数据。 有关如何配置逻辑应用以使用事件数据并将其传递到电子邮件通知的详细信息，请参阅[教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
@@ -238,11 +238,11 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 1. 转到你的 Azure Maps 帐户。 在仪表板中，选择“订阅”。 选择订阅名称，然后在设置菜单中选择“事件”。
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="转到 Azure Maps 帐户事件的屏幕截图。":::
 
 2. 要创建事件订阅，请从“事件”页中选择“+ 事件订阅”。
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="创建 Azure Maps 事件订阅的屏幕截图。":::
 
 3. 在“创建事件订阅”页中输入以下值：
     * 事件订阅的“名称”。
@@ -252,7 +252,7 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
     * 对于“终结点类型”，选择 `Web Hook`。
     * 对于“终结点”，复制在上一个部分创建的“逻辑应用进入”终结点的 HTTP POST URL。 如果忘记保存，可以直接返回到逻辑应用设计器并从 HTTP 触发器步骤复制它。
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps 事件订阅详细信息的屏幕截图。":::
 
 4. 选择“创建”。
 

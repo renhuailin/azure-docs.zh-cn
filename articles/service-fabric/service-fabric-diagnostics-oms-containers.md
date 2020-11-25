@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998205"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视容器
  
@@ -27,7 +27,7 @@ ms.locfileid: "86258702"
 
 1. 设置群集并 Azure Monitor 日志和 Log Analytics 代理后，请部署容器。 待容器部署完毕后，再执行下一步。
 
-2. 在 Azure 市场中搜索“容器监视解决方案”，并单击“监视 + 管理”类别下显示的“容器监视解决方案”资源******。
+2. 在 Azure 市场中搜索“容器监视解决方案”，并单击“监视 + 管理”类别下显示的“容器监视解决方案”资源。
 
     ![添加容器解决方案](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

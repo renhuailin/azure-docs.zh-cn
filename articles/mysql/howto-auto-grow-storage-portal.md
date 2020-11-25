@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 9355c2b2c780b6ccd63100e576850fe5566db3cc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998594"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户自动增长 Azure Database for MySQL 的存储
 本文介绍如何将 Azure Database for MySQL 服务器存储配置为在不影响工作负荷的情况下增长。
@@ -28,9 +28,9 @@ ms.locfileid: "92546834"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for MySQL 服务器。
 
-2. 在 MySQL 服务器页上，单击“设置”  标题下的“定价层”  ，以打开“定价层”页。
+2. 在 MySQL 服务器页上，单击“设置”标题下的“定价层”，以打开“定价层”页。
 
-3. 在“自动增长”部分中，选择“是”  以启用存储自动增长。
+3. 在“自动增长”部分中，选择“是”以启用存储自动增长。
 
     :::image type="content" source="./media/howto-auto-grow-storage-portal/3-auto-grow.png" alt-text="Azure Database for MySQL - Settings_Pricing_tier - 自动增长":::
 
@@ -38,7 +38,7 @@ ms.locfileid: "92546834"
 
 5. 此时将显示一则通知，确认自动增长已成功启用。
 
-    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Azure Database for MySQL - Settings_Pricing_tier - 自动增长":::
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Azure Database for MySQL - 自动增长成功":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997488"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a> (预览配置管理员许可工作流) 
 
@@ -118,7 +118,7 @@ ms.locfileid: "94658768"
 > 当前所有方案中都缺少 audit 参与者的用户上下文。 这是预览版本中的一个已知限制。
 
 
-|方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
+|场景  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|
 |启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
 |管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |

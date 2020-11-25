@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998100"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -65,7 +65,7 @@ ms.locfileid: "93289829"
 
 本地计算机不支持 Azure 资源的托管标识。 因此，`Microsoft.Azure.Services.AppAuthentication` 库使用开发人员凭据在本地开发环境中运行。 当解决方案部署到 Azure 时，该库使用托管标识切换到 OAuth 2.0 客户端凭据授予流。 此方法意味着可以对同一代码进行本地和远程测试，无需担心。
 
-对于本地开发，`AzureServiceTokenProvider` 使用 **Visual Studio** 、 **Azure 命令行界面** (CLI) 或 **Azure AD 集成身份验证** 提取令牌。 将按顺序尝试每个选项，该库会使用获得成功的第一个选项。 如果没有选项成功，则会引发一个包含详细信息的 `AzureServiceTokenProviderException` 意外。
+对于本地开发，`AzureServiceTokenProvider` 使用 **Visual Studio**、**Azure 命令行界面** (CLI) 或 **Azure AD 集成身份验证** 提取令牌。 将按顺序尝试每个选项，该库会使用获得成功的第一个选项。 如果没有选项成功，则会引发一个包含详细信息的 `AzureServiceTokenProviderException` 意外。
 
 #### <a name="authenticating-with-visual-studio"></a>使用 Visual Studio 进行身份验证
 
@@ -167,7 +167,7 @@ ms.locfileid: "93289829"
           CertificateStoreLocation={CertificateStore}
     ```
 
-    将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine* ` 或 *CurrentUser* 。
+    将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
 
 1. 运行应用程序。
 
@@ -217,7 +217,7 @@ ms.locfileid: "93289829"
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
     ```
 
-    例如，如果 Key Vault 名为 *myKeyVault* ，而你创建了名为 *myCert* 的证书，则证书标识符为：
+    例如，如果 Key Vault 名为 *myKeyVault*，而你创建了名为 *myCert* 的证书，则证书标识符为：
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
@@ -262,7 +262,7 @@ ms.locfileid: "93289829"
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>未安装 Azure CLI、未登录，或者未使用最新版本
 
-运行 *az account get-access-token* ，确定 Azure CLI 是否显示令牌。 如果输出中显示 **no such program found** ，请安装 [最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系统可能会提示你登录。
+运行 *az account get-access-token*，确定 Azure CLI 是否显示令牌。 如果输出中显示 **no such program found**，请安装 [最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系统可能会提示你登录。
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider 找不到 Azure CLI 的路径
 
@@ -270,7 +270,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>使用多个帐户登录到了 Azure CLI、同一个帐户有权访问多个租户中的订阅，或者在本地开发期间尝试发出调用时收到“拒绝访问”错误
 
-使用 Azure CLI 将默认订阅设置为包含所要使用的帐户的订阅。 该订阅必须位于你要访问的资源所在的同一租户中： **az account set --subscription [订阅 ID]** 。 如果未显示任何输出，则表示命令成功。 使用 **az account list** 验证适当的帐户现在是否为默认帐户。
+使用 Azure CLI 将默认订阅设置为包含所要使用的帐户的订阅。 该订阅必须位于你要访问的资源所在的同一租户中：**az account set --subscription [订阅 ID]** 。 如果未显示任何输出，则表示命令成功。 使用 **az account list** 验证适当的帐户现在是否为默认帐户。
 
 ### <a name="common-issues-across-environments"></a>环境中出现的常见问题
 

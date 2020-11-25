@@ -9,11 +9,11 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107277"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998764"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>教程：使用门户将虚拟网络连接到 ExpressRoute 线路
 
@@ -65,25 +65,25 @@ ms.locfileid: "92107277"
 
 1. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 选择“连接” > “添加”，打开“添加连接”页面  。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="添加连接屏幕截图":::
 
 1. 输入连接的名称，然后选择“下一步:设置 >”。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="创建连接的“基本信息”页面":::
 
 1. 选择要链接到线路的虚拟网络中的网关，然后选择“查看 + 创建”。 然后在验证完成后，选择“创建”。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="创建连接设置页面":::
 
 1. 成功配置连接之后，连接对象会显示连接的信息。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="连接对象屏幕截图":::
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>将 VNet 连接到线路 - 不同订阅
 
 用户可以在多个订阅之间共享 ExpressRoute 线路。 下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="ExpressRoute 线路屏幕截图":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="跨订阅连接":::
 
 大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
 
@@ -109,21 +109,21 @@ ms.locfileid: "92107277"
 
 1. 在 ExpressRoute 页面中，选择“授权”，然后键入授权的名称并选择“保存”  。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="授权":::
 
-2. 保存配置后，复制“资源 ID”和“授权密钥”。********
+2. 保存配置后，复制“资源 ID”和“授权密钥”。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="授权密钥":::
 
 **若要删除连接授权**
 
 可为连接的授权密钥选择“删除”图标来删除该连接。
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="ExpressRoute 线路屏幕截图":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="删除授权密钥":::
 
 如果要删除连接，但想要保留授权密钥，可从线路的连接页面中删除此连接。
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="ExpressRoute 线路屏幕截图":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="删除具有线路的连接":::
 
 ### <a name="circuit-user-operations"></a>线路用户操作
 
@@ -133,31 +133,31 @@ ms.locfileid: "92107277"
 
 1. 选择“+ 创建资源”  按钮。 搜索“连接”，然后选择“创建” 。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="创建新资源":::
 
 1. 确保“连接类型”设置为“ExpressRoute”。 选择“资源组”和“位置”，然后在“基本信息”页面中选择“确定” 。
 
     > [!NOTE]
     > 该位置必须与你要为其创建连接的虚拟网络网关位置相匹配。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="“基本信息”页":::
 
-1. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。********** 输入“授权密钥”和“对等线路 URI”，并为连接命名。**** 选择“确定”。 
+1. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。 输入“授权密钥”和“对等线路 URI”，并为连接命名。 选择“确定”。 
  
     > [!NOTE]
     > *对等线路 URI* 是 ExpressRoute 线路的资源 ID（可以在 ExpressRoute 线路的“属性设置”窗格下找到）。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="“设置”页":::
 
 1. 在“摘要”页面中复查信息，并选择“确定” 。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="ExpressRoute 线路屏幕截图":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="摘要页面":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过在你的连接的页面上单击“删除”**** 图标来取消 VNet 到 ExpressRoute 的链接。
+可以通过在你的连接的页面上单击“删除”图标来取消 VNet 到 ExpressRoute 的链接。
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="ExpressRoute 线路屏幕截图":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="删除连接":::
 
 ## <a name="next-steps"></a>后续步骤
 

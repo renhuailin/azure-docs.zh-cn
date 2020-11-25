@@ -2,19 +2,19 @@
 author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 11/19/2020
 ms.author: inhenkel
-ms.custom: CLI
-ms.openlocfilehash: 3a99dd9e69363e8fbb02b7e5e1ac5921d079ba21
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.custom: REST
+ms.openlocfilehash: def2553ddc71f008c5d2b902d04f587ef8d26889
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917864"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996880"
 ---
 <!--Create a basic audio transform REST-->
 
-以下 Azure REST 命令创建基本的音频资产。 将 `subscriptionID`、`resourceGroup` 和 `amsAccountName` 值替换为当前正在使用的值。 通过设置为转换指定名称 `transformName` 。
+以下 Azure REST 命令创建基本音频转换。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 通过设置为转换指定名称 `transformName` 。
 
 ```REST
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus，aro，openshift，指标，red hat
 ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218606"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996842"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中部署独立的 Prometheus 实例
 
@@ -36,7 +36,7 @@ ms.locfileid: "92218606"
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>使用 OC 工具登录到群集
 
-1. 打开 web 浏览器，然后前往群集 (的 web 控制台 https://openshift 。*随机 id*。*region*azmosa.io) 。
+1. 打开 web 浏览器，然后前往群集 (的 web 控制台 https://openshift 。*随机 id*。*region* azmosa.io) 。
 2. 使用 Azure 凭据登录。
 3. 在右上角选择你的用户名，然后选择 " **复制登录命令**"。
 4. 将用户名粘贴到将使用的终端。
@@ -188,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>可选：部署示例应用程序
 
-一切正常，但没有度量值源。 请参阅 Prometheus URL (https://prom-prometheus-project.apps 。*随机 id*。*region*azmosa.io/) 。 可以使用以下命令找到它：
+一切正常，但没有度量值源。 请参阅 Prometheus URL (https://prom-prometheus-project.apps 。*随机 id*。*region* azmosa.io/) 。 可以使用以下命令找到它：
 
 ```
 oc get route prom -n prometheus-project

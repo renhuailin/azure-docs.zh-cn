@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299904"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997777"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -44,7 +44,7 @@ Azure AD 支持以下身份验证方法：
 
 * **云身份验证** - 如果选择此身份验证方法，Azure AD 将处理用户登录时的身份验证过程。 使用云身份验证时具有两个选择： 
    * **密码哈希同步 (PHS)** - 通过密码哈希同步，用户可以使用与其在本地使用的相同用户名和密码，而无需部署除 Azure AD Connect 以外的其他任何基础结构。 
-   * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证****。
+   * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证。
 * **联合身份验证** - 如果选择此身份验证方法，Azure AD 会将身份验证过程移交给单独的受信任身份验证系统（例如 AD FS 或第三方联合身份验证服务）来验证用户的登录。 
 
 对于只想让用户登录到 Microsoft 365、SaaS 应用程序和其他基于 Azure AD 的资源的大多数组织，我们建议使用默认的密码哈希同步选项。
@@ -60,7 +60,7 @@ Azure AD 支持以下身份验证方法：
 
 有关详细信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)一文。
 
-### <a name="pass-through-authentication"></a>直通身份验证
+### <a name="pass-through-authentication"></a>传递身份验证
 凭借直通身份验证，将针对本地 Active Directory 控制器验证用户的密码。 密码无需以任何形式存在于 Azure AD 中。 此身份验证允许在对云服务进行身份验证的过程中评估本地策略（例如登录时间限制）。
 
 直通身份验证使用本地环境中已加入域的 Windows Server 2012 R2 计算机上的简单代理。 此代理侦听密码验证请求。 它不需要对 Internet 开放的任何入站端口。
@@ -68,7 +68,7 @@ Azure AD 支持以下身份验证方法：
 此外，还可以对公司网络中已加入域的计算机上的用户启用单一登录。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。
 ![直通身份验证](./media/plan-connect-user-signin/pta.png)
 
-有关详细信息，请参阅：
+有关详情，请参阅：
 - [直通身份验证](how-to-connect-pta.md)
 - [单一登录](how-to-connect-sso.md)
 

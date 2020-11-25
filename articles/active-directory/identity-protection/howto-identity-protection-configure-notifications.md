@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997658"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>“Azure Active Directory 标识保护”通知
 
@@ -68,7 +68,7 @@ Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件�
 
 作为管理员，你可以打开或关闭每周摘要电子邮件，然后选择分配接收电子邮件的用户。
 
-在 " **Azure portal** **Azure Active Directory**  >  **安全**  >  **标识保护**  >  **每周摘要** " 下的 Azure 门户中配置每周摘要电子邮件。
+在 " **Azure portal** **Azure Active Directory**  >  **安全**  >  **标识保护**  >  **每周摘要**" 下的 Azure 门户中配置每周摘要电子邮件。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -7,11 +7,11 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998900"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
 
@@ -722,15 +722,15 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-下表解释了在 function.json 文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
@@ -739,11 +739,11 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalr"></a>SignalR
 
-下表解释了在 function.json 文件和 `SignalR` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `SignalR` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalR`。|
+|**type**| 不适用 | 必须设置为 `signalR`。|
 |**direction**| 不适用 | 必须设置为 `out`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|

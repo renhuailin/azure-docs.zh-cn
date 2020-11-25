@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678364"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997012"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -26,11 +26,11 @@ ms.locfileid: "92678364"
 
 ## <a name="view-suggested-questions"></a>查看建议的问题
 
-1. 若要查看建议的问题，请在 " **编辑** 知识库" 页上选择 " **查看选项** "，然后选择 " **显示活动的学习建议** "。
+1. 若要查看建议的问题，请在 " **编辑** 知识库" 页上选择 " **查看选项**"，然后选择 " **显示活动的学习建议**"。
 
     [![在门户的 "编辑" 部分中，选择 "显示建议"，以查看活动学习的新问题备选方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. 通过选择 " **按建议筛选** " 来使用问题和答案对筛选知识库，以便仅显示建议。
+1. 通过选择 " **按建议筛选**" 来使用问题和答案对筛选知识库，以便仅显示建议。
 
     [![使用 "按建议筛选" 切换来仅查看活动学习的建议问题备选方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -38,9 +38,9 @@ ms.locfileid: "92678364"
 
     [![选择或拒绝活动学习的建议问题，方法是选择绿色复选标记或红色删除标记。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    您可以通过在上下文工具栏中选择 " **全部添加** " 或 " **全部拒绝** " 来添加或删除 _所有建议_ 。
+    您可以通过在上下文工具栏中选择 "**全部添加**" 或 "**全部拒绝**" 来添加或删除 _所有建议_。
 
-1. 选择“保存并训练”  ，将所做的更改保存到知识库。
+1. 选择“保存并训练”，将所做的更改保存到知识库。
 
 1. 选择 " **发布** " 以允许在 [GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)中提供更改。
 
@@ -145,7 +145,7 @@ JSON 正文具有几个设置：
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|字符串|用户查询的确切文本。 必需。|
-|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 
@@ -337,7 +337,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

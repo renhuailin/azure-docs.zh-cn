@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997885"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -157,7 +157,7 @@ az postgres up --resource-group myResourceGroup --location westeurope --server-n
 
 ### <a name="configure-the-database-connection"></a>配置数据库连接
 
-在存储库中，打开 _config/database.yml_ 。 在该文件的底部，将生产变量替换为以下代码。 
+在存储库中，打开 _config/database.yml_。 在该文件的底部，将生产变量替换为以下代码。 
 
 ```txt
 production:
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="标题为“任务”的 Ruby on Rails 应用示例的屏幕截图。":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="标题为“任务”的 Azure 应用示例的屏幕截图，显示了添加到列表的任务。":::
 
 恭喜，你已在 Azure 应用服务中运行了一个数据驱动的 Ruby 应用。
 
@@ -439,7 +439,7 @@ git push azure master
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击 **应用程序服务** ，然后单击 Azure 应用的名称。
+在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 

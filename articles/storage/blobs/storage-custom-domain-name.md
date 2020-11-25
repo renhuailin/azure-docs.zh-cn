@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314656"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996859"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
@@ -58,11 +58,11 @@ ms.locfileid: "92314656"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在菜单窗格中的“设置”下，选择“属性”。********  
+2. 在菜单窗格中的“设置”下，选择“属性”。  
 
 3. 将 **主 Blob 服务终结点** 的值或 **主静态网站终结点** 复制到文本文件。 
 
-4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。** 下表提供了一些示例。
+4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。 下表提供了一些示例。
 
    | 终结点的类型 |  endpoint | 主机名 |
    |------------|-----------------|-------------------|
@@ -79,11 +79,11 @@ ms.locfileid: "92314656"
 
 1. 登录到域注册机构的网站，并转到用于管理 DNS 设置的页面。
 
-   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。************
+   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。
 
 2. 找到用于管理 CNAME 记录的部分。 
 
-   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。************
+   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。
 
 3. 创建 CNAME 记录。 在该记录中提供以下项： 
 
@@ -97,17 +97,17 @@ ms.locfileid: "92314656"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。********  
+2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
 
    ![自定义域选项](./media/storage-custom-domain-name/custom-domain-button.png "自定义域")
 
-   此时会打开“自定义域”窗格。****
+   此时会打开“自定义域”窗格。
 
-3. 在“域名”文本框中输入自定义域的名称，包括子域****  
+3. 在“域名”文本框中输入自定义域的名称，包括子域  
    
    例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 `www.contoso.com`。 如果子域是 *photos*，请输入 `photos.contoso.com`。
 
-4. 若要注册自定义域，请选择“保存”按钮。****
+4. 若要注册自定义域，请选择“保存”按钮。
 
    CNAME 记录通过域名服务器 (DNS) 传播后，如果用户具有相应的权限，则他们可以使用自定义域查看 Blob 数据。
 
@@ -144,11 +144,11 @@ ms.locfileid: "92314656"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在菜单窗格中的“设置”下，选择“属性”。********  
+2. 在菜单窗格中的“设置”下，选择“属性”。  
 
 3. 将 **主 Blob 服务终结点** 的值或 **主静态网站终结点** 复制到文本文件。 
 
-4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。** 下表提供了一些示例。
+4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。 下表提供了一些示例。
 
    | 终结点的类型 |  endpoint | 主机名 |
    |------------|-----------------|-------------------|
@@ -163,11 +163,11 @@ ms.locfileid: "92314656"
 
 1. 登录到域注册机构的网站，并转到用于管理 DNS 设置的页面。
 
-   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。************
+   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。
 
 2. 找到用于管理 CNAME 记录的部分。 
 
-   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。************
+   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。
 
 3. 创建 CNAME 记录。 在该记录中提供以下项： 
 
@@ -179,7 +179,7 @@ ms.locfileid: "92314656"
 
      将子域 `asverify` 添加到主机名。 例如：`asverify.mystorageaccount.blob.core.windows.net`。
 
-4. 若要注册自定义域，请选择“保存”按钮。****
+4. 若要注册自定义域，请选择“保存”按钮。
 
    如果注册成功，则门户会通知存储帐户已成功更新。 自定义域已由 Azure 验证，但发往域的流量尚未路由到存储帐户。
 
@@ -189,19 +189,19 @@ ms.locfileid: "92314656"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。********  
+2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
 
    ![自定义域选项](./media/storage-custom-domain-name/custom-domain-button.png "自定义域")
 
-   此时会打开“自定义域”窗格。****
+   此时会打开“自定义域”窗格。
 
-3. 在“域名”文本框中输入自定义域的名称，包括子域****  
+3. 在“域名”文本框中输入自定义域的名称，包括子域  
    
    例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 `www.contoso.com`。 如果子域是 *photos*，请输入 `photos.contoso.com`。
 
-4. 选中“使用间接 CNAME 验证”复选框。****
+4. 选中“使用间接 CNAME 验证”复选框。
 
-5. 若要注册自定义域，请选择“保存”按钮。****
+5. 若要注册自定义域，请选择“保存”按钮。
   
    CNAME 记录通过域名服务器 (DNS) 传播后，如果用户具有相应的权限，则他们可以使用自定义域查看 Blob 数据。
 
@@ -211,11 +211,11 @@ ms.locfileid: "92314656"
 
 1. 登录到域注册机构的网站，并转到用于管理 DNS 设置的页面。
 
-   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。************
+   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。
 
 2. 找到用于管理 CNAME 记录的部分。 
 
-   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。************
+   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。
 
 3. 创建 CNAME 记录。 在该记录中提供以下项： 
 
@@ -233,14 +233,14 @@ ms.locfileid: "92314656"
 
 若要删除自定义域映射，请取消注册自定义域。 使用以下过程之一。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要删除自定义域设置，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。********  
-   此时会打开“自定义域”窗格。****
+2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
+   此时会打开“自定义域”窗格。
 
 3. 清除包含自定义域名的文本框的内容。
 
@@ -250,7 +250,7 @@ ms.locfileid: "92314656"
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要删除自定义域注册，请使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
+若要删除自定义域注册，请使用 [az storage account update](/cli/azure/storage/account) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
 
 * 命令格式：
 
@@ -320,11 +320,11 @@ ms.locfileid: "92314656"
 
 4.  (可选) 查看以下指南：
 
-   * [使用 Azure CDN (SAS) 令牌的共享访问签名](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
+   * [使用 Azure CDN (SAS) 令牌的共享访问签名](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures)。
 
-   * [带有 Azure CDN 的 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * [带有 Azure CDN 的 HTTP 到 HTTPS 的重定向](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
-   * [使用 Blob 存储与 Azure CDN 时的定价和计费](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * [使用 Blob 存储与 Azure CDN 时的定价和计费](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,18 +9,18 @@ ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 65a60425f09e9cd7a3e06ca1624621ed8b9fdcbd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842050"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997080"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
 BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 此类存储帐户针对事务处理速率高或需要极快速访问的工作负载进行了优化。 本文介绍如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 创建 BlockBlobStorage 帐户。
 
-有关 BlockBlobStorage 帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+有关 BlockBlobStorage 帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,7 +61,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az login
 
 8. 选择“高级”选项卡。
 
-9. 若要优化用于数据分析的存储帐户，请将“分层命名空间”设为“启用”。 否则，请将此选项设置为其默认值。 如果对 BlockBlobStorage 帐户启用此设置，则将提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+9. 若要优化用于数据分析的存储帐户，请将“分层命名空间”设为“启用”。 否则，请将此选项设置为默认值。 通过 BlockBlobStorage 帐户启用此设置时，将为你提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
 8. 选择“查看+创建”可查看存储帐户设置。
 
@@ -157,7 +157,7 @@ az login
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
-   若要优化用于数据分析的存储帐户，请将 `-EnableHierarchicalNamespace $True` 添加到命令中。 如果对 BlockBlobStorage 帐户启用此设置，则将提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+   若要优化用于数据分析的存储帐户，请将 `-EnableHierarchicalNamespace $True` 添加到命令中。 通过 BlockBlobStorage 帐户启用此设置时，将为你提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -188,12 +188,12 @@ az login
     --sku "Premium_LRS"
    ```
 
-   若要优化用于数据分析的存储帐户，请将 `--hierarchical-namespace true` 添加到命令中。 如果对 BlockBlobStorage 帐户启用此设置，则将提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+   若要优化用于数据分析的存储帐户，请将 `--hierarchical-namespace true` 添加到命令中。 通过 BlockBlobStorage 帐户启用此设置时，将为你提供 [Data Lake Storage 的高级层](premium-tier-for-data-lake-storage.md)。  若要详细了解 Data Lake Storage，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+- 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
-- 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+- 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。

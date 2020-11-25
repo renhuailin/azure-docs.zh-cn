@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677573"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997250"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
@@ -52,18 +52,18 @@ ms.locfileid: "92677573"
 - 警报数据每 3 分钟从 Operations Manager 管理组发送到 Log Analytics。  
 
 ## <a name="using-the-solution"></a>使用解决方案
-在 Log Analytics 工作区中添加警报管理解决方案时，“警报管理”  磁贴将添加到仪表板。  此磁贴显示在过去 24 小时内生成的当前活动警报的数目的计数与图形表示。  不能更改此时间范围。
+在 Log Analytics 工作区中添加警报管理解决方案时，“警报管理”磁贴将添加到仪表板。  此磁贴显示在过去 24 小时内生成的当前活动警报的数目的计数与图形表示。  不能更改此时间范围。
 
 ![警报管理磁贴](media/alert-management-solution/tile.png)
 
-单击“警报管理”  磁贴打开“警报管理”  仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”  或单击列标题。
+单击“警报管理”磁贴打开“警报管理”仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”或单击列标题。
 
 | 列 | 说明 |
 |:--- |:--- |
 | 严重警报 |按警报名称分组并且严重级别为“严重”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 警告警报 |按警报名称分组并且严重级别为“警告”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
-| 活动 System Center Operations Manager 警报 |按生成警报的源分组并且状态为非“已关闭”  的从 Operations Manager 收集的所有警报。 |
-| 所有活动警报 |按警报名称分组并且具有任意严重级别的所有警报。 仅包括状态为非“已关闭”  的 Operations Manager 警报。 |
+| 活动 System Center Operations Manager 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
+| 所有活动警报 |按警报名称分组并且具有任意严重级别的所有警报。 仅包括状态为非“已关闭”的 Operations Manager 警报。 |
 
 向右滚动时，仪表板会列出几个常见查询，可以单击这些查询执行[日志搜索](../log-query/log-query-overview.md)以获取警报数据。
 
@@ -73,9 +73,9 @@ ms.locfileid: "92677573"
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 警报管理解决方案会分析类型为 **Alert** 的任何记录。  解决方案不直接收集由 Log Analytics 创建或是从 Nagios 或 Zabbix 收集的警报。
 
-解决方案会从 System Center Operations Manager 导入警报，并为类型为 Alert  且 SourceSystem 为 OpsManager  的每个警报创建相应的记录。  这些记录的属性在下表中列出：  
+解决方案会从 System Center Operations Manager 导入警报，并为类型为 Alert 且 SourceSystem 为 OpsManager 的每个警报创建相应的记录。  这些记录的属性在下表中列出：  
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | `Type` |*Alert* |
 | `SourceSystem` |*OpsManager* |

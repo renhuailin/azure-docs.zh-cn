@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf68406d4b0806e1d533e0bb8669a01939387989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997743"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -44,9 +44,9 @@ ms.locfileid: "94410651"
 Azure RBAC) 的 azure 基于角色的访问控制 (使用角色和预配策略来评估、测试和强制实施你的业务流程和规则，以便为用户授予访问权限。 主要管理员创建预配策略并为用户分配角色，从而定义这些角色访问资源的权限集。 Azure RBAC 扩展了标识管理解决方案，以使用基于软件的流程，并在预配过程中减少用户手动交互。
 使用 Azure RBAC，公司可以限制个人可以在有权访问 Azure 门户后执行的操作的数量。 使用 Azure RBAC 控制对门户的访问时，IT 管理员可以使用以下访问管理方法委派访问权限：
 
-* **基于组的角色分配** ：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
-* **利用 Azure 中的内置角色** ：可以使用三个角色-所有者、参与者和读者，以确保用户和组仅具有完成工作所需任务的权限。
-* **对资源的精细访问** ：可以将角色分配给特定订阅、资源组或单个 Azure 资源（如网站或数据库）的用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
+* **基于组的角色分配**：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
+* **利用 Azure 中的内置角色**：可以使用三个角色-所有者、参与者和读者，以确保用户和组仅具有完成工作所需任务的权限。
+* **对资源的精细访问**：可以将角色分配给特定订阅、资源组或单个 Azure 资源（如网站或数据库）的用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
 
 ## <a name="provisioning-and-other-customization-options"></a>预配和其他自定义选项
 团队可以根据业务规划和业务要求来决定自定义标识解决方案的程度。 例如，一家大型企业可能需要根据时间线针对工作流和自定义适配器分阶段实施计划，以增量方式预配跨地域广泛使用的应用程序。 成功测试之后，另一个自定义计划可能提供两个或更多要在整个组织范围内预配的应用程序。 可以自定义用户-应用程序交互，还可以更改资源预配过程以适应自动化预配。

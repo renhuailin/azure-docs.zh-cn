@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340451"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996978"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 * **一致性指标** - 此指标显示所选一致性模型的最终一致性。 对于多区域帐户，此指标还显示所选区域之间的复制延迟。
 
-* **系统指标** -此指标显示主分区提供的元数据请求数。 此指标还有助于确定限制的请求数。
+* **系统指标** - 此指标显示主分区处理的元数据请求数。 此指标还有助于确定限制的请求数。
 
 以下部分介绍可以使用 Azure Cosmos DB 指标的常见场景。 
 
