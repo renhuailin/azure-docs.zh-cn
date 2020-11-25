@@ -251,6 +251,8 @@
               href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
             - name: 标准列
               href: platform/log-standard-columns.md
+            - name: 审核查询
+              href: log-query/query-audit.md
             - name: 优化查询
               href: log-query/query-optimization.md
             - name: 函数
@@ -439,7 +441,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md

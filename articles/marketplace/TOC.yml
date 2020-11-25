@@ -125,12 +125,12 @@
       items:
         - name: 规划 Azure 容器产品/服务
           href: marketplace-containers.md
+        - name: 准备技术资产
+          href: create-azure-container-technical-assets.md
         - name: 创建和发布 Azure 容器产品/服务
           items:
-            - name: 准备技术资产
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: 创建 Azure 容器产品/服务
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure 虚拟机产品/服务
       items:
         - name: 规划 VM 产品/服务

@@ -24,9 +24,6 @@
     - name: Azure 市场中的托管服务产品
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: 建议的安全做法
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
     - name: 云解决方案提供商计划注意事项
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
@@ -38,6 +35,9 @@
       href: ./concepts/managed-applications.md
     - name: 安全性
       items:
+        - name: 建议的安全做法
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
         - name: 安全基线
           href: security-baseline.md
 - name: 操作指南

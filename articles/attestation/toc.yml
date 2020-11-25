@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: 工作流
       href: workflow.md
+    - name: 查看审核日志
+      href: audit-logs.md
 - name: 参考
   items:
     - name: 常见问题
