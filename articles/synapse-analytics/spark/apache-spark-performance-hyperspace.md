@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 81ebf643591eeb3600957aafa8da2ca6055575a6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e3baa9782cac6c410e83eec63e801d6bf5e6f822
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241584"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030707"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>超空间： Apache Spark 的索引子系统
 
@@ -32,7 +32,7 @@ ms.locfileid: "95241584"
 
 此文档也可以在笔记本窗体、 [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、 [c #](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)和 [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)中使用。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 首先，启动新的 Spark 会话。 由于本文档只是说明超空间可以提供的内容的教程，因此你将进行配置更改，使我们能够突出显示在小型数据集上执行的超空间。 
 
@@ -232,10 +232,9 @@ deptData.Write().Mode("overwrite").Parquet(deptLocation);
 结果：
 
 ```console
-import org.apache.spark.sql.DataFrame  
 departments: Seq[(Int, String, String)] = List((10,Accounting,New York), (20,Research,Dallas), (30,Sales,Chicago), (40,Operations,Boston))  
 employees: Seq[(Int, String, Int)] = List((7369,SMITH,20), (7499,ALLEN,30), (7521,WARD,30), (7566,JONES,20), (7698,BLAKE,30), (7782,CLARK,10), (7788,SCOTT,20), (7839,KING,10), (7844,TURNER,30), (7876,ADAMS,20), (7900,JAMES,30), (7934,MILLER,10), (7902,FORD,20), (7654,MARTIN,30))  
-import spark.implicits._  
+
 empData: org.apache.spark.sql.DataFrame = [empId: int, empName: string ... 1 more field]  
 deptData: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 more field]  
 empLocation: String = /your-path/employees.parquet  
@@ -362,6 +361,7 @@ val hyperspace: Hyperspace = Hyperspace()
 :::zone pivot = "programming-language-python"
 
 ```python
+from hyperspace import *
 
 # Create an instance of Hyperspace
 hyperspace = Hyperspace(spark)
@@ -386,7 +386,6 @@ Hyperspace hyperspace = new Hyperspace(spark);
 结果：
 
 ```console
-import com.microsoft.hyperspace._  
 hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyperspace@1432f740
 ```
 
@@ -456,7 +455,6 @@ var deptIndexConfig2 = new IndexConfig("deptIndex2", new string[] {"location"}, 
 结果：
 
 ```console
-import com.microsoft.hyperspace.index.IndexConfig  
 empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empIndex; indexedColumns: deptid; includedColumns: empname]  
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
@@ -502,12 +500,6 @@ hyperspace.CreateIndex(deptDF, deptIndexConfig2);
 ```
 
 ::: zone-end
-
-结果：
-
-```console
-import com.microsoft.hyperspace.index.Index
-```
 
 ## <a name="list-indexes"></a>列出索引
 
