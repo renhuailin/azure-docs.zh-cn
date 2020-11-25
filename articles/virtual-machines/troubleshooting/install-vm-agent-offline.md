@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85983211"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002606"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -73,7 +73,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
           ![导出注册表子项](./media/install-vm-agent-offline/backup-reg.png)
 
-    2. 编辑注册表文件。 在每个文件中，将项值 SYSTEM**** 改为 BROKENSYSTEM****（如下图所示）并保存该文件。 请记住当前 VM 代理的 **ImagePath**。 我们将需要将相应的文件夹复制到附加的 OS 磁盘。 
+    2. 编辑注册表文件。 在每个文件中，将项值 SYSTEM改为 BROKENSYSTEM（如下图所示）并保存该文件。 请记住当前 VM 代理的 **ImagePath**。 我们将需要将相应的文件夹复制到附加的 OS 磁盘。 
 
         ![更改注册表子项值](./media/install-vm-agent-offline/change-reg.png)
 
@@ -93,7 +93,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 9.  选择“BROKENSYSTEM”  。 在菜单上，选择“文件”   > “卸载配置单元” 
 
-10.  选择“BROKENSOFTWARE”****。 在菜单上，选择“文件”   > “卸载配置单元” 
+10.  选择“BROKENSOFTWARE”。 在菜单上，选择“文件”   > “卸载配置单元” 
 
 11.  分离 OS 磁盘，然后[更改受影响 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 对于经典 VM，请使用修复的 OS 磁盘创建新的 VM。
 
@@ -105,9 +105,9 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent**** 属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
+如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent 属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
 
-若要设置 ProvisionGuestAgent**** 属性，请在 Azure PowerShell 中运行以下命令：
+若要设置 ProvisionGuestAgent 属性，请在 Azure PowerShell 中运行以下命令：
 
    ```powershell
    $vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>
@@ -115,7 +115,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
    Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>
    ```
 
-然后运行 `Get-AzureVM` 命令。 请注意，GuestAgentStatus**** 属性现已得到数据填充：
+然后运行 `Get-AzureVM` 命令。 请注意，GuestAgentStatus 属性现已得到数据填充：
 
    ```powershell
    Get-AzureVM –ServiceName <cloud service name> –Name <VM name>

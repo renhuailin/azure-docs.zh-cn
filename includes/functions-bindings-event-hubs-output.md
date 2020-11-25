@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791689"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002063"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
@@ -157,7 +157,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)**。 该函数将消息写入事件中心。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 该函数将消息写入事件中心。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -235,7 +235,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释。 此参数应为 `OutputBinding<T>` 类型，其中 `T` 是 POJO 或任何本机 Java 类型。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释。 此参数应为 `OutputBinding<T>` 类型，其中 `T` 是 POJO 或任何本机 Java 类型。
 
 ---
 
@@ -274,15 +274,15 @@ Python 不支持特性。
 
 - **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将作为事件中心消息保留。
 
-- **命令性**：将值传递给声明为 [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 类型的参数的 [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
 
 # <a name="java"></a>[Java](#tab/java)
 
-可通过两个选项使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释从函数输出事件中心消息：
+可通过两个选项使用 [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释从函数输出事件中心消息：
 
 - **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
 
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
 
 ---
 
@@ -290,4 +290,4 @@ Python 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| 事件中心 | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| 事件中心 | [操作指南](/rest/api/eventhub/publisher-policy-operations) |

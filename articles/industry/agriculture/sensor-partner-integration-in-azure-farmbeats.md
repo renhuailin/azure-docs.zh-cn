@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674328"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001586"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -126,10 +126,10 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 FarmBeats 数据中心具有以下 API，设备合作伙伴可通过这些 API 创建和管理设备或传感器元数据。
 
-- /**DeviceModel** ：DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
-- /**Device** ：Device 对应于存在于场上的物理设备。
-- /**SensorModel** ：SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器度量值（如环境温度和压力）。
-- /**Sensor** ：Sensor 对应于记录值的物理传感器。 传感器通常连接到具有设备 ID 的设备。
+- /**DeviceModel**：DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
+- /**Device**：Device 对应于存在于场上的物理设备。
+- /**SensorModel**：SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器度量值（如环境温度和压力）。
+- /**Sensor**：Sensor 对应于记录值的物理传感器。 传感器通常连接到具有设备 ID 的设备。
 
   DeviceModel | 说明 |
   --- | ---

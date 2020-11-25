@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002691"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM（逻辑卷管理器）时，对 Linux VM 进行故障排除
 
@@ -29,27 +29,27 @@ ms.locfileid: "92167910"
 
 创建受影响 VM 的快照。 
 
-然后，该快照将附加到**救援** VM。 根据[此处](../linux/snapshot-copy-managed-disk.md#use-azure-portal)的说明了解如何创建**快照**。
+然后，该快照将附加到 **救援** VM。 根据 [此处](../linux/snapshot-copy-managed-disk.md#use-azure-portal)的说明了解如何创建 **快照**。
 
 ## <a name="create-a-rescue-vm"></a>创建救援 VM
-一般情况下，我们建议使用相同或类似的操作系统版本创建救援 VM。 使用与受影响 VM 相同的**区域**和**资源组**
+一般情况下，我们建议使用相同或类似的操作系统版本创建救援 VM。 使用与受影响 VM 相同的 **区域** 和 **资源组**
 
 ## <a name="connect-to-the-rescue-vm"></a>连接到救援 VM
-使用 SSH 连接到**救援** VM。 使用以下命令提升权限并成为超级用户
+使用 SSH 连接到 **救援** VM。 使用以下命令提升权限并成为超级用户
 
 `sudo su -`
 
 ## <a name="attach-the-disk"></a>附加磁盘
-将磁盘附加到基于前面创建的快照构建的**救援** VM。
+将磁盘附加到基于前面创建的快照构建的 **救援** VM。
 
-在 Azure 门户 -> 选择**救援** VM ->“磁盘”  
+在 Azure 门户 -> 选择 **救援** VM ->“磁盘”  
 
 ![创建磁盘](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
 
 填写字段。 为新磁盘命名，并选择与快照、受影响 VM 和救援 VM 相同的资源组。
 
 “源类型”为“快照”。  
-“源快照”是前面创建的**快照**的名称。 
+“源快照”是前面创建的 **快照** 的名称。 
 
 ![创建磁盘 2](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
@@ -65,13 +65,13 @@ ms.locfileid: "92167910"
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-**\*** 表示启动分区；将会装载这两个分区。
+\* 表示启动分区；将会装载这两个分区。
 
-运行 **lsblk** 命令查看受影响 VM 的 LVM
+运行 lsblk 命令查看受影响 VM 的 LVM
 
 `lsblk`
 
-![显示 lsblk 命令输出的屏幕截图。](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![此屏幕截图显示了 lsblk 命令的输出。](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 验证是否显示受影响 VM 中的 LVM。
@@ -88,9 +88,9 @@ lsblk
 
 找到包含 /（根）分区的逻辑卷的装载路径。 其中包含类似于 /etc/default/grub 的配置文件
 
-本示例采用上述 **lsblk** 命令的输出。**rootvg-rootlv** 是要装载的正确**根** LV，可在下一条命令中使用它。
+本示例采用上述 **lsblk** 命令的输出。**rootvg-rootlv** 是要装载的正确 **根** LV，可在下一条命令中使用它。
 
-下一条命令的输出将显示**根** LV 的装载路径
+下一条命令的输出将显示 **根** LV 的装载路径
 
 `pvdisplay -m | grep -i rootlv`
 
@@ -100,7 +100,7 @@ lsblk
 
 `mount /dev/rootvg/rootlv /rescue`
 
-在 /rescue/boot 中装载设置了**启动标志**的分区
+在 /rescue/boot 中装载设置了 **启动标志** 的分区
 
 `
 mount /dev/sdc1 /rescue/boot
@@ -138,12 +138,12 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 `
 
 > [!TIP]
-> 在 **chroot** 环境中执行命令时请注意，这些命令是针对附加的 OS 磁盘运行的，而不是针对本地**救援** VM 运行的。 
+> 在 **chroot** 环境中执行命令时请注意，这些命令是针对附加的 OS 磁盘运行的，而不是针对本地 **救援** VM 运行的。 
 
 命令可用于安装、删除和更新软件。 对 VM 进行故障排除以修复错误。
 
 
-执行 lsblk 命令，/rescue 现在为/，/rescue/boot 为/boot ![ 屏幕快照显示一个控制台窗口，其中包含 l s blk 命令及其输出树。](./media/chroot-logical-volume-manager/chrooted.png)
+执行 lsblk 命令/立即修复/修复或启动已启动![屏幕截图显示带有 lsblk 命令及其输出树的控制台窗口。](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>执行修复
 
@@ -190,7 +190,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 退出 **chroot** 环境并装载所需的 **LV**
 
-![屏幕截图显示一个控制台窗口，其中包含一个 l v s 命令，然后装载 L V。](./media/chroot-logical-volume-manager/advanced.png)
+![屏幕截图显示包含 lvs 命令的控制台窗口，其中正在装载 LV。](./media/chroot-logical-volume-manager/advanced.png)
 
 现在，运行以下命令再次访问 **chroot** 环境
 
@@ -198,14 +198,14 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 所有 LV 应显示为已装载的分区
 
-![显示 LVs 的屏幕截图显示为装入的分区。](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![屏幕截图显示了作为已装载分区可见的 LV。](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
-查询安装的**内核**
+查询安装的 **内核**
 
 ![屏幕截图显示了如何查询已安装的内核。](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-如果需要，请删除或升级**内核** 
- ![ 高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+可根据需要删除或升级 **内核**
+![高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>示例 3-启用串行控制台
@@ -253,14 +253,14 @@ umount /rescue
 从救援 VM 中分离磁盘，并执行磁盘交换。
 
 在门户的“磁盘”中选择 VM，然后选择“分离”
-![分离磁盘](./media/chroot-logical-volume-manager/detach-disk.png)******** 
+![分离磁盘](./media/chroot-logical-volume-manager/detach-disk.png) 
 
 保存更改![保存分离结果](./media/chroot-logical-volume-manager/save-detach.png) 
 
 磁盘现在可用，并可与受影响 VM 的原始 OS 磁盘交换。
 
-在 Azure 门户中导航到出现故障的 VM，并选择 "**磁盘**" "  ->  **交换 OS 磁盘** 
- ![ 交换磁盘"](./media/chroot-logical-volume-manager/swap-disk.png) 
+在 Azure 门户中导航到有故障的 VM，然后选择“磁盘” -> “交换 OS 磁盘”
+![交换磁盘](./media/chroot-logical-volume-manager/swap-disk.png)  
 
 填写字段。在“选择磁盘”中选择刚刚在上一步骤中分离的快照磁盘。  受影响 VM 的名称也是必填的。然后选择“确定” 
 

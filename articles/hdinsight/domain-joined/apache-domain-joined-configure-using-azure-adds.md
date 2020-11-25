@@ -1,7 +1,7 @@
 ---
 title: 为 Active Directory 集成配置群集
 titleSuffix: Azure HDInsight
-description: 了解如何使用 Azure Active Directory 域服务和企业安全性套餐功能，设置和配置与 Active Directory 集成的 HDInsight 群集。
+description: 了解如何使用 Azure Active Directory 域服务和企业安全性套餐功能设置和配置与 Active Directory 集成的 HDInsight 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,35 +10,35 @@ ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
 ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004273"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>为与企业安全性套餐 Active Directory 集成配置 HDInsight 群集
+# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>为 Active Directory 与企业安全性套餐的集成配置 HDInsight 群集
 
-本文介绍如何使用称为企业安全性套餐 (ESP) 的功能创建和配置与 Active Directory 集成的 HDInsight 群集，Azure Active Directory 域服务 (Azure AD-DS) 和预先存在的本地 Active Directory。
+本文介绍如何使用称为“企业安全性套餐 (ESP)”的功能、Azure Active Directory 域服务 (Azure AD-DS) 和现有的本地 Active Directory 来创建和配置与 Active Directory 集成的 HDInsight 群集。
 
-有关在 Azure 中设置和配置域以及创建已启用 ESP 的群集的教程，请参阅 [在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
+有关在 Azure 中设置和配置域以及创建已启用 ESP 的群集的教程，请参阅[在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
 
 ## <a name="background"></a>背景
 
-企业安全性套餐 (ESP) 提供 Azure HDInsight Active Directory 集成。 此集成允许域用户使用其域凭据对 HDInsight 群集进行身份验证，并运行大数据作业。
+企业安全性套餐 (ESP) 为 Azure HDInsight 提供了 Active Directory 集成。 此集成使域用户能够使用其域凭据向 HDInsight 群集进行身份验证并运行大数据作业。
 
 > [!NOTE]  
 > ESP 已在 HDInsight 3.6 和 4.0 中正式发布，适用于以下群集类型：Apache Spark、Interactive、Hadoop 和 HBase。 适用于 Apache Kafka 群集类型的 ESP 为预览版，我们尽最大努力提供支持。 在 ESP 正式发布日期（2018 年 10 月 1 日）之前创建的 ESP 群集不受支持。
 
 ## <a name="prerequisites"></a>先决条件
 
-在创建支持 ESP 的 HDInsight 群集之前，需要完成几个先决条件：
+在创建已启用 ESP 的 HDInsight 群集之前，需要满足以下几个先决条件：
 
 - 启用 Azure AD-DS。
-- 检查 Azure AD-DS 运行状态以确保同步已完成。
-- 创建并授权托管标识。
-- 完成 DNS 相关问题的网络设置。
+- 检查 Azure AD-DS 运行状况以确保同步已完成。
+- 创建托管标识并为其授权。
+- 针对 DNS 和相关问题完成网络设置。
 
-下面将详细讨论其中的每个项。
+下面将详细讨论其中的每一项。
 
 ### <a name="enable-azure-ad-ds"></a>启用 Azure AD DS
 

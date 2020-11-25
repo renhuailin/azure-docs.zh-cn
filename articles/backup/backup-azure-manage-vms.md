@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: a56f13afa23a81b9cd2b34d34e1ca302c0c667f0
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174090"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96002897"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -144,7 +144,7 @@ ms.locfileid: "92174090"
 1. 在[保管库项的仪表板](#view-vms-on-the-dashboard)上，选择“停止备份”。
 2. 选择“删除备份数据”，并根据需要确认你的选择。 输入备份项的名称，并根据需要添加注释。
 
-    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data.png)
 
 > [!NOTE]
 > 完成删除操作后，备份的数据将在[软删除状态](./soft-delete-virtual-machines.md)下保留 14 天。 <br>此外，还可以[启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
@@ -177,7 +177,7 @@ ms.locfileid: "92174090"
   * 在[保管库项仪表板](#view-vms-on-the-dashboard)中，选择“删除备份数据”。
   * 键入备份项的名称以确认你要删除恢复点。
 
-    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data.png)
 
   * 若要删除项的备份数据，请选择“删除”。 一条通知消息将让你获悉备份数据已删除。
 
@@ -190,7 +190,7 @@ ms.locfileid: "92174090"
 
 * 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并显示 UserErrorVmNotFoundV2 错误。 备份预检查将仅对失败的按需备份作业显示为“严重”（不会显示失败的计划作业）。
 * 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最新的恢复点除外）将根据备份策略中设置的保留期范围进行清理。
-* 如果用户不再需要已删除资源的备份项/数据，则由于最新的恢复点会永久保留，并且会按适用的备份定价向用户收费，建议用户删除主数据源不再存在的备份项，从而避免产生任何额外费用。
+* 若要避免任何额外的成本，建议删除主数据源不再存在的备份项。 这种情况下，不再需要已删除资源的备份项/数据，因为最近的恢复点会永久保留，并且根据适用的备份定价收费。
 
 ## <a name="next-steps"></a>后续步骤
 

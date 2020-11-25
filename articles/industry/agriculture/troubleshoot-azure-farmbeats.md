@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677358"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001603"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>排查 Azure FarmBeats 问题
 
@@ -54,7 +54,7 @@ ms.locfileid: "92677358"
 
 ### <a name="cant-view-telemetry-data"></a>无法查看遥测数据
 
-**故障描述** ：设备或传感器已部署，并且你已将 FarmBeats 关联到设备合作伙伴，但无法获取或查看 FarmBeats 上的遥测数据。
+**故障描述**：设备或传感器已部署，并且你已将 FarmBeats 关联到设备合作伙伴，但无法获取或查看 FarmBeats 上的遥测数据。
 
 **纠正措施**
 
@@ -69,7 +69,7 @@ ms.locfileid: "92677358"
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流数据后无法查看遥测数据
 
-**故障描述** ：设备或传感器已部署，你已在 FarmBeats 上创建设备/传感器，并将遥测数据引入到 EventHub 中，但无法获取或查看 FarmBeats 上的遥测数据。
+**故障描述**：设备或传感器已部署，你已在 FarmBeats 上创建设备/传感器，并将遥测数据引入到 EventHub 中，但无法获取或查看 FarmBeats 上的遥测数据。
 
 **纠正措施**
 
@@ -110,24 +110,24 @@ ms.locfileid: "92677358"
 > [!NOTE]
 > 你感兴趣的传感器合作伙伴的 ID。
 
-3. 返回到合作伙伴 API，然后选择 " **获取/ \<ID>** "。
+3. 返回到合作伙伴 API，然后选择 "**获取/ \<ID>**"。
 4. 指定步骤 3 中的合作伙伴 ID，然后选择“执行”。
 
    API 响应应包含事件中心连接字符串。
 
 ### <a name="device-appears-offline"></a>设备显示已脱机
 
-**故障描述** ：设备已安装，并且你已将 FarmBeats 关联到设备合作伙伴。 设备处于联机状态且正在发送遥测数据，但它们显示已脱机。
+**故障描述**：设备已安装，并且你已将 FarmBeats 关联到设备合作伙伴。 设备处于联机状态且正在发送遥测数据，但它们显示已脱机。
 
-**纠正措施** ：未为此设备配置报告间隔。 若要设置报告间隔，请联系你的设备制造商。 
+**纠正措施**：未为此设备配置报告间隔。 若要设置报告间隔，请联系你的设备制造商。 
 
 ### <a name="error-deleting-a-device"></a>删除设备时出错
 
 删除设备时，可能会遇到下面某种常见错误情况：  
 
-**消息** ：“在传感器中引用设备：有一个或多个传感器与该设备关联。 请删除传感器，然后删除设备。”  
+**消息**：“在传感器中引用设备：有一个或多个传感器与该设备关联。 请删除传感器，然后删除设备。”  
 
-**含义** ：设备与服务器场中部署的多个传感器关联。
+**含义**：设备与服务器场中部署的多个传感器关联。
 
 **纠正措施**  
 
@@ -135,9 +135,9 @@ ms.locfileid: "92677358"
 2. 如果要将传感器与其他设备关联，请要求设备合作伙伴也执行相同操作。  
 3. 使用 `DELETE API` 调用删除设备，并将 force 参数设置为 true。  
 
-**消息** ：“在设备中将设备引用为 ParentDeviceId：有一个或多个设备作为子设备与该设备关联。 请删除它们，然后删除该设备。”  
+**消息**：“在设备中将设备引用为 ParentDeviceId：有一个或多个设备作为子设备与该设备关联。 请删除它们，然后删除该设备。”  
 
-**含义** ：你的设备关联了其他设备。  
+**含义**：你的设备关联了其他设备。  
 
 **纠正措施**
 
@@ -152,25 +152,25 @@ ms.locfileid: "92677358"
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats 内部错误
 
-**消息** ：“请参阅疑难解答指南，获取 FarmBeats 内部错误的详细信息。”
+**消息**：“请参阅疑难解答指南，获取 FarmBeats 内部错误的详细信息。”
 
-**纠正措施** ：此问题可能是由于数据管道中的临时故障造成的。 请重新创建作业。 如果错误仍然存在，请联系我们并提供错误消息/日志。
+**纠正措施**：此问题可能是由于数据管道中的临时故障造成的。 请重新创建作业。 如果错误仍然存在，请联系我们并提供错误消息/日志。
 
 ## <a name="accelerator-troubleshooting"></a>加速器疑难解答
 
 ### <a name="access-control"></a>访问控制
 
-**问题** ：添加角色分配时收到错误。
+**问题**：添加角色分配时收到错误。
 
-**消息** ：“找不到匹配的用户。”
+**消息**：“找不到匹配的用户。”
 
-**纠正措施** ：检查要为其添加角色分配的电子邮件 ID。 电子邮件 ID 必须与在 Active Directory 中为该用户注册的 ID 完全匹配。 如果错误仍然存在，请联系我们并提供错误消息/日志。
+**纠正措施**：检查要为其添加角色分配的电子邮件 ID。 电子邮件 ID 必须与在 Active Directory 中为该用户注册的 ID 完全匹配。 如果错误仍然存在，请联系我们并提供错误消息/日志。
 
 ### <a name="unable-to-log-in-to-accelerator"></a>无法登录到加速器
 
-**消息** ：“错误:你无权调用服务。 请与管理员联系以获取授权。”
+**消息**：“错误:你无权调用服务。 请与管理员联系以获取授权。”
 
-**纠正措施** ：请管理员授权你访问 FarmBeats 部署。 为此，可执行 RoleAssignment API 的 POST 操作或通过加速器中的“设置”窗格的访问控制进行操作。  
+**纠正措施**：请管理员授权你访问 FarmBeats 部署。 为此，可执行 RoleAssignment API 的 POST 操作或通过加速器中的“设置”窗格的访问控制进行操作。  
 
 如果你已获得访问权限，但遇到此错误，请尝试刷新页面。 如果错误仍然存在，请联系我们并提供错误消息/日志。
 
@@ -178,15 +178,15 @@ ms.locfileid: "92677358"
 
 ### <a name="accelerator-issues"></a>加速器问题  
 
-**问题** ：你收到了原因不明的加速器错误。
+**问题**：你收到了原因不明的加速器错误。
 
-**消息** ：“错误:发生未知错误。”
+**消息**：“错误:发生未知错误。”
 
-**纠正措施** ：如果页面空闲时间过长，则将发生此错误。 刷新页面。 如果错误仍然存在，请联系我们并提供错误消息/日志。
+**纠正措施**：如果页面空闲时间过长，则将发生此错误。 刷新页面。 如果错误仍然存在，请联系我们并提供错误消息/日志。
 
-**问题** ：即使已升级 FarmBeatsDeployment，FarmBeats 加速器也不显示最新版本。
+**问题**：即使已升级 FarmBeatsDeployment，FarmBeats 加速器也不显示最新版本。
 
-**纠正措施** ：此错误是由于浏览器中服务工作进程持久性导致的。 请执行以下操作：
+**纠正措施**：此错误是由于浏览器中服务工作进程持久性导致的。 请执行以下操作：
 
 1. 关闭所有打开加速器的浏览器标签页，然后关闭浏览器窗口。
 2. 启动浏览器的新实例，然后重新加载加速器 URI。 此操作将加载加速器的新版本。
@@ -195,9 +195,9 @@ ms.locfileid: "92677358"
 
 ### <a name="wrong-username-or-password"></a>用户名或密码错误
 
-**作业失败消息** ：“需要完整的身份验证才能访问此资源。”
+**作业失败消息**：“需要完整的身份验证才能访问此资源。”
 
-**纠正措施** ：执行下列操作之一：
+**纠正措施**：执行下列操作之一：
 
 - 通过以下步骤使用正确的用户名/密码更新 FarmBeats，然后重试作业。
 
@@ -226,9 +226,9 @@ ms.locfileid: "92677358"
 
 ### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel 中心：URL 错误或站点不可访问
 
-**作业失败消息** ：“糟糕，出错了。 你尝试访问的页面(暂时)不可用。”
+**作业失败消息**：“糟糕，出错了。 你尝试访问的页面(暂时)不可用。”
 
-**纠正措施** ：
+**纠正措施**：
 
 1. 在浏览器中打开 [Sentinel](https://scihub.copernicus.eu/dhus/)，查看网站是否可以访问。
 2. 如果无法访问网站，请检查是否有任何防火墙、公司网络或其他阻止软件阻止访问网站，然后采取必要步骤以允许 Sentinel URL。 
@@ -236,9 +236,9 @@ ms.locfileid: "92677358"
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel 服务器：关闭进行维护
 
-**作业失败消息** ：“Copernicus Open Access Hub 即将回归! 很抱歉给你带来不便，我们目前正在进行一些维护。 稍后我们将重新上线!” 
+**作业失败消息**：“Copernicus Open Access Hub 即将回归! 很抱歉给你带来不便，我们目前正在进行一些维护。 稍后我们将重新上线!” 
 
-**纠正措施** ：
+**纠正措施**：
 
 如果 Sentinel 服务器上正在执行任何维护活动，则可能会出现此问题。
 
@@ -250,20 +250,20 @@ ms.locfileid: "92677358"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：达到最大连接数
 
-**作业失败消息** ： "用户 ' ' 实现的两个并发流的最大数目 \<username> 。"
+**作业失败消息**： "用户 ' ' 实现的两个并发流的最大数目 \<username> 。"
 
-**含义** ：如果作业由于已达到最大连接数而失败，则表示同一 Sentinel 帐户正在多个作业中使用。
+**含义**：如果作业由于已达到最大连接数而失败，则表示同一 Sentinel 帐户正在多个作业中使用。
 
-**纠正措施** ：请尝试执行以下操作之一：
+**纠正措施**：请尝试执行以下操作之一：
 
 * 请等待其他作业完成，然后重新运行失败的作业。
 * 创建新的 Sentinel 帐户，然后在 FarmBeats 中更新 Sentinel 用户名和密码。
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel 服务器：连接遭到拒绝
 
-**作业失败消息** ：“服务器拒绝连接: http://172.30.175.69:8983/solr/dhus 。”
+**作业失败消息**：“服务器拒绝连接: http://172.30.175.69:8983/solr/dhus 。”
 
-**纠正措施** ：如果 Sentinel 服务器上正在执行任何维护活动，则可能会出现此问题。
+**纠正措施**：如果 Sentinel 服务器上正在执行任何维护活动，则可能会出现此问题。
 
 1. 如果由于执行维护而导致任何作业或管道失败，则请在一段时间后重新提交作业。
 
@@ -273,9 +273,9 @@ ms.locfileid: "92677358"
 
 ### <a name="soil-moisture-map-has-white-areas"></a>土壤湿度地图存在空白区域
 
-**问题** ：已生成土壤湿度地图，但该地图大部分区域为白色。
+**问题**：已生成土壤湿度地图，但该地图大部分区域为白色。
 
-**纠正措施** ：如果请求地图时生成的卫星索引的 NDVI 值小于 0.3，则可能会出现此问题。 有关详细信息，请访问 [Sentinel 的技术指南](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)。
+**纠正措施**：如果请求地图时生成的卫星索引的 NDVI 值小于 0.3，则可能会出现此问题。 有关详细信息，请访问 [Sentinel 的技术指南](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)。
 
 1. 在不同的日期范围重新运行作业，并检查卫星索引中的 NDVI 值是否大于 0.3。
 
@@ -289,7 +289,7 @@ ms.locfileid: "92677358"
 2. 在“搜索”框中，搜索“FarmBeats 数据中心”资源组。
 3. 在资源组上，搜索“datahublogs\*”存储帐户， 例如 datahublogsmvxmq。  
 4. 在“名称”列中，选择该存储帐户，查看“存储帐户”仪表板 。
-5. 在 " **datahubblogs" \* *窗格中，选择* "在资源管理器中打开** " 以查看 **打开的 Azure 存储资源管理器** 应用程序。
+5. 在 " **datahubblogs" \* *窗格中，选择*"在资源管理器中打开**" 以查看 **打开的 Azure 存储资源管理器** 应用程序。
 6. 在左窗格中，选择“Blob 容器”，然后选择“job-logs”（针对 Azure 数据工厂日志）或“appinsights-logs”（针对应用服务日志）  。
 7. 选择“下载”，并将日志下载到计算机上的本地文件夹。
 
@@ -301,15 +301,15 @@ ms.locfileid: "92677358"
 2. 在“搜索”框中，搜索“FarmBeats 加速器”资源组。
 3. 在资源组上，搜索“storage\*”存储帐户， 例如 storagedop4k\*。
 4. 在“名称”列中选择该存储帐户，查看“存储帐户”仪表板 。
-5. 在 " **存储" \* *窗格中，选择 "* 在资源管理器中打开** " 以打开 Azure 存储资源管理器应用程序。
+5. 在 "**存储" \* *窗格中，选择 "* 在资源管理器中打开**" 以打开 Azure 存储资源管理器应用程序。
 6. 在左窗格中，选择“Blob 容器”，然后选择“job-logs”（针对 Azure 数据工厂日志）或“appinsights-logs”（针对应用服务日志）  。
 7. 选择“下载”，并将日志下载到计算机上的本地文件夹。
 
 ## <a name="high-cpu-usage"></a>CPU 使用率较高
 
-**错误** ：你收到一个电子邮件警报，其中指出“高 CPU 使用率警报”。
+**错误**：你收到一个电子邮件警报，其中指出“高 CPU 使用率警报”。
 
-**纠正措施** ：
+**纠正措施**：
 
 1. 请转到“FarmBeats 数据中心”资源组。
 2. 选择“应用服务”。  
@@ -317,7 +317,7 @@ ms.locfileid: "92677358"
 
 ## <a name="weather-data-job-failures"></a>天气数据作业失败
 
-**错误** ：您运行作业以获取天气数据，但该作业失败
+**错误**：您运行作业以获取天气数据，但该作业失败
 
 ### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集用于排查天气数据失败的日志
 
@@ -329,7 +329,7 @@ ms.locfileid: "92677358"
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="突出显示 sku： Datahub 标记的屏幕截图。":::
 
-3. 在数据工厂的 "概述" 页上，单击 " **创作和监视** "。 此时会在浏览器中打开一个新选项卡。 单击 **监视器**
+3. 在数据工厂的 "概述" 页上，单击 " **创作和监视**"。 此时会在浏览器中打开一个新选项卡。 单击 **监视器**
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="突出显示 &quot;监视&quot; 菜单选项的屏幕截图。":::
 
@@ -345,7 +345,7 @@ ms.locfileid: "92677358"
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="突出显示名称为 datahublogs 的存储帐户的屏幕截图。":::
 
-7. 单击 " **容器**  ->  **adfjobs** "。 在搜索框中，输入前面步骤5中记下的作业运行 ID。
+7. 单击 "**容器**  ->  **adfjobs**"。 在搜索框中，输入前面步骤5中记下的作业运行 ID。
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 项目":::
 

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003491"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具和 ODBC 驱动程序连接到 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,29 +59,29 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 1. 在“Azure Cosmos DB ODBC 驱动程序 SDN 设置”  窗口中填写以下信息： 
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口":::
-    - **数据源名称** ：ODBC DSN 的友好名称。 此名称对于 Azure Cosmos DB 帐户是唯一的，因此，如果有多个帐户，请适当地为数据源命名。
-    - **说明** ：数据源的简短说明。
-    - **主机** ：Azure Cosmos DB 帐户的 URI。 可在 Azure 门户的“Azure Cosmos DB 密钥”页中检索此信息，如以下屏幕截图所示。 
-    - **访问密钥** ：从 Azure 门户中“Azure Cosmos DB 密钥”页获取的主要或辅助读写或只读密钥，如以下屏幕截图所示。 如果 DSN 用于只读数据的处理和报告，我们建议使用只读密钥。
+    - **数据源名称**：ODBC DSN 的友好名称。 此名称对于 Azure Cosmos DB 帐户是唯一的，因此，如果有多个帐户，请适当地为数据源命名。
+    - **说明**：数据源的简短说明。
+    - **主机**：Azure Cosmos DB 帐户的 URI。 可在 Azure 门户的“Azure Cosmos DB 密钥”页中检索此信息，如以下屏幕截图所示。 
+    - **访问密钥**：从 Azure 门户中“Azure Cosmos DB 密钥”页获取的主要或辅助读写或只读密钥，如以下屏幕截图所示。 如果 DSN 用于只读数据的处理和报告，我们建议使用只读密钥。
     :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="“Azure Cosmos DB 密钥”页":::
-    - **加密以下对象的访问密钥** ：根据此计算机的用户选择最合适的选项。 
+    - **加密以下对象的访问密钥**：根据此计算机的用户选择最合适的选项。 
     
 1. 单击“测试”按钮，确保可以连接到 Azure Cosmos DB 帐户。  
 
 1.  单击“高级选项”  并设置以下值：
-    *  **REST API 版本** ：选择操作的 [REST API 版本](/rest/api/cosmos-db/)。 默认为 2015-12-16。 如果有使用[大分区键](large-partition-keys.md)的容器且需要 REST API 版本 2018-12-31，请执行以下操作：
+    *  **REST API 版本**：选择操作的 [REST API 版本](/rest/api/cosmos-db/)。 默认为 2015-12-16。 如果有使用[大分区键](large-partition-keys.md)的容器且需要 REST API 版本 2018-12-31，请执行以下操作：
         - 键入 **2018-12-31** 作为 REST API 版本
         - 在“开始”菜单中  键入“regedit”，找到并打开“注册表编辑器”  应用程序。
-        - 在注册表编辑器中，导航到此路径： **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
+        - 在注册表编辑器中，导航到此路径：**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
         - 创建新子项，使用与 DSN 相同的名称，例如“Contoso Account ODBC DSN”。
         - 导航到“Contoso Account ODBC DSN”子项。
         - 通过右键单击添加新的 **字符串** 值：
-            - 值名称： **IgnoreSessionToken**
-            - 值数据： **1**
+            - 值名称：**IgnoreSessionToken**
+            - 值数据：**1**
             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="注册表编辑器设置":::
-    - **查询一致性** ：选择操作的 [一致性级别](consistency-levels.md)。 默认值为“会话”。
-    - **重试次数** ：输入当初始请求因服务速率限制而未能完成时，重试操作的次数。
-    - **架构文件** ：此处有多个选项。
+    - **查询一致性**：选择操作的 [一致性级别](consistency-levels.md)。 默认值为“会话”。
+    - **重试次数**：输入当初始请求因服务速率限制而未能完成时，重试操作的次数。
+    - **架构文件**：此处有多个选项。
         - 默认情况下，可将此项保留原样（空白），驱动程序会在第一页的数据中扫描所有容器，确定每个容器的架构。 这称为“容器映射”。 如果未定义架构文件，驱动程序必须针对每个驱动程序会话执行扫描，这可能会导致使用 DSN 启动应用程序时需要更长的时间。 我们建议始终关联 DSN 的架构文件。
         - 如果已有一个架构文件（也许是使用架构编辑器创建的文件），则可以单击“浏览”，导航到该文件，单击“保存”，并单击“确定”。  
         - 如果想要创建新架构，请单击“确定”，并在主窗口中单击“架构编辑器”。 接下来，继续在架构编辑器中提供信息。 创建新架构文件后，请记得返回“高级选项”窗口以包含新建的架构文件。
@@ -92,7 +92,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>步骤 3：使用容器映射方法创建架构定义
 
-可以使用两种类型的采样方法： **容器映射** 或 **表分隔符** 。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 以下步骤使用容器映射方法为一个或多个容器中的数据创建架构。 此采样方法会检索容器页面中的数据，确定数据的结构。 它会将容器转置到 ODBC 端的某个表。 如果容器中的数据是同构的，此采样方法十分快速高效。 如果容器包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为它提供了确定容器中数据结构的更可靠采样方法。 
+可以使用两种类型的采样方法：**容器映射** 或 **表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 以下步骤使用容器映射方法为一个或多个容器中的数据创建架构。 此采样方法会检索容器页面中的数据，确定数据的结构。 它会将容器转置到 ODBC 端的某个表。 如果容器中的数据是同构的，此采样方法十分快速高效。 如果容器包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为它提供了确定容器中数据结构的更可靠采样方法。 
 
 1. 完成[连接到 Azure Cosmos 数据库](#connect)中的步骤 1-4 后，请在“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口中单击“架构编辑器”。 
 
@@ -104,7 +104,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 1. “设计视图”选项卡中显示了数据库、架构和表。 在表视图中，扫描会显示与列名称（“SQL 名称”、“源名称”等）关联的属性集。
     可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
-    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true** 。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
+    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
     - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 
 1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。  
@@ -113,7 +113,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
 
-可以使用两种类型的采样方法： **容器映射** 或 **表分隔符** 。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 
+可以使用两种类型的采样方法：**容器映射** 或 **表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 
 
 以下步骤使用 **表分隔符** 映射方法为一个或多个容器中的数据创建架构。 如果容器包含异构类型的数据，我们建议使用此采样方法。 可以使用此方法将采样范围限定为一组属性及其相应值。 例如，如果某个文档包含“Type”属性，可将采样范围限定为此属性的值。 采样的最终结果是针对每个指定的 Type 值返回一组表。 例如，Type = Car 将生成 Car 表，Type = Plane 将生成 Plane 表。
 
@@ -134,7 +134,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 1. 完成想要采样的容器的映射定义后，请在“架构编辑器”窗口中单击“采样”。
      可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
-    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true** 。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以 `_` 开头的所有 Azure Cosmos DB 系统必需属性。
+    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以 `_` 开头的所有 Azure Cosmos DB 系统必需属性。
     - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 
 1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。  

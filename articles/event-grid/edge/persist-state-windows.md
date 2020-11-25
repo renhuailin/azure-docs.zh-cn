@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002811"
 ---
 # <a name="persist-state-in-windows"></a>Windows 中的持久状态
 
@@ -69,7 +69,7 @@ ms.locfileid: "86171459"
    ```
 1. 将 **用户** 组添加到 **装载** 点指向的值，如下所示：
     1. 启动文件资源管理器。
-    1. 导航到 **装载**点指向的文件夹。
+    1. 导航到 **装载** 点指向的文件夹。
     1. 右键单击，然后选择 " **属性**"。
     1. 选择“安全”。
     1. 在 "组或用户名" 下，选择 " **编辑**"。

@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163979"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003678"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -21,7 +21,7 @@ Azure Maps 提供了两个定价层： S0 和 S1。 本文旨在帮助你根据�
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>计划支持多少位并发用户？
 
-S0 和 S1 定价层处理不同数量的数据吞吐量。 S0 定价层每秒最多可处理 50 次查询****。 而 S1 层 **每秒**处理超过50个查询。
+S0 和 S1 定价层处理不同数量的数据吞吐量。 S0 定价层每秒最多可处理 50 次查询。 而 S1 层 **每秒** 处理超过50个查询。
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>计划使用哪些地理空间功能？
 
@@ -56,7 +56,7 @@ S0 和 S1 定价层处理不同数量的数据吞吐量。 S0 定价层每秒最
 
 ### <a name="pricing-tier-targeted-customers"></a>定价层目标客户
 
-请参阅“定价层目标客户”表，以便更好地了解 S0 和 S1 定价层****。 有关详细信息，请参阅 [Azure Maps 定价](https://azure.microsoft.com/pricing/details/azure-maps/)。 
+请参阅“定价层目标客户”表，以便更好地了解 S0 和 S1 定价层。 有关详细信息，请参阅 [Azure Maps 定价](https://azure.microsoft.com/pricing/details/azure-maps/)。 
 
 | 定价层  |     目标客户                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|

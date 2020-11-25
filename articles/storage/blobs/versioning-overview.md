@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444497"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001875"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -128,7 +128,7 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有以�
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本控制和软删除
 
-Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据保护。 启用软删除后，需指定 Azure 存储应保留软删除 blob 的时间。 任何软删除的 blob 版本将保留在系统中，并可在软删除保留期内撤消删除。 有关 blob 软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](storage-blob-soft-delete.md)。
+Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据保护。 启用软删除后，需指定 Azure 存储应保留软删除 blob 的时间。 任何软删除的 blob 版本将保留在系统中，并可在软删除保留期内撤消删除。 有关 blob 软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](./soft-delete-blob-overview.md)。
 
 ### <a name="deleting-a-blob-or-version"></a>删除 blob 或版本
 
@@ -297,4 +297,4 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)
+- [Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)

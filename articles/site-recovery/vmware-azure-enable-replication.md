@@ -7,11 +7,11 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129923"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004205"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -61,7 +61,7 @@ ms.locfileid: "86129923"
 1. 在“源”页 >“源”中，选择配置服务器。
 1. 对于“计算机类型”，请选择“虚拟机”或“物理机”。  
 1. 在“vCenter/vSphere 虚拟机监控程序”中，选择管理 vSphere 主机的 vCenter 服务器，或选择该主机。 如果要复制物理计算机，则此设置无关紧要。
-1. 选择进程服务器。 如果未创建任何其他进程服务器，则下拉菜单中将提供配置服务器的内置进程服务器。 根据建议的限制和其他参数显示每个进程服务器的运行状况状态。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以[进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误**或者**设置一个[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
+1. 选择进程服务器。 如果未创建任何其他进程服务器，则下拉菜单中将提供配置服务器的内置进程服务器。 根据建议的限制和其他参数显示每个进程服务器的运行状况状态。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以 [进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误 **或者** 设置一个 [横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="“启用复制源”窗口":::
 
@@ -73,16 +73,16 @@ ms.locfileid: "86129923"
 
    选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有虚拟机。 选择“稍后配置”以选择每个虚拟机的 Azure 网络。 如果没有网络，需要创建一个。 若要使用 Azure 资源管理器创建网络，请选择“新建”。 选择适用的子网，然后选择“确定”。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="“启用复制源”窗口":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="启用复制目标窗口":::
 
 1. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机 。 只能选择可以启用复制的虚拟机。 然后选择“确定”。 如果无法查看或选择任何特定的虚拟机，请参阅[源计算机未在 Azure 门户中列出](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication)以解决此问题。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="“启用复制源”窗口":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="“启用复制”>“选择虚拟机”窗口":::
 
 1. 在“属性” > “配置属性”中，选择进程服务器使用的帐户，以在虚拟机上自动安装 Site Recovery 移动性服务。  此外，请根据数据改动模式选择要用于复制的目标托管磁盘的类型。
 1. 默认会复制源 VM 的所有磁盘。 若要从复制中排除磁盘，请清除不想要复制的所有磁盘对应的“包括”复选框。 然后选择“确定”。 可以稍后再设置其他属性。 [详细了解](vmware-azure-exclude-disk.md)如何排除磁盘。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="“启用复制源”窗口":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="“启用复制”>“配置属性”窗口":::
 
 1. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。  可以在“设置” > “复制策略” >  策略名称  > “编辑设置”中修改复制策略设置。  应用于策略的更改也会应用于复制和新的虚拟机。
 1. 若要将虚拟机集合到一个复制组，请启用“多 VM 一致性”。 指定组的名称，然后选择“确定”。
@@ -91,7 +91,7 @@ ms.locfileid: "86129923"
    > - 复制组中的虚拟机将一起复制，并在故障转移时共享崩溃一致和应用一致恢复点。
    > - 将 VM 和物理服务器集合在一起，使其镜像工作负荷。 启用多 VM 一致性可能影响工作负荷性能。 仅在虚拟机正在运行相同的工作负荷并且需要一致性的情况下，才执行此操作。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="“启用复制源”窗口":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="“启用复制”窗口":::
 
 1. 选择“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度   。 在“完成保护”作业运行之后，虚拟机就可以进行故障转移了。
 
@@ -103,12 +103,12 @@ ms.locfileid: "86129923"
 1. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 1. 在“计算和网络” > “计算属性”中，可以更改多个 VM 属性：
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="“启用复制源”窗口":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="“计算和网络属性”窗口":::
 
    - **Azure VM 名称**：根据需要修改名称以使其符合 Azure 要求。
    - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 在 [Windows 上的 VM 磁盘的可伸缩性和性能目标](../virtual-machines/windows/disk-scalability-targets.md)中了解磁盘大小和 IOPS 速率。
-   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的[资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
-   - **可用性集**：如果需要虚拟机在故障转移后成为某个[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
+   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的 [资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
+   - **可用性集**：如果需要虚拟机在故障转移后成为某个 [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
      - 仅会列出属于指定资源组的可用性集。
      - 位于不同虚拟网络中的 VM 不能属于同一个可用性集。
      - 仅大小相同的虚拟机可以属于同一可用性集。

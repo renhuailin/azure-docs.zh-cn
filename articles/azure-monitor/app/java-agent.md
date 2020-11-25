@@ -5,22 +5,22 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002011"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 > [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的指南进行操作。
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 如果已 [使用 APPLICATION INSIGHTS SDK 检测了 java web 应用][java]，则可以使用 Java 代理获得更深入的见解，无需进行任何代码更改：
 
 * **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
-  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的 **传出 HTTP 调用** 。
-  * 捕获通过 Jedis 客户端发出的 **Redis 调用** 。
+  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的 **传出 HTTP 调用**。
+  * 捕获通过 Jedis 客户端发出的 **Redis 调用**。
   * **JDBC 查询** - 对于 MySQL 和 PostgreSQL，如果调用花费的时间长于 10 秒，代理将报告查询计划。
 
 * **应用程序日志记录：** 捕获应用程序日志，并将其与 HTTP 请求和其他遥测数据关联
@@ -28,7 +28,7 @@ ms.locfileid: "93378476"
   * **Log4j2**
   * **Logback**
 
-* **更好的操作命名：** （用于在门户中对请求进行聚合）
+* **更好的操作命名：**（用于在门户中对请求进行聚合）
   * **Spring** - 基于 `@RequestMapping`。
   * **JAX-RS** - 基于 `@Path`。 
 
@@ -92,7 +92,7 @@ Key： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-a
 有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )查看版本。 
 
-代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到 " **开发工具** " "  >  **高级工具** "  >  **调试控制台** 并检查站点目录的内容来确认代理是否处于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到 "**开发工具**" "  >  **高级工具**"  >  **调试控制台** 并检查站点目录的内容来确认代理是否处于正确的应用服务目录中。    
 
 * 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 

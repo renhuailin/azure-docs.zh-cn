@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055072"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003865"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 管理单元
 
@@ -30,7 +30,7 @@ StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单�
 
 > [!NOTE]
 > * 不能使用 StorSimple Snapshot Manager 管理 Microsoft Azure StorSimple 虚拟数组（也称为 StorSimple 本地虚拟设备）。
-> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，**** 务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
+> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
 
 
 ## <a name="storsimple-snapshot-manager-installation"></a>StorSimple Snapshot Manager 安装
@@ -97,7 +97,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
    
     ![“提取文件”对话框](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
 5. 提取过程完成后，目标文件夹打开。 双击目标文件夹中出现的应用程序安装图标。
-6. 当出现“安装成功”**** 消息时，请单击“关闭”****。 应该会在桌面上看到 StorSimple Snapshot Manager 图标。
+6. 当出现“安装成功”消息时，请单击“关闭”。 应该会在桌面上看到 StorSimple Snapshot Manager 图标。
    
     ![桌面图标](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
@@ -105,7 +105,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
 使用以下步骤将 StorSimple Snapshot Manager 连接到 StorSimple 设备。
 
 #### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>将 StorSimple Snapshot Manager 连接到设备
-1. 单击桌面上的 StorSimple Snapshot Manager 图标。 StorSimple Snapshot Manager 窗口即会出现。 该窗口包含“作用域”**** 窗格、“结果”**** 窗格和“操作”**** 窗格。 
+1. 单击桌面上的 StorSimple Snapshot Manager 图标。 StorSimple Snapshot Manager 窗口即会出现。 该窗口包含“作用域”窗格、“结果”窗格和“操作”窗格。 
    
     ![StorSimple Snapshot Manager 用户界面](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
    
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
 2. 在 **“作用域”** 窗格中，右键单击 **“设备”** 节点，然后单击 **“配置设备”**。 此时会显示 **“配置设备”** 对话框。
    
     ![配置设备](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. 在“设备”**** 列表框中，选择 Microsoft Azure StorSimple 设备或虚拟设备的 IP 地址。 在“密码”**** 文本框中，键入为 Azure 门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击" **确定**"。
+3. 在“设备”列表框中，选择 Microsoft Azure StorSimple 设备或虚拟设备的 IP 地址。 在“密码”文本框中，键入为 Azure 门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击“确定”。
 4. StorSimple Snapshot Manager 搜索你所标识的设备。 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。 可以 [验证到设备的连接](#to-verify-the-connection) 以确认已成功添加连接。
    
     如果设备由于任何原因而不可用，则 StorSimple Snapshot Manager 会返回一条错误消息。 单击 **“确定”** 以关闭错误消息，然后单击 **“取消”** 以关闭 **“配置设备”** 对话框。
@@ -132,9 +132,9 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
     ![StorSimple Snapshot Manager 设备状态](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
 2. 检查 **“结果”** 窗格： 
    
-   * 如果设备图标上出现绿色标识符并且“状态”**** 栏中出现“可用”****，则表示设备已连接。 
-   * 如果设备图标上出现红色标识符并且“状态”**** 栏中出现“不可用”，则表示设备未连接。 
-   * 如果“状态”**** 列中出现“正在刷新”****，则 StorSimple Snapshot Manager 正在检索已连接设备的卷组和已关联的备份。
+   * 如果设备图标上出现绿色标识符并且“状态”栏中出现“可用”，则表示设备已连接。 
+   * 如果设备图标上出现红色标识符并且“状态”栏中出现“不可用”，则表示设备未连接。 
+   * 如果“状态”列中出现“正在刷新”，则 StorSimple Snapshot Manager 正在检索已连接设备的卷组和已关联的备份。
 
 ## <a name="upgrade-or-reinstall-storsimple-snapshot-manager"></a>升级或重新安装 StorSimple Snapshot Manager
 升级或重新安装软件前，应完全卸载 StorSimple Snapshot Manager。 
@@ -151,7 +151,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
 使用以下步骤卸载 StorSimple Snapshot Manager。
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>卸载 StorSimple Snapshot Manager
-1. 在主机上打开“控制面板”****，单击“程序”****，然后单击****“程序和功能”。
+1. 在主机上打开“控制面板”，单击“程序”，然后单击“程序和功能”。
 2. 在左窗格中，单击 **“卸载或更改程序”**。
 3. 右键单击 **“StorSimple 快照管理器”**，然后单击 **“卸载”**。
 4. 此操作会启动 StorSimple Snapshot Manager 安装程序。 单击 **“修改安装程序”**，然后单击 **“卸载”**。
@@ -160,7 +160,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
    > 如果有任何 MMC 进程正在后台中运行，例如 StorSimple Snapshot Manager 或磁盘管理，则卸载会失败且会收到提示在尝试卸载程序前关闭 MMC 的所有实例的消息。 选择 **“自动关闭应用程序并尝试在安装程序完成后重新启动它们”**，然后单击 **“确定”**。
    > 
    > 
-5. 卸载过程完成后，会出现“安装成功”**** 消息。 单击 **“关闭”** 。
+5. 卸载过程完成后，会出现“安装成功”消息。 单击“关闭”  。
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>第 2 步：备份 StorSimple Snapshot Manager 数据库
 使用以下步骤创建并保存 StorSimple Snapshot Manager 数据库的副本。

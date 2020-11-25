@@ -10,11 +10,11 @@ ms.date: 02/28/2019
 ms.author: mayg
 ms.custom: include file
 ms.openlocfilehash: f699ffe6d5a91e8ce3ae90c7e12249bbad0fff3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500414"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001538"
 ---
 1. 运行统一安装程序安装文件。
 2. 在“开始之前”中，选择“安装配置服务器和进程服务器”。
@@ -33,7 +33,7 @@ ms.locfileid: "87500414"
     - 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”  。
     - 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”，并指定地址、端口和凭据。
      ![统一设置中“Internet 设置”屏幕的屏幕截图。](./media/site-recovery-add-configuration-server/combined-wiz4.png)
-6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
+6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关 **全局时间同步检查** 的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
 
     ![统一设置中“必备项检查”屏幕的屏幕截图。](./media/site-recovery-add-configuration-server/combined-wiz5.png)
 7. 在“MySQL 配置”中，创建用于登录到要安装的 MySQL 服务器实例的凭据。

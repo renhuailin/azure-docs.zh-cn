@@ -4,11 +4,11 @@ description: 将所保护的数据从任意 Azure 备份服务器恢复到恢复
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002964"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "89378060"
 
 若要从 Azure 备份服务器恢复数据，请执行以下操作：
 
-1. 在 Azure 备份服务器管理控制台的 " **恢复** " 选项卡中，选择位于屏幕左上角的 **"添加外部 DPM"** () "。
+1. 在 Azure 备份服务器管理控制台的“恢复”选项卡中，选择“添加外部 DPM”（位于屏幕左上角）。
 
     ![添加外部 DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. 从与要恢复数据的“Azure 备份服务器”关联的保管库下载新的“保管库凭据”，从注册到恢复服务保管库的 Azure 备份服务器列表中选择 Azure 备份服务器，并提供与要恢复数据的服务器关联的“加密密码”。
@@ -42,10 +42,10 @@ ms.locfileid: "89378060"
     将在底部窗格中显示文件和文件夹的列表，可以浏览这些文件和文件夹并将其恢复到任何位置。
 
     ![外部 DPM 服务器恢复点](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. 右键单击相应的项目，然后选择 " **恢复**"。
+5. 右键单击相应的项，然后选择“恢复”。
 
     ![外部 DPM 恢复](./media/backup-azure-alternate-dpm-server/recover.png)
-6. 查看“恢复所选内容”。 验证要恢复的备份副本的数据和时间，以及创建备份副本时所依据的源。 如果选择不正确，请选择 " **取消** "，导航回 "恢复" 选项卡以选择相应的恢复点。 如果选择正确，请选择 " **下一步**"。
+6. 查看“恢复所选内容”。 验证要恢复的备份副本的数据和时间，以及创建备份副本时所依据的源。 如果所选内容不正确，请选择“取消”，导航回恢复选项卡，以选择适当的恢复点。 如果所选内容正确无误，请选择“下一步”。
 
     ![外部 DPM 恢复摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. 选择“恢复到另一个位置”。 **浏览** 到进行恢复的正确位置。
@@ -53,16 +53,16 @@ ms.locfileid: "89378060"
     ![外部 DPM 恢复备用位置](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 8. 选择与“创建副本”、“跳过”或“覆盖”相关的选项  。
 
-   * **创建副本** -在存在名称冲突时创建文件的副本。
-   * **Skip** -如果存在名称冲突，则不会恢复保留原始文件的文件。
-   * **覆盖** -如果存在名称冲突，则会覆盖文件的现有副本。
+   * **创建副本** - 在存在名称冲突时创建文件副本。
+   * **跳过** - 如果存在名称冲突，则不恢复文件，从而保留原始文件。
+   * **覆盖** - 存在名称冲突时，覆盖文件的现有副本。
 
      选择与“还原安全”相对应的选项。 可以应用进行数据恢复的目标计算机的安全设置，也可以应用在创建恢复点时适用于产品的安全设置。
 
-     确定是否在恢复成功完成后发送**通知**。
+     确定是否在恢复成功完成后发送 **通知**。
 
      ![外部 DPM 恢复通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. “摘要”屏幕列出了目前为止的所选选项。 选择 " **恢复**" 后，数据将恢复到相应的本地位置。
+9. “摘要”屏幕列出了目前为止的所选选项。 选择“恢复”后，数据将恢复到相应的本地位置。
 
     ![外部 DPM 恢复选项摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "89378060"
    >
 
     ![监视恢复](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. 可以在 DPM 服务器的 "**恢复**" 选项卡上选择 "**清除外部 dpm** "，以删除外部 dpm 服务器的视图。
+10. 可选择 DPM 服务器的“恢复”选项卡上的“清除外部 DPM”，以删除外部 DPM 服务器的视图 。
 
     ![清除外部 DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "89378060"
 | 1. |此服务器未注册到保管库凭据所指定的保管库。 |**原因：** 当所选保管库凭据文件不属于与 Azure 备份服务器（在其上进行恢复尝试）关联的恢复服务保管库时，会出现此错误。 <br> **解决方法：** 从 Azure 备份服务器所注册到的恢复服务保管库中下载保管库凭据文件。 |
 | 2. |可恢复的数据不可用，或所选服务器不是 DPM 服务器。 |**原因：** 没有其他 Azure 备份服务器注册到恢复服务保管库或服务器尚未上传元数据，或者所选服务器不是 Azure 备份服务器（使用 Windows Server 或 Windows Client）。 <br> **解决方法：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。 <br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护备份的元数据上传到云。 数据可用于恢复。 |
 | 3. |没有其他 DPM 服务器注册到此保管库中。 |**原因：** 没有其他 Azure 备份服务器注册到了正在从其尝试恢复的保管库。<br>**解决方法：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。<br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护的备份的元数据上传到云。 数据可用于恢复。 |
-| 4. |提供的加密密码与以下服务器的关联密码不匹配：\<server name> |**原因：** 用于加密数据的加密通行短语是从正在恢复的 Azure 备份服务器的数据中进行的，与所提供的加密通行短语不匹配。 代理无法解密数据，因此恢复失败。<br>**解决方法：** 提供与要恢复其数据的 Azure 备份服务器关联的完全相同的加密密码。 |
+| 4. |提供的加密密码与以下服务器的关联密码不匹配：\<server name> |**原因：** 用于 Azure 备份服务器的恢复数据加密流程的加密密码与所提供的加密密码不匹配。 代理无法解密数据，因此恢复失败。<br>**解决方法：** 请提供与要恢复其数据的 Azure 备份服务器关联的完全相同的加密密码。 |
 
 ## <a name="next-steps"></a>后续步骤
 

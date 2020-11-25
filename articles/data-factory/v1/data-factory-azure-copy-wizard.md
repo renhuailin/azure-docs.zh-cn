@@ -14,11 +14,11 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001671"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
 
@@ -63,7 +63,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 ![验证表达式](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob 文件夹中的数据筛选
-可以使用文件夹路径中的变量，从运行时基于[系统变量](data-factory-functions-variables.md#data-factory-system-variables)确定的文件夹中复制数据。 支持的变量： **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** 和 **{custom}** 。 例如：inputfolder/{year}/{month}/{day}。
+可以使用文件夹路径中的变量，从运行时基于[系统变量](data-factory-functions-variables.md#data-factory-system-variables)确定的文件夹中复制数据。 支持的变量：**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** 和 **{custom}**。 例如：inputfolder/{year}/{month}/{day}。
 
 假设输入文件夹格式如下：
 
@@ -74,11 +74,11 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 ...
 ```
 
-单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 应该会在文本框中看到 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016** 、 **{month}** 代替 **03** 、 **{day}** 代替 **01** 、 **{hour}** 代替 **02** ，并按 **Tab** 键。 可以看到用于选择这四个变量格式的下拉列表：
+单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 应该会在文本框中看到 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016**、**{month}** 代替 **03**、**{day}** 代替 **01**、**{hour}** 代替 **02**，并按 **Tab** 键。 可以看到用于选择这四个变量格式的下拉列表：
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-如以下屏幕截图所示，还可以使用“自定义”变量和任何[支持格式的字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 若要选择具有该结构的文件夹，请首先使用“浏览”按钮。 然后将值替换为 **{custom}** ，并按 **Tab** 键，查看可在其中键入格式字符串的文本框。     
+如以下屏幕截图所示，还可以使用“自定义”变量和任何[支持格式的字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 若要选择具有该结构的文件夹，请首先使用“浏览”按钮。 然后将值替换为 **{custom}**，并按 **Tab** 键，查看可在其中键入格式字符串的文本框。     
 
 ![使用自定义变量](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -98,9 +98,9 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>错误代码：无法在复制向导中验证
 
-- **症状** ：在复制向导的第一步中，你遇到了 "无法验证" 的警告消息。
+- **症状**：在复制向导的第一步中，你遇到了 "无法验证" 的警告消息。
 - 原因：禁用所有第三方 Cookie 时可能会发生这种情况。
-- **解决方法** ： 
+- **解决方法**： 
     - 使用 Internet Explorer 或 Microsoft Edge 浏览器。
     - 如果使用的是 Chrome 浏览器，请按照以下说明为 microsoftonline.com 和 windows.net 添加 Cookie 例外 。
         1.  打开 Chrome 浏览器。
@@ -124,9 +124,9 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>错误代码：无法打开登录页并输入密码
 
-- **症状** ：复制向导将您重定向到登录页，但登录页面未成功显示。
+- **症状**：复制向导将您重定向到登录页，但登录页面未成功显示。
 - 原因：如果将网络环境从办公室网络更改为家庭网络，则可能会发生此问题。 浏览器中有一些缓存。 
-- **解决方法** ： 
+- **解决方法**： 
     1.  请关闭浏览器并重试。 如果问题仍然存在，请继续执行下一步。   
     2.  如果使用的是 Internet Explorer 浏览器，请尝试以隐私模式打开它（按 Ctrl+Shift+P）。 如果使用的是 Chrome 浏览器，请尝试以无痕模式打开它（按 Ctrl+Shift+N）。 如果问题仍然存在，请继续执行下一步。 
     3.  尝试使用其他浏览器。 

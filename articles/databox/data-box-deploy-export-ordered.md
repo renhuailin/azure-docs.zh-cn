@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/23/2020
 ms.author: alkohli
-ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442015"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96003107"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教程：创建 Azure Data Box (预览版的出口订单) 
 
@@ -56,11 +56,11 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.com](https://portal.azure.com)。
 
-2. 选择“+ 创建资源”并搜索 *Azure Data Box* 。 选择“Azure Data Box”。
+2. 选择“+ 创建资源”并搜索 *Azure Data Box*。 选择“Azure Data Box”。
 
    ![创建资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. 选择“创建”。
+3. 选择“创建”  。
 
    ![创建 Azure Data Box 资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -68,7 +68,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     |设置  |值  |
     |---------|---------|
-    |传输类型     | 选择 " **导出到 Azure** "。        |
+    |传输类型     | 选择 " **导出到 Azure**"。        |
     |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
     |资源组     |    选择现有资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |源 Azure 区域    |    选择数据当前所在的 Azure 区域。         |
@@ -80,7 +80,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![选择 Data Box 容量](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. 在 " **顺序** " 中，指定 **基本** 订单详细信息。 输入或选择以下信息，然后选择“下一步”。
+6. 在 " **顺序**" 中，指定 **基本** 订单详细信息。 输入或选择以下信息。
 
     |设置  |值  |
     |---------|---------|
@@ -88,21 +88,21 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
     |资源组 | 之前选择的资源组。 |
     |导出顺序名称     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
 
-    ![出口订单基础知识](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
+    ![出口订单基础知识](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     选择 **下一步：** 要继续的数据选择。
 
-7. 在 **数据选择** 中，选择 " **添加存储帐户" 和 "导出类型** "。
+7. 在 **数据选择** 中，选择 " **添加存储帐户" 和 "导出类型**"。
 
-    ![添加存储帐户和导出类型](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
+    ![添加存储帐户和导出类型](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
-8. 在 " **选择导出选项** " 中，指定导出选项的详细信息。 输入或选择以下信息，然后选择 " **添加** "。
+8. 在 " **选择导出选项**" 中，指定导出选项的详细信息。 输入或选择以下信息，然后选择 " **添加**"。
 
     |设置  |值  |
     |---------|---------|
     |存储帐户     | 要从中导出数据的 Azure 存储帐户。 |
     |导出类型     | 指定要从 **所有对象** 导出并 **使用 XML 文件** 的数据类型。<ul><li> **所有对象** -指定作业根据你选择的 **传输选项** 导出所有数据。</li><li> **使用 xml 文件** –指定一个 XML 文件，其中包含要从存储帐户导出的 blob 和/或文件的一组路径和前缀。 该 XML 文件需要位于所选存储帐户的容器中，并且当前不支持从文件共享中进行选择。 文件必须为非空 .xml 文件。</li></ul>        |
-    |传输选项     |  指定 "全 **选** "、" **所有 blob** " 和 " **所有文件** " 中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 " **所有文件** " 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅 [支持的存储帐户导出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |传输选项     |  指定 "全 **选**"、" **所有 blob**" 和 " **所有文件**" 中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 " **所有文件** " 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅 [支持的存储帐户导出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包括详细日志     | 指示是否需要一个详细日志文件，其中包含已成功导出的所有文件的列表。        |
 
     > [!NOTE]
@@ -115,15 +115,88 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    若要查看 xml 输入示例，请参阅 [示例 xml 输入](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. 在 **数据选择** 中，查看设置，然后选择 " **下一步：安全>** 。
+9. 在 **数据选择** 中，查看设置，然后选择 " **下一步：安全>** 继续。
 
    ![导出顺序，数据选择](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. 在“安全性”中，如果要启用基于软件的双重加密，请选择“为订单启用双重加密” 。 
+    " **安全** " 屏幕允许使用自己的加密密钥，并选择使用双加密。
+
+    “安全性”屏幕上的所有设置都是可选的。 如果不更改任何设置，则将应用默认设置。
+
+    ![Data Box 导入订单向导的“安全性”屏幕](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
+
+10. 如果要使用自己的客户托管密钥来保护新资源的解锁密钥，请展开 " **加密类型**"。
+
+    为 Azure Data Box 配置客户托管的密钥是可选的。 默认情况下，Data Box 使用 Microsoft 托管密钥来保护解锁密钥。
+
+    客户托管的密钥不会影响设备上数据的加密方式。 密钥仅用于加密设备解锁密钥。
+
+    如果不想使用客户托管的密钥，请跳到步骤16。
+
+    ![显示加密类型设置的安全屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. 选择 " **客户托管密钥** " 作为密钥类型。 然后选择 " **选择密钥保管库" 和 "密钥**"。
+   
+    ![安全屏幕，客户托管密钥的设置](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. 在 " **从 Azure Key Vault 中选择密钥** " 屏幕上，将自动填充订阅。
+
+    - 对于“密钥保管库”，可以从下拉列表中选择现有的密钥保管库。
+
+      ![从 Azure Key Vault 屏幕选择密钥](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - 还可以选择“新建”来创建新的密钥保管库。 在 " **创建密钥保管库** " 屏幕上，输入资源组和密钥保管库名称。 确保已启用 **软删除** 和 **清除保护** 。 接受所有其他默认值，然后选择 " **查看 + 创建**"。
+
+      ![创建新的 Azure Key Vault 设置](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      查看密钥保管库的信息，并选择 " **创建**"。 等待几分钟，以便完成密钥保管库的创建。
+
+      ![新建 Azure Key Vault 查看屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. 在 " **从 Azure Key Vault 中选择密钥** " 屏幕上，可以选择密钥保管库中的现有密钥。
+
+    ![从 Azure Key Vault 中选择现有密钥](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    如果要创建新密钥，请选择 " **新建**"。 必须使用 RSA 密钥。 大小可以是2048或更高。 输入新密钥的名称，接受其他默认值，然后选择 " **创建**"。
+
+      ![创建新的密钥选项](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      在密钥保管库中创建密钥后，会收到通知。
+
+14. 选择要使用的密钥 **版本** ，然后选择 " **选择**"。
+
+      ![在密钥保管库中创建的新密钥](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    如果要创建新的密钥版本，请选择 " **新建**"。
+
+    ![打开用于创建新密钥版本的对话框](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    在 "新建 **密钥** " 屏幕上，选择新密钥版本的 "设置"，然后选择 " **创建**"。
+
+    ![创建新的密钥版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    "**安全**" 屏幕上的 "**加密类型**" 设置会显示密钥保管库和密钥。
+
+    ![客户托管密钥的密钥和密钥保管库](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. 选择将用于管理对此资源的访问权限的用户标识。 选择 " **选择用户标识**"。 在右侧面板中，选择要使用的订阅和托管标识。 然后选择“选择”。
+
+    用户分配的托管标识是一个独立的 Azure 资源，可用于管理多个资源。 有关详细信息，请参阅 [托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+
+    如果需要创建新的托管标识，请遵循 [使用 Azure 门户创建、列出、删除或向用户分配的托管标识分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)的指南。
+    
+    ![选择用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    用户标识显示在 " **加密类型** " 设置中。
+
+    你现在可以折叠 **加密类型** 设置。
+
+    !["加密类型" 设置中所示的选定用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. 如果要启用基于软件的双加密，请展开 " **双加密 (以) 高安全环境**"，然后选择 **"为订单启用双加密**"。 
 
     除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
 
-   
     > [!NOTE]
     > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
 
@@ -131,11 +204,11 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     在完成时选择“下一步:联系人详细信息”以继续。
 
-11. 在 " **联系人详细信息** " 中，选择 " **+ 添加送货地址** " 以输入寄送信息。
+11. 在 " **联系人详细信息**" 中，选择 " **+ 添加送货地址** " 以输入寄送信息。
 
     ![添加送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-12. 在 " **添加送货地址** " 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
+12. 在 " **添加送货地址**" 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
     ![验证送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
@@ -143,13 +216,13 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 13. 成功验证发货详细信息后，选择 " **添加寄送地址** "。
 
-14. 在 " **联系人详细信息** " 中，查看您的发货地址和电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
+14. 在 " **联系人详细信息**" 中，查看您的发货地址和电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 
     我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
 
     ![联系人详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-15. 选择 **下一步：查看 + 订单>** 。 必须接受条款和条件才能继续创建订单。
+15. 选择 **下一步：查看 + 订单>**。 必须接受条款和条件才能继续创建订单。
 
 16. 选择“订单”。 创建订单需要几分钟时间。
 
@@ -157,9 +230,9 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 ## <a name="export-order-using-xml-file"></a>使用 XML 文件导出订单
 
-如果选择 " **使用 XML 文件** "，则可以指定要导出的 (页面和块) 的特定容器和 blob。 若要设置 XML 格式，需遵循 [示例 xml 文件表](#sample-xml-file) 规范。 下面的步骤演示了如何使用 XML 文件导出数据：
+如果选择 " **使用 XML 文件**"，则可以指定要导出的 (页面和块) 的特定容器和 blob。 若要设置 XML 格式，需遵循 [示例 xml 文件表](#sample-xml-file) 规范。 下面的步骤演示了如何使用 XML 文件导出数据：
 
-1. 对于 " **导出类型** "，请选择 " **使用 XML 文件** "。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择 " **单击此处以选择 xml 文件** "。
+1. 对于 " **导出类型**"，请选择 " **使用 XML 文件**"。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择 " **单击此处以选择 xml 文件**"。
 
      ![选择导出选项，XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
@@ -171,7 +244,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![选择导出选项，新建容器设置](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. 选择“创建”。
+4. 选择“创建”  。
 
    ![选择 "导出" 选项，然后单击 "新建容器"。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
@@ -183,7 +256,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![查看容器详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. 双击容器将打开容器属性视图。 现在想要附加 (或浏览) 包含要导出的 blob 和/或 Azure 文件列表的 XML 文件。 选择“上传”。 
+6. 双击容器将打开容器属性视图。 现在想要附加 (或浏览) 包含要导出的 blob 和/或 Azure 文件列表的 XML 文件。 选择“上传”。
 
    ![将 Blob 上传到容器](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
@@ -207,7 +280,7 @@ Data Box) 中的源存储 (帐户复制数据。 数据复制完成后，Data Bo
 
 * 将为与设备关联的每个存储帐户创建 SMB 共享。
 * 将为每个共享生成访问凭据（例如用户名和密码）。
-* 设备已锁定，只能使用设备解锁密码进行访问。 若要检索密码，需要登录到 Azure 门户帐户并选择 " **设备详细信息** "。
+* 设备已锁定，只能使用设备解锁密码进行访问。 若要检索密码，需要登录到 Azure 门户帐户并选择 " **设备详细信息**"。
 
 然后，Microsoft 通过区域运营商准备并调度你的设备。 设备发货后，你会收到跟踪号。 门户会显示订单处于“已发运”状态。
 

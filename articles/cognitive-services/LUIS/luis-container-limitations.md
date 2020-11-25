@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002321"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>语言理解 (LUIS) 容器限制
 
@@ -31,7 +31,7 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 若要[针对容器导出](luis-container-howto.md#export-packaged-app-from-luis)，必须从 LUIS 应用中删除不受支持的依赖项。 尝试针对容器导出时，LUIS 门户会报告这些需删除的不受支持的功能。
 
-如果 LUIS 应用程序不包括**** 以下任何依赖项，则可以使用该应用程序：
+如果 LUIS 应用程序不包括以下任何依赖项，则可以使用该应用程序：
 
 不受支持的应用配置|详细信息|
 |--|--|

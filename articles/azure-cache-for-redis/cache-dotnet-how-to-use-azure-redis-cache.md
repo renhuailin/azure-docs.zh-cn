@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
 ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002440"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入门：在 .NET Framework 中使用 Azure Cache for Redis
 
@@ -30,7 +30,7 @@ ms.locfileid: "93077058"
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-在计算机上创建名为 *CacheSecrets.config* 的文件，将其放到不会连同示例应用程序源代码一起签入的位置。 在本快速入门中， *CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config* 。
+在计算机上创建名为 *CacheSecrets.config* 的文件，将其放到不会连同示例应用程序源代码一起签入的位置。 在本快速入门中，*CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config*。
 
 编辑 *CacheSecrets.config* 文件，添加以下内容：
 
@@ -49,7 +49,7 @@ ms.locfileid: "93077058"
 
 在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
 
-选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入 **项目名称** ，然后单击“创建”  以创建新的控制台应用程序。
+选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入 **项目名称**，然后单击“创建”  以创建新的控制台应用程序。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -63,7 +63,7 @@ ms.locfileid: "93077058"
 Install-Package StackExchange.Redis
 ```
 
-完成安装后， *StackExchange.Redis* 缓存客户端可供与项目一起使用。
+完成安装后，*StackExchange.Redis* 缓存客户端可供与项目一起使用。
 
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
@@ -83,7 +83,7 @@ Install-Package StackExchange.Redis
 
 在解决方案资源管理器中右键单击“引用”，然后单击“添加引用”。   添加对 **System.Configuration** 程序集的引用。
 
-将以下 `using` 语句添加到 *Program.cs* ：
+将以下 `using` 语句添加到 *Program.cs*：
 
 ```csharp
 using StackExchange.Redis;
@@ -198,7 +198,7 @@ Install-Package Newtonsoft.Json
 using Newtonsoft.Json;
 ```
 
-将以下 `Employee` 类定义添加到 *Program.cs* ：
+将以下 `Employee` 类定义添加到 *Program.cs*：
 
 ```csharp
 class Employee

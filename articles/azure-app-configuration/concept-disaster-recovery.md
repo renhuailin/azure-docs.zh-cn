@@ -7,11 +7,11 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002419"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
 
@@ -68,11 +68,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ### <a name="backup-manually-using-the-export-function"></a>使用“导出”功能手动备份
 
-可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储****。 可通过 Azure 门户和 CLI 使用此功能。
+可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储。 可通过 Azure 门户和 CLI 使用此功能。
 
 在 Azure 门户中，可以按照以下步骤将更改推送到另一个配置存储。
 
-1. 转到“导入/导出”选项卡****，然后依次选择“导出”**** > “应用配置”**** > “目标”**** > “选择资源”****。
+1. 转到“导入/导出”选项卡，然后依次选择“导出” > “应用配置” > “目标” > “选择资源”。
 
 1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择“应用”。
 

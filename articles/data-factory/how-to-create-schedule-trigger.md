@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001977"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -369,7 +369,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 | JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | 是 | 无 | ISO-8601 日期时间 | 对于 UTC 时区 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 适用于其他时区 `"2013-01-09T09:30:00-08:00"` |
-| **timeZone** | 字符串 | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |
+| **timeZone** | String | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |
 | **recurrence** | Object | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
 | **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | 对于 UTC 时区 `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> 适用于其他时区 `"endTime" : "2013-02-09T09:30:00-08:00"`|

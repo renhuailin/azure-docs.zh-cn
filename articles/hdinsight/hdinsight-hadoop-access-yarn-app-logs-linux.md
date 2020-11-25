@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192495"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001943"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
 
@@ -21,7 +21,7 @@ ms.locfileid: "82192495"
 
 ## <a name="what-is-apache-yarn"></a>什么是 Apache YARN？
 
-YARN 通过将资源管理与应用程序计划/监视相分离，支持多个编程模型 (Apache Hadoop MapReduce) 其中一种模型。 YARN 使用全局 *`ResourceManager`* (RM) 、按辅助节点 *NodeManagers* (NMs) 和按应用程序 *ApplicationMasters* (AMs) 。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器** 的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
+YARN 通过将资源管理与应用程序计划/监视相分离，支持多个编程模型 (Apache Hadoop MapReduce) 其中一种模型。 YARN 使用全局 *`ResourceManager`* (RM) 、按辅助节点 *NodeManagers* (NMs) 和按应用程序 *ApplicationMasters* (AMs) 。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
 
 每个应用程序可能包含多个 *应用程序尝试*。 如果应用程序失败，可能会重试进行新的尝试。 每次尝试都在容器中运行。 在某种意义上，容器提供了由 YARN 应用程序完成的基本工作单位的上下文。 在容器的上下文中完成的所有工作均在给定容器的单个工作器节点上执行。 请参阅 [Hadoop：编写 YARN 应用程序](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 以获取更多参考信息。
 
@@ -153,7 +153,7 @@ YARN `ResourceManager` UI 在群集头节点上运行。 可通过 Ambari web UI
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net` 。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
 
-2. 从左侧的服务列表中，选择“YARN” ****。
+2. 从左侧的服务列表中，选择“YARN” 。
 
     ![选择的 Apache Ambari Yarn 服务](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 

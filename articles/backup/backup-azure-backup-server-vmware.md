@@ -4,11 +4,11 @@ description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002947"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -24,28 +24,28 @@ ms.locfileid: "90069826"
 
 ## <a name="supported-vmware-features"></a>支持的 VMware 功能
 
-在备份 VMware 虚拟机时，MABS 提供以下功能：
+MABS 提供了备份 VMware 虚拟机时的以下功能：
 
-- 无代理备份： MABS 不需要在 vCenter 或 ESXi 服务器上安装代理来备份虚拟机。 相反，只需提供 IP 地址或完全限定的域名 (FQDN) ，以及用于通过 MABS 对 VMware 服务器进行身份验证的登录凭据。
-- 云集成备份： MABS 保护工作负荷到磁盘和云。 MABS 的备份和恢复工作流可帮助管理长期保留和非现场备份。
-- 检测并保护 vCenter 管理的 Vm： MABS 检测并保护部署在 VMware 服务器上 (vCenter 或 ESXi server) 的 Vm。 当部署规模增大时，使用 vCenter 来管理 VMware 环境。 MABS 还检测由 vCenter 管理的 Vm，使你能够保护大型部署。
-- 文件夹级自动保护：vCenter 允许组织 VM 文件夹中的 VM。 MABS 检测这些文件夹，并允许在文件夹级别保护 Vm，并包括所有子文件夹。 保护文件夹时，MABS 不仅保护该文件夹中的 Vm，而且还保护稍后添加的 Vm。 MABS 每日检测新的 Vm 并自动对其进行保护。 在将 Vm 组织到递归文件夹中时，MABS 会自动检测并保护递归文件夹中部署的新 Vm。
-- MABS 保护存储在本地磁盘、网络文件系统 (NFS) 或群集存储中的 Vm。
-- MABS 保护迁移用于负载平衡的 Vm：当迁移 Vm 以实现负载平衡时，MABS 会自动检测并继续 VM 保护。
-- MABS 可以从 Windows VM 恢复文件/文件夹，而无需恢复整个 VM，这有助于更快地恢复所需的文件。
+- 无代理备份：MABS 不需要在 vCenter 或 ESXi 服务器上安装代理即可备份虚拟机。 只需提供 IP 地址或完全限定的域名 (FQDN)，以及通过 MABS 对 VMware 服务器进行身份验证所使用的登录凭据。
+- 云集成备份：MABS 保护磁盘和云的工作负载。 MABS 的备份和恢复工作流有助于管理长期保留和异地备份。
+- 检测并保护 vCenter 管理的 VM：MABS 检测并保护 VMware 服务器（vCenter 或 ESXi 服务器）上部署的 VM。 当部署规模增大时，使用 vCenter 来管理 VMware 环境。 MABS 还可以检测 vCenter 管理的 VM，支持保护大型部署。
+- 文件夹级自动保护：vCenter 允许组织 VM 文件夹中的 VM。 MABS 可检测这些文件夹，支持在文件夹级别保护 VM 和添加所有子文件夹。 保护文件夹时，MABS 不仅保护该文件夹中的 VM，还保护后续添加的 VM。 MABS 每天检测新的 VM，并自动对其进行保护。 在递归文件夹中整理 VM 时，MABS 会自动检测并保护递归文件夹中部署的新 VM。
+- MABS 保护本地磁盘、网络文件系统 (NFS) 或群集存储中存储的 VM。
+- MABS 保护为实现负载均衡而迁移的 VM：由于迁移 VM 是为了实现负载均衡，因此 MABS 会自动检测并持续进行 VM 保护。
+- MABS 可以在不恢复整个 VM 的情况下恢复 Windows VM 中的文件/文件夹，这有助于更快地恢复必需的文件。
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
 开始备份 VMware 虚拟机之前，请查看以下限制和先决条件的列表。
 
-- 如果使用 MABS 来保护 (在 Windows) 上运行的 vCenter 服务器作为使用服务器的 FQDN 的 Windows Server，则不能使用服务器的 FQDN 将 vCenter 服务器作为 VMware 服务器来保护。
-  - 可以使用 vCenter Server 的静态 IP 地址作为一种解决方法。
-  - 如果要使用 FQDN，应将保护停止为 Windows Server，删除保护代理，然后使用 FQDN 添加为 VMware 服务器。
-- 如果你使用 vCenter 来管理你的环境中的 ESXi 服务器，请将 vCenter (而不是 ESXi) 添加到 MABS 保护组。
-- 在第一次 MABS 备份之前，无法备份用户快照。 MABS 完成首次备份后，可以备份用户快照。
-- MABS 无法保护具有传递磁盘的 VMware Vm 和物理原始设备映射 (pRDM) 。
+- 如果一直使用 MABS 将 vCenter Server 作为使用服务器 FQDN 的 Windows Server 进行保护，则无法将该 vCenter Server 作为使用服务器 FQDN 的 VMware 服务器进行保护。
+  - 可以使用 vCenter Server 的静态 IP 地址作为解决方法。
+  - 如果要使用 FQDN，应停止作为 Windows Server 进行保护，删除保护代理，然后添加为使用 FQDN 的 VMware Server。
+- 如果使用 vCenter 管理环境中的 ESXi 服务器，请将 vCenter（而非 ESXi）添加到 MABS 保护组。
+- 无法在第一次 MABS 备份前备份用户快照。 MABS 完成第一次备份后，你可以备份用户快照。
+- MABS 无法通过直通磁盘和物理原始设备映射 (pRDM) 保护 VMware VM。
 - MABS 无法检测或保护 VMware vApps。
-- MABS 无法通过现有快照保护 VMware Vm。
+- MABS 无法使用现有快照保护 VMware VM。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -199,7 +199,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine .Provisioning.Allow disk access                            | Virtual machine .Provisioning.Allow disk access                            |
 | Virtual machine .Provisioning.Allow file access                            | Virtual machine .Provisioning.Allow file access                            |
 | Virtual machine .Provisioning.Allow read-only disk access                  | Virtual machine .Provisioning.Allow read-only disk access                  |
-| Virtual machine .Provisioning.Allow virtual machine download               | Virtual machine .Provisioning.Allow virtual machine download               |
+| Virtual machine .Provisioning.Allow virtual machine download               | Virtual machine .Provisioning.Allow virtual machine download               |
 | Virtual machine .Snapshot management. Create snapshot                      | Virtual machine .Snapshot management. Create snapshot                      |
 | Virtual machine .Snapshot management.Remove Snapshot                       | Virtual machine .Snapshot management.Remove Snapshot                       |
 | Virtual machine .Snapshot management.Revert to snapshot                    | Virtual machine .Snapshot management.Revert to snapshot                    |
@@ -417,7 +417,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 若要备份 vSphere 6.7，请执行以下操作：
 
-- 在 MABS 服务器上启用 TLS 1。2
+- 在 MABS 服务器上启用 TLS 1.2
 
 >[!NOTE]
 >VMWare 6.7 及更高版本已启用 TLS 作为通信协议。

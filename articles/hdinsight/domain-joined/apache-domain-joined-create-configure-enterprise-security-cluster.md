@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545287"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003916"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全性套餐群集
 
@@ -76,13 +76,13 @@ ms.locfileid: "92545287"
 
     ![在“服务器管理器”仪表板上打开“Active Directory 管理”](./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png)
 
-1. 创建两个新用户： **HDIAdmin** 和 **HDIUser** 。 这两个用户将登录到 HDInsight 群集。
+1. 创建两个新用户：**HDIAdmin** 和 **HDIUser**。 这两个用户将登录到 HDInsight 群集。
 
     1. 在“Active Directory 用户和计算机”页中右键单击“`HDIFabrikam.com`”，然后导航到“新建” > “用户”。  
 
         ![创建新的 Active Directory 用户](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
-    1. 在“新建对象 - 用户”页上，输入 `HDIUser` 作为 **名字** 和 **用户登录名** 。 其他字段会自动填充。 然后，选择“下一步”。
+    1. 在“新建对象 - 用户”页上，输入 `HDIUser` 作为 **名字** 和 **用户登录名**。 其他字段会自动填充。 然后，选择“下一步”。
 
         ![创建第一个管理员用户对象](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92545287"
 
 创建 Active Directory 租户管理员。
 
-1. 登录到 Azure 门户并选择 Azure AD 租户 **HDIFabrikam** 。
+1. 登录到 Azure 门户并选择 Azure AD 租户 **HDIFabrikam**。
 
 1. 导航到“管理” > “用户” > “新建用户”。
 
@@ -250,14 +250,14 @@ ms.locfileid: "92545287"
 1. 登录到 Azure 门户。
 1. 选择“创建资源”，输入“`Domain services`”，然后选择“Azure AD 域服务” > “创建”。  
 1. 在“基本信息”页上执行以下操作：
-    1. 在“目录名称”下，选择你已创建的 Azure AD 目录： **HDIFabrikam** 。
-    1. 对于“DNS 域名”，请输入 *HDIFabrikam.com* 。
+    1. 在“目录名称”下，选择你已创建的 Azure AD 目录：**HDIFabrikam**。
+    1. 对于“DNS 域名”，请输入 *HDIFabrikam.com*。
     1. 选择订阅。
-    1. 指定资源组 **HDIFabrikam-CentralUS** 。 对于“位置”，请选择“美国中部”。 
+    1. 指定资源组 **HDIFabrikam-CentralUS**。 对于“位置”，请选择“美国中部”。 
 
         ![Azure AD DS 基本详细信息](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
-1. 在“网络”页上，选择通过 PowerShell 脚本创建的网络 ( **HDIFabrikam-VNET** ) 和子网 ( **AADDS-subnet** )。 或者选择“新建”，立即创建虚拟网络。
+1. 在“网络”页上，选择通过 PowerShell 脚本创建的网络 (**HDIFabrikam-VNET**) 和子网 (**AADDS-subnet**)。 或者选择“新建”，立即创建虚拟网络。
 
     ![“创建虚拟网络”步骤](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
@@ -277,7 +277,7 @@ ms.locfileid: "92545287"
 
 ### <a name="configure-your-azure-ad-ds-virtual-network"></a>配置 Azure AD DS 虚拟网络
 
-请通过以下步骤将 Azure AD DS 虚拟网络 ( **HDIFabrikam-AADDSVNET** ) 配置为使用自定义 DNS 服务器。
+请通过以下步骤将 Azure AD DS 虚拟网络 (**HDIFabrikam-AADDSVNET**) 配置为使用自定义 DNS 服务器。
 
 1. 找到自定义 DNS 服务器的 IP 地址。
     1. 选择 `HDIFabrikam.com` Azure AD DS 资源。
@@ -345,7 +345,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     ![启用安全 LDAP](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
 
 1. 启用 LDAPS 后，请通过启用端口 636 来确保可以访问它。
-    1. 在 **HDIFabrikam-CentralUS** 资源组中，选择网络安全组 **AADDS-HDIFabrikam.com-NSG** 。
+    1. 在 **HDIFabrikam-CentralUS** 资源组中，选择网络安全组 **AADDS-HDIFabrikam.com-NSG**。
     1. 在“设置”下，选择“入站安全规则” > “添加”。  
     1. 在“添加入站安全规则”页上，输入以下属性，然后选择“添加” ：
 
@@ -387,7 +387,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     Add-AzVirtualNetworkPeering -Name 'AADDSVNet-HDIVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS')
     ```
 
-1. 创建新的名为 **Hdigen2store** 的 Azure Data Lake Storage Gen2 帐户。 为帐户配置用户管理的标识 **HDIFabrikamManagedIdentity** 。 有关详细信息，请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+1. 创建新的名为 **Hdigen2store** 的 Azure Data Lake Storage Gen2 帐户。 为帐户配置用户管理的标识 **HDIFabrikamManagedIdentity**。 有关详细信息，请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 1. 在 **HDIFabrikam-AADDSVNET** 虚拟网络上设置自定义 DNS。
     1. 转到 Azure 门户 >“资源组” > “OnPremADVRG” > “HDIFabrikam-AADDSVNET” > “DNS 服务器”。
@@ -418,7 +418,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
     ![将群集管理员角色分配给 hdiusergroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
 
-1. 打开你的安全外壳 (SSH) 客户端并登录到群集。 使用在本地 Active Directory 实例中创建的 **hdiuser** 。
+1. 打开你的安全外壳 (SSH) 客户端并登录到群集。 使用在本地 Active Directory 实例中创建的 **hdiuser**。
 
     ![使用 SSH 客户端登录到群集](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
