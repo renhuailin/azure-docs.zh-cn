@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966315"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842611"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -83,7 +83,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 - 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 - 在支持可用性区域的区域中，支持具有区域冗余存储 (ZRS) 的高可用性映像。 ZRS 提高了针对区域性故障的恢复能力。
-- 使用 RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
+- 使用 Azure RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
 概括而言，创建的 SIG 包含：

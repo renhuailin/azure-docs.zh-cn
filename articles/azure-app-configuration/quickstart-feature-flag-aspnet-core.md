@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074441"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554813"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    进行上述更改后，[应用程序配置的配置提供程序](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)就已注册到 .NET Core 配置 API。
+    进行上述更改后，[应用程序配置的配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)就已注册到 .NET Core 配置 API。
 
 1. 在 Startup.cs 中，添加对 .NET Core 功能管理器的引用：
 
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     前面的代码允许在项目的 .cshtml 文件中使用 `<feature>` 标记帮助程序。
 
-1. 在 Views/Shared/_Layout 中，将 `<body>` > `<header>` 下的 `<nav>` 条码替换为以下标记：
+1. 在 Views\\Shared 目录下，打开 _Layout.cshtml”  。 在 `<body>` > `<header>` 下找到 `<nav>` 条码。 在“主页”和“隐私”导航栏项之间插入新的 `<feature>` 标记，如以下突出显示的行中所示 。
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    在上述标记中，请注意围绕 Beta 列表项的 `<feature>` 标记帮助程序。
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. 创建一个 Views/Beta 目录，以及一个包含以下标记的 Index.cshtml 文件 。
 
@@ -246,13 +219,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
-1. 选择“功能管理器”，将“Beta”密钥的状态更改为“启用”。
+1. 选择“功能管理器”。 
+
+1. 通过选择“启用”下的复选框来启用 Beta 标志。
 
 1. 返回到命令行界面。 按 <kbd>Ctrl + C</kbd>，取消正在运行的 `dotnet` 进程。 使用 `dotnet run` 重启应用。
 
 1. 刷新浏览器页面，查看新的配置设置。
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="更改前的本地快速入门应用" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="更改后的本地快速入门应用" border="true":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建一个新的应用程序配置存储区，并已使用它来通过[功能管理库](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)管理 ASP.NET Core Web 应用中的功能。
+在本快速入门中，你已创建一个新的应用程序配置存储区，并已使用它来通过[功能管理库](https://go.microsoft.com/fwlink/?linkid=2074664)管理 ASP.NET Core Web 应用中的功能。
 
 * 详细了解[功能管理](./concept-feature-management.md)。
 * [管理功能标志](./manage-feature-flags.md)。

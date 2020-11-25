@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460676"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744232"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -25,7 +25,7 @@ ms.locfileid: "92460676"
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>将 EA 订阅转移到 CSP 合作伙伴
 
-认证为 [Azure 专家托管服务提供商 (MSP)](https://partner.microsoft.com/membership/azure-expert-msp)的 CSP 直接帐单合作伙伴可以请求为其具有直接企业协议 (EA) 的客户转移 Azure 订阅。 仅允许为已接受了 Microsoft 客户协议 (MCA) 并购买了某个 Azure 计划的客户进行订阅转移。
+认证为 [Azure 专家托管服务提供商 (MSP)](https://partner.microsoft.com/membership/azure-expert-msp)的 CSP 直接帐单合作伙伴可以请求为其具有直接企业协议 (EA) 的客户转移 Azure 订阅。 仅允许为已接受了 Microsoft 客户协议 (MCA) 并通过 CSP 计划购买了某个 Azure 计划的客户进行订阅转移。
 
 当请求获得批准后，CSP 可以向其客户提供组合发票。 若要详细了解 CSP 转移订阅，请参阅[获取你的 MPA 帐户的 Azure 订阅的计费所有权](mpa-request-ownership.md)。
 

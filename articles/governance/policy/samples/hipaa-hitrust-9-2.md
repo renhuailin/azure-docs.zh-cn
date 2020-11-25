@@ -1,15 +1,15 @@
 ---
 title: HIPAA HITRUST 9.2 法规合规性详细信息
 description: HIPAA HITRUST 9.2 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 499ecccd6d9a98b69e9e36f72fbf87d65d242f6d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c177abaea8dd6d38814e39aef7cdfd63981a6856
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310655"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694253"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA HITRUST 9.2 法规合规性内置计划的详细信息
 
@@ -86,7 +86,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-facilitates-information-sharing-by-enabling-authorized-users-to-determine-a-business-partners-access-when-discretion-is-allowed-as-defined-by-the-organization-and-by-employing-manual-processes-or-automated-mechanisms-to-assist-users-in-making-information-sharingcollaboration-decisions"></a>组织可使获得授权的用户能够在组织规定允许自行决定的情况下确定业务合作伙伴的访问权限，并采用手动流程或自动化机制来帮助用户进行信息共享/协作决策，从而促进信息共享。
 
-**ID**：1149.01c2System.9 - 01.c **所有权**：不适用
+**ID**：1149.01c2System.9 - 01.c **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -94,7 +94,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-access-control-system-for-the-system-components-storing-processing-or-transmitting-covered-information-is-set-with-a-default-quotdeny-allquot-setting"></a>用于存储、处理或传输涵盖的信息的系统组件的访问控制系统设置为默认的“全部拒绝”设置。
 
-**ID**：1150.01c2System.10 - 01.c **所有权**：不适用
+**ID**：1150.01c2System.10 - 01.c **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -144,7 +144,7 @@ ms.locfileid: "92310655"
 
 ### <a name="remote-access-by-vendors-and-business-partners-eg-for-remote-maintenance-is-disableddeactivated-when-not-in-use"></a>供应商和业务合作伙伴的远程访问（例如出于远程维护的目的）在未使用时处于禁用/停用状态。
 
-**ID**：1117.01j1Organizational.23 - 01.j **所有权**：不适用
+**ID**：1117.01j1Organizational.23 - 01.j **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -160,7 +160,7 @@ ms.locfileid: "92310655"
 
 ### <a name="network-equipment-is-checked-for-unanticipated-dial-up-capabilities"></a>检查网络设备是否存在意外的拨号功能。
 
-**ID**：1119.01j2Organizational.3 - 01.j **所有权**：不适用
+**ID**：1119.01j2Organizational.3 - 01.j **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -176,7 +176,7 @@ ms.locfileid: "92310655"
 
 ### <a name="if-encryption-is-not-used-for-dial-up-connections-the-cio-or-hisher-designated-representative-provides-specific-written-authorization"></a>如果拨号连接未使用加密，则首席信息官 (CIO) 或其指定的代表会提供特定的书面授权。
 
-**ID**：1173.01j1Organizational.6 - 01.j **所有权**：不适用
+**ID**：1173.01j1Organizational.6 - 01.j **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -184,7 +184,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-protects-wireless-access-to-systems-containing-sensitive-information-by-authenticating-both-users-and-devices"></a>组织通过对用户和设备进行身份验证来保护对包含敏感信息的系统的无线访问。
 
-**ID**：1174.01j1Organizational.7 - 01.j **所有权**：不适用
+**ID**：1174.01j1Organizational.7 - 01.j **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -200,7 +200,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-requires-a-callback-capability-with-re-authentication-to-verify-dial-up-connections-from-authorized-locations"></a>组织需要具有重新身份验证的回叫功能，以验证来自已获授权的位置的拨号连接。
 
-**ID**：1176.01j2Organizational.5 - 01.j **所有权**：不适用
+**ID**：1176.01j2Organizational.5 - 01.j **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -322,7 +322,7 @@ ms.locfileid: "92310655"
 
 ### <a name="networks-are-segregated-from-production-level-networks-when-migrating-physical-servers-applications-or-data-to-virtualized-servers"></a>将物理服务器、应用程序或数据迁移到虚拟化服务器时，网络会与生产级网络分离。
 
-**ID**：0894.01m2Organizational.7 - 01.m **所有权**：不适用
+**ID**：0894.01m2Organizational.7 - 01.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -459,7 +459,7 @@ ms.locfileid: "92310655"
 
 ### <a name="non-organizational-users-all-information-system-users-other-than-organizational-users-such-as-patients-customers-contractors-or-foreign-nationals-or-processes-acting-on-behalf-of-non-organizational-users-determined-to-need-access-to-information-residing-on-the-organizations-information-systems-are-uniquely-identified-and-authenticated"></a>非组织用户（除组织用户以外的所有信息系统用户，例如患者、客户、承包商或外国公民）或代表非组织用户运行、且确定需要访问驻留在组织信息系统中的信息的进程，都会进行唯一标识和身份验证。
 
-**ID**：11110.01q1Organizational.6 - 01.q **所有权**：不适用
+**ID**：11110.01q1Organizational.6 - 01.q **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -483,7 +483,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-requires-that-electronic-signatures-unique-to-one-individual-cannot-be-reused-by-or-reassigned-to-anyone-else"></a>组织要求个人独有的电子签名不能由其他任何人重复使用，也不能重新分配给其他任何人。
 
-**ID**：11208.01q1Organizational.8 - 01.q **所有权**：不适用
+**ID**：11208.01q1Organizational.8 - 01.q **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -491,7 +491,7 @@ ms.locfileid: "92310655"
 
 ### <a name="electronic-signatures-and-handwritten-signatures-executed-to-electronic-records-shall-be-linked-to-their-respective-electronic-records"></a>电子记录上的电子签名和手写签名应与各自的电子记录关联。
 
-**ID**：11210.01q2Organizational.10 - 01.q **所有权**：不适用
+**ID**：11210.01q2Organizational.10 - 01.q **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -499,7 +499,7 @@ ms.locfileid: "92310655"
 
 ### <a name="signed-electronic-records-shall-contain-information-associated-with-the-signing-in-human-readable-format"></a>已签名的电子记录应包含与以用户可读格式签名关联的信息。
 
-**ID**：11211.01q2Organizational.11 - 01.q **所有权**：不适用
+**ID**：11211.01q2Organizational.11 - 01.q **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -541,7 +541,7 @@ ms.locfileid: "92310655"
 
 ### <a name="remote-access-connections-between-the-organization-and-external-parties-are-encrypted"></a>对组织与外部各方之间的远程访问连接进行加密。
 
-**ID**：1402.05i1Organizational.45 - 05.i **所有权**：不适用
+**ID**：1402.05i1Organizational.45 - 05.i **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -591,7 +591,7 @@ ms.locfileid: "92310655"
 
 ### <a name="a-secure-audit-record-is-created-for-all-activities-on-the-system-create-read-update-delete-involving-covered-information"></a>为系统上的所有活动（创建、读取、更新、删除）创建安全审核记录，涉及涵盖的信息。
 
-**ID**：1202.09aa1System.1 - 09.aa **所有权**：不适用
+**ID**：1202.09aa1System.1 - 09.aa **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -658,7 +658,7 @@ ms.locfileid: "92310655"
 
 ### <a name="all-disclosures-of-covered-information-within-or-outside-of-the-organization-are-logged-including-type-of-disclosure-datetime-of-the-event-recipient-and-sender"></a>记录在组织内外对涵盖的信息进行的所有披露，包括披露类型、事件的日期/时间、收件人和发件人。
 
-**ID**：1210.09aa3System.3 - 09.aa **所有权**：不适用
+**ID**：1210.09aa3System.3 - 09.aa **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -667,7 +667,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-verifies-every-ninety-90-days-for-each-extract-of-covered-information-recorded-that-the-data-is-erased-or-its-use-is-still-required"></a>组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。
 
-**ID**：1211.09aa3System.4 - 09.aa **所有权**：不适用
+**ID**：1211.09aa3System.4 - 09.aa **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -891,7 +891,7 @@ ms.locfileid: "92310655"
 
 ### <a name="when-the-backup-service-is-delivered-by-the-third-party-the-service-level-agreement-includes-the-detailed-protections-to-control-confidentiality-integrity-and-availability-of-the-backup-information"></a>当第三方提供备份服务时，服务级别协议包含了详细的保护措施，以控制备份信息的机密性、完整性和可用性。
 
-**ID**：1620.09l1Organizational.8 - 09.l **所有权**：不适用
+**ID**：1620.09l1Organizational.8 - 09.l **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -915,7 +915,7 @@ ms.locfileid: "92310655"
 
 ### <a name="covered-information-is-backed-up-in-an-encrypted-format-to-ensure-confidentiality"></a>涵盖的信息以加密的格式进行备份，以确保机密性。
 
-**ID**：1623.09l2Organizational.4 - 09.l **所有权**：不适用
+**ID**：1623.09l2Organizational.4 - 09.l **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -939,7 +939,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-ensures-a-current-retrievable-copy-of-covered-information-is-available-before-movement-of-servers"></a>组织确保在移动服务器之前可使用所涵盖信息的当前可检索副本。
 
-**ID**：1626.09l3Organizational.5 - 09.l **所有权**：不适用
+**ID**：1626.09l3Organizational.5 - 09.l **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -955,7 +955,7 @@ ms.locfileid: "92310655"
 
 ### <a name="workforce-members-roles-and-responsibilities-in-the-data-backup-process-are-identified-and-communicated-to-the-workforce-in-particular-bring-your-own-device-byod-users-are-required-to-perform-backups-of-organizational-andor-client-data-on-their-devices"></a>确定工作人员在数据备份过程中的角色和职责并告知工作团队；特别是，要求自带设备办公 (BYOD) 的用户在其设备上对组织和/或客户端数据进行备份。
 
-**ID**：1699.09l1Organizational.10 - 09.l **所有权**：不适用
+**ID**：1699.09l1Organizational.10 - 09.l **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1009,7 +1009,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-builds-a-firewall-configuration-that-restricts-connections-between-un-trusted-networks-and-any-system-components-in-the-covered-information-environment-and-any-changes-to-the-firewall-configuration-are-updated-in-the-network-diagram"></a>组织构建防火墙配置，用于限制不受信任的网络与涵盖的信息环境中任何系统组件之间的连接；并且对防火墙配置进行的任何更改都在网络关系图中进行更新。
 
-**ID**：0863.09m2Organizational.910 - 09.m **所有权**：不适用
+**ID**：0863.09m2Organizational.910 - 09.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1017,7 +1017,7 @@ ms.locfileid: "92310655"
 
 ### <a name="usage-restrictions-and-implementation-guidance-are-formally-defined-for-voip-including-the-authorization-and-monitoring-of-the-service"></a>正式定义了 VoIP 的使用限制和实施指南，包括服务的授权和监视。
 
-**ID**：0864.09m2Organizational.12 - 09.m **所有权**：不适用
+**ID**：0864.09m2Organizational.12 - 09.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1025,7 +1025,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-i-authorizes-connections-from-the-information-system-to-other-information-systems-outside-of-the-organization-through-the-use-of-interconnection-security-agreements-or-other-formal-agreement-ii-documents-each-connection-the-interface-characteristics-security-requirements-and-the-nature-of-the-information-communicated-iii-employs-a-deny-all-permit-by-exception-policy-for-allowing-connections-from-the-information-system-to-other-information-systems-outside-of-the-organization-and-iv-applies-a-default-deny-rule-that-drops-all-traffic-via-host-based-firewalls-or-port-filtering-tools-on-its-endpoints-workstations-servers-etc-except-those-services-and-ports-that-are-explicitly-allowed"></a>组织 (i) 通过使用互连安全协议或其他正式协议授权信息系统与组织外部其他信息系统进行连接；(ii) 记录每个连接、接口特征、安全要求以及所传输信息的性质；(iii) 采取“全部拒绝，出现例外情况时允许”策略，允许信息系统与组织外部的其他信息系统进行连接；(iv) 应用“默认拒绝”规则，丢弃经过基于主机的防火墙或其终结点（工作站、服务器等）上的端口筛选工具的所有流量，但明确允许的服务和端口除外。
 
-**ID**：0865.09m2Organizational.13 - 09.m **所有权**：不适用
+**ID**：0865.09m2Organizational.13 - 09.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1041,7 +1041,7 @@ ms.locfileid: "92310655"
 
 ### <a name="wireless-access-points-are-placed-in-secure-areas-and-shut-down-when-not-in-use-eg-nights-weekends"></a>无线访问点位于安全区域中，并在未使用时（例如晚上、周末）处于关闭状态。
 
-**ID**：0867.09m3Organizational.17 - 09.m **所有权**：不适用
+**ID**：0867.09m3Organizational.17 - 09.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1049,7 +1049,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-builds-a-firewall-configuration-to-restrict-inbound-and-outbound-traffic-to-that-which-is-necessary-for-the-covered-data-environment"></a>组织构建防火墙配置，以将入站和出站流量限制为涵盖的数据环境所需的流量。
 
-**ID**：0868.09m3Organizational.18 - 09.m **所有权**：不适用
+**ID**：0868.09m3Organizational.18 - 09.m **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1108,7 +1108,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-reviews-and-updates-the-interconnection-security-agreements-on-an-ongoing-basis-verifying-enforcement-of-security-requirements"></a>组织持续审查并更新互连安全协议，验证安全要求的实施情况。
 
-**ID**：0885.09n2Organizational.3 - 09.n **所有权**：不适用
+**ID**：0885.09n2Organizational.3 - 09.n **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1132,7 +1132,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-contract-with-the-externaloutsourced-service-provider-includes-the-specification-that-the-service-provider-is-responsible-for-the-protection-of-covered-information-shared"></a>与外部/外包服务提供商的合同包括要求服务提供商负责保护共享的涵盖信息这一规定。
 
-**ID**：0888.09n2Organizational.6 - 09.n **所有权**：不适用
+**ID**：0888.09n2Organizational.6 - 09.n **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1142,7 +1142,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-based-on-the-data-classification-level-registers-media-including-laptops-prior-to-use-places-reasonable-restrictions-on-how-such-media-be-used-and-provides-an-appropriate-level-of-physical-and-logical-protection-including-encryption-for-media-containing-covered-information-until-properly-destroyed-or-sanitized"></a>组织根据数据分类级别，在使用之前注册媒体（包括便携式计算机），对此类媒体的使用方式施加合理的限制，并为包含相应信息的媒体提供适当级别的物理和逻辑保护，直至妥善销毁或清理。
 
-**ID**：0301.09o1Organizational.123 - 09.o **所有权**：不适用
+**ID**：0301.09o1Organizational.123 - 09.o **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1150,7 +1150,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-protects-and-controls-media-containing-sensitive-information-during-transport-outside-of-controlled-areas"></a>组织在受控区域之外的传输过程中保护和控制包含敏感信息的媒体。
 
-**ID**：0302.09o2Organizational.1 - 09.o **所有权**：不适用
+**ID**：0302.09o2Organizational.1 - 09.o **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1158,7 +1158,7 @@ ms.locfileid: "92310655"
 
 ### <a name="digital-and-non-digital-media-requiring-restricted-use-and-the-specific-safeguards-used-to-restrict-their-use-are-identified"></a>确定要求限制使用的数字和非数字媒体，以及用于限制其使用的特定安全措施。
 
-**ID**：0303.09o2Organizational.2 - 09.o **所有权**：不适用
+**ID**：0303.09o2Organizational.2 - 09.o **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1166,7 +1166,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-restricts-the-use-of-writable-removable-media-and-personally-owned-removable-media-in-organizational-systems"></a>组织限制在组织系统中使用可写可移动媒体和个人拥有的可移动媒体。
 
-**ID**：0304.09o3Organizational.1 - 09.o **所有权**：不适用
+**ID**：0304.09o3Organizational.1 - 09.o **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1234,7 +1234,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-limits-the-use-of-organization-controlled-portable-storage-media-by-authorized-individuals-on-external-information-systems"></a>组织限制了授权人员在外部信息系统上使用由组织控制的便携式存储媒体。
 
-**ID**：0915.09s2Organizational.2 - 09.s **所有权**：不适用
+**ID**：0915.09s2Organizational.2 - 09.s **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1242,7 +1242,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-information-system-prohibits-remote-activation-of-collaborative-computing-devices-and-provides-an-explicit-indication-of-use-to-users-physically-present-at-the-devices"></a>信息系统禁止远程激活协作计算设备，并向设备上实际存在的用户提供了明确的使用指示。
 
-**ID**：0916.09s2Organizational.4 - 09.s **所有权**：不适用
+**ID**：0916.09s2Organizational.4 - 09.s **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1268,7 +1268,7 @@ ms.locfileid: "92310655"
 
 ### <a name="data-involved-in-electronic-commerce-and-online-transactions-is-checked-to-determine-if-it-contains-covered-information"></a>检查电子商务和联机事务中涉及的数据，以确定其是否包含涵盖的信息。
 
-**ID**：0943.09y1Organizational.1 - 09.y **所有权**：不适用
+**ID**：0943.09y1Organizational.1 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1276,7 +1276,7 @@ ms.locfileid: "92310655"
 
 ### <a name="protocols-used-to-communicate-between-all-involved-parties-are-secured-using-cryptographic-techniques-eg-ssl"></a>用于在所有参与方之间进行通信的协议使用加密技术（如 SSL）进行保护。
 
-**ID**：0945.09y1Organizational.3 - 09.y **所有权**：不适用
+**ID**：0945.09y1Organizational.3 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1284,7 +1284,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-requires-the-use-of-encryption-between-and-the-use-of-electronic-signatures-by-each-of-the-parties-involved-in-the-transaction"></a>组织要求交易中的各方使用电子签名，并要求其相互之间使用加密。
 
-**ID**：0946.09y2Organizational.14 - 09.y **所有权**：不适用
+**ID**：0946.09y2Organizational.14 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1292,7 +1292,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-organization-ensures-the-storage-of-the-transaction-details-are-located-outside-of-any-publicly-accessible-environments-eg-on-a-storage-platform-existing-on-the-organizations-intranet-and-not-retained-and-exposed-on-a-storage-medium-directly-accessible-from-the-internet"></a>组织确保事务详细信息存储在任何可公开访问的环境之外（例如，存储在组织 Intranet 上的存储平台上），并且不会在可直接通过 Internet 访问的存储媒体上保留和公开。
 
-**ID**：0947.09y2Organizational.2 - 09.y **所有权**：不适用
+**ID**：0947.09y2Organizational.2 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1300,7 +1300,7 @@ ms.locfileid: "92310655"
 
 ### <a name="where-a-trusted-authority-is-used-eg-for-the-purposes-of-issuing-and-maintaining-digital-signatures-andor-digital-certificates-security-is-integrated-and-embedded-throughout-the-entire-end-to-end-certificatesignature-management-process"></a>在使用受信任的机构的情况下（例如为了颁发和维护数字签名和/或数字证书），安全性被集成并嵌入到整个端到端证书/签名管理过程中。
 
-**ID**：0948.09y2Organizational.3 - 09.y **所有权**：不适用
+**ID**：0948.09y2Organizational.3 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1308,7 +1308,7 @@ ms.locfileid: "92310655"
 
 ### <a name="the-protocols-used-for-communications-are-enhanced-to-address-any-new-vulnerability-and-the-updated-versions-of-the-protocols-are-adopted-as-soon-as-possible"></a>增强用于通信的协议以消除任何新的漏洞，并尽快采用协议的更新版本。
 
-**ID**：0949.09y2Organizational.5 - 09.y **所有权**：不适用
+**ID**：0949.09y2Organizational.5 - 09.y **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1392,7 +1392,7 @@ ms.locfileid: "92310655"
 
 ### <a name="where-development-is-outsourced-change-control-procedures-to-address-security-are-included-in-the-contracts-and-specifically-require-the-developer-to-track-security-flaws-and-flaw-resolution-within-the-system-component-or-service-and-report-findings-to-organization-defined-personnel-or-roles"></a>在外包开发的情况下，合同中包含用于解决安全问题的变更控制过程，特别要求开发人员跟踪系统、组件或服务内部的安全缺陷和缺陷解决方法，并向组织规定的人员或角色报告结果。
 
-**ID**：0640.10k2Organizational.1012 - 10.k **所有权**：不适用
+**ID**：0640.10k2Organizational.1012 - 10.k **所有权**：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1442,7 +1442,7 @@ ms.locfileid: "92310655"
 |[应修正容器安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |在安装了 Docker 的计算机上审核安全配置中的漏洞，并在 Azure 安全中心显示为建议。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[应修复计算机上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |建议通过 Azure 安全中心监视不满足配置的基线的服务器 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[应修复虚拟机规模集上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |审核虚拟机规模集上的 OS 漏洞，以保护其免受攻击。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
-|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 |[应通过漏洞评估解决方案修复漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |建议在 Azure 安全中心监视漏洞评估解决方案检测到的漏洞和没有漏洞评估解决方案的 VM。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 |[应在 SQL 托管实例上启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b7aa243-30e4-4c9e-bca8-d0d3022b634a) |审核未启用定期漏洞评估扫描的每个 SQL 托管实例。 漏洞评估可发现、跟踪和帮助你修正潜在数据库漏洞。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnManagedInstance_Audit.json) |
 |[应对 SQL 服务器启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9) |审核未启用定期漏洞评估扫描的 Azure SQL 服务器。 漏洞评估可发现、跟踪和帮助你修正潜在数据库漏洞。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnServer_Audit.json) |
@@ -1502,7 +1502,7 @@ ms.locfileid: "92310655"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 
 ### <a name="vulnerability-scanning-tools-include-the-capability-to-readily-update-the-information-system-vulnerabilities-scanned"></a>漏洞扫描工具包含随时更新已扫描的信息系统漏洞的功能。
 
@@ -1544,7 +1544,7 @@ ms.locfileid: "92310655"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[密钥保管库对象应可恢复](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |此策略审核密钥保管库对象是否不可恢复。 软删除功能有助于在给定的保留期（90 天）内有效地保留资源，即使在 DELETE 操作之后也是如此，同时提供对象已被删除的外观。 启用“清除保护”后，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 这些保管库和对象仍然可以恢复，从而向客户保证将遵循保留策略。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[密钥保管库应启用清除保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |恶意删除密钥保管库可能会导致永久丢失数据。 你组织中的恶意内部人员有可能获取删除和清除密钥保管库的权限。 清除保护通过强制实施软删除密钥保管库的强制保留期来保护你免受内部攻击。 你的组织内的任何人都无法在软删除保留期内清除你的密钥保管库。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ### <a name="business-impact-analysis-are-used-to-evaluate-the-consequences-of-disasters-security-failures-loss-of-service-and-service-availability"></a>业务影响分析用于评估灾难、安全故障、服务损失和服务可用性的后果。
 

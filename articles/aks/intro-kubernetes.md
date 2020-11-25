@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167179"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681544"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -26,11 +26,11 @@ ms.locfileid: "92167179"
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
-为了增强安全性和管理，AKS 允许你集成 Azure Active Directory 并使用 Kubernetes 基于角色的访问控制 (RBAC)。 也可监视群集和资源的运行状况。
+为了增强安全性和管理，可以通过 AKS 集成 Azure Active Directory 并使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。 也可监视群集和资源的运行状况。
 
 ### <a name="identity-and-security-management"></a>标识和安全管理
 
-为了限制对群集资源的访问，AKS 支持 [Kubernetes 基于角色的访问控制 (RBAC)][kubernetes-rbac]。 RBAC 允许你控制用户访问 Kubernetes 资源和命名空间，并控制在这些资源上设置的具体权限。 还可将 AKS 群集配置为与 Azure Active Directory (AD) 集成。 使用 Azure AD 集成时，可以将 Kubernetes 访问权限配置为基于现有标识和组成员身份。 可以为现有的 Azure AD 用户和组提供对 AKS 资源的访问权限，以及提供集成式登录体验。
+为了限制对群集资源的访问，AKS 支持 [Kubernetes 基于角色的访问控制 (Kubernetes RBAC)][kubernetes-rbac]。 通过 Kubernetes RBAC 可以控制对 Kubernetes 资源和命名空间的访问，以及对这些资源的权限。 还可将 AKS 群集配置为与 Azure Active Directory (AD) 集成。 使用 Azure AD 集成时，可以将 Kubernetes 访问权限配置为基于现有标识和组成员身份。 可以为现有的 Azure AD 用户和组提供对 AKS 资源的访问权限，以及提供集成式登录体验。
 
 有关标识的详细信息，请参阅 [AKS 的访问权限和标识选项][concepts-identity]。
 
@@ -146,7 +146,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

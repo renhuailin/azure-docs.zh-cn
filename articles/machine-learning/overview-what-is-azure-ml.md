@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习？
-description: Azure 机器学习概述 - 这是一个集成式端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
+description: Azure 机器学习是一种集成数据科学解决方案，让数据科学家和 MLops 可以对 ML 应用程序进行云级建模和部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316298"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541277"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -111,15 +111,15 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与诸如 Git 和 MLFlow 之类的开源工具集成。
 
-+ 如 __Azure Kubernetes 服务__ 、 __Azure 容器实例__ 、 __Azure Databricks__ 、 __Azure Data Lake Analytics__ 和 __Azure HDInsight__ 这样的计算目标。 有关计算目标的详细信息，请参阅[什么是计算目标？](concept-compute-target.md)。
-+ __Azure 事件网格__ 。 有关详细信息，请参阅[使用 Azure 机器学习事件](./how-to-use-event-grid.md)。
-+ __Azure Monitor__ 。 有关详细信息，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-+ 如 __Azure 存储帐户__ 、 __Azure Data Lake Storage__ 、 __Azure SQL 数据库__ 、 __Azure Database for PostgreSQL__ 和 __Azure 开放数据集__ 这样的数据存储。 有关详细信息，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)和[使用 Azure 开放数据集创建数据集](how-to-create-register-datasets.md)。
-+ __Azure 虚拟网络__ 。 有关详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
-+ __Azure Pipelines__ 。 有关详细信息，请参阅[定型和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)。
-+ __Git 存储库日志__ 。 有关详细信息，请参阅 [Git 集成](concept-train-model-git-integration.md)。
-+ __MLFlow__ 。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](how-to-use-mlflow.md) 
-+ __Kubeflow__ 。 有关详细信息，请参阅[构建端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
++ 如 __Azure Kubernetes 服务__、__Azure 容器实例__、__Azure Databricks__、__Azure Data Lake Analytics__ 和 __Azure HDInsight__ 这样的计算目标。 有关计算目标的详细信息，请参阅[什么是计算目标？](concept-compute-target.md)。
++ __Azure 事件网格__。 有关详细信息，请参阅[使用 Azure 机器学习事件](./how-to-use-event-grid.md)。
++ __Azure Monitor__。 有关详细信息，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
++ 如 __Azure 存储帐户__、__Azure Data Lake Storage__、__Azure SQL 数据库__、__Azure Database for PostgreSQL__ 和 __Azure 开放数据集__ 这样的数据存储。 有关详细信息，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)和[使用 Azure 开放数据集创建数据集](how-to-create-register-datasets.md)。
++ __Azure 虚拟网络__。 有关详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
++ __Azure Pipelines__。 有关详细信息，请参阅[定型和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)。
++ __Git 存储库日志__。 有关详细信息，请参阅 [Git 集成](concept-train-model-git-integration.md)。
++ __MLFlow__。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](how-to-use-mlflow.md) 
++ __Kubeflow__。 有关详细信息，请参阅[构建端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
 ### <a name="secure-communications"></a>安全通信
 

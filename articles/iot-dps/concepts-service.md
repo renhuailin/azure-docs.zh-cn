@@ -1,6 +1,6 @@
 ---
-title: 用于 Azure IoT 中心设备预配服务的术语 |Microsoft Docs
-description: 描述在 (DPS) 和 IoT 中心的设备预配服务中使用的常见术语
+title: Azure IoT 中心设备预配服务使用的术语 | Microsoft Docs
+description: 介绍设备预配服务 (DPS) 和 IoT 中心的常用术语
 author: wesmc7777
 ms.author: wesmc
 ms.date: 09/18/2019
@@ -9,15 +9,15 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531604"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019440"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT 中心设备预配服务 (DPS) 术语
 
-IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式 [预配](about-iot-dps.md#provisioning-process) 数百万台设备。
+IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[预配](about-iot-dps.md#provisioning-process)数百万台设备。
 
 设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接  。 第二部分是根据解决方案的具体要求将适当的配置应用于设备  。 在这两个步骤都完成后，设备已完全预配  。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
 
@@ -46,7 +46,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 * **通过注册列表进行静态配置**：注册列表中所需 IoT 中心的规范优先于服务级别分配策略。
 
-* **自定义 (使用 Azure 函数) **：自定义分配策略使你可以更好地控制如何将设备分配到 IoT 中心。 它是通过使用 Azure 函数中的自定义代码将设备分配到 IoT 中心来实现的。 设备预配服务调用 Azure Function 代码，提供有关设备和代码注册的所有相关信息。 将执行函数代码并返回用于预配设备的 IoT 中心信息。
+* **自定义（使用 Azure 函数）** ：自定义分配策略让你能够对设备分配到 IoT 中心的方式进行更多地控制。 它是通过使用 Azure 函数中的自定义代码将设备分配到 IoT 中心来实现的。 设备预配服务将调用 Azure 函数代码，向代码提供有关设备和注册的所有相关信息。 将执行函数代码并返回用于预配设备的 IoT 中心信息。
 
 ## <a name="enrollment"></a>注册
 
@@ -75,15 +75,15 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ## <a name="attestation-mechanism"></a>证明机制
 
-证明机制是用于确认设备标识的方法。 在注册项上配置证明机制，并通知预配服务在注册期间验证设备的身份时使用的方法。
+证明机制是用于确认设备标识的方法。 证明机制在注册项上进行配置，会在注册期间验证设备的标识时告知预配服务要使用哪一种方法。
 
 > [!NOTE]
 > IoT 中心将该服务中类似的概念称为“身份验证方案”。
 
 设备预配服务支持以下证明形式：
-* 基于标准 X.509 证书身份验证流的 X.509 证书****。 有关详细信息，请参阅 [x.509 证明](concepts-x509-attestation.md)。
-* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌****。 这不需要在设备上使用物理 TPM，但服务需要根据 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥进行证明。有关详细信息，请参阅 [TPM 证明](concepts-tpm-attestation.md)。
-* 基于共享访问签名的**对称密钥** (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)，其中包括哈希签名和嵌入的过期时间。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于标准 X.509 证书身份验证流的 X.509 证书。 有关详细信息，请参阅 [X.509 证明](concepts-x509-attestation.md)。
+* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。有关详细信息，请参阅 [TPM 证明](concepts-tpm-attestation.md)。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的“对称密钥”，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬件安全模块
@@ -112,7 +112,7 @@ ID 范围在由用户创建时分配给设备预配服务，用于唯一标识�
 
 ## <a name="registration-id"></a>注册 ID
 
-注册 ID 用于唯一标识设备预配服务的设备注册。 设备 ID 在预配服务 [ID范围](#id-scope)中必须是唯一的。 每个设备必须具有注册 ID。 注册 ID 是字母数字、不区分大小写，并可以包含特殊字符（包括冒号、句点、下划线和连字符）。
+注册 ID 用于在设备预配服务中以独一无二的方式标识设备注册。 设备 ID 在预配服务 [ID范围](#id-scope)中必须是唯一的。 每个设备必须具有注册 ID。 注册 ID 是字母数字、不区分大小写，并可以包含特殊字符（包括冒号、句点、下划线和连字符）。
 
 * 对于使用 TPM 的情况，注册 ID 由 TPM 本身提供。
 * 对于使用基于 X.509 证明的情况，提供注册 ID 作为证书的使用者名称。

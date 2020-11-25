@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dc725839d018c281dc784f5f83b256e62d70884d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411552"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635409"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -98,9 +98,9 @@ Azure 预付款不可在注册之间转移。 Azure 预付款余额在契约上�
 
 若要将 Enterprise 订阅转换为采用即用即付费率的单个订阅，必须在 Azure Enterprise 门户中创建新的支持请求。 若要创建支持请求，请在“帮助和支持”区域中选择“+ 新建支持请求”。 
 
-## <a name="change-account-owner"></a>更改帐户所有者
+## <a name="change-azure-subscription-or-account-ownership"></a>更改 Azure 订阅或帐户所有权
 
-Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所有者。 有关详细信息，请参阅[更改帐户所有者](ea-portal-administration.md#change-account-owner)。
+Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所有者。 有关详细信息，请参阅[更改 Azure 订阅或帐户所有权](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 ## <a name="subscription-transfer-effects"></a>订阅转移的影响
 
@@ -108,7 +108,7 @@ Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所�
 
 若要查看哪些用户对订阅拥有 RBAC 访问权限：
 
-1. 在 Azure 门户中，打开 **订阅** 。
+1. 在 Azure 门户中，打开 **订阅**。
 2. 选择要查看的订阅，然后选择“访问控制(IAM)”。
 3. 选择“角色分配”。 角色分配页将列出对订阅拥有 RBAC 访问权限的所有用户。
 

@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964003"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837985"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 身份验证是什么？
 
 标识平台的主要功能之一就是在用户登录到设备、应用程序或服务时，对凭据进行验证或身份验证  。 在 Azure Active Directory (Azure AD) 中，身份验证不仅仅涉及对用户名和密码的验证。 Azure AD 身份验证包括以下组件，用于提高安全性并降低对技术人员帮助的需求：
 
 * 自助式密码重置
-* Azure 多重身份验证
+* Azure AD 多重身份验证
 * 用于将密码更改写回到本地环境的混合集成
 * 用于对本地环境强制实施密码保护策略的混合集成
 * 无密码身份验证
@@ -32,7 +32,7 @@ ms.locfileid: "91964003"
 
 Azure AD 有助于保护用户的身份并简化其登录体验。 自助式密码重置等功能允许用户从任何设备使用 Web 浏览器更新或更改密码。 如果用户忘记了密码或帐户被锁定，此功能尤其有用。 在不等待支持人员或管理员提供支持的情况下，用户可以取消对自己的阻止，继续工作。
 
-Azure 多重身份验证可以让用户在登录期间选择其他形式的身份验证，如电话呼叫或移动应用通知。 此功能减少了单一、固定形式的辅助身份验证（如硬件令牌）的要求。 如果用户当前没有一种形式的附加身份验证，则可选择其他方法，继续工作。
+Azure AD 多重身份验证使用户能够在登录期间选择其他形式的身份验证，例如电话呼叫或移动应用通知。 此功能减少了单一、固定形式的辅助身份验证（如硬件令牌）的要求。 如果用户当前没有一种形式的附加身份验证，则可选择其他方法，继续工作。
 
 ![登录屏幕上使用的身份验证方法](media/concept-authentication-methods/overview-login.png)
 
@@ -50,7 +50,7 @@ Azure 多重身份验证可以让用户在登录期间选择其他形式的身�
 
 当用户使用自助式密码重置更新或重置其密码时，也可将该密码写回到本地 Active Directory 环境。 密码写回可确保用户能够立即在本地设备和应用程序中使用更新的凭据。
 
-## <a name="azure-multi-factor-authentication"></a>Azure 多重身份验证
+## <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证
 
 多重身份验证是一种过程。在该过程中，系统会在用户登录时提示其输入其他形式的标识，例如在其手机上输入代码或提供指纹扫描。
 
@@ -58,25 +58,25 @@ Azure 多重身份验证可以让用户在登录期间选择其他形式的身�
 
 ![不同形式的多重身份验证的概念图](./media/concept-mfa-howitworks/methods.png)
 
-Azure 多重身份验证需要以下身份验证方法中的两种或更多种才能运作：
+至少需要采用下列身份验证方法中的两种，才能使 Azure AD 多重身份验证发挥作用：
 
 * 你知道的某样东西，通常为密码。
 * 你有的某样东西，例如无法轻易复制的可信设备，如电话或硬件密钥。
 * 自身的特征 - 生物识别，如指纹或面部扫描。
 
-用户只需执行一个步骤即可自行注册自助式密码重置和 Azure 多重身份验证，这样可以简化加入体验。 管理员可以定义能够使用的辅助身份验证形式。 当用户执行自助式密码重置以进一步保护该过程时，也可能需要 Azure 多重身份验证。
+用户只需执行一个步骤即可自行注册自助式密码重置和 Azure AD 多重身份验证，这样可以简化加入体验。 管理员可以定义能够使用的辅助身份验证形式。 当用户执行自助式密码重置以进一步保护该过程时，也可能需要 Azure AD 多重身份验证。
 
 ## <a name="password-protection"></a>密码保护
 
 默认情况下，Azure AD 会阻止弱密码，如 *Password1*。 全局禁止的密码列表会自动更新并强制实施，其中包含已知弱密码。 如果 Azure AD 用户尝试将其密码设置为这些弱密码之一，则会收到要求他们选择更安全密码的通知。
 
-若要提高安全性，可以定义自定义密码保护策略。 这些策略可以使用筛选器来阻止包含名称（例如 *Contoso*）或位置（例如*伦敦*）的密码的任何变体。
+若要提高安全性，可以定义自定义密码保护策略。 这些策略可以使用筛选器来阻止包含名称（例如 *Contoso*）或位置（例如 *伦敦*）的密码的任何变体。
 
 为确保混合安全性，可以将 Azure AD 密码保护与本地 Active Directory 环境集成。 在本地环境中安装的组件会接收 Azure AD 的全局禁止密码列表和自定义密码保护策略，而域控制器则会使用它们来处理密码更改事件。 这种混合方法可确保无论用户如何更改其凭据或在什么位置更改其凭据，都可以强制使用强密码。
 
 ## <a name="passwordless-authentication"></a>无密码身份验证
 
-许多环境的最终目标是在登录事件中杜绝密码的使用。 Azure 密码保护或 Azure 多重身份验证之类的功能有助于提高安全性，但用户名和密码仍然是一种弱的身份验证形式，可能会泄露或受到强力攻击。
+许多环境的最终目标是在登录事件中杜绝密码的使用。 Azure 密码保护或 Azure AD 多重身份验证之类的功能有助于提高安全性，但用户名和密码仍然是一种弱的身份验证形式，可能会泄露或受到强力攻击。
 
 ![导致无密码的身份验证过程的安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
@@ -86,11 +86,11 @@ Azure 多重身份验证需要以下身份验证方法中的两种或更多种�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅[自助式密码重置 (SSPR) 的教程][tutorial-sspr]和 [Azure 多重身份验证][tutorial-azure-mfa]。
+若要开始，请参阅[自助式密码重置 (SSPR) 的教程][tutorial-sspr]和 [Azure AD 多重身份验证][tutorial-azure-mfa]。
 
 若要详细了解自助式密码重置概念，请参阅 [Azure AD 自助式密码重置的工作原理][concept-sspr]。
 
-若要详细了解多重身份验证概念，请参阅 [Azure 多重身份验证的工作原理][concept-mfa]。
+若要详细了解多重身份验证概念，请参阅 [Azure AD 多重身份验证的工作原理][concept-mfa]。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

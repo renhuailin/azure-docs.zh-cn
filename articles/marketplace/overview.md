@@ -7,12 +7,12 @@ ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739762"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
@@ -24,7 +24,7 @@ Microsoft 商业市场是我们的独立软件供应商 (ISV) 合作伙伴提供
 
 Microsoft 商业市场有两个在线商店：[Microsoft AppSource](https://appsource.microsoft.com/) 和 [Azure 市场](https://azuremarketplace.microsoft.com/)。 Microsoft AppSource 包含业务解决方案，而 Azure 市场包含 IT 解决方案。 还可在 Microsoft 产品（例如 Microsoft 365、Dynamics 365、Microsoft Power Platform 和 Azure）中找到商业市场软件和服务。 我们的在线商店和产品内体验每个月可吸引数百万潜在客户。 每个在线商店都提供不同的方案，以确保你的解决方案或服务可供合适的客户使用。
 
-当你在合作伙伴中心创建商业市场产品/服务时，它可能会根据产品/服务类型、类别和你选择的其他选项在任一在线商店或同时在两个在线商店列出。 在极少数情况下，产品/服务与两个在线商店的用户都相关，它便可以同时在两个在线商店中显示。 若要了解详细信息，请参阅[选择在线商店](determine-your-listing-type.md#selecting-an-online-store)和 [Microsoft AppSource 和 Azure 市场购买者指南](https://aka.ms/MarketplaceBuyerGuide)。
+当你在合作伙伴中心创建商业市场产品/服务时，它可能会根据产品/服务类型、类别和你选择的其他选项在任一在线商店或同时在两个在线商店列出。 在极少数情况下，产品/服务与两个在线商店的用户都相关，它便可以同时在两个在线商店中显示。 若要了解详细信息，请参阅[在线商店列表和定价选项](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)和 [Microsoft AppSource 和 Azure 市场购买者指南](https://aka.ms/MarketplaceBuyerGuide)。
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 
@@ -38,11 +38,11 @@ Microsoft AppSource 适用于业务解决方案（例如软件即服务 [SaaS] �
 
 客户还可以通过 Microsoft 365、Dynamics 365、Power Platform 和 Azure 访问你的 AppSource 产品/服务。 下面的示例演示了如何从 Power BI 文件菜单访问 AppSource 加载项。
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="显示 Microsoft AppSource 中的产品/服务列表页。"::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="显示如何从 Power BI 文件菜单访问 AppSource 中的 Power BI 视觉对象。"::: 
 
 此选项将打开一个窗口，在该窗口中，客户可按名称或类别搜索 Power BI 加载项。 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="显示 Microsoft AppSource 中的产品/服务列表页。"::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="显示 Power BI 中的 AppSource 加载项列表。"::: 
 
 ### <a name="azure-marketplace"></a>Azure 市场
 
@@ -50,17 +50,17 @@ Azure 市场适用于基于 Azure 或为 Azure 生成并适用于 IT 专业人�
 
 以下是 Azure 市场中的产品/服务列表页的示例：
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="显示 Microsoft AppSource 中的产品/服务列表页。"::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="显示 Azure 市场中的产品/服务列表页。"::: 
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Azure 门户中的 Azure 市场
 
 Azure 客户可通过 [Azure 门户](https://portal.azure.com/)中的“创建资源”选项来发现和部署 Azure 市场解决方案。
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="显示 Microsoft AppSource 中的产品/服务列表页。"::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="显示 Azure 门户中的“创建资源”选项"::: 
 
 此选项可在 Azure 门户中打开 Azure 市场，用户可在其中按名称或按类别搜索解决方案。
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="显示 Microsoft AppSource 中的产品/服务列表页。"::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="显示 Azure 门户中的 Azure 市场搜索选项"::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>与 Microsoft 合作销售的好处
 

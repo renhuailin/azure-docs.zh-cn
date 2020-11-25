@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335241"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594226"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Node Web 应用中让用户登录并获取访问令牌
 
-本快速入门通过运行一个代码示例演示 Node.js Web 应用如何通过使用授权代码流使用个人帐户、工作帐户和学校帐户来让用户登录。 此代码示例还演示如何获取访问令牌来调用 Web API，在本例中为 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Node.js Web 应用如何通过使用授权代码流让用户登录。 此代码示例还演示如何获取访问令牌来调用 Microsoft Graph API。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门通过身份验证代码流使用适用于 Node.js 的 Microsoft 身份验证库 (MSAL Node)。
 

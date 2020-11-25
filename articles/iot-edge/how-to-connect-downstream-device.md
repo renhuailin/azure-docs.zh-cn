@@ -13,11 +13,11 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659635"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019253"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -25,11 +25,11 @@ ms.locfileid: "94659635"
 
 成功设置透明网关连接需要完成三个常规步骤。 本文介绍其中的第三个步骤：
 
-1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将消息路由到适当的目标。 有关这些步骤，请参阅 [将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。
-2. 为下游设备创建设备标识，以便它可以向 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关这些步骤，请参阅对 [Azure IoT 中心的下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
+1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将消息路由到适当的目标。 有关这些步骤，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
+2. 为下游设备创建设备标识，以便它可以向 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关这些步骤，请参阅[向 Azure IoT 中心验证下游设备](how-to-authenticate-downstream-device.md)。
 3. 将下游设备连接到网关设备，然后开始发送消息。
 
-本文介绍下游设备连接的基本概念，并指导你设置下游设备的方法如下：
+本文介绍了下游设备连接的基本概念，并引导你设置下游设备。具体内容包括：
 
 * 介绍传输层安全性 (TLS) 和证书基础知识。
 * 介绍 TLS 库在不同操作系统中的工作原理，以及每个操作系统如何处理证书。
@@ -67,7 +67,7 @@ ms.locfileid: "94659635"
 
 当某个设备连接到 Azure IoT 中心时，该设备为客户端，IoT 中心云服务为服务器。 IoT 中心云服务由公开且广泛使用的名为“Baltimore CyberTrust 根”的根 CA 证书提供支持。 由于大多数设备上已安装 IoT 中心 CA 证书，因此，许多 TLS 实现（OpenSSL、Schannel、LibreSSL）在服务器证书验证期间会自动使用该证书。 但是，成功连接到 IoT 中心的设备在尝试连接到 IoT Edge 网关时可能会出现问题。
 
-当某个设备连接到 IoT Edge 网关时，下游设备为客户端，网关设备为服务器。 Azure IoT Edge 允许你构建网关证书链，但它们的大小合适。 你可以选择使用一个公共 CA 证书，如巴尔的摩，或者使用自签名的 (或内部) 根 CA 证书。 公共 CA 证书往往会产生相关的费用，因此通常在生产方案中使用。 最好是使用自签名的 CA 证书进行开发和测试。 如果使用的是演示证书，则这些证书是自签名的根 CA 证书。
+当某个设备连接到 IoT Edge 网关时，下游设备为客户端，网关设备为服务器。 Azure IoT Edge 允许你在适当的情况下生成网关证书链。 你可以选择使用公共 CA 证书（例如 Baltimore），也可使用自签名（或内部）根 CA 证书。 公共 CA 证书往往会产生相关的费用，因此通常在生产方案中使用。 最好是使用自签名的 CA 证书进行开发和测试。 如果使用演示证书，则这些证书是自签名根 CA 证书。
 
 对 IoT Edge 网关使用自签名的根 CA 证书时，需要在尝试连接到该网关的所有下游设备上安装或提供该证书。
 
@@ -198,7 +198,7 @@ var options = {
 
 ## <a name="test-the-gateway-connection"></a>测试网关连接
 
-在下游设备上使用此示例命令来测试它是否可以连接到网关设备：
+在下游设备上使用此示例命令测试是否可以连接到网关设备：
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts

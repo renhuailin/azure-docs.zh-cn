@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
 ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018063"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -52,7 +52,7 @@ ms.locfileid: "92895195"
     | 名称             | 输入“myVNet”                                    |
     | 区域           | 选择“西欧”。|
 
-3. 选择“IP 地址”选项卡，或选择页面底部的“下一步:IP 地址”按钮。
+3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
 4. 在“IP 地址”  选项卡上，输入以下信息：
 
@@ -71,7 +71,7 @@ ms.locfileid: "92895195"
 
 7. 选择“保存” 。
 
-8. 选择“安全”  选项卡。
+8. 选择“安全”选项卡。
 
 9. 在“BastionHost”下，选择“启用” 。 输入此信息：
 
@@ -94,7 +94,7 @@ ms.locfileid: "92895195"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -115,7 +115,7 @@ ms.locfileid: "92895195"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -148,7 +148,7 @@ ms.locfileid: "92895195"
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“CreatePrivateEndpointQS-rg”。 我们在上一部分创建了此资源组。|
     | **实例详细信息** |  |
-    | 名称  | 输入“myPrivateEndpoint”  。 |
+    | 名称  | 输入“myPrivateEndpoint”。 |
     | 区域 | 选择“西欧”。 |
 
 6. 选择“资源”选项卡或页面底部的“下一步: 资源”按钮。
@@ -171,7 +171,7 @@ ms.locfileid: "92895195"
     | ------- | ----- |
     | **网络** |  |
     | 虚拟网络 | 选择“myVNet”。 |
-    | 子网 | 选择“mySubnet”  。 |
+    | 子网 | 选择“mySubnet”。 |
     | **专用 DNS 集成** |  |
     | 与专用 DNS 区域集成 | 保留默认值“是”。 |
     | 订阅 | 选择订阅。 |
@@ -232,7 +232,7 @@ ms.locfileid: "92895195"
 
 2. 选择“CreatePrivateEndpointQS-rg”。
 
-3. 选择“删除资源组”  。
+3. 选择“删除资源组”。
 
 4. 在“键入资源组名称”中输入 CreatePrivateEndpointQS 。
 

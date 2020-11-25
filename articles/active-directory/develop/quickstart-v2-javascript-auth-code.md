@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216651"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533185"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
-本快速入门通过一个代码示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。 此代码示例还演示如何获取访问令牌来调用 Web API，在本例中为 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL.js 2.0 与授权代码流配合使用。 若要查看将 MSAL 1.0 与隐式流结合使用的类似快速入门，请参阅 [快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-javascript.md)。
 
@@ -110,7 +112,7 @@ ms.locfileid: "92216651"
 > 修改 `msalConfig` 部分中的值，如下所述：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于**国家**云（例如“中国”云），请参阅[国家云](authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。
@@ -200,4 +202,4 @@ npm install @azure/msal-browser
 若要查看生成本快速入门中使用的应用程序的详细分步指南，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [有关登录和调用 MS Graph 的教程 >](./tutorial-v2-javascript-auth-code.md)
+> [有关登录和调用 MS Graph 的教程](./tutorial-v2-javascript-auth-code.md)

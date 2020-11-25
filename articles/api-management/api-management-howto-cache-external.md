@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018216"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 兼容缓存
 
@@ -65,7 +65,7 @@ ms.locfileid: "93095928"
 > [!NOTE]
 > “使用位置”设置指定将使用配置的缓存的 Azure 区域或自承载网关位置。 配置为“默认值”的缓存将由具有特定匹配区域或位置值的缓存进行重写。
 >
-> 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于 **默认** ，另一个用于 **东南亚** ，则 **东南亚** 中的 API 管理将使用其自己的缓存，而其他两个区域将使用 **默认** 缓存项。
+> 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于 **默认**，另一个用于 **东南亚**，则 **东南亚** 中的 API 管理将使用其自己的缓存，而其他两个区域将使用 **默认** 缓存项。
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>从同一订阅中添加用于 Redis 的 Azure 缓存
 

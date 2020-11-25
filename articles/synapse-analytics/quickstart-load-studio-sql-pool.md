@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324939"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660077"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入门：使用 Synapse SQL 进行大容量加载
 
@@ -39,7 +39,8 @@ ms.locfileid: "93324939"
 
 ### <a name="steps"></a>步骤
 
-1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹：![选择源位置](./sql/media/bulk-load/bulk-load-source-location.png)
+1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹。 向导将自动尝试检测 Parquet 文件。 如果无法确认 Parquet 文件类型，则默认情况下将使用带分隔符的文本 (CSV)。 
+   ![选择源位置](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. 选择文件格式设置，包括要在其中写入被拒绝行（错误文件）的存储帐户。 目前仅支持 CSV 和 Parquet 文件。
 
@@ -47,9 +48,14 @@ ms.locfileid: "93324939"
 
 3. 可以选择“预览数据”来了解 COPY 语句如何分析文件，以便帮助你配置文件格式设置。 每次更改文件格式设置时选择“预览数据”，以了解 COPY 语句将如何使用更新的设置来分析文件：![预览数据](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - 大容量加载向导中不支持预览带有多字符字段终止符的字段。 指定多字符字段终止符时，大容量加载向导将预览单个列中的数据。 
+> - COPY 语句支持指定多字符行终止符；但大容量加载向导中不支持此操作，这会引发错误。
+
 4. 选择要用于加载的专用 SQL 池，包括选择该加载是针对现有表还是针对新表：![选择目标位置](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. 选择“配置列映射”，以确保具有适当的列映射。 就新表来说，配置列映射对于更新目标列数据类型至关重要：![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. 选择“配置列映射”，以确保具有适当的列映射。 请注意，如果启用了“推断列名称”，将自动检测列名称。 就新表来说，配置列映射对于更新目标列数据类型至关重要：![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. 选择“打开脚本”，此时会生成一个 T-SQL 脚本，其中包含用于从数据湖加载数据的 COPY 语句：![打开 SQL 脚本](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

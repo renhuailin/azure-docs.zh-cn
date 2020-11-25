@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76986030"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018318"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
@@ -48,10 +48,10 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
  |`cancel`             |发送请求来取消由 `--workflow-id` 指定的工作流进程。 另请参阅 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>在何处获取 `--api-url-base` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>在何处获取 `--access-key` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="why-do-i-need-two-access-keys"></a>为什么需要两个访问密钥？
 如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
@@ -80,9 +80,9 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | api_url_base:https://url**    |
-  |`-k/--access-key KEY`            | access_key:KEY**              |      
-  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1**        |  
+  |`-u/--api-url-base https://url`  | api_url_base:https://url    |
+  |`-k/--access-key KEY`            | access_key:KEY              |      
+  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -539,6 +539,8 @@
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 在 Safari 中处理 ITP
           href: reference-third-party-cookies-spas.md
+        - name: 使用连续访问评估 API
+          href: app-resilience-continuous-access-evaluation.md
     - name: 应用程序配置
       displayName: App configuration
       items:

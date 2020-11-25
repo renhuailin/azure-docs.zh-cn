@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515402"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592441"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -47,35 +47,23 @@ ms.locfileid: "94515402"
 ## <a name="create-a-dedicated-sql-pool"></a>创建专用 SQL 池
 
 1. 在 Synapse Studio 的左窗格中，选择“管理” > “SQL 池” 。
-1. 选择“新建”，然后输入以下设置：
-
-    |设置 | 建议的值 | 
-    |---|---|---|
-    |**SQL 池名称**| **SQLDB1**|
-    |**性能级别**|**DW100C**|
-    |||
-
-1. 选择“查看 + 创建” > “创建”。 你的专用 SQL 池将在几分钟内准备就绪。 你的专用 SQL 池与另一个名称也为 SQLDB1 的专用 SQL 池数据库相关联。
+1. 选择“新建”
+1. 对于“SQL 池名称”，请选择“SQLPOOL1” 
+1. 对于“性能级别”，请选择“DW100C” 
+1. 选择“查看 + 创建” > “创建”。 你的专用 SQL 池将在几分钟内准备就绪。 你的专用 SQL 池与另一个名称也为 SQLPOOL1 的专用 SQL 池数据库相关联。
 
 只要专用 SQL 池处于活动状态，就会使用计费资源。 你可以在稍后暂停池以降低成本。
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>创建无服务器 Apache Spark 池
 
 1. 在 Synapse Studio 的左侧窗格中，选择“管理” > “Apache Spark 池” 。
-1. 选择“新建”，然后输入以下设置：
-
-    |设置 | 建议的值 | 
-    |---|---|---|
-    |**Apache Spark 池名称**|**Spark1**
-    |**节点大小**| **小型**|
-    |**节点数**| 将最小值设置为 3，最大值设置为 3|
-
+1. 选择“新建” 
+1. 对于“Apache Spark 池名称”，请输入“Spark1” 。
+1. 对于“节点大小”，请输入“小” 。
+1. 对于“节点数”，请将最小值设置为 3，将最大值设置为 3
 1. 选择“查看 + 创建” > “创建”。 你的 Apache Spark 池将在几秒钟内准备就绪。
 
-在 Azure Synapse 中执行 Spark 活动时，请指定要使用的 Spark 池。 该池告知 Azure Synapse 要使用的 Spark 资源数量。 只需支付所用资源的费用。 主动停止使用该池时，资源将自动超时并进行回收。
-
-> [!NOTE]
-> Spark 数据库是独立于 Spark 池创建的。 工作区始终具有名为“default”的 Spark 数据库。 可以创建其他 Spark 数据库。
+Spark 池告知 Azure Synapse 要使用的 Spark 资源数量。 只需支付所用资源的费用。 主动停止使用该池时，资源将自动超时并进行回收。
 
 ## <a name="the-serverless-sql-pool"></a>无服务器 SQL 池
 

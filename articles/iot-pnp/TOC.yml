@@ -12,39 +12,13 @@
     - name: 设置你的环境
       href: set-up-environment.md
     - name: 将设备连接到 IoT 中心
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: 与解决方案中的设备交互
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
-        - name: C#
-          href: quickstart-service-csharp.md
-        - name: Java
-          href: quickstart-service-java.md
+      href: quickstart-service.md
 - name: 教程
   items:
-    - name: 连接多组件设备 (C)
-      href: tutorial-multiple-components-c.md
-    - name: 连接多组件设备 (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: 连接多组件设备 (Java)
-      href: tutorial-multiple-components-java.md
-    - name: 连接多组件设备 (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: 连接多组件设备 (Python)
-      href: tutorial-multiple-components-python.md
+    - name: 连接多组件设备
+      href: tutorial-multiple-components.md
     - name: 使用 MQTT 连接设备
       href: tutorial-use-mqtt.md
     - name: 与 MXChip 设备交互（示例）
@@ -58,17 +32,7 @@
     - name: 体系结构
       href: concepts-architecture.md
     - name: 设备开发人员指南
-      items:
-        - name: C#
-          href: concepts-developer-guide-device-csharp.md
-        - name: Node.js
-          href: concepts-developer-guide-device-node.md
-        - name: Java
-          href: concepts-developer-guide-device-java.md
-        - name: Python
-          href: concepts-developer-guide-device-python.md
-        - name: C
-          href: concepts-developer-guide-device-c.md
+      href: concepts-developer-guide-device.md
     - name: 服务开发人员指南
       href: concepts-developer-guide-service.md
     - name: 组件

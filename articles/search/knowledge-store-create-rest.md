@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924259"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889043"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 
@@ -84,7 +84,7 @@ ms.locfileid: "88924259"
 | `index-name` | 保留为“hotel-reviews-ix”。 | 
 | `search-service-name` | Azure 认知搜索服务的名称。 该 URL 为 `https://{{search-service-name}}.search.windows.net`。 | 
 | `skillset-name` | 保留为“hotel-reviews-ss”。 | 
-| `storage-account-name` | 存储帐户名称。 | 
+| `storage-account-name` | Azure 存储帐户名称。 | 
 | `storage-connection-string` | 在存储帐户中的“访问密钥”选项卡上，选择“密钥 1” > “连接字符串”。 | 
 | `storage-container-name` | 保留为“hotel-reviews”。 | 
 

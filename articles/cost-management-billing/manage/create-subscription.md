@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844687"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
@@ -73,7 +73,11 @@ ms.locfileid: "92131949"
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>以编程方式创建另一个 Azure 订阅
 
-你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅[以编程方式创建 Azure 订阅](programmatically-create-subscription.md)。
+你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅：
+
+- [使用最新的 API 以编程方式创建 EA 订阅](programmatically-create-subscription-enterprise-agreement.md)
+- [使用最新的 API 以编程方式创建 MCA 订阅](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [使用最新的 API 以编程方式创建 MPA 订阅](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>后续步骤
 

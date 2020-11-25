@@ -9,22 +9,22 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/17/2020
+ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147551"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843904"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
 Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>将纽约市出租车数据加载到 SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>将纽约市出租车数据加载到 SQLPOOL1
 
 1. 在 Synapse Studio 中，导航到“开发”中心，然后新建 SQL 脚本
-1. 在脚本的“Connect to”部分中选择池“SQLDB1”（在本教程的[步骤 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool)中创建的池）。
+1. 在脚本的“连接到”部分中选择池“SQLPOOL1”（在本教程的[步骤 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 中创建的池）。
 1. 输入以下代码：
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,15 +71,15 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. 此脚本大约需要 1 分钟的运行时间。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
+1. 此脚本将在大约 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
-1. 转到“SQLDB1” > “表” 。 你将看到几个已加载的表。
+1. 转到“SQLPOOL1” > “表” 。 你将看到几个已加载的表。
 1. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
 1. 等待新的 SQL 脚本创建并运行。
-1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLDB1”的 SQL 池 。
+1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLPOOL1”的 SQL 池 。
 1. 将 SQL 脚本的文本替换为此代码并运行。
 
     ```sql

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790706"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917930"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Azure SQL 托管实例是一种智能、可缩放的云数据库服务；它将�
 
 ![主要功能](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Azure SQL 托管实例面向想要以最少的迁移工作量，将大量应用从本地或 IaaS、自我构建的或 ISV 提供的环境迁移到完全托管的 PaaS 云环境的客户。 使用完全自动化的 [Azure 数据迁移服务](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客户可将其现有的 SQL Server 实例直接迁移到 SQL 托管实例，从而实现与 SQL Server 的兼容，并通过本机 VNet 支持实现客户实例的完全隔离。  借助软件保障，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 托管实例的折扣价格。 SQL 托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。
+Azure SQL 托管实例面向想要以最少的迁移工作量，将大量应用从本地或 IaaS、自我构建的或 ISV 提供的环境迁移到完全托管的 PaaS 云环境的客户。 使用完全自动化的 [Azure 数据迁移服务](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客户可将其现有的 SQL Server 实例直接迁移到 SQL 托管实例，从而实现与 SQL Server 的兼容，并通过本机 VNet 支持实现客户实例的完全隔离。 若要详细了解迁移选项和工具，请参阅[迁移概述：SQL Server 到 Azure SQL 托管实例](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。</br> 借助软件保障，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 托管实例的折扣价格。 SQL 托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。
 
 ## <a name="key-features-and-capabilities"></a>主要特性和功能
 
@@ -85,8 +85,8 @@ SQL 托管实例[基于 vCore 的购买模型](../database/service-tiers-vcore.m
 
 SQL 托管实例可在两个服务层级中提供：
 
-- **常规用途** ：适用于具有典型性能和 I/O 延迟要求的应用程序。
-- **业务关键** ：适用于具有低 I/O 延迟要求，对工作负载中基础维护操作影响最低的应用程序。
+- **常规用途**：适用于具有典型性能和 I/O 延迟要求的应用程序。
+- **业务关键**：适用于具有低 I/O 延迟要求，对工作负载中基础维护操作影响最低的应用程序。
 
 这两个服务层级保证 99.99% 的可用性，可让你独立选择存储大小和计算容量。 有关 Azure SQL 托管实例高可用性体系结构的详细信息，请参阅[高可用性和 Azure SQL 托管实例](../database/high-availability-sla.md)。
 
@@ -158,7 +158,7 @@ Azure SQL 托管实例提供一组可用于保护数据的高级安全功能。
 
 SQL 托管实例支持传统的 SQL Server 数据库引擎登录名以及与 Azure AD 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本。 使用 Azure AD 服务器主体（登录名）可将 Azure AD 租户中的用户和组指定为真正的实例范围的主体，能够执行任何实体级操作，包括在同一托管实例内执行跨数据库查询。
 
-引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法： **FROM EXTERNAL PROVIDER** 。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为 SQL 托管实例预配 Azure Active Directory 管理员](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)一文。
+引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：**FROM EXTERNAL PROVIDER**。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为 SQL 托管实例预配 Azure Active Directory 管理员](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)一文。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 
@@ -168,10 +168,10 @@ SQL 托管实例支持传统的 SQL Server 数据库引擎登录名以及与 Azu
 
 SQL 托管实例身份验证是指用户连接到数据库时如何证明其身份。 SQL 托管实例支持两种类型的身份验证：  
 
-- **SQL 身份验证** ：
+- **SQL 身份验证**：
 
   此身份验证方法使用用户名和密码。
-- **Azure Active Directory 身份验证** ：
+- **Azure Active Directory 身份验证**：
 
   此身份验证方法使用由 Azure Active Directory 托管的标识，并且受托管域和集成域支持。 请[尽可能](/sql/relational-databases/security/choose-an-authentication-mode)使用 Active Directory 身份验证（集成安全性）。
 
@@ -181,14 +181,14 @@ SQL 托管实例身份验证是指用户连接到数据库时如何证明其身�
 
 ## <a name="database-migration"></a>数据库迁移
 
-SQL 托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。 SQL 托管实例支持多个数据库迁移选项：
+SQL 托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。 SQL 托管实例支持多种数据库迁移选项，它们将在迁移指南中进行讨论。 有关详细信息，请参阅[迁移概述：SQL Server 到 Azure SQL 托管实例](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。
 
 ### <a name="backup-and-restore"></a>备份和还原  
 
 迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
 
 - 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](restore-sample-database-quickstart.md)。 本快速入门介绍如何将备份文件上传到 Azure Blob 存储并使用共享访问签名 (SAS) 密钥对其进行保护。
-- 有关从 URL 还原的信息，请参阅[从 URL 本机还原](migrate-to-instance-from-sql-server.md#native-restore-from-url)。
+- 有关从 URL 还原的信息，请参阅[从 URL 本机还原](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore)。
 
 > [!IMPORTANT]
 > 来自托管实例的备份只能还原到另一个托管实例。 它们不能还原到 SQL Server 实例或 Azure SQL 数据库。
@@ -230,7 +230,7 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 
 下表显示了可通过 Transact-SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用 SQL 托管实例以及检索重要属性。
 
-|属性|Value|注释|
+|属性|值|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值 **并不** 表示 SQL 引擎版本 12 (SQL Server 2014)。 SQL 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

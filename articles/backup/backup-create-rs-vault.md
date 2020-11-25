@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171631"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019287"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -42,7 +42,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 ## <a name="set-cross-region-restore"></a>设置跨区域还原
 
-还原选项 **跨区域还原 (CRR) ** 使你可以在辅助、 [Azure 配对区域](../best-practices-availability-paired-regions.md)中还原数据。
+还原选项 **跨区域还原 (CRR)** 使你可以在辅助、 [Azure 配对区域](../best-practices-availability-paired-regions.md)中还原数据。
 
 它支持以下数据源：
 

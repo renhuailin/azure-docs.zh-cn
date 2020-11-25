@@ -1,20 +1,20 @@
 ---
 title: 教程：设置 Visual Studio Code 扩展（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何设置 Visual Studio Code Azure 机器学习扩展。
+description: 了解如何使用 Azure 机器学习 Visual Studio Code 扩展安装和运行训练脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: f485c12bf82dde798a77175a3fab4d76488150c3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199759"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701195"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>设置 Azure 机器学习 Visual Studio Code 扩展（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "86199759"
 ## <a name="install-the-extension"></a>安装扩展
 
 1. 打开 Visual Studio Code。
-1. 从**活动栏**选择“扩展”图标，打开“扩展”视图。
+1. 从 **活动栏** 选择“扩展”图标，打开“扩展”视图。
 1. 在“扩展”视图中，搜索“Azure 机器学习”。
 1. 选择“安装”。
 
@@ -46,7 +46,7 @@ ms.locfileid: "86199759"
 > [!NOTE]
 > 也可[直接下载安装程序](https://aka.ms/vscodetoolsforai)，以便通过 Visual Studio Marketplace 安装 Azure 机器学习扩展。 
 
-本教程中的其余步骤已使用扩展的**版本 0.6.8** 进行了测试。
+本教程中的其余步骤已使用扩展的 **版本 0.6.8** 进行了测试。
 
 ## <a name="sign-in-to-your-azure-account"></a>登录 Azure 帐户
 

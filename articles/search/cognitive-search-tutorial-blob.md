@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788054"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738044"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
-如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 REST 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
+如果在 Azure Blob 存储中有非结构化文本或图像，则可使用 [AI 扩充管道](cognitive-search-concept-intro.md)从 Blob 提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 REST 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
 
 本教程使用 Postman 和[搜索 REST API](/rest/api/searchservice/) 执行以下任务：
 
 > [!div class="checklist"]
-> * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、HTML、DOCX 和 PPTX）着手。
-> * 定义一个管道，用于提取文本、检测语言、识别实体和检测关键短语。
-> * 定义用于存储输出（原始内容，加上管道生成的名称/值对）的索引。
-> * 执行管道以开始转换和分析，以及创建和加载索引。
+> * 设置服务和 Postman 集合。
+> * 创建扩充管道，用于提取文本、检测语言、识别实体和检测关键短语。
+> * 创建用于存储输出的索引（原始内容和管道生成的“名称-值”对）。
+> * 执行管道以执行转换和分析，以及加载索引。
 > * 使用全文搜索和丰富的查询语法浏览结果。
 
 如果你没有 Azure 订阅，请在开始之前建立一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="overview"></a>概述
+
+本教程使用 C# 和 Azure 认知搜索 REST API 来创建数据源、索引、索引器和技能组。 你将从 Azure Blob 存储中的所有文档（非结构化文本，例如 PDF、HTML、DOCX 和 PPTX）开始，然后通过技能组运行它们以提取内容文件中的实体、关键短语和其他文本。
+
+此技能组使用基于认知服务 API 的内置技能。 管道中的步骤包括文本的语言检测、关键短语提取和实体识别（组织）。 新信息存储在可在查询、方面和筛选器中使用的新字段中。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,9 +47,11 @@ ms.locfileid: "92788054"
 
 ## <a name="download-files"></a>下载文件
 
-1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。  
+1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。 
 
-1. 右键单击 zip 文件并选择“全部提取”。  有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+1. 右键单击 zip 文件并选择“全部提取”。 有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+
+此外，还可以下载用于本教程的源代码（Postman 集合文件）。 源代码可在 [https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) 上找到。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
@@ -53,31 +61,31 @@ ms.locfileid: "92788054"
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
-1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。 
+1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。
 
-1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。 
+1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。
 
    ![创建存储帐户](media/cognitive-search-tutorial-blob/storage-account.png "创建存储帐户")
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   + **存储帐户名称** 。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus* 。 
+   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
-   + **位置** 。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
+   + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   + **帐户类型** 。 选择默认设置“StorageV2 (常规用途 v2)”  。
+   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”。
 
-1. 单击“查看 + 创建”以创建服务。 
+1. 单击“查看 + 创建”以创建服务。
 
-1. 创建后，单击“转到资源”打开“概述”页。 
+1. 创建后，单击“转到资源”打开“概述”页。
 
-1. 单击“Blob”服务。 
+1. 单击“Blob”服务。
 
-1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo* 。 
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。
 
-1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。   选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。 
+1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。 
 
    ![上传示例文件](media/cognitive-search-tutorial-blob/sample-files.png "上传示例文件")
 
@@ -85,7 +93,7 @@ ms.locfileid: "92788054"
 
    1. 向后浏览到存储帐户的“概述”页（我们使用了 *blobstragewestus* 作为示例）。 
    
-   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。  
+   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。 
 
    连接字符串是类似于以下示例的 URL：
 
@@ -107,11 +115,11 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 与处理 Azure Blob 存储时一样，请花片刻时间来收集访问密钥。 此外，在开始构建请求时，需要提供终结点和管理 API 密钥用于对每个请求进行身份验证。
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>复制 Azure 认知搜索的管理员 API 密钥和 URL
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -121,17 +129,17 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ## <a name="2---set-up-postman"></a>2 - 设置 Postman
 
-启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Postman 探索 Azure 认知搜索 REST API](search-get-started-postman.md) 了解详细信息。
+启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[探索 Azure 认知搜索 REST API](search-get-started-rest.md)。
 
-本教程中使用的请求方法是 **POST** 、 **PUT** 和 **GET** 。 你将使用这些方法对搜索服务发出四个 API 调用：创建数据源、创建技能集、创建索引和创建索引器。
+本教程中使用的请求方法是 **POST**、**PUT** 和 **GET**。 你将使用这些方法对搜索服务发出四个 API 调用：创建数据源、创建技能集、创建索引和创建索引器。
 
 在标头中，将“Content-type”设置为 `application/json`，将 `api-key` 设置为 Azure 认知搜索服务的管理 API 密钥。 设置标头后，可将其用于本练习中的每个请求。
 
-  ![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
+  ![Postman 请求 URL 和标头](media/search-get-started-rest/postman-url.png "Postman 请求 URL 和标头")
 
 ## <a name="3---create-the-pipeline"></a>3 - 创建管道
 
-在 Azure 认知搜索中，AI 处理是在索引编制（或数据引入）期间发生的。 本演练部分将创建四个对象：数据源、索引定义、技能集和索引器。 
+在 Azure 认知搜索中，扩充是在索引编制（或数据引入）期间发生的。 本演练部分将创建四个对象：数据源、索引定义、技能集和索引器。 
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
@@ -350,7 +358,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",

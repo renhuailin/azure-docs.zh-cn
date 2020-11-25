@@ -1,6 +1,6 @@
 ---
-title: 使用复制活动将数据加载到 SQL 池的快速入门
-description: 使用 Azure Synapse Analytics 将数据加载到 SQL 池中
+title: 快速入门：使用复制活动将数据加载到专用 SQL 池中
+description: 使用 Azure Synapse Analytics 中的管道复制活动将数据加载到专用 SQL 池中。
 services: synapse-analytics
 ms.author: jingwang
 author: linda33wj
@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 12b5530ccf154220b11f9d1286d629caf2209475
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280737"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735239"
 ---
-# <a name="quickstart-load-data-into-sql-pool-using-copy-activity"></a>快速入门：使用复制活动将数据加载到 SQL 池中
+# <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>快速入门：使用复制活动将数据加载到专用 SQL 池中
 
-Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转换和分析数据，以及对数据建模。 SQL 池提供基于 T-SQL 的计算和存储功能。 在 Synapse 工作区中创建 SQL 池后，可以加载、处理和提供数据以及为数据建模，更快地获取分析见解。
+Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转换和分析数据，以及对数据建模。 专用 SQL 池提供基于 T-SQL 的计算和存储功能。 在 Synapse 工作区中创建专用 SQL 池后，可以加载、处理和提供数据以及为数据建模，更快地获取分析见解。
 
-本快速入门介绍如何将数据从 Azure SQL 数据库加载到 Azure Synapse Analytics。 可以遵循类似步骤，从其他类型的数据存储中复制数据。 类似的流程也适用于其他源和接收器之间的数据复制。
+本快速入门介绍如何将数据从 Azure SQL 数据库加载到 Azure Synapse Analytics。 可以遵循类似步骤，从其他类型的数据存储中复制数据。 此类似的流程也适用于其他源和接收器的数据复制。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,13 +29,13 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 * Azure Synapse 工作区：按照[快速入门：创建 Synapse 工作区](quickstart-create-workspace.md)中的说明，使用 Azure 门户创建 Synapse 工作区。
 * Azure SQL 数据库：本教程从 Azure SQL 数据库中的 Adventure Works LT 示例数据集中复制数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。 也可以按类似步骤使用其他数据存储。
 * Azure 存储帐户：Azure 存储用作复制操作中的暂存区域。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
-* Azure Synapse Analytics：使用 SQL 池作为接收器数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建 SQL 池](quickstart-create-sql-pool-portal.md)，了解创建该实例的步骤。
+* Azure Synapse Analytics：使用专用 SQL 池作为接收器数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建专用 SQL 池](quickstart-create-sql-pool-portal.md)，了解创建该实例的步骤。
 
 ### <a name="navigate-to-the-synapse-studio"></a>导航到 Synapse Studio
 
-创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
+创建 Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-* 在 [Azure 门户](https://ms.portal.azure.com/#home)中打开 Synapse 工作区。 在“概述”部分的顶部，选择“启动 Synapse Studio”。
+* 在 [Azure 门户](https://ms.portal.azure.com/#home)中打开 Synapse 工作区。 在“开始”下的“打开 Synapse Studio”卡上选择“打开”。
 * 打开 [Azure Synapse Analytics](https://web.azuresynapse.net/) 并登录到工作区。
 
 在本快速入门中，我们将使用名为“adftest2020”的工作区作为示例。 它将自动导航到 Synapse Studio 主页。
@@ -44,7 +44,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-在 Azure Synapse Analytics 中，链接服务是定义到其他服务的连接信息的一个位置。 在本部分中，创建以下两种类型的链接服务：Azure SQL 数据库和 Azure Data Lake Storage Gen2 链接服务。
+在 Azure Synapse Analytics 中，链接服务是定义到其他服务的连接信息的一个位置。 在本部分中，创建以下两种类型的链接服务：Azure SQL 数据库和 Azure Data Lake Storage Gen2 (ADLS Gen2) 链接服务。
 
 1. 在 Synapse Studio 主页上，在左侧导航栏中选择“管理”选项卡。
 1. 在“外部连接”下，选择“链接服务”。
@@ -66,7 +66,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
  
 ## <a name="create-a-pipeline"></a>创建管道
 
-管道包含用于执行一组活动的逻辑流。 在本部分中，创建一个包含复制活动的管道，该复制活动将数据从 Azure SQL 数据库引入到 SQL 池中。
+管道包含用于执行一组活动的逻辑流。 在本部分中，创建一个包含复制活动的管道，该复制活动将数据从 Azure SQL 数据库引入到专用 SQL 池中。
 
 1. 转到“集成”选项卡。选择管道标题旁边的加号图标，然后选择“管道”。
 
@@ -84,7 +84,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
    ![设置源数据集属性](media/quickstart-copy-activity-load-sql-pool/source-dataset-properties.png)
 1. 完成后，选择“确定”。
 1. 选择复制活动并转到“接收器”选项卡。选择“新建”以创建新的接收器数据集。
-1. 选择“SQL Analytics 池”作为数据存储，然后选择“继续” 。
+1. 选择“Azure Synapse 专用 SQL 池”作为数据存储，然后选择“继续” 。
 1. 在“设置属性”窗格中，选择你在前面的步骤中创建的 SQL Analytics 池。 如果要写入现有表，请在“表名称”下拉列表中选择它。 否则，请选中“编辑”，并输入新的表名称。 完成后，选择“确定”。
 1. 对于接收器数据集设置，在表选项字段中启用“自动创建表”。
 
@@ -122,7 +122,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
    ![活动详细信息](media/quickstart-copy-activity-load-sql-pool/activity-details.png)
 
 1. 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。 
-1. 验证数据是否已正确写入到 SQL 池中。
+1. 验证数据是否已正确写入到专用 SQL 池中。
 
 
 ## <a name="next-steps"></a>后续步骤

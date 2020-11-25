@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320716"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684366"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -36,7 +36,7 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 可以将 Azure 通知中心连接到通信服务资源，以便在收到传入呼叫时自动向用户的移动设备发送推送通知。 你应使用这些推送通知从后台唤醒你的应用程序，并显示让用户接受或拒绝呼叫的 UI。 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="显示通信服务如何与事件网格集成的关系图。":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="显示通信服务如何与 Azure 通知中心集成的关系图。":::
 
 通信服务使用 Azure 通知中心作为直通服务，以便使用[直接发送](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 与各种特定于平台的推送通知服务进行通信。 这使你可以重复使用现有 Azure 通知中心资源和配置，向你的应用程序传递低延迟、可靠的呼叫通知。
 
@@ -53,7 +53,8 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 通知中心配置完成后，便可以使用 Azure 资源管理器客户端或通过 Azure 门户为中心提供连接字符串，从而将它关联到通信服务资源。 连接字符串应包含“发送”权限。 建议专门为中心创建另一个仅具有“发送”权限的访问策略。 详细了解[通知中心安全和访问策略](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
 
 > [!IMPORTANT]
-> 若要启用 Apple Push Notification 服务 VOIP 通知，必须使用 `.voip` 后缀将通知中心的名称设置为应用程序捆绑 ID。 请参阅[通过通知中心使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
+> 这仅适用于令牌身份验证模式。 目前不支持证书身份验证模式。  
+若要启用 APNS VOIP 通知，需要在将通知中心配置为具有 `.voip` 后缀的应用程序捆绑 ID 时设置捆绑 ID 的值。 有关更多详细信息，请参阅[通过通知中心使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure 资源管理器客户端配置通知中心
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 在门户中，导航到 Azure 通信服务资源。 在通信服务资源中，从“通信服务”页的左侧菜单中选择“推送通知”，并连接之前预配的通知中心。 你需要在此处提供连接字符串和资源 ID：
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示通信服务如何与事件网格集成的关系图。":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
 
 > [!NOTE]
 > 如果更新了 Azure 通知中心连接字符串，还必须更新通信服务资源。

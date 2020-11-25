@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019697"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -78,7 +78,7 @@ ms.locfileid: "92426653"
 
    * 所有服务总线触发器都是长轮询触发器。 此说明意味着，触发器在激发时会处理所有消息，然后等待 30 秒，让更多的消息出现在队列或主题订阅中。 如果在 30 秒内未显示任何消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
-   * 某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的**最大消息计数**属性指定的消息数。
+   * 某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的 **最大消息计数** 属性指定的消息数。
 
      > [!NOTE]
      > 自动完成触发器会自动完成一条消息，但仅在下一次调用服务总线时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用进入受限制状态，此更改可能会导致重复的消息。 更改并发控制会形成以下情况：跳过受限制的触发器并显示 `WorkflowRunInProgress` 代码、完成操作不会发生以及下一次触发器运行会在轮询间隔后发生。 必须将服务总线锁定持续时间设置为比轮询间隔更长的值。 但是尽管进行此设置，如果逻辑应用在下一个轮询间隔内保持受限制状态，则消息仍可能不会完成。
@@ -163,7 +163,7 @@ ms.locfileid: "92426653"
 
 ## <a name="send-correlated-messages-in-order"></a>按顺序发送相关消息
 
-如果需要按特定顺序发送相关消息，可以使用[Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用[*顺序保护*模式](/azure/architecture/patterns/sequential-convoy)。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
+如果需要按特定顺序发送相关消息，可以使用 [Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用 [*顺序保护* 模式](/azure/architecture/patterns/sequential-convoy)。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
 创建逻辑应用时，可以选择“使用服务总线会话的相关的按序送达”模板，该模板可实现“顺序保护”模式。 有关详细信息，请参阅[按顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
 

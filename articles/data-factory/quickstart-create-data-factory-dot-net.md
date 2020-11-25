@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d564b96807574dd7a275d6959aea085ad16e9e2e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322846"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565936"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -28,7 +28,7 @@ ms.locfileid: "91322846"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
+此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹 **复制** 到另一个文件夹。 有关如何使用 Azure 数据工厂 **转换** 数据的教程，请参阅 [教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
 
 > [!NOTE]
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
@@ -130,7 +130,7 @@ ms.locfileid: "91322846"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-向 **Main** 方法中添加用于创建**数据工厂**的以下代码。 
+向 **Main** 方法中添加用于创建 **数据工厂** 的以下代码。 
 
 ```csharp
 // Create a data factory
@@ -153,7 +153,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-a-linked-service"></a>创建链接服务
 
-在 **Main** 方法中添加用于创建 **Azure 存储链接服务**的以下代码。
+在 **Main** 方法中添加用于创建 **Azure 存储链接服务** 的以下代码。
 
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在此快速入门中，只需创建一个 Azure 存储链接服务，用于复制源和接收器存储。在示例中，此服务名为“AzureStorageLinkedService”。
 
@@ -177,7 +177,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 ## <a name="create-a-dataset"></a>创建数据集
 
-向 **Main** 方法中添加用于创建 **Azure blob 数据集**的以下代码。
+向 **Main** 方法中添加用于创建 **Azure blob 数据集** 的以下代码。
 
 定义一个数据集来表示要从源复制到接收器的数据。 在此示例中，此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。 此数据集采用一个参数，其值在使用此数据集的活动中设置。 该参数用来构造“folderPath”，该项指向数据的驻留/存储位置。
 
@@ -206,7 +206,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-向 **Main** 方法中添加用于创建**包含复制活动的管道**的以下代码。
+向 **Main** 方法中添加用于创建 **包含复制活动的管道** 的以下代码。
 
 在此示例中，此管道包含一个活动并采用两个参数：输入 Blob 路径和输出 Blob 路径。 这些参数的值是在触发/运行管道时设置的。 复制活动引用在上一步中创建的同一 blob 数据集作为输入和输出。 当该数据集用作输入数据集时，即指定了输入路径。 并且，当该数据集用作输出数据集时，即指定了输出路径。 
 
@@ -258,7 +258,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>创建管道运行
 
-在 **Main** 方法中添加用于**触发管道运行**的以下代码。
+在 **Main** 方法中添加用于 **触发管道运行** 的以下代码。
 
 此代码还设置 inputPath 和 outputPath 参数的值，这些值是使用源和接收器 Blob 路径的实际值在管道中指定的值 。
 

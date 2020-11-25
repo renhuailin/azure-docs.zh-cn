@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631183"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737237"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>教程：在 Azure 虚拟网络中部署 Azure Spring Cloud（VNet 注入）
 
@@ -27,22 +27,23 @@ ms.locfileid: "92631183"
 * 授权客户控制 Azure Spring Cloud 的入站和出站网络通信
 
 ## <a name="prerequisites"></a>先决条件
-必须根据说明[在 Azure 门户上注册资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)或运行以下 az CLI 命令来注册 Azure Spring Cloud 资源提供程序 `Microsoft.AppPlatform`：
+必须根据说明[在 Azure 门户上注册资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)或运行以下 az CLI 命令来注册 Azure Spring Cloud 资源提供程序 Microsoft.AppPlatform 和 Microsoft.ContainerService ：
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
+az provider register --namespace Microsoft.ContainerService
 ```
 ## <a name="virtual-network-requirements"></a>虚拟网络要求
 将 Azure Spring Cloud 服务实例部署到其中的虚拟网络必须满足以下要求：
 
 * 位置：该虚拟网络必须与 Azure Spring Cloud 服务实例位于同一位置。
 * 订阅：该虚拟网络必须与 Azure Spring Cloud 服务实例位于同一订阅中。
-* **子网** ：该虚拟网络必须包含两个专用于 Azure Spring Cloud 服务实例的子网： 
+* **子网**：该虚拟网络必须包含两个专用于 Azure Spring Cloud 服务实例的子网： 
     * 一个用于服务运行时
     * 一个用于 Spring Boot 微服务应用程序。 
     * 这些子网和 Azure Spring Cloud 服务实例之间存在一对一关系。 需要为部署的每个服务实例使用一个新的子网，并且每个子网只能包含一个服务实例。
-* **地址空间** ：一个 CIDR 块最多为 /28（用于服务运行时子网），而另一个 CIDR 块最多为 /24（用于 Spring Boot 微服务应用程序子网）。
-* **路由表** ：子网不得有关联的现有路由表。
+* **地址空间**：一个 CIDR 块最多为 /28（用于服务运行时子网），而另一个 CIDR 块最多为 /24（用于 Spring Boot 微服务应用程序子网）。
+* **路由表**：子网不得有关联的现有路由表。
 
 以下过程描述了虚拟网络的设置，以包含 Azure Spring Cloud 的实例。
 

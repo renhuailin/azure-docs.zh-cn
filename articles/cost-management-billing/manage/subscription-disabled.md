@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308956"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744419"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新激活已禁用的 Azure 订阅
 
@@ -54,6 +54,10 @@ Azure 订阅被禁用可能是因为额度已过期、达到了支出限制、�
     ![屏幕截图，右侧窗格中显示重新激活链接](./media/subscription-disabled/reactivate-sub.png)
 
 对于其他订阅类型，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以重新激活订阅。
+
+## <a name="after-reactivation"></a>重新激活后
+
+重新激活订阅后，创建或管理资源可能存在延迟。 如果延迟超过 30 分钟，请联系 [Azure 计费支持](https://go.microsoft.com/fwlink/?linkid=2083458)以获取帮助。 大多数 Azure 资源可自动恢复，无需任何操作。 但建议检查 Azure 服务资源，并重启所有无法自动恢复的资源。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

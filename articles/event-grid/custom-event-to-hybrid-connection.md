@@ -4,12 +4,12 @@ description: 教程：使用 Azure 事件网格和 Azure CLI 发布一个主题�
 ms.date: 07/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 77633a717478ff143c3b084adc0b69019abb203f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832087"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566820"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教程：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -17,12 +17,11 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定已有混合连接和侦听器应用程序。 若要开始使用混合连接，请参阅[中继混合连接入门 - .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) 或[中继混合连接入门 - Node](../azure-relay/relay-hybrid-connections-node-get-started.md)。
+- 本文假定已有混合连接和侦听器应用程序。 若要开始使用混合连接，请参阅[中继混合连接入门 - .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) 或[中继混合连接入门 - Node](../azure-relay/relay-hybrid-connections-node-get-started.md)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!NOTE]
-> 如果是在本地计算机上使用 Azure CLI，请使用 Azure CLI 2.0.56 或更高版本。 有关安装 Azure CLI 的最新版本的说明，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 版本 2.0.56 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -30,7 +29,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
 
-以下示例在“westus2”** 位置创建名为“gridResourceGroup”** 的资源组。
+以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

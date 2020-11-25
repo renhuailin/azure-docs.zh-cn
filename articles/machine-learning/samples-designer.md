@@ -1,7 +1,7 @@
 ---
 title: 设计器的示例管道和数据集
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设计器中的示例来快速开始生成机器学习管道。
+description: 了解如何使用 Azure 机器学习设计器中的示例来快速开始生成机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074594"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555492"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>用于 Azure 机器学习设计器的管道和数据集示例
 

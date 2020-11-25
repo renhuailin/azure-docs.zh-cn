@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746164"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019493"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -29,7 +29,7 @@ ms.locfileid: "92746164"
 
 1. 要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，输入函数应用的名称，并从列表中将其选中。 
 
-2. 在左窗格的“配置”下，选择“配置”   。
+2. 在左窗格的“配置”下，选择“配置” 。
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 门户中的函数应用概述":::
 
@@ -37,11 +37,11 @@ ms.locfileid: "92746164"
 
 ## <a name="application-settings"></a><a name="settings"></a>应用程序设置
 
-“应用程序设置”选项卡维护函数应用使用的设置  。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+“应用程序设置”选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
 ### <a name="portal"></a>门户
 
-若要在门户中添加设置，请选择“新建应用程序设置”  并添加新的键值对。
+若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
@@ -107,7 +107,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu  
+应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>部署中心
@@ -120,7 +120,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 #### <a name="portal"></a>门户
 
-配置函数应用的“允许的域”列表时， `Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
+配置函数应用的“允许的域”列表时，`Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
 
 ![配置函数应用的 CORS 列表](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 

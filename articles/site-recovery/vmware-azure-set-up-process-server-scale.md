@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292802"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019120"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
 
@@ -57,7 +57,7 @@ ms.locfileid: "87292802"
 4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 
    ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”****。 这会下载最新版本的安装文件。
+1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”。 这会下载最新版本的安装文件。
 
    > [!WARNING]
    > 进程服务器安装版本应低于所运行的配置服务器版本或与之相同。 确保版本兼容性的一种简单方法是使用最近用来安装或更新配置服务器的同一安装程序。

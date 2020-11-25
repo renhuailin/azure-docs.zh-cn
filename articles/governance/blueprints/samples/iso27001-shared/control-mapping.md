@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例控制
 description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: bb1cfbc09e8a6209b9e6d0cb2970dc66ee05ba6d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c79159fca9d619b727ef651bf42044182144ab35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420336"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842509"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -82,7 +82,7 @@ Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 安全登录过程
 
-此蓝图分配了三个 Azure Policy 定义，以用于审核未启用多重身份验证的帐户。 Azure 多重身份验证通过要求使用另一种形式的身份验证提供额外的安全性，从而提供增强式身份验证。 通过监视未启用多重身份验证的帐户，可以识别出更有可能会泄密的帐户。
+此蓝图分配了三个 Azure Policy 定义，以用于审核未启用多重身份验证的帐户。 Azure AD 多重身份验证通过要求使用另一种形式的身份验证提供额外的安全性，从而提供增强式身份验证。 通过监视未启用多重身份验证的帐户，可以识别出更有可能会泄密的帐户。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应在对订阅拥有读取权限的帐户上启用 MFA

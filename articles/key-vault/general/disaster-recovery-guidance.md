@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597872"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576209"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 
@@ -23,7 +23,7 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 > [!NOTE]
 > 本指南适用于保管库。 托管 HSM 池使用其他高可用性和灾难恢复模型。 要了解详细信息，请参阅[有关托管 HSM 灾难恢复的指南](../managed-hsm/disaster-recovery-guide.md)。
 
-密钥保管库的内容会在区域中复制，并且会复制到至少 150 英里以外（但位于同一个地理位置）的次要区域，以保持密钥和机密的高持续性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)一文。
+会在区域中复制密钥保管库的内容，并复制到至少 150 英里以外的次要区域，但位于同一个地理位置，以保持密钥和机密的持久性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)。 配对区域模型的例外是巴西南部，它只允许选择将数据保存在巴西南部。 巴西南部使用本地冗余存储 (LRS) 在单个位置/区域内复制数据三次。   
 
 如果密钥保管库服务中的单独组件发生故障，则区域内的替代组件将继续处理请求，确保不会导致功能损失。 无需执行任何操作即可开始此过程，它会自动发生，且相关信息是透明的。
 
@@ -52,4 +52,4 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 
 * 在故障转移期间，无法更改密钥保管库属性。 不能更改访问策略或防火墙配置和设置。
 
-* 故障回复之后，所有请求类型（包括读取*和*写入请求）都将可用。
+* 故障回复之后，所有请求类型（包括读取 *和* 写入请求）都将可用。

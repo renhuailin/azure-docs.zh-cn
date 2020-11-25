@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873177"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628027"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教程：创建使用 Microsoft 标识平台进行身份验证的 Blazor Server 应用
 
-Blazor 服务器在 ASP.NET Core 应用中添加了对在服务器上托管 Razor 组件的支持。 在本教程中，你将了解如何使用 Microsoft 标识平台在 Blazor Server 应用中实施身份验证以及通过 Microsoft Graph 检索数据。
+Blazor 服务器在 ASP.NET Core 应用中添加了对在服务器上托管 Razor 组件的支持。 在本教程中，你将了解如何使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，在 Blazor Server 应用中实施身份验证以及通过 Microsoft Graph 检索数据。
+
+我们还提供了关于 [Blazor WASM](tutorial-blazor-webassembly.md) 的教程。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -43,8 +45,8 @@ Blazor 服务器在 ASP.NET Core 应用中添加了对在服务器上托管 Razo
 最后，因为应用调用了一个受保护的 API（在本例中为 Microsoft Graph），因此在请求访问令牌来调用该 API 时，它需要一个客户端机密来验证其身份。
 
 1. 在同一应用注册中，在“管理”下选择“证书和机密”。
-2. 创建一个永不过期的**新客户端机密**。
-3. 记下该机密的**值**，你在下一步中将使用它。 离开此窗格后，将无法再访问它。 但是，你可以根据需要重新创建它。
+2. 创建一个永不过期的 **新客户端机密**。
+3. 记下该机密的 **值**，你在下一步中将使用它。 离开此窗格后，将无法再访问它。 但是，你可以根据需要重新创建它。
 
 ## <a name="create-the-app-using-the-net-cli"></a>使用 .NET CLI 创建应用
 

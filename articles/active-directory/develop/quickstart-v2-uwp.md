@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824401"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560921"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
-本快速入门使用代码示例来演示通用 Windows 平台 (UWP) 应用程序如何让用户使用个人帐户或工作和学校帐户进行登录，如何获取访问令牌以及如何调用 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
+本快速入门通过下载并运行一个代码示例演示通用 Windows 平台 (UWP) 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>先决条件
@@ -55,7 +57,7 @@ ms.locfileid: "91824401"
 > 1. 选择“注册”创建应用程序，然后记录“应用程序(客户端) ID”，以供在后面的步骤中使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 选择“添加平台” > “移动和桌面应用程序” 。
-> 1. 在“重定向 URI”下选择“Web”。****`https://login.microsoftonline.com/common/oauth2/nativeclient`
+> 1. 在“重定向 URI”下选择“Web”。`https://login.microsoftonline.com/common/oauth2/nativeclient`
 > 1. 选择“配置” 。
 
 > [!div renderon="portal" class="sxs-lookup"]

@@ -1,23 +1,23 @@
 ---
-title: Azure 流分析的概述
-description: 了解流分析，这是一种托管的服务，可以帮助你实时分析物联网 (IoT) 提供的流式数据。
+title: Azure 流分析简介
+description: 了解 Azure 流分析，这是一种托管的服务，可以帮助你实时分析物联网 (IoT) 提供的流式数据。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/12/2020
+ms.openlocfilehash: 0022e19e23b7808cd78da988fd3fdef2d537acf5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342226"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579430"
 ---
-# <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
+# <a name="welcome-to-azure-stream-analytics"></a>欢迎使用 Azure 流分析
 
-Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，从而能够处理 IoT 设备上的数据。 
+Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，从而能够处理 IoT 设备上的数据。
 
 下面是可以使用 Azure 流分析的示例场景：
 
@@ -26,6 +26,11 @@ Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时�
 * 适用于车队管理和无人驾驶汽车的地理空间分析
 * 远程监视和预测性维护高价值资产
 * 实时分析销售点数据，以便进行库存控制和异常情况检测
+
+可以通过免费的 Azure 订阅来试用 Azure 流分析。
+
+> [!div class="nextstepaction"]
+> [试用 Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>流分析工作原理
 
@@ -102,7 +107,7 @@ Azure 流分析遵循多个符合性认证，如 [Azure 符合性概述](https:/
 
 你现在已对 Azure 流分析有了一个大致的了解。 接下来，你可以进行深入了解并创建第一个流分析作业：
 
-* [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)。
-* [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)。
-* [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)。
-* [使用 Visual Studio Code 创建流分析作业](quick-create-visual-studio-code.md)。
+* [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
+* [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
+* [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
+* [使用 Visual Studio Code 创建流分析作业](quick-create-visual-studio-code.md)

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f0a91a4d3b479d1243907951481e5a10f7085bbc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145255"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837424"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -80,7 +80,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 - 要求具有管理角色的用户执行多重身份验证
 - 要求在运行 Azure 管理任务时执行多重身份验证
 - 阻止用户尝试使用旧式身份验证协议登录
-- 要求在受信任的位置注册 Azure 多重身份验证
+- 要求在受信任的位置注册 Azure AD 多重身份验证
 - 阻止或允许来自特定位置的访问
 - 阻止有风险的登录行为
 - 要求在组织管理的设备上使用特定的应用程序

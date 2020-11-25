@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 67e90667df2b62ec2c37d865fe431a2be6f81b9e
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876560"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517846"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
@@ -67,11 +67,11 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+你将需要用于 Google Firebase Cloud Messaging (FCM) 项目的“API 密钥”。
 
-- 通知中心需要 Azure CLI 2.0.67 或更高版本。 运行 [az version](/cli/azure/reference-index?#az_version) 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-- 你将需要用于 Google Firebase Cloud Messaging (FCM) 项目的“API 密钥”。
+- 本文需要 Azure CLI 版本 2.0.67 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>为 Google FCM 设置推送通知
 
@@ -135,7 +135,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
       * 在工具栏上选择“上传证书”  。
       * 选择“文件”图标，然后选择证书文件。
       * 输入证书的密码。
-      * 选择“确定”  。
+      * 选择“确定”。
       * 在“Windows Phone (MPNS)”页上选择“保存”。  
 
 有关详细信息，请参阅[通过通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。

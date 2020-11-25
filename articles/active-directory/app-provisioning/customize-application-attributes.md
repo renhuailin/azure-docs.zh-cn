@@ -1,5 +1,5 @@
 ---
-title: 教程-自定义 Azure Active Directory 属性映射
+title: 教程 - 自定义 Azure Active Directory 属性映射
 description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
 services: active-directory
 author: kenwith
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441947"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955508"
 ---
-# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程-为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、G Suite 等等。 如果为第三方 SaaS 应用程序启用用户预配，Azure 门户将通过属性映射控制其属性值。
 
@@ -108,10 +108,10 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - Salesforce
 - ServiceNow
 - Workday 到 Active Directory/Workday 到 Azure Active Directory
-- SuccessFactors to Azure Active Directory Active Directory/SuccessFactors
+- SuccessFactors 到 Azure Active Directory Active Directory/SuccessFactors
 - Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
-- 支持[SCIM 2.0](https://tools.ietf.org/html/rfc7643)的应用
-- 对于 Azure Active Directory 写回 Workday 或 SuccessFactors，支持)  (XPATH 和 JSONPath 更新相关的元数据，但不支持将新的 Workday 或 SuccessFactors 属性添加到默认架构中包含的属性以外
+- 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用
+- 对于到 Workday 或 SuccessFactors 的 Azure Active Directory 写回，支持更新受支持的属性（XPATH 和 JSONPath）的元数据，但不支持添加默认架构所含范围之外的新的 Workday 或 SuccessFactors 属性
 
 
 > [!NOTE]
@@ -142,11 +142,11 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
    4. 选择“编辑 AppName 的属性列表”。
    5. 在属性列表底部，在提供的字段中输入有关自定义属性的信息。 然后选择“添加属性”。
 
-对于 SCIM 应用程序，属性名称必须遵循以下示例所示的模式。 可以根据应用程序的要求自定义 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架构： extension： CustomExtensionName：2.0： User： CustomAttribute 
+对于 SCIM 应用程序，属性名称必须遵循以下示例所示的模式。 可根据应用程序的要求自定义“CustomExtensionName”和“CustomAttribute”，例如 urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
 
 这些说明仅适用于启用了 SCIM 的应用程序。 诸如 ServiceNow 和 Salesforce 之类的应用程序不与使用 SCIM 的 Azure AD 集成，因此它们在添加自定义属性时不需要这一特定的命名空间。
 
-自定义属性不能是引用属性、多值或复杂类型的属性。 当前仅对库中的应用程序支持自定义多值和复杂类型的扩展属性。  
+自定义属性不能是引用属性、多值属性或复杂类型的属性。 当前，库中的应用程序仅支持自定义多值和复杂类型的扩展属性。  
  
 具有扩展属性的用户的示例表示形式：
 
@@ -202,7 +202,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
   - 注意事项
     - 确保未向用户分配多个角色。 我们无法保证将预配哪个角色。
     
-  - **示例输出** 
+  - **示例请求 (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
    }
    ```
   
+  - **示例输出 (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+PATCH 和 POST 中的请求格式有所不同。 若要确保按相同格式发送 POST 和 PATCH，可使用[此处](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)所述的功能标志。 
+
 - AppRoleAssignmentsComplex 
   - **何时使用：** 使用 AppRoleAssignmentsComplex 表达式为用户预配多个角色。 
   - **配置方式：** 根据上述说明编辑支持的属性列表，以便为角色包含一个新属性： 
@@ -316,7 +331,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
 - Azure AD 预配服务不支持预配 NULL 值。
 - 它们的主键通常为“ID”，不应作为目标属性包含在属性映射中。 
 - 角色属性通常需要使用表达式进行映射，而不是直接映射。 有关角色映射的更多详细信息，请参阅上面的部分。 
-- 尽管可以从映射禁用组，但不支持禁用用户。 
+- 虽然可从映射中禁用组，但不支持禁用用户。 
 
 ## <a name="next-steps"></a>后续步骤
 

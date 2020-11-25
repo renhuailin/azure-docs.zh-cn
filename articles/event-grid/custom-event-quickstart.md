@@ -4,12 +4,12 @@ description: 快速入门使用 Azure 事件网格和 Azure CLI 发布自定义�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e83c9193ef3beaed2a5a65afe964a1687a2d2505
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497369"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566327"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Web 终结点
 
@@ -23,11 +23,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本文需要运行最新版 Azure CLI（2.0.70 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果不使用 Cloud Shell，则必须先使用 `az login` 登录。
+- 本文需要 Azure CLI 版本 2.0.70 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -35,7 +33,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
 
-以下示例在“westus2”** 位置创建名为“gridResourceGroup”** 的资源组。
+以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

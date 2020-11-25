@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146466"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019236"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -44,10 +44,10 @@ ms.locfileid: "93146466"
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>创建主目标服务器时的大小调整准则
 
 根据下列大小调整准则创建主目标：
-- **RAM** ：6 GB 或更多
-- **OS 磁盘大小** ：100 GB 或更多（用于安装 OS）
-- **保留驱动器的附加磁盘大小** ：1 TB
-- **CPU 核心数** ：4 个核心或更多
+- **RAM**：6 GB 或更多
+- **OS 磁盘大小**：100 GB 或更多（用于安装 OS）
+- **保留驱动器的附加磁盘大小**：1 TB
+- **CPU 核心数**：4 个核心或更多
 - 内核：4.16。*
 
 ## <a name="deploy-the-master-target-server"></a>部署主目标服务器
@@ -111,7 +111,7 @@ ms.locfileid: "93146466"
 
 1.  在配置代理选项中选择默认选项，再选择“继续”按钮并按 Enter。 
      
-     ![屏幕截图，显示选择 "继续"，然后选择 Enter。](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![此屏幕截图显示了在何处选择“继续”，然后选择“Enter”。](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  在管理系统升级相应选项中选择“不自动更新”选项，再按 Enter。 
 

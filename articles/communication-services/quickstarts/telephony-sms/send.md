@@ -11,16 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 52cec861ba81a804081c4b879ab73333a3281e61
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360286"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659686"
 ---
 # <a name="quickstart-send-an-sms-message"></a>快速入门：发送短信
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> 可以将短信发送到美国电话号码，也可以从美国电话号码接收短信。 通信服务短信尚不支持其他地理位置的电话号码。
+> 有关详细信息，请参阅[规划电话服务和短信解决方案](../../concepts/telephony-sms/plan-solution.md)。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]

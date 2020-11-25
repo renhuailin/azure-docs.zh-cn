@@ -3,18 +3,18 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411013"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683639"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -135,28 +135,20 @@ ms.locfileid: "94411013"
    状态应从“挂起”更改为“开始/结束日期”。  开始/结束日期分别是用户首次登录的日期以及协议的结束日期。
 1. 首次登录 Azure Enterprise 门户时，如果弹出“警告”消息，帐户所有者需要选择“继续”以激活帐户。 
 
-## <a name="change-account-owner"></a>更改帐户所有者
+## <a name="change-azure-subscription-or-account-ownership"></a>更改 Azure 订阅或帐户所有权
 
-企业管理员可以使用 Azure Enterprise 门户来转移注册中的订阅帐户所有权。 该操作会将源用户帐户中的所有订阅转移到目标用户帐户。
+企业管理员可以使用 Azure Enterprise 门户来转移注册中的所选订阅或所有订阅的帐户所有权。
 
-转移帐户时，请注意以下重要信息：
+完成订阅或帐户所有权转移后，Microsoft 会更新帐户所有者。
 
-- 可按如下所述进行转移：
-  - 从一个工作或学校帐户转移到另一个工作或学校帐户。
-  - 从 Microsoft 帐户转移到工作或学校帐户。
-  - 从一个 Microsoft 帐户转移到另一个 Microsoft 帐户。
+执行所有权转移之前，请先了解以下 Azure 基于角色的访问控制 (Azure RBAC) 策略：
 
-    目标帐户必须是有效的 Azure 商务帐户才能成为有效的转移目标。 对于新帐户，当你登录到 Azure Enterprise 门户时，系统会要求创建一个 Azure 商务帐户。 对于现有帐户，必须先创建新的 Azure 订阅，然后该帐户才符合条件。
-
-- 无法从工作或学校帐户转移到 Microsoft 帐户。
-
-- 完成订阅转移后，Microsoft 会更新帐户所有者。
-
-了解以下基于角色的访问控制 (RBAC) 策略：
-
-- 在同一租户中的两个组织 ID 之间执行订阅转移时，会保留 RBAC 策略以及现有的服务管理员和共同管理员角色。
-- 其他订阅转移会导致 RBAC 策略和角色分配丢失。
+- 在同一租户中的两个组织 ID 之间执行订阅或帐户所有权转移时，会保留 Azure RBAC 策略、现有的服务管理员和共同管理员角色。
+- 跨租户订阅或帐户所有权转移会导致 Azure RBAC 策略和角色分配丢失。
 - 策略和管理员角色不会在不同的目录之间转移。 服务管理员将更新为目标帐户的所有者。
+- 若要避免在租户之间转移订阅时丢失 RBAC 策略和角色分配，请确保“将订阅移动到接收方的 Azure AD 租户”复选框保留为未选中状态 。 这将保留当前 Azure AD 租户上的服务、RBAC 角色和策略，并仅转移帐户的计费所有权。  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="显示“将订阅移动到 Azure AD 租户”复选框未选中的图像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 在更改帐户所有者之前：
 
@@ -168,26 +160,25 @@ ms.locfileid: "94411013"
 1. 登录到 Azure Enterprise 门户。
 1. 在左侧导航区域中，选择“管理”。
 1. 选择“帐户”选项卡，将鼠标悬停在某个帐户上。
-1. 选择右侧的“更改帐户所有者”图标。 这是一个人形图标。
-1. 选择某个符合条件的帐户，然后选择“下一步”。
+1. 选择右侧的“更改帐户所有者”图标。 这是一个人形图标。  
+    ![显示“更改帐户所有者”符号的插图](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. 选择要转移到的目标帐户，然后选择“下一步”。
+1. 如果要在 Azure AD 租户之间转移帐户所有权，请选择“将订阅移动到接收方的 Azure AD 租户”复选框。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="显示“将订阅移动到 Azure AD 租户”复选框已选中的图像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 确认转移并选择“提交”。
-
-![显示“更改帐户所有者”符号的插图](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 若要转移单个订阅的帐户所有权：
 
 1. 登录到 Azure Enterprise 门户。
 1. 在左侧导航区域中，选择“管理”。
 1. 选择“帐户”选项卡，将鼠标悬停在某个帐户上。
-1. 选择右侧的“转移订阅”图标。 该图标类似于一个页面。
-1. 选择某个符合条件的订阅，然后选择“下一步”。
+1. 选择右侧的“转移订阅”图标。 该图标类似于一个页面。  
+    ![显示“转移订阅”符号的插图](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. 选择要转移订阅的目标帐户，然后选择“下一步”。
+1. 如果要在 Azure AD 租户之间转移订阅所有权，请选择“将订阅移动到接收方的 Azure AD 租户”复选框。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="显示“将订阅移动到 Azure AD 租户”复选框已选中的图像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 确认转移并选择“提交”。
 
-![显示“转移订阅”符号的插图](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-观看以下视频来了解 Azure Enterprise 门户用户管理：
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>将帐户关联到部门
 

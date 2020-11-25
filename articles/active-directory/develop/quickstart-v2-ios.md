@@ -13,18 +13,18 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: b171688fa4dbff8d05b3ba03e4e4bd29028983be
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1b15330d368a93ac4ba176df129df212a259f3e2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016138"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561890"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
-本快速入门包含了一个代码示例，该示例演示了本机 iOS 或 macOS 应用程序如何使用 Microsoft 标识平台将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示本机 iOS 或 macOS 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。
 
-本快速入门适用于 iOS 和 macOS 应用。 某些步骤只是 iOS 应用所需的。 这些步骤会指出它们仅适用于 iOS。
+本快速入门适用于 iOS 和 macOS 应用。 某些步骤仅为 iOS 应用所需，并将如下所示进行说明。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "92016138"
 >      - 跳过此页上的其他配置。
 >      - 选择 `Register`。
 > 1. 在“管理”部分选择 `Authentication` > `Add Platform` > `iOS`。
->      - 输入应用程序的捆绑包标识符。 捆绑标识符只是一个用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。
+>      - 输入应用程序的“捆绑标识符”。 捆绑标识符只是一个用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。
 >      - 请注意，iOS 配置也适用于 macOS 应用程序。
 > 1. 选择 `Configure` 并保存“MSAL 配置”详细信息，供稍后在本快速入门中使用。
 > [!div renderon="portal" class="sxs-lookup"]
@@ -101,7 +101,7 @@ ms.locfileid: "92016138"
 >#### <a name="step-4-configure-your-project"></a>步骤 4：配置项目
 > 如果选择了上面的“选项 1”，则可跳过这些步骤。
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
-> 1. 编辑 **ViewController.swift** 并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
+> 1. 编辑“ViewController.swift”并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -115,9 +115,9 @@ ms.locfileid: "92016138"
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
-> 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的**捆绑标识符**。
+> 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的 **捆绑标识符**。
 > 1. 右键单击“Info.plist”，然后选择“打开为” > “源代码”。
-> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的***捆绑 ID***。
+> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的“捆绑 ID”。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -179,7 +179,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |其中： | 说明 |
 > |---------|---------|
-> | `clientId` | 在 *portal.azure.com* 中注册的应用程序的应用程序 ID |
+> | `clientId` | 在 portal.azure.com 中注册的应用程序的应用程序 ID |
 > | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这是 `https://login.microsoftonline.com/common` |
 > | `redirectUri` | 应用程序的重定向 URI。 可以传递“nil”以使用默认值，也可以使用自定义重定向 URI。 |
 
@@ -213,7 +213,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
+最后，应用必须在 Info.plist 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -231,7 +231,7 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如，
 
-* 用户首次登录应用程序
+用户首次登录应用程序
 * 用户在重置其密码时需输入其凭据。
 * 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
@@ -274,4 +274,3 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > [!div class="nextstepaction"]
 > [教程：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph](tutorial-v2-ios.md)
-

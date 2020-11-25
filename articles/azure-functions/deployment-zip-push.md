@@ -4,11 +4,11 @@ description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018409"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -42,11 +42,11 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 但是，可能已通过 Azure 门户中的编辑器创建了函数。 可以通过以下方式之一下载现有的函数应用项目：
 
-+ **从 Azure 门户：**
++ **通过 Azure 门户：**
 
   1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
 
-  2. 在“概述”选项卡中，选择“下载应用内容”********。 选择下载选项，然后选择“下载”****。
+  2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
 
       ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
 

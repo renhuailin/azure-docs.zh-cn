@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313305"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700991"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的源代码管理集成
 
-本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的专用 SQL 池资源构建持续集成和部署管道的第一步。
+本教程概述了如何将 SQL Server Data Tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的专用 SQL 池资源构建持续集成和部署管道的第一步。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -85,7 +85,7 @@ ms.locfileid: "93313305"
 
    ![验证](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "验证更改")
 
-4. （ **可选** ）使用“架构比较”并使用 SSDT 更新对目标数据仓库的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映数据仓库。
+4. （**可选**）使用“架构比较”并使用 SSDT 更新对目标数据仓库的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
 

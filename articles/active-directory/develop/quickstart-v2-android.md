@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: e0f3cd034838d5a9ccb1a5ccdc2567933b2e1dd6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893503"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562196"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
-本快速入门使用一个代码示例来演示 Android 应用程序如何通过 Microsoft 标识平台将个人、工作或学校帐户登录，然后获取访问令牌并调用 Microsoft Graph API。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Android 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 应用程序必须由 Azure Active Directory 中的应用对象表示，以便 Microsoft 标识平台为应用程序提供令牌。
 

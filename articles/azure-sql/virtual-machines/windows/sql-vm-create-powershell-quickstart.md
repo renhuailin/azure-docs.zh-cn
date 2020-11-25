@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598008"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553618"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server
 
@@ -150,9 +150,9 @@ ms.locfileid: "91598008"
 
 ## <a name="register-with-sql-vm-rp"></a>注册 SQL VM RP 
 
-若要获取门户集成和 SQL VM 功能，必须注册 [SQL VM 资源提供程序](sql-vm-resource-provider-register.md)。
+若要获取门户集成和 SQL VM 功能，必须向 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)注册。
 
-若要获取完整的功能，需要在完整模式下注册资源提供程序。 不过，这样做会重新启动 SQL Server 服务，因此建议的方法是在轻型模式下注册，然后在维护时段内升级到完整模式。 
+若要获取完整的功能，需要在完整模式下注册扩展。 不过，这样做会重新启动 SQL Server 服务，因此建议的方法是在轻型模式下注册，然后在维护时段内升级到完整模式。 
 
 首先，在轻型模式下注册 SQL Server VM： 
 
@@ -171,7 +171,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
@@ -197,7 +197,7 @@ Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManag
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接” 。
+1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过 Azure 门户或手动[配置连接性](ways-to-connect-to-sql.md)。
 

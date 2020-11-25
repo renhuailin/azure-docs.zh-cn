@@ -23,6 +23,10 @@
           href: tutorial-net-virtual-machine.md
         - name: 将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
           href: tutorial-python-virtual-machine.md
+    - name: Azure 应用服务
+      items:
+        - name: 将 Azure Key Vault 与 .NET Web 应用配合使用
+          href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes 服务
       items:
         - name: 将 Azure Key Vault 与 Kubernetes 集成
@@ -31,8 +35,6 @@
       items:
         - name: 使用 Azure Databricks 和 Azure Key Vault 访问 Azure Blob 存储
           href: integrate-databricks-blob-storage.md
-    - name: 使用托管标识和 .NET 将 Key Vault 连接到 Web 应用
-      href: tutorial-net-create-vault-azure-web-app.md
 - name: 示例
   items:
     - name: Key Vault 代码示例

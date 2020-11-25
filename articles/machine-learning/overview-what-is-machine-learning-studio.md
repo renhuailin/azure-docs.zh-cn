@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习工作室？
-description: Azure 机器学习工作室是 Azure 机器学习工作区的 Web 门户。 工作室结合了无代码和代码优先体验，以创建包容的数据科学平台。
+description: 该工作室是 Azure 机器学习工作区的 Web 门户。 此工作室将无代码和代码优先体验结合起来，打造包容的数据科学平台。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310166"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565902"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -103,3 +103,4 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
   + [在计算实例上使用 Jupyter 笔记本来训练和部署模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用自动化机器学习训练和部署模型](tutorial-first-experiment-automated-ml.md)  
   + [使用设计器训练和部署模型](tutorial-designer-automobile-price-train-score.md)
+  + [在受保护的虚拟网络中使用工作室](how-to-enable-studio-virtual-network.md)

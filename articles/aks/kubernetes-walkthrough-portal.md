@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 30c00b1dfda3e30f047faf0deed7151aaf8c3fae
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745783"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684876"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -36,9 +36,9 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 2. 选择“容器” >  “Kubernetes 服务”。
 
 3. 在“基本信息”页面上，配置以下选项：
-    - **项目详细信息** ：选择 Azure **订阅** ，然后选择或创建 Azure **资源组** ，例如 *myResourceGroup* 。
-    - **群集详细信息** ：输入 **Kubernetes 群集名称** ，例如 *myAKSCluster* 。 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
-    - **主节点池** ：选择 AKS 节点的 VM **节点大小** 。 一旦部署 AKS 群集，则不能更改 VM 大小。
+    - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
+    - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
+    - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小。
             - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
     ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
@@ -51,7 +51,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 5. 在“身份验证”页上，配置以下选项：
     - 将“服务主体”字段保留为“(新)默认服务主体”以创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
-    - 启用 Kubernetes 基于角色的访问控制 (RBAC) 选项。 这样可以更精细地控制对部署在 AKS 群集中的 Kubernetes 资源的访问权限。
+    - 启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 所对应的选项。 这样可以更精细地控制对部署在 AKS 群集中的 Kubernetes 资源的访问权限。
 
     或者，可以使用托管标识而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
@@ -81,7 +81,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready* ：
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -207,7 +207,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初， *azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending* 。
+最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -228,7 +228,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 创建群集后，适用于容器的 Azure Monitor 便已启用。 此监视功能为 AKS 群集以及群集上运行的 Pod 提供运行状况指标。
 
-在 Azure 门户中填充此数据可能需要几分钟。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 Azure 门户中的 AKS 资源，例如 *myAKSCluster* 。 然后可以访问运行状况，如下所示：
+在 Azure 门户中填充此数据可能需要几分钟。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 Azure 门户中的 AKS 资源，例如 *myAKSCluster*。 然后可以访问运行状况，如下所示：
 
 1. 在左侧的“监视”下，选择“见解”
 1. 在顶部，选择“+ 添加筛选器”

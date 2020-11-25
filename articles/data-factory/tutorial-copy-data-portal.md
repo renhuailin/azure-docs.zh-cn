@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
+ms.date: 11/11/2020
 ms.author: jingwang
-ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637116"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555390"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
@@ -39,9 +39,9 @@ ms.locfileid: "92637116"
 > * 监视管道和活动运行。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅** 。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户** 。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
-* **Azure SQL 数据库** 。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。
+* **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
+* **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -80,14 +80,14 @@ ms.locfileid: "92637116"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
 
-1. 打开 **Microsoft Edge** 或 **Google Chrome** 。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。
+1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  。
 3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
-   Azure 数据工厂的名称必须 *全局唯一* 。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
      ![新建数据工厂](./media/doc-common-process/name-not-available-error.png)
-4. 选择要在其中创建数据工厂的 Azure **订阅** 。
+4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一：
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
@@ -117,7 +117,7 @@ ms.locfileid: "92637116"
 
 1. 1. 在“常规”面板的“属性”中，将“名称”指定为 CopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
-1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为 **名称** 。
+1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为 **名称**。
 
     ![复制活动](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "92637116"
 
 1. 在“新建链接服务(Azure SQL 数据库)”对话框中执行以下步骤：
 
-    a. 在“名称”下输入 **AzureSqlDatabaseLinkedService** 。
+    a. 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
 
     b. 在“服务器名称”下选择 SQL Server 实例。
 
@@ -222,21 +222,19 @@ ms.locfileid: "92637116"
 
 1. 在“新建触发器”窗口中，执行以下步骤：
 
-    a. 在“名称”下输入 **RunEveryMinute** 。
+    a. 在“名称”下输入 **RunEveryMinute**。
 
-    b. 在“结束”下选择“在特定日期”。 
+    b. 更新触发器的“开始日期”。 如果该日期早于当前日期时间，发布更改之后，触发器将开始生效。 
 
-    c. 在“结束日期”下选择下拉列表。
+    c. 在“时区”下选择下拉列表。
 
-    d. 选择“当天”选项。 默认情况下，结束日期设置为第二天。
+    d. 将“重复周期”设置为每分钟一次 。
 
-    e. 更新“结束时间”部分，使之超过当前的日期/时间数分钟。 触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
+    e. 选择“指定结束日期”的复选框，并将“结束时间”部分更新为晚于当前日期时间几分钟 。 触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
 
-    f. 选择“确定” 。
+    f. 对于“已激活”选项，请选择“是”。 
 
-    g. 对于“已激活”选项，请选择“是”。 
-
-    h.如果该值不存在，请单击“添加行”。 选择“确定” 。
+    g. 选择“确定”。
 
     > [!IMPORTANT]
     > 每个管道运行都有相关联的成本，因此请正确设置结束日期。
@@ -256,7 +254,7 @@ ms.locfileid: "92637116"
 1. 验证是否每分钟将两个行（对于每个管道运行）插入 **emp** 表中，直至指定的结束时间。
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cb1a0819902d2dfa27718ccfe39b175959a16c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963833"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837883"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教程：为 Azure Active Directory 密码保护配置自定义受禁密码
 
@@ -124,4 +124,4 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 > * 使用受禁密码测试密码更改
 
 > [!div class="nextstepaction"]
-> [启用基于风险的 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)
+> [启用基于风险的 Azure AD 多重身份验证](./tutorial-enable-azure-mfa.md)

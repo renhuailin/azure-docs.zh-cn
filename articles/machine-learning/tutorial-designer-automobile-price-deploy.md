@@ -1,21 +1,21 @@
 ---
 title: 教程：使用设计器部署 ML 模型
 titleSuffix: Azure Machine Learning
-description: 本教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
+description: 在 Azure 机器学习设计器中生成预测分析解决方案。 使用拖放式模块训练、评分和部署机器学习模型。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311518"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592543"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -99,7 +99,7 @@ ms.locfileid: "92311518"
 
 1. 选择“部署”。
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="显示“创建管道”按钮位置的屏幕截图":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="显示如何设置新的实时终结点的屏幕截图":::
 
     部署完成后，将在画布上方显示成功通知。 这可能需要几分钟时间。
 
@@ -112,6 +112,8 @@ ms.locfileid: "92311518"
 1. 在“详细信息”选项卡中，可以查看更多信息，例如 REST URI、状态和标签。
 
 1. 在“使用”选项卡中，可以找到安全密钥并设置身份验证方法。
+
+1. 在“部署日志”选项卡中，可以找到实时终结点的详细部署日志。 
 
 有关使用 Web 服务的详细信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)
 

@@ -14,18 +14,18 @@ ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: d99ed9304612d5c1d3cbdc56a76cee751f2a4d3f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017927"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
 
 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量减少频繁更新网络安全规则所需的复杂操作。
 
-可以在[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应 "*源*" 或 "*目标*" 字段中指定服务标记名称（例如 **ApiManagement**），可以允许或拒绝相应服务的流量。
+可以在[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量 。
 
 可使用服务标记来实现网络隔离，保护 Azure 资源免受常规 Internet 侵害，同时访问具有公共终结点的 Azure 服务。 可创建入站/出站网络安全组规则，以拒绝进出 Internet 的流量并允许进出 AzureCloud 或特定 Azure 服务的其他[可用服务标记](#available-service-tags)的流量 。
 
@@ -48,7 +48,7 @@ ms.locfileid: "94966728"
 | **ApiManagement** | 专用于 Azure API 管理的部署的管理流量。 <br/><br/>*注意：* 此标记表示每个区域的控制平面的 Azure API 管理服务终结点。 这使得客户可以对在 API 管理服务中配置的 API、操作、策略和 NamedValues 执行管理操作。  | 入站 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 否 | 否 |
 | **AppConfiguration** | 应用配置。 | 出站 | 否 | 否 |
-| **AppService**    | Azure 应用服务。 对于 web 应用和函数应用的出站安全规则，建议使用此标记。  | 出站 | 是 | 是 |
+| **AppService**    | Azure 应用服务。 建议将此标记用于 Web 应用和函数应用的出站安全规则。  | 出站 | 是 | 是 |
 | **AppServiceManagement** | 应用服务环境专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory 域服务专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |

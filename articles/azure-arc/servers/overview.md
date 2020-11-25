@@ -2,14 +2,14 @@
 title: 已启用 Azure Arc 的服务器概述
 description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure 资源一样，管理托管在 Azure 外部的服务器。
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360575"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578716"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
@@ -44,7 +44,16 @@ ms.locfileid: "93360575"
 
 有关启用了 Azure Arc 的服务器的支持区域的最终列表，请参见[按区域划分的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)页。
 
-在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 发生区域性服务中断时，如果你有可支持异地冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
+在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 发生区域性服务中断时，如果你有可支持异地冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
+
+以下有关已连接计算机的元数据信息将被收集并存储在配置 Azure Arc 计算机资源的区域中：
+
+- 操作系统名称和版本
+- 计算机名称
+- 计算机完全限定域名 (FQDN)
+- Connected Machine 代理版本
+
+例如，如果计算机在美国东部区域注册了 Azure Arc，则此数据存储在美国区域中。
 
 ### <a name="agent-status"></a>代理状态
 

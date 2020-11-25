@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843271"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831799"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>创建和部署存储帐户密钥轮换函数
-> [!IMPORTANT]
-> 以下模板要求 Key Vault、Azure 存储帐户和 Azure 函数位于同一资源组中
 
 接下来，创建一个使用系统托管标识的函数应用以及其他所需组件，并部署存储帐户密钥轮换函数
 
@@ -85,13 +83,15 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
    [![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. 在“资源组”列表中选择“akvrotation” 。
-1. 在“存储帐户名称”中，键入包含要轮换的访问密钥的存储帐户名称
-1. 在“密钥保管库名称”中，键入密钥保管库名称
-1. 在“函数应用名称”中，键入函数应用名称
-1. 在“机密名称”中，键入存储了访问密钥的机密的名称
-1. 在“存储库 Url”中，键入函数代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git ) 
-1. 选择“查看 + 创建”。
-1. 选择“创建”
+1. 在“存储帐户 RG”中，输入存储帐户所在的资源组名称。 如果部署密钥轮换函数的资源组中已存在你的存储帐户，请保留默认值 [resourceGroup().name]。
+1. 在“存储帐户名称”中，输入包含要轮换的访问密钥的存储帐户名称。
+1. 在“Key Vault RG”中，输入密钥保管库所在的资源组名称。 如果部署密钥轮换函数的资源组中已存在你的密钥保管库，请保留默认值 [resourceGroup().name]。
+1. 在“密钥保管库名称”中，输入密钥保管库名称。
+1. 在“函数应用名称”中，输入函数应用名称。
+1. 在“机密名称”中，输入存储了访问密钥的机密的名称。
+1. 在“存储库 URL”中，输入函数代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git ) 。
+1. 选择“查看 + 创建”  。
+1. 选择“创建”。
 
    ![查看并创建第一个存储帐户](../media/secrets/rotation-dual/dual-rotation-2.png)
 

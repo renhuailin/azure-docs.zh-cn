@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286527"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832766"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -44,7 +44,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>创建新 Key Vault 并建立专用链接连接
 
-可以遵循[使用 Azure 门户在 Azure Key Vault 中设置和检索机密](../secrets/quick-create-portal.md)中的步骤创建新的 Key Vault
+可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 来创建 Azure Key Vault。
 
 配置 Key Vault 基本设置后，选择“网络”选项卡并执行以下步骤：
 
@@ -270,11 +270,11 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > 按订阅启用了专用终结点的密钥保管库数量是可调整的限制。 下面显示的限制是默认限制。 如果你想要为服务请求增加限制，请发送电子邮件到 akv-privatelink@microsoft.com。 我们将根据具体情况审批这些请求。
 
-**定价** ：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
+**定价**：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
 
-**限制** ：Azure Key Vault 的专用终结点仅在 Azure 公共区域提供。
+**限制**：Azure Key Vault 的专用终结点仅在 Azure 公共区域提供。
 
-**每个 Key Vault 的专用终结点数目上限** ：64。
+**每个 Key Vault 的专用终结点数目上限**：64。
 
 每个订阅的包含专用终结点的默认 Key Vault 数目：400。
 

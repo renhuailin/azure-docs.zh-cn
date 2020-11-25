@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424679"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637143"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中从命令行创建 C# 函数
 
@@ -28,6 +28,8 @@ ms.locfileid: "93424679"
 在开始之前，必须满足以下条件：
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
++ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
 
@@ -49,6 +51,8 @@ ms.locfileid: "93424679"
 
 + 运行 `az login` 登录到 Azure 并验证活动订阅。
 
++ 运行 `dotnet --list-sdks` 以检查是否安装了 .NET Core SDK 版本 3.1. x
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + 在终端或命令窗口中，运行 `func --version` 以检查 Azure Functions Core Tools 的版本是否为 3.x。
@@ -56,6 +60,8 @@ ms.locfileid: "93424679"
 + 运行 `(Get-Module -ListAvailable Az).Version` 并验证版本是否为 5.0 或更高版本。 
 
 + 运行 `Connect-AzAccount` 登录到 Azure 并验证活动订阅。
+
++ 运行 `dotnet --list-sdks` 以检查是否安装了 .NET Core SDK 版本 3.1. x
 
 ---
 

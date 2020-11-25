@@ -212,7 +212,7 @@
   items:
     - name: 概述
       href: ../managed-disks-overview.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: ../faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
@@ -260,6 +260,8 @@
       href: install-vm-agent-offline.md
     - name: 排查 Windows VM 代理问题
       href: windows-azure-guest-agent.md
+    - name: 排查 Linux VM 代理问题
+      href: linux-azure-guest-agent.md
 - name: 备份和还原
   items:
     - name: 排查 Azure VM 上的备份失败问题
@@ -311,7 +313,7 @@
           href: ../windows/disk-encryption-overview.md
         - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:

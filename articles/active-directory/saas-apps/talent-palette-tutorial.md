@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 6e1064e4362175b3de5187ce050f1719ede56bd5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516420"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>教程：Azure Active Directory 与 Talent Palette 的集成
 

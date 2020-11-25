@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670423"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652903"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -72,7 +72,7 @@ ms.locfileid: "92670423"
 
 6. 验证联系人信息和首选联系方法，并选择“创建”。
 
-如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。
+如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 我们可能会要求你提供经过审核的公司财务报表。 如果未提供任何财务信息，或者这些信息不足以支持所需的信用额度，我们可能会要求你提供保证金或备用信用证，以批准你的信用检查请求。
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>切换到发票付款（支票/电汇）
 
@@ -82,7 +82,7 @@ ms.locfileid: "92670423"
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>将 Azure 订阅切换为支票/电汇
 
-执行以下步骤，将 Azure 订阅切换为发票付款（支票/电汇）。 *切换为按发票付款（支票/电汇）后，无法切换回信用卡付款* 。
+执行以下步骤，将 Azure 订阅切换为发票付款（支票/电汇）。 *切换为按发票付款（支票/电汇）后，无法切换回信用卡付款*。
 
 1. 转到 Azure 门户，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”。
 

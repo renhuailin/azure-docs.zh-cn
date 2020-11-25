@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何设置和管理 Azure 数字孪生数据的终结点和事件路由。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018948"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "94533746"
 
 下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。 你可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本地安装 CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
-首先，创建一个事件网格主题。 可以使用以下命令，或通过访问事件网格 *自定义事件* 快速入门中 [的 *"创建自定义主题* " 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)更详细地查看这些步骤。
+首先，创建一个事件网格主题。 可以使用以下命令，或通过访问事件网格 *自定义事件* 快速入门中 [的 *"创建自定义主题*" 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)更详细地查看这些步骤。
 
 ```azurecli-interactive
 az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
@@ -71,8 +71,8 @@ az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eve
 创建事件中心或服务总线终结点的过程类似于上面所示的事件网格进程。
 
 首先，创建将用作终结点的资源。 下面是需要执行的操作：
-* Service Bus： _服务总线命名空间_ 、 _服务总线主题_ 、 _授权规则_
-* 事件中心： _事件中心命名空间_ ， _事件中心_ ， _授权规则_
+* Service Bus： _服务总线命名空间_、 _服务总线主题_、 _授权规则_
+* 事件中心： _事件中心命名空间_， _事件中心_， _授权规则_
 
 然后，使用以下命令在 Azure 数字孪生中创建终结点： 
 
@@ -152,14 +152,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="create-an-event-route"></a>创建事件路由
 
-若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由** 。 通过 Azure 数字孪生 **EventRoutes api** ，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅 [*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
+若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由**。 通过 Azure 数字孪生 **EventRoutes api** ，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅 [*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
 
 本节中的示例使用 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)。
 
-**必备组件** ：你需要先按本文前面所述创建终结点，然后才能继续创建路由。 终结点完成设置后，可以继续创建事件路由。
+**必备组件**：你需要先按本文前面所述创建终结点，然后才能继续创建路由。 终结点完成设置后，可以继续创建事件路由。
 
->[!NOTE]
->如果你最近部署了终结点，请验证它们是否已完成部署， **然后再** 尝试将它们用于新的事件路由。 如果由于终结点尚未准备好而导致路由部署失败，请等待几分钟，然后重试。
+> [!NOTE]
+> 如果你最近部署了终结点，请验证它们是否已完成部署， **然后再** 尝试将它们用于新的事件路由。 如果由于终结点尚未准备好而导致路由部署失败，请等待几分钟，然后重试。
 >
 > 如果要编写此流脚本，可能需要在2-3 分钟的等待时间内生成终结点服务，然后再继续进行路由设置。
 
@@ -229,7 +229,7 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 可以通过将终结点的 **筛选器** 添加到事件路由来限制正在发送的事件。
 
-若要添加筛选器，你可以将 PUT 请求用于 *https：//{YourHost}/EventRoutes/myNewRoute？ api 版本 = 2020-10-31* ，其中包含以下正文：
+若要添加筛选器，你可以将 PUT 请求用于 *https：//{孪生}/eventRoutes/{事件-路由名称}？ api 版本 = 2020-10-31* ，其中包含以下正文：
 
 ```json  
 {
@@ -237,7 +237,6 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
     "filter": "<filter-text>"
 }
 ``` 
-
 下面是受支持的路由筛选器。 使用 *筛选器文本架构* 列中的详细信息替换 `<filter-text>` 上述请求正文中的占位符。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]

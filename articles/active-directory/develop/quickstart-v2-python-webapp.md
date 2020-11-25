@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613333"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592696"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
-本快速入门介绍如何将 Python Web 应用程序与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Python Web 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 拥有个人 Microsoft 帐户或任何 Azure Active Directory (Azure AD) 组织中的帐户的用户都能登录到该应用程序。
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,7 +61,7 @@ ms.locfileid: "91613333"
 >      - 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 从菜单中选择“身份验证”，然后添加以下信息：
 >    - 添加 **Web** 平台配置。 添加 `http://localhost:5000/getAToken` 作为“重定向 URI”。
->    - 选择“保存” 。
+>    - 选择“保存”。 
 > 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：  
 >
 >      - 键入（实例应用机密）的密钥说明。
@@ -119,7 +119,7 @@ ms.locfileid: "91613333"
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的**客户端密码**。
+> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的 **客户端密码**。
 > - `Enter_the_Tenant_Name_Here` - 是注册的应用程序的目录（租户）ID 值。
 
 > [!div class="sxs-lookup" renderon="portal"]

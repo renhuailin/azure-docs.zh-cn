@@ -1,15 +1,15 @@
 ---
 title: Azure 安全基准的法规符合性详细信息
 description: Azure 安全基准法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1f5a81f430b536155626dfff1b74167146fdbbe5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311456"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699419"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure 安全基准法规符合性内置计划的详细信息
 
@@ -29,7 +29,7 @@ ms.locfileid: "92311456"
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>在虚拟网络上使用网络安全组或 Azure 防火墙来保护资源
 
-**ID** ：Azure 安全基准 1.1 所有权：客户
+**ID**：Azure 安全基准 1.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "92311456"
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>监视和记录 VNet、子网和 NIC 的配置和流量
 
-**ID** ：Azure 安全基准 1.2 所有权：客户
+**ID**：Azure 安全基准 1.2 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "92311456"
 
 ### <a name="protect-critical-web-applications"></a>保护关键的 Web 应用程序
 
-**ID** ：Azure 安全基准 1.3 所有权：客户
+**ID**：Azure 安全基准 1.3 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ ms.locfileid: "92311456"
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>拒绝与已知的恶意 IP 地址通信
 
-**ID** ：Azure 安全基准 1.4 所有权：客户
+**ID**：Azure 安全基准 1.4 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "92311456"
 
 ### <a name="record-network-packets-and-flow-logs"></a>记录网络数据包和流日志
 
-**ID** ：Azure 安全基准 1.5 所有权：客户
+**ID**：Azure 安全基准 1.5 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>使用自动化工具监视网络资源配置并检测更改
 
-**ID** ：Azure 安全基准 1.11 所有权：客户
+**ID**：Azure 安全基准 1.11 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "92311456"
 
 ### <a name="configure-central-security-log-management"></a>配置安全日志集中管理
 
-**ID** ：Azure 安全基准 2.2 所有权：客户
+**ID**：Azure 安全基准 2.2 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "92311456"
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>为 Azure 资源启用审核日志记录
 
-**ID** ：Azure 安全基准 2.3 所有权：客户
+**ID**：Azure 安全基准 2.3 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ ms.locfileid: "92311456"
 
 ### <a name="collect-security-logs-from-operating-systems"></a>从操作系统收集安全日志
 
-**ID** ：Azure 安全基准 2.4 所有权：客户
+**ID**：Azure 安全基准 2.4 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ ms.locfileid: "92311456"
 
 ### <a name="configure-security-log-storage-retention"></a>配置安全日志存储保留期
 
-**ID** ：Azure 安全基准 2.5 所有权：客户
+**ID**：Azure 安全基准 2.5 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ ms.locfileid: "92311456"
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>启用针对异常活动的警报
 
-**ID** ：Azure 安全基准 2.7 所有权：客户
+**ID**：Azure 安全基准 2.7 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ ms.locfileid: "92311456"
 
 ### <a name="centralize-anti-malware-logging"></a>集中进行反恶意软件日志记录
 
-**ID** ：Azure 安全基准 2.8 所有权：客户
+**ID**：Azure 安全基准 2.8 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ ms.locfileid: "92311456"
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>维护管理帐户的清单
 
-**ID** ：Azure 安全基准 3.1 所有权：客户
+**ID**：Azure 安全基准 3.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-dedicated-administrative-accounts"></a>使用专用管理帐户
 
-**ID** ：Azure 安全基准 3.3 所有权：客户
+**ID**：Azure 安全基准 3.3 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**ID** ：Azure 安全基准 3.5 所有权：客户
+**ID**：Azure 安全基准 3.5 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-azure-active-directory"></a>使用 Azure Active Directory
 
-**ID** ：Azure 安全基准 3.9 所有权：客户
+**ID**：Azure 安全基准 3.9 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ ms.locfileid: "92311456"
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>定期评审和协调用户访问权限
 
-**ID** ：Azure 安全基准 3.10 所有权：客户
+**ID**：Azure 安全基准 3.10 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ ms.locfileid: "92311456"
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>维护敏感信息清单
 
-**ID** ：Azure 安全基准 4.1 所有权：客户
+**ID**：Azure 安全基准 4.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ ms.locfileid: "92311456"
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>加密传输中的所有敏感信息
 
-**ID** ：Azure 安全基准 4.4 所有权：共享
+**ID**：Azure 安全基准 4.4 所有权：共享
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>使用有效的发现工具识别敏感数据
 
-**ID** ：Azure 安全基准 4.5 所有权：客户
+**ID**：Azure 安全基准 4.5 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>使用 Azure RBAC 控制对资源的访问
 
-**ID** ：Azure 安全基准 4.6 所有权：客户
+**ID**：Azure 安全基准 4.6 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ ms.locfileid: "92311456"
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>加密静态的敏感信息
 
-**ID** ：Azure 安全基准 4.8 所有权：客户
+**ID**：Azure 安全基准 4.8 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ ms.locfileid: "92311456"
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>记录对关键 Azure 资源的更改并发出警报
 
-**ID** ：Azure 安全基准 4.9 所有权：客户
+**ID**：Azure 安全基准 4.9 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ ms.locfileid: "92311456"
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>运行自动化漏洞扫描工具
 
-**ID** ：Azure 安全基准 5.1 所有权：客户
+**ID**：Azure 安全基准 5.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ ms.locfileid: "92311456"
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>部署操作系统修补程序自动化管理解决方案
 
-**ID** ：Azure 安全基准 5.2 所有权：客户
+**ID**：Azure 安全基准 5.2 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,7 +336,7 @@ ms.locfileid: "92311456"
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>部署第三方软件修补程序自动化管理解决方案
 
-**ID** ：Azure 安全基准 5.3 所有权：客户
+**ID**：Azure 安全基准 5.3 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -352,21 +352,21 @@ ms.locfileid: "92311456"
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>使用风险评分流程确定所发现漏洞的修正优先级
 
-**ID** ：Azure 安全基准 5.5 所有权：客户
+**ID**：Azure 安全基准 5.5 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[应修正容器安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |在安装了 Docker 的计算机上审核安全配置中的漏洞，并在 Azure 安全中心显示为建议。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[应修复计算机上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |建议通过 Azure 安全中心监视不满足配置的基线的服务器 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[应修复虚拟机规模集上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |审核虚拟机规模集上的 OS 漏洞，以保护其免受攻击。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
-|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[应修复 SQL 数据库中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |监视漏洞评估扫描结果并提供如何补救数据库漏洞的相关建议。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 |[应通过漏洞评估解决方案修复漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |建议在 Azure 安全中心监视漏洞评估解决方案检测到的漏洞和没有漏洞评估解决方案的 VM。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
 ### <a name="use-only-approved-applications"></a>只使用已批准的应用程序
 
-**ID** ：Azure 安全基准 6.8 所有权：客户
+**ID**：Azure 安全基准 6.8 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-only-approved-azure-services"></a>只使用已批准的 Azure 服务
 
-**ID** ：Azure 安全基准 6.9 所有权：客户
+**ID**：Azure 安全基准 6.9 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ ms.locfileid: "92311456"
 
 ### <a name="implement-approved-application-list"></a>实现已批准的应用程序列表
 
-**ID** ：Azure 安全基准 6.10 所有权：客户
+**ID**：Azure 安全基准 6.10 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ ms.locfileid: "92311456"
 
 ### <a name="maintain-secure-operating-system-configurations"></a>维护安全的操作系统配置
 
-**ID** ：Azure 安全基准 7.4 所有权：共享
+**ID**：Azure 安全基准 7.4 所有权：共享
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "92311456"
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>针对操作系统实现自动化配置监视
 
-**ID** ：Azure 安全基准 7.10 所有权：客户
+**ID**：Azure 安全基准 7.10 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,15 +413,15 @@ ms.locfileid: "92311456"
 
 ### <a name="manage-azure-secrets-securely"></a>安全地管理 Azure 机密
 
-**ID** ：Azure 安全基准 7.11 所有权：客户
+**ID**：Azure 安全基准 7.11 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[密钥保管库对象应可恢复](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |此策略审核密钥保管库对象是否不可恢复。 软删除功能有助于在给定的保留期（90 天）内有效地保留资源，即使在 DELETE 操作之后也是如此，同时提供对象已被删除的外观。 启用“清除保护”后，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 这些保管库和对象仍然可以恢复，从而向客户保证将遵循保留策略。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[密钥保管库应启用清除保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |恶意删除密钥保管库可能会导致永久丢失数据。 你组织中的恶意内部人员有可能获取删除和清除密钥保管库的权限。 清除保护通过强制实施软删除密钥保管库的强制保留期来保护你免受内部攻击。 你的组织内的任何人都无法在软删除保留期内清除你的密钥保管库。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ### <a name="manage-identities-securely-and-automatically"></a>安全且自动地管理标识 
 
-**ID** ：Azure 安全基准 7.12 所有权：客户
+**ID**：Azure 安全基准 7.12 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ ms.locfileid: "92311456"
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>使用集中管理的反恶意软件
 
-**ID** ：Azure 安全基准 8.1 所有权：客户
+**ID**：Azure 安全基准 8.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "92311456"
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>确保反恶意软件和签名已更新
 
-**ID** ：Azure 安全基准 8.3 所有权：客户
+**ID**：Azure 安全基准 8.3 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "92311456"
 
 ### <a name="ensure-regular-automated-back-ups"></a>确保定期执行自动备份
 
-**ID** ：Azure 安全基准 9.1 所有权：客户
+**ID**：Azure 安全基准 9.1 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ ms.locfileid: "92311456"
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>执行完整的系统备份并备份所有客户托管密钥
 
-**ID** ：Azure 安全基准 9.2 所有权：客户
+**ID**：Azure 安全基准 9.2 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,17 +476,17 @@ ms.locfileid: "92311456"
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>确保保护备份和客户管理的密钥
 
-**ID** ：Azure 安全基准 9.4 所有权：客户
+**ID**：Azure 安全基准 9.4 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[密钥保管库对象应可恢复](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |此策略审核密钥保管库对象是否不可恢复。 软删除功能有助于在给定的保留期（90 天）内有效地保留资源，即使在 DELETE 操作之后也是如此，同时提供对象已被删除的外观。 启用“清除保护”后，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 这些保管库和对象仍然可以恢复，从而向客户保证将遵循保留策略。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[密钥保管库应启用清除保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |恶意删除密钥保管库可能会导致永久丢失数据。 你组织中的恶意内部人员有可能获取删除和清除密钥保管库的权限。 清除保护通过强制实施软删除密钥保管库的强制保留期来保护你免受内部攻击。 你的组织内的任何人都无法在软删除保留期内清除你的密钥保管库。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ## <a name="incident-response"></a>事件响应
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>提供安全事件联系人详细信息并针对安全事件配置警报通知
 
-**ID** ：Azure 安全基准 10.4 所有权：客户
+**ID**：Azure 安全基准 10.4 所有权：客户
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

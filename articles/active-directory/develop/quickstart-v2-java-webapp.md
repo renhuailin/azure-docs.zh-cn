@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743482"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591710"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
-本快速入门介绍如何将 Java Web 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Java Web 应用程序如何让用户登录并调用 Microsoft Graph API。 任何 Azure Active Directory (Azure AD) 组织的用户都可以登录到应用程序。
 
-完成本快速入门后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+ 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "91743482"
 > 1. 选择“新注册”。
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
 >    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
->    - 选择“注册”。
+>    - 选择“注册”  。
 > 1. 在“概述”页上，找到应用程序的“应用程序(客户端) ID”和“目录(租户) ID”值。 复制这些值，供以后使用。
 > 1. 从菜单选择“身份验证”，然后添加以下信息：
 >    - 添加“Web”平台配置。  将这些 `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me` 添加为“重定向 URI”。
@@ -64,7 +64,7 @@ ms.locfileid: "91743482"
 >    - 键入（实例应用密码的）密钥说明。
 >    - 选择密钥持续时间“1 年”。
 >    - 选择“添加”时，将显示密钥值。
->    - 复制密钥的值供以后使用。 该密钥值将不会再次显示，也无法通过其他任何方式检索，因此，该值在 Azure 门户中显示时，请立即记下来。
+>    - 复制密钥的值供以后使用。 此密钥值将不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -99,7 +99,7 @@ ms.locfileid: "91743482"
 >   ```
 >   将生成的 keystore 文件放在“resources”文件夹中。
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -123,7 +123,7 @@ ms.locfileid: "91743482"
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的**客户端密码**。
+> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的 **客户端密码**。
 > - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值。
 > 1. 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
 >

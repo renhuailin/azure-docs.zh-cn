@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634090"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566412"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -42,15 +42,15 @@ ms.locfileid: "92634090"
 ## <a name="overview"></a>概述
 下面是创建此解决方案所要执行的重要步骤： 
 
-1. **选择水印列** 。
+1. **选择水印列**。
 
     为源数据存储中的每个表选择一个列，你可以在其中标识每次运行的新记录或更新记录。 通常，在创建或更新行时，此选定列中的数据（例如 last_modify_time 或 ID）会不断递增。 此列中的最大值用作水印。
 
-2. **准备用于存储水印值的数据存储** 。
+2. **准备用于存储水印值的数据存储**。
 
     本教程在 SQL 数据库中存储水印值。
 
-3. **创建包含以下活动的管道** ：
+3. **创建包含以下活动的管道**：
     
     a. 创建一个 ForEach 活动，循环访问一个列表，其中的源表名称是作为参数传递到管道的。 对于每个源表，它会调用以下活动，为该表执行增量加载。
 
@@ -69,8 +69,8 @@ ms.locfileid: "92634090"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **SQL Server** 。 在本教程中，请将 SQL Server 数据库用作源数据存储。 
-* **Azure SQL 数据库** 。 使用 Azure SQL 数据库中的数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。 
+* **SQL Server**。 在本教程中，请将 SQL Server 数据库用作源数据存储。 
+* **Azure SQL 数据库**。 使用 Azure SQL 数据库中的数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 数据库中创建源表
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: db93262a0f5c6bd75f8c5611c7f33de085e05a82
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569069"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564882"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -74,12 +74,12 @@ ms.locfileid: "91569069"
 2. 在“新建项目”对话框中，选择“DataFactory”模板，并单击“空数据工厂项目”。      
 
     ![“新建项目”对话框](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. 输入项目的**名称**、**位置**以及**解决方案**的名称，并单击“确定”。 
+3. 输入项目的 **名称**、**位置** 以及 **解决方案** 的名称，并单击“确定”。 
 
     ![解决方案资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>创建链接服务
-在此步骤中，将创建两项链接服务：**Azure 存储**和**按需 HDInsight**。 
+在此步骤中，将创建两项链接服务：**Azure 存储** 和 **按需 HDInsight**。 
 
 Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到数据工厂。 数据工厂在运行时使用链接服务设置中的连接字符串连接到 Azure 存储。 该存储保存管道的输入和输出数据，以及 Hive 活动所使用的 Hive 脚本文件。 
 
@@ -126,7 +126,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     linkedServiceName | 指定一个存储帐户，用于存储 HDInsight Hadoop 群集生成的日志。 
 
     > [!IMPORTANT]
-    > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
+    > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建 **默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     > 
     > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
@@ -409,8 +409,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 - 链接服务将数据存储区或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 请参阅[计算链接服务](data-factory-compute-linked-services.md)，了解数据工厂支持的计算服务的列表，以及可在这些服务上运行的[转换活动](data-factory-data-transformation-activities.md)。
 - 请参阅[将数据移出/移入 Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service)，详细了解在 Azure 存储链接服务定义中使用的 JSON 属性。
 - 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
--  数据工厂使用前面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
-- HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
+-  数据工厂使用前面的 JSON 创建 **基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
+- HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建 **默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     
     随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 - 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 
@@ -419,7 +419,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用“服务器资源管理器”查看数据工厂
 1. 在 **Visual Studio** 中，在菜单上单击“视图”，并单击“服务器资源管理器”。  
-2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。   如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，并单击“继续”。 输入**密码**，并单击“登录”。  Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。 
+2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。   如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的 **帐户**，并单击“继续”。 输入 **密码**，并单击“登录”。  Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。 
 
     ![服务器资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。 
@@ -455,7 +455,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 执行以下步骤，为每个环境添加配置文件：   
 
 1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。  
-2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，并单击“添加”。
+2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的 **名称**，并单击“添加”。
 
     ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 使用以下格式添加配置参数及其值：
@@ -536,7 +536,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。  
 
     ![选择配置文件](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 选择要使用的**配置文件**，并单击“下一步”。 
+4. 选择要使用的 **配置文件**，并单击“下一步”。 
 5. 确认在“摘要”页上显示了 JSON 文件的名称，并单击“下一步”。  
 6. 部署操作完成后，请单击“完成”。 
 
@@ -553,7 +553,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    1. **Azure 存储** 链接服务，用于将保存输入/输出文件的 Azure Blob 存储链接到数据工厂。
    2. **Azure HDInsight** 按需链接服务，用于将 HDInsight Hadoop 按需群集链接到数据工厂。 Azure 数据工厂实时创建 HDInsight Hadoop 群集来处理输入数据以及生成输出数据。
 3. 创建了两个 **数据集**，描述管道中 HDInsight Hive 活动的输入和输出数据。
-4. 创建了包含 **HDInsight Hive** 活动的**管道**。  
+4. 创建了包含 **HDInsight Hive** 活动的 **管道**。  
 
 ## <a name="next-steps"></a>后续步骤
 本文创建了可在按需 HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。

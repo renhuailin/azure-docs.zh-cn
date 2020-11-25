@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505064"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541005"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用 SQL 池（预览版）
 
@@ -48,7 +48,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
     | 设置 | 建议的值 | 说明 |
     | :------ | :-------------- | :---------- |
-    | 专用 SQL 池名称 | 任何有效的名称 | 专用 SQL 池的名称。 |
+    | **专用 SQL 池名称** | 任何有效的名称 | 专用 SQL 池的名称。 |
     | **性能级别** | DW100c | 设置为最小大小可降低此快速入门的成本 |
 
   
@@ -73,7 +73,6 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 8. 预配完成后，导航回到工作区会显示新建的专用 SQL 池对应的新条目。
  ![SQL 池创建流 - 资源预配。](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 创建专用 SQL 池后，它将出现在工作区中，用于加载数据、处理流、从湖中读取数据等。

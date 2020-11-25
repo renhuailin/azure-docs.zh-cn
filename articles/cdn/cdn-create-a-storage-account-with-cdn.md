@@ -16,11 +16,11 @@ ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778891"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018607"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 
@@ -95,7 +95,7 @@ ms.locfileid: "92778891"
 
 若要访问 CDN 上的缓存内容，请使用门户中提供的 CDN URL。 缓存 blob 的地址采用以下格式：
 
-http://< *endpoint-name*\>.azureedge.net/< *myPublicContainer*\>/<*BlobName*\>
+http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
 > 启用对存储帐户的 Azure CDN 访问之后，所有公开可用的对象即有资格获得 CDN POP 缓存。 如果修改了当前缓存在 CDN 中的对象，则除非 Azure CDN 在缓存内容的生存时间到期后刷新其内容，否则无法通过 Azure CDN 访问新内容。

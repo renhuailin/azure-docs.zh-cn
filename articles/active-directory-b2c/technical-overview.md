@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364076"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840543"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -91,7 +91,7 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 * 使用 **自定义策略** 可为复杂的标识体验方案创建自己的用户旅程。
 
-用户流和自定义策略均由 *Identity Experience Framework* （Azure AD B2C 的策略业务流程引擎）提供支持。
+用户流和自定义策略均由 *Identity Experience Framework*（Azure AD B2C 的策略业务流程引擎）提供支持。
 
 ### <a name="user-flow"></a>用户流
 
@@ -101,7 +101,7 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 * 用于登录的帐户类型，例如 Facebook 等社交帐户，或者使用电子邮件地址和密码进行登录的本地帐户
 * 要从使用者收集的属性，例如名字、邮政编码，或居住地所在国家/地区
-* Azure 多重身份验证 (MFA)
+* Azure AD 多重身份验证 (MFA)
 * 用户界面的自定义
 * 在用户完成用户流后由应用程序接收的令牌中的声明集
 * 会话管理

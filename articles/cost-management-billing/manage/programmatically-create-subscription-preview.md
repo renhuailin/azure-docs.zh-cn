@@ -5,26 +5,34 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043292"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844329"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>通过预览 API 以编程方式创建 Azure 订阅
 
-本文可帮助你使用较旧的预览 API 以编程方式创建 Azure 订阅。 我们发布了[更新的 API 版本](programmatically-create-subscription.md)。 如果不想使用最新版本，可以使用本文中的信息。 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
+本文可帮助你使用较旧的预览 API 以编程方式创建 Azure 订阅。 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
+
+我们有新文章来讲解用于不同 Azure 协议订阅类型的最新 API 版本：
+
+- [使用最新的 API 以编程方式创建 EA 订阅](programmatically-create-subscription-enterprise-agreement.md)
+- [使用最新的 API 以编程方式创建 MCA 订阅](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [使用最新的 API 以编程方式创建 MPA 订阅](Programmatically-create-subscription-microsoft-customer-agreement.md)
+
+但是，如果不想使用最新 API 版本，仍可使用本文中的信息。
 
 具有以下协议类型的计费帐户的 Azure 客户可以以编程方式创建订阅：
 
-- [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Microsoft 客户协议 (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
-- [Microsoft 合作伙伴协议 (MPA)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)
+- 企业协议
+- Microsoft 客户协议 (MCA)
+- Microsoft 合作伙伴协议 (MPA)
 
 以编程方式创建 Azure 订阅时，该订阅受你从 Microsoft 或授权经销商处获取 Azure 服务时所签署协议的约束。 有关详细信息，请参阅 [Microsoft Azure 法律信息](https://azure.microsoft.com/support/legal/)。
 
@@ -350,12 +358,12 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名称  | 必选 | 类型   | 描述                                                                                               |
+| 元素名称  | 必选 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | 是      | 字符串 | 订阅的显示名称。|
-| `billingProfileId`   | 是      | String | 用于计收订阅使用费的计费对象信息的 ID。  |
-| `skuId` | 是      | 字符串 | 确定 Azure 计划类型的 SKU ID。 |
-| `owners`      | 否       | String | 创建订阅时要作为 Azure RBAC 所有者要添加到订阅的任何用户或服务主体的对象 ID。  |
+| `displayName` | 是      | String | 订阅的显示名称。|
+| `billingProfileId`   | 是      | 字符串 | 用于计收订阅使用费的计费对象信息的 ID。  |
+| `skuId` | 是      | String | 确定 Azure 计划类型的 SKU ID。 |
+| `owners`      | 否       | 字符串 | 创建订阅时要作为 Azure RBAC 所有者要添加到订阅的任何用户或服务主体的对象 ID。  |
 | `costCenter` | 否      | 字符串 | 与订阅关联的成本中心。 它在使用情况 CSV 文件中显示。 |
 | `managementGroupId` | 否      | 字符串 | 订阅将添加到其中的管理组的 ID。 若要获取管理组列表，请参阅[管理组 - 列表 API](/rest/api/resources/managementgroups/list)。 使用 API 中管理组的 ID。 |
 
@@ -519,7 +527,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名称  | 必选 | 类型   | 描述                                                                                               |
+| 元素名称  | 必选 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | 字符串 | 订阅的显示名称。|
 | `skuId` | 是      | 字符串 | Azure 计划的 SKU ID。 将 0001 用于 Microsoft Azure 计划类型的订阅 |

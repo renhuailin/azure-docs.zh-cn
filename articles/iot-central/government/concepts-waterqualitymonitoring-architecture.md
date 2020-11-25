@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127312"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874043"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水质检测参考体系结构 
 
@@ -41,10 +41,10 @@ ms.locfileid: "92127312"
 Azure IoT Central 是一个 IoT 应用平台，可让你快速启动和运行 IoT 解决方案。 你可以设计、自定义解决方案，并将其与第三方服务相集成。
 将智能用水务设备连接到 IoT Central 后，你将获得设备命令与控制、监视和警报、带有内置 RBAC 的用户界面、可配置的见解仪表板和扩展性选项。 
 
-## <a name="extensibility-and-integrations"></a>扩展性和集成 
+## <a name="extensibility-and-integrations"></a>扩展性和集成
 可以在 IoT Central 中扩展 IoT 应用程序，并可根据需要执行以下操作：
 * 转换和集成 IoT 数据以进行高级分析，例如，通过从 IoT Central 应用程序持续导出的数据训练机器学习模型
-* 通过 Microsoft Flow 或 IoT Central 应用程序中的 Webhook 触发操作，在其他系统中自动执行工作流
+* 通过 Power Automate 或 IoT Central 应用程序中的 Webhook 来触发操作，在其他系统中自动执行工作流
 * 通过 IoT Central API 以编程方式访问 IoT Central 中的 IoT 应用程序
 
 ## <a name="business-applications"></a>业务应用程序 

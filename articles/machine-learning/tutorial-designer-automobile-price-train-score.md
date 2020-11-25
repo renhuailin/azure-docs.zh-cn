@@ -1,7 +1,7 @@
 ---
 title: 教程：使用设计器预测汽车价格
 titleSuffix: Azure Machine Learning
-description: 了解如何使用拖放式界面来训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第一部分。
+description: 训练机器学习模型，使用线性回归预测汽车价格。 本教程是由两个部分构成的系列教程的第一部分。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404912"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555250"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
 
@@ -66,9 +66,9 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 管道在计算目标上运行，该目标是附加到工作区的计算资源。 创建计算目标后，就可以在以后的运行中重用它。
 
-可为整个管道设置**默认计算目标**，告知每个模块要默认使用同一个计算目标。 但是，可以基于每个模块指定计算目标。
+可为整个管道设置 **默认计算目标**，告知每个模块要默认使用同一个计算目标。 但是，可以基于每个模块指定计算目标。
 
-1. 在管道名称旁边，选择画布顶部的**齿轮图标** ![齿轮图标的屏幕截图](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) 打开“设置”窗格。
+1. 在管道名称旁边，选择画布顶部的 **齿轮图标** ![齿轮图标的屏幕截图](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) 打开“设置”窗格。
 
 1. 在画布右侧的“设置”窗格中，选择“选择计算目标”。 
 
@@ -221,9 +221,9 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     > [!IMPORTANT]
     > 请确保“拆分数据”的左侧输出端口连接到“训练模型”。  左侧端口包含训练集。 右侧端口包含测试集。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="选择列":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="显示“训练模型”模块的正确配置的屏幕截图。“线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口。":::
 
-1. 选择**训练模型**模块。
+1. 选择 **训练模型** 模块。
 
 1. 在画布右侧的模块详细信息窗格中，选择“编辑列”选择器。
 
@@ -236,7 +236,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     管道应如下所示：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="选择列":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="显示添加“训练模型”模块后管道的正确配置的屏幕截图。":::
 
 ### <a name="add-the-score-model-module"></a>添加“评分模型”模块
 
@@ -256,7 +256,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     最终的管道应如下所示：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="选择列":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="显示管道的正确配置的屏幕截图。":::
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
@@ -285,7 +285,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     在此处可以看到从测试数据预测的价格和实际价格。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="选择列":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="输出可视化效果的屏幕截图，其中突出显示了“评分标签”列":::
 
 ### <a name="evaluate-models"></a>评估模型
 

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
 ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148984"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018624"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -48,23 +48,23 @@ ms.locfileid: "92148984"
     ![清除窗体](./media/cdn-purge-endpoint/cdn-purge-form.png)
    
    > [!NOTE]
-   > 也可以通过单击 CDN 终结点边栏选项卡上的**清除**按钮进入“清除”边栏选项卡。  在这种情况下，**URL** 字段将预填充该特定终结点的服务地址。
+   > 也可以通过单击 CDN 终结点边栏选项卡上的 **清除** 按钮进入“清除”边栏选项卡。  在这种情况下，**URL** 字段将预填充该特定终结点的服务地址。
    > 
    > 
-4. 选择要从边缘节点清除的资产。  若要清除所有资产，请单击 " **全部清除** " 复选框。  否则，请在“路径”**** 文本框中输入要清除的每个资产的路径。 路径支持以下格式。
+4. 选择要从边缘节点清除的资产。  若要清除所有资产，请单击 " **全部清除** " 复选框。  否则，请在“路径”文本框中输入要清除的每个资产的路径。 路径支持以下格式。
     1. **单个 URL 清除**：通过指定完整 URL （带或不带文件扩展名，例如，）清除单个资产 `/pictures/strasbourg.png` ; `/pictures/strasbourg`
     2. **通配符清除**：星号 (\*) 可用作通配符。 清除路径中含 `/*` 的终结点下的所有文件夹、子文件夹和文件，或通过指定后跟 `/*`（例如 `/pictures/*`）的文件夹来清除特定文件夹下的所有子文件夹和文件。  请注意，目前来自 Akamai 的 Azure CDN 不支持通配符清除。 
     3. **根域清除**：清除路径中具有“/”的终结点的根。
    
    > [!TIP]
-   > 必须指定用于清除的路径，且路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL。 目前**来自 Akamai 的 Azure CDN** 不支持**清除所有**和**通配符清除**。
+   > 必须指定用于清除的路径，且路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL。 目前 **来自 Akamai 的 Azure CDN** 不支持 **清除所有** 和 **通配符清除**。
    > > 单个 URL 清除 `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > 查询字符串 `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > 通配符清除 `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`。 
    > 
    > 输入文本后，会出现更多“**路径**”文本框，以便允许生成包含多个资产的列表。  通过单击省略号 (...) 按钮，可以从列表中删除资产。
    > 
-5. 单击**清除**按钮。
+5. 单击 **清除** 按钮。
    
     ![“清除”按钮](./media/cdn-purge-endpoint/cdn-purge-button.png)
 

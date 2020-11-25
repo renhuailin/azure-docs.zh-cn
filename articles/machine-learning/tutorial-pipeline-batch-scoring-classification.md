@@ -1,7 +1,7 @@
 ---
 title: 教程：用于批量评分的 ML 管道
 titleSuffix: Azure Machine Learning
-description: 本教程介绍如何生成机器学习管道，用于对图像分类模型执行批量评分。 Azure 机器学习使你能够将工作重心放在机器学习上，而不必关注基础设施和自动化。
+description: 本教程介绍如何生成机器学习管道来执行批量评分。 将工作重心放在机器学习上，而不必关注基础设施和自动化。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8748d6e155eb84cf948966d768dda1a992207f7e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309452"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629625"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 

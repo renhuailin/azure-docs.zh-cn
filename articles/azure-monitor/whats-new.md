@@ -5,17 +5,72 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 07/08/2020
-ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/11/2020
+ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487986"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555611"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="general"></a>常规
+- [Azure Monitor API 停用](platform/operationalinsights-api-retirement.md) - 新文章。
+
+### <a name="agents"></a>代理
+- [Azure Monitor 监视的内容](monitor-reference.md) - 添加了有关代理的部分。
+
+### <a name="alerts"></a>警报
+- [在 Azure 门户中创建和管理操作组](platform/action-groups.md) - 添加了有关服务标记的部分。
+- [指标警报的资源管理器模板示例](samples/resource-manager-alerts-metric.md) - 添加了内容匹配参数和测试位置。
+- [排查 Azure 指标警报问题](platform/alerts-troubleshoot-metric.md) - 添加了规则配置的最佳做法。
+
+### <a name="application-insights"></a>Application Insights
+- [适用于 Application Insights JavaScript SDK 的 Angular 插件](app/javascript-angular-plugin.md) - 新文章。
+- [ASP.NET Core 应用程序的 Azure Application Insights](app/asp-net-core.md) - 添加了关于 ILogger 日志的 FAQ。
+- [使用 Azure Application Insights 为 ASP.NET 配置监视](app/asp-net.md) - 重写了文章。
+- [Azure Application Insights 中基于日志的指标和预先聚合的指标](app/pre-aggregated-metrics-log-metrics.md) - 添加了具有预先聚合的指标的表。
+- [监视任何网站的可用性和响应能力](app/monitor-web-app-availability.md) - 添加了有关位置填充标记的部分。
+- [随时随地监视 Java 应用程序 - Azure Monitor Application Insights](app/java-standalone-config.md) - 添加了配置示例。
+- [随时随地监视 Java 应用程序 - Azure Monitor Application Insights](app/java-standalone-telemetry-processors.md) - 新文章。
+- [使用 Azure Monitor 中的应用程序更改分析查找 Web 应用问题](app/change-analysis.md) - 添加了有关虚拟机和活动日志的部分。
+  
+### <a name="autoscale"></a>自动缩放
+- [Azure 中的自动缩放入门](platform/autoscale-get-started.md) - 添加了有关将自动缩放移动到不同区域的部分。
+
+### <a name="containers"></a>容器
+- [使用用于容器的 Azure Monitor 配置 PV 监视](insights/container-insights-persistent-volumes.md) - 新文章。
+- [如何管理用于容器的 Azure Monitor 代理](insights/container-insights-manage-agent.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+- [用于容器的 Azure Monitor 中的指标警报](insights/container-insights-metric-alerts.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+
+### <a name="insights-and-solutions"></a>见解和解决方案
+- [IT 服务管理连接器 - Azure Monitor 中的安全导出](platform/it-service-management-connector-secure-webhook-connections.md) - 添加了有关 ServiceNow 部分。
+
+### <a name="logs"></a>日志
+- [使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储](platform/logs-export-logic-app.md) - 新文章。
+- [Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）](platform/logs-data-export.md)- 添加了事件中心的 REST 请求的示例正文。
+- [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 添加了有关 Azure Monitor 日志和 Azure 安全中心计费之间的关系的信息。 如果使用的是每节点定价层，则添加了节点计数查询。 
+- [监视 Azure Monitor 中 Log Analytics 工作区的运行状况](platform/monitor-workspace.md) - 新文章。
+- [使用 Azure 数据资源管理器查询 Azure Monitor 中的数据（预览版）](platform/azure-data-explorer-monitor-proxy.md)- 新文章。
+- [使用 Azure 数据资源管理器查询从 Azure Monitor 导出的数据（预览版）](platform/azure-data-explorer-query-storage.md)- 新文章。
+
+### <a name="networks"></a>网络
+- [Azure 网络监视器预览版](insights/network-insights-overview.md) - 添加了疑难解答部分。 添加了有关连接的部分。
+
+### <a name="platform-logs"></a>平台日志
+- [Azure 活动日志事件架构](platform/activity-log-schema.md) - 添加了严重性级别的描述。
+
+### <a name="virtual-machines"></a>虚拟机
+- [更改用于 VM 的 Azure Monitor 中的分析](insights/vminsights-change-analysis.md) - 新文章。
+- [启用用于 VM 的 Azure Monitor 概述](insights/vminsights-enable-overview.md) - 添加了支持的区域。
+- [如何为指标更新用于容器的 Azure Monitor](insights/container-insights-update-metrics.md) - 添加了对已启用 Azure Arc 的 Kubernetes 群集的支持。
+
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 

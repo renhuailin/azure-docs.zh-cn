@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613418"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515539"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
-本快速入门通过代码示例来介绍 Angular 单页应用程序 (SPA) 如何将具有个人 Microsoft 帐户、工作帐户或学校帐户的用户登录。 Angular SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Angular 单页应用程序 (SPA) 如何让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
 ## <a name="prerequisites"></a>先决条件
 

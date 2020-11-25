@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 03995166df5d40f7f8be7054aed0727be254ed73
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cdb6fa5e1721d023edc93307ca146d1599bac219
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376887"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579039"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支持的 Transact-SQL 功能
 
@@ -32,7 +32,7 @@ Transact-SQL 语言在 Synapse SQL 无服务器服务中使用，专用模型可
 | **视图** | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 视图可以使用在专用模型中可用的[查询语言元素](#query-language)。 | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 视图可以使用在无服务器模型中可用的[查询语言元素](#query-language)。 |
 | **架构** | [是](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [是](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |
 | **临时表** | [是](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
-| **过程** | [是](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
+| **过程** | [是](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 是 |
 | **函数** | [是](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 是，仅限内联表值函数。 |
 | **触发器** | 否 | 否 |
 | **外部表** | [是](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 请参阅受支持的[数据格式](#data-formats)。 | [是](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 请参阅受支持的[数据格式](#data-formats)。 |
@@ -43,6 +43,7 @@ Transact-SQL 语言在 Synapse SQL 无服务器服务中使用，专用模型可
 | **[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | 是 | 否 |
 | **[统计信息](develop-tables-statistics.md)**            | 是 | 是 |
 | [工作负载管理、资源类和并发控制](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
+| [工作负载管理、资源类和并发控制](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是，使用纵向扩展和纵向缩减操作。 | 是，使用 [Azure 门户或 T-SQL 过程](https://docs.microsoft.com/azure/synapse-analytics/sql/data-processed#cost-control)。 |
 
 ## <a name="query-language"></a>查询语言
 
@@ -77,7 +78,7 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | --- | --- | --- |
 | **登录名** | 不适用（数据库中仅支持包含的用户） | 是 |
 | **用户** |  不适用（数据库中仅支持包含的用户） | 是 |
-| **[包含的用户](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | 是的。 **注意：** 只能分配一个 Azure AD 用户作为非受限管理员 | 是 |
+| **[包含的用户](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | 是的。 **注意：** 只能分配一个 Azure AD 用户作为非受限管理员 | 否 |
 | **SQL 用户名/密码身份验证**| 是 | 是 |
 | **Azure Active Directory (Azure AD) 身份验证**| 是，Azure AD 用户 | 是，Azure AD 登录名和用户 |
 | **存储 Azure Active Directory (Azure AD) 直通身份验证** | 是 | 是 |
@@ -91,7 +92,7 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | **权限 - [服务器级别](/sql/relational-databases/security/authentication-access/server-level-roles)** | 否 | 是，支持 sysadmin 和其他服务器角色 |
 | **权限 - [列级安全性](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | 是 | 是 |
 | **角色/组** | 是（数据库范围） | 是（服务器和数据库范围） |
-| **安全性函数和标识函数** | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS` 和 `REVERT`。 安全性函数不可用于查询外部数据（将结果存储在可在查询中使用的变量中）。  |
+| **安全性函数和标识函数** | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME``EXECUTE AS` 和 `REVERT`。 安全性函数不可用于查询外部数据（将结果存储在可在查询中使用的变量中）。  |
 | **DATABASE SCOPED CREDENTIAL** | 是 | 是 |
 | **SERVER SCOPED CREDENTIAL** | 否 | 是 |
 | **行级安全** | [是](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | 否 |
@@ -131,7 +132,12 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | **内部存储** | 是 | 否 |
 | **Azure Data Lake v2** | 是 | 是 |
 | **Azure Blob 存储** | 是 | 是 |
-| **Azure CosmosDB 分析存储** | 否 | 是，使用 [Synapse 链接](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（[封闭预览版](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)下方） |
+| **Azure SQL（远程）** | 否 | 否 |
+| **Azure CosmosDB 事务存储** | 否 | 否 |
+| **Azure CosmosDB 分析存储** | 否 | 是，使用 [Synapse 链接（预览版）](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（[封闭预览版](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)下方） |
+| **Apache Spark 表（在工作区中）** | 否 | PARQUET 表仅使用[元数据同步](develop-storage-files-spark-tables.md) |
+| **Apache Spark 表（远程）** | 否 | 否 |
+| **Databricks 表（远程）** | 否 | 否 |
 
 ## <a name="data-formats"></a>数据格式
 
