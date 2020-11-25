@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011332"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -692,17 +692,17 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 在[指标资源管理器](../platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
-还可以 [搜索](./diagnostic-search.md) 具有特定用户名和帐户的客户端数据点。
+还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
 
-*属性*是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
+*属性* 是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
 
 字符串长度限制为 8192。 （如果想要发送大型数据区块，请使用消息参数 TrackTrace。）
 
-*指标*是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
+*指标* 是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
 
 这些值应大于或等于 0，以便正确显示指标值。
 
@@ -936,7 +936,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 
-*动态停止和启动*收集与传输遥测数据：
+*动态停止和启动* 收集与传输遥测数据：
 
 *C#*
 
@@ -952,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要 *禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 *Node.js*
 
@@ -960,7 +960,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-若要*禁用所选的标准收集器*（例如，性能计数器、HTTP 请求或依赖项），初始化时请将配置方法链接到 SDK 初始化代码：
+若要 *禁用所选的标准收集器*（例如，性能计数器、HTTP 请求或依赖项），初始化时请将配置方法链接到 SDK 初始化代码：
 
 ```javascript
 applicationInsights.setup()

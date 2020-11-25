@@ -4,11 +4,11 @@ description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分�
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92368751"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011075"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
 
@@ -161,9 +161,9 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 选择特定节点的“控制器”列下的值。
 
-![屏幕截图显示 "性能" 视图中从节点到控制器的深化](./media/container-insights-analyze/drill-down-node-controller.png)
+![显示性能视图中从节点到控制器的向下钻取的屏幕截图](./media/container-insights-analyze/drill-down-node-controller.png)
 
-从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。 若要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”  。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
+从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。 若要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”  。 仅 Kubernetes 1.8 版和更高版本支持 **内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
 
 ![容器节点性能视图](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -292,7 +292,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | ![“已失败”状态图标](./media/container-insights-analyze/containers-failed-icon.png) | “已失败”状态 |
 
 ## <a name="monitor-and-visualize-network-configurations"></a>监视和可视化网络配置
-Azure 网络策略管理器包括信息性的 Prometheus 指标，可用于监视和更好地了解网络配置。 它在 Azure 门户或 Grafana 实验室中提供内置可视化对象。 有关详细信息，请参阅 [通过 AZURE NPM 监视和直观显示网络配置](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm)。
+Azure 网络策略管理器包含信息丰富的 Prometheus 指标，可用于监视和更好地了解网络配置。 它在 Azure 门户或 Grafana 实验室中提供了内置的可视化效果。 有关详细信息，请参阅[使用 Azure NPM 监视和可视化网络配置](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm)。
 
 
 ## <a name="workbooks"></a>工作簿

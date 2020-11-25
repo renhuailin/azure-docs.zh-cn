@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 10/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: c379d3f99628c2d3fb32ae34ca0214f608d365c7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012691"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 
@@ -49,9 +49,9 @@ ms.locfileid: "92201252"
 
 1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
-1. 在**创建新项目**中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
+1. 在 **创建新项目** 中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
 
-1. 在**配置新项目**中，输入项目名称。 在“Framework”  下，选择“.NET Framework 4.8”  或更高版本。 单击“创建”。 
+1. 在 **配置新项目** 中，输入项目名称。 在“Framework”  下，选择“.NET Framework 4.8”  或更高版本。 单击“创建”。 
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 

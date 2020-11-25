@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340081"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012333"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中具有动态阈值的指标警报
 
@@ -98,7 +98,7 @@ ms.locfileid: "92340081"
 
 ## <a name="dynamic-thresholds-best-practices"></a>动态阈值最佳做法
 
-动态阈值可应用于 Azure Monitor 中的大多数平台和自定义指标，并且还针对常见的应用程序和基础结构指标进行了优化。
+动态阈值可以应用于大多数平台和 Azure Monitor 中的自定义指标，而且它已针对常用应用程序和基础结构指标进行了优化。
 以下各项是有关如何使用动态阈值针对这些指标中的某一些配置警报的最佳做法。
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>针对虚拟机 CPU 百分比指标的动态阈值
@@ -116,7 +116,7 @@ ms.locfileid: "92340081"
 
 5. 选择“CPU 百分比”。
 
-6. （可选）通过调整**期间**和**聚合**来优化指标。 建议不要对此指标类型使用“最大值”聚合类型，因为它不是具有代表性的行为。 对于“最大值”聚合类型，静态阈值可能更合适。
+6. （可选）通过调整 **期间** 和 **聚合** 来优化指标。 建议不要对此指标类型使用“最大值”聚合类型，因为它不是具有代表性的行为。 对于“最大值”聚合类型，静态阈值可能更合适。
 
 7. 随后会该指标在显示过去 6 小时的图表。 定义警报参数：
     1. **条件类型** - 选择“动态”选项。
@@ -153,7 +153,7 @@ ms.locfileid: "92340081"
 
 5. 选择“HTTP 请求执行时间”。
 
-6. （可选）通过调整**期间**和**聚合**来优化指标。 建议不要对此指标类型使用“最大值”聚合类型，因为它不是具有代表性的行为。 对于“最大值”聚合类型，静态阈值可能更合适。
+6. （可选）通过调整 **期间** 和 **聚合** 来优化指标。 建议不要对此指标类型使用“最大值”聚合类型，因为它不是具有代表性的行为。 对于“最大值”聚合类型，静态阈值可能更合适。
 
 7. 随后会该指标在显示过去 6 小时的图表。 定义警报参数：
     1. **条件类型** - 选择“动态”选项。

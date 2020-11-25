@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: f56cc5b028f07964236fc42a1ca468aa28aae440
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011234"
 ---
 若要在本文中使用 Azure 数字孪生，首先需要设置一个 Azure 数字孪生实例，还需具备使用它所必需的权限。 如果已有通过以前的工作设置的 Azure 数字孪生实例，则可以使用该实例。
 

@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91294838"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012623"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 创建你的第一个持久函数
 

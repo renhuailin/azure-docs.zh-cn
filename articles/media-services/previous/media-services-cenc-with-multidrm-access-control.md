@@ -16,11 +16,11 @@ ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010905"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统
 
@@ -64,8 +64,8 @@ Microsoft 已成为 DASH 和 CENC 与其他一些主要行业播放器的积极�
 | **客户端平台** | **本机 DRM 支持** | **浏览器/应用** | **流式处理格式** |
 | --- | --- | --- | --- |
 | **智能电视、操作员 STB、OTT STB** |主要为 PlayReady，和/或 Widevine，和/或其他 DRM |Linux、Opera、WebKit 及其他 |各种格式 |
-| **Windows 10 设备 (Windows 电脑、Windows 平板电脑、Windows Phone、Xbox) ** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
-| **Android 设备 (手机、平板电脑、TV) ** |Widevine |Chrome/EME |DASH、HLS |
+| **Windows 10 设备 (Windows 电脑、Windows 平板电脑、Windows Phone、Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
+| **Android 设备 (手机、平板电脑、TV)** |Widevine |Chrome/EME |DASH、HLS |
 | **iOS（iPhone、iPad）、OS X 客户端和 Apple 电视** |FairPlay |Safari 8+/EME |HLS |
 
 就目前每种 DRM 的部署状态而言，服务通常需要实现两到三个 DRM，以确保能以最佳方式处理所有类型的终结点。
@@ -152,7 +152,7 @@ DRM 子系统可能包含以下组件：
 | **构建基块** | **技术** |
 | --- | --- |
 | **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **标识提供者 (IDP) ** |Azure Active Directory (Azure AD) |
+| **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
@@ -246,7 +246,7 @@ DRM 子系统可能包含以下组件：
 
     ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。**** 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
@@ -262,7 +262,7 @@ DRM 子系统可能包含以下组件：
     <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
     ```
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。****
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
@@ -349,7 +349,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims": "All"。
 
-4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。**** 在“委派权限”下面选择“访问 [资源名称]”。******** 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
+4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
 
 Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 

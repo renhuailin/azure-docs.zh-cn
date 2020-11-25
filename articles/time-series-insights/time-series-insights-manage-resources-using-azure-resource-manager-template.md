@@ -11,28 +11,28 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee4d3957403e169d41fb9e3befa0d62e4b0d9075
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 493750e69b1fdc935b04d6dc705cfd046b6b086e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597851"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96011653"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建 Azure 时序见解 Gen 1 资源
 
 > [!CAUTION]
 > 这是一篇 Gen1 文章。
 
-本文介绍如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和 Azure 时序见解资源提供程序创建和部署 Azure 时序见解资源。
+本文介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/index.yml)、PowerShell 和 Azure 时序见解资源提供程序创建和部署 Azure 时序见解资源。
 
 Azure 时序见解支持以下资源：
 
    | 资源 | 说明 |
    | --- | --- |
-   | 环境 | Azure 时序见解环境是从事件代理读取、存储并可用于查询的事件的逻辑分组。 有关详细信息，请阅读[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
+   | 环境 | Azure 时序见解环境是从事件中转站读取的、经存储的并可供查询使用的事件的逻辑分组。 有关详细信息，请阅读[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，Azure 时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
    | 引用数据集 | 引用数据集提供有关环境中事件的元数据。 在引入期间，引用数据集中的元数据将与事件联接。 引用数据集根据其事件键属性定义为资源。 构成引用数据集的实际元数据通过数据平面 API 上传或修改。 |
-   | 访问策略 | 访问策略授予的权限适用于：发出数据查询、操作环境中的引用数据，以及共享已保存的与环境关联的查询和透视。 有关详细信息，请参阅 [使用 Azure 门户授予对 Azure 时序见解环境的数据访问权限](time-series-insights-data-access.md) |
+   | 访问策略 | 访问策略授予的权限适用于：发出数据查询、操作环境中的引用数据，以及共享已保存的与环境关联的查询和透视。 有关详细信息，请参阅[使用 Azure 门户授予对 Azure 时序见解环境的数据访问权限](./concepts-access-policies.md) |
 
 资源管理器模板是用于定义资源组中资源的基础结构和配置的 JSON 文件。 以下文档更详细地介绍了模板文件：
 
@@ -46,9 +46,9 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 ## <a name="specify-deployment-template-and-parameters"></a>指定部署模板和参数
 
-以下过程描述如何使用 PowerShell 部署 Azure 资源管理器模板，该模板创建一个 Azure 时序见解环境、一个配置为使用事件中心事件的子事件源，以及授予环境数据访问权限的访问策略。 如果未指定现有的事件中心，则会连同部署创建一个事件中心。
+以下过程描述如何使用 PowerShell 部署一个 Azure 资源管理器模板，该模板创建一个 Azure 时序见解环境、一个配置为使用事件中心事件的子事件源，以及授予环境数据访问权限的访问策略。 如果未指定现有的事件中心，则会连同部署创建一个事件中心。
 
-1. 按照 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)中的说明安装 Azure PowerShell。
+1. 按照 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)中的说明安装 Azure PowerShell。
 
 1. 从 GitHub 克隆或复制 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) 模板。
 
@@ -127,7 +127,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>使用 PowerShell 在本地部署快速入门模板
 
 > [!IMPORTANT]
-> 下面显示的命令行操作描述 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/)。
+> 下面显示的命令行操作描述 [Az PowerShell 模块](/powershell/azure/)。
 
 1. 在 PowerShell 中，登录到 Azure 帐户。
 
@@ -197,7 +197,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    - 要运行[完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
+    - 要运行 [完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -255,4 +255,4 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 REST API 以编程方式管理 Azure 时序见解资源的信息，请阅读[Azure 时序见解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。
+- 有关使用 REST API 以编程方式管理 Azure 时序见解资源的信息，请阅读[Azure 时序见解管理](/rest/api/time-series-insights-management/)。

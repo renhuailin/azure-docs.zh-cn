@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011976"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 开发和集成
 
@@ -51,7 +51,7 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2.注册 Dev_Provider 订阅以访问 expressRouteCrossConnections API
 
-若要访问 expressRouteCrossConnections API，需要在 **Microsoft.Network 资源提供程序**中注册合作伙伴订阅。 遵循 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)一文中的步骤完成注册过程。
+若要访问 expressRouteCrossConnections API，需要在 **Microsoft.Network 资源提供程序** 中注册合作伙伴订阅。 遵循 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)一文中的步骤完成注册过程。
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3.设置 Azure 资源管理器 REST API 调用的身份验证
 

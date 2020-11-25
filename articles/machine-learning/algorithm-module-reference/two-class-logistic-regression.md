@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420574"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012640"
 ---
 # <a name="two-class-logistic-regression-module"></a>双类逻辑回归模块
 
@@ -42,7 +42,7 @@ ms.locfileid: "93420574"
   
     -   “单个参数”：如果你知道自己想要如何配置模型，可以提供一组特定的值作为参数。  
 
-    -   **参数范围** ：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供一定的值范围，然后训练程序会循环访问设置的多个组合，以确定可产生最佳结果的值组合。
+    -   **参数范围**：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供一定的值范围，然后训练程序会循环访问设置的多个组合，以确定可产生最佳结果的值组合。
   
 3.  对于“优化容差”，请指定在优化模型时要使用的阈值。 如果两次迭代之间的改进低于指定的阈值，则会认为算法收敛于某个解，并且训练停止。  
   

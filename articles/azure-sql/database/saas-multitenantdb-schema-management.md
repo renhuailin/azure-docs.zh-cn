@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793290"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011842"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>在使用分片多租户数据库的 SaaS 应用程序中管理架构
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "92793290"
 
 本教程要求使用 PowerShell 来创建作业代理数据库和作业代理。 与 SQL 代理使用的 MSDB 数据库一样，作业代理使用 Azure SQL 数据库中的数据库来存储作业定义、作业状态和历史记录。 创建作业代理后，即可立刻创建和监视作业。
 
-1. 在 **PowerShell ISE** 中打开 *...\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* 。
+1. 在 **PowerShell ISE** 中打开 *...\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1*。
 2. 按 **F5** 运行脚本。
 
 Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目的是在编录服务器上创建名为 _jobagent_ 的数据库。 然后该脚本创建作业代理，将 _jobagent_ 数据库作为参数传递。
@@ -88,7 +88,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。
 
-1. 打开 SSMS 并连接到租户服务器： *tenants1-dpt-&lt;user&gt;.database.windows.net*
+1. 打开 SSMS 并连接到租户服务器：*tenants1-dpt-&lt;user&gt;.database.windows.net*
 1. 浏览到 tenants1-dpt-&lt;user&gt; 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中 。
 
 
@@ -105,7 +105,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 3. 查询 *VenueTypes* 表以确认“赛车”和“游泳俱乐部”是否不在结果列表中。
 
-4. 连接到目录服务器： *catalog-mt-&lt;user&gt;.database.windows.net* 。
+4. 连接到目录服务器：*catalog-mt-&lt;user&gt;.database.windows.net*。
 
 5. 连接到目录服务器中的 _jobagent_ 数据库。
 
@@ -119,7 +119,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 在 *DeployReferenceData.sql* 脚本中观察以下项：
 
-- **sp\_add\_target\_group** 创建目标组名称 *DemoServerGroup* ，并将目标成员添加到该组。
+- **sp\_add\_target\_group** 创建目标组名称 *DemoServerGroup*，并将目标成员添加到该组。
 
 - **sp\_add\_target\_group\_member** 添加以下项：
     - *server* 目标成员类型。
@@ -142,7 +142,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 1. 在 SSMS 中，连接到 catalog-mt-&lt;User&gt;.database.windows.net 服务器中的 _jobagent_ 数据库。
 
-2. 在 SSMS 中，打开 *...\\Learning Modules\\Schema Management\\OnlineReindex.sql* 。
+2. 在 SSMS 中，打开 *...\\Learning Modules\\Schema Management\\OnlineReindex.sql*。
 
 3. 按 **F5** 运行脚本。
 

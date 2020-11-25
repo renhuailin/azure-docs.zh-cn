@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75464286"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012521"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
 在启动 Service Fabric 服务可执行文件之前，可能需要进行某种配置或设置工作。  例如，配置环境变量。 可以在服务的服务清单中指定要在服务可执行文件启动前运行的脚本。 通过为服务安装程序入口点配置 RunAs 策略，可以更改在其下运行安装程序可执行文件的帐户。  使用单独的安装程序入口点，可在短时间内运行高权限配置，因此服务主机可执行文件不需要长时间使用高权限运行。
@@ -97,7 +97,7 @@ ms.locfileid: "75464286"
 
 首先，以用户名（例如 SetupAdminUser）创建 **Principals** 节。 SetupAdminUser 用户帐户是 Administrators 系统组的成员。
 
-接下来，在 **ServiceManifestImport** 节下面配置策略，以将此主体应用到 **SetupEntryPoint**。 此策略会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该以 SetupAdminUser （具有管理员特权）身份运行。 由于*尚未*将策略应用到主入口点，因此 **MyServiceHost.exe** 中的代码将以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
+接下来，在 **ServiceManifestImport** 节下面配置策略，以将此主体应用到 **SetupEntryPoint**。 此策略会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该以 SetupAdminUser （具有管理员特权）身份运行。 由于 *尚未* 将策略应用到主入口点，因此 **MyServiceHost.exe** 中的代码将以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>使用本地系统帐户配置策略
 通常建议使用本地系统帐户，而不是管理员帐户运行启动脚本。 以 Administrators 组成员的身份运行 RunAs 策略通常效果不佳，因为计算机在默认情况下已启用用户访问控制 (UAC)。 在这种情况下，建议将 SetupEntryPoint 以 LocalSystem 身份运行，而不是以添加到 Administrators 组的本地用户身份来运行。 以下示例演示如何将 SetupEntryPoint 设置为作为 LocalSystem 运行：
@@ -184,7 +184,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ```
 
 > [!NOTE]
-> 默认情况下，当批处理文件运行时，它查找名为 **work** 应用程序文件夹中的文件。 在此示例中，当 MySetup.bat 运行时，我们希望它在同一文件夹（即应用程序**代码包**文件夹）中找到 MySetup.ps1 文件。 若要更改此文件夹，请按如下所示设置工作文件夹：
+> 默认情况下，当批处理文件运行时，它查找名为 **work** 应用程序文件夹中的文件。 在此示例中，当 MySetup.bat 运行时，我们希望它在同一文件夹（即应用程序 **代码包** 文件夹）中找到 MySetup.ps1 文件。 若要更改此文件夹，请按如下所示设置工作文件夹：
 > 
 > 
 
@@ -201,7 +201,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 有时，需要查看运行安装程序脚本的控制台输出以便进行调试。 可以在服务清单中的安装程序入口点上设置控制台重定向策略，以便将输出写入文件。 文件输出将写入到部署和运行应用程序的群集节点上名为 **log** 的应用程序文件夹中。 
 
 > [!WARNING]
-> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
+> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅* 将其用于本地开发和调试目的。  
 > 
 > 
 

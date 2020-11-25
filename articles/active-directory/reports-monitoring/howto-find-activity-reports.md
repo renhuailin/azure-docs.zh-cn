@@ -15,11 +15,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013015"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -30,8 +30,8 @@ ms.locfileid: "93131048"
 审核日志报告将关于应用程序活动的多个报告组合到单个视图中以提供基于上下文的报告。 若要访问审核日志报告，请执行以下操作：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。 
-3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“审核日志”。  
+2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。
+3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“审核日志”。 
 
     ![审核日志](./media/howto-find-activity-reports/482.png "审核日志")
 
@@ -91,13 +91,13 @@ ms.locfileid: "93131048"
 
 ## <a name="sign-ins-report"></a>登录报告 
 
-“登录”  视图包括所有用户登录，以及“应用程序使用情况”  报告。 还可以在“企业应用程序”概述的“管理”部分中查看应用程序使用情况信息。 
+“登录”视图包括所有用户登录，以及“应用程序使用情况”报告。 还可以在“企业应用程序”概述的“管理”部分中查看应用程序使用情况信息。
 
 若要访问登录报告，请执行以下操作：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。 
-3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。  
+2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。
+3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。 
 
     ![登录视图](./media/howto-find-activity-reports/483.png "登录视图")
 
@@ -134,7 +134,7 @@ ms.locfileid: "93131048"
 
 ### <a name="detected-risk-detections"></a>检测到的风险检测
 
-可以在 [Azure 门户](https://portal.azure.com)中的 " **Azure Active Directory** " 边栏选项卡上的 " **安全** " 部分中访问有关检测到的风险检测的报告。 在以下报表中跟踪检测到的风险检测：   
+可以在 [Azure 门户](https://portal.azure.com)中的 " **Azure Active Directory** " 边栏选项卡上的 "**安全**" 部分中访问有关检测到的风险检测的报告。 在以下报表中跟踪检测到的风险检测：   
 
 - [有风险的用户](../identity-protection/overview-identity-protection.md)
 - [有风险的登录](../identity-protection/overview-identity-protection.md)
@@ -207,7 +207,7 @@ ms.locfileid: "93131048"
 
 无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
- ![屏幕截图显示 "日期" 菜单。](./media/troubleshoot-missing-audit-data/03.png)
+ ![屏幕截图显示了“日期”菜单。](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>原因
 

@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013048"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -55,7 +55,7 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 ## <a name="register-an-application"></a>注册应用程序
 
-即使是在使用脚本来访问报告 API，也需要注册。 注册会提供一个 **应用程序 ID** ，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
+即使是在使用脚本来访问报告 API，也需要注册。 注册会提供一个 **应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
 若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中 **全局管理员** 目录角色成员的 Azure 管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -67,19 +67,19 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，从左侧导航窗格中选择“Azure Active Directory”。 
    
-    ![屏幕截图显示从 "Azure 门户" 菜单中选择 Azure Active Directory。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![屏幕截图显示了从 Azure 门户菜单中选择的“Azure Active Directory”。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. 在“Azure Active Directory”  页面中，选择“应用注册”  。
 
-    ![屏幕截图显示在 "管理" 菜单中选择应用注册。](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![屏幕截图显示了从“管理”菜单中选择的“应用注册”。](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
 3. 在“应用注册”页面中，选择“新建注册”   。
 
-    ![屏幕截图显示选定的新注册。](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![屏幕截图显示了已选定的“新建注册”。](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. “注册应用程序”页： 
 
-    ![屏幕截图显示 "注册应用程序" 页，您可以在其中输入此步骤中的值。](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![屏幕截图显示了可在其中输入此步骤的值的“注册应用程序”页。](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. 在“名称”  文本框中，键入 `Reporting API application`。
 
@@ -99,7 +99,7 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 | Microsoft Azure Active Directory | 读取目录数据 |
 | Microsoft Graph | 读取所有审核日志数据 |
 
-![屏幕截图显示你可以在 "P I 权限" 窗格中选择 "添加权限" 的位置。](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![屏幕截图显示了可在“API 权限”窗格中选择“添加权限”的位置。](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 以下部分列出适用于这两个 API 的步骤。 如果你不想访问其中一个 API，可以跳过相关步骤。
 
@@ -108,23 +108,23 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 1. 选择“API 权限”  ，然后选择“添加权限”  。 
 
-    ![屏幕截图显示了一个 "P I 权限" 页，您可以在其中选择 "添加权限"。](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![屏幕截图显示了可在其中选择“添加权限”的“API 权限”页。](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. 在“请求 API 权限”页上，  找到“支持旧版 API”  **Azure Active Directory Graph** 。 
+2. 在“请求 API 权限”页上，  找到“支持旧版 API”  **Azure Active Directory Graph**。 
 
-    ![屏幕截图显示 "请求 P I 权限" 页，您可以在其中选择 Azure Active Directory 关系图。](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![屏幕截图显示了可在其中选择“Azure Active Directory Graph”的“请求 API 权限”页。](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在“所需权限”页上选择“应用程序权限”，   展开“目录”复选框  **Directory.ReadAll** 。  选择“添加权限”  。
+3. 在“所需权限”页上选择“应用程序权限”，   展开“目录”复选框  **Directory.ReadAll**。  选择“添加权限”  。
 
-    ![屏幕截图显示 "请求 P I 权限" 页，你可以在其中选择应用程序权限。](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![屏幕截图显示了可在其中选择“应用程序权限”的“请求 API 权限”页。](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
 4. 在“报表 API 应用程序 - API 权限”页上，选择“授予管理员许可”。   
 
-    ![屏幕截图显示了 "将 P I 应用程序作为 P I 权限的报表" 页，可在其中选择 "授予管理员许可"。](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![屏幕截图显示了可在其中选择“授予管理员同意”的“报表 API 应用程序 - API 权限”页。](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 注意： **Microsoft Graph** 在 API 注册过程中默认添加。
+5. 注意：**Microsoft Graph** 在 API 注册过程中默认添加。
 
-    ![屏幕截图显示了一个 "P I 权限" 页，您可以在其中选择 "添加权限"。](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![屏幕截图显示了可在其中选择“添加权限”的“API 权限”页。](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>收集配置设置 
 
@@ -142,11 +142,11 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，在左侧导航窗格中，选择“Azure Active Directory”  。
    
-    ![屏幕截图显示从 "Azure 门户" 菜单中选择 Azure Active Directory。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![屏幕截图显示了从 Azure 门户菜单中选择的“Azure Active Directory”。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. 在“Azure Active Directory”  页上，选择“自定义域名”  。
 
-    ![屏幕截图显示从 Azure Active Directory 中选择的自定义域名。](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![屏幕截图显示了从“Azure Active Directory”中选择的“自定义域名”。](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. 从域列表中复制域名。
 
@@ -157,13 +157,13 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”  。
    
-    ![屏幕截图显示从 "Azure 门户" 菜单中选择 Azure Active Directory。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![屏幕截图显示了从 Azure 门户菜单中选择的“Azure Active Directory”。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. 从“应用注册”  页面中选择你的应用程序。
 
 3. 从应用程序页面中，导航到“应用程序 ID”  并选择“单击以复制”。 
 
-    ![屏幕截图显示了 "报告 P I 应用程序" 页，你可以在其中复制应用程序 I D。](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![屏幕截图显示了可以在其中复制应用程序 ID 的“报表 API 应用程序”页。](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>获取应用程序的客户端机密
@@ -173,13 +173,13 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”  。
    
-    ![屏幕截图显示从 "Azure 门户" 菜单中选择 Azure Active Directory。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![屏幕截图显示了从 Azure 门户菜单中选择的“Azure Active Directory”。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  从“应用注册”  页面中选择你的应用程序。
 
 3.  在“API 应用程序”页上选择“证书和机密”，然后在“客户端机密”部分单击“+ 新建客户端机密”。     
 
-    ![屏幕截图显示证书 & 机密 "页，你可以在其中添加客户端机密。](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![屏幕截图显示了可以在其中添加客户端密码的“证书和机密”页。](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. 在“添加客户端机密”页上，添加以下内容： 
 
@@ -203,7 +203,7 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>错误：未能从 Microsoft Graph 进行高级许可证检查 
 
-如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”  。 
+如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”。 
 
 ![修改权限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 

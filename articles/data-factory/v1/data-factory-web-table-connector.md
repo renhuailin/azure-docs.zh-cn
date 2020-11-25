@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012844"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -54,8 +54,8 @@ ms.locfileid: "84689752"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -70,10 +70,10 @@ ms.locfileid: "84689752"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
-| Url |Web 源的 URL |是 |
+| URL |Web 源的 URL |是 |
 | authenticationType |匿名。 |是 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
@@ -96,9 +96,9 @@ ms.locfileid: "84689752"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
@@ -178,7 +178,7 @@ ms.locfileid: "84689752"
 }
 ```
 
-**WebTable 输入数据集** 将“external”**** 设置为“true”**** 会告知数据工厂服务数据集位于数据工厂外，且不由数据工厂中的活动生成。
+**WebTable 输入数据集** 将“external”设置为“true”会告知数据工厂服务数据集位于数据工厂外，且不由数据工厂中的活动生成。
 
 > [!NOTE]
 > 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。  
@@ -293,7 +293,7 @@ ms.locfileid: "84689752"
     ![“从 Web”对话框](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
     此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”  。
+4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和 **身份验证**，并单击“连接”  。
 
    ![“访问 Web 内容”对话框](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  

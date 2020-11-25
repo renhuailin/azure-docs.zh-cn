@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012827"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -79,7 +79,7 @@ ms.locfileid: "92636759"
     ```
     The specified Data Factory name 'ADFTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
-* 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员** 。
+* 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 创建链接服务，以将承载 SSIS 目录的 Azure SQL 数据库中的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
@@ -101,7 +101,7 @@ ms.locfileid: "92636759"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹 。
-3. 运行 **AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService** 。 
+3. 运行 **AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -135,7 +135,7 @@ ms.locfileid: "92636759"
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>使用存储过程活动创建管道 
 在此步骤中，使用存储过程活动创建管道。 该活动调用 sp_executesql 存储过程来运行 SSIS 包。 
 
-1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 MyPipeline.json 的 JSON 文件，并在其中包含以下内容  ：
+1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 MyPipeline.json 的 JSON 文件，并在其中包含以下内容：
 
     > [!IMPORTANT]
     > 保存文件之前，请将 &lt;folder name&gt;、&lt;project name&gt; 和 &lt;package name&gt; 替换为 SSIS 目录中文件夹、项目和包的名称。
@@ -168,7 +168,7 @@ ms.locfileid: "92636759"
     }    
     ```
 
-2. 若要创建管道： **RunSSISPackagePipeline** ，请运行 **AzDataFactoryPipeline** cmdlet。
+2. 若要创建管道： **RunSSISPackagePipeline**，请运行 **AzDataFactoryPipeline** cmdlet。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -182,7 +182,7 @@ ms.locfileid: "92636759"
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     请注意，此处指定的 StartDateTime 与在管道 JSON 中指定的开始时间是相同的。 
-1. 运行 **Get-AzDataFactoryRun** ，获取特定切片的活动运行详细信息。
+1. 运行 **Get-AzDataFactoryRun**，获取特定切片的活动运行详细信息。
 
     ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

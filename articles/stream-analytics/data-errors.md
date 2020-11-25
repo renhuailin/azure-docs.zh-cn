@@ -7,11 +7,11 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
 ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011415"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -21,7 +21,7 @@ ms.locfileid: "93131371"
 
 ## <a name="resource-logs-schema"></a>资源日志架构
 
-请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值  。
+请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值。
 
 ```json
 {

@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547514"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011823"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -221,7 +221,7 @@ ktutil: q
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>如何查找 Data Lake 存储帐户当前链接的服务主体？
 
-可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。  有关详细信息，请参阅[验证群集设置](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up)。
+可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。 有关详细信息，请参阅[验证群集设置](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up)。
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>如何计算 HDInsight 群集的存储帐户和 Blob 容器的用量？
 
@@ -262,7 +262,7 @@ done
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
-不能。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
+不是。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
 
 ## <a name="edge-nodes"></a>边缘节点
 

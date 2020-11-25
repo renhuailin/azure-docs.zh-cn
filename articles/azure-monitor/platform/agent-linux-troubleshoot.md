@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375340"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011891"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -25,43 +25,43 @@ ms.locfileid: "94375340"
 * 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
 * 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。 
 
-## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 疑难解答工具
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 故障排除工具
 
-Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查找和诊断 Log Analytics 代理的问题。 安装后，代理将自动包含在代理中。 运行该工具应该是诊断问题的第一步。
+Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查找和诊断 Log Analytics 代理问题。 安装后，该工具将自动包含在代理中。 应将运行此工具作为诊断问题的第一步。
 
 ### <a name="how-to-use"></a>使用方法
-可以通过将以下命令粘贴到具有 Log Analytics 代理的计算机上的终端窗口来运行故障排除工具： `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+通过将以下命令粘贴到具有 Log Analytics 代理的计算机上的终端窗口中，可以运行故障排除工具：`sudo /opt/microsoft/omsagent/bin/troubleshooter`
 
 ### <a name="manual-installation"></a>手动安装
-安装 Log Analytics 代理时，将自动包含故障排除工具。 但是，如果安装失败，还可以按照以下步骤手动安装它。
+安装 Log Analytics 代理后，将自动包含故障排除工具。 但如果安装失败，也可以按照以下步骤手动安装该工具。
 
-1. 将疑难解答捆绑包复制到计算机上： `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
-2. 解包包： `tar -xzvf omsagent_tst.tar.gz`
-3. 运行手动安装： `sudo ./install_tst`
+1. 将疑难解答捆绑包复制到你的计算机上：`wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. 解开该捆绑包：`tar -xzvf omsagent_tst.tar.gz`
+3. 运行手动安装：`sudo ./install_tst`
 
 ### <a name="scenarios-covered"></a>涵盖的方案
-下面是由疑难解答工具检查的方案列表：
+下面是使用故障排除工具检查的方案的列表：
 
-1. 代理不正常，检测信号不能正常工作
-2. 代理未启动，无法连接到日志分析服务
-3. 代理 syslog 不工作
+1. 代理运行不正常，检测信号无法正常工作
+2. 代理未启动，无法连接到 Log Analytic 服务
+3. 代理系统日志无效
 4. 代理的 CPU/内存使用率高
 5. 代理存在安装问题
-6. 代理自定义日志不起作用
+6. 代理自定义日志无效
 7. 收集代理日志
 
-有关更多详细信息，请查看 [Github 文档](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
+有关更多详细信息，请参阅 [Github 文档](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
 
  >[!NOTE]
- >遇到问题时，请运行日志收集器工具。 最初使日志可帮助我们的支持团队更快地解决问题。
+ >遇到问题时，请运行日志收集器工具。 从一开始便记录日志将极大帮助我们的支持团队更快解决你的问题。
 
-## <a name="purge-and-re-install-the-linux-agent"></a>清除并 Re-Install Linux 代理
+## <a name="purge-and-re-install-the-linux-agent"></a>清除 Linux 代理并重新安装
 
-我们已看到，重新安装代理会解决大多数问题。 事实上，这可能是支持的第一条建议，使代理进入我们的支持团队提供的 uncurropted 状态。 运行疑难解答、日志收集和尝试全新重新安装有助于更快地解决问题。
+我们了解到，清理代理并重新安装可以解决大多数问题。 事实上，这可能是支持部门提出的第一个建议，让支持团队使代理处于未损坏的状态。 运行排除故障程序、收集日志、尝试清理并重新安装将有助于更快地解决问题。
 
 1. 下载清除脚本：
 - `$ wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/purge_omsagent.sh`
-2. 运行 (具有 sudo 权限的清除脚本) ：
+2. 运行清除脚本（使用 sudo 权限）：
 - `$ sudo sh purge_omsagent.sh`
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要的日志位置和日志收集器工具
@@ -92,9 +92,9 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 | NOT_DEFINED | 由于未安装必需的依赖项，将不会安装 auoms auditd 插件 | Auoms 安装失败，请安装程序包 auditd。 |
 | 2 | 提供给 shell 捆绑包的选项无效。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况 |
 | 3 | 未向 shell 捆绑包提供任何选项。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况。 |
-| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent- *rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent- *deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
+| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
 | 5 | 必须以 root 身份执行 shell 捆绑包或在载入期间返回 403 错误。 使用 `sudo` 运行你的命令。 |
-| 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent- *x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
+| 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
 | 17 | OMS 程序包安装失败。 仔细查看命令输出查找根源故障。 |
 | 19 | OMI 程序包安装失败。 仔细查看命令输出查找根源故障。 |
 | 20 | SCX 程序包安装失败。 仔细查看命令输出查找根源故障。 |

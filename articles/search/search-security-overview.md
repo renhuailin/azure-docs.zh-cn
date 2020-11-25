@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314691"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011789"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -84,9 +84,9 @@ ms.locfileid: "91314691"
 
 + 查询密钥（允许对索引的文档集合进行只读访问）
 
-预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以根据 Azure 安全最佳做法定期[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)，但不能将其添加到管理密钥总数。 每个搜索服务最多有两个管理密钥。
+预配服务时会创建 *管理员密钥*。 有两个管理密钥，分别指定为 *主要* 和 *辅助* 密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以根据 Azure 安全最佳做法定期[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)，但不能将其添加到管理密钥总数。 每个搜索服务最多有两个管理密钥。
 
-*查询密钥*根据需要创建，专用于发出查询的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以便对特定索引的文档集合进行只读访问。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
+*查询密钥* 根据需要创建，专用于发出查询的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以便对特定索引的文档集合进行只读访问。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91314691"
 
 为了进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 所有客户端连接必须通过允许的 IP 地址建立，否则连接将被拒绝。
 
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="描述每个服务协定的不同类型的安全性的关系图":::
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="ip 限制访问的示例体系结构示意图":::
 
 可以使用门户[配置入站访问](service-configure-firewall.md)。
 
@@ -106,7 +106,7 @@ Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overvie
 
 专用终结点使用虚拟网络地址空间中的 IP 地址来连接到搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 VNET 允许在资源之间通过本地网络和 Internet 进行安全通信。
 
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="描述每个服务协定的不同类型的安全性的关系图":::
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="专用终结点访问的示例体系结构关系图":::
 
 虽然这种解决方案是最安全的，但使用其他服务是一项额外的成本，因此请确保你清楚地了解其中的好处。 有关成本的详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/private-link/)。 有关这些组件如何协同工作的详细信息，请观看本文顶部的视频。 专用终结点选项的范围从5:48 开始到视频。 有关如何设置终结点的说明，请参阅 [为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)。
 
@@ -122,7 +122,7 @@ Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overvie
 
 ## <a name="user-access"></a>用户访问权限
 
-用户访问索引和其他对象的方式由请求上的 API 密钥类型决定。 大部分开发人员会针对客户端搜索请求创建并分配[*查询密钥*](search-security-api-keys.md)。 查询密钥授予对索引中可搜索内容的只读访问权限。
+用户访问索引和其他对象的方式由请求上的 API 密钥类型决定。 大部分开发人员会针对客户端搜索请求创建并分配 [*查询密钥*](search-security-api-keys.md)。 查询密钥授予对索引中可搜索内容的只读访问权限。
 
 如果需要对搜索结果进行特定于每个用户的控制，则可以在查询上生成安全筛选器，返回与给定安全标识相关联的文档。 基于标识的访问控制是根据标识来修整文档和内容的搜索结果的 *筛选器* ，而不是预定义的角色和角色分配。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
@@ -142,7 +142,7 @@ Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overvie
 
 ## <a name="certifications-and-compliance"></a>认证和合规性
 
-Azure 认知搜索已经过认证，适用于公有云和 Azure 政府的多种全球、区域和行业特定的标准。 有关完整列表，请从官方审核报告页下载[ **Microsoft Azure 符合性产品**白皮书](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
+Azure 认知搜索已经过认证，适用于公有云和 Azure 政府的多种全球、区域和行业特定的标准。 有关完整列表，请从官方审核报告页下载 [ **Microsoft Azure 符合性产品** 白皮书](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
 为实现符合性，你可以使用 [Azure 策略](../governance/policy/overview.md) 来实现 [azure 安全基准](../security/benchmarks/introduction.md)的高安全性最佳实践。 Azure 安全基准是安全建议的集合，整理到安全控件中，这些安全控制映射到你应对服务和数据的威胁应采取的关键操作。 目前有11个安全控制，其中包括 [网络安全性](../security/benchmarks/security-control-network-security.md)、 [日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)以及 [数据保护](../security/benchmarks/security-control-data-protection.md) 。
 

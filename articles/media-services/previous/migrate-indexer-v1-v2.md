@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
 ms.openlocfilehash: 330bffebb870635fd473e88a8eadb300eed40b9b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518290"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012129"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>从媒体索引器和媒体索引器2迁移到视频索引器
 
@@ -51,7 +51,7 @@ Azure 媒体服务视频索引器基于 Azure 媒体分析、Azure 认知搜索�
 
 通过 azure 媒体服务 v3 API，你可以通过 [Azure 媒体服务 v3 分析器预设](../latest/analyzing-video-audio-files-concept.md)从视频和音频文件中提取见解。
 
-凭借 AudioAnalyzerPreset 能够从音频或视频文件中提取多个音频见解****。 输出包括音频稿本的 VTT 或 TTML 文件，以及 (包含所有附加音频见解) 的 JSON 文件。 音频见解包括关键字、扬声器索引和语音情绪分析。 AudioAnalyzerPreset 还支持特定语言的语言检测。 有关详细信息，请参阅 [转换](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
+凭借 AudioAnalyzerPreset 能够从音频或视频文件中提取多个音频见解。 输出包括音频稿本的 VTT 或 TTML 文件，以及 (包含所有附加音频见解) 的 JSON 文件。 音频见解包括关键字、扬声器索引和语音情绪分析。 AudioAnalyzerPreset 还支持特定语言的语言检测。 有关详细信息，请参阅 [转换](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
 
 ### <a name="get-started"></a>入门
 

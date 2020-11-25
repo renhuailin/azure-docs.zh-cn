@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895828"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013116"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
@@ -52,7 +52,7 @@ ms.locfileid: "92895828"
 
 设施的每个楼层都需要一个 DWG 文件。 楼层的数据必须包含在一个 DWG 文件中。 所有外部引用 (Xref) 都必须绑定到父绘图。 此外，每个 DWG 文件：
 
-* 必须定义 Exterior 和 Unit 图层。 它可以选择定义以下可选层： _墙壁_ 、 _门板_ 、 _UnitLabel_ 、 _Zone_ 和 _ZoneLabel_ 。
+* 必须定义 Exterior 和 Unit 图层。 它可以选择定义以下可选层： _墙壁_、 _门板_、 _UnitLabel_、 _Zone_ 和 _ZoneLabel_。
 * 不得包含来自多个楼层的特征。
 * 不得包含来自多个设施的特征。
 
@@ -188,7 +188,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `directoryInfo`
 
-| properties  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 | `name`      | 字符串 | true   |  建筑物名称。 |
 | `streetAddress`|    字符串 |    false    | 建筑物地址。 |
@@ -219,7 +219,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `georeference`
 
-| properties  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |`lon`    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
@@ -227,10 +227,10 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `dwgLayers`
 
-| properties  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
-|`exterior`    |字符串数组|    是|    定义外部生成配置文件的层的名称。|
-|`unit`|    字符串数组|    是|    定义单位的层的名称。|
+|`exterior`    |字符串数组|    true|    定义外部生成配置文件的层的名称。|
+|`unit`|    字符串数组|    true|    定义单位的层的名称。|
 |`wall`|    字符串数组    |false|    定义墙壁的层的名称。|
 |`door`    |字符串数组|    false   | 定义门的层的名称。|
 |`unitLabel`    |字符串数组|    false    |定义单元名称的层的名称。|
@@ -246,15 +246,15 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 |`unitName`    |字符串    |true    |要与此 `unitProperty` 记录关联的单元的名称。 仅当在层中找到标签匹配时，此记录才有效 `unitName` `unitLabel` 。 |
 |`categoryName`|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
 |`navigableBy`| 字符串数组 |    false    |指明可遍历单元的导航代理的类型。 此属性告知 wayfinding 功能。 允许的值为： `pedestrian` 、 `wheelchair` 、 `machine` 、 `bicycle` 、 `automobile` 、 `hiredAuto` 、 `bus` `railcar` `emergency` `ferry` `boat` 、、、、和 `disallowed` 。|
-|`routeThroughBehavior`|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值为 `allowed`。|
+|`routeThroughBehavior`|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值是 `allowed`。|
 |`occupants`    |directoryInfo 对象的数组 |false    |单元的居用者列表。 |
 |`nameAlt`|    字符串|    false|    单元的备用名称。 |
 |`nameSubtitle`|    字符串    |false|    单元的副标题。 |
 |`addressRoomNumber`|    字符串|    false|    设备的房间、单位、单元或套件编号。|
 |`verticalPenetrationCategory`|    字符串|    false| 如果定义了此属性，则生成的功能是 VRT) （而不是单元）的垂直渗透 (。 你可以使用 Vrt 来跳到它上面或下面的级别中的其他 VRT 功能。 垂直穿透是 [类别](https://aka.ms/pa-indoor-spacecategories) 名称。 如果定义了此属性，则 `categoryName` 属性会被重写 `verticalPenetrationCategory` 。 |
-|`verticalPenetrationDirection`|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为： `lowToHigh` 、 `highToLow` 、 `both` 和 `closed` 。 默认值为 `both`。|
+|`verticalPenetrationDirection`|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为： `lowToHigh` 、 `highToLow` 、 `both` 和 `closed` 。 默认值是 `both`。|
 | `nonPublic` | bool | false | 指明单元是否向公众开放。 |
-| `isRoutable` | bool | false | 如果将此属性设置为 `false` ，则不能通过单元进行切换。 默认值为 `true`。 |
+| `isRoutable` | bool | false | 如果将此属性设置为 `false` ，则不能通过单元进行切换。 默认值是 `true`。 |
 | `isOpenArea` | bool | false | 允许导航代理输入单位，而无需连接到设备。 默认情况下，此值设置为 `true` "对于没有开口的单位"，并将设置为 " `false` 带有开口的单位"。 如果 `isOpenArea` `false` 在没有打开的单元上手动设置为，则会出现警告。 这是因为导航代理无法访问结果单元。|
 
 ### `zoneProperties`

@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 01370092c5e272fe64f4ffdad577b69d3a532810
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012146"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 托管实例
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Server 托管的源 SSISDB 迁移到 Azure SQL 托管实例托管的目标 SSISDB，可以使用 Azure 数据库迁移服务。

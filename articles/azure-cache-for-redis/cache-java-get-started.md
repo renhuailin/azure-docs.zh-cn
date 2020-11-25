@@ -9,11 +9,11 @@ ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088108"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012912"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入门：在 Java 中使用 Azure Cache for Redis
 
@@ -73,7 +73,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
 
 保存 *pom.xml* 文件。
 
-打开 *App.java* ，将代码替换为以下代码：
+打开 *App.java*，将代码替换为以下代码：
 
 ```java
 package example.demo;
@@ -127,7 +127,7 @@ public class App
 
 此代码演示如何使用缓存主机名和密钥环境变量连接到 Azure Redis 缓存实例。 此代码还在缓存中存储和检索字符串值。 还执行了 `PING` 和 `CLIENT LIST` 命令。 
 
-保存 *App.java* 。
+保存 *App.java*。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 

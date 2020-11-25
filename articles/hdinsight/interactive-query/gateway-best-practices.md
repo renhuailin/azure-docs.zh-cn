@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546001"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011483"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中关于 Apache Hive 的网关深入探讨和最佳做法
 
@@ -36,7 +36,7 @@ HDInsight 网关是 HDInsight 群集中唯一可通过 Internet 公开访问的�
 
 ## <a name="best-practices"></a>最佳实践
 
-网关是一项单一服务（跨两个主机进行负载均衡），负责请求的转发和身份验证。 对于超过特定大小的 Hive 查询，网关可能会成为吞吐量瓶颈。 通过 ODBC 或 JDBC 在网关上执行超大型 SELECT 查询时，可能会发现查询性能降低  。 “超大型”表示查询包含的行或列中的数据超过 5 GB。 此查询可能包含一长列行和/或大量列。
+网关是一项单一服务（跨两个主机进行负载均衡），负责请求的转发和身份验证。 对于超过特定大小的 Hive 查询，网关可能会成为吞吐量瓶颈。 通过 ODBC 或 JDBC 在网关上执行超大型 SELECT 查询时，可能会发现查询性能降低。 “超大型”表示查询包含的行或列中的数据超过 5 GB。 此查询可能包含一长列行和/或大量列。
 
 网关因大量查询而导致性能下降的原因在于，数据必须从底层数据存储 (ADLS Gen2) 传输到以下位置：HDInsight Hive 服务器、网关，最后通过 JDBC 或 ODBC 驱动程序传输到客户端主机。
 
@@ -44,9 +44,9 @@ HDInsight 网关是 HDInsight 群集中唯一可通过 Internet 公开访问的�
 
 ![结果图](./media/gateway-best-practices/result-retrieval-diagram.png "结果图")
 
-Apache Hive 是基于与 HDFS 兼容的文件系统的关系抽象。 此抽象意味着 Hive 中的 SELECT 语句对应于文件系统上的 READ 操作   。 READ 操作在报告给用户之前，会被转换为适当的架构  。 此过程的延迟随数据大小和到达最终用户所需的总跃点数的增大而增加。
+Apache Hive 是基于与 HDFS 兼容的文件系统的关系抽象。 此抽象意味着 Hive 中的 SELECT 语句对应于文件系统上的 READ 操作 。 READ 操作在报告给用户之前，会被转换为适当的架构。 此过程的延迟随数据大小和到达最终用户所需的总跃点数的增大而增加。
 
-执行大型数据的 CREATE 或 INSERT 语句时，可能会出现类似的行为，因为这些命令将与基础文件系统中的 WRITE 操作相对应    。 请考虑将原始 ORC 等数据写入文件系统/数据湖，而不是使用 INSERT 或 LOAD 进行加载   。
+执行大型数据的 CREATE 或 INSERT 语句时，可能会出现类似的行为，因为这些命令将与基础文件系统中的 WRITE 操作相对应  。 请考虑将原始 ORC 等数据写入文件系统/数据湖，而不是使用 INSERT 或 LOAD 进行加载 。
 
 在启用了 Enterprise 安全包的群集中，Apache Ranger 策略太过复杂可能会导致查询编译速度变慢，进而可能导致网关超时。 如果在 ESP 群集中发现网关超时，请考虑减少或合并 Ranger 策略数。
 
@@ -54,9 +54,9 @@ Apache Hive 是基于与 HDFS 兼容的文件系统的关系抽象。 此抽象�
 
 可在多个位置缓解和了解上述行为中的性能问题。 在 HDInsight 网关上遇到查询性能下降时，请使用以下清单：
 
-* 执行大型 SELECT 查询时，请使用 LIMIT 子句   。 LIMIT 子句将减少报告给客户端主机的总行数  。 LIMIT 子句仅影响结果生成，不会更改查询计划  。 若要在查询计划中应用 LIMIT 子句，请使用配置 `hive.limit.optimize.enable` 。 可以使用参数形式 LIMIT x,y 组合 LIMIT 与偏移量   。
+* 执行大型 SELECT 查询时，请使用 LIMIT 子句 。 LIMIT 子句将减少报告给客户端主机的总行数。 LIMIT 子句仅影响结果生成，不会更改查询计划。 若要在查询计划中应用 LIMIT 子句，请使用配置 `hive.limit.optimize.enable`。 可以使用参数形式 LIMIT x,y 组合 LIMIT 与偏移量 。
 
-* 运行 "选择查询" 而不是使用 * *select \** _ 时， **请** 命名感兴趣的列。 选择的列越少，读取的数据量就越小。
+* 运行 "选择查询" 而不是使用 **select \** _ 时，**请** 命名感兴趣的列。 选择的列越少，读取的数据量就越小。
 
 请尝试通过 Apache Beeline 运行感兴趣的查询。 如果通过 Apache Beeline 进行的结果检索耗时较长，则通过外部工具检索相同结果时也会出现延迟。
 
