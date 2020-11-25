@@ -1,20 +1,20 @@
 ---
-author: cynthn
-ms.author: cynthn
+author: ''
+ms.author: danielsollondon
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303943"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026356"
 ---
 借助标准化虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中保持一致。 映像通常包括预定义的安全性和配置设置，以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供一个描述映像的简单配置，将其提交给该服务，即可构建映像并进行分发。
  
-通过 Azure VM 映像生成器（Azure 映像生成器），可从基于 Windows 或 Linux 的 Azure 市场映像、现有自定义映像或 Red Hat Enterprise Linux (RHEL) ISO 开始，并开始添加自己的自定义项。 因为映像生成器基于 [HashiCorp Packer](https://packer.io/) 构建，因此你还可以导入现有 Packer shell 配置程序脚本。 在 [Azure 共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中，还可以指定要在其中托管映像的位置（作为托管映像或 VHD）。
+通过 Azure VM 映像生成器（Azure 映像生成器），可从基于 Windows 或 Linux 的 Azure 市场映像、现有自定义映像或 Red Hat Enterprise Linux (RHEL) ISO 开始，并开始添加自己的自定义项。 因为映像生成器基于 [HashiCorp Packer](https://packer.io/) 构建，因此你还可以导入现有 Packer shell 配置程序脚本。 在 [Azure 共享映像库](../articles/virtual-machines/windows/shared-image-galleries.md)中，还可以指定要在其中托管映像的位置（作为托管映像或 VHD）。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公共预览版。
@@ -59,12 +59,8 @@ AIB 将支持 Azure 市场基础 OS 映像：
 
 ## <a name="how-it-works"></a>工作原理
 
-
-![Azure 映像生成器的概念图](./media/virtual-machines-image-builder-overview/image-builder.png)
-
 Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资源提供程序进行访问。 Azure 映像生成器进程有三个主要部分：源、自定义和分发，它们显示在模板中。 下图显示了这些组件及其部分属性。 
  
-
 
 **映像生成器进程** 
 
@@ -81,14 +77,14 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 
 若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，则需要创建一个拥有读取和写入映像权限的 Azure 用户分配的标识。 如果要访问 Azure 存储，则需要读取专用容器的权限。
 
-首先，你必须遵循[创建 Azure 用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)文档，了解如何创建标识。
+首先，你必须遵循[创建 Azure 用户分配的托管标识](../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)文档，了解如何创建标识。
 
 具有向其授予权限的标识后，若要执行此操作，则可以使用 Azure 自定义角色定义，然后分配用户分配的托管标识以使用自定义角色定义。
 
 [此处](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)对权限进行了详细说明，并且示例演示了如何实现权限。
 
 > [!Note]
-> 以前使用 AIB 时，可以使用 AIB SPN，并向映像资源组授予 SPN 权限。 我们将不再使用此模型，以允许使用将来的功能。 从 2020 年 5 月 26 日开始，映像生成器将不接受没有用户分配的标识的模板，需要使用[用户标识](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)将现有模板重新提交给服务。 此处的示例已经说明了如何创建用户分配的标识并将其添加到模板。 有关详细信息，请查看此[文档](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)了解此更改和发布更新。
+> 以前使用 AIB 时，可以使用 AIB SPN，并向映像资源组授予 SPN 权限。 我们将不再使用此模型，以允许使用将来的功能。 从 2020 年 5 月 26 日开始，映像生成器将不接受没有用户分配的标识的模板，需要使用[用户标识](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity)将现有模板重新提交给服务。 此处的示例已经说明了如何创建用户分配的标识并将其添加到模板。 有关详细信息，请查看此[文档](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)了解此更改和发布更新。
 
 ## <a name="costs"></a>成本
 通过 Azure 映像生成器创建、构建和存储映像时，会产生一些计算、网络和存储成本。 这些成本与手动创建自定义映像产生的成本类似。 对于资源，将按 Azure 费率向你收费。 
@@ -105,4 +101,3 @@ Azure 映像生成器会将映像分发到所选区域，这可能会产生网�
 ## <a name="next-steps"></a>后续步骤 
  
 若要试用 Azure 映像生成器，请参阅构建 [Linux](../articles/virtual-machines/linux/image-builder.md) 或 [Windows](../articles/virtual-machines/windows/image-builder.md) 映像的文章。
- 
