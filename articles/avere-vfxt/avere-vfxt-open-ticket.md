@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008423"
 ---
 # <a name="get-help-with-your-system"></a>获得有关系统的帮助
 
 有关 Avere vFXT for Azure 系统的帮助，请参阅以下内容获取支持的方法：
 
 * **Avere vFXT 问题** - 使用 Azure 门户为 Avere vFXT 创建支持票证，[如下](#open-a-support-ticket-for-your-avere-vfxt)所述。
-* **配额** - 如果遇到配额相关问题，可[请求增加配额 ](#request-a-quota-increase)
-* **文档和示例** - 如果发现该文档或示例存在问题，请滚动到存在问题的页面底部，然后使用“反馈”部分搜索现有问题并提交新文档（如有需要）****。
+* **配额** - 如果遇到配额相关问题，可 [请求增加配额](#request-a-quota-increase)
+* **文档和示例** - 如果发现该文档或示例存在问题，请滚动到存在问题的页面底部，然后使用“反馈”部分搜索现有问题并提交新文档（如有需要）。
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>为 Avere vFXT 创建支持票证
 
@@ -31,7 +31,7 @@ ms.locfileid: "92342342"
 
     ![圈出特定 VM 的 Azure 门户资源组“概述”面板的屏幕截图](media/avere-vfxt-ticket-vm.png)
 
-1. 在 VM 页面中，向下滚动到左侧面板的底部，然后单击“新建支持请求”****。
+1. 在 VM 页面中，向下滚动到左侧面板的底部，然后单击“新建支持请求”。
 
     ![上一屏幕截图中 VM 的 Azure 门户 VM 页面的屏幕截图。 左侧菜单滚动到底部，"新支持请求" 被圆圈。](media/avere-vfxt-ticket-request.png)
 

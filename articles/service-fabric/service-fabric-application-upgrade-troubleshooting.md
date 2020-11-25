@@ -4,11 +4,11 @@ description: 本文介绍一些围绕升级 Service Fabric 应用程序的常见
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75377916"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009341"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
 
@@ -86,7 +86,7 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 ### <a name="investigate-health-check-failures"></a>调查运行状况检查失败
 
-运行状况检查失败可能由各种其他问题触发，这些问题可能发生在升级域中所有节点完成升级、通过所有安全检查之后。 此段落后面的输出是升级因运行状况检查失败而失败时的典型输出。 **UnhealthyEvaluations** 字段根据指定的[运行状况策略](service-fabric-health-introduction.md)，捕获升级失败时失败的运行状况检查的快照。
+运行状况检查失败可能由各种其他问题触发，这些问题可能发生在升级域中所有节点完成升级、通过所有安全检查之后。 此段落后面的输出是升级因运行状况检查失败而失败时的典型输出。 **UnhealthyEvaluations** 字段根据指定的 [运行状况策略](service-fabric-health-introduction.md)，捕获升级失败时失败的运行状况检查的快照。
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp

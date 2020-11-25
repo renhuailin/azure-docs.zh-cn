@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207810"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008984"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -42,13 +42,13 @@ ms.locfileid: "88207810"
 1. 搜索“虚拟机”。  
 1. 选择“Ubuntu 16.04 LTS”，然后选择“创建”。 
 1. 提供一个 VM 名称，例如 **MyTelegrafVM**。  
-1. 将磁盘类型保留为“SSD”。 然后提供**用户名**，例如 **azureuser**。 
+1. 将磁盘类型保留为“SSD”。 然后提供 **用户名**，例如 **azureuser**。 
 1. 对于“身份验证类型”，请选择“密码”。 然后输入一个密码，稍后将使用该密码通过 SSH 连接到此 VM。 
 1. 选择“创建新的资源组”。 然后提供一个名称，例如 **myResourceGroup**。 选择你的“位置”。 然后选择“确定”。 
 
     ![创建 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. 为 VM 选择大小。 例如，可以按**计算类型**或**磁盘类型**进行筛选。 
+1. 为 VM 选择大小。 例如，可以按 **计算类型** 或 **磁盘类型** 进行筛选。 
 
     ![虚拟机大小 Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
@@ -97,7 +97,7 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 ```
 
 > [!NOTE]  
-> 上述代码仅启用两个输入插件：**cpu** 和 **mem**。 可以根据计算机上运行的工作负荷随意添加更多输入插件。 例如 Docker、MySQL 和 NGINX。 有关输入插件的完整列表，请参阅**其他配置**部分。 
+> 上述代码仅启用两个输入插件：**cpu** 和 **mem**。 可以根据计算机上运行的工作负荷随意添加更多输入插件。 例如 Docker、MySQL 和 NGINX。 有关输入插件的完整列表，请参阅 **其他配置** 部分。 
 
 最后，为了让代理开始使用新配置，我们将运行以下命令，强制代理在停止后再启动： 
 

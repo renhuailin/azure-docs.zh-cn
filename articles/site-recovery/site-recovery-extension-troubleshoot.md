@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009698"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>排查 Azure VM 扩展问题
 
@@ -67,7 +67,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 
 1. 确定 Windows Azure 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 重启 Windows Azure 来宾代理服务。    
 1. 如果“Windows Azure 来宾代理”服务在“服务”中不可见，请打开“控制面板”。 转到“程序和功能”来查看是否安装了“Windows 来宾代理”服务。
-1. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载****。
+1. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载。
 1. 下载并安装[最新版本的代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
 1. 检查服务中是否显示了“Windows Azure 来宾代理”服务。
 1. 重启保护作业。
@@ -107,7 +107,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 在 [Azure 门户](https://portal.azure.com/)中，找到备份失败的 VM。
 1. 选择“设置”  。
 1. 选择“扩展”。
-1. 选择“Site Recovery 扩展”****。
+1. 选择“Site Recovery 扩展”。
 1. 选择“卸载” 。
 
 对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/extensions/update-linux-agent.md)。 然后运行保护。

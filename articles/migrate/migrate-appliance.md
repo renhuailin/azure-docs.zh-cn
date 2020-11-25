@@ -4,11 +4,11 @@ description: 提供 Azure Migrate 设备支持的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450034"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008695"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -69,8 +69,8 @@ Azure Migrate 设备用于以下应用场景。
 **发现限制** | 一个设备最多可发现 5000 个 Hyper-V VM。<br/> 一个设备最多可连接到 300 个 Hyper-V 主机。
 **VHD 模板** | 包含 VHD 的压缩文件夹。 从门户或从 [此处](https://go.microsoft.com/fwlink/?linkid=2140422)下载。<br/><br/> 下载大小为 8.91 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 **PowerShell 脚本** | 请参阅此 [文](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
-**软件/硬件***   |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果将设备作为 Hyper-v VM 运行，Hyper-v 主机上需要有足够的资源来分配硬件要求。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。 
-**Hyper-V 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate 提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
+**软件/硬件** _   |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果将设备作为 Hyper-v VM 运行，Hyper-v 主机上需要有足够的资源来分配硬件要求。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。 
+_ *Hyper-v 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate 提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
 **哈希值 - VHD** | [验证](tutorial-discover-hyper-v.md#verify-security) VHD 模板哈希值。
 **哈希值 - PowerShell 脚本** | [验证](deploy-appliance-script.md#verify-file-security) PowerShell 脚本哈希值。
 
@@ -85,7 +85,7 @@ Azure Migrate 设备用于以下应用场景。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可以发现1000个物理服务器。
 **PowerShell 脚本** | 从门户或 [此处](https://go.microsoft.com/fwlink/?linkid=2140334) ( # A0) 下载压缩文件夹中的脚本。 [了解详细信息](tutorial-discover-physical.md)。<br/><br/> 下载大小为 85.8 MB。
-**软件/硬件** |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu （约 80 GB 磁盘存储）上运行的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。<br/>_ (目前只有 Windows Server 2016 支持设备的部署。 ) _
+**软件/硬件** |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu （约 80 GB 磁盘存储）上运行的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。<br/>_（目前只有 Windows Server 2016 支持设备部署。）_
 **哈希值** | [验证](tutorial-discover-physical.md#verify-security) PowerShell 脚本哈希值。
 
 ## <a name="url-access"></a>URL 访问
@@ -219,17 +219,17 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 发布者
+提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
 
 以下是设备从每个启用了应用程序发现的 VM 收集的功能数据。 这些数据将发送到 Azure。
 
-**数据**  | **PowerShell Cmdlet** | **属性**
+**数据**  | **PowerShell cmdlet** | **属性**
 --- | --- | ---
 名称  | Get-WindowsFeature  | 名称
 特征类型 | Get-WindowsFeature  | FeatureType
-Parent  | Get-WindowsFeature  | Parent
+父级  | Get-WindowsFeature  | 父级
 
 #### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 元数据
 
@@ -256,7 +256,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 此设备从每个启用了应用程序发现的 VM 收集的已安装应用程序数据。 根据 VM 的操作系统，运行一个或多个命令。 这些数据将发送到 Azure。
 
-数据  | Command
+数据  | 命令
 --- | --- 
 名称 | rpm，dpkg，对齐
 版本 | rpm，dpkg，对齐

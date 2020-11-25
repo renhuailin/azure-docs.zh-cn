@@ -10,11 +10,11 @@ ms.date: 07/14/2017
 ms.author: cynthn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 779a09532790ea272d8c95ac28f8c152216efc5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008644"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 
@@ -50,7 +50,7 @@ ms.locfileid: "89002957"
 
 ### <a name="create-the-template-file"></a>创建模板文件
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 CreateVMTemplate.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击 *myDotnetProject* >  **，单击“添加** > **新建项**，然后在 **Visual C# 项** 中选择 *文本文件*。 命名文件 CreateVMTemplate.json，然后单击“添加”。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -162,7 +162,7 @@ ms.locfileid: "89002957"
 
 若要为模板中的资源参数指定值，请创建包含值的参数文件。
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 Parameters.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击 *myDotnetProject* >  **，单击“添加** > **新建项**，然后在 **Visual C# 项** 中选择 *文本文件*。 命名文件 Parameters.json，然后单击“添加”。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -182,7 +182,7 @@ ms.locfileid: "89002957"
 
 在可部署模板之前，请先确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 从服务主体中，将获取对 Azure 资源管理器请求进行身份验证的令牌。 还应记录授权文件中所需的应用程序 ID、身份验证秘钥和的租户 ID。
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 azureauth.properties，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击 *myDotnetProject* >  **，单击“添加** > **新建项**，然后在 **Visual C# 项** 中选择 *文本文件*。 命名文件 azureauth.properties，然后单击“添加”。
 2. 添加这些授权属性：
 
     ```

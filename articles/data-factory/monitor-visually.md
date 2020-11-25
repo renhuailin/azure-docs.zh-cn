@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331445"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96008763"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
@@ -38,9 +38,9 @@ ms.locfileid: "94331445"
 | 管道名称 | 管道的名称 |
 | 运行开始时间 | 管道运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | 结束运行 | 管道运行的结束日期和时间 (MM/DD/YYYY，HH： MM： SS AM/PM)  |
-| Duration | 运行持续时间 (HH:MM:SS) |
+| 持续时间 | 运行持续时间 (HH:MM:SS) |
 | 触发者 | 启动了管道的触发器的名称 |
-| 状态 | **失败** 、 **成功** 、 **正在进行** 、 **已取消** 或 **已排队** |
+| 状态 | **失败**、**成功**、**正在进行**、**已取消** 或 **已排队** |
 | 批注 | 与管道关联的可筛选标记  |
 | 参数 | 管道运行的参数（名称/值对） |
 | 错误 | 在管道失败的情况下出现的运行错误 |
@@ -62,7 +62,7 @@ ms.locfileid: "94331445"
 
 此列表视图显示了与每个管道运行对应的活动运行。 将鼠标悬停在特定活动运行上，以获取特定于运行的信息，如 JSON 输入、JSON 输出和特定于活动的监视体验。
 
-![用于监视活动运行的列表视图](media/monitor-visually/activity-runs.png)
+![存在有关 SalesAnalyticsMLPipeline 的信息，后跟活动运行的列表。](media/monitor-visually/activity-runs.png)
 
 | **列名** | **说明** |
 | --- | --- |
@@ -70,8 +70,8 @@ ms.locfileid: "94331445"
 | 活动类型 | 活动类型，如“复制”、“ExecuteDataFlow”或“AzureMLExecutePipeline” |
 | 操作 | 图标，用于查看 JSON 输入信息、JSON 输出信息或详细的特定于活动的监视体验 | 
 | 运行开始时间 | 活动运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| Duration | 运行持续时间 (HH:MM:SS) |
-| 状态 | **失败** 、 **成功** 、 **正在进行** 或 **已取消** |
+| 持续时间 | 运行持续时间 (HH:MM:SS) |
+| 状态 | **失败**、**成功**、**正在进行** 或 **已取消** |
 | Integration Runtime | 运行活动时所在的 Integration Runtime |
 | 用户属性 | 活动的用户定义属性 |
 | 错误 | 在活动失败的情况下出现的运行错误 |
@@ -79,7 +79,7 @@ ms.locfileid: "94331445"
 
 如果某个活动失败，可通过单击 "错误" 列中的图标来查看详细的错误消息。 
 
-![用于监视活动运行的列表视图](media/monitor-visually/activity-run-error.png)
+![将出现一条包含错误详细信息的通知，其中包括错误代码、失败类型和错误详细信息。](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
 
@@ -100,11 +100,11 @@ ms.locfileid: "94331445"
 
 ## <a name="rerun-pipelines-and-activities"></a>重新运行管道和活动
 
-若要重新运行之前从开始运行的管道，请将鼠标悬停在特定管道运行上，然后选择 " **重新运行** "。 如果选择多个管道，则可以使用 " **重新运行** " 按钮来运行它们。
+若要重新运行之前从开始运行的管道，请将鼠标悬停在特定管道运行上，然后选择 " **重新运行**"。 如果选择多个管道，则可以使用 " **重新运行** " 按钮来运行它们。
 
 ![重新运行管道](media/monitor-visually/rerun-pipeline.png)
 
-如果要从特定点重新运行，则可以从 "活动运行" 视图中执行此操作。 选择要从其开始的活动，然后选择 " **从活动重新运行** "。 
+如果要从特定点重新运行，则可以从 "活动运行" 视图中执行此操作。 选择要从其开始的活动，然后选择 " **从活动重新运行**"。 
 
 ![重新运行活动运行](media/monitor-visually/rerun-activity.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "94331445"
 
 通过单击管道运行旁边的消耗图标，可以查看运行消耗的资源。 
 
-![屏幕截图显示了管道使用的资源。](media/monitor-visually/monitor-consumption-1.png)
+![屏幕截图显示了可查看管道所用资源的位置。](media/monitor-visually/monitor-consumption-1.png)
 
 单击此图标会打开相应管道运行所使用的资源的消耗报告。 
 
@@ -153,7 +153,7 @@ ms.locfileid: "94331445"
 
 可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视”页上，依次选择“监视” > “警报和指标”，以开始操作。
 
-![“数据工厂监视”页](media/monitor-visually/start-page.png)
+![数据工厂监视页](media/monitor-visually/start-page.png)
 
 有关此功能的 7 分钟介绍和演示，请观看以下视频：
 
@@ -173,7 +173,7 @@ ms.locfileid: "94331445"
 
     ![目标条件的框](media/monitor-visually/add-criteria-1.png)
 
-    ![屏幕截图，显示你选择一个指标来设置警报条件的位置。](media/monitor-visually/add-criteria-2.png)
+    ![屏幕截图显示了选择一个指标来设置警报条件的位置。](media/monitor-visually/add-criteria-2.png)
 
     ![条件列表](media/monitor-visually/add-criteria-3.png)
 

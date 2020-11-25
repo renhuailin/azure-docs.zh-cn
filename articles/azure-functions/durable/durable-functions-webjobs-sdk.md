@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009494"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -19,7 +19,7 @@ ms.locfileid: "87092994"
 
 在 WebJobs SDK 的版本 3.x 中，主机是 `IHost` 的实现，而在版本 2.x 中，你使用 `JobHost` 对象。
 
-WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，签出 v1** 分支，然后转到 samples\\webjobssdk\\chaining** 文件夹。
+WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，签出 v1 分支，然后转到 samples\\webjobssdk\\chaining 文件夹。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,9 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 完成本文中的步骤：
 
-* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
+* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发** 工作负荷）。
 
-  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” > “获取工具和功能”以添加该工作负荷。**** ****
+  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” > “获取工具和功能”以添加该工作负荷。 
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
@@ -47,13 +47,13 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 若要将 Durable Functions 作为 WebJobs 运行，必须先创建控制台应用。 WebJobs SDK 项目只是一个装有相应 NuGet 包的控制台应用项目。
 
-在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” > “控制台应用(.NET Framework)”。**** **** **** 在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
+在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” > “控制台应用(.NET Framework)”。   在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
 
-Visual Studio 还有一个 WebJob 项目模板，选择“云” > “Azure WebJob (.NET Framework)”即可使用此模板。**** **** 此模板会安装许多的包，其中一些包可能并不需要。
+Visual Studio 还有一个 WebJob 项目模板，选择“云” > “Azure WebJob (.NET Framework)”即可使用此模板。  此模板会安装许多的包，其中一些包可能并不需要。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
-需要 WebJobs SDK 的 NuGet 包、核心绑定、日志记录框架和 Durable Task 扩展。 下面是这些包的“包管理器控制台”命令，并提供了截至编写本文时的最新稳定版本号：****
+需要 WebJobs SDK 的 NuGet 包、核心绑定、日志记录框架和 Durable Task 扩展。 下面是这些包的“包管理器控制台”命令，并提供了截至编写本文时的最新稳定版本号：
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0

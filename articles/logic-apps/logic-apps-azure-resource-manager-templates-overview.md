@@ -7,11 +7,11 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
 ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009766"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -71,7 +71,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 逻辑应用模板使用以下文件名格式：
 
-**<*逻辑应用名称* >.json**
+**<*逻辑应用名称*>.json**
 
 > [!IMPORTANT]
 > 模板语法区分大小写，因此请确保使用一致的大小写。 
@@ -187,8 +187,8 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 若要提供模板参数的值，请将这些值存储在[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，就可以根据部署需求使用不同的参数文件。 下面是要使用的文件名格式：
 
-* 逻辑应用模板文件名： **<*逻辑应用名称* >.json**
-* 参数文件名： **<*逻辑应用名称* >.parameters.json**
+* 逻辑应用模板文件名： **<*逻辑应用名称*>.json**
+* 参数文件名： **<*逻辑应用名称*>.parameters.json**
 
 下面是参数文件中的结构，其中包括一个用于[通过 Azure Key Vault 传递受保护参数值](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库引用：
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "92459092"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入 **F5** 。
+1. 在“从库中添加”部分的搜索框中，键入 **F5**。
 1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
@@ -365,9 +365,9 @@ ms.locfileid: "92459092"
     >[!Note]
     > 需要创建并指定 Kerberos 委托帐户。 参阅 KCD 部分（参阅附录中的“变量参考”）
 
-    * **用户名源** ：session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **用户名源**：session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
-    * **用户领域源** ：session.logon.last.domain
+    * **用户领域源**：session.logon.last.domain
 
         ![屏幕截图显示“单一登录 - 属性”页面，其中突出显示了“用户名源”和“用户域源”文本框。](./media/kerbf5-tutorial/configure29.png)
 
@@ -452,9 +452,9 @@ ms.locfileid: "92459092"
 *  **步骤 1：** 创建委派帐户
 
     **示例：**
-    * 域名： **superdemo.live**
+    * 域名：**superdemo.live**
 
-    * Sam 帐户名： **big-ipuser**
+    * Sam 帐户名：**big-ipuser**
 
     * New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
 

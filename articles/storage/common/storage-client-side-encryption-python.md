@@ -12,11 +12,11 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84804902"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008918"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
 
@@ -54,7 +54,7 @@ ms.locfileid: "84804902"
 存储客户端库使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
-目前，客户端库仅支持整个 Blob 的加密。 具体而言，用户使用 **create*** 方法时支持加密。 对于下载，支持完整下载和范围下载，并且可以并行化上传和下载。
+目前，客户端库仅支持整个 Blob 的加密。 具体而言，当用户使用 **create** _ 方法时，支持加密。 对于下载，支持完整下载和范围下载，并且可以并行化上传和下载。
 
 在加密过程中，客户端库生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
@@ -63,9 +63,9 @@ ms.locfileid: "84804902"
 > 
 > 
 
-下载已加密的 blob 需要使用 **get*** 便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 涉及使用 _*获取* *_ 便利方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载已加密 blob 中的任意范围（传入了范围参数的 **get*** 方法）需要调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。
+下载任意范围 (_*get* *_ 方法时，如果在已加密的 blob 中传递) 的范围参数，则需要调整用户提供的范围以获取少量可用于成功解密所请求的范围的附加数据。
 
 块 Blob 和页 Blob 只能使用此方案进行加密/解密。 目前不支持加密追加 Blob。
 
@@ -114,7 +114,7 @@ ms.locfileid: "84804902"
 > [!IMPORTANT]
 > 使用客户端加密时，请注意以下要点：
 > 
-> * 读取或写入到已加密的 Blob 时，请使用完整 Blob 上传命令和范围/完整 Blob 下载命令。 避免使用协议操作（如“放置块”、“放置块列表”、“写入页”或“清除页”）写入到已加密的 Blob，否则可能会损坏已加密的 Blob 并使其不可读。
+> _ 当读取或写入到已加密的 blob 时，请使用完整 blob 上传命令和范围/完整 blob 下载命令。 避免使用协议操作（如“放置块”、“放置块列表”、“写入页”或“清除页”）写入到已加密的 Blob，否则可能会损坏已加密的 Blob 并使其不可读。
 > * 对于表，存在类似的约束。 请注意，不要在未更新加密元数据的情况下更新已加密的属性。
 > * 如果在已加密的 Blob 上设置元数据，则可能会覆盖解密所需的与加密相关的元数据，因为设置元数据不是累加性的。 这也适用于快照；避免在创建已加密的 Blob 的快照时指定元数据。 如果必须设置元数据，务必调用 **get_blob_metadata** 方法首先获取当前加密元数据，并在设置元数据时避免并发写入。
 > * 对于只处理加密数据的用户，请在服务对象中启用 **require_encryption** 标志。 有关详细信息，请参阅下文。

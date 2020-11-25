@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/28/2019
 ms.author: raynew
 ms.openlocfilehash: de15e3028cf22cdd03ce29385278fc5e2babaa9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74566215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008460"
 ---
 本文假设
 
-1. 已在本地网络和 Azure 虚拟网络之间建立**站点到站点 VPN** 或 **ExpressRoute** 连接。
+1. 已在本地网络和 Azure 虚拟网络之间建立 **站点到站点 VPN** 或 **ExpressRoute** 连接。
 2. 用户帐户有权在 Azure 订阅（虚拟机已故障转移到其中）中创建新的虚拟机。
 3. 订阅至少有8个核心可用于启动新的进程服务器虚拟机。
-4. 可以提供**配置服务器通行短语**。
+4. 可以提供 **配置服务器通行短语**。
 
 > [!TIP]
 > 确保可以从 Azure 虚拟网络（虚拟机已故障转移到其中）连接配置服务器（在本地运行）的端口 443。

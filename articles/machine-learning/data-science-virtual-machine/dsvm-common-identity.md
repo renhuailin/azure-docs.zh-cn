@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009222"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -45,7 +45,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
       
         ![“用户”窗格](./media/add-user.png)
     
-   1. 输入用户的详细信息，如 **名称** 和 **用户名** 。 用户名的域名部分必须是初始默认域名“[domain name].onmicrosoft.com”，或已验证的非联合[自定义域名](../../active-directory/fundamentals/add-custom-domain.md)（例如“contoso.com”）。
+   1. 输入用户的详细信息，如 **名称** 和 **用户名**。 用户名的域名部分必须是初始默认域名“[domain name].onmicrosoft.com”，或已验证的非联合[自定义域名](../../active-directory/fundamentals/add-custom-domain.md)（例如“contoso.com”）。
     
    1. 复制或以其他方式记下生成的用户密码，以便在此过程完成后可以提供给用户。
     

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342104"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008406"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -24,7 +24,7 @@ ms.locfileid: "92342104"
 在 Azure 门户中创建新的 Azure 订阅：
 
 1. 导航到[订阅边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-1. 单击顶部的“+ 添加”按钮****
+1. 单击顶部的“+ 添加”按钮
 1. 如果提示，请登录
 1. 选择套餐，逐步完成创建新订阅的各个步骤
 
@@ -100,7 +100,7 @@ ms.locfileid: "92342104"
 1. 单击顶部的 " **添加** "。
 1. 选择服务 ``Microsoft.Storage`` 。
 1. 选择群集的子网。
-1. 在底部单击“添加”****。
+1. 在底部单击“添加”。
 
    ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 

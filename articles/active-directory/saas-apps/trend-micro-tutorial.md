@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514531"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教程：Azure Active Directory 与 Trend Micro Web Security (TMWS) 的单一登录 (SSO) 集成
 
@@ -224,7 +224,7 @@ ms.locfileid: "92514531"
 
 1. 访问任何 Internet 网站。 TMWS 会将你转到 TMWS 强制网络门户。
 
-1. 指定 Active Directory 帐户（格式： *domain*\\*sAMAccountName* 或 *sAMAccountName*@*domain* ）、电子邮件地址或 UPN，然后选择“登录”  。 TMWS 会将你转到 Azure AD 登录窗口。
+1. 指定 Active Directory 帐户（格式：*domain*\\*sAMAccountName* 或 *sAMAccountName*@*domain*）、电子邮件地址或 UPN，然后选择“登录”  。 TMWS 会将你转到 Azure AD 登录窗口。
 
 1. 在 Azure AD 登录窗口中，输入你的 Azure AD 帐户凭据。 现在你应当已登录到 TMWS。
 

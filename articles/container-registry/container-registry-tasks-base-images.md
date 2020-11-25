@@ -4,11 +4,11 @@ description: 了解应用程序容器映像的基础映像，并了解基础映�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009817"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>关于 ACR 任务的基础映像更新
 
@@ -52,7 +52,7 @@ ms.locfileid: "93025759"
 
 ## <a name="additional-considerations"></a>其他注意事项
 
-* **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（ *运行时* ）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime) 映像的基础映像更新。  
+* **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime) 映像的基础映像更新。  
 
 * **默认启用** - 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，会默认启用该任务，以便在更新基础映像时触发。 即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
 
@@ -60,7 +60,7 @@ ms.locfileid: "93025759"
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发 **至少一次** 。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
+* **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发 **至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
 
 * **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 `node:9-alpine`。 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
 

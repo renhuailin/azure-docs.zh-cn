@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809367"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009528"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -137,7 +137,7 @@ module.exports = async function(context, input) {
 > [!NOTE]
 > 此示例以 Durable Functions 2.x 版为目标。 在 1.x 版中，使用 `orchestrationClient` 而不是 `durableClient`。
 
-**__init__.py**
+**__init__ py**
 
 ```python
 import logging
@@ -800,7 +800,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.co
 > [!NOTE]
 > 此 API 并不旨在取代适当的错误处理和重试策略。 只能在业务流程实例出于意外的原因而失败时才使用此 API。 有关错误处理和重试策略的详细信息，请参阅[错误处理](durable-functions-error-handling.md)一文。
 
-请使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RewindAsync` (.NET) 或 `rewind` (JavaScript) 方法将业务流程恢复到 *Running* 状态。 此方法还会重新运行导致业务流程失败的活动或子业务流程执行失败操作。
+请使用 [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RewindAsync` (.NET) 或 `rewind` (JavaScript) 方法将业务流程恢复到 *Running* 状态。 此方法还会重新运行导致业务流程失败的活动或子业务流程执行失败操作。
 
 例如，假设某个工作流涉及到一系列[人工审批](durable-functions-overview.md#human)。 假设有一系列活动函数会通知某人做出审批并等待其实时响应。 在所有审批活动收到响应或超时后，假设另一活动因应用程序配置错误（例如数据库连接字符串无效）而失败。 结果是业务流程在工作流的深入阶段发生失败。 使用 `RewindAsync` (.NET) 或 `rewind` (JavaScript) API，应用程序管理员可以修复配置错误并将失败的业务流程回退到失败前的状态。 无需再次审批任何人工交互步骤，业务流程现可成功完成。
 
