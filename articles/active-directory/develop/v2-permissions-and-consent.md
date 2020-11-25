@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
 ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974147"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -52,11 +52,11 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 ## <a name="permission-types"></a>权限类型
 
-Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应用程序权限**。
+Microsoft 标识平台支持两种类型的权限：**委托的权限** 和 **应用程序权限**。
 
-* **委托的权限**由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对目标资源发出调用时，该应用可充当登录的用户。 某些委托的权限可由非管理用户许可，但某些更高特权的权限需要[管理员许可](#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../roles/permissions-reference.md)。
+* **委托的权限** 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对目标资源发出调用时，该应用可充当登录的用户。 某些委托的权限可由非管理用户许可，但某些更高特权的权限需要[管理员许可](#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../roles/permissions-reference.md)。
 
-* **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](#requesting-consent-for-an-entire-tenant)。
+* **应用程序权限** 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](#requesting-consent-for-an-entire-tenant)。
 
 有效权限是应用在对目标资源发出请求时拥有的权限。 在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
 
@@ -113,7 +113,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` 参数是应用程序所请求的委托权限列表（以空格分隔）。 将权限值附加到资源的标识符（应用程序 ID URI）可指示权限。 在该请求示例中，应用需要相应的权限来读取用户的日历，以及以用户身分发送邮件。
 
-在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可*记录。 如果用户未曾许可所请求权限的任何一项，并且管理员尚未代表整个组织许可这些权限，则 Microsoft 标识平台终结点将请求用户授予请求的权限。
+在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可* 记录。 如果用户未曾许可所请求权限的任何一项，并且管理员尚未代表整个组织许可这些权限，则 Microsoft 标识平台终结点将请求用户授予请求的权限。
 
 > [!NOTE]
 >在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。
@@ -132,7 +132,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 ## <a name="admin-restricted-permissions"></a>管理员限制的权限
 
-可将 Microsoft 生态系统中的某些高特权权限设置为*受管理员限制*。 此类权限的示例包括：
+可将 Microsoft 生态系统中的某些高特权权限设置为 *受管理员限制*。 此类权限的示例包括：
 
 * 使用 `User.Read.All` 读取所有用户的完整个人资料
 * 使用 `Directory.ReadWrite.All`
@@ -179,7 +179,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>向目录管理员请求权限
 
-准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台*管理员许可终结点*。
+准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台 *管理员许可终结点*。
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -197,9 +197,9 @@ https://graph.microsoft.com/mail.send
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必须 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope`        | 必须        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
+|`scope`        | 必需        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
 
 
 此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则其功能将类似于 v1.0 管理员许可终结点，并请求对应用所需权限中找到的所有范围的许可。
@@ -300,7 +300,7 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-这将产生显示所有已注册权限（如果根据许可和 `/.default` 的上述说明适用）的许可屏幕，然后返回 id_token，而不是访问令牌。  此行为针对从 ADAL 迁移到 MSAL 的某些旧客户端存在，并且**不应**由面向 Microsoft 标识平台终结点的新客户端使用。
+这将产生显示所有已注册权限（如果根据许可和 `/.default` 的上述说明适用）的许可屏幕，然后返回 id_token，而不是访问令牌。  此行为针对从 ADAL 迁移到 MSAL 的某些旧客户端存在，并且 **不应** 由面向 Microsoft 标识平台终结点的新客户端使用。
 
 ### <a name="client-credentials-grant-flow-and-default"></a>客户端凭据授权流和“/.default”
 

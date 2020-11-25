@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85360174"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973450"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>使用 ADConnectivityTool PowerShell 模块排查 Azure AD 连接问题
 
@@ -25,7 +25,7 @@ ADConnectivity 工具是一个 PowerShell 模块，可在以下任一情形下�
 - 在安装过程中，当网络连接问题阻止成功验证用户在向导中提供的 Active Directory 凭据时。
 - 在 PowerShell 会话中调用函数的用户安装后。
 
-该工具位于：C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1**** 
+该工具位于：C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1 
 
 ## <a name="adconnectivitytool-during-installation"></a>安装过程中的 ADConnectivityTool
 
@@ -47,7 +47,7 @@ ADConnectivity 工具是一个 PowerShell 模块，可在以下任一情形下�
 
 Azure AD Connect 实际上正在后台调用 `Start-NetworkConnectivityDiagnosisTools` 函数。  当凭据验证由于网络连接问题而失败时，将调用此函数。
 
-最后，只要从向导调用工具，就会生成详细的日志文件。 日志位于**C:\ProgramData\AADConnect\ADConnectivityTool-中 \<date> - \<time> 。**
+最后，只要从向导调用工具，就会生成详细的日志文件。 日志位于 **C:\ProgramData\AADConnect\ADConnectivityTool-中 \<date> - \<time> 。**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools 安装后
 安装 Azure AD Connect 后，可以使用 ADConnectivityTools PowerShell 模块中的任何函数。  

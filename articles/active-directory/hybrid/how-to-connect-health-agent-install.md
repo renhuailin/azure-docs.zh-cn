@@ -18,11 +18,11 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873431"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973280"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -314,7 +314,7 @@ ms.locfileid: "94873431"
 * 清除现有的代理配置。
 
 > [!NOTE]
-> 若要更新代理设置，必须重新启动所有 Azure AD Connect Health 代理服务。 运行以下命令：
+> 若要更新代理设置，必须重新启动所有 Azure AD Connect Health 代理服务。 运行下面的命令：
 >
 > `Restart-Service AzureADConnectHealth*`
 
@@ -344,7 +344,7 @@ Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 
-在此示例中：
+在本示例中：
 * 此 `address` 设置可以是 DNS 可解析的服务器名称或 IPv4 地址。
 * 您可以省略 `port` 。 否则，443为默认端口。
 

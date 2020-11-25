@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533268"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975338"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -68,7 +68,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>监视权限和 Azure 自定义角色
-如果上述内置角色不能满足团队的确切需求，则可以[创建具有更精细权限的 Azure 自定义的角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
+如果上述内置角色不能满足团队的确切需求，则可以[创建具有更精细权限的 Azure 自定义的角色](../../role-based-access-control/custom-roles.md)。 下面是适用于 Azure Monitor 的常见 Azure RBAC 操作及其说明。
 
 | Operation | 说明 |
 | --- | --- |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 然后可以将令牌提供给需要读取存储帐户的实体，它可以列出并读取存储帐户中的所有 blob。
 
-或者，如果需要控制此 RBAC 的权限，可以授予该实体特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 这对于需要能够设置存档到存储帐户的诊断设置或日志配置文件的用户来说是必需的。 例如，对于只需读取一个存储帐户的用户或应用程序，可以创建以下 Azure 自定义角色：
+或者，如果你需要通过 Azure RBAC 控制此权限，则可以向该实体授予该特定存储帐户的 storageAccounts/listkeys/action 权限。 这对于需要能够设置存档到存储帐户的诊断设置或日志配置文件的用户来说是必需的。 例如，对于只需读取一个存储帐户的用户或应用程序，可以创建以下 Azure 自定义角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 事件中心可以遵循类似的模式，但首先需要创建专用的侦听授权规则。 如果想要将访问权限授予只需侦听与监视相关的事件中心的应用程序，请执行以下操作：
 
 1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以称它为“monitoringReadOnly”。 如果可以，会希望将密钥直接提供给用户，并跳过下一步。
-2. 如果使用者必须能够临时获取密钥，请向用户授予对该事件中心执行 ListKeys 操作的权限。 这对于需要能够设置传输到事件中心的诊断设置或日志配置文件的用户来说也是必需的。 例如，可以创建 RBAC 规则：
+2. 如果使用者必须能够临时获取密钥，请向用户授予对该事件中心执行 ListKeys 操作的权限。 这对于需要能够设置传输到事件中心的诊断设置或日志配置文件的用户来说也是必需的。 例如，可以创建 Azure RBAC 规则：
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 有关详细信息，请参阅[网络安全性和 Azure 存储](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../../role-based-access-control/overview.md)
+* [阅读有关资源管理器中的 Azure RBAC 和权限的信息](../../role-based-access-control/overview.md)
 * [阅读 Azure 中的监视概述](../overview.md)
 

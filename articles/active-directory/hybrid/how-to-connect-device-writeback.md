@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973416"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -44,20 +44,20 @@ ms.locfileid: "89279255"
 使用自定义或快速设置安装 Azure AD Connect。 Microsoft 建议在启用设备写回之前，首先让所有用户和组成功完成同步。
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>第 2 部分：在 Azure AD Connect 中启用设备写回
-1. 再次运行安装向导。 从“其他任务”页中选择“配置设备选项”，并单击“下一步”。******** 
+1. 再次运行安装向导。 从“其他任务”页中选择“配置设备选项”，并单击“下一步”。 
 
     ![配置设备选项](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > 新的配置设备选项仅在版本 1.1.819.0 及较新版本中可用。
 
-2. 在设备选项页上，选择“配置设备写回”****。 选项“禁用设备写回”**** 将不可用，直到启用“设备写回”。 单击“下一步”**** 移到向导中的下一页。
+2. 在设备选项页上，选择“配置设备写回”。 选项“禁用设备写回”将不可用，直到启用“设备写回”。 单击“下一步”移到向导中的下一页。
     ![选择设备操作](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. 在写回页中，会看到提供的域是默认的设备写回林。
    ![自定义安装 - 设备写回目标林](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. “设备容器”**** 页提供了使用以下两个可用选项之一准备活动目录的选项：
+4. “设备容器”页提供了使用以下两个可用选项之一准备活动目录的选项：
 
     a. **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
 
@@ -94,10 +94,10 @@ ms.locfileid: "89279255"
 * 设备所在的林必须将林架构升级到 Windows 2012 R2 级别，以便显示设备对象和相关属性。
 * 如果安装向导已在运行，则不会检测到任何更改。 在此情况下，请先完成安装向导，再试一次。
 * 确保在初始化脚本中提供的帐户是 Active Directory 连接器实际使用的正确用户。 若要验证，请执行以下步骤：
-  * 从“开始”菜单打开“同步服务”。****
-  * 打开“连接器”选项卡。****
+  * 从“开始”菜单打开“同步服务”。
+  * 打开“连接器”选项卡。
   * 查找类型为 Active Directory 域服务的连接器并选择它。
-  * 在“操作”下面，选择“属性”。********
+  * 在“操作”下面，选择“属性”。
   * 转到“连接到 Active Directory 林”。 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
     ![同步服务管理器中的连接器帐户](./media/how-to-connect-device-writeback/connectoraccount.png)
 
@@ -130,4 +130,4 @@ ms.locfileid: "89279255"
 * [使用 Azure Active Directory Device Registration 设置本地条件性访问](../devices/overview.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -14,11 +14,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371845"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973909"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 可以使用 Azure Active Directory (Azure AD) 门户创建基本组。 对于本文而言，将由资源所有者（管理员）向单个资源中添加一个基本组，该组中将包括需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../enterprise-users/index.yml)。
@@ -55,15 +55,15 @@ ms.locfileid: "92371845"
 
 1. 选择预定义的“组类型”。 有关组类型的详细信息，请参阅[组和成员身份类型](#group-types)。
 
-1. 创建并添加一个**组名**。 选择一个容易记住并对该组来说有意义的名称。 将执行检查以确定另一个组是否已在使用该名称。 如果该名称已在使用中，为避免重复命名，系统将要求你更改组的名称。
+1. 创建并添加一个 **组名**。 选择一个容易记住并对该组来说有意义的名称。 将执行检查以确定另一个组是否已在使用该名称。 如果该名称已在使用中，为避免重复命名，系统将要求你更改组的名称。
 
-1. 添加该组的**组电子邮件地址**，或保留自动填写的电子邮件地址。
+1. 添加该组的 **组电子邮件地址**，或保留自动填写的电子邮件地址。
 
 1. **组说明。** 向组添加说明（可选）。
 
-1. 选择预定义的**成员身份类型（必填）** 。 有关成员身份类型的详细信息，请参阅[组和成员身份类型](#membership-types)。
+1. 选择预定义的 **成员身份类型（必填）** 。 有关成员身份类型的详细信息，请参阅[组和成员身份类型](#membership-types)。
 
-1. 选择“创建”。 随即将创建组，该组将准备就绪，可供添加成员。
+1. 选择“创建” 。 随即将创建组，该组将准备就绪，可供添加成员。
 
 1. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员  。
 

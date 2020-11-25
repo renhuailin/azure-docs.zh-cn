@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973195"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 传递身份验证：快速入门
 
@@ -69,12 +69,12 @@ ms.locfileid: "92678160"
      | --- | --- |
      | **80** | 下载证书吊销列表 (CRL) 的同时验证 TLS/SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
-     | **8080** （可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
+     | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
    - 如果你的防火墙或代理允许 DNS 允许列表，请添加 **\* msappproxy.net** 和 **\* servicebus.windows.net** 的连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
-    - 对于证书验证，请取消阻止以下 Url： **crl3.digicert.com:80** 、 **crl4.digicert.com:80** 、 **ocsp.digicert.com:80** 、 **www \. d-trust.net:80** 、 **root-c3-ca2-2009.ocsp.d-trust.net:80** 、 **crl.microsoft.com:80** 、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80** 。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+    - 对于证书验证，请取消阻止以下 Url： **crl3.digicert.com:80**、 **crl4.digicert.com:80**、 **ocsp.digicert.com:80**、 **www \. d-trust.net:80**、 **root-c3-ca2-2009.ocsp.d-trust.net:80**、 **crl.microsoft.com:80**、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云必备组件
 在使用步骤 2 Azure AD Connect 启用直通身份验证之前，请从 Azure 门户下载 PTA 代理的最新版本。  你需要确保代理版本为 **1.5.1742.0。** 或更高版本。  若要验证代理，请参阅 [升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
@@ -86,7 +86,7 @@ ms.locfileid: "92678160"
 启用通过 [Azure AD Connect](whatis-hybrid-identity.md) 进行直通身份验证。
 
 >[!IMPORTANT]
->可在 Azure AD Connect 主服务器或暂存服务器上启用直通身份验证。 强烈建议从主服务器启用。 如果将来要设置 Azure AD Connect 暂存服务器， **必须** 继续选择直通身份验证作为登录选项；选择另一个选项将在租户上 **禁用** 直通身份验证并覆盖主服务器中的设置。
+>可在 Azure AD Connect 主服务器或暂存服务器上启用直通身份验证。 强烈建议从主服务器启用。 如果将来要设置 Azure AD Connect 暂存服务器，**必须** 继续选择直通身份验证作为登录选项；选择另一个选项将在租户上 **禁用** 直通身份验证并覆盖主服务器中的设置。
 
 若是首次安装 Azure AD Connect，请选择[自定义安装路径](how-to-connect-install-custom.md)。 在“用户登录”页面，选择“直通身份验证”作为“登录方法”。 成功完成上述步骤后，将在 Azure AD Connect 所在的同一服务器上安装直通身份验证代理。 此外，还会在租户中启用直通身份验证功能。
 
@@ -142,7 +142,7 @@ ms.locfileid: "92678160"
 ![Azure Active Directory 管理中心：“下载代理”窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理 _之前_ ，请查看并接受其 [服务条款](https://aka.ms/authagenteula)。
+>也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理 _之前_，请查看并接受其 [服务条款](https://aka.ms/authagenteula)。
 
 以下是部署独立身份验证代理的两种方法：
 
@@ -166,7 +166,7 @@ ms.locfileid: "92678160"
   ```
 
 >[!IMPORTANT]
->如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不 **受支持** 。
+>如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不 **受支持**。
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>步骤5：配置智能锁定功能
 
