@@ -16,11 +16,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595978"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971155"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
@@ -40,7 +40,7 @@ ms.locfileid: "91595978"
 
 ![媒体服务内容保护工作流](./media/content-protection/content-protection.svg)
   
-&#42; *动态加密支持 AES-128 明文密钥、CBCS 和 CENC。有关详细信息，请参阅[支持矩阵](#streaming-protocols-and-encryption-types)。*
+&#42; *动态加密支持 AES-128 明文密钥、CBCS 和 CENC。有关详细信息，请参阅 [支持矩阵](#streaming-protocols-and-encryption-types)。*
 
 本文解释的概念和术语可帮助你了解媒体服务的内容保护功能。
 
@@ -177,7 +177,7 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 
 ## <a name="controlling-content-access"></a>控制内容访问
 
-可以通过配置内容密钥策略来控制谁有权访问内容。 媒体服务支持通过多种方式对发出密钥请求的用户进行授权。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥策略可以采用*开放*或*令牌*限制。
+可以通过配置内容密钥策略来控制谁有权访问内容。 媒体服务支持通过多种方式对发出密钥请求的用户进行授权。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥策略可以采用 *开放* 或 *令牌* 限制。
 
 若要在不授权的情况下向任何人颁发许可证，可以使用开放限制的内容密钥策略。 例如，如果你的收入基于广告而不是基于订阅。  
 

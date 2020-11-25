@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972753"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：为 Microsoft 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) 连接同步中配置首选数据位置的属性。当某人使用 Microsoft 365 中的多地理功能时，可以使用此属性来指定用户的 Microsoft 365 数据的地理位置。 （术语 *区域* 和 *地域* 可以互换使用。）
@@ -29,7 +29,7 @@ ms.locfileid: "94411127"
 ## <a name="enable-synchronization-of-preferred-data-location"></a>启用首选数据位置的同步
 默认情况下，用户 Microsoft 365 资源与 Azure AD 租户位于同一地域。 例如，如果你的租户位于北美，则用户的 Exchange 邮箱也位于北美。 对于跨国组织而言，这可能不是最佳情况。
 
-通过设置属性 **preferredDataLocation** ，可以定义用户的地域。 您可以将用户的 Microsoft 365 资源（例如邮箱和 OneDrive）放在与用户相同的地区中，并且仍有一个租户适用于整个组织。
+通过设置属性 **preferredDataLocation**，可以定义用户的地域。 您可以将用户的 Microsoft 365 资源（例如邮箱和 OneDrive）放在与用户相同的地区中，并且仍有一个租户适用于整个组织。
 
 > [!IMPORTANT]
 > 多地区目前可供具有活动企业协议和至少 250 Microsoft 365 服务订阅的客户使用。 有关详细信息，请咨询 Microsoft 代表。
@@ -67,14 +67,14 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 * Azure AD 连接器中对象类型 **User** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
 * Metaverse 中对象类型 **Person** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
 
-默认情况下，没有为同步启用 **preferredDataLocation** 。 此功能适用于较大的组织。 Windows Server 2019 中的 Active Directory 架构具有应用于此目的的属性 **preferredDataLocation** 。 如果尚未更新 Active Directory 架构并且无法执行此操作，则必须标识一个属性，以便为用户保存 Microsoft 365 地域。 每个组织的此属性都不相同。
+默认情况下，没有为同步启用 **preferredDataLocation**。 此功能适用于较大的组织。 Windows Server 2019 中的 Active Directory 架构具有应用于此目的的属性 **preferredDataLocation** 。 如果尚未更新 Active Directory 架构并且无法执行此操作，则必须标识一个属性，以便为用户保存 Microsoft 365 地域。 每个组织的此属性都不相同。
 
 > [!IMPORTANT]
 > Azure AD 允许使用 Azure AD PowerShell 直接配置 **云 User 对象** 上的 **preferredDataLocation** 属性。 若要配置 **已同步 User 对象** 上的此属性，必须使用 Azure AD Connect。
 
 在启用同步之前：
 
-* 如果尚未将 Active Directory 架构升级为2019，则确定要用作源属性的本地 Active Directory 属性。 它的类型应当是 **单值字符串** 。
+* 如果尚未将 Active Directory 架构升级为2019，则确定要用作源属性的本地 Active Directory 属性。 它的类型应当是 **单值字符串**。
 * 如果之前使用 Azure AD PowerShell 在 Azure AD 中的现有 **已同步 User 对象** 上配置了 **preferredDataLocation** 属性，则必须将属性值向后移植到本地 Active Directory 中的对应 **User** 对象。
 
     > [!IMPORTANT]
@@ -101,9 +101,9 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 如果已将 Active Directory 架构更新为2019，并在架构扩展之前安装了 Connect，则连接架构缓存没有已更新的架构。 然后，必须从向导中刷新架构，使其显示在 UI 中。
 
 1. 从桌面启动 Azure AD Connect 向导。
-2. 选择 " **刷新目录架构** " 选项，然后单击 " **下一步** "。
-3. 输入 Azure AD 凭据，然后单击 " **下一步** "。
-4. 在 " **刷新目录架构** " 页上，确保选择所有林并单击 " **下一步** "。
+2. 选择 " **刷新目录架构** " 选项，然后单击 " **下一步**"。
+3. 输入 Azure AD 凭据，然后单击 " **下一步**"。
+4. 在 " **刷新目录架构** " 页上，确保选择所有林并单击 " **下一步**"。
 5. 完成后，关闭向导。
 
 ![连接向导中刷新目录架构的屏幕截图](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
@@ -122,10 +122,10 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步骤4：将 **PreferredDataLocation** 添加到 Azure AD 连接器架构
 **仅当运行 Connect 版本1.3.21 或更低版本时，才需要执行此步骤。如果处于1.4.18 或更新版本，请跳到步骤5。**  
-默认情况下， **preferredDataLocation** 属性不会导入到 Azure AD 连接器空间。 若要将其添加到已导入属性的列表，请执行以下操作：
+默认情况下，**preferredDataLocation** 属性不会导入到 Azure AD 连接器空间。 若要将其添加到已导入属性的列表，请执行以下操作：
 
 1. 在 Synchronization Service Manager 中选择“连接器”选项卡。
-2. 右键单击 Azure AD 连接器，然后选择 " **属性** "。
+2. 右键单击 Azure AD 连接器，然后选择 " **属性**"。
 3. 在弹出对话框中，转到“选择属性”选项卡。
 4. 选择列表中的 **preferredDataLocation** 属性。
 5. 若要保存，请选择“确定”。
@@ -140,7 +140,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 若要创建新的入站规则，请选择“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | Attribute | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 说明 | *提供自定义说明* |  |
@@ -151,7 +151,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 将“范围筛选器”留空以包括所有对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
-6. 转到 " **转换" 选项卡** ，并实现以下转换规则：
+6. 转到 " **转换" 选项卡**，并实现以下转换规则：
 
     | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
@@ -164,12 +164,12 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 ## <a name="step-6-create-an-outbound-synchronization-rule"></a>步骤6：创建出站同步规则
 出站同步规则允许属性值从元节流到 Azure AD 中的 **preferredDataLocation** 属性：
 
-1. 请参阅 " **同步规则编辑器** "。
+1. 请参阅 " **同步规则编辑器**"。
 2. 将搜索筛选器的“方向”设置为“出站”。 
 3. 选择“添加新规则”。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | Attribute | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 说明 | *提供说明* ||
@@ -181,9 +181,9 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 5. 中转到 " **范围筛选器** " 选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | 属性 | 运算符 | 值 |
+    | Attribute | 运算符 | 值 |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | 用户 |
+    | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
     范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在此示例中，我们将使用 "Out to Azure AD – User Identity" OOB (全新) 同步规则的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **用户** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
@@ -201,19 +201,19 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 ## <a name="step-7-run-full-synchronization-cycle"></a>步骤7：运行完全同步周期
 一般情况下，完全同步周期是必需的。 这是因为你已向 Active Directory 和 Azure AD 连接器架构添加了新属性并引入了自定义同步规则。 在将更改导出到 Azure AD 之前验证更改。 在手动运行构成完全同步周期的步骤时，可以使用以下步骤来验证更改。
 
-1. 在本地 Active Directory 连接器上运行 **完全导入** ：
+1. 在本地 Active Directory 连接器上运行 **完全导入**：
 
    1. 在 Synchronization Service Manager 中转到“操作”选项卡。
-   2. 右键单击 **本地 Active Directory 连接器** ，并选择“运行”。
+   2. 右键单击 **本地 Active Directory 连接器**，并选择“运行”。
    3. 在对话框中，选择“完全导入”，并单击“确定”。
    4. 等待操作完成。
 
       > [!NOTE]
       > 如果源属性已包含在导入的属性的列表中，则可以在本地 Active Directory 连接器上跳过“完全导入”。 换而言之，在本文前面的步骤 2 中不需要进行任何更改。
 
-2. 在 Azure AD 连接器上运行 **完全导入** ：
+2. 在 Azure AD 连接器上运行 **完全导入**：
 
-   1. 右键单击 **Azure AD 连接器** ，然后选择 " **运行** "。
+   1. 右键单击 **Azure AD 连接器**，然后选择 " **运行**"。
    2. 在对话框中，选择“完全导入”，并单击“确定”。
    3. 等待操作完成。
 
@@ -221,15 +221,15 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
    本地 Active Directory 中的源属性和 Azure AD 中的 **preferredDataLocation** 已导入到每个相应的连接器空间。 在继续执行完全同步步骤之前，在本地 Active Directory 连接器空间中的现有 **User** 对象上执行预览。 选择的对象应具有填充的源属性。 能够成功预览 Metaverse 中填充的 **preferredDataLocation** 是一个很好的指标，表明已正确配置了同步规则。 有关如何执行预览的信息，请参阅[验证更改](how-to-connect-sync-change-the-configuration.md#verify-the-change)部分。
 
-4. 在本地 Active Directory 连接器上运行 **完全同步** ：
+4. 在本地 Active Directory 连接器上运行 **完全同步**：
 
-   1. 右键单击 **本地 Active Directory 连接器** ，并选择“运行”。
+   1. 右键单击 **本地 Active Directory 连接器**，并选择“运行”。
    2. 在对话框中，选择“完全同步”，然后选择“确定”。
    3. 等待操作完成。
 
-5. 验证 Azure AD 的 **挂起的导出** ：
+5. 验证 Azure AD 的 **挂起的导出**：
 
-   1. 右键单击 **Azure AD 连接器** ，并选择 " **搜索连接器空间** "。
+   1. 右键单击 **Azure AD 连接器**，并选择 " **搜索连接器空间**"。
    2. 在“搜索连接器空间”对话框中：
 
         a. 将“范围”设置为“挂起的导出”。 <br>
@@ -239,7 +239,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 6. 在 **Azure AD 连接器** 上运行 **导出**
 
-   1. 右键单击 **Azure AD 连接器** ，然后选择 " **运行** "。
+   1. 右键单击 **Azure AD 连接器**，然后选择 " **运行**"。
    2. 在“运行连接器”对话框中，选择“导出”，然后选择“确定”。
    3. 等待操作完成。
 

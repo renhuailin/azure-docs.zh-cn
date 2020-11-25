@@ -14,11 +14,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972583"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
@@ -26,13 +26,13 @@ ms.locfileid: "89401293"
 
 ## <a name="obtain-a-real-user-measurements-key"></a>获取实际用户度量密钥
 
-从客户端应用程序获取并发送到流量管理器的度量由使用唯一字符串的服务标识，称为**实际用户度量 (RUM) 密钥**。 可以使用 Azure 门户、REST API 或使用 PowerShell/Azure CLI 获取 RUM 密钥。
+从客户端应用程序获取并发送到流量管理器的度量由使用唯一字符串的服务标识，称为 **实际用户度量 (RUM) 密钥**。 可以使用 Azure 门户、REST API 或使用 PowerShell/Azure CLI 获取 RUM 密钥。
 
 若要使用 Azure 门户获取 RUM 密钥，请执行以下操作：
 1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
 2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”**** 下的“实际用户度量”****。
-4. 单击“生成密钥”**** 新建 RUM 密钥。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”下的“实际用户度量”。
+4. 单击“生成密钥”新建 RUM 密钥。
  
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "89401293"
 
     **图 2：实际用户度量密钥和度量 JavaScript**
  
-6. 单击“复制”**** 按钮复制 JavaScript 代码。 
+6. 单击“复制”按钮复制 JavaScript 代码。 
 
 >[!IMPORTANT]
 > 使用生成的 JavaScript 使“实际用户度量”功能正常工作。 对此脚本或“实际用户度量”使用的脚本进行任何更改可能会导致不可预知的行为。

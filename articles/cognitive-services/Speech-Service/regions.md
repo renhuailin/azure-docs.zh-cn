@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749313"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972635"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "88749313"
 考虑区域时，请注意以下几点：
 
 * 如果应用程序使用[语音 SDK](speech-sdk.md)，请在创建语音配置时提供区域标识符，例如 `westus`。
-* 如果应用程序使用某个语音服务的 [REST API](rest-apis.md)，则区域是你在发出请求时使用的终结点 URI 的一部分。
+* 如果应用程序使用某个语音服务的 [REST API](./overview.md#reference-docs)，则区域是你在发出请求时使用的终结点 URI 的一部分。
 * 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
 
 ## <a name="speech-sdk"></a>语音 SDK
@@ -38,15 +38,15 @@ ms.locfileid: "88749313"
 
 语音自定义门户在此处提供： https://speech.microsoft.com
 
-可以在以下区域使用语音服务，以进行**语音识别**、**文本转语音**和**翻译**：
+可以在以下区域使用语音服务，以进行 **语音识别**、**文本转语音** 和 **翻译**：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
+如果使用 [语音 SDK](speech-sdk.md)，则区域由 **区域标识符** 指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
 ### <a name="intent-recognition"></a>意向识别
 
-通过语音 SDK 实现**意向识别**的可用区域如下：
+通过语音 SDK 实现 **意向识别** 的可用区域如下：
 
 | 全球区域 | 区域           | 区域标识符 |
 | ------------- | ---------------- | -------------------- |
@@ -61,13 +61,13 @@ ms.locfileid: "88749313"
 | 北美 | 美国中西部  | `westcentralus`      |
 | 北美 | 美国西部          | `westus`             |
 | 北美 | 美国西部 2        | `westus2`            |
-| 南美洲 | 巴西南部     | `brazilsouth`        |
+| 南美洲 | Brazil South     | `brazilsouth`        |
 
-这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
+这是[语言理解服务 (LUIS)](../luis/luis-reference-regions.md) 支持的发布区域的子集。
 
 ### <a name="voice-assistants"></a>语音助手
 
-[语音 SDK](speech-sdk.md)支持以下区域中的**语音助手**功能：
+[语音 SDK](speech-sdk.md)支持以下区域中的 **语音助手** 功能：
 
 | 区域         | 区域标识符 |
 | -------------- | -------------------- |

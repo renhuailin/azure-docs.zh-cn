@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972532"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
 部署资源时，经常需要检索有关资源提供程序和类型的信息。 例如，若要存储密钥和机密，请使用 Microsoft.KeyVault 资源提供程序。 此资源提供程序提供名为“保管库”的资源类型，用于创建密钥保管库。
 
-资源类型的名称采用以下格式：{resource-provider}/{resource-type}  。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults** 。
+资源类型的名称采用以下格式：{resource-provider}/{resource-type}  。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults**。
 
 在本文中，学习如何：
 
@@ -45,7 +45,7 @@ ms.locfileid: "94426453"
 查看所有资源提供程序和订阅的注册状态：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户菜单上，选择“所有服务”。
+2. 在 Azure 门户菜单中，选择“所有服务”  。
 
     ![选择“订阅”](./media/resource-providers-and-types/select-all-services.png)
 
