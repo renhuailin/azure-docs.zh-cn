@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84704516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014731"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -23,13 +23,13 @@ ms.locfileid: "84704516"
 
 ## <a name="retry-policies"></a>重试策略
 
-对于最基本的异常和错误处理，可以在支持的任何操作或触发器（例如，请参阅[HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)）中使用*重试策略*。 重试策略指定当原始请求（导致 408、429 或 5xx 响应的任何请求）超时或失败时，操作或触发器是否且如何重试请求。 如果未使用任何其他重试策略，则使用默认策略。
+对于最基本的异常和错误处理，可以在支持的任何操作或触发器（例如，请参阅 [HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)）中使用 *重试策略*。 重试策略指定当原始请求（导致 408、429 或 5xx 响应的任何请求）超时或失败时，操作或触发器是否且如何重试请求。 如果未使用任何其他重试策略，则使用默认策略。
 
 重试策略类型如下所示：
 
 | 类型 | 说明 |
 |------|-------------|
-| **Default** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
+| **Default** | 此策略可 *按指数级增长* 间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 |
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 |
 | 无   | 不重新发送请求。 |
@@ -267,7 +267,7 @@ ms.locfileid: "84704516"
 
 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 函数提供了有关作用域中所有操作的结果的上下文。 `result()` 函数接受单个参数（即作用域的名称），并返回一个数组，其中包含该作用域中的所有操作结果。 这些操作对象包括与 `actions()` 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 ID 和输出。 若要发送作用域内失败的任何操作的上下文，可以轻松将 `@result()` 表达式与 `runAfter` 属性配对。
 
-若要为范围中具有 `Failed` 结果的每个操作运行操作，并将结果数组筛选到失败的操作，可将 `@result()` 表达式与[**筛选器数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和 [**For each**](../logic-apps/logic-apps-control-flow-loops.md) 循环配对。 可以采用筛选的结果数组并使用 `For_each` 循环对每个失败执行操作。
+若要为范围中具有 `Failed` 结果的每个操作运行操作，并将结果数组筛选到失败的操作，可将 `@result()` 表达式与 [**筛选器数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和 [**For each**](../logic-apps/logic-apps-control-flow-loops.md) 循环配对。 可以采用筛选的结果数组并使用 `For_each` 循环对每个失败执行操作。
 
 以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
 
@@ -312,9 +312,9 @@ ms.locfileid: "84704516"
 
 下面是描述此示例中发生的情况的详细演练：
 
-1. 要获取“My_Scope”中所有操作的结果，**筛选数组**操作将使用筛选表达式：`@result('My_Scope')`
+1. 要获取“My_Scope”中所有操作的结果，**筛选数组** 操作将使用筛选表达式：`@result('My_Scope')`
 
-1. **筛选数组**的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
+1. **筛选数组** 的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
 
 1. 对 `For_each` *筛选的数组* 输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
 

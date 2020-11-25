@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014000"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U SQL 脚本来处理数据 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -26,7 +26,7 @@ ms.locfileid: "92632118"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动** 。 
+Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
@@ -123,7 +123,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | :------------------ | :--------------------------------------- | :------- |
 | name                | 管道中活动的名称     | 是      |
 | description         | 描述活动用途的文本。  | 否       |
-| type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL** 。 | 是      |
+| type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL**。 | 是      |
 | linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 是      |
 | scriptLinkedService | 将包含脚本的 **Azure Data Lake Store** 或 **Azure 存储** 链接到数据工厂的链接服务 | 是      |
@@ -131,7 +131,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否       |
 | parameters          | 要传入 U-SQL 脚本的参数。    | 否       |
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本。 | 否       |
-| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一： **Semantic：** 只执行语义检查和必要的健全性检查； **Full：** 执行完整编译，包括语法检查、优化、代码生成等； **SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
+| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：**Semantic：** 只执行语义检查和必要的健全性检查；**Full：** 执行完整编译，包括语法检查、优化、代码生成等；**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
 
 请参阅 [SearchLogProcessing.txt](#sample-u-sql-script) 了解有关脚本定义的信息。 
 

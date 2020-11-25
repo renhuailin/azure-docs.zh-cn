@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634277"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013881"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中将其用于传递到活动。
+可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中使用它们来传递到活动。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "92634277"
 
     ![Key Vault 访问策略](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    单击 " **添加** "，然后单击 " **保存** "。
+    单击 " **添加**"，然后单击 " **保存**"。
 
 3. 导航到 Key Vault 机密并复制机密标识符。
 
@@ -49,10 +49,10 @@ ms.locfileid: "92634277"
 
 4. 在数据工厂管道中，添加新的 Web 活动，并按如下所示对其进行配置。  
 
-    |properties  |值  |
+    |属性  |值  |
     |---------|---------|
     |安全输出     |True         |
-    |代码     |[机密 URI 值]？ api 版本 = 7。0         |
+    |URL     |[机密 URI 值]？ api 版本 = 7。0         |
     |方法     |GET         |
     |身份验证     |MSI         |
     |资源        |https://vault.azure.net       |
@@ -65,7 +65,7 @@ ms.locfileid: "92634277"
     > [!CAUTION]
     > 将 Secure Output 选项设置为 true，以防止机密值以纯文本格式记录。  使用此值的任何其他活动都应将其“安全输入”选项设置为 true。
 
-5. 若要使用另一个活动中的值，请使用以下代码表达式 **@activity ( "Web1" )** 。
+5. 若要使用另一个活动中的值，请使用以下代码表达式 **@activity ( "Web1" )**。
 
     ![代码表达式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

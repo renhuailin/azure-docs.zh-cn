@@ -1,23 +1,25 @@
 ---
 title: 教程 - 从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 titleSuffix: Microsoft identity platform
-description: 在本教程中，将使用 Blazor WebAssembly 应用中的 Microsoft 标识平台让用户登录并调用受保护的 API。
+description: 在本教程中，将使用 Blazor WebAssembly (WASM) 应用中的 Microsoft 标识平台让用户登录并调用受保护的 API。
 author: knicholasa
 ms.author: nichola
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ba3607c522191644ec0cc63db118de285d297c48
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221471"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628058"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
-[Blazor WebAssembly](/aspnet/core/blazor#blazor-webassembly) 是一种单页应用框架，可通过 .NET 构建交互式客户端 Web 应用。 本教程将创建一个应用，使其使用 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)，从 Blazor WebAssembly (Blazor WASM) 应用让用户登录并从受保护的 API 中检索数据。
+Blazor WebAssembly (WASM) 是一种单页应用框架，可通过 .NET 构建交互式客户端 Web 应用。 在本教程中，你将了解如何使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，在 Blazor WASM 应用中实施身份验证以及通过 Microsoft Graph 检索数据。
+
+我们还提供了[关于 Blazor Server 的教程](tutorial-blazor-server.md)。 
 
 在本教程中，将：
 
@@ -239,5 +241,5 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Microsoft 标识平台最佳做法和建议](./identity-platform-integration-checklist.md)
-- [ASP.NET Core Blazor 简介](/aspnet/core/blazor)
+> [!div class="nextstepaction"]
+> [Microsoft 标识平台最佳做法和建议](./identity-platform-integration-checklist.md)

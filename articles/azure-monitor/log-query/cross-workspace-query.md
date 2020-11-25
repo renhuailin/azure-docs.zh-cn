@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612076"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013643"
 ---
-# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>跨工作区和应用跨 Azure Monitor 执行日志查询
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在 Azure Monitor 中执行跨工作区和应用的日志查询
 
-Azure Monitor 日志在同一资源组、另一资源组或其他订阅中跨多个 Log Analytics 工作区和 Application Insights 应用支持查询。 这可以提供数据的系统级视图。
+Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中的多个 Log Analytics 工作区和 Application Insights 应用进行查询。 这可以提供数据的系统级视图。
 
-可以通过两种方法来查询存储在多个工作区和应用程序中的数据：
-1. 通过指定工作区和应用程序详细信息来显式进行。 本文详细介绍了这一技术。
-2. 使用 [资源上下文查询](../platform/design-logs-deployment.md#access-mode)隐式使用。 当你在特定资源、资源组或订阅的上下文中进行查询时，将从包含这些资源的数据的所有工作区中提取相关数据。 Application Insights 存储在应用中的数据将不会被提取。
+可以通过两种方法来查询存储在多个工作区和应用中的数据：
+1. 通过指定工作区和应用详细信息来显式查询。 本文详细介绍了这一方法。
+2. 隐式使用[资源上下文查询](../platform/design-logs-deployment.md#access-mode)。 当你在特定资源、资源组或订阅的上下文中查询时，将从包含这些资源的数据的所有工作区中提取相关数据。 将不会提取存储在应用中的 Application Insights 数据。
 
 > [!IMPORTANT]
 > 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则遥测与其他所有日志数据一起存储在 Log Analytics 工作区中。 使用 log() 表达式编写一个查询来包括多个工作区中的应用。 对于同一个工作区中的多个应用，则无需跨工作区查询。
@@ -29,7 +29,7 @@ Azure Monitor 日志在同一资源组、另一资源组或其他订阅中跨多
 
 * 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
 * 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../learn/tutorial-logs-dashboards.md)。 
-* 仅当前 [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)支持日志警报中的跨资源查询。 如果使用的是旧的 Log Analytics 警报 API，则需要 [切换到当前 API](../platform/alerts-log-api-switch.md)。
+* 仅当前 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 如果使用的是旧的 Log Analytics 警报 API，则需要 [切换到当前 API](../platform/alerts-log-api-switch.md)。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询

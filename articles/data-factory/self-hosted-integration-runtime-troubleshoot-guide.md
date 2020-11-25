@@ -2,17 +2,17 @@
 title: 在 Azure 数据工厂中排查自承载集成运行时问题
 description: 了解如何在 Azure 数据工厂中排查自承载集成运行时问题。
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844034"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013427"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -320,7 +320,7 @@ System.ValueTuple.dll 是 .NET 行为，因此它位于 %windir%\Microsoft.NET\a
         1. 彻底卸载当前的自承载 IR。
         1. 安装自承载 IR 位。
         1. 按以下说明进行操作以更改服务帐户： 
-            1. 转到自承载 IR 的安装文件夹，切换到以下文件夹：Microsoft Integration Runtime\4.0\Shared。
+            1. 转到自承载 IR 的安装文件夹，切换到 " *Microsoft Integration Runtime\4.0\Shared*" 文件夹。
             1. 使用提升的权限启动命令行。 将 \<user> 和 \<password> 替换为自己的用户名和密码，然后运行以下命令 ：
                        
                 ```
@@ -731,7 +731,7 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
 - ADF 服务服务器证书的根 CA 在安装 SHIR 的计算机上不受信任。 
 - 你使用的是环境中的代理，并且代理已替换 ADF 服务的服务器证书，而已安装 SHIR 的计算机不信任替换的服务器证书。
 
-#### <a name="solution"></a>解决方案
+#### <a name="resolution"></a>解决方法
 
 - 对于原因1，请确保 ADF 服务器证书及其证书链受安装了 SHIR 的计算机的信任。
 - 出于第2原因，请信任 SHIR 计算机上的替换根 CA，或将代理配置为不替换 ADF 服务器证书。
@@ -744,6 +744,7 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
   ![DigiCert 全局根 G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 如果没有，请从 [此处](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )下载。 
+
 
 ## <a name="self-hosted-ir-sharing"></a>自承载 IR 共享
 

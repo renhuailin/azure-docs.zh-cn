@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014357"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
 
@@ -42,7 +42,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅|
     | 资源组 | 选择 " **新建**"，输入 *myResourceGroup*，然后选择 **"确定"** |
@@ -81,7 +81,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建专用终结点”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
@@ -148,7 +148,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
     | 选择入站端口 | 选择“HTTP”和“RDP”。 |
     ||
 

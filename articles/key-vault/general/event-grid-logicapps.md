@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013983"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用逻辑应用接收有关 Key Vault 机密状态更改的电子邮件
 
@@ -53,14 +53,14 @@ ms.locfileid: "93284497"
     ![逻辑应用设计器 - 事件处理程序](../media/eventgrid-logicappdesigner2.png)
 
 1. 选择“+ 新步骤”。此时会打开一个窗口，供用户“选择操作”。
-1. 搜索“电子邮件”。 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook** 。 使用其他电子邮件提供程序时执行的步骤类似。
+1. 搜索“电子邮件”。 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。
 1. 选择“发送电子邮件 (V2)”操作。
 
    ![逻辑应用设计器 - 发送电子邮件](../media/eventgrid-logicappdesigner3.png)
 
 1. 生成电子邮件模板：
     - **发件人：** 输入接收通知电子邮件的电子邮件地址。 对于本教程，请使用你可以访问的电子邮件帐户进行测试。
-    - **主题** 和 **正文** ：编写电子邮件的文本。 从选择器工具中选择 JSON 属性，以添加基于事件数据的动态内容。 可以使用 `@{triggerBody()?['Data']}` 检索事件的数据。
+    - **主题** 和 **正文**：编写电子邮件的文本。 从选择器工具中选择 JSON 属性，以添加基于事件数据的动态内容。 可以使用 `@{triggerBody()?['Data']}` 检索事件的数据。
 
     电子邮件模板可能如以下示例所示。
 

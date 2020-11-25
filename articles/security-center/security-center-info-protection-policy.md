@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
 ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013779"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 安全中心中的 SQL 信息保护策略
  
@@ -55,7 +55,7 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 
 ### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>从安全中心的 "定价和设置" 页访问策略 <a name="sqlip-tenant"></a>
 
-在安全中心的 " **定价和设置** " 页中，选择 " **SQL 信息保护** "。
+在安全中心的 " **定价和设置** " 页中，选择 " **SQL 信息保护**"。
 
 > [!NOTE]
 > 此选项仅对具有租户级别权限的用户显示。 
@@ -70,13 +70,13 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 
 使用安全中心的建议 "应该对 SQL 数据库中的敏感数据进行分类"，以便查看数据库的 "数据发现" 和 "分类" 页。 在这里，你还会看到发现的列包含我们建议你进行分类的信息。
 
-1. 在安全中心的 " **建议** " 页上，搜索 **应分类的 SQL 数据库中的建议敏感数据** 。
+1. 在安全中心的 " **建议** " 页上，搜索 **应分类的 SQL 数据库中的建议敏感数据**。
 
     :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="查找提供对 SQL 信息保护策略的访问的建议":::
 
 1. 从 "建议详细信息" 页中，从 " **正常** " 或 "不 **正常** " 选项卡中选择数据库。
 
-1. 此时将打开 " **数据发现 & 分类** " 页。 选择“配置”  。
+1. 此时将打开 " **数据发现 & 分类** " 页。 选择“配置” 。
 
     :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="从 Azure 安全中心的相关建议打开 SQL 信息保护策略":::
 
@@ -103,11 +103,11 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 
 管理和自定义信息类型：
 
-1. 选择 " **管理信息类型** "。
+1. 选择 " **管理信息类型**"。
 
     :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="管理信息保护策略的信息类型":::
 
-1. 若要添加新类型，请选择 " **创建信息类型** "。 你可以为信息类型配置名称、说明和搜索模式字符串。 搜索模式字符串可以选择使用带有通配符的关键字（使用字符 %），自动发现引擎根据列的元数据使用该关键字来识别数据库中的敏感数据。
+1. 若要添加新类型，请选择 " **创建信息类型**"。 你可以为信息类型配置名称、说明和搜索模式字符串。 搜索模式字符串可以选择使用带有通配符的关键字（使用字符 %），自动发现引擎根据列的元数据使用该关键字来识别数据库中的敏感数据。
  
     :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="为信息保护策略配置新的信息类型":::
 
@@ -122,7 +122,7 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 
 1. 完成信息类型管理后，请确保关联相关类型和相关标签，方法是单击特定标签的“配置”，然后根据需要添加或删除信息类型。
 
-1. 若要应用更改，请在主 **标签** 页面中选择 " **保存** "。
+1. 若要应用更改，请在主 **标签** 页面中选择 "**保存**"。
  
 
 ## <a name="exporting-and-importing-a-policy"></a>导出和导入策略

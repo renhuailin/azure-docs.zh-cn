@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339724"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013796"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
@@ -88,7 +88,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 ### <a name="assign-azure-roles-to-users"></a>向用户分配 Azure 角色
-若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 Azure 角色，包括他们自己。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
+若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 Azure 角色，包括他们自己。 建议分配的角色是 **安全管理员** 或 **安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
 #### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 Azure 角色： 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 449f0a59cc8428ce8e19535d5cf0417bf4cf7ad0
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424676"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635545"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
 
@@ -163,11 +163,23 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 > [!TIP]
 > 若要创建在 Linux 而不是 Windows 上运行的函数应用，请将 pom.xml 文件中的 `runtime.os` 元素从 `windows` 更改为 `linux`。 [这些区域](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)支持在消耗计划中运行 Linux。 不能在同一个资源组中同时创建在 Linux 上运行的应用和在 Windows 上运行的应用。
 
-1. 在部署之前，必须使用 [az login](/cli/azure/authenticate-azure-cli) Azure CLI 命令登录到 Azure 订阅。 
+1. 在部署之前，请使用 Azure CLI 或 Azure PowerShell 登录到 Azure 订阅。 
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
+
+    使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure 帐户。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+    使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure 帐户。
+
+    ---
 
 1. 使用以下命令将项目部署到新的函数应用。
 

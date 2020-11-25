@@ -1,6 +1,6 @@
 ---
-title: 使用门户或 PowerShell 创建虚拟硬盘的快照
-description: 了解如何创建 Azure VM 的副本以用作备份，或使用门户或 PowerShell 解决问题。
+title: 使用门户或 PowerShell 创建虚拟硬盘驱动器的快照
+description: 了解如何使用门户或 PowerShell 创建 Azure VM 的副本来将其用作备份或用于排查问题。
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322307"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014306"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 
@@ -31,7 +31,7 @@ ms.locfileid: "89322307"
 4. 输入快照的 **名称** 。
 5. 选择现有的[资源组](../../azure-resource-manager/management/overview.md#resource-groups)，或键入新资源组的名称。 
 6. 选择 Azure 数据中心“位置” 。  
-7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
+7. 对于 **源磁盘**，选择要获取其快照的托管磁盘。
 8. 选择用于存储快照的“帐户类型”。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上。
 9. 选择“创建” 。
 

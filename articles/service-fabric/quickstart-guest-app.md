@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013592"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "91614098"
 
 在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。  
 
-将应用程序命名为 **MyGuestApp** ，然后按 " **创建**"。
+将应用程序命名为“MyGuestApp”，并按“创建”。 
 
 >[!IMPORTANT]
 >Node.js 可能会轻松突破针对 Windows 路径的 260 字符限制。 请对项目本身使用短路径，例如  c:\code\svc1。 （可选）可以按照 **[这些说明](https://stackoverflow.com/a/41687101/1664231)** 在 Windows 10 中启用长文件路径。

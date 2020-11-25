@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616172"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695259"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -154,6 +154,7 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
 * 支持根据 [SCIM 协议第 3.4.2 节](https://tools.ietf.org/html/rfc7644#section-3.4.2)查询用户或组。  默认情况下，按 `id` 检索用户，按 `username` 和 `externalId` 查询用户，以及按 `displayName` 查询组。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和管理员查询用户。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和成员查询组。  
+* 根据 SCIM 协议第 3.4.2.5 节，查询组资源时支持筛选器 [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)。
 * 接受使用一个持有者令牌对应用程序进行 Azure AD 身份验证和授权。
 * 支持软删除某个用户 `active=false`，然后再还原该用户 `active=true`（无论用户是否处于活动状态，都应在请求中返回用户对象）。 不应返回用户的唯一例外是，从应用程序中硬删除用户的情况。 
 

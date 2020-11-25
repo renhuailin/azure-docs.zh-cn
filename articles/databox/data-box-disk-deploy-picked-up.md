@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257446"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659414"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ ms.locfileid: "88257446"
     - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
     - 也可以在最近的卸货位置放置 Data Box Disk，而不是安排提货。
 
-### <a name="europe"></a>[欧洲](#tab/in-europe)
 
-如果在欧洲退回设备，请执行以下步骤。
+### <a name="europe-or-uk"></a>[欧洲或英国](#tab/in-europe-or-uk)
+
+如果在欧洲或英国退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上带有透明塑料套管的退件发货标签。 如果标签受损或丢失：
     - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
-3. 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。
-4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。
-5. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。
+3. 转到国家/地区 DHL Express 网站并选择“安排提货”。 在“是否需要发货标签”下，选择“否” > “我有 DHL 运单号码”  。
+4. 指定运单号码，然后单击“安排提货”以安排提货。
 
 ### <a name="australia"></a>[澳大利亚](#tab/in-australia)
 

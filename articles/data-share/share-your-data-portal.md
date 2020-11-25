@@ -5,22 +5,29 @@ author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
-ms.date: 08/19/2020
-ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89489929"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577492"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用 Azure Data Share 共享数据
 
-在此快速入门中，你将了解如何使用 Azure 门户设置新的 Azure Data Share。
+在此快速入门中，你将了解如何使用 Azure 门户设置新的 Azure Data Share，以便从存储帐户共享数据。
 
 ## <a name="prerequisites"></a>必备条件
 
-Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 收件人的 Azure 登录电子邮件地址（使用其电子邮件别名将无效）。
+* 如果源 Azure 数据存储位于与你将用于创建 Data Share 资源的 Azure 订阅不同的 Azure 订阅中，请在 Azure 数据存储所在的订阅中注册 [Microsoft.DataShare 资源提供程序](concepts-roles-permissions.md#resource-provider-registration)。 
 
+### <a name="share-from-a-storage-account"></a>从存储帐户共享
+
+* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](../storage/common/storage-account-create.md)
+* 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。
+* 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。 
 
 ## <a name="create-a-data-share-account"></a>创建 Data Share 帐户
 
@@ -30,7 +37,7 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
 1. 选择门户左上角的“创建资源”按钮 (+)。
 
-1. 搜索“Data Share”。**
+1. 搜索“Data Share”。
 
 1. 选择“Data Share”，然后选择“创建” 。
 
@@ -53,11 +60,11 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
    ![共享数据](./media/share-receive-data.png "共享数据") 
 
-1. 选择“开始共享数据”。
+1. 选择“开始共享数据”  。
 
 1. 选择“创建”。
 
-1. 填充共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
+1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
    ![EnterShareDetails](./media/enter-share-details.png "输入共享详细信息") 
 
@@ -67,7 +74,7 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
    ![向共享添加数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure Synapse Analytics 共享，系统将提示输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
+1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 
 
    ![AddDatasets](./media/add-datasets.png "添加数据集")    
 

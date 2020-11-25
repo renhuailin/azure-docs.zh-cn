@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe4c22042c31d55575320d9c3823783902700f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a42e3592eee0bc6f905a83e9b1845746dbfd91
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494768"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566856"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>导入 Azure 应用配置存储区
 
@@ -23,9 +23,9 @@ ms.locfileid: "87494768"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 Azure CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 若要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教程需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -40,9 +40,9 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令导入应用程序配置存储区。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令导入应用程序配置存储区。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | 导入应用程序配置存储区资源。 |
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073093"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636956"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,17 +86,24 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 | writetime | 是 |
 | 强制转换 | 否 |
 
-\* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+> [!NOTE]
+> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+
 
 
 聚合函数：
 
 |Command  |支持 |
 |---------|---------|
-| min | 是 |
-| max | 是 |
 | 平均值 | 是 |
 | count | 是 |
+| min | 是 |
+| max | 是 |
+| sum | 是 |
+
+> [!NOTE]
+> 聚合函数适用于常规列，而不适用于聚类分析列。
+
 
 Blob 转换函数：
  
@@ -260,7 +267,7 @@ Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致
 
 ## <a name="permission-and-role-management"></a>权限和角色管理
 
-Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 用于预配、旋转密钥、查看指标以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 不支持 CRUD 活动的角色。
+Azure Cosmos DB 支持 Azure 基于角色的访问控制 (Azure RBAC) 用于预配、旋转密钥、查看指标以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 不支持 CRUD 活动的角色。
 
 ## <a name="keyspace-and-table-options"></a>密钥空间和表选项
 

@@ -4,11 +4,11 @@ description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013626"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -75,7 +75,7 @@ ms.locfileid: "92318217"
 6. 在“存储”中，指定 VM 的存储目标。
 7. 在“磁盘格式”中，指定磁盘类型和大小。
 8. 在“网络映射”中，指定 VM 要连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
-9. 检查并确认设置，然后单击“完成”****。
+9. 检查并确认设置，然后单击“完成”。
 
 
 ## <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
@@ -125,13 +125,13 @@ ms.locfileid: "92318217"
 
 设备需连接 vCenter Server，以发现 VM 的配置和性能数据。
 
-1. 在**步骤 1：提供 vCenter Server 凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于在 vCenter Server 实例上发现 VM 的 vCenter Server 帐户添加“用户名”和“密码”  。
+1. 在 **步骤 1：提供 vCenter Server 凭据** 中，单击“添加凭据”以指定凭据的易记名称，为设备将用于在 vCenter Server 实例上发现 VM 的 vCenter Server 帐户添加“用户名”和“密码”  。
     - 你应该已在[上一教程](./tutorial-discover-vmware.md#create-an-account-to-access-vcenter)中设置具有所需权限的帐户。
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
-1. 在**步骤 2：提供 vCenter Server 详细信息**中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的 IP 地址/FQDN 。 可以保留“端口”的默认值 443，或指定 vCenter Server 侦听的自定义端口，然后单击“保存” 。
+1. 在 **步骤 2：提供 vCenter Server 详细信息** 中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的 IP 地址/FQDN 。 可以保留“端口”的默认值 443，或指定 vCenter Server 侦听的自定义端口，然后单击“保存” 。
 1. 单击“保存”后，设备将尝试通过提供的凭据验证与 vCenter Server 的连接，并根据 vCenter Server IP 地址/FQDN 在表中显示验证状态。
 1. 在开始发现之前，可以随时重新验证与 vCenter Server 之间的连接。
-1. 在**步骤 3：提供 VM 凭据来发现已安装的应用程序并执行无代理依赖项映射**中，单击“添加凭据”，并指定为其提供凭据的操作系统、凭据的易记名称以及“用户名”和“密码”  。 然后单击“保存”。
+1. 在 **步骤 3：提供 VM 凭据来发现已安装的应用程序并执行无代理依赖项映射** 中，单击“添加凭据”，并指定为其提供凭据的操作系统、凭据的易记名称以及“用户名”和“密码”  。 然后单击“保存”。
 
     - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
     - 如果不想使用这些功能，请通过单击滑块跳过该步骤。 你以后可以随时恢复使用这些功能。

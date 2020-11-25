@@ -12,11 +12,11 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669603"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013286"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -41,7 +41,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在 config.yaml 文件中将该 CA 证书声明到 IoT Edge 运行时。 对于开发和测试场景，如果 config.yaml 文件中没有声明证书，则 IoT Edge 运行时将创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，不管是自签名证书颁发机构颁发的证书，还是从商业证书颁发机构购买的证书。
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
+> 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
@@ -209,13 +209,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 如果网络设置要求显式允许从 IoT Edge 设备建立的连接，请查看以下 IoT Edge 组件列表：
 
-* **IoT Edge 代理**可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。
-* **IoT Edge 中心**可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。
-* **IoT Edge 守护程序**向 IoT 中心发出间歇性 HTTPS 调用。
+* **IoT Edge 代理** 可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。
+* **IoT Edge 中心** 可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。
+* **IoT Edge 守护程序** 向 IoT 中心发出间歇性 HTTPS 调用。
 
 在所有三种情况下，DNS 名称将与 \*azure-devices.net 模式匹配。
 
-此外，**容器引擎**通过 HTTPS 向容器注册表发出调用。 若要检索 IoT Edge 运行时容器映像，请使用 DNS 名称 mcr.microsoft.com。 容器引擎连接到部署中配置的其他注册表。
+此外，**容器引擎** 通过 HTTPS 向容器注册表发出调用。 若要检索 IoT Edge 运行时容器映像，请使用 DNS 名称 mcr.microsoft.com。 容器引擎连接到部署中配置的其他注册表。
 
 此清单可作为防火墙规则的入手点：
 

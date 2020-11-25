@@ -10,11 +10,11 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334986"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013847"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -67,7 +67,7 @@ MXNet 是专为提高效率和灵活性而设计的深度学习框架。 具有 
 
 NVIDIA 深度学习 GPU 训练系统也称为 DIGITS，是用于简化常见深度学习任务的系统。 这些任务包括管理数据，在 GPU 系统上设计和训练神经网络，以及实时监视高级可视化效果的性能。
 
-DIGITS 可用作一项服务，称为 *digits* 。 启动服务，然后浏览到 `http://localhost:5000` 开始操作。
+DIGITS 可用作一项服务，称为 *digits*。 启动服务，然后浏览到 `http://localhost:5000` 开始操作。
 
 DIGITS 也可在 Conda 根环境中作为 Python 模块安装。
 
@@ -81,7 +81,7 @@ Theano 是用于高效数值计算的 Python 库。 它位于根环境和 py35 P
 
 ### <a name="torch"></a>Torch
 
-Torch 是广泛支持机器学习算法的科学计算框架。 位于 /dsvm/tools/torch， **th** 交互式会话和 LuaRocks 程序包管理器可在命令行中使用。 示例位于 /dsvm/samples/torch。
+Torch 是广泛支持机器学习算法的科学计算框架。 位于 /dsvm/tools/torch，**th** 交互式会话和 LuaRocks 程序包管理器可在命令行中使用。 示例位于 /dsvm/samples/torch。
 
 PyTorch 也位于根 Anaconda 环境中。 示例位于 /dsvm/samples/pytorch。
 
@@ -91,7 +91,7 @@ R 是数据分析和机器学习的最常用语言之一。 若要使用 R 进�
 
 使用 Machine Learning Server 可将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi 或 Emacs）中编辑 R 程序。 预安装了 Emacs 编辑器，可根据喜好使用。 Emacs ESS (Emacs Speaks Statistics) 包简化了 Emacs 编辑器内的 R 文件处理。
 
-若要打开 R 控制台，请在 shell 中输入 **R** 。 执行此命令将进入交互式环境。 若要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 来开发 R 程序。
+若要打开 R 控制台，请在 shell 中输入 **R**。 执行此命令将进入交互式环境。 若要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 来开发 R 程序。
 
 还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 进入 R 交互式界面后可以运行此脚本。 如前所述，可以在 shell 中输入 **R** 打开该界面。  
 
@@ -111,7 +111,7 @@ source activate root
 source activate py35
 ```
 
-若要调用 Python 交互式会话，请在 shell 中输入 **python** 。 
+若要调用 Python 交互式会话，请在 shell 中输入 **python**。 
 
 使用 Conda 或 pip 安装其他 Python 库。 对于 pip，如果不想要使用默认值，请先激活正确的环境：
 
@@ -206,11 +206,11 @@ SQuirrel SQL 是一个图形化 SQL 客户端，可连接到各种数据库（�
 
 SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
-- **bcp** ：bcp 工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
+- **bcp**：bcp 工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
 
   有关详细信息，请参阅[使用 bcp 连接](/sql/connect/odbc/linux-mac/connecting-with-bcp)。
 
-- **sqlcmd** ：可以使用 sqlcmd 工具输入 Transact-SQL 语句。 还可以在命令提示符下输入系统过程和脚本文件。 此工具使用 ODBC 运行 Transact-SQL 批处理。
+- **sqlcmd**：可以使用 sqlcmd 工具输入 Transact-SQL 语句。 还可以在命令提示符下输入系统过程和脚本文件。 此工具使用 ODBC 运行 Transact-SQL 批处理。
 
   有关详细信息，请参阅[使用 sqlcmd 连接](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd)。
 
@@ -228,13 +228,13 @@ SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
 VM 上安装有以下 Azure 工具：
 
-* **Azure CLI** ：可以使用 Azure 中的命令行接口通过 shell 命令创建和管理 Azure 资源。 若要打开 Azure 工具，请输入 **azure help** 。 有关详细信息，请参阅 [Azure CLI 文档页](/cli/azure/get-started-with-az-cli2)。
-* **Azure 存储资源管理器** ：Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
-* **Azure 库** ：下面是一些预安装的库。
+* **Azure CLI**：可以使用 Azure 中的命令行接口通过 shell 命令创建和管理 Azure 资源。 若要打开 Azure 工具，请输入 **azure help**。 有关详细信息，请参阅 [Azure CLI 文档页](/cli/azure/get-started-with-az-cli2)。
+* **Azure 存储资源管理器**：Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
+* **Azure 库**：下面是一些预安装的库。
   
-  * **Python** ：Python 中的 Azure 相关库包括 *azure* 、 *azureml* 、 *pydocumentdb* 和 *pyodbc* 。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 第四个库 pyodbc (连同用于 SQL Server 的 Microsoft ODBC 驱动程序) ，可以使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics。 输入 **pip 列表** 查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
-  * **R** ：R 中的 Azure 相关库包括 AzureML 和 RODBC。
-  * **Java** ：可在 VM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
+  * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 第四个库 pyodbc (连同用于 SQL Server 的 Microsoft ODBC 驱动程序) ，可以使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics。 输入 **pip 列表** 查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **R**：R 中的 Azure 相关库包括 AzureML 和 RODBC。
+  * **Java**：可在 VM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
 可以从预安装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
 
@@ -246,7 +246,7 @@ Azure 机器学习是完全托管的云服务，允许构建、部署和共享�
 
 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 实施机器学习模型使得以任何语言编写的客户端都能从这些模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
-还可以在 VM 上的 R 或 Python 中生成模型，然后在 Azure 机器学习中将其部署到生产环境。 我们已在 R ( **AzureML** ) 和 Python ( **azureml** ) 中分别安装了库以启用此功能。
+还可以在 VM 上的 R 或 Python 中生成模型，然后在 Azure 机器学习中将其部署到生产环境。 我们已在 R (**AzureML**) 和 Python (**azureml**) 中分别安装了库以启用此功能。
 
 > [!NOTE]
 > 这些说明专为 Windows 版 Data Science Virtual Machine 编写。 但是其中提供的有关将模型部署到 Azure 机器学习的信息也适用于 Linux VM。
@@ -255,12 +255,12 @@ Azure 机器学习是完全托管的云服务，允许构建、部署和共享�
 
 VM 随附一些已预编译并已在本地预装的机器学习工具和算法。 其中包括：
 
-* **Vowpal Wabbit** ：一种快速的在线学习算法。
-* **xgboost** ：提供经过优化的提升树算法的工具。
-* **Rattle** ：基于 R 的图形工具，可用于简单的数据浏览和建模。
-* **Python** ：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
-* **LightGBM** ：快速、分布式、高性能的梯度提升框架，基于决策树算法。
-* **R** ：有丰富的机器学习函数库可供 R 使用。预装的库包括 lm、glm、randomForest 和 rpart。 可运行以下命令安装其他库：
+* **Vowpal Wabbit**：一种快速的在线学习算法。
+* **xgboost**：提供经过优化的提升树算法的工具。
+* **Rattle**：基于 R 的图形工具，可用于简单的数据浏览和建模。
+* **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
+* **LightGBM**：快速、分布式、高性能的梯度提升框架，基于决策树算法。
+* **R**：有丰富的机器学习函数库可供 R 使用。预装的库包括 lm、glm、randomForest 和 rpart。 可运行以下命令安装其他库：
 
     ```r
     install.packages(<lib name>)
@@ -286,7 +286,7 @@ vw house_dataset
 
 xgboost 库是为提升（树）算法设计和优化的库。 此库的目标是将计算机的计算限制推向极致，以满足提供可缩放、可移植且精确的大规模树提升的需求。
 
-xgboost 作为命令行和 R 库提供。 若要在 R 中使用此库，可以启动交互式 R 会话（在 shell 中输入 **R** ），然后加载该库。
+xgboost 作为命令行和 R 库提供。 若要在 R 中使用此库，可以启动交互式 R 会话（在 shell 中输入 **R**），然后加载该库。
 
 下面是可以在 R 提示符中运行的一个简单示例：
 

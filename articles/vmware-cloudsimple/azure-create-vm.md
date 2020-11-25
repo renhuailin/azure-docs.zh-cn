@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014495"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>使用 VMware 基础结构上的 VM 模板在 Azure 中创建虚拟机
 
@@ -27,7 +27,7 @@ ms.locfileid: "85847165"
 
 1. 选择“所有服务”。
 
-2. 搜索“CloudSimple 虚拟机”。****
+2. 搜索“CloudSimple 虚拟机”。
 
 3. 单击“添加”。
 
@@ -67,16 +67,16 @@ ms.locfileid: "85847165"
     | 名称 | 输入一个名称用于标识接口。  |
     | 网络 | 从私有云 vSphere 中已配置的分布式端口组列表中进行选择。  |
     | 适配器 | 从为 VM 配置的可用类型列表中选择 vSphere 适配器。 有关详细信息，请参阅 VMware 知识库文章 [为虚拟机选择网络适配器](https://kb.vmware.com/s/article/1001805)。 |
-    | 启动时开机 | 选择是否要在启动 VM 时启用 NIC 硬件。 默认设置为“启用”。**** |
+    | 启动时开机 | 选择是否要在启动 VM 时启用 NIC 硬件。 默认设置为“启用”。 |
 
     对于磁盘，单击 " **添加磁盘** "，然后配置下列设置。
 
-    | 项 | 说明 |
+    | 项目 | 说明 |
     | ------------ | ------------- |
     | 名称 | 输入一个名称用于标识磁盘。  |
     | 大小 | 选择一种可用大小。  |
     | SCSI 控制器 | 选择磁盘的 SCSI 控制器。  |
-    | 模式 | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  使用独立非永久性模式可始终以相同的状态重启 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
+    | “模式” | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  使用独立非永久性模式可始终以相同的状态重启 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
 
 7. 验证完成后，查看设置，然后单击 " **创建**"。 若要进行任何更改，请单击顶部的选项卡或单击。
 
@@ -86,7 +86,7 @@ ms.locfileid: "85847165"
 
 1. 选择“所有服务”。
 
-2. 搜索“CloudSimple 虚拟机”。****
+2. 搜索“CloudSimple 虚拟机”。
 
 3. 选择在其上创建私有云的。
 

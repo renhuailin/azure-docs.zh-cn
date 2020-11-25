@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: 0863ccda9f292f3da9f7064a78ba700ab5962eb2
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533457"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014629"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -24,7 +24,7 @@ ms.locfileid: "94533457"
 > [!NOTE]
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
-还可以考虑使用连接的 [专用链接](concepts-data-access-security-private-link.md) 。 专用链接在 VNet 中为 Azure Database for MariaDB 服务器提供专用 IP 地址。
+还可以考虑使用[专用链接](concepts-data-access-security-private-link.md)进行连接。 专用链接在 VNet 中为 Azure Database for MariaDB 服务器提供专用 IP 地址。
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -32,7 +32,7 @@ ms.locfileid: "94533457"
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：** 虚拟网络包含 **子网** 。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含 **子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 **虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信。
 
@@ -88,7 +88,7 @@ ms.locfileid: "94533457"
 - **网络管理员：** &nbsp; 启用终结点。
 - **数据库管理员：** &nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
 
-*Azure RBAC 备选方案：*
+Azure RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 

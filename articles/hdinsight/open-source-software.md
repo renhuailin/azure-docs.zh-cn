@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013864"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的开放源代码软件支持
 
-Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅  HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)的“支持范围”部分。 HDInsight 服务为内置组件提供附加的支持级别。
 
 ## <a name="components"></a>组件
 

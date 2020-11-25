@@ -7,14 +7,14 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372602"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014562"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用 Azure Defender 容器注册表来扫描映像是否存在漏洞
+# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
 本页说明如何使用内置漏洞扫描程序扫描 Azure 资源管理器 Azure 容器注册表中存储的容器映像。
 
@@ -22,17 +22,7 @@ ms.locfileid: "94372602"
 
 当扫描程序向安全中心报告漏洞时，安全中心会将结果和相关信息显示为建议。 此外，这些发现还包括相关信息，如修正步骤、相关标识符、CVSS 评分等。 您可以查看一个或多个订阅或特定注册表的已识别漏洞。
 
-## <a name="availability"></a>可用性
-
-|方面|详细信息|
-|----|:----|
-|发布状态：|正式发布 (GA)|
-|定价：|**容器注册表的 Azure Defender** 按 [定价页](security-center-pricing.md)中所示的方式计费|
-|支持的注册表和映像：|通过 shell 访问可从公共 internet 访问 ACR 注册表中的 Linux 映像|
-|不受支持的注册表和映像：|Windows 映像<br>"专用" 注册表<br>访问权限限制为防火墙、服务终结点或专用终结点（如 Azure 专用链接）的注册表<br>超级最简单映像（如 [Docker 暂存](https://hub.docker.com/_/scratch/) 映像），或仅包含应用程序及其运行时依赖项的 "Distroless" 映像，无需包管理器、SHELL 或 OS|
-|所需角色和权限：|**安全读取器** 和 [Azure 容器注册表读取器角色](../container-registry/container-registry-roles.md)|
-|云：|![是 ](./media/icons/yes-icon.png) 商业云<br>![是 ](./media/icons/yes-icon.png) US Gov-目前仅支持对推送功能进行扫描。 如何[扫描图像时](defender-for-container-registries-introduction.md#when-are-images-scanned)了解更多？<br>![无 ](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 
@@ -134,7 +124,7 @@ ms.locfileid: "94372602"
 您可以使用下列任一条件： 
 
 - 查找 ID 
-- Category
+- 类别
 - 安全检查 
 - CVSS v3 评分
 - 严重性 
@@ -142,16 +132,16 @@ ms.locfileid: "94372602"
 
 若要创建规则，请执行以下操作：
 
-1. 对于 **Azure 容器注册表中的漏洞** ，若要获取建议详细信息页，请选择 " **禁用规则** "。
+1. 对于 **Azure 容器注册表中的漏洞**，若要获取建议详细信息页，请选择 " **禁用规则**"。
 1. 选择相关范围。
 1. 定义条件。
-1. 选择 " **应用规则** "。
+1. 选择 " **应用规则**"。
 
     :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则":::
 
 1. 查看、替代或删除规则： 
-    1. 选择 " **禁用规则** "。
-    1. 在 "作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则** "。
+    1. 选择 " **禁用规则**"。
+    1. 在 "作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
         :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则":::
     1. 若要查看或删除规则，请选择省略号菜单 ( "..." ) 。
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013813"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
@@ -51,7 +51,7 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 | 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace     。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
-某些预定义分析器（例如 **Pattern** 或 **Stop** ）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer* ，以便将它与 Lucene Pattern 分析器区分开来。
+某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。
 
 ## <a name="how-to-specify-analyzers"></a>如何指定分析器
 

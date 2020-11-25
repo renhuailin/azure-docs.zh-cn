@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3b26b7d95f4a6d01d81a2916403ab3a630370fc8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>教程：Azure Active Directory 与 Pexip 的集成
 
@@ -61,7 +61,7 @@ ms.locfileid: "92520817"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Pexip** ，在结果面板中选择“Pexip”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Pexip**，在结果面板中选择“Pexip”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Pexip”](common/search-new-app.png)
 

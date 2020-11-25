@@ -9,11 +9,11 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014714"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限 (预览) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "93312399"
 
 托管标识向工作区中的专用 SQL 池授予权限。 在授予权限的情况下，你可以安排执行与 SQL 池相关的专用活动的管道。 使用 Azure 门户创建 Azure Synapse 工作区时，可以授予对专用 SQL 池的托管标识控制权限。
 
-创建 Azure Synapse 工作区时，请选择 " **安全** "。 然后选择 " **允许管道 (作为工作区的系统分配标识) 来访问 SQL 池。**
+创建 Azure Synapse 工作区时，请选择 " **安全** "。 然后选择 "**允许管道 (作为工作区的系统分配标识) 来访问 SQL 池。**
 
 ![对专用 SQL 池的 CONTROL 权限](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "93312399"
 
 ![工作区创建流中的 "基本信息" 选项卡](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-在 " **帐户名称** " 和 " **文件系统名称** " 中选择 ADLS Gen2 存储帐户和文件系统。
+在 " **帐户名称** " 和 " **文件系统名称**" 中选择 ADLS Gen2 存储帐户和文件系统。
 
 ![提供 ADLS Gen2 存储帐户详细信息](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "93312399"
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>步骤6：选择 Azure AD 安全主体
 
-从 " **分配访问权限** " 下拉菜单中选择 **Azure AD 用户、组或服务主体** 。
+从 "**分配访问权限**" 下拉菜单中选择 **Azure AD 用户、组或服务主体**。
 
 ![选择 AAD 安全主体](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-11.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "93312399"
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>步骤9：验证是否已将存储 Blob 数据参与者角色分配给托管标识
 
-**(IAM) 选择 "访问控制** "，然后选择 " **角色分配** "。
+**(IAM) 选择 "访问控制**"，然后选择 "**角色分配**"。
 
 ![验证角色分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 

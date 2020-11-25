@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081842"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013713"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -540,7 +540,7 @@ module.exports = df.entity(function(context) {
 不需在发送信号之前创建目标实体 - 实体状态可以在处理信号的实体函数内部创建。
 
 > [!NOTE]
-> 必须知道，从客户端发送的“信号”会直接排队，稍后以异步方式对其进行处理。 具体说来，`SignalEntityAsync` 通常会在实体开始操作之前返回，因此不可能获取返回值或观察异常。 如果需要更强的保证（例如，在使用工作流的情况下），则应使用*业务流程协调程序函数*，此类函数会等待实体操作完成，可以处理返回值并观察异常。
+> 必须知道，从客户端发送的“信号”会直接排队，稍后以异步方式对其进行处理。 具体说来，`SignalEntityAsync` 通常会在实体开始操作之前返回，因此不可能获取返回值或观察异常。 如果需要更强的保证（例如，在使用工作流的情况下），则应使用 *业务流程协调程序函数*，此类函数会等待实体操作完成，可以处理返回值并观察异常。
 
 ### <a name="example-client-signals-entity-directly---c"></a>示例：客户端直接向实体发出信号 - C#
 
