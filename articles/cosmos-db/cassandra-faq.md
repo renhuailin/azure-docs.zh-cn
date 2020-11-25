@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1368a3174af08f557b6d08f298fba015601d568c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995807"
+ms.locfileid: "96030826"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中 Cassandra API 的常见问题解答。
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -176,7 +176,7 @@ Cassandra API 从 Azure Cosmos DB 的全局分布式平台借用。 为了确保
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>是否可以在本地将新的 Cassandra API SDK 用于模拟器？
 
-是，系统支持该操作。 可以在[使用 Azure Cosmos 模拟器进行本地开发和测试](local-emulator.md#cassandra-api) 文章中找到有关如何启用此操作的详细信息。
+是，系统支持该操作。 你可以在将 [Azure Cosmos DB 模拟器用于本地开发和测试](local-emulator.md#cassandra-api) 文章中找到有关如何启用此操作的详细信息。
 
 
 ### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>如何将数据从 Apache Cassandra 群集迁移到 Azure Cosmos DB？

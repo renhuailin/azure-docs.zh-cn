@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b33b866a10ad4a44cef14f3c86d8ca1f40c4750
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318264"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965368"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。
@@ -81,11 +81,11 @@ DPS 具有许多功能，非常适合用于预配设备。
 
 * 对基于 X.509 和 TPM 的标识  的安全证明支持。
 * 注册列表，其中包含可能在某一时刻注册的设备/设备组的完整记录  。 注册列表包含有关设备注册后所需的设备配置信息，并可随时更新。
-* **多个分配策略**，用于根据自己的需要控制 DPS 向 IoT 中心分配设备的方式：通过注册列表控制最小延迟、平均加权分布（默认值）和静态配置。 延迟是使用与[流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)相同的方法确定的。
+* **多个分配策略**，用于根据自己的需要控制 DPS 向 IoT 中心分配设备的方式：通过注册列表控制最小延迟、平均加权分布（默认值）和静态配置。 延迟是使用与[流量管理器](../traffic-manager/traffic-manager-routing-methods.md#performance)相同的方法确定的。
 * **监视和诊断日志记录**，用于确保一切都正常工作。
 * **多中心支持**，允许 DPS 将设备分配给多个 IoT 中心。 DPS 可以跨多个 Azure 订阅来与中心通信。
-* **跨区域支持**使 DPS 能够将设备分配到其他区域的 IoT 中心。
-* **静态数据加密**允许使用 256 位 AES 加密（可用的最强大的分组加密法之一，并且符合 FIPS 140-2）透明地加密和解密 DPS 中的数据。
+* **跨区域支持** 使 DPS 能够将设备分配到其他区域的 IoT 中心。
+* **静态数据加密** 允许使用 256 位 AES 加密（可用的最强大的分组加密法之一，并且符合 FIPS 140-2）透明地加密和解密 DPS 中的数据。
 
 
 可以通过查看 [DPS 术语](concepts-service.md)主题以及同一部分的其他概念性主题来详细了解设备预配中涉及的概念和功能。
@@ -119,7 +119,7 @@ DPS 的服务级别协议为 99.9%。具体请阅读 [SLA](https://azure.microso
 * [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
-DPS 通过 Azure IoT 中心将设备预配自动化。 了解有关 [IoT 中心](https://docs.microsoft.com/azure/iot-hub/)的详细信息。
+DPS 通过 Azure IoT 中心将设备预配自动化。 了解有关 [IoT 中心](../iot-hub/index.yml)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解在 Azure 中配置 IoT 设备。 后续步骤是尝试端对端 IoT 方案。

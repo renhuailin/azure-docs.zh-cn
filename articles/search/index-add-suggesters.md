@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013575"
+ms.locfileid: "96030775"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>创建建议器，以在查询中启用“自动完成”和“建议结果”功能
 
-在 Azure 认知搜索中，“键入时搜索”是通过添加到[搜索索引](search-what-is-an-index.md)的建议器构造启用的。 建议器支持两种体验： *自动完成功能*，它完成整个术语查询的部分输入，并 *建议* 邀请单击到特定的匹配项。 “自动完成”生成查询。 “建议”生成匹配的文档。
+在 Azure 认知搜索中，通过 *建议器* 启用 "搜索即用类型"。 建议器是包含字段集合的内部数据结构。 字段会经历其他词汇切分，生成前缀序列以支持部分术语的匹配。
+
+例如，如果建议器包含 City 字段，则会为术语 "西雅图" 创建 "海平面"、"座位"、"seatt" 和 "seattl" 的前缀组合。 前缀存储在逆索引中，每个字段对应于建议器字段集合中指定的每个字段。
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>认知搜索中的 Typeahead 体验
+
+建议器支持两种体验： *自动完成功能*，它完成整个术语查询的部分输入，并 *建议* 邀请单击到特定的匹配项。 “自动完成”生成查询。 “建议”生成匹配的文档。
 
 取自[在 C# 中创建第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)的以下屏幕截图演示了这两种体验。 自动完成可预测潜在字词，并使用“in”来补充“tw”。 建议是极其精简的搜索结果，其中的字段（例如酒店名称）表示索引中匹配的酒店搜索文档。 对于建议，可以呈现任何提供描述性信息的字段。
 
@@ -31,10 +37,6 @@ ms.locfileid: "96013575"
 + 使用 [下面列出](#how-to-use-a-suggester)的一个 api，以建议请求或自动完成请求的形式调用启用了建议器的查询。
 
 对于字符串字段，可按字段启用“键入时搜索”支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。
-
-## <a name="what-is-a-suggester"></a>什么是建议器？
-
-建议器是一种内部数据结构，它通过存储用于匹配部分查询的前缀来支持“键入时搜索”行为。 与标记化字词一样，前缀存储在倒排索引中，建议器字段集合中指定的每个字段都有一个倒排索引。
 
 ## <a name="how-to-create-a-suggester"></a>如何创建建议器
 

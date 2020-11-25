@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943536"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886088"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
 - 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
-- 获取最新版本的 [.NET Identity 客户端库](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)。
+- 获取最新版本的 [.NET Identity 客户端库](/dotnet/api/azure.identity?view=azure-dotnet)。
 - 获取最新版本的 [.NET Management 客户端库](../../concepts/sdk-options.md)。
 
 ## <a name="installing-the-client-library"></a>安装客户端库
@@ -44,13 +44,13 @@ using Azure.ResourceManager.Communication;
 
 ### <a name="option-1-managed-identity"></a>选项 1：托管标识
 
-如果你的代码在 Azure 中作为服务运行，则进行身份验证的最简单方法是从 Azure 获取托管标识。 详细了解[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+如果你的代码在 Azure 中作为服务运行，则进行身份验证的最简单方法是从 Azure 获取托管标识。 详细了解[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
 
-[支持托管标识的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[支持托管标识的 Azure 服务](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[如何使用应用服务和 Azure Functions 的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[如何使用应用服务和 Azure Functions 的托管标识](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[系统分配的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[系统分配的托管标识](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[用户分配的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[用户分配的托管标识](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 你创建的托管标识的 ClientId 必须显式传递到 `ManagedIdentityCredential`。
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>选项 2：Service Principal
 
-你可能希望使用自己管理的服务主体向 Azure 进行身份验证，而不是使用托管标识。 通过有关[在 Azure Active Directory 中创建和管理服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)的文档了解详细信息。
+你可能希望使用自己管理的服务主体向 Azure 进行身份验证，而不是使用托管标识。 通过有关[在 Azure Active Directory 中创建和管理服务主体](../../../active-directory/develop/howto-create-service-principal-portal.md)的文档了解详细信息。
 
 创建服务主体之后，需要从 Azure 门户收集有关该主体的以下信息：
 
@@ -121,7 +121,7 @@ var communicationServiceClient = new CommunicationManagementClient(subscriptionI
 
 对于以下每个示例，我们会将通信服务资源分配给现有资源组。
 
-如果需要创建资源组，则可以使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)或 [Azure 资源管理器客户端库](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)来完成此操作。
+如果需要创建资源组，则可以使用 [Azure 门户](../../../azure-resource-manager/management/manage-resource-groups-portal.md)或 [Azure 资源管理器客户端库](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)来完成此操作。
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>创建和管理通信服务资源
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762036"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886016"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -120,7 +120,7 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 ## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>将认知服务与聊天客户端库配合使用以启用智能功能
 
-可以将 [Azure 认知 API](https://docs.microsoft.com/azure/cognitive-services/) 与聊天客户端库配合使用，将智能功能添加到应用程序。 例如，你能够：
+可以将 [Azure 认知 API](../../../cognitive-services/index.yml) 与聊天客户端库配合使用，将智能功能添加到应用程序。 例如，你能够：
 
 - 使用户可以通过不同的语言互相聊天。 
 - 通过检测来自客户的传入问题的负面情绪，帮助支持代理设置票证优先级。
@@ -128,9 +128,9 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 实现此目标的一种方法是让可信服务充当聊天线程的成员。 假设要启用语言翻译。 此服务负责侦听其他成员 [1] 所交换的消息，调用认知 API 将内容翻译为所需语言 [2,3]，并在聊天线程中将翻译后的结果作为消息进行发送 [4]。 
 
-这样，消息历史记录将同时包含原始消息和已翻译消息。 在客户端应用程序中，可以添加逻辑以显示原始消息或已翻译消息。 请参阅[本快速入门](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)以了解如何使用认知 API 将文本翻译为不同的语言。 
+这样，消息历史记录将同时包含原始消息和已翻译消息。 在客户端应用程序中，可以添加逻辑以显示原始消息或已翻译消息。 请参阅[本快速入门](../../../cognitive-services/translator/quickstart-translator.md)以了解如何使用认知 API 将文本翻译为不同的语言。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="显示通信服务聊天体系结构的关系图。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="显示与通信服务交互的认知服务的关系图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

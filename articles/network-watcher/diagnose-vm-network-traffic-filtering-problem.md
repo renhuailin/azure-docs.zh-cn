@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f05f9900fcb97deca984bf460fecc45b7068c6f0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84709209"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009137"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>快速入门：使用 Azure 门户诊断虚拟机网络流量筛选器问题
 
@@ -98,19 +98,19 @@ ms.locfileid: "84709209"
 
 ## <a name="view-details-of-a-security-rule"></a>查看安全规则的详细信息
 
-1. 若要确定**使用 IP 流验证**的步骤 3-5 中的规则允许或拒绝通信的原因，请查看 VM 中网络接口的有效安全规则。 在门户顶部的搜索框中，输入“myvm”。 当 **myvm**（或网络接口的任何其他名称）网络接口显示在搜索结果中时，请将其选中。
+1. 若要确定 **使用 IP 流验证** 的步骤 3-5 中的规则允许或拒绝通信的原因，请查看 VM 中网络接口的有效安全规则。 在门户顶部的搜索框中，输入“myvm”。 当 **myvm**（或网络接口的任何其他名称）网络接口显示在搜索结果中时，请将其选中。
 2. 在“支持 + 故障排除”下选择“有效的安全规则”，如下图所示： 
 
     ![有效的安全规则](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    在**使用 IP 流验证**的步骤 3 中，你了解到允许通信的原因是因为 **AllowInternetOutbound** 规则。 可以在上图中看到规则的“目标”是 **Internet**。 尚不清楚在**使用 IP 流验证**的步骤 3 中测试的地址 13.107.21.200 与 **Internet** 的关系如何。
+    在 **使用 IP 流验证** 的步骤 3 中，你了解到允许通信的原因是因为 **AllowInternetOutbound** 规则。 可以在上图中看到规则的“目标”是 **Internet**。 尚不清楚在 **使用 IP 流验证** 的步骤 3 中测试的地址 13.107.21.200 与 **Internet** 的关系如何。
 3. 选择“AllowInternetOutBound”规则，然后选择“目标”，如下图所示： 
 
     ![安全规则前缀](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在步骤 2 的图片中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 关闭“地址前缀”框。 若要拒绝到 13.107.21.200 的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
-4. 运行**使用 IP 流验证**的步骤 4 中针对 172.131.0.100 的出站检查时，你了解到 **DefaultOutboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllOutBound** 规则，后者指定 **0.0.0.0/0** 作为“目标”。 此规则拒绝到 172.131.0.100 的出站通信，因为此地址不在图片中显示的任何其他“出站规则”的“目标”范围内。  若要允许出站通信，可以添加一项优先级更高的安全规则，允许出站流量到达 172.131.0.100 地址的端口 80。
-5. 运行**使用 IP 流验证**的步骤 5 中流量来自 172.131.0.100 的入站检查时，你了解到 **DefaultInboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllInBound** 规则。 **DenyAllInBound** 规则会强制实施，因为没有任何其他允许端口 80 将入站流量从 172.31.0.100 发往 VM 的规则有更高的优先级。 若要允许入站通信，可以添加一项优先级更高的安全规则，允许通过端口 80 从 172.31.0.100 发送入站流量。
+4. 运行 **使用 IP 流验证** 的步骤 4 中针对 172.131.0.100 的出站检查时，你了解到 **DefaultOutboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllOutBound** 规则，后者指定 **0.0.0.0/0** 作为“目标”。 此规则拒绝到 172.131.0.100 的出站通信，因为此地址不在图片中显示的任何其他“出站规则”的“目标”范围内。  若要允许出站通信，可以添加一项优先级更高的安全规则，允许出站流量到达 172.131.0.100 地址的端口 80。
+5. 运行 **使用 IP 流验证** 的步骤 5 中流量来自 172.131.0.100 的入站检查时，你了解到 **DefaultInboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllInBound** 规则。 **DenyAllInBound** 规则会强制实施，因为没有任何其他允许端口 80 将入站流量从 172.31.0.100 发往 VM 的规则有更高的优先级。 若要允许入站通信，可以添加一项优先级更高的安全规则，允许通过端口 80 从 172.31.0.100 发送入站流量。
 
 本快速入门中的检查测试了 Azure 配置。 如果检查返回预期的结果，而网络问题仍然存在，请确保在 VM 和要与之通信的终结点之间没有防火墙，且 VM 中的操作系统没有防火墙来允许或拒绝通信。
 
@@ -124,6 +124,6 @@ ms.locfileid: "84709209"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-portal.md)。

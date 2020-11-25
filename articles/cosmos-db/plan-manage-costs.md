@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: a73d155d20d09573ad5e1b2597678291aea4c92b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: c7db48a1df61472de8676192f267493232139b6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030809"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>规划和管理 Azure Cosmos DB 的成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 
 如果打算在无服务器模式下使用 Azure Cosmos DB，则需要估计每月可能会消耗多少个 [请求单位](request-units.md) 和存储 GB 的存储。 您可以通过计算每月发出的数据库操作的数量来估算所需的请求单位数，并按相应的 RU 成本乘以它们的数量。 下表列出了常见数据库操作的估计 RU 费用：
 
-| Operation | 估计成本 | 说明 |
+| 操作 | 估计成本 | 备注 |
 | --- | --- | --- |
 | 创建项 | 5 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
 | 更新项 | 10 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
@@ -52,7 +52,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 | 执行查询 | 10 RU | 充分利用 [索引](index-overview.md) 并返回100结果的查询的平均开销 |
 
 > [!IMPORTANT] 
-> 注意上表中的说明。 若要更准确地估计操作的实际成本，可以使用 [Azure Cosmos 模拟器](local-emulator.md) 并 [度量操作的确切 RU 成本](find-request-unit-charge.md)。 尽管 Azure Cosmos 模拟器不支持无服务器的支持，但它会报告数据库操作的标准 RU 费用，并可用于此估算。
+> 注意上表中的说明。 若要更准确地估计操作的实际成本，可以使用 [Azure Cosmos DB 模拟器](local-emulator.md) 并 [度量操作的确切 RU 成本](find-request-unit-charge.md)。 尽管 Azure Cosmos DB 模拟器不支持无服务器的支持，但它会报告数据库操作的标准 RU 费用，并可用于此估算。
 
 计算出每个月可能消耗的请求单位和存储空间总数后，以下公式将返回您的成本估算值： **( [请求单位数]/1000000 * $0.25) + ( [GB 存储空间] * $0.25)**。
 

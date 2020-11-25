@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aad4cdfe38ee9dd7530cb8ebe21cded18cb0a1ec
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128541"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888685"
 ---
 # <a name="communication-services-logs"></a>通信服务日志
 
@@ -30,7 +30,7 @@ Azure 通信服务提供的日志记录功能可用于监视和调试通信服�
 
 :::image type="content" source="./media/diagnostic-settings.png" alt-text="ACS 诊断设置选项。":::
 
-有关如何配置诊断的详细信息，请参阅 [Azure 资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)概述。
+有关如何配置诊断的详细信息，请参阅 [Azure 资源日志](../../azure-monitor/platform/platform-logs-overview.md)概述。
 
 ## <a name="resource-log-categories"></a>资源日志类别
 

@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
-description: 了解 Azure Cosmos DB 模拟器的命令行参数、如何使用 PowerShell 控制模拟器以及如何更改可以在模拟器中创建的容器数。
+description: 了解 Azure Cosmos DB 模拟器的命令行参数，如何用 PowerShell 控制模拟器，以及如何更改可在模拟器中创建的容器数。
 ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030877"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-为方便本地开发，Azure Cosmos 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 [安装模拟器](local-emulator.md)后，可以通过命令行和 PowerShell 命令控制模拟器。 本文介绍如何使用命令行和 PowerShell 命令启动和停止模拟器、配置选项和执行其他操作。 必须从安装位置运行命令。
+Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境，用于本地开发目的。 [安装模拟器](local-emulator.md)后，可以通过命令行和 PowerShell 命令控制模拟器。 本文介绍如何使用命令行和 PowerShell 命令启动和停止模拟器、配置选项和执行其他操作。 必须从安装位置运行命令。
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>用命令行语法管理模拟器
 
@@ -29,10 +29,10 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 |**选项** | **说明** | **命令**| **参数**|
 |---|---|---|---|
-|[无参数] | 使用默认设置启动 Azure Cosmos 模拟器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[无参数] | 使用默认设置启动 Azure Cosmos DB 模拟器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[帮助] |显示支持的命令行参数列表。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
-| GetStatus |获取 Azure Cosmos 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
-| 关机| 关闭 Azure Cosmos 模拟器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
+| GetStatus |获取 Azure Cosmos DB 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
+| 关机| 关闭 Azure Cosmos DB 模拟器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
 |DataPath | 指定要在其中存储数据文件的路径。 默认值为 %LocalAppdata%\CosmosDBEmulator。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<datapath\>：可访问路径 |
 |端口 | 指定用于模拟器的端口号。 默认值为 8081。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<port\>：单个端口号 |
 | ComputePort | 指定用于计算互操作网关服务的端口号。 该网关的 HTTP 终结点探测端口计算得出 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必须打开且可使用。 默认值为 8900。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>：单个端口号 |
@@ -127,26 +127,26 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>更改默认容器数量
 
-默认情况下，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 创建），或使用 Azure Cosmos 模拟器创建 5 个不受限容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
+默认情况下，最多可以创建25个固定大小的容器 (仅支持使用 Azure Cosmos DB Sdk) ，或使用 Azure Cosmos DB 模拟器的5个无限制容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
 
 如果在已超过当前分区计数后尝试创建容器，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
 
 > 很抱歉，此区域当前需求较高，暂时无法满足你的请求。 我们在持续努力推出越来越多的容量，请进行重试。
 > ActivityId:12345678-1234-1234-1234-123456789abc
 
-要更改 Azure Cosmos 模拟器中可用容器的数量，请执行以下步骤：
+若要更改 Azure Cosmos DB 模拟器中可用的容器数，请运行以下步骤：
 
-1. 在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，并单击“重置数据...”，删除所有本地 Azure Cosmos 模拟器数据 。
+1. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，并单击“重置数据...”，删除所有本地 Azure Cosmos DB 模拟器数据。
 
 1. 删除文件夹 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模拟器数据。
 
 1. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，并单击“退出”，退出所有打开的实例。 退出所有实例可能需要一分钟。
 
-1. 安装最新版的 [Azure Cosmos 模拟器](https://aka.ms/cosmosdb-emulator)。
+1. 安装最新版的 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)。
 
 1. 通过设置一个 <= 250 的值启动具有 PartitionCount 标志的模拟器。 例如：`C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`。
  
 ## <a name="next-steps"></a>后续步骤
 
-* [导出供 Java、Python 和 Node.js 应用使用的 Azure Cosmos 模拟器证书](local-emulator-export-ssl-certificates.md)
+* [导出要用于 Java、Python 和 Node.js 应用的 Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)
 * [使用模拟器调试问题](troubleshoot-local-emulator.md)
