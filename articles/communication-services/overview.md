@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303363"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888600"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
@@ -77,9 +77,9 @@ Azure 通信服务使你可以轻松地将实时多媒体语音、视频和 IP �
 
 你可以考虑利用两个其他 Microsoft 通信产品，它们目前不能直接与通信服务交互：
 
- - [Microsoft Graph 云通信 API](https://docs.microsoft.com/graph/cloud-communications-concept-overview) 使组织可以构建与具有 M365 许可证的 Azure Active Directory 用户关联的通信体验。 这非常适合与 Azure Active Directory 关联的应用程序，或是要在 Microsoft 团队中扩展工作效率体验的应用程序。 还有一些用于在[团队体验](https://docs.microsoft.com/microsoftteams/platform/?view=msteams-client-js-latest&preserve-view=true)中构建应用程序和自定义的 API。
+ - [Microsoft Graph 云通信 API](/graph/cloud-communications-concept-overview) 使组织可以构建与具有 M365 许可证的 Azure Active Directory 用户关联的通信体验。 这非常适合与 Azure Active Directory 关联的应用程序，或是要在 Microsoft 团队中扩展工作效率体验的应用程序。 还有一些用于在[团队体验](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)中构建应用程序和自定义的 API。
 
- - [Azure PlayFab Party](https://docs.microsoft.com/gaming/playfab/features/multiplayer/networking/) 简化了将低延迟聊天和数据通信添加到游戏的过程。 虽然可以使用通信服务来支持游戏聊天和网络系统，不过 PlayFab 是一种定制选项，可在 Xbox 上免费使用。
+ - [Azure PlayFab Party](/gaming/playfab/features/multiplayer/networking/) 简化了将低延迟聊天和数据通信添加到游戏的过程。 虽然可以使用通信服务来支持游戏聊天和网络系统，不过 PlayFab 是一种定制选项，可在 Xbox 上免费使用。
 
 
 ## <a name="next-steps"></a>后续步骤

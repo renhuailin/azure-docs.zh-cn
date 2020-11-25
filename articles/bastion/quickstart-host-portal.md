@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150450"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021480"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>快速入门：通过专用 IP 地址和浏览器安全地连接到 VM
 
@@ -75,29 +75,29 @@ ms.locfileid: "92150450"
 1. 在下拉列表中，选择“Bastion”。
 1. 在“TestVM | 连接”页上，选择“使用 Bastion” 。
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="虚拟机设置" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="选择“Bastion”" border="false":::
 
 1. 在“Bastion”页上，填写以下设置字段：
 
    * 名称：为 Bastion 主机命名。
-   * **子网** ：这是将向其中部署 Bastion 资源的虚拟网络地址空间。 必须使用名称 AzureBastionSubnet 创建子网。 使用至少为 /27 或更大（/27、/26、/25 等）的子网。
+   * **子网**：这是将向其中部署 Bastion 资源的虚拟网络地址空间。 必须使用名称 AzureBastionSubnet 创建子网。 使用至少为 /27 或更大（/27、/26、/25 等）的子网。
    * 选择“管理子网配置”。
 1. 在“子网”页中，选择“+ 子网” 。
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="虚拟机设置":::
+   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ 子网":::
     
 1. 在“添加子网”页上，为“名称”键入 AzureBastionSubnet  。
    * 对于子网地址范围，请选择你的虚拟网络地址空间中的子网地址。
    * 请勿调整任何其他设置。 选择“确定”以接受并保存子网更改。
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="虚拟机设置":::
+   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="添加子网":::
 1. 单击浏览器上的后退按钮，导航回“Bastion”页，然后继续指定值。
-   * **公共 IP 地址** ：保留“新建”。
-   * **公共 IP 地址名称** ：公共 IP 地址资源的名称。
-   * **分配** ：默认为“静态”。 不能对 Azure Bastion 使用“动态”分配。
-   * **资源组** ：与 VM 相同的资源组。
+   * **公共 IP 地址**：保留“新建”。
+   * **公共 IP 地址名称**：公共 IP 地址资源的名称。
+   * **分配**：默认为“静态”。 不能对 Azure Bastion 使用“动态”分配。
+   * **资源组**：与 VM 相同的资源组。
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="虚拟机设置":::
+   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="创建 Bastion 主机":::
 1. 选择“创建”以创建 Bastion 主机。 Azure 会验证设置，然后创建主机。 主机和其资源的创建及部署大约需要 5 分钟。
 
 ## <a name="connect"></a><a name="connect"></a>连接
@@ -106,10 +106,10 @@ ms.locfileid: "92150450"
 
 1. 键入虚拟机的用户名和密码。 然后，选择“连接”。
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="虚拟机设置":::
+   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="屏幕截图显示“使用 Azure Bastion 进行连接”对话框。":::
 1. 连接到此虚拟机的 RDP 将使用端口 443 和 Bastion 服务在 Azure 门户中（通过 HTML5）直接打开。
 
-   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="虚拟机设置":::
+   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP 连接":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

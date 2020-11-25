@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cebe0e018b4483a9de1771fb3171effbbd5ca59c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91597831"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020055"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>什么是 Azure 时序见解 Gen1？
 
@@ -33,7 +33,7 @@ Azure 时序见解包含四个关键作业：
 - Azure 时序见解通过 Azure 时序见解资源管理器提供现成可用的可视化效果。
 - Azure 时序见解通过两种途径提供查询服务，一种是使用 Azure 时序见解资源管理器，另一种是使用可轻松集成的 API 将时序数据嵌入自定义应用程序中。
 
-如果构建供内部使用或供外部客户使用的应用程序，则可将 Azure 时序见解用作后端。 可以使用它来索引、存储和聚合时序数据。 若要在此之上构建自定义可视化效果和用户体验，请使用[客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 Azure 时序见解还配备了多个[查询 API](how-to-shape-query-json.md) 以启用这些自定义方案。
+如果构建供内部使用或供外部客户使用的应用程序，则可将 Azure 时序见解用作后端。 可以使用它来索引、存储和聚合时序数据。 若要在此之上构建自定义可视化效果和用户体验，请使用[客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 Azure 时序见解还配备了多个[查询 API](./concepts-json-flattening-escaping-rules.md) 以启用这些自定义方案。
 
 时序数据表示资产或过程是如何随时间变化的。 时序数据按时间戳进行索引，时间是用于组织此类数据的最有意义的轴。 时序数据通常按顺序到达，因此被视为插入，而不是数据库的更新。
 

@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a9c68bca4d50af734a0a2cd8a91c7e46d9b56ff1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88661174"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963209"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 数据库迁移服务的实例
 
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教程：创建和部署你的第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 有关部署 Azure 数据库迁移服务的其他方式，请参阅： 
 - [Azure 门户](quickstart-create-data-migration-service-portal.md)

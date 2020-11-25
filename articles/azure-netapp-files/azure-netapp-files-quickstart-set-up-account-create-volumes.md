@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336429"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888804"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷
 
@@ -32,8 +32,6 @@ ms.locfileid: "93336429"
 
 > [!IMPORTANT]
 > 你需要被授予对 Azure NetApp 文件服务的访问权限。 若要请求对该服务的访问权限，请参阅 [Azure NetApp 文件候补名单提交页面](https://aka.ms/azurenetappfiles)。  你必须等待来自 Azure NetApp 文件团队的官方确认电子邮件，然后才能继续操作。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -64,6 +62,10 @@ ms.locfileid: "93336429"
     ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -176,7 +178,7 @@ ms.locfileid: "93336429"
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 Azure NetApp 文件管理边栏选项卡中，选择你的 NetApp 帐户 ( **myaccount1** )。
+1. 在 Azure NetApp 文件管理边栏选项卡中，选择你的 NetApp 帐户 (**myaccount1**)。
 
     ![选择 NetApp 帐户](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -260,7 +262,7 @@ ms.locfileid: "93336429"
 
 3. 在“创建卷”窗口中提供卷的信息：
    1. 输入 **myvol1** 作为卷名称。
-   2. 选择容量池 ( **mypool1** )。
+   2. 选择容量池 (**mypool1**)。
    3. 对配额使用默认值。
    4. 在“虚拟网络”下，单击“新建”以创建新的 Azure 虚拟网络 (VNet)。   然后填写以下信息：
        * 输入 **myvnet1** 作为 VNet 名称。
@@ -269,7 +271,7 @@ ms.locfileid: "93336429"
        * 指定子网地址范围，例如 10.7.0.0/24。 不能与其他资源共享专用子网。
        * 选择“Microsoft.NetApp/volumes”作为子网委托。 
        * 单击“确定”以创建 VNet。 
-   5. 在子网中，选择新建的 VNet ( **myvnet1** ) 作为委托子网。
+   5. 在子网中，选择新建的 VNet (**myvnet1**) 作为委托子网。
 
       ![“创建卷”窗口](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
@@ -278,7 +280,7 @@ ms.locfileid: "93336429"
 4. 单击“协议”  ，然后完成以下操作：
     * 选择“NFS”  作为卷的协议类型。
     * 输入 **myfilepath1** 作为文件路径，该路径用于创建卷的导出路径。
-    * 选择卷的 NFS 版本（ **NFSv3** 或 **NFSv4.1** ）。
+    * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。
       有关 NFS 版本，请参阅[注意事项](azure-netapp-files-create-volumes.md#considerations)和[最佳做法](azure-netapp-files-create-volumes.md#best-practice)。
 
     ![为快速入门指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001892"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Azure Blob 存储已经过优化，可以存储大量的非结构化数据。 Bl
 * [API 参考文档](/javascript/api/@azure/storage-blob)
 * [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [包 (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,7 +66,7 @@ Blob 存储提供了三种类型的资源：
 
 ### <a name="create-a-cors-rule"></a>创建 CORS 规则
 
-必须先配置你的帐户来启用[跨源资源共享](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。
+必须先配置你的帐户来启用[跨源资源共享](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。
 
 在 Azure 门户中，选择你的存储帐户。 若要定义新的 CORS 规则，请导航到“设置”部分并选择“CORS”。 对于本快速入门，请创建开放的 CORS 规则：
 
@@ -76,10 +76,10 @@ Blob 存储提供了三种类型的资源：
 
 |设置  |值  | 说明 |
 |---------|---------|---------|
-| **允许的源** | **\*** | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
+| **允许的源** | **\** _ | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `_` 意味着所有域都可以访问存储帐户。 |
 | **允许的方法** | “DELETE”、“GET”、“HEAD”、“MERGE”、“POST”、“OPTIONS”和“PUT” | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
-| **允许的标头** | **\*** | 定义一个列表，其中包含存储帐户允许的请求标头（包括带前缀的标头）。 将值设置为 `*` 意味着所有标头都可以进行访问。 |
-| **公开的标头** | **\*** | 列出帐户允许的响应标头。 将值设置为 `*` 意味着帐户可以发送任何标头。 |
+| **允许的标头** | **\** _ | 定义一个列表，其中包含存储帐户允许的请求标头（包括带前缀的标头）。 将值设置为 `_` 意味着所有标头都可以进行访问。 |
+| **公开的标头** | **\** _ | 列出帐户允许的响应标头。 将值设置为 `_` 意味着帐户可以发送任何标头。 |
 | **最长时间** | **86400** | 浏览器缓存预检 OPTIONS 请求的最长时间（以秒为单位）。 值为 *86400* 意味着缓存可以保留一整天。 |
 
 使用此表中的值填写字段后，单击“保存”按钮。

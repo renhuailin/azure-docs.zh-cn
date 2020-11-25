@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043563"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888634"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -37,13 +37,13 @@ Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人�
 
 ### <a name="identities"></a>标识
 
-Azure 通信服务维护标识目录，使用 [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API 来删除标识。 删除标识将撤销所有关联的访问令牌，并删除其聊天消息。 若要详细了解如何删除标识，[请参阅本页面](../quickstarts/access-tokens.md)。
+Azure 通信服务维护标识目录，使用 [DeleteIdentity](/rest/api/communication/communicationidentity/delete) API 来删除标识。 删除标识将撤销所有关联的访问令牌，并删除其聊天消息。 若要详细了解如何删除标识，[请参阅本页面](../quickstarts/access-tokens.md)。
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-将 Azure 门户或 Azure 资源管理器 API 与通信服务结合使用，可以创建个人数据。 [通过本页面了解如何管理 Azure 资源管理器系统中的个人数据。](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+将 Azure 门户或 Azure 资源管理器 API 与通信服务结合使用，可以创建个人数据。 [通过本页面了解如何管理 Azure 资源管理器系统中的个人数据。](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>电话号码管理
 
@@ -52,7 +52,7 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ### <a name="chat"></a>聊天
 
-聊天线程和消息将被保留，直到被显式删除。 完全空闲的线程在 30 天后会自动删除。 使用 [Chat API](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) 获取、列出、更新和删除消息。
+聊天线程和消息将被保留，直到被显式删除。 完全空闲的线程在 30 天后会自动删除。 使用 [Chat API](/rest/api/communication/chat/deletechatmessage/deletechatmessage) 获取、列出、更新和删除消息。
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor 和 Log Analytics
 
-Azure 通信服务将向 Azure Monitor 提供日志记录数据，目的是了解该服务的运行状况和使用情况。 其中一些日志包含字段数据形式的通信服务标识和电话号码。 若要删除任何潜在的个人数据，[请对 Azure Monitor 使用这些过程](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。 可能还需配置 [Azure Monitor 的默认保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)。
+Azure 通信服务将向 Azure Monitor 提供日志记录数据，目的是了解该服务的运行状况和使用情况。 其中一些日志包含字段数据形式的通信服务标识和电话号码。 若要删除任何潜在的个人数据，[请对 Azure Monitor 使用这些过程](../../azure-monitor/platform/personal-data-mgmt.md)。 可能还需配置 [Azure Monitor 的默认保留期](../../azure-monitor/platform/manage-cost-storage.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [针对 GDPR 和 CCPA 的 Azure 数据主体请求](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [针对 GDPR 和 CCPA 的 Azure 数据主体请求](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Microsoft 信任中心](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure 交互式地图 - 客户数据位于何处？](https://azuredatacentermap.azurewebsites.net/)

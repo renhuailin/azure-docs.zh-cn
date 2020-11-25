@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b8d74f86fc9c3d2cc020628f67c36d8d67973fff
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128532"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888651"
 ---
 # <a name="metrics-overview"></a>指标概述
 
-Azure 通信服务目前提供聊天和短信指标。 你可使用 [Azure 指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)绘制自己的图表，调查指标值中的异常，并通过使用聊天和短信请求发出的指标数据来了解 API 流量。
+Azure 通信服务目前提供聊天和短信指标。 你可使用 [Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)绘制自己的图表，调查指标值中的异常，并通过使用聊天和短信请求发出的指标数据来了解 API 流量。
 
 ## <a name="where-to-find-metrics"></a>查找指标的位置
 
@@ -30,7 +30,7 @@ Azure 通信服务中的聊天和短信服务发出 API 请求的指标。 可�
 
 聊天和短信 API 请求指标都包含可用于筛选指标数据的三个维度。 这些维度可以通过 `Count` 聚合类型聚合在一起，并支持所有标准的 Azure 聚合时序，包括 `Sum`、`Average`、`Min` 和 `Max`。
 
-有关支持的聚合类型和时序聚合的详细信息，请参阅 [Azure 指标资源管理器的高级功能](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#changing-aggregation)
+有关支持的聚合类型和时序聚合的详细信息，请参阅 [Azure 指标资源管理器的高级功能](../../azure-monitor/platform/metrics-charts.md#changing-aggregation)
 
 - **操作** - 可在 ACS 聊天网关上调用的所有操作或路由。
 - **状态代码** - 请求后发送的状态代码响应。
@@ -75,8 +75,8 @@ Azure 通信服务中的聊天和短信服务发出 API 请求的指标。 可�
 | SMSMessagesReceived      | 获取短信消息。 |
 
 
-:::image type="content" source="./media/sms-metric.png" alt-text="聊天 API 请求指标。":::
+:::image type="content" source="./media/sms-metric.png" alt-text="短信 API 请求指标。":::
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[数据平台指标](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)的详细信息
+- 了解有关[数据平台指标](../../azure-monitor/platform/data-platform-metrics.md)的详细信息
