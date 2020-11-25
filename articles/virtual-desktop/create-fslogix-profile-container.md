@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002813"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016822"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp 文件和 AD DS 创建配置文件容器
 
@@ -31,7 +31,7 @@ ms.locfileid: "88002813"
 >[!NOTE]
 >如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅 [FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须先执行以下操作，然后才能为主机池创建 FSLogix 配置文件容器：
 
@@ -98,9 +98,9 @@ ms.locfileid: "88002813"
     - 对于 " **服务级别**"，请从下拉菜单中选择所需的值。 对于大多数环境，建议 **高级** 。
        >[!NOTE]
        >"高级" 设置提供适用于高级服务级别（256 MBps）的最小吞吐量。 对于生产环境，可能需要调整此吞吐量。 最终吞吐量基于 [吞吐量限制](../azure-netapp-files/azure-netapp-files-service-levels.md)中所述的关系。
-    - 对于 " **大小 (TiB") **，请输入最符合需要的容量池大小。 最小大小为 4 TiB。
+    - 对于 " **大小 (TiB")**，请输入最符合需要的容量池大小。 最小大小为 4 TiB。
 
-5. 完成后，选择“确定”****。
+5. 完成后，选择“确定”。
 
 ## <a name="join-an-active-directory-connection"></a>联接 Active Directory 连接
 
@@ -129,7 +129,7 @@ ms.locfileid: "88002813"
 
     - 对于 " **卷名称**"，请输入新卷的名称。
     - 对于 " **容量池**"，请从下拉菜单中选择刚创建的容量池。
-    - 对于 " **配额 (GiB") **，请输入适合你的环境的卷大小。
+    - 对于 " **配额 (GiB")**，请输入适合你的环境的卷大小。
     - 对于 " **虚拟网络**"，请从下拉菜单中选择一个已连接到域控制器的现有虚拟网络。
     - 在 " **子网**" 下，选择 " **新建**"。 请记住，此子网将委托给 Azure NetApp 文件。
 
@@ -160,13 +160,13 @@ ms.locfileid: "88002813"
 
 2. 解压缩下载的文件。
 
-3. 在文件中，中转到**x64**  >  **版本**并运行**FSLogixAppsSetup.exe**。 将打开安装菜单。
+3. 在文件中，中转到 **x64**  >  **版本** 并运行 **FSLogixAppsSetup.exe**。 将打开安装菜单。
 
 4.  如果有产品密钥，请在 "产品密钥" 文本框中输入该密钥。
 
 5. 选中 " **我同意许可条款和条件**" 旁边的复选框。
 
-6. 选择“安装”。
+6. 选择“安装”  。
 
 7. 导航到 **C： \\ Program Files \\ FSLogix \\ Apps** 以确认已安装代理。
 
@@ -176,9 +176,9 @@ ms.locfileid: "88002813"
 
 10. 创建名为 " **配置文件**" 的密钥。
 
-11.  使用设置为数据值**1**的**REG_DWORD**类型创建名为**Enabled**的值。
+11.  使用设置为数据值 **1** 的 **REG_DWORD** 类型创建名为 **Enabled** 的值。
 
-12. 使用**多字符串**类型创建名为**VHDLocations**的值，并将其数据值设置为 Azure NETAPP 文件共享的 URI。
+12. 使用 **多字符串** 类型创建名为 **VHDLocations** 的值，并将其数据值设置为 Azure NETAPP 文件共享的 URI。
 
 13. 创建一个名为 **DeleteLocalProfileWhenVHDShouldApply** 的值，其 DWORD 值为1，以避免在登录前使用现有本地配置文件出现问题。
 
@@ -225,7 +225,7 @@ ms.locfileid: "88002813"
 
 5. 请在 " **概述** " 选项卡上，确认 FSLogix 配置文件容器正在使用空间。
 
-6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开 **文件资源管理器。** 然后导航到**装载路径** (在下面的示例中，装载路径为 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 和) 。
+6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开 **文件资源管理器。** 然后导航到 **装载路径** (在下面的示例中，装载路径为 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 和) 。
 
    在此文件夹中，应存在一个配置文件 VHD (或 VHDX) ，如以下示例中所示。
 

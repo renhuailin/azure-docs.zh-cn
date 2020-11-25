@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
 ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016112"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -164,21 +164,21 @@ Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer requ
 
 * **基于 CentOS 的 7.4 HPC** - 在 VM 上安装 RDMA 驱动程序和 Intel MPI 5.1。
 
-* **基于 CentOS 的 hpc** -CENTOS-hpc 7.6 和更高版本 (适用于通过 sr-iov) 支持不受支持的 sku。 这些映像预安装了 Mellanox OFED 和 MPI 库。
+* **基于 CentOS 的 HPC** - CentOS-HPC 7.6 及更高版本（适用于通过 SR-IOV 支持 InfiniBand 的 SKU）。 这些映像预安装了 Mellanox OFED 和 MPI 库。
 
 > [!NOTE]
-> CX3-Pro 卡仅通过 OFED 的 LTS 版本支持。 在 N 系列 Vm 上使用 LTS Mellanox OFED version (4.9-0.1.7.0) ，ConnectX3-Pro 卡。 有关详细信息，请参阅 [Linux 驱动程序](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。
+> 仅 Mellanox OFED 的 LTS 版本支持 CX3-Pro 卡。 在带有 ConnectX3-Pro 卡的 N 系列 VM 上使用 LTS Mellanox OFED 版本 (4.9-0.1.7.0)。 有关详细信息，请参阅 [Linux 驱动程序](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。
 >
-> 此外，某些最新的 Azure Marketplace HPC 映像有 Mellanox OFED 5.1 和更高版本，不支持 ConnectX3-Pro 卡。 在虚拟机上使用 OFED 的虚拟 ConnectX3-Pro 机上使用该版本之前，请先检查 HPC 映像中的 Mellanox 版本。
+> 另外，某些最新的 Azure 市场 HPC 映像具有 Mellanox OFED 5.1 及更高版本，这些版本不支持 ConnectX3-Pro 卡。 请先检查 HPC 映像中的 Mellanox OFED 版本，然后再将其用于带有 ConnectX3-Pro 卡的 VM。
 >
-> 以下图像是支持 ConnectX3-Pro 卡的最新 CentOS-HPC 映像：
+> 以下映像是支持 ConnectX3-Pro 卡的最新 CentOS-HPC 映像：
 >
-> - OpenLogic： CentOS-HPC：7.6：7.6.2020062900
-> - OpenLogic： CentOS-HPC：7_6gen2：7.6.2020062901
-> - OpenLogic： CentOS-HPC：7.7：7.7.2020062600
-> - OpenLogic： CentOS-HPC： 7_7-gen2：7.7.2020062601
-> - OpenLogic： CentOS-HPC：8_1：8.1.2020062400
-> - OpenLogic： CentOS-HPC： 8_1-gen2：8.1.2020062401
+> - OpenLogic:CentOS-HPC:7.6:7.6.2020062900
+> - OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
+> - OpenLogic:CentOS-HPC:7.7:7.7.2020062600
+> - OpenLogic:CentOS-HPC:7_7-gen2:7.7.2020062601
+> - OpenLogic:CentOS-HPC:8_1:8.1.2020062400
+> - OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
 >
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安装 GRID 驱动程序

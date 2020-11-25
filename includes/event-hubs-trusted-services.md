@@ -9,11 +9,11 @@ ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d828a0c3eb2582a833ee8ad07bdf4f18002c9dca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015565"
 ---
 ## <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服务
 启用“允许受信任的 Microsoft 服务绕过此防火墙”设置时，将授权以下服务访问你的事件中心资源。

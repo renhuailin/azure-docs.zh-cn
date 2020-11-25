@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016036"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017060"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp 文件的服务级别
 服务级别是容量池的属性。 根据分配给卷的配额，为容量池中的卷允许的最大吞吐量定义和区分服务级别。
 
 ## <a name="supported-service-levels"></a>支持的服务级别
 
-Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级*和 *标准*。 
+Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级* 和 *标准*。 
 
 * <a name="Ultra"></a>超存储器
 

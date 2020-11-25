@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017298"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
 
@@ -24,33 +24,33 @@ ms.locfileid: "86523377"
 
 为用户或组授予对数据目录的访问权并设置权限：
 
-1. 在[数据目录主页](https://www.azuredatacatalog.com)的工具栏上，单击“设置”****。
+1. 在[数据目录主页](https://www.azuredatacatalog.com)的工具栏上，单击“设置”。
 
    !["Azure 数据目录主页设置" 按钮](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 
-2. 在设置页面中，展开“目录用户”部分****。
+2. 在设置页面中，展开“目录用户”部分。
 
    ![Azure 数据目录用户添加按钮](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
 3. 单击“添加”。
 
-4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称********。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
+4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
 
    ![Azure 数据目录用户-用户或组](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 
-5. 在文本框外按 Enter 或 Tab********。 
+5. 在文本框外按 Enter 或 Tab。 
 
-6. 请确认默认情况下为用户或组分配了所有权限（“批注”、“注册”和“取得所有权”）************。 即：用户或组可以[注册数据资产]( data-catalog-how-to-register.md)、[批注数据资产]( data-catalog-how-to-annotate.md)和[取得数据资产的所有权]( data-catalog-how-to-manage.md)。 
+6. 请确认默认情况下为用户或组分配了所有权限（“批注”、“注册”和“取得所有权”）。 即：用户或组可以[注册数据资产]( data-catalog-how-to-register.md)、[批注数据资产]( data-catalog-how-to-annotate.md)和[取得数据资产的所有权]( data-catalog-how-to-manage.md)。 
 
    ![Azure 数据目录用户-默认权限](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 
-7. 若仅向用户或组授予对目录的读取访问权限，请清除该用户或组对应的“批注”选项****。 这样，用户或组无法对目录中的数据资产进行批注，但可以查看它们。 
+7. 若仅向用户或组授予对目录的读取访问权限，请清除该用户或组对应的“批注”选项。 这样，用户或组无法对目录中的数据资产进行批注，但可以查看它们。 
 
-8. 若要拒绝用户或组注册数据资产，请清除该用户或组对应的“注册”选项****。
+8. 若要拒绝用户或组注册数据资产，请清除该用户或组对应的“注册”选项。
 
-9. 若要拒绝用户取得数据资产的所有权，请清除该用户或组对应的“取得所有权”选项****。 
+9. 若要拒绝用户取得数据资产的所有权，请清除该用户或组对应的“取得所有权”选项。 
 
-10. 若要从目录用户中删除用户/组，请在列表底部单击该用户/组对应的 x****。 
+10. 若要从目录用户中删除用户/组，请在列表底部单击该用户/组对应的 x。 
 
    ![Azure 数据目录目录用户-删除用户 X 图标](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
 

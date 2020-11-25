@@ -9,11 +9,11 @@ ms.date: 07/09/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 612e7dc2f3d1ef6aa5d3598999aa214a2f377e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513174"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016349"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 
@@ -21,7 +21,7 @@ ms.locfileid: "87513174"
 
 - 公钥放置在 Linux VM 上。
 
-- *私钥*仍保留在本地系统上。 请保护好私钥， 不要透露给其他人。
+- *私钥* 仍保留在本地系统上。 请保护好私钥， 不要透露给其他人。
 
 当你使用 SSH 客户端连接到 Linux VM（具有公钥）时，远程 VM 会测试客户端以确保其具有正确的私钥。 如果客户端具有私钥，则授予其访问 VM 的权限。 
 

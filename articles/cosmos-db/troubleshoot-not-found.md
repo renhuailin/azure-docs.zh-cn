@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442321"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96017553"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>诊断和排查 Azure Cosmos DB 的“未找到”异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,11 @@ HTTP 状态代码 404 表示资源不再存在。
 
 ## <a name="a-not-found-exception-was-returned-for-an-item-that-should-exist-or-does-exist"></a>对应该存在或确实存在的项返回了“未找到”异常
 以下是在该项应该或确实存在的情况下返回状态代码 404 的可能原因。
+
+### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>读取会话不可用于输入会话令牌
+
+#### <a name="solution"></a>解决方案：
+1. 将当前 SDK 更新到可用的最新版本。 此特定错误的最常见原因已在最新的 SDK 版本中得到解决。
 
 ### <a name="race-condition"></a>争用条件
 有多个 SDK 客户端实例且读取在写入之前发生。
@@ -100,7 +105,7 @@ while (invalidItemsIterator.HasMoreResults)
 1. [还原](./online-backup-and-restore.md#request-data-restore-from-a-backup)父资源或重新创建资源。
 1. 创建新资源来替换已删除的资源。
 
-### <a name="7-containercollection-names-are-case-sensitive"></a>7. 容器/集合名称区分大小写
+### <a name="7-containercollection-names-are-case-sensitive"></a>7.容器/集合名称区分大小写
 容器/集合名称在 Cosmos DB 中区分大小写。
 
 #### <a name="solution"></a>解决方案：
@@ -109,5 +114,5 @@ while (invalidItemsIterator.HasMoreResults)
 ## <a name="next-steps"></a>后续步骤
 * [诊断和排查](troubleshoot-dot-net-sdk.md)在使用 Azure Cosmos DB .NET SDK 时遇到的问题。
 * 了解 [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.NET v2](performance-tips.md) 的性能准则。
-* [诊断并解决](troubleshoot-java-sdk-v4-sql.md) 使用 Azure Cosmos DB JAVA v4 SDK 时遇到的问题。
-* 了解 [Java V4 SDK](performance-tips-java-sdk-v4-sql.md)的性能准则。
+* [诊断和排查](troubleshoot-java-sdk-v4-sql.md)使用 Azure Cosmos DB Java v4 SDK 时遇到的问题。
+* 了解 [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) 的性能准则。

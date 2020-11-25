@@ -8,11 +8,11 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999014"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015513"
 ---
 # <a name="monitoring-scheduled-events"></a>监视计划事件
 
@@ -150,12 +150,12 @@ New-AzVm `
     | project-away RenderedDescription,ReqJson
     ```
 
-1. 选择“保存”，键入 *logQuery* 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为**类别**，然后选择“保存”。   
+1. 选择“保存”，键入 *logQuery* 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为 **类别**，然后选择“保存”。   
 
     ![保存查询](./media/notifications/save-query.png)
 
 1. 选择“新建警报规则”。 
-1. 在“创建规则”页中，保留 `collectorworkspace` 作为**资源**。
+1. 在“创建规则”页中，保留 `collectorworkspace` 作为 **资源**。
 1. 在“条件”下，选择条目“每当客户日志搜索为 <login undefined> 时”。 此时将打开“配置信号逻辑”页。
 1. 在“阈值”下输入 *0*，然后选择“完成”。 
 1. 在“操作”下，选择“创建操作组”。  此时将打开“添加操作组”页。

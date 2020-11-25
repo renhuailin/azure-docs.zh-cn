@@ -4,11 +4,11 @@ description: 本文提供了有关如何将 Microsoft EventHub 服务终结点�
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015566"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 事件中心命名空间 
 
@@ -36,7 +36,7 @@ ms.locfileid: "94427186"
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 事件中心命名空间接受来自特定虚拟网络子网的连接。
 
-将事件中心命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络的子网中创建一个 **虚拟网络服务终结点** ，并按 [服务终结点概述][vnet-sep]一文中所述的那样为其启用 **。** 添加服务终结点后，可以使用 **虚拟网络规则** 将事件中心命名空间绑定到该终结点。
+将事件中心命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络的子网中创建一个 **虚拟网络服务终结点**，并按 [服务终结点概述][vnet-sep]一文中所述的那样为其启用 **。** 添加服务终结点后，可以使用 **虚拟网络规则** 将事件中心命名空间绑定到该终结点。
 
 虚拟网络规则是事件中心命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问事件中心命名空间。 事件中心本身从不建立出站连接，无需获取访问权限，因此永远不会通过启用此规则授予对子网的访问权限。
 
@@ -55,7 +55,7 @@ ms.locfileid: "94427186"
 
     ![防火墙 - 选中了“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要限制对特定网络的访问，请在页面顶部选择 " **所选网络** " 选项（如果尚未选择）。
-2. 在页面的 " **虚拟网络** " 部分中，选择 " **+ 添加现有虚拟网络** _"。 如果要创建新的 VNet，请选择 "_ *+ 创建新虚拟网络* *"。 
+2. 在页面的 " **虚拟网络** " 部分中，选择 " **+ 添加现有虚拟网络** _"。 如果要创建新的 VNet，请选择 "_ *+ 创建新虚拟网络**"。 
 
     ![添加现有虚拟网络](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
 3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。

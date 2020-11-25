@@ -1,6 +1,6 @@
 ---
 title: 创建和配置用于 Azure 磁盘加密的密钥保管库
-description: 本文介绍了如何创建和配置用于 Windows VM 上的 Azure 磁盘加密的密钥保管库。
+description: 本文介绍创建和配置用于 Windows VM 上的 Azure 磁盘加密的密钥保管库的步骤。
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
@@ -9,11 +9,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9d9d3d8456e0623ea3f1ef17c5f9f7acb28d0ecd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015361"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
 

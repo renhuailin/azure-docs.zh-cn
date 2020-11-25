@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60931698"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015412"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 从 Node.js 发送电子邮件
 
-本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 相关示例是使用 Node.js API 编写的。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅 [后续步骤](#next-steps) 部分。
+本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 相关示例是使用 Node.js API 编写的。 涉及的任务包括 **创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器** 和 **更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅 [后续步骤](#next-steps) 部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
 
@@ -131,7 +131,7 @@ sendgrid.send({
 ```
 
 > [!NOTE]
-> 使用 **files** 属性时，必须可通过[fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile) 访问文件。 如果要附加的文件托管在 Azure 存储中（如 Blob 容器中），必须先将该文件复制到本地存储或 Azure 驱动器，然后才能使用 **files** 属性将该文件作为附件发送。
+> 使用 **files** 属性时，必须可通过 [fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile) 访问文件。 如果要附加的文件托管在 Azure 存储中（如 Blob 容器中），必须先将该文件复制到本地存储或 Azure 驱动器，然后才能使用 **files** 属性将该文件作为附件发送。
 > 
 > 
 
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
 
-可以使用 **setProperty** 覆盖某些电子邮件属性，或使用 **addProperty**进行附加。 例如，可使用以下命令添加更多收件人：
+可以使用 **setProperty** 覆盖某些电子邮件属性，或使用 **addProperty** 进行附加。 例如，可使用以下命令添加更多收件人：
 
 ```javascript
 email.addTo('jeff@contoso.com');

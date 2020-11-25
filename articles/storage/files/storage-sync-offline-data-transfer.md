@@ -8,11 +8,11 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017621"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 将数据批量迁移到 Azure 文件同步
 可以通过两种方式将大容量数据迁移到 Azure 文件同步：
@@ -51,10 +51,10 @@ ms.locfileid: "94630220"
 
 | 步骤 | 详细信息 |
 |---|---------------------------------------------------------------------------------------|
-| ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 Data Box 系列提供 [多种产品](https://azure.microsoft.com/services/storage/databox/data) 来满足你的需求。 收到 Data Box 后，请按照其文档，将 [数据复制](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到 Data Box 上的此 UNC 路径： *\\<DeviceIPAddres \> \<StorageAccountName_AzFile\> \<ShareName\>* 。 此处， *共享* 名是暂存共享的名称。 将 Data Box 发送回 Azure。 |
+| ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 Data Box 系列提供 [多种产品](https://azure.microsoft.com/services/storage/databox/data) 来满足你的需求。 收到 Data Box 后，请按照其文档，将 [数据复制](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到 Data Box 上的此 UNC 路径： *\\<DeviceIPAddres \> \<StorageAccountName_AzFile\> \<ShareName\>*。 此处， *共享* 名是暂存共享的名称。 将 Data Box 发送回 Azure。 |
 | ![步骤 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等待文件显示在你选择作为临时暂存共享的 Azure 文件共享中。 *不要启用到这些共享的同步。* |
 | ![步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>为 Data Box 为你创建的每个文件共享创建一个新的空共享。 此新共享应该与 Data Box 共享位于同一存储帐户中。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。</li><li>在存储同步服务中[创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)。 将空共享作为云终结点引用。 对每个 Data Box 文件共享重复此步骤。 [设置 Azure 文件同步](storage-sync-files-deployment-guide.md)。</li></ul> |
-| ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此过程中，指定将文件移动到 Azure，并引用暂存共享。 你可以根据需要启用或禁用云分层。 在您的活动服务器上创建服务器终结点时，请引用过渡共享。 在 " **添加服务器终结点** " 边栏选项卡上的 " **脱机数据传输** 下，选择" **已启用** "，然后选择与云终结点必须位于同一存储帐户中的暂存共享。 此处的可用共享列表按存储帐户和尚未同步的共享进行筛选。 此表后面的屏幕截图显示了如何在 Azure 门户中创建服务器终结点期间引用 DataBox 共享。 |
+| ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此过程中，指定将文件移动到 Azure，并引用暂存共享。 你可以根据需要启用或禁用云分层。 在您的活动服务器上创建服务器终结点时，请引用过渡共享。 在 " **添加服务器终结点** " 边栏选项卡上的 " **脱机数据传输** 下，选择" **已启用**"，然后选择与云终结点必须位于同一存储帐户中的暂存共享。 此处的可用共享列表按存储帐户和尚未同步的共享进行筛选。 此表后面的屏幕截图显示了如何在 Azure 门户中创建服务器终结点期间引用 DataBox 共享。 |
 | ![步骤 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | 在上一步中添加服务器终结点后，数据将自动从正确的源流动。 [同步共享](#syncing-the-share)部分说明了从 DataBox 共享或从 Windows Server 流动数据的时间 |
 | |
 
@@ -75,13 +75,13 @@ Azure 文件同步确保文件和文件夹 Acl 与实时服务器同步，即使
 启用同步时，服务器的内容将确定命名空间的形状。 如果在 Data Box 快照和迁移完成后从本地服务器中删除文件，则这些文件不会移动到实时同步命名空间。 它们保留在暂存共享中，但不会被复制。 这是必需的，因为同步会根据活动服务器保留命名空间。 Data Box *快照* 只是一种用于高效文件复制的过渡方式。 它不是实时命名空间形状的授权。
 
 ## <a name="cleaning-up-after-bulk-migration"></a>大容量迁移后进行清理 
-当服务器完成命名空间的初始同步时，大容量迁移的文件 Data Box 使用暂存文件共享。 在 Azure 门户的 " **服务器终结点属性** " 边栏选项卡中，在 " **脱机数据传输** " 部分中，状态从 " **正在进行** " 更改为 " **已完成** "。 
+当服务器完成命名空间的初始同步时，大容量迁移的文件 Data Box 使用暂存文件共享。 在 Azure 门户的 " **服务器终结点属性** " 边栏选项卡中，在 " **脱机数据传输** " 部分中，状态从 " **正在进行** " 更改为 " **已完成**"。 
 
 ![服务器终结点属性边栏选项卡的屏幕截图，可在其中找到脱机数据传输的状态和禁用控件](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
 现在，可以清理临时共享来节省成本：
 
-1. 在 " **服务器终结点属性** " 边栏选项卡上，当状态为 " **已完成** " 时，选择 " **禁用脱机数据传输** "
+1. 在 " **服务器终结点属性** " 边栏选项卡上，当状态为 " **已完成**" 时，选择 " **禁用脱机数据传输**"
 2. 请考虑删除暂存共享以节省成本。 暂存共享可能不包含文件和文件夹 Acl，因此不太可能有用。 对于备份时点，请创建 [同步 Azure 文件共享](storage-snapshots-files.md)的实际快照。 可以 [设置 Azure 备份，按计划拍摄快照]( ../../backup/backup-afs.md) 。
 
 仅当状态为 " **已完成** " 或由于配置错误而要取消时，才禁用脱机数据传输模式。 如果在部署过程中禁用该模式，则即使过渡共享仍可用，文件也会开始从服务器上传。

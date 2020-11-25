@@ -8,11 +8,11 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016091"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "87085480"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“美国东部”** 位置创建一个名为“myResourceGroup”** 的资源组。
+在“美国东部”位置创建一个名为“myResourceGroup”的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

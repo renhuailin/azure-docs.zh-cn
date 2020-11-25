@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9f1c30b303bd1fe02e0685c7d848be92073ca2f6
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016857"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>在 StorSimple Device Manager 服务所在的同一 Azure 订阅中添加存储帐户凭据
 
@@ -27,7 +27,7 @@ ms.locfileid: "93376207"
 
     2. 从“存储帐户”下拉列表中，选择一个现有存储帐户。
 
-    3. 将根据所选的存储帐户显示 **位置** （灰显并且在此处无法更改）。
+    3. 将根据所选的存储帐户显示 **位置**（灰显并且在此处无法更改）。
 
     4. 选择 " **启用 SSL 模式** "，为你的设备和云之间的网络通信创建一个安全通道。 如果仅在私有云中操作，请禁用“启用 SSL”。
 

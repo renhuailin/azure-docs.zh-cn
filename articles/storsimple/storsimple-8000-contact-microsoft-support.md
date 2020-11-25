@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968751"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017196"
 ---
 # <a name="contact-microsoft-support"></a>请联系 Microsoft 支持部门
 
@@ -37,7 +37,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供 **记录
    1. 从“颁发类型”下拉列表中，选择“技术”。
    2. 将自动选择当前 **订阅**、**服务** 类型和 **资源**（StorSimple Device Manager 服务）。 
    3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个 **支持计划**。 需要付费的支持计划才能启用技术支持。
-   4. 单击“下一步”。
+   4. 单击“配置目录分区”  。
 
        ![通过新门户联系 MS 支持2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 

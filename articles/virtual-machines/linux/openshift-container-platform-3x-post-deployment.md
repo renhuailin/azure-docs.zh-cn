@@ -11,11 +11,11 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
 ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735107"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016057"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -70,19 +70,19 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1. 选择 " **Azure Active Directory**  >  **应用注册** "。
+1. 选择 " **Azure Active Directory**  >  **应用注册**"。
 2. 搜索应用注册（例如 OCPAzureAD）。
 3. 在结果中，单击“应用注册”。
-4. 在“设置”下，选择“所需的权限”。 
-5. 在“所需的权限”下，选择“添加”。 
+4. 在“设置”下，选择“所需的权限”。
+5. 在“所需的权限”下，选择“添加”。
 
    ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6. 依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。  单击底部的“选择”。 
+6. 依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
 
    ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 在“步骤 2: 选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。 
+7. 在“步骤 2: 选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。
 
    ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 

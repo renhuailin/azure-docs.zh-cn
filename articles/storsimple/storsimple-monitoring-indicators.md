@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85512977"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015394"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 
@@ -36,7 +36,7 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 本文的剩余部分介绍了各种监视指示器 LED、它们在 StorSimple 设备上的位置、基于 LED 状态的设备状态以及任何关联的有声警报。
 
 ## <a name="front-panel-indicator-leds"></a>前面板指示器 LED
-前面板（也称为*操作面板***）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
+前面板（也称为 *操作面板*）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
 
    ![设备前面板][1]
 
@@ -48,20 +48,20 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 4. 逻辑故障指示器 LED（亮起红色-琥珀红/熄灭）
 5. 单元 ID 显示  
 
-设备的前面板 LED 与 EBOD 机箱的前面板 LED 之间的主要差异是 LED 显示屏上显示的**系统单元标识号**。 设备上显示的默认单元 ID 是 **00**，而 EBOD 机箱上显示的默认单元 ID 是 **01**。 当设备处于打开状态时，可以据此快速区分设备与 EBOD 机箱。 当设备处于关闭状态时，可以使用[打开新设备](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)中提供的信息来区分设备与 EBOD 机箱。  
+设备的前面板 LED 与 EBOD 机箱的前面板 LED 之间的主要差异是 LED 显示屏上显示的 **系统单元标识号**。 设备上显示的默认单元 ID 是 **00**，而 EBOD 机箱上显示的默认单元 ID 是 **01**。 当设备处于打开状态时，可以据此快速区分设备与 EBOD 机箱。 当设备处于关闭状态时，可以使用[打开新设备](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)中提供的信息来区分设备与 EBOD 机箱。  
 
 ## <a name="front-panel-led-status"></a>前面板 LED 状态
 可以使用下表识别设备或 EBOD 机箱的前面板上的 LED 指示的状态。  
 
 | 系统电源 | 模块故障 | 逻辑故障 | 警报 | 状态 |
 | --- | --- | --- | --- | --- |
-| 琥珀红 |OFF |OFF |不可用 |交流电源断开，正在以备用电源运行；或者交流电源接通，并且控制器模块已移除。 |
-| 绿色 |ON |ON |不可用 |操作面板通电 (5s) 测试状态 |
-| 绿色 |OFF |OFF |不可用 |已通电，所有功能良好 |
-| 绿色 |ON |不可用 |PCM 故障 LED、风扇故障 LED |任何 PCM 故障、风扇故障、温度过高或过低 |
-| 绿色 |ON |不可用 |I/O 模块 LED |任何控制器模块故障 |
-| 绿色 |ON |不可用 |不可用 |机箱逻辑故障 |
-| 绿色 |Flash |不可用 |控制器模块上的模块状态 LED。 PCM 故障 LED、风扇故障 LED |安装了未知类型的控制器模块、I2C 总线故障、控制器模块重要产品数据 (VPD) 配置错误 |
+| 琥珀红 |OFF |OFF |不适用 |交流电源断开，正在以备用电源运行；或者交流电源接通，并且控制器模块已移除。 |
+| 绿色 |ON |ON |不适用 |操作面板通电 (5s) 测试状态 |
+| 绿色 |OFF |OFF |不适用 |已通电，所有功能良好 |
+| 绿色 |ON |不适用 |PCM 故障 LED、风扇故障 LED |任何 PCM 故障、风扇故障、温度过高或过低 |
+| 绿色 |ON |不适用 |I/O 模块 LED |任何控制器模块故障 |
+| 绿色 |ON |不适用 |不适用 |机箱逻辑故障 |
+| 绿色 |Flash |不适用 |控制器模块上的模块状态 LED。 PCM 故障 LED、风扇故障 LED |安装了未知类型的控制器模块、I2C 总线故障、控制器模块重要产品数据 (VPD) 配置错误 |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>电源冷却模块 (PCM) 指示器 LED
 电源冷却模块 (PCM) 指示器 LED 位于主机箱或 EBOD 机箱的背部，在每个 PCM 模块上。 本主题讨论了如何使用以下 LED 监视 StorSimple 设备的状态。  
@@ -91,7 +91,7 @@ PCM 的状态是在 LED 面板上指示的。 设备 PCM LED 面板有六个 LED
 | 没有交流电（到机箱） |OFF |OFF |OFF |OFF |
 | 没有交流电（仅限此 PCM） |OFF |ON |OFF |ON |
 | 交流电源已向 PCM 供电 - 正常 |ON |OFF |OFF |OFF |
-| PCM 故障（风扇故障） |OFF |OFF |ON |不可用 |
+| PCM 故障（风扇故障） |OFF |OFF |ON |不适用 |
 | PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |ON |
 | PCM（风扇转速失调） |ON |OFF |OFF |ON |
 | 备用模式 |闪烁 |OFF |OFF |OFF |

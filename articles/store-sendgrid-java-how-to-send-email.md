@@ -17,14 +17,14 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87304473"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015445"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
-本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
+本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括 **创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器** 和 **更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
 SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
@@ -70,7 +70,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
                 // …
     ```
 
-1. 展开 javax.mail.Authenticator** 类，然后在对 getPasswordAuthentication** 方法的实现中，返回 SendGrid 用户名和密码。  
+1. 展开 javax.mail.Authenticator 类，然后在对 getPasswordAuthentication 方法的实现中，返回 SendGrid 用户名和密码。  
 
     ```java
     private class SMTPAuthenticator extends javax.mail.Authenticator {
@@ -80,14 +80,14 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
         return new PasswordAuthentication(username, password);
     }
     ```
-2. 通过 javax.mail.Session** 对象创建经过身份验证的电子邮件会话。  
+2. 通过 javax.mail.Session 对象创建经过身份验证的电子邮件会话。  
 
     ```java
     Authenticator auth = new SMTPAuthenticator();
     Session mailSession = Session.getDefaultInstance(properties, auth);
     ```
-3. 创建邮件并分配**收件人**、**发件人**、**主题**和内容值。 此操作在[如何：创建电子邮件](#how-to-create-an-email)部分进行演示。
-4. 通过 javax.mail.Transport** 对象发送邮件。 此操作在 [如何：发送电子邮件][#how-to-send-an-email] 部分进行演示。
+3. 创建邮件并分配 **收件人**、**发件人**、**主题** 和内容值。 此操作在[如何：创建电子邮件](#how-to-create-an-email)部分进行演示。
+4. 通过 javax.mail.Transport 对象发送邮件。 此操作在 [如何：发送电子邮件][#how-to-send-an-email] 部分进行演示。
 
 ## <a name="how-to-create-an-email"></a>如何：创建电子邮件
 以下代码演示如何为电子邮件指定值。
@@ -143,7 +143,7 @@ multipart.addBodyPart(attachmentPart);
 ```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用筛选器启用页脚、跟踪和分析
-SendGrid 通过使用 *筛选器*来提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。 有关筛选器的完整列表，请参阅[筛选器设置][Filter Settings]。
+SendGrid 通过使用 *筛选器* 来提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。 有关筛选器的完整列表，请参阅[筛选器设置][Filter Settings]。
 
 * 以下代码演示如何插入使所发送的电子邮件底部显示 HTML 文本的页脚筛选器。
 
@@ -176,7 +176,7 @@ SendGrid 通过使用 *筛选器*来提供其他电子邮件功能。 可将这�
     ```
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可使用“设置属性”覆盖某些电子邮件属性，或使用“添加属性”追加某些电子邮件属性********。
+可使用“设置属性”覆盖某些电子邮件属性，或使用“添加属性”追加某些电子邮件属性。
 
 例如，若要指定 **ReplyTo** 地址，请使用以下代码：
 
@@ -188,7 +188,7 @@ InternetAddress addresses[] =
 message.setReplyTo(addresses);
 ```
 
-若要添加“抄送”**** 收件人，请使用以下代码：
+若要添加“抄送”收件人，请使用以下代码：
 
 ```java
 message.addRecipient(Message.RecipientType.CC, new

@@ -10,11 +10,11 @@ ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016686"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -132,7 +132,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>使用公共 IP 为每个虚拟机创建规模集
 若要通过 CLI 创建向每个虚拟机分配公共 IP 地址的规模集，请将 --public-ip-per-vm 参数添加到 vmss create 命令中 。 
 
-若要使用 Azure 模板创建规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本至少为 **2017-03-30** ，并将 **publicIpAddressConfiguration** JSON 属性添加到规模集的 ipConfigurations 节。 例如：
+若要使用 Azure 模板创建规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本至少为 **2017-03-30**，并将 **publicIpAddressConfiguration** JSON 属性添加到规模集的 ipConfigurations 节。 例如：
 
 ```json
 "publicIpAddressConfiguration": {
@@ -160,19 +160,19 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-也可通过查询  2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
+也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
 
 若要查询 [Azure 资源浏览器](https://resources.azure.com)，请执行以下操作：
 
 1. 在 Web 浏览器中打开 [Azure 资源浏览器](https://resources.azure.com)。
-1. 展开左侧的“订阅”，方法是单击其旁边的  如果在“订阅”下只有一个项，则“订阅”可能已展开。 
+1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。 如果在“订阅”下只有一个项，则“订阅”可能已展开。
 1. 展开订阅。
 1. 展开资源组。
-1. 展开提供程序。 
-1. 展开 " *Microsoft. 计算* "。
-1. 展开 *virtualMachineScaleSets* 。
+1. 展开提供程序。
+1. 展开 " *Microsoft. 计算*"。
+1. 展开 *virtualMachineScaleSets*。
 1. 展开规模集。
-1. 单击“publicipaddresses”。 
+1. 单击“publicipaddresses”。
 
 若要查询 Azure REST API，请执行以下操作：
 

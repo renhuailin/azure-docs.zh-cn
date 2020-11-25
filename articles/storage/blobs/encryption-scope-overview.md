@@ -1,6 +1,6 @@
 ---
 title: Blob 存储的加密范围（预览）
-description: 加密作用域提供在容器或单个 blob 级别管理加密的功能。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
+description: 可以通过加密范围在容器或单个 Blob 级别管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017383"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
 
-加密作用域提供在容器或单个 blob 级别管理加密的功能。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
+可以通过加密范围在容器或单个 Blob 级别管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
 
-默认情况下，存储帐户使用作用域为整个存储帐户的密钥进行加密。 使用加密范围，可以指定一个或多个容器使用仅限于那些容器的密钥进行加密。
+默认情况下，使用作用域为整个存储帐户的密钥对存储帐户进行加密。 使用加密范围时，可以指定使用作用域仅为这些容器的密钥对一个或多个容器加密。
 
 你可以选择使用 Microsoft 管理的密钥或存储在 Azure Key Vault 中的客户管理的密钥来保护和控制对用于加密数据的密钥的访问。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
 
@@ -50,10 +50,10 @@ ms.locfileid: "91326110"
 
 禁用加密范围后，将不再为此付费。 禁用不需要的任何加密范围以避免不必要的费用。
 
-如果你的加密作用域是通过客户托管的密钥保护的，则还可以删除密钥保管库中的关联密钥，以便禁用加密作用域。 请记住，客户托管的密钥受密钥保管库中的软删除和清除保护保护，而已删除的密钥受这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
+如果你的加密范围受客户管理的密钥保护，则还可以删除密钥保管库中的关联密钥来禁用加密范围。 请记住，客户管理的密钥受到密钥保管库中的软删除和清除保护功能的保护，删除的密钥受到为这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
 
-- [如何在 PowerShell 中使用软删除](../../key-vault/general/soft-delete-powershell.md)
-- [如何在 CLI 中使用软删除](../../key-vault/general/soft-delete-cli.md)
+- [如何在 PowerShell 中使用软删除](../../key-vault/general/key-vault-recovery.md)
+- [如何在 CLI 中使用软删除](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > 不能删除加密范围。
@@ -62,5 +62,5 @@ ms.locfileid: "91326110"
 
 - [静态数据的 Azure 存储加密](../common/storage-service-encryption.md)
 - [创建和管理加密范围（预览）](encryption-scope-manage.md)
-- [用于 Azure 存储加密的客户托管密钥](../common/customer-managed-keys-overview.md)
+- [用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)
 - [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016312"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -75,7 +75,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
-| Configuration             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| 配置             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
 |                           | 我同意 IBM 条款                     | 已选中                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |
@@ -111,7 +111,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 
 - 设置脚本使用 iSCSI 磁盘的别名，以便可以轻松找到实际名称。
 
-- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同****。 值之间的差异不会影响 DB2 pureScale 设置。
+- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同。 值之间的差异不会影响 DB2 pureScale 设置。
 
 ## <a name="troubleshooting-and-known-issues"></a>故障排除和已知问题
 

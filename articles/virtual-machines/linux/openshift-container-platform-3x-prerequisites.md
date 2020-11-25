@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368177"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016023"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11 的常见先决条件
 
@@ -47,7 +47,7 @@ OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
-使用 [az login](/cli/azure/reference-index) 命令登录到 Azure 订阅，按屏幕说明操作，或者单击“试用”使用 Cloud Shell。****
+使用 [az login](/cli/azure/reference-index) 命令登录到 Azure 订阅，按屏幕说明操作，或者单击“试用”使用 Cloud Shell。
 
 ```azurecli
 az login
@@ -55,7 +55,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 应使用专用资源组来承载密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 应使用专用资源组来承载密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
 
 以下示例在 *eastus* 位置创建一个名为 *keyvaultrg* 的资源组：
 
@@ -98,9 +98,9 @@ OpenShift 使用用户名和密码或服务主体来与 Azure 通信。 Azure �
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 创建服务主体并输出 OpenShift 需要的凭据。
 
-以下示例创建一个服务主体，并为其分配对名为 *openshiftrg*的资源组的参与者权限。
+以下示例创建一个服务主体，并为其分配对名为 *openshiftrg* 的资源组的参与者权限。
 
-首先，创建名为 *openshiftrg*的资源组：
+首先，创建名为 *openshiftrg* 的资源组：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -138,7 +138,7 @@ az ad sp create-for-rbac --name openshiftsp \
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>仅适用于资源管理器模板的先决条件
 
-需要为 SSH 私钥创建机密 (**sshPrivateKey**) 、Azure AD 客户端机密 (**AadClientSecret**) 、OpenShift admin password (**OpenshiftPassword**) 和 Red Hat 订阅管理器密码或激活密钥 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自定义的 TLS/SSL 证书，则需要创建六个额外的机密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和 **masterkeyfile**。  这些参数将更详细地介绍。
+需要为 SSH 私钥创建机密 (**sshPrivateKey**) 、Azure AD 客户端机密 (**AadClientSecret**) 、OpenShift admin password (**OpenshiftPassword**) 和 Red Hat 订阅管理器密码或激活密钥 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自定义的 TLS/SSL 证书，则需要创建六个额外的机密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile** 和 **masterkeyfile**。  这些参数将更详细地介绍。
 
 模板引用特定的机密名称，因此你 **必须** 使用上面列出的粗体名称 (区分大小写的) 。
 
