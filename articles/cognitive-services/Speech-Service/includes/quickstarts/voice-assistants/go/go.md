@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: b05e63dc549fdf1fec4485e27086bb32251b41d8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136008"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095633"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,7 +18,7 @@ ms.locfileid: "93136008"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
-> * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
+> * 创建连接到 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 >
   > [!NOTE]
@@ -108,7 +108,7 @@ func main() {
    > 请参阅[语音助手支持的区域列表](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
 
    > [!NOTE]
-   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
+   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
 
 ## <a name="code-explanation"></a>代码说明
 需要语音订阅密钥和区域才能创建语音配置对象。 实例化语音识别器对象需要配置对象。

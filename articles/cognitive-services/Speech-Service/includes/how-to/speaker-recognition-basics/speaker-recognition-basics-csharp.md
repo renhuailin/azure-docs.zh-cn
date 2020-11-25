@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470731"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015456"
 ---
 本快速入门介绍使用语音 SDK 进行说话人识别的基本设计模式，其中包括：
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
 
 请注意，区域设置为 `westus`，因为它是该服务唯一支持的区域。
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>依赖于文本的验证
 
-说话人验证是确认说话人与已知或已注册的语音匹配的操作。 第一步是注册语音配置文件，以便该服务有可与将来的语音样本进行比较的内容。 在此示例中，使用依赖于文本的策略注册配置文件，该策略需要用于注册和验证的特定通行短语。 有关支持的通行短语的列表，请参阅[参考文档](https://docs.microsoft.com/rest/api/speakerrecognition/)。
+说话人验证是确认说话人与已知或已注册的语音匹配的操作。 第一步是注册语音配置文件，以便该服务有可与将来的语音样本进行比较的内容。 在此示例中，使用依赖于文本的策略注册配置文件，该策略需要用于注册和验证的特定通行短语。 有关支持的通行短语的列表，请参阅[参考文档](/rest/api/speakerrecognition/)。
 
 首先在 `Program` 类中创建以下函数以注册语音配置文件。
 

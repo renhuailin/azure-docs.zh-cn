@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fcfefb2b6cd5c23e9b77d7d27413d1ff6d775bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b691dc408c65b2152c60276dbea826042ecb0d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321536"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096371"
 ---
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [包 (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
+[参考文档](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [包 (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -118,7 +118,7 @@ node index.js
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure 管理 SDK 参考文档](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
-* [什么是 Azure 认知服务？](../../Welcome.md)
+* [Azure 管理 SDK 参考文档](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
+* [什么是 Azure 认知服务？](../../what-are-cognitive-services.md)
 * [对 Azure 认知服务的请求进行身份验证](../../authentication.md)
 * [使用 Azure 门户创建新资源](../../cognitive-services-apis-create-account.md)

@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 01b8e32db50b8a1b75bb0d3ebeb6d2f4a3f901a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 59416d2e65f17dadfd9d92969319d1804fa308ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90982783"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097669"
 ---
 可以使用适用于 Java 的 QnA Maker 客户端库执行以下操作：
 
@@ -63,7 +63,7 @@ ms.locfileid: "90982783"
 
 QnA Maker 使用两种不同的对象模型：
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为[主动学习](../concepts/active-learning-suggestions.md)的一部分）。
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../concepts/active-learning-suggestions.md)的一部分）。
 
 [!INCLUDE [Get KBinformation](./quickstart-sdk-cognitive-model.md)]
 
@@ -77,7 +77,7 @@ QnA Maker 使用两种不同的对象模型：
 
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient 对象模型
 
-运行时 QnA Maker 客户端是一个 [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerRuntimeClient.java) 对象。
+运行时 QnA Maker 客户端是一个 [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerClient.java) 对象。
 
 使用创作客户端发布知识库后，可使用运行时客户端的 [generateAnswer](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Runtimes.java#L36) 方法从知识库获取答案。
 
@@ -93,9 +93,9 @@ QnA Maker 使用两种不同的对象模型：
 
 知识库为来自三个源的 [CreateKbDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/CreateKbDTO.java) 对象存储问答对：
 
-* 对于**编辑内容**，请使用 [QnADTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/QnADTO.java) 对象。
+* 对于 **编辑内容**，请使用 [QnADTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/QnADTO.java) 对象。
     * 若要使用元数据和跟进提示，请使用编辑上下文，因为此数据是在单独的 QnA 对级别添加的。
-* 对于**文件**，请使用 [FileDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/FileDTO.java) 对象。 FileDTO 包括文件名以及用于访问该文件的公共 URL。
+* 对于 **文件**，请使用 [FileDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/FileDTO.java) 对象。 FileDTO 包括文件名以及用于访问该文件的公共 URL。
 * 对于 URL，请使用一列字符串来表示公开可用的 URL。
 
 调用 [create](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L173) 方法，然后将返回的操作的 `operationId` 属性传递给 [getDetails](#get-status-of-an-operation) 方法以轮询状态。

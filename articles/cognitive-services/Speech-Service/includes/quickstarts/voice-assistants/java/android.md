@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86226405"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095766"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](~/articles/cognitive-services/speech-service/get-started.md)
+> * [创建 Azure 语音资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
+> * 创建连接到 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
   > [!NOTE]
@@ -272,4 +272,3 @@ ms.locfileid: "86226405"
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [footer](./footer.md)]
-

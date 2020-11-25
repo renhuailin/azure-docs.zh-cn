@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0619dc11ed16f100332c775a8683ca77cbea92b9
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3ddd7b1139396a5952d1575ea72b00d5dfa14fab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482789"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098096"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -307,7 +307,7 @@ speechConfig.SpeechRecognitionLanguage = "it-IT";
 > [!IMPORTANT]
 > 短语列表功能仅以英语提供。
 
-若要使用短语列表，请首先创建一个 [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) 对象，然后使用 [`AddPhrase`](//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?preserve-view=true&view=azure-dotnet) 添加特定的单词和短语。
+若要使用短语列表，请首先创建一个 [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) 对象，然后使用 [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?preserve-view=true&view=azure-dotnet) 添加特定的单词和短语。
 
 对 [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) 所做的任何更改都将在下一次识别或重新连接到语音服务之后生效。
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: dd23bf0528a27f599058271decbf1820084c9a43
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 489514068d83f7b2953732415ba066a2d4555df8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875408"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015459"
 ---
 本快速入门介绍使用语音 SDK 进行说话人识别的基本设计模式，其中包括：
 
@@ -47,13 +47,13 @@ ms.locfileid: "91875408"
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="get_speech_config":::
 
 ## <a name="text-dependent-verification"></a>依赖于文本的验证
 
-说话人验证是确认说话人与已知或已注册的语音匹配的操作。 第一步是注册语音配置文件，以便该服务有可与将来的语音样本进行比较的内容。 在此示例中，使用依赖于文本的策略注册配置文件，该策略需要用于注册和验证的特定密码。 有关支持的密码的列表，请参阅[参考文档](https://docs.microsoft.com/rest/api/speakerrecognition/)。
+说话人验证是确认说话人与已知或已注册的语音匹配的操作。 第一步是注册语音配置文件，以便该服务有可与将来的语音样本进行比较的内容。 在此示例中，使用依赖于文本的策略注册配置文件，该策略需要用于注册和验证的特定密码。 有关支持的密码的列表，请参阅[参考文档](/rest/api/speakerrecognition/)。
 
 ### <a name="textdependentverification-function"></a>TextDependentVerification 函数
 
@@ -61,7 +61,7 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_dependent_verification":::
 
-此函数使用 [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) 对象。 请注意，有三种[类型](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype)的 `VoiceProfile`：
+此函数使用 [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) 对象。 请注意，有三种[类型](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype)的 `VoiceProfile`：
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -69,7 +69,7 @@ ms.locfileid: "91875408"
 
 在本例中，你将 `VoiceProfileType::TextDependentVerification` 传递到 `CreateProfileAsync`。
 
-然后调用接下来要定义的两个 helper 函数 `AddEnrollmentsToTextDependentProfile` 和 `SpeakerVerify`。 最后，调用 [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
+然后调用接下来要定义的两个 helper 函数 `AddEnrollmentsToTextDependentProfile` 和 `SpeakerVerify`。 最后，调用 [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile 函数
 
@@ -77,7 +77,7 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_dependent":::
 
-在此函数中，注册 `while` 循环中的音频示例，该循环跟踪注册所必需的剩余示例数。 在每次迭代中，[EnrollProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) 都会提示你对着麦克风说出密码，并将该示例添加到语音配置文件。
+在此函数中，注册 `while` 循环中的音频示例，该循环跟踪注册所必需的剩余示例数。 在每次迭代中，[EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) 都会提示你对着麦克风说出密码，并将该示例添加到语音配置文件。
 
 ### <a name="speakerverify-function"></a>SpeakerVerify 函数
 
@@ -85,9 +85,9 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_verify":::
 
-在此函数中，使用 [SpeakerVerificationModel::FromProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerverificationmodel#fromprofile) 方法创建 [SpeakerVerificationModel](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerverificationmodel) 对象，从而传入之前创建的 [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) 对象。
+在此函数中，使用 [SpeakerVerificationModel::FromProfile](/cpp/cognitive-services/speech/speakerverificationmodel#fromprofile) 方法创建 [SpeakerVerificationModel](/cpp/cognitive-services/speech/speakerverificationmodel) 对象，从而传入之前创建的 [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) 对象。
 
-接下来，[SpeechRecognizer::RecognizeOnceAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 提示你再次说出密码，但这次将针对语音配置文件进行验证，并返回介于 0.0-1.0 之间的相似性分数。 [SpeakerRecognitionResult](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognitionresult) 对象还会根据密码是否匹配返回 `Accept` 或 `Reject`。
+接下来，[SpeechRecognizer::RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 提示你再次说出密码，但这次将针对语音配置文件进行验证，并返回介于 0.0-1.0 之间的相似性分数。 [SpeakerRecognitionResult](/cpp/cognitive-services/speech/speakerrecognitionresult) 对象还会根据密码是否匹配返回 `Accept` 或 `Reject`。
 
 ## <a name="text-independent-verification"></a>独立于文本的验证
 
@@ -102,11 +102,11 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_verification":::
 
-与 `TextDependentVerification` 函数一样，此函数使用 [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) 对象。
+与 `TextDependentVerification` 函数一样，此函数使用 [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) 对象。
 
 在本例中，你将 `VoiceProfileType::TextIndependentVerification` 传递到 `CreateProfileAsync`。
 
-然后，调用两个 helper 函数：`AddEnrollmentsToTextIndependentProfile`（将在下一步定义）和 `SpeakerVerify`（已定义）。 最后，调用 [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
+然后，调用两个 helper 函数：`AddEnrollmentsToTextIndependentProfile`（将在下一步定义）和 `SpeakerVerify`（已定义）。 最后，调用 [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -114,7 +114,7 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_independent":::
 
-在此函数中，注册 `while` 循环中的音频示例，该循环跟踪注册所必需的剩余音频秒数。 在每次迭代中，[EnrollProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) 都会提示你对着麦克风讲话，并将该示例添加到语音配置文件。
+在此函数中，注册 `while` 循环中的音频示例，该循环跟踪注册所必需的剩余音频秒数。 在每次迭代中，[EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) 都会提示你对着麦克风讲话，并将该示例添加到语音配置文件。
 
 ## <a name="speaker-identification"></a>说话人识别
 
@@ -126,11 +126,11 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_indentification":::
 
-与 `TextDependentVerification` 和 `TextIndependentVerification` 函数一样，此函数使用 [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) 对象。
+与 `TextDependentVerification` 和 `TextIndependentVerification` 函数一样，此函数使用 [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) 方法创建 [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) 对象。
 
 在本例中，你将 `VoiceProfileType::TextIndependentIdentification` 传递到 `CreateProfileAsync`。
 
-然后，调用两个 helper 函数：`AddEnrollmentsToTextIndependentProfile`（已定义）和 `SpeakerIdentify`（将在下一步定义）。 最后，调用 [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
+然后，调用两个 helper 函数：`AddEnrollmentsToTextIndependentProfile`（已定义）和 `SpeakerIdentify`（将在下一步定义）。 最后，调用 [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync)，以清理该配置文件。
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify 函数
 
@@ -138,9 +138,9 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_identify":::
 
-在此函数中，使用 [SpeakerIdentificationModel::FromProfiles](https://docs.microsoft.com/cpp/cognitive-services/speech/speakeridentificationmodel#fromprofiles) 方法创建 [SpeakerIdentificationModel](https://docs.microsoft.com/cpp/cognitive-services/speech/speakeridentificationmodel) 对象。 `SpeakerIdentificationModel::FromProfiles` 接受 [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) 对象的列表。 在本例中，只需传入前面创建的 `VoiceProfile` 对象即可。 但是，如果需要，可以传入多个 `VoiceProfile` 对象，每个对象都注册了来自不同语音的音频示例。
+在此函数中，使用 [SpeakerIdentificationModel::FromProfiles](/cpp/cognitive-services/speech/speakeridentificationmodel#fromprofiles) 方法创建 [SpeakerIdentificationModel](/cpp/cognitive-services/speech/speakeridentificationmodel) 对象。 `SpeakerIdentificationModel::FromProfiles` 接受 [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) 对象的列表。 在本例中，只需传入前面创建的 `VoiceProfile` 对象即可。 但是，如果需要，可以传入多个 `VoiceProfile` 对象，每个对象都注册了来自不同语音的音频示例。
 
-接下来，[SpeechRecognizer::RecognizeOnceAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 将提示你再次讲话。 这次，它会将你的语音与已注册的语音配置文件进行比较，并返回最相似的语音配置文件。
+接下来，[SpeechRecognizer::RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 将提示你再次讲话。 这次，它会将你的语音与已注册的语音配置文件进行比较，并返回最相似的语音配置文件。
 
 ## <a name="main-function"></a>main 函数
 
@@ -148,7 +148,7 @@ ms.locfileid: "91875408"
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="main":::
 
-此函数只调用你之前定义的函数。 但首先，它会创建一个 [VoiceProfileClient](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient) 对象和一个 [SpeakerRecognizer](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer) 对象。
+此函数只调用你之前定义的函数。 但首先，它会创建一个 [VoiceProfileClient](/cpp/cognitive-services/speech/voiceprofileclient) 对象和一个 [SpeakerRecognizer](/cpp/cognitive-services/speech/speakerrecognizer) 对象。
 
 ```
 auto speech_config = GetSpeechConfig();
@@ -172,4 +172,4 @@ to:
 auto audio_config = Audio::AudioConfig::FromWavFileInput(path/to/your/file.wav);
 ```
 
-或者将 `audio_config` 的任何用途替换为 [Audio::AudioConfig::FromWavFileInput](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig#fromwavfileinput)。 还可以具有混合输入，例如，使用麦克风进行注册，使用文件进行验证。
+或者将 `audio_config` 的任何用途替换为 [Audio::AudioConfig::FromWavFileInput](/cpp/cognitive-services/speech/audio-audioconfig#fromwavfileinput)。 还可以具有混合输入，例如，使用麦克风进行注册，使用文件进行验证。

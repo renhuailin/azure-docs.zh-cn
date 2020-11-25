@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 0fae0172467bb4499c2710c49553d9134a32fa9b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c9ed54f11cade20af67a1c9bfe948b03e9d7b0d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135600"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095763"
 ---
-本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。 对于对话听录，仅支持 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 对于其他语音，支持使用提供麦克风阵列几何的线性麦克风阵列。
+本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。 对于对话听录，仅支持 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 对于其他语音，支持使用提供麦克风阵列几何的线性麦克风阵列。
 
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Windows 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](../overview.md#try-the-speech-service-for-free)帐户。
 
 [示例应用程序](https://aka.ms/sdsdk-download-JRE)的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -29,14 +29,14 @@ ms.locfileid: "93135600"
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * 仅限 [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-* 语音服务的 Azure 订阅密钥。 [免费获得一个](../get-started.md)。
+* 语音服务的 Azure 订阅密钥。 [免费获得一个](../overview.md#try-the-speech-service-for-free)。
 * 下载用于 Java 的[语音设备 SDK](https://aka.ms/sdsdk-download-JRE) 的最新版本，并将 .zip 提取到工作目录。
    > [!NOTE]
    > 本快速入门假设应用已解压缩到 C:\SDSDK\JRE-Sample-Release
 
 对话听录目前在“centralus”和“eastasia”区域中仅提供“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
-如果计划使用意向，则将需要[语音理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
+如果计划使用意向，则将需要[语音理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 
 ## <a name="create-and-configure-the-project"></a>创建和配置项目
 
@@ -108,7 +108,7 @@ ms.locfileid: "93135600"
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`C:\SDSDK\JRE-Sample-Release\keyword\Computer` 包含用于关键字“Computer”的文件。
 
     > [!TIP]
-    > 还可以[创建自定义关键字](../speech-devices-sdk-create-kws.md)。
+    > 还可以[创建自定义关键字](../custom-keyword-basics.md)。
 
     要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
@@ -129,7 +129,7 @@ ms.locfileid: "93135600"
 
    ![显示语音设备 SDK 示例应用程序和选项的屏幕截图。](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. 试用新的“对话听录”演示。 通过“会话” > “启动”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 target/classes 的 `participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 试用新的“对话听录”演示。 通过“会话” > “启动”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 target/classes 的 `participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription.md)。
 
    ![演示对话听录应用程序的屏幕截图。](../media/speech-devices-sdk/cts-sample-app-windows.png)
 

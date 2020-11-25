@@ -8,18 +8,18 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 33efca9ab3c24ebd0a3d1c76924f2c1f4ee89581
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91534548"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096304"
 ---
 [参考文档](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [JDK SE](https://aka.ms/azure-jdks)（Java 开发工具包，标准版）
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support)（Java 开发工具包，标准版）
 * [Visual Studio Code](https://code.visualstudio.com/) 或你喜欢用的 IDE
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件

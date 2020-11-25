@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ef317ee3917172d0de204adafe5d5bf21a2a9ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976362"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014503"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -80,7 +80,7 @@ ms.locfileid: "91976362"
 * 每个已提取单词的置信度分数
 * 使用附加的语言参数同时支持西班牙语和英语
 
-按照[提取文本快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3)，开始使用 3.0 API。
+按照[提取文本快速入门](./quickstarts/csharp-hand-text.md?tabs=version-3)，开始使用 3.0 API。
 
 ## <a name="cognitive-service-updates"></a>认知服务更新
 

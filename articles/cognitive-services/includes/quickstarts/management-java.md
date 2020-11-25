@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 346854d5990ac6861bd4eb93914bb1745b90bfa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321534"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098244"
 ---
-[参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
+[参考文档](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,7 +126,7 @@ dependencies {
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure 管理 SDK 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
-* [什么是 Azure 认知服务？](../../Welcome.md)
+* [Azure 管理 SDK 参考文档](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
+* [什么是 Azure 认知服务？](../../what-are-cognitive-services.md)
 * [对 Azure 认知服务的请求进行身份验证](../../authentication.md)
 * [使用 Azure 门户创建新资源](../../cognitive-services-apis-create-account.md)
