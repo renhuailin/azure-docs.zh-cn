@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: c26ef5b857d7295b533079a70959f0f1ef1e8206
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424655"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028086"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>创建函数的支持性 Azure 资源
 
@@ -55,7 +55,7 @@ ms.locfileid: "93424655"
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令可创建资源组。 通常，你会在从 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) cmdlet 返回的、离你近的某个可用区域中创建资源组和资源。
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令可创建资源组。 通常，你会在从 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) cmdlet 返回的、离你近的某个可用区域中创建资源组和资源。
 
     ---
 
@@ -80,6 +80,3 @@ ms.locfileid: "93424655"
     ---
 
     在上一个示例中，将 `<STORAGE_NAME>` 替换为适合你且在 Azure 存储中唯一的名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定 [Functions 支持](../articles/azure-functions/storage-considerations.md#storage-account-requirements)的常规用途帐户。
-    
-
-

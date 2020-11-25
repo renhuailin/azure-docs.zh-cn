@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: tamram
-ms.openlocfilehash: 0bf9d6eb68536588b35df93e13b04841d7868d31
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: edadcc4025913052e048ea94d47cac253e4bcd1a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547141"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523325"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob
 
@@ -31,7 +31,7 @@ ms.locfileid: "92547141"
 1. 导航到 Azure 门户中的新存储帐户。
 2. 在存储帐户的左侧菜单中滚动到“Blob 服务”部分，然后选择“容器”。  
 3. 选择“+ 容器”。 
-4. 键入新容器的名称。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
+4. 键入新容器的名称。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
 5. 设置容器的公共访问权限级别。 默认级别为“专用(禁止匿名访问)”。 
 6. 选择“确定”  创建容器。
 
@@ -47,7 +47,7 @@ ms.locfileid: "92547141"
 1. 选择一个容器，显示其包含的 Blob 的列表。 由于此容器为新容器，因此尚不包含任何 Blob。
 1. 选择“上传”按钮打开“上传”边栏选项卡，并浏览本地文件系统，找到要作为块 Blob 上传的文件。  （可选）可以展开“高级”部分，以配置上传操作的其他设置。
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="显示如何在 Azure 门户中创建容器的屏幕截图":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="显示如何通过 Azure 门户从本地驱动器上传 Blob 的屏幕截图":::
 
 1. 选择“上传”按钮以上传 Blob。 
 1. 以这种方式根据需要上传相应数量的 Blob。 可以看到新的 Blob 现已列在容器中。
@@ -59,7 +59,7 @@ ms.locfileid: "92547141"
 1. 导航到在前一部分上传的 Blob 的列表。
 1. 右键单击要下载的 Blob，然后选择“下载”。 
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="显示如何在 Azure 门户中创建容器的屏幕截图":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="显示如何在 Azure 门户中下载 Blob 的屏幕截图":::
 
 ## <a name="delete-a-block-blob"></a>删除块 Blob
 
@@ -71,7 +71,7 @@ ms.locfileid: "92547141"
 1. 选择“删除”按钮删除所选的 Blob。
 1. 在对话框中，确认删除，并指示是否也要删除 Blob 快照。
 
-:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="显示如何在 Azure 门户中创建容器的屏幕截图":::
+:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="显示如何从 Azure 门户中删除 Blob 的屏幕截图":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

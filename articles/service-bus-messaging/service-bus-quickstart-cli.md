@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191264"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810631"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure CLI 创建服务总线命名空间和队列
 本快速入门介绍如何使用 Azure CLI 创建服务总线命名空间和队列。 本快速入门还介绍了如何获取客户端应用程序向队列发送消息或从队列接收消息所使用的授权凭据。 
@@ -24,7 +24,7 @@ ms.locfileid: "88191264"
 
 ## <a name="provision-resources"></a>预配资源
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 通过选择下图中显示的图标启动 Azure Cloud Shell。 如果 CloudShell 处于 PowerShell 模式，请切换到 Bash 模式 。 
+2. 通过选择下图中显示的图标启动 Azure Cloud Shell。 如果 Cloud Shell 处于 PowerShell 模式，请切换到 Bash 模式 。 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="启动 Cloud Shell":::
 3. 运行以下命令来创建 Azure 资源组。 如有需要，请更新资源组名称和位置。 
@@ -56,7 +56,7 @@ ms.locfileid: "88191264"
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)
 - [Java](service-bus-java-how-to-use-queues.md)
-- [JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)
+- [JavaScript](service-bus-nodejs-how-to-use-queues.md)
 - [Python](service-bus-python-how-to-use-queues.md)
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)

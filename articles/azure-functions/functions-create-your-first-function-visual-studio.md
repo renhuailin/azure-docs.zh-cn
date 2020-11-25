@@ -3,14 +3,14 @@ title: 快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
 description: 本快速入门介绍如何使用 Visual Studio 创建并发布 HTTP 触发器 Azure 函数。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9ddd6e74e25d8de415e24038e99da9d21dab867
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213990"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96014460"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
 
@@ -74,7 +74,7 @@ Visual Studio 与 Azure Functions Core Tools 集成，这样你便可使用完�
 
 2. 转到此 URL，你会在浏览器中看到函数返回的对远程 GET 请求的响应，如下例所示：
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="函数应用正在运行":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="浏览器中的函数响应":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -88,7 +88,7 @@ Azure 中的资源是指函数应用、函数、存储帐户等。 这些资源�
 
 1. 在函数应用页中，请选择“概览”选项卡，然后选择“资源组”下的链接 。
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="函数应用正在运行":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="从函数应用页选择要删除的资源组":::
 
 2. 在“资源组”页中查看所包括的资源的列表，然后验证这些资源是否是要删除的。
  

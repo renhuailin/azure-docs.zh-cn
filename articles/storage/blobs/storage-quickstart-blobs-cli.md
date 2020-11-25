@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660332"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021752"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -35,7 +35,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
 
 可以使用 Azure AD 凭据或存储帐户访问密钥通过 Azure CLI 授予对 Blob 存储的访问权限。 建议使用 Azure AD 凭据。 本文介绍如何使用 Azure AD 授权 Blob 存储操作。
 
-与针对 Blob 存储的数据操作相对应的 Azure CLI 命令支持 `--auth-mode` 参数，该参数用于指定如何授权给定操作。 将 `--auth-mode` 参数设置为 `login`，使用 Azure AD 凭据进行授权。 有关详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+与针对 Blob 存储的数据操作相对应的 Azure CLI 命令支持 `--auth-mode` 参数，该参数用于指定如何授权给定操作。 将 `--auth-mode` 参数设置为 `login`，使用 Azure AD 凭据进行授权。 有关详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 仅 Blob 存储数据操作支持 `--auth-mode` 参数。 管理操作（例如创建资源组或存储帐户）会自动将 Azure AD 凭据用于授权。
 
@@ -89,7 +89,7 @@ az storage container create \
 > [!IMPORTANT]
 > Azure 角色分配可能需要几分钟时间来进行传播。
 
-你还可以使用存储帐户密钥来授权操作创建容器。 有关使用 Azure CLI 授权数据操作的详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)。
+你还可以使用存储帐户密钥来授权操作创建容器。 有关使用 Azure CLI 授权数据操作的详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="upload-a-blob"></a>上传 blob
 
@@ -169,4 +169,4 @@ az group delete \
 在此快速入门中，你了解了如何在本地文件系统和 Azure Blob 存储中的容器之间传输文件。 若要详细了解如何使用 Azure CLI 操作 Blob 存储，请浏览“适用于 Blob 存储的 Azure CLI 示例”。
 
 > [!div class="nextstepaction"]
-> [适用于 Blob 存储的 Azure CLI 示例](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [适用于 Blob 存储的 Azure CLI 示例](./storage-samples-blobs-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

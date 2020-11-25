@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109011"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004732"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入门：通过 Xamarin 使用 Azure Blob 存储客户端库 v12
 
@@ -39,8 +39,8 @@ ms.locfileid: "92109011"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 安装了 [Mobile Development for .NET 工作负荷](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
+* 安装了 [Mobile Development for .NET 工作负荷](/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019)
 
 ## <a name="setting-up"></a>设置
     

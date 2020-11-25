@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307528"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012759"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "91307528"
 * [API 参考文档](/javascript/api/@azure/storage-blob)
 * [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-blob)
-* [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 开发人员中心](/azure/developer/javascript/)
 
-* 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
+* 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
 * 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
 * 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。

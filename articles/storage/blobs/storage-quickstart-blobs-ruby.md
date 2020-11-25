@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726355"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523257"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入门：使用 Ruby 上传、下载和列出 Blob
 
@@ -25,7 +25,7 @@ ms.locfileid: "68726355"
 请确保已安装下述额外的必备组件：
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* 使用 rubygem 包安装[用于 Ruby 的 Azure 存储库](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)： 
+* 使用 rubygem 包安装[用于 Ruby 的 Azure 存储库]()： 
 
     ```
     gem install azure-storage-blob
@@ -85,12 +85,12 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
 
 * 创建 Azure 存储 **BlobService** 对象的实例，用于设置连接凭据。 
-* 创建**容器**对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+* 创建 **容器** 对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
-有了云 Blob 容器后，可以创建**块** Blob 对象，使之指向你感兴趣的特定 Blob，然后执行上传、下载、复制等操作。
+有了云 Blob 容器后，可以创建 **块** Blob 对象，使之指向你感兴趣的特定 Blob，然后执行上传、下载、复制等操作。
 
 > [!IMPORTANT]
-> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs  。 
 
@@ -189,7 +189,7 @@ File.delete(full_path_to_file2)
 本快速入门介绍了如何使用 Ruby 在本地磁盘和 Azure Blob 存储之间转移文件。 要深入了解如何使用 Blob 存储，请继续学习 Blob 存储操作说明。
 
 > [!div class="nextstepaction"]
-> [Blob 存储操作说明](./storage-ruby-how-to-use-blob-storage.md)
+> [Blob 存储操作说明]()
 
 
 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

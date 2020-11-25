@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555730"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96013388"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
@@ -156,6 +156,7 @@ ms.locfileid: "94555730"
 1. 在“常规”面板的“属性”中，将名称指定为 CopyPipeline  。 然后单击右上角的“属性”图标，折叠面板。
 
 1. 在“活动”工具箱中，展开“移动和转换”。 将“复制数据”活动从“活动”工具箱拖到管道设计器图面。  也可在“活动”工具箱中搜索活动。 指定 **CopyFromBlobToBlob** 作为 **名称**。
+
    ![创建复制数据活动](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. 切换到复制活动设置中的“源”选项卡，选择 **InputDataset** 作为 **源数据集**。
@@ -163,6 +164,7 @@ ms.locfileid: "94555730"
 1. 切换到复制活动设置中的“接收器”选项卡，选择 **OutputDataset** 作为 **接收器数据集**。
 
 1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 **>>** （右箭头）按钮。 
+
    ![验证管道](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>调试管道
@@ -180,6 +182,7 @@ ms.locfileid: "94555730"
 在此过程中，请将实体（链接服务、数据集、管道）部署到 Azure 数据工厂， 然后手动触发管道运行。 
 
 1. 在触发管道之前，必须将实体发布到数据工厂。 若要发布，请选择顶部的“全部发布”。 
+
     ![全部发布](./media/quickstart-create-data-factory-portal/publish-all.png)
 
 1. 若要手动触发管道，请选择管道工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上选择“完成”。 

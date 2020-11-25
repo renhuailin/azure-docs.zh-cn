@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
-ms.openlocfilehash: 4d520f51717aa11dba55697d63852b17e0ba9cf0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5261904dd1ee7f280209015d8f756a055dfab57e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604489"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522934"
 ---
 # <a name="about-the-move-process"></a>关于移动过程
 
@@ -23,10 +23,10 @@ ms.locfileid: "90604489"
 
 在区域移动期间将使用这些组件。
 
-组件**** | **详细信息**
+组件 | **详细信息**
 --- | ---
-**资源转移器** |  资源转移器与 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)进行协调来安排资源在区域之间的移动。 资源转移器分析资源依赖关系，并在移动过程中维护和管理资源的状态。 
-**移动集合** |  移动集合是一个 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)对象。<br/><br/> 移动集合是在区域移动过程中针对订阅中每个包含源区域和目标区域的配对组合创建的。 该集合包含要移动的资源的元数据和配置信息。<br/><br/>添加到移动集合的资源必须在同一订阅中，但可以在不同的资源组中。 
+**资源转移器** |  资源转移器与 [Azure 资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)进行协调来安排资源在区域之间的移动。 资源转移器分析资源依赖关系，并在移动过程中维护和管理资源的状态。 
+**移动集合** |  移动集合是一个 [Azure 资源管理器](../azure-resource-manager/management/overview.md)对象。<br/><br/> 移动集合是在区域移动过程中针对订阅中每个包含源区域和目标区域的配对组合创建的。 该集合包含要移动的资源的元数据和配置信息。<br/><br/>添加到移动集合的资源必须在同一订阅中，但可以在不同的资源组中。 
 **移动资源** | 向移动集合添加资源时，资源转移器会将资源作为移动资源进行跟踪。<br/><br/> 资源转移器维护移动集合中的所有移动资源的信息，并维护源资源与目标资源之间的一对一关系。 
 **依赖项** | 资源转移器验证你添加到集合的资源，并检查资源是否有任何不在移动集合中的依赖项。<br/><br/> 确定资源的依赖项后，可以将它们的依赖项添加到移动集合并移动它们，也可以选择目标区域中的现有替代资源。 开始移动之前，必须先解决所有依赖项。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "90604489"
 **数据** | 移动资源数据和元数据。<br/><br/> 将暂时存储元数据，以跟踪资源依赖项和操作的状态。
 **资源** | 源资源保持不变以确保应用继续工作，可以选择在移动后将其删除。<br/><br/> 在目标区域中创建资源。
 **移动过程** | 需要手动干预和监视的多步骤过程。
-**** 测试： | 对移动进行测试非常重要，因为在移动后，应用应当继续在目标区域中按预期方式工作。
+测试： | 对移动进行测试非常重要，因为在移动后，应用应当继续在目标区域中按预期方式工作。
 **故障时间**： |  预计不会丢失数据，但需要停机一段时间来移动资源。
 
 

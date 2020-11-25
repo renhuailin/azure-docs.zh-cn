@@ -1,12 +1,11 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134918"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555619"
 ---
-
 在 Azure Active Directory (Azure AD) 中，术语应用预配是指在用户需要访问的云 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) 等应用程序中。
 
 ![预配概览图](./media/active-directory-app-provisioning/provisioning-overview.png)
@@ -46,7 +45,7 @@ Azure AD 功能预先集成了对许多常见 SaaS 应用和人力资源系统�
 
    ![Salesforce 徽标](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
+   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../articles/active-directory/develop/v2-howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
 
 * 支持 SCIM 2.0 的应用程序。 有关如何在一般情况下连接实现基于 SCIM 2.0 的用户管理 API 的应用程序的信息，请参阅[生成 SCIM 终结点并配置用户预配](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)。
 

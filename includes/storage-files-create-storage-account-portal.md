@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a0db3ee9f32be35e62accc5df7b92697a883df20
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83778152"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557412"
 ---
 存储帐户是一个共享的存储池，可以在其中部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个共享。 一个共享可以存储无数个文件，直至达到存储帐户的容量限制为止。
 
@@ -30,7 +30,7 @@ ms.locfileid: "83778152"
     > [!NOTE]
     > 本快速入门将创建一个标准文件共享，但如果你想要使用高级文件共享，请改为选择“高级”。
 
-1. 在“帐户类型”中，选择“StorageV2”。  若要详细了解不同类型的存储帐户，请参阅[了解 Azure 存储帐户](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+1. 在“帐户类型”中，选择“StorageV2”。  若要详细了解不同类型的存储帐户，请参阅[了解 Azure 存储帐户](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
 
     > [!NOTE]
     > 本快速入门将创建一个常规用途 v2 帐户。 如果要使用高级文件共享，请改为选择“FileStorage”。

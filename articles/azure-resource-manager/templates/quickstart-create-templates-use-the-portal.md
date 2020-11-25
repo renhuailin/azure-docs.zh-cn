@@ -6,11 +6,11 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978550"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
 
@@ -40,7 +40,7 @@ ms.locfileid: "92890388"
 
     |名称|Value|
     |----|----|
-    |**资源组**|选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg* 。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
+    |**资源组**|选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
     |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016” 。 有关详细信息，请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)。|
 
     可对剩余的属性使用默认值。
@@ -57,7 +57,7 @@ ms.locfileid: "92890388"
 
     主窗格会显示该模板。 它是包含六个顶级元素（`schema`、`contentVersion`、`parameters`、`variables`、`resources`、`output`）的 JSON 文件。 有关详细信息，请参阅[了解 ARM 模板的结构和语法](./template-syntax.md)
 
-    定义了 8 个参数。 其中一个名为 **storageAccountName** 。 在上一屏幕截图中，第二个突出显示的部分显示如何在模板中引用此参数。 在下一部分，请编辑此模板，以便将生成的名称用于存储帐户。
+    定义了 8 个参数。 其中一个名为 **storageAccountName**。 在上一屏幕截图中，第二个突出显示的部分显示如何在模板中引用此参数。 在下一部分，请编辑此模板，以便将生成的名称用于存储帐户。
 
     在模板中定义了一个 Azure 资源。 类型为 `Microsoft.Storage/storageAccounts`。 查看资源定义方式和定义结构。
 1. 在屏幕顶部选择“下载”。
@@ -165,7 +165,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**区域**|选择资源组的位置。 例如“美国中部”。 |
     |**位置**|选择存储帐户的位置。 例如“美国中部”。 |
-    |**帐户类型**|对于本快速入门，请输入 **Standard_LRS** 。 |
+    |**帐户类型**|对于本快速入门，请输入 **Standard_LRS**。 |
     |**种类**|对于本快速入门，请输入“StorageV2”。 |
     |**访问层**|对于本快速入门，请输入“热”。 |
     |**最低 TLS 版本**|输入 TLS1_0。 |

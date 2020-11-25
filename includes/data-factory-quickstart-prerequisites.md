@@ -9,11 +9,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
 ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86545026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013341"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,8 +27,8 @@ ms.locfileid: "86545026"
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 
-- 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
-- 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
+- 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的 **数据工厂参与者** 角色。
+- 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的 **参与者** 角色已足够。
 
 有关如何将用户添加到角色的示例说明，请参阅[添加角色](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 
