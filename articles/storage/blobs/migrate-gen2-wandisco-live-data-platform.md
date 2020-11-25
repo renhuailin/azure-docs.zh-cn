@@ -9,12 +9,12 @@ ms.date: 11/06/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9da6ea7abf57ffecc900a6dbef065a8c6b123e61
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914433"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>通过适用于 Azure (预览版的 WANdisco 实时数据平台满足苛刻的迁移要求) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "94810948"
 
 您可以通过使用 Azure 门户和 Azure CLI 来管理这两个服务，并遵循与所有其他 Azure 服务相同的按流量计费的即用即付计费模式。 适用于 Azure 的实时数据平台将显示在相同的每月 Azure 帐单上，并提供一致且方便的方式来跟踪和监视你的使用情况。
 
-不同 [于通过将静态信息复制到 Azure Data Box](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster)或使用 Hadoop 工具（如 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)）来 _脱机_ 迁移数据，你可以在使用 WANdisco 实时数据 for Azure 的 _联机_ 迁移期间维护业务系统的完全操作。 即使在将大数据环境移到 Azure 中，也要使大数据环境保持运行。
+不同 [于通过将静态信息复制到 Azure Data Box](./data-lake-storage-migrate-on-premises-hdfs-cluster.md)或使用 Hadoop 工具（如 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)）来 _脱机_ 迁移数据，你可以在使用 WANdisco 实时数据 for Azure 的 _联机_ 迁移期间维护业务系统的完全操作。 即使在将大数据环境移到 Azure 中，也要使大数据环境保持运行。
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>适用于 Azure 的 WANdisco 实时数据平台的主要功能
 

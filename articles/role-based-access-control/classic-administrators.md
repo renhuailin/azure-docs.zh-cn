@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916139"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -99,25 +99,25 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。 具有帐户管理员角色的用户无权访问 Azure 门户。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限。 如果帐户管理员和服务管理员是同一个用户，而你将服务管理员更改为其他用户，则帐户管理员会失去 Azure 门户的访问权限。 但是，帐户管理员可始终使用帐户中心将服务管理员重新更改为自己。
 
-请按照这些步骤在“帐户中心”更改服务管理员。
-
-### <a name="account-center"></a>帐户中心
+请按照以下步骤在 Azure 门户中更改服务管理员。
 
 1. 请查看[服务管理员变更限制](#limitations-for-changing-the-service-administrator)，确保自己的方案受支持。
 
-1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 单击某个订阅。
+1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
-1. 在右侧单击“编辑订阅详细信息”。
+1. 在左侧导航栏中，单击 " **属性**"。
 
-    ![显示帐户中心中“编辑订阅”按钮的屏幕截图](./media/classic-administrators/editsub.png)
+1. 单击 " **服务管理员**"。
 
-1. 在“服务管理员”  框中，输入新服务管理员的电子邮件地址。
+    ![在 Azure 门户中显示订阅属性的屏幕截图](./media/classic-administrators/service-admin.png)
 
-    ![屏幕截图：用于更改服务管理员电子邮件的框](./media/classic-administrators/change-service-admin.png)
+1. 在 " **编辑服务管理员** " 页中，输入新服务管理员的电子邮件地址。
 
-1. 单击勾选标记以保存更改。
+    ![显示 "编辑服务管理员" 页的屏幕截图](./media/classic-administrators/service-admin-edit.png)
+
+1. 单击 **“确定”** 保存更改。
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>服务管理员变更限制
 
@@ -142,7 +142,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
-1. 单击“属性”。
+1. 在左侧导航栏中，单击 " **属性**"。
 
     订阅的帐户管理员会显示在“帐户管理员”框中。
 

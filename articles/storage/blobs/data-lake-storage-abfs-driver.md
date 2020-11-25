@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13228ec762db195d0c460e84871b75323f6b98e5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836354"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913702"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem 驱动程序 (ABFS)：专用于 Hadoop 的 Azure 存储驱动程序
 
@@ -25,7 +25,7 @@ Windows Azure 存储 Blob 驱动程序或 [WASB 驱动程序](https://hadoop.apa
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure Blob 文件系统驱动程序
 
-[Azure Data Lake Storage REST 接口](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)旨在支持 Azure Blob 存储的文件系统语义。 考虑到 Hadoop FileSystem 的目的也是支持这些语义，因此无需在驱动程序中进行复杂的映射。 这样，Azure Blob 文件系统驱动程序 (ABFS) 仅作为 REST API 的客户端填充码。
+[Azure Data Lake Storage REST 接口](/rest/api/storageservices/data-lake-storage-gen2)旨在支持 Azure Blob 存储的文件系统语义。 考虑到 Hadoop FileSystem 的目的也是支持这些语义，因此无需在驱动程序中进行复杂的映射。 这样，Azure Blob 文件系统驱动程序 (ABFS) 仅作为 REST API 的客户端填充码。
 
 但是，驱动程序仍然必须执行一些功能：
 

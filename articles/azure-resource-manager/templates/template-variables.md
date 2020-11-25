@@ -2,19 +2,21 @@
 title: 模板中的变量
 description: 介绍如何在 Azure 资源管理器模板中定义变量。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75483812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95915997"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的变量
 
 本文介绍如何在 Azure 资源管理器模板中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
 
 资源管理器会在启动部署操作之前解析变量。 只要在模板中使用变量，资源管理器就会将其替换为解析的值。
+
+每个变量的格式必须与其中一个 [数据类型](template-syntax.md#data-types)匹配。
 
 ## <a name="define-variable"></a>定义变量
 

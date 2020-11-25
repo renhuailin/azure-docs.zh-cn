@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: d3b16101cec242ad2cc470f90b37ab0f19848918
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e98db4ce9884918e63bc87b68f9ab6c0fdf99b93
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542756"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746126"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本 (OCR)
 
 > [!NOTE]
-> 如果要提取英语文本，请考虑使用新的[读取操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [JavaScript 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text)可用。
+> 如果要提取英语文本，请考虑使用新的[读取操作](../concept-recognizing-text.md)。 [JavaScript 快速入门](./javascript-hand-text.md)可用。
 
 本快速入门将使用计算机视觉 REST API 通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -248,6 +248,6 @@ Image to read:
 接下来，了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 JavaScript 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。 
 
 > [!div class="nextstepaction"]
-> [计算机视觉 API JavaScript 教程](../Tutorials/javascript-tutorial.md)
+> [计算机视觉 API JavaScript 教程](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)
 
 * 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)。
