@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121768"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
@@ -36,7 +36,7 @@ Azure IoT Central 中的设备模板是用于定义以下内容的蓝图：
 
 定义设备模型的 JSON 文件使用 [数字克隆定义语言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
-有关显示所使用的部分负载的示例设备代码，请参阅 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md) ，并 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 (Python) ](tutorial-connect-device-python.md) 教程。
+有关显示使用中的部分负载的设备代码示例，请参阅 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md) 教程。
 
 ## <a name="view-raw-data"></a>查看原始数据
 
@@ -50,7 +50,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 
     在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 ### <a name="primitive-types"></a>基元类型
 

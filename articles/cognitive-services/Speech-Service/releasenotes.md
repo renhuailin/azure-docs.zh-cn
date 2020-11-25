@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 18d228af5c162159d52b5583613d4449d1195af2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894229"
+ms.locfileid: "96122563"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -47,7 +47,7 @@ ms.locfileid: "95894229"
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet)。
 -  **C + +/c #/Java/Python/Objective-C/Swift**：已添加 `stopSpeakingAsync()` 停止文本到语音合成的方法。 请参阅此处 [ (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)的参考文档，此处 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此处 [ (Java) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech)， [此处 (Python) ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， [此处 (目标-C/Swift) ](https://docs.microsoft.com/objectivec/cognitive-services/speech/)。
 - **C #、c + +、Java**：向类添加了一个 `FromDialogServiceConnector()` 函数， `Connection` 该函数可用于监视的连接和断开连接事件 `DialogServiceConnector` 。 请参阅此处的参考文档 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此处 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)， [此处 (Java) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection)。
-<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+- **C + +/c #/Java/Python/Objective-C/Swift**：添加了对发音评估的支持，该支持评估语音发音，并为演讲音频提供精确和熟练反馈。 在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)阅读该文档。
 
 **中断性变更**
 - **JavaScript**： PullAudioOutputStream ( # A1 具有从内部承诺到本机 JavaScript 承诺的返回类型更改。
@@ -73,7 +73,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **示例**
 - **ObjectiveC**： [此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)为关键字识别添加了示例。
 - **C #/JavaScript**： [此处 (c # )](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) 中添加了对话脚本的快速入门， [ (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription)。
-<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
+- **C + +/c #/Java/Python/Swift/ObjectiveC**：[在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)添加了发音评估示例
 - **Xamarin**： [在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)更新到最新的 Visual Studio 模板。
 
 **已知问题**

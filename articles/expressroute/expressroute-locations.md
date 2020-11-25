@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/26/2020
+ms.date: 11/25/2020
 ms.author: duau
-ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8b344f38dd5effb34adec7943a444ce51ed513a9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906477"
+ms.locfileid: "96122540"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -108,10 +108,11 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹，亚特兰大，柏林，Canberra2，芝加哥，达拉斯，Dubai2，都柏林，法兰克福，Geneva，香港特别行政区，伦敦，London2，洛杉矶，洛杉矶 Angeles2，墨尔本，迈阿密，Milan，纽约，大阪，巴黎，圣保罗，西雅图，首尔，硅谷，华盛顿，圣保罗，悉尼，北京，多伦多，华盛顿特区， |
 | **Etisalat UAE** |支持 |支持 |迪拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支持 |支持 |阿姆斯特丹，Amsterdam2，都柏林，法兰克福，伦敦 |
-| **FarEasTone** |支持 |支持 |台北|
+| **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |支持 |支持 |台北|
 | **[Fastweb s.p.a](https://www.fastweb.it/grandi-aziende/cloud/scheda-prodotto/fastcloud-interconnect/)** | 支持 |支持 |Milan|
-| **Fibrenoire** |支持 |支持 |Montreal|
-| **GÉANT** |支持 |支持 |阿姆斯特丹、Amsterdam2、都柏林、法兰克福、马赛 |
+| **[Fibrenoire](https://fibrenoire.ca/en/services/cloudextn-2/)** |支持 |支持 |Montreal|
+| **[GÉANT](https://www.geant.org/Networks)** |支持 |支持 |阿姆斯特丹、Amsterdam2、都柏林、法兰克福、马赛 |
+| **[GlobalConnect]()** | 支持 |支持 | Oslo、Stavanger | 
 | **GTT** |支持 |支持 |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | 支持| 支持 | 金奈、孟买 |
 | **Intelsat** | 支持 | 支持 | 华盛顿特区 2 |
@@ -167,6 +168,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Telus](https://www.telus.com)** |支持 |支持 |蒙特利尔、西雅图、多伦多、范 |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |支持 |支持 |开普敦、约翰内斯堡 |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | 支持 | 支持 | 吉隆坡 |
+| **[Tokai 通信](https://www.tokai-com.co.jp/en/)** | 支持 | 支持 | 大阪、Tokyo2 |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |支持 |支持 |达拉斯、Queretaro (墨西哥) |
 | **T-Systems** |支持 |支持 |法兰克福|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |支持 |支持 |圣保罗 |

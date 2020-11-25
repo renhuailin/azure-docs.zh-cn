@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/25/2020
 ms.author: duau
-ms.openlocfilehash: af8c8716278eaa777f212156679103d6265fd2f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 11d1ecc35a5c35093f970ab170b6ca32eeed0a28
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911186"
+ms.locfileid: "96122284"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -100,7 +100,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **日内瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G，100G | Equinix、Megaport |
 | **中国香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 10G | Aryaka Networks、British Telecom、CenturyLink Cloud Connect、Chief Telecom、China Telecom Global、Equinix、InterCloud、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telia Carrier、Verizon |
 | **香港特别行政区 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 东亚 | 10G | 中国区国际，中国电信全球性，PCCW 全球有限，SingTel |
-| **雅加达** | Telin，Telkom 印度尼西亚 | 4 | 不适用 | 10G | |
+| **雅加达** | Telin，Telkom 印度尼西亚 | 4 | 不适用 | 10G | Telin |
 | **约翰内斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | BCX、British Telecom、Internet Solutions - Cloud Connect、Liquid Telecom、Orange、Teraco |
 | **吉隆坡** | [TIME dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | 不适用 | 不适用 | TIME dotCom |
 | **拉斯维加斯** | [Switch LV](https://www.switch.com/las-vegas) | 1 | 不适用 | 10G，100G | CenturyLink Cloud Connect、Megaport、PacketFabric |
@@ -119,8 +119,8 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **慕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | 不适用 | 10G | DE-CIX |
 | **纽约** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 不适用 | 10G，100G | CenturyLink Cloud Connect、Colt、Coresite、CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
 | **Newport(Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | 英国电信、Colt、Jisc、Level 3 通信、下一代数据 |
-| **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G，100G | 东京，Colt，Equinix，Internet 计划日本 Inc.-IIJ，Megaport，NTT 通信，NTT SmartConnect，Softbank |
-| **奥斯陆** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | Global Connect、Megaport、Telenor、Telia 载波 |
+| **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G，100G | 东京，Colt，Equinix，Internet 计划日本 Inc.-IIJ，Megaport，NTT 通信，NTT SmartConnect，Softbank，Tokai 通信 |
+| **奥斯陆** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | GlobalConnect、Megaport、Telenor、Telia 电信公司 |
 | **巴黎** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | 法国中部 | 10G，100G | 英国电信，CenturyLink Cloud Connect，Colt，Equinix，Intercloud，Interxion，Jaguar Network，橙色，Telia 载波，Zayo |
 | **珀斯** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | 不适用 | 10G | Megaport、NextDC |
 | **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | 不适用 | 10G | |
@@ -135,13 +135,13 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **硅谷 2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | 美国西部 | 10G，100G | Colt、Coresite | 
 | **新加坡** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | 东南亚 | 10G，100G | Aryaka Networks、AT&T NetBond、British Telecom、China Mobile International、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **新加坡 2** | [Global Switch Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 东南亚 | 10G，100G | China Unicom Global、Colt、Epsilon Global Communications、Megaport、PCCW Global Limited、SingTel |
-| **斯塔万格** | [Green Mountain DC1](https://greenmountain.no/dc1-stavanger/) | 1 | 挪威西部 | 10G，100G |全局连接，Megaport |
+| **斯塔万格** | [Green Mountain DC1](https://greenmountain.no/dc1-stavanger/) | 1 | 挪威西部 | 10G，100G |GlobalConnect、Megaport |
 | **斯德哥尔摩** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | 不适用 | 10G | Equinix、Telia Carrier |
 | **悉尼** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | 澳大利亚东部 | 10G，100G | AARNet、AT&T NetBond、British Telecom、Devoli、Equinix、Kordia、Megaport、NEXTDC、NTT Communications、Optus、Orange、Spark NZ、Telstra Corporation、TPG Telecom、Verizon、Vocus Group NZ |
 | **悉尼 2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | 澳大利亚东部 | 10G，100G | Megaport、NextDC |
 | **中国台北** | Chief Telecom | 2 | 不适用 | 10G | Chief Telecom、Chunghwa Telecom、FarEasTone |
 | **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本东部 | 10G，100G | Aryaka Networks、AT&T NetBond、BBIX、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、Megaport、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
-| **东京 2** | [AT TOKYO](https://www.attokyo.com/) | 2 | 日本东部 | 10G，100G | AT TOKYO |
+| **东京 2** | [AT TOKYO](https://www.attokyo.com/) | 2 | 日本东部 | 10G，100G | 东京，Megaport，Tokai 通信 |
 | **多伦多** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G，100G | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、IX Reach Megaport、Telus、Verizon、Zayo |
 | **温哥华** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 不适用 | 10G | Cologix、Telus |
 | **华盛顿特区** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美国东部、美国东部 2 | 10G，100G | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、Internet2、InterCloud、IX Reach、Level 3 Communications、Megaport、Neutrona Networks、NTT Communications、Orange、PacketFabric、SES、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: abfd5fadcf553e73dca3f08bc8a0e377f2ace87d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121818"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -205,7 +205,7 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则设备软件面临具有陈旧连接字符串的风险。 如果 IoT Central 更新其使用的基础 Azure IoT 中心，则具有陈旧连接字符串的设备将无法连接。
 
@@ -230,8 +230,8 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 遥测 | 设备到云的消息传送 |
-| Property | 设备孪生报告属性 |
+| 遥测技术 | 设备到云的消息传送 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | 命令 | 直接方法 |
 
@@ -255,7 +255,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 如果你是设备开发人员，则建议执行以下后续步骤：
 
-- 查看一些示例代码，演示如何使用中的 SAS 令牌 [教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (tutorial-connect-device-nodejs.md) 
+- 查看一些演示如何使用 SAS 令牌的示例代码，请参阅 [教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)
 - 了解如何 [使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书](how-to-connect-devices-x509.md)
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
 - 了解如何 [在 Azure IoT Central 应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)

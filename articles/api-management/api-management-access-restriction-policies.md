@@ -4,21 +4,17 @@ description: 了解可在 Azure API 管理中使用的访问限制策略。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70be2000d3b01e55cd52d161072c3249870310b9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071381"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122583"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -26,13 +22,13 @@ ms.locfileid: "92071381"
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>访问限制策略
 
--   [检查 HTTP 标头](api-management-access-restriction-policies.md#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。
--   [按订阅限制调用速率](api-management-access-restriction-policies.md#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。
+-   [检查 HTTP 标头](#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。
+-   [按订阅限制调用速率](#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。
 -   [按密钥限制调用速率](#LimitCallRateByKey) - 根据密钥限制调用速率，避免 API 使用量暴增。
--   [限制调用方 IP](api-management-access-restriction-policies.md#RestrictCallerIPs) - 筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
--   [按订阅设置使用量配额](api-management-access-restriction-policies.md#SetUsageQuota) - 允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
+-   [限制调用方 IP](#RestrictCallerIPs) - 筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
+-   [按订阅设置使用量配额](#SetUsageQuota) - 允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
 -   [按密钥设置使用量配额](#SetUsageQuotaByKey) - 允许根据密钥强制消耗可续订或有生存期的调用量和/或带宽配额。
--   [验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
+-   [验证 JWT](#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
 
 > [!TIP]
 > 可以在不同的范围内为不同的目的使用访问限制策略。 例如，可以通过在 API 级别上应用 `validate-jwt` 策略来使用 AAD 身份验证保护整个 API，也可以在 API 操作级别上应用它并使用 `claims` 进行更细粒度的控制。
@@ -123,7 +119,7 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 名称       | 说明                                                                                                                                                                                                                                                                                              | 必需 |
+| 名称       | 说明                                                                                                                                                                                                                                                                                              | 必选 |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | 根元素。                                                                                                                                                                                                                                                                                            | 是      |
 | api        | 添加一个或多个此类元素，对产品中的 Api 施加调用速率限制。 产品和 API 的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
@@ -148,7 +144,7 @@ ms.locfileid: "92071381"
 ## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> 按密钥限制调用速率
 
 > [!IMPORTANT]
-> 此功能在 API 管理的“消耗”**** 层中不可用。
+> 此功能在 API 管理的“消耗”层中不可用。
 
 `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。
 
@@ -191,7 +187,7 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 名称              | 说明   | 必需 |
+| 名称              | 说明   | 必选 |
 | ----------------- | ------------- | -------- |
 | rate-limit-by-key | 根元素。 | 是      |
 
@@ -238,7 +234,7 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 名称                                      | 说明                                         | 必需                                                       |
+| 名称                                      | 说明                                         | 必选                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | 根元素。                                       | 是                                                            |
 | address                                   | 指定要对其进行筛选的单个 IP 地址。   | 至少一个 `address` 或 `address-range` 元素是必需的。 |
@@ -296,7 +292,7 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 名称      | 说明                                                                                                                                                                                                                                                                                  | 必需 |
+| 名称      | 说明                                                                                                                                                                                                                                                                                  | 必选 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | 根元素。                                                                                                                                                                                                                                                                                | 是      |
 | api       | 添加一个或多个此类元素，以便对产品中的 Api 施加调用配额。 产品和 API 的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
@@ -321,7 +317,7 @@ ms.locfileid: "92071381"
 ## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> 按密钥设置使用量配额
 
 > [!IMPORTANT]
-> 此功能在 API 管理的“消耗”**** 层中不可用。
+> 此功能在 API 管理的“消耗”层中不可用。
 
 `quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。 如果多个策略增加相同的键值，则每个请求的键值仅增加一次。 达到调用限制时，调用方会收到 `403 Forbidden` 响应状态代码。
 
@@ -361,7 +357,7 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 名称  | 说明   | 必需 |
+| 名称  | 说明   | 必选 |
 | ----- | ------------- | -------- |
 | quota | 根元素。 | 是      |
 
@@ -384,12 +380,12 @@ ms.locfileid: "92071381"
 
 ## <a name="validate-jwt"></a><a name="ValidateJWT"></a> 验证 JWT
 
-`validate-jwt` 策略强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
+`validate-jwt`策略强制从指定 HTTP 标头或指定查询参数提取 (JWT) 的 JSON web 令牌的存在性和有效性。
 
 > [!IMPORTANT]
 > `validate-jwt` 策略要求 `exp` 注册声明包括在 JWT 令牌中，除非 `require-expiration-time` 属性已指定并设置为 `false`。
-> `validate-jwt` 策略支持 HS256 和 RS256 签名算法。 对于 HS256，必须在策略中以 base64 编码形式提供内联方式的密钥。 对于 RS256，必须通过 Open ID 配置终结点提供密钥。
-> `validate-jwt` 策略通过加密算法 A128CBC-HS256、A192CBC-HS384、A256CBC-HS512 支持使用对称密钥加密的令牌。
+> `validate-jwt` 策略支持 HS256 和 RS256 签名算法。 对于 HS256，必须在策略中以 base64 编码形式提供内联方式的密钥。 对于 RS256，可以通过开放 ID 配置终结点提供密钥，或者提供已上载证书的 ID，该证书包含公钥的公钥或取模-指数对。
+> 此 `validate-jwt` 策略支持使用以下加密算法通过对称密钥加密的令牌： A128CBC-HS256、A192CBC-HS384、A256CBC-HS512。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -440,6 +436,22 @@ ms.locfileid: "92071381"
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
     <issuer-signing-keys>
         <key>{{jwt-signing-key}}</key>  <!-- signing key specified as a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
+    </audiences>
+    <issuers>
+        <issuer>http://contoso.com/</issuer>
+    </issuers>
+</validate-jwt>
+```
+
+#### <a name="token-validation-with-rsa-certificate"></a>采用 RSA 证书的令牌验证
+
+```xml
+<validate-jwt header-name="Authorization" require-scheme="Bearer">
+    <issuer-signing-keys>
+        <key certficate-id="my-rsa-cert" />  <!-- signing key specified as certificate ID, enclosed in double-quotes -->
     </issuer-signing-keys>
     <audiences>
         <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
@@ -515,12 +527,12 @@ ms.locfileid: "92071381"
 
 ### <a name="elements"></a>元素
 
-| 元素             | 说明                                                                                                                                                                                                                                                                                                                                           | 必需 |
+| 元素             | 说明                                                                                                                                                                                                                                                                                                                                           | 必选 |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | 根元素。                                                                                                                                                                                                                                                                                                                                         | 是      |
 | audiences           | 包含一系列可接受且可存在于令牌上的受众声明。 如果存在多个受众值，则会对每个值进行尝试，直到有一个值成功（如果所有值都试完却没有一个成功，则表明验证失败）。 必须指定至少一个受众。                                                                     | 否       |
-| issuer-signing-keys | 一系列 Base64 编码的安全密钥，用于验证签名的令牌。 如果存在多个安全密钥，则会对每个密钥进行尝试，直到有一个密钥成功，以便进行令牌滚动更新（如果所有密钥都试完却没有一个成功，则表明验证失败）。 密钥元素有一个可选的 `id` 属性，用于与 `kid` 声明进行比较。               | 否       |
-| decryption-keys     | 用于解密令牌的 Base64 编码密钥列表。 如果存在多个安全密钥，则会对每个密钥进行尝试，直到所有密钥都试完（在这种情况下验证失败）或直到有一个密钥成功为止。 密钥元素有一个可选的 `id` 属性，用于与 `kid` 声明进行比较。                                                 | 否       |
+| issuer-signing-keys | 一系列 Base64 编码的安全密钥，用于验证签名的令牌。 如果存在多个安全密钥，则会尝试每个密钥，直到全部都用尽 (在这种情况下，验证失败) 或一个成功 (用于令牌滚动更新) 。 密钥元素有一个可选的 `id` 属性，用于与 `kid` 声明进行比较。 <br/><br/>或者使用以下项提供颁发者签名密钥：<br/><br/> - `certificate-id``<key certificate-id="mycertificate" />`指定[上传](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)到 API 管理的证书实体的标识符的格式<br/>-采用格式的 RSA 模数 `n` 和指数 `e` 对 `<key n="<modulus>" e="<exponent>" />` 以 base64url 编码格式指定 RSA 参数               | 否       |
+| decryption-keys     | 用于解密令牌的 Base64 编码密钥列表。 如果存在多个安全密钥，则会尝试每个密钥，直到所有密钥都用尽 (在这种情况下，验证失败) 或密钥成功。 密钥元素有一个可选的 `id` 属性，用于与 `kid` 声明进行比较。<br/><br/>或者使用以下内容提供解密密钥：<br/><br/> - `certificate-id``<key certificate-id="mycertificate" />`指定[上传](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)到 API 管理的证书实体的标识符的格式                                                 | 否       |
 | issuers             | 一系列可接受的、已颁发了令牌的主体。 如果存在多个颁发者值，则会对每个值进行尝试，直到有一个值成功（如果所有值都试完却没有一个成功，则表明验证失败）。                                                                                                                                         | 否       |
 | openid-config       | 一个元素，用于指定兼容的 Open ID 配置终结点，以便从该终结点获取签名密钥和颁发者。                                                                                                                                                                                                                        | 否       |
 | required-claims     | 包含一系列应存在于令牌上的声明，否则令牌会被视为无效。 将 `match` 属性设置为 `all` 时，策略中的每个声明值都必须存在于令牌中，这样验证才会成功。 将 `match` 属性设置为 `any` 时，至少一个声明必须存在于令牌中，这样验证才会成功。 | 否       |
@@ -532,13 +544,13 @@ ms.locfileid: "92071381"
 | clock-skew                      | 时间跨度。 用于指定令牌颁发者的系统时钟与 API 管理实例之间的最大预期时间差。                                                                                                                                                                                                                                                                                                               | 否                                                                               | 0 秒                                                                         |
 | failed-validation-error-message | JWT 未通过验证时会在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。                                                                                                                                                                                                                                                                                                 | 否                                                                               | 默认错误消息取决于验证问题，例如“JWT 不存在”。 |
 | failed-validation-httpcode      | JWT 未通过验证时会返回的 HTTP 状态代码。                                                                                                                                                                                                                                                                                                                                                                                         | 否                                                                               | 401                                                                               |
-| header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
+| header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 空值                                                                               |
 | query-parameter-name            | 包含令牌的查询参数的名称。                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 空值                                                                               |
-| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
+| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 空值                                                                               |
 | id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 空值                                                                               |
-| match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值包括：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | all                                                                               |
+| match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值为：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | all                                                                               |
 | require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 是                                                                              |
-| require-scheme                  | 令牌方案的名称，例如 "持有者"。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 空值                                                                               |
+| require-scheme                  | 令牌方案的名称，例如 "持有者"。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 空值                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |

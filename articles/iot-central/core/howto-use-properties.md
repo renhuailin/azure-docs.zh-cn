@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986517"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122587"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
@@ -44,7 +44,7 @@ ms.locfileid: "94986517"
 | 状态值    | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。                                                                                   |
 | 计价单位            | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 显示单位    | 仪表板和窗体上使用的显示单位。                                                                                                                                                                                    |
-| 评论         | 有关属性功能的任何注释。                                                                                                                                                                                        |
+| 注释         | 有关属性功能的任何注释。                                                                                                                                                                                        |
 | 说明     | 属性功能的说明。                                                                                                                                                                                          |
 
 属性还可以在设备模板中的接口中定义，如下所示：
@@ -160,11 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-为了简单起见，本文使用 Node.js。 有关设备应用程序示例的完整信息，请参阅以下教程：
-
-* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md)
-* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python) ](tutorial-connect-device-python.md)
-* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Java) ](tutorial-connect-device-java.md)
+为了简单起见，本文使用 Node.js。 有关设备应用程序示例的完整信息，请参阅以下 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md) 教程。
 
 Azure IoT Central 应用程序中的以下视图显示了你可以查看的属性。 视图自动使 **设备模型** 属性成为 _只读设备属性_。
 
@@ -236,4 +232,4 @@ hubClient.getTwin((err, twin) => {
 现在，你已了解如何使用 Azure IoT Central 应用程序中的属性，请参阅：
 
 * [Payloads](concepts-telemetry-properties-commands.md)
-* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md)
+* [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)

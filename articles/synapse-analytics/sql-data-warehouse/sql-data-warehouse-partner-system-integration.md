@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94872d3765a992fd025f30feaab95248ce6831ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919493"
+ms.locfileid: "96121849"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure Synapse Analytics 系统集成合作伙伴
 
 本文重点介绍了通过 Azure Synapse 构建解决方案的 Microsoft 系统集成合作伙伴公司。
 
-## <a name="our-public-preview-launch-partners"></a>为推出我们的公共预览版提供支持的合作伙伴
+## <a name="system-integration-partners"></a>系统集成合作伙伴
 | Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>45000 + 专用专业人员，Accenture Microsoft 业务组（由 Avanade 提供支持）可帮助企业发展数字中断的时代。|[合作伙伴页面](https://www.accenture.com/us-en/services/microsoft-index)<br>|

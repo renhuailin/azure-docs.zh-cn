@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791930"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122205"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>响应适用于 Key Vault 的 Azure Defender 警报
 收到来自 Azure Defender for Key Vault 的警报时，建议你按下述方式调查和响应警报。 Azure Defender for Key Vault 保护应用程序和凭据，因此即使你熟悉触发警报的应用程序或用户，也必须验证每个警报的情况。  
@@ -35,7 +35,7 @@ ms.locfileid: "92791930"
 > 适用于 Key Vault 的 Azure Defender 旨在帮助确定由盗窃的凭据引起的可疑活动。 **不要** 只是因为您识别了用户或应用程序而不能消除警报。 与应用程序或用户的所有者联系，并验证活动是否合法。 如果需要，可以创建抑制规则以消除干扰。 有关详细信息，请参阅 [禁止来自 Azure Defender 的警报](alerts-suppression-rules.md)。
 
 
-## <a name="step-2-immediate-mitigation"></a>步骤 2. 即时缓解 
+## <a name="step-2-immediate-mitigation"></a>步骤 2。 即时缓解 
 如果你不能识别用户或应用程序，或者你认为不应授予访问权限：
 
 - 如果流量来自无法识别的 IP 地址：
@@ -72,4 +72,4 @@ ms.locfileid: "92791930"
 
 - [用于 Key Vault 的 Azure Defender 简介](defender-for-key-vault-introduction.md)
 - [禁止来自 Azure Defender 的警报](alerts-suppression-rules.md)
-- [持续导出安全中心数据](continuous-export.md)
+- [连续导出安全中心数据](continuous-export.md)

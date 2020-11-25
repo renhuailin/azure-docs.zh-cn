@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122353"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>从建议和安全分数中免除资源
 
@@ -31,7 +31,7 @@ ms.locfileid: "94372738"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|定价：|这是一种高级 Azure 策略功能，适用于无需额外费用的 Azure Defender 客户。 对于其他用户，将来可能会收取费用。|
+|定价：|这是一种高级 Azure 策略功能，适用于无需额外费用的 Azure Defender 客户。 对于其他用户，以后可能会收取费用。|
 |所需角色和权限：|用于创建例外的 **订阅所有者** 或 **策略参与者**<br>若要创建规则，需要在 Azure 策略中编辑策略的权限。<br>有关详细信息，请参阅 azure [策略中的 AZURE RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
@@ -48,7 +48,7 @@ ms.locfileid: "94372738"
     :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="创建例外窗格":::
 
 1. 输入条件，并选择有关为何应免除此资源的条件：
-    - 已 **缓解** -此问题与资源无关，因为它已由不同于所建议的工具或进程处理
+    - 已 **缓解**-此问题与资源无关，因为它已由不同于所建议的工具或进程处理
     - **弃权** -接受此资源的风险
 1. 选择“保存”。
 1. 一段时间后 (可能需要长达24小时) ：
