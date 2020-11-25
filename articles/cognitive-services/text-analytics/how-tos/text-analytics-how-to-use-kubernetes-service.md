@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366887"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017831"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
@@ -59,5 +59,5 @@ ms.locfileid: "94366887"
 
 ## <a name="next-steps"></a>后续步骤
 
-_ 使用更多 [认知服务容器](../../cognitive-services-container-support.md)
+_ 使用更多[认知服务容器](../../cognitive-services-container-support.md)
 * 使用[文本分析连接服务](../index.yml)
