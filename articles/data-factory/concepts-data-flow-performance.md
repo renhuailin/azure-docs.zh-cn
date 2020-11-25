@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637864"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022354"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -87,6 +87,12 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 > [!TIP]
 > 手动设置分区方案会 reshuffles 数据，并可以抵消 Spark 优化器的优势。 最佳做法是，除非需要，否则不要手动设置分区。
 
+## <a name="logging-level"></a>日志记录级别
+
+如果你不要求每个管道执行的数据流活动完全记录所有详细遥测日志，则可以选择将日志记录级别设置为 "基本" 或 "无"。 如果在 "详细" 模式下执行数据流 (默认值) ，则在数据转换过程中，请求 ADF 以完全记录每个分区级别的活动。 这可能是一种代价高昂的操作，因此，仅在进行故障排除时启用详细操作可以提高总体数据流和管道性能。 "基本" 模式将仅记录转换持续时间，而 "无" 将仅提供持续时间的摘要。
+
+![日志记录级别](media/data-flow/logging.png "设置日志记录级别")
+
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> 优化 Azure Integration Runtime
 
 数据流在运行时启动的 Spark 群集上运行。 所使用的群集的配置是在 integration runtime (活动的 IR) 中定义的。 定义集成运行时需要考虑三个性能注意事项：群集类型、群集大小和生存时间。
@@ -109,7 +115,7 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 
 默认群集大小为四个驱动程序节点和四个辅助角色节点。  处理更多数据时，建议使用较大的群集。 下面是可能的大小调整选项：
 
-| 辅助角色核心 | 驱动程序核心 | 核心总数 | 说明 |
+| 辅助角色核心 | 驱动程序核心 | 核心总数 | 备注 |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | 不可用于计算优化 |
 | 8 | 8 | 16 | |
@@ -155,7 +161,7 @@ Azure SQL 数据库具有一个名为 "源" 分区的唯一分区选项。 启�
 
 #### <a name="isolation-level"></a>隔离级别
 
-Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提交读" 将提供最快的性能，并防止任何数据库锁。 若要了解有关 SQL 隔离级别的详细信息，请参阅 [了解隔离级别](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)。
+Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提交读" 将提供最快的性能，并防止任何数据库锁。 若要了解有关 SQL 隔离级别的详细信息，请参阅 [了解隔离级别](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)。
 
 #### <a name="read-using-query"></a>使用查询进行读取
 
@@ -163,7 +169,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics 源
 
-使用 Azure Synapse Analytics 时，源选项中存在称为 " **启用过渡** " 的设置。 这允许 ADF 使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)从 Synapse 读取，这大大提高了读取性能。 启用 PolyBase 需要在数据流活动设置中指定一个 Azure Blob 存储或 Azure Data Lake Storage gen2 暂存位置。
+使用 Azure Synapse Analytics 时，源选项中存在称为 " **启用过渡** " 的设置。 这允许 ADF 使用从 Synapse 读取 ```Polybase``` ，从而大大提高读取性能。 启用 ```Polybase``` 需要在数据流活动设置中指定一个 Azure Blob 存储或 Azure Data Lake Storage gen2 暂存位置。
 
 ![启用暂存](media/data-flow/enable-staging.png "启用暂存")
 
@@ -183,6 +189,10 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 使用 Azure SQL 数据库时，默认分区在大多数情况下都适用。 你的接收器可能有太多分区，你的 SQL 数据库无法处理。 如果正在运行，请减少 SQL 数据库接收器输出的分区数。
 
+#### <a name="impact-of-error-row-handling-to-performance"></a>错误行处理对性能的影响
+
+如果在接收器转换中启用错误行处理 ( "出错时继续" ) ，ADF 会在将兼容行写入目标表之前执行额外步骤。 这一额外步骤将有一个小性能损失，此步骤可能会在此步骤中添加了5% 的范围内，如果将该选项设置为，并且将不兼容的行设置为日志文件，则还会添加额外的小性能命中。
+
 #### <a name="disabling-indexes-using-a-sql-script"></a>使用 SQL 脚本禁用索引
 
 在 SQL 数据库中的负载之前禁用索引可以极大地提高写入表的性能。 在写入 SQL 接收器之前，请运行以下命令。
@@ -198,7 +208,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 ![禁用索引](media/data-flow/disable-indexes-sql.png "禁用索引")
 
 > [!WARNING]
-> 禁用索引时，数据流实际上会控制数据库并使查询在此时不可能成功。 因此，在晚间，会触发许多 ETL 作业，以避免此冲突。 有关详细信息，请参阅 [禁用索引的约束](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
+> 禁用索引时，数据流实际上会控制数据库并使查询在此时不可能成功。 因此，在晚间，会触发许多 ETL 作业，以避免此冲突。 有关详细信息，请参阅 [禁用索引的约束](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)
 
 #### <a name="scaling-up-your-database"></a>扩展数据库
 
@@ -226,7 +236,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 设置命名 **模式** 会将每个分区文件重命名为用户友好的名称。 此操作在写入后发生，并稍慢于选择默认值。 每个分区允许您手动命名每个分区。
 
-如果列与数据的输出方式相对应，则可以选择 " **列中的数据" 作为数据** 。 这会 reshuffles 数据，如果列不是均匀分布的，可能会影响性能。
+如果列与数据的输出方式相对应，则可以选择 " **列中的数据" 作为数据**。 这会 reshuffles 数据，如果列不是均匀分布的，可能会影响性能。
 
 **输出到单个文件** 将所有数据组合到单个分区中。 这会导致长时间的写入时间，尤其是对于大型数据集。 除非有明确的业务原因，否则 Azure 数据工厂团队强烈建议 **不要** 选择此选项。
 
@@ -239,7 +249,6 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 **吞吐量：** 在此处设置较高的吞吐量设置，以允许文档更快写入 CosmosDB。 请记住，基于高吞吐量设置的 RU 开销较高。
 
 **写入吞吐量预算：** 使用小于每分钟的总 ru 数的值。 如果具有大量 Spark 分区的数据流，则设置预算吞吐量会允许对这些分区进行更多的均衡。
-
 
 ## <a name="optimizing-transformations"></a>优化转换
 
