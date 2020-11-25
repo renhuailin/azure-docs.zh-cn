@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532758"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982256"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
@@ -40,7 +40,7 @@ ms.locfileid: "92532758"
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>如何将 Storm 事件中心 Spout 检查点信息从一个拓扑传输到另一个拓扑？
 
-开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，必须保留提交给旧群集上 [Apache ZooKeeper](https://zookeeper.apache.org/) 的检查点数据。
+开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，必须在旧群集上保留已提交到 [Apache ZooKeeper](https://zookeeper.apache.org/) 的检查点数据。
 
 ### <a name="where-checkpoint-data-is-stored"></a>检查点数据的存储位置
 
@@ -145,7 +145,7 @@ Storm 工作节点运行以下服务：
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Apache Storm 事件中心 Spout 二进制文件
 
-若要了解如何使用适用于 HDInsight 3.5 + Linux 风暴群集的最新风暴事件中心 spout，请参阅 [mvn-存储库自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
+若要了解如何使用适用于 HDInsight 3.5+ Linux Storm 群集的最新 Storm 事件中心 Spout，请参阅 [mvn-repo 自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
 
 ### <a name="source-code-examples"></a>源代码示例
 
@@ -186,4 +186,4 @@ Nimbus Log4J 配置是从 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` 读
 
 - 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
