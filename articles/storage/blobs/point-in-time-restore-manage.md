@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280464"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895717"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -29,7 +29,7 @@ ms.locfileid: "91280464"
 
 在启用和配置时间点还原之前，请为存储帐户启用其先决条件：软删除、更改源和 blob 版本控制。 若要详细了解如何启用上述每项功能，请参阅以下文章：
 
-- [为 blob 启用软删除](soft-delete-enable.md)
+- [为 blob 启用软删除](./soft-delete-blob-enable.md)
 - [启用和禁用更改源](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [启用和管理 blob 版本控制](versioning-enable.md)
 
@@ -122,7 +122,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 1. 通过选中框确认是否要继续。
 1. 选择 " **还原** " 以开始还原操作。
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="屏幕截图，显示如何将所有容器还原到指定的还原点":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,21 +169,24 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 1. 指定要还原的范围。 使用正斜杠 (/) 来描绘 blob 前缀中的容器名称。
 1. 默认情况下，" **还原所选容器** " 窗格指定包含容器中所有 blob 的范围。 如果你不想还原整个容器，则删除此范围。 下图显示了默认范围。
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图" 以开始还原操作。
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="显示在指定自定义范围之前要删除的默认 blob 范围的屏幕截图":::
+
+1. 通过选中框确认是否要继续。
+1. 选择 " **还原** " 以开始还原操作。
 
 下图显示了对一组范围的还原操作。
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="显示如何在一个或多个容器中还原 blob 范围的屏幕截图":::
 
 映像中显示的还原操作执行以下操作：
 
-- 还原 *container1*的完整内容。
-- 在*container2*的字典范围*blob1*到*blob5*中还原 blob。 此范围将还原名称为 *blob1*、 *blob11*、 *blob100*、 *blob2*等的 blob。 由于范围的结尾是独占的，因此它会还原名称以 *blob4*开头的 blob，但不会还原名称以 *blob5*开头的 blob。
-- 还原 *container3* 和 *container4*中的所有 blob。 因为范围的结尾是独占的，所以此范围不会还原 *container5*。
+- 还原 *container1* 的完整内容。
+- 在 *container2* 的字典范围 *blob1* 到 *blob5* 中还原 blob。 此范围将还原名称为 *blob1*、 *blob11*、 *blob100*、 *blob2* 等的 blob。 由于范围的结尾是独占的，因此它会还原名称以 *blob4* 开头的 blob，但不会还原名称以 *blob5* 开头的 blob。
+- 还原 *container3* 和 *container4* 中的所有 blob。 因为范围的结尾是独占的，所以此范围不会还原 *container5*。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要还原单个范围的 blob，请调用 **AzStorageBlobRange** 命令，并为参数指定字典和 blob 名称的字典范围 `-BlobRestoreRange` 。 例如，若要还原名为 *container1*的单个容器中的 blob，可以指定一个以 *container1* 开头的范围，并以 *container2*结尾。 不要求在开始和结束范围中指定的容器存在。 因为范围的结尾是独占的，即使存储帐户包含名为 *container2*的容器，也只会还原名为 *container1* 的容器：
+若要还原单个范围的 blob，请调用 **AzStorageBlobRange** 命令，并为参数指定字典和 blob 名称的字典范围 `-BlobRestoreRange` 。 例如，若要还原名为 *container1* 的单个容器中的 blob，可以指定一个以 *container1* 开头的范围，并以 *container2* 结尾。 不要求在开始和结束范围中指定的容器存在。 因为范围的结尾是独占的，即使存储帐户包含名为 *container2* 的容器，也只会还原名为 *container1* 的容器：
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1 `
@@ -197,7 +200,7 @@ $range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
     -EndRange container1/g
 ```
 
-接下来，为 **AzStorageBlobRange** 命令提供范围。 通过为 `-TimeToRestore` 参数提供一个 UTC **日期/时间**值来指定还原点。 下面的示例将指定范围内的 blob 还原到当前时间后推 3 天的状态：
+接下来，为 **AzStorageBlobRange** 命令提供范围。 通过为 `-TimeToRestore` 参数提供一个 UTC **日期/时间** 值来指定还原点。 下面的示例将指定范围内的 blob 还原到当前时间后推 3 天的状态：
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -245,6 +248,6 @@ $restoreOperation.Parameters.BlobRanges
 ## <a name="next-steps"></a>后续步骤
 
 - [块 blob 的时间点还原](point-in-time-restore-overview.md)
-- [软删除](soft-delete-overview.md)
+- [软删除](./soft-delete-blob-overview.md)
 - [更改源](storage-blob-change-feed.md)
 - [Blob 版本控制](versioning-overview.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893974"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -40,11 +40,14 @@ ms.locfileid: "95736591"
 - **支持的新语言：日语** -现在支持以下新语言：适用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日语 (`ja`) 。 [语言支持](language-support.md)
 - **文本行样式指示 (手写/其他)  (拉丁语仅)** 格式识别器现在会输出一个 `appearance` 对象，该对象会分类每个文本行是否为手写样式，以及置信度分数。 此功能仅支持拉丁语。
 - **质量改进** -提取改进（包括单个数字提取改进）。
-- **窗体识别器示例标记工具中的新** 的 "试用" 功能-可以使用窗体识别器示例标记工具试用预生成的发票、接收和名片模型以及布局 API。 查看如何提取数据而无需编写任何代码。
+- **表单识别器示例和标记工具中的新** 的 "试用" 功能-可以使用窗体识别器示例标签工具试用预生成的发票、收据和名片模型以及布局 API。 查看如何提取数据而无需编写任何代码。
 
   > [试用窗体识别器示例工具](https://fott-preview.azurewebsites.net/)
 
   ![FOTT 示例](./media/ui-preview.jpg)
+  
+- **反馈循环** -通过示例标记工具分析文件时，现在还可以将其添加到定型集，并 adujst 标签（如有必要）并训练来改进模型。
+- **自动标记 Documets** -Automitcally 根据项目中以前的 labeld 文档来标记其他文档。 
 
 ## <a name="august-2020"></a>2020 年 8 月
 

@@ -3,14 +3,14 @@ title: 在 Azure 自动化中部署 Windows 混合 Runbook 辅助角色
 description: 本文介绍如何部署混合 Runbook 辅助角色，你可使用该角色在本地数据中心或云环境的基于 Windows 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb501b954897beb73ae05bfdc7b5ded2221dc114
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95493921"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906613"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -50,7 +50,7 @@ Azure 自动化将存储并管理 Runbook，然后将其传送到一台或多台
 
 Windows 系统和用户混合 Runbook 辅助角色的最低要求如下：
 
-* Windows PowerShell 5.1 或更高版本（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）
+* Windows PowerShell 5.1 ([下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) 。 不支持 PowerShell Core。
 * .NET Framework 4.6.2 或更高版本
 * 双核
 * 4 GB RAM

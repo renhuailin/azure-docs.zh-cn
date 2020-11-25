@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909061"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关 Azure API for FHIR 的常见问题解答
 
@@ -65,6 +65,10 @@ Cosmos DB 作为永久性提供程序，为 FHIR 的 Azure API 提供支持。 �
 
 智能 (可在 FHIR 上替换医疗应用程序和可重用技术) ，这是一套开放式规范，可将合作伙伴应用程序与 FHIR 服务器和其他运行状况 IT 系统（如电子健康记录和健康信息交换）集成。 通过创建智能的 FHIR 应用程序，你可以确保你的应用程序可以通过不同系统的很多进行访问和利用。
 用于 FHIR 的身份验证和 Azure API。 若要了解有关智能的详细信息，请访问 [智能运行状况](https://smarthealthit.org/)。
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>在哪里可以找到数据库上运行的 FHIR 的版本。 
+
+您可以在 "fhirVersion" 属性下的 "功能" 语句中找到公开的准确 FHIR 版本。
 
 ## <a name="fhir-implementations-and-specifications"></a>FHIR 实现和规范
 

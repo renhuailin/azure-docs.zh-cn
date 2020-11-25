@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891276"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 认证故障排除指南
 
@@ -64,7 +64,7 @@ At line:1 char:1
 
 a. 启动 PowerShell 并通过 "AzAccount" cmdlet 登录到 Azure
 
-b. 验证 RBAC 角色分配设置
+b. 验证你的 Azure 角色分配设置
 
 
   ```powershell

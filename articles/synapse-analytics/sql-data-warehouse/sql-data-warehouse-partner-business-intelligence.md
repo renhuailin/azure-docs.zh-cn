@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 96d1a3ed6bfe3fa90cdfa11f1b1081f12e4af990
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317873"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904336"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商业智能合作伙伴
 
@@ -36,7 +36,8 @@ ms.locfileid: "93317873"
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker BI**<br>Looker 可以让贵公司的所有人能够浏览和了解那些推动业务发展的数据。 Looker 还为数据分析师提供了一个既灵活又可重复使用的建模图层，用于控制和组织这些数据。  各公司基本上都在使用 Looker 作为催化剂来转换企业文化。|[产品页](https://looker.com/partners/microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Microstrategy](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**MicroStrategy**<br>MicroStrategy 平台提供一整套商业智能和分析功能，使组织能够从其业务数据中获取价值。 MicroStrategy 的强大分析引擎、全面的工具集、各种数据连接器和开放式体系结构可确保你拥有跨每个团队扩展对分析的访问权限所需的一切。|[产品页面](https://www.microstrategy.com/us/product/analytics)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
 | ![模式分析](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**模式**<br>模式是一种新式分析和 BI 解决方案，有助于团队通过太快速而意外地不知数据分析做出决策。 数据团队通过结合了 SQL、Python、R 和视觉分析的首选工作流，使数据团队更快地移动，同时，利益干系人可以在自己的浏览和共享数据。 对于每个人都更易于访问的数据，我们缩短了从问题到答案的距离，帮助企业更快地做出更好的决策。|[产品页面](https://mode.com/)<br> |
-| ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>提供每个人都可以使用的数据可视化应用，推动数据分析。 有了 Qlik Sense，组织的所有人员都可以轻松创建灵活且交互性强的可视化项目，进行明智的决策。 |[产品页面](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
+| ![Pyramid Analytics](./media/sql-data-warehouse-partner-business-intelligence/pyramid-logo.png) |**Pyramid Analytics**<br>棱锥2020是一种受信任的分析平台，可连接团队、促进自信的决策，并产生入选的结果。 业务用户可以在任何浏览器或设备上实现高端、云规模的分析和数据科学，无需 IT 帮助。 数据科学家可以利用机器学习算法和脚本来了解困难的业务问题。 超级用户可以为自己的数据准备和建模，以创建相关的分析内容。 非技术用户可从精彩的可视化效果和指导性分析演示中获益。 它是用于管理的下一代自助分析。 |[产品页面](https://www.pyramidanalytics.com/analytics-os)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/pyramidanalytics.pyramid2020v4) |
+| ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>提供每个人都可以使用的数据可视化应用，推动数据分析。 有了 Qlik Sense，组织的所有人员都可以轻松创建灵活且交互性强的可视化项目，进行明智的决策。 |[产品页](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense 是全方位的商业智能软件，提供企业分析和可视化数据所必备的工具：高性能分析数据库、联接多个源、简易数据提取 (ETL) 和基于 Web 的数据可视化。 立即使用 SiSense BI 和 Analytics 开始分析及可视化大型数据集。 |[产品页](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助式分析可帮助任何人查看和理解数据，从平面文件到数据库，数据种类包罗万象。 Tableau 提供本机、优化的连接器用于连接 Synapse SQL 池，支持实时数据和内存中分析。 |[产品页](https://www.tableau.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit（决策套件）**<br>Targit 决策套件提供了一个 BI 平台，可提供实时仪表板、自助分析、用户友好的报告、令人惊叹的移动功能和简单的数据发现技术。 单个单内聚解决方案中的所有内容。 Targit 为企业带来了行动的勇气。 |[产品页](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |

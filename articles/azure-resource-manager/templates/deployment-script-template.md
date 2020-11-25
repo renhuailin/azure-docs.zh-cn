@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/24/2020
 ms.author: jgao
-ms.openlocfilehash: a04377289b78c23a83fc696ebebb9b5808e904c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321643"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902423"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览版）
 
@@ -107,7 +107,7 @@ ms.locfileid: "93321643"
       "storageAccountName": "myStorageAccount",
       "storageAccountKey": "myKey"
     },
-    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80",
     "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
@@ -135,13 +135,13 @@ ms.locfileid: "93321643"
 
 属性值详细信息：
 
-- **标识** ：部署脚本服务使用用户分配的托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
-- **kind** ：指定脚本类型。 当前，支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
-- **forceUpdateTag** ：在模板部署之间更改此值将强制重新执行部署脚本。 使用需要设置为参数的 defaultValue 的 newGuid() 或 utcNow() 函数。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
-- **containerSettings** ：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称。  如果未指定，将自动生成组名。
-- **storageAccountSettings** ：指定设置以使用现有的存储帐户。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
-- **azPowerShellVersion**/**azCliVersion** ：指定要使用的模块版本。 有关支持的 PowerShell 和 CLI 版本的列表，请参阅[先决条件](#prerequisites)。
-- **arguments** ：指定参数值。 请以空格分隔这些值。
+- **标识**：部署脚本服务使用用户分配的托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
+- **kind**：指定脚本类型。 目前支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
+- **forceUpdateTag**：在模板部署之间更改此值将强制重新执行部署脚本。 如果使用 newGuid ( # A1 或 utcNow ( # A3 函数，则这两个函数只能在参数的默认值中使用。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
+- **containerSettings**：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称。  如果未指定，将自动生成组名。
+- **storageAccountSettings**：指定设置以使用现有的存储帐户。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
+- **azPowerShellVersion**/**azCliVersion**：指定要使用的模块版本。 有关支持的 PowerShell 和 CLI 版本的列表，请参阅[先决条件](#prerequisites)。
+- **arguments**：指定参数值。 请以空格分隔这些值。
 
     部署脚本通过发出 [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) 系统调用，将参数拆分为字符串数组。 这是必要操作，因为参数作为[命令属性](/rest/api/container-instances/containergroups/createorupdate#containerexec)传递给 Azure 容器实例，而命令属性是字符串数组。
 
@@ -155,13 +155,13 @@ ms.locfileid: "93321643"
 
     若要查看示例模板，请选择[此处](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)。
 
-- **environmentVariables** ：指定环境变量以传递到脚本。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
-- **scriptContent** ：指定脚本内容。 若要运行外部脚本，请改用 `primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)和[使用外部脚本](#use-external-scripts)。
-- **primaryScriptUri** ：为具有受支持的文件扩展名的主部署脚本指定一个可公开访问的 Url。
-- **supportingScriptUris** ：指定一个可公开访问的 Url 数组，它们指向在 `ScriptContent` 或 `PrimaryScriptUri` 中调用的支持性文件。
-- **timeout** ：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D** 。
-- **cleanupPreference** 。 指定在脚本执行达到最终状态时清理部署资源的首选项。 默认设置为 Always，这意味着不管最终状态如何（成功、失败、已取消），都会删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
-- **retentionInterval** ：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留间隔介于1到26小时 (PT26H) 。 当 cleanupPreference 设置为 OnExpiration 时使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+- **environmentVariables**：指定环境变量以传递到脚本。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
+- **scriptContent**：指定脚本内容。 若要运行外部脚本，请改用 `primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)和[使用外部脚本](#use-external-scripts)。
+- **primaryScriptUri**：为具有受支持的文件扩展名的主部署脚本指定一个可公开访问的 Url。
+- **supportingScriptUris**：指定一个可公开访问的 Url 数组，它们指向在 `ScriptContent` 或 `PrimaryScriptUri` 中调用的支持性文件。
+- **timeout**：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D**。
+- **cleanupPreference**。 指定在脚本执行达到最终状态时清理部署资源的首选项。 默认设置为 Always，这意味着不管最终状态如何（成功、失败、已取消），都会删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+- **retentionInterval**：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留间隔介于1到26小时 (PT26H) 。 当 cleanupPreference 设置为 OnExpiration 时使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他示例
 
@@ -287,8 +287,8 @@ reference('<ResourceName>').output.text
 },
 ```
 
-- **storageAccountName** ：指定存储帐户的名称。
-- **storageAccountKey** ：指定存储帐户密钥之一。 可以使用 [`listKeys()`](./template-functions-resource.md#listkeys) 函数检索密钥。 例如：
+- **storageAccountName**：指定存储帐户的名称。
+- **storageAccountKey**：指定存储帐户密钥之一。 可以使用 [`listKeys()`](./template-functions-resource.md#listkeys) 函数检索密钥。 例如：
 
     ```json
     "storageAccountSettings": {
@@ -529,13 +529,13 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 这些资源的生命周期由模板中的以下属性控制：
 
-- **cleanupPreference** ：当脚本执行达到最终状态时清理首选项。 支持的值包括：
+- **cleanupPreference**：当脚本执行达到最终状态时清理首选项。 支持的值包括：
 
-  - **Always** ：脚本执行达到最终状态后，将删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除在存储帐户中创建的文件共享。 由于在清理资源后，deploymentScripts 资源可能仍然存在，因此在删除资源之前，脚本服务将保留脚本执行结果，例如 stdout、输出、返回值等。
-  - **OnSuccess** ：仅当脚本执行成功时才删除自动创建的资源。 如果使用现有存储帐户，则脚本服务仅在脚本执行成功时才删除文件共享。 你仍可以访问资源来查找调试信息。
-  - **OnExpiration** ：仅当 retentionInterval 设置过期时，才删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除文件共享，但保留存储帐户。
+  - **Always**：脚本执行达到最终状态后，将删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除在存储帐户中创建的文件共享。 由于在清理资源后，deploymentScripts 资源可能仍然存在，因此在删除资源之前，脚本服务将保留脚本执行结果，例如 stdout、输出、返回值等。
+  - **OnSuccess**：仅当脚本执行成功时才删除自动创建的资源。 如果使用现有存储帐户，则脚本服务仅在脚本执行成功时才删除文件共享。 你仍可以访问资源来查找调试信息。
+  - **OnExpiration**：仅当 retentionInterval 设置过期时，才删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除文件共享，但保留存储帐户。
 
-- **retentionInterval** ：指定将保留脚本资源的时间间隔，超过此时间间隔后，脚本资源将过期并被删除。
+- **retentionInterval**：指定将保留脚本资源的时间间隔，超过此时间间隔后，脚本资源将过期并被删除。
 
 > [!NOTE]
 > 不建议将脚本服务生成的存储帐户和容器实例用于其他目的。 根据脚本的生命周期，可能会删除这两个资源。

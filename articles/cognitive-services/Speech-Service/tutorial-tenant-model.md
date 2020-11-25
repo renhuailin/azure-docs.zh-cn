@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399697"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013714"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 
@@ -105,7 +105,7 @@ ms.locfileid: "91399697"
 
 部署模型后，配合使用模型和语音 SDK。 在本部分中，我们使用示例代码通过 Azure Active Directory (Azure AD) 身份验证来调用语音服务。
 
-我们来看一下用于调用 C# 中的语音 SDK 的代码。 在本例中，我们使用租户模型执行语音识别。 本指南默认平台已设置。 如果需要设置帮助，请参阅[快速入门：识别语音，C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)。
+我们来看一下用于调用 C# 中的语音 SDK 的代码。 在本例中，我们使用租户模型执行语音识别。 本指南默认平台已设置。 如果需要设置帮助，请参阅[快速入门：识别语音，C# (.NET Core)](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)。
 
 将以下代码复制到项目中：
 

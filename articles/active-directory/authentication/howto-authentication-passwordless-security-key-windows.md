@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902754"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用对 Windows 10 设备的无密码安全密钥登录) 
 
@@ -134,7 +134,7 @@ ms.locfileid: "94839465"
 - 如果将此策略设置为 " **已启用** "，则允许用户用安全密钥登录。
 - 如果将此策略设置为 " **已禁用** " 或 " **未配置** "，将阻止用户登录安全密钥。
 
-此组策略设置需要组策略模板的更新版本 `credentialprovider.admx` 。 下一版本的 Windows Server 和 Windows 10 20H1 中提供了此新模板。 此设置可通过以下方式进行管理：运行这些 Windows 更新版本之一的设备，或按照支持主题中的 " [如何创建和管理 Windows 中组策略管理模板的中央存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)中的指南进行集中管理。
+此组策略设置需要组策略模板的更新版本 `CredentialProviders.admx` 。 下一版本的 Windows Server 和 Windows 10 20H1 中提供了此新模板。 此设置可通过以下方式进行管理：运行这些 Windows 更新版本之一的设备，或按照支持主题中的 " [如何创建和管理 Windows 中组策略管理模板的中央存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)中的指南进行集中管理。
 
 ## <a name="sign-in-with-fido2-security-key"></a>用 FIDO2 安全密钥登录
 

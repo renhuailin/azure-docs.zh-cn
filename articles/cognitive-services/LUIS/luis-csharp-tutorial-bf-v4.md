@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 931fa2c10a47e5d00f8e83b31b16618b06da8a46
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058193"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019103"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>教程：使用在 C# 中启用语言理解的 Web 应用机器人
 
-使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 该机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
+使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 该机器人是使用 Azure [Web 应用机器人](/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
 
 **本教程介绍如何执行下列操作：**
 
@@ -336,4 +336,4 @@ ms.locfileid: "92058193"
 查看更多使用聊天机器人的[示例](https://github.com/microsoft/botframework-solutions)。
 
 > [!div class="nextstepaction"]
-> [构建包含自定义使用者域的语言理解应用](luis-quickstart-intents-only.md)
+> [构建包含自定义使用者域的语言理解应用](./tutorial-intents-only.md)

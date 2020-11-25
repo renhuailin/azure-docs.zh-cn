@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032554"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913107"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "88032554"
 > * 将设备寄回给 Microsoft。
 > * 仅将访问权限应用于 Data Lake Storage Gen2 的文件和目录 () 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成迁移需要执行以下任务。
 
@@ -37,9 +37,9 @@ ms.locfileid: "88032554"
 
 * [Azure Data Box 设备](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [排序 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
+  * [排序 Data Box](../../databox/data-box-deploy-ordered.md) 或 [Data Box Heavy](../../databox/data-box-heavy-deploy-ordered.md)。 
 
-  * 将 [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) 连接到本地网络。
+  * 将 [Data Box](../../databox/data-box-deploy-set-up.md) 或 [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) 连接到本地网络。
 
 如果已准备就绪，请启动。
 
@@ -59,7 +59,7 @@ ms.locfileid: "88032554"
 
 2. 在 "访问存储帐户和上传数据" 对话框中，复制 " **Blob 服务终结点** " 和 " **存储帐户密钥**"。 从 blob 服务终结点中，省略 `https://` 和尾随斜杠。
 
-    在这种情况下，终结点为： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 有关示例，请参阅如何 [通过 Http 连接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
+    在这种情况下，终结点为： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 有关示例，请参阅如何 [通过 Http 连接到 REST](../../databox/data-box-deploy-copy-data-via-rest.md)。 
 
      !["访问存储帐户和上传数据" 对话框](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "88032554"
 
 按照以下步骤准备 Data Box 设备并将其寄送到 Microsoft。
 
-1. 首先，  [准备交付 Data Box 或 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
+1. 首先，  [准备交付 Data Box 或 Data Box Heavy](../../databox/data-box-deploy-copy-data-via-rest.md)。
 
 2. 完成设备准备后，下载 BOM 文件。 稍后将使用这些 BOM 或清单文件来验证上传到 Azure 的数据。
 
@@ -169,9 +169,9 @@ ms.locfileid: "88032554"
 
 4. 安排 UPS 取件。
 
-    * 有关 Data Box 设备，请参阅 [发运 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
+    * 有关 Data Box 设备，请参阅 [发运 Data Box](../../databox/data-box-deploy-picked-up.md)。
 
-    * 有关 Data Box Heavy 设备，请参阅 [发运 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
+    * 有关 Data Box Heavy 设备，请参阅 [发运 Data Box Heavy](../../databox/data-box-heavy-deploy-picked-up.md)。
 
 5. Microsoft 收到你的设备后，它将连接到数据中心网络，并且数据将上传到你在你放置设备顺序时指定的存储帐户。 针对所有数据都上载到 Azure 的 BOM 文件进行验证。 
 
@@ -184,11 +184,11 @@ ms.locfileid: "88032554"
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>为 Azure Data Lake Storage Gen2 帐户创建服务主体
 
-若要创建服务主体，请参阅 [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要创建服务主体，请参阅 [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-* 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”**** 角色分配给服务主体。
+* 执行该文中[将应用程序分配给角色](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
 
-* 执行项目的 " [获取值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) " 部分中的步骤时，将应用程序 ID 和客户端密码值保存到文本文件中。 很快就会需要这些值。
+* 执行项目的 " [获取值](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) " 部分中的步骤时，将应用程序 ID 和客户端密码值保存到文本文件中。 很快就会需要这些值。
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>生成已复制文件的列表及其权限
 

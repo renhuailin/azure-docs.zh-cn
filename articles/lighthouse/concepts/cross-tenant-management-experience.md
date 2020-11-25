@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905117"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -81,6 +81,8 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 
 - 管理托管的 Kubernetes 环境并部署和管理客户租户中的容器化应用程序
+- 部署和管理客户租户中的群集
+-   使用用于容器的 Azure Monitor 跨客户租户监视性能
 
 [Azure Migrate](../../migrate/index.yml)：
 

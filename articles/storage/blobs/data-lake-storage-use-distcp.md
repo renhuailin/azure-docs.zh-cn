@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912478"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -27,7 +27,7 @@ DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 
 * 未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户。
 * 启用 Data Lake Storage Gen2 功能（分层命名空间）的 Azure 存储帐户。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure 存储帐户](../common/storage-account-create.md)
 * 在已启用分层命名空间的存储帐户中创建的容器。
-* 可以访问启用了分层命名空间功能的存储帐户的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
+* 可以访问启用了分层命名空间功能的存储帐户的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 DistCp
 

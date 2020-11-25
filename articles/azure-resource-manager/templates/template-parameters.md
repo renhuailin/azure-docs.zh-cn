@@ -2,19 +2,21 @@
 title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板中定义参数。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76122417"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911407"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的参数
 
 本文介绍如何在 Azure 资源管理器模板中定义和使用参数。 为参数提供不同的值即可针对不同环境重复使用模板。
 
 资源管理器会在启动部署操作之前解析参数值。 只要在模板中使用参数，资源管理器就会将其替换为解析的值。
+
+每个参数都必须设置为其中一种 [数据类型](template-syntax.md#data-types)。
 
 ## <a name="define-parameter"></a>定义参数
 

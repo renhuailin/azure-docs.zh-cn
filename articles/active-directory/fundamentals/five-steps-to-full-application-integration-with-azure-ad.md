@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577637"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903706"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>将所有应用与 Azure AD 集成的五个步骤
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 包含了包含数千个预先集成的应用�
 
 接下来，发现员工经常使用的应用程序，并确定如何将工作与 Azure AD 进行集成。
 
-你可以使用 Microsoft Cloud App Security&#39;的 [Cloud discovery 工具](/cloud-app-security/tutorial-shadow-it) 开始发现和管理 &quot; &quot; 网络中的影子 IT (也就是说，不是由 IT 部门) 管理的应用程序。 你可以 [使用 Microsoft Defender 高级威胁防护 (ATP) ](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 来简化和扩展发现过程。
+你可以开始使用 Microsoft Cloud App Security 的 [Cloud discovery 工具](/cloud-app-security/tutorial-shadow-it) 来发现和管理网络中的 "影子" (即，不是由 IT 部门) 管理的应用。 你可以 [使用 Microsoft Defender 高级威胁防护 (ATP) ](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 来简化和扩展发现过程。
 
 此外，你可以使用 Azure 门户中的 " [AD FS 应用程序活动" 报表](../manage-apps/migrate-adfs-application-activity.md) 来发现组织中的所有 AD FS 应用、登录到这些应用的唯一用户的数量，以及将其与 Azure AD 集成的兼容性。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 包含了包含数千个预先集成的应用�
 - 通过无需本地用户预配和身份验证，以及对同一服务的其他云标识提供者支付的许可费用，为你节省资金。
 - 减少管理开销并实现更严格的安全性，并且标识和访问管理过程中的冗余更少。
 - 使员工能够通过 [MyApps 门户](../manage-apps/access-panel-collections.md)来安全地对所需的所有应用程序进行单一登录访问。
-- 通过增加从应用使用情况获取的数据量来改善 Azure AD&#39;s [标识保护](../identity-protection/overview-identity-protection.md) 相关服务（如条件访问）的智能，并将其优势扩展到新添加的应用。
+- 通过增加从应用使用情况获取的数据量来改善 Azure AD 的 [标识保护](../identity-protection/overview-identity-protection.md) 相关服务（如条件性访问）的智能，并将其优势扩展到新添加的应用。
 
 我们发布了有关如何管理将应用与 Azure AD 集成的业务流程的指南，包括可用于使业务和应用程序所有者了解和感兴趣的 [海报](https://aka.ms/AppOnePager) 和 [演示](https://aka.ms/AppGuideline) 。 你可以使用自己的品牌修改这些示例，并在完成此过程时通过公司门户、新闻稿或其他介质将它们发布到组织。
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) 包含了包含数千个预先集成的应用�
 
 对于在公司内部构建的应用程序，开发人员可以使用 [Microsoft 标识平台](../develop/index.yml) 来实现身份验证和授权。 与平台集成的应用程序，通过将其 [注册到 Azure AD](../develop/quickstart-register-app.md) 和管理，就像你的公文包中的任何其他应用程序一样。
 
-开发人员可以将平台用于内部使用的应用和面向客户的应用，还可以使用平台带来的其他优势。 [Microsoft 身份验证库 (MSAL) ](../develop/msal-overview.md)，它是平台的一部分，使开发人员能够实现多种新式体验，例如多重身份验证和使用安全密钥来访问其应用，而无需自行实现。 此外，与 Microsoft 标识平台集成的应用可以访问 [Microsoft Graph](../develop/microsoft-graph-intro.md) -一种统一的 API 终结点，提供描述组织中的工作效率、标识和安全性模式的 Microsoft 365 数据。 开发人员可以使用这些信息来实现提高用户工作效率的功能。 例如，通过识别用户最近与最近交互的人员并在应用&#39;s UI 中将其呈现。
+开发人员可以将平台用于内部使用的应用和面向客户的应用，还可以使用平台带来的其他优势。 [Microsoft 身份验证库 (MSAL) ](../develop/msal-overview.md)，它是平台的一部分，使开发人员能够实现多种新式体验，例如多重身份验证和使用安全密钥来访问其应用，而无需自行实现。 此外，与 Microsoft 标识平台集成的应用可以访问 [Microsoft Graph](../develop/microsoft-graph-intro.md) -一种统一的 API 终结点，提供描述组织中的工作效率、标识和安全性模式的 Microsoft 365 数据。 开发人员可以使用这些信息来实现提高用户工作效率的功能。 例如，通过识别用户最近与最近交互的人员并在应用程序的 UI 中将其呈现出来。
 
 我们提供了一 [系列视频系列](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) ，其中提供了平台以及支持的语言和平台中的 [许多代码示例](../develop/sample-v2-code.md) 。
 

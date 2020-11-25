@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc695cc36113430cb1820d978ed41f5250cad33e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95896877"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC 缓存的 azure 安全基线
 
@@ -172,7 +172,7 @@ Azure HPC 缓存需要 DNS 访问缓存专用虚拟网络外部的资源。 如�
 
 *有关详细信息，请参阅 [Azure 安全基准：标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)。*
 
-### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：标准化 Azure Active Directory 作为中心标识和身份验证系统
+### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
 **指南**： Azure HPC 缓存未与内部操作的 Azure Active Directory 集成。 但是，可以使用 Azure AD 来对 Azure 门户或 CLI 中的用户进行身份验证，以便创建、查看和管理 HPC 缓存部署和相关组件。
 
@@ -198,7 +198,7 @@ Azure Active Directory (Azure AD) 是 Azure 中的默认标识和访问管理服
 
 **责任**：客户
 
-### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全自动地管理应用程序标识
+### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
 **指南**： HPC 缓存将 Azure 托管的标识用于非人工帐户，如服务或自动化。 建议使用 Azure 的托管标识功能，而不是创建功能更强大的人工帐户来访问或执行资源。 
 
@@ -212,7 +212,7 @@ HPC 缓存可以通过预定义的访问授权规则对支持 Azure AD 身份验
 
 **责任**：客户
 
-### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 用于应用程序访问
+### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
 **指南**：对于内部操作，Azure HPC 缓存不与 Azure AD 集成。 但是，可以使用 Azure AD 来对 Azure 门户或 CLI 中的用户进行身份验证，以便创建、查看和管理 HPC 缓存部署和相关组件。
 
@@ -224,7 +224,7 @@ Azure Active Directory 提供对 Azure 资源、云应用程序和本地应用�
 
 **责任**：客户
 
-### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对基于 Azure Active Directory 的所有访问使用强身份验证控制
+### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
 **指南**：尽管 Azure HPC 缓存与内部操作的 Azure AD 不集成，但 Azure AD 可用于在 AZURE 门户或 CLI 中对用户进行身份验证，以便创建、查看和管理 HPC 缓存部署和相关组件。  
 
@@ -289,7 +289,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可以使用 Act
 
 **责任**：共享
 
-### <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据公开
+### <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
 **指南**：不适用;HPC 缓存不允许客户将任何持久化数据部署到正在运行的环境。
 
@@ -305,7 +305,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可以使用 Act
 
 **指南**： HPC 缓存使用 Azure RBAC 来隔离对关键关键系统的访问，方法是限制授予对其所在订阅和管理组的特权访问权限的帐户。
 
-围绕专用管理帐户的使用创建标准操作程序。 若要创建缓存，HPC 缓存要求用户在订阅中具有足够的权限来创建 Nic。 如果使用 Blob 存储，则需要使用 RBAC 角色存储帐户参与者和存储 Blob 数据参与者来访问存储。 
+围绕专用管理帐户的使用创建标准操作程序。 若要创建缓存，HPC 缓存要求用户在订阅中具有足够的权限来创建 Nic。 如果使用 Blob 存储，则需要使用 Azure 角色存储帐户参与者和存储 Blob 数据参与者来访问存储。 
 
 确保你还限制对对关键业务资产具有管理访问权限的管理、标识和安全系统的访问权限，例如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 泄露这些管理和安全系统的攻击者可以立即 weaponize 它们，以损害业务关键资产。
 
@@ -365,7 +365,7 @@ Azure HPC 缓存可使用 Azure Active Directory (Azure AD) 帐户来通过 Azur
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md) 
 
-- [什么是 Azure AD 权限管理](../active-directory/governance/entitlement-management-overview.md)
+- [什么是 Azure AD 权利管理](../active-directory/governance/entitlement-management-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -502,7 +502,7 @@ HPC 缓存不允许在其资源上运行应用程序或软件安装。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md) 
 
-- [Azure 安全中心资产清单管理](../security-center/asset-inventory.md) 
+- [Azure 安全中心资产库存管理](../security-center/asset-inventory.md) 
 
 - [资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json) 
 

@@ -4,12 +4,12 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板。
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905253"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure 资源管理器模板
 
@@ -112,7 +112,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -137,10 +137,10 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
     工作流文件的第一部分包含：
 
     - **name**：工作流的名称。
-    - 事件：触发工作流的 GitHub 事件的名称。 当主分支上有推送事件时，将触发工作流，修改所指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
+    - 事件：触发工作流的 GitHub 事件的名称。 如果主分支上有推送事件，则会触发工作流，这会修改指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
 
 1. 选择“开始提交”。
-1. 选择“直接提交到主分支”。
+1. 选择 **"直接提交到主分支"**。
 1. 选择“提交新文件”（或“提交更改”）。 
 
 由于工作流配置为由要更新的工作流文件或模板文件触发，因此在提交更改后，工作流将立即启动。
@@ -152,7 +152,6 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 1. 从菜单中选择“运行 ARM 部署”以验证此部署。
 
 ## <a name="clean-up-resources"></a>清理资源
-
 不再需要资源组和存储库时，请通过删除资源组和 GitHub 存储库来清理部署的资源。 
 
 ## <a name="next-steps"></a>后续步骤

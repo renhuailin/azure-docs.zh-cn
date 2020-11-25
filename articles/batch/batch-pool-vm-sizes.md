@@ -1,30 +1,30 @@
 ---
-title: 选择池的 VM 大小
-description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
+title: 选择池的 VM 大小和映像
+description: 如何从 Azure Batch 池中的计算节点的可用 VM 大小和操作系统版本中进行选择
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517049"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895224"
 ---
-# <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
+# <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>为 Azure Batch 池中的计算节点选择 VM 大小和映像
 
 为 Azure Batch 池选择节点大小时，可以在 Azure 中提供的几乎所有 VM 大小中进行选择。 Azure 针对不同工作负荷，为 Linux 和 Windows VM 提供一系列大小。
 
-选择 VM 大小时有几个例外和限制：
-
-* Batch 不支持某些 VM 系列或 VM 大小。
-* 某些 VM 大小受到限制，需要专门启用才能进行分配。
-
 ## <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
+
+选择 Batch 池的 VM 大小有一些例外和限制：
+
+- Batch 不支持某些 VM 系列或 VM 大小。
+- 某些 VM 大小受到限制，需要专门启用才能进行分配。
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
-虚拟机配置中的 Batch 池支持几乎所有的 VM 大小（[Linux](../virtual-machines/sizes.md)、[Windows](../virtual-machines/sizes.md)）。 请参阅下表以了解有关支持的大小和限制的详细信息。
+虚拟机配置中的 Batch 池几乎支持所有 [VM 大小](../virtual-machines/sizes.md)。 请参阅下表以了解有关支持的大小和限制的详细信息。
 
 | VM 系列  | 支持的大小 |
 |------------|---------|
@@ -51,7 +51,7 @@ ms.locfileid: "92517049"
 | HB<sup>1</sup> | 所有大小 |
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
-| Ls | 所有大小 |
+| LS | 所有大小 |
 | Lsv2<sup>1</sup> | 所有大小 |
 | M<sup>1</sup> | 所有大小 |
 | Mv2<sup>1、2</sup> | 所有大小 |
@@ -71,11 +71,12 @@ ms.locfileid: "92517049"
 <sup>2</sup> 这些 VM 系列仅适用于第2代 vm 映像。
 
 ### <a name="using-generation-2-vm-images"></a>使用第2代 VM 映像
+
 某些 VM 系列（如 [Mv2](../virtual-machines/mv2-series.md)）只能与 [第2代 vm 映像](../virtual-machines/generation-2.md)一起使用。 使用 ["imageReference"](/rest/api/batchservice/pool/add#imagereference) 配置的 "sku" 属性，按任何 VM 映像指定第2代 vm 映像;"sku" 字符串具有后缀，如 "-g2" 或 "-gen2"。 若要获取 Batch 支持的 VM 映像的列表（包括第2代映像），请使用 ["列出支持的映像"](/rest/api/batchservice/account/listsupportedimages) API、 [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)或 [Azure CLI](/cli/azure/batch/pool/supported-images)。
 
 ### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
 
-云服务配置中的 Batch 池支持所有[云服务的 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但以下项**除外**：
+云服务配置中的 Batch 池支持所有 [云服务的 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但以下项 **除外**：
 
 | VM 系列  | 不支持的大小 |
 |------------|-------------------|
@@ -84,19 +85,27 @@ ms.locfileid: "92517049"
 
 ## <a name="size-considerations"></a>大小注意事项
 
-* **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请分别考虑使用专用 [HPC](../virtual-machines/sizes-hpc.md) VM 大小或[启用 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 （请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。）
+- **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请分别考虑使用专用 [HPC](../virtual-machines/sizes-hpc.md) VM 大小或[启用 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 有关详细信息，请参阅[在 Batch 池中使用支持 RDMA 或启用了 GPU 的实例](batch-pool-compute-intensive-sizes.md)。
 
-* **每个节点的任务数** - 通常，选择节点大小时会假设一个任务要在节点上运行一次。 但是，在作业执行期间，让多个任务（因此有多个应用程序实例）在计算节点上[并行运行](batch-parallel-node-tasks.md)可能是很有利的。 在此情况下，往往会选择多核节点大小，以满足更高的并行任务执行需求。
+- **每个节点的任务数** - 通常，选择节点大小时会假设一个任务要在节点上运行一次。 但是，在作业执行期间，让多个任务（因此有多个应用程序实例）在计算节点上[并行运行](batch-parallel-node-tasks.md)可能是很有利的。 在此情况下，往往会选择多核节点大小，以满足更高的并行任务执行需求。
 
-* **不同任务的负载级别** - 池中的所有节点都是相同大小。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
+- **不同任务的负载级别** - 池中的所有节点都是相同大小。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
 
-* **区域可用性** - 某个 VM 系列或大小在创建 Batch 帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
+- **区域可用性** - 某个 VM 系列或大小在创建 Batch 帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
-* **配额** - Batch 帐户中的[核心配额](batch-quota-limit.md#resource-quotas)会限制可添加到 Batch 池的给定大小的节点数。 若要请求增加配额，请参阅[此文](batch-quota-limit.md#increase-a-quota)。 
+- **配额** - Batch 帐户中的 [核心配额](batch-quota-limit.md#resource-quotas)会限制可添加到 Batch 池的给定大小的节点数。 需要时，可以 [请求增加配额](batch-quota-limit.md#increase-a-quota)。
 
-* **池配置** - 通常，与云服务配置相比，在虚拟机配置中创建池时有更多 VM 大小选项。
+- **池配置** - 通常，与云服务配置相比，在虚拟机配置中创建池时有更多 VM 大小选项。
+
+## <a name="supported-vm-images"></a>支持的 VM 映像
+
+使用以下 Api 之一返回批处理当前支持的 Windows 和 Linux VM 映像的列表，包括每个映像的节点代理 SKU Id：
+
+- 批处理服务 REST API： [列出受支持的图像](/rest/api/batchservice/account/listsupportedimages)
+- PowerShell： [AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
+- Azure CLI： [az batch pool 支持-映像](/cli/azure/batch/pool/supported-images)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
-* 有关使用计算密集型 VM 大小的信息，请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+- 有关使用计算密集型 VM 大小的信息，请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。

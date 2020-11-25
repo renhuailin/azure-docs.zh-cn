@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542824"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018729"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人
 
-使用 Node.js 生成集成了语言理解的聊天机器人 (LUIS)。 该机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
+使用 Node.js 生成集成了语言理解的聊天机器人 (LUIS)。 该机器人是使用 Azure [Web 应用机器人](/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
 
 **本教程介绍如何执行下列操作：**
 
@@ -395,4 +395,4 @@ ms.locfileid: "94542824"
 查看更多使用聊天机器人的[示例](https://github.com/microsoft/botframework-solutions)。
 
 > [!div class="nextstepaction"]
-> [构建包含自定义使用者域的语言理解应用](luis-quickstart-intents-only.md)
+> [构建包含自定义使用者域的语言理解应用](./tutorial-intents-only.md)

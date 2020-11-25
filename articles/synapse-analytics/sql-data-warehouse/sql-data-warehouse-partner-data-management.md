@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6387c55200bad3458705cf570f60ca40db1be0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325397"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900596"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics 数据管理合作伙伴
 
@@ -34,6 +34,7 @@ ms.locfileid: "93325397"
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>使用 RedPoint 数据管理，市场营销人员可以在进行结构化和非结构化数据管理的同时，应用其所有数据来推动跨渠道客户的参与。 借助 RedPoint，你可以最大程度地提高结构化数据和非结构化数据的价值，提供所需的超个性化、上下文交互，以便与今天的全渠道客户交流。 拖放式界面使设计和运行数据管理过程变得轻松。 |[产品页面](https://www.redpointglobal.com/customer-data-management)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |SentryOne (DW Sentry)<br>借助智能数据移动仪表板和事件日历，可以始终知道什么在影响工作负荷。 旨在让你深入了解运行的查询和作业，以便加载、备份或还原数据，无需担心充分利用你的 Azure 资源。 |[产品页面](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure 市场](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |SqlDBM<br>SqlDBM 是一个基于云的数据建模工具，可让你随时随地轻松、方便地在任何浏览器中开发数据库。 该工具整合了所需的任何数据库规则和对象，例如数据库键、架构、索引、列约束和关系。 |[产品页面](http://sqldbm.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![Tamr](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Tamr**<br>借助 Tamr，组织可以向 Azure Synapse 提供各种数据，从而使其充分利用 Azure Synapse 的分析功能。 Tamr 的云本机数据控制解决方案使用机器学习执行繁重的操作，以合并、清理和分类数据，并使用直观的人工反馈工作流来弥补数据与业务结果之间的差距。 Tamr 集成了 Azure 的数据服务，包括 Azure Synapse Analytics、Azure Databricks、Azure HDInsight、Azure 数据目录、Azure Data Lake Storage 和 Azure 数据工厂。 它允许使用 Azure 的灵活性和规模，以较低的总拥有成本来控制数据。 |[产品页面](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>Teleran 的查询控制可防止不适当且格式不良的查询进入 Synapse 并浪费计算资源。 它向分析用户发送智能消息，指导他们更有效地与数据进行交互。 目标是确保良好的业务成果，而不会产生 Azure 成本。 Teleran 使用率分析提供用户、应用程序、查询和数据使用活动的分析。 它使您始终可以了解所发生的事情。 它使你能够提高服务、提高企业生产力并优化 Synapse 消耗成本。 |[产品页面](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
 
 ## <a name="next-steps"></a>后续步骤

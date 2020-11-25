@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358477"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913056"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -41,21 +41,21 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 本部分介绍了同时使用 blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时的问题和限制。
 
-* 不能使用 blob API 和 Data Lake Storage Api 写入文件的同一个实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 唯一的例外是在使用时进行覆盖。 可以使用任一 API 覆盖文件/blob。
+* 不能使用 blob API 和 Data Lake Storage Api 写入文件的同一个实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 唯一的例外是在覆盖时可以使用。 可以使用任一 API 覆盖文件/Blob。
 
-* 如果在使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
+* 如果在使用[列出 Blob](/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
 
-* 如果使用[删除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 来删除目录，则只能在该目录为空的情况下将其删除。 这意味着，不能使用 Blob API 以递归方式删除目录。
+* 如果使用[删除 Blob](/rest/api/storageservices/delete-blob) API 来删除目录，则只能在该目录为空的情况下将其删除。 这意味着，不能使用 Blob API 以递归方式删除目录。
 
 这些 Blob REST API 不受支持：
 
-* [放置 Blob（页）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [放置页](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [获取页面范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [通过 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [放置 Blob（页）](/rest/api/storageservices/put-blob)
+* [放置页](/rest/api/storageservices/put-page)
+* [获取页面范围](/rest/api/storageservices/get-page-ranges)
+* [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
+* [从 URL 放置页](/rest/api/storageservices/put-page-from-url)
+* [追加块](/rest/api/storageservices/append-block)
+* [通过 URL 追加块](/rest/api/storageservices/append-block-from-url)
 
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
@@ -70,7 +70,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="azcopy"></a>AzCopy
 
-仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。
+仅使用最新版本的 AzCopy ([AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。
 
 <a id="storage-explorer"></a>
 
@@ -92,17 +92,17 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表 (ACL) 和匿名读取访问
 
-如果已将[匿名读取访问](storage-manage-access-to-resources.md)授予容器，则 ACL 对该容器或该容器中的文件没有影响。
+如果已将[匿名读取访问](./anonymous-read-access-configure.md)授予容器，则 ACL 对该容器或该容器中的文件没有影响。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
 尚不支持保留天数设置，但你可以使用任何支持的工具（例如 Azure 存储资源管理器、REST 或 SDK）手动删除日志。
 
-## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 的高级层的生命周期管理策略
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 高级层的生命周期管理策略
 
-无法在 "热"、"冷" 和 "存档" 层之间移动存储在高级层中的数据。 但是，可以将数据从高级层复制到其他帐户中的热访问层。
+无法在热层、冷层和存档层之间移动高级层中存储的数据。 但可以将数据从高级层复制到其他帐户中的热访问层。
 
-## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>具有高级性能 BlockBlobStorage 存储帐户的 Dremio 支持
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户的 Dremio 支持
 
 Dremio 尚且不能连接到其上启用了分层命名空间功能的 BlockBlobStorage 帐户。 
 

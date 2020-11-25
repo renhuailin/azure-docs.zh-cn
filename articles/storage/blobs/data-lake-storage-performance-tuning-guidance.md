@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913039"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 将数据从源系统引入 Data Lake Storage Gen2 时，源硬件、源网络硬件以及与 Data Lake Storage Gen2 的网络连接可能成为瓶颈，请务必考虑到这一点。  
 
-![显示将源系统中的数据引入到 Data Lake Storage Gen2 时要考虑的因素的关系图。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![此图显示了将源系统中的数据引入到 Data Lake Storage Gen2 时要考虑的因素。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 确保数据移动不受这些因素的影响至关重要。
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapper)   | [链接](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure 数据工厂| parallelCopies    | [链接](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构
 
@@ -107,7 +107,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 运行具有更多节点和/或更大 VM 的群集。  更大的群集可运行更多 YARN 容器，如下图所示。
 
-![此图显示了如何使用更大的群集来运行更多 YARN 容器。](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![此图显示了更大的群集如何使你能够运行更多 YARN 容器。](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 使用具有更多网络带宽的 VM。  如果网络带宽低于 Data Lake Storage Gen2 吞吐量，则网络带宽量可能成为瓶颈。  网络带宽大小因不同 VM 而异。  请选择具有可能的最大网络带宽的 VM 类型。
 
@@ -115,7 +115,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 使用较小的 YARN 容器。  缩减每个 YARN 容器的大小，创建更多包含相同数量资源的容器。
 
-![当您减小每个 YARN 容器的大小以创建更多容器时，显示结果的关系图。](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![此图显示了减小每个 YARN 容器以创建更多容器时的结果。](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 始终需要最小的 YARN 容器，具体取决于工作负荷。 如果选取的容器太小，作业会出现内存不足的问题。 YARN 容器通常不应小于 1 GB。 YARN 容器一般为 3 GB。 对于某些工作负荷，可能需要更大的 YARN 容器。  
 
@@ -125,7 +125,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 使用所有可用的容器。  将任务数设置为等于或大于可用容器数，以便利用所有资源。
 
-![显示所有容器使用情况的关系图。](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![此图显示了所有容器的使用情况。](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 失败的任务成本高昂。 如果每项任务都有大量数据需要处理，那么任务失败就会导致以高成本重试任务。  因此，最好创建多个任务，每个任务处理少量数据。
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143985"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908242"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
 
-Log Analytics 依赖于各种情况下的 Azure 存储。 此使用通常会自动管理。 但是，某些情况要求你提供和管理你自己的存储帐户，也称为客户管理的存储帐户。 本文档详细介绍了客户管理的存储的使用情况，用于引入 WAD/LAD 日志、专用链接特定方案和 CMK 加密。 
+Log Analytics 依赖于各种情况下的 Azure 存储。 此使用通常会自动管理。 但是，某些情况要求你提供和管理你自己的存储帐户，也称为客户管理的存储帐户。 本文档详细介绍了客户管理的存储的使用情况，用于引入 WAD/LAD 日志、专用链接特定方案以及客户托管的密钥 (CMK) 加密。 
 
 > [!NOTE]
 > 假设格式设置和内容可能会更改，则建议您不要对内容进行依赖 Log Analytics 上传到客户管理的存储。

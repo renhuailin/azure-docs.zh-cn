@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659564"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908772"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>查询加速 SQL 语言参考
 
@@ -63,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |TIMESTAMP|时间点。                           |
 |BOOLEAN  |True 或 False。                             |
 
-从 CSV 格式的数据中读取值时，所有值都作为字符串读取。  使用强制转换表达式可以将字符串值转换为其他类型。  根据上下文，值可以隐式强制转换为其他类型。 有关详细信息，请参阅 [数据类型优先级 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)。
+从 CSV 格式的数据中读取值时，所有值都作为字符串读取。  使用强制转换表达式可以将字符串值转换为其他类型。  根据上下文，值可以隐式强制转换为其他类型。 有关详细信息，请参阅 [数据类型优先级 (transact-sql) ](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
 ## <a name="expressions"></a>表达式
 
@@ -79,34 +79,34 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 |操作员|说明|
 |--|--|
-|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |比较两个表达式的等价性（比较运算符）。|
-|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |测试某个表达式是否不等于另一个表达式（比较运算符）。|
-|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比较两个表达式是否不等于 (比较运算符) 。|
-|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |比较两个表达式是否小于 (比较运算符) 。|
-|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比较两个表达式是否小于或等于比较运算符)  (。|
-|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |比较两个表达式的 (比较运算符是否) 。 |
-|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比较两个表达式以得出大于或等于的结果（比较运算符）。|
-|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |两个数相加。 这个加法算术运算符也可以将一个以天为单位的数字加到日期中。|
-|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |将两个数相减（减法算术运算符）。 |
-|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |用一个数除以另一个数（算术除法运算符）。|
-|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |两个表达式相乘（算术乘法运算符）。|
-|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |返回两数相除后的余数。|
-|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在两个整数值之间执行“逻辑位与”运算。|
-|[或者](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在两个指定的整数值之间执行按位逻辑 OR 运算，转换为 Transact-sql 语句中的二进制表达式。|
-|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |对布尔型输入取反。|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种。|
-|[BETWEEN](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |指定测试范围。|
-|[IN](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |确定指定的值是否与子查询或列表中的值相匹配。|
-|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |如果两个指定的表达式相等，则返回空值。|
-|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |按顺序计算参数，并返回最初不计算为 NULL 的第一个表达式的当前值。|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |比较两个表达式的等价性（比较运算符）。|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |测试某个表达式是否不等于另一个表达式（比较运算符）。|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比较两个表达式是否不等于 (比较运算符) 。|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |比较两个表达式是否小于 (比较运算符) 。|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比较两个表达式是否小于或等于比较运算符)  (。|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |比较两个表达式的 (比较运算符是否) 。 |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比较两个表达式以得出大于或等于的结果（比较运算符）。|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |两个数相加。 这个加法算术运算符也可以将一个以天为单位的数字加到日期中。|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |将两个数相减（减法算术运算符）。 |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |用一个数除以另一个数（算术除法运算符）。|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |两个表达式相乘（算术乘法运算符）。|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |返回两数相除后的余数。|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在两个整数值之间执行“逻辑位与”运算。|
+|[或者](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在两个指定的整数值之间执行按位逻辑 OR 运算，转换为 Transact-sql 语句中的二进制表达式。|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |对布尔型输入取反。|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种。|
+|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |指定测试范围。|
+|[IN](/sql/t-sql/language-elements/in-transact-sql)    |确定指定的值是否与子查询或列表中的值相匹配。|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |如果两个指定的表达式相等，则返回空值。|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |按顺序计算参数，并返回最初不计算为 NULL 的第一个表达式的当前值。|
 
-如果运算符左侧和右侧的数据类型不同，则将根据此处指定的规则执行自动转换： [数据类型优先级 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)。
+如果运算符左侧和右侧的数据类型不同，则将根据此处指定的规则执行自动转换： [数据类型优先级 (transact-sql) ](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
 查询加速 SQL 语言仅支持在本文中讨论的数据类型的一小部分。  请参阅本文的 [数据类型](#data-types) 部分。
 
 ### <a name="casts"></a>转换
 
-查询加速 SQL 语言支持转换运算符，具体取决于此处的规则： [数据类型转换 (数据库引擎) ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine)。  
+查询加速 SQL 语言支持转换运算符，具体取决于此处的规则： [数据类型转换 (数据库引擎) ](/sql/t-sql/data-types/data-type-conversion-database-engine)。  
 
 查询加速 SQL 语言仅支持在本文中讨论的数据类型的一小部分。  请参阅本文的 [数据类型](#data-types) 部分。
 
@@ -118,10 +118,10 @@ SELECT sys.split(split_size)FROM BlobStorage
 |--|--|
 |CHAR_LENGTH    | 如果字符串表达式的数据类型为，则返回字符串表达式的长度（以字符为字符）; 否则返回。否则，将返回字符串表达式的长度（以字节为单位） (最小整数不小于位数除以 8) 。  (此函数与 CHARACTER_LENGTH 函数相同。 ) |
 |CHARACTER_LENGTH    |如果字符串表达式的数据类型为，则返回字符串表达式的长度（以字符为字符）; 否则返回。否则，将返回字符串表达式的长度（以字节为单位） (最小整数不小于位数除以 8) 。  (此函数与 CHAR_LENGTH 函数相同|
-|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |将大写字符数据转换为小写字符数据后返回字符表达式。|
-|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |返回小写字符数据转换为大写的字符表达式。|
-|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |返回 SQL Server 中的字符、二进制、文本或图像表达式的一部分。|
-|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |从字符串的开头和结尾删除空格字符 char (32) 或其他指定字符。|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |将大写字符数据转换为小写字符数据后返回字符表达式。|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |返回小写字符数据转换为大写的字符表达式。|
+|[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |返回 SQL Server 中的字符、二进制、文本或图像表达式的一部分。|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |从字符串的开头和结尾删除空格字符 char (32) 或其他指定字符。|
 |LEADING    |说明|
 |TRAILING    |说明|
 
@@ -201,7 +201,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 |H                |每日 (0-23)                    |
 |HH               |零个 (00-23) 的填充小时      |
 |m                |分钟 (0-59)                 |
-|MM               |零填充分钟 (00-59)            |
+|mm               |零填充分钟 (00-59)            |
 |s                |分钟 (0-59) 的秒数             |
 |ss               |零填充秒 (00-59)           |
 |S                |秒的小数部分 (0.1-0.9)         |
@@ -340,4 +340,3 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 - [Azure Data Lake Storage 查询加速](data-lake-storage-query-acceleration.md)
 - [使用 Azure Data Lake Storage 查询加速来筛选数据](data-lake-storage-query-acceleration-how-to.md)
-

@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95901547"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议 (预览中装载 Blob 存储) 
 
@@ -71,7 +71,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步骤3：创建 Azure 虚拟网络 (VNet) 
 
-存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 若要详细了解 VNet 以及如何创建 VNet，请参阅 [虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)。
+存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 若要详细了解 VNet 以及如何创建 VNet，请参阅 [虚拟网络文档](../../virtual-network/index.yml)。
 
 > [!NOTE]
 > 同一 VNet 中的客户端可以在你的帐户中装载容器。 你还可以从在本地网络中运行的客户端装载容器，但必须先将本地网络连接到 VNet。 请参阅 [支持的网络连接](network-file-system-protocol-support.md#supported-network-connections)。
@@ -98,8 +98,8 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |复制|本地冗余存储 (LRS)|
 |连接方法|公共终结点 (所选网络) 或专用终结点|
 |需要安全传输|已禁用|
-|分层命名空间|已启用|
-|NFS V3|已启用|
+|分层命名空间|Enabled|
+|NFS V3|Enabled|
 
 您可以接受所有其他设置的默认值。 
 
@@ -113,7 +113,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>步骤7：装载容器
 
@@ -144,7 +144,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
    ![网络文件系统客户端功能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. 使用 [mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) 命令装载容器。
+2. 使用 [mount](/windows-server/administration/windows-commands/mount) 命令装载容器。
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
@@ -175,10 +175,3 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 ## <a name="see-also"></a>另请参阅
 
 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) ](network-file-system-protocol-support.md)
-
-
-
-
-
-
-

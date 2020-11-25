@@ -3,14 +3,14 @@ title: 从 runbook 中启用 Azure 自动化更新管理
 description: 本文介绍如何从 runbook 启用更新管理。
 services: automation
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: ec102015355e3312f5dc15fa526fa543da75e0de
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908348"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>从 runbook 启用“更新管理”
 
@@ -34,7 +34,7 @@ ms.locfileid: "92222078"
     * *LASolutionSubscriptionId*： Log Analytics 工作区所在位置的订阅 ID。
     * *LASolutionWorkspaceId*：链接到自动化帐户的 Log Analytics 工作区的工作区 ID。
 
-    这些变量用于配置载入 VM 的工作区。 如果未指定这些项，脚本将首先搜索要在其订阅中更新管理的任何 VM 载入，后跟自动化帐户所在的订阅，然后是用户帐户有权访问的所有其他订阅。 如果未正确配置，则可能会导致计算机载入到某些随机 Log Analytics 工作区。
+    这些变量用于配置载入 VM 的工作区，并且你需要手动创建它们。 如果未指定这些项，脚本将首先搜索要在其订阅中更新管理的任何 VM 载入，后跟自动化帐户所在的订阅，然后是用户帐户有权访问的所有其他订阅。 如果未正确配置，则可能会导致计算机载入到某些随机 Log Analytics 工作区。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "92222078"
 
 ## <a name="install-and-update-modules"></a>安装和更新模块
 
-需要将其更新到最新的 Azure 模块，并导入 [microsoft.operationalinsights](/powershell/module/az.operationalinsights) 模块，才能成功地通过 Runbook 为 vm 启用更新管理。
+需要将其更新到最新的 Azure 模块，并导入 [AzureRM](/powershell/module/azurerm.operationalinsights) 模块，才能使用 runbook 成功启用 vm 更新管理。
 
 1. 在你的自动化帐户中的“共享资源”下选择“模块” 。
 
@@ -66,9 +66,9 @@ ms.locfileid: "92222078"
 
 5. 选择“浏览库”以打开模块库。
 
-6. 搜索 `Az.OperationalInsights` 并将此模块导入到自动化帐户中。
+6. 搜索 `AzureRM.OperationalInsights` 并将此模块导入到自动化帐户中。
 
-    ![导入 OperationalInsights 模块](media/enable-from-runbook/import-operational-insights-module.png)
+    ![导入 OperationalInsights 模块](media/enable-from-runbook/import-operational-insights-module-azurerm.png)
 
 ## <a name="select-azure-vm-to-manage"></a>选择要管理的 Azure VM
 
