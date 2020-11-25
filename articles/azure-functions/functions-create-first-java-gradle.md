@@ -7,11 +7,11 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020426"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
@@ -142,7 +142,7 @@ gradle azureFunctionsDeploy
 
 1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，然后按 Enter。
  
-1. 在函数应用中，选择 " **函数** "，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
+1. 在函数应用中，选择 " **函数**"，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="从 Azure 门户复制函数 URL":::
 

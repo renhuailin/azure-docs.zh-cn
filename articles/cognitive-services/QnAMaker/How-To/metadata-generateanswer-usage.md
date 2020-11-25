@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 85abefc8437936ffaedc4811bdd9bed0be32786f
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375494"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020681"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -50,11 +50,11 @@ QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加�
     ![我的知识库的屏幕截图](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
 
-    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
     ![终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
     ![托管的终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 

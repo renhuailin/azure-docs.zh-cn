@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427248"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021106"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>使用 Azure CLI 创建 Azure AD 应用并将其配置为访问媒体服务 API
 
@@ -57,13 +57,13 @@ az role assignment create --assignee < user/app id> --role Contributor --scope <
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-在此示例中，作用域**** 是媒体服务帐户的完整资源路径。 不过，作用域**** 可以为任意级别。
+在此示例中，作用域是媒体服务帐户的完整资源路径。 不过，作用域可以为任意级别。
 
 例如，作用域可以为下列级别之一：
  
-* 订阅**** 级别。
-* 资源组**** 级别。
-* 资源**** 级别（例如，媒体帐户）。
+* 订阅级别。
+* 资源组级别。
+* 资源级别（例如，媒体帐户）。
 
 有关详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)
 

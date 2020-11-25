@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075053"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020698"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。
@@ -125,7 +125,7 @@ EXIT /B 0
 
 静态环境变量使用 [变量] 元素的 **value** 属性。 上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值“**1.0.0.0**”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“**staging**”或“**production**”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
-基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在[此处](cloud-services-role-config-xpath.md)找到。
+基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在 [此处](cloud-services-role-config-xpath.md)找到。
 
 例如，若要创建这样一个环境变量（当实例在计算模拟器中运行时为“true”，在云中运行时为“false”），请使用以下 [变量] 和 [RoleInstanceValue] 元素 ：
 

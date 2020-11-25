@@ -4,11 +4,11 @@ description: 本文介绍如何使用 Azure 备份服务和 PowerShell 还原 Az
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021378"
 ---
 # <a name="restore-azure-files-with-powershell"></a>通过 PowerShell 还原 Azure 文件
 
@@ -29,7 +29,7 @@ ms.locfileid: "88826491"
 在以下脚本中：
 
 * 变量 **$rp** 是一个数组，其中包含所选备份项在过去七天的恢复点。
-* 数组按时间的反向顺序进行排序，最新的恢复点位于索引 **0**处。
+* 数组按时间的反向顺序进行排序，最新的恢复点位于索引 **0** 处。
 * 使用标准 PowerShell 数组索引选取恢复点。
 * 在此示例中， **$rp [0]** 选择最新的恢复点。
 
@@ -68,7 +68,7 @@ BackupManagementType : AzureStorage
 * **TargetStorageAccountName**：将备份的内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 * **TargetFileShareName**：要将备份内容还原到的目标存储帐户中的文件共享。
 * **TargetFolder**：要将数据还原到的文件共享上的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”********。
+* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”。
 
 结合如下所示的参数运行 cmdlet：
 
@@ -91,9 +91,9 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 * **TargetStorageAccountName**：将备份的内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 * **TargetFileShareName**：要将备份内容还原到的目标存储帐户中的文件共享。
 * **TargetFolder**：要将数据还原到的文件共享上的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **SourceFilePath**：文件共享中要还原的文件的绝对路径（以字符串形式）。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同****。
-* **SourceFileType**：是否选择目录或文件。 接受“目录”或“文件”********。
-* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”********。
+* **SourceFilePath**：文件共享中要还原的文件的绝对路径（以字符串形式）。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同。
+* **SourceFileType**：是否选择目录或文件。 接受“目录”或“文件”。
+* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”。
 
 其他参数（SourceFilePath 和 SourceFileType）只与要还原的单个文件相关。
 
@@ -105,7 +105,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccount
 
 ## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>将 Azure 文件共享和文件还原到原始位置
 
-在还原到原始位置时，无需指定目的地和目标相关的参数。 仅“ResolveConflict”必须提供****。
+在还原到原始位置时，无需指定目的地和目标相关的参数。 仅“ResolveConflict”必须提供。
 
 ### <a name="overwrite-an-azure-file-share"></a>覆盖 Azure 文件共享
 
@@ -121,7 +121,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>将多个文件或文件夹还原到原始或备用位置
 
-通过将你想要还原的所有文件或文件夹的路径传递为**MultipleSourceFilePath**参数的值，使用[AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem)命令。
+通过将你想要还原的所有文件或文件夹的路径传递为 **MultipleSourceFilePath** 参数的值，使用 [AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem)命令。
 
 ### <a name="restore-multiple-files"></a>还原多个文件
 

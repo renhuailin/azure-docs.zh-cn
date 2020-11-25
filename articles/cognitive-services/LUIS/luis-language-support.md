@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541384"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021565"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -22,13 +22,13 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 ## <a name="multi-language-luis-apps"></a>多语言 LUIS 应用
 
-如果需要多语言 LUIS 客户端应用程序（例如聊天机器人），可通过几种方法实现。 如果 LUIS 支持所有语言，则需面向每种语言开发一个 LUIS 应用。 每个 LUIS 应用都具有唯一的应用 ID 和终结点日志。 如果需要为 LUIS 不支持的语言提供语言理解，则可以使用 [转换器服务](../Translator/translator-info-overview.md) 将查询文本转换为受支持的语言，将查询文本提交到 LUIS 终结点，并接收生成的分数。
+如果需要多语言 LUIS 客户端应用程序（例如聊天机器人），可通过几种方法实现。 如果 LUIS 支持所有语言，则需面向每种语言开发一个 LUIS 应用。 每个 LUIS 应用都具有唯一的应用 ID 和终结点日志。 如果需要为 LUIS 不支持的语言提供语言理解，可使用[翻译器服务](../Translator/translator-info-overview.md)将言语翻译成受支持的语言，接着将言语提交到 LUIS 终结点，然后接收生成的分数。
 
 ## <a name="languages-supported"></a>支持的语言
 
 LUIS 理解以下语言：
 
-| 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
+| 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 英语（美国） |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ LUIS 理解以下语言：
 请参阅语音[支持的语言](../speech-service/speech-to-text.md)，了解语音听写模式语言。
 
 ### <a name="bing-spell-check-supported-languages"></a>必应拼写检查支持的语言
-请参阅必应拼写检查[支持的语言](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)，了解支持的语言和状态。
+请参阅必应拼写检查[支持的语言](../bing-spell-check/language-support.md)，了解支持的语言和状态。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>应用程序中的罕见字词或外来字词
 在 `en-us` 区域性中，LUIS 可学习区分大多数英文字词，包括俚语。 在 `zh-cn` 区域性中，LUIS 可学习区分大多数中文字符。 如果在 `en-us` 或 `zh-cn` 中使用一个罕见字词或字符，并且 LUIS 似乎无法识别该字词或字符，则可将该字词或字符添加到[短语列表功能](luis-how-to-add-features.md)。 例如，应将超出应用程序区域性的字词（即外来字词）添加到短语列表功能。
@@ -112,9 +112,9 @@ LUIS 理解以下语言：
 |环境|版本|目的|
 |--|--|--|
 |德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
-|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 为查询文本，则它仍是一个令牌。 因此 `krankenwagen` 标记为单个实体。 |
+|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 作为言语，则它仍然是单个标记。 因此 `krankenwagen` 标记为单个实体。 |
 |荷兰语<br>`nl-nl`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ik ga naar de kleuterschool` 作为话语，它将转换为 `Ik ga naar de kleuter school`。 允许将 `kleuter` 和 `school` 分别标记为不同的实体。|
-|荷兰语<br>`nl-nl`|1.0.1|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ik ga naar de kleuterschool` 为查询文本，则它仍是一个令牌。 因此 `kleuterschool` 标记为单个实体。 |
+|荷兰语<br>`nl-nl`|1.0.1|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ik ga naar de kleuterschool` 作为言语，则它仍然是单个标记。 因此 `kleuterschool` 标记为单个实体。 |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之间迁移

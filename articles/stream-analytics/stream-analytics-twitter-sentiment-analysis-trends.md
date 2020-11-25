@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 0941e3d5141b5b8841f5d37e3db0d0b1b1474547
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130266"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019814"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -207,10 +207,10 @@ ms.locfileid: "93130266"
 
 2. 在“输出”页面中，单击“+&nbsp; 添加”和“Blob 存储/Data Lake Storage Gen2”  ：
 
-   * **输出别名** ：使用名称 `TwitterStream-Output`。 
-   * **导入选项** ：选择“从订阅选择存储”。
-   * **存储帐户** ： 选择存储帐户。
-   * **容器** ： 选择“新建”，并输入 `socialtwitter`。
+   * **输出别名**：使用名称 `TwitterStream-Output`。 
+   * **导入选项**：选择“从订阅选择存储”。
+   * **存储帐户**： 选择存储帐户。
+   * **容器**： 选择“新建”，并输入 `socialtwitter`。
    
 4. 选择“保存”。   
 

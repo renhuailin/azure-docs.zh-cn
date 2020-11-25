@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870708"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021974"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -29,7 +29,7 @@ ms.locfileid: "88870708"
 
 ### <a name="speech-to-text"></a>语音转文本
 
-[语音转文本](speech-to-text.md)（也称为“语音识别”**）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
+[语音转文本](speech-to-text.md)（也称为“语音识别”）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](./get-started-speech-to-text.md)。
 
 可在以下平台上使用语音识别 (SR)、短语列表、意向、翻译和本地容器：
 
@@ -44,7 +44,7 @@ ms.locfileid: "88870708"
 
 ### <a name="text-to-speech"></a>文本转语音
 
-[文本转语音](text-to-speech.md)（也称为“语音合成”**）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
+[文本转语音](text-to-speech.md)（也称为“语音合成”）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
 
 可在以下平台上使用文本转语音 (TTS)：
 
@@ -68,9 +68,9 @@ ms.locfileid: "88870708"
 
 #### <a name="keyword-spotting"></a>关键字发现
 
-语音 SDK 支持 [关键字发现](speech-devices-sdk-create-kws.md) 的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
+语音 SDK 支持 [关键字发现](./custom-keyword-basics.md) 的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
 
-**关键字发现 (KWS) ** 可在以下平台上使用：
+**关键字发现 (KWS)** 可在以下平台上使用：
 
   - C++/Windows 和 Linux
   - C#/Windows 和 Linux
@@ -180,4 +180,4 @@ ms.locfileid: "88870708"
 ## <a name="next-steps"></a>后续步骤
 
 * [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [了解如何在 C# 中识别语音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

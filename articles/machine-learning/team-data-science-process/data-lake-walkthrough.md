@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321257"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021446"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](./index.yml) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -48,7 +48,7 @@ Data Lake Analytics 也是 Cortana 分析套件的重要部分，可与 Azure Sy
 Azure 机器学习工作室（经典）用于通过以下两种方法生成和部署预测模型：首先使用 Python 脚本，然后使用 HDInsight (Hadoop) 群集上的 Hive 表。
 
 ### <a name="scripts"></a>脚本
-本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本** 和 **Jupyter Notebook** 。
+本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本** 和 **Jupyter Notebook**。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读这些主题前，必须具有：
@@ -141,7 +141,7 @@ Azure 机器学习工作室（经典）用于通过以下两种方法生成和�
 * [数据采样](#sample)
 * [运行 U-SQL 作业](#run)
 
-此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本** 。
+此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**。
 
 要执行 U-SQL，请打开 Visual Studio，单击“文件”-->“新建”-->“项目”，选择“U-SQL 项目”，对其进行命名，并将其保存到文件夹。
 
@@ -156,7 +156,7 @@ Azure 机器学习工作室（经典）用于通过以下两种方法生成和�
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>数据引入：从公共 Blob 读入数据
 
-将 Azure blob 中数据的位置引用为 **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name** ，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本的 wasb 地址中的 container\_name\@blob\_storage\_account\_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data\_\{\*\}.csv** 读入所有 12 个行程文件。
+将 Azure blob 中数据的位置引用为 **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本的 wasb 地址中的 container\_name\@blob\_storage\_account\_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data\_\{\*\}.csv** 读入所有 12 个行程文件。
 
 ```sql
 ///Read in Trip data
@@ -723,7 +723,7 @@ LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder
 现在可以通过 Azure 机器学习生成和部署预测是否为行程支付小费的模型。 分层采样数据可在二进制分类（是否支付小费）问题中使用。 可通过 Azure 机器学习工作室生成和部署使用多类分类 (tip_class) 和回归 (tip_amount) 的预测模型，但是此处只介绍如何处理使用二进制分类模型的内容。
 
 1. 使用“数据输入和输出”部分的“导入数据”模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据模块](/azure/machine-learning/studio-module-reference/import-data)参考页。
-2. 在“属性”面板中，选择“Hive 查询”作为 **数据源** 。
+2. 在“属性”面板中，选择“Hive 查询”作为 **数据源**。
 3. 将以下 Hive 脚本粘贴到“Hive 数据库查询”编辑器
 
     ```hiveql

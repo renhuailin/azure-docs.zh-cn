@@ -6,11 +6,11 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020273"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>教程：在 3ds Max 中设置基于物理的渲染材料
 

@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021633"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -61,7 +61,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 永久卷声明 (PVC) 用于基于存储类自动预配存储。 在这种情况下，PVC 可以使用预先创建的存储类之一创建标准或高级 Azure 托管磁盘。
 
-创建名为 `azure-premium.yaml` 的文件，并将其复制到以下清单中。 该声明请求名为 `azure-managed-disk`、大小为 *5 GB* 、具有 *ReadWriteOnce* 访问权限的磁盘。 *managed-premium* 存储类指定为存储类。
+创建名为 `azure-premium.yaml` 的文件，并将其复制到以下清单中。 该声明请求名为 `azure-managed-disk`、大小为 *5 GB*、具有 *ReadWriteOnce* 访问权限的磁盘。 *managed-premium* 存储类指定为存储类。
 
 ```yaml
 apiVersion: v1
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> 若要创建使用标准存储的磁盘，请使用 `storageClassName: default` 而不是 *managed-premium* 。
+> 若要创建使用标准存储的磁盘，请使用 `storageClassName: default` 而不是 *managed-premium*。
 
 使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明，并指定 azure-premium.yaml 文件：
 
@@ -159,7 +159,7 @@ Events:
 
 若要备份持久卷中的数据，请为该卷的托管磁盘创建快照。 然后，可以使用此快照创建还原的磁盘，并通过还原数据的方式附加到 Pod。
 
-首先，使用 `kubectl get pvc` 命令获取卷名称，例如，获取 PVC 名称 *azure-managed-disk* ：
+首先，使用 `kubectl get pvc` 命令获取卷名称，例如，获取 PVC 名称 *azure-managed-disk*：
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-运行 [az snapshot create][az-snapshot-create]，使用磁盘 ID 创建快照磁盘。 以下示例在 AKS 群集所在的同一资源组 ( *MC_myResourceGroup_myAKSCluster_eastus* ) 中创建名为 *pvcSnapshot* 的快照。 如果在 AKS 群集无权访问的资源组中创建快照和还原磁盘，可能会遇到权限问题。
+运行 [az snapshot create][az-snapshot-create]，使用磁盘 ID 创建快照磁盘。 以下示例在 AKS 群集所在的同一资源组 (*MC_myResourceGroup_myAKSCluster_eastus*) 中创建名为 *pvcSnapshot* 的快照。 如果在 AKS 群集无权访问的资源组中创建快照和还原磁盘，可能会遇到权限问题。
 
 ```azurecli-interactive
 $ az snapshot create \

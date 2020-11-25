@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323675"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020579"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-在此查询中，如果 *\<datetime field>* 的模式类似于 *03/26/2015 12:04:39* ，则 *\<pattern of the datetime field>* 应为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
+在此查询中，如果 *\<datetime field>* 的模式类似于 *03/26/2015 12:04:39*，则 *\<pattern of the datetime field>* 应为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
 本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中嵌入的数学函数来生成功能。
 
-此查询中使用的字段为提取和减少位置的 GPS 坐标，名为 *提取\_经度* 、 *提取\_纬度* 、 *减少\_经度* 、 *减少\_纬度* 。 计算提取和减少坐标之间直接距离的查询为：
+此查询中使用的字段为提取和减少位置的 GPS 坐标，名为 *提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
 
 ```hiveql
 set R=3959;
@@ -144,7 +144,7 @@ and dropoff_latitude between 30 and 90
 limit 10;
 ```
 
-计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 就是 lat_or_lonpi/180，它将度数转换为弧度  。 此处， *lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
+计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 就是 lat_or_lonpi/180，它将度数转换为弧度  。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
 
 ![创建工作区](./media/create-features-hive/atan2new.png)
 

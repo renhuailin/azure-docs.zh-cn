@@ -4,11 +4,11 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625364"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021239"
 ---
 本指南提供说明和示例代码，以帮助你开始使用适用于 Go 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 

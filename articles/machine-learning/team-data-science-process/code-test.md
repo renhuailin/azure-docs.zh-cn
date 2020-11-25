@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312682"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020596"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -134,7 +134,7 @@ ms.locfileid: "93312682"
 
     f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”  作为类型。 
     
-    在“内联脚本”下的框中，可以键入 **python test1.py** 。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
+    在“内联脚本”下的框中，可以键入 **python test1.py**。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
     
     ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
 

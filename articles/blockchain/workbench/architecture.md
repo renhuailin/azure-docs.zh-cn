@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87049176"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021599"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
@@ -78,7 +78,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="transaction-builder-and-signer"></a>事务生成器和签名器
 
-如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。** 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。** 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
+如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
  Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 
@@ -93,7 +93,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 例如，SQL 使用者监视事件，使用事件，并用包含的值填充数据库。 使用复制可在链外存储中重新创建链中数据的副本。
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL 数据库
 
 附加到区块链工作台的数据库存储协定定义、配置元数据和存储在区块链中的数据的 SQL 可访问副本。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
 

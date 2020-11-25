@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127427"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019848"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。
@@ -60,7 +60,7 @@ parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置�
 ## <a name="command-line-tool"></a>命令行工具
 
 ### <a name="build-the-project"></a>生成项目
-NuGet 包具有一个名为 SA.exe 的命令行工具  。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
+NuGet 包具有一个名为 SA.exe 的命令行工具。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
 
 默认情况下，部署文件位于当前目录下。 可通过使用以下 -OutputPath 参数指定输出路径：
 
@@ -70,7 +70,7 @@ NuGet 包具有一个名为 SA.exe 的命令行工具  。 该工具支持在任
 
 ### <a name="test-the-script-locally"></a>在本地测试脚本
 
-如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试  。 输出结果位于当前目录下。
+如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试。 输出结果位于当前目录下。
  
 ```
 localrun -Project [ProjectFullPath]
@@ -78,7 +78,7 @@ localrun -Project [ProjectFullPath]
 
 ### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>生成与流分析 PowerShell API 配合使用的作业定义文件
 
- arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
+arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
 
 ```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]

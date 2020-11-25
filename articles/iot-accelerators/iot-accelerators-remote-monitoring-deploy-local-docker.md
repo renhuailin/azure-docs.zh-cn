@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73888836"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020225"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
@@ -90,15 +90,15 @@ docker rmi <list_of_images>
 遵循以下步骤启动流分析作业：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。****
-1. 在流分析作业的“概述”页上，单击“启动”按钮。******** 然后单击“启动”以立即启动该作业****。
+1. 导航到为解决方案创建的 **资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
+1. 在资源列表中单击“流分析作业”。
+1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
 若要访问远程监视解决方案仪表板，请在浏览器中导航到 `http://localhost:8080`。 现在可以使用 Web UI 和本地微服务。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 为避免产生不必要的费用，在完成测试后，请从 Azure 订阅中删除云服务。 若要删除这些服务，请导航到 [Azure 门户](https://ms.portal.azure.com)，并删除 **start.cmd** 脚本创建的资源组。
 

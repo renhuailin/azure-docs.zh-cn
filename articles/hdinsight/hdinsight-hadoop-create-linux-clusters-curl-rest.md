@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748737"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020615"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -248,7 +248,7 @@ Azure Resource Manager 模板是描述 **资源组** 及其包含的所有资源
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     此命令返回的值是 __对象 ID__ 。 保存此值。
+     此命令返回的值是 __对象 ID__。 保存此值。
 
 4. 使用 **对象 ID** 值向服务主体分配 **所有者** 角色。 使用前面获取的 **订阅 ID** 。
 

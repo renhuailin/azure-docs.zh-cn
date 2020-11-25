@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012392"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021055"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -49,7 +49,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 设置和初始化服务可执行文件所需的环境变量。 这并不仅限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
-有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅 [配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 

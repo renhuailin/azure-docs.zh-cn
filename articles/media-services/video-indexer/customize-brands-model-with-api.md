@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
 ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047284"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020460"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "87047284"
 [创建品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)API 会创建一个新的自定义品牌，并将其添加到指定帐户的自定义品牌模型中。
 
 > [!NOTE]
-> `enabled`如果将正文中的 (设置) 为 true，则会将该品牌置于视频索引器的*包含*列表中以进行检测。 如果将设置 `enabled` 为 false，则会将该品牌置于 *排除* 列表中，因此，视频索引器不会检测到它。
+> `enabled`如果将正文中的 (设置) 为 true，则会将该品牌置于视频索引器的 *包含* 列表中以进行检测。 如果将设置 `enabled` 为 false，则会将该品牌置于 *排除* 列表中，因此，视频索引器不会检测到它。
 
 可在正文中设置的一些其他参数：
 

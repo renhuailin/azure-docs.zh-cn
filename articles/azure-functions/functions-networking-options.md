@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
 ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636463"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020974"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -85,7 +85,7 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a> (预览，将存储帐户限制为虚拟网络) 
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>将存储帐户限制到虚拟网络（预览版）中
 
 创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此预览功能目前仅适用于西欧中的 Windows 高级版计划。  使用限制为专用网络的存储帐户设置函数：
 
@@ -93,25 +93,25 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 > 仅限在西欧中使用 Windows 的高级功能限制存储帐户
 
 1. 使用未启用服务终结点的存储帐户创建一个函数。
-1. 将函数配置为连接到虚拟网络。
-1. 创建或配置其他存储帐户。  这将是我们用服务终结点保护的存储帐户，并连接我们的函数。
+1. 将该函数配置为连接到你的虚拟网络。
+1. 创建或配置另一存储帐户。  此存储帐户将是我们使用服务终结点保护的存储帐户，可连接我们的函数。
 1. 在受保护的存储帐户中[创建文件共享](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
-1. 为存储帐户启用服务终结点或专用终结点。  
+1. 为此存储帐户启用服务终结点或专用终结点。  
     * 如果使用专用终结点连接，则存储帐户将需要用于和子资源的专用终结点 `file` `blob` 。  如果使用某些功能（如 Durable Functions），则还 `queue` 需要 `table` 通过专用终结点连接来访问。
     * 如果使用服务终结点，请为存储帐户启用专用于 function app 的子网。
-1.  (可选) 将文件和 blob 内容从函数应用存储帐户复制到受保护的存储帐户和文件共享。
+1. （可选）将函数应用存储帐户中的文件和 blob 内容复制到受保护的存储帐户和文件共享。
 1. 复制此存储帐户的连接字符串。
-1. 将函数应用的 " **配置** " 下的 **应用程序设置** 更新为以下内容：
-    - `AzureWebJobsStorage` 到受保护的存储帐户的连接字符串。
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 到受保护的存储帐户的连接字符串。
-    - `WEBSITE_CONTENTSHARE` 在受保护的存储帐户中创建的文件共享的名称。
-    - 使用的名称和值创建一个新设置 `WEBSITE_CONTENTOVERVNET` `1` 。
+1. 将函数应用的“配置”下的“应用程序设置”更新为以下内容：
+    - 将 `AzureWebJobsStorage` 更新为受保护存储帐户的连接字符串。
+    - 将 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 更新为受保护存储帐户的连接字符串。
+    - 将 `WEBSITE_CONTENTSHARE` 更新为在受保护存储帐户中创建的文件共享的名称。
+    - 使用名称 `WEBSITE_CONTENTOVERVNET` 和值 `1` 创建新设置。
     - 如果存储帐户使用的是专用终结点连接，请验证或添加以下设置
         - `WEBSITE_VNET_ROUTE_ALL` 值为的 `1` 。
         - `WEBSITE_DNS_SERVER` 值为 `168.63.129.16` 
 1. 保存应用程序设置。  
 
-函数应用将重新启动，并将立即连接到受保护的存储帐户。
+函数应用会重启，并会立即连接到受保护的存储帐户。
 
 ## <a name="use-key-vault-references"></a>使用 Key Vault 引用
 
@@ -180,8 +180,8 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 ## <a name="automation"></a>自动化
 以下 API 可让你以编程方式管理区域虚拟网络集成：
 
-+ **Azure CLI** ：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令添加、列出或删除区域虚拟网络集成。  
-+ **ARM 模板** ：可以通过使用 Azure 资源管理器模板来启用区域虚拟网络集成。 有关完整示例，请参阅[此 Functions 快速入门模板](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
++ **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令添加、列出或删除区域虚拟网络集成。  
++ **ARM 模板**：可以通过使用 Azure 资源管理器模板来启用区域虚拟网络集成。 有关完整示例，请参阅[此 Functions 快速入门模板](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>故障排除
 

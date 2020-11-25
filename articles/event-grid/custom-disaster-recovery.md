@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020137"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。

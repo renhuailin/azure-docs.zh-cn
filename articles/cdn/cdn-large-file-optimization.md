@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148707"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020715"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 
@@ -34,11 +34,11 @@ ms.locfileid: "92148707"
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>使用 Microsoft 的 Azure CDN 优化大型文件分发
 
-**Microsoft 推出的 Azure CDN 标准版**终结点可分发大型文件，对于文件大小不设限制。 默认情况下，会启用其他功能以更快地交付大型文件。
+**Microsoft 推出的 Azure CDN 标准版** 终结点可分发大型文件，对于文件大小不设限制。 默认情况下，会启用其他功能以更快地交付大型文件。
 
 ### <a name="object-chunking"></a>对象区块 
 
-**Microsoft 推出的 Azure CDN 标准版**使用名为“对象区块”的技术。 当请求大型文件时，CDN 会从源检索文件的较小部分。 在 CDN POP 服务器收到完整的或字节范围的文件请求后，CDN 边缘服务器会以 8 MB 大小的块的形式从源请求文件。 
+**Microsoft 推出的 Azure CDN 标准版** 使用名为“对象区块”的技术。 当请求大型文件时，CDN 会从源检索文件的较小部分。 在 CDN POP 服务器收到完整的或字节范围的文件请求后，CDN 边缘服务器会以 8 MB 大小的块的形式从源请求文件。 
 
 区块到达 CDN 边缘后，会立即缓存并提供给用户。 然后 CDN 会并行预提取下一个区块。 此预提取可确保内容先于用户一个区块，这可以减少延迟。 此过程将继续，直到整个文件下载完成（如果已请求），所有字节范围都可用（如果已请求），或客户端终止连接。 
 
@@ -52,7 +52,7 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>使用 Verizon 的 Azure CDN 优化大型文件分发
 
-**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**终结点可分发大型文件，对于文件大小不设限制。 默认情况下，会启用其他功能以更快地交付大型文件。
+**Verizon 推出的 Azure CDN 标准版** 和 **Verizon 推出的 Azure CDN 高级版** 终结点可分发大型文件，对于文件大小不设限制。 默认情况下，会启用其他功能以更快地交付大型文件。
 
 ### <a name="complete-cache-fill"></a>完整缓存填充
 
@@ -60,7 +60,7 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 完整缓存填充最适用于大型资产。 通常情况下，用户不会从头到尾下载这些资产。 而是使用渐进式下载。 默认行为会强制边缘服务器启动对源服务器中资产的后台提取。 然后，资产位于边缘服务器的本地缓存中。 缓存整个对象后，边缘服务器会执行已缓存对象的 CDN 字节范围请求。
 
-可通过 **Verizon 推出的 Azure CDN 高级版**中的规则引擎禁用默认行为。
+可通过 **Verizon 推出的 Azure CDN 高级版** 中的规则引擎禁用默认行为。
 
 ### <a name="peer-cache-fill-hot-filing"></a>对等缓存填充的热填充
 
@@ -68,26 +68,26 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 ### <a name="conditions-for-large-file-optimization"></a>大型文件优化的条件
 
-使用常规 Web 分发优化类型时，会默认启用 **Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**的大型文件优化功能。 对文件大小上限没有任何限制。 
+使用常规 Web 分发优化类型时，会默认启用 **Verizon 推出的 Azure CDN 标准版** 和 **Verizon 推出的 Azure CDN 高级版** 的大型文件优化功能。 对文件大小上限没有任何限制。 
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>使用 Akamai 的 Azure CDN 标准版优化大型文件分发
 
-**Akamai 推出的 Azure CDN 标准版**配置文件终结点提供一种功能，可在全球范围内向用户高效地分发大型文件。 该功能可减少延迟，因为它减少了源服务器上的负载。
+**Akamai 推出的 Azure CDN 标准版** 配置文件终结点提供一种功能，可在全球范围内向用户高效地分发大型文件。 该功能可减少延迟，因为它减少了源服务器上的负载。
 
-大型文件优化类型功能可启用网络优化和配置，以便更快、更敏捷地交付大型文件。 **Akamai 推出的 Azure CDN 标准版**终结点的常规 Web 分发只能缓存大小不到 1.8 GB 的文件，并且只能传输（而非缓存）不大于 150 GB 的文件。 而大型文件优化可缓存最大 150 GB 的文件。
+大型文件优化类型功能可启用网络优化和配置，以便更快、更敏捷地交付大型文件。 **Akamai 推出的 Azure CDN 标准版** 终结点的常规 Web 分发只能缓存大小不到 1.8 GB 的文件，并且只能传输（而非缓存）不大于 150 GB 的文件。 而大型文件优化可缓存最大 150 GB 的文件。
 
 当满足某些条件时，大型文件优化会很有效。 这些条件包括源服务器的运行方式以及所请求文件的大小和类型。 
 
 ### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>配置 Akamai CDN 终结点以优化大型文件的分发
 
-可以配置 **Akamai 推出的 Azure CDN 标准版**终结点，以优化通过 Azure 门户进行的大型文件的分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版**配置文件的分发过程：
+可以配置 **Akamai 推出的 Azure CDN 标准版** 终结点，以优化通过 Azure 门户进行的大型文件的分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版** 配置文件的分发过程：
 
-1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”**** 页上选择“终结点”****。
+1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”页上选择“终结点”。
 
     ![新建终结点](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. 在“针对以下项优化”**** 下拉列表中，选择“大型文件下载”****。
+2. 在“针对以下项优化”下拉列表中，选择“大型文件下载”。
 
     ![选择的“大型文件优化”](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -96,7 +96,7 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 ### <a name="object-chunking"></a>对象区块 
 
-**Akamai 推出的 Azure CDN 标准版**的大型文件优化使用名为“对象区块”的技术。 当请求大型文件时，CDN 会从源检索文件的较小部分。 CDN POP 服务器收到完整的或字节范围的文件请求后，会检查文件类型是否支持此优化。 还会检查文件类型是否满足文件大小要求。 如果文件大小超过 10 MB，则 CDN 边缘服务器会以 2 MB 的区块为单位从源请求文件。 
+**Akamai 推出的 Azure CDN 标准版** 的大型文件优化使用名为“对象区块”的技术。 当请求大型文件时，CDN 会从源检索文件的较小部分。 CDN POP 服务器收到完整的或字节范围的文件请求后，会检查文件类型是否支持此优化。 还会检查文件类型是否满足文件大小要求。 如果文件大小超过 10 MB，则 CDN 边缘服务器会以 2 MB 的区块为单位从源请求文件。 
 
 区块到达 CDN 边缘后，会立即缓存并提供给用户。 然后 CDN 会并行预提取下一个区块。 此预提取可确保内容先于用户一个区块，这可以减少延迟。 此过程将继续，直到整个文件下载完成（如果已请求），所有字节范围都可用（如果已请求），或客户端终止连接。 
 
@@ -104,10 +104,10 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文件。 文件或字节范围的后续请求将从 CDN 缓存提供。 如果未在 CDN 上缓存所有区块，将使用预提取从源请求区块。 此优化取决于源服务器能否支持字节范围请求；如果源服务器不支持字节范围请求，则此优化无效。
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>缓存
 大型文件优化使用与常规 Web 交付不同的默认缓存过期时间。 它可根据 HTTP 响应代码区分正缓存和负缓存。 如果源服务器通过响应中的 Cache-Control 或 Expires 标头指定了过期时间，则 CDN 将遵循该值。 如果源未指定此时间，并且该文件与此优化类型的类型和文件条件相符，则 CDN 会针对大型文件优化使用默认值。 否则，CDN 会使用常规 Web 交付的默认值。
 
-| Caching  | 常规 Web | 大型文件优化 
+| 缓存  | 常规 Web | 大型文件优化 
 --- | --- | --- 
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 天  
 缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84343194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020409"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium Azure CDN 规则引擎功能
 
@@ -26,7 +26,7 @@ ms.locfileid: "84343194"
 
 * [访问](#access)
 * [缓存](#caching)
-* Comment 
+* [注释](#comment)
 * [标头](#headers)
 * [日志](#logs)
 * [优化](#optimize)
@@ -35,7 +35,7 @@ ms.locfileid: "84343194"
 * [URL](#url)
 * [Web 应用程序防火墙](#waf)
 
-### <a name="access"></a><a name="access"></a>访问
+### <a name="access"></a><a name="access"></a>Access
 
 以下功能旨在控制对内容的访问。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84343194"
 | [带宽限制](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | 限制边缘服务器提供的响应的带宽。 |
 | [绕过缓存](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | 确定请求是否可以利用我们的缓存技术。 |
 | [Cache-Control 标头处理](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  在“外部最大有效期”功能启用时，控制边缘服务器生成 Cache-Control 标头。 |
-| [Cache-Key 查询字符串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 确定 **缓存键*** 是否将包括或排除与请求关联的查询字符串参数。 <br> _* 唯一标识用于缓存目的的资产的相对路径。 在检查缓存内容时，边缘服务器使用此相对路径。 默认情况下，缓存键将不包含查询字符串参数。_ |
+| [Cache-Key 查询字符串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 确定 **缓存键** _ 是包含还是排除与请求关联的查询字符串参数。 <br> __ 唯一标识用于缓存目的的资产的相对路径。  在检查缓存内容时，边缘服务器使用此相对路径。  默认情况下，缓存项将不包含查询字符串 parameters。_ |
 | [Cache-Key 重写](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | 重写与请求关联的 cache-key。 |
 | [完成缓存填充](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | 确定当请求导致边缘服务器部分缓存未命中时会发生什么情况。 |
 | [压缩文件类型](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | 定义会在服务器上压缩的文件的格式。 | 
@@ -82,7 +82,7 @@ ms.locfileid: "84343194"
 
 **[返回到顶部](#top)**
 
-### <a name="comment"></a><a name="comment"></a>注释
+### <a name="comment"></a><a name="comment"></a>评论
 
 注释功能允许在规则中添加注释。
 
@@ -124,7 +124,7 @@ ms.locfileid: "84343194"
 
 **[返回到顶部](#top)**
 
-### <a name="origin"></a><a name="origin"></a>格式
+### <a name="origin"></a><a name="origin"></a>源
 
 以下功能旨在控制 CDN 与源服务器的通信方式。
 

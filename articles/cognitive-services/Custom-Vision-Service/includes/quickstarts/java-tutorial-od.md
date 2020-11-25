@@ -5,11 +5,11 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
 ms.openlocfilehash: f0dbe64d6a44d7712d83c018c4db72fac871a838
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625218"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021237"
 ---
 开始使用适用于 Java 的自定义视觉客户端库来构建对象检测模型。 请按照以下步骤安装程序包并试用基本任务的示例代码。 使用此示例作为模板来构建你自己的图像识别应用。
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020919"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "91758657"
 
 |  | 构建时 | 运行时 |
 | --- | --- | --- |
-| **请求 & 异常** |是 |是 |
+| **请求和异常** |是 |是 |
 | **[更详细异常](./asp-net-exceptions.md)** | |是 |
 | **[依赖项诊断](./asp-net-dependencies.md)** |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
 | **[系统性能计数器](./performance-counters.md)** |是 |是 |

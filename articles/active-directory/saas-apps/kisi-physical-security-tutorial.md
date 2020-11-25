@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.openlocfilehash: a65d3f24fdcc684d5a47c19497d36b091764406b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459010"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kisi Physical Security 的集成
 

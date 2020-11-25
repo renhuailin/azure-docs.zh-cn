@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020052"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 完成后，这两个命令将返回 `Login Succeeded`。
 
 > [!TIP]
-> 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io* 。
+> 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io*。
 
 ## <a name="pull-the-official-nginx-image"></a>提取正式的 Nginx 映像
 

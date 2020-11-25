@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020749"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Azure AD 的用户预配
 本教程旨在说明需要执行哪些步骤才能将工作人员数据从 SuccessFactors Employee Central 预配到 Azure Active Directory，以及选择性地将电子邮件地址写回到 SuccessFactors。 

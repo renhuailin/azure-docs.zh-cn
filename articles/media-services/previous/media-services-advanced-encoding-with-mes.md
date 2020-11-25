@@ -16,11 +16,11 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264804"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021140"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码
 
@@ -264,7 +264,7 @@ ms.locfileid: "89264804"
 ## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
 本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 编码器还可用于剪辑或剪裁从实时流捕获或存档的资产–此 [博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了有关此功能的详细信息。
 
-若要裁剪视频，可以使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
+若要裁剪视频，可以使用 [此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON 预设
 
@@ -389,7 +389,7 @@ ms.locfileid: "89264804"
 ```
 
 ### <a name="xml-preset"></a>XML 预设
-若要剪裁视频，可以使用[此处](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。
+若要剪裁视频，可以使用 [此处](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -512,7 +512,7 @@ ms.locfileid: "89264804"
 
 Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
-除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
+除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是 **主** 文件。
 
 如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **UploadMediaFilesFromFolder** 函数从文件夹上传文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
@@ -1053,7 +1053,7 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 ```
 
 ## <a name="rotate-a-video"></a><a id="rotate_video"></a>旋转视频
-[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在[此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
+[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在 [此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
 
 ### <a name="json-preset"></a>JSON 预设
 

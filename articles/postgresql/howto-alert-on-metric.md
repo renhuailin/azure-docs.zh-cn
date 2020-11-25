@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: f37dcc1d092de10c51c0492bbc8671047e4a90a3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020103"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 门户设置针对 Azure Database for PostgreSQL（单一服务器）指标的警报
 
@@ -36,7 +36,7 @@ ms.locfileid: "92546613"
 
    :::image type="content" source="./media/howto-alert-on-metric/2-alert-rules.png" alt-text="选择警报规则":::
 
-3. 选择“添加指标警报”（+ 图标）。
+3. 选择“添加指标警报”（+ 图标）  。
 
 4. 随即打开“创建规则”页面，如下所示  。 填写所需信息：
 
@@ -48,11 +48,11 @@ ms.locfileid: "92546613"
    
    :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率** 。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率**。
    
    完成后选择“完成”  。
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="突出显示警报逻辑部分和 &quot;完成&quot; 按钮的屏幕截图。":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="突出显示警报逻辑部分和“完成”按钮的屏幕截图。":::
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
@@ -66,7 +66,7 @@ ms.locfileid: "92546613"
 
     完成后选择“确定”  。
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="显示如何添加新操作组的屏幕截图。":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="显示如何添加新的操作组的屏幕截图。":::
 
 11. 指定预警规则名称、说明和严重性。
 

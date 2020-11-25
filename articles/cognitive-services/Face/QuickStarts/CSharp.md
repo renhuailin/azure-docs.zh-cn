@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f15fbc340aafa325f772a1fd50a2129fa5044c47
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858364"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020868"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -33,7 +33,7 @@ ms.locfileid: "91858364"
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。
+1. 在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
 
 ## <a name="add-face-detection-code"></a>添加人脸检测代码
