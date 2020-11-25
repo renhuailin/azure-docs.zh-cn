@@ -4,11 +4,11 @@ description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993646"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -190,7 +190,7 @@ _ *责任：** Customer
 
 **责任：** 面向
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 **指南：** 当环境中发生可疑或不安全的活动时，使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)  
@@ -210,7 +210,7 @@ _ *责任：** Customer
 **责任：** 面向
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
-**指南：** 使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南：** 使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
@@ -228,7 +228,7 @@ _ *责任：** Customer
 
 **责任：** 面向
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
 **指南：** 你有权访问 Azure Active Directory (Azure AD) 登录活动、审核和风险事件日志源，这允许你与任何安全信息和事件管理 (SIEM) /Monitoring 工具集成。
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置警报。
@@ -701,7 +701,7 @@ _ *Azure 安全中心监视：** 不适用
 **责任：** 面向
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
-**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
@@ -713,7 +713,7 @@ _ *Azure 安全中心监视：** 不适用
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 **指南：** 实现凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-- 如何设置凭据扫描程序
+- 如何设置凭据扫描器
 
 **Azure 安全中心监视：** 不适用
 
@@ -739,7 +739,7 @@ _ *Azure 安全中心监视：** 不适用
 
 使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。
 
-- 了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware
+- 了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件
 - 了解 Azure 安全中心的数据服务威胁检测
 
 **Azure 安全中心监视：** 是的

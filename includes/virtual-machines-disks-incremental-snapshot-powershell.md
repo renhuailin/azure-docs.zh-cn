@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895a81df858e51a266cd87c96a161695a4bf2cc1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102482"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95992851"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -34,7 +34,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 安装之后，使用 `Connect-AzAccount` 登录到 PowerShell 会话。
 
-若要使用 Azure PowerShell 创建增量快照，请使用含有 `-Incremental` 参数的 [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) 设置配置，然后将其作为变量通过 `-Snapshot` 参数传递给 [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0)。
+若要使用 Azure PowerShell 创建增量快照，请使用含有 `-Incremental` 参数的 [New-AzSnapShotConfig](/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) 设置配置，然后将其作为变量通过 `-Snapshot` 参数传递给 [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0)。
 
 ```PowerShell
 $diskName = "yourDiskNameHere>"
@@ -71,7 +71,7 @@ $incrementalSnapshots
 
 ## <a name="resource-manager-template"></a>Resource Manager 模板
 
-还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为 2019-03-01 且增量属性也设置为 true****。 以下代码片段是使用资源管理器模板创建增量快照的示例：
+还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为 2019-03-01 且增量属性也设置为 true。 以下代码片段是使用资源管理器模板创建增量快照的示例：
 
 ```json
 {

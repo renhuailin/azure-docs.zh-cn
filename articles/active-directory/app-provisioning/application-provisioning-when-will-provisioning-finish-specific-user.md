@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994003"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -33,7 +33,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 - 连接器数据存储中的 **用户** 和 **组** 的数目。 当将对象添加到预配的作用域时，计数将增加。 如果用户已软删除或硬删除，则计数不会关闭，因为这样不会从连接器数据存储中删除对象。 在 CD[重置](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)后，将重新计算第一次同步 
 - " **查看审核日志** " 链接，可打开 Azure AD 设置日志，以获取有关用户预配服务运行的所有操作的详细信息（包括单个用户的预配状态） (参阅下面) 的 " [使用预配日志](#use-provisioning-logs-to-check-a-users-provisioning-status) " 部分。
 
-设置周期完成后，" **统计信息截止日期** " 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符，特定于租户中的应用。
+设置周期完成后，" **统计信息截止日期** " 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID** 唯一标识最新的设置周期。 **作业 ID** 是预配作业的唯一标识符，特定于租户中的应用。
 
 可以在 Azure 门户的 " **Azure Active Directory &gt; 企业应用程序" " &gt; \[ \] &gt; 预配** " 选项卡中查看设置进度。
 
@@ -43,7 +43,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 若要查看所选用户的预配状态，请参阅 Azure AD 中 [ (预览) 的设置日志 ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 用户预配服务运行的所有操作都记录在 Azure AD 预配日志中。 这包括对源系统和目标系统执行的所有读取和写入操作，以及每个操作期间读取或写入的用户数据。
 
-可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用**" "设置" " &gt; ** (预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+可以通过在 **Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 预配日志记录预配服务执行的所有操作，包括：
 
@@ -82,7 +82,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 - 最小分钟数 = 0.01 x [分配的用户、组和组成员的数目]
 - 最大分钟数 = 0.08 x [分配的用户、组和组成员的数目]
 
-影响完成 **初始周期**所花费时间的因素的摘要：
+影响完成 **初始周期** 所花费时间的因素的摘要：
 
 - 预配范围内用户和组的总数。
 

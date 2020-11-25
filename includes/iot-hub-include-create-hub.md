@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2144945647dc6b2e31e5593de3b6c8c0bf99a606
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85365137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993278"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -50,7 +50,7 @@ ms.locfileid: "85365137"
     - **IoT 中心单元**：每日每单位允许的消息数取决于中心的定价层。 例如，如果希望中心支持 700,000 条消息引入，请选择两个 S1 层单位。
     有关其他层选项的详细信息，请参阅[选择合适的 IoT 中心层](../articles/iot-hub/iot-hub-scaling.md)。
 
-    - **Azure 安全中心**：启用此功能可为 IoT 和设备添加额外的一层威胁防护。 此选项不可用于免费层的中心。 有关此功能的详细信息，请参阅[适用于 IoT 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
+    - **Azure 安全中心**：启用此功能可为 IoT 和设备添加额外的一层威胁防护。 此选项不可用于免费层的中心。 有关此功能的详细信息，请参阅[适用于 IoT 的 Azure 安全中心](/azure/asc-for-iot/)。
 
     - **高级设置** > **设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数中心只需要 4 个分区。
 

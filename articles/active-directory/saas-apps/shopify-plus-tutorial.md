@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: d7a5d160fa8a0209478fe81d2880e8956828350d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504705"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Shopify Plus 的集成
 
@@ -138,7 +138,7 @@ ms.locfileid: "92504705"
 
 要查看全部步骤，请参阅 [Shopify 有关设置 SAML 集成的文档](https://help.shopify.com/en/manual/shopify-plus/saml)。
 
-若要在“Shopify Plus”端配置单一登录，请从 Azure Active Directory 复制“应用联合元数据 URL” 。 然后，登录[组织管理员](https://shopify.plus)并转到“用户” > “安全性” 。 选择“设置配置”，然后将应用联合元数据 URL 粘贴到“标识提供者元数据 URL”部分中 ** 。 若要完成此步骤，请选择“添加”。
+若要在“Shopify Plus”端配置单一登录，请从 Azure Active Directory 复制“应用联合元数据 URL” 。 然后，登录[组织管理员](https://shopify.plus)并转到“用户” > “安全性” 。 选择“设置配置”，然后将应用联合元数据 URL 粘贴到“标识提供者元数据 URL”部分中 ****。 若要完成此步骤，请选择“添加”。
 
 ### <a name="create-shopify-plus-test-user"></a>创建 Shopify Plus 测试用户
 
@@ -151,7 +151,7 @@ ms.locfileid: "92504705"
 
 单独用户：
 1. 通过由 Azure AD 管理并在 Shopify Plus 中进行验证的电子邮件域，转到 Shopify Plus 中的单独用户页面。
-1. 在“SAML 身份验证”部分中，选择“编辑”，再选择“必需”，然后选择“保存” ** 。
+1. 在“SAML 身份验证”部分中，选择“编辑”，再选择“必需”，然后选择“保存”**** 。
 1. 测试此用户是否可以通过 IdP 启动和 SP 启动的流成功登录。
 
 对于电子邮件域下的所有用户：

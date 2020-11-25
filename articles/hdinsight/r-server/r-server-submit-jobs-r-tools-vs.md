@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993782"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -27,7 +27,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](/visualstu
 
     ![在 Visual Studio 2017 中安装 RTVS](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. 选择“数据科学和分析应用程序”  工作负载，然后选择“R 语言支持”  、“对 R 开发工具的运行时支持”  和“Microsoft R Client”  选项。
+2. 选择“数据科学和分析应用程序”工作负载，然后选择“R 语言支持”、“对 R 开发工具的运行时支持”和“Microsoft R Client”选项。
 
 3. 需要有用于 SSH 身份验证的公钥和私钥。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -37,14 +37,14 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](/visualstu
 5. 安装 [PuTTY](https://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
 
 6. 可以选择向 Visual Studio 环境应用数据科学设置，从而为 R 工具的工作区提供新的布局。
-   1. 若要保存当前的 Visual Studio 设置，请使用“工具”>“导入和导出设置”  命令，然后选择“导出选定的环境设置”  并指定文件名。 若要还原这些设置，请使用相同的命令，并选择“导入选定的环境设置”  。
+   1. 若要保存当前的 Visual Studio 设置，请使用“工具”>“导入和导出设置”命令，然后选择“导出选定的环境设置”并指定文件名。 若要还原这些设置，请使用相同的命令，并选择“导入选定的环境设置”。
 
-   2. 转到“R 工具”  菜单项，然后选择“数据科学设置...”  。
+   2. 转到“R 工具”菜单项，然后选择“数据科学设置...”。
 
        ![Visual Studio 数据科学设置](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”  命令。
+      > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”命令。
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法
 
@@ -111,17 +111,17 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](/visualstu
     ![成功的 rx 命令执行 ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
-    1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”  。
+    1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”。
 
         ![Azure HDInsight 存储帐户](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 选择群集的默认存储帐户，记下容器/目录名称。
 
-    3. 从存储帐户窗格的左侧菜单中选择“容器”  。
+    3. 从存储帐户窗格的左侧菜单中选择“容器”。
 
         ![Azure HDInsight 存储容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. 选择群集的容器名称，浏览到  ），然后依次选择“RevoShare”  、“newUser”  。 `people.json` 文件应显示在 `newUser` 文件夹中。
+    4. 选择群集的容器名称，浏览到 **user** 文件夹（可能需要单击列表底部的“加载更多”），然后依次选择“RevoShare”、“newUser”。 `people.json` 文件应显示在 `newUser` 文件夹中。
 
         ![HDInsight 复制的文件文件夹位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

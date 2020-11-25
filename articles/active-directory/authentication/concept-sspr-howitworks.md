@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363668"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994258"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -154,9 +154,9 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
-| 大于等于 1 | 1 | 能够重置或解锁**** |
-| 1 | 2 | 不可重置或解锁**** |
-| 2 或更大 | 2 | 能够重置或解锁**** |
+| 大于等于 1 | 1 | 能够重置或解锁 |
+| 1 | 2 | 不可重置或解锁 |
+| 2 或更大 | 2 | 能够重置或解锁 |
 
 更改可用的身份验证方法也可能会给用户带来问题。 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 
@@ -227,7 +227,7 @@ SSPR 在 Active Directory 中执行管理员发起的密码重置的等效操作
 所有企业到企业 (B2B) 配置完全支持密码重置和更改。 以下三种情况支持 B2B 用户密码重置：
 
 * **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 对于 Microsoft 365 客户，不会额外收费。
-* 通过自助注册**注册的用户**：如果与你合作的组织使用[自助注册](../enterprise-users/directory-self-service-signup.md)功能来访问租户，我们会允许他们使用已注册的电子邮件来重置密码。
+* 通过自助注册 **注册的用户**：如果与你合作的组织使用 [自助注册](../enterprise-users/directory-self-service-signup.md)功能来访问租户，我们会允许他们使用已注册的电子邮件来重置密码。
 * **B2B 用户**：使用新的 [Azure AD B2B 功能](../external-identities/what-is-b2b.md)创建的任何新的 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
 若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。

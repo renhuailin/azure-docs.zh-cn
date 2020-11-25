@@ -8,11 +8,11 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743828"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993446"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -158,7 +158,7 @@ http://<front-end-app-name>.azurewebsites.net
 
 ### <a name="modify-front-end-code"></a>修改前端代码
 
-在本地存储库中，请打开 _Controllers/TodoController.cs_ 。 在 `TodoController` 类的开头添加以下行，并将 \<back-end-app-name> 替换为后端应用的名称：
+在本地存储库中，请打开 _Controllers/TodoController.cs_。 在 `TodoController` 类的开头添加以下行，并将 \<back-end-app-name> 替换为后端应用的名称：
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
@@ -225,7 +225,7 @@ git push frontend master
 
 导航到 `http://<back-end-app-name>.azurewebsites.net`，此时会看到从前端应用添加的项目。 另请添加一些项目（例如 `from back end 1` 和 `from back end 2`），然后刷新前端应用，看其是否反映了所做的更改。
 
-:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了包含从前端应用添加的项的“待办事项列表”应用。":::
 
 ## <a name="configure-auth"></a>配置身份验证
 
@@ -239,7 +239,7 @@ git push frontend master
 
 在“资源组”中，查找并选择资源组。 在“概述”中，选择后端应用的管理页。
 
-:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="“资源组”窗口的屏幕截图，其中显示了示例资源组的概述和选中的后端应用的管理页。":::
 
 在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证 。
 
@@ -247,7 +247,7 @@ git push frontend master
 
 在“身份验证提供程序”下，选择“Azure Active Directory”。
 
-:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="后端应用左侧菜单的屏幕截图，其中显示了选中的身份验证/授权和在右菜单中选中的设置。":::
 
 选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定” 。
 
@@ -259,7 +259,7 @@ git push frontend master
 
 将 Azure AD 应用程序的 **客户端 ID** 复制到记事本。 稍后需要用到此值。
 
-:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="显示 Azure AD 应用的“Azure Active Directory 设置”窗口和显示要复制的客户端 ID 的“Azure AD 应用程序”窗口的屏幕截图。":::
 
 如果到此为止，你将拥有一个已受应用服务身份验证和授权保护的独立应用。 其余部分介绍如何将经过身份验证的用户从前端“流式传输”到后端，以便保护多应用解决方案。 
 
@@ -284,13 +284,13 @@ git push frontend master
 
 选择“应用注册” > “拥有的应用程序” > “查看此目录中的所有应用程序”。 选择前端应用名称，然后选择“API 权限”。
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="“Microsoft - 应用注册”窗口的屏幕截图，其中包含拥有的应用程序、前端应用名称和选中的 API 权限。":::
 
 选择“添加权限”，然后选择“我的组织使用的 API” > “\<back-end-app-name>”。
 
 在后端应用的“请求 API 权限”页中，选择“委托的权限”和“user_impersonation”，然后选择“添加权限”。
 
-:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="“请求 API 权限”页的屏幕截图，其中显示了委托的权限、user_impersonation 和选中的“添加权限”按钮。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
@@ -300,7 +300,7 @@ git push frontend master
 
 此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”，以便启用编辑 Azure 资源的功能。
 
-:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="“Azure 资源浏览器”页面顶部的“只读”和“读/写”按钮的屏幕截图，其中“读/写”按钮已选中。":::
 
 在左侧浏览器中，向下钻取到“config” > “authsettings”。
 
@@ -310,7 +310,7 @@ git push frontend master
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="authsettings 视图中代码示例的屏幕截图，其中显示了包含客户端 ID 示例的 additionalLoginParams 字符串。":::
 
 单击“PUT”，对设置进行保存。
 
@@ -327,7 +327,7 @@ git push frontend master
 > [!NOTE]
 > 所有支持的语言都可以注入这些标头。 对于每种相应的语言，可以使用标准模式来访问它们。
 
-在本地存储库中，请再次打开 _Controllers/TodoController.cs_ 。 在 `TodoController(TodoContext context)` 构造函数中添加以下代码：
+在本地存储库中，请再次打开 _Controllers/TodoController.cs_。 在 `TodoController(TodoContext context)` 构造函数中添加以下代码：
 
 ```cs
 public override void OnActionExecuting(ActionExecutingContext context)
@@ -378,11 +378,11 @@ az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-nam
 
 ### <a name="point-angularjs-app-to-back-end-api"></a>将 Angular.js 应用指向后端 API
 
-在本地存储库中，打开 _wwwroot/index.html_ 。
+在本地存储库中，打开 _wwwroot/index.html_。
 
 在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 在应用服务中将 \<back-end-app-name> 替换为你的应用名称。
 
-在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_ ，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
+在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
 
 ### <a name="add-access-token-to-api-calls"></a>向 API 调用添加访问令牌
 

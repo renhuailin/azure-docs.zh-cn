@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129654"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993157"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -38,7 +38,7 @@ ms.locfileid: "93129654"
 
 ## <a name="create-an-ingress-controller"></a>创建入口控制器
 
-若要创建入口控制器，请使用 `helm` 命令来安装 *nginx-ingress* 。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
+若要创建入口控制器，请使用 `helm` 命令来安装 *nginx-ingress*。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
 
 还需要在 Linux 节点上计划入口控制器。 Windows Server 节点不应运行入口控制器。 使用 `--set nodeSelector` 参数指定节点选择器，以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
 
@@ -265,7 +265,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 在以下示例中，到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN* 的流量会路由到 *aks-helloworld* 服务。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* 的流量会路由到静态资产的名为 *aks-helloworld* 的服务。
 
 > [!NOTE]
-> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果你的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com* ，则替换 *hello-world。MY_CUSTOM_DOMAIN* 中 *demo-aks-ingress.eastus.cloudapp.azure.com* 的 demo-aks-ingress.eastus.cloudapp.azure.com `hello-world-ingress.yaml` 。
+> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果你的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com*，则替换 *hello-world。MY_CUSTOM_DOMAIN* 中 *demo-aks-ingress.eastus.cloudapp.azure.com* 的 demo-aks-ingress.eastus.cloudapp.azure.com `hello-world-ingress.yaml` 。
 
 使用下面的示例 YAML 创建名为 `hello-world-ingress.yaml` 的文件。 将 *hosts* 和 *host* 更新为在前面步骤中创建的 DNS 名称。
 
@@ -335,7 +335,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息，请参阅[证书管理器证书][cert-manager-certificates]。 证书管理器已使用 ingress-shim（自 v0.2.2 以来随证书管理器自动部署）为你自动创建了证书对象。 有关详细信息，请参阅 [ingress-shim 文档][ingress-shim]。
 
-若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True* ，这可能需要数分钟。
+若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True*，这可能需要数分钟。
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -346,7 +346,7 @@ tls-secret   True    tls-secret   11m
 
 ## <a name="test-the-ingress-configuration"></a>测试入口配置
 
-将 Web 浏览器打开到 Kubernetes 入口控制器的 *hello-world-ingress.MY_CUSTOM_DOMAIN* 。 请注意，系统会将你重定向，让你使用 HTTPS。证书是受信任的，演示应用程序显示在 Web 浏览器中。 添加 */hello-world-two* 路径，并注意显示了自定义标题的第二个演示应用程序。
+将 Web 浏览器打开到 Kubernetes 入口控制器的 *hello-world-ingress.MY_CUSTOM_DOMAIN*。 请注意，系统会将你重定向，让你使用 HTTPS。证书是受信任的，演示应用程序显示在 Web 浏览器中。 添加 */hello-world-two* 路径，并注意显示了自定义标题的第二个演示应用程序。
 
 ## <a name="clean-up-resources"></a>清理资源
 

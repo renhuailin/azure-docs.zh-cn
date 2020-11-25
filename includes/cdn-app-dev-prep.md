@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316744"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993381"
 ---
 ## <a name="prerequisites"></a>先决条件
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：
@@ -27,7 +27,7 @@ ms.locfileid: "91316744"
 3. 将资源组命名为 *CdnConsoleTutorial*。  选择订阅，并选择离你最近的位置。  如果需要，可以单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这便于以后查找该资源组。  完成选择后，单击“创建”。
 
     !["资源组" 对话框的屏幕截图。](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。   要打开该资源组，请单击它。  记下**订阅 ID**。 稍后需要用到此信息。
+4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。   要打开该资源组，请单击它。  记下 **订阅 ID**。 稍后需要用到此信息。
 
     ![C D N 控制台教程部分的屏幕截图。](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "91316744"
 创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  要创建它，请[遵循此教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 
 > [!IMPORTANT]
-> 请务必遵循[链接的教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)中的所有步骤。  必须完全按照说明完成操作，这*很重要*。  请务必记下**租户 ID**、**租户域名**（通常是 *.onmicrosoft.com* 域，除非指定了自定义域）、**客户端 ID** 和**客户端身份验证密钥**，因为稍后需要用到这些信息。  请妥善保护**客户端 ID** 和**客户端身份验证密钥**，因为任何人都可以使用这些凭据以服务主体的身份执行操作。
+> 请务必遵循[链接的教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)中的所有步骤。  必须完全按照说明完成操作，这 *很重要*。  请务必记下 **租户 ID**、**租户域名**（通常是 *.onmicrosoft.com* 域，除非指定了自定义域）、**客户端 ID** 和 **客户端身份验证密钥**，因为稍后需要用到这些信息。  请妥善保护 **客户端 ID** 和 **客户端身份验证密钥**，因为任何人都可以使用这些凭据以服务主体的身份执行操作。
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
@@ -60,8 +60,8 @@ ms.locfileid: "91316744"
 1. 创建应用程序时，请选择“本机应用程序”而不是“Web 应用程序”。 
 
     ![本机应用程序](./media/cdn-app-dev-prep/cdn-native-application-include.png)
-2. 在下一页上，系统会提示输入**重定向 URI**。  系统不会验证 URI，但请记住输入的 URI。 稍后需要用到此信息。
-3. 不需要创建**客户端身份验证密钥**。
+2. 在下一页上，系统会提示输入 **重定向 URI**。  系统不会验证 URI，但请记住输入的 URI。 稍后需要用到此信息。
+3. 不需要创建 **客户端身份验证密钥**。
 4. 我们不会向“CDN 配置文件参与者”角色分配服务主体，而是分配个人用户或组。  在本示例中，可以看到已将“CDN 演示用户”分配到“CDN 配置文件参与者”角色。  
 
     ![个人用户访问权限](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

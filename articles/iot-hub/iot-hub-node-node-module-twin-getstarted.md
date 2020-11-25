@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp, devx-track-js
 ms.openlocfilehash: 9de3f45a9d62a9d131583c133440ac8a311a468d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151417"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993235"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
 
@@ -193,7 +193,7 @@ ms.locfileid: "92151417"
     });
     ```
 
-4. 现在请使用命令 node twin.js 来运行它****。
+4. 现在请使用命令 node twin.js 来运行它。
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

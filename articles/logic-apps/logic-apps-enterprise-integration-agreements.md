@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992931"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并管理贸易合作伙伴协议
 
 [贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-** 协议 (agreement) 通过定义在交换企业对企业 (B2B) 消息时使用的特定的行业标准协议 (protocol)，帮助组织和企业彼此无缝通信。 协议有一些常见的好处，例如：
+协议 (agreement) 通过定义在交换企业对企业 (B2B) 消息时使用的特定的行业标准协议 (protocol)，帮助组织和企业彼此无缝通信。 协议有一些常见的好处，例如：
 
 * 使组织能够以熟知的格式交换信息。
 * 可提高进行 B2B 交易的效率。

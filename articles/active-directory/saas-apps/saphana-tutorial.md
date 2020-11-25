@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -169,7 +169,7 @@ ms.locfileid: "92895118"
 
     ![“保存”按钮](./media/saphana-tutorial/sap4.png)
 
-4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。 然后将 **assertion_timeout** 从 **10 秒** 调整为 **120 秒** 。
+4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。 然后将 **assertion_timeout** 从 **10 秒** 调整为 **120 秒**。
 
     ![assertion_timeout 设置](./media/saphana-tutorial/sap7.png)
 

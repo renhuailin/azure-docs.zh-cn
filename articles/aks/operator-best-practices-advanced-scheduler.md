@@ -6,11 +6,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993697"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -36,7 +36,7 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 * 将 **排斥** 应用到指明了只能计划特定 pod 的节点。
 * 然后，将 **容许** 应用到可以 *容许* 节点排斥的 pod。
 
-将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu* ），然后定义了计划值。 如果将此值设置为 *NoSchedule* ，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
+将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -79,15 +79,15 @@ spec:
 
 - **使用虚拟机规模集的默认群集**
   - 可以从 AKS API [污染节点池][taint-node-pool]，以使新横向扩展的节点接收 API 指定的节点污点。
-  - 假设你的群集有两个节点 - *node1* 和 *node2* 。 升级节点池。
+  - 假设你的群集有两个节点 - *node1* 和 *node2*。 升级节点池。
   - 另外两个节点（node3 和 node4）将被创建，并且排斥会被分别传递。
   - 原始 node1 和 node2 将被删除。
 
 - **不支持虚拟机规模集的群集**
-  - 同样，让我们假设你有一个双节点群集 - node1 和 node2。 在升级时，将创建另一个节点 ( *node3* )。
-  - *node1* 中的排斥将应用于 *node3* ，然后 *node1* 将被删除。
-  - 将创建另一个新节点（名为 *node1* ，因为以前的 *node1* 被删除），并且 *node2* 排斥将应用于新的 *node1* 。 然后，将删除 *node2* 。
-  - 实际上， *node1* 变成了 *node3* ， *node2* 变成了 *node1* 。
+  - 同样，让我们假设你有一个双节点群集 - node1 和 node2。 在升级时，将创建另一个节点 (*node3*)。
+  - *node1* 中的排斥将应用于 *node3*，然后 *node1* 将被删除。
+  - 将创建另一个新节点（名为 *node1*，因为以前的 *node1* 被删除），并且 *node2* 排斥将应用于新的 *node1*。 然后，将删除 *node2*。
+  - 实际上，*node1* 变成了 *node3*，*node2* 变成了 *node1*。
 
 缩放 AKS 中的节点池时，排斥和容许不会转移，这是设计使然。
 
@@ -133,7 +133,7 @@ spec:
 
 节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。 或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。
 
-以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution* 。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可改为将值设置为 preferredDuringSchedulingIgnoreDuringExecution：
+以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可改为将值设置为 preferredDuringSchedulingIgnoreDuringExecution：
 
 ```yaml
 kind: Pod

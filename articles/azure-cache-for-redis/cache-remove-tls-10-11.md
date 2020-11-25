@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994377"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -19,14 +19,14 @@ ms.locfileid: "92545304"
 
 作为此项工作的一部分，我们将对 Azure Cache for Redis 进行以下更改：
 
-* **阶段1：** 对于新创建的缓存实例，我们将默认的最小 TLS 版本配置为1.2， (之前是 TLS 1.0) 。 目前，不会更新现有的缓存实例。 如果需要，仍可使用 Azure 门户或其他管理 Api [将最低 TLS 版本更改](cache-configure.md#access-ports) 为1.0 或1.1，以实现向后兼容。
-* **阶段2：** 我们将停止支持 TLS 1.1 和 TLS 1.0。 完成此更改后，应用程序必须使用 TLS 1.2 或更高版本与缓存通信。 当我们将 Redis 服务迁移为仅支持 TLS 1.2 或更高版本时，Azure Cache for 适用于适用于 Azure 的 Azure 缓存服务。
+* **阶段 1：** 对于新创建的缓存实例，我们会将默认的最低 TLS 版本配置为 1.2（以前为 TLS 1.0）。 目前，不会更新现有的缓存实例。 如果需要，仍可使用 Azure 门户或其他管理 API [将最低的 TLS 版本更改](cache-configure.md#access-ports) 为 1.0 或 1.1，以实现后向兼容性。
+* **阶段 2：** 我们将停止支持 TLS 1.1 和 TLS 1.0。 在此更改之后，应用程序必须使用 TLS 1.2 或更高版本才能与缓存通信。 如果我们迁移 Azure Cache for Redis 服务以仅支持 TLS 1.2 或更高版本，则该服务应可用。
 
   > [!NOTE]
-  > 阶段2暂时计划于2020年12月31日之前开始。 但是，我们强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
+  > 阶段 2 暂时计划 2020 年 12 月 31 日之后开始。 但是，我们强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
   >
 
-作为此更改的一部分，我们还将删除对不安全的较早加密套件的支持。 如果使用最小 TLS 1.2 配置缓存，则受支持的加密套件将限制为以下套件：
+在此更改中，我们还将删除对不安全的较早加密套件的支持。 如果为缓存配置最低的版本 TLS 1.2，则受支持的加密套件将只有以下套件：
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -37,24 +37,24 @@ ms.locfileid: "92545304"
 
 | 云                | 阶段 1 开始日期 | 阶段 2 开始日期         |
 |----------------------|--------------------|----------------------------|
-| Azure（公有云）       |  2020 年 1 月 13 日  | 由于 COVID-19 而延迟  |
-| Azure Government     |  2020 年 3 月 13 日    | 由于 COVID-19 而延迟  |
-| Azure 德国        |  2020 年 3 月 13 日    | 由于 COVID-19 而延迟  |
-| Azure 中国世纪互联 |  2020 年 3 月 13 日    | 由于 COVID-19 而延迟  |
+| Azure（公有云）       |  2020 年 1 月 13 日  | 由于新冠病毒肺炎而推迟  |
+| Azure Government     |  2020 年 3 月 13 日    | 由于新冠病毒肺炎而推迟  |
+| Azure 德国        |  2020 年 3 月 13 日    | 由于新冠病毒肺炎而推迟  |
+| Azure 中国世纪互联 |  2020 年 3 月 13 日    | 由于新冠病毒肺炎而推迟  |
 
 > [!NOTE]
-> 阶段2暂时计划于2020年12月31日之前开始。 在设置特定日期时，将更新本文。
+> 阶段 2 暂时计划 2020 年 12 月 31 日之后开始。 确定具体日期后，本文将更新。
 >
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规
 
-确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2，然后运行测试  。 “最低 TLS 版本”设置位于Azure 门户的缓存实例的   如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要将应用程序使用的 Redis 客户端库配置为启用 TLS 1.2，以便连接到 Azure Cache for Redis。
+确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2，然后运行测试。 “最低 TLS 版本”设置位于Azure 门户的缓存实例的[高级设置](cache-configure.md#advanced-settings)中。  如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要将应用程序使用的 Redis 客户端库配置为启用 TLS 1.2，以便连接到 Azure Cache for Redis。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>将应用程序配置为使用 TLS 1.2
 
 大多数应用程序使用 Redis 客户端库来处理与缓存的通信。 这里说明了如何将以各种编程语言和框架编写的某些流行客户端库配置为使用 TLS 1.2。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 在 .NET Framework 4.5.2 或更低版本上，Redis .NET 客户端默认使用最低的 TLS 版本；在 .NET Framework 4.6 或更高版本上，则使用最新的 TLS 版本。 如果使用的是较旧版本的 .NET Framework，则可以手动启用 TLS 1.2：
 

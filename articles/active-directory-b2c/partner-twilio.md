@@ -12,17 +12,17 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994037"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>将 Twilio 验证应用与 Azure Active Directory B2C 集成
 
 在本演练中，了解如何使用 Twilio Verify API 将 Azure Active Directory B2C (Azure AD B2C) 中的联机支付应用集成。 通过使用 Twilio 验证应用，Azure AD B2C 客户可以通过动态链接和强大的客户身份验证满足 PSD2 (付款服务指令 2) 事务要求。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
@@ -104,9 +104,9 @@ ms.locfileid: "91259062"
 
 4. 导航到 " **Azure AD B2C**  >  **标识体验框架**" "  >  **策略密钥**"。
 
-5. 添加名为 **B2cRestTwilioClientId**的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
+5. 添加名为 **B2cRestTwilioClientId** 的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
 
-6. 添加名为 **B2cRestTwilioClientSecret**的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
+6. 添加名为 **B2cRestTwilioClientSecret** 的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
 
 7. 将所有策略文件上传到租户。
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 673856800ccb05a2b4b52511777a9a24769bcd6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516624"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>教程：Azure Active Directory 与 Proofpoint on Demand 的集成
 
@@ -44,13 +44,13 @@ ms.locfileid: "92516624"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Proofpoint on Demand 支持“SP”发起的 SSO 
+* Proofpoint on Demand 支持“SP”发起的 SSO
 
 ## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>从库中添加 Proofpoint on Demand
 
 要通过配置将 Proofpoint on Demand 集成到 Azure AD 中，需要从库中将 Proofpoint on Demand 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Proofpoint on Demand，请执行以下步骤： 
+若要从库中添加 Proofpoint on Demand，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -64,13 +64,13 @@ ms.locfileid: "92516624"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Proofpoint on Demand”，在结果面板中选择“Proofpoint on Demand”，然后单击“添加”按钮添加该应用程序。 
+4. 在搜索框中，键入“Proofpoint on Demand”，在结果面板中选择“Proofpoint on Demand”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Proofpoint on Demand](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Proofpoint on Demand 的 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Proofpoint on Demand 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Proofpoint on Demand 相关用户之间建立链接关系。
 
 若要配置和测试 Proofpoint on Demand 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -88,7 +88,7 @@ ms.locfileid: "92516624"
 
 若要配置 Proofpoint on Demand 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Proofpoint on Demand”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "92516624"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Proofpoint on Demand”部分，根据要求复制相应 URL  。
+6. 在“设置 Proofpoint on Demand”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "92516624"
 
 ### <a name="configure-proofpoint-on-demand-single-sign-on"></a>配置 Proofpoint on Demand 单一登录
 
-若要在“Proofpoint on Demand”端配置单一登录，需要将下载的“证书 (Base64)”以及从 Azure 门户复制的相应 URL 发送给  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Proofpoint on Demand”端配置单一登录，需要将下载的“证书 (Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Proofpoint on Demand 支持团队](https://www.proofpoint.com/us/support-services)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -160,11 +160,11 @@ ms.locfileid: "92516624"
 
 在本部分中，通过授予 Britta Simon 访问 Proofpoint on Demand 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Proofpoint on Demand”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Proofpoint on Demand”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Proofpoint on Demand”  。
+2. 在应用程序列表中，选择“Proofpoint on Demand”。
 
     ![应用程序列表中的 Proofpoint on Demand 链接](common/all-applications.png)
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994241"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
 
@@ -68,7 +68,7 @@ ms.locfileid: "94839295"
 1. 选择 " **USB 设备** " 或 " **NFC 设备**"。
 1. 准备好密钥，然后选择 " **下一步**"。
 1. 将显示一个框，要求用户为你的安全密钥创建/输入 PIN，然后为密钥（生物识别或触摸）执行所需的笔势。
-1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”。
+1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“配置目录分区”  。
 1. 单击 " **完成** " 以完成该过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录

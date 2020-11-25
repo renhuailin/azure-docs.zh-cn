@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994105"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -63,9 +63,9 @@ ms.locfileid: "92108093"
 
 1. 选择“所有服务” > “Batch 帐户”，然后选择 Batch 帐户的名称。
 2. 在“监视”下，选择“警报”，然后选择“新建警报规则”。  
-3. 单击“选择条件”，然后选择一个指标。 确认“图表期间”、“阈值类型”、“运算符”和“聚合类型”的值，然后输入一个**阈值**。 然后选择“完成”。
+3. 单击“选择条件”，然后选择一个指标。 确认“图表期间”、“阈值类型”、“运算符”和“聚合类型”的值，然后输入一个 **阈值**。 然后选择“完成”。
 4. 通过选择现有操作组或创建新的操作组，将一个操作组添加到警报中。
-5. 在“警报规则详细信息”部分中，输入**警报规则名称**和**说明**并选择**严重性**
+5. 在“警报规则详细信息”部分中，输入 **警报规则名称** 和 **说明** 并选择 **严重性**
 6. 选择“创建警报规则”。
 
 有关创建指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作方式](../azure-monitor/platform/alerts-metric-overview.md)和[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
@@ -76,8 +76,8 @@ ms.locfileid: "92108093"
 
 诊断日志包含 Azure 资源发出的、描述每个资源的操作的信息。 对于 Batch，可以收集以下日志：
 
-- Azure Batch 服务在单个 Batch 资源（例如池或任务）的生存期内发出的**服务日志**事件。
-- 帐户级别的**指标**日志。
+- Azure Batch 服务在单个 Batch 资源（例如池或任务）的生存期内发出的 **服务日志** 事件。
+- 帐户级别的 **指标** 日志。
 
 用于启用诊断日志收集的设置默认未启用。 请针对想要监视的每个 Batch 帐户显式启用诊断日志。
 
@@ -139,7 +139,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 
 ### <a name="service-log-events"></a>服务日志事件
 
-Azure Batch 服务日志（如果已收集）包含 Azure Batch 服务在单个 Batch 资源（例如池或任务）的生存期内发出的事件。 Batch 发出的每个事件以 JSON 格式记录。 例如，下面是一个**池创建事件**样本的正文：
+Azure Batch 服务日志（如果已收集）包含 Azure Batch 服务在单个 Batch 资源（例如池或任务）的生存期内发出的事件。 Batch 发出的每个事件以 JSON 格式记录。 例如，下面是一个 **池创建事件** 样本的正文：
 
 ```json
 {

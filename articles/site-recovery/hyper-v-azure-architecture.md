@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495720"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993765"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -83,7 +83,7 @@ ms.locfileid: "87495720"
 
 ### <a name="enable-protection"></a>启用保护
 
-1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”****。
+1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
 2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice)，以使用配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
 4. 可以在 "**作业**" 选项卡中监视作业。     !["作业" 选项卡中的 "作业" 列表屏幕截图。 ](media/hyper-v-azure-architecture/image1.png)!["启用保护" 屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
@@ -121,7 +121,7 @@ ms.locfileid: "87495720"
     - 它使用固定块区块算法，其中源文件和目标文件被分到固定区块。
     - 会针对每个区块生成校验和。 这些校验和将进行比较，以确定源文件中的哪些区块需要应用到目标文件。
 2. 重新同步完成后，应会恢复正常增量复制。
-3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”****。
+3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”。
 
     ![显示“重新同步”选项的屏幕截图。](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "87495720"
 
 **类别** | **详细信息**
 --- | ---
-**不可恢复的错误** | 不尝试执行任何重试操作。 VM 状态为“严重”，并且需要管理员干预。****<br/><br/> 这些错误示例包括 VHD 链断裂、副本 VM 的状态无效、网络身份验证错误、授权错误以及“找不到 VM”错误（适用于独立 Hyper-V 服务器）。
+**不可恢复的错误** | 不尝试执行任何重试操作。 VM 状态为“严重”，并且需要管理员干预。<br/><br/> 这些错误示例包括 VHD 链断裂、副本 VM 的状态无效、网络身份验证错误、授权错误以及“找不到 VM”错误（适用于独立 Hyper-V 服务器）。
 **可恢复的错误** | 使用从第一次尝试开始增大重试间隔时间（1、2、4、8、10 分钟）的指数退避算法，在到达复制间隔时间后重试。 如果错误仍然存在，则每隔 30 分钟重试一次。 其中的一些示例包括网络错误、磁盘空间不足错误和内存不足的情况。
 
 

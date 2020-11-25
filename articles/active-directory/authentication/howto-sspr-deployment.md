@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838071"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994156"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -105,7 +105,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 注意：对于已禁用[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 的用户，SSPR 仅将密码存储在本地 Active Directory 中。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 
 连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量登录，可推进注册操作。
 

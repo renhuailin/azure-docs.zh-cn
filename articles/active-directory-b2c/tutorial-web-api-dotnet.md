@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ada4226500437e7733605a29988ee7cacae40761
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163877"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994296"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -40,7 +40,7 @@ ms.locfileid: "88163877"
 
 Web API 资源需要先在租户中注册，然后才能接受并响应通过提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -70,7 +70,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 ## <a name="configure-scopes"></a>配置范围
 
-可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
+可通过作用域控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
@@ -88,7 +88,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 示例解决方案中有两个项目：
 
-* **TaskWebApp** - 创建和编辑任务列表。 该示例使用**注册或登录**用户流来注册或登录用户。
+* **TaskWebApp** - 创建和编辑任务列表。 该示例使用 **注册或登录** 用户流来注册或登录用户。
 * **TaskService** - 支持创建、读取、更新和删除任务列表功能。 该 API 受 Azure AD B2C 的保护，由 TaskWebApp 调用。
 
 ### <a name="configure-the-web-application"></a>配置 Web 应用程序

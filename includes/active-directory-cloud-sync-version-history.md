@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 46c27fa2073ea1178fdf01ea3cbf96fe86954a6a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255091"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993937"
 ---
 本文列出了已发布 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队定期用新特性和功能更新设置代理。 发布新版本时，会自动更新设置代理。 
 
@@ -14,12 +14,12 @@ Microsoft 为最新的代理版本和之前的版本提供直接支持。
 
 ### <a name="release-status"></a>版本状态
 
-2020年11月 XX 日：已发布以供下载
+2020年11月23日：已发布以供下载
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
 * 对[gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts)的支持
-* 在增量同步期间，支持最大为1500个成员的组 () 
+* 在增量同步或增量同步周期中，对最大为1500个成员的组的支持。 这适用于使用组范围筛选器的情况
 * 支持成员大小最高为15K 的大型组
 * 初始同步改进
 * 高级详细日志记录

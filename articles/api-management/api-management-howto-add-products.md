@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630542"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993544"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>教程：创建和发布产品  
 
@@ -38,7 +38,7 @@ ms.locfileid: "91630542"
 1. 在左侧导航栏中，选择“产品” > “+ 添加” 。
 1.  在“添加产品”窗口中，输入下表中描述的值以创建产品。
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="门户中的 API 管理产品":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="在门户中添加产品":::
 
     | 名称                     | 说明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ ms.locfileid: "91630542"
 1. 选择“+ 添加”  。
 1. 选择一个或多个 API，然后点击“选择”。
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="门户中的 API 管理产品":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="将 API 添加到现有产品":::
 
 > [!TIP]
 > 可以通过 [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建或更新用户对产品的订阅。

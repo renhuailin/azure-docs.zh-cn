@@ -13,11 +13,11 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839703"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994275"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -282,7 +282,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 >[!NOTE]
  > 为 Azure AD MFA 配置 [受信任的 ip](./howto-mfa-mfasettings.md) 仅适用于 [Azure AD Premium 许可证](./concept-mfa-licensing.md)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 * [Azure AD 身份验证文档](./howto-mfaserver-iis.md)
 * [在 Azure AD 中管理紧急访问管理账户](../roles/security-emergency-access.md)

@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86142768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993409"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -35,7 +35,7 @@ ms.locfileid: "86142768"
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>在 Azure 门户中创建具有 VNet 的池
 
-在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
+在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
 
 1. 导航到 Azure 门户中的批处理帐户。 此帐户必须与要使用的 VNet 所在的资源组位于同一订阅和区域中。
 2. 在左侧的“设置”窗口中，选择“池”菜单项。
