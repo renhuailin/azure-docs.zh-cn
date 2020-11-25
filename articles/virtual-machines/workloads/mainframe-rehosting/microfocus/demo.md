@@ -7,11 +7,11 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508043"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95976187"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上的微聚焦企业开发人员4.0 设置微焦点 CICS BankDemo
 
@@ -22,7 +22,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 > [!NOTE]
 > 即将推出：有关在 Azure Vm 上设置 [微中心企业服务器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) 的说明。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 包含 [企业开发人员](set-up-micro-focus-azure.md)的 VM。 请记住，企业开发人员提供了一个完整的企业服务器实例，以用于开发和测试目的。 此实例是用于演示的企业服务器的实例。
 
@@ -84,7 +84,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
     - **Net.Pipe 侦听器适配器**
     - **Net.tcp 侦听器适配器**
 
-10. 若要配置 IIS 和 WAS 支持，请从菜单中查找 " **微焦点企业开发人员命令提示 (64 位) ** 并以 **管理员身份**运行。
+10. 若要配置 IIS 和 WAS 支持，请从菜单中查找 " **微焦点企业开发人员命令提示 (64 位)** 并以 **管理员身份** 运行。
 
 11. 键入 **wassetup – i** ，然后按 **enter**。
 
@@ -141,7 +141,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
     > [!NOTE]
     > BankDemo 项目对 SQL Server) 使用了 HCOSS (主机兼容性选项，该选项不适用于此演示。
 
-5. 在 **解决方案资源管理器**中，右键单击 **BankDemo2** 项目，然后选择 " **生成**"。
+5. 在 **解决方案资源管理器** 中，右键单击 **BankDemo2** 项目，然后选择 " **生成**"。
 
     > [!NOTE]
     > 如果未配置 HCOSS，则在解决方案级别生成会导致错误。
@@ -181,11 +181,11 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
      !["定义区域" 对话框](media/07-demo-cics.png)
 
-6. 若要选择跨区域数据库的区域定义文件，请在**C： \\ 用户 \\ 公共 \\ 文档 \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ bankdemo**中找到**区域 \_ bankdemo \_db.config** 。
+6. 若要选择跨区域数据库的区域定义文件，请在 **C： \\ 用户 \\ 公共 \\ 文档 \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ bankdemo** 中找到 **区域 \_ bankdemo \_db.config** 。
 
      ![定义区域区域名称： BANKDEMO](media/08-demo-cics.png)
 
-7. 单击“完成”  。
+7. 单击“完成”。
 
 ## <a name="create-xa-resource-definitions"></a>创建 XA 资源定义
 
@@ -195,13 +195,13 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 3. 在下拉框中，选择 " **数据库服务实例**"。 它将成为本地计算机 SQLEXPRESS。
 
-4. 从 **XA 资源定义 (machinename \\ sqlexpress) ** 容器中选择实例，并单击 " **添加**"。
+4. 从 **XA 资源定义 (machinename \\ sqlexpress)** 容器中选择实例，并单击 " **添加**"。
 
 5. 选择 " **数据库 XA 资源定义** "，然后键入 " **BANKDEMO** " 作为 " **名称** 和 **区域**"。
 
      ![新数据库 XA 资源定义屏幕](media/09-demo-xa.png)
 
-6. 单击省略号 (**...** ") 以打开连接字符串向导。 对于 " **服务器名称**"，请键入 ** (本地) \\ SQLEXPRESS**。 对于 **登录**，请选择 " **Windows 身份验证**"。 对于 "数据库名称"，请键入 **BANKDEMO**
+6. 单击省略号 (**...** ") 以打开连接字符串向导。 对于 " **服务器名称**"，请键入 **(本地) \\ SQLEXPRESS**。 对于 **登录**，请选择 " **Windows 身份验证**"。 对于 "数据库名称"，请键入 **BANKDEMO**
 
      ![编辑连接字符串屏幕](media/10-demo-string.png)
 
@@ -212,11 +212,11 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 > [!NOTE]
 > 第一步非常重要：必须将区域设置为使用刚创建的 XA 资源定义。
 
-1. 导航到 "**区域" 容器**下的 " **BANDEMO CICS" 区域**，然后从 "**操作**" 窗格中选择 "**编辑区域启动文件**"。 向下滚动到 "SQL 属性"，为**XA 资源名称**输入**bankdemo** ，或使用省略号将其选中。
+1. 导航到 "**区域" 容器** 下的 " **BANDEMO CICS" 区域**，然后从 "**操作**" 窗格中选择 "**编辑区域启动文件**"。 向下滚动到 "SQL 属性"，为 **XA 资源名称** 输入 **bankdemo** ，或使用省略号将其选中。
 
 2. 单击 " **保存** " 图标以保存所做的更改。
 
-3. 右键单击**控制台**窗格中的 " **BANKDEMO CICS 区域**"，然后选择 "**启动/停止区域**"。
+3. 右键单击 **控制台** 窗格中的 " **BANKDEMO CICS 区域**"，然后选择 "**启动/停止区域**"。
 
 4. 在出现在中间窗格中的 " **启动/停止区域** " 框的底部，选择 " **启动**"。 几秒钟后，区域开始。
 
@@ -268,7 +268,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 ![大型机显示欢迎屏幕 ](media/14-demo.png)
  ![ 大型机显示-Rumba-子系统演示屏幕](media/15-demo.png)
 
-祝贺你！ 现在，使用微焦点企业服务器在 Azure 中运行 CICS 应用程序。
+恭喜！ 现在，使用微焦点企业服务器在 Azure 中运行 CICS 应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

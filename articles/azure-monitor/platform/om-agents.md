@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975560"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -95,7 +95,7 @@ ms.locfileid: "87318345"
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 协议
 
-为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](./data-security.md#sending-data-securely-using-tls-12)。
+为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](./data-security.md#sending-data-securely-using-tls-12)。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -104,13 +104,13 @@ ms.locfileid: "87318345"
 首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a. 转到“启动”****，然后键入“cmd”****。
+   a. 转到“启动”，然后键入“cmd”。
    b. 右键单击 " **命令提示符** "，然后选择 "以管理员身份运行"。
-1. 键入以下命令并按 Enter****：
+1. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-完成与 Azure Monitor 集成所需的以下步骤后，可运行 `netsh winhttp reset proxy` 来删除配置，然后使用操作控制台中的“配置代理服务器”**** 选项来指定代理或 Log Analytics 网关服务器。
+完成与 Azure Monitor 集成所需的以下步骤后，可运行 `netsh winhttp reset proxy` 来删除配置，然后使用操作控制台中的“配置代理服务器”选项来指定代理或 Log Analytics 网关服务器。
 
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
@@ -120,7 +120,7 @@ ms.locfileid: "87318345"
    >[!NOTE]
    >Operations Management Suite 名称已弃用。
 
-1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。**** 如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
+1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。 如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
 
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Azure Monitor 的计算机将从 Azure Monitor 中删除。
@@ -136,7 +136,7 @@ ms.locfileid: "87318345"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
-1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。**** 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 " **添加**"，然后单击 **"确定"**。
+1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 " **添加**"，然后单击 **"确定"**。
 
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。 在此处，可根据需要添加或移除计算机和组。
 
@@ -144,15 +144,15 @@ ms.locfileid: "87318345"
 
 如果内部代理服务器位于管理组和 Azure Monitor 之间，请执行以下步骤。 这些设置可通过管理组集中进行管理并分发到代理托管系统，这些代理托管系统包含在收集 Azure Monitor 日志数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
-1. 打开 Operations Manager 控制台并选择“管理”**** 工作区。
+1. 打开 Operations Manager 控制台并选择“管理”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
 1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-1. 在“Operations Management Suite 向导: 代理服务器”**** 页上，选择“使用代理服务器访问 Operations Management Suite”****，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”****。
+1. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 Azure Monitor 报告的受管理计算机传播的凭据和设置。
 
-1. 打开 Operations Manager 控制台并选择“管理”**** 工作区。
-1. 在“RunAs 配置”下，选择“配置文件”********。
+1. 打开 Operations Manager 控制台并选择“管理”工作区。
+1. 在“RunAs 配置”下，选择“配置文件”。
 1. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
 1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
 1. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
@@ -162,7 +162,7 @@ ms.locfileid: "87318345"
 
 在创建连接并配置将收集数据并将日志数据报告给 Azure Monitor 的代理后，会在管理组中应用以下配置（不一定按顺序）：
 
-* 运行方式帐户 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 随即创建。 它与运行方式配置文件 **Microsoft System Center Advisor Run As Profile Blob** 相关联且目标为两个类 - **收集服务器**和 **Operations Manager 管理组**。
+* 运行方式帐户 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 随即创建。 它与运行方式配置文件 **Microsoft System Center Advisor Run As Profile Blob** 相关联且目标为两个类 - **收集服务器** 和 **Operations Manager 管理组**。
 * 两个连接器已创建。  第一个连接器命名为 **Microsoft.SystemCenter.Advisor.DataConnector**。可以为其自动配置一个订阅，以便将管理组中所有类的实例生成的所有警报转发到 Azure Monitor。 第二个连接器是 **顾问连接器**，此连接器负责与 Azure Monitor 通信和共享数据。
 * 选择的要在管理组中收集数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
 
@@ -180,14 +180,14 @@ ms.locfileid: "87318345"
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。****  
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
-1. 展开 Log Analytics，然后选择“连接”****。
+1. 展开 Log Analytics，然后选择“连接”。
 1. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
-1. 按照****“Log Analytics 载入向导”操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
+1. 按照“Log Analytics 载入向导”操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
 
    > [!NOTE]
-   > “Operations Management Suite 载入向导：选择工作区”页面会显示使用中的现有工作区。****
+   > “Operations Management Suite 载入向导：选择工作区”页面会显示使用中的现有工作区。
    >
    >
 
@@ -217,7 +217,7 @@ union *
 
 1. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. 接着键入 `Get-SCOMManagementPack -name "*IntelligencePack*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-1. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本 * RecursiveRemove.ps1*。  
+1. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本 *RecursiveRemove.ps1*。  
 
     > [!NOTE]
     > 使用 PowerShell 删除顾问管理包的步骤不会自动删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  不要尝试将其删除。  
@@ -229,15 +229,15 @@ union *
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-1. 在 Azure 门户中，单击“设置”磁贴。****
+1. 在 Azure 门户中，单击“设置”磁贴。
 1. 选择 " **连接的源**"。
 1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。 在“**最后的数据**”列下，单击“**移除**”。  
 
     > [!NOTE]
-    > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。****  
+    > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
     >
 
-1. 将出现一个窗口，要求确认是否继续进行移除。  单击“是” **** 继续。
+1. 将出现一个窗口，要求确认是否继续进行移除。  单击“是”  继续。
 
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 
