@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85563647"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023680"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>教程：使用 Azure 防火墙管理器保护中心虚拟网络
 
@@ -116,7 +116,7 @@ ms.locfileid: "85563647"
 6. 对于“订阅”，请选择自己的订阅。
 7. 对于“资源组”，请选择“FW-Hybrid-Test”。
 8. 对于“位置”，请选择“美国东部”。
-9. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。 防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
+9. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。 防火墙将位于此子网中，子网名称 **必须** 是 AzureFirewallSubnet。
 10. 对于“地址范围”，请键入 **10.5.0.0/26**。 
 11. 接受其他默认设置，然后选择“创建”。
 

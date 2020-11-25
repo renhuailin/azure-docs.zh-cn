@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/25/2020
+ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331426"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023341"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -150,7 +150,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 使用自承载集成运行时来支持 Azure 虚拟网络中的数据集成。
 - 即使使用 Azure ExpressRoute，也要将数据源视为本地数据源（位于防火墙之后）。 使用自承载集成运行时将服务连接到数据源。
 - 即使数据存储位于云中的 Azure 基础结构即服务 (IaaS) 虚拟机上，也应该使用自承载集成运行时。
-- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，可以使用两个选项：在 Azure Key Vault 中存储凭据/机密值，或在服务器上禁用符合 FIPS 的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
+- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，可以使用两个选项：在 Azure Key Vault 中存储凭据/机密值，或在服务器上禁用符合 FIPS 的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。 如果使用 [自承载集成运行时作为 SSIS 集成运行时的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，则可启用 FIPS 兼容的加密，并在将数据从本地移动到 Azure Blob 存储作为暂存区域时使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -189,7 +189,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 直接运行托管标识文件，或将它保存到硬盘再运行它。
 1. 在“欢迎”窗口中选择语言，然后选择“下一步” 。
 1. 接受 Microsoft 软件许可条款，然后选择“下一步”。
-1. 选择用于安装自承载集成运行时的 **文件夹** ，然后选择“下一步”。
+1. 选择用于安装自承载集成运行时的 **文件夹**，然后选择“下一步”。
 1. 在“准备安装”页上，选择“安装”。 
 1. 选择“完成”以完成安装。
 1. 使用 PowerShell 获取身份验证密钥。 下面是检索身份验证密钥的 PowerShell 示例：
@@ -239,7 +239,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 - 证书必须是公共可信的 X509 v3 证书。 建议使用公共合作伙伴证书颁发机构 (CA) 颁发的证书。
 - 每个集成运行时节点必须信任此证书。
-- 不建议使用使用者可选名称 (SAN) 证书，因为只会使用最后一个 SAN 项。 其他所有 SAN 项将被忽略。 例如，如果某个 SAN 证书的 SAN 为 **node1.domain.contoso.com** 和 **node2.domain.contoso.com** ，则只能在完全限定的域名 (FQDN) 为 **node2.domain.contoso.com** 的计算机上使用此证书。
+- 不建议使用使用者可选名称 (SAN) 证书，因为只会使用最后一个 SAN 项。 其他所有 SAN 项将被忽略。 例如，如果某个 SAN 证书的 SAN 为 **node1.domain.contoso.com** 和 **node2.domain.contoso.com**，则只能在完全限定的域名 (FQDN) 为 **node2.domain.contoso.com** 的计算机上使用此证书。
 - 此证书可以使用 Windows Server 2012 R2 支持的任何 TLS/SSL 证书密钥大小。
 - 不支持使用 CNG 密钥的证书。  
 
@@ -264,8 +264,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="terminology"></a>术语
 
-- **共享 IR** ：在物理基础结构上运行的原始自承载 IR。  
-- **链接 IR** ：引用另一个共享 IR 的 IR。 链接的 IR 是一个逻辑 IR，它使用另一个共享自承载 IR 的基础结构。
+- **共享 IR**：在物理基础结构上运行的原始自承载 IR。  
+- **链接 IR**：引用另一个共享 IR 的 IR。 链接的 IR 是一个逻辑 IR，它使用另一个共享自承载 IR 的基础结构。
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>共享自承载集成运行时的方法
 
@@ -351,9 +351,9 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 有三个配置选项：
 
-- **不使用代理** ：自承载集成运行时不显式使用任何代理来连接到云服务。
-- **使用系统代理** ：自承载集成运行时使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果这些文件未指定代理配置，则自承载集成运行时无需通过代理，可直接连接到云服务。
-- **使用自定义代理** ：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。“地址”和“端口”值是必需的。  “用户名”和“密码”值是可选的，具体取决于代理的身份验证设置。  所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
+- **不使用代理**：自承载集成运行时不显式使用任何代理来连接到云服务。
+- **使用系统代理**：自承载集成运行时使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果这些文件未指定代理配置，则自承载集成运行时无需通过代理，可直接连接到云服务。
+- **使用自定义代理**：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。“地址”和“端口”值是必需的。  “用户名”和“密码”值是可选的，具体取决于代理的身份验证设置。  所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
 
 保存更新的代理设置之后，集成运行时主机服务会自动重启。
 
@@ -362,7 +362,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 打开“Microsoft Integration Runtime Configuration Manager”。
 1. 选择“设置”选项卡。
 1. 在“HTTP 代理”下，选择“更改”链接打开“设置 HTTP 代理”对话框。  
-1. 选择“ **下一步** ”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
+1. 选择“**下一步**”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
 
 可以使用 Configuration Manager 工具查看和更新 HTTP 代理。
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535240"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022745"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
 
@@ -26,9 +26,9 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 在网络安全组中使用服务标记有两个选项：
 
-- 使用单个全局 HDInsight 服务标记  ：此选项会向 HDInsight 服务用来监视所有区域中的群集的所有 IP 地址开放虚拟网络。 此选项是最简单的方法，但如果你有严格的安全要求，它可能不适合。
+- 使用单个全局 HDInsight 服务标记：此选项会向 HDInsight 服务用来监视所有区域中的群集的所有 IP 地址开放虚拟网络。 此选项是最简单的方法，但如果你有严格的安全要求，它可能不适合。
 
-- 使用多个区域性服务标记  ：此选项仅向 HDInsight 在该特定区域中使用的 IP 地址开放虚拟网络。 但是，如果你使用多个区域，则需要向虚拟网络中添加多个服务标记。
+- 使用多个区域性服务标记：此选项仅向 HDInsight 在该特定区域中使用的 IP 地址开放虚拟网络。 但是，如果你使用多个区域，则需要向虚拟网络中添加多个服务标记。
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>使用单个全局 HDInsight 服务标记
 
@@ -36,11 +36,11 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的网络安全组。
 
-1. 在“设置”下，依次选择“入站安全规则”、“+ 添加”。   
+1. 在“设置”下，依次选择“入站安全规则”、“+ 添加”。  
 
-1. 在“源”下拉列表中，选择“服务标记”。  
+1. 在“源”下拉列表中，选择“服务标记”。 
 
-1. 在“源服务标记”下拉列表中，选择“HDInsight”。  
+1. 在“源服务标记”下拉列表中，选择“HDInsight”。 
 
     ![从 Azure 门户添加服务标记](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -59,14 +59,14 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
-| &nbsp; | 澳大利亚东南部 | HDInsight.AustraliaSoutheast |
+| &nbsp; | Australia Southeast | HDInsight.AustraliaSoutheast |
 | &nbsp; | 澳大利亚中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国东部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
 | 美国 | 美国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 美国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 美国中西部 | HDInsight.WestCentralUS |
-| Canada | 加拿大东部 | HDInsight.CanadaEast |
+| 加拿大 | 加拿大东部 | HDInsight.CanadaEast |
 | 巴西 | 巴西南部 | HDInsight.BrazilSouth |
 | 韩国 | 韩国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韩国南部 | HDInsight.KoreaSouth |
@@ -96,7 +96,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | 区域 | 服务标记 |
+| 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 美国 | 美国东部 2 | HDInsight.EastUS2 |
 | &nbsp; | 美国中部 | HDInsight.CentralUS |
@@ -108,7 +108,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 欧洲 | 北欧 | HDInsight.NorthEurope |
 | &nbsp; | 西欧| HDInsight.WestEurope |
 | 亚洲 | 东亚 | HDInsight.EastAsia |
-| &nbsp; | 东南亚 | HDInsight.SoutheastAsia |
+| &nbsp; | Southeast Asia | HDInsight.SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
 
 #### <a name="group-2"></a>组 2

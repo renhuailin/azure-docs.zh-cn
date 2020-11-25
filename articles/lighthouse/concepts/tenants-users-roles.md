@@ -4,21 +4,21 @@ description: 了解 Azure Active Directory 租户、用户和角色的概念，�
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023936"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、用户和角色
 
 在为 [Azure Lighthouse](../overview.md)加入客户之前，请务必了解 Azure Active Directory (Azure AD) 租户、用户和角色如何工作，以及如何在 Azure Lighthouse 方案中使用它们。
 
-租户是 Azure AD 的专用受信任的实例  。 通常，每个租户表示一个组织。 [Azure 委托的资源管理](azure-delegated-resource-management.md) 可将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
+租户是 Azure AD 的专用受信任的实例。 通常，每个租户表示一个组织。 [Azure 委托的资源管理](azure-delegated-resource-management.md) 可将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
 
 若要实现此逻辑投影，客户租户中的订阅)  (或一个或多个资源组必须 *载入* Azure Lighthouse。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
 
-无论选择哪种加入方法，都需要定义授权  。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
+无论选择哪种加入方法，都需要定义授权。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定义用户和角色的最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "93043046"
 - 确保需要[查看 Azure门户中的“我的客户”页](../how-to/view-manage-customers.md)的所有用户都具有[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或包含读者访问权限的其他内置角色）。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全** "。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全**"。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure Lighthouse 的角色支持
 

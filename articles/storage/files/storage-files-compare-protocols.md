@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629302"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96022576"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 文件共享协议
 
@@ -26,7 +26,7 @@ Azure 文件提供了两个用于连接和装载 Azure 文件共享的协议。 
 |访问协议     |NFS 4。1         |SMB 2.1，SMB 3。0         |
 |支持的 OS     |Linux 内核版本 4.3 +         |Windows 2008 R2 +、Linux 内核版本 4.11 +         |
 |[可用层](storage-files-planning.md#storage-tiers)     |高级存储         |高级存储，事务优化，热，冷         |
-|[冗余](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
+|[冗余](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |身份验证     |仅限基于主机的身份验证        |基于身份的身份验证，基于用户的身份验证         |
 |权限     |UNIX 样式权限         |NTFS 样式权限         |
 |文件系统语义     |POSIX 相容         |非 POSIX 相容性         |
@@ -57,7 +57,7 @@ Azure 文件的 NFS 适用于：
 - 需要 POSIX 兼容文件共享、区分大小写或 Unix 样式权限的工作负荷 (UID/GID) 。
 - 不需要 Windows 访问的以 Linux 为中心的工作负荷。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 所有 Azure 文件数据都静态加密。 对于传输中的加密，Azure 为使用 [MACSec](https://en.wikipedia.org/wiki/IEEE_802.1AE)的 Azure 数据中心之间传输的所有数据提供加密层。 通过此步骤，在 Azure 数据中心之间传输数据时，会存在加密。 不同于使用 SMB 协议的 Azure 文件，使用 NFS 协议的文件共享不提供基于用户的身份验证。 NFS 共享的身份验证基于配置的网络安全规则。 因此，为了确保仅为你的 NFS 共享建立安全连接，你必须使用服务终结点或专用终结点。 如果要从本地访问共享，则除了专用终结点外，还必须设置 VPN 或 ExpressRoute。 不是来自以下源的请求将被拒绝：
 

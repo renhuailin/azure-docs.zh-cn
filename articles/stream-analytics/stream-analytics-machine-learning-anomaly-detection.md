@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123704"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023391"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -76,7 +76,7 @@ FROM AnomalyDetectionStep
 
 时序事件流中的永久性异常是指事件流中的值分布变化，例如级别变化和趋势。 在流分析中，将使用基于机器学习的 [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 运算符检测此类异常。
 
-永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用“AnomalyDetection_ChangePoint”运算符来检测  。
+永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用“AnomalyDetection_ChangePoint”运算符来检测。
 
 下图是级别变化的示例：
 
@@ -119,7 +119,7 @@ FROM AnomalyDetectionStep
 * **事件负载** - **事件负载** 越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
 * **函数级别分区**  - **函数级别分区** 是通过 ```PARTITION BY``` 在异常检测函数调用中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
 
-### <a name="relationship"></a>Relationship
+### <a name="relationship"></a>关系
 历史记录大小、窗口持续时间和总事件负载之间的关系如下：
 
 窗口持续时间 (毫秒) = 1000 * 历史记录大小 / (每秒输入事件总数 / 输入分区计数)

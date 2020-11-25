@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593750"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023425"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -43,7 +43,7 @@ ms.locfileid: "94593750"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅** 。 如果还没有订阅，可以创建一个 [免费试用](https://azure.microsoft.com/pricing/free-trial/) 帐户。
+- **Azure 订阅**。 如果还没有订阅，可以创建一个 [免费试用](https://azure.microsoft.com/pricing/free-trial/) 帐户。
 
 - Azure SQL 数据库服务器或 SQL 托管实例（可选）。 如果还没有数据库服务器或托管实例，请在启动之前在 Azure 门户中创建一个。 数据工厂进而会在此数据库服务器上创建一个 SSISDB 实例。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "94593750"
 
    7. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。
 
-   8. 选择“ **下一步** ”。
+   8. 选择“**下一步**”。
 
 #### <a name="deployment-settings-page"></a>“部署设置”页
 

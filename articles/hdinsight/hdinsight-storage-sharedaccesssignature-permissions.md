@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022728"
 ---
-# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制对 HDInsight 中的数据的访问
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制访问 HDInsight 中的数据
 
-HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据具有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。  (SAS) 的共享访问签名是 Azure Blob 存储帐户的一项功能，可用于限制对数据的访问。 例如，它可以提供对数据的只读访问。
+HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据拥有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure Blob 存储帐户功能。 例如，它可以提供对数据的只读访问。
 
 > [!IMPORTANT]  
 > 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) 文档。
@@ -357,8 +357,8 @@ Remove-AzResourceGroup `
 
 1. 展开“自定义 core-site”部分，并滚动到底部，然后选择“添加属性...”。将以下值用于“键”和“值”： 
 
-    * **键** ：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **值** ：前面执行的某个方法返回的 SAS。
+    * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **值**：前面执行的某个方法返回的 SAS。
 
     将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 

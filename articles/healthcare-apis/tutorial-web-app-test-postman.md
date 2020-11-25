@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852916"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023306"
 ---
 # <a name="testing-the-fhir-api"></a>测试 FHIR API
 在前两个步骤中，你已部署 Azure API for FHIR 并注册了客户端应用程序。 现在，可以测试客户端应用程序中是否设置了 Azure API for FHIR。 

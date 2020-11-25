@@ -4,11 +4,11 @@ description: 了解如何发布加入客户到 Azure Lighthouse 的托管服务�
 ms.date: 08/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023919"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
@@ -49,13 +49,13 @@ ms.locfileid: "91974356"
 
 ## <a name="publish-your-offer"></a>发布产品/服务
 
-完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程****。 有关此过程的详细信息，请参阅 [此处](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
+完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程。 有关此过程的详细信息，请参阅 [此处](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
 
 你可以随时[发布产品/服务](../..//marketplace/partner-center-portal/update-existing-offer.md)的更新版本。 例如，你可能想要向以前发布的产品/服务添加新的角色定义。 当你执行此操作时，已添加该产品/服务的客户会在 Azure 门户中的[服务提供程序](view-manage-service-providers.md)页面上看到一个图标，他们可通过图标知道更新可用。 每个客户都能够 [查看更改](view-manage-service-providers.md#update-service-provider-offers) 并决定是否要更新到新版本。 
 
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 
-客户添加你的产品/服务后，他们将能够 [委托一个或多个特定订阅或资源组，这些订阅或资源组](view-manage-service-providers.md#delegate-resources)将载入到 Azure Lighthouse。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”****](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注****。
+客户添加你的产品/服务后，他们将能够 [委托一个或多个特定订阅或资源组，这些订阅或资源组](view-manage-service-providers.md#delegate-resources)将载入到 Azure Lighthouse。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注。
 
 > [!IMPORTANT]
 > 委托必须由客户租户中的非来宾帐户完成，此帐户具有 (载入订阅的 [所有者内置角色](../../role-based-access-control/built-in-roles.md#owner) ，或包含正在载入的资源组) 。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。

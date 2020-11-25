@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7776f8ec0c97ade936f03805d0a1f9ef4a6360c7
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bb4a43fe120991c64bf678047251a1f0f845137a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936181"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022577"
 ---
-- 美国东部
+- 美国东部 (LRS 和 ZRS) 
 - 美国东部 2
 - 美国西部 2
 - 西欧

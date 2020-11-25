@@ -9,11 +9,11 @@ ms.service: azure-powershell
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 2ef86d27be47c6cd1ed73a52157dd429937535b4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025503"
 ---
 ### <a name="requirements"></a>要求
 
@@ -21,4 +21,4 @@ ms.locfileid: "95557912"
   * [安装 Az PowerShell 模块](/powershell/azure/install-az-ps)。
   * 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
 * 如果选择使用 Azure Cloud Shell：
-  * 有关详细信息，请参阅 [Azure Cloud Shell 的概述](../articles/cloud-shell/overview.md) 。
+  * 有关详细信息，请参阅 [Azure Cloud Shell 概述](../articles/cloud-shell/overview.md)。

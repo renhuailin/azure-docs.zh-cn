@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023595"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "92927781"
 
 可以在事务作用域内执行的操作如下所示：
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、 [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** ：`Send`、`SendAsync`、`SendBatch` 和 `SendBatchAsync`
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** ：`Send`、`SendAsync`、`SendBatch` 和 `SendBatchAsync`
 * **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ：`Complete`、`CompleteAsync`、`Abandon`、`AbandonAsync`、`Deadletter`、`DeadletterAsync`、`Defer``DeferAsync`、`RenewLock` 和 `RenewLockAsync` 
 
 不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式或通过 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
@@ -36,9 +36,9 @@ ms.locfileid: "92927781"
 
 ## <a name="transfers-and-send-via"></a>传输和“发送方式”
 
-若要启用将数据从队列或主题到处理器的事务转换，并将其传输到另一个队列或主题，服务总线支持 *传输* 。 在传输操作中，发送方首先向 *传输队列或主题* 发送一条消息，而传输队列或主题将使用 autoforward 功能所依赖的同一可靠传输实现将消息立即移至目标队列或主题。 永远不会将消息提交到传输队列或主题的日志，因为它将变得对传输队列或主题的使用者可见。
+若要启用将数据从队列或主题到处理器，然后到另一个队列或主题的事务性移交，服务总线支持传输。 在传输操作中，发送方先将消息发送到“传输队列或主题”，然后传输队列或主题立即使用自动转发功能所依赖的同一强大传输实现将消息移到预期的目标队列或主题。 消息永远不会以对传输队列或主题的使用者可见的方式提交到传输队列或主题的日志中。
 
-当传输队列或主题本身是发送方的输入消息的源时，此事务功能的强大功能变得很明显。 换句话说，在对输入消息执行完整的 (或延迟或死信) 操作时，服务总线可以将消息传输到目标队列或主题，同时执行一个原子操作。 
+当传输队列或主题本身是发送方的输入消息的源时，此事务功能的优势越明显。 换而言之，服务总线可以“通过”传输队列或主题将消息传输到目标队列或主题中，同时对输入消息执行完成（或延迟/死信）操作，所有这一切都通过一个原子操作完成。 
 
 ### <a name="see-it-in-code"></a>在代码中查看它
 

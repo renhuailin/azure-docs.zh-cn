@@ -12,11 +12,11 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517880"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022473"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
 
@@ -99,7 +99,7 @@ ms.locfileid: "94517880"
 
    ![屏幕截图，显示 "Function Apps" 菜单，其中 "函数" 旁边的 "函数" 旁边有 "加号" 图标。](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 在 "语言" 中，选择 " *JavaScript* "，然后选择 " *TimerTrigger* "。
+2. 在 "语言" 中，选择 " *JavaScript*"，然后选择 " *TimerTrigger*"。
 
    ![创建新的函数](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 

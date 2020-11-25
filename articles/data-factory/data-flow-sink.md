@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832477"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023000"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -107,6 +107,10 @@ Azure 数据工厂可以访问90多个 [本机连接器](connector-overview.md)�
 ## <a name="error-row-handling"></a>行处理时出错
 
 写入数据库时，某些数据行可能因目标设置的约束而失败。 默认情况下，数据流运行在它获取的第一个错误时将失败。 在某些连接器中，可以选择 **"出错时继续"** ，即使单个行出现错误，也可以使数据流完成。 目前，此功能仅适用于 Azure SQL 数据库。 有关详细信息，请参阅 [AZURE SQL DB 中的错误行处理](connector-azure-sql-database.md#error-row-handling)。
+
+下面是有关如何在接收器转换中自动使用数据库错误行处理的视频教程。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
 
 ## <a name="data-preview-in-sink"></a>接收器中的数据预览
 

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526429"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022830"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure 串行控制台中的常见错误
 Azure 串行控制台中有一组已知错误。 这是这些错误的列表以及这些错误的缓解步骤。
@@ -36,7 +36,7 @@ Azure 串行控制台中有一组已知错误。 这是这些错误的列表以�
 在此 VM 上找不到用于启动诊断的存储帐户 ""。 验证是否为此 VM 启用了启动诊断，此存储帐户未被删除，并且你有权访问此存储帐户。 | 仔细检查你是否未删除 VM 或虚拟机规模集的启动诊断存储帐户
 与 VM 的串行控制台连接遇到错误： "错误的请求" (400)  | 如果启动诊断 URI 不正确，可能会发生这种情况。 例如，使用了 "http://" 而不是 "https://"。 可以通过以下命令修复启动诊断 URI： `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 你没有写入此 VM 的启动诊断存储帐户所需的权限。 请确保至少具有 VM 参与者权限 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅 [概述页](serial-console-overview.md)。
-无法确定启动诊断存储帐户* &lt; STORAGEACCOUNTNAME &gt; *的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅 [概述页](serial-console-overview.md)。
+无法确定启动诊断存储帐户 *&lt; STORAGEACCOUNTNAME &gt;* 的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅 [概述页](serial-console-overview.md)。
 尚未成功预配此 VM。 请确保已完全部署 VM，并重试串行控制台连接。 | 你的 VM 或虚拟机规模集可能仍在进行设置。 请等待一段时间，然后重试。
 Web 套接字已关闭或无法打开。 | 可能需要将防火墙访问权限添加到 `*.console.azure.com` 。 更详细但更好的方法是允许防火墙访问 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，这种范围会定期发生变化。
 串行控制台不能使用具有分层命名空间的 Azure Data Lake Storage Gen2 的存储帐户。 | 这是分层命名空间的已知问题。 若要缓解此情况，请确保不使用 Azure Data Lake Storage Gen2 创建 VM 的启动诊断存储帐户。 仅可在创建存储帐户时设置此选项。 你可能需要创建单独的启动诊断存储帐户，而不启用 Azure Data Lake Storage Gen2 来缓解此问题。

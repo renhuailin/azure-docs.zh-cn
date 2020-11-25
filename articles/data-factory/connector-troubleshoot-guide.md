@@ -10,11 +10,11 @@ ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
 ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023834"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "92638136"
 
 - **原因：** Blob 存储操作遇到问题。
 
-- **建议** ：检查详细信息中的错误。 参阅 Blob 帮助文档： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 如需帮助，请联系存储团队。
+- **建议**：检查详细信息中的错误。 参阅 Blob 帮助文档： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 如需帮助，请联系存储团队。
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>错误代码：AzureBlobServiceNotReturnExpectedDataLength
@@ -52,15 +52,15 @@ ms.locfileid: "92638136"
 
 ### <a name="error-message-request-size-is-too-large"></a>错误消息：请求过大
 
-- <bpt id="p1">**</bpt>Symptoms<ept id="p1">**</ept>: You copy data into Azure Cosmos DB with default write batch size, and hit error <bpt id="p2">*</bpt>"<bpt id="p3">**</bpt>Request size is too large<ept id="p3">**</ept>"<ept id="p2">*</ept>.
+- **症状**：将数据复制到使用默认写入批大小的 Azure Cosmos DB 时，遇到错误“请求过大”。
 
 - **原因：** Cosmos DB 将单个请求的大小限制为 2 MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 如果文档过大，默认行为会导致请求过大。 可以优化写入批大小。
 
-- **解决方法** ：在复制活动接收器中，减小“写入批大小”值（默认值为 10000）。
+- **解决方法**：在复制活动接收器中，减小“写入批大小”值（默认值为 10000）。
 
 ### <a name="error-message-unique-index-constraint-violation"></a>错误消息：唯一索引约束冲突
 
-- **症状** ：将数据复制到 Cosmos DB 时遇到以下错误：
+- **症状**：将数据复制到 Cosmos DB 时遇到以下错误：
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
@@ -73,14 +73,14 @@ ms.locfileid: "92638136"
 
     - 如果使用“更新插入”作为写入行为，并设置了容器的另一个唯一键，则此错误表示源数据中的行/对象使用了定义的唯一键的不同 ID，但使用了该键的相同值。
 
-- **解决方法** ： 
+- **解决方法**： 
 
     - 对于原因 1，请将“更新插入”设置为写入行为。
     - 对于原因 2，请确保每个文档使用定义的唯一键的不同值。
 
 ### <a name="error-message-request-rate-is-large"></a>错误消息：请求速率太大
 
-- **症状** ：将数据复制到 Cosmos DB 时遇到以下错误：
+- **症状**：将数据复制到 Cosmos DB 时遇到以下错误：
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
@@ -89,19 +89,19 @@ ms.locfileid: "92638136"
 
 - **原因：** 使用的请求单位大于 Cosmos DB 中配置的可用 RU。 在[此处](../cosmos-db/request-units.md#request-unit-considerations)了解 Cosmos DB 如何计算 RU。
 
-- **解决方法** ：下面是两种解决方法：
+- **解决方法**：下面是两种解决方法：
 
-    1. **增加容器 RU** ，使之大于 Cosmos DB 中的值，这可以提高复制活动的性能，不过会增大 Cosmos DB 的费用。 
+    1. **增加容器 RU**，使之大于 Cosmos DB 中的值，这可以提高复制活动的性能，不过会增大 Cosmos DB 的费用。 
 
     2. 将 **writeBatchSize** 减至更小的值（例如 1000），并将 **parallelCopies** 设置为更小的值（例如 1），这会导致复制运行性能比当前更糟，但不会增大 Cosmos DB 的费用。
 
 ### <a name="column-missing-in-column-mapping"></a>列映射中缺少列
 
-- **症状** ：导入用于列映射的 Cosmos DB 的架构时缺少某些列。 
+- **症状**：导入用于列映射的 Cosmos DB 的架构时缺少某些列。 
 
 - **原因：** ADF 从前 10 个 Cosmos DB 文档推断架构。 如果某些列/属性在这些文档中没有值，则它们不会被 ADF 检测到，因此也就不会显示。
 
-- **解决方法** ：可按如下所示优化查询，以强制在结果集中显示带有空值的列：（假设前 10 个文档中缺少“impossible”列）。 或者，可以手动添加要映射的列。
+- **解决方法**：可按如下所示优化查询，以强制在结果集中显示带有空值的列：（假设前 10 个文档中缺少“impossible”列）。 或者，可以手动添加要映射的列。
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
@@ -109,7 +109,7 @@ ms.locfileid: "92638136"
 
 ### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>错误消息：读取器的 GuidRepresentation 为 CSharpLegacy
 
-- **症状** ：从包含 UUID 字段的 Cosmos DB MongoAPI/MongoDB 复制数据时遇到以下错误：
+- **症状**：从包含 UUID 字段的 Cosmos DB MongoAPI/MongoDB 复制数据时遇到以下错误：
 
     ```
     Failed to read data via MongoDB client.,
@@ -119,7 +119,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 可通过两种方式表示 BSON 中的 UUID - UuidStardard 和 UuidLegacy。 默认使用 UuidLegacy 来读取数据。 如果 MongoDB 中的 UUID 数据是 UuidStandard，则会出现错误。
 
-- **解决方法** ：在 MongoDB 连接字符串中，添加选项 " **uuidRepresentation=standard** "。 有关详细信息，请参阅 [MongoDB 连接字符串](connector-mongodb.md#linked-service-properties)。
+- **解决方法**：在 MongoDB 连接字符串中，添加选项 "**uuidRepresentation=standard**"。 有关详细信息，请参阅 [MongoDB 连接字符串](connector-mongodb.md#linked-service-properties)。
             
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
@@ -130,15 +130,15 @@ ms.locfileid: "92638136"
 
 - **原因：** ADLS Gen2 引发了指明操作失败的错误。
 
-- **建议** ：检查 ADLS Gen2 引发的详细错误消息。 如果这是由暂时性故障导致的，请重试。 如果需要进一步的帮助，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
+- **建议**：检查 ADLS Gen2 引发的详细错误消息。 如果这是由暂时性故障导致的，请重试。 如果需要进一步的帮助，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
 
 - **原因：** 如果错误消息包含“被禁止”，则你使用的服务主体或托管标识可能没有足够的权限来访问 ADLS Gen2。
 
-- **建议** ：参阅帮助文档： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
+- **建议**：参阅帮助文档： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
 
 - **原因：** 当错误消息包含“InternalServerError”时，错误是由 ADLS Gen2 返回的。
 
-- **建议** ：这可能是由暂时性失败导致的，请重试。 如果此问题仍然存在，请联系 Azure 存储支持部门，并提供错误消息中的请求 ID。
+- **建议**：这可能是由暂时性失败导致的，请重试。 如果此问题仍然存在，请联系 Azure 存储支持部门，并提供错误消息中的请求 ID。
 
 
 ### <a name="error-code--adlsgen2invalidurl"></a>错误代码：AdlsGen2InvalidUrl
@@ -158,20 +158,20 @@ ms.locfileid: "92638136"
 
 ### <a name="error-code-adlsgen2timeouterror"></a>错误代码：AdlsGen2TimeoutError
 
-- **消息** ：`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+- **消息**：`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
 ### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>错误消息：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。
 
-- **症状** ：复制活动失败，出现以下错误： 
+- **症状**：复制活动失败，出现以下错误： 
 
     ```
     Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
     ```
 
-- **原因** ：在 TLS 握手期间证书验证失败。
+- **原因**：在 TLS 握手期间证书验证失败。
 
 - **解决** 方法：解决方法：使用暂存复制跳过 ADLS GEN1 的 TLS 验证。 你需要重现此问题并收集 netmon 跟踪，然后与网络团队合作来检查本地网络配置。
 
@@ -180,29 +180,29 @@ ms.locfileid: "92638136"
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>错误消息：远程服务器返回了错误：(403)已禁止
 
-- **症状** ：复制活动失败，出现以下错误： 
+- **症状**：复制活动失败，出现以下错误： 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **原因** ：一个可能原因是，你使用的服务主体或托管标识无权访问某个文件夹/文件。
+- **原因**：一个可能原因是，你使用的服务主体或托管标识无权访问某个文件夹/文件。
 
-- **解决方法** ：在需要复制的所有文件夹和子文件夹上授予相应权限。 请参阅[这篇文档](connector-azure-data-lake-store.md#linked-service-properties)。
+- **解决方法**：在需要复制的所有文件夹和子文件夹上授予相应权限。 请参阅[这篇文档](connector-azure-data-lake-store.md#linked-service-properties)。
 
 ### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>错误消息：无法使用服务主体来获取访问令牌。 ADAL 错误: service_unavailable
 
-- **症状** ：复制活动失败，出现以下错误：
+- **症状**：复制活动失败，出现以下错误：
 
     ```
     Failed to get access token by using service principal. 
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **原因** ：如果 Azure Active Directory 拥有的 Service Token Server (STS) 不可用（即太忙而无法处理请求），则会返回 HTTP 错误 503。 
+- **原因**：如果 Azure Active Directory 拥有的 Service Token Server (STS) 不可用（即太忙而无法处理请求），则会返回 HTTP 错误 503。 
 
-- **解决方法** ：数分钟后重新运行复制活动。
+- **解决方法**：数分钟后重新运行复制活动。
                   
 
 ## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics（以前称为 SQL 数据仓库）/Azure SQL 数据库/SQL Server
@@ -213,11 +213,11 @@ ms.locfileid: "92638136"
 
 - **原因：** 如果错误消息包含“SqlException”，则 SQL 数据库将引发错误，指示某个特定操作失败。
 
-- **建议** ：如需了解更多详细信息，请按 SQL 错误代码在以下参考文档中进行搜索： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如需进一步的帮助，请联系 Azure SQL 支持。
+- **建议**：如需了解更多详细信息，请按 SQL 错误代码在以下参考文档中进行搜索： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如需进一步的帮助，请联系 Azure SQL 支持。
 
 - **原因：** 如果错误消息包含“具有 IP 地址的客户端‘...’不允许访问服务器”，并且你正在尝试连接到 Azure SQL 数据库，这通常是由 Azure SQL 数据库防火墙问题导致的。
 
-- **建议** ：在逻辑 SQL Server 防火墙配置中，启用“允许 Azure 服务和资源访问此服务器”选项。 参考文档： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
+- **建议**：在逻辑 SQL Server 防火墙配置中，启用“允许 Azure 服务和资源访问此服务器”选项。 参考文档： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
 
 
 ### <a name="error-code--sqloperationfailed"></a>错误代码：SqlOperationFailed
@@ -226,17 +226,17 @@ ms.locfileid: "92638136"
 
 - **原因：** 如果错误消息包含“SqlException”，则 SQL 数据库将引发错误，指示某个特定操作失败。
 
-- **建议** ：如果 SQL 错误不明确，请尝试将数据库更改为最新兼容级别“150”。 它可能会引发最新版本 SQL 错误。 请参阅[详细信息文档](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)。
+- **建议**：如果 SQL 错误不明确，请尝试将数据库更改为最新兼容级别“150”。 它可能会引发最新版本 SQL 错误。 请参阅[详细信息文档](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)。
 
     若要排查 SQL 错误，请根据 SQL 错误代码在此参考文档中搜索以了解更多详细信息： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如需进一步的帮助，请联系 Azure SQL 支持。
 
 - **原因：** 如果错误消息包含“PdwManagedToNativeInteropException”，这通常是由于源列和接收器列大小不匹配导致的。
 
-- **建议** ：检查源列和接收器列的大小。 如需进一步的帮助，请联系 Azure SQL 支持。
+- **建议**：检查源列和接收器列的大小。 如需进一步的帮助，请联系 Azure SQL 支持。
 
 - **原因：** 如果错误消息包含“InvalidOperationException”，这通常是由于输入数据无效导致的。
 
-- **建议** ：若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 参考文档： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+- **建议**：若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 参考文档： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
 
 
 
@@ -246,7 +246,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 凭据不正确，或登录帐户无法访问 SQL 数据库。
 
-- **建议** ：检查登录帐户是否有足够的权限来访问 SQL 数据库。
+- **建议**：检查登录帐户是否有足够的权限来访问 SQL 数据库。
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>错误代码：SqlOpenConnectionTimeout
@@ -255,7 +255,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 可能是 SQL 数据库暂时性失败。
 
-- **建议** ：重试，以使用更大的连接超时值来更新链接服务连接字符串。
+- **建议**：重试，以使用更大的连接超时值来更新链接服务连接字符串。
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>错误代码：SqlAutoCreateTableTypeMapFailed
@@ -264,7 +264,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 自动创建表不能满足源要求。
 
-- **建议** ：更新“mappings”中的列类型，或者在目标服务器中手动创建接收器表。
+- **建议**：更新“mappings”中的列类型，或者在目标服务器中手动创建接收器表。
 
 
 ### <a name="error-code--sqldatatypenotsupported"></a>错误代码：SqlDataTypeNotSupported
@@ -273,11 +273,11 @@ ms.locfileid: "92638136"
 
 - **原因：** 如果在 SQL 源上出现问题，并且错误与 SqlDateTime 溢出有关，则数据值将超出逻辑类型范围 (1/1/1753 12:00:00 AM - 12/31/9999 11:59:59 PM)。
 
-- **建议** ：在源 SQL 查询中将类型转换为字符串，或在复制活动列映射中将列类型更改为“String”。
+- **建议**：在源 SQL 查询中将类型转换为字符串，或在复制活动列映射中将列类型更改为“String”。
 
 - **原因：** 如果在 SQL 接收器上出现问题，并且错误与 SqlDateTime 溢出有关，则数据值将超出接收器表中的允许范围。
 
-- **建议** ：在接收器表中将相应的列类型更新为“datetime2”类型。
+- **建议**：在接收器表中将相应的列类型更新为“datetime2”类型。
 
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>错误代码：SqlInvalidDbStoredProcedure
@@ -286,7 +286,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 指定的存储过程无效。 这可能是因为存储过程不返回任何数据。
 
-- **建议** ：通过 SQL 工具验证存储过程。 请确保存储过程可以返回数据。
+- **建议**：通过 SQL 工具验证存储过程。 请确保存储过程可以返回数据。
 
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>错误代码：SqlInvalidDbQueryString
@@ -295,7 +295,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 指定的 SQL 查询无效。 这可能是因为查询不返回任何数据。
 
-- **建议** ：通过 SQL 工具验证 SQL 查询。 请确保查询可以返回数据。
+- **建议**：通过 SQL 工具验证 SQL 查询。 请确保查询可以返回数据。
 
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>错误代码：SqlInvalidColumnName
@@ -304,7 +304,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 找不到列。 可能存在配置错误。
 
-- **建议** ：验证查询中的列、数据集中的“结构”和活动中的“映射”。
+- **建议**：验证查询中的列、数据集中的“结构”和活动中的“映射”。
 
 
 ### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>错误代码：SqlColumnNameMismatchByCaseSensitive
@@ -318,7 +318,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 可能是 SQL 数据库暂时性失败。
 
-- **建议** ：重试。 如果问题重现，请联系 Azure SQL 支持人员。
+- **建议**：重试。 如果问题重现，请联系 Azure SQL 支持人员。
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>错误代码：SqlBatchWriteTransactionFailed
@@ -327,11 +327,11 @@ ms.locfileid: "92638136"
 
 - **原因：** 如果异常详细信息持续指出事务超时，则表示集成运行时与数据库之间的网络延迟高于默认阈值（30 秒）。
 
-- **建议** ：使用 120 或更大的“连接超时”值更新 SQL 链接服务连接字符串更新，然后重新运行活动。
+- **建议**：使用 120 或更大的“连接超时”值更新 SQL 链接服务连接字符串更新，然后重新运行活动。
 
 - **原因：** 如果异常详细信息间歇性指出 sqlconnection 中断，则原因可能只是与暂时性网络故障或 SQL 数据库端的问题有关
 
-- **建议** ：重试活动，并审阅 SQL 数据库端指标。
+- **建议**：重试活动，并审阅 SQL 数据库端指标。
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>错误代码：SqlBulkCopyInvalidColumnLength
@@ -340,7 +340,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 由于从 BCP 客户端接收到无效的列长度，SQL 批量复制失败。
 
-- **建议** ：若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 参考文档： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+- **建议**：若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 参考文档： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>错误代码：SqlConnectionIsClosed
@@ -349,7 +349,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 当高并发运行和服务器终止连接时，SQL 数据库关闭了 SQL 连接。
 
-- **建议** ：远程服务器关闭了 SQL 连接。 Retry。 如果问题重现，请联系 Azure SQL 支持人员。
+- **建议**：远程服务器关闭了 SQL 连接。 Retry。 如果问题重现，请联系 Azure SQL 支持人员。
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>错误代码：SqlCreateTableFailedUnsupportedType
@@ -359,7 +359,7 @@ ms.locfileid: "92638136"
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>错误消息：将字符串转换为唯一标识符失败
 
-- **症状** ：使用暂存复制和 PolyBase 将表格数据源（例如 SQL Server）中的数据复制到 Azure Synapse Analytics 时，遇到以下错误：
+- **症状**：使用暂存复制和 PolyBase 将表格数据源（例如 SQL Server）中的数据复制到 Azure Synapse Analytics 时，遇到以下错误：
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -370,11 +370,11 @@ ms.locfileid: "92638136"
 
 - **原因：** Azure Synapse Analytics PolyBase 无法将空字符串转换为 GUID。
 
-- **解决方法** ：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
+- **解决方法**：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
 
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>错误消息：预期的数据类型：DECIMAL(x,x)，违规值
 
-- **症状** ：使用暂存复制和 PolyBase 将表格数据源（例如 SQL Server）中的数据复制到 Azure Synapse Analytics 时，遇到以下错误：
+- **症状**：使用暂存复制和 PolyBase 将表格数据源（例如 SQL Server）中的数据复制到 Azure Synapse Analytics 时，遇到以下错误：
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -386,11 +386,11 @@ ms.locfileid: "92638136"
 
 - **原因：** Azure Synapse Analytics Polybase 无法将空字符串（null 值）插入十进制列。
 
-- **解决方法** ：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
+- **解决方法**：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>错误消息：Java 异常消息：HdfsBridge::CreateRecordReader
 
-- **症状** ：使用 PolyBase 将数据复制到 Azure Synapse Analytics 时遇到以下错误：
+- **症状**：使用 PolyBase 将数据复制到 Azure Synapse Analytics 时遇到以下错误：
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -417,13 +417,13 @@ ms.locfileid: "92638136"
     - Time -> 12 字节
     - Tinyint -> 1 字节
 
-- **解决方法** ：将列宽缩小至 1 MB 以下
+- **解决方法**：将列宽缩小至 1 MB 以下
 
 - 或者，通过禁用 Polybase 来使用批量插入方法
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>错误消息：不满足使用 HTTP 条件标头指定的条件
 
-- **症状** ：使用 SQL 查询从 Azure Synapse Analytics 提取数据时遇到以下错误：
+- **症状**：使用 SQL 查询从 Azure Synapse Analytics 提取数据时遇到以下错误：
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
@@ -431,7 +431,7 @@ ms.locfileid: "92638136"
 
 - **原因：** Azure Synapse Analytics 在查询 Azure 存储中的外部表时遇到问题。
 
-- **解决方法** ：在 SSMS 中运行同一查询，检查是否看到相同的结果。 如果是，请创建 Azure Synapse Analytics 支持票证，并提供 Azure Synapse Analytics 服务器和数据库名称以进一步排查问题。
+- **解决方法**：在 SSMS 中运行同一查询，检查是否看到相同的结果。 如果是，请创建 Azure Synapse Analytics 支持票证，并提供 Azure Synapse Analytics 服务器和数据库名称以进一步排查问题。
             
 
 ## <a name="delimited-text-format"></a>带分隔符的文本格式
@@ -442,7 +442,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如：'ColumnA,, ColumnB'.
 
-- **建议** ：检查第一行，如果存在空值，请修复值。
+- **建议**：检查第一行，如果存在空值，请修复值。
 
 
 ### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>错误代码：DelimitedTextMoreColumnsThanDefined
@@ -451,15 +451,15 @@ ms.locfileid: "92638136"
 
 - **原因：** 有问题的行的列计数大于第一行的列计数。 原因可能是数据有问题，或者列分隔符/引号字符设置不正确。
 
-- **建议** ：获取错误消息中的行计数，检查行的列并修复数据。
+- **建议**：获取错误消息中的行计数，检查行的列并修复数据。
 
 - **原因：** 如果错误消息中的预期列计数为“1”，则原因可能是指定了错误的压缩或格式设置，导致 ADF 错误地分析文件。
 
-- **建议** ：检查格式设置，确保它与源文件相匹配。
+- **建议**：检查格式设置，确保它与源文件相匹配。
 
 - **原因：** 如果源是文件夹，则原因可能是指定的文件夹中的文件采用了不同的架构。
 
-- **建议** ：确保给定文件夹中的文件采用相同的架构。
+- **建议**：确保给定文件夹中的文件采用相同的架构。
 
 
 ### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>错误代码：DelimitedTextIncorrectRowDelimiter
@@ -486,7 +486,7 @@ ms.locfileid: "92638136"
 
 - **原因：** Dynamics 服务器端出现了暂时性问题。
 
-- **建议** ：重新运行管道。 如果仍旧失败，请尝试降低并行度。 如果还是失败，请联系 Dynamics 支持人员。
+- **建议**：重新运行管道。 如果仍旧失败，请尝试降低并行度。 如果还是失败，请联系 Dynamics 支持人员。
 
 
 
@@ -536,15 +536,15 @@ ms.locfileid: "92638136"
 
 - **原因：** 如果错误消息包含“java.lang.OutOfMemory”、“Java 堆空间”和“doubleCapacity”，则原因通常与旧版集成运行时中的内存管理问题有关。
 
-- **建议** ：如果使用的是自承载集成运行时，且版本低于 3.20.7159.1，建议升级到最新版本。
+- **建议**：如果使用的是自承载集成运行时，且版本低于 3.20.7159.1，建议升级到最新版本。
 
 - **原因：** 如果错误消息包含“java.lang.OutOfMemory”，则原因是集成运行时不能提供足够的资源来处理文件。
 
-- **建议** ：限制集成运行时中的并发运行。 对于自承载集成运行时，请扩展到具有 8 GB 或更大内存的强大计算机。
+- **建议**：限制集成运行时中的并发运行。 对于自承载集成运行时，请扩展到具有 8 GB 或更大内存的强大计算机。
 
 - **原因：** 如果错误消息包含“NullPointerReference”，则原因可能是出现了暂时性错误。
 
-- **建议** ：重试。 如果问题仍然出现，请联系支持人员。
+- **建议**：重试。 如果问题仍然出现，请联系支持人员。
 
 
 ### <a name="error-code--parquetinvalidfile"></a>错误代码：ParquetInvalidFile
@@ -553,7 +553,7 @@ ms.locfileid: "92638136"
 
 - **原因：** Parquet 文件问题。
 
-- **建议** ：检查输入是否为有效的 Parquet 文件。
+- **建议**：检查输入是否为有效的 Parquet 文件。
 
 
 ### <a name="error-code--parquetnotsupportedtype"></a>错误代码：ParquetNotSupportedType
@@ -562,7 +562,7 @@ ms.locfileid: "92638136"
 
 - **原因：** Azure 数据工厂不支持 Parquet 格式。
 
-- **建议** ：反复检查源数据。 参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
+- **建议**：反复检查源数据。 参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>错误代码：ParquetMissedDecimalPrecisionScale
@@ -571,7 +571,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 尝试分析数字的精度和小数位数，但系统未提供此类信息。
 
-- **建议** ：“Source”不会返回正确的精度和小数位数。 检查问题列的精度和小数位数。
+- **建议**：“Source”不会返回正确的精度和小数位数。 检查问题列的精度和小数位数。
 
 
 ### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>错误代码：ParquetInvalidDecimalPrecisionScale
@@ -580,7 +580,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 架构无效。
 
-- **建议** ：检查问题列的精度和小数位数。
+- **建议**：检查问题列的精度和小数位数。
 
 
 ### <a name="error-code--parquetcolumnnotfound"></a>错误代码：ParquetColumnNotFound
@@ -589,7 +589,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 源架构与接收器架构不匹配。
 
-- **建议** ：检查“activity”中的“mappings”。 确保源列可映射到正确的接收器列。
+- **建议**：检查“activity”中的“mappings”。 确保源列可映射到正确的接收器列。
 
 
 ### <a name="error-code--parquetinvaliddataformat"></a>错误代码：ParquetInvalidDataFormat
@@ -598,7 +598,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 数据无法转换为 mappings.source 中指定的类型
 
-- **建议** ：反复检查源数据，或者在复制活动列映射中指定此列的正确数据类型。 参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
+- **建议**：反复检查源数据，或者在复制活动列映射中指定此列的正确数据类型。 参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>错误代码：ParquetDataCountNotMatchColumnCount
@@ -607,16 +607,16 @@ ms.locfileid: "92638136"
 
 - **原因：** 源列计数和接收器列计数不匹配
 
-- **建议** ：反复检查源列计数是否与“mapping”中的接收器列计数相同。
+- **建议**：反复检查源列计数是否与“mapping”中的接收器列计数相同。
 
 
 ### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>错误代码：ParquetDataTypeNotMatchColumnType
 
-- **消息** ：数据类型 %srcType; 与列“% columnIndex;”的给定列类型 %dstType; 不匹配。
+- **消息**：数据类型 %srcType; 与列“% columnIndex;”的给定列类型 %dstType; 不匹配。
 
 - **原因：** 源中的数据无法转换为接收器中定义的类型
 
-- **建议** ：在 mapping.sink 中指定正确的类型。
+- **建议**：在 mapping.sink 中指定正确的类型。
 
 
 ### <a name="error-code--parquetbridgeinvaliddata"></a>错误代码：ParquetBridgeInvalidData
@@ -625,7 +625,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 数据值超出限制
 
-- **建议** ：重试。 如果问题仍然出现，请联系我们。
+- **建议**：重试。 如果问题仍然出现，请联系我们。
 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>错误代码：ParquetUnsupportedInterpretation
@@ -634,7 +634,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 不支持的方案
 
-- **建议** ：“ParquetInterpretFor”不应为“sparkSql”。
+- **建议**：“ParquetInterpretFor”不应为“sparkSql”。
 
 
 ### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>错误代码：ParquetUnsupportFileLevelCompressionOption
@@ -643,7 +643,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 不支持的方案
 
-- **建议** ：删除有效负载中的“CompressionType”。
+- **建议**：删除有效负载中的“CompressionType”。
 
 
 
@@ -655,7 +655,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 自承载集成运行时找不到 Java 运行时。 读取特定的源时需要 Java 运行时。
 
-- **建议** ：检查集成运行时环境，并参阅文档： https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+- **建议**：检查集成运行时环境，并参阅文档： https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
 
 
 ### <a name="error-code--wildcardpathsinknotsupported"></a>错误代码：WildcardPathSinkNotSupported
@@ -664,7 +664,7 @@ ms.locfileid: "92638136"
 
 - **原因：** 接收器数据集不支持通配符。
 
-- **建议** ：检查接收器数据集，并修复路径（不使用通配符值）。
+- **建议**：检查接收器数据集，并修复路径（不使用通配符值）。
 
 
 ### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>错误代码：MappingInvalidPropertyWithEmptyValue

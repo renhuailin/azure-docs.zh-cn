@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024089"
 ---
 # <a name="color-materials"></a>颜色材料
 
@@ -22,7 +22,7 @@ ms.locfileid: "94555101"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex"::: 颜色* ）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex"::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 由于颜色材料不反映环境，因此完全透明的颜色材料将变得不可见。 这对于 [.pbr 材料](pbr-materials.md)是不同的。

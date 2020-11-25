@@ -4,17 +4,17 @@ description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022422"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
-> 适用于 Azure 策略扩展版本 **0.1.0** 和更高版本
+> 适用于 Azure Policy 扩展版本 0.1.0 和更高版本
 
-了解如何使用适用于 Visual Studio Code 的 Azure 策略扩展查找 [别名](../concepts/definition-structure.md#aliases)，查看资源和策略，导出对象，以及评估策略定义。 首先，本文将介绍如何在 Visual Studio Code 中安装 Azure Policy 扩展。 接下来演练如何查找别名。
+了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找[别名](../concepts/definition-structure.md#aliases)、查看资源和策略、导出对象以及评估策略定义。 首先，本文将介绍如何在 Visual Studio Code 中安装 Azure Policy 扩展。 接下来演练如何查找别名。
 
 可在 Visual Studio Code 支持的所有平台上安装适用于 Visual Studio Code 的 Azure Policy 扩展。 支持的平台包括 Windows、Linux 和 macOS。
 
@@ -64,13 +64,13 @@ ms.locfileid: "92317613"
 
      在 Azure Policy 扩展中，选择“登录到 Azure”。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="选择 Visual Studio Code 的 Azure 国家云登录的屏幕截图。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code 的屏幕截图，显示 Azure Policy 扩展的图标。" border="false":::
 
    - 命令面板
 
      在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:  登录”。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="选择 Visual Studio Code 的 Azure 国家云登录的屏幕截图。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="命令面板中 Visual Studio Code 的 Azure 云登录选项的屏幕截图。" border="false":::
 
 1. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。
 
@@ -82,7 +82,7 @@ ms.locfileid: "92317613"
 
    - 命令面板： 
 
-     从菜单栏中，单击 " **查看** > " " **命令面板**"，然后输入 **Azure：选择订阅**。
+     在菜单栏中，转到“视图”>“命令面板”，然后输入“Azure:  选择订阅”。
 
    - 窗口页脚
 
@@ -125,7 +125,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 打开某个资源后，将鼠标悬停在资源管理器属性名称或值上可显示 Azure Policy 别名（如果存在）。 在此示例中，资源的类型是 `Microsoft.Compute/virtualMachines`，鼠标已悬停在 **properties.storageProfile.imageReference.offer** 属性上。 悬停鼠标可显示匹配的别名。
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="选择 Visual Studio Code 的 Azure 国家云登录的屏幕截图。" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure Policy 扩展的屏幕截图，鼠标悬停在属性上以显示别名。" border="false":::
 
 > [!NOTE]
 > VS Code 扩展只公开资源管理器模式属性，不会显示任何[资源提供程序模式](../concepts/definition-structure.md#mode)属性。
@@ -154,13 +154,13 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="export-objects"></a>导出对象
 
-你的订阅中的对象可以导出到本地 JSON 文件。 在 " **资源** 或 **策略** " 窗格中，将鼠标悬停在 "导出" 或 "选择可导出对象" 上方。 在突出显示的行的末尾，选择 "保存" 图标，然后选择一个文件夹来保存该资源 JSON。
+订阅中的对象可以导出到本地 JSON 文件。 在“资源”或“策略”窗格中，将鼠标悬停在可导出对象上或将其选中 。 在突出显示的行的末尾，选择“保存”图标，然后选择一个文件夹来保存资源 JSON。
 
-可以在本地导出下列对象：
+可以在本地导出以下对象：
 
 - 资源窗格
   - 资源组
-  - 资源组或资源提供程序 (单个资源) 
+  - 单个资源（在资源组中或资源提供程序下）
 - 策略窗格
   - 策略分配
   - 内置策略定义
@@ -169,16 +169,16 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="on-demand-evaluation-scan"></a>按需评估扫描
 
-可以使用适用于 Visual Studio Code 的 Azure 策略扩展启动评估扫描。 若要开始评估，请选择并固定以下各对象：资源、策略定义和策略分配。
+可以使用适用于 Visual Studio Code 的 Azure Policy 扩展启动评估扫描。 若要开始评估，请选择并固定以下各对象：资源、策略定义和策略分配。
 
-1. 若要固定每个对象，请在 " **资源** " 窗格或 " **策略** " 窗格中找到该对象，然后选择 "固定到编辑" 选项卡图标。 固定对象会将其添加到扩展的 " **计算** " 窗格中。
-1. 在 " **评估** " 窗格中，选择每个对象之一，并使用 "选择评估" 图标将其标记为包括在评估中。
-1. 在 " **评估** " 窗格的顶部，选择 "运行评估" 图标。 Visual Studio Code 会打开一个新窗格，其中包含 JSON 格式的结果计算详细信息。
+1. 若要固定每个对象，请在“资源”窗格或“策略”窗格中找到该对象，然后选择“固定到编辑选项卡”图标 。 固定对象会将其添加到扩展的“评估”窗格中。
+1. 在“评估”窗格中，选择其中一个对象，并使用“选择用于评估”图标将其标记为包括在评估中。
+1. 在“评估”窗格的顶部，选择“运行评估”图标。 随即在 Visual Studio Code 中打开一个新窗格，其中包含 JSON 格式的生成的评估详细信息。
 
 > [!NOTE]
-> 如果所选策略定义是 [AuditIfNotExists](../concepts/effects.md#auditifnotexists) 或 [DeployIfNotExists](../concepts/effects.md#deployifnotexists)，则在 " **评估** " 窗格中使用加号图标来选择用于存在检查的 _相关_ 资源。
+> 如果所选策略定义是 [AuditIfNotExists](../concepts/effects.md#auditifnotexists) 或 [DeployIfNotExists](../concepts/effects.md#deployifnotexists)，则在“评估”窗格中，使用加号图标选择一个相关资源进行存在性检查。
 
-评估结果提供有关策略定义和策略分配以及 **policyEvaluations. evaluationResult** 属性的信息。 输出与以下示例类似：
+评估结果提供有关策略定义和策略分配以及“policyEvaluations.evaluationResult”属性的信息。 输出与以下示例类似：
 
 ```json
 {

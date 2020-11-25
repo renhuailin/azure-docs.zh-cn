@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837374"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023646"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
@@ -75,7 +75,7 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 ### <a name="message-processing-decoding-and-encoding"></a>消息处理、解码和编码
 
-在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”** 阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
+在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
 
 逻辑应用提供类似的功能。 你使用不同的连接器触发器通过不同的协议（文件系统、FTP、HTTP，等等）接收平面文件，并使用[平面文件解码](../logic-apps/logic-apps-enterprise-integration-flatfile.md)操作将传入的数据转换为 XML。 无需进行任何更改即可将现有的平面文件架构直接移动到逻辑应用，然后再将架构上传到集成帐户。
 
@@ -93,7 +93,7 @@ BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发
 
 ![显示路由筛选器选项的屏幕截图。](media/logic-apps-move-from-mabs/route-filter.png)
 
-在 BizTalk 服务中，如果只有两个选项，则使用“条件”** 是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”****。
+在 BizTalk 服务中，如果只有两个选项，则使用“条件”是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”。
 
 逻辑应用通过[条件语句](../logic-apps/logic-apps-control-flow-conditional-statement.md)和 [switch 语句](../logic-apps/logic-apps-control-flow-switch-statement.md)提供更复杂的逻辑功能以及高级控制流和路由。
 

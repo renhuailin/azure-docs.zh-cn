@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
 ms.openlocfilehash: b70de1915e6c068bd658dff60776085075412789
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024004"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -66,12 +66,12 @@ ms.locfileid: "92539779"
 3. 在主窗口中选择“Spark 项目(Scala)”。
 
 4. 在“生成工具”下拉列表中选择以下任一选项：
-   * **Maven** ：支持 Scala 项目创建向导。
-   * **SBT** ：用于管理依赖项和生成 Scala 项目。
+   * **Maven**：支持 Scala 项目创建向导。
+   * **SBT**：用于管理依赖项和生成 Scala 项目。
 
      ![IntelliJ IDEA“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-5. 选择“ **下一步** ”。
+5. 选择“**下一步**”。
 
 6. 在“新建项目”窗口中提供以下信息：  
 
@@ -186,7 +186,7 @@ ms.locfileid: "92539779"
 
 1. “链接群集”窗口中提供的选项根据在“链接资源类型”下拉列表中选择的值而异。   请输入自己的值，然后选择“确定”。
 
-    * **HDInsight 群集** 。  
+    * **HDInsight 群集**。  
   
         |属性 |Value |
         |----|----|
@@ -297,7 +297,7 @@ ms.locfileid: "92539779"
 
 默认情况下，用于 IntelliJ 的 Azure 工具包将列出所有 Azure 订阅中的 Spark 群集。 如果需要，可以指定想要访问的订阅。  
 
-1. 在 Azure 资源管理器中，右键单击 **azure** 根节点，然后选择 " **选择订阅** "。  
+1. 在 Azure 资源管理器中，右键单击 **azure** 根节点，然后选择 " **选择订阅**"。  
 
 2. 在“选择订阅”窗口中，清除不想要访问的订阅旁边的复选框，然后选择“关闭”。 
 
@@ -468,7 +468,7 @@ ms.locfileid: "92539779"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight** 。 
+1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 
 1. 选择“服务”下的“HDInsight 群集” 。
 
