@@ -4,11 +4,11 @@ description: 如何监视 Azure 容器实例中的容器消耗的计算资源，
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526691"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007250"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -27,24 +27,24 @@ ms.locfileid: "90526691"
 
 Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。 默认情况下，指标聚合为平均值。
 
-* **CPU 使用率** - 以**毫核心**为单位进行度量。 一个毫核心是一个 CPU 核心的 1/1000，因此 500 毫核心表示 0.5 CPU 核心的使用量。
+* **CPU 使用率** - 以 **毫核心** 为单位进行度量。 一个毫核心是一个 CPU 核心的 1/1000，因此 500 毫核心表示 0.5 CPU 核心的使用量。
 
-* 内存使用量 - 以字节为单位。****
+* 内存使用量 - 以字节为单位。
 
-* 每秒接收的网络字节数和每秒传输的网络字节数。**** **** 
+* 每秒接收的网络字节数和每秒传输的网络字节数。  
 
 ## <a name="get-metrics---azure-portal"></a>获取指标 - Azure 门户
 
-创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。**** 在这里可以看到为每个可用指标预先创建的图表。
+创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。 在这里可以看到为每个可用指标预先创建的图表。
 
 ![双图表][dual-chart]
 
 在包含多个容器的容器组中，使用[维度][monitor-dimension]按容器显示指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
 
-1. 在“概览”页中选择一个指标图表，例如“CPU”。**** **** 
-1. 选择“应用拆分”按钮，然后选择“容器名称”****。****
+1. 在“概览”页中选择一个指标图表，例如“CPU”。  
+1. 选择“应用拆分”按钮，然后选择“容器名称”。
 
-![屏幕捕获显示了选定 "应用拆分" 并选择 "容器名称" 的容器实例的指标。][dimension]
+![屏幕捕获显示了一个容器实例的指标，其中选择了“应用拆分”和“容器名称”。][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>获取指标 - Azure CLI
 
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-更改命令中 `--metric` 参数的值即可获取其他[支持的指标][supported-metrics]。 例如，使用以下命令获取**内存**使用率指标。 
+更改命令中 `--metric` 参数的值即可获取其他[支持的指标][supported-metrics]。 例如，使用以下命令获取 **内存** 使用率指标。 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table

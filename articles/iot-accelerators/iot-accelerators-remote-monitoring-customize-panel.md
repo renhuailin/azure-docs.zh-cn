@@ -10,11 +10,11 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318358"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006058"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 中的仪表板上添加自定义面板
 
@@ -25,7 +25,7 @@ ms.locfileid: "91318358"
 
 本文的示例面板在现有仪表板页上显示。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -42,15 +42,15 @@ ms.locfileid: "91318358"
 
 ### <a name="add-the-new-files-that-define-the-panel"></a>添加定义面板的新文件
 
-首先，src/walkthrough/components/pages/dashboard/panels/examplePanel 文件夹包含定义面板的文件，包括****：
+首先，src/walkthrough/components/pages/dashboard/panels/examplePanel 文件夹包含定义面板的文件，包括：
 
 **examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
-将 src/walkthrough/components/pages/dashboard/panels/examplePanel 文件夹复制到 src/components/pages/dashboard/panels 文件夹********。
+将 src/walkthrough/components/pages/dashboard/panels/examplePanel 文件夹复制到 src/components/pages/dashboard/panels 文件夹。
 
-将以下导出添加到 src/walkthrough/components/pages/dashboard/panels/index.js 文件中****：
+将以下导出添加到 src/walkthrough/components/pages/dashboard/panels/index.js 文件中：
 
 ```js
 export * from './examplePanel';
@@ -58,7 +58,7 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>将面板添加到仪表板
 
-修改 src/components/pages/dashboard/dashboard.js 以添加面板****。
+修改 src/components/pages/dashboard/dashboard.js 以添加面板。
 
 将示例面板添加到面板的导入列表中：
 
@@ -91,7 +91,7 @@ import {
 npm start
 ```
 
-上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。 导航到“仪表板”页查看新面板****。
+上述命令在本地 (`http://localhost:3000/dashboard`) 运行 UI。 导航到“仪表板”页查看新面板。
 
 ## <a name="next-steps"></a>后续步骤
 

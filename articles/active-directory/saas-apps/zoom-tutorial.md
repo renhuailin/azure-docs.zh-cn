@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006415"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "92519815"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Zoom”部分中，根据要求复制相应 URL  。
+1. 在“设置 Zoom”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "92519815"
 在本部分中，将通过授予 B.Simon 访问 Zoom 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Zoom”  。
+1. 在应用程序列表中，选择“Zoom”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
     ![“用户和组”链接](common/users-groups-blade.png)
@@ -145,17 +145,17 @@ ms.locfileid: "92519815"
 
     ![“单一登录”部分](./media/zoom-tutorial/zoom-sso2.png "单一登录")
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值  。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    b. 对于  。
+    b. 对于 **注销页 URL** 值，需要转到 Azure 门户并单击左侧的 **Azure Active Directory**，然后导航到“应用注册”。
 
     ![“Azure Active Directory”按钮](./media/zoom-tutorial/appreg.png)
 
-    c. 单击“终结点” 
+    c. 单击“终结点”
 
     ![“终结点”按钮](./media/zoom-tutorial/endpoint.png)
 
-    d. 复制  文本框中。
+    d. 复制 **SAML-P 注销终结点** 并将其粘贴到“注销页 URL”文本框中。
 
     ![“复制终结点”按钮](./media/zoom-tutorial/endpoint1.png)
 

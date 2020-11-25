@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75644624"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006041"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -20,7 +20,7 @@ ms.locfileid: "75644624"
 
 在此示例中，在应用程序部署中使用参数来替代配置值。
 
-1. 打开服务项目中的* \<MyService>\PackageRoot\Config\Settings.xml*文件。
+1. 打开服务项目中的 *\<MyService>\PackageRoot\Config\Settings.xml* 文件。
 1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
    ```xml
@@ -30,7 +30,7 @@ ms.locfileid: "75644624"
    ```
 
 1. 保存并关闭该文件。
-1. 打开* \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml*文件。
+1. 打开 *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 文件。
 1. 在 ApplicationManifest.xml 文件的 `Parameters` 元素中声明参数和默认值。  建议参数名称包含服务的名称（例如，“MyService”）。
 
    ```xml

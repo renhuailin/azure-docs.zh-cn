@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006228"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 调用在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -311,7 +311,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     }
    ```
 
-   如果使用的是 **API 版本 2018-06-01** ，若要从具有用户分配的托管标识的虚拟机规模集中删除系统分配的托管标识，请从 `{"identity":{"type:" "}}` 值中删除 `SystemAssigned`，同时保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值。 如果使用的是 **API 版本 2017-12-01** 或早期版本，请保留 `identityIds` 数组。
+   如果使用的是 **API 版本 2018-06-01**，若要从具有用户分配的托管标识的虚拟机规模集中删除系统分配的托管标识，请从 `{"identity":{"type:" "}}` 值中删除 `SystemAssigned`，同时保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值。 如果使用的是 **API 版本 2017-12-01** 或早期版本，请保留 `identityIds` 数组。
 
 ## <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 

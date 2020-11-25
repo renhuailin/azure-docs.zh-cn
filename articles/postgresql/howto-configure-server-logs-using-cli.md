@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 71dac0b6ea2202e712280607a73e860ae68bdb73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704865"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005582"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用命令行接口 (Azure CLI) 下载 PostgreSQL 服务器错误日志。 但是，访问事务日志不受支持。 
@@ -34,14 +34,14 @@ ms.locfileid: "91704865"
 ## <a name="list-logs"></a>列出日志
 若要列出服务器的可用日志文件，请运行 [az postgres server-logs list](/cli/azure/postgres/server-logs) 命令。
 
-可以列出资源组“myresourcegroup”**** 下的服务器“mydemoserver.postgres.database.azure.com”**** 的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
+可以列出资源组“myresourcegroup”下的服务器“mydemoserver.postgres.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>从服务器将日志下载到本地
 使用 [az postgres server-logs download](/cli/azure/postgres/server-logs) 命令可下载服务器的单个日志文件。 
 
-使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的特定日志文件下载到本地环境********。
+使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```

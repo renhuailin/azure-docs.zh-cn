@@ -4,11 +4,11 @@ description: 本文提供了有关如何配置自己的密钥来加密 Azure 事
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006126"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 azure 存储服务加密 (Azure SSE) 提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 889e298f64689748340713de6318f8ffcd181001
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006449"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性
 
@@ -23,7 +23,7 @@ ms.locfileid: "93123840"
 
 流分析可以保证在单独的批处理中更新配对区域中的作业。 因此，在更新之间具有足够的时间间隔来识别潜在问题并修复它们。
 
-_除了印度中部以外_ （其配对区域（即印度南部）不存在流分析），流分析的更新部署不会同时在一组配对区域中进行。 **同一组中** 多个区域中的部署可能会 **同时** 进行。
+_除了印度中部以外_（其配对区域（即印度南部）不存在流分析），流分析的更新部署不会同时在一组配对区域中进行。 **同一组中** 多个区域中的部署可能会 **同时** 进行。
 
 **[可用性和配对区域](../best-practices-availability-paired-regions.md)** 一文具有关于配对区域的最新信息。
 

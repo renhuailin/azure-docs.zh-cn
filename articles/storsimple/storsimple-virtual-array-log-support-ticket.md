@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130946"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005769"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
 
@@ -41,13 +41,13 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供 **记录
 
     1. 从“颁发类型”下拉列表中，选择“技术” 。 
     
-    2. 将自动选择当前 **订阅** 、 **服务** 类型和 **资源** （StorSimple Device Manager 服务）。 
+    2. 将自动选择当前 **订阅**、**服务** 类型和 **资源**（StorSimple Device Manager 服务）。 
 
     3. 指定一个或多个遇到问题的已注册到服务的设备。
 
-    4. 如果有多个计划与订阅相关联，请选择合适的 **支持计划** 。 需要付费的支持计划才能启用技术支持。
+    4. 如果有多个计划与订阅相关联，请选择合适的 **支持计划**。 需要付费的支持计划才能启用技术支持。
 
-3. 在“步骤 2”中，选择 **严重性** 并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的 **类别** ，并提供有关此问题的更多 **详细信息** 。
+3. 在“步骤 2”中，选择 **严重性** 并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的 **类别**，并提供有关此问题的更多 **详细信息**。
    
     ![屏幕截图显示 "问题" 窗格，你可以在其中输入支持请求的问题类型、类别和详细信息。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 

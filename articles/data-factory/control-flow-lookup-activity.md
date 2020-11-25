@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425690"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006810"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -31,7 +31,7 @@ ms.locfileid: "92425690"
 
 查找活动支持以下数据源。 
 
-查找活动最多可以返回 5000 行；如果结果集包含的记录超过此范围，将返回前 5000 行。 查找活动输出支持的大小最大为 4 MB，如果大小超过限制，则活动将失败。 目前，在超时前，查找活动的最长持续时间为24小时。
+查找活动最多可以返回 5000 行；如果结果集包含的记录超过此范围，将返回前 5000 行。 “查找”活动的输出最多支持 4 MB 左右。如果大小超过此限制，则活动会失败。 目前，查找活动在超时前的最长持续时间为 24 小时。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -65,7 +65,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 > [!NOTE]
 > 
 > * 不支持 **ByteArray** 类型的源列。
-> * 数据集定义不支持**结构**。 对于文本格式化文件，使用标头行提供列名。
+> * 数据集定义不支持 **结构**。 对于文本格式化文件，使用标头行提供列名。
 > * 如果查找源是 JSON 文件，则不支持用于重塑 JSON 对象的 `jsonPathDefinition` 设置。 将检索整个对象。
 
 ## <a name="use-the-lookup-activity-result"></a>使用查找活动结果
@@ -267,9 +267,9 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>复制活动的**源**数据集
+### <a name="source-dataset-for-copy-activity"></a>复制活动的 **源** 数据集
 
-**源**数据集使用查找活动的输出，即 SQL 表名称。 复制活动将数据从此 SQL 表复制到 Azure Blob 存储中的一个位置。 该位置由**接收器**数据集指定。 
+**源** 数据集使用查找活动的输出，即 SQL 表名称。 复制活动将数据从此 SQL 表复制到 Azure Blob 存储中的一个位置。 该位置由 **接收器** 数据集指定。 
 
 ```json
 {
@@ -304,7 +304,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>复制活动的**接收器**数据集
+### <a name="sink-dataset-for-copy-activity"></a>复制活动的 **接收器** 数据集
 
 复制活动将数据从 SQL 表复制到 Azure 存储中 **csv** 文件夹下的 **filebylookup.csv** 文件。 该文件由 AzureBlobStorageLinkedService 属性指定。 
 

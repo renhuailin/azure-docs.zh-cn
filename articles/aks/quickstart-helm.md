@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87407109"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006638"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -33,7 +33,7 @@ az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-输出类似于以下示例。 记下 ACR 的 *loginServer* 值，因为稍后的步骤会用到它。 在下面的示例中， *myhelmacr.azurecr.io*是*myhelmacr*的*loginServer* 。
+输出类似于以下示例。 记下 ACR 的 *loginServer* 值，因为稍后的步骤会用到它。 在下面的示例中， *myhelmacr.azurecr.io* 是 *myhelmacr* 的 *loginServer* 。
 
 ```console
 {

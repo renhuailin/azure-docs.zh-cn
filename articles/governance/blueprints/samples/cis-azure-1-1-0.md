@@ -4,11 +4,11 @@ description: CIS Microsoft Azure 基础基准蓝图示例的概述。 此蓝图�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054604"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005599"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure 基础基准蓝图示例
 
@@ -50,17 +50,17 @@ CIS Microsoft Azure 基础基准蓝图示例使用 [Azure Policy](../../policy/o
 
 ### <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 CIS Microsoft Azure 基础基准建议。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 CIS Microsoft Azure 基础基准建议。
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 
-1. 选择页面顶部的“发布蓝图”。 在右侧的新窗格中，提供蓝图示例副本的**版本**。 以后做出修改时，此属性非常有用。 提供更改注释，例如，“基于 CIS Microsoft Azure 基础基准蓝图示例发布的第一个版本”。 然后选择页面底部的“发布”。
+1. 选择页面顶部的“发布蓝图”。 在右侧的新窗格中，提供蓝图示例副本的 **版本**。 以后做出修改时，此属性非常有用。 提供更改注释，例如，“基于 CIS Microsoft Azure 基础基准蓝图示例发布的第一个版本”。 然后选择页面底部的“发布”。
 
 ### <a name="assign-the-sample-copy"></a>分配示例副本
 
-成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
+成功 **发布** 蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
 1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
@@ -76,7 +76,7 @@ CIS Microsoft Azure 基础基准蓝图示例使用 [Azure Policy](../../policy/o
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
      - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
-     - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
+     - **蓝图定义版本**：选择蓝图示例副本的 **已发布** 版本。
 
    - 锁分配
 
@@ -93,7 +93,7 @@ CIS Microsoft Azure 基础基准蓝图示例使用 [Azure Policy](../../policy/o
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
 > [!WARNING]
-> Azure 蓝图服务和内置蓝图示例是**免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
+> Azure 蓝图服务和内置蓝图示例是 **免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
 
 ### <a name="artifact-parameters-table"></a>项目参数表
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006092"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>在 Azure 门户中管理逻辑应用
 

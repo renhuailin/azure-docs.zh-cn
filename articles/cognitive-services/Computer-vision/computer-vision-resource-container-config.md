@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5094bd4aa5ac68c24f284cfb74e410fbdf089af7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677176"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006860"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
 
@@ -31,7 +31,7 @@ ms.locfileid: "92677176"
 
 容器还具有下列容器特定的配置设置：
 
-|必填|设置|目的|
+|必需|设置|目的|
 |--|--|--|
 |否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（小时）。 默认值为 48 小时。 设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1` ，则系统将在进程后的1小时内清除识别结果。 如果为 `resultExpirationPeriod=0` ，则在检索结果后系统将清除识别结果。|
 |否|缓存： Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则 *需要* 缓存。|
@@ -42,11 +42,11 @@ ms.locfileid: "92677176"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure `Cognitive Services` 资源键。 必须为 ApiKey 指定值，且此值必须是为  资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure `Cognitive Services` 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户： 
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -54,11 +54,11 @@ ms.locfileid: "92677176"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”  资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”  资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户： **认知服务** 概述，标记为 `Endpoint`
+* Azure 门户：**认知服务** 概述，标记为 `Endpoint`
 
 请记得将 `vision/v1.0` 路由添加到终结点 URI，如下表所示。 
 
@@ -99,10 +99,10 @@ ms.locfileid: "92677176"
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](computer-vision-how-to-install-containers.md#stop-the-container)它。
 
-* **行继续符** ：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
-* **参数顺序** ：除非很熟悉 Docker 容器，否则不要更改参数顺序。
+* **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+* **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-将 { _argument_name_ } 替换为为你自己的值：
+将 {_argument_name_} 替换为为你自己的值：
 
 | 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
@@ -113,20 +113,20 @@ ms.locfileid: "92677176"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
-> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”  。
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”。
 
 ## <a name="container-docker-examples"></a>容器 Docker 示例
 
 下面是读取容器 Docker 示例。
 
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
 ### <a name="basic-example"></a>基本示例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -137,7 +137,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

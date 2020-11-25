@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006075"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -160,7 +160,7 @@ ms.locfileid: "94368740"
 
 *示例*
 
-此触发器定义在工作或学校帐户的收件箱中每天检查电子邮件：
+此触发器定义每天都会在工作或学校帐户的收件箱中检查电子邮件：
 
 ```json
 "When_a_new_email_arrives": {
@@ -1080,7 +1080,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 对于 `includeTrigger` 特性，可以指定 `true` 或 `false` 值。
 
-| “值” | 类型 | 说明 |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*以前的操作*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
 ||||
@@ -1224,7 +1224,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 属性 | “值” | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `method` | <method-type> | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
 | `uri` | <HTTP-or-HTTPS-endpoint-URL> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
@@ -1232,7 +1232,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *可选*
 
-| 属性 | “值” | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `headers` | <header-content> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <query-parameters> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
@@ -1323,7 +1323,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
 | <JSON-source> | JSON 对象 | 要分析的 JSON 内容 | 
-| <JSON-schema> | JSON 对象 | 描述基础 JSON 内容的 JSON 架构，操作将该架构用于分析源 JSON 内容。 <p>**提示** ：在逻辑应用设计器中，可提供该架构或提供示例有效负载，以便操作可生成该架构。 | 
+| <JSON-schema> | JSON 对象 | 描述基础 JSON 内容的 JSON 架构，操作将该架构用于分析源 JSON 内容。 <p>**提示**：在逻辑应用设计器中，可提供该架构或提供示例有效负载，以便操作可生成该架构。 | 
 |||| 
 
 *示例*
@@ -1425,7 +1425,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
 | <array> | Array | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 |
-| <condition-or-filter> | String | 用于筛选源数组中的项的条件 <p>**注意** ：如果没有任何值满足此条件，则该操作会创建一个空数组。 |
+| <condition-or-filter> | String | 用于筛选源数组中的项的条件 <p>**注意**：如果没有任何值满足此条件，则该操作会创建一个空数组。 |
 |||| 
 
 *示例*
@@ -1540,7 +1540,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
-| <array> | Array | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意** ：如果源数组为空，则该操作会创建一个空数组。 | 
+| <array> | Array | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意**：如果源数组为空，则该操作会创建一个空数组。 | 
 | <*key-name*> | String | 从 <expression>  分配给结果的属性名称<p>若要为输出数组中的所有对象添加一个新属性，请提供该属性的 <key-name> 以及属性值的 <expression> 。 <p>若要从数组的所有对象中删除属性，请删除该属性的 <key-name>。 | 
 | <*expression*> | String | 转换源数组中的项并将结果分配给 <key-name>的表达式 | 
 |||| 
@@ -1639,7 +1639,7 @@ Select 操作创建一个数组作为输出，因此，任何想要使用此输�
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
 | \<CSV *or* HTML>| String | 要创建的表的格式 | 
-| <array> | Array | 为表提供源项的数组或表达式 <p>**注意** ：如果源数组为空，则该操作会创建一个空表。 | 
+| <array> | Array | 为表提供源项的数组或表达式 <p>**注意**：如果源数组为空，则该操作会创建一个空表。 | 
 |||| 
 
 *可选*
@@ -2310,7 +2310,7 @@ ID,Product_Name
 |||| 
 
 > [!NOTE]
-> 如果表达式依赖于 Until 循环中任何操作的输出，请确保考虑该操作产生的任何失败。
+> 如果表达式依赖于 Until 循环中任何操作的输出，请确保考虑到该操作导致的任何失败。
 
 *示例*
 
@@ -2400,7 +2400,7 @@ ID,Product_Name
 | 操作选项 | 类型 | 说明 | 触发器或操作 | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | 以同步方式而非异步方式运行基于 HTTP 的操作。 <p><p>若要设置此选项，请参阅[同步运行操作](#disable-asynchronous-pattern)。 | 操作： <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[响应](#response-action) | 
-| `IncludeAuthorizationHeadersInOutputs` | String | 对于 [启用 Azure Active Directory 开放身份验证 (Azure AD OAuth) ](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，以授权对基于请求的触发器终结点的入站调用的访问权限，请 `Authorization` 在触发器输出中包含 OAuth 访问令牌中的标头。 有关详细信息，请参阅 [在请求触发器输出中包含 "Authorization" 标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[请求](#request-trigger)， <br>[HTTP Webhook](#http-webhook-trigger) | 
+| `IncludeAuthorizationHeadersInOutputs` | String | 对于[启用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，若要授予对基于请求的触发器终结点的入站调用的访问权限，请在触发器输出中包含来自 OAuth 访问令牌的 `Authorization` 标头。 有关详细信息，请参阅[在 Request 触发器输出中包含“Authorization”标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[Request](#request-trigger)、 <br>[HTTP Webhook](#http-webhook-trigger) | 
 | `Sequential` | String | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
 ||||

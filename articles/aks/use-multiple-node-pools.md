@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900085"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006927"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -45,7 +45,7 @@ ms.locfileid: "92900085"
 若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用 [az group create][az-group-create]命令在 *eastus* 区域中创建名为 *myResourceGroup* 的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
 > [!NOTE]
-> 使用多个节点池时， **不支持** “基本”负载均衡器 SKU。 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。
+> 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -93,7 +93,7 @@ az aks nodepool add \
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-以下示例输出显示已成功地在节点池中创建包含三个节点的 *mynodepool* 。 在上一步骤中创建 AKS 群集时，已创建包含 *2* 个节点的默认 *nodepool1* 。
+以下示例输出显示已成功地在节点池中创建包含三个节点的 *mynodepool*。 在上一步骤中创建 AKS 群集时，已创建包含 *2* 个节点的默认 *nodepool1*。
 
 ```output
 [
@@ -214,7 +214,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>升级包含多个节点池的群集控制平面
 
 > [!NOTE]
-> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号以 *x.y.z* 表示，其中， *x* 是主要版本， *y* 是次要版本， *z* 是修补程序版本。 例如，版本 *1.12.6* 中的 1 是主要版本，12 是次要版本，6 是修补程序版本。 控制平面和初始节点池的 Kubernetes 版本是在群集创建过程中设置的。 将所有附加节点池添加到群集时，将为其设置 Kubernetes 版本。 不同节点池的 Kubernetes 版本可能不同，节点池与控制平面的 Kubernetes 版本也可能不同。
+> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号以 *x.y.z* 表示，其中，*x* 是主要版本，*y* 是次要版本，*z* 是修补程序版本。 例如，版本 *1.12.6* 中的 1 是主要版本，12 是次要版本，6 是修补程序版本。 控制平面和初始节点池的 Kubernetes 版本是在群集创建过程中设置的。 将所有附加节点池添加到群集时，将为其设置 Kubernetes 版本。 不同节点池的 Kubernetes 版本可能不同，节点池与控制平面的 Kubernetes 版本也可能不同。
 
 AKS 群集包含两个具有关联 Kubernetes 版本的群集资源对象。
 
@@ -249,7 +249,7 @@ AKS 群集包含两个具有关联 Kubernetes 版本的群集资源对象。
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-若要缩放节点池中的节点数，请使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 以下示例将 *mynodepool* 中的节点数缩放为 *5* ：
+若要缩放节点池中的节点数，请使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 以下示例将 *mynodepool* 中的节点数缩放为 *5*：
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -260,7 +260,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示 *mynodepool* 处于 *Scaling* （正在缩放）状态，其中的新节点计数为 *5* ：
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示 *mynodepool* 处于 *Scaling*（正在缩放）状态，其中的新节点计数为 *5*：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -303,7 +303,7 @@ AKS 提供了一项单独的功能，用于通过一项称为[群集自动缩放
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
-不再需要某个池时，可将其删除并删除底层 VM 节点。 若要删除节点池，请使用 [az aks node pool delete][az-aks-nodepool-delete] 命令并指定节点池名称。 以下示例删除在前面步骤中创建的 *mynoodepool* ：
+不再需要某个池时，可将其删除并删除底层 VM 节点。 若要删除节点池，请使用 [az aks node pool delete][az-aks-nodepool-delete] 命令并指定节点池名称。 以下示例删除在前面步骤中创建的 *mynoodepool*：
 
 > [!CAUTION]
 > 如果删除节点池时发生数据丢失，没有任何选项可以恢复数据。 如果无法在其他节点池中计划 pod，则这些应用程序将不可用。 当使用中的应用程序没有数据备份或者无法在群集中的其他节点池上运行时，请务必不要删除节点池。
@@ -312,7 +312,7 @@ AKS 提供了一项单独的功能，用于通过一项称为[群集自动缩放
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] 命令的以下示例输出显示 *mynodepool* 处于 *Deleting* （正在删除）状态：
+[az aks node pool list][az-aks-nodepool-list] 命令的以下示例输出显示 *mynodepool* 处于 *Deleting*（正在删除）状态：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -355,7 +355,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在以下示例中，创建使用 *Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
-再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称 *gpunodepool* ，并使用 `--node-vm-size` 参数指定 *Standard_NC6* 大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称 *gpunodepool*，并使用 `--node-vm-size` 参数指定 *Standard_NC6* 大小：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -406,7 +406,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定节点池的排斥、标签或标记
 
-### <a name="setting-nodepool-taints"></a>设置 nodepool taints
+### <a name="setting-nodepool-taints"></a>设置节点池排斥
 
 创建节点池时，可将排斥、标签或标记添加到该节点池。 添加排斥、标签或标记时，该节点池中的所有节点也会获取该排斥、标签或标记。
 
@@ -512,7 +512,7 @@ Events:
 
 只能在 *taintnp* 中的节点上计划已应用此 toleration 的箱。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
 
-### <a name="setting-nodepool-labels"></a>设置 nodepool 标签
+### <a name="setting-nodepool-labels"></a>设置节点池标签
 
 还可以在创建节点池期间向节点池添加标签。 在节点池中设置的标签将添加到节点池中的每个节点。 这些[标签将显示在 Kubernetes 中][kubernetes-labels]，以便于处理节点的计划规则。
 
@@ -560,9 +560,9 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 可将 Azure 标记应用到 AKS 群集中的节点池。 应用到某个节点池的标记将应用到该节点池中的每个节点，并通过升级持久保存。 标记还会应用于在横向扩展操作期间添加到节点池的新节点。 添加标记有助于完成策略跟踪或成本估算等任务。
 
-对于操作，Azure 标记具有不区分大小写的密钥，例如，通过搜索密钥来检索标记。 在这种情况下，将更新或检索带有给定密钥的标记，而不考虑大小写。 标记值区分大小写。
+进行操作时（例如，通过搜索密钥来检索标记时），Azure 标记可以使用不区分大小写的密钥。 在这种情况下，将更新或检索带有给定密钥的标记，而不考虑大小写。 标记值区分大小写。
 
-在 AKS 中，如果设置了多个具有相同键但大小写不同的标记，则使用的标记是字母顺序中的第一个。 例如，会 `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` `Key1` `val1` 设置和。
+在 AKS 中，如果设置了多个键相同但大小写不同的标记，则使用的标记是第一个（按字母顺序）。 例如，`{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` 会导致设置 `Key1` 和 `val1`。
 
 使用 [az aks nodepool add][az-aks-nodepool-add] 创建节点池。 指定名称 tagnodepool，并使用 `--tag` 参数为标记指定 dept=IT 和 costcenter=9999。  
 
@@ -614,7 +614,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 * 将名为 *myagentpool* 的 *Linux* 节点池更新为运行三个节点。
 * 将节点池中的节点设置为运行 Kubernetes 版本 1.15.7。
-* 将节点大小定义为 *Standard_DS2_v2* 。
+* 将节点大小定义为 *Standard_DS2_v2*。
 
 根据需要编辑这些值，以更新、添加或删除节点池：
 

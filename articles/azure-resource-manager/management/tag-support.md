@@ -4,11 +4,11 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427762"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005718"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/group-filter.md)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。

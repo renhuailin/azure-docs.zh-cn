@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006570"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
 
@@ -40,7 +40,7 @@ ms.locfileid: "91930622"
 
 1.  中转到 Azure 门户中的 " **虚拟网络** " 边栏选项卡，并选择要用于 Azure NetApp 文件的虚拟网络。    
 
-1. 从“虚拟网络”边栏选项卡中选择“子网”****，单击“+子网”按钮。**** 
+1. 从“虚拟网络”边栏选项卡中选择“子网”，单击“+子网”按钮。 
 
 1. 在“添加子网”页面中完成以下必需字段来新建要用于 Azure NetApp 文件的子网：
     * **名称**：指定子网名称。

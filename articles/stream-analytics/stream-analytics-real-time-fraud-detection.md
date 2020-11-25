@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007080"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -81,7 +81,7 @@ ms.locfileid: "93124571"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 单击 **创建** 。
+9. 单击 **创建**。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -98,7 +98,7 @@ ms.locfileid: "93124571"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. 单击 **创建** 。
+4. 单击 **创建**。
 
 5. 部署策略后，在共享访问策略列表中单击该策略。
 
@@ -186,7 +186,7 @@ ms.locfileid: "93124571"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 单击 **创建** 。
+3. 单击 **创建**。
 
     创建作业后，门户将显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
@@ -211,7 +211,7 @@ ms.locfileid: "93124571"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 单击 **创建** 。
+4. 单击 **创建**。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 

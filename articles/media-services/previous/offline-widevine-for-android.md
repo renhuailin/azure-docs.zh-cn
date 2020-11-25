@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269584"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006349"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
 
@@ -71,9 +71,9 @@ ms.locfileid: "89269584"
 2. ContentKeyAuthorizationPolicyRestriction，指定在许可证传送服务中授权内容密钥传送的方式（开放授权或令牌授权）
 3. DRM (Widevine) 许可证模板
 
-若要为 Widevine 许可证启用“脱机”**** 模式，需要配置 [Widevine 许可证模板](media-services-widevine-license-template-overview.md)。 在 policy_overrides 对象中，将 can_persist 属性设置为 true（默认值为 false）************。 
+若要为 Widevine 许可证启用“脱机”模式，需要配置 [Widevine 许可证模板](media-services-widevine-license-template-overview.md)。 在 policy_overrides 对象中，将 can_persist 属性设置为 true（默认值为 false）。 
 
-下面的代码示例使用 .NET 来为 Widevine 许可证启用“脱机”模式****。 此代码基于 [Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)（将 PlayReady 和/或 Widevine 动态通用加密与 .NET 结合使用）示例。 
+下面的代码示例使用 .NET 来为 Widevine 许可证启用“脱机”模式。 此代码基于 [Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)（将 PlayReady 和/或 Widevine 动态通用加密与 .NET 结合使用）示例。 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -131,9 +131,9 @@ ExoPlayer 2.6 和更高版本包括许多支持脱机 Widevine DRM 播放的类�
 
 ### <a name="working-with-older-android-devices"></a>使用较旧的 Android 设备
 
-对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](media-services-widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds****************。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
+对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](media-services-widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
 
-值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）********。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
+值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
 
 Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.0 是首个旨在完全支持 ARMv8（[高级 RISC 计算机](https://en.wikipedia.org/wiki/ARM_architecture)）和 64 位平台的 Android 版本，而 Android 4.4 KitKat 最初设计用于支持 ARMv7 和 32 位平台，与其他较旧的 Android 版本相同。
 

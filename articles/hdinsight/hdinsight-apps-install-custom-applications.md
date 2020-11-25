@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007148"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
@@ -45,13 +45,13 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
     资源管理器模板位于 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)。  若要了解如何编写此资源管理器模板，请参阅 [MSDN：安装 HDInsight 应用程序](/rest/api/hdinsight/hdinsight-application)。
 
-1. 从下拉列表中选择包含你的群集的现有 **资源组** 。 必须使用与群集相同的资源组。
+1. 从下拉列表中选择包含你的群集的现有 **资源组**。 必须使用与群集相同的资源组。
 
 1. 输入要安装应用程序的群集的名称。 此群集必须是现有的群集。
 
-1. 选择与“我同意上述条款和条件”相对应的复选框。 
+1. 选择与“我同意上述条款和条件”相对应的复选框。
 
-1. 选择“购买”。 
+1. 选择“购买”。
 
 可以从固定到门户仪表板的磁贴和门户通知查看安装状态（单击门户顶部的铃铛图标）。  安装此应用程序大约需要 10 分钟。
 
@@ -73,14 +73,14 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，还可以验证所有 HTTP 终结点是否按预期方式出现，以及网页（如果有）。
 
-对于 **Hue** ，可以使用以下步骤：
+对于 **Hue**，可以使用以下步骤：
 
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择已在其中安装应用程序的群集。
-1. 在“设置”菜单中，选择“应用程序”。  
-1. 选择列表中的“hue”以查看  属性。  
+1. 在“设置”菜单中，选择“应用程序”。 
+1. 选择列表中的“hue”以查看属性。  
 1. 选择“网页”链接以验证网站。
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -127,9 +127,9 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择已在其中安装应用程序的群集。
-1. 在“设置”菜单中，选择“应用程序”。  
-1. 右键单击想要删除的应用程序，并选择“删除”  。
-1. 请选择“是”以确认。 
+1. 在“设置”菜单中，选择“应用程序”。 
+1. 右键单击想要删除的应用程序，并选择“删除”。
+1. 请选择“是”以确认。
 
 ### <a name="azure-cli"></a>Azure CLI
 

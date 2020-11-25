@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294069"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006398"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91294069"
 
 Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在本文档中，你将看到一些示例，其中使用  [ARMClient](https://github.com/projectkudu/ARMClient)（一种可简化调用 AZURE 资源管理器 API 的开源命令行工具）从 PowerShell 命令行访问 API。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](../log-query/log-query-overview.md)。
 
 ## <a name="schedules"></a>计划
@@ -227,7 +227,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="suppress"></a>取消
 每次达到或超过阈值时，都会触发基于 Log Analytics 的查询警报。 根据查询中隐含的逻辑，这可能会导致警报在一系列时间间隔触发，进而导致通知不断发送。 为了防止这种情况发生，用户可以设置“取消”选项，以指示 Log Analytics 在根据预警规则第二次发送通知之前等待规定的时间。 所以，如果“取消”设置为 30 分钟，那么警报在第一次触发时发送配置的通知。 不过，在根据预警规则再次发送通知之前，需要先等待 30 分钟。 在过渡期间，预警规则会继续运行，Log Analytics 在指定时间仅取消通知，无论在此期间内预警规则触发了多少次，也不例外。
 
-Log Analytics 预警规则的“取消”属性是使用 Throttling** 值指定，取消时间段是使用 DurationInMinutes** 值指定。
+Log Analytics 预警规则的“取消”属性是使用 Throttling 值指定，取消时间段是使用 DurationInMinutes 值指定。
 
 下面的示例展示了仅包含“阈值”、“严重性”和“取消”属性的操作响应
 

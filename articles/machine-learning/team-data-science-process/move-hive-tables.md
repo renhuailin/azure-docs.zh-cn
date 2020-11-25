@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006723"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
@@ -151,7 +151,7 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 * **\<table name\>** ：要在指定数据库中创建的表的名称。 若要使用默认数据库，则可以通过 *\<table name\>* 直接引用表，无需 \<database name\>。
 * **\<field separator\>** ：在要上传到 Hive 表的数据文件中分隔字段的分隔符。
 * **\<line separator\>** ：在数据文件中分隔行的分隔符。
-* **\<storage location\>** ：保存 Hive 表的数据的 Azure 存储位置。 如果不指定 *LOCATION \<storage location\>* ，则数据库和表将默认存储在 Hive 群集默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为“wasb:///\<directory 1>/”或“wasb:///\<directory 1>/\<directory 2>/”等。执行查询后，相对目录会创建在默认容器中。
+* **\<storage location\>**：保存 Hive 表的数据的 Azure 存储位置。 如果不指定 *LOCATION \<storage location\>* ，则数据库和表将默认存储在 Hive 群集默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为“wasb:///\<directory 1>/”或“wasb:///\<directory 1>/\<directory 2>/”等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table 查询的 **末尾处** 添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>将数据加载到 Hive 表
@@ -164,7 +164,7 @@ LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 * **\<path to blob data\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器中，则 \<path to blob data\> 的格式应当为“wasb://\<directory in this container>/\<blob file name>”。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，\<path to blob data\> 的格式应为 'wasb://\<container name>@\<storage account name>.blob.core.windows.net/\<blob file name>' 。
 
   > [!NOTE]
-  > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则， *LOAD DATA* 查询会失败，并声称它无法访问数据。
+  > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。
   >
   >
 
@@ -200,7 +200,7 @@ where <partitionfieldname>=<partitionfieldvalue> and ...;
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>将 Hive 数据存储为 ORC 格式
 不能直接将 Blob 存储中的数据加载到存储为 ORC 格式的 Hive 表中。 下面的步骤介绍了如何将 Azure blob 中的数据加载到存储为 ORC 格式的 Hive 表中。
 
-创建外部表 **STORED AS TEXTFILE** ，然后将 Blob 存储中的数据加载到此表。
+创建外部表 **STORED AS TEXTFILE**，然后将 Blob 存储中的数据加载到此表。
 
 ```hiveql
 CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>

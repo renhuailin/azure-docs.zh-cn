@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005922"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![显示部署虚拟阵列所需步骤的关系图。 第三个步骤中的第一部分标记为 "文件服务器"，并突出显示。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -72,11 +72,11 @@ ms.locfileid: "94956817"
    1. 为设备指定唯一“名称”。 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
    2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png":::。 文件服务器可用于创建共享文件夹。
    3. 由于设备是文件服务器，因此需将其加入域。 输入 **域名**。
-   4. 单击“应用”。
+   4. 单击“应用”  。
 7. 随即将显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
    
    ![显示一个对话框，其中包含已填写用户名和密码的对话框。](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. 单击“应用”。 此时会应用和验证设备设置。
+8. 单击“应用”  。 此时会应用和验证设备设置。
    
    ![设备设置页的屏幕截图。 填写设备名称和域名。](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -93,7 +93,7 @@ ms.locfileid: "94956817"
    1. 以下述格式提供“Web 代理 URL”：http://&lt;主机 IP 地址或 FQDN&gt;:端口号。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
-   4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
+   4. 单击“应用”  。 此时会验证并应用配置的 Web 代理设置。
 10. （可选）配置设备的时间设置，例如时区以及主 NTP 服务器和辅助 NTP 服务器。 NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
     
     ![时间设置页的屏幕截图。 填写时区和主 N T P 服务器。 辅助 N T P 服务器为空白。](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -103,7 +103,7 @@ ms.locfileid: "94956817"
     1. 从下拉列表中，选择要在其中部署 **设备的地理位置的时区** 。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
     2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。 确保网络允许 NTP 流量从数据中心传递到 Internet。
     3. （可选）为设备指定“辅助 NTP 服务器”。
-    4. 单击“应用”。 此时会验证并应用配置的时间设置。
+    4. 单击“应用”  。 此时会验证并应用配置的时间设置。
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
     1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 23db3457458d34852f164649137c2b20cf99238b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458426"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006007"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Litmus 的集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "92458426"
 
     在“登录 URL”文本框中，键入 URL：  `https://litmus.com/sessions/new`
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 

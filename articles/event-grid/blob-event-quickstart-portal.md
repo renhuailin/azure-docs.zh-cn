@@ -4,11 +4,11 @@ description: 快速入门：使用 Azure 事件网格和 Azure 门户创建 Blob
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87421597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005684"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地、OCR、Docker、容器
-ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539003"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006894"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (预览中安装读取 OCR Docker 容器)  
 
@@ -27,12 +27,12 @@ ms.locfileid: "94539003"
 
 " *读取* OCR" 容器允许您从图像和文档中提取打印文本和手写文本，支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅 [读取 API 文档](concept-recognizing-text.md#read-api)。
 
-## <a name="read-31-container"></a>阅读3.1 容器
+## <a name="read-32-preview-container"></a>阅读 3.2-预览容器
 
 > [!NOTE]
 > Read 3.0-preview 容器已弃用。 
 
-Read 3.1-preview 容器提供：
+Read 3.2-preview 容器提供：
 * 用于增强准确性的新模型。
 * 同一文档中支持多种语言
 * 支持：荷兰语、英语、法语、德语、意大利语、葡萄牙语和西班牙语。
@@ -56,7 +56,7 @@ Read 3.1-preview 容器提供：
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure 计算机视觉资源和关联的 API 密钥及终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="request-approval-to-run-the-container"></a>请求批准以运行容器
 
@@ -92,16 +92,16 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
 | 阅读 2.0-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| 阅读 3.2-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
 ### <a name="docker-pull-for-the-read-container"></a>适用于读取容器的 Docker 拉取
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
 ```
 
 # <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
@@ -127,11 +127,11 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 `docker run` 命令的[示例](computer-vision-resource-container-config.md#example-docker-run-commands)可用。
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -169,9 +169,9 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
 
-如果需要更高的吞吐量 (例如，) 处理多页文件时，请考虑使用[Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-account-create)和[Azure 队列](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)[在 Kubernetes 群集上](deploy-computer-vision-on-premises.md)部署多个容器。
+如果需要更高的吞吐量 (例如，) 处理多页文件时，请考虑使用[Azure 存储](../../storage/common/storage-account-create.md)和[Azure 队列](../../storage/queues/storage-queues-introduction.md)[在 Kubernetes 群集上](deploy-computer-vision-on-premises.md)部署多个容器。
 
-如果使用 Azure 存储来存储图像以进行处理，则可以在调用容器时创建要使用的 [连接字符串](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) 。
+如果使用 Azure 存储来存储图像以进行处理，则可以在调用容器时创建要使用的 [连接字符串](../../storage/common/storage-configure-connection-string.md) 。
 
 查找连接字符串：
 
@@ -189,9 +189,9 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
-为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` 。
+为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` 。
 
 # <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
 
@@ -202,9 +202,9 @@ ApiKey={API_KEY}
 ### <a name="asynchronous-read"></a>异步读取
 
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
-可以同时使用 `POST /vision/v3.1/read/analyze` 和 `GET /vision/v3.1/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
+可以同时使用 `POST /vision/v3.2/read/analyze` 和 `GET /vision/v3.2/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
 
 
 在 Swagger UI 中，选择 `asyncBatchAnalyze` 以在浏览器中将其展开。 然后选择“试用” > “选择文件”。 在本示例中，我们将使用以下图像：
@@ -216,7 +216,7 @@ ApiKey={API_KEY}
 ```http
  content-length: 0
  date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ operation-location: http://localhost:5000/vision/v3.2/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -228,7 +228,7 @@ ApiKey={API_KEY}
   "createdDateTime": "2020-09-02T10:30:14Z",
   "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
   "analyzeResult": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
@@ -344,15 +344,15 @@ ApiKey={API_KEY}
 ---
 
 > [!IMPORTANT]
-> 如果将多个读取容器部署在负载平衡器之后（例如，在 "Docker Compose" 或 "Kubernetes" 下），则必须具有外部缓存。 由于处理容器和 GET 请求容器可能不相同，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅 [Configure 计算机视觉 Docker 容器](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)。
+> 如果将多个读取容器部署在负载平衡器之后（例如，在 "Docker Compose" 或 "Kubernetes" 下），则必须具有外部缓存。 由于处理容器和 GET 请求容器可能不相同，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅 [Configure 计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
 
 ### <a name="synchronous-read"></a>同步读取
 
 您可以使用以下操作来同步读取图像。 
 
-# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
 
-`POST /vision/v3.1/read/syncAnalyze` 
+`POST /vision/v3.2/read/syncAnalyze` 
 
 # <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
 

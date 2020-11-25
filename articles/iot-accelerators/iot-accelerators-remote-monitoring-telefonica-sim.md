@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006757"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>在远程监视解决方案中集成 SIM 数据
 
@@ -21,7 +21,7 @@ IoT 设备通常使用 SIM 卡连接到云，这样就可以从任何位置发�
 
 远程监视提供可以与 Telefónica IoT 连接集成的现成解决方案，因此客户可以使用其 IoT 连接平台将设备 SIM 连接数据同步到解决方案。 此解决方案在经过扩展后可以通过 GitHub [存储库](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)支持其他 IoT 连接提供商。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 * 将 Telefónica IoT SIM 数据集成到远程监视解决方案中
 * 查看实时遥测数据
@@ -29,13 +29,13 @@ IoT 设备通常使用 SIM 卡连接到云，这样就可以从任何位置发�
 
 ## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT 集成设置
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 此附加远程监视功能目前处于预览状态。 若要将连接数据同步到 Azure 远程监视解决方案中，请执行以下步骤：
 
-1. 在 [Telefónica 网站](https://iot.telefonica.com/contact)上填写一个请求，选择“Azure 远程监视”**** 选项并提供你的联系信息。
+1. 在 [Telefónica 网站](https://iot.telefonica.com/contact)上填写一个请求，选择“Azure 远程监视”选项并提供你的联系信息。
 2. Telefónica 会激活你的帐户。
-3. 如果你还不是 Telefónica 客户并且想要享受这个服务或其他 IoT 连接云就绪服务，请访问 [Telefónica 网站](https://iot.telefonica.com/)并选择“连接”**** 选项。
+3. 如果你还不是 Telefónica 客户并且想要享受这个服务或其他 IoT 连接云就绪服务，请访问 [Telefónica 网站](https://iot.telefonica.com/)并选择“连接”选项。
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM 设置
 Telefónica SIM 和 Azure 孪生设备 ID 的关联基于 Telefónica IoT SIM“别名”属性。 
