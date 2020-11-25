@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 746257195220d26ad5d011a39022a3957e8cb1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029889"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -63,7 +63,7 @@ ms.locfileid: "89021776"
 
 ### <a name="create-the-project"></a>创建项目
 
-1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
+1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 本文后面所述的 Azure 计算仿真程序要求以管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”  。
@@ -82,7 +82,7 @@ ms.locfileid: "89021776"
    
     ![“更改身份验证”对话框的屏幕截图，其中选择了“无身份验证”选项并添加了红色边框。][16]
 7. 返回到“新建 ASP.NET 项目”  对话框，单击“确定”  以创建项目。
-8. 在 **解决方案资源管理器**的 **FrontendWebRole** 项目中，右键单击 " **引用**"，然后单击 " **管理 NuGet 包**"。
+8. 在 **解决方案资源管理器** 的 **FrontendWebRole** 项目中，右键单击 " **引用**"，然后单击 " **管理 NuGet 包**"。
 9. 单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
    ![“管理 NuGet 包”对话框的屏幕快照，其中突出显示了“WindowsAzure.ServiceBus”，并对“安装”选项添加了红色边框。][13]
@@ -191,7 +191,7 @@ ms.locfileid: "89021776"
 
 1. 在“解决方案资源管理器”  中，右键单击“FrontendWebRole”  （右键单击项目而不是角色）。 单击“添加”  ，并单击“类”  。
 2. 将类命名为 **QueueConnector.cs**。 单击“添加”  以创建类。
-3. 现在，将添加可封装连接信息并初始化服务总线队列连接的代码。 将 QueueConnector.cs 的全部内容替换为下面的代码，并输入 `your Service Bus namespace`（命名空间名称）和 `yourKey`（之前从 Azure 门户中获取的**主要密钥**）的值。
+3. 现在，将添加可封装连接信息并初始化服务总线队列连接的代码。 将 QueueConnector.cs 的全部内容替换为下面的代码，并输入 `your Service Bus namespace`（命名空间名称）和 `yourKey`（之前从 Azure 门户中获取的 **主要密钥**）的值。
    
    ```csharp
    using System;
@@ -303,7 +303,7 @@ ms.locfileid: "89021776"
 现在，将创建用于处理订单提交的辅助角色。 此示例使用“服务总线队列的辅助角色”  Visual Studio 项目模板。 已从门户中获取所需的凭据。
 
 1. 确保已将 Visual Studio 连接到 Azure 帐户。
-2. 在 Visual Studio 的**解决方案资源管理器**中，右键单击**MultiTierApp**项目下的 "**角色**" 文件夹。
+2. 在 Visual Studio 的 **解决方案资源管理器** 中，右键单击 **MultiTierApp** 项目下的 "**角色**" 文件夹。
 3. 单击“添加”  ，并单击“新建辅助角色项目”  。 此时会显示“添加新角色项目”  对话框。
    
    ![“解决方案资源管理器”窗格的屏幕截图，其中突出显示了“新建辅助角色项目”选项和“添加”选项。][26]

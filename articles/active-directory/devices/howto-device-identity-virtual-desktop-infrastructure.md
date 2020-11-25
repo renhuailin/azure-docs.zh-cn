@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029341"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -56,17 +56,16 @@ ms.locfileid: "90089660"
 |   |   | Windows 下层设备 | 非持久 | 是<sup>6</sup> |
 | 已加入 Azure AD | 联合 | Windows 当前 | 永久 | 否 |
 |   |   |   | 非持久 | 否 |
-|   | 托管 | Windows 当前 | 永久 | 否 |
+|   | Managed | Windows 当前 | 永久 | 否 |
 |   |   |   | 非持久 | 否 |
 | 已注册 Azure AD | 联合/托管 | Windows 当前/Windows 下层 | 持久性/非持久 | 不适用 |
 
-<sup>1</sup>个 **windows 当前** 设备表示 Windows 10、Windows Server 2016 和 windows server 2019。
-
+<sup>1</sup>个 **windows 当前** 设备表示 Windows 10、windows server 2016 v1803 或更高版本，以及 windows server 2019。
 <sup>2</sup> **个 windows 下层** 设备表示 windows 7、Windows 8.1、windows Server 2008 r2、Windows Server 2012 和 windows server 2012 R2。 有关 Windows 7 的支持信息，请参阅对 [windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。 有关 Windows Server 2008 R2 的支持信息，请参阅 [准备 Windows server 2008 终止支持](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 <sup>3</sup> **联合** 标识基础结构环境表示具有标识提供者（如 AD FS 或其他第三方 IDP）的环境。
 
-<sup>4</sup> **托管**标识基础结构环境表示一个环境，该环境的 Azure AD 为使用[密码哈希同步 (PHS) ](../hybrid/whatis-phs.md)或通过[无缝单一登录](../hybrid/how-to-connect-sso.md) [ (PTA) ](../hybrid/how-to-connect-pta.md)部署的标识提供者。
+<sup>4</sup> **托管** 标识基础结构环境表示一个环境，该环境的 Azure AD 为使用 [密码哈希同步 (PHS)](../hybrid/whatis-phs.md)或通过 [无缝单一登录](../hybrid/how-to-connect-sso.md) [ (PTA)](../hybrid/how-to-connect-pta.md)部署的标识提供者。
 
 <sup>5</sup> **Windows 当前的非持久性支持** 需要额外考虑，如下面的指南部分中所述。 此方案需要 Windows 10 1803、Windows Server 2019 或 Windows Server (半年通道) 从版本1803开始
 

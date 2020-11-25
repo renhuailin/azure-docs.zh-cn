@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 06/24/2020
 ms.author: alkohli
 ms.openlocfilehash: 2868e5a53686cfa94dc206c1aab65fe866d19b6d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027251"
 ---
 下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请参阅 [Blob 存储的可伸缩性和性能目标](../articles/storage/blobs/scalability-targets.md)和 [Azure 文件存储的可伸缩性和性能目标](../articles/storage/files/storage-files-scale-targets.md)。
 

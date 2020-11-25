@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027192"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -29,7 +29,7 @@ ms.locfileid: "93091764"
 | 模型 | 单个 Azure 数字孪生实例内的模型数 | 10,000 | 是 |
 | 模型 | 可在单个 API 调用中上载的模型数 | 250 | 否 |
 | 模型 | 在单个页面中返回的项目数 | 100 | 否 |
-| 查询 | 在单个页面中返回的项目数 | 100 | 否 |
+| 查询 | 在单个页面中返回的项目数 | 100 | 是 |
 | 查询 | `AND`  /  `OR` 查询中的表达式数 | 50 | 是 |
 | 查询 | 子句中的数组项数 `IN`  /  `NOT IN` | 50 | 是 |
 | 查询 | 查询中的字符数 | 8,000 | 是 |

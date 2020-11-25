@@ -2,13 +2,13 @@
 title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028956"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -39,8 +39,8 @@ ms.locfileid: "89022371"
 ## <a name="associate-a-workspace"></a>关联工作区
 
 1. 发现用于评估的计算机后，请在 "**服务器**  >  **Azure Migrate：服务器评估**" 中单击 "**概述**"。  
-2. 在 **Azure Migrate：服务器评估**中，单击 " **Essentials**"。
-3. 在 **OMS 工作区**中，单击 " **需要配置**"。
+2. 在 **Azure Migrate：服务器评估** 中，单击 " **Essentials**"。
+3. 在 **OMS 工作区** 中，单击 " **需要配置**"。
 
      ![配置 Log Analytics 工作区](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
@@ -59,7 +59,7 @@ ms.locfileid: "89022371"
 > [!NOTE]
 > 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机，无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 [遵循](../azure-monitor/insights/service-map-scom.md#prerequisites) 集成指南。
 
-1. 在 **Azure Migrate：服务器评估**中，单击 " **发现的服务器**"。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 对于要通过依赖关系可视化进行分析的每台计算机，在 " **依赖项** " 列中，单击 " **需要代理安装**"。
 3. 在 " **依赖关系** " 页上，下载适用于 Windows 或 LINUX 的 MMA 和依赖项代理。
 4. 在 " **配置 MMA 代理**" 下，复制 "工作区 ID" 和 "密钥"。 安装 MMA 代理时需要用到它们。
@@ -83,7 +83,7 @@ ms.locfileid: "89022371"
 
 你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或 [Intigua](https://www.intigua.com/intigua-for-azure-migration)）来安装代理。
 - [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-options)如何使用这些方法安装 MMA 代理。
-- 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
+- 还可使用此[脚本](https://github.com/brianbar-MSFT/Install-MMA)安装 MMA 代理。
 - [了解](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 有关 MMA 支持的 Windows 操作系统的详细信息。
 
 ### <a name="install-mma-on-a-linux-machine"></a>在 Linux 计算机上安装 MMA
@@ -116,7 +116,7 @@ ms.locfileid: "89022371"
 > [!NOTE]
 > 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果计算机超过10台，请将它们拆分成较小的组。
 
-1. 在 **Azure Migrate：服务器评估**中，单击 " **发现的服务器**"。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 在 " **依赖关系** " 列中，单击要查看的每个计算机的 " **查看依赖关系** "。
 3. 在依赖关系映射上，可以看到以下内容：
     - 入站 (客户端与计算机之间) 和出站 (服务器) TCP 连接。
@@ -152,8 +152,8 @@ ms.locfileid: "89022371"
 为依赖关系数据运行查询，如下所示：
 
 1. 安装代理后，请转到门户并单击“概述”。
-2. 在 **Azure Migrate：服务器评估**中，单击 " **概述**"。 单击向下箭头以展开 " **Essentials**"。
-3. 在 **OMS 工作区**中，单击工作区名称。
+2. 在 **Azure Migrate：服务器评估** 中，单击 " **概述**"。 单击向下箭头以展开 " **Essentials**"。
+3. 在 **OMS 工作区** 中，单击工作区名称。
 3. 在 "Log Analytics 工作区" 页上 > " **常规**"，单击 " **日志**"。
 4. 编写查询，然后单击 " **运行**"。
 

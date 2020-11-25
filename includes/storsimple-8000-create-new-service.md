@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027232"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 
@@ -19,7 +19,7 @@ ms.locfileid: "93360663"
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，单击“创建”。 或者，在 Azure 门户单击， **+** 然后在 " **存储** " 下单击 " **StorSimple 物理设备系列** "。
+    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，单击“创建”。 或者，在 Azure 门户单击， **+** 然后在 " **存储**" 下单击 " **StorSimple 物理设备系列**"。
 
     ![创建 StorSimple 设备管理器2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
@@ -27,11 +27,11 @@ ms.locfileid: "93360663"
 
    1. 为服务提供唯一“资源名称”。 此名称是可用来标识服务的友好名称。 名称可以为 2 到 50 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。
 
-   2. 从下拉列表中选择 **“订阅”** 。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
+   2. 从下拉列表中选择 **“订阅”**。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
 
-   3. 对于“资源组”，请使用现有组或创建新组。 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
+   3. 对于“资源组”，请使用现有组或创建新组。 有关详细信息，请参阅 [Azure 资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
-   4. 提供你的服务的 **“位置”** 。 一般情况下，请选择离要部署设备的地理区域最近的位置。 还可能需要考虑以下注意事项：
+   4. 提供你的服务的 **“位置”**。 一般情况下，请选择离要部署设备的地理区域最近的位置。 还可能需要考虑以下注意事项：
 
       * 如果 Azure 中还存在希望使用 StorSimple 设备部署的现有工作负荷，应使用该数据中心。
       * StorSimple Device Manager 服务和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](../articles/storage/common/storage-account-create.md)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。

@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
 ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026956"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
 

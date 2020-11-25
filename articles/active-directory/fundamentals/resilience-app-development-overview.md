@@ -11,18 +11,16 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: f6078ed96106d6a53b55195ee950e2165334221d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919368"
+ms.locfileid: "96029296"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>提高你开发的身份验证和授权应用程序的复原能力
 
 Microsoft 标识使用基于令牌的新式身份验证和授权。 这意味着，应用程序从标识提供者获取令牌，以便对用户进行身份验证，并授权应用程序调用受保护的 Api。
-
-![调用 Microsoft 标识的应用程序的图像](media/resilience-app-development-overview/app-overview.png)
 
 标记在应用必须获取新的时间段之前有效。 很少，由于网络或基础结构故障或身份验证服务中断等问题，对检索令牌的调用可能会失败。 在本文档中，我们概述了开发人员在发生令牌采集故障时可以采取的措施来提高应用程序的复原能力。
 

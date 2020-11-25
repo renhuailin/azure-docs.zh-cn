@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 06/02/2020
 ms.author: mimart
-ms.openlocfilehash: 65fb406fa4f52f19b4d8e9dc4e3895207ffe6336
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad6b90616077a6d18550e86692b109bda622af7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027485"
 ---
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 

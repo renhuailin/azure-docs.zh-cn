@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913630"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030299"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文介绍如何开始创建使用媒体服务的 Azure Functions。 本文中定义的 Azure Function 可监视新 MP4 文件中名为“输入”的存储帐户容器  。 将文件放入存储容器后，blob 触发器就会执行此函数。 要查看 Azure 函数，请参阅 Azure 函数部分的[概述](../../azure-functions/functions-overview.md)和其他主题  。
+本文介绍如何开始创建使用媒体服务的 Azure Functions。 本文中定义的 Azure Function 可监视新 MP4 文件中名为“输入”的存储帐户容器  。 将文件放入存储容器后，blob 触发器就会执行此函数。 若要查看 Azure Functions，请参阅 **Azure Functions** 部分中的 [概述](../../azure-functions/functions-overview.md)和其他主题。
 
 如果你想要浏览并部署使用 Azure Media Services 的现有 Azure 功能，请查看[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存储库包含几个示例，示例中将使用媒体服务来演示有关直接从 Blob 存储引入内容、编码以及将内容写回 Blob 存储的工作流。 此存储库还包含演示如何通过 WebHook 和 Azure 队列监视作业通知的示例。 也可根据[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 存储库中的示例进行 Functions 开发。 若要部署此函数，请按“部署到 Azure”  按钮。
 
@@ -49,15 +49,15 @@ ms.locfileid: "92913630"
 
 本文中定义的函数假定应用设置中具备以下环境变量：
 
-**AMSAADTenantDomain** ：Azure AD 租户终结点。 有关连接到 AMS API 的详细信息，请参阅[此文章](media-services-use-aad-auth-to-access-ams-api.md)。
+**AMSAADTenantDomain**：Azure AD 租户终结点。 有关连接到 AMS API 的详细信息，请参阅[此文章](media-services-use-aad-auth-to-access-ams-api.md)。
 
-**AMSRESTAPIEndpoint** ：表示 REST API 终结点的 URI。 
+**AMSRESTAPIEndpoint**：表示 REST API 终结点的 URI。 
 
-**AMSClientId** ：Azure AD 应用程序客户端 ID。
+**AMSClientId**：Azure AD 应用程序客户端 ID。
 
-**AMSClientSecret** ：Azure AD 应用程序客户端密码。
+**AMSClientSecret**：Azure AD 应用程序客户端密码。
 
-**StorageConnection** ：媒体服务帐户关联帐户的存储连接。 “function.json”文件和“run.csx”文件使用了此值（如下所述）。  
+**StorageConnection**：媒体服务帐户关联帐户的存储连接。 “function.json”文件和“run.csx”文件使用了此值（如下所述）。  
 
 ## <a name="create-a-function"></a>创建函数
 

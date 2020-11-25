@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
 ms.openlocfilehash: e4abbeadb0d30911d99fff57c0e99a3e427a6d8d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554070"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026905"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
 

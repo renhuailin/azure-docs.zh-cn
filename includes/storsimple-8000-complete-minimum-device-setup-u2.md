@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 05719d9633429c4b8ee6fee79833f594c94ab23d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 867cdc97ff91d5932230b733dee4d7660d499c39
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376263"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027060"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
 
@@ -36,9 +36,9 @@ ms.locfileid: "93376263"
 
             ![Test-HcsmConnection 显示可路由的 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 单击“确定”。  设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
+1. 单击“确定”。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
 
     ![StorSimple 最小设备设置网络接口3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
-[Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
+[Test]: /previous-versions/windows/powershell-scripting/dn715782(v=wps.630)

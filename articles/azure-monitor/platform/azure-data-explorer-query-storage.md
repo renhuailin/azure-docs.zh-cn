@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411557"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030010"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据（预览版）
 将数据从 Azure Monitor 导出到 Azure 存储帐户可以实现低成本保留，并能够将日志重新分配到不同的区域。 使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。
@@ -122,7 +122,7 @@ Write-Host -ForegroundColor Green $createMapping
 
 >[!TIP]
 >* 复制、粘贴，然后在 Azure 数据资源管理器客户端工具中运行脚本的输出，以创建表和映射。
->* 如果要使用容器中的所有数据，可以更改脚本并将 URL 更改为 " https://your.blob.core.windows.net/containername ;SecKey'
+>* 若要使用容器中的所有数据，请更改脚本并将 URL 更改为 " https://your.blob.core.windows.net/containername ;SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器查询导出的数据 
 

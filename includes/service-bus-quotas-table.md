@@ -9,11 +9,11 @@ ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560976"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028521"
 ---
 下表列出了特定于 Azure 服务总线消息的配额信息。 若要了解服务总线的定价和其他配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 

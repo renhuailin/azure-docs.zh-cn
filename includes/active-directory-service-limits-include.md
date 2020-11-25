@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
 ms.openlocfilehash: 42dfa499e0a44d0b468d3a234e9dc88904c361b0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026762"
 ---
 下面是 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。
 

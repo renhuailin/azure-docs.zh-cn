@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027801"
 ---
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 

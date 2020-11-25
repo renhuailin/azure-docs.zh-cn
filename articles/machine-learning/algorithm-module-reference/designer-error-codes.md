@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030401"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -281,11 +281,18 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  当列包含的唯一值过多时，将出现此错误。  例如，如果你指定将某列作为分类数据进行处理，但由于列中的唯一值过多而难以完成处理，则可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
 
+如果同时满足以下 **两个** 条件，将会出现唯一值的错误：
+
+- 一个列超过97% 的实例是唯一值，这意味着几乎所有类别都是不同的。
+- 一列具有超过1000个唯一值。
+
 **解决方法：**
 
 打开生成错误的模块，并标识用作输入的列。 对于某些模块，可以右键单击数据集输入，然后选择“可视化”以获取各列的统计信息，包括唯一值的数目及其分布。
 
 对于打算用于分组或分类的列，请采取措施来减少列中的唯一值数目。 根据列的数据类型，可以通过不同的方式减小唯一值数目。 
+
+通常在这种情况下，命中错误的列不会成为训练模型的功能。 因此，您可以使用 " [编辑元数据](../algorithm-module-reference/edit-metadata.md) " 将该列标记为 **Clear 功能** ，而不会在训练模型时使用。 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -372,7 +379,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  若要确定要求和数据应有的格式，请查看将使用数据集作为输入的模块的帮助主题。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->上获取。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |异常消息|
 |------------------------|

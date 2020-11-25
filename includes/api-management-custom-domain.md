@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 1858317d40efa59b188ce894534be93a1f11b287
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027545"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM 代理服务器在 TLS 握手中如何通过 SSL 证书进行响应
 

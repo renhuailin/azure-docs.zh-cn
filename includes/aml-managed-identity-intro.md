@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
 ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026735"
 ---
  Azure 机器学习计算群集还支持使用[托管标识](../articles/active-directory/managed-identities-azure-resources/overview.md)来验证对 Azure 资源的访问，而不需要在代码中包含凭据。 托管标识分为两种类型：
 

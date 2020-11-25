@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029687"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
@@ -29,7 +29,8 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发
 - [Azure Active Directory](../../active-directory/index.yml) (Azure AD) 服务在 2020 年 7 月 7 日开始此过渡。
 - [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub)和 [DPS](../../iot-dps/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)。
 - [Azure 存储](../../storage/index.yml)将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
-- [适用于 Redis 的 Azure 缓存](../../azure-cache-for-redis/index.yml) 将保留在巴尔的摩 CYBERTRUST 根 CA 上，但其中间 ca 会发生更改。 [单击此处了解详细信息](../../azure-cache-for-redis/cache-whats-new.md)。
+- [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](../../azure-cache-for-redis/cache-whats-new.md)。
+- Azure 实例元数据服务将保留在巴尔的摩 CyberTrust 根 CA，但其中间 Ca 会发生更改。 [单击此处了解详细信息](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)。
 
 > [!IMPORTANT]
 > 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 服务时出现连接故障。
@@ -71,7 +72,7 @@ Azure 服务使用的 TLS 证书都链接到以下根 CA 之一：
 
 - 与 Azure 服务进行通信的不同操作系统和语言运行时可能需要额外步骤，才能正确利用这些新的根来构建证书链：
     - Linux：许多发行版要求将 CA 添加到 /etc/ssl/certs。 有关特定说明，请查看发行版的相应文档。
-    - **Java** ：确保 Java 密钥存储包含上面列出的 CA。
+    - **Java**：确保 Java 密钥存储包含上面列出的 CA。
     - 在断开连接的环境中运行的 Windows：在断开连接的环境中运行的系统需要将新根添加到受信任的根证书颁发机构存储，并将中间证书添加到中间证书颁发机构存储。
     - Android：查看适用于你设备和 Android 版本的文档。
     - 其他硬件设备（尤其是 IoT）：联系设备制造商。
@@ -86,7 +87,7 @@ Azure 服务使用的 TLS 证书都链接到以下根 CA 之一：
     - http://crl&#46;microsoft&#46;com
     - http://oneocsp&#46;microsoft&#46;com
     - http://ocsp&#46;msocsp&#46;com
-    - http://www&#46; microsoft&#46;com/pkiops
+    - http://www&#46;microsoft&#46;com/pkiops
 
 ## <a name="next-steps"></a>后续步骤
 

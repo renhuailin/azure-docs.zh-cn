@@ -9,11 +9,11 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 76e52758bf88dde9cdc68dad974f0b65fd55140f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027847"
 ---
 启用共享磁盘仅适用于磁盘类型的子集。 目前只有超磁盘和高级 Ssd 可以启用共享磁盘。 已启用共享磁盘的每个托管磁盘受到下列限制，按磁盘类型进行组织：
 

@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 8/7/2020
 ms.author: baanders
 ms.openlocfilehash: 58ae9c187f50bb7eb3f1ccc2a618275885121267
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95563700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027655"
 ---
 > [!TIP]
 > 创建模型后，建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。

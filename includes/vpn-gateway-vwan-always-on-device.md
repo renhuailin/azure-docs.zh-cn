@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028085"
 ---
 必须满足以下要求才能成功建立设备隧道：
 
@@ -22,13 +22,13 @@ ms.locfileid: "90606766"
 * 对于每台设备，只能配置一个设备隧道。
 
 1. 按照[点到站点 VPN 客户端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)一文中所述，在 Windows 10 客户端上安装客户端证书。 证书需位于本地计算机存储中。
-1. 按照[这些说明](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)创建 VPN 配置文件，并在 LOCAL SYSTEM 帐户的上下文中配置设备隧道。
+1. 按照[这些说明](/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)创建 VPN 配置文件，并在 LOCAL SYSTEM 帐户的上下文中配置设备隧道。
 
 ### <a name="configuration-example-for-device-tunnel"></a>设备隧道的配置示例
 
 配置虚拟网络网关并在 Windows 10 客户端的本地计算机存储中安装客户端证书后，使用以下示例配置客户端设备隧道：
 
-1. 复制以下文本，并将文件保存为 ***devicecert.ps1***。
+1. 复制以下文本，并将其另存为 ***devicecert.ps1** _。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "90606766"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
+1. 复制以下文本，并将其作为 _*_VPNProfile.xml_*_ 保存在与 _ * devicecert.ps1 * * 相同的文件夹中。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ ms.locfileid: "90606766"
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. 从 [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
+1. 从 [Sysinternals](/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
 1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```

@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1aff5780aa5f4cf21d862a5cee3b140179dac03c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e584b6eff16636f0657c586f6c630dbf8bbb99b2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88704487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026958"
 ---
 下面概述了 Azure 时序见解 Gen1 中的主要限制。
 
@@ -44,7 +44,7 @@ S2 SKU 环境每月支持更多的事件，并具有显著更高的入口容量�
 
 ### <a name="property-limits"></a>属性限制
 
-Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有相应的 JSON、CSV 和图表列，可以在 [Azure 时序见解资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)中查看。
+Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有相应的 JSON、CSV 和图表列，可以在 [Azure 时序见解资源管理器](../articles/time-series-insights/time-series-quickstart.md)中查看。
 
 | SKU | 最大属性数 |
 | --- | --- |
@@ -55,9 +55,9 @@ Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有相
 
 每个实例最多支持两个事件源。
 
-* 了解如何[添加事件中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
-* 配置 [IoT 中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
+* 了解如何[添加事件中心源](../articles/time-series-insights/how-to-ingest-data-event-hub.md)。
+* 配置 [IoT 中心源](../articles/time-series-insights/how-to-ingest-data-iot-hub.md)。
 
 ### <a name="api-limits"></a>API 限制
 
-[REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)中指定了 Azure 时序见解 Gen1 的 REST API 限制。
+[REST API 参考文档](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)中指定了 Azure 时序见解 Gen1 的 REST API 限制。

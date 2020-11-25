@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 47e9e37676a4afa9ec29393bf970c368f3f9e5be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0f8055dcd8bdfb2ecb3ea99448838514eeb34f3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77586116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027067"
 ---
 ## <a name="add-to-your-functions-app"></a>添加到 Functions 应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "77586116"
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs
 [core tools]: ../articles/azure-functions/functions-run-local.md
 [扩展捆绑包]: ../articles/azure-functions/functions-bindings-register.md#extension-bundles
-[更新扩展]: ../articles/azure-functions/install-update-binding-extensions-manual.md
+[更新扩展]: ../articles/azure-functions/functions-bindings-register.md
 [Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

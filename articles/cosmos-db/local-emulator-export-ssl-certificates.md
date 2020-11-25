@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 23d9c6730857cf4ed7f8b8062d5529bedd8e2740
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 1825dd34855b356367722eefbfb5eb6dd9c78ae3
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029177"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>导出要用于 Java、Python 和 Node.js 应用的 Azure Cosmos DB 模拟器证书
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "95997165"
 
 运行使用基于 Java 的客户端的 Java 应用程序或 MongoDB 应用程序时，将证书安装到 Java 默认证书存储比传递 `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` 标志更简单。 例如，包含的 Java 演示应用程序 (`https://localhost:8081/_explorer/index.html`) 依赖于默认证书存储。
 
-请按照[将证书添加到 Java 证书存储](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store)中的说明将 X.509 证书导入到默认 Java 证书存储。 请注意，运行 keytool 时会在 %JAVA_HOME% 目录中执行操作。 证书导入证书存储后，SQL 和 Azure Cosmos DB API for MongoDB 的客户端就能连接到 Azure Cosmos 模拟器。
+请按照[将证书添加到 Java 证书存储](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store)中的说明将 X.509 证书导入到默认 Java 证书存储。 请注意，运行 keytool 时会在 %JAVA_HOME% 目录中执行操作。 将证书导入证书存储后，SQL 和 Azure Cosmos DB 的 API for MongoDB 的客户端将能够连接到 Azure Cosmos DB 模拟器。
 
 也可运行以下 bash 脚本来导入证书：
 

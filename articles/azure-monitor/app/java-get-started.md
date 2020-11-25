@@ -5,21 +5,21 @@ ms.topic: conceptual
 author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 11/22/2020
+ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029534"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
 
-> [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的指南进行操作。
+> [!CAUTION]
+> 截至2020年11月，对于监视 Java 应用程序，我们建议使用 Azure Monitor Application Insights 3.0 代理进行自动检测。 有关如何入门的详细信息，请参阅 [Application Insights Java 3.0 agent](./java-in-process-agent.md)。
 
-在本快速入门中，你将使用 Application Insights SDK 来检测请求、跟踪依赖项和收集性能计数器，诊断性能问题和异常，并编写代码来跟踪用户对应用执行的操作。
+在本快速入门中，你将使用 Application Insights SDK 检测请求、跟踪依赖项、收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
 Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
@@ -197,9 +197,9 @@ Application Insights SDK 按以下顺序查找密钥：
 
     （此组件启用性能计数器。）
 
-## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、Vm 配置
+## <a name="azure-app-service-aks-vms-config"></a>Azure 应用服务、AKS、VM 配置
 
-若要监视任何 Azure 资源提供程序上运行的应用程序，最佳且最简单的方法是通过 [Java 3.0 代理](./java-in-process-agent.md)使用 Application Insights 自动检测。
+若要监视在任何 Azure 资源提供程序上运行的应用程序，最佳、最简单的方法是通过 [Java 3.0 代理](./java-in-process-agent.md)使用 Application Insights 自动检测。
 
 
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败

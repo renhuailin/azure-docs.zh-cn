@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: c1d1efce656bea02385cb20ac11ab90ca5664e60
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561884"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026759"
 ---
 要在打开的 [Azure Cloud Shell](https://shell.azure.com) 窗口中开始处理 Azure 数字孪生，首先需要登录，并为此会话将 shell 上下文设置为你的订阅。 在 Cloud Shell 中运行以下命令：
 

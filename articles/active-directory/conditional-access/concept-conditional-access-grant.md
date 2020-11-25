@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904012"
+ms.locfileid: "96029398"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -108,7 +108,7 @@ ms.locfileid: "95904012"
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
    - 仅支持 iOS 和 Android 作为设备平台条件。
-   - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
+   - 注册设备需要代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
 
 请参阅文章[如何：使用条件访问要求使用批准的设备应用访问云应用](app-based-conditional-access.md)，以获取配置示例。
