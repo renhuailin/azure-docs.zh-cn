@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401038"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994921"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 
@@ -32,12 +32,12 @@ ms.locfileid: "89401038"
 创建流量管理器配置文件的资源组。
 1. 在 Azure 门户的左侧窗格中，选择“资源组”  。
 2. 在“资源组”中，选择页面顶部的“添加”   。
-3. 在“资源组名称”中，键入名称 myResourceGroupTM1   。 在“资源组位置”处，请选择“美国东部”，然后选择“确定”************。
+3. 在“资源组名称”中，键入名称 myResourceGroupTM1   。 在“资源组位置”处，请选择“美国东部”，然后选择“确定”。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 创建流量管理器配置文件，以便将用户流量定向到延迟最低的终结点。
 
-1. 在屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **流量管理器配置文件**" "  >  **创建**"。
+1. 在屏幕左上方，选择“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受其余设置的默认值，然后选择“创建”   ：
     
     | 设置                 | 值                                              |

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994955"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 认知搜索结果的安全筛选器
 
@@ -43,7 +43,7 @@ Azure 认知搜索中的索引必须有一个[安全字段](search-security-trim
 
 此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](../active-directory/develop/quickstart-create-new-tenant.md)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。 
+1. 转到 [**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。 
 2. 输入应用程序的名称，单击“创建”。 
 3. 在“我的应用程序”页中选择新注册的应用程序。
 4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。  

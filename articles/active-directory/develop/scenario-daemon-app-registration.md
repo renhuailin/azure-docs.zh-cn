@@ -12,11 +12,11 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443324"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995993"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>调用 Web API 的守护程序应用 - 应用注册
 
@@ -26,8 +26,8 @@ ms.locfileid: "94443324"
 
 守护程序应用程序只能在 Azure AD 租户中使用。 因此，在创建应用程序时，需要选择以下选项之一：
 
-- **仅此组织目录中的帐户** 。 此选择是最常见的，因为守护程序应用程序通常是由业务线 (LOB) 开发人员编写的。
-- **任何组织目录中的帐户** 。 如果你是 ISV，需向客户提供实用程序工具，则可进行此选择。 需要获得客户的租户管理员批准。
+- **仅此组织目录中的帐户**。 此选择是最常见的，因为守护程序应用程序通常是由业务线 (LOB) 开发人员编写的。
+- **任何组织目录中的帐户**。 如果你是 ISV，需向客户提供实用程序工具，则可进行此选择。 需要获得客户的租户管理员批准。
 
 ## <a name="authentication---no-reply-uri-needed"></a>身份验证 - 不需回复 URI
 

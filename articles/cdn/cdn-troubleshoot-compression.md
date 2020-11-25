@@ -15,16 +15,16 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996145"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
 
-如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。****
+如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。
 
 ## <a name="symptom"></a>症状
 已经为终结点启用了压缩，但返回的文件没有压缩。
@@ -65,7 +65,7 @@ ms.locfileid: "89433664"
 
 ### <a name="verify-compression-settings-standard-cdn-profiles"></a>验证压缩设置（标准 CDN 配置文件）
 > [!NOTE]
-> 仅当 CDN 配置文件为**来自 Microsoft 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 或**来自 Akamai 的标准 Azure CDN** 配置文件时，此步骤才适用。 
+> 仅当 CDN 配置文件为 **来自 Microsoft 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 或 **来自 Akamai 的标准 Azure CDN** 配置文件时，此步骤才适用。 
 > 
 > 
 
@@ -78,7 +78,7 @@ ms.locfileid: "89433664"
 
 ### <a name="verify-compression-settings-premium-cdn-profiles"></a>验证压缩设置（高级 CDN 配置文件）
 > [!NOTE]
-> 仅当 CDN 配置文件为**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
+> 仅当 CDN 配置文件为 **来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 
@@ -92,20 +92,20 @@ ms.locfileid: "89433664"
 
 ### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>验证内容是否已缓存（Verizon CDN 配置文件）
 > [!NOTE]
-> 仅当 CDN 配置文件为**来自 Verizon 的标准 Azure CDN** 或**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
+> 仅当 CDN 配置文件为 **来自 Verizon 的标准 Azure CDN** 或 **来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 
 使用浏览器的开发人员工具，检查响应标头以确保文件已缓存在提出请求的区域中。
 
-* 检查 **Server** 响应标头。  标头应具有格式**平台（POP/服务器 ID）**，如下例所示。
+* 检查 **Server** 响应标头。  标头应具有格式 **平台（POP/服务器 ID）**，如下例所示。
 * 检查 **X-Cache** 响应标头。  标头应显示 **HIT**。  
 
 ![CDN 响应标头](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
 ### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>验证该文件是否满足大小要求（Verizon CDN 配置文件）
 > [!NOTE]
-> 仅当 CDN 配置文件为**来自 Verizon 的标准 Azure CDN** 或**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
+> 仅当 CDN 配置文件为 **来自 Verizon 的标准 Azure CDN** 或 **来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 
@@ -118,5 +118,5 @@ ms.locfileid: "89433664"
 **Via** HTTP 标头指明了由代理服务器正在将请求传递到的 web 服务器。  默认情况下，当请求包含 **Via** 标头时，Microsoft IIS Web 服务器不会压缩响应。  要覆盖此行为，请执行以下操作：
 
 * **IIS 6**：[在 IIS 元数据库属性中设置 HcNoCompressionForProxies ="FALSE"](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 及更高版本**：[在服务器配置中将 **noCompressionForHttp10** 和 **noCompressionForProxies** 设置为 False ](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 及更高版本**：[在服务器配置中将 **noCompressionForHttp10** 和 **noCompressionForProxies** 设置为 False](https://www.iis.net/configreference/system.webserver/httpcompression)
 

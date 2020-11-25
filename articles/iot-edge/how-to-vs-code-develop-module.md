@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
 ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995907"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -93,7 +93,7 @@ ms.locfileid: "92043725"
 
 1. 输入模块的名称。 选择容器注册表中唯一的名称。
 
-1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名  。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器的外观类似于** _\<registry name\>_ azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果如** \<*registry name*\> azurecr.io/ _\<your module name\>_ **。
+1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名  。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器的外观类似于 **_\<registry name\>_ azurecr.io**。 仅替换字符串中的 **localhost： 5000** 部分，使最终结果如 **\<*registry name*\> azurecr.io/ _\<your module name\>_**。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -168,7 +168,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `Program.cs` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图  。 从下拉列表中选择调试配置“&lt;你的模块名称&gt; 本地调试(.NET Core)”  。
+     - 通过选择“视图”>“调试”导航到 Visual Studio Code“调试视图” _。从下拉列表中选择调试配置“&lt;你的模块名称&gt;本地调试(.NET Core)”_ 。
 
         > [!NOTE]
         > 如果 .NET Core `TargetFramework` 与 `launch.json` 中的程序路径不一致，则需要手动更新 `launch.json` 中的程序路径以匹配 .csproj 文件中的 `TargetFramework`，以便 Visual Studio Code 可以成功启动此程序。
@@ -182,7 +182,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `app.js` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图  。 从下拉列表中选择调试配置“&lt;你的模块名称&gt; 本地调试(Node.js)”  。
+     - 通过选择“视图”>“调试”导航到 Visual Studio Code“调试视图” _。从下拉列表中选择调试配置“&lt;你的模块名称&gt;本地调试(Node.js)”_ 。
    - **Java**
      - 打开 `App.java` 文件并添加断点。
 
@@ -322,13 +322,13 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 确保计算机上要调试的模块正在运行且可供调试程序附加，并且可从外部访问端口 9229。 可以通过在调试程序计算机上打开 `http://<target-machine-IP>:9229/json` 对此进行验证。 此 URL 应显示有关要调试的 Node.js 模块的信息。
   
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 文件，以便 ***&lt;模块名称&gt;* Remote Debug (Node.js)** 配置文件（如果模块作为 Windows 容器运行，则为 ***&lt;模块名称&gt;* Remote Debug (Node.js in Windows Container)** 配置文件）的地址值是所要调试的计算机的 IP。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 文件，以便 **_&lt;模块名称&gt;_ Remote Debug (Node.js)** 配置文件（如果模块作为 Windows 容器运行，则为 **_&lt;模块名称&gt;_ Remote Debug (Node.js in Windows Container)** 配置文件）的地址值是所要调试的计算机的 IP。
 
 - **Java**
 
   - 运行 `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`，与要调试的计算机建立 SSH 隧道。
   
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 中的 ***&lt;模块名称&gt;* Remote Debug (Java)** 配置文件，以便可以附加到目标计算机。 若要详细了解如何编辑 `launch.json` 以及使用 Visual Studio Code 调试 Java，请参阅有关[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)的部分。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 中的 **_&lt;模块名称&gt;_ Remote Debug (Java)** 配置文件，以便可以附加到目标计算机。 若要详细了解如何编辑 `launch.json` 以及使用 Visual Studio Code 调试 Java，请参阅有关[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)的部分。
 
 - **Python**
 
@@ -336,7 +336,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 在前面已插入到 `main.py` 的代码 `ptvsd.enable_attach(('0.0.0.0', 5678))` 中，将 **0.0.0.0** 更改为要调试的计算机的 IP 地址。 再次生成、推送并部署 IoT Edge 模块。
 
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json`，使 ***&lt;模块名称&gt;* Remote Debug (Python)** 配置文件的 `host` 值使用目标计算机的 IP 地址而不是 `localhost`。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json`，使 **_&lt;模块名称&gt;_ Remote Debug (Python)** 配置文件的 `host` 值使用目标计算机的 IP 地址而不是 `localhost`。
 
 ### <a name="debug-your-module"></a>调试模块
 

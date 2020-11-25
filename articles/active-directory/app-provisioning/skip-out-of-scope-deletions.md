@@ -12,25 +12,25 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995363"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
 
 默认情况下，Azure AD 预配引擎软删除或禁用超出范围的用户。 但是，在某些情况下，对于 Workday 到 AD 用户的入站预配，此行为可能不是预期的，你可能想要重写此默认行为。  
 
-本文介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志 * **SkipOutOfScopeDeletions** _，该标志控制超出范围的帐户的处理。 如果 * **SkipOutOfScopeDeletions** _ 设置为 0 (false) ，则将在目标中禁用超出范围的帐户。
-_ 如果 * **SkipOutOfScopeDeletions** _ 设置为 1 () 为 true，则不会在目标中禁用超出作用域的帐户。 此标志在 _Provisioning App * 级别设置，可以使用图形 API 进行配置。 
+本文介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志 ***SkipOutOfScopeDeletions** _，该标志控制超出范围的帐户的处理。 如果 ***SkipOutOfScopeDeletions** _ 设置为 0 (false) ，则将在目标中禁用超出范围的帐户。
+_ 如果 ***SkipOutOfScopeDeletions** _ 设置为 1 () 为 true，则不会在目标中禁用超出作用域的帐户。 此标志在 _Provisioning App * 级别设置，可以使用图形 API 进行配置。 
 
-由于此配置广泛与 Workday 一起用于 *Active Directory 用户预配* 应用程序，因此以下步骤包括 Workday 应用程序的屏幕截图。 但是，还可以将该配置用于 *所有其他应用* ，如 ServiceNow、Salesforce 和 Dropbox。
+由于此配置广泛与 Workday 一起用于 *Active Directory 用户预配* 应用程序，因此以下步骤包括 Workday 应用程序的屏幕截图。 但是，还可以将该配置用于 *所有其他应用*，如 ServiceNow、Salesforce 和 Dropbox。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID (对象 ID) 
 
 1. 启动 [Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将 *Workday 导出到 AD 用户预配应用程序* 映射，请导航到该应用的 "属性" 部分。 
-1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值  。 此值也称为应用的 ServicePrincipalId，它将用于 Graph 浏览器操作  。
+1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值。 此值也称为应用的 ServicePrincipalId，它将用于 Graph 浏览器操作。
 
    ![Workday 应用服务主体 ID](./media/skip-out-of-scope-deletions/wd_export_01.png)
 
@@ -45,7 +45,7 @@ _ 如果 * **SkipOutOfScopeDeletions** _ 设置为 1 () 为 true，则不会在�
 
 ## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>步骤3：获取现有应用凭据和连接详细信息
 
-在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从  。
+在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 中提取的 ServicePrincipalId。
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -68,9 +68,9 @@ _ 如果 * **SkipOutOfScopeDeletions** _ 设置为 1 () 为 true，则不会在�
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>步骤4：用 SkipOutOfScopeDeletions 标志更新机密终结点
 
-在图形资源管理器中运行以下命令，以用 * *_SkipOutOfScopeDeletions_* _ 标志更新机密终结点。 
+在图形资源管理器中运行以下命令，以用 **_SkipOutOfScopeDeletions_* _ 标志更新机密终结点。 
 
-在下面的 URL 中，将 [servicePrincipalId] 替换为从 [步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)中提取的 _ *servicePrincipalId* *。 
+在下面的 URL 中，将 [servicePrincipalId] 替换为从 [步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)中提取的 _ *servicePrincipalId**。 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

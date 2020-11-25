@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986432"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995754"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
@@ -81,7 +81,7 @@ ms.locfileid: "94986432"
 1. 请参阅 **设备模板** 页。
 1. 选择要尝试版本的设备模板。
 1. 选择页面顶部的 " **版本** " 按钮，并为模板指定一个新名称。 IoT Central 建议一个新名称，您可以对其进行编辑。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 该设备模板现在处于草稿模式。 您可以看到您的接口仍处于锁定状态。 版本要修改的任何接口。
 
 ## <a name="version-an-interface"></a>版本接口
@@ -94,7 +94,7 @@ ms.locfileid: "94986432"
 1. 选择处于草稿模式的设备模板。
 1. 选择要进行版本和编辑的已发布模式下的接口。
 1. 选择 "接口" 页顶部的 " **版本** " 按钮。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 该接口现在处于草稿模式。 你可以在接口中添加或编辑功能，而不会破坏现有的自定义和视图。
 
 ## <a name="migrate-a-device-across-versions"></a>跨版本迁移设备

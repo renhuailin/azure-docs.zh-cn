@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370604"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995924"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
 
@@ -34,7 +34,7 @@ ms.locfileid: "92370604"
 
 ## <a name="sign-in-at-azureiotsolutionscom"></a>登录 azureiotsolutions.com
 
-必须先使用与 Azure 订阅关联的凭据登录 AzureIoTSolutions.com，然后才能部署解决方案加速器。 如果帐户与多个 Microsoft Azure Active Directory (AD) 租户关联，则可以使用**帐户选择下拉列表**选择要使用的目录。
+必须先使用与 Azure 订阅关联的凭据登录 AzureIoTSolutions.com，然后才能部署解决方案加速器。 如果帐户与多个 Microsoft Azure Active Directory (AD) 租户关联，则可以使用 **帐户选择下拉列表** 选择要使用的目录。
 
 部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
@@ -60,7 +60,7 @@ AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://cat
 
 ![设备目录](media/iot-accelerators-permissions/devicecatalog.png)
 
-如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴****。
+如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴。
 
 ## <a name="next-steps"></a>后续步骤
 

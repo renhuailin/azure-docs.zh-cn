@@ -4,11 +4,11 @@ description: 本文逐步指导使用 Visual Studio 部署 Service Fabric 应用
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996230"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 现在，随着应用程序不断升级，可以使用 Service Fabric Explorer 来监视应用程序（使用应用程序下的“**正在进行升级**”选项卡）。
 
-几分钟后，所有更新域应已升级（已完成），Visual Studio 输出窗口应该也会指出升级已完成。 此外，可以看到，浏览器窗口中的*所有* 可视对象都在旋转！
+几分钟后，所有更新域应已升级（已完成），Visual Studio 输出窗口应该也会指出升级已完成。 此外，可以看到，浏览器窗口中的 *所有* 可视对象都在旋转！
 
 可以尝试通过更改版本来练习本文所述的操作：从版本 2.0.0 升级到版本 3.0.0，或者从版本 2.0.0 降级到版本 1.0.0。 尝试练习使用超时和运行状况策略，以便加深对它的熟悉。 与部署到本地群集不同，在部署到 Azure 群集时，可能需要使用不同的参数。 们建议保守设置超时值。
 

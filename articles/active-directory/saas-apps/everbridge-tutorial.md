@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453852"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 Everbridge 集成
 
@@ -186,7 +186,7 @@ ms.locfileid: "92453852"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“姓名”  框中，输入 **BrittaSimon** 。
+    a. 在“姓名”  框中，输入 **BrittaSimon**。
   
     b. 在“用户名”框中输入 `brittasimon@yourcompanydomain.extension`  。 示例为 BrittaSimon@contoso.com。
 

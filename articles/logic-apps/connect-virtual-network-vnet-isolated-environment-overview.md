@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996315"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -53,7 +53,7 @@ ms.locfileid: "94616920"
 
 * 内置的触发器和操作（如 HTTP）显示 **核心** 标签，并在与逻辑应用相同的 ISE 中运行。
 
-* 显示 **ISE** 标签的托管连接器专门为 ISEs 设计，并 *始终在与逻辑应用相同的 ISE 中运行* 。 例如，以下是一些 [提供 ISE 版本的连接器](../connectors/apis-list.md#ise-connectors)：<p>
+* 显示 **ISE** 标签的托管连接器专门为 ISEs 设计，并 *始终在与逻辑应用相同的 ISE 中运行*。 例如，以下是一些 [提供 ISE 版本的连接器](../connectors/apis-list.md#ise-connectors)：<p>
 
   * Azure Blob 存储、文件存储和表存储
   * Azure 服务总线，Azure 队列，Azure 事件中心
@@ -65,7 +65,7 @@ ms.locfileid: "94616920"
 
   在少数例外情况下，如果 ISE 连接器可用于本地系统或数据源，则无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面的对 [本地系统的访问权限](#on-premises) 。
 
-* 不显示 **ise** 标签的托管连接器继续适用于 ISE 内的逻辑应用。 这些连接器 *始终在多租户逻辑应用服务中运行* ，而不是在 ISE 中运行。
+* 不显示 **ise** 标签的托管连接器继续适用于 ISE 内的逻辑应用。 这些连接器 *始终在多租户逻辑应用服务中运行*，而不是在 ISE 中运行。
 
 * 在 *ise 外* 创建的自定义连接器，无论它们是否需要 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)，都将继续在 ise 内使用逻辑应用。 但是，在 *ISE 中* 创建的自定义连接器不会使用本地数据网关。 有关详细信息，请参阅对 [本地系统的访问权限](#on-premises)。
 
@@ -117,7 +117,7 @@ ms.locfileid: "94616920"
 > [!IMPORTANT]
 > 只能在 ISE 创建过程中选择访问终结点，以后无法更改此选项。
 
-* **内部** ：专用终结点允许调用 ISE 中的逻辑应用，其中你只能 *从虚拟网络内部* 查看和访问逻辑应用 "运行历史记录" 中的输入和输出。
+* **内部**：专用终结点允许调用 ISE 中的逻辑应用，其中你只能 *从虚拟网络内部* 查看和访问逻辑应用 "运行历史记录" 中的输入和输出。
 
   > [!IMPORTANT]
   > 如果需要使用这些基于 webhook 的触发器，请在创建 ISE 时使用外部终结点， *而不* 是内部终结点：
@@ -134,9 +134,9 @@ ms.locfileid: "94616920"
   >
   > 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于通过对等互连或虚拟专用网络连接到 ISE 的虚拟网络的虚拟网络中。 
 
-* **外部** ：公用终结点允许调用 ISE 中的逻辑应用，可在其中查看和访问来自 *虚拟网络外部* 的逻辑应用的运行历史记录的输入和输出。 如果使用 (Nsg) 的网络安全组，请确保它们已设置为允许访问运行历史记录的输入和输出的入站规则。 有关详细信息，请参阅 [为 ISE 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+* **外部**：公用终结点允许调用 ISE 中的逻辑应用，可在其中查看和访问来自 *虚拟网络外部* 的逻辑应用的运行历史记录的输入和输出。 如果使用 (Nsg) 的网络安全组，请确保它们已设置为允许访问运行历史记录的输入和输出的入站规则。 有关详细信息，请参阅 [为 ISE 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
 
-若要确定 ISE 是否使用内部或外部访问终结点，请在 ISE 菜单上的 " **设置** " 下，选择 " **属性** "，然后找到 " **访问终结点** " 属性：
+若要确定 ISE 是否使用内部或外部访问终结点，请在 ISE 菜单上的 " **设置**" 下，选择 " **属性**"，然后找到 " **访问终结点** " 属性：
 
 ![查找 ISE 访问终结点](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 

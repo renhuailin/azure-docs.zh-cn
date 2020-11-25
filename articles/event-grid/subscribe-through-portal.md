@@ -4,11 +4,11 @@ description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Bl
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995057"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -24,7 +24,7 @@ ms.locfileid: "91308497"
 
 1. 搜索“事件网格订阅”  ，并从可用选项中选择它。
 
-   ![屏幕捕获在选定了事件网格订阅的 Azure 门户中显示搜索。](./media/subscribe-through-portal/search.png)
+   ![屏幕截图显示了 Azure 门户中的“搜索”，其中已选择“事件网格订阅”。](./media/subscribe-through-portal/search.png)
 
 1. 选择“+ 事件订阅”。 
 
@@ -34,15 +34,15 @@ ms.locfileid: "91308497"
 
    ![选择 Azure 订阅](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”**** 选项保持选中状态。 否则，请为此订阅选择事件类型。
+1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”选项保持选中状态。 否则，请为此订阅选择事件类型。
 
    ![选择事件类型](./media/subscribe-through-portal/select-event-types.png)
 
 1. 提供关于事件订阅的其他详细信息，例如，用于处理事件的终结点以及订阅名称。
 
-   ![屏幕截图，显示 "终结点详细信息" 和 "事件订阅详细信息" 部分，其中包含已输入的 "订阅名称" 值。](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![此屏幕截图显示了“终结点详细信息”和“事件订阅详细信息”部分，其中已输入订阅名称值。](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 若要启用死信和自定义重试策略，请选择“其他功能”****。
+1. 若要启用死信和自定义重试策略，请选择“其他功能”。
 
    ![选择其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "91308497"
 
    ![启用死信并重试](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完成后，选择“创建”。****
+1. 完成后，选择“创建”。
 
 ## <a name="create-subscription-on-resource"></a>创建关于资源的订阅
 
-某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”****。
+某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”。
 
 ![提供订阅详细信息](./media/subscribe-through-portal/resource-events.png)
 

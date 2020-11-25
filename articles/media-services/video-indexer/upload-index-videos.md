@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630254"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994480"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
-当你的视频上传完毕后，视频索引器 (根据需要) 对视频进行编码， (文章) 中所述。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 你为索引分钟数付费，有关详细信息，请参阅 [媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
+当你的视频上传完毕后，视频索引器 (根据需要) 对视频进行编码， (文章) 中所述。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 你需要为索引时间付费，有关详细信息，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
 使用视频索引器 API 上传视频时，有以下上传选项： 
 
@@ -74,27 +74,7 @@ ms.locfileid: "94630254"
 
 #### <a name="callbackurl"></a>callbackUrl
 
-一个 URL，用于通知客户（使用 POST 请求）以下事件：
-
-- 索引状态更改： 
-    - 属性：    
-    
-        |名称|说明|
-        |---|---|
-        |id|视频 ID|
-        |state|视频状态|  
-    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
-- 在视频中标识的人：
-  - “属性”
-    
-      |名称|说明|
-      |---|---|
-      |id| 视频 ID|
-      |faceId|出现在视频索引中的人脸 ID|
-      |knownPersonId|在人脸模型中唯一的个人 ID|
-      |personName|人名|
-        
-    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>其他注意事项
 
@@ -118,7 +98,7 @@ ms.locfileid: "94630254"
 
 #### <a name="priority"></a>priority
 
-视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效： **Low** （低）、 **Normal** （正常，默认值）、 **High** （高）。
+视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效：**Low**（低）、**Normal**（正常，默认值）、**High**（高）。
 
 仅付费帐户支持 **Priority** 参数。
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995856"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -39,11 +39,11 @@ ms.locfileid: "91999738"
 > 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于10月31日删除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>问：表和架构是否会更改？
-> **OfficeActivity**表名称和架构将保持与当前解决方案中的相同。 你可以继续在新的解决方案中使用相同的查询，但不包括引用 Azure AD 数据的查询。
+> **OfficeActivity** 表名称和架构将保持与当前解决方案中的相同。 你可以继续在新的解决方案中使用相同的查询，但不包括引用 Azure AD 数据的查询。
 > 
-> 新 [Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) 日志将被引入到 [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) 和 [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) 表中，而不是 **OfficeActivity**中。 有关详细信息，请参阅 [如何分析 Azure AD 日志](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)，这也适用于 Azure Sentinel 和 Azure Monitor 用户。
+> 新 [Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) 日志将被引入到 [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) 和 [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) 表中，而不是 **OfficeActivity** 中。 有关详细信息，请参阅 [如何分析 Azure AD 日志](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)，这也适用于 Azure Sentinel 和 Azure Monitor 用户。
 > 
-> 以下是将查询从 **OfficeActivity** 转换为 **SigninLogs**的示例：
+> 以下是将查询从 **OfficeActivity** 转换为 **SigninLogs** 的示例：
 > 
 > **查询登录失败，用户：**
 > 
@@ -125,7 +125,7 @@ ms.locfileid: "91999738"
 
 可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
-1. 将以下脚本保存为 office365_unsubscribe.ps1**。
+1. 将以下脚本保存为 office365_unsubscribe.ps1。
 
     ```powershell
     param (
@@ -234,10 +234,10 @@ ms.locfileid: "91999738"
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板****。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
+向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
 ![Office 365 摘要磁贴](media/solution-office-365/tile.png)  
 
-单击“Office 365”磁贴，打开“Office 365”仪表板********。
+单击“Office 365”磁贴，打开“Office 365”仪表板。
 
 ![Office 365 仪表板](media/solution-office-365/dashboard.png)  
 
@@ -255,13 +255,13 @@ ms.locfileid: "91999738"
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
 
-对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。****  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive****。  RecordType 属性指定操作的类型****。  每种操作类型的属性都不同，详情请见下表。
+对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
 
 ### <a name="common-properties"></a>公共属性
 
 以下属性对于所有 Office 365 记录通用。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | 类型 | *OfficeActivity* |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -279,7 +279,7 @@ ms.locfileid: "91999738"
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -291,7 +291,7 @@ ms.locfileid: "91999738"
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -305,7 +305,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -323,7 +323,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -339,7 +339,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -347,14 +347,14 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ModifiedObjectResolvedName |     这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| 参数 | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -377,11 +377,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| 项 | 表示对其执行操作的项 | 
+| 项目 | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |
@@ -392,7 +392,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -403,7 +403,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | DestMailboxOwnerSid | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定目标邮箱的 SID。 |
 | DestMailboxOwnerUPN | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定的目标邮箱所有者的 UPN。 |
 | DestFolder | 针对“移动”等操作的目标文件夹。 |
-| Folder | 一组项所在的文件夹。 |
+| 文件夹 | 一组项所在的文件夹。 |
 | 文件夹 |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
 
 
@@ -411,7 +411,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -428,7 +428,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -441,7 +441,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |

@@ -4,15 +4,15 @@ description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996094"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
-仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及 _拒绝分配_的应用，请参阅 [保护新资源](../tutorials/protect-new-resources.md) 教程。
+仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及 _拒绝分配_ 的应用，请参阅 [保护新资源](../tutorials/protect-new-resources.md) 教程。
 
 > [!NOTE]
 > Azure 蓝图部署的资源锁仅适用于蓝图分配部署的资源。 现有资源，如资源组中已存在的资源，不会向其添加锁。
@@ -22,18 +22,18 @@ ms.locfileid: "92095988"
 锁定模式适用于蓝图分配，它有三个选项： " **不锁定**"、" **只读**" 或 "不 **删除**"。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
 但是，锁定模式不能在 Azure 蓝图之外更改。
 
-蓝图分配中的项目创建的资源具有四种状态： **未锁定**、 **只读**、 **无法编辑/删除**或 **无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
+蓝图分配中的项目创建的资源具有四种状态： **未锁定**、 **只读**、 **无法编辑/删除** 或 **无法删除**。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|模式|项目资源类型|州省/自治区/直辖市|说明|
+|“模式”|项目资源类型|状态|说明|
 |-|-|-|-|
-|不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
-|只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
+|不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
+|只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 |只读|非资源组|只读|不能以任何方式更改资源。 无更改并且无法删除。|
-|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
+|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 
 ## <a name="overriding-locking-states"></a>重写锁定状态
 
-使用适当的 [azure 基于角色的访问控制 ](../../../role-based-access-control/overview.md) 的用户通常可以 (订阅上的 azure RBAC) （如 "所有者" 角色）允许更改或删除任何资源。 Azure 蓝图将锁定作为已部署的分配的一部分应用时，不会发生这种访问。 如果使用“只读”**** 或“不要删除”**** 选项设置了分配，则即使订阅所有者也无法对受保护资源执行阻止的操作。
+使用适当的 [azure 基于角色的访问控制 ](../../../role-based-access-control/overview.md) 的用户通常可以 (订阅上的 azure RBAC) （如 "所有者" 角色）允许更改或删除任何资源。 Azure 蓝图将锁定作为已部署的分配的一部分应用时，不会发生这种访问。 如果使用“只读”或“不要删除”选项设置了分配，则即使订阅所有者也无法对受保护资源执行阻止的操作。
 
 此安全措施可以保护已定义的蓝图与设计用于通过意外或以编程方式删除或更改创建的环境之间的一致性。
 
@@ -94,30 +94,30 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果需要修改或删除受分配保护的资源，则可通过两种方法来实现。
 
-- 将蓝图分配更新为“不锁定”**** 锁定模式
+- 将蓝图分配更新为“不锁定”锁定模式
 - 删除蓝图分配
 
 删除分配时，将删除由 Azure 蓝图创建的锁。 但是，资源会留在原地，需要通过正常方式删除。
 
 ## <a name="how-blueprint-locks-work"></a>蓝图锁定的工作原理
 
-如果分配选择了 "**只读**" 或 "不**删除**" 选项，则在分配蓝图的过程中，会将 Azure RBAC[拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并阻止在 Azure 蓝图之外删除蓝图锁定。
+如果分配选择了 "**只读**" 或 "不 **删除**" 选项，则在分配蓝图的过程中，会将 Azure RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并阻止在 Azure 蓝图之外删除蓝图锁定。
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="访问控制 (I A M) 页面和资源组的 &quot;拒绝分配&quot; 选项卡的屏幕截图。" border="false":::
 
 每个模式的 [拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 
-|模式 |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
+|“模式” |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|只读 |**\*** |**\*/read**<br />**Microsoft.Authorization/locks/delete**<br />**VirtualNetwork/子网/加入/操作** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
-|不要删除 |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**VirtualNetwork/子网/加入/操作** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|只读 |**\** _ |_ *\* /read/ **<br />** 锁定/删除 **<br />** virtualNetwork/子网/联接/操作** |SystemDefined (所有人)  |**excludedPrincipals** 中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|不要删除 |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**VirtualNetwork/子网/加入/操作** |SystemDefined (所有人)  |**excludedPrincipals** 中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>从拒绝分配中排除主体
 
-在某些设计或安全方案中，可能需要将主体从蓝图分配创建的 [拒绝分配](../../../role-based-access-control/deny-assignments.md) 中排除。 此步骤在 REST API 中完成，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多5个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面的分配定义是包含 **excludedPrincipals**的请求正文示例：
+在某些设计或安全方案中，可能需要将主体从蓝图分配创建的 [拒绝分配](../../../role-based-access-control/deny-assignments.md) 中排除。 此步骤在 REST API 中完成，方法是在 [创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多5个值添加到 "**锁定**" 属性中的 **excludedPrincipals** 数组。 下面的分配定义是包含 **excludedPrincipals** 的请求正文示例：
 
 ```json
 {

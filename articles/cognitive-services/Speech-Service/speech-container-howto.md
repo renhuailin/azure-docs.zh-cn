@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: ad3f73276a2a965032fd2acf368bce4a0c146632
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744165"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95996375"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -41,10 +41,10 @@ ms.locfileid: "94744165"
 
 | 容器 | 功能 | 最新 |
 |--|--|--|
-| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.6.0 |
-| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.6.0 |
-| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.8.0 |
-| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.8.0 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.7.0 |
+| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.7.0 |
+| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.9.0 |
+| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.9.0 |
 | 语音语言检测 | 检测音频文件中的语言。 | 1.0 |
 | 神经文本转语音 | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 | 1.3.0 |
 

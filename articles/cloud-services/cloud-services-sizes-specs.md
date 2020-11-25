@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076940"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994581"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e6185c4bde71285fc163cae2af46f64ba052195
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994751"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件访问：要求所有用户执行 MFA
 
@@ -32,7 +32,7 @@ ms.locfileid: "92366201"
 
 * 紧急访问帐户或不受限帐户，用于防止租户范围的帐户锁定 。 在极少数情况下，所有管理员都被锁定在租户外，紧急访问管理帐户可用于登录租户，以采取措施来恢复访问。
    * 有关详细信息，请参阅文章[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)。
-* **服务帐户**和**服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是不与任何特定用户关联的非交互式帐户。 它们通常由允许对应用程序进行编程访问的后端服务使用，但也用于出于管理目的登录到系统。 应该排除这样的服务帐户，因为无法以编程方式完成 MFA。 服务主体进行的调用不被条件访问阻止。
+* **服务帐户** 和 **服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是不与任何特定用户关联的非交互式帐户。 它们通常由允许对应用程序进行编程访问的后端服务使用，但也用于出于管理目的登录到系统。 应该排除这样的服务帐户，因为无法以编程方式完成 MFA。 服务主体进行的调用不被条件访问阻止。
    * 如果组织在脚本或代码中使用这些帐户，请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。 作为临时解决方法，可以从基线策略中排除这些特定的帐户。
 
 ## <a name="application-exclusions"></a>应用程序排除

@@ -12,11 +12,11 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
 ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996298"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>向现场可编程的入口阵列部署 ML 模型 (Fpga) 与 Azure 机器学习 
 
@@ -143,7 +143,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA。 查看 Azure 配额分配�
                                   outputs={'output_alias': classifier_output})
    ```
 
-1. 保存输入和输出 tensors， **因为将用于模型转换和推理请求** 。 
+1. 保存输入和输出 tensors， **因为将用于模型转换和推理请求**。 
 
    ```python
    input_tensors = in_images.name

@@ -8,11 +8,11 @@ keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器�
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995552"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service (预览版 & GitHub 操作) 
 
@@ -88,31 +88,31 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > 你必须为存储库启用 GitHub 操作。 若要为存储库启用 GitHub 操作，请导航到 GitHub 上的存储库，单击 "操作" 选项卡，然后选择启用此存储库的操作。
 
-导航到分叉存储库，然后单击 " *设置* "。 单击左侧边栏中的 " *机密* "。 单击 " *添加新机密* " 添加下面的每个新机密：
+导航到分叉存储库，然后单击 " *设置*"。 单击左侧边栏中的 " *机密* "。 单击 " *添加新机密* " 添加下面的每个新机密：
 
-1. *AZURE_CREDENTIALS* ：服务主体创建的整个输出。
-1. *RESOURCE_GROUP* ： AKS 群集的资源组，在本示例中为 *MyResourceGroup* 。
-1. *CLUSTER_NAME* ： AKS 群集的名称，此示例中为 *MyAKS* 。
-1. *CONTAINER_REGISTRY* ： ACR 的 *loginServer* 。
-1. *Host* ：开发人员空间的主机，其形式 *<MASTER_SPACE> <* APP_NAME> <HOST_SUFFIX>。 *dev.bikesharingweb.fedcab0987.eus.azds.io*
-1. *IMAGE_PULL_SECRET* ：要使用的机密的名称，例如 *演示密钥* 。
-1. *MASTER_SPACE* ：父 dev 空间的名称，在本示例中为 *dev* 。
-1. *REGISTRY_USERNAME* ：从服务主体创建的 JSON 输出的 *clientId* 。
-1. *REGISTRY_PASSWORD* ：从服务主体创建的 JSON 输出中的 *clientSecret* 。
+1. *AZURE_CREDENTIALS*：服务主体创建的整个输出。
+1. *RESOURCE_GROUP*： AKS 群集的资源组，在本示例中为 *MyResourceGroup*。
+1. *CLUSTER_NAME*： AKS 群集的名称，此示例中为 *MyAKS*。
+1. *CONTAINER_REGISTRY*： ACR 的 *loginServer* 。
+1. *Host*：开发人员空间的主机，其形式 *<MASTER_SPACE> <* APP_NAME> <HOST_SUFFIX>。 *dev.bikesharingweb.fedcab0987.eus.azds.io*
+1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如 *演示密钥*。
+1. *MASTER_SPACE*：父 dev 空间的名称，在本示例中为 *dev*。
+1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出的 *clientId* 。
+1. *REGISTRY_PASSWORD*：从服务主体创建的 JSON 输出中的 *clientSecret* 。
 
 > [!NOTE]
 > GitHub 操作使用所有这些机密，并在 [github/工作流/docker-compose.override.yml][github-action-yaml]中进行配置。
 
-（可选）如果你想要在合并 PR 后更新主空间，请添加 *GATEWAY_HOST* 密钥，该密钥 *<采用 MASTER_SPACE>* <HOST_SUFFIX>（在本示例中为 *dev.gateway.fedcab0987.eus.azds.io* ）。 将所做的更改合并到分支中的主分支后，将运行另一个操作来重建和运行主开发人员空间中的整个应用程序。 在此示例中，主空间为 *dev* 。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
+（可选）如果你想要在合并 PR 后更新主空间，请添加 *GATEWAY_HOST* 密钥，该密钥 *<采用 MASTER_SPACE>*<HOST_SUFFIX>（在本示例中为 *dev.gateway.fedcab0987.eus.azds.io*）。 将所做的更改合并到分支中的主分支后，将运行另一个操作来重建和运行主开发人员空间中的整个应用程序。 在此示例中，主空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 此外，如果你想要在孙空间中进行更改，请更新 *MASTER_SPACE* 和 *主机* 机密。 例如，如果你的应用程序在具有子空间 *dev/azureuser1* 的 *开发环境* 中运行，则此 PR 在 *dev/azureuser1* 的子空间中运行：
 
-* 将 *MASTER_SPACE* 更新为所需的子区域，作为父空间，在此示例中为 *azureuser1* 。
-* 将 *主机* 更新到 *<GRANDPARENT_SPACE> <* APP_NAME> <HOST_SUFFIX，在此示例中为 *dev.bikesharingweb.fedcab0987.eus.azds.io* 。
+* 将 *MASTER_SPACE* 更新为所需的子区域，作为父空间，在此示例中为 *azureuser1*。
+* 将 *主机* 更新到 *<GRANDPARENT_SPACE> <* APP_NAME> <HOST_SUFFIX，在此示例中为 *dev.bikesharingweb.fedcab0987.eus.azds.io*。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>为代码更改创建新分支
 
-导航到 `BikeSharingApp/` 并创建一个名为 " *自行车-映像* " 的新分支。
+导航到 `BikeSharingApp/` 并创建一个名为 " *自行车-映像*" 的新分支。
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
@@ -162,7 +162,7 @@ git push origin bike-images
 
 通过从注释打开 URL，导航到 *bikesharingweb* 服务。 选择“Aurelia Briggs (客户)”作为用户，然后选择要租赁的自行车。 验证是否不再显示自行车的占位符图像。
 
-如果将所做的更改合并到分支中的 *主* 分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为 *dev* 。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
+如果将所做的更改合并到分支中的 *主* 分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 

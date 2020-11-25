@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546596"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996026"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
@@ -44,7 +44,7 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava** ）创建目录。此目录包含以下项：
+    此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
 
     * `pom.xml` - [项目对象模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
     * src\main\java\org\apache\hadoop\examples:包含应用程序代码。
@@ -147,7 +147,7 @@ maven-shade-plugin 还会生成 uber jar，其中包含应用程序所需的所�
 
 ## <a name="create-the-mapreduce-application"></a>创建 MapReduce 应用程序
 
-1. 输入以下命令，以创建并打开新文件 `WordCount.java`。 根据提示选择“是”，以创建新文件。 
+1. 输入以下命令，以创建并打开新文件 `WordCount.java`。 根据提示选择“是”，以创建新文件。
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java

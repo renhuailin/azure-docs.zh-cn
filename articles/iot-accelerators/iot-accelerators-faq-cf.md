@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078249"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995958"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "92078249"
 OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以服务为导向的互操作性标准。 OPC UA 为工业电脑、PLC 和传感器等多种行业体系和设备所采用。 OPC UA 将 OPC 经典规范的功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会](https://opcfoundation.org/)是一个拥有 440 多个成员的非营利性组织。 组织的目标是使用 OPC 规范通过以下方面促进多供应商、多平台的安全可靠互操作性：
 
 * 基础结构
-* 规格
+* 规范
 * 技术
 * 进程
 
@@ -44,7 +44,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 * 使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 脚本 `Simulation/Factory/Add-SimulationPublicIp.ps1`。 传入部署名称作为参数。 对于本地部署，请使用 `<your username>ConnFactoryLocal`。 该脚本会列显 VM 的 IP 地址。
 
-* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现在向资源组添加新的公共 IP 地址****。
+* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现在向资源组添加新的公共 IP 地址。
 
 > [!NOTE]
 > 在任意情况下，请按照 [Ubuntu 网站](https://wiki.ubuntu.com/Security/Upgrades)上的说明保安装最新修补程序。 保持安装处于最新状态，确保可通过公共 IP 地址访问 VM。
@@ -55,7 +55,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 * 使用[存储库](https://github.com/Azure/azure-iot-connected-factory)的 PowerShell 脚本 Simulation/Factory/Remove-SimulationPublicIp.ps1。 传入部署名称作为参数。 对于本地部署，请使用 `<your username>ConnFactoryLocal`。 该脚本会列显 VM 的 IP 地址。
 
-* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现将公共 IP 地址从资源组删除****。
+* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现将公共 IP 地址从资源组删除。
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>如何登录到模拟 VM？
 
@@ -68,7 +68,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 1. 要使用的用户名是：`docker`。
 1. 要使用的密码取决于部署所用的版本：
     * 对于 2017 年 6 月 1 日前使用 build.ps1 脚本部署的解决方案，密码为：`Passw0rd`。
-    * 对于 2017 年 6 月 1 日之后使用 build.ps1 脚本部署的解决方案，密码为：`<name of your deployment>.config.user`。 此密码存储在 VmAdminPassword 设置中****。 除非使用 `build.ps1` 脚本参数 `-VmAdminPassword` 指定密码，否则密码会在部署时随机生成。
+    * 对于 2017 年 6 月 1 日之后使用 build.ps1 脚本部署的解决方案，密码为：`<name of your deployment>.config.user`。 此密码存储在 VmAdminPassword 设置中。 除非使用 `build.ps1` 脚本参数 `-VmAdminPassword` 指定密码，否则密码会在部署时随机生成。
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>如何在模拟 VM 中停止和启动所有 docker 进程？
 
@@ -76,7 +76,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 1. 若要查看处于活动状态的容器，请运行 `docker ps`。
 1. 若要停止所有模拟容器，请运行 `./stopsimulation`。
 1. 若要启动所有模拟容器：
-    * 导出名称为 IOTHUB_CONNECTIONSTRING 的 shell 变量****。 使用 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 设置的值****。 例如：
+    * 导出名称为 IOTHUB_CONNECTIONSTRING 的 shell 变量。 使用 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 设置的值。 例如：
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -90,7 +90,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>如何查找解决方案所使用的 IoT 中心的连接字符串？
 
-如果已使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 脚本部署解决方案，此连接字符串是 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 的值****。
+如果已使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 脚本部署解决方案，此连接字符串是 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 的值。
 
 还可使用 Azure 门户查找此连接字符串。 在部署资源组中的 IoT 中心找到连接字符串设置。
 
@@ -146,7 +146,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 在连接的工厂 GitHub 存储库中使用 `build.ps1` 脚本进行部署时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 互动地图随后会自动启用。
 
-此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分********。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)****。 保存设置，然后导航到“概述”**** 并重新启动应用服务。
+此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 保存设置，然后导航到“概述”并重新启动应用服务。
 
 ### <a name="how-do-i-create-an-azure-maps-account"></a>如何实现创建 Azure Maps 帐户？
 
@@ -158,7 +158,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>在本地进行调试时如何启用互动地图？
 
-在本地进行调试时，若要启用互动地图，请将你的部署的根目录中的文件 `local.user.config` 和 `<yourdeploymentname>.user.config` 中的设置 `MapApiQueryKey` 的值设置为之前复制的**查询密钥**值。
+在本地进行调试时，若要启用互动地图，请将你的部署的根目录中的文件 `local.user.config` 和 `<yourdeploymentname>.user.config` 中的设置 `MapApiQueryKey` 的值设置为之前复制的 **查询密钥** 值。
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>如何在仪表板的主页上使用一个不同的图像？
 

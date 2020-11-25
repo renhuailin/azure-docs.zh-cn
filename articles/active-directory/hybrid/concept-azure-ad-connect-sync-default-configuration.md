@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996621"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中将说明这些规则及其对配置有何影响。 此外还会逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性设置）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -140,7 +140,7 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 ### <a name="synchronization-rule"></a>同步规则
 满足条件时，同步规则是具有一组流动属性的配置对象。 它还用于描述连接器空间中对象与 Metaverse 中对象的相关性，这种相关性称为联接或匹配。   同步规则具有优先级值，该优先级指示这些规则彼此的相关性。 数值较小的同步规则具有较高的优先级，当属性流发生冲突时，较高的优先级会赢得冲突解决方案。
 
-例如，查看 **FROM AD – User AccountEnabled 中**的同步规则。 在 SRE 中标记此行，然后选择“编辑”。 
+例如，查看 **FROM AD – User AccountEnabled 中** 的同步规则。 在 SRE 中标记此行，然后选择“编辑”。 
 
 由于这是一条现成的规则，因此在打开该规则时将看到警告。 用户不应[对现成规则进行任何更改](how-to-connect-sync-best-practices-changing-default-configuration.md)，因此系统会询问意图是什么。 在本例中，我们只想要查看规则。 请选择“否”。 
 
@@ -160,7 +160,7 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 #### <a name="scoping-filter"></a>范围筛选器
 “范围筛选器”部分用于配置同步规则何时适用。 由于正在查看的同步规则的名称指示只应对已启用的用户应用该规则，因此对范围进行了配置，使得 AD 属性 **userAccountControl** 不能对 2 这个位进行设置。 同步引擎在 AD 中找到用户时，如果 userAccountControl 设置为十进制值 512（已启用的普通用户），则应用此同步规则。  如果用户的 userAccountControl 设置为 514（已禁用的普通用户），则不应用该规则。 
 
-![显示 "编辑入站同步规则" 窗口的 "范围筛选器" 部分的屏幕截图。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![此屏幕截图显示了“编辑入站同步规则”窗口的“范围筛选器”部分。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 范围筛选器具有可以嵌套的组和子句。 必须满足组内所有子句的条件，才能应用同步规则。 如果定义了多个组，则要应用该规则，必须满足至少一个组的条件。 也就是说，组之间按逻辑“或”进行计算，组内按逻辑“和”进行计算。 可以在出站同步规则 " **Out TO AAD-Group Join**" 中找到此配置的示例。 有多个同步筛选器组，例如，一个用于安全组 (`securityEnabled EQUAL True`)，一个用于分发组 (`securityEnabled EQUAL False`)。
 
@@ -211,7 +211,7 @@ NULL
 有关属性流表达式语言的详细信息，请参阅[了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)。
 
 ### <a name="precedence"></a>优先级
-现已了解几个不同的同步规则，但这些规则在配置中配合运行。 在某些情况下，属性值由相同目标属性的多个同步规则提供。 在此情况下，可以使用属性优先级来确定哪个属性胜出。 以属性 sourceAnchor 为例。 此属性是决定能否登录 Azure AD 的重要属性。 您可以在两个不同的同步规则中， **在 "FROM ad – User AccountEnabled** " 和 **"From Ad-user Common**" 中找到此属性的属性流。 由于有同步规则优先级，如果有多个对象联接到 Metaverse 对象，sourceAnchor 属性将先由具有已启用帐户的林提供。 如果没有已启用的帐户，同步引擎将使用 **FROM AD – User Common 中**的 "全部捕获" 同步规则。 此配置可确保即使帐户已禁用，也仍有一个 sourceAnchor。
+现已了解几个不同的同步规则，但这些规则在配置中配合运行。 在某些情况下，属性值由相同目标属性的多个同步规则提供。 在此情况下，可以使用属性优先级来确定哪个属性胜出。 以属性 sourceAnchor 为例。 此属性是决定能否登录 Azure AD 的重要属性。 您可以在两个不同的同步规则中， **在 "FROM ad – User AccountEnabled** " 和 **"From Ad-user Common**" 中找到此属性的属性流。 由于有同步规则优先级，如果有多个对象联接到 Metaverse 对象，sourceAnchor 属性将先由具有已启用帐户的林提供。 如果没有已启用的帐户，同步引擎将使用 **FROM AD – User Common 中** 的 "全部捕获" 同步规则。 此配置可确保即使帐户已禁用，也仍有一个 sourceAnchor。
 
 ![入站同步规则](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 

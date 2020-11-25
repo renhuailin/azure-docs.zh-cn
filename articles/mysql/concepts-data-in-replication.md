@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
 ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541583"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996213"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -44,7 +44,7 @@ ms.locfileid: "94541583"
 - 如果源服务器启用了 SSL，请确保为域提供的 SSL CA 证书已包含在 `mysql.az_replication_change_master` 存储过程中。 请参阅以下[示例](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
 - 请确保源服务器的 IP 地址已添加到 Azure Database for MySQL 副本服务器的防火墙规则中。 使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 更新防火墙规则。
 - 请确保托管源服务器的计算机在端口 3306 上允许入站和出站流量。
-- 请确保源服务器具有 **公共 IP 地址** ，DNS 可公开访问，或具有完全限定的域名 (FQDN)。
+- 请确保源服务器具有 **公共 IP 地址**，DNS 可公开访问，或具有完全限定的域名 (FQDN)。
 
 ### <a name="other"></a>其他
 - 仅可在常规用途和优化内存定价层中使用数据传入复制功能。

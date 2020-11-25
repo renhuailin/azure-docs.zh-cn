@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone OnDemand 的集成
 
@@ -54,8 +54,8 @@ ms.locfileid: "92455198"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Cornerstone OnDemand”  。
-1. 从结果面板中选择“Cornerstone OnDemand”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Cornerstone OnDemand”。
+1. 从结果面板中选择“Cornerstone OnDemand”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>为 Cornerstone OnDemand 配置和测试 Azure AD 单一登录
 
@@ -74,7 +74,7 @@ ms.locfileid: "92455198"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在  。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Cornerstone OnDemand”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -93,7 +93,7 @@ ms.locfileid: "92455198"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Cornerstone OnDemand”部分，根据要求复制相应 URL  。
+6. 在“设置 Cornerstone OnDemand”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 

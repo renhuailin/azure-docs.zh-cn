@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995091"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -35,21 +35,21 @@ ms.locfileid: "91403120"
 
 ## <a name="create-an-activity-log-alert-administrative"></a>创建活动日志警报：管理
 
-1.  在 Azure 门户的左上角，选择“创建资源”****。
+1.  在 Azure 门户的左上角，选择“创建资源”。
 
-2.  搜索并选择“逻辑应用”，然后选择“创建”。********
+2.  搜索并选择“逻辑应用”，然后选择“创建”。
 
-3.  为逻辑应用指定**名称**，并选择一个**资源组**。
+3.  为逻辑应用指定 **名称**，并选择一个 **资源组**。
 
     ![创建逻辑应用](media/action-groups-logic-app/create-logic-app-dialog.png "创建逻辑应用")
 
-4.  选择“创建”以创建逻辑应用。 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。********
+4.  选择“创建”以创建逻辑应用。 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。
 
-5.  选择触发器：“当收到 HTTP 请求时”****。
+5.  选择触发器：“当收到 HTTP 请求时”。
 
     ![逻辑应用触发器](media/action-groups-logic-app/logic-app-triggers.png "逻辑应用触发器")
 
-6.  选择“编辑”更改 HTTP 请求触发器。****
+6.  选择“编辑”更改 HTTP 请求触发器。
 
     ![HTTP 请求触发器](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
 
@@ -96,11 +96,11 @@ ms.locfileid: "91403120"
         }
     ```
 
-9. “逻辑应用设计器”将显示一个弹出窗口，提醒发送到逻辑应用的请求必须将 **Content-Type** 标头设置为 **application/json**。**** 关闭该弹出窗口。 Azure Monitor 警报将设置该标头。
+9. “逻辑应用设计器”将显示一个弹出窗口，提醒发送到逻辑应用的请求必须将 **Content-Type** 标头设置为 **application/json**。 关闭该弹出窗口。 Azure Monitor 警报将设置该标头。
 
     ![设置 Content-Type 标头](media/action-groups-logic-app/content-type-header.png "设置 Content-Type 标头")
 
-10. 选择 " **+** **新建步骤** "，然后选择 " **添加操作**"。
+10. 依次选择“+ 新建步骤”、“添加操作”  。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -108,9 +108,9 @@ ms.locfileid: "91403120"
 
     ![Microsoft Teams 操作](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams 操作")
 
-12. 配置 Microsoft Teams 操作。 **逻辑应用设计器**要求您向工作或学校帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”********。
+12. 配置 Microsoft Teams 操作。 **逻辑应用设计器** 要求您向工作或学校帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”。
 
-13. 使用静态文本的组合和对动态内容中的的引用来配置消息 \<fields\> 。 将以下文本复制并粘贴到“消息”字段：****
+13. 使用静态文本的组合和对动态内容中的的引用来配置消息 \<fields\> 。 将以下文本复制并粘贴到“消息”字段：
 
     ```text
       Activity Log Alert: <eventSource>
@@ -126,7 +126,7 @@ ms.locfileid: "91403120"
 
     ![Microsoft 团队操作：发布消息](media/action-groups-logic-app/teams-action-post-message.png "Microsoft 团队操作：发布消息")
 
-14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。********
+14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。
 
 15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅 [在 Azure 门户中创建和管理操作组](./action-groups.md) 以创建一个。 切勿忘记保存更改。
 
@@ -193,9 +193,9 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
       !["服务运行状况负载条件"](media/action-groups-logic-app/service-health-payload-condition.png "服务运行状况有效负载条件")
 
-   1. 在 **if true** 条件中，遵照[创建活动日志警报](#create-an-activity-log-alert-administrative)的步骤 11 到 13 中的说明添加 Microsoft Teams 操作。
+   1. 在 **if true** 条件中，遵照 [创建活动日志警报](#create-an-activity-log-alert-administrative)的步骤 11 到 13 中的说明添加 Microsoft Teams 操作。
 
-   1. 使用 HTML 和动态内容的组合定义消息。 将以下内容复制并粘贴到“消息”字段。**** 将 `[incidentType]`、`[trackingID]`、`[title]` 和 `[communication]` 字段替换为使用相同名称的动态内容标记：
+   1. 使用 HTML 和动态内容的组合定义消息。 将以下内容复制并粘贴到“消息”字段。 将 `[incidentType]`、`[trackingID]`、`[title]` 和 `[communication]` 字段替换为使用相同名称的动态内容标记：
 
        ```html
        <p>

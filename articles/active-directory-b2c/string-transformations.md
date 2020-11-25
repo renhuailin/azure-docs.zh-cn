@@ -12,11 +12,11 @@ ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994836"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -117,7 +117,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
   - email: SomeOne@contoso.com
 - 输入参数：
-    - **toCase** ：LOWER
+    - **toCase**：LOWER
 - 输出声明：
   - email: someone@contoso.com
 
@@ -146,9 +146,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - **value** ：Contoso 服务条款...
+    - **value**：Contoso 服务条款...
 - 输出声明：
-    - **createdClaim** ：TOS ClaimType 包含“Contoso 服务条款...”值。
+    - **createdClaim**：TOS ClaimType 包含“Contoso 服务条款...”值。
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -186,10 +186,10 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
   - inputClaim1: someone@contoso.com
   - inputClaim2: someone@outlook.com
 - 输入参数：
-    - **operator** ：不等于
+    - **operator**：不等于
     - ignoreCase: true
 - 输出声明：
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -225,11 +225,11 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputClaim1: v1
 - 输入参数：
-    - **compareTo** :V1
-    - **operator** ：EQUAL
+    - **compareTo**:V1
+    - **operator**：EQUAL
     - ignoreCase:  true
 - 输出声明：
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,7 +259,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - **randomGeneratorType** ：GUID
+    - **randomGeneratorType**：GUID
 - 输出声明：
     - outputClaim: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
@@ -282,12 +282,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入参数：
-    - **randomGeneratorType** ：INTEGER
-    - **maximumNumber** ：1000
-    - **stringFormat** ：OTP_{0}
+    - **randomGeneratorType**：INTEGER
+    - **maximumNumber**：1000
+    - **stringFormat**：OTP_{0}
     - base64: false
 - 输出声明：
-    - **outputClaim** ：OTP_853
+    - **outputClaim**：OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -319,7 +319,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim** ：5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim**：5164db16-3eee-4629-bfda-dcc3326790e9
 - 输入参数：
     - stringFormat:  cpim_{0}@{RelyingPartyTenantId}
 - 输出声明：
@@ -356,12 +356,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim1** ：Joe
-    - **inputClaim2** ：Fernando
+    - **inputClaim1**：Joe
+    - **inputClaim2**：Fernando
 - 输入参数：
-    - **stringFormat** ：{0} {1}
+    - **stringFormat**：{0} {1}
 - 输出声明：
-    - **outputClaim** ：Joe Fernando
+    - **outputClaim**：Joe Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
@@ -427,10 +427,10 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输出声明：
-  - **subject** ：Contoso 帐户电子邮件验证码
-  - **message** ：感谢验证你的帐户！
-  - **codeIntro** ：你的代码是
-  - **signature** ：此致
+  - **subject**：Contoso 帐户电子邮件验证码
+  - **message**：感谢验证你的帐户！
+  - **codeIntro**：你的代码是
+  - **signature**：此致
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -472,9 +472,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **mapFromClaim** ：B2C_V1_90001
+    - **mapFromClaim**：B2C_V1_90001
 - 输出声明：
-    - **restrictionValueClaim** ：无法登录，因为你未成年。
+    - **restrictionValueClaim**：无法登录，因为你未成年。
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -511,8 +511,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputParameterId: test.com
 - 输入参数：
-    - **contoso.com** ：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com** ：0213308f-17cb-4398-b97e-01da7bd4804e
+    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
     - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
     - errorOnFailedLookup: false
 - 输出声明：
@@ -544,12 +544,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputParameterId** : live.com
+    - **inputParameterId**: live.com
 - 输入参数：
-    - **contoso.com** ：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com** ：0213308f-17cb-4398-b97e-01da7bd4804e
+    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
     - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : true
+    - **errorOnFailedLookup**: true
 - 错误：
     - 在输入参数 ID 列表中找不到输入声明值的匹配项，errorOnFailedLookup 为 true。
 
@@ -573,9 +573,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ```
 
 - 输入声明：
-    - **outputClaim** ：欢迎使用 Contoso 应用。 如果继续浏览和使用本网站，表示你同意遵守并受下列条款和条件的约束...
+    - **outputClaim**：欢迎使用 Contoso 应用。 如果继续浏览和使用本网站，表示你同意遵守并受下列条款和条件的约束...
 - 输出声明：
-    - **outputClaim** ：Null
+    - **outputClaim**：Null
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -641,12 +641,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ```
 
 - 输入声明：
-    - **claimToMatch** ："64854114520"
+    - **claimToMatch**："64854114520"
 - 输入参数：
-    - **matchTo** : "^[0-9]{4,16}$"
-    - **outputClaimIfMatched** :  "isPhone"
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
 - 输出声明：
-    - **outputClaim** : "isPhone"
+    - **outputClaim**: "isPhone"
     - regexCompareResultClaim：true
 
 ### <a name="example-2"></a>示例 2
@@ -672,15 +672,15 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ```
 
 - 输入声明：
-    - **claimToMatch** : "emily@contoso.com"
+    - **claimToMatch**: "emily@contoso.com"
 - 输入参数：
-    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched** :  "isEmail"
-    - **extractGroups** : true
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
 - 输出声明：
-    - **outputClaim** : "isEmail"
+    - **outputClaim**: "isEmail"
     - regexCompareResultClaim：true
-    - **mailAlias** : emily
+    - **mailAlias**: emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -722,13 +722,13 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - inputClaim: v1
 - 输入参数：
-    - **matchTo** ：V1
+    - **matchTo**：V1
     - stringComparison: ordinalIgnoreCase
-    - **stringMatchMsg** ：B2C_V1_90005
-    - **stringMatchMsgCode** ：TOS 升级到 v2
+    - **stringMatchMsg**：B2C_V1_90005
+    - **stringMatchMsgCode**：TOS 升级到 v2
 - 输出声明：
-    - **outputClaim1** ：B2C_V1_90005
-    - **outputClaim2** ：TOS 升级到 v2
+    - **outputClaim1**：B2C_V1_90005
+    - **outputClaim2**：TOS 升级到 v2
     - stringCompareResultClaim: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
@@ -766,13 +766,13 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **claimToMatch** ：Minor
+    - **claimToMatch**：Minor
 - 输入参数：
-    - **matchTo** ：Minor
+    - **matchTo**：Minor
     - stringComparison: ordinalIgnoreCase
-    - **outputClaimIfMatched** ：B2C_V1_90001
+    - **outputClaimIfMatched**：B2C_V1_90001
 - 输出声明：
-    - **isMinorResponseCode** ：B2C_V1_90001
+    - **isMinorResponseCode**：B2C_V1_90001
     - isMinor: true
 
 
@@ -807,12 +807,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim** ："Admin, Approver, Editor"
+    - **inputClaim**："Admin, Approver, Editor"
 - 输入参数：
-    - **contains** : "admin,"
+    - **contains**: "admin,"
     - ignoreCase: true
 - 输出声明：
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim** : "+1644114520"
+    - **inputClaim**: "+1644114520"
 - 输入参数：
-    - **startIndex** :0
-    - **length** :2
+    - **startIndex**:0
+    - **length**:2
 - 输出声明：
-    - **outputClaim** : "+1"
+    - **outputClaim**: "+1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim** : "+164-411-452-054"
+    - **inputClaim**: "+164-411-452-054"
 - 输入参数：
-    - **oldValue** : "-"
-    - **newValue** ： ""
+    - **oldValue**: "-"
+    - **newValue**： ""
 - 输出声明：
-    - **outputClaim** : "+164411452054"
+    - **outputClaim**: "+164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,11 +919,11 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **inputClaim** : [ "Admin", "Author", "Reader" ]
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
 - 输入参数：
-  - **delimiter** : ","
+  - **delimiter**: ","
 - 输出声明：
-  - **outputClaim** ："Admin,Author,Reader"
+  - **outputClaim**："Admin,Author,Reader"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,9 +955,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **inputClaim** ："Admin,Author,Reader"
+  - **inputClaim**："Admin,Author,Reader"
 - 输入参数：
-  - **delimiter** : ","
+  - **delimiter**: ","
 - 输出声明：
   - outputClaim：[ "Admin", "Author", "Reader" ]
 

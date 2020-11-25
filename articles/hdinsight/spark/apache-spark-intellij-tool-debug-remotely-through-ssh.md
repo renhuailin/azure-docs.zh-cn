@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545729"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995329"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 调试 HDInsight 群集上的 Apache Spark 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "92545729"
 
 * 对于 Windows：在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
 
-    若要解决此错误，请将 [Winutils.exe](https://github.com/steveloughran/winutils) 下载到某个位置（例如 **C:\WinUtils\bin** ）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
+    若要解决此错误，请将 [Winutils.exe](https://github.com/steveloughran/winutils) 下载到某个位置（例如 **C:\WinUtils\bin**）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows)（社区版免费）。
 
@@ -45,12 +45,12 @@ ms.locfileid: "92545729"
 
 1. 在“生成工具”下拉列表中选择下列其中一项：
 
-    * **Maven** ：支持 Scala 项目创建向导。
-    * **SBT** ：用于管理依赖项和生成 Scala 项目。
+    * **Maven**：支持 Scala 项目创建向导。
+    * **SBT**：用于管理依赖项和生成 Scala 项目。
 
      ![Intellij 的“创建新项目”选项](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-1. 选择“ **下一步** ”。
+1. 选择“**下一步**”。
 
 1. 在下一个“新建项目”窗口中提供以下信息：
 
@@ -65,7 +65,7 @@ ms.locfileid: "92545729"
 
 1. 选择“完成”。 可能需要在几分钟后才会显示该项目。 观看右下角的进度。
 
-1. 展开项目，然后导航到 **src** > **main** > **scala** > **sample** 。 双击“SparkCore_WasbIOTest”。
+1. 展开项目，然后导航到 **src** > **main** > **scala** > **sample**。 双击“SparkCore_WasbIOTest”。
 
 ## <a name="perform-local-run"></a>执行本地运行
 
@@ -79,7 +79,7 @@ ms.locfileid: "92545729"
 
     ![Intellij - 运行/调试配置 - 本地运行](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
-    - [环境变量](#prerequisites)：如果已将系统环境变量 **HADOOP_HOME** 设置为 **C:\WinUtils** ，则它可自动检测到此设置，而无需手动添加此变量。
+    - [环境变量](#prerequisites)：如果已将系统环境变量 **HADOOP_HOME** 设置为 **C:\WinUtils**，则它可自动检测到此设置，而无需手动添加此变量。
     - [WinUtils.exe 位置](#prerequisites)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
 

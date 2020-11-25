@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979380"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995346"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
 > [!CAUTION]
-> Azure App Service 上的 ASP.NET Core 应用程序正在运行探查器 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以通过将 Application Insights SDK 添加到应用程序中，使用 [此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明来解决该错误。
+> 在 Azure 应用服务中对 ASP.NET Core 应用运行探查器时有一个 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以按照[此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明将 Application Insights SDK 添加到应用程序来解决此 bug。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
@@ -79,12 +79,12 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
    1. 在“工具”菜单中，选择“WebJobs 仪表板” 。  
       “WebJobs”窗格随即打开。 
    
-      ![屏幕截图显示 "Web 作业" 窗格，其中显示作业的名称、状态和上次运行时间。][profiler-webjob]   
+      ![屏幕截图显示了 WebJobs 窗格，其中显示了作业的名称、状态和上次运行时间。][profiler-webjob]   
    
    1. 若要查看 webjob 的详细信息（包括日志），请选择“ApplicationInsightsProfiler3”链接。  
      “连续 WebJob 详细信息”窗格随即打开。
 
-      ![屏幕截图显示连续的 WebJob 详细信息窗格。][profiler-webjob-log]
+      ![屏幕截图显示了“连续 WebJob 详细信息”窗格。][profiler-webjob-log]
 
 如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队 serviceprofilerhelp@microsoft.com 以获取帮助。 
     

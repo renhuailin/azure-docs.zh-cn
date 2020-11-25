@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996638"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中请求访问某个访问包
 
@@ -51,7 +51,7 @@ ms.locfileid: "90979890"
 
 **必备角色：** 请求者
 
-1. 在列表中查找访问包。  如有必要，可以键入搜索字符串，然后选择“名称”****、“目录”**** 或“资源”**** 筛选器进行搜索。
+1. 在列表中查找访问包。  如有必要，可以键入搜索字符串，然后选择“名称”、“目录”或“资源”筛选器进行搜索。
 
     ![“我的访问权限”门户 - 资源搜索](./media/entitlement-management-request-access/my-access-resource-search.png)
 
@@ -61,17 +61,17 @@ ms.locfileid: "90979890"
 
     ![我的访问权限门户 - 访问包](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
-1. 如果显示“业务理由”框，请键入需要访问的理由。****
+1. 如果显示“业务理由”框，请键入需要访问的理由。
 
-1. 如果“请求在特定的时间段访问”已启用，请选择“是”或“否”。************
+1. 如果“请求在特定的时间段访问”已启用，请选择“是”或“否”。
 
 1. 必要时指定开始日期和结束日期。
 
     ![我的访问权限门户 - 请求访问](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. 完成后，单击“提交”以提交请求。****
+1. 完成后，单击“提交”以提交请求。
 
-1. 单击“请求历史记录”，查看请求和状态的列表。****
+1. 单击“请求历史记录”，查看请求和状态的列表。
 
     如果访问包需要审批，则请求现在为等待审批状态。
 
@@ -81,11 +81,11 @@ ms.locfileid: "90979890"
 
 ![“我的访问权限”门户 - 请求访问 - 多个策略](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
-### <a name="fill-out-requestor-information"></a>填写请求程序信息
+### <a name="fill-out-requestor-information"></a>填写请求者信息
 
-在授予访问访问包的访问权限之前，您可能会请求访问需要业务理由的访问包和其他请求程序信息。 填写访问该访问包所需的所有请求程序信息。
+在系统授予你对访问包的访问权限之前，你可能会请求访问需要业务理由和其他请求者信息的访问包。 填写访问该访问包所需的所有请求者信息。
 
-![我的访问门户-请求访问-填写请求程序信息](./media/entitlement-management-request-access/my-access-requestor-information.png)
+![“我的访问权限”门户 - 请求访问 - 填写请求者信息](./media/entitlement-management-request-access/my-access-requestor-information.png)
 
 ## <a name="resubmit-a-request"></a>重新提交请求
 
@@ -113,19 +113,19 @@ ms.locfileid: "90979890"
 
 ## <a name="cancel-a-request"></a>取消请求
 
-如果在提交访问请求后请求仍为“待审批”状态，可以取消请求。****
+如果在提交访问请求后请求仍为“待审批”状态，可以取消请求。
 
 **必备角色：** 请求者
 
-1. 在“我的访问权限”门户左侧，单击“请求历史记录”，查看请求和状态的列表。****
+1. 在“我的访问权限”门户左侧，单击“请求历史记录”，查看请求和状态的列表。
 
-1. 单击要取消的请求的“查看”链接。****
+1. 单击要取消的请求的“查看”链接。
 
-1. 如果请求仍为“待审批”状态，则可单击“取消请求”，将请求取消。********
+1. 如果请求仍为“待审批”状态，则可单击“取消请求”，将请求取消。
 
     ![“我的访问权限”门户 - 取消请求](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. 单击“请求历史记录”，确认请求已取消。****
+1. 单击“请求历史记录”，确认请求已取消。
 
 ## <a name="next-steps"></a>后续步骤
 

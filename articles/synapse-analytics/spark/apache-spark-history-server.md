@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995380"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark 历史记录服务器来调试和诊断 Apache Spark 应用程序
 
 本文提供了有关如何使用扩展的 Apache Spark 历史记录服务器来调试和诊断已完成和正在运行的 Spark 应用程序的指南。
 
-此扩展包括 "数据" 选项卡、"图形" 选项卡和 "诊断" 选项卡。使用 " **数据** " 选项卡检查 Spark 作业的输入和输出数据。 " **关系图** " 选项卡显示作业图形的数据流和重播。 " **诊断** " 选项卡显示  **数据倾斜** 、 **时间偏差** 和 **执行器使用情况分析** 。
+此扩展包括 "数据" 选项卡、"图形" 选项卡和 "诊断" 选项卡。使用 " **数据** " 选项卡检查 Spark 作业的输入和输出数据。 " **关系图** " 选项卡显示作业图形的数据流和重播。 " **诊断** " 选项卡显示  **数据倾斜**、 **时间偏差** 和 **执行器使用情况分析**。
 
 ## <a name="access-the-apache-spark-history-server"></a>访问 Apache Spark 历史记录服务器
 
@@ -30,7 +30,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
 1. 打开 [Azure Synapse Analytics](https://web.azuresynapse.net/)。
 
-2. 选择 " **监视器** "，然后选择 " **Apache Spark 应用程序** "。
+2. 选择 " **监视器**"，然后选择 " **Apache Spark 应用程序**"。
 
     ![选择 "监视"，然后选择 "spark 应用程序"。](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
@@ -38,13 +38,13 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
     ![打开 "日志查询" 窗口。](./media/apache-spark-history-server/open-application-window.png)
 
-4. 选择 **spark history server** ，然后将显示 Spark history SERVER web UI。
+4. 选择 **spark history server**，然后将显示 Spark history SERVER web UI。
 
     ![打开 spark history server。](./media/apache-spark-history-server/open-spark-history-server.png)
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>从数据节点打开 Spark History Server web UI
 
-1. 从 Azure Synapse Studio 笔记本中，从 "作业执行" 输出单元或笔记本文档底部的 "状态" 面板中选择 " **Spark history server** "。 选择“会话详细信息”  。
+1. 从 Azure Synapse Studio 笔记本中，从 "作业执行" 输出单元或笔记本文档底部的 "状态" 面板中选择 " **Spark history server** "。 选择“会话详细信息”。
 
    ![启动 Spark history server 1](./media/apache-spark-history-server/launch-history-server2.png "启动 Spark 历史记录服务器")
 
@@ -60,11 +60,11 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
     ![Spark 应用程序选项卡的数据](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
-* 通过选择 " **复制** " 复制所有行。
+* 通过选择 " **复制**" 复制所有行。
 
     ![Spark 应用程序复制操作的数据](./media/apache-spark-history-server/apache-spark-data-copy.png)
 
-* 通过选择 " **csv** " 将所有数据保存为 csv 文件。
+* 通过选择 " **csv**" 将所有数据保存为 csv 文件。
 
     ![Spark 应用程序保存操作的数据](./media/apache-spark-history-server/apache-spark-data-save.png)
 
@@ -76,7 +76,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
     ![Spark 应用程序表的数据](./media/apache-spark-history-server/apache-spark-data-table.png)
 
-* 通过选择 " **部分下载** " 下载一个文件。 选择的文件将下载到本地。 如果该文件不再存在，则会显示一个新的选项卡，其中显示错误消息。
+* 通过选择 " **部分下载**" 下载一个文件。 选择的文件将下载到本地。 如果该文件不再存在，则会显示一个新的选项卡，其中显示错误消息。
 
     ![Spark 应用程序下载行的数据](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
@@ -92,7 +92,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
     ![Spark 应用程序更多信息的数据](./media/apache-spark-history-server/sparkui-data-more-info.png)
 
-* 选择“向我们提供反馈”发送问题反馈。 
+* 选择“向我们提供反馈”发送问题反馈。
 
     ![Spark 图形 -“向我们提供反馈”](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
@@ -108,7 +108,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
 ### <a name="display"></a>显示
 
-默认情况下， **进度** 显示处于选中状态。 可以通过在 " **显示** " 下拉列表中选择 " **读取** " 或 " **写入** " 来检查数据流。
+默认情况下， **进度** 显示处于选中状态。 可以通过在 "**显示**" 下拉列表中选择 "**读取**" 或 "**写入**" 来检查数据流。
 
 ![Spark 应用程序和作业关系图显示](./media/apache-spark-history-server/sparkui-graph-display.png)
 
@@ -118,7 +118,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 ### <a name="playback"></a>播放
 
-若要播放作业，请选择 " **播放** "。 你可以随时选择 " **停止** "。 播放时，任务颜色显示不同的状态：
+若要播放作业，请选择 " **播放**"。 你可以随时选择 " **停止** "。 播放时，任务颜色显示不同的状态：
 
 |颜色|含义|
 |-|-|
@@ -184,7 +184,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 ### <a name="provide-feedback"></a>提供反馈
 
-选择“向我们提供反馈”发送问题反馈。 
+选择“向我们提供反馈”发送问题反馈。
 
 ![Spark 应用程序和作业图形反馈](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
@@ -216,7 +216,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 * **指定参数** - 第一部分显示用于检测时间倾斜的参数。 用于检测时间倾斜的默认条件是：任务执行时间是平均执行时间的三倍，任务执行时间大于 30 秒。 可以按需更改相关参数。 与上面的“时间倾斜”选项卡一样，倾斜阶段和倾斜图表显示相应的阶段和任务信息  。
 
-* 选择“时间偏斜”  ，然后筛选的结果就会根据在“指定参数”部分设置的参数显示在“偏斜的阶段”部分。  选择“偏斜的阶段”部分的一个项目，然后相应的图表就会在第 3 部分绘制，任务详细信息显示在右下面板中。 
+* 选择“时间偏斜”，然后筛选的结果就会根据在“指定参数”部分设置的参数显示在“偏斜的阶段”部分。 选择“偏斜的阶段”部分的一个项目，然后相应的图表就会在第 3 部分绘制，任务详细信息显示在右下面板中。
 
     ![sparkui - 诊断时间偏斜部分](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -224,7 +224,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 执行器使用情况图直观显示 Spark 作业执行器的分配和运行状态。  
 
-1. 选择 **"执行器使用情况分析** "，然后对执行器使用情况使用四种类型的曲线进行草拟，其中包括 **分配** 的执行器、 **运行** 执行器、 **空闲** 执行器和 **最大执行** 对于分配的执行程序，每个 "执行器已添加" 或 "执行程序已移除" 事件增加或减少分配的执行程序。 可以在“作业”选项卡中选中“事件时间线”以进行更多比较。
+1. 选择 **"执行器使用情况分析**"，然后对执行器使用情况使用四种类型的曲线进行草拟，其中包括 **分配** 的执行器、**运行** 执行器、**空闲** 执行器和 **最大执行** 对于分配的执行程序，每个 "执行器已添加" 或 "执行程序已移除" 事件增加或减少分配的执行程序。 可以在“作业”选项卡中选中“事件时间线”以进行更多比较。
 
    ![sparkui "诊断执行器" 选项卡](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

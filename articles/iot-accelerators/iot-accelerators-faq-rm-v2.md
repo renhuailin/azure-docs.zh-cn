@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 64391d7f5a7b1a295be7e404d27e5cbe8c691eb2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079082"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995941"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
@@ -23,8 +23,8 @@ ms.locfileid: "92079082"
 
 新的解决方案加速器提供两个部署选项：
 
-* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。**
-* 标准选项适用于想要部署生产就绪基础结构的企业。**
+* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。
+* 标准选项适用于想要部署生产就绪基础结构的企业。
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>如何确保在开发解决方案的同时不断降低成本？
 
