@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371858"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014274"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
@@ -21,7 +21,7 @@ ms.locfileid: "91371858"
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
 
-只有**发票科目所有者**或**发票科目参与者**才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+只有 **发票科目所有者** 或 **发票科目参与者** 才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
@@ -62,7 +62,7 @@ ms.locfileid: "91371858"
 1. 在计费范围页中，选择已发送其转账请求的计费帐户。
 1. 在左侧选择“计费对象信息”。  
     [![屏幕截图显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
-1. 选择已发送其转账请求的**计费对象信息**。
+1. 选择已发送其转账请求的 **计费对象信息**。
 1. 在左侧选择“发票科目”。  
     [![屏幕截图显示正在选择发票部分](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
 1. 从列表中选择已发送其转账请求的发票科目。

@@ -48,7 +48,7 @@
           href: tutorial-assess-gcp.md
         - name: 评估已导入的服务器以便迁移到 Azure VM
           href: tutorial-discover-import.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 迁移 VMware VM
           items:
@@ -98,7 +98,7 @@
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 评估最佳做法
           href: best-practices-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 构建迁移计划
           href: concepts-migration-planning.md
@@ -164,7 +164,7 @@
               href: scale-hyper-v-assessment.md
             - name: 评估大量物理服务器
               href: scale-physical-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 添加迁移工具
           href: how-to-migrate.md
@@ -204,10 +204,14 @@
       items:
         - name: 排查评估/依赖项可视化问题
           href: troubleshoot-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 排查无代理 VMware 迁移中的复制问题
           href: troubleshoot-changed-block-tracking-replication.md
+- name: 参考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: 资源
   items:
     - name: 云采用框架中的迁移

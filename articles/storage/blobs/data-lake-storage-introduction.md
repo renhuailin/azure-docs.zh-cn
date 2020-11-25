@@ -8,22 +8,24 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913090"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
-‎Azure Data Lake Storage Gen2 是一组专用于大数据分析的功能，以 [Azure Blob 存储](storage-blobs-introduction.md)为基础而构建。 Data Lake Storage Gen2 是将我们现有的两个存储服务（Azure Blob 存储和 Azure Data Lake Storage Gen1）的功能进行聚合得到的结果。 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) 的功能（例如文件系统语义、目录、文件级安全性和规模）与 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本分层存储、高可用性/灾难恢复功能进行了组合。
+‎Azure Data Lake Storage Gen2 是一组专用于大数据分析的功能，以 [Azure Blob 存储](storage-blobs-introduction.md)为基础而构建。 
+
+Data Lake Storage Gen2 囊括了 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 和 Azure Blob 存储的功能。 例如，Data Lake Storage Gen2 提供文件系统语义、文件级安全和缩放。 由于这些功能是在 Blob 存储的基础上构建的，因此还可以得到具有高可用性/灾难恢复功能的低成本分层存储。
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>专为企业大数据分析而设计
 
 Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为存储数千万亿字节的信息，同时保持数百千兆位的吞吐量，允许你轻松管理大量数据。
 
-Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](data-lake-storage-namespace.md)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。 常见的对象存储命名约定在名称中使用斜杠来模拟分层目录结构。 这种结构在 Data Lake Storage Gen2 中得以真正实现。 诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
+Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](data-lake-storage-namespace.md)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。 常见的对象存储命名约定在名称中使用斜杠来模拟分层目录结构。 这种结构在 Data Lake Storage Gen2 中得以真正实现。 重命名或删除目录等操作会成为目录上的单个原子元数据操作。 无需枚举和处理共享目录名称前缀的所有对象。
 
 Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式增强了性能、管理和安全性：
 
@@ -37,44 +39,44 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 
--   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 可在 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics) 等所有 Apache Hadoop 环境中使用新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)来访问 Data Lake Storage Gen2 中存储的数据。
+-   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)（用于访问数据）在所有 Apache Hadoop 环境中都可用。 这些环境包括 [Azure HDInsight](../../hdinsight/index.yml)、[Azure Databricks](/azure/databricks/) 和 [Azure Synapse Analytics](/azure/synapse-analytics)。
 
 -   POSIX 权限的超集：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
 
--   **经济高效**：Data Lake Storage Gen2 提供了低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
+-   **经济高效**：Data Lake Storage Gen2 提供了低成本的存储容量和事务。 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)等功能可在数据在其生命周期中进行转换时优化成本。
 
--   **优化的驱动程序**：ABFS 驱动程序已针对大数据分析进行[专门优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
+-   **优化的驱动程序**：ABFS 驱动程序已针对大数据分析进行 [专门优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
 
 ### <a name="scalability"></a>可伸缩性
 
-按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 除持久性之外，还会根据在服务、帐户和文件级别上测量的持续请求延迟来执行处理。
+按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 会根据在服务、帐户和文件级别上测量的近乎持续的按请求度量的延迟来进行处理。
 
 ### <a name="cost-effectiveness"></a>成本效益
 
-基于 Azure Blob 存储生成 Data Lake Storage Gen2 的多个好处之一是存储容量和事务的低成本。 与其他云存储服务不同，在执行分析之前不需要移动或转换存储在 Data Lake Storage Gen2 中的数据。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)。
+因为 Data Lake Storage Gen2 是在 Azure Blob 存储基础之上构建的，所以存储容量和事务成本较低。 不同于其他云存储服务，在分析数据之前，无需移动或转换数据。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)。
 
 此外，[分层命名空间](data-lake-storage-namespace.md)等功能可显著提高许多分析作业的整体性能。 这一性能方面的提升意味着你需要较少的计算能力来处理相同数量的数据，从而降低端到端分析作业的总拥有成本 (TCO)。
 
 ### <a name="one-service-multiple-concepts"></a>一个服务，多个概念
 
-Data Lake Storage Gen2 是用于大数据分析的附加功能，基于 Azure Blob 存储而构建。 虽然利用 Blob 的现有平台组件来创建和操作数据库进行分析有很多好处，但它确实导致了描述相同共享内容的多个概念。
+因为 Data Lake Storage Gen2 是在 Azure Blob 存储基础之上构建的，所以可以使用多个概念来描述相同的共享内容。
 
 以下是不同概念所描述的等效实体。 除非另有说明，否则这些实体是直接同义的：
 
 | 概念                                | 顶级组织 | 较低级别的组织                                            | 数据容器 |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blob - 常规用途对象存储 | 容器              | 虚拟目录（仅限 SDK - 不提供原子操作） | Blob           |
-| Azure Data Lake Storage Gen2 - 分析存储          | 容器            | 目录                                                           | 文件           |
+| Azure Data Lake Storage Gen2 - 分析存储          | 容器            | Directory                                                           | 文件           |
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
-Blob 存储功能（如 [诊断日志记录](../common/storage-analytics-logging.md)、 [访问层](storage-blob-storage-tiers.md)和  [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在可用于具有分层命名空间的帐户。 因此，你可以在 Blob 存储帐户上启用分层命名空间，而不会失去对这些功能的访问权限。 
+你的帐户现在可使用 [诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)等 Blob 存储功能。 
 
 有关受支持的 Blob 存储功能的列表，请参阅 [Azure Data Lake storage Gen2 中提供的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)。
 
 ## <a name="supported-azure-service-integrations"></a>支持的 Azure 服务集成
 
-Data Lake Storage gen2 支持多个可用于引入数据、执行分析和创建可视化表示形式的 Azure 服务。 有关受支持的 Azure 服务的列表，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
+Data Lake Storage gen2 支持多个 Azure 服务。 可以使用它们来引入数据、执行分析和创建可视化表示形式。 有关受支持的 Azure 服务的列表，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
 
 ## <a name="supported-open-source-platforms"></a>支持的开源平台
 
@@ -84,5 +86,3 @@ Data Lake Storage gen2 支持多个可用于引入数据、执行分析和创建
 
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage 的多协议访问](data-lake-storage-multi-protocol-access.md)
-
-

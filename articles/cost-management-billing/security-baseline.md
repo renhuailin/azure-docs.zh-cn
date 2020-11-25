@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 40baab2a4c577ee96bcebeb4880235a81810b2b4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3270dae1fd37913ba51ca1da63bbb44d715e7d31
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660315"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021773"
 ---
 # <a name="azure-security-baseline-for-cost-management"></a>成本管理的 Azure 安全基线
 
@@ -288,7 +288,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
@@ -424,7 +424,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="posture-and-vulnerability-management"></a>状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：态势和漏洞管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：态势和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
 
 ### <a name="pv-7-rapidly-and-automatically-remediate-software-vulnerabilities"></a>PV-7：快速自动修正软件漏洞
 
@@ -484,9 +484,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [云采用框架 - Azure 数据安全和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure 安全中心监视**：不适用
 
@@ -514,7 +514,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **指南**：不断衡量并降低各个资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure 安全中心监视**：不适用
 
@@ -555,7 +555,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -583,9 +583,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -617,9 +617,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
