@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989524"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121822"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书
 
-IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与应用程序之间的通信。 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)教程使用 SAS。 本文介绍如何修改代码示例以使用 x.509。  在生产环境中，建议使用 x.509 证书。 有关详细信息，请参阅 [连接到 Azure IoT Central](./concepts-get-connected.md)。
+IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与应用程序之间的通信。 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device.md)教程使用 SAS。 本文介绍如何修改代码示例以使用 x.509。  在生产环境中，建议使用 x.509 证书。 有关详细信息，请参阅 [连接到 Azure IoT Central](./concepts-get-connected.md)。
 
 本文介绍了在生产环境 [中通常使用的 x.509 的两](how-to-connect-devices-x509.md#use-a-group-enrollment) 种使用方式的方法，以及用于测试的 [单个注册](how-to-connect-devices-x509.md#use-an-individual-enrollment) 。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](./tutorial-connect-device-nodejs.md) 教程。
+- 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (JavaScript) ](./tutorial-connect-device.md) 教程。
 - [Git](https://git-scm.com/download/)。
 - 下载并安装 [OpenSSL](https://www.openssl.org/)。 如果使用的是 Windows，则可以使用 [SourceForge 上的 OpenSSL 页面](https://sourceforge.net/projects/openssl/)中的二进制文件。
 
@@ -97,7 +97,7 @@ filename | 内容
 
 ## <a name="run-sample-device-code"></a>运行示例设备代码
 
-1. 将 **sampleDevice01_key** 和 **sampleDevice01_cert pem** 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时使用此应用程序。
+1. 将 **sampleDevice01_key** 和 **sampleDevice01_cert pem** 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 已完成 " [将设备连接 (JavaScript") 教程](./tutorial-connect-device.md)时使用了此应用程序。
 
 1. 导航到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹，并运行以下命令安装 x.509 包：
 
@@ -149,7 +149,7 @@ filename | 内容
     ```
 
     > [!TIP]
-    > 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md) 教程时，可以设置其他所需的环境变量。
+    > 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device.md) 教程时，可以设置其他所需的环境变量。
 
 1. 执行脚本并验证是否已成功设置设备：
 
@@ -197,7 +197,7 @@ filename | 内容
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>运行单个注册设备示例
 
-1. 将 _mytestselfcertprimary_key_ 和 _mytestselfcertprimary_cert pem_ 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时使用此应用程序。
+1. 将 _mytestselfcertprimary_key_ 和 _mytestselfcertprimary_cert pem_ 文件复制到包含 **simple_thermostat.js** 应用程序的 _azure iot sdk 节点/设备/示例/pnp_ 文件夹中。 已完成 " [将设备连接 (JavaScript") 教程](./tutorial-connect-device.md)时使用了此应用程序。
 
 1. 修改中使用的环境变量，如下所示：
 

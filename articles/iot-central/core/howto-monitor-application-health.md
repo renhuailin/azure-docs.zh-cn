@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 66f0846ab8fcfc316c4b40ad9e51b402a37e874d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1fb17d56c546511fee291f30b103a5310c8015cc
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122903"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122270"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>监视连接到 IoT Central 应用程序的设备的总体运行状况
 
@@ -31,11 +31,11 @@ ms.locfileid: "92122903"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>查看 Azure 门户中的度量值
 
-以下步骤假设你有一个 [IoT Central 应用程序](./quick-deploy-iot-central.md) 与一些 [连接的设备](./tutorial-connect-device-nodejs.md)。
+以下步骤假设你有一个 [IoT Central 应用程序](./quick-deploy-iot-central.md) 与一些 [连接的设备](./tutorial-connect-device.md)。
 
 若要在门户中查看 IoT Central 度量值：
 
-1. 在门户中导航到 IoT Central 应用程序资源。 默认情况下，IoT Central 资源位于名为 **IOTC**的资源组中。
+1. 在门户中导航到 IoT Central 应用程序资源。 默认情况下，IoT Central 资源位于名为 **IOTC** 的资源组中。
 1. 若要从应用程序的指标创建图表，请在 "**监视**" 部分中选择 "**指标**"。
 
 ![Azure 指标](media/howto-monitor-application-health/metrics.png)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023902"
+ms.locfileid: "96121753"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>连接威胁情报提供商提供的数据
 
@@ -56,6 +56,11 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
     有关信息，请参阅 [ThreatConnect 集成](https://threatconnect.com/integrations/) 和在页面上查找 MICROSOFT GRAPH 安全 API。
 
+- [EclecticIQ 平台](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ 威胁情报平台](https://www.threatq.com/)
+
+    有关信息和指导说明，请参阅用于 [ThreatQ 集成的 Microsoft Sentinel 连接器](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview)。
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>将 Azure Sentinel 连接到威胁情报平台
 
