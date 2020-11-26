@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441209"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168638"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>Azure Active Directory 的 SAML 身份验证
 
@@ -41,7 +41,7 @@ SAML 规范定义了三个角色：
 
 ## <a name="components-of-system"></a>系统组件
 
-* **User**：从应用程序请求服务。
+* **用户**：从应用程序请求服务。
 
 * **Web 浏览器**：用户与之交互的组件。
 
@@ -53,8 +53,8 @@ SAML 规范定义了三个角色：
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>通过 Azure AD 实现 SAML 身份验证
 
-* [有关使用 Azure Active Directory 集成 SaaS 应用程序的教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [有关使用 Azure Active Directory 集成 SaaS 应用程序的教程](../saas-apps/tutorial-list.md) 
 
-* [为非库应用程序配置基于 SAML 的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [为非库应用程序配置基于 SAML 的单一登录](../manage-apps/add-application-portal.md) 
 
-* [Azure AD 使用 SAML 协议的方式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Azure AD 使用 SAML 协议的方式](../develop/active-directory-saml-protocol-reference.md)

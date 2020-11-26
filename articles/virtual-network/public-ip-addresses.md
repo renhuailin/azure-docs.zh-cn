@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358161"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169927"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -54,7 +54,7 @@ ms.locfileid: "94358161"
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](security-overview.md#network-security-groups)的入站流量。
 - 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是区域冗余的，也可以是可在特定的可用性区域) 中确保的区域性 (。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是) 的所有3个区域中的区域冗余 (advertized，也可以在特定的可用性区域) 中确保区域性 (创建。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **区域冗余 Ip 只能在具有3个 [可用性区域的区域](https://docs.microsoft.com/azure/availability-zones/az-region) 中创建。** 在区域处于活动之前创建的 Ip 不会区域冗余。
  
 > [!NOTE]
 > 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
@@ -123,7 +123,7 @@ ms.locfileid: "94358161"
 * 将 contoso 作为 domainnamelabel 
 * **美国西部** Azure **位置**
 
- ( **FQDN) 的** 完全限定的域名解析为资源的公共 IP 地址。
+ (**FQDN) 的** 完全限定的域名解析为资源的公共 IP 地址。
 
 > [!IMPORTANT]
 > 所创建的每个域名标签在其 Azure 位置必须是唯一的。  

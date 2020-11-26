@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77085213"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169437"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：将适用于 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供者
 
@@ -29,7 +29,7 @@ ms.locfileid: "77085213"
 在 `MSALPublicClientApplication` 中配置了 `https://login.microsoftonline.com/common` 的默认颁发机构 URL，这适用于大多数 Azure Active Directory (AAD) 方案。 除非要实现国家云等高级方案或要使用 B2C，否则不需要更改它。
 
 > [!NOTE]
-> 不支持使用 Active Directory 联合身份验证服务作为标识提供者 (ADFS) 的新式身份验证（有关详细信息，请参阅[面向开发人员的 ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)）。 ADFS 是通过联合支持的。
+> 不支持使用 Active Directory 联合身份验证服务作为标识提供者 (ADFS) 的新式身份验证（有关详细信息，请参阅[面向开发人员的 ADFS](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)）。 ADFS 是通过联合支持的。
 
 ## <a name="change-the-default-authority"></a>更改默认颁发机构
 

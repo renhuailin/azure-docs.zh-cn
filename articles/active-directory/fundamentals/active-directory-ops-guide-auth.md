@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836982"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168859"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -160,7 +160,7 @@ ms.locfileid: "94836982"
 > [!NOTE]
 > 如果没有一种机制来发现组织中的非托管应用程序，我们建议使用云访问安全代理解决方案来实现发现过程 (CASB) 例如 [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)。
 
-最后，如果你有 Azure AD 应用库并使用支持 SSO 与 Azure AD 的应用程序，我们建议你 [在应用程序库中列出应用程序](../azuread-dev/howto-app-gallery-listing.md)。
+最后，如果你有 Azure AD 应用库并使用支持 SSO 与 Azure AD 的应用程序，我们建议你 [在应用程序库中列出应用程序](../develop/v2-howto-app-gallery-listing.md)。
 
 #### <a name="single-sign-on-recommended-reading"></a>建议的单一登录
 
@@ -255,10 +255,10 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 
 #### <a name="conditional-access-recommended-reading"></a>建议阅读的条件性访问
 
-- [Azure Active Directory 中条件访问的最佳做法](../conditional-access/best-practices.md)
+- [Azure Active Directory 中的条件性访问的最佳做法](../conditional-access/overview.md)
 - [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory 条件访问设置参考](../conditional-access/concept-conditional-access-conditions.md)
-- [常用条件访问策略](../conditional-access/concept-conditional-access-policy-common.md)
+- [常见条件访问策略](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>访问外围应用
 

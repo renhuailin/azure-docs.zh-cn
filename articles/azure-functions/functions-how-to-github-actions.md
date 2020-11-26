@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913539"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168060"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
-使用 [GitHub 操作](https://github.com/features/actions) 定义工作流，自动生成代码并将其部署到 Azure function app。 
+使用 [GitHub Actions](https://github.com/features/actions) 定义一个工作流，以便自动生成代码并将其部署到 Azure 函数应用。 
 
 在 GitHub Actions 中，[工作流](https://help.github.com/articles/about-github-actions#workflow)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 中生成和部署函数应用项目。 
 
@@ -32,21 +32,21 @@ ms.locfileid: "92913539"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
-- 使用 GitHub 存储库在 Azure 上托管的工作函数应用。   
-    - [快速入门：在 Azure 中使用 Visual Studio Code 创建函数](functions-create-first-function-vs-code.md)
+- 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。  
+- 在 Azure 上托管的使用 GitHub 存储库的工作函数应用。   
+    - [快速入门：在 Azure 中使用 Visual Studio Code 创建函数](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-对 GitHub 操作 Azure Functions 进行身份验证的建议方法是使用发布配置文件。 你还可以使用服务主体进行身份验证。 若要了解详细信息，请参阅 [此 GitHub 操作存储库](https://github.com/Azure/functions-action)。 
+对于 GitHub Actions，建议使用发布配置文件向 Azure Functions 进行身份验证。 还可以使用服务主体进行验证。 若要了解详细信息，请参阅[此 GitHub Actions 存储库](https://github.com/Azure/functions-action)。 
 
-将你的发布配置文件凭据保存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)后，你将在工作流中使用此密码对 Azure 进行身份验证。 
+将你的发布配置文件凭据保存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)后，将在工作流中使用此机密向 Azure 进行身份验证。 
 
-#### <a name="download-your-publish-profile"></a>下载发布配置文件
+#### <a name="download-your-publish-profile"></a>下载你的发布配置文件
 
 若要下载函数应用的发布配置文件：
 
-1. 选择函数应用的“概述”页，然后选择“获取发布配置文件”   。
+1. 选择函数应用的“概述”页，然后选择“获取发布配置文件” 。
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="下载发布配置文件":::
 
@@ -55,9 +55,11 @@ ms.locfileid: "92913539"
 
 ### <a name="add-the-github-secret"></a>添加 GitHub 机密
 
-1. 在  >  “机密” >  “添加新机密”。
+1. 在 [GitHub](https://github.com) 中浏览到存储库，选择“设置” > “机密” > “添加新机密”。
 
-   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="下载发布配置文件" **添加密钥** "。
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="添加机密":::
+
+1. 添加新机密的方法如下：使用 `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` 作为“名称”，使用发布配置文件的内容作为“值”，然后选择“添加机密”  。
 
 GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
@@ -67,8 +69,8 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-.NET (包括 ASP.NET) 使用 `actions/setup-dotnet` 操作。  
-以下示例显示了用于设置环境的工作流的一部分：
+.NET（包括 ASP.NET）使用 `actions/setup-dotnet` 操作。  
+以下示例显示了设置环境的工作流部分：
 
 ```yaml
     - name: Setup DotNet 2.2.402 Environment
@@ -79,8 +81,8 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java 使用  `actions/setup-java` 操作。  
-以下示例显示了用于设置环境的工作流的一部分：
+Java 使用 `actions/setup-java` 操作。  
+以下示例显示了设置环境的工作流部分：
 
 ```yaml
     - name: Setup Java 1.8.x
@@ -93,8 +95,8 @@ Java 使用  `actions/setup-java` 操作。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript ( # A0) 使用该 `actions/setup-node` 操作。  
-以下示例显示了用于设置环境的工作流的一部分：
+JavaScript (Node.js) 使用 `actions/setup-node` 操作。  
+以下示例显示了设置环境的工作流部分：
 
 ```yaml
 
@@ -107,7 +109,7 @@ JavaScript ( # A0) 使用该 `actions/setup-node` 操作。
 # <a name="python"></a>[Python](#tab/python)
 
 Python 使用 `actions/setup-python` 操作。  
-以下示例显示了用于设置环境的工作流的一部分：
+以下示例显示了设置环境的工作流部分：
 
 ```yaml
     - name: Setup Python 3.7 Environment
@@ -121,7 +123,7 @@ Python 使用 `actions/setup-python` 操作。
 
 这取决于语言。对于 Azure Functions 支持的语言，应该可以将此部分视为每种语言的标准生成步骤。
 
-下面的示例演示了生成函数应用的工作流的一部分，它是特定于语言的：
+以下示例显示了生成函数应用的工作流部分，该部分是特定于语言的：
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -185,15 +187,15 @@ Python 使用 `actions/setup-python` 操作。
 ---
 
 ## <a name="deploy-the-function-app"></a>部署函数应用
-使用 `Azure/functions-action` 操作将代码部署到 function app。 此操作有三个参数：
+使用 `Azure/functions-action` 操作将代码部署到函数应用。 此操作有三个参数：
 
 |参数 |说明  |
 |---------|---------|
 |_**app-name**_ | （必需）函数应用的名称。 |
 |_**slot-name**_ | （可选）要部署到其中的[部署槽](functions-deployment-slots.md)的名称。 该槽必须已经在函数应用中定义。 |
-|_**publish-profile**_ |  (可选) 你的发布配置文件的 GitHub 机密的名称。 |
+|_**publish-profile**_ | （可选）发布配置文件的 GitHub 机密的名称。 |
 
-下面的示例使用的第1版 `functions-action` 和 `publish profile` 用于身份验证 
+以下示例使用 `functions-action` 版本 1 和 `publish profile` 进行身份验证 
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -496,4 +498,4 @@ jobs:
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解有关 Azure 和 GitHub 集成的详细信息](/azure/developer/github/)
+> [详细了解 Azure 和 GitHub 集成](/azure/developer/github/)

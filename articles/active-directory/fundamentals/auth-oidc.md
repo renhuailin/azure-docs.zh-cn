@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 0e5bf7e51de38d42e64f6737e687c5946a464160
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576982"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168655"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 进行 OpenID Connect 身份验证
 
@@ -38,24 +38,23 @@ OIDC 的设计目标是“使简单的事情保持简单，使复杂的事情成
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：从应用程序请求服务。
+* **用户**：从应用程序请求服务。
 
-* **受信任的代理** ：用户与之交互的组件。 这个受信任的代理通常是 Web 浏览器。
+* **受信任的代理**：用户与之交互的组件。 这个受信任的代理通常是 Web 浏览器。
 
-* **应用程序** ：应用程序或资源服务器是资源或数据所在的位置。 它信任标识提供者以安全方式对受信任的代理进行身份验证和授权。 
+* **应用程序**：应用程序或资源服务器是资源或数据所在的位置。 它信任标识提供者以安全方式对受信任的代理进行身份验证和授权。 
 
-* **Azure AD** ：OIDC 提供程序（也称为标识提供者）会安全地管理与用户信息、用户访问权限及流中各方之间的信任关系有关的任何事情。 它会对用户的身份进行验证、授予和吊销对资源的访问权限，以及颁发令牌。 
+* **Azure AD**：OIDC 提供程序（也称为标识提供者）会安全地管理与用户信息、用户访问权限及流中各方之间的信任关系有关的任何事情。 它会对用户的身份进行验证、授予和吊销对资源的访问权限，以及颁发令牌。 
 
 ## <a name="implement-oidc-with-azure-ad"></a>通过 Azure AD 实现 OIDC
 
-* [将应用程序与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [将应用程序与 Azure AD 集成](../saas-apps/tutorial-list.md) 
 
-* [Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议](../develop/active-directory-v2-protocols.md) 
 
-* [Microsoft 标识平台和 OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) 
+* [Microsoft 标识平台和 OpenID Connect 协议](../develop/v2-protocols-oidc.md) 
 
-* [在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录](https://docs.microsoft.com/azure/active-directory-b2c/openid-connect) 
+* [在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录](../../active-directory-b2c/openid-connect.md) 
 
-* [使用 OpenID Connect 和 Azure AD 保护应用程序](https://docs.microsoft.com/learn/modules/secure-app-with-oidc-and-azure-ad/) 
+* [使用 OpenID Connect 和 Azure AD 保护应用程序](/learn/modules/secure-app-with-oidc-and-azure-ad/) 
 
- 

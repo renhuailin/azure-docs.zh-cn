@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951755"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170151"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>利用 Azure Pipelines 部署自定义策略
 
@@ -29,7 +29,7 @@ ms.locfileid: "94951755"
 1. 配置 Azure 管道
 
 > [!IMPORTANT]
-> 使用 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API 终结点上提供的 **预览** 操作 `/beta` 。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 终结点引用](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)。
+> 使用 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API 终结点上提供的 **预览** 操作 `/beta` 。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 终结点引用](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta)。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -12,7 +12,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -90,7 +90,7 @@
               href: /azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 审核
           href: /azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-        - name: 网络安全
+        - name: 网络安全性
           items:
             - name: 防火墙规则
               href: /azure/sql-database/sql-database-firewall-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -114,7 +114,7 @@
               href: /azure/sql-database/sql-database-manage-logins?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级安全性
+            - name: 行级别安全性
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
@@ -128,7 +128,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -136,7 +136,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -424,5 +424,9 @@
           href: sql-data-warehouse-partner-data-management.md
         - name: 机器学习和 AI
           href: sql-data-warehouse-partner-machine-learning-ai.md
+        - name: 系统集成
+          href: sql-data-warehouse-partner-system-integration.md
         - name: 公共预览版合作伙伴
           href: sql-data-warehouse-partner-launch.md
+        - name: 第三方应用程序的兼容性问题
+          href: sql-data-warehouse-partner-compatibility-issues.md

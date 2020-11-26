@@ -37,6 +37,8 @@
           href: how-to-automatic-language-detection.md
         - name: 使用批量听录 API
           href: batch-transcription.md
+        - name: 评估发音
+          href: how-to-pronunciation-assessment.md
     - name: 教程
       items:
         - name: 使用租户模型提高准确性

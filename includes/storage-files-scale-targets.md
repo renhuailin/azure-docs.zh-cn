@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028083"
 ---
 | 资源 | 标准文件共享\* | 高级文件共享 |
 |----------|---------------|------------------------------------------|
@@ -27,6 +27,7 @@ ms.locfileid: "94504056"
 | 最大对象（目录和文件）名称长度 | 2,048 个字符 | 2,048 个字符 |
 | 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |
 | 硬链接限制（仅限 NFS） | 不可用 | 178 |
+| SMB 多路通道的最大数量 | 不适用 | 4 |
 
 \* 标准文件共享的限制适用于标准文件共享可用的所有三个层：事务优化层、热层和冷层。
 

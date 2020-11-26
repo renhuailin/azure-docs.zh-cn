@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: 多个 ISP 链接 - Azure 路径选择
           href: path-selection-multiple-links.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 定价概念
       href: pricing-concepts.md
     - name: 关于虚拟中心中的 NVA

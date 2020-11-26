@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209435"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169488"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>如何：使用 MSAL 在 Android 上启用跨应用 SSO
 
 单一登录 (SSO) 允许用户仅输入其凭据一次，并在应用程序之间自动使用这些凭据。
 
-[Microsoft 标识平台](/azure/active-directory/develop/)和 Microsoft 身份验证库 (MSAL) 帮助你在自己的应用套件中启用 SSO。 利用 broker 功能和验证器应用程序，你可以在整个设备上扩展 SSO。
+[Microsoft 标识平台](./index.yml)和 Microsoft 身份验证库 (MSAL) 帮助你在自己的应用套件中启用 SSO。 利用 broker 功能和验证器应用程序，你可以在整个设备上扩展 SSO。
 
 在本操作方法指南中，你将了解如何配置应用程序用来向客户提供 SSO 的 Sdk。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92209435"
 
 本操作指南假设你知道如何执行以下操作：
 
-- 使用 Azure 门户预配应用。 有关本主题的详细信息，请参阅[Android 教程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project)中的创建应用的说明
+- 使用 Azure 门户预配应用。 有关本主题的详细信息，请参阅[Android 教程](./tutorial-v2-android.md#create-a-project)中的创建应用的说明
 - 将应用程序与 [适用于 Android 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-android)集成。
 
 ## <a name="methods-for-single-sign-on"></a>单一登录方法

@@ -90,12 +90,13 @@
           href: de-identified-export.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
-    - name: 在 Azure API for FHIR® 中启用诊断日志记录
-      href: enable-diagnostic-logging.md
-    - name: 通过“诊断”设置导出适用于 FHIR 的 Azure IoT 连接器（预览版）指标
-      href: iot-metrics-diagnostics-export.md
-    - name: 显示和配置适用于 FHIR 的 Azure IoT 连接器（预览版）指标
-      href: iot-metrics-display.md
+    - name: 诊断日志记录和指标
+      expanded: false
+      items:
+        - name: 在 Azure API for FHIR 中启用诊断日志记录
+          href: enable-diagnostic-logging.md
+        - name: 显示和配置适用于 FHIR 的 Azure IoT 连接器（预览版）指标
+          href: iot-metrics-display.md
     - name: 为适用于 FHIR 的 Azure API 获取令牌 - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: 排查适用于 FHIR 的 Azure IoT 连接器（预览版）中的故障

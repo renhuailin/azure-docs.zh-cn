@@ -3,12 +3,12 @@ title: 在本地开发和运行 Azure Functions
 description: 了解如何在本地计算机上编写 Azure Functions 代码并对其进行测试，然后再 Azure Functions 上运行它们。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: c011dff9f43de59d3f08445a7bbd5387b27563ad
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 9c37d51abcc8d612b777b845515cf07666369d4f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920026"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168128"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -20,7 +20,7 @@ ms.locfileid: "94920026"
 
 |环境                              |语言         |说明|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [C # (类库) ](functions-dotnet-class-library.md)， [c # 脚本 () ](functions-reference-csharp.md)， [JavaScript](functions-reference-node.md)， [PowerShell](./create-first-function-vs-code-powershell.md)， [Python](functions-reference-python.md) | [适用于 VS Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)在 VS Code 中添加了 Functions 支持。 需要 Core Tools。 使用 2.x 版 Core Tools 时，支持 Linux、MacOS 和 Windows 上的开发。 若要了解详细信息，请参阅[使用 Visual Studio Code 创建第一个函数](functions-create-first-function-vs-code.md)。 |
+|[Visual Studio Code](functions-develop-vs-code.md)| [C # (类库) ](functions-dotnet-class-library.md)， [c # 脚本 () ](functions-reference-csharp.md)， [JavaScript](functions-reference-node.md)， [PowerShell](./create-first-function-vs-code-powershell.md)， [Python](functions-reference-python.md) | [适用于 VS Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)在 VS Code 中添加了 Functions 支持。 需要 Core Tools。 使用 2.x 版 Core Tools 时，支持 Linux、MacOS 和 Windows 上的开发。 若要了解详细信息，请参阅[使用 Visual Studio Code 创建第一个函数](./create-first-function-vs-code-csharp.md)。 |
 | [命令提示符或终端](functions-run-local.md) | [C # (类库) ](functions-dotnet-class-library.md)， [c # 脚本 () ](functions-reference-csharp.md)， [JavaScript](functions-reference-node.md)， [PowerShell](functions-reference-powershell.md)， [Python](functions-reference-python.md) | [Azure Functions Core Tools] 提供核心运行时和模板用于创建函数，以实现本地开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 所有环境依赖于 Core Tools 提供本地 Functions 运行时。 |
 | [Visual Studio 2019](functions-develop-vs.md) | [C#（类库）](functions-dotnet-class-library.md) | Azure Functions 工具包含在 [Visual Studio 2019](https://www.visualstudio.com/vs/) 和更高版本的 **Azure 开发** 工作负荷中。 可以编译类库中的函数，并将 .dll 文件发布到 Azure。 包含用于本地测试的 Core Tools。 有关详细信息，请参阅[使用 Visual Studio 开发 Azure Functions](functions-develop-vs.md)。 |
 | [Maven](./create-first-function-cli-java.md)（不同的） | [Java](functions-reference-java.md) | 与 Core Tools 集成以实现 Java 函数的开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 有关详细信息，请参阅[使用 Java 和 Maven 创建第一个函数](./create-first-function-cli-java.md)。 还支持使用 [Eclipse](functions-create-maven-eclipse.md) 和 [IntelliJ IDEA](functions-create-maven-intellij.md) 进行开发 |

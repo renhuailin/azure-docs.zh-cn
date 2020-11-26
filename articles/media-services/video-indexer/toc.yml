@@ -54,6 +54,7 @@
     - name: 检查视频索引器输出
       href: video-indexer-output-json-v2.md
     - name: 在视频中查找确切的时刻
+      displayName: search
       href: video-indexer-search.md
     - name: 检测场景、镜头和关键帧
       href: scenes-shots-keyframes.md

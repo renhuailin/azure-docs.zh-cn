@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073727"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169165"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -51,8 +51,8 @@ ms.locfileid: "92073727"
     1. 转到[合作伙伴配置文件](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)并验证： 
         - MPN ID 正确无误。 
         - 未显示错误或“挂起的操作”，并且“法律业务配置文件”和“合作伙伴信息”下的验证状态均显示为“已授权”或“成功”。
-    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。 如果需要添加其他租户，请按照 [此处](https://docs.microsoft.com/partner-center/multi-tenant-account)的说明进行操作。 请注意，你添加的任何租户的所有全局管理员都将被授予对你的合作伙伴中心帐户的全局管理员权限。
-    1. 请在 [MPN 用户管理页](https://partner.microsoft.com/pcv/users) 上，确认你登录的用户是全局管理员、MPN 管理员或帐户管理员。如果需要将用户添加到合作伙伴中心中的角色，请按照 [此处](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)的说明进行操作。
+    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。 如果需要添加其他租户，请按照 [此处](/partner-center/multi-tenant-account)的说明进行操作。 请注意，你添加的任何租户的所有全局管理员都将被授予对你的合作伙伴中心帐户的全局管理员权限。
+    1. 请在 [MPN 用户管理页](https://partner.microsoft.com/pcv/users) 上，确认你登录的用户是全局管理员、MPN 管理员或帐户管理员。如果需要将用户添加到合作伙伴中心中的角色，请按照 [此处](/partner-center/create-user-accounts-and-set-permissions)的说明进行操作。
 
 - 当我登录到 Azure AD 门户时，我看不到任何已注册的应用程序。**为什么？** 
     你的应用注册可能是使用此租户中的其他用户帐户创建的，也可能是个人/使用者帐户或其他租户。 确保在创建应用注册的租户中使用正确的帐户登录。

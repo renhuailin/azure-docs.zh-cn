@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705854"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169369"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -34,7 +34,7 @@ ms.locfileid: "90705854"
 
 本指南演示如何登录到工作和学校帐户，获取访问令牌，并在 [Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/) 环境中调用 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90705854"
 
 ### <a name="get-an-azure-government-subscription"></a>获取 Azure 政府版订阅
 
-若要获取 Azure 政府版订阅，请参阅 [在 Azure 政府版中管理和连接到你的订阅](../../azure-government/documentation-government-manage-subscriptions.md)。
+若要获取 Azure 政府版订阅，请参阅 [在 Azure 政府版中管理和连接到你的订阅](../../azure-government/compare-azure-government-global-azure.md)。
 
 如果你没有 Azure 政府版订阅，请在开始前创建一个 [免费帐户](https://azure.microsoft.com/global-infrastructure/government/request/) 。
 
@@ -79,8 +79,8 @@ ms.locfileid: "90705854"
 1. “注册应用程序”页显示后，请输入应用程序的名称。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 1. 在 " **重定向 URI** " 部分中，选择 **web** 平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
-1. 选择“注册”。
-1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。********
+1. 选择“注册”  。
+1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。
 1. 本教程要求你启用 [隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框   。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
 1. 选择“保存”。

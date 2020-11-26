@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8062eb864c877b0f3659ca2dd8f103e935071
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 97c524e1f4c05787f1dd61dea5a463e8fa83511a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836778"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168621"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>Azure Active Directory 的 RADIUS 身份验证
 
@@ -59,13 +59,12 @@ Windows NPS 服务器会根据 Active Directory 对用户的凭据进行身份�
 
 ## <a name="implement-radius-with-azure-ad"></a>通过 Azure AD 实现 RADIUS 
 
-* [使用 NPS 提供 Azure AD 多重身份验证功能](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
+* [使用 NPS 提供 Azure AD 多重身份验证功能](../authentication/howto-mfa-nps-extension.md) 
 
-* [配置 Azure AD 多重身份验证 NPS 扩展](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-advanced) 
+* [配置 Azure AD 多重身份验证 NPS 扩展](../authentication/howto-mfa-nps-extension-advanced.md) 
 
-* [使用 NPS 扩展进行 Azure AD 多重身份验证的 VPN](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-vpn) 
+* [使用 NPS 扩展进行 Azure AD 多重身份验证的 VPN](../authentication/howto-mfa-nps-extension-vpn.md) 
 
   
 ‎ 
 
- 

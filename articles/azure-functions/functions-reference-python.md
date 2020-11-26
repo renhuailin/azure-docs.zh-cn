@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539067"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167839"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "94539067"
 
 | 入门 | 概念| 方案/示例 |
 | -- | -- | -- | 
-| <ul><li>[使用 Visual Studio Code 的 Python 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[具有终端/命令提示符的 Python 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[具有终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>编程模型
 
@@ -93,22 +93,22 @@ Python 函数项目的建议文件夹结构如以下示例所示：
 ```
 主项目文件夹 ( # B0 project_root>) 可以包含以下文件：
 
-* *local.settings.json* ：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-run-local.md#local-settings-file)。
-* *requirements.txt* ：包含在发布到 Azure 时系统安装的 Python 包的列表。
-* *host.json* ：包含在函数应用中影响所有函数的全局配置选项。 此文件会被发布到 Azure。 本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅 [host.json](functions-host-json.md)。
-* *. vscode/* ： (可选) 包含存储 vscode 配置。 若要了解详细信息，请参阅 [VSCode 设置](https://code.visualstudio.com/docs/getstarted/settings)。
-* *. venv/* ： (可选) 包含本地开发使用的 Python 虚拟环境。
-* *Dockerfile* ：在 [自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用 (可选) 。
-* test */* ： (可选) 包含 function app 的测试用例。
-* *. funcignore* ： (可选) 声明不应发布到 Azure 的文件。 通常，此文件包含 `.vscode/` 忽略编辑器设置、忽略 `.venv/` 本地 Python 虚拟环境、 `tests/` 忽略测试用例以及 `local.settings.json` 阻止发布本地应用设置。
+* *local.settings.json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-run-local.md#local-settings-file)。
+* *requirements.txt*：包含在发布到 Azure 时系统安装的 Python 包的列表。
+* *host.json*：包含在函数应用中影响所有函数的全局配置选项。 此文件会被发布到 Azure。 本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅 [host.json](functions-host-json.md)。
+* *. vscode/*： (可选) 包含存储 vscode 配置。 若要了解详细信息，请参阅 [VSCode 设置](https://code.visualstudio.com/docs/getstarted/settings)。
+* *. venv/*： (可选) 包含本地开发使用的 Python 虚拟环境。
+* *Dockerfile*：在 [自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用 (可选) 。
+* test */*： (可选) 包含 function app 的测试用例。
+* *. funcignore*： (可选) 声明不应发布到 Azure 的文件。 通常，此文件包含 `.vscode/` 忽略编辑器设置、忽略 `.venv/` 本地 Python 虚拟环境、 `tests/` 忽略测试用例以及 `local.settings.json` 阻止发布本地应用设置。
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。
 
-将项目部署到 Azure 中的函数应用时，主项目 ( *<project_root>* ) 文件夹的全部内容应包含在包中，而不是包含在 `host.json` 包根目录中。 建议在此示例中，将你的测试与其他函数一起保留在一个文件夹中 `tests/` 。 有关详细信息，请参阅[单元测试](#unit-testing)。
+将项目部署到 Azure 中的函数应用时，主项目 (*<project_root>*) 文件夹的全部内容应包含在包中，而不是包含在 `host.json` 包根目录中。 建议在此示例中，将你的测试与其他函数一起保留在一个文件夹中 `tests/` 。 有关详细信息，请参阅[单元测试](#unit-testing)。
 
 ## <a name="import-behavior"></a>导入行为
 
-您可以使用绝对引用和相对引用来导入函数代码中的模块。 根据上面所示的文件夹结构，以下导入函数文件中的 *<project_root> \my \_ first \_ 函数 \\ _ \_ \_ \_ py* ：
+您可以使用绝对引用和相对引用来导入函数代码中的模块。 根据上面所示的文件夹结构，以下导入函数文件中的 *<project_root> \my \_ first \_ 函数 \\ _ \_ \_ \_ py*：
 
 ```python
 from shared_code import my_first_helper_function #(absolute)
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
-默认情况下，[适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md#publish-the-project-to-azure)还会请求远程生成。
+默认情况下，[适用于 Visual Studio Code 的 Azure Functions 扩展](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)还会请求远程生成。
 
 ### <a name="local-build"></a>本地生成
 
@@ -565,7 +565,7 @@ func azure functionapp publish <APP_NAME> --no-build
 }
 ```
 
-现在，我们可以实现 *my_second_function* 和 *shared_code _second_helper_function* 。
+现在，我们可以实现 *my_second_function* 和 *shared_code _second_helper_function*。
 
 ```python
 # <project_root>/my_second_function/__init__.py
@@ -694,8 +694,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 运行时  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 

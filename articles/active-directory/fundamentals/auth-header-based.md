@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577152"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168740"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory 的基于标头的身份验证
 
@@ -34,22 +34,22 @@ ms.locfileid: "94577152"
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：访问应用程序代理提供的旧版应用程序。
+* **用户**：访问应用程序代理提供的旧版应用程序。
 
-* **Web 浏览器** ：用户与之交互以访问应用程序外部 URL 的组件。
+* **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的组件。
 
-* **Azure AD** ：对用户进行身份验证。 
+* **Azure AD**：对用户进行身份验证。 
 
-* **应用程序代理服务** ：充当反向代理，用于将请求从用户发送到本地应用程序。 它驻留在 Azure AD 中，还可以强制实施任何条件性访问策略。
+* **应用程序代理服务**：充当反向代理，用于将请求从用户发送到本地应用程序。 它驻留在 Azure AD 中，还可以强制实施任何条件性访问策略。
 
-* **应用程序代理连接器** ：在 Windows server 上安装在本地，以提供与应用程序的连接。 它仅使用出站连接。 返回 Azure AD 的响应。
+* **应用程序代理连接器**：在 Windows server 上安装在本地，以提供与应用程序的连接。 它仅使用出站连接。 返回 Azure AD 的响应。
 
 * **旧版应用** 程序：从应用程序代理接收用户请求的应用程序。 旧应用程序接收所需的 HTTP 标头，以设置会话并返回响应。 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>实现基于标头的身份验证和 Azure AD
 
-* [在 Azure AD 中通过应用程序代理添加用于远程访问的本地应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)  
+* [在 Azure AD 中通过应用程序代理添加用于远程访问的本地应用程序](../manage-apps/application-proxy-add-on-premises-application.md)  
 
-* [使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-ping-access) 
+* [使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
 
-* [通过应用交付控制器和网络保护旧版应用](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+* [通过应用交付控制器和网络保护旧版应用](../manage-apps/secure-hybrid-access.md)

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71726724e7c018f34b1175f323d0c8e55b604931
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b763cea18cec42eed2aac3318fc1510de7a017b1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973625"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168406"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -65,7 +65,7 @@ SCIM [预配服务](../app-provisioning/user-provisioning.md) 的活动记录在
 完成日期后，我们将提供更新。 此弃用未计划用于2020日历年。 
 
 > [!NOTE]
-> 这不会影响预配服务发出的同步事件之外的审核日志中的任何事件。 事件（例如，应用程序的创建、条件性访问策略、目录中的用户等）将继续在审核日志中发出。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context)。
+> 这不会影响预配服务发出的同步事件之外的审核日志中的任何事件。 事件（例如，应用程序的创建、条件性访问策略、目录中的用户等）将继续在审核日志中发出。 [了解详细信息](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context)。
  
 
 ---
@@ -102,7 +102,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 
 受影响的环境包括：
 - Azure US Gov
-- [Office 365 GCC 高 & DoD](https://docs.microsoft.com/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 GCC 高 & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
  
 ---
 
@@ -177,7 +177,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 
 你现在可以在 Azure 门户中查看每个 Azure AD 角色的模板 ID。 在 Azure AD 中，选择所选角色的 "  **说明** "。 
 
-建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](https://docs.microsoft.com/graph/api/resources/directoryrole?view=graph-rest-1.0) 和 [roleDefinition](https://docs.microsoft.com/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [角色模板 id](../roles/permissions-reference.md#role-template-ids)。
+建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](/graph/api/resources/directoryrole?view=graph-rest-1.0) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [角色模板 id](../roles/permissions-reference.md#role-template-ids)。
 
 ---
 
@@ -233,7 +233,7 @@ API 连接器现在可用于 Azure Active Directory B2C。 利用 API 连接器�
  
 10月2020，我们已在应用程序库中添加了以下27个新应用程序，并提供联合身份验证支持：
 
-[卫士](../saas-apps/sentry-tutorial.md)， [Bumblebee Superapp](https://app.yellowmessenger.com/user/login)， [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md)， [EAComposer](../saas-apps/eacomposer-tutorial.md)， [Genesys cloud Integration for Azure](https://apps.mypurecloud.com/msteams-integration/)，[区域技术门户](https://portail.zonetechnologie.com/signin)， [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md)， [Datawiza Access Broker](https://console.datawiza.com/)， [ZOKRI](https://app.zokri.com/)， [CheckProof](../saas-apps/checkproof-tutorial.md)， [Ecochallenge.org](https://events.ecochallenge.org/users/login)，atSpoke， [atSpoke](http://atspoke.com/login)[约会提醒](https://app.appointmentreminder.co.nz/account/login)，[云和](https://cloud.market/)marketplace，TravelPerk， [Greetly](https://app.greetly.com/)，[OrgVitality SSO} (。 [TravelPerk](../saas-apps/travelperk-tutorial.md)/saas-apps/orgvitality-sso-tutorial.md) ， [Web 货物 Air](../saas-apps/web-cargo-air-tutorial.md)，[循环流 CRM](../saas-apps/loop-flow-crm-tutorial.md)， [Starmind](../saas-apps/starmind-tutorial.md)， [Workstem](https://hrm.workstem.com/login)，[零售 Zipline](../saas-apps/retail-zipline-tutorial.md)， [Hoxhunt](../saas-apps/hoxhunt-tutorial.md)， [MEVISIO](../saas-apps/mevisio-tutorial.md)， [Samsara](../saas-apps/samsara-tutorial.md)， [Nimbus](../saas-apps/nimbus-tutorial.md)，[脉冲安全虚拟流量管理器](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
+[卫士](../saas-apps/sentry-tutorial.md)， [Bumblebee Superapp](https://app.yellowmessenger.com/user/login)， [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md)， [EAComposer](../saas-apps/eacomposer-tutorial.md)， [Genesys cloud Integration for Azure](https://apps.mypurecloud.com/msteams-integration/)，[区域技术门户](https://portail.zonetechnologie.com/signin)， [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md)， [Datawiza Access Broker](https://console.datawiza.com/)， [ZOKRI](https://app.zokri.com/)， [CheckProof](../saas-apps/checkproof-tutorial.md)， [Ecochallenge.org](https://events.ecochallenge.org/users/login)，atSpoke， [atSpoke](http://atspoke.com/login)[约会提醒](https://app.appointmentreminder.co.nz/account/login)，[云和](https://cloud.market/)marketplace，TravelPerk， [Greetly](https://app.greetly.com/)，[OrgVitality SSO} (。 [TravelPerk](../saas-apps/travelperk-tutorial.md)/saas-apps/orgvitality-sso-tutorial.md) ， [Web 货物 Air](../saas-apps/web-cargo-air-tutorial.md)，[循环流 CRM](../saas-apps/loop-flow-crm-tutorial.md)， [Starmind](../saas-apps/starmind-tutorial.md)， [Workstem](https://hrm.workstem.com/login)，[零售 Zipline](../saas-apps/retail-zipline-tutorial.md)， [Hoxhunt](../saas-apps/hoxhunt-tutorial.md)， [MEVISIO](../saas-apps/mevisio-tutorial.md)， [Samsara](../saas-apps/samsara-tutorial.md)， [Nimbus](../saas-apps/nimbus-tutorial.md)，[脉冲安全虚拟流量管理器](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
 
@@ -780,7 +780,7 @@ Azure AD 应用程序代理现在支持 (RDS) Web 客户端的远程桌面服务
  
 简化的用户流体验提供具有预览功能的功能奇偶校验，并是所有新功能的主页。 用户能够在同一用户流中启用新功能，从而减少了使用每个新功能版本创建多个版本的需要。 最后，新的、用户友好的 UX 可简化用户流的选择和创建。 立即通过 [创建用户流](../../active-directory-b2c/tutorial-create-user-flows.md)来试用。 
 
-有关用户流的详细信息，请参阅 [Azure Active Directory B2C 中的用户流版本](../../active-directory-b2c/user-flow-versions.md#:~:text=    User flow  ,account. Usi ...  1 more rows )。
+有关用户流的详细信息，请参阅 [Azure Active Directory B2C 中的用户流版本](../../active-directory-b2c/user-flow-versions.md)。
 
 ---
 

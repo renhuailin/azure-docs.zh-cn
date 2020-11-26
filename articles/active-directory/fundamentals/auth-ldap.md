@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f209d394e1a0c2c4ddde9cbf8df2704647e2822a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577050"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168706"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 进行 LDAP 身份验证
 
@@ -40,32 +40,31 @@ Azure Active Directory (Azure AD) 通过 Azure AD 域服务 (AD DS) 支持此模
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：通过浏览器访问依赖于 LDAP 的应用程序。
+* **用户**：通过浏览器访问依赖于 LDAP 的应用程序。
 
-* **Web 浏览器** ：用户与之交互以访问应用程序外部 URL 的接口。
+* **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的接口。
 
-* **虚拟网络** ：Azure 中的专用网络，旧版应用程序可通过该网络使用 LDAP 服务。 
+* **虚拟网络**：Azure 中的专用网络，旧版应用程序可通过该网络使用 LDAP 服务。 
 
-* **旧版应用程序** ：需要在 Azure 的虚拟网络中部署 LDAP 的应用程序或服务器工作负载，或可通过网络路由查看 AD DS 实例 IP 的应用程序或服务器工作负载。 
+* **旧版应用程序**：需要在 Azure 的虚拟网络中部署 LDAP 的应用程序或服务器工作负载，或可通过网络路由查看 AD DS 实例 IP 的应用程序或服务器工作负载。 
 
-* **Azure AD** ：通过 Azure AD Connect 同步组织本地目录中的标识信息。
+* **Azure AD**：通过 Azure AD Connect 同步组织本地目录中的标识信息。
 
 * **Azure AD 域服务 (AD DS)** ：从 Azure AD 执行单向同步，以提供对一组集中用户、组和凭据的访问。 AD DS 实例将分配给一个虚拟网络。 Azure 中连接到分配给 AD DS 的虚拟网络的应用程序、服务和 VM 可使用常见 AD DS 功能，如 LDAP、域加入、组策略、Kerberos 和 NTLM 身份验证。
    > [!NOTE]
    >  在组织无法同步密码哈希或用户使用智能卡登录的环境中，我们建议你在 AD DS 中使用资源林。 
 
-* **Azure AD Connect** ：用于将本地标识信息同步到 Microsoft Azure AD 的工具。 部署向导和引导式体验有助于配置连接所需的先决条件和组件，包括从 Active Directory 到 Azure AD 的同步和登录。 
+* **Azure AD Connect**：用于将本地标识信息同步到 Microsoft Azure AD 的工具。 部署向导和引导式体验有助于配置连接所需的先决条件和组件，包括从 Active Directory 到 Azure AD 的同步和登录。 
 
-* **Active Directory** ：一项用于存储 [本地标识信息（如用户和帐户信息）](https://www.dnsstuff.com/active-directory-service-accounts)安全信息（如密码）的目录服务。
+* **Active Directory**：一项用于存储 [本地标识信息（如用户和帐户信息）](https://www.dnsstuff.com/active-directory-service-accounts)安全信息（如密码）的目录服务。
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>使用 Azure AD 实现 LDAP 身份验证
 
-* [创建和配置 Azure AD DS 实例](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance) 
+* [创建和配置 Azure AD DS 实例](../../active-directory-domain-services/tutorial-create-instance.md) 
 
-* [为 Azure AD DS 实例配置虚拟网络](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-networking) 
+* [为 Azure AD DS 实例配置虚拟网络](../../active-directory-domain-services/tutorial-configure-networking.md) 
 
-* [为 Azure AD DS 托管域配置安全 LDAP](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps) 
+* [为 Azure AD DS 托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md) 
 
-* [在 Azure AD DS 中创建到本地域的出站林信任](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-forest-trust)
+* [在 Azure AD DS 中创建到本地域的出站林信任](../../active-directory-domain-services/tutorial-create-forest-trust.md)
 
- 
