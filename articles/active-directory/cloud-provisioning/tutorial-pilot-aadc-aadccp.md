@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6b510464145f434f761cc28ba4e1c1361f983f8b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651696"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237385"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -126,7 +126,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
 4. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。
 5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。   此操作将添加本地目录。  单击“下一步”。</br>
-![显示已输入目录值的“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install-3.png)</br>
+![显示已输入目录值的“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install-3a.png)</br>
 
 6. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
 ![屏幕截图，显示已选择“确认”按钮的“配置完成”屏幕。](media/how-to-install/install-4a.png)</br>

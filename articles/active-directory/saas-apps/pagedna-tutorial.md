@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
 
@@ -154,7 +154,7 @@ PageDNA 支持以下功能：
 
     ![“用户”窗格](common/user-properties.png)
 
-    1. 在“姓名”框中，输入 **BrittaSimon** 。
+    1. 在“姓名”框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon\@\<yourcompanydomain>.\<extension> 。 例如，“BrittaSimon\@contoso.com”。
 

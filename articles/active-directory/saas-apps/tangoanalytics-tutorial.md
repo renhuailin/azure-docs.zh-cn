@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b1f0cbc1b15eec6498b9219b58d4679bf1a854dc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教程：Azure Active Directory 与 Tango Analytics 的集成
 

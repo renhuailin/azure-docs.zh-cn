@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966626"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>教程：通过设备预配服务 (DPS) 使用自定义分配策略
 
@@ -46,7 +46,7 @@ ms.locfileid: "91951693"
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
-* 对于 Windows 开发环境，需要使用启用了[“采用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* 对于 Windows 开发环境，需要使用启用了[“采用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 对于 Linux 或 macOS，请参阅 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
@@ -57,11 +57,11 @@ ms.locfileid: "91951693"
 
 在本部分，你将创建一个实现自定义分配策略的 Azure 函数。 此函数决定了是否应根据设备的注册 ID 是否包含字符串前缀 **contoso-toaster** 将设备注册到 IoT 中心。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 在主页中选择“+ 创建资源”。****
+1. 登录 [Azure 门户](https://portal.azure.com)。 在主页中选择“+ 创建资源”。
 
-2. 在“搜索市场”搜索框中键入“函数应用”。** 从下拉列表中选择“函数应用”，然后选择“创建”。********
+2. 在“搜索市场”搜索框中键入“函数应用”。 从下拉列表中选择“函数应用”，然后选择“创建”。
 
-3. 在“函数应用”创建页上的“基本信息”选项卡下，输入新函数应用的以下设置，然后选择“查看 + 创建”：************
+3. 在“函数应用”创建页上的“基本信息”选项卡下，输入新函数应用的以下设置，然后选择“查看 + 创建”：
 
     订阅：如果你有多个订阅，但未选择所需的订阅，请选择要使用的订阅。
 
@@ -76,11 +76,11 @@ ms.locfileid: "91951693"
     **区域**：选择你的资源组所在的区域。 此示例使用“美国西部”。
 
     > [!NOTE]
-    > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。************
+    > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。
 
     ![创建用于托管自定义分配函数的 Azure 函数应用](./media/tutorial-custom-allocation-policies/create-function-app.png)
 
-4. 在“摘要”页上，选择“创建”以创建函数应用。******** 部署可能需要几分钟的时间。 完成后，选择“转到资源”。****
+4. 在“摘要”页上，选择“创建”以创建函数应用。 部署可能需要几分钟的时间。 完成后，选择“转到资源”。
 
 5. 在左侧窗格的“函数”下单击“函数”，然后单击“+ 添加”以添加新函数。
 
@@ -179,7 +179,7 @@ ms.locfileid: "91951693"
 
 1. 仍在 [Azure 门户](https://portal.azure.com)中操作，打开预配服务。
 
-2. 在左窗格中选择“管理注册”，然后在页面顶部选择“添加注册组”按钮。********
+2. 在左窗格中选择“管理注册”，然后在页面顶部选择“添加注册组”按钮。
 
 3. 在“添加注册组”中输入下表中的信息，然后单击“保存”按钮。
 
@@ -194,7 +194,7 @@ ms.locfileid: "91951693"
 
     ![为对称密钥证明添加自定义分配注册组](./media/tutorial-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 保存注册后，重新打开它，并记录“主键”****。 必须先保存注册，才能生成密钥。 此主要对称密钥将用于为稍后会尝试进行预配的设备生成唯一的设备密钥。 
+4. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此主要对称密钥将用于为稍后会尝试进行预配的设备生成唯一的设备密钥。 
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
@@ -207,7 +207,7 @@ ms.locfileid: "91951693"
 * **contoso-toaster-007**
 * **contoso-heatpump-088**
 
-将 **KEY** 变量的值替换为你之前在创建注册组后记下的**主密钥**。 下面的代码显示的密钥值和输出只是一个示例。
+将 **KEY** 变量的值替换为你之前在创建注册组后记下的 **主密钥**。 下面的代码显示的密钥值和输出只是一个示例。
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -269,7 +269,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装 **之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
@@ -296,7 +296,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    如果 `cmake` 找不到 C++ 编译器，则在运行该命令时可能会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
+    如果 `cmake` 找不到 C++ 编译器，则在运行该命令时可能会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
 
     生成成功后，最后的几个输出行如下所示：
 
@@ -320,11 +320,11 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将导致烤箱设备被识别，且使用自定义分配策略将其配置到 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。******__**
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。****
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln**** 解决方案文件。 解决方案文件应位于以下位置：
+2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln 解决方案文件。 解决方案文件应位于以下位置：
 
     ```
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -347,7 +347,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 在 `main()` 函数中，找到对 `Prov_Device_Register_Device()` 的调用。 在调用之前，添加以下几行代码，这些代码在预配期间使用 [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) 传递自定义 JSON 有效负载。 可通过这种方式为自定义分配函数提供详细信息。 也可通过这种方式传递设备类型，而不检查注册 ID。
+6. 在 `main()` 函数中，找到对 `Prov_Device_Register_Device()` 的调用。 在调用之前，添加以下几行代码，这些代码在预配期间使用 [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) 传递自定义 JSON 有效负载。 可通过这种方式为自定义分配函数提供详细信息。 也可通过这种方式传递设备类型，而不检查注册 ID。
 
     ```c
     // An example custom payload
@@ -465,7 +465,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 如果你打算继续使用本文中创建的资源，可以保留它们。 如果你不打算继续使用这些资源，请使用以下步骤删除本文创建的所有资源，以避免不必要的费用。
 
-此处的步骤假定你按照名为 contoso-us-resource-group**** 的同一资源组的指示创建了本文中的所有资源。
+此处的步骤假定你按照名为 contoso-us-resource-group 的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
@@ -475,11 +475,11 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-2. 在“按名称筛选...”**** 文本框中，键入包含资源的资源组名称“contoso-us-resource-group”****。 
+2. 在“按名称筛选...”文本框中，键入包含资源的资源组名称“contoso-us-resource-group”。 
 
-3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”********。
+3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”。
 
-4. 系统会要求确认是否删除该资源组。 再次键入资源组的名称进行确认，然后选择“删除”****。 片刻之后，将会删除该资源组及其包含的所有资源。
+4. 系统会要求确认是否删除该资源组。 再次键入资源组的名称进行确认，然后选择“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

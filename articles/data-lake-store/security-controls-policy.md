@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Data Lake Storage Gen1 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: data-lake-store
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ac8d4989991f3aad2d7800d63a33c4a3192a5b4d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 25d091fbe2c51306cd17fb36bc6e91cbeff62ba4
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700721"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987384"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 的 Azure Policy 法规遵从性控制措施
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 36b952131c2050230de89064adc586c5a2851b65
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147567"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544082"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure PowerShell
 
@@ -295,7 +295,7 @@ New-AzPrivateDnsZoneGroup @parameters4
     将为 SQL 服务器名称返回专用 IP 地址 10.0.0.5。  此地址位于你之前创建的虚拟网络的子网中。
 
 
-10. 在 myVM 上安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true)。
+10. 在 myVM 上安装 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017)。
 
 11. 打开 SQL Server Management Studio  。
 

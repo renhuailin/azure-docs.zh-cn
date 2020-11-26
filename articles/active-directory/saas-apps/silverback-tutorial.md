@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92510759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 集成
 
@@ -207,7 +207,7 @@ ms.locfileid: "92510759"
 
     ![用户](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta** 。
+    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**。
 
     b. 在“名字”文本框中，输入用户的名字，如 Britta   。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603962"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520435"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教程：跨区域移动 Azure VM
 
@@ -44,7 +44,7 @@ ms.locfileid: "90603962"
 -  检查以确定你对包含要移动的资源的订阅具有“所有者”访问权限。
     - 首次为 Azure 订阅中的特定源和目标对添加资源时，资源转移器将创建受订阅信任的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)（以前称为托管服务标识 (MSI)）。
     - 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
     
 

@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397430"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014656"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -296,7 +296,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-在 Ruby 中，可以使用 [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) 轻松发送 HTTP POST 请求。 例如：
+在 Ruby 中，可以使用 JSONClient 轻松发送 HTTP POST 请求。 例如：
 
 ```ruby
 clnt = JSONClient.new

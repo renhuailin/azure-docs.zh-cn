@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>教程：Azure Active Directory 与 RolePoint 的集成
 
@@ -60,7 +60,7 @@ ms.locfileid: "92520670"
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在搜索框中输入 **RolePoint** 。 在搜索结果中选择“RolePoint”，然后选择“添加”。  
+4. 在搜索框中输入 **RolePoint**。 在搜索结果中选择“RolePoint”，然后选择“添加”。  
 
      ![搜索结果](common/search-new-app.png)
 
@@ -119,11 +119,11 @@ ms.locfileid: "92520670"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 
 ### <a name="configure-rolepoint-single-sign-on"></a>配置 RolePoint 单一登录
@@ -146,7 +146,7 @@ ms.locfileid: "92520670"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 

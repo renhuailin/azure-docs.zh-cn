@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542178"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984441"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
@@ -133,7 +133,7 @@ ms.locfileid: "94542178"
 
 1. 选择要创建的多边形的标记。
 1. 选择“绘制多边形区域”工具![“绘制多边形区域”工具](./media/how-to-label-images/polygon-tool.png)或选择“P”。
-3. 单击多边形中的每个点。  完成形状后，双击以完成。
+1. 单击多边形中的每个点。  完成形状后，双击以完成。
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="为猫和狗创建多边形":::
 
@@ -158,3 +158,5 @@ ms.locfileid: "94542178"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[在 Azure 中训练图像分类模型](./tutorial-train-models-with-aml.md)
+
+

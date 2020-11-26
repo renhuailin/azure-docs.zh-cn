@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516505"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>教程：Azure Active Directory 与 Skills Base 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "92516505"
 
     ![管理员](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. 在“身份验证”页上，选择“单一登录”作为 **SAML 2** 。
+3. 在“身份验证”页上，选择“单一登录”作为 **SAML 2**。
 
     ![显示“身份验证”页的屏幕截图，其中已选择用于“单一登录”的“SAML 2”。](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "92516505"
     > [!Note]
     > 还可以通过上面屏幕截图中突出显示的“元数据验证器”工具验证 idp 元数据。
 
-    b. 单击“ **保存** ”。
+    b. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

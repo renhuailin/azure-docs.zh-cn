@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676794"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544779"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -83,11 +83,11 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 存储日志将数据存储在存储帐户下名为 $logs 的 blob 容器内的一组 blob 中  。 如果列出帐户中的所有 blob 容器，则不会显示该容器，但如果直接访问它，则可查看其内容。
 
-此方案使用 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) 与 Azure 存储帐户进行交互。
+此方案使用 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) 与 Azure 存储帐户进行交互。
 
 ### <a name="download-microsoft-message-analyzer"></a>下载 Microsoft Message Analyzer
 
-下载 [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) 并安装该应用程序。
+下载 [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) 并安装该应用程序。
 
 启动应用程序并选择“文件” > “打开” > “从其他文件源”  。
 

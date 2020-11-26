@@ -7,11 +7,11 @@ ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994598"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
 
@@ -122,7 +122,7 @@ py -3.7 -m venv .venv
     func init --worker-runtime python
     ```
 
-    初始化后， *start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    初始化后，*start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
 
     > [!TIP]
     > 由于函数项目绑定到特定的运行时，因此必须使用相同的语言编写项目中的所有函数。
@@ -133,7 +133,7 @@ py -3.7 -m venv .venv
     func new --name classify --template "HTTP trigger"
     ```
 
-    此命令创建与函数名称匹配的文件夹 *classify* 。 该文件夹中有两个文件： *\_\_init\_\_.py* ，其中包含函数代码； *function.json* ，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅 Python 快速入门中的[检查文件内容](./create-first-function-cli-python.md#optional-examine-the-file-contents)。
+    此命令创建与函数名称匹配的文件夹 *classify*。 该文件夹中有两个文件： *\_\_init\_\_.py*，其中包含函数代码；*function.json*，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅 Python 快速入门中的[检查文件内容](./create-first-function-cli-python.md#optional-examine-the-file-contents)。
 
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
@@ -206,7 +206,7 @@ py -3.7 -m venv .venv
 
 1. 验证 *classify* 文件夹现在是否包含名为 *predict.py* 的文件。
 
-1. 在文本编辑器中打开 *start/requirements.txt* ，添加帮助器代码所需的以下依赖项：
+1. 在文本编辑器中打开 *start/requirements.txt*，添加帮助器代码所需的以下依赖项：
 
     ```txt
     tensorflow==1.14
@@ -214,7 +214,7 @@ py -3.7 -m venv .venv
     requests
     ```
     
-1. 保存 *requirements.txt* 。
+1. 保存 *requirements.txt*。
 
 1. 在 *start* 文件夹中运行以下命令来安装依赖项。 安装可能需要几分钟时间，在此过程中，你可以转到下一部分来修改函数。
 
@@ -229,7 +229,7 @@ py -3.7 -m venv .venv
 
 ## <a name="update-the-function-to-run-predictions"></a>更新函数以运行预测
 
-1. 在文本编辑器中打开 *classify/\_\_init\_\_.py* ，并在现有的 `import` 语句后面添加以下行，以导入标准 JSON 库和 *predict* 帮助器：
+1. 在文本编辑器中打开 *classify/\_\_init\_\_.py*，并在现有的 `import` 语句后面添加以下行，以导入标准 JSON 库和 *predict* 帮助器：
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="1-6" highlight="5-6":::
 

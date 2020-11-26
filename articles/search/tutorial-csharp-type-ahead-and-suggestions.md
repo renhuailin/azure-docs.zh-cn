@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013830"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教程：使用 .NET SDK 添加自动完成和建议功能
 
@@ -147,11 +147,11 @@ ms.locfileid: "91739657"
 
     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="键入“po”后显示了两条建议" border="false":::
 
-    请注意，输入的字母_必须_是某个词的起始部分，而不只是这个词的一部分。
+    请注意，输入的字母 _必须_ 是某个词的起始部分，而不只是这个词的一部分。
 
 4. 在视图脚本中，将 &fuzzy  设置为 true，并再次运行该应用。 现在，输入“po”。 请注意，这时搜索会假定你写错了一个字母。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="键入“po”后显示了两条建议" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="在将 fuzzy 设置为 true 后，键入“pa”" border="false":::
 
     如果感兴趣，可阅读 [Azure 认知搜索中的 Lucene 查询语法](./query-lucene-syntax.md)，其中详细介绍了模糊搜索使用的逻辑。
 
@@ -196,7 +196,7 @@ ms.locfileid: "91739657"
 
 1. 再次运行应用，应会看到输入的文本在建议中显示为粗体。 请尝试键入“pa”。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="键入“po”后显示了两条建议" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="键入“pa”且其突出显示" border="false":::
 
    上面突出显示的脚本中使用的逻辑并不能做到万无一失。 如果输入一个术语，它在相同的名称中出现两次，那么粗体结果与预期不会完全一致。 请尝试键入“mo”。
 
@@ -255,7 +255,7 @@ ms.locfileid: "91739657"
 
 1. 运行应用。 请注意，下拉列表中显示的一系列选项都是单个词语。 请尝试键入“re”开头的单词。 请注意选项数是如何随键入字母的增加而减少的。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="键入“po”后显示了两条建议" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="键入时应用基本的自动完成功能" border="false":::
 
     目前来看，之前运行的建议脚本可能比此自动完成脚本更有用。 若要使自动完成功能更方便用户使用，请考虑将其与建议的结果一起使用。
 
@@ -451,7 +451,7 @@ ms.locfileid: "91739657"
 
 1. 现在运行应用。 在搜索框中输入“pa”。 得到的自动完成建议是否为“palace”，以及两个包含“pa”的酒店？
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="键入“po”后显示了两条建议" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="键入时应用内联自动完成功能和建议" border="false":::
 
 1. 尝试按 tab 键来接受自动完成建议，并尝试使用箭头键和 tab 键来选择建议，然后使用鼠标和单击方式再试一次。 验证脚本是否能很好地处理所有这些情况。
 

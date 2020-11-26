@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 55195949cfaa741389f38deaea69806c568c0ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008261"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966558"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
@@ -42,12 +42,12 @@ ms.locfileid: "89008261"
 此步骤需要将设备的唯一安全项目添加到设备预配服务。 这些安全项目如下所示：
 
 - 对于基于 TPM 的设备：
-    - 对每个 TPM 芯片或模拟唯一的“认可密钥”  。 请阅读[了解 TPM 认可密钥](https://technet.microsoft.com/library/cc770443.aspx)获取详细信息。
+    - 对每个 TPM 芯片或模拟唯一的“认可密钥”  。 请阅读[了解 TPM 认可密钥](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))获取详细信息。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 TPM 的设备，可能从 TPM 本身派生注册 ID，例如 TPM 认可密钥的 SHA-256 哈希。
 
 - 对于基于 X.509 的设备：
-    - [颁发给设备的 X.509 证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书    。
-    - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
+    - [颁发给设备的 X.509 证书](/windows/win32/seccertenroll/about-x-509-public-key-certificates)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书    。
+    - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](./concepts-service.md)。
 
 可通过两种方法向设备预配服务注册设备：
 

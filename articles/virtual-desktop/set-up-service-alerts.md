@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0391102683ebafba63c429072c8afa9f24223955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66617afee11b02eae0ba5e36d9ff91cbdf21911f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023099"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "88009420"
 > [!div class="checklist"]
 > * 创建和配置服务警报。
 
-若要详细了解 Azure 服务运行状况，请参阅 [Azure 运行状况文档](https://docs.microsoft.com/azure/service-health/)。
+若要详细了解 Azure 服务运行状况，请参阅 [Azure 运行状况文档](../service-health/index.yml)。
 
 ## <a name="create-service-alerts"></a>创建服务警报
 
@@ -46,7 +46,7 @@ ms.locfileid: "88009420"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“服务运行状况”  。
-3. 按照[创建有关服务通知的活动日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的说明设置警报和通知。
+3. 按照[创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json)中的说明设置警报和通知。
 
 ## <a name="next-steps"></a>后续步骤
 

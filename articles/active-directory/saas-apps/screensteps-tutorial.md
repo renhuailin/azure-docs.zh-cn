@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>教程：Azure Active Directory 与 ScreenSteps 集成
 
@@ -160,7 +160,7 @@ ms.locfileid: "92895142"
 
     c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    d. 选择用户预配后会被分配到的 **组** 。
+    d. 选择用户预配后会被分配到的 **组**。
 
     e. 单击“更新”  。
 

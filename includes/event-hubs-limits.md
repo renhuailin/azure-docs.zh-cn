@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027801"
+ms.locfileid: "96152583"
 ---
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
-## <a name="common-limits-for-all-tiers"></a>所有层的通用限制
+### <a name="common-limits-for-all-tiers"></a>所有层的通用限制
 以下限制在所有层中是通用的。 
 
 | 限制 |  说明 | 值 |
@@ -33,7 +33,7 @@ ms.locfileid: "96027801"
 | 虚拟网络 (VNet) 和 IP 配置规则的数量 | - | 128 | 
 
 
-## <a name="basic-vs-standard-tiers"></a>基本层和标准层
+### <a name="basic-vs-standard-tiers"></a>基本层和标准层
 下表显示的限制在基本层和标准层中可能不同。 
 
 | 限制 | 说明 | 基本 | Standard |
@@ -44,7 +44,7 @@ ms.locfileid: "96027801"
 | 事件数据的最长保留期限 | &nbsp; |1 天 |1-7 天 |
 | 最大吞吐量单位 |超出此限制会导致数据受到限制，并生成[服务器繁忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 要为标准层请求大量的吞吐量单位，可填写[支持请求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 | 20 | 
 
-## <a name="dedicated-tier-vs-standard-tier"></a>专用层和标准层
+### <a name="dedicated-tier-vs-standard-tier"></a>专用层和标准层
 事件中心专用层产品/服务按固定的每月价格计费，最少用量为 4 小时。 专用层提供标准计划的所有功能，但具有企业规模容量和限制，以满足客户的工作负荷需求。 
 
 请参阅本[文档](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md)，了解如何使用 Azure 门户创建专用“事件中心”群集。
@@ -63,11 +63,11 @@ ms.locfileid: "96027801"
 | 捕获 | 按每小时支付 | 已含 |
 
 
-## <a name="schema-registry-limitations"></a>架构注册表限制
+### <a name="schema-registry-limitations"></a>架构注册表限制
 
-### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>标准层和专用层中的相同限制  
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>标准层和专用层中的相同限制  
 | 功能 | 限制 | 
-|---|---|--|
+|---|---|
 | 架构组名称的最大长度 | 50 |  
 | 架构名称的最大长度 | 100 |    
 | 每个架构的大小（字节） | 1 MB |   
@@ -76,10 +76,10 @@ ms.locfileid: "96027801"
 | 每个组属性值的大小（字节） | 1024 | 
 
 
-### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>标准层和专用层中的不同限制  
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>标准层和专用层中的不同限制  
 
 | 限制 | 标准 | 专用 | 
-|---|---|--|---|
+|---|---|--|
 | 架构注册表（命名空间）的大小（以兆字节为单位） | 25 |  1024 |
 | 架构注册表或命名空间中的架构组数 | 1 - 排除默认组 | 1000 |
 | 所有架构组的架构版本数 | 25 | 10000 |

@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421458"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500265"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>教程：连接 IoT 即插即用模块 (C#)
 
 本教程演示如何连接泛型 IoT 即插即用[模块](../iot-hub/iot-hub-devguide-module-twins.md)。
 
-如果设备在连接到 IoT 中心并实现由模型 ID 标识的数字孪生定义语言 (DTDL) 模型中描述的属性和方法时发布其模型 ID，则该设备为 IoT 即插即用设备。 若要详细了解设备如何使用 DTDL 和模型 ID，请参阅 [IoT 即插即用开发人员指南](./concepts-developer-guide-device-csharp.md)。 模块以相同方式使用模型 ID 和 DTDL 模型。
+如果设备在连接到 IoT 中心并实现由模型 ID 标识的数字孪生定义语言 (DTDL) 模型中描述的属性和方法时发布其模型 ID，则该设备为 IoT 即插即用设备。 若要详细了解设备如何使用 DTDL 和模型 ID，请参阅 [IoT 即插即用开发人员指南](./concepts-developer-guide-device.md)。 模块以相同方式使用模型 ID 和 DTDL 模型。
 
 为了演示如何实现 IoT 即插即用模块，本教程介绍了如何将恒温器 C# 设备示例转换为泛型模块。
 
@@ -238,4 +238,4 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 本教程介绍了如何将 IoT 即插即用设备和模块连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用建模开发人员指南](./concepts-developer-guide-device-csharp.md)
+> [IoT 即插即用建模开发人员指南](./concepts-developer-guide-device.md)

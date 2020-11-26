@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 480af87519f8e11c14f009058b0f518bdfc34a1b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478535"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026261"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：使用 Azure Database for PostgreSQL 设计实时分析仪表板 – Hyperscale (Citus)
 
@@ -227,4 +227,4 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。 你已了解如何查询原始表单中的数据、定期聚合数据、查询聚合表，并使旧数据过期。
 
 - 了解服务器组[节点类型](./concepts-hyperscale-nodes.md)
-- 确定服务器组的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)
+- 确定服务器组的最佳[初始大小](howto-hyperscale-scale-initial.md)

@@ -4,11 +4,11 @@ description: 此 Azure Policy 模式提供了有关如何在策略定义中使�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005412"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy 模式：count 运算符
 
@@ -24,7 +24,7 @@ ms.locfileid: "92076396"
 
 **count** 运算符的核心组件是 _field_、_where_ 和条件。 下面的代码片段中突出显示了每个组件。
 
-- _field_ 告诉 count 要评估哪个[别名](../concepts/definition-structure.md#aliases)的成员。 下面，让我们看一下网络安全组的 **securityRules\[\*\]** 别名数组  。
+- _field_ 告诉 count 要评估哪个 [别名](../concepts/definition-structure.md#aliases)的成员。 下面，让我们看一下网络安全组的 **securityRules\[\*\]** 别名数组  。
 - _where_ 使用策略语言来定义哪些数组  成员满足条件。 在此示例中，**allOf** 逻辑运算符将别名数组  属性的以下三个不同条件评估分组到一起：_direction_、_access_ 和 _destinationPortRange_。
 - 此示例中的 count 条件为 **greater**。 当别名数组  的一个或多个成员与 _where_ 子句匹配时，Count 的评估结果为 true。
 

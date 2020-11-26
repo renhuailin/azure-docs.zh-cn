@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5957ccb7bd7ff7e7acc0ed76899850bbca09ad6c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 9c3c63b6116e02e8a742b69e90c11e182d72ab2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664794"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953018"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -45,7 +45,7 @@ ms.locfileid: "91664794"
 
 ### <a name="add-a-redirect-uri-reply-url"></a>添加重定向 URI（回复 URL）
 
-要更新 Azure AD B2C 租户中的应用程序，可以使用我们新的统一“应用注册”体验或我们遗留下来的“应用程序（旧版）”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要更新 Azure AD B2C 租户中的应用程序，可以使用我们新的统一“应用注册”体验或我们遗留下来的“应用程序（旧版）”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -77,7 +77,7 @@ ms.locfileid: "91664794"
 
 ## <a name="configure-the-sample"></a>配置示例
 
-在本教程中，你将配置一个可从 GitHub 下载的示例。 该示例使用 ASP.NET 提供简单的待办事项列表。 该示例使用 [Microsoft OWIN 中间件组件](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)。 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)或克隆该示例。 确保将示例文件提取到文件夹中时，路径的总字符长度不到 260。
+在本教程中，你将配置一个可从 GitHub 下载的示例。 该示例使用 ASP.NET 提供简单的待办事项列表。 该示例使用 [Microsoft OWIN 中间件组件](/aspnet/aspnet/overview/owin-and-katana/)。 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)或克隆该示例。 确保将示例文件提取到文件夹中时，路径的总字符长度不到 260。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -119,7 +119,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 现在，应用程序用户可以使用其电子邮件地址登录并使用 Web 应用程序了。
 
-但是，**待办事项列表**功能会不起作用，直到你完成本系列中的下一个教程[教程：使用 Azure AD B2C 保护 ASP.NET Web API](tutorial-web-api-dotnet.md)。
+但是，**待办事项列表** 功能会不起作用，直到你完成本系列中的下一个教程 [教程：使用 Azure AD B2C 保护 ASP.NET Web API](tutorial-web-api-dotnet.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 > * 将示例配置为使用此应用程序
 > * 使用用户流进行登录
 
-现在转到下一个教程，以启用 Web 应用程序的**待办事项列表**功能。 在该教程中，你在自己的 Azure AD B2C 租户中注册 Web API 应用程序，然后修改代码示例，以使用租户进行 API 身份验证。
+现在转到下一个教程，以启用 Web 应用程序的 **待办事项列表** 功能。 在该教程中，你在自己的 Azure AD B2C 租户中注册 Web API 应用程序，然后修改代码示例，以使用租户进行 API 身份验证。
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure Active Directory B2C 保护 ASP.NET Web API](tutorial-web-api-dotnet.md)

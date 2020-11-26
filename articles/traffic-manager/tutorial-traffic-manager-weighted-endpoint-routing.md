@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003780"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
@@ -51,13 +51,13 @@ ms.locfileid: "92205874"
 
 #### <a name="create-vms-for-running-websites"></a>创建用于运行网站的 VM
 
-在此部分，请在“美国东部”和“西欧”Azure 区域创建两个 VM（ *myIISVMEastUS* 和 *myIISVMWestEurope* ）。
+在此部分，请在“美国东部”和“西欧”Azure 区域创建两个 VM（*myIISVMEastUS* 和 *myIISVMWestEurope*）。
 
 1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”  。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
-   - **订阅** > **资源组** ：选择“新建”，然后键入 **myResourceGroupTM1** 。 
-   - **实例详细信息** > **虚拟机名称** ：键入 *myIISVMEastUS* 。
+   - **订阅** > **资源组**：选择“新建”，然后键入 **myResourceGroupTM1**。 
+   - **实例详细信息** > **虚拟机名称**：键入 *myIISVMEastUS*。
    - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
    - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
@@ -67,7 +67,7 @@ ms.locfileid: "92205874"
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
-6. 按步骤创建另一个 VM，其名称为 
+6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
 ![创建 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -76,7 +76,7 @@ ms.locfileid: "92205874"
 
 在此部分，请在 myIISVMEastUS 和 myIISVMWestEurope 这两个 VM 上安装 IIS 服务器，然后更新默认网页。 自定义网页显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
-1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myIISVMEastUS”。 
+1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myIISVMEastUS”。
 2. 在“概览”页上，选择“连接”。   在“连接到虚拟机”中选择“下载 RDP 文件”。  
 3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”  。 输入创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”   > “使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
@@ -104,20 +104,20 @@ ms.locfileid: "92205874"
 
 流量管理器基于服务终结点的 DNS 名称路由用户流量。 在此部分，请为 IIS 服务器 myIISVMEastUS 和 myIISVMWestEurope 配置 DNS 名称。
 
-1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myIISVMEastUS”。 
+1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myIISVMEastUS”。
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   
 3. 在“配置”页上的 DNS 名称标签下添加唯一的名称。  再选择“保存”  。
 4. 针对 **myResourceGroupTM2** 资源组中名为 **myIISVMWestEurope** 的 VM 重复步骤 1-3。
 
 ### <a name="create-a-test-vm"></a>创建测试 VM
 
-在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（  将使用这些 VM 来测试流量管理器如何将流量路由到其权重值更高的网站终结点。
+在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*myVMEastUS* 和 *myVMWestEurope*）。 将使用这些 VM 来测试流量管理器如何将流量路由到其权重值更高的网站终结点。
 
 1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”  。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
-   - **订阅** > **资源组** ：选择“myResourceGroupTM1”  。
-   - **实例详细信息** > **虚拟机名称** ：键入 *myVMEastUS* 。
+   - **订阅** > **资源组**：选择“myResourceGroupTM1”  。
+   - **实例详细信息** > **虚拟机名称**：键入 *myVMEastUS*。
    - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
    - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
@@ -127,7 +127,7 @@ ms.locfileid: "92205874"
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
-6. 按步骤创建另一个 VM，其名称为 
+6. 按步骤创建另一个 VM，其名称为 *myVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myVMEastUS* 相同。
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
@@ -158,10 +158,10 @@ ms.locfileid: "92205874"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | 输入 Azure 终结点。                                   |
-    | 名称           | 输入 **myEastUSEndpoint** 。                                        |
+    | 名称           | 输入 **myEastUSEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                           |
-    | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
-    |  重量      | 输入 **100** 。        |
+    | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMEastUS-ip** 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
+    |  重量      | 输入 **100**。        |
     |        |           |
 
 4. 重复步骤 2 和 3，为公共 IP 地址 **myIISVMWestEurope-ip** 添加名为 **myWestEuropeEndpoint** 的另一个终结点。 此地址与名为 myIISVMWestEurope 的 IIS 服务器 VM 相关联。 输入 **25** 作为“权重”。 
@@ -190,12 +190,12 @@ ms.locfileid: "92205874"
 
 在此部分，可以查看流量管理器的运作方式。
 
-1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myVMEastUS”。 
+1. 在左侧菜单中选择“所有资源”  。 从资源列表选择“myResourceGroupTM1”资源组中的“myVMEastUS”。
 2. 在“概览”页上，选择“连接”。   在“连接到虚拟机”中选择“下载 RDP 文件”。  
 3. 打开下载的 .rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”   > “使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
-6. 在 VM myVMEastUS 上的 Web 浏览器中，输入流量管理器配置文件的 DNS 名称，以查看网站。 系统会将你路由到托管在 IIS 服务器 myIISVMEastUS 上的网站，因为为它分配的权重较高，为 **100** 。 为 IIS 服务器 myIISVMWestEurope 分配的终结点权重值较低，为 **25** 。
+6. 在 VM myVMEastUS 上的 Web 浏览器中，输入流量管理器配置文件的 DNS 名称，以查看网站。 系统会将你路由到托管在 IIS 服务器 myIISVMEastUS 上的网站，因为为它分配的权重较高，为 **100**。 为 IIS 服务器 myIISVMWestEurope 分配的终结点权重值较低，为 **25**。
 
    ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "92205874"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要本教程中创建的资源组时，可将其删除。 为此，请选择资源组（ **ResourceGroupTM1** 或 **ResourceGroupTM2** ），然后选择“删除”。 
+不再需要本教程中创建的资源组时，可将其删除。 为此，请选择资源组（**ResourceGroupTM1** 或 **ResourceGroupTM2**），然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

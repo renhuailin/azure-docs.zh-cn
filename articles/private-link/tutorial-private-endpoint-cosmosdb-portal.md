@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145686"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522135"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教程：使用 Azure 专用终结点连接到 Azure Cosmos 帐户
 
@@ -74,7 +74,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 7. 选择“保存” 。
 
-8. 选择“安全”  选项卡。
+8. 选择“安全”选项卡。
 
 9. 在“BastionHost”下，选择“启用” 。 输入此信息：
 
@@ -248,7 +248,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
     将为 Cosmos DB 帐户名称返回专用 IP 地址 10.1.0.5。  此地址位于你之前创建的虚拟网络的子网中。
 
-9. 在虚拟机上安装 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
+9. 在虚拟机上安装 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
 
 10. 安装“Microsoft Azure 存储资源管理器”后选择“完成”。   保持选中此复选框以打开应用程序。
 
@@ -260,7 +260,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 14. 在“连接字符串”下的框中，粘贴在前面步骤中复制的 Cosmos DB 帐户的连接字符串。
 
-15. 选择“ **下一页** ”。
+15. 选择“**下一页**”。
 
 16. 在“连接摘要”中验证设置是否正确。  
 
@@ -277,7 +277,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 2. 选择“myResourceGroup”。
 
-3. 选择“删除资源组”  。
+3. 选择“删除资源组”。
 
 4. 在“键入资源组名称”中输入“myResourceGroup”。 
 

@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275876"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953043"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册 Web 应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "92275876"
 
 ## <a name="register-a-web-application"></a>注册 Web 应用程序
 
-要在 Azure AD B2C 租户中注册 Web 应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册 Web 应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92275876"
 1. 在“Azure AD B2C - 应用注册”页中，选择已创建的应用程序，例如 webapp1。
 1. 在左侧菜单中“管理”下，选择“证书和机密”。 
 1. 选择“新建客户端机密”。
-1. 在“说明”框中输入客户端机密的说明。 例如， *clientsecret1* 。
+1. 在“说明”框中输入客户端机密的说明。 例如，*clientsecret1*。
 1. 在“过期时间”下，选择机密持续生效的时间，然后选择“添加”。
 1. 记下机密的“值”。 在应用程序的代码中将此值用作应用程序机密。
 

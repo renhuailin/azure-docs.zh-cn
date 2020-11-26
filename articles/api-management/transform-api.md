@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010225"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>教程：转换和保护 API
 
@@ -58,7 +58,7 @@ ms.locfileid: "92108127"
 
 原始响应应类似于以下形式：
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="门户中的策略":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="原始 API 响应":::
 
 可以看到，响应包括“X-AspNet-Version”和“X-Powered-By”标头 。
 
@@ -67,12 +67,12 @@ ms.locfileid: "92108127"
 1. 选择“演示会议 API” > “设计” > “所有操作”  。
 4. 在“出站处理”部分，选择代码编辑器 (</>) 图标 。
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="门户中的策略" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="导航到出站策略" border="false":::
 
 1. 将光标置于“&lt;出站&gt;”元素内，然后选择上角的“显示片段” 。
 1. 在右侧窗口中的“转换策略”下，选择”设置 HTTP 标头”两次（以插入两个策略片段） 。
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="门户中的策略":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="设置 HTTP 标头策略":::
 
 1. 按如下所示修改 **\<outbound>** 代码：
 
@@ -81,7 +81,7 @@ ms.locfileid: "92108127"
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="门户中的策略":::
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="设置 HTTP 标头":::
 
 1. 选择“保存”。
 
@@ -98,7 +98,7 @@ ms.locfileid: "92108127"
 
     可以看到，响应包括原始后端 URL：
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="门户中的策略":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="响应中的原始 URL":::
 
 
 ### <a name="set-the-transformation-policy"></a>设置转换策略
@@ -117,7 +117,7 @@ ms.locfileid: "92108127"
 1.  在“入站处理”部分中，选择代码编辑器 (</>) 图标 。
 1.  将光标置于“&lt;&gt;”元素内，然后选择上角的“显示片段” 。
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="门户中的策略" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="设置入站策略" border="false":::
 
 1.  在右侧窗口中的“访问限制策略”下，选择“+ 限制每个键的调用速率” 。
 1.  将 rate-limit-by-key 代码（在 \<inbound\> 元素中）修改为以下代码 ：
@@ -160,7 +160,7 @@ ms.locfileid: "92108127"
 
     可以看到，标头已剥离：
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="门户中的策略":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="剥离的响应标头":::
 
 ### <a name="test-the-replaced-url"></a>测试替换 URL
 
@@ -169,7 +169,7 @@ ms.locfileid: "92108127"
 
     可以看到，URL 已替换。
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="门户中的策略":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="替换的 URL":::
 
 ### <a name="test-the-rate-limit-throttling"></a>测试速率限制（限制）
 
@@ -178,7 +178,7 @@ ms.locfileid: "92108127"
 
     发送请求 3 次之后，会收到“429 请求过多”响应。
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="门户中的策略":::
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="请求过多":::
 
 1. 等待大约 15 秒，然后再次选择“发送”。 此时应会收到“200 正常”响应。
 

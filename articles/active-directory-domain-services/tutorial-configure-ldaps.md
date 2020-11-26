@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
 ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994020"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -45,7 +45,7 @@ ms.locfileid: "91967471"
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 * 已计算机上安装 *LDP.exe* 工具。
-    * 如果需要，请为 *Active Directory 域服务和 LDAP* 安装[远程服务器管理工具 (RSAT)][rsat]。
+    * 如果需要，请为 *Active Directory 域服务和 LDAP* 安装 [远程服务器管理工具 (RSAT)][rsat]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -74,7 +74,7 @@ ms.locfileid: "91967471"
 
 在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。
 
-以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
+以 **管理员** 身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -111,7 +111,7 @@ Thumbprint                                Subject
     * 此私钥用于解密安全 LDAP 通信。 只能将私钥应用到托管域，而不应将其广泛分发到客户端计算机。
     * 包含私钥的证书使用 *.PFX* 文件格式。
     * 证书的加密算法必须是 TripleDES-SHA1。
-* **公钥**将应用到客户端计算机。
+* **公钥** 将应用到客户端计算机。
     * 此公钥用于加密安全 LDAP 通信。 公钥可分发到客户端计算机。
     * 不包含私钥的证书使用 *.CER* 文件格式。
 
@@ -202,7 +202,7 @@ Thumbprint                                Subject
     >
     > 请确保证书采用适当的格式。 否则，在启用安全 LDAP 时，Azure 平台会生成证书验证错误。
 
-1. 输入在上一步骤中将证书导出到 *.PFX* 文件时设置的**用于解密 .PFX 文件的密码**。
+1. 输入在上一步骤中将证书导出到 *.PFX* 文件时设置的 **用于解密 .PFX 文件的密码**。
 1. 选择“保存”以启用安全 LDAP。
 
     ![在 Azure 门户中为托管域启用安全 LDAP](./media/tutorial-configure-ldaps/enable-ldaps.png)

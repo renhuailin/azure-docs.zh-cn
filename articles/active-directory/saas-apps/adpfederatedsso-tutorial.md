@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308787"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998628"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP 集成
 
@@ -134,7 +134,7 @@ ms.locfileid: "92308787"
 
 ## <a name="configure-adp-sso"></a>配置 ADP SSO
 
-若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的**元数据 XML**。
+若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的 **元数据 XML**。
 
 > [!NOTE]  
 > 此过程可能需要几天时间。
@@ -195,7 +195,7 @@ ms.locfileid: "92308787"
 
         `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
 
-9. **保存**更改。
+9. **保存** 更改。
 
 10. 收到 ADP 代表的确认后，可以开始使用一个或两个用户进行测试。
 

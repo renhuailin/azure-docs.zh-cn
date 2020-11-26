@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018845"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -77,7 +77,7 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 ![选择“生成模板”][select-build-template]
 
-在“任务”中，输入 **Hosted VS2017** 作为**代理池**。 
+在“任务”中，输入 **Hosted VS2017** 作为 **代理池**。 
 
 ![选择“任务”][task-agent-pool]
 
@@ -93,7 +93,7 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 ![选择 Docker 推送映像][select-push-images]
 
-在“触发器”选项卡下，选中“启用持续集成”来启用持续集成。   在**分支筛选器**中，单击“+ 添加”  ，**分支规范**将默认为“主”  。
+在“触发器”选项卡下，选中“启用持续集成”来启用持续集成。   在 **分支筛选器** 中，单击“+ 添加”  ，**分支规范** 将默认为“主”  。
 
 在“保存生成管道和队列”对话框  中，单击“保存并排队”  以手动启动生成。
 
@@ -113,9 +113,9 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 在“添加新的 Service Fabric 连接”视图中，选择“基于证书的”或“Azure Active Directory”身份验证。     指定连接名称“mysftestcluster”和群集终结点“tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000”（或你要部署到的群集的终结点）。
 
-对于基于证书的身份验证，添加用来创建群集的服务器证书的**服务器证书指纹**。  在“客户端证书”中，添加客户端证书文件的 base-64 编码。  有关如何获取证书的 base-64 编码表示形式的信息，请参阅有关该字段的帮助弹出项。 还需要添加证书的**密码**。  如果没有单独的客户端证书，可以使用群集或服务器证书。
+对于基于证书的身份验证，添加用来创建群集的服务器证书的 **服务器证书指纹**。  在“客户端证书”中，添加客户端证书文件的 base-64 编码。  有关如何获取证书的 base-64 编码表示形式的信息，请参阅有关该字段的帮助弹出项。 还需要添加证书的 **密码**。  如果没有单独的客户端证书，可以使用群集或服务器证书。
 
-对于 Azure Active Directory 凭据，请添加用来创建群集的服务器证书的**服务器证书指纹**，并在“用户名”  和“密码”  字段中添加要用来连接到群集的凭据。
+对于 Azure Active Directory 凭据，请添加用来创建群集的服务器证书的 **服务器证书指纹**，并在“用户名”  和“密码”  字段中添加要用来连接到群集的凭据。
 
 单击“添加”  以保存群集连接。
 

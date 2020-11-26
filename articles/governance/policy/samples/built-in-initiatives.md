@@ -1,21 +1,21 @@
 ---
 title: 内置策略计划列表
 description: 列出 Azure Policy 的内置策略计划。 类别包括“合规性”、“来宾配置”等。
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: cf685f10ba27064e650070a5e0a7fc44104f0bea
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74ebf960933837953c0b279da14dbb17bd88b330
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311548"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986878"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy 内置计划定义
 
 此页是 Azure Policy 内置计划定义的索引。
 
-每个内置项的名称会链接到 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中的计划定义源。 这些内置项按**元数据**中的 **category** 属性进行分组。 若要跳转到特定的**类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
+每个内置项的名称会链接到 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中的计划定义源。 这些内置项按 **元数据** 中的 **category** 属性进行分组。 若要跳转到特定的 **类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

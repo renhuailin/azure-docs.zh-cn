@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061592"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542807"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>教程：将 Azure SQL 数据库资源移动到其他区域
 
@@ -43,22 +43,22 @@ ms.locfileid: "90061592"
 -  检查以确定你对包含要移动的资源的订阅具有“所有者”访问权限。
     - 首次为 Azure 订阅中的特定源和目标对添加资源时，资源转移器将创建受订阅信任的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)（以前称为托管服务标识 (MSI)）。
     - 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 验证与要将资源移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
     
 
 ## <a name="check-sql-requirements"></a>查看 SQL 需求
 
 1. [查看](support-matrix-move-region-sql.md)移动到其他区域时支持哪些数据库/弹性池功能。
-2. 在目标区域中，为每个源服务器创建目标服务器。 [了解详细信息](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users)。
+2. 在目标区域中，为每个源服务器创建目标服务器。 [了解详细信息](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users)。
 4. 如果数据库使用透明数据加密 (TDE) 进行加密，并且你在 Azure Key Vault 中使用自己的加密密钥，请[了解如何](../key-vault/general/move-region.md)将密钥保管库移动到其他区域。
 5. 如果启用了 SQL 数据同步，则支持移动成员数据库。 移动后，需要将 SQL 数据同步设置为新的目标数据库。
-6. 在移动前删除高级数据安全设置。 移动后，在目标区域的 SQL Server 级别[配置设置](/azure/sql-database/sql-database-advanced-data-security)。
-7. 如果启用审核，策略在移动后将重置为默认值。 移动后，请再次[设置审核](/azure/sql-database/sql-database-auditing)。
-7. 源数据库的备份保留策略将转移到目标数据库。 [详细了解](/azure/sql-database/sql-database-long-term-backup-retention-configure )如何在移动后修改设置。
-8. 在移动之前删除服务器级防火墙规则。 在移动过程中，数据库级防火墙规则将从源服务器复制到目标服务器。 移动后，在目标区域中为 SQL Server [设置防火墙规则](/azure/sql-database/sql-database-server-level-firewall-rule)。
-9. 在移动前删除自动优化设置。 移动后再次[设置自动优化](/azure/sql-database/sql-database-automatic-tuning-enable)。
-10. 在移动前删除数据库警报设置。 移动后[重置](/azure/sql-database/sql-database-insights-alerts-portal)。
+6. 在移动前删除高级数据安全设置。 移动后，在目标区域的 SQL Server 级别[配置设置](../azure-sql/database/azure-defender-for-sql.md)。
+7. 如果启用审核，策略在移动后将重置为默认值。 移动后，请再次[设置审核](../azure-sql/database/auditing-overview.md)。
+7. 源数据库的备份保留策略将转移到目标数据库。 [详细了解](../azure-sql/database/long-term-backup-retention-configure.md)如何在移动后修改设置。
+8. 在移动之前删除服务器级防火墙规则。 在移动过程中，数据库级防火墙规则将从源服务器复制到目标服务器。 移动后，在目标区域中为 SQL Server [设置防火墙规则](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)。
+9. 在移动前删除自动优化设置。 移动后再次[设置自动优化](../azure-sql/database/automatic-tuning-enable.md)。
+10. 在移动前删除数据库警报设置。 移动后[重置](../azure-sql/database/alerts-insights-configure-portal.md)。
     
 ## <a name="select-resources"></a>选择资源
 

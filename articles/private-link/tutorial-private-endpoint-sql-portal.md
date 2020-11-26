@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145661"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522152"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure 门户
 
@@ -224,7 +224,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     将为 SQL 服务器名称返回专用 IP 地址 10.1.0.5。  此地址位于你之前创建的虚拟网络的子网中。
 
 
-9. 在 myVM 上安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true)。
+9. 在 myVM 上安装 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017)。
 
 10. 打开 SQL Server Management Studio  。
 

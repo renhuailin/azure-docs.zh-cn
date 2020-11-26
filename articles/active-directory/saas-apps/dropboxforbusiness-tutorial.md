@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: bf86656ff670df19162867d597a869d762a012e8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019338"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教程：将 Dropbox Business 与 Azure Active Directory 集成
 
@@ -177,7 +177,7 @@ ms.locfileid: "92454550"
 
     d. 单击“复制链接”，并将复制的值粘贴到 Azure 门户上“Dropbox Business 域和 URL”部分的“登录 URL”文本框中  。
 
-    e. 单击“ **保存** ”。
+    e. 单击“ **保存**”。
 
 ### <a name="create-dropbox-business-test-user"></a>创建 Dropbox Business 测试用户
 

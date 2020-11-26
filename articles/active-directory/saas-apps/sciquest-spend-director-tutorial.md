@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a828f945c459142febbc2cee7a14d40a3d534435
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>教程：Azure Active Directory 与 SciQuest Spend Director 集成
 

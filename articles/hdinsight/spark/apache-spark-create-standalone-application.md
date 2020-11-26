@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
 ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539439"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023987"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
@@ -66,12 +66,12 @@ ms.locfileid: "92539439"
 3. 在主窗口中选择“Spark 项目(Scala)”。
 
 4. 从“生成工具”下拉列表中，选择以下值之一：
-      * **Maven** ：支持 Scala 项目创建向导。
-      * **SBT** ：用于管理依赖项和生成 Scala 项目。
+      * **Maven**：支持 Scala 项目创建向导。
+      * **SBT**：用于管理依赖项和生成 Scala 项目。
 
    ![IntelliJ“新建项目”对话框](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
-5. 选择“ **下一页** ”。
+5. 选择“**下一页**”。
 
 6. 在“新建项目”窗口中提供以下信息：  
 
@@ -100,7 +100,7 @@ ms.locfileid: "92539439"
 
     ![屏幕截图显示了“新建项目”窗口中的所选原型。](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
-6. 选择“ **下一页** ”。
+6. 选择“**下一页**”。
 
 7. 展开“项目坐标”。 提供 **GroupId** 和 **ArtifactId** 的相关值。 “名称”和“位置”将自动填充。 本教程涉及以下值：
 
@@ -109,7 +109,7 @@ ms.locfileid: "92539439"
 
     ![屏幕截图显示了“新建项目”窗口中的“项目坐标”选项。](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
-8. 选择“ **下一页** ”。
+8. 选择“**下一页**”。
 
 9. 验证设置，并选择“下一步”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "92539439"
 
 若要在群集上运行应用程序，可以使用以下方法：
 
-* **将应用程序 jar 复制到与群集关联的 Azure 存储 blob** 。 可以使用命令行实用工具 AzCopy 来执行此操作。 也可以使用许多其他客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
+* **将应用程序 jar 复制到与群集关联的 Azure 存储 blob**。 可以使用命令行实用工具 AzCopy 来执行此操作。 也可以使用许多其他客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
 
 * **使用 Apache Livy 将应用程序作业远程提交** 到 Spark 群集。 HDInsight 上的 Spark 群集包括公开 REST 终结点的 Livy，可远程提交 Spark 作业。 有关详细信息，请参阅[将 Apache Livy 与 HDInsight 上的 Apache Spark 群集配合使用以远程提交 Spark 作业](apache-spark-livy-rest-interface.md)。
 
@@ -221,7 +221,7 @@ ms.locfileid: "92539439"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight** 。
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
 
 1. 选择“服务”下的“HDInsight 群集” 。
 
