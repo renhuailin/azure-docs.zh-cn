@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 2e183ad8a6e25c12f073f51e9416b4fc0ed9365f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530397"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186382"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -41,7 +41,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure 经典部署模型
 用于在 Azure 中部署资源的两个[部署模型](./azure-resource-manager/management/deployment-models.md)中的一个（新模型是 Azure Resource Manager）。 有些 Azure 服务仅支持资源管理器部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
@@ -58,7 +58,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="fault-domain"></a>容错域
 可用性集中可能会同时发生故障的虚拟机集合。 一个例子是机架中共用一个电源和网络交换机的计算机组。 在 Azure 中，可用性集内的虚拟机自动分布在多个容错域中。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)或[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)  
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
 ## <a name="geo"></a>地区
 针对数据驻留位置定义的边界，通常包含两个或更多个区域。 边界可能在国界内或超出国界，并受到税法影响。 每个地区至少有一个区域。 地区的示例包括亚太区和日本。 也称为 *地理位置*。  
@@ -135,7 +135,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="update-domain"></a>更新域
 可用性集中可同时更新的虚拟机集合。 同一个更新域中的虚拟机会在计划维护期间一起重新启动。 Azure 永远不会一次性重新启动多个更新域。 也称为升级域。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-machine"></a><a name="vm"></a>虚拟机
 运行操作系统的物理计算机的软件实现。 多个虚拟机可以在同一个硬件上同时运行。 在 Azure 中，虚拟机具有不同的大小。  
@@ -144,7 +144,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>虚拟机扩展
 一个实现行为或功能的资源，可帮助其他程序正常工作，或提供与运行中计算机交互的能力。 例如，可以使用 VM 访问扩展来重置或修改 Azure 虚拟机上的远程访问值。
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-请参阅[关于虚拟机扩展和功能 (Windows)](./virtual-machines/extensions/features-windows.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) 或[关于虚拟机扩展和功能 (Linux)](./virtual-machines/extensions/features-linux.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+请参阅[关于虚拟机扩展和功能 (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或[关于虚拟机扩展和功能 (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-network"></a><a name="vnet"></a>虚拟网络
 在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 使用 [Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，可以在虚拟网络之间以及虚拟网络与本地网络之间建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  

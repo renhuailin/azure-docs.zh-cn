@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f2221ad10a2e07a3443cab9f957c8ec26969a3b
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031149"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185073"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -25,7 +25,7 @@ ms.locfileid: "96031149"
 
 本文概述如何使用 Azure release 管道将 Synapse 工作区自动部署到多个环境。
 
-## <a name="pre-requirements"></a>预先要求
+## <a name="prerequisites"></a>先决条件
 
 -   用于开发的工作区已在 Studio 中使用 Git 存储库进行配置，请参阅 [Synapse Studio 中的源代码管理](source-control.md)。
 -   Azure DevOps 项目已准备好运行发布管道。
@@ -82,7 +82,7 @@ ms.locfileid: "96031149"
     
     ![工作区和池部署](media/pools-resource-deploy.png)
 
-1.  (可选) 添加 "授予和更新" 工作区角色分配的 **Azure PowerShell** 。 如果使用 release 管道创建 Synapse 工作区，则需要将管道的服务主体添加为默认工作区管理员。您可以运行 PowerShell 来向其他帐户授予对工作区的访问权限。 
+1.  (可选) 添加 "授予和更新" 工作区角色分配的 **Azure PowerShell** 。 如果使用 release 管道创建 Synapse 工作区，则会将管道的服务主体添加为默认工作区管理员。您可以运行 PowerShell 来向其他帐户授予对工作区的访问权限。 
     
     ![授予权限](media/release-creation-grant-permission.png)
 
@@ -115,12 +115,8 @@ ms.locfileid: "96031149"
 如果使用的是 Git 与 Synapse 工作区的集成，并且具有 CI/CD 管道，将所做的更改从开发环境移到测试，然后再移到生产环境，我们建议采用以下最佳做法：
 
 -   **Git 集成**。 仅配置带有 Git 集成的开发 Synapse 工作区。 对测试和生产工作区的更改是通过 CI/CD 部署的，无需 Git 集成。
--   **在项目迁移之前准备池**。 如果将池附加到开发工作区中的 SQL 脚本或笔记本，则需要在不同环境中具有相同的池名称。 
--   **其他**。 查看 [其他最佳做法](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
+-   **在项目迁移之前准备池**。 如果已将 SQL 脚本或笔记本附加到开发工作区中的池，则需要在不同环境中使用相同的池名称。 
+-   **作为代码的基础结构 (IaC)**。 在描述性模型中管理基础结构 (网络、虚拟机、负载均衡器和连接) 拓扑，并使用与 DevOps 团队用于源代码的相同版本控制。 
+-   **其他**。 请参阅 [ADF 项目的最佳实践](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
 
-## <a name="unsupported-features"></a>不支持的功能
-
-- Synapse Studio 不允许挑拣提交或选择性地发布资源。 
-- Synapse Studio 不支持自定义提交消息。
-- 按照设计，删除操作将直接提交给 git
 

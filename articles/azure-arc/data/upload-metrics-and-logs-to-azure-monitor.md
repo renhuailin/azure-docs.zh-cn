@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: c333b95ed762c905511ab1d4a84050d50f0e023c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371318"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183424"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
@@ -63,7 +63,7 @@ az provider register -n Microsoft.AzureData --wait
 按照以下命令创建指标上载服务主体：
 
 > [!NOTE]
-> 若要创建服务主体，需要 [在 Azure 中具有特定权限](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)。
+> 若要创建服务主体，需要 [在 Azure 中具有特定权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 若要创建服务主体，请更新以下示例。 `<ServicePrincipalName>`将替换为服务主体的名称，并运行以下命令：
 

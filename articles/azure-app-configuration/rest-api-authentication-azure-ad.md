@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 78344bd3896ca7d00c9f761c586b6f5142dc1e58
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 73d951b3e85c170cf068693bb9b374349516ca8f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253399"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183475"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory 身份验证
 
@@ -38,7 +38,7 @@ Authorization: Bearer {{AadToken}}
 
 在获取 Azure AD 令牌之前，你必须确定你要进行身份验证的用户、你请求令牌的用户以及要使用的 Azure AD 终结点 () 颁发者。
 
-### <a name="audience"></a>读者
+### <a name="audience"></a>目标受众
 
 使用适当的受众请求 Azure AD 令牌。 对于 Azure 应用配置，请使用以下访问群体之一。 还可以将受众称为请求令牌的 *资源* 。
 
@@ -54,7 +54,7 @@ Azure AD 机构是用于获取 Azure AD 令牌的终结点。 其形式为 `http
 
 ### <a name="authentication-libraries"></a>身份验证库
 
-Azure 提供一组称为 Azure Active Directory 身份验证库的库，用于简化获取 Azure AD 令牌的过程。 Azure 为多种语言构建这些库。 有关详细信息，请参阅[本文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)。
+Azure 提供一组称为 Azure Active Directory 身份验证库的库，用于简化获取 Azure AD 令牌的过程。 Azure 为多种语言构建这些库。 有关详细信息，请参阅[本文档](../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="errors"></a>错误
 

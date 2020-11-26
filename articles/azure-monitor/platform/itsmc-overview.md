@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428004"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186484"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -50,17 +50,17 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 你需要添加 ITSMC，然后才能创建连接。
 
-1. 在 Azure 门户中，选择 " **创建资源** "：
+1. 在 Azure 门户中，选择 " **创建资源**"：
 
    ![显示 "创建资源" 菜单项的屏幕截图。](media/itsmc-overview/azure-add-new-resource.png)
 
-2. 在 Azure Marketplace 中搜索 **IT 服务管理连接器** 。 选择 " **创建** "：
+2. 在 Azure Marketplace 中搜索 **IT 服务管理连接器** 。 选择 " **创建**"：
 
    ![屏幕截图，显示 Azure Marketplace 中的 "创建" 按钮。](media/itsmc-overview/add-itsmc-solution.png)
 
 3. 在 " **OMS 工作区** " 部分中，选择要在其中安装 ITSMC 的 Azure Log Analytics 工作区。
    >[!NOTE]
-   > * 作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区* 。
+   > * 作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
    > * ITSMC 只能安装在以下区域 Log Analytics 工作区中：美国东部、美国西部2、美国中南部、美国西部、US Gov 亚利桑那州、US Gov 弗吉尼亚州、加拿大中部、西欧、东南亚、东南亚、日本东部、印度中部、东南亚、日本东部、印度中部、澳大利亚东南部和澳大利亚东南部。
 
 
@@ -68,7 +68,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
    ![显示 "Log Analytics 工作区" 部分的屏幕截图。](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区* 。
+   >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
 
 5. 选择“确定”。
 
@@ -90,15 +90,15 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 准备好 ITSM 工具后，请完成以下步骤以创建连接：
 
-1. 在 " **所有资源** " 中，查找 **ServiceDesk ( *你的工作区名称* )** ：
+1. 在 " **所有资源**" 中，查找 **ServiceDesk (*你的工作区名称*)**：
 
    ![显示 Azure 门户中最近的资源的屏幕截图。](media/itsmc-overview/itsm-connections.png)
 
-1. 在左侧窗格中的 " **工作区数据源** " 下，选择 " **ITSM 连接** ：
+1. 在左侧窗格中的 " **工作区数据源** " 下，选择 " **ITSM 连接**：
 
    ![显示 ITSM 连接菜单项的屏幕截图。](media/itsmc-overview/add-new-itsm-connection.png)
    此页显示连接列表。
-1. 选择 " **添加连接** "。
+1. 选择 " **添加连接**"。
 
 4. 按照为 [ITSM 产品/服务配置 ITSMC 连接](./itsmc-connections.md)中所述指定连接设置。
 
@@ -128,26 +128,26 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 使用以下过程来创建工作项：
 
-1. 在 Azure 门户中，选择 "  **警报** "。
-2. 在屏幕顶部的菜单中，选择 " **管理操作** "：
+1. 在 Azure 门户中，选择 "  **警报**"。
+2. 在屏幕顶部的菜单中，选择 " **管理操作**"：
 
     ![显示 "管理操作" 菜单项的屏幕截图。](media/itsmc-overview/action-groups-selection-big.png)
 
    此时将显示 " **创建操作组** " 窗口。
 
-3. 选择要在其中创建操作组的 **订阅** 和 **资源组** 。 为操作组提供 " **操作组名称** " 和 " **显示名称** "。 选择 " **下一步：通知** "。
+3. 选择要在其中创建操作组的 **订阅** 和 **资源组** 。 为操作组提供 " **操作组名称** " 和 " **显示名称** "。 选择 " **下一步：通知**"。
 
     ![显示 "创建操作组" 窗口的屏幕截图。](media/itsmc-overview/action-groups-details.png)
 
-4. 在通知列表中，选择 " **下一步：操作** "。
-5. 在 "操作" 列表中，选择 " **操作类型** " 列表中的 **ITSM** 。 提供操作的 **名称** 。 选择表示 **编辑详细信息** 的笔按钮。
+4. 在通知列表中，选择 " **下一步：操作**"。
+5. 在 "操作" 列表中，选择 "**操作类型**" 列表中的 **ITSM** 。 提供操作的 **名称** 。 选择表示 **编辑详细信息** 的笔按钮。
 6. 在 " **订阅** " 列表中，选择 Log Analytics 工作区所在的订阅。 在 " **连接** " 列表中，选择 ITSM 连接器名称。 后跟工作区名称。 例如，MyITSMConnector (MyWorkspace) 。
 
 7. 选择 **工作项** 类型。
 
-8. 如果要使用固定值填写现成字段，请选择 " **使用自定义模板** "。 否则，请在 " **模板** " 列表中选择现有 [模板](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)，然后在模板字段中输入固定值。
+8. 如果要使用固定值填写现成字段，请选择 " **使用自定义模板**"。 否则，请在 "**模板**" 列表中选择现有 [模板](#template-definitions)，然后在模板字段中输入固定值。
 
-9. 如果 **为每个配置项目选择 "创建单独的工作项** "，则每个配置项都将有自己的工作项。 每个配置项目都有一个工作项。 它将根据将要创建的警报进行更新。
+9. 如果 **为每个配置项目选择 "创建单独的工作项**"，则每个配置项都将有自己的工作项。 每个配置项目都有一个工作项。 它将根据将要创建的警报进行更新。
 
    * 在工作项下拉列表中选择 "事件" 或 "警报"：如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报都将创建一个新的工作项。 每个配置项目可能有多个警报。
 
@@ -319,7 +319,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
 -   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
--   如果在运行 [脚本](itsmc-service-manager-script.md)时， **未将对象引用设置为对象** 错误的实例，请确保在 " **用户配置** " 部分中输入了有效值。
+-   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
 -   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections.md#configure-the-hybrid-connection) 时，还可以创建它。
 
 
@@ -329,4 +329,3 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="next-steps"></a>后续步骤
 [将 ITSM 产品/服务添加到 IT 服务管理连接器](./itsmc-connections.md)
-

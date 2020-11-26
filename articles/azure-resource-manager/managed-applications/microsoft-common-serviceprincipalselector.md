@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745748"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184444"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft.Common.ServicePrincipalSelector UI 元素
 
-允许用户选择现有 [服务主体](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) 或注册新应用程序的控件。 选择 " **新建**" 时，请按照步骤注册新的应用程序。 选择现有应用程序时，此控件将提供一个文本框，用于输入密码或证书指纹。
+允许用户选择现有 [服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 或注册新应用程序的控件。 选择 " **新建**" 时，请按照步骤注册新的应用程序。 选择现有应用程序时，此控件将提供一个文本框，用于输入密码或证书指纹。
 
 ## <a name="ui-samples"></a>UI 示例
 

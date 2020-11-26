@@ -4,12 +4,12 @@ description: Azure 中的警报概述。 警报、经典警报和警报界面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d0f71ebf8a7acab6d4b46f59049bf1efd5290284
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536041"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186637"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -84,7 +84,7 @@ ms.locfileid: "95536041"
 
 *警报状态* 不同于且独立于 *监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当触发警报时，警报的监视条件设置为“已触发”，当导致警报触发的基础条件解除后，监视条件会设置为“已解决” 。 
 
-在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
+在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ## <a name="alerts-experience"></a>警报体验 
 默认的“警报”页提供特定时间范围内创建的警报的摘要。 该页显示每种严重性的警报总数，列中会标识处于每种状态的、具有每种严重性的警报总数。 选择任一严重性可打开按该严重性筛选的“[所有警报](#all-alerts-page)”页。
@@ -204,12 +204,12 @@ ms.locfileid: "95536041"
 
 ## <a name="smart-groups"></a>智能组
 
-智能组是根据机器学习算法对警报进行的聚合。这些算法有助于降低警报噪音，对故障排除也有帮助。 [详细了解智能组](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)和[如何管理智能组](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
+智能组是根据机器学习算法对警报进行的聚合。这些算法有助于降低警报噪音，对故障排除也有帮助。 [详细了解智能组](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)和[如何管理智能组](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解智能组](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [详细了解智能组](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 - [了解操作组](./action-groups.md)
-- [在 Azure 中管理警报实例](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [Managing Smart Groups](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)（管理智能组）
+- [在 Azure 中管理警报实例](./alerts-managing-alert-instances.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [Managing Smart Groups](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)（管理智能组）
 - [详细了解 Azure 警报定价](https://azure.microsoft.com/pricing/details/monitor/)

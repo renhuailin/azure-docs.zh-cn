@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842288"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186059"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](./itsmc-overview.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "94842288"
 > [!NOTE]
 > 
 > - ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
-> - 为了使用自定义 [模板](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
+> - 为了使用自定义 [模板](./itsmc-overview.md#template-definitions) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
 
 ### <a name="connection-procedure"></a>连接过程
 
@@ -432,4 +432,3 @@ ms.locfileid: "94842288"
 
 ## <a name="next-steps"></a>后续步骤
  - [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
-

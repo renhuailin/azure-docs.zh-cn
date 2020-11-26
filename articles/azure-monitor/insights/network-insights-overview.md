@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030138"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184631"
 ---
 # <a name="azure-monitor-for-networks"></a>用于网络的 Azure Monitor
 Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../platform/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-preview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
@@ -119,11 +119,11 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 若要了解如何对通过 Azure 网络监视器识别的与网络相关的任何问题进行故障排除，请参阅发生故障的资源的相关故障排除文档。 
 
 下面是一些常用服务的相关故障排除文章的链接。 更多有关这些服务的故障排除文章，请参阅相关服务的目录的“故障排除”部分中的其他文章。
-* [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-peering-issues)
-* [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/create-gateway-internal-load-balancer-app-service-environment)
-* [Azure VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot)
-* [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-expressroute-overview) 
-* [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot) 
+* [Azure 虚拟网络](../../virtual-network/virtual-network-troubleshoot-peering-issues.md)
+* [Azure 应用程序网关](../../application-gateway/create-gateway-internal-load-balancer-app-service-environment.md)
+* [Azure VPN 网关](../../vpn-gateway/vpn-gateway-troubleshoot.md)
+* [Azure ExpressRoute](../../expressroute/expressroute-troubleshooting-expressroute-overview.md) 
+* [Azure 负载均衡器](../../load-balancer/load-balancer-troubleshoot.md) 
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>为什么我看不到所选择的所有订阅的资源？
 

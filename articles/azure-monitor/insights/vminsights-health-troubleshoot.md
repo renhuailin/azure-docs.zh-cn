@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 048230bb85d2ac599efc6bd3fb326f98038cce57
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2aa83a861697882127c75eb696807f604c3061f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686703"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184546"
 ---
 # <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>用于 VM 的 Azure Monitor 来宾健康状况 (预览版疑难解答) 
 本文介绍在用于 VM 的 Azure Monitor 运行状况问题时可以采取的故障排除步骤。
@@ -42,7 +42,7 @@ ms.locfileid: "94686703"
 验证指定 health extension 作为数据源的数据收集规则是否与该虚拟机关联。
 
 ## <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>由于权限不足而导致错误请求的错误消息
-此错误表示未在订阅中注册 **WorkloadMonitor** 资源提供程序。 有关注册此资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider) 。 
+此错误表示未在订阅中注册 **WorkloadMonitor** 资源提供程序。 有关注册此资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 
 
 ![错误的请求](media/vminsights-health-troubleshoot/bad-request.png)
 

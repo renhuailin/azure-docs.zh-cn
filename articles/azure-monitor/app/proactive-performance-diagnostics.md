@@ -4,12 +4,12 @@ description: Application Insights 执行应用遥测的智能分析，并在有�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321303"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186229"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -75,7 +75,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换[指标警报](../platform/alerts-log.md)？*
+* *那么这是否会替换 [指标警报](../platform/alerts-log.md)？*
   * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
@@ -99,10 +99,10 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 打开“浏览器”指标边栏选项卡。 浏览器页面加载时间的分段显示会显示时间的进展如何。 
 
-* 如果**发送请求时间**过高，则服务器响应速度缓慢，或者请求是包含大量数据的 post 请求。 查看[性能指标](./web-monitor-performance.md#metrics)以调查响应时间。
+* 如果 **发送请求时间** 过高，则服务器响应速度缓慢，或者请求是包含大量数据的 post 请求。 查看[性能指标](./web-monitor-performance.md#metrics)以调查响应时间。
 * 设置[依赖项跟踪](./asp-net-dependencies.md)以查看缓慢是否由于外部服务或数据库引起的。
-* 如果**接收响应**占主导地位，则页面及其依赖部分（JavaScript、CSS、图像等（但并非异步加载的数据））较长。 设置[可用性测试](./monitor-web-app-availability.md)，并确保设置用于加载依赖部分的选项。 当获得一些结果时，打开某一结果的详细信息，展开它以查看不同文件的加载时间。
-* 高**客户端处理时间**表明脚本运行缓慢。 如果原因并不明显，请考虑添加一些计时代码并发送 trackMetric 调用中的时间。
+* 如果 **接收响应** 占主导地位，则页面及其依赖部分（JavaScript、CSS、图像等（但并非异步加载的数据））较长。 设置[可用性测试](./monitor-web-app-availability.md)，并确保设置用于加载依赖部分的选项。 当获得一些结果时，打开某一结果的详细信息，展开它以查看不同文件的加载时间。
+* 高 **客户端处理时间** 表明脚本运行缓慢。 如果原因并不明显，请考虑添加一些计时代码并发送 trackMetric 调用中的时间。
 
 ### <a name="improve-slow-pages"></a>改进缓慢的页面
 存在其上充满关于改进服务器响应和页面加载时间的建议的 Web，因此我们不尝试在此处全都重复一遍。 以下是一些你可能已经知道的提示，仅供考虑：
@@ -175,11 +175,10 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [探查器](profiler.md) 
 * [快照调试器](./snapshot-debugger.md)
-* [分析](../log-query/get-started-portal.md)
+* [分析](../log-query/log-analytics-tutorial.md)
 * [分析智能诊断](../log-query/log-query-overview.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
 * [手动配置的指标警报](../platform/alerts-log.md)
 * [可用性 Web 测试](./monitor-web-app-availability.md)
-

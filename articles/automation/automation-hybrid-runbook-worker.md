@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea2b8deb07a899ab35ddd761df3e3ddb413dd45d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509076"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183764"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -29,7 +29,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 混合 Runbook 辅助角色可在 Windows 或 Linux 操作系统上运行，并且此角色依赖于 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md) 向 Azure Monitor [Log Analytics 工作区](../azure-monitor/platform/design-logs-deployment.md)进行报告。 工作区不仅用于监视计算机是否支持受支持的操作系统，还可以下载安装混合 Runbook 辅助角色所需的组件。
 
-启用 Azure 自动化 [更新管理](update-management/update-mgmt-overview.md) 后，任何连接到 Log Analytics 工作区的计算机都会自动配置为系统混合 Runbook 辅助角色。
+启用 Azure 自动化 [更新管理](./update-management/overview.md) 后，任何连接到 Log Analytics 工作区的计算机都会自动配置为系统混合 Runbook 辅助角色。
 
 每个用户混合 Runbook 辅助角色都是你在安装辅助角色时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含单个辅助角色，但可以在一个组中包含多个辅助角色以实现高可用性。 每台计算机都可以将一个混合 Runbook 辅助角色报告托管到一个自动化帐户;不能跨多个自动化帐户注册混合辅助角色。 这是因为混合辅助角色只能侦听单个自动化帐户中的作业。 对于托管由更新管理管理的系统混合 Runbook 辅助角色的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须同时对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
 
@@ -99,7 +99,7 @@ Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，�
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 
-除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还具有 " [网络规划](update-management/update-mgmt-overview.md#ports) " 部分中描述的其他网络配置要求。
+除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还具有 " [网络规划](./update-management/overview.md#ports) " 部分中描述的其他网络配置要求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Azure Automation State Configuration
 

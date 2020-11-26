@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371577"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184036"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -25,11 +25,11 @@ ms.locfileid: "87371577"
 > [!NOTE]
 > 在完全模式下部署模板之前，请始终使用 [what-if 操作](template-deploy-what-if.md)。 如果显示哪些资源将被创建、删除或修改。 使用 what-if 以避免意外删除资源。
 
-如果模板包含由于[条件](conditional-resource-deployment.md)的计算结果为 false 而未部署的资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则**不会删除**该资源。 如果使用 2019-05-10 或更高版本，则**会删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 会删除该资源。
+如果模板包含由于[条件](conditional-resource-deployment.md)的计算结果为 false 而未部署的资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则 **不会删除** 该资源。 如果使用 2019-05-10 或更高版本，则 **会删除** 该资源。 最新版本的 Azure PowerShell 和 Azure CLI 会删除该资源。
 
 将完整模式与[复制循环](copy-resources.md)一起使用时要小心。 在解析复制循环后会删除模板中未指定的任何资源。
 
-如果部署到[模板中的多个资源组](cross-scope-deployment.md)，则可以删除部署操作中指定的资源组中的资源。 辅助资源组中的资源不会被删除。
+如果部署到[模板中的多个资源组](./deploy-to-resource-group.md)，则可以删除部署操作中指定的资源组中的资源。 辅助资源组中的资源不会被删除。
 
 资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。
 
@@ -49,7 +49,7 @@ ms.locfileid: "87371577"
 
 ## <a name="incremental-mode"></a>增量模式
 
-在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源****。 模板中的资源添加到资源组。****
+在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。 模板中的资源添加到资源组。
 
 > [!NOTE]
 > 在增量模式下重新部署现有资源时，所有属性都将重新应用。 **属性不会以增量方式添加**。 一个常见的误解是认为未在模板中指定的属性会保持不变。 如果未指定某些属性，资源管理器会将部署解释为覆盖这些值。 未包含在模板中的属性将重置为默认值。 指定资源的所有非默认值，而不仅仅是要更新的属性。 模板中的资源定义始终包含资源的最终状态。 它不能表示对现有资源的部分更新。
@@ -60,26 +60,26 @@ ms.locfileid: "87371577"
 
 为了说明增量模式和完整模式的差异，请考虑以下方案。
 
-**资源组**包含：
+**资源组** 包含：
 
 * 资源 A
 * 资源 B
 * 资源 C
 
-**模板**包含：
+**模板** 包含：
 
 * 资源 A
 * 资源 B
 * 资源 D
 
-在“增量”模式下部署时，资源组具有：****
+在“增量”模式下部署时，资源组具有：
 
 * 资源 A
 * 资源 B
 * 资源 C
 * 资源 D
 
-在“完整”模式下部署时，会删除资源 C。**** 资源组具有：
+在“完整”模式下部署时，会删除资源 C。 资源组具有：
 
 * 资源 A
 * 资源 B

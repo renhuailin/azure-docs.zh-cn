@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772798"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186076"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
 活动日志是 Azure 中的一种[平台日志](platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
@@ -60,7 +60,7 @@ ms.locfileid: "91772798"
 
 [创建诊断设置](diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要 [Azure Lighthouse](../../lighthouse/index.yml)。
 
-Log Analytics 工作区中的活动日志数据存储在名为 AzureActivity 的表中，可以在 [Log Analytics](../log-query/get-started-portal.md) 中使用[日志查询](../log-query/log-query-overview.md)来检索该表。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
+Log Analytics 工作区中的活动日志数据存储在名为 AzureActivity 的表中，可以在 [Log Analytics](../log-query/log-analytics-tutorial.md) 中使用[日志查询](../log-query/log-query-overview.md)来检索该表。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
 
 例如，若要查看每个类别的活动日志记录计数，请使用以下查询。
 
@@ -199,7 +199,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -242,7 +242,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
@@ -259,7 +259,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 1. 在工作区的菜单的“工作区数据源”部分，选择“Azure 活动日志”。 
 1. 单击要连接的订阅。
 
-    ![屏幕截图显示已选择 Azure 活动日志 Log Analytics 工作区。](media/activity-log-collect/workspaces.png)
+    ![屏幕截图显示了 Log Analytics 工作区，其中的一个 Azure 活动日志处于选中状态。](media/activity-log-collect/workspaces.png)
 
 1. 单击“连接”，将订阅中的活动日志连接到所选工作区。 如果订阅已连接到其他工作区，请先单击“断开连接”将其断开连接。
 

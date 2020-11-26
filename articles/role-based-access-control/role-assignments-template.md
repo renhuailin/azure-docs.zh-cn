@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 563cd14d0eccdbe6d91ae09029da766dacbceb87
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184274"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -380,7 +380,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 - [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>后续步骤
@@ -388,4 +388,4 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=rbac)

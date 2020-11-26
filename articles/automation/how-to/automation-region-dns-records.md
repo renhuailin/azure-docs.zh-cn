@@ -3,14 +3,14 @@ title: Azure 自动化使用的 azure 数据中心 DNS 记录 |Microsoft Docs
 description: 本文提供 Azure 自动化功能在限制与托管该自动化帐户的特定 Azure 区域的通信时所需的 DNS 记录。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117180"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183713"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation 使用的 Azure 区域的 DNS 记录
 
@@ -76,7 +76,7 @@ ms.locfileid: "87117180"
 | 英国南部 |`https://<accountId>.webhook.uks.azure-automation.net`<br>`https://<accountId>.agentsvc.uks.azure-automation.net`<br>`https://<accountId>.jrds.uks.azure-automation.net` |
 | 法国中部 |`https://<accountId>.webhook.fc.azure-automation.net`<br>`https://<accountId>.agentsvc.fc.azure-automation.net`<br>`https://<accountId>.jrds.fc.azure-automation.net` |
 | 南非北部 |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
-| 巴西南部 |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
+| Brazil South |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
 | 中国北部 |`https://<accountId>.webhook.bjb.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjb.azure-automation.cn`<br>`https://<accountId>.jrds.bjb.azure-automation.cn` |
 | 中国北部 2 |`https://<accountId>.webhook.bjs2.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjs2.azure-automation.cn`<br>`https://<accountId>.jrds.bjs2.azure-automation.cn` |
 | 中国东部 2 |`https://<accountId>.webhook.sha2.azure-automation.cn`<br>`https://<accountId>.agentsvc.sha2.azure-automation.cn`<br>`https://<accountId>.jrds.sha2.azure-automation.cn` |
@@ -84,11 +84,14 @@ ms.locfileid: "87117180"
 | US Gov 德克萨斯州 |`https://<accountId>.webhook.ussc.azure-automation.us`<br>`https://<accountId>.agentsvc.ussc.azure-automation.us`<br>`https://<accountId>.jrds.ussc.azure-automation.us` |
 | US Gov 亚利桑那州 |`https://<accountId>.webhook.phx.azure-automation.us`<br>`https://<accountId>.agentsvc.phx.azure-automation.us`<br>`https://<accountId>.jrds.phx.azure-automation.us` |
 
-`<accountId>`在 DNS 记录中用 GUID 替换值**URL**中的自动化帐户 ID。 你可以从 "**帐户设置**" 下**的 "Azure 门户**" 中获取所需的 ID。
+`<accountId>`在 DNS 记录中用 GUID 替换值 **URL** 中的自动化帐户 ID。 你可以从 "**帐户设置**" 下 **的 "Azure 门户**" 中获取所需的 ID。
 
 ![自动化帐户主密钥页面](./media/automation-region-dns-records/automation-account-keys.png)
 
 在 "帐户" *和* " **URL** " 字段中复制值- `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+
+> [!NOTE]
+> 所有 Webhook 和 agentservice DNS 记录均已更新为新样式的 DNS 记录，以支持 "专用" 链接。 对于 JRDS DNS 记录，支持新旧样式的 DNS 记录。 如果未使用 "专用链接"，则会看到旧样式的 DNS 记录，而使用 "专用" 链接的 dns 记录将看到新的 DNS 记录样式。
 
 建议在定义[异常](../automation-runbook-execution.md#exceptions)时使用列出的地址。 若要查看区域 IP 地址列表而不是区域名称，请从 Microsoft 下载中心下载适用于以下云环境的 JSON 文件：
 

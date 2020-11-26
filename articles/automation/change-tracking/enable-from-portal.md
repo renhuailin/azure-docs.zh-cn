@@ -5,18 +5,18 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d13e19958ce4614db3706845cc6717b77f60c4c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6ca5b1df05c04937598278378e001f41f08ef23c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209432"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183628"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>从 Azure 门户启用更改跟踪和库存
 
 本文介绍如何为 Azure 门户中的一个或多个 Azure Vm 启用 [更改跟踪和清单](overview.md) 。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。
 
-可用于管理 VM 的资源组数量受限于[资源管理器部署限制](../../azure-resource-manager/templates/cross-scope-deployment.md)。 资源管理器部署限制为每个部署5个资源组。 其中有两个资源组是保留的，用于配置 Log Analytics 工作区、自动化帐户和相关资源。 因此，还剩下三个资源组可供选择用于通过“更改跟踪和库存”进行管理。 此限制仅应用于并发设置，不应用于可通过自动化功能管理的资源组数目。
+可用于管理 VM 的资源组数量受限于[资源管理器部署限制](../../azure-resource-manager/templates/deploy-to-resource-group.md)。 资源管理器部署限制为每个部署5个资源组。 其中有两个资源组是保留的，用于配置 Log Analytics 工作区、自动化帐户和相关资源。 因此，还剩下三个资源组可供选择用于通过“更改跟踪和库存”进行管理。 此限制仅应用于并发设置，不应用于可通过自动化功能管理的资源组数目。
 
 > [!NOTE]
 > 在启用更改跟踪和库存时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](../how-to/region-mappings.md)。

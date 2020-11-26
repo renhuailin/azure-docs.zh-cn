@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151067"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183968"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR 服务的资源日志
 
@@ -122,7 +122,7 @@ message | 日志事件的详细消息
 
     ![Log Analytics 菜单项](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
+2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
     ![在 Log Analytics 中查询日志](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -182,7 +182,7 @@ Reason | 说明
 
 #### <a name="throttling"></a>限制
 
-如果发现无法在 SignalR 客户端与 Azure SignalR 服务之间建立连接，请检查资源日志。 如果在资源日志中遇到 `Connection count reaches limit`，则表示与 SignalR 服务建立的连接过多，从而达到了连接计数限制。 考虑纵向扩展 SignalR 服务。 如果在资源日志中遇到 `Message count reaches limit`，则表示使用的是免费层，并且已用完了消息配额。 若要发送更多消息，请考虑将 SignalR 服务更改为标准层。 有关详细信息，请参阅 [Azure SignalR 服务定价](https://azure.microsoft.com/pricing/details/signalr-service/)。
+如果发现无法在 SignalR 客户端与 Azure SignalR 服务之间建立连接，请检查资源日志。 如果在资源日志中遇到 `Connection count reaches limit`，则表示与 SignalR 服务建立的连接过多，从而达到了连接计数限制。 考虑纵向扩展 SignalR 服务。 如果在资源日志中遇到 `Message count reaches limit`，则表示使用的是免费层，并且已用完了消息配额。 若要发送更多消息，请考虑将 SignalR 服务更改为标准层。 有关详细信息，请参阅 [Azure SignalR 服务定价](https://azure.microsoft.com/pricing/details/signalr-service/)。
 
 ### <a name="get-help"></a>获取帮助
 

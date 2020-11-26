@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536279"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186161"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -31,7 +31,7 @@ ms.locfileid: "95536279"
 自动启用的 Azure Monitor 功能（如收集指标和活动日志）免费提供。 存在与其他功能（例如日志查询和警报）相关的费用。 有关详细定价信息，请参阅 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何启用 Azure Monitor？
-在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](./platform/platform-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](insights/insights-overview.md)可为特定服务收集的收集数据提供额外的分析。 
+在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](./platform/platform-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](./monitor-reference.md)可为特定服务收集的收集数据提供额外的分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何访问 Azure Monitor？
 可通过 Azure 门户中的“监视”菜单访问各项 Azure Monitor 功能和数据。 通过不同 Azure 服务的菜单的“监视”部分，可访问相同的工具，其中数据经过筛选，指向特定的资源。 也可通过 CLI、PowerShell 和 REST API 针对各种场景来访问 Azure Monitor 数据。
@@ -65,7 +65,7 @@ Azure Monitor 将来自各种来源的数据收集到[日志](platform/data-plat
 ## <a name="solutions-and-insights"></a>解决方案和见解
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Monitor 中的见解是指什么？
-见解为特定 Azure 服务提供自定义监视体验。 它们与 Azure Monitor 中的其他功能使用相同的指标和日志，但可能会收集额外的数据，并在 Azure 门户中提供独一无二的体验。 请参阅 [Azure Monitor 中的见解](insights/insights-overview.md)。
+见解为特定 Azure 服务提供自定义监视体验。 它们与 Azure Monitor 中的其他功能使用相同的指标和日志，但可能会收集额外的数据，并在 Azure 门户中提供独一无二的体验。 请参阅 [Azure Monitor 中的见解](./monitor-reference.md)。
 
 要查看 Azure 门户中的见解，请参阅“监视”菜单的“见解”部分或服务菜单的“监视”部分  。
 
@@ -77,7 +77,7 @@ Azure Monitor 将来自各种来源的数据收集到[日志](platform/data-plat
 ## <a name="logs"></a>日志
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Monitor 日志与 Azure 数据资源管理器之间有何区别？
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure Monitor 日志是基于 Azure 数据资源管理器构建的，使用相同的 Kusto 查询语言 (KQL)，但有一些细微差别。 请参阅 [Azure Monitor 日志查询语言差异](log-query/data-explorer-difference.md)。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure Monitor 日志是基于 Azure 数据资源管理器构建的，使用相同的 Kusto 查询语言 (KQL)，但有一些细微差别。 请参阅 [Azure Monitor 日志查询语言差异](/azure/data-explorer/kusto/query/)。
 
 ### <a name="how-do-i-retrieve-log-data"></a>如何检索日志数据？
 可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](log-query/log-query-overview.md)。
@@ -224,7 +224,7 @@ WireData
 * [Node.js 应用](app/nodejs.md)
 * [Azure 上的 Web 应用](app/azure-web-apps.md)
 * [Azure 上的云服务](app/cloudservices.md)
-* [在 Docker 中运行的应用服务器](app/docker.md)
+* [在 Docker 中运行的应用服务器](./azure-monitor-app-hub.yml)
 * [单页 Web 应用](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows 桌面应用](app/windows-desktop.md)
@@ -401,7 +401,7 @@ WireData
 
 当前不支持将现有 Application Insights 资源从一个区域移动到另一个区域。 你收集的历史数据无法迁移到新区域。 唯一的部分解决方法是：
 
-1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](/azure/azure-monitor/app/create-workspace-resource)) 。
+1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](./app/create-workspace-resource.md)) 。
 2. 重新创建特定于新资源中原始资源的所有唯一自定义项。
 3. 修改应用程序以使用新区域资源的[检测密钥](app/create-new-resource.md#copy-the-instrumentation-key)或[连接字符串](app/sdk-connection-string.md)。  
 4. 测试以确认所有内容是否都按预期处理新的 Application Insights 资源。 
@@ -414,7 +414,7 @@ WireData
 - 重新创建可用性警报。
 - 重新创建任何自定义 Azure 基于角色的访问控制， (用户访问新资源所需的 Azure RBAC) 设置。 
 - 复制涉及引入采样、数据保留、每日上限和自定义指标启用的设置。 可通过“使用情况和预估成本”窗格控制这些设置。
-- 依赖 API 密钥（如[版本注释](/azure/azure-monitor/app/annotations)、[实时指标安全控制通道](app/live-stream.md#secure-the-control-channel)等）的任何集成。你将需要生成新的 API 密钥并更新关联的集成。 
+- 依赖 API 密钥（如[版本注释](./app/annotations.md)、[实时指标安全控制通道](app/live-stream.md#secure-the-control-channel)等）的任何集成。你将需要生成新的 API 密钥并更新关联的集成。 
 - 需要重新配置经典资源中的连续导出。
 - 需要重新配置基于工作区资源中的诊断设置。
 

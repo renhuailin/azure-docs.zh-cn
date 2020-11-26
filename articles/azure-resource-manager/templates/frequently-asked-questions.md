@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744529"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184002"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -68,7 +68,7 @@ ms.locfileid: "94744529"
 
 * **是否可以在 ARM 模板中创建订阅？**
 
-  是的，有关详细信息，请参阅 [以编程方式创建具有最新 api 的 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription.md)。
+  是的，有关详细信息，请参阅 [以编程方式创建具有最新 api 的 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)。
 
 * **如何在部署模板之前对其进行测试？**
 
@@ -106,7 +106,7 @@ ms.locfileid: "94744529"
 
 * **如何开始模板规范的预览版本？**
 
-  安装最新版本的 PowerShell 或 Azure CLI。 对于 Azure PowerShell，请使用 [5.0.0 或更高版本](/powershell/azure/install-az-ps)。 对于 Azure CLI，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+  安装最新版本的 PowerShell 或 Azure CLI。 对于 Azure PowerShell，请使用[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 对于 Azure CLI，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 * **模板规格和 Azure 蓝图有何关系？**
 

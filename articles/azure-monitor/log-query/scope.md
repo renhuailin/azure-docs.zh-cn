@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ddb73de87789934aa66893bdbe6519011cf324b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491369"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186093"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的日志查询范围和时间范围
-在 [Azure 门户上的 Log Analytics 中](get-started-portal.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
+在 [Azure 门户上的 Log Analytics 中](./log-analytics-tutorial.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
 
 
 ## <a name="query-scope"></a>查询范围
@@ -22,7 +22,7 @@ ms.locfileid: "94491369"
 
 范围始终显示在 Log Analytics 窗口的左上方。 如果出现了图标，则表示范围是 Log Analytics 工作区或 Application Insights 应用程序。 如果没有图标，则表示范围是另一个 Azure 资源。
 
-![门户中显示的作用域](media/scope/scope.png)
+![门户中显示的范围](media/scope/scope.png)
 
 范围由启动 Log Analytics 所用的方法确定，在某些情况下，可以通过单击范围来更改范围。 下表列出了所用的不同类型范围及其各种详细信息。
 
@@ -32,7 +32,7 @@ ms.locfileid: "94491369"
 | 查询范围 | 范围中的记录 | 如何选择 | 更改范围 |
 |:---|:---|:---|:---|
 | Log Analytics 工作区 | Log Analytics 工作区中的所有记录。 | 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。    | 可将范围更改为任何其他资源类型。 |
-| Application Insights 应用程序 | Application Insights 应用程序中的所有记录。 | 从应用程序的 " **Application Insights** " 菜单中选择 " **日志** "。 | 只能将范围更改为另一个 Application Insights 应用程序。 |
+| Application Insights 应用程序 | Application Insights 应用程序中的所有记录。 | 从应用程序的“Application Insights”菜单中选择“日志”。 | 只能将范围更改为另一个 Application Insights 应用程序。 |
 | 资源组 | 资源组中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从资源组菜单中选择“日志”。 | 无法更改范围。|
 | 订阅 | 订阅中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从订阅菜单中选择“日志”。   | 无法更改范围。 |
 | 其他 Azure 资源 | 资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。  | 从资源菜单中选择“日志”。<br>OR<br>从“Azure Monitor”菜单中选择“日志”，然后选择新范围。  | 只能将范围更改为相同的资源类型。 |
@@ -71,13 +71,13 @@ Log Analytics 有助于防止跨多个区域中工作区的查询的过量开销
 
 ![时间选取器](media/scope/time-picker.png)
 
-如果在查询中设置了一个筛选器，该筛选器使用上表中所示的标准时间列，则时间选取器将更改为 " **在查询中设置** "，并禁用时间选择器。 在这种情况下，最有效的做法是将筛选器放在查询的顶部，这样，以后只需处理筛选的记录。
+如果在使用上表所示的“标准时间”列的查询中设置筛选器，时间选取器将更改为“在查询中设置”并且会被禁用。 在这种情况下，最有效的做法是将筛选器放在查询的顶部，这样，以后只需处理筛选的记录。
 
 ![筛选的查询](media/scope/query-filtered.png)
 
-如果使用 " [工作区](workspace-expression.md) " 或 " [应用](app-expression.md) " 命令从另一个工作区或经典应用程序中检索数据，时间选取器的行为可能会有所不同。 如果作用域是 Log Analytics 的工作区，并且 **你使用的** 是经典 Application Insights 应用程序，或者如果作用域是经典应用程序并且你使用的是 **工作区** ，则 Log Analytics 可能无法理解筛选器中使用的列应该确定时间筛选器。
+如果使用 " [工作区](workspace-expression.md) " 或 " [应用](app-expression.md) " 命令从另一个工作区或经典应用程序中检索数据，时间选取器的行为可能会有所不同。 如果作用域是 Log Analytics 的工作区，并且 **你使用的** 是经典 Application Insights 应用程序，或者如果作用域是经典应用程序并且你使用的是 **工作区**，则 Log Analytics 可能无法理解筛选器中使用的列应该确定时间筛选器。
 
-在以下示例中，范围设置为 Log Analytics 工作区。  查询使用 **workspace** 从另一个 Log Analytics 工作区检索数据。 时间选取器将更改为 **"在查询中设置"** ，因为它会看到使用预期 **TimeGenerated** 列的筛选器。
+在以下示例中，范围设置为 Log Analytics 工作区。  查询使用 **workspace** 从另一个 Log Analytics 工作区检索数据。 时间选取器将更改为“在查询中设置”，因为它会看到一个使用预期的 **TimeGenerated** 列的筛选器。
 
 ![使用 workspace 的查询](media/scope/query-workspace.png)
 
@@ -87,5 +87,5 @@ Log Analytics 有助于防止跨多个区域中工作区的查询的过量开销
 
 ## <a name="next-steps"></a>后续步骤
 
-- 演练[有关在 Azure 门户中使用 Log Analytics 的教程](get-started-portal.md)。
+- 演练[有关在 Azure 门户中使用 Log Analytics 的教程](./log-analytics-tutorial.md)。
 - 演练[有关编写查询的教程](get-started-queries.md)。

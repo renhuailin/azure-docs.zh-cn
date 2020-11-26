@@ -5,12 +5,12 @@ services: automation
 ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 35feb136ca1fd7ea0be16a906f7d5193cf8570c7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347074"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183543"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>从 Azure VM 启用“更新管理”
 
@@ -35,11 +35,11 @@ ms.locfileid: "93347074"
 
 2. 选择要启用更新管理的 VM。 VM 可以位于任何区域，无论自动化帐户的位置如何。 你
 
-3. 在 "VM" 页的 " **操作** " 下，选择 " **来宾 + 主机更新** "。
+3. 在 "VM" 页的 " **操作**" 下，选择 " **来宾 + 主机更新**"。
 
     ![在左侧窗格中选择 "来宾 + 主机更新"](media/enable-from-vm/select-guest-and-os-updates.png)
 
-4. 必须拥有 `Microsoft.OperationalInsights/workspaces/read` 权限才能确定是否为工作区启用了 VM。 若要了解所需的其他权限，请参阅[启用计算机所需的权限](../automation-role-based-access-control.md#feature-setup-permissions)。 若要了解如何一次启用多台计算机，请参阅[从自动化帐户启用更新管理](update-mgmt-enable-automation-account.md)。
+4. 必须拥有 `Microsoft.OperationalInsights/workspaces/read` 权限才能确定是否为工作区启用了 VM。 若要了解所需的其他权限，请参阅[启用计算机所需的权限](../automation-role-based-access-control.md#feature-setup-permissions)。 若要了解如何一次启用多台计算机，请参阅[从自动化帐户启用更新管理](./enable-from-automation-account.md)。
 
 5. 在 "启用更新管理" 页上，选择 "Log Analytics" 工作区和自动化帐户，然后单击 " **启用** " 以启用更新管理。 启用更新管理后，可能需要大约 15 分钟才能查看 VM 的更新评估。
 

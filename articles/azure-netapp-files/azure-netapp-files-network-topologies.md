@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930299"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184478"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -116,7 +116,7 @@ Azure NetApp 文件目前不支持以下功能：
 
 ![混合网络环境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-在混合方案中，本地数据中心内的应用程序需要访问 Azure 中的资源。  无论是要将数据中心扩展到 Azure，还是要使用 Azure 本机服务或进行灾难恢复，都是如此。 有关如何通过站点到站点 VPN 或 ExpressRoute 将多个资源本地连接到 Azure 中的资源的信息，请参阅 [VPN 网关规划选项](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable)。
+在混合方案中，本地数据中心内的应用程序需要访问 Azure 中的资源。  无论是要将数据中心扩展到 Azure，还是要使用 Azure 本机服务或进行灾难恢复，都是如此。 有关如何通过站点到站点 VPN 或 ExpressRoute 将多个资源本地连接到 Azure 中的资源的信息，请参阅 [VPN 网关规划选项](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)。
 
 在混合中心辐射型拓扑中，Azure 中的中心 VNet 充当到本地网络的连接的中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。
 

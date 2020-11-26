@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957106"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186331"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>使用 Azure Maps 天气服务请求实时和预测天气数据
 
-Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是一组 RESTful api，使开发人员能够将高度动态的历史、实时和预测天气数据和可视化效果集成到其解决方案中。 在本文中，我们将向您展示如何请求实时和预测天气数据。
+Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开发人员能够将高度动态的历史、实时和预测天气数据和可视化效果集成到其解决方案中。 在本文中，我们将向您展示如何请求实时和预测天气数据。
 
 在本文中，你将学习如何：
 
-* 使用 " [获取当前条件" API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview)请求实时 (当前) 天气数据。
-* 使用 " [获取严重天气警报" API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview)请求严重的天气警报。
-* 使用 [获取日常预测 API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview)请求每日预测。
-* 使用 [获取每小时预测 API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)请求每小时预测。
-* 使用 [获取分钟预测 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)请求每分钟预测的预测。
+* 使用 " [获取当前条件" API](/rest/api/maps/weather/getcurrentconditionspreview)请求实时 (当前) 天气数据。
+* 使用 " [获取严重天气警报" API](/rest/api/maps/weather/getsevereweatheralertspreview)请求严重的天气警报。
+* 使用 [获取日常预测 API](/rest/api/maps/weather/getdailyforecastpreview)请求每日预测。
+* 使用 [获取每小时预测 API](/rest/api/maps/weather/gethourlyforecastpreview)请求每小时预测。
+* 使用 [获取分钟预测 API](/rest/api/maps/weather/getminuteforecastpreview)请求每分钟预测的预测。
 
 此视频概述了 Azure Maps 中的天气服务与 REST 调用示例。
 
@@ -40,15 +40,15 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
     >[!IMPORTANT]
-    >[获取分钟预测 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)需要 S1 定价层密钥。 所有其他 Api 都需要 S0 定价层密钥。
+    >[获取分钟预测 API](/rest/api/maps/weather/getminuteforecastpreview)需要 S1 定价层密钥。 所有其他 Api 都需要 S0 定价层密钥。
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
 ## <a name="request-real-time-weather-data"></a>请求实时天气数据
 
-" [获取当前条件" API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) 返回给定坐标位置的详细天气情况，如降水量、温度和风。 此外，还可以检索过去6小时或24小时内特定位置的观察值。 响应包含如下所示的详细信息：观察日期和时间、天气条件的简要说明、天气图标、降水量指示器标志和温度。 还返回 RealFeel™温度和 ultraviolet (UV) 索引。
+" [获取当前条件" API](/rest/api/maps/weather/getcurrentconditionspreview) 返回给定坐标位置的详细天气情况，如降水量、温度和风。 此外，还可以检索过去6小时或24小时内特定位置的观察值。 响应包含如下所示的详细信息：观察日期和时间、天气条件的简要说明、天气图标、降水量指示器标志和温度。 还返回 RealFeel™温度和 ultraviolet (UV) 索引。
 
-在此示例中，将使用 " [获取当前条件" API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) 来检索位于华盛顿州西雅图的当前天气状况。
+在此示例中，将使用 " [获取当前条件" API](/rest/api/maps/weather/getcurrentconditionspreview) 来检索位于华盛顿州西雅图的当前天气状况。
 
 1. 打开 Postman 应用。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。 本文档中的示例的其余部分将使用此集合。
 
@@ -235,9 +235,9 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
 
 ## <a name="request-severe-weather-alerts"></a>请求严重天气警报
 
-[Azure Maps 获取严重天气警报 API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) 将返回官方政府种气象站机构和全球领先天气警报提供商提供的严重天气警报。 该服务可以返回有关请求位置的活动严重警报的详细信息，如警报类型、类别、级别和详细说明，例如飓风、thunderstorms、闪电、导热或林触发。 例如，后勤经理可以直观显示地图上的严重天气情况、业务位置和计划路线，并与驱动程序和本地工作人员进行进一步协调。
+[Azure Maps 获取严重天气警报 API](/rest/api/maps/weather/getsevereweatheralertspreview) 将返回官方政府种气象站机构和全球领先天气警报提供商提供的严重天气警报。 该服务可以返回有关请求位置的活动严重警报的详细信息，如警报类型、类别、级别和详细说明，例如飓风、thunderstorms、闪电、导热或林触发。 例如，后勤经理可以直观显示地图上的严重天气情况、业务位置和计划路线，并与驱动程序和本地工作人员进行进一步协调。
 
-在此示例中，你将使用 " [获取严重天气警报" API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) 来检索位于 CHEYENNE，WY 中的坐标处的当前天气状况。
+在此示例中，你将使用 " [获取严重天气警报" API](/rest/api/maps/weather/getsevereweatheralertspreview) 来检索位于 CHEYENNE，WY 中的坐标处的当前天气状况。
 
 >[!NOTE]
 >此示例将在撰写本文时检索严重的天气预报警报。 请求的位置上不再有任何严重的天气警报。 若要在运行此示例时检索实际的严重警报数据，需要在不同坐标位置检索数据。
@@ -287,12 +287,12 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
 
 ## <a name="request-daily-weather-forecast-data"></a>请求每日天气预测数据
 
-" [获取日常预测" API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) 返回详细的每日天气预报，如温度和风。 请求可以指定为给定坐标位置返回的天数：1、5、10、15、25或45天。 响应包括温度、风、降水量、空气质量和 UV 指数等详细信息。  在此示例中，我们通过设置请求5天 `duration=5` 。
+" [获取日常预测" API](/rest/api/maps/weather/getdailyforecastpreview) 返回详细的每日天气预报，如温度和风。 请求可以指定为给定坐标位置返回的天数：1、5、10、15、25或45天。 响应包括温度、风、降水量、空气质量和 UV 指数等详细信息。  在此示例中，我们通过设置请求5天 `duration=5` 。
 
 >[!IMPORTANT]
 >在 S0 定价层中，你可以请求接下来的1、5、10和15天的日常预测。 在 S1 定价层中，还可以请求未来25天和45天的每日预测。
 
-在此示例中，您将使用 " [获取每日预测 API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) " 来检索位于华盛顿州西雅图的5天天气预报的坐标。
+在此示例中，您将使用 " [获取每日预测 API](/rest/api/maps/weather/getdailyforecastpreview) " 来检索位于华盛顿州西雅图的5天天气预报的坐标。
 
 1. 打开 Postman 应用，单击 " **新建**"，然后选择 " **请求**"。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择 " **保存**"。
 
@@ -535,12 +535,12 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
 
 ## <a name="request-hourly-weather-forecast-data"></a>请求每小时天气预测数据
 
-" [获取每小时预测 API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) " 将按小时返回详细的天气预报，按小时计算下1小时、12、24 (1 天) 、72 (3 天) 、120 (5 天) 和240小时 (给定坐标位置) 10 天。 API 返回温度、湿度、风、降水量和 UV 指数等详细信息。
+" [获取每小时预测 API](/rest/api/maps/weather/gethourlyforecastpreview) " 将按小时返回详细的天气预报，按小时计算下1小时、12、24 (1 天) 、72 (3 天) 、120 (5 天) 和240小时 (给定坐标位置) 10 天。 API 返回温度、湿度、风、降水量和 UV 指数等详细信息。
 
 >[!IMPORTANT]
 >在 S0 定价层中，你可以请求下1小时、12小时、24小时 (1 天) 和72小时)  (3 天的每小时预测。 在 S1 定价层中，你还可以请求在下一 120 (5 天的每小时预测， (10) 天) 和240小时。
 
-在此示例中，你将使用 " [获取每小时预测 API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) " 来检索位于华盛顿州西雅图市的下12小时的每小时天气预报。
+在此示例中，你将使用 " [获取每小时预测 API](/rest/api/maps/weather/gethourlyforecastpreview) " 来检索位于华盛顿州西雅图市的下12小时的每小时天气预报。
 
 1. 打开 Postman 应用，单击 " **新建**"，然后选择 " **请求**"。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择 " **保存**"。
 
@@ -645,9 +645,9 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
     ```
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>请求每分钟天气预测数据
 
- " [获取分钟预测 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) " 将为下一个120分钟返回给定位置的每分钟预测。 用户可以按1、5和15分钟的间隔请求天气预测。 响应包括详细信息，如降水量的类型 (，其中包括 rain、雪，或者) 、开始时间和降水量强度值混合 (dBZ) 。
+ " [获取分钟预测 API](/rest/api/maps/weather/getminuteforecastpreview) " 将为下一个120分钟返回给定位置的每分钟预测。 用户可以按1、5和15分钟的间隔请求天气预测。 响应包括详细信息，如降水量的类型 (，其中包括 rain、雪，或者) 、开始时间和降水量强度值混合 (dBZ) 。
 
-在此示例中，你将使用 " [获取分钟预测 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) " 来检索位于华盛顿州西雅图市的按分钟天气预报的天气预报。 天气预测将于接下来的120分钟提供。 查询请求按15分钟的间隔提供预测，但你可以将参数调整为1或5分钟。
+在此示例中，你将使用 " [获取分钟预测 API](/rest/api/maps/weather/getminuteforecastpreview) " 来检索位于华盛顿州西雅图市的按分钟天气预报的天气预报。 天气预测将于接下来的120分钟提供。 查询请求按15分钟的间隔提供预测，但你可以将参数调整为1或5分钟。
 
 1. 打开 Postman 应用，单击 " **新建**"，然后选择 " **请求**"。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择 " **保存**"。
 
@@ -751,8 +751,8 @@ Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 是�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Maps 天气服务概念](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts)
+> [Azure Maps 天气服务概念](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps 天气服务 REST API](https://docs.microsoft.com/rest/api/maps/weather
+> [Azure Maps 天气服务 REST API](/rest/api/maps/weather
 )

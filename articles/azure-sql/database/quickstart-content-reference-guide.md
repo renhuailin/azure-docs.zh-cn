@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790298"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184410"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>开始使用 Azure SQL 数据库中的单一数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "92790298"
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>在尽量缩短停机时间的情况下迁移到单一数据库
 
-参考这些快速入门中的文章可以使用 `.bacpac` 文件快速创建数据库或将其导入 Azure。 但是，使用 `.bacpac` 和 `.dacpac` 文件可以快速在 Azure SQL 中以及不同 SQL Server 版本之间转移数据库，或者在 DevOps 管道中实现持续集成。 但是，此方法不适合用于在尽量缩短停机时间的前提下迁移生产数据库，因为需要停止添加新数据，等待将源数据库导出到 `.bacpac` 文件，然后等待将其导入 Azure SQL 数据库。 所有这些操作会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要转移生产数据库，需要采用更好的方式进行迁移，以确保尽量缩短迁移所导致的停机时间。 为此，请使用[数据迁移服务 (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的单一数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
+参考这些快速入门中的文章可以使用 `.bacpac` 文件快速创建数据库或将其导入 Azure。 但是，使用 `.bacpac` 和 `.dacpac` 文件可以快速在 Azure SQL 中以及不同 SQL Server 版本之间转移数据库，或者在 DevOps 管道中实现持续集成。 但是，此方法不适合用于在尽量缩短停机时间的前提下迁移生产数据库，因为需要停止添加新数据，等待将源数据库导出到 `.bacpac` 文件，然后等待将其导入 Azure SQL 数据库。 所有这些操作会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要转移生产数据库，需要采用更好的方式进行迁移，以确保尽量缩短迁移所导致的停机时间。 为此，请使用[数据迁移服务 (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%2fazure%2fsql-database%2ftoc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的单一数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
 
 ## <a name="hands-on-learning-modules"></a>动手学习模块
 

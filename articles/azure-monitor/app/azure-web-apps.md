@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186365"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -55,7 +55,7 @@ ms.locfileid: "94832869"
 
 2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET 应用监视默认已启用，它提供两种不同级别的集合。
 
-    ![屏幕截图显示 "创建新资源" Application Insights "站点扩展" 页面。](./media/azure-web-apps/choose-options-new.png)
+    ![屏幕截图显示 Application Insights 站点扩展页面，其中选择了“创建新资源”。](./media/azure-web-apps/choose-options-new.png)
  
  下面是针对每个路由收集的数据的摘要：
         
@@ -115,8 +115,8 @@ ms.locfileid: "94832869"
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
-* **设置** **>****配置**
-   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
+* “设置”>“配置”  
+   * 在“应用程序设置”下，创建“新建应用程序设置”：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -132,8 +132,8 @@ ms.locfileid: "94832869"
 
 如果出于某种原因想要禁用客户端监视：
 
-* **设置** **>****配置**
-   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
+* “设置”>“配置”  
+   * 在“应用程序设置”下，创建“新建应用程序设置”：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -341,7 +341,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 * [通过 PowerShell 升级](#enabling-through-powershell)：
 
-    1. 设置应用程序设置以启用预装的站点扩展 ApplicationInsightsAgent。 请参阅 [通过 PowerShell 启用](#enabling-through-powershell)。
+    1. 设置应用程序设置以启用预装的站点扩展 ApplicationInsightsAgent。 请参阅[通过 PowerShell 启用](#enabling-through-powershell)。
     2. 手动删除名为“Azure 应用服务的 Application Insights 扩展”的专用站点扩展。
 
 如果已从低于 2.5.1 的版本完成升级，请检查是否已从应用程序 bin 文件夹中删除了 ApplicationInsigths dll。[参阅故障排除步骤](#troubleshooting)。
@@ -351,7 +351,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 下面是针对在 Azure 应用 Services 上运行的基于 ASP.NET 和 ASP.NET Core 的应用程序的基于扩展/代理监视的分步疑难解答指南。
 
 > [!NOTE]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的指南进行操作。
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 
 1. 通过 `ApplicationInsightsAgent` 检查应用程序是否受监视。
@@ -372,7 +372,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
     * 确认 `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly` 和 `AppContainsAspNetTelemetryCorrelationAssembly` 没有任何对应的条目。
         * 如果存在其中的任何条目，请从应用程序中删除以下包：`Microsoft.ApplicationInsights`、`System.Diagnostics.DiagnosticSource` 和 `Microsoft.AspNet.TelemetryCorrelation`。
-        * 仅适用于 ASP.NET Core 应用：在应用程序引用任何 Application Insights 包时（例如，如果之前已检测到 (或尝试使用 [ASP.NET CORE SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)检测应用) ，则启用应用服务集成可能不会生效，并且数据可能不会出现在 Application Insights 中。 若要解决此问题，请在门户中打开 "与 Application Insights SDK 互操作"，将开始查看数据 Application Insights 
+        * 仅适用于 ASP.NET Core 应用：在应用程序引用任何 Application Insights 包时（例如，如果之前已检测到 (或尝试使用 [ASP.NET CORE SDK](./asp-net-core.md)检测应用) ，则启用应用服务集成可能不会生效，并且数据可能不会出现在 Application Insights 中。 若要解决此问题，请在门户中打开 "与 Application Insights SDK 互操作"，将开始查看数据 Application Insights 
         > [!IMPORTANT]
         > 此功能处于预览阶段 
 
@@ -410,11 +410,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 有关 Application Insights 代理/扩展的最新信息，请查看[发行说明](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
 
-### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>用 web 应用部署的默认网站不支持自动客户端监视
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>用 Web 应用部署的默认网站不支持自动客户端监视
 
-使用 Azure 应用 Services 中的或运行时创建 web 应用时， `ASP.NET` `ASP.NET Core` 它会将单个静态 HTML 页作为入门网站部署。 静态网页还会在 IIS 中加载 ASP.NET 托管 web 部件。 这允许测试无代码置备服务器端监视，但不支持自动客户端监视。
+使用 `ASP.NET` 或 `ASP.NET Core` 运行时在 Azure 应用服务中创建 Web 应用时，该应用会部署单个静态 HTML 页面作为入门网站。 静态网页还会在 IIS 中加载 ASP.NET 托管 web 部件。 这使得能够测试无代码服务器端监视，但不支持自动客户端监视。
 
-如果你想要在 Azure 应用 Services web 应用中测试无代码置备服务器和客户端监视的 ASP.NET 或 ASP.NET Core，我们建议遵循 [创建 ASP.NET Core web 应用](../../app-service/quickstart-dotnetcore.md) 和 [创建 ASP.NET Framework web 应用](../../app-service/quickstart-dotnet-framework.md) 的官方指南，并使用当前文章中的说明来启用监视。
+如果你希望在 Azure 应用服务 Web 应用中测试 ASP.NET 或 ASP.NET Core 的无代码服务器和客户端监视，建议遵循[创建 ASP.NET Core Web 应用](../../app-service/quickstart-dotnetcore.md)和[创建 ASP.NET Framework Web 应用](../../app-service/quickstart-dotnet-framework.md)官方指南，然后按照当前文章中的说明来启用监视。
 
 ### <a name="connection-string-and-instrumentation-key"></a>连接字符串和检测密钥
 
@@ -432,4 +432,3 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 * [接收警报通知](../platform/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 * [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。
-

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681833"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183696"
 ---
 # <a name="repair-an-automanage-account"></a>修复 Automanage 帐户
 你的 [Azure Automanage 帐户](./automanage-virtual-machines.md#automanage-account) 是在其下执行自动操作的安全上下文或标识。 如果最近将包含 Automanage 帐户的订阅移动到新租户，则需要重新配置该帐户。 若要对其进行重新配置，需要重置标识类型并为该帐户分配适当的角色。
@@ -22,8 +22,8 @@ ms.locfileid: "94681833"
 使用以下 Azure 资源管理器 (ARM) 模板重置 Automanage 帐户标识类型。 将该文件在本地保存为 armdeploy.js或类似名称。 记下你的 Automanage 帐户名称和位置，因为它们是 ARM 模板中的必需参数。
 
 1. 使用以下模板创建资源管理器部署。 请使用 `identityType = None`。
-    * 您可以使用在 Azure CLI 中创建部署 `az deployment sub create` 。 有关详细信息，请参阅 [az deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub)。
-    * 你可以使用模块在 PowerShell 中创建部署 `New-AzDeployment` 。 有关详细信息，请参阅 [AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)。
+    * 您可以使用在 Azure CLI 中创建部署 `az deployment sub create` 。 有关详细信息，请参阅 [az deployment sub](/cli/azure/deployment/sub)。
+    * 你可以使用模块在 PowerShell 中创建部署 `New-AzDeployment` 。 有关详细信息，请参阅 [AzDeployment](/powershell/module/az.resources/new-azdeployment)。
 
 1. 再次运行相同的 ARM 模板 `identityType = SystemAssigned` 。
 
@@ -63,7 +63,7 @@ Automanage 帐户需要订阅上包含 Automanage 所管理的 Vm 的参与者�
 
 如果使用的是 ARM 模板或 Azure CLI，则需要主体 ID (也称为 Automanage 帐户的对象 ID) 。  (如果使用 Azure 门户，则不需要 ID。 ) 可以使用以下方法找到此 ID：
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>` 。
+- [Azure CLI](/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>` 。
 
 - Azure 门户：中转到 **Azure Active Directory** 并按名称搜索你的 Automanage 帐户。 在 " **企业应用程序**" 下，选择显示的 Automanage 帐户名称。
 

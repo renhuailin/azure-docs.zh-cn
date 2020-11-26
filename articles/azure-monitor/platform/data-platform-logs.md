@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014231"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186501"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor 日志概览
 Azure Monitor 日志是 Azure Monitor 的一项功能，用于从 [受监视的资源](../monitor-reference.md)收集和组织日志和性能数据。 来自不同源的数据，例如来自 Azure 服务的 [平台日志](platform-logs-overview.md) 、来自 [虚拟机代理](agents-overview.md)的日志和性能数据，以及 [应用程序](../app/app-insights-overview.md) 的使用情况和性能数据，可以将其合并到单个工作区中，以便可以使用能够快速分析数百万条记录的复杂查询语言一起分析这些数据。 您可以执行一个简单的查询，该查询只检索一组特定的记录或执行复杂的数据分析，以确定监视数据中的关键模式。 使用 Log Analytics 以交互方式使用日志查询及其结果，在警报规则中使用这些查询来主动通知问题，或在工作簿或仪表板中将结果可视化。
@@ -25,11 +25,11 @@ Azure Monitor 日志是 Azure Monitor 的一项功能，用于从 [受监视的�
 
 |  |  |
 |:---|:---|
-| **分析** | 使用 Azure 门户中 [Log Analytics](../log-query/get-started-portal.md) 编写 [日志查询](../log-query/log-query-overview.md) ，并使用强大的分析引擎以交互方式分析日志数据 |
+| **分析** | 使用 Azure 门户中 [Log Analytics](../log-query/log-analytics-tutorial.md) 编写 [日志查询](../log-query/log-query-overview.md) ，并使用强大的分析引擎以交互方式分析日志数据 |
 | **Alert** | 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。 |
-| **可视化** | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](../app/usage-workbooks.md)以与交互式报表中的多组数据合并。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>将查询结果导出到 [Grafana](grafana-plugin.md) 以利用其仪表板并与其他数据源合并。|
+| **可视化** | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](./workbooks-overview.md)以与交互式报表中的多组数据合并。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>将查询结果导出到 [Grafana](grafana-plugin.md) 以利用其仪表板并与其他数据源合并。|
 | **Insights** | 提供针对特定应用程序和服务的自定义监视体验的支持 [见解](../monitor-reference.md#insights-and-core-solutions) 。  |
-| **检索** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
+| **检索** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
 | **导出** | 配置将 [日志数据自动导出](logs-data-export.md) 到 azure 存储帐户或 Azure 事件中心。<br>构建一个工作流来检索日志数据，并使用[逻辑应用](logicapp-flow-connector.md)将其复制到外部位置。 |
 
 ![日志概述](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Azure Monitor 日志收集的数据存储在一个 [Log Analytics 工作区](./d
 ## <a name="log-analytics"></a>Log Analytics
 使用 Log Analytics （Azure 门户中的工具）可以编辑和运行日志查询并以交互方式分析它们的结果。 然后，你可以使用你创建的查询来支持 Azure Monitor 中的其他功能，例如日志查询警报和工作簿。 从 "Azure Monitor" 菜单中的 " **日志** " 选项或从 Azure 门户中其他大多数服务访问 Log Analytics。
 
-- 有关 Log Analytics 的说明，请参阅 [Azure Monitor 概述 Log Analytics](/azure/azure-monitor/log-query/log-analytics-overview) 。 
-- 请参阅 [Log Analytics 教程](/azure/azure-monitor/log-query/log-analytics-tutorial) ，逐步说明如何使用 Log Analytics 功能创建简单的日志查询并分析其结果。
+- 有关 Log Analytics 的说明，请参阅 [Azure Monitor 概述 Log Analytics](../log-query/log-analytics-overview.md) 。 
+- 请参阅 [Log Analytics 教程](../log-query/log-analytics-tutorial.md) ，逐步说明如何使用 Log Analytics 功能创建简单的日志查询并分析其结果。
 
 
 

@@ -2,13 +2,13 @@
 title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317100"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184070"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -19,7 +19,6 @@ ms.locfileid: "91317100"
 以下方案尚不受支持：
 
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
-* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
 * 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
@@ -35,6 +34,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 ```azurepowershell-interactive
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
+
+## <a name="virtual-machines-with-marketplace-plans"></a>具有 Marketplace 计划的虚拟机
+
+无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 若要解决此限制，你可以取消设置当前订阅中的虚拟机，并在新订阅中再次部署该虚拟机。 以下步骤可帮助你在新订阅中重新创建虚拟机。 但是，它们可能不适用于所有方案。 如果该计划在 Marketplace 中不再可用，则这些步骤将不起作用。
+
+1. 复制有关计划的信息。
+
+1. 请将 OS 磁盘克隆到目标订阅，或者在从源订阅中删除虚拟机后移动原始磁盘。
+
+1. 在目标订阅中，接受计划的 Marketplace 条款。 可以通过运行以下 PowerShell 命令来接受这些条款：
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   或者，你可以通过门户创建具有计划的虚拟机的新实例。 可以在接受新订阅中的条款后删除虚拟机。
+
+1. 在目标订阅中，使用 PowerShell、CLI 或 Azure 资源管理器模板重新创建克隆的 OS 磁盘中的虚拟机。 包括附加到磁盘的 marketplace 计划。 有关计划的信息应该与你在新订阅中购买的计划匹配。
 
 ## <a name="virtual-machines-with-azure-backup"></a>使用 Azure 备份的虚拟机
 

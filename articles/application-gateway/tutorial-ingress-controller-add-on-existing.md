@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566157"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183679"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教程：通过 Azure CLI 使用现有的应用程序网关为现有 AKS 群集启用应用程序网关入口控制器加载项（预览版）
 
@@ -35,16 +35,16 @@ ms.locfileid: "94566157"
 
  - 本教程需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
- - 使用 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令注册 *AKS-IngressApplicationGatewayAddon* 功能标志，如以下示例所示；当此加载项仍为预览版时，只需为每个订阅执行一次此操作：
+ - 使用 [az feature register](/cli/azure/feature#az-feature-register) 命令注册 *AKS-IngressApplicationGatewayAddon* 功能标志，如以下示例所示；当此加载项仍为预览版时，只需为每个订阅执行一次此操作：
      ```azurecli-interactive
      az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
      ```
-    可能需要花费几分钟时间，状态才会显示为“已注册”。 可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令检查注册状态：
+    可能需要花费几分钟时间，状态才会显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令检查注册状态：
      ```azurecli-interactive
      az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
      ```
 
- - 准备就绪后，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+ - 准备就绪后，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```

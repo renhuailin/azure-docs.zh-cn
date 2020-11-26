@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931830"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184461"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试建议
 
@@ -24,7 +24,7 @@ ms.locfileid: "91931830"
 
 ### <a name="vm-instance-sizing"></a>VM 实例大小调整
 
-为获得最佳结果，请确保使用适当调整大小以执行测试的虚拟机 (VM) 实例。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的 [windows 虚拟机大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) ，以及 azure 中适用于 Linux 的 Vm 的 [linux 虚拟机的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) 。
+为获得最佳结果，请确保使用适当调整大小以执行测试的虚拟机 (VM) 实例。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的 [windows 虚拟机大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 azure 中适用于 Linux 的 Vm 的 [linux 虚拟机的大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp 文件卷大小调整
 

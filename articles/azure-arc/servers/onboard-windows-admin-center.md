@@ -3,12 +3,12 @@ title: 从 Windows 管理中心将混合计算机连接到 Azure
 description: 本文介绍如何安装代理，以及如何从 Windows 管理中心使用启用了 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133527"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183407"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>从 Windows 管理中心将混合计算机连接到 Azure
 
@@ -36,20 +36,20 @@ ms.locfileid: "93133527"
 
 1. 从 " **概述** " 页上的 "连接" 列表中，在 "连接的 Windows 服务器" 列表中，从列表中选择要连接到该服务器的服务器。
 
-1. 在左侧窗格中，选择 " **Azure 混合服务** "。
+1. 在左侧窗格中，选择 " **Azure 混合服务**"。
 
-1. 在 " **Azure 混合服务** " 页上，选择 " **发现 Azure 服务** "。
+1. 在 " **Azure 混合服务** " 页上，选择 " **发现 Azure 服务**"。
 
-1. 在 " **发现 azure 服务** " 页上，在 " **利用 azure 策略和解决方案来使用 azure Arc 管理服务器** " 下，选择 " **设置** "。
+1. 在 " **发现 azure 服务** " 页上，在 " **利用 azure 策略和解决方案来使用 azure Arc 管理服务器**" 下，选择 " **设置**"。
 
-1. 如果系统提示对 Azure 进行身份验证，请在 " **服务器的 Settings\Azure Arc** " 页上，选择 " **入门** "。
+1. 如果系统提示对 Azure 进行身份验证，请在 " **服务器的 Settings\Azure Arc** " 页上，选择 " **入门**"。
 
 1. 在 "将 **服务器连接到 Azure** " 页上，提供以下内容：
 
     1. 在 " **azure 订阅** " 下拉列表中，选择 "azure 订阅"。
-    1. 对于 " **资源组** "，选择 " **新建** " 以创建新的资源组，或在 " **资源组** " 下拉列表中，选择要从中注册和管理计算机的现有资源组。
-    1. 在 " **区域** " 下拉列表中，选择用于存储服务器元数据的 Azure 区域。
-    1. 如果计算机或服务器通过代理服务器进行通信以连接到 internet，请选择 " **使用代理服务器** " 选项。 指定代理服务器的 IP 地址或名称，以及计算机将用于与代理服务器进行通信的端口号。
+    1. 对于 " **资源组**"，选择 " **新建** " 以创建新的资源组，或在 " **资源组** " 下拉列表中，选择要从中注册和管理计算机的现有资源组。
+    1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
+    1. 如果计算机或服务器通过代理服务器进行通信以连接到 internet，请选择 " **使用代理服务器**" 选项。 指定代理服务器的 IP 地址或名称，以及计算机将用于与代理服务器进行通信的端口号。
 
 1. 选择 " **设置** " 以继续为启用了 Azure Arc 的服务器配置 Windows server。
 
@@ -69,4 +69,4 @@ Windows server 将连接到 Azure，下载连接的计算机代理，安装它�
 
 * 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

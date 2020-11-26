@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 资源管理器模板创建日志警报 |Microsoft Docs
+title: 使用 Azure 资源管理器模板创建日志警报 | Microsoft Docs
 description: 了解如何使用资源管理器模板创建日志警报
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: b23f1d455610222ffa5713773a0bfb947f23ce34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fb0288d592af8bd23415b31ecf6a6e3448b92ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341491"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186025"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 
-日志警报允许用户使用 [Log Analytics](../log-query/get-started-portal.md) 查询来评估每个设置频率的资源日志，并根据结果触发警报。 规则可以触发使用 [操作组](./action-groups.md)运行一个或多个操作。 [详细了解日志警报的功能和术语](alerts-unified-log.md)。
+通过日志警报，用户可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](./action-groups.md)触发运行一个或多个操作。 [详细了解日志警报的功能和术语](alerts-unified-log.md)。
 
-本文介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md) 来配置 Azure Monitor 中的 [日志警报](alerts-unified-log.md) 。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅 API 参考，了解 [计划的查询规则 api](/rest/api/monitor/scheduledqueryrules/)。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[日志警报](alerts-unified-log.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅[计划查询规则 API](/rest/api/monitor/scheduledqueryrules/) 的 API 参考。
 
 基本步骤如下所示：
 
@@ -26,15 +26,15 @@ ms.locfileid: "91341491"
 4. 使用任意部署方法部署模板。
 
 > [!NOTE]
-> 可以将 [Log Analytics 工作区](../log-query/get-started-portal.md) 中的日志数据发送到 Azure Monitor 指标存储中。 指标警报具有[不同的行为](alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](alerts-metric-logs.md)。
+> 可以将 [Log Analytics 工作区](../log-query/log-analytics-tutorial.md)中的日志数据发送到 Azure Monitor 指标存储。 指标警报具有[不同的行为](alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](alerts-metric-logs.md)。
 
 > [!NOTE]
-> Log Analytics 的日志警报，该警报用于通过旧 [Log Analytics 警报 API](api-alerts.md) 和旧模板 [Log Analytics 保存的搜索和警报](../insights/solutions.md)进行管理。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
+> 过去使用旧式 [Log Analytics 警报 API](api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
 
 
-## <a name="simple-template-up-to-api-version-2018-04-16"></a>简单模板 (API 版本 2018-04-16) 
+## <a name="simple-template-up-to-api-version-2018-04-16"></a>简单模板（最高 API 版本为 2018-04-16）
 
-[计划的查询规则](/rest/api/monitor/scheduledqueryrules/createorupdate) 基于 [结果数日志警报](alerts-unified-log.md#count-of-the-results-table-rows) 创建模板 (示例数据集作为变量) ：
+[计划查询规则（创建）](/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于[结果日志警报数量](alerts-unified-log.md#count-of-the-results-table-rows)（示例数据设置为变量）：
 
 ```json
 {
@@ -105,11 +105,11 @@ ms.locfileid: "91341491"
 
 ```
 
-可以使用 [Azure 资源管理器在 Azure 门户中](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署此 JSON。
+可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署该 JSON。
 
-## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>具有跨资源查询 (API 版本 2018-04-16) 的模板
+## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>带有跨资源查询的模板（最高 API 版本为 2018-04-16）
 
-基于[指标度量](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)的[计划查询规则创建](/rest/api/monitor/scheduledqueryrules/createorupdate)模板，该模板查询[跨资源](../log-query/cross-workspace-query.md) (示例数据集作为变量) ：
+[计划查询规则（创建）](/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于可[跨资源](../log-query/cross-workspace-query.md)查询的[指标度量](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)（示例数据设置为变量）：
 
 ```json
 {
@@ -199,11 +199,11 @@ ms.locfileid: "91341491"
 > [!IMPORTANT]
 > 使用日志警报中的跨资源查询时，必须使用 [authorizedResources](/rest/api/monitor/scheduledqueryrules/createorupdate#source) 且用户必须有权访问所述的资源列表
 
-可以使用 [Azure 资源管理器在 Azure 门户中](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署此 JSON。
+可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署该 JSON。
 
-## <a name="template-for-all-resource-types-from-api-version-2020-05-01-preview"></a>从 API 版本 2020-05-01-preview)  (的所有资源类型的模板
+## <a name="template-for-all-resource-types-from-api-version-2020-05-01-preview"></a>所有资源类型的模板（最低 API 版本为 2020-05-01-preview）
 
-所有资源类型的[计划查询规则创建](/rest/api/monitor/scheduledqueryrules/createorupdate)模板 (示例数据集作为变量) ：
+适用于所有资源类型的[计划查询规则（创建）](/rest/api/monitor/scheduledqueryrules/createorupdate)模板（示例数据设置为变量）：
 
 ```json
 {
@@ -430,11 +430,11 @@ ms.locfileid: "91341491"
 }
 ```
 
-可以使用 [Azure 资源管理器在 Azure 门户中](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署此 JSON。
+可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署该 JSON。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [日志警报](./alerts-unified-log.md)
-* 了解如何 [管理日志警报](./alerts-log.md)
-* 了解 [日志警报的 webhook 操作](./alerts-log-webhook.md)
+* 了解[日志警报](./alerts-unified-log.md)
+* 了解如何[管理日志警报](./alerts-log.md)
+* 了解[用于日志警报的 Webhook 操作](./alerts-log-webhook.md)
 * 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。

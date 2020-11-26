@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d365b13ef8fb7ed9676bb00919315dc6fc9773ee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993716"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184580"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 如果你有关键应用程序和业务流程依赖于 Azure 资源，则需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -20,7 +20,7 @@ ms.locfileid: "91993716"
 > 本文适用于 Azure 中使用 Azure Monitor 的所有服务。 计算资源（包括虚拟机和应用服务）如此处所述会生成相同的监视数据，但也有可能生成日志和指标的来宾操作系统。 要详细了解如何收集和分析此数据，请参阅这些服务的监视文档。
 
 ## <a name="what-is-azure-monitor"></a>什么是 Azure Monitor？
-Azure Monitor 是 Azure 中的一项完整堆栈监视服务，它提供了一组完整的功能来监视 Azure 资源以及其他云中和本地的资源。 [Azure Monitor 数据平台](../platform/data-platform.md)会将数据收集到可使用一组完整的监视工具一起分析的[日志](../platform/data-platform-logs.md)和[指标](../platform/data-platform-metrics.md)中。 请参阅通过 [Azure Monitor 监视](../monitor-reference.md)Azure Monitor 的应用程序和服务的完整列表。
+Azure Monitor 是 Azure 中的一项完整堆栈监视服务，它提供了一组完整的功能来监视 Azure 资源以及其他云中和本地的资源。 [Azure Monitor 数据平台](../platform/data-platform.md)将数据收集到[日志](../platform/data-platform-logs.md)和[指标](../platform/data-platform-metrics.md)中，在这两个位置可以使用一组完整的监视工具对数据进行分析。 请参阅 [Azure Monitor 监视的内容](../monitor-reference.md)，查看 Azure Monitor 可监视的应用程序和服务的完整列表。
 
 创建 Azure 资源后，Azure Monitor 会立即启用并开始收集指标和活动日志，你可在 [Azure 门户中查看和分析](#monitoring-in-the-azure-portal)这些内容。 通过某些配置，你可收集其他监视数据和启用其他功能。 要详细了解任何配置要求，请参阅下面的[监视数据](#monitoring-data)。
 
@@ -93,11 +93,11 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 
 
 ### <a name="insights-and-solutions"></a>见解和解决方案 
-某些服务将提供超出 Azure Monitor 标准功能的工具。 [见解](./insights-overview.md)提供基于 Azure Monitor 数据平台和标准功能构建的自定义监视体验。 [解决方案](./solutions.md)提供基于 Azure Monitor 日志构建的预定义监视逻辑。 
+某些服务将提供超出 Azure Monitor 标准功能的工具。 [见解](../monitor-reference.md)提供基于 Azure Monitor 数据平台和标准功能构建的自定义监视体验。 [解决方案](./solutions.md)提供基于 Azure Monitor 日志构建的预定义监视逻辑。 
 
 如果服务有 Azure Monitor 见解，可通过每项资源的菜单中的“监视”访问它。 可通过“Azure Monitor”菜单访问所有见解和解决方案。
 
-![Azure 门户中的见解](media/monitor-azure-resource/insights.png)
+![在 Azure 门户中深入分析](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>指标
 在 Azure 门户中使用[指标资源管理器](../platform/metrics-getting-started.md)分析指标，该管理器在大多数服务的“指标”菜单项中提供。 借助此工具，可使用单个指标或组合使用多个指标来确定相关性和趋势。 
@@ -119,7 +119,7 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指标，以便使用强大的查询工具进行分析。 如上所述，请创建诊断设置，将平台指标、活动日志和资源日志收集放入 Azure Monitor 中的 Log Analytics 工作区。
 
-可通过 [Log Analytics](../log-query/get-started-portal.md) 使用[日志查询](../log-query/log-query-overview.md)，这是 Azure Monitor 的一项强大功能，可使用功能完备的查询语言对日志数据进行高级分析。 从 Azure 资源的“监视”菜单中的“日志”打开 Log Analytics，将资源用作[查询范围](../log-query/scope.md#query-scope)来处理日志查询 。 这样可跨多个表仅分析该资源的数据。 使用 Azure Monitor 菜单中的“日志”来访问所有资源的日志。 
+可通过 [Log Analytics](../log-query/log-analytics-tutorial.md) 使用[日志查询](../log-query/log-query-overview.md)，这是 Azure Monitor 的一项强大功能，可使用功能完备的查询语言对日志数据进行高级分析。 从 Azure 资源的“监视”菜单中的“日志”打开 Log Analytics，将资源用作[查询范围](../log-query/scope.md#query-scope)来处理日志查询 。 这样可跨多个表仅分析该资源的数据。 使用 Azure Monitor 菜单中的“日志”来访问所有资源的日志。 
 
 - 请参阅 [Azure Monitor 中的日志查询入门](../log-query/get-started-queries.md)，通过教程了解如何使用编写日志查询时所用的查询语言。
 - 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 资源日志](../platform/resource-logs.md#send-to-log-analytics-workspace)，了解如何在 Azure Monitor 日志中收集资源日志，以及如何在查询中访问这些日志。

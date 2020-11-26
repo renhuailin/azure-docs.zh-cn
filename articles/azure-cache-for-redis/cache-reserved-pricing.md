@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 99aa4d9ed6552075b0da4d451201f48ba6adfb1b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9931dd9acb51e74c34a57b0475bca79fb9ba79cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578699"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184172"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>预付 Azure Cache for Redis 计算资源的预留容量
 
@@ -37,7 +37,7 @@ ms.locfileid: "94578699"
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>为 Redis 保留容量购买 Azure 缓存
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/)中购买保留 VM 实例。 通过[提前付款或按月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)的方式为预留付款。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/)中购买保留 VM 实例。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“所有服务” > “预订”。
@@ -53,7 +53,7 @@ ms.locfileid: "94578699"
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于为 Redis 保留容量预留支付 Azure 缓存的订阅。 订阅上的付款方式将收取用于 Redis 预留容量预留的 Azure 缓存的前期成本。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
-| 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享** ，预订折扣将应用到计费上下文中任何订阅中运行的 Redis 实例的 Azure Cache。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅** ，预订折扣将应用到此订阅中的 Redis 实例的 Azure Cache。 </br></br> **单个资源组** ，预订折扣适用于所选订阅中的 Redis 实例的 Azure 缓存，以及该订阅内的所选资源组。
+| 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，预订折扣将应用到计费上下文中任何订阅中运行的 Redis 实例的 Azure Cache。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，预订折扣将应用到此订阅中的 Redis 实例的 Azure Cache。 </br></br> **单个资源组**，预订折扣适用于所选订阅中的 Redis 实例的 Azure 缓存，以及该订阅内的所选资源组。
 | 区域 | Azure Cache 为 Redis 保留容量保留提供的 Azure 区域。
 | 定价层 | 适用于 Redis 服务器的 Azure 缓存的服务层。
 | 术语 | 一年或三年

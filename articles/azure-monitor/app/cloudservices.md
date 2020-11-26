@@ -4,12 +4,12 @@ description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992839"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186348"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../platform/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -67,7 +67,7 @@ ms.locfileid: "91992839"
 
 若要将遥测数据发送到相应的资源，可以设置 Application Insights SDK，使其根据生成配置选择不同的检测密钥。 
 
-了解如何为不同阶段 [动态地设置检测密钥](./separate-resources.md#dynamic-ikey) 。 
+了解如何为不同的阶段[动态设置检测密钥](./separate-resources.md#dynamic-ikey)。 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>为每个角色创建 Application Insights 资源
 
@@ -95,7 +95,7 @@ ms.locfileid: "91992839"
 
 这相当于将 Application Insights 检测密钥插入到名为 *ServiceConfiguration.\*.cscfg* 的文件。 下面是[示例代码](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)。
 
-若要改变发送到 Application Insights 的诊断信息级别，可以[直接编辑 *.cscfg* 文件](../platform/diagnostics-extension-to-application-insights.md)。
+若要改变发送到 Application Insights 的诊断信息级别，可以 [直接编辑 *.cscfg* 文件](../platform/diagnostics-extension-to-application-insights.md)。
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>在每个项目中安装 SDK
 使用此选项可将自定义的业务遥测添加到任何角色。 使用该选项可以更细致地分析应用的用法和性能。
@@ -104,7 +104,7 @@ ms.locfileid: "91992839"
 
 1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”  。
 
-1. 配置**辅助角色**： 
+1. 配置 **辅助角色**： 
 
     a. 右键单击项目，并选择“管理 NuGet 包”。
 
@@ -191,7 +191,7 @@ ms.locfileid: "91992839"
 
 ![Azure 诊断数据](./media/cloudservices/23-wad.png)
 
-若要在 Azure 诊断发送的各种跟踪日志中进行搜索，请使用[搜索](./diagnostic-search.md)或 [Analytics 查询](../log-query/get-started-portal.md)。 例如，假设某个未经处理的异常导致角色崩溃和回收。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用搜索来查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这样有助于找到问题的根本原因。
+若要在 Azure 诊断发送的各种跟踪日志中进行搜索，请使用[搜索](./diagnostic-search.md)或 [Analytics 查询](../log-query/log-analytics-tutorial.md)。 例如，假设某个未经处理的异常导致角色崩溃和回收。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用搜索来查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这样有助于找到问题的根本原因。
 
 ![Azure 诊断搜索](./media/cloudservices/25-wad.png)
 
@@ -249,7 +249,7 @@ ms.locfileid: "91992839"
 
 * [按此示例所示](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)，将 correlationId 设置到 CallContext 中。 本例使用请求 ID 作为 correlationId。
 * 添加自定义 TelemetryInitializer 实现，将 Operation.Id 设置为前面所设置的 correlationId。 有关示例，请参阅 [ItemCorrelationTelemetryInitializer](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。
-* 添加自定义遥测初始值设定项。 可[按此示例所示](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)，在 *ApplicationInsights.config* 文件或代码中执行此操作。
+* 添加自定义遥测初始值设定项。 可 [按此示例所示](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)，在 *ApplicationInsights.config* 文件或代码中执行此操作。
 
 ## <a name="client-telemetry"></a>客户端遥测数据
 若要获取基于浏览器的遥测数据（例如页面查看次数、页面加载时间或脚本异常）以及在页面脚本中编写自定义遥测，请参阅[将 JavaScript SDK 添加到网页][client]。

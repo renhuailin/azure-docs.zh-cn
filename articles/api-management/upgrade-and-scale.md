@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010208"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183781"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升级和缩放 Azure API 管理实例  
 
@@ -80,7 +80,7 @@ ms.locfileid: "96010208"
 若要从开发人员层缩放或缩放到开发人员层，将会出现停机时间。 否则，不会出现停机时间。 
 
 ## <a name="compute-isolation"></a>计算隔离
-如果安全要求包括 [计算隔离](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)，则可以使用 **隔离** 定价层。 此层可确保 API 管理服务实例的计算资源消耗整个物理主机，并提供支持所需的隔离级别，例如，美国国防部影响级别 5 (IL5) 工作负荷。 若要访问隔离层，请 [创建支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 
+如果安全要求包括 [计算隔离](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，则可以使用 **隔离** 定价层。 此层可确保 API 管理服务实例的计算资源消耗整个物理主机，并提供支持所需的隔离级别，例如，美国国防部影响级别 5 (IL5) 工作负荷。 若要访问隔离层，请 [创建支持票证](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
 
 

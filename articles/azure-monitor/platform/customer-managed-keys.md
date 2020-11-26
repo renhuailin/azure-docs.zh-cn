@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000719"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185957"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -72,7 +72,7 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 1. 向 Key Vault 授予权限
 1. 链接 Log Analytics 工作区
 
-Azure 门户不支持 Customer-Managed 密钥配置，并且预配是通过 [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) 或 [REST](https://docs.microsoft.com/rest/api/loganalytics/) 请求执行的。
+Azure 门户不支持 Customer-Managed 密钥配置，并且预配是通过 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 请求执行的。
 
 ### <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
@@ -107,7 +107,7 @@ Authorization: Bearer <token>
 
 ### <a name="create-cluster"></a>创建群集
 
-请遵循[“专用群集”一文](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster)中说明的过程。 
+请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
 > [!IMPORTANT]
 > 复制并保存响应，因为你在后续步骤中需要详细信息。
@@ -212,7 +212,7 @@ Content-type: application/json
 
 此操作是异步操作，可能需要一段时间才能完成。
 
-请遵循[“专用群集”一文](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)中说明的过程。
+请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)中说明的过程。
 
 ## <a name="key-revocation"></a>密钥吊销
 

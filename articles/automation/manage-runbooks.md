@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317086"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183577"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -223,7 +223,7 @@ Start-AzAutomationRunbook `
 
 1. 创建一个自动化帐户并获取[参与者角色](automation-role-based-access-control.md)。
 2. [将帐户关联到 Azure 工作区](../security-center/security-center-enable-data-collection.md).
-3. 启用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)、[更新管理](update-management/update-mgmt-overview.md)或其他自动化功能。 
+3. 启用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)、[更新管理](./update-management/overview.md)或其他自动化功能。 
 4. 如果是在 Linux 计算机上，则需要很高的权限。 登录来[关闭签名检查](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 ## <a name="test-a-runbook"></a>测试 Runbook
@@ -237,7 +237,7 @@ Start-AzAutomationRunbook `
 1. 在[文本编辑器](automation-edit-textual-runbook.md)或[图形编辑器](automation-graphical-authoring-intro.md)中打开 Runbook 的草稿版本。
 1. 单击“测试”打开测试页面。
 1. 如果 Runbook 具有参数，它们会在左窗格中列出，你可在这里提供要用于测试的值。
-1. 若要对[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)运行测试，请将“运行设置”更改为“混合辅助角色”，并选择目标组的名称 。  否则，保留默认值 **Azure** ，以在云中运行测试。
+1. 若要对[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)运行测试，请将“运行设置”更改为“混合辅助角色”，并选择目标组的名称 。  否则，保留默认值 **Azure**，以在云中运行测试。
 1. 单击“启动”，开始测试。
 1. 在测试期间，可使用“输出”窗格下面的按钮来停止或暂停 [PowerShell 工作流](automation-runbook-types.md#powershell-workflow-runbooks)或[图形](automation-runbook-types.md#graphical-runbooks) Runbook。 暂停 Runbook 时，该 Runbook 会完成它在被暂停之前正在进行的活动。 暂停 Runbook 后，可以将它停止或重启。
 1. 在“输出”窗格中检查来自 Runbook 的输出。

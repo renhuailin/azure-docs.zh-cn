@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020902"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186569"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -151,12 +151,12 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 1. 确保 Azure [区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 azure 自动缩放功能可用。
 
 ### <a name="move"></a>移动
-使用 [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置将是源区域中的自动缩放设置的副本。
+使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置将是源区域中的自动缩放设置的副本。
 
-无法移动在源区域中与自动缩放设置关联的中创建的[诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。 完成创建 autosale 设置后，你将需要在目标区域中重新创建诊断设置。 
+无法移动在源区域中与自动缩放设置关联的中创建的[诊断设置](./diagnostic-settings.md)。 完成创建 autosale 设置后，你将需要在目标区域中重新创建诊断设置。 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>详细了解如何在 Azure 区域之间移动资源
-若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅 [将资源移到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅 [将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

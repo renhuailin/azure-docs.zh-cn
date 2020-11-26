@@ -4,12 +4,12 @@ description: 智能组是警报的聚合，可帮助你降低警报噪音
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186603"
 ---
 # <a name="smart-groups"></a>智能组
 
@@ -33,7 +33,7 @@ ms.locfileid: "96012878"
 | 已确认 | 管理员已审查智能组，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个智能组后，可通过将其更改为另一种状态来重新打开它。 |
 
-[了解如何更改智能组的状态。](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+[了解如何更改智能组的状态。](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 > [!NOTE]
 >  更改智能组状态不会更改各个成员警报的状态。
@@ -58,5 +58,5 @@ ms.locfileid: "96012878"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [管理智能组](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [更改警报和智能组状态](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [管理智能组](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [更改警报和智能组状态](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

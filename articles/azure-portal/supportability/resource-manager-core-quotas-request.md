@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7486cee351880dc0465a43b1259a5f07ef31c77b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 550c011bb9f4aeb99a4dcb8da0e7ae2be4202788
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173296"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185872"
 ---
 # <a name="quota-increase-requests"></a>配额增加请求
 
@@ -24,7 +24,6 @@ ms.locfileid: "92173296"
 创建新订阅时，默认的区域个 vcpu 不能等于所有单个 VM 序列的默认 vCPU 配额之和。 这种情况可能会导致订阅的配额足以满足每个要部署的单个 VM 系列的要求。 对于所有部署，它可能缺乏足够的区域个 vcpu 配额。 在这种情况下，你将需要提交请求，以显式增加区域个 vcpu 限制。 区域个 vcpu 限制的总大小不能超过区域的所有 VM 系列上批准的配额的总和。
 
 > [!NOTE]
-> 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution)。
+> 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../../azure-resource-manager/templates/error-resource-quota.md#solution)。
 
 有关配额的详细信息，请参阅 [虚拟机 vCPU 配额](../../virtual-machines/windows/quotas.md) 、 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
-

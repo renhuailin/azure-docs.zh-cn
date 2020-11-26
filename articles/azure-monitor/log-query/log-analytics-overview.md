@@ -6,24 +6,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 26d6bcb52099b15aeeb73a36a7144c14bdf481d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ba27739ff9e9d992ffe6202629a1db19604b1409
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496700"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186110"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor Log Analytics 概述
 Log Analytics 是 Azure 门户中的一种工具，用于用 Azure Monitor 日志中的数据编辑和运行日志查询。 您可以编写一个简单的查询，该查询返回一组记录，然后使用 Log Analytics 的功能对它们进行排序、筛选和分析。 或者，您可以编写更高级的查询来执行统计分析并在图表中显示结果，以确定特定趋势。 无论你是以交互方式使用查询的结果，还是将它们与其他 Azure Monitor 功能（如日志查询警报或工作簿）一起使用，Log Analytics 是你要使用写入和测试的工具。 
 
 
 > [!TIP]
-> 本文提供了 Log Analytics 及其每项功能的说明。 若要直接转到教程，请参阅 [Log Analytics 教程](get-started-portal.md)。
+> 本文提供了 Log Analytics 及其每项功能的说明。 若要直接转到教程，请参阅 [Log Analytics 教程](./log-analytics-tutorial.md)。
 
 
 
 ## <a name="starting-log-analytics"></a>开始 Log Analytics
-从 Azure 门户的 " **Azure Monitor** " 菜单中的 " **日志** " 开始 Log Analytics。 在大多数 Azure 资源的菜单中，也会看到此选项。 无论从何处开始，它都是相同的 Log Analytics 工具。 用于启动 Log Analytics 的菜单将确定可用的数据。 如果从 " **Azure Monitor** " 菜单或 " **Log Analytics 工作区** " 菜单中启动，则可以访问工作区中的所有记录。 如果从另一种类型的资源中选择 **日志** ，则数据将被限制为该资源的日志数据。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](scope.md)。
+从 Azure 门户的 " **Azure Monitor** " 菜单中的 "**日志**" 开始 Log Analytics。 在大多数 Azure 资源的菜单中，也会看到此选项。 无论从何处开始，它都是相同的 Log Analytics 工具。 用于启动 Log Analytics 的菜单将确定可用的数据。 如果从 " **Azure Monitor** " 菜单或 " **Log Analytics 工作区** " 菜单中启动，则可以访问工作区中的所有记录。 如果从另一种类型的资源中选择 **日志** ，则数据将被限制为该资源的日志数据。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](scope.md)。
 
 [![开始 Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
@@ -91,5 +91,5 @@ Log Analytics 是 Azure 门户中的一种工具，用于用 Azure Monitor 日�
 如果你已熟悉 Azure 数据资源管理器 Web UI，Log Analytics 应熟悉。 这是因为它构建于 Azure 数据资源管理器之上，并使用相同的 Kusto 查询语言 (KQL) 。 Log Analytics 将添加特定于 Azure Monitor 的功能，如按时间范围筛选，以及从查询创建警报规则的功能。 这两种工具都包含一个资源管理器，可让你扫描可用表的结构，但 Azure 数据资源管理器 Web UI 主要适用于 Azure 数据资源管理器数据库中的表，同时 Log Analytics 与 Log Analytics 工作区中的表一起使用。 
 
 ## <a name="next-steps"></a>后续步骤
-- 演练[有关在 Azure 门户中使用 Log Analytics 的教程](get-started-portal.md)。
+- 演练[有关在 Azure 门户中使用 Log Analytics 的教程](./log-analytics-tutorial.md)。
 - 演练[有关编写查询的教程](get-started-queries.md)。

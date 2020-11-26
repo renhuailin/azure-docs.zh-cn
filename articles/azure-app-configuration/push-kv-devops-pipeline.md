@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183492"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>通过 Azure Pipelines 将设置推送到应用配置
 
@@ -23,7 +23,7 @@ ms.locfileid: "92075869"
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 应用配置资源-在 [Azure 门户](https://portal.azure.com)中免费创建一个。
 - Azure DevOps 项目- [免费创建一个](https://go.microsoft.com/fwlink/?LinkId=2014881)
-- Azure 应用配置推送任务-免费下载 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.)。
+- Azure 应用配置推送任务-免费下载 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push)。
 
 ## <a name="create-a-service-connection"></a>创建服务连接
 
@@ -32,7 +32,7 @@ ms.locfileid: "92075869"
 1. 在 Azure DevOps 中，前往包含目标管道的项目，并打开左下方的 **项目设置** 。
 1. 在 " **管道** " 下，选择 " **服务连接** "，然后在右上方选择 " **新建服务连接** "。
 1. 选择 " **Azure 资源管理器**"。
-1. 选择 " **服务主体 (自动) **。
+1. 选择 " **服务主体 (自动)**。
 1. 填写订阅和资源。 为服务连接命名。
 
 创建服务连接后，请查找分配给它的服务主体的名称。 在下一步中，你将向此服务主体添加新的角色分配。
@@ -47,7 +47,7 @@ ms.locfileid: "92075869"
 向任务中使用的凭据分配正确的应用配置角色分配，以便任务可以访问应用配置存储。
 
 1. 导航到目标应用配置存储。 
-1. 在左侧，选择 " **访问控制 (IAM") **。
+1. 在左侧，选择 " **访问控制 (IAM")**。
 1. 在顶部，选择 " **+ 添加** " 并选择 " **添加角色分配**"。
 1. 在 " **角色**" 下，选择 " **应用配置数据所有者**"。 此角色允许任务在应用配置存储中进行读取和写入。 
 1. 选择与您在上一节中创建的服务连接关联的服务主体。
@@ -56,10 +56,10 @@ ms.locfileid: "92075869"
 
 本部分介绍如何在 Azure DevOps 生成管道中使用 Azure 应用配置推送任务。
 
-1. 单击 "**管道**管道"，导航到 "生成管道" 页  >  **Pipelines**。 有关生成管道的文档可在 [此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)找到。
+1. 单击 "**管道** 管道"，导航到 "生成管道" 页  >  **Pipelines**。 有关生成管道的文档可在 [此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)找到。
       - 如果要创建新的生成管道，请选择管道右侧的 " **显示助手** "，然后搜索 " **Azure 应用配置" 推送** 任务。
       - 如果使用的是现有生成管道，请在编辑管道时导航到 " **任务** " 选项卡，然后搜索 " **Azure 应用配置** " "推送" 任务。
-2. 配置任务的必要参数，以将密钥值从配置文件推送到应用配置存储。 **配置文件路径**参数从文件存储库的根开始。
+2. 配置任务的必要参数，以将密钥值从配置文件推送到应用配置存储。 **配置文件路径** 参数从文件存储库的根开始。
 3. 保存并对生成进行排队。 生成日志将显示执行任务期间发生的任何故障。
 
 ## <a name="use-in-releases"></a>在发布中使用
@@ -70,11 +70,11 @@ ms.locfileid: "92075869"
 1. 选择现有的发布管道。 如果没有，请选择 " **+ 新建** " 以创建一个新的。
 1. 选择右上角的 " **编辑** " 按钮以编辑发布管道。
 1. 选择要添加任务的 **阶段** 。 可在 [此处](/azure/devops/pipelines/release/environments?view=azure-devops)找到有关阶段的详细信息。
-1. **+** 为该作业选择，然后在 "**部署**" 选项卡下添加 " **Azure 应用配置推送**任务"。
+1. **+** 为该作业选择，然后在 "**部署**" 选项卡下添加 " **Azure 应用配置推送** 任务"。
 1. 配置任务内的必要参数，以将你的密钥值从配置文件推送到你的应用配置存储。 参数的说明可在下面的 " **参数** " 部分和每个参数旁边的工具提示中使用。
 1. 保存并将发布排队。 版本日志将显示任务执行过程中遇到的任何故障。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 应用配置推送任务使用以下参数：
 
@@ -87,7 +87,7 @@ ms.locfileid: "92075869"
 - **标签**：作为应用配置存储中的标签添加到每个键值的字符串。
 - **内容类型**：作为应用配置存储中的内容类型添加到每个键值的字符串。
 - **标记**：格式为的 JSON 对象，用于 `{"tag1":"val1", "tag2":"val2"}` 定义添加到推送到应用配置存储的每个键值的标记。
-- **删除具有指定前缀和标签的存储中的所有其他 Key-Values**：默认值为未 **选中**状态。
+- **删除具有指定前缀和标签的存储中的所有其他 Key-Values**：默认值为未 **选中** 状态。
   - **选中**：在推送配置文件中的新键值之前，删除应用配置存储中与指定前缀和标签匹配的所有键值。
   - **Unchecked**：将配置文件中的所有键值推送到应用配置存储中，并使应用配置存储中的所有其他内容保持不变。
 
