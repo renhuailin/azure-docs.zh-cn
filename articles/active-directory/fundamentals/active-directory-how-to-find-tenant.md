@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423960"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172867"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>如何查找 Azure Active Directory 租户 ID
 
@@ -51,7 +51,7 @@ Get-AzTenant
 ## <a name="find-tenant-id-with-cli"></a>通过 CLI 查找租户 ID
 如果要使用命令行界面查找租户 ID，可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Microsoft 365 CLI](https://pnp.github.io/cli-microsoft365/)来执行此操作。 
 
-对于 Azure CLI，请使用 **az login** 、 **az account list** 或 **az account 租户列表** 之一，如以下示例中所示。 请注意每个命令的输出中每个订阅的 **tenantId** 属性。
+对于 Azure CLI，请使用 **az login**、 **az account list** 或 **az account 租户列表** 之一，如以下示例中所示。 请注意每个命令的输出中每个订阅的 **tenantId** 属性。
 
 ```azurecli-interactive
 az login
@@ -77,4 +77,4 @@ m365 tenant id get
 
 - 若要了解如何将订阅关联或添加到租户，请参阅 [将 Azure 订阅关联或添加到 Azure Active Directory 租户](active-directory-how-subscriptions-associated-directory.md)。
 
-- 若要了解如何查找对象 ID，请参阅 [查找用户对象 id](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id)。
+- 若要了解如何查找对象 ID，请参阅 [查找用户对象 id](/partner-center/find-ids-and-domain-names#find-the-user-object-id)。

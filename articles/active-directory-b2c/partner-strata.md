@@ -11,31 +11,31 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330319"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171409"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>本教程介绍如何使用阶层扩展 Azure AD B2C 以保护本地应用程序
 
 在此示例教程中，了解如何通过阶层的 [Maverics 标识协调](https://www.strata.io/maverics-identity-orchestrator/)器将 AZURE ACTIVE DIRECTORY (AD) B2C 集成。
 Maverics Identity Orchestrator 扩展 Azure AD B2C 以保护本地应用程序。 它连接到任何标识系统，以透明方式迁移用户和凭据，同步策略和配置，以及抽象化身份验证和会话管理。 使用阶层企业可以从旧到 Azure AD B2C 快速转换，而无需重写应用程序。 该解决方案具有以下优点：
 
-- **客户单一 Sign-On (SSO) 本地混合应用** ： Azure AD B2C 支持 Maverics 标识 Orchestrator 的客户 SSO。 用户以 Azure AD B2C 或社交标识提供者中承载的帐户登录 (IdP) 。 Maverics 扩展了 SSO，使其一直由旧式标识系统（如 Symantec SiteMinder）保护的应用程序。
+- **客户单一 Sign-On (SSO) 本地混合应用**： Azure AD B2C 支持 Maverics 标识 Orchestrator 的客户 SSO。 用户以 Azure AD B2C 或社交标识提供者中承载的帐户登录 (IdP) 。 Maverics 扩展了 SSO，使其一直由旧式标识系统（如 Symantec SiteMinder）保护的应用程序。
 
-- **在不重写的情况下将基于标准的 SSO 扩展到应用程序** ：使用 Azure AD B2C 管理用户访问权限，并使用 Maverics IDENTITY Orchestrator SAML 或 OIDC 连接器启用 SSO。
+- **在不重写的情况下将基于标准的 SSO 扩展到应用程序**：使用 Azure AD B2C 管理用户访问权限，并使用 Maverics IDENTITY Orchestrator SAML 或 OIDC 连接器启用 SSO。
 
-- **轻松配置** ： Azure AD B2C 提供了一个简单的分步用户界面，用于将 Maverics IDENTITY Orchestrator SAML 或 OIDC 连接器连接到 Azure AD B2C。
+- **轻松配置**： Azure AD B2C 提供了一个简单的分步用户界面，用于将 Maverics IDENTITY Orchestrator SAML 或 OIDC 连接器连接到 Azure AD B2C。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 。
+- 链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md) 。
 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)的实例，用于存储 Maverics 标识 Orchestrator 使用的机密。 它用于连接到 Azure AD B2C 或其他属性提供程序，例如轻型目录访问协议 (LDAP) 目录或数据库。
 
@@ -47,11 +47,11 @@ Maverics Identity Orchestrator 扩展 Azure AD B2C 以保护本地应用程序�
 
 阶层的 Maverics 集成包括以下组件：
 
-- **Azure AD B2C** ：负责验证用户凭据的授权服务器。 经过身份验证的用户可以使用 Azure AD B2C 目录中存储的本地帐户访问本地应用。
+- **Azure AD B2C**：负责验证用户凭据的授权服务器。 经过身份验证的用户可以使用 Azure AD B2C 目录中存储的本地帐户访问本地应用。
 
-- **外部社交或企业 IdP** ：可以是任何 OpenID connect 提供程序、Facebook、Google 或 GitHub。 请参阅有关在 Azure AD B2C 中使用 [External idp](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) 的信息。  
+- **外部社交或企业 IdP**：可以是任何 OpenID connect 提供程序、Facebook、Google 或 GitHub。 请参阅有关在 Azure AD B2C 中使用 [External idp](./technical-overview.md#external-identity-providers) 的信息。  
 
-- **阶层的 Maverics Identity Orchestrator** ：协调用户登录并以透明方式通过 HTTP 标头将标识传递到应用的服务。
+- **阶层的 Maverics Identity Orchestrator**：协调用户登录并以透明方式通过 HTTP 标头将标识传递到应用的服务。
 
 下面的体系结构关系图显示了实现。
 
@@ -75,7 +75,7 @@ Maverics Identity Orchestrator 扩展 Azure AD B2C 以保护本地应用程序�
 
 1. **注册应用程序**
 
-   a. [将 Orchestrator 注册为](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) Azure AD B2C 租户中的应用程序。
+   a. [将 Orchestrator 注册为](./tutorial-register-applications.md?tabs=app-reg-ga) Azure AD B2C 租户中的应用程序。
    >[!Note]
    >稍后在配置 Orchestrator 实例时，你将需要租户名称和标识符、客户端 ID、客户端机密、配置的声明和重定向 URI。
 
@@ -83,13 +83,13 @@ Maverics Identity Orchestrator 扩展 Azure AD B2C 以保护本地应用程序�
 
    c. 添加应用程序的重定向 URI。 此 URI 将匹配 `oauthRedirectURL` Orchestrator 的 Azure AD B2C 连接器配置的参数，例如 `https://example.com/oidc-endpoint` 。
 
-2. **创建用户流** ：创建 [签名和登录用户流](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)。
+2. **创建用户流**：创建 [签名和登录用户流](./tutorial-create-user-flows.md)。
 
-3. **添加 IdP** ：选择使用本地帐户或社交或企业 [IdP](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)登录用户。
+3. **添加 IdP**：选择使用本地帐户或社交或企业 [IdP](./tutorial-add-identity-providers.md)登录用户。
 
-4. **定义用户属性** ：定义要在注册期间收集的属性。
+4. **定义用户属性**：定义要在注册期间收集的属性。
 
-5. **指定应用程序声明** ：指定要通过 Orchestrator 实例返回到应用程序的属性。 Orchestrator 使用 Azure AD B2C 返回的声明中的属性，并且可以从其他连接的标识系统（如 LDAP 目录和数据库）中检索其他属性。 在 HTTP 标头中设置这些属性，并将其发送到上游本地应用程序。
+5. **指定应用程序声明**：指定要通过 Orchestrator 实例返回到应用程序的属性。 Orchestrator 使用 Azure AD B2C 返回的声明中的属性，并且可以从其他连接的标识系统（如 LDAP 目录和数据库）中检索其他属性。 在 HTTP 标头中设置这些属性，并将其发送到上游本地应用程序。
 
 ## <a name="configure-maverics-identity-orchestrator"></a>配置 Maverics Identity Orchestrator
 
@@ -259,7 +259,7 @@ appgateways:
 
 务必保护 Orchestrator 用于连接到 Azure AD B2C 和任何其他标识系统的机密。 默认情况下，Maverics 将以纯文本格式加载机密 `maverics.yaml` ，但在本教程中，你将使用 Azure Key Vault 作为机密提供程序。
 
-按照说明 [创建一个新的 Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) ，Orchestrator 实例会将其用作机密提供程序。 将你的机密添加到保管库，并记下 `SECRET NAME` 为每个机密提供的。 例如，`AzureADB2CClientSecret` 。
+按照说明 [创建一个新的 Key Vault](../key-vault/secrets/quick-create-portal.md) ，Orchestrator 实例会将其用作机密提供程序。 将你的机密添加到保管库，并记下 `SECRET NAME` 为每个机密提供的。 例如，`AzureADB2CClientSecret`。
 
 若要在 `maverics.yaml` 配置文件中将值声明为机密，请用尖括号将机密括起来：
 
@@ -342,6 +342,6 @@ appgateways:
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

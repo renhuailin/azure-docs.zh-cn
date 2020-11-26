@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8520afdd05ecce8604ce72596bdf06053217cc2e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441804"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173084"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -33,7 +33,7 @@ ms.locfileid: "92441804"
 
 1. 来宾收到从 Microsoft 邀请发送的[邀请电子邮件](./invitation-email-elements.md)。
 2. 来宾选择电子邮件中的“接受邀请”。
-3. 来宾将使用其自己的凭据登录到目录。 如果来宾没有可联合到目录的帐户，且未启用[电子邮件一次性密码 (OTP)](./one-time-passcode.md) 功能；系统将提示来宾创建个人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助服务帐户](../users-groups-roles/directory-self-service-signup.md)。 有关详细信息，请参阅[邀请兑换流](#invitation-redemption-flow)。
+3. 来宾将使用其自己的凭据登录到目录。 如果来宾没有可联合到目录的帐户，且未启用[电子邮件一次性密码 (OTP)](./one-time-passcode.md) 功能；系统将提示来宾创建个人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。 有关详细信息，请参阅[邀请兑换流](#invitation-redemption-flow)。
 4. 将指导来宾完成下面所述的[同意体验](#consent-experience-for-the-guest)。
 
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
@@ -74,9 +74,9 @@ ms.locfileid: "92441804"
 
 7. 如果 [已为来宾启用电子邮件一次性密码](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)，密码将通过邀请的电子邮件发送到用户。 用户将在 Azure AD 登录页面中检索并输入此密码。
 
-8. 如果已为来宾禁用电子邮件一次性密码，Azure AD 会检查域后缀，以确定它是否属于使用者帐户。 如果是这样，系统会提示用户创建个人 [Microsoft 帐户](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 否则，系统会提示用户创建 [Azure AD 自助服务帐户](../users-groups-roles/directory-self-service-signup.md)。
+8. 如果已为来宾禁用电子邮件一次性密码，Azure AD 会检查域后缀，以确定它是否属于使用者帐户。 如果是这样，系统会提示用户创建个人 [Microsoft 帐户](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 否则，系统会提示用户创建 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。
 
-9. Azure AD 尝试通过验证对电子邮件的访问权限来创建 [Azure AD 自助服务帐户](../users-groups-roles/directory-self-service-signup.md)。 通过向电子邮件发送代码，让用户检索该代码并将其提交到 Azure AD 来验证帐户。 但是，如果受邀用户的租户是联合的，或者如果在受邀用户的租户中将 AllowEmailVerifiedUsers 字段设置为 false，则用户无法完成兑换，并且流会导致错误。 有关详细信息，请参阅 [Azure Active Directory B2B 协作疑难解答](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
+9. Azure AD 尝试通过验证对电子邮件的访问权限来创建 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。 通过向电子邮件发送代码，让用户检索该代码并将其提交到 Azure AD 来验证帐户。 但是，如果受邀用户的租户是联合的，或者如果在受邀用户的租户中将 AllowEmailVerifiedUsers 字段设置为 false，则用户无法完成兑换，并且流会导致错误。 有关详细信息，请参阅 [Azure Active Directory B2B 协作疑难解答](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
 
 10. 系统会提示用户创建个人 [Microsoft 帐户 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
 

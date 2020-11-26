@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7c30bca947788e93e57f462094d51f00e338c0b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960773"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171647"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 应用程序代理以安全访问 Azure Active Directory 域服务托管域中的内部应用程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "91960773"
 
 执行以下步骤以下载 Azure AD 应用程序代理连接器。 在下一部分中，将下载的安装文件复制到应用代理 VM。
 
-1. 使用在 Azure AD 中具有*企业管理员*权限的用户帐户登录到[Azure 门户](https://portal.azure.com)。
+1. 使用在 Azure AD 中具有 *企业管理员* 权限的用户帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择门户顶部 **Azure Active Directory** ，然后选择 " **企业应用程序**"。
 1. 从左侧菜单中选择 " **应用程序代理** "。 若要创建第一个连接器并启用应用程序代理，请选择 " **下载连接器**" 链接。
 1. 在下载页上，接受许可条款和隐私协议，然后选择 " **接受条款" & 下载**。
@@ -97,7 +97,7 @@ ms.locfileid: "91960773"
 
 使用 [get-adcomputer][Get-ADComputer] 检索安装了 Azure AD 应用程序代理连接器的计算机的设置。 在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。
 
-以下示例获取有关名为 *appproxy.aaddscontoso.com*的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
+以下示例获取有关名为 *appproxy.aaddscontoso.com* 的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
@@ -120,6 +120,6 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

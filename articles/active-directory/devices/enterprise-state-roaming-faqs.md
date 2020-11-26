@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268530"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173118"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "89268530"
 
 * 主题，包括桌面主题和任务栏设置等功能。
 * Internet Explorer 设置，包括最近打开的选项卡和收藏夹。
-* Microsoft Edge 浏览器设置，如收藏夹和阅读列表**。
+* Microsoft Edge 浏览器设置，如收藏夹和阅读列表。
 * *密码*，包括 Internet 密码、Wi-Fi 配置文件等。
 * 语言首选项，包括键盘布局、系统语言、日期和时间等的设置。
 * 轻松访问功能，如高对比度主题、讲述人和放大镜。
@@ -76,16 +76,16 @@ ms.locfileid: "89268530"
 
 当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才能与每个 Azure AD 租户的 Azure Rights Management 服务进行通信。  
 
-1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（ https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) ，标记为**目录 ID**。 
-2. 使用 GUID 后，需要添加注册表项**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **。
-   从“租户 ID GUID”**** 键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
+1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（ https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) ，标记为 **目录 ID**。 
+2. 使用 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
+   从“租户 ID GUID”键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
 3. 可以通过从 AADRM 模块运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>现有 Windows 桌面应用程序的漫游设置选项有哪些？
 
 漫游仅适用于通用 Windows 应用。 有两种选项可用于在现有 Windows 桌面应用程序上启用漫游：
 
-* [桌面桥](https://aka.ms/desktopbridge)有助于将现有的 Windows 桌面应用引入到通用 Windows 平台。 在这里，只需要最少的代码更改，就可以利用 Azure AD 应用数据漫游。 桌面桥为应用提供应用标识，需要该标识才可为现有桌面应用启用应用数据漫游。
+* [桌面桥](/windows/msix/desktop/source-code-overview)有助于将现有的 Windows 桌面应用引入到通用 Windows 平台。 在这里，只需要最少的代码更改，就可以利用 Azure AD 应用数据漫游。 桌面桥为应用提供应用标识，需要该标识才可为现有桌面应用启用应用数据漫游。
 * [用户体验虚拟化 (UE-V)](/previous-versions//dn458947(v=vs.85)) 有助于为现有 Windows 桌面应用创建自定义设置模板，并为 Win32 应用启用漫游。 此选项不需要应用程发人员更改应用代码。 UE-V 仅限于已购买 Microsoft Desktop Optimization Pack 的客户的本地 Active Directory 漫游。
 
 通过 [UE-V 组策略](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)更改 Windows OS 设置和通用应用程序数据的漫游，管理员可以配置 UE-V 来漫游 Windows 桌面应用。组策略包括：
@@ -112,7 +112,7 @@ Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windo
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>如何启用或禁用漫游？
 
-在“设置”**** 应用中，转到“帐户”**** > “同步设置”****。 可在此页看到正在使用哪个帐户漫游设置，并可以启用或禁用要进行漫游的各设置组。
+在“设置”应用中，转到“帐户” > “同步设置”。 可在此页看到正在使用哪个帐户漫游设置，并可以启用或禁用要进行漫游的各设置组。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>对于在 Windows 10 中启用漫游，Microsoft 有何建议？
 

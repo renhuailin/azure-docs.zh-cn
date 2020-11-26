@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488394"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172338"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -50,9 +50,9 @@ ms.locfileid: "94488394"
 ### <a name="powershell-execution-policy"></a>PowerShell 执行策略
 Azure Active Directory Connect 在安装过程中运行已签名的 PowerShell 脚本。 确保 PowerShell 执行策略允许运行脚本。
 
-安装期间建议的执行策略为 "RemoteSigned"。
+安装期间建议的执行策略为“RemoteSigned”。
 
-有关设置 PowerShell 执行策略的详细信息，请参阅 [set-executionpolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7)。
+有关设置 PowerShell 执行策略的详细信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7)。
 
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
@@ -82,7 +82,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - [为所有具有特权访问权限的人员创建专用帐户](/windows-server/identity/securing-privileged-access/securing-privileged-access)。 管理员不应该使用高特权帐户浏览网页、查看电子邮件和执行日常工作效率任务。
 - 遵循[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的指南进行操作。 
 - 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法：[在 AADConnect 服务器上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 和[在域上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- 确保每台计算机都有唯一的本地管理员密码。 有关详细信息，请参阅[本地管理员密码解决方案 (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)，该解决方案可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (PAW) 操作环境的附加指导，请参阅[基于干净源原则的操作标准](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
+- 确保每台计算机都有唯一的本地管理员密码。 有关详细信息，请参阅[本地管理员密码解决方案 (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)，该解决方案可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (PAW) 操作环境的附加指导，请参阅[基于干净源原则的操作标准](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
 - 为具有组织信息系统的特权访问权限的所有人员实现专用的[特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。 
 - 按照以下[附加指南](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)操作，以减少 Active Directory 环境的攻击面。
 

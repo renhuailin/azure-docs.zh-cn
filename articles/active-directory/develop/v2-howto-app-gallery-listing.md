@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356342"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173373"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -36,7 +36,7 @@ ms.locfileid: "93356342"
 - 为用户提供单一登录。 使用 SSO，可让客户更轻松地使用单一登录来降低支持成本。 如果启用一次单击 SSO，则客户的 IT 管理员无需了解如何配置应用程序以在其组织中使用。 若要详细了解单一登录，请参阅[什么是单一登录？](../manage-apps/what-is-single-sign-on.md)。
 - 可以在 Microsoft 365 应用程序库、Microsoft 365 应用程序启动器和 Office.com 上的 Microsoft 搜索中发现你的应用程序。 
 - 集成的应用管理。 若要详细了解 Azure AD 中的应用管理，请参阅 [什么是应用程序管理？](../manage-apps/what-is-application-management.md)。
-- 应用可以使用 [图形 API](https://docs.microsoft.com/graph/) 来访问在 Microsoft 生态系统中推动用户工作效率的数据。
+- 应用可以使用 [图形 API](/graph/) 来访问在 Microsoft 生态系统中推动用户工作效率的数据。
 - 应用程序特定的文档与 Azure AD 团队共同生成，以便我们的共同客户更轻松地采用。
 - 为客户提供完全管理其员工和来宾身份身份验证和授权的功能。
 - 将所有帐户管理和合规性责任放入这些标识的客户所有者。
@@ -47,7 +47,7 @@ ms.locfileid: "93356342"
 - 当用户使用 Azure AD SSO 登录到应用程序并无需单独的凭据时，添加安全性和便利性。
 
 > [!TIP]
-> 当你通过购买或订阅向你的应用程序提供供其他公司使用的应用程序时，你可以让你的应用程序在其自己的 Azure 租户中提供给客户。 这称为创建多租户应用程序。 有关此概念的概述，请参阅 [Azure 中的多租户应用程序](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) 和 Azure Active Directory 中的 [租户](single-and-multi-tenant-apps.md)。
+> 当你通过购买或订阅向你的应用程序提供供其他公司使用的应用程序时，你可以让你的应用程序在其自己的 Azure 租户中提供给客户。 这称为创建多租户应用程序。 有关此概念的概述，请参阅 [Azure 中的多租户应用程序](../../dotnet-develop-multitenant-applications.md) 和 Azure Active Directory 中的 [租户](single-and-multi-tenant-apps.md)。
 
 > [!IMPORTANT]
 > 若要在 Azure AD 库中发布应用程序，你必须同意特定的条款和条件。 在开始之前，请确保阅读并同意 [条款和条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)。
@@ -162,7 +162,7 @@ Web Services 联合身份验证 (的 WS) 是一个 [行业标准](https://docs.o
 Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 ### <a name="implement-ws-fed"></a>实现 WS-Fed
-若要了解有关 ASP.NET Core 中 WS-Fed 的详细信息，请参阅 [在 ASP.NET Core 中用 WS-Federation 对用户进行身份验证](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
+若要了解有关 ASP.NET Core 中 WS-Fed 的详细信息，请参阅 [在 ASP.NET Core 中用 WS-Federation 对用户进行身份验证](/aspnet/core/security/authentication/ws-federation)。
 
 ### <a name="implement-password-vaulting"></a>实现密码保管
 
@@ -173,13 +173,13 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 需要 Azure AD 租户才能测试应用程序。 若要设置开发环境，请参阅 [快速入门：设置租户](quickstart-create-new-tenant.md)。
 
-或者，Azure AD 租户附带每个 Microsoft 365 订阅。 若要设置免费 Microsoft 365 开发环境，请参阅 [加入 Microsoft 365 开发人员计划](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program)。
+或者，Azure AD 租户附带每个 Microsoft 365 订阅。 若要设置免费 Microsoft 365 开发环境，请参阅 [加入 Microsoft 365 开发人员计划](/office/developer-program/microsoft-365-developer-program)。
 
 拥有租户后，需要启用和测试单一登录访问。 
 
 **对于 OIDC 或 Oath 应用** 程序，请将 [应用程序注册](quickstart-register-app.md) 为多租户应用程序。 在 "受支持的帐户类型" 中选择 "任何组织目录和个人 Microsoft 帐户中的帐户" 选项。
 
-**对于基于 saml 和 ws-federation 的应用程序** ，可以使用 Azure AD 中的通用 SAML 模板来 [配置基于 saml 的单一登录](../manage-apps/configure-saml-single-sign-on.md) 应用程序。
+**对于基于 saml 和 ws-federation 的应用程序**，可以使用 Azure AD 中的通用 SAML 模板来 [配置基于 saml 的单一登录](../manage-apps/configure-saml-single-sign-on.md) 应用程序。
 
 如果需要，还可以 [将单租户应用程序转换为多租户应用程序](howto-convert-app-to-be-multi-tenant.md) 。
 
@@ -209,7 +209,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft 网站上的文档
 
-当你使用 Azure Active Directory 应用程序库列出你的应用程序（该应用程序也会在 Azure Marketplace 中发布应用程序）时，Microsoft 将为我们的共同客户生成文档，其中介绍了分步过程。 可在 [此处](https://aka.ms/appstutorial)查看示例。 此文档是基于你提交到库的创建的，如果你使用 GitHub 帐户对应用程序进行更改，则可以轻松地对其进行更新。
+当你使用 Azure Active Directory 应用程序库列出你的应用程序（该应用程序也会在 Azure Marketplace 中发布应用程序）时，Microsoft 将为我们的共同客户生成文档，其中介绍了分步过程。 可在 [此处](../saas-apps/tutorial-list.md)查看示例。 此文档是基于你提交到库的创建的，如果你使用 GitHub 帐户对应用程序进行更改，则可以轻松地对其进行更新。
 
 
 ## <a name="step-5---submit-your-app"></a>步骤 5-提交应用
@@ -220,7 +220,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 如果收到 "无法正常工作" 的消息，则需要联系 [AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供要用于提交请求的电子邮件帐户。 诸如这样的业务电子邮件地址 `name@yourbusiness.com` 是首选的。 Azure AD 团队将在 Microsoft 应用程序网络门户中添加该帐户。
 
-如果你看到 "请求访问权限" 页，请填写业务理由，然后选择 " **请求访问权限** "。
+如果你看到 "请求访问权限" 页，请填写业务理由，然后选择 " **请求访问权限**"。
 
 添加帐户后，你可以登录到 Microsoft 应用程序网络门户，并通过在主页上选择 " **提交请求 (ISV)** " 磁贴来提交请求。
 
@@ -262,7 +262,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 ![在库中列出密码 SSO 应用程序](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果要实现用户预配的 [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0 终结点，请选择相应的选项。 
+如果要实现用户预配的 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 终结点，请选择相应的选项。 
 
    ![用户预配请求](./media/howto-app-gallery-listing/user-provisioning.png)
 

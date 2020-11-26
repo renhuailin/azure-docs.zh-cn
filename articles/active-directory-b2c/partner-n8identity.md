@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170916"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置 TheAccessHub 管理工具的教程
 
@@ -38,13 +38,13 @@ ms.locfileid: "93376878"
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 租户必须链接到你的 Azure 订阅。
+- [Azure AD B2C 租户](./tutorial-create-tenant.md)。 租户必须链接到你的 Azure 订阅。
 
 - TheAccessHub 管理工具环境：联系 [N8 标识](https://n8id.com/contact/) 预配新环境。
 
 - 可有可无 (LDAPs) 你要从中迁移客户数据的任何数据库或轻型目录访问协议的连接和凭据信息。
 
-- 可有可无如果希望将 TheAccessHub 管理工具集成到注册策略流，请将配置 Azure AD B2C 环境用于使用 [自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)。
+- 可有可无如果希望将 TheAccessHub 管理工具集成到注册策略流，请将配置 Azure AD B2C 环境用于使用 [自定义策略](./custom-policy-get-started.md)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -94,7 +94,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **系统管理员** "  >  **Azure AD B2C 配置**
+2. 导航到 "**系统管理员**"  >  **Azure AD B2C 配置**
 
 3. 选择 **授权连接**
 
@@ -124,7 +124,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
    c. 在 "TheAccessHub 角色" 选项卡上，查看 "托管角色" 支持人员。 这将允许用户访问 "管理同事" 视图。 用户仍需置于某个组中，或者将用户作为对客户的作用。
 
-6. 选择“提交”。
+6. 选择“提交”。 
 
 ## <a name="configure-a-new-csr-user-using-a-new-identity"></a>使用新标识配置新的 CSR 用户
 
@@ -162,9 +162,9 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 3. 选择 > **添加组**
 
-4. 输入 **组名称** 、 **组描述** 和 **组所有者**
+4. 输入 **组名称**、 **组描述** 和 **组所有者**
 
-5. 搜索并选中要成为组成员的同事上的复选框，然后选择 > **添加**
+5. 搜索并选中要成为组成员的同事上的复选框，然后选择 >**添加**
 
 6. 在页面的底部，可以看到组的所有成员。
 
@@ -180,7 +180,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 3. 选择 > **添加组织**
 
-4. 提供 **组织名称** 、 **组织所有者** 和 **父组织** 。
+4. 提供 **组织名称**、 **组织所有者** 和 **父组织**。
 
     a. 组织名称理想情况下与客户数据相对应的值。 在加载同事和客户数据时，如果在负载中提供组织的名称，则可以将同事自动置于组织中。
 
@@ -188,13 +188,13 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
     c. 父组织指明了它在本质上是其他组织的责任。
 
-5. 选择“提交”。
+5. 选择“提交”。 
 
 ### <a name="modify-the-hierarchy-via-the-tree-view"></a>通过树视图修改层次结构
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **管理器工具** "  >  **树视图**
+2. 导航到 "**管理器工具**"  >  **树视图**
 
 3. 在此表示形式中，可以可视化哪些同事和组可以管理哪些组织。
 
@@ -228,9 +228,9 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **系统管理** "  >  **数据源**
+2. 导航到 "**系统管理**"  >  **数据源**
 
-3. 选择 " **添加数据源** "
+3. 选择 "**添加数据源**"
 
 4. 为此数据源提供 **名称** 和 **类型**
 
@@ -250,7 +250,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
    f. **Query** –输入用于提取客户详细信息的 SQL 查询。 例如：``SELECT * FROM mytable;``
 
-   g. 选择 " **测试连接** "，您将看到数据的示例，以确保连接正常运行。
+   g. 选择 " **测试连接**"，您将看到数据的示例，以确保连接正常运行。
 
    **用于 LDAPs**
 
@@ -272,7 +272,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
    i. **属性** –输入要传递给 TheAccessHub 管理工具的客户记录中以逗号分隔的属性列表
 
-   j. 选择 " **测试连接** "，您将看到数据的示例，以确保连接正常运行。
+   j. 选择 " **测试连接**"，您将看到数据的示例，以确保连接正常运行。
 
    **对于 OneDrive**
 
@@ -280,7 +280,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
    b. 选择 **授权连接**
 
-   c. 新窗口会提示你登录到 **onedrive** ，并使用对你的 OneDrive 帐户具有读取访问权限的用户登录。 TheAccessHub 管理工具将为此用户执行读取 CSV 加载文件的操作。
+   c. 新窗口会提示你登录到 **onedrive**，并使用对你的 OneDrive 帐户具有读取访问权限的用户登录。 TheAccessHub 管理工具将为此用户执行读取 CSV 加载文件的操作。
 
    d. 按照提示进行操作并选择 " **接受** " 以授予 TheAccessHub 管理工具所请求的权限。
 
@@ -290,37 +290,37 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **系统管理** " "  >  **数据同步** "
+2. 导航到 "**系统管理**" "  >  **数据同步**"
 
 3. 选择 **新负载**
 
 4. 选择 " **同事" 类型** Azure AD B2C 用户
 
-5. 在弹出对话框中选择 " **源** "，选择数据源。 如果创建了 OneDrive 数据源，请选择该文件。
+5. 在弹出对话框中选择 " **源**"，选择数据源。 如果创建了 OneDrive 数据源，请选择该文件。
 
-6. 如果你不想在此负载下创建新的客户帐户，请更改第一个策略： **如果在 TheAccessHub 中找不到同事，则****不执行任何** 操作
+6. 如果你不想在此负载下创建新的客户帐户，请更改第一个策略：**如果在 TheAccessHub 中找不到同事，则****不执行任何** 操作
 
 7. 如果你不想用此负载更新现有的客户帐户，则将第二个策略更改为 **source 和 TheAccessHub 数据不匹配，然后****不执行任何** 操作
 
-8. 选择“下一步” 
+8. 选择“下一步”
 
 9. 在 **搜索映射配置** 中，我们确定如何将负载记录与已加载到 TheAccessHub 管理工具的客户关联起来。 选择源中的一个或多个标识特性。 将属性与 TheAccessHub 管理工具中保留相同值的属性相匹配。 如果找到匹配项，则将重写现有记录;否则，将创建一个新客户。 可以对多个检查进行排序。 例如，你可以先检查电子邮件，然后检查名字和姓氏。
 
-10. 在左侧菜单中，选择 " **数据映射** "。
+10. 在左侧菜单中，选择 " **数据映射**"。
 
 11. 在 Data-Mapping 配置中，分配应从源属性中填充的 TheAccessHub 管理工具属性。 无需映射所有属性。 对于现有客户，未映射的属性将保持不变。
 
 12. 如果映射到属性 org_name 其值是现有组织的名称，则创建的新客户将放置在该组织中。
 
-13. 选择“下一步” 
+13. 选择“下一步”
 
-14. 如果此负载应重复，则可以指定每日/每周或每月计划。 否则 **，请保留默认值** 。
+14. 如果此负载应重复，则可以指定每日/每周或每月计划。 否则 **，请保留默认值**。
 
 15. 选择“提交”
 
 16. 如果选择了 " **立即计划** "，则会将一个新的记录立即添加到 "数据同步" 屏幕中。 验证阶段达到100% 后，选择 **新记录** 以查看负载的预期结果。 对于计划的负载，这些记录将仅出现在计划时间之后。
 
-17. 如果没有错误，请选择 " **运行** " 以提交更改。 否则，请在 " **更多** " 菜单中选择 " **删除** " 以删除负载。 然后，可以更正源数据或加载映射，然后重试。 相反，如果错误数较小，则可以手动更新记录，并在每个记录上选择 " **更新** " 以进行更正。 最后，你可以继续处理任何错误，稍后在 TheAccessHub 管理工具中将其作为 **支持干预** 进行解决。
+17. 如果没有错误，请选择 " **运行** " 以提交更改。 否则，请在 "**更多**" 菜单中选择 "**删除**" 以删除负载。 然后，可以更正源数据或加载映射，然后重试。 相反，如果错误数较小，则可以手动更新记录，并在每个记录上选择 " **更新** " 以进行更正。 最后，你可以继续处理任何错误，稍后在 TheAccessHub 管理工具中将其作为 **支持干预** 进行解决。
 
 18. 如果 **数据同步** 记录在负载阶段变为100%，则会启动负载产生的所有更改。 客户应开始显示 Azure AD B2C 的更改。
 
@@ -332,7 +332,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **系统管理** " "  >  **数据同步** "
+2. 导航到 "**系统管理**" "  >  **数据同步**"
 
 3. 选择 **新负载**
 
@@ -340,13 +340,13 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 5. 对于 " **选项** " 步骤，请保留默认值。
 
-6. 选择“下一步” 
+6. 选择“下一步”
 
 7. 对于 " **数据映射 & 搜索** " 步骤，请保留默认值。 除非您使用作为现有组织名称的值映射到属性 **org_name** ，否则，将在该组织中放置新创建的客户。
 
-8. 选择“下一步” 
+8. 选择“下一步”
 
-9. 如果此负载应重复，则可以指定每日/每周或每月计划。 否则，保留默认值： **Now** 。 建议定期从 Azure AD B2C 同步。
+9. 如果此负载应重复，则可以指定每日/每周或每月计划。 否则，保留默认值： **Now**。 建议定期从 Azure AD B2C 同步。
 
 10. 选择“提交”
 
@@ -358,13 +358,13 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 ## <a name="configure-azure-ad-b2c-policies"></a>配置 Azure AD B2C 策略
 
-偶尔，同步 TheAccessHub 管理工具的能力限制了其状态保持 Azure AD B2C 的最新状态。 我们可以利用 TheAccessHub 管理工具的 API 和 Azure AD B2C 策略，在发生更改时通知 TheAccessHub 管理工具。 此解决方案需要 [Azure AD B2C 自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)的技术知识。 在下一部分中，我们将为你介绍一个示例策略步骤和一个安全证书，以便在 Sign-Up 自定义策略中通知 TheAccessHub 管理工具的新帐户。
+偶尔，同步 TheAccessHub 管理工具的能力限制了其状态保持 Azure AD B2C 的最新状态。 我们可以利用 TheAccessHub 管理工具的 API 和 Azure AD B2C 策略，在发生更改时通知 TheAccessHub 管理工具。 此解决方案需要 [Azure AD B2C 自定义策略](./custom-policy-get-started.md)的技术知识。 在下一部分中，我们将为你介绍一个示例策略步骤和一个安全证书，以便在 Sign-Up 自定义策略中通知 TheAccessHub 管理工具的新帐户。
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>创建安全凭据来调用 TheAccessHub 管理工具的 API
 
 1. 使用由 N8 标识提供的凭据登录到 TheAccessHub 管理工具
 
-2. 导航到 " **系统管理** "  >  **管理工具**  >  **API 安全性**
+2. 导航到 "**系统管理**"  >  **管理工具**  >  **API 安全性**
 
 3. 选择 **生成**
 
@@ -372,7 +372,7 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 5. 选择 " **下载** " 以获取客户端证书。
 
-6. 按照本 [教程](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication ) ，将客户端证书添加到 Azure AD B2C 中。
+6. 按照本 [教程](./secure-rest-api.md#https-client-certificate-authentication ) ，将客户端证书添加到 Azure AD B2C 中。
 
 ### <a name="retrieve-your-custom-policy-examples"></a>检索自定义策略示例
 
@@ -386,12 +386,12 @@ TheAccessHub 管理工具使用 Microsoft 图形 API 来读取和更改你的目
 
 5. 选择 " **下载** " 以获取一个 zip 文件，其中包含在客户注册时将客户添加到 TheAccessHub 管理工具的基本策略。
 
-6. 按照本 [教程](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) 开始在 Azure AD B2C 中设计自定义策略。
+6. 按照本 [教程](./custom-policy-get-started.md) 开始在 Azure AD B2C 中设计自定义策略。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

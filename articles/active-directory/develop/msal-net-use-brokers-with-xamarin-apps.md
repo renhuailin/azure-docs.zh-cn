@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068520"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173424"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -165,7 +165,7 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
 ### <a name="step-7-add-a-redirect-uri-to-your-app-registration"></a>步骤 7：向应用注册中添加重定向 URI
 
-使用中介时，需要满足重定向 URI 的额外要求。 重定向 URI __ 必须采用以下格式：
+使用中介时，需要满足重定向 URI 的额外要求。 重定向 URI 必须采用以下格式：
 
 ```csharp
 $"msauth.{BundleId}://auth"
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>步骤 4：向应用注册中添加重定向 URI
 
-MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，需要使用 [Azure 门户](https://portal.azure.com)为应用注册一个**重定向 URI**。
+MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，需要使用 [Azure 门户](https://portal.azure.com)为应用注册一个 **重定向 URI**。
 
 应用程序的重定向 URI 的格式依赖于用于对 APK 进行签名的证书。 例如：
 
@@ -315,7 +315,7 @@ URI 的最后一部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是签署 APK 时使用�
 
 例如，如果你的重定向 URI 为 `msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=`，则清单应当类似于以下 XML 代码片段。
 
-`android:path` 值中签名前面的正斜杠 (`/`) 是**必需的**。
+`android:path` 值中签名前面的正斜杠 (`/`) 是 **必需的**。
 
 ```xml
 <!-- NOTE the SLASH (required) that prefixes the signature value in the path attribute.

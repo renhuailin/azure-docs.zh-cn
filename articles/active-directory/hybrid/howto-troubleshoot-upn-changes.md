@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319837"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172225"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中规划用户主体名称更改并进行故障排除
 
@@ -57,9 +57,9 @@ Bsimon@contoso.com到Britta.Simon@contoso.com
 
     例如，如果某个人更改了部门，则可以更改其域： 
 
-   * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
+   * Britta.Simon@contoso.com 至 Britta.Simon@contosolabs.com <br>
      或<br>
-    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.com 至 Britta.Simon@labs.contoso.com 
 
 建议在每次更新用户的主要电子邮件地址时更改用户的 UPN。
 
@@ -174,7 +174,7 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 
 * 通过推送通知或验证码进行多重身份验证
 
-* 作为 iOS 和 Android 设备上的身份验证代理，以便为使用[中转身份验证](../develop/brokered-auth.md)的应用程序提供单一登录
+* 作为 iOS 和 Android 设备上的身份验证代理，以便为使用[中转身份验证](../develop/msal-android-single-sign-on.md)的应用程序提供单一登录
 
 * 设备注册 (也称为 Workplace Join) Azure AD，这是其他功能（如 Intune 应用保护和设备注册/管理）的要求。
 

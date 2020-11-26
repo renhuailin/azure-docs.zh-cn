@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577118"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172850"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 身份验证-Kerberos 约束委派与 Azure Active Directory
 
@@ -36,24 +36,23 @@ Azure Active Directory 应用程序代理可以提供单一登录 (SSO) 和远�
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：访问应用程序代理提供的旧版应用程序。
+* **用户**：访问应用程序代理提供的旧版应用程序。
 
-* **Web 浏览器** ：用户与之交互以访问应用程序外部 URL 的组件。
+* **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的组件。
 
-* **Azure AD** ：对用户进行身份验证。 
+* **Azure AD**：对用户进行身份验证。 
 
-* **应用程序代理服务** ：充当反向代理，用于将请求从用户发送到本地应用程序。 它位于 Azure AD。 应用程序代理还可以强制实施任何条件性访问策略。
+* **应用程序代理服务**：充当反向代理，用于将请求从用户发送到本地应用程序。 它位于 Azure AD。 应用程序代理还可以强制实施任何条件性访问策略。
 
-* **应用程序代理连接器** ：在 Windows server 上安装在本地，以提供与应用程序的连接。 返回 Azure AD 的响应。 与 Active Directory 执行 KCD 协商，模拟用户以获取应用程序的 Kerberos 令牌。
+* **应用程序代理连接器**：在 Windows server 上安装在本地，以提供与应用程序的连接。 返回 Azure AD 的响应。 与 Active Directory 执行 KCD 协商，模拟用户以获取应用程序的 Kerberos 令牌。
 
-* **Active Directory** ：将应用程序的 Kerberos 令牌发送到应用程序代理连接器。
+* **Active Directory**：将应用程序的 Kerberos 令牌发送到应用程序代理连接器。
 
 * **旧版应用** 程序：从应用程序代理接收用户请求的应用程序。 旧应用程序将响应返回到应用程序代理连接器。
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>通过 Azure AD (KCD) 实现 Windows 身份验证
 
-* [使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd) 
+* [使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../manage-apps/application-proxy-add-on-premises-application.md)
 
- 

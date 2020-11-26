@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91ffe721cbaf2061c0ded70a150fbc410af955
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 1b24989c32c0c385f8ad41d73dacba41bb7eef79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503086"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173237"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -177,8 +177,8 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 若要详细了解通过组进行许可证管理的其他方案，请参阅以下部分：
 
 * [Azure Active Directory 中基于组的许可是什么？](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [将许可证分配到 Azure Active Directory 中的组](../users-groups-roles/licensing-groups-assign.md)
+* [将许可证分配到 Azure Active Directory 中的组](./licensing-groups-assign.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-* [Azure Active Directory 基于组的许可的其他方案](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](./licensing-group-advanced.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

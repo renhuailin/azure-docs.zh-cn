@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578903"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172463"
 ---
 # <a name="directory-synchronization"></a>目录同步
 
@@ -40,22 +40,22 @@ ms.locfileid: "94578903"
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：使用 Azure AD 访问应用程序。
+* **用户**：使用 Azure AD 访问应用程序。
 
-* **Web 浏览器** ：用户与之交互以访问应用程序外部 URL 的组件。
+* **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的组件。
 
-* **应用程序** ：依赖于使用 Azure AD 进行身份验证和授权的 Web 应用。
+* **应用程序**：依赖于使用 Azure AD 进行身份验证和授权的 Web 应用。
 
-* **Azure AD** ：通过 Azure AD Connect 同步组织本地目录中的标识信息。 
+* **Azure AD**：通过 Azure AD Connect 同步组织本地目录中的标识信息。 
 
-* **Azure AD Connect** ：用于将本地标识基础结构连接到 Microsoft Azure AD 的工具。 向导和引导式体验有助于部署和配置连接所需的先决条件和组件，包括从 Active Directory 到 Azure AD 的同步和登录。 
+* **Azure AD Connect**：用于将本地标识基础结构连接到 Microsoft Azure AD 的工具。 向导和引导式体验有助于部署和配置连接所需的先决条件和组件，包括从 Active Directory 到 Azure AD 的同步和登录。 
 
-* **Active Directory** ：Active Directory 是大多数 Windows Server 操作系统中包含的一项目录服务。 运行 Active Directory 域服务 (AD DS) 的服务器称为域控制器。 它们对域中的所有用户和计算机进行身份验证和授权。
+* **Active Directory**：Active Directory 是大多数 Windows Server 操作系统中包含的一项目录服务。 运行 Active Directory 域服务 (AD DS) 的服务器称为域控制器。 它们对域中的所有用户和计算机进行身份验证和授权。
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>使用 Azure AD 实现目录同步
 
-* [什么是标识预配？](https://docs.microsoft.com/azure/active-directory/cloud-provisioning/what-is-provisioning) 
+* [什么是标识预配？](../cloud-provisioning/what-is-provisioning.md) 
 
-* [混合标识目录集成工具](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [混合标识目录集成工具](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Azure AD Connect 安装路线图](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap)
+* [Azure AD Connect 安装路线图](../hybrid/how-to-connect-install-roadmap.md)

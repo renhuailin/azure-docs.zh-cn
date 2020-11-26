@@ -13,16 +13,16 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166427"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173390"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
-可以在 [Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c) 中使用 MSAL.NET 通过社交标识将用户登录。 Azure AD B2C 是围绕策略这一概念构建的。 在 MSAL.NET 中，指定策略相当于提供颁发机构。
+可以在 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) 中使用 MSAL.NET 通过社交标识将用户登录。 Azure AD B2C 是围绕策略这一概念构建的。 在 MSAL.NET 中，指定策略相当于提供颁发机构。
 
 - 实例化公共客户端应用程序时，需要将策略指定为颁发机构的一部分。
 - 需要应用策略时，请调用一个接受 `authority` 参数的 `AcquireTokenInteractive` 的重写。

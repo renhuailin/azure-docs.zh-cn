@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5bd6a5c8af117bf6cb39969a5f1b1f17ff08681c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576926"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172816"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Azure Active Directory 的基于密码的身份验证
 
@@ -35,20 +35,19 @@ ms.locfileid: "94576926"
 
 ## <a name="components-of-system"></a>系统组件
 
-* **用户** ：从 "我的应用程序" 或通过直接访问站点来访问基于格式的应用程序。 
+* **用户**：从 "我的应用程序" 或通过直接访问站点来访问基于格式的应用程序。 
 
-* **Web 浏览器** ：用户与之交互以访问应用程序外部 URL 的组件。 用户通过 MyApps 扩展访问基于窗体的应用程序。 
+* **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的组件。 用户通过 MyApps 扩展访问基于窗体的应用程序。 
 
-* **MyApps 扩展** ：标识已配置的基于密码的 SSO 应用程序，并向登录表单提供凭据。 在 web 浏览器上安装 MyApps 扩展。 
+* **MyApps 扩展**：标识已配置的基于密码的 SSO 应用程序，并向登录表单提供凭据。 在 web 浏览器上安装 MyApps 扩展。 
 
-* **Azure AD** ：对用户进行身份验证。
+* **Azure AD**：对用户进行身份验证。
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>实现 Azure AD 的基于密码的 SSO
 
-* [什么是基于密码的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 
+* [什么是基于密码的 SSO](../manage-apps/what-is-single-sign-on.md) 
 
-* [为云应用程序配置基于密码的 SSO ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications)
+* [为云应用程序配置基于密码的 SSO ](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
-* [用应用程序代理为本地应用程序配置基于密码的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)
+* [用应用程序代理为本地应用程序配置基于密码的 SSO](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 
- 

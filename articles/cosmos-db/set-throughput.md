@@ -6,17 +6,17 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917250"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170814"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中的预配吞吐量简介
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 允许对数据库和容器设置预配吞吐量。 有两种类型的预配吞吐量：标准（手动）或自动缩放。 本文概述预配吞吐量的工作原理。 
+Azure Cosmos DB 允许对数据库和容器设置预配吞吐量。 有两种类型的预配吞吐量：标准（手动）或自动缩放。 本文概述了预配吞吐量的工作原理。 
 
 Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不限架构的容器。 Azure Cosmos 容器是吞吐量和存储的缩放单元。 容器跨 Azure 区域中的一组计算机水平分区，并分布在与 Azure Cosmos 帐户关联的所有 Azure 区域之间。
 
@@ -37,11 +37,11 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 出现速率限制时，可以增大整个容器的预配吞吐量，或重试操作。 还应确保选择均匀分配存储和请求卷的分区键。 有关分区的详细信息，请参阅 [ Azure Cosmos DB 中的分区和横向缩放](partitioning-overview.md)。
 
-如果希望容器可预测性能，建议在容器粒度配置吞吐量。
+如果你希望容器的性能可预测，建议你以容器粒度配置吞吐量。
 
 下图显示了物理分区如何托管容器的一个或多个逻辑分区：
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="承载一个或多个容器逻辑分区的物理分区" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="承载着容器的一个或多个逻辑分区的物理分区" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>对数据库设置吞吐量
 
@@ -73,7 +73,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果工作负荷涉及到删除数据库中的所有集合并重新创建集合，则我们建议删除空数据库，再重新创建新的数据库，然后创建集合。 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="承载一个或多个属于不同容器的逻辑分区的物理分区 " border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="承载着一个逻辑分区或属于不同容器的多个逻辑分区的物理分区" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>对数据库和容器设置吞吐量
 
@@ -96,50 +96,50 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> 当前预配的吞吐量
 
-可以在 Azure 门户中或使用 Sdk 检索容器或数据库的预配吞吐量：
+可以通过 Azure 门户或 SDK 来检索容器或数据库的预配吞吐量：
 
-* .NET SDK 中的[ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) 。
-* Java SDK 上的[ReadThroughput CosmosContainer](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) 。
+* .NET SDK 上的 [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true)。
+* Java SDK 上的 [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true)。
 
-这些方法的响应还包含容器或数据库的 [最小预配吞吐量](concepts-limits.md#storage-and-database-operations) ：
+这些方法的响应还包含容器或数据库的[最小预配吞吐量](concepts-limits.md#storage-and-database-operations)：
 
-* .NET SDK 中的[MinThroughput ThroughputResponse](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) 。
-* [ThroughputResponse. getMinThroughput ( ](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) Java SDK 上的 # B1。
+* .NET SDK 上的 [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true)。
+* Java SDK 上的 [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true)。
 
-实际的最小 RU/s 可能因帐户配置而异。 但一般情况下，它的最大值为：
+实际的最小 RU/s 可能因帐户配置而异。 但一般情况下，它为最大值：
 
 * 400 RU/s 
 * 如果容器或数据库包含的数据超过 1 TB，则当前存储采用 GB * 10 RU/s (，请参阅 [高存储/低吞吐量计划](#high-storage-low-throughput-program)) 
 * 数据库或容器上预配的最高 RU/s / 100
 
-### <a name="changing-the-provisioned-throughput"></a>更改预配的吞吐量
+### <a name="changing-the-provisioned-throughput"></a>更改预配吞吐量
 
-可以通过 Azure 门户或使用 Sdk 来缩放容器或数据库的预配吞吐量：
+可以通过 Azure 门户或 SDK 来缩放容器或数据库的预配吞吐量：
 
-* .NET SDK 中的[ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 。
-* Java SDK 上的[ReplaceThroughput CosmosContainer](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) 。
+* .NET SDK 上的 [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)。
+* Java SDK 上的 [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true)。
 
-如果要 **降低预配的吞吐量**，则可以完成最 [小值](#current-provisioned-throughput)。
+如果你 **减小预配吞吐量**，则最多可以将其减小到 [最小值](#current-provisioned-throughput)。
 
-如果你正在 **增加预配的吞吐量**，则在大多数情况下，操作是即时的。 但在某些情况下，操作可能需要较长的时间，因为系统任务要设置所需的资源。 在这种情况下，如果尝试在此操作正在进行时修改预配的吞吐量，则会生成一个 HTTP 423 响应，并会出现一条错误消息，说明正在进行另一个缩放操作。
+如果你 **增大预配吞吐量**，则在大多数情况下，操作是即时的。 但是在某些情况下，由于系统任务的原因，该操作可能需要较长的时间来预配所需的资源。 在这种情况下，如果尝试在此操作正在进行时修改预配的吞吐量，则会生成一个 HTTP 423 响应，并会出现一条错误消息，指出另一个缩放操作正在进行。
 
 > [!NOTE]
-> 如果你正在计划非常大的引入工作负载，该工作负荷将需要更大的预配吞吐量，请记住，缩放操作没有 SLA，如前一段所述，当增加时，可能需要较长时间。 你可能想要提前规划并在工作负荷开始之前开始缩放，并使用以下方法来检查进度。
+> 如果你正在规划非常大的引入工作负荷，并且该工作负荷需要大大增加预配的吞吐量，则请记住：缩放操作没有 SLA，当增加量很大时可能需要很长时间，如上一段所述。 你可能需要提前规划并在工作负荷启动之前开始缩放，同时使用以下方法来检查进度。
 
-您可以通过阅读 [当前预配的吞吐量](#current-provisioned-throughput) 并使用以下内容以编程方式检查缩放进度：
+你可以通过编程方式检查缩放进度，方法是：读取[当前预配的吞吐量](#current-provisioned-throughput)并使用以下项：
 
-* .NET SDK 中的[IsReplacePending ThroughputResponse](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) 。
-* [ThroughputResponse. isReplacePending ( ](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) Java SDK 上的 # B1。
+* .NET SDK 上的 [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true)。
+* Java SDK 上的 [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true)。
 
 可以使用 [Azure Monitor 指标](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)来查看资源上预配吞吐量 (RU/s) 和存储的历史记录。
 
 ## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> 高存储/低吞吐量计划
 
-如以上 " [当前预配的吞吐量](#current-provisioned-throughput) " 一节中所述，可以在容器或数据库上预配的最小吞吐量取决于多个因素。 其中一个是当前存储的数据量，因为 Azure Cosmos DB 强制实施每 GB 存储 10 RU/秒的最小吞吐量。
+如上面的[当前的预配的吞吐量](#current-provisioned-throughput)部分所述，可以在容器或数据库上预配的最小吞吐量取决于许多因素。 其中一个因素是当前存储的数据量，因为 Azure Cosmos DB 强制实施每 GB 存储 10 RU/秒的最小吞吐量。
 
-如果需要存储大量数据，但吞吐量要求较低，则需要考虑到这一点。 为了更好地适应这些方案，Azure Cosmos DB 引入了一个 **"高存储/低吞吐量" 程序** ，可将合格帐户的每 GB 的每 GB 限制从10减少到1。
+如果需要存储大量数据，但吞吐量要求相对较低，则这可能是个问题。 为了更好地适应这些方案，Azure Cosmos DB 引入了一个 **"高存储/低吞吐量" 程序** ，可减少对符合条件的帐户的每 GB 的 RU/秒限制。
 
-目前，你的帐户中至少需要有 1 TB 的数据，才能获得资格。 若要加入此计划并评估你的完全资格，你只需填写 [此调查](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)。 然后，Azure Cosmos DB 团队将跟进并继续进行加入。
+目前，你若要获得资格，你的帐户中至少需要有 1 个包含 1 TB 以上数据的容器或共享吞吐量数据库。 若要加入此计划并评估你是否完全符合资格，只需填写[此调查](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)即可。 然后，Azure Cosmos DB 团队会跟进处理你的加入事宜。
 
 ## <a name="comparison-of-models"></a>模型比较
 下表显示了对数据库与容器预配标准（手动）吞吐量时的差异比较。 

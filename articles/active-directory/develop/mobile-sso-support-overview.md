@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634848"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173458"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>支持你开发的移动应用中的单一登录和应用保护策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "94634848"
 
 ### <a name="use-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 
 
-在应用程序中实现单一登录的最佳选择是使用 [Microsoft 身份验证库 (MSAL) ](msal-overview.md)。 通过使用 MSAL，你可以通过最少的代码和 API 调用向应用添加身份验证，获取 [Microsoft 标识平台](/azure/active-directory/develop/)的全部功能，并让 Microsoft 处理安全身份验证解决方案的维护。 默认情况下，MSAL 会为应用程序添加 SSO 支持。 此外，如果还计划实施应用保护策略，则需要使用 MSAL。
+在应用程序中实现单一登录的最佳选择是使用 [Microsoft 身份验证库 (MSAL) ](msal-overview.md)。 通过使用 MSAL，你可以通过最少的代码和 API 调用向应用添加身份验证，获取 [Microsoft 标识平台](./index.yml)的全部功能，并让 Microsoft 处理安全身份验证解决方案的维护。 默认情况下，MSAL 会为应用程序添加 SSO 支持。 此外，如果还计划实施应用保护策略，则需要使用 MSAL。
 
 > [!NOTE]
 > 可以将 MSAL 配置为使用嵌入的 web 视图。 这会阻止单一登录。 使用默认行为 (即，系统 web 浏览器) 以确保 SSO 正常工作。
@@ -64,7 +64,7 @@ Apple 在 iOS 应用程序中提供了执行此操作的指南： [通过 Web �
 
 若要启用应用保护策略，请使用 [ (MSAL) 的 Microsoft 身份验证库 ](msal-overview.md)。 MSAL 是 Microsoft 标识平台的身份验证和授权库，并开发了 Intune SDK 来与它一起工作。
 
-此外，必须使用代理应用进行身份验证。 代理要求该应用提供应用程序和设备信息，以确保应用程序符合性。 iOS 用户将使用 [Microsoft Authenticator 应用程序](../user-help/user-help-auth-app-sign-in.md) ，Android 用户将使用 Microsoft Authenticator 应用或 [公司门户应用程序](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) 进行 [中转身份验证](brokered-auth.md)。 默认情况下，MSAL 使用 broker 作为其第一次选择来完成身份验证请求，因此，在使用 MSAL 时，将自动为应用启用使用代理进行身份验证。
+此外，必须使用代理应用进行身份验证。 代理要求该应用提供应用程序和设备信息，以确保应用程序符合性。 iOS 用户将使用 [Microsoft Authenticator 应用程序](../user-help/user-help-auth-app-sign-in.md) ，Android 用户将使用 Microsoft Authenticator 应用或 [公司门户应用程序](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) 进行 [中转身份验证](./msal-android-single-sign-on.md)。 默认情况下，MSAL 使用 broker 作为其第一次选择来完成身份验证请求，因此，在使用 MSAL 时，将自动为应用启用使用代理进行身份验证。
 
 最后， [将 INTUNE SDK 添加](/mem/intune/developer/app-sdk-get-started) 到应用以启用应用保护策略。 大多数情况下，SDK 都遵循截取模式，会自动应用应用保护策略，以确定是否允许应用执行的操作。 此外，还可以手动调用 Api 来告知应用是否对某些操作有限制。
 
@@ -73,8 +73,8 @@ Apple 在 iOS 应用程序中提供了执行此操作的指南： [通过 Web �
 - [规划 Azure Active Directory 单一登录部署](../manage-apps/plan-sso-deployment.md)
 - [如何：在 macOS 和 iOS 上配置 SSO](single-sign-on-macos-ios.md)
 - [适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）](apple-sso-plugin.md)
-- [Android 中的中介身份验证](brokered-auth.md)
-- [授权代理以及如何启用它们](authorization-agents.md)
+- [Android 中的中介身份验证](./msal-android-single-sign-on.md)
+- [授权代理以及如何启用它们](./msal-android-single-sign-on.md)
 - [Microsoft Intune App SDK 入门](/mem/intune/developer/app-sdk-get-started)
 - [配置 Intune App SDK 设置](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [受 Microsoft Intune 保护的应用](/mem/intune/apps/apps-supported-intune-apps)

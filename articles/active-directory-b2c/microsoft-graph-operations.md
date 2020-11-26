@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9db46d13c9a798204958a7c295df9cca169fc08f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954029"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170933"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C 的 Microsoft Graph 操作
 
@@ -36,12 +36,12 @@ ms.locfileid: "94954029"
 
 ## <a name="user-phone-number-management"></a>用户电话号码管理
 
-- [添加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
-- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
-- [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
-- [删除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+- [添加](/graph/api/authentication-post-phonemethods)
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [更新](/graph/api/b2cauthenticationmethodspolicy-update)
+- [删除](/graph/api/phoneauthenticationmethod-delete)
 
-有关使用 Microsoft Graph API 管理用户登录电话号码的详细信息，请参阅 [B2C 身份验证方法](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)。
+有关使用 Microsoft Graph API 管理用户登录电话号码的详细信息，请参阅 [B2C 身份验证方法](/graph/api/resources/b2cauthenticationmethodspolicy)。
 
 ## <a name="identity-providers-user-flow"></a>标识提供者（用户流）
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443596"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173183"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
@@ -152,7 +152,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > 可以使用相同的原则来调用任何 Web API。
 >
-> 大多数 Azure Web API 都提供了可简化 API 调用的 SDK，Microsoft Graph 就是这样。 例如，如果需要一个使用 Microsoft.Identity.Web 和 Azure 存储 SDK 的 Web 应用的示例，请参阅[创建一个授权使用 Azure AD 访问 Blob 存储的 Web 应用程序](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet)。
+> 大多数 Azure Web API 都提供了可简化 API 调用的 SDK，Microsoft Graph 就是这样。 例如，如果需要一个使用 Microsoft.Identity.Web 和 Azure 存储 SDK 的 Web 应用的示例，请参阅[创建一个授权使用 Azure AD 访问 Blob 存储的 Web 应用程序](../../storage/common/storage-auth-aad-app.md?tabs=dotnet&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 # <a name="java"></a>[Java](#tab/java)
 

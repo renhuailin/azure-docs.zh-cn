@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903706"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172629"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>将所有应用与 Azure AD 集成的五个步骤
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) 包含了包含数千个预先集成的应用�
 - [AWS](../saas-apps/amazon-web-service-tutorial.md)
 - [Slack](../saas-apps/slack-tutorial.md)
 
-此外，你还可以将 [不在库中的应用](../manage-apps/view-applications-portal.md)程序（包括你的组织中已存在的任何应用程序）或不属于 Azure AD 库的供应商的任何第三方应用程序集成在一起。 如果应用程序不在库中，也可以 [将其添加到库](../azuread-dev/howto-app-gallery-listing.md) 。
+此外，你还可以将 [不在库中的应用](../manage-apps/view-applications-portal.md)程序（包括你的组织中已存在的任何应用程序）或不属于 Azure AD 库的供应商的任何第三方应用程序集成在一起。 如果应用程序不在库中，也可以 [将其添加到库](../develop/v2-howto-app-gallery-listing.md) 。
 
 最后，你还可以将内部开发的应用进行集成。 这将在本指南的第5步中介绍。
 

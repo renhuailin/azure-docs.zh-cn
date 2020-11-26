@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992841"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170610"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -140,9 +140,9 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 诊断设置定义要将资源的日志和指标发送到的位置。 可能的目标为：
 
-- [Azure 存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 解决方案
-- [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Azure 存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [事件中心](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 解决方案
+- [Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 在此示例中，我们使用 "Log Analytics" 工作区来创建仪表板。
 
@@ -180,7 +180,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 日志查询可帮助你充分利用 Azure Monitor 日志中收集的数据的价值。 使用功能强大的查询语言，只需编写极少量的代码即可联接多个表中的数据、聚合大型数据集，以及执行复杂的操作。 只要收集了支持数据，并且你了解如何构造适当的查询，就几乎能够解答任何问题和执行分析。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
 
 1. 从 **Log Analytics 工作区** 中，选择 "**日志**"
-1. 在查询编辑器中，粘贴以下 [Kusto 查询语言](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 查询。 此查询显示过去 x 天内按操作列出的策略使用情况。 默认持续时间设置为90天 (90d) 。 请注意，查询仅集中于由策略颁发的令牌/代码的操作。
+1. 在查询编辑器中，粘贴以下 [Kusto 查询语言](/azure/data-explorer/kusto/query/) 查询。 此查询显示过去 x 天内按操作列出的策略使用情况。 默认持续时间设置为90天 (90d) 。 请注意，查询仅集中于由策略颁发的令牌/代码的操作。
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 1. 选择“保存”。
 
-还可以通过使用 [render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 运算符更改查询以实现数据的可视化。
+还可以通过使用 [render](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 运算符更改查询以实现数据的可视化。
 
 ```kusto
 AuditLogs

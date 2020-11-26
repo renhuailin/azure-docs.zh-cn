@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490349"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170820"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 无服务器（预览版）
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,8 +33,7 @@ Azure Cosmos DB 无服务器让你以一种基于消耗的方式使用 Azure Cos
 
 Azure Cosmos DB 无服务器最适合你预计会出现以下情况的方案：
 
-- 低流量：因为在这类情况下预配容量不是必需的，并且可能会导致成本高昂
-- 中等突发性：因为无服务器容器每秒最多可提供 5,000 个请求单位
+- **低、间歇和不可预测的流量**：由于此类情况下的预配容量不是必需的，并且可能会导致成本高昂
 - 中等性能：因为无服务器容器具有[特定性能特征](#performance)
 
 出于这些原因，对于以下类型的工作负荷，应考虑使用 Azure Cosmos DB 无服务器：
@@ -62,7 +61,6 @@ Azure Cosmos DB 无服务器最适合你预计会出现以下情况的方案：
     - 创建无服务器容器时，不能传递任何吞吐量，否则会返回错误。
     - 不能读取或更新无服务器容器的吞吐量，否则会返回错误。
     - 不能在无服务器帐户中创建共享吞吐量数据库，否则会返回错误。
-- 无服务器容器可以提供的最大突发吞吐量为每秒 5,000 个请求单位。
 - 无服务器容器最多可存储 50 GB 的数据和索引。
 
 ## <a name="monitoring-your-consumption"></a>监视消耗量
@@ -79,8 +77,8 @@ Azure Cosmos DB 无服务器最适合你预计会出现以下情况的方案：
 
 无服务器资源会产生与预配吞吐量资源提供的性能特征不同的特定性能特征：
 
-- **可用性** ：在无服务器产品/服务公开发布之后，如果未使用可用性区域（区域冗余），则无服务器容器可用性的服务级别协议 (SLA) 为 99.9%。 使用可用性区域时，SLA 为 99.99%。
-- **延迟** ：在无服务器产品/服务公开发布之后，无服务器容器延迟的服务级别目标 (SLO) 对于点读取为 10 毫秒或更少，对于写入为 30 毫秒或更少。 点读取操作包含按其 ID 和分区键值提取单个项。
+- **可用性**：在无服务器产品/服务公开发布之后，如果未使用可用性区域（区域冗余），则无服务器容器可用性的服务级别协议 (SLA) 为 99.9%。 使用可用性区域时，SLA 为 99.99%。
+- **延迟**：在无服务器产品/服务公开发布之后，无服务器容器延迟的服务级别目标 (SLO) 对于点读取为 10 毫秒或更少，对于写入为 30 毫秒或更少。 点读取操作包含按其 ID 和分区键值提取单个项。
 - 突发性：在无服务器产品/服务公开发布之后，无服务器容器突发性的服务级别目标 (SLO) 为 95%。 这意味着至少在 95% 的时间内可以获得最大突发性。
 
 > [!NOTE]
