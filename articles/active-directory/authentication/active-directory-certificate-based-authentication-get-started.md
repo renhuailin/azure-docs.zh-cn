@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965618"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174558"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "91965618"
 本主题：
 
 - 提供为 Office 365 企业版、商业版和教育版以及美国政府计划中租户的用户配置并使用基于证书的身份验证的步骤。 可在 Office 365 China（Office 365 中国版）、Office 365 US Government Defense（Office 365 美国政府国防版）和 Office 365 US Government Federal（Office 365 美国政府联邦版）计划中使用此功能。
-- 假设已配置[公钥基础结构 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) 和 [AD FS](../hybrid/how-to-connect-fed-whatis.md)。
+- 假设已配置[公钥基础结构 (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) 和 [AD FS](../hybrid/how-to-connect-fed-whatis.md)。
 
 ## <a name="requirements"></a>要求
 
@@ -158,7 +158,7 @@ ms.locfileid: "91965618"
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 
-若要确保撤销仍然有效，必须将 CRL 的**生效日期**设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
+若要确保撤销仍然有效，必须将 CRL 的 **生效日期** 设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
 
 以下步骤概述了通过设置 **StsRefreshTokenValidFrom** 字段更新授权令牌并使其失效的过程。
 
@@ -190,7 +190,7 @@ ms.locfileid: "91965618"
 
 ### <a name="testing-your-certificate"></a>测试证书
 
-作为第一个配置测试，应尝试使用**设备上的浏览器**登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
+作为第一个配置测试，应尝试使用 **设备上的浏览器** 登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
 
 如果登录成功，则可确定：
 

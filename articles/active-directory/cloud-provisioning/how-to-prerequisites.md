@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237249"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173696"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云预配并将其作为标识解决方案。
@@ -30,11 +30,11 @@ ms.locfileid: "95237249"
 - 本地防火墙配置。
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持，并使用 gMSA 来运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA $) 。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持，并使用 gMSA 来运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA $) 。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>GMSA 的先决条件：
 1.  GMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2012
-2.  域控制器上的[POWERSHELL RSAT 模块](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+2.  域控制器上的[POWERSHELL RSAT 模块](/windows-server/remote/remote-server-administration-tools)
 3.  域中至少有一个域控制器必须运行 Windows Server 2012。
 4.  要安装代理的已加入域的服务器必须是 Windows Server 2012 或更高版本。
 

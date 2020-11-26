@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964564"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174028"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (预览版中的 FIDO2 安全密钥的混合部署疑难解答) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "91964564"
 
 Windows Hello 人脸是注册用户的设备的最佳体验。 FIDO2 安全密钥用于共享设备或 Windows Hello 企业版注册为屏障。
 
-如果 Windows Hello 人脸阻止用户尝试 FIDO2 安全密钥登录方案，则用户可以通过在 " **设置" > Sign-In 选项**中删除人脸注册来关闭 Hello 人脸登录。
+如果 Windows Hello 人脸阻止用户尝试 FIDO2 安全密钥登录方案，则用户可以通过在 " **设置" > Sign-In 选项** 中删除人脸注册来关闭 Hello 人脸登录。
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>用户在创建混合 Azure AD 联接的计算机后，不能立即使用 FIDO2 安全密钥
 

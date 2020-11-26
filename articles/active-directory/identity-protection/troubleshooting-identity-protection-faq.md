@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987331"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175995"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
@@ -29,7 +29,7 @@ ms.locfileid: "94987331"
 当前已知问题导致用户风险消除流中的延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="why-is-a-user-is-at-risk"></a>为什么用户面临风险？
 
@@ -38,7 +38,7 @@ ms.locfileid: "94987331"
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
 由于多种原因，登录可能被阻止。 需要特别注意的是，标识保护仅在身份验证请求中使用正确的凭据时才会生成风险检测。 如果用户使用不正确的凭据，则标识保护将不会对其进行标记，因为如果错误的使用者使用正确的凭据，则不存在凭据泄露的风险。 阻止用户签名但不会生成标识保护检测的一些原因包括：
 * 由于来自 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
-* 在多次尝试失败后，**[智能锁定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** 会阻止该帐户登录
+* 在多次尝试失败后，**[智能锁定](../authentication/howto-password-smart-lockout.md)** 会阻止该帐户登录
 * 可以强制实施 **条件性访问策略** ，该策略使用风险级别以外的条件来阻止身份验证请求
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何获取特定类型检测的报告？
@@ -93,6 +93,4 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？
 
-高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。 
-
-
+高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。

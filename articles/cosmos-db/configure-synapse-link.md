@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334526"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175927"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-[适用于 Azure Cosmos DB 的 Azure Synapse 链接](synapse-link.md) 是 (HTAP) 功能的云本机混合事务性和分析处理，使你能够以 Azure Cosmos DB 中的操作数据运行近乎实时的分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
+[Azure Synapse Link for Azure Cosmos DB](synapse-link.md) 是一种云原生混合事务和分析处理 (HTAP) 功能，可用于对 Azure Cosmos DB 中的操作数据运行准实时分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
 
 > [!IMPORTANT]
 > 若要使用 Azure Synapse Link，请确保在支持的区域之一中预配 Azure Cosmos DB 帐户和 Azure Synapse Analytics 工作区。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
@@ -63,7 +63,7 @@ Azure Synapse Link 可用于 Azure Cosmos DB SQL API 容器或 Azure Cosmos DB A
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)或 [Azure Cosmos 资源管理器](https://cosmos.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/) 或 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
@@ -171,7 +171,7 @@ except exceptions.CosmosResourceExistsError:
 
 如果通过 Azure 门户创建了已启用分析存储的容器，则它将包含默认为 -1 的分析 TTL。 使用以下步骤来更新此值：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)或 [Azure Cosmos 资源管理器](https://cosmos.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/) 或 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
@@ -180,7 +180,7 @@ except exceptions.CosmosResourceExistsError:
   * 打开“规模和设置”窗口。
   * 在“设置”下，找到“分析存储生存时间”。
   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值 
-  * 单击“保存”以保存更改。
+  * 单击“保存”  以保存更改。
 
 #### <a name="net-sdk"></a>.NET SDK
 

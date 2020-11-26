@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967726"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175162"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -141,7 +141,7 @@ Azure Active Directory 域服务 (Azure AD DS) 安全审核允许 Azure 将安�
 Log Analytic 工作区使你可以使用 Azure Monitor 和 Kusto 查询语言来查看和分析安全审核事件。 此查询语言专为只读使用而设计，它具有强大的分析功能和易于阅读的语法。 有关 Kusto 查询语言入门的详细信息，请参阅以下文章：
 
 * [Azure Monitor 文档](../azure-monitor/index.yml)
-* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
 * [创建和共享 Log Analytics 数据的仪表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

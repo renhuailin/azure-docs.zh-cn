@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652512"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176182"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -72,7 +72,7 @@ ms.locfileid: "94652512"
  ``` 
 4. 当系统提示你输入凭据时，请输入用于登录 (的相同用户名和密码 https://login.microsoftonline.com) 。
 
-如果获得相同的用户名/密码错误，这意味着直通身份验证代理正常工作，问题可能是本地 UPN 不可路由。 若要了解详细信息，请参阅 [配置备用登录 ID]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+如果获得相同的用户名/密码错误，这意味着直通身份验证代理正常工作，问题可能是本地 UPN 不可路由。 若要了解详细信息，请参阅 [配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 
 > [!IMPORTANT]
 > 如果 Azure AD Connect 服务器未加入域，则 [Azure AD Connect：先决条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)中所述的要求会发生无效的用户名/密码问题。

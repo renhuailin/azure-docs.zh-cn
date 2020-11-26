@@ -4,12 +4,12 @@ description: 了解如何将函数应用连接到 Application Insights 以进行
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833072"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175740"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -230,7 +230,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 该密钥必须位于名为 **APPINSIGHTS_INSTRUMENTATIONKEY** 的应用设置中。
 
-[在 Azure 门户中](functions-create-first-azure-function.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) 或 [Visual Studio Code](functions-create-first-function-vs-code.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
+[在 Azure 门户中](functions-create-first-azure-function.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
 
 ### <a name="new-function-app-in-the-portal"></a>门户中的新函数应用
 

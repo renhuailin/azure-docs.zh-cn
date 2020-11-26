@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237624"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173964"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安装 Azure AD Connect 云预配代理
 本文档将指导你完成 Azure Active Directory (Azure AD) Connect 预配代理的安装过程，以及如何在 Azure 门户中对其进行初始配置。
@@ -32,7 +32,7 @@ ms.locfileid: "95237624"
 
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并建议使用组托管服务帐户运行代理。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并建议使用组托管服务帐户运行代理。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>升级现有代理以使用 gMSA 帐户
@@ -57,9 +57,9 @@ ms.locfileid: "95237624"
  10. 输入用于创建将用于运行代理服务的组托管服务帐户的域管理员凭据。 单击“下一步”。  
    ![创建 gMSA](media/how-to-install/install-12.png)</br>
  11. 在“Connect Active Directory”屏幕上，选择“添加目录”。 然后使用你的 Active Directory 管理员帐户登录。 此操作将添加本地目录。 
- 12. 或者，你可以通过选择 " **选择域控制器优先级** " 和 "对域控制器的列表排序" 来管理代理将使用的域控制器的首选项。   单击“确定”。
+ 12. 或者，你可以通过选择 " **选择域控制器优先级** " 和 "对域控制器的列表排序" 来管理代理将使用的域控制器的首选项。   单击" **确定**"。
   ![定购域 controlllers](media/how-to-install/install-2a.png)</br>
- 13. 选择“**下一页**”。
+ 13. 选择“**下一步**”。
   ![“Connect Active Directory”屏幕](media/how-to-install/install-3a.png)</br>
  14.  在 " **代理安装** " 屏幕上确认设置，并单击 " **确认**"。
   ![确认设置](media/how-to-install/install-11.png)</br>
@@ -107,4 +107,3 @@ ms.locfileid: "95237624"
 
 - [什么是预配？](what-is-provisioning.md)
 - [什么是 Azure AD Connect 云预配？](what-is-cloud-provisioning.md)
- 

@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275756"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173662"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -52,7 +52,7 @@ ms.locfileid: "92275756"
 
 如果 SAML 请求不包含用于 NameIDPolicy 的元素，则 Microsoft 标识平台将使用您指定的格式发出 NameID。 如果未指定任何格式，则 Microsoft 标识平台将使用与所选声明源关联的默认源格式。
 
-从**选择名称标识符格式**下拉列表中，可以选择以下一个选项。
+从 **选择名称标识符格式** 下拉列表中，可以选择以下一个选项。
 
 | NameID 格式 | 说明 |
 |---------------|-------------|
@@ -110,16 +110,16 @@ ms.locfileid: "92275756"
 要添加特定于应用程序的声明：
 
 1. 在“用户属性和声明”中，选择“添加新声明”打开“管理用户声明”网页。  
-1. 输入声明的“名称”。 根据 SAML 规范，此值无需严格遵循 URI 模式。如果需要 URI 模式，可以将其放入**命名空间**字段。
-1. 选择声明可检索其值的**源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
+1. 输入声明的“名称”。 根据 SAML 规范，此值无需严格遵循 URI 模式。如果需要 URI 模式，可以将其放入 **命名空间** 字段。
+1. 选择声明可检索其值的 **源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
 
 ### <a name="claim-transformations"></a>声明转换
 
 对用户属性应用转换：
 
-1. 在**管理声明**中，选择*转换*作为声明源，以打开**管理转换**页。
+1. 在 **管理声明** 中，选择 *转换* 作为声明源，以打开 **管理转换** 页。
 2. 从“转换”下拉列表中选择函数。 根据所选的函数，必须提供要在转换中评估的参数和常量值。 有关可用函数的详细信息，请参阅下表。
-3. 若要应用多个转换，请单击**添加转换**。最多可对声明应用两个转换。 例如，可以先提取 `user.mail` 的电子邮件前缀。 然后，将字符串设为大写。
+3. 若要应用多个转换，请单击 **添加转换**。最多可对声明应用两个转换。 例如，可以先提取 `user.mail` 的电子邮件前缀。 然后，将字符串设为大写。
 
    ![多个声明转换](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
@@ -129,8 +129,8 @@ ms.locfileid: "92275756"
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **Join()** | 通过联接两个属性来创建新的值。 或者，可以在两个属性之间使用分隔符。 对于 NameID 声明转换，联接仅限已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLowercase ( # B1 ** | 将所选属性的字符转换为小写字符。 |
-| **ToUppercase ( # B1 ** | 将所选属性的字符转换为大写字符。 |
+| **ToLowercase ( # B1** | 将所选属性的字符转换为小写字符。 |
+| **ToUppercase ( # B1** | 将所选属性的字符转换为大写字符。 |
 | **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的电子邮件地址（如果包含域 @contoso.com），否则就需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.email<br/>*值*: "@contoso.com"<br/>参数 2(输出)：user.email<br/>参数 3（如果没有匹配项，则为输出）：user.userprincipalname |
 | **EndWith()** | 如果输入以指定值结束，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果员工 ID 以 000 结束），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.employeeid<br/>*值*：000<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
 | **StartWith()** | 如果输入以指定值开始，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果国家/地区以“美国”开始），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.country<br/>*值*：美国<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
@@ -162,10 +162,10 @@ ms.locfileid: "92275756"
 
 要添加声明条件：
 
-1. 在**管理声明**中，展开”声明条件”。
+1. 在 **管理声明** 中，展开”声明条件”。
 2. 选择用户类型。
 3. 选择用户所属的组。 在给定应用程序的所有声明中，最多可以选择50个唯一组。 
-4. 选择声明可检索其值的**源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
+4. 选择声明可检索其值的 **源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
 
 添加条件的顺序很重要。 Azure AD 将按从上到下的顺序评估条件，以确定要在声明中发出的值。 与表达式匹配的最后一个值将在声明中发出。
 
@@ -178,5 +178,5 @@ ms.locfileid: "92275756"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure AD 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [针对不在 Azure AD 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录的问题](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [针对不在 Azure AD 应用程序库中的应用程序配置单一登录](../manage-apps/configure-saml-single-sign-on.md)
+* [排查基于 SAML 的单一登录的问题](../manage-apps/debug-saml-sso-issues.md)

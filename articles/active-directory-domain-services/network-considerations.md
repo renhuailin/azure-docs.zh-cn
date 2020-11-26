@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968083"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175213"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的虚拟网络设计注意事项和配置选项
 
@@ -104,7 +104,7 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 ## <a name="network-security-groups-and-required-ports"></a>网络安全组和必需端口
 
-[网络安全组 (NSG)](../virtual-network/security-overview.md) 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 部署托管域时会创建网络安全组，其中包含一系列规则，服务按照些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
+[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 部署托管域时会创建网络安全组，其中包含一系列规则，服务按照些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
 
 需要以下网络安全组规则，托管域才能提供身份验证服务和管理服务。 请勿编辑或删除托管域所部署到的虚拟网络子网中的这些网络安全组规则。
 
@@ -116,7 +116,7 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。 请勿删除此网络安全组。 如果没有此网络安全组，负载均衡器将无法正常工作。
 
-如果需要，可以 [使用 Azure PowerShell 创建所需的网络安全组和规则](powershell-create-instance.md#create-a-network-security-group)。
+如有需要，可使用 [Azure PowerShell 创建所需的网络安全组和规则](powershell-create-instance.md#create-a-network-security-group)。
 
 > [!WARNING]
 > 请勿手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与部署了托管域的子网相关联时，Microsoft 可能无法为域提供服务和对其进行管理。 Azure AD 租户与托管域之间的同步也会中断。
@@ -176,4 +176,4 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure 网络安全组](../virtual-network/security-overview.md)
+* [Azure 网络安全组](../virtual-network/network-security-groups-overview.md)

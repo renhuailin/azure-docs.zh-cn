@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994156"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173930"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -123,7 +123,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保让合适的利益干系人参与](https://aka.ms/deploymentplans)，并通过记录利益干系人及其项目的输入信息和相应责任，使项目中利益干系人的角色得到充分了解。
+当技术项目失败时，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保让合适的利益干系人参与](../fundamentals/active-directory-deployment-plans.md)，并通过记录利益干系人及其项目的输入信息和相应责任，使项目中利益干系人的角色得到充分了解。
 
 #### <a name="required-administrator-roles"></a>所需的管理员角色
 
@@ -325,7 +325,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 ### <a name="troubleshoot"></a>疑难解答
 
-* 参阅[排查自助式密码重置问题](./active-directory-passwords-troubleshoot.md) 
+* 参阅[排查自助式密码重置问题](./troubleshoot-sspr.md) 
 
 * 遵循[密码管理常见问题解答](./active-directory-passwords-faq.md) 
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967063"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175128"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 
@@ -58,7 +58,7 @@ Azure AD DS 包含以下两个工作簿模板：
 1. 选择你的托管域，例如 aaddscontoso.com
 1. 从左侧的菜单中选项“监视”>“工作簿”
 
-    ![Hightlights 屏幕截图，可在其中选择 "安全概述" 报表和 "帐户活动" 报表。](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![突出显示选择“安全概览”报告和“帐户活动”报告位置的屏幕截图。](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. 选择“安全概述报表”。
 1. 从工作簿顶部的下拉菜单中，选择 Azure 订阅，然后选择一个 Azure Monitor 工作区。
@@ -122,5 +122,5 @@ Azure Monitor 工作簿中的所有图表和表都是使用 Kusto 查询生成�
 [password-policy]: password-policy.md
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
+[azure-monitor-queries]: /azure/data-explorer/kusto/query/
 [kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

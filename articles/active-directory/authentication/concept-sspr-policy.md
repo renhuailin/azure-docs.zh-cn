@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964989"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174375"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -43,9 +43,9 @@ ms.locfileid: "91964989"
 
 密码策略应用于直接在 Azure AD 中创建和管理的所有用户帐户。 尽管可以 [为 Azure AD 密码保护或帐户锁定参数配置自定义禁止密码](tutorial-configure-custom-password-protection.md) ，但无法修改某些密码策略设置。
 
-默认情况下，在尝试使用错误的密码进行10次失败登录尝试后，帐户被锁定。 用户已锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md) 跟踪最后三个错误密码哈希，以避免为同一密码增加锁定计数器的值。 如果有人多次输入同一错误密码，则此行为不会导致帐户锁定。你可以定义 "智能锁定阈值" 和 "持续时间"。
+默认情况下，使用错误的密码尝试登录 10 次失败后，帐户会被锁定。 用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md) 跟踪最后三个错误密码哈希，以避免为同一密码增加锁定计数器的值。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。你可以定义智能锁定阈值和持续时间。
 
-Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境同步的用户帐户，除非你启用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers*。
+除非启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，否则 Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境同步的用户帐户。
 
 定义了以下 Azure AD 密码策略选项。 除非另行说明，否则无法更改这些设置：
 
@@ -57,12 +57,12 @@ Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境�
 | 密码过期期限（最长密码期限） |<ul><li>默认值：“90”天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
 | 密码到期通知（何时通知用户密码到期） |<ul><li>默认值：“14”天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
 | 密码过期（让密码永不过期） |<ul><li>默认值：**false**（指示密码有到期日期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
-| 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
-| 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
+| 密码更改历史记录 | 用户更改密码时，上一个密码 *不能* 再次使用。 |
+| 密码重置历史记录 | 用户重置忘记的密码时，上一个密码 *可以* 再次使用。 |
 
 ## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
-默认情况下，系统会对管理员帐户启用自助密码重置，并强制实施强默认的 *双门* 密码重置策略。 此策略可能与你为用户定义的策略不同，因此无法更改此策略。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
+默认情况下，将为管理员帐户启用自助式密码重置，并强制执行严格的默认双门密码重置策略。 此策略可能与你为用户定义的策略不同，因此无法更改此策略。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
 
 使用双门策略，管理员将无法使用安全问题。
 
@@ -95,7 +95,7 @@ Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境�
 * 已为 Azure AD 租户配置了自定义域，如 *contoso.com*；或
 * Azure AD Connect 正在从本地目录同步标识
 
-你可以使用 [Set-msolcompanysettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 禁止对管理员帐户使用 SSPR。 `-SelfServePasswordResetEnabled $False`参数为管理员禁用 SSPR。
+可以使用 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 为管理员帐户禁用 SSPR。 `-SelfServePasswordResetEnabled $False` 参数为管理员禁用 SSPR。
 
 ### <a name="exceptions"></a>异常
 
@@ -107,7 +107,7 @@ Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境�
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>密码过期策略
 
-*全局管理员*或*用户管理员*可以使用[用于 Windows PowerShell 的 Microsoft Azure AD 模块](/powershell/module/Azuread/?view=azureadps-2.0)将用户密码设置为永不过期。
+*全局管理员* 或 *用户管理员* 可以使用 [用于 Windows PowerShell 的 Microsoft Azure AD 模块](/powershell/module/Azuread/?view=azureadps-2.0)将用户密码设置为永不过期。
 
 还可以使用 PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。
 
@@ -127,7 +127,7 @@ Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境�
 1. 使用“全局管理员”或“用户管理员”帐户打开 PowerShell 提示符，并[连接到 Azure AD 租户](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) 。
 1. 为单个用户或所有用户运行以下命令之一：
 
-   * 若要查看单个用户的密码是否设置为永不过期，请运行以下 cmdlet。 `<user ID>`将替换为要检查的用户的用户 ID，如*driley \@ contoso.onmicrosoft.com*：
+   * 若要查看单个用户的密码是否设置为永不过期，请运行以下 cmdlet。 `<user ID>`将替换为要检查的用户的用户 ID，如 *driley \@ contoso.onmicrosoft.com*：
 
        ```powershell
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -180,4 +180,4 @@ Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境�
 
 若要开始进行 SSPR，请参阅[教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码](tutorial-enable-sspr.md)。
 
-如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](active-directory-passwords-troubleshoot.md)
+如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](./troubleshoot-sspr.md)

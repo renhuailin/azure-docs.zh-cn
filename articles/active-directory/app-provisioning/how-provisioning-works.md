@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174945"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -43,7 +43,7 @@ Azure AD 预配服务使用 [SCIM 2.0 协议](https://techcommunity.microsoft.co
 
 ## <a name="authorization"></a>授权
 
-Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
+Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
 
 ## <a name="mapping-attributes"></a>映射属性
 

@@ -11,48 +11,48 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363651"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174894"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
-从历史上看，IT 人员依赖手动方法来创建、更新和删除员工。 它们已使用上传 CSV 文件或自定义脚本来同步员工数据。 这些设置过程容易出错、不安全且难以管理。
+过去，IT 人员一直依靠手动方法来创建、更新和删除员工。 他们使用上传 CSV 文件或自定义脚本等方法来同步员工数据。 这些预配过程容易出错、不安全且难以管理。
 
-若要管理员工、供应商或临时工作人员的标识生命周期， [Azure Active Directory (Azure AD) 用户预配服务](../app-provisioning/user-provisioning.md) 可与基于云的人力资源 (HR) 应用程序集成。 应用程序的示例包括 Workday 或 SuccessFactors。
+为了管理员工、供应商或临时工作人员的标识生命周期，[Azure Active Directory (Azure AD) 用户预配服务](../app-provisioning/user-provisioning.md)提供了与基于云的人力资源 (HR) 应用程序的集成。 这些应用程序包括 Workday 或 SuccessFactors。
 
-Azure AD 使用此集成启用以下 cloud HR 应用程序 (应用) 工作流：
+Azure AD 使用此集成来启用以下云 HR 应用程序（应用）工作流：
 
-- **将用户预配到 Active Directory：** 在一个或多个 Active Directory 域中，将所选用户集从云 HR 应用设置为一个或多个。
-- **将仅限云的用户预配到 Azure AD：** 在未使用 Active Directory 的情况下，请直接从云 HR 应用程序中将用户设置为 Azure AD。
-- **写回云 HR 应用程序：** 将电子邮件地址和用户名属性从 Azure AD 写入 cloud HR 应用。
+- **将用户预配到 Active Directory：** 将选定的用户集从云 HR 应用预配到一个或多个 Active Directory 域中。
+- **将仅限云的用户预配到 Azure AD：** 在未使用 Active Directory 的情况下，将用户直接从云 HR 应用预配到 Azure AD。
+- **写回云 HR 应用：** 将电子邮件地址和用户名属性从 Azure AD 写回云 HR 应用。
 
 > [!NOTE]
 > 此部署计划显示了如何部署具有 Azure AD 用户预配的云 HR 应用工作流。 有关如何将自动用户预配部署到软件即服务 (SaaS) 应用的信息，请参阅 [计划自动用户预配部署](./plan-auto-user-provisioning.md)。
 
-## <a name="enabled-hr-scenarios"></a>启用的 HR 方案
+## <a name="enabled-hr-scenarios"></a>支持的 HR 场景
 
-Azure AD 用户预配服务实现了以下基于 HR 的标识生命周期管理方案的自动化：
+Azure AD 用户预配服务可实现以下基于 HR 的标识生命周期管理方案的自动化：
 
-- **新员工雇佣：** 将新员工添加到云 HR 应用时，会自动在 Active Directory 和 Azure AD 中创建用户帐户，并将电子邮件地址和用户名属性写回 cloud HR 应用。
-- **员工属性和配置文件更新：** 如果在云 HR 应用中更新了 "姓名"、"标题" 或 "经理" 之类的员工记录，则会在 Active Directory 和 Azure AD 中自动更新其用户帐户。
-- **员工离职：** 当员工在云 HR 应用中终止时，会自动在 Active Directory 和 Azure AD 中禁用其用户帐户。
-- **员工 rehires：** 当员工 rehired 在云 HR 应用中时，可以自动将其旧帐户重新激活或重新预配到 Active Directory 和 Azure AD。
+- **招聘新员工：** 将新员工添加到云 HR 应用后，会在 Active Directory 和 Azure AD 中自动创建用户帐户，并可以选择将电子邮件地址和用户名属性写回云 HR 应用。
+- **员工属性和个人资料更新：** 在云 HR 应用中更新员工记录（如姓名、职称或上司）后，Active Directory 和 Azure AD 中会自动更新相应员工的用户帐户。
+- **员工离职：** 当员工在云 HR 中为离职状态时，Active Directory 和 Azure AD 中会自动禁用相应员工的用户帐户。
+- **员工重新雇用：** 当员工在云 HR 中的状态为重新雇用时，其旧帐户可以自动重新激活或重新预配到 Active Directory 和 Azure AD。
 
-## <a name="who-is-this-integration-best-suited-for"></a>此集成最适合于哪一种？
+## <a name="who-is-this-integration-best-suited-for"></a>谁最适合使用此集成？
 
-Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
+云 HR 应用与 Azure AD 用户预配的集成非常适合满足以下条件的组织：
 
-- 需要一个基于云的预构建解决方案，以进行云 HR 用户预配。
-- 需要从 cloud HR 应用直接用户预配，以便 Active Directory 或 Azure AD。
-- 要求使用从云 HR 应用获取的数据设置用户。
-- 需要根据在云 HR 应用中检测到的更改信息，加入、移动和离开用户以同步到一个或多个 Active Directory 林、域和 Ou。
+- 想要一个基于云的预构建解决方案，以进行云 HR 用户预配。
+- 要求直接将用户从云 HR 应用预配到 Active Directory 或 Azure AD。
+- 要求使用从云 HR 应用获取的数据预配用户。
+- 要求仅基于云 HR 应用中检测到的更改信息，将加入、移动和离开的用户同步到一个或多个 Active Directory 林、域和 OU。
 - 将 Microsoft 365 用于电子邮件。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建基础。 它增强了依赖于权威标识数据的业务流程的质量。
 
@@ -66,20 +66,20 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 
 ### <a name="key-benefits"></a>主要优点
 
-HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
+HR 驱动的 IT 预配的这一功能提供了以下重要的业务优势：
 
-- **提高工作效率：** 你现在可以自动分配用户帐户和 Microsoft 365 许可证，并提供对密钥组的访问权限。 自动分配允许新员工立即访问其作业工具并提高工作效率。
-- **管理风险：** 你可以通过基于员工状态或从云 HR 应用中流入数据的组成员身份自动执行更改，从而提高安全性。 自动更改可确保用户的标识和访问密钥应用在用户转换或离开组织时自动更新。
-- **解决合规性和监管：** Azure AD 支持由源系统和目标系统的应用执行的用户预配请求的本地审核日志。 通过审核，您可以在单个屏幕上跟踪谁有权访问应用程序。
-- **管理成本：** 通过避免与手动预配相关的低效和人为错误，自动预配可降低成本。 它通过使用旧版和过时的平台减少了随时间而构建的自定义开发用户预配解决方案的需求。
+- **提高工作效率：** 你现在可以自动分配用户帐户和 Microsoft 365 许可证，并提供对密钥组的访问权限。 自动分配使新员工可以立即访问其作业工具并提高工作效率。
+- **管理风险：** 可以使用从云 HR 应用流入的数据，根据员工状态或组成员身份自动进行更改，从而提高安全性。 自动化更改可确保在用户转岗或从组织离职时，用户标识以及用户对关键应用的访问权限会自动更新。
+- **解决合规性和管理问题：** Azure AD 支持由源系统和目标系统的应用执行的用户预配请求的原生审核日志。 通过审核，可以在单个屏幕上跟踪谁有权访问该应用。
+- **管理成本：** 自动预配可以避免与手动预配相关的低效和人为错误，从而降低成本。 不再需要像使用旧版和过时的平台一样需要随时构建自定义开发的用户预配解决方案。
 
-### <a name="licensing"></a>授权
+### <a name="licensing"></a>许可
 
 若要将云 HR 应用配置为 Azure AD 用户预配集成，需要一个有效的 [Azure AD Premium 许可证](https://azure.microsoft.com/pricing/details/active-directory/) 和一个云 HR 应用的许可证，如 Workday 或 SuccessFactors。
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 cloud HR 应用并设置为 Active Directory 或 Azure AD。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - Azure AD [混合标识管理员](../roles/permissions-reference.md#hybrid-identity-administrator)  配置 Azure AD Connect 预配代理。
 - Azure AD [应用程序管理员](../roles/permissions-reference.md#application-administrator) 角色在 Azure 门户中配置预配应用
@@ -88,7 +88,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 - 要 Active Directory 的用户预配，需要运行 Windows Server 2012 或更高版本的服务器来承载 Azure AD Connect 预配代理
 - 用于在 Active Directory 和 Azure AD 之间同步用户的[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 。
 
-### <a name="training-resources"></a>培训资源
+### <a name="training-resources"></a>训练资源
 
 | **资源** | **链接和说明** |
 |:-|:-|
@@ -132,7 +132,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ### <a name="plan-communications"></a>规划沟通
 
-通信对于任何新服务的成功至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
+沟通对于任何新服务的成功都至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -245,7 +245,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 根据您的要求，Azure AD 通过提供常量值或 [为属性映射编写表达式来](../app-provisioning/functions-for-customizing-application-data.md)支持直接的特性到属性映射。 这种灵活性使你可以全面控制在目标应用属性中填充的内容。 你可以使用 [MICROSOFT GRAPH API](../app-provisioning/export-import-provisioning-configuration.md) 和图形资源管理器将用户预配属性映射和架构导出到 JSON 文件，然后将其导入回 Azure AD。
 
-默认情况下，代表唯一员工 ID 的 cloud HR 应用中的属性用作*映射到 Active Directory 中的唯一属性*的匹配属性。 例如，在 Workday 应用程序方案中， **workday** **WorkerID** 属性映射到 Active Directory **雇员 id** 属性。
+默认情况下，代表唯一员工 ID 的 cloud HR 应用中的属性用作 *映射到 Active Directory 中的唯一属性* 的匹配属性。 例如，在 Workday 应用程序方案中， **workday** **WorkerID** 属性映射到 Active Directory **雇员 id** 属性。
 
 你可以设置多个匹配属性并分配匹配的优先级。 它们按匹配优先级计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
@@ -257,7 +257,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-Leavers 进程时，请收集以下要求。
 
-| 过程 | 要求 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | 从标识生命周期角度看，如何处理 rehires？ Rehires 是否保留其旧的员工 Id？ |
 | | 您是否会提前处理日后招聘的员工并提前为他们创建 Active Directory 帐户？ 这些帐户是否创建为启用或禁用状态？ |
@@ -276,7 +276,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 过程 | 要求 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | Active Directory 帐户创建过程是手动、自动还是部分自动？ |
 | | 你是否打算将自定义属性从 cloud HR 应用传播到 Active Directory？ |
@@ -301,9 +301,9 @@ Azure AD 函数 [SelectUniqueValues](../app-provisioning/functions-for-customizi
 
 这是一个常见的要求，是将用户帐户 Active Directory 到基于业务部门、位置和部门的容器中。 启动移动进程时，如果存在监督的组织更改，则可能需要在 Active Directory 中将用户从一个 OU 移动到另一个 OU。
 
-使用 [开关 ( # B1 ](../app-provisioning/functions-for-customizing-application-data.md#switch) 函数为 OU 分配配置业务逻辑，并将其映射到 Active Directory 属性 " **parentDistinguishedName**"。
+使用 [开关 ( # B1](../app-provisioning/functions-for-customizing-application-data.md#switch) 函数为 OU 分配配置业务逻辑，并将其映射到 Active Directory 属性 " **parentDistinguishedName**"。
 
-例如，如果要基于 HR 属性 **市政府**在 OU 中创建用户，可以使用以下表达式：
+例如，如果要基于 HR 属性 **市政府** 在 OU 中创建用户，可以使用以下表达式：
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
@@ -398,15 +398,15 @@ Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日�
 
 Azure AD 预配服务不会生成报表、执行分析，也不会在30天内提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 若要解决在预配期间可能会打开的任何问题，请参阅以下文章：
 
 - [为 Azure AD 库应用程序配置用户预配时遇到的问题](application-provisioning-config-problem.md)
 - [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](user-provisioning-sync-attributes-for-mapping.md)
-- [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md)
+- [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](./user-provisioning.md)
 - [没有为任何用户预配 Azure AD 库应用程序](application-provisioning-config-problem-no-users-provisioned.md)
-- [预配到 Azure AD 库应用程序的用户组错误](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [预配到 Azure AD 库应用程序的用户组错误](../manage-apps/add-application-portal-assign-users.md)
 - [设置 Windows 事件查看器来排查代理方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [设置 Azure 门户审核日志来排查服务方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [了解 AD 用户帐户创建操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)

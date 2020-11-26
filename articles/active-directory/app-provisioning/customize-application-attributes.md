@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955508"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175060"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -239,7 +239,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
    }
    ]
    ```  
-PATCH 和 POST 中的请求格式有所不同。 若要确保按相同格式发送 POST 和 PATCH，可使用[此处](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)所述的功能标志。 
+PATCH 和 POST 中的请求格式有所不同。 若要确保按相同格式发送 POST 和 PATCH，可使用[此处](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)所述的功能标志。 
 
 - AppRoleAssignmentsComplex 
   - **何时使用：** 使用 AppRoleAssignmentsComplex 表达式为用户预配多个角色。 

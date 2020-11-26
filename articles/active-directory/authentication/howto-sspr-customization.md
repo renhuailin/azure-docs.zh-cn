@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363702"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173988"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自定义 Azure Active Directory 自助式密码重置的用户体验
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 若要了解如何在环境中使用 SSPR，请参阅[用于 Azure AD 密码管理的报告选项](howto-sspr-reporting.md)。
 
-如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](active-directory-passwords-troubleshoot.md)
+如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](./troubleshoot-sspr.md)

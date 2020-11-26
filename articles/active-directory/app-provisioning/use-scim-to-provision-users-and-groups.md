@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174809"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -154,7 +154,7 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
 * 支持根据 [SCIM 协议第 3.4.2 节](https://tools.ietf.org/html/rfc7644#section-3.4.2)查询用户或组。  默认情况下，按 `id` 检索用户，按 `username` 和 `externalId` 查询用户，以及按 `displayName` 查询组。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和管理员查询用户。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和成员查询组。  
-* 根据 SCIM 协议第 3.4.2.5 节，查询组资源时支持筛选器 [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)。
+* 根据 SCIM 协议第 3.4.2.5 节，查询组资源时支持筛选器 [excludedAttributes=members](#get-group)。
 * 接受使用一个持有者令牌对应用程序进行 Azure AD 身份验证和授权。
 * 支持软删除某个用户 `active=false`，然后再还原该用户 `active=true`（无论用户是否处于活动状态，都应在请求中返回用户对象）。 不应返回用户的唯一例外是，从应用程序中硬删除用户的情况。 
 
@@ -1173,7 +1173,7 @@ _ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步骤 5：将应用程序发布到 Azure AD 应用程序库
 
-如果要构建将由多个租户使用的应用程序，则可以将其置于 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序和配置预配。 轻松地在 Azure AD 库中发布应用并将预配提供给其他人。 在[此处](../azuread-dev/howto-app-gallery-listing.md)查看步骤。 Microsoft 将与你合作，将应用程序集成到库中、测试终结点，并发布上架[文档](../saas-apps/tutorial-list.md)供客户使用。 
+如果要构建将由多个租户使用的应用程序，则可以将其置于 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序和配置预配。 轻松地在 Azure AD 库中发布应用并将预配提供给其他人。 在[此处](../develop/v2-howto-app-gallery-listing.md)查看步骤。 Microsoft 将与你合作，将应用程序集成到库中、测试终结点，并发布上架[文档](../saas-apps/tutorial-list.md)供客户使用。
 
 ### <a name="gallery-onboarding-checklist"></a>库上架清单
 请按照下面的清单进行操作，以确保应用程序能够快速上架，并且客户可以享受顺畅的部署体验。 当上架到库时，系统将向你收集相关信息。 

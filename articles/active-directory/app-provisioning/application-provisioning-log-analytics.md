@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145586"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175094"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>了解预配如何与 Azure Monitor 日志集成
 
@@ -30,13 +30,13 @@ ms.locfileid: "92145586"
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="启用应用程序预配日志" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > 如果刚刚预配了工作区，可能需要一段时间才能向其发送日志。 如果收到一条错误消息，指出订阅未注册为使用 *microsoft insights* ，请在几分钟后返回。
  
 ## <a name="understanding-the-data"></a>了解数据
-预配的基础数据流几乎完全相同。 Azure Monitor 日志获取与 Azure 门户 UI 和 Azure API 几乎相同的流。 在下表中所述的日志字段中只有几个 **差异** 。 若要了解有关这些字段的详细信息，请参阅 [List provisioningObjectSummary](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)。
+预配的基础数据流几乎完全相同。 Azure Monitor 日志获取与 Azure 门户 UI 和 Azure API 几乎相同的流。 在下表中所述的日志字段中只有几个 **差异** 。 若要了解有关这些字段的详细信息，请参阅 [List provisioningObjectSummary](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta)。
 
 |Azure Monitor 日志   |Azure 门户 UI   |Azure API |
 |----------|-----------|------------|
@@ -51,9 +51,9 @@ Azure Monitor 工作簿提供了一个灵活的数据分析画布。 它们还�
 
 应用程序预配附带一组预建的工作簿。 您可以在 "工作簿" 页上找到它们。 若要查看数据，需确保填充 (timeRange、jobID、appName) 的所有筛选器。 你还需要确保已预配应用，否则日志中不会包含任何数据。
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="应用程序预配工作簿" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="应用程序预配面板" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>自定义查询
 
@@ -100,15 +100,15 @@ Azure Monitor 使你可以配置自定义警报，以便可以收到有关与预
 
 当出现故障高峰时发出警报。 将 jobID 替换为应用程序的 jobID。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="当出现故障高峰时发出警报。" lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 可能存在导致预配服务停止运行的问题。 使用以下警报来检测在给定时间间隔内没有预配事件的时间。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="可能存在导致预配服务停止运行的问题。" lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 禁用或删除中的峰值时发出警报。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="访问诊断设置" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="禁用或删除中的峰值时发出警报。" lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>社区参与
@@ -121,4 +121,4 @@ Azure Monitor 使你可以配置自定义警报，以便可以收到有关与预
 - [Azure Monitor 日志查询入门](../../azure-monitor/log-query/get-started-queries.md)
 - [在 Azure 门户中创建和管理器警报组](../../azure-monitor/platform/action-groups.md)
 - [安装和使用用于 Azure Active Directory 的日志分析视图](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [预配日志 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [预配日志 API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

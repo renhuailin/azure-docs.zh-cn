@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116795"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173560"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -32,7 +32,7 @@ ms.locfileid: "88116795"
 
 ## <a name="basics"></a>基础知识
 
-![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 阅读并理解 [Microsoft 平台策略](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 确保应用程序符合旨在保护用户和平台的所述条款。
+![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 阅读并理解 [Microsoft 平台策略](/legal/microsoft-identity-platform/terms-of-use)。 确保应用程序符合旨在保护用户和平台的所述条款。
 
 ## <a name="ownership"></a>所有权
 

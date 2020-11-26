@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9815237617566eda4759ecc31718786b6cb2cac8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997539"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176046"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
@@ -323,7 +323,7 @@ Azure AD 通过 [审核日志和报告，](../reports-monitoring/concept-provisi
 * [为应用配置单一登录](application-proxy-config-sso-how-to.md)
 * [在管理门户中创建应用时出现问题](application-proxy-config-problem.md)
 * [配置 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [使用 PingAccess 配置](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
+* [使用 PingAccess 配置](./application-proxy-ping-access-publishing-guide.md)
 * [“无法访问此企业应用程序”错误](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
 * [登录问题](application-sign-in-problem-on-premises-application-proxy.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041119"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174911"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 请参阅 [利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md) ，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -34,13 +34,13 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 启用自动用户预配的主要好处包括：
 
-* **提高了工作效率** 。 你可以使用单个用户预配管理界面跨 SaaS 应用程序管理用户标识。 此接口具有一组设置策略。
+* **提高了工作效率**。 你可以使用单个用户预配管理界面跨 SaaS 应用程序管理用户标识。 此接口具有一组设置策略。
 
-* **管理风险** 。 可以通过基于定义角色和/或访问权限的员工状态或组成员身份来自动执行更改，从而提高安全性。
+* **管理风险**。 可以通过基于定义角色和/或访问权限的员工状态或组成员身份来自动执行更改，从而提高安全性。
 
-* **解决合规性与治理问题** 。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
+* **解决合规性与治理问题**。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
 
-* **降低成本** 。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
+* **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
 ### <a name="licensing"></a>许可
 
@@ -157,7 +157,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 否则，请执行以下步骤：
 
-1. 为预先集成的用户预配连接器[创建请求](../azuread-dev/howto-app-gallery-listing.md)。 我们的团队将与你和应用程序开发人员合作，以将你的应用程序载入到平台（如果它支持 SCIM）。
+1. 为预先集成的用户预配连接器[创建请求](../develop/v2-howto-app-gallery-listing.md)。 我们的团队将与你和应用程序开发人员合作，以将你的应用程序载入到平台（如果它支持 SCIM）。
 
 1. 使用应用的 [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 通用用户预配支持。 这是 Azure AD 在没有预先集成的预配连接器的情况下将用户预配到应用程序时所必需的。
 
@@ -300,11 +300,11 @@ Azure AD 可以通过审核日志和报告， [进一步深入](../app-provision
 
 * [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](./user-provisioning.md)
 
 * [没有为任何用户预配 Azure AD 库应用程序](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [预配到 Azure AD 库应用程序的用户组错误](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [预配到 Azure AD 库应用程序的用户组错误](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>有用的文档
 
