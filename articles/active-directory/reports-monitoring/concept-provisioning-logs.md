@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319728"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181197"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **设置日志** -提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
 - **安全性** 
-    - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
-    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
+    - 有 **风险的登录**-有 [风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
+    - **标记为存在风险的用户** -有 [风险的用户](../identity-protection/overview-identity-protection.md) 是可能已泄露的用户帐户的指示器。
 
 本主题简要介绍预配报表。
 
@@ -59,9 +59,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * Amazon Web Services 导入了哪些角色？
 * 在 DropBox 中未成功创建哪些用户？
 
-可以通过在[Azure 门户](https://portal.azure.com)中**Azure Active Directory**边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
+可以通过在 [Azure 门户](https://portal.azure.com)中 **Azure Active Directory** 边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
 
-![“预配”日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
+![设置日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
 
 
 设置日志有一个默认列表视图，其中显示：
@@ -102,11 +102,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
 
-**标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
+**标识** 筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
 
-“日期”筛选器用于定义已返回数据的时间范围。****  
-可能的值包括：
+“日期”筛选器用于定义已返回数据的时间范围。  
+可能的值为：
 
 - 1 个月
 - 7 天
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 选择自定义时间范围时，可以配置开始日期和结束日期。
 
 
-使用“状态”**** 筛选器，可以选择：
+使用“状态”筛选器，可以选择：
 
 - 全部
 - Success
@@ -126,7 +126,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-**操作**筛选器可用于筛选：
+**操作** 筛选器可用于筛选：
 
 - 创建 
 - 更新
@@ -202,7 +202,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="modified-properties"></a>修改的属性
 
-**修改后的属性**显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
+**修改后的属性** 显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
 
 ### <a name="summary"></a>总结
@@ -211,7 +211,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="what-you-should-know"></a>要点
 
-- 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 [log analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) ，以便保留超过30天的保留期。 
+- 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 [log analytics](../app-provisioning/application-provisioning-log-analytics.md) ，以便保留超过30天的保留期。 
 
 - 您可以使用 "更改 ID" 属性作为唯一标识符。 例如，当与产品支持交互时，这很有用。
 

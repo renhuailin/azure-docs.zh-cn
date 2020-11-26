@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023031"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180636"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -74,7 +74,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 
 ### <a name="risk-levels"></a>风险级别
 
-标识保护将风险分为三个级别：低、中和高。 配置 [自定义标识保护策略](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy)时，还可以将其配置为在 **无风险** 级别触发。 无风险意味着没有活动的指示用户的标识已泄露。
+标识保护将风险分为三个级别：低、中和高。 配置 [自定义标识保护策略](./concept-identity-protection-policies.md#custom-conditional-access-policy)时，还可以将其配置为在 **无风险** 级别触发。 无风险意味着没有活动的指示用户的标识已泄露。
 
 虽然 Microsoft 不提供有关风险计算方式的具体详细信息，但可以说每个级别在用户或登录受到攻击时都提供了更高的置信度。 例如，与某用户的一个实例出现不熟悉的登录属性相比，将凭据泄露给另一个用户所带来的威胁性更高。
 

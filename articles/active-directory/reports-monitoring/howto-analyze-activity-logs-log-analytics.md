@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056134"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181163"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志分析 Azure AD 活动日志
 
@@ -100,13 +100,13 @@ AuditLogs
 
 5. 配置警报后，选择“创建警报”来启用它。 
 
-## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>使用预先构建的工作簿进行 Azure AD 活动日志
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>将预建的工作簿用于 Azure AD 活动日志
 
 工作簿提供了若干与常见方案相关的报告，涉及审核、登录和预配事件。 还可使用上一节中所述步骤，针对报表中提供的任何数据设置警报。
 
-* **预配分析**：此 [工作簿](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) 显示与审核预配活动相关的报告，如预配的新用户数和预配失败数、已更新的用户数和更新失败数，以及取消设置的用户和相应失败的次数。    
-* **登录事件**：此工作簿显示与监视登录活动（例如，通过应用程序、用户、设备登录）相关的最相关报表，以及跟踪一段时间内的登录数的摘要视图。
-* **条件性访问见解**：条件性访问见解和报表 [工作簿](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) 使你可以了解条件访问策略在一段时间内的影响。 
+* **预配分析**：此 [工作簿](../app-provisioning/application-provisioning-log-analytics.md) 显示与审核预配活动相关的报告，如预配的新用户数和预配失败数、已更新的用户数和更新失败数，以及取消设置的用户和相应失败的次数。    
+* **登录事件**：此工作簿显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录数的摘要视图。
+* **条件性访问见解**：条件性访问见解和报表 [工作簿](../conditional-access/howto-conditional-access-insights-reporting.md) 使你可以了解条件访问策略在一段时间内的影响。 
 
 ## <a name="next-steps"></a>后续步骤
 

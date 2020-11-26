@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906613"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182778"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -65,7 +65,7 @@ Windows 系统和用户混合 Runbook 辅助角色的最低要求如下：
 可以将工作线程添加到某个自动化帐户中的混合 Runbook 辅助角色组。 对于托管由更新管理管理的系统混合 Runbook 辅助角色的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须同时对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
 
 >[!NOTE]
->Azure 自动化 [更新管理](update-management/update-mgmt-overview.md) 会自动在为更新管理启用的 azure 或非 azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 runbook，需将其添加到混合 Runbook 辅助角色组。 按照 [手动部署](#manual-deployment) 部分下面的步骤6将其添加到组中。
+>Azure 自动化 [更新管理](./update-management/overview.md) 会自动在为更新管理启用的 azure 或非 azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 runbook，需将其添加到混合 Runbook 辅助角色组。 按照 [手动部署](#manual-deployment) 部分下面的步骤6将其添加到组中。
 
 ## <a name="enable-for-management-with-azure-automation-state-configuration"></a>启用以使用 Azure 自动化状态配置进行管理
 

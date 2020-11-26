@@ -33,11 +33,11 @@
         - name: 撤消用户的访问权限
           href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 向来宾用户分配角色
-          href: ../b2b/add-guest-to-role.md?context=%2fazure/active-directory/roles/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 限制来宾用户访问权限
           href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 动态组和来宾
-          href: ../b2b/use-dynamic-groups.md?context=%2fazure/active-directory/roles/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: 角色和权限
       expanded: true
       items:

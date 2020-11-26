@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616187"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183135"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
@@ -364,7 +364,7 @@ keyStore.load(
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 上创建一个 AppDynamics 帐户
 2. 从 AppDynamics 网站下载 Java 代理，文件名将类似于 AppServerAgent-x.x.x.xxxxx.zip
-3. 使用 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)创建新目录 */home/site/wwwroot/apm* 。
+3. 使用 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)创建新目录 */home/site/wwwroot/apm*。
 4. 将 Java 代理文件上传到 /home/site/wwwroot/apm 下的一个目录中。 代理的文件应位于 /home/site/wwwroot/apm/appdynamics 中。
 5. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
 
@@ -452,7 +452,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新应用程序的 *web.xml* ，以便在应用程序中使用该数据源。
+3. 更新应用程序的 *web.xml*，以便在应用程序中使用该数据源。
 
     ```xml
     <resource-env-ref>
@@ -700,7 +700,7 @@ JBoss EAP 仅适用于高级和独立硬件选项。 在公共预览版期间，
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
-Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](https://aka.ms/azure-jdks)安装 JDK。
+Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](/azure/developer/java/fundamentals/java-jdk-long-term-support)安装 JDK。
 
 主要版本更新将通过 Azure 应用服务中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 

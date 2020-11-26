@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 640d51de6dac1d175f9b46f327b72f293cf025cb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849165"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182948"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -47,7 +47,7 @@ ms.locfileid: "94849165"
 
 - [打开 Web 应用程序安全项目 (OWASP) 十大漏洞防护](https://owasp.org/www-project-top-ten/)
 
-- [网络安全组](/azure/virtual-network/security-overview)
+- [网络安全组](../virtual-network/network-security-groups-overview.md)
 
 - [将应用与 Azure 虚拟网络集成](web-sites-integrate-with-vnet.md)
 
@@ -71,7 +71,7 @@ ms.locfileid: "94849165"
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
-- [如何启用应用服务的监视和保护](/azure/security-center/security-center-app-services)
+- [如何启用应用服务的监视和保护](/azure/security-center/defender-for-app-service-intro)
 
 **Azure 安全中心监视**：是
 
@@ -219,7 +219,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 应用与标记效果相关的任何内置 Azure 策略定义（如 "需要标记和值"），以确保使用标记创建所有资源并通知所有现有未标记资源。 使用 Azure PowerShell 或 Azure CLI，基于资源的标记查找资源或对其执行操作。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [Azure 应用服务访问限制](/azure/app-service/app-service-ip-restriction)
 
@@ -241,7 +241,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 建议使用自动工具创建一个过程来监视网络资源配置并快速检测更改。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -280,7 +280,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 此外，Azure Key Vault 通过访问策略和审核历史记录提供集中式密钥管理。 
 
-- [如何启用 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 - [如何启用 Azure App Service 的诊断设置](troubleshoot-diagnostic-logs.md)
 
@@ -309,7 +309,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 根据要求，使用 Azure Sentinel （一种可缩放的云和本机安全信息事件管理） (SIEM) ，与各种数据源和连接器集成。 在 Azure Marketplace 中，可以选择启用和将数据到第三方安全信息事件管理解决方案。
 
-- [如何启用 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 - [如何启用 Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -343,7 +343,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**： Azure Active Directory (Azure AD) 的内置角色必须明确分配并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 - [如何使用应用服务和 Azure Functions 的托管标识](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -422,7 +422,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 为 Azure AD 实施多重身份验证。 管理员需要确保门户中的订阅帐户受到保护。 订阅容易受到攻击，因为它管理你创建的资源。 
 
-- [Azure 安全 MFA](/azure/security/develop/secure-aad-app)
+- [Azure 安全 MFA](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -454,9 +454,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 风险检测](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure 计算资源的威胁防护](/azure/security-center/threat-protection)
+- [Azure 计算资源的威胁防护](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -488,7 +488,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**：使用 Azure Active Directory (Azure AD) 中的日志发现过期帐户。 使用 Azure 标识访问评审有效地管理组成员身份和对企业应用程序的访问权限，以及角色分配。 定期查看用户访问权限，以确保只有预期的用户才能继续访问。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -504,7 +504,7 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何将 Azure App Service 应用配置为使用 Azure AD 登录](configure-authentication-provider-aad.md)
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -520,7 +520,7 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 - [如何将 Azure App Service 应用配置为使用 Azure AD 登录](configure-authentication-provider-aad.md)
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -546,7 +546,7 @@ Azure AD 登录活动、审核和风险事件日志源的访问权限，可用�
 
 **指南**：使用标记帮助跟踪存储或处理敏感信息的应用服务资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -602,7 +602,7 @@ Microsoft 管理应用服务的底层基础结构，并实施了严格控制来�
 
 标记可能正在处理敏感信息的应用服务应用。 实现第三方解决方案（如有必要）以实现符合性。
 
-Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -628,7 +628,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 请注意，虽然本地附加的磁盘可以由网站作为临时存储（ (例如 D:\local 和% TMP% ) ）使用，但它们不会静态加密。
 
-- [了解 Azure App Service 的数据保护控件](app-service-security-controls.md)
+- [了解 Azure App Service 的数据保护控件]()
 
 - [了解静态 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
@@ -656,9 +656,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 查看并遵循安全中心提供的建议，确保应用服务应用的安全。
 
-- [如何将持续安全验证添加到 CI/CD 管道](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
 
-- [如何实现 Azure 安全中心漏洞评估建议](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -686,7 +686,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -698,7 +698,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：使用元数据将标记应用于 Azure 资源，以逻辑方式将它们组织到分类。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -715,11 +715,11 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 查看引用的链接以获取其他信息。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -891,7 +891,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 建议将此过程记录为应用用于标准化使用的内置策略定义。   
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 使用现有的持续集成 (CI) 和持续交付 (CD) 管道部署已知安全的配置。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文档](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -951,11 +951,11 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：使用托管标识，通过 Azure Active Directory (Azure AD) 中的自动托管标识提供应用服务应用。 使用托管标识，你的应用可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Key Vault，而无需在代码中提供任何凭据。 确保在 Azure Key Vault 中启用软删除。
 
-- [如何在 Azure Key Vault 中启用软删除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中启用软删除](../key-vault/general/key-vault-recovery.md)
 
 - [如何将托管标识用于应用服务](overview-managed-identity.md)
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -967,7 +967,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何将托管标识用于应用服务](overview-managed-identity.md)
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -1000,7 +1000,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [了解 Azure App Service 备份功能](manage-backup.md)
 
-- [用于 Azure 存储加密的客户托管密钥](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-overview?toc=/azure/storage/blobs/toc.json)
+- [用于 Azure 存储加密的客户管理的密钥](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 **Azure 安全中心监视**：不适用
 
@@ -1053,7 +1053,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [了解静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Azure Key Vault 中启用软删除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中启用软删除](../key-vault/general/key-vault-recovery.md)
 
 **Azure 安全中心监视**：是
 
@@ -1065,7 +1065,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1081,7 +1081,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，还可以清楚地标记订阅 (例如，生产、非生产) ，并创建一个命名系统来明确识别和分类 Azure 资源。
 
@@ -1149,5 +1149,5 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: e70ee06d696539f0b41c0a070f6f5b43391fda52
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ab261d4ca04fed04c8a3e1046c0a4c563767ad4c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357142"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181996"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>教程：为 Mixpanel 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "94357142"
 
 本教程中概述的方案假定你已具有以下先决条件：
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * 一个企业级别的 mixpanel 组织
 * 一个在所述组织中拥有管理员权限的 mixpanel 帐户
 * 已使用声明的域在 mixpanel 中启用 SSO

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088873"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183152"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板进行 API 管理的 CI/CD
 
@@ -36,19 +36,19 @@ ms.locfileid: "93088873"
 
 :::image type="content" source="media/devops-api-development-templates/apim-devops.png" alt-text="演示 DevOps 与 API 管理的关系图。":::
 
-在此示例中，有两种部署环境： *开发* 和 *生产* 。 每个都有其自己的 API 管理实例。 
+在此示例中，有两种部署环境： *开发* 和 *生产*。 每个都有其自己的 API 管理实例。 
 
 * API 开发人员有权访问开发实例，并可将其用于开发和测试其 Api。 
 * 名为 *API 发布者* 的指定团队管理生产实例。
 
-此建议的方法中的关键是要在 Azure 中保留所有 API 管理配置 [资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 组织应将这些模板保留在一个源代码管理系统（如 Git）中。 如图所示，发布者存储库包含模板集合中生产 API 管理实例的所有配置：
+此建议的方法中的关键是要在 Azure 中保留所有 API 管理配置 [资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。 组织应将这些模板保留在一个源代码管理系统（如 Git）中。 如图所示，发布者存储库包含模板集合中生产 API 管理实例的所有配置：
 
 |模板  |说明  |
 |---------|---------|
 |服务模板     | API 管理实例的服务级别配置，例如定价层和自定义域。         |
 |共享模板     |  在整个 API 管理实例（如组、产品和记录器）中共享资源。    |
 |API 模板     |  Api 及其子资源的配置：操作、策略、诊断设置。        |
-|主 (主) 模板     |   通过 [链接](../azure-resource-manager/resource-group-linked-templates.md) 到所有模板并按顺序进行部署，将所有内容联系在一起。 若要将所有配置部署到 API 管理实例，请部署主模板。 你还可以单独部署每个模板。       |
+|主 (主) 模板     |   通过 [链接](../azure-resource-manager/templates/linked-templates.md) 到所有模板并按顺序进行部署，将所有内容联系在一起。 若要将所有配置部署到 API 管理实例，请部署主模板。 你还可以单独部署每个模板。       |
 
 API 开发人员会将发布者存储库分叉到开发人员存储库，并处理其 Api 的变化。 在大多数情况下，它们将重点放在 API 模板上用于其 Api，而无需更改共享或服务模板。
 

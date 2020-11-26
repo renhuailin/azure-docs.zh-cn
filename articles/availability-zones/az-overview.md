@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425436"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182727"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -24,10 +24,10 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 | 术语或概念 | 说明 |
 | --- | --- |
-| region | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
+| 区域 | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
 | geography | 世界上至少包含一个 Azure 区域的区域。 地理位置定义了一个保持数据驻留和符合性界限的离散市场。 地域允许具有特定数据驻留和符合性要求的客户保持他们的数据和应用程序相邻近。 地域具有容错能力，可通过其与专用的高容量网络基础结构的连接来经受完成区域故障。 |
 | 可用性区域 | 区域中的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 |
-| 推荐的区域 | 提供最广泛的服务功能的区域，旨在支持可用性区域现在或将来使用。 根据 **建议**在 Azure 门户中指定这些项。 |
+| 推荐的区域 | 提供最广泛的服务功能的区域，旨在支持可用性区域现在或将来使用。 根据 **建议** 在 Azure 门户中指定这些项。 |
 | 备用 (其他) 区域 | 一种区域，它在 "数据驻留" 边界内扩展 Azure 占用量，其中还存在建议的区域。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不是为了支持可用性区域 (，不过 Azure 会定期评估这些区域，以确定它们是否应该成为推荐的区域) 。 它们在 Azure 门户中指定为 " **其他**"。 |
 | 基础服务 | 一种核心 Azure 服务，该服务在区域公开上市时在所有区域提供。 |
 | 主流服务 | 一项 Azure 服务，该服务在区域/服务的12个月内的所有推荐区域中提供，在备用区域中公开上市或要求驱动。 |
@@ -61,7 +61,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 
 Azure 上跨区域提供 Azure 服务可用性的最佳方法是通过表达在建议区域和备用区域中提供的服务来对其进行说明。
 
-- **推荐的区域** -一种提供范围最广的服务功能并设计为支持可用性区域现在或将来的服务的区域。 根据 **建议**在 Azure 门户中指定这些项。
+- **推荐的区域** -一种提供范围最广的服务功能并设计为支持可用性区域现在或将来的服务的区域。 根据 **建议** 在 Azure 门户中指定这些项。
 - **备用 (其他) 区域** -一个区域，该区域在一个推荐的区域也存在的数据派驻边界内扩展 Azure 占用空间。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不是为了支持可用性区域 (，不过 Azure 会定期评估这些区域，以确定它们是否应该成为推荐的区域) 。 它们在 Azure 门户中指定为 " **其他**"。
 
 ### <a name="comparing-region-types"></a>比较区域类型
@@ -79,7 +79,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 | 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
-| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 空值 | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>按类别分类的服务
 
@@ -97,7 +97,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | Azure Cosmos DB | 自动化 | Azure 蓝图 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Azure 专用 HSM |
-> | Azure SQL 数据库 | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
+> | Azure SQL Database | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
 > | 云服务 | Azure 认知搜索 | Azure 数字孪生 |
 > | 云服务： Av2-Series | Azure 数据资源管理器 | Azure 实验室服务 |
 > | 云服务： Dv2-Series | Azure Data Share | Azure NetApp 文件 |
@@ -170,9 +170,9 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
+- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [区域冗余存储](../storage/common/storage-redundancy.md)
 - [SQL 数据库常规用途层](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

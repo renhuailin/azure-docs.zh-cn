@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024137"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182863"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
 
@@ -177,7 +177,7 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>筛选已转换为 JSON 对象的作业状态输出
 
-最近，我们更改了将自动化日志数据写入 Log Analytics 服务的 `AzureDiagnostics` 表的行为方式，在该表中不再将 JSON 属性分解为单独的字段。 如果 runbook 已配置为将 JSON 格式的输出流中的对象格式化为单独的列，则必须重新配置查询以将该字段解析为 JSON 对象，以便访问这些属性。 这是使用 [parsejson](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) 访问已知路径中的特定 JSON 元素来实现的。
+最近，我们更改了将自动化日志数据写入 Log Analytics 服务的 `AzureDiagnostics` 表的行为方式，在该表中不再将 JSON 属性分解为单独的字段。 如果 runbook 已配置为将 JSON 格式的输出流中的对象格式化为单独的列，则必须重新配置查询以将该字段解析为 JSON 对象，以便访问这些属性。 这是使用 [parsejson](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) 访问已知路径中的特定 JSON 元素来实现的。
 
 例如，runbook 将 JSON 格式的输出流中的 ResultDescription 属性格式化为多个字段。 若要搜索在名为“Status”的字段中指定为失败状态的作业的状态，请使用此示例查询搜索状态为“Failed”的 ResultDescription：
 

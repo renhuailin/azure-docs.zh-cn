@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829833"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182574"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -50,7 +50,7 @@ ms.locfileid: "85829833"
 
 1. 在“新建函数”页面的搜索字段中，输入 `cosmos`，然后选择“Azure Cosmos DB 触发器” 模板。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB 代码":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure 门户中的“函数”页面":::
 
 
 1. 使用下表中指定的设置配置新触发器：
@@ -64,7 +64,7 @@ ms.locfileid: "85829833"
     | **租约的集合名称** | 租约 | 要存储租约的集合的名称。 |
     | **不存在租约集合时创建一个** | 是 | 检查是否存在租约集合；如果不存在，则自动创建一个。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB 代码":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="创建 Azure Cosmos DB 触发的函数":::
 
 1. 选择“创建函数”。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "85829833"
 
 1. 若要显示基于模板的函数代码，请选择“代码 + 测试”。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB 代码":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="运用 C# 语言的 Cosmos DB 函数模板":::
 
     此函数模板将文档的数量和第一个文档 ID 写入到日志中。
 
@@ -100,7 +100,7 @@ ms.locfileid: "85829833"
     | ---|---|--- |
     | **数据库 ID** | 任务 |新数据库的名称。 它必须匹配函数绑定中定义的名称。 |
     | **容器 ID** | Items | 新容器的名称。 它必须匹配函数绑定中定义的名称。  |
-    | **[分区键](../cosmos-db/partition-data.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能容器而言很重要。 | 
+    | **[分区键](../cosmos-db/partitioning-overview.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能容器而言很重要。 | 
     | **吞吐量** |400 RU| 使用默认值。 如果想要减少延迟，以后可以增加吞吐量。 |    
 
 1. 单击“确定”以创建 Items 容器。 创建该容器可能需要很短的时间。
@@ -111,7 +111,15 @@ ms.locfileid: "85829833"
 
 1. 在数据资源管理器中展开新的 **Items** 容器，选择“项”，然后选择“新建项”。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB 代码"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="在 Items 容器中创建项":::
+
+1. 将新项的内容替换为以下内容，然后选择“保存”。
+
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
     }
     ```
 

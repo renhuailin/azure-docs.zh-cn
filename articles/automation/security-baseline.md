@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182744"
 ---
 # <a name="azure-security-baseline-for-automation"></a>适用于自动化的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "94833293"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "94833293"
 
 可以使用 Azure 安全中心的实时网络访问权限，在有限的时间段内将 Windows 虚拟机的公开权限限制为已批准的 IP 地址。 同时，使用 Azure 安全中心自适应网络强化建议进行 NSG 配置，以根据实际流量和威胁智能限制端口和源 Ip。
 
-* [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "94833293"
 
 * [链接的 Log Analytics 工作区支持的区域](./how-to/region-mappings.md)
 
-* [查询更新管理日志](./update-management/update-mgmt-query-logs.md)
+* [查询更新管理日志](./update-management/query-logs.md)
 
 **Azure 安全中心监视**：是
 
@@ -270,7 +270,7 @@ ms.locfileid: "94833293"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [了解 Azure Monitor 中的日志查询](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Azure Monitor 中的日志查询](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -600,7 +600,7 @@ ms.locfileid: "94833293"
 
 使用混合 Runbook 辅助角色时，将使用服务器端加密或 Azure 磁盘加密 (ADE) 对虚拟机上的虚拟磁盘进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户管理的密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
-* [Azure 托管磁盘的服务器端加密](../virtual-machines/windows/disk-encryption.md)
+* [Azure 托管磁盘的服务器端加密](../virtual-machines/disk-encryption.md)
 
 * [适用于 Windows VM 的 Azure 磁盘加密](../virtual-machines/windows/disk-encryption-overview.md)
 
@@ -646,9 +646,9 @@ ms.locfileid: "94833293"
 
 如果你使用由 Azure 虚拟机提供支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-* [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理](./update-management/overview.md)
 
-* [管理 VM 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 VM 的更新和修补程序](./update-management/manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -660,9 +660,9 @@ ms.locfileid: "94833293"
 
 如果你使用由 Azure 虚拟机提供支持的混合 Runbook 辅助角色，则可以使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 这种情况使得更新管理可以通过第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-* [Azure 中的更新管理解决方案](./update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解决方案](./update-management/overview.md)
 
-* [管理 Azure VM 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 Azure VM 的更新和修补程序](./update-management/manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1206,7 +1206,7 @@ ms.locfileid: "94833293"
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1220,7 +1220,7 @@ ms.locfileid: "94833293"
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 

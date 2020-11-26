@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253348"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182625"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 身份验证-REST API 引用
 
@@ -22,7 +22,7 @@ ms.locfileid: "95253348"
 - **Credential** - \<Access Key ID\>
 - **密码** -base64 解码的访问密钥值。 ``base64_decode(<Access Key Value>)``
 
-凭据 (的值也称为 `id`) 和机密 (也称为 `value`) ，必须从 Azure 应用配置的实例获取。 可以通过使用 [Azure 门户](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)来实现此目的。
+凭据 (的值也称为 `id`) 和机密 (也称为 `value`) ，必须从 Azure 应用配置的实例获取。 可以通过使用 [Azure 门户](https://portal.azure.com) 或 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest)来实现此目的。
 
 为每个请求提供身份验证所需的所有 HTTP 标头。 要求的最小值为：
 

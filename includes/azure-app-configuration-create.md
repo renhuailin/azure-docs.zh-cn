@@ -5,11 +5,11 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: 48bf5d5df3c54e8b2894ad28fa08553d5add0437
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001453"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182661"
 ---
 1. 若要创建新应用程序配置存储区，请登录 [Azure 门户](https://portal.azure.com)。 在主页的左上角，选择“创建资源”  。 在“搜索市场”框中，输入“应用配置”，然后选择 Enter<kbd></kbd>。
 

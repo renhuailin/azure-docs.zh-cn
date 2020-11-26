@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f74cdb700013dc9b124c6a2df195456f08e4b60a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445653"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182132"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>用于将 SaaS 应用程序与 Azure Active Directory 集成的教程
 
@@ -25,7 +25,7 @@ ms.locfileid: "94445653"
 
 有关已预先集成到 Azure AD 中的所有 SaaS 应用的列表，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps)。
 
-使用[应用程序网络门户](../azuread-dev/howto-app-gallery-listing.md)请求将已启用 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 的应用程序添加到库以实现自动预配，或将已启用 SAML/OIDC 的应用程序添加到库以实现 SSO。
+使用[应用程序网络门户](../develop/v2-howto-app-gallery-listing.md)请求将已启用 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 的应用程序添加到库以实现自动预配，或将已启用 SAML/OIDC 的应用程序添加到库以实现 SSO。
 
 ## <a name="quick-links"></a>快速链接
 

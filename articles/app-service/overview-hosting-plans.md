@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200842"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182999"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -37,13 +37,13 @@ ms.locfileid: "92200842"
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> 与**标准**层相比，新的**PremiumV3**定价层保证具有更快处理器的计算机 (最小 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu)每个虚拟 CPU) 、SSD 存储以及四个内存与内核的比率。 **PremiumV3** 还支持更高的规模，通过增加的实例计数，同时仍然提供 **标准** 层中的所有高级功能。 现有 **PremiumV2** 层中提供的所有功能都包含在 **PremiumV3**中。
+> 与 **标准** 层相比，新的 **PremiumV3** 定价层保证具有更快处理器的计算机 (最小 195 [ACU](../virtual-machines/acu.md)每个虚拟 CPU) 、SSD 存储以及四个内存与内核的比率。 **PremiumV3** 还支持更高的规模，通过增加的实例计数，同时仍然提供 **标准** 层中的所有高级功能。 现有 **PremiumV2** 层中提供的所有功能都包含在 **PremiumV3** 中。
 >
 > 类似于其他专用层，以下三种 VM 大小可用于此层：
 >
-> - 小型 (2 CPU 核心，8 GiB 内存)  
-> - 中型 (4 CPU 内核，16 GiB 内存)  
-> - 大型 (8 CPU 核心，32 GiB 内存)   
+> - 小型（2 个 CPU 核心，8 GiB 内存） 
+> - 中型（4 个 CPU 核心，16 GiB 内存） 
+> - 大型（8 个 CPU 核心，32 GiB 内存）  
 >
 > 有关 **PremiumV3** 定价信息，请参阅 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 >
@@ -65,11 +65,11 @@ ms.locfileid: "92200842"
 
 本部分介绍应用服务应用的计费方式。 有关区域特定的详细定价信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
-除了 **免费** 层外，应用服务计划还会对其使用的计算资源收费。
+除“免费”层外，应用服务计划会根据所用的计算资源量产生费用。
 
-- 在 **共享** 层中，每个应用都接收 cpu 分钟的配额，因此 _每个应用_ 都按 cpu 配额收费。
+- 在“共享”层中，每个应用遵循 CPU 分钟数配额，因此每个应用会根据 CPU 配额产生费用。
 - 在专用计算层中 (" **基本**"、" **标准**"、" **高级**"、" **PremiumV2**" **PremiumV3**) ，"应用服务计划" 定义应用缩放到的 vm 实例数，因此，应用服务计划中的 _每个 vm 实例_ 都是计费的。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
-- 在 **隔离** 层中，应用服务环境定义运行应用的独立辅助角色的数目，并对 _每个工作线程_ 收费。 此外，还会为运行应用服务环境本身提供一项固定的戳记。
+- 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色都会产生费用。 此外，运行应用服务环境本身也会产生一笔固定印花费。
 
 使用提供的应用服务功能（配置自定义域、TLS/SSL 证书、部署槽位、备份等）不会产生费用。 例外情况包括：
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39a511601606118228ee5fbd9dcf68b6707ede47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288358"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183050"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -26,7 +26,7 @@ Azure App Service 有两种主要的部署类型：
 
 ## <a name="multitenant-app-service-networking-features"></a>多租户应用服务网络功能 
 
-Azure App Service 是一种分布式系统。 处理传入 HTTP 或 HTTPS 请求的角色称为 *前端* 。 承载客户工作负荷的角色称为 *辅助* 角色。 应用服务部署中的所有角色均存在于多租户网络中。 由于同一应用服务扩展单元中有许多不同的客户，因此无法将应用服务网络直接连接到网络。 
+Azure App Service 是一种分布式系统。 处理传入 HTTP 或 HTTPS 请求的角色称为 *前端*。 承载客户工作负荷的角色称为 *辅助* 角色。 应用服务部署中的所有角色均存在于多租户网络中。 由于同一应用服务扩展单元中有许多不同的客户，因此无法将应用服务网络直接连接到网络。 
 
 不是连接网络，而是需要一些功能来处理应用程序通信的各个方面。 当你 *从* 应用程序进行调用时，处理 *对* 应用程序的请求的功能不能用于解决问题。 同样，不能使用解决应用中的调用问题的功能来解决应用程序的问题。  
 
@@ -56,7 +56,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP 或 HTTPS 请求
 
 以下出站用例建议如何使用应用服务网络功能来解决应用的出站访问需求：
 
-| 出站用例 | Feature |
+| 出站用例 | 功能 |
 |---------------------|-------------------|
 | 访问同一区域中的 Azure 虚拟网络中的资源 | VNet 集成 </br> ASE |
 | 访问不同区域中的 Azure 虚拟网络中的资源 | 需要网关的 VNet 集成 </br> ASE 和虚拟网络对等互连 |
@@ -280,7 +280,7 @@ ASE 提供有关隔离和专用应用程序托管的最佳故事，但它确实�
 
 如果扫描应用服务，将会发现为入站连接公开的几个端口。 在多租户服务中无法阻止或控制对这些端口的访问。 下面是公开端口的列表：
 
-| 用途 | 端口或端口 |
+| 使用 | 端口或端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  管理 | 454、455 |
@@ -290,12 +290,12 @@ ASE 提供有关隔离和专用应用程序托管的最佳故事，但它确实�
 |  基础结构使用 | 7654、1221 |
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
-[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
-[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
-[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[appassignedaddress]: ./configure-ssl-certificate.md
+[iprestrictions]: ./app-service-ip-restrictions.md
+[serviceendpoints]: ./app-service-ip-restrictions.md
+[hybridconn]: ./app-service-hybrid-connections.md
+[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
+[vnetintegration]: ./web-sites-integrate-with-vnet.md
+[networkinfo]: ./environment/network-info.md
+[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[privateendpoints]: ./networking/private-endpoint.md

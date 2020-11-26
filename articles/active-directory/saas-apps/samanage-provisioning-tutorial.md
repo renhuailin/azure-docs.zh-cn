@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352993"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181471"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>教程：为 SolarWinds Service Desk（以前称为 Samanage）配置自动用户预配
 
@@ -54,7 +54,7 @@ ms.locfileid: "94352993"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中[有权](../users-groups-roles/directory-assign-admin-roles.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * 具有专业版包的 [SolarWinds Service Desk 租户](https://www.samanage.com/pricing/)。
 * SolarWinds Service Desk 中具有管理员权限的用户帐户。
 

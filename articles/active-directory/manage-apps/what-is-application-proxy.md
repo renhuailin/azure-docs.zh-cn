@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003015"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180534"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -95,7 +95,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 
 应用代理还支持在第三方集成或特定的配置方案中使用以下身份验证协议：
 
-* [**基于标头的身份验证**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)。 此登录方法使用名为 PingAccess 的第三方身份验证服务。当应用程序使用标头进行身份验证时会使用此方法。 在此方案中，身份验证由 PingAccess 处理。
+* [**基于标头的身份验证**](./application-proxy-configure-single-sign-on-with-headers.md)。 此登录方法使用名为 PingAccess 的第三方身份验证服务。当应用程序使用标头进行身份验证时会使用此方法。 在此方案中，身份验证由 PingAccess 处理。
 * [**基于表单或密码的身份验证**](application-proxy-configure-single-sign-on-password-vaulting.md)。 使用此身份验证方法时，用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 在此方案中，身份验证由 Azure AD 处理。
 * [**SAML 身份验证**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS 联合身份验证协议的应用程序支持基于 SAML 的单一登录。 Azure AD 使用 SAML 单一登录通过用户的 Azure AD 帐户对应用程序进行身份验证。
 

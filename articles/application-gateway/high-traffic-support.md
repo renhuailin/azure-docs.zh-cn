@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683325"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182914"
 ---
 # <a name="application-gateway-high-traffic-support"></a>应用程序网关高流量支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "94683325"
 
 请务必根据流量和缓冲区扩展应用程序网关，以便为任何流量提供电涌或峰值，并使其在 QoS 中的影响降至最低。 以下建议可帮助你设置部署有 WAF 的应用程序网关来应对额外流量。
 
-有关应用程序网关提供的度量值的完整列表，请查看 [指标文档](./application-gateway-metrics.md) 。 有关如何为指标设置警报的详细说明，请参阅在 Azure 门户中 [显示度量值](./application-gateway-metrics.md#metrics-visualization) 和 [Azure monitor 文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) 。
+有关应用程序网关提供的度量值的完整列表，请查看 [指标文档](./application-gateway-metrics.md) 。 有关如何为指标设置警报的详细说明，请参阅在 Azure 门户中 [显示度量值](./application-gateway-metrics.md#metrics-visualization) 和 [Azure monitor 文档](../azure-monitor/platform/alerts-metric.md) 。
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>适用于应用程序网关 v1 SKU (Standard/WAF SKU) 
 
@@ -65,7 +65,7 @@ v2 SKU 提供自动缩放功能，确保应用程序网关能够随着流量的�
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
-若要获得任何流量或利用率异常的通知，可以设置特定指标的警报。 有关应用程序网关提供的度量值的完整列表，请参阅 [度量值文档](./application-gateway-metrics.md) 。 有关如何为指标设置警报的详细说明，请参阅在 Azure 门户中 [显示度量值](./application-gateway-metrics.md#metrics-visualization) 和 [Azure monitor 文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) 。
+若要获得任何流量或利用率异常的通知，可以设置特定指标的警报。 有关应用程序网关提供的度量值的完整列表，请参阅 [度量值文档](./application-gateway-metrics.md) 。 有关如何为指标设置警报的详细说明，请参阅在 Azure 门户中 [显示度量值](./application-gateway-metrics.md#metrics-visualization) 和 [Azure monitor 文档](../azure-monitor/platform/alerts-metric.md) 。
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>应用程序网关 v1 SKU (Standard/WAF) 的警报
 

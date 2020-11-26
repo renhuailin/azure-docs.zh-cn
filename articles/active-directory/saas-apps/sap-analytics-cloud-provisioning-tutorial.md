@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352942"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181469"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教程：为 SAP Analytics Cloud 配置自动用户预配
 
@@ -39,7 +39,7 @@ ms.locfileid: "94352942"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * SAP Analytics Cloud 租户
 * SAP 标识预配管理控制台上具有管理员权限的用户帐户。 请确保你有权访问标识预配管理控制台中的代理系统。 如果看不到“代理系统”磁贴，请为组件 BC-IAM-IPS 创建事件，以请求访问此磁贴 。
 * SAP Analytics Cloud 中具有授权客户端凭据的 OAuth 客户端。 若要了解操作方法，请参阅：[管理 OAuth 客户端和受信任的标识提供者](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)

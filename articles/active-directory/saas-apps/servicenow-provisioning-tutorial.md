@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966541"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182329"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -36,7 +36,7 @@ ms.locfileid: "94966541"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* Azure AD 中具有配置预配[权限](../roles/permissions-reference.md)的用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * Calgary 或更高版本的 [ServiceNow 实例](https://www.servicenow.com/)
 * Helsinki 或更高版本的 [ServiceNow Express 实例](https://www.servicenow.com/)
 * ServiceNow 中具有管理员角色的用户帐户

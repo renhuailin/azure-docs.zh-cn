@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987205"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182795"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>配置“在空闲时间启动/停止 VM”
 
@@ -63,7 +63,7 @@ ms.locfileid: "90987205"
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
-1. 将具有正整数值的 `sequencestart` 和 `sequencestop` 标记添加到 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
+1. 将具有正整数值的 `sequencestart` 和 `sequencestop` 标记添加到 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/tag-portal.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/tag-cli.md)。
 
 2. 修改计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 的日期和时间，以满足要求并启用计划。
 
@@ -143,13 +143,13 @@ ms.locfileid: "90987205"
 
 2. 在“StartStop_VM_Notification”页上，单击“详细信息”下的“编辑详细信息” 。 “电子邮件/短信/推送/语音”页面随即打开。 更新电子邮件地址，并单击“确定”以保存更改。
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="显示示例电子邮件地址已更新的电子邮件/短信/推送/语音页的屏幕截图。":::
 
     也可以向操作组添加其他操作，若要了解有关操作组的详细信息，请参阅[操作组](../azure-monitor/platform/action-groups.md)
 
 以下是该功能关闭虚拟机时发送的示例电子邮件。
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="当功能关闭虚拟机时发送的示例电子邮件的屏幕截图。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>添加或排除 VM
 

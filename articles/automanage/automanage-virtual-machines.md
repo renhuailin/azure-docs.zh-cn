@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891496"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182846"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -28,7 +28,7 @@ ms.locfileid: "92891496"
 
 ## <a name="overview"></a>概述
 
-适用于虚拟机的 Azure Automanage 是一项服务，无需发现、了解如何载入，以及如何在 Azure 中配置某些服务来使你的虚拟机受益。 这些服务有助于增强对虚拟机的可靠性、安全性和管理，并将其视为 azure 最佳做法服务（如 [azure 更新管理](../automation/update-management/update-mgmt-overview.md) 和 [azure 备份](../backup/backup-overview.md) ），只需进行几项命名即可。
+适用于虚拟机的 Azure Automanage 是一项服务，无需发现、了解如何载入，以及如何在 Azure 中配置某些服务来使你的虚拟机受益。 这些服务有助于增强对虚拟机的可靠性、安全性和管理，并将其视为 azure 最佳做法服务（如 [azure 更新管理](../automation/update-management/overview.md) 和 [azure 备份](../backup/backup-overview.md) ），只需进行几项命名即可。
 
 将虚拟机载入 Azure Automanage 后，它会自动将每个最佳实践服务配置为其建议的设置。 对于每个服务，最佳做法都是不同的。 例如，Azure 备份可能是 Azure 备份，其中最好的做法是每天备份一次虚拟机，保持期为6个月。
 
@@ -69,7 +69,7 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 
 在 Azure 门户中，可以在现有虚拟机上或在创建新虚拟机时启用 Automanage。 有关此过程的简明步骤，请查看 [Automanage for virtual 机器快速入门](quick-create-virtual-machines-portal.md)。
 
-如果你是第一次为 VM 启用 Automanage，则可以在 Azure 门户中搜索 **Automanage – Azure 虚拟机最佳实践** 。 **在现有 VM 上** 单击 "启用"，选择要登记的 vm，单击 " **选择** "，单击 " **启用** "，即可完成操作。
+如果你是第一次为 VM 启用 Automanage，则可以在 Azure 门户中搜索 **Automanage – Azure 虚拟机最佳实践**。 **在现有 VM 上** 单击 "启用"，选择要登记的 vm，单击 "**选择**"，单击 "**启用**"，即可完成操作。
 
 只有在尝试修正 VM 的情况下，你可能需要与此 VM 交互以管理这些服务，但无法执行此操作。 如果已成功修正 VM，我们会将其恢复为符合性，甚至无需发出警报。
 
@@ -114,7 +114,16 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 在 Azure 门户中，请参阅 **Automanage – Azure 虚拟机最佳实践** 页，其中列出了所有自动管理的 vm。 在这里，你将看到每个虚拟机的总体状态。
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="智能地内置服务。" **部署** "， *并在其中* 显示错误详细信息。
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="已配置虚拟机的列表。":::
+
+对于列出的每个 VM，将显示以下详细信息：名称、配置文件、配置首选项、状态、帐户、订阅和资源组。
+
+" **状态** " 列可以显示以下状态：
+- *正在进行* -VM 刚启用并且正在配置
+- *已配置* -VM 已配置，未检测到偏移
+- *失败* -VM 有偏移，无法修正
+
+如果 **状态** 显示为 " *失败*"，则可以通过 VM 所在的资源组对部署进行故障排除。 中转到 " **资源组**"，选择资源组，单击 " **部署** "， *并在其中* 显示错误详细信息。
 
 
 ## <a name="disabling-automanage-for-vms"></a>为 Vm 禁用 Automanage
@@ -123,7 +132,7 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 若要在 Azure 门户中执行此操作，请参阅 **Automanage – Azure 虚拟机最佳实践** 页面，其中列出了所有自动管理的 vm。 选择要从 Automanage 禁用的虚拟机旁边的复选框，然后单击 " **禁用 automanagment** " 按钮。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="智能地内置服务。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虚拟机上禁用自动管理。":::
 
 在同意“禁用”之前，请仔细阅读生成的弹出窗口中的消息。
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 507ef55a6fa3976475dbf08f88ee36cd1977464d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4436385b07dd4f1da81f17eb19b38e922e21a1ef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421016"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180415"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -45,7 +45,7 @@ ms.locfileid: "93421016"
       ![在“权限”选项卡上选择自定义角色的权限](./media/custom-create/permissions-tab.png)
 
    1. 接下来，在搜索栏中输入“basic”，选择 `microsoft.directory/applications/basic/update` 权限，然后单击“下一步”。
-1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建”。 
+1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建” 。
 
 你的自定义角色将显示在要分配的可用角色列表中。
 
@@ -154,7 +154,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    正文
+    Body
 
     ``` HTTP
    {
@@ -183,4 +183,4 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 - 欢迎在 [Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享知识。
 - 有关角色以及管理员角色分配的详细信息，请参阅[分配管理员角色](permissions-reference.md)。
-- 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](/azure/active-directory/fundamentals/users-default-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)。
+- 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)。

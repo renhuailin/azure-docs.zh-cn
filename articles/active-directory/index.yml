@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 10/22/2020
-  ms.openlocfilehash: 10b16a6319f0bc458b5bae98edee39133e66acb4
-  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+  ms.openlocfilehash: 741fe2c9cb2c4992b8c7b7b1905962b37b527917
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/18/2020
-  ms.locfileid: "94835622"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96180604"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -28,7 +28,7 @@ highlightedContent:
     url: ./fundamentals/whats-new.md
   - title: 保护远程工作人员
     itemType: get-started
-    url: https://docs.microsoft.com/enterprise-mobility-security/remote-work/
+    url: /enterprise-mobility-security/remote-work/
   - title: 向用户分配角色
     itemType: how-to-guide
     url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
@@ -101,7 +101,7 @@ conceptualContent:
     - url: ./conditional-access/overview.md
       itemType: overview
       text: 什么是条件访问？
-    - url: ./conditional-access/app-based-mfa.md
+    - url: ./authentication/tutorial-enable-azure-mfa.md
       itemType: quickstart
       text: 要求对特定应用执行 MFA
     - url: ./conditional-access/location-condition.md
@@ -126,13 +126,13 @@ conceptualContent:
       text: 查看详细信息
   - title: 域服务
     links:
-    - url: ../active-directory-domain-services/active-directory-ds-overview.md
+    - url: ../active-directory-domain-services/overview.md
       itemType: overview
       text: 什么是 Azure AD 域服务？
-    - url: ../active-directory-domain-services/active-directory-ds-getting-started.md
+    - url: ../active-directory-domain-services/tutorial-create-instance.md
       itemType: quickstart
       text: 启用 Azure AD 域服务
-    - url: ../active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy.md
+    - url: ../active-directory-domain-services/manage-group-policy.md
       itemType: how-to-guide
       text: 管理组策略
     footerLink:
@@ -154,17 +154,17 @@ conceptualContent:
       text: 查看详细信息
   - title: 外部标识
     links:
-    - url: ./b2b/compare-with-b2c.md
+    - url: ./external-identities/compare-with-b2c.md
       itemType: overview
       text: 比较适用于外部用户的解决方案
-    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+    - url: ../active-directory-b2c/overview.md
       itemType: overview
       text: 将应用扩展到消费者 (B2C)
-    - url: ./b2b/what-is-b2b.md
+    - url: ./external-identities/what-is-b2b.md
       itemType: overview
       text: 与组织外部的用户协作 (B2B)
     footerLink:
-      url: ./b2b/index.yml
+      url: ./external-identities/index.yml
       text: 查看详细信息
   - title: 混合标识
     links:
@@ -297,10 +297,10 @@ additionalContent:
   - items:
     - title: Microsoft 365
       summary: 探索 Microsoft 365，一个包括 Azure AD 的完整解决方案。
-      url: https://docs.microsoft.com/microsoft-365/
+      url: /microsoft-365/
     - title: Azure AD PowerShell
       summary: 了解如何安装和使用 Azure AD PowerShell 模块。
-      url: https://docs.microsoft.com/powershell/module/azuread/
+      url: /powershell/module/azuread/
     - title: 用于 Azure AD 的 Azure CLI 命令
       summary: 在 CLI 参考中查找 Azure AD 命令。
-      url: https://docs.microsoft.com/cli/azure/ad
+      url: /cli/azure/ad

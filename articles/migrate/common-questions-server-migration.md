@@ -4,11 +4,11 @@ description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的�
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315240"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180687"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
 
@@ -143,7 +143,7 @@ New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>改动速度如何影响无代理复制？
 
-由于无代理复制会在数据中折叠，因此 *改动模式* 比 *改动速度*更重要。 再次编写文件时，速率不会产生很大的影响。 但是，每个其他扇区的写入模式在下一个周期中会导致较高的变动。 由于我们最大限度地减少了传输的数据量，因此，我们允许数据在计划下一个周期之前折叠尽可能多。
+由于无代理复制会在数据中折叠，因此 *改动模式* 比 *改动速度* 更重要。 再次编写文件时，速率不会产生很大的影响。 但是，每个其他扇区的写入模式在下一个周期中会导致较高的变动。 由于我们最大限度地减少了传输的数据量，因此，我们允许数据在计划下一个周期之前折叠尽可能多。
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>复制循环计划的频率如何？
 

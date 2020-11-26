@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e090b4c3b4ecc3870f060aba4b03be3abe2942ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996969"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180704"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -179,7 +179,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="schedule-trigger"></a>计划触发器
 计划触发器按时钟计划运行管道。 此触发器支持定期和高级日历选项。 例如，此触发器支持“每周”或“星期一下午 5:00 和星期四晚上 9:00”之类的时间间隔。 计划触发器很灵活，因为数据集模式与数据类型无关，该触发器不区分时序数据和非时序数据。
 
-如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
+有关计划触发器和示例的详细信息，请参阅 [创建按计划运行管道的触发器](how-to-create-schedule-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
 创建计划触发器时，请使用 JSON 定义指定计划和定期触发。
@@ -239,7 +239,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | --- | --- |
 | **startTime** | 一个日期时间值。 对于基本的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
 | **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 <!-- This property is optional. --> |
-| **timeZone** | 时区。 目前仅支持 UTC 时区。 |
+| **timeZone** | 时区。 有关支持的时区的列表，请参阅 [创建按计划运行管道的触发器](how-to-create-schedule-trigger.md#time-zone-option)。 |
 | **recurrence** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
 | **frequency** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔。 **frequency** 值决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为 "week"，则触发器每三周定期触发一次。 |
@@ -281,7 +281,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | **startTime** | string | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |

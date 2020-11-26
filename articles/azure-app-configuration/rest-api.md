@@ -6,16 +6,16 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 2e89b372e3ee8d71e99baa4072cd577fa4fb8d7c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e2753f0f8926ac15f5d32020c8891d1b612d2bb3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423890"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182591"
 ---
 # <a name="azure-app-configuration-rest-api"></a>Azure 应用配置 REST API
 
-有关 Azure 应用配置 REST API 的高级文档可在 [AZURE REST 主要文档](https://docs.microsoft.com/rest/api/appconfiguration/)中找到。 本部分包含有关使用应用配置 REST API 开发人员的更多详细信息。
+有关 Azure 应用配置 REST API 的高级文档可在 [AZURE REST 主要文档](/rest/api/appconfiguration/)中找到。 本部分包含有关使用应用配置 REST API 开发人员的更多详细信息。
 
 以下参考页面可用于详细描述 Azure 应用配置 API 图面。
 
@@ -24,7 +24,7 @@ ms.locfileid: "93423890"
 - [“键”](./rest-api-keys.md)
 - [键-值](./rest-api-key-value.md)
 - [标签](./rest-api-labels.md)
-- [锁定](./rest-api-locks.md)
+- [锁](./rest-api-locks.md)
 - [修订](./rest-api-revisions.md)
 
 ## <a name="protocol"></a>协议

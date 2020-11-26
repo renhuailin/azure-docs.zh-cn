@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d813757d5adb8cee9b83e0486baed80ae1bac874
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358569"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180925"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配
 
@@ -95,7 +95,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="troubleshooting-tips"></a>疑难解答指南
-* 通过 [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) 和 [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 函数在属性映射中使用表达式，可以实现在 Docusign 中为用户预配角色或者权限配置文件。 例如，当用户在 Azure AD 中分配了“DS Admin”角色时，以下表达式将预配 ID“8032066”。 如果用户未在 Azure AD 端分配有角色，则不会预配任何权限配置文件。 可从 DocuSign [门户](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)检索该 ID。
+* 通过 [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) 和 [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) 函数在属性映射中使用表达式，可以实现在 Docusign 中为用户预配角色或者权限配置文件。 例如，当用户在 Azure AD 中分配了“DS Admin”角色时，以下表达式将预配 ID“8032066”。 如果用户未在 Azure AD 端分配有角色，则不会预配任何权限配置文件。 可从 DocuSign [门户](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)检索该 ID。
 
 Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
 

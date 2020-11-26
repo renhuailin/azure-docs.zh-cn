@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308684"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183339"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -120,17 +120,17 @@ Advisor 检测是否从专用 SQL 池以外的区域加载。 考虑从与专用
 CPU 利用率长时间处于较高状态可能导致工作负荷的查询性能降低。 增加 CPU 大小将有助于优化数据库查询的运行时并提高整体性能。 顾问可识别 CPU 利用率较高并可能运行 CPU 受约束工作负荷的服务器，并建议缩放计算。
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>减少 Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure Database for MariaDB 服务器上的内存约束或迁移到内存优化 SKU
-低缓存命中率可能导致查询性能降低和 IOPS 增加。 这种情况可能是由错误的查询计划或内存密集型工作负荷导致的。 修复查询计划或增加 Azure Database for PostgreSQL、Azure Database for MySQL 或 Azure Database for MariaDB 服务器的 [内存](../postgresql/concepts-pricing-tiers.md) 将有助于优化数据库工作负荷的执行。 Azure 顾问可识别受此高缓冲池变动影响的服务器。 建议执行以下操作之一： 
+低缓存命中率可能导致查询性能降低和 IOPS 增加。 这种情况可能是由错误的查询计划或内存密集型工作负荷导致的。 修复查询计划或[增加](../postgresql/concepts-pricing-tiers.md) Azure Database for PostgreSQL、Azure Database for MySQL 或 Azure Database for MariaDB 服务器的内存将有助于优化数据库工作负载的执行。 Azure 顾问可识别受此高缓冲池变动影响的服务器。 建议执行以下操作之一： 
 - 修复查询计划
 - 迁移到具有更多内存的 SKU 
 - 增加存储大小以获得更多 IOPS。
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用 Azure Database for MySQL 或 Azure Database for PostgreSQL 只读副本横向扩展读取密集型工作负荷的读取
-顾问使用基于工作负荷的启发（如过去 7 天内服务器上的读写比）来识别读取密集型工作负荷。 具有较高读/写比的 Azure Database for PostgreSQL 或 Azure Database for MySQL 资源可能导致 CPU 或内存争用并导致查询性能降低。 添加 [副本](../postgresql/howto-read-replicas-portal.md) 将有助于扩展对副本服务器的读取，并防止主服务器上出现 CPU 或内存限制。 Advisor 识别具有读取密集型工作负载的服务器，并建议你添加 [读取副本](../postgresql/concepts-read-replicas.md) 以卸载某些读取工作负荷。
+顾问使用基于工作负荷的启发（如过去 7 天内服务器上的读写比）来识别读取密集型工作负荷。 具有较高读/写比的 Azure Database for PostgreSQL 或 Azure Database for MySQL 资源可能导致 CPU 或内存争用并导致查询性能降低。 添加[副本](../postgresql/howto-read-replicas-portal.md)有助于将读取横向扩展到副本服务器，并防止主服务器上的 CPU 或内存限制。 顾问可识别具有读取密集型工作负载的服务器，并建议添加[只读副本](../postgresql/concepts-read-replicas.md)以卸载某些读取工作负载。
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>将 Azure Database for MySQL、Azure Database for PostgreSQL 或 Azure Database for MariaDB 服务器缩放为更高的 SKU，以防止连接约束
-到数据库服务器的每个新连接都会占用内存。 如果由于内存 [上限](../postgresql/concepts-limits.md) 而导致到服务器的连接失败，则数据库服务器的性能会下降。 Azure 顾问可识别运行时连接失败很多次的服务器。 建议通过执行以下操作之一来升级服务器的连接限制，以向服务器提供更多内存：
+到数据库服务器的每个新连接都会占用内存。 如果由于内存[上限](../postgresql/concepts-limits.md)而导致与服务器的连接失败，则数据库服务器的性能会下降。 Azure 顾问可识别运行时连接失败很多次的服务器。 建议通过执行以下操作之一来升级服务器的连接限制，以向服务器提供更多内存：
 - 纵向扩展计算资源。 
 - 使用内存优化 SKU，其中每个核心具有更多的计算资源。
 
@@ -146,7 +146,7 @@ CPU 利用率长时间处于较高状态可能导致工作负荷的查询性能�
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>使用自定义的已包括或已排除路径配置 Azure Cosmos DB 索引编制策略
 
-顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](/azure/cosmos-db/index-policy)
+顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>将 Azure Cosmos DB 查询页大小 (MaxItemCount) 设置为 -1 
 

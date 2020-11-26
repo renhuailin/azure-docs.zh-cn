@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891276"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182829"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 认证故障排除指南
 
@@ -95,7 +95,7 @@ b. 验证你的 Azure 角色分配设置
  
   ```
 
-c. 如果在列表中找不到相应的角色分配，请按照[此处](/azure/role-based-access-control/role-assignments-powershell)的说明进行操作
+c. 如果在列表中找不到相应的角色分配，请按照[此处](../role-based-access-control/role-assignments-powershell.md)的说明进行操作
 
 ## <a name="2-http--400-errors"></a>2. HTTP –400错误
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 通过在 "draftPolicyForAttestation" 参数中提供策略文本，将请求发送到证明 API。 在证明调用期间，AttestSgxEnclave API 将使用此策略文档，这可用于在证明策略使用之前对其进行测试。 存在此字段时生成的证明令牌将不受保护。
 
-请参阅 [证明策略示例](/azure/attestation/policy-examples)
+请参阅 [证明策略示例](./policy-examples.md)
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. 由于输入无效，证明失败
 
@@ -163,7 +163,7 @@ At line:1 char:1
 
 否则，证书链被视为无效。
 
-请参阅 [策略签名者](/azure/attestation/policy-signer-examples) 和 [策略](/azure/attestation/policy-examples) 示例 
+请参阅 [策略签名者](./policy-signer-examples.md) 和 [策略](./policy-examples.md) 示例 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. 添加/删除策略签名者失败
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**故障排除步骤** 若要添加/删除新策略签名者证书，请使用名为 "policyCertificate" 的声明 (JWT Web 令牌 JWT) 。 声明的值是 RFC7517 的 JSON Web 密钥，其中包含要添加的证书。 JWT 必须用与该提供程序关联的任何有效策略签名者证书的私钥进行签名。 请参阅 [策略签名者示例](/azure/attestation/policy-signer-examples)。
+**故障排除步骤** 若要添加/删除新策略签名者证书，请使用名为 "policyCertificate" 的声明 (JWT Web 令牌 JWT) 。 声明的值是 RFC7517 的 JSON Web 密钥，其中包含要添加的证书。 JWT 必须用与该提供程序关联的任何有效策略签名者证书的私钥进行签名。 请参阅 [策略签名者示例](./policy-signer-examples.md)。
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. 证明策略配置失败
 
@@ -255,7 +255,7 @@ At line:1 char:1
 
 在 PowerShell 中，将 PolicyFormat 指定为 JWT，以 JWT 格式配置策略。 默认策略格式为 "文本"。
 
-请参阅证明 [策略示例](/azure/attestation/policy-examples) 和 [如何编写证明策略](/azure/attestation/author-sign-policy) 
+请参阅证明 [策略示例](./policy-examples.md) 和 [如何编写证明策略](./author-sign-policy.md) 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. Az。 PowerShell 中的证明安装问题
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 如果版本与最低要求不匹配，请运行 Update-Module 命令
 
 例如 Update-Module-Name Az. 证明
-
