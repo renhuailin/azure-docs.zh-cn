@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b7248a3a66e0eeca4d86568f80af82bf2d89701f
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031132"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188116"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
 
@@ -38,7 +38,7 @@ ms.locfileid: "96031132"
 
 ![配置代码存储库设置的创作](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-management-hub"></a>配置方法2：管理中心
+### <a name="configuration-method-2-manage-hub"></a>配置方法2：管理中心
 
 请参阅 Synapse Studio 的管理中心。 选择 "**源代码管理**" 部分中的 **Git 配置**。 如果未连接存储库，请单击 " **配置**"。
 
@@ -197,7 +197,7 @@ Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分�
 -   **Synapse 实时模式**。 在 git 模式下发布后，所有更改将反映在 Synapse 实时模式下。 在 Synapse 实时模式下，已禁用发布。 如果你已被授予正确的权限，则可以查看在实时模式下运行项目。 
 -   **在工作室中编辑项目**。 仅可通过 Synapse studio 启用工作区源控件并自动将更改同步到 git。 通过 SDK、PowerShell 进行的任何更改都不会同步到 git。 建议你始终在启用 git 后在 Studio 中编辑项目。
 
-## <a name="troubleshooting-git-integration"></a>排查 Git 集成问题
+## <a name="troubleshooting-git-integration"></a>Git 集成故障排除
 
 ### <a name="access-to-git-mode"></a>访问 git 模式 
 
@@ -217,6 +217,11 @@ Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分�
 
 1. 创建拉取请求以将更改合并到协作分支 
 
+## <a name="unsupported-features"></a>不支持的功能
+
+- Synapse Studio 不允许挑拣提交或选择性地发布资源。 
+- Synapse Studio 不支持自定义提交消息。
+- 按照设计，Studio 中的 delete 操作将直接提交给 git
 
 ## <a name="next-steps"></a>后续步骤
 

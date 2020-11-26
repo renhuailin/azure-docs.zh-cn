@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503549"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187062"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>教程 - 从 Google Maps 迁移 Android 应用
 
@@ -769,7 +769,7 @@ mapControl.onReady(map -> {
 > [在 Android 地图中添加符号层](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [在 Android 地图中添加形状](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [在 Android 地图中添加形状](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [更改 Android 地图中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [更改 Android 地图中的地图样式](./set-android-map-styles.md)

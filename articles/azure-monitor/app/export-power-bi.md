@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979169"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186994"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](./app-insights-overview.md) 的数据。
@@ -20,7 +20,7 @@ ms.locfileid: "90979169"
 * **Power BI 适配器**。 图表集是预定义的，但可以从其他源任何添加自己的查询。
 
 > [!NOTE]
-> Power BI 适配器现在**已弃用**。 此解决方案的预定义图表是由静态的不可编辑查询填充的。 你无法编辑这些查询，到 Power BI 的连接可能会成功但不会填充数据，具体取决于你的数据的某些属性。 这是由硬编码的查询中设置的排除条件导致的。 虽然此解决方案仍然适用于某些客户，但是由于缺少适配器的灵活性，建议的解决方案是使用[**导出 Analytics 查询**](#export-analytics-queries)功能。
+> Power BI 适配器现在 **已弃用**。 此解决方案的预定义图表是由静态的不可编辑查询填充的。 你无法编辑这些查询，到 Power BI 的连接可能会成功但不会填充数据，具体取决于你的数据的某些属性。 这是由硬编码的查询中设置的排除条件导致的。 虽然此解决方案仍然适用于某些客户，但是由于缺少适配器的灵活性，建议的解决方案是使用 [**导出 Analytics 查询**](#export-analytics-queries)功能。
 
 ## <a name="export-analytics-queries"></a>导出 Analytics 查询
 可以使用这种方法编写所需的任何 Analytics 查询或从使用情况漏斗图导出，然后将其导出到 Power BI 仪表板。 （可以添加到适配器创建的仪表板。）
@@ -31,7 +31,7 @@ ms.locfileid: "90979169"
 安装 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
-1. [打开 Analytics 并编写查询](../log-query/get-started-portal.md)。
+1. [打开 Analytics 并编写查询](../log-query/log-analytics-tutorial.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
 3. 在“导出”菜单中，选择“Power BI (M)”。  保存文本文件。
    
@@ -67,7 +67,7 @@ ms.locfileid: "90979169"
 
    将导出的 M 语言脚本粘贴到高级编辑器中。 
 
-   ![屏幕截图显示 Power BI Desktop，并突出显示高级编辑器](./media/export-power-bi/advancedquery.png)
+   ![屏幕截图显示 Power BI Desktop，其中突出显示了“高级编辑器”](./media/export-power-bi/advancedquery.png)
 
 4. 从查询中选择项并选择“漏斗图可视化效果”。
 
@@ -86,7 +86,7 @@ ms.locfileid: "90979169"
 
 1. 登录 Azure 门户，确保可访问资源。
 2. 尝试刷新仪表板的凭据。
-3. 尝试从 Power BI Desktop 中清除缓存。
+3. 尝试从 Power BI Desktop 清除缓存。
 
 
    如果具有访问权限且刷新凭据不起作用，请开具支持票证。
@@ -121,14 +121,14 @@ ms.locfileid: "90979169"
 1. 登录 [Power BI](https://app.powerbi.com/)。
 2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，然后选择“服务” 。
 
-    ![屏幕截图显示 "服务" 窗口中的 "获取" 按钮。](./media/export-power-bi/002.png)
+    ![屏幕截图显示“服务”窗口中的“获取”按钮。](./media/export-power-bi/002.png)
 
 3. 选择 Application Insights 下的“立即获取”。
 
    ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/003.png)
-4. 提供 Application Insights 资源的详细信息，然后**登录**。
+4. 提供 Application Insights 资源的详细信息，然后 **登录**。
 
-    ![屏幕截图显示连接到 Application Insights 窗口。](./media/export-power-bi/005.png)
+    ![屏幕截图显示“连接到 Application Insights”窗口。](./media/export-power-bi/005.png)
 
      可以在 Application Insights 概述窗格中找到此信息：
 
@@ -146,5 +146,4 @@ ms.locfileid: "90979169"
 
 ## <a name="next-steps"></a>后续步骤
 * [Power BI - 学习](https://www.powerbi.com/learning/)
-* [Analytics 教程](../log-query/get-started-portal.md)
-
+* [Analytics 教程](../log-query/log-analytics-tutorial.md)

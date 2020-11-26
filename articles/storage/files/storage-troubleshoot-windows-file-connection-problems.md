@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630152"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188711"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>排查 Windows (SMB) 中的 Azure 文件问题
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>在 Windows 中排查 Azure 文件存储问题 (SMB)
 
 本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除了本文中的疑难解答步骤之外，还可以使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。
 
@@ -173,44 +173,44 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅 [如何使用 AZURE RBAC)  (azure 基于角色的访问控制来保护存储帐户 ](../blobs/security-recommendations.md#data-protection)。
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来保护存储帐户](../blobs/security-recommendations.md#data-protection)。
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
-文件共享的主要目的之一是，多个用户和应用程序可以同时与共享中的文件和目录进行交互。 为了帮助进行此交互，文件共享提供了几种调节访问文件和目录的方式。
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>无法修改、移动/重命名或删除文件或目录
+文件共享的主要目的之一是，多个用户和应用程序可以同时与该共享中的文件和目录进行交互。 为了帮助进行此交互，文件共享提供了几种对文件和目录访问进行协调的方式。
 
-通过 SMB 从已装载的 Azure 文件共享打开文件时，应用程序/操作系统会请求文件句柄，该句柄是对文件的引用。 在其他情况下，应用程序会在请求文件句柄时指定文件共享模式，该模式指定访问 Azure 文件所强制文件的独占性的级别： 
+通过 SMB 从已装载的 Azure 文件共享打开文件时，应用程序/操作系统会请求文件句柄，该句柄是对文件的引用。 除了别的之外，你的应用程序会在请求文件句柄时指定文件共享模式，该模式指定你对文件的访问的独占性级别（由 Azure 文件存储强制实施）： 
 
 - `None`：你具有独占访问权限。 
-- `Read`：在打开文件时，其他人可以读取该文件。
-- `Write`：在打开文件时，其他人可以写入文件。 
-- `ReadWrite`： `Read` 和 `Write` 共享模式的组合。
-- `Delete`：在打开文件时，其他人可能会删除该文件。 
+- `Read`：在你打开文件时，其他人可以读取该文件。
+- `Write`：在你打开文件时，其他人可以写入到该文件。 
+- `ReadWrite`：`Read` 和 `Write` 共享模式的组合。
+- `Delete`：在你打开文件时，其他人可以删除该文件。 
 
-尽管作为无状态协议，但 FileREST 协议没有文件句柄的概念，但它确实提供了类似的机制来调解对你的脚本、应用程序或服务可以使用的文件和文件夹的访问权限：文件租用。 当对文件进行租用时，会将其视为等效于文件共享模式的文件句柄 `None` 。 
+尽管作为无状态协议，FileREST 协议没有文件句柄的概念，但它确实提供了类似的机制来协调对你的脚本、应用程序或服务可能会使用的文件和文件夹的访问：文件租约。 当文件被租用时，会将其视为等效于文件共享模式为 `None` 的文件句柄。 
 
-尽管文件句柄和租约的作用很重要，但有时文件句柄和租约可能会孤立。 发生这种情况时，这可能会导致修改或删除文件时出现问题。 你可能会看到如下错误消息：
+尽管文件句柄和租约的作用很重要，但有时文件句柄和租约可能会被孤立。 发生这种情况时，可能会导致修改或删除文件时出现问题。 你可能会看到类似于以下内容的错误消息：
 
 - 进程无法访问该文件，因为它正在被另一个进程使用。
-- 操作无法完成，因为该文件已在另一个程序中打开。
-- 文档被锁定，以供另一个用户编辑。
+- 操作无法完成，因为此文件已在其他程序中打开。
+- 该文档已由另一个用户锁定以进行编辑。
 - SMB 客户端已将指定的资源标记为要删除。
 
-此问题的解决方法取决于是否是由孤立的文件句柄或租约导致的。 
+此问题的解决方法取决于这种情况是由孤立的文件句柄还是由孤立的文件租约所导致。 
 
 ### <a name="cause-1"></a>原因 1
-文件句柄正在阻止修改或删除文件/目录。 可以使用 [AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 来查看打开的句柄。 
+文件句柄正在阻止修改或删除文件/目录。 可以使用 [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开的句柄。 
 
-如果所有 SMB 客户端均已关闭其文件/目录的打开句柄，并且问题仍然存在，则可以强制关闭文件句柄。
+如果所有 SMB 客户端均已关闭其在某个文件/目录上打开的句柄，并且问题仍然存在，那么你可以强制关闭文件句柄。
 
 ### <a name="solution-1"></a>解决方案 1
-若要强制关闭文件句柄，请使用 [AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。 
+若要强制文件句柄关闭，请使用 [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。 
 
 > [!Note]  
 > Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 ### <a name="cause-2"></a>原因 2
-文件租约阻止修改或删除文件。 你可以使用以下 PowerShell 检查文件是否具有文件租约， `<resource-group>` `<storage-account>` 并将、、和替换 `<file-share>` 为适用 `<path-to-file>` 于你环境的相应值：
+文件租约正在阻止修改或删除文件。 你可以使用以下 PowerShell 检查文件是否具有文件租约（将 `<resource-group>`、`<storage-account>`、`<file-share>` 和 `<path-to-file>` 替换为适用于你的环境的值）：
 
 ```PowerShell
 # Set variables 
@@ -245,9 +245,9 @@ LeaseStatus           : Locked
 ```
 
 ### <a name="solution-2"></a>解决方案 2
-若要从文件中删除租约，可以释放租约或中断租用。 若要释放租约，需要 LeaseId，这是在创建租约时设置的。 不需要 LeaseId 来打破租约。
+若要从文件删除租约，可以释放租约或中断租约。 若要释放租约，你需要该租约的 LeaseId，这是在创建租约时设置的。 无需 LeaseId 即可中断租约。
 
-下面的示例演示了如何中断第2个示例中所示文件的租约 (此示例将从导致 2) 的 PowerShell 变量继续：
+下面的示例演示如何为“原因 2”中所示的文件中断租约（此示例将使用“原因 2”中的 PowerShell 变量继续）：
 
 ```PowerShell
 $leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)

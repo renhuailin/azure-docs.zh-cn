@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024715"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187232"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -20,7 +20,7 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 * 控制平面 Api 是 [Azure 资源管理器 (ARM) ](../azure-resource-manager/management/overview.md) api，涵盖创建和删除实例等资源管理操作。 
 * 数据平面 Api 是 Azure 数字孪生 Api，可用于管理模型、孪生和图形等数据管理操作。
 
-本文概述了可用的 Api 以及与它们进行交互的方法。 可以直接将 REST Api 与关联的 Swagger 或 SDK 一起使用。
+本文概述了可用的 Api 以及与它们进行交互的方法。 可以通过 Postman 等工具（如) [Postman](how-to-use-postman.md) ）或 SDK 直接将 REST api 与关联的 swagger (一起使用。
 
 ## <a name="overview-control-plane-apis"></a>概述：控制平面 Api
 
@@ -32,7 +32,7 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 * 您可以通过在 [控制平面 Swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中引用最新 Swagger 直接调用 api。 此存储库还包含演示使用情况的示例文件夹。
 * 当前可在中访问控件 Api 的 Sdk .。。
   - [**.Net (c # )**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([参考 [自动生成]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true))  ([源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) 
-  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([引用 [自动生成]](/java/api/overview/azure/digitaltwins?view=azure-java-stable))  ([源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) 
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([引用 [自动生成]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true))  ([源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) 
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([源](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
   - [**继续**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins)) 
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 下面的列表提供了有关使用 Api 和 Sdk 的其他详细信息和一般准则。
 
+* 可以使用 HTTP REST 测试工具（如 Postman）对 Azure 数字孪生 Api 进行直接调用。 有关此过程的详细信息，请参阅 how [*to： requests requests With Postman*](how-to-use-postman.md)。
 * 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要可使用包中各种身份验证方法获取的凭据 `Azure.Identity` 。 有关的详细信息 `Azure.Identity` ，请参阅其 [命名空间文档](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)。 
 * 你可能会发现在入门 `InteractiveBrowserCredential` 时非常有用，但还有其他几个选项，包括 [托管标识](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)的凭据，你可能会使用这些选项来验证使用 MSI 对 azure 数字孪生 [设置的 azure 功能](../app-service/overview-managed-identity.md?tabs=dotnet) 。 有关的详细信息 `InteractiveBrowserCredential` ，请参阅它的 [类文档](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)。
 * 所有服务 API 调用都公开为类的成员函数 `DigitalTwinsClient` 。
@@ -303,8 +304,8 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何使用 Api 设置 Azure 数字孪生实例和身份验证：
-* [*操作说明：设置实例和身份验证*](how-to-set-up-instance-cli.md)
+请参阅如何使用 Postman 向 Api 发出直接请求：
+* [*如何：通过 Postman 发出请求*](how-to-use-postman.md)
 
-或者，逐步完成创建客户端应用程序的步骤，如下所述：
+或者，通过使用本教程创建客户端应用程序，练习使用 .NET SDK：
 * [*教程：* 为客户端应用编写代码](tutorial-code.md)

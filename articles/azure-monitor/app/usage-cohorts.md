@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995750"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186943"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -131,7 +131,7 @@ _我已定义某些国家/地区的用户的队列。当我在“用户”工具
 
 ## <a name="learn-more"></a>了解详细信息
 
-* [Analytics 查询语言](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+* [Analytics 查询语言](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [用户、会话、事件](usage-segmentation.md)
 * [用户流](usage-flows.md)
 * [使用情况概述](usage-overview.md)

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: c869069e40780b1fd399758e84b0ffba311398e3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334168"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187810"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a> (预览版为 Azure Cosmos DB 帐户启用笔记本) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93334168"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 选择“创建资源” > “数据库” > “Azure Cosmos DB”。
-1. 在 " **创建 Azure Cosmos DB 帐户** " 页上，选择 " **笔记本** "。 
+1. 在 " **创建 Azure Cosmos DB 帐户** " 页上，选择 " **笔记本**"。 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB 创建边栏选项卡中选择笔记本选项":::
 
@@ -48,7 +48,7 @@ ms.locfileid: "93334168"
 你还可以在现有帐户上启用笔记本。 每个帐户只需执行此步骤一次。
 
 1. 导航到 Cosmos 帐户中的 " **数据资源管理器** " 窗格。
-1. 选择 " **启用笔记本** "。
+1. 选择 " **启用笔记本**"。
 
     :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="在数据资源管理器中创建新的 &quot;笔记本&quot; 工作区":::
 
@@ -59,7 +59,7 @@ ms.locfileid: "93334168"
 
 若要验证是否可以使用笔记本，请在 "示例笔记本" 下选择一个笔记本。 这会将笔记本副本保存到你的工作区并将其打开。
 
-在此示例中，我们将使用 **GettingStarted. ipynb** 。 
+在此示例中，我们将使用 **GettingStarted. ipynb**。 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="查看 GettingStarted ipynb 笔记本":::
 
@@ -70,10 +70,10 @@ ms.locfileid: "93334168"
 
     :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="运行入门笔记本":::
 
-你还可以选择 " **新建笔记本** "，以通过从 " **我的笔记本** " 菜单中选择 " **上传文件** "，来创建新笔记本或) 文件上传现有笔记本 (。 
+你还可以选择 "**新建笔记本**"，以通过从 "**我的笔记本**" 菜单中选择 "**上传文件**"，来创建新笔记本或) 文件上传现有笔记本 (。 
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="创建或上传新笔记本":::
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Cosmos DB Jupyter 笔记本](cosmosdb-jupyter-notebooks.md)的优势
+- 了解[Azure Cosmos DB Jupyter 笔记本](cosmosdb-jupyter-notebooks.md)的优点

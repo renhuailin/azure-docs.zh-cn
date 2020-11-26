@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 803c9a98f0dc10ff8218ac7b7c20dcb117700034
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992159"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187096"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -614,7 +614,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 在 Azure 平台中，会自动启用 DDoS 保护。 它包括 always on 流量监视和对公共终结点上网络级别攻击的实时缓解。
 
-- 使用 [Azure DDoS 防护](../../virtual-network/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
+- 使用 [Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
 
 - 使用 [AZURE SQL 数据库的高级威胁防护](threat-detection-overview.md) 来检测对数据库的拒绝服务 (DoS) 攻击。
 

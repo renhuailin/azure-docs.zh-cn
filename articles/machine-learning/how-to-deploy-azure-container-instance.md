@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 580459f3a5da8485bd92395f9b0b9745e28c023c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e9401842284cad29b297be5ce572fa53cfe774
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325266"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188082"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
-
 
 了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例 (ACI) 上的 Web 服务。 如果满足下列任一条件，请使用 Azure 容器实例：
 
@@ -29,7 +28,7 @@ ms.locfileid: "93325266"
 有关 ACI 的配额和区域可用性的信息，请参阅 [Azure 容器实例的配额和区域可用性](../container-instances/container-instances-quotas.md)文章。
 
 > [!IMPORTANT]
-> 强烈建议在部署到 Web 服务之前先进行本地调试。有关详细信息，请参阅[本地调试](./how-to-troubleshoot-deployment.md#debug-locally)
+> 强烈建议在部署到 Web 服务之前先进行本地调试。有关详细信息，请参阅[本地调试](./how-to-troubleshoot-deployment-local.md)
 >
 > 还可参阅 Azure 机器学习 - [部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -56,7 +55,7 @@ ms.locfileid: "93325266"
 * 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。
 * 在虚拟网络中使用 Azure 容器实例时，你的工作区的 Azure 容器注册表 (ACR) 不能也在该虚拟网络中。
 
-有关详细信息，请参阅 [如何在虚拟网络中保护推断](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
+有关详细信息，请参阅[如何通过虚拟网络保护推理](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 

@@ -12,19 +12,19 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489278"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187827"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关 (预览) 
 
 本文介绍如何在 IoT Edge 网关和下游 IoT Edge 设备之间建立可信连接。
 
 >[!NOTE]
->此功能需要 IoT Edge 版本1.2，该版本是公共预览版，运行 Linux 容器。
+>此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
 
 在网关方案中，IoT Edge 设备既可以是网关，也可以是下游设备。 可以将多个 IoT Edge 网关分层，以创建设备的层次结构。 下游 (或子) 设备可以通过其网关 (或父) 设备进行身份验证和发送或接收消息。
 
@@ -34,15 +34,15 @@ ms.locfileid: "94489278"
 
 本文中的所有步骤都是在 [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)的情况下构建的，这会将 IoT Edge 设备设置为下游 IoT 设备的网关。 相同的基本步骤适用于所有网关方案：
 
-* **身份验证** ：为网关层次结构中的所有设备创建 IoT 中心标识。
-* **授权** ：设置 IoT 中心内的父/子关系，授权子设备连接到其父设备，如连接到 IoT 中心。
-* **网关发现** ：确保子设备能够在本地网络上找到其父设备。
-* **安全连接** ：使用属于同一链的受信任证书建立安全连接。
+* **身份验证**：为网关层次结构中的所有设备创建 IoT 中心标识。
+* **授权**：设置 IoT 中心内的父/子关系，授权子设备连接到其父设备，如连接到 IoT 中心。
+* **网关发现**：确保子设备能够在本地网络上找到其父设备。
+* **安全连接**：使用属于同一链的受信任证书建立安全连接。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 免费或标准 IoT 中心。
-* 至少两个 **IoT Edge 设备** ，一个设备是顶层设备，一个或多个较低层设备。 如果没有可用 IoT Edge 设备，则可以 [在 Ubuntu 虚拟机上运行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
+* 至少两个 **IoT Edge 设备**，一个设备是顶层设备，一个或多个较低层设备。 如果没有可用 IoT Edge 设备，则可以 [在 Ubuntu 虚拟机上运行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
 * 如果使用 Azure CLI 来创建和管理设备，请在安装了 Azure IoT extension 0.10.6 或更高版本的情况下使用 Azure CLI 的版本 v4.0。
 
 本文提供详细的步骤和选项，可帮助你为方案创建适当的网关层次结构。 有关指导教程，请参阅 [使用网关创建 IoT Edge 设备的层次结构](tutorial-nested-iot-edge.md)。
@@ -66,7 +66,7 @@ ms.locfileid: "94489278"
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心。
 1. 从导航菜单中选择 " **IoT Edge** "。
 1. 选择“添加 IoT Edge 设备”  。
-1. 除了设置设备 ID 和身份验证设置，还可以 **设置父设备** 或选择 " **子设备** "。
+1. 除了设置设备 ID 和身份验证设置，还可以 **设置父设备** 或选择 " **子设备**"。
 1. 选择要作为父项或子节点的一个或一些设备。
 
 你还可以创建或管理现有设备的父/子关系。
@@ -74,7 +74,7 @@ ms.locfileid: "94489278"
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心。
 1. 从导航菜单中选择 " **IoT Edge** "。
 1. 从 **IoT Edge 设备** 的列表中选择要管理的设备。
-1. 选择 " **设置父设备** " 或 " **管理子设备** "。
+1. 选择 " **设置父设备** " 或 " **管理子设备**"。
 1. 添加或删除任何父或子设备。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -99,9 +99,9 @@ ms.locfileid: "94489278"
 
 创建以下证书：
 
-* **根 CA 证书** ，是指定网关层次结构中所有设备的最顶层共享证书。 此证书安装在所有设备上。
+* **根 CA 证书**，是指定网关层次结构中所有设备的最顶层共享证书。 此证书安装在所有设备上。
 * 要包括在根证书链中的任何 **中间证书** 。
-* 由根证书和中间证书生成的 **设备 CA 证书** 及其 **私钥** 。 网关层次结构中的每个 IoT Edge 设备都需要一个唯一的设备 CA 证书。
+* 由根证书和中间证书生成的 **设备 CA 证书** 及其 **私钥**。 网关层次结构中的每个 IoT Edge 设备都需要一个唯一的设备 CA 证书。
 
 >[!NOTE]
 >目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
@@ -146,11 +146,11 @@ ms.locfileid: "94489278"
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. 查找 yaml 文件中的 " **证书** " 部分。 更新三个证书字段，使其指向证书。 提供采用格式的文件 URI 路径 `file:///<path>/<filename>` 。
+1. 查找 yaml 文件中的 " **证书** " 部分。 更新三个证书字段，使其指向证书。 提供采用 `file:///<path>/<filename>` 格式的文件 URI 路径。
 
-   * **device_ca_cert** ：此设备独有的设备 ca 证书的文件 URI 路径。
-   * **device_ca_pk** ：此设备独有的设备 ca 私钥的文件 URI 路径。
-   * **trusted_ca_certs** ：网关层次结构中所有设备共享的根 ca 证书的文件 URI 路径。
+   * **device_ca_cert**：此设备独有的设备 ca 证书的文件 URI 路径。
+   * **device_ca_pk**：此设备独有的设备 ca 私钥的文件 URI 路径。
+   * **trusted_ca_certs**：网关层次结构中所有设备共享的根 ca 证书的文件 URI 路径。
 
 1. 查找 yaml 文件中的 **hostname** 参数。 将主机名更新为完全限定的域名 (FQDN) 或 IoT Edge 设备的 IP 地址。
 
@@ -160,7 +160,7 @@ ms.locfileid: "94489278"
 
    通过网关层次结构与主机名模式保持一致。 使用 Fqdn 或 IP 地址，但不能同时使用两者。
 
-1. **如果此设备是子设备** ，请查找 **parent_hostname** 参数。 将 **parent_hostname** 字段更新为父设备的 FQDN 或 IP 地址，并将提供的所有内容与父设备的 yaml 文件中的主机名匹配。
+1. **如果此设备是子设备**，请查找 **parent_hostname** 参数。 将 **parent_hostname** 字段更新为父设备的 FQDN 或 IP 地址，并将提供的所有内容与父设备的 yaml 文件中的主机名匹配。
 
 1. 此功能处于公共预览状态时，需要将 IoT Edge 设备配置为在启动时使用 IoT Edge 代理的公共预览版。
 
@@ -172,7 +172,7 @@ ms.locfileid: "94489278"
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,16 +202,16 @@ ms.locfileid: "94489278"
 
 此功能处于公共预览模式时，需要将 IoT Edge 设备配置为使用 IoT Edge 运行时模块的公共预览版。 上一部分提供了在启动时配置 edgeAgent 的步骤。 还需要在设备的部署中配置运行时模块。
 
-1. 将 edgeHub 模块配置为使用公共预览图像： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` 。
+1. 将 edgeHub 模块配置为使用公共预览图像： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` 。
 
 1. 为 edgeHub 模块配置以下环境变量：
 
-   | “属性” | 值 |
+   | 名称 | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. 将 edgeAgent 模块配置为使用公共预览图像： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` 。
+1. 将 edgeAgent 模块配置为使用公共预览图像： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` 。
 
 ## <a name="network-isolate-downstream-devices"></a>网络隔离下游设备
 
@@ -223,9 +223,9 @@ ms.locfileid: "94489278"
 
 * **API 代理模块** 在任何在其下有另一个 IoT Edge 设备的 IoT Edge 网关上都是必需的。 也就是说，它必须位于网关层次结构的 *每个层* 上，底部层除外。 此模块使用 [nginx](https://nginx.org) 反向代理通过单个端口上的网络层路由 HTTP 数据。 它通过其模块克隆和环境变量可高度配置，因此可以进行调整以适应网关方案要求。
 
-* 可在网关层次结构的 *顶层* 将 **Docker 注册表模块** 部署到 IoT Edge 网关。 此模块负责代表较低层中的所有 IoT Edge 设备检索和缓存容器映像。 在顶层部署此模块的替代方法是使用本地注册表，或者手动将容器映像加载到设备上，并将模块请求策略设置为 " **从不** "。
+* 可在网关层次结构的 *顶层* 将 **Docker 注册表模块** 部署到 IoT Edge 网关。 此模块负责代表较低层中的所有 IoT Edge 设备检索和缓存容器映像。 在顶层部署此模块的替代方法是使用本地注册表，或者手动将容器映像加载到设备上，并将模块请求策略设置为 " **从不**"。
 
-* 可在网关层次结构 *顶部* 的 IoT Edge 网关上部署 **IoT Edge 上的 Azure Blob 存储** 。 此模块负责代表较低层中的所有 IoT Edge 设备上传 blob。 上传 blob 的功能还为更低层中的 IoT Edge 设备启用了有用的疑难解答功能，如模块日志上传和支持捆绑包上传。
+* 可在网关层次结构 *顶部* 的 IoT Edge 网关上部署 **IoT Edge 上的 Azure Blob 存储**。 此模块负责代表较低层中的所有 IoT Edge 设备上传 blob。 上传 blob 的功能还为更低层中的 IoT Edge 设备启用了有用的疑难解答功能，如模块日志上传和支持捆绑包上传。
 
 ### <a name="network-configuration"></a>网络配置
 
@@ -252,7 +252,7 @@ API 代理模块设计用于处理最常见的网关方案。 本文提供了有
 1. 从导航菜单中选择 " **IoT Edge** "。
 1. 从 **IoT Edge 设备** 的列表中选择要配置的顶层设备。
 1. 选择“设置模块”。
-1. 在 **IoT Edge 模块** "部分中，选择" **添加** "，然后选择" **Marketplace 模块** "。
+1. 在 **IoT Edge 模块** "部分中，选择" **添加** "，然后选择" **Marketplace 模块**"。
 1. 搜索并选择 " **IOT EDGE API 代理** " 模块。
 1. 从已部署的模块列表中选择 API 代理模块的名称，并更新以下模块设置：
    1. 在 " **环境变量** " 选项卡中，将 **NGINX_DEFAULT_PORT** 的值更新为 `443` 。
@@ -296,19 +296,19 @@ API 代理模块设计用于处理最常见的网关方案。 本文提供了有
    ```
 
 1. 选择 " **保存** " 以保存对运行时设置所做的更改。
-1. 再次选择 " **添加** "，然后选择 " **IoT Edge 模块** "。
+1. 再次选择 " **添加** "，然后选择 " **IoT Edge 模块**"。
 1. 提供以下值以将 Docker 注册表模块添加到你的部署：
-   1. **IoT Edge 模块名称** ： `registry`
-   1. 在 " **模块设置** " 选项卡上， **图像 URI** ： `registry:latest`
+   1. **IoT Edge 模块名称**： `registry`
+   1. 在 " **模块设置** " 选项卡上， **图像 URI**： `registry:latest`
    1. 在 " **环境变量** " 选项卡上，添加以下环境变量：
 
-      * **名称** ： `REGISTRY_PROXY_REMOTEURL` **值** ：你希望此注册表模块映射到的容器注册表的 URL。 例如 `https://myregistry.azurecr`。
+      * **名称**： `REGISTRY_PROXY_REMOTEURL` **值**：你希望此注册表模块映射到的容器注册表的 URL。 例如，`https://myregistry.azurecr`。
 
         注册表模块只能映射到一个容器注册表，因此建议将所有容器映像置于单个专用容器注册表中。
 
-      * **名称** ： `REGISTRY_PROXY_USERNAME` **值** ：用于对容器注册表进行身份验证的用户名。
+      * **名称**： `REGISTRY_PROXY_USERNAME` **值**：用于对容器注册表进行身份验证的用户名。
 
-      * **名称** ： `REGISTRY_PROXY_PASSWORD` **值** ：用于对容器注册表进行身份验证的密码。
+      * **名称**： `REGISTRY_PROXY_PASSWORD` **值**：用于对容器注册表进行身份验证的密码。
 
    1. 在 **容器 "创建选项** " 选项卡上，粘贴：
 
@@ -329,8 +329,8 @@ API 代理模块设计用于处理最常见的网关方案。 本文提供了有
 1. 选择 " **添加** "，将模块添加到部署中。
 1. 选择 " **下一步"：路由** 到下一步。
 1. 若要允许来自下游设备的设备到云的消息到达 IoT 中心，请包含将所有消息传递到 IoT 中心的路由。 例如：
-    1. **名称** ：`Route`
-    1. **值** ：`FROM /messages/* INTO $upstream`
+    1. **名称**：`Route`
+    1. **值**：`FROM /messages/* INTO $upstream`
 1. 选择 " **查看 + 创建** " 以前往最后一步。
 1. 选择 " **创建** " 以部署到设备。
 
@@ -350,7 +350,7 @@ API 代理模块设计用于处理最常见的网关方案。 本文提供了有
 
 API 代理模块只能路由到一个注册表模块，每个注册表模块只能映射到一个容器注册表。 因此，下层设备需要请求的任何映像都必须存储在单个容器注册表中。
 
-如果你不希望较低层设备通过网关层次结构进行模块拉取请求，另一个选项是管理本地注册表解决方案。 或者，在创建部署之前将模块映像推送到设备上，然后将 **imagePullPolicy** 设置为 " **从不** "。
+如果你不希望较低层设备通过网关层次结构进行模块拉取请求，另一个选项是管理本地注册表解决方案。 或者，在创建部署之前将模块映像推送到设备上，然后将 **imagePullPolicy** 设置为 " **从不**"。
 
 #### <a name="bootstrap-the-iot-edge-agent"></a>启动 IoT Edge 代理
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 
@@ -382,10 +382,10 @@ API 代理模块设计用于处理最常见的网关方案。 本文简要介绍
 1. 从导航菜单中选择 " **IoT Edge** "。
 1. 从 **IoT Edge 设备** 的列表中选择要配置的下层设备。
 1. 选择“设置模块”。
-1. 在 **IoT Edge 模块** "部分中，选择" **添加** "，然后选择" **Marketplace 模块** "。
+1. 在 **IoT Edge 模块** "部分中，选择" **添加** "，然后选择" **Marketplace 模块**"。
 1. 搜索并选择 " **IOT EDGE API 代理** " 模块。
 1. 从已部署的模块列表中选择 API 代理模块的名称，并更新以下模块设置：
-   1. 在 " **模块设置** " 选项卡中，更新 " **映像 URI** " 的值。 将 `mcr.microsoft.com` 替换为 `$upstream:443`。
+   1. 在 " **模块设置** " 选项卡中，更新 " **映像 URI**" 的值。 将 `mcr.microsoft.com` 替换为 `$upstream:443`。
    1. 在 " **环境变量** " 选项卡中，将 **NGINX_DEFAULT_PORT** 的值更新为 `443` 。
    1. 在容器的 " **创建选项** " 选项卡中，更新端口绑定以引用端口443。
 
@@ -436,8 +436,8 @@ API 代理模块设计用于处理最常见的网关方案。 本文简要介绍
 1. 选择 " **保存** " 以保存对运行时设置所做的更改。
 1. 选择 " **下一步"：路由** 到下一步。
 1. 若要允许来自下游设备的设备到云的消息到达 IoT 中心，请包含将所有消息传递到的路由 `$upstream` 。 如果下层设备，上游参数会指向父设备。 例如：
-    1. **名称** ：`Route`
-    1. **值** ：`FROM /messages/* INTO $upstream`
+    1. **名称**：`Route`
+    1. **值**：`FROM /messages/* INTO $upstream`
 1. 选择 " **查看 + 创建** " 以前往最后一步。
 1. 选择 " **创建** " 以部署到设备。
 

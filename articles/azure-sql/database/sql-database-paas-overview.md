@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187113"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL 数据库是一个完全托管的平台即服务 (PaaS) 数据库引�
 
 使用 Azure SQL 数据库，可以为 Azure 中的应用程序和解决方案创建高度可用且高性能的数据存储层。 SQL 数据库可成为各种新式云应用程序的正确选择，因为它可让你处理关系数据和[非关系结构](../multi-model-features.md)（例如图形、JSON、空间和 XML）。
 
-Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)的最新稳定版本。 你可以使用高级查询处理功能集，例如[高性能内存中技术](../in-memory-oltp-overview.md)和[智能查询处理](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json)。 事实上，SQL Server 的最新功能会先发布到 SQL 数据库，然后再发布到 SQL Server 本身。 无需投入任何修补或升级开销，即可获得 SQL Server 的最新功能，这些功能已在数百万个数据库中进行测试。 
+Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)的最新稳定版本。 你可以使用高级查询处理功能集，例如[高性能内存中技术](../in-memory-oltp-overview.md)和[智能查询处理](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json)。 事实上，SQL Server 的最新功能会先发布到 SQL 数据库，然后再发布到 SQL Server 本身。 无需投入任何修补或升级开销，即可获得 SQL Server 的最新功能，这些功能已在数百万个数据库中进行测试。 
 
 使用 SQL 数据库可在以下两个不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买模型](service-tiers-vcore.md)和[基于 DTU 的购买模型](service-tiers-dtu.md)。 SQL 数据库是完全托管型服务，提供内置的可用性、备份和其他常见维护操作。 Microsoft 可以处理 SQL 和操作系统代码的所有修补与更新。 你无需管理底层基础结构。
 
@@ -37,7 +37,7 @@ Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](/sql/sql-ser
 
 Azure SQL 数据库提供下述适用于数据库的部署选项：
 
-- [单一数据库](single-database-overview.md)表示完全托管的独立数据库。 对于需要单个可靠数据源的新式云应用程序和微服务，可以使用此选项。 单一数据库类似于 [SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)中[包含的数据库](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json)。
+- [单一数据库](single-database-overview.md)表示完全托管的独立数据库。 对于需要单个可靠数据源的新式云应用程序和微服务，可以使用此选项。 单一数据库类似于 [SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)中[包含的数据库](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json)。
 - [弹性池](elastic-pool-overview.md)是[单一数据库](single-database-overview.md)的集合，其中包含一组共享的资源（例如 CPU 或内存）。 可以将单一数据库移入或移出弹性池。
 
 > [!IMPORTANT]
@@ -96,9 +96,9 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你更深�
 
 Azure 提供[内置的性能监视](performance-guidance.md)和[警报](alerts-insights-configure-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和资源日志](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，以方便进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
-- **Azure 存储** ：以较低的价格存档大量的遥测数据。
-- **Azure 事件中心** ：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
-- **Azure Monitor 日志** ：用于具有报告、警报和缓解功能的内置监视解决方案。
+- **Azure 存储**：以较低的价格存档大量的遥测数据。
+- **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
+- **Azure Monitor 日志**：用于具有报告、警报和缓解功能的内置监视解决方案。
 
 ![Azure 监视体系结构示意图](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 
 [SQL 数据库中](automatic-tuning-overview.md)有两个自动优化方面：
 
-- **自动索引管理** ：标识应在数据库中添加的索引以及应删除的索引。
-- **自动计划更正** ：识别有问题的计划并修复 SQL 计划性能问题。
+- **自动索引管理**：标识应在数据库中添加的索引以及应删除的索引。
+- **自动计划更正**：识别有问题的计划并修复 SQL 计划性能问题。
 
 ### <a name="adaptive-query-processing"></a>自适应查询处理
 

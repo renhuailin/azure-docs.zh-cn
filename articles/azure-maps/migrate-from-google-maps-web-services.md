@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896338"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187028"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 服务
 
@@ -501,10 +501,10 @@ Azure Maps 为以下编程语言提供客户端库：
 > [路线规划最佳做法](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST 服务 API 参考文档](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST 服务 API 参考文档](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)

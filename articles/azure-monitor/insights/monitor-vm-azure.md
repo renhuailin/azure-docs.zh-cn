@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186892"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
@@ -64,7 +64,7 @@ Azure 中的虚拟机为虚拟主机生成以下与其他 Azure 资源相同的�
 后续部分将介绍其中每个配置步骤。
 
 ### <a name="enable-azure-monitor-for-vms"></a>启用用于 VM 的 Azure Monitor
-[用于 VM 的 Azure Monitor](vminsights-overview.md) 是 Azure Monitor 中用于监视虚拟机主要工具的[见解](insights-overview.md)。 与标准 Azure Monitor 功能相比，它提供了以下附加价值。
+[用于 VM 的 Azure Monitor](vminsights-overview.md) 是 Azure Monitor 中用于监视虚拟机主要工具的[见解](../monitor-reference.md)。 与标准 Azure Monitor 功能相比，它提供了以下附加价值。
 
 - 简化 Log Analytics 代理和 Dependency Agent 的载入，以启用对虚拟机来宾操作系统和工作负载的监视。 
 - 预定义的趋势性能图表和工作簿，可用于分析虚拟机来宾操作系统中的核心性能指标。
@@ -140,7 +140,7 @@ az monitor diagnostic-settings create \
 | 诊断设置 | 为当前虚拟机启用和配置[诊断扩展](../platform/diagnostics-extension-overview.md)。 |
 | 顾问建议 | [Azure 顾问](../../advisor/index.yml)就当前虚拟机所提供的建议。 |
 | 日志 | 打开 [Log Analytics](../log-query/log-analytics-overview.md)，并将[范围](../log-query/scope.md)设置为“当前虚拟机”。 |
-| 连接监视器 | 打开[网络观察程序连接监视器](../../network-watcher/connection-monitor-preview.md)，以监视当前虚拟机和其他虚拟机之间的连接。 |
+| 连接监视器 | 打开[网络观察程序连接监视器](../../network-watcher/connection-monitor-overview.md)，以监视当前虚拟机和其他虚拟机之间的连接。 |
 
 
 ## <a name="analyzing-metric-data"></a>分析指标数据
@@ -242,4 +242,3 @@ System Center Operations Manager 提供对虚拟机上的工作负荷的精细�
 
 * [了解如何使用日志查询分析 Azure Monitor 日志中的数据。](../log-query/get-started-queries.md)
 * [了解 Azure Monitor 中使用指标和日志的警报。](../platform/alerts-overview.md)
-
