@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: 79dcc645ecff00b3189dc90dcf34e042a78ed318
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949320"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320987"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -39,6 +39,8 @@ ms.locfileid: "94949320"
 - [向安全中心的法规合规性仪表板添加了 NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [建议列表现包含筛选器](#recommendations-list-now-includes-filters)
 - [自动预配体验得到改进和扩展](#auto-provisioning-experience-improved-and-expanded)
+- [现可在连续导出中使用安全功能分数（预览）](#secure-score-is-now-available-in-continuous-export-preview)
+- [“应在计算机上安装系统更新”建议现包含子建议](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
@@ -103,6 +105,41 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 - （新）Microsoft Dependency Agent
 
 有关详细信息，请参阅[从 Azure 安全中心自动预配代理和扩展](security-center-enable-data-collection.md)。
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>现可在连续导出中使用安全功能分数（预览）
+
+借助安全功能分数的连续导出，你可将对分数的更改实时地流式传输到 Azure 事件中心或 Log Analytics 工作区。 此功能可用于：
+
+- 通过动态报表跟踪一段时间内的安全功能分数
+- 将安全功能分数数据导出到 Azure Sentinel（或任何其他 SIEM）
+- 将此数据与你可能已在使用的任何进程集成来监视你组织中的安全功能分数
+
+详细了解如何[连续导出安全中心数据](continuous-export.md)。
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>“应在计算机上安装系统更新”建议现包含子建议
+
+“应在计算机上安装系统更新”建议已得到增强。 新版本包括针对每个缺失的更新的子建议，其中还引入了以下改进：
+
+- 重新设计了 Azure 门户的 Azure 安全中心页面的体验。 “应在计算机上安装系统更新”的建议详细信息页包括发现结果列表，如下所示。 选择单个发现结果时，结果窗格将打开，并提供指向修正信息和受影响资源列表的链接。
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="在门户体验中打开其中一个子建议，了解更新的建议":::
+
+- 丰富了 Azure Resource Graph (ARG) 的建议数据。 ARG 是一项 Azure 服务，专用于提供高效的资源探索。 可以使用 ARG 在一组给定的订阅中进行大规模查询，以便有效地控制环境。 
+
+    对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。
+
+    以前，如果你在 ARG 中查询此建议，唯一提供的信息就是“需要在计算机上修正建议”。 以下查询的增强版本将返回按计算机分组的每个缺失的系统更新。
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 
