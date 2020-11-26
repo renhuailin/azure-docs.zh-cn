@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 56b75d34bed65dae53c88eab6a16d848083ccc73
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836234"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179055"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教程：为 Cofense Recipient Sync 配置自动用户预配
 
@@ -38,7 +38,7 @@ ms.locfileid: "94836234"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中[有权](../users-groups-roles/directory-assign-admin-roles.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * Cofense PhishMe 中的标准操作员帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33c7b9b91067c39ea047242d207a4834c08b7e40
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179258"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone OnDemand 的集成
 
@@ -82,12 +82,12 @@ ms.locfileid: "95996162"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Cornerstone OnDemand 客户端支持团队](mailto:moreinfo@csod.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Cornerstone OnDemand 客户端支持团队](mailto:moreinfo@csod.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -113,7 +113,7 @@ ms.locfileid: "95996162"
 
 在本部分中，通过授予 B.Simon 访问 Cornerstone OnDemand 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Cornerstone OnDemand”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 

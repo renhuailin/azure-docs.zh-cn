@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 011071c9aa1722b8f1cf81ec8d9ef88e8d91ea03
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b371baec663ffc7ff5909e04965353e79acb9708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359045"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177066"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教程：为 Hootsuite 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "94359045"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中[有权](../users-groups-roles/directory-assign-admin-roles.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * 在组织中拥有“管理成员”权限的 [Hootsuite](http://www.hootsuite.com/) 用户帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
@@ -121,7 +121,7 @@ ms.locfileid: "94359045"
       |externalId|字符串|
       |members|参考|
 
-12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 13. 若要为 Hootsuite 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“打开” 
 

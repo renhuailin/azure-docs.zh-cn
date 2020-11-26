@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: f060a6ee2b5968c1d1daf3c668b6e7009b6ccd69
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0efb451997b0ed842e6757a7e6b30dd88b33f4aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358127"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177842"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教程：为 Juno Journey 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "94358127"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 *  [Juno Journey 租户](https://www.junojourney.com/getstarted)
 *  Juno Journey 中具有管理员权限的用户帐户。
 

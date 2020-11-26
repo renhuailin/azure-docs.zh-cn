@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 130bb108af5e44ddf61b639c666cb0dba64d69cb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356870"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179245"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>教程：为 Fuze 配置自动用户预配
 
@@ -38,7 +38,7 @@ ms.locfileid: "94356870"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md)。
-* 具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
 * [Fuze 租户](https://www.fuze.com/)。
 * Fuze 中具有管理员权限的用户帐户。
 

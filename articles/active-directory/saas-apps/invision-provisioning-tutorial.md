@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 75da1e2b2f1954b0126b08232046fe09b1c2b6e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354241"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177933"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>教程：为 InVision 配置自动用户预配
 
@@ -39,7 +39,7 @@ ms.locfileid: "94354241"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../users-groups-roles/directory-assign-admin-roles.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * 启用了 SSO 的 [InVision 企业帐户](https://www.invisionapp.com/enterprise)。
 * InVision 中具有管理员权限的用户帐户。
 
