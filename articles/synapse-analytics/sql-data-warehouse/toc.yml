@@ -90,7 +90,7 @@
               href: /azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 审核
           href: /azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-        - name: 网络安全性
+        - name: 网络安全
           items:
             - name: 防火墙规则
               href: /azure/sql-database/sql-database-firewall-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -426,7 +426,5 @@
           href: sql-data-warehouse-partner-machine-learning-ai.md
         - name: 系统集成
           href: sql-data-warehouse-partner-system-integration.md
-        - name: 公共预览版合作伙伴
-          href: sql-data-warehouse-partner-launch.md
         - name: 第三方应用程序的兼容性问题
           href: sql-data-warehouse-partner-compatibility-issues.md
