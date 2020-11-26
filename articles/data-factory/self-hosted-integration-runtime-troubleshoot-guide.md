@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013427"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296948"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -459,6 +459,22 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
 
 ![证书更改后](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
+### <a name="self-hosted-integration-runtime-version-5x"></a>自承载 Integration Runtime 版本 5. x
+若要升级到 Azure 数据工厂自承载集成运行时的版本4.x，需要 **.net framework 运行时 4.7.2** 或更高版本。 在 "下载" 页中，将出现最新的4.x 版本和最新的两个版本1.x 版本的下载链接。 
+
+
+对于 ADF V2 客户：
+- 如果自动更新已打开，并且您已将 .Net framework 运行时升级到4.7.2 或更高版本，则自承载集成运行时将自动升级到最新的4.x 版本。
+- 如果自动更新已打开，并且尚未将 .Net framework 运行时升级到4.7.2 或更高版本，则自承载集成运行时将不会自动升级到最新的4.x 版本。 自承载集成运行时将保留当前的4.x 版本。 你可以在门户和自承载集成运行时客户端中看到有关 .Net framework 运行时升级的警告。
+- 如果自动更新已关闭，并且您已将 .Net framework 运行时升级到4.7.2 或更高版本，则可以手动下载最新的6.x，并将其安装在您的计算机上。
+- 如果自动更新已关闭，并且尚未将 .Net framework 运行时升级到4.7.2 或更高版本。 当你尝试手动安装 SHIR 1.x 并注册密钥时，你将需要先升级 .Net framework 运行时。
+
+
+对于 ADF V1 客户：
+- 自承载集成运行时6.x 不支持 ADF V1。
+- 自承载集成运行时将自动升级到最新版本的4.x。 最新版本的版本将不会过期。 
+- 如果尝试手动安装自承载集成运行时1.x 并注册密钥，则会告诉你自承载集成运行时1.x 不支持 V1。
+
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>自承载 IR 连接问题
 
@@ -757,6 +773,7 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
 #### <a name="cause"></a>原因
 
 不能跨租户共享自承载 IR。
+
 
 
 ## <a name="next-steps"></a>后续步骤

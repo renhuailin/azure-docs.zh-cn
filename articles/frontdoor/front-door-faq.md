@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488973"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296584"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -79,7 +79,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-能。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
+是的。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由规则的处理顺序是什么？
 
@@ -91,7 +91,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 - 为后端配置 IP Acl，以接受来自 Azure 前门的后端 IP 地址空间和 Azure 的基础结构服务的流量。 请参阅下面的 IP 详细信息，以 Acl 后端：
  
-    - 请参阅 Azure IP 范围中的*AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供[服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)中的服务标记*AzureFrontDoor* 。
+    - 请参阅 Azure IP 范围中的 *AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供 [服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用 [网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)中的服务标记 *AzureFrontDoor* 。
     - Azure 的 [基本基础结构服务](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) ，通过虚拟化主机 IP 地址： `168.63.129.16` 和 `169.254.169.254`
 
     > [!WARNING]
@@ -147,7 +147,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 对路由或后端池等的任何更新都是无缝的，如果新配置是正确的) ，将导致零停机 (。 证书更新也是原子的，将不会导致任何中断，除非从 "AFD 托管" 切换到 "使用自己的证书"，反之亦然。
 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前门是否可以在虚拟网络中对流量进行负载均衡或路由
 
@@ -235,7 +235,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure 前门是否还支持向后端重新加密流量？
 
-是的，Azure 前门支持 TLS/SSL 卸载和端到端 TLS，这会将流量重新加密到后端。 事实上，因为到后端的连接通过其公共 IP 发生，所以建议将前门配置为使用 HTTPS 作为转发协议。
+是的，Azure 前门支持 TLS/SSL 卸载和端到端 TLS，这会将流量重新加密到后端。 事实上，由于连接到后端的公共 IP 发生了连接，因此建议将前门配置为使用 HTTPS 作为转发协议。
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>前门是否支持 HTTPS 连接的后端上的自签名证书？
 
@@ -254,7 +254,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-不能。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+不是。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

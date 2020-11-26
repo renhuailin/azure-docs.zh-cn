@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188116"
+ms.locfileid: "96296982"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
 
@@ -30,11 +30,11 @@ ms.locfileid: "96188116"
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>在 Synapse Studio 中配置 Git 存储库 
 
-启动 Synapse Studio 后，可以在工作区中配置 git 存储库。 Synapse Studio 工作区一次只能与一个 git 存储库相关联。 
+启动 Synapse Studio 后，可以在工作区中配置 git 存储库。 一次只能将一个 Synapse Studio 工作区与一个 git 存储库相关联。 
 
-### <a name="configuration-method-1-authoring-canvas"></a>配置方法1：创作画布
+### <a name="configuration-method-1-global-bar"></a>配置方法1：全局栏
 
-在 Synapse Studio 创作画布中，选择 " **Synapse Live** " 下拉菜单，然后选择 " **设置代码存储库**"。
+在 Synapse Studio 全局栏中，选择 " **Synapse Live** " 下拉菜单，然后选择 " **设置代码存储库**"。
 
 ![配置代码存储库设置的创作](media/configure-repo-1.png)
 
@@ -51,17 +51,17 @@ ms.locfileid: "96188116"
 
 ## <a name="connect-with-azure-devops-git"></a>连接 Azure DevOps Git 
 
-可以将 Synapse 工作区与 Azure DevOps 存储库相关联，以进行源代码管理、协作、版本控制等操作。 如果没有 Azure DevOps 存储库，请按照 [这些说明](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 操作，首先创建存储库资源。
+可以将 Synapse 工作区与 Azure DevOps 存储库相关联，以进行源代码管理、协作、版本控制等操作。 如果没有 Azure DevOps 存储库，请遵循 [这些说明](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 来创建存储库资源。
 
 ### <a name="azure-devops-git-repository-settings"></a>Azure DevOps Git 存储库设置
 
-连接到 git 存储库时，请先选择 Azure DevOps git 的存储库类型，然后从下拉列表中选择一个 Azure AD 租户，然后单击 " **继续**"。
+连接到 git 存储库时，请先选择 "Azure DevOps git" 作为存储库类型，然后从下拉列表中选择一个 Azure AD 租户，然后单击 " **继续**"。
 
 ![配置存储库设置](media/connect-with-azuredevops-repo-selected.png)
 
 "配置" 窗格显示以下 Azure DevOps git 设置：
 
-| 设置 | 说明 | 值 |
+| 设置 | 描述 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
@@ -94,7 +94,7 @@ Azure Repos Git 存储库可以位于不同的 Azure Active Directory 租户中�
 
 完成这些配置步骤后，你的个人存储库将在 Synapse Studio 中设置 Git 集成时可用。
 
-有关将 Azure 存储库连接到贵组织的 Active Directory 的详细信息，请参阅[将 Azure DevOps 组织连接到 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)。
+有关将 Azure Repos 连接到组织 Active Directory 的详细信息，请参阅 [将组织连接到 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)。
 
 ## <a name="connect-with-github"></a>与 GitHub 连接 
 

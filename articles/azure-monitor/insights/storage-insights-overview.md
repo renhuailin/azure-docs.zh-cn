@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 250a06d81f929d0e3d3befa1e7494db13044fc97
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101266"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296329"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -36,9 +36,6 @@ ms.locfileid: "93101266"
 >[!NOTE]
 >访问此功能不需任何费用。系统只会对你配置或启用的 Azure Monitor 基本功能收费，如 [Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述。
 
->[!NOTE]
->用于存储的 Azure Monitor 不支持[常规用途 v1 帐户](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)。
->
 
 ## <a name="view-from-azure-monitor"></a>在 Azure Monitor 中查看
 
@@ -54,11 +51,11 @@ ms.locfileid: "93101266"
 
 ### <a name="overview-workbook"></a>“概述”工作簿
 
-在所选订阅的 **概述** 工作簿中，表显示订阅中分组最多5个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
+在所选订阅的“概述”工作簿中，表内显示订阅中分组的最多 5 个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
 
 * 订阅 - 只列出包含存储帐户的订阅。  
 
-* **存储帐户** -默认情况下，预先选择5个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
+* **存储帐户** - 默认情况下，预先选择 5 个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
 
 * **时间范围** - 默认情况下，系统会根据你所做的选择显示过去 4 小时的相应信息。
 
@@ -94,7 +91,7 @@ ms.locfileid: "93101266"
 
 2. 从列表中选择一个存储帐户。 在“监视”部分中，选择“见解”。
 
-    ![显示存储帐户的 "概述工作簿" 页的屏幕截图。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![显示存储帐户“概述”工作簿页面的屏幕截图。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 此存储帐户的“概述”工作簿中显示了多个存储性能指标，有助于你快速进行评估：
 
@@ -198,7 +195,7 @@ ms.locfileid: "93101266"
 
 1. 选择“指标”网格中的“列设置”。
 
-2. 在 " **编辑列设置** " 窗格中，选择 " **storageaccounts/UsedCapacity $ `|` Storageaccounts/blobservices-blobcapacity 相同 $/-storageaccounts $/ `|` `|` `|`** -fileservices $ $/FileCapacity/storageaccounts-queueservices $" 列中的 " **列** " 部分下的 ""。 在“调色板”下拉列表下，选择“绿色”。
+2. 在“编辑列设置”窗格中，选择“列”部分下的“microsoft.storage/storageaccounts-Capacity-UsedCapacity$`|`microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$`|`microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$`|`microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$`|`microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$”  。 在“调色板”下拉列表下，选择“绿色”。
 
 3. 选择“保存并关闭”，以提交更改。
 
@@ -226,7 +223,7 @@ ms.locfileid: "93101266"
 
 7. 选择命令栏中的“另存为”，以保存包含自定义项的工作簿副本，然后单击“完成编辑”返回到阅读模式。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 

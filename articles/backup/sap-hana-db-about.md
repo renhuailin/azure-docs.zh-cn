@@ -3,12 +3,12 @@ title: 关于 Azure VM 中的 SAP HANA 数据库备份
 description: 本文介绍如何备份在 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022303"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296448"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于 Azure VM 中的 SAP HANA 数据库备份
 
@@ -34,8 +34,8 @@ Azure 备份由 SAP 进行了 [Backint 认证](https://www.sap.com/dmc/exp/2013_
 * 备份过程开始时将首先在 Azure 中[创建恢复服务保管库](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault)。 此保管库将用来存储随时间推移创建的备份和恢复点。
 * 运行 SAP HANA 服务器的 Azure VM 向保管库进行注册，并且将[发现](./tutorial-backup-sap-hana-db.md#discover-the-databases)要备份的数据库。 若要使 Azure 备份服务能够发现数据库，必须在 HANA 服务器上以 root 用户身份运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。
 * 此脚本在 **hdbuserstore** 中创建 **AZUREWLBACKUPHANAUSER** DB 用户和一个同名的对应键。 若要详细了解该脚本的功能，请参阅[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
-* Azure 备份服务现在在已注册的 SAP HANA 服务器上安装**适用于 HANA 的 Azure 备份插件**。
-* **适用于 HANA 的 Azure 备份插件**使用由预注册脚本创建的 **AZUREWLBACKUPHANAUSER** DB 用户执行所有备份和还原操作。 如果你尝试在不运行此脚本的情况下配置 SAP HANA DB 的备份，可能会收到以下错误：**UserErrorHanaScriptNotRun**。
+* Azure 备份服务现在在已注册的 SAP HANA 服务器上安装 **适用于 HANA 的 Azure 备份插件**。
+* **适用于 HANA 的 Azure 备份插件** 使用由预注册脚本创建的 **AZUREWLBACKUPHANAUSER** DB 用户执行所有备份和还原操作。 如果你尝试在不运行此脚本的情况下配置 SAP HANA DB 的备份，可能会收到以下错误：**UserErrorHanaScriptNotRun**。
 * 若要在发现的数据库上[配置备份](./tutorial-backup-sap-hana-db.md#configure-backup)，请选择所需的备份策略并启用备份。
 
 * 配置备份后，Azure 备份服务将在受保护的 SAP HANA 服务器上在数据库级别设置以下 Backint 参数：
@@ -49,9 +49,9 @@ Azure 备份由 SAP 进行了 [Backint 认证](https://www.sap.com/dmc/exp/2013_
 >确保在主机级别不  存在这些参数。 主机级别的参数将替代这些参数，并可能会导致意外行为。
 >
 
-* **适用于 HANA 的 Azure 备份插件**维护所有备份计划和策略详细信息。 它触发计划的备份并通过 Backint API 与 **HANA 备份引擎**进行通信。
-* **HANA 备份引擎**返回 Backint 流以及要备份的数据。
-* 所有计划的备份和按需备份（从 Azure 门户触发的），无论是完整备份还是差异备份，都是由**适用于 HANA 的 Azure 备份插件**启动的。 但是，日志备份由 **HANA 备份引擎**自身进行管理和触发。
+* **适用于 HANA 的 Azure 备份插件** 维护所有备份计划和策略详细信息。 它触发计划的备份并通过 Backint API 与 **HANA 备份引擎** 进行通信。
+* **HANA 备份引擎** 返回 Backint 流以及要备份的数据。
+* 所有计划的备份和按需备份（从 Azure 门户触发的），无论是完整备份还是差异备份，都是由 **适用于 HANA 的 Azure 备份插件** 启动的。 但是，日志备份由 **HANA 备份引擎** 自身进行管理和触发。
 * 适用于 SAP HANA 的 Azure 备份是一种经过 BackInt 认证的解决方案，不依赖于基础磁盘或 VM 类型。 备份由 HANA 生成的流执行。
 
 ## <a name="using-azure-vm-backup-with-azure-sap-hana-backup"></a>结合使用 Azure VM 备份和 Azure SAP HANA 备份
@@ -60,15 +60,12 @@ Azure 备份由 SAP 进行了 [Backint 认证](https://www.sap.com/dmc/exp/2013_
 
 [经 Backint 认证的 Azure SAP HANA 备份解决方案](#backup-architecture)可用于数据库备份和恢复。
 
-[Azure VM 备份](backup-azure-vms-introduction.md)可用于备份 OS 和其他非数据库磁盘。 VM 备份每天进行一次，并备份所有磁盘（写入加速器 (WA) 磁盘和超级磁盘除外 ）。 由于要使用 Azure SAP HANA 备份解决方案备份数据库，因此可以使用 [Azure VM 选择性磁盘备份和还原](selective-disk-backup-restore.md)功能仅对 OS 和非数据库磁盘进行文件一致性备份。
-
->[!NOTE]
-> 结合使用预发布脚本与 Azure VM 备份，可以对数据库的数据卷进行应用一致性备份。 但如果日志区域位于 WA 磁盘，则拍摄这些磁盘的快照可能无法保证日志区域的一致性。 出于此确切的原因，HANA 具有可生成日志备份的显式方法。 在 SAP HANA 中启用相同的设置，即可使用 Azure SAP HANA 备份对其进行备份。
+[Azure VM 备份](backup-azure-vms-introduction.md)可用于备份 OS 和其他非数据库磁盘。 VM 备份每天创建一次，并备份 (除 **写入加速器 (WA) OS 磁盘** 和 **超) 磁盘** 之外的所有磁盘。 由于要使用 Azure SAP HANA 备份解决方案备份数据库，因此可以使用 [Azure VM 选择性磁盘备份和还原](selective-disk-backup-restore.md)功能仅对 OS 和非数据库磁盘进行文件一致性备份。
 
 若要还原运行 SAP HANA 的 VM，请按照以下步骤操作：
 
 * 从最新的恢复点，[从 Azure VM 备份还原新的 VM](backup-azure-arm-restore-vms.md)。 或创建新的空 VM 并将磁盘附加到最新恢复点。
-* 由于不备份 WA 磁盘，这些磁盘不会进行还原。 创建空的 WA 磁盘和日志区域。
+* 如果排除了 WA 磁盘，则不会还原它们。 在这种情况下，请创建空 WA 磁盘和日志区域。
 * 设置所有其他配置（例如 IP、系统名称等）后，将 VM 设置为从 Azure 备份接收 DB 数据。
 * 现在，将 DB 从 [Azure SAP HANA DB 备份](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point)还原到 VM 中所需的时间点。
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024459"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296613"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>从受限网络连接到工作区资源
 
@@ -46,14 +46,11 @@ ms.locfileid: "95024459"
 
 接下来，从 Azure 门户创建专用链接中心。 若要在门户中找到此项，请搜索 *Azure Synapse Analytics (专用链接中心)*，然后填写所需信息以创建它。 
 
-> [!Note]
-> 确保 **区域** 值与 Azure Synapse Analytics 工作区的值相同。
-
 ![Create Synapse 专用链接中心的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>步骤3：为网关创建专用终结点
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>步骤3：创建 Synapse Studio 的专用终结点
 
-若要访问 Azure Synapse Analytics Studio 网关，必须从 Azure 门户创建专用终结点。 若要在门户中查找此项，请搜索 " *专用链接*"。 在 **专用链接中心** 中，选择 " **创建专用终结点**"，然后填写所需信息以创建它。 
+若要访问 Azure Synapse Analytics Studio，必须从 Azure 门户创建专用终结点。 若要在门户中查找此项，请搜索 " *专用链接*"。 在 **专用链接中心** 中，选择 " **创建专用终结点**"，然后填写所需信息以创建它。 
 
 > [!Note]
 > 确保 **区域** 值与 Azure Synapse Analytics 工作区的值相同。
@@ -118,6 +115,43 @@ ms.locfileid: "95024459"
 创建此终结点后，审批状态将显示 " **挂起**" 状态。 在 Azure 门户的此存储帐户的 " **专用终结点连接** " 选项卡中，请求批准此存储帐户的所有者。 批准后，笔记本可以访问此存储帐户下的链接存储资源。
 
 现在，全部设置。 可以访问 Azure Synapse Analytics Studio 工作区资源。
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>附录：专用终结点的 DNS 注册
+
+如果在创建专用终结点过程中未启用 "与专用 DNS 区域集成"，则必须为每个专用终结点创建 "**专用 DNS 区域**"。
+![Create Synapse 专用 DNS 区域1的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+若要在门户中查找 **专用 DNS 区域** ，请搜索 *专用 DNS 区域*。 在 **专用 DNS 区域** 中，在下面填写所需信息以创建它。
+
+* 对于 " **名称**"，请输入特定专用终结点专用 DNS 区域的专用名称，如下所示：
+  * **`privatelink.azuresynapse.net`** 适用于访问 Azure Synapse Analytics Studio 网关的专用终结点。 请参阅在步骤3中创建这种类型的专用终结点。
+  * **`privatelink.sql.azuresynapse.net`** 适用于 SQL 池中的这种类型的专用终结点和内置池中的 sql 查询执行。 请参阅在步骤4中创建的终结点。
+  * **`privatelink.dev.azuresynapse.net`** 适用于这种类型的专用终结点，用于访问 Azure Synapse Analytics Studio 工作区中的其他所有内容。 请参阅在步骤4中创建这种类型的专用终结点。
+  * **`privatelink.dfs.core.windows.net`** 适用于访问工作区链接 Azure Data Lake Storage Gen2 的专用终结点。 请参阅步骤5中的此类型的专用终结点创建。
+  * **`privatelink.blob.core.windows.net`** 适用于访问工作区链接的 Azure Blob 存储的专用终结点。 请参阅步骤5中的此类型的专用终结点创建。
+
+![Create Synapse 专用 DNS 区域2的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+创建 **专用 DNS 区域** 后，输入创建的专用 DNS 区域，并选择 **虚拟网络链接** 以添加指向虚拟网络的链接。 
+
+![Create Synapse 专用 DNS 区域3的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+填写以下必填字段：
+* 对于 " **链接名称**"，请输入链接名称。
+* 对于 " **虚拟网络**"，请选择虚拟网络。
+
+![Create Synapse 专用 DNS 区域4的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+添加虚拟网络链接后，需要在之前创建的 **专用 DNS 区域** 中添加 DNS 记录集。
+
+* 对于 " **名称**"，请输入不同专用终结点的专用名称字符串： 
+  * **web** 适用于访问 Azure Synapse Analytics Studio 的专用终结点。
+  * "***YourWorkSpaceName * * _" 适用于 sql 池中 sql 查询执行的专用终结点，还用于访问 Azure Synapse Analytics Studio 工作区中的其他所有内容的专用终结点。 _ "*** YourWorkSpaceName *-ondemand * *" 用于内置池中的 sql 查询的专用终结点。
+* 对于 " **类型**"，请选择 **"仅 DNS** 记录类型"。 
+* 对于 " **IP 地址**"，请输入每个专用终结点对应的 IP 地址。 可以从专用终结点概述获取 **网络接口** 中的 IP 地址。
+
+![Create Synapse 专用 DNS 区域5的屏幕截图。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 
