@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655674"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299626"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 将数据源连接到 Azure Sentinel
 
@@ -57,7 +57,7 @@ Logstash 引擎由三个组件组成：
 
 Logstash 集合中提供了 Azure Sentinel 输出插件。
 
-- 请按照 Logstash 使用 [插件](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 文档中的说明安装 **_Logstash-loganalytics_* _ 插件。
+- 请按照 Logstash 使用 [插件](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 文档中的说明安装 **_[Logstash-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ 插件。
    
 - 如果你的 Logstash 系统无法访问 Internet，请按照 Logstash [脱机插件管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) 文档中的说明准备并使用脱机插件包。  (这将需要你构建具有 Internet 访问权限的另一个 Logstash 系统。 ) 
 
@@ -73,9 +73,9 @@ Logstash 集合中提供了 Azure Sentinel 输出插件。
 | `endpoint` | 字符串 | 可选字段。 默认情况下，这是 Log Analytics 终结点。 使用此字段可设置备用终结点。 |
 | `time_generated_field` | 字符串 | 可选字段。 此属性将覆盖 Log Analytics 中的默认 **TimeGenerated** 字段。 在数据源中输入时间戳字段的名称。 该字段中的数据必须符合 ISO 8601 格式 (`YYYY-MM-DDThh:mm:ssZ`)  |
 | `key_names` | 数组 | 输入 Log Analytics 输出架构字段的列表。 每个列表项都应括在单引号中，并以逗号分隔项，并将整个列表括在方括号内。 请参阅以下示例。 |
-| `plugin_flush_interval` | 数字 | 可选字段。 设置此项可定义消息传输 Log Analytics 之间的最大时间间隔 (秒) 。 默认值为 5。 |
-    | `amount_resizing` | 布尔值 | True 或 False。 启用或禁用自动缩放机制，这会根据收到的日志数据量调整消息缓冲区大小。 |
-| `max_items` | 数字 | 可选字段。 仅当 `amount_resizing` 设置为 "false" 时才适用。 用于在记录)  (中设置消息缓冲区大小的上限。 默认为 2000。  |
+| `plugin_flush_interval` | number | 可选字段。 设置此项可定义消息传输 Log Analytics 之间的最大时间间隔 (秒) 。 默认值为 5。 |
+    | `amount_resizing` | boolean | True 或 False。 启用或禁用自动缩放机制，这会根据收到的日志数据量调整消息缓冲区大小。 |
+| `max_items` | number | 可选字段。 仅当 `amount_resizing` 设置为 "false" 时才适用。 用于在记录)  (中设置消息缓冲区大小的上限。 默认为 2000。  |
 
 \* 你可以在 " **代理管理**" 下的 "工作区资源" 中找到工作区 ID 和主密钥。
 

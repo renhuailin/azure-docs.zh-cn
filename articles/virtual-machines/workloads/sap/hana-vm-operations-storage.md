@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967459"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299524"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -273,7 +273,7 @@ SAP **/hana/data** 卷的配置：
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure 高级存储的成本意识解决方案
-到目前为止，本文档中的 Azure 高级存储解决方案在 [Azure M 系列虚拟机的高级存储和 azure 写入加速器的解决方案](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 中进行了介绍，用于 SAP HANA 生产支持的方案。 生产可支持性配置的特征之一是将 SAP HANA 数据和重做日志的卷分离成两个不同的卷。 此类隔离的原因是卷上的工作负荷特征不同。 而且，对于推荐的生产配置，可能需要不同类型的缓存或甚至不同类型的 Azure 块存储。 使用 Azure 块存储目标的生产支持的配置也符合 [Azure 虚拟机的单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  对于非生产方案，为生产系统所做的一些注意事项可能不适用于更低端的非生产系统。 因此，可以合并 HANA 数据和日志卷。 尽管最终有一些原因，但最终不满足生产系统所需的某些吞吐量或延迟 Kpi。 降低此类环境成本的另一个方面就是使用 [Azure 标准 SSD 存储](./planning-guide-storage.md#azure-standard-ssd-storage)。 尽管选择会使 [Azure 虚拟机的单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效。 
+到目前为止，本文档中的 Azure 高级存储解决方案在 [Azure M 系列虚拟机的高级存储和 azure 写入加速器的解决方案](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 中进行了介绍，用于 SAP HANA 生产支持的方案。 生产可支持性配置的特征之一是将 SAP HANA 数据和重做日志的卷分离成两个不同的卷。 此类隔离的原因是卷上的工作负荷特征不同。 而且，对于推荐的生产配置，可能需要不同类型的缓存或甚至不同类型的 Azure 块存储。 对于非生产方案，为生产系统所做的一些注意事项可能不适用于更低端的非生产系统。 因此，可以合并 HANA 数据和日志卷。 尽管最终有一些原因，但最终不满足生产系统所需的某些吞吐量或延迟 Kpi。 降低此类环境成本的另一个方面就是使用 [Azure 标准 SSD 存储](./planning-guide-storage.md#azure-standard-ssd-storage)。 请记住，选择标准 SSD 或标准 HDD Azure 存储会影响你的单个 VM Sla，如  [虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)一文中所述。
 
 对于此类配置，更便宜的替代方法如下所示：
 

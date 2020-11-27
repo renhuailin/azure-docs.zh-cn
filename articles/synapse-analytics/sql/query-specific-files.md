@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685590"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299609"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>在无服务器 SQL 池查询中使用文件元数据
 
@@ -76,7 +76,7 @@ ORDER BY
 
 Filepath 函数返回完整路径或部分路径：
 
-- 如果在不使用参数的情况下调用此函数，此函数将返回行的来源文件的完整路径。
+- 如果在不使用参数的情况下调用此函数，此函数将返回行的来源文件的完整路径。 当在 OPENROWSET 中使用 DATA_SOURCE 时，它将返回相对于 DATA_SOURCE 的路径。 
 - 如果在使用参数的情况下调用此函数，此函数将返回与该参数中指定的位置上的通配符相匹配的路径部分。 例如，参数值 1 将返回与第一个通配符匹配的路径部分。
 
 下面的示例读取 2017 年最后三个月纽约市黄色出租车的数据文件。 它按文件路径返回搭乘数。 查询的 OPENROWSET 部分指定将读取哪些文件。

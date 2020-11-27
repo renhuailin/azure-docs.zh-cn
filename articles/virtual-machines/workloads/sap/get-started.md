@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964824"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299507"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -80,6 +80,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 11/26/2020：将[SAP 工作负荷的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) [azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)和 azure 存储类型 SAP HANA 改编为更改了单一[VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：更改[Azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中有关 HANA 支持的文件系统类型的新 SAP 说明 SAP HANA 的更改链接 
 - 10/26/2020：更改 Azure 高级存储配置的某些表，以明确预配与突发吞吐量 [SAP HANA azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/22/2020：在 [适用于 sap 应用程序的 Azure vm](./high-availability-guide-suse.md)上针对 sap nw 进行的 ha 更改，适用于基于 [和](./high-availability-guide-suse-netapp-files.md)的 azure vm 上的 sap nw 的 HA，适用于 [rhel](./high-availability-guide-rhel.md) 上的 azure vm 上的 sap nw 的 ha，适用于基于 [和](./high-availability-guide-rhel-netapp-files.md) 的 azure vm 上的 sap nw 的 ha，用于调整 net.ipv4.tcp_keepalive_time 的建议  
