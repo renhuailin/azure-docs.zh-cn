@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 11/25/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023834"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301270"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -440,7 +440,7 @@ ms.locfileid: "96023834"
 
 - 消息：`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如：'ColumnA,, ColumnB'.
+- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如： "ColumnA，ColumnB"。
 
 - **建议**：检查第一行，如果存在空值，请修复值。
 
@@ -449,7 +449,7 @@ ms.locfileid: "96023834"
 
 - 消息：`Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
-- **原因：** 有问题的行的列计数大于第一行的列计数。 原因可能是数据有问题，或者列分隔符/引号字符设置不正确。
+- **原因**：有问题的行的列计数大于第一行的列计数。 原因可能是数据有问题，或者列分隔符/引号字符设置不正确。
 
 - **建议**：获取错误消息中的行计数，检查行的列并修复数据。
 
@@ -645,6 +645,29 @@ ms.locfileid: "96023834"
 
 - **建议**：删除有效负载中的“CompressionType”。
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>来自 REST 连接器的意外网络响应
+
+- **症状**：终结点有时从 REST 连接器接收到 (400/401/403/500) 的意外响应。
+
+- **原因**：在构造 HTTP 请求时，REST 源连接器使用链接服务/数据集/复制源中的 URL 和 HTTP 方法/标头/正文作为参数。 此问题很可能是由一个或多个指定参数中的一些错误引起的。
+
+- **解决方法**： 
+    - 使用 cmd 窗口中的 "卷" 来检查参数是否为原因，是否应始终包括 (**接受** 和 **用户代理** 标头) ：
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      如果该命令返回相同的意外响应，请在上面的参数前面加上 "卷"，直到返回预期的响应。 
+
+      此外，还可以使用 "卷--帮助" 来更高级地使用该命令。
+
+    - 如果仅 ADF REST 连接器返回意外响应，请联系 Microsoft 支持以进一步进行故障排除。
+    
+    - 请注意，"卷" 可能不适合重现 SSL 证书验证问题。 在某些情况下，在未遇到任何 SSL 证书验证问题的情况下成功执行了 "卷" 命令。 但是，如果在浏览器中执行相同的 URL，则在第一个位置不会实际返回任何 SSL 证书来与服务器建立信任关系。
+
+      建议使用 **Postman** 和 **Fiddler** 之类的工具。
 
 
 ## <a name="general-copy-activity-error"></a>常规复制活动错误

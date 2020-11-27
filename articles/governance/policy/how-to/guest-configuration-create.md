@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700670"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302687"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -160,7 +160,7 @@ class ResourceName : OMI_BaseResource
 
 PowerShell cmdlet 可帮助创建包。
 不需要根级别文件夹或版本文件夹。
-包格式必须为 .zip 文件。
+包格式必须为 .zip 文件，且在未压缩时，大小不能超过 100 MB。
 
 ### <a name="storing-guest-configuration-artifacts"></a>存储来宾配置项目
 

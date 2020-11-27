@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045476"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302603"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
@@ -20,7 +20,7 @@ IoT 即插即用设备在与 IoT 中心交换消息时应遵循一组约定。 I
 
 设备可以包含 [模块](../iot-hub/iot-hub-devguide-module-twins.md)，也可以在 IoT Edge 运行时承载的 [IoT Edge 模块](../iot-edge/about-iot-edge.md) 中实现。
 
-使用 [数字孪生定义语言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) _模型_来描述 IoT 即插即用设备实现的遥测、属性和命令。 本文中引用的模型分为两种类型：
+使用 [数字孪生定义语言 v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _模型_ 来描述 IoT 即插即用设备实现的遥测、属性和命令。 本文中引用的模型分为两种类型：
 
 - **无组件** -没有组件的模型。 该模型在主接口的内容部分中将遥测、属性和命令声明为顶级属性。 在 Azure IoT 资源管理器工具中，此模型显示为单个 _默认组件_。
 - **多个组件** -由两个或多个接口组成的模型。 主接口，它显示为 _默认组件_，具有遥测、属性和命令。 将一个或多个接口声明为包含附加遥测、属性和命令的组件。
@@ -79,7 +79,7 @@ DTDL:
 
 设备或模块必须添加 `{"__t": "c"}` 标记，以指示元素引用组件。
 
-DTDL:
+引用组件的 DTDL：
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL:
     }
   ]
 }
+```
 
+定义组件的 DTDL：
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -255,7 +259,7 @@ DTDL:
 
 设备或模块应通过发送报告的属性来确认它已接收到属性：
 
-DTDL:
+引用组件的 DTDL：
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL:
     }
   ]
 }
+```
 
+定义组件的 DTDL：
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917760"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302667"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID 代理 (HIB) 
 
@@ -101,7 +101,7 @@ HDInsight ID 代理功能将向群集添加一个额外的 VM。 此 VM 是 HDIn
 .
 ```
 
-若要查看 ARM 模板的完整示例，请参阅 [此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)发布的模板。
+若要查看 ARM 模板的完整示例，请参阅[此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)发布的模板。
 
 
 ## <a name="tool-integration"></a>工具集成
@@ -136,11 +136,11 @@ HDInsight ID 代理功能将向群集添加一个额外的 VM。 此 VM 是 HDIn
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-若要使用 Beeline 和 Livy，还可以按照 [此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) 提供的示例代码设置客户端以使用 OAuth 并连接到群集。
+若要使用 Beeline 和 Livy，还可以按照[此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples)提供的示例代码来设置客户端，以使用 OAuth 并连接到群集。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>HDInsight 在 AAD 中创建了哪些应用？
-对于每个群集，会在 AAD 中注册第三方应用程序，并将群集 uri 作为 identifierUri (如 https://clustername.azurehdinsight.net ) 。
+对于每个群集，会在 AAD 中注册第三方应用程序，并将群集 uri 作为 identifierUri (如 `https://clustername.azurehdinsight.net`) 。
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>为什么在使用 HIB 启用群集之前，用户会收到许可提示？
 在 AAD 中，所有第三方应用程序都需要许可才能对用户进行身份验证或访问数据。

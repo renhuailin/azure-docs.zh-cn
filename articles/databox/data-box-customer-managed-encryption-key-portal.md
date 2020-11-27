@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: cd9f4ad6b6831b2b15c09b37edc569b3f2d247f7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957973"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302833"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>将 Azure 密钥保管库中的客户管理的密钥用于 Azure Data Box
 
@@ -103,7 +103,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![选择要使用的标识](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    你无法在此处创建新的用户标识。 若要了解如何创建一个角色，请参阅 [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
+    你无法在此处创建新的用户标识。 若要了解如何创建一个角色，请参阅 [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
 
     所选用户标识显示在 " **加密类型** " 设置中。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966235"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301936"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 
@@ -37,14 +37,14 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支持的 Azure Site Recovery 部署选项
 客户可以将文件服务器部署为在 Hyper-V 或 VMware 上运行的物理服务器或虚拟机 (VM)，然后基于从 StorSimple 存储中划分出来的卷创建文件共享。 Azure Site Recovery 可以保护辅助站点或 Azure 中的物理部署与虚拟部署。 本文档详细介绍某个 DR 解决方案，它使用 Azure 作为 Hyper-V 上托管的文件服务器 VM 的恢复站点，在 StorSimple 存储中使用文件共享。 文件服务器 VM 位于 VMware VM 或物理计算机上的其他方案也可以通过类似的方式实现。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 使用 Azure Site Recovery 针对 StorSimple 存储上托管的文件共享实现单键灾难恢复解决方案时，必须满足以下先决条件：
 
    - 已在 Hyper-V 或 VMware 或物理计算机上托管本地 Windows Server 2012 R2 文件服务器 VM
    - 已在 Azure StorSimple Manager 中注册本地 StorSimple 存储设备
    - 已在 Azure StorSimple Manager 中创建 StorSimple 云设备。 设备可以一直处于关闭状态。
    - 已在 StorSimple 存储设备上配置的卷中托管文件共享
-   - 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](/azure/storsimple/hyper-v-vmm-disaster-recovery)
+   - 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
 
 此外，如果 Azure 是恢复站点，则可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](https://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。
 
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    1. 使用文件和存储服务角色在这些卷上创建文件共享。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>创建和准备 Azure Site Recovery 保管库
-在保护文件服务器 VM 之前，请参阅 [Azure Site Recovery 文档](/azure/storsimple/hyper-v-azure-tutorial)了解 Azure Site Recovery。
+在保护文件服务器 VM 之前，请参阅 [Azure Site Recovery 文档](/azure/site-recovery/)了解 Azure Site Recovery。
 
 #### <a name="to-enable-protection"></a>启用保护
 1. 通过 Azure Site Recovery 将 iSCSI 目标与要保护的本地 VM 断开连接：
@@ -124,7 +124,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    > [!NOTE]
    > 这会导致文件共享暂时不可用。
    
-1. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](/azure/storsimple/hyper-v-azure-tutorial)。
+1. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](/azure/site-recovery/hyper-v-azure-tutorial)。
 1. 初始同步开始时，可以再次重新连接目标。 转到 iSCSI 发起程序，选择 StorSimple 设备，并单击“连接”。
 1. 当同步完成且 VM 的状态为“受保护”时，请选择 VM，选择“配置”选项卡，并相应地更新 VM 的网络（这是已故障转移的 VM 所属的网络）。 如果网络未显示，则表示同步仍在进行。
 

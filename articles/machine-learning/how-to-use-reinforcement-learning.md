@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012913"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302575"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>指定虚拟网络
 
-对于使用多个计算目标的 RL 作业，必须指定一个虚拟网络，其中带有开放端口，这些端口使工作器节点和头节点可以相互通信。 虚拟网络可以位于任意资源组中，但应该与工作区位于同一区域。 有关设置虚拟网络的详细信息，请参阅可在“先决条件”部分中找到的[工作区设置笔记本](https://aka.ms/azure-rl-env-setup)。 在这里，请指定资源组中的虚拟网络的名称。
+对于使用多个计算目标的 RL 作业，必须指定一个虚拟网络，其中带有开放端口，这些端口使工作器节点和头节点可以相互通信。 虚拟网络可以位于任意资源组中，但应该与工作区位于同一区域。 有关设置虚拟网络的详细信息，请参阅可在“先决条件”部分中找到的工作区设置笔记本。 在这里，请指定资源组中的虚拟网络的名称。
 
 ```python
 vnet = 'your_vnet'

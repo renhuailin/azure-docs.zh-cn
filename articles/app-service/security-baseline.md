@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182948"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301843"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -168,7 +168,7 @@ ms.locfileid: "96182948"
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integration)
 
 **Azure 安全中心监视**：是
 
@@ -205,7 +205,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integration)
 
 **Azure 安全中心监视**：不适用
 
@@ -221,7 +221,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure 应用服务访问限制](/azure/app-service/app-service-ip-restriction)
+- [Azure 应用服务访问限制](/azure/app-service/app-service-ip-restrictions)
 
 **Azure 安全中心监视**：不适用
 

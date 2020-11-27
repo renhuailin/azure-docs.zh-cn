@@ -3,16 +3,16 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028956"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302849"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
-本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项分析。 [依赖关系分析](concepts-dependency-visualization.md) 有助于识别和了解要评估并迁移到 Azure 的计算机之间的依赖关系。
+本文介绍如何在 Azure Migrate：服务器评估中设置基于代理的依赖项分析。 [依赖关系分析](concepts-dependency-visualization.md) 有助于识别和了解要评估并迁移到 Azure 的计算机之间的依赖关系。
 
 ## <a name="before-you-start"></a>开始之前
 

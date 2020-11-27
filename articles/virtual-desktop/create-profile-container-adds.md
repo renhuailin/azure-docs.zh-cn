@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825607"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302473"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 文件和 Azure AD DS 创建配置文件容器
 
@@ -83,7 +83,7 @@ ms.locfileid: "88825607"
 
 2. 从存储帐户列表中，选择已 Azure AD DS 启用的帐户，并在上面的步骤中创建自定义角色。
 
-3. 在 " **设置**" 下，选择 " **访问密钥** "，然后复制 **key1**中的密钥。
+3. 在 " **设置**" 下，选择 " **访问密钥** "，然后复制 **key1** 中的密钥。
 
 4. 中转到 " **虚拟机** " 选项卡并找到将成为主机池一部分的任何 VM。
 
@@ -99,7 +99,7 @@ ms.locfileid: "88825607"
 7. 运行以下命令：
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - `<desired-drive-letter>`使用所选的驱动器号替换 (例如， `y:`) 。
@@ -142,13 +142,13 @@ ms.locfileid: "88825607"
 
 1. 登录到本文开头部分配置的会话主机 VM，然后 [下载并安装 FSLogix 代理](/fslogix/install-ht/)。
 
-2. 解压缩已下载的 FSLogix 代理文件并中转到**x64**  >  **版本**，并打开**FSLogixAppsSetup.exe**。
+2. 解压缩已下载的 FSLogix 代理文件并中转到 **x64**  >  **版本**，并打开 **FSLogixAppsSetup.exe**。
 
 3. 安装程序启动后，选择 " **我同意许可条款和条件"。** 如果适用，请提供新的密钥。
 
 4. 选择“安装”。
 
-5. 打开**驱动器 C**，然后前往**Program Files**  >  **FSLogix**  >  **Apps** ，确保已正确安装了 FSLogix 代理。
+5. 打开 **驱动器 C**，然后前往 **Program Files**  >  **FSLogix**  >  **Apps** ，确保已正确安装了 FSLogix 代理。
 
      >[!NOTE]
      > 如果主机池中有多个 Vm，则需要对每个 VM 重复步骤1至5。
@@ -157,7 +157,7 @@ ms.locfileid: "88825607"
 
 7. 导航到 "**计算机**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**"，右键单击 " **FSLogix**"，选择 "**新建**"，然后选择 "**密钥**"。
 
-8. 创建 **名为 profile 的新**密钥。
+8. 创建 **名为 profile 的新** 密钥。
 
 9.  右键单击 " **配置文件**"，选择 " **新建**"，然后选择 " **DWORD (32 位) 值"。** 为 **启用** 值命名，并将 **数据** 值设置为 **1**。
 

@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 2db9649fd52c96ded5233311f3cf275da5d5ea86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 205684923db4528193a337b2b9b867e356e89017
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033143"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301668"
 ---
 # <a name="monitor-and-manage-wunderlist-in-azure-logic-apps"></a>在 Azure 逻辑应用中监视和管理奇妙清单
 
-从 2020 5 月6日开始， [奇妙清单服务关闭](https://www.wunderlist.com/) 并要求客户 [迁移其数据，并开始使用 Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/)。 你可以使用 [Microsoft Do connector](/connectors/todo/) 来替换弃用的 [奇妙清单连接器](https://preview.flow.microsoft.com/connectors/shared_wunderlist/wunderlist/)。
+从 2020 5 月6日开始，奇妙清单服务关闭并要求客户迁移其数据，并开始使用 Microsoft。 你可以使用 [Microsoft Do connector](/connectors/todo/) 来替换弃用的 [奇妙清单连接器](https://preview.flow.microsoft.com/connectors/shared_wunderlist/wunderlist/)。
 
 ## <a name="next-steps"></a>后续步骤
 

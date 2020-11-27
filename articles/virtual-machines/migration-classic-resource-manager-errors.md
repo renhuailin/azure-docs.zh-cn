@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: f196fc1fc88b36538f7427d30ef16d2af158aace
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 110d7186db97f6fac91b8fd785384a1c2ed7a8cd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904694"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301689"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中经常出现的错误
 
@@ -41,7 +41,7 @@ ms.locfileid: "94904694"
 | HostedService {hosted-service-name} 中的部署 {deployment-name} 包含 VM {vm-name}，该 VM 的数据磁盘 {data-disk-name} 的物理 Blob 大小 {size-of-the-vhd-blob-backing-the-data-disk} 字节与 VM 数据磁盘逻辑大小 {size-of-the-data-disk-specified-in-the-vm-api} 字节不匹配。 迁移会继续，但不会指定 Azure Resource Manager VM 的数据磁盘大小。 | 如果已调整 VHD Blob 的大小，而没有更新 VM API 模型中的大小，将发生此错误。 详细的缓解措施步骤如[下](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)所述。|
 | 在云服务 {云服务名称} 中使用媒体链接 {数据磁盘 URI} 为 VM {VM 名称} 验证数据磁盘 {数据磁盘名称} 时发生存储异常。 请确保该虚拟机可以访问 VHD 媒体链接 | 如果 VM 的磁盘已被删除或不再可访问，则可能发生此错误。 请确保 VM 磁盘存在。|
 | HostedService {cloud-service-name} 中的 VM {vm-name} 包含具有 blob 名称为 {vhd-blob-name} 的 MediaLink {vhd-uri} 的磁盘，这在 Azure Resource Manager 中不受支持。 | 当 Blob 的名称包含“/”（这当前在计算资源提供程序中不支持）时，将出现此错误。 |
-| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 https:\//aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 [https://aka.ms/regionalscope](https://aka.ms/regionalscope)有关更多详细信息，请参阅。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决方法是向 vm 添加终结点，或者向 VM 添加数据磁盘，然后重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](/previous-versions/azure/virtual-machines/windows/classic//attach-disk.md)|
+| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 https:\//aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 [https://aka.ms/regionalscope](https://aka.ms/regionalscope)有关更多详细信息，请参阅。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决方法是向 vm 添加终结点，或者向 VM 添加数据磁盘，然后重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](/azure/virtual-machines/linux/attach-disk-portal)|
 | 虚拟网络 {vnet-name} 不支持迁移，因为它具有非网关 PaaS 部署。 | 当具有非网关 PaaS 部署（例如连接到虚拟网络的应用程序网关或 API 管理服务）时，将发生此错误。|
 
 

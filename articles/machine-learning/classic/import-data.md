@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 00501a1e17f8e085b817cfe3dac819ba890248f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309854"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302778"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室（经典）
 
-**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 若要在机器学习工作室（经典）中使用自己的数据来开发和训练预测分析解决方案，可以使用来自以下源的数据： 
@@ -54,7 +54,7 @@ ms.locfileid: "93309854"
 * SQL 数据库表
 * OData 值
 * SVMLight 数据 (.svmlight)（有关格式的信息，请参阅 [SVMLight 定义](http://svmlight.joachims.org/)）
-* 属性关系文件格式 (ARFF) 数据 (.arff)（有关格式的信息，请参阅 [ARFF 定义](https://weka.wikispaces.com/ARFF)）
+* 属性关系文件格式 (ARFF) 数据 (.arff)（有关格式的信息，请参阅 [ARFF 定义](https://www.cs.waikato.ac.nz/ml/weka/arff.html)）
 * Zip 文件 (.zip)
 * R 对象或工作区文件 (.RData)
 
@@ -73,12 +73,12 @@ ms.locfileid: "93309854"
 * DateTime
 * TimeSpan
 
-Studio 使用称为 * **数据表** _ 的内部数据类型在模块之间传递数据。 可使用[转换为数据集][convert-to-dataset]模块，将数据显式转换为数据表格式。
+Studio 使用称为 ***数据表** _ 的内部数据类型在模块之间传递数据。 可使用[转换为数据集][convert-to-dataset]模块，将数据显式转换为数据表格式。
 
 任何接受格式而不是数据表的模块都会在不提示的情况将数据转换为数据表，然后再将其传递到下一个模块。
 
 如有必要，可使用其他转换模块，将数据表格式转换回 CSV、TSV、ARFF 或 SVMLight 格式。
-在模块调色板的 "_ *数据格式转换* " 部分中查找执行这些功能的模块。
+在模块调色板的 "_ *数据格式转换*" 部分中查找执行这些功能的模块。
 
 ## <a name="data-capacities"></a>数据容量
 
@@ -155,7 +155,7 @@ Studio 使用称为 * **数据表** _ 的内部数据类型在模块之间传递
 > 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../storage/blobs/storage-blob-storage-tiers.md)。
 
 ### <a name="supported-online-data-sources"></a>支持的联机数据源
-Azure 机器学习工作室（经典） **导入数据** 模块支持以下数据源：
+Azure 机器学习工作室（经典）**导入数据** 模块支持以下数据源：
 
 | 数据源 | 说明 | parameters |
 | --- | --- | --- |

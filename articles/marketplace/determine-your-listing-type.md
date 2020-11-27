@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
-ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741903"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302864"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -145,7 +145,7 @@ ms.locfileid: "94741903"
 
 AppSource 中 &#42; SaaS 事务提供的产品/服务当前仅为信用卡。
 
-&#42;&#42; Microsoft 365 外接程序可以免费安装，并且可以使用 SaaS 产品获取收益。 有关详细信息，请参阅[通过 Microsoft 商业市场利用 Office 365 加载项实现盈利](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md)。
+&#42;&#42; Microsoft 365 外接程序可以免费安装，并且可以使用 SaaS 产品获取收益。 有关详细信息，请参阅[通过 Microsoft 商业市场利用 Office 365 加载项实现盈利](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ## <a name="marketplace-rewards"></a>Marketplace 奖励
 

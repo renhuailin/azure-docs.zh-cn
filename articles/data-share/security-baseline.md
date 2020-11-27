@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7bf78194b50e2e2335d807504ebca5f8a0e9f0eb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 88feb08851e0b69e31218a42fe877112561bddba
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849171"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301655"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure 数据共享的 azure 安全基线
 
@@ -36,7 +36,7 @@ ms.locfileid: "94849171"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+- [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 **Azure 安全中心监视**：是
 
@@ -108,7 +108,7 @@ ms.locfileid: "94849171"
 
 **指南**： Azure 数据共享支持 AZURE ACTIVE DIRECTORY 的 SSO 身份验证。 通过使用组织的预先存在的标识为服务启用 SSO，减少用户必须管理的标识和凭据的数量。
 
-- [了解 Azure AD 的 SSO](/azure/active-directory/manage-apps/what-is-single-sign-o)
+- [了解 Azure AD 的 SSO](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 **Azure 安全中心监视**：不适用
 
@@ -116,7 +116,7 @@ ms.locfileid: "94849171"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 Azure AD MFA，并遵循 Azure 安全中心的标识和访问建议。
+**指导**：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问建议。
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md) 
 
@@ -352,7 +352,7 @@ Azure 数据共享不会公开操作系统，也不允许你在其资源上安�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指导**：使用托管标识在 Azure AD 中为 Azure 服务提供自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 - [如何为 Azure 资源配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 

@@ -7,21 +7,21 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/26/2020
-ms.openlocfilehash: f07cc8e3d5e9d6f59671a3c8c2efd9f5fb9f27b7
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.date: 11/27/2020
+ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299050"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301957"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI CD、Azure DevOps 和 GitHub 问题 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探讨了 Azure 数据工厂中 CI CD、Azure DevOps 和 GitHub 问题的常见故障排除方法。
+本文探讨了在 Azure 数据工厂中进行连续 Integration-Continuous 部署 (CI CD) 、Azure DevOps 和 GitHub 问题的常见故障排除方法。
 
-如果你在使用源代码管理或 DevOps 技术方面有疑问或问题，下面是一些可能有用的文章。：
+如果你在使用源代码管理或 DevOps 技术方面有疑问或问题，下面是一些可能有用的文章：
 
 - 请参阅 [adf 中的源代码管理](source-control.md) ，了解如何在 adf 中练习源代码管理。 
 - 请参阅  [adf 中的 CI cd](continuous-integration-deployment.md) ，详细了解如何在 adf 中进行 DevOps CI。
@@ -158,9 +158,5 @@ CI/CD 发布管道失败，出现以下错误：
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft 问答页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
-
-
- 
