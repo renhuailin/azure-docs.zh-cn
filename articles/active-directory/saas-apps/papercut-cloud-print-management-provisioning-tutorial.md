@@ -1,6 +1,6 @@
 ---
-title: 教程：配置 PaperCut 云打印管理 (Pocket/Hive) 以 Azure Active Directory 自动用户预配 |Microsoft Docs
-description: 了解如何从 Azure AD 自动预配和取消预配用户帐户， (Pocket/Hive) 。
+title: 教程：为 PaperCut 云打印管理配置 Azure Active Directory 的自动用户预配 |Microsoft Docs
+description: 了解如何从 Azure AD 自动预配和取消预配用户帐户，以 PaperCut 云打印管理。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: d0ecc06cd256dc2fae598e8bc44336d69a9c99df
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031143"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96299084"
 ---
-# <a name="tutorial-configure-papercut-cloud-print-management-pockethive-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 PaperCut 云打印管理 (Pocket/Hive) 
+# <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 PaperCut 云打印管理
 
-本教程介绍了在 PaperCut 云打印管理 (Pocket/Hive) 中需要执行的步骤，以及 Azure Active Directory (Azure AD) 配置自动用户预配。 配置后，Azure AD 会自动设置用户和组，并取消其预配，以使用 Azure AD 预配服务 [PaperCut 云打印管理](https://www.papercut.com/products/papercut-pocket/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+本教程介绍了需要在 PaperCut Cloud 打印管理和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会自动设置用户和组，并取消其预配，以使用 Azure AD 预配服务 [PaperCut 云打印管理](https://www.papercut.com/products/papercut-pocket/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
 ## <a name="capabilities-supported"></a>支持的功能
 
 > [!div class="checklist"]
-> * 在 PaperCut Cloud (袖珍/Hive 中创建用户) 
-> * 如果 PaperCut 云打印管理 (Pocket/Hive) 不需要访问权限，请将其删除
-> * 在 Azure AD 与 PaperCut 云打印管理 (Pocket/Hive 之间保持用户属性同步) 
+> * 在 PaperCut Cloud 打印管理中创建用户
+> * 如果用户不需要访问，请在 PaperCut Cloud 打印管理中删除用户
+> * 使用户属性在 Azure AD 和 PaperCut 云打印管理之间保持同步
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "96031143"
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 中[有权](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
-* PaperCut 云中的用户帐户 (带有管理员权限的 Pocket/Hive) 
+* 使用管理员权限 PaperCut 云打印管理中的用户帐户
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
@@ -58,23 +58,23 @@ ms.locfileid: "96031143"
 
 
 
-4. 安装后，会显示 "附件详细信息" 页，其中包含你的 **租户 URL** 和 **机密令牌**。 这些值将输入到 "租户 URL" 字段中的 "租户 URL \* " 字段和 "机密令牌 \* " 字段中。在 Azure 门户 (Pocket/Hive) 应用程序的 "预配" 选项卡中。
+4. 安装后，会显示 "附件详细信息" 页，其中包含你的 **租户 URL** 和 **机密令牌**。 这些值将输入到 "租户 URL" 字段中的 "租户 URL" \* 字段和 "机密令牌" 字段中的 " \* 设置" 选项卡的 "Azure 门户" PaperCut 云打印管理应用程序。
 
 
 
-## <a name="step-3-add-papercut-cloud-print-management-pockethive-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 PaperCut Cloud 打印管理 (Pocket/Hive) 
+## <a name="step-3-add-papercut-cloud-print-management-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 PaperCut Cloud 打印管理
 
-从 Azure AD 应用程序库中添加 PaperCut Cloud 打印管理 (Pocket/Hive) ，开始管理 PaperCut 云打印管理 (Pocket/Hive) 的预配。 如果你以前已设置 PaperCut 云打印管理 (适用于 SSO 的 Pocket/Hive) ，你可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。
+从 Azure AD 应用程序库添加 PaperCut Cloud 打印管理，开始管理预配 PaperCut 云打印管理。 如果以前为 SSO 设置了 PaperCut 云打印管理，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。
 
-* 将用户和组分配到 PaperCut 云打印管理 (Pocket/Hive) 时，你必须选择 "默认" **访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。
+* 将用户和组分配到 PaperCut 云打印管理时，你必须选择 "默认" **访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management-pockethive"></a>步骤 5。 配置自动用户预配以 PaperCut 云打印管理 (Pocket/Hive) 
+## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>步骤 5。 配置自动用户预配以 PaperCut 云打印管理
 
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
@@ -84,7 +84,7 @@ ms.locfileid: "96031143"
 
    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **PaperCut 云打印管理 (Pocket/Hive)**。
+2. 在应用程序列表中，选择 " **PaperCut 云打印管理**"。
 
    ![应用程序列表中的 PaperCut Cloud "打印管理" 链接](common/all-applications.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "96031143"
 
    ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入 PaperCut 云打印管理 (Pocket/Hive) 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 PaperCut 云打印管理。 如果连接失败，请确保 PaperCut 云打印管理帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入 PaperCut Cloud 打印管理租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 PaperCut 云打印管理。 如果连接失败，请确保 PaperCut 云打印管理帐户具有管理员权限，然后重试。
 
    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "96031143"
 
 8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户 PaperCut 云打印管理**"。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 PaperCut 云打印管理的用户属性。 选为 " **匹配** " 属性的属性用于匹配 "PaperCut Cloud 打印管理" 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 PaperCut 云打印管理 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 PaperCut 云打印管理的用户属性。 选为 " **匹配** " 属性的属性用于匹配 "PaperCut Cloud 打印管理" 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 PaperCut 云打印管理 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -118,11 +118,11 @@ ms.locfileid: "96031143"
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-11. 若要为 PaperCut 云打印管理 (Pocket/Hive) 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+11. 若要为 PaperCut Cloud 打印管理启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 PaperCut Cloud (Pocket/Hive) 的用户和/或组。
+12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 PaperCut 的用户和/或组。
 
     ![预配范围](common/provisioning-scope.png)
 

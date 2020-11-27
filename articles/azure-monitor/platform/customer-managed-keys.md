@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185957"
+ms.locfileid: "96299033"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -538,7 +538,9 @@ Content-type: application/json
   1. 使用 REST 时，从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
   2. 将 GET 请求发送到群集或工作区，然后观察响应。 例如，未链接的工作区在“功能”下没有 clusterResourceId 。
 
-- 如果区域中有双加密，则会自动为从10月2020创建的群集配置[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 如果创建群集并收到错误 "<region name> 不支持对群集进行双加密。"，则仍可以创建群集，但禁用了双重加密。 创建群集后，无法启用或禁用此功能。 若要在区域中不支持双加密时创建群集，请 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 请求正文中添加。
+- 自动为从10月2020在支持的区域中创建的群集配置[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以验证群集是否已配置为使用群集上的 GET 请求进行双重加密，并观察 `"isDoubleEncryptionEnabled"` 属性值-它 `true` 适用于启用了双加密的群集。 
+  - 如果创建群集并收到错误 "<region name> 不支持对群集进行双加密。"，则仍可在不使用双加密的情况下创建群集。 `"properties": {"isDoubleEncryptionEnabled": false}`在 REST 请求正文中添加。
+  - 创建群集后，不能更改双加密设置。
 
 - 错误消息
   
