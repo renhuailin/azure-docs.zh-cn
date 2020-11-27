@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: 2ce534972cf6509cdc1ca026f4b29efd3df91afd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96231440"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303585"
 ---
 若要对本文中使用的所有资源进行身份验证，需要 **设置一个 [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) 应用注册**。 按照[如何：创建应用注册](../articles/digital-twins/how-to-create-app-registration.md)中的说明进行此设置。 
 
