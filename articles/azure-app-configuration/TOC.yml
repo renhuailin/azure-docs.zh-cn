@@ -70,6 +70,8 @@
       items:
         - name: 使用 Azure Pipelines 推送
           href: push-kv-devops-pipeline.md
+        - name: 使用 Azure Pipelines 拉取
+          href: pull-key-value-devops-pipeline.md
         - name: 使用 GitHub Actions 推送
           href: concept-github-action.md
         - name: 使用导出的配置生成项目

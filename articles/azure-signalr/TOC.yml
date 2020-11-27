@@ -66,6 +66,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: 事件处理
       href: signalr-concept-event-grid-integration.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 缩放
@@ -129,7 +133,7 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
-    - name: 常见问题
+    - name: 常见问题解答
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits

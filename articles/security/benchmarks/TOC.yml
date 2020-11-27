@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure 防火墙安全基线
       href: ../../firewall/security-baseline.md
+    - name: Azure 防火墙管理器安全基线
+      href: ../../firewall-manager/security-baseline.md
     - name: Azure Front Door 安全基线
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全基线
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
+    - name: Power BI 基线
+      href: /power-bi/fundamentals/security-baseline
     - name: 安全中心基线
       href: ../../security-center/security-baseline.md
     - name: 服务总线基线
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: 虚拟网络 NAT 安全基线
       href: ../../virtual-network/nat-security-baseline.md
+    - name: 虚拟 WAN 安全基线
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN 网关安全基线
       href: ../../vpn-gateway/security-baseline.md
