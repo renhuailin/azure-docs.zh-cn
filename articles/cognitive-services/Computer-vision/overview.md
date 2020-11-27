@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629744"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532284"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -64,7 +64,7 @@ ms.locfileid: "94629744"
 
 ### <a name="detect-faces"></a>检测人脸
 
-检测图像中的人脸，提供每个检测到的人脸的相关信息。 计算机视觉返回每个检测到的人脸的坐标、矩形、性别和年龄。<br/>计算机视觉提供了[人脸](/azure/cognitive-services/face/)服务功能的子集。 可以使用“人脸”服务进行更详细的分析，如面部识别和姿势检测。 [检测人脸](concept-detecting-faces.md)
+检测图像中的人脸，提供每个检测到的人脸的相关信息。 计算机视觉返回每个检测到的人脸的坐标、矩形、性别和年龄。<br/>计算机视觉提供了[人脸](../face/index.yml)服务功能的子集。 可以使用“人脸”服务进行更详细的分析，如面部识别和姿势检测。 [检测人脸](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>检测图像类型
 
@@ -90,13 +90,12 @@ ms.locfileid: "94629744"
 
 可以使用计算机视觉[检测图像中的成人内容](concept-detecting-adult-content.md)，并返回不同分类的置信度分数。 可以在滑尺上设置标记内容的阈值，以适应首选项。
 
-## <a name="use-containers"></a>使用容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
-通过使用“计算机视觉 Docker”容器，在本地使用服务。 当前有两个容器可用：
+使用计算机视觉容器在本地部署 API 功能。 借助这些 Docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。 计算机视觉提供以下容器：
 
-* 利用[计算机视觉读取容器](computer-vision-how-to-install-containers.md)，可以识别图像中的打印文本和手写文本。
-
-* 利用[计算机视觉空间分析容器](spatial-analysis-container.md)，可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。
+* 利用[计算机视觉读取 OCR 容器（预览版）](computer-vision-how-to-install-containers.md)，可以识别图像中的打印文本和手写文本。
+* 利用[计算机视觉空间分析容器（预览版）](spatial-analysis-container.md)，可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。
 
 ## <a name="image-requirements"></a>图像要求
 

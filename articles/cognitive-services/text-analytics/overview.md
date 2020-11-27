@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365289"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519398"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -47,9 +47,18 @@ ms.locfileid: "94365289"
 
 命名实体识别 (NER) 可以[对文本中的实体进行识别和分类](how-tos/text-analytics-how-to-entity-linking.md)，将其识别并分类为人员、地点、组织、数量，还可以识别众所周知的实体并将其链接到 Web 上的详细信息。
 
-## <a name="use-containers"></a>使用容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
-[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)作为一种用于挖掘文本和使用 API 的本地解决方案。 这些 Docker 容器使你能够提取关键短语、检测语言，并分析更符合你的数据的情绪。
+[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)在本地部署 API 功能。 借助这些 docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。 文本分析提供以下容器：
+
+* 情绪分析
+* 关键短语提取（预览版）
+* 语言检测（预览版）
+* 运行状况文本分析（预览版）
+
+## <a name="asynchronous-operations"></a>异步操作
+
+利用 `/analyze` 终结点，你可以[异步](how-tos/text-analytics-how-to-call-api.md)使用文本分析 API 的精选功能，如 NER 和关键短语提取。
 
 ## <a name="typical-workflow"></a>典型工作流
 

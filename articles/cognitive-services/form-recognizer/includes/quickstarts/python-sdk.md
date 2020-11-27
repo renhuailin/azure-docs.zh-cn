@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b09dfe8e585dbcb6b8b1289fc551cec12d86c6db
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918674"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95867704"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -36,9 +36,19 @@ ms.locfileid: "92918674"
 
 安装 Python 后，可以使用以下内容安装最新版本的表单识别器客户端库：
 
+#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+
 ```console
 pip install azure-ai-formrecognizer
 ```
+
+#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+
+```console
+pip install azure-ai-formrecognizer --pre
+```
+
+---
 
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
@@ -81,6 +91,8 @@ pip install azure-ai-formrecognizer
 
 这些代码片段演示如何使用适用于 Python 的表单识别器客户端库执行以下任务：
 
+#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
 * [识别回执](#recognize-receipts)
@@ -88,6 +100,18 @@ pip install azure-ai-formrecognizer
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [识别表单内容](#recognize-form-content)
+* [识别回执](#recognize-receipts)
+* [识别名片](#recognize-business-cards)
+* [识别发票](#recognize-invoices)
+* [训练自定义模型](#train-a-custom-model)
+* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
+* [管理自定义模型](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -135,7 +159,6 @@ Confidence score: 1.0
 Cell text: Charges
 Location: [Point(x=4.7074, y=2.8088), Point(x=5.386, y=2.8088), Point(x=5.386, y=3.3219), Point(x=4.7074, y=3.3219)]
 Confidence score: 1.0
-
 ...
 
 ```
@@ -170,6 +193,30 @@ Subtotal: 1098.99 has confidence 0.964
 Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
+
+#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+
+#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+
+## <a name="recognize-business-cards"></a>识别名片
+
+本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。 若要从 URL 识别名片，请使用 `begin_recognize_business_cards_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+## <a name="recognize-invoices"></a>识别发票
+
+本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。 若要从 URL 识别发票，请使用 `begin_recognize_invoices_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
+
+> [!TIP]
+> 还可识别本地发票图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+---
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -377,7 +424,7 @@ python quickstart-file.py
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

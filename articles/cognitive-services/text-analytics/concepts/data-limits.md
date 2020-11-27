@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363827"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965096"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
@@ -31,24 +31,28 @@ ms.locfileid: "94363827"
 
 | 限制 | 值 |
 |------------------------|---------------|
-| 单个文档的最大大小 | 5,120 个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 也适用于运行状况文本分析容器。 |
-| 整个请求的最大大小 | 1MB。 也适用于运行状况文本分析容器。 |
+| 单个文档的最大大小 | 5,120 个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 也适用于运行状况文本分析。 |
+| 单个文档的最大大小（`/analyze` 终结点）  | 12.5 万个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 不适用于运行状况文本分析。 |
+| 整个请求的最大大小 | 1MB。 也适用于运行状况文本分析。 |
 
-可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能。
+可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能。 如果任何文档超过最大大小（12.5 万个字符），则 `/analyze` 终结点将拒绝整个请求
 
 #### <a name="version-3"></a>[第 3 版](#tab/version-3)
 
-v3 API 中已更改以下限制。 超过以下限制将生成 HTTP 400 错误代码。
+以下限制针对当前 v3 API。 超过以下限制将生成 HTTP 400 错误代码。
 
 
 | Feature | 每个请求的最大文档数 | 
 |----------|-----------|
 | 语言检测 | 1000 |
 | 情绪分析 | 10 |
+| 观点挖掘 | 10 |
 | 关键短语提取 | 10 |
 | 命名实体识别 | 5 |
 | 实体链接 | 5 |
-| 运行状况文本分析容器 | 1000 |
+| 运行状况文本分析  | 对于基于 Web 的 API 为 10，对于容器为 1000。 |
+| 分析终结点 | 对于所有操作为 25。 |
+
 #### <a name="version-2"></a>[第 2 版](#tab/version-2)
 
 | Feature | 每个请求的最大文档数 | 
@@ -74,7 +78,7 @@ v3 API 中已更改以下限制。 超过以下限制将生成 HTTP 400 错误�
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-对每个文本分析功能的请求分别进行测量。 例如，可以同时向每个功能发送定价层的最大数量的请求。  
+对每个文本分析功能的请求速率分别进行测量。 可以同时向每个功能发送定价层的最大数量的请求。 例如，如果你处于 `S` 层并一次发送了 1000 个请求，则你将无法在 59 秒内再发送其他请求。
 
 
 ## <a name="see-also"></a>另请参阅

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616036"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736419"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "94616036"
 
 接下来，需要安装以下包：
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>加载模型和标记
 
-下载的 zip 文件包含 model.pb 和 labels.txt。 这些文件表示定型模型和分类标签。 第一步是将模型加载到项目。
+下载的 .zip 文件包含 model.pb 和 labels.txt 文件 。 这些文件表示定型模型和分类标签。 第一步是将模型加载到项目。 将以下代码添加到新的 Python 脚本。
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>添加帮助程序函数
+
 上面的步骤使用以下 helper 函数：
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>查看结果
+## <a name="display-the-results"></a>显示结果
 
 然后，通过模型运行的图像 tensor 的结果将需要映射回标签。
 
