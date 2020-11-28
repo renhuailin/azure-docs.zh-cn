@@ -62,7 +62,7 @@
         - name: 加入 Azure Sentinel
           href: scenario-onboard-azure-sentinel.md
         - name: 加入 Azure 安全中心
-          href: /security-center/quickstart-onboard-machines.md
+          href: /security-center/quickstart-onboard-machines
     - name: 疑难解答
       items:
         - name: 代理连接问题
