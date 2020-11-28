@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56a360f461c89d7c60e973bf2d6258d63113ab47
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963821"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303772"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -49,6 +49,8 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [NCv3 系列](ncv3-series.md)
 * [ND 系列](nd-series.md)
 * [NVv3 系列](nvv3-series.md)
+* [NVv4 系列](nvv4-series.md)
+* [NCasT4_v3 系列](nct4-v3-series.md)
 
 <sup>1</sup> Mv2 系列不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](mv2-series.md)。
 
