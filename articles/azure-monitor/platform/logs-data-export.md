@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186433"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309828"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -118,6 +118,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 数据导出规则定义要为一组表导出到单个目标的数据。 可为每个目标创建一个规则。
 
 
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下 CLI 命令查看工作区中的表。 它可帮助复制所需的表并将其包含在数据导出规则中。
@@ -203,6 +207,10 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="view-data-export-configuration"></a>查看数据导出配置
 
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下命令通过 CLI 查看数据导出规则的配置。
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>禁用导出规则
+
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>删除导出规则
 
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下命令通过 CLI 删除数据导出规则。
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>查看工作区中的所有数据导出规则
+
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

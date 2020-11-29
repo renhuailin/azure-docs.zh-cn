@@ -3,12 +3,12 @@ title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新增功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511445"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309658"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -19,6 +19,7 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
 ## <a name="updates-summary"></a>更新摘要
 
 - 2020 年 11 月
+  - [Azure 文件共享的 azure 资源管理器模板 (AFS) 备份](#azure-resource-manager-template-for-afs-backup)
   - [Azure Vm 上 SAP HANA 数据库的增量备份](#incremental-backups-for-sap-hana-databases)
 - 2020 年 9 月
   - [备份中心](#backup-center)
@@ -30,6 +31,12 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
   - [RHEL Azure 虚拟机中的备份 SAP HANA](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [用于备份数据的区域冗余存储 (ZRS) ](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure Vm 中的 SQL Server 和 SAP HANA 工作负荷的软删除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>用于 AFS 备份的 Azure 资源管理器模板
+
+Azure 备份现在支持使用 Azure 资源管理器 (ARM) 模板为现有的 Azure 文件共享配置备份。 模板通过为恢复服务保管库和备份策略指定适当的详细信息，为现有的 Azure 文件共享配置保护。 它可以根据需要创建新的恢复服务保管库和备份策略，并向恢复服务保管库注册包含文件共享的存储帐户。
+
+有关详细信息，请参阅 azure [备份的 azure 资源管理器模板](backup-rm-template-samples.md)。
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA 数据库的增量备份
 

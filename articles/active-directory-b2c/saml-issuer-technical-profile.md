@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 73c381624b69acb6fe7a6296a3153160812818bf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886407"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309624"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 令牌颁发者的技术配置文件
 
@@ -60,12 +60,14 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 | IssuerUri | 否 | SAML 响应中出现的颁发者名称。 该值应与信赖方应用中配置的名称相同。 |
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 断言请求进行签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 响应，请参阅 [信赖方 SAML 元数据](relyingparty.md#metadata)|
 |TokenNotBeforeSkewInSeconds| 否| 以整数形式为标记有效期开始时间的时间戳指定倾斜。 此数字越大，有效期开始的时间相对于为信赖方发出声明的时间就越早。 例如，当 TokenNotBeforeSkewInSeconds 设置为 60 秒时，如果令牌是在 UTC 13:05:10 颁发的，则该令牌从 UTC 13:04:10 起有效。 默认值为 0。 最大值为 3600（1 小时）。 |
+|TokenLifeTimeInSeconds| 否| 指定 SAML 断言的生存期。 此值以秒为单位，NotBefore 值为 refernced。默认值为300秒 (5 分钟) 。 |
+
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 CryptographicKeys 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | MetadataSigning | 是 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。 |
 | SamlMessageSigning| 是| 指定 X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对发送到信赖方的响应 `<samlp:Response>` 进行签名。|

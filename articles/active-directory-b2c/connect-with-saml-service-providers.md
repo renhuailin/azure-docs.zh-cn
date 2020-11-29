@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949643"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309641"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -270,7 +270,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中注册应用程序
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -340,7 +340,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 通常需要以下部分或全部内容：
 
 * **元数据**：`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **颁发者**： SAML 请求 `issuer` 值必须与 `identifierUris` 应用程序注册清单的元素中配置的其中一个 uri 匹配。 如果 `issuer` 元素中不存在 SAML 请求名称 `identifierUris` ，请 [将其添加到应用程序注册清单](#identifieruris)。 例如，`https://contoso.onmicrosoft.com/app-name`。 
+* **颁发者**： SAML 请求 `issuer` 值必须与 `identifierUris` 应用程序注册清单的元素中配置的其中一个 uri 匹配。 如果 `issuer` 元素中不存在 SAML 请求名称 `identifierUris` ，请 [将其添加到应用程序注册清单](#identifieruris)。 例如 `https://contoso.onmicrosoft.com/app-name`。 
 * **登录 url/saml 终结点/Saml url**：检查 XML 元素 Azure AD B2C SAML 策略元数据文件中的值 `<SingleSignOnService>`
 * **证书：** 为 B2C_1A_SamlIdpCert ，但没有私钥。 若要获取证书的公钥：
 
@@ -453,7 +453,7 @@ SAML 令牌是一个安全令牌，在成功登录后 Azure AD B2C 颁发。 它
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |令牌断言信息的主体，如用户对象 ID。 此值固定不变，无法重新分配或重复使用。 可以使用它来安全地执行授权检查，例如，当使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 一个 URI 引用，它表示基于字符串的标识符信息的分类。 默认情况下，将忽略此属性。 可以将信赖方 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) 设置为指定 `NameID` 格式，如 `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |标记变为有效的时间。 时间值采用 UTC 格式进行编码。 应用程序应该使用此声明来验证令牌生存期的有效性。 若要更改令牌生存期的设置，请设置 `TokenNotBeforeSkewInSeconds` SAML 令牌颁发技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 。 |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 令牌失效的时间。 应用程序应该使用此声明来验证令牌生存期的有效性。 值为15分钟后， `NotBefore` 无法更改。|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 令牌失效的时间。 应用程序应该使用此声明来验证令牌生存期的有效性。 默认值为5分钟后， `NotBefore` 可通过添加 `TokenLifeTimeInSeconds` SAML 令牌问题技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 进行更新。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |标识目标受众的 URI 引用。 它标识令牌的目标接收方。 该值与 SAML 请求完全相同 `AssertionConsumerServiceURL` 。|
 |`<Response>``<Assertion>` `<AttributeStatement>` 的集合`<Attribute>` | | 断言集合 (声明) ，如 [信赖方技术配置文件](relyingparty.md#technicalprofile) 输出声明中所述。 可以通过设置输出声明的来配置断言的名称 `PartnerClaimType` 。 |
 
