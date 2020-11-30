@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018930"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302897"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "96018930"
 
 **任务** | **详细信息**
 --- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
 **验证 Azure 帐户的权限** | Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 
@@ -110,28 +110,6 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 
 > [!NOTE]
 > 复制设备不应安装在要复制的源计算机上，也不应安装在以前可能已安装的 Azure Migrate 发现和评估设备上。
-
-## <a name="add-the-server-migration-tool"></a>添加服务器迁移工具
-
-设置一个 Azure Migrate 项目，并将服务器迁移工具添加到其中。
-
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
-2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概述”中，单击“评估和迁移服务器”。 
-4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。 
-
-    ![发现和评估服务器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. 在“发现、评估和迁移服务器”中，单击“添加工具”。 
-6. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
-7. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置，然后单击“下一步”。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
-
-    ![创建 Azure Migrate 项目](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。  
-9. 在“选择迁移工具”中，选择“Azure Migrate: 服务器迁移” > “下一步”。
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
-11. 添加工具后，它会显示在 Azure Migrate 项目的“服务器” > “迁移工具”中。 
 
 ## <a name="set-up-the-replication-appliance"></a>设置复制设备
 
@@ -251,8 +229,8 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
 12. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”  。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
@@ -268,7 +246,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 
    ![计算设置](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+13. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 

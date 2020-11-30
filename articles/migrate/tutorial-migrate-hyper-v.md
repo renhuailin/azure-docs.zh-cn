@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995312"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302557"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -43,23 +43,9 @@ ms.locfileid: "95995312"
 2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Hyper-V 主机迁移要求，以及迁移 VM 时 Hyper-V 主机和群集需要访问的 Azure URL。
 3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移到 Azure 的 Hyper-V VM 要求。
 4. 建议在评估 [Hyper-V VM](tutorial-assess-hyper-v.md) 后将其迁移到 Azure，但不强制要求这样做。
+5. 转到已创建的项目或[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. 验证 Azure 帐户的权限 - Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>添加 Azure Migrate:服务器迁移工具
-
-添加 Azure Migrate:服务器迁移工具。 如果还没有 Azure Migrate 项目，请先[创建项目](how-to-add-tool-first-time.md)，以设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
-
-如果已设置项目，请如下所述添加工具：
-
-1. 在 Azure Migrate 项目中，单击“概述”。 
-2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。 
-3. 在“迁移工具”中，选择“准备好迁移时单击此处添加迁移工具”。 
-
-    ![选择工具](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. 在“工具”列表中，选择“Azure Migrate:服务器迁移” > “添加工具”
-
-    ![服务器迁移工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 ## <a name="download-and-install-the-provider"></a>下载并安装提供程序
 
@@ -121,7 +107,7 @@ ms.locfileid: "95995312"
 10. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-hyper-v/target-settings.png)
 
