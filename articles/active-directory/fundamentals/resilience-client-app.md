@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 69967035f98d7ec2fcedff173dcf481455014ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919362"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317463"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高身份验证和授权在你开发的客户端应用程序中的复原能力
 
@@ -157,4 +157,4 @@ MSAL 自动支持 Broker 身份验证。 可以在以下页上找到有关使用
 - [如何在应用程序中使用启用了持续存取评估的 Api](../develop/app-resilience-continuous-access-evaluation.md)
 - [为守护程序应用程序构建复原能力](resilience-daemon-app.md)
 - [在标识和访问管理基础结构中构建复原能力](resilience-in-infrastructure.md)
-- [使用 Azure Active Directory B2C 在客户标识和访问管理中构建复原能力](resilience-b2c.md)
+- [在 CIAM 系统中构建复原能力](resilience-b2c.md)

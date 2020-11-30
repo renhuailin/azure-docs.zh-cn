@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: c2a9dbb5fa821d408835cd1bcbf3e6afdade36e1
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309675"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317480"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -568,7 +568,7 @@ Content-type: application/json
 
   ---
 
-  - **检查工作区链接状态**
+- **检查工作区链接状态**
   
   对工作区执行 Get 操作，并观察功能下的响应中是否存在 clusterResourceId 属性 。 链接的工作区将具有 clusterResourceId 属性。
 

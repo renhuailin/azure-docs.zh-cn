@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186552"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317548"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **时间段：** 15 分钟
+- **时间段/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 
@@ -145,7 +145,7 @@ requests
 - **资源 ID 列：** _ResourceId（目前，按警报规则中的资源 ID 列拆分这一做法仅适用于订阅和资源组）
 - **维度/聚合依据：**
   - Computer = VM1、VM2（在警报规则定义中筛选值这一做法目前不适用于工作区和 Application Insights。 请在查询文本中筛选。）
-- **时间段：** 15 分钟
+- **时间段/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 

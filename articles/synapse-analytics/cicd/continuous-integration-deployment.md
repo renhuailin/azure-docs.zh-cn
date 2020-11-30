@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185073"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317111"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -25,7 +25,7 @@ ms.locfileid: "96185073"
 
 本文概述如何使用 Azure release 管道将 Synapse 工作区自动部署到多个环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 -   用于开发的工作区已在 Studio 中使用 Git 存储库进行配置，请参阅 [Synapse Studio 中的源代码管理](source-control.md)。
 -   Azure DevOps 项目已准备好运行发布管道。
@@ -91,15 +91,25 @@ ms.locfileid: "96185073"
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>为项目部署设置阶段任务 
 
-使用 [Synapse 工作区 Build & Release](https://marketplace.visualstudio.com/items?itemName=PraveenMathamsetty.synapsecicd-deploy) 任务在 Synapse 工作区中部署其他项，例如数据集、SQL 脚本、笔记本、spark 作业定义、数据流、管道、链接服务、凭据和 IR (Integration Runtime) 。  
+使用 [Synapse 工作区部署](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) 扩展在 Synapse 工作区中部署其他项，例如数据集、SQL 脚本、笔记本、spark 作业定义、数据流、管道、链接服务、凭据和 IR (Integration Runtime) 。  
+
+1. 搜索并从 **Azure DevOps marketplace** 获取扩展 (https://marketplace.visualstudio.com/azuredevops) 
+
+     ![获取扩展](media/get-extension-from-market.png)
+
+1. 选择要安装扩展的组织。 
+
+     ![安装扩展](media/install-extension.png)
 
 1. 请确保 Azure DevOps 管道的服务主体已被授予订阅的权限，并且已被指定为目标工作区的工作区管理员。 
 
-1. 创建新任务。 搜索 " **Synapse 工作区生成 & 版本**"，然后选择 " **添加**"。
+1. 创建新任务。 搜索 " **Synapse 工作区部署**"，然后选择 " **添加**"。
+
+     ![添加扩展](media/add-extension-task.png)
 
 1.  在任务中，提供 **workspace_publish** 的相关 git 存储库信息，并选择 "资源组"、"区域"、"名称" 和 "目标" 工作区的云环境。 根据需要提供参数和值。
 
-    ![synapse 工作区部署](media/create-release-artifacts-deployment.png)
+    ![Synapse 工作区部署](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > 在 CI/CD 方案中，不同环境中的集成运行时 (IR) 类型必须相同。 例如，如果在开发环境中使用自承载 IR，则同一 IR 在测试和生产等其他环境中的类型也必须是自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（例如开发、测试和生产）中将集成运行时配置为链接自承载。

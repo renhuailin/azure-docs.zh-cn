@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184597"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317514"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -79,10 +79,10 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 * AMPLS 对象最多可连接到10个私有终结点。
 
 在下面的拓扑中：
-* 每个 VNet 连接到1个 AMPLS 对象，因此它无法连接到其他 AMPLSs。
-* AMPLS B 连接到 2 Vnet：使用2/10 的可能的专用终结点连接。
-* AMPLS A 连接到2个工作区和1个 Application insights 组件：使用3/50 的可能 Azure Monitor 资源。
-* 工作区2连接到 AMPLS A 和 AMPLS B：使用2/5 的可能的 AMPLS 连接。
+* 每个 VNet 仅连接到 **1** 个 AMPLS 对象。
+* AMPLS B 连接到两个 Vnet (VNet2 和 VNet3) 的专用终结点，并使用 2/10 (20% ) 其可能的专用终结点连接。
+* AMPLS A 连接到两个工作区和一个 Application insights 组件，使用 3/50 (6% ) 其可能的 Azure Monitor 资源连接。
+* Workspace2 使用 2/5 (40% ) 其可能的 AMPLS 连接，连接到 AMPLS A 和 AMPLS B。
 
 ![AMPLS 限制关系图](./media/private-link-security/ampls-limits.png)
 
@@ -103,9 +103,9 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 6. 让验证通过，然后单击“创建”。
 
-## <a name="connect-azure-monitor-resources"></a>连接 Azure Monitor 资源
+### <a name="connect-azure-monitor-resources"></a>连接 Azure Monitor 资源
 
-可先将 AMPLS 连接到专用终结点，然后连接到 Azure Monitor 资源（或者反向操作），但如果先连接 Azure Monitor 资源，连接过程会更快完成。 下面介绍了如何将 Azure Monitor Log Analytics 工作区和 Application Insights 组件连接到 AMPLS
+将 Azure Monitor 资源 (Log Analytics 工作区和 Application Insights) 组件连接到 AMPLS。
 
 1. 在 Azure Monitor 专用链接范围中，单击左侧菜单中的“Azure Monitor 资源”。 单击“添加”按钮。
 2. 添加工作区或组件。 单击“添加”按钮将调出一个对话框，你可在这里选择 Azure Monitor 资源。 你可浏览订阅和资源组，也可键入其名称通过筛选找到它们。 选择工作区或组件，然后单击“应用”，让它们添加到范围中。
@@ -158,16 +158,19 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 ## <a name="configure-log-analytics"></a>配置 Log Analytics
 
-转到 Azure 门户。 在 Log Analytics 工作区资源的左侧有一个菜单项 " **网络隔离** "。 你可通过此菜单控制两种不同的状态。 
+转到 Azure 门户。 在 Log Analytics 工作区资源的左侧有一个菜单项 " **网络隔离** "。 你可通过此菜单控制两种不同的状态。
 
 ![LA 网络隔离](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-首先，可将该 Log Analytics 资源连接到你有权访问的任意 Azure Monitor 专用链接范围。 单击“添加”并选择 Azure Monitor 专用链接范围。  单击“应用”进行连接。 所有已连接的范围都显示在此屏幕中。 建立此连接后，已连接的虚拟网络中的网络流量可到达此工作区。 建立此连接的效果与我们在[连接 Azure Monitor 资源](#connect-azure-monitor-resources)中所做的从范围连接它的效果一样。  
+### <a name="connected-azure-monitor-private-link-scopes"></a>已连接 Azure Monitor 专用链接范围
+连接到此工作区的所有作用域都显示在此屏幕中。  (AMPLSs) 连接到作用域后，便可以从虚拟网络连接到每个 AMPLS 的网络流量到达此工作区。 通过此处创建连接与在作用域上设置连接与在 [连接 Azure Monitor 资源](#connect-azure-monitor-resources)时相同。 若要添加新连接，请单击 " **添加** "，然后选择 Azure Monitor 专用链接范围。 单击“应用”进行连接。 请注意，工作区可以连接到5个 AMPLS 对象，如 [考虑限制](#consider-limits)中所述。 
 
-其次，你能控制可如何从上述专用链接范围外部访问该资源。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。 该数据包括访问工作簿、仪表板、基于查询 API 的客户端体验、Azure 门户中的见解等等。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
+### <a name="access-from-outside-of-private-links-scopes"></a>从专用链接范围之外的访问权限
+此页面底部的设置控制从公共网络访问，这意味着网络未通过上面列出的作用域进行连接。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将 " **允许对查询的公共网络访问** " 设置为 " **否**"，则范围之外的计算机将无法访问此工作区中的数据，这意味着它将无法查询工作区数据。 这包括工作簿中的查询、面板、基于 API 的客户端体验、Azure 门户中的见解等。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
 
-以这种方式限制访问权限不适用于 Azure 资源管理器，因此具有以下限制：
-* 对数据的访问-阻止来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非将专用链接设置应用到 (资源管理器，不久就会) 该功能。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
+### <a name="exceptions"></a>异常
+如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
+* 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
 * 工作区管理-工作区设置和配置更改 (包括打开或关闭这些访问设置) 由 Azure 资源管理器管理。 使用适当的角色、权限、网络控制和审核限制对工作区管理的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](roles-permissions-security.md)。
 
 > [!NOTE]
