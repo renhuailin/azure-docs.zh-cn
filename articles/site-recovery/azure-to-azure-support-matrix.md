@@ -2,14 +2,14 @@
 title: 使用 Azure Site Recovery 进行 Azure VM 灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次要区域时的支持情况。
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 25fb28c8f420a64f60ab0d058c374f5de74ed883
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808863"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310319"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -98,8 +98,8 @@ Windows 7 (x64) SP1 和更高版本 | 从适用于 Azure VM 的移动服务扩�
 
 **操作系统** | **详细信息**
 --- | ---
-Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609/)
-CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 预发行版](https://support.microsoft.com/help/4578241/)、从7.9 热修复修补程序获取了 9.37 ga 版本 * * </br> 8.0、8.1、[8.2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9、8.0](https://support.microsoft.com/help/4578241/) [、8.1](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、 [8.2](https://support.microsoft.com/help/4570609/)、 [8.3、](https://support.microsoft.com/help/4597409)、、。
+CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 预发行版](https://support.microsoft.com/help/4578241/)、7.9 (ga 版本支持修补程序 9.37 * * ) 、8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609)
 Ubuntu 14.04 LTS Server | 支持所有 14.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)； 
 Ubuntu 16.04 LTS Server | 支持所有 16.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（位于 Azure 门户的故障转移 VM 中）重置密码，可以在虚拟机上重新启用基于密码的登录。
 Ubuntu 18.04 LTS Server | 支持所有 18.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
@@ -111,10 +111,10 @@ SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5[（受支持的内
 SUSE Linux Enterprise Server 15 | 15、SP1、SP2[（受支持的内核版本）](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、 [7.6、7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>在所有 UEK 内核和 RedHat 内核上运行 <= 3.10.0-1062. * 支持对 RedHat 内核的剩余部分 [9.35](https://support.microsoft.com/help/4573888/) 提供 [9.36](https://support.microsoft.com/help/4578241/)
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、 [7.4、7.5](https://support.microsoft.com/help/4573888/)、7.6、 [7.7、7.8](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.9](https://support.microsoft.com/help/4597409)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1 (运行](https://support.microsoft.com/help/4573888/)Red Hat 兼容内核或 UNBREAKABLE Enterprise 内核 Release 3、4 & 5 (UEK3、UEK4、UEK5) <br/><br/>8.1 (在所有 UEK 内核和 RedHat <内核上运行， [9.35](https://support.microsoft.com/help/4573888/)上支持 3.10.0-1062。 [9.36](https://support.microsoft.com/help/4578241/)) 提供对其余 RedHat 内核的支持
 
 > [!NOTE]
-> 请确保对于 Linux 版本，Azure Site Recovery 不支持自定义的操作系统映像。 仅支持属于分发次要版本发布/更新的常用内核。
+> 对于 Linux 版本，Azure Site Recovery 不支持自定义的操作系统映像。 仅支持属于分发次要版本发布/更新的常用内核。
 
 **注意：为支持 15 天内发布的最新 Linux 内核，Azure Site Recovery 推出了基于最新移动代理版本的热修补程序。 此修补程序是在两个主要版本之间推出的。 若要更新到移动代理的最新版本（包括热修补程序），请按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中提及的步骤进行操作。 此修补程序当前是针对 Azure 到 Azure DR 方案中使用的移动代理推出的。
 
