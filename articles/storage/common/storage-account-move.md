@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792984"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
@@ -103,7 +103,7 @@ ms.locfileid: "92792984"
 
 1. 在 Azure 门户中，选择“创建资源”。
 
-2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER** 。 
+2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。 
 
 3. 选择“模板部署”。
 
@@ -137,7 +137,7 @@ ms.locfileid: "92792984"
          "location": "centralus"
          }]          
     ```
-    若要获取地区位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、 **美国中部**  =  **centralus** 的区域名称。
+    若要获取地区位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus** 的区域名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,11 +186,11 @@ ms.locfileid: "92792984"
 
 2. 输入或选择属性值：
 
-- **订阅** ：选择 Azure 订阅。
+- **订阅**：选择 Azure 订阅。
 
-- **资源组** ：选择“新建”  并为资源组指定名称。
+- **资源组**：选择“新建”  并为资源组指定名称。
 
-- **位置** ：选择 Azure 位置。
+- **位置**：选择 Azure 位置。
 
 3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。 
 
@@ -225,7 +225,7 @@ ms.locfileid: "92792984"
 | **静态网站** | [在 Azure 存储中托管静态网站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件订阅** | [响应 Blob 存储事件](../blobs/storage-blob-event-overview.md) |
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) |
-| **内容分发网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
+| **内容交付网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
 > 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。 

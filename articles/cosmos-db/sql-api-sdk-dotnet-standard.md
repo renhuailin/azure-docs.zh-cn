@@ -10,10 +10,10 @@ ms.date: 10/07/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: c3a403afcae394787c97885e3153cd8b0bb49758
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "93097169"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK v3：下载和发行说明
@@ -45,7 +45,7 @@ ms.locfileid: "93097169"
 |**示例**|[.NET代码示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
 |**入门**|[Azure Cosmos DB .NET SDK 入门](sql-api-get-started.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-dotnet-application.md)|
-|**Entity Framework Core 教程**|[与 Azure Cosmos DB 提供程序 Entity Framework Core](/ef/core/providers/cosmos/#get-started)|
+|**Entity Framework Core 教程**|[Entity Framework Core 与 Azure Cosmos DB 提供程序](/ef/core/providers/cosmos/#get-started)|
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
