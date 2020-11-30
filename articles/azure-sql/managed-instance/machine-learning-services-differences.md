@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782461"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324527"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL 托管实例和 SQL Server 中机器学习服务之间的主要差异
 
@@ -55,7 +55,7 @@ ms.locfileid: "92782461"
 在 SQL 托管实例和 SQL Server 中，Python 和 R 包管理的工作方式有所不同。 差异为：
 
 - 不支持依赖于外部运行时（例如 Java）的程序包，也不支持需要访问 OS API 才能安装或使用的程序包。
-- 包可以执行 (从预览) 之前的更改的出站网络调用。 可以在 [网络安全组](/azure/virtual-network/network-security-groups-overview) 级别设置正确的出站安全规则，以启用出站网络调用。
+- 包可以执行 (从预览) 之前的更改的出站网络调用。 可以在 [网络安全组](../../virtual-network/network-security-groups-overview.md) 级别设置正确的出站安全规则，以启用出站网络调用。
 
 有关管理 Python 和 R 包的详细信息，请参阅：
 

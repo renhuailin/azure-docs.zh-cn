@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784994"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327281"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "92784994"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| Standard | 中小型工作负荷 |
+| 标准 | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。 
@@ -71,9 +71,9 @@ ms.locfileid: "92784994"
 
 建议在以下情况采用“按使用情况支付 SQL Server 许可费用”：
 
-- **临时或定期工作负荷** 。 例如，某应用每年需支持某事件几个月，或需在星期一支持业务分析。
+- **临时或定期工作负荷**。 例如，某应用每年需支持某事件几个月，或需在星期一支持业务分析。
 
-- **生存期或规模未知的工作负荷** 。 例如，某应用可能在几个月内无需使用，或可能需要提高/降低计算能力（具体取决于需求）。
+- **生存期或规模未知的工作负荷**。 例如，某应用可能在几个月内无需使用，或可能需要提高/降低计算能力（具体取决于需求）。
 
 若要使用其中一种即用即付映像创建运行 SQL Server 2017 的 Azure VM，请参阅以下链接：
 
@@ -96,7 +96,7 @@ ms.locfileid: "92784994"
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> 自带许可证 (BYOL)
 
-“通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL** ）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
+“通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
 
 > [!IMPORTANT]
 > BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户可以通过部署即用即付映像，然后启用 [Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)来自带许可证。
@@ -106,9 +106,9 @@ ms.locfileid: "92784994"
 
 建议在以下情况下通过许可移动性自带 SQL Server 许可：
 
-- **持续工作负荷** 。 例如，需全天候支持业务运营的应用。
+- **持续工作负荷**。 例如，需全天候支持业务运营的应用。
 
-- **生存期和规模已知的工作负荷** 。 例如，全年需要且已预测其需求的应用。
+- **生存期和规模已知的工作负荷**。 例如，全年需要且已预测其需求的应用。
 
 若要对 SQL Server VM 使用 BYOL，必须拥有 SQL Server Standard 或 Enterprise 的许可证以及[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，这是通过某些批量许可计划的必需选项，而对其他计划而言为可选购买项。 根据协议类型以及 SQL Server 的数量和/或对其的承诺，批量许可计划提供的定价级别各不相同。 但一般而言，针对连续生产工作负荷自带许可证具有以下优点：
 
@@ -136,7 +136,7 @@ ms.locfileid: "92784994"
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>正确调整 VM 的大小
 
-SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存、存储和 I/O 带宽需求相符的 VM 大小。 有关计算机大小选项的完整列表，请参阅 [Windows VM 大小](../../../virtual-machines/sizes.md)和 [Linux VM 大小](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
+SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存、存储和 I/O 带宽需求相符的 VM 大小。 有关计算机大小选项的完整列表，请参阅 [Windows VM 大小](../../../virtual-machines/sizes.md)和 [Linux VM 大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有一些新的计算机大小能够很好地适应特定类型的 SQL Server 工作负荷。 这些计算机大小保留较高级别的内存、存储和 I/O 带宽，但虚拟化核心数较少。 例如，考虑以下情况：
 
@@ -148,7 +148,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 > [!IMPORTANT]
 > 这是一个时间点示例。 有关最新的规范，请参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的计算机大小文章和 Azure 定价页。
 
-在前面的示例中可以看到，除 vCPU 以外， **Standard_DS14v2** 和 **Standard_DS14-4v2** 的规范在其他方面相同。 **Standard_DS14-4v2** 计算机大小末尾的后缀 **-4v2** 表示活动的 vCPU 数目。 由于 SQL Server 许可成本与 vCPU 数密切相关，因此，在不需要额外的 vCPU 的情况下，此计算机大小可以大幅降低 VM 的成本。 这只是其中一个示例，还有许多计算机大小的 vCPU 数目受到限制，具体数字以此后缀模式标识。 有关详细信息，请参阅博客文章 [Announcing new Azure VM sizes for more cost-effective database work](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)（宣布推出新的 Azure VM 大小来提高数据库工作的性价比）。
+在前面的示例中可以看到，除 vCPU 以外，**Standard_DS14v2** 和 **Standard_DS14-4v2** 的规范在其他方面相同。 **Standard_DS14-4v2** 计算机大小末尾的后缀 **-4v2** 表示活动的 vCPU 数目。 由于 SQL Server 许可成本与 vCPU 数密切相关，因此，在不需要额外的 vCPU 的情况下，此计算机大小可以大幅降低 VM 的成本。 这只是其中一个示例，还有许多计算机大小的 vCPU 数目受到限制，具体数字以此后缀模式标识。 有关详细信息，请参阅博客文章 [Announcing new Azure VM sizes for more cost-effective database work](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)（宣布推出新的 Azure VM 大小来提高数据库工作的性价比）。
 
 ### <a name="shut-down-your-vm-when-possible"></a>在可能的情况下关闭 VM
 

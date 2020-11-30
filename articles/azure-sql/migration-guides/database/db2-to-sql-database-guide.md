@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bc7db167ed1d1d8823e90bf422f17428a7ed4e48
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496554"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325156"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>迁移指南： DB2 到 SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -83,10 +83,10 @@ ms.locfileid: "94496554"
 要转换架构，请执行以下步骤：
 
 1. （可选）向语句中添加动态或临时查询。 右键单击节点，然后选择“添加语句”。 
-1. 选择 " **连接到 AZURE SQL 数据库** "。 
+1. 选择 " **连接到 AZURE SQL 数据库**"。 
     1. 输入连接详细信息以将数据库连接到 Azure SQL 数据库。 
     1. 从下拉端选择目标 SQL 数据库。 
-    1. 选择“连接”。 
+    1. 选择“连接”  。 
 
    :::image type="content" source="media/db2-to-sql-database-guide/connect-to-sql-database.png" alt-text="填写详细信息以连接到 Azure 中的逻辑服务器":::
 
@@ -108,7 +108,7 @@ ms.locfileid: "94496554"
 
 要发布架构并迁移数据，请执行以下步骤：
 
-1. 发布架构：在 **AZURE SQL 数据库元数据资源管理器** 的 " **数据库** " 节点中右键单击该数据库，然后选择 " **与数据库同步** "。
+1. 发布架构：在 **AZURE SQL 数据库元数据资源管理器** 的 "**数据库**" 节点中右键单击该数据库，然后选择 "**与数据库同步**"。
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="右键单击数据库，然后选择“与数据库同步”":::
 
@@ -149,7 +149,7 @@ ms.locfileid: "94496554"
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 
 
-请确保利用 SQL 数据库提供的基于云的高级功能，例如 [内置的高可用性](../../database/high-availability-sla.md)、 [威胁检测](../../database/advanced-data-security.md)以及 [监视和优化工作负荷](../../database/monitor-tune-overview.md)。 
+请确保利用 SQL 数据库提供的基于云的高级功能，例如 [内置的高可用性](../../database/high-availability-sla.md)、 [威胁检测](../../database/azure-defender-for-sql.md)以及 [监视和优化工作负荷](../../database/monitor-tune-overview.md)。 
 
 
 某些 SQL Server 功能只有在 [数据库兼容性级别](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) 更改为最新兼容级别 (150) 时才可用。 

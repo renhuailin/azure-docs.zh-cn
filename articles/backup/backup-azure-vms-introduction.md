@@ -3,12 +3,12 @@ title: 关于 Azure VM 备份
 description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 30d27f3f9c559fd149bd45f303127e0eec40b878
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173847"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325224"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -51,7 +51,7 @@ Azure 备份还针对数据库工作负荷（例如 [SQL Server](backup-azure-sq
 
 **加密** | **详细信息** | **支持**
 --- | --- | ---
-**SSE** | Azure 存储使用 SSE 提供静态加密，在存储数据之前，它会自动加密数据。 Azure 存储还会在检索数据之前解密数据。 Azure 备份支持使用两种类型的存储服务加密对 VM 进行备份：<li> **将 SSE 与平台管理的密钥配合使用**：默认情况下，此加密适用于 VM 中的所有磁盘。 在[此处](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)了解详细信息。<li> **使用客户管理的密钥的 SSE**。 使用 CMK，可以管理用于对磁盘进行加密的密钥。 在[此处](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)了解详细信息。 | Azure 备份使用 SSE 对 Azure VM 进行静态加密。
+**SSE** | Azure 存储使用 SSE 提供静态加密，在存储数据之前，它会自动加密数据。 Azure 存储还会在检索数据之前解密数据。 Azure 备份支持使用两种类型的存储服务加密对 VM 进行备份：<li> **将 SSE 与平台管理的密钥配合使用**：默认情况下，此加密适用于 VM 中的所有磁盘。 在[此处](../virtual-machines/disk-encryption.md#platform-managed-keys)了解详细信息。<li> **使用客户管理的密钥的 SSE**。 使用 CMK，可以管理用于对磁盘进行加密的密钥。 在[此处](../virtual-machines/disk-encryption.md#customer-managed-keys)了解详细信息。 | Azure 备份使用 SSE 对 Azure VM 进行静态加密。
 **Azure 磁盘加密** | Azure 磁盘加密可以加密 Azure VM 的 OS 磁盘和数据磁盘。<br/><br/> Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 | Azure 备份支持备份仅使用 BEK 加密的，或者同时使用 BEK 和 KEK 加密的托管型和非托管型 Azure VM。<br/><br/> BEK 和 KEK 都会得到备份和加密。<br/><br/> 由于 KEK 和 BEK 都会得到备份，拥有相应权限的用户可根据需要，将密钥和机密还原到 Key Vault。 这些用户还可以恢复已加密的 VM。<br/><br/> 未经授权的用户或 Azure 无法读取已加密的密钥和机密。
 
 对于托管和非托管 Azure VM，备份服务支持仅经过 BEK 加密的或者同时经过 BEK 和 KEK 加密的 VM。

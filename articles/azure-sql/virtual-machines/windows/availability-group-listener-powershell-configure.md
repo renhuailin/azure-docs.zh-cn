@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790043"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324799"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 
@@ -64,7 +64,7 @@ ms.locfileid: "92790043"
 可用性组的当前 [Microsoft 模板](./availability-group-quickstart-template-configure.md)使用具有基本 IP 地址的基本负载均衡器。
 
    > [!NOTE]
-   > 如果将标准负载均衡器和 Azure 存储用于云见证，则需要配置[服务终结点](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)。 
+   > 如果将标准负载均衡器和 Azure 存储用于云见证，则需要配置[服务终结点](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
    > 
 
 本文中的示例指定了一个标准负载均衡器。 在示例中，脚本包括了 `-sku Standard`。
@@ -143,7 +143,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > 对于 SQL Server 可用性组，每个 IP 地址需要一个特定的探测端口。 例如，如果负载均衡器上有一个 IP 地址使用探测端口 59999，该负载均衡器上的其他任何 IP 地址就不能使用探测端口 59999。
 
-* 有关负载均衡器限制的信息，请参阅 [网络限制 - Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits) 下面的 **每个负载均衡器的专用前端 IP** 。
+* 有关负载均衡器限制的信息，请参阅 [网络限制 - Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits) 下面的 **每个负载均衡器的专用前端 IP**。
 * 有关可用性组限制的信息，请参阅[限制（可用性组）](/sql/database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability#RestrictionsAG)。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 ILB 使用侦听程序端口作为负载均衡前端端口。 此端口可以是 SQL Server 正在侦听的端口。 对于 SQL Server 的默认实例，此端口为 1433。 可用性组的负载均衡规则需要浮动 IP（直接服务器返回），因此后端端口与前端端口相同。 请更新环境的变量。 
@@ -236,7 +236,7 @@ SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。
   - 负载均衡器浮动 AG 侦听程序的 IP 地址
   - 群集核心 IP 地址（如果适用）。
 
-* 将标准负载均衡器与 Azure 存储一起用作云见证时，请创建服务终结点。 有关详细信息，请参阅[从虚拟网络授予访问权限](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)。
+* 将标准负载均衡器与 Azure 存储一起用作云见证时，请创建服务终结点。 有关详细信息，请参阅[从虚拟网络授予访问权限](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>更多信息
 

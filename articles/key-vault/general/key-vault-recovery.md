@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748495"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324952"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何启用软删除和清除保护
 
@@ -44,7 +44,7 @@ ms.locfileid: "92748495"
 1. 验证软删除旁边的单选按钮是否设置为 "启用恢复"。
 1. 如果未对 key vault 启用软删除，请单击单选按钮以启用软删除，并单击 "保存"。
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="<Azure 门户的屏幕快照>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="在 &quot;属性&quot; 上，&quot;软删除&quot; 将突出显示，它是启用它的值。":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>向服务主体授予访问权限以清除和恢复已删除的机密
 
@@ -56,7 +56,7 @@ ms.locfileid: "92748495"
 1. 滚动到下拉菜单底部，然后单击 "恢复" 和 "清除"
 1. 安全主体还需要 get 和 list 功能才能执行大多数操作。
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="<Azure 门户的屏幕快照>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="在左侧导航窗格中，将突出显示 &quot;访问策略&quot;。对于访问策略，将显示 &quot;机密位置&quot; 下拉列表，并选择四个项目： &quot;获取&quot;、&quot;列出&quot;、&quot;恢复&quot; 和 &quot;清除&quot;。":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>列出、恢复或清除软删除的密钥保管库
 
@@ -72,9 +72,9 @@ ms.locfileid: "92748495"
 1. 如果要恢复密钥保管库，请选择 "上下文" 窗格底部的 "恢复" 选项。
 1. 如果要永久删除密钥保管库，请选择 "清除" 选项。
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="<Azure 门户的屏幕快照>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="在密钥保管库上，将突出显示 &quot;管理已删除的保管库&quot; 选项。":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="<Azure 门户的屏幕快照>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="在 &quot;管理已删除的密钥保管库&quot; 上，将突出显示并选择唯一列出的密钥保管库，并突出显示 &quot;恢复&quot; 按钮。":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>列出、恢复或清除软删除的机密、密钥和证书
 
@@ -87,7 +87,7 @@ ms.locfileid: "92748495"
 1. 选择要管理的机密、密钥或证书。
 1. 选择 "恢复" 或 "清除" 选项。
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="<Azure 门户的屏幕快照>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="对于密钥，会突出显示 &quot;管理已删除的密钥&quot; 选项。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490876"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326380"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -96,7 +96,7 @@ ms.locfileid: "94490876"
 
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中执行以下步骤来创建导入作业。
 
@@ -154,13 +154,13 @@ ms.locfileid: "94490876"
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) extension：
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) 扩展：
 
     ```azurecli
     az extension add --name import-export
     ```
 
-1. 可以使用现有资源组，也可以创建一个。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
+1. 可以使用现有资源组，也可以创建新组。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
 
     ```azurecli
     az group create --name myierg --location "West US"
@@ -172,13 +172,13 @@ ms.locfileid: "94490876"
     az storage account create --resource-group myierg --name myssdocsstorage --https-only
     ```
 
-1. 若要获取可将磁盘寄送到的位置列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+1. 若要获取可将磁盘寄送到的位置的列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
 
     ```azurecli
     az import-export location list
     ```
 
-1. 使用 [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令获取你所在地区的位置：
+1. 使用 [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令获取你所在区域的位置：
 
     ```azurecli
     az import-export location show --location "West US"
@@ -238,7 +238,7 @@ Install-Module -Name Az.ImportExport
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 可以使用现有资源组，也可以创建一个。 若要创建资源组，请运行 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet：
+1. 可以使用现有资源组，也可以创建新组。 若要创建资源组，请运行 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet：
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name myierg -Location westus

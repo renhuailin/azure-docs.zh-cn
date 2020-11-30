@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326924"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>迁移概述： SQL 数据库 SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -61,18 +61,18 @@ SQL 数据库提供了多个 [部署模型](../../database/sql-database-paas-ove
 请考虑一般准则，以帮助你选择正确的部署模型和 Azure SQL 数据库的服务层。 你可以在部署过程中选择计算和存储资源，然后使用  [Azure 门户](../../database/scale-resources.md)  以后再对其进行更改，而不会导致应用程序停机。
 
 
-**部署模型** ：了解应用程序工作负载和使用模式，以决定单个数据库或弹性池。 
+**部署模型**：了解应用程序工作负载和使用模式，以决定单个数据库或弹性池。 
 
 - [单个数据库](../../database/single-database-overview.md)代表适用于大多数现代云应用程序和微服务的完全托管的数据库。
 - [弹性池](../../database/elastic-pool-overview.md)是单个数据库的集合，其中包含一组共享资源（例如 CPU 或内存），适用于将池中的数据库与可预测的使用模式组合在一起，从而可以有效地共享同一组资源。
 
-**采购模型** ：在 VCORE、DTU 或无服务器购买模型之间进行选择。 
+**采购模型**：在 VCORE、DTU 或无服务器购买模型之间进行选择。 
 
 - [VCore 模型](../../database/service-tiers-vcore.md)允许选择 Azure SQL 数据库的 vcore 数量，使其成为从本地 SQL Server 翻译时最简单的选择。 这是支持 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)的许可成本节省的唯一选项。 
 - [DTU 模型](../../database/service-tiers-dtu.md)将对基础计算、内存和 IO 资源进行抽象，以提供混合的 DTU。 
 - [无服务器模型](../../database/serverless-tier-overview.md)适用于需要自动按需缩放的工作负荷，以及按使用情况计费的计算资源。 无服务器计算层会在非活动期间自动暂停数据库 (仅对存储计费) ，并在活动返回时自动恢复数据库。 
 
-**服务层** ：在为不同类型的应用程序设计的三个服务层之间进行选择。
+**服务层**：在为不同类型的应用程序设计的三个服务层之间进行选择。
 
 - [常规用途/标准服务层](../../database/service-tier-general-purpose.md) 提供了一个面向预算的平衡选项，该选项适用于交付低层应用程序的计算和存储，并在存储层内置了冗余以从故障中恢复。 适用于大多数数据库工作负荷。 
 - [业务关键/高级服务层](../../database/service-tier-business-critical.md) 适用于需要高事务速率、低延迟 IO 和高级别复原功能的高层应用程序，这些应用程序可用于故障转移并用于卸载读取工作负荷。
@@ -102,7 +102,7 @@ SQL 数据库提供了多个 [部署模型](../../database/sql-database-paas-ove
 
 下表列出了建议的迁移工具： 
 
-|技术 | 说明|
+|技术 | 描述|
 |---------|---------|
 |[数据迁移助手 (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|数据迁移助手是一种桌面工具，提供 (架构和数据) 的 SQL Server 和迁移到 Azure SQL 数据库的无缝评估。 此工具可以安装在本地服务器上，也可以安装在可以连接到源数据库的本地计算机上。 迁移过程是在源数据库和目标数据库中的对象之间进行的逻辑数据移动。 </br> - (架构和数据迁移单个数据库) |
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|第一方 Azure 服务，可使用 Azure 门户将 SQL Server 数据库迁移到 Azure SQL 数据库，或通过 PowerShell 自动迁移。 Azure DMS 要求在预配过程中选择首选的 Azure 虚拟网络 (VNet) ，以确保与源 SQL Server 数据库建立连接。 </br> -迁移单一数据库或大规模迁移。 |
@@ -113,7 +113,7 @@ SQL 数据库提供了多个 [部署模型](../../database/sql-database-paas-ove
 
 下表列出了其他迁移工具： 
 
-|技术 |说明  |
+|技术 |描述  |
 |---------|---------|
 |[事务复制](../../database/replication-to-sql-database.md)|在保持事务一致性的同时，通过提供发布服务器类型迁移选项，将数据从源 SQL Server 数据库表 (s) 复制到 SQL 数据库。 在发布服务器上发生的增量数据更改将传播到订阅服务器。|
 |[导入导出服务/BACPAC](../../database/database-import.md)|[BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 是一个 Windows 文件，其 `.bacpac` 扩展名封装了数据库的架构和数据。 BACPAC 可用于从源 SQL Server 导出数据，并将数据导入 Azure SQL 数据库。 可以使用 Azure 门户将 BACPAC 文件导入到新的 Azure SQL 数据库。 </br></br> 对于包含大型数据库大小或大量数据库的规模和性能，应考虑使用 [SqlPackage](../../database/database-import.md#using-sqlpackage) 命令行实用工具导出和导入数据库。|
@@ -169,7 +169,7 @@ SQL 数据库提供了多个 [部署模型](../../database/sql-database-paas-ove
 SQL 代理作业不会直接在 Azure SQL 数据库中受支持，需要将其部署到 [弹性数据库作业 (预览) ](../../database/job-automation-overview.md#elastic-database-jobs-preview)。
 
 #### <a name="logins-and-groups"></a>登录名和组
-使用数据库迁移服务将 SQL 登录名从源 SQL Server 移到 Azure SQL 数据库， (DMS) 处于脱机模式。  使用 **迁移向导** 中的 " **所选登录名** " 边栏选项卡将登录名迁移到目标 SQL 数据库。 
+使用数据库迁移服务将 SQL 登录名从源 SQL Server 移到 Azure SQL 数据库， (DMS) 处于脱机模式。  使用 **迁移向导** 中的 "**所选登录名**" 边栏选项卡将登录名迁移到目标 SQL 数据库。 
 
 Windows 用户和组也可以通过在 "DMS 配置" 页中启用相应的切换按钮来使用 DMS 进行迁移。 
 
@@ -183,7 +183,7 @@ Windows 用户和组也可以通过在 "DMS 配置" 页中启用相应的切换�
 
 请确保利用 SQL 数据库提供的基于云的高级功能。 例如，你不再需要担心如何管理备份，因为服务会为你执行此功能。 你可以还原到 [保留期内的任意时间点](../../database/recovery-using-backups.md#point-in-time-restore)。 
 
-若要增强安全性，请考虑使用 [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、 [审核](../../database/auditing-overview.md)、 [威胁检测](../../database/advanced-data-security.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)。
+若要增强安全性，请考虑使用 [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、 [审核](../../database/auditing-overview.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)。
 
 除了高级管理和安全功能，SQL 数据库还提供了一组可帮助你 [监视和优化工作负荷](../../database/monitor-tune-overview.md)的高级工具。 [Azure SQL Analytics (预览版) ](../../../azure-monitor/insights/azure-sql.md) 是一种高级云监视解决方案，用于在单个视图中大规模和跨多个订阅监视 Azure SQL 数据库中的所有数据库的性能。 Azure SQL Analytics 收集和直观显示关键性能指标，并提供内置的智能性能故障排除。
 

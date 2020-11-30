@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023712"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326862"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述： SQL 托管实例 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "95023712"
 可以在部署期间选择计算和存储资源，然后在使用 [Azure 门户](../../database/scale-resources.md) 后更改它们，而不会导致应用程序停机。 
 
 > [!IMPORTANT]
-> 托管实例中的任何差异 [虚拟网络要求](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) 会阻止你创建新的实例或使用现有的实例。 了解有关 [创建新](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   网络和 [配置现有](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   网络的详细信息。 
+> 托管实例中的任何差异 [虚拟网络要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements) 会阻止你创建新的实例或使用现有的实例。 了解有关 [创建新](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   网络和 [配置现有](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   网络的详细信息。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代项
 
@@ -86,9 +86,9 @@ ms.locfileid: "95023712"
 
 下表列出了建议的迁移工具： 
 
-|技术 | 说明|
+|技术 | 描述|
 |---------|---------|
-|[Azure 数据库迁移服务 (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance)  | 第一方 Azure 服务支持在脱机模式下进行迁移，适用于在迁移过程中可能会承受停机时间的应用程序。 与在联机模式下的连续迁移不同的是，脱机模式迁移对源和目标运行一次完整数据库备份。 | 
+|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | 第一方 Azure 服务支持在脱机模式下进行迁移，适用于在迁移过程中可能会承受停机时间的应用程序。 与在联机模式下的连续迁移不同的是，脱机模式迁移对源和目标运行一次完整数据库备份。 | 
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 托管实例支持将本机 SQL Server 数据库备份还原 ( .bak 文件) ，使其成为可向 Azure 存储提供完整数据库备份的客户的最简单迁移选项。 本文后面的 " [迁移资产" 部分](#migration-assets) 还支持完整备份和差异备份。| 
 | | |
 
@@ -96,12 +96,12 @@ ms.locfileid: "95023712"
 
 下表列出了其他迁移工具： 
 
-|技术 |说明  |
+|技术 |描述  |
 |---------|---------|
 |[事务复制](../../managed-instance/replication-transactional-overview.md) | 在保持事务一致性的同时，通过提供发布服务器类型迁移选项，将数据从源 SQL Server 数据库表 (s) 复制到 SQL 托管实例。 |  |
 |[大容量复制](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [大容量复制程序 (bcp) 实用工具](/sql/tools/bcp-utility)将数据从 SQL Server 实例复制到数据文件中。 使用 BCP 实用工具从源导出数据，并将数据文件导入到目标 SQL 托管实例中。</br></br> 对于将数据移至 Azure SQL 数据库的高速大容量复制操作， [智能大容量复制工具](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) 可用于通过利用并行复制任务最大限度地提高传输速度。 | 
-|[导入导出向导/BACPAC](/azure/azure-sql/database/database-import?tabs=azure-powershell)| [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 是一个 Windows 文件，其 `.bacpac` 扩展名封装了数据库的架构和数据。 BACPAC 可用于从源 SQL Server 导出数据，并将文件导入回 Azure SQL 托管实例。  |  
-|[Azure 数据工厂 (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| Azure 数据工厂中的 [复制活动](/azure/data-factory/copy-activity-overview) 将数据从源 SQL Server 数据库 (s) 迁移到使用内置连接器和 [Integration Runtime](/azure/data-factory/concepts-integration-runtime)的 SQL 托管实例。</br> </br> ADF 支持多种 [连接器](/azure/data-factory/connector-overview) ，可将数据从 SQL Server 源移到 SQL 托管实例。 |
+|[导入导出向导/BACPAC](../../database/database-import.md?tabs=azure-powershell)| [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 是一个 Windows 文件，其 `.bacpac` 扩展名封装了数据库的架构和数据。 BACPAC 可用于从源 SQL Server 导出数据，并将文件导入回 Azure SQL 托管实例。  |  
+|[Azure 数据工厂 (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| Azure 数据工厂中的 [复制活动](../../../data-factory/copy-activity-overview.md) 将数据从源 SQL Server 数据库 (s) 迁移到使用内置连接器和 [Integration Runtime](../../../data-factory/concepts-integration-runtime.md)的 SQL 托管实例。</br> </br> ADF 支持多种 [连接器](../../../data-factory/connector-overview.md) ，可将数据从 SQL Server 源移到 SQL 托管实例。 |
 | | |
 
 ## <a name="compare-migration-options"></a>比较迁移选项
@@ -114,7 +114,7 @@ ms.locfileid: "95023712"
 
 |迁移选项  |何时使用  |注意事项  |
 |---------|---------|---------|
-|[Azure 数据库迁移服务 (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance) | -大规模迁移单个数据库或多个数据库。 </br> -可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM |  -可通过 [PowerShell](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell)自动完成大规模迁移。 </br> -完成迁移的时间取决于数据库大小，并受备份和还原时间的影响。 </br> -可能需要足够的停机时间。 |
+|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | -大规模迁移单个数据库或多个数据库。 </br> -可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM |  -可通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)自动完成大规模迁移。 </br> -完成迁移的时间取决于数据库大小，并受备份和还原时间的影响。 </br> -可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | -)  (迁移单个业务线应用程序数据库。  </br> -无需单独的迁移服务或工具就能快速轻松地进行迁移。  </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM | -数据库备份使用多个线程来优化到 Azure Blob 存储的数据传输，但 ISV 带宽和数据库大小可能影响传输速率。 </br> -停机时间应能容纳执行完整备份和还原所需的时间 (这是) 的数据操作的大小。| 
 | | | |
 
@@ -126,8 +126,8 @@ ms.locfileid: "95023712"
 |---------|---------|---------|
 |[事务复制](../../managed-instance/replication-transactional-overview.md) | -通过将源数据库表中的更改连续发布到目标 SQL 托管实例数据库表来进行迁移。 </br> - (数据库) 子集的选定表的完全或部分数据库迁移。  </br> </br> 支持的源： </br> -SQL Server (2012-2019) ，但有一些限制 </br> -AWS EC2  </br> -GCP 计算 SQL Server VM | </br> 与其他迁移选项相比，安装相对比较复杂。   </br> -提供一个连续复制选项，用于在不使数据库脱机) 的情况下迁移数据 (。</br> -在源 SQL Server 上设置发布服务器时，事务复制有许多需要考虑的限制。 有关详细信息，请参阅 [发布对象的限制](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects) 。  </br> -可使用 [监视复制活动](/sql/relational-databases/replication/monitor/monitoring-replication) 的功能。    |
 |[大容量复制](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| -迁移完全或部分数据迁移。 </br> -可适应停机时间。 </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM   | -需要停机，以便从源导出数据并导入到目标。 </br> -导出/导入中使用的文件格式和数据类型需要与表架构一致。 |
-|[导入导出向导/BACPAC](/azure/azure-sql/database/database-import)| -)  (迁移单个业务线应用程序数据库。 </br>-适用于较小的数据库。  </br>  不需要单独的迁移服务或工具。 </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM  |   </br> -需要停机，因为需要在源位置导出数据，并在目标上导入数据。   </br> -导出/导入中使用的文件格式和数据类型需要与表架构一致，以避免截断/数据类型不匹配错误。 </br> -导出具有大量对象的数据库所花费的时间可能会显著提高。 |
-|[Azure 数据工厂 (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| -从源 SQL Server 数据库 (s) 迁移和/或转换数据。</br> -将数据从多个数据源合并到 Azure SQL 托管实例通常用于商业智能 (BI) 工作负荷。   </br> -要求在 ADF 中创建数据移动管道，以将数据从源移动到目标。   </br> - [成本](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) 是一个重要的考虑因素，基于管道触发器、活动运行、数据移动持续时间等。 |
+|[导入导出向导/BACPAC](../../database/database-import.md)| -)  (迁移单个业务线应用程序数据库。 </br>-适用于较小的数据库。  </br>  不需要单独的迁移服务或工具。 </br> </br> 支持的源： </br> -SQL Server (2005-2019) 本地或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP 计算 SQL Server VM  |   </br> -需要停机，因为需要在源位置导出数据，并在目标上导入数据。   </br> -导出/导入中使用的文件格式和数据类型需要与表架构一致，以避免截断/数据类型不匹配错误。 </br> -导出具有大量对象的数据库所花费的时间可能会显著提高。 |
+|[Azure 数据工厂 (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| -从源 SQL Server 数据库 (s) 迁移和/或转换数据。</br> -将数据从多个数据源合并到 Azure SQL 托管实例通常用于商业智能 (BI) 工作负荷。   </br> -要求在 ADF 中创建数据移动管道，以将数据从源移动到目标。   </br> - [成本](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) 是一个重要的考虑因素，基于管道触发器、活动运行、数据移动持续时间等。 |
 | | | |
 
 ## <a name="feature-interoperability"></a>功能互操作性 
@@ -136,7 +136,7 @@ ms.locfileid: "95023712"
 
 #### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 
-使用 [Azure 数据库迁移服务 (DMS) ](/azure/dms/how-to-migrate-ssis-packages-managed-instance)，将 SSISDB 中 SQL SERVER INTEGRATION SERVICES (SSIS) 包和项目迁移到 azure SQL 托管实例。 
+使用 [Azure 数据库迁移服务 (DMS) ](../../../dms/how-to-migrate-ssis-packages-managed-instance.md)，将 SSISDB 中 SQL SERVER INTEGRATION SERVICES (SSIS) 包和项目迁移到 azure SQL 托管实例。 
 
 对于迁移，仅支持 SSISDB 中从 SQL Server 2012 开始的 SSIS 包。 在迁移前转换旧 SSIS 包。 有关详细信息，请参阅 [项目转换教程](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model) 。 
 
@@ -149,7 +149,7 @@ SQL Server Reporting Services (SSRS) 报表可以迁移到 Power BI 中的分页
 
 SQL Server 2012 及更高版本中 SQL Server Analysis Services 表格模型可迁移到 Azure Analysis Services，这是 Azure 中 Analysis Services 表格模型的 PaaS 部署模型。 可以在本 [视频教程](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/)中了解有关将本地模型迁移到 Azure Analysis Services 的详细信息。
 
-此外，还可以考虑将本地 Analysis Services 表格模型迁移到 [使用新的 XMLA 读取/写入终结点 Power BI Premium](https://docs.microsoft.com/power-bi/admin/service-premium-connect-tools)。 
+此外，还可以考虑将本地 Analysis Services 表格模型迁移到 [使用新的 XMLA 读取/写入终结点 Power BI Premium](/power-bi/admin/service-premium-connect-tools)。 
 > [!NOTE]
 > Power BI XMLA 读取/写入终结点功能目前处于公共预览状态，在功能公开上市之前，不应考虑将其用于生产工作负荷。
 
@@ -161,7 +161,7 @@ SQL Server 高可用性功能 Always On 故障转移群集实例和 Always On �
 
 #### <a name="sql-agent-jobs"></a>SQL 代理作业
 
-使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL 代理作业](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell#offline-migrations)。 否则，请使用 SQL Server Management Studio 在 Transact-sql (T-sql) 中编写作业脚本，然后在目标 SQL 托管实例上手动重新创建这些作业。 
+使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL 代理作业](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)。 否则，请使用 SQL Server Management Studio 在 Transact-sql (T-sql) 中编写作业脚本，然后在目标 SQL 托管实例上手动重新创建这些作业。 
 
 > [!IMPORTANT]
 > 目前，Azure DMS 仅支持具有 T-sql 子系统步骤的作业。 包含 SSIS 包步骤的作业必须手动迁移。 
@@ -193,7 +193,7 @@ SQL Server 高可用性功能 Always On 故障转移群集实例和 Always On �
 
 请确保利用 SQL 托管实例提供的基于云的高级功能。 例如，你不再需要担心如何管理备份，因为服务会为你执行此功能。 你可以还原到 [保留期内的任意时间点](../../database/recovery-using-backups.md#point-in-time-restore)。 此外，您无需担心设置高可用性，因为 [在中内置了高可用性](../../database/high-availability-sla.md)。 
 
-若要增强安全性，请考虑使用 [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、 [审核](../../managed-instance/auditing-configure.md)、 [威胁检测](../../database/advanced-data-security.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)。
+若要增强安全性，请考虑使用 [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、 [审核](../../managed-instance/auditing-configure.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)。
 
 除了高级管理和安全功能，SQL 托管实例还提供了一组可帮助你 [监视和优化工作负荷](../../database/monitor-tune-overview.md)的高级工具。 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md)允许以集中式方式监视大量托管实例。 [自动优化](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)  在托管实例中，会持续监视 SQL 计划执行统计信息的性能，并自动修复已识别的性能问题。 
 

@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327145"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -60,7 +60,7 @@ ms.locfileid: "92096617"
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>如何将数据从恢复服务保管库移到本地？
 
-不支持将数据直接从恢复服务保管库导出到本地使用 Data Box。 必须将数据还原到存储帐户，然后可以通过 [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) 或 [导入/导出](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)将数据移动到本地。
+不支持将数据直接从恢复服务保管库导出到本地使用 Data Box。 必须将数据还原到存储帐户，然后可以通过 [Data Box](../databox/data-box-overview.md) 或 [导入/导出](../storage/common/storage-import-export-service.md)将数据移动到本地。
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
 

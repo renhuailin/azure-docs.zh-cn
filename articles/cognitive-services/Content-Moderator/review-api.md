@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143593"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325326"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>内容审核审阅、工作流和作业
 
@@ -26,11 +26,11 @@ ms.locfileid: "93143593"
 在评审中，内容已上传到查看工具。 可以通过单击仪表板上 " **查看** " 选项卡上的内容类型来查看它。 在 "查看" 屏幕中，你可以更改应用的标记并根据需要应用你自己的自定义标记。 提交评审后，结果将发送到指定的回调终结点，并从网站中删除内容。
 
 > [!div class="mx-imgBorder"]
-> ![选中 "查看检查" 选项卡的工具网站](./Review-Tool-user-Guide/images/review-tab.png)
+> !["审阅" 下拉菜单将突出显示。 其中显示了这些内容类型：图像、文本和视频。](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>管理审阅
 
-在仪表板中，导航到 " **管理员** " "  ->  **管理** " "查看" 以查看管理屏幕。 在此处，你可以看到所有评审的列表 ("挂起" 和 "已完成") 。
+在仪表板中，导航到 "**管理员**" "  ->  **管理**" "查看" 以查看管理屏幕。 在此处，你可以看到所有评审的列表 ("挂起" 和 "已完成") 。
 
 每次审阅时，可以通过三点 **操作** 按钮查看 "查看" 屏幕或检查该审阅的历史记录。
 
@@ -40,7 +40,7 @@ ms.locfileid: "93143593"
 使用 " **搜索** " 工具栏，按多种类别（如审阅状态、标记、内容类型、子团队、已分配的用户和创建/修改日期）对评审进行排序。
 
 > [!div class="mx-imgBorder"]
-> ![选中 "查看检查" 选项卡的工具网站](./Review-Tool-user-Guide/images/review-search.png)
+> ![将显示 "搜索" 工具栏。 它有多个用于输入搜索条件的组合框，如审阅状态和标记。](./Review-Tool-user-Guide/images/review-search.png)
 
 若要开始创建审阅，请参阅[审阅工具指南](./review-tool-user-guide/review-moderated-images.md)；若要了解如何以编程方式创建审阅，请参阅 [REST API 指南](./try-review-api-review.md)。
 
@@ -50,12 +50,12 @@ ms.locfileid: "93143593"
 
 ### <a name="view-workflows"></a>查看工作流
 
-若要查看现有工作流，请单击 " [查看" 工具](https://contentmoderator.cognitive.microsoft.com/)，然后选择 " **管理**  >  **工作流** "。
+若要查看现有工作流，请单击 "[查看" 工具](https://contentmoderator.cognitive.microsoft.com/)，然后选择 "**管理**  >  **工作流**"。
 
 > [!div class="mx-imgBorder"]
 > ![默认工作流](images/default-workflow-list.png)
 
-工作流定义为 JSON 字符串，可通过编程方式进行访问。 如果为工作流选择“编辑”  选项，然后选择“JSON”  选项卡，则会看到类似以下内容的 JSON 表达式：
+工作流定义为 JSON 字符串，可通过编程方式进行访问。 如果为工作流选择“编辑”选项，然后选择“JSON”选项卡，则会看到类似以下内容的 JSON 表达式：
 
 ```json
 {

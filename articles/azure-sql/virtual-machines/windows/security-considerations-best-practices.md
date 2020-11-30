@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785062"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327264"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 ## <a name="encryption"></a>Encryption
 
-托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](../../../virtual-machines/windows/disk-encryption.md)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
+托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](../../../virtual-machines/disk-encryption.md)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
 
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
@@ -84,7 +84,7 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
 希望攻击者难以猜测帐户名或密码。 使用以下技巧会有所帮助：
 
-- 创建一个唯一的本地管理员帐户，不要命名为 **Administrator** 。
+- 创建一个唯一的本地管理员帐户，不要命名为 **Administrator**。
 
 - 对所有帐户使用复杂的强密码。 若要深入了解如何创建强密码，请参阅[创建强密码](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password)一文。
 

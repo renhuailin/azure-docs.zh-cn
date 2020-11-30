@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 35bed58f95deebb78d8e787c8bc3f522ce7004df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980875"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326963"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
 
@@ -155,9 +155,13 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 答：不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
 
-*问：我已通过 ASR 从本地 (上传自己的 RHEL 映像，或者) 到 Azure。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+*问：我已通过 Azure Migrate、ASR 或) 到 Azure 从本地 (上传我自己的 RHEL 映像。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
 
 答：不能。 目前，Azure 混合权益功能仅适用于 RHEL 和 SLES Marketplace 映像。 
+
+*问：我已通过 Azure Migrate、ASR 或) 到 Azure 从本地 (上传我自己的 RHEL 映像。是否需要执行任何操作才能受益于 Azure 混合权益？*
+
+答：不可以。 你上载的 RHEL 映像已被视为 BYOS，你只需为 Azure 基础结构成本付费。 你需要负责 RHEL 订阅费用，就像对本地环境执行的操作一样。 
 
 *问：是否可以在从 Marketplace RHEL 和 SLES SAP 映像部署的 Vm 上使用 Azure 混合权益？*
 

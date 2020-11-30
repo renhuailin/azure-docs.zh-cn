@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840910"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325207"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "94840910"
 * 事件日志可能会显示其他备份产品（例如 Windows Server 备份）的备份故障，而不会显示因 Azure 备份导致的故障。 通过以下步骤确定问题是否来自 Azure 备份：
   * 如果事件源或消息的“备份”条目出现错误，请检查 Azure IaaS VM Backup 备份是否已成功，以及是否已使用所需快照类型创建一个还原点。
   * 如果 Azure 备份正常运行，则问题可能出在其他备份解决方案。
-  * 下面是事件查看器错误517的示例，其中，Azure 备份正常运行，但 "Windows Server 备份" 失败： ![ Windows Server 备份失败](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * 下面是一个示例，介绍了事件查看器错误 517，其中的 Azure 备份正常运行，但“Windows Server 备份”发生故障：![Windows Server 备份故障](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 备份故障，则请在本文的“常见 VM 备份错误”部分查找相应的错误代码。
 
 ## <a name="common-issues"></a>常见问题
@@ -124,8 +124,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 步骤 3：如果步骤 1 和 2 不能解决该问题，则故障可能是由于 IOPS 有限而导致 VSS 编写器超时。<br>
 
-若要验证，请导航到 ***系统并事件查看器应用程序日志** _，并检查以下错误消息：<br>
-将写入操作保存到卷影复制的卷时，_The 卷影复制提供程序超时。 这可能是由应用程序或系统服务在卷上发生过多活动。 请稍后在卷上的活动减少时重试。 *<br>
+若要进行验证，请导航到“系统和事件查看器应用程序日志”，然后检查以下错误消息：<br>
+将写入操作保存到影子复制的卷时，影子副本提供程序超时。 这可能是应用程序或系统服务在卷上进行过多活动所致。 请稍后在卷上的活动减少时重试。<br>
 
 解决方案：
 
@@ -246,7 +246,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步骤 2**：尝试将备份计划更改为 VM 低于负载 (的时间，例如更少的 CPU 或 IOPS) 
 
-**步骤 3**：尝试 [增大 VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm)并重试操作
+**步骤 3**：尝试 [增大 VM 的大小](../virtual-machines/windows/resize-vm.md)并重试操作
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound - 无法执行操作，因为 VM 不存在/400094, BCMV2VMNotFound - 虚拟机不存在/找不到 Azure 虚拟机
 
@@ -324,12 +324,12 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 * 验证执行脚本的计算机是否满足 OS 要求。 [了解详细信息](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script)。  
 * 确保不会还原到同一个源，[了解详细信息](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)。
 
-### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-还原失败，因为找不到 VM 的快照
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound - 还原失败，因为找不到 VM 的快照
 
-错误代码： UserErrorInstantRpNotFound <br>
+错误代码：UserErrorInstantRpNotFound <br>
 错误消息：还原失败，因为找不到 VM 的快照。 快照可能已被删除，请检查。<br>
 
-如果尝试从不传输到保管库的恢复点进行还原，并且已在快照阶段中删除，则会出现此错误。 
+尝试从尚未转移到保管库且已在快照阶段删除的恢复点还原时，会发生此错误。 
 <br>
 若要解决此问题，请尝试从其他还原点还原 VM。<br>
 

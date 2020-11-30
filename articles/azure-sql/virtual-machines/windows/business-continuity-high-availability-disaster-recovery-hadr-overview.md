@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 81d0bddbd62f9f2d15d8404fee63b15c8ab2c0a3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102269"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327468"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,7 +90,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 
 有关详细信息，请参阅[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)。 
 
-若要启用此权益，请跳到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 选择 " **设置** " 下的 " **配置** "，然后在 " **SQL Server 许可证** " 下选择 " **灾难恢复** " 选项。 选中该复选框以确认该 SQL Server VM 将用作被动副本，然后选择 " **应用** " 以保存设置。 
+若要启用此权益，请跳到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 选择 "**设置**" 下的 "**配置**"，然后在 " **SQL Server 许可证**" 下选择 "**灾难恢复**" 选项。 选中该复选框以确认该 SQL Server VM 将用作被动副本，然后选择 " **应用** " 以保存设置。 
 
 ![在 Azure 中配置灾难恢复副本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,7 +101,7 @@ Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性集中的高可用性节点
 使用 Azure 中的可用性集，可以将高可用性节点放置在单独的容错域和更新域中。 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 
 
-若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。
+若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性区域中的高可用性节点
 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源以及散热和网络设备。 区域内可用性区域的物理分离有助于保护应用程序和数据免受数据中心故障，方法是确保至少有一个虚拟机可用，并满足99.99% 的 Azure SLA 要求。 

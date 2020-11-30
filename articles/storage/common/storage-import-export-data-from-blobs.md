@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39f9a5802d7f10753c8ea81bf414da195e137cc6
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2e25f2fb806cb6e88745ffdfefe3dd82c0e9a6d
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234131"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326534"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
@@ -72,8 +72,8 @@ ms.locfileid: "93234131"
          ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - 可以指定要导出的容器和 blob。
-        - **指定要导出的 blob** ：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
-        - **指定以某个前缀开头的所有 blob** ：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。
+        - **指定要导出的 blob**：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
+        - **指定以某个前缀开头的所有 blob**：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。
 
            ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "93234131"
 
     - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导出作业完成后，Microsoft 将使用此帐户寄回驱动器。
-    - 提供完整且有效的联系人姓名、电话、电子邮件、街道地址、城市、邮政编码、省/市/自治区和国家/地区。
+    - 提供完整且有效的联系人姓名、电话、电子邮件、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
         > [!TIP]
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
@@ -105,13 +105,13 @@ ms.locfileid: "93234131"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用以下步骤在 Azure 门户中创建导出作业。
+在 Azure 门户中按照以下步骤来创建导出作业。
 
 [!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) extension：
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) 扩展：
 
     ```azurecli
     az extension add --name import-export
@@ -123,7 +123,7 @@ ms.locfileid: "93234131"
     az import-export location list
     ```
 
-1. 运行以下 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令，以创建使用现有存储帐户的导出作业：
+1. 运行以下 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令来创建使用现有存储帐户的导出作业：
 
     ```azurecli
     az import-export create \
@@ -147,15 +147,15 @@ ms.locfileid: "93234131"
     > [!TIP]
     > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
-   此作业将导出存储帐户中的所有 blob。 可以通过将以下值替换为 **--export** 来指定要导出的 blob：
+   此作业会导出存储帐户中的所有 blob。 可以通过将此值替换为“--export”来指定要导出的 Blob：
 
     ```azurecli
     --export blob-path=$root/logo.bmp
     ```
 
-   此参数值将导出根容器中名为 *logo.bmp* 的 blob。
+   此参数值会导出根容器中名为“logo.bmp”的 blob。
 
-   你还可以选择使用前缀选择容器中的所有 blob。 将此值替换为 **--export** ：
+   也可以选择使用前缀来选择容器中的所有 blob。 将此值替换为“--export”：
 
     ```azurecli
     blob-path-prefix=/myiecontainer
@@ -234,15 +234,15 @@ Install-Module -Name Az.ImportExport
     > [!TIP]
     > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
-   此作业将导出存储帐户中的所有 blob。 可以通过将以下值替换为 **-ExportBlobListblobPath** 来指定要导出的 blob：
+   此作业会导出存储帐户中的所有 blob。 可以通过将以下值替换为 **-ExportBlobListblobPath** 来指定要导出的 blob：
 
    ```azurepowershell-interactive
    -ExportBlobListblobPath $root\logo.bmp
    ```
 
-   此参数值将导出根容器中名为 *logo.bmp* 的 blob。
+   此参数值会导出根容器中名为“logo.bmp”的 blob。
 
-   你还可以选择使用前缀选择容器中的所有 blob。 将此值替换为 **-ExportBlobListblobPath** ：
+   也可以选择使用前缀来选择容器中的所有 blob。 将此值替换为 **-ExportBlobListblobPath**：
 
    ```azurepowershell-interactive
    -ExportBlobListblobPath '/myiecontainer'
@@ -320,14 +320,14 @@ Install-Module -Name Az.ImportExport
 
     下表介绍了这些参数：
 
-    |命令行参数|说明|
+    |命令行参数|描述|
     |--------------------------|-----------------|
     |**/logdir**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|
     |**/sn**|必需。 导出作业的存储帐户的名称。|
-    |**/sk**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|
+    |**/sk:**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|
     |**/csas:**|仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|
     |**/ExportBlobListFile:**|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|
-    |**/DriveSize:**|必需。 用于导出作业的驱动器大小， *例如* 500 GB、1.5 TB。|
+    |**/DriveSize:**|必需。 用于导出作业的驱动器大小，*例如* 500 GB、1.5 TB。|
 
     请参阅 [PreviewExport 命令示例](#example-of-previewexport-command)。
 

@@ -3,12 +3,12 @@ title: Azure VMware 解决方案 Vm 的生命周期管理
 description: 了解如何通过 Microsoft Azure 本机工具来管理 Azure VMware 解决方案 Vm 生命周期的所有方面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545747"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326805"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解决方案 Vm 的生命周期管理
 
@@ -61,7 +61,7 @@ Azure Automation 中的 azure 更新管理在混合环境中为 Windows 和 Linu
 
 2. **Log Analytics 工作区** 使用 Log Analytics 代理或扩展启用日志收集和性能计数器收集。 若要创建 Log Analytics 工作区，请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 如果愿意，还可以通过 [CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、 [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)或 [Azure 资源管理器模板](../azure-monitor/samples/resource-manager-workspace.md)创建工作区。
 
-3. 若要为 Vm 启用 Azure 更新管理，请参阅 [从自动化帐户启用更新管理](../automation/update-management/update-mgmt-enable-automation-account.md)。 在此过程中，你需要将 Log Analytics 工作区与自动化帐户相链接。 
+3. 若要为 Vm 启用 Azure 更新管理，请参阅 [从自动化帐户启用更新管理](../automation/update-management/enable-from-automation-account.md)。 在此过程中，你需要将 Log Analytics 工作区与自动化帐户相链接。 
  
 4. 将 Vm 添加到 Azure 更新管理后，你可以 [在 vm 上部署更新并查看结果](../automation/update-management/deploy-updates.md)。 
 

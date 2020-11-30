@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026038"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326890"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>迁移指南： SQL 托管实例 SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ ms.locfileid: "95026038"
 
 ### <a name="create-sql-managed-instance"></a>创建 SQL 托管实例 
 
-根据 "发现和评估" 阶段中的信息，创建适当大小的目标 SQL 托管实例。 可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure 资源管理器 (ARM) 模板](/azure/azure-sql/managed-instance/create-template-quickstart)来实现此目的。 
+根据 "发现和评估" 阶段中的信息，创建适当大小的目标 SQL 托管实例。 可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure 资源管理器 (ARM) 模板](../../managed-instance/create-template-quickstart.md)来实现此目的。 
 
 
 ## <a name="migrate"></a>迁移
@@ -124,7 +124,7 @@ ms.locfileid: "95026038"
 1. 还原数据库后，选择 " **开始** 转换"。 一旦在 SMB 网络共享中提供结尾日志备份并将其还原到目标上，迁移过程就会复制结尾日志备份。 
 1. 停止进入源数据库的所有传入流量，并将连接字符串更新为新的 Azure SQL 托管实例数据库。 
 
-有关此迁移选项的详细分步教程，请参阅 [使用 DMS 将 SQL Server 迁移到 AZURE SQL 托管实例联机](/azure/dms/tutorial-sql-server-managed-instance-online)。 
+有关此迁移选项的详细分步教程，请参阅 [使用 DMS 将 SQL Server 迁移到 AZURE SQL 托管实例联机](../../../dms/tutorial-sql-server-managed-instance-online.md)。 
    
 
 
@@ -160,7 +160,7 @@ Azure SQL 托管实例的主要功能之一是在 Azure 存储上存储的数据
 
 1. 还原完成后，请在 SQL Server Management Studio 中查看 **对象资源管理器** 中的数据库。 
 
-若要了解有关此迁移选项的详细信息，请参阅 [使用 SSMS 将数据库还原到 AZURE SQL 托管实例](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart)。
+若要了解有关此迁移选项的详细信息，请参阅 [使用 SSMS 将数据库还原到 AZURE SQL 托管实例](../../managed-instance/restore-sample-database-quickstart.md)。
 
 > [!NOTE]
 > 数据库还原操作是异步且可重试的。 如果连接中断或某些超时过期，SQL Server Management Studio 中可能会显示错误。 Azure SQL 数据库将在后台继续尝试还原数据库，可以使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 视图来跟踪还原进度。
@@ -203,7 +203,7 @@ Azure SQL 托管实例的主要功能之一是在 Azure 存储上存储的数据
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 
 
-请确保充分利用 SQL 托管实例提供的基于云的高级功能，例如 [内置的高可用性](../../database/high-availability-sla.md)、 [威胁检测](../../database/advanced-data-security.md)、 [监视和优化工作负荷](../../database/monitor-tune-overview.md)。 
+请确保充分利用 SQL 托管实例提供的基于云的高级功能，例如 [内置的高可用性](../../database/high-availability-sla.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [监视和优化工作负荷](../../database/monitor-tune-overview.md)。 
 
 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) 允许以集中式方式监视大量托管实例。
 

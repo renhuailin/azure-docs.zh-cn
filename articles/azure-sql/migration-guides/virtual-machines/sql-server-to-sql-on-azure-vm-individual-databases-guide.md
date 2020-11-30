@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019443"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325905"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>迁移指南：在 Azure Vm 上 SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ ms.locfileid: "95019443"
 迁移到 Azure Vm 上的 SQL Server 需要以下各项： 
 
 - [数据库迁移助手 (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595)。
-- [Azure Migrate 项目](/azure/migrate/create-manage-projects)。
-- [在 AZURE VM 上](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal)准备好的目标 SQL Server 与源 SQL Server 的版本相同或更高。
+- [Azure Migrate 项目](../../../migrate/create-manage-projects.md)。
+- [在 AZURE VM 上](../../virtual-machines/windows/create-sql-vm-portal.md)准备好的目标 SQL Server 与源 SQL Server 的版本相同或更高。
 - [Azure 与本地之间的连接](/azure/architecture/reference-architectures/hybrid-networking)。
 - [选择适当的迁移策略](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
@@ -157,8 +157,8 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 || 带有 Filestream 的用户数据库 |  使用 [备份和还原](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) 方法进行迁移。 DMA 不支持具有 Filestream 的数据库。 |
 | **安全性** | SQL Server 和 Windows 登录名 | 使用 DMA [迁移用户登录名](/sql/dma/dma-migrateserverlogins)。 |
 || SQL Server 角色 | 带 SQL Server Management Studio 的脚本 |
-|| 加密提供程序 | 建议 [转换为使用 Azure Key Vault 服务](../../virtual-machines/windows/azure-key-vault-integration-configure.md)。 此过程使用 [SQL VM 资源提供程序](../../virtual-machines/windows/sql-vm-resource-provider-register.md)。 |
-| **服务器对象** | 备份设备 | 使用 [Azure 备份服务](../../../backup/backup-sql-server-database-azure-vms.md) 替换为数据库备份，或将备份写入 [azure 存储](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +) 。 此过程使用 [SQL VM 资源提供程序](../../virtual-machines/windows/sql-vm-resource-provider-register.md)。|
+|| 加密提供程序 | 建议 [转换为使用 Azure Key Vault 服务](../../virtual-machines/windows/azure-key-vault-integration-configure.md)。 此过程使用 [SQL VM 资源提供程序](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)。 |
+| **服务器对象** | 备份设备 | 使用 [Azure 备份服务](../../../backup/backup-sql-server-database-azure-vms.md) 替换为数据库备份，或将备份写入 [azure 存储](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +) 。 此过程使用 [SQL VM 资源提供程序](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)。|
 || 链接服务器 | SQL Server Management Studio 的脚本。 |
 || 服务器触发器 | SQL Server Management Studio 的脚本。 |
 | **复制** | 本地发布 | SQL Server Management Studio 的脚本。 |

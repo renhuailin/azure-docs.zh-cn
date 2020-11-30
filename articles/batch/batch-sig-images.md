@@ -4,12 +4,12 @@ description: 自定义映像池是配置计算节点以运行 Batch 工作负载
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917777"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327298"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -58,7 +58,7 @@ ms.locfileid: "94917777"
 - 已上传到云的通用本地 VHD
 
 > [!NOTE]
-> 目前，Batch 仅支持通用共享映像。 此时无法通过专用共享映像创建自定义映像池。
+> Batch 仅支持通用共享映像;专用共享映像不能用于创建池。
 
 以下步骤展示了如何准备 VM、创建快照，然后基于该快照创建映像。
 
@@ -211,7 +211,7 @@ client.pool.add(new_pool)
 1. 选择“池”，然后选择“添加”，以便创建新池。 
 1. 在“映像类型”部分，选择“共享映像库”。 
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定”。
+1. 选择“确定” 。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 

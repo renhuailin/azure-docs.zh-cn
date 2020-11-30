@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296057"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324782"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -77,13 +77,13 @@ ms.locfileid: "96296057"
 
 删除锁定，并从该资源组中清除还原点集合，以使将来的备份成功。 [按照这些步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
 
-### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>我在资源组级别锁定，其中包含与我的虚拟机相关的所有资源。 我的备份是否起作用？
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>我在包含与我的虚拟机相关的所有资源的资源组级别设置了一个锁。 我的备份是否会正常工作？
 
-Azure 备份以存储 ResourcePointCollections 对象的格式创建一个单独的资源组 `AzureBackupRG_<geo>_<number>` 。 由于此资源组由服务拥有，因此锁定该资源组会导致备份失败。 锁只能应用于客户创建的资源组。
+Azure 备份以 `AzureBackupRG_<geo>_<number>` 格式创建一个单独的资源组，以存储 ResourcePointCollections 对象。 由于此资源组由服务拥有，因此锁定该资源组会导致备份失败。 锁只能应用于客户创建的资源组。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 备份是否支持标准 SSD 托管磁盘？
 
-是的，Azure 备份支持[标准 SSD 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)。
+是的，Azure 备份支持[标准 SSD 托管磁盘](../virtual-machines/disks-types.md#standard-ssd)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 

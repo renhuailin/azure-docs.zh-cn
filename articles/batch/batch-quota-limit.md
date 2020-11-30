@@ -4,12 +4,12 @@ description: 了解默认的 Azure Batch 配额、限制和约束，以及如何
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107532"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325956"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -23,15 +23,33 @@ ms.locfileid: "92107532"
 
 ## <a name="resource-quotas"></a>资源配额
 
-配额是一种信用限制，不附带容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
+配额是一种限制，不能保证容量。 如果有大规模的容量需求，请联系 Azure 支持。
 
 另请注意，配额不是受保证值。 配额可能因来自 Batch 服务的更改或是用于更改配额值的用户请求而异。
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>核心配额
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服务模式下的核心配额
+
+正在改进专用核心配额的实施，并在2020年12月结束后，所有批处理帐户的更改都将按阶段提供。
+
+VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " **配额** " 页上。 可以使用支持请求更新 VM 序列配额限制，如下所述。
+
+随着现有机制的出现，不会检查 VM 系列的配额限制，只会强制执行该帐户的总配额限制。 这意味着，可以为 VM 系列分配比 VM 系列配额所指示的更多的内核，直到达到总帐户配额限制。
+
+除了帐户配额总计外，更新的机制还将强制实施 VM 序列配额。 在过渡到新机制的过程中，可能会更新 VM 序列配额值以避免分配失败-最近几个月内使用的任何 VM 序列都将更新其 VM 序列配额，以匹配总帐户配额。 此更改不会允许使用比已提供的容量更多的容量。
+
+可以通过检查来确定是否已为批处理帐户启用了 VM 系列配额强制：
+
+* Batch 帐户 [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API 属性。
+
+* 门户中 "Batch 帐户 **配额** " 页上的文本。
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>用户订阅模式中的核心配额
 
-如果创建了 [Batch 帐户](accounts.md)，并将池分配模式设置为“用户订阅”，则会以不同的方式应用配额。 在此模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。
+如果创建的 [batch 帐户](accounts.md) 的池分配模式设置为 " **用户订阅**"，则在创建池或调整池大小时，将直接在订阅中创建 batch vm 和其他资源。 Azure Batch 核心配额不会应用，并且将使用和强制执行针对区域计算核心、每系列计算核心和其他资源的订阅中的配额。
 
 若要详细了解这些配额，请参阅 [Azure 订阅和服务的限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
@@ -73,7 +91,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 1. 在 Batch 帐户的菜单上选择“配额”。
 1. 查看当前应用于 Batch 帐户的配额。
 
-    ![Batch 帐户配额][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch 帐户配额":::
 
 ## <a name="increase-a-quota"></a>提高配额
 

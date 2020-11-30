@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e688fbf653646fcdd500f36930fd6b46bebeefa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842152"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325632"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -534,7 +534,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备份可用的安全控制，以减少与服务配置相关的漏洞。
 
-- [了解 Azure 备份可用的安全控制](./backup-security-controls.md)
+- [了解 Azure 备份可用的安全控制]()
 
 **Azure 安全中心监视**：目前不可用
 

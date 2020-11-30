@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782410"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324510"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例 (预览版中的机器学习服务) 
 
@@ -54,7 +54,7 @@ Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Pytho
 
 如果你有兴趣加入预览计划并接受这些条款，则可以通过在处创建 Azure 支持票证来请求注册 [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) 。 
 
-1. 在 " **创建支持票证** " 页上，单击 " **创建事件** "。
+1. 在 " **创建支持票证** " 页上，单击 " **创建事件**"。
 
 1. 在 " **帮助 + 支持** " 页上，单击 " **新建支持请求** " 以创建新票证。
 
@@ -67,16 +67,16 @@ Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Pytho
    - **机器学习服务 SQL 托管实例的问题类型 (预览)**
    - 问题子类型- **其他问题或 "如何" 问题**
 
-1. 单击 " **下一步：解决方案** "。
+1. 单击 " **下一步：解决方案**"。
 
 1. 阅读有关预览版的信息，然后单击 " **下一步：详细** 信息"。
 
 1. 本页内容：
-   - 对于 **此问题，** 请选择 **"是** "。 
-   - 对于 " **说明** "，请输入你的请求的详细信息，包括要在预览版中注册的逻辑服务器名称、区域和订阅 ID。 根据需要输入其他详细信息。
+   - 对于 **此问题，** 请选择 **"是**"。 
+   - 对于 " **说明**"，请输入你的请求的详细信息，包括要在预览版中注册的逻辑服务器名称、区域和订阅 ID。 根据需要输入其他详细信息。
    - 选择首选联系方式。 
 
-1. 完成后，单击 " **下一步"：检查 + 创建** ，然后单击 " **创建** "。
+1. 完成后，单击 " **下一步"：检查 + 创建**，然后单击 " **创建**"。
 
 注册该计划后，Microsoft 将让你加入公共预览版，并为现有的或新的数据库启用机器学习服务。
 
@@ -85,6 +85,6 @@ Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Pytho
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅 [SQL Server 机器学习服务的主要区别](machine-learning-services-differences.md)。
-- 若要了解如何在机器学习服务中使用 Python，请参阅 [运行 python 脚本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
-- 若要了解如何在机器学习服务中使用 R，请参阅 [运行 r 脚本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
+- 若要了解如何在机器学习服务中使用 Python，请参阅 [运行 python 脚本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
+- 若要了解如何在机器学习服务中使用 R，请参阅 [运行 r 脚本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
 - 有关其他 SQL 平台上的机器学习的详细信息，请参阅 [SQL 机器学习文档](/sql/machine-learning/)。

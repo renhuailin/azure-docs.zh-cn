@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf0703406b71cb56bdd75a04746dfce7db6af471
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327128"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南
 
@@ -90,11 +90,11 @@ ms.locfileid: "96188677"
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 ## <a name="overview"></a>概述
 
-在发生故障转移时，必须调整加入群集的虚拟机的大小，使其能够运行所有资源。 在多 SID 高可用性群集中，每个 SAP SID 都可以相互独立地进行故障转移。  如果使用 SBD 防护，则可以在多个群集之间共享 SBD 设备。  
+如果发生故障转移，则必须调整加入群集的虚拟机的大小，使其能够运行所有资源。 在多 SID 高可用性群集中，每个 SAP SID 都可以相互独立地进行故障转移。  如果使用 SBD 防护，则可以在多个群集之间共享 SBD 设备。  
 
 为了实现高可用性，SAP NetWeaver 需要高度可用的 NFS 共享。 在此示例中，我们假设 SAP NFS 共享位于高可用 [NFS 文件服务器](./high-availability-guide-suse-nfs.md)上，可供多个 SAP 系统使用。 或者共享部署在 [Azure NetApp 文件 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)上。  
 
-![SAP NetWeaver 高可用性概述](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Pacemaker 群集显示有关两个多 SID 群集的详细信息： msidcl1 和 msidcl2。](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > 在 Azure Vm 中，支持将 SAP ASCS/ERS 与 SUSE Linux 作为来宾操作系统的多 SID 群集的支持仅限于同一群集上的 **五个** sap sid。 每个新 SID 都增加了复杂性。 **不支持** 在同一个群集中混合使用 SAP 排队复制服务器1和排队复制服务器2。 多 SID 群集介绍了如何在一个 Pacemaker 群集中安装具有不同 Sid 的多个 SAP ASCS/ERS 实例。 目前仅支持 ASCS/ERS 的多 SID 群集。  

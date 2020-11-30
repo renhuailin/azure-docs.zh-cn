@@ -3,18 +3,18 @@ title: 在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 description: 了解如何在 Azure VMware 解决方案私有云上设置 GitHub 企业服务器。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949303"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326907"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 
 本文逐步讲解如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 本演练中所述的方案适用于 GitHub 企业服务器实例，该实例可以为3000的开发人员提供最多每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试用版许可证](https://enterprise.github.com/trial)。 如果希望通过集成扩展 GitHub 企业服务器的功能，则可以使用免费的五位开发人员许可证。 通过 [GitHub 的合作伙伴计划](https://partner.github.com/)申请此许可证。
 
@@ -24,7 +24,13 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="选择在本地或云中运行 GitHub。":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="选择在本地或云中运行 GitHub。" (操作)  |
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="部署 .OVA 模板。":::  
+
+为新虚拟机提供可识别的名称，例如 GitHubEnterpriseServer。 不需要在 VM 名称中包含发布详细信息，因为这些详细信息在升级实例时变得陈旧。 选择 "当前所有默认值" (稍后将编辑这些详细信息) 并等待导入 .OVA。
+
+导入后，根据需要 [调整硬件配置](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) 。 在我们的示例方案中，我们将需要以下配置。
+
+| 资源 | 标准设置 | 标准设置 + "测试版功能" (操作)  |
 | --- | --- | --- |
 | vCPU | 4 | 8 |
 | 内存 | 32 GB | 61 GB |
@@ -35,11 +41,11 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>配置 GitHub Enterprise Server 实例
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="选择在本地或云中运行 GitHub。":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="安装 GitHub Enterprise。":::  
 
 新预配的虚拟机 (VM) 已打开，请 [通过浏览器进行配置](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance)。 需要上传许可证文件并设置管理控制台密码。 请确保将此密码写到安全的地方。
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="选择在本地或云中运行 GitHub。":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="通过 SSH 访问管理员外壳。":::    
 
 建议至少执行以下步骤：
 
@@ -47,11 +53,11 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 2. [在您的实例上配置 TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) ，以便您可以使用由受信任的证书颁发机构签名的证书。
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="配置实例。":::
 
 应用您的设置。  实例重新启动时，可以继续执行下一步，即 **配置用于 GitHub 操作的 Blob 存储**。
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="创建管理员帐户。":::
 
 实例重新启动后，在该实例上创建一个新的管理员帐户。 请务必记下此用户的密码。
 
@@ -74,9 +80,9 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 > [!NOTE]
 > Github 操作 [当前作为 Github Enterprise Server 版本2.22 上的有限 beta 版本提供](https://docs.github.com/en/enterprise/admin/github-actions)。
 
-若要启用 GitHub Enterprise Server (上的 GitHub 操作，可以使用外部 blob 存储) 。 此外部 blob 存储用于存储项目和日志的操作。 GitHub Enterprise Server 上 [的操作支持将 Azure Blob 存储作为存储提供程序](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (，一些其他) 。 我们将使用 [存储帐户类型](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage 预配新的 Azure 存储帐户：
+若要启用 GitHub Enterprise Server (上的 GitHub 操作，可以使用外部 blob 存储) 。 此外部 blob 存储用于存储项目和日志的操作。 GitHub Enterprise Server 上 [的操作支持将 Azure Blob 存储作为存储提供程序](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (，一些其他) 。 我们将使用 [存储帐户类型](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage 预配新的 Azure 存储帐户：
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="预配 Azure Blob 存储帐户。":::
 
 完成新 BlobStorage 资源的部署后，复制并记下 "访问密钥")  (可用的连接字符串。 稍后我们将需要此字符串。
 
@@ -91,9 +97,13 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 首先，让我们在群集上预配新的 VM。 我们会将 VM 基于 [Ubuntu 服务器的最新版本](http://releases.ubuntu.com/20.04.1/)。
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="预配新的 VM。":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="选择在本地或云中运行 GitHub。" 页](https://github.com/actions/runner/releases) 或通过运行以下快速脚本来识别和下载最新的操作运行程序的 Linux x64 版本。 此脚本要求在你的 VM 上同时出现卷曲和 [jq](https://stedolan.github.io/jq/) 。
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="预配新 VM 第2步。":::
+
+创建 VM 后，将其打开并通过 SSH 连接到该 VM。
+
+接下来，安装 [操作](https://github.com/actions/runner) 运行程序应用程序，该应用程序从 GitHub 操作工作流运行作业。 从 ["发布" 页](https://github.com/actions/runner/releases) 或通过运行以下快速脚本来识别和下载最新的操作运行程序的 Linux x64 版本。 此脚本要求在你的 VM 上同时出现卷曲和 [jq](https://stedolan.github.io/jq/) 。
 
 `LATEST\_RELEASE\_ASSET\_URL=$( curl https://api.github.com/repos/actions/runner/releases/latest | \`
 
@@ -158,15 +168,15 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 复制该 `config.sh` 命令，并将其粘贴到操作运行程序上的会话中， (之前创建) 。
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="操作运行程序。":::
 
 使用 run.sh 命令 *运行* 运行程序：
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="运行运行程序。":::
 
 若要使此运行程序可供企业中的组织使用，请编辑其组织访问权限：
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="编辑运行程序访问。":::
 
 在这里，我们将其提供给所有组织，但你也可以将访问权限限制为组织的子集，甚至限制为特定的存储库。
 
@@ -178,7 +188,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 启用 GitHub Connect 后，请在 " **工作流运行" 选项中选择要使用 GitHub.com 中的操作的服务器** 。
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="允许在工作流运行中使用 GitHub.com 中的操作。":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>设置并运行你的第一个工作流
 
@@ -186,28 +196,32 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 在此基本工作流中，我们将 `octokit/request-action` 只使用 API 在 GitHub 上打开问题。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="示例工作流。":::
 
 >[!NOTE]
 >GitHub.com 承载操作，但当它在 GitHub Enterprise Server 上运行时，它 *会自动* 使用 Github ENTERPRISE server API。
 
 如果选择不启用 GitHub Connect，则可以使用以下备用工作流。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="选择在本地或云中运行 GitHub。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="替代示例工作流。":::
 
 导航到实例上的存储库，并添加上述工作流作为： `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="选择在本地或云中运行 GitHub。" 选项卡中，等待工作流执行。
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="另一个示例工作流。":::
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="选择在本地或云中运行 GitHub。":::
+在存储库的 " **操作** " 选项卡中，等待工作流执行。
+
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="已执行的示例工作流。":::
 
 还可以监视运行程序正在处理的程序。
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="选择在本地或云中运行 GitHub。" 的新问题。
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="运行程序处理的工作流。":::
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="选择在本地或云中运行 GitHub。":::
+如果一切顺利运行，你应该在存储库中看到一个名为 "Hello world" 的新问题。
 
-祝贺你！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="存储库中的示例。":::
+
+恭喜！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
 
 我们只是外在优势了可通过 GitHub 操作来执行的操作。 有关更多的操作，请在 [GitHub 的 Marketplace](https://github.com/marketplace)上查看操作列表，或 [创建自己](https://docs.github.com/en/actions/creating-actions)的操作列表。
 

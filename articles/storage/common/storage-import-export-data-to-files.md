@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9d1d0f4b615bbf4cc7faf82d70a4de0b0157ed82
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491777"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326346"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -51,14 +51,14 @@ ms.locfileid: "94491777"
 2. 在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
 3. 修改工具所在的根文件夹中的 *dataset.csv* 文件。 根据是要导入文件还是文件夹还是同时导入两者，在 *dataset.csv* 文件中添加类似于以下示例的条目。
 
-   - **导入文件** ：在下面的示例中，要复制的数据驻留在 F：驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 *MyAzureFileshare1* 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
+   - **导入文件**：在以下示例中，要复制的数据位于 F: 驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 *MyAzureFileshare1* 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **导入文件夹** ： *MyFolder2* 下的所有文件和文件夹将以递归方式复制到该文件共享。 文件夹结构保持不变。
+   - **导入文件夹**：*MyFolder2* 下的所有文件和文件夹将以递归方式复制到该文件共享。 文件夹结构保持不变。
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -78,14 +78,14 @@ ms.locfileid: "94491777"
 
     此示例假定将附加两个磁盘并创建基本 NTFS 卷 G:\ 和 H:\。 H:\ 未加密，而 G: 已加密。 该工具仅会对承载着 H:\（不会对承载着 G:\)）的磁盘进行格式化和加密。
 
-   - **对于未加密的磁盘** ：请指定 *Encrypt* 以在磁盘上启用 BitLocker 加密。
+   - **对于未加密的磁盘**：请指定 *Encrypt* 以在磁盘上启用 BitLocker 加密。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **对于已加密的磁盘** ：请指定 *AlreadyEncrypted* 并提供 BitLocker 密钥。
+   - **对于已加密的磁盘**：请指定 *AlreadyEncrypted* 并提供 BitLocker 密钥。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -115,7 +115,7 @@ ms.locfileid: "94491777"
 
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中执行以下步骤来创建导入作业。
 1. 登录到 https://portal.azure.com/ 。
@@ -173,13 +173,13 @@ ms.locfileid: "94491777"
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) extension：
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) 扩展：
 
     ```azurecli
     az extension add --name import-export
     ```
 
-1. 可以使用现有资源组，也可以创建一个。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
+1. 可以使用现有资源组，也可以创建新组。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
 
     ```azurecli
     az group create --name myierg --location "West US"
@@ -191,13 +191,13 @@ ms.locfileid: "94491777"
     az storage account create -resource-group myierg -name myssdocsstorage --https-only
     ```
 
-1. 若要获取可将磁盘寄送到的位置列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+1. 若要获取可将磁盘寄送到的位置的列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
 
     ```azurecli
     az import-export location list
     ```
 
-1. 使用 [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令获取你所在地区的位置：
+1. 使用 [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令获取你所在区域的位置：
 
     ```azurecli
     az import-export location show --location "West US"
@@ -258,7 +258,7 @@ Install-Module -Name Az.ImportExport
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 可以使用现有资源组，也可以创建一个。 若要创建资源组，请运行 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet：
+1. 可以使用现有资源组，也可以创建新组。 若要创建资源组，请运行 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet：
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name myierg -Location westus
@@ -355,9 +355,9 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="samples-for-journal-files"></a>日志文件示例
 
-若要 **添加更多驱动器** ，请创建一个新的驱动器集文件并运行以下命令。
+若要 **添加更多驱动器**，请创建一个新的驱动器集文件并运行以下命令。
 
-如果后续复制会话中的磁盘驱动器与 *InitialDriveset .csv* 文件中指定的不同，请指定一个新的驱动器集 *.csv* 文件并将其提供为参数 `AdditionalDriveSet` 的值。 使用 **同一日记文件** 的名称并提供 **新的会话 ID** 。 AdditionalDriveset CSV 文件的格式与 InitialDriveSet 的格式相同。
+如果后续复制会话中的磁盘驱动器与 *InitialDriveset .csv* 文件中指定的不同，请指定一个新的驱动器集 *.csv* 文件并将其提供为参数 `AdditionalDriveSet` 的值。 使用 **同一日记文件** 的名称并提供 **新的会话 ID**。 AdditionalDriveset CSV 文件的格式与 InitialDriveSet 的格式相同。
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -372,7 +372,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDrive
 
 若要向同一驱动器集添加更多数据，请为后续复制会话使用 PrepImport 命令来复制更多文件/目录。
 
-在后续复制会话中将数据复制到 *InitialDriveset.csv* 文件中指定的同一组硬盘驱动器时，请指定 **同一日志文件** 名称并提供 **新的会话 ID** ；不需要提供存储帐户密钥。
+在后续复制会话中将数据复制到 *InitialDriveset.csv* 文件中指定的同一组硬盘驱动器时，请指定 **同一日志文件** 名称并提供 **新的会话 ID**；不需要提供存储帐户密钥。
 
 ```cmd
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>

@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 0522f677c731aa1cd218a14429791db14179686a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496543"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326040"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>迁移指南：在 Azure Vm 上执行 DB2 到 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -164,7 +164,7 @@ ms.locfileid: "94496543"
 
 迁移后，请查看[迁移后验证和优化指南](/sql/relational-databases/post-migration-validation-and-optimization-guide)。 
 
-有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Microsoft 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](/azure/dms/dms-tools-matrix)。
+有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Microsoft 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](../../../dms/dms-tools-matrix.md)。
 
 有关其他迁移指南，请参阅[数据库迁移](https://datamigration.microsoft.com/)。 
 

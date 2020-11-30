@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019426"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325906"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：在 Azure Vm 上 SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -33,16 +33,16 @@ ms.locfileid: "95019426"
 
 ## <a name="overview"></a>概述
 
-当你想要将熟悉的 SQL Server 环境与 OS 控制一起使用，并想要利用云提供的功能，例如内置的 VM 高可用性、[自动备份](../../virtual-machines/windows/automated-backup.md)和[自动修补](../../virtual-machines/windows/automated-patching.md)功能时，可[在 Azure 虚拟机 (vm) ](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview)迁移到 SQL Server。 
+当你想要将熟悉的 SQL Server 环境与 OS 控制一起使用，并想要利用云提供的功能，例如内置的 VM 高可用性、[自动备份](../../virtual-machines/windows/automated-backup.md)和[自动修补](../../virtual-machines/windows/automated-patching.md)功能时，可[在 Azure 虚拟机 (vm) ](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)迁移到 SQL Server。 
 
 通过使用 [Azure 混合权益许可模式](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) 提供自己的许可证，或通过获取 [免费安全更新](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)扩展 SQL Server 2008 和 SQL Server 2008 R2 的支持，从而节省成本。 
 
 
 ## <a name="choosing-appropriate-target"></a>选择适当的目标
 
-Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) 和 [存储选项](https://docs.microsoft.com/azure/virtual-machines/disks-types)。 确定 SQL Server 工作负荷的 VM 和存储的正确大小时，请参阅 [Azure 虚拟机上 SQL Server 的性能准则](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices#vm-size-guidance)。 确定工作负荷的 VM 大小和存储要求。 建议通过 Performance-Based [Azure Migrate 评估](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#types-of-assessments)调整这些大小。 如果这不是可用选项，请参阅以下文章，了解如何创建自己 [的性能基准](https://azure.microsoft.com/services/virtual-machines/sql-server/)。
+Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算机大小](../../../virtual-machines/sizes.md) 和 [存储选项](../../../virtual-machines/disks-types.md)。 确定 SQL Server 工作负荷的 VM 和存储的正确大小时，请参阅 [Azure 虚拟机上 SQL Server 的性能准则](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance)。 确定工作负荷的 VM 大小和存储要求。 建议通过 Performance-Based [Azure Migrate 评估](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)调整这些大小。 如果这不是可用选项，请参阅以下文章，了解如何创建自己 [的性能基准](https://azure.microsoft.com/services/virtual-machines/sql-server/)。
 
-还应考虑在 VM 上正确安装和配置 SQL Server。 建议使用 [AZURE SQL 虚拟机映像库](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) ，因为这样可以创建一个具有适当版本、版本和操作系统的 SQL Server VM。 这也会自动向 SQL Server [资源提供程序](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) 注册 Azure VM，从而启用自动备份和自动修补等功能。
+还应考虑在 VM 上正确安装和配置 SQL Server。 建议使用 [AZURE SQL 虚拟机映像库](../../virtual-machines/windows/create-sql-vm-portal.md) ，因为这样可以创建一个具有适当版本、版本和操作系统的 SQL Server VM。 这也会自动向 SQL Server [资源提供程序](../../virtual-machines/windows/create-sql-vm-portal.md) 注册 Azure VM，从而启用自动备份和自动修补等功能。
 
 ## <a name="migration-strategies"></a>迁移策略
 
@@ -62,7 +62,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 下表描述了这两种迁移策略的不同之处：
 <br />
 
-| **迁移策略** | **描述** | **使用时机** |
+| **迁移策略** | **说明** | **使用时机** |
 | --- | --- | --- |
 | **提升 & 班次** | 使用 "提升" 和 "迁移" 迁移策略，将整个物理或虚拟 SQL Server 从其当前位置移动到 Azure VM 上的 SQL Server 实例中，无需对操作系统或 SQL Server 版本进行任何更改。 若要完成提升和转移迁移，请参阅 [Azure Migrate](../../../migrate/migrate-services-overview.md)。 <br /><br /> 源服务器保持联机和服务请求，同时源服务器和目标服务器同步数据，从而实现几乎无缝的迁移。 | 用于单个到非常大规模的迁移，甚至适用于数据中心出口之类的方案。 <br /><br /> 用户 SQL 数据库或应用程序不需要进行任何代码更改，从而提高整体迁移速度。 <br /><br />不需要执行其他步骤来迁移商业智能服务（如  [SSIS](/sql/integration-services/sql-server-integration-services)、 [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)和 [SSAS](/analysis-services/analysis-services-overview)）。 |
 |**迁移** | 如果要升级目标 SQL Server 和/或操作系统版本，请使用迁移策略。 <br /> <br /> 从 Azure Marketplace 中选择一个 Azure VM，或从与源 SQL Server 版本匹配的已准备 SQL Server 映像中选择一个。 | 如果需要使用在 SQL Server 的较新版本中提供的功能，或者如果要求升级不再支持的旧 SQL Server 和/或操作系统版本，则使用。  <br /> <br /> 可能需要对某些应用程序或用户数据库进行更改才能支持 SQL Server 升级。 <br /><br />如果在迁移范围内迁移 [商业智能](#business-intelligence) 服务，可能需要考虑其他一些事项。 |
@@ -75,7 +75,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 |**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **说明** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
 ## <a name="migrate"></a>迁移  
 
@@ -88,12 +88,12 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 |**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** | **说明** |
 | --- | --- | --- | --- | --- |
-| **[备份到文件](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  这是一种简单且经过测试的技术，用于跨计算机移动数据库。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)  |
+| **[备份到文件](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  这是一种简单且经过测试的技术，用于跨计算机移动数据库。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 为 12.8 TB，否则为 1 TB | 使用 Azure 存储将备份文件移动到 VM 的替代方法。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**：  [t-sql 或维护计划](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
-| **[数据迁移助手 (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  [DMA](/sql/dma/dma-overview)会评估本地 SQL Server，然后无缝升级到 SQL Server 的更高版本，或者迁移到 azure Vm、Azure sql 数据库或 azure sql 托管实例中的 SQL Server。 <br /><br /> 不应在启用 Filestream 的用户数据库上使用。<br /><br /> DMA 还包括迁移 [SQL 和 Windows 登录名](/sql/dma/dma-migrateserverlogins) 以及评估 [SSIS 包](/sql/dma/dma-assess-ssis)的功能。 <br /><br /> **自动化 & 脚本**： [命令行界面](/sql/dma/dma-commandline) |
-| **[分离和附加](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#detach-and-attach-from-a-url)** | SQL Server 2008 SP4 | SQL Server 2014 | [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | 当你计划 [使用 Azure Blob 存储服务存储这些文件](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) 并将它们附加到 azure VM 上的 SQL Server 实例时，请使用此方法，特别是对于非常大的数据库或备份和还原时间太长的情况下。 <br /><br /> **自动化 & 脚本**：  [t-sql](/sql/relational-databases/databases/detach-a-database#TsqlProcedure) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)|
-|**[日志传送](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 仅 (Windows)  | SQL Server 2008 SP4 仅 (Windows)  | [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | 日志传送将事务日志文件从本地复制到 Azure VM 上的 SQL Server 实例中。 <br /><br /> 这在故障转移期间提供最少的停机时间，并且配置开销低于设置 Always On 可用性组。 <br /><br /> **自动化 & 脚本编写**： [t-sql](/sql/database-engine/log-shipping/log-shipping-tables-and-stored-procedures)  |
-| **[分布式可用性组](../../virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)** | SQL Server 2016| SQL Server 2016 | [Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  [分布式可用性组](/sql/database-engine/availability-groups/windows/distributed-availability-groups)是一种特殊类型的可用性组，它跨两个单独的可用性组。 参与分布式可用性组的可用性组不需要位于同一位置，并且包括跨域支持。 <br /><br /> 此方法最大程度地减少停机时间，在本地配置可用性组时使用。 <br /><br /> **自动化 & 脚本编写**： [t-sql](/sql/t-sql/statements/alter-availability-group-transact-sql)  |
+| **[数据迁移助手 (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  [DMA](/sql/dma/dma-overview)会评估本地 SQL Server，然后无缝升级到 SQL Server 的更高版本，或者迁移到 azure Vm、Azure sql 数据库或 azure sql 托管实例中的 SQL Server。 <br /><br /> 不应在启用 Filestream 的用户数据库上使用。<br /><br /> DMA 还包括迁移 [SQL 和 Windows 登录名](/sql/dma/dma-migrateserverlogins) 以及评估 [SSIS 包](/sql/dma/dma-assess-ssis)的功能。 <br /><br /> **自动化 & 脚本**： [命令行界面](/sql/dma/dma-commandline) |
+| **[分离和附加](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#detach-and-attach-from-a-url)** | SQL Server 2008 SP4 | SQL Server 2014 | [Azure VM 存储限制](../../../index.yml) | 当你计划 [使用 Azure Blob 存储服务存储这些文件](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) 并将它们附加到 azure VM 上的 SQL Server 实例时，请使用此方法，特别是对于非常大的数据库或备份和还原时间太长的情况下。 <br /><br /> **自动化 & 脚本**：  [t-sql](/sql/relational-databases/databases/detach-a-database#TsqlProcedure) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)|
+|**[日志传送](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 仅 (Windows)  | SQL Server 2008 SP4 仅 (Windows)  | [Azure VM 存储限制](../../../index.yml) | 日志传送将事务日志文件从本地复制到 Azure VM 上的 SQL Server 实例中。 <br /><br /> 这在故障转移期间提供最少的停机时间，并且配置开销低于设置 Always On 可用性组。 <br /><br /> **自动化 & 脚本编写**： [t-sql](/sql/database-engine/log-shipping/log-shipping-tables-and-stored-procedures)  |
+| **[分布式可用性组](../../virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)** | SQL Server 2016| SQL Server 2016 | [Azure VM 存储限制](../../../index.yml) |  [分布式可用性组](/sql/database-engine/availability-groups/windows/distributed-availability-groups)是一种特殊类型的可用性组，它跨两个单独的可用性组。 参与分布式可用性组的可用性组不需要位于同一位置，并且包括跨域支持。 <br /><br /> 此方法最大程度地减少停机时间，在本地配置可用性组时使用。 <br /><br /> **自动化 & 脚本编写**： [t-sql](/sql/t-sql/statements/alter-availability-group-transact-sql)  |
 | | | | | |
 
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -119,7 +119,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 这些服务包括：
 
-- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
+- [**SQL Server 集成服务 (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
 - [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
 - [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
 

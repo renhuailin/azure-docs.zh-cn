@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530606"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327234"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
 
@@ -51,13 +51,44 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 - 在执行交换操作期间的任何时候，已交换应用的初始化将在源槽上发生。 准备源槽时，无论交换是成功还是失败，目标槽都会保持联机。
 
-- 若要将过渡槽与生产槽交换，请确保生产槽始终是目标槽。** 这样，交换操作才不会影响生产应用。
+- 若要将过渡槽与生产槽交换，请确保生产槽始终是目标槽。 这样，交换操作才不会影响生产应用。
 
-- 在启动交换之前，必须将与事件源和绑定相关的设置配置为[部署槽设置](#manage-settings)**。 提前将这些设置标记为“粘性”可确保将事件和输出定向到正确的实例。
+- 在启动交换之前，必须将与事件源和绑定相关的设置配置为[部署槽设置](#manage-settings)。 提前将这些设置标记为“粘性”可确保将事件和输出定向到正确的实例。
 
 ## <a name="manage-settings"></a>管理设置
 
-[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+某些配置设置是特定于槽的。 以下列表详细说明了交换槽时，哪些设置会发生变化，哪些设置保持不变。
+
+**槽特定的设置**：
+
+* 发布终结点
+* 自定义域名
+* 非公共证书和 TLS/SSL 设置
+* 缩放设置
+* Web 作业计划程序
+* IP 限制
+* Always On
+* 诊断设置
+* 跨域资源共享 (CORS)
+
+**非特定于插槽的设置**：
+
+* 常规设置 - 例如 Framework 版本、32/64 位、Web 套接字
+* 应用设置（可以配置为停在槽中）
+* 连接字符串（可以配置为停在槽中）
+* 处理程序映射
+* 公用证书
+* WebJobs 内容
+* 混合连接 *
+* 虚拟网络集成 *
+* 服务终结点 *
+* Azure 内容分发网络 *
+
+标有星号 (*) 的功能计划取消交换。 
+
+> [!NOTE]
+> 应用于不交换的设置的某些应用设置也不交换。 例如，由于诊断设置不会交换，因此相关的应用设置（如 `WEBSITE_HTTPLOGGING_RETENTION_DAYS` 和 `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS`）也不会交换，即使它们未显示为槽设置也是如此。
+>
 
 ### <a name="create-a-deployment-setting"></a>创建部署设置
 
@@ -67,21 +98,21 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 使用以下步骤创建部署设置：
 
-1. 在函数应用中导航到“部署槽”****，然后选择槽名称。
+1. 在函数应用中导航到“部署槽”，然后选择槽名称。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="在 Azure 门户中查找槽。" border="true":::
 
-1. 选择“配置”****，然后选择要粘滞到当前槽的设置名称。
+1. 选择“配置”，然后选择要粘滞到当前槽的设置名称。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="在 Azure 门户中配置槽的应用程序设置。" border="true":::
 
-1. 选择“部署槽设置”，然后选择“确定”**** ****。
+1. 选择“部署槽设置”，然后选择“确定” 。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="配置部署槽设置。" border="true":::
 
-1. 设置部分消失后，选择“保存”**** 以保留更改
+1. 设置部分消失后，选择“保存”以保留更改
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="保存部署槽设置。" border="true":::
 
 ## <a name="deployment"></a>部署
 
@@ -100,26 +131,26 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 1. 导航到函数应用。
 
-1. 选择“部署槽”****，然后选择“+ 添加槽”****。
+1. 选择“部署槽”，然后选择“+ 添加槽”。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="添加 Azure Functions 部署槽。" border="true":::
 
-1. 键入槽名称，然后选择“添加”****。
+1. 键入槽名称，然后选择“添加”。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="为 Azure Functions 部署槽命名。" border="true":::
 
 ## <a name="swap-slots"></a>交换槽
 
 可以通过 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) 或门户交换槽。 以下步骤演示如何在门户中交换槽：
 
 1. 导航到函数应用。
-1. 选择“部署槽”****，然后选择“交换”****。
+1. 选择“部署槽”，然后选择“交换”。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="屏幕截图显示了“部署槽位”页面，其中选择了“添加槽”操作。" border="true":::
 
-1. 验证交换的配置设置，并选择“交换”****
+1. 验证交换的配置设置，并选择“交换”
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="交换部署槽。" border="true":::
 
 执行交换操作可能需要花费一段时间。
 
@@ -131,21 +162,21 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 可以通过 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) 或门户删除槽。 以下步骤演示如何在门户中删除槽：
 
-1. 在函数应用中导航到“部署槽”****，然后选择槽名称。
+1. 在函数应用中导航到“部署槽”，然后选择槽名称。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="在 Azure 门户中查找槽。" border="true":::
 
 1. 选择“删除” 。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="屏幕截图显示了“概述”页面，其中选择了“删除”操作。" border="true":::
 
-1. 键入要删除的部署槽的名称，然后选择“删除”****。
+1. 键入要删除的部署槽的名称，然后选择“删除”。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="在 Azure 门户中删除部署槽。" border="true":::
 
 1. 关闭删除确认窗格。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="部署槽删除确认。" border="true":::
 
 ## <a name="automate-slot-management"></a>自动槽管理
 
@@ -166,15 +197,15 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 使用以下步骤更改槽的应用服务计划：
 
-1. 在函数应用中导航到“部署槽”****，然后选择槽名称。
+1. 在函数应用中导航到“部署槽”，然后选择槽名称。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="在 Azure 门户中查找槽。" border="true":::
 
-1. 在“应用服务计划”下，选择“更改应用服务计划”**** ****。
+1. 在“应用服务计划”下，选择“更改应用服务计划” 。
 
 1. 选择要升级到的计划，或创建新的计划。
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="在 Azure 门户中查找槽。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="在 Azure 门户中更改应用服务计划。" border="true":::
 
 1. 选择“确定” 。
 
@@ -196,7 +227,7 @@ Azure Functions 部署槽存在以下限制：
 | OS/托管计划           | 支持级别     |
 | ------------------------- | -------------------- |
 | Windows 消耗计划       | 正式版 |
-| Windows 高级           | 正式版  |
+| Windows 高级计划           | 正式版  |
 | Windows 专用计划         | 正式版 |
 | Linux 消耗计划         | 不支持          |
 | Linux 高级版             | 正式版  |

@@ -3,12 +3,12 @@ title: 备份和还原已加密的 Azure VM
 description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Azure VM。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978108"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324915"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原加密的 Azure 虚拟机
 
@@ -16,13 +16,13 @@ ms.locfileid: "95978108"
 
 ## <a name="encryption-using-platform-managed-keys"></a>使用平台管理的密钥进行加密
 
-默认情况下，VM 中的所有磁盘都会通过使用[存储服务加密](../storage/common/storage-service-encryption.md)的平台管理的密钥 (PMK) 自动进行静态加密。 你可以使用 Azure 备份来备份这些 VM，而无需采取任何支持在你方加密所需的特定措施。 有关使用平台管理的密钥进行加密的详细信息，请[参阅本文](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)。
+默认情况下，VM 中的所有磁盘都会通过使用[存储服务加密](../storage/common/storage-service-encryption.md)的平台管理的密钥 (PMK) 自动进行静态加密。 你可以使用 Azure 备份来备份这些 VM，而无需采取任何支持在你方加密所需的特定措施。 有关使用平台管理的密钥进行加密的详细信息，请[参阅本文](../virtual-machines/disk-encryption.md#platform-managed-keys)。
 
 ![加密的磁盘](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>使用客户管理的密钥进行加密
 
-使用客户管理的密钥 (CMK) 对磁盘进行加密时，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中，由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。 有关使用客户管理的密钥对托管磁盘进行加密的详细信息，请[参阅本文](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)。
+使用客户管理的密钥 (CMK) 对磁盘进行加密时，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中，由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。 有关使用客户管理的密钥对托管磁盘进行加密的详细信息，请[参阅本文](../virtual-machines/disk-encryption.md#customer-managed-keys)。
 
 ## <a name="encryption-support-using-ade"></a>使用 ADE 的加密支持
 

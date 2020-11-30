@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40572d50f7653539758ff892019e7e65b0ffa6dd
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905321"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324884"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "95905321"
 
 有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。
 
-有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../../key-vault/general/soft-delete-powershell.md)。
+有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../../key-vault/general/key-vault-recovery.md)。
 
 > [!IMPORTANT]
 > 仍然支持 PowerShell Azure 资源管理器 (RM) 模块，但是所有未来的开发都是针对 Az.Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -136,7 +136,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 若要安装所需的 Azure CLI 版本（版本 2.0 或更高版本）并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行界面 2.0](/cli/azure/install-azure-cli)。
 
-有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../../key-vault/general/soft-delete-cli.md)。
+有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../../key-vault/general/key-vault-recovery.md)。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 
