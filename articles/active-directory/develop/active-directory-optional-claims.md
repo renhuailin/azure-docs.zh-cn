@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/30/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 7eedb9ce30be236e8d47152f0e114b7bc5ae2304
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348086"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433306"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "96348086"
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 说明符信息。 | JWT        |           |      |
 | `fwd`                      | IP 地址。| JWT    |   | 添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址 |
-| `ctry`                     | 用户所在国家/地区 | JWT、SAML |  | Azure AD 返回 `ctry` 可选声明（如果存在）且此字段的值是标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
+| `ctry`                     | 用户所在国家/地区 | JWT |  | Azure AD 返回 `ctry` 可选声明（如果存在）且此字段的值是标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
 | `tenant_ctry`              | 资源租户所在的国家/地区 | JWT | | 与 `ctry` 相同，区别是由管理员在租户级别设置。还必须是标准的双字母值。 |
 | `xms_pdl`             | 首选数据位置   | JWT | | 对于多地域租户，首选数据位置是显示用户所在地理区域的由三个字母组成的代码。 有关详细信息，请参阅[有关首选数据位置的 Azure AD Connect 文档](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)。<br/>例如：`APC` 表示“亚太”。 |
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“zh-cn”）。 |
@@ -235,7 +235,7 @@ ms.locfileid: "96348086"
 
 **通过 UI 配置组可选声明：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 从左侧菜单中选择“Azure Active Directory”。
 1. 在“管理”部分下选择“应用注册” 。
@@ -248,7 +248,7 @@ ms.locfileid: "96348086"
 
 **通过应用程序清单配置组可选声明：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 从左侧菜单中选择“Azure Active Directory”。
 1. 在列表中选择要为其配置可选声明的应用程序。
@@ -379,7 +379,7 @@ ms.locfileid: "96348086"
 
 **UI 配置：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
 1. 从左侧菜单中选择“Azure Active Directory”。
@@ -402,7 +402,7 @@ ms.locfileid: "96348086"
 
 **清单配置：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 从左侧菜单中选择“Azure Active Directory”。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

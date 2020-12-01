@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e4f002d038820edf128e3fefb229a0918a8ac55
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703870"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433512"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -33,10 +33,10 @@ ms.locfileid: "84703870"
 
 在本部分中，将创建一个虚拟网络和子网，稍后将其委托给 Azure 服务。
 
-1. 在屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **虚拟网络**"。
+1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
@@ -60,21 +60,23 @@ ms.locfileid: "84703870"
 
 1. 在门户的搜索栏中，输入 *myVirtualNetwork*。 当“myVirtualNetwork”出现在搜索结果中时，将其选中。
 2. 在搜索结果中，选择 " *myVirtualNetwork*"。
-3. 在 "**设置**" 下选择**子网**，然后选择 " **mySubnet**"。
+3. 在 "**设置**" 下选择 **子网**，然后选择 " **mySubnet**"。
 4. 在 " *mySubnet* " 页上，对于 " **子网委派** 列表"，从 " **委托子网到服务** (" 下列出的服务中进行选择，例如 **DBforPostgreSQL/serversv2**) 。  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
 1. 在门户的搜索栏中，输入 *myVirtualNetwork*。 当“myVirtualNetwork”出现在搜索结果中时，将其选中。
 2. 在搜索结果中，选择 " *myVirtualNetwork*"。
-3. 在 "**设置**" 下选择**子网**，然后选择 " **mySubnet**"。
-4. 在 " *mySubnet* " 页中，对于 "**子网委派**列表"，请从 "**委托子网到服务**" 下列出的服务中选择**None** 。 
+3. 在 "**设置**" 下选择 **子网**，然后选择 " **mySubnet**"。
+4. 在 " *mySubnet* " 页中，对于 "**子网委派** 列表"，请从 "**委托子网到服务**" 下列出的服务中选择 **None** 。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+为 Azure CLI 准备环境。
 
-如果你决定在本地安装并使用 Azure CLI，则本文要求你使用 Azure CLI 版本2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 Azure CLI 2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
@@ -121,7 +123,7 @@ ms.locfileid: "84703870"
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-若要验证委派是否已应用，请使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 验证是否已将服务委托给属性 **serviceName**下的子网：
+若要验证委派是否已应用，请使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 验证是否已将服务委托给属性 **serviceName** 下的子网：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -150,7 +152,7 @@ ms.locfileid: "84703870"
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
-使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 从名为 **mySubnet**的子网中删除委派：
+使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 从名为 **mySubnet** 的子网中删除委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -159,7 +161,7 @@ ms.locfileid: "84703870"
   --vnet-name myVnet \
   --remove delegations
 ```
-若要验证委派是否已删除，请使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 验证服务是否已从属性 **serviceName**下的子网中删除：
+若要验证委派是否已删除，请使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 验证服务是否已从属性 **serviceName** 下的子网中删除：
 
 ```azurecli-interactive
   az network vnet subnet show \

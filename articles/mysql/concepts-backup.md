@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4438ceaa7bb4e9c29a05de0481acdad571e3bb64
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542331"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433268"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -35,18 +35,16 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 可以通
 
 #### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>存储容量最大达 4 TB 的常规用途存储服务器
 
-常规用途存储是支持[常规用途](concepts-pricing-tiers.md)和[内存优化层](concepts-pricing-tiers.md)服务器的后端存储。 对于常规用途存储高达 4 TB 的服务器，完整备份每周进行一次。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。 一般用途的备份（最大为 4 TB 的存储空间）不基于快照，并且在备份时使用 IO 带宽。 对于大型数据库 ( # A0 1 TB) 在 4 TB 存储上，我们建议你考虑
+常规用途存储是支持[常规用途](concepts-pricing-tiers.md)和[内存优化层](concepts-pricing-tiers.md)服务器的后端存储。 对于常规用途存储容量最大达 4 TB 的服务器，完整备份每周进行一次。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。 存储容量最大达 4 TB 的常规用途存储上的备份不是基于快照的，并且在备份时会消耗 IO 带宽。 对于 4 TB 存储上的大型数据库 (> 1 TB)，建议考虑：
 
 - 为备份 IO 预配更多 IOP
-- 或者，如果基础存储基础结构在首选 [Azure 区域](/azure/mysql/concepts-pricing-tiers#storage)中可用，则可迁移到通用存储，该存储支持多达 16 TB 的存储。 支持最大 16 TB 存储的常规用途存储不产生额外的费用。 若要获得有关迁移到 16 TB 存储的帮助，请从 Azure 门户创建支持工单。
+- 或者，如果基础存储基础结构在你的首选 [Azure 区域](/azure/mysql/concepts-pricing-tiers#storage)中可用，则可以迁移到支持存储容量最大达 16 TB 的常规用途存储。 支持最大 16 TB 存储的常规用途存储不产生额外的费用。 若要获得有关迁移到 16 TB 存储的帮助，请从 Azure 门户创建支持工单。
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>存储容量最大达 16 TB 的常规用途存储服务器
 
 在 [Azure 区域](/azure/mysql/concepts-pricing-tiers#storage)的一个子集中，所有新预配的服务器都可支持存储容量最大达 16 TB 的常规用途存储。 换句话说，对于支持该常规用途存储的所有[区域](concepts-pricing-tiers.md#storage)，常规用途存储容量默认最大为 16 TB。 16 TB 存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。
 
-在 [Azure 区域](concepts-pricing-tiers.md#storage)的一个子集中，所有新预配的服务器都可支持存储容量最大达 16 TB 的常规用途存储。 换句话说，对于支持该常规用途存储的所有[区域](concepts-pricing-tiers.md#storage)，常规用途存储容量默认最大为 16 TB。 16 TB 存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。
-
-一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 binlog 中的事务日志 (的事务日志在上次差异备份后) 超过 50 GB。 一天内，最多允许有 6 张差异快照。
+一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每 24 小时进行一次，除非自上次差异备份后事务日志（MySQL 中的二进制日志）超过 50 GB。 一天内，最多允许有 6 张差异快照。
 
 事务日志备份每五分钟进行一次。
 
@@ -65,11 +63,11 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 可以通
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
-使用 Azure Database for MySQL 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)。 此地域冗余提供更好的保护，并在发生灾难时将服务器还原到不同的区域。 “基本”层仅提供本地冗余备份存储。
+使用 Azure Database for MySQL 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)。 这种异地冗余可以在发生灾难时提供更好的保护，并且可以将服务器还原到其他区域。 “基本”层仅提供本地冗余备份存储。
 
-#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>从本地冗余迁移到异地冗余备份存储
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>从本地冗余备份存储迁移到异地冗余备份存储
 
-只能在服务器创建期间为备份配置本地冗余或异地冗余存储。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，请创建新的服务器并使用 [转储和还原](concepts-migrate-dump-restore.md) 来迁移数据，这是唯一受支持的选项。
+只能在服务器创建期间为备份配置本地冗余或异地冗余存储。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，则创建新服务器并使用[转储和还原](concepts-migrate-dump-restore.md)来迁移数据是唯一受支持的选项。
 
 ### <a name="backup-storage-cost"></a>备份存储成本
 
@@ -111,12 +109,12 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持存储容量最大达 4 TB 的服务器可以还原到异地配对区域，也可以还原到支持存储容量最大达 16 TB 的任何区域。 对于支持高达 16 TB 存储空间的服务器，还可以在支持 16 TB 服务器的任何区域还原异地备份。 查看 [Azure Database for MySQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持存储容量最大达 4 TB 的服务器可以还原到异地配对区域，也可以还原到支持存储容量最大达 16 TB 的任何区域。 对于支持存储容量最大达 16 TB 的服务器，也可以在支持 16 TB 服务器的任何区域中还原异地备份。 查看 [Azure Database for MySQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 异地还原利用服务器的最新备份。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
 > [!IMPORTANT]
->如果对新创建的服务器执行异地还原，则初始备份同步所需的时间可能超过24小时，具体取决于数据大小，因为初始的完整快照备份复制时间要高得多。 后续快照备份是增量复制，因此，在创建服务器24小时后，还原速度会更快。 如果你正在评估异地还原以定义 RTO，我们建议你在创建服务器 **24 小时后** 等待并评估异地还原，以便更好地进行评估。
+>如果对新建的服务器执行异地还原，则初始备份同步可能需要 24 小时以上，具体取决于数据大小，因为初始完整快照备份的复制时间要长得多。 后续快照备份是增量备份，因此，在创建服务器 24 小时后，还原速度会更快。 如果你要评估异地还原以定义 RTO，建议你进行等待，在服务器创建 24 小时后再评估异地还原，以便更好地进行估算。
 
 在异地还原过程中，可以更改的服务器配置包括计算的代、vCore、备份保持期和备份冗余选项。 不支持在异地还原过程中更改定价层（“基本”、“常规用途”或“内存优化”）或存储大小。
 

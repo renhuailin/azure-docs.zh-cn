@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131405"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433356"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -58,16 +58,16 @@ ms.locfileid: "93131405"
 
 | 云合作伙伴门户 | 合作伙伴中心 |
 | --- | --- |
-| **链接** ： https://cloudpartner.azure.com/ | **链接** ： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigation** ：Insights Payout 中提供的付款报告 | **Navigation** ：合作伙伴中心提供的付款报告 - 付款图标 |
-| **范围** ：<ul><li>对于正在进行、已收取和已支付的收款，每个行项的交易均可见。</li><li>报告 - 显示创建采购订单后的所有行项，包括正在进行的收款和正在进行的计费，以及收款状态和尚不符合付款条件的行项。</li></ul> | **范围** ：<ul><li>显示被视为合格收入的行项。</li><li>客户先向 Microsoft 付款，然后 ISV 可以看到付款报告。</li><li>付款报告不会显示正在进行的收款和正在进行的计费。</li></ul> |
-| **交易尚未做好付款的准备** ：正在进行的计费 | **交易尚未做好付款的准备** ：下一次估计付款：付款状态处于未处理状态。 |
-| **付款状态** ：不适用 | **付款状态** ：<ul><li>未处理：收入可以用于付款。</li><li>即将发送：收入将在下一个月的付款中发送给出版商。</li><li>已发送：已将付款发送到银行。</li></ul> |
+| **链接**： https://cloudpartner.azure.com/ | **链接**： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigation**：Insights Payout 中提供的付款报告 | **Navigation**：合作伙伴中心提供的付款报告 - 付款图标 |
+| **范围**：<ul><li>对于正在进行、已收取和已支付的收款，每个行项的交易均可见。</li><li>报告 - 显示创建采购订单后的所有行项，包括正在进行的收款和正在进行的计费，以及收款状态和尚不符合付款条件的行项。</li></ul> | **范围**：<ul><li>显示被视为合格收入的行项。</li><li>客户先向 Microsoft 付款，然后 ISV 可以看到付款报告。</li><li>付款报告不会显示正在进行的收款和正在进行的计费。</li></ul> |
+| **交易尚未做好付款的准备**：正在进行的计费 | **交易尚未做好付款的准备**：下一次估计付款：付款状态处于未处理状态。 |
+| **付款状态**：不适用 | **付款状态**：<ul><li>未处理：收入可以用于付款。</li><li>即将发送：收入将在下一个月的付款中发送给出版商。</li><li>已发送：已将付款发送到银行。</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>在云合作伙伴门户中发布的产品/服务有哪些？
 
-提供的产品/服务已移至合作伙伴中心，在你登录到合作伙伴中心后，你将可以访问这些产品/服务，但 Dynamics Nav 托管服务和 Cortana Intelligence 提供的除外。 如果你的产品/服务在商业应用商店中，它将继续保持活动，并且你的客户将能够继续在不中断的情况下进行购买和部署。 有关更多详细信息，请参阅下一个问题： **哪些产品/服务已移动到合作伙伴中心？** 。
+提供的产品/服务已移至合作伙伴中心，在你登录到合作伙伴中心后，你将可以访问这些产品/服务，但 Dynamics Nav 托管服务和 Cortana Intelligence 提供的除外。 如果你的产品/服务在商业应用商店中，它将继续保持活动，并且你的客户将能够继续在不中断的情况下进行购买和部署。 有关更多详细信息，请参阅下一个问题： **哪些产品/服务已移动到合作伙伴中心？**。
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>哪些产品/服务已移动到合作伙伴中心？
 
@@ -79,7 +79,7 @@ ms.locfileid: "93131405"
 | --- | --- | --- |
 | SaaS | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [为商用 Marketplace 规划 SaaS 产品](plan-saas-offer.md)。 |
 | 虚拟机 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 在 [规划虚拟机产品/服务](marketplace-virtual-machines.md)中了解详细信息。 |
-| Azure 应用程序 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](partner-center-portal/create-new-azure-apps-offer.md)。 |
+| Azure 应用程序 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)。 |
 | Dynamics 365 Business Central | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
 | Dynamics 365 for Customer Engagement & PowerApps | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Dynamics 365 For Customer Engagement & PowerApps 产品](partner-center-portal/create-new-customer-engagement-offer.md)。 |
 | Dynamics 365 for Operations | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建适用于操作的 Dynamics 365](partner-center-portal/create-new-operations-offer.md)。 |
@@ -103,7 +103,7 @@ ms.locfileid: "93131405"
 
     示例：假设你有权访问三个程序： MPN 计划、推荐计划和商用 Marketplace 计划。 登录到合作伙伴中心时，会在导航窗格中看到这三个程序。
 
-2. 选择 " **商业市场**  >  **概述** " 以访问你的产品/服务。
+2. 选择 "**商业市场**  >  **概述**" 以访问你的产品/服务。
 
     如果左侧导航窗格中未显示 "商用 Marketplace 计划"，则可能是错误的帐户。 按照下一部分中的步骤访问正确的帐户。
 
@@ -117,7 +117,7 @@ ms.locfileid: "93131405"
 
 ## <a name="how-do-i-create-new-offers"></a>如何实现创建新产品/服务？
 
-访问 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 的 "商用 marketplace" 计划，以创建新产品/服务。 在 "概述" 页上，选择 " **+ 新产品/服务** "。
+访问 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 的 "商用 marketplace" 计划，以创建新产品/服务。 在 "概述" 页上，选择 " **+ 新产品/服务**"。
 
 [![屏幕截图显示 "合作伙伴中心概述" 菜单。](media/cpp-pc-faq/new-offer.png "显示合作伙伴中心概述菜单")](media/cpp-pc-faq/new-offer.png#lightbox)
 
@@ -127,7 +127,7 @@ ms.locfileid: "93131405"
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>使用合作伙伴中心的说明位于何处？
 
-请参阅 [商业应用商店文档](index.yml)，然后展开 **合作伙伴中心的 "商用 marketplace 门户** "。 若要查看有关在合作伙伴中心创建产品/服务的帮助文章，请展开 " **创建新产品/服务** "。
+请参阅 [商业应用商店文档](index.yml)，然后展开 **合作伙伴中心的 "商用 marketplace 门户**"。 若要查看有关在合作伙伴中心创建产品/服务的帮助文章，请展开 " **创建新产品/服务**"。
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>发布和产品/服务管理之间的区别是什么？
 

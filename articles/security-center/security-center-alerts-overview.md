@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182302"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433013"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
@@ -91,7 +91,7 @@ Azure 安全中心受益于在整个 Microsoft 有安全研究和数据科学团
 
 - 警报仪表板上的“下载 CSV 报表”可提供到 CSV 的一次性导出。
 - 定价和设置中的“连续导出”允许你将安全警报和建议流配置到 Log Analytics 工作区和事件中心。 [详细了解连续导出](continuous-export.md)
-- **Azure sentinel 连接器** 将 azure Defender 警报从 Azure 安全中心流式传输到 azure Sentinel。 [详细了解如何将 Azure 安全中心与 Sentinel 连接](../sentinel/connect-azure-security-center.md)
+- **Azure sentinel 连接器** 将 Azure 安全中心的安全警报传输到 azure Sentinel。 [详细了解如何将 Azure 安全中心与 Sentinel 连接](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>后续步骤

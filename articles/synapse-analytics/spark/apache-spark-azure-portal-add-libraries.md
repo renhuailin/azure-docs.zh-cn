@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse 分析中管理 Apache Spark 的库
+title: 管理 Apache Spark 的库
 description: 了解如何添加和管理 Azure Synapse 分析中 Apache Spark 使用的库。
 services: synapse-analytics
 author: euangMS
@@ -9,18 +9,18 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917119"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435359"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 
 库提供你可能想要包括在程序或项目中的可重用代码。 若要使第三方或本地生成的代码可用于你的应用程序，你可以 (预览版) ，将库安装到你的无服务器 Apache Spark 池之一。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 - 若要安装和更新库，必须在链接到 Azure Synapse Analytics 工作区的主 Gen2 存储帐户上拥有 **存储 Blob 数据参与者** 或 **存储 blob 数据所有者** 权限。
   
 ## <a name="default-installation"></a>默认安装
@@ -36,7 +36,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和�
 
 > [!IMPORTANT]
 > - 如果要安装的包很大或需要很长时间才能安装，这会影响 Spark 实例的启动时间。
-> - 不支持在安装时需要编译器支持的包（如 GCC）。
+> - 不支持在安装时需要编译器支持的包（例如 GCC）。
 > - 包不能降级，只能进行添加或升级。
 > - 若要安装库，必须在链接到 Synapse 工作区的主 Gen2 存储帐户上具有存储 Blob 数据参与者或存储 Blob 数据所有者权限。
 

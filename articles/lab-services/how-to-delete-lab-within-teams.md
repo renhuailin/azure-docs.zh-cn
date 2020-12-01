@@ -3,12 +3,12 @@ title: 从团队中删除 Azure 实验室服务实验室
 description: 了解如何从团队中删除 Azure 实验室服务实验室。
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 1d2fe73d33a88e595f42b47c1e7122dcbdfe1063
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094272"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433948"
 ---
 # <a name="delete-labs-within-teams"></a>删除团队中的实验室
 
@@ -21,7 +21,7 @@ ms.locfileid: "92094272"
 
 ## <a name="delete-labs"></a>删除实验室
 
-可以通过直接删除实验室来删除在 [实验室服务网站](https://labs.azure.com) 中创建的实验室，如在 [Azure 实验室服务中管理教室实验室](how-to-manage-classroom-labs.md)中所述。 
+可以通过直接删除实验室来删除在 [实验室服务网站](https://labs.azure.com) 中创建的实验室，如在 [Azure Lab Services 中管理实验室](how-to-manage-classroom-labs.md)中所述。 
 
 删除团队时，也会触发实验室删除。 如果从中创建实验室的团队被删除，则在触发自动用户列表同步后，将自动删除 "实验室"。 
 

@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 实验室服务的教室实验室中配置使用设置
+title: 在 Azure 实验室服务实验室中配置使用设置
 description: 了解如何配置实验室的学生数量，如何将学生注册到实验室，控制他们可使用 VM 的小时数，等等。
 ms.topic: article
 ms.date: 11/11/2020
-ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555713"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434543"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 
@@ -20,9 +20,9 @@ ms.locfileid: "94555713"
 
 1. 在左窗格中，选择“用户”。 
 
-    默认情况下，" **限制访问** " 选项处于打开状态，除非它们位于用户列表中，否则学生无法注册到实验室，即使他们具有注册链接。 只有列出的用户才能使用发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 或者，你可以关闭 " **限制访问** "，它允许学生注册到实验室，前提是他们具有注册链接。 
+    默认情况下，" **限制访问** " 选项处于打开状态，除非它们位于用户列表中，否则学生无法注册到实验室，即使他们具有注册链接。 只有列出的用户才能使用发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 或者，你可以关闭 " **限制访问**"，它允许学生注册到实验室，前提是他们具有注册链接。 
 
-1. 在 " **用户** " 窗格的顶部，选择 " **添加用户** "，然后选择 " **按电子邮件地址添加** "。 
+1. 在 " **用户** " 窗格的顶部，选择 " **添加用户**"，然后选择 " **按电子邮件地址添加**"。 
 
     !["添加用户" 按钮](./media/how-to-configure-student-usage/add-users-button.png)
 
@@ -30,7 +30,7 @@ ms.locfileid: "94555713"
 
     ![添加用户的电子邮件地址](./media/how-to-configure-student-usage/add-users-email-addresses.png)
 
-1. 选择“保存”。 
+1. 选择“保存”。  
 
     该列表显示当前用户的电子邮件地址和状态，无论它们是否已注册到实验室。 
 
@@ -49,17 +49,17 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
     ![CSV 文件中的用户列表](./media/how-to-configure-student-usage/csv-file-with-users.png)
 
-1. 在 " **用户** " 窗格的顶部，选择 " **添加用户** "，然后选择 " **上载 CSV** "。
+1. 在 " **用户** " 窗格的顶部，选择 " **添加用户**"，然后选择 " **上载 CSV**"。
 
     !["上传 CSV" 按钮](./media/how-to-configure-student-usage/upload-csv-button.png)
 
-1. 选择包含学生电子邮件地址的 CSV 文件，然后选择 " **打开** "。
+1. 选择包含学生电子邮件地址的 CSV 文件，然后选择 " **打开**"。
 
     " **添加用户** " 窗口将显示 CSV 文件中的电子邮件地址列表。 
 
     !["添加用户" 窗口，其中包含 CSV 文件中的电子邮件地址](./media/how-to-configure-student-usage/add-users-window.png)
 
-1. 选择“保存”。 
+1. 选择“保存”。  
 
 1. 在 " **用户** " 窗格中，查看添加的学生列表。 
 
@@ -75,17 +75,17 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
 此方法说明如何向所有列出的学生发送包含注册链接和可选消息的电子邮件。
 
-1. 在 " **用户** " 窗格中，选择 " **全部邀请** "。 
+1. 在 " **用户** " 窗格中，选择 " **全部邀请**"。 
 
     !["全部邀请" 按钮](./media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-1. 在 " **通过电子邮件发送邀请** " 窗口中，输入可选消息，然后选择 " **发送** "。 
+1. 在 " **通过电子邮件发送邀请** " 窗口中，输入可选消息，然后选择 " **发送**"。 
 
-    电子邮件自动包含注册链接。 若要单独获取并保存注册链接，请选择 " **用户** " 窗格顶部 ( **...** ") ，然后选择" **注册链接** "。 
+    电子邮件自动包含注册链接。 若要单独获取并保存注册链接，请选择 "**用户**" 窗格顶部 (**...** ") ，然后选择"**注册链接**"。 
 
     !["通过电子邮件发送注册链接" 窗口](./media/tutorial-setup-classroom-lab/send-email.png)
 
-    " **用户** " 列表的 " **邀请** " 列显示每个添加的用户的邀请状态。 状态应更改为 " **发送** "，然后更改为 **" \<date> 发送** 到"。 
+    "**用户**" 列表的 "**邀请**" 列显示每个添加的用户的邀请状态。 状态应更改为 "**发送**"，然后更改为 **" \<date> 发送** 到"。 
 
 ### <a name="invite-selected-users"></a>邀请所选用户
 
@@ -93,11 +93,11 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
 1. 在 " **用户** " 窗格中，选择列表中的一个或多个学生。 
 
-1. 在所选学生的行中，选择 **信封** 图标，或在工具栏上选择 " **邀请** "。 
+1. 在所选学生的行中，选择 **信封** 图标，或在工具栏上选择 " **邀请**"。 
 
     ![邀请所选用户](./media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. 在 " **通过电子邮件发送邀请** " 窗口中，输入可选 **消息** ，然后选择 " **发送** "。 
+1. 在 " **通过电子邮件发送邀请** " 窗口中，输入可选 **消息**，然后选择 " **发送**"。 
 
     ![向选定用户发送电子邮件](./media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
@@ -107,11 +107,11 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
 在本部分中，可以从门户获取注册链接，并使用自己的电子邮件应用程序发送该链接。 
 
-1. 在 " **用户** " 窗格中，选择 " **注册链接** "。
+1. 在 " **用户** " 窗格中，选择 " **注册链接**"。
 
     ![学生注册链接](./media/how-to-configure-student-usage/registration-link-button.png)
 
-1. 在 " **用户注册** " 窗口中，选择 " **复制** "，然后选择 " **完成** "。 
+1. 在 " **用户注册** " 窗口中，选择 " **复制**"，然后选择 " **完成**"。 
 
     !["用户注册" 窗口](./media/how-to-configure-student-usage/registration-link.png)
 
@@ -122,9 +122,9 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 ## <a name="view-registered-users"></a>查看已注册用户
 
 1. 请参阅 [Azure 实验室服务](https://labs.azure.com) 网站。 
-1. 选择 " **登录** "，然后输入你的凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
+1. 选择 " **登录**"，然后输入你的凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
 1. 在 " **我的实验** " 页上，选择要跟踪其使用情况的实验室。 
-1. 在左窗格中，选择 " **用户** "，或选择 " **用户** " 磁贴。 
+1. 在左窗格中，选择 " **用户**"，或选择 " **用户** " 磁贴。 
 
     " **用户** " 窗格显示已向实验室注册的学生列表。  
 
@@ -135,11 +135,11 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 通过执行以下操作，可以为每个学生设置小时配额： 
 
 1. 在 " **用户** " 窗格中，选择工具栏上的 " **每个用户的配额： \<number> 小时 (s)** 。 
-1. 在 " **每用户配额** " 窗口中，指定要在计划的类时间之外为每个学生分配的小时数，然后选择 " **保存** "。
+1. 在 " **每用户配额** " 窗口中，指定要在计划的类时间之外为每个学生分配的小时数，然后选择 " **保存**"。
 
     !["每个用户的配额" 窗口](./media/how-to-configure-student-usage/quota-per-user.png)    
 
-    更改后的值现在显示在工具栏上和 "用户" 列表中的 " **每个用户的 \<number of hours> 配额：** " 按钮上，如下所示：
+    更改后的值现在显示在工具栏上和 "用户" 列表中的 "**每个用户的 \<number of hours> 配额：** " 按钮上，如下所示：
 
     ![每个用户的配额小时](./media/how-to-configure-student-usage/quot-per-user-after.png)
 
@@ -156,7 +156,7 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
     !["调整配额" 按钮](./media/how-to-configure-student-usage/adjust-quota-button.png)
 
-1. 在 " **调整配额 \<selected user or users email address>** " 中，输入要向所选学生或学生授予的其他实验室小时数，然后选择 " **应用** "。 
+1. 在 "**调整配额 \<selected user or users email address>**" 中，输入要向所选学生或学生授予的其他实验室小时数，然后选择 "**应用**"。 
 
     !["调整配额 ..."窗口](./media/how-to-configure-student-usage/additional-quota.png)
 
@@ -169,7 +169,7 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 若要将学生添加到课堂实验室，请使用其电子邮件帐户。 学生可以使用以下类型的电子邮件帐户：
 
 - 由大学 Azure Active Directory 实例提供的学生电子邮件帐户。
-- Microsoft 域电子邮件帐户，如 *outlook.com* 、 *hotmail.com* 、 *msn.com* 或 *live.com* 。
+- Microsoft 域电子邮件帐户，如 *outlook.com*、 *hotmail.com*、 *msn.com* 或 *live.com*。
 - 非 Microsoft 电子邮件帐户，如 Yahoo！提供的帐户 或 Google。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
 - 一个 GitHub 帐户。 此帐户必须与 Microsoft 帐户链接。
 
@@ -198,16 +198,16 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
     !["登录选项" 链接](./media/how-to-configure-student-usage/signin-options.png)
 
-1. 在 " **登录选项** " 窗口中，选择 " **用 GitHub 登录** "。
+1. 在 " **登录选项** " 窗口中，选择 " **用 GitHub 登录**"。
 
     !["用 GitHub 登录" 链接](./media/how-to-configure-student-usage/signin-github.png)
 
-    在出现提示时，学生会创建一个链接到其 GitHub 帐户的 Microsoft 帐户。 如果选择 " **下一步** "，则会自动执行链接。 然后，它们会立即登录并连接到教室实验室。
+    在出现提示时，学生会创建一个链接到其 GitHub 帐户的 Microsoft 帐户。 如果选择 " **下一步**"，则会自动执行链接。 然后，它们会立即登录并连接到教室实验室。
 
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>将用户列表导出到 CSV 文件
 
 1. 中转到 " **用户** " 窗格。
-1. 在工具栏上，选择 "省略号 ( **...** ") ，然后选择 " **导出 CSV** "。 
+1. 在工具栏上，选择 "省略号 (**...** ") ，然后选择 " **导出 CSV**"。 
 
     !["导出 CSV" 按钮](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
@@ -218,4 +218,4 @@ CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) �
 
 - 对于管理员： [创建和管理实验室帐户](how-to-manage-lab-accounts.md)
 - 对于实验室所有者： [创建和管理实验室](how-to-manage-classroom-labs.md) 并 [设置和发布模板](how-to-create-manage-template.md)
-- 对于实验室用户： [访问教室实验室](how-to-use-classroom-lab.md)
+- 对于实验室用户： [访问实验室](how-to-use-classroom-lab.md)

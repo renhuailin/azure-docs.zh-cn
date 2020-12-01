@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ecb034ae621c935c3ebcd5b480e116c2cb1d864f
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015657"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435529"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>发布和订阅 Azure IoT Edge
 
@@ -27,7 +27,7 @@ ms.locfileid: "95015657"
 ## <a name="pre-requisites"></a>先决条件
 
 - 具有有效订阅的 Azure 帐户
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` 安装了 CLI 扩展的 Azure CLI。 有关详细信息，请参阅 [适用于 azure Azure CLI 的 Azure IoT 扩展安装步骤](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot)。
+- [Azure CLI](/cli/azure/) `azure-iot` 安装了 CLI 扩展的 Azure CLI。 有关详细信息，请参阅 [适用于 azure Azure CLI 的 Azure IoT 扩展安装步骤](/cli/azure/azure-cli-reference-for-iot)。
 - SKU 的 **IoT 中心** ： F1、S1、S2 或 S3。
 - 具有 **版本1.2 或更高版本的 IoT Edge 设备**。 由于 IoT Edge MQTT broker 目前为公共预览版，因此请在 edgeHub 容器上将以下环境变量设置为 true，以启用 MQTT broker：
 
@@ -36,7 +36,7 @@ ms.locfileid: "95015657"
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- IoT Edge 设备上安装了 **Mosquitto 客户端**。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的常用 Mosquitto 客户端。 可以改为使用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
+- IoT Edge 设备上安装了 **Mosquitto 客户端**。 本文使用常见的 Mosquitto 客户端 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)。 可以改为使用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -62,28 +62,28 @@ ms.locfileid: "95015657"
 
 ### <a name="authentication"></a>身份验证
 
-要使 MQTT 客户端对其自身进行身份验证，首先需要将连接数据包发送到 MQTT broker，以在其名称中启动连接。 此数据包提供三部分身份验证信息： a `client identifier` 、 `username` 和 `password` ：
+要使 MQTT 客户端对其自身进行身份验证，首先需要将连接数据包发送到 MQTT broker，以在其名称中启动连接。 此数据包提供三部分身份验证信息： `client identifier` 、、 `username` 和 `password` ：
 
--   此 `client identifier` 字段是 IoT 中心中的设备名称或模块名称。 它使用以下语法：
+- 此 `client identifier` 字段是 IoT 中心中的设备名称或模块名称。 它使用以下语法：
 
-    - 对于设备： `<device_name>`
+  - 对于设备： `<device_name>`
 
-    - 对于模块： `<device_name>/<module_name>`
+  - 对于模块： `<device_name>/<module_name>`
 
    为了连接到 MQTT broker，设备或模块必须在 IoT 中心内注册。
 
-   请注意，代理将不允许使用相同的凭据连接两个客户端。 如果第二个客户端使用相同的凭据进行连接，则代理将断开已连接的客户端。
+   代理不允许使用相同的凭据从多个客户端连接。 如果第二个客户端使用相同的凭据进行连接，则代理将断开已连接的客户端。
 
 - 此 `username` 字段派生自设备或模块名称，以及设备所属的 IoTHub 名称，使用以下语法：
 
-    - 对于设备： `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - 对于设备： `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - 对于模块： `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - 对于模块： `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - `password`连接数据包的字段取决于身份验证模式：
 
-    - 如果使用 [对称密钥身份验证](how-to-authenticate-downstream-device.md#symmetric-key-authentication)，则该 `password` 字段为 SAS 令牌。
-    - 如果是 [x.509 自签名身份验证](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)，则该 `password` 字段不存在。 在此身份验证模式下，需要 TLS 通道。 客户端需要连接到端口8883以建立 TLS 连接。 在 TLS 握手期间，MQTT broker 请求客户端证书。 此证书用于验证客户端的身份，因此， `password` 稍后在发送连接数据包时不需要该字段。 同时发送客户端证书和密码字段将导致错误，并且连接将关闭。 MQTT 库和 TLS 客户端库通常可以在启动连接时发送客户端证书。 你可以在 [使用用于客户端身份验证的 X509 证书](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)部分中查看分步示例。
+  - 使用 [对称密钥身份验证](how-to-authenticate-downstream-device.md#symmetric-key-authentication)时，该 `password` 字段为 SAS 令牌。
+  - 使用 [x.509 自签名身份验证](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)时，该 `password` 字段不存在。 在此身份验证模式下，需要 TLS 通道。 客户端需要连接到端口8883以建立 TLS 连接。 在 TLS 握手期间，MQTT broker 请求客户端证书。 此证书用于验证客户端的身份，因此， `password` 稍后在发送连接数据包时不需要该字段。 同时发送客户端证书和密码字段将导致错误，并且连接将关闭。 MQTT 库和 TLS 客户端库通常可以在启动连接时发送客户端证书。 你可以在 [使用用于客户端身份验证的 X509 证书](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)部分中查看分步示例。
 
 通过 IoT Edge 部署的模块使用 [对称密钥身份验证](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，并可以调用本地 [IOT EDGE 工作负荷 API](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) 以编程方式获取 SAS 令牌（即使在脱机时）。
 
@@ -97,7 +97,7 @@ ms.locfileid: "95015657"
 每个授权策略语句都包含 `identities` 、 `allow` 或效果的组合 `deny` `operations` `resources` ：
 
 - `identities` 描述策略的主题。 它必须映射到 `client identifier` 客户端在其连接数据包中发送的。
-- `allow` 或 `deny` effect 定义是允许还是拒绝操作。
+- `allow` 或 `deny` 效果定义是否允许或拒绝操作。
 - `operations` 定义要授权的操作。 `mqtt:connect`， `mqtt:publish` 和 `mqtt:subscribe` 现在是三个受支持的操作。
 - `resources` 定义策略的对象。 它可以是使用 [MQTT 通配符](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)定义的主题或主题模式。
 
@@ -163,16 +163,18 @@ ms.locfileid: "95015657"
 ```
 
 编写授权策略时需要注意以下几点：
+
 - 它需要不限的 `$edgeHub` 架构版本1。2
 - 默认情况下，所有操作都将被拒绝。
-- 授权语句的计算顺序与 JSON 定义中显示的顺序不同。 首先，查看 `identities` 并选择与请求匹配的第一个 allow 或 deny 语句。 如果 allow 和 deny 语句之间发生冲突，deny 语句入选。
-- 几个变量 (例如，可在授权策略中使用替换) ：
-    - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，如果是 `myDevice` 设备，则为 `myEdgeDevice/SampleModule` 模块。
-    - `{{iot:device_id}}` 表示当前连接的设备的标识。 例如，如果是 `myDevice` 设备，则为 `myEdgeDevice` 模块。
-    - `{{iot:module_id}}` 表示当前连接的模块的标识。 例如，在设备的情况下，为 `SampleModule` 模块。
-    - `{{iot:this_device_id}}` 表示运行授权策略 IoT Edge 设备的标识。 例如，`myIoTEdgeDevice`。
+- 授权语句将按照它们在 JSON 定义中的显示顺序进行评估。 首先，查看 `identities` 并选择与请求匹配的第一个 allow 或 deny 语句。 如果 allow 和 deny 语句之间发生冲突，deny 语句入选。
+- 例如， (多个变量，可以在授权策略中使用替换) ：
+    - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，像这样的设备标识 `myDevice` 或模块标识 `myEdgeDevice/SampleModule` 。
+    - `{{iot:device_id}}` 表示当前连接的设备的标识。 例如，像这样的设备标识 `myDevice` 或运行模块的设备标识 `myEdgeDevice` 。
+    - `{{iot:module_id}}` 表示当前连接的模块的标识。 对于连接的设备，此变量为空白; 对于的模块标识，此变量为空 `SampleModule` 。
+    - `{{iot:this_device_id}}` 表示运行授权策略 IoT Edge 设备的标识。 例如 `myIoTEdgeDevice`。
 
-与用户定义的主题相比，处理 IoT 中心主题的权限略有不同。 以下是要记住的要点：
+与用户定义的主题相比，处理 IoT 中心主题的授权的方式略有不同。 以下是要记住的要点：
+
 - Azure IoT 设备或模块需要显式授权规则才能连接到 IoT Edge hub MQTT broker。 下面提供了默认连接授权策略。
 - 默认情况下，Azure IoT 设备或模块可以访问自己的 IoT 中心主题，无需任何显式授权规则。 但是，在这种情况下，授权源自父/子关系，必须设置这些关系。 IoT Edge 模块会自动设置为其 IoT Edge 设备的子级，但设备需要显式设置为其 IoT Edge 网关的子网。
 - Azure IoT 设备或模块可以访问其他设备或模块的主题，这些主题提供了相应的显式授权规则。
@@ -230,7 +232,7 @@ ms.locfileid: "95015657"
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
        ```
     
-       其中3600是 SAS 令牌的持续时间（以秒为单位） (例如 3600 = 1 小时) 。
+       其中3600是 SAS 令牌的持续时间（以秒为单位） (例如，3600 = 1 小时) 。
     
     - 对于模块：
     
@@ -238,9 +240,9 @@ ms.locfileid: "95015657"
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
        ```
     
-       其中3600是 SAS 令牌的持续时间（以秒为单位） (例如 3600 = 1 小时) 。
+       其中3600是 SAS 令牌的持续时间（以秒为单位） (例如，3600 = 1 小时) 。
 
-3. 复制 SAS 令牌，该令牌是输出中对应于 "SAS" 密钥的值。 下面是上述 Azure CLI 命令的示例输出：
+3. 复制 SAS 令牌，它是与输出中的 "SAS" 键相对应的值。 下面是上述 Azure CLI 命令的示例输出：
 
     ```
     {
@@ -327,7 +329,7 @@ mosquitto_sub \
 
 `<edge_device_address>`  =  `localhost` 在此示例中，由于客户端在与 IoT Edge 相同的设备上运行。
 
-请注意，在此第一个示例中使用端口 1883 (MQTT) ，例如不使用 TLS。 第二部分显示了端口 8883 (MQTTS) 的另一个示例，例如启用了 TLS。
+请注意，在此第一个示例中，将使用端口 1883 (MQTT) ，不包含 TLS。 接下来的部分将显示端口 8883 (MQTTS) 的另一个示例（已启用 TLS）。
 
 **Sub_client** MQTT 客户端现已启动，正在等待传入消息 `test_topic` 。
 
@@ -384,7 +386,7 @@ mosquitto_pub \
 
 ### <a name="receive-direct-methods"></a>接收直接方法
 
-接收直接方法非常类似于接收完整的孪生，客户端需要确认是否已收到呼叫。 首先，客户端订阅 IoT 中心特殊主题 `$iothub/methods/POST/#` 。 然后，在本主题中收到直接方法后，客户端需要 `rid` 从收到直接方法的子主题中提取请求标识符，最后在 IoT 中心的特殊主题上发布确认消息 `$iothub/methods/res/200/<request_id>` 。
+接收直接方法类似于接收完整的孪生，客户端需要确认是否已收到呼叫。 首先，客户端订阅 IoT 中心特殊主题 `$iothub/methods/POST/#` 。 然后，在本主题中收到直接方法后，客户端需要 `rid` 从收到直接方法的子主题中提取请求标识符，最后在 IoT 中心的特殊主题上发布确认消息 `$iothub/methods/res/200/<request_id>` 。
 
 ### <a name="send-direct-methods"></a>发送直接方法
 

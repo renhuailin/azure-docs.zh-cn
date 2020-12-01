@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 264d103cd5f1459a6d29a35a1ecefc595285587a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647930"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433982"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虚拟机设置实验室
 
@@ -115,6 +115,6 @@ ms.locfileid: "94647930"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [创建和管理教室实验室](how-to-manage-classroom-labs.md)
+- [创建和管理实验室](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS 计算机辅助设计 (CAD) 类类型](class-type-solidworks.md)
 - [MATLAB (矩阵实验室) 类类型](class-type-matlab.md)

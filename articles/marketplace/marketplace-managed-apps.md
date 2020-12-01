@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 09/04/2020
-ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4fb3354b7035149b80191528b2f5335b593b764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484233"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433540"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure 托管应用程序的发布指南
 
@@ -34,7 +34,7 @@ Azure *托管应用程序* 产品/服务是在 azure Marketplace 中发布 azure
 |---------|---------|
 |Azure 订阅 | 托管应用程序必须部署到客户的订阅中，但可以由第三方管理。 |
 |计费和计量    |  客户的 Azure 订阅中提供了资源。 使用即用即付支付模型的 Vm 通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅进行计费。 <br><br> 对于自带许可证 Vm，Microsoft 会对客户订阅中产生的任何基础结构成本计费，但你直接向客户收取软件许可费用。        |
-|与 Azure 兼容的虚拟硬盘 (VHD)     |   必须基于 Windows 或 Linux 构建 VM。<br><br>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](../virtual-machines/linux/endorsed-distros.md)。<br><br>有关创建 Windows VHD 的详细信息，请参阅 [创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。 |
+|与 Azure 兼容的虚拟硬盘 (VHD)     |   必须基于 Windows 或 Linux 构建 VM。<br><br>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](../virtual-machines/linux/endorsed-distros.md)。<br><br>有关创建 Windows VHD 的详细信息，请参阅 [创建 Azure 应用程序产品/服务](./create-new-azure-apps-offer.md)。 |
 
 ---
 
@@ -51,4 +51,4 @@ Azure *托管应用程序* 产品/服务是在 azure Marketplace 中发布 azure
 若要注册并开始使用合作伙伴中心，请执行以下操作：
 
 - [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
-- 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md) 。
+- 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](./create-new-azure-apps-offer.md) 。

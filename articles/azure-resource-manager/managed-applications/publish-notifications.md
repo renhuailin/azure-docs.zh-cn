@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec17b98daa8eca31cda076921288e2838960511
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86054519"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434526"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
 
@@ -61,7 +61,7 @@ Azure 托管应用程序通知可让发布者根据托管应用程序实例的�
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>添加 Azure 市场托管应用程序通知
-有关详细信息，请参阅[创建 Azure 应用程序套餐](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
+有关详细信息，请参阅[创建 Azure 应用程序套餐](../../marketplace/create-new-azure-apps-offer.md)。
 
 ![Azure 门户中的 Azure 市场托管应用程序通知](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>事件触发器

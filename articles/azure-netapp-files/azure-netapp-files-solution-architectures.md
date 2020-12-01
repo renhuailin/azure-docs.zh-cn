@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 11/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 0818d113b5475e847c009f979345e103d6e089bb
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 44553d7b88d6b911769c7449d71d71418aaeba6e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938859"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434883"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -47,6 +47,7 @@ ms.locfileid: "91938859"
 
 * [构建你自己的 Azure NFS？将 Linux 文件共享 Wrestling 到云中](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
 * [全局文件缓存/Azure NetApp 文件部署](https://youtu.be/91LKb1qsLIM)
+* [Azure NetApp 文件的云遵从性](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -117,7 +118,7 @@ ms.locfileid: "91938859"
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>分析
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的新共享文件系统](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
 * [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)

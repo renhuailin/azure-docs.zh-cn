@@ -3,12 +3,12 @@ title: 使用适用于 hackathon 的 Azure 实验室服务
 description: 本文介绍如何使用 Azure 实验室服务来创建可用于运行编程马拉松的实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434254"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>将 Azure 实验室服务用于下一 hackathon
 Azure 实验室服务设计为轻量级且易于使用，因此你可以为 hackathon 快速启动虚拟机 (Vm) 的新实验室。  使用以下清单可确保你的 hackathon 尽可能顺利地进行。 此清单应由负责创建和管理 hackathon 实验室的 IT 部门或教职员完成。 
@@ -86,4 +86,4 @@ Azure 实验室服务设计为轻量级且易于使用，因此你可以为 hack
         有关详细信息，请参阅 [如何向用户发送邀请](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) 并 [连接到 Linux vm](how-to-use-remote-desktop-linux-student.md?branch=master)。 
 
 ## <a name="next-steps"></a>后续步骤
-首先，按照下面这篇文章中的说明操作，在课堂实验室中创建实验室帐户：[教程：使用 Azure 实验室服务创建实验室帐户](tutorial-setup-lab-account.md)。
+按照文章： [教程：使用 Azure 实验室服务设置实验室帐户](tutorial-setup-lab-account.md)中的说明开始，在实验室中创建实验室帐户。

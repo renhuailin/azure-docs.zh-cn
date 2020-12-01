@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中连接到对等网络 | Microsoft Docs
 description: 了解如何将实验室网络连接到其他对等网络。 例如，在 Azure 中将本地组织/大学网络连接到实验室的虚拟网络。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647981"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434237"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>在 Azure 实验室服务中将实验室的网络连接到对等虚拟网络
 
@@ -26,7 +26,7 @@ ms.locfileid: "94647981"
 某些本地网络通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 或[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)连接到 Azure 虚拟网络。 这些服务必须在 Azure 实验室服务之外设置。 若要详细了解如何使用 ExpressRoute 将本地网络连接到 Azure，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。 对于使用虚拟网关的本地连接，网关、指定的虚拟网络和实验室帐户必须都位于同一区域。
 
 > [!NOTE]
-> 创建将与实验室帐户对等互连的 Azure 虚拟网络时，必须了解虚拟网络的区域如何影响创建教室实验室的位置。  有关详细信息，请参阅 [regions\locations](./administrator-guide.md#regionslocations) 上的管理员指南部分。
+> 创建将与实验室帐户对等互连的 Azure 虚拟网络时，务必要了解虚拟网络的区域如何影响创建实验室的位置。  有关详细信息，请参阅 [regions\locations](./administrator-guide.md#regionslocations) 上的管理员指南部分。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>创建实验室帐户时进行配置
 

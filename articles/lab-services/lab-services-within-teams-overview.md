@@ -3,12 +3,12 @@ title: Microsoft 团队内的 Azure 实验室服务
 description: 概述了如何在 Microsoft 团队中使用 Azure 实验室服务。
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047822"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433913"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft 团队内的 Azure 实验室服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "92047822"
 
 Azure 实验室服务与 Microsoft 团队的集成将帮助教师设置课堂环境并在团队内提供虚拟实验室环境 (类) ： 
 
-* 教师可以设置课堂实验室，使学生可以从团队内访问其 Vm，而无需离开团队并导航到 [Azure 实验室服务网站](https://labs.azure.com)。
+* 教师可以设置实验室，使学生可以从团队内访问其 Vm，而无需离开团队并导航到 [Azure 实验室服务网站](https://labs.azure.com)。
 * 单一登录 (从团队到 Azure 实验室服务的 SSO) 。
 * 团队和实验室所有者不需要在两个不同的系统中维护类花名册-实验室用户列表会自动填充于团队成员身份，每24小时自动执行一次同步。 
 * 首次发布模板 VM 后，实验室容量 (即，实验室中的 Vm 数) 会根据团队成员身份添加/删除用户自动进行调整。 

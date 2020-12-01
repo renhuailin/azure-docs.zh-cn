@@ -3,12 +3,12 @@ title: 如何访问 Azure 实验室服务中的课堂实验室 | Microsoft Docs
 description: 了解如何注册到教室实验室，查看可以访问的所有实验室，在实验室中启动/停止 VM，并连接到 VM。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433132"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 
@@ -26,26 +26,26 @@ ms.locfileid: "91946104"
 
     ![可访问 VM](./media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
-    1. 在磁贴的顶部，可以看到**实验室的名称**。
-    1. 在其右侧，可以看到代表 VM 的**操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
+    1. 在磁贴的顶部，可以看到 **实验室的名称**。
+    1. 在其右侧，可以看到代表 VM 的 **操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
     1. 可以在磁贴底部看到用于启动/停止 VM 以及连接到 VM 的图标/按钮。 
     1. 在按钮的右侧，可以看到 VM 的状态。 确认你看到 VM 的状态为“已停止”。
 
         ![VM 处于停止状态](./media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
 ## <a name="start-or-stop-the-vm"></a>启动或停止 VM
-1. 通过选择第一个按钮**启动** VM，如下图所示。 此过程需要一些时间。  
+1. 通过选择第一个按钮 **启动** VM，如下图所示。 此过程需要一些时间。  
 
     ![启动 VM](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 4. 确认 VM 的状态设置为“正在运行”。 
 
     ![VM 处于正在运行状态](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-    请注意，第一个按钮的图标已更改为表示**停止**操作。 可以选择此按钮以停止 VM。 
+    请注意，第一个按钮的图标已更改为表示 **停止** 操作。 可以选择此按钮以停止 VM。 
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
 
-1. 选择下图中所示的第二个按钮以**连接**到实验室的 VM。 
+1. 选择下图中所示的第二个按钮以 **连接** 到实验室的 VM。 
 
     ![连接到 VM](./media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. 执行以下步骤中的一个： 
@@ -59,19 +59,19 @@ ms.locfileid: "91946104"
 - 如果课程正在进行（在课程计划内），则进度栏呈灰色显示，表示未使用配额小时数。 
 
     ![灰色进度栏](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
-- 如果未分配配额（零小时），则会显示**仅在课程期间可用**的文本以代替进度栏。 
+- 如果未分配配额（零小时），则会显示 **仅在课程期间可用** 的文本以代替进度栏。 
     
     ![未设置配额时的状态](./media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
-- 如果**用尽了配额**，则进度栏的颜色为**红色**。 
+- 如果 **用尽了配额**，则进度栏的颜色为 **红色**。 
 
     ![红色进度栏](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-red-color.png)
-- 当进度栏超出了实验室的计划时间并且已使用了部分配额时间时，进度栏的颜色为**蓝色**。 
+- 当进度栏超出了实验室的计划时间并且已使用了部分配额时间时，进度栏的颜色为 **蓝色**。 
 
     ![蓝色进度栏](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
-## <a name="view-all-the-classroom-labs"></a>查看所有课堂实验室
-在注册到实验室以后，可以通过下述步骤查看所有的教室实验室： 
+## <a name="view-all-the-labs"></a>查看所有实验室
+注册到实验室后，可以通过执行以下步骤来查看所有实验室： 
 
 1. 导航到 [https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 2. 使用注册到实验室时使用过的用户帐户登录到服务。 

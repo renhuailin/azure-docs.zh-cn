@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 实验室服务中设置 VM 密码 | Microsoft Docs
-description: 了解如何在 Azure 实验室服务的课堂实验室中为虚拟机 (VM) 设置和重置密码。
+description: 了解如何在 Azure 实验室服务实验室) 为虚拟机 (Vm 设置和重置密码。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379683"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434220"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
 本文演示如何完成以下任务：
@@ -102,4 +102,4 @@ ms.locfileid: "93379683"
 ## <a name="next-steps"></a>后续步骤
 若要了解你（作为实验室所有者）可以配置的其他学生使用选项，请参阅以下文章：[学生使用配置](how-to-configure-student-usage.md)。
 
-若要了解学生如何重置其 VM 密码，请参阅[为课堂实验室中的虚拟机设置或重置密码（学生）](how-to-set-virtual-machine-passwords-student.md)。
+若要了解学生如何重置其 Vm 的密码，请参阅 [在实验室中为虚拟机设置或重置密码 (学生) ](how-to-set-virtual-machine-passwords-student.md)。

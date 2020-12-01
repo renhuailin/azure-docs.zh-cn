@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536313"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435478"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
-操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
+操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
 
 本文演示如何在 Azure 门户中创建和管理操作组。
 
@@ -138,7 +138,7 @@ ms.locfileid: "95536313"
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中的现有 HTTP 触发器终结点。
 
-操作组中的函数操作数可能有限。
+一个操作组中可以存在有限数量的 Function 操作。
 
 ### <a name="itsm"></a>ITSM
 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overview.md)。

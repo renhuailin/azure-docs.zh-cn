@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435444"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -90,10 +90,12 @@ Azure AD 联接适用于托管环境和联合环境。
 
 如果在下列情况下创建用户：
 
-- **本地 Active Directory** ，需要使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 将其同步到 Azure AD。 
-- **Azure AD** ，无需进行其他设置。
+- **本地 Active Directory**，需要使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 将其同步到 Azure AD。 
+- **Azure AD**，无需进行其他设置。
 
 Azure AD 加入设备不支持与 Azure AD UPN 不同的本地 UPN。 如果用户使用本地 UPN，你应计划转换成使用其 Azure AD 中的主 UPN。
+
+UPN 更改仅受 Windows 10 2004 更新的支持。 在更改其 Upn 后，具有此更新的设备上的用户将不会有任何问题。 对于 Windows 10 2004 更新之前的设备，用户将在其设备上出现 SSO 和条件性访问问题。 他们需要使用新 UPN 通过 "其他用户" 磁贴登录 Windows，以解决此问题。 
 
 ## <a name="assess-your-device-management"></a>评估设备管理
 
@@ -187,7 +189,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 启动 Windows 10 2004 更新后，用户还可以从 Azure AD 注册的 Windows 10 设备使用远程桌面连接到 Azure AD 加入的设备。 
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项
-**注意** ：无法使用系统准备工具（ (Sysprep) 或类似的映像工具）部署 Azure AD 联接的设备
+**注意**：无法使用系统准备工具（ (Sysprep) 或类似的映像工具）部署 Azure AD 联接的设备
 
 可以使用以下方法预配 Azure AD 联接：
 
@@ -243,7 +245,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 可能必须首先添加 MDM 提供程序，然后才可以配置移动性设置。
 
-**若要添加 MDM 提供程序** ：
+**若要添加 MDM 提供程序**：
 
 1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`。 
 1. 单击“添加应用程序”。
@@ -261,8 +263,8 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 根据范围，会发生以下某种情况： 
 
-- **用户在 MDM 范围内** ：如果有 Azure AD Premium 订阅，则自动进行 MDM 注册以及 Azure AD 联接。 范围内所有用户必须具有相应的 MDM 许可证。 如果此方案中 MDM 注册失败，Azure AD 联接也将失败。
-- **用户不在 MDM 范围内** ：如果用户不在 MDM 范围内，则无需任何 MDM 注册即可完成 Azure AD 联接。 这会产生非管理的设备。
+- **用户在 MDM 范围内**：如果有 Azure AD Premium 订阅，则自动进行 MDM 注册以及 Azure AD 联接。 范围内所有用户必须具有相应的 MDM 许可证。 如果此方案中 MDM 注册失败，Azure AD 联接也将失败。
+- **用户不在 MDM 范围内**：如果用户不在 MDM 范围内，则无需任何 MDM 注册即可完成 Azure AD 联接。 这会产生非管理的设备。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -284,7 +286,7 @@ MAM 不适用于 Azure AD 联接。
 
 如果想要启用 Azure AD 的状态漫游，以便用户可以跨设备同步其设置，请参阅[在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md)。 
 
-**建议** ：即使对于混合 Azure AD 联接设备，也启用此设置。
+**建议**：即使对于混合 Azure AD 联接设备，也启用此设置。
 
 ## <a name="configure-conditional-access"></a>配置条件访问
 

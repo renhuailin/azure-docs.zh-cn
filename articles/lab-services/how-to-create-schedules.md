@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 实验室服务中创建课堂实验室日程安排 | Microsoft Docs
-description: 了解如何在 Azure 实验室服务中创建课堂实验室日程安排，以便实验室中的 VM 能够在指定时间启动和关闭。
+title: 在 Azure 实验室服务中创建实验室计划 |Microsoft Docs
+description: 了解如何在 Azure 实验室服务中创建实验室的计划，以便实验室中的 Vm 在指定时间启动和关闭。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326433"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434018"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂实验室日程安排 
+# <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理实验室计划 
 借助日程安排，可以配置课堂实验室，这样实验室中的 VM 就能在指定时间自动启动和关闭。 可以定义一次性日程安排，也可以定义定期日程安排。 下面的过程逐步介绍了如何创建和管理课堂实验室日程安排： 
 
 > [!IMPORTANT]
@@ -28,16 +28,16 @@ ms.locfileid: "91326433"
 1. 切换到“日程安排”页，再选择工具栏上的“添加计划事件”。 
 
     ![显示 Azure 实验室服务 "计划" 页的屏幕截图，其中选择了 "添加计划" 按钮。](./media/how-to-create-schedules/add-schedule-button.png)
-2. 确认已选择“标准”作为“事件类型”。  选择“仅启动”，这样就可以只指定 VM 的启动时间。**** 选择“仅停止”，这样就可以只指定 VM 的停止时间。**** 
-7. 在“重复”部分，选择当前计划。**** 
+2. 确认已选择“标准”作为“事件类型”。  选择“仅启动”，这样就可以只指定 VM 的启动时间。 选择“仅停止”，这样就可以只指定 VM 的停止时间。 
+7. 在“重复”部分，选择当前计划。 
 
     ![“日程安排”页上的“添加日程安排”按钮](./media/how-to-create-schedules/select-current-schedule.png)
 5. 在“重复”对话框中，执行以下步骤：
     1. 对于“重复”字段，请确认已设置“每周” 。 
-    3. 指定“启动日期”。****
-    4. 指定“启动时间”****，这是你希望 VM 启动的时间。
-    5. 指定“停止时间”****，这是 VM 将要关闭的时间。 
-    6. 指定“时区”****，该时区适用于已指定的启动时间和停止时间。 
+    3. 指定“启动日期”。
+    4. 指定“启动时间”，这是你希望 VM 启动的时间。
+    5. 指定“停止时间”，这是 VM 将要关闭的时间。 
+    6. 指定“时区”，该时区适用于已指定的启动时间和停止时间。 
     2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一到星期四”。 
     8. 选择“保存”。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "91326433"
 
 ![日历视图中的日程安排](./media/how-to-create-schedules/schedules-calendar.png)
 
-选择右上角的“今天”**** 按钮可以在日历中切换到当前日期。 选择向左箭头**** 和向右箭头**** 可以在日历中分别切换到上周和下周。 
+选择右上角的“今天”按钮可以在日历中切换到当前日期。 选择向左箭头和向右箭头可以在日历中分别切换到上周和下周。 
 
 ## <a name="edit-a-schedule"></a>编辑日程安排
 当你在日历中选择突出显示的计划时，将看到用于 **编辑** 或 **删除** 计划的按钮。 
@@ -77,4 +77,4 @@ ms.locfileid: "91326433"
 - [以管理员身份创建并管理实验室帐户](how-to-manage-lab-accounts.md)
 - [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
 - [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
-- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)
+- [作为实验室用户，访问实验室](how-to-use-classroom-lab.md)
