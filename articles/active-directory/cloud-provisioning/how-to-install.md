@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173964"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348528"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安装 Azure AD Connect 云预配代理
 本文档将指导你完成 Azure Active Directory (Azure AD) Connect 预配代理的安装过程，以及如何在 Azure 门户中对其进行初始配置。
@@ -54,12 +54,12 @@ ms.locfileid: "96173964"
    ![“Microsoft Azure AD Connect 预配代理包”屏幕](media/how-to-install/install-1.png)</br>
  8. 此操作完成后，配置向导将启动。 使用 Azure AD 全局管理员帐户登录。
  9. 在 " **配置服务帐户" 屏幕** 上，选择 " **创建 gMSA** " 或 " **使用自定义 gMSA**"。  如果允许代理创建帐户，则将其命名为 provAgentgMSA $。 如果指定 " **使用自定义 gMSA** "，系统会提示提供此帐户。
- 10. 输入用于创建将用于运行代理服务的组托管服务帐户的域管理员凭据。 单击“下一步”。  
+ 10. 输入用于创建将用于运行代理服务的组托管服务帐户的域管理员凭据。 单击“下一步”  。  
    ![创建 gMSA](media/how-to-install/install-12.png)</br>
  11. 在“Connect Active Directory”屏幕上，选择“添加目录”。 然后使用你的 Active Directory 管理员帐户登录。 此操作将添加本地目录。 
- 12. 或者，你可以通过选择 " **选择域控制器优先级** " 和 "对域控制器的列表排序" 来管理代理将使用的域控制器的首选项。   单击" **确定**"。
-  ![定购域 controlllers](media/how-to-install/install-2a.png)</br>
- 13. 选择“**下一步**”。
+ 12. 或者，你可以通过选择 " **选择域控制器优先级** " 和 "对域控制器的列表排序" 来管理代理将使用的域控制器的首选项。   单击 **“确定”** 。
+  ![订购域控制器](media/how-to-install/install-2a.png)</br>
+ 13. 选择“**下一页**”。
   ![“Connect Active Directory”屏幕](media/how-to-install/install-3a.png)</br>
  14.  在 " **代理安装** " 屏幕上确认设置，并单击 " **确认**"。
   ![确认设置](media/how-to-install/install-11.png)</br>

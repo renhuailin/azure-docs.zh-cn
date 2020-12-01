@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336582"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345723"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,10 +49,10 @@ ms.locfileid: "93336582"
 |[Cosmos DB 帐户读者角色](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以读取 Azure Cosmos DB 帐户数据。 允许检索读取密钥。 |
 
 > [!IMPORTANT]
-> Azure Cosmos DB 中对基于角色的访问控制的支持仅适用于控制平面操作。 通过主键或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对数据的访问](secure-access-to-data.md)一文。
+> Azure Cosmos DB 中对基于角色的访问控制的支持仅适用于控制平面操作。 将通过主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对数据的访问](secure-access-to-data.md)一文。
 
 > [!TIP] 
-> 分配角色时，请仅分配所需的访问权限。 如果服务只需读取数据，请向托管标识分配“Cosmos DB 帐户读取者”角色  。 有关最低权限访问权限的重要性的详细信息，请参阅 [特权帐户的低公开部分](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) 。
+> 分配角色时，请仅分配所需的访问权限。 如果服务只需读取数据，请向托管标识分配“Cosmos DB 帐户读取者”角色  。 若要详细了解最小特权访问权限的重要性，请参阅[降低特权帐户的泄露风险](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)一文。
 
 在此方案中，函数应用将读取水族箱的温度，然后将此数据写回到 Azure Cosmos DB 中的容器。 由于函数应用必须写入数据，因此你需要分配“DocumentDB 帐户参与者”角色  。 
 
@@ -68,9 +68,9 @@ ms.locfileid: "93336582"
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="显示了“添加角色分配”窗格的屏幕截图。":::
 
-   * **角色** ：选择“DocumentDB 帐户参与者” 
-   * **将访问权限分配到** ：在“选择系统分配的托管标识”子部分下，选择“函数应用”   。
-   * **选择** ：窗格中将会填充你的订阅中具有托管系统标识的所有函数应用  。 在本例中，请选择“FishTankTemperatureService”函数应用  ： 
+   * **角色**：选择“DocumentDB 帐户参与者” 
+   * **将访问权限分配到**：在“选择系统分配的托管标识”子部分下，选择“函数应用”   。
+   * **选择**：窗格中将会填充你的订阅中具有托管系统标识的所有函数应用  。 在本例中，请选择“FishTankTemperatureService”函数应用  ： 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="显示了由示例填充的“添加角色分配”窗格的屏幕截图。":::
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-现在，你已准备好[部署函数应用](../azure-functions/functions-create-first-function-vs-code.md)。
+现在，你已准备好[部署函数应用](../azure-functions/create-first-function-vs-code-csharp.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

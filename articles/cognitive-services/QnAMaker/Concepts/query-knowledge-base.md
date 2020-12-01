@@ -3,12 +3,12 @@ title: 查询知识库-QnA Maker
 description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376702"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346199"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查询知识库以获取答案
 
@@ -16,9 +16,9 @@ ms.locfileid: "94376702"
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker 如何处理用户查询以选择最佳答案
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-训练和 [发布](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) 的 QnA Maker 知识库通过 [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
+训练和 [发布](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) 的 QnA Maker 知识库通过 [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
 
 ![用户查询的排名模型过程](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "94376702"
 
 |步骤|目的|
 |--|--|
-|1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
+|1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
 |4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。|
@@ -39,9 +39,9 @@ ms.locfileid: "94376702"
 
 使用的功能包括但不限于 word 级语义、语料库中的术语级别重要性，以及深入了解的语义模型，以确定两个文本字符串之间的相似性和相关性。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-训练和 [发布](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) 的 QnA Maker 知识库通过 [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
+训练和 [发布](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) 的 QnA Maker 知识库通过 [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
 
 ![用户查询预览的排名模型流程](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "94376702"
 
 |步骤|目的|
 |--|--|
-|1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
+|1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
 |4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。|

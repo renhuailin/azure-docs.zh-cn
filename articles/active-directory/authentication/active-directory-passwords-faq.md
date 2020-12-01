@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b79eb842105734f0f6c145884d73f886a02dbbbc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174490"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348152"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密码重置常见问题解答
 
@@ -263,7 +263,7 @@ ms.locfileid: "96174490"
   >
 * **问：密码写回适用于哪些帐户类型？**
 
-  > **答:** 密码写回适用于从本地 Active Directory 同步到 Azure AD 的用户帐户，包括联合用户、密码哈希同步用户和传递身份验证用户。
+  > **答：** 密码写回适用于从本地 Active Directory 同步到 Azure AD （包括联合身份验证、密码哈希同步和 Pass-Through 身份验证用户）的用户帐户。
   >
   >
 * **问：密码写回是否会强制实施我的域密码策略？**

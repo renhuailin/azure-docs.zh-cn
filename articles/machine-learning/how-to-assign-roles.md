@@ -1,7 +1,7 @@
 ---
 title: 管理工作区中的角色
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 azure RBAC)  (Azure 基于角色的访问控制访问 Azure 机器学习工作区。
+description: 了解如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来访问 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,26 +11,26 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012963"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345263"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
-本文介绍如何管理 (授权) 到 Azure 机器学习工作区的访问权限。 使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)来管理对 azure 资源的访问，例如创建新资源或使用现有资源的能力。 Azure Active Directory 中 (Azure AD) 的用户将分配特定角色，这将授予对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
+本文介绍了如何管理对 Azure 机器学习工作区的访问权限（授权）。 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 用于管理对 Azure 资源的访问权限，例如，创建新资源或使用现有资源的权限。 Azure Active Directory (Azure AD) 中的用户会获得特定角色，这些角色授予对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
 
 > [!TIP]
-> 尽管本文重点介绍了 Azure 机器学习，但 Azure ML 依赖的单个服务提供了其自己的 RBAC 设置。 例如，使用本文中的信息可以配置谁可以将评分请求提交到在 Azure Kubernetes Service 上部署为 web 服务的模型。 但 Azure Kubernetes 服务提供了其自己的 Azure 角色集。 有关 Azure 机器学习的服务特定 RBAC 信息，请参阅以下链接：
+> 虽然本文着重介绍的是 Azure 机器学习，但 Azure ML 依赖的单个服务也提供了它们自己的 RBAC 设置。 例如，使用本文中的信息，可以配置谁能向 Azure Kubernetes 服务上部署为 Web 服务的模型提交评分请求。 但 Azure Kubernetes 服务提供了其自己的 Azure 角色集。 有关对于 Azure 机器学习可能有用的服务特定的 RBAC 信息，请参阅以下链接：
 >
-> * [控制对 Azure Kubernetes 群集资源的访问](../aks/azure-ad-rbac.md)
+> * [控制对 Azure Kubernetes 群集资源的访问权限](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 访问 blob 数据](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
-> 应用某些角色可能会限制 Azure 机器学习 studio 中其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，则创建计算实例的选项将无法在 studio 中使用。 此行为是预期行为，并阻止用户尝试尝试返回 "拒绝访问" 错误的操作。
+> 应用某些角色可能会限制 Azure 机器学习工作室中针对其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，工作室中就不会提供创建计算实例的选项。 此行为是正常的，可以防止用户尝试会返回“拒绝访问”错误的操作。
 
 ## <a name="default-roles"></a>默认角色
 
@@ -44,9 +44,9 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 | **自定义角色** | 允许你自定义对工作区中特定控件或数据平面操作的访问权限。 例如，提交运行、创建计算、部署模型或注册数据集。 |
 
 > [!IMPORTANT]
-> 在 Azure 中，角色访问的作用域可以限定为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息，请参阅 [AZURE RBAC 的工作原理](../role-based-access-control/overview.md#how-azure-rbac-works)。
+> 在 Azure 中，角色访问的作用域可以限定为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息，请参阅 [Azure RBAC 工作原理](../role-based-access-control/overview.md#how-azure-rbac-works)。
 
-当前没有其他特定于 Azure 机器学习的内置角色。 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
+当前没有特定于 Azure 机器学习的其他内置角色。 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="manage-workspace-access"></a>管理工作区访问权限
 
@@ -142,7 +142,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
 
-若要查看特定自定义角色的角色定义，请使用以下 Azure CLI 命令。 的 `<role-name>` 格式应与上述命令返回的格式相同：
+若要查看特定自定义角色的角色定义，请使用以下 Azure CLI 命令。 `<role-name>` 的格式应与上述命令返回的格式相同：
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -175,7 +175,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | 新建计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 | 新建计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 | 提交任何类型的运行 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| 发布管道终结点 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| 发布管道和终结点 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 资源上部署已注册的模型 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | 针对已部署的 AKS 终结点进行评分 | 不是必需 | 不是必需 | 允许以下权限的“所有者”角色、“参与者”角色或自定义角色：`"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"`（未使用 Azure Active Directory 身份验证时）或 `"/workspaces/read"`（使用令牌身份验证时） |
 | 使用交互式笔记本访问存储 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
@@ -184,13 +184,13 @@ az role definition update --role-definition update_def.json --subscription <sub-
 > [!TIP]
 > 如果第一次尝试创建工作区时遇到失败，请确保角色允许 `Microsoft.MachineLearningServices/register/action`。 可以通过此操作将 Azure 机器学习资源提供程序注册到 Azure 订阅。
 
-### <a name="user-assigned-managed-identity-with-azure-ml-compute-cluster"></a>用户为 Azure ML 计算群集分配的托管标识
+### <a name="user-assigned-managed-identity-with-azure-ml-compute-cluster"></a>用于 Azure ML 计算群集的用户分配的托管标识
 
-若要将用户分配的标识分配给 Azure 机器学习的计算群集，需要具有写入权限才能创建计算和 [托管标识操作员角色](../role-based-access-control/built-in-roles.md#managed-identity-operator)。 有关具有托管标识的 Azure RBAC 的详细信息，请参阅 [如何管理用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+若要将用户分配的标识分配给 Azure 机器学习的计算群集，需要具有写入权限才能创建计算和 [托管标识操作员角色](../role-based-access-control/built-in-roles.md#managed-identity-operator)。 若要详细了解如何将 Azure RBAC 与托管标识配合使用，请阅读[如何管理用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 ### <a name="mlflow-operations"></a>MLflow 操作
 
-若要在 Azure 机器学习工作区中执行 MLflow 操作，请使用自定义角色的以下作用域：
+若要在 Azure 机器学习工作区中执行 MLflow 操作，请使用自定义角色的以下范围：
 
 | MLflow 操作 | 范围 |
 | --- | --- |
@@ -205,11 +205,11 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 <a id="customroles"></a>
 
-## <a name="example-custom-roles"></a>示例自定义角色
+## <a name="example-custom-roles"></a>自定义角色示例
 
 ### <a name="data-scientist"></a>数据科学家
 
-允许数据科学家执行工作区内的所有操作， **但** 以下情况除外：
+允许数据科学家在工作区中执行所有操作，但以下操作 **除外**：
 
 * 创建计算
 * 将模型部署到生产 AKS 群集
@@ -245,9 +245,9 @@ az role definition update --role-definition update_def.json --subscription <sub-
 }
 ```
 
-### <a name="data-scientist-restricted"></a>数据科学家限制
+### <a name="data-scientist-restricted"></a>受限制的数据科学家
 
-允许的操作中不包含通配符的更受限制的角色定义。 它可以在工作区中执行所有操作，但以下操作 **除外**：
+一个限制性更强的角色定义，允许的操作中不包含通配符。 它可以在工作区中执行所有操作，但以下操作 **除外**：
 
 * 创建计算
 * 将模型部署到生产 AKS 群集
@@ -310,7 +310,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
      
 ### <a name="mlflow-data-scientist"></a>MLflow 数据科学家
 
-允许数据科学家执行所有 MLflow AzureML 支持的操作， **但** 以下情况除外：
+允许数据科学家执行 MLflow AzureML 支持的所有操作，但以下操作除外：
 
 * 创建计算
 * 将模型部署到生产 AKS 群集
@@ -395,7 +395,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="workspace-admin"></a>工作区管理员
 
-允许你执行工作区范围内的所有操作，但以下情况 **除外**：
+允许在工作区范围中执行所有操作，但以下操作 **除外**：
 
 * 创建一个新工作区
 * 分配订阅或工作区级别配额
@@ -425,9 +425,9 @@ az role definition update --role-definition update_def.json --subscription <sub-
 ```
 
 <a name="labeler"></a>
-### <a name="data-labeler"></a>数据 labeler
+### <a name="data-labeler"></a>数据标记员
 
-允许你定义仅限于标记数据的角色：
+允许你定义一个只能在作用域内标记数据的角色：
 
 `labeler_custom_role.json` :
 ```json
@@ -453,19 +453,19 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 使用 Azure 基于角色的访问控制 (Azure RBAC) 时，请注意以下几点：
 
-- 在 Azure 中创建资源（如工作区）时，不会直接成为资源的所有者。 你的角色继承自你在该订阅中获得授权的最高作用域角色。 例如，如果你是网络管理员，并且有权创建机器学习工作区，则会为该工作区分配网络管理员角色，而不是所有者角色。
+- 你在 Azure 中创建资源（例如工作区）时，并不会直接成为该资源的所有者。 你的角色继承自你在该订阅中获得相应授权的最高范围角色。 例如，如果你是网络管理员，有权创建机器学习工作区，则会为你分配该工作区的网络管理员角色，而不是所有者角色。
 
-- 若要在工作区中执行配额操作，需要订阅级别权限。 这意味着，只有当你在订阅作用域具有写入权限时，才能为你的托管计算资源设置订阅级配额或工作区级配额。
+- 若要在工作区中执行配额操作，需要订阅级别的权限。 这意味着，只有当你在订阅作用域具有写入权限时，才能为你的托管计算资源设置订阅级配额或工作区级配额。
 
 - 针对同一 Azure Active Directory 用户的两个角色分配具有冲突的 Actions/NotActions 部分时，如果操作在某个角色的 NotActions 中列出，但也在另一个角色中作为 Actions 列出，则此类操作可能不会生效。 若要详细了解 Azure 如何分析角色分配，请参阅 [Azure RBAC 如何确定用户是否有权访问资源](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
 
 - 若要在 VNet 中部署计算资源，需要显式拥有以下操作的权限：
-    - `Microsoft.Network/virtualNetworks/join/action` 在 VNet 资源上。
-    - `Microsoft.Network/virtualNetworks/subnet/join/action` 子网资源。
+    - VNet 资源上的 `Microsoft.Network/virtualNetworks/join/action`。
+    - 子网资源上的 `Microsoft.Network/virtualNetworks/subnet/join/action`。
     
-    有关 Azure RBAC with 网络的详细信息，请参阅 [联网内置角色](../role-based-access-control/built-in-roles.md#networking)。
+    若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)。
 
-- 在整个堆栈中，新的角色分配可以在缓存的权限上生效，这有时最多需要1小时。
+- 新的角色分配有时可能需要长达 1 小时才能生效，覆盖整个堆栈的缓存权限。
 
 ## <a name="next-steps"></a>后续步骤
 

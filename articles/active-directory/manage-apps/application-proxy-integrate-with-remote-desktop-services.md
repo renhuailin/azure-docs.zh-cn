@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997522"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348069"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -130,7 +130,7 @@ ms.locfileid: "95997522"
 
 | 身份验证方法 | 支持的客户端配置 |
 | --------------------- | ------------------------------ |
-| 预身份验证    | 使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 外接程序的 RD Web-Windows 7/10 |
+| 预身份验证    | 使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 外接程序的 RD Web-Windows 7/10 <br /> *请注意，"我的应用" 门户仅支持边缘。* |
 | 预身份验证    | RD Web 客户端-与 HTML5 兼容的 Web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更高版本)  |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
 

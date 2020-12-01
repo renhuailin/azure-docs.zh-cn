@@ -1,5 +1,5 @@
 ---
-title: AADCloudSyncTools PowerShell 模块 Azure AD Connect 云同步
+title: 用于 Azure AD Connect 云预配的 AADCloudSyncTools PowerShell 模块
 description: 本文介绍如何安装 Azure AD Connect 云预配代理。
 services: active-directory
 author: billmath
@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ce5a7a313ab0f0680558aa60b34e3ebb9b51c9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ba71d3eedbb75780c20499daa890556574494a35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255092"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348131"
 ---
-# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>AADCloudSyncTools PowerShell 模块 Azure AD Connect 云同步
+# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-provisioning"></a>用于 Azure AD Connect 云预配的 AADCloudSyncTools PowerShell 模块
 
 随着公共预览版刷新2的发布，Microsoft 引入了 AADCloudSyncTools PowerShell 模块。  此模块提供一组有用的工具，可用于帮助管理 Azure AD Connect 云同步部署。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ed1c183281aea830e9cd61c1d95c6c092adbe05c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6ad91b7cf8cd8a79654774b1b5463bc661a981d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960676"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348171"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>适用于 Azure DNS 的 Azure 安全基线
 
@@ -24,7 +24,7 @@ ms.locfileid: "94960676"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：活动日志是 Azure 中的平台日志，可提供对订阅级别事件的见解。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供对在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 DNS 区域的控制平面级别执行。
+**指导**：活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure DNS 资源执行的操作的见解。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 DNS 区域执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
@@ -64,7 +64,7 @@ ms.locfileid: "94960676"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -96,7 +96,7 @@ ms.locfileid: "94960676"
 
 **指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
-在 Azure DNS 中，存在 DNS 区域参与者角色，以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，以提供更精细的控制。 请注意，专用 DNS 区域资源使用不同的角色名称，专用 DNS 区域参与者。
+在 Azure DNS 中，存在 DNS 区域参与者角色以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，进行更细致的控制。 注意，专用 DNS 区域资源使用另一个角色名称：专用 DNS 区域参与者。
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -110,7 +110,7 @@ ms.locfileid: "94960676"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指导**：Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制使用复杂性要求和最短密码长度来创建它。 要求因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
+**指导**：Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建具有复杂性要求和最小密码长度的密码。 该要求因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
 
 **Azure 安全中心监视**：不适用
 
@@ -118,15 +118,15 @@ ms.locfileid: "94960676"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识 &amp; 访问管理监视管理帐户的数量。
+**指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和 &amp; 访问管理来监视管理帐户的数量。
 
-此外，为了帮助您跟踪专用管理帐户，可以使用 Azure 安全中心的建议，例如：
+此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心提供的建议，例如：
 
 - 应该为你的订阅分配了多个所有者
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-你还可以使用 Azure AD Privileged Identity Management 和 Azure 资源管理器启用对管理帐户的实时访问。 
+还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的即时访问。 
 
 - [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
@@ -208,7 +208,7 @@ ms.locfileid: "94960676"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
+**指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
 - [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -260,15 +260,15 @@ ms.locfileid: "94960676"
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
-**指南**： azure RBAC) 的 azure 基于角色的访问控制可为 azure 用户、组和资源启用精细的访问管理 (。 使用 Azure RBAC，可以授予用户所需的访问级别。 
+**指导**：Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 Azure RBAC，可以授予用户所需的访问权限级别。 
 
-在 Azure DNS 中，存在 DNS 区域参与者角色，以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，以提供更精细的控制。
+在 Azure DNS 中，存在 DNS 区域参与者角色以及区域级别和记录集级别的 Azure RBAC。 还可以构建自己的自定义 Azure 角色，进行更细致的控制。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [了解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
-- [了解 Azure 中的 Azure RBAC 专用 DNS](dns-protect-private-zones-recordsets.md)
+- [了解 Azure 专用 DNS 中的 Azure RBAC](dns-protect-private-zones-recordsets.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -276,7 +276,7 @@ ms.locfileid: "94960676"
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建 Azure DNS 以及其他关键或相关资源发生更改的警报。
+**指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便创建要在 Azure DNS 以及其他关键或相关资源发生更改时触发的警报。
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -308,7 +308,7 @@ ms.locfileid: "94960676"
 
 **指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
 
-- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure 安全中心监视**：不适用
 
@@ -384,7 +384,7 @@ ms.locfileid: "94960676"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现 Azure 策略 Azure DNS 的标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
+**指导**：使用 Azure Policy 为 Azure DNS 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
 - [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -398,15 +398,15 @@ ms.locfileid: "94960676"
 
 **指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
-此外，Azure 资源管理器还支持其他类型的安全控制，即能够锁定资源。 资源锁应用于资源，对所有用户和角色都有效。 有两种类型的资源锁：  CanNotDelete 和 ReadOnly  。
+此外，Azure 资源管理器支持另一种类型的安全控件：资源锁定功能。 资源锁应用于资源，对所有用户和角色都有效。 有两种类型的资源锁：  CanNotDelete 和 ReadOnly  。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-- [如何防范 Azure DNS 中的更改](dns-protect-zones-recordsets.md)
+- [如何防止 Azure DNS 中的更改](dns-protect-zones-recordsets.md)
 
-- [如何防范 Azure 专用 DNS 中的更改](dns-protect-private-zones-recordsets.md)
+- [如何防止 Azure 专用 DNS 中的更改](dns-protect-private-zones-recordsets.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -460,7 +460,7 @@ ms.locfileid: "94960676"
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件 (例如 Azure DNS) ，但它不会在客户内容上运行。
+**指导**：Microsoft 反恶意软件已在支持 Azure 服务（例如，Azure DNS）的基础主机上启用，但它不会针对客户内容运行。
 
 你需要负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 

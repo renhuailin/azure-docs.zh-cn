@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 458fbdf4cdfa40da871d34a62101020330c79265
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4ac878db8d81cc7d9d9dfc6d7c3a4ba63f966110
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488787"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348358"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -47,7 +47,7 @@ ms.locfileid: "95488787"
 
 #### <a name="fixed-strings"></a>固定字符串
 
-使用字符串，可更轻松地扫描和区分全局地址列表和左侧组工作负荷导航链接中的组。 一些常见的前缀是类似“Grp\_Name”、“\#Name”、“\_Name”的关键字
+使用字符串，可更轻松地扫描和区分全局地址列表和左侧组工作负荷导航链接中的组。 某些常见前缀为关键字，如 "Grp \_ Name"、" \# name"、" \_ name"
 
 #### <a name="user-attributes"></a>用户属性
 

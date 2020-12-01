@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327147"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346369"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>答案的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。
@@ -48,9 +48,9 @@ ms.locfileid: "91327147"
 
 选择阈值时，请务必平衡“准确度”和“覆盖率”，并根据自己的需求来调整阈值。
 
-- 如果“准确度”****（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，** 如果将阈值设置为 70****，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
+- 如果“准确度”（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，如果将阈值设置为 70，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
 
-- 如果“覆盖率”****（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果你将阈值设置为 **30**，则可能会提供类似于 "可以在何处编辑我的 KB？" 的查询的答案。
+- 如果“覆盖率”（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果你将阈值设置为 **30**，则可能会提供类似于 "可以在何处编辑我的 KB？" 的查询的答案。
 
 > [!NOTE]
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)了解如何获取最新更新。
@@ -62,7 +62,7 @@ ms.locfileid: "91327147"
 通过机器人框架，用 [c #](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) 或 [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)将分数设置为 options 对象的一部分。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
-若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)向知识库中的关键字添加同义词。
+若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](/rest/api/cognitiveservices/qnamaker/alterations/replace)向知识库中的关键字添加同义词。
 
 
 ## <a name="similar-confidence-scores"></a>相似的置信度分数
@@ -76,7 +76,7 @@ ms.locfileid: "91327147"
 * 使用以下其中一项来组织知识库：
     * 1个资源限制为 1 KB：限制单个 QnA 资源 (，并将生成的 Azure 认知搜索测试索引) 到单个知识库。
     * 2个资源-1 个用于测试，1个用于生产：有两个 QnA Maker 资源，分别用于测试 (及其自己的测试和生产索引) ，另一个用于产品 (也具有自己的测试和生产索引) 
-* 而且，始终使用相同的参数，如在查询测试和生产知识库时使用**[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)**
+* 而且，始终使用相同的参数，如在查询测试和生产知识库时使用 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)**
 
 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。 请参阅[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)操作的工作原理。
 
@@ -88,5 +88,4 @@ ms.locfileid: "91327147"
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [最佳做法](./best-practices.md)
-
+> [最佳实践](./best-practices.md)

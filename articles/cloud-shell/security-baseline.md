@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 463bbe637eee26ab098d1531976a18999497d12f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 24856e458858ad86d953b50709669823b35794fc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209577"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348256"
 ---
 # <a name="azure-security-baseline-for-cloud-shell"></a>适用于 Cloud Shell 的 Azure 安全基线
 
 此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 Cloud Shell。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
-内容由 Azure 安全基准定义的 **安全控制** 和适用于 Cloud Shell 的相关指南进行分组。 排除了不适用于 Cloud Shell 的**控件**。
+内容由 Azure 安全基准定义的 **安全控制** 和适用于 Cloud Shell 的相关指南进行分组。 排除了不适用于 Cloud Shell 的 **控件**。
 
  
 若要查看 Cloud Shell 完全映射到 Azure 安全基准，请参阅 [完整的 Cloud Shell 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
@@ -308,5 +308,5 @@ Azure Cloud Shell 允许客户根据组织的需要在其自己的映像中安�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
