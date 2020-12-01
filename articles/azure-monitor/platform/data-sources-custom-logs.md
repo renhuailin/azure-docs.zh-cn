@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b27da096ed18170ca8c9d70f31dc955fb74950
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911730"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352824"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 代理收集自定义日志
 
@@ -30,7 +30,7 @@ ms.locfileid: "95911730"
 
 - 日志文件不允许会以新条目覆盖文件的循环日志记录或日志轮换。
 - 日志文件必须使用 ASCII 或 UTF-8 编码。  不支持其他格式，如 UTF-16。
-- 对于 Linux，日志中的时间戳不支持时区 converesion。
+- 对于 Linux，日志中的时间戳不支持时区转换。
 
 >[!NOTE]
 > 如果日志文件中存在重复项，Azure Monitor 将收集这些项。 但是，查询结果将不一致，其中过滤结果显示的事件比结果计数更多。 重要的是，你要验证日志以确定创建它的应用程序是否是导致该行为的原因，并在可能的情况下对其进行处理，然后再创建自定义日志收集定义。  

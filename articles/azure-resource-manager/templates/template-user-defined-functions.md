@@ -1,20 +1,20 @@
 ---
 title: 模板中的用户定义函数
-description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义函数。
+description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义的函数 (ARM 模板) 。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672929"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353470"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数
+# <a name="user-defined-functions-in-arm-template"></a>ARM 模板中的用户定义函数
 
 在模板中，可以创建自己的函数。 这些函数可在模板中使用。 用户定义函数不同于模板中自动可用的[标准模板函数](template-functions.md)。 当有复杂的表达式在模板中重复使用时，请创建自己的函数。
 
-本文介绍如何在 Azure 资源管理器模板中添加用户定义函数。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中添加用户定义的函数。
 
 ## <a name="define-the-function"></a>定义函数
 

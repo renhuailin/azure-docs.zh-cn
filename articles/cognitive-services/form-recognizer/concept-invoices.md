@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736659"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353742"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>窗体识别器预生成发票型号
 
-Azure 窗体识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够以各种格式拍摄发票，并返回结构化数据来自动完成发票处理。 它结合了强大的 [光学字符识别 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能与发票了解深度学习模型，以便从发票中提取重要信息（英语）。 它提取文本、表和信息，如客户、供应商、发票 ID、发票截止日期、总计、发票金额、应付金额、寄送到、帐单到，等等。 预生成的发票 API 公开提供，格式为识别器2.1 版预览版。
+Azure 窗体识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够以各种格式拍摄发票，并返回结构化数据来自动完成发票处理。 它结合了强大的 [光学字符识别 (OCR) ](../computer-vision/concept-recognizing-text.md) 功能与发票了解深度学习模型，以便从发票中提取重要信息（英语）。 它提取文本、表和信息，如客户、供应商、发票 ID、发票截止日期、总计、发票金额、应付金额、寄送到、帐单到，等等。 预生成的发票 API 公开提供，格式为识别器2.1 版预览版。
 
 ## <a name="what-does-the-invoice-service-do"></a>发票服务有什么作用？
 
@@ -32,7 +32,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 若要试用窗体识别器发票服务，请访问联机示例 UI 工具：
 
 > [!div class="nextstepaction"]
-> [尝试预生成模型](https://fott-preview.azurewebsites.net/)
+> [试用预生成模型](https://fott-preview.azurewebsites.net/)
 
 需要一个 Azure 订阅 (免费) [创建一个](https://azure.microsoft.com/free/cognitive-services) ，并使用 [窗体 Recognzier 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) 终结点和密钥来试用表单识别器发票服务。 
 
@@ -57,7 +57,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
+|状态 | 字符串 | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
 
 当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应将包括发票理解结果、提取的表和可选的文本识别结果（如果请求）。 发票理解结果组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 
@@ -76,29 +76,29 @@ JSON 输出包含三个部分：
 
 |名称| 类型 | 说明 | 文本 | 值 (标准化输出)  |
 |:-----|:----|:----|:----| :----|
-| CustomerName | string | 正在开票的客户 | Microsoft Corp |  |
-| CustomerId | string | 客户的引用 ID | CID-12345 |  |
-| PurchaseOrder | string | 采购订单参考编号 | PO-3333 | |  |
-| InvoiceId | string | 此特定发票的 Id (通常为 "发票编号" )  | INV-100 | |  |
+| CustomerName | 字符串 | 正在开票的客户 | Microsoft Corp |  |
+| CustomerId | 字符串 | 客户的引用 ID | CID-12345 |  |
+| PurchaseOrder | 字符串 | 采购订单参考编号 | PO-3333 | |  |
+| InvoiceId | 字符串 | 此特定发票的 Id (通常为 "发票编号" )  | INV-100 | |  |
 | InvoiceDate | date | 发出发票的日期 | 2019 年 11 月 15 日 | 
 | DueDate | date | 此发票的日期支付截止日期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
-| VendorName | string | 已创建此发票的供应商 | CONTOSO 有限公司。 | |
-| VendorAddress | string | 供应商的邮件地址 | 123 456th 圣纽约，纽约州，10001 | |
-| VendorAddressRecipient | string | 与 VendorAddress 关联的名称 | Contoso 总部 | |
-| CustomerAddress | string | 客户的邮件地址 | 123其他 St，Redmond WA，98052 | |
-| CustomerAddressRecipient | string | 与 CustomerAddress 关联的名称 | Microsoft Corp | |
-| BillingAddress | string | 客户的明确帐单地址 | 123帐单 St，Redmond WA，98052 | |
-| BillingAddressRecipient | string | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
-| ShippingAddress | string | 客户的显式寄送地址 | 123发货 St，Redmond WA，98052 | |
-| ShippingAddressRecipient | string | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
+| VendorName | 字符串 | 已创建此发票的供应商 | CONTOSO 有限公司。 | |
+| VendorAddress | 字符串 | 供应商的邮件地址 | 123 456th 圣纽约，纽约州，10001 | |
+| VendorAddressRecipient | 字符串 | 与 VendorAddress 关联的名称 | Contoso 总部 | |
+| CustomerAddress | 字符串 | 客户的邮件地址 | 123其他 St，Redmond WA，98052 | |
+| CustomerAddressRecipient | 字符串 | 与 CustomerAddress 关联的名称 | Microsoft Corp | |
+| BillingAddress | 字符串 | 客户的明确帐单地址 | 123帐单 St，Redmond WA，98052 | |
+| BillingAddressRecipient | 字符串 | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
+| ShippingAddress | 字符串 | 客户的显式寄送地址 | 123发货 St，Redmond WA，98052 | |
+| ShippingAddressRecipient | 字符串 | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
 | SubTotal | number | 此发票上标识的小计字段 | $100.00 | 100 | 
 | TotalTax | number | 此发票上标识的总税款字段 | $10.00 | 10 |
 | InvoiceTotal | number | 与此发票关联的新费用总计 | $110.00 | 110 |
 | AmountDue |  number | 供应商导致的总金额 | $610.00 | 610 |
-| Serviceaddress.uri | string | 客户的显式服务地址或属性地址 | 123服务 St，Redmond WA，98052 | |
-| ServiceAddressRecipient | string | 与 Serviceaddress.uri 关联的名称 | Microsoft 服务 | |
-| RemittanceAddress | string | 客户的显式汇款或付款地址 | 123汇款圣纽约，纽约州，10001 |  |
-| RemittanceAddressRecipient | string | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
+| Serviceaddress.uri | 字符串 | 客户的显式服务地址或属性地址 | 123服务 St，Redmond WA，98052 | |
+| ServiceAddressRecipient | 字符串 | 与 Serviceaddress.uri 关联的名称 | Microsoft 服务 | |
+| RemittanceAddress | 字符串 | 客户的显式汇款或付款地址 | 123汇款圣纽约，纽约州，10001 |  |
+| RemittanceAddressRecipient | 字符串 | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
 | ServiceStartDate | date | 服务期间的第一个日期 (例如，公用事业帐单服务期间)  | 2019/10/14 | 2019-10-14 |
 | ServiceEndDate | date | 服务时段的结束日期 (例如，公用事业帐单服务期间)  | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | number | 明确的以前未付余额 | $500.00 | 500 |
@@ -113,4 +113,3 @@ JSON 输出包含三个部分：
 
 * [什么是表单识别器？](./overview.md)
 * [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

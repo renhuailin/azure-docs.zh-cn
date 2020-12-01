@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96018948"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353074"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -94,7 +94,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 在设置死信位置之前，必须有一个包含容器的存储帐户。 创建终结点时，提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要 `write` 对存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要了解有关 SAS 令牌的详细信息，请参阅： [使用共享访问签名授予对 Azure 存储资源的有限访问权限 (SAS) ](/azure/storage/common/storage-sas-overview)
+若要了解有关 SAS 令牌的详细信息，请参阅： [使用共享访问签名授予对 Azure 存储资源的有限访问权限 (SAS) ](../storage/common/storage-sas-overview.md)
 
 若要了解有关死信的详细信息，请参阅 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。
 

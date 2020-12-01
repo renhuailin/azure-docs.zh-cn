@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93406767"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356187"
 ---
 Azure Functions 中引发的错误可能来自以下任一来源：
 
@@ -41,7 +41,7 @@ Azure Functions 中引发的错误可能来自以下任一来源：
 
 **重试策略** 控制重试的行为方式。  下面是两个受支持的重试选项：
 
-| 选项 | 说明|
+| 选项 | 描述|
 |---|---|
 |**`fixedDelay`**| 允许在每次重试之间经过指定的时间量|
 | **`exponentialBackoff`**| 第一次重试会等待最低延迟。 后续重试时，时间以指数方式添加到每次重试的初始持续时间，直到达到最大延迟。  指数重试增加了一些小的随机化，可延迟在高吞吐量方案中错开重试。|
@@ -130,6 +130,27 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 ```
 
 # <a name="java"></a>[Java](#tab/java)
+
+下面是文件中 *function.js* 的重试策略：
+
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 4,
+        "delayInterval": "00:00:10"
+    }
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 下面是文件中 *function.js* 的重试策略：
 
@@ -249,15 +270,36 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面是文件中 *function.js* 的重试策略：
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "exponentialBackoff",
+        "maxRetryCount": 5,
+        "minimumInterval": "00:00:10",
+        "maximumInterval": "00:15:00"
+    }
+}
+```
 ---
 
-|function.json 属性  |属性 | 说明 |
+|function.json 属性  |属性 | 描述 |
 |---------|---------|---------| 
-|制定|n/a|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
-|maxRetryCount|n/a|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限期重试。|
-|delayInterval|n/a|使用策略时，两次重试之间的延迟 `fixedDelay` 。|
-|minimumInterval|n/a|使用策略时的最小重试延迟时间 `exponentialBackoff` 。|
-|maximumInterval|n/a|使用策略时的最大重试延迟时间 `exponentialBackoff` 。| 
+|strategy|不适用|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
+|maxRetryCount|不适用|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限重试。|
+|delayInterval|不适用|使用策略时，两次重试之间的延迟 `fixedDelay` 。|
+|minimumInterval|不适用|使用 `exponentialBackoff` 策略时的最小重试延迟。|
+|maximumInterval|不适用|使用 `exponentialBackoff` 策略时的最大重试延迟。| 
 
 ### <a name="retry-limitations-during-preview"></a>预览期间的重试限制
 

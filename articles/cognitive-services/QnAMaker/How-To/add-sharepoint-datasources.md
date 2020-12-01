@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776861"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353181"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
@@ -20,14 +20,14 @@ ms.locfileid: "91776861"
 
 如果 QnA Maker 知识库管理器不是 Active Directory 管理器，则需要与 Active Directory 管理器进行通信以完成此过程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 基于云的 SharePoint-QnA Maker 使用 Microsoft Graph 权限。 如果你的 SharePoint 位于本地，你将无法从 SharePoint 中提取，因为 Microsoft Graph 无法确定权限。
 * URL 格式-QnA Maker 仅支持为共享生成的 SharePoint url，格式为 `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>将支持的文件类型添加到知识库
 
-您可以将所有 QnA Maker 支持的 [文件类型](../Concepts/content-types.md) 从 SharePoint 站点添加到知识库中。 如果文件资源受到保护，则可能必须授予 [权限](#permissions) 。
+您可以将所有 QnA Maker 支持的 [文件类型](../index.yml) 从 SharePoint 站点添加到知识库中。 如果文件资源受到保护，则可能必须授予 [权限](#permissions) 。
 
 1. 从具有 SharePoint 站点的库中，选择该文件的省略号菜单 `...` 。
 1. 复制该文件的 URL。
@@ -156,7 +156,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -188,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [针对知识库展开协作](collaborate-knowledge-base.md)
+> [针对知识库展开协作](../index.yml)

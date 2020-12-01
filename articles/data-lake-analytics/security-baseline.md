@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 03d960f95aed4c6843e29dbebd37feec64b6eae2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd4b26e81df8ce57a09b4cdddc923035a41308e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221139"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352892"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>适用于 Data Lake Analytics 的 Azure 安全基线
 
@@ -188,11 +188,11 @@ ms.locfileid: "92221139"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看 Data Lake Analytics 资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+**指南**：分析和监视日志中的异常行为，并定期查看 Data Lake Analytics 资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/get-started-portal.md)
+* [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -268,7 +268,7 @@ ms.locfileid: "92221139"
 
 **指南**：围绕专用管理帐户的使用创建标准操作程序。
 
-你还可以使用 Azure AD Privileged Identity Management 和 Azure 资源管理器启用实时访问。
+还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。
 
 * [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
@@ -550,9 +550,9 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Azure Resource Graph 浏览器发现经典 Azure 资源，但我们强烈建议你今后创建并使用 Azure 资源管理器资源。
 
 * [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -666,7 +666,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **指南**：配置 Azure 条件访问，使其通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。
 
-* [如何配置条件性访问以阻止访问 ARM](../role-based-access-control/conditional-access-azure-management.md)
+* [如何配置条件访问以阻止访问 ARM](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 安全中心监视**：不适用
 

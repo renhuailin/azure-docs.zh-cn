@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d39e34bd85c4524a6f28d188f977a7ab37eecc58
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445007"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353232"
 ---
 # <a name="active-learning-suggestions"></a>活动学习建议
 
@@ -37,14 +37,14 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 ## <a name="turn-on-active-learning"></a>启用主动学习
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 默认情况下，活动学习处于 **关闭** 状态。
 使用活动学习：
 * 您需要 [开启活动学习](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) ，以便 QnA Maker 收集您的知识库的其他问题。
 * 若要查看建议的替代问题，请使用 "编辑" 页上的 " [查看选项](../How-To/improve-knowledge-base.md#view-suggested-questions) "。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 默认情况下，活动学习在 QnA Maker 托管 (预览版) **上打开** 。 若要查看建议的替代问题，请使用 "编辑" 页上的 " [查看选项](../How-To/improve-knowledge-base.md#view-suggested-questions) "。
 
@@ -137,7 +137,7 @@ QnA Maker 需要有关哪种答案是最佳答案的明确反馈。 如何确定
 * 业务逻辑，例如确定可接受的分数范围。
 * 用户反馈和业务逻辑的组合。
 
-使用 [训练 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/train) 将正确答案发送到 QnA Maker，并在用户选择它后发送。
+使用 [训练 API](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) 将正确答案发送到 QnA Maker，并在用户选择它后发送。
 
 ## <a name="next-step"></a>下一步
 

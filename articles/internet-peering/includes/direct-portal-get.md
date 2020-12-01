@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3507aacc68de25f7368cbe3cda917077564c56eb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678851"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356238"
 ---
 1. 中转到 " **资源组**"，并选择在创建对 **等互连** 资源时选择的资源组。 如果资源组太多，请使用 " **筛选器** " 框。
 
@@ -23,9 +23,9 @@ ms.locfileid: "81678851"
 1. 选择创建的对 **等互连** 资源。
 
     > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-get-open.png)
+    > ![将在左窗格中选择 "概述" 页。 其中显示了有关 PeeringResourceGroup 的信息。 在对等列表中，将突出显示 AshburnPeering。](../media/setup-direct-get-open.png)
 
-1. **概述**页显示了高级信息，如下所示。
+1. **概述** 页显示了高级信息，如下所示。
 
     > [!div class="mx-imgBorder"]
     > ![对等互连资源概述窗格](../media/setup-direct-get-overview.png)

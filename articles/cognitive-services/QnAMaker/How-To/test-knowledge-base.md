@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376119"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353147"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中测试您的知识库
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376119"
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>在 QnA Maker 门户中以交互方式测试
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
 1. 若要访问测试滑出面板，请在应用程序的顶部面板中选择 " **测试** "。
@@ -66,15 +66,15 @@ ms.locfileid: "94376119"
 > [!NOTE]
 > 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
 1. 若要访问测试滑出面板，请在应用程序的顶部面板中选择 " **测试** "。 
 1. 你将在顶部 **显示简短答案** 上看到一个复选框，默认情况下已选中此复选框。 此选项用于在测试面板中启用基于 MRC 的应答范围检测。 
 1. 在文本框中输入查询，然后选择 Enter。 
 1. 对于每个查询，如果答案段中有精确的答案/short 答案，并提供最佳匹配答案段（在知识库中），则还会为查询提供一个简短的答案。
-    ![托管启用的测试窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
-1. 如果取消选择 " **显示简短答案** "，则只会返回从知识库中获得最佳匹配的答案。
+    ![托管的已启用的测试窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. 如果取消选择 " **显示简短答案**"，则只会返回从知识库中获得最佳匹配的答案。
 
 ### <a name="clear-test-panel"></a>清除测试面板
 
@@ -323,4 +323,4 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [发布知识库](./publish-knowledge-base.md)
+> [发布知识库](../quickstarts/create-publish-knowledge-base.md)

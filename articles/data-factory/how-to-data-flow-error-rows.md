@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006775"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352589"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>处理数据工厂映射数据流中的 SQL 截断错误行
 
@@ -23,13 +23,13 @@ ms.locfileid: "96006775"
 
 在 ADF 数据流中将数据写入数据库接收器时，有两种主要方法可以正常处理错误：
 
-* 处理数据库数据时，将接收器 [错误行处理](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) 设置为 "出错时继续"。 这是自动捕获全部方法，不需要在数据流中使用自定义逻辑。
+* 处理数据库数据时，将接收器 [错误行处理](./connector-azure-sql-database.md#error-row-handling) 设置为 "出错时继续"。 这是自动捕获全部方法，不需要在数据流中使用自定义逻辑。
 * 或者，按照以下步骤来提供不适合目标字符串列的列日志记录，以允许数据流继续。
 
 > [!NOTE]
 > 当启用自动错误行处理时，与下面编写您自己的错误处理逻辑的方法不同，将会产生较小的性能损失，还会导致 ADF 执行两阶段操作来捕获错误。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 1. 我们有一个具有 ```nvarchar(5)``` 名为 "name" 的列的目标数据库表。
 

@@ -8,19 +8,19 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3212acd5015edbb639b8904b885c718d654e5b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81681080"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356255"
 ---
 本部分介绍如何执行以下修改操作以实现直接对等互连。
 
 ### <a name="add-direct-peering-connections"></a>添加直接对等连接
 1. 选择 " **+ 添加连接** " 按钮，然后配置新的对等连接。
     > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-modify-addconnection.png)
+    > !["AshburnPeering" 页列出了连接。 "+ 添加连接" 按钮已突出显示。](../media/setup-direct-modify-addconnection.png)
 
 1. 填写直接对 **等连接** 窗体，并选择 " **保存**"。 有关配置对等互连连接的帮助，请查看 "创建和预配直接对等互连" 部分中的步骤。
     > [!div class="mx-imgBorder"]

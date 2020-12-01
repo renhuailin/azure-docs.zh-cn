@@ -1,20 +1,20 @@
 ---
 title: 模板结构和语法
-description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
+description: 介绍使用声明性 JSON 语法) 的 Azure 资源管理器模板 (ARM 模板的结构和属性。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c0e1e3225d63d0463164a3ed599fb0b760367123
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911492"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353487"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
-本文介绍 Azure 资源管理器 (ARM) 模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
+本文介绍了 Azure 资源管理器模板 (ARM 模板) 的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
 
-本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 如果需要通过分步教程来了解创建模板的过程，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
+本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
 
 ## <a name="template-format"></a>模板格式
 
@@ -50,7 +50,7 @@ ms.locfileid: "95911492"
 
 在 ARM 模板中，可以使用以下数据类型：
 
-* string
+* 字符串
 * securestring
 * int
 * bool
@@ -137,7 +137,7 @@ ms.locfileid: "95911492"
 | maxLength |否 |string、secure string 和 array 类型参数的最大长度，此值是包容性的。 |
 | description |否 |通过门户向用户显示的参数的说明。 有关详细信息，请参阅[模板中的注释](#comments)。 |
 
-有关如何使用参数的示例，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
+有关如何使用参数的示例，请参阅 [ARM 模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>变量
 
@@ -172,7 +172,7 @@ ms.locfileid: "95911492"
 
 有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](copy-variables.md)。
 
-有关如何使用变量的示例，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
+有关如何使用变量的示例，请参阅 [ARM 模板中的变量](template-variables.md)。
 
 ## <a name="functions"></a>函数
 
@@ -217,7 +217,7 @@ ms.locfileid: "95911492"
 | output-type |是 |输出值的类型。 输出值支持的类型与函数输入参数相同。 |
 | output-value |是 |由函数计算并返回的模板语言表达式。 |
 
-有关如何使用自定义函数的示例，请参阅 [Azure 资源管理器模板中的用户定义函数](template-user-defined-functions.md)。
+有关如何使用自定义函数的示例，请参阅 [ARM 模板中的用户定义函数](template-user-defined-functions.md)。
 
 ## <a name="resources"></a>资源
 
@@ -287,7 +287,7 @@ ms.locfileid: "95911492"
 | name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
-| dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure Resource Manager 模板中定义依赖项](define-resource-dependency.md)。 |
+| dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅 [定义在 ARM 模板中部署资源的顺序](define-resource-dependency.md)。 |
 | tags |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
@@ -322,9 +322,9 @@ ms.locfileid: "95911492"
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果指定 **securestring** 作为输出类型，则值不会显示在部署历史记录中，并且无法从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储该机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。 |
 | value |否 |要求值并作为输出值返回的模板语言表达式。 请指定 **value** 或 **copy**。 |
-| copy |否 | 用于返回多个值作为输出。 请指定 **value** 或 **copy**。 有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。 |
+| copy |否 | 用于返回多个值作为输出。 请指定 **value** 或 **copy**。 有关详细信息，请参阅 [ARM 模板中的输出迭代](copy-outputs.md)。 |
 
-有关如何使用输出的示例，请参阅 [Azure 资源管理器模板中的输出](template-outputs.md)。
+有关如何使用输出的示例，请参阅 [ARM 模板中的输出](template-outputs.md)。
 
 <a id="comments"></a>
 
@@ -453,7 +453,7 @@ ms.locfileid: "95911492"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
-* 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure Resource Manager Template Functions](template-functions.md)（Azure Resource Manager 模板函数）。
-* 若要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
+* 有关可在模板中使用的函数的详细信息，请参阅 [ARM 模板函数](template-functions.md)。
+* 若要在部署期间合并多个模板，请参阅 [部署 Azure 资源时使用链接的模板和嵌套的模板](linked-templates.md)。
+* 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
 * 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

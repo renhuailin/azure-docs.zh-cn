@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6156dbe4d189800172250f56ad3ab095bea17bb8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 90946b10bbc7717aa12566c4a25686f8471fb6e7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364507"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353351"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>必应自动推荐 API 的语言和区域支持
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 下面列出了必应自动推荐 API 支持的语言。
 
@@ -63,7 +63,7 @@ ms.locfileid: "94364507"
 | 俄语     | `ru`          |
 | 西班牙语（阿根廷）    | `es-AR`          |
 | 西班牙语（智利）     | `es-CL`          |
-| 西班牙语(墨西哥)    | `es-MX`          |
+| 西班牙语（墨西哥）    | `es-MX`          |
 | 西班牙语(西班牙)    | `es-ES`          |
 | 西班牙语（美国）    | `es-US`          |
 | 瑞典语     | `sv`          |

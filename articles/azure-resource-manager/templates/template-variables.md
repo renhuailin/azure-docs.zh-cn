@@ -1,18 +1,18 @@
 ---
 title: 模板中的变量
-description: 介绍如何在 Azure 资源管理器模板中定义变量。
+description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义变量。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95915997"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353453"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的变量
+# <a name="variables-in-arm-template"></a>ARM 模板中的变量
 
-本文介绍如何在 Azure 资源管理器模板中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
 
 资源管理器会在启动部署操作之前解析变量。 只要在模板中使用变量，资源管理器就会将其替换为解析的值。
 
@@ -87,7 +87,7 @@ ms.locfileid: "95915997"
 
 以下示例演示了使用变量的方案。
 
-|模板  |说明  |
+|模板  |描述  |
 |---------|---------|
 | [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
 | [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
@@ -95,5 +95,5 @@ ms.locfileid: "95915997"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解变量的可用属性，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 若要了解有关变量的可用属性的信息，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关创建变量的建议，请参阅[最佳做法 - 变量](template-best-practices.md#variables)。

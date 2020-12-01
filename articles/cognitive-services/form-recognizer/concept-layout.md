@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741723"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353691"
 ---
 # <a name="form-recognizer-layout-service"></a>表单识别器布局服务
 
-Azure 窗体识别器可以使用其布局服务从文档中提取文本、表、选择标记和结构信息。 布局 API 使客户能够以各种格式获取文档，并返回文档的结构化数据和表示形式。 它结合了强大的 [光学字符识别 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，并提供了文档理解深度学习模型来提取文本、表、选择标记和文档的结构。 
+Azure 窗体识别器可以使用其布局服务从文档中提取文本、表、选择标记和结构信息。 布局 API 使客户能够以各种格式获取文档，并返回文档的结构化数据和表示形式。 它结合了强大的 [光学字符识别 (OCR) ](../computer-vision/concept-recognizing-text.md) 功能，并提供了文档理解深度学习模型来提取文本、表、选择标记和文档的结构。 
 
 ## <a name="what-does-the-layout-service-do"></a>Layout 服务有什么作用？
 
@@ -56,7 +56,7 @@ Azure 窗体识别器可以使用其布局服务从文档中提取文本、表�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | `notStarted`：分析操作尚未开始。<br /><br />`running`：正在进行分析操作。<br /><br />`failed`：分析操作失败。<br /><br />`succeeded`：分析操作已成功。|
+|状态 | 字符串 | `notStarted`：分析操作尚未开始。<br /><br />`running`：正在进行分析操作。<br /><br />`failed`：分析操作失败。<br /><br />`succeeded`：分析操作已成功。|
 
 此操作以迭代方式调用，直到其返回 `succeeded` 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
 
@@ -96,7 +96,3 @@ JSON 输出分为两部分：
 
 * [什么是表单识别器？](./overview.md)
 * [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

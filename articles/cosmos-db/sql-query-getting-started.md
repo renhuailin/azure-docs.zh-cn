@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356614"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353657"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,16 +34,16 @@ Azure Cosmos DB 上的大部分读取密集型工作负荷使用点读取和 SQL
 
 下面是有关如何对每个 SDK 执行 **SQL 查询** 的一些示例：
 
-- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
-- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
-- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
-- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+- [.NET SDK](./sql-api-dotnet-v3sdk-samples.md#query-examples)
+- [Java SDK](./sql-api-java-sdk-samples.md#query-examples)
+- [Node.js SDK](./sql-api-nodejs-samples.md#item-examples)
+- [Python SDK](./sql-api-python-samples.md#item-examples)
 
 本文档的其余部分说明如何开始在 Azure Cosmos DB 中编写 SQL 查询。 可以通过 SDK 或 Azure 门户运行 SQL 查询。
 
 ## <a name="upload-sample-data"></a>上传示例数据
 
-在 SQL API Cosmos DB 帐户中，打开 [数据资源管理器](https://docs.microsoft.com/azure/cosmos-db/data-explorer) 以创建名为的容器 `Families` 。 创建后，使用数据结构浏览器来查找并打开它。 在 `Families` 容器中，你将在 `Items` 容器名称下面看到选项。 打开此选项，将在屏幕中心的菜单栏中看到一个按钮，以创建 "新项"。 你将使用此功能创建下面的 JSON 项。
+在 SQL API Cosmos DB 帐户中，打开 [数据资源管理器](./data-explorer.md) 以创建名为的容器 `Families` 。 创建后，使用数据结构浏览器来查找并打开它。 在 `Families` 容器中，你将在 `Items` 容器名称下面看到选项。 打开此选项，将在屏幕中心的菜单栏中看到一个按钮，以创建 "新项"。 你将使用此功能创建下面的 JSON 项。
 
 ### <a name="create-json-items"></a>创建 JSON 项
 

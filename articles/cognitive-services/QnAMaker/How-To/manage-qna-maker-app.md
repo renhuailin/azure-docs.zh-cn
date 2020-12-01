@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 9c042d044f5ceba5a64d6bd7dfefa34bbc69b107
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376479"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353198"
 ---
 # <a name="manage-qna-maker-app"></a>管理 QnA Maker 应用
 
@@ -23,7 +23,7 @@ QnA Maker 允许你通过提供一种基于协作者角色限制协作者访问�
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a> (Azure RBAC) 中添加 Azure 基于角色的访问控制
 
-QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能与 [AZURE RBAC)  (azure 基于角色的访问控制 ](../../../active-directory/role-based-access-control-configure.md)一起提供。
+QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能与 [AZURE RBAC)  (azure 基于角色的访问控制 ](../../../role-based-access-control/role-assignments-portal.md)一起提供。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker 资源级别的访问权限
 
@@ -51,7 +51,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     |角色|
     |--|
-    |“所有者”|
+    |所有者|
     |参与者|
     |认知服务 QnA Maker 读者|
     |认知服务 QnA Maker 编辑器|
@@ -59,7 +59,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM 添加角色。":::
 
-1. 输入用户的电子邮件地址，并按 " **保存** "。
+1. 输入用户的电子邮件地址，并按 " **保存**"。
 
     ![QnA Maker IAM 添加电子邮件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
 
@@ -73,11 +73,11 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>升级运行时版本以使用活动学习
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)以使用此功能。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 在 QnA Maker 托管 (预览版) ，因为运行时是由 QnA Maker 服务本身承载的，所以无需手动升级运行时。
 
@@ -85,13 +85,13 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>启用其他问题的活动学习
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 默认情况下，主动学习处于关闭状态。 启用它可以查看建议的问题。 开启活动学习后，需要将客户端应用程序中的信息发送到 QnA Maker。 有关详细信息，请参阅 [使用 GenerateAnswer 的体系结构流和从机器人训练 api](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot)。
 
 1. 选择 " **发布** " 以发布知识库。 仅从 GenerateAnswer API 预测终结点收集活动学习查询。 QnA Maker 门户中的 "测试" 窗格查询不会影响主动学习。
 
-1. 若要在 QnA Maker 门户中打开活动学习，请转到右上角，选择你的 **名称** ，转到 " [**服务设置**](https://www.qnamaker.ai/UserSettings)"。
+1. 若要在 QnA Maker 门户中打开活动学习，请转到右上角，选择你的 **名称**，转到 " [**服务设置**](https://www.qnamaker.ai/UserSettings)"。
 
     ![从 "服务设置" 页中打开活动学习的建议问题替代方法。 在右上方菜单中选择您的用户名，然后选择 "服务设置"。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -104,7 +104,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
     > 上图中的确切版本仅显示为示例。 你的版本可能不同。
     启用 **活动学习** 后，该知识库将基于用户提交的问题，定期提出新问题。 可以通过再次切换设置来禁用“主动学习”。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 默认情况下，活动学习在 QnA Maker 托管 (预览版) **上打开** 。 若要查看建议的替代问题，请使用 "编辑" 页上的 " [查看选项](../How-To/improve-knowledge-base.md#view-suggested-questions) "。
 
@@ -112,7 +112,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 ## <a name="review-suggested-alternate-questions"></a>查看建议的替代问题
 
-查看每个知识库的 " **编辑** " 页上的 [替代建议问题](improve-knowledge-base.md)。
+查看每个知识库的 "**编辑**" 页上的 [替代建议问题](improve-knowledge-base.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

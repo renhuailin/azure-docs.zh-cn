@@ -1,18 +1,18 @@
 ---
 title: 模板中的输出
-description: 介绍如何在 Azure 资源管理器模板中定义输出值。
+description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911424"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353521"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
+# <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
-本文介绍如何在 Azure 资源管理器模板中定义输出值。 需要从部署的资源返回值时，可以使用输出。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。 需要从部署的资源返回值时，可以使用输出。
 
 每个输出值的格式必须与其中一个 [数据类型](template-syntax.md#data-types)匹配。
 
@@ -120,4 +120,4 @@ az deployment group show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解输出的可用属性，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 若要了解有关输出的可用属性，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。

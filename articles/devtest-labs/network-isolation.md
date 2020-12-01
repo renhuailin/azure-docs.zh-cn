@@ -3,12 +3,12 @@ title: Azure 开发测试实验室中的网络隔离
 description: 了解 Azure 开发测试实验室中的网络隔离。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149164"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352926"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>开发测试实验室中的网络隔离
 
@@ -49,7 +49,7 @@ ms.locfileid: "92149164"
 
 ### <a name="steps-to-follow-post-lab-creation"></a>完成实验室创建后的步骤
 
-1. 在实验室的 "主页" 页上，选择 "**概述**" 页上的**资源组**。 应会看到包含实验室的资源组的 " **资源组** " 页。 
+1. 在实验室的 "主页" 页上，选择 "**概述**" 页上的 **资源组**。 应会看到包含实验室的资源组的 " **资源组** " 页。 
  
    > [!div class="mx-imgBorder"]
    > ![Contoso 实验室](./media/network-isolation/contoso-lab.png)
@@ -74,7 +74,7 @@ ms.locfileid: "92149164"
 
 你还可以选择自动执行这些步骤，为多个实验室配置此设置。 
 
-[详细了解如何使用 PowerShell 和 CLI 管理 Azure 存储的默认网络访问规则](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[详细了解如何使用 PowerShell 和 CLI 管理 Azure 存储的默认网络访问规则](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>在网络隔离模式下使用实验室时要记住的问题
 
