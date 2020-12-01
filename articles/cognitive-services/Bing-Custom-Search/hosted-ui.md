@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367380"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338361"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应自定义搜索提供的托管 UI 可以轻松地作为 JavaScript 代码片段集成到网页和 Web 应用程序中。 可以使用必应自定义搜索门户配置 UI 的布局、颜色和搜索选项。
 
@@ -133,7 +133,7 @@ ms.locfileid: "94367380"
 - 页面标题：在 "搜索结果" 页的标题区中显示的文本， (不用于弹出布局) 。
 - 工具栏主题：确定 "搜索结果" 页的标题区的背景色。
 
-如果单击 " **显示高级配置** "，则会显示以下配置。  
+如果单击 " **显示高级配置**"，则会显示以下配置。  
 
 |Column1  |Column2  |
 |---------|---------|

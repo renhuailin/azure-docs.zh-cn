@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892309"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339739"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>排查连接问题-Azure 事件网格
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 使用 Azure 时，有时必须允许企业防火墙或代理中的特定 IP 地址范围或 Url 访问正在使用或尝试使用的所有 Azure 服务。 验证事件网格所使用的 IP 地址是否允许流量。 对于 Azure 事件网格所使用的 IP 地址：请参阅 [AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519) 和 [服务标记-AzureEventGrid](network-security.md#service-tags)。
 
-[AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519)文档还 **按区域** 列出 IP 地址。 你可以允许在公司防火墙或代理中为 **主题的区域** 和 **配对区域** 提供地址范围。 有关区域的配对区域，请参阅 [业务连续性和灾难恢复 (BCDR) ： Azure 配对区域](/azure/best-practices-availability-paired-regions)。 
+[AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519)文档还 **按区域** 列出 IP 地址。 你可以允许在公司防火墙或代理中为 **主题的区域** 和 **配对区域** 提供地址范围。 有关区域的配对区域，请参阅 [业务连续性和灾难恢复 (BCDR) ： Azure 配对区域](../best-practices-availability-paired-regions.md)。 
 
 > [!NOTE]
 > 可以将新的 IP 地址添加到 AzureEventGrid 服务标记中，但这并不是正常的。 因此，最好是对服务标记执行每周一次检查。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccc39513505f299e85cbc270e2daeafeac6ca6fd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 575742ab0d886a69dc5acccf4a65ac8c91b5a871
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845180"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341029"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -74,7 +74,7 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何配置 Azure 事件网格主题或域的专用终结点](configure-private-endpoints.md)
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 - [有关 Azure 安全中心集成威胁情报的详细信息](../security-center/azure-defender.md)
 
@@ -227,7 +227,7 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -287,9 +287,9 @@ Microsoft Azure 事件网格的 Azure 安全基线包含的建议可帮助你提
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指导**：借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 azure RBAC)  (Azure 基于角色的访问控制。 事件网格支持内置角色和自定义角色。
+**指导**：借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 基于角色的访问控制 (Azure RBAC)。 事件网格支持内置角色和自定义角色。
 
-Azure RBAC) 的 azure 基于角色的访问控制 (允许通过角色分配管理对 Azure 资源的访问权限。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
+借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
 - [授权访问事件网格资源](security-authorization.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5c0f74ed8a5688b20eea4e74f747d3ff6dd0e63
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090788"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339993"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>将数据从用于 IoT 的 Defender 连接到 Azure Sentinel (预览) 
 
@@ -37,9 +37,9 @@ Azure Sentinel 中的 Azure Defender IoT 数据连接器目前为公共预览版
 ## <a name="prerequisites"></a>先决条件
 
 - 您必须具有工作区 **读取** 和 **写入** 权限。
-- 必须在相关 IoT 中心 (s) 上**启用****用于 iot 的 Defender** 。
-- 对于要连接的**Azure IoT 中心**，必须同时具有**读取**和**写入**权限。
-- 你还必须具有**Azure IoT 中心资源组**的**读取**和**写入**权限。
+- 必须在相关 IoT 中心 (s) 上 **启用****用于 iot 的 Defender** 。
+- 对于要连接的 **Azure IoT 中心**，必须同时具有 **读取** 和 **写入** 权限。
+- 你还必须具有 **Azure IoT 中心资源组** 的 **读取** 和 **写入** 权限。
 
 
 ## <a name="connect-to-defender-for-iot"></a>连接到用于 IoT 的 Defender
@@ -48,7 +48,7 @@ Azure Sentinel 中的 Azure Defender IoT 数据连接器目前为公共预览版
 1. 在右侧窗格的底部，单击 " **打开连接器" 页面**。
 1. 单击要流式传输到 Azure Sentinel 的每个 IoT 中心订阅旁边的 " **连接**"。
     - 如果在该集线器上没有启用 Defender for IoT，你会看到 "启用警告" 消息。 单击 " **启用** " 链接以启动和启用该服务。
-1. 可以决定是否希望 IoT 中的警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件**" 下，选择 " **启用** " 以启用规则，以便根据生成的警报自动创建事件。  可以在 "**分析**  >  **活动**规则" 下更改或编辑此规则。
+1. 可以决定是否希望 IoT 中的警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件**" 下，选择 " **启用** " 以启用规则，以便根据生成的警报自动创建事件。  可以在 "**分析**  >  **活动** 规则" 下更改或编辑此规则。
 
 > [!NOTE]
 >更改连接后，可能需要10秒钟或更长时间才能刷新中心列表。
@@ -57,7 +57,7 @@ Azure Sentinel 中的 Azure Defender IoT 数据连接器目前为公共预览版
 
 若要在 Log Analytics 中使用相关架构来显示适用于 IoT 警报的 Defender：
 
-1. 打开**Logs**  >  **SecurityInsights**  >  **SecurityAlert**的日志，或搜索**SecurityAlert**。
+1. 打开 **Logs**  >  **SecurityInsights**  >  **SecurityAlert** 的日志，或搜索 **SecurityAlert**。
 1. 使用以下 kql 筛选器仅查看 IoT 生成的警报的 Defender：
 
 ```kusto
@@ -72,6 +72,6 @@ SecurityAlert | where ProductName == "Defender for IoT"
 
 本文档介绍了如何将用于 IoT 的 Defender 连接到 Azure Sentinel。 若要了解有关威胁检测和安全数据访问的详细信息，请参阅以下文章：
 
-- 了解如何使用 Azure Sentinel 来了解 [你的数据和潜在威胁](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)。
+- 了解如何使用 Azure Sentinel 来了解 [你的数据和潜在威胁](../sentinel/quickstart-get-visibility.md)。
 
 - 了解如何 [访问 IoT 安全数据](how-to-security-data-access.md)

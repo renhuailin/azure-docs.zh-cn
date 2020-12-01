@@ -3,12 +3,12 @@ title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96007421"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339976"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -33,7 +33,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 事件中心服务提供 [REST API](https://docs.microsoft.com/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
+可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 事件中心服务提供 [REST API](/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
 
 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
 

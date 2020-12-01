@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 888fdbb2352c4ac972eac8b24c29d22ce973e04d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3fe3e910134080f6620023f539913454670d093
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934560"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339908"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Azure Defender for IoT 设备安全代理入门
 
@@ -31,9 +31,9 @@ ms.locfileid: "90934560"
 使用以下工作流来部署和测试用于 IoT 安全代理的 Defender：
 
 1. [为 IoT 中心启用用于 IoT 服务的 Defender](quickstart-onboard-iot-hub.md)
-1. 如果 IoT 中心没有已注册的设备，则 [注册新设备](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)。
+1. 如果 IoT 中心没有已注册的设备，则 [注册新设备](../iot-accelerators/quickstart-device-simulation-deploy.md)。
 1. 为设备[创建 azureiotsecurity 安全模块](quickstart-create-security-twin.md)。
-1. 若要在 Azure 模拟设备上安装代理，而不是在实际设备上安装，请 [启动新的 Azure 虚拟机 (VM) ](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) 在可用区域中。
+1. 若要在 Azure 模拟设备上安装代理，而不是在实际设备上安装，请 [启动新的 Azure 虚拟机 (VM) ](../virtual-machines/linux/quick-create-portal.md) 在可用区域中。
 1. 在 IoT 设备或新 VM 上[部署用于 iot security agent 的 Defender](how-to-deploy-linux-cs.md) 。
 1. 按照 [trigger_events](https://aka.ms/iot-security-github-trigger-events) 的说明运行攻击的无害模拟。
 1. 验证用于 IoT 警报的 Defender，以响应上一步中的模拟攻击。 运行脚本5分钟后开始验证。

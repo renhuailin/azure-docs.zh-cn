@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: fd341a4f6e2402ce934bdffd4f024e0ef569eec1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628095"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340911"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -183,7 +183,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。 或者，如果你不想控制登录对话框在屏幕上的显示位置，则可以省略可选的父窗口参数来创建窗口。 这适用于基于命令行、用于将调用传递到任何其他后端服务并且不需要任何用于用户交互的窗口的应用程序。
+UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。 或者，如果你不想控制登录对话框在屏幕上的显示位置，则可以省略可选的父窗口参数来创建窗口。 这适用于基于命令行的应用程序，该应用程序用于将调用传递到任何其他后端服务，无需任何 windows 用户交互。
 
 ```csharp
 // net45

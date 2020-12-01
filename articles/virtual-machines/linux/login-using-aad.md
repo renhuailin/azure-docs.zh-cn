@@ -5,14 +5,14 @@ author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/29/2019
+ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 882df9d0dcb01d6321455b845fed087a5e14ccc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016159"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340877"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 

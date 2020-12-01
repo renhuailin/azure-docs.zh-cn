@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302667"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338123"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID 代理 (HIB) 
 
@@ -146,7 +146,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 在 AAD 中，所有第三方应用程序都需要许可才能对用户进行身份验证或访问数据。
 
 ### <a name="can-the-consent-be-approved-programatically"></a>同意是否可以按编程方式获得批准？
-Microsoft Graph api 允许您自动进行许可，请参阅 [api 文档](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以自动执行许可的顺序：
+Microsoft Graph api 允许您自动进行许可，请参阅 [api 文档](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以自动执行许可的顺序：
 
 * 注册应用并向应用程序授予对应用程序的所有权限，以访问 Microsoft Graph
 * 创建群集后，基于标识符 uri 查询群集应用

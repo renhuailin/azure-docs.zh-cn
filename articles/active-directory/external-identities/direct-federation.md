@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442076"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339466"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
 
@@ -45,7 +45,7 @@ ms.locfileid: "92442076"
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 验证域
-要与之联盟的域必须在 Azure AD**not**中通过 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
+要与之联盟的域必须在 Azure AD **not** 中通过 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
 
 ### <a name="authentication-url"></a>身份验证 URL
 直接联合只允许在身份验证 URL 的域与目标域匹配的策略中使用，或者在身份验证 URL 是这些允许的标识提供者之一的策略中使用（此列表可能会更改）：
@@ -146,7 +146,7 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
 2. 选择“外部标识” > “所有标识提供者”。
-3. 然后选择“新的 SAML/WS-Fed IdP”。
+3. 选择 ""，然后选择 " **新建 SAML/WS-送 IdP**"。
 
     ![显示用于添加新 SAML 或 WS-Fed IdP 的按钮的屏幕截图](media/direct-federation/new-saml-wsfed-idp.png)
 

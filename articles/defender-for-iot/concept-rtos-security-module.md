@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934477"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340044"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>Azure RTO (预览的安全模块) 
 
@@ -32,7 +32,7 @@ Azure RTO 安全模块在后台运行，提供无缝的用户体验，同时使�
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTO NetX 双核是一种高级的、行业级 TCP/IP 网络堆栈，专门用于深度嵌入的实时和 IoT 应用程序。 Azure RTO NetX 双核是一种双 IPv4 和 IPv6 网络堆栈，提供一组丰富的协议，包括安全和云。 了解有关 [AZURE Rto NetX 双核](https://aka.ms/netxduo) 解决方案的详细信息。
+Azure RTO NetX 双核是一种高级的、行业级 TCP/IP 网络堆栈，专门用于深度嵌入的实时和 IoT 应用程序。 Azure RTO NetX 双核是一种双 IPv4 和 IPv6 网络堆栈，提供一组丰富的协议，包括安全和云。 了解有关 [AZURE Rto NetX 双核](/azure/rtos/netx-duo/) 解决方案的详细信息。
 
 该模块提供了以下功能：
 
@@ -47,11 +47,11 @@ Azure RTO 安全模块由 Azure IoT 中间件平台初始化，并使用 IoT 中
 :::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT 安全模块状态图和信息流":::
 
 Azure RTO 安全模块使用三个收集器监视以下设备活动和信息：
-- 设备网络活动 **TCP**、 **UDP**和 **ICM**
+- 设备网络活动 **TCP**、 **UDP** 和 **ICM**
 - 系统信息为 **Threadx** 和 **NetX 双核** 版本
 - 检测信号事件
 
-每个收集器都链接到一个优先级组，每个优先级组都有其自己的间隔，其中的可能值为 **Low**、 **Medium**和 **High**。 间隔影响收集和发送数据的时间间隔。
+每个收集器都链接到一个优先级组，每个优先级组都有其自己的间隔，其中的可能值为 **Low**、 **Medium** 和 **High**。 间隔影响收集和发送数据的时间间隔。
 
 每个时间间隔都是可配置的，并且可以启用和禁用 IoT 连接器，以便进一步 [自定义解决方案](how-to-azure-rtos-security-module.md)。 
 
@@ -68,4 +68,3 @@ Azure RTO 安全模块支持特定的安全警报和建议。 完成初始配置
 - 了解 Azure RTO [先决条件和设置](quickstart-azure-rtos-security-module.md)的安全模块入门。
 - 详细了解 Azure RTO [安全警报和建议支持](concept-rtos-security-alerts-recommendations.md)的安全模块。 
 - 使用 Azure RTO [参考 API](azure-rtos-security-module-api.md)安全模块。
-

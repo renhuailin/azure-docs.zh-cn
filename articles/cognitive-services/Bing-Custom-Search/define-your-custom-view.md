@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565783"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338633"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>配置必应自定义搜索体验
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 可使用自定义搜索实例定制搜索体验，使其仅包含用户关心的网站上的内容。 必应不执行 Web 范围内的搜索，而只搜索你感兴趣的 Web 切片。 若要创建 Web 的自定义视图，请使用必应自定义搜索[门户](https://www.customsearch.ai)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "94565783"
 
 如果知道要包含在实例中的切片，请将它们添加到自定义搜索实例的“活动”列表中。 
 
-如果不确定要包含哪些切片，可以在“预览”窗格中向必应发送搜索查询，然后选择所需的切片。 要执行此操作： 
+如果不确定要包含哪些切片，可以在“预览”窗格中向必应发送搜索查询，然后选择所需的切片。 为此，请按以下步骤操作： 
 
 1. 在“预览”窗格上的下拉列表中选择“必应”，然后输入搜索查询
 
@@ -97,7 +97,7 @@ ms.locfileid: "94565783"
 
 在门户中可以调整特定域、子页面和网页的搜索内容的结果排名。 在预览窗格中发送搜索查询后，每条搜索结果将包含可以进行的调整列表：  
 
-| 调整 | 说明 |
+| 调整 | 描述 |
 |------------|-------------|
 | 阻止      | 将域、子页面或网页移至“受阻”列表。 必应将排除选定站点中的内容，以防止其显示在搜索结果中。                    |
 | 提升      | 在搜索结果中提高该域或子页面的内容。                                                                                        |
@@ -125,7 +125,7 @@ ms.locfileid: "94565783"
 
 * 在 " **固定** " 选项卡中，输入要固定到顶部的网页的 URL 及其相应的查询。
 
-* 在“预览”窗格中，输入搜索查询并单击“搜索”。 查找要为查询固定的网页，然后单击 " **固定到顶部** "。 该网页和查询将添加到“固定”列表。
+* 在“预览”窗格中，输入搜索查询并单击“搜索”。 查找要为查询固定的网页，然后单击 " **固定到顶部**"。 该网页和查询将添加到“固定”列表。
 
 ### <a name="specify-the-pins-match-condition"></a>指定固定项的匹配条件
 
@@ -134,7 +134,7 @@ ms.locfileid: "94565783"
 > [!NOTE]
 > 用户搜索查询之间的所有比较以及固定项的搜索查询不区分大小写。
 
-| 值 | 说明                                                                          |
+| 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 开头为 | 如果用户的查询字符串以固定项的查询字符串开头，则固定项为匹配项 |
 | 结尾为   | 如果用户的查询字符串以固定项的查询字符串结尾，则固定项为匹配项。  |

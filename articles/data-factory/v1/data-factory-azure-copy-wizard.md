@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d2d6ee8357698e4af59f44579ce7f2c3aa82991c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340316"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
 
@@ -94,7 +94,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 本部分探讨 Azure 数据工厂中复制向导的常见故障排除方法。
 
 > [!NOTE] 
-> 这些故障排除提示适用于数据工厂版本1中的复制向导。 有关数据工厂 v2，请参阅 [Azure 数据工厂故障](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide)排除指南。
+> 这些故障排除提示适用于数据工厂版本1中的复制向导。 有关数据工厂 v2，请参阅 [Azure 数据工厂故障](../data-factory-ux-troubleshoot-guide.md)排除指南。
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>错误代码：无法在复制向导中验证
 

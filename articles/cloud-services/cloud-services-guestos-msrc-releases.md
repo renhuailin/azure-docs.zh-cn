@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9cc86167b9d92289aa2edb605d8037a1bf6a9dcb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015521"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338718"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
-## <a name="november-2020-guest-os"></a>2020年11月来宾操作系统
+## <a name="november-2020-guest-os"></a>2020年 11 月来宾 OS
 >[!NOTE] 
 
 >11 月来宾 OS 目前正在推出到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 10 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。 
@@ -31,26 +31,26 @@ ms.locfileid: "95015521"
 | --- | --- | --- | --- | --- |
 |  Rel 20-11 OOB |  [4594442]  |  最新累积更新 | 6.25 | 11月17日2020 |
 |  Rel 20-11 OOB |  [4594441]  |  最新累积更新 | 5.49 | 11月19日2020 |
-|  Rel 20-11 |  [4580325]  |  闪存更新 | 3.91、4.84、5.49、6.25 | 10月13日，2020 |
-|  Rel 20-11 |  [4586768]  |  IE 累积更新 | 2.104、3.91、4.84 | 11月10日，2020 |
-|  Rel 20-11 |  [4578952]  |  .NET Framework 3.5 安全和质量汇总 | 2.104 | 11月10日，2020 |
-|  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 安全和质量汇总 | 2.104 | 11月10日，2020 |
-|  Rel 20-11 |  [4578953]  |  .NET Framework 3.5 安全和质量汇总 | 4.84 | 11月10日，2020 |
-|  Rel 20-11 |  [4578956]  |  .NET Framework 4.5.2 安全和质量汇总 | 4.84 | 11月10日，2020 |
-|  Rel 20-11 |  [4578950]  |  .NET Framework 3.5 安全和质量汇总 | 3.91 | 11月10日，2020 |
-|  Rel 20-11 |  [4578954]  |  .NET Framework 4.5.2 安全和质量汇总 | 3.91 | 11月10日，2020 |
-|  Rel 20-11 |  [4578966]  |  .NET Framework 3.5 和 4.7.2 累积更新 | 6.25 | 10月13日，2020 |
-|  Rel 20-11 |  [4586827]  |  每月汇总 | 2.104 | 11月10日，2020 |
-|  Rel 20-11 |  [4586834]  |  每月汇总 | 3.91 | 11月10日，2020 |
-|  Rel 20-11 |  [4586845]  |  每月汇总 | 4.84 | 11月10日，2020 |
+|  Rel 20-11 |  [4580325]  |  闪存更新 | 3.91、4.84、5.49、6.25 | 2020 年 10 月 13 日 |
+|  Rel 20-11 |  [4586768]  |  IE 累积更新 | 2.104、3.91、4.84 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578952]  |  .NET Framework 3.5 安全和质量汇总 | 2.104 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 安全和质量汇总 | 2.104 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578953]  |  .NET Framework 3.5 安全和质量汇总 | 4.84 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578956]  |  .NET Framework 4.5.2 安全和质量汇总 | 4.84 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578950]  |  .NET Framework 3.5 安全和质量汇总 | 3.91 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578954]  |  .NET Framework 4.5.2 安全和质量汇总 | 3.91 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4578966]  |  .NET Framework 3.5 和 4.7.2 累积更新 | 6.25 | 2020 年 10 月 13 日 |
+|  Rel 20-11 |  [4586827]  |  每月汇总 | 2.104 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4586834]  |  每月汇总 | 3.91 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4586845]  |  每月汇总 | 4.84 | 2020 年 11 月 10 日 |
 |  Rel 20-11 |  [4566426]  |  服务堆栈更新 | 3.91 | 2020 年 7 月 14 日 |
 |  Rel 20-11 |  [4566425]  |  服务堆栈更新 | 4.84 | 2020 年 7 月 14 日 |
-|  Rel 20-11 OOB |  [4578013]  |  独立安全更新 | 4.84 | 8月19日，2020 |
+|  Rel 20-11 OOB |  [4578013]  |  独立安全更新 | 4.84 | 2020 年 8 月 19 日 |
 |  Rel 20-11 |  [4576750]  |  服务堆栈更新 | 5.49 | 2020 年 9 月 8 日 |
-|  Rel 20-11 |  [4580970]  |  服务堆栈更新 | 2.104 | 10月13日，2020 |
-|  Rel 20-11 |  [4587735]  |  服务堆栈更新 | 6.25 | 11月10日，2020 |
-|  Rel 20-11 |  [4494175]  |  微代码 | 5.49 | Sep 1，2020 |
-|  Rel 20-11 |  [4494174]  |  微代码 | 6.25 | 09月3日2020 |
+|  Rel 20-11 |  [4580970]  |  服务堆栈更新 | 2.104 | 2020 年 10 月 13 日 |
+|  Rel 20-11 |  [4587735]  |  服务堆栈更新 | 6.25 | 2020 年 11 月 10 日 |
+|  Rel 20-11 |  [4494175]  |  微代码 | 5.49 | 2020 年 9 月 1 日 |
+|  Rel 20-11 |  [4494174]  |  微代码 | 6.25 | 2020 年 9 月 3 日 |
 
 [4594442]: https://support.microsoft.com/kb/4594442
 [4594441]: https://support.microsoft.com/kb/4594441
@@ -77,32 +77,32 @@ ms.locfileid: "95015521"
 
 
 
-## <a name="october-2020-guest-os"></a>10月2020来宾操作系统
+## <a name="october-2020-guest-os"></a>2020 年 10 月来宾 OS
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
 |  Rel 20-10 |  [4577010]  |  IE 累积更新 | [2.103]、 [3.90]、 [4.83] | 2020 年 9 月 8 日 |
-|  Rel 20-10 |  [4580325]  |  闪存更新 | [3.90]、 [4.83]、 [5.48]、 [6.24] | 10月13日，2020 |
-|  Rel 20-10 |  [4577668]  |  最新累积更新 | [6.24] | 10月13日，2020 |
-|  Rel 20-10 |  [4580346]  |  最新累积更新 | [5.48] | 10月13日，2020 |
-|  Rel 20-10 |  [4580970]  |  服务堆栈更新 | [2.103] | 10月13日，2020 |
-|  Rel 20-10 |  [4580345]  |  每月汇总 | [2.103] | 10月13日，2020 |
-|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1 安全和质量汇总 | [2.103] | 10月13日，2020 |
-|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2 安全和质量汇总 | [2.103] | 10月13日，2020 |
+|  Rel 20-10 |  [4580325]  |  闪存更新 | [3.90]、 [4.83]、 [5.48]、 [6.24] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4577668]  |  最新累积更新 | [6.24] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4580346]  |  最新累积更新 | [5.48] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4580970]  |  服务堆栈更新 | [2.103] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4580345]  |  每月汇总 | [2.103] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1 安全和质量汇总 | [2.103] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2 安全和质量汇总 | [2.103] | 2020 年 10 月 13 日 |
 |  Rel 20-10 |  [4566426]  |  服务堆栈更新 | [3.90] | 2020 年 7 月 14 日 |
-|  Rel 20-10 |  [4580382]  |  每月汇总 | [3.90] | 10月13日，2020 |
-|  Rel 20-10 |  [4578950]  |  .NET Framework 3.5 安全和质量汇总 | [3.90] | 10月13日，2020 |
-|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2 安全和质量汇总 | [3.90] | 10月13日，2020 |
+|  Rel 20-10 |  [4580382]  |  每月汇总 | [3.90] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578950]  |  .NET Framework 3.5 安全和质量汇总 | [3.90] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2 安全和质量汇总 | [3.90] | 2020 年 10 月 13 日 |
 |  Rel 20-10 |  [4566425]  |  服务堆栈更新 | [4.83] | 2020 年 7 月 14 日 |
-|  Rel 20-10 |  [4580347]  |  每月汇总 | [4.83] | 10月13日，2020 |
-|  Rel 20-10 |  [4578953]  |  .NET Framework 3.5 安全和质量汇总 | [4.83] | 10月13日，2020 |
-|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2 安全和质量汇总 | [4.83] | 10月13日，2020 |
-|  Rel 20-10 |  [4578013]  |  独立安全更新 | [4.83] | 8月19日，2020 |
+|  Rel 20-10 |  [4580347]  |  每月汇总 | [4.83] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578953]  |  .NET Framework 3.5 安全和质量汇总 | [4.83] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2 安全和质量汇总 | [4.83] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578013]  |  独立安全更新 | [4.83] | 2020 年 8 月 19 日 |
 |  Rel 20-10 |  [4576750]  |  服务堆栈更新 | [5.48] | 2020 年 9 月 8 日 |
-|  Rel 20-10 |  [4494175]  |  微代码 | [5.48] | Sep 1，2020 |
-|  Rel 20-10 |  [4577667]  |  服务堆栈更新 | [6.24] | 10月13日，2020 |
-|  Rel 20-10 |  [4578966]  |  .NET Framework 3.5 和 4.7.2 累积更新 | [6.24] | 10月13日，2020 |
-|  Rel 20-10 |  [4494174]  |  微代码 | [6.24] | 09月3日2020 |
+|  Rel 20-10 |  [4494175]  |  微代码 | [5.48] | 2020 年 9 月 1 日 |
+|  Rel 20-10 |  [4577667]  |  服务堆栈更新 | [6.24] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4578966]  |  .NET Framework 3.5 和 4.7.2 累积更新 | [6.24] | 2020 年 10 月 13 日 |
+|  Rel 20-10 |  [4494174]  |  微代码 | [6.24] | 2020 年 9 月 3 日 |
 
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -127,11 +127,11 @@ ms.locfileid: "95015521"
 [4577667]: https://support.microsoft.com/kb/4577667
 [4578966]: https://support.microsoft.com/kb/4578966
 [4494174]: https://support.microsoft.com/kb/4494174
-[2.103]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3.90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4.83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5.48]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6.24]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2.103]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.90]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.83]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.48]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.24]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="september-2020-guest-os"></a>2020 年 9 月来宾 OS
@@ -183,11 +183,11 @@ ms.locfileid: "95015521"
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
 [4494174]: https://support.microsoft.com/kb/4494174
-[2.102]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3.89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4.82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5.47]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6.23]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2.102]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.89]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.82]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.47]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.23]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="august-2020-guest-os"></a>2020 年 8 月来宾 OS
 

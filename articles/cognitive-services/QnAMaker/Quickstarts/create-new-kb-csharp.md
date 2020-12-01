@@ -7,29 +7,29 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 6b64c29e6a26f2f9585e7f2c737f98e4646b1332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e31345c3b83e1ff5e01952d69dde9353b8234757
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777718"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338106"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入门：使用 c # 与 REST 在 QnA Maker 中创建知识库
 
-本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
+本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../index.yml)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
 本快速入门调用了 QnA Maker API：
-* [创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
-* [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [创建知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [获取操作详细信息](/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [C # 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[参考文档](/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [C # 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
-* 必须已有一项 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* 必须已有一项 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -69,8 +69,8 @@ Build succeeded.
 
 在环境变量中设置以下值：
 
-* `QNA_MAKER_SUBSCRIPTION_KEY` - **密钥**是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
-* `QNA_MAKER_ENDPOINT` - **终结点**是用于创作的 URL，采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 这与用于查询预测终结点的 URL 不同。
+* `QNA_MAKER_SUBSCRIPTION_KEY` - **密钥** 是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
+* `QNA_MAKER_ENDPOINT` - **终结点** 是用于创作的 URL，采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 这与用于查询预测终结点的 URL 不同。
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/QnAMaker/rest/create-kb.cs" id="constants":::
 
@@ -162,4 +162,4 @@ Build succeeded.
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API 参考](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

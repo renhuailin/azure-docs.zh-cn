@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542144"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339585"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
@@ -165,6 +165,8 @@ SKU 是为主机定义的，表示 VM 大小系列和类型。 可以在单个�
 
 大小和硬件类型因区域而异。 请参阅主机[定价页](https://aka.ms/ADHPricing)来了解详细信息。
 
+> [!NOTE]
+> Dpm 专用主机后，不能更改大小或类型。 如果需要不同大小的类型，则需要创建新的主机。  
 
 ## <a name="host-life-cycle"></a>主机生命周期
 

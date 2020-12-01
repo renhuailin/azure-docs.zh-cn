@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: c0184d1765052510d42337b34094f66b2536c9ec
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4e2bb14519f8ed4e3e4a0e9ac8800957b30229a9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367533"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338412"
 ---
 # <a name="get-videos-from-your-custom-view"></a>从自定义视图获取视频
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应自定义视频搜索可以让你使用视频来丰富自定义搜索体验。 与 Web 结果类似，自定义搜索支持在实例的网站列表中搜索视频。 可以使用必应自定义视频搜索 API 或通过托管 UI 功能获取视频。 使用托管 UI 功能简单易行，并建议用于在短时间内启动和运行搜索体验。 有关配置托管 UI 以包含视频的信息，请参阅[配置托管 UI 体验](hosted-ui.md)。
 

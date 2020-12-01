@@ -1,5 +1,5 @@
 ---
-title: 在搜索框中添加自动完成和建议
+title: 向搜索框添加自动完成
 titleSuffix: Azure Cognitive Search
 description: 通过创建建议器并构建可以使用已完成的字词或短语自动完成搜索框的请求，在 Azure 认知搜索中启用“边键入边搜索”查询操作。 你还可以返回建议的匹配项。
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029007"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339602"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>使用 Azure 认知搜索将自动完成和建议添加到客户端应用
 
 “边键入边搜索”是提高用户发起的查询的工作效率的一种常用技术。 在 Azure 认知搜索中，此体验是通过“自动完成”支持的。自动完成可根据部分输入来完成某个字词或短语（使用“microsoft”来补全“micro”）。 第二个用户体验是 *建议*，或者是匹配的文档的简短列表 (使用 ID 返回书名，以便可以链接到有关该书) 的详细信息页。 自动完成和建议都是根据索引中的匹配项预测的。 服务不会提供返回零个结果的查询。
 

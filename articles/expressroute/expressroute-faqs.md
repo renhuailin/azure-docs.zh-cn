@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027102"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339783"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -36,18 +36,18 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 有关定价信息，请查看[定价详细信息](https://azure.microsoft.com/pricing/details/expressroute/)。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>如果我为给定带宽的 ExpressRoute 线路付费，是否为入口和出口流量单独分配此带宽？
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>如果购买具有给定带宽的 ExpressRoute 线路，系统是否会为入口和出口流量分别分配此带宽？
 
-是的，ExpressRoute 线路带宽为双工。 例如，如果购买了 200 mbps 的 ExpressRoute 线路，则会采购 200 mbps，用于进入流量并 200 mbits/s 流量。
+是的，ExpressRoute 线路带宽为双工。 例如，如果你购买了 200 mbps ExpressRoute 线路，那么你将获得 200 Mbps 的入口流量和 200 Mbps 的出口流量。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>如果我购买了具有给定带宽的 ExpressRoute 线路，我必须从网络服务提供商购买具有相同速度的 VPN 连接吗？
 
 不是。 可以从服务提供商购买任何速度的 VPN 连接。 但是，与 Azure 的连接速度限制为购买的 ExpressRoute 线路带宽。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果我为给定带宽的 ExpressRoute 线路付费，我是否能够使用超过我的采购带宽？
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果购买具有给定带宽的 ExpressRoute 线路，是否能够使用比所购买的带宽更多的带宽？
 
-是的，你最多可以使用 ExpressRoute 线路的辅助连接上可用的带宽来获得所购带宽限制的两倍。 线路的内置冗余配置为使用主连接和辅助连接，每个采购带宽为两个 Microsoft 企业边缘路由器 (Msee) 。 如果需要，可通过辅助连接使用的带宽用于额外的流量。 不过，由于辅助连接是为了实现冗余，因此不能保证它，并且不应在持续时间内用于额外的流量。 若要详细了解如何使用这两个连接来传输流量，请参阅 [此处](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)。
-如果计划仅使用主连接来传输流量，则连接的带宽是固定的，尝试过度订阅会导致数据包丢弃。 如果流量流过 ExpressRoute 网关，则 SKU 的带宽是固定的，而不是可突增。
+是的，使用 ExpressRoute 线路的辅助连接上提供的带宽时，你最多可以使用所购带宽限制的两倍。 线路的内置冗余是使用到两个Microsoft 企业边缘路由器 (MSEE) 的主连接和辅助连接配置的，每个连接都使用所购买的带宽。 如有必要，通过辅助连接提供的带宽可用于额外的流量。 但是，由于辅助连接是为了实现冗余，因此它得不到保障，不应在一段持续的时间内将它用于额外的流量。 若要详细了解如何使用这两个连接来传输流量，请参阅[此文](./expressroute-optimize-routing.md#solution-use-as-path-prepending)。
+如果计划仅使用主连接来传输流量，则连接的带宽是固定的，试图超额订阅它会导致数据包丢失情况增加。 如果流量流过 ExpressRoute 网关，则 SKU 的带宽是固定的，不可进行突发式提升。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>能否同时与虚拟网络和其他 Azure 服务使用同一专用网络连接？
 
@@ -222,19 +222,19 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>我有多个包含虚拟网络的 Azure 订阅。 能否将不同订阅中的虚拟网络连接到单个 ExpressRoute 线路？
 
-是的。 可以在同一订阅中最多链接 10 个虚拟网络作为线路，或在不同的订阅中使用单一 ExpressRoute 线路。 可以通过启用 ExpressRoute 高级功能来提高此限制。 请注意，专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者;所有虚拟网络共享相同的带宽。
+是的。 可以在同一订阅中最多链接 10 个虚拟网络作为线路，或在不同的订阅中使用单一 ExpressRoute 线路。 可以通过启用 ExpressRoute 高级功能来提高此限制。 请注意，专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者；所有虚拟网络共享相同的带宽。
 
 有关详细信息，请参阅[在多个订阅之间共享 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>我有多个关联到不同 Azure Active Directory 租户或企业协议合约的 Azure 订阅。 是否可以将位于单独租户和合约中的虚拟网络连接到不在同一租户或合约中的单个 ExpressRoute 线路？
 
-是的。 ExpressRoute 授权可以跨订阅、租户和合约边界，不需要进行额外配置。 请注意，专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者;所有虚拟网络共享相同的带宽。
+是的。 ExpressRoute 授权可以跨订阅、租户和合约边界，不需要进行额外配置。 请注意，专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者；所有虚拟网络共享相同的带宽。
 
 有关详细信息，请参阅[在多个订阅之间共享 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-不是。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -427,4 +427,4 @@ Microsoft 365 services 需要启用高级外接程序。 有关费用，请参�
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute 服务是否存储客户数据？
 
-不是。
+否。
