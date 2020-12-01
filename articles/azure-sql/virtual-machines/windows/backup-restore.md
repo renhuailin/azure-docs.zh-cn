@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f3723c792dfe962f2cbf16e3b167faf66c50a92e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991530"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327451"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,7 +93,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 ### <a name="backup-to-attached-disks"></a>备份到附加的磁盘
 
-对于 Azure VM 上的 SQL Server，可以使用 VM 上附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，你只能根据[虚拟机的大小](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
+对于 Azure VM 上的 SQL Server，可以使用 VM 上附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，你只能根据[虚拟机的大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
 
 有关如何使用 SQL Server Management Studio (SSMS) 或 Transact-SQL 手动创建完整数据库备份的示例，请参阅[创建完整数据库备份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
 

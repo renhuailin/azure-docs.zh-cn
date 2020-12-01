@@ -3,18 +3,18 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 11/23/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528238"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327485"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
-可以使用 Azure 自动化中的更新管理来管理 Azure、本地环境和其他云环境中的 Windows 和 Linux 虚拟机的操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
+可以使用 Azure 自动化中的更新管理，为 Azure、本地环境和其他云环境中的 Windows 和 Linux 虚拟机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
 
 > [!NOTE]
 > 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。
@@ -24,17 +24,17 @@ ms.locfileid: "95528238"
 
 若要在 Azure VM 上自动下载并安装可用的 *关键* 修补程序和 *安全* 修补程序，请查看 WINDOWS vm 的 [自动 VM 来宾修补](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
 
-在部署更新管理和启用计算机以进行管理之前，请确保了解以下部分中的信息。  
+在部署更新管理并启用计算机进行管理之前，请确保你了解以下部分中的信息。  
 
 ## <a name="about-update-management"></a>关于更新管理
 
-更新管理管理的计算机依赖于以下各项来执行评估并部署更新：
+通过更新管理进行管理的计算机依赖于以下项进行评估和更新部署：
 
-* 适用于 Windows 或 Linux 的[Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)
+* 用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)
 * 用于 Linux 的 PowerShell 所需状态配置 (DSC)
-* 在计算机上启用更新管理时自动安装自动化混合 Runbook 辅助角色 () 
-* Microsoft 更新或 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (适用于 Windows 计算机的 WSUS) 
-* 适用于 Linux 计算机的私有或公用更新存储库
+* 自动化混合 Runbook 辅助角色（在计算机上启用更新管理时自动安装）
+* 适用于 Windows 计算机的 Microsoft 更新或 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS)
+* 适用于 Linux 计算机的专用或公共更新存储库
 
 下图说明了更新管理如何评估安全更新并将其应用于工作区中的所有连接的 Windows 服务器和 Linux 服务器：
 
@@ -67,19 +67,19 @@ ms.locfileid: "95528238"
 
 ### <a name="supported-client-types"></a>支持的客户端类型
 
-下表列出了适用于更新评估和修补的支持的操作系统。 修补需要混合 Runbook 辅助角色，该辅助角色会在你启用虚拟机或服务器以便通过更新管理进行管理时自动安装。 有关混合 Runbook 辅助角色系统要求的信息，请参阅 [部署 Windows 混合 Runbook 辅助](../automation-windows-hrw-install.md) 角色和 [部署 Linux 混合 runbook 辅助角色](../automation-linux-hrw-install.md)。
+下表列出了适用于更新评估和修补的支持的操作系统。 修补需要一个混合 Runbook 辅助角色（在你通过更新管理启用虚拟机或服务器进行管理时自动安装）。 有关混合 Runbook 辅助角色系统需求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 仅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
 |CentOS 6 和 7 (x64)       | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x64)       |Linux 代理需要具有访问更新存储库的权限。         |
+|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)       |Linux 代理需要具有访问更新存储库的权限。         |
 
 > [!NOTE]
 > Azure 虚拟机规模集可通过更新管理进行管理。 更新管理适用于实例本身，而非基础映像。 需要以增量方式计划更新，以便不会同时更新所有 VM 实例。 可以按照[添加要启用更改跟踪和库存的非 Azure 计算机](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)下的步骤，为虚拟机规模集添加节点。
@@ -88,7 +88,7 @@ ms.locfileid: "95528238"
 
 下表列出了不受支持的操作系统：
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 若要管理更新，请 [Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 适用于 Windows 10 客户端计算机的修补程序管理。 |
 |Windows Server 2016 Nano Server     | 不支持。       |
@@ -246,13 +246,13 @@ sudo yum -q --security check-update
 
 可以通过以下方式启用更新管理并选择要管理的计算机：
 
-- 使用 Azure [资源管理器模板](enable-from-template.md) 将更新管理部署到新的或现有的自动化帐户，并在你的订阅中 Azure Monitor Log Analytics 工作区。 它不会配置应管理的计算机范围，而是在使用模板后在单独的步骤中执行此操作。
+- 使用 Azure [资源管理器模板](enable-from-template.md)将更新管理部署到订阅中新的或现有的自动化帐户和 Azure Monitor Log Analytics 工作区。 它不会配置应管理的计算机范围，而是在使用模板后在单独的步骤中执行此操作。
 
-- 用于一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）的 [自动化帐户](enable-from-automation-account.md) 。
+- 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
 
 - 使用 **AutomationSolution** [runbook](enable-from-runbook.md) 方法。
 
-- 对于 "Azure 门户中的"**虚拟机**"页上的 [选定 Azure VM](enable-from-vm.md) 。 此方案适用于 Linux 和 Windows VM。
+- 从 Azure 门户中的“虚拟机”页为[所选 Azure VM](enable-from-vm.md) 启用。 此方案适用于 Linux 和 Windows VM。
 
 - 可以从 Azure 门户中的“虚拟机”页选择启用[多个 Azure VM](enable-from-portal.md)。
 
