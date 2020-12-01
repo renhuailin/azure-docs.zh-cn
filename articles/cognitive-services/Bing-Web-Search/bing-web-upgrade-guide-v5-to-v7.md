@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381110"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349514"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>从必应 Web 搜索 API v5 升级到 v7
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 此升级指南介绍了必应 Web 搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
@@ -31,7 +31,7 @@ ms.locfileid: "94381110"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，https:\/\/api.cognitive.microsoft.com/bing/ **v7.0** /search。
+- 终结点的版本号已从 v5 更改为 v7。 例如，https:\/\/api.cognitive.microsoft.com/bing/**v7.0**/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -44,7 +44,7 @@ ms.locfileid: "94381110"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|说明
+|代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，则响应将包括这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -78,7 +78,7 @@ InsufficientScope|InsufficientAuthorization
 
 ## <a name="non-breaking-changes"></a>非重大变化  
 
-### <a name="headers"></a>头文件
+### <a name="headers"></a>标头
 
 - 添加可选 [Pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 请求标头。 默认情况下，必应返回缓存的内容（如果适用）。 若要防止必应返回缓存的内容，请将 Pragma 标头设置为 no-cache（例如，Pragma: no-cache）。
 
@@ -86,7 +86,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 添加 [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
 
-- 添加 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像提升为响应，可以将 "升级" 设置为 " *视频"、"图像* "。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为2并且 `promote` 设置为 *视频、图像* ，则响应可能包含网页、新闻、视频和图像。
+- 添加 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像提升为响应，可以将 "升级" 设置为 " *视频"、"图像*"。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为2并且 `promote` 设置为 *视频、图像*，则响应可能包含网页、新闻、视频和图像。
 
 ### <a name="object-changes"></a>对象变化
 

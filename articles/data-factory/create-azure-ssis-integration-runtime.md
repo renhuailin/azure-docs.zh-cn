@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023425"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350936"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -128,7 +128,7 @@ ms.locfileid: "96023425"
 
    7. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。
 
-   8. 选择“**下一步**”。
+   8. 选择“**下一页**”。
 
 #### <a name="deployment-settings-page"></a>“部署设置”页
 
@@ -167,7 +167,7 @@ ms.locfileid: "96023425"
 如果适用，请选择“测试连接”，如果成功，请选择”下一步” 。
 
 > [!NOTE]
-   > 如果使用 Azure SQL 数据库服务器来托管 SSISDB，则默认情况下，你的数据将存储在异地冗余存储中以供备份。 如果你不希望将数据复制到其他区域，请按照说明 [使用 PowerShell 配置备份存储冗余](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)。
+   > 如果使用 Azure SQL 数据库服务器来托管 SSISDB，则默认情况下，你的数据会存储在异地冗余存储中以便进行备份。 如果不想将数据复制到其他区域，请按照说明[使用 PowerShell 配置备份存储冗余](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)。
    
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>创建 Azure-SSIS IR 包存储
 

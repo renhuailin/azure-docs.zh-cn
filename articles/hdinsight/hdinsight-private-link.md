@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889076"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352535"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>通过专用链接 (预览) 保护和隔离 Azure HDInsight 群集
 
@@ -102,10 +102,10 @@ networkProperties: {
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-若要使用 powershell，请参阅 [此处](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的示例。
+若要使用 powershell，请参阅 [此处](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的示例。
 
 ### <a name="use-azure-cli"></a>使用 Azure CLI
-若要使用 Azure CLI，请参阅 [此处](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的示例。
+若要使用 Azure CLI，请参阅 [此处](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

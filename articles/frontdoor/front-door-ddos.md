@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414495"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350777"
 ---
 # <a name="ddos-protection-on-front-door"></a>前门防护
 
@@ -34,9 +34,9 @@ Azure 前门提供多种功能和特征，有助于防止分布式拒绝服务 (
 
 前门是一种高度可扩展的全球分布式服务。 我们有许多客户，其中包括 Microsoft 自己的大规模云产品，每秒接收数百个请求。 前门位于 Azure 网络的边缘，吸收，并在地理上隔离大容量攻击。 这可以防止恶意流量进一步超出 Azure 网络的边缘。
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>缓存
 
-[前门的缓存功能](./front-door-caching.md) 可用于保护后端免受攻击生成的大型流量量。 缓存的资源将从前门边缘节点返回，因此不会转发到后端。 即使短暂的缓存过期时间 (秒或分钟数) 动态响应可大大减少后端服务上的负载。 有关缓存概念和模式的详细信息，请参阅 [缓存注意事项](https://docs.microsoft.com/azure/architecture/best-practices/caching) 和 [缓存端模式](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)。
+[前门的缓存功能](./front-door-caching.md) 可用于保护后端免受攻击生成的大型流量量。 缓存的资源将从前门边缘节点返回，因此不会转发到后端。 即使短暂的缓存过期时间 (秒或分钟数) 动态响应可大大减少后端服务上的负载。 有关缓存概念和模式的详细信息，请参阅 [缓存注意事项](/azure/architecture/best-practices/caching) 和 [缓存端模式](/azure/architecture/patterns/cache-aside)。
 
 ## <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 

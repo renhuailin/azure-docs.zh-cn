@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010565"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348647"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "96010565"
 使用相同的工具在一个位置管理不同的 Azure 实体。 可管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器，还可更新其他 Azure 实体（例如存储 Blob 和队列）。 Azure 存储资源管理器支持为 SQL、MongoDB、图形和表 API 配置的 Cosmos 帐户。
 
 > [!NOTE]
-> 与存储资源管理器的 Azure Cosmos DB 集成已弃用。 任何现有功能至少在一年内不会从此版本中删除。 应改为使用 [Azure 门户](https://portal.azure.com/)、[Azure 门户桌面应用](https://portal.azure.com/App/Download)或独立的 [Azure Cosmos 资源管理器](data-explorer.md)。 替代选项包含存储资源管理器当前不支持的许多新功能。
+> 与存储资源管理器的 Azure Cosmos DB 集成已弃用。 任何现有功能至少在一年内不会从此版本中删除。 应改为使用 [Azure 门户](https://portal.azure.com/)、 [azure 门户桌面应用](https://portal.azure.com/App/Download) 或独立 [Azure Cosmos DB 资源管理器](data-explorer.md) 。 替代选项包含存储资源管理器当前不支持的许多新功能。
 
 ## <a name="prerequisites"></a>先决条件
 

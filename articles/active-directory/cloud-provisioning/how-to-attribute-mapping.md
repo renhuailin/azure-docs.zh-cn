@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637074"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348797"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Azure AD Connect 云预配属性映射
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect 云预配属性映射
 
 Azure AD Connect 云预配引入了一项新功能，可让你轻松地在本地用户/组对象与 Azure AD 中的对象之间映射属性。  此功能已添加到云预配配置。
 
@@ -54,8 +54,8 @@ Azure AD Connect 云预配引入了一项新功能，可让你轻松地在本地
 ## <a name="using-attribute-mapping"></a>使用属性映射
 若要使用新功能，请执行以下步骤。
 
- 1.  在 Azure 门户中，选择“Azure Active Directory”。
- 2.  选择“Azure AD Connect”****。
+ 1.  在 Azure 门户中，选择“Azure Active Directory”。 
+ 2.  选择“Azure AD Connect”。
  3.  选择 " **管理设置**"。
 
    ![管理预配](media/how-to-configure/manage1.png)
@@ -82,8 +82,8 @@ Azure AD Connect 云预配引入了一项新功能，可让你轻松地在本地
 ## <a name="test-your-attribute-mapping"></a>测试您的属性映射
 若要测试您的属性映射，可以使用 [按需设置](how-to-on-demand-provision.md)。  从 
 
-1.  在 Azure 门户中，选择“Azure Active Directory”。
-2.  选择“Azure AD Connect”****。
+1.  在 Azure 门户中，选择“Azure Active Directory”。 
+2.  选择“Azure AD Connect”。
 3.  选择 " **管理设置**"。
 4. 在 " **配置**" 下，选择您的配置。
 5. 在 " **验证** " 下单击 " **设置用户** " 按钮。 

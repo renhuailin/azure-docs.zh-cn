@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b036f558628d51242a78c00d2ee17332816d25
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227910"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348753"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
 当客户端需要使用现有的信任关系时，你可以通过 OAuth 2.0 SAML 持有者断言流使用 SAML 断言请求 OAuth 访问令牌。 应用于 SAML 断言的签名提供已授权应用的身份验证。 SAML 断言是标识提供者颁发的 XML 安全令牌，由服务提供者使用。 出于安全相关的目的，该服务提供者依赖于其内容来识别断言的使用者。
@@ -32,7 +32,7 @@ SAML 断言将发布到 OAuth 令牌终结点。  该终结点根据应用的先
 ![OAuth 流](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>使用 SAML 持有者断言的调用关系图
-现在，让我们了解如何以编程方式实际提取 SAML 断言。 此方法已使用 ADFS 进行测试。 不过，此方法也适用于支持以编程方式返回 SAML 断言的任何标识提供者。 基本过程是：获取 SAML 断言，获取访问令牌，然后访问 Microsoft Graph。
+现在，让我们了解如何以编程方式获取 SAML 断言。 此方法已使用 ADFS 进行测试。 但是，这与支持以编程方式返回 SAML 断言的任何标识提供者一起使用。 基本过程是：获取 SAML 断言，获取访问令牌，然后访问 Microsoft Graph。
 
 ### <a name="prerequisites"></a>先决条件
 

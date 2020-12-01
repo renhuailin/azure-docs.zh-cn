@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296982"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350732"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
 
@@ -192,7 +192,7 @@ Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分�
 
 ## <a name="best-practices-for-git-integration"></a>Git 集成的最佳做法
 
--   **权限**。 将 git 存储库连接到工作区后，任何能够访问你的 git 存储库中任何角色的 git 存储库的用户都可以在 git 模式下更新项目，如 sql 脚本、笔记本、spark 作业定义、数据集、数据流和管道。 通常不需要每个团队成员都有权更新工作区。 仅授予 Synapse 工作区项目作者的 git 存储库权限。 
+-   **权限**。 将 git 存储库连接到你的工作区之后，有权访问你的工作区中任何角色的 git 存储库的任何人都能够在 git 模式下更新项目，如 sql 脚本、笔记本、spark 作业定义、数据集、数据流和管道。 通常不需要每个团队成员都有权更新工作区。 仅授予 Synapse 工作区项目作者的 git 存储库权限。 
 -   **协作**。 建议不要允许直接签入到协作分支。 此限制有助于防止出现 bug，因为每个签入都将经历[创建功能分支](source-control.md#creating-feature-branches)中描述的拉取请求审阅过程。
 -   **Synapse 实时模式**。 在 git 模式下发布后，所有更改将反映在 Synapse 实时模式下。 在 Synapse 实时模式下，已禁用发布。 如果你已被授予正确的权限，则可以查看在实时模式下运行项目。 
 -   **在工作室中编辑项目**。 仅可通过 Synapse studio 启用工作区源控件并自动将更改同步到 git。 通过 SDK、PowerShell 进行的任何更改都不会同步到 git。 建议你始终在启用 git 后在 Studio 中编辑项目。

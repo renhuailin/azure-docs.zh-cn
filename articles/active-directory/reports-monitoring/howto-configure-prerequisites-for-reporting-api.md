@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013048"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348732"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "96013048"
 
 ## <a name="license-requirements"></a>许可证要求
 
-Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能访问租户的登录报告。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1（或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需满足任何其他许可证要求即可通过 API 访问登录报告。 
+Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能访问租户的登录报告。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1（或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需任何其他许可证要求即可通过 API 访问登录报告。 
 
 
 ## <a name="register-an-application"></a>注册应用程序

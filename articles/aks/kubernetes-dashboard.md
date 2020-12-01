@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681612"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350120"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -41,6 +41,10 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
+
+> [!WARNING]
+> 版本 1.19 + 的 AKS 仪表板外接程序已弃用。 请改用 [Azure 门户 (preview) 中的 Kubernetes 资源视图 ][kubernetes-portal] 。 
+> * 现在，下面的命令将打开 Azure 门户资源视图，而不是版本1.19 及更高版本的 kubernetes 仪表板。
 
 若要在群集上启动 Kubernetes 仪表板，请使用 [az aks browse][az-aks-browse] 命令。 此命令要求在群集上安装 kube-dashboard 加载项，运行任何低于 Kubernetes 1.18 的版本的群集都默认包含该加载项。
 

@@ -1,17 +1,17 @@
 ---
 title: 在启用磁盘加密的情况下创建池
-description: 了解如何使用磁盘加密配置来通过平台管理的密钥来加密节点。
+description: 了解如何使用磁盘加密配置通过平台管理的密钥来加密节点。
 author: pkshultz
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61e87c660bf2d2f0f4c8d02bd1699c58f8da667
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849256"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350664"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>在启用磁盘加密的情况下创建池
 
@@ -25,8 +25,8 @@ ms.locfileid: "91849256"
 
 Batch 将会根据池配置和区域的可支持性在计算节点上应用这些磁盘加密技术之一。
 
-- [使用平台管理的密钥进行托管磁盘静态加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [使用平台托管密钥在主机上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [使用平台管理的密钥进行托管磁盘静态加密](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [使用平台托管密钥在主机上加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ Batch 将会根据池配置和区域的可支持性在计算节点上应用这�
 
 创建池后，可在池的“属性”部分中看到磁盘加密配置目标。
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure 门户中磁盘加密配置选项的屏幕截图。":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="显示 Azure 门户中磁盘加密配置目标的屏幕截图。":::
 
 ## <a name="examples"></a>示例
 
@@ -107,5 +107,5 @@ az batch pool create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure 磁盘存储的服务器端加密](../virtual-machines/windows/disk-encryption.md)。
+- 详细了解 [Azure 磁盘存储的服务器端加密](../virtual-machines/disk-encryption.md)。
 - 有关 Batch 的详细概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。

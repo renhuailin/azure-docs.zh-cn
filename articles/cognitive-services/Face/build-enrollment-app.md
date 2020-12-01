@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025728"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350358"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>构建适用于 Android 的注册应用并做出反应
 
@@ -74,7 +74,7 @@ ms.locfileid: "95025728"
 
 ### <a name="android"></a>Android
 
-首先，请确保应用已准备好进行生产部署：从应用代码中删除任何密钥或机密，并确保遵循 [最佳安全方案](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)。
+首先，请确保应用已准备好进行生产部署：从应用代码中删除任何密钥或机密，并确保遵循 [最佳安全方案](../cognitive-services-security.md?tabs=command-line%2ccsharp)。
 
 当你准备好发布应用以进行生产时，将生成一个可供发布的 APK 文件，该文件是适用于 Android 应用的程序包文件格式。 此 APK 文件必须使用私钥进行签名。 在此发布版本中，你可以开始直接将应用分发到你的设备。 
 

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376565"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352416"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 如果在 [创建 QnA Maker 服务](./set-up-qnamaker-service-azure.md)期间启用了 Application Insights，QnA Maker 将存储所有聊天日志和其他遥测。 运行示例查询，从 Application Insights 获取聊天日志。
 
@@ -26,7 +26,7 @@ ms.locfileid: "94376565"
 
     ![选择你的 Application Insights 资源](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. 选择 " **日志 (分析")** 。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
+2. 选择 " **日志 (分析")**。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
 
 3. 粘贴以下查询并运行它。
 
@@ -48,11 +48,11 @@ ms.locfileid: "94376565"
 
     [![运行查询，确定用户的问题、解答和评分](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 QnA Maker 托管 (预览版) 使用 Azure 诊断日志记录来存储遥测数据和聊天日志。 按照以下步骤运行示例查询，以获取 QnA Maker 知识库的使用情况分析。
 
-1. 为 QnA Maker 托管 (预览版) 服务[启用诊断日志记录](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging)。
+1. 为 QnA Maker 托管 (预览版) 服务[启用诊断日志记录](../../diagnostic-logging.md)。
 
 2. 在上一步中，选择 " **跟踪** "， **并选择 "审核"、"RequestResponse" 和 "** 用于日志记录"
 
@@ -62,7 +62,7 @@ QnA Maker 托管 (预览版) 使用 Azure 诊断日志记录来存储遥测数�
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>运行查询来获取有关 QnA Maker 知识库的其他分析
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 ### <a name="total-90-day-traffic"></a>90 天流量总计
 
@@ -132,7 +132,7 @@ traces | extend id = operation_ParentId
 | order  by timestamp  desc
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
 ### <a name="all-qna-chat-log"></a>所有 QnA chat 日志
 

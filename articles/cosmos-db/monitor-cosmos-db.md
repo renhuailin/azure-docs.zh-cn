@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 19137f3384a1b97ae1ae7e3faeb4dc2e0e4fd3bd
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017791"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350392"
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -77,7 +77,7 @@ Azure 门户中每个 Azure Cosmos 数据库的“概述”页都提供数据库
 
 有关使用 Azure 门户和某些诊断查询示例创建诊断设置的详细过程，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](cosmosdb-monitor-resource-logs.md) 。 创建诊断设置时，请指定要收集的日志类别。
 
-以下各节将讨论可以收集的指标和日志。
+以下部分将讨论可以收集的指标和日志。
 
 ## <a name="analyzing-metrics"></a><a id="analyze-metric-data"></a> 分析指标
 
@@ -93,11 +93,11 @@ Azure Cosmos DB 的所有指标都位于命名空间“Cosmos DB 标准指标”
 * 区域
 * StatusCode
 
-为获得参考，你可以查看 [Azure Monitor 中支持的所有资源度量值](/azure/azure-monitor/platform/metrics-supported)的列表。
+若要参考，可以查看 [Azure Monitor 中所有受支持的资源指标](../azure-monitor/platform/metrics-supported.md)列表。
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
@@ -127,7 +127,7 @@ Azure Cosmos DB 的所有指标都位于命名空间“Cosmos DB 标准指标”
 
 Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有的属性集。
 
-Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema)概述了常见架构。 有关为 Azure Cosmos DB 收集的资源日志类型的列表，请参阅 [监视 Azure Cosmos DB 数据引用] ( # B1 Cosmos # 资源日志)   
+Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)概述了常见架构。 有关为 Azure Cosmos DB 收集的资源日志类型的列表，请参阅 [监视 Azure Cosmos DB 数据引用](monitor-cosmos-db-reference.md#resource-logs)。
 
 [活动日志](/azure/azure-monitor/platform/activity-log)是 Azure 的平台登录名，可提供对订阅级别事件的见解。 你可以单独查看它或将它路由到 Azure Monitor 日志，然后便可以在其中使用 Log Analytics 执行复杂得多的查询。  
 
@@ -172,11 +172,11 @@ Azure Cosmos DB 将数据存储在以下表中。
 
 ## <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](/azure/azure-monitor/platform/alerts-metric-overview)、[日志](/azure/azure-monitor/platform/alerts-unified-log)和[活动日志](/azure/azure-monitor/platform/activity-log-alerts)上设置警报。 不同类型的警报具有优点和缺点
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../azure-monitor/platform/alerts-metric-overview.md)、[日志](../azure-monitor/platform/alerts-unified-log.md)和[活动日志](../azure-monitor/platform/activity-log-alerts.md)上设置警报。 不同类型的警报具有优点和缺点
 
 例如，下表列出了资源的几个警报规则。 可以从 Azure 门户中找到警报规则的详细列表。 若要了解详细信息，请参阅 [如何配置警报](create-alerts.md) 一文。  
 
-| 警报类型 | 条件 | 说明  |
+| 警报类型 | 条件 | 描述  |
 |:---|:---|:---|
 |请求单位 (指标警报的速率限制)  |维度名称： StatusCode、Operator： Equals、Dimension 值：429  | 如果容器或数据库已超出预配的吞吐量限制，则会发出警报。 |
 |已故障转移区域 |运算符：大于，聚合类型：计数，阈值：1 | 单个区域发生故障转移时。 如果未启用自动故障转移，则此警报非常有用。 |

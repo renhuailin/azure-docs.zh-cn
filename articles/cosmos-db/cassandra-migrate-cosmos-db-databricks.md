@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932886"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349174"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>使用 Azure Databricks 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`和 `connections_per_executor_max` 配置对于避免[速率限制](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)非常重要，因为当请求 Cosmos DB 超过预配吞吐量 ([请求单位](https://docs.microsoft.com/azure/cosmos-db/request-units)) 时，就会发生这种情况。 你可能需要根据 Spark 群集中的执行器的数量调整这些设置，并可能需要 (的大小，从而使每个记录写入目标表的) 。
+> `spark.cassandra.output.concurrent.writes`和 `connections_per_executor_max` 配置对于避免[速率限制](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)非常重要，因为当请求 Cosmos DB 超过预配吞吐量 ([请求单位](./request-units.md)) 时，就会发生这种情况。 你可能需要根据 Spark 群集中的执行器的数量调整这些设置，并可能需要 (的大小，从而使每个记录写入目标表的) 。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279957"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350817"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
 
@@ -20,7 +20,7 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 
 发送 Azure 数字孪生数据的主要情况有两种：
 * 将 Azure 数字孪生图中的一个单元中的数据发送到另一个。 例如，当一个数字上的属性发生变化时，你可能需要相应地通知和更新其他数字输出。
-* 向下游数据服务发送数据以进行额外的存储或处理 (也称为 *数据传出* ) 。 例如，
+* 向下游数据服务发送数据以进行额外的存储或处理 (也称为 *数据传出*) 。 例如，
   - 医院可能想要将 Azure 数字孪生事件数据发送到 [时序见解 (TSI) ](../time-series-insights/overview-what-is-tsi.md)，为大容量分析记录 handwashing 相关事件的时序数据。
   - 已使用 [Azure Maps](../azure-maps/about-azure-maps.md) 的企业可能想要使用 Azure 数字孪生来增强其解决方案。 在设置 Azure 数字孪生后，它们可以快速启用 Azure 映射，将 Azure 地图实体作为单元中的 [数字孪生](concepts-twins-graph.md) 引入 Azure 数字孪生，或运行功能强大的查询，利用它们 Azure Maps 和 Azure 数字孪生数据。
 
@@ -103,7 +103,7 @@ await client.CreateOrReplaceEventRouteAsync("routeName", er);
 
 在设置死信位置之前，必须有一个包含容器的存储帐户。 创建终结点时，提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要 `write` 对存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要了解有关 SAS 令牌的详细信息，请参阅： [*使用共享访问签名授予对 Azure 存储资源的有限访问权限 (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+若要了解有关 SAS 令牌的详细信息，请参阅： [*使用共享访问签名授予对 Azure 存储资源的有限访问权限 (SAS)*](../storage/common/storage-sas-overview.md)
 
 若要了解如何使用死信设置终结点，请参阅 [*如何：在 Azure 数字孪生中管理终结点和路由 (api 和 CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 

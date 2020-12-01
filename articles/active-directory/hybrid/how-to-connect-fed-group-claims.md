@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247228"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349344"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>为应用程序配置组声明 Azure Active Directory
 
@@ -58,7 +58,7 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 
 - 将组成员身份用于应用程序内授权时，最好使用组 ObjectID。 组 ObjectID 在 Azure Active Directory 中是不可变的，并且可用于所有组。
 - 如果使用本地组 sAMAccountName 进行授权，请使用域限定名称; 名称冲突的可能性较低。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果有多个 Active Directory 域与某个 Azure Active Directory 租户同步，则可能存在多个同名的组。
-- 请考虑使用 [应用程序角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) 提供组成员身份和应用程序之间的间接层。   然后，应用程序会根据令牌中的角色 clams 做出内部授权决定。
+- 请考虑使用 [应用程序角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) 提供组成员身份和应用程序之间的间接层。   然后，应用程序会根据令牌中的角色声明进行内部授权决定。
 - 如果将应用程序配置为获取从 Active Directory 同步的组属性，并且组不包含这些属性，则不会将其包含在声明中。
 - 标记中的组声明包括嵌套组，但使用选项将组声明限制为分配给应用程序的组时除外。  如果用户是 GroupB 的成员，并且 GroupB 为 GroupA 的成员，则该用户的组声明将同时包含 GroupA 和 GroupB。 当组织的用户具有大量组成员身份时，令牌中列出的组数可能会增长令牌大小。  Azure Active Directory 将在令牌中发出的组数限制为 SAML 断言为150，为 JWT 限制为200。  如果用户是较大组的成员，则会忽略这些组，而是改为包含用于获取组信息的图形端点的链接。
 

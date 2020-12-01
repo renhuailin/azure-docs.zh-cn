@@ -1,6 +1,6 @@
 ---
-title: 将托管映像迁移到共享映像库
-description: 了解如何使用 Azure PowerShell 将托管映像迁移到共享映像库中的某个映像版本。
+title: 将托管映像克隆到共享映像库
+description: 了解如何使用 Azure PowerShell 将托管映像克隆到共享映像库中的映像版本。
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964875"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349916"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>从托管映像迁移到共享映像库映像
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>将托管映像克隆到共享映像库映像
 
-如果你想要将现有托管磁盘迁移到共享映像库，可以直接从托管映像创建共享映像库映像。 测试新映像后，可以删除源托管映像。 还可以使用 [Azure CLI](image-version-managed-image-cli.md) 从托管映像迁移到共享映像库。
+如果你有想要克隆并移至共享映像库中的现有托管映像，可以直接从托管映像创建共享映像库映像。 测试新映像后，可以删除源托管映像。 还可以使用 [Azure CLI](image-version-managed-image-cli.md) 从托管映像迁移到共享映像库。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
 - “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 

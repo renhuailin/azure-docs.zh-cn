@@ -2,14 +2,14 @@
 title: 资源提供程序和资源类型
 description: 介绍支持 Azure 资源管理器的资源提供程序。 它介绍其架构、可用 API 版本，以及可以承载资源的区域。
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972532"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352093"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -32,9 +32,12 @@ ms.locfileid: "95972532"
 
 ## <a name="register-resource-provider"></a>注册资源提供程序
 
-在使用资源提供程序之前，必须为资源提供程序注册你的 Azure 订阅。 注册会将你的订阅配置为使用资源提供程序。 某些资源提供程序在默认情况下已注册。 执行特定操作时，会自动注册其他资源提供程序。 例如，通过门户创建资源时，通常会注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。
+使用资源提供程序之前，必须为资源提供程序注册 Azure 订阅。 注册会配置你的订阅，使之与资源提供程序配合工作。 某些资源提供程序在默认情况下已注册。 当你执行某些操作时，其他资源提供程序会自动注册。 例如，当你通过门户创建资源时，系统通常会为你注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。
 
 本文介绍了如何检查资源提供程序的注册状态，并根据需要将其注册。 你必须具备为资源提供程序执行 `/register/action` 操作的权限。 此权限包含在“参与者”和“所有者”角色中。
+
+> [!IMPORTANT]
+> 仅当已准备好使用资源提供程序时，才注册该提供程序。 注册步骤使你可以在订阅中维护最少特权。 恶意用户无法使用未注册的资源提供程序。
 
 你的应用程序代码不应阻止为处于“正在注册”状态的资源提供程序创建资源的操作。 注册资源提供程序时，将针对每个受支持的区域单独执行该操作。 若要在某个区域中创建资源，只需在该区域中完成注册即可。 如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，不需要等待所有区域完成。
 
@@ -55,7 +58,7 @@ ms.locfileid: "95972532"
 
     ![显示资源提供程序](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. 若要注册资源提供程序，请选择“注册”  。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。
+6. 若要注册资源提供程序，请选择“注册”  。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。 若要在订阅中维护最少特权，只需注册已准备好使用的资源提供程序即可。
 
 查看特定资源提供程序的信息：
 
@@ -107,7 +110,7 @@ Microsoft.CognitiveServices      Registered
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-若要注册资源提供程序，请使用：
+若要在订阅中维护最少特权，只需注册已准备好使用的资源提供程序即可。 若要注册资源提供程序，请使用：
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -216,7 +219,7 @@ Microsoft.CognitiveServices      Registered
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-若要注册资源提供程序，请使用：
+若要在订阅中维护最少特权，只需注册已准备好使用的资源提供程序即可。 若要注册资源提供程序，请使用：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

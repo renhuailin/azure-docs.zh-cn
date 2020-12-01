@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916774"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352212"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
@@ -70,7 +70,7 @@ ms.locfileid: "94916774"
 - 对于 **身份验证方法**，请选择 **帐户密钥**、 **SAS URI**、 **服务主体** 或 **托管标识**。  
 
 >[!TIP]
->如果选择 **服务主体** 方法，请至少向服务主体授予 " *存储 Blob 数据参与者* " 角色。 有关详细信息，请参阅 [Azure Blob 存储连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择 **托管标识** 方法，请向 ADF 托管标识授予适当的角色以访问 Azure Blob 存储。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证和 ADF 托管标识访问 Azure Blob 存储](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+>如果选择 **服务主体** 方法，请至少向服务主体授予 " *存储 Blob 数据参与者* " 角色。 有关详细信息，请参阅 [Azure Blob 存储连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择 **托管标识** 方法，请向 ADF 托管标识授予适当的角色以访问 Azure Blob 存储。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证和 ADF 托管标识访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
 
 ![准备用于暂存的 Azure Blob 存储链接服务](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>调试本地和云暂存任务
 
-在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务的执行日志 。  你可以在 SSISDB、指定的日志文件路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于你是在 SSISDB 中存储包、启用 [Azure Monitor 集成](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)等。你还可以在云暂存任务的执行日志中找到本地临时任务的唯一 Id。 
+在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务的执行日志 。  你可以在 SSISDB、指定的日志文件路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于你是在 SSISDB 中存储包、启用 [Azure Monitor 集成](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)等。你还可以在云暂存任务的执行日志中找到本地临时任务的唯一 Id。 
 
 ![第一个暂存任务的唯一 ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Azure-SSIS IR 上运行的云暂存任务不单独计费，但是运行中的 Az
 
 若要使自定义/第三方组件可以使用自承载 IR 作为 Azure-SSIS IR 的代理来访问本地数据，请按照以下说明进行操作：
 
-1. 通过 [标准/快速自定义](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)安装，在 Azure-SSIS IR 上安装面向 SQL Server 2017 的自定义/第三方组件。
+1. 通过 [标准/快速自定义](./how-to-configure-azure-ssis-ir-custom-setup.md)安装，在 Azure-SSIS IR 上安装面向 SQL Server 2017 的自定义/第三方组件。
 
 1. 在自承载 IR 上创建以下 DTSPath 注册表项（如果它们尚不存在）：
    1. 将 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 设置为 `C:\Program Files\Microsoft SQL Server\140\DTS\`
@@ -197,7 +197,7 @@ Azure-SSIS IR 上运行的云暂存任务不单独计费，但是运行中的 Az
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持内置/预安装在 Azure-SSIS IR Standard Edition 上的数据流组件，Hadoop/HDFS/DQS 组件除外，请参阅 [Azure-SSIS IR 上的所有内置/预安装组件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)。
+- 目前仅支持内置/预安装在 Azure-SSIS IR Standard Edition 上的数据流组件，Hadoop/HDFS/DQS 组件除外，请参阅 [Azure-SSIS IR 上的所有内置/预安装组件](./built-in-preinstalled-components-ssis-integration-runtime.md)。
 - 目前仅支持用托管代码编写的自定义/第三方数据流组件 ( .NET Framework) ，当前不支持用本机代码编写的)  (代码。
 - 当前不支持在本地和云过渡任务中更改变量值。
 - 在本地过渡任务中更改 object 类型的变量值不会反映在其他任务中。

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175893"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349123"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -78,8 +78,8 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个容器的最小 ru ([专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers))  | 400 |
-| 每个数据库的最小 ru ([共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers))  | 第25个容器为 400 RU/s。 此后每个容器的额外 100 RU/秒。 |
+| 每个容器的最小 ru ([专用吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 400 |
+| 每个数据库的最小 ru ([共享吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 第25个容器为 400 RU/s。 此后每个容器的额外 100 RU/秒。 |
 
 Cosmos DB 支持通过 Sdk 或门户以编程方式缩放每个容器或数据库) 的吞吐量 (RU/秒。    
 

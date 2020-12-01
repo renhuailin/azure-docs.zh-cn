@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96023341"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350460"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -150,7 +150,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 使用自承载集成运行时来支持 Azure 虚拟网络中的数据集成。
 - 即使使用 Azure ExpressRoute，也要将数据源视为本地数据源（位于防火墙之后）。 使用自承载集成运行时将服务连接到数据源。
 - 即使数据存储位于云中的 Azure 基础结构即服务 (IaaS) 虚拟机上，也应该使用自承载集成运行时。
-- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，可以使用两个选项：在 Azure Key Vault 中存储凭据/机密值，或在服务器上禁用符合 FIPS 的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。 如果使用 [自承载集成运行时作为 SSIS 集成运行时的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，则可启用 FIPS 兼容的加密，并在将数据从本地移动到 Azure Blob 存储作为暂存区域时使用。
+- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，你有两个选择：将“凭据/机密”值存储在 Azure Key Vault 中，或在服务器上禁用符合 FIPS 规范的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。 如果使用 [自承载集成运行时作为 SSIS 集成运行时的代理](./self-hosted-integration-runtime-proxy-ssis.md)，则可启用 FIPS 兼容的加密，并在将数据从本地移动到 Azure Blob 存储作为暂存区域时使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -204,7 +204,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
     1. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
-    1. 选择“注册”。
+    1. 选择“注册”  。
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
 

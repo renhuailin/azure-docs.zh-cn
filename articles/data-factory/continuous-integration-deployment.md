@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 728dda7c702d7fc52c9285c7cb15fc4b6dc3003c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef85b263a142c001d47bac4aed7a71066e26dae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182041"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350443"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -639,7 +639,7 @@ ms.locfileid: "96182041"
 
 ## <a name="exposure-control-and-feature-flags"></a>公开控制和功能标志
 
-在团队中工作时，可以在某些情况下合并更改，但不希望在生产和 QA 等提升的环境中运行这些更改。 为了应对这种情况，ADF 团队建议 [使用功能标志的 DevOps 概念](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)。 在 ADF 中，可以组合 [global parameters](author-global-parameters.md) 和 [if condition 活动](control-flow-if-condition-activity.md) ，以根据这些环境标志隐藏逻辑集。
+在团队中工作时，可以在某些情况下合并更改，但不希望在生产和 QA 等提升的环境中运行这些更改。 为了应对这种情况，ADF 团队建议 [使用功能标志的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)。 在 ADF 中，可以组合 [global parameters](author-global-parameters.md) 和 [if condition 活动](control-flow-if-condition-activity.md) ，以根据这些环境标志隐藏逻辑集。
 
 若要了解如何设置功能标志，请参阅以下视频教程：
 

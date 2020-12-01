@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 670460759a9495de735da35ae9f3d8388e59e0e5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381059"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350613"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>如何逐页浏览必应搜索 API 的结果
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 当你将调用发送到必应 Web、自定义、图像、新闻或视频搜索 Api 时，必应会返回可能与查询相关的结果总数的子集。 若要获取估计的可用结果总数，请访问应答对象的 `totalEstimatedMatches` 字段。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "94381059"
 > * 将必应视频、图像和新闻 Api 分页仅适用于常规视频 (`/video/search`) 、新闻 (`/news/search`) 和图像 (`/image/search`) 搜索。 不支持通过趋势主题和类别进行分页。  
 > * 此 `TotalEstimatedMatches` 字段是对当前查询的搜索结果总数的估计值。 设置 `count` 和 `offset` 参数时，此估计值可能会更改。
 
-| 参数 | 说明                                                                                                                                                                |
+| 参数 | 描述                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | 指定要在响应中返回的结果数。 请注意，的默认值为 `count` ，可能请求的最大结果数因 API 而异。 可以在 " [后续步骤](#next-steps)" 下的参考文档中找到这些值。 |
 | `offset`  | 指定要跳过的结果数。 `offset` 从零开始，应小于 (`totalEstimatedMatches` - `count`)。                                           |

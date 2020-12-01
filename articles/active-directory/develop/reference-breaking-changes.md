@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115027"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348715"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
@@ -65,7 +65,7 @@ ms.locfileid: "88115027"
 
 **受影响的协议**：所有用户流。
 
-从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到要求帮助重置用户密码的请求。
+从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到帮助重置用户密码的请求。
 
 登录日志中的错误将为 AADSTS 50052：InvalidPasswordExceedsMaxLength
 
@@ -85,7 +85,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 response_type=query 的 OAuth 和 OIDC 流 - ，这涵盖了[授权代码流](v2-oauth2-auth-code-flow.md)（在某些情况下）和[隐式流](v2-oauth2-implicit-grant-flow.md)。
+**受影响的协议**：使用 response_type=query 的 OAuth 和 OIDC 流 - ，这涵盖了 [授权代码流](v2-oauth2-auth-code-flow.md)（在某些情况下）和 [隐式流](v2-oauth2-implicit-grant-flow.md)。
 
 当通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，防止出现重定向攻击类。  任何应用都不应依赖于此行为。
 
@@ -98,7 +98,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 POST 的任何位置（[客户端凭据](./v2-oauth2-client-creds-grant-flow.md)、[授权代码兑换](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)和[刷新令牌兑换](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)）
+**受影响的协议**：使用 POST 的任何位置（[客户端凭据](./v2-oauth2-client-creds-grant-flow.md)、[授权代码兑换](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)和 [刷新令牌兑换](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)）
 
 从 9 月 2 日那一周开始，使用 POST 方法的身份验证请求会按更严格的 HTTP 标准进行验证。  具体说来，空格和双引号 (“) 将不再从请求表单值中删除。 这些更改不应造成任何现有客户端出现中断，将确保发送到 Azure AD 的请求每次都能够得到可靠的处理。 在将来（见上），我们计划还要拒绝重复参数并忽略请求中的 BOM。
 
@@ -201,7 +201,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：隐式流和[代理流](v2-oauth2-on-behalf-of-flow.md)
+**受影响的协议**：隐式流和 [代理流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日之后，id_token 不能用作新应用程序的 OBO 流中的断言。 应改为使用访问令牌来保护 API，即使在同一应用程序的客户端和中间层之间也是如此。 在 2018 年 5 月 1 日之前注册的应用将继续有效，并能够使用 id_tokens 交换访问令牌；但是，此模式并不是最佳做法。
 

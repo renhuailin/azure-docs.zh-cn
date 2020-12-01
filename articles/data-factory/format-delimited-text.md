@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: db0808edae2baf3aec3f524bcbe92bb544925dfe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019933"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348879"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
 
@@ -39,8 +39,8 @@ ms.locfileid: "96019933"
 | firstRowAsHeader | 指定是否要将第一行视为/设为包含列名称的标头行。<br>允许的值为 **true** 和 **true**（默认值）。<br>当第一行作为标题为 false 时，备注 UI 数据预览和查找活动输出会自动生成列名称，因为 (从 0) 开始，复制活动需要从源到接收器的 [显式映射](copy-activity-schema-and-type-mapping.md#explicit-mapping) ，并按 (序号从 1) 到 Prop_ 查找列，并映射数据流列表，并将名称为 Column_ {n} (从 1) 开始查找列。  | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为 **空字符串**。 | 否       |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、“UTF-7”、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258”。<br>请注意，映射数据流不支持 UTF-7 编码。 | 否       |
-| compressionCodec | 用于读取/写入文本文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **Tar**、 **snappy** 或 **lz4**。 默认设置是不压缩。 <br>**注意** 当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"、"TarGzip" 和 "Tar"。 <br>**请注意**，在使用复制活动将 **ZipDeflate** / **TarGzip** / **Tar** 文件解压缩 (s) 并写入基于文件的接收器数据存储时，默认情况下，将文件提取到该文件夹： `<path specified in dataset>/<folder named as source compressed file>/` ，使用 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [复制活动源](#delimited-text-as-source)来控制是否保留压缩文件的名称 (s) 为文件夹结构。 | 否       |
-| compressionLevel | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
+| compressionCodec | 用于读取/写入文本文件的压缩编解码器。 <br>允许的值为 bzip2、gzip、deflate、ZipDeflate、TarGzip、Tar、snappy 或 lz4       。 默认设置是不压缩。 <br>**注意** 当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"、"TarGzip" 和 "Tar"。 <br>请注意，使用复制活动解压缩 ZipDeflate/TarGzip/Tar 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source compressed file>/` 文件夹，对[复制活动源](#delimited-text-as-source)使用 `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` 来控制是否以文件夹结构形式保留压缩文件名   。 | 否       |
+| compressionLevel | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](/dotnet/api/system.io.compression.compressionlevel)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的带分隔符的文本数据集的示例：
 
@@ -78,7 +78,7 @@ ms.locfileid: "96019933"
 
 复制活动的 **_\_source\*** * 节支持以下属性。
 
-| 属性       | 说明                                                  | 必需 |
+| 属性       | 描述                                                  | 必须 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本读取设置”表。 |  否       |
@@ -86,13 +86,13 @@ ms.locfileid: "96019933"
 
 `formatSettings` 下支持的 **带分隔符的文本读取设置**：
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 描述                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 | 否       |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
 | preserveZipFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `ZipDeflateReadSettings`） |  当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 当设置为 false 时，数据工厂会直接将未解压缩的文件写入 `<path specified in dataset>`。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
-| preserveCompressionFileNameAsFolder<br> (*`compressionProperties` -> `type` 为 `TarGZipReadSettings` 或 `TarReadSettings`*)   | 当输入数据集配置了 **TarGzip** / **Tar** 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源压缩文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/`。 <br>- 当设置为 false 时，数据工厂会直接将已解压缩的文件写入 `<path specified in dataset>`。 请确保在不同的源文件中没有重复的文件名，以免产生赛车或意外的行为。 | 否 |
+| preserveCompressionFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `TarGZipReadSettings` 或 `TarReadSettings`）  | 当输入数据集配置了 TarGzip/Tar 压缩时适用 。 指示是否在复制过程中以文件夹结构形式保留源压缩文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/`。 <br>- 当设置为 false 时，数据工厂会直接将已解压缩的文件写入 `<path specified in dataset>`。 请确保在不同的源文件中没有重复的文件名，以免产生赛车或意外的行为。 | 否 |
 
 ```json
 "activities": [
@@ -126,7 +126,7 @@ ms.locfileid: "96019933"
 
 复制活动的 **\_sink\*** 节支持以下属性。
 
-| 属性       | 说明                                                  | 必需 |
+| properties       | 描述                                                  | 必须 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本写入设置”表。 |    否      |
@@ -134,7 +134,7 @@ ms.locfileid: "96019933"
 
 `formatSettings` 下支持的 **带分隔符的文本写入设置**：
 
-| 属性      | 说明                                                  | 必需                                              |
+| 属性      | 描述                                                  | 必须                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
@@ -149,15 +149,15 @@ ms.locfileid: "96019933"
 
 下表列出了由分隔文本源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 描述 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
 | 多行行 | 源文件是否包含跨多行的行。 多行值必须用引号引起来。 | 否 `true` 或 `false` | multiLineRow |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
@@ -180,7 +180,7 @@ source(
 
 下表列出了由分隔的文本接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 描述 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

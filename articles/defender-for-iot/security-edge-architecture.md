@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 1933e60892430b907e070ea04f39d8acc86ddac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933477"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351633"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>适用于 IoT Edge security module 的 Azure Defender
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) 提供了强大的功能来管理和执行边缘的业务工作流。
+[Azure IoT Edge](../iot-edge/index.yml) 提供了强大的功能来管理和执行边缘的业务工作流。
 IoT Edge 在 IoT 环境中发挥作用的关键部分使其对于恶意执行组件尤其有吸引力。
 
 Defender for IoT security module 为 IoT Edge 设备提供了一个全面的安全解决方案。
@@ -39,7 +39,7 @@ Defender for IoT security module 为 IoT Edge 设备提供了一个全面的安�
 
 - 分析 IoT Edge 部署清单。
 
-- 将原始安全事件聚合到通过 [IoT Edge 集线器](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)发送的消息中。
+- 将原始安全事件聚合到通过 [IoT Edge 集线器](../iot-edge/iot-edge-runtime.md#iot-edge-hub)发送的消息中。
 
 - 通过使用安全模块克隆来删除配置。
 

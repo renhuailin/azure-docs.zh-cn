@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963600"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352569"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>从 web 终结点更新命令
 
@@ -29,7 +29,7 @@ ms.locfileid: "94963600"
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数 
 
-在此示例中，你将需要一个支持以下输入 (的 HTTP 触发的 [Azure 函数](https://docs.microsoft.com/azure/azure-functions/) 或此输入) 的一个子集：
+在此示例中，你将需要一个支持以下输入 (的 HTTP 触发的 [Azure 函数](../../azure-functions/index.yml) 或此输入) 的一个子集：
 
 ```JSON
 {
@@ -50,11 +50,11 @@ ms.locfileid: "94963600"
 
 让我们查看一下此输入的关键特性：
 
-| Attribute | 说明 |
+| 特性 | 说明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **conversationId** | 会话的唯一标识符。 请注意，此 ID 可以从客户端应用程序生成。 |
 | **currentCommand** | 会话中当前活动的命令。 |
-| **name** | 命令的名称。 `parameters`特性是一个映射，其中包含参数的当前值。 |
+| name  | 命令的名称。 `parameters`特性是一个映射，其中包含参数的当前值。 |
 | **currentGlobalParameters** | 类似于的映射 `parameters` ，但用于全局参数。 |
 
 Azure 函数的输出需要支持以下格式：

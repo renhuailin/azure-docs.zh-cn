@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993646"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348817"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -190,7 +190,7 @@ _ *责任：** Customer
 
 **责任：** 面向
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 **指南：** 当环境中发生可疑或不安全的活动时，使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)  
@@ -210,7 +210,7 @@ _ *责任：** Customer
 **责任：** 面向
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
-**指南：** 使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南：** 使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
@@ -228,7 +228,7 @@ _ *责任：** Customer
 
 **责任：** 面向
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 **指南：** 你有权访问 Azure Active Directory (Azure AD) 登录活动、审核和风险事件日志源，这允许你与任何安全信息和事件管理 (SIEM) /Monitoring 工具集成。
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置警报。
@@ -379,7 +379,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 **指南：** 使用 Azure 更新管理确保在开发测试实验室中托管的 Windows 和 Linux Vm 上安装最新的安全更新。 对于 Windows 虚拟机，请确保已启用 Windows 更新并将其设置为自动更新。 此设置当前不可通过开发测试实验室配置，但实验室管理员/订阅管理员可以在其订阅中的基础计算 Vm 上配置此设置。 
 
-- [如何在 Azure 中为 Vm 配置更新管理](../automation/update-management/update-mgmt-overview.md)
+- [如何在 Azure 中为 Vm 配置更新管理](../automation/update-management/overview.md)
 - [了解通过安全中心监视的 Azure 安全策略](../security-center/policy-reference.md)
 
 **Azure 安全中心监视：** 不适用
@@ -393,8 +393,8 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 作为订阅管理员，你还可以使用 Azure 更新管理解决方案来管理开发测试实验室 Vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-- [Azure 中的更新管理解决方案](../automation/update-management/update-mgmt-overview.md)
-- [管理 VM 的更新和修补程序](../automation/update-management/update-mgmt-overview.md)
+- [Azure 中的更新管理解决方案](../automation/update-management/overview.md)
+- [管理 VM 的更新和修补程序](../automation/update-management/overview.md)
 
 _ *Azure 安全中心监视：** 不适用
 
@@ -739,7 +739,7 @@ _ *Azure 安全中心监视：** 不适用
 
 使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。
 
-- 了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件
+- 了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware
 - 了解 Azure 安全中心的数据服务威胁检测
 
 **Azure 安全中心监视：** 是的

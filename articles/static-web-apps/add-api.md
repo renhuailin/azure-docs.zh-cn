@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: e0af8e0674a15c98fadbedfa42f735d269b3de2b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920485"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349950"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -32,7 +32,7 @@ ms.locfileid: "94920485"
 
 以下步骤演示如何创建新的存储库并将文件克隆到计算机。
 
-1. 请确保已登录到 GitHub，并导航到 https://github.com/staticwebdev/vanilla-basic/generate 以创建新的存储库。
+1. 请确保已登录到 GitHub，并导航到 [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) 以创建新的存储库。
 1. 在“存储库名称”框中，输入“my-vanilla-api”。
 1. 单击“从模板创建存储库”。
 

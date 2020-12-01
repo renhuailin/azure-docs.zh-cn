@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: bcfd14572b632cdc455babf7b9f8d67be904406c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a001f3a13daf40a1af712f09e35d93fd045ea133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629948"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350239"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -65,9 +65,9 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 在为 HDInsight 群集设置自定义 Hive 元存储之前，需创建 Azure SQL 数据库或有一个现有的 Azure SQL 数据库。  有关详细信息，请参阅 [快速入门：在 AZURE SQL 数据库中创建单个数据库](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。
 
-创建群集时，HDInsight 服务需要连接到外部元存储并验证你的凭据。 配置 Azure SQL 数据库防火墙规则以允许 Azure 服务和资源访问服务器。 通过选择“设置服务器防火墙”来在 Azure 门户中启用此选项。 然后选择 **No** " **拒绝公共网络访问** " 下面的 **"是"** ，在 " **允许 azure 服务和资源" 访问此服务器** 以获取 azure SQL 数据库。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+创建群集时，HDInsight 服务需要连接到外部元存储并验证你的凭据。 配置 Azure SQL 数据库防火墙规则以允许 Azure 服务和资源访问服务器。 通过选择“设置服务器防火墙”来在 Azure 门户中启用此选项。 然后选择 **No** "**拒绝公共网络访问**" 下面的 **"是"** ，在 "**允许 azure 服务和资源" 访问此服务器** 以获取 azure SQL 数据库。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-仅在通过 ResourceProviderConnection 创建的群集上支持 SQL 存储的专用终结点 `outbound` 。 若要了解详细信息，请参阅此 [documentationa](https://docs.microsoft.com/azure/hdinsight/hdinsight-private-link)。
+仅在通过 ResourceProviderConnection 创建的群集上支持 SQL 存储的专用终结点 `outbound` 。 若要了解详细信息，请参阅此 [documentationa](./hdinsight-private-link.md)。
 
 ![“设置服务器防火墙”按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -82,7 +82,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 ## <a name="hive-metastore-guidelines"></a>Hive 元存储指南
 
 > [!NOTE]
-> 尽可能使用自定义元存储来帮助分离计算资源（正在运行的群集）和元数据（存储在元存储中）。 从 S2 层开始，提供 50 DTU 和 250 GB 的存储。 如果空间不够，可扩大数据库。
+> 尽可能使用自定义元存储来帮助分离计算资源（正在运行的群集）和元数据（存储在元存储中）。 首先使用 S2 层，它提供 50 DTU 和 250 GB 的存储。 如果空间不够，可扩大数据库。
 
 * 如果你希望多个 HDInsight 群集访问单独的数据，请对每个群集上的元存储使用单独的数据库。 如果在多个 HDInsight 群集之间共享元存储，则意味着这些群集将使用相同的元数据和底层用户数据文件。
 

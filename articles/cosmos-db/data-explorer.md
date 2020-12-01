@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Cosmos DB 资源管理器管理数据
-description: Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和管理存储在 Azure Cosmos DB 中的数据。
+description: Azure Cosmos DB 资源管理器是一个独立的基于 web 的界面，可用于查看和管理 Azure Cosmos DB 中存储的数据。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008576"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348596"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>使用 Azure Cosmos DB 资源管理器处理数据 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和管理存储在 Azure Cosmos DB 中的数据。 Azure Cosmos DB 资源管理器相当于创建 Azure Cosmos DB 帐户时 Azure 门户中提供的现有“数据资源管理器”选项卡。 Azure Cosmos DB 资源管理器相对于现有数据资源管理器的主要优势是：
+Azure Cosmos DB 资源管理器是一个独立的基于 web 的界面，可用于查看和管理 Azure Cosmos DB 中存储的数据。 Azure Cosmos DB 资源管理器等效于创建 Azure Cosmos DB 帐户时 Azure 门户中可用的现有 **数据资源管理器** 选项卡。 在现有数据资源管理器中 Azure Cosmos DB 资源管理器的主要优点是：
 
 * 提供全屏空间，可用于查看数据，运行查询、存储过程、触发器并查看它们的结果。  
 
@@ -24,13 +24,13 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
 * 可以与其他无权访问 Azure 门户或订阅的用户共享查询结果。  
 
-## <a name="access-azure-cosmos-db-explorer"></a>访问 Azure Cosmos DB 资源管理器
+## <a name="access-azure-cosmos-db-explorer"></a>Access Azure Cosmos DB 资源管理器
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 
 2. 从“所有资源”中，查找并导航到 Azure Cosmos DB 帐户，然后选择“密钥”并复制“主连接字符串”。  
 
-3. 转到 https://cosmos.azure.com/，粘贴连接字符串，并选择“连接”。 通过使用连接字符串，可以不受任何时间限制地访问 Azure Cosmos DB 资源管理器。  
+3. 转到 https://cosmos.azure.com/，粘贴连接字符串，并选择“连接”。 使用连接字符串，可以访问 Azure Cosmos DB 资源管理器，而无需任何时间限制。  
 
    如果想为其他用户提供 Azure Cosmos DB 帐户的临时访问权限，可以使用读写和读取访问 URL 来实现。 
 
@@ -54,6 +54,6 @@ Azure Cosmos DB Gremlin 和 Table API 帐户目前尚不支持允许共享临时
 
 ## <a name="next-steps"></a>后续步骤
 
-现已了解了如何开始使用 Azure Cosmos DB 资源管理器来管理数据，接下来可以：
+现在，你已学习了如何开始使用 Azure Cosmos DB 资源管理器来管理数据，接下来你可以：
 
 * 开始使用 SQL 语法定义[查询](./sql-query-getting-started.md)，并使用存储过程、UDF 和触发器执行[服务器端编程](stored-procedures-triggers-udfs.md)。

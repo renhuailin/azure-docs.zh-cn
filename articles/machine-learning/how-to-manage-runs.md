@@ -1,7 +1,7 @@
 ---
 title: 在 Python 中启动、监视和取消训练运行
 titleSuffix: Azure Machine Learning
-description: 了解如何启动、状态和管理机器学习试验，以及如何运行 Azure 机器学习 Python SDK。
+description: 了解如何使用 Azure 机器学习 Python SDK 启动、管理机器学习试验运行和获取其状态。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 921c88f4771fedb910dc41983d559987a8cdfb0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542008"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349327"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -31,8 +31,8 @@ ms.locfileid: "94542008"
 * 标记和查找运行。
 
 > [!TIP]
-> 如果你正在寻找有关监视 Azure 机器学习服务及关联的 Azure 服务的信息，请参阅 [如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-> 如果你要查找有关部署为 web 服务或 IoT Edge 模块的监视模型的信息，请参阅 [收集模型数据](how-to-enable-data-collection.md) 和 [用 Application Insights 监视](how-to-enable-app-insights.md)。
+> 如果要了解如何监视 Azure 机器学习服务及关联的 Azure 服务，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+> 如果要了解如何监视部署为 Web 服务或 IoT Edge 模块的模型，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -278,7 +278,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>提交子运行
 
-也可以从父运行提交子运行。 通过此操作可创建父运行和子运行的层次结构。 
+也可以从父运行提交子运行。 通过此操作可创建父运行和子运行的层次结构。 不能创建 parentless 子运行：即使父代运行不执行任何操作，但启动子运行，仍需要创建层次结构。 所有运行的状态都是独立的： `"Completed"` 即使一个或多个子运行已取消或失败，父项也可以处于成功状态。  
 
 你可能会希望子运行使用与父运行不同的运行配置。 例如，对父运行使用常规的基于 CPU 的配置，而对子运行使用基于 GPU 的配置。 另一种常见的需求是向每个子运行传递不同的参数和数据。 若要自定义子运行，请为该子运行创建一个 `ScriptRunConfig` 对象。 下面的代码执行以下操作：
 
@@ -327,6 +327,24 @@ child_run.parent.id
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>记录到父项或根运行
+
+您可以使用 `Run.parent` 字段访问启动当前子运行的运行。 这种情况的一个常见用例是要将日志结果合并到一个位置。 请注意，子运行以异步方式执行，并且不保证超出父项的功能以等待其子运行完成。
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>标记和查找运行
 

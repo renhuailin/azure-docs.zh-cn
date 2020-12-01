@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Java 应用程序的应用程序性能监视，无需修改代码即可在任何环境中运行。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444735"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351531"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights
 
@@ -20,7 +20,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 你仍可以从应用程序发送自定义遥测。 3.0 agent 将跟踪该代理，并将其与所有自动收集的遥测数据相关联。
 
-3.0 代理支持 Java 8 及更高版本。
+3\.0 代理支持 Java 8 及更高版本。
 
 ## <a name="quickstart"></a>快速入门
 
@@ -119,8 +119,8 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ### <a name="logs"></a>日志
 
 * java.util.logging
-* 包含 MDC 属性的 Log4j () 
-* SLF4J/Logback (包括 MDC 属性) 
+* Log4j（包含 MDC 属性）
+* SLF4J/Logback（包含 MDC 属性）
 
 ### <a name="metrics"></a>指标
 
@@ -135,9 +135,9 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 ### <a name="supported-custom-telemetry"></a>支持的自定义遥测
 
-下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过 [Application Insights Java 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
+下表显示了当前支持的自定义遥测类型，你可以使用它们来对 Java 3.0 代理进行补充。 总而言之，通过 Micrometer 可以支持自定义指标，通过记录框架可以启用自定义异常和跟踪，通过 [Application Insights Java 2.x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x) 可以支持任何类型的自定义遥测。 
 
-|                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
+|                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
 | **自定义事件**   |            |                     |  是    |
 | **自定义指标**  |  是       |                     |  是    |
@@ -147,7 +147,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 | **请求**        |            |                     |  是    |
 | **跟踪**          |            |  是                |  是    |
 
-目前，我们并不打算发布带有 Application Insights 3.0 的 SDK。
+我们目前不打算发布带有 Application Insights 3.0 的 SDK。
 
 Application Insights Java 3.0 已在侦听发送到 Application Insights Java SDK 2.x 的遥测。 对于现有 2.x 用户来说，此功能是升级过程中的一个重要部分。在 OpenTelemetry API 正式发布之前，它填补了我们在自定义遥测支持方面的一个重要空白。
 
@@ -228,17 +228,3 @@ telemetryClient.trackEvent("WinGame");
       telemetryClient.trackException(e);
   }
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>从 Application Insights Java SDK 2.x 升级
-
-如果已在应用程序中使用 Application Insights Java SDK 2.x，则无需将其删除。
-Java 3.0 代理将检测它，并捕获并关联通过 Java SDK 2.x 发送的任何自定义遥测，同时禁止 Java SDK 2.x 执行的任何自动收集来阻止重复的遥测。
-
-如果你使用的是 Application Insights 1.x 代理，则需要删除 `-javaagent:` 指向1.x 代理的 JVM 参数。
-
-> [!NOTE]
-> 使用3.0 代理时，Java SDK 2.x TelemetryInitializers 和 TelemetryProcessors 将不会运行。
-> 许多以前需要这些用例，可以通过配置 [自定义维度](./java-standalone-config.md#custom-dimensions) 或配置 [遥测处理器](./java-standalone-telemetry-processors.md)来在3.0 中解决。
-
-> [!NOTE]
-> 3.0 在单个 JVM 中不支持多个检测密钥。

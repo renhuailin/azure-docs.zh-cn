@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: chrande
-ms.openlocfilehash: 8ad164f79f150e0cd6ab4a083f21b22c59f7c729
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 337341daf0e092def639a4e8f6fc8ee0a9b57c75
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361579"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349412"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -31,13 +31,13 @@ ms.locfileid: "93361579"
 
 下面是有关 Azure Cosmos DB’s API for MongoDB 的具体特征：
 
-- **容量模型** ：Azure Cosmos DB 上的数据库容量基于吞吐量模型。 此模型基于[每秒请求单位数](request-units.md)，此单位表示每秒可对集合执行的数据库操作次数。 可以在[数据库或集合级别](set-throughput.md)分配此容量，也可以在分配模型中进行预配，或者使用[自动缩放预配的吞吐量](provision-throughput-autoscale.md)。
+- **容量模型**：Azure Cosmos DB 上的数据库容量基于吞吐量模型。 此模型基于[每秒请求单位数](request-units.md)，此单位表示每秒可对集合执行的数据库操作次数。 可以在[数据库或集合级别](set-throughput.md)分配此容量，也可以在分配模型中进行预配，或者使用[自动缩放预配的吞吐量](provision-throughput-autoscale.md)。
 
-- **请求单位** ：在 Azure Cosmos DB 中，每个数据库操作都有关联的请求单位 (RU) 成本。 执行操作时，将从在给定的秒可用的请求单位级别中减去此成本。 如果请求所需的 RU 数超过了当前分配的每秒 RU 数，可以使用两个选项来解决此问题 - 增加 RU 数量，或等待下一秒开始，然后重试操作。
+- **请求单位**：在 Azure Cosmos DB 中，每个数据库操作都有关联的请求单位 (RU) 成本。 执行操作时，将从在给定的秒可用的请求单位级别中减去此成本。 如果请求所需的 RU 数超过了当前分配的每秒 RU 数，可以使用两个选项来解决此问题 - 增加 RU 数量，或等待下一秒开始，然后重试操作。
 
-- **弹性容量** ：给定集合或数据库的容量随时可以更改。 这样，数据库就能弹性适应工作负荷的吞吐量要求。
+- **弹性容量**：给定集合或数据库的容量随时可以更改。 这样，数据库就能弹性适应工作负荷的吞吐量要求。
 
-- **自动分片** ：Azure Cosmos DB 提供一个仅需要分片（或分区键）的自动分区系统。 [自动分区机制](partitioning-overview.md)在所有 Azure Cosmos DB API 之间共享，允许通过水平分配进行无缝的数据缩放和全面缩放。
+- **自动分片**：Azure Cosmos DB 提供一个仅需要分片（或分区键）的自动分区系统。 [自动分区机制](partitioning-overview.md)在所有 Azure Cosmos DB API 之间共享，允许通过水平分配进行无缝的数据缩放和全面缩放。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>适用于 Azure Cosmos DB’s API for MongoDB 的迁移选项
 
@@ -57,11 +57,11 @@ ms.locfileid: "93361579"
 可以使用 [Azure Cosmos DB 容量计算器](https://cosmos.azure.com/capacitycalculator/)根据数据库帐户配置、数据量、文档大小以及每秒所需的读取和写入次数，来确定请求单位数量。
 
 下面是影响所需 RU 数的关键因素：
-- **文档大小** ：随着项/文档大小的增大，读取或写入该项/文档所要消耗的 RU 数也会增加。
+- **文档大小**：随着项/文档大小的增大，读取或写入该项/文档所要消耗的 RU 数也会增加。
 
-- **文档属性计数** ：创建或更新文档所消耗的 RU 数与该文档的属性数目、复杂性和长度相关。 可以通过[限制已编制索引的属性数目](mongodb-indexing.md)，来减少写入操作的请求单位消耗量。
+- **文档属性计数**：创建或更新文档所消耗的 RU 数与该文档的属性数目、复杂性和长度相关。 可以通过[限制已编制索引的属性数目](mongodb-indexing.md)，来减少写入操作的请求单位消耗量。
 
-- **查询模式** ：查询的复杂性会影响查询消耗的请求单位数。 
+- **查询模式**：查询的复杂性会影响查询消耗的请求单位数。 
 
 了解查询成本的最佳方式是使用 Azure Cosmos DB 中的示例数据，[并在 MongoDB Shell 中使用 `getLastRequestStastistics` 命令运行示例查询](connect-mongodb-account.md)以获取请求开销，此命令将输出消耗的 RU 数：
 
@@ -71,7 +71,7 @@ ms.locfileid: "93361579"
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-也可以使用[诊断设置](cosmosdb-monitor-resource-logs.md)来了解针对 Azure Cosmos DB 执行的查询的频率和模式。 可将诊断日志中的结果发送到存储帐户、事件中心实例或 [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md)。  
+也可以使用[诊断设置](cosmosdb-monitor-resource-logs.md)来了解针对 Azure Cosmos DB 执行的查询的频率和模式。 可将诊断日志中的结果发送到存储帐户、事件中心实例或 [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>选择分区键
 分区（也称为分片）是迁移数据之前要考虑的一个要点。 Azure Cosmos DB 使用完全托管的分区来提高数据库中的容量，以满足存储和吞吐量要求。 此功能不需要托管或配置路由服务器。   
@@ -82,7 +82,7 @@ ms.locfileid: "93361579"
 
 Azure Cosmos DB API for MongoDB 服务器版本 3.6 仅自动为 `_id` 字段编制索引。 无法删除此字段。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
 
-Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 有关详细信息，请参阅 [Azure Cosmos DB 的 API For MongoDB 中的索引](mongodb-indexing.md)。
+Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 详情请参阅 [Azure Cosmos DB API for MongoDB 中的索引编制](mongodb-indexing.md)一文。
 
 [Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)自动迁移具有唯一索引的 MongoDB 集合。 但是，必须在迁移之前创建唯一索引。 如果集合中已包含数据，Azure Cosmos DB 将不支持创建唯一索引。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
 

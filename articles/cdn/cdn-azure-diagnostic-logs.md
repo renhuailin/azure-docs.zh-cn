@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779401"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352110"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
 
@@ -42,7 +42,7 @@ ms.locfileid: "92779401"
 
 按照以下步骤为你的 Azure CDN 终结点启用日志记录：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
 2. 在 Azure 门户中，导航到 **All resources**  ->  **你的 cdn 配置文件** 中的所有资源
 
@@ -50,7 +50,7 @@ ms.locfileid: "92779401"
 
     :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
-3. 在 " **监视** " 部分选择 " **诊断日志** "：
+3. 在 "**监视**" 部分选择 "**诊断日志**"：
 
     :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 &quot;诊断日志&quot;。" border="true":::
 
@@ -59,9 +59,9 @@ ms.locfileid: "92779401"
 若要使用存储帐户来存储日志，请执行以下步骤：
 
  >[!NOTE] 
- >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** 。
+ >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** 。
     
-1. 对于 " **诊断设置名称** "，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
  
 2. 选择“存档到存储帐户”，然后选择“CoreAnalytics”。 
 
@@ -71,7 +71,7 @@ ms.locfileid: "92779401"
 
     :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="诊断日志-存储。" border="true":::
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
 ### <a name="send-to-log-analytics"></a>发送到 Log Analytics
 
@@ -80,15 +80,15 @@ ms.locfileid: "92779401"
 >[!NOTE] 
 >需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)** 。
     
-1. 对于 " **诊断设置名称** "，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
-2. 选择 " **发送到 Log Analytics** "，然后选择 " **CoreAnalytics** "。 
+2. 选择 " **发送到 Log Analytics**"，然后选择 " **CoreAnalytics**"。 
 
 3. 为日志选择 "订阅" 和 "Log Analytics" 工作区。
 
    :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="诊断日志-Log Analytics。" border="true":::
 
-4. 选择“保存” 。
+4. 选择“保存”。
 
 ### <a name="stream-to-an-event-hub"></a>流式传输到事件中心
 
@@ -97,9 +97,9 @@ ms.locfileid: "92779401"
 >[!NOTE] 
 >需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅： **[快速入门：使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)** 。
     
-1. 对于 " **诊断设置名称** "，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
-2. 选择 " **流式传输到事件中心** "，然后选择 " **CoreAnalytics** "。 
+2. 选择 " **流式传输到事件中心**"，然后选择 " **CoreAnalytics**"。 
 
 3. 选择日志的订阅和事件中心命名空间。
 
@@ -191,7 +191,7 @@ ms.locfileid: "92779401"
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
-5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=* 。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
+5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
 7.  有关此 JSON 文件的内容架构，请参阅核心分析日志的“架构”部分。
 
@@ -211,7 +211,7 @@ ms.locfileid: "92779401"
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
 |年龄|  年份的四位数表示形式，例如 2017|
-|Month| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
+|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
 |天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
@@ -229,7 +229,7 @@ ms.locfileid: "92779401"
 
 ## <a name="log-data-delays"></a>日志数据延迟
 
-下表介绍 **Microsoft 推出的 Azure CDN 标准版** 、 **Akamai 推出的 Azure CDN 标准版** 和 **Verizon 推出的 Azure CDN 标准/高级版** 的日志数据延迟。
+下表介绍 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版** 和 **Verizon 推出的 Azure CDN 标准/高级版** 的日志数据延迟。
 
 Microsoft 日志数据延迟 | Verizon 日志数据延迟 | Akamai 日志数据延迟
 --- | --- | ---
@@ -249,7 +249,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 说明 | Microsoft | Verizon | Akamai |
+|指标                     | 描述 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |
@@ -329,7 +329,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 }
 ```
 
-其中， *time* 表示报告统计信息的小时边界的开始时间。 CDN 提供程序不支持的指标（而不是 double 或 integer 值）会导致 null 值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置每个域的一组指标。
+其中，*time* 表示报告统计信息的小时边界的开始时间。 CDN 提供程序不支持的指标（而不是 double 或 integer 值）会导致 null 值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置每个域的一组指标。
 
 示例属性：
 

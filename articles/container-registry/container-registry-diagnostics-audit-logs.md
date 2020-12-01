@@ -3,12 +3,12 @@ title: 收集和分析资源日志
 description: 记录和分析 Azure 容器注册表的资源日志事件，例如身份验证、映像推送和映像拉取。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553370"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348579"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志
 
@@ -28,7 +28,7 @@ ms.locfileid: "87553370"
 * **拉取**
 * **取消标记**
 * **删除**（包括存储库删除事件）
-* **清除标记**和**清除清单**
+* **清除标记** 和 **清除清单**
 
 > [!NOTE]
 > 仅当配置了注册表[保留策略](container-registry-retention-policy.md)时，才记录清除事件。
@@ -39,7 +39,7 @@ ms.locfileid: "87553370"
 
 * **ContainerRegistryLoginEvents** - 注册表身份验证事件和状态，包括传入标识和 IP 地址
 * **ContainerRegistryRepositoryEvents** - 注册表存储库中的映像及其他项目的推送和拉取等操作
-* **AzureMetrics** - 推送和拉取聚合计数等[容器注册表指标](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)。
+* **AzureMetrics** - 推送和拉取聚合计数等 [容器注册表指标](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)。
 
 对于操作，日志数据包括：
   * 成功或失败状态
@@ -53,7 +53,7 @@ ms.locfileid: "87553370"
 
 例如，若要在 Azure Monitor 中近实时查看容器注册表的日志和指标，请在 Log Analytics 工作区中收集资源日志。 若要使用 Azure 门户启用此诊断设置，请执行以下操作：
 
-1. 如果没有工作区，请使用 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)创建一个工作区。 为了尽量减少数据收集时的延迟，请确保工作区与容器注册表位于**同一区域**。
+1. 如果没有工作区，请使用 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)创建一个工作区。 为了尽量减少数据收集时的延迟，请确保工作区与容器注册表位于 **同一区域**。
 1. 在门户中选择注册表，然后选择“监视”>“诊断设置”>“添加诊断设置”。
 1. 输入设置名称，然后选择“发送到 Log Analytics”。
 1. 选择注册表诊断日志对应的工作区。
@@ -81,7 +81,7 @@ ContainerRegistryRepositoryEvents
 
 ![查询日志数据](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)，或试用 Log Analytics [演示环境](https://portal.loganalytics.io/demo)。 
+有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)，或试用 Log Analytics [演示环境](https://portal.loganalytics.io/demo)。 
 
 有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
 
@@ -146,5 +146,5 @@ ContainerRegistryLoginEvents
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何使用 [Log Analytics](../azure-monitor/log-query/get-started-portal.md) 和创建[日志查询](../azure-monitor/log-query/get-started-queries.md)。
+* 详细了解如何使用 [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) 和创建[日志查询](../azure-monitor/log-query/get-started-queries.md)。
 * 参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)，了解不同的 Azure 层提供的平台日志。

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096387"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349038"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 全局分发读取
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -87,7 +87,7 @@ MongoDB 协议提供以下读取首选项模式供客户端使用：
 
 根据常见的方案，我们建议使用以下设置：
 
-1. 如果需要 **低延迟读取** ，可以使用 **NEAREST** 读取首选项模式。 此设置会将读取操作定向到最靠近的可用区域。 请注意，如果最靠近的区域是 WRITE 区域，则这些操作会定向到该区域。
+1. 如果需要 **低延迟读取**，可以使用 **NEAREST** 读取首选项模式。 此设置会将读取操作定向到最靠近的可用区域。 请注意，如果最靠近的区域是 WRITE 区域，则这些操作会定向到该区域。
 2. 如果要求“读取操作高度可用且分散到不同的地区”  （延迟不是约束条件），则使用“PRIMARY PREFERRED”  或“SECONDARY PREFERRED”  读取首选项模式。 此设置会将读取操作分别定向到可用的 WRITE 或 READ 区域。 如果该区域不可用，则根据读取首选项行为将请求定向到下一个可用区域。
 
 示例应用程序中的以下代码片段演示如何在 NodeJS 中配置 NEAREST 读取首选项：
@@ -172,6 +172,6 @@ MongoClient.connect(url, function(err, client) {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+* [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置全局分布式数据库](tutorial-global-distribution-mongodb.md)
 * [使用 Azure Cosmos DB 模拟器在本地进行开发](local-emulator.md)

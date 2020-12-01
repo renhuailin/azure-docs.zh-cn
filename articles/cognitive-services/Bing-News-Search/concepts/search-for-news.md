@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: fbe8f9f4c5354d5a1b68909fcb65597e8c03dfb8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ecf01720126a9bf5da4aabb08653e62b42265d36
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367159"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351344"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用必应新闻搜索 API 搜索新闻
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用必应图像搜索 API，可以轻松将必应的认知新闻搜索功能集成到应用程序中。
 
@@ -160,7 +160,7 @@ Host: api.cognitive.microsoft.com
 
 请勿包括 [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数。
 
-获取标题新闻的响应与获取当天的头条新闻的响应相同。 如果文章为标题文章，其 `headline` 字段会设置为 **true** 。
+获取标题新闻的响应与获取当天的头条新闻的响应相同。 如果文章为标题文章，其 `headline` 字段会设置为 **true**。
 
 默认情况下，响应包含最多 12 篇标题文章。 若要更改需返回的标题文章的数目，请指定 [headlineCount](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查询参数。 就每个新闻类别来说，响应还包括最多四篇非标题文章。
 

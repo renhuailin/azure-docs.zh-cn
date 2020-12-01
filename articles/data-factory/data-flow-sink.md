@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023000"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350868"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -100,7 +100,7 @@ Azure 数据工厂可以访问90多个 [本机连接器](connector-overview.md)�
 ![显示自定义接收器排序的屏幕截图。](media/data-flow/custom-sink-ordering.png "显示自定义接收器排序的屏幕截图。")
 
 > [!NOTE]
-> 使用 [缓存的查找](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)时，请确保接收器排序将缓存接收器设置为1、最低 (或首次) 排序。
+> 使用 [缓存的查找](./concepts-data-flow-expression-builder.md#cached-lookup)时，请确保接收器排序将缓存接收器设置为1、最低 (或首次) 排序。
 
 ![自定义接收器排序](media/data-flow/cache-2.png "自定义接收器排序")
 

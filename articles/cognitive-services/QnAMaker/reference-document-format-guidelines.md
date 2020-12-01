@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993799"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352229"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>导入的文档和 Url 的格式准则
 
@@ -22,7 +22,7 @@ ms.locfileid: "95993799"
 
 如果直接在知识库中添加或编辑内容，请使用 **markdown 格式** 创建丰富的文本内容，或者更改答案中已经存在的 markdown 格式内容。 QnA Maker 支持大部分 markdown 格式，以便为内容提供丰富的文本功能。 但是，客户端应用程序（如聊天机器人）可能不支持相同的一组 markdown 格式。 必须测试客户端应用程序的答案显示。
 
-请参阅 [内容类型和示例](./Concepts/content-types.md#file-and-url-data-types)的完整列表。
+请参阅 [内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表。
 
 ## <a name="basic-document-formatting"></a>基本文档格式设置
 
@@ -118,4 +118,4 @@ Answer2
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[内容类型和示例](./Concepts/content-types.md#file-and-url-data-types)的完整列表
+查看[内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表
