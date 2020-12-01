@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529973"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310385"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -85,6 +85,8 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 [了解如何创建规则来禁用集成漏洞评估工具中的发现结果](defender-for-container-registries-usage.md#disable-specific-findings-preview)
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>有个映像不在我的注册表中，它存在漏洞。为什么安全中心要就这些漏洞向我发送警报？
+安全中心会对在注册表中拉取或推送的每个映像提供漏洞评估。 某些映像可能会重复使用来自已扫描的某个映像的标记。 例如，每次你向摘要添加一张映像时，都可能重新分配名为“最新”的标记。 在这种情况下，“旧”映像仍然在注册表中，可能仍会被其摘要拉取。 如果发现该映像存在安全问题，而它被拉取了，那么就将暴露安全漏洞。
 
 
 ## <a name="next-steps"></a>后续步骤
