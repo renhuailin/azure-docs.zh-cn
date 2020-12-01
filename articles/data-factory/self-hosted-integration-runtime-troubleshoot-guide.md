@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296948"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341761"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -698,43 +698,43 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
 
 #### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>如何确定你是否受此通知的影响
 
-此通知会影响以下方案：
-##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>方案1：从自承载 Integration Runtime 在企业防火墙后面的本地运行的出站通信
-如何确定是否受影响：
-- 如果使用本文档中所述的方法基于 FQDN 名称定义防火墙规则，则不会受到影响： " [防火墙配置和允许列表" 设置 "ip 地址](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)"。
-- 不过，如果你在公司防火墙上显式启用了出站 Ip 允许列表，则会受到影响。
+此通知影响以下场景：
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>应用场景 1：在公司防火墙后在本地运行的自承载集成运行时的出站通信
+如何确定你是否受影响：
+- 如果你使用以下文档中所述的方法基于 FQDN 名称定义防火墙规则，则你不受影响：[防火墙配置和 IP 地址的允许列表设置](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)。
+- 不过，如果你在公司防火墙上显式启用了出站 IP 允许列表，则你会受影响。
 
-受影响的操作：通知网络基础结构团队更新网络配置，以使用2020年11月8日的最新数据工厂 IP 地址。  若要下载最新的 IP 地址，请参阅 " [服务标记 IP 范围下载" 链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+受影响时要采取的操作：通知网络基础设施团队在 2020 年 11 月 8 日之前更新网络配置，以使用最新的数据工厂 IP 地址。  若要下载最新的 IP 地址，请转到[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
-##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>方案2：自承载 Integration Runtime 在客户管理的 Azure 虚拟网络内的 Azure VM 上运行的出站通信
-如何确定是否受影响：
-- 检查包含自承载 Integration Runtime 的专用网络中是否有任何出站 NSG 规则。 如果没有出站限制，则不会产生任何影响。
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>应用场景 2：在客户管理的 Azure 虚拟网络内的 Azure VM 上运行的自承载集成运行时的出站通信
+如何确定你是否受影响：
+- 检查包含自承载集成运行时的专用网络中是否有任何出站 NSG 规则。 如果没有出站限制，则不受影响。
 - 如果有出站规则限制，请检查是否使用服务标记。 如果使用服务标记，则无需更改或添加任何内容，因为新 IP 范围包含在现有服务标记之内。 
  ![目标检查](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置上显式启用了出站 IP 地址的允许列表，则会受到影响。
+- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置中显式启用了出站 IP 地址的允许列表，则你会受影响。
 
-受影响的操作：通知网络基础结构团队更新 Azure 虚拟网络配置上的 NSG 规则，以使用2020年11月8日的最新数据工厂 IP 地址。  若要下载最新的 IP 地址，请参阅 " [服务标记 IP 范围下载" 链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+受影响时要采取的操作：通知网络基础设施团队在 2020 年 11 月 8 日之前更新 Azure 虚拟网络配置中的 NSG 规则，以使用最新的数据工厂 IP 地址。  若要下载最新的 IP 地址，请转到[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
-##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>方案3：来自客户托管的 Azure 虚拟网络中 SSIS Integration Runtime 的出站通信
-- 检查包含 SSIS Integration Runtime 的专用网络中是否有任何出站 NSG 规则。 如果没有出站限制，则不会产生任何影响。
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>应用场景 3：客户管理的 Azure 虚拟网络中 SSIS Integration Runtime 的出站通信
+- 检查包含 SSIS Integration Runtime 的专用网络中是否有任何出站 NSG 规则。 如果没有出站限制，则不受影响。
 - 如果有出站规则限制，请检查是否使用服务标记。 如果使用服务标记，则无需更改或添加任何内容，因为新 IP 范围包含在现有服务标记之内。
-- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置上显式启用了出站 IP 地址的允许列表，则会受到影响。
+- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置中显式启用了出站 IP 地址的允许列表，则你会受影响。
 
-受影响的操作：通知网络基础结构团队更新 Azure 虚拟网络配置上的 NSG 规则，以使用2020年11月8日的最新数据工厂 IP 地址。  若要下载最新的 IP 地址，请参阅 " [服务标记 IP 范围下载" 链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+受影响时要采取的操作：通知网络基础设施团队在 2020 年 11 月 8 日之前更新 Azure 虚拟网络配置中的 NSG 规则，以使用最新的数据工厂 IP 地址。  若要下载最新的 IP 地址，请转到[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
-### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>无法为 SSLTLS 安全通道建立信任关系 
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>无法建立 SSL/TLS 安全通道的信任关系 
 
 #### <a name="symptoms"></a>症状
 
 自承载 IR 无法连接到 ADF 服务。
 
-通过检查 SHIR 事件日志或 CustomLogEvent 表中的客户端通知日志，将发现以下错误消息：
+检查 SHIR 事件日志或 CustomLogEvent 表中的客户端通知日志，你会发现以下错误消息：
 
 `The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
 
 如何检查 ADF 服务的服务器证书：
 
-最简单的方法是在浏览器中打开 ADF 服务 URL，例如，在 https://eu.frontend.clouddatahub.net/ 安装了 SHIR 的计算机上打开，然后查看服务器证书信息：
+最简单的方法是在浏览器中打开 ADF 服务 URL，例如，在安装了 SHIR 的计算机上打开 https://eu.frontend.clouddatahub.net/ ，然后查看服务器证书信息：
 
   ![检查 ADF 服务的服务器证书](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
 
@@ -742,17 +742,17 @@ openssl pkcs12-out xxxx_new-out xxxx_new .pfx
 
 #### <a name="cause"></a>原因
 
-此问题的两个可能的原因：
+此问题有两个可能的原因：
 
-- ADF 服务服务器证书的根 CA 在安装 SHIR 的计算机上不受信任。 
-- 你使用的是环境中的代理，并且代理已替换 ADF 服务的服务器证书，而已安装 SHIR 的计算机不信任替换的服务器证书。
+- ADF 服务服务器证书的根 CA 在安装了 SHIR 的计算机上不受信任。 
+- 你在环境中使用了代理，并且代理替换了 ADF 服务的服务器证书，而安装了 SHIR 的计算机不信任被替换的服务器证书。
 
 #### <a name="resolution"></a>解决方法
 
-- 对于原因1，请确保 ADF 服务器证书及其证书链受安装了 SHIR 的计算机的信任。
-- 出于第2原因，请信任 SHIR 计算机上的替换根 CA，或将代理配置为不替换 ADF 服务器证书。
+- 对于原因 1，请确保 ADF 服务器证书及其证书链在安装了 SHIR 的计算机上受信任。
+- 对于原因 2，请在 SHIR 计算机上信任被替换的根 CA，或者将代理配置为不替换 ADF 服务器证书。
 
-有关在 Windows 上信任证书的详细信息，请参阅 [此文](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) 。
+请参阅[此文](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)来详细了解如何在 Windows 上信任证书。
 
 #### <a name="additional-info"></a>其他信息
 我们正在推出一个新的 SSL 证书，该证书已从 DigiCert 签名，请检查 DigiCert 全局根 G2 是否在受信任的根 CA 中。

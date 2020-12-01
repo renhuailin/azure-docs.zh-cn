@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 084a8e247ab8bb3e6e6c75cf8cfe8e204384f549
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388147"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345144"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
@@ -44,7 +44,7 @@ ms.locfileid: "85388147"
 1. 输入 **业务电子邮件**。
 1. 上传 **应用徽标** 图像。 徽标图像必须是正方形，其尺寸必须至少为100x100 像素。
 1. 在 " **产品** " 部分保留默认设置。
-1. 查看 **法律条款**中提供的信息。 如果你同意这些条款，请选中此框。
+1. 查看 **法律条款** 中提供的信息。 如果你同意这些条款，请选中此框。
 1. 选择“创建应用”。
 
 ### <a name="configure-auth"></a>配置身份验证
@@ -60,13 +60,13 @@ ms.locfileid: "85388147"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择 " **策略密钥** "，然后选择 " **添加**"。
 6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的**名称**。 例如，`LinkedInSecret`。 前缀 *B2C_1A_* 会自动添加到密钥名称。
+7. 输入策略密钥的 **名称**。 例如，`LinkedInSecret`。 前缀 *B2C_1A_* 会自动添加到密钥名称。
 8. 在 " **密钥**" 中，输入你之前记录的客户端密码。
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
@@ -77,8 +77,8 @@ ms.locfileid: "85388147"
 
 通过将 LinkedIn 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素，将其定义为声明提供程序。
 
-1. 在编辑器中打开 *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** * 文件。 此文件位于 [自定义策略初学者包][starter-pack] 中，你可以在其中一个必备组件中下载。
-1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
+1. 在编辑器中打开 * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ 文件。 此文件位于 [自定义策略初学者包][starter-pack] 中，你可以在其中一个必备组件中下载。
+1. 找到 _ *ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
 1. 如下所示添加新的 **ClaimsProvider**：
 
     ```xml
@@ -99,7 +99,7 @@ ms.locfileid: "85388147"
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -128,11 +128,11 @@ ms.locfileid: "85388147"
     ```
 
 1. 将 **client_id** 的值替换为前面记录的 LinkedIn 应用程序的客户端 id。
-1. 保存文件。
+1. 保存该文件。
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-LinkedIn 技术配置文件需要将 **ExtractGivenNameFromLinkedInResponse** 和 **ExtractSurNameFromLinkedInResponse** 声明转换添加到 ClaimsTransformations 的列表中。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **nullStringClaim**的新声明类型。
+LinkedIn 技术配置文件需要将 **ExtractGivenNameFromLinkedInResponse** 和 **ExtractSurNameFromLinkedInResponse** 声明转换添加到 ClaimsTransformations 的列表中。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **nullStringClaim** 的新声明类型。
 
 将 **BuildingBlocks** 元素添加到 *TrustFrameworkExtensions.xml* 文件顶部附近。 有关示例，请参阅 *TrustFrameworkBase.xml* 。
 
@@ -239,14 +239,14 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="replace-items-in-the-metadata"></a>替换元数据中的项
 
-在**技术配置文件**的现有**元数据**元素中，更新以下项中的下列**项**元素：
+在 **技术配置文件** 的现有 **元数据** 元素中，更新以下项中的下列 **项** 元素：
 
 ```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-更改为：
+到:
 
 ```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -255,7 +255,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="add-items-to-the-metadata"></a>向元数据添加项
 
-在**技术配置文件**的**元数据**中，添加以下**Item**元素：
+在 **技术配置文件** 的 **元数据** 中，添加以下 **Item** 元素：
 
 ```xml
 <Item Key="external_user_identity_claim_id">id</Item>
@@ -265,14 +265,14 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="update-the-outputclaims"></a>更新 OutputClaims
 
-在**技术配置文件**的现有**OutputClaims**中，更新以下**OutputClaim**元素：
+在 **技术配置文件** 的现有 **OutputClaims** 中，更新以下 **OutputClaim** 元素：
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-更改为：
+到:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
@@ -281,7 +281,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="add-new-outputclaimstransformation-elements"></a>添加新的 OutputClaimsTransformation 元素
 
-在**技术配置文件**的**OutputClaimsTransformations**中，添加以下**OutputClaimsTransformation**元素：
+在 **技术配置文件** 的 **OutputClaimsTransformations** 中，添加以下 **OutputClaimsTransformation** 元素：
 
 ```xml
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -290,7 +290,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="define-the-new-claims-transformations-and-claim-type"></a>定义新的声明转换和声明类型
 
-在最后一个步骤中，您添加了需要定义的新声明转换。 若要定义声明转换，请将它们添加到 **ClaimsTransformations**列表中。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **nullStringClaim**的新声明类型。
+在最后一个步骤中，您添加了需要定义的新声明转换。 若要定义声明转换，请将它们添加到 **ClaimsTransformations** 列表中。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **nullStringClaim** 的新声明类型。
 
 应将 **BuildingBlocks** 元素添加到文件的顶部附近。 例如，请参阅 *TrustframeworkBase.xml* 。
 

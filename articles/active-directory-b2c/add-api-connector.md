@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949830"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343869"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>将 API 连接器添加到注册用户流 (预览) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "94949830"
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
 4. 选择 " **API 连接器 (预览")**，然后选择 " **新建 api 连接器**"。
 
@@ -89,7 +89,7 @@ Content-type: application/json
 
 按照以下步骤将 API 连接器添加到注册用户流。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
 4. 选择 " **用户流**"，然后选择要向其添加 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
@@ -237,7 +237,7 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必需 | 说明                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
@@ -258,7 +258,7 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必需 | 说明                                                                |
+| 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
 | action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
@@ -284,7 +284,7 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必需 | 说明                                                                |
+| 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
 | action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
@@ -304,7 +304,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
 无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples.md#api-connectors)，你可以使用无服务器云功能来执行验证逻辑，并将登录限制到特定电子邮件域。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 请确保：
 * API 遵循上述 API 请求和响应约定。 
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。

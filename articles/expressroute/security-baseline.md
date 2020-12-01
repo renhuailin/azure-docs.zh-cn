@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99594ad5fe07f18f639b4870f4e0faa59a697afc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843173"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343937"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 的 Azure 安全基线
 
@@ -56,9 +56,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；每位客户的 ExpressRoute 都包含在他们自己的路由域中，并通过隧道传输到他们自己的虚拟网络中。 虽然隔离了 ExpressRoute，但为了额外保护共享同一虚拟网络的其他资源，你可以启用 DDoS 防护标准来防范 DDoS 攻击。
 
-* [了解 Azure ExpressRoute 的安全控制](./expressroute-security-controls.md)
+* [了解 Azure ExpressRoute 的安全控制]()
 
-* [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -76,7 +76,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；每位客户的 ExpressRoute 都包含在他们自己的路由域中，并通过隧道传输到他们自己的虚拟网络中。
 
-* [了解 Azure ExpressRoute 的安全控制](./expressroute-security-controls.md)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 
@@ -447,7 +447,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；Azure ExpressRoute 不存储客户数据。
 
-* [了解 Azure ExpressRoute 的安全控制](./expressroute-security-controls.md)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 
@@ -599,7 +599,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已获批 Azure 资源的清单
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -861,7 +861,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：不适用；Azure ExpressRoute 不存储客户数据。
 
-* [了解 Azure ExpressRoute 的安全控制](./expressroute-security-controls.md)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 

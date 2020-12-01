@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889339"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344187"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>使用 Jupyter 笔记本搜寻安全威胁
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 来寻找安全威胁
 
 Azure Sentinel 的基础是数据存储;它结合了高性能查询、动态架构和扩展到大数据量。 Azure 门户和所有 Azure Sentinel 工具都使用一个公共 API 来访问此数据存储。 同一 API 也可用于 [Jupyter](https://jupyter.org/) 笔记本和 Python 等外部工具。 虽然可以在门户中执行许多常见任务，但 Jupyter 扩展了可对此数据执行的操作范围。 它将完整的可编程性与用于机器学习、可视化效果和数据分析的大量库集合组合在一起。 这些属性使 Jupyter 成为安全调查和搜寻的引人注目的工具。
 
@@ -61,7 +61,7 @@ Azure Sentinel 笔记本使用许多常见的 Python 库，例如 pandas、matpl
 
 1. 在 " **机器学习** " 页上，提供以下信息，然后选择 " **查看 + 创建**"。
 
-    |字段|说明|
+    |字段|描述|
     |--|--|
     |订阅|选择要使用的 Azure 订阅。|
     |资源组|使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 在此示例中，我们使用 **AzureMLRG**。|
@@ -140,7 +140,7 @@ Azure Sentinel 笔记本使用许多常见的 Python 库，例如 pandas、matpl
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何开始在 Azure Sentinel 中使用 Jupyter 笔记本。 要详细了解 Azure Sentinel，请参阅以下文章：
+本文介绍了如何开始在 Azure Sentinel 中使用 Jupyter Notebook。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 - [主动搜寻威胁](hunting.md)
 - [在搜寻时使用书签保存感兴趣的信息](bookmarks.md)

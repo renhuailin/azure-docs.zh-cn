@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a775ce6b7c560783a22697c5dd92288c5d5b7d4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226567"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343699"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 配置云预配时，可以指定的属性映射类型之一是表达式映射。 
@@ -289,7 +289,7 @@ InStr 函数查找字符串中第一次出现的子字符串
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck：要搜索的字符串
 * stringmatch：要查找的字符串
@@ -712,7 +712,7 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：** <br>
 
-* **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
+* **输入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串

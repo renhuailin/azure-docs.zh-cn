@@ -1,14 +1,14 @@
 ---
 title: 模板概述
-description: 介绍使用 Azure 资源管理器模板部署资源的好处。
+description: 介绍使用 Azure 资源管理器模板 (ARM 模板) 部署资源的优点。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325054"
+ms.locfileid: "96342322"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -16,7 +16,7 @@ ms.locfileid: "96325054"
 
 为了解决这些难题，可将部署自动化，并运用基础结构即代码。 在代码中定义需要部署的基础结构。 基础结构代码将成为项目的一部分。 与应用程序代码一样，可将基础结构代码存储在源存储库中，并控制其版本。 团队中的任何人都可以运行该代码并部署类似的环境。
 
-若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器 (ARM) 模板。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
+若要实现 Azure 解决方案的基础结构代码，请使用 Azure 资源管理器模板 (ARM 模板) 。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
 ## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 

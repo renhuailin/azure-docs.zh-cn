@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670120"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345076"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -177,15 +177,15 @@ ms.locfileid: "92670120"
 
 ### <a name="output-claims-sign-up-or-sign-in-page"></a>输出声明注册或登录页
 
-在组合注册和登录页中，使用内容定义 [DataUri](contentdefinitions.md#datauri) 元素时，请注意以下 `unifiedssp` `unifiedssd` 事项：指定或页类型：
+在合并的注册和登录页面，使用内容定义 [DataUri](contentdefinitions.md#datauri) 元素指定 `unifiedssp` 或 `unifiedssd` 页类型时，请注意以下内容：
 
 - 仅呈现用户名和密码声明。
-- 前两个输出声明必须是用户名并且密码 (按此顺序) 。 
-- 不呈现任何其他声明;对于这些声明，您需要设置 `defaultValue` 或调用声明窗体验证技术配置文件。 
+- 前两个输出声明必须为用户名和密码（按此顺序）。 
+- 不呈现任何其他声明；对于这些声明，你将需要设置 `defaultValue` 或调用声明格式验证技术配置文件。 
 
 ## <a name="persist-claims"></a>保存声明
 
-不使用 PersistedClaims 元素。 自断言技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
+不使用 PersistedClaims 元素。 自断言技术配置文件不会将数据持久保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
 
 ## <a name="validation-technical-profiles"></a>验证技术配置文件
 
@@ -197,26 +197,26 @@ ms.locfileid: "92670120"
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 设置。 operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
-| AllowGenerationOfClaimsWithNullValues| 否| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
+| setting.operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
+| AllowGenerationOfClaimsWithNullValues| 否| 允许生成值为 NULL 的声明。 例如，在用户未选中复选框的情况下。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
 | EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.retryLimit | 否 | 控制用户可以尝试提供对照验证技术配置文件检查的数据的次数。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
+| setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
 | SignUpTarget <sup>1</sup>| 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 forgotPasswordLinkLocation <sup>2</sup>| 否| 显示 "忘记密码" 链接。 可能的值： `AfterInput` (默认值) 链接会显示在页面底部，或 `None` 删除 "忘记密码" 链接。|
-| 设置。 enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](custom-policy-keep-me-signed-in.md) " 复选框。 可能的值： `true` 或 `false` (默认) 。 |
-| inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 通过等待用户停止键入并验证该值来改善用户体验。 默认值为2000毫秒。 |
+| setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。|
+| setting.enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](custom-policy-keep-me-signed-in.md) " 复选框。 可能的值：`true` 或 `false`（默认）。 |
+| setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 通过等待用户停止键入后再验证该值来改善用户体验。 默认值为 2000 毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 说明：
-1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd` 。
-1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd` 。 [页面布局版本](page-layout.md) 1.1.0 及更高版本。
-1. 可用于 [页面布局版本](page-layout.md) 1.2.0 和更高版本。
+1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd`。
+1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd`。 [页面布局版本](page-layout.md) 1.1.0 及更高版本。
+1. 可用于[页面布局版本](page-layout.md) 1.2.0 及更高版本。
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

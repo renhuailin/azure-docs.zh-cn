@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 6fb1bdbad4455b55c3f6cc3b395526f637339847
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 2566b2cf950df915f8ea843c34ea1fb6f8e7ea21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592152"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341999"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>自定义和建议图像搜索查询
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本文介绍如何自定义查询并建议将搜索字词发送到必应图像搜索 API。
 
@@ -33,7 +33,7 @@ ms.locfileid: "94592152"
 
 ## <a name="pivot-the-query"></a>分段查询
 
-如果必应可以将原始搜索查询分段，则返回的 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `pivotSuggestions`。 分段建议可以作为可选搜索词向用户显示。 例如，如果原始查询为 *Microsoft Surface* ，则必应可能会将查询分成 *Microsoft* 和 *Surface* ，并为每个拆分项提供建议的分段。 这些建议可以作为可选查询词向用户显示。
+如果必应可以将原始搜索查询分段，则返回的 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `pivotSuggestions`。 分段建议可以作为可选搜索词向用户显示。 例如，如果原始查询为 *Microsoft Surface*，则必应可能会将查询分成 *Microsoft* 和 *Surface*，并为每个拆分项提供建议的分段。 这些建议可以作为可选查询词向用户显示。
 
 以下示例演示了针对 *Microsoft Surface* 的分段建议：  
 
@@ -106,11 +106,11 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>扩展查询
 
-如果必应可以通过扩展查询来缩小原始搜索的范围，则 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `queryExpansions` 字段。 例如，如果查询为 *Microsoft Surface* ，则扩展的查询可能为：
-- Microsoft Surface **Pro 3** 。
-- Microsoft Surface **RT** 。
-- Microsoft Surface **Phone** 。
-- Microsoft Surface **Hub** 。
+如果必应可以通过扩展查询来缩小原始搜索的范围，则 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `queryExpansions` 字段。 例如，如果查询为 *Microsoft Surface*，则扩展的查询可能为：
+- Microsoft Surface **Pro 3**。
+- Microsoft Surface **RT**。
+- Microsoft Surface **Phone**。
+- Microsoft Surface **Hub**。
 
 以下示例演示了 *Microsoft Surface* 的扩展查询。
 
