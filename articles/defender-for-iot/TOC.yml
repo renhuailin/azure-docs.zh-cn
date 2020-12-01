@@ -122,11 +122,11 @@
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握安全技能
-      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+      href: /learn/browse/?term=securityS&terms=securityS
     - name: Azure 安全中心文档
-      href: 'https://docs.microsoft.com/azure/security-center/'
+      href: ../security-center/index.yml
     - name: Azure 安全文档
-      href: 'https://docs.microsoft.com/azure/security/'
+      href: ../security/index.yml
     - name: Stack Overflow 上的 Azure RTO 安全模块
       href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
     - name: Azure IoT 安全性、隐私性与合规性博客

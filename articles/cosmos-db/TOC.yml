@@ -1329,7 +1329,7 @@
         - name: 配置从专用终结点访问
           href: how-to-configure-private-endpoints.md
         - name: 专门连接到 Cosmos DB 帐户
-          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: ../private-link/tutorial-private-endpoint-cosmosdb-portal.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json
         - name: 使用 Azure Key Vault 访问数据
           href: access-secrets-from-keyvault.md
         - name: 将用户访问权限仅限于数据操作
