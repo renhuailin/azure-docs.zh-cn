@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低代码聊天机器人, 多回合对话
-ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874418"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353130"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
@@ -22,14 +22,14 @@ QnA Maker 通常用于生成对话式客户端应用程序，其中包括社交�
 
 ## <a name="when-to-use-qna-maker"></a>何时使用 QnA Maker
 
-* **包含静态信息时** - 如果回答知识库中包含静态信息，可使用 QnA Maker。 此知识库是根据你的需要自定义的，其内容是使用 [PDF 和 URL](../concepts/content-types.md) 等文档生成的。
+* **包含静态信息时** - 如果回答知识库中包含静态信息，可使用 QnA Maker。 此知识库是根据你的需要自定义的，其内容是使用 [PDF 和 URL](../index.yml) 等文档生成的。
 * **想要对某个请求、问题或命令提供相同的回答时** - 如果不同的用户提交相同的问题，则返回相同的回答。
-* **想要基于元信息筛选静态信息时** - 添加[元数据](../how-to/metadata-generateanswer-usage.md)标记，以提供与客户端应用程序的用户和信息相关的附加筛选选项。 常见的元数据信息包括[聊天内容](../how-to/chit-chat-knowledge-base.md)、内容类型或格式、内容目的和内容新鲜度。
+* **想要基于元信息筛选静态信息时** - 添加 [元数据](../how-to/metadata-generateanswer-usage.md)标记，以提供与客户端应用程序的用户和信息相关的附加筛选选项。 常见的元数据信息包括[聊天内容](../how-to/chit-chat-knowledge-base.md)、内容类型或格式、内容目的和内容新鲜度。
 * **想要管理包含静态信息的机器人聊天时** - 知识库提取用户的聊天文本或命令，并予以回答。 如果回答是预先确定的聊天流（在知识库中使用[多轮次上下文](../how-to/multiturn-conversation.md)表示）的一部分，则机器人可以轻松提供此流。
 
 ## <a name="what-is-a-knowledge-base"></a>知识库是什么？
 
-QnA Maker [将内容导入](../concepts/knowledge-base.md)问题和回答对知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答对之间的关系。 可编辑这些问题与回答对，或添加新对。
+QnA Maker [将内容导入](../index.yml)问题和回答对知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答对之间的关系。 可编辑这些问题与回答对，或添加新对。
 
 问题与回答对的内容包括：
 * 问题的所有替代形式
@@ -67,9 +67,9 @@ QnA Maker 的系统采用分层排名方法。 数据存储在 Azure 搜索（�
 
 QnA Maker 提供多轮次提示和主动学习来帮助你改善基本的问题和回答对。
 
-**多轮次提示**使你有机会连接问题和回答对。 客户端应用程序可通过此连接提供最相关的回答，并提供更多问题来具体化搜索以获得最终回答。
+**多轮次提示** 使你有机会连接问题和回答对。 客户端应用程序可通过此连接提供最相关的回答，并提供更多问题来具体化搜索以获得最终回答。
 
-知识库收到已发布终结点中用户的问题后，QnA Maker 将对这些实际问题应用**主动学习**，以建议对知识库做出哪些更改来提高质量。
+知识库收到已发布终结点中用户的问题后，QnA Maker 将对这些实际问题应用 **主动学习**，以建议对知识库做出哪些更改来提高质量。
 
 ## <a name="development-lifecycle"></a>开发生命周期
 

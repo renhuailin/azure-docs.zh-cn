@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348630"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入门：使用 Web 门户监视你的首个指标
 
@@ -155,5 +155,5 @@ Webhook 是通过编程方式从指标顾问服务获取异常通知的入口点
 - [加入数据馈送](../how-tos/onboard-your-data.md)
     - [管理数据馈送](../how-tos/manage-data-feeds.md)
     - [不同数据源的配置](../data-feeds-from-different-sources.md)
-- [使用 REST API 或客户端库](rest-api.md)
+- [使用 REST API 或客户端库](./rest-api-and-client-library.md)
 - [配置指标并微调检测配置](../how-tos/configure-metrics.md)

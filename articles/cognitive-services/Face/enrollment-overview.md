@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 2f7d2df8561efe7188fc2d070c57dcb0236fefb1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ac5106aa661cb2baea31ee15d57e9c6fac8c7192
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95029355"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350324"
 ---
 # <a name="face-api-enrollment"></a>人脸 API 注册
 
@@ -44,7 +44,7 @@ ms.locfileid: "95029355"
 |---|---|
 |硬件 | 考虑注册设备的相机质量。 |
 |建议的注册功能 | 包含具有多重身份验证的登录步骤。</br></br>将用户信息（如别名或标识号）与人脸 API 中的人脸模板 ID（称为个人 ID）链接起来。 检索和管理用户的注册时需要此映射。 注意：在应用程序中，应将个人 ID 视为机密。</br></br>设置一个自动化过程来删除所有注册数据，包括不再是面部识别技术的用户（如前员工）的人脸模板和注册照片。</br></br>避免自动注册，因为它不会为用户提供在获取同意时建议提供的知情、理解、自由选择或控制权利。 </br></br>向用户请求保存用于注册的图像的权限。 此权限在模型更新时非常有用，因为在新模型中，新的注册照片大约每 10 个月需要重新注册一次。 如果未保存原始图像，用户将需要从头开始完成注册过程。</br></br>允许用户选择不将照片存储在系统中。 为了使该选项更加明确，可以添加第二个保存注册照片的同意请求屏幕。 </br></br>保存照片后，会创建一个自动化过程，以便在模型更新时重新注册所有用户。 已保存其注册照片的人员无需再次注册。 </br></br>创建一个应用功能，当用户在注册过程中遇到问题时，指定管理员可以覆盖某些质量筛选器。 |
-|安全性 | 认知服务遵循[最佳做法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)来加密静态和传输中的用户数据。 下面是一些其他做法，可帮助你在注册过程中遵守你对用户做出的安全承诺。 </br></br>执行安全措施以确保在注册过程中任何人都无法访问个人 ID。 注意：在注册系统中，应将个人 ID 视为机密。 </br></br>通过认知服务使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)。 </br></br>对密钥和机密使用基于令牌的身份验证和/或共享访问签名 (SAS) 来访问数据库等资源。 通过使用请求或 SAS 令牌，你可以在不影响帐户密钥的情况下授予对数据的有限访问权限，还可以指定令牌的到期时间。 </br></br>切勿在应用中存储任何机密、密钥或密码。 |
+|安全性 | 认知服务遵循[最佳做法](../cognitive-services-virtual-networks.md?tabs=portal)来加密静态和传输中的用户数据。 下面是一些其他做法，可帮助你在注册过程中遵守你对用户做出的安全承诺。 </br></br>执行安全措施以确保在注册过程中任何人都无法访问个人 ID。 注意：在注册系统中，应将个人 ID 视为机密。 </br></br>通过认知服务使用[基于角色的访问控制](../../role-based-access-control/overview.md)。 </br></br>对密钥和机密使用基于令牌的身份验证和/或共享访问签名 (SAS) 来访问数据库等资源。 通过使用请求或 SAS 令牌，你可以在不影响帐户密钥的情况下授予对数据的有限访问权限，还可以指定令牌的到期时间。 </br></br>切勿在应用中存储任何机密、密钥或密码。 |
 |用户隐私 |提供一系列注册选择来解决不同级别的隐私问题。 请勿强制用户使用其个人设备注册面部识别系统。 </br></br>允许用户在任何时间以任何理由重新注册、撤销同意以及从注册应用程序中删除数据。 |
 |可访问性 |遵循辅助功能标准（例如 [ADA](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) 或 [W3C](https://www.w3.org/TR/WCAG21/)），以确保应用程序可供行动不便或有视觉障碍的用户使用。 |
 

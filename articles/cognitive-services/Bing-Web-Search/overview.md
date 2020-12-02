@@ -11,19 +11,19 @@ ms.topic: overview
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e312265705161dd1cfa23856c9f6dfb71997ec82
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 7643486962df0516cc61857a7e31cf34bc41c732
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381093"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350630"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 必应 Web 搜索根据搜索相关性和必应 Web 搜索订阅以 JSON 的形式提供结果。
 

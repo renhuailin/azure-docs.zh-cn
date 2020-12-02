@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356488"
 ---
 适用于 Java 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 Maven 包并试用基本任务的示例代码。 
 
@@ -48,17 +48,17 @@ ms.locfileid: "92918678"
 mkdir myapp && cd myapp
 ```
 
-从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts* ，在运行时将使用该文件创建并配置应用程序。
+从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts*，在运行时将使用该文件创建并配置应用程序。
 
 ```console
 gradle init --type basic
 ```
 
-当提示你选择一个 **DSL** 时，选择 **Kotlin** 。
+当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
 ## <a name="install-the-client-library"></a>安装客户端库
 
-找到 *build.gradle.kts* ，并使用喜好的 IDE 或文本编辑器将其打开。 然后在该文件中复制以下生成配置。 此配置将项目定义一个 Java 应用程序，其入口点为 **ContentModeratorQuickstart** 类。 它会导入内容审查器客户端库以及用于 JSON 序列化的 GSON SDK。
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后在该文件中复制以下生成配置。 此配置将项目定义一个 Java 应用程序，其入口点为 **ContentModeratorQuickstart** 类。 它会导入内容审查器客户端库以及用于 JSON 序列化的 GSON SDK。
 
 ```kotlin
 plugins {
@@ -103,7 +103,7 @@ mkdir -p src/main/java
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 在应用程序的 main 方法中，添加对本快速入门中使用的方法的调用。 稍后将对这些调用进行定义。
 
@@ -173,7 +173,7 @@ mkdir -p src/main/java
 
 ### <a name="print-results"></a>输出结果
 
-在 `while` 循环的后面添加以下代码，用于将结果输出到控制台和输出文件 *src/main/resources/ModerationOutput.json* 。
+在 `while` 循环的后面添加以下代码，用于将结果输出到控制台和输出文件 *src/main/resources/ModerationOutput.json*。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 

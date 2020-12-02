@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c2a49e10f4407c59a8e4e2bfbb78d889560c7136
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3bd3ce63339f7eecef520a5496e5c4a3a64efd18
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356556"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -72,7 +72,7 @@ npm install @azure/ai-form-recognizer
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 ## <a name="object-model"></a>对象模型 
 
@@ -132,7 +132,7 @@ npm install @azure/ai-form-recognizer
 
 
 > [!TIP]
-> 还可从本地文件中获取内容。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeContent。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可从本地文件中获取内容。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeContent。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ### <a name="output"></a>输出
 
@@ -159,7 +159,7 @@ cell [1,5] has text PT
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ### <a name="output"></a>输出
 
@@ -279,7 +279,7 @@ Document errors: undefined
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> 还可以分析本地文件。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeCustomForms。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可以分析本地文件。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 beginRecognizeCustomForms。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 
 ### <a name="output"></a>输出

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505234"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345519"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -56,17 +56,17 @@ ms.locfileid: "94505234"
 
 ### <a name="november-2019"></a>2019 年 11 月
 
-* 适用于 QnA Maker 的[美国政府云支持](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
-* GA 中的[多轮次](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation)功能
-* 第 1 层语言中可用的[闲聊支持](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
+* 适用于 QnA Maker 的[美国政府云支持](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)
+* GA 中的[多轮次](./how-to/multiturn-conversation.md)功能
+* 第 1 层语言中可用的[闲聊支持](./how-to/chit-chat-knowledge-base.md#language-support)
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* 为 QnA Maker 服务中的所有知识库[显式设置语言](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)。
+* 为 QnA Maker 服务中的所有知识库[显式设置语言](./index.yml)。
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* 使用 [XLS 文件格式](concepts/content-types.md)导入和导出
+* 使用 [XLS 文件格式](./index.yml)导入和导出
 
 ### <a name="june-2019"></a>2019 年 6 月
 

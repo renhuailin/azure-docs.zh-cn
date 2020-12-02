@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427473"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346132"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -212,5 +212,4 @@ ms.locfileid: "94427473"
 更多相关信息：
 
 * [答案中的 Markdown 格式](../reference-markdown-format.md)
-* QnA Maker [数据源](../concepts/knowledge-base.md)。
-
+* QnA Maker [数据源](../index.yml)。

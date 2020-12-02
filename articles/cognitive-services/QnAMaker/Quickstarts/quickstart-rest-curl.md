@@ -7,16 +7,16 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7592b9fb509f39504ad2399d0e939ceca1156221
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351089"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>快速入门：使用 cURL 和 REST 管理知识库
 
-本快速入门逐步介绍如何创建、发布和查询知识库。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
+本快速入门逐步介绍如何创建、发布和查询知识库。 QnA Maker 自动从[数据源](../index.yml)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -54,7 +54,7 @@ ms.locfileid: "94427677"
 |--|--|--|
 |QnA Maker 资源名称|代码|用于构造 URL|
 |QnA Maker 资源密钥|`Ocp-Apim-Subscription-Key` 标头的 `-h` 参数|对 QnA Maker 服务进行身份验证|
-|描述知识库的 JSON|`-d` 参数|JSON [示例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|描述知识库的 JSON|`-d` 参数|JSON [示例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON 大小（字节）|`Content-Size` 标头的 `-h` 参数||
 
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥、JSON 值和 JSON 大小编辑此命令。
@@ -89,7 +89,7 @@ QnA Maker 返回的 cURL 响应包含 `operationId`，[获取操作的状态](#g
 |--|--|--|
 |QnA Maker 资源名称|代码|用于构造 URL|
 |QnA Maker 资源密钥|`Ocp-Apim-Subscription-Key` 标头的 `-h` 参数|对 QnA Maker 服务进行身份验证|
-|描述知识库的 JSON|`-d` 参数|JSON [示例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|描述知识库的 JSON|`-d` 参数|JSON [示例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON 大小（字节）|`Content-Size` 标头的 `-h` 参数||
 
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥、JSON 值和 JSON 大小编辑此命令。
@@ -322,7 +322,7 @@ cURL 响应包含运行时终结点密钥。 通过查询从知识库获取答�
 |QnA Maker 资源名称|代码|用于构造 URL|
 |QnA Maker 运行时密钥|`Authorization` 标头的 `-h` 参数|密钥是包含单词 `Endpointkey ` 的字符串的一部分。 对 QnA Maker 服务进行身份验证|
 |知识库 ID|URL 路由|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|描述查询的 JSON|`-d` 参数|[请求正文参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和 JSON [示例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|描述查询的 JSON|`-d` 参数|[请求正文参数](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和 JSON [示例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON 大小（字节）|`Content-Size` 标头的 `-h` 参数||
 
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥和知识库 ID 编辑此命令。
@@ -347,7 +347,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 |QnA Maker 资源名称|代码|用于构造 URL|
 |QnA Maker 资源密钥|`Ocp-Apim-Subscription-Key` 标头的 `-h` 参数|对 QnA Maker 服务进行身份验证|
 |知识库 ID|URL 路由|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|描述查询的 JSON|`-d` 参数|[请求正文参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和 JSON [示例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|描述查询的 JSON|`-d` 参数|[请求正文参数](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和 JSON [示例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON 大小（字节）|`Content-Size` 标头的 `-h` 参数||
 
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥和知识库 ID 编辑此命令。
@@ -414,11 +414,11 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 ## <a name="additional-resources"></a>其他资源
 
-* [创作](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)参考文档
-* [运行时](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime)参考文档
+* [创作](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)参考文档
+* [运行时](/rest/api/cognitiveservices/qnamaker4.0/runtime)参考文档
 * [使用 cURL 的示例 BASH 脚本](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API 参考](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

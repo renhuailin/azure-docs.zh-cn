@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95867704"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356539"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -138,7 +138,7 @@ pip install azure-ai-formrecognizer --pre
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> 还可从本地映像中获取内容。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_content`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可从本地映像中获取内容。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_content`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ### <a name="output"></a>输出
 
@@ -170,7 +170,7 @@ Confidence score: 1.0
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_receipts`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_receipts`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ### <a name="output"></a>输出
 
@@ -205,7 +205,7 @@ Total: 1203.39 has confidence 0.774
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ## <a name="recognize-invoices"></a>识别发票
 
@@ -214,7 +214,7 @@ Total: 1203.39 has confidence 0.774
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> 还可识别本地发票图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地发票图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 ---
 
@@ -324,7 +324,7 @@ Document errors: []
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> 还可分析本地映像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_custom_forms`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可分析本地映像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_custom_forms`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
 
 ### <a name="output"></a>输出

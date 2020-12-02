@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0de93eff0fc422bc28fe7b2c42c295c8d8b1acc4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890236"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344464"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>什么是指标顾问（预览版）？ 
 
@@ -63,4 +63,4 @@ ms.locfileid: "92890236"
 ## <a name="next-steps"></a>后续步骤
 
 * 浏览快速入门：[监视你关于 web 的第一个指标](quickstarts/web-portal.md)。
-* 浏览快速入门：[使用 REST API 自定义解决方案](quickstarts/rest-api.md)。
+* 浏览快速入门：[使用 REST API 自定义解决方案](./quickstarts/rest-api-and-client-library.md)。

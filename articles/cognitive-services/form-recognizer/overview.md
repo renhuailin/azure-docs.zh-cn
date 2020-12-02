@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519517"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353674"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -76,7 +76,7 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 
 表单识别器使用[布局 API](#layout-api) 来了解印刷体和手写体文本元素的预期大小和位置。 然后，它使用用户指定的标签来了解文档中的键/值关联。 建议使用五个手动标记的相同类型（相同结构）的表单，这样就可以在训练新模型时入门，并根据需要添加更多标记的数据以提高模型准确性。
 
-[开始使用标签进行训练](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+[开始使用标签进行训练](./quickstarts/label-tool.md)
 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]

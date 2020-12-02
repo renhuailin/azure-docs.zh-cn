@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 68f892fea01582b16dad5efd8c86dbf0b578e50f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519398"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353045"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -82,11 +82,11 @@ ms.locfileid: "95519398"
 
 * 最低的编程要求：
     * [使用文本分析和 Power Automate 在 Excel 中提取信息](tutorials/extract-excel-information.md)
-    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [集成 Power BI 和文本分析 API 以分析自定义反馈](tutorials/tutorial-power-bi-key-phrases.md)
 * 建议的编程体验：
-    * [使用 Azure Databricks 针对流数据执行情绪分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
-    * [生成 Flask 应用以翻译文本、分析情绪以及合成语音](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [使用 Azure Databricks 针对流数据执行情绪分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [生成 Flask 应用以翻译文本、分析情绪以及合成语音](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>

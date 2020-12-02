@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918679"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356471"
 ---
 适用于 Python 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 PiPy 包并试用基本任务的示例代码。 
 
@@ -67,7 +67,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的内容审查器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../../key-vault/general/overview.md)。
 
 ## <a name="object-model"></a>对象模型
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 48162609c27372937337be87d4b8f78af35a46d5
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95866133"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356505"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -116,7 +116,7 @@ mkdir -p src/main/java
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 在应用程序的 main 方法中，添加对本快速入门中使用的方法的调用。 稍后将对这些调用进行定义。 还需要为训练和测试数据添加对 URL 的引用。
 
@@ -199,7 +199,7 @@ mkdir -p src/main/java
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> 还可从本地文件中获取内容。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeContent。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可从本地文件中获取内容。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeContent。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 FormPage 对象的集合：提交的文档中的每一页对应一个对象。 下面的代码循环访问这些对象，并输出提取的键/值对和表数据。
 
@@ -232,7 +232,7 @@ Cell has text ET.
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地回执图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedReceipt 对象的集合：提交的文档中的每一页对应一个对象。 接下来的代码块会循环访问回执，并将其详细信息输出到控制台。
 
@@ -272,7 +272,7 @@ Total Price: null, confidence: 0.93
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地名片图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedForm 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
 
@@ -287,7 +287,7 @@ Total Price: null, confidence: 0.93
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> 还可识别本地发票。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可识别本地发票。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedForm 对象的集合：文档中的每一张发票都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
 
@@ -384,7 +384,7 @@ The model found field 'field-6' with label: VAT ID
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> 还可分析本地文件。 请参阅 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeCustomForms。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 还可分析本地文件。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeCustomForms。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedForm 对象的集合：提交的文档中的每一页对应一个对象。以下代码将分析结果输出到控制台。 它将输出每个识别的字段和相应的值以及置信度分数。
 
