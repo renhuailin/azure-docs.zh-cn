@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435818"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519036"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for MySQL 的数据加密
 
@@ -24,7 +24,7 @@ ms.locfileid: "96435818"
 * 创建密钥保管库和密钥，以用于客户管理的密钥。 同时启用密钥保管库上的 "清除保护" 和 "软删除"。
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * 在创建的 Azure Key Vault 中，创建将用于 Azure Database for MySQL 的数据加密的密钥。
@@ -55,7 +55,8 @@ ms.locfileid: "96435818"
   * 无过期日期
   * 未禁用
   * 执行 **get**、 **wrap**、 **解包** 操作
-  * recoverylevel 属性设置为 **可恢复**。
+  * recoverylevel 属性设置为 **可恢复** (这需要启用软删除，保持期设置为90天) 
+  * 清除保护已启用
 
 可以通过使用以下命令来验证密钥的上述特性：
 

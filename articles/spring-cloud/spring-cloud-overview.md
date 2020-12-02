@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 74ebdafb835aff75f282b9d6ac02d8ccf672a2be
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090686"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501084"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud 是什么？
 
@@ -48,7 +48,7 @@ Azure Spring Cloud 提供通过 Azure CLI 与 Azure DevOps 集成的功能。  �
 
 ## <a name="application-monitoring"></a>应用程序监视
 
-开发人员可以通过 Spring Cloud 的分布式跟踪工具调试和监视应用程序中微服务之间的复杂互连。  通过将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](../azure-monitor/insights/insights-overview.md) 集成，Azure 可以直接在 Azure 门户中提供强大的分布式跟踪功能。  若要了解详细信息，请完成此[教程](spring-cloud-tutorial-distributed-tracing.md)。
+开发人员可以通过 Spring Cloud 的分布式跟踪工具调试和监视应用程序中微服务之间的复杂互连。  通过将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](../azure-monitor/monitor-reference.md) 集成，Azure 可以直接在 Azure 门户中提供强大的分布式跟踪功能。  若要了解详细信息，请完成此[教程](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

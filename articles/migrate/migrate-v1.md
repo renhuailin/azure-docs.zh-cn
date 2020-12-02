@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317208"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494692"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -31,7 +31,7 @@ ms.locfileid: "92317208"
 
 ## <a name="upgrade-between-versions"></a>进行版本之间的升级
 
-无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
+无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
 
 ## <a name="find-projects-from-previous-version"></a>从以前的版本中查找项目
 
@@ -308,7 +308,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 4. 编写查询以使用 Azure Monitor 日志收集依赖项数据。 在下一部分查找示例查询。
 5. 通过单击“运行”，运行查询。 
 
-[详细了解](../azure-monitor/log-query/get-started-portal.md)如何编写 Kusto 查询。 
+[详细了解](../azure-monitor/log-query/log-analytics-tutorial.md)如何编写 Kusto 查询。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor 日志示例查询
 

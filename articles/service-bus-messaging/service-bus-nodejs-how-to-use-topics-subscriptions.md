@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811696"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498687"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>快速入门：使用 Node.js 和预览版 azure/service-bus 包的服务总线主题与订阅
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包将消息发送到服务总线主题，并从该主题的服务总线订阅接收消息。
@@ -208,4 +208,4 @@ npm install @azure/service-bus
 
 - [适用于 Python 的 Azure 服务总线客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 javascript 文件夹包含 JavaScript 示例，typescript 包含 TypeScript 示例 。 
-- [azure-servicebus 参考文档](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [azure-servicebus 参考文档](/javascript/api/overview/azure/service-bus)

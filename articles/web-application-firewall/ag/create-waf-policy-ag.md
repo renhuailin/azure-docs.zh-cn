@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146612"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518815"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>创建应用程序网关的 Web 应用程序防火墙策略
 
@@ -22,8 +22,6 @@ ms.locfileid: "86146612"
 
 如果应用程序网关应用了策略，然后将不同的策略应用于该应用程序网关上的侦听器，则该侦听器的策略将生效，但仅用于侦听器 (的) 分配给该侦听器。 应用程序网关策略仍适用于未分配特定策略的所有其他侦听器。 
 
-   > [!NOTE]
-   > 每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
    > [!NOTE]
    > 防火墙策略关联到 WAF 后，必须始终有一个与该 WAF 关联的策略。 你可能会覆盖该策略，但不支持完全从 WAF 中解除策略关联。 
 
@@ -67,7 +65,7 @@ ms.locfileid: "86146612"
 
 ## <a name="custom-rules"></a>自定义规则
 
-若要创建自定义规则，请在 "**自定义规则**" 选项卡下选择 "**添加自定义规则**"。这将打开 "自定义规则配置" 页。 以下屏幕截图显示了一个示例自定义规则，该规则配置为在查询字符串包含文本 *blockme*时阻止请求。
+若要创建自定义规则，请在 "**自定义规则**" 选项卡下选择 "**添加自定义规则**"。这将打开 "自定义规则配置" 页。 以下屏幕截图显示了一个示例自定义规则，该规则配置为在查询字符串包含文本 *blockme* 时阻止请求。
 
 [![编辑自定义规则 ](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 

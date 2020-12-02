@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547803"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518781"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
@@ -32,7 +32,7 @@ ms.locfileid: "92547803"
 
 ## <a name="azure-dns-service"></a>Azure DNS 服务
 
-如果你使用的是 Azure 提供的 DNS 服务，则允许从端口53上的 __168.63.129.16__ 访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
+如果你使用的是 Azure 提供的 DNS 服务，则允许访问 TCP 和 UDP 端口53上的 __168.63.129.16__ 。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
 
 ## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 

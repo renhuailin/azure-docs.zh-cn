@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125007"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498262"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -39,7 +39,7 @@ ms.locfileid: "92125007"
 * IoT 中心
 * 存储帐户
 * Azure 媒体服务帐户
-* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
 
 在本快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署所需资源。 为此，请执行下列步骤：
 
@@ -48,7 +48,11 @@ ms.locfileid: "92125007"
 1. 在 Cloud Shell 窗口左侧的下拉菜单中，选择“Bash”作为环境。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="基于运动检测的实时视频分析"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="环境选择器":::
+1. 运行以下命令。
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 如果脚本成功完成，你应该可在订阅中看到所有所需资源。 在脚本输出中，资源表会列出 IoT 中心名称。 查找资源类型 `Microsoft.Devices/IotHubs`，并记下名称。 下一步骤需要用到此名称。 
@@ -80,11 +84,11 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 1. 右键单击并选择“扩展设置”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="基于运动检测的实时视频分析":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="扩展设置":::
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="基于运动检测的实时视频分析":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
 1. 选择”查看” > ”资源管理器”， 或选择 Ctrl+Shift+E。
 1. 在“资源管理器”选项卡的左下角，选择“Azure IoT 中心”。
 1. 选择“更多选项”图标以查看上下文菜单。 然后选择“设置 IoT 中心连接字符串”。

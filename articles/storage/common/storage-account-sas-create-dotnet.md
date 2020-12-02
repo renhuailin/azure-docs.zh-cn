@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1cb882ac1051c41f4d887a9ff4dd8cd64bc9f56c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a439ce5cd56bde5f9a60a1d99f5299bd16c81f8b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593597"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519070"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
@@ -28,7 +28,7 @@ ms.locfileid: "94593597"
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-帐户 SAS 使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，创建一个新的 [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
+帐户 SAS 使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于为 SAS 签名的凭据。 接下来，创建一个新的 [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetAccountSASToken":::
 
@@ -67,8 +67,6 @@ static string GetAccountSASToken()
 若要使用帐户 SAS 访问 Blob 服务的服务级别 API，请使用存储帐户的 SAS 和 Blob 存储终结点构造 Blob 服务客户端对象。
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
-
-
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_UseAccountSAS":::
 

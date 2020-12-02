@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 64799013d8d71e63300a8b48e5ca5b0d4d02c634
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808025"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518900"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 
@@ -30,9 +30,9 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 使用 Azure 资源管理器部署模型 | 使用 Azure 资源管理器部署模型创建新的存储帐户，以用于重要的安全增强功能，包括高级的 Azure 基于角色的访问控制 (Azure RBAC) 和审核、基于资源管理器的部署和治理、托管标识访问权限、用于存储机密的 Azure Key Vault 访问权限、用于访问 Azure 存储数据和资源的基于 Azure AD 的身份验证和授权。 如果可能，请迁移使用经典部署模型的现有存储帐户以使用 Azure 资源管理器。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。 | - |
-| 为所有存储帐户启用 Azure Defender | Azure Defender for Azure 存储提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 如果活动发生异常，则会在 Azure 安全中心触发安全警报，并通过电子邮件发送给订阅管理员，并详细介绍可疑活动以及如何调查和修正威胁的建议。 有关详细信息，请参阅 [为 Azure 存储配置 Azure Defender](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-remediate-recommendations.md) |
+| 为所有存储帐户启用 Azure Defender | Azure Defender for Azure 存储提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 如果活动发生异常，则会在 Azure 安全中心触发安全警报，并通过电子邮件发送给订阅管理员，并详细介绍可疑活动以及如何调查和修正威胁的建议。 有关详细信息，请参阅 [为 Azure 存储配置 Azure Defender](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
 | 启用适用于 Blob 数据的软删除 | 软删除允许在删除 Blob 数据后将其恢复。 有关软删除的详细信息，请参阅[Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)。 | - |
-| 锁定存储帐户以防止意外删除 | 作为管理员，你可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+| 锁定存储帐户以防止意外删除 | 可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改它。 有关详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
 | 将共享访问签名 (SAS) 令牌限制为仅用于 HTTPS 连接 | 当客户端使用 SAS 令牌访问 Blob 数据时要求使用 HTTPS 有助于最大程度地降低被窃听的风险。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。 | - |
 
@@ -45,7 +45,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 使用用户委托 SAS 授予客户端对 Blob 数据的有限访问权限 | 用户委托 SAS 使用 Azure Active Directory (Azure AD) 凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 在其作用域和功能方面类似于服务 SAS，但相对于服务 SAS 具有安全优势。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 | - |
 | 使用 Azure Key Vault 保护帐户访问密钥 | Microsoft 建议使用 Azure AD 对 Azure 存储的请求进行授权。 但是，如果必须使用共享密钥授权，请使用 Azure Key Vault 保护帐户密钥。 可以在运行时从密钥保管库检索密钥，而不是将其与应用程序一起保存。 有关 Azure Key Vault 的详细信息，请参阅 [Azure Key Vault 概述](../../key-vault/general/overview.md)。 | - |
 | 定期重新生成帐户密钥 | 定期轮换帐户密钥可以降低向恶意参与者公开数据的风险。 | - |
-| 禁用共享密钥授权 | 如果你不允许对存储帐户进行共享密钥授权，Azure 存储将拒绝对该帐户的所有后续请求，这些请求使用帐户访问密钥获得授权。 只有使用 Azure AD 授权的安全请求才能成功，请参阅 [阻止对 Azure 存储帐户进行共享密钥授权](../common/shared-key-authorization-prevent.md)。 | - |
+| 不允许共享密钥授权 | 如果你不允许对存储帐户进行共享密钥授权，Azure 存储将拒绝对该帐户的所有后续请求，这些请求使用帐户访问密钥获得授权。 仅授权有 Azure AD 的安全请求将会成功。 有关详细信息，请参阅 [阻止对 Azure 存储帐户进行共享密钥授权](../common/shared-key-authorization-prevent.md)。 | - |
 | 向 SAS 分配权限时，请记住最低权限原则 | 创建 SAS 时，请仅指定客户端执行其功能所需的权限。 限制对资源的访问有助于防止意外和恶意滥用数据。 | - |
 | 为发布给客户端的任何 SAS 制定吊销计划 | 如果 SAS 遭到泄露，需要尽快撤销该 SAS。 要撤销用户委托 SAS，请撤销用户委托密钥，以使与该密钥关联的所有签名快速失效。 要撤销与存储的访问策略关联的服务 SAS，可以删除存储的访问策略，重命名策略或将其到期时间更改为过去的时间。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。  | - |
 | 如果服务 SAS 与存储的访问策略没有关联，请将到期时间设置为一小时或更短 | 无法撤销与存储的访问策略没有关联的服务 SAS。 因此，建议限制到期时间，以使 SAS 的有效时间不超过一小时。 | - |
@@ -61,15 +61,15 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 允许受信任的 Microsoft 服务访问此存储帐户 | 默认情况下，除非请求源自在 Azure 虚拟网络 (VNet) 中运行的服务或者源自允许的公共 IP 地址，否则启用存储帐户的防火墙规则会阻止数据传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 可以通过添加例外，允许受信任的 Microsoft 服务访问此存储帐户，从而允许来自其他 Azure 服务的请求。 若要详细了解如何为受信任的 Microsoft 服务添加例外，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。| - |
 | 使用专用终结点 | 专用终结点将 Azure 虚拟网络 (VNet) 中的专用 IP 地址分配给存储帐户。 它通过专用链接保护 VNet 和存储帐户之间的所有流量。 有关专用终结点的详细信息，请参阅 [使用 Azure 专用终结点将专用连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
 | 使用 VNet 服务标记 | 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关 Azure 存储支持的服务标记的详细信息，请参阅 [Azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 有关演示如何使用服务标记创建出站网络规则的教程，请参阅[限制对 PaaS 资源的访问](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
-| 限制对特定网络的网络访问 | 将网络访问限制为托管需要访问的客户端的网络可减少你的资源受到网络攻击的风险。 | [是](../../security-center/security-center-remediate-recommendations.md) |
-| 配置网络路由首选项 | 你可以为你的 Azure 存储帐户配置网络路由首选项，以指定如何使用 Microsoft 全局网络或 Internet 路由将网络流量从客户端路由到你的帐户，请参阅 [配置 Azure 存储的网络路由首选项](../common/network-routing-preference.md)。 | - |
+| 限制对特定网络的网络访问 | 将网络访问限制为托管需要访问的客户端的网络可减少你的资源受到网络攻击的风险。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
+| 配置网络路由首选项 | 你可以为 Azure 存储帐户配置网络路由首选项，以指定如何使用 Microsoft 全局网络或 Internet 路由将网络流量从客户端路由到你的帐户。 有关详细信息，请参阅 [配置 Azure 存储的网络路由首选项](../common/network-routing-preference.md)。 | - |
 
 ## <a name="loggingmonitoring"></a>日志记录/监视
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 跟踪请求的授权方式 | 启用 Azure 存储日志记录以跟踪对 Azure 存储发出的每个请求的授权方式。 日志可指示请求是匿名提出的，还是使用 OAuth 2.0 令牌、共享密钥或共享访问签名 (SAS) 提出的。 有关详细信息，请参阅[通过 Azure Monitor 监视 Azure Blob 存储](monitor-blob-storage.md)或[采用经典监视的 Azure 存储分析日志记录](../common/storage-analytics-logging.md)。 | - |
-| 在 Azure Monitor 中设置警报 | 通过日志警报，用户可以按设定的频率使用 Log Analytics 查询来评估资源日志，并根据结果触发警报，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
+| 在 Azure Monitor 中设置警报 | 配置日志警报，以设置的频率评估资源日志，并根据结果触发警报。 有关详细信息，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
 
 ## <a name="next-steps"></a>后续步骤
 

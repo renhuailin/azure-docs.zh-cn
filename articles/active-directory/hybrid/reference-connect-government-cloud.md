@@ -11,19 +11,19 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997709"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518203"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure 政府云的混合标识注意事项
 
 本文介绍了将混合环境与 Microsoft Azure 政府云集成时的注意事项。 这些信息是为使用 Azure 政府云的管理员和架构师提供的参考。
 
 > [!NOTE]
-> 若要将本地 Microsoft Azure Active Directory (Azure AD) 环境与 Azure 政府云集成，你需要升级到最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
+> 若要将 Microsoft Active Directory 环境集成 (本地或托管到作为使用 Azure 政府云的同一个云) 实例一部分的 IaaS 中，则需要升级到 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)的最新版本。
 
 有关美国政府国防部终结点的完整列表，请参阅此[文档](/office365/enterprise/office-365-u-s-government-dod-endpoints)。
 

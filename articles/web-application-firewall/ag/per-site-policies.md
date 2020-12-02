@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc15c8deb7aea3256cc0077fbdc3ce1a2492b1b2
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856596"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519019"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
@@ -28,7 +28,7 @@ Web 应用程序防火墙 (WAF) 设置包含在 WAF 策略中，若要更改 WAF
 * 设置网络
 * 创建 WAF 策略
 * 创建启用 WAF 的应用程序网关
-*  (预览中全局、按站点和按 URI 应用 WAF 策略) 
+* 在全局范围、每个站点和每个 URI 上应用 WAF 策略 
 * 创建虚拟机规模集
 * 创建存储帐户和配置诊断
 * 测试应用程序网关
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a> (预览中应用每 URI 策略) 
+### <a name="apply-a-per-uri-policy"></a>应用每 URI 策略
 
 若要应用每 URI 策略，只需创建一个新策略并将其应用于路径规则配置即可。 
 

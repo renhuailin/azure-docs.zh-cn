@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375374"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500506"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虚拟机
 
@@ -114,7 +114,7 @@ Azure 在支持它的大多数 Linux 发行版中支持 [cloud-init](https://clo
 * [虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 地址](../../virtual-network/public-ip-addresses.md)
 * [在 Azure 中打开 Linux VM 的端口](nsg-quickstart.md)
-* [在 Azure 门户中创建完全限定的域名](portal-create-fqdn.md)
+* [在 Azure 门户中创建完全限定的域名](../create-fqdn.md)
 
 
 ## <a name="data-residency"></a>数据驻留
@@ -126,6 +126,6 @@ Azure 在支持它的大多数 Linux 发行版中支持 [cloud-init](https://clo
 
 创建第一个 VM！
 
-- [Portal](quick-create-portal.md)
+- [门户](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)

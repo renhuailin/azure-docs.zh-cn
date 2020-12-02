@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9ecac482c138447a3a9dc99193fb131b688993e4
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556601"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518407"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>使用 Azure 门户为 Azure VM 上的 SQL Server 配置可用性组 (预览)  
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "94556601"
 
 使用 Azure 门户创建新群集或加入现有群集，然后创建可用性组、侦听器和内部负载均衡器。 
 
-此功能目前以预览版提供。 
+此功能目前处于预览状态。 
 
 尽管本文使用 Azure 门户来配置可用性组环境，但也可以使用 [PowerShell 或 Azure CLI](availability-group-az-commandline-configure.md)、 [Azure 快速入门模板](availability-group-quickstart-template-configure.md)或 [手动](availability-group-manually-configure-tutorial.md) 操作。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "94556601"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 导航到 [SQL 虚拟机](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源。 
-1. 选择 " **设置** " 下的 " **高可用性** "。 
+1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **+ 新建 Windows Server 故障转移群集** "，打开 " **配置 Windows 故障转移群集** " 页面。  
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="通过在门户中选择 &quot;+ 新建&quot; 群集来创建新群集":::
@@ -88,11 +88,11 @@ ms.locfileid: "94556601"
 
 如果已在 SQL Server VM 环境中配置了群集，则可以将其从 Azure 门户上架起来。
 
-为此，请执行下列步骤：
+为此，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 导航到 [SQL 虚拟机](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源。 
-1. 选择 " **设置** " 下的 " **高可用性** "。 
+1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 "载入 **现有 Windows Server 故障转移群集** "，打开 " **板载 Windows Server 故障转移群集** " 页面。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="从 SQL 虚拟机资源上的 &quot;高可用性&quot; 页中载入现有群集":::
@@ -100,16 +100,13 @@ ms.locfileid: "94556601"
 1. 查看群集的设置。 
 1. 选择 " **应用** " 以加入群集，然后在提示时选择 **"是"** 以继续。
 
-
-
-
 ## <a name="create-availability-group"></a>创建可用性组
 
-创建或载入群集后，使用 Azure 门户创建可用性组。 为此，请执行下列步骤：
+创建或载入群集后，使用 Azure 门户创建可用性组。 为此，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 导航到 [SQL 虚拟机](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源。 
-1. 选择 " **设置** " 下的 " **高可用性** "。 
+1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **+ 新建 Always On 可用性组** " 以打开 " **创建可用性组** " 页。
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="选择 &quot;新建 always on 可用性组&quot; 以打开 &quot;创建可用性组&quot; 页。":::
@@ -133,7 +130,7 @@ ms.locfileid: "94556601"
 可以在活动日志中检查部署的状态，可从顶部导航栏中的电铃图标访问该 **活动日志** 。 
 
   > [!NOTE]
-  > 在将数据库添加到可用性组之前，Azure 门户的 " **高可用性** " 页上的 **同步运行状况** 将显示为 " **不正常** "。 
+  > 在将数据库添加到可用性组之前，Azure 门户的 "**高可用性**" 页上的 **同步运行状况** 将显示为 "**不正常**"。 
 
 
 ## <a name="add-database-to-availability-group"></a>将数据库添加到可用性组
@@ -145,8 +142,8 @@ ms.locfileid: "94556601"
 1. 使用你的首选方法连接到你的 SQL Server Vm 之一，例如远程桌面连接 (RDP) 。 
 1. 打开 SQL Server Management Studio (SSMS)。
 1. 连接 SQL Server 实例。 
-1. 展开 **对象资源管理器** **Always On 高可用性** 。
-1. 展开 " **可用性组** "，右键单击可用性组，然后选择 " **添加数据库 ...** "。
+1. 展开 **对象资源管理器** **Always On 高可用性**。
+1. 展开 " **可用性组**"，右键单击可用性组，然后选择 " **添加数据库 ...**"。
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在对象资源管理器中右键单击可用性组，然后选择 &quot;添加数据库&quot;":::
 
@@ -164,7 +161,7 @@ ms.locfileid: "94556601"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 导航到 [SQL 虚拟机](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源。 
-1. 选择 " **设置** " 下的 " **高可用性** "。 
+1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **配置 Windows Server 故障转移群集** "，打开 " **配置 Windows Server 故障转移群集** " 页面。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="选择 &quot;配置 Windows Server 故障转移群集&quot;，将 Vm 添加到群集。":::
@@ -179,7 +176,7 @@ ms.locfileid: "94556601"
 ## <a name="modify-availability-group"></a>修改可用性组 
 
 
-您可以通过选择可用性组旁边的省略号 ( ... ) ， **将更多副本添加** 到可用性组， **配置侦听器** ，或从 Azure 门户中的 " **高可用性** " 页 **删除侦听器** ： 
+您可以通过选择可用性组旁边的省略号 ( ... ) ，**将更多副本添加** 到可用性组，**配置侦听器**，或从 Azure 门户中的 "**高可用性**" 页 **删除侦听器**： 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="选择可用性组旁边的省略号，然后选择 &quot;添加副本&quot;，将更多副本添加到可用性组。":::
 
@@ -207,7 +204,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 # Remove the cluster from the SQL VM RP metadata
 # example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
 
-az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+az sql vm group delete --name <cluster name> --resource-group <resource group name>
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -235,7 +232,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 # Remove the cluster metadata
 # example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
 
-Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name>"
 ```
 
 ---

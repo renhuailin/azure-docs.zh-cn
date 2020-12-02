@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444487"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518934"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -140,7 +140,7 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 
 下表汇总了这些额外的参数。 有关语法设计模式，请参阅 [ForecastingParameter 类参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 。
 
-| 参数&nbsp;名称 | 说明 | 必须 |
+| 参数&nbsp;名称 | 说明 | 必选 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
@@ -286,27 +286,27 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ### <a name="short-series-handling"></a>短序列处理
 
-如果没有足够的数据点来执行模型开发的定型和验证阶段，则自动 ML 会将时间系列视为 **短系列** 。 对于每个试验，数据点的数目各不相同，具体取决于 max_horizon、交叉验证拆分数和模型 lookback 长度，这是构建时序功能所需的最大历史记录。 有关准确的计算，请参阅 [short_series_handling_config 参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
+如果没有足够的数据点来执行模型开发的定型和验证阶段，则自动 ML 会将时间系列视为 **短系列** 。 对于每个试验，数据点的数目各不相同，具体取决于 max_horizon、交叉验证拆分数和模型 lookback 长度，这是构建时序功能所需的最大历史记录。 有关准确的计算，请参阅 [short_series_handling_configuration 参考文档](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
 
-默认情况下，自动 ML 使用对象中的参数提供短序列处理 `short_series_handling_config` `ForecastingParameters` 。 
+默认情况下，自动 ML 使用对象中的参数提供短序列处理 `short_series_handling_configuration` `ForecastingParameters` 。 
 
-若要启用短序列处理， `freq` 还必须定义参数。 若要更改默认行为， `short_series_handling_config = auto` 请更新 `short_series_handling_config` 对象中的参数 `ForecastingParameter` 。  
+若要启用短序列处理， `freq` 还必须定义参数。 为了定义每小时频率，我们将设置 `freq='H'` 。 在 [此处](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)查看 frequency 字符串选项。 若要更改默认行为， `short_series_handling_configuration = 'auto'` 请更新 `short_series_handling_configuration` 对象中的参数 `ForecastingParameter` 。  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = '7',
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 下表汇总了的可用设置 `short_series_handling_config` 。
  
-|设置|说明
+|设置|描述
 |---|---
 |`auto`| 下面是用于进行短序列处理的默认行为 <li> *如果所有序列都较短*，则填充数据。 <br> <li> *如果并非所有序列都简短*，请删除短序列。 
-|`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会将虚拟值添加到找到的每个短序列。 下面列出了列类型及其填充内容： <li>带有 Nan 的对象列 <li> 带有0的数字列 <li> 带有 False 的布尔/逻辑列 <li> 目标列填充的随机值的平均值为零，标准偏差为1。 
+|`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会为找到的每个短序列添加随机值。 下面列出了列类型及其填充内容： <li>带有 Nan 的对象列 <li> 带有0的数字列 <li> 带有 False 的布尔/逻辑列 <li> 目标列填充的随机值的平均值为零，标准偏差为1。 
 |`drop`| 如果为 `short_series_handling_config = drop` ，则自动 ML 会丢弃短序列，而不会用于定型或预测。 这些序列的预测将返回 NaN 的。
 |`None`| 未填充或删除序列
 

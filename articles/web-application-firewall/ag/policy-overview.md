@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990119"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518730"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙 (WAF) 策略概述
 
 Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排除、自定义规则、托管规则等。 然后，将这些策略关联到应用程序网关 (全局) 、侦听器 (每站点) ，或 (每个 URI 的基于路径的规则) 使其生效。
-
-> [!NOTE]
-> Azure Web 应用程序防火墙 (WAF) 的每个 URI 策略均为公共预览版。
-> 
-> 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 你可以创建的策略数没有限制。 当你创建策略时，它必须关联到应用程序网关才能生效。 它可以与应用程序网关、侦听器和基于路径的规则的任意组合关联。
 

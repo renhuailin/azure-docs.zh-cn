@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674944"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518662"
 ---
 # <a name="msix-app-attach-glossary"></a>.MSIX 应用附加术语表
 
@@ -108,7 +108,19 @@ Destaging 通知 OS：无法卸载当前未运行且未为任何用户暂存的 
 
 ## <a name="cim"></a>CIM
 
-.CIM 是 (CimFS) 与复合映像文件系统关联的新文件扩展名。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 还会消耗比 VHD 更少的 CPU 和内存。
+。 CIM 是与复合映像文件系统关联的新文件扩展名，系统 (CimFS) 。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 还会消耗比 VHD 更少的 CPU 和内存。
+
+CIM 文件是包含的文件。CIM 扩展，其中包含元数据和至少六个包含实际数据的附加文件。 CIM 文件中的文件不包含扩展名。 下表列出了可在 CIM 中找到的示例文件：
+
+| 文件名 | 分机 | 大小 |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264132 KB |
 
 下表是 VHD 和 CimFS 之间的性能比较。 在 DSv4 计算机上运行的每个格式中，每个格式的测试运行都为 500 300 MB。
 

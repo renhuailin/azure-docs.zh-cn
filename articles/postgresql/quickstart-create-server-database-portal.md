@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 42e15da2fd31d163bc8822a347101704b27e1222
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913380"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492380"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for PostgreSQL 服务器
 
@@ -39,7 +39,7 @@ ms.locfileid: "92913380"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="显示创建单个服务器的基本选项卡的屏幕截图。":::
 
-   |设置|建议的值|说明|
+   |设置|建议的值|描述|
    |:---|:---|:---|
    |订阅|订阅名称|选择所需的 Azure 订阅。|
    |资源组| myresourcegroup| 新的资源组，或订阅中的现有资源组。|
@@ -65,7 +65,7 @@ ms.locfileid: "92913380"
 [存在问题？请告诉我们。](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
-默认情况下，你创建的服务器不可公开访问。 需要向你的 IP 地址授予权限。 请转到 Azure 门户中的服务器资源，然后从左侧菜单中为服务器资源选择“连接安全性”。 如果你不确定如何找到资源，请参阅[打开资源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
+默认情况下，你创建的服务器不可公开访问。 需要向你的 IP 地址授予权限。 请转到 Azure 门户中的服务器资源，然后从左侧菜单中为服务器资源选择“连接安全性”。 如果你不确定如何找到资源，请参阅[打开资源](../azure-resource-manager/management/manage-resources-portal.md#open-resources)。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="显示连接安全的防火墙规则的屏幕截图。":::

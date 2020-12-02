@@ -300,7 +300,7 @@
         - name: 预留实例
           items:
             - name: 为 VM 预付
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: 什么是 Azure 预留？
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM 实例大小灵活性
@@ -570,7 +570,7 @@
             - name: 创建 Bastion 主机
               items:
                 - name: 门户
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: CLI
@@ -650,6 +650,7 @@
         - name: 交换 OS 磁盘
           href: os-disk-swap.md
         - name: 标记 VM
+          href: time-sync.md
           items:
             - name: 门户
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: 模板
               href: ../tag-template.md
             - name: 时间同步
-          href: time-sync.md
         - name: 在 VM 上运行脚本
           href: run-scripts-in-vm.md
           items:
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: Azure 上的 SAP
           href: ../workloads/sap/get-started.md
-        - name: MATLAB 群集
-          href: matlab-mdcs-cluster.md
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: 高性能计算 (HPC)

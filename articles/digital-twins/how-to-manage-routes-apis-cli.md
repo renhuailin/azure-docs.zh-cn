@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452894"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519090"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 当终结点无法在某个时间段内传递事件时，或者尝试将事件传递到一定次数后，它可以将未送达的事件发送到存储帐户。 此过程称为“死信处理”。
 
-若要了解有关死信的详细信息，请参阅 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。
+若要了解有关死信的详细信息，请参阅 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。 有关如何使用死信设置终结点的说明，请继续阅读本部分的其余部分。
 
 #### <a name="set-up-storage-resources"></a>设置存储资源
 
-在设置死信位置之前，你必须具有在 Azure 帐户中设置[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)。 稍后创建终结点时，将提供此容器的 URL。
-死信作为带有 [SAS 令牌](../storage/common/storage-sas-overview.md)的容器 URL 提供。 该令牌只需要 `write` 对存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+在设置死信位置之前，你必须具有在 Azure 帐户中设置[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)。 
+
+稍后创建终结点时，将提供此容器的 URL。 会将死信位置作为带有 [SAS 令牌](../storage/common/storage-sas-overview.md)的容器 URL 提供给终结点。 该令牌需要 `write` 存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` 。
 
 按照以下步骤在 Azure 帐户中设置这些存储资源，以便在下一部分中准备设置终结点连接。
 
-1. 请按照 [本文](../storage/common/storage-account-create.md?tabs=azure-portal) 中的步骤创建一个存储帐户，并保存存储帐户名称以供以后使用。
-2. 在设置容器与终结点之间的连接时，请使用 [此项目](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 创建一个容器，并保存容器名称以供以后使用。
-3. 接下来，为你的存储帐户创建一个 SAS 令牌。 首先导航到 [Azure 门户](https://ms.portal.azure.com/#home) 中的存储帐户 (可以使用门户搜索栏) 按名称查找该帐户。
-4. 在 "存储帐户" 页上，选择左侧导航栏中的 " _共享访问签名_ " 链接，以选择正确的权限来生成 SAS 令牌。
-5. 对于 " _允许的服务_ 和允许的 _资源类型_"，请选择所需的设置。 你需要在每个类别中至少选择一个框。 对于 "允许的权限"，请选择 " **写入** (如果需要) ，还可以选择其他权限。
-设置所需的其他设置。
-6. 然后，选择 " _生成 sas 和连接字符串_ " 按钮以生成 sas 令牌。 这将在设置选择下的同一页的底部生成多个 SAS 和连接字符串值。 向下滚动以查看值，并使用 "复制到剪贴板" 图标来复制 **SAS 令牌** 值。 保存以供以后使用。
+1. 遵循 [*创建存储帐户*](../storage/common/storage-account-create.md?tabs=azure-portal) 中的步骤在 Azure 订阅中创建 **存储帐户** 。 记下存储帐户名称，以供以后使用。
+2. 按照 [*创建容器*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 中的步骤创建新的存储帐户中的 **容器** 。 记下容器名称以便以后使用。
+3. 接下来，为你的存储帐户创建一个 **SAS 令牌** ，终结点可使用该令牌来访问它。 首先导航到 [Azure 门户](https://ms.portal.azure.com/#home) 中的存储帐户 (可以使用门户搜索栏) 按名称查找该帐户。
+4. 在 "存储帐户" 页上，选择左侧导航栏中的 " _共享访问签名_ " 链接，以开始设置 SAS 令牌。
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Azure 门户中的 &quot;存储帐户&quot; 页，其中显示了用于生成 SAS 令牌的所有设置选择。" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="Azure 门户中的 &quot;存储帐户&quot; 页" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="复制 SAS 令牌以在死信密钥中使用。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. 在 " *共享访问签名" 页* 上的 " *允许的服务* 和 *允许的资源类型*" 下，选择所需的任何设置。 你需要在每个类别中至少选择一个框。 在 " *允许的权限*" 下，选择 " **写入** (如果需要) ，还可以选择其他权限。
+1. 为其余设置设置所需的任何值。
+1. 完成后，请选择 " _生成 sas 和连接字符串_ " 按钮以生成 sas 令牌。 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="Azure 门户中的 &quot;存储帐户&quot; 页，其中显示了用于生成 SAS 令牌的所有设置选择，并突出显示了 &quot;生成 SAS 和连接字符串&quot; 按钮" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. 这将在设置选择下的同一页的底部生成多个 SAS 和连接字符串值。 向下滚动以查看值，并使用 " *复制到剪贴板* " 图标来复制 **SAS 令牌** 值。 保存以供以后使用。
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="复制 SAS 令牌以在死信密钥中使用。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>配置终结点
 
-死信终结点使用 Azure 资源管理器 Api 创建。 创建终结点时，请使用 [Azure 资源管理器 api 文档](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 填写所需的请求参数。 此外，将添加 `deadLetterSecret` 到请求 **正文** 中的 properties 对象，其中包含存储帐户的容器 URL 和 SAS 令牌。
+若要创建启用了死信的终结点，需要使用 Azure 资源管理器 Api 创建终结点。 
+
+1. 首先，使用 [Azure 资源管理器 api 文档](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来设置创建终结点的请求，并填写所需的请求参数。 
+
+1. 接下来，将 `deadLetterSecret` 字段添加到请求 **正文** 中的属性对象。 根据下面的模板设置此值，这将从 [上一节](#set-up-storage-resources)中收集的存储帐户名称、容器名称和 SAS 令牌值中进行 URL。
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. 发送请求以创建终结点。
+
 有关构造此请求的详细信息，请参阅 Azure 数字孪生 REST API 文档： [终结点-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
 
 ### <a name="message-storage-schema"></a>消息存储架构
 
-死信消息将按以下格式存储在您的存储帐户中：
+设置了具有死信的端点后，会在存储帐户中以下列格式存储死信消息：
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 

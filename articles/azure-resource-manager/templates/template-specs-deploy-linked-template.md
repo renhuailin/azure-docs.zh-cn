@@ -3,12 +3,12 @@ title: 将模板规格部署为链接模板
 description: 了解如何在链接的部署中部署现有模板规格。
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747462"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518866"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程：将模板规格部署为链接模板（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "94747462"
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要使用它，必须安装最新版本的 PowerShell 或 Azure CLI。 对于 Azure PowerShell，请使用 [5.0.0 或更高版本](/powershell/azure/install-az-ps)。 对于 Azure CLI，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装 [版本5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-template-spec"></a>创建模板规格
 

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498976"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>快速入门：使用 JavaScript SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "94698890"
 > * [REST](search-get-started-rest.md)
 
 
-使用[适用于 Azure 认知搜索 的 Javascript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) 在 JavaScript 中创建一个 Node.js 应用程序用于创建、加载和查询搜索索引。
+使用[适用于 Azure 认知搜索 的 Javascript/Typscript SDK](/javascript/api/overview/azure/search-documents-readme) 在 JavaScript 中创建一个 Node.js 应用程序用于创建、加载和查询搜索索引。
 
 本文演示如何逐步创建应用程序。 或者，可以[下载源代码和数据](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11)，并从命令行运行应用程序。
 
@@ -80,7 +80,7 @@ ms.locfileid: "94698890"
     ```
      接受默认值，但“许可证”除外，其值应设置为“MIT”。 
 
-3. 安装 `@azure/search-documents`，这是[适用于 Azure 认知搜索的 Javascript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)。
+3. 安装 `@azure/search-documents`，这是[适用于 Azure 认知搜索的 Javascript/Typscript SDK](/javascript/api/overview/azure/search-documents-readme)。
 
     ```cmd
     npm install @azure/search-documents
@@ -601,7 +601,7 @@ console.log(`HotelId: ${documentResult.HotelId}; HotelName: ${documentResult.Hot
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/20/2020
-ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/2/2020
+ms.openlocfilehash: 99b5e7bee93ffee14585f048506104ec313b9bff
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016321"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518512"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 
@@ -24,7 +24,7 @@ ms.locfileid: "95016321"
 
     ![显示在对 Microsoft 管理的客户进行共享、接受和赢得销售线索后如何进行共同销售的关系图。](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 
-- **共同销售 incentivized** 与 Microsoft 销售团队合作时，除了下面列出的 marketplace 权益外，在与 Microsoft 销售团队合作时，IP 解决方案可以获得奖励。</li></ul>
+- **共同销售 incentivized** 除了下面列出的 marketplace 权益外，在与 Microsoft 销售团队合作时，IP 产品/服务还可为 Microsoft 现场销售人员提供奖励。</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>适用于 incentivized 产品/服务的 Marketplace 权益
 
@@ -41,7 +41,7 @@ ms.locfileid: "95016321"
 
 |步骤    |产品/服务类型    |要求    |共同销售状态    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|全部|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
+|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|All|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
 |<ol start=2><li>提交所需的共同销售材料。</li>|合作伙伴中心提供 *的具有*[共同销售选项](./partner-center-portal/commercial-marketplace-co-sell.md)的 IP|[在合作伙伴中心上传所需的资料](#how-to-submit-co-sell-materials-in-partner-center)|合作销售就绪|
 ||合作伙伴中心提供的 IP *无需*[共同销售选项](./partner-center-portal/commercial-marketplace-co-sell.md)|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li></ul>|合作销售就绪|
 ||咨询服务|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li><li>活动金牌资格。</li></ul>|合作销售就绪|
@@ -67,7 +67,7 @@ ms.locfileid: "95016321"
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="此图显示了 &quot;共同销售&quot; 选项卡的列表部分。":::  
 
-1. 提供有关产品/服务的详细信息并上传 **文档** 部分。 Microsoft 卖方将使用此信息来建议并销售您的产品/服务。  (*必需：客户一页-寻呼和客户演示文稿。*) 
+1. 提供有关产品/服务的详细信息并上传 **文档** 部分。 Microsoft 卖方将使用此信息来建议并销售您的产品/服务。 *(必需：解决方案/产品/服务-寻呼和解决方案/产品/服务等。需要获得 Azure IP 共同销售 incentivized 状态：参考体系结构示意图。 )*
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="此图显示了 &quot;共同销售&quot; 选项卡上的文档部分。":::
 

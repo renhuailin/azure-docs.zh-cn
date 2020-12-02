@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492686"
+ms.locfileid: "96518798"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户托管密钥进行 Azure Database for MySQL 数据加密
 
@@ -61,7 +61,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 下面是配置 Key Vault 的要求：
 
 * Key Vault 和 Azure Database for MySQL 必须属于同一个 Azure Active Directory (Azure AD) 租户。 不支持跨租户的 Key Vault 和服务器交互。 之后移动 Key Vault 资源需要重新配置数据加密。
-* 启用 [软删除] ( # A1.。保持期为 **90 天** 的密钥保管库上的/key-vault/general/soft-delete-overview.md) 功能，以防止意外密钥 (或 Key Vault) 删除时发生数据丢失。 默认情况下，软删除的资源将保留90天，除非保持期被显式设置为 <= 90 天。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。
+* 在保留期设置为 **90 天** 的密钥保管库上启用 [软删除](../key-vault/general/soft-delete-overview.md)功能，以便在发生意外的密钥 (或 Key Vault) 删除时防止数据丢失。 默认情况下，软删除的资源将保留90天，除非保持期被显式设置为 <= 90 天。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。
 * 启用 "密钥保管库" 上的 " [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection) " 功能，保持期设置为 **90 天**。 只有启用软删除后才能启用清除保护。 可以通过 Azure CLI 或 PowerShell 启用此功能。 启用清除保护后，在保留期结束之前，无法清除处于已删除状态的保管库或对象。 软删除的保管库和对象仍可恢复，这可以确保遵循保留策略。 
 * 通过使用其唯一的托管标识授予具有 get、wrapKey 和 unwrapKey 权限的密钥保管库的 Azure Database for MySQL 访问权限。 在 Azure 门户中，当在 MySQL 上启用数据加密时，将自动创建唯一的 "服务" 标识。 有关使用 Azure 门户时的详细分步说明，请参阅[为 MySQL 配置数据加密](howto-data-encryption-portal.md)。
 
@@ -70,8 +70,8 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 用于加密 DEK 的客户管理的密钥只能是非对称的 RSA 2048。
 * 密钥激活日期（如果已设置）必须是过去的日期和时间。 未设置到期日期。
 * 密钥必须处于“已启用”状态。
-* 密钥必须具有将保留期设置为 **90 天** 的 [软删除](../key-vault/general/soft-delete-overview.md)。
-* Kay 必须 [启用清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)。
+* 密钥必须具有将保留期设置为 **90 天** 的 [软删除](../key-vault/general/soft-delete-overview.md)。这会隐式设置所需的键属性 recoveryLevel： "可恢复"。 如果保留期设置为 < 90 天，则 recoveryLevel： "CustomizedRecoverable" 不是必需的，因此请确保将保留期设置为 **90 天**。
+* 密钥必须 [启用清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)。
 * 如果要将 [现有密钥导入](/rest/api/keyvault/ImportKey/ImportKey) 到密钥保管库中，请确保以支持的文件格式提供该密钥 `.pfx` (`.byok` 、 `.backup`) 。
 
 ## <a name="recommendations"></a>建议
