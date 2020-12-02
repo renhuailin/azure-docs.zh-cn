@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172808"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485495"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
 放置策略是可用于在某些不常见的特定情况下控制服务位置的附加规则。 这些情况的一些示例包括：
@@ -20,7 +20,7 @@ ms.locfileid: "92172808"
 - 环境跨多个地缘政治控制区域或法定控制区域，或一些其他情况：有要强制实施的政策边界
 - 由于远距离或者使用速度较慢或可靠性较低的网络链接，需要考虑通信性能或延迟
 - 在并置某些工作负载时，需要尽量使其与其他工作负载一起，或者靠近客户
-- 单个节点上需要分区的多个无状态实例
+- 在单个节点上需要一个分区的多个无状态实例
 
 大多数这些要求与群集的物理布局一致，以集群的容错域表示。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "92172808"
 以下大多数控件都能通过节点属性和放置约束来配置，但有一些控件比较复杂。 为了使操作更简单，Service Fabric 群集 Resource Manager 提供了这些附加放置策略。 每个命名服务实例配置了放置策略。 还可以进行动态更新。
 
 ## <a name="specifying-invalid-domains"></a>指定无效域
-凭借 InvalidDomain 放置策略，可以指定某个特定容错域对特定服务是无效的****。 此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。 可以通过单独的策略指定多个无效域。
+凭借 InvalidDomain 放置策略，可以指定某个特定容错域对特定服务是无效的。 此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。 可以通过单独的策略指定多个无效域。
 
 <center>
 
@@ -98,7 +98,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 ## <a name="requiring-replica-distribution-and-disallowing-packing"></a>需要副本分发并禁止封装
-群集正常运行时，副本通常分布在容错域和升级域中__。 但是，存在给定分区的多个副本最终可能会暂时打包到单个域中的情况。 例如，假设群集有九个节点在三个容错域（fd:/0、fd:/1 和 fd:/2）中。 再假设服务具有三个副本。 假设 fd:/1 和 fd:/2 中用于这些副本的节点发生故障。 群集资源管理器通常会首选这些相同容错域中的其他节点。 在此例中，假设由于容量问题这些域中的其他节点都无效。 如果群集 Resource Manager 生成这些副本的替换位置，它只能选择 fd:/0 中的节点。 但是，执行该操作就造成了违反容错域约束的情况__。 打包副本会增加整个副本集发生故障或丢失的可能性。 
+群集正常运行时，副本通常分布在容错域和升级域中。 但是，存在给定分区的多个副本最终可能会暂时打包到单个域中的情况。 例如，假设群集有九个节点在三个容错域（fd:/0、fd:/1 和 fd:/2）中。 再假设服务具有三个副本。 假设 fd:/1 和 fd:/2 中用于这些副本的节点发生故障。 群集资源管理器通常会首选这些相同容错域中的其他节点。 在此例中，假设由于容量问题这些域中的其他节点都无效。 如果群集 Resource Manager 生成这些副本的替换位置，它只能选择 fd:/0 中的节点。 但是，执行该操作就造成了违反容错域约束的情况。 打包副本会增加整个副本集发生故障或丢失的可能性。 
 
 > [!NOTE]
 > 有关约束和约束优先级的其他一般信息，请参阅[此主题](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)。
@@ -125,12 +125,12 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 现在，是否可针对未跨越地理区域的群集中的服务使用这些配置？ 可以使用，但也没有充分的理由。 应避免使用必需域、无效域和首选域配置，除非方案需要。 尝试强制给定工作负荷在单个机架中运行，或优先选择本地群集的某段没有任何意义。 应在容错域之间分布不同的硬件配置，并通过标准放置约束和节点属性处理这些配置。
 
-## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>单个节点上分区的多个无状态实例的位置
-**AllowMultipleStatelessInstancesOnNode**放置策略允许在单个节点上放置一个分区的多个无状态实例。 默认情况下，单个分区的多个实例不能放置在节点上。 即使使用-1 服务，也不能在给定的命名服务中对超出群集中节点数的实例数进行缩放。 此放置策略将消除此限制，并允许将 InstanceCount 指定为高于节点计数。
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>在单个节点上放置一个分区的多个无状态实例
+AllowMultipleStatelessInstancesOnNode 放置策略允许在单个节点上放置一个分区的多个无状态实例。 默认情况下，不能在一个节点上放置单个分区的多个实例。 即使使用 -1 服务，对于给定的命名服务，也不可能将实例数扩展到群集中的节点数以上。 此放置策略将删除此限制，并允许将 InstanceCount 指定为大于节点数的值。
 
 如果曾经看到过类似“`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion`”的运行状况消息，则可能已遇到这种情况或类似情况。 
 
-通过 `AllowMultipleStatelessInstancesOnNode` 在服务上指定策略，可以将 InstanceCount 设置为超出群集中的节点数。
+通过在服务上指定 `AllowMultipleStatelessInstancesOnNode` 策略，可以将 InstanceCount 设置为大于群集中的节点数的值。
 
 代码：
 
@@ -146,19 +146,19 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 > [!NOTE]
-> 放置策略目前处于预览阶段，并且位于 `EnableUnsupportedPreviewFeatures` 群集设置之后。 由于目前这是一项预览功能，设置预览配置可防止群集升级到/从升级。 换句话说，你将需要创建一个新群集来尝试该功能。
+> 放置策略当前为预览版，位于 `EnableUnsupportedPreviewFeatures` 群集设置后。 由于这目前是预览功能，因此设置预览配置会阻止到/从该群集的升级。 换句话说，你需要创建一个新群集来试用该功能。
 >
 
 > [!NOTE]
-> 目前仅支持具有 ExclusiveProcess [service 包激活模式](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)的无状态服务的策略。
+> 目前，仅处于 ExclusiveProcess [服务包激活模式](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)下的无状态服务支持该策略。
 >
 
 > [!WARNING]
-> 与静态端口终结点一起使用时，不支持此策略。 结合使用时，可能会导致不正常的群集作为同一节点上的多个实例尝试绑定到同一个端口，并且无法启动。 
+> 与静态端口终结点一起使用时，不支持该策略。 将两者结合使用可能导致群集运行不正常，因为同一节点上的多个实例尝试绑定到同一端口，但无法启动。 
 >
 
 > [!NOTE]
-> 将高值 [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 与此放置策略一起使用可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置 InstanceCount = 10，则每个节点上都有两个实例。 如果设置 MinInstanceCount = 9，尝试的应用升级可能会停滞;对于 MinInstanceCount = 8，可以避免这种情况。
+> 将高值 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 与此放置策略一起使用可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置 InstanceCount = 10，则每个节点上都有两个实例。 如果设置 MinInstanceCount = 9，尝试的应用升级可能会停滞;对于 MinInstanceCount = 8，可以避免这种情况。
 >
 
 ## <a name="next-steps"></a>后续步骤

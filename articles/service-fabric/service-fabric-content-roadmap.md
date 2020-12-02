@@ -3,12 +3,12 @@ title: 详细了解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681731"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485444"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -51,7 +51,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 每个分区的副本分布在群集的节点上，以便命名服务状态进行[缩放](service-fabric-concepts-scalability.md)。 随着数据需求的增长，分区也会增长，Service Fabric 会在节点间重新平衡分区，以高效利用硬件资源。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡分区副本。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本以更加充分使用每个节点上的硬件。
 
-在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态，但有 [例外](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services)。 分区实例提供[可用性](service-fabric-availability-services.md)。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 会创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自己的副本集。 在一个副本（以下称为“主副本”）上执行读取和写入操作。 因写入操作发生的状态更改会复制到其他多个副本（以下称为活动辅助副本）。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
+在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态，尽管[有例外](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services)。 分区实例提供[可用性](service-fabric-availability-services.md)。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 会创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自己的副本集。 在一个副本（以下称为“主副本”）上执行读取和写入操作。 因写入操作发生的状态更改会复制到其他多个副本（以下称为活动辅助副本）。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
 使用 Service Fabric，可以生成包含微服务或容器的应用程序。 无状态微服务（例如协议网关和 Web 代理）不在请求以及服务对请求的响应之外维持可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。 

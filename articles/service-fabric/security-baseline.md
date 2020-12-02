@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc66de09a5918b19c60aaa0d3e9ab662876dc31a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684315"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485540"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 的 Azure 安全基线
 
@@ -76,7 +76,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 **指导**：为了防范 DDoS 攻击，请在部署 Azure Service Fabric 群集的虚拟网络中启用 Azure DDoS 标准防护。 使用 Azure 安全中心集成的威胁情报来拒绝与已知恶意的或未使用过的 Internet IP 地址进行通信。
 
-* [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 * [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
@@ -626,7 +626,7 @@ Service Fabric 的 Azure 安全基线包含可帮助你改善部署安全状况�
 
 * [如何使用最新的规模集模型对 VM 进行更新](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure 自动化更新管理概述](../automation/update-management/update-mgmt-overview.md)
+* [Azure 自动化更新管理概述](../automation/update-management/overview.md)
 
 **Azure 安全中心监视**：目前不可用
 

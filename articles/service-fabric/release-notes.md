@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 01574407801c0a6b0a5e0ddc438af4d3965dc090
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9960f15f2f91b51b73727ab421eb58dddc5bb2b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131541"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485563"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -24,27 +24,27 @@ ms.locfileid: "93131541"
 
 ## <a name="whats-new-in-service-fabric"></a>Service Fabric 新增功能
 
-### <a name="service-fabric-72"></a>Service Fabric 7。2 
-我们很高兴地宣布，7.2 版本的 Service Fabric 运行时已开始推出各种 Azure 区域以及工具和 SDK 更新。 .NET SDK、Java SDK 和 Service Fabric 运行时的更新可通过 Web 平台安装程序、NuGet 包和 Maven 存储库获得。
-## <a name="what-is-new-in-service-fabric-7"></a>Service Fabric 7 中有哪些新功能？
+### <a name="service-fabric-72"></a>Service Fabric 7.2 
+我们很高兴地宣布，Service Fabric 运行时 7.2 版本已经开始与工具和 SDK 更新一起向各个 Azure 区域推出。 .NET SDK、Java SDK 和 Service Fabric 运行时的更新可通过 Web 平台安装程序、NuGet 包和 Maven 存储库获得。
+## <a name="what-is-new-in-service-fabric-7"></a>Service Fabric 7.2 新增功能有哪些？
 此版本提供了重要功能和改进。 下面突出显示了其中的一些重要功能：
-## <a name="key-announcements-in-72"></a>7.2 中的密钥公告
-- **预览版** ：目前， [**Service Fabric 托管群集**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) 均为公共预览版。 Service Fabric 托管群集旨在通过将构成 Service Fabric 群集的基础资源封装到单个 ARM 资源中来简化群集的部署和管理。 有关更多详细信息，请参阅 [Service Fabric 托管群集概述](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster)。
-- **预览** ：目前在公共预览版中 [**提供的实例数大于节点数的无状态服务支持**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies) 。 使用放置策略可以在节点上创建分区的多个无状态实例。
-- [**FabricObserver (FO) 3.0**](https://aka.ms/sf/fabricobserver) 现已推出。
+## <a name="key-announcements-in-72"></a>7\.2 版的重要公告
+- **预览**：[Service Fabric 托管群集](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)目前为公共预览版。 Service Fabric 托管群集旨在通过将构成 Service Fabric 群集的基础资源封装到单个 ARM 资源中来简化群集的部署和管理。 有关更多详细信息，请参阅 [Service Fabric 托管群集概述](./overview-managed-cluster.md)。
+- **预览**：[支持实例数大于节点数的无状态服务](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)功能现在为公共预览版。 使用放置策略可以在一个节点上创建分区的多个无状态实例。
+- [FabricObserver (FO) 3.0](https://aka.ms/sf/fabricobserver) 现在可用。
     - 现在可以在 Linux 和 Windows 群集中运行 FabricObserver。
-    - 现在可以生成自定义观察程序插件。 有关详细信息和代码，请参阅 [插件自述文件](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md) 和 [示例插件项目](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin) 。
-    - 你现在可以通过应用程序参数升级来更改任何观察程序设置。 这意味着不再需要重新部署 FO 来修改特定的观察程序设置。 请参阅 [示例](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates)。
-- [**支持 Ubuntu 18.04 OneBox 容器映像**](https://hub.docker.com/_/microsoft-service-fabric-onebox)。
-- **预览版** ： [ **Service Fabric 应用程序的 KeyVault 参考 **仅支持版本控制的机密** 。不支持不含版本的机密。**](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
-- SF SDK 要求最新的 VS 2019 更新16.7.6 或16.8 预览版4，才能创建新的 .Net Framework 无状态/有状态/执行组件项目。 如果你没有最新的 VS update，请在创建服务项目后，使用包管理器安装 ServiceFabric (版本 4.2. x) ，用于 nuget.org 中的执行组件项目的 (ServiceFabric 版本 4.2. x) 。
-- **RunToCompletion** ： Service Fabric 支持来宾可执行文件的运行到完成的概念。 当副本运行完成后，将释放分配给此副本的群集资源。
-- [**资源调控支持已增强**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance)：允许对 cpu 和内存资源的请求和限制规范。
+    - 现在可以生成自定义观察程序插件。 有关详细信息和代码，请参阅[插件自述文件](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md)和[示例插件项目](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin)。
+    - 现在可以通过应用程序参数升级来更改任何观察程序设置。 这意味着不再需要重新部署 FO 来修改特定的观察程序设置。 请参阅[示例](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates)。
+- [支持 Ubuntu 18.04 OneBox 容器映像](https://hub.docker.com/_/microsoft-service-fabric-onebox)。
+- **预览**：[Service Fabric 应用程序的 KeyVault 引用仅支持 ****进行了版本控制的机密**。不支持没有版本的机密。**](./service-fabric-keyvault-references.md)
+- SF SDK 要求最新的 VS 2019 更新16.7.6 或16.8 预览版4，才能创建新的 .Net Framework 无状态/有状态/执行组件项目。 如果没有最新的 VS 更新，请在创建服务项目后使用包管理器从 nuget.org 为有状态/无状态项目安装 Microsoft.ServiceFabric.Services（4.2.x 版），为执行组件项目安装 Microsoft.ServiceFabric.Actors（4.2.x 版）。
+- **RunToCompletion**：Service Fabric 支持来宾可执行文件的“运行至完成”概念。 使用此更新时，副本运行至完成后，系统就会释放分配给该副本的群集资源。
+- [资源治理支持得到了增强](./service-fabric-resource-governance.md)：允许请求并限制 CPU 和内存资源的规格。
 
 ### <a name="service-fabric-72-releases"></a>Service Fabric 7.2 版本
 | 发布日期 | 发布 | 更多信息 |
 |---|---|---|
-| 2020年10月21日 | [Azure Service Fabric 7。2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
+| 2020 年 10 月 21 日 | [Azure Service Fabric 7.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
 
 ### <a name="service-fabric-71"></a>Service Fabric 7.1
 由于当前的 COVID-19 危机，并且考虑到我们的客户所面临的挑战，我们正在提供 7.1，但不会自动升级设置为接收自动升级的群集。 在进一步通知之前，我们将暂停自动升级，以确保客户可以在最适合的情况下应用升级，避免意外中断。
@@ -110,13 +110,13 @@ Azure Service Fabric 7.0 现已推出！ 你可以通过 Azure 门户或 Azure �
 ### <a name="key-announcements"></a>重要公告
  - [**对应用程序机密的 KeyVaultReference 支持（预览版）**](./service-fabric-keyvault-references.md)：已启用 [托管标识](./concepts-managed-identity.md)的 Service Fabric 应用程序现在可以直接将 Key Vault 机密 URL 引用为环境变量、应用程序参数或容器存储库凭据。 Service Fabric 会使用应用程序的托管标识自动解析机密。 
      
-- **改进了无状态服务的升级安全性** ：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借这项全新的每个服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的健康和安全检查）期间保留最少的实例数。
+- **改进了无状态服务的升级安全性**：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借这项全新的每个服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的健康和安全检查）期间保留最少的实例数。
   
 - [**用户服务的资源限制**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)：用户可以为节点上的用户服务设置资源限制，以防止诸如 Service Fabric 系统服务资源耗尽之类的情况。 
   
 - 副本类型的 [**服务移动成本非常高**](./service-fabric-cluster-resource-manager-movement-cost.md)。 只有当群集中存在约束冲突且该冲突无法通过任何其他方式解决时，才会移动成本非常高的副本。 请参阅链接文档，以了解有关何时使用 "非常高" 移动成本的详细信息，以及其他注意事项。
   
--  **其他群集安全检查** ：在此版本中，我们引入了一项可配置的种子节点仲裁安全检查。 这允许你自定义在群集生命周期和管理方案中必须有多少种子节点可用。 导致群集低于所配置值的操作会被阻止。 现在，默认值始终是种子节点的仲裁，例如，如果你有 7 个种子节点，则默认情况下会阻止导致群集低于 5 个种子节点的操作。 进行此更改后，你可以将最小安全值设置为 6，这样，一次只允许关闭一个种子节点。
+-  **其他群集安全检查**：在此版本中，我们引入了一项可配置的种子节点仲裁安全检查。 这允许你自定义在群集生命周期和管理方案中必须有多少种子节点可用。 导致群集低于所配置值的操作会被阻止。 现在，默认值始终是种子节点的仲裁，例如，如果你有 7 个种子节点，则默认情况下会阻止导致群集低于 5 个种子节点的操作。 进行此更改后，你可以将最小安全值设置为 6，这样，一次只允许关闭一个种子节点。
    
 - 添加了对 [**在 Service Fabric Explorer 中管理备份和还原服务**](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)的支持。 这允许直接从 SFX 内执行以下活动：发现备份和还原服务、创建备份策略、启用自动备份、执行即席备份、触发还原操作和浏览现有备份。
 
