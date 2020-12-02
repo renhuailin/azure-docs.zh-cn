@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/21/2020
+ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592441"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241924"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -65,9 +65,9 @@ ms.locfileid: "94592441"
 
 Spark 池告知 Azure Synapse 要使用的 Spark 资源数量。 只需支付所用资源的费用。 主动停止使用该池时，资源将自动超时并进行回收。
 
-## <a name="the-serverless-sql-pool"></a>无服务器 SQL 池
+## <a name="the-built-in-serverless-sql-pool"></a>内置无服务器 SQL 池
 
-每个工作区都具有名为“内置”的预构建池。 无法删除该池。 使用无服务器 SQL 池即可使用 SQL，无需创建或考虑如何在 Azure Synapse 中管理无服务器 SQL 池。 与专用 SQL 池不同，无服务器 SQL 池的计费基于运行查询所扫描的数据量，而不是执行查询所使用的资源数。
+每个工作区都具有名为“内置”的预构建无服务器 SQL 池。 无法删除该池。 通过无服务器 SQL 池，你可以使用 SQL，而无需预留专用 SQL 池的容量。 与专用 SQL 池不同，无服务器 SQL 池的计费基于运行查询所扫描的数据量，而不是分配到池的容量。
 
 ## <a name="next-steps"></a>后续步骤
 

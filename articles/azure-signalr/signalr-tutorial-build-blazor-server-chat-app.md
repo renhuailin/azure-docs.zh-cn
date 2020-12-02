@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516809"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485386"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>教程：构建 Blazor Server 聊天应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "94516809"
    
    在 Visual Studio 中，选择“新建项目”->“Blazor 应用”->（命名应用并选择一个文件夹）->“Blazor Server 应用”。 确保已安装 .NET Core SDK 3.0+，使 Visual Studio 可正确识别目标框架。
 
-   [ ![blazor-chat-create](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [ ![在“创建新项目”中，Blazor 应用程序模板处于选中状态。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    或者，运行 cmd
    ```dotnetcli
@@ -355,7 +355,7 @@ ms.locfileid: "94516809"
 
 1. 单击 <kbd>F5</kbd> 运行应用。 你将可以如下所示进行聊天。
 
-   [ ![blazor-chat](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [ ![显示了 Bob 和 Alice 之间的动态聊天。Alice 说“你好”，Bob 回复“你好”。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ ms.locfileid: "94516809"
    * 特定目标：支持所有类型的 Azure 应用服务。
    * 应用服务：新建应用服务或选择现有的应用服务。
 
-   [ ![blazor-chat-profile](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [ ![动画显示选择 Azure 作为目标，然后选择 Azure 应用服务作为特定目标。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. 添加 Azure SignalR 服务依赖项
 
    创建发布配置文件后，可以在“服务依赖项”下看到一条推荐消息。 单击“配置”以在面板中新建或选择现有的 Azure SignalR 服务。
 
-   [ ![blazor-chat-dependency](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [ ![在“发布”中，突出显示了“配置”链接。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    服务依赖项将执行以下操作，确保应用在 Azure 上时自动切换到 Azure SignalR 服务。
 
@@ -391,7 +391,7 @@ ms.locfileid: "94516809"
    * 根据你的选择，配置机密存储。
    * 添加 `appsettings` 配置，确保应用面向所选的 Azure SignalR 服务。
 
-   [ ![blazor-chat-dependency-summary](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [ ![在“更改摘要”上，复选框用于选中所有依赖项。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. 发布应用
 
@@ -400,7 +400,7 @@ ms.locfileid: "94516809"
    > 由于 Azure 应用服务部署启动延迟，因此应用首次访问页面时可能无法立即正常工作，请尝试刷新页面，稍等一段时间。
    > 此外，你还可以使用浏览器调试器模式与 <kbd>F12</kbd>，以验证流量是否已重定向到 Azure SignalR 服务。
 
-   [ ![blazor-chat-azure](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [ ![Blazor SignalR 聊天示例包含一个用于填写姓名的文本框和一个用于开始聊天的 Chat! 按钮。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsblazor)
 

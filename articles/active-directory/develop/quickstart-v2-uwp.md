@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560921"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995108"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
-本快速入门通过下载并运行一个代码示例演示通用 Windows 平台 (UWP) 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示通用 Windows 平台 (UWP) 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 

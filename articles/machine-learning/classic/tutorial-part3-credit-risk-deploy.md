@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 2d723a18bfe764b4e1459f72b00fa81db716dcdb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325650"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503917"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室（经典版）
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第三部分**。
 

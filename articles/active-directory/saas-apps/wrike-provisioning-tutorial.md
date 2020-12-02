@@ -1,6 +1,6 @@
 ---
-title: 教程：为 Wrike 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何配置 Azure Active Directory 以便自动预配用户帐户并将其取消预配到 Wrike。
+title: 教程：使用 Azure Active Directory 为 Wrike 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Wrike 和取消其预配。
 services: active-directory
 author: zchia
 writer: zchia
@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354209"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988087"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>教程：为 Wrike 配置自动用户预配
 
-本教程的目的是演示在 Wrike 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消设置为 Wrike 的用户或组。
+本教程的目的是演示要将 Azure AD 配置为自动将用户或组预配到 Wrike 以及取消其预配需在 Wrike 和 Azure Active Directory (Azure AD) 中执行的步骤。
 
 > [!NOTE]
-> 本教程介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的作用、工作原理以及常见问题的重要详细信息，请参阅 [使用 Azure Active Directory 自动执行用户预配和取消预配到软件即服务 (SaaS) 应用程序](../app-provisioning/user-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详情，请参阅[使用 Azure Active Directory 自动将用户预配到软件即服务 (SaaS) 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 >
-> 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,33 +38,33 @@ ms.locfileid: "94354209"
 ## <a name="assign-users-to-wrike"></a>将用户分配到 Wrike
 Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问 Wrike。 然后按照此处的说明将这些用户或组分配到 Wrike：
+在配置和启用自动用户预配之前，请确定 Azure AD 中的哪些用户或组需要访问 Wrike。 然后按照此处的说明将这些用户或组分配到 Wrike：
 
 * [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-wrike"></a>将用户分配到 Wrike 的重要提示
+## <a name="important-tips-for-assigning-users-to-wrike"></a>有关将用户分配到 Wrike 的重要提示
 
-* 建议将单个 Azure AD 用户分配到 Wrike 以测试自动用户预配配置。 稍后可以分配其他用户或组。
+* 建议将单个 Azure AD 用户分配到 Wrike，以测试自动用户预配配置。 其他用户或组可以稍后分配。
 
-* 将用户分配到 Wrike 时，必须在 "分配" 对话框中选择 "可用) 任何有效的应用程序特定的角色 (。 具有“默认访问权限”  角色的用户排除在预配之外。
+* 将用户分配到 Wrike 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-wrike-for-provisioning"></a>设置 Wrike 以进行预配
 
-在将 Wrike 配置为使用 Azure AD 进行自动用户预配之前，需要在 Wrike 上启用 (SCIM) 的跨域标识管理的系统。
+通过 Azure AD 为 Wrike 配置自动用户预配之前，需要在 Wrike 上启用跨域身份管理系统 (SCIM) 预配。
 
-1. 登录到 [Wrike 管理控制台](https://www.Wrike.com/login/)。 请参阅你的租户 ID。 选择 " **应用" & 集成** 。
+1. 登录到 [Wrike 管理控制台](https://www.Wrike.com/login/)。 转到租户 ID。 选择“应用和集成”。
 
-    ![应用 & 集成](media/Wrike-provisioning-tutorial/admin.png)
+    ![应用和集成](media/Wrike-provisioning-tutorial/admin.png)
 
-2.  中转到 **Azure AD** 并选择它。
+2.  转到“Azure AD”，然后选择它。
 
     ![Azure AD](media/Wrike-provisioning-tutorial/Capture01.png)
 
-3.  选择 SCIM。 复制 **基 URL** 。
+3.  选择 SCIM。 复制“基 URL”。
 
     ![基 URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. 选择 **API**  >  **Azure SCIM** 。
+4. 选择“API” > “Azure SCIM” 。
 
     ![Azure SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -72,18 +72,18 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Wrike 创建令牌](media/Wrike-provisioning-tutorial/password.png)
 
-6.  复制 " **机密令牌** "，并将其粘贴到 Azure AD 中。 选择 " **保存** " 以完成 Wrike 上的设置设置。
+6.  复制“机密令牌”，并将其粘贴到 Azure AD 中。 选择“保存”以完成 Wrike 上的预配设置。
 
     ![永久访问令牌](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
 
 ## <a name="add-wrike-from-the-gallery"></a>从库中添加 Wrike
 
-在将 Wrike 配置为 Azure AD 的自动用户预配之前，请将 Azure AD 应用程序库中的 Wrike 添加到托管 SaaS 应用程序列表。
+使用 Azure AD 为 Wrike 配置自动用户预配之前，将 Wrike 从 Azure AD 应用程序库添加到托管的 SaaS 应用程序列表。
 
-若要从 Azure AD 应用程序库中添加 Wrike，请执行以下步骤。
+若要从 Azure AD 应用程序库添加 Wrike，请执行以下步骤。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择 " **Azure Active Directory** "。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择“Azure Active Directory”。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
@@ -91,25 +91,25 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请选择窗格顶部的 " **新建应用程序** " 按钮。
+3. 要添加新应用程序，请选择窗格顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，输入 " **Wrike** "，在结果面板中选择 " **Wrike** "，然后选择 " **添加** " 以添加该应用程序。
+4. 在搜索框中输入 Wrike，在结果面板中选择“Wrike”，然后选择“添加”以添加该应用程序  。
 
     ![结果列表中的 Wrike](common/search-new-app.png)
 
 
-## <a name="configure-automatic-user-provisioning-to-wrike"></a>配置 Wrike 的自动用户预配 
+## <a name="configure-automatic-user-provisioning-to-wrike"></a>配置到 Wrike 的自动用户预配 
 
-本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户或组分配在 Wrike 中创建、更新和禁用用户或组。
+本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户或组分配在 Wrike 中创建、更新和禁用用户或组。
 
 > [!TIP]
-> 若要为 Wrike 启用基于 SAML 的单一登录，请按照 [Wrike 单一登录教程](wrike-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 若要为 Wrike 启用基于 SAML 的单一登录，请按照 [Wrike 单一登录教程](wrike-tutorial.md)中的说明进行操作。 可独立于自动用户预配来配置单一登录，尽管这两个功能互相补充。
 
-### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>在 Azure AD 中配置 Wrike 的自动用户预配
+### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>在 Azure AD 中为 Wrike 配置自动用户预配
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 " **企业应用程序** " "  >  **所有应用程序** "。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“企业应用程序” > “所有应用程序” 。
 
     ![所有应用程序](common/enterprise-applications.png)
 
@@ -123,43 +123,43 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 4. 将“预配模式”设置为“自动”。
 
-    ![预配模式设置为 "自动"](common/provisioning-automatic.png)
+    ![将“预配模式”设置为“自动”](common/provisioning-automatic.png)
 
-5. 在 "管理员凭据" 部分下，输入在 " **租户 url** " 和 " **机密令牌** " 中前面检索的 **基本 URL** 和 **永久访问令牌** 值。 选择 " **测试连接** " 以确保 Azure AD 可以连接到 Wrike。 如果连接失败，请确保 Wrike 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分中，分别在“租户 URL”和“机密令牌”中输入之前检索到的“基 URL”和“永久访问令牌”值   。 选择“测试连接”以确保 Azure AD 可以连接到 Wrike。 如果连接失败，请确保 Wrike 帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
-7. 在 " **通知电子邮件** " 框中，输入应接收预配错误通知的人员或组的电子邮件地址。 选中“发生故障时发送电子邮件通知”复选框。
+7. 在“通知电子邮件”框中输入应接收预配错误通知的人员或组的电子邮件地址。 选中“发生故障时发送电子邮件通知”复选框。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
 8. 选择“保存”。
 
-9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Wrike** "。
+9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Wrike” 。
 
     ![Wrike 用户映射](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
-10. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Wrike 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Wrike 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。
+10. 在“属性映射”部分中，查看从 Azure AD 同步到 Wrike 的用户属性。 选为“匹配”属性的特性用于匹配 Wrike 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。
 
     ![Wrike 用户属性](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
-11. 若要配置范围筛选器，请按照 [范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
+11. 若要配置范围筛选器，请按照[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
 
-12. 若要为 Wrike 启用 Azure AD 预配服务，请在 " **设置** " 部分中将 " **预配状态** " 更改为 **"打开** "。
+12. 要为 Wrike 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”  。
 
-    ![设置状态切换开启](common/provisioning-toggle-on.png)
+    ![“预配状态”已切换为“启用”](common/provisioning-toggle-on.png)
 
-13. 通过在 " **设置** " 部分的 " **范围** " 中选择所需的值，定义要预配到 Wrike 的用户或组。
+13. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Wrike 的用户或组 。
 
     ![预配范围](common/provisioning-scope.png)
 
 14. 准备好预配时，选择“保存”。
 
-    ![正在保存设置配置](common/provisioning-configuration-save.png)
+    ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户或组启动初始同步 。 初始同步执行的时间比后续同步长。 有关用户或组设置所需的时间的详细信息，请参阅 [预配用户需要多长时间？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+此操作会对“设置”部分的“范围”中定义的所有用户或组启动初始同步 。 初始同步所需的时间比后续同步要长。 有关预配用户或组所需时间的详细信息，请参阅[预配用户需要多长时间](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-你可以使用 " **当前状态** " 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Wrike 执行的所有操作。 有关详细信息，请参阅[检查用户预配状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅 [有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+可使用“当前状态”部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Wrike 执行的所有操作。 有关详细信息，请参阅[检查用户预配状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

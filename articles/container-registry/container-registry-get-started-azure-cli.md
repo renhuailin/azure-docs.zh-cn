@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87486538"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020069"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
@@ -23,7 +23,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create][az-group-create]”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create][az-group-create] 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -69,10 +69,16 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到注册表。 为此，请使用 [az acr login][az-acr-login] 命令。
+在推送和拉取容器映像之前，必须登录到注册表。 为此，请使用 [az acr login][az-acr-login] 命令。 使用 Azure CLI 登录时仅指定注册表名称。 不要使用登录服务器名称，其中包括类似 `azurecr.io` 的域后缀。 
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+例如：
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 该命令在完成后会返回消息 `Login Succeeded`。

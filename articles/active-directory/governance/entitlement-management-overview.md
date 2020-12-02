@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 163947268d79a0297eef3f3f6e97187a0aef6994
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362461"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95738136"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -144,9 +144,16 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 请确保目录中至少具有与以下项数量相同的 Azure AD Premium P2 许可证：
 
 - 可以请求访问包的成员用户数。
-- 请求访问包的成员和来宾用户数。
-- 审批访问包请求的成员和来宾用户数。
-- 具有直接访问包分配的成员和来宾用户数。
+- <u>请求</u>访问包的成员用户数。
+- <u>审批访问包请求</u>的成员用户数。
+- <u>审阅访问包分配</u>的成员用户数。 
+- 具有<u>直接访问包分配</u>的成员用户数。
+
+对于来宾用户，许可需求取决于使用的[许可模式](../external-identities/external-identities-pricing.md)。 但是，以下来宾用户的活动被视为使用 Azure AD Premium P2：
+- <u>请求</u>访问包的来宾用户数。 
+- <u>审批访问包请求</u>的来宾用户数。
+- <u>审阅访问包分配</u>的来宾用户数。
+- 具有<u>直接访问包分配</u>的来宾用户数。 
 
 以下任务无需 Azure AD Premium P2 许可证：
 
@@ -154,15 +161,13 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 - 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
 - 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
 
-Azure AD External Identities（来宾用户）定价基于月度活动用户数 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。 有关详细信息，请参阅 [Azure AD External Identities](../external-identities/external-identities-pricing.md) 的计费模型。
-
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 
 ### <a name="example-license-scenarios"></a>许可证场景示例
 
 下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
 
-| 方案 | 计算 | 许可证数量 |
+| 场景 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 150 名员工请求了访问包。 | 可以请求访问包的 2000 名员工 | 2,000 |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 另一个策略指定，来自“合作伙伴 Contoso 用户”（来宾）的某些用户可以经批准请求相同的访问包。 Contoso 有 30000 名用户。 150 名员工请求访问包，来自 Contoso 的 10500 名用户请求访问权限。 | 2000 名员工 + 比率超过 1:5 的来自 Contoso 的 500 名来宾用户 (10,500 - (2,000 * 5)) | 2,500 |

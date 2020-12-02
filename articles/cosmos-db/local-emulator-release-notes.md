@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 6ffd5670a8b84f0f4a5b7d3dee8a7a5080be26f5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9f28aeb2a47c2ce7b439cbe46dcc39df3011c33
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357311"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997148"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-本文显示了 Azure Cosmos 模拟器发行说明，其中包含每个发行版中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
+本文显示了 Azure Cosmos 模拟器发行说明，其中包含每个版本中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
 
 ## <a name="download"></a>下载
 
@@ -77,7 +77,7 @@ ms.locfileid: "94357311"
 
 ### <a name="246"></a>2.4.6
 
-- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了与到 2019 年 7 月为止的 Azure Cosmos 服务中的功能同等的功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
+- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了到 2019 年 7 月为止的 Azure Cosmos 服务中的同等功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
 
 ### <a name="243"></a>2.4.3
 

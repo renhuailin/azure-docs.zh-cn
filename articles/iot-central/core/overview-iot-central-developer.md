@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812346"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990748"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central 设备开发概述
 
@@ -72,7 +72,7 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dp
 
 ### <a name="security"></a>安全性
 
-设备与 IoT Central 应用程序之间的连接使用[共享访问签名](./concepts-get-connected.md#connect-devices-at-scale-using-sas)或[行业标准 X.509 证书](./concepts-get-connected.md#connect-devices-using-x509-certificates)来得到保护。
+设备与 IoT Central 应用程序之间的连接使用[共享访问签名](./concepts-get-connected.md#sas-group-enrollment)或[行业标准 X.509 证书](./concepts-get-connected.md#x509-group-enrollment)来得到保护。
 
 ### <a name="communication-protocols"></a>通信协议
 
@@ -80,12 +80,58 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dp
 
 ## <a name="implement-the-device"></a>实现设备
 
+IoT Central 设备模板包括一个模型，用于指定该类型的设备应实现的行为。 行为包括遥测、属性和命令。
+
+> [!TIP]
+> 可以将模型作为[数字孪生定义语言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON 文件从 IoT Central 导出。
+
+每个模型都具有唯一的设备孪生模型标识符 (DTMI)，如 `dtmi:com:example:Thermostat;1`。 当设备连接到 IoT Central 时，它会发送其实现的模型的 DTMI。 然后 IoT Central 可以将正确的设备模板与设备相关联。
+
+[IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)定义设备在实现 DTDL 模型时应遵循的一组约定。
+
+[Azure IoT 设备 SDK](#languages-and-sdks) 包括对 IoT 即插即用约定的支持。
+
+### <a name="device-model"></a>设备型号
+
+设备模型是使用 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl) 定义的。 此语言可让你定义：
+
+- 设备发送的遥测。 定义包括遥测的名称和数据类型。 例如，设备以双精度形式发送温度遥测。
+- 设备报告给 IoT Central 的属性。 属性定义包括其名称和数据类型。 例如，设备将阀门的状态报告为布尔值。
+- 设备可从 IoT Central 接收的属性。 还可以选择将属性标记为可写。 例如，IoT Central 将目标温度以双精度值将发送到设备。
+- 设备响应的命令。 定义包含命令的名称，以及任何参数的名称和数据类型。 例如，设备响应一个指定在重新启动之前要等待的秒数的重新启动命令。
+
+DTDL 模型可以是非组件或多组件模型 ：
+
+- 非组件模型：简单的模型不使用嵌入或级联的组件。 所有遥测、属性和命令都定义为单个默认组件。 有关示例，请参阅[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)模型。
+- 多组件模型。 包含两个或以上组件的更为复杂的模型。 这些组件包括单个默认组件以及一个或多个附加嵌套组件。 有关示例，请参阅[温度控制器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)模型。
+
+若要了解详细信息，请参阅[模型中的 IoT 即插即用组件](../../iot-pnp/concepts-components.md)
+
+### <a name="conventions"></a>约定
+
+设备在与 IoT Central 交换数据时，应遵循 IoT 即插即用约定。 约定包括：
+
+- 当 DTMI 连接到 IoT Central 时发送 DTMI。
+- 将格式正确的 JSON 有效负载和元数据发送到 IoT Central。
+- 正确响应 IoT Central 中的可写属性和命令。
+- 遵循组件命令的命名约定。
+
+> [!NOTE]
+> 目前 IoT Central 不完全支持 DTDL“Array”和“Geospatial”数据类型 。
+
+若要了解有关设备与 IoT Central 交换的 JSON 消息格式的详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
+
+若要了解有关 IoT 即插即用约定的详细信息，请参阅 [IoT 即插即用约定](../../iot-pnp/concepts-convention.md)。
+
+### <a name="device-sdks"></a>设备 SDK
+
 使用 [Azure IoT 设备 SDK](#languages-and-sdks) 中的一个来实现设备行为。 代码应做到以下几点：
 
 - 将设备注册到 DPS，并使用 DPS 中的信息连接到 IoT Central 应用程序中的内部 IoT 中心。
-- 以 IoT Central 中的设备模板指定的格式发送遥测。 IoT Central 使用设备模板来确定如何使用遥测，以便实现可视化效果和分析。
-- 同步设备和 IoT Central 之间的属性值。 设备模板指定属性名称和数据类型，以便 IoT Central 可以显示信息。
-- 为设备模板中指定的命令实现命令处理程序。 设备模板指定设备应使用的命令名称和参数。
+- 公布设备实现的模型的 DTMI。
+- 以设备模型指定的格式发送遥测。 IoT Central 使用设备模板中的模型来确定如何使用遥测，以便实现可视化效果和分析。
+- 同步设备和 IoT Central 之间的属性值。 模型指定属性名称和数据类型，以便 IoT Central 可以显示信息。
+- 为模型中指定的命令实现命令处理程序。 模型指定设备应使用的命令名称和参数。
 
 有关设备模板的角色的详细信息，请参阅[什么是设备模板？](./concepts-device-templates.md)。
 

@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047652"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959588"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
-
 本文将帮助你准备好用于开发和部署的环境。 首先，在开发计算机上设置好所有必需工具。 然后，在 Azure 中创建必要的云资源。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="set-up-the-development-vm"></a>设置开发 VM
 
@@ -33,7 +34,7 @@ ms.locfileid: "92047652"
 * Windows 10
 * [Chocolatey](https://chocolatey.org/)
 * [适用于 Windows 的 Docker Desktop](https://www.docker.com/products/docker-desktop)
-* [Git for Windows](https://gitforwindows.org/)
+* [用于 Windows 的 Git](https://gitforwindows.org/)
 * [适用于 Windows 的 Git 凭据管理器](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
@@ -60,7 +61,7 @@ ms.locfileid: "92047652"
 
    DevVM 目录包含创建适合完成本教程的 Azure 虚拟机所需的文件。
 
-1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -76,9 +77,9 @@ ms.locfileid: "92047652"
 
     * **Azure 订阅 ID**：你的订阅 ID，可在门户中的“[Azure 订阅](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)”中找到。
     * **资源组名称**：Azure 中新的或现有的资源组的名称。
-    * **位置**：选择将在其中创建虚拟机的 Azure 位置。 例如“美国西部 2”或“北欧”。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
+    * 位置：选择将在其中创建虚拟机的 Azure 位置。 例如“美国西部 2”或“北欧”。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
     * **用户名**：为 VM 的管理员帐户提供一个易记的名称。
-    * **密码**：为 VM 的管理员帐户设置密码。
+    * 密码：为 VM 的管理员帐户设置密码。
 
    脚本在执行以下步骤时，会运行几分钟：
 
@@ -100,9 +101,9 @@ ms.locfileid: "92047652"
 
 1. 在 Azure 门户中，导航到脚本创建的 VM。
 
-1. 在左侧窗格菜单中的“操作”下，选择“自动关闭”。  
+1. 在左侧窗格菜单中的“操作”下，选择“自动关闭”。
 
-1. 根据需要调整“计划的关闭”和“时区”，然后选择“保存”。   
+1. 根据需要调整“计划的关闭”和“时区”，然后选择“保存”。
 
 ## <a name="connect-to-the-development-vm"></a>连接到开发 VM
 
@@ -110,11 +111,11 @@ ms.locfileid: "92047652"
 
 1. 在桌面上双击脚本创建的 RDP 文件。
 
-1. 系统将显示一个对话框，其中显示远程连接的发布者未知。 这是正常情况，因此请选择“连接”。 
+1. 系统将显示一个对话框，其中显示远程连接的发布者未知。 这是正常情况，因此请选择“连接”。
 
-1. 提供创建 VM 时所提供的管理员密码，然后单击“确定”。 
+1. 提供创建 VM 时所提供的管理员密码，然后单击“确定”。
 
-1. 系统将提示你是否接受 VM 的证书。 请选择“是”。 
+1. 系统将提示你是否接受 VM 的证书。 请选择“是”。
 
 ## <a name="install-visual-studio-code-extensions"></a>安装 Visual Studio Code 扩展
 
@@ -126,7 +127,7 @@ ms.locfileid: "92047652"
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -183,29 +184,29 @@ Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和
 
 1. 在资源列表中，选择脚本创建的 IoT 中心。 其名称以随机字符结尾，例如 `IotEdgeAndMlHub-jrujej6de6i7w`。
 
-1. 在左侧窗格菜单中的“消息”下，选择“消息路由”。  
+1. 在左侧窗格菜单中的“消息”下，选择“消息路由”。
 
-1. 在“消息路由”页上，选择“自定义终结点”选项卡。  
+1. 在“消息路由”页上，选择“自定义终结点”选项卡。
 
-1. 展开“存储”部分： 
+1. 展开“存储”部分：
 
    ![检查 turbofanDeviceStorage 是否在自定义终结点列表中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
    我们会看到 **turbofanDeviceStorage** 在自定义终结点列表中。 请注意有关此终结点的以下特征：
 
-   * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。 
-   * 其“文件名格式”使用分区作为名称中的最后一个元素。  我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
-   * 其状态应为“正常”。 
+   * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。
+   * 其“文件名格式”使用分区作为名称中的最后一个元素。 我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
+   * 其状态应为“正常”。
 
-1. 选择“路由”选项卡  。
+1. 选择“路由”选项卡。
 
-1. 选择名为“turbofanDeviceDataToStorage”的路由  。
+1. 选择名为“turbofanDeviceDataToStorage”的路由。
 
-1. 在“路由详细信息”页上，请注意，路由的终结点是 **turbofanDeviceStorage** 终结点。 
+1. 在“路由详细信息”页上，请注意，路由的终结点是 **turbofanDeviceStorage** 终结点。
 
    ![查看有关 turbofanDeviceDataToStorage 路由的详细信息](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. 查看设置为“true”的“路由查询”   。 此设置意味着所有设备遥测消息都将与此路由匹配，因此所有消息将发送到 **turbofanDeviceStorage** 终结点。
+1. 查看设置为“true”的“路由查询”。 此设置意味着所有设备遥测消息都将与此路由匹配，因此所有消息将发送到 **turbofanDeviceStorage** 终结点。
 
 1. 由于我们未进行任何编辑，因此请直接关闭此页。
 

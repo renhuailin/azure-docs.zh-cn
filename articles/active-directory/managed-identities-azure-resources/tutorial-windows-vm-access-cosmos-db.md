@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006946"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> 请记住，如果无法执行操作，则可能没有相应的权限。 若要对密钥进行写入访问，需要使用 RBAC 角色（如 DocumentDB 帐户参与者）或创建自定义角色。 有关详细信息，请查看 [Azure Cosmos DB 中基于角色的访问控制](../../cosmos-db/role-based-access-control.md)
+> 请记住，如果无法执行操作，则可能没有相应的权限。 若要对密钥进行写入访问，需要使用 Azure 角色（如 DocumentDB 帐户参与者）或创建自定义角色。 有关详细信息，请查看 [Azure Cosmos DB 中基于角色的访问控制](../../cosmos-db/role-based-access-control.md)
 
 ## <a name="access-data"></a>访问数据
 
@@ -130,7 +130,7 @@ Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。****  将 `<ACCESS KEY>` 替换为在上面获取的值：
+有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。  将 `<ACCESS KEY>` 替换为在上面获取的值：
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

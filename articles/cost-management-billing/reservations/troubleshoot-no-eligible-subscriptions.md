@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 10/14/2020
-ms.openlocfilehash: fd7a2bde47f34a61390082a223409070275b64ce
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 11/16/2020
+ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92115172"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887189"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>对“没有符合条件的订阅”进行故障排除
 
@@ -27,7 +27,7 @@ ms.locfileid: "92115172"
    ```
     No eligible subscriptions
     
-    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should be an owner on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
+    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should have owner or reservation purchaser permission on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
     ```
 1. 在“选择要购买的产品”区域中，展开“计费订阅”列表，查看特定订阅没有资格购买预留实例的原因 。 下图显示了无法购买预留的示例原因。  
     :::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" alt-text="显示为何无法购买预留的示例" lightbox="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" :::
@@ -37,7 +37,7 @@ ms.locfileid: "92115172"
 要购买 Azure 预留实例，必须至少有一个满足以下要求的订阅：
 
 - 订阅必须是受支持的套餐类型。 支持的套餐类型为：即用即付、云解决方案提供商 (CSP)、Microsoft Azure Enterprise 或 Microsoft 客户协议。
-- 你需要是订阅的所有者。
+- 你必须是订阅的所有者或预留购买者。
 
 如果没有满足要求的订阅，则会出现 `No eligible subscriptions` 错误。
 
@@ -51,19 +51,17 @@ Subscription not eligible for purchase
 This subscription is not eligible for reservation benefit an cannot be used to purchase a reservation.
 ```
 
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="显示为何无法购买预留的示例" :::
+:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="显示“订阅不符合购买条件”错误消息的示例" :::
 
 ### <a name="cause-2"></a>原因 2
 
-你需要是订阅的所有者。 你不是订阅的所有者。 如果你不是所选订阅的所有者，则会看到以下错误。
+你必须是订阅的所有者或预留购买者。 如果权限不足，你会看到以下错误。
 
 ```
-You do not have owner access on the subscription
+You do not have owner or reservation purchaser access on the subscription
 
-You can only purchase reservations using subscriptions on which you have owner access.
+You can only purchase reservations using subscriptions on which you have owner or reservation purchaser access.
 ```
-
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/no-owner-access.png" alt-text="显示为何无法购买预留的示例" :::
 
 ## <a name="solution"></a>解决方案
 

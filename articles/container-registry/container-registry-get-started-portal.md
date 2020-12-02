@@ -4,12 +4,12 @@ description: 快速了解如何通过 Azure 门户创建专用 Azure 容器注�
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 00ed6b4569d22739051198c5b0c60987f783a87f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746678"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020035"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>快速入门：通过 Azure 门户创建 Azure 容器注册表
 
@@ -29,9 +29,9 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="在门户中导航到容器注册表":::
 
-在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值 。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU** ，选择“基本”。
+在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值 。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="在门户中导航到容器注册表":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="在门户中创建容器注册表":::
 
 对于剩余的设置，请接受默认值。 然后选择“查看 + 创建”。 查看设置后，选择“创建”。
 
@@ -39,13 +39,13 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 显示“部署成功”消息时，请在门户中选择容器注册表。 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="在门户中导航到容器注册表":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="门户中的容器注册表概述":::
 
 记下登录服务器的注册表名称和值。 使用 Docker 推送和拉取映像时，请在以下步骤中使用这些值。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-必须登录到注册表实例才可推送和拉取容器映像。 在本地计算机上[登录到 Azure CLI][get-started-with-azure-cli]，然后运行 [az acr login][az-acr-login] 命令。 （使用 Azure CLI 登录时仅指定注册表名称。 不要包含“azurecr.io”域后缀。）
+必须登录到注册表实例才可推送和拉取容器映像。 在本地计算机上[登录到 Azure CLI][get-started-with-azure-cli]，然后运行 [az acr login][az-acr-login] 命令。 使用 Azure CLI 登录时仅指定注册表名称。 不要使用登录服务器名称，其中包括类似 `azurecr.io` 的域后缀。
 
 ```azurecli
 az acr login --name <registry-name>
@@ -65,7 +65,7 @@ az acr login --name mycontainerregistry
 
 若要列出注册表中的映像，请在门户中导航到注册表并选择“存储库”，然后选择使用 `docker push` 创建的 hello-world 存储库 。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="在门户中导航到容器注册表":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="在门户中列出容器映像":::
 
 通过选择 hello-world 存储库，可以在“标记”下看到 `v1` 标记的映像 。
 
@@ -75,7 +75,7 @@ az acr login --name mycontainerregistry
 
 若要清理资源，请在门户中导航到 **myResourceGroup** 资源组。 加载该资源组后，单击“删除资源组”，删除该资源组、容器注册表以及其中存储的容器映像。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="在门户中导航到容器注册表":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="在门户中删除资源组":::
 
 
 ## <a name="next-steps"></a>后续步骤

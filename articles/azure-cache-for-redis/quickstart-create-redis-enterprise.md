@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127973"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95795669"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>快速入门：创建企业层缓存（预览版）
 
@@ -22,7 +22,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你需要一个 Azure 订阅。 如果没有，请先创建一个[免费帐户](https://azure.microsoft.com/free/)。
+在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层要求](cache-overview.md#enterprise-tier-requirements)。
 
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请使用预览版邀请中的链接登录到 Azure 门户，然后选择“创建资源”。

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631523"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992720"
 ---
 ::: zone target="docs"
 
@@ -106,12 +106,6 @@ ms.locfileid: "91631523"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="australia"></a>[澳大利亚](#tab/in-australia)
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 若要在澳大利亚寄送，请执行以下步骤。
@@ -131,12 +125,6 @@ ms.locfileid: "91631523"
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
 
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ ms.locfileid: "91631523"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
@@ -223,33 +205,33 @@ ms.locfileid: "91631523"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[南非](#tab/in-sa)
 
 1. 在原始包装盒中打包设备以退回寄送。
 2. 将设备随附的电源线卷好并安全地放在设备后面。
-3. 使用 DHL 预订取件：
+3. 记下跟踪编号（在 Data Box 本地 Web UI 的“准备交付”页面上显示为参考编号）。 此操作在“准备交付”步骤成功完成后可用。 从此页面上下载发货标签并将其粘贴在包装箱上。
+4. 从 Azure Data Box 运营中心请求退货单号。 向数据中心寄回包裹时需要退货单号。 将电子邮件发送到 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 请在退货地址旁边的发货标签上注明此单号，使其清晰可见。
+5. 使用以下方法之一通过 DHL 预订取件：
+ 
+   * 通过转到 [DHL Express 南非，计划取件](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)，在线预订取件。
+   * 使用以下模板将电子邮件发送到 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
 
-    * 请致电客户服务联系中心，电话为 +27(0) 11 9213600，选择选项 1，然后指定运单号码。
-    * 必须在下午 2:00 之前拨打电话才能安排取件。
-    * 使用以下模板将电子邮件发送到 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+    * 或者，将包裹放在最近的 DHL 服务点。
 
-    * 或者，也可以将包裹放在最近的 DHL 服务点。
-
-4. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
+6. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
 
 ::: zone target="chromeless"
 
@@ -260,12 +242,6 @@ ms.locfileid: "91631523"
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
 
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -301,12 +277,6 @@ ms.locfileid: "91631523"
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
  
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

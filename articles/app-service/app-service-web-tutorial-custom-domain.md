@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488331"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95986525"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -100,7 +100,7 @@ ms.locfileid: "89488331"
 ![显示“自定义域验证 ID”框中的 ID 的屏幕截图。](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
 
 > [!WARNING]
-> 向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。 有关此常见高严重性威胁的详细信息，请参阅[子域接管](../security/fundamentals/subdomain-takeover.md)。
+> 向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。 对于先前配置的没有此验证 ID 的自定义域，应将验证 ID 添加到 DNS 记录中，以防止这些域面临相同的风险。 有关此常见高严重性威胁的详细信息，请参阅[子域接管](../security/fundamentals/subdomain-takeover.md)。
 
 ## <a name="map-your-domain"></a>映射域
 
@@ -195,17 +195,17 @@ ms.locfileid: "89488331"
 
 若要将 A 记录映射到应用（通常是根域），请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
-| A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
+| A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
 
 > [!NOTE]
 > 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应如下表所示：
 >
-> | 记录类型 | 主机 | Value |
+> | 记录类型 | 主机 | 值 |
 > | - | - | - |
-> | A | `www` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
+> | A | `www` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
 > | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
@@ -256,7 +256,7 @@ ms.locfileid: "89488331"
 
 将通配符名称 `*` 映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要映射通配符名称，请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |

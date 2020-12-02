@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097229"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188215"
 ---
 若要创建 Visual Studio 项目，以便使用 Xamarin 进行跨平台移动应用 .NET 开发，需要：
 - 设置 Visual Studio 开发选项。
@@ -54,7 +54,7 @@ ms.locfileid: "92097229"
 
 1. 选择“空白”模板。 
 
-1. 在“平台”中，  选择 **Android** 、 **iOS** 和 **Windows (UWP)** 对应的框。
+1. 在“平台”中，  选择 **Android**、**iOS** 和 **Windows (UWP)** 对应的框。
 
 1. 选择“确定”  。 返回到 Visual Studio IDE，其中新项目已创建并显示在“解决方案资源管理器  ”窗格中。
 
@@ -74,14 +74,14 @@ ms.locfileid: "92097229"
 
 1. 在“包源”  中，选择“nuget.org”。
 
-1. 在“搜索”框中，输入 *Microsoft.CognitiveServices.Speech* 。  然后在该包显示在搜索结果中之后选择该包。
+1. 在“搜索”框中，输入 *Microsoft.CognitiveServices.Speech*。  然后在该包显示在搜索结果中之后选择该包。
 
    ![屏幕截图突出显示 Microsoft.CognitiveServices.Speech 包。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
 
    > [!NOTE] 
    > `Microsoft.CognitiveServices.Speech` NuGet 中的 iOS 库未启用 Bitcode。 如果需要为应用程序启用 Bitcode 库，请专门使用 iOS 项目的 `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet。
 
-1. 在搜索结果旁的“包状态”窗格中，选择所有项目： **helloworld** 、 **helloworld.Android** 、 **helloworld.iOS** 和 **helloworld.UWP** 。
+1. 在搜索结果旁的“包状态”窗格中，选择所有项目：**helloworld**、**helloworld.Android**、**helloworld.iOS** 和 **helloworld.UWP**。
 
 1. 选择“安装”  。
 

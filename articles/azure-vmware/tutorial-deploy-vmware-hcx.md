@@ -3,18 +3,21 @@ title: 教程 - 部署和配置 VMware HCX
 description: 了解如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 解决方案。
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888736"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999615"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署和配置 VMware HCX
 
 本文将演示如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 本地连接器。 使用 VMware HCX，可以通过各种迁移类型将 VMware 工作负载迁移到 Azure VMware 解决方案和其他已连接站点。 由于 Azure VMware 解决方案部署并配置 HCX 云管理器，因此必须在本地 VMware 数据中心下载、激活和配置 HCX 连接器。
 
 Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最多支持三个站点连接（本地到云或云到云）。 如果需要三个以上的站点连接，请提交[支持请求](https://portal.azure.com/#create/Microsoft.Support)以启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 外接程序。 此加载项目前以预览版提供。 
+
+>[!Note]
+>尽管 VMware 配置最大值工具将本地连接器和云管理器之间的站点对最大值限制为 25，但对于 Advanced Edition 和 Enterprise Edition，许可再次将该值分别限制为 3 和 10。
 
 >[!NOTE]
 >VMware HCX Enterprise 随 Azure VMware 解决方案以预览版服务的形式提供。 它是免费的，并受预览版服务的条款和条件的约束。 在 VMware HCX Enterprise 服务正式发布后，你将提前 30 天收到一则通知，指出计费将进行切换。 你也可选择关闭或退出服务。 无法简单地从 VMware HCX Enterprise 降级地 VMware HCX Advanced。 如果决定降级，必须重新部署，这会导致停机。

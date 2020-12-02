@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857242"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959299"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 本文将再次使用开发 VM 作为模拟设备， 但不会直接将数据发送到 IoT 中心，而是通过该设备将数据发送到配置为透明网关的 IoT Edge 设备。
 
 当模拟设备正在发送数据时，我们将监视 IoT Edge 设备的运行情况。 设备完成运行后，我们将查看存储帐户中的数据，以验证一切是否按预期方式工作。
 
 此步骤通常由云或设备开发人员执行。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="review-device-harness"></a>查看设备的装备
 

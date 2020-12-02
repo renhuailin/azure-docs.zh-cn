@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701749"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888583"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池（预览版）使用 OPENROWSET
 
@@ -225,6 +225,9 @@ CSV 分析器版本 2.0 详细信息：
 - 最大行大小限制为 8 MB。
 - 不支持以下选项：DATA_COMPRESSION。
 - 带引号的空字符串 ("") 被解释为空字符串。
+- DATE 数据类型支持的格式：YYYY-MM-DD
+- TIME 数据类型支持的格式：HH:MM:SS[.fractional seconds]
+- DATETIME2 数据类型支持的格式：YYYY-MM-DD HH:MM:SS[.fractional seconds]
 
 HEADER_ROW = { TRUE | FALSE }
 

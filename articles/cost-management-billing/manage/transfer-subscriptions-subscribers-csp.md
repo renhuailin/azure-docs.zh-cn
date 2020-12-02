@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744232"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962104"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -58,7 +58,7 @@ ms.locfileid: "94744232"
 
 1. 创建目标 Azure 订阅。
 1. 请确保源订阅和目标订阅位于相同的 Azure Active Directory (Azure AD) 租户中。 有关更改 Azure AD 租户的详细信息，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
-    请注意，此更改目录不是云解决方案提供商订阅。 例如，你要从云解决方案提供商订阅转移到即用即付订阅。 你需要更改即用即付订阅的目录，使之与该目录匹配。
+    请注意，CSP 订阅不支持更改目录选项。 例如，你要从云解决方案提供商订阅转移到即用即付订阅。 你需要更改即用即付订阅的目录，使之与该目录匹配。
 
     > [!IMPORTANT]
     >  - 将订阅关联到其他目录时，如果用户的角色是使用 [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) 分配的，则用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289773"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919924"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -44,8 +44,17 @@ ms.locfileid: "93289773"
 
 可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作是从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射的。  
 
+证书支持的密钥对的类型
+
  - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
 
+|密钥类型|关于|安全性|
+|--|--|--|
+|**RSA**| “受软件保护的”RSA 密钥|FIPS 140-2 级别 1|
+|**RSA-HSM**| “受 HSM 保护的”RSA 密钥（仅限高级 SKU）|FIPS 140-2 级别 2 HSM|
+|**EC**| “受软件保护的”椭圆曲线密钥|FIPS 140-2 级别 1|
+|**EC-HSM**| “受 HSM 保护的”Elliptic Curve 密钥（仅限高级 SKU）|FIPS 140-2 级别 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>证书属性和标记
 
@@ -61,10 +70,10 @@ Key Vault 证书具有以下属性：
 
 在响应中还包括以下其他只读属性：
 
--   *created* ：IntDate：指示创建此版本的证书的时间。  
--   *updated* ：IntDate：指示更新此版本的证书的时间。  
--   *exp* ：IntDate：包含 x509 证书的过期日期的值。  
--   *nbf* ：IntDate：包含 x509 证书的日期的值。  
+-   *created*：IntDate：指示创建此版本的证书的时间。  
+-   *updated*：IntDate：指示更新此版本的证书的时间。  
+-   *exp*：IntDate：包含 x509 证书的过期日期的值。  
+-   *nbf*：IntDate：包含 x509 证书的日期的值。  
 
 > [!Note] 
 > 如果 Key Vault 证书过期，则它是可寻址密钥，机密变得无法操作。  

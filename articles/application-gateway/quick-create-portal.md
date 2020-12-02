@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 11/24/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d700c2f2b4df01da577b67dafab989b655bdb58d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 904456de527e8d0acb1319059c18f9a3c6b0a1a3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331074"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95992963"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -76,7 +76,7 @@ ms.locfileid: "91331074"
 
 1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”    。 <br>可根据用例将前端 IP 配置为公共或专用 IP。 本示例将选择公共前端 IP。
    > [!NOTE]
-   > 对于应用程序网关 v2 SKU，必须有一个**公共**前端 IP 配置。 你仍可以同时有公共和专用前端 IP 配置，但目前没有为 v2 SKU 启用仅专用前端 IP 配置（仅限 ILB 模式）。 
+   > 对于应用程序网关 v2 SKU，必须有一个 **公共** 前端 IP 配置。 你仍可以同时有公共和专用前端 IP 配置，但目前没有为 v2 SKU 启用仅专用前端 IP 配置（仅限 ILB 模式）。 
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
 
@@ -157,8 +157,8 @@ ms.locfileid: "91331074"
     - **密码**：键入密码。
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-7. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
+6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
+7. 在“管理”选项卡上，将“启动诊断”设置为“禁用”  。 接受其他默认值，然后选择“复查 + 创建”。
 8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。
 

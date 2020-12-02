@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: eff21545ab56b1ff3d1126f862fa7293a38abb39
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097093"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188158"
 ---
 本指南介绍如何安装适用于 Windows 桌面上的 C++ 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 

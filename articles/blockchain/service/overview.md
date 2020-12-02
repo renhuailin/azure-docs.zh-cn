@@ -4,12 +4,12 @@ description: Azure 区块链服务概述
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: e82916d7366ad82746d2d3ddfc979264e113619b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334814"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874553"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 

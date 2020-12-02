@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a245dae4405706c37b3c142963d325925d089830
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912814"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001433"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入门：使用人脸 REST API 和 Node.js 检测图像中的人脸
 
@@ -34,7 +34,7 @@ ms.locfileid: "92912814"
 
 ## <a name="set-up-the-node-environment"></a>设置 Node 环境
 
-转到你要创建项目的文件夹并创建一个新文件 ( *facedetection.js* )。 然后将 `axios` 模块安装到此项目中。 这样，你的脚本就可以发出 HTTP 请求。
+转到你要创建项目的文件夹并创建一个新文件 (*facedetection.js*)。 然后将 `axios` 模块安装到此项目中。 这样，你的脚本就可以发出 HTTP 请求。
 
 ```shell
 npm install axios --save
@@ -274,4 +274,4 @@ node facedetection.js
 在本快速入门中，你编写了一个 Node.js 脚本，该脚本调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
-> [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 

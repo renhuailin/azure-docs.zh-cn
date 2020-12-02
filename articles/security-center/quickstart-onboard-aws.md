@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122507"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>将 AWS 帐户连接到 Azure 安全中心
 
@@ -77,7 +77,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 1. 选择“另一个 AWS 帐户”。
 1. 输入以下详细信息：
 
-    - **帐户 ID** - 输入安全中心的 AWS 连接器页中显示的 Microsoft 帐户 ID ( **158177204117** )。
+    - **帐户 ID** - 输入安全中心的 AWS 连接器页中显示的 Microsoft 帐户 ID (**158177204117**)。
     - **需要外部 ID** - 应选择
     - **外部 ID** - 输入安全中心的 AWS 连接器页中显示的订阅 ID 
 

@@ -3,12 +3,12 @@ title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888974"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529718"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -48,7 +48,7 @@ ms.locfileid: "94888974"
 
 ## <a name="number-of-hosts"></a>主机数
 
-定义要部署到 Azure VMware 解决方案私有云的主机数。  最小节点计数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
+定义要部署到 Azure VMware 解决方案私有云的主机数。  最小主机数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
 
 如果你的需要超出初始部署数目，以后可以随时扩展群集。
 

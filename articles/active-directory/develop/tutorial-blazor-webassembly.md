@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628058"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979872"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
-Blazor WebAssembly (WASM) 是一种单页应用框架，可通过 .NET 构建交互式客户端 Web 应用。 在本教程中，你将了解如何使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，在 Blazor WASM 应用中实施身份验证以及通过 Microsoft Graph 检索数据。
+在本教程中，你将使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，从而构建 Blazor WebAssembly 应用，用户可登录该应用并通过 Microsoft Graph 检索数据。
 
 我们还提供了[关于 Blazor Server 的教程](tutorial-blazor-server.md)。 
 
-在本教程中，将：
+在本教程中：
 
 > [!div class="checklist"]
 >

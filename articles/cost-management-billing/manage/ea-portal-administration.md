@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893352"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -146,7 +146,7 @@ ms.locfileid: "94683639"
 - 在同一租户中的两个组织 ID 之间执行订阅或帐户所有权转移时，会保留 Azure RBAC 策略、现有的服务管理员和共同管理员角色。
 - 跨租户订阅或帐户所有权转移会导致 Azure RBAC 策略和角色分配丢失。
 - 策略和管理员角色不会在不同的目录之间转移。 服务管理员将更新为目标帐户的所有者。
-- 若要避免在租户之间转移订阅时丢失 RBAC 策略和角色分配，请确保“将订阅移动到接收方的 Azure AD 租户”复选框保留为未选中状态 。 这将保留当前 Azure AD 租户上的服务、RBAC 角色和策略，并仅转移帐户的计费所有权。  
+- 若要避免在租户之间转移订阅时丢失 Azure RBAC 策略和角色分配，请确保“将订阅移动到接收方的 Azure AD 租户”复选框保留为未选中状态 。 这将保留当前 Azure AD 租户上的服务、Azure 角色和策略，并仅转移帐户的计费所有权。  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="显示“将订阅移动到 Azure AD 租户”复选框未选中的图像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Azure EA 门户可帮助你管理 Azure EA 的成本和使用情况。 Azure EA 
 
 每个角色具有不同的访问权限和权力级别。
 
-有关用户角色的详细信息，请参阅[企业用户角色](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles)。
+有关用户角色的详细信息，请参阅[企业用户角色](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)。
 
 ## <a name="add-an-azure-ea-account"></a>添加 Azure EA 帐户
 

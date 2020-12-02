@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996179"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
-本指南演示如何使用基于传统 Web 浏览器的应用程序和 OpenID Connect，通过 ASP.NET MVC 解决方案实现 Microsoft 登录。
+在本教程中，将构建一个 ASP.NET MVC Web 应用，该应用通过使用 .NET (OWIN) 中间件的开放式 Web 接口和 Microsoft 标识平台来登录用户。
 
 在本指南完成时，你的应用程序将能够接受个人帐户（例如 outlook.com、live.com 等）的登录。 此外，来自任何与 Microsoft 标识平台集成的公司或组织的工作和学校帐户也能够登录到你的应用。
 
@@ -378,7 +378,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. 选择“新注册”。
-1. “注册应用程序”页出现后，请输入应用程序的注册信息：
+1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 **ASPNET-Tutorial**。
    1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“回复 URL”中，然后选择“注册”。
 1. 选择“身份验证”菜单，在“隐式授权”下选择“ID 令牌”，然后选择“保存”。
@@ -425,11 +425,11 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|properties |值 |说明 |
+|属性 |值 |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
-|**主题** |使用者 |唯一标识 Web 上用户的字符串|
+|**主题** |主题 |唯一标识 Web 上用户的字符串|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 Guid|
 
 此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](./id-tokens.md)。

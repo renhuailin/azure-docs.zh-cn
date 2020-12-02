@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425315"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874689"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -32,21 +32,21 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 > [!NOTE]
 > 本快速入门可以在 macOS、Windows 或 Linux 上运行。
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 使用 Azure 帐户登录到 <https://portal.azure.com/> 的 Azure 门户。
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>配置和运行 Azure 函数应用
 
@@ -62,11 +62,11 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 1. 在代码编辑器中，打开克隆存储库中的 *src/chat/javascript* 文件夹。
 
-1. 将 *local.settings.sample.json* 重命名为 *local.settings.json* 。
+1. 将 *local.settings.sample.json* 重命名为 *local.settings.json*。
 
 1. 在 **local.settings.json** 中，将连接字符串粘贴到 **AzureSignalRConnectionString** 设置的值中。 保存文件。
 
-1. JavaScript 函数将组织到文件夹中。 每个文件夹中有两个文件： *function.json* 定义函数中使用的绑定， *index.js* 是函数的主体。 此函数应用中有两个 HTTP 触发的函数：
+1. JavaScript 函数将组织到文件夹中。 每个文件夹中有两个文件：*function.json* 定义函数中使用的绑定，*index.js* 是函数的主体。 此函数应用中有两个 HTTP 触发的函数：
 
     - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
     - **messages** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
@@ -78,16 +78,16 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     ```
 
     ![创建 SignalR 服务](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
-
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+    
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjs)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -96,4 +96,3 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 > [!div class="nextstepaction"]
 > [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjs)

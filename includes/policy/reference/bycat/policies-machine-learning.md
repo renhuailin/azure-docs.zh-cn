@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 30e599fa274bac8b8700d366c7102dcf64a5ad09
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ec1bb2b21e1ac4d24f4643ae85a790b3bc2a147a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001010"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure 机器学习工作区应使用客户托管密钥 (CMK) 进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |评估未使用客户托管密钥 (CMK) 启用加密的 Azure 机器学习工作区。 客户托管密钥为工作区添加了额外一层安全。 有关详细信息，请访问 [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure 机器学习工作区应使用客户托管密钥 (CMK) 进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |评估未使用客户托管密钥 (CMK) 启用加密的 Azure 机器学习工作区。 客户管理的密钥为工作区提供了额外的安全层。 有关详细信息，请访问 [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk)。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[ Azure 机器学习工作区应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |评估没有达到“至少有一个已批准的专用终结点连接”标准的 Azure 机器学习工作区。 虚拟网络中的客户端可以安全地访问通过专用链接获得专用终结点连接的资源。 有关详细信息，请访问：[https://aka.ms/azureml-workspaces-privatelink](https://aka.ms/azureml-workspaces-privatelink)。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateLinkEnabled_Audit.json) |
 |[为指定的 Azure 机器学习计算配置允许的模块作者](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |此策略有助于提供在指定的 Azure 机器学习计算中允许的模块作者，并可以在工作区中分配这些模块作者。 有关详细信息，请访问 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting，已禁用 |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[为指定的 Azure 机器学习计算配置允许的 Python 包](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | 此策略有助于提供在指定的 Azure 机器学习计算中允许的 Python 包，并可以在工作区中分配这些包。 有关详细信息，请访问 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting，已禁用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |

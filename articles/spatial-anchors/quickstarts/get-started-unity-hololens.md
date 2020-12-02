@@ -1,19 +1,19 @@
 ---
 title: 快速入门：使用 Unity 创建 HoloLens 应用
 description: 在此快速入门中，将了解如何通过空间定位点使用 Unity 生成 HoloLens 应用。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 143bc89518ff1811ad6789f71fcf7a9267e99f73
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097433"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022626"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用
 

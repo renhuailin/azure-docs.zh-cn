@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368713"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888362"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -21,9 +21,9 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 ## <a name="who-can-buy-a-reservation"></a>谁可以购买预留项
 
-若要购买计划，必须在企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）或 Microsoft 客户协议订阅中具有订阅所有者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
+若要购买预留，必须在 Azure 企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）或 Microsoft 客户协议订阅中具有所有者角色或预留购买者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
 
-企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。 EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
+企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。 EA 管理员必须在至少一个 EA 订阅上具有所有者访问权限或预留购买者访问权限才能购买预留。 对于希望通过一个核心团队购买预留项的企业而言，该选项非常有用。
 
 预留折扣仅适用于与通过企业、云解决方案提供商 (CSP)、采用即用即付费率的 Microsoft 客户协议和单个计划购买的订阅关联的资源。
 

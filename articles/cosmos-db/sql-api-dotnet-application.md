@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097356"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010331"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "93097356"
 
 ## <a name="step-1-create-an-azure-cosmos-account"></a><a name="create-an-azure-cosmos-account"></a>步骤 1：创建 Azure Cosmos 帐户
 
-让我们首先创建一个 Azure Cosmos 帐户。 如果你已有一个 Azure Cosmos DB SQL API 帐户，或者使用的是 Azure Cosmos DB 仿真器，请跳到[步骤 2：创建新的 ASP.NET MVC 应用程序](#create-a-new-mvc-application)。
+让我们首先创建一个 Azure Cosmos 帐户。 如果你已有一个 Azure Cosmos DB SQL API 帐户，或者使用的是 Azure Cosmos DB 仿真程序，请跳到[步骤 2：创建新的 ASP.NET MVC 应用程序](#create-a-new-mvc-application)。
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -74,7 +74,7 @@ ms.locfileid: "93097356"
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="新建 ASP.NET Core Web 应用程序项目":::
 
-1. 在“配置新项目”中，将项目命名为 *todo* ，然后选择“创建”。 
+1. 在“配置新项目”中，将项目命名为 *todo*，然后选择“创建”。 
 
 1. 在“创建新的 ASP.NET Core Web 应用程序”中，选择“Web 应用程序(模型-视图-控制器)”。  选择“创建”继续操作。
 
@@ -108,7 +108,7 @@ ms.locfileid: "93097356"
 
 1. 在“解决方案资源管理器”中，右键单击“模型”文件夹并选择“添加” > “类”。   
 
-1. 在“添加新项”中，将新类命名为 *Item.cs* ，然后选择“添加”。 
+1. 在“添加新项”中，将新类命名为 *Item.cs*，然后选择“添加”。 
 
 1. 将 *Item.cs* 类的内容替换为以下代码：
 
@@ -137,7 +137,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
    * 在“视图名称”中，输入“创建”。
    * 在“模板”中选择“创建”。 
    * 在“模型类”中，选择“项(todo.Models)”。 
-   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml* 。
+   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml*。
    * 选择 **添加** 。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="显示“添加 MVC 视图”对话框的屏幕截图":::
@@ -155,7 +155,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
    * 在“视图名称”框中键入“删除”。
    * 在“模板”框中，选择“删除” 。
    * 在“模型类”框中，选择“项(todo.Models)”。 
-   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml* 。
+   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml*。
    * 选择 **添加** 。
 
 1. 接下来，选择“添加”并让 Visual Studio 创建新的模板视图。 将生成的文件中的代码替换为以下内容：
@@ -171,7 +171,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
    * 在“视图名称”中，输入“详细信息”。
    * 在“模板”中选择“详细信息” 。
    * 在“模型类”中，选择“项(todo.Models)”。 
-   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml* 。
+   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml*。
 
 1. 接下来，选择“添加”并让 Visual Studio 创建新的模板视图。 将生成的文件中的代码替换为以下内容：
 
@@ -186,7 +186,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
    * 在“视图名称”框中，键入“编辑”。
    * 在“模板”框中，选择“编辑”。 
    * 在“模型类”框中，选择“项(todo.Models)”。 
-   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml* 。
+   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml*。
    * 选择 **添加** 。
 
 1. 接下来，选择“添加”并让 Visual Studio 创建新的模板视图。 将生成的文件中的代码替换为以下内容：
@@ -204,7 +204,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
    * 在“视图名称”框中，键入“索引”。
    * 在“模板”框中，选择“列表”。
    * 在“模型类”框中，选择“项(todo.Models)”。 
-   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml* 。
+   * 选择“使用布局页”并输入 *~/Views/Shared/_Layout.cshtml*。
    * 选择 **添加** 。
 
 1. 接下来，选择“添加”并让 Visual Studio 创建新的模板视图。 将生成的文件中的代码替换为以下内容：
@@ -265,7 +265,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="在“添加基架”中选择“MVC 控制器 - 空”":::
 
-1. 将新控制器命名为 *ItemController* 。
+1. 将新控制器命名为 *ItemController*。
 
 1. 将 *ItemController.cs* 的内容替换为以下代码：
 

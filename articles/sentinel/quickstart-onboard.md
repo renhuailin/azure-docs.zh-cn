@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660655"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95248639"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
 
@@ -41,7 +41,7 @@ ms.locfileid: "94660655"
 
 ### <a name="geographical-availability-and-data-residency"></a>地理可用性和数据驻留
 
-- Azure Sentinel 可在 [Log Analytics 的任何 GA 区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作区中运行，但中国和德国（主权）区域除外。 
+- Azure Sentinel 可在 [Log Analytics 的大多数 GA 区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作区中运行，但中国和德国（主权）区域除外。 有时，新 Log Analytics 区域可能需要一些时间来载入 Sentinel 服务。 
 
 - 由 Azure Sentinel 生成的数据，例如事件、书签和分析规则，可能包含来源于客户 Log Analytics 工作区的一些客户数据。 根据工作区所在的地理位置，此 Azure Sentinel 生成的数据将保存在下表所列的地理位置中：
 

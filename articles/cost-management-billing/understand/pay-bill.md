@@ -7,15 +7,15 @@ ms.reviewer: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/21/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5397bb4ebd5909406d0bae1ef68ec2c6453549d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972071"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026329"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帐单
 
@@ -29,7 +29,7 @@ ms.locfileid: "90972071"
 
 ## <a name="pay-now-in-the-azure-portal"></a>在 Azure 门户中立即付款
 
-若要在 Azure 门户中支付账单，那么你必须是计费帐户管理员。计费帐户管理员是最初注册 MCA 帐户的用户。
+若要在 Azure 门户中支付账单，则必须具有正确的 [MCA 权限](../manage/understand-mca-roles.md)或必须是计费帐户管理员。计费帐户管理员是最初注册 MCA 帐户的用户。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在“成本管理 + 计费”中进行搜索。

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685420"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254232"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
@@ -33,8 +33,8 @@ ms.locfileid: "94685420"
 ## <a name="overview"></a>概述
 
 使用“知识中心”可以执行三项操作：
-* **立即使用示例**。 此选项经过优化，你可以尽快看到正在进行的分析。 如果你需要一个快速示例来了解 Synapse 如何工作，请选择此选项。
-* **浏览可用示例**。 此选项允许你链接示例数据集，并以 SQL 脚本、笔记本和管道的形式添加示例代码。
+* **立即使用示例**。 如果你需要一个快速示例来了解 Synapse 如何工作，请选择此选项。
+* **浏览库**。 此选项允许你链接示例数据集，并以 SQL 脚本、笔记本和管道的形式添加示例代码。
 * **浏览 Synapse Studio**。 此选项将带你简单了解 Synapse Studio 的基本部分。 如果你以前从未使用过 Synapse Studio，则这很有用。
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>使用无服务器 SQL 池浏览 blob 存储
@@ -47,7 +47,7 @@ ms.locfileid: "94685420"
 1. 单击“运行”。 它将运行你选择的文本。
 
 ## <a name="loading-more-nyc-taxi-data"></a>加载更多 NYC 出租车数据
-1. 转到“知识中心”，单击“浏览可用示例”  
+1. 转到“知识中心”，单击“浏览库”  
 1. 选择顶部的“SQL 脚本”选项卡
 1. 选择“加载纽约出租车数据集”
 1. 在“输入”下选择“选择现有池”，接着选择“SQLDB1”

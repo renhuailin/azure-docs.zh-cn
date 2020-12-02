@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095996"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743151"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -74,10 +74,18 @@ Azure Active Directory (Azure AD) 访问评审可以使组织有效地管理组�
 
 目录需要的 Azure AD Premium P2 许可证至少与要执行以下任务的员工数相同：
 
-- 指定为审阅者的成员和来宾用户
-- 执行自我评审的成员和来宾用户
-- 执行访问评审的组所有者
-- 执行访问评审的应用程序所有者
+-   分配为审阅者的成员用户数
+-   执行自我评审的成员用户数
+-   作为组所有者执行访问评审的成员用户数
+-   以应用程序所有者身份执行访问评审的成员用户数
+
+对于来宾用户，许可需求取决于使用的许可模式。 但是，以下来宾用户的活动被视为使用 Azure AD Premium P2：
+
+-   分配为审阅者的来宾用户数
+-   执行自我评审的来宾用户数
+-   以组所有者身份执行访问评审的来宾用户数
+-   以应用程序所有者身份执行访问评审的来宾用户数
+
 
 具有全局管理员或用户管理员角色的用户不需要 Azure AD Premium P2 许可证，这些用户可设置访问评审、配置设置或根据评审作出决策。
 

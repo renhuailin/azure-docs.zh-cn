@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857072"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959673"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教程：生成模拟设备数据
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们将使用机器学习训练数据来模拟设备向 Azure IoT 中心发送遥测数据。 如简介中所述，本教程使用[涡扇发动机降级模拟数据集](https://c3.nasa.gov/dashlink/resources/139/)来模拟来自一组飞机发动机数据，以进行训练和测试。
 
@@ -45,6 +42,10 @@ DeviceHarness 项目是一个以 C# 编写的 .NET Core 项目，包含四个类
 本文中所述的任务大约需要约 20 分钟才能完成。
 
 与在此步骤中的工作等效的实际操作可能会由设备开发人员和云开发人员执行。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>配置 Visual Studio Code 并生成 DeviceHarness 项目
 

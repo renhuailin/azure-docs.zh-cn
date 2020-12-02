@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: travisw
 ms.openlocfilehash: 2efe17bdf597b7e3ba7d0277f06d4b24e9b51db3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096872"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187554"
 ---
 1. 启动 Android Studio，然后在“欢迎”窗口中选择“启动新的 Android Studio 项目”。
 
@@ -19,7 +19,7 @@ ms.locfileid: "92096872"
 
    ![“选择项目”向导的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. 在“配置项目”屏幕上，输入“Quickstart”作为名称，输入“samples.speech.cognitiveservices.microsoft.com”作为包名称，。 然后选择项目目录。 对于**最低 API 级别**，选择“API 23: Android 6.0 (Marshmallow)”。 清除所有其他的复选框，然后选择“完成”。
+1. 在“配置项目”屏幕上，输入“Quickstart”作为名称，输入“samples.speech.cognitiveservices.microsoft.com”作为包名称，。 然后选择项目目录。 对于 **最低 API 级别**，选择“API 23: Android 6.0 (Marshmallow)”。 清除所有其他的复选框，然后选择“完成”。
 
    ![“配置项目”向导的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-03-create-android-project.png)
 

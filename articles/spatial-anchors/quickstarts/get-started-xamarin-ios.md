@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建 Xamarin iOS 应用
 description: 本快速入门介绍如何通过空间定位点使用 Xamarin 生成 iOS 应用。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 610112f9374f2ca39a8df4b849aeda4abf965e57
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097416"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009732"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Xamarin iOS 应用
 
@@ -61,7 +61,7 @@ ms.locfileid: "92097416"
 
 启动 iOS 设备，登录并使用 USB 电缆将其连接到计算机。
 
-将启动项目设置为 **SampleXamarin.iOS**，将**解决方案配置**更改为“发布”，然后在设备选择器下拉列表中选择要部署到的设备。
+将启动项目设置为 **SampleXamarin.iOS**，将 **解决方案配置** 更改为“发布”，然后在设备选择器下拉列表中选择要部署到的设备。
 
 ![Visual Studio 配置](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 

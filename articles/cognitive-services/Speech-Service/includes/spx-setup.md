@@ -5,35 +5,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027951"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
 #### <a name="windows-install"></a>[Windows 安装](#tab/windowsinstall)
 
-> [!NOTE]
-> 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启 Windows。
-
 按照以下步骤在 Windows 上安装语音 CLI：
 
-1. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
-2. 转到从下载中提取的根目录 `spx-zips`，并提取所需的子目录（`spx-net471` 用于 .NET Framework 4.7，`spx-netcore-win-x64` 用于 x64 CPU 上的 .NET Core 3.0）。
+1. 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启。
+2. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
+3. 转到提取 `spx-zips` 的目录。 此文件夹包含适用于各种平台上的语音 CLI 的程序文件。 
+4. 为平台提取文件（为 .NET Framework 4.7 提取 `spx-net471`，或为 x64 CPU 上的 .NET Core 3.0 提取 `spx-netcore-win-x64`）。 请记住，将从此目录运行 `spx`。
 
-在命令提示符中，将目录更改到此位置，然后键入 `spx` 查看语音 CLI 的帮助。
+### <a name="run-the-speech-cli"></a>运行语音 CLI
 
-> [!NOTE]
-> 在 Windows 上，语音 CLI 只能显示本地计算机上命令提示符适用的字体。
-> [Windows 终端](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)支持通过语音 CLI 以交互方式生成的所有字体。
-> 如果输出到文件，文本编辑器（例如记事本）或 web 浏览器（例如 Microsoft Edge）也可以显示所有字体。
+1. 打开命令提示符或 PowerShell，然后导航到在其中提取了语音 CLI 的目录。  
+2. 若要查看语音 CLI 的帮助命令，请键入 `spx`。
 
 > [!NOTE]
 > 查找命令时，Powershell 不会检查本地目录。 在 Powershell 中，将目录更改为 `spx` 的位置，并通过输入 `.\spx` 调用工具。
 > 如果将此目录添加到路径，则 Powershell 和 Windows 命令提示符会从不包含 `.\` 前缀的任何目录中查找 `spx`。
+
+### <a name="font-limitations"></a>字体限制
+
+在 Windows 上，语音 CLI 只能显示本地计算机上命令提示符适用的字体。
+[Windows 终端](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)支持通过语音 CLI 以交互方式生成的所有字体。
+
+如果输出到文件，文本编辑器（例如记事本）或 web 浏览器（例如 Microsoft Edge）也可以显示所有字体。
 
 #### <a name="linux-install"></a>[Linux 安装](#tab/linuxinstall)
 

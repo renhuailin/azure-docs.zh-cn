@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900400"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122426"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 安全中心的其他威胁防护
 除内置 [Azure Defender 保护](azure-defender.md)外，Azure 安全中心还提供了以下威胁防护功能。
@@ -29,7 +29,7 @@ ms.locfileid: "92900400"
 ## <a name="threat-protection-for-azure-network-layer"></a>针对 Azure 网络层的威胁防护 <a name="network-layer"></a>
 安全中心网络层分析基于示例 [IPFIX 数据](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)（Azure 核心路由器收集的数据包头）。 根据此数据馈送，安全中心使用机器学习模型来识别和标记恶意流量活动。 安全中心还使用 Microsoft 威胁情报数据库来扩充 IP 地址。
 
-某些网络配置可能会限制安全中心对可疑网络活动生成警报。 要使安全中心生成网络警报，请确保：
+某些网络配置会限制安全中心对可疑网络活动生成警报。 要使安全中心生成网络警报，请确保：
 - 虚拟机有一个公共 IP 地址（或位于使用公共 IP 地址的负载均衡器上）。
 - 虚拟机的网络出口流量未被外部 IDS 解决方案阻止。
 

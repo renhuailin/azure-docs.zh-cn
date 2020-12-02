@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personalizer, Azure personalizer, machine learning
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363895"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171953"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 

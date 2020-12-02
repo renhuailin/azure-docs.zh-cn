@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148827"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888872"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -119,6 +119,12 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 * [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)（IoT 中心限制和你）
+
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>Azure Stack Hub 上的 IoT 中心（预览）
+
+Azure Stack Hub 上的 IoT 中心（预览）允许创建混合 IoT 解决方案。 IoT 中心是一项托管服务，充当消息中心，用于在 IoT 应用程序与所管理的设备之间进行双向通信。 可以使用 Azure Stack Hub 上的 IoT 中心，在 IoT 设备和本地解决方案之间建立可靠又安全的通信，生成 IoT 解决方案。
+
+在公共预览版中，Azure Stack Hub 上的 IoT 中心免费。 有关详细信息，请参阅 [Azure Stack Hub 上的 IoT 中心概述](/azure-stack/operator/iot-hub-rp-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

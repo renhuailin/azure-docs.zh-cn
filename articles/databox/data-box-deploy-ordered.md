@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1dca046177634842de25b255dd1bb22c5d2c5a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335791"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963961"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -231,7 +231,7 @@ PS C:\Windows\System32>
     |源国家/地区    |    选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     |     选择要在其中传输数据的 Azure 区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。            |
 
-    [![启动 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![启动 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. 选择“Data Box”。 单次订购的可用最大容量为 80 TB。 可以创建多个订单，以增加数据大小。
 
@@ -245,13 +245,11 @@ PS C:\Windows\System32>
     |资源组    | 之前选择的资源组。 |
     |导入订单名称 | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。    |
 
-    ![Data Box 导入订单向导的“基本信息”屏幕，其中已填写正确信息](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Data Box 导入订单向导的“基本信息”屏幕，其中已填写正确信息](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
 
-    默认情况下，设备解锁密码使用 Microsoft 管理的密钥进行加密。 完成订单后，可以添加客户管理的密钥。 客户管理的密钥允许你使用自己的 Azure 密钥保管库密钥来保护你的设备解锁密码。 有关详细信息，请参阅[在 Azure Data Box 的 Azure Key Vault 中使用客户管理的密钥](data-box-customer-managed-encryption-key-portal.md)。
+7. 在“数据目标”屏幕上，选择“数据目标”（存储帐户或托管磁盘） 。
 
-7. 在“数据目标”选项卡中，选择“数据目标” 。
-
-    如果使用“存储帐户”作为存储目标，则会看到以下屏幕截图：
+    如果使用“存储帐户”作为存储目标，则会看到以下屏幕：
 
     ![Data Box 导入订单向导的“数据目标”屏幕，其中已选择存储帐户](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
@@ -265,37 +263,104 @@ PS C:\Windows\System32>
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 
-    ![Data Box 导入订单向导的“数据目标”屏幕，其中已选择“托管磁盘”](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Data Box 导入订单向导的“数据目标”屏幕，其中已选择“托管磁盘”](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
 
     为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+
    > [!NOTE]
    > 如果页 blob 未成功转换为托管磁盘，它将保留在存储帐户中，你需为存储付费。
 
-    在完成时选择“下一步:安全性”以继续操作。
+8. 在完成时选择“下一步:安全性”以继续操作。
 
-    通过“安全性”屏幕，可以使用自己的设备并共享密码，还可选择使用双重加密。 
+    通过“安全性”屏幕，可使用自己的加密密钥和设备并共享密码，还可选择使用双重加密。
 
     “安全性”屏幕上的所有设置都是可选的。 如果不更改任何设置，则将应用默认设置。
 
     ![Data Box 导入订单向导的“安全性”屏幕](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-8. 如果不想使用 Azure Data Box 默认使用的系统生成的密码，请展开“创建自己的密码”。
+9. 如果要使用自己的客户管理的密钥来保护新资源的解锁密钥，请展开“加密类型”。
 
-   系统生成的密码很安全，建议使用该密码，除非贵组织另有要求。
+    可选择性地为 Azure Data Box 配置客户管理的密钥。 默认情况下，Data Box 使用 Microsoft 管理的密钥来保护解锁密钥。
 
-   ![Data Box 导入订单“安全性”屏幕上展开的“自带密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
+    客户管理的密钥不影响设备上数据的加密方式。 该密钥仅用于加密设备解锁密钥。
+
+    如果不想使用客户管理的密钥，请跳到步骤 15。
+
+   ![显示加密类型设置的“安全性”屏幕](./media/data-box-deploy-ordered/customer-managed-key-01.png)
+
+10. 选择“客户管理的密钥”作为密钥类型。 然后，选中“选择密钥保管库和密钥”。
+   
+    ![安全屏幕，客户管理的密钥的设置](./media/data-box-deploy-ordered/customer-managed-key-02.png)
+
+11. 在“从 Azure Key Vault 中选择密钥”边栏选项卡中，订阅会自动填充。
+
+    - 对于“密钥保管库”，可以从下拉列表中选择现有的密钥保管库。
+
+      ![从 Azure Key Vault 屏幕上选择密钥](./media/data-box-deploy-ordered/customer-managed-key-03.png)
+
+    - 还可以选择“新建”来创建新的密钥保管库。 在“创建密钥保管库”屏幕上，输入资源组和密钥保管库名称。 确保已启用软删除和清除保护 。 接受其他所有默认值，然后选择“查看 + 创建”。
+
+      ![创建新的 Azure Key Vault 设置](./media/data-box-deploy-ordered/customer-managed-key-04.png)
+
+      查看密钥保管库的信息，然后选择“创建”。 等待几分钟，直到密钥保管库创建完成。
+
+      ![新的 Azure Key Vault 查看屏幕](./media/data-box-deploy-ordered/customer-managed-key-05.png)
+
+12. 在“从 Azure Key Vault 选择密钥”中，可选择密钥保管库中的现有密钥。
+
+    ![从 Azure Key Vault 中选择现有密钥](./media/data-box-deploy-ordered/customer-managed-key-06.png)
+
+    如果要创建新的密钥，请选择“新建”。 必须使用 RSA 密钥。 大小可以是 2048 或更大。 输入新密钥的名称，接受其他默认值，然后选择“创建”。
+
+      ![创建新的密钥选项](./media/data-box-deploy-ordered/customer-managed-key-07.png)
+
+      在密钥保管库中创建密钥后，你将收到通知。
+
+13. 选择要使用的密钥的版本，然后选中“选择” 。
+
+      ![在密钥保管库中创建的新密钥](./media/data-box-deploy-ordered/customer-managed-key-08.png)
+
+    如果要创建新的密钥版本，请选择“新建”。
+
+    ![打开用于创建新密钥版本的对话框](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
+
+    选择新密钥版本的设置，然后选择“创建”。
+
+    ![创建新的密钥版本](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
+
+    “安全性”屏幕上的“加密类型”设置将显示密钥保管库和密钥 。
+
+    ![用于客户管理的密钥的密钥和密钥保管库](./media/data-box-deploy-ordered/customer-managed-key-09.png)
+
+14. 选择将用于管理对此资源的访问权限的用户标识。 选中“选择用户标识”。 在右侧面板中，选择要使用的订阅和托管标识。 然后选取“选择”  。
+
+    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+
+    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)中的指南操作。
+    
+    ![选择用户标识](./media/data-box-deploy-ordered/customer-managed-key-10.png)
+
+    用户标识显示在“加密类型”设置中。
+
+    ![加密类型设置中显示的所选用户标识](./media/data-box-deploy-ordered/customer-managed-key-11.png)
+
+15. 如果不想采用 Azure Data Box 默认使用的系统生成的密码，请在“安全性”屏幕上展开“创建自己的密码” 。
+
+    系统生成的密码很安全，建议使用该密码，除非贵组织另有要求。
+
+    ![展开 Data Box 导入订单的“创建自己的密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - 要对新设备使用自己的密码，请在“设置设备密码的首选项”中选择“使用自己的密码”，然后键入符合安全要求的密码 。
    
      ![Data Box 导入订单“安全性”屏幕上的“使用自己的设备密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
-   - 使用自己的共享密码：
+ - 使用自己的共享密码：
 
-     1. 在“设置共享密码的首选项”中，依次选择“使用自己的密码”和“选择共享密码”  。
+   - 在“设置共享密码的首选项”中，依次选择“使用自己的密码”和“选择共享密码”  。
      
         ![Data Box 导入订单“安全性”屏幕上的“使用自己的共享密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-     1. 为订单中的每个存储帐户键入一个密码。 该密码将用于存储帐户的所有共享。
+    - 为订单中的每个存储帐户键入一个密码。 该密码将用于存储帐户的所有共享。
      
         要对所有存储帐户使用同一密码，请选择“复制到全部”。 完成后，选择“保存”。
      
@@ -303,38 +368,38 @@ PS C:\Windows\System32>
 
        在“安全性”屏幕上，可以使用“查看或更改密码”来更改密码 。
 
-9. 在“安全性”中，如果要启用基于软件的双重加密，请展开“双重加密(适用于高度安全的环境)”，然后选择“为订单启用双重加密”  。
+16. 在“安全性”中，如果要启用基于软件的双重加密，请展开“双重加密(适用于高度安全的环境)”，然后选择“为订单启用双重加密”  。
 
-   ![Data Box 导入订单“安全性”屏幕上的“启用基于软件的加密”选项](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+    ![Data Box 导入的安全性屏幕，为 Data Box 订单启用了基于软件的加密](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
-   除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
+    除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
 
-   > [!NOTE]
-   > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
+    > [!NOTE]
+    > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
 
-   在完成时选择“下一步:联系人详细信息”以继续。
+    在完成时选择“下一步:联系人详细信息”以继续。
 
-10. 在“联系人详细信息”中，选择“+ 添加送货地址” 。
+17. 在“联系人详细信息”中，选择“+ 添加送货地址” 。
 
-    ![在“联系人详细信息”屏幕中，将寄送地址添加到你的 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![在“联系人详细信息”屏幕中，将寄送地址添加到你的 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
 
-11. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 然后选择“验证地址”。 该服务将检查地址的服务可用性。 如果该寄送地址提供服务，你将收到通知。
+18. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 选择“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
-     ![“添加寄送地址”对话框，其中标注了“寄送方式”选项和“添加寄送地址”选项](media/data-box-deploy-ordered/select-data-box-import-10.png)
+    ![“添加寄送地址”对话框的屏幕截图，其中标注了“寄送方式”选项和“添加寄送地址”选项。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
     如果你选择了自我托管交付，则在成功下单后，你将收到一封电子邮件通知。 有关自托管寄送的详细信息，请参阅[使用自托管寄送](data-box-portal-customer-managed-shipping.md)。
 
-12. 成功验证寄送详细信息后，选择“添加送货地址”。 你将返回“联系人详细信息”选项卡。
+19. 成功验证寄送详细信息后，选择“添加送货地址”。 你将返回“联系人详细信息”选项卡。
 
-13. 返回“联系人详细信息”后，添加一个或多个电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
+20. 返回“联系人详细信息”后，添加一个或多个电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 
     我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
 
-    ![订单向导中“联系人详细信息”的电子邮件部分](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![订单向导中“联系人详细信息”的电子邮件部分](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
 
-12. 查看“查看 + 订购”中与订单、联系人、通知和隐私条款相关的信息。 选中对应于同意隐私条款的复选框。
+21. 查看“查看 + 订购”中与订单、联系人、通知和隐私条款相关的信息。 选中对应于同意隐私条款的复选框。
 
-13. 选择“订单”。 创建订单需要几分钟时间。
+22. 选择“订单”。 创建订单需要几分钟时间。
 
     ![订单向导的“审查和订购”屏幕](media/data-box-deploy-ordered/select-data-box-import-11.png)
 

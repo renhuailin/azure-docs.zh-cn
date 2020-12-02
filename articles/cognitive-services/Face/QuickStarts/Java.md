@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: fbe62cf00422710e18a6b112adc08f19ea03177b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8ea2908711497db5e86a7dd665548e33b9d9f25
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858347"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020851"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入门：使用 REST API 和 Java 检测图像中的人脸
 
@@ -63,7 +63,7 @@ ms.locfileid: "91858347"
 
 ### <a name="call-the-face-detection-rest-api"></a>调用人脸检测 REST API
 
-通过以下代码添加 **main**方法。 它构造一个针对人脸 API 的 REST 调用，以便检测远程图像（`faceAttributes` 字符串指定要检索的人脸属性）中的人脸信息。 然后，它将输出数据写入到 JSON 字符串。
+通过以下代码添加 **main** 方法。 它构造一个针对人脸 API 的 REST 调用，以便检测远程图像（`faceAttributes` 字符串指定要检索的人脸属性）中的人脸信息。 然后，它将输出数据写入到 JSON 字符串。
 
 :::code language="java" source="~/cognitive-services-quickstart-code/java/Face/rest/detect.java" id="main":::
 

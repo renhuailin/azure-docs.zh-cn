@@ -10,25 +10,25 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4490142a278d5e724fade42e697d8cf2206c0da8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e70d4d83fcd9641fa86f013688b5a3a6e3652919
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367329"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338395"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>什么是必应自定义搜索 API？
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 借助必应自定义搜索 API，可为关注的主题创建定制的无广告搜索体验。 可以指定要让必应搜索的域和网页，并可以固定、提升或降级特定的内容以创建自定义的 Web 视图，帮助用户快速找到相关的搜索结果。 
 
 ## <a name="features"></a>功能
 
-|Feature  |说明  |
+|功能  |说明  |
 |---------|---------|
 |[自定义实时搜索建议](define-custom-suggestions.md)     | 当用户键入搜索词时，以下拉列表的形式提供搜索建议。       | 
 |[自定义图像搜索体验](get-images-from-instance.md)     | 让用户从自定义搜索实例中指定的域和网站搜索图像。        |        

@@ -10,17 +10,17 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: de578ec286a8232ee8d4e259b2f37fb76101f7a5
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6be69a1ec20ed859769c944a2f66de1310c09507
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506207"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915471"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 已部署的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
 
@@ -44,7 +44,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-administration</artifactId>
-    <version>1.0.0-beta.2</version> 
+    <version>1.0.0-beta.3</version> 
 </dependency>
 ```
 
@@ -98,12 +98,22 @@ HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .endpoint(endpoint)
-    .credential(new CommunicationClientCredential(accessKey))
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true)。
+可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)。
+
+你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="create-an-identity"></a>创建标识
 

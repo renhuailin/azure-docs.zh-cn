@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005074"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析键值对和表的表单
 
@@ -69,7 +69,7 @@ ms.locfileid: "91961777"
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -104,11 +104,11 @@ ms.locfileid: "91961777"
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-analyze.py`。
 
-调用**分析表单** API 时，会收到一个 `201 (Success)` 响应，其中包含 **Operation-Location** 标头。 此标头的值是用于跟踪“分析”操作结果的 ID。 上述脚本将此标头的值输出到控制台。
+调用 **分析表单** API 时，会收到一个 `201 (Success)` 响应，其中包含 **Operation-Location** 标头。 此标头的值是用于跟踪“分析”操作结果的 ID。 上述脚本将此标头的值输出到控制台。
 
 ## <a name="get-the-analyze-results"></a>获取分析结果
 
-将以下代码添加到 Python 脚本的底部。 这样就可以在新的 API 调用中使用来自上一调用的 ID 值，以便检索分析结果。 “分析表单”操作是异步的，因此此脚本会定期调用 API，直到结果可用为止。**** 我们建议调用间隔为一秒或更长时间。
+将以下代码添加到 Python 脚本的底部。 这样就可以在新的 API 调用中使用来自上一调用的 ID 值，以便检索分析结果。 “分析表单”操作是异步的，因此此脚本会定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python 
 n_tries = 15

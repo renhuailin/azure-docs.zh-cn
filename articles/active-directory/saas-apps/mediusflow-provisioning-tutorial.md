@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353588"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182037"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -36,7 +36,7 @@ ms.locfileid: "94353588"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中[有权](../users-groups-roles/directory-assign-admin-roles.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * 具有质量保证或生产租户的活动 MediusFlow 订阅。
 * MediusFlow 中拥有管理员访问权限的用户帐户，可以在 MediusFlow 中执行配置。
 * 在 MediusFlow 租户中添加的公司，应将用户预配到其中。
@@ -48,21 +48,21 @@ ms.locfileid: "94353588"
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>步骤 2. 将 MediusFlow 配置为支持通过 Azure AD 进行预配
 
-### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>激活 MediusFlow 中的 Microsoft 365 应用
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>在 MediusFlow 中激活 Microsoft 365 应用
 首先，在 MediusFlow 中启用 Azure AD 登录名的访问权限和 Azure AD 配置功能，具体步骤如下：
 
 #### <a name="user-login"></a>用户登录
-若要使登录流 Microsoft 365/Azure AD 请参阅 [此] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
+若要启用对 Microsoft 365/Azure AD 的登录流，请参阅[这篇] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>用户传输配置
-若要启用用户的配置门户进行设置，请参阅 [此](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) 文 Azure AD。
+若要启用用户的配置门户，以便通过 Azure AD 进行预配，请参阅[这篇](
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)文章。
 
 #### <a name="configure-user-provisioning"></a>配置用户设置
 
 1.  通过提供租户 ID 来登录 [MediusFlow 管理控制台](https://office365.cloudapp.mediusflow.com/)。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，突出显示了“MediusFlow 租户名称”框和“验证”按钮。" border="false":::
 
 2. 验证与 MediusFlow 的连接。
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 保存配置。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="显示第四个集成步骤的 MediusFlow 管理控制台屏幕截图。将突出显示 &quot;保存配置&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="显示第四个集成步骤的 MediusFlow 管理控制台的屏幕截图。突出显示了“保存配置”按钮。" border="false":::
 
 5. 选中“使用用户预配”，然后单击“确定”。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="显示第五个集成步骤的 MediusFlow 管理控制台的屏幕截图。将突出显示 &quot;使用用户设置&quot; 和 &quot;确定&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="显示第五个集成步骤的 MediusFlow 管理控制台的屏幕截图。突出显示了“使用用户设置”和“确定”按钮。" border="false":::
 
 6. 单击“生成密钥”。 复制并保存此值。将在 Azure 门户中 MediusFLow 应用的“预配”选项卡的“密钥令牌”字段中输入此值。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理控制台中 &quot;用户预配配置&quot; 选项卡的屏幕截图。将突出显示 &quot;生成机密密钥&quot; 和 &quot;复制&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理控制台中的“用户设置配置”选项卡的屏幕截图。突出显示了“生成密钥”和“复制”按钮。" border="false":::
 
 7. 单击“确定”。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理员控制台的屏幕截图，通知用户单击 &quot;确定&quot; 生成新密钥。突出显示 &quot;确定&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理控制台的屏幕截图，其中显示一个通知，指示用户单击“确定”以生成新密钥。突出显示了“确定”按钮。" border="false":::
 
-8. 若要使用预定义角色集、公司和 MediusFlow 中的其他常规配置来导入用户，需要先对其进行配置。 首先，通过单击“添加新配置”来添加配置。
+8. 若要在 MediusFlow 中导入带有一组预定义角色、公司和其他常规配置的用户，需要先对其进行配置。 首先，通过单击“添加新配置”来添加配置。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理控制台中 &quot;用户预配配置&quot; 选项卡的屏幕截图。将突出显示 &quot;添加新配置&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理控制台中的“用户设置配置”选项卡的屏幕截图。突出显示了“添加新配置”按钮。" border="false":::
 
 9. 提供用户的默认设置。 在此视图中，可以设置默认特性。 如果标准设置是正确的，那么只提供有效的公司名称就足够了。 由于这些配置设置是从 Mediusflow 中提取的，因此需要先对其进行配置。 有关详细信息，请参阅本文的“先决条件”部分。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow &quot;添加新配置&quot; 窗口的屏幕截图。许多设置都可见，其中包括区域设置、筛选器和用户角色。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow“添加新配置”窗口的屏幕截图。许多设置都可见，包括区域设置、筛选器和用户角色。" border="false":::
 
 10. 单击“保存”，以保存用户配置。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理控制台中 &quot;用户预配配置&quot; 选项卡的屏幕截图。突出显示 &quot;保存&quot; 按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理控制台中的“用户设置配置”选项卡的屏幕截图。突出显示了“保存”按钮。" border="false":::
 
 11. 若要获取用户预配链接，请单击“复制 SCIM 链接”。 复制并保存此值。 将在 Azure 门户中 MediusFLow 应用的“预配”选项卡的“租户 URL”字段中输入此值。
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理控制台中 &quot;用户预配配置&quot; 选项卡的屏幕截图。将突出显示 &quot;复制 S C I M&quot; 链接按钮。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理控制台中的“用户设置配置”选项卡的屏幕截图。突出显示了“复制 SCIM 链接”按钮。" border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用库添加 MediusFlow
 
@@ -135,15 +135,15 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 3. 选择“预配”选项卡。
 
-    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
+    ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
+    ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分下的“租户 URL”中，输入之前检索到的租户 URL 值。 在“密钥令牌”中，输入之前检索到的密钥令牌值。 单击“测试连接”，以确保 Azure AD 可以连接到 MediusFlow。 如果连接失败，请确保 MediusFlow 帐户拥有管理员权限，然后重试。
 
-      ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/mediusflow-provisioning-tutorial/provisioning.png)
+      ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/mediusflow-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件地址”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送一封电子邮件通知”复选框。
 

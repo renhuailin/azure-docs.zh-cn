@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
 ms.openlocfilehash: ceed9c02ff28f3c9f40e8659563ecd96d96058fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80241800"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187498"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Java 示例](https://aka.ms/speech/github-java)

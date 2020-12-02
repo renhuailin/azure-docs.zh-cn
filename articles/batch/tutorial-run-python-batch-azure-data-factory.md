@@ -1,18 +1,18 @@
 ---
-title: 通过数据工厂运行 Python 脚本
-description: 教程 - 了解如何使用 Azure Batch 通过 Azure 数据工厂将 Python 脚本作为管道的一部分运行。
-author: mammask
+title: 教程 - 通过数据工厂运行 Python 脚本
+description: 了解如何使用 Azure Batch 通过 Azure 数据工厂将 Python 脚本作为管道的一部分运行。
+author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.author: komammas
+ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886900"
+ms.locfileid: "94917624"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 
@@ -155,6 +155,5 @@ python main.py
 若要详细了解 Azure 数据工厂，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure 数据工厂](../data-factory/introduction.md)
-> [管道和活动](../data-factory/concepts-pipelines-activities.md)
-> [自定义活动](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Azure 数据工厂概述](../data-factory/introduction.md)
+
