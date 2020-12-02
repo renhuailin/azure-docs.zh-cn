@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 8e26d128fea7208206be8a7329522f8202051215
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 70a33774ac82312660d887fb86f7e2a482c30a0c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095401"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487161"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 可以通过向必应当地企业搜索 API 的终结点发送搜索查询并包含必需的 `Ocp-Apim-Subscription-Key` 标头，从该 API 获取当地查询结果。 除了使用可用的[标头](local-search-reference.md#headers)和[参数](local-search-reference.md#query-parameters)以外，还可以通过指定要搜索的区域的[地理边界](specify-geographic-search.md)以及要返回的地点的[类别](local-search-query-response.md)，来自定义搜索。
 

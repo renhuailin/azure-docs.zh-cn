@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693170"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487858"
 ---
 # <a name="security-control-network-security"></a>安全控制：网络安全
 
@@ -76,7 +76,7 @@ ms.locfileid: "94693170"
 
 使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-- [如何配置 DDoS 防护](../../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../../ddos-protection/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 

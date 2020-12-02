@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791284"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487297"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的环形缓冲区目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ ms.locfileid: "92791284"
 本主题演示一个 Transact-SQL 代码示例：
 
 1. 创建一个包含要演示的数据的表。
-2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting** 。
+2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting**。
 
    * 此事件仅限于包含特定 Update 字符串的 SQL 语句： **statement LIKE '%UPDATE tabEmployee%'** 。
-   * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer** 。
+   * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
 5. 发出 SQL SELECT 语句，从环形缓冲区检索事件输出。

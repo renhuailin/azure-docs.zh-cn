@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408662"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487739"
 ---
 # <a name="security-control-v2-network-security"></a>安全控制 V2：网络安全
 
@@ -40,7 +40,7 @@ ms.locfileid: "94408662"
 
 - [Azure Sentinel 不安全协议工作簿](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -68,7 +68,7 @@ ms.locfileid: "94408662"
 
 - [Azure 专用链接](../../private-link/private-link-service-overview.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -92,7 +92,7 @@ ms.locfileid: "94408662"
 
 - [了解虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -120,9 +120,9 @@ ms.locfileid: "94408662"
 
 - [如何部署 Azure WAF](../../web-application-firewall/overview.md)
 
-- [使用 Azure 门户管理 Azure DDoS 防护标准](../../virtual-network/manage-ddos-protection.md)
+- [使用 Azure 门户管理 Azure DDoS 防护标准](../../ddos-protection/manage-ddos-protection.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -144,7 +144,7 @@ ms.locfileid: "94408662"
 
 - [Microsoft Defender ATP EDR 功能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -170,7 +170,7 @@ ms.locfileid: "94408662"
 
 - [了解并使用应用程序安全组](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -196,7 +196,7 @@ ms.locfileid: "94408662"
 
 - [阻止无关联的 DNS 项并避免子域接管](../fundamentals/subdomain-takeover.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 

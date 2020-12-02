@@ -4,15 +4,15 @@ description: 本文了解 Azure Analysis Services 如何使用 Azure Active Dire
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 551bae56565140da3754e74a23b1cc18087f1171
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833786"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487433"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -24,7 +24,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/externa
 
 ## <a name="authentication"></a>身份验证
 
-所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)（AMO、MSOLAP、ADOMD）连接到服务器。 
+所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)（AMO、MSOLAP、ADOMD）连接到服务器。 
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 

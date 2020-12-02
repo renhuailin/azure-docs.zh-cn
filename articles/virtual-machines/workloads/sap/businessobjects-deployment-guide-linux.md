@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965351"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486651"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
 
@@ -37,7 +37,7 @@ ms.locfileid: "94965351"
 - Azure Database for MySQL (版本： 8.0.15) 
 - MySQL C API 连接器-libmysqlclient (版本： 6.1.11) 
 
-| 文件系统        | 说明                                                                                                               | 大小(GB)             | 所有者  | 组  | 存储                    |
+| 文件系统        | 说明                                                                                                               | 大小(GB)             | 所有者  | Group  | 存储                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | 用于安装 SAP BOBI 实例、默认 Tomcat Web 应用程序和数据库驱动程序的文件系统 (如有必要)  | SAP 大小调整准则 | bl1adm | sapsys | 托管高级磁盘-SSD |
 | /usr/sap/frsinput  | 装载目录适用于所有 BOBI 主机上用于共享文件的共享文件，这些主机将用作输入文件存储库目录  | 业务需求         | bl1adm | sapsys | Azure NetApp 文件         |
@@ -615,7 +615,7 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 File Repository Server (FRS) 指的是存储诸如报表、universes 和连接等内容的磁盘目录。 它在该系统的所有应用程序服务器之间共享。 因此必须确保其高度可用。
 
-在 Azure 上，可以选择用于文件共享的 [Azure 高级文件](../../../storage/files/storage-files-introduction.md) 或 [azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md) ，这些文件共享设计为高度可用且持久持久。 有关详细信息，请参阅 Azure 文件的 [冗余](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) 部分。
+在 Azure 上，可以选择用于文件共享的 [Azure 高级文件](../../../storage/files/storage-files-introduction.md) 或 [azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md) ，这些文件共享设计为高度可用且持久持久。 有关详细信息，请参阅 Azure 文件的 [冗余](../../../storage/files/storage-files-planning.md#redundancy) 部分。
 
 > [!NOTE]
 > Azure 文件的 SMB 协议已公开发布，但 Azure 文件的 NFS 协议支持目前为预览版。 有关详细信息，请参阅 [Azure 文件的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
@@ -667,7 +667,7 @@ Azure Site Recovery 服务可用于在次要区域中复制运行 Web 和 BI 应
 
   可以使用 Azure NetApp 文件跨区域复制，该复制当前为 [预览版](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) ，使用 NetApp SnapMirror®技术。 因此，只有更改的块以压缩、高效的格式通过网络发送。 这种专有技术可最大程度地减少跨区域复制数据所需的数据量，从而节省数据传输成本。 它还缩短了复制时间，因此你可以获得较小的还原点目标 (RPO) 。 有关详细信息，请参阅 [使用跨区域复制的要求和注意事项](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md) 。
 
-- **Azure 高级文件** 仅支持本地冗余 (LRS) 和区域冗余存储 (ZRS) 。 对于 Azure 高级文件 DR 策略，可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) 将文件复制到不同区域中的其他存储帐户。 有关详细信息，请参阅 [灾难恢复和存储帐户故障转移](../../../storage/common/storage-disaster-recovery-guidance.md)
+- **Azure 高级文件** 仅支持本地冗余 (LRS) 和区域冗余存储 (ZRS) 。 对于 Azure 高级文件 DR 策略，可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到不同区域中的其他存储帐户。 有关详细信息，请参阅 [灾难恢复和存储帐户故障转移](../../../storage/common/storage-disaster-recovery-guidance.md)
 
 #### <a name="cms-database"></a>CMS 数据库
 
@@ -695,4 +695,4 @@ Azure Database for MySQL 提供了多个选项，可在发生任何灾难时恢�
 - [为多层 SAP 应用部署设置灾难恢复](../../../site-recovery/site-recovery-sap.md)
 - [适用于 SAP 的 Azure 虚拟机规划和实施](planning-guide.md)
 - [适用于 SAP 的 Azure 虚拟机部署](deployment-guide.md)
-- [适用于 SAP 的 Azure 虚拟机 DBMS 部署](dbms-guide.md)
+- [适用于 SAP 的 Azure 虚拟机 DBMS 部署](./dbms_guide_general.md)

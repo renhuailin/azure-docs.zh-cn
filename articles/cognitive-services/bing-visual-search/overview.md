@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 50db66d54993a4b5ee8afb4756be6b1f4387a1d0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 7dfc704fb38550993adb7835d4500dee890117a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369335"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486974"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什么是必应视觉搜索 API？
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应视觉搜索 API 返回图像见解。 你可以上传图像，也可以提供图像的 URL。 见解是视觉上类似的图像、购物源、包含图像的网页，等等。 必应视觉搜索 API 返回的见解类似于 Bing.com/images 上显示的见解。 
 

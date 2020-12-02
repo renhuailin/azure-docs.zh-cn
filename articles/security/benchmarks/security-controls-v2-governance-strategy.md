@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e4da0b288bca2517e4e0f58569215709a5f71a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408786"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487756"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：治理和策略
 
@@ -45,19 +45,19 @@ ms.locfileid: "94408786"
 - 合适的加密标准
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure 安全基准 - 资产管理](security-controls-v2-asset-management.md)
 
 - [Azure 安全基准 - 数据保护](security-controls-v2-data-protection.md)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -79,9 +79,9 @@ ms.locfileid: "94408786"
 
 - [使网络分段与企业分段策略相匹配](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -95,9 +95,9 @@ ms.locfileid: "94408786"
 
 - [Azure 安全基准 - 状况和漏洞管理](security-controls-v2-posture-vulnerability-management.md)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -109,15 +109,15 @@ ms.locfileid: "94408786"
 
 确保为安全组织中的角色和职责制定并传达清晰的策略。 优先考虑提供涉及安全决策的明确责任，对每个人进行共同职责模式培训，并为技术团队传授保护云的技术。
 
-- [Azure 安全最佳做法 1-人员：教育团队开展云安全旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Azure 安全最佳做法 1 - 人员：针对云安全历程培训团队](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
 - [Azure 安全最佳做法 2 - 人员：针对云安全技术培训团队](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
 - [Azure 安全最佳做法 3 - 流程：针对云安全决策分配责任](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -153,9 +153,9 @@ ms.locfileid: "94408786"
 
 - [企业网络体系结构策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -189,9 +189,9 @@ ms.locfileid: "94408786"
 
 - [Azure 标识管理安全概述](../fundamentals/identity-management-overview.md)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -230,9 +230,9 @@ ms.locfileid: "94408786"
 
 - [Azure 企业规模、管理和监视](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -259,8 +259,8 @@ ms.locfileid: "94408786"
 
 - [Azure 采用框架 - 业务连续性和灾难恢复](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**责任** ：客户
+**责任**：客户
 
-**客户安全利益干系人** （ [了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+**客户安全利益干系人**（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)

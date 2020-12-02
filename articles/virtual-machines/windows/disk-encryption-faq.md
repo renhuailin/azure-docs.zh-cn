@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6fedefccf57364e690415542114030ba7ce12b49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3f02c90dd6c751909434f3f2af9b8eb81ee1c4b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974085"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488368"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -55,15 +55,15 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="what-is-storage-server-side-encryption"></a>什么是存储服务器端加密？
 
-存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 指定一个由客户托管的密钥，即可实现对使用自己的密钥加密托管磁盘的管理。 有关详细信息，请参阅 [Azure 托管磁盘的服务器端加密](disk-encryption.md)。
+存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 指定一个由客户托管的密钥，即可实现对使用自己的密钥加密托管磁盘的管理。 有关详细信息，请参阅 [Azure 托管磁盘的服务器端加密](../disk-encryption.md)。
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure 磁盘加密与使用客户托管的密钥的存储服务器端加密有何不同，分别应于何时使用这两种解决方案？
 
 Azure 磁盘加密使用客户托管的密钥提供对 OS 磁盘、数据磁盘和临时磁盘的端对端加密。
 
 - 如果你的要求包括对上述各项加密和端到端加密，请使用 Azure 磁盘加密。 
-- 如果你的要求是使用客户托管的密钥仅对静态数据加密，请采用[使用客户托管密钥的服务器端加密](disk-encryption.md)。 不能即使用 Azure 磁盘加密又使用采用了客户托管密钥的存储服务器端加密来加密磁盘。
-- 如果使用的是在 [Windows 不支持的方案](disk-encryption-windows.md#unsupported-scenarios)中调出的方案，请考虑[使用客户托管密钥的服务器端加密](disk-encryption.md)。 
+- 如果你的要求是使用客户托管的密钥仅对静态数据加密，请采用[使用客户托管密钥的服务器端加密](../disk-encryption.md)。 不能即使用 Azure 磁盘加密又使用采用了客户托管密钥的存储服务器端加密来加密磁盘。
+- 如果使用的是在 [Windows 不支持的方案](disk-encryption-windows.md#unsupported-scenarios)中调出的方案，请考虑[使用客户托管密钥的服务器端加密](../disk-encryption.md)。 
 - 如果组织的策略允许你使用 Azure 托管密钥加密静态内容，则无需执行任何操作，因为系统默认加密这些内容。 对于托管磁盘而言，默认在服务器端加密中使用平台托管密钥来加密存储内的内容。 该密钥是由 Azure 存储服务托管的。 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>我如何轮换机密或加密密钥？

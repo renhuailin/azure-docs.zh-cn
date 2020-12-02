@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967493"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486515"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -245,8 +245,8 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 必须将多个 Azure 磁盘连接到 DT 2.0 VM 并在 OS 级别创建软件 RAID（带区），以实现每个 VM 的磁盘吞吐量的最大限制。 在这方面，单个 Azure 磁盘无法提供该吞吐量以达到最大 VM 限制。 Azure 高级存储是运行 DT 2.0 的必需条件。 
 
 - 有关可用的 Azure 磁盘类型的详细信息，请参阅[此处](../../disks-types.md)
-- 有关通过 mdadm 创建软件 RAID 的详细信息，请参阅[此处](../../linux/configure-raid.md)
-- 有关配置 LVM 以创建最大吞吐量的带区卷的详细信息，请参阅[此处](../../linux/configure-lvm.md)
+- 有关通过 mdadm 创建软件 RAID 的详细信息，请参阅[此处](/previous-versions/azure/virtual-machines/linux/configure-raid)
+- 有关配置 LVM 以创建最大吞吐量的带区卷的详细信息，请参阅[此处](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 
 根据大小要求，可使用不同的选项来达到 VM 的最大吞吐量。 以下是针对每个 DT 2.0 VM 类型以实现 VM 的吞吐量上限可能的数据卷磁盘配置。 E32sv3 VM 应视为较小工作负载的入门级别。 如果它的速度不够快，可能需要将 VM 的大小调整为 M64-32ms。
 由于 M64-32ms VM 具有大量内存，因此 IO 负载可能无法达到限制，尤其是对于读取密集型工作负载而言。 因此，根据客户特定的工作负荷，在条带集中使用更少的磁盘可能就足够了。 但为了安全起见，请选择下面的磁盘配置以保证最大吞吐量：
@@ -324,4 +324,3 @@ Azure 公有云的一个突出特性是只需为计算时间付费。 例如，�
 - [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性](./sap-hana-high-availability.md)
 - [Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性](./sap-hana-high-availability-rhel.md)
-

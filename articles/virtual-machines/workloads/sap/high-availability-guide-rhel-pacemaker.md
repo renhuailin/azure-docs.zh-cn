@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968547"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486336"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -69,6 +69,7 @@ ms.locfileid: "94968547"
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
   * [采用 RHEL 8-高可用性和群集的注意事项](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为 Standalone Enqueue Server 2 (ENSA2)](https://access.redhat.com/articles/3974941)
+  * [RHEL 适用于 Azure 上的 SAP 产品](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>群集安装
 
@@ -80,7 +81,7 @@ ms.locfileid: "94968547"
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-1. **[A]** 注册。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
+1. **[A]** 注册。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    注册虚拟机，将其附加到包含适用于 RHEL 7 的存储库的池。
 
@@ -90,9 +91,9 @@ ms.locfileid: "94968547"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。
+   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。  
 
-1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
+1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    为了安装所需的包，启用以下存储库。
 

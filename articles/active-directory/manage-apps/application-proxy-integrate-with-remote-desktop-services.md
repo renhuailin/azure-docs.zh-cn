@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348069"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488062"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -130,9 +130,11 @@ ms.locfileid: "96348069"
 
 | 身份验证方法 | 支持的客户端配置 |
 | --------------------- | ------------------------------ |
-| 预身份验证    | 使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 外接程序的 RD Web-Windows 7/10 <br /> *请注意，"我的应用" 门户仅支持边缘。* |
+| 预身份验证    | 使用 Internet Explorer * 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 外接程序的 RD Web-Windows 7/10 |
 | 预身份验证    | RD Web 客户端-与 HTML5 兼容的 Web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更高版本)  |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
+
+* 当 "我的应用" 门户用于访问远程桌面应用程序时，需要 Edge Chromium IE 模式。  
 
 相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证，你可以使用 Azure AD 身份验证功能，如单一登录、条件性访问和本地资源的双重验证。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
 

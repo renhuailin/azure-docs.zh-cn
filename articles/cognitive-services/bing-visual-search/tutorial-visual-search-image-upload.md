@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366122"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486872"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>教程：将图像上传到必应视觉搜索 API
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](https://aka.ms/cogsvcs/bingmove)所述的过程进行预配。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
-> 有关迁移说明，请参阅[必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用必应视觉搜索 API 可在 Web 中搜索类似于所上传图像的图像。 本教程介绍如何创建一个可向该 API 发送图像并在网页中显示该 API 返回的见解的 Web 应用程序。 请注意，此应用程序并不遵守有关使用该 API 的所有[必应用法和显示要求](../bing-web-search/use-display-requirements.md)。
 

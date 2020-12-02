@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968700"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486685"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
 
 本页介绍了在 Azure 虚拟机上运行 Oracle WebLogic Server (WLS) 的解决方案。 Oracle 和 Microsoft 共同开发并支持这些解决方案。
 
-还可以在 Azure Kubernetes 服务上运行 WLS。 [此 Microsoft 文章](/azure/virtual-machines/workloads/oracle/weblogic-aks)介绍了执行此操作的解决方案。
+还可以在 Azure Kubernetes 服务上运行 WLS。 [此 Microsoft 文章](./weblogic-aks.md)介绍了执行此操作的解决方案。
 
 WLS 是一台领先的 Java 应用程序服务器，可在全球范围内运行一些最重要的关键企业 Java 应用程序。 WLS 构成了 Oracle 软件套件的中间件基础。 Oracle 和 Microsoft 致力于让 WLS 的客户在 Azure 上运行工作负荷作为领先的云平台，从而实现选择和灵活性。
 

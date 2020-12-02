@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/24/2020
 ms.author: memildin
-ms.openlocfilehash: ee2582d25477d9b9f4fe0bac6b230132a797fd0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896588"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487943"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -83,12 +83,12 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>如何为订阅启用 Azure Defender？ 
 可以使用以下任一方法启用订阅的 Azure Defender： 
 
-|方法  |Instructions  |
+|方法  |说明  |
 |---------|---------|
 |Azure 门户的 Azure 安全中心页面|[启用 Azure Defender](#enable-azure-defender)|
-|REST API|[定价 API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
-|Azure CLI|[az security 定价](https://docs.microsoft.com/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|REST API|[定价 API](/rest/api/securitycenter/pricings)|
+|Azure CLI|[az security 定价](/cli/azure/security/pricing)|
+|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[捆绑定价](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
 |||
 

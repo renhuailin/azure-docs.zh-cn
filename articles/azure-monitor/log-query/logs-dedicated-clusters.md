@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874638"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488028"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
-Azure Monitor 日志专用群集是一种部署选项，可用于更好地为大容量客户提供服务。 每天引入超过 4 TB 数据的客户可使用专用群集。 具有专用群集的客户可以选择在这些群集上托管的工作区。
+Azure Monitor 日志专用群集是一种部署选项，可实现 Azure Monitor 记录客户的高级功能。 具有专用群集的客户可以选择在这些群集上托管的工作区。
 
-除了支持大容量，使用专用群集还有其他好处：
+需要专用群集的功能包括：
 
-- **速率限制** - 客户只在专用群集上才会拥有更高的 [引入速率限制](../service-limits.md#data-ingestion-volume-rate)。
-- **功能** - 某些企业功能只在专用群集上可用，特别是客户管理的密钥 (CMK) 和密码箱支持。 
-- **一致性** - 客户有自己的专用资源，因此不受运行在同一共享基础结构上的其他客户的影响。
-- **成本效率** - 使用专用群集可能更具成本效益，因为分配的产能预留层考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受产能预留折扣。
-- 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。
+- **[客户管理的密钥](../platform/customer-managed-keys.md)** -使用客户提供和控制的密钥来加密群集数据。
+- **[密码箱](../platform/customer-managed-keys.md#customer-lockbox-preview)** -客户可以控制 Microsoft 支持工程师对数据的访问请求。
+- **[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可防止其中一个加密算法或密钥泄露的情况。 在这种情况下，额外的加密层将继续保护你的数据。
+- **[多工作区](../log-query/cross-workspace-query.md)** -如果客户使用多个工作区进行生产，则使用专用群集可能有意义。 如果所有工作区都在同一群集上，则跨工作区查询将运行更快。 使用专用群集的方式也可能更具成本效益，因为分配的容量预留层将考虑所有群集引入，并将其应用到所有的工作区，即使其中一些空间较小且不符合容量保留折扣。
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 迁移到专用群集很简单。 无数据丢失或服务中断。 
 

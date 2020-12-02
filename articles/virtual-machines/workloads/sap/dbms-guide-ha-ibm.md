@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 01f02efd36c51f3969ee53e9efc78fbe1664b187
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015105"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486532"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
@@ -396,7 +396,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 > 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)文章介绍了如何启用这些节点来访问公共 IP 地址
 
 > [!IMPORTANT]
-> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
+> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
 
 1. 创建前端 IP 池：
 
@@ -492,7 +492,7 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享，其中的日志从两个节点写入。 NFS 共享必须高度可用。 
 
-可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详情，请参阅：
+可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详细信息，请参阅：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha] 
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](./high-availability-guide-suse-netapp-files.md)

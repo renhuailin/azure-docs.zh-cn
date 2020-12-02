@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023512"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487501"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：虚拟 WAN 的基于 ExpressRoute 的 IPsec
 
@@ -95,7 +95,7 @@ ms.locfileid: "96023512"
 
    如果启用了 BGP，BGP 将应用到在 Azure 中为此站点创建的所有连接。 在虚拟 WAN 上配置 BGP 等同于在 Azure VPN 网关上配置 BGP。 
    
-   本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。 在代表该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+   本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。 在表示该位置的相应 VPN 站点中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 1. 在完成时选择“下一步:查看 + 创建 >”检查设置值并创建 VPN 站点。 如果选择了要连接的 **中心**，则连接将在本地网络与中心 VPN 网关之间建立。
 
