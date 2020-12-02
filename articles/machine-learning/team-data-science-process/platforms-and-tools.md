@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ba7b8af9b50b9173f5e2040bb8b623eeafdd538
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023799"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453860"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -25,7 +25,7 @@ Microsoft 为云或本地平台提供了整套分析资源。 部署这些服务
 
 - 数据科学虚拟机（Windows 和 Linux CentOS）
 - HDInsight Spark 群集
-- Synapse Analytics
+- Azure Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive 群集
 - Azure 文件存储
@@ -65,9 +65,9 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azu
 
 ##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-借助 Azure Synapse Analytics，你可以在数秒内轻松扩展计算资源，而无需过度预配或过度支付。 此外，SQL 数据仓库提供暂停使用计算资源的独特选项，为我们赋予更大的自由以更好地管理云成本。 部署可缩放计算资源的功能使你可以将所有数据引入 Azure Synapse Analytics。 存储成本低廉，只需针对想要分析的数据集部分运行计算资源。 
+使用 Azure Synapse Analytics 可以在片刻之间轻松缩放计算资源，无需过度预配或过度付费。 此外，SQL 数据仓库提供暂停使用计算资源的独特选项，为我们赋予更大的自由以更好地管理云成本。 部署可缩放计算资源的能力使我们能够将所有数据放入 Azure Synapse Analytics。 存储成本低廉，只需针对想要分析的数据集部分运行计算资源。 
 
-有关 Azure Synapse Analytics 的详细信息，请参阅 [Azure Synapse analytics](https://azure.microsoft.com/services/sql-data-warehouse) 网站。 若要了解如何使用 Azure Synapse Analytics 构建端到端高级分析解决方案，请参阅运行 [中的团队数据科学过程：使用 Azure Synapse 分析](sqldw-walkthrough.md)。
+有关 Azure Synapse Analytics 的详细信息，请参阅 [Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) 网站。 若要了解如何使用 Azure Synapse Analytics 生成端到端高级分析解决方案，请参阅 [Team Data Science Process 实务：使用 Azure Synapse Analytics](sqldw-walkthrough.md)。
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

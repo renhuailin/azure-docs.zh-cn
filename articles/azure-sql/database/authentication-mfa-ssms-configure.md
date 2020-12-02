@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841234"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454373"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>为 SQL Server Management Studio 和 Azure AD 配置多重身份验证
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文演示如何将 Azure Active Directory (Azure AD) 多重身份验证 (MFA) 与 SQL Server Management Studio (SSMS) 结合使用。 将 SSMS 或 SqlPackage.exe 连接到 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics（以前称为“SQL 数据仓库”）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)时，可以使用 Azure AD MFA。 有关多重身份验证的概述，请参阅 [SQL 数据库、SQL 托管实例和 Azure Synapse 的通用身份验证（SSMS 对 MFA 的 支持）](../database/authentication-mfa-ssms-overview.md)。
+本文演示如何将 Azure Active Directory (Azure AD) 多重身份验证 (MFA) 与 SQL Server Management Studio (SSMS) 结合使用。 将 SSMS 或 SqlPackage.exe 连接到 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md) 和 [azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)时，可以使用 Azure AD MFA。 有关多重身份验证的概述，请参阅 [SQL 数据库、SQL 托管实例和 Azure Synapse 的通用身份验证（SSMS 对 MFA 的 支持）](../database/authentication-mfa-ssms-overview.md)。
 
 > [!IMPORTANT]
-> 本文其余部分将 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse（以前称为“SQL 数据仓库”）中的数据库统称为“数据库”，并且服务器指的是为 Azure SQL 数据库和 Azure Synapse 托管数据库的[服务器](logical-servers.md)。
+> Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 中的数据库在本文的其余部分中统称为数据库，服务器引用承载 Azure SQL 数据库和 Azure Synapse 的数据库的 [服务器](logical-servers.md) 。
 
 ## <a name="configuration-steps"></a>配置步骤
 

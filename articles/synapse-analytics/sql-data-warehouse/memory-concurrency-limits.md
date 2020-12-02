@@ -1,6 +1,6 @@
 ---
 title: 内存和并发限制
-description: 查看分配给 Azure Synapse Analytics 中的各个性能级别和资源类的内存和并发限制。
+description: 查看分配给 Azure Synapse Analytics 中专用 SQL 池的各种性能级别和资源类的内存和并发限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441674"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455357"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的内存和并发限制
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的内存和并发限制
 
 查看分配给 Azure Synapse Analytics 中的各个性能级别和资源类的内存和并发限制。  
 
@@ -125,7 +125,7 @@ ms.locfileid: "89441674"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-如果没有足够的并发槽位来启动查询执行，查询将根据重要性进行排队和执行。  如果重要性相同，查询将以先进先出的方式执行。  当查询完成并且查询和槽的数目低于限制时，Azure Synapse Analytics 会释放排队的查询。
+如果没有足够的并发槽位来启动查询执行，查询将根据重要性进行排队和执行。  如果重要性相同，查询将以先进先出的方式执行。  如果查询已完成并且查询数和槽数低于限制，则 Azure Synapse Analytics 会释放排队的查询。
 
 ## <a name="next-steps"></a>后续步骤
 

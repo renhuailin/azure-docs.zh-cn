@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccfc290df64417bf0504849a83dbe68efcbddefe
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b625a81ff328e6760ec0ad8d9acb5735f402df73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843700"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455626"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>逻辑应用的 Azure 安全基线
 
@@ -98,7 +98,7 @@ ms.locfileid: "94843700"
 
 - [如何限制入站 IP 地址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -1110,7 +1110,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。 
 
-- [了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](../security/fundamentals/antimalware.md)
+- [了解适用于 Azure 云服务和虚拟机的 Microsoft Anti-malware](../security/fundamentals/antimalware.md)
 
 - [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 
@@ -1208,7 +1208,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 

@@ -8,17 +8,17 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17dbdbbef45e0068601835197a1177ee20d98ca3
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455184"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics 加密 (工作区预览版) 
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的加密
 
 本文介绍：
-* Azure Synapse Analytics 工作区中静态数据的加密。
+* Synapse Analytics 工作区中静态数据的加密。
 * 配置 Synapse 工作区以便使用客户管理的密钥来启用加密。
 * 管理用于对工作区中的数据进行加密的密钥。
 

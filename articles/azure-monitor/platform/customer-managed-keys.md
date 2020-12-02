@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: c2a9dbb5fa821d408835cd1bcbf3e6afdade36e1
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317480"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454260"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -656,6 +656,12 @@ Content-type: application/json
 
 - 如果将群集链接到其他群集，则工作区链接将失败。
 
+- 当前不能在中国使用密码箱。 
+
+- 自动为从10月2020在支持的区域中创建的群集配置[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以验证群集是否已配置为使用群集上的 GET 请求进行双重加密，并观察 `"isDoubleEncryptionEnabled"` 属性值-它 `true` 适用于启用了双加密的群集。 
+  - 如果创建群集并收到错误 "<region name> 不支持对群集进行双加密。"，则仍可在不使用双加密的情况下创建群集。 `"properties": {"isDoubleEncryptionEnabled": false}`在 REST 请求正文中添加属性。
+  - 创建群集后，不能更改双加密设置。
+
 ## <a name="troubleshooting"></a>疑难解答
 
 - Key Vault 可用性的行为
@@ -682,10 +688,6 @@ Content-type: application/json
 - 部分操作较为耗时，可能需要一段时间才能完成 - 包括群集创建、群集密钥更新和群集删除。 可以通过两种方式检查操作状态：
   1. 使用 REST 时，从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
   2. 将 GET 请求发送到群集或工作区，然后观察响应。 例如，未链接的工作区在“功能”下没有 clusterResourceId 。
-
-- 自动为从10月2020在支持的区域中创建的群集配置[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以验证群集是否已配置为使用群集上的 GET 请求进行双重加密，并观察 `"isDoubleEncryptionEnabled"` 属性值-它 `true` 适用于启用了双加密的群集。 
-  - 如果创建群集并收到错误 "<region name> 不支持对群集进行双加密。"，则仍可在不使用双加密的情况下创建群集。 `"properties": {"isDoubleEncryptionEnabled": false}`在 REST 请求正文中添加。
-  - 创建群集后，不能更改双加密设置。
 
 - 错误消息
   

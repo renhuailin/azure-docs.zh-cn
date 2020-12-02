@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 身份验证
-description: 了解如何将 Azure Active Directory 身份验证与 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 配合使用
+description: 了解如何使用 Azure Active Directory 在 azure Synapse Analytics 中使用 Azure SQL 数据库、Azure SQL 托管实例和 Synapse SQL 进行身份验证
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454298"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) 身份验证是使用 Azure AD 中的标识连接到 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics（以前称为“SQL 数据仓库”）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。
+Azure Active Directory (Azure AD) 身份验证是一种机制，用于在托管实例中使用标识，通过[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)连接到[azure sql 数据库](sql-database-paas-overview.md)、 [AZURE sql Azure AD](../managed-instance/sql-managed-instance-paas-overview.md)和 Synapse SQL。
 
 > [!NOTE]
 > 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 身份验证是使用 Azure AD 中的标识连
 6. 通过使用 Azure AD 标识连接到数据库。
 
 > [!NOTE]
-> 若要了解如何创建和填充 Azure AD，然后使用 Azure SQL 数据库、SQL 托管实例和 Azure Synapse 配置 Azure AD，请参阅[使用 Azure SQL 数据库配置 Azure AD](authentication-aad-configure.md)。
+> 若要了解如何创建和填充 Azure AD，然后在 Azure Synapse Analytics 中配置 Azure SQL Database、SQL 托管实例和 Synapse SQL Azure AD，请参阅 [配置 AZURE Sql 数据库 Azure AD](authentication-aad-configure.md)。
 
 ## <a name="trust-architecture"></a>信任体系结构
 
@@ -153,7 +153,7 @@ Azure AD 服务器主体（登录名）支持以下身份验证方法：
   - 为 SQL 托管实例添加 Azure AD 服务器主体（登录名）即可创建能够添加到 `sysadmin` 角色的多个 Azure AD 服务器主体（登录名）。
 - 只有服务器的 Azure AD 管理员可以在最开始时使用 Azure Active Directory 帐户连接到服务器或托管实例。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。
 - 我们建议将连接超时值设置为 30 秒。
-- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （ **用于 SqlServer 的 .NET Framework 数据提供程序** （.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 BACPAC）的最新版本可以使用 Azure AD 身份验证。
+- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （**用于 SqlServer 的 .NET Framework 数据提供程序**（.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 BACPAC）的最新版本可以使用 Azure AD 身份验证。
 - 从版本 15.0.1 开始，[sqlcmd 实用工具](/sql/tools/sqlcmd-utility)和 [bcp 实用工具](/sql/tools/bcp-utility)支持采用了多重身份验证的 Active Directory 交互式身份验证。
 - SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版的 Data Tools（版本 14.0.60311.1）。 目前，Azure AD 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql) 中查看这些用户。
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支持 Azure AD 身份验证。 另外，请参阅[设置连接属性](/sql/connect/jdbc/setting-the-connection-properties)。

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b03eb8015d318471cf8bf11fc5a3cd94044d2cfe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920366"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455590"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -46,7 +46,7 @@ ms.locfileid: "94920366"
     若要安装该 SDK，你可以： 
     * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。 
 
-    * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK 的 [默认安装](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py#default-install&preserve-view=true) 。
+    * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK [默认安装](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install)。
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -356,7 +356,7 @@ run = experiment.submit(automl_config, show_output=True)
 若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 
 > [!NOTE]
-> 自动 ML ML 使用的算法具有固有的随机性，这可能会导致推荐模型的最终指标分数（如准确性）略有变化。 自动 ML 还会对数据执行操作（例如，定型-测试拆分、定型验证拆分或交叉验证，如有必要）。 因此，如果使用相同的配置设置和主要指标多次运行试验，则可能会因这些因素而导致每个试验最终指标分数发生变化。 
+> 自动 ML ML 使用的算法具有固有的随机性，这可能会导致推荐模型的最终指标分数（如准确性）略有变化。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
 

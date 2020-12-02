@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454500"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 与 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics（以前称为“SQL 数据仓库”）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)配合使用。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
+本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 用于 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD 身份验证方法
 
