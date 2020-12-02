@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436719"
+ms.locfileid: "96445668"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -108,7 +108,7 @@ ms.locfileid: "96436719"
     在每个视图中，安全检查按照严重性排序。 单击特定安全检查即可查看详细信息窗格，其中包含说明、修正方法以及影响或基准等其他相关信息   。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL 警报
-警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发警报 [引用页面的 Sql 数据库和 Azure Synapse Analytics (以前的 Sql 数据仓库) 部分](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
+警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发警报 [引用页的 SQL 数据库和 Azure Synapse Analytics 警报部分](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
 
 ## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
 
@@ -128,7 +128,7 @@ ms.locfileid: "96436719"
 
 有关相关材料，请参阅以下文章：
 
-- [SQL 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库的安全警报) ](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [针对 SQL 数据库和 Azure Synapse Analytics 的安全警报](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)
 - [了解有关 Azure Sentinel 的详细信息](../sentinel/index.yml)
 - [Azure 安全中心的数据安全包](../azure-sql/database/azure-defender-for-sql.md)

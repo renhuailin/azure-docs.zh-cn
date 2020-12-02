@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541294"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447190"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
-本文介绍如何配置和提交 Azure 机器学习运行以训练模型。
+本文介绍如何配置和提交 Azure 机器学习运行以训练模型。 代码片段说明了配置和提交训练脚本的关键部分。  然后使用其中一个 [示例笔记本](#notebooks) 查找完整的端到端工作示例。
 
 训练时，通常先在本地计算机上启动，然后再横向扩展到基于云的群集。 使用 Azure 机器学习，你可以在各种计算目标上运行脚本，而无需更改训练脚本。
 
@@ -38,10 +38,10 @@ ms.locfileid: "94541294"
 
 使用 ScriptRunConfig 对象提交训练实验。  此对象包含：
 
-* **source_directory** ：包含训练脚本的源目录
-* **script** ：要运行的训练脚本
-* **compute_target** ：要在其上运行的计算目标
-* **environment** ：运行脚本时要使用的环境
+* **source_directory**：包含训练脚本的源目录
+* **script**：要运行的训练脚本
+* **compute_target**：要在其上运行的计算目标
+* **environment**：运行脚本时要使用的环境
 * 一些其他的可配置选项（有关详细信息，请参阅[参考文档](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)）
 
 ## <a name="train-your-model"></a><a id="submit"></a>训练模型
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
-## <a name="notebook-examples"></a>Notebook 示例
+## <a name="notebook-examples"></a><a name="notebooks"></a>Notebook 示例
 
 有关为各种训练方案配置运行的示例，请参阅以下笔记本：
 * [对各种计算目标的训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

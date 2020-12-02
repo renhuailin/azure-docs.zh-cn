@@ -1,6 +1,6 @@
 ---
 title: 教程：管理具有 Azure Functions 的计算
-description: 如何使用 Azure Functions 在 Azure Synapse Analytics 中管理 SQL 池的计算。
+description: 如何使用 Azure Functions 在 Azure Synapse Analytics 中管理专用 SQL 池 (以前的 SQL DW) 的计算。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022473"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448385"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
+# <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>使用 Azure Functions 管理专用 SQL 池的计算资源 (以前的 SQL DW) Azure Synapse Analytics
 
-本教程使用 Azure Functions 在 Azure Synapse Analytics 中管理 SQL 池的计算资源。
+本教程使用 Azure Functions 来管理 Azure Synapse 分析中以前的 SQL DW)  (专用 SQL 池的计算资源。
 
-若要将 Azure Function App 与 SQL 池一起使用，必须创建一个 [服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ，该帐户具有与 sql 池实例相同的订阅中的参与者访问权限。
+若要将 Azure Function App 与专用 SQL 池 (以前的 SQL DW) ，必须创建 [服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 服务主体帐户需要在与专用 SQL 池相同的订阅下具有参与者访问权限， (以前的 SQL DW) 实例。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的缩放
 
 若要部署该模板，需提供以下信息：
 
-- SQL 池实例所在的资源组的名称
-- SQL 池实例所在的服务器的名称
-- SQL 池实例的名称
+- 专用 SQL 池 (以前的 SQL DW) 实例所在的资源组的名称
+- 专用 SQL 池 (以前的 SQL DW) 实例所在的服务器的名称
+- 专用 SQL 池 (以前的 SQL DW) 实例的名称
 - Azure Active Directory 的租户 ID（目录 ID）
 - 订阅 ID
 - 服务主体应用程序 ID
@@ -48,13 +48,13 @@ ms.locfileid: "96022473"
 
    ![使用模板部署的函数](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 选择 DWScaleDownTrigger 或 DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减时间。 在下拉菜单中，选择“集成”。
+2. 选择 " *DWScaleDownTrigger* " 或 " *DWScaleUpTrigger* " 以向上或向下缩放。 在下拉菜单中，选择“集成”。
 
    ![选择“集成”作为函数](./media/manage-compute-with-azure-functions/select-integrate.png)
 
 3. 目前显示的值应该为 %ScaleDownTime% 或 %ScaleUpTime%。 这些值指示计划基于在[应用程序设置](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
 
-4. 在 "计划" 区域中，添加 CRON 表达式的时间，以反映想要将 Azure Synapse Analytics 向上扩展的频率。
+4. 在 "计划" 区域中，添加想要反映 Azure Synapse Analytics 的扩展频率的 CRON 表达式。
 
    ![更改函数计划](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "96022473"
 
 1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。
 
-2. 选择 DWScaleDownTrigger 或 DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减计算值。 选择函数以后，窗格会显示 index.js 文件。
+2. 选择 " *DWScaleDownTrigger* " 或 " *DWScaleUpTrigger* " 以向上缩放或向下扩展计算值。 选择函数以后，窗格会显示 index.js 文件。
 
    ![更改函数触发器计算级别](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. 将 ServiceLevelObjective 的值更改为所需级别，然后点击“保存”。 此值是根据“集成”部分定义的计划，数据仓库实例应缩放到的计算级别。
+3. 将 *ServiceLevelObjective* 的值更改为所需的级别，然后选择 "保存"。 *ServiceLevelObjective* 是数据仓库实例根据 "集成" 部分中定义的计划将扩展到的计算级别。
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>使用暂停或继续而非缩放
 
@@ -84,7 +84,7 @@ ms.locfileid: "96022473"
 
    ![“函数”窗格](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-2. 单击要启用的触发器所对应的滑动切换开关。
+2. 选择要启用的相应触发器的滑动切换。
 
 3. 导航到用于更改计划的各个触发器的“集成”选项卡。
 
@@ -114,17 +114,17 @@ ms.locfileid: "96022473"
 5. 将操作变量设置为所需行为，如下所示：
 
    ```JavaScript
-   // Resume the SQL pool instance
+   // Resume the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the SQL pool instance
+   // Pause the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600c
+   // Scale the dedicated SQL pool (formerly SQL DW)l instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600c"
@@ -139,7 +139,7 @@ ms.locfileid: "96022473"
 
 每日向上扩展，早晨8点到 DW600c，并在晚上8点向下扩展到 DW200c。
 
-| 函数  | 计划     | 操作                                |
+| 函数  | 计划     | 运算                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
@@ -148,7 +148,7 @@ ms.locfileid: "96022473"
 
 每日横向扩展，早晨8点到 DW1000c，向下缩放一次以 DW600 at 下午4点，并向下扩展到10pm。
 
-| 函数  | 计划     | 操作                                |
+| 函数  | 计划     | 运算                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
@@ -158,7 +158,7 @@ ms.locfileid: "96022473"
 
 在早晨8点到 DW1000c 的纵向扩展，一次向下扩展到工作日下午4点的 DW600c。 周五晚上 11 点暂停，周一早晨 7 点继续。
 
-| 函数  | 计划       | 操作                                |
+| 函数  | 计划       | 运算                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
@@ -169,4 +169,4 @@ ms.locfileid: "96022473"
 
 详细了解 [timer 触发器](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functions。
 
-签出 SQL 池 [示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。
+请参阅 (以前的 SQL DW) [示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)的专用 sql 池。

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d97f500bb84f816bacf44208ba305840e797b3bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996420"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447692"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU Azure Stack Edge Pro 的系统要求 
 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 设备的 REST 接口支持以下边缘存储帐户。 在设备上创建边缘存储帐户。 有关详细信息，请参阅 [边缘存储帐户](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)。
 
-|类型  |存储帐户  |备注  |
+|类型  |存储帐户  |说明  |
 |---------|---------|---------|
 |标准     |GPv1：块 Blob         |         |
 
@@ -50,7 +50,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 当你连接到本地 Azure 资源管理器时，会通过设备本地 Api 创建这些存储帐户。 支持以下存储帐户：
 
-|类型  |存储帐户  |备注  |
+|类型  |存储帐户  |说明  |
 |---------|---------|---------|
 |标准     |GPv1：块 Blob、页 Blob        | SKU 类型为 Standard_LRS       |
 |高级     |GPv1：块 Blob、页 Blob        | SKU 类型为 Premium_LRS        |
@@ -69,7 +69,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘 Pro 设备在外部（例如，在 internet 上出站）发送数据的方向。
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘 Pro 设备在外部（例如，在 internet 上出站）发送数据的方向。
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -83,7 +83,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
-有关完整信息，请转到 [IoT Edge 部署的防火墙和端口配置规则](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
+有关完整信息，请转到 [IoT Edge 部署的防火墙和端口配置规则](../iot-edge/troubleshoot.md)。
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 
@@ -137,7 +137,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
     - 容器共享多少层？ 容器映像是组织到一系列层中的文件的捆绑。 对于容器映像，确定用于计算资源消耗的层及其各自的大小。
     - 是否存在未使用的容器？ 已停止的容器仍占用磁盘空间。
     - 你的容器在哪种语言中编写？
-- 已**处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
+- 已 **处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
 - **预期的性能** -你的解决方案所需的性能特征是什么？ 
 
 若要了解和优化解决方案的性能，可以使用：

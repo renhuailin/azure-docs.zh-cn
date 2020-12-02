@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289206"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445650"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
@@ -45,7 +45,7 @@ ms.locfileid: "93289206"
 
 可以使用安全中心或通过编程方式，为一个或多个 VM 启用采用你自己的自定义选项的 JIT VM 访问。 
 
-或者，可以从 Azure 虚拟机使用默认的硬编码参数启用 JIT。
+也可以从 Azure 虚拟机使用默认的硬编码参数启用 JIT。
 
 这些选项中的每一个都在下面的单独选项卡中进行了介绍。
 
@@ -57,7 +57,7 @@ ms.locfileid: "93289206"
 
 可以从安全中心启用和配置 JIT VM 访问。
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **实时 VM 访问** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“实时 VM 访问”。
 
     此时会打开“实时 VM 访问”页，你的 VM 会分组到以下多个选项卡中：
 
@@ -107,7 +107,7 @@ ms.locfileid: "93289206"
 
 若要编辑 VM 的现有 JIT 规则，请执行以下操作：
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
 1. 在“已配置”选项卡上，右键单击要向其添加端口的 VM，然后选择“编辑”。 
 
@@ -121,14 +121,14 @@ ms.locfileid: "93289206"
 
 ### <a name="azure-virtual-machines"></a>[**Azure 虚拟机**](#tab/jit-config-avm)
 
-### <a name="enable-jit-on-your-vms-from-azure-virtual-machines"></a>在 Azure 虚拟机中启用 Vm 上的 JIT
+### <a name="enable-jit-on-your-vms-from-azure-virtual-machines"></a>从 Azure 虚拟机对 VM 启用 JIT
 
-可以从 Azure 门户的 "Azure 虚拟机" 页面启用 VM 上的 JIT。
+可以从 Azure 门户的 Azure 虚拟机页面对 VM 启用 JIT。
 
 ![在 Azure 虚拟机中配置 JIT VM 访问](./media/security-center-just-in-time/jit-config-virtual-machines.gif)
 
 > [!TIP]
-> 如果 VM 已启用实时，则当你转到其配置页时，你将看到实时启用，你可以使用该链接在安全中心打开 "实时 VM 访问" 页，并查看和更改设置。
+> 如果 VM 已启用实时功能，则转到其配置页面时，将看到实时功能已启用，可使用链接在“安全中心”中打开实时 VM 访问页面，然后查看和更改设置。
 
 1. 在 [Azure 门户](https://ms.portal.azure.com)中，搜索并选择“虚拟机”。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "93289206"
 
 1. 在“实时访问”下，选择“启用实时” 。 
 
-    这将使用以下默认设置为 VM 启用实时访问：
+    此操作可为使用以下默认设置的 VM 启用实时访问：
 
     - Windows 计算机：
         - RDP 端口 3389
@@ -149,7 +149,7 @@ ms.locfileid: "93289206"
         - 允许的最长访问时间为三小时
         - 允许的源 IP 地址设置为“任何”
 
-1. 若要编辑这些值或将更多端口添加到 JIT 配置，请使用 Azure 安全中心的实时页面：
+1. 若要编辑任何这些值，或将更多端口添加到 JIT 配置，请使用 Azure 安全中心的实时页面：
 
     1. 从安全中心的菜单中，选择“实时 VM 访问”。
 
@@ -300,7 +300,7 @@ ms.locfileid: "93289206"
 
     ```azurepowershell
     $JitPolicyVm1 = (@{
-        id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
+        id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
            number=22;
            endTimeUtc="2020-07-15T17:00:00.3658798Z";
@@ -365,7 +365,7 @@ ms.locfileid: "93289206"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何设置和使用实时 VM 访问权限。 若要了解为什么应使用 JIT，请阅读以下概念文章，其中介绍了 JIT 抵御的威胁：
+本文介绍了如何设置和使用实时 VM 访问。 若要了解为什么应使用 JIT，请阅读以下概念文章，其中介绍了 JIT 抵御的威胁：
 
 > [!div class="nextstepaction"]
 > [有关 JIT 的说明](just-in-time-explained.md)

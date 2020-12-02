@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506390"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446404"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "94506390"
 
 ## <a name="event-grid-vs-azure-monitor"></a>事件网格与 Azure Monitor
 
-事件网格提供低延迟的每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。 Azure Monitor 提供了一个指标的 *已连接设备* ，可用于监视连接到 IoT 中心的设备数，并在该数字低于静态阈值时触发警报。
+事件网格提供低延迟的每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。 Azure Monitor 提供了一个指标的 *已连接设备*，可用于监视连接到 IoT 中心的设备数，并在该数字低于静态阈值时触发警报。
 
 决定是否针对特定方案使用事件网格或 Azure Monitor 时，请考虑以下事项：
 
@@ -58,7 +58,7 @@ ms.locfileid: "94506390"
 
 * 有关订购设备连接事件的教程，请参阅 [使用 Azure Cosmos DB 对 Azure IoT 中心的设备连接事件](iot-hub-how-to-order-connection-state-events.md)进行排序。
 
-* 有关发送电子邮件通知的教程，请参阅事件网格文档中的 [使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](/azure/event-grid/publish-iot-hub-events-to-logic-apps) 。
+* 有关发送电子邮件通知的教程，请参阅事件网格文档中的 [使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md) 。
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Monitor：将连接事件路由到日志
 
@@ -92,9 +92,9 @@ IoT 中心 [资源日志连接类别](monitor-iot-hub-reference.md#connections) 
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
 
-1. 在 IoT 中心的左窗格中的 " **监视** " 下，选择 " **日志** "。
+1. 在 IoT 中心的左窗格中的 " **监视** " 下，选择 " **日志**"。
 
-1. 若要隔离 IoT 中心的连接错误日志，请在查询编辑器中输入以下查询，然后选择 " **运行** "：
+1. 若要隔离 IoT 中心的连接错误日志，请在查询编辑器中输入以下查询，然后选择 " **运行**"：
 
     ```kusto
     AzureDiagnostics

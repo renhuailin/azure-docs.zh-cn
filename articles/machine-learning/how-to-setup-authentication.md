@@ -11,43 +11,43 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843921"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447016"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
 
-了解如何设置 Azure 机器学习工作区的身份验证。 Azure 机器学习工作区的身份验证基于大多数情况 __Azure Active Directory__ (Azure AD) 。 通常，在连接到工作区时，可以使用三个身份验证工作流：
+了解如何对 Azure 机器学习工作区设置身份验证。 在大多数情况下，Azure 机器学习工作区的身份验证基于 Azure Active Directory (Azure AD)。 通常，在连接到工作区时可使用 3 种身份验证工作流：
 
-* __交互式__：你可以使用 Azure Active Directory 中的帐户直接进行身份验证，或者使用它来获取用于身份验证的令牌。 在 _试验和迭代开发_ 期间使用交互式身份验证。 交互式身份验证使你能够根据每个用户的需要控制对资源 (（如 web 服务) ）的访问。
+* __交互式__：你可以使用 Azure Active Directory 中的帐户直接进行身份验证，或者使用它来获取用于身份验证的令牌。 在试验和迭代开发期间，使用交互式身份验证。 借助交互式身份验证，可基于每位用户控制对资源（例如 Web 服务）的访问。
 
-* __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当你需要 _自动过程向服务进行身份验证_ 而无需用户交互时，可以使用服务主体。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。
+* __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当需要使用自动化过程向服务进行身份验证时，将使用服务主体，无需用户交互。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。
 
-* __托管标识__：在 _azure 虚拟机上_ 使用 Azure 机器学习 SDK 时，可以使用 azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，而无需在 Python 代码中存储凭据或提示用户进行身份验证。 还可以将 Azure 机器学习计算群集配置为在 _训练模型_ 时使用托管标识访问工作区。
+* __托管标识__：在 Azure 虚拟机上使用 Azure 机器学习 SDK 时，可使用 Azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
 
 > [!IMPORTANT]
-> 无论使用何种身份验证工作流，Azure RBAC)  (基于角色的访问控制可用于确定允许访问资源的访问权限级别 (授权) 范围。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可以使用它，但不能删除或创建计算实例。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+> 无论使用何种身份验证工作流，都可使用 Azure 基于角色的访问控制 (Azure RBAC) 来限定允许拥有的资源访问权限（授权）级别。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可能会使用它，但不能删除或创建它。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 创建 [Azure 机器学习工作区](how-to-manage-workspace.md)。
-* [配置开发环境](how-to-configure-environment.md) 以安装 Azure 机器学习 sdk，或使用已安装 sdk 的 [Azure 机器学习计算实例](concept-azure-machine-learning-architecture.md#compute-instance) 。
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装该 SDK 的 [Azure 机器学习计算实例](concept-azure-machine-learning-architecture.md#compute-instance)。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-工作区的所有身份验证工作流都依赖于 Azure Active Directory。 如果希望用户使用个人帐户进行身份验证，则他们必须在 Azure AD 中有帐户。 如果要使用服务主体，则它们必须位于 Azure AD 中。 托管标识也是 Azure AD 的一项功能。 
+工作区的所有身份验证工作流都依赖于 Azure Active Directory。 如果希望用户使用个人帐户进行身份验证，这些用户必须在 Azure AD 中有帐户。 如果希望使用服务主体，这些主体必须位于 Azure AD 中。 托管标识也是 Azure AD 的一项功能。 
 
-有关 Azure AD 的详细信息，请参阅 [什么是 Azure Active Directory 身份验证](..//active-directory/authentication/overview-authentication.md)。
+有关 Azure AD 的详细信息，请参阅[什么是 Azure Active Directory 身份验证](..//active-directory/authentication/overview-authentication.md)。
 
-创建 Azure AD 帐户后，请参阅 [管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md) ，以获取有关向其授予对工作区的访问权限以及 Azure 机器学习中其他操作的信息。
+创建 Azure AD 帐户后，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)，了解如何在 Azure 机器学习中授予帐户对工作区和其他操作的访问权限。
 
 ## <a name="configure-a-service-principal"></a>配置服务主体
 
-若要使用服务主体 (SP) ，必须首先创建 SP，并向其授予对工作区的访问权限。 如前所述，Azure RBAC)  (Azure 基于角色的访问控制可用于控制访问权限，因此，你还必须确定授予 SP 的访问权限。
+若要使用服务主体 (SP)，必须先创建 SP，并向其授予对工作区的访问权限。 如前文所述，将使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制访问，因此你还必须确定要授予 SP 的访问权限。
 
 > [!IMPORTANT]
 > 使用服务主体时，请向它授予它所用于的 __任务所需的最低访问权限__。 例如，如果服务主体仅用于读取 Web 部署的访问令牌，则不要向服务主体授予所有者或参与者访问权限。
@@ -67,7 +67,7 @@ ms.locfileid: "94843921"
 
     如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
 
-    如果有多个 Azure 订阅，可以使用 `az account set -s <subscription name or ID>` 命令来设置订阅。 有关详细信息，请参阅[使用多个 Azure 订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
+    如果你拥有多个 Azure 订阅，可使用 `az account set -s <subscription name or ID>` 命令设置订阅。 有关详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
 
     有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
@@ -124,7 +124,7 @@ ms.locfileid: "94843921"
 1. 允许 SP 访问你的 Azure 机器学习工作区。 你将需要工作区名称，以及分别针对 `-w` 和 `-g` 参数的资源组名称。 对于 `--user` 参数，请使用 `objectId` 之前步骤中的 值。 `--role` 参数用于为服务主体设置访问角色。 在以下示例中，将向 SP 分配 **所有者** 角色。 
 
     > [!IMPORTANT]
-    > 所有者访问权限允许服务主体在工作区中执行几乎所有操作。 本文档中使用它来演示如何授予访问权限；在生产环境中，Microsoft 建议你仅向服务主体授予行使目标角色职能所需的最低访问权限。 若要了解如何使用方案所需的访问权限创建自定义角色，请参阅 [管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+    > 所有者访问权限允许服务主体在工作区中执行几乎所有操作。 本文档中使用它来演示如何授予访问权限；在生产环境中，Microsoft 建议你仅向服务主体授予行使目标角色职能所需的最低访问权限。 若要了解如何创建具有方案所需的访问权限的自定义角色，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
 
     ```azurecli-interactive
     az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -135,19 +135,19 @@ ms.locfileid: "94843921"
 ## <a name="configure-a-managed-identity"></a>配置托管标识
 
 > [!IMPORTANT]
-> 仅当使用 Azure 虚拟机中的 Azure 机器学习 SDK 或使用 Azure 机器学习计算群集时，才支持托管标识。 将托管标识用于计算群集目前处于预览阶段。
+> 仅当从 Azure 虚拟机或通过 Azure 机器学习计算群集使用 Azure 机器学习 SDK 时，托管标识才受支持。 可将托管标识与计算群集结合使用，该功能目前处于预览阶段。
 
-### <a name="managed-identity-with-a-vm"></a>具有 VM 的托管标识
+### <a name="managed-identity-with-a-vm"></a>VM 的托管标识
 
-1. [为 VM 上的 Azure 资源启用系统分配的托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
+1. [对 VM 上的 Azure 资源启用系统分配的托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择你的工作区，然后选择 "__访问控制 (IAM)__"、"__添加角色分配__"，然后从 "__分配访问权限__" 下拉列表中选择 "__虚拟机__"。 最后，选择 VM 的标识。
+1. 从 [Azure 门户](https://portal.azure.com)选择你的工作区，然后依次选择“访问控制(IAM)”和“添加角色分配”，并从“将访问权限分配至”下拉列表中选择“虚拟机”   。 最后，选择 VM 的标识。
 
-1. 选择要分配给此标识的角色。 例如，参与者或自定义角色。 有关详细信息，请参阅 [控制对资源的访问](how-to-assign-roles.md)。
+1. 选择要分配给此标识的角色。 例如，参与者或自定义角色。 有关详细信息，请参阅[控制对资源的访问](how-to-assign-roles.md)。
 
-### <a name="managed-identity-with-compute-cluster"></a>具有计算群集的托管标识
+### <a name="managed-identity-with-compute-cluster"></a>计算群集的托管标识
 
-有关详细信息，请参阅 [设置计算群集的托管标识](how-to-create-attach-compute-cluster.md#managed-identity)。
+有关详细信息，请参阅[为计算群集设置托管标识](how-to-create-attach-compute-cluster.md#managed-identity)。
 
 <a id="interactive-authentication"></a>
 
@@ -184,10 +184,10 @@ ms.locfileid: "94843921"
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-使用 Azure CLI 时，使用 `az login` 命令对 CLI 会话进行身份验证。 有关详细信息，请参阅 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+使用 Azure CLI 时，可使用 `az login` 命令对 CLI 会话进行身份验证。 有关详细信息，请参阅 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。
 
 > [!TIP]
-> 如果你使用的是以前使用 Azure CLI 以交互方式进行身份验证的环境中的 SDK，则可以使用 `AzureCliAuthentication` 类通过 CLI 缓存的凭据对工作区进行身份验证：
+> 如果你从之前使用 Azure CLI 以交互方式进行身份验证的环境中使用 SDK，则可通过 CLI 缓存的凭据使用 `AzureCliAuthentication` 类对工作区进行身份验证：
 >
 > ```python
 > from azureml.core.authentication import AzureCliAuthentication
@@ -203,7 +203,7 @@ ms.locfileid: "94843921"
 
 ## <a name="use-service-principal-authentication"></a>使用服务主体身份验证
 
-若要从 SDK 对工作区进行身份验证，请使用服务主体，并使用 `ServicePrincipalAuthentication` 类构造函数。 使用创建服务提供程序时获得的值作为参数。 `tenant_id` 参数映射到上述的 `tenantId`，`service_principal_id` 映射到 `clientId`，`service_principal_password` 映射到 `clientSecret`。
+若要从 SDK 中使用服务主体向工作区进行身份验证，请使用 `ServicePrincipalAuthentication` 类构造函数。 使用创建服务提供程序时获得的值作为参数。 `tenant_id` 参数映射到上述的 `tenantId`，`service_principal_id` 映射到 `clientId`，`service_principal_password` 映射到 `clientSecret`。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -377,15 +377,15 @@ class AuthenticationBody {
 }
 ```
 
-前面的代码需要处理除之外的异常和状态代码 `200 OK` ，但会显示模式： 
+前面的代码需要处理除 `200 OK` 以外的异常和状态代码，但会显示模式： 
 
-- 使用客户端 ID 和机密来验证你的程序是否应具有访问权限
-- 使用你的租户 ID 指定 `login.microsoftonline.com` 应查看的位置
+- 使用客户端 ID 和密码来验证你的程序是否应具有访问权限
+- 使用租户 ID 指定 `login.microsoftonline.com` 应查找的位置
 - 使用 Azure 资源管理器作为授权令牌的源
 
 ## <a name="use-managed-identity-authentication"></a>使用托管标识身份验证
 
-若要从使用托管标识配置的 VM 或计算群集对工作区进行身份验证，请使用 `MsiAuthentication` 类。 下面的示例演示如何使用此类对工作区进行身份验证：
+若要从配置有托管标识的 VM 或计算群集对工作区进行身份验证，请使用 `MsiAuthentication` 类。 以下示例演示如何使用此类对工作区进行身份验证：
 
 ```python
 from azureml.core.authentication import MsiAuthentication
@@ -402,5 +402,5 @@ ws = Workspace(subscription_id="your-sub-id",
 ## <a name="next-steps"></a>后续步骤
 
 * [如何在训练中使用机密](how-to-use-secrets-in-runs.md)。
-* [如何为部署为 web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
+* [如何为部署为 Web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
 * [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)。

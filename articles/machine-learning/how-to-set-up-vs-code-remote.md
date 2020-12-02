@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 11/16/2020
-ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697572"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447051"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>连接到 Visual Studio Code 中的 Azure 机器学习计算实例（预览）
 
@@ -41,7 +41,7 @@ ms.locfileid: "94697572"
 1. 加载集成笔记本体验时，选择“Jupyter 服务器”。
 
     > [!div class="mx-imgBorder"]
-    > ![启动 Azure 机器学习远程 Jupyter 笔记本服务器下拉列表](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+    > ![启动 Azure 机器学习远程 Jupyter Notebook 服务器下拉列表](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
 
     此外，还可使用命令面板：
 
@@ -58,7 +58,7 @@ ms.locfileid: "94697572"
 > [!IMPORTANT]
 > 必须运行一个单元才能建立连接。
 
-此时，你可继续在 Jupyter 笔记本中运行单元。
+此时，你可以继续运行 Jupyter Notebook 中的单元格。
 
 > [!TIP]
 > 也可使用包含类似 Jupyter 的代码单元的 Python 脚本文件 (.py)。 有关详细信息，请参阅 [Visual Studio Code Python 交互文档](https://code.visualstudio.com/docs/python/jupyter-support-py)。

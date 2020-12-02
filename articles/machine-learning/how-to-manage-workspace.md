@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012953"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447331"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区 
 
@@ -30,7 +30,7 @@ ms.locfileid: "95012953"
 
 ## <a name="limitations"></a>限制
 
-* 创建新的工作区时，可以允许工作区自动创建所需的 Azure 服务，也可以提供现有服务。 提供现有服务时，这些服务必须与工作区位于同一 Azure 订阅中。
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -136,7 +136,7 @@ ms.locfileid: "95012953"
    资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml。 需要“参与者”或“所有者”角色才能使用现有资源组。  有关访问权限的详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
    区域 | 选择离你的用户和数据资源最近的 Azure 区域来创建工作区。
    | 存储帐户 | 工作区的默认存储帐户。 默认情况下，将创建一个新的。 |
-   | 密钥保管库 | 工作区使用的 Azure Key Vault。 默认情况下，将创建一个新的。 |
+   | Key Vault | 工作区使用的 Azure Key Vault。 默认情况下，将创建一个新的。 |
    | Application Insights | 工作区的 application insights 实例。 默认情况下，将创建一个新的。 |
    | 容器注册表 | 工作区的 Azure 容器注册表。 默认情况下， _不_ 会为工作区最初创建新的。 而是在训练或部署过程中创建 Docker 映像时，在需要时创建。 |
 

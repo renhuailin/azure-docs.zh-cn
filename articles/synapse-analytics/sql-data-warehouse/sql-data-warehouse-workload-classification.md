@@ -1,6 +1,6 @@
 ---
-title: 工作负荷分类
-description: 有关使用分类管理 Azure Synapse Analytics 中查询的并发性、重要性和计算资源的指导。
+title: 专用 SQL 池的工作负荷分类
+description: 有关使用分类来管理 Azure Synapse Analytics 中专用 SQL 池的查询并发性、重要性和计算资源的指南。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323883"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447767"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics 工作负荷分类
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的工作负荷分类
 
 本文介绍使用 Azure Synapse 中的专用 SQL 池为传入请求分配工作负荷组和重要性的工作负荷分类过程。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93323883"
 
 ## <a name="classification-process"></a>分类过程
 
-现在，通过将用户分配到具有分配给它的对应资源类 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的角色，可立即实现 Azure Synapse 中专用 SQL 池的分类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，专用 SQL 池用户可以通过参数分配重要性和分配给请求的系统资源量 `workload_group` 。
+通过将用户分配到具有分配给它的对应资源类 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的角色，可以立即实现专用 SQL 池的分类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，专用 SQL 池用户可以通过参数分配重要性和分配给请求的系统资源量 `workload_group` 。
 
 > [!NOTE]
 > 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。

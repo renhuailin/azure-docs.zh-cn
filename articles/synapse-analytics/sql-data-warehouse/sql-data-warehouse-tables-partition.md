@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314497"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448015"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>对专用 SQL 池中的表进行分区
 
@@ -30,7 +30,7 @@ ms.locfileid: "93314497"
 
 ### <a name="benefits-to-loads"></a>对加载的好处
 
-专用 SQL 池中分区的主要优点是通过使用分区删除、切换和合并来提高数据加载效率和性能。 大多数情况下，数据是根据日期列来分区的，而日期列与数据加载到数据库中的顺序密切相关。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
+专用 SQL 池中分区的主要优点是通过使用分区删除、切换和合并来提高数据加载效率和性能。 在大多数情况下，数据在与数据加载到 SQL 池中的顺序密切相关的日期列上进行分区。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
 
 可以使用分区切换来快速删除或替换表的一部分。  例如，销售事实表可能仅包含过去 36 个月的数据。 在每个月月底，便从表删除最旧月份的销售数据。  删除该数据时，可以使用 delete 语句删除最旧月份的数据。 
 
@@ -279,7 +279,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 ### <a name="table-partitioning-source-control"></a>表分区源代码管理
 
-若要避免表定义在源代码管理系统中 **失效** ，可以考虑以下方法：
+若要避免表定义在源代码管理系统中 **失效**，可以考虑以下方法：
 
 1. 将表创建为分区表，但不包含分区值
 
@@ -355,7 +355,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-使用这种方法时，源代码管理中的代码保持静态，允许动态的分区边界值，并不断地与数据库一起演进。
+使用此方法时，源代码管理中的代码将保持静态，而分区边界值允许动态;随着时间的推移，SQL 池不断发展。
 
 ## <a name="next-steps"></a>后续步骤
 

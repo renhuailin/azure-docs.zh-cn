@@ -1,6 +1,6 @@
 ---
-title: PowerShell 和 REST API
-description: 了解 Azure Synapse Analytics SQL 池的最常用 PowerShell cmdlet，包括如何暂停和恢复数据库。
+title: '用于专用 SQL 池 (以前的 SQL DW 的 PowerShell & REST Api) '
+description: 适用于专用 SQL 池 (以前的 SQL DW) 在 Azure Synapse Analytics 中的顶层 PowerShell cmdlet，包括如何暂停和恢复数据库。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb26ac0071a50095f8e93ce0cc25da0055bdbac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072870"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448234"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>用于 Azure Synapse Analytics SQL 池的 PowerShell 和 REST API
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>适用于专用 SQL 池的 PowerShell & REST Api (以前的 SQL DW) Azure Synapse Analytics 
 
-许多 Azure Synapse Analytics SQL 池管理任务可以使用 Azure PowerShell cmdlet 或 REST API 进行管理。  下面是如何使用 PowerShell 命令自动执行 SQL 池中的常见任务的一些示例。  如需一些好的 REST 示例，请参阅[使用 REST 管理可伸缩性](sql-data-warehouse-manage-compute-rest-api.md)一文。
+许多专用的 SQL 池管理任务可使用 Azure PowerShell cmdlet 或 REST Api 进行管理。  下面是一些示例，介绍了如何使用 PowerShell 命令自动完成专用 SQL 池中的常见任务 (以前的 SQL DW) 。  如需一些好的 REST 示例，请参阅[使用 REST 管理可伸缩性](sql-data-warehouse-manage-compute-rest-api.md)一文。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

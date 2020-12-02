@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: bf9cda37e0cc8186938a316c87bcc69a7a7370b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 848db19fe855e3ce171fe54c7962309fab977ed5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085274"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446337"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure 存储资源管理器支持生命周期和策略
 
@@ -41,8 +41,9 @@ Azure 存储资源管理器每年发布四到六次。 Microsoft 也可能在计
 
 | 存储资源管理器版本  | 发布日期       | 支持结束日期 |
 |:-------------------------:|:------------------:|:-------------------:|
-| v busybox-1.15.1-20.el6.x86                   | 2020年9月2日  | 2021年9月2日   |
-| v 1.15。0                   | 2020年8月27日    | 2021年8月27日     |
+| v 1.16。0                   | 2020 年 11 月 10 日  | 2021年11月10日   |
+| v1.15.1                   | 2020 年 9 月 2 日  | 2021 年 9 月 2 日   |
+| v1.15.0                   | 2020 年 8 月 27 日    | 2021 年 8 月 27 日     |
 | v1.14.2                   | 2020 年 7 月 16 日      | 2021 年 7 月 16 日       |
 | v1.14.1                   | 2020 年 7 月 14 日      | 2021 年 7 月 14 日       |
 | v1.14.0                   | 2020 年 6 月 24 日      | 2021 年 7 月 14 日       |

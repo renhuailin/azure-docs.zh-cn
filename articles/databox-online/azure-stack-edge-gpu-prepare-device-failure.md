@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 986a3c56a1e0dcc79ab472a7e18d7eeb7e2fddb5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173595"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448341"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>准备 Azure Stack Edge Pro GPU 设备故障
 
@@ -77,7 +77,7 @@ Azure Stack Edge 适用于 Azure 备份和其他第三方数据保护解决方�
 
 | 备份解决方案        | 支持的 OS   | 参考                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
-| 用于 Azure 备份的 (MARS) 代理 Microsoft Azure 恢复服务 | Windows        | [关于 MARS 代理](/azure/backup/backup-azure-about-mars)    |
+| 用于 Azure 备份的 (MARS) 代理 Microsoft Azure 恢复服务 | Windows        | [关于 MARS 代理](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure 集成、备份和恢复解决方案简述](https://www.cohesity.com/solution/cloud/azure) <br>有关详细信息，请联系 Cohesity。                          |
 | Commvault               | Windows、Linux | https://www.commvault.com/azure <br>有关详细信息，请联系 Commvault。                          |
 | Veritas                 | Windows、Linux | http://veritas.com/azure <br> 有关详细信息，请与 Veritas 联系。                    |

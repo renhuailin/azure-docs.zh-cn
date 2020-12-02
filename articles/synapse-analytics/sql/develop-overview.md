@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322111"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446594"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 功能的设计决策和编码方法
-在本文中，你将找到专用 SQL 池的资源列表和无服务器 SQL 池 (预览) Synapse 的函数。 建议的文章分为两部分：关键设计决策和开发和编码技术。
+在本文中，你将找到 Synapse SQL 的专用 SQL 池和无服务器 SQL 池函数的资源列表。 建议的文章分为两部分：关键设计决策和开发和编码技术。
 
-这些文章旨在帮助您为 Synapse 分析中的 Synapse SQL 组件开发最佳的技术方法。
+本文的目的是帮助你为 Azure Synapse Analytics 中的 Synapse SQL 组件开发最佳的技术方法。
 
 ## <a name="key-design-decisions"></a>关键设计决策
 下面的文章重点介绍了 Synapse SQL 开发的概念和设计决策：
 
-| 文章 | 专用 SQL 池 | 无服务器 SQL 池 |
+| 项目 | 专用 SQL 池 | 无服务器 SQL 池 |
 | ------- | -------- | ------------- |
 | [连接](connect-overview.md)                    | 是 | 是 |
 | [资源类和并发](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
@@ -44,14 +44,14 @@ ms.locfileid: "93322111"
 
 下面是一些重要的文章，这些文章强调了用于开发的特定编码方法、提示和建议：
 
-| 文章 | 专用 SQL 池 | 无服务器 SQL 池 |
+| 项目 | 专用 SQL 池 | 无服务器 SQL 池 |
 | ------- | -------- | ------------- |
 | [存储过程](develop-stored-procedures.md)  | 是                | 否                      |
 | [标签](develop-label.md)                           | 是                | 否                      |
 | [Views](develop-views.md)                             | 是                | 是                     |
 | [临时表](develop-tables-temporary.md)       | 是                | 是                     |
 | [动态 SQL](develop-dynamic-sql.md)                 | 是                | 是                     |
-| [循环](develop-loops.md)                         | 是                | 是                     |
+| [Hal](develop-loops.md)                         | 是                | 是                     |
 | [Group by 选项](develop-group-by-options.md)       | 是                | 否                      |
 | [变量赋值](develop-variable-assignment.md) | 是                | 是                     |
 

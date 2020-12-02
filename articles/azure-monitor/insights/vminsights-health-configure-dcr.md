@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 55e5a587a0ad02fa1f8993027b46162a14a58832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318093"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448246"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>使用数据收集规则在用于 VM 的 Azure Monitor 来宾健康状况中配置监视 (预览版) 
 [用于 VM 的 Azure Monitor 来宾健康状况](vminsights-health-overview.md) 允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何使用数据收集规则来修改多个虚拟机上的默认监视。
@@ -30,7 +30,7 @@ ms.locfileid: "95318093"
 ## <a name="monitor-properties"></a>监视器属性
 下表描述了可在每个监视器上配置的属性。
 
-| Property | 监视器 | 说明 |
+| 属性 | 监视器 | 说明 |
 |:---|:---|:---|
 | 已启用 | 聚合<br>计价单位 | 如果为 true，则计算状态监视器并对虚拟机的运行状况进行贡献。 这会触发启用警报警报。 |
 | 警报 | 聚合<br>计价单位 | 如果为 true，则当监视器进入不正常状态时，会触发警报。 如果为 false，则监视器的状态仍会影响虚拟机的运行状况，这可能会触发警报。 |
@@ -47,7 +47,7 @@ ms.locfileid: "95318093"
 下表列出了每个监视器的默认配置。 此默认配置无法直接更改，但你可以定义将修改某些虚拟机的监视配置的 [替代](#overrides) 。
 
 
-| 监视 | 已启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
+| 监视 | 启用 | 警报 | 警告 | 严重 | 评估频率 | Lookback | 计算类型 | 最小示例 | 最大示例 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | CPU 使用率  | True | False | 无 | \> 90%    | 60 秒 | 240秒 | Min | 2 | 3 |
 | 可用内存 | True | False | 无 | \< 100 MB | 60 秒 | 240秒 | Max | 2 | 3 |
@@ -100,7 +100,7 @@ ms.locfileid: "95318093"
 ]
 ```
 
-| 元素 | 必选 | 说明 |
+| 元素 | 必须 | 说明 |
 |:---|:---|:---|
 | `name` | 是 | 扩展的用户定义字符串。 |
 | `streams` | 是 | 来宾运行状况数据将发送到的流的列表。 这必须包括 **HealthStateChange**。  |
@@ -119,7 +119,7 @@ ms.locfileid: "95318093"
 }
 ```
 
-| 元素 | 必选 | 说明 |
+| 元素 | 必须 | 说明 |
 |:---|:---|:---|
 | `schemaVersion` | 是 | 由 Microsoft 定义的字符串，用于表示元素的预期架构。 当前必须设置为1。0 |
 | `contentVersion` | 否 | 用户定义的字符串，用于跟踪不同版本的运行状况配置（如果需要）。 |
@@ -140,7 +140,7 @@ ms.locfileid: "95318093"
 ]
 ```
 
-| 元素 | 必选 | 说明 |
+| 元素 | 必须 | 说明 |
 |:---|:---|:---|
 | `scopes` | 是 | 指定此替代适用的虚拟机的一个或多个作用域的列表。 尽管 DCR 与虚拟机关联，但虚拟机必须在作用域内，才能应用替代。 |
 | `monitors` | 是 | 定义将接收此重写的监视器的一个或多个字符串的列表。  |
@@ -177,7 +177,7 @@ ms.locfileid: "95318093"
 
 | 类型名称 | 名称 | 描述 |
 |:---|:---|:---|
-| 根 | root | 表示虚拟机运行状况的顶层监视器。 | |
+| 根 | 根 | 表示虚拟机运行状况的顶层监视器。 | |
 | cpu 利用率 | cpu 利用率 | CPU 使用率监视器。 | |
 | 逻辑磁盘 | 逻辑磁盘 | 对 Windows 虚拟机上所有监视磁盘的运行状况状态的聚合监视器。 | |
 | 逻辑磁盘\|* | 逻辑磁盘 \| C：<br>逻辑磁盘 \| D： | Windows 虚拟机上给定磁盘的聚合监视器跟踪运行状况。 | 
@@ -246,7 +246,7 @@ ms.locfileid: "95318093"
 },
 ```
 
-| Property | 必需 | 说明 | 
+| 属性 | 必需 | 说明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否启用条件。 如果设置为 **false**，则禁用条件，即使可以设置阈值和操作员属性。 |
 | `threshold` | 否 | 定义用于比较计算值的阈值。 |
@@ -264,113 +264,15 @@ ms.locfileid: "95318093"
 },
 ```
 
-| Property | 必需 | 说明 | 
+| 属性 | 必需 | 说明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否启用条件。 如果设置为 **false**，则禁用条件，即使可以设置阈值和操作员属性。 |
 | `threshold` | 否 | 定义用于比较计算值的阈值。 |
 | `operator`  | 否 | 定义要在阈值表达式中使用的比较运算符。 可能的值： >、<、>=、<=、= =。 |
 
 ## <a name="sample-data-collection-rule"></a>示例数据收集规则
-下面的示例数据收集规则显示了用于配置监视的替代的示例。
+有关启用来宾监视的示例数据收集规则，请参阅 [使用资源管理器模板启用虚拟机](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template)。
 
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "defaultHealthDataCollectionRuleName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the data collection rule to create."
-      },
-      "defaultValue": "Microsoft-VMInsights-Health"
-    },
-    "destinationWorkspaceResourceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the Azure resource ID of the Log Analytics workspace to use to store virtual machine health data."
-      }
-    },
-    "dataCollectionRuleLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/dataCollectionRules",
-      "name": "[parameters('defaultHealthDataCollectionRuleName')]",
-      "location": "[parameters('dataCollectionRuleLocation')]",
-      "apiVersion": "2019-11-01-preview",
-      "properties": {
-        "description": "Data collection rule for VM Insights health.",
-        "dataSources": {
-          "performanceCounters": [
-              {
-                  "name": "VMHealthPerfCounters",
-                  "streams": [ "Microsoft-Perf" ],
-                  "scheduledTransferPeriod": "PT1M",
-                  "samplingFrequencyInSeconds": 60,
-                  "counterSpecifiers": [
-                      "\\LogicalDisk(*)\\% Free Space",
-                      "\\Memory\\Available Bytes",
-                      "\\Processor(_Total)\\% Processor Time"
-                  ]
-              }
-          ],
-          "extensions": [
-            {
-              "name": "Microsoft-VMInsights-Health",
-              "streams": [
-                "Microsoft-HealthStateChange"
-              ],
-              "extensionName": "HealthExtension",
-              "extensionSettings": {
-                "schemaVersion": "1.0",
-                "contentVersion": "",
-                "healthRuleOverrides": [
-                  {
-                    "scopes": [ "*" ],
-                    "monitors": ["root"],
-                    "alertConfiguration": {
-                      "isEnabled": true
-                    }
-                  }
-                ]
-              },
-              "inputDataSources": [
-                  "VMHealthPerfCounters"
-              ]
-
-            }
-          ]
-        },
-        "destinations": {
-          "logAnalytics": [
-            {
-              "workspaceResourceId": "[parameters('destinationWorkspaceResourceId')]",
-              "name": "Microsoft-HealthStateChange-Dest"
-            }
-          ]
-        },                  
-        "dataFlows": [
-          {
-            "streams": [
-              "Microsoft-HealthStateChange"
-            ],
-            "destinations": [
-              "Microsoft-HealthStateChange-Dest"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 
 ## <a name="next-steps"></a>后续步骤
 

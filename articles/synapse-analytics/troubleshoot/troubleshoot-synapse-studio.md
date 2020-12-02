@@ -1,5 +1,5 @@
 ---
-title: 'Synapse Studio (预览版疑难解答) '
+title: 排查 Synapse Studio 的问题
 description: 排查 Azure Synapse Studio 问题
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321018"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445854"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (预览版) 故障排除
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio 故障排除
 
 此故障排除指南提供了有关在解决网络连接问题时提供哪些信息的说明。 有了正确的信息，我们就可以更快地解决问题。
 
-## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>无服务器 SQL 池 (预览版) 服务连接问题
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>无服务器 SQL 池服务连接问题
 
 ### <a name="symptom-1"></a>症状 1
 
@@ -61,7 +61,7 @@ ms.locfileid: "93321018"
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-其中，[ *A* ] 是你的工作区名称，而 "-ondemand" 可能是 "-sqlod"，其中 [ *B* ] 应为数据库名称，如 "master"。 最多应有两个具有相同 URL 值但不同方法值的项;选项和 POST。 检查这两个项的 "状态" 列中是否有 "200" 或 "20 倍"，其中 "x" 可以是任何单个数字。
+其中，[*A*] 是你的工作区名称，而 "-ondemand" 可能是 "-sqlod"，其中 [*B*] 应为数据库名称，如 "master"。 最多应有两个具有相同 URL 值但不同方法值的项;选项和 POST。 检查这两个项的 "状态" 列中是否有 "200" 或 "20 倍"，其中 "x" 可以是任何单个数字。
 
 如果其中任何一个不是 "20 倍"，则为：
 

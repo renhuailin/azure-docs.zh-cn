@@ -11,14 +11,14 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323575"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448070"
 ---
-# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池为表编制索引
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中为专用 SQL 池表编制索引
 
 针对专用 SQL 池中的表编制索引的建议和示例。
 
@@ -206,7 +206,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 流到专用 SQL 池的小型负载有时也称为滴负载。 它们通常代表系统引入的数据的接近恒定流。 但是，由于此流接近连续状态，因此行的容量并不特别大。 通常数据远低于直接加载到列存储格式所需的阈值。
 
-在这些情况下，最好先将数据保存到 Azure Blob 存储中，并让它在加载之前累积。 此技术通常称为 *微批处理* 。
+在这些情况下，最好先将数据保存到 Azure Blob 存储中，并让它在加载之前累积。 此技术通常称为 *微批处理*。
 
 ### <a name="too-many-partitions"></a>过多的分区
 

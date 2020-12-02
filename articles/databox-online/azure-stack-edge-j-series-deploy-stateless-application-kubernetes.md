@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890735"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447376"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 部署 Kubernetes 无状态应用程序
 
 本文介绍如何在现有的 Kubernetes 群集上使用 kubectl 命令部署无状态应用程序。 本文还逐步讲解如何在无状态应用程序中创建和设置 pod。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在创建 Kubernetes 群集并使用 `kubectl` 命令行工具之前，需要确保：
 
 - 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
 
-- Windows PowerShell 5.0 或更高版本安装在 Windows 客户端系统上，用于访问 Azure Stack Edge Pro 设备。 您也可以将任何其他客户端与支持的操作系统结合使用。 本文介绍使用 Windows 客户端的过程。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+- Windows PowerShell 5.0 或更高版本安装在 Windows 客户端系统上，用于访问 Azure Stack Edge Pro 设备。 您也可以将任何其他客户端与支持的操作系统结合使用。 本文介绍使用 Windows 客户端的过程。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
 
 - Azure Stack Edge Pro 设备上启用了计算。 若要启用计算，请在设备的本地 UI 中转到 " **计算** " 页。 然后选择要为计算启用的网络接口。 选择“启用”。 启用计算会导致在设备上的网络接口上创建虚拟交换机。 有关详细信息，请参阅 [在 Azure Stack Edge Pro 上启用计算网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "90890735"
 
    此命令将 \\ &lt; &gt; \\ \" 用配置文件填充 "C:\Users kube" 的目录结构。 Kubectl 命令行工具将使用这些文件来创建和管理 Kubernetes 群集上的无状态应用程序。
 
-3. 手动检查 "C:\Users kube 的目录结构 \\ &lt; &gt; \\ \" 以验证*kubectl*是否已填充了以下子文件夹：
+3. 手动检查 "C:\Users kube 的目录结构 \\ &lt; &gt; \\ \" 以验证 *kubectl* 是否已填充了以下子文件夹：
 
    ```powershell
    PS C:\Users\username> ls .kube
@@ -209,7 +209,7 @@ Pod 是 Kubernetes 应用程序的基本执行单位，是您创建或部署的 
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   *副本*设置指示你的部署规范需要两个 pod，其中创建和更新了这些 pod，并已准备好使用。
+   *副本* 设置指示你的部署规范需要两个 pod，其中创建和更新了这些 pod，并已准备好使用。
 
    > [!NOTE]
    > 出于任何原因（例如，在出现设备节点故障或中断设备升级的情况下），副本集会替换被删除或终止的 pod。 出于此原因，我们建议你使用副本集，即使你的应用程序只需要一个 pod。

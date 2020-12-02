@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578750"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447301"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -31,7 +31,7 @@ ms.locfileid: "94578750"
 
 2. 已启用计算网络接口。 此网络接口 IP 用于为 VM 部署创建虚拟交换机。 下列步骤将为你演示此过程：
 
-    1. 请参阅 **计算设置** 。 选择将用于创建虚拟交换机的网络接口。
+    1. 请参阅 **计算设置**。 选择将用于创建虚拟交换机的网络接口。
 
         > [!IMPORTANT] 
         > 只能为计算配置一个端口。
@@ -83,7 +83,7 @@ ms.locfileid: "94578750"
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. 将[AzCopy 10 下载](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy)到你的 Windows 客户端。 记下该位置，因为在运行脚本时，会将其作为参数传递。
+5. 将[AzCopy 10 下载](../storage/common/storage-use-azcopy-v10.md#download-azcopy)到你的 Windows 客户端。 记下该位置，因为在运行脚本时，会将其作为参数传递。
 
 6. 确保 Windows 客户端运行的是 TLS 1.2 或更高版本。
 

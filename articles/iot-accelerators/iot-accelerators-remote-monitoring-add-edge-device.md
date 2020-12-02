@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d732cc3feaa2c9a528443d4a783227f3d8e641
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004783"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446791"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 设备添加到远程监视解决方案加速器
 
@@ -34,9 +34,9 @@ ms.locfileid: "96004783"
 
 也可以将 IoT Edge 设备直接注册到解决方案加速器中的 IoT 中心实例。 在按照以下任一操作指南操作之前，需要知道解决方案加速器中 IoT 中心的名称：
 
-- [通过 Azure 门户注册新 Azure IoT Edge 设备](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [使用 Azure CLI 注册新 Azure IoT Edge 设备](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [通过 Visual Studio Code 注册新 Azure IoT Edge 设备](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [通过 Azure 门户注册新 Azure IoT Edge 设备](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-portal%2Cwindows)
+- [使用 Azure CLI 注册新 Azure IoT Edge 设备](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-cli%2Cwindows)
+- [通过 Visual Studio Code 注册新 Azure IoT Edge 设备](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=visual-studio-code%2Cwindows)
 
 当你直接在远程监视解决方案加速器中向 IoT 中心注册设备时，它将列在 web UI 中的 " **Device Explorer** " 页上。
 
@@ -44,11 +44,11 @@ ms.locfileid: "96004783"
 
 必须先在真实设备上安装 IoT Edge 运行时，然后才能向 Edge 设备部署模块。 以下操作指南说明了如何在常见设备平台上安装运行时：
 
-- [在 Linux 上安装 Azure IoT Edge 运行时 (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用](../iot-edge/how-to-install-iot-edge-windows.md)
-- [在 Windows 上安装 Azure IoT Edge 运行时，使其与 Linux 容器一起使用](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [在 Windows IoT Core 上安装 IoT Edge 运行时](../iot-edge/how-to-install-iot-edge-windows.md)
+- [在 Linux 上安装 Azure IoT Edge 运行时 (x64)](../iot-edge/how-to-install-iot-edge.md)
+- [在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows 上安装 Azure IoT Edge 运行时，使其与 Linux 容器一起使用](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows IoT Core 上安装 IoT Edge 运行时](../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="next-steps"></a>后续步骤
 

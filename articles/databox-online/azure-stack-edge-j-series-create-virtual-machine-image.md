@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b49659f67e779b6eb8079492b47fef9419ca6b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890992"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447515"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>为 Azure Stack Edge Pro 设备创建自定义 VM 映像
 
@@ -42,7 +42,7 @@ ms.locfileid: "90890992"
     
         `c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm`
    
-       你还可以参阅 [Sysprep（系统准备）概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+       你还可以参阅 [Sysprep（系统准备）概述](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
 现在使用此 VHD 在 Azure Stack Edge Pro 设备上创建和部署 VM。
 
@@ -76,7 +76,7 @@ ms.locfileid: "90890992"
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server 是全球流行的 Linux 云环境。|Canonical|
 |[Debian 8“Jessie”](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux 是最流行的 Linux 分发版之一。     |credativ|
 
-有关有效（目前未测试）Azure 市场映像的完整列表，请参阅[可用于 Azure Stack Hub 的 Azure 市场项](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)。
+有关有效（目前未测试）Azure 市场映像的完整列表，请参阅[可用于 Azure Stack Hub 的 Azure 市场项](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)。
 
 
 ## <a name="next-steps"></a>后续步骤

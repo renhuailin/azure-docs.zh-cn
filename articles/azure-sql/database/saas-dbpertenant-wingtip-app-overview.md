@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780455"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447080"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>在 Azure SQL 数据库中使用 "每租户一个数据库" 模式的多租户 SaaS 应用简介
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQ
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL 数据库 Wingtip SaaS 教程
 
-部署应用后，请浏览基于初始部署制作的以下教程。 这些教程探讨了常见的 SaaS 模式，这些模式利用 SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) 以及其他 Azure 服务的内置功能。 教程包括 PowerShell 脚本及详细说明。 这些说明可简化对应用程序中相同 SaaS 管理模式的理解和实现。
+部署应用后，请浏览基于初始部署制作的以下教程。 这些教程探讨了利用 SQL 数据库、Azure Synapse Analytics 和其他 Azure 服务的内置功能的常见 SaaS 模式。 教程包括 PowerShell 脚本及详细说明。 这些说明可简化对应用程序中相同 SaaS 管理模式的理解和实现。
 
 
 | 教程 | 说明 |
