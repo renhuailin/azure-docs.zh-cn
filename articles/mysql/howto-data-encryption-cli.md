@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242086"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435818"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for MySQL 的数据加密
 
@@ -46,11 +46,22 @@ ms.locfileid: "93242086"
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * 保留天数设置为90天
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * 此密钥必须具有以下属性以用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 执行 **get** 、 **wrap** 、 **解包** 操作
+  * 执行 **get**、 **wrap**、 **解包** 操作
+  * recoverylevel 属性设置为 **可恢复**。
+
+可以通过使用以下命令来验证密钥的上述特性：
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
@@ -68,7 +79,7 @@ ms.locfileid: "93242086"
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. 设置 **主体** ( **获取** 、 **包装** 、 **解包** ) 的 **主要权限** ，这是 MySQL 服务器的名称。
+2. 设置 **主体** (**获取**、**包装**、**解包**) 的 **主要权限**，这是 MySQL 服务器的名称。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097297"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435751"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -30,7 +30,7 @@ ms.locfileid: "92097297"
 
 如果你有 Active Directory (AD) 环境的本地，并且想要将已加入 AD 域的计算机加入 Azure AD，则可以通过混合 Azure AD 联接来完成此操作。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设你熟悉 [Azure Active Directory 中设备标识管理的简介](./overview.md)。
 
@@ -106,6 +106,8 @@ ms.locfileid: "92097297"
 
 - 从 Windows 10 1903 版本开始，Tpm 1.2 不与混合 Azure AD 联接一起使用，具有这些 Tpm 的设备将视为没有 TPM。
 
+- UPN 更改仅受 Windows 10 2004 更新的支持。 对于 Windows 10 2004 更新之前的设备，用户将在其设备上出现 SSO 和条件性访问问题。 若要解决此问题，需要将设备从 Azure AD 中脱离 (以提升的权限运行 "dsregcmd.exe/leave") ，并自动重新加入 () 。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。
+
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
 当所有先决条件都准备就绪后，Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息，请参阅 [Azure Active Directory 中的设备标识管理简介](overview.md)。
@@ -166,8 +168,8 @@ ms.locfileid: "92097297"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 托管 | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
-| 非可路由的 | 托管 | 不支持 | |
+| 可路由的 | Managed | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
+| 非可路由的 | Managed | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444522"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "94638782"
 
 不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
-- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则不会向你收费。
+- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
 
 - **Azure Defender on** –安全中心在默认工作区中启用 "安全" 解决方案。
 
@@ -86,9 +86,9 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 - 对于澳大利亚的 VM，工作区位置为澳大利亚
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些数据？
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些安全事件？
 
-有关代理监视的应用程序和服务的完整列表，请参阅 [Azure Monitor 监视哪些内容？](../azure-monitor/monitor-reference.md#azure-services)。
+有关代理收集的安全事件的完整列表，请参阅 [为 "常用" 和 "最小" 安全事件设置存储的事件类型](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。
 
 > [!IMPORTANT]
 > 请注意，对于某些服务（例如 Azure 防火墙），如果启用了日志记录并选择记录琐碎资源（例如，将日志设置为“详细”），则可能会对 Log Analytics 工作区的存储需求产生重大影响。 
@@ -112,7 +112,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
 1. 打开 " **自动设置** " 页，
-1. 对于 Log Analytics 代理，选择 " **编辑配置** "。 
+1. 对于 Log Analytics 代理，选择 " **编辑配置**"。 
 
     :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="要在使用自动部署时使用的 Log Analytics 代理的配置" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
@@ -170,7 +170,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 如果订阅已启用 Azure Defender，请打开 **Azure defender 计划** ，并选择 " **azure defender** "。
+1. 如果订阅已启用 Azure Defender，请打开 **Azure defender 计划** ，并选择 " **azure defender**"。
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
@@ -241,11 +241,11 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 如果已启用该功能，但现在想禁用它：
 
-1. 在 [Azure 门户](https://portal.azure.com)中打开 " **安全中心** "，然后选择 " **定价和设置** "。
+1. 在 [Azure 门户](https://portal.azure.com)中打开 " **安全中心** "，然后选择 " **定价和设置**"。
 
 1. 选择要禁用自动预配的订阅。
 
-1. 在 " **自动预配** " 下，关闭 Log Analytics 代理的切换。
+1. 在 " **自动预配**" 下，关闭 Log Analytics 代理的切换。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？

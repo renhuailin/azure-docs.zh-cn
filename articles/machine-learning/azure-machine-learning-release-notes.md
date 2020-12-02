@@ -9,113 +9,113 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012265"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444539"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
-本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的 [**主要 sdk For Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
 
 ## <a name="2020-11-09"></a>2020-11-09
 
-### <a name="azure-machine-learning-sdk-for-python-v1180"></a>用于 Python 的 Azure 机器学习 SDK 1.18。0
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>用于 Python 的 Azure 机器学习 SDK v1.18.0
 + **Bug 修复与改进**
   + **azureml-automl-core**
-    +  通过允许使用高斯杂色填充短时间序列来改善其处理。
+    +  通过允许使用高斯噪声填充短时序来改进其处理。
   + **azureml-automl-runtime**
     + 如果 DateTime 列具有 OutOfBoundsDatetime 值，则引发 ConfigException
-    + 通过允许使用高斯杂色填充短时间序列来改善其处理。
-    + 确保每个文本列都可以根据该文本列中字符串的长度，将字符语法转换用于 n 语法范围
-    + 为用户本地计算上运行的 AutoML 试验提供最佳模式的原始功能说明
+    + 通过允许使用高斯噪声填充短时序来改进其处理。
+    + 确保每个文本列都可以根据该文本列中字符串的长度，利用 N 元语法范围内的字符语法转换。
+    + 为在用户本地计算上运行的 AutoML 试验的最佳模式提供原始特征的解释
   + **azureml-core**
-    + 固定包： pyjwt，以避免在即将发布的版本中不断地进行请求。
-    + 如果此类试验存在或新试验，则创建试验会返回具有相同名称的活动或上次存档的实验。
-    + 按名称调用 get_experiment 将返回具有给定名称的活动或上次存档的试验。
-    + 用户在重新激活时不能重命名试验。
-    + 改进了错误消息，以便在数据集不正确地传递到试验 (例如 ScriptRunConfig) 时包含潜在修复。 
-    + 的改进文档 `OutputDatasetConfig.register_on_complete` ，包括名称已存在时所发生的行为。
-    + 指定可能与常见环境变量发生冲突的数据集输入和输出名称现在将导致警告
-    + `grant_workspace_access`注册数据存储时的用途参数。 将其设置为 `True` 以从机器学习 Studio 访问虚拟网络后的数据。
-      [了解详细信息](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-    + 已优化链接服务 API。 我们在配置中定义了3个单独的参数 sub_id、rg 和名称，而不是提供资源 Id。
-    + 为了使客户能够自行解决令牌损坏问题，使工作区令牌同步成为一个公共方法。
-    + 此更改允许将空字符串用作 script_param 的值。
+    + 固定包 pyjwt，以避免在即将发布的版本中引入中断性版本。
+    + 创建一个实验将返回具有相同给定名称的活动试验或最后存档的试验（如果该实验存在）或新的试验。
+    + 按名称调用 get_experiment 将返回具有该给定名称的活动试验或上次存档的试验。
+    + 用户在重新激活实验时不能重命名它。
+    + 改进了错误消息，以在数据集不正确地传递到试验（如 ScriptRunConfig）时包含潜在的修补程序。 
+    + 改进了 `OutputDatasetConfig.register_on_complete` 文档，以包含在名称已存在时会发生的行为。
+    + 现在，指定可能与常见环境变量发生冲突的数据集输入和输出名称将导致警告
+    + 重新设定了在注册数据存储时参数 `grant_workspace_access` 的用途。 将其设置为 `True` 以从机器学习工作室访问虚拟网络后面的数据。
+      [了解详细信息](./how-to-enable-studio-virtual-network.md)
+    + 已优化链接服务 API。 我们没有提供资源 Id，而是在配置中定义了 3 个独立的参数 sub_id、rg 和 name。
+    + 为了使客户能够自行解决令牌损坏问题，可使工作区令牌同步成作为一种公共方法。
+    + 此更改允许将空字符串用作 script_param 的值
   + **azureml-pipeline-core**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可在 synapse spark 池上运行试验和管道运行。
+    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
   + **azureml-pipeline-steps**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可在 synapse spark 池上运行试验和管道运行。
-  + **azureml-synapse**
-    + 添加 Synapse 幻和 SparkMonitor，以使用户能够提交 Syanpse 作业并在笔记本中查看作业进度。
+    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
+  + azureml-synapse
+    + 添加 Synapse magic 和 SparkMonitor，允许用户提交 Syanpse 作业并在笔记本中查看作业进度。
   + **azureml-train-automl-client**
-    +  通过允许使用高斯杂色填充短时间序列来改善其处理。
+    +  通过允许使用高斯噪声填充短时序来改进其处理。
   + **azureml-train-automl-runtime**
     + 如果 DateTime 列具有 OutOfBoundsDatetime 值，则引发 ConfigException
-    + 添加了对在用户本地计算上运行的 AutoML 试验的最佳模型提供原始功能说明的支持
-    + 通过允许使用高斯杂色填充短时间序列来改善其处理。
+    + 添加了对在用户本地计算上运行的 AutoML 试验的最佳模式提供原始特征解释的支持
+    + 通过允许使用高斯噪声填充短时序来改进其处理。
   + **azureml-train-core**
-    + 此更改允许将空字符串用作 script_param 的值。
+    + 此更改允许将空字符串用作 script_param 的值
   + **azureml-train-restclients-hyperdrive**
-    + 自述文件已更改为提供更多上下文
+    + README 已更改，可提供更多上下文
   + **azureml-widgets**
-    + 向图表/并行坐标库添加字符串支持。
+    + 向小组件的图表/并行坐标库添加字符串支持。
 
 ## <a name="2020-11-05"></a>2020-11-05
 
-### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>图像实例分段的数据标记 (多边形批注)  (预览) 
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>图像实例分段的数据标签（多边形注释）（预览）
 
-图像实例分段 ("数据标签" 中的 "项目类型") 项目类型现在可用，因此用户可以在图像中的对象轮廓周围绘制和批注多边形。 用户将可以为图像中感兴趣的每个对象分配类和多边形。
+数据标签中的图像实例分段（多边形注释）项目类型现在可用，因此用户可以围绕图像中的对象轮廓绘制多边形并进行标注。 用户将能够为图像中感兴趣的每个对象分配一个类和一个多边形。
 
-了解有关 [图像实例分段标记](how-to-label-images.md)的详细信息。
+详细了解[图像实例分段标签](how-to-label-images.md)。
 
 
 
 ## <a name="2020-10-26"></a>2020-10-26
 
-### <a name="azure-machine-learning-sdk-for-python-v1170"></a>用于 Python 的 Azure 机器学习 SDK 1.17。0
-+ **新示例**
-  + 提供了一个新的社区驱动的示例存储库，网址为： https://github.com/Azure/azureml-examples
+### <a name="azure-machine-learning-sdk-for-python-v1170"></a>用于 Python 的 Azure 机器学习 SDK v1.17.0
++ 新示例
+  + https://github.com/Azure/azureml-examples 提供了一个新的社区主导的示例存储库
 + **Bug 修复与改进**
   + **azureml-automl-core**
     + 修复了 get_output 可能会引发 XGBoostError 的问题。
   + **azureml-automl-runtime**
     + AutoML 创建的基于时间/日历的功能现在将具有前缀。
-    + 修复了在为分类数据集定型 StackEnsemble 进行的 IndexError 过程中发生的一种情况。
-    + 修复了 refitting 模型后，VotingRegressor 预测可能不准确的问题。
+    + 修复了在针对启用了大量类和子采样的分类数据集训练 StackEnsemble 期间发生的 IndexError。
+    + 修复了在重新拟合模型后 VotingRegressor 预测可能不准确的问题。
   + **azureml-core**
     + 添加了有关 AKS 部署配置和 Azure Kubernetes 服务概念之间关系的其他详细信息。
     + 客户可以使用链接服务 SDK 将 synapse 工作区链接到 AML 工作区。 支持 CRUD。
-    + 环境客户端标签支持。 用户可以标记环境并按标签引用它们。
+    + 环境客户端标签支持。 用户可以标记环境并通过标签引用它们。
   + **azureml-dataprep**
-    + 使用目前不受支持的 Scala 2.12 的 Spark 时，更好的错误消息。
+    + 完善了在 Scala 2.12 中使用当前不受支持的 Spark 时出现的错误消息。
   + **azureml-explain-model**
-    + 已正式弃用 azureml 说明模型包
+    + 已正式弃用 azureml-explain-model 包
   + **azureml-mlflow**
-    + 已解决 mlflow 中的 bug。在未正确处理最终状态的 azureml 后端上运行。
+    + 解决了针对 azureml 后端的 mlflow.projects.run 中未正确处理完成状态的 bug。
   + **azureml-pipeline-core**
-    + 添加支持以创建、列出和获取基于管道的管道计划终结点。
-    +  使用无效的用法示例改进了 PipelineData.as_dataset 的文档-使用 PipelineData.as_dataset 不当将导致引发 ValueException
-    + 将 HyperDriveStep 管道笔记本更改为在 HyperDriveStep 运行后直接在 PipelineStep 中注册最佳模型。
+    + 添加基于管道终结点创建、列出和获取管道计划的支持。
+    +  改进了 PipelineData.as_dataset 文档，添加了无效用法的示例：不正确地使用 PipelineData.as_dataset 现在将引发 ValueException
+    + 更改了 HyperDriveStep 管道笔记本，以便在运行 HyperDriveStep 之后直接在 PipelineStep 中注册最佳模型。
   + **azureml-pipeline-steps**
-    + 将 HyperDriveStep 管道笔记本更改为在 HyperDriveStep 运行后直接在 PipelineStep 中注册最佳模型。
+    + 更改了 HyperDriveStep 管道笔记本，以便在运行 HyperDriveStep 之后直接在 PipelineStep 中注册最佳模型。
   + **azureml-train-automl-client**
     + 修复了 get_output 可能会引发 XGBoostError 的问题。
 
-### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure 机器学习 Studio 笔记本体验 (年10月更新) 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure 机器学习工作室笔记本体验（10 月更新）
 + **新功能**
-  + [完全虚拟网络支持](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [焦点模式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
-  + 保存笔记本-S
+  + [完整虚拟网络支持](./how-to-enable-studio-virtual-network.md)
+  + [焦点模式](./how-to-run-jupyter-notebooks.md#focus-mode)
+  + 保存笔记本 Ctrl-S
   + 行号
 
 + **Bug 修复与改进**
-  + 提高速度和内核可靠性
+  + 提高了速度和内核可靠性
   + Jupyter 小组件 UI 更新
 
 ## <a name="2020-10-12"></a>2020-10-12

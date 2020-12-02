@@ -3,16 +3,16 @@ title: Azure 实验室服务中的示例类类型 | Microsoft Docs
 description: 提供可以使用 Azure 实验室服务为其设置实验室的某些类型的类。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1c2caac35125c3f69c2257750bac417971af5dbd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436396"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
-使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分列出的文章提供了有关如何使用 Azure 实验室服务设置多种类型的课堂实验室的指导。
+使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分中的文章提供了有关如何使用 Azure 实验室服务设置几种类型的实验室的指导。
 
 ## <a name="big-data-analytics"></a>大数据分析
 可以设置 GPU 实验室来讲授大数据分析类。 使用此类类，学员可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供存储、管理和处理大数据的工具。 

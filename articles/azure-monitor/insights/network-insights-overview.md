@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a2238f5c1561abb1e11d69aa6d0bfe761097c64
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184631"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437297"
 ---
 # <a name="azure-monitor-for-networks"></a>用于网络的 Azure Monitor
 Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../platform/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-preview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
@@ -26,7 +26,7 @@ Azure 网络监视器是围绕以下关键监视组件构建的：
 
 Azure 网络监视器的“概览”页面提供了一种轻松的方法来可视化网络资源的清单以及资源运行状况和警报。 它分为四个主要功能区域：搜索和筛选、资源运行状况和指标、警报以及依赖项视图。
 
-[ ![ 显示 "概述" 页 #lightbox) 的屏幕截图](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)
+[![显示 "概述" 页的屏幕截图](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>搜索和筛选
 可以使用“订阅”、“资源组”和“类型”等筛选器来自定义资源运行状况和警报视图  。

@@ -1,18 +1,18 @@
 ---
 title: 带 Azure DevOps 的 CI/CD 管道入门-Azure IoT Edge |Microsoft Docs
 description: 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选的 Azure IoT Edge 应用。
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436991"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道
 
@@ -74,14 +74,14 @@ DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部�
 
    ![查看 Azure Repos 中生成的存储库](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> 以下步骤演示如何使用 Web 浏览器进行代码更改。 如果要在本地克隆存储库，请从窗口的右上角选择“克隆”。 使用提供的 URL 在 Visual Studio Code 或首选开发工具中克隆 Git 存储库。
+   > [!NOTE]
+   > 以下步骤演示如何使用 Web 浏览器进行代码更改。 如果要在本地克隆存储库，请从窗口的右上角选择“克隆”。 使用提供的 URL 在 Visual Studio Code 或首选开发工具中克隆 Git 存储库。
 
 2. 基于在创建过程中选择的应用程序语言，存储库已包含名为 FilterModule 的模块的代码。 打开 modules/FilterModule/module.json 文件。
 
    ![打开 Azure Repos 中的 module.json 文件](./media/how-to-devops-starter/open-module-json.png)
 
-3. 请注意，此文件在 version 参数中使用 [Azure DevOps 生成变量](/azure/devops/pipelines/build/variables?view=vsts#build-variables)。 此配置可确保在每次运行新生成时都创建模块的新版本。
+3. 请注意，此文件在 version 参数中使用 [Azure DevOps 生成变量](/azure/devops/pipelines/build/variables#build-variables)。 此配置可确保在每次运行新生成时都创建模块的新版本。
 
 ## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
 

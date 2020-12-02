@@ -2,13 +2,13 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 7c8e535978bff38146caee1a3b5177d5befaa6a1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 11/30/2020
+ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185855"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436821"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -20,7 +20,7 @@ ms.locfileid: "96185855"
 | --------------------------- | ------------- |
 | Microsoft.AAD | [Azure Active Directory 域服务](../../active-directory-domain-services/index.yml) |
 | Microsoft.Addons | core |
-| Microsoft.ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
+| ADHybridHealthService- [已注册](#registration) | Azure Active Directory |
 | Microsoft.Advisor | [Azure 顾问](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
@@ -28,7 +28,7 @@ ms.locfileid: "96185855"
 | Microsoft.AppConfiguration | [Azure 应用配置](../../azure-app-configuration/index.yml) |
 | Microsoft.AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Attestation | Azure 证明服务 |
-| Microsoft.Authorization<sup>1</sup> | [Azure 资源管理器](../index.yml) |
+| Microsoft. 授权- [已注册](#registration) | [Azure 资源管理器](../index.yml) |
 | Microsoft.Automation | [自动化](../../automation/index.yml) |
 | Microsoft.AutonomousSystems | [自治系统](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware 解决方案](../../azure-vmware/index.yml) |
@@ -37,7 +37,7 @@ ms.locfileid: "96185855"
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [批处理](../../batch/index.yml) |
-| Microsoft.Billing<sup>1</sup> | [成本管理和计费](/azure/billing/) |
+| Microsoft. 帐单 [注册](#registration) | [成本管理和计费](/azure/billing/) |
 | Microsoft.BingMaps | [必应地图](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Azure 区块链服务](../../blockchain/workbench/index.yml) |
 | Microsoft.BlockchainTokens | [Azure 区块链令牌](https://azure.microsoft.com/services/blockchain-tokens/) |
@@ -52,15 +52,15 @@ ms.locfileid: "96185855"
 | Microsoft.ClassicInfrastructureMigrate | 经典部署模型迁移 |
 | Microsoft.ClassicNetwork | 经典部署模型虚拟网络 |
 | Microsoft.ClassicStorage | 经典部署模型存储 |
-| Microsoft.ClassicSubscription<sup>1</sup> | 经典部署模型 |
+| ClassicSubscription- [已注册](#registration) | 经典部署模型 |
 | Microsoft.CognitiveServices | [认知服务](../../cognitive-services/index.yml) |
-| Microsoft.Commerce<sup>1</sup> | core |
+| Microsoft Commerce- [已注册](#registration) | core |
 | Microsoft.Compute | [虚拟机](../../virtual-machines/index.yml)<br />[虚拟机规模集](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. 使用量<sup>1</sup> | [成本管理](/azure/cost-management/) |
+| Microsoft. 使用- [已注册](#registration) | [成本管理](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [容器实例](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [容器注册表](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) |
-| CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
+| CostManagement- [已注册](#registration) | [成本管理](/azure/cost-management/) |
 | Microsoft.CostManagementExports | [成本管理](/azure/cost-management/) |
 | Microsoft.CustomerLockbox | [Microsoft Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft.CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
@@ -90,9 +90,9 @@ ms.locfileid: "96185855"
 | Microsoft.EnterpriseKnowledgeGraph | 企业知识图 |
 | Microsoft.EventGrid | [事件网格](../../event-grid/index.yml) |
 | Microsoft.EventHub | [事件中心](../../event-hubs/index.yml) |
-| Microsoft.Features<sup>1</sup> | [Azure 资源管理器](../index.yml) |
+| Microsoft. 功能- [已注册](#registration) | [Azure 资源管理器](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft.HanaOnAzure | [Azure SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
+| Microsoft.HanaOnAzure | [Azure 上的 SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
@@ -120,13 +120,13 @@ ms.locfileid: "96185855"
 | Microsoft.Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft.Marketplace | core |
 | Microsoft.MarketplaceApps | core |
-| Microsoft.MarketplaceOrdering<sup>1</sup> | core |
+| MarketplaceOrdering- [已注册](#registration) | core |
 | Microsoft.Media | [媒体服务](../../media-services/index.yml) |
 | Microsoft.Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft.MixedReality | [Azure 空间定位点](../../spatial-anchors/index.yml) |
 | Microsoft.NetApp | [Azure NetApp 文件](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [应用程序网关](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure 防火墙](../../firewall/index.yml)<br />[Azure Front Door 服务](../../frontdoor/index.yml)<br />[Azure 专用链接](../../private-link/index.yml)<br />[负载均衡器](../../load-balancer/index.yml)<br />[网络观察程序](../../network-watcher/index.yml)<br />[流量管理器](../../traffic-manager/index.yml)<br />[虚拟网络](../../virtual-network/index.yml)<br />[虚拟 WAN](../../virtual-wan/index.yml)<br />[VPN 网关](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [应用程序网关](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS 保护](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure 防火墙](../../firewall/index.yml)<br />[Azure Front Door 服务](../../frontdoor/index.yml)<br />[Azure 专用链接](../../private-link/index.yml)<br />[负载均衡器](../../load-balancer/index.yml)<br />[网络观察程序](../../network-watcher/index.yml)<br />[流量管理器](../../traffic-manager/index.yml)<br />[虚拟网络](../../virtual-network/index.yml)<br />[虚拟 WAN](../../virtual-wan/index.yml)<br />[VPN 网关](../../vpn-gateway/index.yml)<br /> |
 | Microsoft 笔记本 | [Azure Notebook](https://notebooks.azure.com/help/introduction) |
 | Microsoft.NotificationHubs | [通知中心](../../notification-hubs/index.yml) |
 | Microsoft.ObjectStore | 对象存储 |
@@ -135,7 +135,7 @@ ms.locfileid: "96185855"
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.Peering | [Azure 对等互连服务](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft.Portal<sup>1</sup> | [Azure 门户](../../azure-portal/index.yml) |
+| Microsoft 门户- [已注册](#registration) | [Azure 门户](../../azure-portal/index.yml) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | PowerPlatform | [Power Platform](/power-platform/) |
@@ -144,15 +144,15 @@ ms.locfileid: "96185855"
 | Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure 中继](../../azure-relay/relay-what-is-it.md) |
-| Microsoft.ResourceGraph<sup>1</sup> | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
+| ResourceGraph- [已注册](#registration) | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
 | Microsoft.ResourceHealth | [Azure 服务运行状况](../../service-health/index.yml) |
-| Microsoft.Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft .Resources- [已注册](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft.SaaS | core |
 | Microsoft.Scheduler | [计划程序](../../scheduler/index.yml) |
 | Microsoft.Search | [Azure 认知搜索](../../search/index.yml) |
 | Microsoft.Security | [安全中心](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| SerialConsole<sup>1</sup> | [适用于 Windows 的 Azure 串行控制台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| SerialConsole- [已注册](#registration) | [适用于 Windows 的 Azure 串行控制台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [服务总线](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric 网格](../../service-fabric-mesh/index.yml) |
@@ -168,7 +168,7 @@ ms.locfileid: "96185855"
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
-| microsoft.support<sup>1</sup> | core |
+| microsoft. 支持- [已注册](#registration) | core |
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 时序见解](../../time-series-insights/index.yml) |
 | Microsoft.Token | 令牌 |
@@ -181,9 +181,14 @@ ms.locfileid: "96185855"
 | Microsoft.WindowsDefenderATP | [Microsoft Defender 高级威胁防护](../../security-center/security-center-wdatp.md) |
 | Microsoft.WindowsESU | 扩展的安全更新 |
 | Microsoft.WindowsIoT | [Windows 10 IoT Core Services](/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
-| Microsoft.WorkloadMonitor<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |
+| Microsoft.WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |
 
-<sup>1</sup> 默认已注册
+## <a name="registration"></a>注册
+
+默认情况下，使用标记为 " **已注册** " 的资源提供程序注册到订阅。 若要使用其他资源提供程序，必须 [进行注册](resource-providers-and-types.md)。 但是，在执行某些操作时，会为您注册许多资源提供程序。 例如，如果通过门户创建资源，门户会自动注册所需的任何未注册的资源提供程序。 通过 [Azure 资源管理器模板](../templates/overview.md)部署资源时，还会注册任何所需的资源提供程序。
+
+> [!IMPORTANT]
+> 仅当已准备好使用资源提供程序时，才注册该提供程序。 注册步骤使你可以在订阅中维护最少特权。 恶意用户无法使用未注册的资源提供程序。
 
 ## <a name="next-steps"></a>后续步骤
 

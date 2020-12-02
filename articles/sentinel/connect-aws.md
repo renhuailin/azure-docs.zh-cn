@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563052"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436600"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>将 Azure Sentinel 连接到 AWS CloudTrail
 
@@ -28,7 +28,7 @@ ms.locfileid: "87563052"
 > [!NOTE]
 > AWS CloudTrail 在其 LookupEvents API 中具有 [内置限制](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) 。 它允许每个帐户每秒 (TPS) 两个以上的事务，并且每个查询最多可以返回50个记录。 因此，如果单个租户在一个区域中每秒持续生成的记录超过100，则将导致数据引入的积压和延迟。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 您必须对 Azure Sentinel 工作区具有写入权限。
 
@@ -80,11 +80,11 @@ ms.locfileid: "87563052"
 
 1. 若要使用 AWS 事件 Log Analytics 中的相关架构，请搜索 **AWSCloudTrail**。
 
-
+    > [!IMPORTANT]
+    > 从2020年12月1日起，" **AwsRequestId** " 字段已替换为 " **AwsRequestId_** " 字段 (注意添加的下划线) 。 旧 **AwsRequestId** 字段中的数据将在客户指定的数据保持期结束时保留。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 AWS CloudTrail 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 - [使用工作簿](tutorial-monitor-your-data.md)监视数据。
-

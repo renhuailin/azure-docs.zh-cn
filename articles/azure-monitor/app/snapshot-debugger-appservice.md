@@ -6,16 +6,16 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676830"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435716"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
-快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。
+快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。 建议在使用快照调试程序时，在基本服务层或更高级别上运行应用程序。 对于大多数应用程序，免费和共享服务层没有足够的内存来保存快照。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 启用 Snapshot Debugger
 若要为应用启用快照调试器，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用快照调试器的说明：
@@ -43,7 +43,7 @@ ms.locfileid: "84676830"
 
 ## <a name="disable-snapshot-debugger"></a>禁用快照调试器
 
-执行与**启用快照调试器**相同的步骤，但将快照调试器的两个开关都切换到“关”  。
+执行与 **启用快照调试器** 相同的步骤，但将快照调试器的两个开关都切换到“关”  。
 我们建议在所有应用上启用快照调试器，以简化对应用程序异常的诊断。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板

@@ -1,6 +1,6 @@
 ---
-title: Azure 实例元数据服务
-description: 了解 Azure 实例元数据服务及其如何提供有关当前正在运行的虚拟机实例的信息。
+title: 适用于 Linux 的 Azure 实例元数据服务
+description: 了解 Azure 实例元数据服务，以及它如何提供有关 Linux 中当前正在运行的虚拟机实例的信息。
 services: virtual-machines
 author: KumariSupriya
 manager: paulmey
@@ -11,38 +11,39 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 79a583575acc6e3b3b2551046d57355bbf74a663
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c9a4f5697fb667cde2cf3b4ddc3d637ff58149c9
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966796"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436583"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务 (IMDS)
 
-Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
-这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
-实例元数据服务适用于运行虚拟机和虚拟机规模集实例。 所有 API 均支持使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 VM。 只有证明和网络终结点才支持经典（非 ARM）VM，而证明终结点支持的范围有限。
+Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 你可以使用它来管理和配置虚拟机。
+这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅 [元数据 api](#metadata-apis)。
 
-Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
-最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+IMDS 可用于运行 (Vm) 和虚拟机规模集实例的虚拟机实例。 所有 Api 都支持使用 [Azure 资源管理器](/rest/api/resources/)创建和管理的 vm。 只有证明和网络终结点支持使用经典部署模型创建的 Vm。 证明终结点仅在有限范围内执行此操作。
+
+IMDS 是一个 REST 终结点，该终结点在已知的、不可路由的 IP 地址 (`169.254.169.254`) 中可用。 只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
+查询 IMDS 时，让 HTTP 客户端绕过 VM 中的 web 代理，并 `169.254.169.254` 将其视为相同 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
 
 ## <a name="security"></a>安全性
 
-此实例元数据服务终结点只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问。 此外，任何包含`X-Forwarded-For`标头的请求都会被服务拒绝。
-请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。
+只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问 IMDS 终结点。 此外，具有标头的任何请求 `X-Forwarded-For` 都将被服务拒绝。
+请求还必须包含 `Metadata: true` 标头，以确保实际请求是直接预期的，而不是无意重定向的一部分。
 
 > [!IMPORTANT]
-> 实例元数据服务不是用于敏感数据的通道。 该终结点面向 VM 上的所有进程开放。 应将通过此服务公开的信息视为与 VM 内运行的所有应用程序共享的信息。
+> IMDS 不是敏感数据的通道。 此终结点对于 VM 上的所有进程都是开放的。 将通过此服务公开的信息视为 VM 内运行的所有应用程序的共享信息。
 
 ## <a name="usage"></a>使用情况
 
-### <a name="accessing-azure-instance-metadata-service"></a>访问 Azure 实例元数据服务
+### <a name="access-azure-instance-metadata-service"></a>访问 Azure 实例元数据服务
 
-若要访问实例元数据服务，请从 [Azure 资源管理器](/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
-有关如何查询 IMDS 的更多示例，请参阅 [Azure 实例元数据示例](https://github.com/microsoft/azureimds)。
+若要访问 IMDS，请从 [Azure 资源管理器](/rest/api/resources/) 或 [Azure 门户](https://portal.azure.com)创建 VM，并使用以下示例。
+有关更多示例，请参阅 [Azure 实例元数据示例](https://github.com/microsoft/azureimds)。
 
-下面是用于检索实例的所有元数据的示例代码。若要访问特定数据源，请参阅[元数据 API](#metadata-apis) 部分。 
+下面是检索实例的所有元数据的示例代码。 若要访问特定的数据源，请参阅 [元数据 API](#metadata-apis) 部分。 
 
 **请求**
 
@@ -178,8 +179,8 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ### <a name="data-output"></a>数据输出
 
-默认情况下，实例元数据服务会返回 JSON 格式的数据 (`Content-Type: application/json`)。 但是，某些 API 可以返回不同格式的数据（如果请求）。
-下表是有关 API 可支持的其他数据格式的参考。
+默认情况下，IMDS 以 JSON 格式 () 返回数据 `Content-Type: application/json` 。 但是，如果请求，某些 Api 可以返回不同格式的数据。
+下表列出了 Api 可能支持的其他数据格式。
 
 API | 默认数据格式 | 其他格式
 --------|---------------------|--------------
@@ -195,11 +196,11 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 ```
 
 > [!NOTE]
-> 对于 /metadata/instance 中的叶节点，`format=json` 不起作用。 对于这些查询，需要显式指定 `format=text`，因为默认格式为 json。
+> 对于中的叶节点 `/metadata/instance` ， `format=json` 不起作用。 对于这些查询， `format=text` 需要显式指定，因为默认格式为 JSON。
 
-### <a name="versioning"></a>版本控制
+### <a name="version"></a>版本
 
-实例元数据服务进行了版本控制，因此，必须在 HTTP 请求中指定 API 版本。
+IMDS 是版本控制的，并且必须在 HTTP 请求中指定 API 版本。
 
 支持的 API 版本有： 
 - 2017-03-01
@@ -224,14 +225,14 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 - 2020-10-01
 
 > [!NOTE]
-> 当前正在推出版本2020-10-01，但可能尚未在每个区域中提供。
+> 版本2020-10-01 可能尚未在每个区域中提供。
 
-在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
+添加较新的版本时，如果脚本依赖于特定的数据格式，则仍可访问早期版本的兼容性。
 
-如果未指定版本，则会返回错误并列出受支持的最新版本。
+如果未指定版本，则会收到一个错误，其中包含最新的受支持版本的列表。
 
 > [!NOTE]
-> 此响应是 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
+> 此响应是 JSON 字符串。 下面的示例指示未指定版本时的错误条件。 为了便于阅读，响应的效果很好。
 
 **请求**
 
@@ -254,57 +255,57 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
 
 ## <a name="metadata-apis"></a>元数据 API
 
-元数据服务包含多个 API（表示不同数据源）。
+IMDS 包含多个表示不同数据源的 Api。
 
 API | 说明 | 引入的版本
 ----|-------------|-----------------------
-/attested | 请参阅[证明数据](#attested-data) | 2018-10-01
+/attested | 请参阅 [证明数据](#attested-data) | 2018-10-01
 /identity | 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 /instance | 请参阅[实例 API](#instance-api) | 2017-04-02
-/scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
+/scheduledevents | 查看 [计划事件](scheduled-events.md) | 2017-08-01
 
 ## <a name="instance-api"></a>实例 API
 
-实例 API 公开 VM 实例的重要元数据，其中包括 VM、网络和存储。 可以通过实例/计算访问以下类别：
+实例 API 公开 VM 实例的重要元数据，其中包括 VM、网络和存储。 可以通过以下类别访问以下类别 `instance/compute` ：
 
 数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
-azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
-customData | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
-isHostCompatibilityLayerVm | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
-licenseType | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)的许可证类型。 请注意，这仅适用于启用 AHB 的 Vm | 2020-09-01
-location | VM 在其中运行的 Azure 区域 | 2017-04-02
-name | VM 的名称 | 2017-04-02
-offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
-osProfile.adminUsername | 指定管理员帐户的名称 | 2020-07-15
-osProfile | 指定计算机的名称 | 2020-07-15
-osProfile. disablePasswordAuthentication | 指定是否禁用密码身份验证。 请注意，这仅适用于 Linux Vm | 2020-10-01
-osType | Linux 或 Windows | 2017-04-02
-placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
-platformUpdateDomain |  正在运行 VM 的[更新域](../manage-availability.md) | 2017-04-02
-platformFaultDomain | 正在运行 VM 的[容错域](../manage-availability.md) | 2017-04-02
-provider | VM 的提供商 | 2018-10-01
-publicKeys | [公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
-publisher | VM 映像的发布者 | 2017-04-02
-resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
-ResourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
-sku | VM 映像的特定 SKU | 2017-04-02
-securityProfile.secureBootEnabled | 标识是否在 VM 上启用了 UEFI 安全启动 | 2020-06-01
-securityProfile.virtualTpmEnabled | 标识是否在 VM 上启用了虚拟受信任的平台模块 (TPM) | 2020-06-01
-storageProfile | 参阅[存储配置文件](#storage-metadata) | 2019-06-01
-subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
-标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
-tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
-版本 | VM 映像的版本 | 2017-04-02
-vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [VM 大小](../sizes.md) | 2017-04-02
-区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
+azEnvironment | 运行 VM 的 Azure 环境。 | 2018-10-01
+customData | 此功能目前已禁用。 | 2019-02-01
+isHostCompatibilityLayerVm | 标识 VM 是否在主机兼容性层上运行。 | 2020-06-01
+licenseType | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)的许可证类型。 请注意，这仅适用于启用 AHB 的 Vm。 | 2020-09-01
+location | 正在运行 VM 的 Azure 区域。 | 2017-04-02
+name | VM 的名称。 | 2017-04-02
+offer | 为 VM 映像提供信息。 这仅适用于从 Azure 映像库部署的映像。 | 2017-04-02
+osProfile.adminUsername | 指定管理员帐户的名称。 | 2020-07-15
+osProfile | 指定计算机的名称。 | 2020-07-15
+osProfile. disablePasswordAuthentication | 指定是否禁用密码身份验证。 请注意，这仅适用于 Linux Vm。 | 2020-10-01
+osType | Linux 或 Windows。 | 2017-04-02
+placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)。 | 2017-08-01
+计划 | 包含 VM 的名称、产品和发布者的[计划](/rest/api/compute/virtualmachines/createorupdate#plan)（如果它是 Azure Marketplace 映像）。 | 2018-04-02
+platformUpdateDomain |  [更新](../manage-availability.md) 运行 VM 的域。 | 2017-04-02
+platformFaultDomain | 运行 VM 的[容错域](../manage-availability.md)。 | 2017-04-02
+provider | VM 的提供程序。 | 2018-10-01
+publicKeys | 分配给 VM 和路径[的公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)。 | 2018-04-02
+publisher | VM 映像的发布者。 | 2017-04-02
+resourceGroupName | VM 的[资源组](../../azure-resource-manager/management/overview.md)。 | 2017-08-01
+ResourceId | 资源的 [完全限定](/rest/api/resources/resources/getbyid) ID。 | 2019-03-11
+sku | VM 映像的特定 SKU。 | 2017-04-02
+securityProfile.secureBootEnabled | 标识是否在 VM 上启用了 UEFI 安全启动。 | 2020-06-01
+securityProfile.virtualTpmEnabled | 确定虚拟受信任的平台模块 (是否在 VM 上启用了 TPM) 。 | 2020-06-01
+storageProfile | 请参阅 [存储配置文件](#storage-metadata)。 | 2019-06-01
+subscriptionId | VM 的 Azure 订阅。 | 2017-08-01
+tags | VM 的[标记](../../azure-resource-manager/management/tag-resources.md)。  | 2017-08-01
+tagsList | 格式化为 JSON 数组的标记，便于编程分析。  | 2019-06-04
+版本 | VM 映像的版本。 | 2017-04-02
+vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)。 | 2017-04-02
+vmScaleSetName | 虚拟机规模集的虚拟机规模集[名称](../../virtual-machine-scale-sets/overview.md)。 | 2017-12-01
+vmSize | 请参阅 [VM 大小](../sizes.md)。 | 2017-04-02
+区域 | VM 的[可用性区域](../../availability-zones/az-overview.md)。 | 2017-12-01
 
-### <a name="sample-1-tracking-vm-running-on-azure"></a>示例 1：跟踪 Azure 上正在运行的 VM
+### <a name="sample-1-track-a-vm-running-on-azure"></a>示例1：跟踪在 Azure 上运行的 VM
 
-作为服务提供商，可能需要跟踪运行软件的 VM 数目，或者代理需要跟踪 VM 的唯一性。 为了能够获取 VM 的唯一 ID，请使用实例元数据服务中的 `vmId` 字段。
+作为服务提供商，可能需要跟踪运行软件的 Vm 的数量，或者需要跟踪 VM 的唯一性的代理。 若要获取 VM 的唯一 ID，请使用 `vmId` IMDS 中的字段。
 
 **请求**
 
@@ -318,11 +319,11 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="sample-2-placement-of-containers-data-partitions-based-faultupdate-domain"></a>示例 2：基于容错/更新域放置容器、数据分区
+### <a name="sample-2-placement-of-different-data-replicas"></a>示例2：放置不同的数据副本
 
-对于某些方案，不同数据副本的放置至关重要。 例如，对于 [HDFS 副本放置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)或通过 [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) 实现容器放置时，需要知道正在运行 VM 的 `platformFaultDomain` 和 `platformUpdateDomain`。
+对于某些方案，不同数据副本的放置至关重要。 例如，通过[orchestrator](https://kubernetes.io/docs/user-guide/node-selection/)的[HDFS 副本放置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)或容器放置可能要求你知道 `platformFaultDomain` ，并且 VM 正在 `platformUpdateDomain` 上运行。
 你还可以使用实例的[可用性区域](../../availability-zones/az-overview.md)来做出这些决策。
-可直接通过实例元数据服务查询此数据。
+可以通过 IMDS 直接查询此数据。
 
 **请求**
 
@@ -336,9 +337,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-### <a name="sample-3-getting-more-information-about-the-vm-during-support-case"></a>示例 3：在支持案例期间获取有关 VM 的详细信息
+### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>示例3：在支持案例期间获取有关 VM 的详细信息
 
-作为服务提供商，你可能会接到支持电话，了解有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以支持专业人员了解有关 Azure 上的 VM 类型。
+作为服务提供商，你可能会收到一个支持调用，你需要了解有关 VM 的详细信息。 在这种情况下，要求客户共享计算元数据会很有用。
 
 **请求**
 
@@ -451,9 +452,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-### <a name="sample-4-getting-azure-environment-where-the-vm-is-running"></a>示例 4：获取 VM 所在的 Azure 环境
+### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>示例4：获取运行 VM 的 Azure 环境
 
-Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时你需要使用 Azure 环境来做出一些运行时决策。 以下示例显示了如何实现此行为。
+Azure 具有各种主权云，例如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时，你需要 Azure 环境来做出某些运行时决策。 以下示例显示了如何实现此行为。
 
 **请求**
 
@@ -467,32 +468,32 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 AzurePublicCloud
 ```
 
-Azure 环境的云和值列在下面。
+此处列出了 Azure 环境的云和值。
 
  云   | Azure 环境
 ---------|-----------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ## <a name="network-metadata"></a>网络元数据 
 
-网络元数据是实例 API 的一部分。 可通过实例/网络终结点获取以下网络类别。
+网络元数据是实例 API 的一部分。 可以通过终结点使用以下网络类别 `instance/network` 。
 
 数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
-ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
-ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
-subnet/address | VM 的子网地址 | 2017-04-02
-subnet/prefix | 子网前缀，例如 24 | 2017-04-02
-ipv6/ipAddress | VM 的本地 IPv6 地址 | 2017-04-02
-macAddress | VM mac 地址 | 2017-04-02
+ipv4/privateIpAddress | VM 的本地 IPv4 地址。 | 2017-04-02
+ipv4/publicIpAddress | VM 的公共 IPv4 地址。 | 2017-04-02
+subnet/address | VM 的子网地址。 | 2017-04-02
+subnet/prefix | 子网前缀。 示例：24 | 2017-04-02
+ipv6/ipAddress | VM 的本地 IPv6 地址。 | 2017-04-02
+macAddress | VM mac 地址。 | 2017-04-02
 
 > [!NOTE]
 > 所有 API 响应都是 JSON 字符串。 以下所有示例响应显示清晰，可供阅读。
 
-#### <a name="sample-1-retrieving-network-information"></a>示例 1：检索网络信息
+#### <a name="sample-1-retrieve-network-information"></a>示例1：检索网络信息
 
 **请求**
 
@@ -501,9 +502,6 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 ```
 
 **响应**
-
-> [!NOTE]
-> 此响应是 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
 ```json
 {
@@ -533,7 +531,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 
 ```
 
-#### <a name="sample-2-retrieving-public-ip-address"></a>示例 2：检索公共 IP 地址
+#### <a name="sample-2-retrieve-public-ip-address"></a>示例2：检索公共 IP 地址
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
@@ -541,22 +539,22 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 
 ## <a name="storage-metadata"></a>存储元数据
 
-存储元数据是实例/计算/storageProfile 终结点下实例 API 的一部分。
+存储元数据是 "终结点" 下的实例 API 的一部分 `instance/compute/storageProfile` 。
 它提供与 VM 关联的存储磁盘的详细信息。 
 
-VM 的存储配置文件分为三个类别：映像引用、OS 磁盘和数据磁盘。
+VM 的存储配置文件分为三个类别：映像引用、操作系统磁盘和数据磁盘。
 
-映像引用对象包含有关 OS 映像的以下信息：
+Image reference 对象包含有关操作系统映像的下列信息：
 
 数据    | 说明
 --------|-----------------
 id      | 资源 ID
-offer   | 平台或市场映像的套餐
+offer   | 平台或映像的产品/服务
 publisher | 映像发布者
 sku     | 映像 SKU
-版本 | 平台或市场映像的版本
+版本 | 平台或映像的版本
 
-OS 磁盘对象包含有关 VM 所用 OS 磁盘的以下信息：
+操作系统磁盘对象包含有关 VM 使用的操作系统磁盘的以下信息：
 
 数据    | 说明
 --------|-----------------
@@ -569,7 +567,7 @@ lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 vhd     | 虚拟硬盘
-writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
+writeAcceleratorEnabled | `writeAccelerator`磁盘上是否已启用
 
 数据磁盘阵列包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象包含以下信息：
 
@@ -583,9 +581,9 @@ encryptionSettings | 磁盘的加密设置
 image   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
-osType  | 磁盘中包含的 OS 类型
+osType  | 磁盘中包含的操作系统类型
 vhd     | 虚拟硬盘
-writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
+writeAcceleratorEnabled | `writeAccelerator`磁盘上是否已启用
 
 以下示例演示如何查询 VM 的存储信息。
 
@@ -658,8 +656,8 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 ## <a name="vm-tags"></a>VM 标记
 
-VM 标记包含在实例/计算/标记终结点下的实例 API。
-标记可能已应用到 Azure VM 中，以逻辑方式将其归入一个分类。 可使用以下请求检索分配给 VM 的标记。
+VM 标记包含在终结点下的实例 API 中 `instance/compute/tags` 。
+标记可能已应用到 Azure VM 以逻辑方式将它们组织到分类。 可以使用以下请求检索分配给 VM 的标记。
 
 **请求**
 
@@ -673,7 +671,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身使用了分号，则此输出可能会出现问题。 如果编写分析程序以编程方式提取标记，则应该依赖于 `tagsList` 字段。 `tagsList` 字段是不带分隔符的 JSON 数组，因此更易于分析。
+`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身使用了分号，则此输出可能会出现问题。 如果编写分析程序以编程方式提取标记，则应该依赖于 `tagsList` 字段。 该 `tagsList` 字段是不带分隔符的 JSON 数组，因此更易于分析。
 
 **请求**
 
@@ -702,9 +700,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 ## <a name="attested-data"></a>证明数据
 
-实例元数据服务提供的部分方案是为了保证提供的数据来自 Azure。 我们对此信息的一部分进行签名，以便市场映像可以确保其映像在 Azure 上运行。
+IMDS 帮助确保提供的数据来自 Azure。 Microsoft 签署此信息的一部分，因此可以确认 Azure Marketplace 中的映像是在 Azure 上运行的映像。
 
-### <a name="sample-1-getting-attested-data"></a>示例 1：获取证明数据
+### <a name="sample-1-get-attested-data"></a>示例1：获取证明的数据
 
 > [!NOTE]
 > 所有 API 响应都是 JSON 字符串。 以下示例响应显示清晰，可供阅读。
@@ -715,16 +713,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
-Api-version 是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
-Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所在位置返回当前 UTC 时间戳。
+`Api-version` 是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
+`Nonce` 是一个可选的10位字符串。 如果未提供此项，IMDS 将返回当前协调世界时的时间戳。
 
 > [!NOTE]
-> 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
+> 由于 IMDS 的缓存机制， `nonce` 可能会返回以前缓存的值。
 
 **响应**
-
-> [!NOTE]
-> 此响应是 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
 ```json
 {
@@ -732,29 +727,31 @@ Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所�
 }
 ```
 
-签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及某些特定于 VM 的详细信息。 对于 ARM VM，这包括 vmId、sku、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 对于经典（非 ARM）VM，只保证填充 vmId。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+签名 blob 是文档的 [pkcs7](https://aka.ms/pkcs7)签名版本。 它包含用于签名的证书，以及特定于 VM 的特定详细信息。 
+
+对于使用 Azure 资源管理器创建的 vm，这包括 `vmId` 、、、 `sku` `nonce` `subscriptionId` 、 `timeStamp` 用于创建和过期文档以及有关映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 
+
+对于使用经典部署模型创建的 Vm，仅 `vmId` 保证填充。 你可以从响应中提取证书，并使用它来确认响应是否有效以及是否来自 Azure。
+
 该文档包含以下字段：
 
 数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
-licenseType | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)的许可证类型。 请注意，这仅适用于启用 AHB 的 Vm | 2020-09-01
-nonce | 可以随请求提供的可选字符串。 如果未提供 nonce，则会使用当前 UTC 时间戳 | 2018-10-01
+licenseType | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)的许可证类型。 请注意，这仅适用于启用 AHB 的 Vm。 | 2020-09-01
+nonce | 可以随请求提供的可选字符串。 如果未 `nonce` 提供，则使用当前的协调世界时时间戳。 | 2018-10-01
 plan | [Azure 市场映像计划](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含计划 ID (名称) 、产品图像或产品/服务 (产品) ，发布者 ID (发布者) 。 | 2018-10-01
-timestamp/createdOn | 创建签名文档时的 UTC 时间戳 | 2018-20-01
-timestamp/expiresOn | 签名文档到期时的 UTC 时间戳 | 2018-10-01
-vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2018-10-01
-subscriptionId | 虚拟机的 Azure 订阅 | 2019-04-30
-sku | VM 映像的特定 SKU | 2019-11-01
+timestamp/createdOn | 创建签名文档时的协调通用时间时间戳。 | 2018-20-01
+timestamp/expiresOn | 签名文档过期时的协调世界时时间戳。 | 2018-10-01
+vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)。 | 2018-10-01
+subscriptionId | VM 的 Azure 订阅。 | 2019-04-30
+sku | VM 映像的特定 SKU。 | 2019-11-01
+
+### <a name="sample-2-validate-that-the-vm-is-running-in-azure"></a>示例2：验证 VM 是否正在 Azure 中运行
+
+Azure Marketplace 中的供应商需要确保其软件只能在 Azure 中运行。 如果有人将 VHD 复制到本地环境，则供应商需要能够检测到这一点。 通过 IMDS，这些供应商可以获得仅保证来自 Azure 的响应的签名数据。
 
 > [!NOTE]
-> 对于经典（非 ARM）VM，只保证填充 vmId。
-
-### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>示例 2：验证 VM 是否在 Azure 中运行
-
-市场供应商希望确保其软件仅获许在 Azure 中运行。 如果有人将 VHD 复制到本地，则应当有能力检测到这一情况。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证响应仅来自 Azure。
-
-> [!NOTE]
-> 需要安装 jq。
+> 此示例需要安装 jq 实用程序。
 
 **请求**
 
@@ -798,7 +795,7 @@ Verification successful
 }
 ```
 
-验证签名是否来自 Microsoft Azure 并检查证书链中是否存在错误。
+验证签名是否来自 Microsoft Azure，并检查证书链中是否存在错误。
 
 ```bash
 # Verify the subject name for the main certificate
@@ -814,46 +811,48 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 ```
 
 > [!NOTE]
-> 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
+> 由于 IMDS 的缓存机制， `nonce` 可能会返回以前缓存的值。
 
-如果在初始请求中提供了 nonce 参数，则可以比较签名文档中的 nonce。
+`nonce`如果在 `nonce` 初始请求中提供了参数，则可以比较签名文档中的。
 
 > [!NOTE]
-> 公有云和主权云的证书将有所不同。
+> 公有云和每个主权云的证书将不同。
 
 云 | 证书
 ------|------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
+[所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)     | *.metadata.azure.cn
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                | *.metadata.microsoftazure.de
 
 > [!NOTE]
-> 用于签名的证书有一个已知问题。 对于公有云，证书可能不完全匹配 `metadata.azure.com`。 因此，证书验证应允许任何 `.metadata.azure.com` 子域中的公用名称。
+> 对于公有云，证书可能不完全匹配 `metadata.azure.com` 。 出于此原因，证书验证应允许来自任何子域的公用名称 `.metadata.azure.com` 。
 
-在验证期间，如果网络限制导致无法下载中间证书，则可以固定中间证书。 不过，Azure 将按照标准 PKI 做法滚动更新证书。 发生滚动更新时，需要更新固定证书。 每当计划进行更改以更新中间证书时，将会更新 Azure 博客并通知 Azure 客户。 [此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)可找到中间证书。 每个区域的中间证书可能不同。
+如果在验证期间由于网络限制而无法下载中间证书，则可以固定中间证书。 请注意，Azure 会滚动证书，这是标准的 PKI 实践。 发生滚动更新时，需要更新固定证书。 每当计划对更新中间证书的更改时，都会更新 Azure 博客，并通知 Azure 客户。 
+
+可以在 [PKI 存储库](https://www.microsoft.com/pki/mscorp/cps/default.htm)中找到中间证书。 每个区域的中间证书可能不同。
 
 > [!NOTE]
-> Azure 中国世纪互联的中间证书将来自 DigiCert 全局根 CA（而不是 Baltimore）。
-此外，如果已将 Azure 中国的中间证书固定为根链证书颁发机构更改的一部分，则必须更新中间证书。
+> Azure 中国世纪互联的中间证书将来自 DigiCert Global Root CA，而不是巴尔的摩。
+如果将 Azure 中国区的中间证书固定为根链证书颁发机构的一部分，则必须更新中间证书。
 
-## <a name="managed-identity-via-metadata-service"></a>通过元数据服务使用托管标识
+## <a name="managed-identity"></a>托管标识
 
-可以在 VM 上启用系统分配的托管标识，也可以向 VM 分配一个或多个用户分配的托管标识。
-然后，可以从实例元数据服务请求托管标识的令牌。 这些令牌可用于通过其他 Azure 服务（如 Azure Key Vault）进行身份验证。
+可以在 VM 上启用由系统分配的托管标识。 你还可以将一个或多个用户分配的托管标识分配给 VM。
+然后，可以从 IMDS 请求托管标识的令牌。 使用这些令牌对其他 Azure 服务（如 Azure Key Vault）进行身份验证。
 
 有关启用此功能的详细步骤，请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
-## <a name="scheduled-events-via-metadata-service"></a>通过元数据服务使用计划事件
-可以通过元数据服务获取计划事件的状态，然后用户可以指定要对这些事件执行的一组操作。  有关详细信息，请参阅[计划事件](scheduled-events.md)。 
+## <a name="scheduled-events"></a>计划事件
+您可以使用 IMDS 获取计划事件的状态。 然后，用户可以指定要对这些事件运行的一组操作。 有关详细信息，请参阅 [计划事件](scheduled-events.md)。
 
 ## <a name="regional-availability"></a>区域可用性
 
-此服务在所有 Azure 云中正式发布。
+服务在所有 Azure 云中公开发布。
 
 ## <a name="sample-code-in-different-languages"></a>不同语言的示例代码
 
-在 VM 内使用不同语言调用元数据服务的示例：
+下表列出了在 VM 内使用不同语言调用 IMDS 的示例：
 
 语言      | 示例
 --------------|----------------
@@ -868,69 +867,90 @@ Puppet        | https://github.com/keirans/azuremetadata
 Python        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
-## <a name="error-and-debugging"></a>错误和调试
+## <a name="errors-and-debugging"></a>错误和调试
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务返回标准 HTTP 错误。 例如：
 
 HTTP 状态代码 | Reason
-----------------|-------
+-----------------|-------
 200 正常 |
-400 错误的请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`
-404 未找到 | 请求的元素不存在
-不允许 405 方法 | 仅支持 `GET` 请求
-410 不存在 | 在一段时间后重试最长 70 秒
-429 请求次数过多 | 该 API 当前支持每秒最多 5 个查询
-500 服务错误     | 请稍后重试
+400 错误的请求 | `Metadata: true`查询叶节点时缺少标头或缺少参数 `format=json` 。
+404 未找到  | 请求的元素不存在。
+不允许 405 方法 | 仅 `GET` 支持请求。
+410 不存在 | 请在一段时间后重试，最大为70秒。
+429 请求次数过多 | API 当前支持每秒最多5个查询。
+500 服务错误     | 请稍后重试。
 
-### <a name="known-issues-and-faq"></a>已知问题和常见问题解答
+### <a name="frequently-asked-questions"></a>常见问题
 
-1. 我收到错误 `400 Bad Request, Required metadata header not specified`。 这是什么意思呢？
-   * 实例元数据服务需要在请求中传递标头 `Metadata: true`。 将该标头传入 REST 调用将允许访问实例元数据服务。
-1. 为什么我无法获取我的 VM 的计算信息？
-   * 当前实例元数据服务仅支持 Azure Resource Manager 创建的实例。
-1. 我刚才通过 Azure Resource Manager 创建了我的虚拟机。 为什么我无法看到计算元数据信息？
-   * 对于 2016 年 9 月之后创建的所有 VM，请添加[标记](../../azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 对于早期 VM（在 2016 年 9 月之前创建的 VM），请在 VM 实例中添加/删除扩展或数据磁盘以刷新元数据。
-1. 我看不到为新版本填充的任何数据
-   * 对于 2016 年 9 月之后创建的所有 VM，请添加[标记](../../azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 对于早期 VM（在 2016 年 9 月之前创建的 VM），请在 VM 实例中添加/删除扩展或数据磁盘以刷新元数据。
-1. 我为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone`？
-   * 基于指数回退系统或[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中所述的其他方法重试请求。 如果问题仍然存在，请在 Azure 门户中为 VM 创建支持问题。
-1. 这是否适用于虚拟机规模集实例？
-   * 是的，元数据服务可用于规模集实例。
-1. 我在虚拟机规模集中更新了我的标记，但与单实例 VM 不同，这些标记未出现在实例中，这是怎么回事？
-   * 目前，规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
-1. 调用服务时请求超时？
-   * 必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
+**我收到了错误 `400 Bad Request, Required metadata header not specified` 。这是什么意思？**
+
+IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用中传递此标头，可以访问 IMDS。
+
+**为什么我无法获取我的 VM 的计算信息？**
+
+目前，IMDS 仅支持通过 Azure 资源管理器创建的实例。
+
+**我通过 Azure 资源管理器一段时间创建了 VM。为什么我看不到计算元数据信息？**
+
+如果在2016年9月之后创建了 VM，请添加 [标记](../../azure-resource-manager/management/tag-resources.md) 以开始查看计算元数据。 如果在2016年9月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+
+**为什么看不到为新版本填充的所有数据？**
+
+如果在2016年9月之后创建了 VM，请添加 [标记](../../azure-resource-manager/management/tag-resources.md) 以开始查看计算元数据。 如果在2016年9月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+
+**为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone` ？**
+
+请重试你的请求。 有关详细信息，请参阅 [暂时性故障处理](/azure/architecture/best-practices/transient-faults)。 如果问题仍然存在，请在 VM 的 Azure 门户中创建支持问题。
+
+**这是否适用于虚拟机规模集实例？**
+
+是的，IMDS 适用于虚拟机规模集实例。
+
+**我更新了虚拟机规模集中的标记，但它们不会在实例中出现 (与单实例 Vm) 不同。我怎么办？**
+
+当前，虚拟机规模集的标记仅向 VM 显示对实例的重新启动、重置映像或磁盘更改。
+
+**为什么我的请求对服务的调用超时？**
+
+必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须有 169.254.169.254/32 地址的路由。
+
    * <details>
         <summary>验证路由表</summary>
 
-        1. 使用诸如 `netstat -r` 等命令转储本地路由表，并查找 IMDS 条目（例如）：
+        1. 转储本地路由表并查找 IMDS 条目。 例如：
             ```console
-            ~$ netstat -r
-            Kernel IP routing table
-            Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-            default         _gateway        0.0.0.0         UG        0 0          0 eth0
-            168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-            169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-            172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+            > route print
+            IPv4 Route Table
+            ===========================================================================
+            Active Routes:
+            Network Destination        Netmask          Gateway       Interface  Metric
+                      0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                    127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                    127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+              127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+                168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+              169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+            ... (continues) ...
             ```
-        1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
-        1. 转储路由表中相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
+        1. 验证是否存在路由 `169.254.169.254` ，并记下相应的网络接口 (例如 `172.16.69.7`) 。
+        1. 转储接口配置并查找与路由表中所引用的接口相对应的接口，并注明 MAC (物理) 地址。
             ```console
-            ~$ cat /etc/netplan/50-cloud-init.yaml
-            network:
-            ethernets:
-                eth0:
-                    dhcp4: true
-                    dhcp4-overrides:
-                        route-metric: 100
-                    dhcp6: false
-                    match:
-                        macaddress: 00:0d:3a:e4:c7:2e
-                    set-name: eth0
-            version: 2
+            > ipconfig /all
+            ... (continues) ...
+            Ethernet adapter Ethernet:
+
+               Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+               Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+               Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+               DHCP Enabled. . . . . . . . . . . : Yes
+               Autoconfiguration Enabled . . . . : Yes
+               Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+               IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+               Subnet Mask . . . . . . . . . . . : 255.255.255.0
+            ... (continues) ...
             ```
-        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
-        1. 确认该接口对应于 VM 的主 NIC 和主 IP。 您可以通过查看 Azure 门户中的网络配置或通过查看 [Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)来查找主 NIC/IP。 如果使用 CLI) ，请注意公共和专用 Ip (和 MAC 地址。 PowerShell CLI 示例：
+        1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过查看 Azure 门户中的网络配置，或通过查找 Azure CLI 来查找主 NIC 和 IP。 如果使用的是 CLI) ，请注意公共和专用 Ip (和 MAC 地址。 下面是 PowerShell CLI 示例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
@@ -940,22 +960,21 @@ HTTP 状态代码 | Reason
                 $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
                 Write-Host $NicName, $Nic.primary, $Nic.macAddress
             }
-            # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+            # Output: wintest767 True 00-0D-3A-E5-1C-C0
             ```
-        1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
+        1. 如果二者不匹配，则更新路由表，以便将主 NIC 和 IP 作为目标。
     </details>
 
-## <a name="support-and-feedback"></a>支持和反馈
+## <a name="support"></a>支持
 
-请在 https://feedback.azure.com 中提交反馈和评论。
+如果多次尝试后无法获取元数据响应，则可以在 Azure 门户中创建支持问题。
+对于 " **问题类型**"，选择 " **管理**"。 对于 " **类别**"，选择 " **实例元数据服务**"。
 
-若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题。
-使用“`Management`”作为“问题类型”，然后选择“`Instance Metadata Service`”作为“类别”。
-
-![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png "屏幕截图：在实例元数据服务出现问题时建立支持案例")
+![实例元数据服务支持的屏幕截图](./media/instance-metadata-service/InstanceMetadata-support.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关以下方面的详细信息：
-1. [获取 VM 的访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
-1. [计划事件](scheduled-events.md)
+[获取 VM 的访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+
+[计划事件](scheduled-events.md)
+

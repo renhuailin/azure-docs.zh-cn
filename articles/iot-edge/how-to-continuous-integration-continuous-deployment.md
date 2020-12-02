@@ -1,19 +1,19 @@
 ---
 title: 持续集成和持续部署到 Azure IoT Edge 设备-Azure IoT Edge
 description: 使用 Azure IoT Edge YAML 与 Azure DevOps、Azure Pipelines 来设置持续集成和持续部署
-author: shizn
+author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048519"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435881"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>持续集成和持续部署到 Azure IoT Edge 设备
 
@@ -32,16 +32,16 @@ ms.locfileid: "92048519"
 
 除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下主题：
 
-* [任务版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [任务版本](/azure/devops/pipelines/process/tasks?tabs=yaml#task-versions)
 * **高级** -如果适用，请指定不想生成的模块。
-* [控制选项](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [环境变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [输出变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [控制选项](/azure/devops/pipelines/process/tasks?tabs=yaml#task-control-options)
+* [环境变量](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
+* [输出变量](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
-* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](./how-to-visual-studio-develop-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution**的存储库中创建了一个解决方案，其中包含名为 **filtermodule**的模块的代码。
+* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](/azure/devops/repos/git/create-new-repo)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
+* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](./how-to-visual-studio-develop-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution** 的存储库中创建了一个解决方案，其中包含名为 **filtermodule** 的模块的代码。
 
    对于本文，你只需要 Visual Studio Code 或 Visual Studio 中的 IoT Edge 模板创建的解决方案文件夹。 在继续操作之前，无需生成、推送、部署或调试此代码。 您将在 Azure Pipelines 中设置这些进程。
 
@@ -50,7 +50,7 @@ ms.locfileid: "92048519"
 * 容器注册表，你可以在其中推送模块图像。 可使用 [Azure 容器注册表](../container-registry/index.yml)或第三方注册表。
 * 至少具有两个 IoT Edge 设备的活动 Azure [IoT 中心](../iot-hub/iot-hub-create-through-portal.md) ，用于测试单独的测试和生产部署阶段。 可按照快速入门文章在 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 上创建 IoT Edge 设备
 
-要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 Azure 存储库共享代码）
+要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](/azure/devops/repos/git/share-your-code-in-git-vs)（与 Visual Studio 和 Azure 存储库共享代码）
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>创建持续集成的生成管道
 
@@ -64,7 +64,7 @@ ms.locfileid: "92048519"
 
     ![使用 "新建管道" 按钮创建新的生成管道](./media/how-to-continuous-integration-continuous-deployment/add-new-pipeline.png)
 
-3. 在 "**你的代码位于何处？** " 页上，选择 " **Azure Repos Git `YAML` **"。 如果要使用经典编辑器创建项目的生成管道，请参阅 [经典编辑器指南](how-to-continuous-integration-continuous-deployment-classic.md)。
+3. 在 "**你的代码位于何处？** " 页上，选择 " **Azure Repos Git `YAML`**"。 如果要使用经典编辑器创建项目的生成管道，请参阅 [经典编辑器指南](how-to-continuous-integration-continuous-deployment-classic.md)。
 
 4. 选择要为其创建管道的存储库。
 
@@ -112,13 +112,13 @@ ms.locfileid: "92048519"
        | --- | --- |
        | 源文件夹 | 要从中进行复制的源文件夹。 空为存储库的根。 如果文件不在存储库中，请使用变量。 示例：`$(agent.builddirectory)`。
        | 目录 | 添加两行： `deployment.template.json` 和 `**/module.json` 。 |
-       | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)，了解相关说明。 |
+       | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables)，了解相关说明。 |
 
    * 任务： **发布生成项目**
 
        | 参数 | 说明 |
        | --- | --- |
-       | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)，了解相关说明。 |
+       | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables)，了解相关说明。 |
        | 项目名称 | 指定默认名称： `drop` |
        | 项目发布位置 | 使用默认位置： `Azure Pipelines` |
 

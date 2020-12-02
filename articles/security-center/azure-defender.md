@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436753"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -61,7 +61,7 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 
 
 
-## <a name="azure-defender-alerts"></a>Azure Defender 警报 
+## <a name="security-alerts"></a>安全警报 
 
 当 Azure Defender 检测到环境中的任何区域遭到威胁时，会生成警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。
 

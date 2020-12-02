@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b9b842b94d66cf91ad836b8ae61df1b3d3f34293
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046003"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435937"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>持续集成和持续部署 Azure IoT Edge 设备 (经典编辑器) 
 
@@ -32,16 +32,16 @@ ms.locfileid: "92046003"
 
 除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下主题：
 
-* [任务版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [任务版本](/azure/devops/pipelines/process/tasks?tabs=classic#task-versions)
 * **高级** -如果适用，请指定不想生成的模块。
-* [控制选项](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [环境变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [输出变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [控制选项](/azure/devops/pipelines/process/tasks?tabs=classic#task-control-options)
+* [环境变量](/azure/devops/pipelines/process/variables?tabs=classic#environment-variables)
+* [输出变量](/azure/devops/pipelines/process/variables?tabs=classic#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
-* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](./how-to-visual-studio-develop-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution**的存储库中创建了一个解决方案，其中包含名为 **filtermodule**的模块的代码。
+* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](/azure/devops/repos/git/create-new-repo)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
+* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](./how-to-visual-studio-develop-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution** 的存储库中创建了一个解决方案，其中包含名为 **filtermodule** 的模块的代码。
 
    对于本文，你只需要 Visual Studio Code 或 Visual Studio 中的 IoT Edge 模板创建的解决方案文件夹。 在继续操作之前，无需生成、推送、部署或调试此代码。 您将在 Azure Pipelines 中设置这些进程。
 
@@ -84,7 +84,7 @@ ms.locfileid: "92046003"
 
    * 如果要在适用于 Linux 的平台 amd64 容器中生成模块，请选择 " **ubuntu-16.04** "
 
-   * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](/azure/devops/pipelines/agents/v2-windows?view=vsts)。
+   * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](/azure/devops/pipelines/agents/v2-windows)。
 
    * 如果想在平台 arm32v7 或 arm64 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
@@ -104,7 +104,7 @@ ms.locfileid: "92046003"
     | --- | --- |
     | 显示名称 | 当操作字段更改时，显示名称会自动更新。 |
     | 操作 | 选择 " **生成模块映像**"。 |
-    | 文件 .template.js | 选择省略号 (...) 并导航到包含 IoT Edge 解决方案的存储库中的“deployment.template.json”文件********。 |
+    | 文件 .template.js | 选择省略号 (...) 并导航到包含 IoT Edge 解决方案的存储库中的“deployment.template.json”文件。 |
     | 默认平台 | 根据目标 IoT Edge 设备为模块选择适当的操作系统。 |
     | 输出变量 | 提供一个引用名称，以与文件的 deployment.js的生成文件路径相关联，如 **edge**。 |
 
@@ -123,11 +123,11 @@ ms.locfileid: "92046003"
     | 容器注册表类型 | 使用默认类型： `Azure Container Registry` 。 |
     | Azure 订阅 | 选择订阅。 |
     | Azure 容器注册表 | 选择用于存储模块图像的容器注册表类型。 窗体会根据选择的注册表类型进行更改。 如果选择“Azure 容器注册表”，请使用下拉列表选择 Azure 订阅和容器注册表的名称。 如果选择“通用容器注册表”，请选择“新建”以创建注册表服务连接 。 |
-    | 文件 .template.js | 选择省略号 (...) 并导航到包含 IoT Edge 解决方案的存储库中的“deployment.template.json”文件********。 |
+    | 文件 .template.js | 选择省略号 (...) 并导航到包含 IoT Edge 解决方案的存储库中的“deployment.template.json”文件。 |
     | 默认平台 | 根据目标 IoT Edge 设备为模块选择适当的操作系统。 |
     | 将注册表凭据添加到部署清单 | 指定 true 可添加用于将 docker 映像推送到部署清单的注册表凭据。 |
 
-   如果有多个容器注册表可用于托管模块映像，则需要复制此任务，选择不同的容器注册表，并使用 "**高级**" 设置中的 "**跳过模块 (") **绕过不适用于此特定注册表的映像。
+   如果有多个容器注册表可用于托管模块映像，则需要复制此任务，选择不同的容器注册表，并使用 "**高级**" 设置中的 "**跳过模块 (")** 绕过不适用于此特定注册表的映像。
 
 9. 选择“复制文件”任务进行编辑。 使用此任务将文件复制到项目暂存目录。
 
@@ -136,14 +136,14 @@ ms.locfileid: "92046003"
     | 显示名称 | 使用默认名称或自定义 |
     | 源文件夹 | 包含要复制的文件的文件夹。 |
     | 目录 | 添加两行： `deployment.template.json` 和 `**/module.json` 。 这两个文件作为输入来生成 IoT Edge 部署清单。 |
-    | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)，了解相关说明。 |
+    | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables#build-variables)，了解相关说明。 |
 
 10. 选择“发布生成项目”任务进行编辑。 提供到任务的项目暂存目录路径，使该路径可以发布到发布管道。
 
     | 参数 | 说明 |
     | --- | --- |
     | 显示名称 | 使用默认名称或自定义。 |
-    | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 若要了解详细信息，请参阅 [生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 。 |
+    | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 若要了解详细信息，请参阅 [生成变量](/azure/devops/pipelines/build/variables#build-variables) 。 |
     | 项目名称 | 使用默认名称： **drop** |
     | 项目发布位置 | 使用默认位置： **Azure Pipelines** |
 

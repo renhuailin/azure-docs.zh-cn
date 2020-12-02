@@ -1,24 +1,27 @@
 ---
 title: Power BI 和无服务器 SQL 池以通过 Synapse 链接分析 Azure Cosmos DB 数据
-description: 了解如何在 Azure Cosmos DB 上生成 Synapse SQL 无服务器数据库和视图 Synapse 链接，查询 Azure Cosmos DB 容器，然后使用 Power BI 这些视图生成模型。
+description: 了解如何在 Azure Cosmos DB 上构建无服务器 SQL 池数据库和视图 Synapse 链接，查询 Azure Cosmos DB 容器，然后使用 Power BI 在这些视图中生成模型。
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342243"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444500"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和无服务器 Synapse SQL 池通过 Synapse 链接 (预览来分析 Azure Cosmos DB 数据)  
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>使用 Power BI 和无服务器 Synapse SQL 池 (预览版) 通过 Synapse 链接分析 Azure Cosmos DB 数据 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 本文介绍如何为 Azure Cosmos DB 生成无服务器 SQL 池数据库和通过 Synapse 的视图链接。 你将查询 Azure Cosmos DB 容器，然后生成一个模型，该模型的 Power BI 通过这些视图来反映该查询。
 
 在此方案中，您将使用合作伙伴零售商店中有关 Surface product sales 的虚拟数据。 你将基于与大型家庭的邻近度和广告对特定周的影响，分析每个商店的收入。 在本文中，将创建名为 **RetailSales** 和 **StoreDemographics** 的两个视图，并在它们之间进行查询。 可以从此 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存储库中获取示例产品数据。
+
+> [!IMPORTANT]
+> 适用于 Azure Cosmos DB 的 Azure Synapse 链接的 Synapse 无服务器 SQL 池支持目前以预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,11 +41,11 @@ ms.locfileid: "93342243"
 
 ## <a name="create-a-database-and-views"></a>创建数据库和视图
 
-在 Synapse 工作区中，请执行 " **开发** " 选项卡，选择 **+** 图标，然后选择 " **SQL 脚本** "。
+在 Synapse 工作区中，请执行 " **开发** " 选项卡，选择 **+** 图标，然后选择 " **SQL 脚本**"。
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="将 SQL 脚本添加到 Synapse 分析工作区":::
 
-每个工作区都附带一个无服务器的 SQL 终结点。 创建 SQL 脚本后，从顶部的工具栏中，连接到 **内置** 。
+每个工作区都附带一个无服务器的 SQL 终结点。 创建 SQL 脚本后，从顶部的工具栏中，连接到 **内置**。
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="启用 SQL 脚本以在工作区中使用无服务器 SQL 终结点":::
 
@@ -55,7 +58,7 @@ Create database RetailCosmosDB
 
 接下来，在启用了不同 Synapse 链接的 Azure Cosmos 容器中创建多个视图。 视图将允许你使用 T-sql 来联接和查询不同容器中的 Azure Cosmos DB 数据。  创建视图时，请确保选择 " **RetailCosmosDB** " 数据库。
 
-以下脚本演示如何在每个容器上创建视图。 为简单起见，让我们使用 Synapse SQL 无服务器 over Synapse 链接启用容器的 [自动架构推理](analytical-store-introduction.md#analytical-schema) 功能：
+以下脚本演示如何在每个容器上创建视图。 为简单起见，让我们使用 "无服务器 Synapse 链接" 容器上的 [自动架构推理](analytical-store-introduction.md#analytical-schema) 功能：
 
 
 ### <a name="retailsales-view"></a>RetailSales 视图：
@@ -110,11 +113,11 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 接下来，使用以下步骤打开 Power BI 桌面并连接到无服务器 SQL 终结点：
 
-1. 打开 Power BI Desktop 应用程序。 选择 " **获取数据** " 并选择 " **更多** "。
+1. 打开 Power BI Desktop 应用程序。 选择 " **获取数据** " 并选择 " **更多**"。
 
 1. 从连接选项列表中选择 " **Azure Synapse Analytics (SQL DW)** 。
 
-1. 输入数据库所在的 SQL 终结点的名称。 在 `SynapseLinkBI-ondemand.sql.azuresynapse.net` " **服务器** " 字段中输入。 在此示例中，  **SynapseLinkBI** 是工作区的名称。 如果为工作区指定了不同的名称，请替换此名称。 选择 "数据连接模式的 **直接查询** "，然后选择 **"确定"** 。
+1. 输入数据库所在的 SQL 终结点的名称。 在 `SynapseLinkBI-ondemand.sql.azuresynapse.net` " **服务器** " 字段中输入。 在此示例中，  **SynapseLinkBI** 是工作区的名称。 如果为工作区指定了不同的名称，请替换此名称。 选择 "数据连接模式的 **直接查询** "，然后选择 **"确定"**。
 
 1. 选择首选的身份验证方法，如 Azure AD。
 
@@ -130,7 +133,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 现在，导航到 **报表** 窗口，创建一个报表，以根据分散的收入和 LargeHH 指数表示形式，将家庭规模的相对重要性与每个商店的平均收入进行比较：
 
-1. 选择 **散点图** 。
+1. 选择 **散点图**。
 
 1. 将 **LargeHH** 从 **StoreDemographics** 视图拖放到 X 轴。
 

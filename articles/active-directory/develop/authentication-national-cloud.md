@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141493"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444814"
 ---
 # <a name="national-clouds"></a>国家云
 
@@ -60,8 +60,8 @@ ms.locfileid: "88141493"
 
 可以使用适当的特定于区域的基 URL 来形成对 Azure AD 授权或令牌终结点的请求。 例如，对于 Azure 德国：
 
-  - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
-  - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
+- 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
+- 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
 
 对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 例如 `https://login.microsoftonline.de/contoso.com`。
 
@@ -76,9 +76,10 @@ ms.locfileid: "88141493"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关以下方面的详细信息：
+了解如何使用 [Microsoft 身份验证库在全国云环境中 (MSAL) ](msal-national-cloud.md)。
+
+国家/地区云文档：
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure 中国世纪互联](/azure/china/)
 - [Azure 德国](../../germany/index.yml)
-- [Azure AD 身份验证基础知识](./authentication-vs-authorization.md)

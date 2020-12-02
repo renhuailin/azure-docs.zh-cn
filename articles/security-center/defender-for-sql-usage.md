@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636378"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436719"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -62,9 +62,9 @@ ms.locfileid: "94636378"
 
 1. 在安全中心的菜单中，打开 " **定价 & 设置** " 页。
 
-    - 如果使用的是 **Azure 安全中心的默认工作区** (名为 "形式 defaultworkspace-[订阅 id]-[region]" ) ，请选择相关 **订阅** 。
+    - 如果使用的是 **Azure 安全中心的默认工作区** (名为 "形式 defaultworkspace-[订阅 id]-[region]" ) ，请选择相关 **订阅**。
 
-    - 如果使用 **非默认工作区** ，请选择相关 **工作区** (在筛选器中输入工作区的名称（如有必要）) ：
+    - 如果使用 **非默认工作区**，请选择相关 **工作区** (在筛选器中输入工作区的名称（如有必要）) ：
 
         ![按标题查找非默认工作区](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "94636378"
 
 ## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
 
-在安全中心的 "警报" 页、资源的 "安全性" 选项卡、" [Azure Defender" 仪表板](azure-defender-dashboard.md)中，或通过警报电子邮件中的直接链接提供 Azure Defender 警报。
+在安全中心的 "警报" 页、资源的 "安全性" 选项卡、" [Azure defender" 仪表板](azure-defender-dashboard.md)中，或通过警报电子邮件中的直接链接，可以使用 Azure DEFENDER for SQL 警报。
 
 1. 若要查看警报，请从安全中心的菜单中选择 " **安全警报** "，然后选择一个警报。
 

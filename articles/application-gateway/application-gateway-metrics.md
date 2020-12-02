@@ -2,17 +2,17 @@
 title: 应用程序网关的 Azure Monitor 指标
 description: 了解如何使用指标来监视应用程序网关的性能
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397733"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437059"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -162,7 +162,7 @@ ms.locfileid: "93397733"
 
 - **失败的请求数**
 
-  应用程序网关已处理但显示了 5xx 服务器错误代码的请求数。 这包括从应用程序网关生成的 5xx 代码，以及从后端生成的 5xx 代码。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
+  由于连接问题而失败的请求数。 此计数包括由于超过 "请求超时" HTTP 设置而失败的请求，以及因应用程序网关和后端之间的连接问题而失败的请求。 此计数不包括可用的正常后端，导致失败。 来自后端的4xx 和5xx 响应也不被视为此指标的一部分。
 
 - **响应状态**
 
@@ -194,7 +194,7 @@ ms.locfileid: "93397733"
 
 ## <a name="metrics-visualization"></a>指标可视化
 
-浏览到应用程序网关，并在“监视”下选择“指标” 。 若要查看可用值，请选择“指标”下拉列表。
+浏览到应用程序网关，并在“监视”下选择“指标” 。 若要查看可用值，请选择“指标”下拉列表  。
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
@@ -212,7 +212,7 @@ ms.locfileid: "93397733"
 
    ![“添加指标警报”按钮][6]
 
-2. 在 " **添加规则** " 页上，填写 "名称"、"条件" 和 "通知" 部分，然后选择 **"确定"** 。
+2. 在 " **添加规则** " 页上，填写 "名称"、"条件" 和 "通知" 部分，然后选择 **"确定"**。
 
    * 在“条件”选择器中，选择以下 4 个值之一：“大于”、“大于或等于”、“小于”或“小于或等于”。
 

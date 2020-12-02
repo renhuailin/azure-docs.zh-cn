@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddcd7e5c3e5651062f88b261e7003fb0dd2ef3b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378723"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435988"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>市场计量服务身份验证策略
 
@@ -68,10 +68,10 @@ ms.locfileid: "89378723"
 
 |  **属性名称**  |  **必需**  |  **说明**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 授权类型。 使用 `client_credentials`。 |
+|  `Grant_type`       |   True         | 授权类型。 请使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 与 Azure AD 应用关联的客户端/应用标识符。|
 |  `client_secret`    |   True         | 与 Azure AD 应用相关联的机密。  |
-|  `Resource`         |   True         | 为其请求令牌的目标资源。 使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
+|  `Resource`         |   True         | 为其请求令牌的目标资源。 请使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
 | | | |
 
 #### <a name="response"></a>*响应*
@@ -155,5 +155,5 @@ ms.locfileid: "89378723"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建 Azure 应用程序产品/服务](./create-new-azure-apps-offer.md)
+* [创建 Azure 应用程序产品/服务](../create-new-azure-apps-offer.md)
 * [规划 SaaS 产品/服务](../plan-saas-offer.md)

@@ -3,14 +3,14 @@ title: 应用程序设置
 description: 配置 LUIS 门户中的应用程序和版本设置，如言语规范化和应用隐私。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 05/17/2020
-ms.openlocfilehash: 0a07e423b5307934938727cd8ccc475989e04362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309619"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436634"
 ---
 # <a name="application-and-version-settings"></a>应用程序和版本设置
 

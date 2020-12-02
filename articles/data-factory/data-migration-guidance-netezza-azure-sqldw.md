@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 89e4b1c7d7499a0d6e38a0a662bc610b3914bdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638068"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444878"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure 数据工厂提供了高性能、稳健且经济高效的机制，用于将数据从本地 Netezza 服务器大规模迁移到 Azure 存储帐户或 Azure Synapse Analytics（以前称为 SQL 数据仓库）数据库。 
+Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，用于从本地 Netezza 服务器大规模将数据迁移到 Azure 存储帐户或 Azure Synapse 分析数据库。 
 
 本文提供面向数据工程师和开发人员的以下信息：
 

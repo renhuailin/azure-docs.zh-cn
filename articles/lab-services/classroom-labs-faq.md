@@ -1,17 +1,17 @@
 ---
-title: Azure 实验室服务中的课堂实验室 - FAQ | Microsoft Docs
-description: 本文提供有关 Azure 实验室服务中课堂实验室的常见问题解答 (FAQ)。
+title: Azure 实验室服务中的实验室-常见问题解答 |Microsoft Docs
+description: 本文提供有关 Azure 实验室服务中的实验室) 常见问题 (常见问题的解答。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443292"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437178"
 ---
-# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的课堂实验室 - 常见问题解答 (FAQ)
-获取关于 Azure 实验室服务中课堂实验室的某些最常见问题的解答。 
+# <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的实验室-常见问题 (常见问题) 
+获取有关 Azure 实验室服务中的实验室的一些最常见问题的解答。 
 
 ## <a name="quotas"></a>配额
 
@@ -29,13 +29,14 @@ ms.locfileid: "85443292"
 ## <a name="lab-accounts"></a>实验室帐户
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>为什么我无法创建实验室，是因为地址范围不可用吗？ 
-在 Azure 门户中创建实验室帐户时，课堂实验室可以在指定的 IP 地址范围内创建实验室 VM。 提供地址范围时，为实验室 VM 分配 512 IP 地址后将创建各个实验室。 实验室帐户的地址范围必须足够大，以容纳要在实验室帐户下创建的所有实验室。 
+
+实验室可以在 Azure 门户中创建实验室帐户时指定的 IP 地址范围内创建实验室 Vm。 提供地址范围时，为实验室 VM 分配 512 IP 地址后将创建各个实验室。 实验室帐户的地址范围必须足够大，以容纳要在实验室帐户下创建的所有实验室。 
 
 例如，如果你的区块为 /19 - 10.0.0.0/19，则此地址范围可容纳 8192 个 IP 地址和 16 个实验室（8192/512 = 16 个实验室）。 在这种情况下，实验室创建会在创建第 17 个实验室时失败。
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我应在组织的防火墙设置上打开哪些端口范围才能通过 RDP/SSH 连接到实验室虚拟机？
 
-端口如下：49152–65535。 课堂实验室位于负载均衡器后面。 每个实验室都有一个公共 IP 地址，并且实验室中的每个虚拟机都有一个唯一的端口。 
+端口如下：49152–65535。 实验室位于负载均衡器的后面。 每个实验室都有一个公共 IP 地址，并且实验室中的每个虚拟机都有一个唯一的端口。 
 
 还可以在 Azure 门户中“实验室”主页的“虚拟机池”选项卡上查看每个虚拟机的专用 IP 地址。 如果重新发布实验室，实验室的公共 IP 地址不会更改，但实验室中每个虚拟机的专用 IP 和端口号可以更改。 可以在以下文章中了解详细信息：[Azure 实验室服务的防火墙设置](how-to-configure-firewall-settings.md)。
 

@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999869"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436685"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
@@ -32,7 +32,7 @@ ms.locfileid: "95999869"
 >
 >- 客户使用情况归因适用于新部署，不支持标记已部署的现有资源。
 >
->- 发布到 Azure 市场的 [Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md)产品/服务必须有客户使用情况归因。
+>- 发布到 Azure 市场的 [Azure 应用程序](./create-new-azure-apps-offer.md)产品/服务必须有客户使用情况归因。
 >
 >- 并非所有 Azure 服务都与客户使用归属兼容。 Azure Kubernetes Services (AKS) 和 VM 规模集目前存在导致使用不足的已知问题。
 
@@ -64,7 +64,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 将 GUID 添加到模板或用户代理并在合作伙伴中心注册 GUID 后，系统将跟踪未来的部署。
 
 > [!NOTE]
-> 如果你正在通过合作伙伴中心向 Azure Marketplace 发布你的 [Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md) 产品/服务，则在上载模板时，模板内使用的任何新 GUID 都将自动注册到你的合作伙伴中心配置文件。  
+> 如果你正在通过合作伙伴中心向 Azure Marketplace 发布你的 [Azure 应用程序](./create-new-azure-apps-offer.md) 产品/服务，则在上载模板时，模板内使用的任何新 GUID 都将自动注册到你的合作伙伴中心配置文件。  
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
 
@@ -90,7 +90,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 > [!NOTE]
 > 有关创建和发布解决方案模板的详细信息，请参阅
 > * [创建和部署第一个资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
->* [Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。
+>* [Azure 应用程序产品/服务](./create-new-azure-apps-offer.md)。
 >* 视频： [为 Azure Marketplace 构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 

@@ -1,6 +1,6 @@
 ---
 title: 使用警报抑制规则在 Azure 安全中心中抑制误报或其他不需要的安全警报。
-description: 本文介绍如何使用 Azure 安全中心的禁止显示规则隐藏不需要的 Azure Defender 警报
+description: 本文介绍如何使用 Azure 安全中心的禁止显示规则隐藏不需要的安全警报
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,23 +8,23 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372653"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436787"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
-此页说明如何使用警报抑制规则禁止来自 Azure Defender 的误报或其他不需要的安全警报。
+此页说明如何使用警报抑制规则抑制来自 Azure Defender 的误报或其他不需要的安全警报。
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|定价：|免费<br> (大多数安全警报仅适用于 Azure Defender) |
+|定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
 |所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
@@ -32,7 +32,7 @@ ms.locfileid: "94372653"
 
 ## <a name="what-are-suppression-rules"></a>什么是抑制规则？
 
-各种 Azure Defender 计划在环境的任何区域检测到威胁，并生成安全警报。
+各种 Azure Defender 计划检测环境中任何区域的威胁，并生成安全警报。
 
 当单个警报不感兴趣或不相关时，可以手动关闭它。 或者，使用抑制规则功能在将来自动关闭类似警报。 通常，将使用抑制规则来执行以下操作：
 
@@ -43,7 +43,7 @@ ms.locfileid: "94372653"
 抑制规则定义了自动取消警报所应遵循的条件。
 
 > [!CAUTION]
-> 抑制安全警报可降低 Azure Defender 的威胁防护效率。 应仔细检查任何抑制规则的潜在影响，并在一段时间内对其进行监视。
+> 抑制安全警报会降低 Azure Defender 的威胁防护效果。 应仔细检查任何抑制规则的潜在影响，并在一段时间内对其进行监视。
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="创建警报抑制规则":::
 
@@ -127,9 +127,9 @@ ms.locfileid: "94372653"
 
 REST API 中抑制规则的相关 HTTP 方法是：
 
-- **PUT** ：创建或更新指定订阅中的抑制规则。
+- **PUT**：创建或更新指定订阅中的抑制规则。
 
-- **获取** ：
+- **获取**：
 
     - 列出为指定订阅配置的所有规则。 此方法返回适用规则的数组。
 
@@ -137,7 +137,7 @@ REST API 中抑制规则的相关 HTTP 方法是：
 
     - 以模拟仍处于设计阶段的抑制规则的影响。 此调用标识如果规则处于活动状态，将消除哪些现有警报。
 
-- **DELETE** ：删除现有规则（但不会更改它已消除的警报的状态）。
+- **DELETE**：删除现有规则（但不会更改它已消除的警报的状态）。
 
 有关完整的详细信息和使用示例，请参阅 [API 文档](/rest/api/securitycenter/)。 
 
@@ -148,4 +148,4 @@ REST API 中抑制规则的相关 HTTP 方法是：
 
 有关 Azure Defender 安全警报的详细信息，请参阅以下页面：
 
-- [安全警报和意向终止链](alerts-reference.md) -可以从 Azure Defender 获取的安全警报的参考指南。
+- [安全警报和意向攻击链](alerts-reference.md) - 可能会从 Azure Defender 获取的安全警报的参考指南。

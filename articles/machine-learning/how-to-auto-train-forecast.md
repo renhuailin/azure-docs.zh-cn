@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 57b54fbe20df4eb74ee17c7b5ac83d773114463b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887393"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437365"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -146,10 +146,11 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
 |`enable_dnn`|[启用预测 DNN]()。||
 |`time_series_id_column_names`|列名，用于唯一标识多行数据中具有相同时间戳的时序。 如果未定义时序标识符，则假定该数据集为一个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
+|`freq`| 时序数据集频率。 此参数表示预计事件发生的时间段，例如每日、每周、每年等。频率必须为 [pandas 偏移量别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。||
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
 |`feature_lags`| 当设置了 `target_lags` 并且 `feature_lags` 设置为 `auto` 时，要滞后的功能将由自动化 ML 自动确定。 启用功能滞后有助于提高准确性。 默认情况下会禁用功能滞后。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 详细了解[目标滚动窗口聚合](#target-rolling-window-aggregation)。||
-|`short_series_handling_config`| 启用短时序处理，以避免因数据不足而在定型期间发生故障。 默认情况下，Short 系列处理设置为 `auto` 。 了解有关 [short 系列处理](#short-series-handling)的详细信息。|
+|`short_series_handling_config`| 启用“短时序处理”，以避免在训练期间由于数据不足而失败。 默认情况下，Short 系列处理设置为 `auto` 。 了解有关 [short 系列处理](#short-series-handling)的详细信息。|
 
 
 以下代码 
@@ -297,12 +298,12 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
                                             short_series_handling_config='auto',
-                                            freq = 50
+                                            freq = '7',
                                             target_lags='auto')
 ```
 下表汇总了的可用设置 `short_series_handling_config` 。
  
-|设置|描述
+|设置|说明
 |---|---
 |`auto`| 下面是用于进行短序列处理的默认行为 <li> *如果所有序列都较短*，则填充数据。 <br> <li> *如果并非所有序列都简短*，请删除短序列。 
 |`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会将虚拟值添加到找到的每个短序列。 下面列出了列类型及其填充内容： <li>带有 Nan 的对象列 <li> 带有0的数字列 <li> 带有 False 的布尔/逻辑列 <li> 目标列填充的随机值的平均值为零，标准偏差为1。 

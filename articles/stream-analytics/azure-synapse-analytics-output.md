@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 63d03559b2a30020ed2e8bd1cd030855b8fb20b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305841"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445091"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 流分析中的 azure Synapse Analytics 输出
 
-[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics)（旧称为 SQL 数据仓库）是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 
+[Azure Synapse analytics](https://azure.microsoft.com/services/synapse-analytics) 是一种无限制的分析服务，可汇集企业数据仓库和大数据分析。 
 
 Azure 流分析作业可以输出到 Azure Synapse 分析中的专用 SQL 池表，并可处理高达 200MB/秒的吞吐量速率。这为工作负荷（例如报告和仪表板建设）支持最苛刻的实时分析和热路径数据处理需求。  
 

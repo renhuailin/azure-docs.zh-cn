@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 7669b49735843bf941c52aee5cc3b71d1644c01a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b381f2f1871ea7e26950d5b02d5906a50c6129d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635807"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444998"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -51,8 +51,8 @@ ms.locfileid: "92635807"
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
-- **云场景** ：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure Synapse Analytics (以前的 SQL 数据仓库) 、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
-- **混合场景** ：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
+- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务，例如 Azure 存储、Azure Synapse 分析、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
+- **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,14 +60,14 @@ ms.locfileid: "92635807"
 
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
 
-- **在 Azure 数据工厂托管存储中存储加密的凭据** 。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../storage/blobs/security-recommendations.md)。
-- **在 Azure Key Vault 中存储凭据** 。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
+- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../storage/blobs/security-recommendations.md)。
+- **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true** 。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS** 。
+> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
 
 > [!NOTE]
 > 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
@@ -111,11 +111,11 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 ### <a name="on-premises-data-store-credentials"></a>本地数据存储凭据
 凭据可以存储在数据工厂中，也可以在运行时从 Azure 密钥保管库[由数据工厂引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则凭据会始终以加密方式存储在自承载集成运行时上。 
  
-- **在本地存储凭据** 。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（最终对其进行加密和存储的地方）。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。
+- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（最终对其进行加密和存储的地方）。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。
 
-- **在 Azure Key Vault 中存储凭据** 。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
+- **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
-- **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时** 。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。 
+- **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时**。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。 
 
    使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdle 可加密链接服务凭据和链接服务中的敏感详细信息。 然后，可以通过 **Set-AzDataFactoryV2LinkedService** cmdlet 使用返回的 JSON（结合连接字符串中的 **EncryptedCredential** 元素）创建链接服务。  
 

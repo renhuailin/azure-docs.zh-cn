@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994513"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437161"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 
@@ -32,7 +32,7 @@ ms.locfileid: "95994513"
 
 本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
-由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019) 以添加所需的工作负荷。
+由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) 以添加所需的工作负荷。
 
 Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 

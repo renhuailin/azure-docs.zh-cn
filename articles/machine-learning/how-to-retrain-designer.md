@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554795"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437110"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器重新训练模型
 
@@ -47,7 +47,11 @@ ms.locfileid: "94554795"
 
 ## <a name="create-a-pipeline-parameter"></a>创建管道参数
 
-创建管道参数，以在运行时动态设置变量。 此例将训练数据路径从固定值更改为参数，这样便可以使用不同的数据重新训练模型。
+管道参数用于生成可在以后使用不同参数值重新提交的各种管道。 一些常见的情况是更新数据集或某些超参数以进行重新训练。 创建管道参数，以在运行时动态设置变量。 
+
+管道参数可以添加到管道中的数据源或模块参数中。 重新提交管道时，可以指定这些参数的值。
+
+此例将训练数据路径从固定值更改为参数，这样便可以使用不同的数据重新训练模型。 还可以根据用例将其他模块参数添加为管道参数。
 
 1. 选择“导入数据”模块。
 
@@ -60,31 +64,22 @@ ms.locfileid: "94554795"
 
 1. 将鼠标悬停在“路径”字段，然后选择显示的“路径”字段上方的省略号 。
 
-    ![屏幕截图显示了如何创建管道参数](media/how-to-retrain-designer/add-pipeline-parameter.png)
-
 1. 选择“添加到管道参数”。
 
 1. 提供参数名称和默认值。
 
-   > [!NOTE]
-   > 你可以选择管道草稿标题旁边的“设置”齿轮图标来检查和编辑管道参数。 
+   ![屏幕截图显示了如何创建管道参数](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 1. 选择“保存”。
 
+   > [!NOTE]
+   > 您还可以在 "模块详细信息" 窗格中从管道参数分离模块参数，这与添加管道参数类似。
+   >
+   > 你可以选择管道草稿标题旁边的“设置”齿轮图标来检查和编辑管道参数。 
+   >    - 分离后，可以在 " **设置** " 窗格中删除管道参数。
+   >    - 您还可以在 " **设置** " 窗格中添加管道参数，然后将其应用于某些模块参数。
+
 1. 提交管道运行。
-
-## <a name="find-a-trained-model"></a>查找定型的模型
-
-设计器会将所有管道输出（包括定型的模型）保存到默认工作区存储帐户。 你也可以直接在设计器中访问定型的模型：
-
-1. 等待管道完成运行。
-1. 选择 **训练模型** 模块。
-1. 在画布右侧的模块详细信息窗格中，选择“输出 + 日志”。
-1. 在“其他输出”中可以找到模型以及运行日志。
-1. 或者，也可选择“查看输出”图标。 在这里，可以按照对话框中的说明直接导航到数据存储。 
-
-> [!div class="mx-imgBorder"]
-> ![屏幕截图显示了如何下载定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>发布训练管道
 
