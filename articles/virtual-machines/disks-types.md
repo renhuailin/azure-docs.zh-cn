@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325088"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500761"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -84,7 +84,7 @@ Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (
 
 小于 P30 的高级 SSD 大小现在提供磁盘突发，并可以将每个磁盘的 IOPS 突发为3500，并将其带宽增大到 170 MB/秒。 突发是自动进行的，根据额度系统运行。 当磁盘流量低于预配的性能目标时，信用会自动累计，而当流量超出目标值时，将自动消耗信用，直到达到最大突发限制。 最大突发限制定义了磁盘 IOPS 和宽带的上限，即使有可供使用的突发积分，也不能超过此上限。 磁盘突发能更好地容许 IO 模式出现不可预测的变化情况。 可以最大程度地利用磁盘突发来应对 OS 磁盘启动时和应用程序的流量高峰。    
 
-默认在磁盘大小适用情况下的新磁盘部署上启用磁盘突发支持，无需用户执行任何操作。 对于大小适用的现有磁盘，可以使用以下两个选项中的任一选项启用突发：分离并重新附加磁盘，或停止并重新启动连接的 VM。 将磁盘附加到支持最大持续时间（峰值突发限制为 30 分钟）的虚拟机后，所有支持突发的磁盘大小最初会获得一个完整的突发积分桶。 若要详细了解突发在 Azure 磁盘上的工作原理，请参阅[高级 SSD 突发](linux/disk-bursting.md)。 
+默认在磁盘大小适用情况下的新磁盘部署上启用磁盘突发支持，无需用户执行任何操作。 对于大小适用的现有磁盘，可以使用以下两个选项中的任一选项启用突发：分离并重新附加磁盘，或停止并重新启动连接的 VM。 将磁盘附加到支持最大持续时间（峰值突发限制为 30 分钟）的虚拟机后，所有支持突发的磁盘大小最初会获得一个完整的突发积分桶。 若要详细了解突发在 Azure 磁盘上的工作原理，请参阅[高级 SSD 突发](./disk-bursting.md)。 
 
 ### <a name="transactions"></a>事务
 

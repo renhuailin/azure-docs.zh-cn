@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361086"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500795"
 ---
 # <a name="create-an-azure-vm-assessment"></a>创建 Azure VM 评估
 
@@ -21,7 +21,7 @@ ms.locfileid: "91361086"
 
 ## <a name="before-you-start"></a>开始之前
 
-- 请确保已 [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
+- 请确保已 [创建](./create-manage-projects.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
 - 若要创建评估，需要为 [VMware](how-to-set-up-appliance-vmware.md) 或 [hyper-v](how-to-set-up-appliance-hyper-v.md)设置 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
 

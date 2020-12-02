@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027557"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509188"
 ---
 **上次文档更新** 时间：太平洋标准时间 2019 10:00 AM PST。
 
@@ -21,7 +21,7 @@ ms.locfileid: "96027557"
 
 Microsoft 已在我们的所有云服务中部署了缓解措施。 运行 Azure 并将客户工作负荷相互隔离的基础结构是受保护的。 这意味着使用同一基础结构的潜在攻击者无法使用这些漏洞攻击你的应用程序。
 
-Azure 尽可能使用[内存保留维护](../articles/virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#maintenance-that-doesnt-require-a-reboot)，这样可以尽量降低对客户的影响并且不需要重启。 Azure 会在对主机进行系统级更新时继续利用这些方法，对客户进行保护。
+Azure 尽可能使用[内存保留维护](../articles/virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#maintenance-that-doesnt-require-a-reboot)，这样可以尽量降低对客户的影响并且不需要重启。 Azure 会在对主机进行系统级更新时继续利用这些方法，对客户进行保护。
 
 若要详细了解如何将安全性集成到 Azure 的各个方面，请访问 [Azure 安全文档](../articles/security/index.yml)站点。 
 

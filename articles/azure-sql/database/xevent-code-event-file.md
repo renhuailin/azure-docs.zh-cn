@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791301"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501220"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的事件文件目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -506,9 +506,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 假设要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
 
-- 为简单起见，会想要将 Azure 存储容器完全替换为一个简单文件（例如 *C:\myeventdata.xel* ）。 该文件将写入 SQL Server 所在计算机的本地硬盘驱动器。
+- 为简单起见，会想要将 Azure 存储容器完全替换为一个简单文件（例如 *C:\myeventdata.xel*）。 该文件将写入 SQL Server 所在计算机的本地硬盘驱动器。
 - 不需要为 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 使用任何类型的 Transact-SQL 语句。
-- 在 **CREATE EVENT SESSION** 语句的 **ADD TARGET** 子句中，将对 **filename=** 分配的 Http 值替换为完整路径字符串（例如 *C:\myfile.xel* ）。
+- 在 **CREATE EVENT SESSION** 语句的 **ADD TARGET** 子句中，将对 **filename=** 分配的 Http 值替换为完整路径字符串（例如 *C:\myfile.xel*）。
   
   - 此操作不涉及任何 Azure 存储帐户。
 

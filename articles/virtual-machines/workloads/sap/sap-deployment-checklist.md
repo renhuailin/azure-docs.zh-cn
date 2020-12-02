@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500931"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -243,8 +243,8 @@ ms.locfileid: "94950357"
     - Azure 高级存储用于滞后于延迟的磁盘，或者需要 [99.9% 的单 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 。
     - Azure 写入加速器已正确部署。
         - 请确保在需要写入加速器的磁盘上正确生成了 Vm、存储空间或条带集内的。
-        - 检查 [Linux 上的软件 RAID 配置](../../linux/configure-raid.md)。
-        - [在 Azure 中的 Linux vm 上检查 LVM 的配置](../../linux/configure-lvm.md)。
+        - 检查 [Linux 上的软件 RAID 配置](/previous-versions/azure/virtual-machines/linux/configure-raid)。
+        - [在 Azure 中的 Linux vm 上检查 LVM 的配置](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
     - [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/) 专门用于。
     - Vm 已部署到正确的可用性集，并可用性区域。
     - 在 SAP 应用程序层和 SAP DBMS 层中使用的 Vm 上启用[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。

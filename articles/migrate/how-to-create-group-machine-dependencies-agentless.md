@@ -3,12 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置无代理依赖项分析
 description: 在 Azure Migrate 服务器评估中设置无代理依赖项分析。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337687"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500778"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析计算机依赖项（无代理）
 
@@ -31,7 +31,7 @@ ms.locfileid: "93337687"
 
 - [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支持的操作系统和所需的权限。
 - 确保：
-    - 具有 Azure Migrate 项目。 如果没有，请立即 [创建](how-to-add-tool-first-time.md) 一个。
+    - 具有 Azure Migrate 项目。 如果没有，请立即 [创建](./create-manage-projects.md) 一个。
     - 检查是否已将 Azure Migrate： Server 评估工具 [添加](how-to-assess.md) 到项目。
     - 设置 [Azure Migrate 设备](migrate-appliance.md) ，以发现本地计算机。 为 VMware Vm[设置设备](how-to-set-up-appliance-vmware.md)。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。
 - 检查是否在要分析的每个 VM 上安装了 VMware Tools (10.2) 。
@@ -48,10 +48,10 @@ ms.locfileid: "93337687"
 
 1. 打开 "设备管理" 应用。 
 2. 导航到 " **提供 vCenter 详细信息** " 面板。
-3. 在 " **发现 vm 上的应用程序和依赖项** " 中，单击 " **添加凭据** "
-3. 选择 **操作系统** ，提供帐户的友好名称和 **用户名** / **密码**
-6. 单击“保存”。
-7. 单击 " **保存并启动发现** "。
+3. 在 "**发现 vm 上的应用程序和依赖项**" 中，单击 "**添加凭据**"
+3. 选择 **操作系统**，提供帐户的友好名称和 **用户名** / **密码**
+6. 单击“保存”  。
+7. 单击 " **保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
 
@@ -59,12 +59,12 @@ ms.locfileid: "93337687"
 
 选择要启用依赖关系发现的计算机。 
 
-1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器** "。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 单击 " **依赖关系分析** " 图标。
-3. 单击 " **添加服务器** "。
+3. 单击 " **添加服务器**"。
 4. 在 " **添加服务器** " 页中，选择发现相关计算机的设备。
 5. 从 "计算机" 列表中选择计算机。
-6. 单击 " **添加服务器** "。
+6. 单击 " **添加服务器**"。
 
     ![启动依赖项发现](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -72,13 +72,13 @@ ms.locfileid: "93337687"
 
 ## <a name="visualize-dependencies"></a>可视化依赖项
 
-1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器** "。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 搜索要查看的计算机。
-3. 在 " **依赖项** " 列中，单击 " **查看依赖项** "
+3. 在 "**依赖项**" 列中，单击 "**查看依赖项**"
 4. 使用 " **持续时间** " 下拉列表更改要查看其地图的时间段。
 5. 展开 **客户端** 组以列出依赖于所选计算机的计算机。
 6. 展开 **端口** 组以列出与所选计算机具有依赖关系的计算机。
-7. 若要导航到任何依赖计算机的映射视图，请单击计算机名称 > " **加载服务器映射** "
+7. 若要导航到任何依赖计算机的映射视图，请单击计算机名称 > "**加载服务器映射**"
 
     ![展开服务器端口组和加载服务器映射](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
 
@@ -93,12 +93,12 @@ ms.locfileid: "93337687"
 
 ## <a name="export-dependency-data"></a>导出依赖关系数据
 
-1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器** "。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 单击 " **依赖关系分析** " 图标。
-3. 单击 " **导出应用程序依赖项** "。
+3. 单击 " **导出应用程序依赖项**"。
 4. 在 " **导出应用程序依赖关系** " 页上，选择发现相关计算机的设备。
 5. 选择开始时间和结束时间。 请注意，只能下载过去30天内的数据。
-6. 单击 " **导出依赖项** "。
+6. 单击 " **导出依赖项**"。
 
 依赖关系数据以 CSV 格式导出和下载。 下载的文件包含所有启用了依赖关系分析的计算机之间的依赖关系数据。 
 
@@ -127,12 +127,12 @@ Timeslot | 观察依赖项的 timeslot。 <br/> 在当前6小时的槽上捕获�
 
 选择要停止依赖关系发现的计算机。 
 
-1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器** "。
+1. 在 **Azure Migrate：服务器评估** 中，单击 " **发现的服务器**"。
 2. 单击 " **依赖关系分析** " 图标。
-3. 单击 " **删除服务器** "。
+3. 单击 " **删除服务器**"。
 3. 在 " **删除服务器** " 页中，选择要在其上发现要停止依赖关系发现的 vm 的 **设备** 。
 4. 从 "计算机" 列表中选择计算机。
-5. 单击 " **删除服务器** "。
+5. 单击 " **删除服务器**"。
 
 如果要停止依赖于多台计算机，则可以使用 [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 执行此操作。
 

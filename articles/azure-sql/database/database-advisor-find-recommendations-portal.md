@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672262"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500880"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,7 +106,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
    ![屏幕截图显示了在何处选择要自动执行的操作。](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
-> 请注意， **DROP_INDEX** 选项当前与使用分区切换和索引提示的应用程序不兼容。
+> 请注意，**DROP_INDEX** 选项当前与使用分区切换和索引提示的应用程序不兼容。
 
 选择所需配置后，请单击“应用”。
 

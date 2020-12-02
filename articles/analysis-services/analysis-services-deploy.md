@@ -4,15 +4,15 @@ description: 了解如何使用 Visual Studio 将表格模型部署到 Azure Ana
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9df10760164dcd0d207663c14107f72c46b76d25
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018770"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501237"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
 
@@ -23,8 +23,8 @@ ms.locfileid: "92018770"
 要开始，需要：
 
 * Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[创建 Azure Analysis Services 服务器](analysis-services-create-server.md)。
-* Visual Studio 中的**表格模型项目**或兼容级别为 1200 或更高的现有表格模型。 从未创建过？ 尝试 [Adventure Works Internet 销售表格建模教程](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。
-* **本地网关** - 如果组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
+* Visual Studio 中的 **表格模型项目** 或兼容级别为 1200 或更高的现有表格模型。 从未创建过？ 尝试 [Adventure Works Internet 销售表格建模教程](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。
+* **本地网关** - 如果组织的网络中有一个或多个本地数据源，则需要安装 [本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
 
 > [!TIP]
 > 在部署之前，请确保可以在表中处理数据。 在 Visual Studio 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，将无法成功部署。
@@ -33,7 +33,7 @@ ms.locfileid: "92018770"
 
 ## <a name="get-the-server-name"></a>获取服务器名称
 
-在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
+在 **Azure 门户** 中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
    
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -63,4 +63,4 @@ ms.locfileid: "92018770"
 
 现在，已将表格模型部署到服务器，可以与其进行连接了。 可以[使用 SQL Server Management Studio (SSMS) 连接到该服务器](analysis-services-manage.md)以对其进行管理。 并且，可以[使用客户端工具连接到它](analysis-services-connect.md)，如 Power BI、Power BI Desktop 或 Excel，并开始创建报表。   
 
-若要了解高级部署方法，请参阅[表格模型解决方案部署](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current)。
+若要了解高级部署方法，请参阅[表格模型解决方案部署](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current&preserve-view=true)。

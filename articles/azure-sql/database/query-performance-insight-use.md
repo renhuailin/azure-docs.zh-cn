@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790366"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501254"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ Query Performance Insight 为单一数据库和共用数据库提供了智能查
 需要拥有以下 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限才能使用 Query Performance Insight：
 
 * 需要拥有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限才能查看资源消耗量靠前的查询和图表。    
-* 需要具备 **所有者** 、 **参与者** 、 **SQL DB 参与者** 或 **SQL Server 参与者** 权限才能查看查询文本。
+* 需要具备 **所有者**、**参与者**、**SQL DB 参与者** 或 **SQL Server 参与者** 权限才能查看查询文本。
 
 ## <a name="use-query-performance-insight"></a>使用 Query Performance Insight
 
@@ -238,14 +238,14 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
 
 有两种类型的保留策略：
 
-* **基于大小** ：如果将此策略设置为“自动”，则会在快要达到最大大小时自动清除数据。
-* **基于时间** ：此策略默认设置为 30 天。 如果查询存储的空间不足，它会删除 30 天以前的查询信息。
+* **基于大小**：如果将此策略设置为“自动”，则会在快要达到最大大小时自动清除数据。
+* **基于时间**：此策略默认设置为 30 天。 如果查询存储的空间不足，它会删除 30 天以前的查询信息。
 
 可将捕获策略设置为：
 
-* **全部** ：查询存储将捕获所有查询。
-* **自动** ：查询存储将忽略不频繁的查询以及编译和执行持续时间很短的查询。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
-* **无** ：查询存储将停止捕获新查询，但仍会收集已捕获的查询的运行时统计信息。
+* **全部**：查询存储将捕获所有查询。
+* **自动**：查询存储将忽略不频繁的查询以及编译和执行持续时间很短的查询。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
+* **无**：查询存储将停止捕获新查询，但仍会收集已捕获的查询的运行时统计信息。
 
 我们建议通过执行 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户中的以下命令，将所有策略设置为“自动”，将清理策略设置为 30 天。 （请将 `YourDB` 替换为数据库名称。）
 

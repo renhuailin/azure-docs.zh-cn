@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455184"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501050"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的加密
 
@@ -47,13 +47,13 @@ Azure 服务的第一层加密是通过平台托管密钥启用的。 默认情�
 工作区可以配置为在创建工作区时使用客户托管的密钥启用双加密。 创建新的工作区时，请选择 "安全" 选项卡上的 "使用客户托管的密钥启用双加密" 选项。 你可以选择输入密钥标识符 URI，或从工作区 **所在的区域** 中的密钥保管库列表中进行选择。 Key Vault 本身需要 **启用清除保护**。
 
 > [!IMPORTANT]
-> 目前，在创建工作区后，不能更改双加密的配置设置。
+> 创建工作区后，不能更改双加密的配置设置。
 
 :::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="此关系图显示了必须选择的选项，才能启用使用客户托管密钥进行双重加密的工作区。":::
 
 ### <a name="key-access-and-workspace-activation"></a>密钥访问和工作区激活
 
-包含客户管理的密钥的 Azure Synapse 加密模型涉及访问 Azure Key Vault 中的密钥的工作区，可根据需要进行加密和解密。 工作区可以通过访问策略或 Azure Key Vault RBAC 访问 ([预览版](../../key-vault/general/rbac-guide.md)) 来访问这些密钥。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略的过程中选择 "仅限应用程序" 选项。
+包含客户管理的密钥的 Azure Synapse 加密模型涉及访问 Azure Key Vault 中的密钥的工作区，可根据需要进行加密和解密。 工作区可以通过访问策略或 Azure Key Vault RBAC 访问 ([预览版](../../key-vault/general/rbac-guide.md)) 来访问这些密钥。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略时选择 ["仅限应用程序"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) 选项 (选择工作区的托管标识，而不是将其添加为授权应用程序) 。
 
  在激活工作区之前，必须向工作区托管标识授予对密钥保管库所需的权限。 这一分阶段工作区激活方法确保工作区中的数据是通过客户托管的密钥进行加密的。 请注意，可以为专用 SQL 池启用或禁用加密-默认情况下，每个池不启用加密。
 
@@ -76,6 +76,9 @@ Azure 服务的第一层加密是通过平台托管密钥启用的。 默认情�
 你可以在 Azure 门户的 " **加密** " 页中更改用于加密数据的客户托管密钥。 在此，您可以使用密钥标识符来选择新密钥，也可以在工作区所在的区域中选择有权访问的密钥保管库。 如果在不同的密钥保管库中选择了与以前使用的密钥不同的密钥，请在新的密钥保管库中授予工作区托管标识 "获取"、"换行" 和 "解包" 权限。 工作区将验证其对新密钥保管库的访问权限，并使用新密钥重新加密工作区中的所有数据。
 
 :::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="此图显示了 Azure 门户中的工作区加密部分。":::
+
+>[!IMPORTANT]
+>更改工作区的加密密钥时，请保留密钥，直到将其替换为新密钥。 这是为了在用新密钥重新加密之前允许用旧密钥解密数据。
 
 Azure 密钥保管库策略自动、定期循环密钥或对密钥执行的操作可能会导致创建新的密钥版本。 你可以选择重新加密工作区中具有最新版本的活动密钥的所有数据。 若要重新加密，请将 Azure 门户中的密钥更改为临时密钥，然后切换回要用于加密的密钥。 例如，若要使用最新版本的 active key Key1 更新数据加密，请将工作区客户托管密钥更改为临时密钥，Key2。 等待带有 Key2 的加密完成。 然后将工作区客户托管的密钥切换回 Key1-工作区中的数据将用最新版本的 Key1 重新加密。
 

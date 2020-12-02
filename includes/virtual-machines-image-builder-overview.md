@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb864837e9063aa39827abf61f7efece4c909118
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509302"
 ---
 借助标准化虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中保持一致。 映像通常包括预定义的安全性和配置设置，以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供一个描述映像的简单配置，将其提交给该服务，即可构建映像并进行分发。
  
@@ -84,7 +84,7 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 [此处](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)对权限进行了详细说明，并且示例演示了如何实现权限。
 
 > [!Note]
-> 以前使用 AIB 时，可以使用 AIB SPN，并向映像资源组授予 SPN 权限。 我们将不再使用此模型，以允许使用将来的功能。 从 2020 年 5 月 26 日开始，映像生成器将不接受没有用户分配的标识的模板，需要使用[用户标识](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity)将现有模板重新提交给服务。 此处的示例已经说明了如何创建用户分配的标识并将其添加到模板。 有关详细信息，请查看此[文档](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)了解此更改和发布更新。
+> 以前使用 AIB 时，可以使用 AIB SPN，并向映像资源组授予 SPN 权限。 我们将不再使用此模型，以允许使用将来的功能。 从 2020 年 5 月 26 日开始，映像生成器将不接受没有用户分配的标识的模板，需要使用[用户标识](../articles/virtual-machines/linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#identity)将现有模板重新提交给服务。 此处的示例已经说明了如何创建用户分配的标识并将其添加到模板。 有关详细信息，请查看此[文档](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)了解此更改和发布更新。
 
 ## <a name="costs"></a>成本
 通过 Azure 映像生成器创建、构建和存储映像时，会产生一些计算、网络和存储成本。 这些成本与手动创建自定义映像产生的成本类似。 对于资源，将按 Azure 费率向你收费。 

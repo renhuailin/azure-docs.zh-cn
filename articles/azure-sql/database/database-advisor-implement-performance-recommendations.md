@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672117"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500846"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL 数据库的数据库顾问性能建议
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

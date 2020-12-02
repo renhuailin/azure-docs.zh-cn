@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3932a1dee0eee16e7d64ff4c6085919d85b431ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843258"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500710"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 安全基线
 
@@ -76,7 +76,7 @@ ms.locfileid: "94843258"
 
 可以使用 Azure 安全中心的实时网络访问，将 Windows 虚拟机限制为在有限时间内向批准的 IP 地址公开。 此外，请使用 Azure 安全中心的自适应网络强化功能，建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-* [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -284,7 +284,7 @@ ms.locfileid: "94843258"
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -318,7 +318,7 @@ ms.locfileid: "94843258"
 
 * [将 Linux 服务器载入 Azure 安全中心的说明](../security-center/quickstart-onboard-machines.md)
 
-* [以下链接提供 Microsoft 建议的安全准则，可用作所选漏洞软件的标准列表](../virtual-machines/linux/security-recommendations.md)
+* [以下链接提供 Microsoft 建议的安全准则，可用作所选漏洞软件的标准列表](../virtual-machines/security-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -472,7 +472,7 @@ ms.locfileid: "94843258"
 
 **指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，使用 Azure Monitor 查看日志并对来自 Azure 虚拟机的日志数据执行查询。
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -756,7 +756,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [Azure 自动化简介](../automation/automation-intro.md)
 
-* [使用更改跟踪解决方案跟踪环境中的更改](../automation/change-tracking.md)
+* [使用更改跟踪解决方案跟踪环境中的更改](../automation/change-tracking/overview.md)
 
 * [Azure 自动化 State Configuration 概述](../automation/automation-dsc-overview.md)
 
@@ -1036,7 +1036,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [Microsoft Defender 高级威胁防护](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-* [如何为云服务和虚拟机配置 Microsoft Antimalware](../virtual-machines/linux/security-recommendations.md)
+* [如何为云服务和虚拟机配置 Microsoft Antimalware](../virtual-machines/security-recommendations.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1112,7 +1112,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
