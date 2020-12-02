@@ -3,20 +3,20 @@ title: 在数据工厂中使用资源管理器模板
 description: 了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b5df2f9cd0a47e5a89d7ff2eb12aefe593cae7a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4c840d50fb80a57e9c68645ade8baa22b455fa84
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495491"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -27,9 +27,9 @@ ms.locfileid: "92631472"
 
 请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志存储在单独的 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
 
-在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在 **重复** 。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
+在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在 **重复**。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
 
-此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此 **可重用性** 。
+此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此 **可重用性**。
 
 ## <a name="templating-with-azure-resource-manager"></a>通过 Azure 资源管理器实现模板化
 [Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
@@ -233,7 +233,7 @@ dataFactoryName 在“变量”中定义为：
 * 设置因环境（如：开发、测试和生产）而异
 * 机密（如密码）
 
-使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/general/overview.md)拉取密钥，请指定 **密钥保管库** 和 **密钥名称** ，如下例所示：
+使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/general/overview.md)拉取密钥，请指定 **密钥保管库** 和 **密钥名称**，如下例所示：
 
 ```JSON
 "parameters": {

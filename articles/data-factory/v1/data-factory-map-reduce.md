@@ -3,8 +3,8 @@ title: 从 Azure 数据工厂调用 MapReduce 程序
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 MapReduce 程序来处理数据。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636844"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495423"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="转换活动"]
@@ -41,7 +41,7 @@ ms.locfileid: "92636844"
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
 
 请参阅 [Pig](data-factory-pig-activity.md) 和 [Hive](data-factory-hive-activity.md)，深入了解如何通过使用 HDInsight Pig 和 Hive 活动在管道中基于 Windows/Linux 的 HDInsight 群集上运行 Pig/Hive 脚本。 
@@ -49,7 +49,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动的 JSON
 在 HDInsight 活动的 JSON 定义中： 
 
-1. 将 **活动** 的 **类型** 设置为 **HDInsight** 。
+1. 将 **活动** 的 **类型** 设置为 **HDInsight**。
 2. 为 **className** 属性指定类名。
 3. 为 **jarFilePath** 属性指定 JAR 文件的路径（包括文件名）。
 4. 为 **jarLinkedService** 属性指定引用包含 JAR 文件的 Azure Blob 存储的链接服务。   
@@ -118,7 +118,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 此示例中的管道在 Azure HDInsight 群集上运行字数统计 Map/Reduce 程序。   
 
 ### <a name="linked-services"></a>链接服务
-首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”  和“帐户密钥”  替换为自己的 Azure 存储 的名称和密钥。 
+首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”和“帐户密钥”替换为自己的 Azure 存储 的名称和密钥。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 
@@ -183,8 +183,8 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 | 属性 | 注释 |
 |:--- |:--- |
-| 类型 |类型必须设置为 **HDInsightMapReduce** 。 |
-| className |类名为： **wordcount** |
+| type |类型必须设置为 **HDInsightMapReduce**。 |
+| className |类名为：**wordcount** |
 | jarFilePath |包含该类的 jar 文件的路径。 如果要复制/粘贴下面的代码，请不要忘记更改群集的名称。 |
 | jarLinkedService |包含 jar 文件的 Azure 存储链接服务。 此链接服务指与 HDInsight 群集关联的存储。 |
 | 参数 |字数统计程序具有两个参数（一个输入和一个输出）。 输入文件是 davinci.txt 文件。 |

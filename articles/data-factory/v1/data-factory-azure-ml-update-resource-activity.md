@@ -3,20 +3,20 @@ title: 使用 Azure 数据工厂更新机器学习模型
 description: '介绍如何使用 Azure 数据工厂 v1 和 Azure 机器学习 Studio (经典创建预测管道) '
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631744"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496596"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用 "更新资源" 活动更新 Azure 机器学习 Studio (经典) 模型
 
@@ -42,23 +42,23 @@ ms.locfileid: "92631744"
 随着时间的推移，Azure 机器学习 Studio 中的预测模型 (经典) 计分试验需要使用新的输入数据集来重新训练。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 启用通过 web 服务重新训练和更新 Studio (经典) 模型的典型步骤如下：
 
 1. [Azure 机器学习 Studio (经典) ](https://studio.azureml.net)创建试验。
-2. 如果对模型感到满意，请使用 Azure 机器学习 Studio (经典) 为 **训练试验** 和评分/ **预测试验** 发布 web 服务。
+2. 如果对模型感到满意，请使用 Azure 机器学习 Studio (经典) 为 **训练试验** 和评分/**预测试验** 发布 web 服务。
 
 下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅 [以编程方式 Azure 机器学习 Studio (经典) 模型](../../machine-learning/classic/retrain-machine-learning-model.md) 。
 
-- **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动创建 **默认终结点** 。 还可创建更多终结点，但本示例仅使用默认终结点。
+- **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动创建 **默认终结点**。 还可创建更多终结点，但本示例仅使用默认终结点。
 - **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测的输出可能具有各种形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于试验的配置。 将预测实验作为 Web 服务发布时，会自动创建默认终结点。 
 
 下图描绘了 Azure 机器学习 Studio (经典) 中定型和评分终结点之间的关系。
 
 ![Web 服务](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-可以通过使用 **Azure 机器学习 Studio (经典) 批处理执行活动** 来调用 **定型 web 服务** 。 调用训练 web 服务与调用 Azure 机器学习 Studio (经典) web 服务 (计分 web 服务) 用于计分数据相同。 前面几节介绍了如何从 Azure 数据工厂管道详细地调用 Azure 机器学习 Studio (经典) web 服务。 
+可以通过使用 **Azure 机器学习 Studio (经典) 批处理执行活动** 来调用 **定型 web 服务**。 调用训练 web 服务与调用 Azure 机器学习 Studio (经典) web 服务 (计分 web 服务) 用于计分数据相同。 前面几节介绍了如何从 Azure 数据工厂管道详细地调用 Azure 机器学习 Studio (经典) web 服务。 
 
-您可以通过使用 **Azure 机器学习 Studio (经典) 更新资源活动** 来调用 **评分 web 服务** ，以使用新训练的模型更新 web 服务。 以下示例提供了链接服务定义： 
+您可以通过使用 **Azure 机器学习 Studio (经典) 更新资源活动** 来调用 **评分 web 服务**，以使用新训练的模型更新 web 服务。 以下示例提供了链接服务定义： 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>评分 Web 服务是经典 Web 服务
-如果评分 web 服务是 **经典 web 服务** ，请使用 Azure 门户创建第二个 **非默认且可更新的终结点** 。 请参阅[创建终结点](../../machine-learning/classic/create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
+如果评分 web 服务是 **经典 web 服务**，请使用 Azure 门户创建第二个 **非默认且可更新的终结点** 。 请参阅[创建终结点](../../machine-learning/classic/create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
 
 * 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
 * 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
@@ -260,7 +260,7 @@ Studio (经典) 更新资源活动不会生成任何输出。 但是，Azure 数
 ```
 
 ### <a name="pipeline"></a>管道
-管道具有两个活动： **AzureMLBatchExecution** 和 **AzureMLUpdateResource** 。 Azure 机器学习 Studio (经典) 批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
+管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习 Studio (经典) 批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
 ![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

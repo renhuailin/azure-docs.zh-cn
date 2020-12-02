@@ -2,20 +2,20 @@
 title: 数据工厂函数和系统变量
 description: 提供 Azure 数据工厂函数和系统变量的列表
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631506"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495644"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 > [!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "92631506"
 > 
 
 ### <a name="example-for-using-a-system-variable"></a>使用系统变量的示例
-在下面的示中，SliceStart  的年、月、日和时间已提取到“folderPath”  和“fileName”  属性使用的不同变量中。
+在下面的示中，SliceStart 的年、月、日和时间已提取到“folderPath”和“fileName”属性使用的不同变量中。
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -77,12 +77,12 @@ ms.locfileid: "92631506"
 
 | 类别 | 函数 | 参数 | 说明 |
 | --- | --- | --- | --- |
-| 时间 |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| 时间 |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| 时间 |StartOfHour(X) |X: Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| 时间 |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例：`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| 时间 |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例：`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| 时间 |StartOfHour(X) |X: Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例：`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | 日期 |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 天。 <br/><br/>示例：2013/9/15 中午 12:00:00 + 2 天 = 2013/9/17 中午 12:00:00。<br/><br/>也可指定 Y 为负数来减去天数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`。 |
 | 日期 |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 个月。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>也可指定 Y 为负数来减去月数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`。|
-| 日期 |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例： `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| 日期 |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例：`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | 日期 |AddWeeks(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y * 7 天<br/><br/>示例：2013/9/15 中午 12:00:00 + 1 周 = 2013/9/22 中午 12:00:00<br/><br/>也可指定 Y 为负数来减去周数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`。 |
 | 日期 |AddYears(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 年。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>也可指定 Y 为负数来减去年数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`。 |
 | 日期 |Day(X) |X: DateTime |获取 X 的日期号数部分。<br/><br/>示例：`Day of 9/15/2013 12:00:00 PM is 9`。 |

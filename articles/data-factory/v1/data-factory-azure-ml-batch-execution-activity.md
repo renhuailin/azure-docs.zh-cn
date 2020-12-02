@@ -3,20 +3,20 @@ title: 使用 Azure 数据工厂创建预测数据管道
 description: '介绍如何使用 Azure 数据工厂和 Azure 机器学习 Studio (经典创建预测管道) '
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631761"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496513"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure 机器学习 Studio (经典) 和 Azure 数据工厂创建预测管道
 
@@ -32,7 +32,7 @@ ms.locfileid: "92631761"
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用机器学习转换数据](../transform-data-using-machine-learning.md)。
 
@@ -40,9 +40,9 @@ ms.locfileid: "92631761"
 ### <a name="azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）
 [Azure 机器学习 Studio (经典) ](https://azure.microsoft.com/documentation/services/machine-learning/) 使你能够生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
-1. **创建训练实验** 。 可以通过使用 Azure 机器学习 Studio (经典) 执行此步骤。 Studio (经典) 是一种协作式可视开发环境，可用于使用定型数据来定型和测试预测分析模型。
-2. **将其转换为预测实验** 。 利用现有数据定型模型后，便可将其用于对新数据进行评分，为评分准备并简化实验。
-3. **将其部署为 Web 服务** 。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
+1. **创建训练实验**。 可以通过使用 Azure 机器学习 Studio (经典) 执行此步骤。 Studio (经典) 是一种协作式可视开发环境，可用于使用定型数据来定型和测试预测分析模型。
+2. **将其转换为预测实验**。 利用现有数据定型模型后，便可将其用于对新数据进行评分，为评分准备并简化实验。
+3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 数据工厂是一项基于云的数据集成服务，可对数据的 **移动** 和 **转换** 进行协调和自动化。 可以使用 Azure 数据工厂创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
@@ -59,15 +59,15 @@ ms.locfileid: "92631761"
 1. 将训练实验（非预测实验）作为 Web 服务发布。 在 Studio (经典) 中执行此步骤，就像在前面的方案中将预测实验公开为 web 服务一样。
 2. 使用 Studio (经典) 批处理执行活动为训练试验调用 web 服务。 基本上，可以使用 Studio (经典) 批处理执行活动来调用定型 web 服务和评分 web 服务。
 
-完成重新训练后，通过使用 **Azure 机器学习 Studio (经典) 更新资源活动** ，将评分 web 服务 (使用新训练的模型公开为 web 服务的预测实验) 。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+完成重新训练后，通过使用 **Azure 机器学习 Studio (经典) 更新资源活动**，将评分 web 服务 (使用新训练的模型公开为 web 服务的预测实验) 。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>使用批处理执行活动调用 Web 服务
 使用 Azure 数据工厂来安排数据移动和处理，然后使用 Studio (经典) 来执行批处理。 下方列出了顶级步骤：
 
 1. 创建 Azure 机器学习 Studio (经典) 链接服务。 需要以下值：
 
-   1. 用于批处理执行 API 的 **请求 URI** 。 在 Web 服务页中，单击“批处理执行”  链接可找到此请求 URI。
-   2. 已发布的 Studio (经典) web 服务的 **API 密钥** 。 单击已发布的 Web 服务可找到此 API 密钥。
+   1. 用于批处理执行 API 的 **请求 URI**。 在 Web 服务页中，单击“批处理执行”链接可找到此请求 URI。
+   2. 已发布的 Studio (经典) web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
    3. 使用 **AzureMLBatchExecution** 活动。
 
       ![机器学习 Studio (经典) 仪表板](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
@@ -75,10 +75,10 @@ ms.locfileid: "92631761"
       ![批处理 URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>方案：使用 Web 服务输入/输出（参考 Azure Blob 存储中的数据）的实验
-在此方案中，Studio (经典) Web 服务使用 Azure blob 存储中的文件中的数据进行预测，并将预测结果存储在 blob 存储中。 以下 JSON 定义了包含 AzureMLBatchExecution 活动的数据工厂管道。 该活动将数据集 **DecisionTreeInputBlob** 作为输入， **DecisionTreeResultBlob** 作为输出。 通过使用 **webServiceInput** JSON 属性，将 **DecisionTreeInputBlob** 作为输入传递给 Web 服务。 通过使用 **webServiceOutputs** JSON 属性，将 **DecisionTreeResultBlob** 作为输出传递给 Web 服务。
+在此方案中，Studio (经典) Web 服务使用 Azure blob 存储中的文件中的数据进行预测，并将预测结果存储在 blob 存储中。 以下 JSON 定义了包含 AzureMLBatchExecution 活动的数据工厂管道。 该活动将数据集 **DecisionTreeInputBlob** 作为输入，**DecisionTreeResultBlob** 作为输出。 通过使用 **webServiceInput** JSON 属性，将 **DecisionTreeInputBlob** 作为输入传递给 Web 服务。 通过使用 **webServiceOutputs** JSON 属性，将 **DecisionTreeResultBlob** 作为输出传递给 Web 服务。
 
 > [!IMPORTANT]
-> 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput** 。 有关使用 webServiceInputs 属性的示例，请参阅 [Web 服务需要多个输入](#web-service-requires-multiple-inputs)部分。
+> 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 有关使用 webServiceInputs 属性的示例，请参阅 [Web 服务需要多个输入](#web-service-requires-multiple-inputs)部分。
 >
 > TypeProperties) 中的 **webServiceInput** / **webServiceInputs** 和 **webServiceOutputs** (属性引用的数据 **typeProperties** 集也必须包括在活动 **输入** 和 **输出** 中。
 >
@@ -137,7 +137,7 @@ ms.locfileid: "92631761"
 
 建议先浏览[使用数据工厂生成第一个管道][adf-build-1st-pipeline]教程，再浏览本示例。 本示例使用数据工厂编辑器创建数据工厂项目（链接服务、数据集、管道）。
 
-1. 为 **Azure 存储** 创建 **链接服务** 。 如果输入和输出文件位于不同的存储帐户，需使用两个链接服务。 下面是 JSON 示例：
+1. 为 **Azure 存储** 创建 **链接服务**。 如果输入和输出文件位于不同的存储帐户，需使用两个链接服务。 下面是 JSON 示例：
 
     ```JSON
     {
@@ -150,7 +150,7 @@ ms.locfileid: "92631761"
       }
     }
     ```
-2. 创建 **输入** Azure 数据工厂 **数据集** 。 与某些其他数据工厂数据集不同，这些数据集必须同时包含 **folderPath** 和 **fileName** 值。 可使用分区，使每个批处理执行（每个数据切片）进行处理或生成唯一的输入和输出文件。 可能需要包括某个上游活动才能将输入转换为 CSV 文件格式，并将其置于每个切片的存储帐户中。 在这种情况下，不会包括下方示例显示的 **external** 和 **externalData** 设置，DecisionTreeInputBlob 会成为不同活动的输出数据集。
+2. 创建 **输入** Azure 数据工厂 **数据集**。 与某些其他数据工厂数据集不同，这些数据集必须同时包含 **folderPath** 和 **fileName** 值。 可使用分区，使每个批处理执行（每个数据切片）进行处理或生成唯一的输入和输出文件。 可能需要包括某个上游活动才能将输入转换为 CSV 文件格式，并将其置于每个切片的存储帐户中。 在这种情况下，不会包括下方示例显示的 **external** 和 **externalData** 设置，DecisionTreeInputBlob 会成为不同活动的输出数据集。
 
     ```JSON
     {
@@ -182,7 +182,7 @@ ms.locfileid: "92631761"
     }
     ```
 
-    输入 csv 文件必须包含列标题行。 如果使用 **复制活动** 创建 csv 或将其移动到 Blob 存储，应将接收器属性 **blobWriterAddHeader** 设置为 **true** 。 例如：
+    输入 csv 文件必须包含列标题行。 如果使用 **复制活动** 创建 csv 或将其移动到 Blob 存储，应将接收器属性 **blobWriterAddHeader** 设置为 **true**。 例如：
 
     ```JSON
     sink:
@@ -192,8 +192,8 @@ ms.locfileid: "92631761"
     }
     ```
 
-    如果 csv 文件没有标题行，你可能会看到以下错误： " **活动中出错：读取字符串时出错"。意外的令牌： StartObject。路径 ""，第1行，位置 1** 。
-3. 创建 **输出** Azure 数据工厂 **数据集** 。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
+    如果 csv 文件没有标题行，你可能会看到以下错误： " **活动中出错：读取字符串时出错"。意外的令牌： StartObject。路径 ""，第1行，位置 1**。
+3. 创建 **输出** Azure 数据工厂 **数据集**。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
 
     ```JSON
     {
@@ -234,7 +234,7 @@ ms.locfileid: "92631761"
       }
     }
     ```
-4. 创建类型为 **AzureMLLinkedService** 的 **链接服务** ，提供 API 密钥和模型批处理执行 URL。
+4. 创建类型为 **AzureMLLinkedService** 的 **链接服务**，提供 API 密钥和模型批处理执行 URL。
 
     ```JSON
     {
@@ -301,7 +301,7 @@ ms.locfileid: "92631761"
       }
       ```
 
-      **开始** 和 **结束** datetime 必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间可选。 如果未指定 **end** 属性的值，则计算结果为 " **start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) （JSON 脚本参考）。
+      **开始** 和 **结束** datetime 必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间可选。 如果未指定 **end** 属性的值，则计算结果为 "**start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) （JSON 脚本参考）。
 
       > [!NOTE]
       > 可选择指定 AzureMLBatchExecution 活动的输入。
@@ -347,7 +347,7 @@ ms.locfileid: "92631761"
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用读取器模块读取 Azure Blob 中多个文件的数据
 含 Pig 和 Hive 等活动的大数据管道可以生成无扩展名的一个或多个输出文件。 例如，指定外部 Hive 表时，可将外部 Hive 表数据存储在 Azure Blob 存储中，并命名为 000000_0。 可在实验中使用读取器模块读取多个文件，并将文件用于预测。
 
-使用 Studio 中的 "读取器" 模块 (经典) 试验时，可以将 Azure Blob 指定为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”  读取文件（无扩展名）。 **容器路径** 指向容器， **目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
+使用 Studio 中的 "读取器" 模块 (经典) 试验时，可以将 Azure Blob 指定为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径** 指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
 ![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,11 +405,11 @@ ms.locfileid: "92631761"
 在上述 JSON 示例中：
 
 * 部署的 Studio (经典) Web 服务使用读取器和编写器模块从 Azure SQL 数据库读取数据或向其写入数据。 此 Web 服务公开以下四个参数：数据库服务器名、数据库名、服务器用户帐户名和服务器用户帐户密码。
-* **开始** 和 **结束** datetime 必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间可选。 如果未指定 **end** 属性的值，则计算结果为 " **start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) （JSON 脚本参考）。
+* **开始** 和 **结束** datetime 必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间可选。 如果未指定 **end** 属性的值，则计算结果为 "**start + 48 小时"。** 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) （JSON 脚本参考）。
 
 ### <a name="other-scenarios"></a>其他方案
 #### <a name="web-service-requires-multiple-inputs"></a>Web 服务需要多个输入
-如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput** 。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。
+如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。
 
 在 Azure 机器学习 Studio (经典) 试验中，web 服务输入和输出端口及全局参数具有可自定义的默认名称 ( "input1" 和 "input2" ) 。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可以在 Studio (经典) 终结点的 "批处理执行" 帮助页上查看示例请求负载，以验证预期的映射。
 
@@ -545,7 +545,7 @@ Azure 机器学习 Studio (经典) web 服务读取器和编写器模块可能�
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>使用更新资源活动更新模型
-完成重新训练后，通过使用 **Azure 机器学习 Studio (经典) 更新资源活动** ，将评分 web 服务 (使用新训练的模型公开为 web 服务的预测实验) 。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+完成重新训练后，通过使用 **Azure 机器学习 Studio (经典) 更新资源活动**，将评分 web 服务 (使用新训练的模型公开为 web 服务的预测实验) 。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ### <a name="reader-and-writer-modules"></a>读取器和编写器模块
 使用 Web 服务参数的常见方案是使用 Azure SQL 读取器和编写器。 "读取器" 模块用于从 Studio 外部的数据管理服务 (经典) 将数据加载到试验中。 编写器模块用于将实验中的数据保存到工作室 (经典) 以外的数据管理服务。
@@ -602,7 +602,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 ```
 
 ### <a name="web-service-parameters"></a>Web 服务参数
-要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示  ：
+要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示：
 
 ```JSON
 "typeProperties": {

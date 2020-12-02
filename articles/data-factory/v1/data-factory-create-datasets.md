@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中创建数据集
 description: 了解如何通过使用 offset 和 anchorDateTime 等属性的示例在 Azure 数据工厂中创建数据集。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 45150e00db1885a4ca4d083a8a54cbfd4da0bb10
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456926"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495933"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure 数据工厂中的数据集 (版本 1) 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -77,7 +77,7 @@ ms.locfileid: "96456926"
 
 下表描述了上述 JSON 中的属性：
 
-| 属性 | 说明 | 必须 | 默认 |
+| properties | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | name |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
 | type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅 [数据集类型](#Type)。 |是 |不可用 |
@@ -189,7 +189,7 @@ structure:
 
 结构中的每个列都包含以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
@@ -231,7 +231,7 @@ structure:
 
 下表介绍了可用于可用性部分的属性：
 
-| 属性 | 说明 | 必须 | 默认 |
+| properties | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |不可用 |

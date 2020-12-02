@@ -3,8 +3,8 @@ title: 使用 Hive 活动转换数据-Azure
 description: 了解如何使用 Azure 数据工厂 v1 中的 Hive 活动，在按需/自己的 HDInsight 群集上运行 Hive 查询。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 6a337ad4d623ef73657d473974248cbefd016ba3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616767"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495542"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="转换活动"]
@@ -72,7 +72,7 @@ ms.locfileid: "94616767"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | name |活动名称 |是 |
 | description |描述活动用途的文本 |否 |
@@ -97,7 +97,7 @@ ms.locfileid: "94616767"
 .....
 ```
 
-用于处理此数据的 **Hive 脚本** ：
+用于处理此数据的 **Hive 脚本**：
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
