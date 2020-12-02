@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8b3212dd7e1544d734c0f409bd4bcdf8ec22fbc2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147616"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499979"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -53,6 +53,14 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [模块参考](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+
+
+适用于 Embedded C (ANSI C-C99) 的 Azure IoT 中心设备 SDK：
+* [生成 Embedded C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
+* [源代码](https://github.com/Azure/azure-sdk-for-c)
+* 受约束设备的[大小图表](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart)。
+* [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+
 
 适用于 C 的 Azure IoT 中心设备 SDK (ANSI C - C99)：
 
@@ -139,7 +147,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 ## <a name="microsoft-azure-provisioning-sdks"></a>Microsoft Azure 预配 SDK
 
-**Microsoft Azure 预配 SDK** 使你可以使用[设备预配服务](../iot-dps/about-iot-dps.md)将设备预配到 IoT 中心。
+**Microsoft Azure 预配 SDK** 使你可以使用 [设备预配服务](../iot-dps/about-iot-dps.md)将设备预配到 IoT 中心。
 
 适用于 C# 的 Azure 预配设备和服务 SDK：
 

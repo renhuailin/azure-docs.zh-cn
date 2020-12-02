@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e3551834e7664d5036fa8a5e0497e5a37f61c2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370230"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498500"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
@@ -47,17 +47,17 @@ ms.locfileid: "92370230"
 ## <a name="linux-swap-partition"></a>Linux 交换分区
 如果 Azure VM 来自 Ubuntu 或 CoreOS 映像，则可以使用 CustomData 将 cloud-config 发送到 cloud-init。 如果已[上传使用 cloud-init 的自定义 Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)映像，则还可以使用 cloud-init 配置交换分区。
 
-不能使用 **/etc/waagent.conf** 文件来管理云初始化设置和支持的所有映像的交换。 有关映像的完整列表，请参阅 [使用云初始化](using-cloud-init.md)。 
+不能将 /etc/waagent.conf 文件用于管理 cloud-init 所提供和支持的所有映像的交换。 若要获取映的完整列表，请参阅[使用 cloud-init](using-cloud-init.md)。 
 
 若要管理这些映像的交换，最简单的方法是完成以下步骤：
 
-1. 在 **/var/lib/cloud/scripts/per-boot** 文件夹中，创建一个名为 **create_swapfile**的文件：
+1. 在 /var/lib/cloud/scripts/per-boot 文件夹中，创建名为 create_swapfile.sh 的文件 ：
 
-   **$ sudo touch/var/lib/cloud/scripts/per-boot/create_swapfile**
+   **$ sudo touch /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
 
-1. 将以下行添加到文件：
+1. 将以下行添加到该文件中：
 
-   **$ sudo vi/var/lib/cloud/scripts/per-boot/create_swapfile**
+   **$ sudo vi /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
 
    ```
    #!/bin/sh
@@ -70,15 +70,15 @@ ms.locfileid: "92370230"
    ```
 
    > [!NOTE]
-   > 你可以根据需要更改值，并根据资源磁盘中的可用空间更改该值，这取决于所使用的 VM 大小。
+   > 可以根据资源磁盘中的可用空间按需更改该值，这取决于所使用的 VM 大小。
 
 1. 使文件可执行：
 
-   **$ sudo chmod + x/var/lib/cloud/scripts/per-boot/create_swapfile**
+   **$ sudo chmod +x /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
 
-1. 若要创建交换文件，请在最后一步之后执行该脚本：
+1. 若要创建交换文件，请在完成最后一步之后立即执行脚本：
 
-   **$ sudo/var/lib/cloud/scripts/per-boot/./create_swapfile**
+   **$ sudo /var/lib/cloud/scripts/per-boot/./create_swapfile.sh**
 
 对于不带 cloud-init 支持的映像，从 Azure 市场部署的 VM 映像具有与 OS 集成的 VM Linux 代理。 此代理使 VM 可以与各种 Azure 服务进行交互。 假设已从 Azure 市场部署标准映像，则需执行以下操作来正确配置 Linux 交换文件设置：
 
@@ -150,9 +150,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 带有 Azure 优化内核的 Ubuntu 18.04 使用多队列 I/O 计划程序。 在这种情况下，适合使用 `none` 而不是 `noop`。 有关详细信息，请参阅 [Ubuntu I/O 计划程序](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers)。
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>使用软件 RAID 来实现更高的 I/Ops
-如果工作负荷所需的 IOps 超过单个磁盘的极限，则需要使用包含多个磁盘的软件 RAID 配置。 由于 Azure 已在本地结构层执行磁盘复原，因此可以通过 RAID-0 条带化配置获得最高级别的性能。  在 Azure 环境中预配和创建磁盘，将这些磁盘附加到 Linux VM，然后分区、格式化并装入驱动器。  有关在 Azure 中针对 Linux VM 配置软件 RAID 设置的详细信息，请参阅 **[Configuring Software RAID on Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** （在 Linux 上配置软件 RAID）文档。
+如果工作负荷所需的 IOps 超过单个磁盘的极限，则需要使用包含多个磁盘的软件 RAID 配置。 由于 Azure 已在本地结构层执行磁盘复原，因此可以通过 RAID-0 条带化配置获得最高级别的性能。  在 Azure 环境中预配和创建磁盘，将这些磁盘附加到 Linux VM，然后分区、格式化并装入驱动器。  有关在 Azure 中针对 Linux VM 配置软件 RAID 设置的详细信息，请参阅 **[Configuring Software RAID on Linux](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** （在 Linux 上配置软件 RAID）文档。
 
-除了传统 RAID 配置，你还可选择安装逻辑卷管理器 (LVM)，来将大量物理磁盘配置到一个带区逻辑存储卷。 在此配置中，读取和写入分布到卷组（类似于 RAID0）中包含的多个磁盘。 出于性能的考虑，你可能希望将逻辑卷条带化，以便读取和写入操作利用所有附加的数据磁盘。  要详细了解如何在 Azure 中针对 Linux VM 配置带区逻辑卷，请参阅[在 Azure 中的 Linux VM 上配置 LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)文档。
+除了传统 RAID 配置，你还可选择安装逻辑卷管理器 (LVM)，来将大量物理磁盘配置到一个带区逻辑存储卷。 在此配置中，读取和写入分布到卷组（类似于 RAID0）中包含的多个磁盘。 出于性能的考虑，你可能希望将逻辑卷条带化，以便读取和写入操作利用所有附加的数据磁盘。  要详细了解如何在 Azure 中针对 Linux VM 配置带区逻辑卷，请参阅[在 Azure 中的 Linux VM 上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)文档。
 
 ## <a name="next-steps"></a>后续步骤
 请记住，如同有关优化的所有文章中所述，需要在每次更改之前和之后执行测试，以衡量更改所造成的影响。  优化是一个逐序渐进的过程，在环境中不同的计算机上会产生不同的效果。  对某一项配置有用的做法不一定适用于其他配置。
@@ -160,4 +160,4 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 其他有用资源的链接：
 
 * [Azure Linux 代理用户指南](../extensions/agent-linux.md)
-* [在 Linux 上配置软件 RAID](configure-raid.md)
+* [在 Linux 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)

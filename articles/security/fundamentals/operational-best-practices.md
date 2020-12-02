@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701025"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498840"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -115,8 +115,8 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **最佳做法**：监视计算机、网络、存储和数据服务以及应用程序的安全状况，发现潜在的安全问题并确定其优先级。  
 **详细信息**：按照安全中心的 [安全建议](../../security-center/security-center-recommendations.md)操作，并从优先级最高的项开始。
 
-**最佳做法**：将安全中心警报集成到你的安全信息和事件管理 (SIEM) 解决方案。   
-**详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅将 [警报流式传输到 SIEM、之忠诚度或 IT 服务管理解决方案](../../security-center/export-to-siem.md) 。 如果使用的是 Azure Sentinel，请参阅 [连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
+**最佳做法**：将安全中心警报集成到安全信息和事件管理 (SIEM) 解决方案中。   
+**详细信息**：采用 SIEM 的大多数组织都使用它充当一个中心交换所来处理需要分析师响应的安全警报。 安全中心生成的事件经过处理后，将被发布到 Azure 活动日志，这是 Azure Monitor 提供的可用日志之一。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅[将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案](../../security-center/export-to-siem.md)。 如果使用的是 Azure Sentinel，请参阅 [连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳做法**：将 Azure 日志与你的 SIEM 集成。   
 **详细信息**：[使用 Azure Monitor 收集和导出数据](../../azure-monitor/overview.md#integrate-and-export-data)。 此做法对于启用安全事件调查至关重要，而在线日志保留期是有限的。 如果使用的是 Azure Sentinel，请参阅 [连接数据源](../../sentinel/connect-data-sources.md)。
@@ -195,7 +195,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 我们经常看到，客户本地资源会连同其在 Azure 中资源的一起受到攻击。 如果将本地环境连接到 Azure，尽量不要在公共 Internet 上公开本地资源。
 
-Azure 具有两个 DDoS [服务产品](../../virtual-network/ddos-protection-overview.md)，提供网络攻击防护：
+Azure 具有两个 DDoS [服务产品](../../ddos-protection/ddos-protection-overview.md)，提供网络攻击防护：
 
 - 基本防护默认已集成到 Azure 中，不收取额外的费用。 全球部署的 Azure 网络的规模和容量通过始终开启的监视和实时缓解措施，来防御公用网络层攻击。 基本防护无需用户配置或应用程序更改，并帮助保护所有 Azure 服务，包括 Azure DNS 等 PaaS 服务。
 - 标准防护提供针对网络攻击的高级 DDoS 缓解功能。 这些功能自动经过优化，可保护特定的 Azure 资源。 在创建虚拟网络期间，可以轻松启用保护。 也可以在创建之后启用它，而不需要对应用程序或资源做出任何更改。

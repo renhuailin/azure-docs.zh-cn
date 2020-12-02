@@ -5,17 +5,17 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: ''
 manager: anandsub
 ms.date: 09/08/2020
-ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3204d33cac9f0944ec2ea2cf43be65c7afa46df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567107"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500132"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 
@@ -27,7 +27,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ## <a name="authoring-canvas"></a>创作画布
 
-若要打开**创作画布**，请单击铅笔图标。 
+若要打开 **创作画布**，请单击铅笔图标。 
 
 ![创作画布](media/author-visually/authoring-canvas.png)
 
@@ -65,7 +65,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![添加动态内容](media/author-visually/dynamic-content-1.png)
 
-这将打开**数据工厂表达式生成器**，你可以从支持的系统变量、活动输出、函数和用户指定的变量或参数构建表达式。 
+这将打开 **数据工厂表达式生成器**，你可以从支持的系统变量、活动输出、函数和用户指定的变量或参数构建表达式。 
 
 ![表达式生成器](media/author-visually/dynamic-content-2.png)
 

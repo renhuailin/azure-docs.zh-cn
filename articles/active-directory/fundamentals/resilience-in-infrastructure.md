@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498551"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>在标识和访问管理基础结构中构建复原能力
 
@@ -40,11 +40,11 @@ Azure Active Directory 是一种全局云标识和访问管理系统，它提供
 
 ## <a name="why-worry-about-disruption"></a>为什么担心中断呢？
 
-如果对该身份验证系统的 Azure AD 调用链中的任何组件发生故障，则每次调用该身份验证系统的情况都受到中断。 这意味着，如果你的基础结构的任何部分出现问题，则可能会中断，因为用户无法访问所需的应用程序。 因此，减少身份验证调用数和这些调用中的依赖关系数对于复原能力非常重要。 应用程序开发人员可以断言某些控制请求令牌的频率。 例如，与开发人员合作，以确保他们使用的应用程序 Azure AD 托管标识。 
+如果调用的任何组件失败，对身份验证系统的每个调用都将受到中断。 当身份验证中断时，由于基础组件故障，你的用户将无法访问其应用程序。 因此，减少身份验证调用数和这些调用中的依赖关系数对于复原能力非常重要。 应用程序开发人员可以断言某些控制请求令牌的频率。 例如，与开发人员合作，以确保他们使用的应用程序 Azure AD 托管标识。 
 
 在 Azure AD 之类的基于令牌的身份验证系统中，用户的应用程序 (客户端) 必须从标识系统获取安全令牌，然后才能访问应用程序或其他资源。 在有效期内，客户端可以多次提供同一令牌来访问应用程序。
 
-当提供给应用程序的令牌过期时，应用程序会拒绝令牌，并且客户端必须从 Azure AD 获取新令牌。 获取新令牌可能需要用户交互，如凭据提示。 降低具有较长生存期令牌的身份验证呼叫的频率可降低这种风险。 但是，必须在令牌生存期与通过较少的策略评估所创建的风险之间取得平衡。 有关管理令牌生存期的详细信息，请参阅有关 [优化重新验证提示](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)的文章。
+当提供给应用程序的令牌过期时，应用程序会拒绝令牌，并且客户端必须从 Azure AD 获取新令牌。 获取新令牌可能需要用户交互，如凭据提示或满足身份验证系统的其他要求。 降低具有较长生存期令牌的身份验证呼叫的频率会减少不必要的交互。 但是，必须在令牌生存期与通过较少的策略评估所创建的风险之间取得平衡。 有关管理令牌生存期的详细信息，请参阅有关 [优化重新验证提示](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)的文章。
 
 ## <a name="ways-to-increase-resilience"></a>提高复原能力的方法
 下图显示了可以提高复原能力的六个具体方法。 本文的后续步骤部分链接的文章中详细介绍了每种方法。

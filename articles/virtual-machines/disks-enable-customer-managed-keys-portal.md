@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 1b40eef0a4cae8fa68631426ff72003db43d7530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88817379"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499384"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 门户对托管磁盘的客户托管密钥启用服务器端加密
 
 Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关包含客户托管密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的 **客户托管密钥** 部分：
 
-- 对于 Linux： [客户托管的密钥](./linux/disk-encryption.md#customer-managed-keys)
-- 对于 Windows： [客户托管的密钥](./windows/disk-encryption.md#customer-managed-keys)
+- 对于 Linux： [客户托管的密钥](./disk-encryption.md#customer-managed-keys)
+- 对于 Windows： [客户托管的密钥](./disk-encryption.md#customer-managed-keys)
 
 ## <a name="restrictions"></a>限制
 

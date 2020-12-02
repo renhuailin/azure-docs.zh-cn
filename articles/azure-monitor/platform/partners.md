@@ -4,24 +4,24 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636735"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500234"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
 按字母顺序列出。 
 
-## <a name="aims"></a>旨在
+## <a name="aims"></a>AIMS
 
-![目标 AIOps 徽标](./media/partners/aims.jpg)
+![AIMS AIOps 徽标](./media/partners/aims.jpg)
 
-目标 AIOps (适用于 IT 运营的人工智能) 自动分析 Azure 性能指标 (基础结构和服务) ，提供可操作的见解，从而提高效率、调整规模、控制成本和提供业务见解。  目标是使用机器学习，从繁琐的手动工作中缓解 IT Ops 团队。  目的还支持无缝混合控制的本地技术。  目的是在 Azure Marketplace 中提供，并作为一个功能齐全的免费社区版。
+AIMS AIOps 是适用于 IT 运营的人工智能，它可自动分析 Azure 性能指标（针对基础结构和服务），从而提供信息丰富的见解来提高效率、调整规模、控制成本和提供业务见解。  AIMS 使用机器学习来减少 IT Ops 团队繁琐的手动工作。  AIMS 还支持本地无缝混合控制技术。  AIMS 在 Azure 市场中提供，是功能齐全的免费社区版。
 
-[适用于 Azure 的 AIOps 文档](https://www.aims.ai/platform/azure)
+[用于 Azure 的 AIMS AIOps 文档](https://www.aims.ai/platform/azure)
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 
@@ -45,7 +45,7 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 可针对 Azure Monitor 警报创建 JIRA 票证。
 
-[Azure Monitor 的 Atlassian 文档](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+[用于 Azure Monitor 的 Atlassian 文档](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
 
 ## <a name="bmc-helix"></a>BMC Helix
 
@@ -59,7 +59,7 @@ BMC Helix 是一种自治企业服务和运营 SaaS 平台。 它集成了360度
 
 ## <a name="botmetric"></a>Botmetric
 
-[Azure 的 Botmetric 简介](https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/)
+[用于 Azure 的 Botmetric 简介](https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/)
 
 ## <a name="circonus"></a>Circonus
 
@@ -76,7 +76,7 @@ Circonus 是机器数据智能专家，提供唯一一个能够实时处理数�
 
 借助专为省时省钱而构建的平台整合云并实现云的自动化。 CloudHealth 提供适用于云管理的可视性、直观的优化和可靠的管理做法。 企业和 MSP 可以通过 CloudHealth 平台最大化云投资回报。 围绕成本、使用情况、性能和安全性进行自信的决策。
 
-[云运行状况文档](https://www.cloudhealthtech.com/products/azure-management)
+[Cloud Health 文档](https://www.cloudhealthtech.com/products/azure-management)
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -90,19 +90,19 @@ CloudMonix 为 Microsoft Azure 平台提供监视、自动化和自我修复服�
 
 ![DataDog 徽标](./media/partners/datadog.png)
 
-Azure 使客户能够将其应用程序迁移并现代化，以便与许多合作伙伴解决方案一起在云中运行。 这类合作伙伴是 Datadog，它为用户提供可观察性和安全工具，以便在混合环境和多云环境中了解应用程序的运行状况和性能。  但配置所需的集成通常需要在 Azure 门户和 Datadog 之间导航。  此过程增加了复杂性，需要时间，并在工作不正常的情况下进行故障排除。  为了降低跨多个门户进行管理的负担，Microsoft 使用 Datadog 在 Azure 云平台上创建集成的 Datadog 解决方案。  此解决方案可通过 Azure Marketplace 提供，提供在 Azure 中使用 Datadog 的云监视解决方案的无缝体验。  
+Azure 使客户能够迁移其应用程序并将其现代化，以便与许多合作伙伴解决方案一起在云中运行。 Datadog 就是这样的一个合作伙伴，它提供可观察性和安全工具，让用户能够在混合环境和多云环境中了解应用程序的运行状况和性能。  但是，通常需要在 Azure 门户和 Datadog 之间导航才能配置所需的集成。  这一过程增加了复杂性，耗费时间，而且在出现问题时，很难进行故障排除。  为了降低跨多个门户进行管理的负担，Microsoft 与 Datadog 合作，在 Azure 云平台上创建了集成的 Datadog 解决方案。  此解决方案通过 Azure 市场提供，让你能够在 Azure 中顺畅地使用 Datadog 的云监视解决方案。  
 
-利用新的 Azure-Datadog 集成，组织现在可以完全映射其传统的和基于云的系统，在云过渡的每个阶段监视实时数据，并确保迁移的应用程序满足性能目标。 此集成结合了 Azure 的全局存在、灵活性、安全性和符合性 Datadog 的日志记录和监视功能，为企业创造最佳体验。 通过这种统一体验，你将能够： 
+利用新的 Azure-Datadog 集成，组织现可完全映射其旧版和基于云的系统，在云过渡的每个阶段监视实时数据，并确保迁移的应用程序满足性能目标。 此集成将 Azure 的全球触达范围、灵活性、安全性和合规性与 Datadog 的日志记录和监视功能相结合，为企业创造最佳体验。 通过这种统一体验，你将能够： 
 
-- 预配新的 Datadog 组织，并配置其 Azure 资源，以将日志和指标发送到 Datadog-一种完全托管的设置，无基础结构供客户设置和操作。  
-- 无缝地将日志和指标发送到 Datadog。 日志转发过程已完全自动完成;只需单击几下鼠标，就能只是使用诊断设置、事件中心和功能来构建日志转发管道。
--   通过单击即可轻松地在 VM 主机上安装 Datadog 代理。
--   简化单一登录 (SSO) 到 Datadog-不再需要来自 Datadog 门户的单独登录。 
--   通过 Azure 订阅开票获取 Datadog 服务的统一计费。
+- 预配新的 Datadog 组织并配置其 Azure 资源，以将日志和指标发送到 Datadog - 这是一种完全托管的设置，客户无需设置和操作任何基础结构。  
+- 将日志和指标顺畅发送到 Datadog。 日志转发过程已完全自动化；只需单击几下即可配置所有内容，无需使用诊断设置、事件中心和 Functions 来构建日志转发管道。
+-   单击一下即可在 VM 主机上轻松安装 Datadog 代理。
+-   简化到 Datadog 的单一登录 (SSO)，无需再从 Datadog 门户单独登录。 
+-   通过 Azure 订阅发票获取 Datadog 服务的统一计费。
 
-注册 Azure 的新 Datadog 集成的 [公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) 。  从10月2020开始，Azure Marketplace 提供公共预览版。
+注册使用 Azure 与 Datadog 的新集成的[公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u)。  从 2020 年 10 月开始，Azure 市场提供公共预览版。
 
-如果仍在使用以前手动配置的集成，请参阅 [DataDog 网站上的文档](https://docs.datadoghq.com/integrations/azure/)。
+如果你仍在使用之前手动配置的集成，请参阅 [DataDog 网站上的文档](https://docs.datadoghq.com/integrations/azure/)。
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -119,7 +119,7 @@ Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集�
 
 Elastic 是一家搜索公司。 作为 Elastic Stack（Elasticsearch、Kibana、Beats 和 Logstash）的创建者，Elastic 构建了自托管产品/服务和 SaaS 产品/服务，使数据实时可用并可大规模地用于搜索、日志记录、安全和分析用例。
 
-[弹性文档](https://www.elastic.co/guide/en/logstash/master/azure-module.html)
+[Elastic 文档](https://www.elastic.co/guide/en/logstash/master/azure-module.html)
 
 ## <a name="grafana"></a>Grafana
 
@@ -141,15 +141,15 @@ InfluxData 是 InfluxDB 的创建者，即开源时序数据库。 我们的技�
 
 ![Logic Monitor 徽标](./media/partners/logicmonitor.png)
 
-LogicMonitor&reg; 是适用于复杂 IT 基础结构的、基于 SaaS 的、领先的性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 使用 LM Cloud 的全面 Azure 监视，用户可以将 Azure 云、本地和混合云资源的性能与单个平台相关联。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
+LogicMonitor&reg; 是适用于复杂 IT 基础结构的、基于 SaaS 的、领先的性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 借助 LM Cloud 的全面 Azure 监视功能，用户可通过单个平台来关联 Azure 云资源、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
 
-[逻辑监视器文档](https://www.logicmonitor.com/lp/azure-monitoring/)
+[Logic Monitor 文档](https://www.logicmonitor.com/lp/azure-monitoring/)
 
 ## <a name="logrhythm"></a>LogRhythm
 
 ![LogRhythm 徽标](./media/partners/logrhythm.png)
 
-LogRhythm 是下一代 SIEM 的领导者，它使六大洲的组织能够通过快速检测、响应和消除网络威胁来显著降低风险。 LogRhythm 的威胁生命周期管理 (TLM) 工作流是安全运营中心的基础，可帮助客户保护其 IT 和 OT 环境的云、物理和虚拟基础设施。 如果你是 LogRhythm 客户，并已准备好开始 Azure 用户旅程，则需要安装并配置 LogRhythm 开放收集器和 EventHub 集成。 有关详细信息，请参阅 [有关配置 Azure Monitor 和打开收集器的文档](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)。 
+LogRhythm 是下一代 SIEM 的领导者，它使六大洲的组织能够通过快速检测、响应和消除网络威胁来显著降低风险。 LogRhythm 的威胁生命周期管理 (TLM) 工作流是安全运营中心的基础，可帮助客户保护其 IT 和 OT 环境的云、物理和虚拟基础设施。 如果你是 LogRhythm 客户，并已准备好开始 Azure 用户旅程，则需要安装并配置 LogRhythm 开放收集器和 EventHub 集成。 有关详细信息，请参阅[有关配置 Azure Monitor 和 Open Collector 的文档](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)。 
 
 ## <a name="microfocus"></a>Microfocus
 
@@ -210,7 +210,7 @@ PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提
 
 ![Promitor 徽标](./media/partners/promitor.png)
 
-Promitor 是一个 Azure Monitor scraper，使指标在 Atlassian Statuspage、Prometheus 和 StatsD 等系统中可用。
+Promitor 是一个 Azure Monitor 抓取程序，你可通过它在 Atlassian Statuspage、Prometheus 和 StatsD 等系统中使用指标。
 
 将所有指标推送到 Azure Monitor 并在需要时使用它们。
 
@@ -220,16 +220,16 @@ Promitor 是一个 Azure Monitor scraper，使指标在 Atlassian Statuspage、P
 
 ![QRadar 徽标](./media/partners/qradar.png)
 
-Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可在 [QRadar 文档](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中了解有关与 Azure 的集成的详细信息。
+Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可在 [QRadar 文档](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。
 
 
 ## <a name="rsa"></a>RSA
 
 ![RSA 徽标](./media/partners/rsa.png)
 
-RSA NetWitness 平台是领先的威胁检测和响应平台，可将演化 SIEM 和扩展的检测和响应解决方案组合在一起。 此解决方案提供了无与伦比的可见性、分析和自动化的响应能力。 这些组合的功能有助于安全团队更高效、更有效地工作，同时提高其威胁搜寻技能，使他们能够更快地调查和响应威胁，无论是在云中、在云中还是在虚拟上。 
+The RSA NetWitness Platform 是领先的威胁检测和响应平台，可将改进的 SIEM 和扩展的检测与响应解决方案组合在一起。 此解决方案提供了无与伦比的可见性、分析和自动化的响应能力。 这些组合的功能有助于安全团队更高效、更有效地工作，同时提高其威胁搜寻技能，使他们能够在其组织的整个基础结构中更快地调查和响应威胁，而无论是在云中、在本地还是在虚拟环境中。 
 
-RSA NetWitness 平台与 Azure Monitor 的集成提供了现成的功能，可通过直观的 UI 和强大的本机分析功能将事件数据和日志从本机 Azure Monitor 引入 RSA NetWitness 平台。 快速查看活动、诊断、Active Directory 事件和其他事件中心数据，并在完整的威胁检测和响应解决方案中与其他企业安全信息一起查看此数据。
+RSA NetWitness Platform 与 Azure Monitor 的集成提供了快速现成功能，可通过直观的 UI 和可靠的本地分析功能将事件数据和日志从 Azure Monitor 本机引入 RSA NetWitness Platform。 可快速查看活动、诊断、Active Directory 事件和其他事件中心数据，并在完整的威胁检测和响应解决方案中连同其他企业安全信息一起查看此数据。
 
 [了解详细信息。](https://community.rsa.com/docs/DOC-101239)
 
@@ -257,7 +257,7 @@ Serverless360 是一个平台工具，用于运行、管理和监视 Azure 无�
 
 使用 NOW AIOps 平台减少事件和 MTTR，以消除干扰、确定优先级、确定使用 ML 进行的根本原因检测，并采用 ITX 工作流进行修正。  从 Azure 了解 Iaas/PaaS/FaaS 服务的当前状态，并从标记构建服务映射，以生成用于业务影响分析的应用程序服务上下文。    
 
-[立即了解有关服务的详细信息](https://www.servicenow.com/solutions/aiops.html)
+[详细了解 Service Now](https://www.servicenow.com/solutions/aiops.html)
 
 ## <a name="signalfx"></a>SignalFx
 
@@ -285,7 +285,7 @@ SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。
 
 适用于 Splunk 的 Azure Monitor 外接程序位于[此处的 Splunkbase](https://splunkbase.splunk.com/app/3534/)。
 
-[Azure Monitor 添加的 Splunk 文档](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)
+[适用于 Azure Monitor 加载项的 Splunk 文档](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)
 
 ## <a name="squaredup"></a>SquaredUp 
 
@@ -310,6 +310,20 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优化性能、成本和符合性。 Turbonomic 可持续优化资产，帮助组织在 Azure 资产方面获得弹性，确保应用程序可以持续获得所需的资源来履行 SLA，同时，对于 IaaS 和 PaaS 层，不需要进一步配置计算、存储和网络资源。 组织可以模拟迁移、合理缩放工作负荷以及淘汰数据中心资源，以便在预算范围内按时可靠迁移到 Azure，同时确保性能和符合性不受影响。 Turbonomic 由 API 驱动，作为 Azure 中和本地的无代理 VM 运行。
 
 [Turbonomic 简介](https://turbonomic.com/)
+
+## <a name="partner-tools-with-event-hub-integration"></a>带事件中心集成的合作伙伴工具
+
+使用 Azure Monitor 将监视数据路由到 Azure 事件中心，可以轻松地与某些外部 SIEM 和监视工具集成。 已知以下合作伙伴通过事件中心进行集成。 
+
+| 工具 | 在 Azure 中托管 | 说明 |
+|:---|:---| :---|
+|  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以在 [QRadar DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。 |
+| Splunk | 否 | [Splunk 的 Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) 是在 Splunkbase 中可用的开源项目。 <br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
+| SumoLogic | 否 | [从事件中心收集 Azure 审核应用的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中提供了有关设置 SumoLogic，以使用事件中心数据的说明。 |
+| ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
+| Syslog 服务器 | 否 | 若要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
+| LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
+|Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>后续步骤

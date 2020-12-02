@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487953"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498908"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何调整使用 Azure 磁盘加密的逻辑卷管理设备的大小
 
@@ -32,7 +32,7 @@ ms.locfileid: "92487953"
 
 本文假设用户具备以下条件：
 
-- 现有的 LVM 配置。 有关详细信息，请参阅 [在 LINUX VM 上配置 LVM](configure-lvm.md)。
+- 现有的 LVM 配置。 有关详细信息，请参阅 [在 LINUX VM 上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
 
 - 已由 Azure 磁盘加密加密的磁盘。 有关详细信息，请参阅 [在加密设备上配置 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md)。
 
@@ -318,7 +318,7 @@ lvdisplay lvname
 
 #### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>通过调整现有 PV 的大小来扩展传统的 LVM 卷
 
-Im 在某些情况下，你的限制可能要求你调整现有磁盘的大小。 以下是操作方法：
+Im 在某些情况下，你的限制可能要求你调整现有磁盘的大小。 方法如下：
 
 1. 确定加密磁盘：
 
@@ -573,7 +573,7 @@ Im 在某些情况下，你的限制可能要求你调整现有磁盘的大小�
     >
     >有关详细信息，请参阅 [在加密设备上配置 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md)。
 
-    以下是一个示例：
+    下面是一个示例：
 
     ``` bash
     az vm encryption enable \

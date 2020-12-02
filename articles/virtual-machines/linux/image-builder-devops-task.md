@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968661"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499248"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -55,7 +55,7 @@ ms.locfileid: "91968661"
 
 ## <a name="add-task-to-release-pipeline"></a>将任务添加到发布管道
 
-选择**发布管道**  >  **编辑**
+选择 **发布管道**  >  **编辑**
 
 在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择 **添加** 。
 
@@ -129,9 +129,9 @@ ms.locfileid: "91968661"
 
 该任务设计为能够将 DevOps 生成版本项目注入到映像中。 若要执行此操作，需要设置生成管道。 在发布管道的设置中，您必须添加生成项目的存储库。
 
-:::image type="content" source="./media/image-builder-devops-task/add-artifact.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
+:::image type="content" source="./media/image-builder-devops-task/add-artifact.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。":::
 
-选择 &quot; **生成路径** " 按钮，选择要放置在映像上的生成文件夹。 映像生成器任务将复制其中的所有文件和目录。 正在创建映像时，图像生成器会根据 OS 将文件和目录部署到不同的路径中。
+选择 " **生成路径** " 按钮，选择要放置在映像上的生成文件夹。 映像生成器任务将复制其中的所有文件和目录。 正在创建映像时，图像生成器会根据 OS 将文件和目录部署到不同的路径中。
 
 > [!IMPORTANT]
 > 添加存储库项目时，可能会发现该目录以下划线 *_* 为前缀。 下划线会导致内联命令出现问题。 在命令中使用相应的引号。
@@ -139,9 +139,7 @@ ms.locfileid: "91968661"
 
 下面的示例说明了它的工作原理：
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
-
-选择 &quot; **生成路径** ":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="显示层次结构的目录结构。":::
 
 
 * Windows-文件存在于中 `C:\` 。 将创建一个名为的目录 `buildArtifacts` ，其中包含 `webapp` 目录。
@@ -196,7 +194,7 @@ ms.locfileid: "91968661"
     
 #### <a name="total-length-of-image-build"></a>映像生成的总长度
 
-目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此 [解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此 [解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>存储帐户
@@ -239,11 +237,11 @@ ms.locfileid: "91968661"
 
 ### <a name="optional-settings"></a>可选设置
 
-* [Vm 大小](image-builder-json.md#vmprofile) -可以从 *Standard_D1_v2*的默认值覆盖 vm 大小。 你可以重写以减少总自定义时间，或者，因为你要创建依赖于某些 VM 大小（如 GPU/HPC 等）的映像。
+* [Vm 大小](image-builder-json.md#vmprofile) -可以从 *Standard_D1_v2* 的默认值覆盖 vm 大小。 你可以重写以减少总自定义时间，或者，因为你要创建依赖于某些 VM 大小（如 GPU/HPC 等）的映像。
 
 ## <a name="how-it-works"></a>工作原理
 
-当你创建发布时，该任务将在存储帐户中创建一个名为 *imagebuilder-vststask*的容器。 它 zips 并上传生成项目，并为 zip 文件创建 SAS 令牌。
+当你创建发布时，该任务将在存储帐户中创建一个名为 *imagebuilder-vststask* 的容器。 它 zips 并上传生成项目，并为 zip 文件创建 SAS 令牌。
 
 任务使用传递给任务的属性来创建图像生成器模板项目。 该任务将执行以下操作：
 * 下载生成项目 zip 文件和任何其他关联的脚本。 文件保存在临时映像生成器资源组中的存储帐户中 `IT_<DestinationResourceGroup>_<TemplateName>` 。
@@ -308,7 +306,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>能否指定映像模板名称？
 
-错误。 使用唯一的模板名称，然后将其删除。
+不是。 使用唯一的模板名称，然后将其删除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>图像生成器失败。 如何进行故障排除？
 
@@ -316,9 +314,23 @@ starting run template...
 
 VM 映像生成器任务的 DevOps 日志中会出现错误，请参阅自定义日志位置。 例如：
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="显示失败的示例 DevOps 任务错误。":::
 
-选择 &quot; **生成路径** " 以查看项目。
+有关故障排除的详细信息，请参阅 [排查 Azure 映像生成器服务问题](image-builder-troubleshoot.md)。 
+
+调查失败后，可以删除过渡资源组。 首先，删除映像模板资源项目。 该项目以 *t_* 为前缀，可以在 DevOps 任务生成日志中找到：
+
+```text
+...
+Source for image:  { type: 'SharedImageVersion',
+  imageVersionId: '/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<imageDefName>/versions/<imgVersionNumber>' }
+...
+template name:  t_1556938436xxx
+...
+
+```
+
+映像模板资源项目位于任务最初指定的资源组中。 完成故障排除后，删除项目。 如果使用 Azure 门户删除了资源，请在资源组中选择 " **显示隐藏的类型**" 以查看项目。
 
 
 ## <a name="next-steps"></a>后续步骤

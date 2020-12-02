@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499673"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>远程工作：用于远程工作的网络虚拟设备 (NVA) 的注意事项
 
@@ -64,3 +64,6 @@ Azure 市场中的所有主流 NVA 供应商应已提供有关在部署其解决
 [适用于客户和合作伙伴的 Fortinet COVID-19 个更新](https://www.fortinet.com/covid-19.html "COVID-为客户和合作伙伴提供19个更新")
 
 [Palo Alto Networks COVID-19 答复中心](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVID-19 答复中心")
+
+[Kemp 启用远程工作和 Always-On 应用程序体验，实现业务连续性](https://kemptechnologies.com/remote-work-always-on-application-experience-business-continuity/ "Kemp 启用远程工作和 Always-On 应用程序体验，实现业务连续性")
+

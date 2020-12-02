@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693437"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499605"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 认知搜索中配置客户管理的密钥以用于数据加密
 
@@ -96,7 +96,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-+ 如果你安装了 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，则可以运行以下命令来启用所需的属性。
++ 如果你安装了 [Azure CLI](/cli/azure/install-azure-cli)，则可以运行以下命令来启用所需的属性。
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -126,7 +126,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 1. 在左侧的 " **管理**" 下，选择 " **应用注册**"，然后选择 " **新注册**"。
 
-1. 为注册命名，可能为与搜索应用程序名称类似的名称。 选择“注册”。
+1. 为注册命名，可能为与搜索应用程序名称类似的名称。 选择“注册”  。
 
 1. 创建应用注册后，复制应用程序 ID。 需要将此字符串提供给应用程序。 
 
@@ -173,7 +173,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="5---encrypt-content"></a>5 - 加密内容
 
-若要在索引、数据源、技能组合、索引器或同义词图上添加客户托管的密钥，必须使用 [搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 SDK。 门户不会公开同义词映射或加密属性。 使用有效的 API 索引时，数据源、技能集、索引器和同义词映射支持顶级 **encryptionKey** 属性。
+若要在索引、数据源、技能组合、索引器或同义词图上添加客户托管的密钥，必须使用 [搜索 REST API](/rest/api/searchservice/) 或 SDK。 门户不会公开同义词映射或加密属性。 使用有效的 API 索引时，数据源、技能集、索引器和同义词映射支持顶级 **encryptionKey** 属性。
 
 此示例使用 REST API，其中包含 Azure Key Vault 和 Azure Active Directory 的值：
 
@@ -196,7 +196,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="example-index-encryption"></a>示例：索引加密
 
-使用 [Create Index Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)创建加密索引。 使用 `encryptionKey` 属性指定要使用的加密密钥。
+使用 [Create Index Azure 认知搜索 REST API](/rest/api/searchservice/create-index)创建加密索引。 使用 `encryptionKey` 属性指定要使用的加密密钥。
 > [!Note]
 > 这些 Key Vault 详细信息都不被视为机密，在 Azure 门户中浏览到相关的 Azure Key Vault 密钥页即可轻松检索这些信息。
 
@@ -239,7 +239,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ### <a name="synonym-map-encryption"></a>同义词映射加密
 
-使用 [创建同义词映射 Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)创建加密同义词映射。 使用 `encryptionKey` 属性指定要使用的加密密钥。
+使用 [创建同义词映射 Azure 认知搜索 REST API](/rest/api/searchservice/create-synonym-map)创建加密同义词映射。 使用 `encryptionKey` 属性指定要使用的加密密钥。
 
 ```json
 {
@@ -263,7 +263,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="example-data-source-encryption"></a>示例：数据源加密
 
-使用 [Create Data source (Azure 认知搜索 REST API) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source)创建加密数据源。 使用 `encryptionKey` 属性指定要使用的加密密钥。
+使用 [Create Data source (Azure 认知搜索 REST API) ](/rest/api/searchservice/create-data-source)创建加密数据源。 使用 `encryptionKey` 属性指定要使用的加密密钥。
 
 ```json
 {
@@ -289,7 +289,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="example-skillset-encryption"></a>示例：技能组合加密
 
-使用 [Create 技能组合 Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)创建加密的技能组合。 使用 `encryptionKey` 属性指定要使用的加密密钥。
+使用 [Create 技能组合 Azure 认知搜索 REST API](/rest/api/searchservice/create-skillset)创建加密的技能组合。 使用 `encryptionKey` 属性指定要使用的加密密钥。
 
 ```json
 {
@@ -315,7 +315,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="example-indexer-encryption"></a>示例：索引器加密
 
-使用 [Create 索引器 Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)创建加密索引器。 使用 `encryptionKey` 属性指定要使用的加密密钥。
+使用 [Create 索引器 Azure 认知搜索 REST API](/rest/api/searchservice/create-indexer)创建加密索引器。 使用 `encryptionKey` 属性指定要使用的加密密钥。
 
 ```json
 {

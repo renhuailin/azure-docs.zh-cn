@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843989"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499316"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -151,7 +151,7 @@ Azure 磁盘预留提供的选项可用于购买为期一年的采用指定 SKU�
 预留采用磁盘（而不是容量）的形式。 换句话说，预留 P80 (32 TiB) 磁盘时，你会收到单个 P80 磁盘，因此，无法将该特定预留划分为两个较小的 P70 (16 TiB) 磁盘。 当然，可以根据自己的需要预留任意数量的磁盘，包括两个单独的 P70 (16 TiB) 磁盘。
 
 如何应用 Azure 磁盘预留？    
-磁盘预留遵循类似于预留虚拟机 (VM) 实例的模型。 不同之处在于，磁盘预留无法应用于不同的 SKU，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 虚拟机预留实例节省成本](./linux/prepay-reserved-vm-instances.md)。     
+磁盘预留遵循类似于预留虚拟机 (VM) 实例的模型。 不同之处在于，磁盘预留无法应用于不同的 SKU，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 虚拟机预留实例节省成本](./prepay-reserved-vm-instances.md)。     
 
 是否可以跨多个区域使用通过 Azure 磁盘预留购买的数据存储？    
 Azure 磁盘预留是针对特定区域和 SKU（如美国东部 2 中的 P30）购买的，因此无法在这些构造外部使用。 始终可以购买额外的 Azure 磁盘预留来满足其他区域或 SKU 的磁盘存储需求。    

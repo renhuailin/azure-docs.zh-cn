@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843547"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500336"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 
@@ -41,7 +41,7 @@ ms.locfileid: "94843547"
 
 可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，可以指定一个客户托管密钥，用于加密和解密托管磁盘中的所有数据。 
 
-若要了解有关服务器端加密的详细信息，请参阅 [Windows](windows/disk-encryption.md) 或 [Linux](linux/disk-encryption.md) 文章。
+若要了解有关服务器端加密的详细信息，请参阅 [Windows](./disk-encryption.md) 或 [Linux](./disk-encryption.md) 文章。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
@@ -73,4 +73,4 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 
 ## <a name="next-steps"></a>后续步骤
-- 完成相关步骤，使用适用于 [Linux](../security/fundamentals/overview.md) 或 [Windows](windows/tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。
+- 完成相关步骤，使用适用于 [Linux](../security/fundamentals/overview.md) 或 [Windows](./tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。

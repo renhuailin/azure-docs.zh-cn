@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024307"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499129"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "95024307"
 
 语音服务很大程度上与必应语音相似，但有以下差异。
 
-| Feature | 必应语音 | 语音服务 | 详细信息 |
+| 功能 | 必应语音 | 语音服务 | 详细信息 |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech service 支持 Windows 10、通用 Windows 平台 (UWP) 和 .NET Standard 2.0。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Speech service 支持 Windows 和 Linux。 |
@@ -79,7 +79,7 @@ ms.locfileid: "95024307"
 
 必应语音客户应通过打开[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来联系客户支持。 如果你的支持需要一个[技术支持计划](https://azure.microsoft.com/support/plans/)，也可以与我们联系。
 
-有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
+有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,7 +87,7 @@ ms.locfileid: "95024307"
 * [语音转文本入门](get-started-speech-to-text.md)
 * [开始使用文本转语音](get-started-text-to-speech.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [语音服务发行说明](releasenotes.md)
 * [什么是语音服务](overview.md)

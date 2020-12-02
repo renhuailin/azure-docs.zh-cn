@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971585"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500642"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -20,7 +20,7 @@ ms.locfileid: "91971585"
 将磁盘附加到 VM 前，请查看以下提示：
 
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 附加到虚拟机的磁盘实际上是存储在 Azure 中的 .vhd 文件。 有关详细信息，请查看[托管磁盘简介](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
+* 附加到虚拟机的磁盘实际上是存储在 Azure 中的 .vhd 文件。 有关详细信息，请查看[托管磁盘简介](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加磁盘后，需要[连接到 Linux VM 以装载新磁盘](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 
@@ -32,7 +32,7 @@ ms.locfileid: "91971585"
 
 ## <a name="attach-a-new-disk"></a>附加新磁盘
 
-1. 在 " **磁盘** " 窗格的 " **数据磁盘**" 下，选择 " **创建并附加新磁盘**"。
+1. 在“磁盘”窗格的“数据磁盘”下，选择“创建并附加新磁盘”  。
 
 1. 输入托管磁盘的名称。 查看默认设置，并根据需要更新“存储类型”、“大小(GiB)”、“加密”和“主机缓存”   。
    
@@ -43,8 +43,8 @@ ms.locfileid: "91971585"
 
 
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
-1. 在 " **磁盘** " 窗格的 " **数据磁盘**" 下，选择 "  **附加现有磁盘**"。
-1. 单击 " **磁盘名称** " 的下拉菜单，并从可用托管磁盘列表中选择一个磁盘。 
+1. 在“磁盘”窗格的“数据磁盘”下，选择“附加现有磁盘”  。
+1. 单击“磁盘名称”的下拉菜单，然后从可用托管磁盘列表中选择一个磁盘。 
 
 1. 单击“保存”以附加现有托管磁盘并更新 VM 配置：
    

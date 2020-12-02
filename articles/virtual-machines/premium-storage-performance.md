@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978656"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500387"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -305,11 +305,11 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 ## <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
 
-对于所有高级 Ssd 或超磁盘，你可能会对磁盘上的文件系统禁用 "屏障"，以便在已知没有可能丢失数据的缓存的情况下提高性能。  如果 Azure 磁盘缓存设置为 "只读" 或 "无"，则可以禁用屏障。  但是，如果将缓存设置为 ReadWrite，则关卡应保持启用状态以确保写入持续性。  通常情况下，屏障默认情况下处于启用状态，但你可以根据文件系统类型使用以下方法之一来禁用关卡：
+对于所有高级 Ssd 或超磁盘，你可能会对磁盘上的文件系统禁用 "屏障"，以便在已知没有可能丢失数据的缓存的情况下提高性能。  如果 Azure 磁盘缓存设置为 ReadOnly 或 None，则可以禁用屏障。  但是，如果缓存设置为 ReadWrite，则屏障应保持启用状态以确保写入持续性。  默认情况下，屏障通常处于启用状态，但你可以根据文件系统类型使用以下方法之一禁用屏障：
 
-* 对于 **reiserFS**，请使用屏障 = none 装载选项来禁用屏障。  若要显式启用屏障，请使用关卡 = flush。
-* 对于 **ext3/ext4**，请使用关卡 = 0 mount 选项来禁用屏障。  若要显式启用屏障，请使用关卡 = 1。
-* 对于 **XFS**，请使用 nobarrier 装入选项来禁用屏障。  若要显式启用屏障，请使用障碍。  请注意，在更高版本的 Linux 内核版本中，XFS 文件系统的设计始终确保持续性，禁用关卡不起作用。  
+* 对于 reiserFS，请使用 barrier=none 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=flush。
+* 对于 ext3/ext4，请使用 barrier=0 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=1。
+* 对于 XFS，请使用 nobarrier 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier。  请注意，在更高版本的 Linux 内核版本中，XFS 文件系统的设计始终确保持续性，禁用屏障没有任何效果。  
 
 ## <a name="disk-striping"></a>磁盘条带化
 
@@ -319,7 +319,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 重要说明：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
 
-在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](linux/configure-raid.md)。
+在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
 
 *条带大小*  
 进行磁盘条带化操作时，一项重要配置是条带大小。 条带大小或块大小是应用程序可以在条带化卷上处理的最小数据块区。 配置的条带大小取决于应用程序类型及其请求模式。 如果选择了错误的条带大小，可能导致 IO 不一致，从而导致应用程序性能下降。

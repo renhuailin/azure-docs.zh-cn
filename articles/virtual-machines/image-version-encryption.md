@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504316"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499282"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
 
@@ -211,15 +211,15 @@ az sig image-version create \
 
 
 1. 在 " **创建映像版本** " 页上，选择 " **加密** " 选项卡。
-2. 在 " **加密类型** " 中，选择 "静态加密"，同时选择 "使用 **客户管理的密钥** " 或 " **使用平台管理的密钥和客户托管的密钥进行双重加密** "。 
+2. 在 " **加密类型**" 中，选择 "静态加密"，同时选择 "使用 **客户管理的密钥** " 或 " **使用平台管理的密钥和客户托管的密钥进行双重加密**"。 
 3. 对于映像中的每个磁盘，从 " **磁盘加密集** " 下拉列表中选择加密集。 
 
 ### <a name="create-the-vm"></a>创建 VM
 
-可以从映像版本创建 VM，并使用客户管理的密钥来加密磁盘。 当你在门户中创建 VM 时，请在 " **磁盘** " 选项卡上，选择 " **静态加密** "，并在 **平台管理的密钥和客户托管的密钥** 中选择 "加密 **类型** "。 然后，可以从下拉列表中选择加密集。
+可以从映像版本创建 VM，并使用客户管理的密钥来加密磁盘。 当你在门户中创建 VM 时，请在 " **磁盘** " 选项卡上，选择 " **静态加密** "，并在 **平台管理的密钥和客户托管的密钥** 中选择 "加密 **类型**"。 然后，可以从下拉列表中选择加密集。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[服务器端磁盘加密](./windows/disk-encryption.md)。
+详细了解[服务器端磁盘加密](./disk-encryption.md)。
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

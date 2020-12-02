@@ -3,16 +3,16 @@ title: Azure 服务总线订阅规则 SQL 筛选器语法 |Microsoft Docs
 description: 本文提供了有关 SQL 筛选器语法的详细信息。 SQL 筛选器支持 SQL-92 标准的子集。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805630"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498670"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>订阅规则 SQL 筛选器语法
 
-*SQL 筛选器* 是服务总线主题订阅的一个可用筛选器类型。 这是倾向标准的92子集上的文本表达式。 筛选表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "sqlFilter" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
+*SQL 筛选器* 是服务总线主题订阅的一个可用筛选器类型。 这是倾向标准的92子集上的文本表达式。 筛选表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "sqlFilter" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
 
 服务总线高级版还支持通过 JMS 2.0 API 的 [JMS SQL 消息选择器语法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) 。
 
@@ -52,7 +52,7 @@ ms.locfileid: "95805630"
   
 -   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 如果未指定，则作用域为默认作用域 `<scope>` 。  
   
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
 尝试访问不存在的系统属性是错误的，而尝试访问不存在的用户属性不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   

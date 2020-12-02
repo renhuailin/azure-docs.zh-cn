@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686717"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498993"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>适用于 Azure 的 .NET (c # ) 代码示例认知搜索
 
@@ -44,7 +44,7 @@ ms.locfileid: "94686717"
 
 ## <a name="documentation-samples"></a>文档示例
 
-以下示例在 [Azure 认知搜索文档](https://docs.microsoft.com/azure/search/)中有一个相关的文章。
+以下示例在 [Azure 认知搜索文档](./index.yml)中有一个相关的文章。
 
 | 示例 | 说明 |
 |---------|-------------|
@@ -63,6 +63,6 @@ ms.locfileid: "94686717"
 | 示例 | 说明 |
 |---------|-------------|
 | [azure-搜索-强大技能](https://github.com/Azure-Samples/azure-search-power-skills)  | 可在你的赢单解决方案中引入的可耗用自定义技能的源代码。  |
-| [知识挖掘解决方案加速器](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包括模板、支持文件和分析报表，以帮助你建立端到端知识挖掘解决方案的原型。  |
+| [知识挖掘解决方案加速器](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包括模板、支持文件和分析报表，以帮助你建立端到端知识挖掘解决方案的原型。  |
 | [Covid-19 搜索应用存储库](https://github.com/liamca/covid19search) | 基于认知搜索[Covid-19 搜索应用](https://covid19search.azurewebsites.net/)的源代码存储库 |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | 了解有关 [JFK 解决方案](https://www.microsoft.com/ai/ai-lab-jfk-files)的详细信息。 |

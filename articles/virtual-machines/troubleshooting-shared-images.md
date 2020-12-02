@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d15f58a2d87483e8e2fd6711481bfe8866ca1548
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500268"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中的共享映像库问题
 
@@ -137,7 +137,7 @@ ms.locfileid: "94920604"
 
 *此区域不支持 ZRS 存储帐户类型。*  
 **原因**：已在尚不支持 ZRS) 的区域中选择了标准区域冗余存储 (。  
-**解决方法**：将存储帐户类型更改为 **Premium \_ LRS** 或 **Standard \_ LRS**。 查看文档以了解已启用 ZRS 预览版的最新 [区域列表](/azure/storage/common/storage-redundancy#zone-redundant-storage) 。
+**解决方法**：将存储帐户类型更改为 **Premium \_ LRS** 或 **Standard \_ LRS**。 查看文档以了解已启用 ZRS 预览版的最新 [区域列表](../storage/common/storage-redundancy.md#zone-redundant-storage) 。
 
 ## <a name="creating-or-updating-image-versions"></a>创建或更新映像版本 ##
 

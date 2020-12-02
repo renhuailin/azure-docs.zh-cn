@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842730"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498789"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -91,5 +91,5 @@ ms.locfileid: "94842730"
 | [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)| 一种全局 DNS 负载均衡器。|
 | [Azure 应用程序代理](../../active-directory/manage-apps/application-proxy.md)| 用于保护远程访问本地托管 Web 应用程序的身份验证前端。 |
 |[Azure 防火墙](../../firewall/overview.md)|是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。|
-|[Azure DDoS 防护](../../virtual-network/ddos-protection-overview.md)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
+|[Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
 |[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)|可通过直接连接，将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。|

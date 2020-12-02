@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557527"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498857"
 ---
 # <a name="measured-boot-and-host-attestation"></a>标准启动和主机证明
 本文介绍 Microsoft 如何通过测量的启动和主机证明来确保主机的完整性和安全性。
 
 ## <a name="measured-boot"></a>标准引导
 
-[受信任的平台模块](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) 是使用受信任的第三方提供的固件的防篡改加密安全审核组件。 启动配置日志包含其平台配置注册中记录的哈希链接度量值 () 主机上一次启动序列时，将在该主机上注册。 下图显示了此录制过程。 以增量方式将以前的哈希度量值添加到下一个度量值的哈希，并在联合上运行哈希算法来完成哈希链。
+[受信任的平台模块](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) 是使用受信任的第三方提供的固件的防篡改加密安全审核组件。 启动配置日志包含其平台配置注册中记录的哈希链接度量值 () 主机上一次启动序列时，将在该主机上注册。 下图显示了此录制过程。 以增量方式将以前的哈希度量值添加到下一个度量值的哈希，并在联合上运行哈希算法来完成哈希链。
 
 ![显示主机证明服务哈希链接的关系图。](./media/measured-boot-host-attestation/hash-chaining.png)
 
@@ -56,6 +56,6 @@ UEFI [安全启动](secure-boot.md) 可以确保只有受信任的低级别软�
 
 - [固件安全性](firmware.md)
 - [安全启动](secure-boot.md)
-- [项目 Cerberus](project-cerberus.md)
+- [Cerberus 项目](project-cerberus.md)
 - [静态加密](encryption-atrest.md)
 - [虚拟机监控程序安全性](hypervisor.md)

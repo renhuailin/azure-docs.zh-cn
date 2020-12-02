@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412640"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498874"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
 
@@ -100,7 +100,7 @@ ms.locfileid: "94412640"
 
 - [如何使用文件完整性监视](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [了解 Azure 更改跟踪](../../automation/change-tracking.md)
+- [了解 Azure 更改跟踪](../../automation/change-tracking/overview.md)
 
 - [如何启用 Azure 虚拟机库存](../../automation/automation-tutorial-installed-software.md)
 

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500217"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -66,6 +66,8 @@ ms.locfileid: "94836387"
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 分阶段推出不支持以下场景：
+
+- 应用程序或云服务使用旧身份验证，如 POP3 和 SMTP。
 
 - 某些应用程序在身份验证过程中会将“domain_hint”查询参数发送到 Azure AD。 这些流将继续运行，允许进行分阶段推出的用户将继续使用联合身份验证。
 

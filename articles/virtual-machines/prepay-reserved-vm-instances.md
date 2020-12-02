@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380126"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500353"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a> (Linux 上的 Azure 保留 VM 实例节省成本) 
 
@@ -86,11 +86,11 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 ## <a name="buy-a-reserved-vm-instance"></a>购买虚拟机预留实例
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买保留 VM 实例。 通过[提前付款或按月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)的方式为预留付款。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买保留 VM 实例。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。
 这些要求适用于购买保留 VM 实例：
 
 - 对于至少一个 EA 订阅或具有即用即付费率的订阅，必须是所有者角色。
-- 对于 EA 订阅，必须在 [ea 门户](https://ea.azure.com/)中启用 " **添加保留实例** " 选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于 EA 订阅，必须在 [ea 门户](https://ea.azure.com/)中启用 "**添加保留实例**" 选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
 若要购买实例，请执行以下操作：
@@ -136,7 +136,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - 现有预订的区域
 - SKU
 - 数量
-- Duration
+- 持续时间
 
 不过，如果想要进行更改，则可以 *交换* 预订。
 
@@ -158,6 +158,4 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
     - [了解采用即用即付费率的订阅的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [了解企业合约的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [预留未包含的 Windows 软件成本](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)

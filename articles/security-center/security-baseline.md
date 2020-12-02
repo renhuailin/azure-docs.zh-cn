@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e9e7586c29f3b75512a57b0f89885f13e58e2ba1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3b648168cd80920b8042f1edeacca893c21b98e2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949252"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498942"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure 安全中心安全基线
 
@@ -156,7 +156,7 @@ ms.locfileid: "94949252"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md) 
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md) 
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -606,7 +606,7 @@ ms.locfileid: "94949252"
 
 **指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-- [如何设置凭据扫描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
+- [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：不适用
 

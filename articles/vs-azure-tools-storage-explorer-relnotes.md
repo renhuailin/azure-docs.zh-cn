@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520996"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499656"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -559,7 +559,7 @@ ms.locfileid: "95520996"
         
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）
@@ -628,7 +628,7 @@ ms.locfileid: "95520996"
         
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）
@@ -683,7 +683,7 @@ ms.locfileid: "95520996"
 
 ### <a name="new"></a>新建
 
-* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 现在可以使用存储资源管理器以通过 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
   * 创建和删除容器
   * 管理容器属性和权限（左侧）

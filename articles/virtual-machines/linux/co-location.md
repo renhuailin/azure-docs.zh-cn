@@ -1,16 +1,16 @@
 ---
 title: 并置 Linux VM
-description: 了解如何归置用于 Linux 的 Azure VM 资源如何提高延迟。
+description: 了解 Linux 的并置 Azure VM 资源如何缩短延迟。
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 822d67211982526bdd7a36cb5922f33b448eb7c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 304623ca50fd030ab6e016b940f8be52819c161a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973370"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500625"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>并置资源以改善延迟
 
@@ -24,7 +24,7 @@ ms.locfileid: "91973370"
 
 使用 Azure CLI 将 VM 部署到[邻近放置组](proximity-placement-groups.md)。
 
-了解如何[测试网络延迟](../../virtual-network/virtual-network-test-latency.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
+了解如何[测试网络延迟](../../virtual-network/virtual-network-test-latency.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 了解如何[优化网络吞吐量](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
 

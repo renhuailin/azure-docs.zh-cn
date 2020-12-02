@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652918"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498415"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -26,11 +26,11 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 > 若要了解详细信息，请参阅：针对 [Windows](../virtual-machines/windows/storage-performance.md) 或 [Linux](../virtual-machines/linux/storage-performance.md) 优化 Lsv2 系列虚拟机上的性能。  
 
 [ACU](acu.md)：150-175<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 突发：支持<br>
 <br>
 
@@ -51,7 +51,7 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 
 <sup>4</sup> Lsv2 系列 VM 不为数据磁盘提供主机缓存，因为这不会让 Lsv2 工作负荷受益。
 
-<sup>5</sup> Lsv2 系列 VM 可以通过[突发](linux/disk-bursting.md)方式提高其磁盘性能，一次长达 30 分钟。 
+<sup>5</sup> Lsv2 系列 VM 可以通过[突发](./disk-bursting.md)方式提高其磁盘性能，一次长达 30 分钟。 
 
 <sup>6</sup> 具有 64 个以上 vCPU 的 VM 需要以下受支持的来宾操作系统之一：
 
@@ -70,7 +70,7 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 - 存储容量的单位为 GiB 或 1024^3 字节。 比较以 GB（1000^3 字节）为单位的磁盘和以 GiB（1024^3 字节）为单位的磁盘时，请记住以 GiB 为单位的容量数显得更小。 例如，1023 GiB = 1098.4 GB
 - 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 Mbps，其中 Mbps = 10^6 字节/秒。
 - 若要获得 VM 的最佳性能，应将数据磁盘数限制为每 vCPU 2 个磁盘。
-- **预期的网络带宽**是指跨所有 NIC [为每个 VM 类型分配的最大聚合带宽](../virtual-network/virtual-machine-network-throughput.md)，适用于所有目标。 不保证能够达到上述预期上限，但目的是提供相关指导，以便为目标应用程序选择适当的 VM 类型。 实际的网络性能将取决于许多因素，包括网络拥塞、应用程序负载和网络设置。 有关如何优化网络吞吐量的信息，请参阅[为 Windows 和 Linux 优化网络吞吐量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要在 Linux 或 Windows 中达到预期的网络性能，可能需要选择特定版本，或者需要优化 VM。 有关详细信息，请参阅[如何针对虚拟机吞吐量进行可靠的测试](../virtual-network/virtual-network-bandwidth-testing.md)。
+- **预期的网络带宽** 是指跨所有 NIC [为每个 VM 类型分配的最大聚合带宽](../virtual-network/virtual-machine-network-throughput.md)，适用于所有目标。 不保证能够达到上述预期上限，但目的是提供相关指导，以便为目标应用程序选择适当的 VM 类型。 实际的网络性能将取决于许多因素，包括网络拥塞、应用程序负载和网络设置。 有关如何优化网络吞吐量的信息，请参阅[为 Windows 和 Linux 优化网络吞吐量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要在 Linux 或 Windows 中达到预期的网络性能，可能需要选择特定版本，或者需要优化 VM。 有关详细信息，请参阅[如何针对虚拟机吞吐量进行可靠的测试](../virtual-network/virtual-network-bandwidth-testing.md)。
 
 
 ## <a name="other-sizes-and-information"></a>其他大小和信息

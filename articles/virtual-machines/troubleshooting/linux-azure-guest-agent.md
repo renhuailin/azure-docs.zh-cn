@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549872"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500251"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>排查 Azure Linux 来宾代理问题
 
-[Azure Linux 来宾代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 是 (VM) 代理的虚拟机。 它使虚拟机能够与 IP 地址 168.63.129.16 上的结构控制器（VM 所在的基础物理服务器）通信。 此 IP 地址是一个虚拟公共 IP 地址，用于促进通信。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+[Azure Linux 来宾代理](../extensions/agent-linux.md) 是 (VM) 代理的虚拟机。 它使虚拟机能够与 IP 地址 168.63.129.16 上的结构控制器（VM 所在的基础物理服务器）通信。 此 IP 地址是一个虚拟公共 IP 地址，用于促进通信。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="checking-agent-status-and-version"></a>检查代理状态和版本
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 3de630552f7ad2cc941fe23369398c10ffce5870
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 244408cc512a51683ecb3c062113170b1c7f4781
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686624"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499554"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>适用于 Azure 认知搜索的 Python 代码示例
 
@@ -40,12 +40,12 @@ ms.locfileid: "94686624"
 | [同义词](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_synonym_map_operations.py) | 演示如何创建、更新、获取、列出和删除 [同义词映射](search-synonyms.md)。  |
 | [加载文档](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_crud_operations.py) | 演示如何在 [数据导入](search-what-is-data-import.md) 操作中将文档上载或合并到索引中。 |
 | [简单查询](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_simple_query.py) | 演示如何设置 [基本查询](search-query-overview.md)。 |
-| [筛选查询](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_filter_query.py) | 说明如何设置 [筛选器表达式](search-filters.md)。 |
+| [筛选器查询](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_filter_query.py) | 说明如何设置 [筛选器表达式](search-filters.md)。 |
 | [Facet 查询](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_facet_query.py) | 演示如何使用 [方面](search-filters-facets.md)。 |
 
 ## <a name="documentation-samples"></a>文档示例
 
-以下示例在 [Azure 认知搜索文档](https://docs.microsoft.com/azure/search/)中有一个相关的文章。
+以下示例在 [Azure 认知搜索文档](./index.yml)中有一个相关的文章。
 
 | 示例 | 说明 | 
 |---------|-------------|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412861"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498925"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
 
@@ -97,7 +97,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 " **监视**  >  **指标** "。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
+在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
 
 标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
 
@@ -113,7 +113,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 我们建议对此指标配置警报。 然后，在对公共 IP 地址执行主动的 DDoS 缓解措施时会收到通知。
 
-有关详细信息，请参阅[使用 Azure 门户管理标准 Azure DDoS 防护](../../virtual-network/manage-ddos-protection.md)。
+有关详细信息，请参阅[使用 Azure 门户管理标准 Azure DDoS 防护](../../ddos-protection/manage-ddos-protection.md)。
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>防范资源攻击的 Web 应用程序防火墙
 
@@ -179,7 +179,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ### <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](../../virtual-network/manage-ddos-protection.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](../../ddos-protection/manage-ddos-protection.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
 
 #### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 
@@ -260,7 +260,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 在此体系结构中，从 Internet 发往 HDInsight 群集的流量路由到与 HDInsight 网关负载均衡器关联的公共 IP。 然后，网关负载均衡器直接将流量发送到头节点或工作节点。 由于已在 HDInsight 虚拟网络上启用标准 DDoS 防护，虚拟网络中的所有公共 IP 将得到第 3 层和第 4 层 DDoS 防护。 此参考体系结构可与 N 层和多区域参考体系结构相结合。
 
-有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) 文档。
+有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 * [云中责任分担](shared-responsibility.md)
 * [Azure DDoS 防护产品页](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS 防护文档](../../virtual-network/ddos-protection-overview.md)
+* [Azure DDoS 防护文档](../../ddos-protection/ddos-protection-overview.md)

@@ -3,12 +3,12 @@ title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022162"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498772"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
 Azure 服务总线云服务使用 [高级消息队列协议 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作为其主要通信方式。 Microsoft 已与行业中的合作伙伴共同合作，共同的消息传递代理的客户和供应商在过去十年中开发和发展 AMQP，并在 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中开发新扩展。 AMQP 1.0 是 ISO 和 IEC 标准 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
@@ -64,11 +64,11 @@ Azure 服务总线中的 AMQP 1.0 支持意味着可以使用有效的二进制�
 
 通过 Azure SDK 提供的所有支持的服务总线客户端库均使用 AMQP 1.0。
 
-- [适用于 .NET 的 Azure 服务总线](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [适用于 Java 的 Azure 服务总线库](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [适用于 .NET 的 Azure 服务总线](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [适用于 Java 的 Azure 服务总线库](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [适用于 Java JMS 2.0 的 Azure 服务总线提供程序](how-to-use-java-message-service-20.md)
-- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [用于 Python 的 Azure 服务总线库](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [用于 Python 的 Azure 服务总线库](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -89,4 +89,4 @@ Azure 服务总线中的 AMQP 1.0 支持意味着可以使用有效的二进制�
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [使用 AMQP 通过 .NET 使用服务总线]: service-bus-amqp-dotnet.md
 [使用 AMQP 通过 Java 使用服务总线]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[在 Azure Linux VM 上安装 Apache Qpid Proton-C]：: 
+[在 Azure Linux VM 上安装 Apache Qpid Proton-C]：:

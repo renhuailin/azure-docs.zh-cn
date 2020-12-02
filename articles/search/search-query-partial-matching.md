@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499537"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分字词搜索和包含特殊字符（通配符、正则表达式、模式）的模式
 
@@ -160,7 +160,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 可以在字段定义的 `analyzer` 属性中按名称指定内置或预定义的分析器，不需要在索引中进行其他配置。 以下示例演示如何在字段中设置 `whitespace` 分析器。 
 
-有关其他方案以及其他内置分析器的详细信息，请参阅[预定义分析器列表](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
+有关其他方案以及其他内置分析器的详细信息，请参阅[预定义分析器列表](./index-add-custom-analyzers.md#predefined-analyzers-reference)。 
 
 ```json
     {
@@ -177,7 +177,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 如果使用[自定义分析器](index-add-custom-analyzers.md)，请在索引中使用用户定义的组合（其中包含标记器、标记筛选器和可能的配置设置）来定义该分析器。 接下来，在字段定义中引用它，就像引用内置分析器一样。
 
-如果目标是完整字词标记化，我们建议使用一个由**关键字标记器**和**小写标记筛选器**组成的自定义分析器。
+如果目标是完整字词标记化，我们建议使用一个由 **关键字标记器** 和 **小写标记筛选器** 组成的自定义分析器。
 
 + 关键字标记器为字段的整个内容创建单个标记。
 + 小写标记筛选器将大写字母转换为小写文本。 查询分析程序通常将任何大写文本输入小写。 小写过程可将包含标记化字词的输入均匀化。

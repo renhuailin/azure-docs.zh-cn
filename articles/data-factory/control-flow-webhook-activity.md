@@ -3,20 +3,20 @@ title: Azure 数据工厂中的 Webhook 活动
 description: Webhook 活动在使用用户指定的某些条件验证附加的数据集之前，不会继续执行管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 144006c3d0722bc3211f542b7059bba0bb0cbdbf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634974"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499401"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
 
@@ -62,7 +62,7 @@ type  | 必须设置为“WebHook”。 | String | 是 |
 **headers** | 发送到请求的标头。 下面是一个示例，用于在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 具有字符串的 **resultType** 值的字符串或表达式。 | 是的。 需要 `Content-Type` 标题，如 `"headers":{ "Content-Type":"application/json"}`。 |
 **body** | 表示要发送到终结点的有效负载。 | 有效的 JSON，或 **resultType** 值为 JSON 的表达式。 请参阅[请求有效负载架构](./control-flow-web-activity.md#request-payload-schema)，了解请求有效负载的架构。 | 是 |
 **身份验证** | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”和“ClientCertificate”。 有关详细信息，请参阅[身份验证](./control-flow-web-activity.md#authentication)。 如果不需要身份验证，则排除此属性。 | 具有字符串的 **resultType** 值的字符串或表达式。 | 否 |
-**timeout** | 活动会等待多长时间，以便系统调用 **callBackUri** 所指定的回调。 默认值为 10 分钟（“00:10:00”）。 值的 TimeSpan 格式为 *d* . *hh* : *mm* : *ss* 。 | String | 否 |
+**timeout** | 活动会等待多长时间，以便系统调用 **callBackUri** 所指定的回调。 默认值为 10 分钟（“00:10:00”）。 值的 TimeSpan 格式为 *d*.*hh*:*mm*:*ss*。 | String | 否 |
 **回调时报告状态** | 允许用户报告 Webhook 活动的失败状态。 | Boolean | 否 |
 
 ## <a name="authentication"></a>Authentication

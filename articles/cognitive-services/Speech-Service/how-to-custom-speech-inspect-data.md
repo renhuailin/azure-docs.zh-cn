@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025627"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499180"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音识别数据
 
@@ -99,8 +99,8 @@ ms.locfileid: "95025627"
 
 - [评估数据](how-to-custom-speech-evaluate-data.md)
 - [训练模型](how-to-custom-speech-train-model.md)
-- [改进模型](how-to-custom-speech-improve-accuracy.md)
-- [部署模型](how-to-custom-speech-deploy-model.md)
+- [改进模型](./how-to-custom-speech-evaluate-data.md)
+- [部署模型](./how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>其他资源
 

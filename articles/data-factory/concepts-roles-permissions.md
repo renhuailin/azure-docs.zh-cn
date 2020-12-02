@@ -7,15 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036328"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498568"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -30,7 +30,7 @@ ms.locfileid: "88036328"
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于“资源组”级别或更高级别的“数据工厂参与者”角色 。
-- 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
+- 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的 **参与者** 角色已足够。
 
 有关如何将用户添加到角色的示例说明，请参阅[添加角色](../cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 

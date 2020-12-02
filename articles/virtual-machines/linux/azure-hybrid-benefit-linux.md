@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 35bed58f95deebb78d8e787c8bc3f522ce7004df
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4dce87533927eebef792987b87d148e6a5268b4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326963"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500608"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
 
@@ -188,4 +188,4 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 | "该操作无法完成，因为我们的记录显示你尚未在 Azure 订阅上成功启用 Red Hat 云访问 ..." | 若要将权益与 RHEL Vm 一起使用，必须先将 Azure 订阅注册 () ，并使用 Red Hat 云访问权限。 访问此链接，了解有关如何注册适用于 Red Hat 云访问的 Azure 订阅的详细信息
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何创建和更新 Vm，并 (RHEL_BYOS 中添加许可证类型，SLES_BYOS[在此处使用 Azure 混合权益](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)) Azure CLI。
+* 了解如何创建和更新 Vm，并 (RHEL_BYOS 中添加许可证类型，SLES_BYOS[在此处使用 Azure 混合权益](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)) Azure CLI。

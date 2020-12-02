@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e594dab3e4bf36fedee7a068068934501ca02f24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 07ef3da9f67de92c3526b83222c1c8088660d7c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842781"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499860"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure 认知搜索的 azure 安全基线
 
@@ -64,7 +64,7 @@ ms.locfileid: "94842781"
 
 **指南**：认知搜索未提供对付分布式拒绝服务攻击的特定功能，但你可以在与你的认知搜索服务相关联的虚拟网络上启用 DDoS 保护标准，以便进行常规保护。
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -223,7 +223,7 @@ ms.locfileid: "94842781"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -462,7 +462,7 @@ ms.locfileid: "94842781"
 
 **指导**：利用 Azure 市场中有关网络外围的第三方解决方案，监视并阻止敏感信息的未授权传输，同时提醒信息安全专业人员。
 
-Microsoft 管理底层平台，并将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+Microsoft 管理底层平台，并将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md) 
 
@@ -484,7 +484,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，并�
 
 **指南**：目前尚不认知搜索支持数据标识、分类和丢失防护功能。 可以根据合规性需要实施第三方解决方案。 
 
-Microsoft 管理底层平台，并将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+Microsoft 管理底层平台，并将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -804,7 +804,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 **指南**：使用 Azure 策略定义和实现认知搜索服务资源的标准安全配置。 
 
-使用别名创建自定义策略，以审核或强制执行网络配置。 你还可以使用与特定资源相关的内置策略定义。 
+使用别名创建自定义策略，以审核或强制执行网络配置。 还可以使用与特定资源相关的内置策略定义。 
 
 此外，还可以使用 Azure 自动化来部署配置更改和管理策略例外。 
 

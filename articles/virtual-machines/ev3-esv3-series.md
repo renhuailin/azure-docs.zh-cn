@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 250223c5c15a0179fe105e66e7004f8920c5eb34
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637609"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500676"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -26,12 +26,12 @@ Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 
-[ACU](acu.md)： 160-190<br>
+[ACU](acu.md)：160 - 190<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
@@ -57,11 +57,11 @@ Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeo
 Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 [ACU](acu.md)：160-190<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
@@ -80,7 +80,7 @@ Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 
-<sup>3</sup> Esv3 系列 VM 可通过[突发](linux/disk-bursting.md)方式提高其磁盘性能，并达到其突发的最大值，一次长达 30 分钟。
+<sup>3</sup> Esv3 系列 VM 可通过[突发](./disk-bursting.md)方式提高其磁盘性能，并达到其突发的最大值，一次长达 30 分钟。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
