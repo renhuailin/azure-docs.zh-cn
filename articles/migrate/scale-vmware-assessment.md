@@ -3,12 +3,12 @@ title: 通过 Azure Migrate 评估要迁移到 Azure 的大量 VMware Vm
 description: 介绍如何使用 Azure Migrate 服务来评估大量要迁移到 Azure 的 VMware Vm
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314120"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492924"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>评估要迁移到 Azure 的大量 VMware Vm
 
@@ -53,12 +53,12 @@ ms.locfileid: "92314120"
 考虑到这些限制，以下是一些示例部署：
 
 
-**vCenter 服务器** | **服务器上的 Vm** | **建议** | **操作**
+**vCenter 服务器** | **服务器上的 Vm** | 建议 | **操作**
 ---|---|---|---
 一个 | < 10000 | 一个 Azure Migrate 项目。<br/> 一台设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。
 一个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 为每个 10000 Vm 设置设备。<br/><br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/> <br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
-多种 | < 10000 |  一个 Azure Migrate 项目。<br/> 多个设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。
-多种 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现 < 10000 Vm，请为每个 vCenter Server 设置一个设备。<br/><br/> 如果 vCenter Server 发现 > 10000 Vm，请为每个 10000 Vm 设置一个设备。<br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/><br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
+多个 | < 10000 |  一个 Azure Migrate 项目。<br/> 多个设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。
+多个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现 < 10000 Vm，请为每个 vCenter Server 设置一个设备。<br/><br/> 如果 vCenter Server 发现 > 10000 Vm，请为每个 10000 Vm 设置一个设备。<br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/><br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
 
 
 
@@ -81,14 +81,14 @@ ms.locfileid: "92314120"
 按照 [本教程](./tutorial-discover-vmware.md) 中的说明配置这些设置。
 
 
-## <a name="create-a-project"></a>创建一个项目
+## <a name="create-a-project"></a>创建项目
 
 按照规划要求，执行以下操作：
 
 1. 创建 Azure Migrate 项目。
 2. 将 Azure Migrate 服务器评估工具添加到项目。
 
-[了解详细信息](how-to-add-tool-first-time.md)
+[了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 

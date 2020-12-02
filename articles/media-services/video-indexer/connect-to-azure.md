@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634882"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493094"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
-创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅的视频索引器帐户。 你为索引分钟数付费，有关详细信息，请参阅 [媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
+创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅的视频索引器帐户。 你需要为索引时间付费，有关详细信息，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
@@ -45,7 +45,7 @@ ms.locfileid: "94634882"
 
     将视频索引器帐户连接到 Azure 时，将要使用此成员。
 
-    此用户应当是 Azure 订阅中具有“所有者”角色，或者兼具“参与者”和“用户访问管理员”两个角色的成员。 用户可以添加两次，具有两个角色。 一次分配“参与者”角色，另一次分配“用户访问管理员”角色。 有关详细信息，请参阅 [查看用户对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/check-access)。
+    此用户应当是 Azure 订阅中具有“所有者”角色，或者兼具“参与者”和“用户访问管理员”两个角色的成员。 用户可以添加两次，具有两个角色。 一次分配“参与者”角色，另一次分配“用户访问管理员”角色。 有关详细信息，请参阅 [查看用户对 Azure 资源的访问权限](../../role-based-access-control/check-access.md)。
 
     ![访问控制](./media/create-account/access-control-iam.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "94634882"
         媒体服务帐户必须与视频索引器帐户位于同一区域。
 
         > [!NOTE]
-        > 为了最大限度地减少索引持续时间和低吞吐量，强烈建议将媒体服务帐户中的 [保留单元](../previous/media-services-scale-media-processing-overview.md ) 类型和数量调整为 **10 S3 保留单位** 。 请参阅 [使用门户更改保留单位](../previous/media-services-portal-scale-media-processing.md)。 保留单位按你的帐户收费，查看 [定价详细信息](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
+        > 为了最大限度地减少索引持续时间和低吞吐量，强烈建议将媒体服务帐户中的 [保留单元](../previous/media-services-scale-media-processing-overview.md ) 类型和数量调整为 **10 S3 保留单位**。 请参阅 [使用门户更改保留单位](../previous/media-services-portal-scale-media-processing.md)。 保留单位按你的帐户收费，查看 [定价详细信息](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
     * 若要手动配置连接，请选择 " **切换到手动配置** " 链接。
 
         有关详细信息，请参阅下文[手动连接到 Azure](#connect-to-azure-manually-advanced-option)（高级选项）部分。
@@ -94,7 +94,7 @@ ms.locfileid: "94634882"
 1. 请确保媒体服务帐户的流式处理终结点正在运行，然后才能在视频索引器 web 应用中播放视频 (按 "启动" （如果它是停止状态) 。
 
 > [!TIP]
-> 若要为你的帐户名，请使用 " **设置** "。
+> 若要为你的帐户名，请使用 " **设置**"。
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>手动连接到 Azure（高级选项）
 
@@ -118,7 +118,7 @@ ms.locfileid: "94634882"
     保留单位按你的帐户收费，查看 [定价详细信息](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
 1. 你必须启动新的媒体服务帐户的默认 **流式处理终结点** ，然后才能在视频索引器 web 应用中播放视频。
 
-    在新的媒体服务帐户中，选择 " **流式处理终结点** "。 然后选择流式处理终结点，并按 "启动"。
+    在新的媒体服务帐户中，选择 " **流式处理终结点**"。 然后选择流式处理终结点，并按 "启动"。
 
     ![流式处理终结点](./media/create-account/create-ams-account2.png)
 4. 要使视频索引器使用媒体服务 API 进行身份验证，需要创建 AD 应用。 以下步骤引导你完成[通过 Azure 门户开始使用 Azure AD 身份验证](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 身份验证过程：
@@ -127,7 +127,7 @@ ms.locfileid: "94634882"
     2. 选择[服务主体身份验证方法](../previous/media-services-portal-get-started-with-aad.md)。
     3. 获取客户端 ID 和客户端密码
 
-        选择 " **设置** -> **密钥** " 后，添加 " **说明** "，按 " **保存** "，然后填充 "密钥" 值。
+        选择 "**设置** -> **密钥**" 后，添加 "**说明**"，按 "**保存**"，然后填充 "密钥" 值。
 
         如果密钥过期，则帐户所有者必须联系视频索引器支持来续订密钥。
 
@@ -136,7 +136,7 @@ ms.locfileid: "94634882"
 
 ### <a name="connect-manually"></a>手动连接
 
-在 " [视频索引器](https://www.videoindexer.ai/)" 页上的 " **在 Azure 订阅上创建新帐户** " 对话框中，选择 " **切换到手动配置** " 链接。
+在 "[视频索引器](https://www.videoindexer.ai/)" 页上的 "**在 Azure 订阅上创建新帐户**" 对话框中，选择 "**切换到手动配置**" 链接。
 
 在对话框中提供以下信息：
 
@@ -152,7 +152,7 @@ ms.locfileid: "94634882"
 
 ## <a name="import-your-content-from-the-trial-account"></a>从 *试用* 帐户导入内容
 
-创建新帐户时，可以选择将 *试用* 帐户中的内容导入到新帐户。 如果选中 "在 **Azure 订阅上创建新帐户** " 对话框中的 " *导入* " 选项，则所有媒体和内容模型自定义都将从 *试用* 帐户复制到新帐户。
+创建新帐户时，可以选择将 *试用* 帐户中的内容导入到新帐户。 如果选中 "在 **Azure 订阅上创建新帐户**" 对话框中的 "*导入*" 选项，则所有媒体和内容模型自定义都将从 *试用* 帐户复制到新帐户。
 
 导入内容的功能对于上述自动和手动方法均有效。
 
@@ -163,7 +163,7 @@ ms.locfileid: "94634882"
 
 如果以后想要删除该帐户，可以从视频索引器网站中删除该帐户。 若要删除帐户，您必须是所有者。
 
-选择 **帐户 > "**  ->  **删除此帐户** "。 
+选择 **帐户 > "**  ->  **删除此帐户**"。 
 
 该帐户将在90天内永久删除。
 
@@ -180,7 +180,7 @@ ms.locfileid: "94634882"
     ![媒体服务流式处理终结点](./media/create-account/ams-streaming-endpoint.png)
 
     流式处理终结点具有相当多的启动时间。 因此，将你的帐户连接到 Azure 之前可能需要花费几分钟时间，直到视频可以在视频索引器 web 应用中进行流式处理和监视。
-* 如果连接到现有的媒体服务帐户，则视频索引器不会更改默认的流式处理终结点配置。 如果没有正在运行的 **流式处理终结点** ，则无法通过此媒体服务帐户或视频索引器观看视频。
+* 如果连接到现有的媒体服务帐户，则视频索引器不会更改默认的流式处理终结点配置。 如果没有正在运行的 **流式处理终结点**，则无法通过此媒体服务帐户或视频索引器观看视频。
 * 如果自动连接，视频索引器会将媒体“预留单位”设置为 10 个 S3 单位：
 
     ![媒体服务预留单位](./media/create-account/ams-reserved-units.png)

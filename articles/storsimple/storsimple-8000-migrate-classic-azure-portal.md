@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 523788dc727fc5fa32b2f57250fb738352ff6d31
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014816"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491514"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>迁移与 StorSimple 设备管理器服务相关联的订阅和存储帐户
 
@@ -35,7 +35,7 @@ ms.locfileid: "96014816"
 |能否将 Azure 订阅的所有权转让给其他目录？ | 是       | 否       | 将现有订阅关联到 Azure AD 目录 | 请参阅[将现有订阅关联到 Azure AD 目录的具体步骤](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。 正确显示所有内容可能需要长达 10 分钟的时间。|
 | 将 StorSimple 设备从一个 StorSimple 设备管理器服务移动到另一个区域中的服务？      | 否        | 是            | 无，手动过程 |同上。|
 | 将存储帐户迁移到新的订阅或资源组？     | 是        | 否             |将存储帐户迁移到其他订阅或资源组 |迁移后，如果存储帐户访问密钥已更新，用户需要通过 StorSimple 设备管理器服务，手动为已迁移的存储帐户配置访问密钥。|
-| 从经典存储帐户迁移到 Azure 资源管理器存储帐户      | 是        | 否             |从经典部署迁移到 Azure 资源管理器部署 |<li>若要详细了解如何将存储帐户从经典部署迁移到 Azure 资源管理器部署，请转到[迁移经典存储帐户](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account)。</li><li> 如果迁移后存储帐户访问密钥进行了更新，用户需要通过 StorSimple 设备管理器服务，为已迁移的存储帐户同步访问密钥。 这是为了确保 StorSimple 设备可继续正常工作，并且能够将主/备份数据分层级存储到 Azure。 若要详细了解如何同步访问密钥，请转到[轮换工作流](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)。</li><li> 对于 StorSimple 云设备，如果经典存储帐户已迁移，但基础虚拟机仍位于经典部署中设备应该能够正常工作。 如果云设备的基础虚拟机已迁移，停用和删除功能将不起作用。</li><li> 必须先在 Azure 门户中新建 StorSimple 云设备，然后再从旧的云设备进行故障转移。 无法使用经典存储帐户在新的 Azure 门户中创建 StorSimple 云设备，需要使用 Azure 资源管理器存储帐户。 有关详细信息，请参阅[部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。</li>|
+| 从经典存储帐户迁移到 Azure 资源管理器存储帐户      | 是        | 否             |从经典部署迁移到 Azure 资源管理器部署 |<li>若要详细了解如何将存储帐户从经典部署迁移到 Azure 资源管理器部署，请转到[迁移经典存储帐户](../virtual-machines/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account)。</li><li> 如果迁移后存储帐户访问密钥进行了更新，用户需要通过 StorSimple 设备管理器服务，为已迁移的存储帐户同步访问密钥。 这是为了确保 StorSimple 设备可继续正常工作，并且能够将主/备份数据分层级存储到 Azure。 若要详细了解如何同步访问密钥，请转到[轮换工作流](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)。</li><li> 对于 StorSimple 云设备，如果经典存储帐户已迁移，但基础虚拟机仍位于经典部署中设备应该能够正常工作。 如果云设备的基础虚拟机已迁移，停用和删除功能将不起作用。</li><li> 必须先在 Azure 门户中新建 StorSimple 云设备，然后再从旧的云设备进行故障转移。 无法使用经典存储帐户在新的 Azure 门户中创建 StorSimple 云设备，需要使用 Azure 资源管理器存储帐户。 有关详细信息，请参阅[部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。</li>|
 
 ## <a name="datacenter-changes"></a>数据中心更改
 

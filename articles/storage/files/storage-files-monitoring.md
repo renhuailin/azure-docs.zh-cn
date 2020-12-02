@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c33771bc67a67d6b3b73769071126db6a913f702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843819"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492142"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -44,7 +44,7 @@ Azure 文件收集与其他 Azure 资源相同的监视数据，如 [监视 Azur
 
 有关 Azure 文件创建的指标和日志指标的详细信息，请参阅 [Azure 文件监视数据参考](storage-files-monitoring-reference.md) 。
 
-Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
 ## <a name="collection-and-routing"></a>收集和路由
 
@@ -73,7 +73,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到自己的存储帐户。
+2. 导航到存储帐户。
 
 3. 在 " **监视** " 部分中，单击 " **诊断设置" (预览 ")**。
 
@@ -645,7 +645,7 @@ StorageFileLogs
 2. 在“监视”部分中单击“警报”，然后单击“+ 新建警报规则”。 
 3. 单击“编辑资源”，为存储帐户选择“文件资源类型”，然后单击“完成”。 例如，如果存储帐户名称为“contoso”，则选择“contoso/文件”资源。
 4. 单击“选择条件”以添加条件。
-5. 你会看到存储帐户支持的信号列表，请选择 **出口** 指标。
+5. 你将看到存储帐户支持的信号列表，请选择“流出量”指标。
 6. 在 " **配置信号逻辑** " 边栏选项卡上，单击 " **维度名称** " 下拉箭头，然后选择 " **文件共享**"。
 7. 单击“维度值”下拉列表，并选择要对其发出警报的文件共享。
 
@@ -664,7 +664,7 @@ StorageFileLogs
 - [Azure 文件监视数据引用](storage-files-monitoring-reference.md)
 - [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure 存储指标迁移](../common/storage-metrics-migration.md)
-- [规划 Azure 文件存储部署](./storage-files-planning.md)
+- [规划 Azure 文件部署](./storage-files-planning.md)
 - [如何部署 Azure 文件](./storage-files-deployment-guide.md)
 - [排查 Windows 上的 Azure 文件问题](./storage-troubleshoot-windows-file-connection-problems.md)
 - [排查 Linux 上的 Azure 文件问题](./storage-troubleshoot-linux-file-connection-problems.md)

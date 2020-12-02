@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630169"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492057"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>排查 Linux 中的 Azure 文件问题 (SMB) 
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>在 Linux 中排查 Azure 文件存储问题 (SMB)
 
 本文列出了从 Linux 客户端连接时与 Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "94630169"
 
 - 如果你没有特定的 I/O 大小下限要求，我们建议使用 1 MiB 的 I/O 大小以获得最佳性能。
 - 使用正确的复制方法：
-    - 为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    - 为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
     - 将 cp 或 dd 与 parallel 配合使用可以提高复制速度，线程数取决于用例和工作负荷。 以下示例使用 6 个线程： 
     - cp 示例（cp 将使用文件系统的默认块大小作为区块大小）：`find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
     - dd 示例（此命令将区块大小显式设置为 1 MiB）：`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -150,7 +150,7 @@ ms.locfileid: "94630169"
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅 [如何使用 AZURE RBAC)  (azure 基于角色的访问控制来保护存储帐户 ](../blobs/security-recommendations.md#data-protection)。
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来保护存储帐户](../blobs/security-recommendations.md#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
@@ -182,7 +182,7 @@ ms.locfileid: "94630169"
 
 **Cache=none** 指示缓存已禁用。 使用默认的装载命令重新装载共享，或者在装载命令中显式添加 **cache=strict** 选项，确保默认缓存或“strict”缓存模式已启用。
 
-在某些情况下， **serverino** 装载选项可能会导致 **ls** 命令针对每个目录条目运行 stat。 当列出大型目录时，此行为会导致性能降级。 可在 **/etc/fstab** 条目中检查装载选项：
+在某些情况下，**serverino** 装载选项可能会导致 **ls** 命令针对每个目录条目运行 stat。 当列出大型目录时，此行为会导致性能降级。 可在 **/etc/fstab** 条目中检查装载选项：
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
@@ -209,7 +209,7 @@ ms.locfileid: "94630169"
 
 ### <a name="cause"></a>原因
 
-COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f** 。 此命令也无法保留不归你拥有的文件的时间戳。
+COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此命令也无法保留不归你拥有的文件的时间戳。
 
 ### <a name="workaround"></a>解决方法
 
@@ -300,25 +300,25 @@ Linux 内核中的此重新连接问题现已在以下更改中进行了修复�
 可以忽略此错误。
 
 
-### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>无法访问名称中有空格或句点的文件夹或文件
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>无法访问名称末尾带有空格或点的文件夹或文件
 
-如果在 Linux 上安装时无法从 Azure 文件共享访问文件夹或文件，则在访问共享时，诸如 du 和 ls 和/或第三方应用程序之类的命令可能会失败并出现 "没有这样的文件或目录" 错误，但你可以通过门户将文件上传到所述的文件夹中。
+在 Linux 上装载 Azure 文件共享时，你将无法访问该共享中的文件夹或文件，诸如 du 和 ls 之类的命令和/或第三方应用程序在访问该共享时可能会失败并显示“无此类文件或目录”错误，但是你能够通过门户将文件上传到所述文件夹。
 
 ### <a name="cause"></a>原因
 
-已将文件夹或文件从对名称末尾的字符进行编码的系统上传到另一个字符，从 Macintosh 计算机上传的文件可能有一个 "0xF028" 或 "0xF029" 字符，而不是 (space) 或 0X2E (点) 。
+文件夹或文件是从一个将名称末尾的字符编码为另一字符的系统上传的，从 Macintosh 计算机上传的文件可能有“0xF028”或“0xF029”字符，而不是“0x20”（空格）或“0X2E”（点）字符。
 
 ### <a name="solution"></a>解决方案
 
 在 Linux 上装载共享时，请在共享上使用 mapchars 选项： 
 
-而不是：
+不是使用：
 
 ```bash
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-用法
+而是使用：
 
 ```bash
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars

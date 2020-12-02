@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1b29565e18b2da2087cc15966b30b433a42fb603
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629795"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492086"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -30,16 +30,16 @@ ms.locfileid: "94629795"
 
 文件将存储在云中的 [Azure 文件共享](storage-files-introduction.md)中。 可以通过两种方式使用 Azure 文件共享：直接装载这些无服务器 Azure 文件共享 (SMB)，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
 
-- **直接装载 Azure 文件共享** ：由于 Azure 文件存储提供 SMB 访问权限，可以使用 Windows、macOS 和 Linux 中提供的标准 SMB 客户端在本地或在云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器式的，因此在部署生产方案时不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
+- **直接装载 Azure 文件共享**：由于 Azure 文件存储提供 SMB 访问权限，可以使用 Windows、macOS 和 Linux 中提供的标准 SMB 客户端在本地或在云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器式的，因此在部署生产方案时不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
 
-- **使用 Azure 文件同步在本地缓存 Azure 文件共享** ：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure 文件共享的快速缓存。 
+- **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure 文件共享的快速缓存。 
 
 ## <a name="management-concepts"></a>管理概念
 Azure 文件同步部署有三个基本管理对象：
 
-- **Azure 文件共享** ：Azure 文件共享是一种无服务器云文件共享功能，它提供具有“Azure 文件同步”同步关系的云终结点。 Azure 文件共享中的文件可以直接通过 SMB 或 FileREST 协议进行访问，但在将 Azure 文件共享与 Azure 文件同步一起使用时，建议通过 Windows Server 缓存来访问文件。这是因为 Azure 文件存储目前缺少一种 Windows Server 所具有的那种高效的更改检测机制，如果直接对 Azure 文件共享进行更改，需要经过一段时间之后才能传播回服务器终结点。
-- **服务器终结点** ：与 Azure 文件共享进行同步的 Windows Server 上的路径。 它可以是某个卷上的特定文件夹，也可以是卷的根目录。 如果命名空间不重叠，多个服务器终结点可存在于同一个卷。
-- **同步组** ：用于定义 **云终结点** 或 Azure 文件共享与服务器终结点之间的同步关系的对象。 同步组中的终结点保持彼此同步。 例如，如果想使用 Azure 文件同步管理两组不同文件，需创建两个同步组并在每个同步组中添加不同的终结点。
+- **Azure 文件共享**：Azure 文件共享是一种无服务器云文件共享功能，它提供具有“Azure 文件同步”同步关系的云终结点。 Azure 文件共享中的文件可以直接通过 SMB 或 FileREST 协议进行访问，但在将 Azure 文件共享与 Azure 文件同步一起使用时，建议通过 Windows Server 缓存来访问文件。这是因为 Azure 文件存储目前缺少一种 Windows Server 所具有的那种高效的更改检测机制，如果直接对 Azure 文件共享进行更改，需要经过一段时间之后才能传播回服务器终结点。
+- **服务器终结点**：与 Azure 文件共享进行同步的 Windows Server 上的路径。 它可以是某个卷上的特定文件夹，也可以是卷的根目录。 如果命名空间不重叠，多个服务器终结点可存在于同一个卷。
+- **同步组**：用于定义 **云终结点** 或 Azure 文件共享与服务器终结点之间的同步关系的对象。 同步组中的终结点保持彼此同步。 例如，如果想使用 Azure 文件同步管理两组不同文件，需创建两个同步组并在每个同步组中添加不同的终结点。
 
 ### <a name="azure-file-share-management-concepts"></a>Azure 文件共享管理相关概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -368,7 +368,7 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 > 防病毒供应商可以使用 [Azure 文件同步防病毒兼容性测试套件](https://www.microsoft.com/download/details.aspx?id=58322)（可从 Microsoft 下载中心下载）来检查其产品与 Azure 文件同步的兼容性。
 
 ## <a name="backup"></a>备份 
-如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件 (因为它们 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性集) ，或者它们将被召回到磁盘，导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅 [关于 azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) 或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
+如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件 (因为它们 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性集) ，或者它们将被召回到磁盘，导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅 [关于 azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
 
 如果希望使用本地备份解决方案，则应在禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
 

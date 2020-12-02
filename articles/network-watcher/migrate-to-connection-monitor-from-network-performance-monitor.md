@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: cd0d4c2dc550beef1b5fceb373a4cb96ed75a172
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 688786fd60d7945340e0a027cf6ee28e6dc2bb32
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544490"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492465"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
@@ -39,7 +39,7 @@ ms.locfileid: "95544490"
    * **Log Analytics 中的数据**：迁移之前，数据将保留在 NetworkMonitoring 表中配置 NPM 的工作区中。 迁移后，数据将转到 NetworkMonitoring 表，并在同一工作区中 ConnectionMonitor_CL 表。 在 NPM 中禁用测试后，数据仅存储在 ConnectionMonitor_CL 表中。
    * **基于日志的警报、仪表板和集成**：您必须基于新的 ConnectionMonitor_CL 表手动编辑查询。 若要在指标中重新创建警报，请参阅 [利用连接监视器进行网络连接监视](./connection-monitor-overview.md#metrics-in-azure-monitor)。
     
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 确保在你的订阅中启用了网络观察程序以及 Log Analytics 工作区的区域。
 * 必须通过网络观察程序扩展启用装有 Log Analytics 代理的 Azure 虚拟机。
@@ -74,5 +74,5 @@ ms.locfileid: "95544490"
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关连接监视器的详细信息，请参阅：
-* [从连接监视器迁移到连接监视器](/azure/network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic)
+* [从连接监视器迁移到连接监视器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: e949f1ac5259ba35772ce98c2ee88e5ea66c2d84
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b57bafdc3f4748bf634955334424941b55e02fd8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221156"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492363"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>创建适用于 Azure Red Hat OpenShift 的 Azure AD 租户
 
@@ -21,7 +21,7 @@ ms.locfileid: "92221156"
 > 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
 > 如果有特定问题， [请](mailto:arofeedback@microsoft.com)联系我们。
 
-Microsoft Azure Red Hat OpenShift 要求在其中创建群集的 [Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 租户。 *租户*是组织或应用开发人员通过注册 Azure、Microsoft Intune 或 Microsoft 365 与 Microsoft 建立关系时接收的 Azure AD 的专用实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户，并具有自己的工作、学校标识和应用注册。
+Microsoft Azure Red Hat OpenShift 要求在其中创建群集的 [Azure Active Directory (Azure AD) ](../active-directory/develop/quickstart-create-new-tenant.md) 租户。 *租户* 是组织或应用开发人员通过注册 Azure、Microsoft Intune 或 Microsoft 365 与 Microsoft 建立关系时接收的 Azure AD 的专用实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户，并具有自己的工作、学校标识和应用注册。
 
 如果还没有 Azure AD 租户，请按照以下说明创建一个。
 
@@ -39,7 +39,7 @@ Microsoft Azure Red Hat OpenShift 要求在其中创建群集的 [Azure Active D
 
     ![显示右上方的租户名称的门户屏幕截图][tenantcallout]  
 
-8. 记下 *租户 ID* ，以便以后可以指定 Azure Red Hat OpenShift 群集的创建位置。 在门户中，现在应看到新租户的 "Azure Active Directory 概述" 边栏选项卡。 选择 " **属性** " 并复制 **目录 ID**的值。 `TENANT`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
+8. 记下 *租户 ID* ，以便以后可以指定 Azure Red Hat OpenShift 群集的创建位置。 在门户中，现在应看到新租户的 "Azure Active Directory 概述" 边栏选项卡。 选择 " **属性** " 并复制 **目录 ID** 的值。 `TENANT`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

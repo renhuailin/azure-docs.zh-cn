@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916485"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492006"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -196,7 +196,7 @@ ms.locfileid: "94916485"
 
 ### <a name="cause"></a>原因  
 
-文件共享上的大文件更改通知可能会导致严重的高延迟。 这通常发生在具有深层嵌套目录结构的文件共享上托管的网站上。 典型方案是 IIS 托管的 web 应用程序，其中，为默认配置中的每个目录设置文件更改通知。 对 SMB 客户端注册的共享上 ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) 的每个更改都会将更改通知从文件服务推送到客户端，这会占用系统资源，并发出更为恶化的更改次数。 这可能会导致共享限制，进而导致更高的客户端延迟。 
+文件共享上的大文件更改通知可能会导致严重的高延迟。 这通常发生在具有深层嵌套目录结构的文件共享上托管的网站上。 典型方案是 IIS 托管的 web 应用程序，其中，为默认配置中的每个目录设置文件更改通知。 对 SMB 客户端注册的共享上 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) 的每个更改都会将更改通知从文件服务推送到客户端，这会占用系统资源，并发出更为恶化的更改次数。 这可能会导致共享限制，进而导致更高的客户端延迟。 
 
 若要确认，可以在门户中使用 Azure 指标- 
 

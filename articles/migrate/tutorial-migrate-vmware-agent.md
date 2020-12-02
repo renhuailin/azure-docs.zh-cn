@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM �
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 437dbce1c577b5d837ad0c70e8e8865ba59cf9e6
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302756"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492991"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -134,7 +134,6 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 > [!NOTE]
 > 使用 Azure Migrate 服务器迁移进行基于代理的迁移依赖于 Azure Site Recovery 服务的功能。 某些要求可能提供了 Site Recovery 文档的链接。
 
-
 ## <a name="set-up-the-replication-appliance"></a>设置复制设备
 
 此过程介绍如何使用下载的开放式虚拟化应用程序 (OVA) 模板设置设备。 如果不能使用此方法，可以[使用脚本](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)设置设备。 
@@ -199,7 +198,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 将代理名称指定为 **http://ip-address** 或 **http://FQDN** 。 不支持 HTTPS 代理服务器。
 5. 当系统提示你输入订阅、资源组和保管库详细信息时，请添加下载设备模板时记下的详细信息。
 6. 在“安装第三方软件”中，接受许可协议。 选择“下载并安装”，安装 MySQL 服务器。
-7. 选择“安装 VMware PowerCLI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。
+7. 选择“安装 VMware PowerCLI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。 
 8. 在“验证设备配置”中验证先决条件，然后继续。
 9. 在“配置 vCenter Server/vSphere ESXi 服务器”中，输入要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址。 输入服务器侦听的端口。 为保管库中的 VMware 服务器输入一个可用的友好名称。
 10. 输入[创建](#prepare-an-account-to-discover-vms)的用于发现 VMware 的帐户的凭据。 选择“添加” > “继续” 。
@@ -251,7 +250,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     
 13. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”  。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
 14. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
@@ -261,7 +260,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - **可用性区域**：指定要使用的可用性区域。
     - **可用性集**：指定要使用的可用性集。
 
-15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 

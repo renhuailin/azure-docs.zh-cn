@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545814"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492346"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在 Azure Database for PostgreSQL 灵活的服务器中配置和访问日志
 
@@ -36,7 +36,7 @@ PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日�
 4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。 
 
 5. 选择日志类型“PostgreSQLLogs”。
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="添加诊断设置按钮":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="选择 PostgreSQL 日志":::
 
 7. 保存设置。
 
@@ -71,5 +71,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log analytics 查询入门](../../azure-monitor/log-query/get-started-portal.md)
+- [Log analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - 了解 [Azure 事件中心](../../event-hubs/event-hubs-about.md)

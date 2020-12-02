@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: dead1d29392f203f5617c9caf430ff952f02f9bc
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6cc67a6af9e11e5667479eadfe277d400c2d4947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317497"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492210"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -258,7 +258,7 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 块 Blob | 否
 静态加密 (SSE)| 是
 静态加密 (CMK)| 是（通过 PowerShell Az 3.3.0 及更高版本模块）
-静态双重加密 | 是（通过 PowerShell Az 3.3.0 及更高版本模块）。 详细了解 [Windows](../virtual-machines/windows/disk-encryption.md) 和 [Linux](../virtual-machines/linux/disk-encryption.md) 支持的区域。
+静态双重加密 | 是（通过 PowerShell Az 3.3.0 及更高版本模块）。 详细了解 [Windows](../virtual-machines/disk-encryption.md) 和 [Linux](../virtual-machines/disk-encryption.md) 支持的区域。
 高级存储 | 是
 安全传输选项 | 是
 导入/导出服务 | 否

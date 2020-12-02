@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505778"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493655"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原升级 PostgreSQL 数据库
 
 你可以使用以下方法，通过将数据库迁移到更高的主要版本服务器来升级部署在 Azure Database for PostgreSQL 单服务器上的 PostgreSQL 服务器。
 * **脱机** 方法使用 PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 导致迁移数据时出现停机时间。 本文档介绍此升级/迁移方法。
-* 使用 [数据库迁移服务](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (dm) 的 **联机** 方法。 此方法提供了缩短的停机时间迁移，并使目标数据库与源保持同步，并且可以选择何时剪切。 不过，使用 DMS 需要满足一些先决条件和限制。 有关详细信息，请参阅 [DMS 文档](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)。 
+* 使用 [数据库迁移服务](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (dm) 的 **联机** 方法。 此方法提供了缩短的停机时间迁移，并使目标数据库与源保持同步，并且可以选择何时剪切。 不过，使用 DMS 需要满足一些先决条件和限制。 有关详细信息，请参阅 [DMS 文档](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)。 
 
  下表提供了基于数据库大小和方案的一些建议。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94505778"
 | 中小型 Db (10 GB – 100 GB)  | X | X |
 | 大型数据库 ( # A0 100 GB)  |  | X |
 | 无论数据库大小如何) ，都可以承受 (升级的停机时间。 | X |  |
-| 能否解决 DMS [先决条件](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites)，包括重启？ |  | X |
+| 能否解决 DMS [先决条件](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)，包括重启？ |  | X |
 | 在升级过程中，可以避免 Ddl 和无日志记录表？ | |  X |
 
 本指南提供了几个离线迁移方法和示例，说明如何将源服务器迁移到运行更高版本的 PostgreSQL 的目标服务器。

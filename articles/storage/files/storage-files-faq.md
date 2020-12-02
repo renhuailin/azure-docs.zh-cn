@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629489"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492125"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -31,7 +31,7 @@ ms.locfileid: "94629489"
 
 * <a id="file-access-options"></a>
   **访问 Azure 文件中的文件有哪些不同方式？**  
-    可以使用 SMB 3.0 协议将 SMB 文件共享装载到本地计算机上，也可以使用 [存储资源管理器](https://storageexplorer.com/) 之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
+    可以使用 SMB 3.0 协议将 SMB 文件共享装载在本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
 
 * <a id="what-is-afs"></a>
   **什么是 Azure 文件同步？**  
@@ -43,12 +43,12 @@ ms.locfileid: "94629489"
     
     Azure Blob 存储适用于需要存储非结构化数据且具有大规模缩放性的云本机应用程序。 为了更大程度地提升性能和可缩放性，相对于真实的文件系统而言，Azure Blob 存储是更简单的存储抽象。 此外，只可通过基于 REST 的客户端库访问 Azure Blob 存储（或直接通过基于 REST 的协议访问）。
 
-    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同，Azure 文件提供对 Azure 文件共享的 SMB 或 NFS 访问权限。 文件共享可以直接安装在 Windows、Linux 或 macOS 上，不管是在本地还是在云 Vm 中，无需编写任何代码或附加任何特殊驱动程序到文件系统。 还可以通过使用 Azure 文件同步进行快速访问来缓存本地文件服务器上的 Azure SMB 文件共享，并接近数据的使用位置。 
+    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同，Azure 文件提供对 Azure 文件共享的 SMB 或 NFS 访问权限。 文件共享可以直接装载到本地或云 VM 中的 Windows、Linux 或 macOS，无需编写任何代码，也无效为文件系统附加任何特殊驱动程序。 还可以通过使用 Azure 文件同步进行快速访问来缓存本地文件服务器上的 Azure SMB 文件共享，并接近数据的使用位置。 
    
     有关 Azure 文件和 Azure Blob 存储之间差异的深入描述，请参阅[核心 Azure 存储服务简介](../common/storage-introduction.md)。 若要了解有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](../blobs/storage-blobs-introduction.md)。
 
 * <a id="files-versus-disks"></a>**相对于 Azure 磁盘，我为什么要使用 Azure 文件共享？**  
-    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 在 azure 虚拟机中部署文件服务器是在 Azure 文件中需要当前不支持的部署选项时，在 Azure 中获取文件存储的高性能方法。 
+    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 当需要 Azure 文件存储当前不支持的部署选项时，在 Azure 虚拟机中部署文件服务器则是一种非常行之有效的获取 Azure 中文件存储的方法。 
 
     但是，相比使用 Azure 文件共享，通过将 Azure 磁盘作为后端存储来运行文件服务器的方式，由于多方面的原因，其经济成本通常会更高。 首先，除了为磁盘存储付费之外，还必须为运行一个或多个 Azure VM 的成本付费。 其次，你还必须管理用于运行文件服务器的 VM。 例如，负责操作系统升级。 最后，如果你最终需要在本地缓存数据，则还要自行安装和管理复制技术（例如，分布式文件系统复制 (DFSR)）来实现此目的。
 
@@ -107,7 +107,7 @@ ms.locfileid: "94629489"
     性能将取决于你的环境设置和配置，以及这是初始同步还是正在进行的同步。有关详细信息，请参阅 [Azure 文件同步性能指标](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**如果在两个服务器上几乎同时对同一文件进行了更改后，会发生什么情况？**  
-    Azure 文件同步使用简单的冲突解决策略：我们将同时更改两个终结点中的文件更改。 最新写入的更改保留原始文件名称。 旧文件 (由 LastWriteTime) 确定，该文件的终结点名称和冲突号都追加到文件名。 对于服务器终结点，终结点名称是服务器的名称。 对于云终结点，终结点名称为 **cloud** 。 此分类的名称如下所示： 
+    Azure 文件同步使用简单的冲突解决策略：我们将同时更改两个终结点中的文件更改。 最新写入的更改保留原始文件名称。 旧文件 (由 LastWriteTime) 确定，该文件的终结点名称和冲突号都追加到文件名。 对于服务器终结点，终结点名称是服务器的名称。 对于云终结点，终结点名称为 **cloud**。 此分类的名称如下所示： 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -184,7 +184,7 @@ ms.locfileid: "94629489"
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 
     
-    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。 
+    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
     
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
@@ -212,10 +212,10 @@ ms.locfileid: "94629489"
    Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](../common/storage-compliance-offerings.md)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
 
 * <a id="file-auditing"></a>
-**如何审核 Azure 文件中的文件访问和更改？**
+**如何审核 Azure 文件存储中的文件访问和更改？**
 
   提供 Azure 文件的审核功能的两个选项：
-  - 如果用户直接访问 Azure 文件共享，则可以使用 [Azure 存储日志 (预览) ](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) 来跟踪文件更改和用户访问权限。 这些日志可用于故障排除，并尽力地记录请求。
+  - 如果用户直接访问 Azure 文件共享，则可以使用 [Azure 存储日志 (预览) ](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) 来跟踪文件更改和用户访问权限。 这些日志可用于故障排除，系统会尽最大努力记录请求。
   - 如果用户通过安装了 Azure 文件同步代理的 Windows Server 访问 Azure 文件共享，请使用 [审核策略](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或第三方产品来跟踪 Windows server 上的文件更改和用户访问权限。 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS 身份验证
@@ -331,7 +331,7 @@ ms.locfileid: "94629489"
 
     可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态，且客户端支持 SMB 3.0 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
-## <a name="backup"></a>备份
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **如何备份我的 Azure 文件共享？**  
     可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](../../backup/backup-afs.md)。

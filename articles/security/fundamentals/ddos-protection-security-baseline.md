@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c57ad181f35d3c0498804f65390792d0e600f1ff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843411"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492244"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS 保护标准的 azure 安全基线
 
@@ -38,7 +38,7 @@ ms.locfileid: "94843411"
 
 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，)  (在 Azure DDoS 保护实例的控制平面级别执行任何写入操作。
 
-- [如何配置针对 DDoS 保护指标的警报](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [如何配置针对 DDoS 保护指标的警报](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ ms.locfileid: "94843411"
 
 **指导**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 中执行查询，以搜索术语，确定趋势，分析模式，并根据可能已为恢复服务保管库收集的活动日志数据提供许多其他见解。
 
-- [有关如何访问针对 DDoS 保护标准服务的遥测、日志和攻击分析的信息](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [有关如何访问针对 DDoS 保护标准服务的遥测、日志和攻击分析的信息](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
 
@@ -96,7 +96,7 @@ ms.locfileid: "94843411"
 
 此外，Azure Active Directory (AD) 具有内置角色，必须显式分配并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-- [了解 Azure DDoS 防护中的权限](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
+- [了解 Azure DDoS 防护中的权限](../../ddos-protection/manage-permissions.md)
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -266,7 +266,7 @@ ms.locfileid: "94843411"
 
 **指南**：若要使用 Azure DDoS 保护计划，你的帐户必须分配到网络参与者角色或分配有特定操作的自定义角色。
 
-- [在 azure DDoS 保护中管理 azure RBAC) 的 Azure 基于角色的访问控制 (](../../virtual-network/manage-ddos-protection.md)
+- [在 azure DDoS 保护中管理 azure RBAC) 的 Azure 基于角色的访问控制 (](../../ddos-protection/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -468,7 +468,7 @@ ms.locfileid: "94843411"
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -524,7 +524,7 @@ ms.locfileid: "94843411"
 
 选择任何可用的 DDoS 保护指标以在攻击期间使用 Azure Monitor 警报配置来向你发出警报。 满足条件时，指定的地址会收到警报电子邮件
 
-- [配置针对 DDoS 防护指标的警报](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [配置针对 DDoS 防护指标的警报](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何配置连续导出](../../security-center/continuous-export.md)
 

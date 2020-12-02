@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 94f347cc24c675c69c69dad6a7d7a796b395c1a6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310937"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493605"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用创建 Azure Arc 数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "92310937"
 
 无论选择哪个目标平台，都需要在创建数据控制器管理员用户之前设置以下环境变量。 您可以根据需要向需要管理员访问数据控制器的其他人员提供这些凭据。
 
-**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例： `arcadmin`
+**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例：`arcadmin`
 
 **AZDATA_PASSWORD** -为数据控制器管理员用户选择的密码。 密码长度必须至少为8个字符，并且包含以下四个集中的三个：大写字母、小写字母、数字和符号。
 
@@ -102,7 +102,7 @@ azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace ar
 azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续 [监视创建状态](#monitoring-the-creation-status)。
@@ -222,13 +222,13 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 
 当使用 OpenShift 时，你可能想要使用 OpenShift 中的默认安全策略运行，或者想要通常比典型的环境锁定环境。 您可以选择禁用某些功能，以最大程度地减少部署时所需的权限，并运行以下命令。
 
-此命令禁用有关 pod 的指标收集。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关 pod 的指标。 默认值为 true。
+此命令禁用有关 pod 的指标收集。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关 pod 的指标。 默认为 true。
 
 ```console
 azdata arc dc config replace -p ./custom/control.json --json-values spec.security.allowPodMetricsCollection=false
 ```
 
-此命令禁用有关节点的度量值集合。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关节点的指标。 默认值为 true。
+此命令禁用有关节点的度量值集合。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关节点的指标。 默认为 true。
 
 ```console
 azdata arc dc config replace --path ./custom/control.json --json-values spec.security.allowNodeMetricsCollection=false
@@ -244,7 +244,7 @@ azdata arc dc config replace --path ./custom/control.json --json-values spec.sec
 >   在此处和上述命令中使用相同的命名空间 `oc adm policy add-scc-to-user` 。 示例为 `arc` 。
 
 > [!NOTE]
->   `--path`参数应指向包含文件上的 control.js的_目录_，而不是指向文件本身的 control.js。
+>   `--path`参数应指向包含文件上的 control.js的 _目录_，而不是指向文件本身的 control.js。
 
 
 ```console

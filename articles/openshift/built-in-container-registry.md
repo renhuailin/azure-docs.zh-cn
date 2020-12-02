@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911033"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492414"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>为 Azure Red Hat OpenShift 4 配置内置容器注册表
 
@@ -24,11 +24,11 @@ Azure Red Hat OpenShift 提供了一个名为 " [OpenShift 容器注册表 () OC
 > * 设置 OpenID Connect
 > * 访问内置容器映像注册表
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
-本文假定你已有一个 ARO 群集。 如果需要 ARO 群集，请参阅 ARO 教程 [创建 Azure Red Hat OpenShift 4 群集](/azure/openshift/tutorial-create-cluster)。 请确保创建具有参数的群集 `--pull-secret` `az aro create` 。  这对于配置 Azure Active Directory 身份验证和内置容器注册表是必需的。
+本文假定你已有一个 ARO 群集。 如果需要 ARO 群集，请参阅 ARO 教程 [创建 Azure Red Hat OpenShift 4 群集](./tutorial-create-cluster.md)。 请确保创建具有参数的群集 `--pull-secret` `az aro create` 。  这对于配置 Azure Active Directory 身份验证和内置容器注册表是必需的。
 
-获得群集后，请按照 [连接到 Azure Red Hat OpenShift 4 群集](/azure/openshift/tutorial-connect-cluster)中的步骤连接到群集。
+获得群集后，请按照 [连接到 Azure Red Hat OpenShift 4 群集](./tutorial-connect-cluster.md)中的步骤连接到群集。
    * 请务必遵循 "安装 OpenShift CLI" 中的步骤，因为我们将 `oc` 在本文的后面部分使用该命令。
    * 记下群集控制台 URL，如所示 `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` 。 `<random>` `<region>` 本文后面将使用和的值。
    * 记下 `kubeadmin` 凭据。 本文稍后将会用到它们。

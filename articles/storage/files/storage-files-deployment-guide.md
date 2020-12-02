@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629234"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492176"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
@@ -22,7 +22,7 @@ ms.locfileid: "94629234"
 ## <a name="prerequisites"></a>先决条件
 本文假设你已完成下列步骤：
 
-- 在所需区域创建了具有所需复原和加密选项的 Azure 存储帐户。 有关如何创建存储帐户的分步说明，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+- 在所需区域创建了具有所需复原和加密选项的 Azure 存储帐户。 有关如何创建存储帐户的分步说明，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - 在存储帐户中创建了具有所需配额的 Azure 文件共享。 有关如何创建文件共享的分步说明，请参阅[创建文件共享](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>将数据传输到 Azure 文件
@@ -63,7 +63,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 5. 创建驱动器集 CSV 文件。 驱动器集 CSV 文件可列出本地导出代理可用的磁盘。 例如，以下驱动器集 CSV 文件可列出用于本地导出作业的 `X:`、`Y:` 和 `Z:` 驱动器：
 
@@ -74,7 +74,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    有关详细信息，请参阅[准备驱动器集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    有关详细信息，请参阅[准备驱动器集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 6. 使用 [WAImportExport 工具](https://www.microsoft.com/download/details.aspx?id=55280)将数据复制到一个或多个硬盘驱动器。
 
@@ -120,7 +120,7 @@ AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简�
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy 提供丰富的选项，用户可根据需要修改复制行为。 有关详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    AzCopy 提供丰富的选项，用户可根据需要修改复制行为。 有关详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>在所需电脑或服务器上自动装载
 要替换本地文件共享，最好在将要使用的计算机上预先装载共享。 可在一系列计算机上自动完成此操作。

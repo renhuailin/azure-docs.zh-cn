@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011676"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492108"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -99,13 +99,13 @@ Azure 文件共享的软删除（预览版）是一种存储帐户级别设置�
 有关软删除的详细信息，请参见[防止意外数据删除](./storage-files-prevent-file-share-deletion.md)。
 
 ### <a name="backup"></a>备份
-可以通过[共享快照](./storage-snapshots-files.md)备份 Azure 文件共享，这些快照是共享的只读时间点副本。 快照是增量的，这意味着它们只包含自上一个快照以来更改的数据量。 每个文件共享最多可以有 200 个快照，并将其保留长达 10 年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用 [Azure 备份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。 快照存储在文件共享中，这意味着如果删除文件共享，快照也将删除。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
+可以通过[共享快照](./storage-snapshots-files.md)备份 Azure 文件共享，这些快照是共享的只读时间点副本。 快照是增量的，这意味着它们只包含自上一个快照以来更改的数据量。 每个文件共享最多可以有 200 个快照，并将其保留长达 10 年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用 [Azure 备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 快照存储在文件共享中，这意味着如果删除文件共享，快照也将删除。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
 
-Azure[文件共享的 Azure 备份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)处理快照的计划和保留。 它的祖父- (GFS) 功能意味着您可以每日、每周、每月和每年的快照，每个快照都具有自己的独特的保留期。 Azure 备份还会协调软删除的启用，并在存储帐户中的任何文件共享配置为进行备份时立即对存储帐户执行删除锁定。 最后，Azure 备份提供某些关键的监视和警报功能，使客户能够获得其备份空间的合并视图。
+Azure[文件共享的 Azure 备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)处理快照的计划和保留。 它的祖父- (GFS) 功能意味着您可以每日、每周、每月和每年的快照，每个快照都具有自己的独特的保留期。 Azure 备份还会协调软删除的启用，并在存储帐户中的任何文件共享配置为进行备份时立即对存储帐户执行删除锁定。 最后，Azure 备份提供某些关键的监视和警报功能，使客户能够获得其备份空间的合并视图。
 
 可以使用 Azure 备份在 Azure 门户中执行项级和共享级还原。 只需选择特定快照) 的还原点、特定的文件或目录（如果相关），然后选择要还原到的原始或备用) 位置 ( (。 备份服务会处理复制快照数据，并在门户中显示还原进度。
 
-有关备份的详细信息，请参阅 [关于 Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+有关备份的详细信息，请参阅 [关于 Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a> (预览版的 Azure 文件的高级威胁防护) 
 高级威胁防护 (适用于 Azure 存储的 ATP) 提供额外的安全智能层，当它检测到你的存储帐户上的异常活动（例如，意外尝试访问存储帐户）时，它将提供警报。 ATP 还会运行恶意软件哈希信誉分析，并对已知的恶意软件发出警报。 可以通过 Azure 安全中心在订阅或存储帐户级别上配置 ATP。 

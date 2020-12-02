@@ -6,23 +6,23 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336057"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492619"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>读取 Azure Database for MySQL-灵活服务器中的副本
 
 > [!IMPORTANT]
 > 读取 Azure Database for MySQL-灵活服务器中的副本处于预览阶段。
 
-MySQL 是一种常用的数据库引擎，用于运行 internet 规模的 web 应用程序和移动应用程序。 许多客户将其用于在线教育服务、视频流式处理服务、数字支付解决方案、电子商务平台、游戏服务、新闻门户、政府和医疗保健网站。 当 web 或移动应用程序上的流量增加时，需要这些服务来提供服务和进行缩放。
+MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web 和移动应用程序。 许多客户将其用于在线教育服务、视频流式处理服务、数字支付解决方案、电子商务平台、游戏服务、新闻门户、政府和医疗保健网站。 这些服务需要随着 Web 或移动应用程序流量的增加而服务和扩展。
 
-在应用程序端，应用程序通常以 Java 或 php 开发并迁移到在 Azure 虚拟机规模集或 Azure 应用服务上运行，或者在 Azure Kubernetes Service (AKS) 上运行。 使用虚拟机规模集、应用服务或 AKS 作为底层基础结构，通过即时设置新的 Vm 并复制应用程序的无状态组件来满足请求，简化应用程序缩放，但通常情况下，数据库最终作为集中有状态组件的瓶颈。
+在应用程序端，应用程序通常以 Java 或 php 开发并迁移到在 Azure 虚拟机规模集或 Azure 应用服务上运行，或者在 Azure Kubernetes Service (AKS) 上运行。 使用虚拟机规模集、应用服务或 AKS 作为底层基础结构，可以通过即时预配新的 VM 并复制应用程序的无状态组件来满足请求，以简化应用程序的缩放，但是数据库通常会成为集中式有状态组件的瓶颈。
 
-使用 "读取副本" 功能，可以将 Azure Database for MySQL 灵活的服务器中的数据复制到只读服务器。 可以从源服务器复制到最多 **10 个** 副本。 使用 MySQL 引擎的基于本机二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
+使用只读副本功能可将数据从 Azure Database for MySQL 灵活服务器复制到只读服务器。 可以从源服务器复制到最多 **10 个** 副本。 使用 MySQL 引擎的基于本机二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
 副本是您管理的新服务器，它们与源 Azure Database for MySQL 灵活的服务器相同。 你将根据在 Vcore 中预配的计算和存储空间（GB/月）为每个读取副本产生帐单费用。 有关详细信息，请参阅 [定价](./concepts-compute-storage.md#pricing)。
 
@@ -55,17 +55,17 @@ MySQL 是一种常用的数据库引擎，用于运行 internet 规模的 web �
 启动“创建副本”工作流时，将创建空白的 Azure Database for MySQL 服务器。 新服务器中会填充源服务器上的数据。 创建时间取决于源服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
 > [!NOTE]
-> 将用与源相同的服务器配置创建读取副本。 副本服务器配置在创建后可以更改。 副本服务器始终在与源服务器相同的资源组、相同的位置和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与源保持同步。
+> 将用与源相同的服务器配置创建读取副本。 副本服务器配置在创建后可以更改。 副本服务器始终在与源服务器相同的资源组、相同的位置和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与源保持同步。
 
 了解如何[在 Azure 门户中创建只读副本](how-to-read-replicas-portal.md)。
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 
-创建副本时，副本会继承源服务器的连接方法。 不能更改副本的连接方法。 例如，如果源服务器具有 **(VNet 集成的私有访问权限)** 则副本不能处于 **公共访问 (允许的 IP 地址)** 。
+创建副本时，副本会继承源服务器的连接方法。 不能更改副本的连接方法。 例如，如果源服务器具有 **(VNet 集成的私有访问权限)** 则副本不能处于 **公共访问 (允许的 IP 地址)**。
 
-副本从源服务器继承其管理员帐户。 源服务器上的所有用户帐户都会复制到只读副本。 只能通过使用源服务器上可用的用户帐户来连接到只读副本。
+副本会从源服务器继承管理员帐户。 源服务器上的所有用户帐户都会复制到只读副本。 只能通过使用源服务器上可用的用户帐户来连接到只读副本。
 
-您可以使用副本的主机名和有效用户帐户连接到副本，就像在常规 Azure Database for MySQL 灵活的服务器上一样。 对于名称为 **myreplica** 、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
+您可以使用副本的主机名和有效用户帐户连接到副本，就像在常规 Azure Database for MySQL 灵活的服务器上一样。 对于名称为 **myreplica**、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin -p
@@ -75,9 +75,9 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 灵活的服务器在 Azure Monitor 中以 **秒为单位提供复制滞后时间** 。 此指标仅适用于副本。 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算的。 请设置警报，以便在复制滞后时间达到工作负载不可接受的值时收到通知。
+Azure Database for MySQL 灵活的服务器在 Azure Monitor 中以 **秒为单位提供复制滞后时间** 。 此指标仅适用于副本。 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中可用的 `seconds_behind_master` 指标计算得出的。 请设置警报，以便在复制滞后时间达到工作负载不可接受的值时收到通知。
 
-如果发现复制滞后时间增加，请参阅 [故障排除复制延迟](./../howto-troubleshoot-replication-latency.md) 以排除故障并了解可能的原因。
+如果发现复制滞后时间增加，请参阅[排查复制延迟问题](./../howto-troubleshoot-replication-latency.md)，以便排除故障并了解可能的原因。
 
 ## <a name="stop-replication"></a>停止复制
 

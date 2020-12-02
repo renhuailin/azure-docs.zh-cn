@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042815"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491207"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置路由首选项
 
@@ -28,12 +28,6 @@ ms.locfileid: "93042815"
 > [!IMPORTANT]
 > 路由首选项目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="register-the-feature-for-your-subscription"></a>为订阅注册此功能
-路由首选项功能目前为预览版。 必须使用 Azure PowerShell 为订阅注册此功能，如下所示：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -66,7 +60,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 7. 接受其余默认设置，然后选择“确定”。
 8. 在“摘要”页中，选择“创建”。 部署虚拟机需要数分钟。
-9. 部署虚拟机以后，请在门户顶部的搜索框中输入 *myPublicIpAddress* 。 当“myPublicIpAddress”出现在搜索结果中时，将其选中。
+9. 部署虚拟机以后，请在门户顶部的搜索框中输入 *myPublicIpAddress*。 当“myPublicIpAddress”出现在搜索结果中时，将其选中。
 10. 可以查看分配的公共 IP 地址，以及分配给 **myVM** 虚拟机的地址，如下图所示：
 
     ![屏幕截图显示网络接口 mynic 的 NIC 公共 I P。](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)

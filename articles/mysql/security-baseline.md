@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ecbe1a8270fbe754aabc2f50d96779794b0e99dc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 477228f607f620f22ffab3a3435ebd850df0324a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543859"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492523"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>适用于 Azure Database for MySQL 的 Azure 安全基线
 
 适用于 Azure Database for MySQL 的 Azure 安全基线包含的建议可帮助你改进部署的安全状况。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线提取自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，该安全基准提供了有关如何在 Azure 上利用我们的最佳实践指南来保护云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "92543859"
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
@@ -54,13 +54,13 @@ Azure 安全中心监视：不可用
 
 - [如何启用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指导** ：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 Azure 安全中心监视：不适用
 
@@ -74,11 +74,11 @@ Azure 安全中心监视：不适用
 
 - [如何配置 Azure Database for MySQL 的高级威胁防护](howto-database-threat-protection-portal.md)
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -88,9 +88,9 @@ Azure 安全中心监视：不适用
 
 - [如何启用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
@@ -98,13 +98,13 @@ Azure 安全中心监视：不适用
 
 - [如何配置 Azure Database for MySQL 的高级威胁防护](howto-database-threat-protection-portal.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导** ：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 Azure 安全中心监视：不适用
 
@@ -120,9 +120,9 @@ Azure 安全中心监视：不适用
 
 - [了解 Azure Database for MySQL 的服务标记使用情况](concepts-data-access-and-security-vnet.md#terminology-and-description)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -138,9 +138,9 @@ Azure 安全中心监视：不适用
 
 - [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：记录流量配置规则
 
@@ -152,9 +152,9 @@ Azure 安全中心监视：不适用
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具监视网络资源配置并检测更改
 
@@ -164,9 +164,9 @@ Azure 安全中心监视：不适用
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -176,9 +176,9 @@ Azure 安全中心监视：不适用
 
 指南：Microsoft 维护用于 Azure 资源的时间源，如适用于日志中的时间戳的 Azure Database for MySQL。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：Microsoft
+**责任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置安全日志集中管理
 
@@ -190,11 +190,11 @@ Azure 安全中心监视：不适用
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-指南：在 Azure Database for MySQL 实例上启用诊断设置，以便访问审核、慢查询和 MySQL 指标日志。 确保专门启用了 MySQL 审核日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 还可以启用 Azure 活动日志诊断设置，并将日志发送到相同的 Log Analytics 工作区或存储帐户。
+指南：在 Azure Database for MySQL 实例上启用诊断设置，以便访问审核、慢查询和 MySQL 指标日志。 确保专门启用了 MySQL 审核日志。 自动可用的活动日志包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 还可以启用 Azure 活动日志诊断设置，并将日志发送到相同的 Log Analytics 工作区或存储帐户。
 
 - [了解 Azure Database for MySQL 的服务器日志](concepts-monitoring.md#server-logs)
 
@@ -206,11 +206,11 @@ Azure 安全中心监视：不可用
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -224,23 +224,23 @@ Azure 安全中心监视：不适用
 
 - [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-指南：分析和监视 Azure Database for MySQL 实例的日志中是否存在异常行为。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+指南：分析和监视 Azure Database for MySQL 实例的日志中是否存在异常行为。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/get-started-portal.md)
+- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -260,9 +260,9 @@ Azure 安全中心监视：不适用
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中进行反恶意软件日志记录
 
@@ -282,7 +282,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -304,9 +304,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [了解 Azure Database for MySQL 的访问管理](concepts-security.md#access-management)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -318,9 +318,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [如何更新管理员密码](howto-create-manage-server-portal.md#update-admin-password)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -330,9 +330,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [了解如何在 Azure Database for MySQL 中创建管理员用户](howto-create-users.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
@@ -346,9 +346,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [了解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -360,9 +360,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
@@ -372,9 +372,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -390,9 +390,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -400,9 +400,9 @@ Azure Database for MySQL 不支持内置基于角色的访问控制，但你可�
 
 - [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -414,9 +414,9 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [使用 Azure Active Directory 对 Azure Database for MySQL 进行身份验证](howto-configure-sign-in-azure-ad-authentication.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期评审和协调用户访问权限
 
@@ -426,9 +426,9 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
@@ -442,7 +442,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
@@ -462,7 +462,7 @@ Azure 安全中心监视：不可用
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持方案期间为 Microsoft 提供对相关客户数据的访问权限
 
@@ -470,7 +470,7 @@ Azure 安全中心监视：不可用
 
 - [支持客户密码箱的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
 责任：空值
 
@@ -484,9 +484,9 @@ Azure 安全中心监视：不可用
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -504,7 +504,7 @@ Azure 安全中心监视：不可用
 
 Azure 安全中心监视：不可用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -516,9 +516,9 @@ Microsoft 会管理 Azure Database for MySQL 的底层基础结构，并实施�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -536,7 +536,7 @@ Azure 安全中心监视：不可用
 
 指南：数据标识、分类和丢失防护功能尚不可用于 Azure Database for MySQL。 如果需要，可实现第三方解决方案以实现合规性。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -546,15 +546,15 @@ Azure 安全中心监视：不可用
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导** ：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure Database for MySQL 控制平面的访问 (例如 Azure 门户) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
+**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure Database for MySQL 控制平面的访问 (例如 Azure 门户) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [如何使用 SQL for Azure Database for MySQL 配置用户访问权限](howto-create-users.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -564,9 +564,9 @@ Microsoft 会管理 Azure Database for MySQL 的底层基础结构，并实施�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：Microsoft
+**责任**：Microsoft
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密静态的敏感信息
 
@@ -580,9 +580,9 @@ AskAzureDBforMySQL@service.microsoft.com
 
 - [如何配置 Azure Database for MySQL 的客户托管密钥](concepts-data-encryption-mysql.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：Microsoft
+**责任**：Microsoft
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并发出警报
 
@@ -590,9 +590,9 @@ AskAzureDBforMySQL@service.microsoft.com
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
@@ -600,7 +600,7 @@ AskAzureDBforMySQL@service.microsoft.com
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
-**指南** ：通过 Azure 安全中心的建议来保护 Azure Database for MySQL 和相关资源。
+**指南**：通过 Azure 安全中心的建议来保护 Azure Database for MySQL 和相关资源。
 
 Microsoft 对支持 Azure Database for MySQL 的基础系统执行漏洞管理。
 
@@ -608,13 +608,13 @@ Microsoft 对支持 Azure Database for MySQL 的基础系统执行漏洞管理�
 
 - [Azure 安全中心 Azure PaaS 服务的功能范围](../security-center/features-paas.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：共享
+**责任**：共享
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指导** ：不适用；此项指导适用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -622,7 +622,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动修补程序管理解决方案
 
-**指导** ：不适用；此项指导适用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -630,7 +630,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：备份背靠背漏洞扫描
 
-**指导** ：不适用；此项指导适用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -642,7 +642,7 @@ Azure 安全中心监视：不适用
 
 Azure 安全中心监视：不适用
 
-**责任** ：Microsoft
+**责任**：Microsoft
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
@@ -650,7 +650,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南** ：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) Azure Database for MySQL 实例。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) Azure Database for MySQL 实例。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -658,9 +658,9 @@ Azure 安全中心监视：不适用
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -668,9 +668,9 @@ Azure 安全中心监视：不适用
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -682,21 +682,21 @@ Azure 安全中心监视：不适用
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
-**指南** ：不适用；此建议适用于计算资源和整个 Azure。
+**指南**：不适用；此建议适用于计算资源和整个 Azure。
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指导** ：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -708,13 +708,13 @@ Azure 安全中心监视：不适用
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -722,7 +722,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指南** ：不适用；此建议适用于计算资源和整个 Azure。
+**指南**：不适用；此建议适用于计算资源和整个 Azure。
 
 Azure 安全中心监视：不适用
 
@@ -730,7 +730,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="68-use-only-approved-applications"></a>6.8：只使用已批准的应用程序
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -738,7 +738,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指导** ：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -748,13 +748,13 @@ Azure 安全中心监视：不适用
 
 - [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指导** ：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -766,13 +766,13 @@ Azure 安全中心监视：不适用
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -780,7 +780,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指导** ：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 Azure 安全中心监视：不适用
 
@@ -800,13 +800,13 @@ Azure 安全中心监视：不适用
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -814,19 +814,19 @@ Azure 安全中心监视：不适用
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南** ：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -840,13 +840,13 @@ Azure 安全中心监视：不适用
 
 - [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -858,13 +858,13 @@ Azure 安全中心监视：不适用
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署操作系统的配置管理工具
 
-**指导** ：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -872,17 +872,17 @@ Azure 安全中心监视：不适用
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指南** ：使用 **DBforMySQL** 命名空间中的 Azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 使用 Azure Policy [审核]、[拒绝] 和 [不存在时部署] 为 Azure Database for MySQL 实例和相关资源自动强制实施配置。
+**指南**：使用 **DBforMySQL** 命名空间中的 Azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 使用 Azure Policy [审核]、[拒绝] 和 [不存在时部署] 为 Azure Database for MySQL 实例和相关资源自动强制实施配置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指导** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -898,9 +898,9 @@ Azure 安全中心监视：不适用
 
 - [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自动地管理标识
 
@@ -908,25 +908,25 @@ Azure 安全中心监视：不适用
 
 对于在 Azure 应用服务上运行的用于访问 Azure Database for MySQL 实例的 Azure 虚拟机或 Web 应用程序，请将托管服务标识与 Azure Key Vault 结合使用，以存储和检索 Azure Database for MySQL 实例的凭据。 确保启用 Key Vault 软删除。
 
-使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
+使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [如何配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 - [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南** ：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -934,7 +934,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指南** ：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for SQL）的基础主机上启用，但它不会对客户内容运行。
 
@@ -950,7 +950,7 @@ Azure 安全中心监视：不适用
 
 Azure 安全中心监视：不适用
 
-**责任** ：共享
+**责任**：共享
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
@@ -974,9 +974,9 @@ Azure 安全中心监视：不适用
 
 - [了解 Azure Database for MySQL 初始配置](tutorial-design-database-using-portal.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：共享
+**责任**：共享
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
@@ -988,9 +988,9 @@ Azure 安全中心监视：不适用
 
 - [如何备份 Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：共享
+**责任**：共享
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -1002,9 +1002,9 @@ Azure 安全中心监视：不适用
 
 - [了解 Azure Database for MySQL 中的备份和还原](concepts-backup.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1012,9 +1012,9 @@ Azure 安全中心监视：不适用
 
 - [了解 Azure Database for MySQL 中的备份和还原](concepts-backup.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ## <a name="incident-response"></a>事件响应
 
@@ -1022,7 +1022,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南** ：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1032,61 +1032,61 @@ Azure 安全中心监视：不适用
 
 - [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南** ：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导** ：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指南** ：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
 
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 安全中心监视** ：是
+**Azure 安全中心监视**：是
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导** ：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
 - [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
-**指导** ：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
+**指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
 
 - [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：客户
+**责任**：客户
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -1096,11 +1096,11 @@ Azure 安全中心监视：不适用
 
 指南：遵循 Microsoft Rules of Engagement 以确保渗透测试不违反 Microsoft 政策： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-- [可在此处找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略和执行红色组合和实时站点渗透测试的详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [对于 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序的实时站点渗透测试，可在此处找到详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 安全中心监视** ：不适用
+**Azure 安全中心监视**：不适用
 
-**责任** ：共享
+**责任**：共享
 
 ## <a name="next-steps"></a>后续步骤
 

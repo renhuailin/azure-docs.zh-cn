@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: juliemsft
-ms.author: jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: b76390efaed94003a792b04836d6850e6b7a7ead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493633"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用动态管理视图监视 Microsoft Azure SQL 数据库和 Azure SQL 托管实例性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -123,7 +123,7 @@ ORDER BY total_cpu_millisec DESC;
 
 - `PAGEIOLATCH_*`
 
-  数据文件 IO 问题（包括 `PAGEIOLATCH_SH`、`PAGEIOLATCH_EX`、`PAGEIOLATCH_UP`）。  如果等待类型名称中包含 **IO** ，则此类型与某个 IO 问题相关。 如果页面闩锁等待名称中不包含 **IO** ，则此类型与不同类型的问题（例如 tempdb 争用）相关。
+  数据文件 IO 问题（包括 `PAGEIOLATCH_SH`、`PAGEIOLATCH_EX`、`PAGEIOLATCH_UP`）。  如果等待类型名称中包含 **IO**，则此类型与某个 IO 问题相关。 如果页面闩锁等待名称中不包含 **IO**，则此类型与不同类型的问题（例如 tempdb 争用）相关。
 
 - `WRITE_LOG`
 
@@ -624,7 +624,7 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下， **sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很轻松就能判断数据库是否在辅助进程和会话限制范围内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
+3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很轻松就能判断数据库是否在辅助进程和会话限制范围内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 

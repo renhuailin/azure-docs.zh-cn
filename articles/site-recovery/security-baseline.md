@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 095a97d27439c54e2ade96e3a40349a0d95b9c11
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843088"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492227"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
 
@@ -52,7 +52,7 @@ ms.locfileid: "94843088"
 
 可使用 Azure PowerShell 或 Azure CLI，基于资源的标记查找资源或对其执行操作。 
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags) 
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md) 
 
 - [如何创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md) 
 
@@ -164,9 +164,9 @@ ms.locfileid: "94843088"
 
 **指导**：默认情况下，不分配任何角色。 需要根据业务需求显式分配它们。 可以通过 PowerShell CLI 或 Azure Active Directory (Azure AD) 检查任何角色分配，以发现作为管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -270,7 +270,7 @@ ms.locfileid: "94843088"
 
 创建一个流程来定期评审用户访问权限，以确保只有经历过完整访问评审的用户才能继续访问。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -286,7 +286,7 @@ ms.locfileid: "94843088"
 
 通过创建 Azure AD 用户帐户的诊断设置并将审核和登录日志发送到 Log Analytics 工作区，进一步简化了此过程。 可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -431,7 +431,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -505,7 +505,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -530,7 +530,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 **指导**：使用 Azure Policy 为恢复服务保管库定义和实施标准安全配置。 
 
 在“Microsoft.RecoveryServices”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Site Recovery 服务的恢复服务保管库资源的配置。
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 **指导**：如果你对恢复服务保管库和相关资源使用自定义 Azure Policy 定义，请选择 Azure Repos 来安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文档](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -608,7 +608,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
-- [如何与 Azure 托管标识集成](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core2x)
+- [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md?tabs=core2x)
 
 - [如何在恢复服务保管库上启用系统托管标识](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
@@ -638,7 +638,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 - [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [了解 Azure 安全中心的数据服务威胁检测](/azure/security-center/threat-protection)
+- [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -656,7 +656,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 这超出了客户职责，由 Site Recovery 团队在内部进行处理。 客户可以在 Azure 中备份 Key Vault 密钥。
 
-- [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -666,7 +666,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 **指导**：对已备份的由客户管理的密钥定期进行还原测试。
 
-- [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -676,7 +676,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 **指导**：将存储服务加密 (SSE) 与 Azure 的基于基础结构即服务 (IaaS) 的虚拟机配合使用，对数据进行静态加密。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
-- [如何在密钥保管库中启用软删除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [如何在密钥保管库中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：是
 
@@ -712,7 +712,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md) 
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -778,5 +778,5 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
