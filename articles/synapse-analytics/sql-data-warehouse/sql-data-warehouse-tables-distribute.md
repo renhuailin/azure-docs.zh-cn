@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323619"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449700"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
 
 用于在专用 SQL 池中设计哈希分布式和轮循机制分布式表的建议。
 
-本文假设你熟悉专用 SQL 池中的数据分发和数据移动概念。  有关详细信息，请参阅 [Azure Synapse 分析体系结构](massively-parallel-processing-mpp-architecture.md)。
+本文假设你熟悉专用 SQL 池中的数据分发和数据移动概念。  有关详细信息，请参阅 [Azure Synapse Analytics 体系结构](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
 
@@ -44,7 +44,7 @@ ms.locfileid: "93323619"
 
 ![分布式表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 在专用 SQL 池中，此知识用于最大程度地减少查询期间的数据移动，从而提高查询性能。
+由于相同的值始终哈希处理到相同的分布，因此 SQL Analytics 具有行位置的内置知识。 在专用 SQL 池中，此知识用于最大程度地减少查询期间的数据移动，从而提高查询性能。
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。
 
@@ -109,7 +109,7 @@ WITH
 
 - **具有许多唯一值。** 分布列可以有一些重复值。 但具有相同值的所有行都分配到相同的分布区。 由于有 60 个分布区，分布列应具有至少 60 个唯一值。  通常情况下，唯一值的数量要多得多。
 - **没有 NULL 值，或者只有几个 NULL 值。** 在极端示例中，如果列中的所有值均为 NULL，则所有行都分配到相同的分布区。 因此，查询处理会向一个分布区倾斜，无法从并行处理中受益。
-- **不是日期列** 。 同一日期的所有数据都落在相同的分布区。 如果多个用户都筛选同一个日期，则会由 60 个分布区中的 1 个分布区单独执行所有处理工作。
+- **不是日期列**。 同一日期的所有数据都落在相同的分布区。 如果多个用户都筛选同一个日期，则会由 60 个分布区中的 1 个分布区单独执行所有处理工作。
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 

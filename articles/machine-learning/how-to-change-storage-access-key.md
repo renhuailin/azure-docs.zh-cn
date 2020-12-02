@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357940"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450786"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -27,7 +27,7 @@ ms.locfileid: "93357940"
 
 > [!IMPORTANT]
 
-> 注册到数据存储的凭据保存在与工作区关联的 Azure Key Vault 中。 如果已为 Key Vault 启用 [软删除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) ，本文将提供有关更新凭据的说明。 如果取消注册数据存储并尝试用同一名称重新注册，此操作将失败。 有关如何在此方案中启用软删除的操作，请参阅 [打开现有密钥保管库的软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) 。
+> 注册到数据存储的凭据会保存在与工作区关联的 Azure Key Vault 中。 如果已为 Key Vault 启用了[软删除](../key-vault/general/soft-delete-overview.md)，请按照本文中的说明更新凭据。 如果取消注册数据存储，然后尝试使用同一名称重新注册，此操作会失败。 若要了解如何在此方案中启用软删除，请参阅[对现有密钥保管库启用软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
 
 ## <a name="prerequisites"></a>先决条件
 

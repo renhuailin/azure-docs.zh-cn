@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686151"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451592"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Synapse SQL
 
@@ -30,7 +30,7 @@ ms.locfileid: "94686151"
 使用 Visual Studio 查询使用 Azure Synapse Analytics 的专用 SQL 池。 此方法使用 Visual Studio 2019 中的 SQL Server Data Tools (SSDT) 扩展。 
 
 > [!NOTE]
-> SSDT 不支持无服务器 SQL 池 (预览) 。
+> SSDT 不支持无服务器 SQL 池。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -1,6 +1,6 @@
 ---
-title: 专用 SQL 池中的表数据类型
-description: 定义专用 SQL 池中的表数据类型的建议。
+title: '专用 SQL 池中的表数据类型 (以前的 SQL DW) '
+description: 用于在 Azure Synapse 分析中定义专用 SQL DW)  (以前的 SQL DW 的表数据类型的建议。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313078"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449696"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的表数据类型 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>用于专用 SQL 池 (以前的 SQL DW) 在 Azure Synapse 分析中的表数据类型 
 
 本文提供了有关在专用 SQL 池中定义表数据类型的建议。
 
 ## <a name="supported-data-types"></a>支持的数据类型
 
-专用 SQL 池支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)。
+专用 SQL 仓库 (以前的 SQL DW) 支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)。
 
 ## <a name="minimize-row-length"></a>最大限度地减小行长度
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>对不受支持的数据类型的解决方法
 
-以下列表显示了专用 SQL 池不支持的数据类型，并为不支持的数据类型提供了有用的替代方法。
+以下列表显示了专用 SQL 池 (以前的 SQL DW) 不支持的数据类型，并提供了不支持的数据类型的有用备选方案。
 
 | 不支持的数据类型 | 解决方法 |
 | --- | --- |

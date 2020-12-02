@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980909"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451885"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -1522,7 +1522,7 @@ Azure 服务：[存储](../storage/index.yml)
 > | Microsoft.Storage/locations/usages/read | 返回指定订阅中的资源的限制和当前使用计数 |
 > | Microsoft.Storage/operations/read | 轮询异步操作的状态。 |
 > | Microsoft.Storage/skus/read | 列出 Microsoft.Storage 支持的 SKU。 |
-> | StorageAccounts/updateInternalProperties/action |  |
+> | Microsoft.Storage/storageAccounts/updateInternalProperties/action |  |
 > | Microsoft.Storage/storageAccounts/hnsonmigration/action | 客户可以中止存储帐户上正在进行的 Hns 迁移 |
 > | Microsoft.Storage/storageAccounts/hnsonmigration/action | 客户可以迁移到 hns 帐户类型 |
 > | Microsoft.Storage/storageAccounts/restoreBlobRanges/action | 将 Blob 范围还原到指定时间的状态 |
@@ -2134,17 +2134,17 @@ Azure 服务：[Azure SignalR 服务](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/SignalR/privateEndpointConnections/read | 读取专用终结点连接 |
 > | Microsoft.SignalRService/SignalR/privateLinkResources/read | 列出所有 SignalR 专用链接资源 |
 > | **DataAction** | **说明** |
-> | SignalRService/SignalR/authentication/accessKey/action | 生成临时 AccessKey 以便对 ClientTokens 进行签名。 |
-> | SignalRService/SignalR/authentication/clientToken/action | 生成用于启动客户端连接的 ClientToken。 |
-> | SignalRService/SignalR/clientConnection/send/action | 将消息直接发送到客户端连接。 |
+> | Microsoft.SignalRService/SignalR/auth/accessKey/action | 生成用于为客户端令牌签名的临时访问密钥。 |
+> | Microsoft.SignalRService/SignalR/auth/clientToken/action | 生成用于启动客户端连接的客户端令牌。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/send/action | 将消息直接发送到客户端连接。 |
 > | Microsoft.SignalRService/SignalR/clientConnection/read | 检查客户端连接是否存在。 |
 > | Microsoft.SignalRService/SignalR/clientConnection/write | 关闭客户端连接。 |
-> | SignalRService/SignalR/组/发送/操作 | 将消息广播到组。 |
+> | Microsoft.SignalRService/SignalR/group/send/action | 将消息广播到组。 |
 > | Microsoft.SignalRService/SignalR/group/read | 检查组是否存在或用户是否存在于组中。 |
 > | Microsoft.SignalRService/SignalR/group/write | 加入/退出组。 |
-> | SignalRService/SignalR/中心/发送/操作 | 将消息广播到中心内的所有客户端连接。 |
+> | Microsoft.SignalRService/SignalR/hub/send/action | 将消息广播到中心内的所有客户端连接。 |
 > | Microsoft.SignalRService/SignalR/serverConnection/write | 启动服务器连接。 |
-> | SignalRService/SignalR/用户/发送/操作 | 向用户发送消息，该用户可能包含多个客户端连接。 |
+> | Microsoft.SignalRService/SignalR/user/send/action | 将消息发送给可能有多个客户端连接的用户。 |
 > | Microsoft.SignalRService/SignalR/user/read | 检查用户是否存在。 |
 > | Microsoft.SignalRService/SignalR/user/write |  |
 
@@ -3265,11 +3265,11 @@ Azure 服务：[Data Factory](../data-factory/index.yml)
 > | Microsoft.DataFactory/factories/linkedServices/read | 读取链接的服务。 |
 > | Microsoft.DataFactory/factories/linkedServices/delete | 删除链接的服务。 |
 > | Microsoft.DataFactory/factories/linkedServices/write | 创建或更新链接的服务 |
-> | DataFactory/工厂/managedVirtualNetworks/read | 读取托管虚拟网络。 |
-> | DataFactory/工厂/managedVirtualNetworks/write | 创建或更新托管虚拟网络。 |
-> | DataFactory/工厂/managedVirtualNetworks/managedPrivateEndpoints/read | 读取托管专用终结点。 |
-> | DataFactory/工厂/managedVirtualNetworks/managedPrivateEndpoints/write | 创建或更新托管的专用终结点。 |
-> | DataFactory/工厂/managedVirtualNetworks/managedPrivateEndpoints/delete | 删除托管的专用终结点。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/read | 读取托管虚拟网络。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/write | 创建或更新托管虚拟网络。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/read | 读取托管专用终结点。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/write | 创建或更新托管专用终结点。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/delete | 删除托管专用终结点。 |
 > | Microsoft.DataFactory/factories/operationResults/read | 获取操作结果。 |
 > | Microsoft.DataFactory/factories/pipelineruns/read | 读取管道运行。 |
 > | Microsoft.DataFactory/factories/pipelineruns/cancel/action | 取消由运行 ID 指定的管道运行。 |
@@ -3862,7 +3862,7 @@ Azure 服务：[Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure SQL 托管实例](../azure-sql/managed-instance/index.yml)、[Azure Synapse Analytics（以前称为 SQL 数据仓库）](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure 服务： [AZURE Sql 数据库](../azure-sql/database/index.yml)、 [azure sql 托管实例](../azure-sql/managed-instance/index.yml)、 [azure Synapse Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -3876,8 +3876,8 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/instancePools/delete | 删除实例池 |
 > | Microsoft.Sql/instancePools/usages/read | 获取实例池的使用情况信息 |
 > | Microsoft.Sql/locations/read | 获取给定订阅的可用位置 |
-> | Microsoft.Sql/locations/administratorAzureAsyncOperation/read | 获取托管实例 azure 异步管理员操作结果。 |
-> | Sql-dmo/位置/administratorOperationResults/读取 | 获取托管实例管理员操作结果。 |
+> | Microsoft.Sql/locations/administratorAzureAsyncOperation/read | 获取托管实例 Azure 异步管理员操作结果。 |
+> | Microsoft.Sql/locations/administratorOperationResults/read | 获取托管实例管理员操作结果。 |
 > | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | 检索扩展服务器 blob 审核策略集操作的结果 |
 > | Microsoft.Sql/locations/auditingSettingsOperationResults/read | 检索服务器 Blob 审核策略集操作的结果 |
 > | Microsoft.Sql/locations/capabilities/read | 获取给定位置中的此订阅的功能 |
@@ -3899,8 +3899,8 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | 检索扩展服务器 blob 审核策略集操作的结果 |
 > | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | 获取防火墙规则操作的状态。 |
 > | Microsoft.Sql/locations/firewallRulesOperationResults/read | 获取防火墙规则操作的状态。 |
-> | Sql-dmo/位置/hybridLinkAzureAsyncOperation/读取 | 获取 Azure Sql 托管实例上长期混合链接异步操作的状态。 |
-> | Sql-dmo/位置/hybridLinkOperationResults/读取 | 获取长期混合链接异步操作的状态。 |
+> | Microsoft.Sql/locations/hybridLinkAzureAsyncOperation/read | 获取 Azure SQL 托管实例上长期混合链接异步操作的状态。 |
+> | Microsoft.Sql/locations/hybridLinkOperationResults/read | 获取长期混合链接异步操作的状态。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/read | 返回实例故障转移组的列表，或获取指定实例故障转移组的属性。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/write | 使用指定参数创建实例故障转移组，或更新指定实例故障转移组的属性或标记。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/delete | 删除现有的实例故障转移组。 |
@@ -4018,9 +4018,9 @@ Azure 服务：[Azure SQL 数据库](../azure-sql/database/index.yml)、[Azure S
 > | Microsoft.Sql/managedInstances/encryptionProtector/revalidate/action | 更新指定服务器加密保护程序的属性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/read | 返回服务器加密保护程序的列表，或获取指定服务器加密保护程序的属性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/write | 更新指定服务器加密保护程序的属性。 |
-> | ManagedInstances/hybridLink/read | 返回混合链接列表，或获取指定分布式可用性组的属性。 |
-> | ManagedInstances/hybridLink/write | 使用指定参数创建或更新混合链接。 |
-> | ManagedInstances/hybridLink/delete | 删除具有指定分布式可用性组的混合链接。 |
+> | Microsoft.Sql/managedInstances/hybridLink/read | 返回混合链接列表，或获取指定分布式可用性组的属性。 |
+> | Microsoft.Sql/managedInstances/hybridLink/write | 使用指定参数创建或更新混合链接。 |
+> | Microsoft.Sql/managedInstances/hybridLink/delete | 删除包含指定分布式可用性组的混合链接。 |
 > | Microsoft.Sql/managedInstances/inaccessibleManagedDatabases/read | 获取托管实例中无法访问的托管数据库列表 |
 > | Microsoft.Sql/managedInstances/keys/read | 返回托管实例密钥的列表，或获取指定托管实例密钥的属性。 |
 > | Microsoft.Sql/managedInstances/keys/write | 使用指定参数创建密钥，或更新指定托管实例密钥的属性或标记。 |
@@ -6589,8 +6589,8 @@ Azure 服务：[密钥保管库](../key-vault/index.yml)
 > | Microsoft.KeyVault/vaults/eventGridFilters/write | 通知 Microsoft.KeyVault 正在创建 Key Vault 的新 EventGrid 订阅 |
 > | Microsoft.KeyVault/vaults/eventGridFilters/delete | 通知 Microsoft.KeyVault 正在删除 Key Vault 的 EventGrid 订阅 |
 > | Microsoft.KeyVault/vaults/keys/read | 列出指定保管库中的密钥，或读取指定密钥的当前版本。 |
-> | KeyVault/保管库/密钥/写入 | 如果新密钥不存在，则创建它的第一个版本。 如果已存在，则返回现有密钥，而不进行任何修改。 此 API 不会创建后续版本，也不会更新现有的密钥。 |
-> | KeyVault/保管库/密钥/版本/读取 | 列出指定密钥的版本，或读取指定的密钥版本。 |
+> | Microsoft.KeyVault/vaults/keys/write | 如果新密钥不存在，则创建它的第一个版本。 如果已存在，则返回现有密钥，而不进行任何修改。 此 API 不会创建后续版本，也不会更新现有的密钥。 |
+> | Microsoft.KeyVault/vaults/keys/versions/read | 列出指定密钥的版本，或读取密钥的指定版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看机密的属性，但不查看其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 创建新的机密，或更新现有机密的值。 |
 > | **DataAction** | **说明** |
@@ -8349,7 +8349,7 @@ Azure 服务：[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/SqlDataClassification/read | 从 SqlDataClassification 表读取数据 |
 > | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | 从 SQLQueryPerformance 表读取数据 |
 > | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentResult/read | 从 SqlVulnerabilityAssessmentResult 表读取数据 |
-> | Microsoft.operationalinsights/工作区/查询/SqlVulnerabilityAssessmentScanStatus/读取 | 从 SqlVulnerabilityAssessmentScanStatus 表中读取数据 |
+> | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentScanStatus/read | 从 SqlVulnerabilityAssessmentScanStatus 表读取数据 |
 > | Microsoft.OperationalInsights/workspaces/query/StorageBlobLogs/read | 从 StorageBlobLogs 表读取数据 |
 > | Microsoft.OperationalInsights/workspaces/query/StorageFileLogs/read | 从 StorageFileLogs 表读取数据 |
 > | Microsoft.OperationalInsights/workspaces/query/StorageQueueLogs/read | 从 StorageQueueLogs 表读取数据 |
@@ -9377,9 +9377,9 @@ Azure 服务：[Azure 门户](../azure-portal/index.yml)
 > | Microsoft.Portal/dashboards/read | 读取订阅的仪表板。 |
 > | Microsoft.Portal/dashboards/write | 向订阅添加仪表板或修改仪表板。 |
 > | Microsoft.Portal/dashboards/delete | 从订阅删除仪表板。 |
-> | TenantConfigurations/read | 读取租户配置 |
-> | TenantConfigurations/写入 | 添加或更新租户配置。 用户必须是租户管理员才能执行此操作。 |
-> | TenantConfigurations/删除 | 删除租户配置。 用户必须是租户管理员才能执行此操作。 |
+> | Microsoft.Portal/tenantConfigurations/read | 读取租户配置 |
+> | Microsoft.Portal/tenantConfigurations/write | 添加或更新租户配置。 用户必须是租户管理员，才能执行此操作。 |
+> | Microsoft.Portal/tenantConfigurations/delete | 删除租户配置。 用户必须是租户管理员，才能执行此操作。 |
 > | Microsoft.Portal/usersettings/delete | 删除 Cloud Shell 用户设置。 |
 > | Microsoft.Portal/usersettings/write | 创建或更新 Cloud Shell 用户设置。 |
 > | Microsoft.Portal/usersettings/read | 读取 Cloud Shell 用户设置。 |

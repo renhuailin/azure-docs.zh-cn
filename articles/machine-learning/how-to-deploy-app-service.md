@@ -1,7 +1,7 @@
 ---
 title: 将 ML 模型部署到 Azure 应用服务（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习将定型的 ML 模型部署到使用 Azure App Service 的 Web 应用。
+description: 了解如何使用 Azure 机器学习将经过训练的 ML 模型部署到使用 Azure 应用服务的 Web 应用。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578019"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452131"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "94578019"
 通过 Azure 机器学习，可从经训练的机器学习模型创建 Docker 映像。 此映像包含一个 Web 服务，它会接收数据，将数据提交到模型，然后返回响应。 Azure 应用服务可用于部署映像，并提供以下功能：
 
 * 高级[身份验证](../app-service/configure-authentication-provider-aad.md)，可增强安全性。 身份验证方法包括 Azure Active Directory 和多重身份验证。
-* 无需重新部署即可[自动缩放](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)。
+* 无需重新部署即可[自动缩放](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。
 * [TLS 支持](../app-service/configure-ssl-certificate-in-code.md)，可在客户端和服务之间实现安全通信。
 
 有关 Azure 应用服务提供的功能的详细信息，请参阅[应用服务概述](../app-service/overview.md)。
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅 [Linux 上的应用服务](/azure/app-service/containers/)文档，了解如何配置 Web 应用。
-* 请参阅 [Azure 中的自动缩放入门](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)，详细了解缩放。
+* 请参阅 [Azure 中的自动缩放入门](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)，详细了解缩放。
 * [在 Azure 应用服务中使用 TLS/SSL 证书](../app-service/configure-ssl-certificate-in-code.md)。
 * [将应用服务应用配置为使用 Azure Active Directory 登录](../app-service/configure-authentication-provider-aad.md)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

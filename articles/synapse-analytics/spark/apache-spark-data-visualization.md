@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 523356947d6d5f93fa8ef2202ad6e7d235c6afdd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919319"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450538"
 ---
 # <a name="visualize-data"></a>可视化数据
 Azure Synapse 是一种集成的分析服务，可在数据仓库和大数据分析系统之间加快洞察的时间。 数据可视化是一项关键组件，能够深入了解你的数据。 这有助于人们更轻松地理解大数据和小数据。 它还可以更轻松地检测数据组中的模式、趋势和离群值。 
@@ -227,7 +227,7 @@ plt.show()
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>使用 Apache Spark & SQL 点播连接到 Power BI
 Azure Synapse Analytics 与 Power BI 紧密集成，使数据工程师能够构建分析解决方案。
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池（预览版）和 SQL 按需版本引擎（预览版）之间共享数据库和表。 使用 [共享的元数据模型](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)，可以按需使用 SQL 查询 Apache Spark 表。 完成后，可以将 SQL 点播终结点连接到 Power BI，以便轻松地查询已同步的 Spark 表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池和无服务器 SQL 池之间共享数据库和表。 使用 [共享的元数据模型](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)，可以按需使用 SQL 查询 Apache Spark 表。 完成后，可以将 SQL 点播终结点连接到 Power BI，以便轻松地查询已同步的 Spark 表。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5d167ef06e8319004a1f33bead29485b22abc3d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685777"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451693"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中用户定义的架构
 
@@ -27,7 +27,7 @@ ms.locfileid: "94685777"
 相反，Synapse SQL 将在一个数据库中运行整个分析工作负荷。 不允许跨数据库联接。 Synapse SQL 要求仓库使用的所有表都存储在一个数据库中。
 
 > [!NOTE]
-> 专用 SQL 池不支持任何种类的跨数据库查询。 因此，需要修改利用此模式的分析实现。 无服务器 SQL 池 (预览版) 支持跨数据库查询。
+> 专用 SQL 池不支持任何种类的跨数据库查询。 因此，需要修改利用此模式的分析实现。 无服务器 SQL 池支持跨数据库查询。
 
 ## <a name="user-defined-schema-recommendations"></a>用户定义的架构建议
 

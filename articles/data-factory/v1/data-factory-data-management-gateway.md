@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b362e1aecfa2cd4e5677230fcb94113b27a44ec6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637456"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450605"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -61,14 +61,14 @@ ms.locfileid: "92637456"
 6. 根据复制活动在数据管道中的配置方式，网关将数据从本地存储复制到云存储（反之亦然）。 对于此步骤，网关直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ### <a name="considerations-for-using-gateway"></a>使用网关的注意事项
-* 数据管理网关的单个实例可用于多个本地数据源。 但是， **单个网关实例只与一个 Azure 数据工厂关联** ，不能与另一个数据工厂共享。
+* 数据管理网关的单个实例可用于多个本地数据源。 但是，**单个网关实例只与一个 Azure 数据工厂关联**，不能与另一个数据工厂共享。
 * 只能在一台计算机上安装 **数据管理网关的一个实例** 。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
-* **网关不需要位于数据源所在的计算机上** 。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
-* 可以 **将不同计算机上的多个网关连接到同一本地数据源** 。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
-* 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装 **用于 Azure 数据工厂的单独网关** 。
-* 即使使用 **ExpressRoute** ，也必须使用网关。
-* 即使使用 **ExpressRoute** ，也要将数据源视为本地数据源（位于防火墙之后）。 使用网关在服务和数据源之间建立连接。
-* 必须 **使用网关** ，即使数据存储位于 **Azure IaaS VM** 上的云中。
+* **网关不需要位于数据源所在的计算机上**。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
+* 可以 **将不同计算机上的多个网关连接到同一本地数据源**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
+* 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装 **用于 Azure 数据工厂的单独网关**。
+* 即使使用 **ExpressRoute**，也必须使用网关。
+* 即使使用 **ExpressRoute**，也要将数据源视为本地数据源（位于防火墙之后）。 使用网关在服务和数据源之间建立连接。
+* 必须 **使用网关**，即使数据存储位于 **Azure IaaS VM** 上的云中。
 
 ## <a name="installation"></a>安装
 ### <a name="prerequisites"></a>先决条件
@@ -92,12 +92,12 @@ ms.locfileid: "92637456"
 
 ### <a name="install-the-gateway-from-download-center"></a>从下载中心安装网关
 1. 导航到 [Microsoft 数据管理网关下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 单击 " **下载** "，选择 " **64 位** 版本 (32) 不支持"，然后单击 " **下一步** "。
+2. 单击 " **下载**"，选择 " **64 位** 版本 (32) 不支持"，然后单击 " **下一步**"。
 3. 直接运行 **MSI** 或将其保存到硬盘再运行。
 4. 在“欢迎”页上，选择“语言”，单击“下一步”。
 5. 选择“接受”以接受最终用户许可协议，并单击“下一步”。
 6. 选择“文件夹”以安装网关，并单击“下一步”。
-7. 在 **“准备安装”** 页上，单击 **“安装”** 。
+7. 在 **“准备安装”** 页上，单击 **“安装”**。
 8. 单击“完成”，完成安装。
 9. 从 Azure 门户中获取密钥。 请参阅下一部分的分步说明。
 10. 在计算机上运行的“数据管理网关配置管理器”的“注册网关”页上，执行以下步骤：
@@ -158,7 +158,7 @@ ms.locfileid: "92637456"
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>将数据从源数据存储复制到接收器数据存储
 确保在企业防火墙、网关计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让网关成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
-例如，若要从 **本地数据存储复制到 AZURE Sql 数据库接收器或 Azure Synapse Analytics (以前的 SQL 数据仓库) 接收器** ，请执行以下步骤：
+例如，若要从 **本地数据存储复制到 AZURE SQL 数据库接收器或 Azure Synapse Analytics 接收器**，请执行以下步骤：
 
 * 对于 Windows 防火墙和企业防火墙，允许端口 **1433** 上的出站 **TCP** 通信。
 * 配置逻辑 SQL 服务器的防火墙设置，以将网关计算机的 IP 地址添加到允许的 IP 地址列表中。
@@ -179,9 +179,9 @@ ms.locfileid: "92637456"
 
 有三个配置选项：
 
-* **不使用代理** ：网关不显式使用任何代理来连接云服务。
-* **使用系统代理** ：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关将直接连接到云服务而无需通过代理。
-* **使用自定义代理** ：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。地址和端口是必需的。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
+* **不使用代理**：网关不显式使用任何代理来连接云服务。
+* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关将直接连接到云服务而无需通过代理。
+* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。地址和端口是必需的。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
 
 保存更新的代理设置之后，数据管理网关主机服务会自动重启。
 
@@ -205,7 +205,7 @@ ms.locfileid: "92637456"
 如果为 HTTP 代理选择 " **使用系统代理** " 设置，则网关将使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关将直接连接到云服务而无需通过代理。 以下过程说明如何更新 diahost.exe.config 文件。
 
 1. 在文件资源管理器中，创建 *C： \\ \\ Program Files \\ Microsoft 数据管理网关 \\ 2.0 \\ 共享 \\diahost.exe.config* 的安全副本，以备份原始文件。
-2. 启动 Notepad.exe 以管理员身份运行，并打开文本文件 *C： \\ \\ Program Files \\ Microsoft 数据管理关 \\ 2.0 \\ 共享 \\diahost.exe.config* 。找到 system.net 的默认标记，如以下代码所示：
+2. 启动 Notepad.exe 以管理员身份运行，并打开文本文件 *C： \\ \\ Program Files \\ Microsoft 数据管理关 \\ 2.0 \\ 共享 \\diahost.exe.config*。找到 system.net 的默认标记，如以下代码所示：
 
     ```
     <system.net>
@@ -317,16 +317,16 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 在主页中可执行以下操作：
 
 * 查看网关状态（连接到云服务等）。
-* 从门户中使用密钥进行 **注册** 。
+* 从门户中使用密钥进行 **注册**。
 * **停止** 和启动网关计算机上的“数据管理网关主机服务”。
 * **计划更新** 发生在一天中的某个特定时间。
-* 查看网关的 **上次更新日期** 。
+* 查看网关的 **上次更新日期**。
 
-### <a name="settings-page"></a>设置页面
+### <a name="settings-page"></a>“设置”页
 在“设置”页中可执行以下操作：
 
-* 查看、更改和导出网关所用的 **证书** 。 此证书用于加密数据源凭据。
-* 更改终结点的 **HTTPS 端口** 。 网关打开一个端口，用于设置数据源凭据。
+* 查看、更改和导出网关所用的 **证书**。 此证书用于加密数据源凭据。
+* 更改终结点的 **HTTPS 端口**。 网关打开一个端口，用于设置数据源凭据。
 * 终结点的 **状态**
 * 查看 **SSL 证书** 用于门户与网关之间的 TLS/SSL 通信，以设置数据源的凭据。
 
@@ -390,15 +390,15 @@ Offline | 节点处于脱机状态。
 
 下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。
 
-状态 | 注释
+状态 | 说明
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
 Offline | 没有节点处于联机状态。
-有限 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
+受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
-可配置可在单个节点上运行的 **并发数据移动作业数** ，提升在本地与云数据存储之间移动数据的能力。
+可配置可在单个节点上运行的 **并发数据移动作业数**，提升在本地与云数据存储之间移动数据的能力。
 
 如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，可能也需要进行扩展。 在网关节点的高级设置中，可以增加节点的最大容量。
 
@@ -414,7 +414,7 @@ Offline | 没有节点处于联机状态。
 2. 在“链接服务”页的“数据网关”部分选择网关。
 
     ![已选定网关的“链接服务”页](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. 在 " **数据网关** " 页中，单击 " **下载并安装数据网关** "。
+3. 在 " **数据网关** " 页中，单击 " **下载并安装数据网关**"。
 
     ![下载网关链接](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
 4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
@@ -430,7 +430,7 @@ Offline | 没有节点处于联机状态。
 
     ![复制密钥和注册](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. 单击“注册”，以通过云服务注册网关。
-9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入 **密码** ，并单击“完成”。
+9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入 **密码**，并单击“完成”。
 
    ![指定证书](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
@@ -483,7 +483,7 @@ Offline | 没有节点处于联机状态。
 ## <a name="powershell-cmdlets"></a>PowerShell cmdlet
 本部分介绍如何使用 Azure PowerShell cmdlet 创建和注册网关。
 
-1. 在管理员模式下启动 **Azure PowerShell** 。
+1. 在管理员模式下启动 **Azure PowerShell**。
 2. 运行以下命令并输入 Azure 凭据登录到 Azure 帐户。
 
     ```powershell
@@ -494,7 +494,7 @@ Offline | 没有节点处于联机状态。
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
-    **示例命令和输出** ：
+    **示例命令和输出**：
 
     ```
     PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
@@ -512,7 +512,7 @@ Offline | 没有节点处于联机状态。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹： *C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\* 。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹： *C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\*。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

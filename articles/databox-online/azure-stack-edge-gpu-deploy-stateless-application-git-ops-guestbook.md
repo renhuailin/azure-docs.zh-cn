@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535939"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448852"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "94535939"
 
 部署是使用 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上的 GitOps 来完成的。 
 
-此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -44,7 +44,7 @@ ms.locfileid: "94535939"
 
 1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
@@ -77,11 +77,11 @@ ms.locfileid: "94535939"
 
     ![中转到 Azure Arc 资源](media/azure-stack-edge-gpu-connect-powershell-interface/verify-azure-arc-enabled-1.png)
 
-1. 请参阅 " **配置** " 并选择 " **+ 添加配置** "。
+1. 请参阅 " **配置** " 并选择 " **+ 添加配置**"。
 
     ![屏幕截图显示已选中 "添加配置" 的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. 在 " **添加配置** " 中，为字段输入适当的值，并选择 " **应用** "。
+1. 在 " **添加配置**" 中，为字段输入适当的值，并选择 " **应用**"。
 
     |参数  |说明 |
     |---------|---------|
@@ -89,20 +89,20 @@ ms.locfileid: "94535939"
     |操作员实例名称     |用于标识特定配置的操作员的实例名称。 Name 是长度为253个字符的字符串，它必须仅为小写、字母数字、连字符和句点。         |
     |Operator 命名空间     | 设置为 **demotestguestbook** ，因为它与部署中指定的命名空间匹配 `yaml` 。 <br> 字段定义安装操作员的命名空间。 Name 是长度为253个字符的字符串，它必须仅为小写、字母数字、连字符和句点。         |
     |存储库 URL     |<br>Git 存储库的路径， `http://github.com/username/repo` 或 `git://github.com/username/repo` 格式 GitOps 配置所在的位置。         |
-    |运算符范围     | 选择 **命名空间** 。 <br>这会定义操作员的安装范围。 选择此作为命名空间。 操作员将安装在部署 yaml 文件中指定的命名空间中。       |
+    |运算符范围     | 选择 **命名空间**。 <br>这会定义操作员的安装范围。 选择此作为命名空间。 操作员将安装在部署 yaml 文件中指定的命名空间中。       |
     |运算符类型     | 保留默认值。 <br>默认情况下，此值指定操作员的类型设置为 flux。        |
     |运算符 params     | 将其留空。 <br>此字段包含要传递给 flux 运算符的参数。        |
-    |Helm     | 将此设置为 " **已禁用** "。 <br>如果要执行基于图表的部署，请启用此选项。        |
+    |Helm     | 将此设置为 " **已禁用**"。 <br>如果要执行基于图表的部署，请启用此选项。        |
 
 
     ![添加配置](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
 
 
-1. 配置部署开始， **操作员状态** 显示为 " **挂起** "。 
+1. 配置部署开始， **操作员状态** 显示为 " **挂起**"。 
 
     ![屏幕截图显示在刷新时，启用了 Azure Arc 的 Kubernetes 群集处于挂起状态。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
-1. 部署需花费几分钟时间。 部署完成后， **操作员状态** 显示为 " **已安装** "。
+1. 部署需花费几分钟时间。 部署完成后， **操作员状态** 显示为 " **已安装**"。
 
     ![屏幕截图显示处于已安装状态的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "94535939"
 若要删除部署，可以从 Azure 门户中删除配置。 这会删除创建的对象，包括部署和服务。
 
 1. 在 Azure 门户中，请参阅 Azure Arc 资源 > 配置。 
-1. 找到要删除的配置。 选择 .。。调用上下文菜单并选择 " **删除** "。
+1. 找到要删除的配置。 选择 .。。调用上下文菜单并选择 " **删除**"。
     ![删除配置](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 删除配置可能需要几分钟时间。

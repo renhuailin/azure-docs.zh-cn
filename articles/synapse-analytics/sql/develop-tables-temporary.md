@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305034"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451784"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
 
 本文包含有关使用临时表的基本指导，并重点介绍了 Synapse SQL 中的会话级别临时表的原则。 
 
-专用 SQL 池和无服务器 SQL 池 (预览) 资源可以利用临时表。 无服务器 SQL 池有本文末尾介绍的限制。 
+专用 SQL 池和无服务器 SQL 池资源均可利用临时表。 无服务器 SQL 池有本文末尾介绍的限制。 
 
 ## <a name="temporary-tables"></a>临时表
 
@@ -226,7 +226,7 @@ DROP TABLE #stats_ddl;
 - 不能在临时表上创建视图。
 - 只能通过哈希或轮循机制分布来创建临时表。  不支持重复的临时表分布。 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>无服务器 SQL 池中的临时表 (预览) 
+## <a name="temporary-tables-in-serverless-sql-pool"></a>无服务器 SQL 池中的临时表
 
 支持无服务器 SQL 池中的临时表，但它们的使用受到限制。 它们不能用于以文件为目标的查询。 
 

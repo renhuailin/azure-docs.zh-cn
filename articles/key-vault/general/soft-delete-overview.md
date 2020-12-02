@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c8ae10fa059bb9cfd32b95f9bc6d21f30ad9f880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744196"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452187"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -27,7 +27,7 @@ Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的�
 
 ## <a name="supporting-interfaces"></a>支持接口
 
-软删除功能通过 [REST API](/rest/api/keyvault/)、 [Azure CLI](soft-delete-cli.md)、 [Azure PowerShell](soft-delete-powershell.md)和 [.net/c #](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供。
+软删除功能通过 [REST API](/rest/api/keyvault/)、 [Azure CLI](./key-vault-recovery.md)、 [Azure PowerShell](./key-vault-recovery.md)和 [.net/c #](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供。
 
 ## <a name="scenarios"></a>方案
 
@@ -41,7 +41,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 启用软删除后，标记为“已删除资源”的资源将保留指定的时间（默认为 90 天）。 该服务进一步提供了用于恢复已删除对象的机制，实质上是撤消删除。
 
-创建新的密钥保管库时，默认情况下将启用软删除。 可以通过 [Azure CLI](soft-delete-cli.md) 或 [Azure PowerShell](soft-delete-powershell.md) 创建不带软删除的密钥保管库。 在密钥保管库上启用软删除后，便无法将其禁用
+创建新的密钥保管库时，默认情况下将启用软删除。 可以通过 [Azure CLI](./key-vault-recovery.md) 或 [Azure PowerShell](./key-vault-recovery.md) 创建不带软删除的密钥保管库。 在密钥保管库上启用软删除后，便无法将其禁用
 
 默认保留期为 90 天，但在创建密钥保管库期间可通过 Azure 门户将保留策略间隔设为 7 到 90 天的值。 清除保护保留策略使用相同的间隔。 设置保留策略间隔后，将无法更改。
 
@@ -49,7 +49,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 ### <a name="purge-protection"></a>清除保护
 
-清除保护是一种可选的 Key Vault 行为，**默认未启用**。 只有启用软删除后才能启用清除保护。  可以通过 [CLI](soft-delete-cli.md#enabling-purge-protection) 或 [PowerShell](soft-delete-powershell.md#enabling-purge-protection) 来启用它。
+清除保护是一种可选的 Key Vault 行为，**默认未启用**。 只有启用软删除后才能启用清除保护。  可以通过 [CLI](./key-vault-recovery.md?tabs=azure-cli) 或 [PowerShell](./key-vault-recovery.md?tabs=azure-powershell) 来启用它。
 
 启用清除保护后，在保留期结束之前，无法清除处于已删除状态的保管库或对象。 软删除的保管库和对象仍可恢复，这可以确保遵循保留策略。
 
@@ -63,7 +63,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 - Azure 订阅已被标记为“不可删除”。 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
 - 在保管库本身上启用 `--enable-purge-protection flag` 时。 在这种情况下，Key Vault 将自原始机密对象标记为删除以永久删除该对象起等待 90 天。
 
-有关步骤，请参阅 [如何在 CLI 中使用 Key Vault 软删除：使用 PowerShell 清除密钥保管库](soft-delete-cli.md#purging-a-key-vault) 或 [如何使用 Key Vault 软删除：清除密钥保管库](soft-delete-powershell.md#purging-a-key-vault)。
+有关步骤，请参阅 [如何在 CLI 中使用 Key Vault 软删除：使用 PowerShell 清除密钥保管库](./key-vault-recovery.md?tabs=azure-cli#key-vault-cli) 或 [如何使用 Key Vault 软删除：清除密钥保管库](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)。
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复
 
@@ -71,7 +71,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 ### <a name="key-vault-object-recovery"></a>Key Vault 对象恢复
 
-删除密钥保管库对象（例如密钥）时，服务会将该对象置于已删除状态，使其不可供任何检索操作访问。 在此状态下，只能列出、恢复或强制/永久删除 Key Vault 对象。 若要查看对象，请使用 Azure CLI `az keyvault key list-deleted` 命令（按照[如何通过 CLI 使用 Key Vault 软删除](soft-delete-cli.md)中的说明）或 Azure PowerShell `-InRemovedState` 参数（按照[如何通过 PowerShell 使用 Key Vault 软删除](soft-delete-powershell.md#secrets)中的说明）。  
+删除密钥保管库对象（例如密钥）时，服务会将该对象置于已删除状态，使其不可供任何检索操作访问。 在此状态下，只能列出、恢复或强制/永久删除 Key Vault 对象。 若要查看对象，请使用 Azure CLI `az keyvault key list-deleted` 命令（按照[如何通过 CLI 使用 Key Vault 软删除](./key-vault-recovery.md)中的说明）或 Azure PowerShell `-InRemovedState` 参数（按照[如何通过 PowerShell 使用 Key Vault 软删除](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)中的说明）。  
 
 同时，Key Vault 将计划在预设的保留间隔后删除与已删除 Key Vault 或 Key Vault 对象对应的基础数据。 在保留间隔内，还会保留与该保管库相对应的 DNS 记录。
 
@@ -99,5 +99,5 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 以下两个指南提供有关使用软删除的主要使用方案。
 
-- [如何将 Key Vault 软删除与 PowerShell 配合使用](soft-delete-powershell.md) 
-- [如何将 Key Vault 软删除与 CLI 配合使用](soft-delete-cli.md)
+- [如何将 Key Vault 软删除与 PowerShell 配合使用](./key-vault-recovery.md) 
+- [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 573d52b836aef36063dd288bf5a5016b98d220ef
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 22a7738c2d4d3cc02c03c233e0821f07b459dd94
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524124"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452081"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure SQL 资源
 
@@ -38,7 +38,7 @@ ms.locfileid: "95524124"
 **自动优化** | 不支持。 | 解决方法：移动后设置自动调整设置。 [了解详细信息](../azure-sql/database/automatic-tuning-enable.md)。
 **数据库警报** | 不支持。 | 解决方法：在移动后设置警报。 [了解详细信息](../azure-sql/database/alerts-insights-configure-portal.md)。
 **Azure SQL Server stretch database** | 不支持 | 不能通过资源移动器移动 SQL server stretch database。
-**Azure Synapse Analytics** | 不支持 | 无法将 Synapse Analytics (以前的 SQL 数据仓库) 迁移到资源移动器。
+**Azure Synapse Analytics** | 不支持 | 无法将 Azure Synapse 分析与资源移动器一起移动。
 ## <a name="next-steps"></a>后续步骤
 
 通过资源移动器试用 [AZURE SQL 资源](tutorial-move-region-sql.md) 到其他区域。

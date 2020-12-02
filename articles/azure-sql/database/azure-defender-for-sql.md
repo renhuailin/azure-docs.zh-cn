@@ -11,13 +11,13 @@ ms.author: memildin
 manager: rkarlin
 author: memildin
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 12/01/2020
+ms.openlocfilehash: 4bb7f2fd5823a9d8ebf4234f3bb41d955574b838
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678074"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451510"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,12 +41,14 @@ Azure Defender 提供一组高级 SQL 安全功能，包括 SQL 漏洞评估和�
 
 ## <a name="enable-azure-defender"></a>启用 Azure Defender
 
-可以通过 [Azure 门户](https://portal.azure.com)访问 Azure Defender。 通过导航到服务器或托管实例的“安全”标题下的“安全中心”来启用 Azure Defender 。
+可以通过 [Azure 门户](https://portal.azure.com)访问 Azure Defender。 在服务器或托管实例的 **安全** 标题下导航到 **安全中心**，以启用 Azure Defender。
 
 > [!NOTE]
 > 系统会自动创建一个存储帐户用于存储 **漏洞评估** 的扫描结果。 如果已为同一个资源组和区域中的另一台服务器启用 Azure Defender，则使用现有的存储帐户。
 >
 > Azure Defender 的成本遵循每个节点的 Azure 安全中心标准层级定价，其中节点是整个服务器或托管实例。 因此，只需支付一次即可使用 Azure Defender 保护服务器或托管实例上的所有数据库。 你可以从免费试用版开始试用 Azure Defender。
+
+:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="启用 Azure Defender":::
 
 ## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>开始跟踪漏洞和调查威胁警报
 
@@ -54,15 +56,19 @@ Azure Defender 提供一组高级 SQL 安全功能，包括 SQL 漏洞评估和�
 
 ## <a name="manage-azure-defender-settings"></a>管理 Azure Defender 设置
 
-要查看和管理 Azure Defender 设置，请导航到服务器或托管实例的“安全”标题下的“安全中心” 。 在此页上，可以启用或禁用 Azure Defender，以及修改整个服务器或托管实例的漏洞评估和高级威胁防护设置。
+若要查看和管理 Azure Defender 设置，请在服务器或托管实例的 "**安全**" 标题下导航到 "**安全中心**"。 在此页上，可以启用或禁用 Azure Defender，以及修改整个服务器或托管实例的漏洞评估和高级威胁防护设置。
+
+:::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="安全服务器设置":::
 
 ## <a name="manage-azure-defender-settings-for-a-database"></a>管理数据库的 Azure Defender 设置
 
-要替代特定数据库的 Azure Defender 设置，请勾选“在数据库级别启用 Azure Defender for SQL”复选框。 仅当有接收单个数据库的单独高级威胁防护警报或漏洞评估结果这一特殊要求时才使用此选项，以代替或补充为服务器或托管实例上的所有数据库接收的警报和结果。
+若要替代特定数据库的 Azure Defender 设置，请选中数据库 **安全中心** 设置中的 "在 **数据库级别启用 AZURE defender for SQL** " 复选框。 仅当有接收单个数据库的单独高级威胁防护警报或漏洞评估结果这一特殊要求时才使用此选项，以代替或补充为服务器或托管实例上的所有数据库接收的警报和结果。
 
 选中该复选框后，可以配置此数据库的相关设置。
 
-还可以从 Azure Defender 数据库窗格中访问服务器或托管实例的 Azure Defender for SQL 设置。 在主 Azure Defender 窗格中单击“设置”，然后单击“查看 Azure Defender for SQL 服务器设置” 。
+:::image type="content" source="media/azure-defender-for-sql/enable-for-database-level.png" alt-text="在数据库级别启用 Azure Defender":::
+
+还可以从 Azure Defender 数据库窗格中访问服务器或托管实例的 Azure Defender for SQL 设置。 在主安全中心窗格中单击 " **设置** "，然后单击 " **查看 SQL Server 的 Azure Defender" 设置**。
 
 ## <a name="next-steps"></a>后续步骤
 

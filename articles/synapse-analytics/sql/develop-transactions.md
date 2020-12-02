@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323849"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451704"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用具有专用 SQL 池的事务
 
@@ -27,7 +27,7 @@ ms.locfileid: "93323849"
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
 
-SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  你可以通过在连接到主数据库时为用户数据库打开 READ_COMMITTED_SNAPSHOT 数据库选项，将默认的隔离级别更改为 READ COMMITTED SNAPSHOT ISOLATION。  
+专用 SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  你可以通过在连接到主数据库时为用户数据库打开 READ_COMMITTED_SNAPSHOT 数据库选项，将默认的隔离级别更改为 READ COMMITTED SNAPSHOT ISOLATION。  
 
 启用后，将在 READ COMMITTED SNAPSHOT ISOLATION 下执行此数据库中的所有事务，并且将不接受会话级别的设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)。
 
@@ -89,7 +89,7 @@ SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITT
 
 ## <a name="transaction-state"></a>事务状态
 
-SQL 池使用 XACT_STATE() 函数（采用值 -2）来报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
+专用 SQL 池使用 XACT_STATE ( # A1 函数使用值-2 来报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
 
 > [!NOTE]
 > XACT_STATE 函数使用 -2 表示失败的事务，以代表 SQL Server 中不同的行为。 SQL Server 使用值 -1 来代表无法提交的事务。 SQL Server 可以容忍事务内的某些错误，而无需将其标记为无法提交。 例如，`SELECT 1/0` 导致错误，但不强制事务进入无法提交状态。 SQL Server 还允许读取无法提交的事务。 不过，专用 SQL 池不允许这样做。 如果在专用 SQL 池事务内部发生错误，它会自动进入-2 状态，并且在该语句回滚之前，您将无法再执行任何 select 语句。 因此，必须查看应用程序代码是否使用 XACT_STATE()，你可能需要修改代码。
@@ -193,7 +193,7 @@ THROW 是在专用 SQL 池中引发异常的更现代的实现，但也支持 RA
 
 ## <a name="limitations"></a>限制
 
-SQL 池有一些与事务相关的其他限制。 这些限制如下：
+专用 SQL 池有一些与事务相关的其他限制。 这些限制如下：
 
 * 无分布式事务
 * 不允许嵌套事务
@@ -204,4 +204,4 @@ SQL 池有一些与事务相关的其他限制。 这些限制如下：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 还提供了针对 [sql 池](best-practices-sql-pool.md) 和 [无服务器 sql 池 (预览) ](best-practices-sql-on-demand.md)的其他最佳做法指南。
+若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 还提供了针对 [专用 sql 池](best-practices-sql-pool.md) 和 [无服务器 sql 池](best-practices-sql-on-demand.md)的其他最佳做法指南。

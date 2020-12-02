@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638846"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451800"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
-本文提供了有关使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：专用 SQL 池和无服务器 SQL 池 (预览) 。
+本文提供了有关使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：专用 SQL 池和无服务器 SQL 池。
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>专用 SQL 池中的统计信息
 
@@ -74,7 +74,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 统计信息的创建会记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中。
 
-创建自动统计信息时，它们将采用以下格式： _WA_Sys_ <以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，查看已创建的统计信息：
+创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - 不支持自定义错误 2767。
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>无服务器 SQL 池中的统计信息 (预览版) 
+## <a name="statistics-in-serverless-sql-pool"></a>无服务器 SQL 池中的统计信息
 
 统计信息按特定数据集（存储路径）的特定列进行创建。
 
@@ -566,7 +566,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
- (预览版的无服务器 SQL 池) 知道您的数据，它对其执行查询的速度会更快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
+更多无服务器 SQL 池知道您的数据，对其执行查询的速度就越快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
 
 无服务器 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 
 

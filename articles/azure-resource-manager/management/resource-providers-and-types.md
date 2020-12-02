@@ -2,14 +2,14 @@
 title: 资源提供程序和资源类型
 description: 介绍支持 Azure 资源管理器的资源提供程序。 它介绍其架构、可用 API 版本，以及可以承载资源的区域。
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352093"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452110"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -32,7 +32,7 @@ ms.locfileid: "96352093"
 
 ## <a name="register-resource-provider"></a>注册资源提供程序
 
-使用资源提供程序之前，必须为资源提供程序注册 Azure 订阅。 注册会配置你的订阅，使之与资源提供程序配合工作。 某些资源提供程序在默认情况下已注册。 当你执行某些操作时，其他资源提供程序会自动注册。 例如，当你通过门户创建资源时，系统通常会为你注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。
+使用资源提供程序之前，必须为资源提供程序注册 Azure 订阅。 注册会配置你的订阅，使之与资源提供程序配合工作。 某些资源提供程序在默认情况下已注册。 当你执行某些操作时，其他资源提供程序会自动注册。 例如，当你通过门户创建资源时，系统通常会为你注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。 有关默认情况下注册的资源提供程序的列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 
 本文介绍了如何检查资源提供程序的注册状态，并根据需要将其注册。 你必须具备为资源提供程序执行 `/register/action` 操作的权限。 此权限包含在“参与者”和“所有者”角色中。
 

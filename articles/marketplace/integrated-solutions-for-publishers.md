@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660898"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450127"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
-本文介绍了向商业市场发布集成解决方案的总体过程和要求。 在单个捆绑产品/服务中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴在 Microsoft AppSource 或 Azure 市场中将产品/服务作为[咨询服务](./consulting-services.md)列出。
+本文介绍了向商业市场发布集成解决方案的总体过程和要求。 在单个捆绑产品/服务中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴在 Microsoft AppSource 或 Azure 市场中将产品/服务作为[咨询服务](./plan-consulting-service-offer.md)列出。
 
 集成解决方案旨在解决特定客户的需求或方案。 提供商首先要了解行业所面临的挑战或难点。 然后，他们可以将两种或更多同类最佳技术相集成，为客户创造统一且可重复的部署体验。 提供商可以让客户快速启动和运行。 他们为客户提供单一的联系点，进而提供相关的自定义、咨询和解决方案支持。 其结果是一个集成的解决方案，其中包括技术和服务。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91660898"
 
 ## <a name="publish-your-integrated-solution"></a>发布集成解决方案
 
-完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./consulting-services.md)发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure 市场中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
+完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./plan-consulting-service-offer.md)发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure 市场中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
 
 尽管有五种服务类型可用于咨询服务产品，但集成解决方案必须是概念证明或完整实现。
 

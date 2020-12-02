@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313150"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449727"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的容量限制
 
@@ -26,7 +26,7 @@ Azure Synapse Analytics 中专用 SQL 池的各种组件允许的最大值。
 
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) | (数据仓库的单个专用 SQL 池) 单元的最大 DWU | Gen1：DW6000<br></br>Gen2：DW30000c |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个专用 SQL 池的最大 DWU  | Gen1：DW6000<br></br>Gen2：DW30000c |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL server (例如，myserver.database.windows.net) 的 DTU 配额为54000，这允许最多 DW5000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”  作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.5。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
@@ -62,7 +62,7 @@ Azure Synapse Analytics 中专用 SQL 池的各种组件允许的最大值。
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引 (CCI) 的表。<br/> |
-|Polybase 加载|文件总数|1,000,000<br/><br/>Polybase 加载不能超过1M 个文件。 你可能会遇到以下错误： **操作失败，因为拆分计数超过1000000的上限** 。|
+|Polybase 加载|文件总数|1,000,000<br/><br/>Polybase 加载不能超过 1 百万个文件。 你可能会遇到以下错误：“操作失败，因为拆分计数超过上限 1000000”。|
 
 ## <a name="queries"></a>查询
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445483"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452167"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -24,7 +24,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="access-model-overview"></a>访问模型概述
 
-可通过以下两个接口来控制对密钥保管库的访问： **管理平面** 和 **数据平面** 。 管理平面用于管理密钥保管库本身。 此平面中的操作包括创建和删除密钥保管库、检索密钥保管库属性以及更新访问策略。 数据平面用于处理密钥保管库中存储的数据。 可以添加、删除和修改密钥、机密及证书。
+可通过以下两个接口来控制对密钥保管库的访问：**管理平面** 和 **数据平面**。 管理平面用于管理密钥保管库本身。 此平面中的操作包括创建和删除密钥保管库、检索密钥保管库属性以及更新访问策略。 数据平面用于处理密钥保管库中存储的数据。 可以添加、删除和修改密钥、机密及证书。
 
 两个平面都使用 [Azure Active Directory (Azure AD ](../../active-directory/fundamentals/active-directory-whatis.md) 身份验证) 。 对于授权，管理平面使用 [AZURE rbac)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md) ，而数据平面使用 [Key Vault 访问策略](./assign-access-policy-portal.md) 和 [Azure RBAC Key Vault 数据平面操作 (预览版) ](./rbac-guide.md)。
 
@@ -36,7 +36,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 * 组安全主体标识在 Azure Active Directory 中创建的一组用户。 分配给组的任何角色或权限都将授予组内的所有用户。
 
-* 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的 **客户端机密** 或 **证书** 的作用类似于其密码。 许多 Azure 服务支持将 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 分配给自动管理的 **客户端 ID** 和 **证书** 。 在 Azure 中进行身份验证时，托管标识是最安全的推荐选项。
+* 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的 **客户端机密** 或 **证书** 的作用类似于其密码。 许多 Azure 服务支持将 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 分配给自动管理的 **客户端 ID** 和 **证书**。 在 Azure 中进行身份验证时，托管标识是最安全的推荐选项。
 
 有关 Key Vault 的身份验证的详细信息，请参阅对 [Azure Key Vault 进行身份验证](authentication.md)
 
@@ -44,7 +44,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 两个平面中的所有调用方都必须在此租户中注册并进行身份验证，然后才能访问该密钥保管库。 在这两种情况下，应用程序都可以通过以下三种方式访问 Key Vault：
 
-- **仅限应用程序** ：应用程序表示服务主体或托管标识。 对于定期需要从密钥保管库访问证书、密钥或机密的应用程序，此标识是最常见的方案。 要使此方案正常运行， `objectId` 必须在访问策略中指定应用程序的，并且 `applicationId` _不_ 能指定或必须是 `null` 。
+- **仅限应用程序**：应用程序表示服务主体或托管标识。 对于定期需要从密钥保管库访问证书、密钥或机密的应用程序，此标识是最常见的方案。 要使此方案正常运行， `objectId` 必须在访问策略中指定应用程序的，并且 `applicationId` _不_ 能指定或必须是 `null` 。
 - 仅用户：用户从租户中注册的任何应用程序访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 要使此方案正常工作， `objectId` 必须在访问策略中指定用户的，且 `applicationId` 不得指定， _not_ 或者必须是 `null` 。
 - 应用程序和用户（有时称为“复合标识”）：用户需要从特定应用程序访问密钥保管库，并且该应用程序必须使用代理身份验证 (OBO) 流来模拟用户。 要使此方案起作用，必须在访问策略中指定 `applicationId` 和 `objectId`。 `applicationId`标识所需的应用程序，并 `objectId` 标识该用户。 目前，此选项不可用于数据平面 Azure RBAC (预览) 。
 
@@ -73,9 +73,9 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可通过分配适当的 Azure 角色在特定范围级别授予访问权限。 若要向用户授予管理密钥保管库的访问权限，请将预定义的 [Key Vault 参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) 角色分配给特定范围内的用户。 可以将以下范围级别分配给 Azure 角色：
 
-- **订阅** ：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
-- **资源组** ：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
-- **特定资源** ：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
+- **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
+- **特定资源**：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
 有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。 
 
@@ -130,19 +130,19 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 ## <a name="private-endpoint-connection"></a>专用终结点连接
 
-如果需要完全阻止公开 Key Vault 公开，则可以使用 [Azure 私有终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) 。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
+如果需要完全阻止公开 Key Vault 公开，则可以使用 [Azure 私有终结点](../../private-link/private-endpoint-overview.md) 。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
 使用 Azure 服务的专用链接的常见方案：
 
-- **以私密方式访问 Azure 平台上的服务** ：无需在源或目标上使用公共 IP 地址，即可将虚拟网络连接到 Azure 中的服务。 服务提供商可在自己的虚拟网络中呈现其服务，而使用者可在其本地虚拟网络中访问这些服务。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。 
+- **以私密方式访问 Azure 平台上的服务**：无需在源或目标上使用公共 IP 地址，即可将虚拟网络连接到 Azure 中的服务。 服务提供商可在自己的虚拟网络中呈现其服务，而使用者可在其本地虚拟网络中访问这些服务。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。 
  
-- **本地网络和对等互连的网络** ：使用专用终结点通过 ExpressRoute 专用对等互连、VPN 隧道和对等互连的虚拟网络从本地访问 Azure 中运行的服务。 无需设置公共对等互连或遍历 internet 即可访问该服务。 专用链接可让客户安全地将工作负荷迁移到 Azure。
+- **本地网络和对等互连的网络**：使用专用终结点通过 ExpressRoute 专用对等互连、VPN 隧道和对等互连的虚拟网络从本地访问 Azure 中运行的服务。 无需设置公共对等互连或遍历 internet 即可访问该服务。 专用链接可让客户安全地将工作负荷迁移到 Azure。
  
-- **防范数据泄露** ：专用终结点映射到 PaaS 资源的某个实例，而不是映射到整个服务。 使用者只能连接到特定的资源。 对服务中任何其他资源的访问将遭到阻止。 此机制可以防范数据泄露风险。 
+- **防范数据泄露**：专用终结点映射到 PaaS 资源的某个实例，而不是映射到整个服务。 使用者只能连接到特定的资源。 对服务中任何其他资源的访问将遭到阻止。 此机制可以防范数据泄露风险。 
  
-- **全球覆盖** ：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可以位于区域 A，而且可以连接到区域 B 中专用链接后面的服务。  
+- **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可以位于区域 A，而且可以连接到区域 B 中专用链接后面的服务。  
  
-- **扩展到自己的服务** ：实现相同的体验和功能，以私密方式将服务呈现给 Azure 中的使用者。 将服务放在标准 Azure 负载均衡器的后面即可为其启用专用链接。 然后，使用者可以使用其自己的虚拟网络中的专用终结点直接连接到你的服务。 可以使用审批调用流来管理这些连接请求。 Azure 专用链接适用于属于不同 Azure Active Directory 租户的使用者和服务。 
+- **扩展到自己的服务**：实现相同的体验和功能，以私密方式将服务呈现给 Azure 中的使用者。 将服务放在标准 Azure 负载均衡器的后面即可为其启用专用链接。 然后，使用者可以使用其自己的虚拟网络中的专用终结点直接连接到你的服务。 可以使用审批调用流来管理这些连接请求。 Azure 专用链接适用于属于不同 Azure Active Directory 租户的使用者和服务。 
 
 有关专用终结点的详细信息，请参阅 [Azure Private Link Key Vault](./private-link-service.md)
 
@@ -151,15 +151,15 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 在此示例中，我们将开发一个应用程序，该应用程序使用证书来实现 TLS/SSL、使用 Azure 存储进行数据存储，并使用 RSA 2,048 位密钥来加密 Azure 存储中的数据。 我们的应用程序在 Azure 虚拟机 (VM)（或虚拟机规模集）中运行。 我们可以使用密钥保管库来存储应用程序机密。 我们可以存储应用程序用于通过 Azure AD 进行身份验证的启动证书。
 
 我们需要对以下存储密钥和机密的访问权限：
-- **TLS/SSL 证书** ：用于 TLS/SSL。
-- **存储密钥** ：无法访问存储帐户。
-- **RSA 2048 位密钥** ：由 Azure 存储用来包装/解包数据加密密钥。
+- **TLS/SSL 证书**：用于 TLS/SSL。
+- **存储密钥**：无法访问存储帐户。
+- **RSA 2048 位密钥**：由 Azure 存储用来包装/解包数据加密密钥。
 - 应用程序托管标识：用于使用 Azure AD 进行身份验证。 授予对 Key Vault 的访问权限后，应用程序可以提取存储密钥和证书。
 
 我们需要定义以下角色，以指定可以管理、部署和审核应用程序的用户：
-- **安全团队** ：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可能包括 TLS/SSL 证书、用于加密的 RSA 密钥、连接字符串和存储帐户密钥。
-- **开发人员和操作人员** ：开发应用程序并在 Azure 中进行部署的人员。 此团队的成员不属于安全人员。 他们不应有权访问 TLS/SSL 证书和 RSA 密钥等敏感数据。 仅他们部署的应用程序才应有权访问敏感数据。
-- **审核员** ：此角色适用于不属于开发人员或一般 IT 人员的参与者。 他们评审证书、密钥和机密的使用及维护，确保符合安全标准。
+- **安全团队**：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可能包括 TLS/SSL 证书、用于加密的 RSA 密钥、连接字符串和存储帐户密钥。
+- **开发人员和操作人员**：开发应用程序并在 Azure 中进行部署的人员。 此团队的成员不属于安全人员。 他们不应有权访问 TLS/SSL 证书和 RSA 密钥等敏感数据。 仅他们部署的应用程序才应有权访问敏感数据。
+- **审核员**：此角色适用于不属于开发人员或一般 IT 人员的参与者。 他们评审证书、密钥和机密的使用及维护，确保符合安全标准。
 
 还有一个超出我们应用程序范围的角色：订阅（或资源组）管理员。 订阅管理员为安全团队设置初始访问权限。 他们通过使用具有应用程序所需资源的资源组来授予安全团队访问权限。
 
@@ -185,8 +185,8 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 | 角色 | 管理平面权限 | 数据平面权限 - 保管库访问策略 | 数据平面权限 - Azure RBAC（预览版）  |
 | --- | --- | --- | --- |
 | 安全团队 | [密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [密钥保管库管理员（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意** ：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
-| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意** ：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [Key Vault Reader (预览版) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
+| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [Key Vault Reader (预览版) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
 | Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
 | 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [Key Vault Reader (预览版) ](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)， [Key Vault 机密用户 (预览版) ](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
@@ -200,7 +200,7 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 ## <a name="resources"></a>资源
 
 - [关于 Azure Key Vault](overview.md)
-- [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+- Azure Active Directory
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 - [Azure RBAC](../../role-based-access-control/overview.md)
 - [专用链接](../../private-link/private-link-overview.md)

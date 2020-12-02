@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f65ee85b37e74f0ca16ccf6988eb2117231c3bc5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635756"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452202"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -95,9 +95,9 @@ ms.locfileid: "92635756"
 ## <a name="what-is-the-integration-runtime"></a>什么是 Integration Runtime？
 集成运行时是 Azure 数据工厂用于在各种网络环境之间提供以下数据集成功能的计算基础结构：
 
-- **数据移动** ：就数据移动而言，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能可缩放数据传输提供支持。
-- **调动活动** ：就转换而言，集成运行时提供本机执行 SSIS 包的能力。
-- **执行 SSIS 包** ：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 Integration Runtime 还支持调度和监视各种计算服务（如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
+- **数据移动**：就数据移动而言，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能可缩放数据传输提供支持。
+- **调动活动**：就转换而言，集成运行时提供本机执行 SSIS 包的能力。
+- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 Integration Runtime 还支持调度和监视各种计算服务（如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
 
 可以按需部署一个或多个集成运行时实例来移动和转换数据。 集成运行时可以在 Azure 公用网络或专用网络（本地、Azure 虚拟网络或 Amazon Web Services 虚拟私有云 [VPC]）中运行。 
 
@@ -127,7 +127,7 @@ ms.locfileid: "92635756"
 数据工厂中的链接服务有两个用途：
 
 - 代表数据存储，包括但不限于 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
-- 代表可托管活动执行的 *计算资源* 。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
+- 代表可托管活动执行的 *计算资源*。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
 
 ### <a name="triggers"></a>触发器
 触发器表示处理单元，确定何时启动管道执行。 不同类型的事件有不同类型的触发器类型。 
@@ -190,7 +190,7 @@ ms.locfileid: "92635756"
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
 
-映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) 、从 Azure Blob 存储或 Azure Data Lake Storage Gen2 中分隔的文本文件，以及从 Blob 存储中 Parquet 文件，或为源和接收器本地 Data Lake Storage Gen2。 
+映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics、来自 Azure Blob 存储的带分隔符的文本文件，Azure Data Lake Storage Gen2 或从 Blob 存储中的 Parquet 文件或本机为源和接收器 Data Lake Storage Gen2 的文件。 
 
 使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
 
@@ -250,7 +250,7 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
 
 * short
-* double
+* Double
 * real
 * FLOAT
 * char

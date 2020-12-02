@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952210"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449415"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
 本文介绍如何在 Azure Stack Edge Pro 设备上的现有 Kubernetes 群集上启用 Azure Arc。 
 
-此过程适用于已 [在 Azure Stack Edge Pro 设备上查看了 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看了 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](../azure-arc/kubernetes/overview.md)的概念。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -39,14 +39,13 @@ ms.locfileid: "91952210"
 
 1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
 1. 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
     
-    - 安装 `kubectl` 在客户端上  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
-    
+    - 安装 `kubectl` 在客户端上。    
     - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
       - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
       - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **软件更新** "，并记下 Kubernetes 服务器版本号。 
@@ -55,7 +54,6 @@ ms.locfileid: "91952210"
       
       - 请验证这两个版本是否兼容。 
 
-<!-- az cli version requirements-->
 
 ## <a name="register-kubernetes-resource-providers"></a>注册 Kubernetes 资源提供程序
 
@@ -90,7 +88,7 @@ ms.locfileid: "91952210"
 
     `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
-    有关如何登录到的信息 `az cli` ，请 [在 Azure 门户中开始 Cloud Shell](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
+    有关如何登录到的信息 `az cli` ，请 [在 Azure 门户中开始 Cloud Shell](../cloud-shell/quickstart-powershell.md#start-cloud-shell)
 
     示例如下。 
     
@@ -108,7 +106,7 @@ ms.locfileid: "91952210"
 
 1. 记下 `appID` 、、和， `name` `password` `tenantID` 因为你将在下一命令中将其用作输入。
 
-1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 使用以下命令：
+1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 请使用以下命令：
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
@@ -129,7 +127,7 @@ ms.locfileid: "91952210"
     }
     PS /home/user>
     ```
-    有关如何创建服务主体和执行角色分配的详细信息，请参阅 [创建支持 Azure Arc 的载入服务主体](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal)中的步骤。
+    有关如何创建服务主体和执行角色分配的详细信息，请参阅 [创建支持 Azure Arc 的载入服务主体](../azure-arc/kubernetes/create-onboarding-service-principal.md)中的步骤。
 
 
 ## <a name="enable-arc-on-kubernetes-cluster"></a>在 Kubernetes 群集上启用 Arc
@@ -142,7 +140,10 @@ ms.locfileid: "91952210"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    若要在 Azure Stack Edge Pro 设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前为预览版。 你还可以使用命令来确定要在 cmdlet 中传递的区域的确切名称 `az account list-locations` 。
+
+    > [!NOTE]
+    > - 若要在设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。 
+    > - 使用 `az account list-locations` 命令找出要传入 cmdlet 的确切位置名称 `Set-HcsKubernetesAzureArcAgent` 。 位置名称的格式通常不含任何空格。
     
     以下是示例：
    
@@ -180,7 +181,7 @@ ms.locfileid: "91952210"
 
     还可以在命名空间中获取 Kubernetes 群集上运行的盒的列表 `azure-arc` 。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。 
 
-    使用以下命令：
+    请使用以下命令：
     
     `kubectl get pods -n azure-arc`
     
@@ -221,6 +222,9 @@ ms.locfileid: "91952210"
 
     `Remove-HcsKubernetesAzureArcAgent` 
 
+
+> [!NOTE]
+> 默认情况下， `yamls` 从 Git 存储库删除资源时，不会从 Kubernetes 群集中删除相应的资源。 需要 `--sync-garbage-collection`  在 Arc OperatorParams 中设置，以便在从 git 存储库中删除资源时允许删除资源。 有关详细信息，请参阅 [删除配置](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>后续步骤
 
