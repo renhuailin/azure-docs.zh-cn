@@ -1,18 +1,18 @@
 ---
-title: 快速入门：使用浏览器查询预测 - LUIS
-description: 本快速入门在浏览器中使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
+title: 如何使用浏览器查询预测 - LUIS
+description: 在本文中，你将在浏览器中使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316267"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436906"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>快速入门：使用用户文本查询预测运行时
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>如何使用用户文本查询预测运行时
 
 若要了解 LUIS 预测终结点返回的内容，请在 Web 浏览器中查看预测结果。
 
@@ -97,7 +97,7 @@ ms.locfileid: "91316267"
 
     #### <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/V3-3-1)
 
-    将 `show-all-intents=true` 添加到查询字符串末尾可**显示所有意向**：
+    将 `show-all-intents=true` 添加到查询字符串末尾可 **显示所有意向**：
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -130,7 +130,7 @@ ms.locfileid: "91316267"
 
     #### <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/V2)
 
-    将 `verbose=true` 添加到查询字符串末尾可**显示所有意向**：
+    将 `verbose=true` 添加到查询字符串末尾可 **显示所有意向**：
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true

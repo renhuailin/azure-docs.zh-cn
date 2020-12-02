@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 244408cc512a51683ecb3c062113170b1c7f4781
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e0f3d318cc462b03151d5a4935ae318df46e2c5
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499554"
+ms.locfileid: "96510550"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>适用于 Azure 认知搜索的 Python 代码示例
 
@@ -25,7 +25,7 @@ ms.locfileid: "96499554"
 | [Azure-示例/azure-搜索-python-示例](https://github.com/Azure-Samples/azure-search-python-samples) | 操作指南文章随附的代码示例，包括 [快速入门：在 Python 中创建搜索索引](search-get-started-python.md)。|
 
 > [!Tip]
-> 尝试使用 [示例浏览器](/samples/browse/?languages=csharp&products=azure-cognitive-search) 在 Github 中搜索 Microsoft 代码示例，并按产品、服务和语言进行筛选。
+> 尝试使用 [示例浏览器](/samples/browse/?languages=python&products=azure-cognitive-search) 在 Github 中搜索 Microsoft 代码示例，并按产品、服务和语言进行筛选。
 
 ## <a name="python-sdk-samples"></a>Python SDK 示例
 

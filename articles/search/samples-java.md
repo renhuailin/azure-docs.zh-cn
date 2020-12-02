@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 10dff18f7b9db7273fcd6ec92bcca5970bb83b08
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499571"
+ms.locfileid: "96510363"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>适用于 Azure 认知搜索的 Java 代码示例
 
@@ -25,7 +25,7 @@ ms.locfileid: "96499571"
 | [Azure-示例/azure-搜索-java 示例](https://github.com/Azure-Samples/azure-search-java-samples) | 操作方法文章附带的代码示例。 **此存储库中的示例尚未更新为使用 AZURE SDK For Java**。 目前，这些示例在 Java 代码中调用 REST Api。|
 
 > [!Tip]
-> 尝试使用 [示例浏览器](/samples/browse/?languages=csharp&products=azure-cognitive-search) 在 Github 中搜索 Microsoft 代码示例，并按产品、服务和语言进行筛选。
+> 尝试使用 [示例浏览器](/samples/browse/?languages=java&products=azure-cognitive-search) 在 Github 中搜索 Microsoft 代码示例，并按产品、服务和语言进行筛选。
 
 ## <a name="java-sdk-samples"></a>Java SDK 示例
 

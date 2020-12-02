@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49b0df3e750d4d23cb6a64f3f7266613fd2f2981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501825"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510669"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>使用 Azure CLI 为 VM 配置路由首选项
 
@@ -30,11 +30,6 @@ ms.locfileid: "87501825"
 > 路由首选项目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="register-the-feature-for-your-subscription"></a>为订阅注册此功能
-路由首选项功能目前为预览版。 为订阅注册此功能，如下所示：
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
 ## <a name="create-a-resource-group"></a>创建资源组
 1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `az login` 登录到 Azure。
 2. 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：

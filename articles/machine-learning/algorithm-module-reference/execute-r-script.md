@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/02/2020
+ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592662"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510584"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
@@ -78,25 +78,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > 安装包之前，请检查它是否已经存在，以避免重复安装。 重复安装可能会导致 Web 服务请求超时。     
 
+## <a name="access-to-registered-dataset"></a>访问已注册的数据集
+
+可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>上传文件
 “执行 R 脚本”模块支持通过使用 Azure 机器学习 R SDK 上传文件。
 
 以下示例演示了如何在“执行 R 脚本”中上传图像文件：
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,22 +121,6 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![预览上传的图像](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>访问已注册的数据集
-
-可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
-
-```R
-    azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
 “执行 R 脚本”模块包含可用作起点的示例代码。
@@ -147,11 +133,11 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 连接该脚本需要的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **Dataset1** ：引用第一个输入作为 `dataframe1`。 输入数据集必须是 CSV、TSV 或 ARFF 格式的文件。 或者可以连接 Azure 机器学习数据集。
+    * **Dataset1**：引用第一个输入作为 `dataframe1`。 输入数据集必须是 CSV、TSV 或 ARFF 格式的文件。 或者可以连接 Azure 机器学习数据集。
 
-    * **Dataset2** ：引用第二个输入作为 `dataframe2`。 此数据集也必须是 CSV、TSV、ARFF 格式的文件，或者是 Azure 机器学习数据集。
+    * **Dataset2**：引用第二个输入作为 `dataframe2`。 此数据集也必须是 CSV、TSV、ARFF 格式的文件，或者是 Azure 机器学习数据集。
 
-    * **脚本包** ：第三个输入接受 .zip 文件。 压缩文件可以包含多个文件和多种文件类型。
+    * **脚本包**：第三个输入接受 .zip 文件。 压缩文件可以包含多个文件和多种文件类型。
 
 1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本。
 
@@ -194,11 +180,11 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 现有 R 代码可能需要稍做更改才能在设计器管道中运行。 例如，以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用。 R 语言中使用的数据和列类型与在设计器中使用的数据和列类型在某些方面也有所不同。
 
-1. 如果你的脚本大于 16 KB，请使用 **脚本捆绑** 端口来避免错误，如 *命令行数超过16597个字符的限制* 。 
+1. 如果你的脚本大于 16 KB，请使用 **脚本捆绑** 端口来避免错误，如 *命令行数超过16597个字符的限制*。 
     
     1. 将脚本和其他自定义资源捆绑到一个 zip 文件中。
     1. 将 zip 文件作为“文件数据集”上传到工作室。 
-    1. 从 "设计器创作" 页左侧模块窗格内的 " *数据集* " 列表中拖动数据集模块。 
+    1. 从设计器创作页面左侧模块窗格的“数据集”列表中拖取数据集模块。 
     1. 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
     
     下面是使用脚本包中的脚本的示例代码：

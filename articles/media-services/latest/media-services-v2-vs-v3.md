@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 14544f58bcda56a55cef33de8fe0a70d5859b589
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019828"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510941"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -80,7 +80,6 @@ ms.locfileid: "92019828"
     * 资产拼接
     * 叠加
     * 裁剪
-    * 缩略图子画面
     * 在输入不包含音频时插入静音曲目
     * 在输入不包含视频时插入视频轨道
 * 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 

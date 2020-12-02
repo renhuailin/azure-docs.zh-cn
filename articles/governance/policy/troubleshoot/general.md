@@ -1,18 +1,18 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146273"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510992"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
-创建策略定义、使用 SDK 或设置 [Azure policy For Kubernetes](../concepts/policy-for-kubernetes.md) 外接程序时，可能会遇到错误。 本文介绍了可能发生的各种常见错误以及如何解决这些错误。
+创建策略定义、使用 SDK 或设置 [Azure policy For Kubernetes](../concepts/policy-for-kubernetes.md) 外接程序时，可能会遇到错误。 本文介绍可能会发生的各种常见错误及其解决方法。
 
 ## <a name="finding-error-details"></a>查找错误详细信息
 
@@ -64,21 +64,21 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 #### <a name="resolution"></a>解决方法
 
-请按照以下步骤来解决策略定义问题：
+请按照以下步骤排查策略定义问题：
 
 1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
-1. 检查分配参数和分配的作用域是否已正确设置。
+1. 检查分配参数和分配范围是否已正确设置。
 1. 检查[策略定义模式](../concepts/definition-structure.md#mode)：
-   - 所有资源类型的模式 "all"。
-   - 如果策略定义检查标记或位置，则为 "已索引" 模式。
-1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
+   - 将所有资源类型的模式设置为“所有”。
+   - 如果策略定义检查标记或位置，则设置“已编制索引”模式。
+1. 检查资源的范围是否未被[排除](../concepts/assignment-structure.md#excluded-scopes)或[豁免](../concepts/exemption-structure.md)。
 1. 如果策略分配的符合性显示 `0/0` 资源，表示没有确定在分配范围内适用的资源。 检查策略定义和分配范围。
-1. 对于预期符合的不合规资源，请检查 [确定不符合的原因](../how-to/determine-non-compliance.md)。 通过将定义与计算的属性值进行比较，可了解资源不符合的原因。
-   - 如果 **目标值** 错误，请修改策略定义。
-   - 如果 **当前值** 错误，请通过验证资源负载 `resources.azure.com` 。
-1. 检查故障排除：针对其他常见问题和解决方案的 [强制性不按预期执行](#scenario-enforcement-not-as-expected) 。
+1. 对于应合规但实际不合规的资源，请参阅[确定不合规的原因](../how-to/determine-non-compliance.md)。 通过将定义与计算的属性值进行比较，可了解资源不符合的原因。
+   - 如果“目标值”错误，请修改策略定义。
+   - 如果“当前值”错误，请通过 `resources.azure.com` 验证资源有效负载。
+1. 请查看[故障排除：强制实施与预期不符](#scenario-enforcement-not-as-expected)，了解其他常见问题和解决方案。
 
-如果复制和自定义的内置策略定义或自定义定义仍存在问题，请在 **创作策略** 时创建支持票证，以便正确路由问题。
+如果复制的和自定义的内置策略定义或自定义定义仍存在问题，请在“创作策略”下创建支持票证，以正确提交问题。
 
 ### <a name="scenario-enforcement-not-as-expected"></a>方案：未按预期执行
 
@@ -92,18 +92,18 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 #### <a name="resolution"></a>解决方法
 
-请按照以下步骤来解决策略分配的强制问题：
+请按照以下步骤排查策略分配的实施问题：
 
 1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
-1. 请检查是否正确设置了分配参数和分配范围，以及是否 _启用_ 了 **enforcementMode** 。 
+1. 检查分配参数和分配范围是否已正确设置，以及“enforcementMode”是否为“Enabled”。
 1. 检查[策略定义模式](../concepts/definition-structure.md#mode)：
-   - 所有资源类型的模式 "all"。
-   - 如果策略定义检查标记或位置，则为 "已索引" 模式。
-1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
-1. 验证资源有效负载是否与策略逻辑匹配。 这可以通过 [捕获 HAR 跟踪](../../../azure-portal/capture-browser-trace.md) 或查看 ARM 模板属性来完成。
-1. 检查 [故障排除：满足](#scenario-compliance-not-as-expected) 其他常见问题和解决方案的符合性要求。
+   - 将所有资源类型的模式设置为“所有”。
+   - 如果策略定义检查标记或位置，则设置“已编制索引”模式。
+1. 检查资源的范围是否未被[排除](../concepts/assignment-structure.md#excluded-scopes)或[豁免](../concepts/exemption-structure.md)。
+1. 验证资源有效负载是否与策略逻辑匹配。 可通过[捕获 HAR 跟踪](../../../azure-portal/capture-browser-trace.md)或查看 ARM 模板属性来进行验证。
+1. 请查看[故障排除：符合性与预期不符](#scenario-compliance-not-as-expected)以了解其他常见问题和解决方案。
 
-如果复制和自定义的内置策略定义或自定义定义仍存在问题，请在 **创作策略** 时创建支持票证，以便正确路由问题。
+如果复制的和自定义的内置策略定义或自定义定义仍存在问题，请在“创作策略”下创建支持票证，以正确提交问题。
 
 ### <a name="scenario-denied-by-azure-policy"></a>方案：被 Azure Policy 拒绝
 
@@ -135,7 +135,7 @@ Azure Policy 支持大量 Azure 资源管理器模板（ARM 模板）函数以�
 
 若要传递函数使其成为策略定义的一部分，请使用 `[` 转义整个字符串，以便使属性看起来像是 `[[resourceGroup().tags.myTag]`。 转义字符会导致资源管理器在处理模板时将值视为字符串。 然后，Azure Policy 将函数放置在策略定义中，使其能够按预期的动态方式执行。 有关详细信息，请参阅 [Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
 
-## <a name="add-on-for-kubernetes-installation-errors"></a>Kubernetes 安装错误的外接程序
+## <a name="add-on-for-kubernetes-installation-errors"></a>Kubernetes 加载项安装错误
 
 ### <a name="scenario-install-using-helm-chart-fails-on-password"></a>方案：使用了 Helm Chart 的安装过程在密码处失败
 
@@ -189,24 +189,6 @@ Azure Policy 支持大量 Azure 资源管理器模板（ARM 模板）函数以�
 [为来宾配置审核策略发布的重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Kubernetes 常规错误的外接程序
-
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>方案：外接程序不适用于1.19 版 (预览版中的 AKS 群集) 
-
-#### <a name="issue"></a>问题
-
-版本1.19 群集通过看门箱控制器和策略 webhook 箱返回此错误：
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>原因
-
-版本 1.19 (预览版) 上的 AKS 群集与 Azure 策略外接程序尚不兼容。
-
-#### <a name="resolution"></a>解决方法
-
-使用 Azure 策略外接程序，避免使用 Kubernetes 1.19 (预览) 。 外接程序可用于任何受支持的通用版本，如1.16、1.17 或1.18。
 
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>方案：外接程序由于出口限制无法访问 Azure 策略服务终结点
 
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>问题
 
-外接程序可以访问 Azure 策略服务终结点，但会看到以下错误：
+外接程序可以访问 Azure 策略服务终结点，但会在外接程序日志中看到以下错误之一：
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+或
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>原因
@@ -289,9 +280,9 @@ The resource provider 'Microsoft.PolicyInsights' is not registered in subscripti
 
 #### <a name="resolution"></a>解决方法
 
-注册 `Microsoft.PolicyInsights` 资源提供程序。 有关说明，请参阅 [注册资源提供程序](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
+`Microsoft.PolicyInsights`在群集订阅中注册资源提供程序。 有关说明，请参阅 [注册资源提供程序](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 
-### <a name="scenario-the-subscript-is-disabled"></a>方案：下标已禁用
+### <a name="scenario-the-subscription-is-disabled"></a>方案：订阅已禁用
 
 #### <a name="issue"></a>问题
 
@@ -307,7 +298,7 @@ The subscription '{subId}' has been disabled for azure data-plane policy. Please
 
 #### <a name="resolution"></a>解决方法
 
-联系功能团队 `azuredg@microsoft.com` 调查并解决此问题。 
+联系功能团队 `azuredg@microsoft.com` 调查并解决此问题。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -315,4 +306,4 @@ The subscription '{subId}' has been disabled for azure data-plane policy. Please
 
 - 通过 [Microsoft Q&A](/answers/topics/azure-policy.html) 获得专家提供的答案。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持** 。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
