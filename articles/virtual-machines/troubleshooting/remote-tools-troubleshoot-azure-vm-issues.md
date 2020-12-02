@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5974388c096c9bc8693c5fc2cf918989c6eadd3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509080"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488725"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -180,7 +180,7 @@ cmd.exe /C $command
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * 对于 Azure 资源管理器 VM，请首先将 DNS 名称添加到公共 IP 地址。 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../windows/portal-create-fqdn.md)。 然后，运行以下命令：
+  * 对于 Azure 资源管理器 VM，请首先将 DNS 名称添加到公共 IP 地址。 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../create-fqdn.md)。 然后，运行以下命令：
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck

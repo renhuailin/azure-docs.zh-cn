@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 37d9352b6384ee2b5e95903f35d531bd672b25b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369488"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490969"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
 > [!WARNING]
-> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 **2020 年10月 30** 日起，需要按照 [此处](https://aka.ms/cogsvcs/bingmove)所述的过程设置必应搜索的任何新实例。
-> 在接下来的三年中，将支持使用认知服务进行预配的必应搜索 API，或者在企业协议结束后（以先发生者为准）。
-> 有关迁移说明，请参阅 [必应搜索服务](https://aka.ms/cogsvcs/bingmigration)。
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本文介绍了发送到必应视觉搜索 API 的请求的参数和属性，以及响应对象。 
 
@@ -78,12 +78,12 @@ ms.locfileid: "94369488"
 
 以下是请求应指定的查询参数。 至少应包括 `mkt` 查询参数：
 
-| 名称 | “值” | 类型 | 必需 |
+| 名称 | “值” | 类型 | 必须 |
 | --- | --- | --- | --- |
-| <a name="cc"></a>cc  | 表示结果来源的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | 字符串 | 否       |
-| <a name="mkt"></a>mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知，应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | 字符串 | 是      |
-| <a name="safesearch"></a>safeSearch | 成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回具有成人文本或图像的网页。<br /><br/></li><li>中等&mdash;返回具有成人文本但不具有成人图像的网页。<br /><br/></li><li>严格&mdash;不返回具有成人文本或图像的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> 注意：如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应将忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则响应可能包含成人内容，而不考虑 `safeSearch` 查询参数的设置。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。  | 字符串 | 否       |
-| <a name="setlang"></a>setLang  | 可用于用户界面字符串的语言。 使用 ISO 639-1 两字母语言代码指定语言。 例如，英语的语言代码是 EN。 默认为 EN（英语）。<br /><br /> 尽管是可选项，但应始终指定语言。 通常情况下，请将 `setLang` 设置为 `mkt` 所指定的语言，除非用户希望以另一语言显示用户界面字符串。<br /><br /> 此参数和 [Accept-Language](#acceptlanguage) 标头相互排斥&mdash;不可同时指定两者。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 此外，响应对象中 Bing.com 属性的任何链接均会应用指定的语言。 | 字符串 | 否   |
+| <a name="cc"></a>cc  | 表示结果来源的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
+| <a name="mkt"></a>mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知，应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |
+| <a name="safesearch"></a>safeSearch | 成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回具有成人文本或图像的网页。<br /><br/></li><li>中等&mdash;返回具有成人文本但不具有成人图像的网页。<br /><br/></li><li>严格&mdash;不返回具有成人文本或图像的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> 注意：如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应将忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则响应可能包含成人内容，而不考虑 `safeSearch` 查询参数的设置。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。  | String | 否       |
+| <a name="setlang"></a>setLang  | 可用于用户界面字符串的语言。 使用 ISO 639-1 两字母语言代码指定语言。 例如，英语的语言代码是 EN。 默认为 EN（英语）。<br /><br /> 尽管是可选项，但应始终指定语言。 通常情况下，请将 `setLang` 设置为 `mkt` 所指定的语言，除非用户希望以另一语言显示用户界面字符串。<br /><br /> 此参数和 [Accept-Language](#acceptlanguage) 标头相互排斥&mdash;不可同时指定两者。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 此外，响应对象中 Bing.com 属性的任何链接均会应用指定的语言。 | String | 否   |
 
 ## <a name="headers"></a>标头
 
@@ -109,7 +109,7 @@ ms.locfileid: "94369488"
 
 ### <a name="content-form-types"></a>内容表单类型
 
-每个请求必须包含 `Content-Type` 标头。 标头必须设置为： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是一个唯一的、不透明的字符串，用于标识窗体数据的边界。 例如，`boundary=boundary_1234-abcd` 。
+每个请求必须包含 `Content-Type` 标头。 标头必须设置为： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是一个唯一的、不透明的字符串，用于标识窗体数据的边界。 例如 `boundary=boundary_1234-abcd`。
 
 如果发送视觉搜索图像令牌或 URL，以下代码片段将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含 `Content-Disposition` 标头，并且必须将其 `name` 参数设置为 "knowledgeRequest"。 有关对象的详细信息 `imageInfo` ，请参阅请求。
 

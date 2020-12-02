@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 66d0d3ebf9d5866039bbbac3171513b37330be7a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146784"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489184"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载高度可用的基于 Service Fabric Reliable Disk 的卷 
 使用容器应用保存状态的常用方法是使用远程存储，例如 Azure 文件存储或 Azure Cosmos DB 等数据库。 这会对远程存储造成长时间读取和写入网络延迟。
@@ -47,9 +47,9 @@ az group create --name myResourceGroup --location eastus
 ## <a name="deploy-the-template"></a>部署模板
 
 >[!NOTE]
-> 从2020年11月2日起生效， [下载速率限制适用](https://docs.docker.com/docker-hub/download-rate-limit/) 于来自 docker 免费计划帐户的对 docker 中心的匿名请求和经过身份验证的请求，并由 IP 地址强制执行。 
+> 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 
 > 
-> 此模板可从 Docker 中心使用公共映像。 请注意，可能会受到限制。 有关更多详细信息，请参阅通过 [Docker 中心进行身份验证](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)。
+> 此模板可从 Docker 中心使用公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
 
 以下命令使用 [counter.sfreliablevolume.linux.json 模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [counter.sfreliablevolume.windows.json 模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)。 请注意，较大的容器映像可能需要花费较长的时间进行部署。
 

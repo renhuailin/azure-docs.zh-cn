@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b04b9ababfe0e4c2a60d14044b9d3ee120837dc5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015310"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491037"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
+通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
 
 以下示例使用 `appID` 和 `password` 执行模型数据库刷新操作：
 

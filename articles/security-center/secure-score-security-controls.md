@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433157"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490527"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -80,7 +80,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>从 Azure Resource Graph (ARG) 获取安全功能分数
 
-使用 Azure Resource Graph (ARG)，可以通过可靠的筛选、分组和排序功能，快速访问你的云环境中的资源信息。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。 [详细了解 Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/)。
+使用 Azure Resource Graph (ARG)，可以通过可靠的筛选、分组和排序功能，快速访问你的云环境中的资源信息。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。 [详细了解 Azure Resource Graph](../governance/resource-graph/index.yml)。
 
 使用 ARG 访问多个订阅的安全功能分数：
 

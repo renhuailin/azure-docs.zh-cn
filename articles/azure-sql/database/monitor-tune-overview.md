@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 2e5ab1f07473a2572f7fb228139da8670fd6269c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790349"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490561"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ Azure SQL 数据库提供多个数据库顾问来提供智能性能优化建议�
 
 Azure SQL 数据库和 Azure SQL 托管实例提供基于人工智能的其他监视和优化功能，以帮助排查数据库和解决方案的性能问题并实现其最高性能。 你可以选择将这些[智能见解](intelligent-insights-overview.md)和其他数据库资源日志和指标的[流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)配置为多个目标中的一个，以便使用[SQL Analytics](../../azure-monitor/insights/azure-sql.md)。 Azure SQL Analytics 是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视所有数据库的性能。 有关可导出的日志和指标列表，请参阅[可导出的诊断遥测数据](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-SQL Server 具有其自己的监视和诊断功能，SQL 数据库和 SQL 托管实例利用这些功能，如 (Dmv) 的 [查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) 和 [动态管理视图 ](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 有关用于监视各种性能问题的脚本，请参阅[使用 DMV 进行监视](monitoring-with-dmvs.md)。
+SQL Server 具有自己的监视和诊断功能，SQL 数据库和 SQL 托管实例可以利用这些功能，例如[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)和[动态管理视图 (DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 有关用于监视各种性能问题的脚本，请参阅[使用 DMV 进行监视](monitoring-with-dmvs.md)。
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure 门户中的监视和优化功能
 
-在 Azure 门户中，Azure SQL 数据库和 Azure SQL 托管实例提供对资源指标的监视。 Azure SQL 数据库提供数据库顾问，Query Performance Insight 提供查询优化建议和查询性能分析。 在 Azure 门户中，可以为 [逻辑 SQL 服务器](logical-servers.md) 及其单个和共用数据库启用自动优化。
+在 Azure 门户中，Azure SQL 数据库和 Azure SQL 托管实例提供对资源指标的监视。 Azure SQL 数据库提供数据库顾问，而 Query Performance Insight 提供查询优化建和查询性能分析。 在 Azure 门户中，可为[逻辑 SQL 服务器](logical-servers.md)及其单一数据库和共用数据库启用自动优化。
 
 > [!NOTE]
-> 使用率极低的数据库可能会显示在门户中，其使用时间少于实际值。 由于在将双精度值转换为最接近的整数时，会发出遥测数据，因此，小于0.5 的某些使用金额将舍入为0，这会使发出的遥测精度损失。 有关详细信息，请参阅 [数据库和弹性池度量值舍入为零](#low-database-and-elastic-pool-metrics-rounding-to-zero)。
+> 使用率极低的数据库在门户中显示的使用情况可能低于实际使用情况。 由于在将双精度值转换为最接近的整数时发出遥测的方式，某些小于 0.5 的使用量将舍入为 0，这会导致发出的遥测的精度降低。 有关详细信息，请参阅[数据库和弹性池低指标舍入为零](#low-database-and-elastic-pool-metrics-rounding-to-zero)。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL 数据库和 Azure SQL 托管实例资源监视
 
@@ -50,11 +50,11 @@ Azure SQL 数据库包含针对单一数据库和共用数据库提供性能优�
 
 [Query Performance Insight](query-performance-insight-use.md) 在 Azure 门户中显示针对单一数据库和共用数据库运行的、资源消耗量最高且运行时间最长的查询的性能。
 
-### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>数据库和弹性池度量值舍入为零
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>数据库和弹性池低指标舍入为零
 
-从2020年9月开始，使用情况极低的数据库可能会在门户中显示，并且使用情况不会超过实际使用情况。 由于在将双精度值转换为最接近的整数时，会发出遥测数据，因此，小于0.5 的某些使用金额将舍入为0，这会使发出的遥测的粒度降低。
+从 2020 年 9 月开始，使用率极低的数据库在门户中显示的使用情况可能低于实际使用情况。 由于在将双精度值转换为最接近的整数时发出遥测的方式，某些小于 0.5 的使用量将舍入为 0，这会导致发出的遥测的精度降低。
 
-例如：假设有一个1分钟的窗口，其中包含以下四个数据点：0.1、0.1、0.1、0.1、将这些低值向下舍入为0、0、0、0并显示平均0。 如果任何数据点大于0.5，例如：0.1、0.1、0.9、0.1，它们将舍入为0，0，1，0，并显示平均值为0.25。
+例如：假设一个 1 分钟时段，其中包含以下 4 个数据点：0.1、0.1、0.1、0.1，这些低值向下舍入为 0、0、0、0，并显示平均值为 0。 如果其中有数据点大于 0.5，例如：0.1、0.1、0.9、0.1，它们舍入为 0、0、1、0，并显示平均值为 0.25。
 
 受影响的数据库指标：
 - cpu_percent

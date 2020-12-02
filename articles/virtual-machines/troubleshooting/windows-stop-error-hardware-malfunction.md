@@ -1,5 +1,5 @@
 ---
-title: Windows 停止错误-硬件故障
+title: Windows 停止错误 - 硬件故障
 description: 本文提供了解决以下问题的步骤： Windows Server 2008 虚拟机崩溃，并出现一条错误消息，指出出现硬件故障。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: v-mibufo
-ms.openlocfilehash: eb4e0a246d6a33c3fad5f44b99a37997e4462f05
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 18622d60f3a33658fadfd28c53c93a07b4b438a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663511"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488640"
 ---
-# <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止错误-硬件故障
+# <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止错误 - 硬件故障
 
 本文提供了解决以下问题的步骤： Windows Server 2008 虚拟机崩溃，并出现一条错误消息，指出出现硬件故障。
 
@@ -63,7 +63,7 @@ ms.locfileid: "94663511"
     ```
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
     ```
-    [查看有关 REG ADD 命令的详细信息](https://docs.microsoft.com/windows-server/administration/windows-commands/reg-add)
+    [查看有关 REG ADD 命令的详细信息](/windows-server/administration/windows-commands/reg-add)
 4. *(可选)* 设置内存转储收集：
 
     ```
@@ -77,13 +77,13 @@ ms.locfileid: "94663511"
     BCDEDIT /ems {current} on, or bcdedit /ems '{current}' on if you are using PowerShell
     BCDEDIT /emssettings EMSPORT:1 EMSBAUDRATE:115200 
     ```
-    [查看有关 BCDEDIT 命令的详细信息](https://docs.microsoft.com/windows-server/administration/windows-commands/bcdedit)
+    [查看有关 BCDEDIT 命令的详细信息](/windows-server/administration/windows-commands/bcdedit)
 6. 用以下命令重新启动 VM：
 
     ```
     SHUTDOWN /r /t 0 /f 
     ```
-    [查看有关 SHUTDOWN 命令的详细信息](https://docs.microsoft.com/windows-server/administration/windows-commands/shutdown)
+    [查看有关 SHUTDOWN 命令的详细信息](/windows-server/administration/windows-commands/shutdown)
 
 > [!IMPORTANT]
 > 此问题现在应已修复！

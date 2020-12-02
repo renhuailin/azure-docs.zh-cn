@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331652"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489881"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 客户密码箱
 
 > [!NOTE]
-> 若要使用此功能，你的组织必须具有最小**开发人员**级别的[Azure 支持计划](https://azure.microsoft.com/support/plans/)。
+> 若要使用此功能，你的组织必须具有最小 **开发人员** 级别的 [Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 
 Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
@@ -64,7 +64,7 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 - 虚拟机规模集 - Windows 和 Linux
 
 > [!NOTE]
-> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
 #### <a name="detailed-audit-logs"></a>详细审核日志
 
@@ -105,7 +105,7 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 
    请求在客户队列中保留四天。 此时间过后，访问请求会自动过期，并且不会向 Microsoft 工程师授予任何访问权限。
 
-9. 若要获取待定请求的详细信息，指定的审批者可以从 **挂起的请求**中选择密码箱请求：
+9. 若要获取待定请求的详细信息，指定的审批者可以从 **挂起的请求** 中选择密码箱请求：
 
     ![Azure 客户密码箱-查看挂起的请求](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
@@ -149,6 +149,6 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 
 ## <a name="next-steps"></a>后续步骤
 
-对于具有最小**开发人员**的[Azure 支持计划](https://azure.microsoft.com/support/plans/)的所有客户，客户密码箱自动提供。
+对于具有最小 **开发人员** 的 [Azure 支持计划](https://azure.microsoft.com/support/plans/)的所有客户，客户密码箱自动提供。
 
 如果你具有符合条件的支持计划，则无需执行任何操作即可启用客户密码箱。 如果需要执行此操作来处理从组织中的某个人中存档的支持票证，则客户密码箱请求将由 Microsoft 工程师发起。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433335"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490119"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -129,7 +129,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 - 丰富了 Azure Resource Graph (ARG) 的建议数据。 ARG 是一项 Azure 服务，专用于提供高效的资源探索。 可以使用 ARG 在一组给定的订阅中进行大规模查询，以便有效地控制环境。 
 
-    对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。
+    对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。
 
     以前，如果你在 ARG 中查询此建议，唯一提供的信息就是“需要在计算机上修正建议”。 以下查询的增强版本将返回按计算机分组的每个缺失的系统更新。
 
@@ -172,7 +172,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 [详细了解如何将集成式漏洞扫描器部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[详细了解启用了 Azure Arc 的服务器](https://docs.microsoft.com/azure/azure-arc/servers/)。
+[详细了解启用了 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>添加了 Azure 防火墙建议（预览版）
@@ -206,7 +206,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 Azure Resource Graph 是 Azure 中的一项服务，旨在提供高效的资源浏览功能，它能够在一组给定的订阅中进行大规模查询，使你能够有效地管理环境。 
 
-对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。 例如：
+对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。 例如：
 
 - 资产清单利用 (ARG)
 - 我们提供了一个示例 ARG 查询，说明如何[在未启用多重身份验证 (MFA) 的情况下标识帐户](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -295,7 +295,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 若要了解详细信息，请参阅下列链接：
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
-- [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>2020 年 9 月

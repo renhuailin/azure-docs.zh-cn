@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac878db8d81cc7d9d9dfc6d7c3a4ba63f966110
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 18e6b0f12298bda8e9328989c5396aa9916c6a0f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348358"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488912"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -79,7 +79,6 @@ ms.locfileid: "96348358"
 - 合作伙伴层 1 支持
 - 合作伙伴层 2 支持
 - 用户管理员
-- 目录写入者
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 门户中配置命名策略
 
@@ -92,7 +91,7 @@ ms.locfileid: "96348358"
 
 1. 在“命名策略”页上，选择“组命名策略”。  
 1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
-1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。  可以同时删除多个项。
+1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。 可以同时删除多个项。
 1. 通过选择“保存”，保存对新策略的更改以使其生效。
 
 ### <a name="edit-custom-blocked-words"></a>编辑自定义阻止字词
@@ -101,7 +100,7 @@ ms.locfileid: "96348358"
 
     ![编辑并上传命名策略的阻止字词列表](./media/groups-naming-policy/blockedwords.png)
 
-1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。 
+1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。
 1. 上传自定义阻止字词的新列表，方法是选择文件图标。
 1. 通过选择“保存”，保存对新策略的更改以使其生效。
 
@@ -205,7 +204,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>使用 Azure 门户删除命名策略
 
-1. 在“命名策略”页上，选择“删除策略”。  
+1. 在“命名策略”页上，选择“删除策略”。
 1. 确认删除之后，将会删除命名策略，包括所有前缀-后缀命名策略和任何自定义阻止字词。
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 删除命名策略

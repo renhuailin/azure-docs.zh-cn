@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832596"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489813"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -229,12 +229,12 @@ ms.locfileid: "94832596"
 
 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
 
-建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要详细了解如何在 Azure AD、Microsoft Azure、Microsoft 365 和其他云服务中管理或报告的安全身份和访问，请参阅 [Azure AD 中的保护混合和云部署的特权访问](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)。
+建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要详细了解如何在 Azure AD、Microsoft Azure、Microsoft 365 和其他云服务中管理或报告的安全身份和访问，请参阅 [Azure AD 中的保护混合和云部署的特权访问](../../active-directory/roles/security-planning.md)。
 
-以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)中介绍的最佳做法：
+以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中介绍的最佳做法：
 
 **最佳做法**：管理、控制和监视对特权帐户的访问。   
-**详细信息**：启用 [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
+**详细信息**：启用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
 
 **最佳做法**：确保所有关键管理员帐户都是托管的 Azure AD 帐户。
 **详细信息**：从关键管理员角色中删除所有使用者帐户（例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帐户）。
@@ -261,10 +261,10 @@ ms.locfileid: "94832596"
 **最佳做法**：定义至少两个紧急访问帐户。   
 **详细信息**：可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于不能使用正常管理帐户的情况。 组织必须将紧急账户的使用限制在必要时间范围内。
 
-评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.onmicrosoft.com` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](../../active-directory/users-groups-roles/directory-emergency-access.md)。
+评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.onmicrosoft.com` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](../../active-directory/roles/security-emergency-access.md)。
 
 **最佳做法**：准备“破窗”流程，以备紧急情况时使用。
-**详细信息**：按照 [确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)中的步骤操作。
+**详细信息**：按照 [确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中的步骤操作。
 
 **最佳做法**：要求所有关键管理员帐户都是无密码的（首选），或要求进行多重身份验证。
 **详细信息**：使用 [Microsoft Authenticator 应用](../../active-directory/authentication/howto-authentication-passwordless-phone.md)登录任何 Azure AD 帐户，而不需要使用密码。 与 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 一样，Microsoft Authenticator 使用基于密钥的身份验证来启用与设备绑定的用户凭据，并使用生物识别身份验证或 PIN。
@@ -284,25 +284,25 @@ ms.locfileid: "94832596"
 **详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在你的组织中运行现实的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
 
 **最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
-**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../../active-directory/roles/security-planning.md)  
 
-[确保最近更改过管理帐户的密码](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[确保最近更改过管理帐户的密码](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[启用密码哈希同步](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[启用密码哈希同步](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[要求对所有特权角色用户和公开的用户进行多重身份验证](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[要求对所有特权角色用户和公开的用户进行多重身份验证](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[获取 Microsoft 365 安全分数（如果使用 Microsoft 365）](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[获取 Microsoft 365 安全分数（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[配置 Microsoft 365 活动监视（如果使用 Microsoft 365）](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[配置 Microsoft 365 活动监视（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[确定事件/紧急情况响应计划所有者](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[确定事件/紧急情况响应计划所有者](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[保护本地特权管理帐户](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[保护本地特权管理帐户](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 如果不保护特权访问，你可能会拥有过多高特权角色用户，并且更易受到攻击。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，通过凭据窃取获得敏感数据和系统的访问权限。
 

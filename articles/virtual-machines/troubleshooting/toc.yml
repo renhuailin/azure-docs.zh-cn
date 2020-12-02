@@ -212,7 +212,7 @@
   items:
     - name: 概述
       href: ../managed-disks-overview.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: ../faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
@@ -313,7 +313,7 @@
           href: ../windows/disk-encryption-overview.md
         - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:
@@ -342,7 +342,7 @@
 - name: 迁移和移动问题
   items:
     - name: Azure 资源管理器迁移（ASM 到 ARM）常见问题解答
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: 计划内维护
   items:
     - name: 概述

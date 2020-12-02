@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789533"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490595"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>在 Azure SQL 数据库和 Azure SQL 托管实例中优化应用程序和数据库以提高性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 > [!NOTE]
 > 虽然此示例特意选择了较小的卷，但非最佳参数的影响仍很大，对于较大的数据库尤为如此。 这种区别在极端情况下对于快速情况和慢速情况可在数秒和数小时之间。
 
-可检查 **sys.resource_stats** ，以确定测试使用的资源多于还是少于另一个测试。 在比较数据时，请使测试相隔一定时间，以使其不会在 **sys.resource_stats** 视图中的同一 5 分钟时间范围内重合。 本练习的目标是将使用的资源总量降至最低，而非将峰值资源降至最低。 一般而言，优化一段产生延迟的代码也会减少资源消耗。 请确保对应用程序所做的更改是必需的，且这些更改不会对那些可能会在应用程序中使用查询提示的人的客户体验造成负面影响。
+可检查 **sys.resource_stats**，以确定测试使用的资源多于还是少于另一个测试。 在比较数据时，请使测试相隔一定时间，以使其不会在 **sys.resource_stats** 视图中的同一 5 分钟时间范围内重合。 本练习的目标是将使用的资源总量降至最低，而非将峰值资源降至最低。 一般而言，优化一段产生延迟的代码也会减少资源消耗。 请确保对应用程序所做的更改是必需的，且这些更改不会对那些可能会在应用程序中使用查询提示的人的客户体验造成负面影响。
 
 如果工作负荷由一组重复的查询组成，则捕获并验证所做计划选择的最优性通常很有意义，因为这样做会使托管数据库所需的资源大小单位降至最低。 对其进行验证后，应偶尔重新检查计划，以帮助你确保其未降级。 可以详细了解[查询提示 (TRANSACT-SQL)](/sql/t-sql/queries/hints-transact-sql-query)。
 

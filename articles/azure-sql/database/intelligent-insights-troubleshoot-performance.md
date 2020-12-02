@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4837b905f4e65b5513f1dbf693af9815b5696a4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782954"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488821"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>使用智能见解排查 Azure SQL 数据库和 Azure SQL 托管实例的性能问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

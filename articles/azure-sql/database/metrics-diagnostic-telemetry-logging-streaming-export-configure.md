@@ -9,14 +9,14 @@ ms.devlang: sqldbrb=2
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: b1e1de694b6333a350d034b08225aeea117ae703
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790468"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490799"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>配置 Azure SQL 数据库和 Azure SQL 托管实例诊断遥测的流式导出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,13 +50,13 @@ ms.locfileid: "92790468"
 | [SQLInsights](#intelligent-insights-dataset)：包含针对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](intelligent-insights-overview.md)。 | 是 | 是 |
 
 > [!NOTE]
-> 不能为 **系统数据库** （例如 master、msdb、model、resource 和 tempdb 数据库）配置诊断设置。
+> 不能为 **系统数据库**（例如 master、msdb、model、resource 和 tempdb 数据库）配置诊断设置。
 
 ## <a name="streaming-export-destinations"></a>流式导出目标
 
 此诊断遥测数据可流式传输到以下 Azure 资源之一进行分析。
 
-- **[Log Analytics 工作区](#stream-into-sql-analytics)** ：
+- **[Log Analytics 工作区](#stream-into-sql-analytics)**：
 
   流式传输到 [Log Analytics 工作区](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) 的数据可由 [SQL Analytics](../../azure-monitor/insights/azure-sql.md)使用。 SQL Analytics 是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 可以使用收集的其他监视数据对流式传输到 Log Analytics 工作区的数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果
 - **[Azure 事件中心](#stream-into-event-hubs)** ：
@@ -64,8 +64,8 @@ ms.locfileid: "92790468"
   将数据流式传输到 [Azure 事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)可提供以下功能：
 
   - 将日志流式传输到第三方日志记录和遥测系统：将所有指标和资源日志流式传输到单个事件中心，以通过管道将日志数据传送到第三方 SIEM 或日志分析工具。
-  - **生成自定义遥测和日志记录平台** ：可利用事件中心高度可缩放的发布-订阅功能，灵活地将指标和资源日志引入到自定义遥测平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
-  - **通过将数据流式传输到 Power BI 来查看服务运行状况** ：使用事件中心、流分析和 Power BI 将诊断数据转换为 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅 [流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md) 。
+  - **生成自定义遥测和日志记录平台**：可利用事件中心高度可缩放的发布-订阅功能，灵活地将指标和资源日志引入到自定义遥测平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
+  - **通过将数据流式传输到 Power BI 来查看服务运行状况**：使用事件中心、流分析和 Power BI 将诊断数据转换为 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅 [流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md) 。
 - **[Azure 存储](#stream-into-azure-storage)** ：
 
   将数据流式传输到 [Azure 存储](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)可以存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
@@ -124,7 +124,7 @@ ms.locfileid: "92790468"
 4. 输入设置名称供自己参考。
 5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
 6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者选择现有的工作区。 
-7. 选中弹性池诊断遥测对应的复选框： **基本** 指标。
+7. 选中弹性池诊断遥测对应的复选框：**基本** 指标。
    ![为弹性池配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
 8. 选择“保存” 。
@@ -188,7 +188,7 @@ ms.locfileid: "92790468"
 4. 输入设置名称供自己参考。
 5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
 6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者使用现有的工作区。 
-7. 选中实例诊断遥测对应的复选框： **ResourceUsageStats** 。
+7. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
 
    ![为托管实例配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
@@ -349,7 +349,7 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 
    ![在门户中配置 Azure SQL Analytics](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/sql-analytics-configuration-blade.png)
 
-4. 选择“确定”以确认，然后选择“创建”  。
+4. 选择“确定”以确认，然后选择“创建”。
 
 ### <a name="configure-the-resource-to-record-metrics-and-resource-logs"></a>将资源配置为记录指标和资源日志
 

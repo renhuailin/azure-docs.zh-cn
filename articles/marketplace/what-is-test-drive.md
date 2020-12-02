@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489958"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490034"
 ---
 # <a name="what-is-a-test-drive"></a>什么是体验版？
 
@@ -24,7 +24,7 @@ ms.locfileid: "94489958"
 
 测试驱动器是按需为请求客户端的客户启动解决方案或应用程序的托管实例。 一旦分配了一个测试驱动器实例，该客户就可以在设定的时间段内使用它。 该时间段结束后，它将被删除，为另一个客户腾出空间。
 
-作为发布者，你可以在合作伙伴中心管理和配置测试驱动器设置。 技术配置详细信息因产品类型而异。 有关详细指南，请参阅 [测试驱动器技术配置](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)。
+作为发布者，你可以在合作伙伴中心管理和配置测试驱动器设置。 技术配置详细信息因产品类型而异。 有关详细指南，请参阅 [测试驱动器技术配置](./test-drive-technical-configuration.md)。
 
 潜在客户在 [AppSource](https://appsource.microsoft.com/en-US/)上发现你的产品/服务的 CTA。 它们提供了其联系信息并同意你的产品/服务的条款和隐私策略，并获得预配置环境的访问权限，以便在一段固定的时间内试用。 客户可获得对你的产品关键功能和权益的动手、自行指导的试用版，你将获得宝贵的潜在顾客。
 
@@ -43,7 +43,7 @@ ms.locfileid: "94489958"
 - 逻辑应用在支持模式下 (仅) 
 - Power BI
 
-有关配置其中一个测试驱动器的详细信息，请参阅 [测试驱动器技术配置](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)。 
+有关配置其中一个测试驱动器的详细信息，请参阅 [测试驱动器技术配置](./test-drive-technical-configuration.md)。 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器
 
@@ -65,7 +65,7 @@ ms.locfileid: "94489958"
 
 ### <a name="logic-app-test-drive"></a>逻辑应用测试驱动器
 
-这种类型的测试驱动器不由 Microsoft 托管，使用 Azure 资源管理器 (ARM) 用于 Dynamics AX/CRM 产品/服务的模板。 需要运行 ARM 模板，才能在 Azure 订阅中创建所需的资源。 逻辑应用测试驱动器当前仅提供支持模式，Microsoft 不建议使用此驱动器，有关配置逻辑应用测试驱动器的详细信息，请参阅 [测试驱动器技术配置](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)。
+这种类型的测试驱动器不由 Microsoft 托管，使用 Azure 资源管理器 (ARM) 用于 Dynamics AX/CRM 产品/服务的模板。 需要运行 ARM 模板，才能在 Azure 订阅中创建所需的资源。 逻辑应用测试驱动器当前仅提供支持模式，Microsoft 不建议使用此驱动器，有关配置逻辑应用测试驱动器的详细信息，请参阅 [测试驱动器技术配置](./test-drive-technical-configuration.md)。
 
 ### <a name="power-bi-test-drive"></a>Power BI 体验版
 
@@ -94,6 +94,6 @@ ms.locfileid: "94489958"
 - [试用版驱动最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF；确保弹出窗口阻止程序处于禁用状态）
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [体验版技术配置](test-drive-technical-configuration.md)

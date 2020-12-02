@@ -3,16 +3,16 @@ title: Azure 服务总线订阅规则 SQL 操作语法 |Microsoft Docs
 description: 本文提供了有关 SQL 规则操作语法的参考。 操作用基于 SQL 语言的语法编写，该语法针对消息执行。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808844"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489388"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
-在通过订阅规则筛选器选择消息后，将使用 *SQL 操作* 来操作消息元数据。 这是倾向标准的92子集上的文本表达式。 操作表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "action" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
+在通过订阅规则筛选器选择消息后，将使用 *SQL 操作* 来操作消息元数据。 这是倾向标准的92子集上的文本表达式。 操作表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "action" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
   
   
 ```  

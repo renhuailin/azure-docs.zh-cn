@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6d4e7f4ca7288b36f6801b9ddb362b7e936862d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9dda02e483f3437237837a9b3b8bdcbcf84fcd1d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843615"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489592"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>服务总线的 Azure 安全基线
 
 服务总线的 Azure 安全基线包含可帮助你改善部署安全状况的建议。 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-若要查看服务总线如何完全映射到 Azure 安全基准，请参阅 [完整的服务总线安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要了解服务总线如何完全映射到 Azure 安全基准，请参阅[完整的服务总线安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全性
 
@@ -60,7 +60,7 @@ ms.locfileid: "94843615"
 
 **指南**：在与服务总线命名空间相关联的虚拟网络上启用 DDoS 保护标准，以防止分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure 安全中心集成威胁情报](../security-center/azure-defender.md)
 
@@ -197,7 +197,7 @@ ms.locfileid: "94843615"
 
 **指导**：分析和监视日志中的异常行为，并定期查看与服务总线实体相关的结果。 使用 Azure Monitor 查看日志并对与服务总线相关的日志数据执行查询。
 
-- [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/get-started-portal.md)
+- [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -459,7 +459,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 服务总线。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 

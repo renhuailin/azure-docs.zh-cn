@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322875"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488558"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../cost-management-billing/understand/review-individual-bill.md)。
@@ -36,8 +36,8 @@ ms.locfileid: "89322875"
 | 资源位置  | 指明资源正在其中运行的数据中心。| `JA East`|
 | 已耗用的服务 | 使用的 Azure 平台服务。| `Microsoft.Compute`|
 | 资源组 | 部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。|`MyRG`|
-| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
-| Tags| 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何使用 [CLI](./linux/tag.md) 或 [PowerShell](./windows/tag.md) 标记虚拟机这仅适用于资源管理器 vm。| `{"myDepartment":"RD","myUser":"myName"}`|
+| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Tags| 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何使用 [CLI](./tag-cli.md) 或 [PowerShell](./tag-portal.md) 标记虚拟机这仅适用于资源管理器 vm。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 其他信息 | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下数据： <br><br> 映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。<br><br> 服务类型：所部署的大小。<br><br> VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。<br><br> UsageType：指定其所代表的使用情况类型。<br><br> ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。<br><br> ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。 | 虚拟机<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虚拟机规模集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>高级软件<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>映像类型

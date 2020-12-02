@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350392"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488776"
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -83,7 +83,7 @@ Azure 门户中每个 Azure Cosmos 数据库的“概述”页都提供数据库
 
 Azure Cosmos DB 提供了一个自定义体验来用于处理指标。 可以从“Azure Monitor”菜单中打开“指标”，使用指标资源管理器根据来自其他 Azure 服务的指标分析 Azure Cosmos DB 的指标 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。 还可以查看如何监视 Azure Cosmos DB 资源的 [服务器端延迟](monitor-server-side-latency.md)、 [请求单位使用情况](monitor-request-unit-usage.md)和 [规范化请求单位使用情况](monitor-normalized-request-units.md) 。
 
-有关为 Azure Cosmos DB 收集的平台指标列表，请参阅 [监视 Azure Cosmos DB 数据引用指标] Cosmos # 指标) 文章。
+有关为 Azure Cosmos DB 收集的平台指标列表，请参阅 [监视 Azure Cosmos DB 数据引用指标](monitor-cosmos-db-reference.md#metrics) 一文。
 
 Azure Cosmos DB 的所有指标都位于命名空间“Cosmos DB 标准指标”中。 在将筛选器添加到图表时，可对这些指标使用以下维度：
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 的所有指标都位于命名空间“Cosmos DB 标准指标”
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
@@ -176,7 +176,7 @@ Azure Cosmos DB 将数据存储在以下表中。
 
 例如，下表列出了资源的几个警报规则。 可以从 Azure 门户中找到警报规则的详细列表。 若要了解详细信息，请参阅 [如何配置警报](create-alerts.md) 一文。  
 
-| 警报类型 | 条件 | 描述  |
+| 警报类型 | 条件 | 说明  |
 |:---|:---|:---|
 |请求单位 (指标警报的速率限制)  |维度名称： StatusCode、Operator： Equals、Dimension 值：429  | 如果容器或数据库已超出预配的吞吐量限制，则会发出警报。 |
 |已故障转移区域 |运算符：大于，聚合类型：计数，阈值：1 | 单个区域发生故障转移时。 如果未启用自动故障转移，则此警报非常有用。 |
