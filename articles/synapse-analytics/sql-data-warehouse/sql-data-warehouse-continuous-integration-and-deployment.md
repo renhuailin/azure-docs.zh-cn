@@ -1,6 +1,6 @@
 ---
-title: 持续集成和部署
-description: 内置支持使用 Azure Pipelines 进行持续集成和部署的数据仓库的企业级数据库 DevOps 体验。
+title: 针对专用 SQL 池的持续集成和部署
+description: 企业级数据库 DevOps 体验，适用于 Azure Synapse Analytics 中的专用 SQL 池，内置支持使用 Azure Pipelines 进行持续集成和部署。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480524"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462811"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>适用于数据仓库的持续集成和部署
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中对专用 SQL 池进行持续集成和部署
 
 本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是为数据仓库构建持续集成和部署管道的第二步。
 
@@ -44,13 +44,13 @@ ms.locfileid: "92480524"
 
 现已创建一个简单的环境，在其中，只要签入到源代码管理存储库主分支，就会自动触发数据库项目的成功 Visual Studio 生成。 通过在本地数据库项目中做出更改并将该项更改签入到主分支，来验证自动化是否能够自始至终正常运行。
 
-## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>通过 Azure Synapse Analytics 进行持续部署 (或数据库) 部署任务
+## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>使用 Azure Synapse Analytics（或数据库）部署任务实现持续部署
 
-1. 使用 [Azure SQL 数据库部署任务](/azure/devops/pipelines/targets/azure-sqldb)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 你还可以使用 [Azure Synapse Analytics 部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。
+1. 使用 [Azure SQL 数据库部署任务](/azure/devops/pipelines/targets/azure-sqldb)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 还可以使用 [Azure Synapse Analytics 部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。
 
       ![部署任务](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "部署任务")
 
-2. 如果使用自承载代理，请确保将环境变量设置为使用正确的 Azure Synapse Analytics SqlPackage.exe。 路径应如下所示：
+2. 如果使用自托管代理，请确保将环境变量设置为对 Azure Synapse Analytics 使用正确的 SqlPackage.exe。 路径应如下所示：
 
       ![环境变量](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "环境变量")
 
@@ -60,7 +60,7 @@ ms.locfileid: "92480524"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索 [SYNAPSE SQL 池体系结构](massively-parallel-processing-mpp-architecture.md)
-- 快速[创建 SQL 池](create-data-warehouse-portal.md)
+- 探索 [ (以前的 SQL DW) 体系结构的专用 sql 池](massively-parallel-processing-mpp-architecture.md)
+- [ (以前的 SQL DW) 中快速创建专用 sql 池](create-data-warehouse-portal.md)
 - [加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)
 - 浏览[视频](sql-data-warehouse-videos.md)

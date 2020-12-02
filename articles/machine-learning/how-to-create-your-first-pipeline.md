@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630118"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463022"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -24,7 +24,7 @@ ms.locfileid: "94630118"
 
 本文介绍如何通过使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 来创建并运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批量评分方案，它们可以使用各种计算，重复使用步骤而不是重新运行步骤，以及与其他人共享 ML 工作流。
 
-尽管可以使用一种称作 [Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%252fmachine-learning%252fservice%252fcontext%252fml-context&preserve-view=true&tabs=yaml&view=azure-devops)的不同类型的管道来实现 ML 任务的 CI/CD 自动化，但这种类型的管道并不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
+尽管可以使用一种称作 [Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context&preserve-view=true&tabs=yaml&view=azure-devops)的不同类型的管道来实现 ML 任务的 CI/CD 自动化，但这种类型的管道并不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
 Azure 机器学习[工作区](how-to-manage-workspace.md)的成员可以看到创建的 ML 管道。 
 
@@ -253,7 +253,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python 环境如何处理管道参数
 
-如前面在 [配置训练运行的环境](#configure-the-training-runs-environment)中所述，环境状态和 Python 库依赖项是使用 `Environment` 对象指定的。 通常，可以 `Environment` 通过引用其名称和版本（可选）来指定现有的：
+如先前在[配置训练运行的环境](#configure-the-training-runs-environment)中所讨论的一样，环境状态和 Python 库依赖项是使用 `Environment` 对象指定的。 通常，可以通过引用现有 `Environment` 的名称和版本（可选）来指定它：
 
 ```python
 aml_run_config = RunConfiguration()
@@ -261,7 +261,7 @@ aml_run_config.environment.name = 'MyEnvironment'
 aml_run_config.environment.version = '1.0'
 ```
 
-但是，如果选择使用 `PipelineParameter` 对象在运行时为管道步骤动态设置变量，则不能使用这种方法来引用现有的 `Environment` 。 相反，如果要使用 `PipelineParameter` 对象，则必须将 `environment` 的字段设置 `RunConfiguration` 为 `Environment` 对象。 你需要负责确保此类 `Environment` 在正确设置的外部 Python 包上具有依赖关系。
+但是，如果选择使用 `PipelineParameter` 对象在运行时为管道步骤动态设置变量，则不能使用这种引用现有 `Environment` 的方法。 而如果想要使用 `PipelineParameter` 对象，则必须将 `RunConfiguration` 的 `environment` 字段设置为 `Environment` 对象。 你需要负责确保此类 `Environment` 正确设置了它对外部 Python 包的依赖项。
 
 ### <a name="use-a-dataset"></a>使用数据集 
 
@@ -305,7 +305,7 @@ ws = Run.get_context().experiment.workspace
 ## <a name="caching--reuse"></a>缓存和重复使用  
 
 若要优化和自定义管道的行为，可以围绕缓存和重复使用采取某些措施。 例如，可以选择：
-+ 在 [步骤定义](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)期间通过设置 `allow_reuse=False` 来 **禁用默认的重复使用步骤运行输出的行为** 。 在协作环境中使用管道时，“重复使用”非常关键，因为消除不必要的运行可以提高敏捷性。 但是，可以选择禁用重复使用。
++ 在 [步骤定义](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)期间通过设置 `allow_reuse=False` 来 **禁用默认的重复使用步骤运行输出的行为**。 在协作环境中使用管道时，“重复使用”非常关键，因为消除不必要的运行可以提高敏捷性。 但是，可以选择禁用重复使用。
 + 使用 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` **强制对运行中的所有步骤重新生成输出**
 
 默认情况下，已启用步骤的 `allow_reuse`，步骤定义中指定的 `source_directory` 将进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），并且 ` source_directory` 中未发生任何其他更改，则会重复使用前一个步骤运行的输出，不会将作业提交到计算，并且前一运行的结果立即可供下一步骤使用。
@@ -350,7 +350,7 @@ pipeline_run1.wait_for_completion()
 
 有关详细信息，请参阅 [Experiment 类](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)参考。
 
-## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>对在推断时更改的参数使用管道参数
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>对推理时更改的参数使用管道参数
 
 ## <a name="view-results-of-a-pipeline"></a>查看管道的结果
 

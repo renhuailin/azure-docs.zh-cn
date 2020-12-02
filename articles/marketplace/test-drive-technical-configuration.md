@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751107"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462896"
 ---
 # <a name="test-drive-technical-configuration"></a>体验版技术配置
 
@@ -38,9 +38,9 @@ Microsoft 可以通过托管和维护服务预配和取消设置，消除设置�
 
 - **角色名称**（必需）- 提供你在自定义 Dynamics 365 体验版中定义的安全角色名称，该名称将在用户体验版分配给用户（例如，名称为 test-drive-role）。
 
-若要获得有关如何为测试驱动器设置 Dynamics 365 环境并授予 AppSource 权限来设置和取消设置租户中的测试驱动器用户的帮助，请遵循 [这些说明](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)。
+若要获得有关如何为测试驱动器设置 Dynamics 365 环境并授予 AppSource 权限来设置和取消设置租户中的测试驱动器用户的帮助，请遵循 [这些说明](./test-drive-azure-subscription-setup.md)。
 
-有关列出和配置托管测试驱动器的分步说明，请访问 " [托管测试驱动器的详细配置](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) " 页。
+有关列出和配置托管测试驱动器的分步说明，请访问 " [托管测试驱动器的详细配置](./test-drive-hosted-detailed-config.md) " 页。
 
 ## <a name="logic-app-test-drive"></a>逻辑应用测试驱动器
 
@@ -95,7 +95,7 @@ Microsoft 可以通过托管和维护服务预配和取消设置，消除设置�
 
 如果你当前在合作伙伴中心创建了你的测试驱动器，请选择 " **保存草稿** "，然后继续。
 
-有关列出和配置托管测试驱动器的分步说明，请访问 " [托管测试驱动器的详细配置](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) " 页。
+有关列出和配置托管测试驱动器的分步说明，请访问 " [托管测试驱动器的详细配置](./test-drive-hosted-detailed-config.md) " 页。
 
 ## <a name="additional-resources"></a>其他资源
 

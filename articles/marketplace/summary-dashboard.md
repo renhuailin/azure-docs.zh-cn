@@ -7,21 +7,21 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 6b59da408ae7c88aaf8b9e7423fe955a861edf0f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565511"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462978"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“摘要”仪表板
 
 本文提供合作伙伴中心的“摘要”仪表板的相关信息。 此仪表板显示了聚合值的图表、趋势和值，这些内容汇总了你的产品/服务的市场活动。
 
-若要访问合作伙伴中心的 "摘要" 仪表板，请在 " **商用 Marketplace** " 下选择 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **摘要** "。
+若要访问合作伙伴中心的 "摘要" 仪表板，请在 "**商用 Marketplace** " 下选择 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **摘要**"。
 
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。
 
 ## <a name="summary-dashboard"></a>“摘要”仪表板
 
@@ -56,7 +56,7 @@ ms.locfileid: "94565511"
 
 ### <a name="customers-widget"></a>客户小组件
 
-" **摘要** " 仪表板的 " **客户** " 小组件显示在所选计算期间内已获得产品/服务的客户总数。 "客户" 小组件显示活动 (总数的计数和趋势，包括在所选计算期间内 (排除改动 customers) 的新的和现有的) 客户。 " **客户** " 下的百分比值表示所选计算期间的增长量。
+"**摘要**" 仪表板的 "**客户**" 小组件显示在所选计算期间内已获得产品/服务的客户总数。 "客户" 小组件显示活动 (总数的计数和趋势，包括在所选计算期间内 (排除改动 customers) 的新的和现有的) 客户。 " **客户** " 下的百分比值表示所选计算期间的增长量。
 
 [![说明 "摘要" 仪表板上的 "客户" 小组件。](./media/summary-dashboard/customers-widget.png)](./media/summary-dashboard/customers-widget.png#lightbox)
 
@@ -64,7 +64,7 @@ ms.locfileid: "94565511"
 
 ### <a name="usage-widget"></a>使用小组件
 
-" **摘要** " 仪表板的 " **使用情况** " 小组件表示 (VM) 产品/服务的所有 Azure 虚拟机的总规范化和原始使用小时数。 "使用情况" 小组件显示所选计算期间的总使用时间的计数和趋势。
+"**摘要**" 仪表板的 "**使用情况**" 小组件表示 (VM) 产品/服务的所有 Azure 虚拟机的总规范化和原始使用小时数。 "使用情况" 小组件显示所选计算期间的总使用时间的计数和趋势。
 
 使用情况摘要表显示客户购买的所有套餐的客户使用小时数。
 
@@ -109,4 +109,4 @@ Marketplace Insights 显示在 Azure Marketplace 和 AppSource 中访问你的�
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的“客户”仪表板](customer-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看有关 Azure Marketplace 和 AppSource 产品/服务的客户反馈的合并视图，请参阅 [合作伙伴中心的分级 & 审核分析仪表板](./partner-center-portal/ratings-reviews.md)。
-- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。

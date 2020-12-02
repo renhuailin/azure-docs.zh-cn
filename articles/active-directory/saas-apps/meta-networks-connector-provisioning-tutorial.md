@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b6a8f192cd26639431cc9fcb6b43e1bc5e8e2843
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359895"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353623"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教程：为 Meta Networks Connector 配置自动用户预配
 
@@ -115,7 +115,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 Meta Networks Connector 中创建、更新和禁用用户和/或组。
 
 > [!TIP]
-> 还可选择按照 [Meta Networks Connector 单一登录教程](./metanetworksconnector-tutorial.md)中提供的说明为 TMeta Networks Connector 启用基于 SAML 的单一登录。 可独立于自动用户预配来配置单一登录，尽管这两个功能互相补充
+> 还可选择按照 [Meta Networks Connector 单一登录教程](./metanetworksconnector-tutorial.md)中提供的说明为 Meta Networks Connector 启用基于 SAML 的单一登录。 可独立于自动用户预配来配置单一登录，尽管这两个功能互相补充
 
 ### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>若要在 Azure AD 中为 Meta Networks Connector 配置自动用户预配：
 

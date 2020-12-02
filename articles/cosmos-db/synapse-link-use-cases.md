@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340169"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463124"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB：准实时分析用例
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ ms.locfileid: "93340169"
 
   Synapse Link for Azure Cosmos DB 支持丰富的商业智能 (BI)/报告方案：
 
-  * 通过使用与 Synapse SQL 无服务器的本机集成和 T-sql 语言的完整表现力，从 Azure Cosmos DB 分析存储中查询操作数据。
+  * 通过使用与无服务器 SQL 池的本机集成和 T-sql 语言的完整表现力，从 Azure Cosmos DB 分析存储中查询操作数据。
 
-  * 通过 Synapse SQL 无服务器支持对熟悉的 BI 工具进行建模和发布自动刷新 BI Azure Cosmos DB 面板。 例如，Azure Analysis Services、Power BI Premium 等。
+  * 通过对熟悉的 BI 工具的无服务器 SQL 池支持，通过 Azure Cosmos DB 对 BI 仪表板进行建模和发布。 例如，Azure Analysis Services、Power BI Premium 等。
 
 下面是将批处理数据和流式处理数据集成到 Azure Cosmos DB 的一些指南：
 
@@ -143,4 +143,4 @@ Synapse Link for Azure Cosmos DB 用例：
 
 * [Azure Synapse Analytics 中的 Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure Synapse 分析中的 SQL 无服务器运行时支持](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure Synapse 分析中的无服务器 SQL 池运行时支持](../synapse-analytics/sql/on-demand-workspace-overview.md)

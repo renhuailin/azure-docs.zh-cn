@@ -7,25 +7,25 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462924"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
 本文提供了有关合作伙伴中心中的使用情况仪表板的信息。 此仪表板显示所有虚拟机 (VM) 在三个不同的选项卡中提供规范化使用情况、原始使用情况和计量计费指标： VM 标准化使用情况、VM 原始使用量和按流量计费的使用情况。
 
-若要访问合作伙伴中心的 "使用情况" 仪表板，请在 " **商用 Marketplace** " 下选择 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **使用量** "。
+若要访问合作伙伴中心的 "使用情况" 仪表板，请在 "**商用 Marketplace**" 下选择 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **使用量**"。
 
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。
 
 ## <a name="usage-dashboard"></a>使用情况仪表板
 
-" **分析** " 菜单中的 " **使用情况** " 仪表板显示所有软件即服务 (SaaS) 产品的当前订单。 你可以查看以下各项的图形表示形式：
+"**分析**" 菜单中的 "**使用情况**" 仪表板显示所有软件即服务 (SaaS) 产品的当前订单。 你可以查看以下各项的图形表示形式：
 
 - 使用趋势
 - 按产品/服务的规范化使用情况
@@ -76,7 +76,7 @@ ms.locfileid: "94565532"
 
 " **按产品/服务** 列出的订单" 和 "SKU" 图表显示了所有产品的度量值和趋势。 注意以下事项：
 
-- 最上面的产品/服务将显示在图中，其余的产品/服务将被分组为 **rest** 。
+- 最上面的产品/服务将显示在图中，其余的产品/服务将被分组为 **rest**。
 - 可以在图例中选择特定产品/服务以在图形中仅显示这些产品/服务。
 - 将鼠标悬停在图中的某一切片上将显示与所有产品/服务的订单总数相比，该产品/服务的订单数和百分比。
 - “按产品/服务趋势统计的订单”显示逐月增长趋势。 月份列表示按产品/服务名称统计的订单数。 折线图显示在 z 轴上绘制的增长百分比趋势。
@@ -175,9 +175,9 @@ VM 原始使用情况的小组件和导出报告类似于 VM 标准化的使用�
 
     :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="说明使用情况仪表板上的 VM 标准化使用情况图表。":::
 
-- **按 sku 的超额趋势** ：按 sku/计划表示所选计量维度的使用量趋势。 显示所选产品/服务使用情况最高的前5个计划。
+- **按 sku 的超额趋势**：按 sku/计划表示所选计量维度的使用量趋势。 显示所选产品/服务使用情况最高的前5个计划。
 
-- **客户的超额趋势** ：客户领导者面板表示使用时间最长的客户的堆积列表，并在 _领导板_ 上显示，按自定义计量器的最高使用量进行排序。 在领导者面板中选择一个客户，以查看所选计量维度的超额使用趋势。
+- **客户的超额趋势**：客户领导者面板表示使用时间最长的客户的堆积列表，并在 _领导板_ 上显示，按自定义计量器的最高使用量进行排序。 在领导者面板中选择一个客户，以查看所选计量维度的超额使用趋势。
 
     :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="说明使用情况仪表板上的 &quot;客户的按流量计费&quot; 图表。":::
 
@@ -194,4 +194,4 @@ VM 原始使用情况的小组件和导出报告类似于 VM 标准化的使用�
 - 对于虚拟机 (VM) 提供使用情况和计量计费指标，请参阅 [商业 marketplace 分析中的使用情况仪表板](usage-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看有关 Azure Marketplace 中产品/服务的客户反馈和 Microsoft AppSource 的综合视图，请参阅 [合作伙伴中心的分级 & 审查分析仪表板](./partner-center-portal/ratings-reviews.md)。
-- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。

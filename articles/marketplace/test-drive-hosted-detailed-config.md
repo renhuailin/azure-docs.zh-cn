@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751243"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462947"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>托管测试驱动器的详细配置
 
@@ -29,7 +29,7 @@ ms.locfileid: "95751243"
 
     - **测试驱动器的类型** -选择 " **Microsoft 托管 (Dynamics 365 for Customer Engagement & PowerApps)**"。 这表明，Microsoft 将托管和维护执行测试驱动器用户预配和取消预配的服务。
 
-5. 使用 [这些说明](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)向租户中的用户授予预配和取消预配的 Microsoft AppSource 权限。 在此步骤中，将生成如下所述的 **AZURE AD 应用 ID** 和 **Azure AD 应用密钥** 值。
+5. 使用 [这些说明](./test-drive-azure-subscription-setup.md)向租户中的用户授予预配和取消预配的 Microsoft AppSource 权限。 在此步骤中，将生成如下所述的 **AZURE AD 应用 ID** 和 **Azure AD 应用密钥** 值。
 6. 请在 " **测试驱动器技术配置** " 页上完成这些字段。
 
     [!["测试驱动器技术配置" 页。](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ ms.locfileid: "95751243"
     - **Azure Active Directory 租户名称** –适用于 Dynamics 365 实例的 Azure 租户的名称。 使用格式 `<tenantname>.onmicrosoft.com`。 示例值： `testdrive.onmicrosoft.com` 。
     - **Azure Active Directory 应用程序 ID** –在步骤5中创建的 AZURE ACTIVE DIRECTORY (AD) 应用的 ID。 示例值： `53852862-a2ae-4e43-9461-faa49650a096` 。
     - Azure Active Directory 在步骤5中创建的 Azure AD 应用的 **应用程序客户端机密**。 示例值： `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` 。
-    - **试用法律实体** –提供用于分配试用用户的法律实体。 您可以在 [创建或修改法律实体](https://technet.microsoft.com/library/hh242184.aspx)时创建一个新的。
+    - **试用法律实体** –提供用于分配试用用户的法律实体。 您可以在 [创建或修改法律实体](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity)时创建一个新的。
     - **角色名称** –为测试驱动器创建的自定义 Dynamics 365 安全角色的 AOT 名称 (应用程序对象树) 。 这是在其测试驱动器中将分配给用户的角色。
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="&quot;安全配置&quot; 页。":::

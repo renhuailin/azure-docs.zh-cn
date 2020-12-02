@@ -3,12 +3,12 @@ title: Azure 事件网格传送和重试
 description: 介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345347"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463238"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -57,7 +57,7 @@ az eventgrid event-subscription create \
 
 当 EventGrid 收到事件传递尝试的错误时，EventGrid 会根据错误的类型决定是否应重试传递或死信，或删除事件。 
 
-如果订阅的终结点返回的错误是与配置相关的错误，则无法修复这些错误 (例如，如果终结点已被删除) ，EventGrid 它将执行死号事件，或在未配置死信时删除事件。
+如果订阅的终结点返回的错误是与配置相关的错误，则无法修复这些错误 (例如，如果终结点已被删除) ，则 EventGrid 将执行死信，如果未配置死信，则删除事件。
 
 下面是不会进行重试的终结点类型：
 

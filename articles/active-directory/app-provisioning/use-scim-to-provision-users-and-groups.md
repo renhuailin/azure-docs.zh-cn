@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174809"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348188"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -199,29 +199,21 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
   - [创建用户](#create-user)（[请求](#request) / [响应](#response)）
   - [获取用户](#get-user)（[请求](#request-1) / [响应](#response-1)）
   - [通过查询获取用户](#get-user-by-query)（[请求](#request-2) / [响应](#response-2)）
-  - [通过查询获取用户 - 零个结果](#get-user-by-query---zero-results)（[请求](#request-3)
-/ [响应](#response-3)）
-  - [更新用户[多值属性]](#update-user-multi-valued-properties)（[请求](#request-4) /  [响应](#response-4)）
-  - [更新用户[单值属性]](#update-user-single-valued-properties)（[请求](#request-5)
-/ [响应](#response-5)） 
-  - [禁用用户](#disable-user)（[请求](#request-14) / 
-[响应](#response-14)）
-  - [删除用户](#delete-user)（[请求](#request-6) / 
-[响应](#response-6)）
+  - [通过查询获取用户 - 零个结果](#get-user-by-query---zero-results)（[请求](#request-3) / [响应](#response-3)）
+  - [更新用户[多值属性]](#update-user-multi-valued-properties)（[请求](#request-4) / [响应](#response-4)）
+  - [更新用户[单值属性]](#update-user-single-valued-properties)（[请求](#request-5) / [响应](#response-5)） 
+  - [禁用用户](#disable-user)（[请求](#request-14) / [响应](#response-14)）
+  - [删除用户](#delete-user)（[请求](#request-6) / [响应](#response-6)）
 
 
 [组操作](#group-operations)
   - [创建组](#create-group)（[请求](#request-7) / [响应](#response-7)）
   - [获取组](#get-group)（[请求](#request-8) / [响应](#response-8)）
   - [按 displayName 获取组](#get-group-by-displayname)（[请求](#request-9) / [响应](#response-9)）
-  - [更新组[非成员属性]](#update-group-non-member-attributes)（[请求](#request-10)/
- [响应](#response-10)）
-  - [更新组[添加成员]](#update-group-add-members)（[请求](#request-11) /
-[响应](#response-11)）
-  - [更新组[删除成员]](#update-group-remove-members)（[请求](#request-12) /
-[响应](#response-12)）
-  - [删除组](#delete-group)（[请求](#request-13) /
-[响应](#response-13)）
+  - [更新组[非成员属性]](#update-group-non-member-attributes)（[请求](#request-10) / [响应](#response-10)）
+  - [更新组[添加成员]](#update-group-add-members)（[请求](#request-11) / [响应](#response-11)）
+  - [更新组[删除成员]](#update-group-remove-members)（[请求](#request-12) / [响应](#response-12)）
+  - [删除组](#delete-group)（[请求](#request-13) / [响应](#response-13)）
 
 ### <a name="user-operations"></a>用户操作
 

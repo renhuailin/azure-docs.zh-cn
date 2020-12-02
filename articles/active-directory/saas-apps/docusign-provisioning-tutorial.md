@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d813757d5adb8cee9b83e0486baed80ae1bac874
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180925"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349899"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配
 
@@ -74,7 +74,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
 > [!NOTE]
-> 如果同时设置了 SSO 和用户预配，则需要将用于预配的授权凭据配置为使用 SSO 和用户名/密码。
+> 如果同时设置了 SSO 和用户设置，则需要将用于预配的授权凭据配置为使用 SSO 和用户名/密码。
 
 1. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 DocuSign 应用。
 
