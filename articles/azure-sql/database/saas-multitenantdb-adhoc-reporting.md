@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 262c54c3eb47c8539dce89c01f32c7feb1884b7c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 800592b7a8b263fea2883fdd3e030f78f72647dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459927"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>运行跨多个数据库（Azure SQL 数据库）的特别报告查询
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 这些数据库分布在不同资源组和订阅中。 但是，公用登录名必须具有访问从所有数据库提取的数据的权限。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射确定所有租户数据库的位置。 设置和查询直接使用标准 [Transact-SQL](/sql/t-sql/language-reference) 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
 
-通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 请确保设计查询以最小化返回的数据。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库。 并评估返回多少数据。 将已提取的租户数据保存到针对分析查询进行了优化的数据库，从而使需要进行复杂分析处理的查询获取到更好的服务。 SQL 数据库和 Azure Synapse Analytics（以前称为“SQL 数据仓库”）可以托管此类分析数据库。
+通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 请确保设计查询以最小化返回的数据。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库。 并评估返回多少数据。 将已提取的租户数据保存到针对分析查询进行了优化的数据库，从而使需要进行复杂分析处理的查询获取到更好的服务。 SQL 数据库和 Azure Synapse Analytics 可以托管此类分析数据库。
 
 这种分析模式在[租户分析教程](saas-multitenantdb-tenant-analytics.md)中进行了介绍。
 
@@ -116,7 +116,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* 。
+1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql*。
 2. 确保已连接到 adhocanalytics 数据库。
 3. 选择“查询”菜单，然后单击“包括实际的执行计划”
 4. 突出显示“当前注册了哪些地点?”查询，然后按 F5。

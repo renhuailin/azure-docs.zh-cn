@@ -1,6 +1,6 @@
 ---
-title: 使用无服务器 SQL 池（预览版）查询数据存储
-description: 本文描述了如何使用无服务器 SQL 池（预览版）资源在 Azure Synapse Analytics 中查询 Azure 存储。
+title: 使用无服务器 SQL 池查询数据存储
+description: 本文描述了如何使用无服务器 SQL 池资源在 Azure Synapse Analytics 中查询 Azure 存储。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299575"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462661"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池（预览版）查询存储文件
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
-使用无服务器 SQL 池（预览版）可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。 对于查询，T-SQL 的以下方面受支持：
+使用无服务器 SQL 池可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。 对于查询，T-SQL 的以下方面受支持：
 
 - 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 外围应用，包括大部分 [SQL 函数和运算符](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 会创建一个[外部表](develop-tables-external-tables.md)，然后将 Transact-SQL SELECT 语句的结果并行导出到 Azure 存储。
@@ -222,7 +222,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 ### <a name="tools"></a>工具
 
 发出查询所需的工具：
-    - Azure Synapse Studio（预览版）
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

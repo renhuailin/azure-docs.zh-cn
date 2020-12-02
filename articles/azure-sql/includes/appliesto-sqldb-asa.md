@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1b72b71b1e88dcf8ed8183cbde5134f5019a68b0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 339569e76bdf697ef865766e0b9e33b713e694e4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412964"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445389"
 ---
-<Token>适用于：:::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL 数据库 :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Synapse Analytics（SQL 数据仓库）</Token> 
+<Token>适用于：:::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL 数据库 :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Synapse Analytics </Token> 
 

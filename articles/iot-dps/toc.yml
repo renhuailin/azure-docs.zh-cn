@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: 使用自定义分配策略
           href: tutorial-custom-allocation-policies.md
+        - name: 预配多个 X.509 设备
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2 - 将设备预配到多个中心
       items:
         - name: 将多个中心链接到 DPS
