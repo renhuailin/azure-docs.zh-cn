@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的整理数据流转换函数
 description: Azure 数据工厂中的可用整理数据流函数概述
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 28c6228d4401db0fd1301137167a86cb6f18cbeb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233944"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494913"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整理数据流中的转换函数
 
@@ -55,7 +55,7 @@ ms.locfileid: "93233944"
 * 文本连接
 * 日期 andTime 算术运算 (算术运算符、 [AddDays](/powerquery-m/date-adddays)、 [AddMonths](/powerquery-m/date-addmonths)、 [AddQuarters](/powerquery-m/date-addquarters)、 [AddWeeks](/powerquery-m/date-addweeks)、 [AddYears) ](/powerquery-m/date-addyears)
 * 持续时间可用于日期和时间算法，但必须转换为另一种类型，然后才能写入接收器 (算术运算符、 [#duration](/powerquery-m/sharpduration)、 [duration](/powerquery-m/duration-days)、Duration、 [duration、](/powerquery-m/duration-hours) [TotalDays](/powerquery-m/duration-totaldays)、 [Duration.Minutes](/powerquery-m/duration-minutes) [TotalHours](/powerquery-m/duration-totalhours) [、duration.](/powerquery-m/duration-seconds) [totaldvrduration.totalminutes](/powerquery-m/duration-totalminutes)、 [duration. timespan.totalseconds](/powerquery-m/duration-totalseconds))     
-* 大多数标准、科学和三角数字函数 ( [操作](/powerquery-m/number-functions#operations)、 [舍入](/powerquery-m/number-functions#rounding)和三角函数下除 Number [Trigonometry](/powerquery-m/number-functions#trigonometry) *之外* 的所有函数。阶乘、数字和组合) 
+* 大多数标准、科学和三角数字函数 ([操作](/powerquery-m/number-functions#operations)、[舍入](/powerquery-m/number-functions#rounding)和三角函数下除 Number [Trigonometry](/powerquery-m/number-functions#trigonometry) *之外* 的所有函数。阶乘、数字和组合) 
 * 替换 ([替换器，ReplaceText](/powerquery-m/replacer-replacetext)， [替换器](/powerquery-m/replacer-replacevalue) [，](/powerquery-m/text-replace) [text. Remove](/powerquery-m/text-remove)) 
 * 位置文本提取 ([PositionOf](/powerquery-m/text-positionof)、Text、 [Length](/powerquery-m/text-length)、text. [Start](/powerquery-m/text-start)、Text. [End](/powerquery-m/text-end)、 [ReplaceRange](/powerquery-m/text-replacerange)、 [Text.Middle](/powerquery-m/text-middle) [RemoveRange](/powerquery-m/text-removerange)) 
 * 基本文本格式 ([text. Lower](/powerquery-m/text-lower)、 [text、text](/powerquery-m/text-upper)。 [Trim](/powerquery-m/text-trim) / [开始](/powerquery-m/text-trimstart) / [结束](/powerquery-m/text-trimend)、 [PadStart](/powerquery-m/text-padstart) / [结束](/powerquery-m/text-padend)、[文本。反向](/powerquery-m/text-reverse)) 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146801"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494947"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>媒体服务和视频点播 (VOD) 的高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "93146801"
 
 ## <a name="high-availability-for-vod"></a>VOD 的高可用性
 
-Azure 体系结构文档中有一个名为 [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) 的高可用性设计模式。 它介绍了如何将重复的资源部署到不同的地理区域，以提供可伸缩性和复原能力。  你可以使用 Azure 服务创建这样的体系结构，以涵盖许多高可用性设计注意事项，例如冗余、运行状况监视、负载均衡以及数据备份与恢复。  下面介绍了一个这样的体系结构，详述了解决方案中使用的每个服务，以及如何使用各个服务为 VOD 应用程序创建高可用性体系结构。
+Azure 体系结构文档中有一个名为 [Geodes](/azure/architecture/patterns/geodes) 的高可用性设计模式。 它介绍了如何将重复的资源部署到不同的地理区域，以提供可伸缩性和复原能力。  你可以使用 Azure 服务创建这样的体系结构，以涵盖许多高可用性设计注意事项，例如冗余、运行状况监视、负载均衡以及数据备份与恢复。  下面介绍了一个这样的体系结构，详述了解决方案中使用的每个服务，以及如何使用各个服务为 VOD 应用程序创建高可用性体系结构。
 
 ### <a name="sample"></a>示例
 
@@ -36,7 +36,7 @@ Azure 体系结构文档中有一个名为 [Geodes](https://docs.microsoft.com/a
 
 此示例体系结构中使用的服务包括：
 
-| 图标 | “属性” | 描述 |
+| 图标 | “属性” | 说明 |
 | :--: | ---- | ----------- |
 |![这是 Media services 帐户图标。](media/media-services-high-availability-encoding/azure-media-services.svg)| 媒体服务帐户 | **描述：**<br>媒体服务帐户是在 Azure 中管理、加密、编码、分析和流式传输媒体内容的起点。 它与某个 Azure 存储帐户资源相关联。 该帐户和所有关联的存储必须位于同一 Azure 订阅中。<br><br>**VOD 使用：**<br>可以使用这些服务对视频和音频资产进行编码和传送操作。  为实现高可用性，你需要设置至少两个媒体服务帐户，每个帐户在不同的区域中。 [详细了解 Azure 媒体服务](media-services-overview.md)。 |
 |![这是存储帐户图标。](media/media-services-high-availability-encoding/storage-account.svg)| 存储帐户 | **描述：**<br>Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问数据。<br><br>每个区域中的每个媒体服务帐户在同一区域中都有一个存储帐户。<br><br>**VOD 使用：**<br>可以存储用于 VOD 处理和流式处理的输入和输出数据。 [详细了解 Azure 存储](../../storage/common/storage-introduction.md)。 |
@@ -87,4 +87,4 @@ Azure 体系结构文档中有一个名为 [Geodes](https://docs.microsoft.com/a
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[代码示例](https://docs.microsoft.com/samples/browse/?products=azure-media-services)
+* 查看[代码示例](/samples/browse/?products=azure-media-services)

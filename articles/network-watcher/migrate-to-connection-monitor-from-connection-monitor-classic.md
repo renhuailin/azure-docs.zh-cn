@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a97f3bf3a479d956747755a421d7946f7aafd4f1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522939"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494233"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器迁移到连接监视器 (经典) 
 
@@ -34,7 +34,7 @@ ms.locfileid: "95522939"
    * **警报**：自动迁移到新的度量值。
    * **仪表板和集成**：需要手动编辑度量值集。 
     
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果使用的是自定义工作区，请确保在订阅和 Log Analytics 工作区的区域中启用了网络观察程序。 
 
@@ -64,5 +64,5 @@ ms.locfileid: "95522939"
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关连接监视器的详细信息，请参阅：
-* [从网络性能监视器迁移到连接监视器](/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)
+* [从网络性能监视器迁移到连接监视器](./migrate-to-connection-monitor-from-network-performance-monitor.md)
 * [使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)

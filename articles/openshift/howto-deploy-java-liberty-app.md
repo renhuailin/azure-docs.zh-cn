@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java、jakartaee、javaee、microprofile、开放式-自由、websphere-、aro、openshift、red hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018386"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493929"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上使用开放式自由/WebSphere 自由部署 Java 应用程序
 
@@ -25,26 +25,26 @@ ms.locfileid: "95018386"
 若要成功完成本指南，请完成以下先决条件。
 
 > [!NOTE]
-> Azure Red Hat OpenShift 至少需要 40 个核心才能创建和运行 OpenShift 群集。 新 Azure 订阅的默认 Azure 资源配额不满足此要求。 若要请求提高资源上限，请参阅[标准配额：按 VM 系列提高上限](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)中所述。 请注意，免费试用订阅不适用于配额增加，请在请求增加配额之前 [升级到即用即付订阅](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) 。
+> Azure Red Hat OpenShift 至少需要 40 个核心才能创建和运行 OpenShift 群集。 新 Azure 订阅的默认 Azure 资源配额不满足此要求。 若要请求提高资源上限，请参阅[标准配额：按 VM 系列提高上限](../azure-portal/supportability/per-vm-quota-requests.md)中所述。 请注意，免费试用订阅不适用于配额增加，请在请求增加配额之前 [升级到即用即付订阅](../cost-management-billing/manage/upgrade-azure-subscription.md) 。
 
 1. 使用安装了类似于 Unix 的操作系统 (例如，Ubuntu、macOS) 准备本地计算机。
 1. 安装 Java SE 实现 (例如， [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) 。
 1. 安装 [Maven](https://maven.apache.org/download.cgi) 3.5.0 或更高版本。
 1. 安装适用于你的操作系统的 [Docker](https://docs.docker.com/get-docker/) 。
-1. 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 2.0.75 或更高版本。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 或更高版本。
 1. [`envsubst`](https://command-not-found.com/envsubst)如果未在操作系统中预先安装，请检查并安装。
 1. 在本地系统上克隆此示例的代码。 该示例位于 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)上。
-1. 按照 [创建 Azure Red Hat OpenShift 4 群集](/azure/openshift/tutorial-create-cluster)中的说明进行操作。
+1. 按照 [创建 Azure Red Hat OpenShift 4 群集](./tutorial-create-cluster.md)中的说明进行操作。
 
    尽管 "获取 Red Hat 请求机密" 步骤标记为可选，但 **本文仍需要此** 步骤。  "获取密钥" 允许 Azure Red Hat OpenShift 群集查找开放式自由运算符。
 
    如果打算在群集上运行内存密集型应用程序，请使用参数为辅助角色节点指定适当的虚拟机大小 `--worker-vm-size` 。 例如， `Standard_E4s_v3` 是在群集上安装 Elasticsearch 操作员的最小虚拟机大小。 有关详细信息，请参阅：
 
-   * [Azure CLI 创建群集](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [内存优化支持的虚拟机大小](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Azure CLI 创建群集](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [内存优化支持的虚拟机大小](./support-policies-v4.md#memory-optimized)
    * [安装 Elasticsearch 运算符的先决条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. 按照 [连接到 Azure Red Hat OpenShift 4 群集](/azure/openshift/tutorial-connect-cluster)中的步骤连接到群集。
+1. 按照 [连接到 Azure Red Hat OpenShift 4 群集](./tutorial-connect-cluster.md)中的步骤连接到群集。
    * 请务必遵循 "安装 OpenShift CLI" 中的步骤，因为我们将 `oc` 在本文的后面部分使用该命令。
    * 写下群集控制台 URL，如所示 `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` 。
    * 记下 `kubeadmin` 凭据。
@@ -97,7 +97,7 @@ ms.locfileid: "95018386"
 1. 使用凭据登录到浏览器中的 OpenShift web 控制台 `kubeadmin` 。
 2. 导航到 "**运算符**  >  **OperatorHub** " 并搜索 "**开放式自由运算符**"。
 3. 从搜索结果中选择 " **打开自由运算符** "。
-4. 选择“安装”  。
+4. 选择“安装”。
 5. 在 popup **Create Operator 订阅** 中，检查 **群集上的所有命名空间 (默认)** **安装模式**、 **Beta 版****更新通道** 和 **自动****批准策略**：
 
    ![为开放式自由运算符创建操作员订阅](./media/howto-deploy-java-liberty-app/install-operator.png)
@@ -314,7 +314,7 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>清理资源
 
-按照[教程：删除 Azure Red Hat OpenShift 4 群集](/azure/openshift/tutorial-delete-cluster)中的步骤操作，删除 ARO 群集
+按照[教程：删除 Azure Red Hat OpenShift 4 群集](./tutorial-delete-cluster.md)中的步骤操作，删除 ARO 群集
 
 ## <a name="next-steps"></a>后续步骤
 

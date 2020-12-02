@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314642"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494403"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>排查 Azure Migrate 项目问题
 
@@ -19,7 +19,7 @@ ms.locfileid: "92314642"
 
 ## <a name="how-to-add-new-project"></a>如何添加新项目？
 
-一个订阅中可以有多个 Azure Migrate 项目。 [了解如何](how-to-add-tool-first-time.md) 首次创建项目，或 [添加其他](create-manage-projects.md#create-additional-projects) 项目。
+一个订阅中可以有多个 Azure Migrate 项目。 [了解如何](./create-manage-projects.md) 首次创建项目，或 [添加其他](create-manage-projects.md#create-additional-projects) 项目。
 
 ## <a name="what-azure-permissions-are-needed"></a>需要哪些 Azure 权限？
 
@@ -40,13 +40,13 @@ ms.locfileid: "92314642"
 
 ## <a name="can-i-upgrade-old-project"></a>能否升级旧项目？
 
-无法更新以前版本的 Azure Migrate 中的项目。 你需要 [创建一个新项目](how-to-add-tool-first-time.md)，并向其中添加工具。
+无法更新以前版本的 Azure Migrate 中的项目。 你需要 [创建一个新项目](./create-manage-projects.md)，并向其中添加工具。
 
 ## <a name="cant-create-a-project"></a>无法创建项目
 
 如果尝试创建项目并遇到部署错误：
 
-- 如果是暂时性错误，请尝试再次创建项目。 在 **部署**中，单击 " **重新部署** " 重试。
+- 如果是暂时性错误，请尝试再次创建项目。 在 **部署** 中，单击 " **重新部署** " 重试。
 - 检查订阅中是否有参与者或所有者权限。
 - 如果要在新添加的地理位置进行部署，请稍等片刻，然后重试。
 - 如果收到错误 "请求必须包含用户标识标头"，这可能表示无权访问 Azure Active Directory (组织) 租户的 Azure AD。 在这种情况下：
@@ -61,7 +61,7 @@ ms.locfileid: "92314642"
 
 ## <a name="added-tools-dont-show"></a>添加的工具不显示
 
-请确保已选择正确的项目。 在 Azure Migrate 中心 > **服务器** "或" **数据库**"中，单击屏幕右上角的" 迁移项目 "旁边的" **更改** " ** (更改) ** 。 选择正确的订阅和项目名称 > **"确定"**。 该页应以所选项目的已添加工具进行刷新。
+请确保已选择正确的项目。 在 Azure Migrate 中心 > **服务器** "或" **数据库**"中，单击屏幕右上角的" 迁移项目 "旁边的" **更改** " **(更改)** 。 选择正确的订阅和项目名称 > **"确定"**。 该页应以所选项目的已添加工具进行刷新。
 
 ## <a name="next-steps"></a>后续步骤
 

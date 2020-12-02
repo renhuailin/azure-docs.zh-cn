@@ -3,12 +3,12 @@ title: Azure Migrate 常见问题
 description: 获取有关 Azure Migrate 服务的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0877ad0d36e131525a227050cf44321e39e8b30
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847459"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494607"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -41,7 +41,7 @@ Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来�
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一个项目，该项目具有以前的经典体验 Azure Migrate。 如何实现开始使用新版本吗？
 
-无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
+无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](./create-manage-projects.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：服务器评估和地图工具包之间的区别是什么？
 

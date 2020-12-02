@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的整理数据流
 description: Azure 数据工厂中的整理数据流概述
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 607ed6167ec761a6bf380a2cc420eb72f808f0a3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636062"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494862"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什么是整理数据流？
 

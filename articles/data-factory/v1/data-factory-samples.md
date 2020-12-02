@@ -3,20 +3,20 @@ title: Azure 数据工厂 - 示例
 description: 提供 Azure 数据工厂服务相关示例的详细信息。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019610"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495185"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -90,7 +90,7 @@ ms.locfileid: "96019610"
    2. 在右窗格中选择“数据工厂模板”。
    3. 输入项目的 **名称**。
    4. 选择项目的 **位置**。
-   5. 单击“确定”。
+   5. 单击 **“确定”** 。
 
       ![“新建项目”对话框](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. 在“数据工厂模板”对话框中，从“用例模板”部分选择示例模板，并单击“下一步”。 以下步骤将引导用户完成“客户分析”模板的使用。 步骤与其他示例的步骤类似。
@@ -103,7 +103,7 @@ ms.locfileid: "96019610"
    3. 选择要在其中创建数据工厂的 **Azure 订阅**。
    4. 为数据工厂选择 **资源组**。
    5. 在“区域”中选择“美国西部”、“美国东部”或“北欧”。
-   6. 单击“配置目录分区”  。
+   6. 单击“下一步”  。
 6. 在 " **配置数据存储** " 页上，指定 **azure SQL 数据库中** 的现有数据库和 **azure 存储帐户** (或者) "创建数据库/存储"，然后单击 "下一步"。
 7. 在“配置计算”页上，选择“默认”，并单击“下一步”。
 8. 在“摘要”页上，查看所有设置，并单击“下一步”。

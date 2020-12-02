@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 151b72eb11600713b115d45e5927d8170a519ad1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: a7d63fd76a88430495c9f55200308f63b11c89d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494301"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 灵活的服务器中创建和管理读取副本
 
@@ -44,7 +44,7 @@ az mysql flexible-server replica create --replica-name mydemoreplicaserver --sou
 ``` 
 
 > [!NOTE]
-> 将用与源相同的服务器配置创建读取副本。 副本服务器配置在创建后可以更改。 副本服务器始终在与源服务器相同的资源组、相同的位置和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与源保持同步。
+> 将用与源相同的服务器配置创建读取副本。 副本服务器配置在创建后可以更改。 副本服务器始终在与源服务器相同的资源组、相同的位置和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与源保持同步。
 
 
 ### <a name="list-replicas-for-a-source-server"></a>列出源服务器的副本

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317140"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494573"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>评估大量物理服务器以迁移到 Azure
 
@@ -66,14 +66,14 @@ ms.locfileid: "92317140"
 
 按照 [本教程](./tutorial-discover-physical.md) 中的说明配置这些设置。
 
-## <a name="create-a-project"></a>创建一个项目
+## <a name="create-a-project"></a>创建项目
 
 按照规划要求，执行以下操作：
 
 1. 创建 Azure Migrate 项目。
 2. 将 Azure Migrate 服务器评估工具添加到项目。
 
-[了解详细信息](how-to-add-tool-first-time.md)
+[了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494437"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -80,7 +80,7 @@ ms.locfileid: "92315785"
     - [详细了解](./migrate-appliance.md#appliance---vmware) 所需的 Azure 角色和权限。
 - 如果注册失败，因为找不到用于注册设备的 Azure Migrate 项目，所以如果注册失败，则会出现 "设备可能未成功注册到 Azure Migrate 项目" 错误60039。
     - 在 Azure 门户中，检查该项目是否存在于资源组中。
-    - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) 创建新项目。
+    - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](./create-manage-projects.md#create-a-project-for-the-first-time) 创建新项目。
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>错误60030/60031： Key Vault 管理操作失败
 
@@ -124,7 +124,7 @@ ms.locfileid: "92315785"
 - 确保从设备到服务器的连接
 - 如果它是 linux 服务器，请使用以下步骤确保启用基于密码的身份验证：
     1. 登录到 linux 计算机，并使用命令 "vi/etc/ssh/sshd_config" 打开 ssh 配置文件
-    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存文件。
+    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存该文件。
     3. 通过运行 "service sshd restart" 重新启动 ssh 服务
 - 如果它是 windows 服务器，请确保端口5985处于打开状态以允许进行远程 WMI 调用。
 - 如果要发现 GCP linux 服务器并使用根用户，请使用以下命令更改根登录的默认设置
@@ -136,7 +136,7 @@ ms.locfileid: "92315785"
 
 使用以下步骤确保已在 linux 服务器上启用基于密码的身份验证：
     1. 登录到 linux 计算机，并使用命令 "vi/etc/ssh/sshd_config" 打开 ssh 配置文件
-    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存文件。
+    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存该文件。
     3. 通过运行 "service sshd restart" 重新启动 ssh 服务
 
 
@@ -157,7 +157,7 @@ ms.locfileid: "92315785"
 
 如果已发现的 Vm 未显示在门户中，或者 VM 数据已过时，请等待几分钟。 已发现的 VM 配置数据中的更改会在门户中显示，最多需要30分钟。 应用程序数据更改可能需要几个小时才能显示。 如果此时间之后没有任何数据，请尝试刷新，如下所示
 
-1. 在**服务器**  >  **Azure Migrate 服务器评估**中，选择 "**概述**"。
+1. 在 **服务器**  >  **Azure Migrate 服务器评估** 中，选择 "**概述**"。
 2. 在 " **管理**" 下，选择 **代理运行状况**。
 3. 选择 " **刷新代理**"。
 4. 等待刷新操作完成。 现在应会看到最新信息。
@@ -179,7 +179,7 @@ ms.locfileid: "92315785"
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>即使在更新来宾凭据后，也不会看到应用程序详细信息
 应用程序发现每24小时运行一次。 如果希望立即查看详细信息，请按如下所示进行刷新。 这可能需要几分钟时间，具体取决于 no。 已发现的虚拟机。
 
-1. 在**服务器**  >  **Azure Migrate 服务器评估**中，选择 "**概述**"。
+1. 在 **服务器**  >  **Azure Migrate 服务器评估** 中，选择 "**概述**"。
 2. 在 " **管理**" 下，选择 **代理运行状况**。
 3. 选择 " **刷新代理**"。
 4. 等待刷新操作完成。 现在应会看到最新信息。
