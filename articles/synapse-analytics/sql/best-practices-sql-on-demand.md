@@ -1,6 +1,6 @@
 ---
-title: '无服务器 SQL 池 (预览版的最佳实践) '
-description: 使用无服务器 SQL 池 (预览) 的建议和最佳实践。
+title: 无服务器 SQL 池最佳做法
+description: 使用无服务器 SQL 池的建议和最佳实践。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638863"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457908"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中无服务器 SQL 池 (预览版) 的最佳实践
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中无服务器 SQL 池的最佳实践
 
-本文介绍使用无服务器 SQL 池 (预览) 的最佳实践集合。 无服务器 SQL 池是 Azure Synapse 分析中的资源。
+本文将介绍使用无服务器 SQL 池的最佳实践集合。 无服务器 SQL 池是 Azure Synapse 分析中的资源。
 
 ## <a name="general-considerations"></a>一般注意事项
 
@@ -129,7 +129,7 @@ FROM
 
 ## <a name="manually-create-statistics-for-csv-files"></a>手动为 CSV 文件创建统计信息
 
-无服务器 SQL 池依赖统计信息来生成最佳查询执行计划。 需要时，将自动为 Parquet 文件中的列创建统计信息。 此时，不会为 CSV 文件中的列自动创建统计信息，应为查询中使用的列手动创建统计信息，尤其是在 DISTINCT、JOIN、WHERE、ORDER BY 和 GROUP BY 中使用的列。 有关详细信息，请查看 [无服务器 SQL 池中的统计](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) 信息。
+无服务器 SQL 池依赖统计信息来生成最佳查询执行计划。 需要时，将自动为 Parquet 文件中的列创建统计信息。 此时，不会为 CSV 文件中的列自动创建统计信息，应为查询中使用的列手动创建统计信息，尤其是在 DISTINCT、JOIN、WHERE、ORDER BY 和 GROUP BY 中使用的列。 查看 [无服务器 SQL 池中的统计信息] (开发-表-统计信息-有关详细信息，请参阅无服务器 sql 池。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 增强查询性能和联接
 

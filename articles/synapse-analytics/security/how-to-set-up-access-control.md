@@ -1,5 +1,5 @@
 ---
-title: 保护 Synapse 工作区（预览）
+title: 保护 Synapse 工作区
 description: 本文将介绍如何使用角色和访问控制来控制 Synapse 工作区中的活动和数据访问。
 services: synapse-analytics
 author: matt1883
@@ -9,20 +9,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 25e191af919c5880045a6c4c7c79b675cf02520e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556023"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458723"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览） 
+# <a name="secure-your-synapse-workspace"></a>保护 Synapse 工作区 
 
 本文将介绍如何使用角色和访问控制来控制活动和数据访问。 通过遵循这些说明，可以简化 Azure Synapse Analytics 中的访问控制。 只需要在三个安全组之一中添加和删除用户。
 
 ## <a name="overview"></a>概述
 
-为了保护 Synapse 工作区（预览），将遵循一种模式来配置以下项：
+若要保护 Synapse 工作区，请遵循配置以下项的模式：
 
 - Azure 角色（如“所有者”、“参与者”等内置角色）
 - Synapse 角色 - 这些角色对于 Synapse 来说是唯一的，并且不是基于 Azure 角色的。 有以下三个角色：
@@ -96,7 +96,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 - 打开 Azure 门户
 - 转到 WS1
-- 在 " **设置** " 下，选择 **SQL Active Directory 管理**
+- 在 " **设置**" 下，选择 **SQL Active Directory 管理**
 - 选择 " **设置管理员** "，然后选择 WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>步骤6：维护访问控制

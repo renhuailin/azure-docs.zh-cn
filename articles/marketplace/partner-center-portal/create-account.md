@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542280"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458117"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
 
@@ -114,7 +114,7 @@ ms.locfileid: "95542280"
 >
 >个人帐户适用于自行工作的开发人员。 公司帐户适用于组织和企业。 公司帐户允许你使用其他功能提交应用。
 >
-> 若要确定你是否有权为你的公司设置帐户，则在注册后，需要对公司帐户进行其他验证。 此验证可能需要几天到几周的时间，并且通常包含公司电话呼叫。 这两种类型的帐户都允许您提交应用程序、外接程序和服务。 有关详细信息，请参阅 [帐户类型、位置和费用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
+> 若要确定你是否有权为你的公司设置帐户，则在注册后，需要对公司帐户进行其他验证。 此验证可能需要几天到几周的时间，并且通常包含公司电话呼叫。 这两种类型的帐户都允许您提交应用程序、外接程序和服务。 有关详细信息，请参阅 [帐户类型、位置和费用](/windows/uwp/publish/account-types-locations-and-fees)。
 
 当你向开发人员计划的帐户注册商业 marketplace 计划时，可以在合作伙伴中心的左窗格中查看所有现有程序注册。
 

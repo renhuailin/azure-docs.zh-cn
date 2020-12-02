@@ -2,13 +2,13 @@
 title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/01/2020
+ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456321"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -20,6 +20,7 @@ ms.locfileid: "96184070"
 
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
+* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 有关可能的解决方法，请参阅 [具有 Marketplace 计划的虚拟机](#virtual-machines-with-marketplace-plans)。
 * 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
 

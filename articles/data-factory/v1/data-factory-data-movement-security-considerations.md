@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0da49a6f5299ef4e53b06acd5ce3fb838915a661
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e995cd8f300787a19934e9b9eeae1dea73e8576c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633920"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457076"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂的数据移动安全注意事项](../data-movement-security-considerations.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](data-factory-create-pipelines.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
@@ -42,7 +42,7 @@ ms.locfileid: "92633920"
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
-- 云方案 - 在这种方案中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务，例如 Azure 存储、Azure Synapse Analytics (以前的 SQL 数据仓库) 、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[这里](data-factory-data-movement-activities.md#supported-data-stores-and-formats)找到受支持数据源的完整列表。
+- 云方案 - 在这种方案中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务，例如 Azure 存储、Azure Synapse 分析、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[这里](data-factory-data-movement-activities.md#supported-data-stores-and-formats)找到受支持数据源的完整列表。
 - 混合方案 - 在这种方案中，源或目标位于防火墙之后或本地公司网络中，数据存储位于专用网络/虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -55,13 +55,13 @@ Azure 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 与 **AZURE SQL 数据库** 和 **azure Synapse Analytics** 的所有连接始终都需要加密 (SSL/TLS) ，同时数据与数据库传输数据。 在使用 JSON 编辑器创作管道时，请在“连接字符串”中添加“加密”属性并将其设置为“true”。 使用[复制向导](data-factory-azure-copy-wizard.md)时，向导会默认设置此属性。 对于 **Azure 存储** ，可以在连接字符串中使用 **HTTPS** 。
+> 与 **AZURE SQL 数据库** 和 **azure Synapse Analytics** 的所有连接始终都需要加密 (SSL/TLS) ，同时数据与数据库传输数据。 在使用 JSON 编辑器创作管道时，请在“连接字符串”中添加“加密”属性并将其设置为“true”。 使用[复制向导](data-factory-azure-copy-wizard.md)时，向导会默认设置此属性。 对于 **Azure 存储**，可以在连接字符串中使用 **HTTPS** 。
 
 ### <a name="data-encryption-at-rest"></a>静态数据加密
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
-Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [保护 Synapse Analytics 中的数据库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 Azure Synapse Analytics 中的数据库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。 

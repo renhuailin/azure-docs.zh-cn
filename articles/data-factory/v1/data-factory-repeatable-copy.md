@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441623"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456829"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
 
@@ -25,9 +25,9 @@ ms.locfileid: "89441623"
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。  
  
 > [!NOTE]
-> 以下示例适用于 Azure SQL，但同样适用于任何支持矩形数据集的数据存储。 可能需要针对数据存储调整源的**类型**和 **query** 属性（例如，使用 query 而不是 sqlReaderQuery）。   
+> 以下示例适用于 Azure SQL，但同样适用于任何支持矩形数据集的数据存储。 可能需要针对数据存储调整源的 **类型** 和 **query** 属性（例如，使用 query 而不是 sqlReaderQuery）。   
 
-从关系存储读取数据时，我们通常只希望读取对应于该切片的数据。 使用 Azure 数据工厂中提供的 WindowStart 和 WindowEnd 系统变量可实现此目的。 有关 Azure 数据工厂中的变量和函数，请阅读 [Azure 数据工厂 - 函数和系统变量](data-factory-functions-variables.md)一文。 例如： 
+从关系存储读取数据时，我们通常只希望读取对应于该切片的数据。 使用 Azure 数据工厂中提供的 WindowStart 和 WindowEnd 系统变量可实现此目的。 有关 Azure 数据工厂中的变量和函数，请阅读 [Azure 数据工厂 - 函数和系统变量](data-factory-functions-variables.md)一文。 示例： 
 
 ```json
 "source": {
@@ -104,13 +104,13 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>机制 2：使用 sliceIdentifierColumnName
 > [!IMPORTANT]
-> 目前，Azure Synapse Analytics (以前的 SQL 数据仓库) 不支持 sliceIdentifierColumnName。 
+> 目前，Azure Synapse Analytics 不支持 sliceIdentifierColumnName。 
 
 实现可重复性的第二种机制是在目标表中使用专用列 (sliceIdentifierColumnName)。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
 
 出于可重复性的目的，Azure 数据工厂将使用此列，在此过程中，Azure 数据工厂不会对表做出任何架构更改。 如何使用此方法：
 
-1. 在目标 SQL 表中定义 **二进制 (32) ** 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为 AdfSliceIdentifier。
+1. 在目标 SQL 表中定义 **二进制 (32)** 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为 AdfSliceIdentifier。
 
 
     源表：

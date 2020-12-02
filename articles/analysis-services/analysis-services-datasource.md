@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018808"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458877"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -43,7 +43,7 @@ ms.locfileid: "92018808"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | 直接连接 |说明   |
+|数据源 | 内存中 | DirectQuery |说明   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -53,7 +53,7 @@ ms.locfileid: "92018808"
 |Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |Excel 工作簿     |  是 | 否 |  |
 |Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|Folder      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|文件夹      |是 | 否 | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |是 | 否 |  |
 |JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
@@ -102,7 +102,7 @@ ms.locfileid: "92018808"
 
 ![“表格模型资源管理器”中的旧数据源](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
-与使用表格 1200 模型项目一样，请使用**表导入向导**连接到数据源。 在连接页上，单击“高级”。 在“设置高级属性”中，指定数据提供程序和其他连接设置。
+与使用表格 1200 模型项目一样，请使用 **表导入向导** 连接到数据源。 在连接页上，单击“高级”。 在“设置高级属性”中，指定数据提供程序和其他连接设置。
 
 ![旧数据源高级属性](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "92018808"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse（以前称为 SQL 数据仓库）、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
+对于1400和更高兼容级别的表格模型，使用内存中模式，Azure SQL 数据库、Azure Synapse、Dynamics 365 和 SharePoint List 支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
 
 OAuth 凭据不支持直接查询模式。
 

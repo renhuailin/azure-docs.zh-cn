@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324864"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458502"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
 本文介绍深度学习与机器学习，以及它们在人工智能这一更广泛的范畴中的适用程度如何。 了解可基于 Azure 机器学习构建的深度学习解决方案，如欺诈检测、语音和人脸识别、情绪分析以及时序预测。
 
-有关为解决方案选择算法的指南，请参阅[机器学习算法备忘单](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)。
+有关为解决方案选择算法的指南，请参阅[机器学习算法备忘单](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度学习、机器学习和 AI
 

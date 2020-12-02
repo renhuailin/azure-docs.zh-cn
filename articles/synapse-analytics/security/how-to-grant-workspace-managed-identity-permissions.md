@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014714"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459011"
 ---
-# <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限 (预览) 
+# <a name="grant-permissions-to-workspace-managed-identity"></a>向工作区托管标识授予权限
 
 本文介绍如何向 Azure synapse 工作区中的托管标识授予权限。 权限进而允许访问工作区中的专用 SQL 池，并通过 Azure 门户 ADLS Gen2 存储帐户。
 

@@ -1,5 +1,5 @@
 ---
-title: 用 Apache Spark 实现数据的可视化效果
+title: 使用 Apache Spark 实现数据可视化
 description: 使用 Apache Spark 和 Azure Synapse Analytics 笔记本创建丰富的数据可视化
 services: synapse-analytics
 author: midesa
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919497"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458770"
 ---
 # <a name="analyze-data-with-apache-spark"></a>用 Apache Spark 分析数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "95919497"
 
 具体而言，我们将分析 [纽约 (NYC) 出租车](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 数据集。 数据通过 Azure 开放数据集提供。 此数据集的子集包含有关黄色出租车行程的信息，其中包括每个行程的相关信息、开始时间和结束时间以及地点、成本和其他有趣的属性。
   
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 - 按照[创建 Apache Spark 池教程](../articles/../quickstart-create-apache-spark-pool-studio.md)创建 Apache Spark 池 
 
 ## <a name="download-and-prepare-the-data"></a>下载并准备数据
@@ -99,7 +99,7 @@ ORDER BY day_of_month ASC
 
 > [!Note]
 > 
-> 默认情况下，每个 Azure Synapse Analytics Apache Spark 池都包含一组常用和默认的库。 可以在 [Azure Synapse 运行时](../spark/apache-spark-version-support.md)中查看库的完整列表。 文档。 此外，若要使第三方或本地生成的代码可用于你的应用程序，你可以将 [库安装](../spark/apache-spark-azure-portal-add-libraries.md) 到你的一个 Spark 池 (预览) 。
+> 默认情况下，每个 Azure Synapse Analytics Apache Spark 池都包含一组常用和默认的库。 可以在 [Azure Synapse 运行时](../spark/apache-spark-version-support.md)中查看库的完整列表。 文档。 此外，若要使第三方或本地生成的代码可用于你的应用程序，你可以将 [库安装](../spark/apache-spark-azure-portal-add-libraries.md) 到一个 Spark 池上。
 >
 
 1. 为了更轻松、更便宜，我们将对数据集进行抽样。 我们将使用内置 Apache Spark 采样功能。 此外，Seaborn 和 Matplotlib 都需要 Pandas 数据帧或 Numpy 数组。 若要获取 Pandas 数据帧，我们将使用 ```toPandas()``` 命令转换我们的数据帧。

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359979"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456911"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="转换活动"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359979"
 > * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
-> * [Azure 机器学习 Studio (经典) 批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure 机器学习 Studio (经典) 更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure 机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure 机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
@@ -41,7 +41,7 @@ ms.locfileid: "92359979"
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程：
 
 - Azure SQL 数据库
-- Azure Synapse Analytics（以前称为 SQL 数据仓库）
+- Azure Synapse Analytics
 - SQL Server 数据库。 如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装数据管理网关。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ ms.locfileid: "92359979"
 
 ## <a name="walkthrough"></a>演练
 ### <a name="sample-table-and-stored-procedure"></a>示例表和存储过程
-1. 在 Azure SQL 数据库中，使用 SQL Server Management Studio 或其他熟悉的工具，创建以下**表**。 Datetimestamp 列是生成相应 ID 的日期和时间。
+1. 在 Azure SQL 数据库中，使用 SQL Server Management Studio 或其他熟悉的工具，创建以下 **表**。 Datetimestamp 列是生成相应 ID 的日期和时间。
 
     ```SQL
     CREATE TABLE dbo.sampletable
@@ -71,7 +71,7 @@ ms.locfileid: "92359979"
     ![示例数据](./media/data-factory-stored-proc-activity/sample-data.png)
 
     在此示例中，存储过程在 Azure SQL 数据库中。 如果存储过程在 Azure Synapse Analytics 和 SQL Server 数据库中，则方法类似。 对于 SQL Server 数据库，必须安装[数据管理网关](data-factory-data-management-gateway.md)。
-2. 创建以下**存储过程**，将数据插入 **sampletable**。
+2. 创建以下 **存储过程**，将数据插入 **sampletable**。
 
     ```SQL
     CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
@@ -84,50 +84,50 @@ ms.locfileid: "92359979"
     ```
 
    > [!IMPORTANT]
-   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，确保用作 **\@** 参数的前缀。
+   > 参数（在本示例中为 DateTime）的 **名称** 和 **大小写** 必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，确保用作 **\@** 参数的前缀。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中单击“新建”****，然后依次单击“智能 + 分析”****、“数据工厂”****。
+2. 在左侧菜单中单击“新建”，然后依次单击“智能 + 分析”、“数据工厂”。
 
     ![新建数据工厂1](media/data-factory-stored-proc-activity/new-data-factory.png)
-3. 在“新建数据工厂”**** 边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须**全局唯一**。 必须将你的姓名作为数据工厂的名称前缀，才能成功创建工厂。
+3. 在“新建数据工厂”边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须 **全局唯一**。 必须将你的姓名作为数据工厂的名称前缀，才能成功创建工厂。
 
    ![新建数据工厂2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. 选择 **Azure 订阅**。
-5. 对于**资源组**，请执行以下步骤之一：
-   1. 单击“新建”****，然后为资源组输入名称。
-   2. 单击“使用现有资源组”**** 并选择一个现有的资源组。
-6. 选择数据工厂的**位置**。
-7. 选择“固定到仪表板”**** 以便在下次登录时在仪表板上看到数据工厂。
-8. 在“新建数据工厂”边栏选项卡中单击“创建”。********
-9. 此时可在 Azure 门户的“仪表板”**** 中看到所创建的数据工厂。 成功创建数据工厂后，将看到数据工厂页，其中显示了数据工厂的内容。
+5. 对于 **资源组**，请执行以下步骤之一：
+   1. 单击“新建”，然后为资源组输入名称。
+   2. 单击“使用现有资源组”并选择一个现有的资源组。
+6. 选择数据工厂的 **位置**。
+7. 选择“固定到仪表板”以便在下次登录时在仪表板上看到数据工厂。
+8. 在“新建数据工厂”边栏选项卡中单击“创建”。
+9. 此时可在 Azure 门户的“仪表板”中看到所创建的数据工厂。 成功创建数据工厂后，将看到数据工厂页，其中显示了数据工厂的内容。
 
    ![数据工厂主页](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
 创建数据工厂后，创建一个 Azure SQL 链接服务，用于将 Azure SQL 数据库中的数据库链接到数据工厂，其中包含 sampletable 表和 usp_sample 存储过程。
 
-1. 在 **SProcDF** 的“数据工厂”**** 边栏选项卡中，单击“编写和部署”****，启动数据工厂编辑器。
-2. 在命令栏上单击“新建数据存储”**** 并选择“Azure SQL 数据库”****。 在编辑器中，应会看到用于创建 Azure SQL 链接服务的 JSON 脚本。
+1. 在 **SProcDF** 的“数据工厂”边栏选项卡中，单击“编写和部署”，启动数据工厂编辑器。
+2. 在命令栏上单击“新建数据存储”并选择“Azure SQL 数据库”。 在编辑器中，应会看到用于创建 Azure SQL 链接服务的 JSON 脚本。
 
    ![新数据存储1](media/data-factory-stored-proc-activity/new-data-store.png)
 3. 在 JSON 脚本中，进行以下更改：
 
-   1. 将替换 `<servername>` 为服务器的名称。
+   1. 将 `<servername>` 替换为服务器的名称。
    2. 将 `<databasename>` 替换为在其中创建表和存储过程的数据库。
    3. 将 `<username@servername>` 替换为有权访问数据库的用户帐户。
    4. 将 `<password>` 替换为用户帐户的密码。
 
       ![新数据存储2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. 若要部署链接服务，请单击命令栏上的“部署”****。 确认在左侧的树视图中已显示 AzureSqlLinkedService。
+4. 若要部署链接服务，请单击命令栏上的“部署”。 确认在左侧的树视图中已显示 AzureSqlLinkedService。
 
     ![链接服务1的树视图](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>创建输出数据集
-必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用 **链接服务，该链接服务** 引用 Azure SQL 数据库或 Azure Synapse Analytics，或者使用要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）****。 此虚拟数据集仅用于指定运行存储过程活动的计划。
+必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用 **链接服务，该链接服务** 引用 Azure SQL 数据库或 Azure Synapse Analytics，或者使用要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）。 此虚拟数据集仅用于指定运行存储过程活动的计划。
 
-1. 单击 **.。。在工具栏上，单击** " **新建数据集**"，然后单击 " **Azure SQL**"。 单击命令栏上的“新建数据集”**** 并选择“Azure SQL****”。
+1. 单击 **.。。在工具栏上，单击** " **新建数据集**"，然后单击 " **Azure SQL**"。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
 
     ![链接服务2的树视图](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 将以下 JSON 脚本复制/粘贴到 JSON 编辑器。
@@ -148,7 +148,7 @@ ms.locfileid: "92359979"
         }
     }
     ```
-3. 若要部署数据集，请单击命令栏上的“部署”****。 确认树视图中显示了此数据集。
+3. 若要部署数据集，请单击命令栏上的“部署”。 确认树视图中显示了此数据集。
 
     ![包含链接服务的树视图](media/data-factory-stored-proc-activity/tree-view-2.png)
 
@@ -157,9 +157,9 @@ ms.locfileid: "92359979"
 
 请注意以下属性：
 
-- 类型属性设置为 SqlServerStoredProcedure********。
-- 类型属性中的 storedProcedureName 设置为 usp_sample（存储过程的名称）********。
-- storedProcedureParameters 部分包含一个名为 DateTime 的参数********。 采用 JSON 格式时，该参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。 如果需要为参数传递 null，请使用语法：`"param1": null`（全部小写）。
+- 类型属性设置为 SqlServerStoredProcedure。
+- 类型属性中的 storedProcedureName 设置为 usp_sample（存储过程的名称）。
+- storedProcedureParameters 部分包含一个名为 DateTime 的参数。 采用 JSON 格式时，该参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。 如果需要为参数传递 null，请使用语法：`"param1": null`（全部小写）。
 
 1. 单击 **.。。** 在命令栏上单击 " **新建管道**"。
 2. 复制/粘贴以下 JSON 代码段：
@@ -195,10 +195,10 @@ ms.locfileid: "92359979"
         }
     }
     ```
-3. 若要部署管道，请单击工具栏上的“部署”****。
+3. 若要部署管道，请单击工具栏上的“部署”。
 
 ### <a name="monitor-the-pipeline"></a>监视管道
-1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。********
+1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。
 
     ![关系图磁贴1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
@@ -272,7 +272,7 @@ ms.locfileid: "92359979"
 }
 ```
 
-同样，要将存储过程活动与下游活动（在存储过程活动完成后运行的活动）链接，需将存储过程活动的输出数据集指定为管道中下游活动的输入****。
+同样，要将存储过程活动与下游活动（在存储过程活动完成后运行的活动）链接，需将存储过程活动的输出数据集指定为管道中下游活动的输入。
 
 > [!IMPORTANT]
 > 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。
@@ -303,13 +303,13 @@ ms.locfileid: "92359979"
 
 下表描述了其中的 JSON 属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
 | inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
-| outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用 **链接服务，该链接服务** 引用 Azure SQL 数据库或 Azure Synapse Analytics，或者使用要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
+| outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定 **计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用 **链接服务，该链接服务** 引用 Azure SQL 数据库或 Azure Synapse Analytics，或者使用要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是 **虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
 | storedProcedureName |指定 Azure SQL 数据库中的存储过程的名称、Azure Synapse Analytics 或由输出表使用的链接服务所表示的 SQL Server。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
 

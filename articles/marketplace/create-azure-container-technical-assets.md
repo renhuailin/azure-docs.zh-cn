@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758967"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459333"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>准备 Azure 容器技术资产
 
@@ -20,7 +20,7 @@ ms.locfileid: "95758967"
 
 ## <a name="before-you-begin"></a>开始之前
 
-有关快速入门、教程和示例的信息，请参阅 [Azure 容器实例文档](/azure/container-instances/)。
+有关快速入门、教程和示例的信息，请参阅 [Azure 容器实例文档](../container-instances/index.yml)。
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
@@ -43,7 +43,7 @@ ms.locfileid: "95758967"
 
 我们建议将以下工具添加到开发环境：
 
-- [Azure 存储浏览器](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure 存储浏览器](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ ms.locfileid: "95758967"
 
 不能将映像从本地注册表部署到 Azure 容器实例。
 
-- 如果本地注册表中已有工作容器，请创建 Azure 注册表，并将容器映像上传到 Azure 容器注册表。 若要了解详细信息，请参阅 [教程：通过 Azure 容器注册表任务在云中构建和部署容器映像](/azure/container-registry/container-registry-tutorial-quick-task.md)。
+- 如果本地注册表中已有工作容器，请创建 Azure 注册表，并将容器映像上传到 Azure 容器注册表。 若要了解详细信息，请参阅 [教程：通过 Azure 容器注册表任务在云中构建和部署容器映像](../container-registry/container-registry-tutorial-quick-task.md)。
 
-- 如果尚无容器映像，并且需要容器化现有应用程序或创建新的基于容器的应用程序，请克隆 GitHub 中的应用程序源代码，从应用程序源创建容器映像，并在本地 Docker 环境中测试映像。 若要了解详细信息，请参阅 [教程：创建用于部署到 Azure 容器实例的容器映像](/azure/container-instances/container-instances-tutorial-prepare-app.md)。
+- 如果尚无容器映像，并且需要容器化现有应用程序或创建新的基于容器的应用程序，请克隆 GitHub 中的应用程序源代码，从应用程序源创建容器映像，并在本地 Docker 环境中测试映像。 若要了解详细信息，请参阅 [教程：创建用于部署到 Azure 容器实例的容器映像](../container-instances/container-instances-tutorial-prepare-app.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

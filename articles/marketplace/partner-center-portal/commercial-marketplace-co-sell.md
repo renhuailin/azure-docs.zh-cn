@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095589"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456631"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
 
@@ -20,7 +20,7 @@ ms.locfileid: "93095589"
 
 合作伙伴中心的共同销售选项目前可用于某些产品/服务类型。 随着时间的推移，将提供对其他产品/服务类型的支持。
 
-| **产品类型** | **合作伙伴中心提供的共同销售页面** |
+| **产品/服务类型** | **合作伙伴中心提供的共同销售页面** |
 |    -----------------------    |    -----------------------------  |
 | 软件即服务 (SaaS)  |      目前可用      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     目前可用      |
@@ -83,10 +83,10 @@ ms.locfileid: "93095589"
 
 您还可以导出产品/服务的现有联系人列表，然后对该文件进行更改。
 
-* *名称 (必需)* ：联系人的姓名。
-* *电子邮件地址 (必需)* ：联系人的电子邮件地址。
-* 职务 *(必需)* ：职务。
-* *Role (必需)* ：使用以下任意角色。
+* *名称 (必需)*：联系人的姓名。
+* *电子邮件地址 (必需)*：联系人的电子邮件地址。
+* 职务 *(必需)*：职务。
+* *Role (必需)*：使用以下任意角色。
 
     | **角色**    | **说明**  |
     | :------------------- | :-------------------|
@@ -108,7 +108,7 @@ ms.locfileid: "93095589"
 
 可以通过多个工具创建文档。 建议 Microsoft Visio，因为它有多个描述 Azure 体系结构模型的模具。
 
-构建参考体系结构关系图的一个有用起点是利用 [Azure 体系结构模型](https://docs.microsoft.com/azure/architecture/browse/)。
+构建参考体系结构关系图的一个有用起点是利用 [Azure 体系结构模型](/azure/architecture/browse/)。
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>参考体系结构示意图的典型组件
 - 托管和与产品/服务交互的云服务，包括生成 Azure 消耗的云服务

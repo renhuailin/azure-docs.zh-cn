@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62bc309bf20186654cb32fb84fb1a07667405ab0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f3f66209b2d0a1bae18364e38790c237952e729f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950799"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458255"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -95,7 +95,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 **指导**：在组织的每个网络边界上部署所选的防火墙解决方案，以检测并/或阻止恶意流量。
 
-从 Azure Marketplace 中选择一个产品/服务，该产品/服务支持具有负载检查功能的 ID/IPS 功能。  如果不需要进行有效负载检查，则可以使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
+从 Azure 市场中选择一种产品/服务，该产品/服务应支持包含有效负载检查功能的 IDS/IPS 功能。  如果不需要进行有效负载检查，则可以使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -241,7 +241,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -327,7 +327,7 @@ Azure 机器学习在 Azure 机器学习中为常见管理方案提供内置角�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：在创建新的工作区时，Azure 机器学习附带三个默认角色，创建有关使用所有者帐户的标准操作过程。
+**指导**：当创建新的工作区时，Azure 机器学习附带了三个默认角色，并创建与所有者帐户的使用相关的标准操作规程。
 
 还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的即时访问权限。 
 

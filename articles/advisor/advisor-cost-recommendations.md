@@ -3,16 +3,16 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075903"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458516"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
-通过识别闲置和未充分利用的资源，Azure 顾问可帮助优化和降低 Azure 总支出。 可在顾问仪表板的“成本”选项卡获取成本建议。
+通过识别闲置和未充分利用的资源，Azure 顾问可帮助优化和降低 Azure 总支出。  可在顾问仪表板的“成本”选项卡获取成本建议。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>通过调整或关闭未充分利用的实例来优化虚拟机花费 
 
@@ -20,7 +20,7 @@ ms.locfileid: "92075903"
 
 建议的操作是关机或重设大小，具体取决于要评估的资源。
 
-当所有这些语句都为 true 时，顾问中的高级评估模型考虑关闭虚拟机： 
+在满足以下所有条件时，顾问中的高级评估模型会考虑关闭虚拟机： 
 - CPU 利用率最大值的第 95 个百分位数小于 3%。 
 - 7 天内的网络利用率低于 2%。
 - 内存压力低于阈值
@@ -59,8 +59,8 @@ ms.locfileid: "92075903"
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB 预留容量
 顾问会分析 Azure Cosmos DB 在过去 30 天内的使用模式，并建议可优化成本的预留容量购买量。 通过使用预留容量，可以预购买按小时计的 Azure Cosmos DB 使用量，从而节省即用即付成本。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价并根据过去 30 天内观察到的使用模式进行推测，从而计算各订阅的成本节省估算值。 共享范围建议适用于预留容量购买，并可提高成本节省。
 
-### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL 数据库和 SQL 托管实例保留容量
-顾问在过去30天内分析 SQL 数据库和 SQL 托管实例使用模式。 然后建议可优化成本的预留容量购买量。 通过使用预留容量，可以预购买按小时计的 SQL DB 使用量，从而节省 SQL 计算成本。 SQL 许可证单独收费，不会因预留而打折。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价并根据过去 30 天内观察到的使用模式进行推测，从而计算各订阅的成本节省估算值。 共享范围建议适用于预留容量购买，并可提高成本节省。 有关详细信息，请参阅 [AZURE Sql 数据库 & SQL 托管实例保留容量](../azure-sql/database/reserved-capacity-overview.md)。
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL 数据库和 SQL 托管实例预留容量
+顾问会分析 SQL 数据库和 SQL 托管实例在过去 30 天的使用情况。 然后建议可优化成本的预留容量购买量。 通过使用预留容量，可以预购买按小时计的 SQL DB 使用量，从而节省 SQL 计算成本。 SQL 许可证单独收费，不会因预留而打折。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价并根据过去 30 天内观察到的使用模式进行推测，从而计算各订阅的成本节省估算值。 共享范围建议适用于预留容量购买，并可提高成本节省。 有关详细信息，请参阅 [AZURE Sql 数据库 & SQL 托管实例保留容量](../azure-sql/database/reserved-capacity-overview.md)。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>应用服务印花费预留容量
 顾问会分析 Azure 应用服务隔离环境在过去 30 天内的印花费使用模式，并建议可优化成本的预留容量购买量。 通过使用预留容量，可以为隔离环境印花费预购买按小时计的使用量，从而节省即用即付成本。 请注意，预留容量仅适用于印花费，而不适用于应用服务实例。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价并根据过去 30 天内的使用模式计算各订阅的成本节省估算值。
@@ -71,7 +71,7 @@ ms.locfileid: "92075903"
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL 和 PostgreSQL 预留容量
 顾问会分析 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 在过去 30 天内的使用模式， 然后建议可优化成本的预留容量购买量。 通过使用预留容量，可以预购买按小时计的 MariaDB、MySQL 和 PostgreSQL 使用量，从而节省当前成本。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价以及过去 30 天内观察到的使用模式计算各订阅的成本节省估算值。 共享范围建议适用于预留容量购买，并可提高成本节省。
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure Synapse Analytics（以前称为 SQL 数据仓库）预留容量
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Azure Synapse Analytics 保留容量
 顾问会分析 Azure Synapse Analytics 在过去 30 天内的使用模式，并建议可优化成本的预留容量购买量。 通过使用预留容量，可以预购买按小时计的 Synapse Analytics 使用量，从而节省按需成本。 预留容量是一项计费权益，它会自动应用于新部署和现有部署。 顾问基于 3 年期预留定价以及过去 30 天内观察到的使用模式计算各订阅的成本节省估算值。 共享范围建议适用于预留容量购买，并可提高成本节省。
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>删除未关联的公共 IP 地址可节省资金

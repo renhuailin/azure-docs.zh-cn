@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 5a7fc2a5a5a6be7695fa816f28e3cdf61c5839f2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208256"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457614"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure 物联网 (IoT) 部署的安全性建议
 
@@ -40,7 +40,7 @@ ms.locfileid: "92208256"
 
 | 建议 | 注释 | 由 ASC 支持 |
 |-|----|--|
-| 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud) 每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括 *注册表读取*、 *RegistryReadWrite*、 *ServiceConnect*和 *DeviceConnect*。 [IoT 中心中的默认共享访问策略](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
+| 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud) 每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括 *注册表读取*、 *RegistryReadWrite*、 *ServiceConnect* 和 *DeviceConnect*。 [IoT 中心中的默认共享访问策略](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
 | 定义后端服务的访问控制 | IoT 中心解决方案引入的数据可供其他 Azure 服务（例如 [Cosmos DB](../cosmos-db/index.yml)、 [流分析](../stream-analytics/index.yml)、 [应用服务](../app-service/index.yml)、 [逻辑应用](../logic-apps/index.yml)和 [Blob 存储](../storage/blobs/storage-blobs-introduction.md)）使用。 对于这些服务，请务必了解并允许相应的访问权限。 | - |
 
 ## <a name="data-protection"></a>数据保护
@@ -63,8 +63,8 @@ ms.locfileid: "92208256"
 | 建议 | 注释 | 由 ASC 支持 |
 |-|----|--|
 | 监视对你的设备的未经授权的访问 |  使用设备操作系统的日志记录功能来监视设备或其端口的任何安全漏洞或物理篡改。 | - |
-| 从云中监视 IoT 解决方案 | 使用 [Azure Monitor 中的度量值](../iot-hub/iot-hub-metrics.md)监视 IoT 中心解决方案的总体运行状况。 | - |
-| 设置诊断 | 通过在解决方案中记录事件，然后将诊断日志发送到 Azure Monitor 来密切监视操作，以了解性能。 有关详细信息，请阅读 [监视和诊断 IoT 中心中的问题](../iot-hub/iot-hub-monitor-resource-health.md) 。 | - |
+| 从云中监视 IoT 解决方案 | 使用 [Azure Monitor 中的度量值](../iot-hub/monitor-iot-hub.md)监视 IoT 中心解决方案的总体运行状况。 | - |
+| 设置诊断 | 通过在解决方案中记录事件，然后将诊断日志发送到 Azure Monitor 来密切监视操作，以了解性能。 有关详细信息，请阅读 [监视和诊断 IoT 中心中的问题](../iot-hub/monitor-iot-hub.md) 。 | - |
 
 ## <a name="next-steps"></a>后续步骤
 

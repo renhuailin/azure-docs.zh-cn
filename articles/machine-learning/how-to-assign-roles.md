@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345263"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458451"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "96345263"
 >
 > * [控制对 Azure Kubernetes 群集资源的访问权限](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > 应用某些角色可能会限制 Azure 机器学习工作室中针对其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，工作室中就不会提供创建计算实例的选项。 此行为是正常的，可以防止用户尝试会返回“拒绝访问”错误的操作。

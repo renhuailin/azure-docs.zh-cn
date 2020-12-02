@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6372976d85c7fdce2a729047d3ae36911412ecf1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c4985e32371f029285733117721931e09a30e67
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019661"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456946"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "96019661"
 
 下表描述了管道 JSON 定义中的属性：
 
-| 属性 | 说明 | 必需
+| 属性 | 说明 | 必须
 -------- | ----------- | --------
 | name | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动或管道用途的文本 | 否 |
@@ -83,7 +83,7 @@ ms.locfileid: "96019661"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 标记 | 说明 | 必需 |
+| 标记 | 说明 | 必须 |
 | --- | --- | --- |
 | name |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
@@ -243,7 +243,7 @@ ms.locfileid: "96019661"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | name | 链接服务的名称。 | 是 |
 | properties - type | 链接服务的类型。 例如：Azure 存储、Azure SQL 数据库。 |
@@ -294,11 +294,11 @@ ms.locfileid: "96019661"
 
 **structure** 节中的每个列包含以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
-| culture |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
+| culture |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认值为 `en-us`。 |否 |
 | format |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
 
 在以下示例中，数据集具有三列 `slicetimestamp`、`projectname` 和 `pageviews`，它们的类型分别为：String、String 和 Decimal。
@@ -337,7 +337,7 @@ structure:
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
-| minimumRows |验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
+| minimumRows |验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
 
 **示例：**
 
@@ -354,7 +354,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为 **外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | 说明 | 必需 | 默认值 |
+| 名称 | 说明 | 必须 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -377,7 +377,7 @@ structure:
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL 数据库](#azure-sql-database) |
-| &nbsp; |[Azure Synapse Analytics（以前称为 SQL 数据仓库）](#azure-synapse-analytics) |
+| &nbsp; |[Azure Synapse Analytics](#azure-synapse-analytics) |
 | &nbsp; |[Azure 认知搜索](#azure-cognitive-search) |
 | &nbsp; |[Azure 表存储](#azure-table-storage) |
 | **数据库** |[Amazon Redshift](#amazon-redshift) |
@@ -411,7 +411,7 @@ structure:
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 要使用 **帐户密钥** 将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储链接服务。 要定义 Azure 存储链接服务，请将链接服务的 **类型** 设置为 **AzureStorage**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
@@ -432,7 +432,7 @@ structure:
 #### <a name="azure-storage-sas-linked-service"></a>Azure 存储 SAS 链接服务
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 要使用共享访问签名将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储 SAS 链接服务。 要定义 Azure 存储 SAS 链接服务，请将链接服务的 **类型** 设置为 **AzureStorageSas**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。 |是 |
 
@@ -455,7 +455,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Blob 数据集，请将数据集的 **类型** 设置为 **AzureBlob**。 然后，在 **typeProperties** 节中指定 Azure Blob 特定的以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： `Data.<Guid>.txt` (： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -588,7 +588,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Azure Data Lake Store 链接服务，请将链接服务的类型设置为 **AzureDataLakeStore**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为： **AzureDataLakeStore** | 是 |
 | dataLakeStoreUri | 指定 Azure Data Lake Store 帐户相关信息。 其格式如下：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -638,7 +638,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Data Lake Store 数据集，请将数据集的 **类型** 设置为 **AzureDataLakeStore**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | folderPath |到 Azure Data Lake Sore 中的容器和文件夹的路径。 |是 |
 | fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： `Data.<Guid>.txt` (： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -929,12 +929,12 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#copy-activity-properties)一文。
 
-## <a name="azure-sql-database"></a>Azure SQL 数据库
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 ### <a name="linked-service"></a>链接服务
 要定义 Azure SQL 数据库链接服务，请将链接服务的 **类型** 设置为 **AzureSqlDatabase**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | connectionString |为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 |是 |
 
@@ -956,7 +956,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure SQL 数据库数据集，请将数据集的 **类型** 设置为 **AzureSqlTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 |是 |
 
@@ -1105,7 +1105,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Azure Synapse Analytics 链接服务，请将链接服务的 **类型** 设置为 **AzureSqlDW**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | connectionString |为 connectionString 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 |是 |
 
@@ -1130,7 +1130,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Synapse Analytics 数据集，请将数据集的 **类型** 设置为 **AzureSqlDWTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure Synapse 分析数据库中的表或视图的名称。 |是 |
 
@@ -1224,7 +1224,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
-| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Synapse 分析的建议方法。** |True <br/>False（默认值） |否 |
+| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** |True <br/>False（默认值） |否 |
 | polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
 | rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [创建外部表 (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) 主题的 **参数** 部分。 |0（默认值）、1、2 … |否 |
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
@@ -1284,10 +1284,10 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Azure 认知搜索链接服务，请将链接服务的 **类型** 设置为 **AzureSearch**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | url | 搜索服务的 URL。 | 是 |
-| 键 | 搜索服务的管理密钥。 | 是 |
+| key | 搜索服务的管理密钥。 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -1309,7 +1309,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure 认知搜索数据集，请将数据集的 **类型** 设置为 **AzureSearchIndex**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为 **AzureSearchIndex**。| 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -1396,7 +1396,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 要使用 **帐户密钥** 将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储链接服务。 要定义 Azure 存储链接服务，请将链接服务的 **类型** 设置为 **AzureStorage**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorage** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
@@ -1418,7 +1418,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 #### <a name="azure-storage-sas-linked-service"></a>Azure 存储 SAS 链接服务
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 要使用共享访问签名将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储 SAS 链接服务。 要定义 Azure 存储 SAS 链接服务，请将链接服务的 **类型** 设置为 **AzureStorageSas**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorageSas** |是 |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。 |是 |
@@ -1442,7 +1442,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure 表数据集，请将数据集的 **类型** 设置为 **AzureTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
@@ -1621,7 +1621,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Amazon Redshift 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -1735,7 +1735,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 DB2 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 DB2 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的 **query**）
 
@@ -1853,7 +1853,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 MySQL 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -1940,7 +1940,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Oracle 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesOracle**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的“支持版本和安装”部分。 | 否 |
 | connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
@@ -1966,7 +1966,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Oracle 数据集，请将数据集的 **类型** 设置为 **OracleTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **OracleSource** 的 **oracleReaderQuery**） |
 
@@ -2005,7 +2005,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable` <br/><br/>如果未指定，则执行的 SQL 语句为：`select * from MyTable` |否（如果指定了 **数据集** 的 **tableName**） |
+| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable` <br/><br/>如果未指定，则执行的 SQL 语句为：`select * from MyTable` |否（如果指定了 **数据集** 的 **tableName**） |
 
 #### <a name="example"></a>示例
 
@@ -2143,7 +2143,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 PostgreSQL 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -2450,7 +2450,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 |是 |
@@ -2503,7 +2503,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 SQL Server 数据集，请将数据集的 **类型** 设置为 **SqlServerTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |是 |
 
@@ -2701,7 +2701,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 Sybase 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -2901,7 +2901,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 Cassandra 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesCassandra**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | port |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
@@ -2935,7 +2935,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 Cassandra 数据集，请将数据集的 **类型** 设置为 **CassandraTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）。 |
 | tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）。 |
@@ -3066,7 +3066,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 MongoDB 数据集，请将数据集的 **类型** 设置为 **MongoDbCollection**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
@@ -3176,7 +3176,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 | 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | bucketName |S3 存储桶的名称。 |String |是 |
-| 键 |S3 对象键。 |String |否 |
+| key |S3 对象键。 |String |否 |
 | 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
 | 版本 |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
@@ -3313,7 +3313,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 你可以使用 **本地文件服务器** 链接服务将本地文件系统链接到 Azure 数据工厂。 下表提供了特定于本地文件服务器链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
 | host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。 |是 |
@@ -3324,7 +3324,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 #### <a name="sample-folder-path-definitions"></a>示例文件夹路径定义
 
-| 场景 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
+| 方案 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
 | 数据管理网关计算机上的本地文件夹： <br/><br/>示例:D:\\\* 或 D:\folder\subfolder\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
 | 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
@@ -3368,7 +3368,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义文件系统数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -3634,7 +3634,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 FTP 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -3726,7 +3726,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 HDFS 链接服务，请将链接服务的 **类型** 设置为 **Hdfs**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **Hdfs** |是 |
 | URL |HDFS 的 URL |是 |
@@ -3776,9 +3776,9 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 HDFS 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
-| folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
@@ -3862,7 +3862,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 SFTP 链接服务，请将链接服务的 **类型** 设置为 **Sftp**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
 | port |SFTP 服务器侦听的端口。 默认值为 21 |否 |
@@ -3876,7 +3876,7 @@ auto-
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `Basic`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | username | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -3925,7 +3925,7 @@ auto-
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `SshPublicKey`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | username |有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
@@ -3976,7 +3976,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 SFTP 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -4069,7 +4069,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 HTTP 链接服务，请将链接服务的 **类型** 设置为 **Http**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | url | Web 服务器的基 URL | 是 |
 | authenticationType | 指定身份验证类型。 允许的值为：**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。 <br><br> 有关这些身份验证类型的其他属性和 JSON 示例，请分别参阅此表格下面的部分。 | 是 |
@@ -4080,7 +4080,7 @@ auto-
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>示例：使用基本、摘要或 Windows 身份验证
 将 `authenticationType` 设置为 `Basic`、`Digest` 或 `Windows`，并指定除上述 HTTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | username | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -4157,10 +4157,10 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 HTTP 数据集，请将数据集的 **类型** 设置为 **Http**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)，例如：`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
-| requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不是。 默认为 `GET`。 |
+| requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不是。 默认值为 `GET`。 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | format | 如果只想要 **从 HTTP 终结点按原样检索数据** 而不分析它，请跳过此格式设置。 <br><br> 如果想要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 |否 |
@@ -4213,7 +4213,7 @@ auto-
 ### <a name="http-source-in-copy-activity"></a>复制活动中的 HTTP 源
 如果要从 HTTP 源复制数据，请将复制活动的 **源类型** 设置为 **HttpSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 (TimeSpan)。 这是获取响应而不是读取响应数据的超时。 | 不是。 默认值：00:01:40 |
 
@@ -4267,7 +4267,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 OData 链接服务，请将链接服务的 **类型** 设置为 **OData**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | url |OData 服务的 URL。 |是 |
 | authenticationType |用于连接 OData 源的身份验证类型。 <br/><br/> 对于云 OData，可能的值为 Anonymous、Basic 和 OAuth（请注意：Azure 数据工厂目前仅支持基于 Azure Active Directory 的 OAuth）。 <br/><br/> 对于本地 OData，可能的值为 Anonymous、Basic 和 Windows。 |是 |
@@ -4347,7 +4347,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 OData 数据集，请将数据集的 **类型** 设置为 **ODataResource**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | path |OData 资源路径 |否 |
 
@@ -4382,7 +4382,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 OData 源复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 示例 | 必需 |
+| 属性 | 说明 | 示例 | 必须 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -4437,7 +4437,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 ODBC 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesOdbc**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 |是 |
 | credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例： `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |否 |
@@ -4502,7 +4502,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 ODBC 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |ODBC 数据存储中表的名称。 |是 |
 
@@ -4591,7 +4591,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 Salesforce 链接服务，请将链接服务的 **类型** 设置为 **Salesforce**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https： \/ /login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
@@ -4619,7 +4619,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 Salesforce 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -4714,7 +4714,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 Web 链接服务，请将链接服务的 **类型** 设置为 **Web**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | URL |Web 源的 URL |是 |
 | authenticationType |匿名。 |是 |
@@ -4741,7 +4741,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 Web 数据集，请将数据集的 **类型** 设置为 **WebTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
@@ -4834,7 +4834,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为 **HDInsightOnDemand**。 |是 |
 | clusterSize |群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
@@ -4872,7 +4872,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为 **HDInsight**。 |是 |
 | clusterUri |HDInsight 群集的 URI。 |是 |
@@ -4905,7 +4905,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure 批处理链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为 **AzureBatch**。 |是 |
 | accountName |Azure Batch 帐户的名称。 |是 |
@@ -4937,7 +4937,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了有关在 Studio (经典) 链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | 类型 |类型属性应设置为：AzureML。 |是 |
 | mlEndpoint |批处理计分 URL。 |是 |
@@ -4965,7 +4965,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 下表提供了 Azure Data Lake Analytics 链接服务的 JSON 定义中使用的属性的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | 类型 |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
@@ -5005,7 +5005,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 |是 |
@@ -5062,7 +5062,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 [HDInsight Hive 活动](#hdinsight-hive-activity) | 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。
 [HDInsight Pig 活动](#hdinsight-pig-activity) | 数据工厂管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。
 [HDInsight MapReduce 活动](#hdinsight-mapreduce-activity) | 数据工厂管道中的 HDInsight MapReduce 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 MapReduce 程序。
-[HDInsight Streaming 活动](#hdinsight-streaming-activity) | 数据工厂管道中的 HDInsight Streaming 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 HDInsight Streaming 程序。
+[HDInsight 流式处理活动](#hdinsight-streaming-activity) | 数据工厂管道中的 HDInsight Streaming 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 HDInsight Streaming 程序。
 [HDInsight Spark 活动](#hdinsight-spark-activity) | 数据工厂管道中的 HDInsight Spark 活动在自己的 HDInsight 群集上执行 Spark 程序。
 [Azure 机器学习工作室（经典）批处理执行活动](#azure-machine-learning-studio-classic-batch-execution-activity) | 使用 Azure 数据工厂，可轻松创建使用已发布的 Studio (经典) web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的批处理执行活动，可以调用 Studio (经典) web 服务对批处理中的数据进行预测。
 [Azure 机器学习工作室（经典）更新资源活动](#azure-machine-learning-studio-classic-update-resource-activity) | 随着时间的推移，Azure 机器学习 Studio 中的预测模型 (经典) 计分试验需要使用新的输入数据集来重新训练。 完成重新训练后，需要用重新训练机器学习模型更新评分 web 服务。 可以使用更新资源活动，通过新的训练模型更新 Web 服务。
@@ -5074,7 +5074,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 可以在 Hive 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightHive**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightHive 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | 脚本 |指定 Hive 脚本内联 |否 |
 | 脚本路径 |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
@@ -5120,7 +5120,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig 活动
 可以在 Pig 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightPig**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightPig 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | 脚本 |指定 Pig 脚本内联 |否 |
 | 脚本路径 |将 Pig 脚本存储在 Azure Blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
@@ -5172,7 +5172,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动
 可以在 MapReduce 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightMapReduce**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightMapReduce 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | jarLinkedService | 包含 JAR 文件的 Azure 存储的链接服务名称。 | 是 |
 | jarFilePath | Azure 存储中 JAR 文件的路径。 | 是 |
@@ -5294,7 +5294,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark 活动
 可以在 Spark 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightSpark**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightSpark 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | rootPath | 包含 Spark 文件的 Azure Blob 容器和文件夹。 文件名称需区分大小写。 | 是 |
 | entryFilePath | Spark 代码/包的根文件夹的相对路径 | 是 |
@@ -5349,7 +5349,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure 机器学习工作室（经典）批处理执行活动
 可以在 Azure 机器学习 Studio (经典) 批处理执行活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLBatchExecution**。 必须先创建一个 Studio (经典) 链接服务，并将其名称指定为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLBatchExecution 时，**typeProperties** 节支持以下属性：
 
-属性 | 说明 | 必需
+属性 | 说明 | 必须
 -------- | ----------- | --------
 webServiceInput | 要作为 Studio (经典) web 服务的输入传递的数据集。 此数据集也必须包含在活动的输入中。 |使用 webServiceInput 或 webServiceInputs。 |
 webServiceInputs | 指定要作为 Studio (经典) web 服务的输入传递的数据集。 如果该 Web 服务采用多个输入，可以使用 webServiceInputs 属性，而不使用 webServiceInput 属性。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
@@ -5405,7 +5405,7 @@ globalParameters | 在此节中指定 Web 服务参数的值。 | 否 |
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure 机器学习工作室（经典）更新资源活动
 可以在 Azure 机器学习 Studio (经典) 更新资源活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLUpdateResource**。 必须先创建一个 Studio (经典) 链接服务，并将其名称指定为 **linkedServiceName** 属性的值。 将活动类型设置为 AzureMLUpdateResource 时，**typeProperties** 节支持以下属性：
 
-属性 | 说明 | 必需
+属性 | 说明 | 必须
 -------- | ----------- | --------
 trainedModelName | 重新训练的模型的名称。 | 是 |
 trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的数据集。 | 是 |
@@ -5472,7 +5472,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 可以在 U-SQL 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**DataLakeAnalyticsU-SQL**。 必须创建 Azure Data Lake Analytics 链接服务，并指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 DataLakeAnalyticsU-SQL 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | scriptPath |包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 |否（如果使用脚本） |
 | scriptLinkedService |将包含脚本的存储链接到数据工厂的链接服务 |否（如果使用脚本） |
@@ -5545,7 +5545,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 
 将活动类型设置为 SqlServerStoredProcedure 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | storedProcedureName |指定 Azure SQL 数据库中的存储过程的名称，或在输出表使用的链接服务所表示的 Azure Synapse Analytics 中指定存储过程的名称。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
@@ -5585,7 +5585,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 ## <a name="net-custom-activity"></a>.NET 自定义活动
 可以在 .NET 自定义活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**DotNetActivity**。 必须创建一个 Azure HDInsight 链接服务或 Azure 批处理链接服务，并指定该链接服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 DotNetActivity 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | AssemblyName | 程序集的名称。 在本示例中，该名称为 **MyDotnetActivity.dll**。 | 是 |
 | EntryPoint |实现 IDotNetActivity 接口的类名称。 在本示例中，该名称为 **MyDotNetActivityNS.MyDotNetActivity**，其中，MyDotNetActivityNS 是命名空间，MyDotNetActivity 是类。  | 是 |

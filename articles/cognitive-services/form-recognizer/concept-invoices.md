@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353742"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458390"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>窗体识别器预生成发票型号
 
@@ -45,7 +45,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 
 ## <a name="the-analyze-invoice-operation"></a>分析发票操作
 
-" [分析发票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync) " 操作使用发票的图像或 PDF 作为输入，并提取相关值。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
+" [分析发票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) " 操作使用发票的图像或 PDF 作为输入，并提取相关值。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
@@ -53,7 +53,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>获取分析发票结果操作
 
-第二步是调用 [Get 分析发票结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult) 操作。 此操作采用 "分析发票" 操作创建的结果 ID 作为输入。 它将返回一个 JSON 响应，该响应包含具有以下可能值的 **状态** 字段。 此操作以迭代方式调用，直到它返回 **成功** 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
+第二步是调用 [Get 分析发票结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) 操作。 此操作采用 "分析发票" 操作创建的结果 ID 作为输入。 它将返回一个 JSON 响应，该响应包含具有以下可能值的 **状态** 字段。 此操作以迭代方式调用，直到它返回 **成功** 值。 使用3到5秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|

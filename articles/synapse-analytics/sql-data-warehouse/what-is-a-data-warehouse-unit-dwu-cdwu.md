@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics（以前称为 SQL DW）中的数据仓库单位 (DWU)
+title: '数据仓库单位 (专用 SQL 池的 Dwu)  (以前的 SQL DW) '
 description: 针对选择理想数目的数据仓库单位 (DWU) 来优化价格和性能以及如何更改单位数提供了建议。
 services: synapse-analytics
 author: mlee3gsd
@@ -11,20 +11,20 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bfcd9c6430deea948804ba8c1d37e404b1897c5f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311887"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459184"
 ---
-# <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
+# <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>数据仓库单位 (专用 SQL 池的 Dwu)  (以前的 Azure Synapse 分析中的 SQL DW) 
 
 针对选择理想数目的数据仓库单位 (DWU) 来优化价格和性能以及如何更改单位数提供了建议。
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)表示所预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。
+[专用 sql DW (以前的 sql DW) ](sql-data-warehouse-overview-what-is.md)表示正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。
 
 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。
 
@@ -34,8 +34,8 @@ ms.locfileid: "93311887"
 
 数据仓库单位性能基于这些数据仓库负载指标：
 
-- 标准专用 SQL 池查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
-- 专用 SQL 池可通过 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
+- 标准专用 SQL 池 (以前的 SQL DW) query 可以多长时间扫描大量的行，然后执行复杂的聚合。 这是一种 I/O 和 CPU 密集型操作。
+- 专用 SQL 池 (以前的 SQL DW) 可从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
 - [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令复制表的速度。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
 
 增加 DWU：
@@ -48,12 +48,12 @@ ms.locfileid: "93311887"
 
 服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 第 1 代服务级别以 DWU 计量，例如 DW2000。
 
-服务级别目标 (SLO) 是可伸缩性设置，它确定专用 SQL 池的成本和性能级别。 Gen2 专用 SQL 池的服务级别以数据仓库单位（ (DWU) ）度量，例如 DW2000c。
+ (SLO) 的服务级别目标是可伸缩性设置，它确定专用 SQL 池 (以前的 SQL DW) 的成本和性能级别。 Gen2 专用 SQL 仓库的服务级别 (以前的 SQL DW) 以数据仓库单位 (DWU) 来度量，例如 DW2000c。
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 最近添加了额外的缩放功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 专用 SQL 仓库 (以前的 SQL DW) Gen2 最近添加了额外的缩放功能，以支持低到 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-在 T-sql 中，SERVICE_OBJECTIVE 设置确定专用 SQL 池的服务级别和性能层。
+在 T-sql 中，SERVICE_OBJECTIVE 设置确定专用 SQL 池的服务级别和性能层 (以前的 SQL DW) 。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -88,7 +88,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
 3. 确认峰值活动周期的其他要求。 在活动中表现出明显峰值和低谷的工作负载可能需要频繁地进行缩放。
 
-专用 SQL 池是一种扩展系统，可预配大量计算和查询就前往的数据量。
+专用 SQL 池 (以前的 SQL DW) 是一种扩展系统，它可以预配大量计算和查询就前往的数据量。
 
 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“ **保存** ”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“保存”  。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -141,7 +141,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-有关详细信息，请参阅[适用于 Azure Synapse Analytics 的 PowerShell cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+有关详细信息，请参阅 [PowerShell cmdlet for 专用 sql 池 (以前的 SQL DW) ](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-有关更多 REST API 示例，请参阅[适用于 Azure Synapse Analytics 的 REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关更多 REST API 示例，请参阅 [以前的 SQL DW)  (专用 sql 池的 REST api ](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="check-status-of-dwu-changes"></a>检查 DWU 更改的状态
 
@@ -204,7 +204,7 @@ FROM      sys.databases
     ;
     ```
 
-此 DMV 返回专用 SQL 池上各种管理操作的相关信息，如操作和操作的状态（IN_PROGRESS 或已完成）。
+此 DMV 返回 (以前的 SQL DW) （如操作和操作的状态，即 IN_PROGRESS 或已完成）的各种管理操作的相关信息。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流
 

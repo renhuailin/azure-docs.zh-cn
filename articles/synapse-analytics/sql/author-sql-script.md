@@ -1,6 +1,6 @@
 ---
-title: 'Azure Synapse Studio 中的 SQL 脚本 (预览版) '
-description: Azure Synapse Studio 简介 (预览版) SQL 脚本
+title: Synapse Studio 中的 SQL 脚本
+description: Azure Synapse Analytics 中的 Synapse Studio SQL 脚本简介。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635275"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458007"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>使用 Azure Synapse Studio 中的 SQL 脚本 (预览版) 
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 脚本 
 
-Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编写 SQL 查询。 可以连接到 SQL 池 (预览) 。 
+Synapse Studio 提供了一个用于编写 SQL 查询的 SQL 脚本 web 界面。 
 
 ## <a name="begin-authoring-in-sql-script"></a>开始在 SQL 脚本中创作 
 
 可以通过多种方法在 SQL 脚本中启动创作体验。 可以通过以下方法之一创建新的 SQL 脚本。
 
-1. 从 "开发" 菜单中，选择 **"+"** 图标，然后选择 " **SQL 脚本** "。
+1. 从 "开发" 菜单中，选择 **"+"** 图标，然后选择 " **SQL 脚本**"。
 
-2. 从 " **操作** " 菜单中，选择 " **新建 SQL 脚本** "。
+2. 从 " **操作** " 菜单中，选择 " **新建 SQL 脚本**"。
 
-3. 从 "开发 SQL 脚本" 下的 " **操作** " 菜单中选择 " **导入** "。 从本地存储中选择现有的 SQL 脚本。
+3. 从 "开发 SQL 脚本" 下的 "**操作**" 菜单中选择 "**导入**"。 从本地存储中选择现有的 SQL 脚本。
 ![新的 sql 脚本3操作](media/author-sql-script/new-sql-script-3-actions.png)
 
 ## <a name="create-your-sql-script"></a>创建 SQL 脚本
@@ -36,7 +36,7 @@ Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编�
 1. 选择 " **属性** " 按钮并替换分配给 sql 脚本的默认名称，以选择 sql 脚本的名称。 
 ![新的 sql 脚本重命名](media/author-sql-script/new-sql-script-rename.png)
 
-2. 从 " **连接到** " 下拉菜单中选择特定专用 sql 池或无服务器 SQL 池。 如果需要，请选择 " **使用数据库** " 数据库。 
+2. 从 " **连接到** " 下拉菜单中选择特定专用 sql 池或无服务器 SQL 池。 如果需要，请选择 " **使用数据库**" 数据库。 
 ![新建 sql 选择池](media/author-sql-script/new-sql-choose-pool.png)
 
 3. 开始使用 intellisense 功能创作你的 SQL 脚本。
@@ -51,7 +51,7 @@ Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编�
 
 可以通过选择 "导出结果" 并选择相应的扩展，将结果以不同的格式导出到本地存储 (包括 CSV、Excel、JSON、XML) 。
 
-还可以通过选择 " **图表** " 按钮，将图表中的 SQL 脚本结果可视化。 选择 "图表类型" 和 " **类别" 列** 。 可以通过选择 " **另存为图像** " 将图表导出到图片中。 
+还可以通过选择 " **图表** " 按钮，将图表中的 SQL 脚本结果可视化。 选择 "图表类型" 和 " **类别" 列**。 可以通过选择 " **另存为图像**" 将图表导出到图片中。 
 
 ![新的 sql 脚本结果图表](media/author-sql-script/new-sql-script-results-chart.png)
 

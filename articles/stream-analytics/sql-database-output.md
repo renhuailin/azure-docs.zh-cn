@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129824"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459249"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
 
@@ -35,9 +35,9 @@ ms.locfileid: "93129824"
 |继承分区方案| 一个用于继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑的选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批数| 与每个大容量插入事务一起发送的推荐记录数上限。|
 
-有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics（旧称为 SQL 数据仓库）：SQL 数据库和 Azure Synapse。 如果以下任何条件成立，则建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
+有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics： SQL 数据库和 Azure Synapse。 如果以下任何条件成立，则建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
 
-* **吞吐量** ：如果现在或未来的预期吞吐量大于 10 MB/秒，请使用 Azure Synapse 输出选项来获得更好的性能。
+* **吞吐量**：如果现在或未来的预期吞吐量大于 10 MB/秒，请使用 Azure Synapse 输出选项来获得更好的性能。
 
 * 输入分区数：如果有八个或更多个输入分区，请使用 Azure Synapse 输出选项进行更好的扩展。
 

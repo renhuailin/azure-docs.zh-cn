@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321094"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457099"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>通过数据工厂将 1 TB 负载引入 Azure Synapse 分析
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [使用数据工厂将数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) ](../connector-azure-sql-data-warehouse.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是最新版本的数据工厂服务，请参阅 [使用数据工厂将数据复制到 Azure Synapse 分析或从中复制数据](../connector-azure-sql-data-warehouse.md)。
 
 
 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。  基于大规模并行处理 (MPP) 体系结构构建，Azure Synapse Analytics 针对企业数据仓库工作负荷进行了优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
 
-Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure 数据工厂** 。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 Azure Synapse 分析，并在评估 Azure Synapse 分析和构建分析解决方案时节省宝贵的时间。 下面是使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 的主要优点：
+Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure 数据工厂**。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 Azure Synapse 分析，并在评估 Azure Synapse 分析和构建分析解决方案时节省宝贵的时间。 下面是使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 的主要优点：
 
-* **轻松设置** ：无需脚本的 5 步直观的向导。
-* **丰富的数据存储支持** ：内置支持一组丰富的本地和基于云的数据存储。
-* **安全且合规** ：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
+* **轻松设置**：无需脚本的 5 步直观的向导。
+* **丰富的数据存储支持**：内置支持一组丰富的本地和基于云的数据存储。
+* **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
 * **使用 polybase 的无与伦比性能** –使用 polybase 是将数据移动到 Azure Synapse Analytics 的最有效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
 
 本文介绍如何使用数据工厂复制向导将数据从 Azure Blob 存储加载到 Azure Synapse 分析，时间为15分钟，超过 1.2 GBps 的吞吐量。
@@ -115,13 +115,13 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 2. 单击左上角的“创建资源”，单击“智能 + 分析”，然后单击“数据工厂”。
 3. 在“新建数据工厂”窗格中：
 
-   1. 输入 **LoadIntoSQLDWDataFactory** 作为 **名称** 。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误： **数据工厂名称 "LoadIntoSQLDWDataFactory" 不可用** ，请更改数据工厂的名称， (例如，yournameLoadIntoSQLDWDataFactory) 并再次尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
-   2. 选择 **Azure 订阅** 。
+   1. 输入 **LoadIntoSQLDWDataFactory** 作为 **名称**。
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误： **数据工厂名称 "LoadIntoSQLDWDataFactory" 不可用**，请更改数据工厂的名称， (例如，yournameLoadIntoSQLDWDataFactory) 并再次尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+   2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       1. 选择“使用现有资源组”并选择一个现有的资源组。
       2. 选择“新建”并输入资源组的名称。
-   4. 选择数据工厂的 **位置** 。
+   4. 选择数据工厂的 **位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
    6. 单击“创建”。
 4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
@@ -141,7 +141,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为 **任务名称**
 2. 选择“立即运行一次”选项。   
-3. 单击“下一步”。   
+3. 单击“下一步”  。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -167,7 +167,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 ## <a name="step-3-configure-destination"></a>步骤 3：配置目标
 本部分介绍如何 `lineitem` 在 Azure Synapse Analytics 数据库中配置目标：表。
 
-1. 选择 " **Azure Synapse Analytics** " 作为目标存储，然后单击 " **下一步** "。
+1. 选择 " **Azure Synapse Analytics** " 作为目标存储，然后单击 " **下一步**"。
 
     ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
@@ -183,7 +183,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”。  单击“下一步”。 
+默认选中“允许 polybase”。  单击“下一步”  。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
@@ -202,7 +202,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
     ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 下面是运行 Azure Synapse 分析数据库的几个最佳做法：
 
 * 加载到聚集列存储索引时，请使用较大的资源类。

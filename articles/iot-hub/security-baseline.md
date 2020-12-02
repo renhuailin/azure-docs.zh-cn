@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 003bf5241611df450fa6d0ecadff264c4d5de243
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 891366060cddaf2a046de36fa9300432977ec903
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842849"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457725"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>适用于 Azure IoT 中心的 Azure 安全基线
 
@@ -33,7 +33,7 @@ IoT 中心的功能，包括消息路由、文件上传和批量设备导入/导
 将设备中开放的硬件端口数保持在最低限度，以避免不必要的访问。 此外，建立相应机制来阻止或检测对设备的物理篡改。
 
 - [IoT 虚拟网络支持](virtual-network-support.md)
-- [大量网络最佳做法](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
+- [大量网络最佳做法](../iot-fundamentals/security-recommendations.md?context=azure%2fiot-hub%2frc%2frc#networking)
 - [Azure 专用链接概述](../private-link/private-link-overview.md)
 - [Azure 网络安全组](../virtual-network/network-security-groups-overview.md)
 
@@ -73,7 +73,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 - [用于 IoT 的 Azure 安全中心可疑 IP 地址通信](../defender-for-iot/concept-security-alerts.md)
 
-- [管理 Azure DDoS 保护基本](../virtual-network/ddos-protection-overview.md)
+- [管理 Azure DDoS 保护基本](../ddos-protection/ddos-protection-overview.md)
 
 - [Azure 安全中心的威胁防护](../security-center/azure-defender.md)
 
@@ -220,7 +220,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 - [监视 Azure IoT 运行状况](monitor-iot-hub.md)
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
    
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 

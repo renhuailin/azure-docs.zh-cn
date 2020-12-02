@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561788"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458289"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“市场见解”仪表板
 
 本文提供有关合作伙伴中心内的市场见解仪表板的信息。 此仪表板显示了商业 marketplace web analytics 的摘要，使发布者能够度量商业 marketplace 在线商店： Microsoft AppSource 和 Azure Marketplace 中列出的相应产品详细信息页的客户参与情况。
 
-若要访问合作伙伴中心的 **marketplace insights** 仪表板，请在 "商用 marketplace" 下，选择 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **Marketplace Insights** "。
+若要访问合作伙伴中心的 **marketplace insights** 仪表板，请在 "商用 marketplace" 下，选择 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **Marketplace Insights**"。
 
-有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。
 
 ## <a name="marketplace-insights-dashboard"></a>市场见解仪表板
 
@@ -54,29 +54,29 @@ Marketplace Insights 仪表板在两个单独的选项卡中显示 Azure Marketp
 
 Marketplace Insights **访问者** 图表显示所选计算期间的 _页面访问_ 数和 _唯一访问者_ 数。
 
-**页面访问** ：此数字表示产品/服务列表页上不同用户会话的计数 (产品详细信息页) 用于所选计算期间。 红色和绿色百分比指标表示页面访问的增长百分比。 趋势图表示逐月的页面访问次数。
+**页面访问**：此数字表示产品/服务列表页上不同用户会话的计数 (产品详细信息页) 用于所选计算期间。 红色和绿色百分比指标表示页面访问的增长百分比。 趋势图表示逐月的页面访问次数。
 
-**唯一访问者** ：此数字表示在 Azure Marketplace 和 AppSource 中的产品/服务 () 的所选计算期间内的不同访问者计数。 访问过一个或多个产品详细信息页面的访问者将被视为一名唯一访问者。
+**唯一访问者**：此数字表示在 Azure Marketplace 和 AppSource 中的产品/服务 () 的所选计算期间内的不同访问者计数。 访问过一个或多个产品详细信息页面的访问者将被视为一名唯一访问者。
 
 [![说明 Marketplace Insights 仪表板上的 "访问者" 图表。](./media/insights-dashboard/visitors.png)](./media/insights-dashboard/visitors.png#lightbox)
 
 ### <a name="call-to-actions-trend"></a>调用操作趋势
 
-此数字表示 "产品详细信息" 页面)  (产品详细信息页的 "产品/服务列表" 页上的 "操作" 按钮的 **调用** 计数。 当用户选择 " **立即获取** "、" **免费试用** "、" **与我联系** " 或 " **测试驱动器** " 按钮时，将对 _操作_ 进行计数。
+此数字表示 "产品详细信息" 页面)  (产品详细信息页的 "产品/服务列表" 页上的 "操作" 按钮的 **调用** 计数。 当用户选择 "**立即获取**"、"**免费试用**"、"**与我联系**" 或 "**测试驱动器**" 按钮时，将对 _操作_ 进行计数。
 
 [![说明如何调用 Marketplace Insights 仪表板上的操作图。](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>针对产品/服务、引用域和活动 Id 的页面访问和操作
 
-**引用域** ：选择特定的引用域将显示每月的页面访问趋势，并在右侧的图表上调用操作。
+**引用域**：选择特定的引用域将显示每月的页面访问趋势，并在右侧的图表上调用操作。
 
 :::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="说明 Marketplace Insights 仪表板上的参考域图表。":::
 
-**产品/服务** ：选择特定产品/服务，查看每月的页面访问趋势和右侧图表上的操作调用。
+**产品/服务**：选择特定产品/服务，查看每月的页面访问趋势和右侧图表上的操作调用。
 
 :::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="说明 Marketplace Insights 仪表板上的产品/服务别名图表。":::
 
-**市场活动 id** ：通过选择特定的市场活动 id，你应该能够理解市场活动的成功率。 对于每个市场活动，您应该能够看到页面访问的每月趋势和右侧图表上的操作调用。
+**市场活动 id**：通过选择特定的市场活动 id，你应该能够理解市场活动的成功率。 对于每个市场活动，您应该能够看到页面访问的每月趋势和右侧图表上的操作调用。
 
 :::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="说明 Marketplace Insights 仪表板上的活动图。":::
 
@@ -112,4 +112,4 @@ Marketplace Insights **访问者** 图表显示所选计算期间的 _页面访�
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的“客户”仪表板](./customer-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看有关 Azure Marketplace 和 AppSource 产品/服务的客户反馈的合并视图，请参阅 [合作伙伴中心的分级 & 审核分析仪表板](./partner-center-portal/ratings-reviews.md)。
-- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。

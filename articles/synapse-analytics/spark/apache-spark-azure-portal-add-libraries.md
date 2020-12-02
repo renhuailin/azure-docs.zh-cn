@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435359"
+ms.locfileid: "96458821"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 
-库提供你可能想要包括在程序或项目中的可重用代码。 若要使第三方或本地生成的代码可用于你的应用程序，你可以 (预览版) ，将库安装到你的无服务器 Apache Spark 池之一。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
+库提供你可能想要包括在程序或项目中的可重用代码。 若要使第三方或本地生成的代码可用于你的应用程序，你可以将库安装到你的无服务器 Apache Spark 池之一。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
 
 ## <a name="before-you-begin"></a>开始之前
 - 若要安装和更新库，必须在链接到 Azure Synapse Analytics 工作区的主 Gen2 存储帐户上拥有 **存储 Blob 数据参与者** 或 **存储 blob 数据所有者** 权限。
@@ -26,11 +26,11 @@ ms.locfileid: "96435359"
 ## <a name="default-installation"></a>默认安装
 Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和其他库。 可以在 [Apache Spark 版本支持](apache-spark-version-support.md)中找到 "完整库" 列表。 
 
-当 Spark 实例启动时，将自动包含这些库。 可以在 Spark 池 (预览) 级别添加其他 Python 和自定义内置包。
+当 Spark 实例启动时，将自动包含这些库。 可以在 Spark 池级别添加其他 Python 和自定义内置包。
 
 
 ## <a name="manage-python-packages"></a>管理 Python 包
-确定要用于 Spark 应用程序的库后，可以将它们安装到 Spark 池中 (预览) 。 
+确定要用于 Spark 应用程序的库后，可以将它们安装到 Spark 池中。 
 
  可使用命令) 的 *requirements.txt* 文件 (输出来 `pip freeze` 升级虚拟环境。 在启动池时，将从 PyPi 下载此文件中列出的用于安装或升级的包。 每次从该 Spark 池中创建 Spark 实例时，都会使用此要求文件。
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 开发 Spark 应用程序时，可能会发现需要更新现有的或安装新库。 库可以在创建池期间或之后进行更新。
 
 #### <a name="install-packages-during-pool-creation"></a>在创建池期间安装包
-若要在创建池的过程中将库安装到 Spark 池 (预览) ：
+在创建池期间将库安装到 Spark 池：
    
 1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    
@@ -66,7 +66,7 @@ alabaster==0.7.10
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>从 Synapse 工作区安装包
-若要更新或添加其他库到 Spark 池 (预览) 从 Azure Synapse Analytics 门户：
+若要从 Azure Synapse Analytics 门户更新或添加其他库到 Spark 池，请执行以下操作：
 
 1.  从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    
@@ -79,7 +79,7 @@ alabaster==0.7.10
     ![在 synapse 中添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>从 Azure 门户安装包
-若要将库安装到 Spark 池 (预览直接从 Azure 门户中) ：
+直接从 Azure 门户将库安装到 Spark 池：
    
  1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    

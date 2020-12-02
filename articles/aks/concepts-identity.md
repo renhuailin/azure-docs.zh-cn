@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686049"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457177"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -46,7 +46,7 @@ ClusterRole 的工作原理与授予对资源的权限相同，但前者可应�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBinding 和 ClusterRoleBinding
 
-定义了角色来授予针对资源的权限后，可通过 RoleBinding 来分配这些 Kubernetes RBAC 权限。 如果你的 AKS 群集 [与 Azure Active Directory 集成](#azure-active-directory-integration)，则绑定是 Azure AD 指向这些用户授予在群集内执行操作的权限的方式，请参阅如何 [使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 标识控制对群集资源的访问](azure-ad-rbac.md)权限。
+定义了角色来授予针对资源的权限后，可通过 RoleBinding 来分配这些 Kubernetes RBAC 权限。 如果你的 AKS 群集 [与 Azure Active Directory (Azure AD) 相集成 ](#azure-active-directory-integration)，则绑定是向这些用户授予在群集内执行操作的权限的方式，请参阅如何 [使用 Kubernetes 基于角色的访问控制和 Azure AD 标识来控制对群集资源的访问](azure-ad-rbac.md)权限。
 
 角色绑定用于针对给定命名空间分配角色。 此方法可以从逻辑上分离各 AKS 群集，使用户只能访问向其分配的命名空间中的应用程序资源。 若需要针对整个群集或给定命名空间外的群集资源来绑定角色，可以改用“ClusterRoleBinding”。
 
@@ -144,6 +144,22 @@ AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 它提供对群集中每个资源和所有命名空间的完全控制。 |
 
 **若要了解如何启用适用于 Kubernetes 授权的 Azure RBAC，请 [阅读此处](manage-azure-rbac.md)。**
+
+## <a name="summary"></a>总结
+
+此表总结了启用 Azure AD 集成时用户可以向 Kubernetes 进行身份验证的方式。  在所有情况下，用户的命令序列都是：
+1. 运行 `az login` 对 Azure 进行身份验证。
+1. 运行 `az aks get-credentials` 将群集的凭据下载到 `.kube/config` 。
+1. 运行 `kubectl` 命令 (第一个命令可能会触发基于浏览器的身份验证，以便对群集进行身份验证，如下表) 所述。
+
+第二列中提到的角色授予是 "Azure RBAC 角色授予"，它显示在 "Azure 门户中的" **访问控制** "选项卡上。 "群集管理员 Azure AD" 组显示在门户的 " **配置** " 选项卡上 (或 `--aad-admin-group-object-ids` Azure CLI) 中的参数名称。
+
+| 说明        | 需要角色授予| 群集管理 Azure AD 组 (s)  | 何时使用 |
+| -------------------|------------|----------------------------|-------------|
+| 使用客户端证书的旧管理员登录名| **Azure Kubernetes 管理员角色**。 此角色允许 `az aks get-credentials` 与标志一起使用 `--admin` ，该标志将旧的 [ (非 Azure AD) 群集管理证书](control-kubeconfig-access.md) 下载到用户的中 `.kube/config` 。 这是 "Azure Kubernetes 管理员角色" 的唯一目的。|不适用|如果你被永久阻止，不能访问具有群集访问权限的有效 Azure AD 组。| 
+| 与手动 (群集 Azure AD) RoleBindings| **Azure Kubernetes 用户角色**。 "User" 角色允许在 `az aks get-credentials` 没有标志的情况下使用 `--admin` 。  (这是 "Azure Kubernetes 用户角色" 的唯一用途。 ) 结果，在启用了 Azure AD 的群集上，是将 [空项](control-kubeconfig-access.md) 下载到 `.kube/config` 中，这会在首次使用时触发基于浏览器的身份验证 `kubectl` 。| 用户不在任何这些组中。 由于用户不在任何群集管理组中，因此，由群集管理员设置的任何 RoleBindings 或 ClusterRoleBindings 将完全控制其权限。  (群集) RoleBindings [提名 Azure AD 用户或 Azure AD 组](azure-ad-rbac.md) 作为其 `subjects` 。 如果未设置此类绑定，则用户将无法 excute 任何 `kubectl` 命令。|如果你想要进行精细的访问控制，并且没有使用 Azure RBAC 进行 Kubernetes 授权。 请注意，设置绑定的用户必须通过此表中列出的其他方法之一进行登录。|
+| 由管理组的成员 Azure AD| 同上|用户是此处列出的其中一个组的成员。 AKS 自动生成将所有列出的组绑定到 Kubernetes 角色的 ClusterRoleBinding `cluster-admin` 。 因此这些组中的用户可以将所有 `kubectl` 命令作为运行 `cluster-admin` 。|如果你希望方便地向用户授予完全管理员权限，并且 _不_ 使用 Azure RBAC 进行 Kubernetes 授权。|
+| Azure AD Azure RBAC 进行 Kubernetes 授权|以下两个角色： First、 **Azure Kubernetes 用户角色** (如上所述) 。 其次，"Azure Kubernetes 服务 **RBAC**..." 中的一个以上列出的角色或你自己的自定义替代项。|启用 Kubernetes 授权的 Azure RBAC 时，"配置" 选项卡上的 "管理角色" 字段是不相关的。|使用 Azure RBAC 进行 Kubernetes 授权。 此方法提供了精细的控制，无需设置 RoleBindings 或 ClusterRoleBindings。|
 
 ## <a name="next-steps"></a>后续步骤
 
