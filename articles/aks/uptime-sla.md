@@ -5,18 +5,18 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f8ec80d178af274c285371b4f53820eb9e41ccf7
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748876"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519155"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
 运行时间 SLA 是一个可选功能，用于为群集启用具有财务支持的更高 SLA。 对于使用[可用性区域][availability-zones]的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.95% 的可用性，对于不使用可用性区域的群集，可保证 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
 
-需要 SLA 以满足合规性要求或要求向最终用户扩展 SLA 的客户应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。 将运行时间 SLA 功能与可用性区域结合使用可以提高 Kubernetes API 服务器运行时间的可用性。  
+客户如果需要 SLA 以满足合规性要求或需要将 SLA 扩展到其最终用户，则应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。 将运行时间 SLA 功能与可用性区域结合使用可以提高 Kubernetes API 服务器运行时间的可用性。  
 
 客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限制免费群集，并根据需要选择首选 SLO 或 SLA 运行时间。
 
@@ -27,11 +27,14 @@ ms.locfileid: "92748876"
 
 运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
 
-* 当前不支持 Azure 中国世纪互联。
-
 ## <a name="limitations"></a>限制
 
-* 当前不支持专用群集。
+仅在以下区域支持专用群集：
+ *  美国东部
+ *  美国西部
+ *  美国西部 2
+ *  美国中北部
+ *  美国中西部
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
@@ -39,7 +42,7 @@ ms.locfileid: "92748876"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 版本2.8.0 或更高版本
+* 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 版本 2.8.0 或更高版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的新群集
 
@@ -60,7 +63,7 @@ az group create --name myResourceGroup --location eastus
 # Create an AKS cluster with uptime SLA
 az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
-片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 下面的 JSON 代码片段显示了 SKU 的付费层，指示群集已启用运行时间 SLA：
+片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 下面的 JSON 片段显示了 SKU 的付费层，表明群集已启用了运行时间 SLA：
 
 ```output
   },
@@ -72,9 +75,9 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla 
 
 ## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>修改现有群集以使用运行时间 SLA
 
-你可以选择更新现有群集以使用运行时间 SLA。
+可以选择更新现有群集，以使用运行时间 SLA。
 
-如果使用前面的步骤创建了 AKS 群集，请删除该资源组：
+如果使用前面的步骤创建了 AKS 群集，请删除资源组：
 
 ```azurecli-interactive
 # Delete the existing cluster by deleting the resource group 
@@ -102,7 +105,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
  az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
  ```
 
- 下面的 JSON 代码片段显示了 SKU 的付费层，指示群集已启用运行时间 SLA：
+ 下面的 JSON 片段显示了 SKU 的付费层，表明群集已启用了运行时间 SLA：
 
  ```output
   },
@@ -114,7 +117,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 
 ## <a name="clean-up"></a>清理
 
-若要避免收费，请清除创建的所有资源。 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
+若要避免收费，请清理创建的任何资源。 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
