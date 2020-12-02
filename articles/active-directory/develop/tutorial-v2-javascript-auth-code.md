@@ -12,17 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216124"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980212"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教程：使用授权代码流让用户登录并从 JavaScript 单页应用 (SPA) 调用 Microsoft Graph API
 
-本教程演示如何创建一个 JavaScript 单页应用程序 (SPA)，它使用适用于 JavaScript v2.0 的 Microsoft 身份验证库 (MSAL) 执行以下操作：
+在本教程中，你将生成一个 JavaScript 单页应用程序 (SPA)，其使用 PKCE 的授权代码流来登录用户并调用 Microsoft Graph。 生成的 SPA 使用适用于 JavaScript v2.0 的 Microsoft 身份验证库 (MSAL)。
 
+在本教程中：
 > [!div class="checklist"]
 > * 通过 PKCE 执行 OAuth 2.0 授权代码流
 > * 将个人 Microsoft 帐户以及工作和学校帐户登录
@@ -619,23 +620,23 @@ function callMSGraph(endpoint, token, callback) {
 
 在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台终结点进行登录：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="展示单页应用程序中的授权代码流的示意图":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="显示登录对话框的 Web 浏览器":::
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
 
 首次登录到应用程序时，系统会提示你授予其访问你的个人资料的权限，并将你登录：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="展示单页应用程序中的授权代码流的示意图":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="显示在 Web 浏览器中的内容对话框":::
 
 如果你同意请求的权限，Web 应用程序会显示用户名，表示登录成功：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="展示单页应用程序中的授权代码流的示意图":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web 浏览器中的登录成功结果":::
 
 ### <a name="call-the-graph-api"></a>调用图形 API
 
 登录之后，选择“查看个人资料”，以查看在调用 Microsoft Graph API 的响应中返回的用户个人资料信息：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="展示单页应用程序中的授权代码流的示意图":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="浏览器中显示的 Microsoft Graph 中的个人资料信息":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 

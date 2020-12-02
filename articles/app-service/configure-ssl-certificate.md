@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149066"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956494"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -39,7 +39,7 @@ ms.locfileid: "92149066"
 ## <a name="private-certificate-requirements"></a>私有证书要求
 
 > [!NOTE]
-> Azure Web 应用**不**支持 AES256，并且所有 pfx 文件都应使用 TripleDES 进行加密。
+> Azure Web 应用 **不** 支持 AES256，并且所有 pfx 文件都应使用 TripleDES 进行加密。
 
 [免费应用服务托管证书](#create-a-free-certificate-preview)或[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
 
@@ -105,6 +105,8 @@ ms.locfileid: "92149066"
 
 - [将证书导入到应用服务中](#import-certificate-into-app-service)。
 - [管理证书](#manage-app-service-certificates)，如对其进行续订、重新生成密钥和导出。
+> [!NOTE]
+> 目前，Azure 国家云不支持应用服务证书。
 
 ### <a name="start-certificate-order"></a>启动证书申请
 
@@ -162,7 +164,7 @@ ms.locfileid: "92149066"
 > 支持四种类型的域验证方法： 
 > 
 > - **应用服务验证** - 当域已映射到同一订阅中的应用服务应用时，这是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
-> - **域** - 验证[从 Azure 购买的应用服务域](manage-custom-dns-buy-domain.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
+> - **域** - 验证 [从 Azure 购买的应用服务域](manage-custom-dns-buy-domain.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
 > - **邮件** - 通过向域管理员发送电子邮件来验证域。 选择此选项时会提供相应说明。
 > - **手动** - 使用 HTML 页（仅标准证书）或 DNS TXT 记录验证域。 选择此选项时会提供相应说明。
 
@@ -206,7 +208,7 @@ ms.locfileid: "92149066"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| 密钥保管库 | 包含要导入的证书的保管库。 |
+| Key Vault | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。

@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306977"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900409"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
 本文介绍如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 创建机器学习应用程序，该应用程序对 Azure 开放数据集执行简单的预测分析。 Spark 提供内置机器学习库。 此示例通过逻辑回归使用分类。
 
-MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实用工具，包括适用于以下任务的实用工具：
+SparkML 和 MLlib 是核心 Spark 库，提供许多可用于机器学习任务的实用工具，包括适用于以下任务的实用工具：
 
 - 分类
 - 回归
@@ -33,9 +33,9 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 *分类* 是一种常见的机器学习任务，是将输入数据按类别排序的过程。 它是一种分类算法的作业，旨在算出如何将标签分配到提供的输入数据。 例如，可以联想机器学习算法，该算法接受股票信息作为输入并将股票划分为两个类别：应该卖出的股票和应该保留的股票。
 
-逻辑回归是可用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类* ，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
+逻辑回归是可用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-总之，逻辑回归的过程会产生 *逻辑函数* ，可用于预测输入向量属于一个组或另一个组的概率。
+总之，逻辑回归的过程会产生 *逻辑函数*，可用于预测输入向量属于一个组或另一个组的概率。
 
 ## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>NYC 出租车数据的预测分析示例
 
@@ -46,7 +46,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 在下面的步骤中，你将开发一个模型来预测特定行程是否包含提示。
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>创建 Apache Spark MLlib 机器学习应用
+## <a name="create-an-apache-spark--machine-learning-model"></a>创建 Apache Spark 机器学习模型
 
 1. 使用 PySpark 内核创建笔记本。 有关说明，请参阅[创建笔记本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
 2. 导入此应用程序所需的类型。 将以下代码复制粘贴到一个空单元格中，然后按 Shift+Enter，或使用代码左侧的蓝色播放图标运行该单元格。
@@ -109,44 +109,6 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
-
-## <a name="understand-the-data"></a>了解数据
-
-通常，此时你将经历一个探索数据分析 (EDA) 阶段以了解数据。 下面的代码显示了与提示有关的数据的三种不同可视化效果，这些提示可得出有关数据状态和质量的结论。
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![直方图](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![盒须图](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![散点图](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="prepare-the-data"></a>准备数据
 
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![逻辑回归提示模型的 ROC 曲线](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "逻辑回归提示模型的 ROC 曲线")
+![逻辑回归提示模型的 ROC 曲线](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>关闭 Spark 实例
 

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543215"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992312"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -250,7 +250,7 @@ ms.locfileid: "94543215"
 
 ## <a name="export-the-labels"></a>导出标签
 
-随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
+随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为[带有标签的 Azure 机器学习数据集](how-to-use-labeled-dataset.md)。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
 
 COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 可以在机器学习的“数据集”部分访问导出的 Azure 机器学习数据集。 数据集详细信息页还提供了演示如何从 Python 访问标签的示例代码。
 

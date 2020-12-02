@@ -6,21 +6,21 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/15/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: fbb69a4449c32f85cc4be438645b654608aa7489
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92131133"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026550"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>添加或更新用于 Azure 的信用卡
 
 本文档适用于使用信用卡注册 Azure online 的客户。
 
-在 Azure 门户中，可将默认付款方式更改为新信用卡，并更新信用卡详细信息。 只有[帐户管理员](../understand/subscription-transfer.md#whoisaa)才能进行这种更改。
+在 Azure 门户中，可将默认付款方式更改为新信用卡，并更新信用卡详细信息。 必须是[帐户管理员](../understand/subscription-transfer.md#whoisaa)或必须具有正确的 [MCA 权限](understand-mca-roles.md)才能进行这些更改。
 
 如果要删除信用卡，请参阅[删除 Azure 账单付款方式](delete-azure-payment-method.md)。
 
@@ -50,7 +50,7 @@ Microsoft Azure 支持的付款方式为信用卡和支票/电汇。 若要获�
 1. 输入信用卡的详细信息。  
     ![演示如何添加新卡的屏幕截图](./media/change-credit-card/sub-add-new-x.png)
 1. 若要将该卡设置为有效付款方式，请勾选窗体上方“将此设置为我的可用付款方式”旁边的框。 对于所使用的卡与所选订阅的卡相同的所有订阅，此卡将成为有效付款方式。
-1. 选择“ **下一页** ”。
+1. 选择“**下一页**”。
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>将订阅的信用卡更改为之前保存的信用卡
 
@@ -82,11 +82,11 @@ Microsoft Azure 支持的付款方式为信用卡和支票/电汇。 若要获�
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>管理 Microsoft 客户协议的信用卡
 
-以下部分适用于已签署 Microsoft 客户协议，并已使用信用卡注册了 Azure Online 的客户。 [了解如何检查是否已签署 Microsoft 客户协议](#check-the-type-of-your-account)。
+以下部分适用于已签署 Microsoft 客户协议，并已使用信用卡注册了 Azure Online 的客户，以及具有正确的 [MCA 权限](understand-mca-roles.md)的客户。 [了解如何检查是否已签署 Microsoft 客户协议](#check-the-type-of-your-account)。
 
 ### <a name="change-default-credit-card"></a>更改默认信用卡
 
-如果已签署 Microsoft 客户协议，则信用卡与计费配置文件相关联。 只有注册了 Azure 并创建了计费帐户的人员才能更改计费配置文件的付款方式。
+如果已签署 Microsoft 客户协议，则信用卡与计费配置文件相关联。 只有注册了 Azure 并创建了计费帐户的人员或具有正确的 [MCA 权限](understand-mca-roles.md)的人员才能更改计费配置文件的付款方式。
 
 若要将计费配置文件的默认付款方式更改为支票/电汇，请参阅[通过发票为 Azure 订阅付款](pay-by-invoice.md)。
 

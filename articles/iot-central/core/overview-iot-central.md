@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127397"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985036"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -58,7 +58,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 此[设备模板](howto-set-up-template.md)包括：
 
-- 设备功能模型，描述设备应实现的功能。 设备功能包括：
+- 设备模型，描述设备应实现的功能。 设备功能包括：
 
   - 流式传输到 IoT Central 的遥测。
   - 用于将状态报告给 IoT Central 的只读属性。
@@ -72,9 +72,9 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 作为解决方案构建者，你在创建设备模板时有多种选择：
 
-- 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备功能模型。
-- 使用 Visual Studio code 创建设备功能模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备功能模型，并创建简单的设备模板。
-- 使用 Visual Studio Code 创建设备功能模型。 基于模型实现设备代码。 将设备功能模型手动导入 IoT Central 应用程序，然后添加 IoT Central 应用程序所需的任何云属性、自定义和仪表板。
+- 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备模型。
+- 使用 Visual Studio code 创建设备模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备模型，并创建简单的设备模板。
+- 使用 Visual Studio Code 创建设备模型。 基于模型实现设备代码。 将设备模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
 
 作为解决方案构建者，你可以使用 IoT Central 来生成测试设备的代码，以便验证设备模板。
 
@@ -151,7 +151,6 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 - 不支持数组架构类型。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
 - IoT Central 目前可在美国、欧洲、亚太、澳大利亚、英国和日本位置中使用。
-- 必须在同一文件中以内联方式定义设备功能模型的所有接口。
 
 ## <a name="next-steps"></a>后续步骤
 

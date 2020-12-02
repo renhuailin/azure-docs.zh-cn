@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 70acc696f1cb366d25299f616744e52491a54471
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354416"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024171"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -129,7 +129,7 @@ ms.locfileid: "94354416"
 
 1. 若要创建流分析作业，请导航到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源”并搜索“流分析作业” 。 选择“流分析作业”磁贴并选择“创建”。
+2. 选择“创建资源”并搜索“流分析作业” 。 选择“流分析作业”磁贴并选择“创建” 。
 
 3. 使用以下值填写“新建流分析作业”窗体：
 

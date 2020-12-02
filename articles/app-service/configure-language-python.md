@@ -2,19 +2,19 @@
 title: 配置 Linux Python 应用
 description: 了解如何使用 Azure 门户和 Azure CLI 配置运行 Web 应用的 Python 容器。
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425909"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873839"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
-本文介绍 [Azure 应用服务](overview.md)如何运行 Python 应用，以及如何按需自定义应用服务的行为。 必须连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Python 应用。
+本文介绍 [Azure 应用服务](overview.md)如何运行 Python 应用，如何将现有应用迁移到 Azure 以及如何按需自定义应用服务的行为。 必须连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Python 应用。
 
 部署 [Git 存储库](deploy-local-git.md)或 [zip 包](deploy-zip.md)时，应用服务部署引擎会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
 
@@ -94,7 +94,31 @@ ms.locfileid: "94425909"
 > [!NOTE]
 > 始终在所有预先生成和后期生成脚本中使用相对路径，因为运行 Oryx 的生成容器与运行应用的运行时容器不同。 决不要依赖于应用项目文件夹在容器中的确切位置（例如，其位于 site/wwwroot 下）。
 
-## <a name="production-settings-for-django-apps"></a>Django 应用的生产设置
+## <a name="migrate-existing-applications-to-azure"></a>将现有应用程序迁移到 Azure
+
+可以将现有的 Web 应用重新部署到 Azure，如下所示：
+
+1. **源存储库**：在适当的存储库（如 GitHub）中维护源代码，确保可以在此过程的稍后部分设置持续部署。
+    1. requirements.txt 文件必须位于存储库的根目录，应用服务才能自动安装必需的包。    
+
+1. **数据库**：如果应用依赖于数据库，则还应在 Azure 上预配必需的资源。 请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 创建数据库](tutorial-python-postgresql-app.md#create-postgres-database-in-azure)，了解示例。
+
+1. **应用服务资源**：创建资源组、应用服务计划和应用服务 Web 应用以托管应用程序。 若要最轻松地实现这一点，可以通过使用 Azure CLI 命令 `az webapp up` 进行代码的初始部署，如[教程：使用 PostgreSQL 部署 Django Web 应用 - 部署代码](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service)。 替换资源组、应用服务计划和 Web 应用的名称，使其更适用于应用程序。
+
+1. **环境变量**：如果应用程序需要使用任意环境变量，请创建等效的[应用服务应用程序设置](configure-common.md#configure-app-settings)。 这些应用服务设置在代码中显示为环境变量，如[访问环境变量](#access-app-settings-as-environment-variables)中所述。
+    - 例如，通常通过此类设置管理数据库连接，如[教程：使用 PostgreSQL 部署 Django Web 应用 - 配置变量以连接数据库](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)。
+    - 有关典型 Django 应用的具体设置，请参阅 [Django 应用的生产设置](#production-settings-for-django-apps)。
+
+1. **应用启动**：查看后文中的[容器启动过程](#container-startup-process)部分，了解应用服务如何尝试运行应用。 默认情况下，应用服务使用 Gunicorn Web 服务器，该服务器必须能够找到应用对象或 wsgi.py 文件夹。 如有必要，可以[自定义启动命令](#customize-startup-command)。
+
+1. **持续部署**：设置持续部署，如[持续部署到 Azure 应用服务](deploy-continuous-deployment.md)（如果使用 Azure Pipelines 或 Kudu 部署），或[使用 GitHub Actions 部署到应用服务](deploy-github-actions.md)（如果使用 GitHub 操作）中所述。
+
+1. **自定义操作**：若要在托管应用的应用服务容器内执行操作（例如 Django 数据库迁移），可以[通过 SSH 连接到容器](configure-linux-open-ssh-session.md)。 有关运行 Django 数据库迁移的示例，请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 运行数据库迁移](tutorial-python-postgresql-app.md#run-django-database-migrations)。
+    - 使用持续部署时，可以使用生成后命令执行这些操作，如之前[自定义生成自动化](#customize-build-automation)中所述。
+
+完成这些步骤后，你应能够将更改提交到源存储库，并将这些更新自动部署到应用服务。
+
+### <a name="production-settings-for-django-apps"></a>Django 应用的生产设置
 
 对于 Azure 应用服务之类的生产环境，Django 应用应遵循 Django 的[部署清单](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com)。
 

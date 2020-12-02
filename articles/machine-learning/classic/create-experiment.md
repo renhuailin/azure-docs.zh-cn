@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307981"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486273"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入门：在机器学习工作室（经典）中创建第一个数据科学试验
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "93307981"
 
     ![将试验重命名](./media/create-experiment/rename-experiment.png)
 
-1. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入 **汽车** ，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
+1. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入 **汽车**，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
 
     ![找到汽车数据集并将其拖放到试验画布上](./media/create-experiment/type-automobile.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "93307981"
 1. 单击[选择数据集中的列][select-columns]模块，并单击“属性”窗格中的“启动列选择器” 。
 
    - 在左侧单击“使用规则”
-   - 在 **开头为** 下面，单击 **所有列** 。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
+   - 在 **开头为** 下面，单击 **所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
    - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
    - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -225,13 +225,13 @@ ms.locfileid: "93307981"
 
 针对本例中的模型显示了以下统计信息：
 
-- **平均绝对误差** (MAE)：绝对误差的平均值（ *误差* 是指预测值与实际值之间的差异）。
+- **平均绝对误差** (MAE)：绝对误差的平均值（*误差* 是指预测值与实际值之间的差异）。
 - **均方根误差** (RMSE)：对测试数据集所做预测的平均误差的平方根。
-- **相对绝对误差** ：相对于实际值与所有实际值平均值之间的绝对差异的绝对误差平均值。
-- **相对平方误差** ：相对于实际值与所有实际值平均值之间的平方差异的平方误差平均值。
-- **决定系数** ：也称为 **R 平方值** ，这是一个统计度量值，表示模型的数据拟合度。
+- **相对绝对误差**：相对于实际值与所有实际值平均值之间的绝对差异的绝对误差平均值。
+- **相对平方误差**：相对于实际值与所有实际值平均值之间的平方差异的平方误差平均值。
+- **决定系数**：也称为 **R 平方值**，这是一个统计度量值，表示模型的数据拟合度。
 
-每个误差统计值越小越好。 值越小，表示预测越接近实际值。 对于 **决定系数** ，其值越接近 1 (1.0)，预测就越精确。
+每个误差统计值越小越好。 值越小，表示预测越接近实际值。 对于 **决定系数**，其值越接近 1 (1.0)，预测就越精确。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726461"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544643"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
 
@@ -100,7 +100,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 
 * 使用 [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) 结构来存储凭据。 
 
-* 使用凭据和选项创建一个[**管道**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)。 该管道用于指定重试策略、日志记录、HTTP 响应有效负载的反序列化等事项。  
+* 使用凭据和选项创建一个 [**管道**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)。 该管道用于指定重试策略、日志记录、HTTP 响应有效负载的反序列化等事项。  
 
 * 实例化一个新的 [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL) 和一个新的 [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) 对象，以便在容器上运行操作 (Create) 和在 Blob 上运行操作（Upload 和 Download）。
 
@@ -108,7 +108,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 有了 ContainerURL 之后，即可实例化指向 Blob 的 **BlobURL** 对象，并执行上传、下载、复制之类的操作。
 
 > [!IMPORTANT]
-> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 本部分创建一个新的容器。 容器名为 **quickstartblobs-[随机字符串]** 。 
 
@@ -149,9 +149,9 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 Blob，请使用 **os.Open** 打开该文件。 然后即可使用一个 REST API（Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)）将该文件上传到指定的路径。 
 
-另外，也可使用 SDK 提供的[高级 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)，这是在低级 REST API 的基础上生成的。 例如，***UploadFileToBlockBlob*** 函数使用 StageBlock (PutBlock) 操作以区块方式同时上传一个文件，以便优化吞吐量。 如果文件小于 256 MB，则会改用 Upload (PutBlob) 通过单个事务完成传输。
+另外，也可使用 SDK 提供的[高级 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)，这是在低级 REST API 的基础上生成的。 例如，UploadFileToBlockBlob 函数使用 StageBlock (PutBlock) 操作以区块方式同时上传一个文件，以便优化吞吐量。 如果文件小于 256 MB，则会改用 Upload (PutBlob) 通过单个事务完成传输。
 
-以下示例将文件上传到名为 **quickstartblobs-[randomstring]** 的容器。
+以下示例将文件上传到名为 quickstartblobs-[randomstring] 的容器。
 
 ```go
 // Create a file to test the upload and download.
@@ -184,7 +184,7 @@ handleErrors(err)
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-可以使用基于 **ContainerURL** 的 **ListBlobs** 方法获取容器中文件的列表。 ListBlobs 返回单个 Blob 段（最多 5000 个 Blob，从指定的**标记**开始计算）。 使用空标记从头开始枚举。 Blob 名称按字典中的顺序返回。 获取一个段以后，对其进行处理，然后再次调用 ListBlobs，传递以前返回的标记。  
+可以使用基于 **ContainerURL** 的 **ListBlobs** 方法获取容器中文件的列表。 ListBlobs 返回单个 Blob 段（最多 5000 个 Blob，从指定的 **标记** 开始计算）。 使用空标记从头开始枚举。 Blob 名称按字典中的顺序返回。 获取一个段以后，对其进行处理，然后再次调用 ListBlobs，传递以前返回的标记。  
 
 ```go
 // List the container that we have created above

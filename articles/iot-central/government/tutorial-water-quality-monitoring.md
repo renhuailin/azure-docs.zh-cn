@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972368"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014486"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -188,7 +188,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
 ## <a name="explore-and-configure-rules"></a>浏览并配置规则
 
-在 Azure IoT Central 中，可创建自动监视设备遥测的规则。 当任一条件满足时，这些规则将触发操作。 发送电子邮件通知是其中一种可能的操作。 其他可能的操作包括 Microsoft Flow 操作或将数据发送到其他服务的 webhook 操作。
+在 Azure IoT Central 中，可创建自动监视设备遥测的规则。 当任一条件满足时，这些规则将触发操作。 发送电子邮件通知是其中一种可能的操作。 其他可能的操作包括 Power Automate 操作或将数据发送到其他服务的 Webhook 操作。
 
 已创建的水质监测应用程序具有两个预配置的规则。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825913"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979940"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教程：让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
-在本教程中，我们使用 JavaScript 生成一个单页应用程序 (SPA)，以便用户可使用个人 Microsoft 帐户或学校和工作帐户登录，然后获取访问令牌以调用 Microsoft Graph API。
+在本教程中，你将生成一个 JavaScript 单页应用程序 (SPA)，让用户使用隐式流登录并调用 Microsoft Graph。 生成的 SPA 使用适用于 JavaScript v1.0 的 Microsoft 身份验证库 (MSAL)。
 
 本教程的内容：
 
@@ -319,7 +319,7 @@ ms.locfileid: "91825913"
 
  其中：
  - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
- - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](./authentication-national-cloud.md)。
+ - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](./authentication-national-cloud.md)。
  - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
@@ -513,4 +513,3 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 > [!div class="nextstepaction"]
 > [方案：单页应用程序](scenario-spa-overview.md)
-

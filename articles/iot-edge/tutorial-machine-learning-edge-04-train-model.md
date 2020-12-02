@@ -8,17 +8,14 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660241"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959622"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们将执行以下任务：
 
@@ -29,6 +26,10 @@ ms.locfileid: "88660241"
 Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验、训练和部署机器学习模型的基块。
 
 本文中的步骤通常由数据科学家执行。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="set-up-azure-notebooks"></a>设置 Azure Notebooks
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792678"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985842"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
     ![服务器防火墙规则](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > 确保复制完全限定的服务器名称（例如 *yourserver.database.windows.net* ），以便稍后在本教程中使用。
+    > 确保复制完全限定的服务器名称（例如 *yourserver.database.windows.net*），以便稍后在本教程中使用。
 
 1. 在“概览”页上，选择“设置服务器防火墙” 。 此时会打开服务器的“防火墙设置”页面。
 
@@ -131,7 +131,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
     ![选择管理员](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > 基于角色的访问控制 (RBAC) 仅适用于门户，不会传播到 SQL Server。
+    > Azure 基于角色的访问控制 (Azure RBAC) 仅适用于门户，不会传播到 SQL Server。
 
 1. 在“Active Directory 管理员”页顶部，选择“保存”。
 
@@ -155,9 +155,9 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
 
 若要添加用户，请选择数据库身份验证类型：
 
-- **SQL 身份验证** ，使用用户名和密码登录，仅适用于服务器中存在特定数据库的情况
+- **SQL 身份验证**，使用用户名和密码登录，仅适用于服务器中存在特定数据库的情况
 
-- **Azure AD 身份验证** ，使用 Azure AD 托管的标识
+- **Azure AD 身份验证**，使用 Azure AD 托管的标识
 
 ### <a name="sql-authentication"></a>SQL 身份验证
 
@@ -280,17 +280,17 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 
    1. 选择下述任意项作为“审核日志目标”：
 
-       - **存储** ，一个 Azure 存储帐户，可以在其中保存事件日志，并可将其作为 *.xel* 文件下载
+       - **存储**，一个 Azure 存储帐户，可以在其中保存事件日志，并可将其作为 *.xel* 文件下载
 
           > [!TIP]
           > 请对所有已审核的数据库使用同一存储帐户，以充分利用审核报告模板。
 
-       - **Log Analytics** ，可以自动存储事件，这些事件用于查询或者在将来用于分析
+       - **Log Analytics**，可以自动存储事件，这些事件用于查询或者在将来用于分析
 
            > [!NOTE]
            > 需要使用 **Log Analytics 工作区** 来支持高级功能，例如分析、自定义警报规则，以及 Excel 或 Power BI 导出。 在没有工作区的情况下，只能使用查询编辑器。
 
-       - **事件中心** ，可以路由需要在其他应用程序中使用的事件
+       - **事件中心**，可以路由需要在其他应用程序中使用的事件
 
    1. 选择“保存” 。
 

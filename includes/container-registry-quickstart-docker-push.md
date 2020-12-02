@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019986"
 ---
 ## <a name="push-image-to-registry"></a>将映像推送到注册表
 
@@ -23,7 +23,7 @@ ms.locfileid: "88031761"
 docker pull hello-world
 ```
 
-将映像推送到注册表之前，必须使用注册表登录服务器的完全限定的名称进行标记。 登录服务器名称采用 \<registry-name\>.azurecr.io（全小写）格式，例如 mycontainerregistry.azurecr.io 。
+将映像推送到注册表之前，必须使用注册表登录服务器的完全限定的名称进行标记。 登录服务器名称采用 \<registry-name\>.azurecr.io（必须全小写）格式，例如 mycontainerregistry.azurecr.io 。
 
 使用 [docker tag][docker-tag] 命令标记映像。 使用 ACR 实例的登录服务器名称替换 `<login-server>`。
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592577"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917675"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -41,6 +41,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
+
+可以在工作区默认 ADLS Gen2 帐户中分析数据，也可以通过“管理”>“链接服务”>“新建”  （以下步骤将引用主 ADLS Gen2 帐户）将 ADLS Gen2 或 Blob 存储帐户链接到工作区。
 
 1. 在 Synapse Studio 中，转到“数据”中心，然后选择“已关联” 。
 1. 转到“存储帐户” > “myworkspace (主 - contosolake)” 。

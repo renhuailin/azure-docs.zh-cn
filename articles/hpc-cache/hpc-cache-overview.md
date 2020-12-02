@@ -4,15 +4,15 @@ description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 11/23/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: b51cd938747c1cfa82b397160f077474e176b2f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612959"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519330"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
@@ -64,6 +64,8 @@ Azure HPC 缓存部署可帮助加快定量分析计算、风险分析工作负�
 * 西欧
 * US Gov 亚利桑那州
 * US Gov 弗吉尼亚州
+
+Azure HPC 缓存位于单个区域中。 如果将该缓存连接到位于其他区域的 Blob 容器，则它可以访问存储在该区域中的数据。 缓存不会永久存储客户数据。
 
 ## <a name="next-steps"></a>后续步骤
 

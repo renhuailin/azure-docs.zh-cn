@@ -3,17 +3,17 @@ title: 通过自动化功能管理 Azure 成本
 description: 本文介绍如何通过自动化功能管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: matrive
-ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.reviewer: adwise
+ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131966"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956086"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -63,11 +63,18 @@ Microsoft 客户使用以下示例请求来解决你可能遇到的常见情况�
 
 ### <a name="get-usage-details-for-a-scope-during-specific-date-range"></a>获取特定日期范围内范围的使用情况详细信息
 
-请求返回的数据对应于计费系统收到使用情况的日期。 其中可能包含多张发票的费用。
+请求返回的数据对应于计费系统收到使用情况的日期。 其中可能包含多张发票的费用。 所用调用因订阅类型而异。
+
+对于具有企业协议 (EA) 或即用即付订阅的旧客户，请使用以下调用：
 
 ```http
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?$filter=properties%2FusageStart%20ge%20'2020-02-01'%20and%20properties%2FusageEnd%20le%20'2020-02-29'&$top=1000&api-version=2019-10-01
+```
 
+对于具有 Microsoft 客户协议的新客户，请使用以下调用：
+
+```http
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>获取摊销成本详细信息

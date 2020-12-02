@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419965"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527983"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>OpenShift 4 上 Azure Red Hat 中的网络
 
@@ -98,7 +98,7 @@ OpenShift 软件定义的网络 (SDN) 用于通过 Open vSwitch (OVS) 配置叠�
     * “公共”- 外部网络可访问 API 服务器。
     * “专用”- 从主节点子网向 API 服务器分配了专用 IP，只能使用连接的网络（对等虚拟网络、群集中的其他子网）访问该服务器。 将代表客户创建专用 DNS 区域。
 * “入口可见性”- 设置当运行 [az aro create command](tutorial-create-cluster.md#create-the-cluster) 时的 API 可见性。
-    * “公共”路由将默认为公共 Azure 标准负载均衡器（可以更改）。
+    * “公共”路由将默认为公共标准负载均衡器（可以更改）。
     * “专用”路由将默认为内部负载均衡器（可以更改）。
 
 ## <a name="network-security-groups"></a>网络安全组

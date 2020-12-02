@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 271913a731a2bdf5af94885b5fe4027c0334853c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740292"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887495"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -26,15 +26,13 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.61 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>先决条件
+- 本文需要 Azure CLI 版本 2.0.61 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-若要使用资源管理器模板创建 AKS 群集，请提供 SSH 公钥和 Azure Active Directory 服务主体。 或者，可以使用[托管标识](use-managed-identity.md)而不是服务主体来获得权限。 如果需要其中的任一资源，请参阅以下部分；否则请跳到[查看模板](#review-the-template)部分。
+- 若要使用资源管理器模板创建 AKS 群集，请提供 SSH 公钥和 Azure Active Directory 服务主体。 或者，可以使用[托管标识](use-managed-identity.md)而不是服务主体来获得权限。 如果需要其中的任一资源，请参阅以下部分；否则请跳到[查看模板](#review-the-template)部分。
 
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
@@ -70,7 +68,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-记下 *appId* 和 *password* 。 后续步骤会用到这些值。
+记下 *appId* 和 *password*。 后续步骤会用到这些值。
 
 ## <a name="review-the-template"></a>查看模板
 
@@ -91,15 +89,15 @@ az ad sp create-for-rbac --skip-assignment
     对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。     为以下模板参数提供自己的值：
 
     * 订阅：选择 Azure 订阅。
-    * 资源组：选择“新建”。 输入资源组的唯一名称（例如 *myResourceGroup* ），然后选择“确定”。
+    * 资源组：选择“新建”。 输入资源组的唯一名称（例如 *myResourceGroup*），然后选择“确定”。
     * 位置：选择一个位置，例如“美国东部”。
-    * **群集名称** ：输入 AKS 群集的唯一名称，例如 *myAKSCluster* 。
-    * **DNS 前缀** ：输入群集的唯一 DNS 前缀，例如 *myakscluster* 。
-    * **Linux 管理员用户名** ：输入一个用户名用于通过 SSH 进行连接，例如 *azureuser* 。
-    * **SSH RSA 公钥** ：复制并粘贴 SSH 密钥对的 *public* 部分（默认为 *~/.ssh/id_rsa.pub* 的内容）。
-    * **服务主体客户端 ID** ：复制并粘贴 `az ad sp create-for-rbac` 命令输出的、服务主体的 *appId* 。
-    * **服务主体客户端机密** ：复制并粘贴 `az ad sp create-for-rbac` 命令输出的、服务主体的 *password* 。
-    * **我同意上述条款和条件** ：选中此框表示同意。
+    * **群集名称**：输入 AKS 群集的唯一名称，例如 *myAKSCluster*。
+    * **DNS 前缀**：输入群集的唯一 DNS 前缀，例如 *myakscluster*。
+    * **Linux 管理员用户名**：输入一个用户名用于通过 SSH 进行连接，例如 *azureuser*。
+    * **SSH RSA 公钥**：复制并粘贴 SSH 密钥对的 *public* 部分（默认为 *~/.ssh/id_rsa.pub* 的内容）。
+    * **服务主体客户端 ID**：复制并粘贴 `az ad sp create-for-rbac` 命令输出的、服务主体的 *appId*。
+    * **服务主体客户端机密**：复制并粘贴 `az ad sp create-for-rbac` 命令输出的、服务主体的 *password*。
+    * **我同意上述条款和条件**：选中此框表示同意。
 
     ![用于在门户中创建 Azure Kubernetes 服务群集的资源管理器模板](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
@@ -257,7 +255,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初， *azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending* 。
+最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1ea8d16a441230323b4f0213229d223a0b035bc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778638"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020957"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 产品功能之间有哪些比较？
 
@@ -23,7 +23,7 @@ Azure 内容分发网络 (CDN) 包括四个产品：
 * **来自 Microsoft 的 Azure CDN 标准版**
 * **来自 Akamai 的 Azure CDN 标准版**
 * **来自 Verizon 的 Azure CDN 标准版**
-* **来自 Verizon 的 Azure CDN 高级版** 。 
+* **来自 Verizon 的 Azure CDN 高级版**。 
 
 下表比较了每个产品的可用功能。
 
@@ -72,7 +72,7 @@ Azure 内容分发网络 (CDN) 包括四个产品：
 | 轻松与[存储](cdn-create-a-storage-account-with-cdn.md)、[Web 应用](cdn-add-to-web-app.md)和[媒体服务](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务集成  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 通过 [REST API](/rest/api/cdn/)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 进行管理  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [压缩 MIME 类型](./cdn-improve-performance.md)  |仅限默认值 |可配置性 |可配置  |可配置性  |
-| 压缩编码  |gzip、brotli |gzip |gzip、deflate、bzip2、brotili  |gzip、deflate、bzip2、brotili  |
+| 压缩编码  |gzip、brotli |gzip |gzip、deflate、bzip2、brotli  |gzip、deflate、bzip2、brotli  |
 
 ## <a name="migration"></a>迁移
 

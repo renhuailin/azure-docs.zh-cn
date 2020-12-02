@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f5839b5df4cdaf4abf863587b5f84f87aa63b5a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c11d8aaa578006c7dbd96b457399df5b17fd9bd8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456919"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914882"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BeyondTrust Remote Support 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92456919"
 * 控制 Azure AD 中有权访问 BeyondTrust Remote Support 的人员。
 * 让用户使用其 Azure AD 帐户自动登录到 BeyondTrust Remote Support。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,9 +44,9 @@ ms.locfileid: "92456919"
 
 要配置 BeyondTrust Remote Support 与 Azure AD 的集成，需要从库中将 BeyondTrust Remote Support 添加到托管 SaaS 应用程序列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“BeyondTrust Remote Support”   。
 1. 从结果面板中选择“BeyondTrust Remote Support”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
@@ -57,7 +55,7 @@ ms.locfileid: "92456919"
 
 使用名为 B.Simon 的测试用户配置和测试 BeyondTrust Remote Support 的 Azure AD SSO  。 若要正常使用 SSO，需要在 Azure AD 用户与 BeyondTrust Remote Support 中的相关用户之间建立链接关系。
 
-若要配置和测试 BeyondTrust Remote Support 的 Azure AD SSO，请完成以下构建基块：
+若要配置和测试 BeyondTrust Remote Support 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -70,9 +68,9 @@ ms.locfileid: "92456919"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“BeyondTrust Remote Support”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 Azure 门户的“BeyondTrust Remote Support”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -80,7 +78,7 @@ ms.locfileid: "92456919"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
 
@@ -95,12 +93,11 @@ ms.locfileid: "92456919"
 
     | 名称 |  源属性|
     | ---------------| ----------|
-    | Givenname | user.givenname |
-    | Emailaddress | user.mail |
-    | 名称 | user.userprincipalname |
     | 用户名 | user.userprincipalname |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | 电子邮件 | user.mail |
     | 组 | user.groups |
-    | 唯一用户标识符 | user.userprincipalname |
 
     > [!NOTE]
     > 为 BeyondTrust Remote Support 应用程序分配 Azure AD 组时，需将“声明中返回的组”选项从 None 修改为 SecurityGroup。 这些组将作为其对象 ID 导入到应用程序中。 通过检查 Azure Active Directory 接口中的属性来查找 Azure AD 组的对象 ID。 将需要执行该操作以引用 Azure AD 组并将其分配至正确的组策略。
@@ -123,13 +120,13 @@ ms.locfileid: "92456919"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -138,63 +135,62 @@ ms.locfileid: "92456919"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中选择“BeyondTrust Remote Support”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-beyondtrust-remote-support-sso"></a>配置 BeyondTrust Remote Support SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 BeyondTrust Remote Support。
 
-1. 单击“状态”菜单并复制“标识符”、“回复 URL”和“登录 URL”，然后在 Azure 门户中的“基本 SAML 配置”部分使用这些值      。
-
-    ![屏幕截图显示 BeyondTrust“远程支持”中的“状态”菜单，可在其中收集此信息。](./media/bomgarremotesupport-tutorial/config-url-values.png)
-
-1. 在 `https://support.example.com/login` 导航到 BeyondTrust Remote Support/登录接口，其中“support.example.com”是设备的主要主机名，并使用管理凭据进行身份验证  。
-
 1. 导航到“用户和安全” > “安全提供程序”   。
 
-1. 在下拉菜单中选择“SAML”并单击“创建提供程序”按钮   。
+1. 单击“SAML 提供程序”中的“编辑”图标。
 
-1. 在“标识提供者设置”部分下，有一个用于上传“标识提供者元数据”的选项。 找到从 Azure 门户下载的元数据 XML 文件，然后单击“上传”按钮  。 将自动上传“实体 ID”、“单一登录服务 URL”和证书，并需要将“协议绑定”更改为“HTTP POST”     。 参阅以下屏幕截图：
+    ![SAML 提供程序编辑图标](./media/bomgarremotesupport-tutorial/saml-providers.png)
 
-    ![屏幕截图显示“标识提供者设置”部分，可在其中执行这些操作。](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+1. 展开“服务提供程序设置”部分。
+
+1. 单击“下载服务提供程序元数据”，或可以复制“实体 ID”和“ACS URL”的值，并在 Azure 门户的“基本 SAML 配置”部分中使用这些值。
+
+    ![下载服务提供程序元数据](./media/bomgarremotesupport-tutorial/service-provider-metadata.png)
+
+
+1. 在“标识提供程序设置”部分下，单击“上传标识提供程序元数据”，找到从 Azure 门户下载的元数据 XML 文件。
+
+1.  将自动上传“实体 ID”、“单一登录服务 URL”和服务器证书，并需要将“SSO URL 协议绑定”更改为“HTTP POST”    。
+
+    ![屏幕截图显示“标识提供者设置”部分，可在其中执行这些操作。](./media/bomgarremotesupport-tutorial/identity-provider.png)
+
+1. 单击“保存” 。
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>创建 BeyondTrust Remote Support 测试用户
 
 我们将在此处配置用户预配设置。 本部分中使用的值将从 Azure 门户的“用户属性和声明”部分中引用  。 我们将其配置为创建时已导入的默认值，但是，可以根据需要自定义该值。
 
-![屏幕截图显示“用户预配设置”，可在其中配置用户值。](./media/bomgarremotesupport-tutorial/config-user1.png)
+![屏幕截图显示“用户预配设置”，可在其中配置用户值。](./media/bomgarremotesupport-tutorial/user-attribute.png)
 
 > [!NOTE]
 > 该实现不需要组和电子邮件属性。 如果使用 Azure AD 组并将其分配给 BeyondTrust Remote Support 组策略以获取权限，则需要通过 Azure 门户中的属性来引用该组的对象 ID，并将其置于“可用组”部分中。 完成此任务后，可将对象 ID/AD 组分配给组策略以获得权限。
 
 ![屏幕截图显示“IT”部分，其中包含“成员身份类型”、“源”、“类型”和“对象 ID”。](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![屏幕截图显示组策略的“基本设置”页。](./media/bomgarremotesupport-tutorial/config-user3.png)
+![屏幕截图显示组策略的“基本设置”页。](./media/bomgarremotesupport-tutorial/group-policy.png)
 
 > [!NOTE]
 > 或者，可以在 SAML2 安全提供程序上设置默认的组策略。 通过定义此选项，这将为通过 SAML 进行身份验证的所有用户分配组策略中指定的权限。 “常规成员”策略包含在具有有限权限的 BeyondTrust Remote Support/Privileged Remote Access 中，可用于测试身份验证并将用户分配给正确的策略。 在首次成功进行身份验证尝试之前，用户不会通过“登录”>“用户和安全性”填充到 SAML2 用户列表中。 有关组策略的其他信息，请查看以下链接：`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“BeyondTrust Remote Support”磁贴时，应会自动登录到设置了 SSO 的 BeyondTrust Remote Support。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 BeyondTrust 远程支持登录 URL，可在其中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 BeyondTrust 远程支持登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“BeyondTrust 远程支持”磁贴后，会重定向到 BeyondTrust 远程支持登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [使用 Azure AD 试用 BeyondTrust Remote Support](https://aad.portal.azure.com/)
+配置 BeyondTrust 远程支持后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

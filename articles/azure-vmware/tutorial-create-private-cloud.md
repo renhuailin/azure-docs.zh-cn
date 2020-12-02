@@ -1,14 +1,14 @@
 ---
 title: 教程 - 在 Azure 中部署 vSphere 群集
-description: 了解如何使用 Azure VMWare 解决方案在 Azure 中部署 vSphere 群集
+description: 了解如何使用 Azure VMware 解决方案在 Azure 中部署 vSphere 群集
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/19/2020
+ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952278"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966303"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教程：在 Azure 中部署 Azure VMware 解决方案私有云
 
@@ -16,7 +16,7 @@ ms.locfileid: "91952278"
 
 由于在启动时 Azure VMware 解决方案不允许使用本地 vCenter 管理私有云，因此需要进行额外配置。 本教程将介绍这些过程和相关先决条件。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure VMware 解决方案私有云
@@ -51,7 +51,7 @@ ms.locfileid: "91952278"
 
 #### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 `[az group create](/cli/azure/group)` 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive
 
@@ -77,7 +77,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-an-azure-vmware-solution-private-cloud"></a>删除 Azure VMware 解决方案私有云
 
-如果你不再需要某个 Azure VMware 解决方案私有云，可将其删除。 Azure VMware 解决方案私有云包括隔离网络域、在专用服务器节点上预配的一个或多个 vSphere 群集，通常还有很多虚拟机。 删除私有云时，将删除所有虚拟机、其数据和群集。 专用裸机节点会被安全地擦除并返回到可用池。 为客户预配的网域会被删除。  
+如果你不再需要某个 Azure VMware 解决方案私有云，可将其删除。 Azure VMware 解决方案私有云包括隔离网络域、在专用服务器主机上预配的一个或多个 vSphere 群集和多个虚拟机。 删除私有云时，将删除所有虚拟机、其数据和群集。 专用裸机主机会被安全地擦除并返回到可用池。 为客户预配的网域会被删除。  
 
 > [!CAUTION]
 > 删除私有云是不可逆的操作。 删除私有云后，数据将无法恢复，因为此操作会终止所有正在运行的工作负载和组件，并销毁所有私有云数据和配置设置（包括公共 IP 地址）。
@@ -92,7 +92,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 2. 选择要删除的私有云。
  
-3. 输入私有云的名称，并选择“是”。 几小时后，删除过程就会完成。  
+3. 输入私有云的名称，并选择“是”。 几小时后，删除过程完成。  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware 命令
 
@@ -100,7 +100,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建 Azure VMware 解决方案私有云

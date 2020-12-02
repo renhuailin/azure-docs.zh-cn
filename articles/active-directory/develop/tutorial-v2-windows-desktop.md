@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627884"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974385"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教程：从 Windows 桌面应用调用 Microsoft Graph API
 
-本指南演示了本机 Windows 桌面 .NET (XAML) 应用程序如何使用访问令牌来调用 Microsoft Graph API。 该应用还可以访问其他 API，这些 API 需要来自 Microsoft 标识平台的访问令牌。
+在本教程中，将生成一个本机 Windows 桌面 .NET (XAML) 应用，用户可登录该应用并获取访问令牌来调用 Microsoft 图形 API。 
 
 完成本指南后，你的应用程序将能够调用使用个人帐户（包括 outlook.com、live.com 等）的受保护 API。 应用程序还将使用任何使用 Azure Active Directory 的公司或组织提供的工作和学校帐户。
 
@@ -115,7 +115,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
    1. 在“重定向 URI”部分的重定向 URI 列表中：
    1. 在“类型”列中选择“公共客户端/本机(移动和桌面)” 。
    1. 在“重定向 URI”列中输入 `https://login.microsoftonline.com/common/oauth2/nativeclient`
-1. 选择“注册”  。
+1. 选择“注册”。
 1. 转到 Visual Studio，打开 App.xaml.cs 文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
 
     ```csharp

@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611089"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406593"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
-在本教程中，你将了解如何使用 Microsoft 标识平台在长时间运行的非交互式过程中访问 Microsoft 企业客户的数据。 示例守护程序使用 [OAuth2 客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)获取访问令牌。 然后，该守护程序使用该令牌调用 [Microsoft Graph](https://graph.microsoft.io) 并访问组织数据。
+在本教程中，你将下载并运行 ASP.NET 守护程序 Web 应用，该应用演示了如何使用 OAuth 2.0 客户端凭据授权获取用于调用 Microsoft Graph API 的访问令牌。
+
+在本教程中：
 
 > [!div class="checklist"]
 > * 将守护程序应用与 Microsoft 标识平台集成
@@ -186,7 +188,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 从命名空间名称中删除 **.App_Start**。
    1. 将 **Startup** 类的代码替换为示例应用的同一文件中的代码。
    请务必使用整个类定义。 定义将从 **public class Startup** 更改为 **public partial class Startup**。
-1. 在 **Startup.Auth.cs**中，通过添加 Visual Studio IntelliSense 建议的 **using** 语句来解决缺少引用的问题。
+1. 在 **Startup.Auth.cs** 中，通过添加 Visual Studio IntelliSense 建议的 **using** 语句来解决缺少引用的问题。
 1. 右键单击该项目，然后依次选择“添加”、“类”。 
 1. 在搜索框中输入 **OWIN**。 “OWIN Startup 类”将作为一个选项显示。 选择该选项，将类命名为 **Startup.cs**。
 1. 在 **Startup.cs** 中，将 **Startup** 类的代码替换为示例应用的同一文件中的代码。 同样请注意，定义将从 **public class Startup** 更改为 **public partial class Startup**。
@@ -220,7 +222,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 在解决方案资源管理器中右键单击该项目，然后选择“发布”。
    1. 在底部栏上选择“导入配置文件”，然后导入先前下载的发布配置文件。
 1. 选择“配置” 。
-1. 在“连接”选项卡上更新目标 URL，使其使用“https”。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 选择“**下一页**”。
+1. 在“连接”选项卡上更新目标 URL，使其使用“https”。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 选择“**下一步**”。
 1. 在“设置”选项卡上，确保已清除“启用组织身份验证”。 
 1. 选择“保存”。 在主屏幕上选择“发布”。
 

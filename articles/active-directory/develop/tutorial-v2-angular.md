@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979923"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
-本教程将指导你生成 Angular 单页应用程序 (SPA)，以通过个人 Microsoft 帐户和工作或学校帐户实现用户登录，并代表用户调用 Microsoft Graph API。
+在本教程中，你将构建一个 Angular 单页应用程序 (SPA)，它使用户登录并调用 Microsoft Graph API。
 
 本教程的内容：
 
@@ -124,7 +124,7 @@ ng generate component page-name                  # To add a new page (such as a 
     |---------|---------|
     |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。  |
     |Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.microsoftonline.com** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
-    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations** 。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common** 。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers** 。 |
+    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers**。 |
     |Enter_the_Redirect_Uri_Here|替换为 **http://localhost:4200** 。|
 
     有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。

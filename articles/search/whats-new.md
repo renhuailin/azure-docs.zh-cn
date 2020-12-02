@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579464"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026655"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "94579464"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-|[通过索引器、数据源和技能集进行客户管理的密钥加密](search-security-manage-encryption-keys.md) | 安全性 | 此新增功能将客户管理的加密扩展到由搜索服务创建和管理的全范围资产。 回想一下，CMK 支持在 Microsoft 执行和管理的基本加密上添加了额外的加密层。 | REST api-version=2020-06-30 已正式发布 |  
+|[通过索引器、数据源和技能集进行客户管理的密钥加密](search-security-manage-encryption-keys.md) | 安全性 | 此新增功能将客户管理的加密扩展到由搜索服务创建和管理的全范围资产。 回想一下，客户管理的密钥支持在 Microsoft 执行和管理的基本加密上添加额外的加密层。 | REST api-version=2020-06-30 已正式发布 |  
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -41,7 +41,7 @@ ms.locfileid: "94579464"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [双重加密](search-security-overview.md#encryption) | 安全性 | 通过对新的搜索服务配置客户管理的密钥 (CMK) 加密，在存储层启用双重加密。 创建新服务，[配置客户管理的密钥并应用于](search-security-manage-encryption-keys.md)索引或同义词映射，可受益于对该内容进行的双重加密。 | 2020 年 8 月 1 日后在以下区域创建的所有搜索服务都公开可用：美国西部 2、美国东部、美国中南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州。 使用门户、管理 REST API 或 SDK 创建服务。 |
+| [双重加密](search-security-overview.md#encryption) | 安全性 | 通过对新的搜索服务配置客户管理的密钥加密，在存储层启用双重加密。 创建新服务，[配置客户管理的密钥并应用于](search-security-manage-encryption-keys.md)索引或同义词映射，可受益于对该内容进行的双重加密。 | 2020 年 8 月 1 日后在以下区域创建的所有搜索服务都公开可用：美国西部 2、美国东部、美国中南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州。 使用门户、管理 REST API 或 SDK 创建服务。 |
 
 ## <a name="july-2020"></a>2020 年 7 月
 

@@ -9,14 +9,17 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444888"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023102"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
+> [!IMPORTANT]
+> 我们建议使用 Azure 存储与 Azure Active Directory (Azure AD) 的集成，这是 Microsoft 推出的基于云的标识和访问管理服务。 Azure AD 集成适用于 [Azure Blob 和队列](../../storage/common/storage-auth-aad.md)，提供对 Azure 存储的基于 OAuth2 令牌的访问（类似于 Azure Key Vault）。
+> Azure AD 允许使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 在 Azure 上运行时，可以使用 [Azure AD 托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。 托管标识消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。 仅在无法实施 Azure AD 身份验证的情况下使用以下解决方案。
 
 Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 通过在存储帐户中定期重新生成存储帐户密钥来管理存储帐户密钥，并提供共享访问签名令牌，以便对存储帐户中的资源进行委托访问。
 
@@ -28,12 +31,6 @@ Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动�
 - 只有 Key Vault 能够管理存储帐户密钥。 不要自行管理密钥，并避免干扰 Key Vault 进程。
 - 只有单个 Key Vault 对象能够管理存储帐户密钥。 不要允许从多个对象进行密钥管理。
 - 只使用 Key Vault 重新生成密钥。 不要手动重新生成存储帐户密钥。
-
-我们建议使用 Azure 存储与 Azure Active Directory (Azure AD) 的集成，这是 Microsoft 推出的基于云的标识和访问管理服务。 Azure AD 集成适用于 [Azure Blob 和队列](../../storage/common/storage-auth-aad.md)，提供对 Azure 存储的基于 OAuth2 令牌的访问（类似于 Azure Key Vault）。
-
-Azure AD 允许使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 在 Azure 上运行时，可以使用 [Azure AD 托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。 托管标识消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。
-
-Azure AD 使用同样受 Key Vault 支持的 Azure 基于角色的访问控制 (Azure RBAC) 来管理授权。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -256,14 +253,20 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-现在，可以使用 [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) cmdlet 和机密 `Name` 属性查看该机密的内容。
+现在可以将 [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) cmdlet 与 `VaultName` 和 `Name` 参数一起使用，以便查看该机密的内容。
 
 ```azurepowershell-interactive
-Write-Host (Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>).SecretValue | ConvertFrom-SecureString -AsPlainText
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 此命令的输出将显示 SAS 定义字符串。
-
 
 ## <a name="next-steps"></a>后续步骤
 

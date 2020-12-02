@@ -13,18 +13,20 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cbfaf52a7c5bb5e44b85513d8e2c2ec5f1cea356
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101977"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996196"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教程：从 Android 应用程序登录用户并调用 Microsoft Graph API
 
-在本教程中，你将了解如何使用面向 Android 的 Microsoft 身份验证库 (MSAL) 将 Android 应用与 Microsoft 标识平台集成。 你将了解如何登录和注销用户、获取访问令牌，以及向 Microsoft Graph API 发出请求。
+在本教程中，你将生成一个与 Microsoft 标识平台集成的 Android 应用，用户可登录该应用并获取访问令牌以调用 Microsoft Graph API。
 
 完成本教程后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+
+在本教程中： 
 
 > [!div class="checklist"]
 > * 在 Android Studio 中创建 Android 应用项目
@@ -83,7 +85,7 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
    > [!Note]
    > 安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。 有关详细信息，请参阅[有关如何生成密钥的 Android 文档](https://developer.android.com/studio/publish/app-signing#generate-key)。
 
-7. 生成由 KeyTool 生成的**签名哈希**。
+7. 生成由 KeyTool 生成的 **签名哈希**。
 8. 单击 `Configure` 并保存出现在“Android 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
 
 ### <a name="configure-your-application"></a>配置应用程序

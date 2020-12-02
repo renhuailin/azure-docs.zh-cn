@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 9dacbfacdbb9a1ecc103b0cec224d861b42b1576
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3e4d3145263b4b0379f85dea86d075480935a28c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369589"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029330"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-panorays"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Panorays 的集成
 
@@ -75,18 +75,7 @@ ms.locfileid: "94369589"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
-
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
-
-    在“登录 URL”文本框中，使用以下模式键入 URL： 
-
-    | 登录 URL |
-    |--------------|
-    | `https://www.panoraysapp.com` |
-    | `https://auth.panoraysapp.com` |
-
-1. 单击“保存”  。
+1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
 
 1. Panorays 应用程序需要特定格式的 SAML 断言，因此需要向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符”通过 user.userprincipalname 进行映射 。 Panorays 应用程序要求通过 user.mail 对“唯一用户标识符”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
@@ -134,9 +123,7 @@ ms.locfileid: "94369589"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Panorays 登录 URL，可在其中启动登录流。  
-
-1. 直接转到 Panorays 登录 URL，并从那里启动登录流。
+直接转到 [Panorays 登录 URL](https://www.panoraysapp.com)，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 

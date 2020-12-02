@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857429"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959435"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们要创建三个 IoT Edge 模块来从叶 IoT 设备中接收消息，通过机器学习模型运行数据，然后将见解转发到 IoT 中心。
 
@@ -54,6 +51,10 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 ![IoT Edge 三模块架构图](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 本文的步骤通常由云开发人员执行。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="create-a-new-iot-edge-solution"></a>创建新的 IoT Edge 解决方案
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627663"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974318"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
-本指南介绍本机通用 Windows 平台 (UWP) 应用程序如何请求访问令牌， 然后，应用程序调用 Microsoft Graph API。 本指南也适用于其他需要从 Microsoft 标识平台终结点请求访问令牌的 API。
+在本教程中，你将生成一个本机通用 Windows 平台 (UWP) 应用，用户可登录该应用并获取访问令牌来调用 Microsoft Graph API。 
 
 在本指南结束时，应用程序将使用个人帐户调用受保护的 API。 示例包括 outlook.com、live.com 等等。 应用程序还将调用任何使用 Azure Active Directory (Azure AD) 的公司或组织提供的工作和学校帐户。
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 现在需注册应用程序：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择“Azure Active Directory” > “应用注册”。 
 1. 选择“新注册”。 输入一个会显示给应用用户的有意义的应用程序名称，例如 UWP-App-calling-MSGraph。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”（例如 Skype、Xbox） 。 然后选择“注册”并继续。
@@ -490,7 +490,7 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件�
 
 **原因：** 未启用企业功能和证书功能。
 
-**解决方案：** 按照[在联盟域中启用集成身份验证（可选）](#enable-integrated-authentication-on-federated-domains-optional)中的步骤操作。
+**解决方案：** 按照 [在联盟域中启用集成身份验证（可选）](#enable-integrated-authentication-on-federated-domains-optional)中的步骤操作。
 
 ### <a name="issue-2"></a>问题 2
 
