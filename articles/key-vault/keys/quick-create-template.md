@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017003"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461562"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入门：使用 ARM 模板（预览版）创建 Azure 密钥保管库和密钥
 
@@ -26,7 +26,7 @@ ms.locfileid: "95017003"
 若要完成本文，需要做好以下准备：
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 用户需要分配的 RBAC 内置角色，例如 参与者。 [在此处了解详细信息](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- 用户需要分配的 RBAC 内置角色，例如 参与者。 [在此处了解详细信息](../../role-based-access-control/role-assignments-portal.md)
 - 模板需要使用你的 Azure AD 用户对象 ID 来配置权限。 以下过程获取对象 ID (GUID)。
 
     1. 运行以下 Azure PowerShell 或 Azure CLI 命令：选择“试用”，然后在 shell 窗格中粘贴脚本。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。

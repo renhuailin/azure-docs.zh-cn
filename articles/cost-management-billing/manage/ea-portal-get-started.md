@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412266"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348953"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise 门户入门
 
@@ -44,33 +44,33 @@ ms.locfileid: "94412266"
 - 部门管理员（只读）
 - 帐户所有者
 
-每个角色都有不同程度的用户限制和权限。 有关详细信息，请参阅[组织结构和权限（按角色）](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role)。
+每个角色都有不同程度的用户限制和权限。 有关详细信息，请参阅[组织结构和权限（按角色）](./understand-ea-roles.md#organization-structure-and-permissions-by-role)。
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>激活注册、创建订阅和其他管理任务
 
-有关激活注册、创建部门或订阅、添加管理员和帐户所有者以及其他管理任务的详细信息，请参阅 [Azure EA 门户管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration)。
+有关激活注册、创建部门或订阅、添加管理员和帐户所有者以及其他管理任务的详细信息，请参阅 [Azure EA 门户管理](./ea-portal-administration.md)。
 
-如需了解有关将 Enterprise 订阅转移到即用即付订阅的详细信息，请参阅 [Azure Enterprise 转移](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers)。
+如需了解有关将 Enterprise 订阅转移到即用即付订阅的详细信息，请参阅 [Azure Enterprise 转移](./ea-transfers.md)。
 
 ## <a name="view-usage-summary-and-download-reports"></a>查看使用情况摘要和下载报告
 
 可以管理 Azure EA 发票并对其进行操作。 发票代表帐单，因此应检查其准确性。
 
-若要查看使用情况摘要、下载报表和管理注册发票，请参阅 [Azure Enterprise 注册发票](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices)。
+若要查看使用情况摘要、下载报表和管理注册发票，请参阅 [Azure Enterprise 注册发票](./ea-portal-enrollment-invoices.md)。
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>现在，你已熟悉基本知识，下面是一些有助于入门的其他链接
 
-[Azure EA 定价](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview)详细介绍了如何计算使用情况，以及如何计算更复杂的企业协议中各种 Azure 服务的费用。
+[Azure EA 定价](./ea-pricing-overview.md)详细介绍了如何计算使用情况，以及如何计算更复杂的企业协议中各种 Azure 服务的费用。
 
-如需了解针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用，请参阅 [Azure EA VM 预留实例](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations)。
+如需了解针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用，请参阅 [Azure EA VM 预留实例](./ea-portal-vm-reservations.md)。
 
-有关将哪些 REST API 与 Azure 企业注册一起使用的信息，以及有关如何解决 REST API 常见问题的说明，请参阅 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+有关将哪些 REST API 与 Azure 企业注册一起使用的信息，以及有关如何解决 REST API 常见问题的说明，请参阅 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
-[Azure EA 协议和修订](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)介绍 Azure EA 协议和修订对 Azure 服务的访问、使用和支付的影响。
+[Azure EA 协议和修订](./ea-portal-agreements.md)介绍 Azure EA 协议和修订对 Azure 服务的访问、使用和支付的影响。
 
-[Azure 市场](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace)介绍 EA 客户和合作伙伴如何查看市场费用并启用 Azure 市场购买功能。
+[Azure 市场](./ea-azure-marketplace.md)介绍 EA 客户和合作伙伴如何查看市场费用并启用 Azure 市场购买功能。
 
-有关合作伙伴 EA 管理员在 Azure EA 门户中完成的常见任务的说明，请参阅[面向合作伙伴的 Azure EA 门户管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration)。
+有关合作伙伴 EA 管理员在 Azure EA 门户中完成的常见任务的说明，请参阅[面向合作伙伴的 Azure EA 门户管理](./ea-partner-portal-administration.md)。
 
 ## <a name="get-started-on-azure-ea---faq"></a>Azure EA 入门 - 常见问题解答
 
@@ -132,7 +132,7 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 
 创建部门和订阅后，可以在使用情况报表中看到数据。 这些信息有助于在部门级别跟踪使用情况和管理成本与支出。
 
-还可以通过报告 API 访问使用情况数据。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+还可以通过报告 API 访问使用情况数据。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>是否可以设置支出配额，并在即将达到限制时收到警报？
 
@@ -144,7 +144,7 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 
 如果你使用了资源组和标记，则会在服务级别跟踪此信息，可以在下载的详细使用情况 (CSV) 文件中访问此信息。  请参阅 Azure Enterprise 门户中的[下载使用情况报表](https://ea.azure.com/report/downloadusage)。
 
-也可以通过 API 访问使用情况。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+也可以通过 API 访问使用情况。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 > [!NOTE]
 > 只能将标记应用到支持 Azure 资源管理器操作的资源。 如果是通过经典部署模型（如通过经典门户）创建的虚拟机、虚拟网络或存储，则无法向该资源应用标记。 必须通过资源管理器重新部署这些资源才支持标记。 所有其他资源均支持标记。

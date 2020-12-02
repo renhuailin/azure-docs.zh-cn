@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ce3903bad4f7e4675406956ddedbc9011a6d2be8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522254"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454959"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -47,7 +47,7 @@ Azure 专用链接提供以下优势：
 | Azure 队列存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为队列存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md) |
 | Azure 表存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为表存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
 |  Azure SQL Database         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域      |  支持代理[连接策略](../azure-sql/database/connectivity-architecture.md#connection-policy) | GA <br/> [了解如何为 Azure SQL 创建专用终结点](create-private-endpoint-portal.md)      |
-|Azure Synapse Analytics（以前称为 SQL 数据仓库）| 所有公共区域 <br/> 所有政府区域 |  支持代理[连接策略](../azure-sql/database/connectivity-architecture.md#connection-policy) |GA <br/> [了解如何为 Azure Synapse Analytics 创建专用终结点。](../azure-sql/database/private-endpoint-overview.md)|
+|Azure Synapse Analytics| 所有公共区域 <br/> 所有政府区域 |  支持代理[连接策略](../azure-sql/database/connectivity-architecture.md#connection-policy) |GA <br/> [了解如何为 Azure Synapse Analytics 创建专用终结点。](../azure-sql/database/private-endpoint-overview.md)|
 |Azure Cosmos DB|  所有公共区域<br/> 所有政府区域</br> 所有中国区域 | |GA <br/> [了解如何为 Cosmos DB 创建专用终结点。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域     | 在常规用途和内存优化定价层中受支持 | GA <br/> [了解如何为 Azure Database for PostgreSQL 创建专用终结点。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域      |  | GA <br/> [了解如何为 Azure Database for MySQL 创建专用终结点。](../mysql/concepts-data-access-security-private-link.md)     |

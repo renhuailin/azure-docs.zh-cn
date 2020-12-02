@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893352"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457136"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -282,13 +282,13 @@ Azure EA 门户可帮助你管理 Azure EA 的成本和使用情况。 Azure EA 
 
 每个角色具有不同的访问权限和权力级别。
 
-有关用户角色的详细信息，请参阅[企业用户角色](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)。
+有关用户角色的详细信息，请参阅[企业用户角色](./understand-ea-roles.md#enterprise-user-roles)。
 
 ## <a name="add-an-azure-ea-account"></a>添加 Azure EA 帐户
 
 Azure EA 帐户是 Azure EA 门户中的一个组织单位。 它用于管理订阅，此外还用于报告。 若要访问和使用 Azure 服务，需要创建一个帐户，或使用已创建的帐户。
 
-有关 Azure 帐户的详细信息，请参阅[添加帐户](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account)。
+有关 Azure 帐户的详细信息，请参阅[添加帐户](#add-an-account)。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise 开发/测试套餐
 
@@ -361,7 +361,7 @@ Azure 企业管理员可以使自己组织中的帐户所有者能够基于 EA �
 
 只有帐户管理员可以取消订阅。
 
-有关详细信息，请参阅[取消订阅之后会发生什么情况？](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)。
+有关详细信息，请参阅[取消订阅之后会发生什么情况？](cancel-azure-subscription.md#what-happens-after-subscription-cancellation)。
 
 ## <a name="delete-an-account"></a>删除帐户
 

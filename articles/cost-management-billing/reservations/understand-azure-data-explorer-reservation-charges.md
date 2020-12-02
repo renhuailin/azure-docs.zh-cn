@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147234"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352909"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解如何将预留折扣应用于 Azure 数据资源管理器
 
@@ -29,7 +29,7 @@ ms.locfileid: "92147234"
 预留折扣按小时应用于 Azure 数据资源管理器加价使用量。 对于非整小时运行的 Azure 数据资源管理器资源，预留折扣会自动应用到与预留属性匹配的其他数据资源管理器资源。 折扣可以应用到同时运行的 Azure 数据资源管理器资源。 如果与预留属性匹配的 Azure 数据资源管理器资源不是整小时运行，则无法获得该小时的完整预留折扣权益。
 
 > [!NOTE]
-> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/windows/prepay-reserved-vm-instances.md)  。
+> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/prepay-reserved-vm-instances.md)  。
 > * 购买预留会向所有区域应用折扣。
 
 ## <a name="examples"></a>示例

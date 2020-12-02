@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132527"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348919"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -65,7 +65,7 @@ ms.locfileid: "92132527"
 
 要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须启用“预留实例”购买选项。 该选项位于 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中 。
 
-一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
+一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](../../virtual-machines/prepay-reserved-vm-instances.md)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何查看预留实例购买详细信息
 

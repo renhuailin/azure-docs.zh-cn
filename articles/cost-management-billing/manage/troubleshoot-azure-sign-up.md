@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131065"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344481"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 
@@ -76,8 +76,8 @@ InPrivate 浏览如何？
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>你会看到消息“你当前的帐户类型不受支持”
 
-如果该帐户是在[非托管 Azure AD 目录](../../active-directory/users-groups-roles/directory-self-service-signup.md)中注册的，并且不在你组织的 Azure AD 目录中，则可能会发生此问题。
-若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../../active-directory/users-groups-roles/domains-admin-takeover.md)。
+如果该帐户是在[非托管 Azure AD 目录](../../active-directory/enterprise-users/directory-self-service-signup.md)中注册的，并且不在你组织的 Azure AD 目录中，则可能会发生此问题。
+若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../../active-directory/enterprise-users/domains-admin-takeover.md)。
 
 ## <a name="identity-verification-by-phone"></a>通过手机进行身份验证
 

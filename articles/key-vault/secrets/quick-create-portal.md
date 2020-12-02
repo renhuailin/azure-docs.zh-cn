@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685845"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445911"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -45,13 +45,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 1. 单击“生成/导入”。
 1. 在“创建机密”屏幕上，选择以下值：
     - **上传选项**：手动。
-    - **名称**：键入机密的名称。 机密名称在 Key Vault 中必须是唯一的。 该名称必须是 1-127 个字符的字符串，以字母开头且仅包含 0-9、a-z、A-Z 和 -。 有关命名的详细信息，请参阅 [Key Vault 对象、标识符和版本控制](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)
+    - **名称**：键入机密的名称。 机密名称在 Key Vault 中必须是唯一的。 该名称必须是 1-127 个字符的字符串，以字母开头且仅包含 0-9、a-z、A-Z 和 -。 有关命名的详细信息，请参阅 [Key Vault 对象、标识符和版本控制](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
     - **值**：键入机密的值。 Key Vault API 接受机密值并将其作为字符串返回。 
     - 让其他值保留默认设置。 单击“创建”。
 
 收到机密已成功创建的消息后，即可单击列表中的该机密， 
 
-有关机密属性的详细信息，请参阅[关于 Azure Key Vault 机密](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)
+有关机密属性的详细信息，请参阅[关于 Azure Key Vault 机密](./about-secrets.md)
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>从 Key Vault 检索机密
 
@@ -75,7 +75,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 > [!NOTE]
-> 请务必注意，删除机密、密钥、证书或密钥保管库后，它将在时长为 7 到 90 个日历日的可配置期间内保持可恢复状态。 如果未指定配置，默认恢复期将会被设置为 90 天。 这样，用户就有充足的时间来注意到意外的机密删除并做出响应。 有关删除和恢复密钥保管库和密钥保管库对象的详细信息，请参阅 [Azure Key Vault 软删除概述](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+> 请务必注意，删除机密、密钥、证书或密钥保管库后，它将在时长为 7 到 90 个日历日的可配置期间内保持可恢复状态。 如果未指定配置，默认恢复期将会被设置为 90 天。 这样，用户就有充足的时间来注意到意外的机密删除并做出响应。 有关删除和恢复密钥保管库和密钥保管库对象的详细信息，请参阅 [Azure Key Vault 软删除概述](../general/soft-delete-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

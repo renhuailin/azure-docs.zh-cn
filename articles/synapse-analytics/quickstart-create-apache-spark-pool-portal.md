@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323513"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461598"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户新建无服务器 Apache Spark 池
 
@@ -99,4 +99,4 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[快速入门：创建 Apache Spark 笔记本](quickstart-apache-spark-notebook.md)。
-- 请参阅[快速入门：使用 Azure 门户创建 Synapse 专用 SQL 池](quickstart-create-sql-pool-portal.md)。
+- 请参阅[快速入门：使用 Azure 门户创建专用 SQL 池](quickstart-create-sql-pool-portal.md)。

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337451"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455066"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>快速入门：创建第一个逻辑应用工作流 - Azure 门户
 
@@ -52,7 +52,7 @@ ms.locfileid: "94337451"
 
 1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此，请为示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
     
-   | 属性 | 值 | 说明 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
    | **名称** | <*logic-app-name*> | 逻辑应用的名称，该名称必须在区域中是唯一的。 名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称。 |
@@ -112,7 +112,7 @@ ms.locfileid: "94337451"
 
 ## <a name="add-the-send-email-action"></a>添加“发送电子邮件”操作
 
-[为逻辑应用添加触发器](#add-rss-trigger)后，必须添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以确定当逻辑应用检查 RSS 源并出现新项时的响应。 还可以创建具有更复杂的操作的逻辑应用，如[使用逻辑应用、Azure Functions 和 Azure 存储处理电子邮件](/azure/logic-apps/tutorial-process-email-attachments-workflow)教程中所述。
+[为逻辑应用添加触发器](#add-rss-trigger)后，必须添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以确定当逻辑应用检查 RSS 源并出现新项时的响应。 还可以创建具有更复杂的操作的逻辑应用，如[使用逻辑应用、Azure Functions 和 Azure 存储处理电子邮件](./tutorial-process-email-attachments-workflow.md)教程中所述。
 
 > [!NOTE]
 > 此示例使用 Office 365 Outlook 作为电子邮件服务。 如果在逻辑应用中使用的是其他受支持的电子邮件服务，则用户界面可能会有所不同。 但是，用于连接到其他电子邮件服务的基本概念仍保持不变。
@@ -167,7 +167,7 @@ ms.locfileid: "94337451"
 
       ![逻辑应用设计器的屏幕截图，显示了“发送电子邮件”操作和具有“源标题”属性的示例电子邮件主题。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      如果设计器上出现了“For each”循环，则表示你为数组选择了一个令牌。例如“categories-Item”令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 ( **...** )，然后选择“删除”。
+      如果设计器上出现了“For each”循环，则表示你为数组选择了一个令牌。例如“categories-Item”令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 (**...**)，然后选择“删除”。
 
    1. 在“正文”框中，输入电子邮件正文内容。 在此示例中，内容包括三个属性，其中每个属性都具有描述性文本：“源标题”属性 `Title:`；“源发布日期”属性 `Date published:`；“主源链接”属性 `Link:`  。 若要在编辑框中添加空行，请按 Shift + Enter。
 

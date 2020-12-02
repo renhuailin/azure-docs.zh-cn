@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151622"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338157"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -27,7 +27,7 @@ ms.locfileid: "92151622"
 
 ## <a name="reservation-order-and-reservation"></a>预留订单和预留
 
-购买预留时，会创建两个对象：**预留订单**和**预留**。
+购买预留时，会创建两个对象：**预留订单** 和 **预留**。
 
 在购买时，预留订单下有一个预留。 拆分、合并、部分退款或交换之类的操作会在“预留订单”下创建新的预留。
 
@@ -57,7 +57,7 @@ ms.locfileid: "92151622"
 
 可以通过将用户添加到预留订单或预留的角色来委托预留管理。 默认情况下，下预留订单的人员和帐户管理员拥有该预留订单或预留的所有者角色。
 
-可以*独立于获取预留折扣的订阅*来管理对预留订单和预留的访问权限。 为某人提供管理预留订单或预留的权限时，不会向其提供管理订阅的权限。 同样，为某人提供管理预留范围内的订阅的权限时，不会向其提供管理预留订单或预留的权限。
+可以 *独立于获取预留折扣的订阅* 来管理对预留订单和预留的访问权限。 为某人提供管理预留订单或预留的权限时，不会向其提供管理订阅的权限。 同样，为某人提供管理预留范围内的订阅的权限时，不会向其提供管理预留订单或预留的权限。
 
 若要执行交换或退款操作，用户必须有权访问预留订单。 为某人授予权限时，最好是授予预留订单的权限，而不是预留的权限。
 
@@ -135,7 +135,7 @@ ms.locfileid: "92151622"
 查看预留使用的一种方式是使用 Azure 门户。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择“所有服务” > [ **“预留”** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。   
+2. 选择“所有服务” > [ **“预留”**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。   
   ![显示预留列表的图像](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 选择一个预留。
 4. 查看一段时间的预留使用趋势。  
@@ -168,7 +168,7 @@ ms.locfileid: "92151622"
 - [什么是 Azure 预留？](save-compute-costs-reservations.md)
 
 购买服务计划：
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../../cosmos-db/cosmos-db-reserved-capacity.md)
 

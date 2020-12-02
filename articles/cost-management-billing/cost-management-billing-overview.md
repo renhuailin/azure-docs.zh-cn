@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contentperfq2
-ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1dca2fa938c26ba45f162fae962aec0bfaf6cef7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677386"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353028"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什么是 Azure 成本管理和计费？
 
@@ -43,11 +43,11 @@ Azure 计费功能用于查看已开票成本并管理对计费信息的访问�
 
 Azure 门户当前支持以下类型的计费帐户：
 
-- **Microsoft Online Services 计划** ：当你通过 Azure 网站注册 Azure 时，将创建 Microsoft Online Services 计划的个人计费帐户。 例如，当你注册 Azure 免费帐户、采用即用即付费率的帐户或作为 Visual Studio 订阅者时。
+- **Microsoft Online Services 计划**：当你通过 Azure 网站注册 Azure 时，将创建 Microsoft Online Services 计划的个人计费帐户。 例如，当你注册 Azure 免费帐户、采用即用即付费率的帐户或作为 Visual Studio 订阅者时。
 
-- **企业协议** ：当组织签署使用 Azure 的企业协议 (EA) 时，将为企业协议创建一个计费帐户。
+- **企业协议**：当组织签署使用 Azure 的企业协议 (EA) 时，将为企业协议创建一个计费帐户。
 
-- **Microsoft 客户协议** ：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 Azure 免费帐户，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
+- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 Azure 免费帐户，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
 
 ### <a name="scopes-for-billing-accounts"></a>计费帐户的范围
 范围是计费帐户中的一个节点，可使用该节点查看和管理计费。 可以在其中管理计费数据、付款、发票，以及执行常规的帐户管理。
@@ -108,7 +108,7 @@ Cloudyn 是与成本管理相关的 Azure 服务，将在 2020 年底弃用。 �
 Azure 还包含其他一些工具，虽然这些工具不属于 Azure 成本管理和计费功能集， 但它们在成本管理过程中都发挥着重要作用。 若要详细了解这些工具，请参阅以下链接。
 
 - [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) - 使用此工具可估计前期云成本。
-- [Azure Migrate](/azure/migrate/migrate-services-overview) - 评估当前数据中心的工作负载，获取有关 Azure 替代解决方案所需内容的见解。
+- [Azure Migrate](../migrate/migrate-services-overview.md) - 评估当前数据中心的工作负载，获取有关 Azure 替代解决方案所需内容的见解。
 - [Azure 顾问](../advisor/advisor-overview.md) - 识别未使用的 VM，并获得有关 Azure 预留实例购买的建议。
 - [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/) - 使用当前用于 Azure 中 VM 的本地 Windows Server 或 SQL Server 许可证来实现成本节省。
 

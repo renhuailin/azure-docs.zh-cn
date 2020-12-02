@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d95c4bb0345051cc79dadca5fa7cc11932a9512a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318580"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454038"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>什么是 Azure Stack Edge Pro R？
 
@@ -45,7 +45,7 @@ Azure Stack Edge Pro R 具有以下功能：
 
 下面介绍各种方案，其中 Azure Stack Edge Pro R 可用于加快边缘的机器学习 (ML) 推理并对数据进行预处理，然后再将该数据发送到 Azure。
 
-- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Pro R，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Pro R 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Pro R 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
+- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Pro R，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Pro R 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Pro R 上部署 Azure ML 硬件加速模型](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)。
 
 - **预处理数据** - 转换数据，然后将数据发送到 Azure，以创建更具操作的数据集。 使用预处理可以：
 
@@ -83,4 +83,3 @@ Azure Stack Edge Pro R 解决方案包括 Azure Stack Edge 资源、Azure Stack 
 
 - 查看 [Azure Stack Edge Pro R 系统需求](azure-stack-edge-gpu-system-requirements.md)。
 <!--- Understand the [Azure Stack Edge Pro R limits](azure-stack-edge-limits.md).-->
-

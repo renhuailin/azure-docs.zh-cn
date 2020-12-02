@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978894"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453017"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -74,7 +74,7 @@ Microsoft 提供开源[设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 用于�
 
 有关演示组织如何使用 Azure IoT 的现实示例，请参阅 [Microsoft IoT 技术案例研究](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)。 
 
-有关 IoT 体系结构的深入介绍，请参阅 [Microsoft Azure IoT 参考体系结构](https://aka.ms/iotrefarchitecture)。
+有关 IoT 体系结构的深入介绍，请参阅 [Microsoft Azure IoT 参考体系结构](/azure/architecture/reference-architectures/iot)。
 
 ## <a name="next-steps"></a>后续步骤
 

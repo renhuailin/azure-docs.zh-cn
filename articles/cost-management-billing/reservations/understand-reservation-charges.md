@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: banders
-ms.openlocfilehash: 054641d8136d121e611182c8d8b104aefcbc6481
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99f2c9c16f2ca2147a6e6da333ff64116e42aecc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057869"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338074"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>如何对 Azure SQL 数据库应用预留折扣
 
@@ -55,7 +55,7 @@ SQL 数据库预留容量折扣按小时应用到正在运行的 SQL 数据库�
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
 - [什么是 Azure 预订？](save-compute-costs-reservations.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 预留项](manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)

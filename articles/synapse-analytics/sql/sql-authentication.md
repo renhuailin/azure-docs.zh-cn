@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462398"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -29,7 +29,7 @@ Azure Active Directory 使你能够在单一位置进行用户管理。 SQL 授�
 
 ## <a name="administrative-accounts"></a>管理帐户
 
-有两个充当管理员的管理帐户（ **服务器管理员** 和 **Active Directory 管理员** ）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到你的 Synapse SQL 的“属性”选项卡。
+有两个充当管理员的管理帐户（**服务器管理员** 和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到你的 Synapse SQL 的“属性”选项卡。
 
 ![SQL 服务器管理员](./media/sql-authentication/sql-admins.png)
 
@@ -51,7 +51,7 @@ Azure Active Directory 使你能够在单一位置进行用户管理。 SQL 授�
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
 - 可以查看 `sys.sql_logins` 系统表。
 
-## <a name="serverless-sql-pool-preview"></a>[无服务器 SQL 池（预览版）](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/serverless)
 
 若要管理有权访问无服务器 SQL 池的用户，可以按以下说明操作。
 
@@ -77,7 +77,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="administrator-access-path"></a>管理员访问路径
 
-适当地配置服务器级防火墙后， **SQL 服务器管理员** 和 **Azure Active Directory 管理员** 可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 
+适当地配置服务器级防火墙后，**SQL 服务器管理员** 和 **Azure Active Directory 管理员** 可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 
 
 下图显示了这两个管理员帐户的典型配置：
  
@@ -187,9 +187,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 - 使用 SQL Server 身份验证时，请在数据库中创建包含的数据库用户。 将一个或多个数据库用户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，然后向数据库角色分配[权限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-数据库角色可以是内置的角色，例如 **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 和 **db_denydatareader** 。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 
+数据库角色可以是内置的角色，例如 **db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 
 
-例如， **db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 
+例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 
 
 最好使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 
@@ -208,7 +208,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 执行 `CREATE/ALTER/DROP DATABASE` 语句时，必须连接到 **master** 数据库。
 - 不能更改或删除对应于 **服务器管理员** 登录名的数据库用户。
 - 美国英语是 **服务器管理员** 登录名的默认语言。
-- 只有管理员（ **服务器管理员** 登录名或 Azure AD 管理员）和 **master** 数据库中 **dbmanager** 数据库角色的成员才有权执行 `CREATE DATABASE` 和 `DROP DATABASE` 语句。
+- 只有管理员（**服务器管理员** 登录名或 Azure AD 管理员）和 **master** 数据库中 **dbmanager** 数据库角色的成员才有权执行 `CREATE DATABASE` 和 `DROP DATABASE` 语句。
 - 执行 `CREATE/ALTER/DROP LOGIN` 语句时，必须连接到 master 数据库。 但不建议使用登录名。 改用包含的数据库用户。
 - 若要连接到用户数据库，必须在连接字符串中提供数据库的名称。
 - 只有服务器级别主体登录名和 **master** 数据库中 **loginmanager** 数据库角色的成员才有权执行 `CREATE LOGIN`、`ALTER LOGIN` 和 `DROP LOGIN` 语句。

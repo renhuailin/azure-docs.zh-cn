@@ -10,11 +10,11 @@ ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
 ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148973"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188099"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>在 Azure 中管理 AWS 成本和使用情况
 
@@ -44,7 +44,7 @@ AWS 成本可在以下范围内用于成本分析：
 
 下面是一个示例，显示了成本分析中按提供者（Azure 和 AWS）分组的管理组成本。
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="管理组下具有关联帐户的“选择范围”视图的示例" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="示例，显示成本分析中一个季度的 Azure 和 AWS 成本" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > 管理组目前不受 Microsoft 客户协议 (MCA) 客户支持。 MCA 客户可以创建连接器并查看其 AWS 数据。 但是，MCA 客户无法在管理组下同时查看其 Azure 成本和 AWS 成本。
@@ -55,17 +55,17 @@ AWS 成本可在以下范围内用于成本分析：
 
 下面是一个示例，演示如何选择 AWS 关联帐户范围。
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="管理组下具有关联帐户的“选择范围”视图的示例" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="“选择范围”视图的示例，其中显示 AWS 关联帐户" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>查看 AWS 合并帐户成本
 
 若要查看 AWS 合并帐户成本，请打开范围选取器并选择 AWS 合并帐户。 下面是一个示例，演示如何选择 AWS 合并帐户范围。
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="管理组下具有关联帐户的“选择范围”视图的示例" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="具有合并帐户的“选择范围”视图的示例" :::
 
 此范围提供与 AWS 合并帐户关联的所有 AWS 关联帐户的聚合视图。 下面是一个示例，显示了按服务名称分组的 AWS 合并帐户成本。
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="管理组下具有关联帐户的“选择范围”视图的示例" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="示例，显示成本分析中的 AWS 合并成本" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>可用于筛选和分组的维度
 
@@ -95,7 +95,7 @@ AWS 成本可在以下范围内用于成本分析：
 
 通过预算在组织中以前摄方式管理成本和推行责任制。 预算的设置基于 AWS 合并帐户和 AWS 关联帐户范围。 下面是在成本管理中显示的 AWS 合并帐户的预算示例：
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="管理组下具有关联帐户的“选择范围”视图的示例" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="示例，显示 AWS 合并帐户的预算" :::
 
 ## <a name="aws-data-collection-process"></a>AWS 数据收集过程
 
@@ -117,7 +117,7 @@ AWS 成本可在以下范围内用于成本分析：
 
 - 成本管理中的预算不支持具有多种货币的管理组。 具有多种货币的管理组将不会看到预算评估。 如果在创建预算时选择具有多种货币的管理组，则会显示一条错误消息。
 - 云连接器不支持 AWS GovCloud（美国）、AWS Gov 或 AWS 中国。
-- 成本管理仅显示  AWS 使用成本。 目前尚不支持税款、支持、退款、RI、额度或任何其他的费用类型。
+- 成本管理仅显示 AWS 使用成本。 目前尚不支持税款、支持、退款、RI、额度或任何其他的费用类型。
 
 ## <a name="troubleshooting-aws-integration"></a>排查 AWS 集成问题
 
@@ -143,9 +143,9 @@ AWS 成本可在以下范围内用于成本分析：
 此错误表示成本管理无法调用 AWS AssumeRole API。 出现此问题的原因可能是角色定义有问题。 验证是否符合下列条件：
 
 - 外部 ID 与角色定义和连接器定义中的相同。
-- 角色类型设置为“属于你或第三方的其他 AWS 帐户”。 
-- “要求 MFA”选项已取消选中。 
-- AWS 角色中受信任的 AWS 帐户为 _432263259397_ 。
+- 角色类型设置为“属于你或第三方的其他 AWS 帐户”。
+- “要求 MFA”选项已取消选中。
+- AWS 角色中受信任的 AWS 帐户为 _432263259397_。
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>收集失败，出现“拒绝访问”错误 - CUR 报表定义
 

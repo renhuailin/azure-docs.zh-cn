@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b9bcdbdf8bdad0d1ad96fc043f29a84b962318c2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 9081ba0aae14c39d70e62818dc13aa4d92c91986
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445953"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -239,7 +239,7 @@ New-AzNetworkSecurityGroup @nsg
 
 * 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建三个网络接口。
 
-* 使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码。
+* 使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码。
 
 * 使用以下命令创建虚拟机：
     * [New-AzVM](/powershell/module/az.compute/new-azvm)
@@ -618,7 +618,7 @@ New-AzNetworkSecurityGroup @nsg
 
 * 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建三个网络接口。
 
-* 使用 [Get-Credential](/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码。
+* 使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码。
 
 * 使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) 创建虚拟机的可用性集。
 

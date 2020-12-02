@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887206"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352977"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -125,7 +125,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
     - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)
 
 - 详细了解服务计划的预留项：
-    - [包含 Azure 虚拟机预留实例的虚拟机](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [包含 Azure 虚拟机预留实例的虚拟机](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [具有 Azure Cosmos DB 预留容量的 Azure Cosmos DB 资源](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [具有 Azure SQL 数据库预留容量的 SQL 数据库计算资源](../../azure-sql/database/reserved-capacity-overview.md)
     - [具有 Azure Cache for Redis 预留容量的 Azure Cache for Redis 资源](../../azure-cache-for-redis/cache-reserved-pricing.md)详细了解软件计划的预留项：
