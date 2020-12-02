@@ -1,6 +1,6 @@
 ---
-title: 保护数据库
-description: 在 Azure Synapse Analytics 中保护专用 SQL 池和开发解决方案的技巧。
+title: " (以前的 SQL DW) 保护专用 SQL 池"
+description: " (以前的 SQL DW) 并在 Azure Synapse Analytics 中开发解决方案，确保专用 SQL 池安全的技巧。"
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317703"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453650"
 ---
-# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中保护专用 SQL 池
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中保护专用 SQL 池 (以前的 SQL DW) 
 
 > [!div class="op_single_selector"]
 >
@@ -27,23 +27,23 @@ ms.locfileid: "93317703"
 > * [加密（门户）](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-本文将指导你完成保护专用 SQL 池的基本知识。 具体而言，本文将介绍如何使用专用 SQL 池来限制访问、保护数据和监视活动。
+本文将指导你了解 (以前的 SQL DW) 保护专用 SQL 池的基本知识。 具体而言，本文将介绍如何使用专用 SQL DW)  (的资源来限制访问、保护数据和监视活动。
 
 ## <a name="connection-security"></a>连接安全性
 
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-[逻辑 SQL server](../../azure-sql/database/logical-servers.md)及其数据库使用防火墙规则来拒绝来自尚未显式批准的 IP 地址的连接尝试。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
+[逻辑 SQL Server](../../azure-sql/database/logical-servers.md) 及其数据库使用防火墙规则来拒绝源自未显式批准的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
 
-最佳做法是尽量通过服务器级防火墙来限制允许的 IP 地址范围。  若要从本地计算机访问专用 SQL 池，请确保网络和本地计算机上的防火墙允许 TCP 端口1433上的传出通信。  
+最佳做法是尽量通过服务器级防火墙来限制允许的 IP 地址范围。  若要从本地计算机访问专用 SQL 池 (以前的 SQL DW) ，请确保网络和本地计算机上的防火墙允许 TCP 端口1433上的传出通信。  
 
-Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [AZURE SQL 数据库防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+专用 SQL 仓库 (以前的 SQL DW) 使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [AZURE SQL 数据库防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-默认情况下，将加密与专用 SQL 池的连接。  通过修改连接设置来禁用加密的操作会被忽略。
+默认情况下，将加密与专用 SQL DW)  (以前的 SQL DW 的连接。  通过修改连接设置来禁用加密的操作会被忽略。
 
 ## <a name="authentication"></a>身份验证
 
-身份验证是指连接到数据库时如何证明身份。 专用 SQL 池目前支持使用用户名和密码进行 SQL Server 身份验证，以及 Azure Active Directory。
+身份验证是指连接到数据库时如何证明身份。 专用 SQL 仓库 (以前的 SQL DW) 目前支持使用用户名和密码进行 SQL Server 身份验证，并具有 Azure Active Directory。
 
 在为数据库创建服务器时，已指定了一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-然后，使用服务器管理员登录名连接到 **专用 SQL 池数据库** ，并根据所创建的服务器登录名创建数据库用户。
+然后，使用服务器管理员登录名连接到 **专用 sql 池 (以前的 SQL DW)** ，并基于创建的服务器登录名创建数据库用户。
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何用不同的协议连接到仓库的详细信息和示例，请参阅 [连接到专用 SQL 池](../sql/connect-overview.md)。
+有关如何用不同的协议连接到仓库的详细信息和示例，请参阅 [连接到专用 sql 池 (以前的 SQL DW) ](sql-data-warehouse-connect-overview.md)。

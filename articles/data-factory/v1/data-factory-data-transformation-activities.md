@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 91755dd1b5eea9f72978e09a605fc47d41ff3dee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfe8863f38da0aeb701b063f051a199e27745eeb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371709"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453356"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>转换 Azure 数据工厂版本1中的数据
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ ms.locfileid: "92371709"
 有关这些 Studio (经典) 活动的详细信息，请参阅 [使用 Azure 机器学习 studio (经典) 活动](data-factory-azure-ml-batch-execution-activity.md) 。 
 
 ## <a name="stored-procedure-activity"></a>存储过程活动
-可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics（以前称为 SQL 数据仓库）、SQL Server 数据库。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
+可以使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储中的一个存储过程： Azure SQL 数据库、Azure Synapse Analytics、企业中 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [数据分析 U-SQL 活动](data-factory-usql-activity.md) 。 
@@ -92,7 +92,7 @@ Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这�
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Azure 机器学习 Studio (经典) 活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Azure 机器学习工作室（经典版）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [存储过程](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |

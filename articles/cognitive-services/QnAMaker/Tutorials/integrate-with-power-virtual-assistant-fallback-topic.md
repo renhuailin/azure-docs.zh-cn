@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 11/09/2020
-ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376292"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351106"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教程：将知识库添加到 Power Virtual Agents
 创建和扩展 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) 机器人，以从知识库提供答案。
@@ -53,7 +53,7 @@ ms.locfileid: "94376292"
     * （对 Power Automate 流）调用操作。
 * 在 [Power Automate](https://us.flow.microsoft.com/) 门户中：
     * 搜索 _使用 QnA Maker 生成答案_ 模板
-    * 使用模板配置流，以使用 [QnA Maker 的 GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)。
+    * 使用模板配置流，以使用 [QnA Maker 的 GenerateAnswer](/connectors/cognitiveservicesqnamaker/)。
         * QnA Maker 发布的知识库信息：
             * 知识库 ID
             * QnA Maker 资源终结点主机
@@ -258,6 +258,6 @@ ms.locfileid: "94376292"
 [获取有关知识库的分析](../How-To/get-analytics-knowledge-base.md)
 
 了解有关以下方面的详细信息：
-* [Power Virtual Agent](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker 连接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[连接器设置](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agent](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker 连接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[连接器设置](/connectors/cognitiveservicesqnamaker/)

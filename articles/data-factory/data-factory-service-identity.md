@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632798"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452308"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -32,7 +32,7 @@ ms.locfileid: "92632798"
 数据工厂的托管标识对以下功能有益：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
-- 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse Analytics (以前的 SQL 数据仓库) ](connector-azure-sql-data-warehouse.md)。
+- 连接器（包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse 分析](connector-azure-sql-data-warehouse.md)）。
 - [Web 活动](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>生成托管标识
@@ -57,7 +57,7 @@ ms.locfileid: "92632798"
 
 ### <a name="generate-managed-identity-using-powershell"></a>使用 PowerShell 生成托管标识
 
-调用 **AzDataFactoryV2** 命令后，会看到新生成的 "标识" 字段：
+调用 Set-AzDataFactoryV2 命令，然后你会看到正在生成新的“标识”字段：
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -79,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**请求正文** ：添加 "identity": { "type": "SystemAssigned" }。
+**请求正文**：添加 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**响应** ：自动创建托管标识并相应地填充 "identity" 部分。
+**响应**：自动创建托管标识并相应地填充 "identity" 部分。
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成托管标识
 
-**模版** ：添加 "identity": { "type": "SystemAssigned" }。
+**模版**：添加 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {
@@ -201,7 +201,7 @@ Type                  : ServicePrincipal
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**响应** ：你将获得如下所示的响应。 “标识”部分会相应进行填充。
+**响应**：你将获得如下所示的响应。 “标识”部分会相应进行填充。
 
 ```json
 {

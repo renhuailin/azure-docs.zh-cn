@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 8/27/2020
-ms.author: rgarcia
-ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 9554e04c82299016076f09f85f604af10a94ab4a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971273"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185294"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
@@ -85,7 +85,7 @@ Xamarin Android 和 iOS 示例都支持跨设备共享。
 
 在“生成中的场景”下，确保每个场景旁边都有复选标记。
 
-确保“导出项目”不显示复选标记。 单击“生成并运行”****。 系统将提示你保存 .apk 文件。 你可为其选择任何名称。
+确保“导出项目”不显示复选标记。 单击“生成并运行”。 系统将提示你保存 .apk 文件。 你可为其选择任何名称。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -99,4 +99,4 @@ Xamarin Android 和 iOS 示例都支持跨设备共享。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-在 Xcode 中，通过选择“停止”来停止应用****。
+在 Xcode 中，通过选择“停止”来停止应用。

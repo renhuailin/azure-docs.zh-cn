@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 10/27/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbd890117c78274392d5745e0563332371b404c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746378"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452587"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 监视工作区管道运行
 
-借助 Azure Synapse Analytics，你可以创建复杂的管道，使你能够在解决方案中自动化和集成数据移动、数据转换和计算活动。 可以使用 Synapse Studio (preview) 创作和监视这些管道。
+借助 Azure Synapse Analytics，你可以创建复杂的管道，使你能够在解决方案中自动化和集成数据移动、数据转换和计算活动。 可以使用 Synapse Studio 创作和监视这些管道。
 
 本文介绍如何监视管道运行，从而使你能够关注管道的最新状态、问题和进度。
 
@@ -41,8 +41,6 @@ ms.locfileid: "92746378"
 你可以将管道运行列表筛选为你感兴趣的运行列表。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
 
 例如，可以对视图进行筛选，以便仅查看名为 "假日" 的管道的管道运行：
-
-![“筛选器”按钮](./media/common/filter-button.png)
 
 ![示例筛选器](./media/how-to-monitor-pipeline-runs/filter-example.png)
 

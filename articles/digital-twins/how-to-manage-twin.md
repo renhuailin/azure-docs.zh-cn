@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540961"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452967"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -46,7 +46,7 @@ await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initD
 （可选）可以为数字输出的所有属性提供初始值。 属性被视为可选的，并且可以在以后进行设置，但 **在设置之前，不会将它们显示为完全不包含。**
 
 >[!NOTE]
->尽管不需要初始化克隆的属性，但在创建克隆时， **需要设置** 克隆上的所有 [组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
+>尽管不需要初始化克隆的属性，但在创建克隆时，**需要设置** 克隆上的所有 [组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
 
 通过参数提供模型和任何初始属性值，该 `initData` 参数是一个包含相关数据的 JSON 字符串。 有关构造此对象的详细信息，请转到下一节。
 
@@ -99,7 +99,7 @@ Console.WriteLine("The twin is created successfully");
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-此调用返回作为强类型对象类型（如）的非整型数据 `BasicDigitalTwin` 。 下面的示例演示如何使用此方法来查看克隆的详细信息：
+此调用返回作为强类型对象类型（如）的非整型数据 `BasicDigitalTwin` 。 `BasicDigitalTwin` 是 SDK 中包含的序列化帮助器类，它将返回以预分析形式返回的核心数据和属性。 下面的示例演示如何使用此方法来查看克隆的详细信息：
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -117,7 +117,7 @@ foreach (string prop in twin.Contents.Keys)
 
 若要使用单个 API 调用检索多个孪生，请参阅 [*如何：查询双子图*](how-to-query-graph.md)中的查询 API 示例。
 
-请考虑以下模型 (以 [数字孪生定义语言编写， (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定义 *月球* ：
+请考虑以下模型 (以 [数字孪生定义语言编写， (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定义 *月球*：
 
 ```json
 {
@@ -171,26 +171,12 @@ foreach (string prop in twin.Contents.Keys)
 数字克隆的已定义属性在数字克隆上作为顶级属性返回。 不属于 DTDL 定义的元数据或系统信息将以 `$` 前缀返回。 元数据属性包括：
 * 此 Azure 数字孪生实例中数字输出的 ID，如 `$dtId` 。
 * `$etag`，由 web 服务器分配的标准 HTTP 字段。
-* 节中的其他属性 `$metadata` 。 这些方法包括：
+* 节中的其他属性 `$metadata` 。 其中包括：
     - 数字克隆的模型的 DTMI。
     - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的 [此 IoT 中心教程](../iot-hub/tutorial-device-twins.md) 。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
-您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
-
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-有关序列化帮助器类的详细信息， [*请参阅如何：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。
+可以阅读有关序列化帮助程序类的详细信息，如 `BasicDigitalTwin` [*操作方法：使用 Azure 数字孪生 Api 和 sdk*](how-to-use-apis-sdks.md)。
 
 ## <a name="view-all-digital-twins"></a>查看所有数字孪生
 
@@ -275,8 +261,8 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 仅当修补程序修改的数字克隆符合新的模型时，此操作才会成功。 
 
 请看下面的示例：
-1. 假设有一个数字克隆，其型号为 *foo_old* 。 *foo_old* 定义所需的属性 *质量* 。
-2. 新模型 *foo_new* 定义属性质量并添加新的必需属性 *温度* 。
+1. 假设有一个数字克隆，其型号为 *foo_old*。 *foo_old* 定义所需的属性 *质量*。
+2. 新模型 *foo_new* 定义属性质量并添加新的必需属性 *温度*。
 3. 修补后，数字克隆必须同时具有质量和温度属性。 
 
 此情况的修补程序需要更新模型和克隆的温度属性，如下所示：

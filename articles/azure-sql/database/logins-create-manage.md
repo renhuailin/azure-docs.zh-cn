@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782733"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452431"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>向数据库授予对 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的访问权限
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 本文介绍：
 
-- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（以前称为“SQL 数据仓库”）的选项，目的是使用户能够执行管理任务和访问这些数据库中存储的数据。
+- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的选项，使用户能够执行管理任务并访问存储在这些数据库中的数据。
 - 最初新建服务器后的访问权限和授权配置。
 - 如何在 master 数据库和用户账户中添加登录名和用户帐户，然后为这些帐户授予管理权限。
 - 如何在用户数据库中添加用户帐户（与登录名关联或作为包含的用户帐户）。
@@ -46,7 +46,7 @@ ms.locfileid: "92782733"
 
   使用此身份验证方法时，用户将提交用户帐户名，并请求服务使用 Azure Active Directory (Azure AD) 中存储的凭据信息。
 
-**登录名和用户** ：数据库中的用户帐户可以与 master 数据库中存储的登录名相关联，也可以是单个数据库中存储的用户名。
+**登录名和用户**：数据库中的用户帐户可以与 master 数据库中存储的登录名相关联，也可以是单个数据库中存储的用户名。
 
 - 登录名是 master 数据库中的单个帐户，一个或多个数据库中的用户帐户可以关联到该帐户。 使用登录名时，用户帐户的凭据信息将与该登录名一起存储。
 - 用户帐户是任何数据库中的单个帐户，该帐户可以但不一定要关联到登录名。 使用未关联到登录名的用户帐户时，凭据信息将与该用户帐户一起存储。
@@ -65,7 +65,7 @@ ms.locfileid: "92782733"
 
 ![SQL Server 管理员](./media/logins-create-manage/sql-admins.png)
 
-![突出显示 "属性" 菜单选项的屏幕截图。](./media/logins-create-manage/sql-admins2.png)
+![突出显示“属性”菜单选项的屏幕截图。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > 创建管理员登录名后，无法对其进行更改。 若要重置服务器管理员的密码，请转到 [Azure 门户](https://portal.azure.com)，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码” 。 若要重置 SQL 托管实例的密码，请转到 Azure 门户，单击该实例，然后单击“重置密码”。 也可以使用 PowerShell 或 Azure CLI。

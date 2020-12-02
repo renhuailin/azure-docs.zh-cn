@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e96fa932185a6689c360fe86d519a45581059118
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e988b88f222750bc7de505a24eb44877eea4d966
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912631"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452441"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -39,7 +39,7 @@ ms.locfileid: "95912631"
 |HDInsight |正式发布|是|是|[将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT 中心 |正式发布|否|是|[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|正式发布|是|是|[使用 Power BI 分析 Data Lake Storage Gen2 中的数据](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|是|是|[用于 Azure Synapse Analytics（以前称为 SQL 数据仓库）](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|是|是|[用于 Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server 集成服务 (SSIS)|正式发布|是|是|[Azure 存储连接管理器](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 |Azure 数据资源管理器|正式发布|是|是|[使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据](/azure/data-explorer/data-lake-query-data)|
 |Azure 认知搜索|预览|是|是|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../search/search-howto-index-azure-data-lake-storage.md)|

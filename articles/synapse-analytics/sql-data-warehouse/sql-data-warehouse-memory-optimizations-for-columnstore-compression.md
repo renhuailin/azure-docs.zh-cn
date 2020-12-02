@@ -1,6 +1,6 @@
 ---
-title: 提高列存储索引性能
-description: 降低内存需求或增加可用内存，使每个行组中的行数最大化。
+title: 提高专用 SQL 池的列存储索引性能
+description: 减少内存需求或增加可用内存，使专用 SQL 池中每个行组中的行数最大化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797762"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453712"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大化专用 SQL 池中列存储索引的行组质量 
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
@@ -99,7 +99,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频 [SYNAPSE SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频 [专用 SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -122,7 +122,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
-列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse Analytics 中的 SQL 池，由于数据是分布式的并且每次分布都会进行分区，因此分区数会快速增加。
+列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的专用 SQL 池，分区数量会迅速增长，因为数据会分布，并对每个分布进行分区。
 
 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况， 但是这会导致行组无法实现最佳列存储查询性能。
 
@@ -165,4 +165,4 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解提升 SQL 池性能的更多方法，请参阅[性能概述](cheat-sheet.md)。
+若要查找更多方法来改善专用 SQL 池的性能，请参阅 [性能概述](cheat-sheet.md)。

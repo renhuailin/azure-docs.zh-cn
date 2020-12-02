@@ -2,19 +2,21 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: faea6badc24d0152e94fc507cafdb15932d1ea3e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436821"
+ms.locfileid: "96452629"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
 本文介绍资源提供程序命名空间如何映射到 Azure 服务。
 
 ## <a name="match-resource-provider-to-service"></a>将资源提供程序匹配到服务
+
+默认情况下，标记为 " **已注册** " 的资源提供程序将注册到你的订阅。 有关详细信息，请参阅 [注册](#registration)。
 
 | 资源提供程序命名空间 | Azure 服务 |
 | --------------------------- | ------------- |

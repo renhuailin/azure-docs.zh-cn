@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375444"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350953"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>教程：使用 Azure 机器人服务创建 FAQ 机器人
 使用 QnA Maker 和 Azure [机器人服务](https://azure.microsoft.com/services/bot-service/)，在不编写代码的情况下创建 FAQ 机器人。
@@ -80,4 +80,4 @@ ms.locfileid: "94375444"
     聊天机器人使用知识库中的一个答案进行响应。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="将用户查询输入测试性 Web 聊天中。":::
-1. 在其他[支持的通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0&preserve-view=true)中点亮机器人。
+1. 在其他[支持的通道](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)中点亮机器人。

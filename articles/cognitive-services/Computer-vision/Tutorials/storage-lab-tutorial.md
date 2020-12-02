@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51234ff121071de27ec8c91425f4a769c8d833e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322324"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96008780"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 
@@ -134,7 +134,7 @@ GitHub 上的 [Azure 存储和认知服务实验室](https://github.com/Microsof
 
 ![计算机生成的标题](../Images/thumbnail-with-tooltip.png)
 
-若要查看所有附加的元数据，请使用 Azure 存储资源管理器来查看用于图像的存储容器。 右键单击容器中的任意 Blob，然后选择“属性”。  在对话框中，会看到键值对的列表。 计算机生成的图像说明存储在“Caption”项中，搜索关键字存储在“Tag0”、“Tag1”之类的项中。 完成后，单击**取消**即可关闭对话框。
+若要查看所有附加的元数据，请使用 Azure 存储资源管理器来查看用于图像的存储容器。 右键单击容器中的任意 Blob，然后选择“属性”。  在对话框中，会看到键值对的列表。 计算机生成的图像说明存储在“Caption”项中，搜索关键字存储在“Tag0”、“Tag1”之类的项中。 完成后，单击 **取消** 即可关闭对话框。
 
 ![“图像属性”对话框窗口，其中列出了元数据标记](../Images/blob-metadata.png)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952125"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453064"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的访问、电源和连接模式
 
@@ -35,7 +35,7 @@ ms.locfileid: "91952125"
 
 请在本地 UI 中执行以下步骤，以更改设备密码。
 
-1. 在本地 Web UI 中，转到“维护”>“密码更改”。****
+1. 在本地 Web UI 中，转到“维护”>“密码更改”。
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。
 
     ![更改密码](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
@@ -46,12 +46,12 @@ ms.locfileid: "91952125"
 
 重置工作流不需要用户回忆旧密码，在密码丢失时非常有用。 在 Azure 门户中执行此工作流。
 
-1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。****
+1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。
 
     ![重置密码](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”****。
+2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”。
 
     ![重置密码2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "91952125"
 
 你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro 设备上创建共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
 
-有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
+有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
@@ -113,8 +113,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要更改设备模式，请执行以下步骤：
 
-1. 在设备的本地 Web UI 中，转到“配置”>“云设置”。****
-2. 从下拉列表中，选择要在其中操作设备的模式。 你可以选择 " **完全连接**"、" **部分连接**" 和 " **完全断开连接**"。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。****
+1. 在设备的本地 Web UI 中，转到“配置”>“云设置”。
+2. 从下拉列表中，选择要在其中操作设备的模式。 你可以选择 " **完全连接**"、" **部分连接**" 和 " **完全断开连接**"。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。
 
     ![连接模式](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  

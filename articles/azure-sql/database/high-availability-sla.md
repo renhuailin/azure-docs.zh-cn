@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: 6b6ae2ffca420dc126d56c0f1cfed9188dec0e47
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185600"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452464"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 ## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（以前称为“SQL 数据仓库”）。
+[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。
 
 ## <a name="testing-application-fault-resiliency"></a>测试应用程序的故障复原能力
 

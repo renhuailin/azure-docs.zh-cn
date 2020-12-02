@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022915"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452526"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务
 
@@ -69,7 +69,7 @@ ms.locfileid: "96022915"
 ## <a name="next-steps"></a>后续步骤
 
 
-若要进一步了解 Synapse Analytics 中托管的专用终结点，请参阅 [托管专用终结点](../security/synapse-workspace-managed-private-endpoints.md)。
+若要进一步了解 Azure Synapse Analytics 中托管的专用终结点，请参阅 [托管专用终结点](../security/synapse-workspace-managed-private-endpoints.md)。
 
 
-有关 Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Data Lake 一](data-integration-data-lake.md) 文。
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Data Lake 一](data-integration-data-lake.md) 文。

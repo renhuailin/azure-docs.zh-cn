@@ -1,21 +1,21 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 09/30/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577577"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452946"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
 通过启用了 Azure Arc 的服务器连接的计算机代理，你可以管理在公司网络或其他云提供商的 Azure 外部托管的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
 >[!NOTE]
->从2020年9月版中启用了 Azure Arc 的服务器的通用版开始，Azure 连接的计算机代理的所有预发行版本 (代理，版本低于 1.0) 将于 **2021 年2月2日****弃用** 。  此时间范围允许你升级到版本1.0 或更高版本，然后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
+>从2020年9月版中启用了 Azure Arc 的服务器的通用版开始，Azure 连接的计算机代理的所有预发行版本 (代理，版本低于 1.0) 将于 **2021 年2月2日****弃用**。  此时间范围允许你升级到版本1.0 或更高版本，然后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
@@ -31,7 +31,7 @@ Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑�
     * 来宾分配在本地存储14天。 在14天内，如果连接的计算机代理重新连接到服务，则重新应用策略分配。
     * 分配将在14天后删除，14天后不会重新分配到计算机。
 
-* 扩展代理管理 VM 扩展，包括安装、卸载和升级。 将从 Azure 下载扩展并将其复制到 `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的文件夹，并将其复制到 `/opt/GC_Ext/downloads` 。 在 Windows 上，扩展安装到以下路径 `%SystemDrive%\Packages\Plugins\<extension>` ，在 Linux 上安装了扩展 `/var/lib/waagent/<extension>` 。
+* 扩展代理管理 VM 扩展，包括安装、卸载和升级。 将从 Azure 下载扩展并将其复制到 `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的文件夹，并将其复制到 `/opt/GC_Ext/downloads` 。 在 Windows 上，扩展安装到以下路径 `%SystemDrive%\Packages\Plugins\<extension>` ，在 Linux 上安装了扩展 `/var/lib/waagent/<extension>` 。
 
 ## <a name="download-agents"></a>下载代理
 
@@ -68,7 +68,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="transport-layer-security-12-protocol"></a>传输层安全性1.2 协议
 
-为了确保传输到 Azure 的数据的安全性，我们强烈建议你将计算机配置为使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用** 。
+为了确保传输到 Azure 的数据的安全性，我们强烈建议你将计算机配置为使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。
 
 |平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
@@ -170,9 +170,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含获取的令牌。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理配置文件 `agentconfig.json`，该文件记录其在服务中的注册信息。|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | 包含来宾配置代理文件的安装路径。 |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含来宾配置代理文件的安装路径。 |
     |%ProgramData%\GuestConfig |包含应用于 Azure) 策略的 (。|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 将从 Azure 下载扩展，并在此处复制。|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 将从 Azure 下载扩展，并在此处复制。|
 
 * 安装代理期间，将在目标计算机上创建以下 Windows 服务。
 
@@ -196,14 +196,14 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |当使用 verbose (-v) 参数时，包含 azcmagent 工具命令的输出。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |记录 DSC 服务活动的详细信息，<br> 尤其是 HIMDS 服务和 Azure 策略之间的连接。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
-    |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|记录有关扩展代理组件的详细信息。|
-    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|记录安装的扩展中的详细信息。|
+    |%ProgramData%\GuestConfig\ ext_mgr_logs|记录有关扩展代理组件的详细信息。|
+    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|记录安装的扩展中的详细信息。|
 
 * 将创建本地安全组“混合代理扩展应用程序”。
 
 * 卸载代理期间，不会删除以下项目。
 
-    * *%ProgramData%\AzureConnectedMachineAgent\Log
+    * %ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent 和子目录
     * %ProgramData%\GuestConfig
 

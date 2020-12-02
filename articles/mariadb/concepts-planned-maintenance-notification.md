@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1c9ae694fefcede599331d5d57a298bda4739f53
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920519"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453301"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的计划内维护通知
 
@@ -61,7 +61,7 @@ Azure Database for MariaDB 服务执行基础硬件、操作系统和数据库�
 7. 确保“创建后启用规则”设置为“是”。
 8. 选择“创建警报规则”以完成警报
 
-有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
+有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>能否取消或推迟计划内维护？
 

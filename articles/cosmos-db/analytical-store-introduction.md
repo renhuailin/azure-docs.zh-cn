@@ -1,24 +1,21 @@
 ---
-title: Azure Cosmos DB 分析存储（预览版）是什么？
+title: 什么是 Azure Cosmos DB 分析存储？
 description: 了解 Azure Cosmos DB 事务性（基于行）和分析（基于列）存储。 分析存储的优势、对大型工作负荷的性能响应以及自动将事务性存储中的数据同步到分析存储
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337400"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452858"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什么是 Azure Cosmos DB 分析存储 (预览版) ？
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB 分析存储目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Cosmos DB 分析存储是完全独立的列存储，可以借助它对 Azure Cosmos DB 中的操作数据进行大型分析，这对事务性工作负载没有任何影响。 
 
@@ -36,7 +33,7 @@ Azure Cosmos DB 容器中的多模型操作数据存储在已编索的基于行�
 
 Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延迟问题。 Azure Cosmos DB 分析存储可以自动将操作数据同步到单独的列存储。 列存储格式适用于采用优化的方式执行大型分析查询，可改进此类查询的延迟性。
 
-借助 Azure Synapse Link，现在可以直接从 Synapse Analytics 链接到 Azure Cosmos DB 分析存储，生成无 ETL HTAP 解决方案。 借助它，你可以以接近实时的速度对操作数据运行的大型分析。
+使用 Azure Synapse 链接，你现在可以通过直接链接到 Azure Synapse Analytics Azure Cosmos DB 分析存储来生成不受 ETL HTAP 的解决方案。 借助它，你可以以接近实时的速度对操作数据运行的大型分析。
 
 ## <a name="features-of-analytical-store"></a>分析存储的功能 
 
@@ -175,16 +172,16 @@ salary: 1000000
 
 ### <a name="security"></a>安全性
 
-对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 你可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
+对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>支持多个 Azure Synapse Analytics 运行时
 
 分析存储已经过优化，无需依赖计算运行时即可为分析工作负荷提供可伸缩性、弹性和性能。 存储技术是自行管理，无需手动操作即可优化分析工作负荷。
 
-通过将分析存储系统与分析计算系统分离，可以同时从 Azure Synapse Analytics 支持的不同分析运行时中查询 Azure Cosmos DB 分析存储中的数据。 目前，Synapse Analytics 支持 Apache Spark 和 SQL 无服务器使用 Azure Cosmos DB 分析存储。
+通过将分析存储系统与分析计算系统分离，可以同时从 Azure Synapse Analytics 支持的不同分析运行时中查询 Azure Cosmos DB 分析存储中的数据。 目前，Azure Synapse Analytics 支持 Apache Spark 和无服务器的 SQL 池 Azure Cosmos DB 分析存储。
 
 > [!NOTE]
-> 只能使用 Synapse Analytics 运行时读取分析存储。 可以将数据重写入事务性存储，将其作为服务层。
+> 只能使用 Azure Synapse Analytics 运行时从分析存储中读取。 可以将数据重写入事务性存储，将其作为服务层。
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> 定价
 
@@ -194,10 +191,7 @@ salary: 1000000
 
 * 分析写入操作：从事务性存储将操作数据更新以完全托管的方式同步到分析存储（自动同步）
 
-* 分析读取操作：从 Synapse Analytics Spark 和 SQL 无服务器运行时对分析存储执行的读取操作。
-
-> [!NOTE]
-> Azure Cosmos DB 分析存储目前以公共预览版提供，免收任何费用。
+* 分析读取操作：针对分析存储执行的、从 Azure Synapse Analytics Spark 池和无服务器 SQL 池运行时间执行的读取操作。
 
 分析存储定价与事务性存储定价模型不同。 分析存储中没有预配 RU 这一概念。 有关分析存储定价模型的完整详细信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 

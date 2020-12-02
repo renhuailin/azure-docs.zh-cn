@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010243"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452718"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 有关详细信息，请参阅 [Multitenant Hosting for Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)（Windows 10 多租户托管）。
@@ -24,7 +24,7 @@ ms.locfileid: "96010243"
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure 市场部署 Windows 10 映像 
-对于 Powershell、CLI 和 Azure 资源管理器模板部署，可使用以下 publishername、产品/服务及 sku 找到 Windows 10 映像。
+对于 PowerShell、CLI 和 Azure 资源管理器模板部署，可通过以下 publishername、产品/服务、sku 找到 Windows 10 映像。
 
 | OS  |      PublisherName      |  产品/服务 | SKU |
 |:----------|:-------------:|:------|:------|
@@ -33,6 +33,15 @@ ms.locfileid: "96010243"
 | Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
+## <a name="qualify-for-multi-tenant-hosting-rights"></a>适用于多租户托管权限 
+若要在 Azure 用户上有资格使用多租户托管权限和运行 Windows 10 映像，必须具有以下订阅之一： 
+
+-   Microsoft 365 E3/E5/F3/A3/A5
+-   Windows 10 企业版 E3/E5 
+-   Windows 10 教育版 A3/A5
+-   Windows VDA E3/E5
+
+
 ## <a name="uploading-windows-10-vhd-to-azure"></a>将 Windows 10 VHD 上传到 Azure
 如果要上传通用化的 Windows 10 VHD，请注意，Windows 10 不会默认启用内置 Administrator 帐户。 若要启用内置 Administrator 帐户，请在自定义脚本扩展中包含以下命令。
 
@@ -40,7 +49,7 @@ ms.locfileid: "96010243"
 Net user <username> /active:yes
 ```
 
-以下 powershell 代码片段用于将所有管理员（包括内置 Administrator）帐户标记为活动帐户。 如果内置 Administrator 用户名未知，此示例非常有用。
+以下 PowerShell 代码片段将所有管理员帐户标记为活动状态，包括内置管理员。 如果内置 Administrator 用户名未知，此示例非常有用。
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)

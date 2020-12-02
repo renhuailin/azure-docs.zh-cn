@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 45b177bd35af9748ff80ecc38f2d1c803c10546e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981113"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452821"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -258,7 +258,7 @@ SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second,
 FROM DIGITALTWINS Factory
 JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
 ```
 
 下面是一个类似的查询，它查询与上述相同的集，但仅将 *Consumer.name* 属性投影为 `consumerName` ，并将整个 *工厂* 投影为一个克隆。

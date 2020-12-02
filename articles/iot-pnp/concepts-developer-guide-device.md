@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8d8da39f038f465030a2dced092ab1b008e30e5e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3aa236570e518b142adb8382387a8cdea4fc08a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511400"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453275"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT 即插即用设备开发人员指南
 
@@ -67,8 +67,8 @@ IoT 即插即用允许构建智能设备，将其功能公布到 Azure IoT 应�
 现在，你已了解 IoT 即插即用设备开发，以下是一些其他资源：
 
 - [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C 设备 SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [模型组件](concepts-components.md)
 - [安装并使用 DTDL 创作工具](howto-use-dtdl-authoring-tools.md)
 - [IoT 即插即用服务开发人员指南](concepts-developer-guide-service.md)

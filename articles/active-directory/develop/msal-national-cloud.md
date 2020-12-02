@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348401"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453605"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -150,9 +150,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 调用 Microsoft Graph API 需要一个特定于所使用的云的终结点 URL。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
-    下面是一个具有作用域的图形终结点示例：
+    下面是 Microsoft Graph 终结点的示例，范围如下：
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 调用 Microsoft Graph API 需要一个特定于所使用的云的终结点 URL。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 下面是一个具有作用域的图形终结点示例：
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关以下方面的详细信息：
+有关每个云的 Azure 门户 Url 和令牌终结点的列表，请参阅 [国家云身份验证终结点](authentication-national-cloud.md) 。
 
-- [国家/地区云中的身份验证](authentication-national-cloud.md)
+国家/地区云文档：
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure 中国世纪互联](/azure/china/)
 - [Azure 德国](../../germany/index.yml)

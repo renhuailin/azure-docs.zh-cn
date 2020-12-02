@@ -1,6 +1,6 @@
 ---
 title: 数据仓库排序规则类型
-description: Azure Synapse 分析中的专用 SQL 池支持的排序规则类型。
+description: 专用 SQL 池支持的排序规则类型 (以前的 SQL DW) 在 Azure Synapse Analytics 中。
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305262"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452767"
 ---
-# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>针对 Azure Synapse 分析中的专用 SQL 池的数据库排序规则支持 
+# <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>针对专用 SQL 池的数据库排序规则支持 (以前的 SQL DW) Azure Synapse Analytics 
 
-创建新的专用 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
+创建新的专用 SQL 池 (以前的 SQL DW) 时，可以更改 Azure 门户中的默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
 
 排序规则为基于字符的数据类型提供区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
 

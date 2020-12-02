@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 81c1b84bff04e62f2dabeb3880f4103112139ee0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631693"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453564"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92631693"
 
 ## <a name="general-questions"></a>一般问题
 ### <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
-数据工厂是一项基于云的数据集成服务，可以 **自动移动和转换数据** 。 如同工厂运转设备将原材料转换为成品一样，数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。
+数据工厂是一项基于云的数据集成服务，可以 **自动移动和转换数据**。 如同工厂运转设备将原材料转换为成品一样，数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。
 
 数据工厂可用于创建数据驱动的工作流，以同时在本地和云数据存储区之间移动数据，以及使用 Azure HDInsight 和 Azure Data Lake Analytics 等计算服务处理/转换数据。 创建管道（用于执行所需操作）后，可以安排它定期（每小时、每天、每周等）运行。   
 
@@ -49,11 +49,11 @@ ms.locfileid: "92631693"
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure 数据工厂服务的创作/开发人员体验是什么？
 可以使用下列工具/SDK 之一创作/创建数据工厂：
 
-* **Visual Studio** ：可以使用 Visual Studio 创建 Azure 数据工厂。 有关详细信息，请参阅[使用 Visual Studio 构建第一个数据管道](data-factory-build-your-first-pipeline-using-vs.md)。
+* **Visual Studio**：可以使用 Visual Studio 创建 Azure 数据工厂。 有关详细信息，请参阅[使用 Visual Studio 构建第一个数据管道](data-factory-build-your-first-pipeline-using-vs.md)。
 * **Azure PowerShell** 有关使用 PowerShell 创建数据工厂的教程/演练，请参阅 [使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md) 。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
-* **.NET 类库** ：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
-* **REST API** ：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
-* **Azure 资源管理器模板** ：有关详细信息，请参阅 [教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
+* **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
+* **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
+* **Azure 资源管理器模板**：有关详细信息，请参阅 [教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
 
 ### <a name="can-i-rename-a-data-factory"></a>是否可以重命名数据工厂？
 不是。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
@@ -72,7 +72,7 @@ ms.locfileid: "92631693"
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习工作室（经典）](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Studio (经典) 活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure Synapse Analytics（以前称为 SQL 数据仓库）](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
+| [AZURE SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、 [azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service) [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure 数据工厂与 SQL Server Integration Services (SSIS) 相比如何？ 
 请参阅 [Azure 数据工厂和 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 演示文稿，从我们的一位 Mvp (最有价值专家) ： Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
@@ -139,7 +139,7 @@ ms.locfileid: "92631693"
 
 ## <a name="slices---faq"></a>切片 - 常见问题解答
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>为何我的输入切片不是处于“就绪”状态？
-一个常见错误是，当输入数据是数据工厂的外部数据（不是由数据工厂生成）时，未将输入数据集上的“external”属性设置为 **true** 。
+一个常见错误是，当输入数据是数据工厂的外部数据（不是由数据工厂生成）时，未将输入数据集上的“external”属性设置为 **true**。
 
 在下面的示例中，只需在 **dataset1** 上将“外部”属性设置为 true。  
 

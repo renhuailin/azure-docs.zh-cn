@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c12727e08c6ec9075aa6c1e256279ab7596417b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324535"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452730"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 Synapse SQL 设计表
 
-本文档包含用于设计具有专用 SQL 池和无服务器 SQL 池 (预览) 的表的关键概念。  
+本文档包含用于设计具有专用 SQL 池和无服务器 SQL 池的表的关键概念。  
 
-[无服务器 SQL 池 (预览) ](on-demand-workspace-overview.md) 是对 data lake 中的数据进行的查询服务。 它没有用于数据引入的本地存储。 [专用 sql 池](best-practices-sql-pool.md) 表示在使用 Synapse SQL 时正在预配的分析资源的集合。 专用 SQL 池的大小由数据仓库单位 (DWU) 确定。
+[无服务器 SQL 池](on-demand-workspace-overview.md) 是针对 data lake 中的数据的查询服务。 它没有用于数据引入的本地存储。 [专用 sql 池](best-practices-sql-pool.md) 表示在使用 Synapse SQL 时正在预配的分析资源的集合。 专用 SQL 池的大小由数据仓库单位 (DWU) 决定。
 
 下表列出了与专用 SQL 池和无服务器 SQL 池相关的主题：
 
@@ -37,7 +37,7 @@ ms.locfileid: "93324535"
 | [数据类型](#data-types)                                    | 是                | 是                     |
 | [分布式表](#distributed-tables)                    | 是                | 否                      |
 | [哈希分布表](#hash-distributed-tables)          | 是                | 否                      |
-| [复制表](#replicated-tables)                      | 是                | 否                      |
+| [复制的表](#replicated-tables)                      | 是                | 否                      |
 | [循环表](#round-robin-tables)                    | 是                | 否                      |
 | [表的常用分布方法](#common-distribution-methods-for-tables) | 是                | 否                      |
 | [分区](#partitions)                                    | 是                | 是                     |

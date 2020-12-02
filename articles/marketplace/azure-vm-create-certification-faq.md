@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682479"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452677"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -201,7 +201,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|操作系统|推荐的 VHD 大小|
+|(OS)|推荐的 VHD 大小|
 |---|---|
 |Linux|30 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
@@ -230,7 +230,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server Standard 2012 R2|NA|
+|Windows Server 2019|NA|
 
 > [!NOTE]
 > Windows Server 2019 没有任何必需的版本要求。
@@ -254,9 +254,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
-||18.10|4.18.0-1023|
-||19.04|5.0.0-1010|
-||19.04|5.3.0-1004|
+||18.10 |4.18.0-1023|
+||19.04 |5.0.0-1010|
+||19.04 |5.3.0-1004|
 |RHEL 和美分 OS|6.10|2.6.32-754.15。3|
 ||7.2|3.10.0-327.79。2|
 ||7.3|3.10.0-514.66。2|
@@ -474,7 +474,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 * 对于 **windows**，你使用来通用化 windows 映像 `sysreptool` 。
 
-  有关该工具的详细信息 `sysreptool` ，请参阅 [系统准备 (Sysprep) 概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+  有关该工具的详细信息 `sysreptool` ，请参阅 [系统准备 (Sysprep) 概述](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
 ## <a name="datadisk-errors"></a>DataDisk 错误
 

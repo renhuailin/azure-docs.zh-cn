@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841098"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452496"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse IP 防火墙规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-例如，在 Azure SQL 数据库或名为 *mysqlserver* 的 Azure Synapse Analytics 中创建新服务器时，服务器级防火墙会阻止对服务器 (的公共终结点的所有访问，可在 *mysqlserver.database.windows.net*) 访问。 为简单起见，在提到 SQL 数据库和 Azure Synapse Analytics（以前称为“SQL 数据仓库”）时，本文将其统称为“SQL 数据库”。
+例如，在 Azure SQL 数据库或名为 *mysqlserver* 的 Azure Synapse Analytics 中创建新服务器时，服务器级防火墙会阻止对服务器 (的公共终结点的所有访问，可在 *mysqlserver.database.windows.net*) 访问。 为简单起见， *Sql 数据库* 用于引用 sql 数据库和 Azure Synapse 分析。
 
 > [!IMPORTANT]
 > 本文不适用于 *Azure SQL 托管实例*。 有关网络配置的信息，请参阅[将应用程序连接到 Azure SQL 托管实例](../managed-instance/connect-application-instance.md)。

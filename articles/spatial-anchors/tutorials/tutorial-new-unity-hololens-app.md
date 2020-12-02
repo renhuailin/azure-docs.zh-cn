@@ -1,19 +1,19 @@
 ---
 title: 教程：创建新的 HoloLens Unity 应用
 description: 本教程介绍如何使用 Azure 空间定位点创建新的 HoloLens Unity 应用。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096532"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996248"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
@@ -84,12 +84,12 @@ ms.locfileid: "92096532"
 1. 转到“GameObject” -> “3D 对象” -> “球体”。
 2. 在“检查器”中，将其刻度设置为“0.25、0.25、0.25”。
 3. 在“层次结构”窗格中找到“球体” 。 单击该球体，并将其拖到“项目”窗格的“资产”文件夹中 。
-4. 右键单击已在“层次结构”窗格中创建的原始球体，并将其**删除** 。
+4. 右键单击已在“层次结构”窗格中创建的原始球体，并将其 **删除** 。
 
 现在，应该在“项目”窗格中具有球体预制项。
 
 ## <a name="trying-it-out"></a>体验一下
-若要测试一切设置是否有效，请在“Unity”中生成应用，并从“Visual Studio”进行部署 。 按照 [**MR 基础知识 100：Unity 入门**课程](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)中第 6 章进行操作。 应会显示 Unity 启动屏幕，然后是清晰的显示屏。
+若要测试一切设置是否有效，请在“Unity”中生成应用，并从“Visual Studio”进行部署 。 按照 [**MR 基础知识 100：Unity 入门** 课程](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)中第 6 章进行操作。 应会显示 Unity 启动屏幕，然后是清晰的显示屏。
 
 ## <a name="place-an-object-in-the-real-world"></a>将对象放入真实世界
 让我们使用该应用创建并放置一个对象。 打开[部署应用程序](#trying-it-out)时创建的 Visual Studio 解决方案。

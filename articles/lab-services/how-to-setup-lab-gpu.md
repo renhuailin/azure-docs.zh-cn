@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 264d103cd5f1459a6d29a35a1ecefc595285587a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433982"
+ms.locfileid: "96452367"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虚拟机设置实验室
 
@@ -37,7 +37,7 @@ ms.locfileid: "96433982"
 | 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
 | 小型 GPU (可视化) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
-| 中等 GPU (可视化) | -&nbsp;12 &nbsp; 核<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
+| 中等 GPU (可视化) | -&nbsp;12 &nbsp; 核<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
 
 > [!NOTE]
 > 创建课堂实验室时，列表中可能不会显示某些 VM 大小。 根据实验室位置的当前容量填充列表。 如果实验室帐户创建者[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)，则可以尝试为实验室选择其他位置，并查看 VM 大小是否可用。 有关 Vm 的可用性，请参阅 [可用产品（按区域](https://azure.microsoft.com/regions/services/?products=virtual-machines)）。
@@ -76,7 +76,7 @@ ms.locfileid: "96433982"
 1. 安装了类所需的驱动程序和其他软件之后，选择 " **发布** " 以创建学生的 vm。
 
 > [!NOTE]
-> 如果使用的是 Linux 映像，则在下载安装程序后，请按照在 [Linux 上安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms)中的说明安装驱动程序。
+> 如果使用的是 Linux 映像，则在下载安装程序后，请按照在 [Linux 上安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#install-cuda-drivers-on-n-series-vms)中的说明安装驱动程序。
 
 #### <a name="install-the-visualization-gpu-drivers"></a>安装可视化 GPU 驱动程序
 
@@ -86,7 +86,7 @@ ms.locfileid: "96433982"
 1. 创建实验室后，连接到模板 VM 以安装相应的驱动程序。
 1. 按照适用于你的操作系统的说明，在模板 VM 上安装 Microsoft 提供的网格驱动程序：
    -  [Windows NVIDIA GRID 驱动程序](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
-   -  [Linux NVIDIA GRID 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
+   -  [Linux NVIDIA GRID 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#nvidia-grid-drivers)
   
 1. 重新启动模板 VM。
 1. 按照 [验证安装的驱动程序](how-to-setup-lab-gpu.md#validate-the-installed-drivers) 部分中的说明，验证是否正确安装了驱动程序。

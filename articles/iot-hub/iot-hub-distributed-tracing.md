@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538572"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452399"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -40,7 +40,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 - 分布式跟踪预览版目前仅支持在以下区域中创建的 IoT 中心：
 
   - **北欧**
-  - **东南亚**
+  - **Southeast Asia**
   - **美国西部 2**
 
 - 本文假设读者知道如何将遥测消息发送到 IoT 中心。 请确保已完成[发送遥测数据 C 快速入门](quickstart-send-telemetry-c.md)。
@@ -55,25 +55,25 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到 IoT 中心。
 
-1. 在 IoT 中心的左窗格中，向下滚动到“监视”部分并单击“诊断设置”。 
+1. 在 IoT 中心的左窗格中，向下滚动到“监视”部分并单击“诊断设置”。
 
-1. 单击“添加诊断设置”  。
+1. 单击“添加诊断设置”。
 
-1. 在“名称”字段中，输入新诊断设置的名称。  例如 **DistributedTracingSettings** 。
+1. 在“名称”字段中，输入新诊断设置的名称。 例如 **DistributedTracingSettings**。
 
 1. 选择以下一个或多个选项用于确定要将日志发送到何处：
 
-    - **存档到存储帐户** ：配置存储帐户以包含日志记录信息。
-    - **流式传输到事件中心** ：将事件中心配置为包含日志记录信息。
-    - **发送到 Log Analytics** ：配置 Log Analytics 工作区以包含日志记录信息。
+    - **存档到存储帐户**：配置存储帐户以包含日志记录信息。
+    - **流式传输到事件中心**：将事件中心配置为包含日志记录信息。
+    - **发送到 Log Analytics**：配置 Log Analytics 工作区以包含日志记录信息。
 
-1. 在“日志”部分，选择要记录其信息的操作。 
+1. 在“日志”部分，选择要记录其信息的操作。
 
-    请务必包含“DistributedTracing”，并配置“保留期”以指定要将日志保留几天。  保留日志会影响存储费用。
+    请务必包含“DistributedTracing”，并配置“保留期”以指定要将日志保留几天。 保留日志会影响存储费用。
 
     ![显示 DistributedTracing 类别在 IoT 诊断设置中的位置的屏幕截图](./media/iot-hub-distributed-tracing/diag-logs.png)
 
-1. 单击新设置旁边的“保存”。 
+1. 单击新设置旁边的“保存”。
 
 1. （可选）若要了解消息如何流向不同的位置，请[对至少两个不同的终结点设置路由规则](iot-hub-devguide-messages-d2c.md)。
 
@@ -196,19 +196,19 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="update-using-the-portal"></a>使用门户更新
 
-1. 在 
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 IoT 中心，然后单击“IoT 设备”。
 
 1. 单击自己的设备。
 
-1. 找到“启用分布式跟踪(预览版)”，然后选择“启用”。 
+1. 找到“启用分布式跟踪(预览版)”，然后选择“启用”。
 
     ![在 Azure 门户中启用分布式跟踪](./media/iot-hub-distributed-tracing/azure-portal.png)
 
-1. 选择介于 0% 与 100% 之间的 **采样率** 。
+1. 选择介于 0% 与 100% 之间的 **采样率**。
 
-1. 单击“ **保存** ”。
+1. 单击“保存”  。
 
-1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。 
+1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。
 
 1. 返回到遥测消息应用的控制台窗口。 将会看到正在发送消息，消息的应用程序属性中包含 `tracestate`。
 
@@ -222,11 +222,11 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 打开 VS Code 并[设置 IoT 中心连接字符串](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)。
 
-1. 展开设备，并找到“分布式跟踪设置(预览版)”。  在该选项的下面，单击子节点对应的“更新分布式跟踪设置(预览版)”。 
+1. 展开设备，并找到“分布式跟踪设置(预览版)”。 在该选项的下面，单击子节点对应的“更新分布式跟踪设置(预览版)”。
 
     ![在 Azure IoT 中心扩展中启用分布式跟踪](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. 在弹出窗口中选择“启用”，然后按 Enter 确认使用 100 作为采样率。 
+1. 在弹出窗口中选择“启用”，然后按 Enter 确认使用 100 作为采样率。
 
     ![更新采样模式](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -295,11 +295,11 @@ Log Analytics 显示的示例日志：
 
 ### <a name="context"></a>上下文
 
-许多 IoT 解决方案，包括我们自己的[参考体系结构](https://aka.ms/iotrefarchitecture)（仅有英语版），通常遵循[微服务体系结构](/azure/architecture/microservices/)的某种变体。 随着 IoT 解决方案变得越来越复杂，最终会使用十多个甚至更多的微服务。 这些微服务不一定来自 Azure。 可能很难查明 IoT 消息是在哪个位置删除或减慢的。 例如，某个 IoT 解决方案使用 5 个不同的 Azure 服务和 1500 个活动设备。 每个设备每秒发送 10 条设备到云的消息（每秒总共发送 15,000 条消息），但你注意到，Web 应用每秒只收到了 10,000 条消息。 问题出在哪里？ 如何查明原因？
+许多 IoT 解决方案，包括我们自己的[参考体系结构](/azure/architecture/reference-architectures/iot)（仅有英语版），通常遵循[微服务体系结构](/azure/architecture/microservices/)的某种变体。 随着 IoT 解决方案变得越来越复杂，最终会使用十多个甚至更多的微服务。 这些微服务不一定来自 Azure。 可能很难查明 IoT 消息是在哪个位置删除或减慢的。 例如，某个 IoT 解决方案使用 5 个不同的 Azure 服务和 1500 个活动设备。 每个设备每秒发送 10 条设备到云的消息（每秒总共发送 15,000 条消息），但你注意到，Web 应用每秒只收到了 10,000 条消息。 问题出在哪里？ 如何查明原因？
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>微服务体系结构中的分布式跟踪模式
 
-若要跨不同的服务重建 IoT 消息流，每个服务应该传播一个用于唯一标识消息的关联 ID。  在集中式系统中收集后，关联 ID 可让你查看消息流。 此方法称为[分布式跟踪模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
+若要跨不同的服务重建 IoT 消息流，每个服务应该传播一个用于唯一标识消息的关联 ID。 在集中式系统中收集后，关联 ID 可让你查看消息流。 此方法称为[分布式跟踪模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
 
 为了使分布式跟踪得到更广泛的采用，Microsoft 正在努力制定[分布式跟踪的 W3C 标准提案](https://w3c.github.io/trace-context/)。
 

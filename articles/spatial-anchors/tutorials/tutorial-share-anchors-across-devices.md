@@ -1,19 +1,19 @@
 ---
 title: 教程：在会话和设备间共享定位点
 description: 在本教程中，你会了解如何使用后端服务在 Unity 中的 Android/iOS 设备之间共享 Azure 空间定位点标识符。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097280"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185236"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享空间定位点
 
@@ -64,7 +64,7 @@ Azure 空间定位点是一种跨平台开发人员服务，通过该服务，�
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-在“资源组”**** 旁边，选择“新建”****。
+在“资源组”旁边，选择“新建”。
 
 将资源组命名为 myResourceGroup，然后选择“确定” 。
 
@@ -72,7 +72,7 @@ Azure 空间定位点是一种跨平台开发人员服务，通过该服务，�
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
 
-在“托管计划”旁边****，选择“新建”****。
+在“托管计划”旁边，选择“新建”。
 
 在“配置托管计划”窗格中，使用以下设置：
 
