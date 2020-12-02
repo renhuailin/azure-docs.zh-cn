@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635205"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484883"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>阻止对 Azure 存储帐户进行共享密钥授权 (预览) 
 
@@ -43,27 +43,27 @@ ms.locfileid: "94635205"
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>监视通过共享密钥授权的请求数
 
-若要跟踪对存储帐户请求的授权方式，请使用 Azure 门户中的 Azure 指标资源管理器。 有关指标资源管理器的详细信息，请参阅 [Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)入门。
+若要跟踪对存储帐户请求的授权方式，请使用 Azure 门户中的 Azure 指标资源管理器。 若要详细了解 Azure 指标资源管理器，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
 
 按照以下步骤创建一个度量值，用于跟踪使用共享密钥或 SAS 发出的请求：
 
-1. 导航到 Azure 门户中的存储帐户。 在 " **监视** " 部分下，选择 " **指标** "。
-1. 选择“添加指标”。 在 " **指标** " 对话框中，指定以下值：
+1. 导航到 Azure 门户中的存储帐户。 在“监视”部分下，选择“指标” 。
+1. 选择“添加指标”。 在“指标”对话框中，指定以下值：
     1. 将 " **作用域** " 字段设置为存储帐户的名称。
-    1. 将 **指标命名空间** 设置为 " *帐户* "。 此指标将报告针对存储帐户的所有请求。
-    1. 将 " **指标** " 字段设置为 " *事务* "。
-    1. 将 **聚合** 字段设置为 *Sum* 。
+    1. 将 **指标命名空间** 设置为 " *帐户*"。 此指标将报告针对存储帐户的所有请求。
+    1. 将“指标”字段设置为“事务”。
+    1. 将“聚合”字段设置为“求和”。
 
-    新度量值将显示在给定时间间隔内针对存储帐户的事务数之和。 生成的指标显示如下图所示：
+    新度量值将显示在给定时间间隔内针对存储帐户的事务数之和。 生成的指标如下图所示：
 
     :::image type="content" source="media/shared-key-authorization-prevent/configure-metric-account-transactions.png" alt-text="显示如何将指标配置为与共享密钥或 SAS 进行求和的屏幕截图":::
 
 1. 接下来，选择 " **添加筛选器** " 按钮，为授权类型的指标创建筛选器。
-1. 在 " **筛选器** " 对话框中，指定以下值：
-    1. 将 **属性** 值设置为 *Authentication* 。
-    1. 将 " **运算符** " 字段设置为等号 (=) 。
-    1. 在 " **值** " 字段中，选择 " *帐户密钥* 和 *SAS* "。
-1. 在右上角，选择要查看指标的时间范围。 还可以通过指定从1分钟到1个月之间的时间间隔，来指示请求聚合的粒度。 例如，将 **时间范围** 设置为30天，将 **时间粒度** 设置为1天，以查看在过去30天内按天聚合的请求。
+1. 在“筛选器”对话框中，指定以下值：
+    1. 将属性值设置为“身份验证”。
+    1. 将“运算符”字段设置为等号 (=)。
+    1. 在 " **值** " 字段中，选择 " *帐户密钥* 和 *SAS*"。
+1. 在右上角，选择要查看指标的时间范围。 还可以通过指定从 1 分钟到 1 个月的时间间隔，来指示请求聚合粒度。 例如，将 **时间范围** 设置为30天，将 **时间粒度** 设置为1天，以查看在过去30天内按天聚合的请求。
 
 配置指标后，将开始在图形上显示对存储帐户的请求。 下图显示了使用共享密钥授权的请求，或使用 SAS 令牌发出的请求。 请求在过去的30天内按天聚合。
 
@@ -77,7 +77,7 @@ Azure 存储日志捕获有关针对存储帐户发出的请求的详细信息�
 
 若要将请求记录到 Azure 存储帐户，以便评估这些请求的授权方式，你可以使用 Azure 存储日志记录 Azure Monitor (预览 ") "。 有关详细信息，请参阅 [监视 Azure 存储](../blobs/monitor-blob-storage.md)。
 
-Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/log-query/get-started-portal.md)。
+Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>在 Azure 门户中创建诊断设置
 
@@ -86,12 +86,12 @@ Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析�
 1. [在 Azure Monitor 预览中注册 Azure 存储日志记录](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。
 1. 在订阅中创建一个包含你的 Azure 存储帐户的新 Log Analytics 工作区，或使用现有 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 "Log Analytics" 工作区中可用。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 1. 导航到 Azure 门户中的存储帐户。
-1. 在 "监视" 部分，选择 " **诊断设置" (预览 ")** 。
+1. 在 "监视" 部分，选择 " **诊断设置" (预览 ")**。
 1. 选择要为其记录请求的 Azure 存储服务。 例如，选择 " **blob** " 将请求记录到 blob 存储中。
 1. 选择“添加诊断设置”。
 1. 提供诊断设置的名称。
-1. 在 " **类别详细信息** " 下的 " **日志** " 部分中，选择 " **StorageRead** "、" **StorageWrite** " 和 " **StorageDelete** "，将所有数据请求记录到所选服务。
-1. 在 " **目标详细信息** " 下，选择 " **发送到 Log Analytics** "。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
+1. 在 " **类别详细信息**" 下的 " **日志** " 部分中，选择 " **StorageRead**"、" **StorageWrite**" 和 " **StorageDelete** "，将所有数据请求记录到所选服务。
+1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
 
     :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="显示如何为日志记录请求创建诊断设置的屏幕截图":::
 
@@ -118,7 +118,7 @@ StorageBlobLogs
 
 在分析了对存储帐户请求的授权方式之后，你可以采取措施阻止通过共享密钥进行访问。 但首先，你需要更新使用共享密钥授权的所有应用程序，以便改用 Azure AD。 可以按照 [检测客户端应用程序使用的授权类型](#detect-the-type-of-authorization-used-by-client-applications) 跟踪转换中所述来监视日志和指标。 有关将 Azure AD 用于 blob 和队列数据的详细信息，请参阅 [使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
 
-当你确信可以安全拒绝通过共享密钥授权的请求时，可以将存储帐户的 **AllowSharedKeyAccess** 属性设置为 **false** 。
+当你确信可以安全拒绝通过共享密钥授权的请求时，可以将存储帐户的 **AllowSharedKeyAccess** 属性设置为 **false**。
 
 默认情况下， **AllowSharedKeyAccess** 属性不会设置，并且不会返回值，除非你显式设置该值。 当属性值为 **null** 或为 **true** 时，存储帐户允许通过共享密钥授权的请求。
 
@@ -130,8 +130,8 @@ StorageBlobLogs
 若要为 Azure 门户中的存储帐户禁用共享密钥授权，请执行以下步骤：
 
 1. 导航到 Azure 门户中的存储帐户。
-1. 找到 " **设置** " 下的 **配置** 设置。
-1. 将 " **允许共享密钥访问** " 设置为 " **已禁用** "。
+1. 在“设置”下找到“配置”设置。 
+1. 将 " **允许共享密钥访问** " 设置为 " **已禁用**"。
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="显示如何禁止帐户共享密钥访问的屏幕截图":::
 
@@ -178,7 +178,7 @@ az storage container create \
 ```
 
 > [!NOTE]
-> 如果已将存储帐户和容器配置为匿名公共读取访问，则匿名请求未获授权，并将继续。 有关详细信息，请参阅 [配置容器和 blob 的匿名公共读取访问](../blobs/anonymous-read-access-configure.md)。
+> 如果已将存储帐户和容器配置为匿名公共读取访问，则匿名请求未获授权，并将继续。 有关详细信息，请参阅[配置对容器和 Blob 的匿名公共读取访问](../blobs/anonymous-read-access-configure.md)。
 
 ### <a name="check-the-shared-key-access-setting-for-multiple-accounts"></a>检查多个帐户的共享密钥访问设置
 
@@ -199,7 +199,7 @@ resources
 
 | SAS 类型 | 授权类型 | AllowSharedKeyAccess 为 false 时的行为 |
 |-|-|-|
-| 仅 (Blob 存储的用户委托 SAS)  | Azure AD | 允许请求。 Microsoft 建议尽可能使用用户委托 SAS，以实现高级安全性。 |
+| 用户委托 SAS（仅限 Blob 存储） | Azure AD | 允许请求。 Microsoft 建议尽可能使用用户委托 SAS，以实现高级安全性。 |
 | 服务 SAS | 共享密钥 | 拒绝对 Blob 存储的请求。 请求允许用于队列和表存储以及 Azure 文件。 有关详细信息，请参阅 **关于预览** 部分中的 [AllowSharedKeyAccess 为 false 中的队列、表和文件允许使用 SAS 令牌的请求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
 | 帐户 SAS | 共享密钥 | 拒绝对 Blob 存储的请求。 请求允许用于队列和表存储以及 Azure 文件。 有关详细信息，请参阅 **关于预览** 部分中的 [AllowSharedKeyAccess 为 false 中的队列、表和文件允许使用 SAS 令牌的请求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
 
@@ -213,12 +213,12 @@ resources
 
 | Azure 工具 | 向 Azure 存储 Azure AD 授权 |
 |-|-|
-| Azure 门户 | 支持。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
+| Azure 门户 | 。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
 | AzCopy | 支持 Blob 存储。 有关授权 AzCopy 操作的信息，请参阅 AzCopy 文档中的 [选择如何提供授权凭据](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 存储资源管理器 | 仅支持 Blob 存储和 Azure Data Lake Storage Gen2。 Azure AD 不支持对队列存储的访问。 请确保选择正确的 Azure AD 租户。 有关详细信息，请参阅 [存储资源管理器入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
-| Azure PowerShell | 支持。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
-| Azure CLI | 支持。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](authorize-data-operations-cli.md)。 |
-| Azure IoT 中心 | 支持。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
+| Azure PowerShell | 。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
+| Azure CLI | 。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](../blobs/authorize-data-operations-cli.md)。 |
+| Azure IoT 中心 | 。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
 | Azure Cloud Shell | Azure Cloud Shell 是 Azure 门户中的集成外壳。 Azure Cloud Shell 在存储帐户中的 Azure 文件共享中保存持久性的文件。 如果该存储帐户不允许进行共享密钥授权，则这些文件将无法访问。 有关详细信息，请参阅 [连接 Microsoft Azure 文件存储](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要运行 Azure Cloud Shell 中的命令以管理不允许进行共享密钥访问的存储帐户，请先确保已通过 Azure 基于角色的访问控制向你授予这些帐户所需的权限 (Azure RBAC) 。 有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。 |
 
 ## <a name="about-the-preview"></a>关于此预览版

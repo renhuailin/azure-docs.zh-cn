@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549922"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483532"
 ---
 # <a name="create-a-group-for-assessment"></a>为评估创建组
 
@@ -35,15 +35,15 @@ ms.locfileid: "85549922"
 
 如果要在创建评估之外手动创建组，请执行以下操作：
 
-1. 在 Azure Migrate 项目 > **概述**中，单击 " **评估和迁移服务器**"。 在**Azure Migrate：服务器评估**中，单击 "**组**"
+1. 在 Azure Migrate 项目 > **概述** 中，单击 " **评估和迁移服务器**"。 在 **Azure Migrate：服务器评估** 中，单击 "**组**"
     - 如果尚未添加 "Azure Migrate：服务器评估" 工具，请单击 "添加"。 [了解详细信息](how-to-assess.md)。
-    - 如果尚未创建 Azure Migrate 项目，请 [了解详细信息](how-to-add-tool-first-time.md)。
+    - 如果尚未创建 Azure Migrate 项目，请 [了解详细信息](./create-manage-projects.md)。
 
     ![选择组](./media/how-to-create-a-group/select-groups.png)
 
 2. 单击 " **组** " 图标。
 3. 在 " **创建组**" 中，指定组名称，并在 " **设备名称**" 中选择要用于计算机发现的 Azure Migrate 设备。
-4. 从 "计算机" 列表中，选择要添加到组 > **创建**的计算机。
+4. 从 "计算机" 列表中，选择要添加到组 > **创建** 的计算机。
 
     ![创建组](./media/how-to-create-a-group/create-group.png)
 
@@ -89,4 +89,3 @@ ms.locfileid: "85549922"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何设置和使用 [依赖关系映射](how-to-create-group-machine-dependencies.md) 来创建高可信度组。
-

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348460"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484033"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>如何在应用程序中使用启用了持续存取评估的 Api
 
@@ -27,9 +27,9 @@ ms.locfileid: "96348460"
 
 ## <a name="implementation-considerations"></a>实现注意事项
 
-若要使用连续访问评估，应用和它访问的资源 API 必须 CAE 启用。 但是，准备代码以使用启用 CAE 的资源不会阻止你使用未启用 CAE 的 Api。 
+若要使用连续访问评估，应用和它访问的资源 API 必须 CAE 启用。 但是，准备代码以使用启用 CAE 的资源不会阻止你使用未启用 CAE 的 Api。
 
-如果资源 API 实现 CAE，并且你的应用程序声明它可以处理 CAE，你的应用将获取该资源的 CAE 标记。 出于此原因，如果你将应用程序 CAE 声明为 ready，你的应用程序必须处理所有接受 Microsoft 标识访问令牌的资源 Api 的 CAE 声明质询。 如果未在这些 API 调用中处理 CAE 响应，你的应用程序可能会在循环中最终重试 API 调用，该令牌仍处于令牌的返回生存期，但由于 CAE 而被吊销。 
+如果资源 API 实现 CAE，并且你的应用程序声明它可以处理 CAE，你的应用将获取该资源的 CAE 标记。 出于此原因，如果你将应用程序 CAE 声明为 ready，你的应用程序必须处理所有接受 Microsoft 标识访问令牌的资源 Api 的 CAE 声明质询。 如果未在这些 API 调用中处理 CAE 响应，你的应用程序可能会在循环中最终重试 API 调用，该令牌仍处于令牌的返回生存期，但由于 CAE 而被吊销。
 
 ## <a name="the-code"></a>代码
 
@@ -116,4 +116,4 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解详细信息，请参阅 [持续访问评估](/conditional-access/concept-continuous-access-evaluation.md)。
+若要了解详细信息，请参阅 [持续访问评估](../conditional-access/concept-continuous-access-evaluation.md)。

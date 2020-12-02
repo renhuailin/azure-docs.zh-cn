@@ -349,7 +349,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -676,6 +676,8 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 参数设置
                       href: app/java-standalone-arguments.md
+                    - name: 从 2.x 升级
+                      href: app/java-standalone-upgrade-from-2x.md
             - name: 本地服务器
               items:
                 - name: ASP.NET

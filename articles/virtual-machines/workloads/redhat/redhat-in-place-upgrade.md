@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4487aeba72cc71a31871169c0647efbff34ee068
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968615"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484407"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux 就地升级
 
@@ -35,7 +35,7 @@ Red Hat 和 Azure 建议使用就地升级将系统转换为下一个主要版�
 >[!Important] 
 > 在开始升级之前，拍摄映像的快照。
 
-* 请确保使用的是最新的 RHEL 7 版本。 当前，最新版本为 RHEL 7.9。 如果使用锁定的版本，但无法升级到 RHEL 7.9，请按照 [以下步骤切换到) 存储库 (扩展更新支持](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock)。
+* 请确保使用的是最新的 RHEL 7 版本。 当前，最新版本为 RHEL 7.9。 如果使用锁定的版本，但无法升级到 RHEL 7.9，请按照 [以下步骤切换到) 存储库 (扩展更新支持](./redhat-rhui.md#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock)。
 
 * 运行以下命令以检查升级，并查看其是否会成功完成。 该命令应生成 */var/log/leapp/leapp-report.txt* 文件。 此文件说明了该过程、发生的情况以及升级是否可行。
 

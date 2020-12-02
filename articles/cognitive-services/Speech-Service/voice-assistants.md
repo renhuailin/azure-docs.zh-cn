@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: aa885b1dcff59ec1b89d9a0bcf4ac5578cb5e8ea
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024902"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483880"
 ---
 # <a name="what-is-a-voice-assistant"></a>什么是语音助手？
 
@@ -72,7 +72,7 @@ GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖
 
 使用 Azure 语音服务构建的语音助手可以使用各种自定义选项。
 
-* [自定义语音识别](how-to-custom-speech.md)
+* [自定义语音识别](./custom-speech-overview.md)
 * [自定义语音](how-to-custom-voice.md)
 * [自定义关键字](custom-keyword-overview.md)
 

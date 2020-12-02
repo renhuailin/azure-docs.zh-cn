@@ -3,12 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302849"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483464"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -21,7 +21,7 @@ ms.locfileid: "96302849"
     - [物理服务器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
 - 确保：
-    - 具有 Azure Migrate 项目。 如果没有，请立即 [创建](how-to-add-tool-first-time.md) 一个。
+    - 具有 Azure Migrate 项目。 如果没有，请立即 [创建](./create-manage-projects.md) 一个。
     - 检查是否已将 Azure Migrate： Server 评估工具 [添加](how-to-assess.md) 到项目。
     - 设置 [Azure Migrate 设备](migrate-appliance.md) ，以发现本地计算机。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 为以下设备设置设备：
         - [VMware](how-to-set-up-appliance-vmware.md) 机.
@@ -147,7 +147,7 @@ ms.locfileid: "96302849"
 您可以查询与 Azure Migrate 项目关联的 Log Analytics 工作区中服务映射捕获的依赖关系数据。 Log Analytics 用于编写和运行 Azure Monitor 日志查询。
 
 - [了解如何](../azure-monitor/insights/service-map.md#log-analytics-records) 在 Log Analytics 中搜索服务映射数据。
-- [大致了解如何](../azure-monitor/log-query/get-started-queries.md)  在 [Log Analytics](../azure-monitor/log-query/get-started-portal.md)中编写日志查询。
+- [大致了解如何](../azure-monitor/log-query/get-started-queries.md)  在 [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)中编写日志查询。
 
 为依赖关系数据运行查询，如下所示：
 

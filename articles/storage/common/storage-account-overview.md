@@ -1,7 +1,7 @@
 ---
 title: 存储帐户概述
 titleSuffix: Azure Storage
-description: 阅读 Azure 存储中存储帐户的概述。 查看帐户命名、性能层、访问层、冗余、加密、终结点等。
+description: 阅读 Azure 存储中的存储帐户概述。 查看帐户命名、性能层、访问层、冗余、加密、终结点等。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793001"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484985"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -127,18 +127,18 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 存储帐户在 Azure 中为数据提供唯一的命名空间。 存储在 Azure 存储中的每个对象都有一个地址，其中包含唯一的帐户名称。 将帐户名称与 Azure 存储服务终结点组合在一起，即可构成适用于存储帐户的终结点。
 
-例如，如果常规用途存储帐户名为 *mystorageaccount* ，则该帐户的默认终结点为：
+例如，如果常规用途存储帐户名为 *mystorageaccount*，则该帐户的默认终结点为：
 
 - Blob 存储：`https://*mystorageaccount*.blob.core.windows.net`
 - 表存储：`https://*mystorageaccount*.table.core.windows.net`
 - 队列存储：`https://*mystorageaccount*.queue.core.windows.net`
 - Azure 文件存储：`https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [专门针对大数据进行优化的 ABFS 驱动程序](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)。 ) 
+- Azure Data Lake Storage Gen2：`https://*mystorageaccount*.dfs.core.windows.net`（使用[已针对大数据进行专门优化的 ABFS 驱动程序](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)。）
 
 > [!NOTE]
 > 块 blob 和 blob 存储帐户仅公开 Blob 服务终结点。
 
-构造用于访问存储帐户中某个对象的 URL，方法是：将对象在存储帐户中的位置追加到终结点。 例如，Blob 地址可能具有以下格式： http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* 。
+构造用于访问存储帐户中某个对象的 URL，方法是：将对象在存储帐户中的位置追加到终结点。 例如，Blob 地址可能具有以下格式： http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
 
 也可将存储帐户配置为对 Blob 使用自定义域。 有关详细信息，请参阅[为 Azure 存储帐户配置自定义域名](../blobs/storage-custom-domain-name.md)。  
 
@@ -167,7 +167,7 @@ Microsoft 提供了用于从本地存储设备或第三方云存储提供程序�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制到 Azure 存储（或从中进行复制）。 可以使用 AzCopy 将数据从现有的常规用途存储帐户复制到 Blob 存储帐户，或者将数据从本地存储设备上传。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
+AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制到 Azure 存储（或从中进行复制）。 可以使用 AzCopy 将数据从现有的常规用途存储帐户复制到 Blob 存储帐户，或者将数据从本地存储设备上传。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="data-movement-library"></a>数据移动库
 
@@ -175,7 +175,7 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 
 ### <a name="rest-api-or-client-library"></a>REST API 或客户端库
 
-可以创建自定义应用程序，以便将数据从常规用途 v1 存储帐户迁移到 Blob 存储帐户中。 使用其中一个 Azure 客户端库或 Azure 存储服务 REST API。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对 REST API（可发出 HTTP/HTTPS 请求的任何语言都可调用它）进行开发。
+可以创建自定义应用程序，以便将数据从常规用途 v1 存储帐户迁移到 Blob 存储帐户中。 使用 Azure 客户端库之一或 Azure 存储服务 REST API。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对 REST API（可发出 HTTP/HTTPS 请求的任何语言都可调用它）进行开发。
 
 有关 Azure 存储 REST API 的详细信息，请参阅 [Azure Storage Services REST API Reference](/rest/api/storageservices/)（Azure 存储服务 REST API 参考）。
 

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917159"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458835"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>教程：使用 Azure 自动化 ML 和 Apache Spark 运行试验
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. 根据 Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以使用 ```start_date``` 和 ```end_date``` 筛选器将此数据筛选到更小的范围。 这会应用一个可返回一个月数据的筛选器。 完成筛选后，还会对新的数据帧运行 ```describe()``` 函数，以查看每个字段的摘要统计信息。 
+3. 根据 Spark 池的大小，原始数据可能太大或需要花费太长时间来操作。 可以使用 ```start_date``` 和 ```end_date``` 筛选器将此数据筛选到更小的范围。 这会应用一个可返回一个月数据的筛选器。 完成筛选后，还会对新的数据帧运行 ```describe()``` 函数，以查看每个字段的摘要统计信息。 
 
    根据摘要统计信息，可以看到数据中存在一些非正常值和离群值。 例如，统计信息显示最小行程距离小于 0。 我们需要将这些非正常数据点筛选掉。
    

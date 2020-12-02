@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心中所有 Azure Defender 警报的引用表
+title: Azure 安全中心中所有安全警报的引用表
 description: 本文列出可在 Azure 安全中心的 Azure Defender 仪表板中看到的安全警报。
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014595"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436770"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报 - 参考指南
 
-本文列出可能会从 Azure Defender 中获取的安全警报。 环境中显示的警报取决于要保护的资源和服务以及自定义的配置。
+本文列出了你可能从 Azure 安全中心和已启用的任何 Azure Defender 计划获得的安全警报。 环境中显示的警报取决于要保护的资源和服务以及自定义的配置。
 
 若要了解如何响应这些警报，请参阅[在 Azure 安全中心管理和响应安全警报](security-center-managing-and-responding-alerts.md)。
 
@@ -170,7 +170,7 @@ ms.locfileid: "96014595"
 |**检测到本地主机侦查**|%{Compromised Host} 上的主机数据分析检测到有人执行了通常与常见的 Linux 机器人侦查关联的命令。|-|中型|
 |**检测到主机防火墙操作[出现多次]**|%{Compromised Host} 上的主机数据分析检测到有人可能对主机上的防火墙进行了操作。 攻击者通常会禁用防火墙以外泄数据。 今天在下列计算机上出现了 [x] 次此行为：[Machine names]|-|中型|
 |**检测到主机防火墙操作**|%{Compromised Host} 上的主机数据分析检测到有人可能对主机上的防火墙进行了操作。 攻击者通常会禁用防火墙以外泄数据。|-|中型|
-|**检测到 MITRE Caldera 代理**<br>(VM_MitreCalderaTools)|计算机日志指示可疑进程“%{Suspicious Process}”在 %{Compromised Host} 上运行。 这通常与 MITER 54ndc47 代理相关联，该代理可能被恶意用于以某种方式攻击其他计算机。|全部 |中型|
+|**检测到 MITRE Caldera 代理**<br>(VM_MitreCalderaTools)|计算机日志指示可疑进程“%{Suspicious Process}”在 %{Compromised Host} 上运行。 这通常与 MITER 54ndc47 代理相关联，该代理可能被恶意用于以某种方式攻击其他计算机。|All |中型|
 |**添加了新的 SSH 密钥[出现多次]**|授权密钥文件中添加了新的 SSH 密钥。 今天在下列计算机上出现了 [x] 次此行为：[Machine names]|-|低|
 |**添加了新的 SSH 密钥**|授权密钥文件中添加了新的 SSH 密钥|-|低|
 |**检测到可能存在攻击工具[出现多次]**|计算机日志指示可疑进程“%{Suspicious Process}”在 %{Compromised Host} 上运行。 此工具通常与恶意用户以某种方式攻击其他计算机的行为关联。 今天在下列计算机上出现了 [x] 次此行为：[Machine names]|-|中型|
@@ -275,9 +275,9 @@ ms.locfileid: "96014595"
 | **检测到新的高特权角色**                   | Kubernetes 审核日志分析检测到新的高特权角色。 与具有高特权的角色绑定可为用户/组提供群集中的提升特权。 不必要地提升特权可能会导致群集中出现特权提升问题。                                                                                                                                                                                                                            | 持久性                           | 低      |
 | **检测到特权容器**                       | Kubernetes 审核日志分析检测到新的特权容器。 特权容器可以访问节点的资源，并打破容器之间的隔离。 如果遭到入侵，攻击者可以使用特权容器获取对节点的访问权限。                                                                                                                                                                                                                                           | 特权提升                   | 低      |
 | **检测到对群集管理员角色的角色绑定**     | Kubernetes 审核日志分析检测到新的群集管理员角色绑定，这会使其获得管理员特权。 不必要地提供管理员特权可能会导致群集中出现特权提升问题。                                                                                                                                                                                                                                                                           | 持久性                           | 低      |
-| **检测到公开的 Kubeflow 仪表板**                 | Kubernetes 审核日志分析检测到，运行 Kubeflow 的群集中的负载均衡器公开了 Istio 入口。<br>此操作可能会向 Internet 公开 Kubeflow 仪表板。 如果向 Internet 公开了该仪表板，则攻击者可以访问该仪表板，并在群集上运行恶意容器或代码。<br>有关详细信息，请参阅[错误配置的 Kubeflow 工作负荷存在安全风险。](https://www.microsoft.com/security/blog/2020/06/10/misconfigured-kubeflow-workloads-are-a-security-risk) | 初始访问                        | 中   |
-| **检测到 AKS 中存在公开的 Redis 服务**               | Kubernetes 审核日志分析检测到，负载均衡器公开了 Redis 服务。<br>如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                                                                                                                                                                                                                                              | 初始访问                        | 中   |
-| **检测到公开的 Kubernetes 服务**                 | Kubernetes 审核日志分析检测到，负载均衡器公开了服务。 此服务与一个敏感应用程序相关，该应用程序允许在群集中执行影响较大的操作，如在节点上运行进程或创建新的容器。<br>在某些情况下，此服务不需要身份验证。 如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                 | 初始访问                        | 中   |
+| **检测到公开的 Kubeflow 仪表板**                 | Kubernetes 审核日志分析检测到，运行 Kubeflow 的群集中的负载均衡器公开了 Istio 入口。<br>此操作可能会向 Internet 公开 Kubeflow 仪表板。 如果向 Internet 公开了该仪表板，则攻击者可以访问该仪表板，并在群集上运行恶意容器或代码。<br>有关详细信息，请参阅[错误配置的 Kubeflow 工作负荷存在安全风险。](https://www.microsoft.com/security/blog/2020/06/10/misconfigured-kubeflow-workloads-are-a-security-risk) | 初始访问                        | 中型   |
+| **检测到 AKS 中存在公开的 Redis 服务**               | Kubernetes 审核日志分析检测到，负载均衡器公开了 Redis 服务。<br>如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                                                                                                                                                                                                                                              | 初始访问                        | 中型   |
+| **检测到公开的 Kubernetes 服务**                 | Kubernetes 审核日志分析检测到，负载均衡器公开了服务。 此服务与一个敏感应用程序相关，该应用程序允许在群集中执行影响较大的操作，如在节点上运行进程或创建新的容器。<br>在某些情况下，此服务不需要身份验证。 如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                 | 初始访问                        | 中型   |
 |                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                       |          |
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>容器警报 - 主机级别
@@ -319,7 +319,7 @@ ms.locfileid: "96014595"
 
 | 警报                                                         | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Intent<br>（[了解详细信息](#intentions)） | 严重性 |
 |---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------:|----------|
-| **预览 - 来自可疑 IP 地址的访问**             | 指示有人已从被视为可疑的 IP 地址成功访问了此存储帐户。 此警报由 Microsoft 威胁智能提供支持。<br>详细了解 [Microsoft 威胁智能功能](https://go.microsoft.com/fwlink/?linkid=2128684)。<br>适用于：Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen2                                                                                                                                                                        | 初始访问                     | 中     |
+| **预览 - 来自可疑 IP 地址的访问**             | 指示有人已从被视为可疑的 IP 地址成功访问了此存储帐户。 此警报由 Microsoft 威胁智能提供支持。<br>详细了解 [Microsoft 威胁智能功能](https://go.microsoft.com/fwlink/?linkid=2128684)。<br>适用于：Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen2                                                                                                                                                                        | 初始访问                     | 中型     |
 | **有人从 Tor 退出节点访问存储帐户**          | 指示有人从已知为 Tor 主动退出节点（匿名化代理）的 IP 地址成功访问此帐户。 此警报的严重性考虑使用的身份验证类型（如有），以及这是否是第一例此类访问。 可能的原因包括：通过使用 Tor 访问存储帐户的攻击者，或通过使用 Tor 访问存储帐户的合法用户。<br>适用于：Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen2                        | 探测/利用             | 高     |
 | **有人从异常位置访问存储帐户**      | 指示对 Azure 存储帐户的访问模式发生了变化。 与最近的活动相比，有人从较为陌生的 IP 地址访问了此帐户。 可能是攻击者已获取帐户访问权限，也可能是合法用户从新的或异常的地理位置进行连接。 后者的示例包括来自新应用程序或开发人员的远程维护操作。<br>适用于：Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen2                                               | 利用                       | 低      |
 | **对存储帐户的匿名访问**                     | 指示对存储帐户的访问模式发生了变化。 例如，帐户已被匿名访问（没有进行任何身份验证），这与此帐户上最近的访问模式相比是不正常的。 可能是因为攻击者利用了对保存 blob 存储的容器的公共读取访问权限。<br>适用于：Azure Blob 存储                                                                                                                                                         | 利用                       | 高     |

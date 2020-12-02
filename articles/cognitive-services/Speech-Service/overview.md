@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528884"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485189"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -26,7 +26,7 @@ ms.locfileid: "95528884"
 
 以下功能是语音服务的一部分。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-| 服务 | 功能 | 说明 | SDK | REST |
+| 服务 | 功能 | 说明 | SDK 中 IsInRole 中的声明 | REST |
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
@@ -49,7 +49,7 @@ ms.locfileid: "95528884"
 具有 Azure 帐户后，请转到 [Azure 注册页面](https://azure.microsoft.com/free/ai/)，选择“免费开始使用”，然后使用 Microsoft 帐户创建新的 Azure 帐户。 以下是[如何注册 Azure 免费帐户](https://www.youtube.com/watch?v=GWT2R1C_uUU)的视频。
 
 > [!NOTE]
-> 注册 Azure 免费帐户时，该帐户附带 200 美元的服务额度，可用于支付长达 30 天的付费语音服务订阅。 当额度用尽或 30 天期限已过，将禁用 Azure 服务。 若要继续使用 Azure 服务，必须升级帐户。 有关详细信息，请参阅[如何升级 Azure 免费帐户](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription)。 
+> 注册 Azure 免费帐户时，该帐户附带 200 美元的服务额度，可用于支付长达 30 天的付费语音服务订阅。 当额度用尽或 30 天期限已过，将禁用 Azure 服务。 若要继续使用 Azure 服务，必须升级帐户。 有关详细信息，请参阅[如何升级 Azure 免费帐户](../../cost-management-billing/manage/upgrade-azure-subscription.md)。 
 >
 > 语音服务有两个服务层：免费 (f0) 和订阅 (s0)，它们有不同的限制和优点。 如果使用免费的低流量语音服务层级，即使是在免费试用帐户或服务额度过期之后，也仍可以保留此免费订阅。 有关详细信息，请参阅[认知服务定价 - 语音服务](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
@@ -70,8 +70,8 @@ ms.locfileid: "95528884"
 1. 选择“创建”，然后： 
 
    - 为新资源指定唯一的名称。 名称有助于区分绑定到同一服务的多个订阅。
-   - 选择新资源关联的 Azure 订阅，以确定计费方式。 以下是在 Azure 门户中[如何创建 Azure 订阅](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal)的介绍。
-   - 选择将使用资源的[区域](regions.md)。 Azure 是一个全球性云平台，在世界各地的许多区域都可以使用。 若要获得最佳性能，请选择离你最近或应用程序运行的区域。 语音服务的可用性因地区而异。 请确保在受支持的区域中创建资源。 请参阅[语音服务的区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - 选择新资源关联的 Azure 订阅，以确定计费方式。 以下是在 Azure 门户中[如何创建 Azure 订阅](../../cost-management-billing/manage/create-subscription.md#create-a-subscription-in-the-azure-portal)的介绍。
+   - 选择将使用资源的[区域](regions.md)。 Azure 是一个全球性云平台，在世界各地的许多区域都可以使用。 若要获得最佳性能，请选择离你最近或应用程序运行的区域。 语音服务的可用性因地区而异。 请确保在受支持的区域中创建资源。 请参阅[语音服务的区域支持](./regions.md#speech-to-text-text-to-speech-and-translation).
    - 选择免费 (F0) 或付费 (S0) 定价层。 请选择“查看全部定价详细信息”或参阅[语音服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)，来获取每个层的定价和用量配额的完整信息。 有关资源的限制，请参阅 [Azure 认知服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。  
@@ -112,7 +112,7 @@ ms.locfileid: "95528884"
 
 - [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 - [教程：使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [教程：生成 Flask 应用以翻译文本、分析情绪以及将翻译后的文本合成为语音 - REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
+- [教程：生成 Flask 应用以翻译文本、分析情绪以及将翻译后的文本合成为语音 - REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json%252c%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json%252c%2fen-us%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json)
 
 ## <a name="get-sample-code"></a>获取示例代码
 

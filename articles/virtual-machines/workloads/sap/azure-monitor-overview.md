@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957429"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484390"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
 
@@ -35,7 +35,7 @@ SAP 解决方案的 Azure Monitor 通过 Azure Marketplace 提供。 它提供�
 - SAP HANA 数据库
 - Microsoft SQL server
 
-SAP 解决方案的 Azure Monitor 利用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供其他监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/get-started-portal.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
+SAP 解决方案的 Azure Monitor 利用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供其他监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP 解决方案 Azure Monitor 收集哪些数据？
 

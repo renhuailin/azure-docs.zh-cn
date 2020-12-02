@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127172"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483056"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员5。0
 
@@ -42,12 +42,12 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
     > [!Note]
     > 有几个选项可用于控制对 Vm 的访问：
     > -   最佳做法是设置 [Azure 堡垒](https://azure.microsoft.com/services/azure-bastion/)。
-    > -   [站点到站点虚拟专用网络 (VPN) ](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md)隧道。
+    > -   [站点到站点虚拟专用网络 (VPN) ](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)隧道。
     > -   Jumpbox VM。
 
 ## <a name="install-enterprise-server"></a>安装 Enterprise Server
 
-1.  为了获得更好的安全性和可管理性，请考虑仅为此项目创建新的资源组，例如 **RGMicroFocusEntServer** 。 使用 Azure 中名称的第一部分来选择资源类型，以便更轻松地发现列表。
+1.  为了获得更好的安全性和可管理性，请考虑仅为此项目创建新的资源组，例如 **RGMicroFocusEntServer**。 使用 Azure 中名称的第一部分来选择资源类型，以便更轻松地发现列表。
 
 2.  创建虚拟机。 从 Azure Marketplace 中，选择所需的虚拟机和操作系统。 下面是建议的设置：
 
@@ -87,7 +87,7 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
 1.  开始获得微 "许可管理"。
 
-2.  选择 " **开始** 微" " \> **许可证管理器** \> **许可证管理** "，然后单击 " **安装** " 选项卡。选择要上传的许可证格式的类型：许可证文件或16个字符的许可代码。 例如，对于文件，在 " **许可证文件** " 中，浏览到 `mflic` 以前上传到 VM 的 * 文件，然后选择 " **安装许可证** "。
+2.  选择 " **开始** 微" " \> **许可证管理器** \> **许可证管理**"，然后单击 " **安装** " 选项卡。选择要上传的许可证格式的类型：许可证文件或16个字符的许可代码。 例如，对于文件，在 " **许可证文件**" 中，浏览到 `mflic` 以前上传到 VM 的 * 文件，然后选择 " **安装许可证**"。
 
     ![屏幕截图显示 "微焦点许可证管理" 对话框，你可以在其中选择 "安装许可证"。](media/install-image-3.png)
 
@@ -97,9 +97,9 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>在开发人员计算机上安装企业开发人员
 
-1.  选择之前创建的资源组 (例如 **RGMicroFocusEntServer** ) ，然后选择 "开发人员映像"。
+1.  选择之前创建的资源组 (例如 **RGMicroFocusEntServer**) ，然后选择 "开发人员映像"。
 
-2.  若要登录到虚拟机，请参阅 " **概述** " 部分，并选择 " **连接** "。 此登录启动 RDP 会话。 使用为 VM 创建的凭据登录。
+2.  若要登录到虚拟机，请参阅 " **概述** " 部分，并选择 " **连接**"。 此登录启动 RDP 会话。 使用为 VM 创建的凭据登录。
 
 3.  在 RDP 会话中，将以下两个文件加载 (拖放，如) 所示：
 
@@ -115,15 +115,15 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
     ![安装成功消息](media/install-image-6.png)
 
-6.  像对企业服务器一样，启动微版许可证管理器。 选择 " **开始** \> **微集中" "许可证管理器** \> **许可证管理** "，然后单击 " **安装** " 选项卡。
+6.  像对企业服务器一样，启动微版许可证管理器。 选择 " **开始** \> **微集中" "许可证管理器** \> **许可证管理**"，然后单击 " **安装** " 选项卡。
 
-7.  选择要上传的许可证格式类型：许可证文件或16个字符的许可代码。 例如，对于文件，在 " **许可证文件** " 中，浏览到 `mflic` 以前上传到 VM 的文件，然后选择 "  **安装许可证** "。
+7.  选择要上传的许可证格式类型：许可证文件或16个字符的许可代码。 例如，对于文件，在 " **许可证文件**" 中，浏览到 `mflic` 以前上传到 VM 的文件，然后选择 "  **安装许可证**"。
 
     !["微重点许可管理" 对话框](media/install-image-7.png)
 
 部署企业开发人员时，在 Azure 上部署微侧重点开发和测试环境已完成！
 
-**后续步骤**
+后续步骤
 
 -   [设置 BankDemo 应用程序](./demo.md)
 

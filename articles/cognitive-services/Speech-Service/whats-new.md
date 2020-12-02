@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024783"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483808"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>语音服务：Docs 中的新增内容
 
@@ -32,7 +32,7 @@ ms.locfileid: "95024783"
 
 ### <a name="new-articles"></a>新文章
 
-* [改善自定义语音识别模型](how-to-custom-speech-improve-accuracy.md)
+* [改善自定义语音识别模型](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>更新的文章
 
@@ -44,7 +44,7 @@ ms.locfileid: "95024783"
 * [快速入门：Python 中用于长格式音频的异步合成（预览版）](./long-audio-api.md)- 更新为支持公共神经语音和相关参数。
 * [快速入门：识别音频文件中的语音](./get-started-speech-to-text.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：识别来自麦克风的语音](./get-started-speech-to-text.md) - 向文档添加了 Go 和 JavaScript 说明。
-* [快速入门：识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) - 向文档添加了 JavaScript 说明。
+* [快速入门：识别存储在 Blob 存储中的语音](./batch-transcription.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：使用语言理解 (LUIS) 识别语音、意向和实体](quickstarts/intent-recognition.md)
 * [快速入门：安装开发环境](quickstarts/setup-platform.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：将语音合成到音频文件](./get-started-text-to-speech.md) - 向文档添加了 JavaScript 说明。
@@ -58,7 +58,7 @@ ms.locfileid: "95024783"
 
 此表每月更新一次，仅反映在 "可能" 中打开的问题。  
 
-|ID|用户|说明|已打开|状态|类型|
+|ID|User|说明|已打开|州省/自治区/直辖市|类型|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|由于缺少机器人的终结点，已丢弃活动|2020-05-31|已关闭|问题|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|错误的发布机器人步骤|2020-05-31|打开|问题|

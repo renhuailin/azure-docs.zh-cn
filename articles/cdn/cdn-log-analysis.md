@@ -9,14 +9,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/22/2020
+ms.date: 11/30/2020
 ms.author: allensu
-ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073044"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483982"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
 
@@ -31,7 +31,7 @@ ms.locfileid: "87073044"
 
 利用 Azure Log Analytics 可以查看监视指标，并设置警报。 
 
-有关详细信息，请参阅 [AZURE CDN HTTP raw 日志](enable-raw-logs.md)。
+有关详细信息，请参阅 [AZURE CDN HTTP raw 日志](monitoring-and-access-log.md)。
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>通过 Azure 诊断日志进行核心分析
@@ -61,6 +61,4 @@ ms.locfileid: "87073044"
 有关 Azure CDN 和本文中所述的其他 Azure 服务的详细信息，请参阅：
 
 * [什么是 Azure CDN？](cdn-overview.md)
-* [Azure CDN HTTP 原始日志](enable-raw-logs.md)
-
-
+* [Azure CDN HTTP 原始日志](monitoring-and-access-log.md)

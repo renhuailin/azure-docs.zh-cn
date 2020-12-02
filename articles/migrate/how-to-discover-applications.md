@@ -3,12 +3,12 @@ title: 在本地服务器上发现应用、角色和功能，并提供 Azure Mig
 description: 了解如何通过 Azure Migrate Server 评估发现本地服务器上的应用、角色和功能。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315200"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483447"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "92315200"
 ## <a name="before-you-start"></a>开始之前
 
 - 请确保已完成以下操作：
-    - [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
+    - [创建](./create-manage-projects.md) Azure Migrate 项目。
     - 向项目[添加](how-to-assess.md)了 Azure Migrate：服务器评估工具。
 - 查看 [应用发现支持和要求](migrate-support-matrix-vmware.md#vmware-requirements)。
 - 请确保运行应用发现的 Vm 安装了 PowerShell 2.0 版或更高版本，并且已安装 10.2.0) 之后的 VMware 工具 (。
@@ -46,7 +46,7 @@ ms.locfileid: "92315200"
 
 ## <a name="verify-permissions"></a>验证权限
 
-你 [创建了一个 vCenter Server 只读帐户](./tutorial-discover-vmware.md#prepare-vmware) 用于发现和评估。 只读帐户需要为**虚拟机**  >  **来宾操作**启用特权，才能与 VM 交互以进行应用发现。
+你 [创建了一个 vCenter Server 只读帐户](./tutorial-discover-vmware.md#prepare-vmware) 用于发现和评估。 只读帐户需要为 **虚拟机**  >  **来宾操作** 启用特权，才能与 VM 交互以进行应用发现。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>将用户帐户添加到设备
 
@@ -55,8 +55,8 @@ ms.locfileid: "92315200"
 1. 打开 "设备管理" 应用。 
 2. 导航到 " **提供 vCenter 详细信息** " 面板。
 3. 在 "**发现 vm 上的应用程序和依赖项**" 中，单击 "**添加凭据**"
-3. 选择**操作系统**，提供帐户的友好名称和**用户名** / **密码**
-6. 单击“ **保存**”。
+3. 选择 **操作系统**，提供帐户的友好名称和 **用户名** / **密码**
+6. 单击“保存”  。
 7. 单击 " **保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -66,16 +66,16 @@ ms.locfileid: "92315200"
 
 发现结束后，如果为应用发现提供凭据，则可以在 Azure 门户中查看和导出应用清单。
 
-1. 在**Azure Migrate-服务器**  >  **Azure Migrate：服务器评估**中，单击显示的计数打开 "**发现的服务器**" 页。
+1. 在 **Azure Migrate-服务器**  >  **Azure Migrate：服务器评估** 中，单击显示的计数打开 "**发现的服务器**" 页。
 
     > [!NOTE]
     > 在此阶段，你还可以选择为发现的计算机设置依赖关系分析，这样你就可以在想要评估的计算机上可视化依赖项。 [了解](concepts-dependency-visualization.md) 有关依赖项分析的详细信息。
 
-2. 在 **发现的应用程序**中，单击显示的计数。
-3. 在 **应用程序清单**中，可以查看已发现的应用、角色和功能。
+2. 在 **发现的应用程序** 中，单击显示的计数。
+3. 在 **应用程序清单** 中，可以查看已发现的应用、角色和功能。
 4. 若要导出清单，请在 " **发现的服务器**" 中，单击 " **导出应用程序清单**"。
 
-应用清单以 Excel 格式导出和下载。 **应用程序清单**表显示所有计算机上发现的所有应用。
+应用清单以 Excel 格式导出和下载。 **应用程序清单** 表显示所有计算机上发现的所有应用。
 
 ## <a name="next-steps"></a>后续步骤
 

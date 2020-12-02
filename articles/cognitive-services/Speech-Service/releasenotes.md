@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122563"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483948"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -34,63 +34,62 @@ ms.locfileid: "96122563"
 - `zh-CN-XiaoxiaoNeural`：改进了情绪/CustomerService/Newscast/文字/生气风格的语音质量。
 - `zh-CN`：改进了 Erhua 发音和淡音和精致的空间诗体论，大大提高了 intelligibility。 
 
-## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0： 2020-10 月发行版
+## <a name="speech-sdk-1140-2020-october-release"></a>语音 SDK 1.14.0：2020 年 10 月版本
 
 **注意**：Windows 版语音 SDK 依赖于 Visual Studio 2015、2017 和 2019 的共享 Microsoft Visual C++ Redistributable。 可从[此处](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)下载。
 
 **新功能**
-- **Linux**：添加了对 Debian 10 和 UBUNTU 20.04 LTS 的支持。
-- **Python/目标-C**：添加了对 API 的支持 `KeywordRecognizer` 。 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)提供了文档。
-- **C + +/Java/C #**：添加了对 `HttpHeader` 通过设置任何键/值的支持 `ServicePropertyChannel::HttpHeader` 。
-- **JavaScript**：添加了对 API 的支持 `ConversationTranscriber` 。 阅读 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)的文档。 
-- **C + +/c #**：添加了 `AudioDataStream FromWavFileInput` 要读取 (新方法。WAV 文件) [此处 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) ， [此处 (c # ) ](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet)。
--  **C + +/c #/Java/Python/Objective-C/Swift**：已添加 `stopSpeakingAsync()` 停止文本到语音合成的方法。 请参阅此处 [ (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)的参考文档，此处 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此处 [ (Java) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech)， [此处 (Python) ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， [此处 (目标-C/Swift) ](https://docs.microsoft.com/objectivec/cognitive-services/speech/)。
-- **C #、c + +、Java**：向类添加了一个 `FromDialogServiceConnector()` 函数， `Connection` 该函数可用于监视的连接和断开连接事件 `DialogServiceConnector` 。 请参阅此处的参考文档 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此处 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)， [此处 (Java) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection)。
-- **C + +/c #/Java/Python/Objective-C/Swift**：添加了对发音评估的支持，该支持评估语音发音，并为演讲音频提供精确和熟练反馈。 在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)阅读该文档。
+- Linux：添加了对 Debian 10 和 Ubuntu 20.04 LTS 的支持。
+- Python/Objective-C：添加了对 `KeywordRecognizer` API 的支持。 文档见[此处](./custom-keyword-basics.md)。
+- C++/Java/C#：添加了通过 `ServicePropertyChannel::HttpHeader` 设置任何 `HttpHeader` 键/值的支持。
+- **JavaScript**：添加了对 API 的支持 `ConversationTranscriber` 。 阅读 [此处](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)的文档。 
+- C++/C#：在[此处 (C++)](/cpp/cognitive-services/speech/audiodatastream) 和[此处 (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) 添加了新的 `AudioDataStream FromWavFileInput` 方法（以读取 .WAV 文件）。
+-  C++/C#/Java/Python/Objective-C/Swift：添加了 `stopSpeakingAsync()` 方法以停止文本转语音合成。 请参阅[此处 (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)、[此处 (C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)、[此处 (Java)](/java/api/com.microsoft.cognitiveservices.speech)、[此处 (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python) 和[此处 (Objective-C/Swift)](/objectivec/cognitive-services/speech/) 的参考文档。
+- C#、C++、Java：向 `Connection` 类添加了 `FromDialogServiceConnector()` 函数，该函数可用于监视 `DialogServiceConnector` 的连接和断开连接事件。 请参阅[此处 (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)、[此处 (C++)](/cpp/cognitive-services/speech/connection) 和[此处 (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection) 的参考文档。
+- **C + +/c #/Java/Python/Objective-C/Swift**：添加了对发音评估的支持，该支持评估语音发音，并为演讲音频提供精确和熟练反馈。 在[此处](how-to-pronunciation-assessment.md)阅读该文档。
 
 **中断性变更**
-- **JavaScript**： PullAudioOutputStream ( # A1 具有从内部承诺到本机 JavaScript 承诺的返回类型更改。
+- **JavaScript**：PullAudioOutputStream.read() 的返回类型从内部 Promise 更改为 Native JavaScript Promise。
 
 **Bug 修复**
-- **All**：固定的1.13 回归 `SetServiceProperty` ，其中包含某些特殊字符的值被忽略。
-- **C #**：修复了 Visual Studio 2019 上的 Windows 控制台示例未能找到本机 dll。
-- **C #**：如果将 stream 用作输入，则修复了内存管理故障 `KeywordRecognizer` 。
-- **ObjectiveC/Swift**：如果 stream 用作识别器输入，则修复了内存管理故障。
-- **Windows**：修复了针对 UWP 的 BT HFP/A2DP 的共存问题。
-- **JavaScript**：修复了会话 id 的映射，以改进日志记录并帮助进行内部调试/服务关联。
-- **JavaScript**：在 `DialogServiceConnector` `ListenOnce` 第一次调用后添加了用于禁用调用的修补程序。
-- **JavaScript**：修复了结果输出只能是 "简单" 的问题。
-- **JavaScript**：修复了 MacOS 上 Safari 中的连续识别问题。
-- **JavaScript**：高请求吞吐量方案的 CPU 负载缓解。
-- **JavaScript**：允许访问语音配置文件注册结果的详细信息。
-- **JavaScript**：已在中添加了持续识别的修补程序 `IntentRecognizer` 。
-- **C + +/c #/Java/Python/Swift/ObjectiveC**：修复了中 australiaeast 和 brazilsouth 的错误 url `IntentRecognizer` 。
-- **C + +/c #**： `VoiceProfileType` 创建对象时作为参数添加 `VoiceProfile` 。
-- **C + +/c #/Java/Python/Swift/ObjectiveC**： `SPX_INVALID_ARG` 在尝试从给定位置读取时可能已修复 `AudioDataStream` 。
-- **IOS**：已修复 Unity 上的语音识别故障
+- **全部**：修复了 `SetServiceProperty` 中的 1.13 回归（带有某些特殊字符的值被忽略）。
+- **C#** ：修复了 Visual Studio 2019 上的 Windows 控制台示例找不到本机 DLL 的问题。
+- **C#** ：修复了将流用作 `KeywordRecognizer` 输入时内存管理崩溃的问题。
+- ObjectiveC/Swift：修复了将流用作识别器输入时内存管理崩溃的问题。
+- **Windows**：修复了 UWP 上 BT HFP/A2DP 的共存问题。
+- **JavaScript**：修复了会话 ID 的映射，可改进日志记录并有助于内部调试/服务关联。
+- **JavaScript**：添加了对 `DialogServiceConnector` 在第一次调用后禁用 `ListenOnce` 调用的修补程序。
+- **JavaScript**：修复了结果输出只能是“simple”的问题。
+- **JavaScript**：修复了 macOS 上 Safari 中的连续识别问题。
+- **JavaScript**：针对高请求吞吐量场景的 CPU 负载缓解措施。
+- **JavaScript**：允许访问“语音配置文件注册”结果的详细信息。
+- **JavaScript**：针对 `IntentRecognizer` 中的连续识别添加了修补程序。
+- C++/C#/Java/Python/Swift/ObjectiveC：修复了 `IntentRecognizer` 中 australiaeast 和 brazilsouth 的错误 URL。
+- C++/C#：添加了 `VoiceProfileType` 作为创建 `VoiceProfile` 对象时的参数。
+- C++/C#/Java/Python/Swift/ObjectiveC：修复了尝试从给定位置读取 `AudioDataStream` 时潜在的 `SPX_INVALID_ARG`。
+- IOS：修复了 Unity 上的语音识别故障
 
 **示例**
-- **ObjectiveC**： [此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)为关键字识别添加了示例。
-- **C #/JavaScript**： [此处 (c # )](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) 中添加了对话脚本的快速入门， [ (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription)。
+- ObjectiveC：在[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)添加了关键字识别的示例。
+- C#/JavaScript：在[此处 (C#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) 和[此处 (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription) 添加了对话听录的快速入门。
 - **C + +/c #/Java/Python/Swift/ObjectiveC**：[在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)添加了发音评估示例
-- **Xamarin**： [在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)更新到最新的 Visual Studio 模板。
+- Xamarin：在[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)更新了最新 Visual Studio 模板的快速入门。
 
 **已知问题**
-- 默认情况下，在 HoloLens 2 和 Android 4.4 (KitKat) 中不支持 DigiCert 全局根 G2 证书，需要将其添加到系统中，才能使语音 SDK 正常运行。 不久后，证书将添加到 HoloLens 2 OS 映像。 Android 4.4 客户需要将更新的证书添加到系统。
+- HoloLens 2 和 Android 4.4 (KitKat) 默认情况下不支持 DigiCert 全局根 G2 证书，需要将该证书添加到系统中，才能使语音 SDK 正常运行。 该证书将在不久的将来添加到 HoloLens 2 OS 映像中。 Android 4.4 客户需要将更新的证书添加到系统中。
 
 **COVID-19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动验证测试。 我们没有做我们认为可能会造成任何破坏的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
 请保重身体！
 
-## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>语音 CLI (也称为 SPX) ： 2020-10 月发行版
-SPX 是用于在不编写代码的情况下使用 Azure 语音服务的命令行界面。 [在此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)下载最新版本。 <br>
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>语音 CLI（也称为 SPX）：2020 年 10 月版本
+SPX 是命令行接口，无需编写代码即可使用 Azure 语音服务。 在[此处](./spx-basics.md)下载最新版本。 <br>
 
 **新功能**
-- `spx csr dataset upload --kind audio|language|acoustic` –从本地数据（而不仅仅是从 Url）创建数据集。
-- `spx csr evaluation create|status|list|update|delete` -将新模型与基准事实/其他模型进行比较。
-- `spx * list` –支持非分页体验 (不需要--top X--skip X) 。
-- `spx * --http header A=B` –支持自定义标头 (为 Office 添加了自定义身份验证) 。 
-- `spx help` –改进后的文本和反向文本颜色 (蓝色) 编码。
+- `spx csr dataset upload --kind audio|language|acoustic` - 通过本地数据创建数据集，而不仅仅通过 URL。
+- `spx csr evaluation create|status|list|update|delete` - 将新模型与基线事实/其他模型进行比较。
+- `spx * list` - 支持非分页体验（不需要 --top X --skip X）。
+- `spx * --http header A=B` - 支持自定义标头（为 Office 添加以进行自定义身份验证）。 
+- `spx help` - 改进了已编码的文本和反引号文本颜色（蓝色）。
 
 ## <a name="text-to-speech-2020-september-release"></a>文本到语音转换 2020-九月版本
 
@@ -163,7 +162,7 @@ SPX 是用于在不编写代码的情况下使用 Azure 语音服务的命令行
 | `en-SG` | 英语（新加坡）               | 
 | `en-ZA` | 英语（南非）            | 
 | `es-AR` | 西班牙语（阿根廷）               | 
-| `es-BO` | 西班牙语（玻利维亚）                 | 
+| `es-BO` | 西班牙语（波利维亚）                 | 
 | `es-CL` | 西班牙语（智利）                   | 
 | `es-CO` | 西班牙语（哥伦比亚）                | 
 | `es-CR` | 西班牙语（哥斯达黎加）              | 
@@ -172,7 +171,7 @@ SPX 是用于在不编写代码的情况下使用 Azure 语音服务的命令行
 | `es-EC` | 西班牙语（厄瓜多尔）                 | 
 | `es-GT` | 西班牙语（危地马拉）               | 
 | `es-HN` | 西班牙语（洪都拉斯）                | 
-| `es-NI` | 西班牙（尼加拉瓜）               | 
+| `es-NI` | 西班牙语（尼加拉瓜）               | 
 | `es-PA` | 西班牙语（巴拿马）                  | 
 | `es-PE` | 西班牙语（秘鲁）                    | 
 | `es-PR` | 西班牙语（波多黎各）             | 
@@ -181,7 +180,7 @@ SPX 是用于在不编写代码的情况下使用 Azure 语音服务的命令行
 | `es-US` | 西班牙语（美国）                     | 
 | `es-UY` | 西班牙语（乌拉圭）                 | 
 | `es-VE` | 西班牙语（委内瑞拉）               | 
-| `hu-HU` | 匈牙利语(匈牙利)               | 
+| `hu-HU` | 匈牙利语（匈牙利）               | 
 
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>语音 SDK 1.13.0：2020 年 7 月发行版

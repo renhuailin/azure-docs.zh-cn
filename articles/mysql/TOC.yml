@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: 限制
           href: concepts-limits.md
+        - name: 操作最佳实践
+          href: concept-operation-excellence-best-practices.md
         - name: 定价层
           items:
             - name: 定价层
@@ -195,6 +197,10 @@
             - name: 性能建议
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: 监视最佳做法
+              href: concept-monitoring-best-practices.md
+            - name: 性能最佳做法
+              href: concept-performance-best-practices.md
         - name: 应用程序开发
           items:
             - name: 应用程序开发概述

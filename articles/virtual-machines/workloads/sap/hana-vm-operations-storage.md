@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299524"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484271"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -112,7 +112,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>适用于高级存储的 Azure 猝发功能
-对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 " [磁盘突发](../../linux/disk-bursting.md)" 一文中进行了介绍。 当您阅读本文时，您将了解在以下情况下，当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量时，所产生的的 IOPS 和吞吐量的概念 (有关名义吞吐量的详细信息，请参阅 [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
+对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 " [磁盘突发](../../disk-bursting.md)" 一文中进行了介绍。 当您阅读本文时，您将了解在以下情况下，当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量时，所产生的的 IOPS 和吞吐量的概念 (有关名义吞吐量的详细信息，请参阅 [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
 
 可以在其中规划此突发功能的理想情况可能是包含不同 DBMS 的数据文件的卷或磁盘。 需要对这些卷执行 i/o 工作负荷，尤其是对于小到中等范围的系统，应如下所示：
 
@@ -134,7 +134,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名
 > Azure M 系列虚拟机的 SAP HANA 认证要求中规定，Azure 写入加速器只能用于 **/hana/log** 卷。 因此，在 Azure M 系列虚拟机上的生产场景 SAP HANA 部署中，应该配置 **/hana/log** 卷使用的 Azure 写入加速器。  
 
 > [!NOTE]
-> 在涉及 Azure 高级存储的方案中，我们将在配置中实现突发功能。 使用任意形状或窗体的存储测试工具时，请记住 [Azure 高级磁盘突发的工作](../../linux/disk-bursting.md) 方式。 运行通过 SAP HWCCT 或 HCMT 工具传递的存储测试时，我们不希望所有测试都将通过条件，因为某些测试会超出你可以累积的突发富余额度。 尤其是在所有测试都按顺序运行时，无需中断。
+> 在涉及 Azure 高级存储的方案中，我们将在配置中实现突发功能。 使用任意形状或窗体的存储测试工具时，请记住 [Azure 高级磁盘突发的工作](../../disk-bursting.md) 方式。 运行通过 SAP HWCCT 或 HCMT 工具传递的存储测试时，我们不希望所有测试都将通过条件，因为某些测试会超出你可以累积的突发富余额度。 尤其是在所有测试都按顺序运行时，无需中断。
 
 
 > [!NOTE]

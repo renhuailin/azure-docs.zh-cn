@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844210"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483124"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -76,7 +76,7 @@ ms.locfileid: "94844210"
 
 可以使用 Azure 安全中心的实时网络访问，将 Windows 虚拟机限制为在有限时间内向批准的 IP 地址公开。 此外，请使用 Azure 安全中心的自适应网络强化功能，建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-* [如何配置 DDoS 防护](../../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -274,7 +274,7 @@ ms.locfileid: "94844210"
 
 * [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -452,7 +452,7 @@ Azure 安全中心监视：不可用
 
 **指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，使用 Azure Monitor 查看日志并对来自 Azure 虚拟机的日志数据执行查询。
 
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -580,7 +580,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：使用服务器端加密或 Azure 磁盘加密 (ADE) 对 Windows 虚拟机 (VM) 上的虚拟磁盘进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
-* [Azure 托管磁盘的服务器端加密](./disk-encryption.md)
+* [Azure 托管磁盘的服务器端加密](../disk-encryption.md)
 
 * [适用于 Windows VM 的 Azure 磁盘加密](./disk-encryption-overview.md)
 
@@ -620,9 +620,9 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：使用 Azure 更新管理解决方案来管理虚拟机的更新和补丁。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-* [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解决方案](../../automation/update-management/overview.md)
 
-* [管理 VM 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 VM 的更新和修补程序](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -632,9 +632,9 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：可以使用第三方补丁管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和补丁。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-* [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解决方案](../../automation/update-management/overview.md)
 
-* [管理 VM 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 VM 的更新和修补程序](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -1105,7 +1105,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 

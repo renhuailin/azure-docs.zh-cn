@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207489"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483311"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>教程：创建可商用的 Azure 远程渲染应用程序
 
@@ -54,7 +54,7 @@ Azure 远程渲染拓宽了混合现实的用途。 将基本要素集成到解�
 
 要详细了解资源命名和标记，最好先查看：
 
-* [资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+* [资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>诊断
 
@@ -255,7 +255,7 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 有关详细信息，请参阅：
 
 * [Azure 市场](https://azure.microsoft.com/marketplace/)
-* [教程：在市场中发布 Azure 托管应用程序](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
+* [教程：在市场中发布 Azure 托管应用程序](../../../../marketplace/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>安全性
 

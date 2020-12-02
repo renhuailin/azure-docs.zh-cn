@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485257"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -71,7 +71,7 @@ VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-require
 来宾 VM 网络：静态 IP (Linux) | 否 | 否
 来宾 VM 网络：多 NIC | 是 | 是
 Https Proxy | 否 | 否
-对 Site Recovery 服务的私有链接访问 | 是的。 [了解详细信息](hybrid-how-to-enable-replication-private-endpoints.md)。 | 是的。 [了解详细信息](hybrid-how-to-enable-replication-private-endpoints.md)。
+对 Site Recovery 服务的专用链接访问 | 是的。 [了解详细信息](hybrid-how-to-enable-replication-private-endpoints.md)。 | 是的。 [了解详细信息](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 
@@ -136,7 +136,7 @@ RDM | 不可用 | 不可用
 块 Blob | 否 | 否
 静态加密 (SSE)| 是 | 是
 静态加密 (CMK) <br></br> （仅用于故障转移到托管磁盘）| 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
-静态双重加密 <br></br> （仅用于故障转移到托管磁盘） <br></br> 详细了解 [Windows](../virtual-machines/windows/disk-encryption.md) 和 [Linux](../virtual-machines/linux/disk-encryption.md) 支持的区域 | 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
+静态双重加密 <br></br> （仅用于故障转移到托管磁盘） <br></br> 详细了解 [Windows](../virtual-machines/disk-encryption.md) 和 [Linux](../virtual-machines/disk-encryption.md) 支持的区域 | 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
 高级存储 | 是 | “是”
 标准存储 | “是” | 是
 导入/导出服务 | 否 | 否

@@ -1,34 +1,34 @@
 ---
-title: 快速入门：更改应用程序支持的帐户类型 | Azure
+title: 如何：更改应用程序支持的帐户类型 | Azure
 titleSuffix: Microsoft identity platform
-description: 在本快速入门中，你将配置注册到 Microsoft 标识平台的应用程序，以更改可以访问该应用程序的人员或帐户。
+description: 在本操作指南中，你将配置注册到 Microsoft 标识平台的应用程序，以更改可以访问该应用程序的人员或帐户。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 10/27/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 2382eedcc14f683d354b88bf2eb8d53b2af40dbd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083263"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453254"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
+# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改应用程序支持的帐户
 
 在 Microsoft 标识平台上注册应用程序时，你指定了可以访问该应用程序的人员或帐户类型。 例如，你可能只在你的组织中指定了帐户，该组织是一个单租户应用。 或者，你可能在任何组织（包括你的组织）中指定了帐户，该组织是一个多租户应用。
 
-在本快速入门中，你将了解如何修改应用程序的配置，以更改可访问应用程序的用户或帐户类型。
+在以下各小节中，你将了解如何在 Azure 门户中修改应用的注册，以更改可访问应用程序的用户或帐户类型。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
+* [已在你的 Azure AD 租户中注册的应用程序](quickstart-register-app.md)
 
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>更改应用程序注册以支持不同的帐户
 
@@ -54,9 +54,8 @@ ms.locfileid: "93083263"
 
 例如，如果租户的名称是 contoso.onmicrosoft.com，则 `https://contoso.onmicrosoft.com/myapp` 是有效的应用 ID URI。 如果租户具有已验证的域 contoso.com，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用 ID URI 不遵循第二种模式 `https://contoso.com/myapp`，则将应用注册转换为多租户会失败。
 
-有关配置已验证发布服务器域的详细信息，请参阅[配置已验证的域](quickstart-modify-supported-accounts.md)。
+有关配置已验证发布服务器域的详细信息，请参阅[配置已验证的域](howto-configure-publisher-domain.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [如何：将应用转换为多租户](howto-convert-app-to-be-multi-tenant.md)
+详细了解[将应用从单租户转换为多租户](howto-convert-app-to-be-multi-tenant.md)的要求。

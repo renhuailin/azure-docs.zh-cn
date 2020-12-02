@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965283"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484339"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ Azure 会对每个数据磁盘或 NFS 共享强制实施 IOPS 配额。 对于�
 >
 > 仅支持使用 MDADM 和逻辑卷管理器 (LVM) 在 Linux 上构建软件 RAID。 有关详细信息，请参阅：
 >
-> - 使用 MDADM [在 Linux 上配置软件 RAID](../../linux/configure-raid.md)
-> - [使用 LVM 在 Azure 中的 Linux VM 上配置 LVM](../../linux/configure-lvm.md)
+> - 使用 MDADM [在 Linux 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)
+> - [使用 LVM 在 Azure 中的 Linux VM 上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 

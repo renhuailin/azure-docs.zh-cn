@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505251"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483621"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -51,7 +51,7 @@ ms.locfileid: "94505251"
 
 当实时事件停止时，现在允许更新大多数属性。 此外，还允许用户为实时事件的输入和预览 Url 指定静态主机名的前缀。 现在调用 VanityUrl `useStaticHostName` ，以更好地反映属性的意图。
 
-实时事件现在具有待机状态。  请参阅 [媒体服务中的实时事件和实时输出](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept)。
+实时事件现在具有待机状态。  请参阅 [媒体服务中的实时事件和实时输出](./live-events-outputs-concept.md)。
 
 实时事件支持接收各种输入纵横比。 Stretch 模式允许客户为输出指定拉伸行为。
 
@@ -283,7 +283,7 @@ V3 API 的正式版中的更新包括：
 * **PresentationTimeRange** 属性不再是 **AssetFilters** 和 **AccountFilters** 所必需的。 
 * 已删除 **Jobs** 和 **Transforms** 的 $top 和 $skip 查询选项，并添加了 $orderby。 在添加新排序功能的过程中，我们发现之前意外地公开了 $top 和 $skip 选项，尽管它们并未实现。
 * 重新启用了枚举可扩展性。 此功能在 SDK 的预览版中已启用，但在正式版中被意外禁用。
-* 已重命名两个预定义的流式处理策略。 **SecureStreaming** 现在名为 **MultiDrmCencStreaming** 。 **SecureStreamingWithFairPlay** 现在名为 **Predefined_MultiDrmStreaming** 。
+* 已重命名两个预定义的流式处理策略。 **SecureStreaming** 现在名为 **MultiDrmCencStreaming**。 **SecureStreamingWithFairPlay** 现在名为 **Predefined_MultiDrmStreaming**。
 
 ## <a name="november-2018"></a>2018 年 11 月
 
@@ -413,11 +413,11 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 .NET SDK 中提供了以下功能：
 
 * 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
-* **流式处理定位符** ，用于发布内容并将其流式传输到最终用户设备
-* **流式处理策略** 和 **内容密钥策略** ，用于在传送内容时配置密钥传递和内容保护 (DRM)。
-* **直播活动** 和 **实时输出** ，用于配置实时传送视频流内容的引入和归档。
+* **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
+* **流式处理策略** 和 **内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
+* **直播活动** 和 **实时输出**，用于配置实时传送视频流内容的引入和归档。
 * 资产，用于在 Azure 存储中存储和发布媒体内容。 
-* **流式处理终结点** ，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
+* **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题
 

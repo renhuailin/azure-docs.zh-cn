@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: 7d5108d2c155c7e21f2f94f532bd1aa0a96c5b3f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96020498"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483604"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>按比例使用视频索引器时要考虑的事项
 
@@ -50,7 +50,7 @@ ms.locfileid: "96020498"
 > [!TIP]
 > 使用 `videoUrl` 上传视频 API 的可选参数。
 
-若要查看如何使用 URL 上传视频的示例，请查看 [此示例](upload-index-videos.md#code-sample)。 或者，你可以使用 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) 以一种快速可靠的方式将内容获取到存储帐户，你可以使用 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)将内容提交到视频索引器。
+若要查看如何使用 URL 上传视频的示例，请查看 [此示例](upload-index-videos.md#code-sample)。 或者，你可以使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 以一种快速可靠的方式将内容获取到存储帐户，你可以使用 [SAS URL](../../storage/common/storage-sas-overview.md)将内容提交到视频索引器。
 
 ## <a name="increase-media-reserved-units-if-needed"></a>如果需要，增加媒体保留单位
 

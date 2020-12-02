@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
-ms.author: duau
-ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/23/2020
+ms.author: yuajia
+ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961742"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483791"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
@@ -31,14 +31,14 @@ ms.locfileid: "91961742"
 
 | 指标 | 指标显示名称 | 计价单位 | 维度 | 说明 |
 | --- | --- | --- | --- | --- |
-| RequestCount | 请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
+| RequestCount | 请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
 | RequestSize | 请求大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以请求的形式从客户端发送到 Front Door 的字节数。 |
 | ResponseSize | 响应大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以响应的形式从 Front Door 发送到客户端的字节数。 |
 | TotalLatency | 总延迟 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 从 AFD 发送到客户端之前，由前门接收的客户端请求的总时间。 |
-| BackendRequestCount | 后端请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
+| BackendRequestCount | 后端请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
 | BackendRequestLatency | 后端请求延迟 | 毫秒 | 后端 | 自 Front Door 向后端发送请求起，直至 Front Door 接收到来自后端的最后一个响应字节为止，所计算的时间。 |
 | BackendHealthPercentage | 后端运行状况百分比 | 百分比 | 后端</br>BackendPool | 从 Front Door 到后端，成功运行状况探测的百分比。 |
-| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | Count | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
+| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | 计数 | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>活动日志
 
@@ -52,18 +52,22 @@ ms.locfileid: "91961742"
 1. 选择前门实例。
 2. 选择“活动日志”。
 
-    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="活动日志&quot;:::
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="活动日志":::
 
-3. 选择 &quot;筛选范围&quot;，然后选择 " **应用**"。
+3. 选择 "筛选范围"，然后选择 " **应用**"。
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>诊断日志
 诊断日志提供了有关操作和错误的丰富信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。
 
 活动日志可深入了解对 Azure 资源所做的操作。 诊断日志提供资源已完成的操作的见解。 有关详细信息，请参阅 [Azure Monitor 诊断日志](../azure-monitor/platform/platform-logs-overview.md)。
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="活动日志&quot;:::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="诊断日志":::
 
-3. 选择 &quot;筛选范围&quot;，然后选择 " **诊断设置**"。
+为前门配置诊断日志：
+
+1. 选择 Azure 前门。
+
+2. 选择 " **诊断设置**"。
 
 3. 选择“启用诊断”。 将诊断日志和指标存档到存储帐户，将其流式传输到事件中心，或将其发送到 Azure Monitor 日志。
 
@@ -87,10 +91,11 @@ ms.locfileid: "91961742"
 | RulesEngineMatchNames | 请求匹配的规则的名称。 |
 | SecurityProtocol | 请求所使用的 TLS/SSL 协议版本，如果没有加密，则为 null。 |
 | SentToOriginShield </br>  (弃用) * **请参阅以下部分中的弃用说明：**| 如果为 true，则表示请求是从源防护缓存（而不是边缘 pop）响应的。 源防护是用于提高缓存命中率的父缓存。 |
-| isReceivedFromClient | 如果为 true，则表示请求来自客户端。 如果为 false，则请求在边缘 (子 POP) ，并从源盾牌 (父 POP) 中进行响应。 
+| isReceivedFromClient | 如果为 true，则表示请求来自客户端。 如果为 false，则请求在边缘 (子 POP) ，并从源盾牌 (父 POP) 中进行响应。 |
 | TimeTaken | 从请求的第一个字节到响应的最后一个字节的时间长度（以秒为单位）。 |
 | TrackingReference | 标识由 Front Door 提供的请求的唯一引用字符串，该请求还会以 X-Azure-Ref 标头的形式发送到客户端。 是搜索特定请求访问日志中的详细信息必需的。 |
 | UserAgent | 客户端使用的浏览器类型。 |
+| ErrorInfo | 此字段包含特定类型的错误，以便进一步进行故障排除。 </br> 可能的值包括： </br> **NoError**：指示未发现任何错误。 </br> **CertificateError**：通用 SSL 证书错误。</br> **CertificateNameCheckFailed**： SSL 证书中的主机名无效或不匹配。 </br> **ClientDisconnected**：由于客户端网络连接而导致请求失败。 </br> **UnspecifiedClientError**：泛型客户端错误。 </br> **InvalidRequest**：请求无效。 由于标头、正文和 URL 格式不正确，可能会发生这种情况。 </br> **DNSFailure**： DNS 故障。 </br> **DNSNameNotResolved**：无法解析服务器名称或地址。 </br> **OriginConnectionAborted**：与源的连接突然停止。 </br> **OriginConnectionError**：泛型源连接错误。 </br> **OriginConnectionRefused**：无法建立与源的连接。 </br> **OriginError**：泛型源错误。 </br> **OriginInvalidResponse**：源返回的响应无效或无法识别。 </br> **OriginTimeout**：源请求的超时期限已过期。 </br> **ResponseHeaderTooBig**：原点返回了太大的响应标头。 </br> **RestrictedIP**：由于限制了 IP，请求被阻止。 </br> **SSLHandshakeError**：由于 SSL 错误，无法建立与源的连接。 </br> **UnspecifiedError**：出现错误，因为表中的任何错误都不适合。 |
 
 ### <a name="sent-to-origin-shield-deprecation"></a>已发送到源防护板弃用
 原始日志属性 **isSentToOriginShield** 已弃用，并已替换为新的字段 **isReceivedFromClient**。 如果已在使用已弃用的字段，请使用新字段。 
@@ -118,10 +123,10 @@ ms.locfileid: "91961742"
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | True | CONFIG_NOCACHE |
 | 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | True | 命中 |
-| 启用了缓存的路由规则。 边缘 POP 处的缓存未命中，但在父缓存 POP 处命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. 命中 |
-| 启用了缓存的路由规则。 边缘 POP 处的缓存未命中，但父缓存弹出时命中部分缓存命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
+| 启用了缓存的路由规则。 在边缘 POP 缓存未命中，但在父缓存弹出时命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. 命中 |
+| 启用了缓存的路由规则。 缓存未命中边缘 POP，但父缓存弹出时出现部分缓存命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
 | 启用了缓存的路由规则。 在边缘 POP PARTIAL_HIT 缓存，但在父缓存中命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. True</br>2. False | 1. PARTIAL_HIT</br>2. 命中 |
-| 启用了缓存的路由规则。 在边缘和父缓存上的缓存未命中 POPP | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. True</br>2. False | 1. 未命中</br>2. 未命中 |
+| 启用了缓存的路由规则。 在边缘和父缓存上缓存未命中 POPP | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. True</br>2. False | 1. 未命中</br>2. 未命中 |
 
 > [!NOTE]
 > 对于缓存方案，当某个请求的某些字节从前门边缘或源屏蔽缓存提供服务时，将 partial_hit 缓存状态的值，而某些字节则为大型对象的源提供服务。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50429696c4cbe10c4723f6d4bb9c9499d9b775c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900409"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450427"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -71,7 +71,7 @@ SparkML 和 MLlib 是核心 Spark 库，提供许多可用于机器学习任务�
 
 由于原始数据是 Parquet 格式，因此可以使用 Spark 上下文直接将文件作为数据帧提取到内存中。 尽管下面的代码使用默认选项，但如果需要，可以强制映射数据类型和其他架构属性。
 
-1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 该过程会通过开放数据集 API 检索数据。 拉取所有这些数据将生成约 15 亿行。 根据无服务器 Apache Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 下面的代码示例使用 start_date 和 end_date 应用一个会返回单个月份数据的筛选器。
+1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 该过程会通过开放数据集 API 检索数据。 拉取所有这些数据将生成约 15 亿行。 根据无服务器 Apache Spark 池的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 下面的代码示例使用 start_date 和 end_date 应用一个会返回单个月份数据的筛选器。
 
     ```python
     from azureml.opendatasets import NycTlcYellow

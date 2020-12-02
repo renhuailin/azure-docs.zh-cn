@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959163"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484424"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -40,7 +40,7 @@ ms.locfileid: "94959163"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| **网络** |LAN/WAN  |SDN（软件定义的网络）|
+| **联网** |LAN/WAN  |SDN（软件定义的网络）|
 | **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](/previous-versions/azure/virtual-machines/windows/infrastructure-example)（由 Azure 管理的修补/升级） |
@@ -138,7 +138,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 与本地部署相比，网络延迟更高。 减少网络往返次数可显著提高性能。
 - 若要减少网络往返，可在同一虚拟机上合并事务繁多的应用或“聊天式”应用。
 - 使用带有 [加速](../../../virtual-network/create-vm-accelerated-networking-cli.md) 网络的虚拟机以获得更好的网络性能。
-- 对于某些 Linux 发行版，请考虑启用 [剪裁/取消映射支持](../../linux/configure-lvm.md#trimunmap-support)。
+- 对于某些 Linux 发行版，请考虑启用 [剪裁/取消映射支持](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
 - 在单独的虚拟机上安装 [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
 - 默认情况下，linux 上并未启用大页面。 请考虑启用大型页面并 `use_large_pages = ONLY` 在 Oracle DB 上设置。 这可以帮助提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到详细信息。
 

@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015513"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483294"
 ---
 # <a name="monitoring-scheduled-events"></a>监视计划事件
 
@@ -132,7 +132,7 @@ New-AzVm `
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>使用 Azure Monitor 创建警报规则 
 
 
-将事件推送到 Log Analytics 后，可运行以下[查询](../../azure-monitor/log-query/get-started-portal.md)来查找计划事件。
+将事件推送到 Log Analytics 后，可运行以下[查询](../../azure-monitor/log-query/log-analytics-tutorial.md)来查找计划事件。
 
 1. 在页面顶部选择“日志”，将以下内容粘贴到文本框中：
 
