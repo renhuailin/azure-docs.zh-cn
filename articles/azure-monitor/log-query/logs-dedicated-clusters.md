@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488028"
+ms.locfileid: "96512216"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
-Azure Monitor 日志专用群集是一种部署选项，可实现 Azure Monitor 记录客户的高级功能。 具有专用群集的客户可以选择在这些群集上托管的工作区。
+Azure Monitor 日志 "专用群集" 是一种部署选项，可实现 Azure Monitor 记录客户的高级功能。 具有专用群集的客户可以选择在这些群集上托管的工作区。
 
 需要专用群集的功能包括：
 
@@ -48,11 +48,11 @@ Log Analytics 专用群集使用产能预留定价模型，该模型至少为 10
 
 对于群集上的使用情况，有两种计费模式。 配置群集时，可通过 `billingType` 参数指定这些计费模式。 
 
-1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 将聚合与群集关联的每个工作区中的引入数据数量，以计算群集的每日账单。 
+1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 聚合与群集关联的每个工作区中的引入数据数量，以计算该分类的每日帐单。 
 
 2. **工作区**：群集的产能预留成本按比例分配给群集中的工作区（在考虑了为每个工作区从 [Azure 安全中心](../../security-center/index.yml)进行每节点分配之后。）
 
-请注意，如果工作区使用旧的每节点定价层，则当其链接到群集时，它将根据群集的产能预留引入到的数据来计费，而不再是按节点计费。 将继续应用来自 Azure 安全中心的每节点数据分配。
+如果你的工作区使用旧版每节点定价层，则当其链接到某个群集时，将基于针对群集容量预留的数据引入计费，并且不再按节点计费。 将继续应用来自 Azure 安全中心的每节点数据分配。
 
 有关 Log Analytics 专用群集的计费的详细信息，请参阅[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)。
 

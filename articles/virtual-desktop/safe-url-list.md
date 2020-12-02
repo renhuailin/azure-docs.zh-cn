@@ -1,21 +1,21 @@
 ---
-title: Windows 虚拟桌面安全 URL 列表-Azure
-description: 你应取消阻止的 Url 的列表，以确保你的 Windows 虚拟桌面部署按预期工作。
+title: Windows 虚拟桌面必需的 URL 列表-Azure
+description: 必须取消阻止的 Url 的列表，以确保 Windows 虚拟桌面部署按预期工作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023167"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512335"
 ---
-# <a name="safe-url-list"></a>安全 URL 列表
+# <a name="required-url-list"></a>必需的 URL 列表
 
-需要取消阻止某些 Url，以便 Windows 虚拟桌面部署正常工作。 本文列出了这些 Url，以便您知道哪些 Url 是安全的。
+若要部署和使用 Windows 虚拟桌面，必须取消阻止某些 Url，以便 (Vm) 的虚拟机可以随时访问。 本文列出了取消阻止所需的 Url。
 
 ## <a name="virtual-machines"></a>虚拟机
 
@@ -33,8 +33,8 @@ ms.locfileid: "95023167"
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -53,10 +53,10 @@ ms.locfileid: "95023167"
 |*.servicebus.usgovcloudapi.net|443|代理流量|AzureCloud|
 |* xt.table.core.usgovcloudapi.net|443|代理流量|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Windows 激活|Internet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
 
 下表列出了 Azure 虚拟机可以访问的可选 URL：
 
@@ -69,9 +69,13 @@ ms.locfileid: "95023167"
 |login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|login.microsoftonline.us|
 |*.sfx.ms|443|OneDrive 客户端软件更新|oneclient.sfx.ms|
 |*.digicert.com|443|证书吊销检查|无|
+|*. azure-dns.com|443|Azure DNS 分辨率|无|
+|*. azure-dns.net|443|Azure DNS 分辨率|无|
 
 >[!NOTE]
 >Windows 虚拟桌面当前没有 IP 地址范围的列表，你可以取消阻止这些 IP 地址范围以允许网络流量。 目前仅支持取消阻止特定的 Url。
+>
+>如果使用下一代防火墙 (NGFW) ，则需要使用专门为 Azure Ip 创建的动态列表，以确保可以进行连接。
 >
 >有关与安全 Office 相关的 Url （包括所需 Azure Active Directory 相关 Url）的列表，请参阅 [Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges)。
 >
