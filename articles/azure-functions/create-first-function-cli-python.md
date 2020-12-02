@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 0aea0425123cab4da1939e85a2cfd6071f772737
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 5f8bf6fb6f464bcb74d34e2d99fac16c24b12615
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795753"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175706"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -47,7 +47,7 @@ ms.locfileid: "95795753"
 
 + 在终端或命令窗口中，运行 `func --version` 以检查 Azure Functions Core Tools 的版本是否为 3.x。
 
-+ 运行 `az --version` 检查 Azure CLI 的版本是否为 2.4 或以上。
++ 运行 `az --version` 以检查 Azure CLI 版本是否为 2.4 或更高版本。
 
 + 运行 `az login` 登录到 Azure 并验证活动订阅。
 
@@ -57,7 +57,7 @@ ms.locfileid: "95795753"
 
 + 在终端或命令窗口中，运行 `func --version` 以检查 Azure Functions Core Tools 的版本是否为 3.x。
 
-+ 运行 `(Get-Module -ListAvailable Az).Version` 并验证版本 5.0 或更高版本。 
++ 运行 `(Get-Module -ListAvailable Az).Version` 并验证版本是否为 5.0 或更高版本。 
 
 + 运行 `Connect-AzAccount` 登录到 Azure 并验证活动订阅。
 
@@ -203,7 +203,7 @@ py -m venv .venv
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令可创建资源组。 通常，你会在从 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) cmdlet 返回的、离你近的某个可用区域中创建资源组和资源。
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令可创建资源组。 通常，你会在从 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) cmdlet 返回的、离你近的某个可用区域中创建资源组和资源。
 
     ---
 

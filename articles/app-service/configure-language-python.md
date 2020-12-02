@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873839"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183730"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -105,15 +105,15 @@ ms.locfileid: "94873839"
 
 1. **应用服务资源**：创建资源组、应用服务计划和应用服务 Web 应用以托管应用程序。 若要最轻松地实现这一点，可以通过使用 Azure CLI 命令 `az webapp up` 进行代码的初始部署，如[教程：使用 PostgreSQL 部署 Django Web 应用 - 部署代码](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service)。 替换资源组、应用服务计划和 Web 应用的名称，使其更适用于应用程序。
 
-1. **环境变量**：如果应用程序需要使用任意环境变量，请创建等效的[应用服务应用程序设置](configure-common.md#configure-app-settings)。 这些应用服务设置在代码中显示为环境变量，如[访问环境变量](#access-app-settings-as-environment-variables)中所述。
+1. **环境变量**：如果应用程序需要使用任意环境变量，请创建等效的 [应用服务应用程序设置](configure-common.md#configure-app-settings)。 这些应用服务设置在代码中显示为环境变量，如[访问环境变量](#access-app-settings-as-environment-variables)中所述。
     - 例如，通常通过此类设置管理数据库连接，如[教程：使用 PostgreSQL 部署 Django Web 应用 - 配置变量以连接数据库](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)。
     - 有关典型 Django 应用的具体设置，请参阅 [Django 应用的生产设置](#production-settings-for-django-apps)。
 
-1. **应用启动**：查看后文中的[容器启动过程](#container-startup-process)部分，了解应用服务如何尝试运行应用。 默认情况下，应用服务使用 Gunicorn Web 服务器，该服务器必须能够找到应用对象或 wsgi.py 文件夹。 如有必要，可以[自定义启动命令](#customize-startup-command)。
+1. **应用启动**：查看后文中的 [容器启动过程](#container-startup-process)部分，了解应用服务如何尝试运行应用。 默认情况下，应用服务使用 Gunicorn Web 服务器，该服务器必须能够找到应用对象或 wsgi.py 文件夹。 如有必要，可以[自定义启动命令](#customize-startup-command)。
 
-1. **持续部署**：设置持续部署，如[持续部署到 Azure 应用服务](deploy-continuous-deployment.md)（如果使用 Azure Pipelines 或 Kudu 部署），或[使用 GitHub Actions 部署到应用服务](deploy-github-actions.md)（如果使用 GitHub 操作）中所述。
+1. **持续部署**：设置持续部署，如 [持续部署到 Azure 应用服务](deploy-continuous-deployment.md)（如果使用 Azure Pipelines 或 Kudu 部署），或 [使用 GitHub Actions 部署到应用服务](deploy-github-actions.md)（如果使用 GitHub 操作）中所述。
 
-1. **自定义操作**：若要在托管应用的应用服务容器内执行操作（例如 Django 数据库迁移），可以[通过 SSH 连接到容器](configure-linux-open-ssh-session.md)。 有关运行 Django 数据库迁移的示例，请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 运行数据库迁移](tutorial-python-postgresql-app.md#run-django-database-migrations)。
+1. **自定义操作**：若要在托管应用的应用服务容器内执行操作（例如 Django 数据库迁移），可以 [通过 SSH 连接到容器](configure-linux-open-ssh-session.md)。 有关运行 Django 数据库迁移的示例，请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 运行数据库迁移](tutorial-python-postgresql-app.md#run-django-database-migrations)。
     - 使用持续部署时，可以使用生成后命令执行这些操作，如之前[自定义生成自动化](#customize-build-automation)中所述。
 
 完成这些步骤后，你应能够将更改提交到源存储库，并将这些更新自动部署到应用服务。
@@ -126,10 +126,10 @@ ms.locfileid: "94873839"
 
 | Django 设置 | Azure 说明 |
 | --- | --- |
-| `SECRET_KEY` | 如[访问作为环境变量的应用设置](#access-app-settings-as-environment-variables)所述，请将值存储在应用服务设置中。 也可以[在 Azure Key Vault 中将该值存储为“机密”](/azure/key-vault/secrets/quick-create-python)。 |
+| `SECRET_KEY` | 如[访问作为环境变量的应用设置](#access-app-settings-as-environment-variables)所述，请将值存储在应用服务设置中。 也可以[在 Azure Key Vault 中将该值存储为“机密”](../key-vault/secrets/quick-create-python.md)。 |
 | `DEBUG` | 在应用服务上创建一个值为 0 (false) 的 `DEBUG` 设置，然后将该值加载为环境变量。 在开发环境中，创建一个值为 1 (true) 的 `DEBUG` 环境变量。 |
 | `ALLOWED_HOSTS` | 在生产环境中，Django 要求在 settings.py 的 `ALLOWED_HOSTS` 数组中包含应用的 URL。 可使用 `os.environ['WEBSITE_HOSTNAME']` 代码在运行时检索此 URL。 应用服务会自动将 `WEBSITE_HOSTNAME` 环境变量设置为应用的 URL。 |
-| `DATABASES` | 在应用服务中为数据库连接定义设置，并将这些设置加载为环境变量以填充 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典。 也可以将值（尤其是用户名和密码）存储为 [Azure Key Vault 机密](/azure/key-vault/secrets/quick-create-python)。 |
+| `DATABASES` | 在应用服务中为数据库连接定义设置，并将这些设置加载为环境变量以填充 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典。 也可以将值（尤其是用户名和密码）存储为 [Azure Key Vault 机密](../key-vault/secrets/quick-create-python.md)。 |
 
 ## <a name="container-characteristics"></a>容器特征
 

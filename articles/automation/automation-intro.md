@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205330"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182812"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -43,7 +43,7 @@ Azure 自动化中的配置管理允许访问以下两项功能：
 
 ## <a name="update-management"></a>更新管理
 
-Azure 自动化包含适用于跨混合环境的 Windows 和 Linux 系统的[更新管理](update-management/update-mgmt-overview.md)。 使用更新管理可以洞察 Azure、其他云和本地的更新合规性。 使用此功能可以创建计划的部署，用于在定义的维护时段内协调更新的安装。 如果不应在计算机上安装某项更新，可以使用更新管理功能从部署中排除该项更新。
+Azure 自动化包含适用于跨混合环境的 Windows 和 Linux 系统的[更新管理](./update-management/overview.md)。 使用更新管理可以洞察 Azure、其他云和本地的更新合规性。 使用此功能可以创建计划的部署，用于在定义的维护时段内协调更新的安装。 如果不应在计算机上安装某项更新，可以使用更新管理功能从部署中排除该项更新。
 
 ## <a name="shared-capabilities"></a>共享功能
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635545"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175672"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
 
@@ -34,7 +34,7 @@ ms.locfileid: "94635545"
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.4 或更高版本。
 
-+ [Java 开发人员工具包](https://aka.ms/azure-jdks)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。     
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。     
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 
@@ -42,7 +42,7 @@ ms.locfileid: "94635545"
 
 + 在终端或命令窗口中，运行 `func --version` 以检查 Azure Functions Core Tools 的版本是否为 3.x。
 
-+ 运行 `az --version` 检查 Azure CLI 的版本是否为 2.4 或以上。
++ 运行 `az --version` 以检查 Azure CLI 版本是否为 2.4 或更高版本。
 
 + 运行 `az login` 登录到 Azure 并验证活动订阅。
 

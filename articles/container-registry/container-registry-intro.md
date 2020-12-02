@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d54c939f0ecc78d7734345b23fd2b75f150243c1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b5c81d8b2e6d7eac2dcd9070bf1f448340ea1a18
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148498"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341259"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -25,8 +25,8 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管专用 Docker
 
 将 Azure 容器注册表中的映像提取到各种部署目标：
 
-* **可缩放业务流程系统** ，用于跨主机群集管理容器化应用程序，包括 [Kubernetes](https://kubernetes.io/docs/)、 [DC/OS](https://docs.mesosphere.com/) 和 [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/)。
-* 支持大规模生成和运行应用程序的 **Azure 服务** ，包括 [Azure Kubernetes 服务 (AKS)](../aks/index.yml)、 [应用服务](../app-service/index.yml)、 [Batch](../batch/index.yml)、 [Service Fabric](../service-fabric/index.yml) 和其他服务。
+* **可缩放业务流程系统**，用于跨主机群集管理容器化应用程序，包括 [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/) 和 [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/)。
+* 支持大规模生成和运行应用程序的 **Azure 服务**，包括 [Azure Kubernetes 服务 (AKS)](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) 和其他服务。
 
 开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过持续集成和交付工具（例如 [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) 或 [Jenkins](https://jenkins.io/)）将容器注册表作为目标。
 
@@ -45,7 +45,7 @@ Azure 提供包括 Azure 命令行界面、Azure 门户和 API 支持在内的�
 
   可以使用 Azure 标识、Azure Active Directory 支持的[服务主体](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)（针对容器注册表）。 使用 Azure 基于角色的访问控制 (Azure RBAC) 向用户或系统分配对注册表的精细权限。
 
-  高级服务层级的安全功能包括用于映像标记签名的[内容信任](container-registry-content-trust.md)，以及用于限制对注册表的访问的[防火墙和虚拟网络（预览版）](container-registry-vnet.md)。 Azure 安全中心可以选择与 Azure 容器注册表集成，以便在将映像推送到注册表时[扫描映像](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json)。
+  高级服务层级的安全功能包括用于映像标记签名的[内容信任](container-registry-content-trust.md)，以及用于限制对注册表的访问的[防火墙和虚拟网络（预览版）](container-registry-vnet.md)。 Azure 安全中心可以选择与 Azure 容器注册表集成，以便在将映像推送到注册表时[扫描映像](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)。
 
 * **支持的映像和项目** - 每个映像都在存储库中进行了分组，是兼容 Docker 的容器的只读快照。 Azure 容器注册表可以包含 Windows 和 Linux 映像。 可以控制所有容器部署的映像名称。 使用标准 [Docker 命令](https://docs.docker.com/engine/reference/commandline/)可将映像推送到存储库，或者从存储库中提取映像。 除了 Docker 容器映像外，Azure 容器注册表还存储[相关的内容格式](container-registry-image-formats.md)，例如 [Helm 图表](container-registry-helm-repos.md)和为[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)构建的映像。
 

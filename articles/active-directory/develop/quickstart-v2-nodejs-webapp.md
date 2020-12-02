@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594243"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169403"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -51,7 +51,7 @@ ms.locfileid: "94594243"
 1. 在应用的页面列表中，选择“身份验证”。
     - 在“重定向 URI”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:3000/auth/openid/return` 
     - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:3000`。
-    - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)”才能将用户登录。 
+    - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](./v2-oauth2-implicit-grant-flow.md)”才能将用户登录。 
 
 1. 选择“保存” 。
 

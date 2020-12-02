@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf033f7da7a5bd4882d0c78a2321640aa64d8ac
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1ffe8c1397525348e472e965a407909fee36152d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646553"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168441"
 ---
 # <a name="what-is-hr-driven-provisioning"></a>HR 驱动的预配是什么？
 
@@ -35,7 +35,7 @@ HR 系统具有各种包、软件捆绑包，并且可以使用 SQL Server、LDA
 
 使用 MIM，你可以将用户从本地 HR 系统预配到 Active Directory 或 Azure AD。
 
-有关 Microsoft Identity Manager 及其支持的系统的信息，请参阅 [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) 文档。
+有关 Microsoft Identity Manager 及其支持的系统的信息，请参阅 [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) 文档。
 
 [!INCLUDE [active-directory-hr-provisioning.md](../../../includes/active-directory-hr-provisioning.md)]
 

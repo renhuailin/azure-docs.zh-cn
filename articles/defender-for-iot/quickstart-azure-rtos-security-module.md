@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: rkarlin
-ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759726"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351770"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>快速入门：Azure RTOS 安全模块（预览版）
 
-本文介绍了入门的先决条件，并说明了如何在 IoT 中心为 Azure RTOS 服务启用安全模块。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)以开始操作。
+本文介绍了入门的先决条件，并说明了如何在 IoT 中心为 Azure RTOS 服务启用安全模块。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
 
 > [!NOTE]
 > 仅标准层 IoT 中心支持 Azure RTOS 安全模块。
@@ -63,10 +63,10 @@ Azure RTOS 安全模块根据 MQTT 协议使用 Azure IoT 中间件连接。
 1. 选择“数据收集”。 
 1. 在“工作区配置”选项中，将开关切换为“开” 。 
 1. 创建新的或附加现有的 Log Analytics 工作区。 请确保已选中“访问原始安全数据”选项。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="访问 Azure RTOS 的数据收集选项":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="显示数据收集选项和原始安全数据选项均已选中的 Azure RTOS 配置":::
 1. 选择“保存”
 1. 返回到 Azure 资源列表并确认你创建或附加的 Log Analytics 工作区已对 IoT 中心启用。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="访问 Azure RTOS 的数据收集选项"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="检查 Azure 资源列表以确认是否存在为 IoT 中心添加的正确 Log Analytics 工作区"::: 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504641"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167771"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions 简介
 
@@ -38,7 +38,7 @@ ms.locfileid: "95504641"
 | --- | --- |
 | **生成 Web API** | 使用 [HTTP 触发器](./functions-bindings-http-webhook.md)为 Web 应用程序实现终结点 |
 | **处理文件上传** | 在 [blob 存储](./functions-bindings-storage-blob.md)中上传或更改文件时运行代码 |
-| **构建无服务器工作流** | 使用[持久函数](./durable-functions-overview.md)将一系列函数链接在一起 |
+| **构建无服务器工作流** | 使用[持久函数](./durable/durable-functions-overview.md)将一系列函数链接在一起 |
 | **响应数据库更改** | 在 [Cosmos DB](./functions-bindings-cosmosdb-v2.md) 中创建或更新文档时运行自定义逻辑 |
 | **运行计划任务** | 在[设定的时间](./functions-bindings-timer.md)执行代码 |
 | **创建可靠消息队列系统** | 使用[队列存储](./functions-bindings-storage-queue.md)、[服务总线](./functions-bindings-service-bus.md)或[事件中心](./functions-bindings-event-hubs.md)来处理消息队列 |
@@ -47,13 +47,13 @@ ms.locfileid: "95504641"
 
 生成函数时，可以使用以下选项和资源：
 
-- **使用首选语言**：使用 [C#、Java、JavaScript、PowerShell 或 Python](./supported-languages.md) 编写函数，或通过[自定义处理程序](./functions-custom-handlers.md)来利用几乎所有其他语言。
+- **使用首选语言**：使用 [C#、Java、JavaScript、PowerShell 或 Python](./supported-languages.md) 编写函数，或通过 [自定义处理程序](./functions-custom-handlers.md)来利用几乎所有其他语言。
 
-- **自动进行部署**：从基于工具的方法到使用外部管道，有[多种部署选项](./functions-deployment-technologies.md)可供选择。
+- **自动进行部署**：从基于工具的方法到使用外部管道，有 [多种部署选项](./functions-deployment-technologies.md)可供选择。
 
-- **对函数进行故障排除**：使用[监视工具](./functions-monitoring.md)和[测试策略](./functions-test-a-function.md)来深入了解应用。
+- **对函数进行故障排除**：使用 [监视工具](./functions-monitoring.md)和 [测试策略](./functions-test-a-function.md)来深入了解应用。
 
-- **灵活定价选项**：使用[消耗](./pricing.md)计划，只需在运行函数时付费，而[高级](./pricing.md)和[应用服务](./pricing.md)计划则提供满足特定需求的功能。
+- **灵活定价选项**：使用 [消耗](./pricing.md)计划，只需在运行函数时付费，而 [高级](./pricing.md)和 [应用服务](./pricing.md)计划则提供满足特定需求的功能。
 
 ## <a name="next-steps"></a>后续步骤
 

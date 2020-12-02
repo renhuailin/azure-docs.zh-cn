@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554813"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182663"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    进行上述更改后，[应用程序配置的配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)就已注册到 .NET Core 配置 API。
+    进行上述更改后，[应用程序配置的配置提供程序](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)就已注册到 .NET Core 配置 API。
 
 1. 在 Startup.cs 中，添加对 .NET Core 功能管理器的引用：
 
@@ -235,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建一个新的应用程序配置存储区，并已使用它来通过[功能管理库](https://go.microsoft.com/fwlink/?linkid=2074664)管理 ASP.NET Core Web 应用中的功能。
+在本快速入门中，你已创建一个新的应用程序配置存储区，并已使用它来通过[功能管理库](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)管理 ASP.NET Core Web 应用中的功能。
 
 * 详细了解[功能管理](./concept-feature-management.md)。
 * [管理功能标志](./manage-feature-flags.md)。

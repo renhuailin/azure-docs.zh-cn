@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134928"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172446"
 ---
 # <a name="what-is-provisioning"></a>什么是预配？
 
@@ -59,7 +59,7 @@ Azure AD 目前提供三个自动预配领域。  它们具有以下特点：
 
 ![应用预配](media/what-is-provisioning/cloud-3b.png)
 
-在 Azure AD 中， **[应用预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** 一词是指在用户需要访问的应用程序中自动创建用户标识的副本，因为应用程序有自己的数据存储，不同于 Azure AD 或 Active Directory。 除了创建用户标识外，应用预配还包括在用户状态或角色发生更改时，维护和删除这些应用中的用户标识。 常见场景包括将 Azure AD 用户预配到 [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial) 和 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) 等应用程序，因为这些应用程序都有各自的用户存储库，不同于 Azure AD。
+在 Azure AD 中， **[应用预配](../app-provisioning/user-provisioning.md)** 一词是指在用户需要访问的应用程序中自动创建用户标识的副本，因为应用程序有自己的数据存储，不同于 Azure AD 或 Active Directory。 除了创建用户标识外，应用预配还包括在用户状态或角色发生更改时，维护和删除这些应用中的用户标识。 常见场景包括将 Azure AD 用户预配到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md) 和 [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 等应用程序，因为这些应用程序都有各自的用户存储库，不同于 Azure AD。
 
 有关详细信息，请参阅[什么是应用预配？](what-is-app-provisioning.md)
 

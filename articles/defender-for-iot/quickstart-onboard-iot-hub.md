@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3f84f3121d9982205ecf51ec64cfe332b6a5ad42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943534"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352501"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>快速入门：将 Azure Defender for IoT 服务加入 IoT 中心
 
-本文介绍如何在现有 IoT 中心启用 Defender for IoT 服务。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)以开始操作。
+本文介绍如何在现有 IoT 中心启用 Defender for IoT 服务。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
 
 > [!NOTE]
 > Defender for IoT 目前仅支持标准层 IoT 中心。
@@ -31,7 +31,7 @@ ms.locfileid: "90943534"
 
 - Log Analytics 工作区
   - 默认情况下，Defender for IoT 会在 Log Analytics 工作区中存储两类信息：“安全警报”和“建议” 。
-  - 可以选择添加另一信息类型（**原始事件**）的存储。 请注意，在 Log Analytics 中存储**原始事件**会带来额外的存储成本。
+  - 可以选择添加另一信息类型（**原始事件**）的存储。 请注意，在 Log Analytics 中存储 **原始事件** 会带来额外的存储成本。
 - IoT 中心（标准层）
 - 满足所有[服务先决条件](service-prerequisites.md)
 

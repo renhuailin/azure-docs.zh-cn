@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534494"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185889"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
@@ -230,7 +230,7 @@ ms.locfileid: "95534494"
 - [Azure Monitor 客户托管的密钥](platform/customer-managed-keys.md) - 增加了错误消息和用于查询的 CMK 配置部分。
 - [Azure Monitor HTTP 数据收集器 API](platform/data-collector-api.md) - 增加了 Python 3 示例。
 - [在 Azure Monitor 中优化日志查询](log-query/query-optimization.md) - 增加了有关在使用子查询时避免多次数据扫描的部分。
-- [教程：Log Analytics 查询入门](log-query/get-started-portal.md) - 增加了视频。
+- [教程：Log Analytics 查询入门](./log-query/log-analytics-tutorial.md) - 增加了视频。
 
 ### <a name="platform-logs"></a>平台日志
 - [创建诊断设置以将平台日志和指标发送到不同目标](platform/diagnostic-settings.md) - 增加了视频。

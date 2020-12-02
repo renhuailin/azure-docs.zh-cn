@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 822e9dc237dd6f4d73e1860c6a0b240fb94c3105
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943455"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348851"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
@@ -31,7 +31,7 @@ ms.locfileid: "90943455"
 适用于 IoT 的 Defender 可与现有的 IoT 设备管理平台完全集成，使你能够管理设备的安全状态，以及利用现有的设备控制功能。
 适用于 IoT 的 Defender 集成是使用 IoT 中心孪生机制实现的。
 
-请参阅 [IoT 中心模块孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)详细了解 Azure IoT 中心内模块孪生的一般概念。
+请参阅 [IoT 中心模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)详细了解 Azure IoT 中心内模块孪生的一般概念。
 
 适用于 IoT 的 Defender 利用模块孪生机制，并为每个设备维护一个名为 azureiotsecurity 的安全模块孪生。
 

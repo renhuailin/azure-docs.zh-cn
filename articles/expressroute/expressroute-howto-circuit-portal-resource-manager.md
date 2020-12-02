@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.author: duau
 ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368683"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185192"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>快速入门：创建和修改 ExpressRoute 线路
 
@@ -43,30 +43,30 @@ ms.locfileid: "92368683"
 
 2. 选择“ExpressRoute”即可看到“创建 ExpressRoute”页。 为线路提供“资源组”、“区域”和“名称”。 然后选择“下一步:配置 >”。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="创建 ExpressRoute 线路":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="配置资源组和区域":::
 
 3. 在此页上填写相应值时，请务必指定正确的 SKU 层（“本地”、“标准”或“高级”）和数据计量计费模型（“不限流量”或“按流量计费”）。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="创建 ExpressRoute 线路":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="配置线路":::
     
-    * **端口类型**确定你是连接到服务提供商还是直接在对等互连位置连接到 Microsoft 的全球网络。
-    * **新建或从经典线路中导入**确定是要创建新线路还是要将经典线路迁移到 Azure 资源管理器。
-    * **提供商**指你将向其请求提供服务的 Internet 服务提供商。
-    * **对等互连位置**是与 Microsoft 建立对等互连的实际位置。
+    * **端口类型** 确定你是连接到服务提供商还是直接在对等互连位置连接到 Microsoft 的全球网络。
+    * **新建或从经典线路中导入** 确定是要创建新线路还是要将经典线路迁移到 Azure 资源管理器。
+    * **提供商** 指你将向其请求提供服务的 Internet 服务提供商。
+    * **对等互连位置** 是与 Microsoft 建立对等互连的实际位置。
 
     > [!IMPORTANT]
-    > “对等互连位置”指明了与 Microsoft 建立对等互连的[实际位置](expressroute-locations.md)。 此位置与“Location”属性**没有**关系，后者指的是 Azure 网络资源提供商所在的地理位置。 尽管两者之间没有关系，但最好是选择地理上与线路对等互连位置靠近的网络资源提供商。
+    > “对等互连位置”指明了与 Microsoft 建立对等互连的[实际位置](expressroute-locations.md)。 此位置与“Location”属性 **没有** 关系，后者指的是 Azure 网络资源提供商所在的地理位置。 尽管两者之间没有关系，但最好是选择地理上与线路对等互连位置靠近的网络资源提供商。
 
     * **SKU** 确定是启用 ExpressRoute 本地版、ExpressRoute 标准版还是 ExpressRoute 高级版加载项。 可以指定“本地”以获取本地 SKU，指定“标准”以获取标准 SKU，或指定“高级”以获取高级版加载项  。 可以更改 SKU 以启用高级版加载项。
     > [!IMPORTANT]
     > 不能将 SKU 从“标准”/“高级”更改为“本地” 。
     
-    * **计费模型**确定计费类型。 可以指定“Metered”**** 以获取数据流量套餐，指定“Unlimited”**** 以获取无限制流量套餐。 可以将计费类型从“按流量计费”更改为“不限流量” 。
+    * **计费模型** 确定计费类型。 可以指定“Metered”以获取数据流量套餐，指定“Unlimited”以获取无限制流量套餐。 可以将计费类型从“按流量计费”更改为“不限流量” 。
 
     > [!IMPORTANT]
     > 你无法将类型从“不限流量”更改为“按流量计费” 。
 
-    * **允许经典操作**将允许经典虚拟网络链接到线路。
+    * **允许经典操作** 将允许经典虚拟网络链接到线路。
 
 ### <a name="view-the-circuits-and-properties"></a>查看线路和属性
 
@@ -74,17 +74,17 @@ ms.locfileid: "92368683"
 
 在左侧菜单中选择“所有服务”>“网络”>“ExpressRoute 线路”，即可查看创建的所有线路。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute 线路菜单":::
 
 在订阅中创建的所有 Expressroute 线路都将在此处显示。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute 线路列表":::
 
 **查看属性**
 
-可以通过选择线路来查看线路属性。 在线路的“概述”**** 页上，服务密钥显示在“服务密钥”字段中。 请查看线路服务密钥，并向服务提供商提供服务密钥，以便完成预配流程。 服务密钥为线路专属。
+可以通过选择线路来查看线路属性。 在线路的“概述”页上，服务密钥显示在“服务密钥”字段中。 请查看线路服务密钥，并向服务提供商提供服务密钥，以便完成预配流程。 服务密钥为线路专属。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="查看属性":::
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>将服务密钥发送给连接服务提供商进行预配
 
@@ -95,7 +95,7 @@ ms.locfileid: "92368683"
 提供程序状态：未预配<BR>
 线路状态：**已启用**
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="启动预配过程":::
 
 当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
 
@@ -109,9 +109,9 @@ ms.locfileid: "92368683"
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>定期检查线路密钥的状态
 
-选择感兴趣的线路即可查看其属性。 选中“提供商状态”****，确保在继续之前其已转为“已预配”****。
+选择感兴趣的线路即可查看其属性。 选中“提供商状态”，确保在继续之前其已转为“已预配”。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="线路和提供商状态":::
 
 ### <a name="create-your-routing-configuration"></a>创建路由配置
 
@@ -130,7 +130,7 @@ ms.locfileid: "92368683"
 
 ## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 线路
 
-可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以修改“配置”**** 页上的“带宽”、“SKU”、“计费模型”和“允许经典操作”。 若要了解限制，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
+可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以修改“配置”页上的“带宽”、“SKU”、“计费模型”和“允许经典操作”。 若要了解限制，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
 可以在不停机的情况下执行以下任务：
 
@@ -149,7 +149,7 @@ ms.locfileid: "92368683"
   > [!IMPORTANT]
   > 不支持将数据流量套餐从“不限流量”更改为“按流量计费”。
 
-* 可以启用和禁用允许经典操作**。
+* 可以启用和禁用允许经典操作。
   > [!IMPORTANT]
   > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
   >
@@ -159,7 +159,7 @@ ms.locfileid: "92368683"
 
 若要修改 ExpressRoute 线路，请选择“配置”。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="修改线路":::
 
 ## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>取消预配 ExpressRoute 线路
 
@@ -174,7 +174,7 @@ ms.locfileid: "92368683"
 
 可以选择“删除”图标来删除 ExpressRoute 线路。 请先确保提供程序状态为“未预配”，然后再继续操作。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="创建 ExpressRoute 线路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="删除线路":::
 
 ## <a name="next-steps"></a>后续步骤
 
