@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997556"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498058"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>重定向 Azure AD 应用程序代理发布的应用的硬编码链接
 
@@ -86,28 +86,28 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 - 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
 - 其他本地应用的 **硬编码内部链接**，如 `http://expenses` 或发布的文件 `http://expenses/logo.jpg` 。 链接转换功能适用于硬编码内部链接，并将其更改为指向远程用户需要浏览的外部 Url。
 
-应用程序代理支持链接转换的 HTML 代码标记的完整列表包括：
-* a
-* 音频
-* base
-* 按钮
-* div
-* 嵌入
-* 表单
-* 框架
-* head
-* html
-* iframe
-* img
-* input
-* 链接
-* 项
-* meta
-* 对象
-* 脚本
-* source
-* 跟踪
-* 视频
+应用程序代理支持链接转换的 HTML 代码标记中的属性的完整列表包括：
+*  (href) 
+* 音频 (src) 
+* 基本 (href) 
+* 按钮 (formaction) 
+* div (数据-背景、样式、数据 src) 
+* 嵌入 (src) 
+* 表单 (操作) 
+* 框架 (src) 
+* head (配置文件) 
+* html (清单) 
+* iframe (longdesc，src) 
+* img (longdesc，src) 
+* 输入 (formaction、src、value) 
+* 链接 (href) 
+* menuitem (图标) 
+* 元 (内容) 
+* 对象 (存档、数据、基本代码) 
+* 脚本 (src) 
+* 源 (src) 
+* 跟踪 (src) 
+* 视频 (src，海报) 
 
 此外，CSS 内还翻译了 URL 属性。
 

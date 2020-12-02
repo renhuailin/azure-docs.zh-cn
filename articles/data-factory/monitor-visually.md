@@ -3,19 +3,19 @@ title: 以可视化方式监视 Azure 数据工厂
 description: 了解如何直观监视 Azure 数据工厂
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96008763"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497905"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
@@ -23,21 +23,21 @@ ms.locfileid: "96008763"
 
 在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.com/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。
 
-默认情况下，所有数据工厂运行都将显示在浏览器的本地时区中。 如果你更改时区，所有日期/时间字段都会与你选择的时区保持一致。
+默认情况下，所有数据工厂运行都以浏览器的本地时区显示。 如果你更改时区，所有日期/时间字段都会与你选择的时区保持一致。
 
 ## <a name="monitor-pipeline-runs"></a>监视管道运行
 
-默认监视视图是所选时间段内触发的管道运行的列表。 您可以更改时间范围并按状态、管道名称或批注进行筛选。 将鼠标悬停在特定管道运行上，以获取特定于运行的操作，例如重新运行和使用报表。
+默认监视视图是所选时段内触发的管道运行的列表。 你可以更改时间范围并按状态、管道名称或注释进行筛选。 将鼠标悬停在特定管道运行上可获取特定于运行的操作，如重新运行和消耗报告。
 
 ![用于监视管道运行的列表视图](media/monitor-visually/pipeline-runs.png)
 
-"管道运行" 网格包含以下列：
+管道运行网格包含以下列：
 
 | **列名** | **说明** |
 | --- | --- |
 | 管道名称 | 管道的名称 |
 | 运行开始时间 | 管道运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| 结束运行 | 管道运行的结束日期和时间 (MM/DD/YYYY，HH： MM： SS AM/PM)  |
+| 运行结束时间 | 管道运行的结束日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | 持续时间 | 运行持续时间 (HH:MM:SS) |
 | 触发者 | 启动了管道的触发器的名称 |
 | 状态 | **失败**、**成功**、**正在进行**、**已取消** 或 **已排队** |
@@ -50,17 +50,17 @@ ms.locfileid: "96008763"
 
 ![“刷新”按钮](media/monitor-visually/refresh.png)
 
-若要查看调试运行的结果，请选择 " **调试** " 选项卡。
+若要查看调试运行的结果，请选择“调试”选项卡。
 
 ![选择查看活动调试运行图标](media/iterative-development-debugging/view-debug-runs.png)
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
 
-若要获取特定管道运行的单个活动运行的详细视图，请单击管道名称。
+若要获取某特定管道运行的单个活动运行的详细视图，请单击管道名称。
 
 ![查看活动运行](media/monitor-visually/view-activity-runs.png)
 
-此列表视图显示了与每个管道运行对应的活动运行。 将鼠标悬停在特定活动运行上，以获取特定于运行的信息，如 JSON 输入、JSON 输出和特定于活动的监视体验。
+此列表视图显示了与每个管道运行对应的活动运行。 将鼠标悬停在该特定活动运行上可获取特定于运行的信息，如 JSON 输入、JSON 输出和详细的特定于活动的监视体验。
 
 ![存在有关 SalesAnalyticsMLPipeline 的信息，后跟活动运行的列表。](media/monitor-visually/activity-runs.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "96008763"
 | 错误 | 在活动失败的情况下出现的运行错误 |
 | 运行 ID | 活动运行的 ID |
 
-如果某个活动失败，可通过单击 "错误" 列中的图标来查看详细的错误消息。 
+如果某个活动失败，可通过单击错误列中的图标来查看详细的错误消息。 
 
 ![将出现一条包含错误详细信息的通知，其中包括错误代码、失败类型和错误详细信息。](media/monitor-visually/activity-run-error.png)
 
@@ -100,11 +100,11 @@ ms.locfileid: "96008763"
 
 ## <a name="rerun-pipelines-and-activities"></a>重新运行管道和活动
 
-若要重新运行之前从开始运行的管道，请将鼠标悬停在特定管道运行上，然后选择 " **重新运行**"。 如果选择多个管道，则可以使用 " **重新运行** " 按钮来运行它们。
+若要从开始处重新运行之前已运行过的管道，请将鼠标悬停在该特定管道运行上，并选择“重新运行”。 如果选择多个管道，可以使用“重新运行”按钮来运行所有这些管道。
 
 ![重新运行管道](media/monitor-visually/rerun-pipeline.png)
 
-如果要从特定点重新运行，则可以从 "活动运行" 视图中执行此操作。 选择要从其开始的活动，然后选择 " **从活动重新运行**"。 
+如果需要从某个特定点开始重新运行，可从活动运行视图中执行此操作。 选择需要作为开始位置的活动，并选择“从活动重新运行”。 
 
 ![重新运行活动运行](media/monitor-visually/rerun-activity.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "96008763"
 
 ## <a name="gantt-views"></a>甘特视图
 
-甘特图是允许您查看某个时间范围内的运行历史记录的视图。 切换到甘特图视图后，会看到所有管道运行都按名称分组，并显示为与运行所用时间相关的条形。 还可以按已在管道上创建的注释/标记进行分组。 甘特图视图也在活动运行级别可用。
+甘特图是一种可用于查看某个时间范围内的运行历史记录的视图。 切换到甘特视图后，将会看到所有管道运行都按名称分组，并显示为与运行所用时间长度相关的条形。 还可以按已在管道上创建的注释/标记进行分组。 在活动运行级别也可使用甘特视图。
 
 ![甘特图示例](media/monitor-visually/select-gantt.png)
 

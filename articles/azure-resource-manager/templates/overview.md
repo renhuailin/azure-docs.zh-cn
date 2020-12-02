@@ -2,13 +2,13 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板 (ARM 模板) 部署资源的优点。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96342322"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497990"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -80,13 +80,13 @@ ms.locfileid: "96342322"
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +96,19 @@ ms.locfileid: "96342322"
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+请注意，在该资源的模板中设置的 **apiVersion** 用作 REST 操作的 API 版本。 你可以重复部署模板并自信地使用它。 使用相同的 API 版本，你无需担心可能在更高版本中引入的重大更改。
 
 ## <a name="template-design"></a>模板设计
 

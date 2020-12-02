@@ -4,16 +4,16 @@ description: 描述如何将 Azure Analysis Services 资源移到不同的区域
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018188"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497922"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>将 Analysis Services 移到不同的区域
 
@@ -37,7 +37,7 @@ ms.locfileid: "92018188"
 将服务器移到其他区域之前，建议创建详细计划。 考虑其他可能需要移动的资源，例如网关和存储。 对于任何计划，在移动生产服务器之前，请务必使用测试服务器完成一个或多个试验性移动操作。
 
 > [!IMPORTANT]
-> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如，`asazure://westcentralus.asazure.windows.net/advworks01` 。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用 [服务器名称别名](analysis-services-server-alias.md) 可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
+> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如 `asazure://westcentralus.asazure.windows.net/advworks01`。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用 [服务器名称别名](analysis-services-server-alias.md) 可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
 
 > [!IMPORTANT]
 > Azure 区域使用不同的 IP 地址范围。 如果为服务器和/或存储帐户所在的区域配置了防火墙例外，则可能需要配置其他 IP 地址范围。 若要了解详细信息，请参阅 [Analysis Services 网络连接](analysis-services-network-faq.md)的常见问题。
@@ -51,7 +51,7 @@ ms.locfileid: "92018188"
 ## <a name="prerequisites"></a>先决条件
 
 - **Azure 存储帐户**：存储 .abf 备份文件时需要此文件。
-- **SQL Server Management Studio (SSMS) **：备份和还原模型数据库所必需的。
+- **SQL Server Management Studio (SSMS)**：备份和还原模型数据库所必需的。
 - **Azure PowerShell**。 仅当你选择使用 PowerShell 来完成此任务时才是必需的。
 
 ## <a name="prepare"></a>准备
@@ -88,7 +88,7 @@ ms.locfileid: "92018188"
 
 若要使用 PowerShell 导出模板：
 
-1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，然后按屏幕说明操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -127,9 +127,9 @@ ms.locfileid: "92018188"
 
 3. 右键单击存储容器，然后选择 " **获取共享访问签名**"。
 
-    :::image type="content" source="media/move-between-regions/get-sas.png" alt-text="获取 SAS&quot;:::
+    :::image type="content" source="media/move-between-regions/get-sas.png" alt-text="获取 SAS":::
 
-4. 在 &quot; **共享访问签名**&quot; 中，选择 " **创建**"。 默认情况下，SAS 将在24小时后过期。
+4. 在 " **共享访问签名**" 中，选择 " **创建**"。 默认情况下，SAS 将在24小时后过期。
 
 5. 复制并保存 **URI**。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "92018188"
 
 #### <a name="regions"></a>区域
 
-若要获取 Azure 区域，请参阅 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 获取区域，请运行 [AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
+若要获取 Azure 区域，请参阅 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 获取区域，请运行 [AzLocation](/powershell/module/az.resources/get-azlocation) 命令。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -199,7 +199,7 @@ ms.locfileid: "92018188"
 
 5. 选择“在编辑器中生成自己的模板”。
 
-6. 选择 " **加载文件**"，然后按照说明在导出和修改的文件 ** 上加载template.js** 。
+6. 选择 " **加载文件**"，然后按照说明在导出和修改的文件 **上加载template.js** 。
 
 7. 验证模板编辑器是否显示了您的新目标服务器的正确属性。
 
@@ -264,7 +264,7 @@ ms.locfileid: "92018188"
 
 1. 在 SSMS 中，右键单击模型数据库 > **处理数据库**"。
 
-2. 展开 " **表**"，右键单击表。 在 " **进程" 表中 (s) **，选择 "所有表"，然后选择 **"确定"**。
+2. 展开 " **表**"，右键单击表。 在 " **进程" 表中 (s)**，选择 "所有表"，然后选择 **"确定"**。
 
 ## <a name="verify"></a>验证
 
@@ -278,9 +278,7 @@ ms.locfileid: "92018188"
 
 可选： [ALM 工具包](http://alm-toolkit.com/) 是一个 *开源* 工具，用于比较和管理 Power BI 数据集 *和* Analysis Services 表格模型数据库。 使用工具包连接到源服务器和目标服务器数据库，并进行比较。 如果数据库迁移成功，模型对象将具有相同的定义。 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="获取 SAS&quot;:::
-
-4. 在 &quot; **共享访问签名**&quot; 中，选择 ":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM 工具包":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

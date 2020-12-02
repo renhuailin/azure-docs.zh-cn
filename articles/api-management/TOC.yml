@@ -80,6 +80,8 @@
       href: observability.md
     - name: 使用 ARM 模板的 CI/CD
       href: devops-api-development-templates.md
+    - name: 软删除
+      href: soft-delete.md
 - name: 操作指南
   items:
     - name: 定义 API

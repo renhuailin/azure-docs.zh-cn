@@ -3,20 +3,20 @@ title: 使用 Azure Monitor 监视数据工厂
 description: 了解如何在 Azure Monitor 中，使用数据工厂中的信息通过启用诊断日志来监视 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638085"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497888"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -34,19 +34,19 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 数据工厂仅将管道运行数据存储 45 天。 若要将这些数据保留更长时间，请使用 Azure Monitor。 使用 Monitor，可以将诊断日志路由到多个不同目标进行分析。
 
-* **存储帐户** ：将诊断日志保存到存储帐户进行审核或手动检查。 可以使用诊断设置指定保留时间（天）。
-* **事件中心** ：将日志流式传输到 Azure 事件中心。 日志可用作合作伙伴服务/自定义分析解决方案（例如 Power BI）的输入。
-* **Log Analytics** ：使用 Log Analytics 分析日志。 在以下情况下，将数据工厂与 Azure Monitor 集成非常有用：
+* **存储帐户**：将诊断日志保存到存储帐户进行审核或手动检查。 可以使用诊断设置指定保留时间（天）。
+* **事件中心**：将日志流式传输到 Azure 事件中心。 日志可用作合作伙伴服务/自定义分析解决方案（例如 Power BI）的输入。
+* **Log Analytics**：使用 Log Analytics 分析日志。 在以下情况下，将数据工厂与 Azure Monitor 集成非常有用：
   * 需要针对由数据工厂发布到 Monitor 的丰富指标集编写复杂查询。 可以通过 Monitor 创建针对这些查询的自定义警报。
   * 你希望跨数据工厂进行监视。 可将来自多个数据工厂的数据路由到单个 Monitor 工作区。
 
-还可使用与发出日志的资源不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须具有适当的基于 Azure 角色的访问控制 (Azure RBAC) 对这两个订阅的访问权限。
+还可使用与发出日志的资源不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有适当的 Azure 基于角色的访问控制 (Azure RBAC) 访问权限。
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>配置诊断设置和工作区
 
 为数据工厂创建或添加诊断设置。
 
-1. 在门户中，转到“监视”。 选择 " **设置** " "  >  **诊断设置** "。
+1. 在门户中，转到“监视”。 选择 "**设置**" "  >  **诊断设置**"。
 
 1. 选择要为其设置诊断设置的数据工厂。
 
@@ -80,7 +80,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
    ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > 由于 Azure 日志表的列数不能超过500，因此 **强烈建议** 选择 " _特定于资源的模式_ "。 有关详细信息，请参阅 [Log Analytics 已知限制](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics)。
+    > 由于 Azure 日志表的列数不能超过500，因此 **强烈建议** 选择 " _特定于资源的模式_"。 有关详细信息，请参阅 [Log Analytics 已知限制](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics)。
 
 1. 选择“保存” 。
 
@@ -102,7 +102,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
    ![有关 "Azure 数据工厂分析 (预览) " 的详细信息](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. 选择 " **创建** "，然后创建或选择 " **Log Analytics" 工作区** 。
+1. 选择 " **创建** "，然后创建或选择 " **Log Analytics" 工作区**。
 
    ![创建新解决方案](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 ![管道按数据工厂运行的图形表示形式](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure 数据工厂分析 (预览) 将诊断日志发送到 _特定于资源的_ 目标表。 可以针对以下表编写查询： _ADFPipelineRun_ 、 _ADFTriggerRun_ 和 _ADFActivityRun_ 。
+> Azure 数据工厂分析 (预览) 将诊断日志发送到 _特定于资源的_ 目标表。 可以针对以下表编写查询： _ADFPipelineRun_、 _ADFTriggerRun_ 和 _ADFActivityRun_。
 
 ## <a name="data-factory-metrics"></a>数据工厂指标
 
@@ -668,18 +668,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **integrationRuntimeName** | String | SSIS IR 的名称                                           | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                       | `Informational` |
 | **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
-| **messageTime**            | 字符串 | 以 UTC 格式创建事件消息的时间          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | 字符串 | 事件消息的类型                                     | `70` (查看 [更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
-| **messageSourceType**      | 字符串 | 事件消息源的类型                              | `20` (查看 [更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **messageTime**            | String | 以 UTC 格式创建事件消息的时间          | `2017-06-28T21:00:27.3534352Z` |
+| **messageType**            | String | 事件消息的类型                                     | `70` (查看 [更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **messageSourceType**      | String | 事件消息源的类型                              | `20` (查看 [更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
 | **message**                | String | 事件消息的文本                                     | `MyPackage:Validation has started.` |
-| **packageName**            | 字符串 | 已执行的包文件的名称                             | `MyPackage.dtsx` |
-| **名**              | 字符串 | 相关运行时事件的名称                                 | `OnPreValidate` |
-| **messageSourceName**      | 字符串 | 作为事件消息源的包组件的名称         | `Data Flow Task` |
-| **messageSourceId**        | 字符串 | 作为事件消息源的包组件的唯一 ID    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
-| **subcomponentName**       | 字符串 | 作为事件消息源的数据流组件的名称       | `SSIS.Pipeline` |
+| **packageName**            | String | 已执行的包文件的名称                             | `MyPackage.dtsx` |
+| **eventName**              | String | 相关运行时事件的名称                                 | `OnPreValidate` |
+| **messageSourceName**      | String | 作为事件消息源的包组件的名称         | `Data Flow Task` |
+| **messageSourceId**        | String | 作为事件消息源的包组件的唯一 ID    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **subcomponentName**       | String | 作为事件消息源的数据流组件的名称       | `SSIS.Pipeline` |
 | **packagePath**            | String | 作为事件消息源的包对象的路径            | `\Package\Data Flow Task` |
-| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径            | `\Transformation\Data Flow Task` 此路径 (还捕获组件迭代)  |
-| **threadId**               | 字符串 | 记录事件消息时执行的线程的唯一 ID | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **executionPath**          | String | 从父包到已执行组件的完整路径            | `\Transformation\Data Flow Task` 此路径 (还捕获组件迭代)  |
+| **threadId**               | String | 记录事件消息时执行的线程的唯一 ID | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 可执行统计信息日志属性
 
@@ -716,13 +716,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **dataFactoryName**        | String | ADF 的名称                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                         | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                     | `Informational` |
-| **executionId**            | 字符串 | 用于在 SSISDB 中跟踪特定执行的唯一 ID      | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
-| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径          | `\Transformation\Data Flow Task` 此路径 (还捕获组件迭代)  |
+| **executionId**            | String | 用于在 SSISDB 中跟踪特定执行的唯一 ID      | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
+| **executionPath**          | String | 从父包到已执行组件的完整路径          | `\Transformation\Data Flow Task` 此路径 (还捕获组件迭代)  |
 | **startTime**              | String | 可执行文件以 UTC 格式输入预执行阶段的时间  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 可执行文件以 UTC 格式输入后执行阶段的时间 | `2017-06-28T21:00:27.3534352Z` |
-| **executionDuration**      | 字符串 | 可执行文件的运行时间（以毫秒为单位）                   | `1,125` |
-| **executionResult**        | 字符串 | 运行可执行文件的结果                                 | `0` (0 表示成功，1表示失败，2表示完成，3表示取消)  |
-| **executionValue**         | 字符串 | 通过运行可执行文件返回的用户定义值            | `1` |
+| **executionDuration**      | String | 可执行文件的运行时间（以毫秒为单位）                   | `1,125` |
+| **executionResult**        | String | 运行可执行文件的结果                                 | `0` (0 表示成功，1表示失败，2表示完成，3表示取消)  |
+| **executionValue**         | String | 通过运行可执行文件返回的用户定义值            | `1` |
 | **resourceId**             | String | ADF 资源的唯一 ID                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 执行组件阶段日志属性
@@ -761,14 +761,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **dataFactoryName**        | String | ADF 的名称                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                            | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                        | `Informational` |
-| **executionId**            | 字符串 | 用于在 SSISDB 中跟踪特定执行的唯一 ID         | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
-| **packageName**            | 字符串 | 已执行的包文件的名称                              | `MyPackage.dtsx` |
-| **taskName**               | 字符串 | 已执行的数据流任务的名称                                 | `Data Flow Task` |
-| **subcomponentName**       | 字符串 | 数据流组件的名称                                     | `Derived Column` |
-| **阶段**                  | 字符串 | 执行阶段的名称                                         | `AcquireConnections` |
+| **executionId**            | String | 用于在 SSISDB 中跟踪特定执行的唯一 ID         | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
+| **packageName**            | String | 已执行的包文件的名称                              | `MyPackage.dtsx` |
+| **taskName**               | String | 已执行的数据流任务的名称                                 | `Data Flow Task` |
+| **subcomponentName**       | String | 数据流组件的名称                                     | `Derived Column` |
+| **阶段**                  | String | 执行阶段的名称                                         | `AcquireConnections` |
 | **startTime**              | String | 执行阶段的开始时间（UTC 格式）                  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 执行阶段的结束时间（UTC 格式）                    | `2017-06-28T21:00:27.3534352Z` |
-| **executionPath**          | 字符串 | 数据流任务的执行路径                            | `\Transformation\Data Flow Task` |
+| **executionPath**          | String | 数据流任务的执行路径                            | `\Transformation\Data Flow Task` |
 | **resourceId**             | String | ADF 资源的唯一 ID                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 执行数据统计信息日志属性
@@ -809,16 +809,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **dataFactoryName**          | String | ADF 的名称                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | SSIS IR 的名称                                           | `MySSISIR` |
 | **level**                    | String | 诊断日志的级别                                       | `Informational` |
-| **executionId**              | 字符串 | 用于在 SSISDB 中跟踪特定执行的唯一 ID        | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
-| **packageName**              | 字符串 | 已执行的包文件的名称                             | `MyPackage.dtsx` |
-| **taskName**                 | 字符串 | 已执行的数据流任务的名称                                | `Data Flow Task` |
-| **dataflowPathIdString**     | 字符串 | 跟踪数据流路径的唯一 ID                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
-| **dataflowPathName**         | 字符串 | 数据流路径的名称                                         | `ADO NET Source Output` |
-| **sourceComponentName**      | 字符串 | 发送数据的数据流组件的名称                    | `SQLDB Table3` |
-| **destinationComponentName** | 字符串 | 接收数据的数据流组件的名称                 | `Derived Column` |
-| **rowsSent**                 | 字符串 | 源组件发送的行数                        | `500` |
-| **createdTime**              | 字符串 | 以 UTC 格式获取行值的时间                | `2017-06-28T21:00:27.3534352Z` |
-| **executionPath**            | 字符串 | 数据流任务的执行路径                           | `\Transformation\Data Flow Task` |
+| **executionId**              | String | 用于在 SSISDB 中跟踪特定执行的唯一 ID        | `1` (1 表示与 **未** 存储在 SSISDB/通过 t-sql 调用的包有关的执行的执行)  |
+| **packageName**              | String | 已执行的包文件的名称                             | `MyPackage.dtsx` |
+| **taskName**                 | String | 已执行的数据流任务的名称                                | `Data Flow Task` |
+| **dataflowPathIdString**     | String | 跟踪数据流路径的唯一 ID                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
+| **dataflowPathName**         | String | 数据流路径的名称                                         | `ADO NET Source Output` |
+| **sourceComponentName**      | String | 发送数据的数据流组件的名称                    | `SQLDB Table3` |
+| **destinationComponentName** | String | 接收数据的数据流组件的名称                 | `Derived Column` |
+| **rowsSent**                 | String | 源组件发送的行数                        | `500` |
+| **createdTime**              | String | 以 UTC 格式获取行值的时间                | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**            | String | 数据流任务的执行路径                           | `\Transformation\Data Flow Task` |
 | **resourceId**               | String | ADF 资源的唯一 ID                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="log-analytics-schema"></a>Log Analytics 架构

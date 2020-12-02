@@ -2,13 +2,13 @@
 title: 模板结构和语法
 description: 介绍使用声明性 JSON 语法) 的 Azure 资源管理器模板 (ARM 模板的结构和属性。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: c0e1e3225d63d0463164a3ed599fb0b760367123
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353487"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497871"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -283,7 +283,7 @@ ms.locfileid: "96353487"
 |:--- |:--- |:--- |
 | condition | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
-| apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
+| apiVersion |是 |用于创建资源的 REST API 版本。 创建新模板时，将此值设置为要部署的资源的最新版本。 只要模板按需工作，就可以继续使用相同的 API 版本。 通过继续使用相同的 API 版本，你可以最大程度地减少新 API 版本更改模板工作方式的风险。 仅当想要使用在更高版本中引入的新功能时，才应考虑更新 API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
@@ -351,7 +351,7 @@ ms.locfileid: "96353487"
   ],
 ```
 
-在 Visual Studio Code 中，[Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md)可以自动检测资源管理器模板并相应地更改语言模式。 如果在 VS Code 右下角看到 **Azure 资源管理器模板**，则可使用内联注释。 内联注释不再标记为无效。
+在 Visual Studio Code 中， [Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md) 可以自动检测 ARM 模板并更改语言模式。 如果在 VS Code 右下角看到 **Azure 资源管理器模板**，则可使用内联注释。 内联注释不再标记为无效。
 
 ![Visual Studio Code Azure 资源管理器模板模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 

@@ -2,20 +2,20 @@
 title: 通过示例了解 Azure 数据工厂定价
 description: 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395999"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497494"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -48,7 +48,7 @@ ms.locfileid: "93395999"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 2为管道运行检索 (1 的监视运行记录，1表示活动运行)  |
+| 监视管道假设：仅发生 1 次运行 | 检索到 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案定价总计：$0.16811**
 
@@ -79,7 +79,7 @@ ms.locfileid: "93395999"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 3 个活动运行（1 个用于触发器运行，2 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 3 (1 的监视运行记录检索到了管道运行，2表示活动运行)  |
+| 监视管道假设：仅发生 1 次运行 | 检索到 3 个监视运行记录（1 个用于管道运行，2 个用于活动运行） |
 | 执行 Databricks 活动假设：执行时间 = 10 分钟 | 10 分钟执行外部管道活动 |
 
 **方案定价总计：$0.16916**
@@ -113,7 +113,7 @@ ms.locfileid: "93395999"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 4 个活动运行（1 个用于触发器运行，3 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 4针对管道运行检索 (1 的监视运行记录，3表示活动运行)  |
+| 监视管道假设：仅发生 1 次运行 | 检索到 4 个监视运行记录（1 个用于管道运行，3 个用于活动运行） |
 | 执行查找活动假设：执行时间 = 1 分钟 | 1 分钟执行管道活动 |
 | 执行 Databricks 活动假设：执行时间 = 10 分钟 | 10 分钟执行外部管道活动 |
 
@@ -160,7 +160,7 @@ ms.locfileid: "93395999"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
 | 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | \*带有 TTL 10 的一般计算的 10 16 核心 |
-| 监视管道假设：仅发生 1 次运行 | 2为管道运行检索 (1 的监视运行记录，1表示活动运行)  |
+| 监视管道假设：仅发生 1 次运行 | 检索到 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案总定价： $1.4631**
 

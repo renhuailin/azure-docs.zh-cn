@@ -1,19 +1,19 @@
 ---
-title: 菲涅尔衰减效果
+title: 菲涅尔透镜效果
 description: 菲涅尔衰减材料效果的功能说明页
 author: jumeder
 ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557589"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498228"
 ---
-# <a name="fresnel-effect"></a>菲涅尔衰减效果
+# <a name="fresnel-effect"></a>菲涅尔透镜效果
 
 菲涅尔衰减效果材料功能是一个非物理的、即席的副作用。 此功能基于对象的物理观察，它们会越来越多地以这些角度反射。 菲涅尔衰减 reflectance 本身已在物理上并入 Azure 远程呈现中使用的 [.pbr 材料模型](../../overview/features/pbr-materials.md) 。 与此相反，菲涅尔衰减效果材料功能只是一种增加的颜色效果，不依赖于 [光源](../../overview/features/lights.md) 或 [天空环境](../../overview/features/sky.md)。
 
@@ -21,7 +21,7 @@ ms.locfileid: "94557589"
 
 ## <a name="enabling-the-fresnel-effect"></a>启用菲涅尔衰减效果
 
-若要使用菲涅尔衰减效果功能，需要对相关材料启用此功能。 可以通过在[.pbr 材料](../../overview/features/pbr-materials.md)上设置[PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)的 FresnelEffect 位来启用它。 同一模式适用于 [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) 和 [颜色材料](../../overview/features/color-materials.md)。 有关用法演示，请参阅代码示例部分。
+若要使用菲涅尔衰减效果功能，需要对相关材料启用此功能。 可以通过在[.pbr 材料](../../overview/features/pbr-materials.md)上设置[PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)的 FresnelEffect 位来启用它。 同一模式适用于 [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) 和 [颜色材料](../../overview/features/color-materials.md)。 有关用法演示，请参阅代码示例部分。
 
 启用后，菲涅尔衰减效果将立即可见。 默认情况下，闪光将为白色 (1，1，1，1) 并且指数为1。 可以使用下面的参数 setter 自定义这些设置。
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C + + PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C # ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C + + ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C # PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C + + PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C # ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C + + ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>后续步骤
 

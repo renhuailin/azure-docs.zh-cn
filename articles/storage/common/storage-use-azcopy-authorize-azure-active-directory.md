@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/03/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 89aab37b750a61bd21ba9af23875536a8cfbff4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414351"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498109"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD 授予对 blob 的访问权限) 
 
@@ -42,7 +42,7 @@ ms.locfileid: "94414351"
 - 资源组
 - 订阅
 
-若要了解如何验证和分配角色，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
+若要了解如何验证和分配角色，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](./storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 请记住，Azure 角色分配可能需要最多五分钟的时间进行传播。
@@ -67,7 +67,7 @@ azcopy login --tenant-id=<tenant-id>
 
 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。
 
-此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。 
+此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。
 
 ![创建容器](media/storage-use-azcopy-v10/azcopy-login.png)
 

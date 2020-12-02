@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630407"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498194"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>规划和管理 Azure Blob 存储的成本
 
@@ -88,13 +88,13 @@ ms.locfileid: "94630407"
 
 若要查看成本分析中的 Azure 存储成本：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 打开 " **成本管理 + 计费** " 窗口，从菜单中选择 " **成本管理** "，然后选择 " **成本分析** "。 然后，可以从 " **作用域** " 下拉列表中更改特定订阅的作用域。
+2. 打开 " **成本管理 + 计费** " 窗口，从菜单中选择 " **成本管理** "，然后选择 " **成本分析**"。 然后，可以从 " **作用域** " 下拉列表中更改特定订阅的作用域。
 
    ![显示范围的屏幕截图](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. 若要仅查看 Azure 存储的成本，请选择 " **添加筛选器** "，然后选择 " **服务名称** "。 然后从列表中选择 " **存储** "。 
+4. 若要仅查看 Azure 存储的成本，请选择 " **添加筛选器** "，然后选择 " **服务名称**"。 然后从列表中选择 " **存储** "。 
 
    以下示例显示了 Azure 存储空间的成本：
 
@@ -104,13 +104,13 @@ ms.locfileid: "94630407"
 
 ## <a name="export-cost-data"></a>导出成本数据
 
-你还可以将 [成本数据导出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 当你需要或其他人进行额外的数据分析以获得成本时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
+你还可以将 [成本数据导出](../../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 当你需要或其他人进行额外的数据分析以获得成本时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解有关如何使用 Azure 存储的详细信息。 请参阅 [Azure 存储概述定价](https://azure.microsoft.com/pricing/details/storage/)。
 - [为具有保留容量的 Blob 存储优化成本](../blobs/storage-blob-reserved-capacity.md)。
-- 了解 [如何通过 Azure 成本管理优化云投资](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 详细了解如何通过 [成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何 [防止意外成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 采用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
+- 了解 [如何通过 Azure 成本管理优化云投资](../../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 详细了解如何通过 [成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
+- 了解如何 [防止意外成本](../../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 采用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。

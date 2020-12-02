@@ -4,19 +4,19 @@ description: 了解如何在 Azure 数据工厂中配置源代码管理
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497106"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -54,11 +54,11 @@ ms.locfileid: "94566701"
 
 ## <a name="connect-to-a-git-repository"></a>连接到 Git 存储库
 
-有四种不同的方法可以将 Git 存储库连接到 Azure Repos 和 GitHub 的数据工厂。 连接到 Git 存储库后，可以在 [管理中心](author-management-hub.md)的 " **源代码** 管理" 部分中的 " **Git 配置** " 下查看和管理配置
+有四种不同的方法可以将 Git 存储库连接到 Azure Repos 和 GitHub 的数据工厂。 连接到 Git 存储库后，可以在 [管理中心](author-management-hub.md)的 "**源代码** 管理" 部分中的 " **Git 配置**" 下查看和管理配置
 
 ### <a name="configuration-method-1-home-page"></a>配置方法1：主页
 
-在 "Azure 数据工厂" 主页上，选择 " **设置代码存储库** "。
+在 "Azure 数据工厂" 主页上，选择 " **设置代码存储库**"。
 
 ![从主页配置代码存储库](media/author-visually/configure-repo.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "94566701"
 
 ### <a name="configuration-method-3-management-hub"></a>配置方法3：管理中心
 
-在 ADF UX 中中转到管理中心。 选择 " **源代码管理** " 部分中的 **Git 配置** 。 如果未连接存储库，请单击 " **设置代码存储库** "。
+在 ADF UX 中中转到管理中心。 选择 "**源代码管理**" 部分中的 **Git 配置**。 如果未连接存储库，请单击 " **设置代码存储库**"。
 
 ![从管理中心配置代码存储库设置](media/author-visually/configure-repo-3.png)
 
@@ -176,11 +176,11 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 如果你已连接到 GitHub 并且仅授予了访问个人帐户的权限，请按照以下步骤向组织授予权限。 
 
-1. 请参阅 GitHub 并打开 " **设置** "。
+1. 请参阅 GitHub 并打开 " **设置**"。
 
     ![打开 GitHub 设置](media/author-visually/github-settings.png)
 
-1. 选择“应用程序”。 在 " **授权的 OAuth 应用** " 选项卡中，应会看到 " *AzureDataFactory* "。
+1. 选择“应用程序”。 在 " **授权的 OAuth 应用** " 选项卡中，应会看到 " *AzureDataFactory*"。
 
     ![选择 OAuth 应用](media/author-visually/github-organization-select-application.png)
 
@@ -203,7 +203,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 ## <a name="version-control"></a>版本控制
 
-版本控制（也称为 _源代码管理_ ）系统允许开发人员协作处理代码并跟踪对基本代码所做的更改。 源代码管理是用于多开发人员项目的重要工具。
+版本控制（也称为 _源代码管理_）系统允许开发人员协作处理代码并跟踪对基本代码所做的更改。 源代码管理是用于多开发人员项目的重要工具。
 
 ### <a name="creating-feature-branches"></a>创建功能分支
 
@@ -250,7 +250,7 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 通常不希望每个团队成员都有权更新数据工厂。 建议使用以下权限设置：
 
 *   所有团队成员都应具有数据工厂的读取权限。
-*   只应允许一组选择的人员发布到数据工厂。 为此，它们必须对包含数据工厂的 **资源组** 具有 " **数据工厂参与者** " 角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
+*   只应允许一组选择的人员发布到数据工厂。 为此，它们必须对包含数据工厂的 **资源组** 具有 "**数据工厂参与者**" 角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
 
 建议不要允许直接签入到协作分支。 此限制有助于防止出现 bug，因为每个签入都将经历[创建功能分支](source-control.md#creating-feature-branches)中描述的拉取请求审阅过程。
 
@@ -278,7 +278,7 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
-若要切换到另一个 Git 存储库，请转到管理中心中的 " **源代码** 管理" 下的 "Git 配置" 页。 选择 " **断开连接** "。 
+若要切换到另一个 Git 存储库，请转到管理中心中的 " **源代码** 管理" 下的 "Git 配置" 页。 选择 " **断开连接**"。 
 
 ![“Git”图标](media/author-visually/remove-repository.png)
 

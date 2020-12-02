@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: cc3a2a1ee28ad3c1fdefad08c8ec133ad45cb408
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435053"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498177"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -191,7 +191,7 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 
 ### <a name="service-sas"></a>服务 SAS
 
-- [使用 .NET 为容器或 Blob 创建服务 SAS](../blobs/storage-blob-service-sas-create-dotnet.md)
+- [使用 .NET 为容器或 Blob 创建服务 SAS](../blobs/sas-service-create.md)
 
 ### <a name="account-sas"></a>帐户 SAS
 
