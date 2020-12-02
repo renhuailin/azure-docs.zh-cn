@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7aa84336a3d71349c127ad15a90af98ffe2133fe
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980229"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462452"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何认证 IoT 即插即用设备
 
@@ -42,9 +42,9 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 - 按照 IoT 即插即用约定实现遥测、属性或命令。
 - 介绍与 [DTDL v2](https://aka.ms/dtdl) 模型的设备交互。
 - 在[Azure IoT 公共模型存储库](https://devicemodels.azureiotsolutions.com/)中发布模型和所有所需的接口
-- 在 dps 预配负载中，在 [dps 注册](concepts-developer-guide-device-csharp.md#dps-payload) 过程中发送模型 ID。
-- 在 [MQTT 连接](concepts-developer-guide-device-csharp.md#model-id-announcement)过程中公告模型 ID。
-- 所有设备型号必须兼容 [Azure IoT Central](https://aka.ms/pnp-iotc-getstarted)。
+- 在 dps 预配负载中，在 [dps 注册](./concepts-developer-guide-device.md#dps-payload) 过程中发送模型 ID。
+- 在 [MQTT 连接](./concepts-developer-guide-device.md#model-id-announcement)过程中公告模型 ID。
+- 所有设备型号必须兼容 [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md)。
 
 > [!NOTE]
 > 目前，Azure IoT Central 不完全支持 **数组** 和 **地理空间** DTDL 数据类型。

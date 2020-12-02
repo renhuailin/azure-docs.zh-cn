@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9821cc8905caa9576662a192fc704c53b35af82d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564865"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460486"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的客户仪表板
 
 本文提供了有关合作伙伴中心的客户仪表板的信息。 此仪表板显示有关客户的信息，包括以图形和可下载的格式显示的增长趋势。
 
-若要访问合作伙伴中心的 "客户" 仪表板，请在 " **商用 Marketplace** " 下选择 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **客户** "。
+若要访问合作伙伴中心的 "客户" 仪表板，请在 "**商用 Marketplace** " 下选择 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **客户**"。
 
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+> 有关分析术语的详细定义，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。
 
 ## <a name="customers-dashboard"></a>“客户”仪表板
 
@@ -86,15 +86,15 @@ ms.locfileid: "94564865"
 
 - 领导者面板提供按订单计数排名的客户的详细信息。 选择客户后，客户详细信息显示在相邻的 "详细信息"、"按 Sku 排序" 和 "按座位列出的 Sku" 部分中。
 - 当发布服务器使用所有者角色登录时，客户配置文件详细信息将显示在此区域中。 如果发布服务器使用参与者角色登录，则此部分中的详细信息将不可用。
-- " **按 sku** 分类的订单" 环形图显示为计划购买的订单明细。 显示具有最高订单数的前五个计划，而其余订单按 " **全部 rest** " 分组。
-- " **通过座位** 显示的 sku" 图表显示为计划订购的座位的细分。 显示最高座位数最多的5个计划，而其余订单在 " **全部 rest** " 下分组。
+- " **按 sku** 分类的订单" 环形图显示为计划购买的订单明细。 显示具有最高订单数的前五个计划，而其余订单按 " **全部 rest**" 分组。
+- " **通过座位** 显示的 sku" 图表显示为计划订购的座位的细分。 显示最高座位数最多的5个计划，而其余订单在 " **全部 rest**" 下分组。
 
 还可以选择 " **规范化使用情况** " 或 " **原始使用情况** " 选项卡来查看使用情况详细信息。
 
 - 领导者面板提供按使用小时数排名的客户的详细信息。 选择客户后，客户的详细信息将显示在 "详细信息"、"按产品数标准化的使用情况" 和 "按虚拟机 (VM) 大小 () " 部分中的 "规范化使用情况" 部分中。
 - 当发布者使用所有者角色登录时，此区域中将显示客户配置文件详细信息。 如果发布者使用参与者角色登录，则此部分中的详细信息将不可用。
-- **规范化的使用情况提供** 环形图显示了产品/服务消耗的使用情况细目。 将显示最高使用量计数最高的5个计划，而剩余的产品/服务将按 " **全部 rest** " 分组。
-- **Vm 大小的规范化使用量 (s)** 环形图显示不同 vm 大小 () 所使用的使用量的细分。 将显示具有最高标准化使用量的前五个 VM 大小，而其余使用情况将归为 " **全部 rest** " 下。
+- **规范化的使用情况提供** 环形图显示了产品/服务消耗的使用情况细目。 将显示最高使用量计数最高的5个计划，而剩余的产品/服务将按 " **全部 rest**" 分组。
+- **Vm 大小的规范化使用量 (s)** 环形图显示不同 vm 大小 () 所使用的使用量的细分。 将显示具有最高标准化使用量的前五个 VM 大小，而其余使用情况将归为 " **全部 rest**" 下。
 
 ### <a name="top-customers-percentile"></a>排名靠前的客户
 
@@ -157,7 +157,7 @@ _**表1：数据字典**_
 | 客户邮政编码 | 客户邮政编码 | 客户提供的邮政编码。 代码可能与客户的 Azure 订阅中提供的邮政编码不同。 |
 | CustomerCommunicationCulture | 客户通信语言 | 客户的首选通信语言。 |
 | CustomerCountryRegion | 客户所在国家/地区 | 客户提供的国家/地区名称。 国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 |
-| AzureLicenseType | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为 _通道_ 。 可能的值为：<ul><li>云解决方案提供商</li><li>企业</li><li>企业通过分销商</li><li>即付即用</li></ul> |
+| AzureLicenseType | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为 _通道_。 可能的值为：<ul><li>云解决方案提供商</li><li>企业</li><li>企业通过分销商</li><li>即付即用</li></ul> |
 | PromotionalCustomers | 是促销联系人选择加入 | 此值告知是否客户主动从发布者渠道登记为促销联系人。 目前我们不会向客户提供该选项，因此，在整个板块中都指示了“否”。 部署此功能后，我们将相应地开始更新。 |
 | CustomerState | 客户所在的州/省 | 客户提供的住所的状态。 状态可能与客户的 Azure 订阅中提供的状态不同。 |
 | CommerceRootCustomer | 商业根客户 | 一个计费帐户 ID 可以与多个客户 Id 相关联。<br>计费帐户 ID 和客户 ID 的一个组合可以与多个商业 marketplace 订阅相关联。<br>Commerce Root 客户表示订阅的客户的名称。 |
@@ -180,4 +180,4 @@ _**表1：数据字典**_
 - 对于虚拟机 (VM) 提供使用情况和计量计费指标，请参阅 [商业 marketplace 分析中的使用情况仪表板](./usage-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看有关 Azure Marketplace 中产品/服务的客户反馈和 Microsoft AppSource 的综合视图，请参阅 [合作伙伴中心的分级 & 审查分析仪表板](./partner-center-portal/ratings-reviews.md)。
-- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./partner-center-portal/faq-terminology.md)。
+- 有关商业 marketplace 分析的常见问题以及针对数据术语的综合性字典，请参阅 [商业市场分析术语和常见问题](./analytics-faq.md)。

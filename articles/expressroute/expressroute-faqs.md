@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339783"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462046"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -46,8 +46,9 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果购买具有给定带宽的 ExpressRoute 线路，是否能够使用比所购买的带宽更多的带宽？
 
-是的，使用 ExpressRoute 线路的辅助连接上提供的带宽时，你最多可以使用所购带宽限制的两倍。 线路的内置冗余是使用到两个Microsoft 企业边缘路由器 (MSEE) 的主连接和辅助连接配置的，每个连接都使用所购买的带宽。 如有必要，通过辅助连接提供的带宽可用于额外的流量。 但是，由于辅助连接是为了实现冗余，因此它得不到保障，不应在一段持续的时间内将它用于额外的流量。 若要详细了解如何使用这两个连接来传输流量，请参阅[此文](./expressroute-optimize-routing.md#solution-use-as-path-prepending)。
-如果计划仅使用主连接来传输流量，则连接的带宽是固定的，试图超额订阅它会导致数据包丢失情况增加。 如果流量流过 ExpressRoute 网关，则 SKU 的带宽是固定的，不可进行突发式提升。
+是的，使用 ExpressRoute 线路的辅助连接上提供的带宽时，你最多可以使用所购带宽限制的两倍。 线路的内置冗余是使用到两个Microsoft 企业边缘路由器 (MSEE) 的主连接和辅助连接配置的，每个连接都使用所购买的带宽。 如有必要，通过辅助连接提供的带宽可用于额外的流量。 但是，由于辅助连接是为了实现冗余，因此它得不到保障，不应在一段持续的时间内将它用于额外的流量。 若要详细了解如何使用这两个连接来传输流量，请参阅 [使用路径预先](./expressroute-optimize-routing.md#solution-use-as-path-prepending)计算。
+
+如果你计划仅使用主连接来传输流量，则连接的带宽是固定的，尝试过度订阅会导致数据包丢弃。 如果流量流过 ExpressRoute 网关，网关 SKU 的带宽是固定的，而不是可突增。 有关每个网关 SKU 的带宽，请参阅 [关于 ExpressRoute 虚拟网络网关](expressroute-about-virtual-network-gateways.md#aggthroughput)。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>能否同时与虚拟网络和其他 Azure 服务使用同一专用网络连接？
 
@@ -234,7 +235,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+不是。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -427,4 +428,4 @@ Microsoft 365 services 需要启用高级外接程序。 有关费用，请参�
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute 服务是否存储客户数据？
 
-否。
+不是。

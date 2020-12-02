@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf89532fc41b10d6fbcba57963ebe30a361a2e6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461399"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -34,7 +34,7 @@ ms.locfileid: "95012978"
 
 * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
-* 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 来下载信息。 下面的示例下载 IP 地址信息，并筛选掉美国东部 2 区域的信息：
+* 使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 来下载信息。 下面的示例下载 IP 地址信息，并筛选掉美国东部 2 区域的信息：
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -72,7 +72,7 @@ ms.locfileid: "95012978"
     * MicrosoftContainerRegistry
     * AzureFrontDoor.FirstParty
 
-    对于包含的条目 `region` ，请将替换为所使用的 Azure 区域。 例如，`keyvault.westus` 。
+    对于包含的条目 `region` ，请将替换为所使用的 Azure 区域。 例如 `keyvault.westus`。
 
     对于 __协议__，请选择 `TCP` 。 对于源端口和目标 __端口__，请选择 `*` 。
 
@@ -124,7 +124,7 @@ ms.locfileid: "95012978"
 | 管道 | \*.aether.ms | \*。 ml.azure.us | \*。 ml.azure.cn |
 | 设计器 (studio 服务)  | \*。 studioservice.azureml.com | \*。 ml.azure.us | \*。 ml.azure.cn |
 | 集成笔记本 | \*.notebooks.azure.net | \*。 notebooks.usgovcloudapi.net |\*。 notebooks.chinacloudapi.cn |
-| 集成笔记本 | \*。 file.core.windows.net | \*。 file.core.usgovcloudapi.net | \*。 file.core.chinacloudapi.cn |
+| 集成笔记本 | \*.file.core.windows.net | \*。 file.core.usgovcloudapi.net | \*。 file.core.chinacloudapi.cn |
 | 集成笔记本 | \*.dfs.core.windows.net | \*。 dfs.core.usgovcloudapi.net | \*。 dfs.core.chinacloudapi.cn |
 | 集成笔记本 | \*.blob.core.windows.net | \*.blob.core.usgovcloudapi.net | \*.blob.core.chinacloudapi.cn |
 | 集成笔记本 | graph.microsoft.com | graph.microsoft.us | graph.chinacloudapi.cn |

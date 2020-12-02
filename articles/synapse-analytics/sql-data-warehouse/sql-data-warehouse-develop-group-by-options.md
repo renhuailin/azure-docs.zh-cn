@@ -1,30 +1,30 @@
 ---
 title: 使用 Group By 选项
-description: 在 Synapse SQL 池中实现 Group By 选项的技巧。
+description: 在 Azure Synapse Analytics 中针对专用 SQL 池实现组按选项的提示。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213442"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462754"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL 池中的 Group By 选项
+# <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的分组依据选项
 
-本文介绍在 SQL 池中实现 Group By 选项的技巧。
+在本文中，你将了解在专用 SQL 池中实现 group by 选项的技巧。
 
 ## <a name="what-does-group-by-do"></a>GROUP BY 的作用是什么？
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。 GROUP BY 具有 SQL 池不支持的一些选项。 这些选项有解决方法，如下所示：
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。 "分组依据" 具有专用 SQL 池不支持的某些选项。 这些选项有解决方法，如下所示：
 
 * 带 ROLLUP 的 GROUP BY
 * GROUPING SETS

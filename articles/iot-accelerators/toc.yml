@@ -255,7 +255,7 @@
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: 下载
-          href: 'https://aka.ms/iotrefarchitecture'
+          href: /azure/architecture/reference-architectures/iot
         - name: 合作伙伴实现
           items:
             - name: Intel 连接的物流平台
@@ -264,7 +264,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
             - name: 数字标牌解决方案
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
-    - name: 常见问题解答
+    - name: FAQ
       href: iot-accelerators-faq.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

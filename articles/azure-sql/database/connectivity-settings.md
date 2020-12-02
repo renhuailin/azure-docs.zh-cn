@@ -3,18 +3,18 @@ title: 适用于 Azure SQL 数据库和 Azure Synapse Analytics 的连接设置
 description: 本文介绍适用于 Azure SQL 数据库和 Azure Synapse Analytics 的传输层安全性 (TLS) 版本选择以及代理与重定向设置。
 services: sql-database
 ms.service: sql-database
-titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 9856d71a6398bcea5b979788846afce17e7955f7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412965"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462191"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -46,7 +46,7 @@ Please set up private endpoints and retry the operation.
 ```
 
 > [!NOTE]
-> 若要在已配置专用终结点的逻辑服务器上定义虚拟网络防火墙规则，请将 " **拒绝公共网络访问权限** " 设置为 " **否** "。
+> 若要在已配置专用终结点的逻辑服务器上定义虚拟网络防火墙规则，请将 " **拒绝公共网络访问权限** " 设置为 " **否**"。
 
 当 " **拒绝公共网络访问** " 设置为 **"是"** 时，只允许通过专用终结点进行连接。 将拒绝通过公共终结点进行的所有连接，其中包含类似于以下内容的错误消息：  
 
@@ -104,12 +104,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 最小 [传输层安全性 (TLS) ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 版本设置允许客户选择其 SQL 数据库使用的 TLS 版本。
 
-目前，我们支持 TLS 1.0、1.1 和1.2。 设置最小 TLS 版本可确保支持较新的 TLS 版本。 例如，如果选择大于1.1 的 TLS 版本，则表示仅接受 TLS 1.1 和1.2 的连接，并拒绝与 TLS 1.0 的连接。 在测试以确认应用程序支持它后，建议将最小 TLS 版本设置为1.2。 此版本包括以前版本中的漏洞修补程序，以及 Azure SQL 数据库中支持的最高 TLS 版本。
+目前，我们支持 TLS 1.0、1.1 和 1.2。 设置最低 TLS 版本可确保支持更新的 TLS 版本。 例如，如果选择大于 1.1 的 TLS 版本，表示仅接受使用 TLS 1.1 和 1.2 的连接，并拒绝使用 TLS 1.0 的连接。 在测试以确认应用程序支持它后，建议将最低 TLS 版本设置为 1.2。 此版本包括对以前版本中漏洞的修复，以及 Azure SQL 数据库中支持的最高 TLS 版本。
 
 > [!IMPORTANT]
 > 最小 TLS 版本的默认值为允许所有版本。 强制执行 TLS 版本后，不能还原为默认值。
 
-对于具有依赖于较旧版本 TLS 的应用程序的客户，我们建议根据应用程序的要求设置最小 TLS 版本。 对于依赖于使用未加密连接进行连接的应用程序的客户，我们建议不要设置任何最低的 TLS 版本。
+如果客户使用的应用程序依赖于更低的 TLS 版本，我们建议根据应用程序的要求设置最低 TLS 版本。 如果客户依赖于使用未加密连接进行连接的应用程序，我们建议不要设置任何最低 TLS 版本。
 
 有关详细信息，请参阅 [SQL 数据库连接的 TLS 注意事项](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)。
 

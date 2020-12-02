@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145593"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461181"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
@@ -47,7 +47,7 @@ npm install -g autorest@2.0.4413
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-因此，你将在工作目录中看到一个名为 *ADTApi* 的新文件夹。 生成的 SDK 文件将具有命名空间 *ADTApi* 。 您将继续使用该命名空间，这篇文章中的其他用法示例。
+因此，你将在工作目录中看到一个名为 *ADTApi* 的新文件夹。 生成的 SDK 文件将具有命名空间 *ADTApi*。 您将继续使用该命名空间，这篇文章中的其他用法示例。
 
 AutoRest 支持多种语言代码生成器。
 
@@ -61,19 +61,19 @@ AutoRest 支持多种语言代码生成器。
 
 1. 为类库创建新的 Visual Studio 解决方案
 2. 使用 *ADTApi* 作为项目名称
-3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的 *ADTApi* 项目，然后选择 " *添加 > 现有项 ...* "
+3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的 *ADTApi* 项目，然后选择 "*添加 > 现有项 ...* "
 4. 找到生成 SDK 的文件夹，然后选择根级别的文件
 5. 按 "确定"
 6. 将文件夹添加到项目 (在解决方案资源管理器中右键选择项目，然后选择 " *添加 > 新文件夹* ") 
 7. 命名文件夹 *模型*
-8. 右键选择解决方案资源管理器中的 " *模型* " 文件夹，然后选择 " *添加 > 现有项 ...* "
+8. 右键选择解决方案资源管理器中的 "*模型*" 文件夹，然后选择 "*添加 > 现有项 ...* "
 9. 选择生成的 SDK 的 " *模型* " 文件夹中的文件，并按 "确定"
 
 若要成功生成 SDK，你的项目将需要以下参考：
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-若要添加这些工具，请打开 " *> Nuget 包管理器 > 管理解决方案的 NuGet 包* ..."。
+若要添加这些工具，请打开 " *> Nuget 包管理器 > 管理解决方案的 NuGet 包*..."。
 
 1. 在面板中，确保选中 " *浏览* " 选项卡
 2. 搜索 *Microsoft. Rest*
@@ -102,7 +102,7 @@ REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生
 ```csharp
 try
 {
-    await client.DigitalTwins.AddAsync(id, initData);
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
     Console.WriteLine($"Created a twin successfully: {id}");
 }
 catch (ErrorResponseException e)

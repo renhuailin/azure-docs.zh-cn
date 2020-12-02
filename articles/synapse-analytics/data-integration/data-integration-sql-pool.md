@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afebb6a67b4c8a33e812c0e51ff225f16cd35356
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974419"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461470"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>将数据引入专用 SQL 池
 
@@ -24,7 +24,7 @@ ms.locfileid: "95974419"
 
 * **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**：使用 Azure Data Lake Storage Gen 2 作为 *源* 数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)来了解创建步骤。
-* **Azure Synapse 分析**：将专用 SQL 池用作 *接收器* 数据存储。 如果没有 Azure Synapse Analytics 实例，请参阅 [创建专用 SQL 池](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 以获取创建步骤的步骤。
+* **Azure Synapse 分析**：将专用 SQL 池用作 *接收器* 数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建专用 SQL 池](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，了解创建该实例的步骤。
 
 ## <a name="create-linked-services"></a>创建链接服务
 
@@ -68,9 +68,9 @@ ms.locfileid: "95974419"
 1. 选择工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上选择“完成”。   
 1. 转到左侧边栏中的“监视器”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“操作”列中的链接来查看活动详细信息以及重新运行该管道。
 1. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。  此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。  若要回到“管道运行”视图，请选择顶部的“管道运行”。 若要刷新视图，请选择“刷新”。
-1. 验证数据是否已正确写入专用 SQL 池中。
+1. 验证数据是否已正确写入到专用 SQL 池中。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Synapse Analytics 的数据集成的详细信息，请参阅 [引入 data into Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) 一文。
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) 一文。

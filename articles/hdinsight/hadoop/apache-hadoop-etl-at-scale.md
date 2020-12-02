@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899662"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462168"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -48,7 +48,7 @@ Azure 数据工厂以平台即服务 (PaaS) 的形式提供业务流程功能。
 
 1. 创建和安排数据驱动的工作流。 通过这些管道从不同的数据存储引入数据。
 1. 使用计算服务（如 HDInsight 或 Hadoop）处理和转换数据。 对于此步骤，还可使用 Spark、Azure Data Lake Analytics、Azure Batch 或 Azure 机器学习。
-1. 将输出数据发布到数据存储（如 Azure Synapse Analytics），以供 BI 应用程序使用。
+1. 将输出数据发布到数据存储（例如 Azure Synapse Analytics），供 BI 应用程序使用。
 
 有关 Azure 数据工厂的详细信息，请参阅[文档](../../data-factory/introduction.md)。
 
@@ -86,9 +86,9 @@ Data Lake Storage 已针对使用 Azure 事件中心或 Apache Storm 运行的�
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure Synapse Analytics (以前的 SQL DW) 是存储已准备结果的合适选择。 可以使用 Azure HDInsight 对 Azure Synapse Analytics 执行这些服务。
+Azure Synapse Analytics 是一种用于存储已准备结果的合适选择。 可以使用 Azure HDInsight 为 Azure Synapse Analytics 执行这些服务。
 
-Azure Synapse Analytics 是针对分析工作负荷进行优化的关系数据库存储。 它根据分区表进行缩放。 表可以跨多个节点分区。 在创建节点时便选择了节点。 可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅 [在 Azure Synapse Analytics 中管理计算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+Azure Synapse Analytics 是已针对分析工作负荷进行优化的关系数据库存储。 它根据分区表进行缩放。 表可以跨多个节点分区。 在创建节点时便选择了节点。 可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅[管理 Azure Synapse Analytics 中的计算资源](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
 ### <a name="apache-hbase"></a>Apache HBase
 

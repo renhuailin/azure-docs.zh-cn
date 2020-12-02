@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: de0224c51debe4d0203400b55721208ce7093649
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636283"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459697"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -34,11 +34,11 @@ ms.locfileid: "92636283"
       
    ![“新建数据工厂”页](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **名称** ：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 LoadFromOffice365Demo  不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **LoadFromOffice365Demo** 。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
-    * **订阅** ：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组** ：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本** ：选择“V2”  。
-    * **位置** ：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
+    * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 LoadFromOffice365Demo  不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **LoadFromOffice365Demo**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+    * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：选择“V2”  。
+    * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
 3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”  主页，如下图所示：
@@ -53,7 +53,7 @@ ms.locfileid: "92636283"
  
     ![创建管道](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的 **名称** 。
+2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的 **名称**。
 
 3. 在“活动”工具箱 >“移动和转换”类别中，将“复制”活动从工具箱拖放到管道设计器图面。  指定“CopyFromOffice365ToBlob”作为活动名称。
 
@@ -147,7 +147,7 @@ _正在提取数据状态：_
 
 ## <a name="next-steps"></a>后续步骤
 
-请转至下文，了解 Azure Synapse Analytics（以前称为 SQL 数据仓库）支持： 
+请转至下列文章，了解 Azure Synapse Analytics 支持： 
 
 > [!div class="nextstepaction"]
 >[Office 365 连接器](connector-office-365.md)

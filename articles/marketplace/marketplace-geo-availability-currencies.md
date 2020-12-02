@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 40bae584e673e8885416bd1ae08dd808071034e7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bd6067b39f12888bb903a68fb9834250c9d86638
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436124"
+ms.locfileid: "96462440"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
@@ -197,7 +197,7 @@ Microsoft 以当地货币的形式接收来自客户的付款，并按合作伙�
 - [创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)
 - [创建 Azure 容器产品/服务](partner-center-portal/create-azure-container-offer.md)
 - [创建 Azure 虚拟机套餐](azure-vm-create.md)
-- [创建咨询服务套餐](partner-center-portal/create-consulting-service-offer.md)
+- [创建咨询服务套餐](./create-consulting-service-offer.md)
 - [创建 Dynamics 365 for Customer Engagement & PowerApps 套餐](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)
 - [Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 2f32fc9ffb8be5b71bfe84a4f0e946e68e8fcd03
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577815"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460978"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>规划 azure 托管应用程序的 Azure 应用程序产品/服务
 
@@ -32,7 +32,7 @@ Azure _托管应用程序_ 计划是在 azure Marketplace 中发布 azure 应用
 | ------------ | ------------- |
 | Azure 订阅 | 托管应用程序必须部署到客户的订阅中，但可以由第三方管理。 |
 | 计费和计量 | 客户的 Azure 订阅中提供了资源。 使用即用即付支付模型的 Vm 通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅进行计费。 <br><br> 对于自带许可证 Vm，Microsoft 会对客户订阅中产生的任何基础结构成本计费，但你直接向客户收取软件许可费用。 |
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<br> •为 Windows Vhd) [创建 AZURE VM 技术资产](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (。<br> • Linux Vhd) 的  [Azure (认可的 linux 分发](/azure/virtual-machines/linux/endorsed-distros) 版。 |
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<br> •为 Windows Vhd) [创建 AZURE VM 技术资产](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (。<br> • Linux Vhd) 的  [Azure (认可的 linux 分发](../virtual-machines/linux/endorsed-distros.md) 版。 |
 | 客户使用情况归因 | 所有新 Azure 应用程序产品/服务还必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](azure-partner-customer-usage-attribution.md)。 有关客户使用情况和如何启用的详细信息，请参阅 [Azure 合作伙伴客户使用归属](azure-partner-customer-usage-attribution.md)。 |
 | 部署包 | 你将需要一个允许客户部署你的计划的部署包。 如果创建的多个计划需要相同的技术配置，则可以使用相同的包。 有关详细信息，请参阅下一节：部署包。 |
 |||
@@ -46,8 +46,8 @@ Azure _托管应用程序_ 计划是在 azure Marketplace 中发布 azure 应用
 
 所有 Azure 应用程序都必须在 .zip 存档的根文件夹中包括这两个文件：
 
-- 资源管理器模板文件，名为 [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/) 或相应的 [GitHub： Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates) 存储库。
-- 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview)。 在用户界面中，可以指定让使用者能够提供参数值的元素。
+- 资源管理器模板文件，名为 [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/) 或相应的 [GitHub： Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates) 存储库。
+- 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md)。 在用户界面中，可以指定让使用者能够提供参数值的元素。
 
 支持的最大文件大小为：
 
@@ -58,7 +58,7 @@ Azure _托管应用程序_ 计划是在 azure Marketplace 中发布 azure 应用
 
 ## <a name="azure-regions"></a>Azure 区域
 
-你可以将计划发布到 Azure 公共区域和/或 Azure 政府区域。 在发布到 [Azure 政府](/azure/azure-government/documentation-government-manage-marketplace-partners)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
+你可以将计划发布到 Azure 公共区域和/或 Azure 政府区域。 在发布到 [Azure 政府](../azure-government/documentation-government-manage-marketplace-partners.md)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
 
 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
 
@@ -87,14 +87,14 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 ## <a name="just-in-time-jit-access"></a>实时 (JIT) 访问
 
-通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。 有关详细信息，请参阅[对 Azure 托管应用程序启用和请求实时访问](/azure/managed-applications/request-just-in-time-access)。
+通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。 有关详细信息，请参阅[对 Azure 托管应用程序启用和请求实时访问](../azure-resource-manager/managed-applications/request-just-in-time-access.md)。
 
 > [!NOTE]
 > 即使 skimmingBe 确保更新 `createUiDefinition.json` 文件以支持此功能，用户也应该注意的信息。
 
 ## <a name="deployment-mode"></a>部署模式
 
-可以将托管应用程序计划配置为使用 **完整** 或 **增量** 部署模式。 在完整模式下，如果未在的 [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)中定义资源，则客户重新部署应用程序将导致删除托管资源组中的资源。 在“增量模式”下，重新部署应用程序会使现有资源保持不变。 若要了解详细信息，请参阅 [Azure 资源管理器部署模式](/azure/azure-resource-manager/templates/deployment-modes)。
+可以将托管应用程序计划配置为使用 **完整** 或 **增量** 部署模式。 在完整模式下，如果未在的 [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)中定义资源，则客户重新部署应用程序将导致删除托管资源组中的资源。 在“增量模式”下，重新部署应用程序会使现有资源保持不变。 若要了解详细信息，请参阅 [Azure 资源管理器部署模式](../azure-resource-manager/templates/deployment-modes.md)。
 
 ## <a name="notification-endpoint-url"></a>通知终结点 URL
 
@@ -104,23 +104,23 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 还可以选择指定客户可对托管资源执行的操作以及 `*/read` 默认提供的操作。
 
-如果选择此选项，则需要提供控制操作或允许的数据操作，或同时提供两者。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](/azure/role-based-access-control/deny-assignments)。 有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](/azure/role-based-access-control/resource-provider-operations)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
+如果选择此选项，则需要提供控制操作或允许的数据操作，或同时提供两者。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](../role-based-access-control/deny-assignments.md)。 有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
 
 ## <a name="choose-who-can-manage-the-application"></a>选择可以管理应用程序的人员
 
-你必须指示哪些用户可以管理每个选定云中的托管应用程序： _公共 Azure_ 和 _azure 政府云_ 。 收集以下信息：
+你必须指示哪些用户可以管理每个选定云中的托管应用程序： _公共 Azure_ 和 _azure 政府云_。 收集以下信息：
 
 - **Azure Active Directory 租户 id** – AZURE AD 租户 id (也称为目录 ID) ，其中包含要向其授予权限的用户、组或应用程序的标识。 可以在 Azure 门户的 " [Azure Active Directory 的属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)" 中找到 AZURE AD 租户 ID。
 - **授权** –为你要授予对托管资源组的权限的每个用户、组或应用程序添加 AZURE ACTIVE DIRECTORY 对象 ID。 通过其主体 ID 标识用户，该 ID 可在 [Azure 门户上的 Azure Active Directory 用户边栏选项卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到。
 
-对于每个主体 ID，将 Azure AD (所有者或参与者) 中的某个内置角色关联起来。 你选择的角色将描述主体对客户订阅中的资源所具有的权限。 有关详细信息，请参阅 [Azure 内置角色](/azure/role-based-access-control/built-in-roles)。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](/azure/role-based-access-control/overview)。
+对于每个主体 ID，将 Azure AD (所有者或参与者) 中的某个内置角色关联起来。 你选择的角色将描述主体对客户订阅中的资源所具有的权限。 有关详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](../role-based-access-control/overview.md)。
 
 > [!NOTE]
 > 尽管每个 Azure 区域最多可以添加100个授权，但通常可以更轻松地创建 Active Directory 的用户组，并在 "主体 ID" 中指定其 ID。 这使你可以在部署计划后向管理组中添加更多用户，并减少仅更新计划以添加更多授权的需求。
 
 ## <a name="policy-settings"></a>策略设置
 
-可以将 [Azure 策略](/azure/governance/policy) 应用于托管应用程序，以指定所部署解决方案的符合性要求。 有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](/azure/governance/policy/samples)。
+可以将 [Azure 策略](../governance/policy/index.yml) 应用于托管应用程序，以指定所部署解决方案的符合性要求。 有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](../governance/policy/samples/index.md)。
 
 最多可以配置五个策略，每个策略类型只能有一个实例。 某些策略类型需要其他参数。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cda99bfcb883dd42aa813d6edb922f2701ed1fe
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352195"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461289"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure 安全基线
 
@@ -578,7 +578,7 @@ ms.locfileid: "96352195"
 
 **指导**：如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。 使用的 TLS 版本为 1.2。
 
-在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics（以前称为 SQL 数据仓库）的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 true。 对于 Azure 存储，可以在连接字符串中使用 HTTPS。
+在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 true。 对于 Azure 存储，可以在连接字符串中使用 HTTPS。
 
 * [了解 Azure 数据工厂中的传输中加密](./data-movement-security-considerations.md)
 
@@ -1188,7 +1188,7 @@ ms.locfileid: "96352195"
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

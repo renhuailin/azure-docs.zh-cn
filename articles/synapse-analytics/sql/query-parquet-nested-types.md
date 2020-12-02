@@ -1,6 +1,6 @@
 ---
-title: '查询 Parquet 嵌套类型使用无服务器 SQL 池 (预览) '
-description: 在本文中，你将了解如何使用无服务器 SQL 池 (预览) 查询 Parquet 嵌套类型。
+title: 使用无服务器 SQL 池查询 Parquet 嵌套类型
+description: 本文介绍如何使用无服务器 SQL 池查询 Parquet 嵌套类型。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685709"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462554"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池 (预览) 查询 Parquet 和 JSON 文件中的嵌套类型
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 和 JSON 文件中的嵌套类型
 
-本文介绍如何使用 Azure Synapse Analytics 中的无服务器 SQL 池 (预览版) 来编写查询。 查询将读取 Parquet 嵌套类型。
+本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。 查询将读取 Parquet 嵌套类型。
 嵌套类型是表示对象或数组的复杂结构。 嵌套类型可以存储在中： 
 - [Parquet](query-parquet-files.md)，其中你可以有多个包含数组和对象的复杂列。
 - 分层 [JSON 文件](query-json-files.md)，您可以在其中以单个列的形式读取复杂的 json 文档。

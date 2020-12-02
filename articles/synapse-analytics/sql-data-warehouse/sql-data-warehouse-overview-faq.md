@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
-description: 本文列出了有关 Azure Synapse Analytics (以前的 SQL DW) 客户和开发人员的常见问题。
+title: 专用 SQL 池 (以前的 SQL DW) 常见问题
+description: 本文列出了有关从客户和开发人员的 Azure Synapse 分析中的专用 SQL DW)  (以前的常见问题。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c8f8ae81f6f030245899ec82dbe16b29846dab23
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323602"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460519"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (以前的 SQL DW) 常见问题
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-frequently-asked-questions"></a>专用 SQL 池 (以前的 SQL DW) Azure Synapse Analytics 常见问题解答
 
 ## <a name="general"></a>常规
 
@@ -27,11 +27,11 @@ A. Azure Synapse 是一种分析服务，它将数据仓库和大数据分析结
 
 问： Azure SQL 数据仓库有什么变化？
 
-A. Azure Synapse 是经过发展的 Azure SQL 数据仓库。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是 Azure SQL 数据仓库的演进版。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续在生产中运行现有数据仓库工作负荷，其中包含 Azure Synapse 中以前的 SQL DW)  (。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
-问： 什么是专用 SQL 池？
+问： 什么是 Azure Synapse Analytics 中 (以前的 SQL DW) 的专用 SQL 池？
 
-A. 专用 SQL 池指的是 Azure Synapse 提供的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. 专用 SQL DW (以前的 SQL DW) 是指在 Azure Synapse 中正式发布的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
 问： Azure Synapse 如何入门？
 
@@ -49,7 +49,7 @@ A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/complia
 
 A. 能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 的顶层使用 Power BI。
 
-问： 什么是专用 SQL 池容量限制？
+问： 什么是专用 SQL 池 (以前的 SQL DW) 容量限制？
 
 A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)页。
 
@@ -83,15 +83,15 @@ A. 支持许多功能。 不支持的功能可在[不支持的表功能](sql-dat
 
 ## <a name="tooling-and-administration"></a>工具和管理
 
-问： 专用 SQL 池是否支持 REST Api？
+问： 专用 SQL 池 (以前的 SQL DW) 是否支持 REST Api？
 
-A. 是的。 可与 SQL 数据库一起使用的大多数 REST 功能也可通过专用 SQL 池使用。 可以在 REST 文档页或[数据库](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 信息。
+A. 是的。 与 SQL 数据库一起使用的大多数 REST 功能还可用于专用 SQL 池 (以前的 SQL DW) 。 可以在 REST 文档页或[数据库](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 信息。
 
 ## <a name="loading"></a>加载
 
 问： 支持哪些客户端驱动程序？
 
-A. 可以在 " [连接字符串](../sql/connection-strings.md) " 页上找到专用 SQL 池的驱动程序支持
+A.  (以前的 SQL DW) 的专用 SQL 池的驱动程序支持，可以在 " [连接字符串](sql-data-warehouse-connection-strings.md) " 页上找到
 
 问：PolyBase 支持哪些文件格式？
 
@@ -107,8 +107,8 @@ A. 可以在 " [连接字符串](../sql/connection-strings.md) " 页上找到专
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果你有一个作为 HDFS 层，可以将该数据加载到专用的 SQL 池中。 但是，无法生成 HDI 实例的下推计算。
+答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果你有一个作为 HDFS 层，可以将该数据加载到 (以前的 SQL DW) 的专用 SQL 池中。 但是，无法生成 HDI 实例的下推计算。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Synapse 的综合性详细信息，请参阅[概述](sql-data-warehouse-overview-faq.md)页。
+有关专用 SQL 池 (以前的 SQL DW) 在 Azure Synapse 中的详细信息，请参阅 [概述](sql-data-warehouse-overview-what-is.md) 页。

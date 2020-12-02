@@ -10,18 +10,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 22cbd0b4ce512df70d13d89c5f2539420dac2b85
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307010"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462703"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 体系结构 
 
 本文介绍 Synapse SQL 的体系结构组件。
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL 体系结构组件
 
@@ -69,7 +67,7 @@ Synapse SQL 使用 Azure 存储保护用户数据。 由于数据通过 Azure �
 
 计算节点提供计算能力。 
 
-在专用 SQL 池中，分发映射到计算节点进行处理。 如果支付更多计算资源费用，SQL 池会将分布区重新映射到可用的计算节点。 计算节点数范围从1到60，由专用 SQL 池的服务级别确定。 每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [SYNAPSE SQL 系统视图](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)。
+在专用 SQL 池中，分发映射到计算节点进行处理。 如果支付更多计算资源费用，SQL 池会将分布区重新映射到可用的计算节点。 计算节点数范围从1到60，由专用 SQL 池的服务级别确定。 每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [Synapse SQL 系统视图](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)。
 
 在无服务器 SQL 池中，分配了每个计算节点的任务和一组要执行任务的文件。 任务是指分布式查询执行单元，实际上是用户提交的查询的一部分。 可进行自动缩放，以确保利用足够多的计算节点来执行用户查询。
 

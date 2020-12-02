@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7155e1517ba5ff203f11ee834af3c0d1dd1fa065
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289472"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460820"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
@@ -54,7 +54,7 @@ Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出�
 
 - [Azure 密钥保管库日志记录](logging.md)
 
-- [Azure Key Vault 软删除概述](soft-delete-cli.md)
+- [Azure Key Vault 软删除概述](./key-vault-recovery.md)
 
 - [Azure Key Vault 密钥操作](/rest/api/keyvault/key-operations)
 

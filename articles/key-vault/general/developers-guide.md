@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013966"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460804"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -86,14 +86,14 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|不适用|[引用](/dotnet/api/azure.security.keyvault.keys)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[引用](/javascript/api/@azure/keyvault-keys/)|
+|[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|空值|[引用](/dotnet/api/azure.security.keyvault.keys)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[引用](/javascript/api/@azure/keyvault-keys/)|
 
 **证书 Api 和 Sdk**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[引用](/cli/azure/keyvault/certificate)<br>[快速入门](../certificates/quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](../certificates/quick-create-powershell.md)|[引用](/rest/api/keyvault/#certificate-operations)|不适用|[引用](/dotnet/api/azure.security.keyvault.certificates)|[引用](/python/api/overview/azure/keyvault-certificates-readme)<br>[快速入门](../certificates/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[引用](/javascript/api/@azure/keyvault-certificates/)|
+|[引用](/cli/azure/keyvault/certificate)<br>[快速入门](../certificates/quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](../certificates/quick-create-powershell.md)|[引用](/rest/api/keyvault/#certificate-operations)|空值|[引用](/dotnet/api/azure.security.keyvault.certificates)|[引用](/python/api/overview/azure/keyvault-certificates-readme)<br>[快速入门](../certificates/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[引用](/javascript/api/@azure/keyvault-certificates/)|
 
 **机密 Api 和 Sdk**
 
@@ -120,7 +120,7 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 - 如何将证书部署到 Key Vault- [Windows](../../virtual-machines/extensions/key-vault-windows.md)、 [Linux](../../virtual-machines/extensions/key-vault-linux.md) （在 Azure 上的 VM 中运行的云应用程序）中的 vm 需要证书。 现在，如何将此证书部署到此 VM 中？
 - [通过 Key Vault 部署 Azure Web 应用证书](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - 分配访问策略（[CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [门户](assign-access-policy-portal.md)）。 
-- [如何将 Key Vault 软删除与 CLI 配合使用](soft-delete-cli.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
+- [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
 - [如何在部署期间传递安全值（如密码）](../../azure-resource-manager/templates/key-vault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。
 
 ## <a name="integrated-with-key-vault"></a>与密钥保管库集成

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491233"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461762"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器
 
@@ -26,7 +26,7 @@ ms.locfileid: "94491233"
 
 部署模板包含构成解决方案的所有 Azure 资源。 适合此方案的产品仅使用 Azure 资源。 在 "合作伙伴中心" 中设置以下属性：
 
-- **区域** （必需）- 当前存在 26 个 Azure 支持的区域，可在这些区域提供你的体验版。 通常情况下，你希望在预计客户数最多的区域中提供你的体验版，以便他们可以选择最接近的区域以获得最佳性能。 需确保允许订阅在所选的各个区域中部署所需的所有资源。
+- **区域**（必需）- 当前存在 26 个 Azure 支持的区域，可在这些区域提供你的体验版。 通常情况下，你希望在预计客户数最多的区域中提供你的体验版，以便他们可以选择最接近的区域以获得最佳性能。 需确保允许订阅在所选的各个区域中部署所需的所有资源。
 
 - **实例** - 选择类型（热或冷）和可用实例的数量，将其乘以提供产品/服务的区域数量。
 
@@ -37,9 +37,9 @@ ms.locfileid: "94491233"
 - **体验版 Azure 资源管理器模板** - 上传包含 Azure 资源管理器模板的 .zip。 若要详细了解如何创建 Azure 资源管理器模板，请参阅快速入门文章[使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
     > [!note]
-    > 若要成功发布，必须验证 ARM 模板的格式。 实现此目的的两种方法是使用 [联机 API 工具](https://docs.microsoft.com/rest/api/resources/deployments/validate) 或 (2) 与 [测试部署](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal) (1) 。
+    > 若要成功发布，必须验证 ARM 模板的格式。 实现此目的的两种方法是使用 [联机 API 工具](/rest/api/resources/deployments/validate) 或 (2) 与 [测试部署](../azure-resource-manager/templates/deploy-portal.md) (1) 。
 
-- **体验版持续时间** （必需）- 输入体验版保持活动状态的小时数。 此时间段结束后，体验版会自动终止。 仅使用整数（例如，2 小时有效，1.5 小时无效）。
+- **体验版持续时间**（必需）- 输入体验版保持活动状态的小时数。 此时间段结束后，体验版会自动终止。 仅使用整数（例如，2 小时有效，1.5 小时无效）。
 
 ## <a name="write-the-test-drive-template"></a>写入测试驱动器模板
 
@@ -240,7 +240,7 @@ Test drive 使用部署包的 **基本 Uri** 初始化此参数，因此可以�
 
 确保允许订阅在所选的每个区域中部署所需的所有资源。 此外，请确保你的虚拟机映像在你将启用的所有区域中都可用，否则你的部署模板将不能用于某些区域。
 
-### <a name="outputs"></a>输出
+### <a name="outputs"></a>Outputs
 
 正常情况下，可以部署资源管理器模板，而无需生成任何输出。 因为你知道用于填充模板参数的所有值，并且始终可以手动检查任意资源的属性。
 
@@ -296,11 +296,11 @@ Test drive 使用部署包的 **基本 Uri** 初始化此参数，因此可以�
 
 ![测试驱动器部署订阅详细信息](media/test-drive/deployment-subscription-details.png)
 
-1. 获取 **Azure 订阅 ID** 。 此项授予对 Azure 服务和 Azure 门户的访问权限。 将在该订阅中报告资源用量和计收服务费用。 如果你还没有单独的 Azure 订阅用于测试驱动器，请创建一个。 你可以 `1a83645ac-1234-5ab6-6789-1h234g764ghty1` 通过登录到 Azure 门户，并从左侧导航菜单中选择 " **订阅** " 来查找 Azure 订阅 id (如) 。
+1. 获取 **Azure 订阅 ID**。 此项授予对 Azure 服务和 Azure 门户的访问权限。 将在该订阅中报告资源用量和计收服务费用。 如果你还没有单独的 Azure 订阅用于测试驱动器，请创建一个。 你可以 `1a83645ac-1234-5ab6-6789-1h234g764ghty1` 通过登录到 Azure 门户，并从左侧导航菜单中选择 " **订阅** " 来查找 Azure 订阅 id (如) 。
 
    ![Azure 订阅](media/test-drive/azure-subscriptions.png)
 
-2. 获取 **Azure AD 租户 ID** 。 如果你已经有可用的租户 id，可以在 **Azure Active Directory**  >  **Properties**  >  **Directory ID** 中找到它：
+2. 获取 **Azure AD 租户 ID**。 如果你已经有可用的租户 id，可以在 **Azure Active Directory**  >  **Properties**  >  **Directory ID** 中找到它：
 
    ![Azure Active Directory 属性](media/test-drive/azure-active-directory-properties.png)
 
@@ -309,12 +309,12 @@ Test drive 使用部署包的 **基本 Uri** 初始化此参数，因此可以�
 3. **AZURE AD 应用 ID** –创建并注册新的应用程序。 我们将使用此应用程序在你的测试驱动器实例上执行操作。
 
    1. 导航到新创建的目录或现有的目录，然后在 "筛选器" 窗格中选择 "Azure Active Directory"。
-   2. 搜索 **应用注册** ，然后选择 " **添加** "。
+   2. 搜索 **应用注册** ，然后选择 " **添加**"。
    3. 提供应用程序名称。
-   4. 选择 **Web 应用/API** 的 **类型** 。
+   4. 选择 **Web 应用/API** 的 **类型**。
    5. 提供 "登录 URL" 中的任何值，则不使用此字段。
    6. 选择“创建”。
-   7. 创建应用程序后，请选择 " **属性**  >  **"，将应用程序设置为多租户** ，并 **保存** 。
+   7. 创建应用程序后，请选择 "**属性**  >  **"，将应用程序设置为多租户**，并 **保存**。
 
 4. 选择“保存”。
 
@@ -326,7 +326,7 @@ Test drive 使用部署包的 **基本 Uri** 初始化此参数，因此可以�
 
    1. 选择要用于测试驱动器的 **订阅** 类型。
    1. 选择“访问控制 (IAM)”。
-   1. 选择 " **角色分配** " 选项卡，然后 **添加角色分配** 。
+   1. 选择 " **角色分配** " 选项卡，然后 **添加角色分配**。
 
       ![添加新的访问控制主体](media/test-drive/access-control-principal.jpg)
 
@@ -336,7 +336,7 @@ Test drive 使用部署包的 **基本 Uri** 初始化此参数，因此可以�
 
    1. 选择“保存”。
 
-7. 生成 **Azure AD 应用** 的身份验证密钥。 在 " **密钥** " 下，添加 **密钥说明** ，将 "持续时间" 设置为 " **永不过期** " (过期密钥将在生产) 中中断测试驱动器，然后选择 " **保存** "。 将此值复制并粘贴到 "所需的测试驱动器" 字段。
+7. 生成 **Azure AD 应用** 的身份验证密钥。 在 " **密钥**" 下，添加 **密钥说明**，将 "持续时间" 设置为 " **永不过期** " (过期密钥将在生产) 中中断测试驱动器，然后选择 " **保存**"。 将此值复制并粘贴到 "所需的测试驱动器" 字段。
 
 ![显示 Azure AD 应用程序密钥](media/test-drive/azure-ad-app-keys.png)
 

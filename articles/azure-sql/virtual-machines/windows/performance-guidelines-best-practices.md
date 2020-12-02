@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/18/2019
+ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6a6b39d540427b7c3400fded62431c914db23bb3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cff67dde7cfe9e015cd25b26811410ce6e686e9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327315"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462539"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 的性能准则
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "96327315"
 
 ## <a name="overview"></a>概述
 
- 在 Azure 虚拟机上运行 SQL Server 时，建议你继续使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 但是，关系数据库在公有云中的性能取决于许多因素，如虚拟机的大小和数据磁盘的配置。
+在 Azure 虚拟机上运行 SQL Server 时，建议你继续使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 但是，关系数据库在公有云中的性能取决于许多因素，如虚拟机的大小和数据磁盘的配置。
 
-[在 Azure 门户中预配的 SQL Server 映像](sql-vm-create-portal-quickstart.md)遵循一般的存储配置最佳做法（有关存储配置情况的详细信息，请参阅 [SQL Server 虚拟机 (VM) 的存储配置](storage-configuration.md)）。 在预配后，请考虑应用本文中讨论的其他优化措施。 根据你的工作负荷进行选择并通过测试进行验证。
+[Azure 门户中预配的 SQL Server 映像](sql-vm-create-portal-quickstart.md) 遵循一般的存储 [配置最佳实践](storage-configuration.md)。 在预配后，请考虑应用本文中讨论的其他优化措施。 根据你的工作负荷进行选择并通过测试进行验证。
 
 > [!TIP]
 > 通常需要在针对成本优化和针对性能优化之间进行权衡。 本文重点介绍了如何使 Azure 虚拟机上的 SQL Server 实现最佳性能。 如果工作负荷要求较低，可能不需要下面列出的每项优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
@@ -42,21 +42,165 @@ ms.locfileid: "96327315"
 
 | 区域 | 优化 |
 | --- | --- |
-| [VM 大小](#vm-size-guidance) | - 使用具有 4 个或更多 vCPU 的 VM 大小，例如 [E4S_v3](../../../virtual-machines/ev3-esv3-series.md) 或更大，或者 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md) 或更大。<br/><br/> - [Es、Eas、Ds 和 Das 系列](../../../virtual-machines/sizes-general.md)提供 OLTP 工作负载性能所需的最佳内存与 vCPU 之比。 <br/><br/> - [M 系列](../../../virtual-machines/m-series.md)提供最高的内存-vCPU 比，可满足任务关键型工作负荷的性能需求，非常适合用于数据仓库工作负荷。 <br/><br/> - 遵循[应用程序性能要求查检表](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)收集目标工作负荷在高峰期的 [IOPS](../../../virtual-machines/premium-storage-performance.md#iops)、[吞吐量](../../../virtual-machines/premium-storage-performance.md#throughput)和[延迟](../../../virtual-machines/premium-storage-performance.md#latency)要求，然后选择可以根据工作负荷性能要求进行缩放的 [VM 大小](../../../virtual-machines/sizes-general.md)。|
-| [存储](#storage-guidance) | - 若要详细了解根据 TPC-E 和 TPC_C 基准在 Azure 虚拟机上进行的 SQL Server 性能测试，请参阅博客：[优化 OLTP 性能](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)。 <br/><br/> - 使用[高级 SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) 可获得最高性价比。 为数据文件配置[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)，不要为日志文件配置缓存。 <br/><br/> - 如果工作负载要求存储延迟低于 1 毫秒，请使用 [超级磁盘](../../../virtual-machines/disks-types.md#ultra-disk)。 若要了解详细信息，请参阅 [迁移到超磁盘](storage-migrate-to-ultradisk.md) 。 <br/><br/> - 先通过[监视应用程序](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)的方式收集 SQL Server 数据、日志和 TempDB 文件的存储延迟要求，再选择磁盘类型。 如果要求存储延迟低于 1 毫秒，使用超级磁盘；否则使用高级 SSD。 如果只有日志文件需要低延迟，数据文件不需要，请仅为日志文件在所需的 IOPS 和吞吐量级别[预配超级磁盘](../../../virtual-machines/disks-enable-ultra-ssd.md)。 <br/><br/> -  建议将[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)作为 SQL Server 故障转移群集实例的共享存储。 高级文件共享不支持缓存，与高级 SSD 盘相比，它提供的性能有限。 为独立的 SQL 实例选择高级 SSD 托管磁盘，而不是高级文件共享；但将高级文件共享用作故障转移群集实例的共享存储，以简化维护并灵活缩放。 <br/><br/> - 建议仅将标准存储用于开发和测试目的，或用于备份文件，不应该用于生产工作负载。 <br/><br/> - 将[存储帐户](../../../storage/common/storage-account-create.md)和 SQL Server VM 保存在相同的区域。<br/><br/> - 在存储帐户中禁用 Azure [异地冗余存储](../../../storage/common/storage-redundancy.md)（异地复制）。  |
-| [磁盘](#disks-guidance) | - 使用至少 2 个[高级 SSD 盘](../../../virtual-machines/disks-types.md#premium-ssd)（一个用于日志文件，一个用于数据文件）。 <br/><br/> - 对于 IO 延迟要求为低于 1 毫秒的工作负载，请为 M 系列启用写入加速器，并考虑为 Es 和 DS 系列使用超级 SSD 盘。 <br/><br/> - 在托管数据文件的磁盘上启用[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。<br/><br/> - [为 SQL Server 数据、日志和 TempDB 文件配置存储](storage-configuration.md)时，请在工作负荷的要求以外额外添加 20% 的高级 IOPS/吞吐容量。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要说明**：更改 Azure 虚拟机磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，以提高存储吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> - 将 TempDB 放在本地 SSD `D:\` 驱动器上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 如果使用 Azure 门户或 Azure 快速入门模板创建 VM，并[将临时数据库置于本地磁盘上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，则无需执行任何其他操作；对于所有其他情况，请按博客文章[使用 SSD 存储 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) 中的步骤操作，以防止重启后发生故障。 如果本地驱动器的容量对于 TempDB 而言不足，请将 TempDB 放在位于具有[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)的高级 SSD 盘上的[条带化](../../../virtual-machines/premium-storage-performance.md)存储池上。 |
-| [I/O](#io-guidance) |- 启用数据库页面压缩。<br/><br/> - 对数据文件启用即时文件初始化。<br/><br/> - 限制数据库自动增长。<br/><br/> - 禁用数据库自动收缩。<br/><br/> - 将所有数据库（包括系统数据库）转移到数据磁盘。<br/><br/> - 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。<br/><br/> - 配置默认的备份和数据库文件位置。<br/><br/> - [在内存中启用锁定页面](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-2017)。<br/><br/> - 应用 SQL Server 性能修复程序。 |
+| [VM 大小](#vm-size-guidance) | -使用具有4个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](/../../virtual-machines/m-series)、 [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 或更高版本。 <br/><br/> -使用 [内存优化](../../../virtual-machines/sizes-memory.md) 虚拟机大小，以实现 SQL Server 工作负荷的最佳性能。 <br/><br/> - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、 [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) 系列、 [M-](../../../virtual-machines/m-series.md)和 [Mv2](../../../virtual-machines/mv2-series.md) 系列提供 OLTP 工作负载所需的最佳内存到 vCore 的比率。 这两个 M 系列 Vm 都提供任务关键型工作负荷所需的最高的 vCore，也是数据仓库工作负荷的理想选择。 <br/><br/> -对于关键任务和数据仓库工作负荷，可能需要更高的内存 vCore 比。 <br/><br/> -利用 Azure 虚拟机 marketplace 映像作为 SQL Server 设置，并配置存储选项以获得最佳 SQL Server 性能。 <br/><br/> -收集目标工作负荷的性能特征，并使用它们来确定适用于你的业务的适当 VM 大小。|
+| [存储](#storage-guidance) | - 若要详细了解根据 TPC-E 和 TPC_C 基准在 Azure 虚拟机上进行的 SQL Server 性能测试，请参阅博客：[优化 OLTP 性能](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)。 <br/><br/> - 使用[高级 SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) 可获得最高性价比。 为数据文件配置 [只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching) ，并且不为日志文件配置缓存。 <br/><br/> -如果工作负荷需要的存储延迟少于1毫秒，则使用 [超磁盘](../../../virtual-machines/disks-types.md#ultra-disk) 。 若要了解详细信息，请参阅 [迁移到超磁盘](storage-migrate-to-ultradisk.md) 。 <br/><br/> - 在选择磁盘类型之前，通过[监视应用程序](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)来收集 SQL Server 数据、日志和临时数据库文件的存储延迟要求。 如果需要 < 1-ms 存储延迟是必需的，则使用超磁盘，否则使用高级 SSD。 如果只有日志文件需要低延迟，数据文件不需要，请仅为日志文件在所需的 IOPS 和吞吐量级别[预配超级磁盘](../../../virtual-machines/disks-enable-ultra-ssd.md)。 <br/><br/>  - 建议仅将标准存储用于开发和测试目的，或用于备份文件，不应该用于生产工作负载。 <br/><br/> - 将[存储帐户](../../../storage/common/storage-account-create.md)和 SQL Server VM 保存在相同的区域。<br/><br/> - 在存储帐户中禁用 Azure [异地冗余存储](../../../storage/common/storage-redundancy.md)（异地复制）。  |
+| [磁盘](#disks-guidance) | - 至少使用 2 个[高级 SSD 磁盘](../../../virtual-machines/disks-types.md#premium-ssd)（1 个用于日志文件，1 个用于数据文件）。 <br/><br/> -对于需要 < 1 ms IO 延迟的工作负荷，请为 M 系列启用写入加速器，并考虑对 Es 和 DS 系列使用超级 SSD 磁盘。 <br/><br/> - 在托管数据文件的磁盘上启用[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。<br/><br/> - [为 SQL Server 数据、日志和 TempDB 文件配置存储](storage-configuration.md)时，请在工作负荷的要求以外额外添加 20% 的高级 IOPS/吞吐容量。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要说明**：更改 Azure 虚拟机磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，以提高存储吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> - 将 TempDB 放在本地 SSD `D:\` 驱动器上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 如果从 Azure 门户或 Azure 快速入门模板创建 VM，并[将临时数据库置于本地磁盘上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，则无需执行任何其他操作；对于所有其他情况，请按博客文章[使用 SSD 存储 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) 中的步骤操作，以防止重启后发生故障。 如果本地驱动器的容量对于 TempDB 而言不足，请将 TempDB 放在位于具有[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)的高级 SSD 盘上的[条带化](../../../virtual-machines/premium-storage-performance.md)存储池上。 |
+| [I/O](#io-guidance) |- 启用数据库页面压缩。<br/><br/> - 对数据文件启用即时文件初始化。<br/><br/> - 限制数据库自动增长。<br/><br/> - 禁用数据库自动收缩。<br/><br/> - 将所有数据库（包括系统数据库）转移到数据磁盘。<br/><br/> - 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。<br/><br/> - 配置默认的备份和数据库文件位置。<br/><br/> - [在内存中启用锁定页面](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows)。<br/><br/> -为安装的 SQL Server 版本评估并应用 [最新的累积更新](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server) 。 |
 | [Feature-specific](#feature-specific-guidance) | - 直接备份到 Azure Blob 存储。<br/><br/>- 对于大于 12 TB 的数据库，请使用[文件快照备份](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 <br/><br/>- 使用多个临时数据库文件，每个核心处理 1 个文件，最多处理 8 个文件。<br/><br/>- 将最大服务器内存设置为操作系统剩余内存的 90% 或最大 50 GB。 <br/><br/>- 启用软 NUMA。 |
 
+
+<br/>
 有关如何和为何进行这些优化的详细信息，请参阅以下部分提供的详细信息与指导 。
+<br/><br/>
+
+## <a name="getting-started"></a>入门
+
+如果在 Azure VM 上创建新的 SQL Server，但未迁移当前的源系统，请根据供应商的要求创建新 SQL Server VM。  SQL Server VM 的供应商要求与部署在本地的要求相同。 
+
+如果要使用为云构建的新应用程序创建新的 SQL Server VM，可以在数据和使用要求变化时轻松调整 SQL Server VM 的大小。
+启动具有较低层 D 系列、B 系列或 Av2 系列的开发环境，并随着时间的推移成长环境。 
+
+建议为生产 OLTP 环境使用的最小值为 4 vCore、32 GB 的内存和8的内存与 vCore 的比率。 对于新环境，请从 4 vCore 机开始，在数据和计算要求发生变化时，将其扩展到8、16、32 Vcore 或更多。 对于 OLTP 吞吐量，目标 SQL Server 每 vCore 都有 5000 IOPS。 
+
+使用门户中的 "存储配置" SQL Server VM marketplace 映像。 这样可以更轻松地正确创建存储池，以获取工作负荷所需的大小、IOPS 和吞吐量。 选择支持高级存储和高级存储缓存 SQL Server Vm 很重要。 请参阅 [存储](#storage-guidance) 部分以了解详细信息。 
+
+SQL Server 数据仓库和任务关键型环境通常需要扩展到超出8个 vCore 的比率。 对于中型环境，可能需要选择16个核心到内存的比率，并为更大的数据仓库环境选择32的内核到内存的比率。 
+
+SQL Server 数据仓库环境通常会从大型计算机的并行处理中受益。 出于此原因，M 系列和 Mv2 系列是用于较大数据仓库环境的强大选项。
 
 ## <a name="vm-size-guidance"></a>VM 大小指导原则
 
-首先收集工作负荷在高峰期的 CPU、内存和存储吞吐量要求。 可以使用 \LogicalDisk\Disk Reads/Sec 和 \LogicalDisk\Disk Writes/Sec 性能计数器收集读取和写入 IOPS 要求，可以使用 \LogicalDisk\Disk Bytes/Sec 计数器收集数据、日志和临时数据库文件的[存储吞吐量要求](../../../virtual-machines/premium-storage-performance.md#disk-caching)。 定义高峰期的 IOPS 和吞吐量要求后，评估 VM 大小是否可提供这么多的容量。 例如，如果工作负荷在高峰期需要 20K 次读取 IOPS 和 10K 次写入 IOPS，则可以选择 E16s_v3（最高提供 32K 次缓存的 IOPS 和 25600 次未缓存的 IOPS），或包含 2 个 P30 磁盘的 M16_s（最高提供 20K 次缓存的 IOPS 和 10K 次未缓存的 IOPS）。 请确保了解工作负载的吞吐量和 IOPS 要求，因为 VM 具有不同的 IOPS 和吞吐量缩放限制。<br/><br/>[DSv_3](../../../virtual-machines/dv3-dsv3-series.md) 和 [Es_v3 系列](../../../virtual-machines/ev3-esv3-series.md)托管在通用硬件上，其中配备了 Intel Haswell 或 Broadwell 处理器。 [M 系列](../../../virtual-machines/m-series.md)为最大的 SQL Server 工作负载提供最大的 vCPU 计数和内存，并托管在使用 Skylake 处理器系列的内存优化硬件上。 这些 VM 系列支持高级存储，建议在其上配置主机级读取缓存，以实现最佳性能。 还可以在[受约束的核心大小](../../../virtual-machines/constrained-vcpu.md)中选择 Es_v3 和 M 系列，这样能为计算需求低、存储容量需求高的工作负荷节省成本。 
+使用源计算机的 vCPU 和内存配置作为将当前本地 SQL Server 数据库迁移到 Azure Vm SQL Server 的基准。 将核心许可证引入 Azure 以利用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/) ，并节省 SQL Server 许可成本。
+
+**对于生产 SQL Server 工作负荷，Microsoft 建议使用8作为开始点的内存与 vCore 的比率。** 对于非生产工作负荷，可接受较小的比率。 
+
+根据工作负荷 (OLTP 或数据仓库) ，选择 [内存优化](../../../virtual-machines/sizes-memory.md)、 [常规用途](../../../virtual-machines/sizes-general.md)、 [存储优化](../../../virtual-machines/sizes-storage.md)或 [受限制的 vCore](../../../virtual-machines/constrained-vcpu.md) 虚拟机大小，最适合 SQL Server 性能。 
+
+### <a name="memory-optimized"></a>内存优化
+
+[内存优化虚拟机大小](../../../virtual-machines/sizes-memory.md)是 SQL Server Vm 和 Microsoft 推荐的选择的主目标。 内存优化虚拟机提供更强的内存到 CPU 比率和中型到大缓存选项。 
+
+#### <a name="m-and-mv2-series"></a>M 和 Mv2 系列
+
+[M 系列](../../../virtual-machines/m-series.md)为某些最大 SQL Server 工作负荷提供 vCore 数和内存。  
+
+[Mv2 系列](../../../virtual-machines/mv2-series.md)具有最高的 vCore 计数和内存，建议用于关键任务和数据仓库工作负荷。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，以支持大量内存中数据库和工作负荷，这对于关系数据库服务器、大型缓存和内存中分析而言非常理想。
+
+例如， [Standard_M64ms](../../../virtual-machines/m-series.md) 的内存与 vCore 的比率为28。
+
+M 和 Mv2 系列的某些功能对 SQL Server 性能有吸引力，其中包括 [高级存储](../../../virtual-machines/premium-storage-performance.md) 和 [高级存储缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching) 支持、 [超高磁盘](../../../virtual-machines/disks-enable-ultra-ssd.md) 支持和 [写入加速](../../../virtual-machines/how-to-enable-write-accelerator.md)。
+
+#### <a name="edsv4-series"></a>Edsv4 系列
+
+[Edsv4 系列](../../../virtual-machines/edv4-edsv4-series.md)是为内存密集型应用程序而设计的。 这些 Vm 具有大量的本地存储 SSD 容量、强本地磁盘 IOPS、最大为 504 GiB RAM，以及与以前的 Ev3/Esv3 大小（与 Gen2 Vm 相比）的改进的计算。 这些虚拟机上的内存与 vCore 的比值几乎一致，这非常适合标准 SQL Server 工作负荷。 
+
+此 VM 系列非常适用于内存密集型企业应用程序和应用程序，这些应用程序和应用程序从低延迟、高速本地存储中获益。
+
+Edsv4 系列虚拟机支持 [高级存储](../../../virtual-machines/premium-storage-performance.md)和 [高级存储缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。
+
+#### <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
+
+[DSv2 系列 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)的内存和磁盘配置与上一个 D 系列相同。 这一系列在所有虚拟机上的内存与 CPU 之间的比率都保持一致。 
+
+[DSv2 系列 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)支持[高级存储](../../../virtual-machines/premium-storage-performance.md)和[高级存储缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)，为获得最佳性能，强烈建议这样做。
+
+### <a name="general-purpose"></a>常规用途
+
+[一般用途的虚拟机大小](../../../virtual-machines/sizes-general.md)旨在为较小的入门级工作负荷（如开发和测试、web 服务器和较小的数据库服务器）提供均衡的内存到 vCore 的比率。 
+
+由于与一般用途虚拟机相比，内存与 vCore 的比率较小，因此务必仔细监视基于内存的性能计数器，以确保 SQL Server 能够获取所需的缓冲区缓存内存。 有关详细信息，请参阅 [内存性能基线](#memory) 。 
+
+由于生产工作负荷的开始建议是 vCore 的内存与的比率，因此运行 SQL Server 的常规用途 VM 的最小推荐配置是 4 vCPU 和 32 GB 的内存。 
+
+#### <a name="ddsv4-series"></a>Ddsv4 系列
+
+[Ddsv4 系列](../../../virtual-machines/ddv4-ddsv4-series.md)提供 vCPU、内存和临时磁盘的公平组合，但具有更小的内存到 vCore 支持。 
+
+Ddsv4 Vm 包括延迟较低的本地存储。
+
+这些计算机非常适合需要快速访问临时存储和部门关系数据库的并行 SQL 和应用部署。 此系列中的所有虚拟机都具有标准的内存与 vCore 的比率。 
+
+出于此原因，建议使用 D8ds_v4 作为此系列中的 starter 虚拟机，该虚拟机具有 8 Vcore 和 32 Gb 的内存。 最大的计算机是 D64ds_v4，它具有 64 Vcore 和 256 Gb 的内存。
+
+[Ddsv4 系列](../../../virtual-machines/ddv4-ddsv4-series.md)虚拟机支持[高级存储](../../../virtual-machines/premium-storage-performance.md)和[高级存储缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。
+
+> [!NOTE]
+> [Ddsv4 系列](../../../virtual-machines/ddv4-ddsv4-series.md)没有建议用于 SQL Server 工作负荷的内存与 vCore 的比率。 因此，考虑仅将这些虚拟机用于较小的应用程序和开发工作负荷。
+
+#### <a name="b-series"></a>B 系列
+
+[可突增 B 系列](../../../virtual-machines/sizes-b-series-burstable.md)虚拟机大小适用于不需要一致性能的工作负荷，如概念证明和非常小的应用程序和开发服务器。 
+
+大多数 [可突增 B 系列](../../../virtual-machines/sizes-b-series-burstable.md) 虚拟机大小的内存与 vCore 比率均为4。 这些计算机中的最大值是 [Standard_B20ms](../../../virtual-machines/sizes-b-series-burstable.md) 具有 20 vcore 和 80 GB 的内存。
+
+此系列是独一无二的，因为应用程序可以在营业时间内 **突发** ，而可突增信用会因计算机大小而异。 
+
+当信用额度用完时，VM 会恢复到基准机性能。
+
+B 系列的优点是，与其他系列中的其他 VM 大小相比，在一整天内需要一定的处理能力的情况上，可以节省计算。
+
+此系列支持 [高级存储](../../../virtual-machines/premium-storage-performance.md)，但不 **支持**[高级存储缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。
+
+> [!NOTE] 
+> [可突增 B 系列](../../../virtual-machines/sizes-b-series-burstable.md)没有建议用于 SQL Server 工作负荷的内存与 vCore 的比率。 因此，请考虑将这些虚拟机仅用于较小的应用程序、web 服务器和开发工作负荷。
+
+#### <a name="av2-series"></a>Av2 系列
+
+[Av2 系列](../../../virtual-machines/av2-series.md)vm 最适用于入门级工作负荷，如开发和测试、低流量 web 服务器、小型到中型应用程序数据库和概念证明。
+
+只有 [Standard_A2m_v2](../../../virtual-machines/av2-series.md) (2 个 Vcore 和16GBs 内存) ， [Standard_A4m_v2](../../../virtual-machines/av2-series.md) (4 vcore 和32GBs 的内存) ，以及 Standard_A8m_v2 (8 vcore 和 64GBs [内存) 对于](../../../virtual-machines/av2-series.md) 这前三个虚拟机具有良好的内存到 vCore 的比率。 
+
+对于较小的开发和测试 SQL Server 计算机，这些虚拟机是很好的选择。 
+
+对于小型应用程序和 web 服务器，8 vCore [Standard_A8m_v2](../../../virtual-machines/av2-series.md) 也可能是一个不错的选择。
+
+> [!NOTE] 
+> Av2 系列不支持高级存储，因此，不建议将其用于生产 SQL Server 工作负载，即使使用的虚拟机的 vCore 率为8。
+
+### <a name="storage-optimized"></a>存储优化
+
+[存储优化的 VM 大小](../../../virtual-machines/sizes-storage.md)适用于特定用例。 这些虚拟机专门设计了优化磁盘吞吐量和 IO。 此虚拟机系列适用于大数据方案、数据仓库和大型事务数据库。 
+
+#### <a name="lsv2-series"></a>Lsv2 系列
+
+[Lsv2 系列提供](../../../virtual-machines/lsv2-series.md)高吞吐量、低延迟和本地 NVMe 存储。 优化 Lsv2 系列 VM 以使用直接连接到 VM 的节点上的本地磁盘，而不是使用持久数据磁盘。 
+
+这些虚拟机是适用于大数据、数据仓库、报告和 ETL 工作负载的强大选项。 本地 NVMe 存储的高吞吐量和 IOPs 非常适合用于处理将加载到数据库的文件，以及可以从源系统或其他存储库（例如 Azure Blob 存储或 Azure Data Lake）重新创建源数据的其他方案。 [Lsv2 系列](../../../virtual-machines/lsv2-series.md) Vm 还可以将磁盘性能突发到最多30分钟。
+
+这些虚拟机的大小介于8到 80 vCPU 之间，每个 vCPU 有8个 GiB 内存，每8个个 vcpu 有 1.92 TB 的 NVMe SSD。 这意味着，对于此系列系列的最大 VM， [L80s_v2](../../../virtual-machines/lsv2-series.md)，有80的内存，1.92 Tb 的 NVMe 存储空间为 vCPU 和640选手。  所有这些虚拟机上的内存与 vCore 的一致性都是一致的。
+
+NVMe 存储是暂时的，这意味着，如果重新启动虚拟机，数据将在这些磁盘上丢失。
+
+Lsv2 和 Ls 系列支持 [高级存储](../../../virtual-machines/premium-storage-performance.md)，但不支持高级存储缓存。 不支持创建本地缓存以提高 IOPs。 
+
+> [!WARNING]
+> 将数据文件存储在临时 NVMe 存储上可能会导致在释放 VM 时丢失数据。 
+
+### <a name="constrained-vcores"></a>受约束的 Vcore
+
+高性能 SQL Server 工作负荷通常需要更大的内存、IO 和吞吐量，而无需较高的 vCore 计数。 
+
+大多数 OLTP 工作负载都是由大量较小事务驱动的应用程序数据库。 对于 OLTP 工作负荷，只读取或修改少量的数据，但按用户计数驱动的事务量要大得多。 一定要使 SQL Server 内存可用于缓存计划、存储最近访问的数据的性能，并确保可以快速将物理读取读入内存中。 
+
+这些 OLTP 环境需要更大的内存量、快速存储和最佳执行所需的 i/o 带宽。 
+
+为了保持此性能级别，而无需较高的 SQL Server 许可成本，Azure 提供了 VM 大小和 [受约束的 vCPU 计数](../../../virtual-machines/constrained-vcpu.md)。 
+
+这有助于通过减少可用的 Vcore 并维持父虚拟机的相同内存、存储和 i/o 带宽，来控制许可成本。
+
+VCPU 计数可限制为原始 VM 大小的半到四分之一。 减少可用于虚拟机的 Vcore 可实现更高的内存到 vCore 的比率。
+
+这些新的 VM 大小有一个后缀，用于指定活动的个 vcpu 数，使其更易于识别。 
+
+例如， [m64-16ms-m128-32ms](../../../virtual-machines/constrained-vcpu.md) 只需要授权 32 SQL Server Vcore 和 [M64ms](../../../virtual-machines/m-series.md) 的内存、IO 和吞吐量， [m64-16ms-m32-16ms](../../../virtual-machines/constrained-vcpu.md) 只需授予16个 vcore。  尽管 [m64-16ms-m32-16ms](../../../virtual-machines/constrained-vcpu.md) 具有 M64ms 的 SQL Server 许可成本，但虚拟机的计算成本会是相同的。
+
+> [!NOTE] 
+> - 大中型数据仓库工作负荷仍可能会从 [受限制的 VCore vm](../../../virtual-machines/constrained-vcpu.md)中获益，但数据仓库工作负荷的特征通常是，通过并行运行的查询计划来更少地处理大量数据。 
+> - 计算成本（包括操作系统许可）将保持与父虚拟机相同。 
 
 ## <a name="storage-guidance"></a>存储指导原则
 
-若要详细了解根据 TPC-E 和 TPC_C 基准在 Azure 虚拟机上进行的 SQL Server 性能测试，请参阅博客：[优化 OLTP 性能](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)。 
+若要详细测试具有 TPC E 和 TPC-C 基准的 Azure 虚拟机上的 SQL Server 性能，请参阅博客 [优化 OLTP 性能](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)。 
 
 对于所有生产工作负荷，建议结合使用 Azure Blob 缓存和高级 SSD。 
 
@@ -85,7 +229,7 @@ Azure 虚拟机上有三种主要磁盘类型：
 
 临时存储驱动器，标记为 **D** 驱动器，不会持久保存到 Azure Blob 存储中。 不要在 **D**: 驱动器中存储用户数据库文件或用户事务日志文件。
 
-将 TempDB 放在本地 SSD `D:\` 驱动器上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 如果从 Azure 门户或 Azure 快速入门模板创建 VM，并[将临时数据库置于本地磁盘上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，则无需执行任何其他操作；对于所有其他情况，请按博客文章[使用 SSD 存储 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) 中的步骤操作，以防止重启后发生故障。 如果本地驱动器的容量对于 TempDB 而言不足，请将 TempDB 放在位于具有[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)的高级 SSD 盘上的[条带化](../../../virtual-machines/premium-storage-performance.md)存储池上。
+将 TempDB 放在本地 SSD `D:\` 驱动器上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 如果从 Azure 门户或 Azure 快速入门模板创建 VM，并[将临时数据库置于本地磁盘上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，则无需执行任何其他操作；对于所有其他情况，请按博客文章[使用 SSD 存储 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) 中的步骤操作，以防止重启后发生故障。 如果本地驱动器的容量对于 TempDB 而言不足，请将 TempDB 放在位于具有[只读缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)的高级 SSD 盘上的[条带化](../../../virtual-machines/premium-storage-performance.md)存储池上。
 
 对于支持高级 SSD 的 VM，你也可以将 TempDB 存储在支持高级 SSD 且已启用读缓存的磁盘上。
 
@@ -142,7 +286,7 @@ Azure 虚拟机上有三种主要磁盘类型：
      > [!WARNING]
      > 请在更改 Azure 虚拟机磁盘的缓存设置时停止 SQL Server 服务，以免出现数据库损坏的情况。
 
-* **NTFS 分配单元大小**：格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。 如果将 TempDB 放置在临时磁盘上（D:\ 驱动器），利用此驱动器获得的性能使我们不需要使用 64K 分配单元大小。 
+* **NTFS 分配单元大小**：格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。 如果在临时磁盘上放置 TempDB (D:\推动) 利用此驱动器获得的性能超出了对 64-KB 分配单元大小的需要。 
 
 * **磁盘管理最佳做法**：删除数据磁盘或更改其缓存类型时，请在更改过程中停止 SQL Server 服务。 在 OS 磁盘上更改缓存设置时，Azure 会先停止 VM，在更改缓存类型后再重新启动 VM。 更改数据磁盘的缓存设置时，不会停止 VM，但会在更改期间将数据磁盘从 VM 分离，完成后再重新附加该数据磁盘。
 
@@ -210,10 +354,61 @@ Azure 虚拟机上有三种主要磁盘类型：
 
 
 
+## <a name="collect-performance-baseline"></a>收集性能基线
+
+对于更具规范性的方法，请使用 PerfMon/LogMan 收集性能计数器，并捕获 SQL Server 等待统计信息，以便更好地了解源环境的一般压力和潜在瓶颈。 
+
+首先，在[应用程序性能清单](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)后按高峰时间收集源工作负荷的 CPU、内存、 [IOPS](../../../virtual-machines/premium-storage-performance.md#iops)、[吞吐量](../../../virtual-machines/premium-storage-performance.md#throughput)和[延迟](../../../virtual-machines/premium-storage-performance.md#latency)。 
+
+在您的典型工作日内收集高峰时段（例如工作负荷）中的数据，还可以收集其他高负载流程，例如，日常处理和周末 ETL 工作负荷。 考虑将资源扩展为非常复杂的工作负荷，如季度末处理，然后在工作负荷完成后进行缩放。 
+
+使用性能分析来选择可根据工作负荷的性能要求缩放的 [VM 大小](../../../virtual-machines/sizes-memory.md) 。
+
+
+### <a name="iops-and-throughput"></a>IOPS 和吞吐量
+
+SQL Server 性能在很大程度上取决于 i/o 子系统。 除非数据库适合物理内存，否则 SQL Server 会不断地将数据库页面传入和传出缓冲池。 应以不同的方式处理 SQL Server 的数据文件。 除了随机访问包含 TempDB 的数据文件（包括 TempDB）时，对日志文件的访问都是连续的。 如果有较慢的 i/o 子系统，你的用户可能会遇到性能问题，例如响应时间慢和由于超时而无法完成的任务。 
+
+默认情况下，Azure Marketplace 虚拟机在物理磁盘上具有与数据文件不同的日志文件。 TempDB 数据文件计数和大小符合最佳实践，以暂时 D：/驱动器。 
+
+以下 PerfMon 计数器可帮助验证 SQL Server 所需的 IO 吞吐量： 
+* **\LogicalDisk\Disk 读取数/秒** (读取和写入 IOPS) 
+* **每秒 \LogicalDisk\Disk 写入** (读取和写入 IOPS)  
+* **\LogicalDisk\Disk Bytes/Sec** (数据、日志和 TempDB 文件的吞吐量要求) 
+
+使用最高级别的 IOPS 和吞吐量要求评估与度量值匹配的 VM 大小。 
+
+如果你的工作负荷需要 20 K 读取 IOPS 和10K 写入 IOPS，则可以选择 E16s_v3 (，最高可达 32 K 缓存和25600未缓存的 IOPS) 或 M16_s (，最多可使用 20 K 缓存和10K 未缓存的 IOPS，) 使用存储空间的 2 P30 磁盘条带化。 
+
+请确保了解工作负荷的吞吐量和 IOPS 要求，因为 Vm 具有不同的 IOPS 和吞吐量的规模限制。
+
+### <a name="memory"></a>内存
+
+跟踪操作系统使用的外部内存，以及 SQL Server 内部使用的内存。 为任一组件确定压力有助于调整虚拟机的大小，并确定优化的机会。 
+
+以下 PerfMon 计数器可帮助验证 SQL Server 虚拟机的内存运行状况： 
+* [\Memory\Available MBytes](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* [\SQLServer：内存 Manager\Target 服务器内存 (KB) ](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer：内存 Manager\Total 服务器内存 (KB) ](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer： Buffer Manager\Lazy writes/sec](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer： Buffer Manager\Page 人寿保险](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+
+### <a name="compute--processing"></a>计算/处理
+
+Azure 中的计算的管理方式不同于本地。 在过去几年中，本地服务器的构建时间无需升级，因为管理开销和获取新硬件的成本。 虚拟化可减少其中一些问题，但对应用程序进行了优化，以充分利用基础硬件，这意味着对资源消耗的任何重大更改都需要重新平衡整个物理环境。 
+
+这不是 Azure 中的难题，在这种情况下，新的虚拟机位于不同的硬件系列上，甚至在不同的区域，这种情况很容易实现。 
+
+在 Azure 中，你想要充分利用尽可能多的虚拟机资源，因此，应将 Azure 虚拟机配置为尽可能提高平均 CPU 数量，而不会影响工作负荷。 
+
+以下 PerfMon 计数器可帮助验证 SQL Server 虚拟机的计算运行状况：
+* **\Processor 信息 (_Total) \% 处理器时间**
+* **\Process (sqlservr.exe) \% 处理器时间**
+
+> [!NOTE] 
+> 理想情况下，尝试使用80% 的计算，其峰值高于90%，但在任何持续时间内不会达到100%。 从根本上讲，只需预配应用程序所需的计算，然后计划随着业务需求增加或减少。 
 
 ## <a name="next-steps"></a>后续步骤
-
-有关存储和性能的详细信息，请参阅 [Azure 虚拟机上 SQL Server 的存储配置准则](/archive/blogs/sqlserverstorageengine/storage-configuration-guidelines-for-sql-server-on-azure-vm)
 
 有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 

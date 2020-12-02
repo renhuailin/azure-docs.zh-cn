@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: f06777e559187a57bfe0625cde700f30fb636a2b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 495300d677d6d898bfc916e5115b801c815bd587
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974453"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461485"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>将数据引入 Azure Data Lake Storage Gen2 
 
@@ -67,9 +67,9 @@ ms.locfileid: "95974453"
 1. 选择工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上选择“完成”。   
 1. 转到左侧边栏中的“监视器”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“操作”列中的链接来查看活动详细信息以及重新运行该管道。
 1. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。  此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。  若要回到“管道运行”视图，请选择顶部的“管道运行”。 若要刷新视图，请选择“刷新”。
-1. 验证数据是否已正确写入专用 SQL 池中。
+1. 验证数据是否已正确写入到专用 SQL 池中。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到专用 SQL 池一](data-integration-sql-pool.md) 文。
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到专用 SQL 池一](data-integration-sql-pool.md) 文。

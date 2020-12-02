@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323162"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461318"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a> (预览创建到数据源的托管专用终结点) 
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>创建一个托管专用终结点到你的数据源
 
 本文介绍如何在 Azure 中创建数据源的托管专用终结点。 若要了解详细信息，请参阅 [托管专用终结点](./synapse-workspace-managed-private-endpoints.md) 。
 
@@ -25,24 +25,24 @@ ms.locfileid: "93323162"
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>步骤2：导航到 Synapse Studio 中的 "托管虚拟网络" 选项卡
 
-在 Azure Synapse Studio 中，从左侧导航栏中选择 " **管理** " 选项卡。 选择 " **托管专用终结点** "，然后选择 " **+ 新建** "。
+在 Azure Synapse Studio 中，从左侧导航栏中选择 " **管理** " 选项卡。 选择 " **托管专用终结点** "，然后选择 " **+ 新建**"。
 ![创建新的托管专用终结点](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>步骤3：选择数据源类型
 
-选择数据源类型。 在这种情况下，目标数据源是 ADLS Gen2 帐户。 选择“继续”。 
+选择数据源类型。 在这种情况下，目标数据源是 ADLS Gen2 帐户。 选择“继续”。
 ![选择目标数据源类型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步骤4：输入有关数据源的信息
 
-在下一个窗口中，输入有关数据源的信息。 在此示例中，我们要创建一个 ADLS Gen2 帐户的托管专用终结点。 输入托管专用终结点的 **名称** 。 提供 **Azure 订阅** 和 **存储帐户名称** 。 选择“创建”。
+在下一个窗口中，输入有关数据源的信息。 在此示例中，我们要创建一个 ADLS Gen2 帐户的托管专用终结点。 输入托管专用终结点的 **名称** 。 提供 **Azure 订阅** 和 **存储帐户名称**。 选择“创建”。
 ![输入目标数据源详细信息](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步骤5：验证托管专用终结点是否已成功创建
 
-提交请求后，你将看到其状态。 若要验证是否创建了已成功创建托管专用终结点，请检查其 *设置状态* 。 可能需要等待1分钟，然后选择 " **刷新** " 以更新预配状态。 你可以看到已成功创建 ADLS Gen2 帐户的托管专用终结点。
+提交请求后，你将看到其状态。 若要验证是否创建了已成功创建托管专用终结点，请检查其 *设置状态*。 可能需要等待1分钟，然后选择 " **刷新** " 以更新预配状态。 你可以看到已成功创建 ADLS Gen2 帐户的托管专用终结点。
 
-你还可以看到 *审批状态* 为 " *挂起* "。 目标资源的所有者可以批准或拒绝专用终结点连接请求。 如果所有者批准专用终结点连接请求，则建立一个专用链接。 如果拒绝，则不建立专用链接。
+你还可以看到 *审批状态* 为 " *挂起*"。 目标资源的所有者可以批准或拒绝专用终结点连接请求。 如果所有者批准专用终结点连接请求，则建立一个专用链接。 如果拒绝，则不建立专用链接。
 ![托管专用终结点创建请求状态](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
 ## <a name="next-steps"></a>后续步骤

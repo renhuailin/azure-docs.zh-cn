@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672083"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462058"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -55,8 +55,8 @@ ms.locfileid: "92672083"
 
 分类包含两种元数据属性：
 
-- **标签** ：主要分类属性，用于定义列中存储的数据的敏感度级别。  
-- **信息类型** ：提供有关列中存储的数据类型的更详尽信息的属性。
+- **标签**：主要分类属性，用于定义列中存储的数据的敏感度级别。  
+- **信息类型**：提供有关列中存储的数据类型的更详尽信息的属性。
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
 
@@ -77,7 +77,9 @@ ms.locfileid: "92672083"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-1. 转到“Azure SQL 数据库”窗格的“安全”标题下的“数据发现和分类”。 “概述”选项卡中包含数据库当前分类状态的摘要。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请 [跳到步骤 4](#step-4)。
+1. 请参阅 "Azure SQL 数据库" 窗格中 "**安全**" 标题下的 "**数据发现" & 分类**。 “概述”选项卡中包含数据库当前分类状态的摘要。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请 [跳到步骤 4](#step-4)。
+
+    ![概述](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. 若要下载 Excel 格式的报表，请选择窗格顶部菜单中的“导出”。
 
@@ -93,6 +95,8 @@ ms.locfileid: "92672083"
 
    - 若要应用所选建议，请选择“接受所选建议”。
 
+   ![分类建议](./media/data-discovery-and-classification-overview/recommendation.png)
+
 1. 还可以手动对列进行分类，这是基于建议分类的替代选项：
 
    1. 选择窗格顶部菜单中的“添加分类”。
@@ -101,7 +105,10 @@ ms.locfileid: "92672083"
 
    1. 选择上下文窗口底部的“添加分类”。
 
-1. 若要完成分类并永久使用新分类元数据标记数据库列，请在窗口顶部菜单中选择“保存”。
+   ![手动添加分类](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. 若要完成分类并永久标记 (标记) 具有新分类元数据的数据库列，请在 "**分类**" 页中选择 "**保存**"。
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>审核对敏感数据的访问
 

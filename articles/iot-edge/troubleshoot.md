@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964501"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462375"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -81,7 +81,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>验证是否在设备上安装了 IoT Edge
 
-可以通过 [监视 edgeAgent 模块](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)克隆来验证设备上的 IoT Edge 安装。
+可以通过 [监视 edgeAgent 模块](./how-to-monitor-module-twins.md)克隆来验证设备上的 IoT Edge 安装。
 
 若要获取最新的 edgeAgent 模块，请从 [Azure Cloud Shell](https://shell.azure.com/)运行以下命令：
 
@@ -89,7 +89,7 @@ iotedge support-bundle --since 6h
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-此命令将输出所有 edgeAgent [报告属性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)。 下面是一些有用的监视设备状态：
+此命令将输出所有 edgeAgent [报告属性](./module-edgeagent-edgehub.md)。 下面是一些有用的监视设备状态：
 
 * 运行时状态
 * 运行时开始时间

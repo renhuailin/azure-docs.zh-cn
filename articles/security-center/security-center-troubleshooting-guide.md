@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340336"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460420"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "92340336"
 
 * 虚拟机行为分析 (VMBA)
 * 网络分析
-* SQL 数据库和 Azure Synapse Analytics（以前称为 SQL 数据仓库）分析
+* SQL 数据库和 Azure Synapse Analytics 分析
 * 上下文信息
 
 客户可以根据警报类型收集所需的信息，以便通过以下资源来调查警报：
@@ -128,7 +128,7 @@ ms.locfileid: "92340336"
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>排查加载仪表板的问题
 
-如果在加载“安全中心”仪表板时遇到问题，请确保将订阅注册到安全中心的用户（即第一个通过订阅打开安全中心的用户）以及需要启用数据收集功能的用户为订阅的*所有者* 或*参与者*。 从该时刻开始，在订阅上为*读者* 的 also user 即可查看 dashboard/alerts/recommendation/policy。
+如果在加载“安全中心”仪表板时遇到问题，请确保将订阅注册到安全中心的用户（即第一个通过订阅打开安全中心的用户）以及需要启用数据收集功能的用户为订阅的 *所有者* 或 *参与者*。 从该时刻开始，在订阅上为 *读者* 的 also user 即可查看 dashboard/alerts/recommendation/policy。
 
 ## <a name="contacting-microsoft-support"></a>请联系 Microsoft 支持人员
 

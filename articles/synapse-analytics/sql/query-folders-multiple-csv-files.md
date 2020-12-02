@@ -1,6 +1,6 @@
 ---
-title: '使用无服务器 SQL 池的查询文件夹和多个文件 (预览) '
-description: 无服务器 SQL 池 (预览版) 支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。
+title: 使用无服务器 SQL 池查询文件夹和多个文件
+description: 无服务器 SQL 池支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684553"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462633"
 ---
 # <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
 
-本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池 (预览版) 编写查询。
+本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。
 
 无服务器 SQL 池支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。 但是，由于允许使用多个通配符，因此存在更大的灵活性。
 

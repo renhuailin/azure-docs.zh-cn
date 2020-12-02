@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917913"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460057"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * 请检查以确保具有专用 DNS 区域资源。 
     1. 必须具有名称准确的专用 DNS 区域资源：privatelink.vaultcore.azure.net。 
-    2. 若要了解如何对此进行设置，请参阅以下链接。 [专用 DNS 区域](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. 若要了解如何对此进行设置，请参阅以下链接。 [专用 DNS 区域](../../dns/private-dns-privatednszone.md)
     
 * 请检查以确保专用 DNS 区域未链接到虚拟网络。 如果仍在返回公共 IP 地址，则可能存在该问题。 
     1. 如果专用区域 DNS 未链接到虚拟网络，则从虚拟网络发起的 DNS 查询会返回 Key Vault 的公共 IP 地址。 
     2. 在 Azure 门户中导航到专用 DNS 区域资源，然后单击虚拟网络链接选项。 
     4. 必须列出将对 Key Vault 执行调用的虚拟网络。 
     5. 如果它不存在，请添加它。 
-    6. 有关详细步骤，请参阅以下文档[将虚拟网络链接到专用 DNS 区域](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+    6. 有关详细步骤，请参阅以下文档[将虚拟网络链接到专用 DNS 区域](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * 请检查以确保专用 DNS 区域不缺少 Key Vault 的 A 记录。 
     1. 导航到专用 DNS 区域页。 

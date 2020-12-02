@@ -1,5 +1,5 @@
 ---
-title: '使用无服务器 SQL 池查询 JSON 文件 (预览) '
+title: 使用无服务器 SQL 池查询 JSON 文件
 description: 本部分介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池读取 JSON 文件。
 services: synapse-analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d071bbabf630dd326ae46f4c840f8e60f957f9fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462608"
 ---
-# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池 (预览版) 查询 JSON 文件
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 JSON 文件
 
-本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池 (预览版) 编写查询。 查询的目标是使用 [OPENROWSET](develop-openrowset.md)读取 JSON 文件。 
+本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。 查询的目标是使用 [OPENROWSET](develop-openrowset.md)读取 JSON 文件。 
 - 将多个 JSON 文档存储为 JSON 数组的标准 JSON 文件。
 - 行分隔的 JSON 文件，其中 JSON 文档用换行符分隔。 这些类型的文件的常见扩展为 `jsonl` 、 `ldjson` 和 `ndjson` 。
 

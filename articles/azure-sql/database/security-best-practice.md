@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 803c9a98f0dc10ff8218ac7b7c20dcb117700034
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187096"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459660"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "96187096"
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>本指南不涉及的部署产品/服务
 
-- Azure Synapse Analytics（以前称为 SQL 数据仓库）
+- Azure Synapse Analytics
 - Azure SQL VM (IaaS)
 - SQL Server
 

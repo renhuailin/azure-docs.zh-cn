@@ -9,14 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986634"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462688"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
+
+> [!IMPORTANT]
+> 适用于 Azure Cosmos DB 的 Azure Synapse 链接的无服务器 SQL 池支持当前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 无服务器 SQL 池允许分析 Azure Cosmos DB 容器中的数据，这些数据可以近乎实时地使用 [Azure Synapse 链接](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询 [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的数据，以及通过 t-sql 接口将集成连接到各种商业智能 (BI) 和即席查询工具。
 
@@ -260,8 +264,8 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、Boolean、null�
 | --- | --- |
 | 布尔 | bit |
 | Integer | bigint |
-| 小数 | float |
-| 字符串 | varchar (UTF-8 数据库排序规则)  |
+| 小数 | FLOAT |
+| String | varchar (UTF-8 数据库排序规则)  |
 |  (ISO 格式的字符串的日期时间)  | varchar (30)  |
 | UNIX 时间戳 (日期时间)  | bigint |
 | Null | `any SQL type` 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001711"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462642"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -31,7 +31,7 @@ ms.locfileid: "96001711"
 本文介绍如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 ## <a name="overview"></a>概述
-可将数据从任一支持的源数据存储复制到 Azure Blob 存储，或从 Azure Blob 存储移动到任一支持的接收器数据存储。 下表列出了有关复制活动支持作为源或接收器的数据存储。 例如，可以将数据 **从** SQL Server 数据库或 Azure SQL 数据库中的数据库移动 **到** azure blob 存储。 并且，可以将数据 **从** azure blob 存储复制 **到** azure Synapse ANALYTICS (以前的 SQL 数据仓库) 或 Azure Cosmos DB 集合。
+可将数据从任一支持的源数据存储复制到 Azure Blob 存储，或从 Azure Blob 存储移动到任一支持的接收器数据存储。 下表列出了有关复制活动支持作为源或接收器的数据存储。 例如，可以将数据 **从** SQL Server 数据库或 Azure SQL 数据库中的数据库移动 **到** azure blob 存储。 并且，可以将数据 **从** azure blob 存储复制 **到** azure Synapse Analytics 或 Azure Cosmos DB 集合。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -81,7 +81,7 @@ ms.locfileid: "96001711"
 
 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置、格式等信息。 **AzureBlob** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName** ，并且没有在活动接收器中指定 **preserveHierarchy** ，则生成的文件的名称将采用以下格式： `Data.<Guid>.txt` (： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -207,7 +207,7 @@ ms.locfileid: "96001711"
     4. 保存设置以用于“重复执行模式”。 此任务在下一步中指定的开始和结束时间之间每日运行。
     5. 将开始日期时间更改为 2017/04/21。
     6. 将结束日期时间更改为 2017/04/25。 建议直接键入日期而不是浏览日历。
-    8. 单击“配置目录分区”  。
+    8. 单击“下一步”  。
         ![复制工具 - 属性页](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。  此页用于指定复制任务的源数据存储。 可使用现有的数据存储链接服务，或指定新的数据存储。 要使用现有链接服务，请选择“来自现有链接服务” ，并选择适当的链接服务。
     ![复制工具 - 源数据存储页](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -216,7 +216,7 @@ ms.locfileid: "96001711"
     2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。 
     3. 选择 Azure 订阅或针对 Azure 订阅选择“全选”。
     4. 从所选订阅的可用 Azure 存储帐户列表中，选择一个 **Azure 存储帐户**。 还可选择手动输入存储帐户设置，方法是在“帐户选择方法”中选择“手动输入”选项。
-    5. 单击“配置目录分区”  。  
+    5. 单击“下一步”  。  
         ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. 在“选择输入文件或文件夹”  页上：
     1. 双击“adfblobcontainer”。
@@ -227,7 +227,7 @@ ms.locfileid: "96001711"
     2. 请勿设置“以递归方式复制文件”。 选择此选项以递归方式遍历文件夹，寻找要复制到目标的文件。
     3. 请勿选择“二进制复制”选项。 选择此选项将对源文件执行到目标的二进制复制。 请勿对此演练选择该选项，以便在下一页中看到更多选项。
     4. 确认“压缩类型”已设为“无”。 如果源文件使用支持的格式之一进行压缩，请为此选项选择一个值。
-    5. 单击“配置目录分区”  。
+    5. 单击“下一步”  。
     ![复制工具-选择输入文件或文件夹2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。
     1. 请确认以下选项：  
@@ -249,7 +249,7 @@ ms.locfileid: "96001711"
     2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。 
     3. 选择 **Azure 订阅**。
     4. 选择 Azure 存储帐户。
-    5. 单击“配置目录分区”  。
+    5. 单击“下一步”  。
 10. 在“选择输出文件或文件夹”页上：  
     1. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。
     1. 对于“年”，请选择“yyyy”。
@@ -257,7 +257,7 @@ ms.locfileid: "96001711"
     1. 对于“日”，请确认它已设为“dd”。
     1. 确认 " **压缩类型** " 设置为 " **无**"。
     1. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
-    1. 单击“配置目录分区”  。
+    1. 单击“下一步”  。
        ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在“文件格式设置”页上，查看设置，并单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。
     ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)

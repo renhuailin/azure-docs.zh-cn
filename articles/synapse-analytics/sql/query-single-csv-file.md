@@ -1,6 +1,6 @@
 ---
-title: '使用无服务器 SQL 池查询 CSV 文件 (预览) '
-description: 在本文中，你将了解如何使用无服务器 SQL 池 (预览) 使用不同的文件格式查询单个 CSV 文件。
+title: 使用无服务器 SQL 池查询 CSV 文件
+description: 本文介绍如何使用无服务器 SQL 池查询具有不同文件格式的单个 CSV 文件。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685641"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462590"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
-本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池 (预览版) 查询单个 CSV 文件。 CSV 文件可有多种不同的格式： 
+本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池查询单个 CSV 文件。 CSV 文件可有多种不同的格式： 
 
 - 带有或不带标题行
 - 逗号和制表符分隔的值
@@ -47,7 +47,7 @@ from openrowset(
 选项 `firstrow` 用于跳过在这种情况下表示标头的 CSV 文件中的第一行。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
-> 如果 CSV 文件包含 UTF-8 字符，请确保使用某种 UTF-8 数据库排序规则 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 。
+> 如果 CSV 文件包含 UTF-8 字符，请确保使用 UTF-8 数据库排序规则 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 。
 > 文件中的文本编码与排序规则不匹配可能会导致意外的转换错误。
 > 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 

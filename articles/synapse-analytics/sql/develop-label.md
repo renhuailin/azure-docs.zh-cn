@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324465"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462259"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查询标签
 
 本文中包含的是有关在 Synapse SQL 中使用查询标签的基本技巧。
 
 > [!NOTE]
-> 无服务器 SQL 池 (预览) 不支持标签查询。
+> 无服务器 SQL 池不支持标签查询。
 
 ## <a name="what-are-query-labels"></a>什么是查询标签
 

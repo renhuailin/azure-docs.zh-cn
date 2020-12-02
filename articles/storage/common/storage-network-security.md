@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9638d4f8a44b044bb02d3f77d259860128d2e9db
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783634"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462238"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -241,12 +241,12 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 可以将存储帐户配置为允许从特定的公共 Internet IP 地址范围进行访问。 此配置向基于 Internet 的特定服务和本地网络授予访问权限，并阻止一般 Internet 流量。
 
-使用 [CIDR 表示法](https://tools.ietf.org/html/rfc4632)以 *16.17.18.0/24* 的形式，或使用单独的 IP 地址（如 *16.17.18.19* ）提供允许的 Internet 地址范围。
+使用 [CIDR 表示法](https://tools.ietf.org/html/rfc4632)以 *16.17.18.0/24* 的形式，或使用单独的 IP 地址（如 *16.17.18.19*）提供允许的 Internet 地址范围。
 
    > [!NOTE]
    > 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。
 
-IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 _10.*_ 、 _172.16.*_  - _172.31.*_ 和 _192.168.*_ 开头的地址。
+IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 _10.*_ 、_172.16.*_  - _172.31.*_ 和 _192.168.*_ 开头的地址。
 
    > [!NOTE]
    > IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
@@ -256,13 +256,13 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 存储防火墙规则的配置仅支持 IPV4 地址。
 
-每个存储帐户最多支持 200 IP 网络规则。
+每个存储帐户最多支持 200 个 IP 网络规则。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>配置从本地网络的访问
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-如果是在本地使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
+如果是在本地使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 对于 Microsoft 对等互连，所用 NAT IP 地址要么由客户提供，要么由服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -358,13 +358,13 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 ## <a name="exceptions"></a>例外
 
-在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在这种情况下，你可以使用 " *_允许受信任的 Microsoft 服务 ..._* "_ 用于启用此类服务访问你的数据、日志或分析的设置。
+在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在此类情况下，可以使用“允许受信任的 Microsoft 服务...”设置来允许此类服务访问数据、日志或分析。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服务
 
 某些 Microsoft 服务是从不能在网络规则中包含的网络上运行的。 可以向此类受信任的 Microsoft 服务中的一部分授予对存储帐户的访问权限，同时对其他应用维持网络规则。 然后，这些受信任的服务将使用强身份验证安全地连接到存储帐户。 我们为 Microsoft 服务启用了两种受信任的访问模式。
 
-- 某些服务的资源（在订阅中注册时 _ * * *）可以访问 **同一订阅中** 的存储帐户，以执行选择操作，如写入日志或备份。
+- 某些服务的资源在注册到订阅后，可在同一订阅中访问存储帐户进行选定操作，例如写入日志或备份。
 - 可通过向其系统分配的托管标识分配 Azure 角色，向某些服务的资源授予对存储帐户的显式访问权限。
 
 
@@ -396,10 +396,10 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 | Azure IoT 中心                  | Microsoft.Devices/IotHubs              | 允许将 IoT 中心的数据写入 Blob 存储。 [了解详细信息](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure 机器学习服务 | Microsoft.MachineLearningServices      | 经过授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 | 
-| Azure Synapse Analytics（以前称为 SQL 数据仓库）       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 通过特定 SQL 数据库导入和导出数据。 [了解详细信息](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
+| Azure Synapse Analytics       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 通过特定 SQL 数据库导入和导出数据。 [了解详细信息](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
 | Azure SQL 数据库       | Microsoft.Sql                          | 允许从存储帐户[导入](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)数据，并将审核数据[写入](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md)防火墙后的存储帐户。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 [了解详细信息](../../stream-analytics/blob-output-managed-identity.md)。 |
-| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Azure Synapse Analytics 访问 Azure 存储中的数据。 |
 
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

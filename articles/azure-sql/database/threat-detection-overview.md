@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, sstein
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785113"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461921"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>适用于 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的高级威胁防护
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92785113"
 
 ## <a name="alerts"></a>警报
 
-Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。 有关 Azure SQL 数据库的警报列表，请参阅 [Azure 安全中心内关于 SQL 数据库和 Azure Synapse Analytics（以前称为“SQL 数据仓库”）的警报](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)。
+Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。 有关 Azure SQL 数据库的警报列表，请参阅 [Azure 安全中心中的 SQL 数据库和 Azure Synapse Analytics 警报](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)。
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>浏览检测到的可疑事件
 
@@ -58,6 +58,10 @@ Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在�
 高级威胁防护将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 Azure 门户中“数据库和 SQL Azure Defender”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
 
 单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库中检测到的活动 SQL 威胁的概述。
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="数据库中的高级威胁防护警报概述":::
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="安全中心的高级威胁防护":::
 
 ## <a name="next-steps"></a>后续步骤
 

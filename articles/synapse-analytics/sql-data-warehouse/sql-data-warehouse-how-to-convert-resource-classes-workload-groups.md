@@ -1,6 +1,6 @@
 ---
 title: 将资源类转换为工作负荷组
-description: 了解如何创建类似于 Azure Synapse Analytics 中的资源类的工作负荷组。
+description: 了解如何创建一个与专用 SQL 池中的资源类类似的工作负荷组。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461368"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461891"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 

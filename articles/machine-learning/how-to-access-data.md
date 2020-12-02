@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c85989dc02bddd136c56a81993df7a507a84d3b4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961322"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460277"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>连接到 Azure 上的存储服务
 
-本文介绍如何 **通过 Azure 机器学习数据存储连接到 Azure 上的存储服务**。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
+本文介绍如何通过 Azure 机器学习数据存储连接到 Azure 上的存储服务。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
 
 如果希望使用 Azure 机器学习 VS Code 扩展来创建和管理数据存储，请访问 [VS Code 资源管理操作指南](how-to-manage-resources-vscode.md#datastores)以了解详细信息。
 
@@ -80,7 +80,7 @@ ms.locfileid: "94961322"
 
 建议为 [Azure Blob 容器](../storage/blobs/storage-blobs-introduction.md)创建数据存储。 标准和高级存储都可用于 Blob。 尽管高级存储费用更高，但其吞吐速度也更快，可加速训练运行，特别是在针对大型数据集进行训练时。 要了解存储帐户的成本，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)。
 
-[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 基于 Azure Blob 存储而构建，专为企业大数据分析设计。 Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。
+[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 基于 Azure Blob 存储而构建，专为企业大数据分析设计。 Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。
 
 ## <a name="storage-access-and-permissions"></a>存储访问和权限
 
@@ -109,13 +109,13 @@ ms.locfileid: "94961322"
     * 其对应的“概览”页面将包含租户 ID 和客户端 ID 之类的必需信息。
 
 > [!IMPORTANT]
-> * 如果需要更改 Azure 存储帐户的访问密钥 (帐户密钥或 SAS 令牌) ，请确保将新凭据与你的工作区和数据存储连接的凭据同步。 了解如何[同步更新的凭据](how-to-change-storage-access-key.md)。 
+> * 如果需要更改 Azure 存储帐户的访问密钥（帐户密钥或 SAS 令牌），请确保将新凭据与工作区以及与其连接的数据存储同步。 了解如何[同步更新的凭据](how-to-change-storage-access-key.md)。 
 ### <a name="permissions"></a>权限
 
-对于 Azure blob 容器和 Azure Data Lake 第2代存储，请确保身份验证凭据具有 **存储 Blob 数据读取器** 访问权限。 详细了解[存储 Blob 数据读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帐户 SAS 令牌默认为无权限。 
-* 对于数据 **读取访问**，你的身份验证凭据必须具有容器和对象的最小列表和读取权限。 
+对于 Azure Blob 容器和 Azure Data Lake Gen2 存储，请确保身份验证凭据具有“存储 Blob 数据读取者”访问权限。 详细了解[存储 Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 帐户 SAS 令牌默认为无权限。 
+* 如需进行数据读取访问，你的身份验证凭据必须至少具有容器和对象的“列出”和“读取”权限。 
 
-* 对于数据 **写入访问** 权限，还需要编写和添加权限。
+* 若需进行数据写入访问，还需要“写入”和“添加”权限。
 
 <a name="python"></a>
 
@@ -133,7 +133,7 @@ ms.locfileid: "94961322"
 
 如果你更喜欢使用低代码体验，请参阅 [使用 Azure 机器学习 Studio 连接到数据](how-to-connect-data-ui.md)。
 >[!IMPORTANT]
-> 如果你注销并重新注册同名的数据存储，并且它失败，则你的工作区的 Azure Key Vault 可能不会启用软删除。 默认情况下，将为工作区创建的密钥保管库实例启用软删除，但如果使用的是现有密钥保管库或在10月2020之前创建的工作区，则可能不会启用软删除。 有关如何启用软删除的信息，请参阅 [打开现有密钥保管库的软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
+> 如果你注销了一个数据存储并重新注册一个同名数据存储，但注册失败，则表示工作区的 Azure Key Vault 可能未启用软删除。 默认情况下，将为工作区创建的密钥保管库实例启用软删除，但如果使用的是现有密钥保管库或是在 2020 年 10 月之前创建的工作区，则可能无法启用软删除。 有关如何启用软删除的信息，请参阅[对现有的密钥保管库启用软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
 
 > [!NOTE]
 > 数据存储名称应仅包含小写字母、数字和下划线。 

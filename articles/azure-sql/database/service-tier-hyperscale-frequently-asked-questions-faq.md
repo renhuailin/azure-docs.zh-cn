@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780183"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459638"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "92780183"
 
 如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，“超大规模”是很好的选择，因为能以较低费用托管中小型数据仓库（例如几 TB 到 100 TB），并且只需对 T-SQL 代码进行极少量的更改，即可将 SQL Server 数据仓库工作负荷迁移到“超大规模”。
 
-如果大规模运行包含复杂查询且持续引入速率超过 100 MB/秒的数据分析，并使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics（旧称为 SQL 数据仓库）可能是最佳选择。
+如果你使用复杂的查询和大于 100 MB/s 的持续引入速率在大规模上运行数据分析，或者使用并行数据仓库 (PDW) 、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。
   
 ## <a name="hyperscale-compute-questions"></a>“超大规模”计算问题
 

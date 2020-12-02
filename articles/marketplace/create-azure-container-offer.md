@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 76211e2aaf27fd28500bb539c94fa409b239e785
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758969"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459558"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure 市场中创建 Azure 容器套餐
 
@@ -291,7 +291,7 @@ ms.locfileid: "95758969"
 
 Azure 容器产品/服务的所有计划都将自动提供给 **Azure Global**。  所有使用商业应用商店的全球 Azure 区域的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](marketplace-geo-availability-currencies.md)。
 
-选择 [Azure 政府](/azure/azure-government/documentation-government-welcome.md) 版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](/azure/azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
+选择 [Azure 政府](../azure-government/documentation-government-welcome.md) 版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
 
 > [!NOTE]
 > 在您的计划发布并在特定区域中可用后，您将无法删除该区域。
@@ -357,11 +357,11 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 Azure 订阅 ID - 提供用于报告使用情况，并为包含容器映像的 Azure 容器注册表进行服务计费的订阅 ID。 可以在 Azure 门户的[“订阅”页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上找到此 ID。
 
-Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表的[资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal.md)名称。 资源组必须可以通过上面的订阅 ID 访问。 可以在 Azure 门户的[“资源组”](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)页上找到此名称。
+Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表的[资源组](../azure-resource-manager/management/manage-resource-groups-portal.md)名称。 资源组必须可以通过上面的订阅 ID 访问。 可以在 Azure 门户的[“资源组”](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)页上找到此名称。
 
-Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](/azure/container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
+Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名** –提供 [管理员用户名](/azure/container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名** –提供 [管理员用户名](../container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
  :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“更新容器注册表”对话框的图示。":::
 
@@ -369,7 +369,7 @@ Azure 容器注册表的密码 - 提供与包含容器映像的 Azure 容器注�
 
 :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="“访问密钥”菜单的图示。":::
 
-Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时包含存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](/azure/container-registry/container-registry-repositories.md)。
+Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时包含存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../container-registry/container-registry-repositories.md)。
 
 > [!NOTE]
 > 请注意，名称一经设置便不可更改。 请对你帐户中的每个产品/服务使用唯一名称。

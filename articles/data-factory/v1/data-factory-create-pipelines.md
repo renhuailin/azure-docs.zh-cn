@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 15b61653fcd9428abe41f61ac89b2a37302983c7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e3f9735a712a1302624b1ed88f462ca62138b883
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369212"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461497"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "92369212"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义要对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，请使用第二个复制活动将输出数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库，) 在构建的商业智能 (BI) 报表解决方案之上。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义要对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，请使用第二个复制活动将输出数据复制到 Azure Synapse Analytics 之上，该分析基于) 生成的商业智能 (BI 报表解决方案。
 
 每个活动可获取零个或多个输入[数据集](data-factory-create-datasets.md)，并生成一个或多个输出[数据集](data-factory-create-datasets.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
@@ -62,7 +62,7 @@ ms.locfileid: "92369212"
 有关详细信息，请参阅[数据转换活动](data-factory-data-transformation-activities.md)一文。
 
 ### <a name="custom-net-activities"></a>自定义 .NET 活动
-如果需要将数据移入/移出复制活动不支持的数据存储，或要使用自己的逻辑转换数据，可以创建自定义 .NET 活动。**** 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
+如果需要将数据移入/移出复制活动不支持的数据存储，或要使用自己的逻辑转换数据，可以创建自定义 .NET 活动。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
 
 ## <a name="schedule-pipelines"></a>计划管道
 管道仅在其 **开始** 时间和 **结束** 时间之间处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
@@ -92,7 +92,7 @@ ms.locfileid: "92369212"
 }
 ```
 
-| 标记 | 描述 | 必须 |
+| 标记 | 说明 | 必须 |
 | --- | --- | --- |
 | name |管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、" \* "、"%"、"&"、"："、" \\ "</li></ul> |是 |
 | description | 指定描述管道用途的文本。 |是 |
@@ -130,7 +130,7 @@ ms.locfileid: "92369212"
 
 下表描述了活动 JSON 定义中的属性：
 
-| 标记 | 描述 | 必须 |
+| 标记 | 说明 | 必须 |
 | --- | --- | --- |
 | name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description | 描述活动用途的文本 |是 |
@@ -138,14 +138,14 @@ ms.locfileid: "92369212"
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |是 |
 | outputs |活动使用的输出表。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |是 |
 | linkedServiceName |活动使用的链接服务的名称。 <br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 |适用于 HDInsight 活动和 Azure 机器学习 Studio (经典) 批处理评分活动 <br/><br/>对其他活动均非必需 |
-| typeProperties |**TypeProperties**节中的属性取决于活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否 |
+| typeProperties |**TypeProperties** 节中的属性取决于活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否 |
 | policy |影响活动运行时行为的策略。 如果未指定，将使用默认策略。 |否 |
 | scheduler | “scheduler”属性用于定义所需的活动计划。 其子属性与[数据集中可用性属性](data-factory-create-datasets.md#dataset-availability)的子属性相同。 |否 |
 
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | 默认值 | 描述 |
+| 属性 | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -346,7 +346,7 @@ ms.locfileid: "92369212"
 
 注意以下事项：
 
-* 不指定管道的**开始**和**结束**时间。
+* 不指定管道的 **开始** 和 **结束** 时间。
 * 指定输入和输出数据集的 **Availability**（**frequency** 和 **interval**），尽管数据工厂不使用该值。
 * “关系图”视图不显示一次性管道。 这是设计的行为。
 * 一次性管道无法更新。 可对一次性管道执行克隆、重命名、更新属性，还可以对其部署以生成另外一个一次性管道。
