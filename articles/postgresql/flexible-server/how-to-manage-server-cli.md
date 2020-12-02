@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423141"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493672"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for PostgreSQL 灵活的服务器
 
@@ -43,7 +43,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
 
-可以使用以下命令轻松扩展计算层、Vcore 和存储。 有关可以运行的所有服务器操作的列表，请参阅 [az postgres 灵活-服务器](https://docs.microsoft.com/cli/azure/postgres/flexible-server) 概述。
+可以使用以下命令轻松扩展计算层、Vcore 和存储。 有关可以运行的所有服务器操作的列表，请参阅 [az postgres 灵活-服务器](/cli/azure/postgres/flexible-server) 概述。
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>删除服务器
 
-若要删除 Azure Database for PostgreSQL 灵活的服务器，请运行 [az postgres 挠性-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
+若要删除 Azure Database for PostgreSQL 灵活的服务器，请运行 [az postgres 挠性-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

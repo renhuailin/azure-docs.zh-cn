@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242409"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493777"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
@@ -47,9 +47,9 @@ DEK 使用 KEK 加密且单独存储。 只有有权访问 KEK 的实体才能�
 
 若要使 PostgreSQL 服务器使用存储在 Key Vault 中的客户管理的密钥对 DEK 进行加密，Key Vault 管理员需向服务器授予以下访问权限：
 
-* **get** ：用于检索 Key Vault 中密钥的公共部分和属性。
-* **wrapKey** ：可加密 DEK。 加密的 DEK 存储在 Azure Database for PostgreSQL 中。
-* **unwrapKey** ：可解密 DEK。 Azure Database for PostgreSQL 需要解密的 DEK 对数据进行加密/解密
+* **get**：用于检索 Key Vault 中密钥的公共部分和属性。
+* **wrapKey**：可加密 DEK。 加密的 DEK 存储在 Azure Database for PostgreSQL 中。
+* **unwrapKey**：可解密 DEK。 Azure Database for PostgreSQL 需要解密的 DEK 对数据进行加密/解密
 
 Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure-monitor/insights/key-vault-insights-overview.md)，便于稍后对其进行审核。
 
@@ -93,8 +93,8 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 * 如果为 Azure Database for PostgreSQL 单一服务器创建“时间点还原”服务器，而前者启用了数据加密，则新创建的服务器将处于“无法访问”状态。 可通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复服务器状态。
 * 如果为 Azure Database for PostgreSQL 单一服务器创建只读副本，而该服务器启用了数据加密，则副本服务器将处于“无法访问”状态。 可通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复服务器状态。
-* 如果删除 KeyVault，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 并重新验证数据加密，使服务器的状态变为“可用”。
-* 如果从 KeyVault 中删除密钥，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复[密钥](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)并重新验证数据加密，使服务器的状态变为“可用”。
+* 如果删除 KeyVault，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复 [Key Vault](../key-vault/general/key-vault-recovery.md) 并重新验证数据加密，使服务器的状态变为“可用”。
+* 如果从 KeyVault 中删除密钥，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复[密钥](../key-vault/general/key-vault-recovery.md)并重新验证数据加密，使服务器的状态变为“可用”。
 * 如果 Azure KeyVault 中存储的密钥过期，则该密钥将失效，且 Azure Database for PostgreSQL 单一服务器将变为“无法访问”状态。 请使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 将密钥到期日期延后，然后重新验证数据加密，使服务器的状态变为“可用”。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>从 Key Vault 意外撤消密钥访问
