@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d6449a00886b7366bcd1f6e2fcec910fd3cb38db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461045"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512029"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业应用商店中的 SaaS 履单 Api 版本2
 
@@ -20,7 +20,7 @@ ms.locfileid: "96461045"
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>管理 SaaS 订阅生命周期
 
-商业应用商店在最终用户购买 SaaS 订阅后，管理其整个生命周期。  它使用登陆页、履单、操作 Api 和 webhook 作为一种机制来驱动实际的 SaaS 订阅激活、使用情况、更新和取消。  最终用户的帐单基于 Microsoft 维护的 SaaS 订阅的状态。 
+商业应用商店在最终用户购买 SaaS 订阅后，管理其整个生命周期。 它使用登陆页、履单、操作 Api 和 webhook 作为一种机制来驱动实际的 SaaS 订阅激活、使用情况、更新和取消。 最终用户的帐单基于 Microsoft 维护的 SaaS 订阅的状态。 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS 订阅的状态
 
@@ -44,11 +44,11 @@ ms.locfileid: "96461045"
 
 登录页 URL 必须每天启动并运行一次，并且随时可以接收来自 Microsoft 的新呼叫。 如果登陆页面变为不可用，则客户将无法注册 SaaS 服务并开始使用它。
 
-接下来，发布者必须通过调用 [SaaS 解析 API](#resolve-a-purchased-subscription)并输入令牌作为标头参数的值，将 *令牌* 传递回 Microsoft `x-ms-marketplace-token header` 。  作为解析 API 调用的结果，将交换令牌以获取 SaaS 购买的详细信息，例如采购的唯一 ID、购买的产品/服务 ID 和购买的计划 ID。
+接下来，发布者必须通过调用 [SaaS 解析 API](#resolve-a-purchased-subscription)并输入令牌作为标头参数的值，将 *令牌* 传递回 Microsoft `x-ms-marketplace-token header` 。 作为解析 API 调用的结果，将交换令牌以获取 SaaS 购买的详细信息，例如采购的唯一 ID、购买的产品/服务 ID 和购买的计划 ID。
 
 在登录页上，客户应通过 Azure Active Directory (Azure AD) 单一登录 (SSO) 登录到新的或现有的 SaaS 帐户。
 
-发布者应该实现 SSO，为 Microsoft 提供此流程所需的用户体验。 配置 SSO 时，请确保使用多租户 Azure AD 应用程序，同时允许使用工作和学校帐户或个人 Microsoft 帐户。  此要求仅适用于登录页面，适用于已登录到 SaaS 服务的用户（如果已在 Microsoft 凭据中登录）。 对于所有登录到 SaaS 服务，不需要 SSO。
+发布者应该实现 SSO，为 Microsoft 提供此流程所需的用户体验。 配置 SSO 时，请确保使用多租户 Azure AD 应用程序，同时允许使用工作和学校帐户或个人 Microsoft 帐户。 此要求仅适用于登录页面，适用于已登录到 SaaS 服务的用户（如果已在 Microsoft 凭据中登录）。 对于所有登录到 SaaS 服务，不需要 SSO。
 
 > [!NOTE]
 >如果 SSO 要求管理员必须授予对应用的权限，则合作伙伴中心提供的产品/服务的说明必须公开管理员级别的访问权限。 此披露旨在符合 [商业 marketplace 认证策略](/legal/marketplace/certification-policies#10003-authentication-options)。
@@ -82,11 +82,11 @@ ms.locfileid: "96461045"
 
 ##### <a name="update-initiated-from-the-commercial-marketplace"></a>从商业应用商店启动的更新
 
-在此流中，客户从 Azure 门户或 Microsoft 365 管理中心更改订阅计划或座位数量。  
+在此流中，客户从 Azure 门户或 Microsoft 365 管理中心更改订阅计划或座位数量。
 
-1. 输入更新后，Microsoft 将调用发布者的 webhook URL，该 URL 是在合作伙伴中心的 " **连接 webhook** " 字段中配置的，其中包含适用于 *操作* 和其他相关参数的值。  
+1. 输入更新后，Microsoft 将调用发布者的 webhook URL，该 URL 是在合作伙伴中心的 " **连接 webhook** " 字段中配置的，其中包含适用于 *操作* 和其他相关参数的值。 
 1. 发布方应对 SaaS 服务进行所需的更改，并在完成后通过调用 [操作 API 的更新状态](#update-the-status-of-an-operation)通知 Microsoft。
-1. 如果修补程序是以 *失败* 状态发送的，则不会在 Microsoft 端完成更新过程。  SaaS 订阅将保留现有计划和座位数量。
+1. 如果修补程序是以 *失败* 状态发送的，则不会在 Microsoft 端完成更新过程。 SaaS 订阅将保留现有计划和座位数量。
 
 > [!NOTE]
 > 接收到 webhook 通知后，发布服务器应调用修补程序，以在 *10 秒的时间范围内*[更新操作 API 的状态](#update-the-status-of-an-operation)，并在10秒的时间范围内失败。 如果在10秒内未收到操作状态的修补程序，则会自动将更改计划 *修补为成功*。 
@@ -101,7 +101,7 @@ ms.locfileid: "96461045"
 
 1. 发布者代码在发布方上进行请求的更改之前，必须调用 [更改计划 api](#change-the-plan-on-the-subscription) 和/或 [更改数量 API](#change-the-quantity-of-seats-on-the-saas-subscription) 。 
 
-1. Microsoft 将对订阅应用此更改，然后通过 **连接 Webhook** 通知发布者应用相同的更改。  
+1. Microsoft 将对订阅应用此更改，然后通过 **连接 Webhook** 通知发布者应用相同的更改。
 
 1. 只应在发布服务器对 SaaS 订阅进行所需的更改，并在通过调用 [操作 API 的更新状态](#update-the-status-of-an-operation)完成更改时通知 Microsoft。
 
@@ -113,7 +113,7 @@ ms.locfileid: "96461045"
 
 此状态表示尚未收到客户对 SaaS 服务的付款。 Microsoft 将在 SaaS 订阅状态中通知发布者此项更改。 通知是通过调用 webhook 来完成的， *操作* 参数设置为 " *挂起*"。
 
-发布服务器可能或不会对发布服务器端上的 SaaS 服务进行更改。 建议发布者将此信息提供给已暂停的客户，并限制或阻止客户访问 SaaS 服务。  将永远不会收到付款的概率。
+发布服务器可能或不会对发布服务器端上的 SaaS 服务进行更改。 建议发布者将此信息提供给已暂停的客户，并限制或阻止客户访问 SaaS 服务。 将永远不会收到付款的概率。
 
 Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 当订阅处于 *挂起* 状态时：
 
@@ -126,26 +126,26 @@ Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 �
 
 此操作指示客户的付款方式再次变为有效，已为 SaaS 订阅支付了费用，并且正在恢复订阅。 在这种情况下： 
 
-1. Microsoft 调用 webhook，并将 *action* 参数设置为 *复原* 值。  
+1. Microsoft 调用 webhook，并将 *action* 参数设置为 *复原* 值。
 1. 发布者确保订阅在发布方端上重新正常运行。
-1. 发布者调用具有成功状态的 [修补程序操作 API](#update-the-status-of-an-operation) 。  
+1. 发布者调用具有成功状态的 [修补程序操作 API](#update-the-status-of-an-operation) 。
 1. 复原过程成功，并再次对 SaaS 订阅的客户收费。 
 
 如果修补程序是以 *失败* 状态发送的，则 reinstatement 进程将不会在 Microsoft 端完成，订阅将保持 *挂起* 状态。
 
-只能恢复挂起的订阅。  挂起的 SaaS 订阅在恢复时将保持 *挂起* 状态。  完成此操作后，订阅的状态将变为 " *活动*"。
+只能恢复挂起的订阅。 挂起的 SaaS 订阅在恢复时将保持 *挂起* 状态。 完成此操作后，订阅的状态将变为 " *活动*"。
 
 #### <a name="renewed-subscribed"></a>已续订 (*订阅*) 
 
-在一个月或一年的订阅期限结束时，Microsoft 会自动续订 SaaS 订阅。  对于所有 SaaS 订阅，自动续订设置的默认值均为 *true* 。 将继续使用定期节奏续订活动 SaaS 订阅。 续订订阅后，Microsoft 不会通知发布者。 客户可通过 Microsoft 365 管理门户或 Azure 门户关闭 SaaS 订阅的自动续订。  在这种情况下，将在当前帐单期限结束时自动取消 SaaS 订阅。  客户还可以随时取消 SaaS 订阅。
+在一个月或一年的订阅期限结束时，Microsoft 会自动续订 SaaS 订阅。 对于所有 SaaS 订阅，自动续订设置的默认值均为 *true* 。 将继续使用定期节奏续订活动 SaaS 订阅。 续订订阅后，Microsoft 不会通知发布者。 客户可通过 Microsoft 365 管理门户关闭 SaaS 订阅的自动续订。 在这种情况下，将在当前帐单期限结束时自动取消 SaaS 订阅。 客户还可以随时取消 SaaS 订阅。
 
-仅自动续订活动订阅。  订阅在续订过程中保持活动状态，并且自动续订成功。  续订后，订阅期限的开始日期和结束日期将更新为新术语的日期。
+仅自动续订活动订阅。 订阅在续订过程中保持活动状态，并且自动续订成功。 续订后，订阅期限的开始日期和结束日期将更新为新术语的日期。
 
 如果由于付款问题而导致自动续订失败，订阅将会 *暂停* ，并将通知发布者。
 
 #### <a name="canceled-unsubscribed"></a>取消 *订阅* (取消)  
 
-订阅通过从发布者站点、Azure 门户或 Microsoft 365 管理中心的取消订阅来响应明确的客户或 CSP 操作，从而达到此状态。  还可以隐式取消订阅，这是由于由于未付款的原因，超过30天后处于 " *挂起* " 状态。
+订阅通过从发布者站点、Azure 门户或 Microsoft 365 管理中心的取消订阅来响应明确的客户或 CSP 操作，从而达到此状态。 还可以隐式取消订阅，这是由于由于未付款的原因，超过30天后处于 " *挂起* " 状态。
 
 在发布服务器收到取消 webhook 调用后，它们应该保留客户数据以在请求至少7天后恢复。 只有这样才能删除客户数据。
 
@@ -163,7 +163,7 @@ Microsoft 为客户提供30天的宽限期，然后才会自动取消订阅。 �
 * 获取等待由发布服务器确认的应用挂起操作的列表。
 
 > [!NOTE]
-> TLS 版本1.2 的版本将尽快作为 HTTPS 通信的最低版本来强制实施。 请确保在代码中使用此 TLS 版本。  TLS 版本1.0 和1.1 即将弃用。
+> TLS 版本1.2 的版本将尽快作为 HTTPS 通信的最低版本来强制实施。 请确保在代码中使用此 TLS 版本。 TLS 版本1.0 和1.1 即将弃用。
 
 ### <a name="subscription-apis"></a>订阅 Api
 
@@ -580,7 +580,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400请求错误：验证失败。
 
@@ -645,7 +645,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
 
 代码：400请求错误：验证失败。
 
@@ -710,7 +710,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400错误的请求。  此 SaaS 订阅的 "删除" 不在 `allowedCustomerOperations` 列表中。
 

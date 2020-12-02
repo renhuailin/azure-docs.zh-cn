@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488173"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511995"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -74,7 +74,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     关于 AD 站点和服务，请参阅[设计站点拓扑](/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-* 可以通过选中 " [联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **aes 加密** " 框为 SMB 卷启用 aes 加密。 Azure NetApp 文件支持从最低到最安全的)  (DES、Kerberos AES 128 和 Kerberos AES 256 加密类型。 如果启用 AES 加密，则用于联接 Active Directory 的用户凭据必须具有与为 Active Directory 启用的功能匹配的最高对应帐户选项。    
+* 可以通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **aes 加密**" 框为 SMB 卷启用 aes 加密。 Azure NetApp 文件支持从最低到最安全的)  (DES、Kerberos AES 128 和 Kerberos AES 256 加密类型。 如果启用 AES 加密，则用于联接 Active Directory 的用户凭据必须具有与为 Active Directory 启用的功能匹配的最高对应帐户选项。    
 
     例如，如果 Active Directory 只有 AES-128 功能，则必须为用户凭据启用 AES-128 帐户选项。 如果 Active Directory 具有 256 AES 功能，则必须启用 "AES-256 帐户" 选项，该选项也支持 AES 128)  (。 如果 Active Directory 没有任何 Kerberos 加密功能，则默认情况下，Azure NetApp 文件使用 DES。  
 
@@ -82,9 +82,9 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     ![Active Directory 用户和计算机 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 
-* Azure NetApp 文件支持 [ldap 签名](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)，这使得可以在 Azure NetApp 文件服务与目标 [Active Directory 域控制器](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)之间安全传输 ldap 通信。 如果遵循 Microsoft [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) for LDAP 签名指南，则应通过选中 " [联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **ldap 签名** " 框，在 Azure NetApp 文件中启用 ldap 签名功能。 
+* Azure NetApp 文件支持 [ldap 签名](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)，这使得可以在 Azure NetApp 文件服务与目标 [Active Directory 域控制器](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)之间安全传输 ldap 通信。 如果遵循 Microsoft [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) for LDAP 签名指南，则应通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **ldap 签名**" 框，在 Azure NetApp 文件中启用 ldap 签名功能。 
 
-    [LDAP 通道绑定](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) 配置对 Azure NetApp 文件服务没有影响。 
+    仅限[LDAP 通道绑定](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry)配置对 Azure NetApp 文件服务没有影响。 但是，如果同时使用 LDAP 通道绑定和安全 LDAP (例如，LDAPS 或 `start_tls`) ，则 SMB 卷的创建将失败。
 
 有关其他 AD 信息，请参阅 Azure NetApp 文件 [SMB 常见问题解答](./azure-netapp-files-faqs.md#smb-faqs)。 
 

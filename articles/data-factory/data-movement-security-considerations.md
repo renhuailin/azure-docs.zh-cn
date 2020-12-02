@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: b381f2f1871ea7e26950d5b02d5906a50c6129d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9e34ce05d055e6933ecfbacf672bb8b1eba544bd
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444998"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512254"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,7 +32,7 @@ ms.locfileid: "96444998"
 
 尽管数据工厂仅在少数区域中可用，但数据移动服务[在全球范围内可用](concepts-integration-runtime.md#integration-runtime-location)，以确保数据符合性、高效和降低网络出口成本。 
 
-除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂不存储任何其他数据。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
+Azure 数据工厂（包括 Integration Runtime）不会存储任何数据（云数据存储的链接服务凭据除外，使用证书进行加密）。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
 
 数据工厂已获得以下认证：
 

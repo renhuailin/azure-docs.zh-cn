@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906322"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511978"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>利用安全中心保护 Windows 管理中心资源
 
-Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一个位置为系统管理员提供可访问的大部分常用管理工具。 从 Windows 管理中心内可直接将本地服务器加入到 Azure 安全中心。 然后，可以直接体验在 Windows 管理中心中查看安全建议和警报的摘要。
+Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一个位置为系统管理员提供可访问的大部分常用管理工具。 在 Windows 管理中心内，可以直接将本地服务器集成到 Azure 安全中心。 然后，可以直接体验在 Windows 管理中心中查看安全建议和警报的摘要。
 
 > [!NOTE]
 > 你的 Azure 订阅和关联的 Log Analytics 工作区都需要启用 Azure Defender 才能实现 Windows 管理中心集成。
@@ -29,7 +29,7 @@ Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一�
 * 在 Windows 管理中心查看安全中心扩展中的安全警报和建议
 * 在 Azure 门户（或通过 API）的安全中心中查看安全状况，并检索 Windows 管理中心托管的服务器的其他详细信息
 
-通过组合使用这两个工具，安全中心可成为查看所有安全信息（任意资源）的单一窗口：保护 Windows 管理中心托管的本地服务器、VM 和其他任何 PaaS 工作负载。
+通过组合使用这两种工具，安全中心成为单个窗格，可查看所有安全信息，无论资源如何：保护 Windows 管理中心管理的本地服务器、Vm 和任何其他 PaaS 工作负荷。
 
 ## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>将 Windows 管理中心中心托管服务器集成到安全中心
 

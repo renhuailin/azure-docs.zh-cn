@@ -1,14 +1,14 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146290"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511325"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -62,7 +62,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
 - [AKS Pod 安全策略](../../../aks/use-pod-security-policies.md) 和用于 AKS 的 Azure 策略外接程序不能同时启用。 有关详细信息，请参阅 [AKS pod 安全限制](../../../aks/use-pod-security-on-azure-policy.md#limitations)。
-- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_ 、 _gatekeeper-system_ _aks 和 periscope_ 。
+- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、 _gatekeeper-system_ _aks 和 periscope_。
 
 ## <a name="recommendations"></a>建议
 
@@ -107,7 +107,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
      az provider register --namespace Microsoft.PolicyInsights
      ```
 
-1. 如果安装了有限的预览策略定义，请在 " **策略** " 页下的 AKS 群集中删除带 " **禁用** " 按钮的外接程序。
+1. 如果安装了有限的预览策略定义，请在 "**策略**" 页下的 AKS 群集中删除带 "**禁用**" 按钮的外接程序。
 
 1. AKS 群集的版本必须是 1.14 或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -124,7 +124,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 - Azure 门户
 
-  1. 通过选择 " **所有服务** "，然后搜索并选择 " **Kubernetes 服务** "，在 Azure 门户中启动 AKS 服务。
+  1. 通过选择 " **所有服务**"，然后搜索并选择 " **Kubernetes 服务**"，在 Azure 门户中启动 AKS 服务。
 
   1. 选择 AKS 群集之一。
 
@@ -405,7 +405,7 @@ kubectl get pods -n gatekeeper-system
 
    - 已禁用 - 不在群集上强制实施策略。 不拒绝带有冲突的 Kubernetes 许可请求。 符合性评估结果仍可用。 向运行群集推出新策略定义时，“已禁用”选项可用于测试策略定义，因为不拒绝带有冲突的许可请求。
 
-1. 选择“ **下一页** ”。
+1. 选择“**下一页**”。
 
 1. 设置参数值
 
@@ -436,6 +436,14 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 适用于 Kubernetes 群集的 Azure Policy 中的每个符合性报告都包含过去 45 分钟内的所有冲突。 时间戳指示发生冲突的时间。
 
+一些其他注意事项：
+
+- 如果将群集订阅注册到 Azure 安全中心，则 Azure 安全中心 Kubernetes 策略会自动应用于群集。
+
+- 使用现有 Kubernetes 资源在群集上应用拒绝策略时，任何不符合新策略的预先存在的资源都将继续运行。 如果在另一个节点上重新计划了不符合的资源，则网关守卫会阻止资源创建。
+
+- 当群集具有验证资源的拒绝策略时，在创建部署时，用户将看不到拒绝消息。 例如，考虑包含 replicasets 和 pod 的 Kubernetes 部署。 用户执行时 `kubectl describe deployment $MY_DEPLOYMENT` ，它不会返回拒绝消息作为事件的一部分。 但是， `kubectl describe replicasets.apps $MY_DEPLOYMENT` 返回与拒绝关联的事件。
+
 ## <a name="logging"></a>日志记录
 
 作为 Kubernetes 控制器/容器，azure-policy 和 gatekeeper pod 在 Kubernetes 群集中保留日志。 日志可以在 Kubernetes 群集的“见解”页中公开。
@@ -453,6 +461,10 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 有关详细信息，请参阅 Gatekeeper 文档中的[调试 Gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging)。
 
+## <a name="troubleshooting-the-add-on"></a>外接程序故障排除
+
+有关排查 Kubernetes 的外接程序问题的详细信息，请参阅 Azure 策略疑难解答一文的 [Kubernetes 部分](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) 。
+
 ## <a name="remove-the-add-on"></a>删除加载项
 
 ### <a name="remove-the-add-on-from-aks"></a>从 AKS 删除加载项
@@ -461,7 +473,7 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 - Azure 门户
 
-  1. 通过选择 " **所有服务** "，然后搜索并选择 " **Kubernetes 服务** "，在 Azure 门户中启动 AKS 服务。
+  1. 通过选择 " **所有服务**"，然后搜索并选择 " **Kubernetes 服务**"，在 Azure 门户中启动 AKS 服务。
 
   1. 选择要在其中禁用 Azure Policy 加载项的 AKS 群集。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072775"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511927"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "92072775"
 
 |  资源  |  默认限制  |  可通过支持请求进行调整  |
 |----------------|---------------------|--------------------------------------|
-|  每个 Azure 区域的 NetApp 帐户数   |  10    |  是   |
+|  每个 Azure 区域每个订阅的 NetApp 帐户数  |  10    |  是   |
 |  每个 NetApp 帐户的容量池数   |    25     |   是   |
 |  每个订阅的卷数   |    500     |   是   |
 |  每个容量池的卷数量     |    500   |    是     |
@@ -53,7 +53,7 @@ ms.locfileid: "92072775"
 
 ## <a name="maxfiles-limits"></a>Maxfiles 限制 <a name="maxfiles"></a> 
 
-Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷可以包含的文件数。 根据卷 (配额) 大小对 Azure NetApp 文件卷的 maxfiles 限制进行索引。 对于每个 TiB 的预配卷大小，卷的 maxfiles 限制会增加或降低20000000文件的速率。 
+Azure NetApp 文件卷具有称为 *maxfiles* 的限制。 Maxfiles 限制是卷可以包含的文件数。 根据卷 (配额) 大小对 Azure NetApp 文件卷的 maxfiles 限制进行索引。 对于每个 TiB 的预配卷大小，卷的 maxfiles 限制会增加或降低20000000文件的速率。 
 
 服务基于其预配的大小动态调整卷的 maxfiles 限制。 例如，最初配置为大小为 1 TiB 的卷的 maxfiles 限制将为20000000。 对卷大小的后续更改会导致自动 readjustment 基于以下规则的 maxfiles 限制： 
 
@@ -76,7 +76,7 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
 1. 单击 " **帮助 + 支持**"。
 2. 单击 " **+ 新建支持请求**"。
 3. 在“基本信息”选项卡中提供以下信息： 
-    1. 问题类型：选择 **服务和订阅限制)  (配额 **。
+    1. 问题类型：选择 **服务和订阅限制)  (配额**。
     2. 订阅：选择需要增加配额的资源的订阅。
     3. 配额类型：选择 " **存储"： Azure NetApp 文件限制**。
     4. 单击 " **下一步：解决方案**"。
@@ -89,7 +89,7 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
         |  池    |  *订阅 ID，NetApp 帐户 URI*  |  *请求的新的最大 **池** 编号*   |  *哪个方案或用例提示请求？*  |
         |  数据量(Volume)  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
         |  Maxfiles  |  *订阅 ID，NetApp 帐户 URI，容量池 URI，卷 URI*   |  *请求的新的最大 **maxfiles** 数*     |  *哪个方案或用例提示请求？*  |    
-        |  跨区域复制数据保护卷  |  *订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI*   |  *已请求新的 **跨区域复制数据保护卷的最大数目 (目标卷) ***     |  *哪个方案或用例提示请求？*  |    
+        |  跨区域复制数据保护卷  |  *订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI*   |  * 请求新的 **跨区域复制数据保护卷的最大数目 (目标卷)** _     |  _What 方案或用例提示请求？ *  |    
 
     2. 指定相应的支持方法并提供你的协定信息。
 

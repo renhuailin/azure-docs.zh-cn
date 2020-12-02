@@ -4,16 +4,16 @@ description: 本文包含一系列 AzCopy 示例命令，以帮助你创建容�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/01/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c9c271fed094bf4777af73d588551f66f4db6f5
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792848"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512114"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -41,7 +41,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
 | **示例** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
-| **示例** （分层命名空间） | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
+| **示例**（分层命名空间） | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
 
 有关详细参考文档，请参阅 [azcopy make](storage-ref-azcopy-make.md)。
 
@@ -56,6 +56,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 > * 上传目录
 > * 上传目录的内容 
 > * 上传特定的文件
+> * 上传带有索引标记的文件
 
 > [!TIP]
 > 可以通过使用可选标志来调整上传操作。 下面是几个示例。
@@ -73,7 +74,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
 | **示例** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 还可以在文件路径或文件名中的任意位置使用通配符 (*) 来上传文件。 例如：`'C:\myDirectory\*.txt'` 或 `C:\my*\*.txt`。
 
@@ -85,14 +86,14 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
 
 若要复制到容器中的某个目录，只需在命令字符串中指定该目录的名称。
 
 |    |     |
 |--------|-----------|
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 
 如果指定的目录名称在容器中不存在，AzCopy 将以该名称创建一个新目录。
 
@@ -104,7 +105,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
 > 追加 `--recursive` 标志可以上传所有子目录中的文件。
@@ -121,7 +122,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
 在此示例中，AzCopy 将传输 `C:\myDirectory\photos` 目录和 `C:\myDirectory\documents\myFile.txt` 文件。 需要包含 `--recursive` 选项才能传输 `C:\myDirectory\photos` 目录中的所有文件。
 
@@ -135,7 +136,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **示例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
 还可以使用 `--exclude-pattern` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
@@ -149,9 +150,30 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
-| **示例** （分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
 
 如需详细的参考，请查看 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+
+### <a name="upload-a-file-with-index-tags"></a>上传带有索引标记的文件
+
+你可以上传文件，并将 [blob 索引标记 (预览) ](../blobs/storage-manage-find-blobs.md) 添加到目标 blob。  
+
+如果使用 Azure AD 授权，则必须向安全主体分配 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 角色，或者必须 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色向其授予对 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。 如果你使用共享访问签名 (SAS) 令牌，则该令牌必须通过 SAS 权限提供对 blob 的标记的访问权限 `t` 。
+
+若要添加标记，请使用 `--blob-tags` 选项以及 URL 编码的键值对。 例如，若要添加一个键 `my tag` 和一个值 `my tag value` ，请将添加 `--blob-tags='my%20tag=my%20tag%20value'` 到目标参数。 
+
+使用与号)  (分隔多个索引标记 `&` 。  例如，如果要添加键 `my second tag` 和值 `my second tag value` ，则完整选项字符串将为 `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` 。
+
+下面的示例演示如何使用 `--blob-tags` 选项。
+
+|    |     |
+|--------|-----------|
+| **上传文件** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **上传目录** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`|
+| **上传目录内容** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+
+> [!NOTE]
+> 如果为源指定一个目录，则复制到该目标的所有 blob 都将具有在命令中指定的相同标记。
 
 ## <a name="download-files"></a>下载文件
 
@@ -185,7 +207,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
 ### <a name="download-a-directory"></a>下载目录
 
@@ -193,7 +215,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 此示例将生成名为 `C:\myDirectory\myBlobDirectory` 的目录，其中包含所有已下载的文件。
 
@@ -224,7 +246,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
 在此示例中，AzCopy 将传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录和 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 文件。 需要包含 `--recursive` 选项才能传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录中的所有文件。
 
@@ -238,7 +260,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
 还可以使用 `--exclude-pattern` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
@@ -252,7 +274,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
 如需详细的参考，请查看 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
@@ -274,7 +296,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
 
 每个下载文件的名称以版本 ID 开头，后面是 blob 的名称。 
 
@@ -297,6 +319,7 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > * 将目录复制到另一个存储帐户
 > * 将容器复制到另一个存储帐户
 > * 将所有容器、目录和文件复制到另一个存储帐户
+> * 将 blob 复制到具有索引标记的其他存储帐户
 
 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.windows.net`)。
 
@@ -319,7 +342,10 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
-| **示例** （分层命名空间） | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+
+> [!NOTE]
+> 如果源 blob 具有索引标记，并且你想要保留这些标记，则必须将它们重新应用于目标 blob。 有关如何设置索引标记的信息，请参阅本文的将 [Blob 复制到另一个具有索引标记的存储帐户](#copy-between-accounts-and-add-index-tags) 部分。  
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>将目录复制到另一个存储帐户
 
@@ -329,7 +355,7 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **示例** （分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>将容器复制到另一个存储帐户
 
@@ -339,7 +365,10 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **示例** （分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+
+> [!NOTE]
+> 如果源 blob 具有索引标记，并且你想要保留这些标记，则必须将它们重新应用于目标 blob。 有关如何设置索引标记的信息，请参阅本文的将 [Blob 复制到另一个具有索引标记的存储帐户](#copy-between-accounts-and-add-index-tags) 部分。 
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>将所有容器、目录和 Blob 复制到另一个存储帐户
 
@@ -349,7 +378,37 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
-| **示例** （分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+
+> [!NOTE]
+> 如果源 blob 具有索引标记，并且你想要保留这些标记，则必须将它们重新应用于目标 blob。 有关如何设置索引标记的信息，请参阅下面的将 **Blob 复制到另一个具有索引标记的存储帐户** 部分。 
+
+<a id="copy-between-accounts-and-add-index-tags"></a>
+
+### <a name="copy-blobs-to-another-storage-account-with-index-tags"></a>将 blob 复制到具有索引标记的其他存储帐户
+
+可以将 blob 复制到其他存储帐户，并将 [blob 索引标记 (预览) ](../blobs/storage-manage-find-blobs.md) 添加到目标 blob。
+
+如果使用 Azure AD 授权，则必须向安全主体分配 [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 角色，或者必须 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 通过自定义 azure 角色向其授予对 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 的权限。 如果你使用共享访问签名 (SAS) 令牌，则该令牌必须通过 SAS 权限提供对 blob 的标记的访问权限 `t` 。
+
+若要添加标记，请使用 `--blob-tags` 选项以及 URL 编码的键值对。 
+
+例如，若要添加一个键 `my tag` 和一个值 `my tag value` ，请将添加 `--blob-tags='my%20tag=my%20tag%20value'` 到目标参数。 
+
+使用与号)  (分隔多个索引标记 `&` 。  例如，如果要添加键 `my second tag` 和值 `my second tag value` ，则完整选项字符串将为 `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` 。
+
+下面的示例演示如何使用 `--blob-tags` 选项。
+
+|    |     |
+|--------|-----------|
+| **Blob** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **Directory** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **容器** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **帐户** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+
+> [!NOTE]
+> 如果为源指定目录、容器或帐户，则复制到目标的所有 blob 都将具有在命令中指定的相同标记。 
+
 
 ## <a name="synchronize-files"></a>同步文件
 

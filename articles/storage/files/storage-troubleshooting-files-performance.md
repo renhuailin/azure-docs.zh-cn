@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492006"
+ms.locfileid: "96512063"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -74,11 +74,12 @@ ms.locfileid: "96492006"
 
 ### <a name="cause"></a>原因
 
- (VM) 的客户端虚拟机与文件共享位于不同的区域。
+ (VM) 的客户端虚拟机与文件共享位于不同的区域。 高延迟的其他原因可能是由于客户端或网络造成的延迟。
 
 ### <a name="solution"></a>解决方案
 
 - 从与文件共享位于同一区域的 VM 运行该应用程序。
+- 对于存储帐户，请通过 Azure 门户中的 **Azure Monitor** 查看事务度量值 **SuccessE2ELatency** 和 **SuccessServerLatency** 。 "SuccessE2ELatency" 和 "SuccessServerLatency" 度量值的高差异是指可能由网络或客户端引起的延迟。 请参阅 Azure 文件中的 [事务度量值](storage-files-monitoring-reference.md#transaction-metrics) 监视数据参考。
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>客户端无法实现网络支持的最大吞吐量
 

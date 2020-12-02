@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 833d0b15677fe92d9ef4f6d0055f7ce84340ef90
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008287"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511893"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -41,7 +41,7 @@ ms.locfileid: "96008287"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5、6.7、7.0。
-**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine**：允许 VM 在迁移到 Azure 期间关闭。
+**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储：浏览** (数据存储-> 浏览数据存储) ：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> - **FileManagement** (数据存储-> 低级别文件操作) ：允许在数据存储浏览器中执行读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪** (虚拟机 > 磁盘更改跟踪) ：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease** (虚拟机-> 磁盘租约) ：允许 VM 使用磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead** (虚拟机-> 预配-> 允许只读磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **DiskRandomAccess** (虚拟机 > 预配-> 允许磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine** > 预配 (虚拟机-预配-> 允许虚拟机下载) ：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_ (虚拟机-> 快照管理) ：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine** (虚拟机 > 交互-> 关机) ：允许 VM 在迁移到 Azure 期间关闭。
 
 
 

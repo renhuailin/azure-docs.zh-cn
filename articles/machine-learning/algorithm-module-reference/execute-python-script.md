@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/02/2020
+ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511910"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -58,7 +58,37 @@ if spec is None:
 > 如果管道包含的多个“执行 Python 脚本”模块需要使用预安装列表中未包含的包，请在每个模块中安装这些包。
 
 > [!WARNING]
-> Excute Python 脚本模块不支持安装依赖于 "apt" 等命令的额外本机库的包，例如 Java、PyODBC 等。这是因为，此模块是在仅预安装了 Python 并且具有非管理员权限的简单环境中执行的。  
+> “执行 Python 脚本”模块不支持使用“apt-get”之类的命令安装依赖于其他本机库的包，例如 Java、PyODBC 等。这是因为，此模块是在仅预安装了 Python 并且具有非管理员权限的简单环境中执行的。  
+
+## <a name="access-to-registered-datasets"></a>访问已注册的数据集
+
+可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
+
+```Python
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+
+    from azureml.core import Dataset
+    dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
+    dataframe1 = dataset.to_pandas_dataframe()
+     
+    # If a zip file is connected to the third input port,
+    # it is unzipped under "./Script Bundle". This directory is added
+    # to sys.path. Therefore, if your zip file contains a Python file
+    # mymodule.py you can import it using:
+    # import mymodule
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+```
 
 ## <a name="upload-files"></a>上传文件
 “执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-) 上传文件。
@@ -110,7 +140,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 1. 将 **执行 Python 脚本** 模块添加到管道。
 
-2. 从设计器中，在 **Dataset1** 上添加并连接要用于输入的任何数据集。 在 Python 脚本中将此数据集引用为 **DataFrame1** 。
+2. 从设计器中，在 **Dataset1** 上添加并连接要用于输入的任何数据集。 在 Python 脚本中将此数据集引用为 **DataFrame1**。
 
     数据集的使用是可选的。 如果要使用 Python 生成数据，或者使用 Python 代码将数据直接导入到模块中，则可以使用数据集。
 
@@ -120,31 +150,31 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![执行 Python 输入映射](media/module/python-module.png)
 
-4. 若要包括新的 Python 包或代码，请将包含这些自定义资源的压缩文件连接到 **脚本绑定** 端口。 或者，如果你的脚本大于 16 KB，则使用 **脚本捆绑** 端口来避免错误（如 *命令行）超过16597个字符的限制* 。 
+4. 若要包括新的 Python 包或代码，请将包含这些自定义资源的压缩文件连接到脚本绑定端口。 或者，如果脚本大于 16 KB，请使用脚本绑定端口以避免错误，如命令行超过 16597 个字符的限制。 
 
     
-    1. 将脚本和其他自定义资源捆绑到 zip 文件。
-    1. 将 zip 文件作为 **文件数据集** 上传到工作室。 
-    1. 从 "设计器创作" 页左侧模块窗格内的 " *数据集* " 列表中拖动数据集模块。 
+    1. 将脚本和其他自定义资源捆绑到一个 zip 文件中。
+    1. 将 zip 文件作为“文件数据集”上传到工作室。 
+    1. 从设计器创作页面左侧模块窗格的“数据集”列表中拖取数据集模块。 
     1. 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
     
     在管道执行期间，可以使用已上传的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留结构。
  
     > [!WARNING]
-    > **请勿** 使用 **应用** 作为文件夹或脚本的名称，因为 **应用** 是内置服务的保留字。 但可以使用其他命名空间（如） `app123` 。
+    > 请勿使用 app 作为文件夹或脚本的名称，因为 app 是内置服务的保留字  。 但可以使用其他命名空间，如 `app123`。
    
-    下面是脚本绑定示例，其中包含 python 脚本文件和 txt 文件：
+    下面是一个脚本绑定示例，其中包含一个 python 脚本文件和一个 txt 文件：
       
     > [!div class="mx-imgBorder"]
-    > ![脚本捆绑示例](media/module/python-script-bundle.png)  
+    > ![脚本绑定示例](media/module/python-script-bundle.png)  
 
-    下面是的内容 `my_script.py` ：
+    下面是 `my_script.py` 的内容：
 
     ```python
     def my_func(dataframe1):
     return dataframe1
     ```
-    下面是示例代码，演示如何使用脚本捆绑包中的文件：    
+    以下是示例代码，显示了如何使用脚本绑定中的文件：    
 
     ```python
     import pandas as pd
@@ -185,7 +215,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     可以向设计器返回两个数据集，数据集必须是 `pandas.DataFrame` 类型的序列。 可以在 Python 代码中创建其他输出，并将其直接写入到 Azure 存储。
 
     > [!WARNING]
-    > **不** 建议连接到数据库或 **执行 Python 脚本模块** 中的其他外部存储。 您可以使用 " [导入数据模块](./import-data.md) " 和 " [导出数据" 模块](./export-data.md)     
+    > 建议不要在“执行 Python 脚本”模块中连接到数据库或其他外部存储。  可以使用[“导入数据”模块](./import-data.md)和[“导出数据”模块](./export-data.md)     
 
 6. 提交管道。
 

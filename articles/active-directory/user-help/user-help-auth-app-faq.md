@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833956"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512199"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常见问题 (常见问题解答) Microsoft Authenticator 应用
 
@@ -32,6 +32,14 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 **问**：注册的设备是否允许公司或服务访问我的设备？
 
 **答**：注册设备将使你的设备能够访问你的组织的服务，而不允许你的组织访问你的设备。
+
+## <a name="too-many-app-permissions"></a>应用权限太多
+
+**问**：为什么应用程序请求如此多的权限？
+
+**答**：下面是可能需要的权限的完整列表，以及应用的使用方式。 所见到的特定权限将取决于所持有的电话类型。
+
+- **位置**。 有时，你的组织希望在允许访问特定资源之前了解你的位置。 仅当你的组织有需要位置的策略时，应用才会请求此权限。 
 
 ### <a name="legacy-apns-support-deprecated"></a>旧 APNs 支持已弃用
 
@@ -148,7 +156,7 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 
 ### <a name="one-time-passcodes"></a>一次性密码
 
-**问**：我的一次性密码不起作用。   应采取何种操作？
+**问**：我的一次性密码不起作用。 应采取何种操作？
 
 **答**：请确保设备上的日期和时间正确，并且已自动同步。 如果日期和时间错误或不同步，该代码将不起作用。
 

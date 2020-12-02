@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445668"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512271"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96445668"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|发布状态：|正式发布 (GA)|
 |定价：|**计算机上适用于 SQL server 的 Azure Defender** 按 [定价页](security-center-pricing.md)中所示的方式计费|
 |受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
@@ -58,7 +58,7 @@ ms.locfileid: "96445668"
     - **不使用 azure Arc 连接 windows 计算机** -如果你选择在不使用 azure arc 的情况下连接在 windows 计算机上运行的 SQL Server，请按照 [将 windows 计算机连接到 Azure Monitor](../azure-monitor/platform/agent-windows.md)中的说明进行操作。
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的 "定价和设置" 页中启用可选计划：
+### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2. 在安全中心的 "定价和设置" 页中启用可选计划：
 
 1. 在安全中心的菜单中，打开 " **定价 & 设置** " 页。
 
@@ -68,7 +68,7 @@ ms.locfileid: "96445668"
 
         ![按标题查找非默认工作区](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. 为 **计算机上的 SQL server (预览)** 计划设置为 **on** 的选项。 
+1. 为 "**计算机上的 SQL server** 计划" 设置 **选项。** 
 
     ![具有可选计划的安全中心定价页](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "96445668"
 
 
 1. 还可以配置安全警报的电子邮件通知。 
-    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
+    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接 sk，其中包含所有相关的详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
 
 
 

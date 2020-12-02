@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781730"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512148"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[cont
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+将文件和目录上传到 Azure 存储帐户，并在 blob 上设置查询字符串编码标记。 
+
+- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+
+- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
 
 使用 OAuth 身份验证下载单个文件。 如果尚未登录到 AzCopy，请在运行以下命令之前运行 `azcopy login` 命令。
 
@@ -214,9 +222,19 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+将文件和目录传输到 Azure 存储帐户，并在 blob 上设置给定的查询字符串编码标记。 
+
+- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+    
+- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
+
 ## <a name="options"></a>选项
 
 **--backup** - 激活 Windows 用于上传的 SeBackupPrivilege 或用于下载的 SeRestorePrivilege，以允许 AzCopy 查看和读取所有文件（无论其文件系统权限如何），并恢复所有权限。 要求运行 AzCopy 的帐户已经具有这些权限（例如，拥有管理员权限，或者是 `Backup Operators` 组的成员）。 此标志激活帐户已经具有的权限。
+
+**--blob-标记** 字符串在 Blob 上设置标记，以便对存储帐户中的数据进行分类。
 
 **--blob-type** 字符串  定义目标中的 Blob 类型。 此选项用于上传 Blob 以及在帐户之间进行复制（默认值为 `Detect`）。 有效值包括 `Detect`、 `BlockBlob`、 `PageBlob`和 `AppendBlob`。 在帐户之间复制时，使用值 `Detect` 会导致 AzCopy 使用源 Blob 的类型来确定目标 Blob 的类型。 上传文件时，`Detect` 会根据文件扩展名确定文件是 VHD 文件还是 VHDX 文件。 如果文件是 VHD 或 VHDX 文件，则 AzCopy 会将该文件视为页 Blob。 （默认值为“Detect”）
 
