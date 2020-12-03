@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181384"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>教程：将 Wandera RADAR Admin 与 Azure Active Directory 集成
 
@@ -146,13 +146,13 @@ ms.locfileid: "92519259"
 
     ![Wandera RADAR Admin 配置](./media/wandera-tutorial/config01.png)
 
-    a. 单击 **或手动输入必填字段** 。
+    a. 单击 **或手动输入必填字段**。
 
     b. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
     c. 在记事本中打开“联合元数据 XML”，复制其内容并将其粘贴到“IdP 公共 X.509 证书”文本框中。
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 ### <a name="create-wandera-radar-admin-test-user"></a>创建 Wandera RADAR Admin 测试用户
 

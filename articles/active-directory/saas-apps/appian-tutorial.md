@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: fc80ae9478f8dfc265602668931a21abe346c5e4
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: aef8eb429bf772dff4d4b0de629cb1118b140e10
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981216"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180381"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appian"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Appian 的集成
 
@@ -164,11 +164,9 @@ ms.locfileid: "94981216"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Appian 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Appian 磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Appian。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Appian 磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Appian。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Appian 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Appian 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791366"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181962"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教程：将 Azure AD 单一登录 (SSO) 与 NetSuite 集成
 
@@ -253,7 +253,7 @@ NetSuite 支持：
 
 - 在 Azure 门户中单击“测试此应用程序”后，你应当会自动登录到为其设置了 SSO 的 NetSuite
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 NetSuite 磁贴时，你应当会自动登录到为其设置了 SSO 的 NetSuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 NetSuite 磁贴时，你应当会自动登录到为其设置了 SSO 的 NetSuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

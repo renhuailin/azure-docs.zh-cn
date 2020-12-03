@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313156"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176114"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教程：使用密码哈希同步 (PHS) 集成单个 AD 林
 
@@ -203,7 +203,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 立即下载并安装 Azure AD Connect。  安装完毕后，我们将完成快速安装。  请执行以下操作：
 
 1. 下载 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
-2. 导航到 **AzureADConnect.msi**并双击它。
+2. 导航到 **AzureADConnect.msi** 并双击它。
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
 4. 在“快速设置”屏幕上，单击“使用快速设置”。 </br>  
 ![此屏幕截图显示了“快速设置”屏幕和“使用快速设置”按钮。](media/tutorial-password-hash-sync/express1.png)</br>

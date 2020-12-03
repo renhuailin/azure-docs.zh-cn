@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453763"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179118"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教程：将 ExpenseIn 与 Azure Active Directory 集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "92453763"
 
 ## <a name="configure-expensein-sso"></a>配置 ExpenseIn SSO
 
-1. 若要在 ExpenseIn 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”  。
+1. 若要在 ExpenseIn 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 

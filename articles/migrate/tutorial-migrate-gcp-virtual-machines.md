@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将 GCP VM 迁移到 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0093bb453131eb87172021a976b8019a23e445f1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315886"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302582"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>发现、评估 Google Cloud Platform (GCP) VM 并将其迁移到 Azure
 
@@ -74,7 +74,7 @@ ms.locfileid: "92315886"
 
 **任务** | **详细信息**
 --- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
 **验证 Azure 帐户的权限** | Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
@@ -105,8 +105,8 @@ ms.locfileid: "92315886"
 
 “Azure Migrate:Azure Migrate 使用复制设备将计算机复制到 Azure。 复制设备运行以下组件。
 
-- **配置服务器** ：配置服务器用于在 GCP VM 和 Azure 之间协调通信并管理数据复制。
-- **进程服务器** ：进程服务器充当复制网关。 它会接收复制数据，通过缓存、压缩和加密对其进行优化，然后将它发送到 Azure 中的缓存存储帐户。
+- **配置服务器**：配置服务器用于在 GCP VM 和 Azure 之间协调通信并管理数据复制。
+- **进程服务器**：进程服务器充当复制网关。 它会接收复制数据，通过缓存、压缩和加密对其进行优化，然后将它发送到 Azure 中的缓存存储帐户。
 
 为设备部署做好准备，如下所述：
 
@@ -122,30 +122,6 @@ ms.locfileid: "92315886"
 
 - 复制设备使用 MySQL。 查看在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
 - 查看复制设备访问[公有云](migrate-replication-appliance.md#url-access)和[政府云](migrate-replication-appliance.md#azure-government-url-access)时所需的 Azure URL。
-
-## <a name="add-the-server-migration-tool"></a>添加服务器迁移工具
-
-设置一个 Azure Migrate 项目，并将服务器迁移工具添加到其中。
-
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate** 。
-2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概述”中，单击“评估和迁移服务器”。 
-4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。 
-
-    ![发现和评估服务器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. 在“发现、评估和迁移服务器”中，单击“添加工具”。 
-6. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
-7. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置，然后单击“下一步”。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
-    - 项目地理位置仅用于存储从 GCP 计算机中收集的元数据。
-    - 运行迁移时，可以选择任一目标区域。
-
-    ![创建 Azure Migrate 项目](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。  
-9. 在“选择迁移工具”中，选择“Azure Migrate: 服务器迁移” > “下一步”。
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
-11. 添加工具后，它会显示在 Azure Migrate 项目的“服务器” > “迁移工具”中。 
 
 ## <a name="set-up-the-replication-appliance"></a>设置复制设备
 
@@ -174,7 +150,7 @@ ms.locfileid: "92315886"
 9. 如以下过程中所述，运行复制设备安装程序文件。  
     9.1. 在“准备工作”下选择“安装配置服务器和进程服务器”，然后选择“下一步”。   
     9.2 在“第三方软件许可证”中选择“我接受第三方许可协议”，然后选择“下一步”  。   
-    9.3 在“注册”中选择“浏览”，然后转到保管库注册密钥文件所在的位置 。 选择“ **下一页** ”。  
+    9.3 在“注册”中选择“浏览”，然后转到保管库注册密钥文件所在的位置 。 选择“**下一页**”。  
     9.4 在“Internet 设置”中选择“在不使用代理服务器的情况下连接到 Azure Site Recovery”，然后选择“下一步”  。  
     9.5 “先决条件检查”页面会运行多个项的检查。 完成后，选择“下一步”。  
     9.6 在“MySQL 配置”中提供 MySQL DB 的密码，然后选择“下一步” 。  
@@ -194,7 +170,7 @@ ms.locfileid: "92315886"
 必须在要迁移的源 GCP VM 上安装移动服务代理。 复制设备上已提供代理安装程序。 请找到适当的安装程序，并在要迁移的每台计算机上安装该代理。 请按如下所述执行此操作：
 
 1. 登录到复制设备。
-2. 导航到 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** 。
+2. 导航到 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**。
 3. 找到适用于源 GCP VM 操作系统和版本的安装程序。 查看[支持的操作系统](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。
 4. 将安装程序文件复制到要迁移的源 GCP VM。
 5. 请确保具有在安装复制设备时创建且已保存的通行短语文本文件。
@@ -268,21 +244,21 @@ ms.locfileid: "92315886"
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
 11. 在“Azure 混合权益”中：
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”  。
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
     ![目标设置](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
 12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
-    - **VM 大小** ：如果你正在使用评估建议，则 VM 大小下拉列表会显示建议大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。
-    - **OS 磁盘** ：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。
-    - **可用性区域** ：指定要使用的可用性区域。
-    - **可用性集** ：指定要使用的可用性集。
+    - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表会显示建议大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。
+    - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。
+    - **可用性区域**：指定要使用的可用性区域。
+    - **可用性集**：指定要使用的可用性集。
 
 ![计算设置](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+13. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 

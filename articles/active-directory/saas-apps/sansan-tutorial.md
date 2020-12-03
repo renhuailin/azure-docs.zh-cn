@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 6c35ce5e4b420b7f203b33b640a3175ba4c2739b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677653"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181499"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>教程：将 Sansan 与 Azure Active Directory 集成
 
@@ -49,27 +49,27 @@ ms.locfileid: "92677653"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Sansan”  。
-1. 从结果面板中选择“Sansan”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Sansan”。
+1. 从结果面板中选择“Sansan”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
-使用名为 Britta Simon 的测试用户配置和测试 Sansan 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Sansan 相关用户之间建立链接关系。
+使用名为 Britta Simon 的测试用户配置和测试 Sansan 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Sansan 相关用户之间建立链接关系。
 
 若要配置和测试 Sansan 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以便使用 Britta Simon 测试 Azure AD 单一登录。
    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Sansan](#configure-sansan)** ，以在应用程序端配置 SSO 设置。
-   * **[创建 Sansan 测试用户](#create-sansan-test-user)** ，以在 Sansan 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+1. **[配置 Sansan](#configure-sansan)**，以在应用程序端配置 SSO 设置。
+   * **[创建 Sansan 测试用户](#create-sansan-test-user)**，以在 Sansan 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
 1. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在  。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Sansan”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -79,7 +79,7 @@ ms.locfileid: "92677653"
 
     1. 在“登录 URL”文本框中，键入 URL：`https://ap.sansan.com/`
 
-   1. 在“标识符(实体 ID)”文本框中，键入 URL：   
+   1. 在“标识符(实体 ID)”文本框中，键入 URL：  
    `https://ap.sansan.com/saml2/<company name>`
 
    1. 在“回复 URL”文本框中，使用以下模式键入任一 URL：
@@ -98,7 +98,7 @@ ms.locfileid: "92677653"
 
    ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Sansan”部分中，根据要求复制相应 URL  。
+1. 在“设置 Sansan”部分中，根据要求复制相应 URL。
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454178"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ekarda 的集成
 
@@ -81,7 +81,7 @@ ms.locfileid: "92454178"
    ![“设置 SAML 单一登录”页面的屏幕截图，其中突出显示了铅笔图标。](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，如果有服务提供程序元数据文件，请执行以下步骤 ：
-    1. 选择“上传元数据文件”  。
+    1. 选择“上传元数据文件”。
     1. 选择文件夹图标将元数据文件选中，然后选择“上传”。
     1. 成功上传元数据文件后，标识符和回复 URL 的值会自动显示在 ekarda 部分的文本框中 。
 

@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579124"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182491"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教程：建立 Azure Functions 专用站点访问
 
@@ -113,7 +113,7 @@ ms.locfileid: "94579124"
     | _子网_ | AzureBastionSubnet | 虚拟网络中的子网，Bastion 主机资源将部署到该子网。 必须使用名称值 AzureBastionSubnet 创建子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 必须使用至少为 /27 或更大（/27、/26 等）的子网。 |
 
     > [!NOTE]
-    > 有关创建 Azure Bastion 资源的详细分步指导，请参阅[创建 Azure Bastion 主机](../bastion/bastion-create-host-portal.md)教程。
+    > 有关创建 Azure Bastion 资源的详细分步指导，请参阅[创建 Azure Bastion 主机](../bastion/tutorial-create-host-portal.md)教程。
 
 1. 创建一个可供 Azure 在其中预配 Azure Bastion 主机的子网。 选择“管理子网配置”会打开一个新窗格，在其中可以定义新的子网。  选择“+ 子网”创建新子网。
 1. 该子网的名称必须为 AzureBastionSubnet，子网前缀必须至少为 /27 。  选择“确定”以创建子网。
@@ -194,9 +194,9 @@ ms.locfileid: "94579124"
 
 1. 遵循以下快速入门之一，以便创建和部署 Azure Functions 应用。
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [命令行](./functions-create-first-azure-function-azure-cli.md)
+    * [命令行](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. 发布 Azure Functions 项目时，请选择前面在本教程中创建的函数应用资源。

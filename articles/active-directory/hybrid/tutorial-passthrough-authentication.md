@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313257"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176199"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教程：使用直通身份验证 (PTA) 集成单个 AD 林
 
@@ -220,7 +220,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 立即下载并安装 Azure AD Connect。  安装完毕后，我们将完成快速安装。  请执行以下操作：
 
 1. 下载 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
-2. 导航到 **AzureADConnect.msi**并双击它。
+2. 导航到 **AzureADConnect.msi** 并双击它。
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
 4. 在“快速设置”屏幕上，单击“自定义”  。  
 5. 在“安装所需组件”屏幕上。 单击“安装”  。  

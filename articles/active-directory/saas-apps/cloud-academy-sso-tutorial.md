@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455799"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
 
@@ -91,7 +91,7 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中，完成以下步骤：
-   1. 在“名称”框中，输入 **B.Simon** 。  
+   1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
    1. 选择“创建”。
@@ -138,7 +138,7 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 
     d. 在“名称 ID 格式”框中，保留默认值：`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。
 
-1. 选择 **保存** 。
+1. 选择 **保存**。
 
     > [!NOTE]
     > 有关如何配置 Cloud Academy - SSO 的详细信息，请参阅[设置单一登录](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On)。

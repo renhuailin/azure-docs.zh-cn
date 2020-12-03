@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427524"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341642"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "94427524"
 
 * **[SQL API](./introduction.md)** - 可以使用数据迁移工具中提供的任何源选项来小规模导入数据。 [了解用于大规模导入数据的迁移选项](cosmosdb-migrationchoices.md)。
 * **[表 API](table-introduction.md)** - 可以使用数据迁移工具或 [AzCopy](table-import.md#migrate-data-by-using-azcopy) 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
-* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)** - 数据迁移工具不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
+* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)** - 数据迁移工具不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
 * **[Cassandra API](graph-introduction.md)** - Cassandra API 帐户不支持将数据迁移工具用作导入工具。 [了解用于将数据导入 Cassandra API 的迁移选项](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[Gremlin API](graph-introduction.md)** - Gremlin API 帐户目前不支持将数据迁移工具用作导入工具。 [了解用于将数据导入 Gremlin API 的迁移选项](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -70,8 +70,8 @@ ms.locfileid: "94427524"
 
 迁移工具源代码可在 GitHub 上的[此存储库](https://github.com/azure/azure-documentdb-datamigrationtool)中获得。 可以在本地下载并编译解决方案，或者[下载一个预编译的库](https://aka.ms/csdmtool)，然后运行以下任一项：
 
-* **Dtui.exe** ：该工具的图形界面版本
-* **Dt.exe** ：该工具的命令行版本
+* **Dtui.exe**：该工具的图形界面版本
+* **Dt.exe**：该工具的命令行版本
 
 ## <a name="select-data-source"></a>选择数据源
 
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>从 MongoDB 导入
 
 > [!IMPORTANT]
-> 如果要导入到 Cosmos 帐户（配置了 Azure Cosmos DB 的用于 MongoDB 的 API），请遵照这些[说明](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)操作。
+> 如果要导入到 Cosmos 帐户（配置了 Azure Cosmos DB 的用于 MongoDB 的 API），请遵照这些[说明](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)操作。
 
 借助 MongoDB 源导入程序选项，可从单个 MongoDB 集合中导入，并且选择使用查询筛选文档，以及使用投影来修改文档结构。  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>导入 MongoDB 导出文件
 
 > [!IMPORTANT]
-> 如果要导入到支持 MongoDB 的 Azure Cosmos DB 帐户，请遵照这些[说明](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)操作。
+> 如果要导入到支持 MongoDB 的 Azure Cosmos DB 帐户，请遵照这些[说明](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)操作。
 
 借助 MongoDB 导出 JSON 文件源导入程序选项，可以导入一个或多个通过 mongoexport 实用工具生成的 JSON 文件。  
 
@@ -386,7 +386,7 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 > [!NOTE]
 > 使用“验证”命令来确保可以访问在连接字符串字段中指定的 Azure Cosmos DB 实例。
 
-若要导入到单个集合，请输入要将数据导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合： *collection_prefix* [开始索引 - 结束索引]。 使用前述语法指定多个集合时，请注意以下指导原则：
+若要导入到单个集合，请输入要将数据导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合：*collection_prefix*[开始索引 - 结束索引]。 使用前述语法指定多个集合时，请注意以下指导原则：
 
 1. 仅支持整数范围名称模式。 例如，指定 collection[0-3] 会创建以下集合：collection0、collection1、collection2 和 collection3。
 2. 可以使用缩写的语法：collection[3] 创建步骤 1 中所述的同一组集合。
@@ -445,7 +445,7 @@ Azure Cosmos DB 连接字符串的格式为：
 > [!NOTE]
 > 使用“验证”命令来确保可以访问在连接字符串字段中指定的 Azure Cosmos DB 实例。
 
-若要导入到单个集合，请输入数据要导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称。 也可以使用以下语法指定多个集合： *collection_prefix* [开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
+若要导入到单个集合，请输入数据要导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称。 也可以使用以下语法指定多个集合：*collection_prefix*[开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
 
 1. 仅支持整数范围名称模式。 例如，指定 collection[0-3] 会创建以下集合：collection0、collection1、collection2 和 collection3。
 2. 可以使用缩写的语法：collection[3] 创建步骤 1 中所述的同一组集合。

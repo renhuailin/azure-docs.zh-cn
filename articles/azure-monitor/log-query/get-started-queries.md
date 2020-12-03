@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024375"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186705"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 > [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](saved-queries.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](./example-queries.md)。
 
 在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
@@ -28,7 +28,7 @@ ms.locfileid: "95024375"
 - 定义和使用自定义字段
 - 聚合和分组结果
 
-有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
+有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](./log-analytics-tutorial.md)。<br>
 有关 Azure Monitor 中日志查询的更多详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
 
 以下随附本教程的视频版本：

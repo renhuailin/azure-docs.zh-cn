@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 26424106098a8385faff5ab6d3de33d98576ef4e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381297"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181681"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Roadmunk 的集成
 
@@ -113,7 +113,7 @@ Roadmunk 支持由服务提供商 (SP) 和标识提供者 (IDP) 启动的 SSO �
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，输入 `B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -171,12 +171,10 @@ Roadmunk 支持由服务提供商 (SP) 和标识提供者 (IDP) 启动的 SSO �
 
 在本部分，我们将使用访问面板测试 Azure AD SSO 配置。
 
-在“我的应用”门户中，选择 Roadmunk 磁贴时，应当会自动登录到为其设置了 SSO 的 Roadmunk 帐户。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+在“我的应用”门户中，选择 Roadmunk 磁贴时，应当会自动登录到为其设置了 SSO 的 Roadmunk 帐户。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 Roadmunk 后，可强制实施会话控制。 会话控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 
 
-了解如何[通过使用 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+了解如何[通过使用 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

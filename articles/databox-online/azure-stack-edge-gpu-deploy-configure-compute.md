@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743414"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184648"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教程：在 Azure Stack Edge Pro GPU 设备上配置计算
 
@@ -63,11 +63,11 @@ ms.locfileid: "91743414"
 
     ![开始使用计算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。**** 
+4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。 
 
     ![开始使用计算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. 若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。********
+5. 若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。
     
     ![开始使用计算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "91743414"
     
 如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
 
-由于要在后台创建虚拟机和 Kubernetes 群集，因此可能需要 20-30 分钟来配置计算。 
+由于要在后台创建虚拟机和 Kubernetes 群集，因此可能需要 20-30 分钟来配置计算。 
 
 在 Azure 门户中成功配置计算后，会有一个 Kubernetes 群集和一个与 IoT 命名空间（由 Azure Stack Edge Pro 控制的系统命名空间）关联的默认用户。 
 

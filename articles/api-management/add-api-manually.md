@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631284"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183804"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -61,7 +61,7 @@ ms.locfileid: "91631284"
 
 ### <a name="test-an-operation"></a>测试操作
 
-在 Azure 门户中测试操作。 或者，可以在**开发人员门户**中测试操作。
+在 Azure 门户中测试操作。 或者，可以在 **开发人员门户** 中测试操作。
 
 1. 选择“测试”选项卡。
 2. 选择“FetchData”。
@@ -83,7 +83,7 @@ ms.locfileid: "91631284"
 
 ### <a name="test-the-operation"></a>测试操作 
 
-在 Azure 门户中测试操作。  或者，可以在**开发人员门户**中测试操作。
+在 Azure 门户中测试操作。  或者，可以在 **开发人员门户** 中测试操作。
 
 1. 选择“测试”选项卡。
 2. 选择“GetStatus”。 默认情况下，代码值设置为“200”。 可以更改默认值以测试其他值。 例如，键入“418”。

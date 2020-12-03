@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 24f49885892fb69c14ebd589587470edd78eeefe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ca23b23d24174d22deafba68ce170bb7717926
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84298834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026031"
 ---
 Web API 资源需要先在租户中注册，然后才能接受并响应通过提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -42,8 +42,8 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 1. 选择“应用程序(旧版)”，然后选择“添加” 。
 1. 输入应用程序的名称。 例如，“webapi1”。
 1. 对于“Web 应用/Web API”，请选择“是”。 
-1. 对于**允许隐式流**，选择“是”。
+1. 对于 **允许隐式流**，选择“是”。
 1. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点。 本教程中的示例在本地运行并在 `https://localhost:5000` 上进行侦听。
 1. 对于“应用 ID URI”，请在所示的 URI 中添加一个 API 终结点标识符。 对于本教程，请输入 `api`，因此，完整的 URI 类似于 `https://contosob2c.onmicrosoft.com/api`。
 1. 选择“创建”。
-1. 记录**应用程序 ID**，以便在以后的步骤中使用。
+1. 记录 **应用程序 ID**，以便在以后的步骤中使用。

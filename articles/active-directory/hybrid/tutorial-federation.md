@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826522"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176284"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -237,7 +237,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 立即下载并安装 Azure AD Connect。  安装完毕后，我们将完成快速安装。  请执行以下操作：
 
 1. 下载 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
-2. 导航到 **AzureADConnect.msi**并双击它。
+2. 导航到 **AzureADConnect.msi** 并双击它。
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
 4. 在“快速设置”屏幕上，单击“自定义”  。  
 5. 在“安装所需组件”屏幕上。 单击“安装”  。  

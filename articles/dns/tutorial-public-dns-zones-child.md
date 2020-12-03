@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310069"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183373"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>教程：创建新的子 DNS 区域
 
@@ -34,7 +34,7 @@ ms.locfileid: "92310069"
 * 具有活动订阅的 Azure 帐户。  如果没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 现有的父 Azure DNS 区域。  
 
-就本教程而言，我们将使用 contoso.com 作为父区域，使用 subdomain.contoso.com 作为子域名。  请将 contoso.com 替换为你的父域名，将 subdomain 替换为你的子域。  如果尚未创建父 DNS 区域，请参阅[使用 Azure 门户创建 DNS 区域](https://docs.microsoft.com/azure/dns/dns-getstarted-portal#create-a-dns-zone)中的步骤。 
+就本教程而言，我们将使用 contoso.com 作为父区域，使用 subdomain.contoso.com 作为子域名。  请将 contoso.com 替换为你的父域名，将 subdomain 替换为你的子域。  如果尚未创建父 DNS 区域，请参阅[使用 Azure 门户创建 DNS 区域](./dns-getstarted-portal.md#create-a-dns-zone)中的步骤。 
 
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
@@ -74,14 +74,14 @@ ms.locfileid: "92310069"
 1.  在 Azure 门户中的“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.com DNS 区域。 可以在“按名称筛选”框中输入 contoso.com，以便更轻松地找到它。
 1.  在 DNS 区域概述页上，选择“+ 子区域”按钮。
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="“创建 DNS 区域”页的屏幕截图。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="子区域按钮的屏幕截图。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  随即将打开“创建 DNS 区域”页。 在此页面上，子区域选项处于选中状态，父区域订阅和父区域已填充内容。
 1.  在本教程示例中，键入名称作为子区域。 请注意，父 DNS 区域名称 contoso.com 会自动添加为名称前缀。
 1.  在完成时选择“下一步:  标记”，然后选择“下一步:  查看 + 创建”。
 1.  在“查看 + 创建”选项卡上查看摘要，更正任何验证错误，然后选择“创建” 。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="“创建 DNS 区域”页的屏幕截图。" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="所选子区域的屏幕截图" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>验证子 DNS 区域
 现在，你已经创建了一个新的子 DNS 区域 subdomain.contoso.com。 若要验证委派是否正确，你需要检查子区域的名称服务器 (NS) 记录是否在父区域中，具体如下所述。  
 
@@ -90,7 +90,7 @@ ms.locfileid: "92310069"
 1.  在 Azure 门户中的“所有资源”下，打开 MyResourceGroup 资源组中的 subdomain.contoso.com DNS 区域。 可以在“按名称筛选”框中输入 subdomain.contoso.com，以便更轻松地找到它。
 1.  从 DNS 区域概述页中检索名称服务器。 在本示例中，系统为区域 contoso.com 分配了名称服务器 ns1-08.azure-dns.com、ns2-08.azure-dns.net、ns3-08.azure-dns.org 和 ns4-08.azure-dns.info ：
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="“创建 DNS 区域”页的屏幕截图。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="子区域名称服务器的屏幕截图" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **验证父 DNS 区域中的 NS 记录：**
 
 现在，在本步骤中，我们转到父 DNS 区域 contoso.com，检查是否为其子区域名称服务器创建了 NS 记录集条目。
@@ -99,9 +99,9 @@ ms.locfileid: "92310069"
 1.  在 contoso.com DNS 区域概述页上，检查记录集。
 1.  你会发现在父 DNS 区域中已经创建了类型为 NS、名称为 subdomain 的记录集。 检查此记录集的值，它类似于我们在上一步中从子 DNS 区域检索到的名称服务器列表。
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="“创建 DNS 区域”页的屏幕截图。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="子区域名称服务器验证的屏幕截图" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>清理资源
-当你不再需要在本教程中创建的资源时，请通过删除 MyResourceGroup 资源组来删除它们。 打开 MyResourceGroup 资源组，并选择“删除资源组”********。
+当你不再需要在本教程中创建的资源时，请通过删除 MyResourceGroup 资源组来删除它们。 打开 MyResourceGroup 资源组，并选择“删除资源组”。
 
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e645f4075aa1c4c027e8ea884108fdeb708467af
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 3280c97e735e68aa36f018a8de59964ade9567b7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279953"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nitro Productivity Suite 的集成
 
@@ -161,9 +161,9 @@ Nitro Productivity Suite 支持默认启用的实时用户预配。 无需执行
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 Nitro Productivity Suite 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Nitro Productivity Suite 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Nitro Productivity Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Nitro Productivity Suite 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Nitro Productivity Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Nitro Productivity Suite 后，可以强制实施会话控制，从而实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Nitro Productivity Suite 后，可以强制实施会话控制，从而实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

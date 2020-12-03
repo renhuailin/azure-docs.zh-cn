@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331276"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "94331276"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
 
@@ -88,7 +88,7 @@ ms.locfileid: "94331276"
     - `https://<tenant-name>.sharefile1.eu/saml/info`
     - `https://<tenant-name>.sharefile.eu/saml/info`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
     
     - `https://<tenant-name>.sharefile.com/saml/acs`
     - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
@@ -190,7 +190,7 @@ ms.locfileid: "94331276"
 
 2. 直接转到 Citrix ShareFile 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Citrix ShareFile 磁贴时，将会重定向到 Citrix ShareFile 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Citrix ShareFile 磁贴时，将会重定向到 Citrix ShareFile 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

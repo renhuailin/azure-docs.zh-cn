@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
-ms.openlocfilehash: dade2c08f357e5a3eafbd8d195f353c2b3d0d9b1
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 090bb632f45169a732a93606dae06693c6ac5c63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146886"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182200"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skedda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Skedda 的集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "93146886"
 
 1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.skedda.com/account/externallogin?returnUrl=<CUSTOM_URL>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.skedda.com/account/externallogin?returnUrl=<CUSTOM_URL>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Skedda 客户端支持团队](mailto:info@skedda.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -148,7 +148,7 @@ ms.locfileid: "93146886"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 Skedda 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Skedda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Skedda。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Skedda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Skedda。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

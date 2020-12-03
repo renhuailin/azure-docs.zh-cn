@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 84bf1b5ebac158135cf4e19cdbd0afdb181905d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 256685e035659cd0fac7fa5577d99f43f4761ea2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079200"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Alibaba Cloud Service (Role-based SSO) 的集成
 
@@ -80,7 +80,7 @@ ms.locfileid: "93079200"
 
 4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
-    a. 单击“上传元数据文件”。
+    a. 单击“上传元数据文件”  。
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
@@ -244,5 +244,4 @@ ms.locfileid: "93079200"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Alibaba Cloud Service (Role-based SSO) 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
+配置 Alibaba Cloud Service (Role-based SSO) 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

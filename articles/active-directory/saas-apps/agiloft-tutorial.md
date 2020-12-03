@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ab13d53e54317bac15b9e1b0067cbd29f72eb3c1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c56f1ab546327aaf281ff3616fa489728f3885a6
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319033"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>教程：Azure Active Directory 与 Agiloft 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "92319033"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Agiloft 支持 **SP 和 IDP** 发起的 SSO
-* Agiloft 支持**实时**用户预配
+* Agiloft 支持 **实时** 用户预配
 
 ## <a name="adding-agiloft-from-the-gallery"></a>从库中添加 Agiloft
 
@@ -90,7 +90,7 @@ ms.locfileid: "92319033"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,14 +105,12 @@ ms.locfileid: "92319033"
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>
-    https://<subdomain>.agiloft.com/project/<KB_NAME>
+    https://<subdomain>.agiloft.com/<KB_NAME>
     ```
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>
     https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
     ```
 
@@ -123,14 +121,13 @@ ms.locfileid: "92319033"
     在“登录 URL”文本框中，使用以下模式键入 URL： 
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>
     https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
     ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Agiloft 客户端支持团队](https://www.agiloft.com/support-login.htm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 

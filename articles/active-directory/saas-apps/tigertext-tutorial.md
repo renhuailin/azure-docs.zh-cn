@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516369"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>教程：Azure Active Directory 与 TigerConnect Secure Messenger 的集成
 
@@ -82,16 +82,16 @@ ms.locfileid: "92516369"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    1. 在“登录 URL”框中，输入 URL  ：
+    1. 在“登录 URL”框中，输入 URL：
 
        `https://home.tigertext.com`
 
-    1. 在“标识符(实体 ID)”框中，使用以下模式键入 URL  ：
+    1. 在“标识符(实体 ID)”框中，使用以下模式键入 URL：
 
        `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > “标识符(实体 ID)”值不是真实值  。 请将此值更新为实际标识符。 若要获取该值，请联系 [TigerConnect Secure Messenger 支持团队](mailto:prosupport@tigertext.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  窗格中显示的模式。
+    > “标识符(实体 ID)”值不是真实值。 请将此值更新为实际标识符。 若要获取该值，请联系 [TigerConnect Secure Messenger 支持团队](mailto:prosupport@tigertext.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  窗格中显示的模式。
 
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“联合元数据 XML”并将其保存在计算机中     。
 

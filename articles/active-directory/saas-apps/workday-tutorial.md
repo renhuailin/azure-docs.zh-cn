@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: b7ee726c9a5501235123a393d144c56a0342a5ee
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: af001ddd8dc468d06706e63eaf092d1179fe3fdc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748353"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181364"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
 
@@ -50,7 +50,7 @@ ms.locfileid: "92748353"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Workday”。
 1. 从结果面板中选择“Workday”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -64,7 +64,7 @@ ms.locfileid: "92748353"
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
-2. **[配置 Workday](#configure-workday)** ，以在应用程序端配置 SSO 设置。
+2. **[配置 Workday](#configure-workday)**，以在应用程序端配置 SSO 设置。
     1. **[创建 Workday 测试用户](#create-workday-test-user)** - 在 Workday 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
@@ -90,7 +90,7 @@ ms.locfileid: "92748353"
     > 这些不是实际值。 请使用实际登录 URL、回复 URL 和注销 URL 来更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。
     > 可以使用类似于 `http://www.myworkday.com` 的内容，但不能使用 `http://myworkday.com`。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. Workday 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Workday 应用程序要求将 **nameidentifier** 与 **user.mail** 、 **UPN** 等进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
+1. Workday 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Workday 应用程序要求将 **nameidentifier** 与 **user.mail**、**UPN** 等进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
@@ -119,12 +119,12 @@ ms.locfileid: "92748353"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -134,7 +134,7 @@ ms.locfileid: "92748353"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Workday”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
@@ -152,7 +152,7 @@ ms.locfileid: "92748353"
 
     ![SAML 设置](./media/workday-tutorial/IC782926.png "SAML 设置")
 
-    a.  选择 **“启用 SAML 身份验证”** 。
+    a.  选择 **“启用 SAML 身份验证”**。
 
     b.  单击“添加行”  。
 
@@ -180,10 +180,10 @@ ms.locfileid: "92748353"
 
     * 单击“SP 发起”复选框。
 
-    * 在“服务提供商 ID”文本框中，键入 **http://www.workday.com** 。
+    * 在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
 
 
-    * 选择 **“不削弱 SP 发起的身份验证请求”** 。
+    * 选择 **“不削弱 SP 发起的身份验证请求”**。
 
     c. 对下面显示的字段执行以下操作。
 
@@ -237,8 +237,8 @@ ms.locfileid: "92748353"
 
 2. 直接转到 Workday 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击“Workday”磁贴时，应会自动登录到设置了 SSO 的 Workday。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击“Workday”磁贴时，应会自动登录到设置了 SSO 的 Workday。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Workday 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+配置 Workday 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

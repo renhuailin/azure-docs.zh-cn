@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675039"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185634"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
@@ -179,7 +179,7 @@ if ($selDirReader -eq $null) {
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>设置或取消设置 Azure AD 管理员所需的权限
 
-为了使服务主体为 Azure SQL 设置或取消设置 Azure AD 管理员，需要额外的 API 权限。 需要将 [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) 应用程序 API 权限添加到 Azure AD 中的应用程序。
+为了使服务主体为 Azure SQL 设置或取消设置 Azure AD 管理员，需要额外的 API 权限。 需要将 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限添加到 Azure AD 中的应用程序。
 
 :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 中的 Directory.Reader.All 权限":::
 
