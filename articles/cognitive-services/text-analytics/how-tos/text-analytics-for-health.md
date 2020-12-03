@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: e7f017c1f3dc189af2b0fc053912decca3459478
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952754"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559008"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -29,7 +29,9 @@ ms.locfileid: "94952754"
 * 基于 web 的 API (异步)  
 *  (同步的 Docker 容器)    
 
-## <a name="features"></a>功能
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
+
+## <a name="features"></a>特征
 
 用于运行状况文本分析 (NER) 、关系提取、实体求反和实体链接，以在非结构化临床和生物医学文本中发现见解。
 
@@ -106,7 +108,7 @@ ms.locfileid: "94952754"
 
 必须拥有以下格式的 JSON 文档：ID、文本和语言 
 
-每个文档的大小必须少于 5,120 个字符， 有关集合中允许的最大文档数，请参阅概念下的 [数据限制](../concepts/data-limits.md?tabs=version-3) 一文。 集合在请求正文中提交。
+每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 web API 构造 API 请求
 

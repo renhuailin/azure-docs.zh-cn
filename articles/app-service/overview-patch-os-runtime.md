@@ -4,12 +4,12 @@ description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833480"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558481"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -51,7 +51,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-patch-updates"></a>新的修补更新
 
-对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
+通过使用最新版本覆盖现有安装，自动应用对 .NET、PHP、Java SDK 或 Tomcat 版本的修补程序更新。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 

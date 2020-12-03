@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3f2cbd7afe206866ae4d5b7c0925c8f3be9ab785
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530487"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558804"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -21,7 +21,7 @@ ms.locfileid: "96530487"
 
 + 索引数量和其他对象 (最大限制) 
 + 分区（物理存储）的大小和速度
-+ 计费率，一项固定成本，也也使用中的分区和副本数量
++ 可计费费率，每月固定费用，但如果添加分区或副本，则还会增加成本
 
 此外，还提供了一些级别要求的 [高级功能](#premium-features) 。
 

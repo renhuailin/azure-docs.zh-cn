@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531218"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559059"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor 日志概览
 Azure Monitor 日志是 Azure Monitor 的一项功能，用于从 [受监视的资源](../monitor-reference.md)收集和组织日志和性能数据。 来自不同源的数据，例如来自 Azure 服务的 [平台日志](platform-logs-overview.md) 、来自 [虚拟机代理](agents-overview.md)的日志和性能数据，以及 [应用程序](../app/app-insights-overview.md) 的使用情况和性能数据，可以将其合并到单个工作区中，以便可以使用能够快速分析数百万条记录的复杂查询语言一起分析这些数据。 您可以执行一个简单的查询，该查询只检索一组特定的记录或执行复杂的数据分析，以确定监视数据中的关键模式。 使用 Log Analytics 以交互方式使用日志查询及其结果，在警报规则中使用这些查询来主动通知问题，或在工作簿或仪表板中将结果可视化。
@@ -42,7 +42,7 @@ Azure Monitor 日志是 Azure Monitor 的一项功能，用于从 [受监视的�
 
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics 工作区
-Azure Monitor 日志收集的数据存储在一个 [Log Analytics 工作区](./design-logs-deployment.md)中。 工作区定义数据的地理位置、访问权限（定义哪些用户可以访问数据），以及配置设置（例如定价层和数据保留）。  
+Azure Monitor 日志收集的数据存储在一个或多个 [Log Analytics 工作区](./design-logs-deployment.md)中。 工作区定义数据的地理位置、访问权限（定义哪些用户可以访问数据），以及配置设置（例如定价层和数据保留）。  
 
 必须创建至少一个工作区才能使用 Azure Monitor 日志。 单个工作区可能足以满足所有监视数据的需求，或者根据您的需求，可以选择创建多个工作区。 例如，你可能有一个用于生产数据的工作区，另一个用于测试。 
 

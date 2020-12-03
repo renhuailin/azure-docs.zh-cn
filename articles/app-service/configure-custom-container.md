@@ -4,12 +4,12 @@ description: 了解如何在 Azure App Service 中配置自定义容器。 本�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787051"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557920"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -139,7 +139,17 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 
 禁用永久性存储后，不会保留写入 `C:\home` 目录。 [Docker 主机日志和容器日志](#access-diagnostic-logs) 保存在未附加到容器的默认永久性共享存储中。 启用持久性存储时，将保留对该目录的所有写入 `C:\home` 并可由扩展的应用程序的所有实例访问该目录，并且可以从访问日志 `C:\home\LogFiles` 。
 
-默认情况下，永久存储处于 *禁用状态* ，并且该设置不会在应用程序设置中公开。 若要启用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
+::: zone-end
+
+::: zone pivot="container-linux"
+
+你可以使用应用文件系统中的 */home* 目录跨重启保存文件并在实例之间共享这些文件。 `/home`提供应用中的，使容器应用能够访问永久性存储。
+
+禁用永久性存储后，对该目录的写入 `/home` 不会在应用重新启动或多个实例之间保持不变。 唯一的例外是 `/home/LogFiles` 用于存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该目录的所有写入， `/home` 并可由扩展的应用程序的所有实例访问。
+
+::: zone-end
+
+默认情况下，永久存储处于禁用状态，并且该设置不会在应用设置中公开。 若要启用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-你可以使用应用文件系统中的 */home* 目录跨重启保存文件并在实例之间共享这些文件。 `/home`提供应用中的，使容器应用能够访问永久性存储。
-
-禁用永久性存储后，对该目录的写入 `/home` 不会在应用重新启动或多个实例之间保持不变。 唯一的例外是 `/home/LogFiles` 用于存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该目录的所有写入， `/home` 并可由扩展的应用程序的所有实例访问。
-
-默认情况下，将 *启用* 持久性存储，并且不会在应用程序设置中公开设置。 若要禁用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-在 PowerShell 中运行：
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > 你还可以 [配置自己的持久存储](configure-connect-to-azure-storage.md)。
@@ -212,7 +200,7 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WE
 
 ### <a name="in-azure-portal"></a>在 Azure 门户中配置
 
-Docker 日志显示在门户中应用程序的 " **容器设置** " 页上。 日志将被截断，但你可以下载所有日志单击 " **下载** "。 
+Docker 日志显示在门户中应用程序的 " **容器设置** " 页上。 日志将被截断，但你可以下载所有日志单击 " **下载**"。 
 
 ### <a name="from-the-kudu-console"></a>从 Kudu 控制台
 
@@ -268,7 +256,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-处理器可能是多核处理器或超线程处理器。 有关可用于每个定价层的内核数的信息，请参阅 " **高级容器 (Windows) 计划** " 部分中的 " [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/windows/)"。
+处理器可能是多核处理器或超线程处理器。 有关可用于每个定价层的内核数的信息，请参阅 "**高级容器 (Windows) 计划**" 部分中的 "[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/windows/)"。
 
 ## <a name="customize-health-ping-behavior"></a>自定义运行状况 ping 行为
 
@@ -290,7 +278,7 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 | 值 | 说明 |
 | - | - |
-| **Repair** | 三次连续可用性检查后重启容器 |
+| **修正** | 三次连续可用性检查后重启容器 |
 | **ReportOnly** | 默认值。 请不要重启容器，但在三次连续的可用性检查后，会在 Docker 日志中报告容器。 |
 | 关闭 | 不检查可用性。 |
 
@@ -325,7 +313,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
     ```
 
     > [!NOTE]
-    > sshd_config 文件必须包括以下项  ：
+    > sshd_config 文件必须包括以下项：
     > - `Ciphers` 必须至少包含此列表中的一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必须至少包含此列表中的一项：`hmac-sha1,hmac-sha1-96`。
 

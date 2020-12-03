@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e6b8c7d54cf24d810a1f32082d816c908966f63c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739695"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559110"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>为 Azure App Service 配置 PremiumV3 层
 
@@ -19,7 +19,7 @@ ms.locfileid: "92739695"
 
 ## <a name="prerequisites"></a>必备条件
 
-若要将应用向上扩展到 **PremiumV3** ，需要有一个 Azure App Service 应用，该应用在价格低于 **PremiumV3** 的定价层中运行，应用必须在支持 PremiumV3 的应用服务部署中运行。
+若要将应用向上扩展到 **PremiumV3**，需要有一个 Azure App Service 应用，该应用在价格低于 **PremiumV3** 的定价层中运行，应用必须在支持 PremiumV3 的应用服务部署中运行。
 
 <a name="availability"></a>
 
@@ -44,12 +44,12 @@ az appservice list-locations --sku P1V3
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。  
 
-选择 " **生产** "， **选择 P1V3** 、 **P2V3** 或 **P3V3** ，然后单击 " **应用** "。
+选择 " **生产**"， **选择 P1V3**、 **P2V3** 或 **P3V3**，然后单击 " **应用**"。
 
 ![屏幕截图，显示应用的建议定价层。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> 如果看不到 **P1V3** 、 **P2V3** 和 **P3V3** 作为选项，或者选项灰显，则 **PremiumV3** 可能在包含应用服务计划的底层应用服务部署中不可用。 有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
+> 如果看不到 **P1V3**、 **P2V3** 和 **P3V3** 作为选项，或者选项灰显，则 **PremiumV3** 可能在包含应用服务计划的底层应用服务部署中不可用。 有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
 
 ## <a name="scale-up-an-existing-app-to-premiumv3-tier"></a>将现有应用扩展到 PremiumV3 层
 
@@ -59,11 +59,11 @@ az appservice list-locations --sku P1V3
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，打开你的应用服务应用页面。
 
-在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。 
+在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。
 
 ![屏幕截图，显示如何纵向扩展应用服务计划。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-选择 " **生产** "， **选择 P1V3** 、 **P2V3** 或 **P3V3** ，然后单击 " **应用** "。
+选择 " **生产**"， **选择 P1V3**、 **P2V3** 或 **P3V3**，然后单击 " **应用**"。
 
 ![屏幕截图，显示应用的建议定价层。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -79,7 +79,7 @@ az appservice list-locations --sku P1V3
 
 ## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>从不受支持的资源组和区域组合纵向扩展
 
-如果你的应用在 **PremiumV3** 不可用的应用服务部署中运行，或者如果你的应用在当前不支持 **PremiumV3** 的区域中运行，则需要重新部署你的应用才能利用 **PremiumV3** 。  可以使用两个选项：
+如果你的应用在 **PremiumV3** 不可用的应用服务部署中运行，或者如果你的应用在当前不支持 **PremiumV3** 的区域中运行，则需要重新部署你的应用才能利用 **PremiumV3**。  可以使用两个选项：
 
 - 使用新的应用服务计划在新的资源组中创建应用。 创建应用服务计划时，请选择 **PremiumV3** 层。 此步骤可确保将应用服务计划部署到支持 **PremiumV3** 的部署单元。 然后，将应用程序代码重新部署到新创建的应用程序中。 即使将应用服务计划扩展到更低的层以便节省成本，你始终可以将备份扩展到 **PremiumV3** ，因为部署单元支持它。
 - 如果你的应用已在现有 **高级** 层中运行，则可以将应用的所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV3** 的新应用服务计划中。
@@ -90,7 +90,7 @@ az appservice list-locations --sku P1V3
 
 ## <a name="moving-from-premium-container-to-premium-v3-sku"></a>从高级容器移动到高级 V3 SKU
 
-如果你的应用使用预览版高级容器 SKU，并且想要移动到新的高级 V3 SKU，则需要重新部署应用才能利用 **PremiumV3** 。 要执行此操作，请参阅[从不受支持的资源组和区域组合扩展](#scale-up-from-an-unsupported-resource-group-and-region-combination)的第一个选项
+如果你的应用使用预览版高级容器 SKU，并且想要移动到新的高级 V3 SKU，则需要重新部署应用才能利用 **PremiumV3**。 要执行此操作，请参阅[从不受支持的资源组和区域组合扩展](#scale-up-from-an-unsupported-resource-group-and-region-combination)的第一个选项
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
@@ -98,7 +98,7 @@ az appservice list-locations --sku P1V3
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下命令在 _P1V2_ 中创建应用服务计划。 可以在 Cloud Shell 中运行此命令。 的选项为 `--sku` P1V3、 _P2V3_ 和 _P3V3_ 。
+以下命令在 _P1V3_ 中创建应用服务计划。 可以在 Cloud Shell 中运行此命令。 的选项为 `--sku` P1V3、 _P2V3_ 和 _P3V3_。
 
 ```azurecli-interactive
 az appservice plan create \
@@ -111,7 +111,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下命令在 _P1V3_ 中创建应用服务计划。 用于 `-WorkerSize` 的选项有 _Small_ 、 _Medium_ 和 _Large_ 。
+以下命令在 _P1V3_ 中创建应用服务计划。 用于 `-WorkerSize` 的选项有 _Small_、_Medium_ 和 _Large_。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

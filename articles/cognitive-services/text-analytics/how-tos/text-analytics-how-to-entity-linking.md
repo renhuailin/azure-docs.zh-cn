@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957089"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558974"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -31,7 +31,7 @@ ms.locfileid: "94957089"
 
 ## <a name="personally-identifiable-information-pii"></a>个人身份信息 (PII)
 
-PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如电话号码、电子邮件地址、电子邮件地址、passport 号码）中识别和标记敏感实体。  
+PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如电话号码、电子邮件地址、电子邮件地址、passport 号码）中识别和标记敏感实体。
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
 

@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: b286533da90565429f96c5701aaa72dab0fb21d0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/03/2020
+ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552294"
+ms.locfileid: "96558158"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 监控范围中自动标记数据
 
@@ -36,13 +36,7 @@ ms.locfileid: "96552294"
 > 尽管分类直接匹配 (社会保障号码) **社会安全号码** 的分类，但当找到一个或多个分类和方案时，将应用敏感标签。 
 > 
 
-可以使用 Azure 监控范围中的敏感度标签来执行以下操作：
-
-- **自动将标签应用** 于文件和数据库列
-
-- **控制** 谁可以和不能访问你的数据
-
-- 在标记的数据上 **强制实施保护设置**，例如加密
+可以使用 Azure 监控范围中的敏感度标签自动将标签应用到文件和数据库列。
 
 有关详细信息，请参阅：
 
