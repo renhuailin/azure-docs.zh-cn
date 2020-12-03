@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: 教程
   items:
-    - name: 手动扩缩应用
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: 自动缩放应用
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: 警报和操作组
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: 断路器仪表板
@@ -83,6 +79,12 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: 添加持久性存储
           href: spring-cloud-howto-persistent-storage.md
+    - name: 缩放
+      items:
+        - name: 手动扩缩应用
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: 自动缩放应用
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: 识别出站公共 IP 地址
           href: spring-cloud-howto-outbound-public-ip.md
     - name: 监视
@@ -132,7 +134,19 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: DevOps 部署
+  items:
+    - name: 使用 Azure DevOps 进行 CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: 使用 GitHub Actions 进行 CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: 在 GitHub Actions 中向 Key Vault 进行身份验证
+      href: spring-cloud-github-actions-key-vault.md
+- name: 疑难解答
+  items:
+    - name: 故障排除指南
+      href: spring-cloud-troubleshoot.md
 - name: 参考
   items:
     - name: Azure CLI 插件

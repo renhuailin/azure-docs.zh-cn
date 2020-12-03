@@ -12,23 +12,23 @@ metadata:
   ms.date: 10/19/2020
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 16a64fd66ab391436f991b5f92f306f7ecf2eb58
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 8dd6ac6fef0dbc84c77ccacfd048b2af21771f6a
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92372691"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96499197"
 landingContent:
 - title: 关于 Azure AD 角色
   linkLists:
   - linkListType: overview
     links:
-    - text: 自定义角色概述
+    - text: Azure AD 基于角色的访问控制概述
       url: custom-overview.md
   - linkListType: concept
     links:
-    - text: 委托管理权限
-      url: concept-delegation.md
+    - text: 了解 Azure AD 角色
+      url: concept-understand-roles.md
     - text: 了解 Azure AD 中的管理单元
       url: administrative-units.md
     - text: 使用云组来管理角色分配

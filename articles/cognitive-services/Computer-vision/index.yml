@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/22/2020
-  ms.openlocfilehash: a2db6db862a3e5f34215e140b917ef851504c332
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: 8a1710a44ebd93db352dbc63bd350aad8bfa2785
+  ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95013611"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96533887"
 landingContent:
 - title: 关于计算机视觉
   linkLists:
@@ -50,6 +50,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: 使用 Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: 使用 REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: 在图像中检测对象
   linkLists:
   - linkListType: concept
@@ -68,6 +70,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: 使用 Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: 使用 REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: 将内容标记应用于图像
   linkLists:
   - linkListType: concept
@@ -86,6 +90,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: 使用 Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: 使用 REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: 使用读取容器
   linkLists:
   - linkListType: get-started

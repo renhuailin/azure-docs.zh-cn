@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Azure 机器学习安全基线
       href: ../../machine-learning/security-baseline.md
+    - name: Azure 托管应用程序安全基线
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Azure Monitor 安全基线
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Migrate Learning 安全基线
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: 流分析基线
       href: ../../stream-analytics/security-baseline.md
-    - name: Synapse Analytics 安全基线
+    - name: Azure Synapse Analytics 安全基线
       href: ../../synapse-analytics/security-baseline.md
     - name: 流量管理器安全基线
       href: ../../traffic-manager/security-baseline.md

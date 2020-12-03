@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: 解决建议
       href: azure-advisor-recommendations.md
+    - name: 使用适用于 Windows 虚拟桌面的 Azure Monitor
+      href: azure-monitor.md
     - name: 设置灾难恢复计划
       href: disaster-recovery.md
 - name: 概念
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: 常见问题解答
           href: app-attach-faq.md
+    - name: Azure Monitor 术语表
+      href: azure-monitor-glossary.md
     - name: 数据位置
       href: data-locations.md
 - name: 疑难解答
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: 诊断图形性能问题
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: 参考
   items:
     - name: 安全最佳做法

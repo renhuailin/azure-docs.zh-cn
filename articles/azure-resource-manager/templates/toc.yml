@@ -24,7 +24,7 @@
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Analytics
+        - name: 分析
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 流分析
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics SQL 池
+            - name: 专用 SQL 池（之前称为 SQL DW）
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 区块链
           items:

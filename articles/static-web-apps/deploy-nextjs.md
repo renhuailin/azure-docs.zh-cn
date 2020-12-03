@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441607"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350205"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>在 Azure Static Web Apps（预览版）中部署静态呈现的 Next.js 网站
 
@@ -29,9 +29,9 @@ ms.locfileid: "94441607"
 
 无需使用 Next.js CLI 创建应用，可以使用初学者存储库，其中包含现有的 Next.js 应用。 此存储库的 Next.js 应用使用动态路由，这突出了一个常见的部署问题。 动态路由需要额外的部署配置，稍后将详细介绍这一点。
 
-首先通过 GitHub 帐户从模板存储库创建新的存储库。 
+首先通过 GitHub 帐户从模板存储库创建新的存储库。
 
-1. 导航到 <http://github.com/staticwebdev/nextjs-starter/generate>
+1. 导航到 [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate)
 1. 将存储库命名为 nextjs-starter
 1. 接下来，将新存储库克隆到计算机。 确保将 `<YOUR_GITHUB_ACCOUNT_NAME>` 替换为你的帐户名称。
 

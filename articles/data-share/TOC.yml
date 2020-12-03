@@ -45,7 +45,7 @@
       items:
         - name: 从 Azure 存储进行共享
           href: how-to-share-from-storage.md
-        - name: 从 Azure SQL 数据库或 Synapse Analytics 进行共享
+        - name: 从 Azure SQL 数据库或 Azure Synapse Analytics 进行共享
           href: how-to-share-from-sql.md
         - name: 从 Azure 数据资源管理器进行共享
           href: /azure/data-explorer/data-share
