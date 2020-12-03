@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348188"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530812"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -1240,3 +1240,4 @@ OAuth 代码授权流中的步骤：
 * [用于用户预配的范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [帐户预配通知](user-provisioning.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
+

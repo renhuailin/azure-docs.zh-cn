@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447016"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532952"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
@@ -27,7 +27,7 @@ ms.locfileid: "96447016"
 
 * __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当需要使用自动化过程向服务进行身份验证时，将使用服务主体，无需用户交互。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。
 
-* __托管标识__：在 Azure 虚拟机上使用 Azure 机器学习 SDK 时，可使用 Azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
+* __托管标识__：在 _azure 虚拟机上_ 使用 Azure 机器学习 SDK 时，可以使用 azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
 
 > [!IMPORTANT]
 > 无论使用何种身份验证工作流，都可使用 Azure 基于角色的访问控制 (Azure RBAC) 来限定允许拥有的资源访问权限（授权）级别。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可能会使用它，但不能删除或创建它。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。

@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure PowerShell 部署和配置 Azure 防
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 11/12/2020
+ms.date: 12/02/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 18a7da6402d7835be8dbad0551973a262ab335c8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ca4e313d4836764009feccf5acfaefe48b01b55e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660230"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531756"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和配置 Azure 防火墙
 
@@ -29,7 +29,7 @@ ms.locfileid: "94660230"
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
-* **AzureBastionSubnet** -用于连接到工作负荷服务器的 Azure 堡垒使用的子网。 有关 Azure 堡垒的详细信息，请参阅 [什么是 Azure 堡垒？](../bastion/bastion-overview.md)
+* **AzureBastionSubnet** - 用于 Azure Bastion 的子网，Azure Bastion 用于连接到工作负载服务器。 有关 Azure Bastion 的详细信息，请参阅[什么是 Azure Bastion？](../bastion/bastion-overview.md)
 
 ![教程网络基础结构](media/deploy-ps/tutorial-network.png)
 
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 ### <a name="create-a-virtual-network-and-azure-bastion-host"></a>创建虚拟网络和 Azure Bastion 主机
 
-此虚拟网络具有四个子网：
+此虚拟网络有三个子网：
 
 > [!NOTE]
 > AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
@@ -95,11 +95,11 @@ New-AzBastion -ResourceGroupName Test-FW-RG -Name Bastion-01 -PublicIpAddress $p
 ```
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-现在，创建工作负荷虚拟机，并将其放置在相应的子网中。
+现在创建工作负载虚拟机，将其置于相应的子网中。
 出现提示时，请键入该虚拟机的用户名和密码。
 
 
-创建工作负荷虚拟机。
+创建工作负载虚拟机。
 出现提示时，请键入该虚拟机的用户名和密码。
 
 ```azurepowershell
@@ -213,11 +213,11 @@ $NIC01 | Set-AzNetworkInterface
 
 现在测试防火墙，以确认它是否按预期方式工作。
 
-1. 使用堡垒连接到 **Srv 工作** 虚拟机，并登录。 
+1. 使用 Bastion 连接到 Srv-Work 虚拟机，然后登录。 
 
-   :::image type="content" source="media/deploy-ps/bastion.png" alt-text="使用堡垒进行连接。":::
+   :::image type="content" source="media/deploy-ps/bastion.png" alt-text="使用 Bastion 进行连接。":::
 
-3. 在 **Srv 工作** 上，打开 PowerShell 窗口并运行以下命令：
+3. 在 Srv-Work 上，打开 PowerShell 窗口并运行以下命令：
 
    ```
    nslookup www.google.com

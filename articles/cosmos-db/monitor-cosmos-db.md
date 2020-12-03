@@ -5,15 +5,15 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488776"
+ms.locfileid: "96532051"
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -176,7 +176,7 @@ Azure Cosmos DB 将数据存储在以下表中。
 
 例如，下表列出了资源的几个警报规则。 可以从 Azure 门户中找到警报规则的详细列表。 若要了解详细信息，请参阅 [如何配置警报](create-alerts.md) 一文。  
 
-| 警报类型 | 条件 | 说明  |
+| 警报类型 | 条件 | 描述  |
 |:---|:---|:---|
 |请求单位 (指标警报的速率限制)  |维度名称： StatusCode、Operator： Equals、Dimension 值：429  | 如果容器或数据库已超出预配的吞吐量限制，则会发出警报。 |
 |已故障转移区域 |运算符：大于，聚合类型：计数，阈值：1 | 单个区域发生故障转移时。 如果未启用自动故障转移，则此警报非常有用。 |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736470"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531133"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -63,10 +63,8 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | 灾难恢复 | [Azure 异地冗余备份](automated-backups-overview.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](read-scale-out.md) |
 | ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| 从 SQL Server 迁移到 Azure SQL 数据库 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
+| 从 SQL Server 迁移到 Azure SQL Database。 但是，可以在迁移完成后使用 SQL 数据同步，以确保源和目标保持同步。  | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>工作原理
 

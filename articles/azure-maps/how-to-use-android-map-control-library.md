@@ -1,20 +1,20 @@
 ---
-title: Android 地图控件入门 | Microsoft Azure Maps
-description: 熟悉 Azure Maps Android SDK。 请参阅如何在 Android Studio 中创建项目、安装 SDK 和创建交互式地图。
+title: Azure Maps Android SDK 入门
+description: 熟悉 Android SDK Microsoft Azure 映射。 请参阅如何在 Android Studio 中创建项目、安装 SDK 和创建交互式地图。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 72bb821c0dfed6d3f9e7e2cc222242e65a35a011
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 1da003bb8d285dbedde87cbc6cd4708fda2dc38b
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911046"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531238"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
@@ -24,40 +24,39 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将引�
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
-若要完成本文中的过程，首先需要在 S1 定价层中[创建一个 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)，并[获取帐户的主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
-
-### <a name="download-android-studio"></a>下载 Android Studio
-
-下载 Android Studio，并在安装 Azure Maps Android SDK 之前创建一个包含空活动的项目。 可以从 Google 免费[下载 Android Studio](https://developer.android.com/studio/)。 
+3. [下载并安装 Google 的 Android Studio](https://developer.android.com/studio/)。
 
 ## <a name="create-a-project-in-android-studio"></a>在 Android Studio 中创建项目
 
-首先，请创建一个包含空活动的新项目。 请完成以下步骤创建 Android Studio 项目：
+请完成以下步骤创建 Android Studio 项目：
 
-1. 在“Choose your project”（选择项目）下，选择“手机和平板电脑”（Phone and Tablet）。  你的应用程序将在具有此外形规格的设备上运行。
-2. 在“Phone and Tablet”（手机和平板电脑）选项卡上选择“Empty  Activity”（空活动），然后选择“Next”（下一步）。  
-3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。 这是 Azure Maps Android SDK 支持的最旧版本。
-4. 接受默认的 `Activity Name` 和 `Layout Name`，然后选择“Finish”（完成）。
+1. 启动 Android Studio。
+2. 单击 " **+ 创建新项目**"。
+3. 在 " **手机和平板电脑** " 选项卡上，单击 " **空活动**"。 单击“下一步”  。
+4. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。
+5. 选择 `Java` 作为语言。
+6. 接受项目的默认值 `Name` 。 单击“完成”。
 
 安装 Android Studio 和创建新项目时如需更多帮助，请参阅 [Android Studio 文档](https://developer.android.com/studio/intro/)。
 
 ![在 Android Studio 中创建项目 ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
-## <a name="set-up-a-virtual-device"></a>设置虚拟设备
+## <a name="set-up-a-device"></a>设置设备
 
-Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做有助于在开发期间测试应用程序。 若要设置虚拟设备，请选择项目屏幕右上角的“Android Virtual Device (AVD) Manager”图标，然后选择“Create Virtual Device”（创建虚拟设备）。 也可以通过在工具栏中选择“Tools”（工具） > “Android” > “AVD Manager”打开 AVD Manager。   在“Phones”（手机）类别中选择“Nexus 5X”，然后选择“Next”（下一步）。  
+若要在开发过程中测试应用程序，可以使用 Android 手机或 Android 模拟器。
 
-可以在 [Android Studio 文档](https://developer.android.com/studio/run/managing-avds)中详细了解如何设置 AVD。
-
-![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
+若要详细了解如何设置 AVD (Android 虚拟设备) ，请参阅 [Android Studio 文档](https://developer.android.com/studio/run/managing-avds)。
 
 ## <a name="install-the-azure-maps-android-sdk"></a>安装 Azure Maps Android SDK
 
-生成应用程序的下一步是安装 Azure Maps Android SDK。 请完成以下步骤来安装该 SDK：
+生成应用程序的下一步是安装 Azure Maps Android SDK。
 
-1. 打开顶级 **build.gradle** 文件，将以下代码添加到 **所有项目** 的 **repositories** 块节中：
+请完成以下步骤来安装该 SDK：
+
+1. 在 "项目" 选项卡中，展开 " **Gradle 脚本**"。 打开 **gradle (项目： My_Application)**，并将以下代码添加到 " **所有项目**" `repositories`  部分：
 
     ```
     maven {
@@ -65,29 +64,30 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     }
     ```
 
-2. 更新 **app/build.gradle** 并在其中添加以下代码：
-    
-    1. 确保项目的 **minSdkVersion** 设置为 API 21 或更高版本。
+2. 打开 **gradle (Module： My_Application)**。
 
-    2. 将以下代码添加到 Android 节：
+3. 请确保此部分中的 **minSdkVersion** `defaultConfig` 为 API 21 或更高版本。
 
-        ```
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
-        ```
-    3. 更新 dependencies 块，并为最新 Azure Maps Android SDK 添加新的实现依赖项行：
+4. 将以下代码添加到 Android 节：
 
-        ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
-        ```
-    
-    4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。 
-3. 将一个地图片段添加到 main 活动 (res \> layout \> activity\_main.xml)：
+    ```
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    ```
+
+5. 将以下代码添加到 `dependencies` 部分：
+
+    ```
+    implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+    ```
+
+6. 在主工具栏上单击 " **文件** "，然后选择 "将 **项目与 Gradle 文件同步**"。
+
+7. 打开 `res > layout > activity_main.xml`。 单击 `Code` 右上角的 "查看"。 在元素内添加以下 XML `<androidx.constraintlayout.widget.ConstraintLayout>` 。
     
     ```XML
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -103,27 +103,27 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     </FrameLayout>
     ```
 
-4. 在 **MainActivity.java** 文件中，需要：
-    
-    * 添加 Azure Maps SDK 的 import 语句
-    * 设置 Azure Maps 身份验证信息
-    * 在 **onCreate** 方法中获取地图控件实例
+8. 在该 `java > com.example.myapplication > MainActivity.java` 文件中，你将需要：
 
-    使用 `setSubscriptionKey` 或 `setAadProperties` 方法在 `AzureMaps` 类中全局设置身份验证信息后，无需在每个视图中添加身份验证信息。 
+    * 添加 Azure Maps SDK 的导入。
+    * 设置 Azure Maps 身份验证信息。
+    * 获取 **onCreate** 方法中的 map 控件实例。
 
-    地图控件包含自身的生命周期方法用于管理 Android 的 OpenGL 生命周期。 必须直接从包含活动调用这些生命周期方法。 要使应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 并且，必须调用相应的地图控件方法。 
+    若要避免为每个应用程序视图添加身份验证信息，我们将通过调用来全局设置身份验证信息 `AzureMaps.setSubscriptionKey` 。 `AzureMaps.setAadProperties`如果要使用 Azure Active Directory 进行身份验证，则还可以调用。
 
-    * onCreate(Bundle) 
-    * onStart() 
-    * onResume() 
-    * onPause() 
-    * onStop() 
-    * onDestroy() 
-    * onSaveInstanceState(Bundle) 
-    * onLowMemory() 
+    地图控件重写 MainActivity 类的以下生命周期方法。 这些方法负责管理 Android 的 OpenGL 生命周期。
 
-    按如下所示编辑 **MainActivity.java** 文件：
-    
+    * onCreate(Bundle)
+    * onStart()
+    * onResume()
+    * onPause()
+    * onStop()
+    * onDestroy()
+    * onSaveInstanceState(Bundle)
+    * onLowMemory()
+
+    `MainActivity.java`按如下所示编辑文件：
+
     ```java
     package com.example.myapplication;
 
@@ -136,7 +136,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -151,11 +151,11 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-    
+
             //Wait until the map resources are ready.
             mapControl.onReady(map -> {
                 //Add your post map load code here.
-    
+
             });
         }
 
@@ -203,68 +203,58 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     }
     ```
 
-## <a name="import-classes"></a>导入类
-
-完成上述步骤后，你可能会收到 Android Studio 针对某些代码发出的警告。 若要解决这些警告，请导入 `MainActivity.java` 中引用的类。
-
-可以按 Alt+Enter（在 Mac 上为 Option+Return）自动导入这些类。
-
-如下图所示选择“运行”按钮（或者在 Mac 上按 Ctrl+R）生成应用程序。
-
-![单击“运行”](./media/how-to-use-android-map-control-library/run-app.png)
+>[!WARNING]
+>Android Studio 可能未导入所需的类。  因此，代码将具有一些无法解析的引用。 若要导入所需的类，只需将鼠标悬停在每个未解析的引用上，然后按 `Alt + Enter` (选项 + 返回 Mac) 。
 
 Android Studio 将花费几秒钟时间来生成应用程序。 生成完成后，可在 Android 仿真设备中测试应用程序。 应会看到如下所示的地图：
 
-<center>
-
-![Android 应用程序中的 Azure Maps](./media/how-to-use-android-map-control-library/android-map.png)</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-map.png" border="true" alt-text="Android 应用程序中的 Azure Maps":::
 
 ## <a name="localizing-the-map"></a>本地化地图
 
-Azure Maps Android SDK 提供三种不同的方式来设置地图的语言和区域视图。 以下代码演示如何将语言设置为法语（“fr-FR”），以及如何将区域视图设置为“auto”。 
+Azure Maps Android SDK 提供了三种不同的方式来设置地图的语言和区域设置。
 
-第一种做法是全局使用静态的 `setLanguage` 和 `setView` 方法，将语言和视图区域信息传入 `AzureMaps` 类。 这会在载入到应用的所有 Azure Maps 控件中设置默认的语言和区域视图。
+1. 通过对 AzureMaps 类调用静态方法来设置语言和区域设置。
 
-```Java
-static {
-    //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    ```Java
+    static {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
 
-    //Set the language to be used by Azure Maps.
-    AzureMaps.setLanguage("fr-FR");
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
 
-    //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
-}
-```
+        //Set the regional view.
+        AzureMaps.setLanguage("Auto");
+    
+    }
+    ```
 
-第二种做法是将语言和视图信息传入地图控件 XML 中。
+2. 定义地图控件 XML 中的语言和区域设置。
 
-```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
-    android:id="@+id/myMap"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
-    />
-```
+    ```XML
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapcontrol_language="fr-FR"
+        app:mapcontrol_view="Auto"
+        />
+    ```
 
-第三种做法是使用地图 `setStyle` 方法以编程方式设置地图的语言和区域视图。 随时可以采取这种做法来更改地图的语言和区域视图。
+3. 通过在地图控件上调用方法来设置语言和区域设置。 此选项允许您在运行时更改设置。
 
-```Java
-mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
-});
-```
+    ```Java
+    mapControl.onReady(map -> {
+        map.setStyle(StyleOptions.language("fr-FR"));
+        map.setStyle(StyleOptions.view("Auto"));
+    
+    });
+    ```
 
-下面是将语言设置为“fr-FR”、将区域视图设置为“auto”的 Azure Maps 示例。
+下面是将语言设置为的 Azure Maps 的示例 `fr-FR` 。
 
-<center>
-
-![Azure Maps，显示法语标签的地图图像](./media/how-to-use-android-map-control-library/android-localization.png)
-</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-localization.png" border="true" alt-text="Azure Maps，显示法语标签的地图图像":::
 
 [此文档](supported-languages.md)提供了支持的语言和区域视图的完整列表。
 
@@ -276,7 +266,7 @@ mapControl.onReady(map -> {
 
 - 使用双指触摸地图，收拢双指可以缩小，分开双指可以放大。
 - 双击地图可将地图放大一个级别。
-- 用双指双击地图可将地图缩小一个级别。
+- 用两根手指双击可缩小地图一级。
 - 点击两次；在第二次点击时，用手指按住地图并向上拖动可以放大，向下拖动可以缩小。
 
 **平移地图**

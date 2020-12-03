@@ -3,17 +3,17 @@ title: 显示 android 地图上的流量数据 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Microsoft Azure map Android SDK 来显示地图上的流量数据。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/27/2020
+ms.date: 11/25/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895522"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532748"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
 
@@ -21,7 +21,9 @@ ms.locfileid: "92895522"
 
 ## <a name="prerequisites"></a>先决条件
 
-你需要 [创建 Azure 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并 [获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装 [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) 并加载地图。
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
+3. 下载并安装 [Azure Maps Android SDK](./how-to-use-android-map-control-library.md)。
 
 ## <a name="incidents-traffic-data"></a>事件流量数据
 
@@ -53,7 +55,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 使用以下代码片段设置流量流数据。 与上一节中的代码类似，我们将方法的返回值传递 `flow` 给 `setTraffic` 方法。 有四个可传递到的值 `flow` ，每个值都将触发 `flow` 以返回各自的值。 然后，将的返回值 `flow` 作为参数传递给 `setTraffic` 。 请参阅下表中的以下四个值：
 
-|流值 | 说明|
+|流值 | 描述|
 | :-- | :-- |
 | TrafficFlow | 不显示地图上的流量数据 |
 | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |
@@ -73,7 +75,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 若要获取特定功能的事件，可以使用以下代码。 单击某项功能后，代码逻辑将检查事件，并生成有关事件的消息。 屏幕底部将显示一条消息，其中包含详细信息。
 
-1. 首先，您需要 **> 布局 > activity_main.xml** 中编辑 res，使其看起来像下面这样的内容。 可以将 `mapcontrol_centerLat` 、和替换 `mapcontrol_centerLng` `mapcontrol_zoom` 为所需的值。 请记住，缩放级别是0到22之间的值。 在缩放级别为0时，整个世界适用于单个磁贴。
+1. 首先，需要对进行编辑 `res > layout > activity_main.xml` ，使其如下所示。 可以将 `mapcontrol_centerLat` 、和替换 `mapcontrol_centerLng` `mapcontrol_zoom` 为所需的值。 请记住，缩放级别是0到22之间的值。 在缩放级别为0时，整个世界适用于单个磁贴。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -223,11 +225,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 3. 在应用程序中合并上述代码后，你将能够单击功能并查看流量事件的详细信息。 根据你在 **activity_main.xml** 文件中使用的纬度、经度和缩放级别值，你将看到类似于下图的结果：
 
-   <center>
 
-   ![事件-地图上的流量](./media/how-to-show-traffic-android/android-traffic.png)
+    ![事件-地图上的流量](./media/how-to-show-traffic-android/android-traffic.png)
 
-   </center>
 
 ## <a name="next-steps"></a>后续步骤
 

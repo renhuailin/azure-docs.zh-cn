@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加图块层 |Microsoft Azure 映射
-description: 了解如何向地图添加图块层。 请参阅使用 Azure Maps Android SDK 将天气雷达图添加到地图的示例。
+title: 使用 Azure Maps 向地图添加图块层 Android SDK
+description: 了解如何向地图添加图块层。 请参阅使用 Microsoft Azure Map Android SDK 将天气雷达图添加到地图的示例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897086"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532670"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 

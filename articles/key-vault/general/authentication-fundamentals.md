@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565817"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530912"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 身份验证基础知识
 
@@ -116,8 +116,6 @@ Key Vault 角色分配是一组 Azure 内置角色分配，其中包含用于访
 * 通过允许用户在订阅、资源组或单独的密钥保管库级别分配这些角色，可以大规模管理 Azure RBAC 权限。 用户将具有 Azure RBAC 分配范围内的所有密钥保管库的数据平面权限。 这样就不必为每个用户/应用程序为每个密钥保管库分配单独的访问策略权限。
 
 * Azure RBAC 权限与 Privileged Identity Management 或 PIM 兼容。 这允许你为特权角色（如 Key Vault 管理员）配置实时访问控制。 这是一种最佳安全做法，并通过消除对密钥保管库的持续访问权限来遵循最低权限原则。
-
-* Azure RBAC 权限与每个对象的粒度权限兼容，因此，你可以限制用户仅对某些 key vault 对象执行操作。 这允许多个应用程序共享一个密钥保管库，同时仍然隔离应用程序之间的访问权限。
 
 若要了解有关 Azure RBAC for Key Vault 的详细信息，请参阅以下文档：
 

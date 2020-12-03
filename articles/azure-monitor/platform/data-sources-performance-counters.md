@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012606"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532290"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期从 Log Analytics 代理收集性能计数器以进行准实时 (NRT) 分析。
@@ -50,15 +50,14 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 ### <a name="linux-performance-counters"></a>Linux 性能计数器
 
-![配置 Linux 性能计数器](media/data-sources-performance-counters/configure-linux.png)
+![配置 Linux 性能计数器](media/data-sources-performance-counters/configure-linux-1.png)
 
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
-1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。
-2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
-3. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
-4. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
-5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
+1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
+1. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
+1. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
+1. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
 可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 /etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf 中的配置控制。

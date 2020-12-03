@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510722"
+ms.locfileid: "96531831"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虚拟 WAN 和安全中心与中国互连
 
@@ -20,7 +20,7 @@ ms.locfileid: "96510722"
 
 在大多数情况下，连接到中国境外（例如欧洲或美国）的客户都会挣扎于高延迟、低带宽、不稳定连接以及高费用的问题。
 
-这些阻碍的原因在于“中国防火长城（中国国家防火墙）”，它会保护 Internet 上的中国网段部分，并筛选发往中国的流量。 从中国大陆发往中国境外（香港和澳门等特别行政区除外）的几乎所有流量都要流经防火长城。 流经香港和澳门的流量不会强力进入防火长城，而是由防火长城的一部分机制进行处理。
+这些阻碍的原因在于“中国防火长城（中国国家防火墙）”，它会保护 Internet 上的中国网段部分，并筛选发往中国的流量。 几乎所有从中国的人到中国以外的流量（如中国香港和澳门的特殊管理区域除外）都将传递强大的防火墙。 流经香港和澳门的流量不会强力进入防火长城，而是由防火长城的一部分机制进行处理。
 
 :::image type="content" source="./media/interconnect-china/provider.png" alt-text="关系图显示提供程序互连。":::
 
@@ -71,13 +71,13 @@ ms.locfileid: "96510722"
 
 使用此连接方法时，Microsoft 服务的 BGP 下一跃点必须是 Microsoft 自治系统编号 (AS#) 8075。 如果使用单一位置或 SDWAN 解决方案，则会选择该解决方案建立连接。
 
-随着中国大陆和中国香港地区的互连的当前更改，这些网络提供商的大多数都在中国大陆和香港特别行政区之间建立了 MPLS 桥。
+随着中国和中国香港特别行政区之间互连的当前更改，这些网络提供商中的大部分都在中国和香港特别行政区之间生成了 MPLS 桥。
 
 你可以看到，中国内的站点到站点 VPN 连接是允许的，它们大多是稳定的。 这同样适用于世界上其他分支之间的站点到站点连接。 现在，提供商在双方之间创建 VPN/SDWAN 聚合，并通过 MPLS 在两者之间建立桥梁。
 
 :::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="关系图显示了中国 MPLS bridge。":::
 
-无论采用哪种方式，我们仍然建议你将第二个常规 internet 分类为中国大陆。 这是为了将企业流量之间的流量拆分为云服务（如 Microsoft 365 和 Azure）以及按法律管控的 internet 流量。
+无论采用哪种方式，我们仍然建议你将第二个常规 internet 分类划分为中国。 这是为了将企业流量之间的流量拆分为云服务（如 Microsoft 365 和 Azure）以及按法律管控的 internet 流量。
 
 中国境内合规的网络体系结构如以下示例所示：
 

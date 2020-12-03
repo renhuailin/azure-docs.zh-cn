@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456434"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531567"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的数据加载策略
 
@@ -52,11 +52,11 @@ ms.locfileid: "96456434"
 
 使用 PolyBase 和 COPY 语句，可以从 UTF-8 和 UTF-16 编码的带分隔符文本文件或 CSV 文件加载数据。 除了带分隔符文本文件或 CSV 文件以外，它还可以从 ORC 和 Parquet 等 Hadoop 文件格式加载数据。 PolyBase 和 COPY 语句还可以从 Gzip 和 Snappy 压缩文件加载数据。
 
-不支持扩展的 ASCII、固定宽度格式以及 WinZip 或 XML 等嵌套格式。 如果是从 SQL Server 导出，则可使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)将数据导出到带分隔符的文本文件中。
+不支持扩展的 ASCII、固定宽度格式以及 WinZip 或 XML 等嵌套格式。 如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以将数据导出为带分隔符的文本文件。
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.将数据移入 Azure Blob 存储或 Azure Data Lake Store
 
-若要将数据移入 Azure 存储，可将它移到 [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或 [Azure Data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 不管什么位置，都应将数据存储在文本文件中。 PolyBase 和 COPY 语句可从任一位置加载数据。
+若要将数据移入 Azure 存储，可将它移到 [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或 [Azure Data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 应将数据存储在任一位置的文本文件中。 PolyBase 和 COPY 语句可从任一位置加载数据。
 
 可使用以下工具和服务将数据移到 Azure 存储：
 
@@ -119,8 +119,9 @@ ms.locfileid: "96456434"
 | [复杂类型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
 >[!IMPORTANT] 
-> - SQL 专用池目前不支持 MICROS 和 NANOS 精度的 Parquet 数据类型。 
-> - 如果 Parquet 与 SQL 之间的类型不匹配，或者如果你有不受支持的 Parquet 数据类型，则可能会遇到以下错误：“HdfsBridge::recordReaderFillBuffer - 填充记录读取器缓冲区时遇到意外错误:ClassCastException: …”
+>- SQL 专用池目前不支持 MICROS 和 NANOS 精度的 Parquet 数据类型。 
+>- 如果在 Parquet 和 SQL 中的类型不匹配，或者如果你有不受支持的 Parquet 数据类型，则可能会遇到以下错误： **"HdfsBridge：： recordReaderFillBuffer-遇到填充记录读取器缓冲区时出现意外错误： ClassCastException： ..."**
+>- 不支持将0-127 范围外的值加载到 Parquet 和 ORC 文件格式的 tinyint 列中。
 
 有关创建外部对象的示例，请参阅[创建外部表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
 

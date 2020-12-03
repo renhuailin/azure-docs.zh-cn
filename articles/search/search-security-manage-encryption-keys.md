@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499605"
+ms.locfileid: "96530878"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 认知搜索中配置客户管理的密钥以用于数据加密
 
-Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)对已编制索引的内容进行静态加密。 如果需要更多保护，可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个额外的加密层来补充默认加密。 本文将指导你完成设置 CMK 加密的步骤。
+Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)对已编制索引的内容进行静态加密。 如果需要更多保护，可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个额外的加密层来补充默认加密。 本文将指导你完成设置客户托管的密钥加密的步骤。
 
-CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault，还可以在[启用日志记录](../key-vault/general/logging.md)的情况下审核密钥使用情况。  
+客户托管的密钥加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault，还可以在[启用日志记录](../key-vault/general/logging.md)的情况下审核密钥使用情况。  
 
 使用客户管理的密钥进行的加密是在创建单个索引或同义词映射时应用于这些对象的，而不是在搜索服务级别本身上指定的。 只有新对象才能加密。 无法加密已存在的内容。
 
@@ -31,7 +31,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="double-encryption"></a>双重加密
 
-对于在2020年8月1日之后创建的服务，以及在特定区域中创建的服务，CMK 加密的作用域包括临时磁盘，从而实现 [完全双重加密](search-security-overview.md#double-encryption)（当前在这些区域中提供）： 
+对于在2020年8月1日之后创建的服务，在特定区域中，客户托管的密钥加密的作用域包括临时磁盘，从而实现 [完全双重加密](search-security-overview.md#double-encryption)（当前在这些区域中提供）： 
 
 + 美国西部 2
 + 美国东部
@@ -39,13 +39,13 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 + US Gov 弗吉尼亚州
 + US Gov 亚利桑那州
 
-如果你使用的是其他区域，或在8月1日之前创建的服务，则 CMK 加密仅限于数据磁盘，不包括服务使用的临时磁盘。
+如果你使用的是其他区域，或在8月1日之前创建的服务，则托管密钥加密仅限于数据磁盘，不包括服务使用的临时磁盘。
 
 ## <a name="prerequisites"></a>先决条件
 
 此方案中使用了以下工具和服务。
 
-+ [Azure 认知搜索](search-create-service-portal.md) (基本版或更高 [级别](search-sku-tier.md#tiers) ，) 任何区域。
++ [Azure 认知搜索](search-create-service-portal.md) (基本版或更高 [级别](search-sku-tier.md#tier-descriptions) ，) 任何区域。
 + [Azure Key Vault](../key-vault/general/overview.md)，你可以使用 [Azure 门户](../key-vault//general/quick-create-portal.md)、 [Azure CLI](../key-vault//general/quick-create-cli.md)或 [Azure PowerShell](../key-vault//general/quick-create-powershell.md)创建密钥保管库。 在与 Azure 认知搜索相同的订阅中。 密钥保管库必须启用“软删除”和“清除保护”。 
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 如果没有，请 [设置一个新租户](../active-directory/develop/quickstart-create-new-tenant.md)。
 
@@ -56,7 +56,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="1---enable-key-recovery"></a>1 - 启用密钥恢复
 
-由于与客户管理的密钥加密的性质，如果 Azure 密钥保管库密钥被删除，则没有人可以检索数据。 若要防止意外删除 Key Vault 密钥造成数据丢失，必须在密钥保管库上启用“软删除”和“清除保护”。 默认情况下会启用“软删除”，因此，只有在你特意禁用了此功能时才会遇到问题。 “清除保护”在默认情况下未启用，但它是 Azure 认知搜索 CMK 加密所必需的。 有关详细信息，请参阅[软删除](../key-vault/general/soft-delete-overview.md)和[清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)概述。
+由于与客户管理的密钥加密的性质，如果 Azure 密钥保管库密钥被删除，则没有人可以检索数据。 若要防止意外删除 Key Vault 密钥造成数据丢失，必须在密钥保管库上启用“软删除”和“清除保护”。 默认情况下会启用“软删除”，因此，只有在你特意禁用了此功能时才会遇到问题。 清除保护默认情况下未启用，但在认知搜索中，客户管理的密钥加密是必需的。 有关详细信息，请参阅[软删除](../key-vault/general/soft-delete-overview.md)和[清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)概述。
 
 可以使用门户、PowerShell 或 Azure CLI 命令设置这两个属性。
 
@@ -377,7 +377,7 @@ CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你�
 
 ## <a name="work-with-encrypted-content"></a>使用加密内容
 
-使用 CMK 加密时，你会注意到，由于额外的加密/解密工作，索引编制和查询会出现相应的延迟。 Azure 认知搜索不记录加密活动，但你可以通过密钥保管库日志记录监视密钥访问。 建议 [启用日志记录](../key-vault/general/logging.md) 作为 key vault 配置的一部分。
+使用客户托管的密钥加密时，由于额外的加密/解密工作，你会注意到索引和查询的延迟。 Azure 认知搜索不记录加密活动，但你可以通过密钥保管库日志记录监视密钥访问。 建议 [启用日志记录](../key-vault/general/logging.md) 作为 key vault 配置的一部分。
 
 应每隔一段时间就进行密钥轮换。 每当轮换密钥时，请务必遵循此顺序：
 

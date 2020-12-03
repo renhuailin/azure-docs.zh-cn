@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301843"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532782"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -343,7 +343,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**： Azure Active Directory (Azure AD) 的内置角色必须明确分配并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [如何使用应用服务和 Azure Functions 的托管标识](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -656,7 +656,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 查看并遵循安全中心提供的建议，确保应用服务应用的安全。
 
-- [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
+- [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -686,7 +686,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -891,7 +891,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 建议将此过程记录为应用用于标准化使用的内置策略定义。   
 
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 使用现有的持续集成 (CI) 和持续交付 (CD) 管道部署已知安全的配置。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文档](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -1081,7 +1081,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，还可以清楚地标记订阅 (例如，生产、非生产) ，并创建一个命名系统来明确识别和分类 Azure 资源。
 

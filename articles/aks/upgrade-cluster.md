@@ -4,12 +4,12 @@ description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683227"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531337"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -121,6 +121,64 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
+## <a name="set-auto-upgrade-channel-preview"></a> (预览设置自动升级通道) 
+
+除手动升级群集外，还可以在群集上设置自动升级通道。 可用的升级通道如下：
+
+* *无*，禁用自动升级，并使群集处于当前版本的 Kubernetes。 这是默认值，如果未指定任何选项，则使用。
+* *修补程序*，它会在保持次要版本相同时，自动将群集升级到支持的最新修补程序版本。 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则群集会升级到 *1.17.9*。
+* *稳定* 的，它会自动将群集升级到次要版本 *N-1* 上支持的最新修补程序版本，其中 *N* 是支持的最新次要版本。 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则群集会升级到 *1.18.6*。
+* *快速*，这会自动将群集升级到受支持的最新次要版本上支持的最新修补程序版本。 如果群集处于 Kubernetes 版本的，其中 *n* 是最新的受支持 *的次版本*，则群集首先会升级到 *n-1* 次版本上支持的最新修补程序版本。 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则首先将群集升级到 *1.18.6*，然后将其升级到 *1.19.1*。
+
+> [!NOTE]
+> 群集自动升级仅更新 Kubernetes 的 GA 版本，不会更新为预览版版本。
+
+自动升级群集的操作遵循与手动升级群集相同的过程。 有关详细信息，请参阅 [Upgrade a AKS cluster][upgrade-cluster]。
+
+AKS 群集的群集自动升级是一项预览功能。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+`AutoUpgradePreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+使用 [az extension add][az-extension-add] 命令安装 *aks-preview* 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+若要在创建群集时设置自动升级通道，请使用 *自动升级通道* 参数，如下所示。
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+若要在现有群集上设置自动升级通道，请更新 *自动升级通道* 参数，如下例所示。
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 本文演示了如何升级现有的 AKS 群集。 若要详细了解如何部署和管理 AKS 群集，请参阅相关教程系列。
@@ -137,6 +195,10 @@ myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded      
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

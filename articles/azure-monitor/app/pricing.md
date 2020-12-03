@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400581"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531320"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -58,7 +58,7 @@ ms.locfileid: "91400581"
 ![选择定价](./media/pricing/pricing-001.png)
 
 A. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](./sampling.md)后）。  
-B. 对 [多步骤 web 测试](./availability-multistep.md)收取单独的费用。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
+B. 对[多步骤 Web 测试](./availability-multistep.md)单独收费。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
 C. 查看上个月的数据量趋势。  
 D. 启用数据引入[采样](./sampling.md)。
 E. 设置每日数据量上限。  
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -231,14 +231,14 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 * 已达到 Application Insights 组件的每日上限
 
 ## <a name="sampling"></a>采样
-[采样](./sampling.md) 是一种降低遥测发送到应用的速率的方法，同时保留在诊断搜索过程中查找相关事件的能力。 此外，还可保留正确的事件计数。
+[采样](./sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。
 
 采样是降低费用同时又不超出每月配额的有效方式。 采样算法会保留遥测的相关项，这样，当使用“搜索”时便可查找与特定异常相关的请求。 该算法还保留正确计数，使用户可在指标资源管理器中看到请求率、异常率和其他计数的正确值。
 
 有数种形式的采样。
 
 * [自适应采样](./sampling.md)是用于 ASP.NET SDK 的默认设置。 自适应采样可自动调整为应用发送的遥测量。 它会在 Web 应用的 SDK 中自动运行，以便减少网络上的遥测流量。 
-* *引入采样*是一种替代方法，会在应用的遥测进入 Application Insights 服务时运行。 引入采样不会影响从应用发送的遥测量，但会减少服务保留的量。 可以使用引入采样来降低来自浏览器和其他 SDK 的遥测所使用的配额。
+* *引入采样* 是一种替代方法，会在应用的遥测进入 Application Insights 服务时运行。 引入采样不会影响从应用发送的遥测量，但会减少服务保留的量。 可以使用引入采样来降低来自浏览器和其他 SDK 的遥测所使用的配额。
 
 若要设置引入采样，请转到“定价”窗格：
 
@@ -264,7 +264,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 若要更改保留期，请从 Application Insights 资源转到“使用情况和估算成本”页，然后选择“数据保留”选项 ：
 
-![显示在何处更改数据保持期的屏幕截图。](./media/pricing/pricing-005.png)
+![屏幕截图显示了在何处更改数据保留期。](./media/pricing/pricing-005.png)
 
 如果保留期天数减少，则在删除最旧的数据之前，会有几天的宽限期。
 
@@ -308,7 +308,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 ### <a name="how-the-per-node-tier-works"></a>“按节点”层的工作原理
 
 * 你需要针对为“按节点”层中的任何应用发送遥测数据的每个节点付费。
-  * *节点*是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
+  * *节点* 是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
   * 开发计算机、客户端浏览器和移动设备不计为节点。
   * 如果应用有多个组件（例如 Web 服务和后端辅助角色）发送遥测数据，则会对组件分开计数。
   * 定价未考虑[实时指标流](./live-stream.md)数据。 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
@@ -340,7 +340,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ## <a name="next-steps"></a>后续步骤
 
-* [样本](./sampling.md)
+* [采样](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties

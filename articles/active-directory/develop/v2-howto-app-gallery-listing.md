@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173373"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530743"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -168,14 +168,25 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 创建具有 HTML 登录页的 web 应用程序。 确保你的应用程序支持窗体身份验证，以便可以进行密码保险存储以使单一登录能够按预期方式工作。
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>步骤 3-在应用中实现 SCIM 用户预配
+支持 [SCIM](https://aka.ms/scimoverview) 预配是一个可选的，但强烈建议您在构建应用程序时执行此操作。 支持 SCIM 标准非常简单，并使客户能够在应用程序中自动创建和更新用户帐户，而无需依赖手动过程，如上传 CSV 文件。 此外，客户可以自动删除用户并使组成员身份保持同步，这不能通过 SAML JIT 等解决方案来完成。 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>步骤 3-创建 Azure 租户并测试应用程序
+### <a name="learn-about-scim"></a>了解 SCIM
+若要了解有关 SCIM 标准和客户权益的详细信息，请参阅 [预配 SCIM-入门](https://aka.ms/scimoverview)。
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>了解 Azure AD SCIM 实现
+若要了解有关 Azure AD SCIM 实现的详细信息，请参阅 [生成 SCIM 终结点和使用 Azure AD 配置用户预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
+
+### <a name="implement-scim"></a>实现 SCIM
+Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您生成 SCIM 终结点。 在 github 上还可以找到许多第三方库/参考。  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>步骤 4-创建 Azure 租户并测试应用程序
 
 需要 Azure AD 租户才能测试应用程序。 若要设置开发环境，请参阅 [快速入门：设置租户](quickstart-create-new-tenant.md)。
 
 或者，Azure AD 租户附带每个 Microsoft 365 订阅。 若要设置免费 Microsoft 365 开发环境，请参阅 [加入 Microsoft 365 开发人员计划](/office/developer-program/microsoft-365-developer-program)。
 
-拥有租户后，需要启用和测试单一登录访问。 
+拥有租户后，需要测试单一登录和 [预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)。 
 
 **对于 OIDC 或 Oath 应用** 程序，请将 [应用程序注册](quickstart-register-app.md) 为多租户应用程序。 在 "受支持的帐户类型" 中选择 "任何组织目录和个人 Microsoft 帐户中的帐户" 选项。
 
@@ -184,7 +195,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 如果需要，还可以 [将单租户应用程序转换为多租户应用程序](howto-convert-app-to-be-multi-tenant.md) 。
 
 
-## <a name="step-4---create-and-publish-documentation"></a>步骤 4-创建和发布文档
+## <a name="step-5---create-and-publish-documentation"></a>步骤 5-创建和发布文档
 
 ### <a name="documentation-on-your-site"></a>网站上的文档
 
@@ -206,13 +217,14 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 * 试验用户的测试步骤
 * 疑难解答信息，包括错误代码和消息
 * 客户的支持机制
+* 有关 SCIM 终结点的详细信息，包括支持的资源和属性
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft 网站上的文档
 
 当你使用 Azure Active Directory 应用程序库列出你的应用程序（该应用程序也会在 Azure Marketplace 中发布应用程序）时，Microsoft 将为我们的共同客户生成文档，其中介绍了分步过程。 可在 [此处](../saas-apps/tutorial-list.md)查看示例。 此文档是基于你提交到库的创建的，如果你使用 GitHub 帐户对应用程序进行更改，则可以轻松地对其进行更新。
 
 
-## <a name="step-5---submit-your-app"></a>步骤 5-提交应用
+## <a name="step-6---submit-your-app"></a>步骤 6-提交应用
 
 在测试应用程序集成是否可用于 Azure AD 后，请在 [Microsoft 应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交应用程序请求。
 
@@ -262,7 +274,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 ![在库中列出密码 SSO 应用程序](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果要实现用户预配的 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 终结点，请选择相应的选项。 
+如果要实现用户预配的 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 终结点，请选择相应的选项。 在载入请求中提供架构时，请按照 [此处](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) 的说明下载你的架构。 在测试非库应用程序时，我们将使用配置的架构来构建库应用程序。 
 
    ![用户预配请求](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,7 +313,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 对于任何升级，请将电子邮件发送到 [AZURE AD SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com)，我们将尽快回复。
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>步骤 6-加入 Microsoft 合作伙伴网络
+## <a name="step-7---join-the-microsoft-partner-network"></a>步骤 7-加入 Microsoft 合作伙伴网络
 Microsoft 合作伙伴网络提供对独占资源、程序、工具和连接的即时访问。 若要加入网络并创建转到市场计划，请参阅 [联系商业客户](https://partner.microsoft.com/explore/commercial#gtm)。
 
 

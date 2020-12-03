@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7d2b87710b2590f9bcf511ec0cbd5637913fb5c4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538438"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530657"
 ---
 # <a name="describe-images-with-human-readable-language"></a>使用人类可读语言描述图像
 
@@ -60,8 +60,7 @@ ms.locfileid: "94538438"
 
 映像说明功能是 [分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Description` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"description"` 部分内容的字符串。
 
-* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)
+* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>后续步骤
 

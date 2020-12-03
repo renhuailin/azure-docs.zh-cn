@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 57e01683cb8027c2a1f79e58bce03b3bb7dedadb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4e7774d2cd100931f92ff80066ebea4463c6f65c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538378"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532646"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
 
@@ -82,5 +82,4 @@ ms.locfileid: "94538378"
 
 "配色方案检测" 功能是 " [分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API" 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Color` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"color"` 部分内容的字符串。
 
-* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)
+* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

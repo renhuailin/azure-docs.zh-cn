@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460894"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532901"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -80,7 +80,7 @@ ms.locfileid: "96460894"
 |Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](../../event-hubs/configure-customer-managed-key.md)|
 |Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[将项目传输到另一个注册表](../../container-registry/container-registry-transfer-images.md)
+|Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a885f027250a915347fea758c7c7978af0f45f49
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 79a99ad37c526103fc3068562d62ed40defc983b
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302519"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532374"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure 应用配置的 Azure 安全基线
 
@@ -102,7 +102,7 @@ Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应�
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6：简化网络安全规则
 
-**指南**：使用 Azure 虚拟网络服务标记定义为应用配置资源配置的网络安全组或 Azure 防火墙上的网络访问控制。 在应用程序网络中创建出站流量的安全规则时，可以使用服务标记 "AppConfiguration" 代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称，可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用 Azure 虚拟网络服务标记定义为应用配置资源配置的网络安全组或 Azure 防火墙上的网络访问控制。 在应用程序网络中创建出站流量的安全规则时，可以使用服务标记 "AppConfiguration" 代替特定的 IP 地址。 通过在规则的相应“源”或“目标”字段中指定服务标记名称，可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
@@ -114,13 +114,13 @@ Azure 应用配置不用于运行 web 应用程序，它提供了这些 web 应�
 
 有关详细信息，请参阅 [Azure 安全基准：标识管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
-### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为标识和身份验证的中央系统
+### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
 **指南**： Azure 应用配置与 Azure 默认标识和访问管理服务 Azure Active Directory (Azure AD) 集成。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理：
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
-在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，有助于根据 Microsoft 的最佳实践建议评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
+在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，帮助你评估与 Microsoft 的最佳做法建议相关的标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
 Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对应用程序配置数据的访问权限：
 
@@ -172,11 +172,11 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 
 **责任**：客户
 
-### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：对应用程序访问使用 Azure AD 单一登录 (SSO)
+### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-**指南**： Azure 应用配置使用 Azure Active Directory (Azure AD) 提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 这包括企业标识（如员工）以及外部标识（如合作伙伴和供应商）。 Azure AD 通过使用任何同步的企业 Active Directory 标识，启用单一登录 (SSO) 通过 Azure 门户来管理应用配置服务。 将所有用户、应用程序和设备连接到 Azure AD，以实现无缝、安全的访问以及更好的可见性和控制。
+**指南**： Azure 应用配置使用 Azure Active Directory (Azure AD) 提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 Azure AD 通过使用任何同步的企业 Active Directory 标识，启用单一登录 (SSO) 通过 Azure 门户来管理应用配置服务。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
 
-- [了解使用 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [了解 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -185,8 +185,8 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
 **指南**： Azure 应用配置使用 Azure Active Directory，通过多重身份验证 (MFA) 和强无密码方法支持强身份验证控制。
-- 多重身份验证 (MFA) - 启用 Azure AD MFA 并遵循 Azure 安全中心标识和访问管理建议，以在 MFA 设置中实现一些最佳做法。 可对所有用户、所选用户强制执行 MFA，或可根据登录条件和风险因素在每个用户级别强制执行 MFA。
-- 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+- 多重身份验证 - 启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议，以获得 MFA 设置中的一些最佳做法。 可基于登录条件和风险因素，对所有用户、精选用户或在每用户级别强制执行 MFA。
+- 无密码身份验证 - 有三个无密码身份验证选项可用：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用的是最高级别的强身份验证方法，然后将相应的强身份验证策略推出给其他用户。
 
@@ -200,7 +200,7 @@ Azure 应用配置支持应用程序被授予两种类型的标识：
 
 **责任**：客户
 
-### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视帐户异常并发出警报
+### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
 **指南**： Azure 应用配置与 Azure Active Directory 集成，提供以下数据源：
 
@@ -361,7 +361,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-**指南**：安全的隔离工作站对于敏感角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 对于与应用程序配置相关的管理任务，使用高度安全的用户工作站和/或 Azure 堡垒。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可以集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
+**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 对于与应用程序配置相关的管理任务，使用高度安全的用户工作站和/或 Azure 堡垒。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
 - [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
 
@@ -646,7 +646,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 
-**指南**：确保你的组织具有安全事件的响应流程，已为 Azure 更新了这些流程，并会定期演练这些流程以确保准备就绪。
+**指导**：确保组织具有响应安全事件的流程，已为 Azure 更新这些流程，并定期运用这些流程来确保就绪性。
 
 - [在企业环境中实现安全性](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -658,7 +658,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="ir-2-preparation--setup-incident-notification"></a>IR-2：准备 - 设置事件通知
 
-**指南**：在 Azure 安全中心中设置安全事件联系人信息。 如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用此联系信息来与你取得联系。 还可以选择基于事件响应需求在不同的 Azure 服务中自定义事件警报和通知。 
+**指导**：在 Azure 安全中心中设置安全事件联系人信息。 如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用此联系信息来与你取得联系。 还可以选择基于事件响应需求在不同的 Azure 服务中自定义事件警报和通知。 
 
 - [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
@@ -666,11 +666,11 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **责任**：客户
 
-### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3：检测和分析 - 根据高质量警报创建事件
+### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3：检测和分析 - 基于高质量警报创建事件
 
-**指南**：确保你有创建高质量警报的过程，并衡量警报的质量。 这样，你就可以从过去的事件中吸取经验，并为分析人员确定警报的优先级，这样他们就不会浪费时间来处理误报。 
+**指导**：确保具有创建高质量警报和衡量警报质量的流程。 这样，你就可以从过去的事件中吸取经验，并为分析人员确定警报的优先级，这样他们就不会浪费时间来处理误报。 
 
-高质量的警报可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具。 
+可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
 Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
@@ -714,7 +714,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **责任**：客户
 
-### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5：检测和分析 - 设置事件优先级
+### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5：检测和分析 - 确定事件优先级
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
@@ -730,9 +730,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **责任**：客户
 
-### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6：遏制、根除和恢复 - 自动执行事件处理
+### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6：包含、根除和恢复 - 自动执行事件处理
 
-**指南**：自动执行重复性手动任务，以加快响应速度并减轻分析人员的负担。 执行手动任务需要更长的时间，这会导致减慢每个事件的速度，并减少分析人员可以处理的事件数量。 手动任务还会使分析人员更加疲劳，这会增加可导致延迟的人为错误的风险，并降低分析人员专注于复杂任务的工作效率。 使用 Azure 安全中心和 Azure Sentinel 中的工作流自动化功能，可自动触发操作或运行 playbook，对传入的安全警报作出响应。 playbook 执行多项操作，如发送通知、禁用帐户和隔离有问题的网络。 
+**指导**：自动执行手动重复性任务来加快响应时间并减轻分析人员的负担。 执行手动任务需要更长的时间，这会导致减慢每个事件的速度，并减少分析人员可以处理的事件数量。 手动任务还会使分析人员更加疲劳，这会增加可导致延迟的人为错误的风险，并降低分析人员专注于复杂任务的工作效率。 使用 Azure 安全中心和 Azure Sentinel 中的工作流自动化功能，可自动触发操作或运行 playbook，对传入的安全警报作出响应。 playbook 执行多项操作，如发送通知、禁用帐户和隔离有问题的网络。 
 
 - [在安全中心配置工作流自动化](../security-center/workflow-automation.md)
 
@@ -744,9 +744,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **责任**：客户
 
-## <a name="posture-and-vulnerability-management"></a>状况和漏洞管理
+## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：态势和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
@@ -786,7 +786,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：执行定期攻击模拟
 
-**指南**：根据需要，对 Azure 资源进行渗透测试和红队活动，确保修正所有关键的安全发现结果。
+**指导**：根据需要，对 Azure 资源进行渗透测试或红队活动，并确保修正所有关键安全发现。
 请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 - [Azure 中的渗透测试](../security/fundamentals/pen-testing.md)
@@ -801,7 +801,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="backup-and-recovery"></a>备份和恢复
 
-*有关详细信息，请参阅 [Azure 安全基准：备份和恢复](../security/benchmarks/security-controls-v2-backup-recovery.md)。*
+有关详细信息，请参阅 [Azure 安全基准：备份和恢复](../security/benchmarks/security-controls-v2-backup-recovery.md)。
 
 ### <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
@@ -819,7 +819,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略 
 
-**指南**：确保为系统和数据的持续监视和保护记录并传达清晰的策略。 确定业务关键数据和系统的发现、评估、保护和监视优先级。 
+**指导**：确保为系统和数据的持续监视和保护记录并传达明确的策略。 确定业务关键数据和系统的发现、评估、保护和监视优先级。 
 
 此策略应包括针对以下元素的记录在案的指南、策略和标准： 
 
@@ -833,18 +833,18 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 -   与组织数据分类相符的必需访问控制策略
 
--   使用 Azure 本机和第三方数据保护功能
+-   使用 Azure 原生和第三方数据保护功能
 
 -   传输中数据用例和静态数据用例的数据加密要求
 
 -   合适的加密标准
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../security/fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
@@ -856,7 +856,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定义企业分段策略 
 
-**指南**：建立企业范围的策略，将标识、网络、应用程序、订阅、管理组和其他控制措施结合使用以对资产的访问进行细分。
+**指导**：建立企业范围的策略，以便使用标识、网络、应用程序、订阅、管理组和其他控件的组合来细分对资产的访问。
 
 仔细权衡安全分离需求与为需要彼此通信并访问数据的系统启用日常操作的需求。
 
@@ -874,7 +874,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定义安全状况管理策略
 
-**指南**：不断衡量并降低各个资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
+**指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
 - [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
@@ -884,9 +884,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：协调组织角色、职责和责任
 
-**指南**：确保为安全组织中的角色和责任记录并传达清晰的策略。 优先考虑提供涉及安全决策的明确责任，对每个人进行共同职责模式培训，并为技术团队传授保护云的技术。
+**指导**：确保为安全组织中的角色和责任记录并传达明确的策略。 优先考虑提供涉及安全决策的明确责任，对每个人进行共同职责模式培训，并为技术团队传授保护云的技术。
 
-- [Azure 安全最佳做法 1 - 人员：针对云安全云之旅培训团队](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Azure 安全最佳做法 1 - 人员：针对云安全历程培训团队](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
 - [Azure 安全最佳做法 2 - 人员：针对云安全技术培训团队](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
@@ -898,7 +898,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-5-define-network-security-strategy"></a>GS-5：定义网络安全策略
 
-**指南**：建立 Azure 网络安全方法，作为组织整体安全访问控制策略的一部分。  
+**指导**：建立 Azure 网络安全方法，作为组织整体安全访问控制策略的一部分。  
 
 此策略应包括针对以下元素的记录在案的指南、策略和标准： 
 
@@ -929,7 +929,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定义标识和特权访问策略
 
-**指南**：建立 Azure 标识和特权访问方法，作为组织整体安全访问控制策略的一部分。  
+**指导**：建立 Azure 标识和特权访问方法，作为组织整体安全访问控制策略的一部分。  
 
 此策略应包括针对以下元素的记录在案的指南、策略和标准： 
 

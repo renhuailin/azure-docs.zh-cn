@@ -1,5 +1,5 @@
 ---
-title: Azure 资源管理器的 azure 安全基线
+title: 适用于 Azure 资源管理器的 Azure 安全基线
 description: Azure 资源管理器安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: azure-resource-manager
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 59d318b3e30b10d73e620a6b0793384dda80ef08
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d841d3b922a5edd0257934566207187ae031c1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184053"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532170"
 ---
-# <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure 资源管理器的 azure 安全基线
+# <a name="azure-security-baseline-for-azure-resource-manager"></a>适用于 Azure 资源管理器的 Azure 安全基线
 
 此安全基线将 [Azure 安全基准版本 1.0](../../security/benchmarks/overview-v1.md) 中的指南应用到 Microsoft Azure 资源管理器。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
-内容由 Azure 安全基准定义的 **安全控制** 和适用于 azure 资源管理器的相关指南进行分组。 不适用于 Azure 资源管理器的 **控件** 已被排除。
+内容按“安全控制”分组，这些控制按适用于 Azure 资源管理器的 Azure 安全基准和相关指南定义。 已排除了不适用于 Azure 资源管理器的控制。
 
- 若要查看 Azure 如何资源管理器完全映射到 Azure 安全基准，请参阅 [完整的 azure 资源管理器安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+ 若要了解 Azure 资源管理器如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 资源管理器安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -27,7 +27,7 @@ ms.locfileid: "96184053"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：通过 Azure Monitor 引入 Azure 策略活动日志。 在 Azure Monitor 中，使用 Log Analytics 工作区查询和执行分析，并使用 Azure 存储帐户进行长期或存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
+**指导**：通过 Azure Monitor 引入 Azure Policy 活动日志。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，使用 Azure 存储帐户进行长期存储或存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "96184053"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**： Azure 资源管理器使用自动启用的活动日志，以包含事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
+**指导**：Azure 资源管理器使用自动启用的活动日志来包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用的元素。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -71,13 +71,13 @@ ms.locfileid: "96184053"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：将 Azure 安全中心与 Log Analytics 结合使用，以便在活动日志中发现异常活动时进行监视和警报。 或者，可以启用数据并将其载入 Azure Sentinel。 
+**指导**：将 Azure 安全中心与 Log Analytics 配合使用，以便监视在活动日志中发现的异常活动并发出相关警报。 或者，可以启用数据并将其载入 Azure Sentinel。 
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
 - [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [如何发出 Log Analytics 日志数据的警报](../../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -91,9 +91,9 @@ ms.locfileid: "96184053"
 
 **指导**：借助 Azure 基于角色的访问控制 (RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -239,7 +239,7 @@ ms.locfileid: "96184053"
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
-**指南**：使用 Azure AD RBAC 来控制对数据和资源的访问，否则请使用特定于服务的访问控制方法。
+**指导**：请使用 Azure AD RBAC 来控制对数据和资源的访问，此外也可以使用特定于服务的访问控制方法。
 
 - [如何在 Azure 中配置 RBAC](../../role-based-access-control/role-assignments-portal.md)
 
@@ -251,7 +251,7 @@ ms.locfileid: "96184053"
 
 **指南**：对于静态服务器端加密，Azure 资源管理器支持 Microsoft 托管密钥。
 
-- [了解 Azure 中的数据保护资源管理器](azure-resource-manager-security-controls.md#data-protection)
+- [了解 Azure 资源管理器中的数据保护](azure-resource-manager-security-controls.md#data-protection)
 
 **Azure 安全中心监视**：不适用
 
@@ -259,7 +259,7 @@ ms.locfileid: "96184053"
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指南**：将 Azure Monitor 与 azure 活动日志结合使用，以便在对关键 Azure 资源进行更改时创建警报。
+**指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在关键 Azure 资源发生更改时发出的警报。
 
 - [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
 
@@ -273,13 +273,13 @@ ms.locfileid: "96184053"
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现所有资源 (如计算、存储、网络、端口和协议等，以及订阅中) 。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 来查询和发现订阅中的所有资源（如计算、存储、网络、端口和协议，等等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Azure Resource Graph 浏览器来发现经典 Azure 资源，但我们还是强烈建议创建并使用 Azure 资源管理器资源。
 
 - [如何使用 Azure Resource Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -306,7 +306,7 @@ ms.locfileid: "96184053"
 - 不允许的资源类型
 - 允许的资源类型
 
-下面提供了更多相关详细信息，
+下面提供了更多相关的详细信息：
 
 - [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
@@ -347,7 +347,7 @@ ms.locfileid: "96184053"
 - 不允许的资源类型
 - 允许的资源类型
 
-下面提供了更多相关详细信息，
+下面提供了更多相关的详细信息：
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -387,7 +387,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [教程：创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -421,7 +421,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 **指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
@@ -431,7 +431,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
-**指导**：使用 Azure Policy 为 Azure 资源定义和实施标准安全配置。 使用 Azure Policy 别名创建自定义策略，审核或强制实施 Azure 资源的网络配置。 你还可以使用与特定资源相关的内置策略定义。  此外，也可以使用 Azure 自动化来部署配置更改。
+**指导**：使用 Azure Policy 为 Azure 资源定义和实施标准安全配置。 使用 Azure Policy 别名创建自定义策略，审核或强制实施 Azure 资源的网络配置。 还可以使用与特定资源相关的内置策略定义。  此外，也可以使用 Azure 自动化来部署配置更改。
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -443,7 +443,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指南**：使用内置的 Azure 策略定义以及自定义策略来警报、审核和强制实施系统配置。 使用 Azure Policy“[审核]”、“[拒绝]”和“[不存在则部署]”自动强制实施 Azure 资源的配置。
+**指导**：使用内置 Azure Policy 定义以及自定义策略来审核、强制实施系统配置并发出相关警报。 使用 Azure Policy“[审核]”、“[拒绝]”和“[不存在则部署]”自动强制实施 Azure 资源的配置。
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -453,7 +453,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：在构造 arm 模板时使用推荐的做法，这些建议可帮助你避免使用 ARM 模板部署解决方案时遇到的常见问题。
+**指导**：在构造 ARM 模板时请使用建议的做法，这些建议有助于在使用 ARM 模板来部署解决方案时避免出现常见问题。
 
 实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。 
 
@@ -471,7 +471,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：若有必要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。
+**指导**：确保能够将 Azure 资源管理器模板定期部署到隔离订阅（如果有必要）。
 
 - [使用 ARM 模板和 Azure 门户部署资源](../templates/deploy-portal.md)
 
@@ -483,7 +483,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 **指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 

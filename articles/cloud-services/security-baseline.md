@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353436"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531898"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>适用于 Azure 云服务的 Azure 安全基线
 
@@ -36,7 +36,7 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [网络安全组概述](../virtual-network/network-security-groups-overview.md)
 
-- [虚拟网络对等互连](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [虚拟网络对等互连](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure 安全中心监视**：不适用
 
@@ -58,7 +58,7 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [云服务配置文件](schema-cscfg-file.md)
 
-- [Azure 策略支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Azure 策略支持的服务列表](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 安全中心监视**：不适用
 
@@ -89,9 +89,9 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 为经典订阅管理员分配配置“拒绝应用”规则。 默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，你必须将 NetworkTrafficRules 元素添加到服务定义文件中的 ServiceDefinition 元素。
 
-- [如何阻止/禁用发往云服务的默认 URL 的传入流量](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [如何阻止/禁用发往云服务的默认 URL 的传入流量](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS 防护](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS 防护](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [阻止特定 IP 地址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 - [在网络安全组上配置流日志记录](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [有关配置流日志的详细信息，请访问](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [有关配置流日志的详细信息，请访问](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 安全中心监视**：不适用
 
@@ -231,13 +231,13 @@ Microsoft Azure 云服务 (经典) 不能放置在 Azure 资源管理器虚拟�
 
 Application Insights 可以监视 Azure 云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在 Azure 云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 
 
-- [部署前在 Visual Studio 中启用诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [部署前在 Visual Studio 中启用诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [查看更改历史记录](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [适用于 Azure 云服务（经典）的 Application Insights](../azure-monitor/app/cloudservices.md)
 
-- [为 Azure 云服务（经典）和虚拟机设置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [为 Azure 云服务（经典）和虚拟机设置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Azure 安全中心监视**：是
 
@@ -289,7 +289,7 @@ Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 
 
 **指导**：适用于 Azure 的 Microsoft Antimalware 可保护 Azure 云服务和虚拟机。 此外，你可以选择部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测和防护系统 (IDS 或 IPS)，等等。
 
-- [Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure 安全中心监视**：不适用
 
@@ -840,7 +840,7 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 选择 Azure 安全中心内的自适应应用程序控制功能，这是一个智能的自动化端到端解决方案。 它有助于增强计算机抵御恶意软件的能力，让你能够阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 
-- [如何以自动化方式为 Azure 云服务添加 Antimalware 扩展](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [如何以自动化方式为 Azure 云服务添加 Antimalware 扩展](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
@@ -856,7 +856,7 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

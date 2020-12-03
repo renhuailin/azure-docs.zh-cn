@@ -7,19 +7,43 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/01/2020
+ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101267"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530487"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
-创建 Azure 认知搜索服务时，会在服务生存期固定的定价层中 [创建资源](search-create-service-portal.md) 。 层包括“免费”、“基本”、“标准”和“存储优化”。 “标准”和“存储优化”提供多种配置和容量。
+[创建搜索服务](search-create-service-portal.md)时，请选择在服务生存期内固定的定价层。 选择的层决定：
 
-大多数客户从“免费”层着手，以便能够评估该服务。 评估后，他们往往会在某个更高的层上创建另一个服务用于开发和生产部署。
++ 索引数量和其他对象 (最大限制) 
++ 分区（物理存储）的大小和速度
++ 计费率，一项固定成本，也也使用中的分区和副本数量
+
+此外，还提供了一些级别要求的 [高级功能](#premium-features) 。
+
+## <a name="tier-descriptions"></a>层说明
+
+层包括 **免费**、 **基本**、 **标准** 和 **优化存储**。 “标准”和“存储优化”提供多种配置和容量。
+
+以下 Azure 门户屏幕截图显示了可用的层，其中不包括定价层（可在门户中和[定价页](https://azure.microsoft.com/pricing/details/search/)上找到该层）。 
+
+![Azure 认知搜索的定价层](media/search-sku-tier/tiers.png "Azure 认知搜索的定价层")
+
+**免费** 为较小的项目创建受限的搜索服务，如运行教程和代码示例。 在内部，副本和分区可被多个订阅者共享。 不能缩放免费服务，也不能运行繁重的工作负荷。
+
+“基本”和“标准”层是最常用的计费层，其中“标准”层是默认的层。   通过控制下的专用资源，你可以部署更大的项目、优化性能和增加容量。
+
+某些层已针对特定类型的工作进行优化。 例如，“标准 3 高密度(S3 HD)”是 S3 的托管模式，其中的底层硬件已针对大量的较小索引进行优化，适用于多租户方案。 S3 HD 的每单位费用与 S3 相同，但硬件经过优化，可基于大量的小型索引快速读取文件。
+
+与“标准”层相比，“存储优化”层以更低的每 TB 价格提供更大的存储容量。 主要弊端是查询延迟更高，应根据具体的应用程序要求确认这种延迟。 若要详细了解此层的性能注意事项，请参阅[性能和优化注意事项](search-performance-optimization.md)。
+
+预配服务时，可以在[定价页](https://azure.microsoft.com/pricing/details/search/)、[Azure 认知搜索中的服务限制](search-limits-quotas-capacity.md)以及门户页上找到有关各个层的详细信息。
+
+<a name="premium-features"></a>
 
 ## <a name="feature-availability-by-tier"></a>按层划分的功能可用性
 
@@ -35,34 +59,13 @@ ms.locfileid: "92101267"
 
 大多数功能都可在每个层（包括免费层）上使用，但如果不为其提供足够的容量，则资源密集型功能可能无法正常工作。 例如，[AI 扩充](cognitive-search-concept-intro.md)包含长时间运行的技能，除非数据集较小，否则这些技能在免费服务中会超时。
 
-## <a name="tiers"></a>层
-
-可以通过以下方式区分层：
-
-+ 索引和索引器的数量 (最大限制) 
-+ 分区（物理存储）的大小和速度
-
-选择的层决定了计费费率。 以下 Azure 门户屏幕截图显示了可用的层，其中不包括定价层（可在门户中和[定价页](https://azure.microsoft.com/pricing/details/search/)上找到该层）。 “免费”、“基本”和“标准”层是最常用的层。  
-
-“免费”选项会为较小的项目（包括快速入门和教程）创建一个受限搜索服务。 在内部，副本和分区可被多个订阅者共享。 不能缩放免费服务，也不能运行繁重的工作负荷。
-
-“基本”和“标准”层是最常用的计费层，其中“标准”层是默认的层。   控制专用资源后，你可以部署较大的项目，优化性能并设置容量。
-
-![Azure 认知搜索的定价层](media/search-sku-tier/tiers.png "Azure 认知搜索的定价层")
-
-某些层已针对特定类型的工作进行优化。 例如，“标准 3 高密度(S3 HD)”是 S3 的托管模式，其中的底层硬件已针对大量的较小索引进行优化，适用于多租户方案。 S3 HD 的每单位费用与 S3 相同，但硬件经过优化，可基于大量的小型索引快速读取文件。
-
-与“标准”层相比，“存储优化”层以更低的每 TB 价格提供更大的存储容量。 主要弊端是查询延迟更高，应根据具体的应用程序要求确认这种延迟。  若要详细了解此层的性能注意事项，请参阅[性能和优化注意事项](search-performance-optimization.md)。
-
-预配服务时，可以在[定价页](https://azure.microsoft.com/pricing/details/search/)、[Azure 认知搜索中的服务限制](search-limits-quotas-capacity.md)以及门户页上找到有关各个层的详细信息。
-
 ## <a name="billable-events"></a>计费事件
 
 基于 Azure 认知搜索构建的解决方案可能会在以下方面产生成本：
 
-+ 在全天候运行且使用最低配置（一个分区和副本）的情况下，服务本身产生的成本
++ [服务](#service-costs) 本身的成本，以最低配置 (每个分区和副本) 以基本速率运行
 
-+ 添加容量（副本或分区）
++  (副本或分区) 添加容量，其中成本以计费费率的增量递增
 
 + 带宽费用（出站数据传输）
 
@@ -87,7 +90,7 @@ ms.locfileid: "92101267"
 使用[索引器](search-indexer-overview.md)可能会影响计费，具体取决于服务的位置。 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
 
 + Microsoft 不会对入站到 Azure 上的任何服务的任何数据收费，也不会对 Azure 认知搜索的任何出站数据收费。
-+ 在多服务解决方案中，如果所有服务位于同一个区域，将不会对通过网络传输的数据收费。
++ 在多服务解决方案中，如果所有服务都位于同一区域，则不会对跨越网络的数据收费。
 
 如果服务在不同的区域中，则会针对出站数据收费。 这些费用实际上不是 Azure 认知搜索帐单的一部分。 此处之所以提到这些费用，是因为如果你使用数据或 AI 扩充索引器从不同的区域提取数据，将会在总体帐单中看到这些费用。
 
@@ -98,7 +101,7 @@ ms.locfileid: "92101267"
 | 操作 | 计费影响 |
 |-----------|----------------|
 | 文档破解、文本提取 | 免费 |
-| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在[索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
+| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在 [索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
 | [内置认知技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 |
 | 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。 |
 
@@ -149,7 +152,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 
 ### <a name="evaluating-capacity"></a>评估容量
 
-容量与运行服务的成本密切相关。 层在两个级别施加限制：存储和资源。 应该同时考虑到此两者，因为首先达到的限制就是实施的限制。
+容量与运行服务的成本密切相关。 层对两个级别施加限制：存储和内容 (索引数，例如) 。 应该同时考虑到此两者，因为首先达到的限制就是实施的限制。
 
 业务需求通常决定了所需的索引数。 例如，你可能需要对一个较大的文档存储库使用全局索引。 或者，你可能需要多个基于区域、应用或商业利基的索引。
 
