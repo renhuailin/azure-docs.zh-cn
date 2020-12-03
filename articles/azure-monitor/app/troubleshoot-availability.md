@@ -4,48 +4,44 @@ description: 排查 Azure Application Insights 中的 Web 测试问题。 当网
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015326"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546738"
 ---
 # <a name="troubleshooting"></a>故障排除
 
 本文将有助于排查使用可用性监视时可能出现的常见问题。
 
-## <a name="ssltls-errors"></a>SSL/TLS 错误
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>Ping 测试的报表步骤疑难解答
 
-|症状/错误消息| 可能的原因|
-|--------|------|
-|无法创建 SSL/TLS 安全通道  | SSL 版本。 仅支持 TLS 1.0、1.1 和 1.2。 **不支持 SSLv3。**
-|TLSv1.2 记录层：警报（级别：严重，说明：错误记录 MAC）| 请查看 StackExchange 线程以了解[详细信息](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)。
-|无法连接到 CDN（内容分发网络）的 URL | 这可能是由于 CDN 上的错误配置导致的 |  
+故障排除报告使你能够轻松诊断导致 **ping 测试** 失败的常见问题。
 
-### <a name="possible-workaround"></a>可能的解决方法
+![从 "可用性" 选项卡导航的动画，方法是选择对端到端事务详细信息的失败，以查看故障排除报告](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* 如果遇到问题的 URL 始终指向依赖资源，建议对 Web 测试禁用“分析从属请求”。
-
-## <a name="test-fails-only-from-certain-locations"></a>测试仅在某些位置失败
-
-|症状/错误消息| 可能的原因|
-|----|---------|
-|连接尝试失败，因为已连接方在一段时间后尚未做出正确的响应  | 某些位置的测试代理正被防火墙阻止。|
-|    |正在通过（负载均衡器、异地流量管理器、Azure Express Route）重新路由某些 IP 地址。 
-|    |如果使用的是 Azure ExpressRoute，则在[发生非对称路由](../../expressroute/expressroute-asymmetric-routing.md)时，存在着数据包可能被丢弃的情况。|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>测试失败，出现违反协议错误
-
-|症状/错误消息| 可能的原因| 可能的解决方法 |
-|----|---------|-----|
-|服务器违反了协议。 节=ResponseHeader 详细信息=CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，并使用格式错误的标头导致响应失败。| a. 请与网站主机提供商/CDN 提供商联系以修复故障服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁止分析依赖请求。 请记住，如果执行此操作，你将无法监视这些文件的可用性。
+1. 在 Application Insights 资源的 "可用性" 选项卡上，选择 "总体" 或其中一个 "可用性测试"。
+2. 选择 " **失败** "，然后在左侧的 "钻取" 下进行测试，或在散点图中选择一个点。
+3. 在 "端到端事务详细信息" 页上，选择一个事件，然后在 "报表摘要疑难解答" 下，选择 " **跳到步骤** " 以查看疑难解答报表。
 
 > [!NOTE]
-> 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  如果连接重新使用步骤存在，则 DNS 解析、连接建立和 TLS 传输步骤将不会出现。
 
+|步骤 | 错误消息 | 可能的原因 |
+|-----|---------------|----------------|
+| 连接重用 | 不适用 | 通常依赖于以前建立的连接，这意味着 web 测试步骤依赖于。 因此，不需要任何 DNS、连接或 SSL 步骤。 |
+| DNS 解析 | 远程名称无法解析： "你的 URL" | DNS 解析过程失败，很可能是由于 DNS 记录配置错误或临时 DNS 服务器故障引起的。 |
+| 建立连接 | 连接尝试失败，因为连接的参与方在一段时间后未正确响应。 | 通常，这意味着服务器不响应 HTTP 请求。 常见的原因是我们的测试代理被服务器上的防火墙阻止。 如果你想要在 Azure 虚拟网络中进行测试，则应将可用性服务标记添加到你的环境中。|
+| TLS 传输  | 客户端和服务器无法通信，因为它们不具有通用算法。| 仅支持 TLS 1.0、1.1 和 1.2。 SSL 不受支持。 此步骤不会验证 SSL 证书，只能建立安全连接。 此步骤仅在发生错误时才会显示。 |
+| 正在接收响应标头 | 无法从传输连接中读取数据。 连接已关闭。 | 你的服务器在响应标头中提交了协议错误。 例如，当响应不完整时，服务器关闭的连接。 |
+| 正在接收响应正文 | 无法从传输连接中读取数据：连接已关闭。 | 服务器在响应正文中提交了协议错误。 例如，当响应未完全读取或者分块响应正文中的块大小错误时，服务器关闭的连接。 |
+| 重定向限制验证 | 此网页的重定向太多。 此循环将在此处终止，因为此请求超出了自动重定向的限制。 | 每个测试的重定向限制为10个。 |
+| 状态代码验证 | `200 - OK` 与预期的状态不匹配 `400 - BadRequest` 。 | 视为成功的返回状态代码。 代码 200 指示返回了正常网页。 |
+| 内容验证 | 响应中没有出现所需文本 "hello"。 | 字符串在响应中不是完全区分大小写的匹配，例如字符串 "欢迎！"。 它必须是不带通配符的纯字符串 (例如星号) 。 如果页面内容发生更改，则可能必须更新字符串。 内容匹配仅支持英文字符。 |
+  
 ## <a name="common-troubleshooting-questions"></a>常见故障排除问题
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>站点看似正常，但我看见测试失败了？ 为何 Application Insights 会向我发出警报？
@@ -54,7 +50,7 @@ ms.locfileid: "96015326"
 
    * 若要降低暂时性网络问题等各方面因素导致的干扰，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
 
-   * 单击可用性体验中的任意红点或搜索资源管理器中的任意可用性故障，以查看我们报告失败的详细原因。 测试结果以及相关的服务器端遥测数据（如果启用）应该有助于了解测试失败的原因。 暂时性问题的常见原因是网络或连接问题。
+   * 单击可用性散点图体验中的任何红色点，或者从 "搜索资源管理器" 中找到任何可用性错误，以查看我们报告失败的原因的详细信息。 测试结果以及相关的服务器端遥测数据（如果启用）应该有助于了解测试失败的原因。 暂时性问题的常见原因是网络或连接问题。
 
    * 测试是否超时？ 我们在 2 分钟后中止测试。 如果你的 ping 或多步骤测试花费的时间超过 2 分钟，我们会将其报告为失败。 请考虑将测试分成多个可在较短持续时间内完成的测试。
 
@@ -134,4 +130,3 @@ ms.locfileid: "96015326"
 
 * [多步骤 Web 测试](availability-multistep.md)
 * [URL ping 测试](monitor-web-app-availability.md)
-

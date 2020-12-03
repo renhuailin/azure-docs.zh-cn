@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1359d01136067b6a939efd1cc0cd7db36f4dc2d6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339710"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545462"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 * **连接模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    Java SDK 默认连接模式为直接。 你可以使用 *directMode ( # B1* 或 *GatewayMode ( # B3* 方法在客户端生成器中配置连接模式，如下所示。 若要使用默认设置配置任一模式，请调用任一方法而不使用参数。 否则，将配置设置类实例作为参数传递 ( *DirectConnectionConfig* for *DirectMode ( # B2* 、  *GatewayConnectionConfig* for *gatewayMode ( # B4*. ) 。 若要了解有关不同连接选项的详细信息，请参阅 [连接模式](sql-sdk-connection-modes.md) 一文。
+    Java SDK 的默认连接模式是直接连接模式。 可以使用 directMode() 或 gatewayMode() 方法在客户端生成器中配置连接模式，如下所示。 若要使用默认设置配置任一模式，请调用任一方法而不使用参数。    否则，以参数（directMode() 的是 DirectConnectionConfig，gatewayMode() 的是 GatewayConnectionConfig）的形式传递配置设置类实例。 若要详细了解不同的连接性选项，请参阅[连接性模式](sql-sdk-connection-modes.md)一文。
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -124,7 +124,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     
     使用同步 API 时，进行地理并置可以获得更高且更一致的吞吐量（请参阅[将客户端并置在同一 Azure 区域内以提高性能](#collocate-clients)），但应不会超过异步 API 可获得的吞吐量。
 
-    另外，某些用户可能不熟悉 [Project Reactor](https://projectreactor.io/)，这是用于实现 Azure Cosmos DB Java SDK v4 异步 API 的反应流框架。 如果存在此问题，建议你阅读我们的简介性文章：[Reactor Pattern Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)（Reactor 模式指南），然后查看此[响应式编程简介](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro)，自行熟悉相关内容。 如果你已将 Azure Cosmos DB 与异步接口配合使用，并且所使用的 SDK 是 Azure Cosmos DB Async Java SDK v2，那么你可能已熟悉 [ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava)，但不确定 Project Reactor 中所做的变更。 这种情况下，请查看我们的 [Reactor vs.RxJava Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)（Reactor 与 RxJava 指南），熟悉相关内容。
+    另外，某些用户可能不熟悉 [Project Reactor](https://projectreactor.io/)，这是用于实现 Azure Cosmos DB Java SDK v4 异步 API 的反应流框架。 如果存在此问题，建议你阅读我们的简介性文章：[Reactor Pattern Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)（Reactor 模式指南），然后查看此[响应式编程简介](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro)，自行熟悉相关内容。 如果你已将 Azure Cosmos DB 与异步接口配合使用，并且所使用的 SDK 是 Azure Cosmos DB Async Java SDK v2，那么你可能已熟悉 [ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava)，但不确定 Project Reactor 中所做的变更。 这种情况下，请查看我们的 [Reactor vs.RxJava Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)（Reactor 与 RxJava 指南），熟悉相关内容。
 
     以下代码片段演示了如何分别针对异步 API 或同步 API 操作初始化 Azure Cosmos DB 客户端：
 
@@ -150,15 +150,15 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     在 Azure Cosmos DB Java SDK v4 中，直接模式是为大多数工作负荷改善数据库性能的最佳选择。 
 
-    * ***直接模式的概述** _
+    * ***直接模式概述** _
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式体系结构插图" border="false":::
 
-        在直接模式下采用的客户端体系结构使得网络利用率可预测，并实现对 Azure Cosmos DB 副本的多路访问。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在每个数据库副本的客户端分配多达 10 _ *通道* *。 一个通道是前面带有请求缓冲区（深度为 30 个请求）的 TCP 连接。 属于某个副本的通道由该副本的服务终结点按需动态分配。 当用户在直接模式下发出请求时，TransportClient 会根据分区键将请求路由到适当的服务终结点。 请求队列在服务终结点之前缓冲请求。
+        在直接模式下采用的客户端体系结构使得网络利用率可预测，并实现对 Azure Cosmos DB 副本的多路访问。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在客户端为每个数据库副本最多分配 10 个通道。 一个通道是前面带有请求缓冲区（深度为 30 个请求）的 TCP 连接。 属于某个副本的通道由该副本的服务终结点按需动态分配。 当用户在直接模式下发出请求时，TransportClient 会根据分区键将请求路由到适当的服务终结点。 请求队列在服务终结点之前缓冲请求。
 
-    * ***直接模式 _ 的配置选项**
+    * ***直接模式的配置选项** _
 
-        如果需要非默认的直接模式行为，请创建 _DirectConnectionConfig * 实例并自定义其属性，然后将自定义属性实例传递到 Azure Cosmos DB 客户端生成器中的 *directMode ( # B1* 方法。
+        如果需要非默认的直接模式行为，则在 Azure Cosmos DB 客户端生成器中创建 DirectConnectionConfig 实例并自定义其属性，然后将自定义的属性实例传递到 directMode() 方法。
 
         这些配置设置控制以上讨论的基础直接模式体系结构的行为。
 
@@ -169,20 +169,20 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
         | idleConnectionTimeout      | "PT0"     |
         | maxConnectionsPerEndpoint  | "130"     |
         | connectTimeout             | "PT5S"    |
-        | idleEndpointTimeout        | PT1H.JSON    |
-        | maxRequestsPerConnection   | 为期      |
+        | idleEndpointTimeout        | "PT1H"    |
+        | maxRequestsPerConnection   | "30"      |
 
 * **优化分区集合的并行查询。**
 
     Azure Cosmos DB Java SDK v4 支持并行查询，允许以并行方式查询分区的集合。 有关详细信息，请参阅与使用 Azure Cosmos DB Java SDK v4 相关的[代码示例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
 
-    * ***优化 setMaxDegreeOfParallelism \:** _
+    * ***优化 setMaxDegreeOfParallelism\:** _
     
         并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 setMaxDegreeOfParallelism 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。
 
         必须注意，如果查询时数据均衡分布在所有分区之间，则并行查询可提供最大的优势。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区会遇到查询的性能瓶颈。
 
-    _ * **优化 setMaxBufferedItemCount \:** _
+    _ ***优化 setMaxBufferedItemCount\:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -198,7 +198,7 @@ _ **横向扩展客户端工作负荷**
 
 * **调整查询/读取源的页面大小以获得更好的性能**
 
-    使用读取源功能（例如 *readItems* ）执行批量文档读取时，或发出 SQL 查询 ( *queryItems* ) 时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
+    使用读取源功能（例如 *readItems*）执行批量文档读取时，或发出 SQL 查询 (*queryItems*) 时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
 
     假设应用程序向 Azure Cosmos DB 发出一个查询，同时假设应用程序需要有完整的查询结果集才能完成其任务。 若要减少检索所有适用结果所需的网络往返次数，可以通过调整 [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头字段来增大页面大小。 
 
@@ -208,7 +208,7 @@ _ **横向扩展客户端工作负荷**
     
     在某些应用程序中，可能不需要完整的查询结果集。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小到 10，以降低读取和查询所耗用的吞吐量。
 
-    也可以设置 byPage 方法的首选页面大小参数，而不是直接修改 REST 标头字段。 请记住， [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 或 *byPage* 的首选页面大小参数仅设置页面大小的上限，而不是绝对要求。因此，由于各种原因，你可能会看到 Azure Cosmos DB 返回的页面小于首选页面大小。 
+    也可以设置 byPage 方法的首选页面大小参数，而不是直接修改 REST 标头字段。 请记住，[x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 或 *byPage* 的首选页面大小参数仅设置页面大小的上限，而不是绝对要求。因此，由于各种原因，你可能会看到 Azure Cosmos DB 返回的页面小于首选页面大小。 
 
 * **使用相应的计划程序（避免窃取事件循环 IO Netty 线程）**
 
@@ -237,7 +237,7 @@ _ **横向扩展客户端工作负荷**
 
         生成请求的线程的总体延迟计算必然会考虑到同步记录器延迟的因素。 建议使用异步记录器（例如 [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0)），以便将日志记录开销与高性能应用程序线程分开。
 
-    _ * **禁用 netty 的日志记录** _
+    _ ***禁用 netty 的日志记录** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

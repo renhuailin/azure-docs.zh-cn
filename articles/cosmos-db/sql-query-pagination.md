@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 8219611ac2334594dc826db3c8191102d7383835
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c49fee169b7bd01ee7cf8a6d539c2125cf6568b3
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338265"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545309"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分页
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "93338265"
 
 有时，查询结果会拆分为多个页面。 每个页面的结果由单独的查询执行生成。 当一次执行无法返回查询结果时，Azure Cosmos DB 会自动将结果拆分为多个页面。
 
-可以通过设置 `MaxItemCount` 来指定查询返回的最大项数。 `MaxItemCount`是为每个请求指定的，并且通知查询引擎将返回该数量或更少的项。 如果不想限制每次查询执行的结果数，可以将 `MaxItemCount` 设置为 `-1`。
+可以通过设置 `MaxItemCount` 来指定查询返回的最大项数。 `MaxItemCount` 是按请求指定的，它指示查询引擎将返回该数量的项或更少的项。 如果不想限制每次查询执行的结果数，可以将 `MaxItemCount` 设置为 `-1`。
 
 此外，还有查询引擎可能需要将查询结果拆分为多个页面的其他原因。 其中包括：
 
@@ -41,18 +41,18 @@ ms.locfileid: "93338265"
 以下是一些多页查询处理结果的示例：
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L280)
-- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L162-L176)
+- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L162-L176)
 - [Node.js SDK](https://github.com/Azure/azure-sdk-for-js/blob/83fcc44a23ad771128d6e0f49043656b3d1df990/sdk/cosmosdb/cosmos/samples/IndexManagement.ts#L128-L140)
 - [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/examples.py#L89)
 
 ## <a name="continuation-tokens"></a>继续标记
 
-在 .NET SDK 和 Java SDK 中，可以选择将继续标记用作查询的进度书签。 Azure Cosmos DB 查询执行在服务器端无状态，并可以使用继续标记随时恢复。 Node.js SDK 中不支持继续标记。 对于 Python SDK，单分区查询支持该方法，因此必须在 options 对象中指定 PK，因为在查询本身中不能使用它。
+在 .NET SDK 和 Java SDK 中，可以选择将继续标记用作查询的进度书签。 Azure Cosmos DB 查询执行在服务器端无状态，并可以使用继续标记随时恢复。 Node.js SDK 不支持延续令牌。 对于 Python SDK，单分区查询支持延续令牌，必须在选项对象中指定 PK，因为在查询本身中指定它是不够的。
 
 以下是一些使用继续标记的示例：
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
-- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
 - [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 如果查询返回继续标记，则会有其他查询结果。

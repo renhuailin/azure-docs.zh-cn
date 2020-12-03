@@ -7,14 +7,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.author: a-sakand
-author: skandil
-ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.author: nitinme
+author: nitinme
+ms.openlocfilehash: ae51dca466a9aaf489ba4628e13a5e13de25b9bc
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931404"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546856"
 ---
 # <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
@@ -36,13 +36,13 @@ ms.locfileid: "91931404"
 
 与 Azure 订阅关联的帐户允许选择要使用的订阅和资源。
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="部分屏幕-LUIS portal with 订阅和创作资源选择下拉框的截图。":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>使用与 Azure 订阅关联的帐户登录
 
 1. 登录 [LUIS 门户](https://www.luis.ai)并同意使用条款。
 
-1. 你将有两个注册方法：
+1. 有两种注册方式：
 
     * 继续使用 Azure 资源，这是推荐的路径，不久就会成为唯一的可用路径。 使用此路径，可以通过在订阅中选择现有资源或创建新资源来注册 LUIS 帐户和 Azure 创作资源。 这等效于注册迁移，而无需以后再进行 [迁移](luis-migration-authoring.md#what-is-migration) 。 所有用户将需要在2020年11月2日之前迁移。
 
@@ -50,11 +50,13 @@ ms.locfileid: "91931404"
 
     [了解有关创作和 starter 密钥的详细信息](luis-how-to-azure-subscription.md#luis-resources)。 这两个资源均可为你带来1000000个免费创作事务和1000个免费预测终结点事务。
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="部分屏幕截图，选择语言理解创作资源的类型。":::
 
 1. 使用现有的创作资源
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。" 选项，并提供以下信息：
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="选择创作资源":::
+
+    如果订阅中已有 LUIS 创作资源，并在登录过程中将其与 LUIS 帐户关联，请选择 " **使用现有创作资源** " 选项，并提供以下信息：
 
     * **租户** - 与 Azure 订阅关联的租户。 你将不能从现有窗口切换租户。 可以通过在顶部栏中选择包含首字母缩写的最右侧头像来切换租户。
     * **订阅名称** -将与资源关联的订阅。 如果有多个订阅属于租户，请从下拉列表中选择所需的订阅。
@@ -65,9 +67,18 @@ ms.locfileid: "91931404"
 
 1. 创建新的创作资源
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。" **继续**"。
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="创建创作资源":::
 
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。":::
+    **创建新的创作资源** 时，请提供以下信息：
+
+    * **租户** - 与 Azure 订阅关联的租户。 你将不能从现有窗口切换租户。 可以通过在顶部栏中选择包含首字母缩写的最右侧头像来切换租户。
+    * **资源名称** -所选的自定义名称，用作创作事务的 URL 的一部分。 资源名称只能包含字母数字字符 "-"，并且不能以 "-" 开头或结尾。 如果名称中包含任何其他符号，则创建资源会失败。
+    * **订阅名称** -将与资源关联的订阅。 如果有多个订阅属于租户，请从下拉列表中选择所需的订阅。
+    * **资源组** -在订阅中选择的自定义资源组名称。 使用资源组可将 Azure 资源分组，以便进行访问和管理。 如果订阅中目前没有资源组，则不允许在 LUIS 门户中创建资源组。 转到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) ，然后转到 LUIS 继续登录过程。
+
+1. 选择路径后，可能需要几秒钟，直到出现 "已成功迁移你的帐户" 的符号。 完成后，选择 " **继续**"。
+
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="确认创作资源":::
 
     > [!Note]
     > 如果在该区域中拥有与在门户中注册到的订阅相同的订阅和至少一个创作资源，则可能会自动登录到 LUIS 并将其与资源关联，而无需选择要传入的路径。
@@ -79,7 +90,7 @@ ms.locfileid: "91931404"
 
 1. 完成后，选择 " **继续**"。 你将使用试用/starter 密钥自动登录。 这意味着，最终需要 [迁移帐户](luis-migration-authoring.md#migration-steps) 并将应用程序链接到创作资源。 若要执行迁移过程，需要登录 [Azure 免费试用版](https://azure.microsoft.com/free/)。
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="部分屏幕-LUIS 导航栏与 Azure 图标的截图。":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="无订阅方案":::
 
 ## <a name="troubleshooting"></a>疑难解答
 

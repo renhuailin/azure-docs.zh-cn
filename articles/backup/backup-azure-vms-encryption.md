@@ -3,12 +3,12 @@ title: 备份和还原已加密的 Azure VM
 description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Azure VM。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324915"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547145"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原加密的 Azure 虚拟机
 
@@ -22,7 +22,11 @@ ms.locfileid: "96324915"
 
 ## <a name="encryption-using-customer-managed-keys"></a>使用客户管理的密钥进行加密
 
-使用客户管理的密钥 (CMK) 对磁盘进行加密时，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中，由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。 有关使用客户管理的密钥对托管磁盘进行加密的详细信息，请[参阅本文](../virtual-machines/disk-encryption.md#customer-managed-keys)。
+使用客户管理的密钥加密磁盘时 (CMK) ，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中并由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。
+
+对于使用客户托管密钥来加密其磁盘的 Vm，无需执行任何显式操作。 将使用与 [保管库中使用的加密](encryption-at-rest-with-cmk.md)相同的方法对存储在保管库中的 vm 的备份数据进行加密。
+
+有关使用客户管理的密钥对托管磁盘进行加密的详细信息，请[参阅本文](../virtual-machines/disk-encryption.md#customer-managed-keys)。
 
 ## <a name="encryption-support-using-ade"></a>使用 ADE 的加密支持
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348494"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545820"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -40,16 +40,15 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |生命周期管理策略（分层）|正式发布|尚不支持|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
 |生命周期管理策略（删除 blob）|正式发布|正式发布|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
 |登录 Azure Monitor|预览 |预览|[监视 Azure 存储](./monitor-blob-storage.md)|
-|快照|预览|预览|[blob 快照](snapshots-overview.md)|
-|静态网站|预览|预览|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
-|不可变存储|预览|预览|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
+|快照|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[blob 快照](snapshots-overview.md)|
+|静态网站|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
+|不可变存储|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
 |容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
 |Azure 存储清单|预览|预览|[使用 Azure 存储空间库存来管理 blob 数据 (预览) ](blob-inventory.md)|
 |Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
-|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式发布|正式发布|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
+|匿名公共访问 |正式发布|正式发布| 请参阅 [配置容器和 blob 的匿名公共读取访问权限](anonymous-read-access-configure.md)。|
 |客户管理的帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blob 容器 ACL|不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|请参阅此表下方的相关说明。|
 |客户提供的密钥|尚不支持|尚不支持|[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
 |加密范围|尚不支持|尚不支持|[创建和管理加密范围（预览）](encryption-scope-manage.md)|
@@ -57,9 +56,7 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |对象复制|尚不支持|尚不支持|[为块 blob 配置对象复制](object-replication-configure.md)|
 |Blob 版本控制|尚不支持|尚不支持|[启用和管理 blob 版本控制](versioning-enable.md)|
 
-<div id="blob-container-ACL"><sup>1</sup> 你可以在容器的根文件夹上设置 ACL，但不能在容器本身上设置 ACL。</div><br>
-
-<div id="preview-form"><sup>2</sup>若要将快照、不可变的存储或静态网站用于 Data Lake Storage Gen2，您需要完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>窗体</a>中的注册。  </div>
+<div id="preview-form"><sup>1</sup>若要将快照、不可变的存储或静态网站用于 Data Lake Storage Gen2，您需要完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>窗体</a>中的注册。  </div>
 
 ## <a name="see-also"></a>另请参阅
 

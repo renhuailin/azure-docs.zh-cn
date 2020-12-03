@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557523"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545632"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "94557523"
 
 ## <a name="overview"></a>概述
 
-注册到 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)会在你的订阅中创建 **SQL 虚拟机**_资源_ ，该资源与虚拟机资源是 _单独_ 的资源。 从扩展中取消注册 SQL Server VM 将删除 **SQL 虚拟机**_资源_ ，但不会删除实际的虚拟机。
+注册到 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)会在你的订阅中创建 **SQL 虚拟机**_资源_，该资源与虚拟机资源是 _单独_ 的资源。 从扩展中取消注册 SQL Server VM 将删除 **SQL 虚拟机**_资源_，但不会删除实际的虚拟机。
 
 通过 Azure 门户部署 SQL Server VM Azure Marketplace 映像会自动向该扩展注册 SQL Server VM。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 来预配 Azure 虚拟机，则必须将 SQL Server VM 与 SQL IaaS 代理扩展一起注册，以解锁全部功能权益和可管理性。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "94557523"
 
 1. 打开 Azure 门户，转到“所有服务”。 
 1. 转到“订阅”，选择感兴趣的订阅。  
-1. 在 " **订阅** " 页上，中转到 " **扩展** "。 
+1. 在 " **订阅** " 页上，中转到 " **扩展**"。 
 1. 在筛选器中输入 **sql** 以打开与 sql 相关的扩展。 
 1. 根据所需操作为“Microsoft.SqlVirtualMachine”提供程序选择“注册”、“重新注册”或“取消注册”   。 
 
@@ -104,7 +104,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---
@@ -140,10 +140,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="noagent-management-mode"></a>无代理管理模式 
 
-Windows Server 上安装的 SQL Server 2008 和 2008 R2 2008 (不能在 [NoAgent 模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes)向 SQL IaaS 代理扩展注册 _r2_ ) 。 此选项可确保符合性，并允许使用有限功能在 Azure 门户中监视 SQL Server VM。
+Windows Server 上安装的 SQL Server 2008 和 2008 R2 2008 (不能在 [NoAgent 模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes)向 SQL IaaS 代理扩展注册 _r2_) 。 此选项可确保符合性，并允许使用有限功能在 Azure 门户中监视 SQL Server VM。
 
 
-对于 **许可证类型** ，请指定： `AHUB` 、 `PAYG` 或 `DR` 。 对于 **映像产品/服务** ，请指定 `SQL2008-WS2008` 或 `SQL2008R2-WS2008`
+对于 **许可证类型**，请指定： `AHUB` 、 `PAYG` 或 `DR` 。 对于 **映像产品/服务**，请指定 `SQL2008-WS2008` 或 `SQL2008R2-WS2008`
 
 若要 `SQL2008-WS2008` 在 Windows Server 2008 实例上注册 SQL Server 2008 () 或 2008 R2 (`SQL2008R2-WS2008`) ，请使用以下 Azure CLI 或 Azure PowerShell 代码片段： 
 
@@ -195,7 +195,7 @@ $sqlvm.SqlManagementType
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)资源。 
-1. 选择 SQL Server VM，然后选择 " **概述** "。 
+1. 选择 SQL Server VM，然后选择 " **概述**"。 
 1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“SQL IaaS 扩展仅提供许可证类型和版本更新”消息。
 
    ![用于从门户更改模式的选项](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
@@ -236,10 +236,10 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户验证注册状态，请执行以下步骤： 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果你的 SQL Server VM 未在此处列出，则它可能尚未注册到 SQL IaaS 代理扩展。 
-1. 查看“状态”下的值。 如果 **状态** 为 " **成功** "，则 SQL Server VM 已成功注册到 SQL IaaS 代理扩展。 
+1. 查看“状态”下的值。 如果 **状态** 为 " **成功**"，则 SQL Server VM 已成功注册到 SQL IaaS 代理扩展。 
 
    ![通过 SQL RP 注册验证状态](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
@@ -287,14 +287,14 @@ $sqlvm.SqlManagementType
 
    ![在顶部导航栏中选择 "删除"](./media/sql-agent-extension-manually-register-single-vm/delete-sql-vm-resource.png)
 
-1. 键入 SQL 虚拟机的名称，并 **清除该虚拟机旁边的复选框** 。
+1. 键入 SQL 虚拟机的名称，并 **清除该虚拟机旁边的复选框**。
 
    ![取消选中 VM 以阻止删除实际虚拟机，然后选择 "删除" 以继续删除 SQL VM 资源](./media/sql-agent-extension-manually-register-single-vm/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
-   > 如果未能清除虚拟机名称的复选框，会导致彻底删除虚拟机。 清除该复选框可从扩展中注销 SQL Server VM，但 *不会删除实际的虚拟机* 。 
+   > 如果未能清除虚拟机名称的复选框，会导致彻底删除虚拟机。 清除该复选框可从扩展中注销 SQL Server VM，但 *不会删除实际的虚拟机*。 
 
-1. 选择 " **删除** " 以确认删除 SQL 虚拟机 *资源* ，而不是 SQL Server VM。 
+1. 选择 " **删除** " 以确认删除 SQL 虚拟机 *资源*，而不是 SQL Server VM。 
 
 ### <a name="command-line"></a>命令行
 

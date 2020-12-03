@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538642"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545377"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,7 @@ Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询�
     family.children[n].grade; //n is an int variable
   ```
   
-- 算术表达式，包括针对数值和布尔值运行的常见算术表达式。 有关完整列表，请参阅 [Azure Cosmos DB SQL 规范](sql-query-system-functions.md)。
+- 算术表达式，包括针对数值和布尔值运行的常见算术表达式。 有关完整列表，请参阅 [Azure Cosmos DB SQL 规范](sql-query-aggregate-functions.md)。
   
   ```
     2 * family.children[0].grade;
@@ -81,19 +81,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
-- **Select** ：投影转换为 [SELECT](sql-query-select.md)（包括对象构造）。
-- **Where** ：筛选器转换为 [WHERE](sql-query-where.md)，并且支持 `&&`、`||` 和 `!` 到 SQL 运算符的转换
-- **SelectMany** ：允许将数组展开到 [JOIN](sql-query-join.md) 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
-- **OrderBy** 和 **OrderByDescending** ：使用 ASC 或 DESC 转换为 [ORDER BY](sql-query-order-by.md)。
--           用于[聚合](sql-query-aggregates.md)的 Count、Sum、Min、Max 和 Average 运算符及其异步等效项 CountAsync、SumAsync、MinAsync、MaxAsync 和 AverageAsync。
-- **CompareTo** ：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可进行比较。
-- **Skip** 和 **Take** ：转换为 [OFFSET 和 LIMIT](sql-query-offset-limit.md)，用于限制查询的结果和进行分页。
-- **数学函数** ：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的 [内置数学函数](sql-query-mathematical-functions.md)。
-- **字符串函数** ：支持从 .NET `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的 [内置字符串函数](sql-query-string-functions.md)。
-- **数组函数** ：支持从 .NET `Concat`、`Contains` 和 `Count` 转换为等效的 [内置数组函数](sql-query-array-functions.md)。
-- **地理空间扩展函数** ：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed` 和 `Within` 转换为等效的 [内置地理空间函数](sql-query-geospatial-query.md)。
-- **用户定义的函数扩展函数** ：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的 [用户定义的函数](sql-query-udfs.md)。
-- **其他** ：支持 `Coalesce` 和条件 [运算符](sql-query-operators.md)的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 IN。
+- **Select**：投影转换为 [SELECT](sql-query-select.md)（包括对象构造）。
+- **Where**：筛选器转换为 [WHERE](sql-query-where.md)，并且支持 `&&`、`||` 和 `!` 到 SQL 运算符的转换
+- **SelectMany**：允许将数组展开到 [JOIN](sql-query-join.md) 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
+- **OrderBy** 和 **OrderByDescending**：使用 ASC 或 DESC 转换为 [ORDER BY](sql-query-order-by.md)。
+-           用于[聚合](sql-query-aggregate-functions.md)的 Count、Sum、Min、Max 和 Average 运算符及其异步等效项 CountAsync、SumAsync、MinAsync、MaxAsync 和 AverageAsync。
+- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可进行比较。
+- **Skip** 和 **Take**：转换为 [OFFSET 和 LIMIT](sql-query-offset-limit.md)，用于限制查询的结果和进行分页。
+- **数学函数**：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的 [内置数学函数](sql-query-mathematical-functions.md)。
+- **字符串函数**：支持从 .NET `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的 [内置字符串函数](sql-query-string-functions.md)。
+- **数组函数**：支持从 .NET `Concat`、`Contains` 和 `Count` 转换为等效的 [内置数组函数](sql-query-array-functions.md)。
+- **地理空间扩展函数**：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed` 和 `Within` 转换为等效的 [内置地理空间函数](sql-query-geospatial-query.md)。
+- **用户定义的函数扩展函数**：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的 [用户定义的函数](sql-query-udfs.md)。
+- **其他**：支持 `Coalesce` 和条件 [运算符](sql-query-operators.md)的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 IN。
 
 ## <a name="examples"></a>示例
 
