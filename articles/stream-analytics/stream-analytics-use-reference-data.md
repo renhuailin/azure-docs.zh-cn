@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/2/2020
+ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129722"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533599"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -111,13 +111,13 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 ## <a name="size-limitation"></a>大小限制
 
-建议使用小于 300 MB 的参考数据集，以获得最佳性能。 具有 6 个或更多 SU 的作业支持使用大于 300 MB 的参考数据。 此功能为预览版，不得在生产环境中使用。 使用非常大的参考数据可能会影响作业的性能。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
+建议使用小于 300 MB 的参考数据集，以获得最佳性能。 包含6个或更多的作业支持 5 GB 或更低的引用数据集。 使用非常大的引用数据可能会影响作业的端到端延迟。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
 
 |**流单元数**  |**建议的大小**  |
 |---------|---------|
 |1   |50 MB 或更小   |
 |3   |150 MB 或更小   |
-|至少 6   |300 MB 或更小。 预览版支持使用大于 300 MB 的参考数据，但这可能会影响作业的性能。    |
+|至少 6   |5 GB 或更低。    |
 
 对压缩的支持不可用于参考数据。
 

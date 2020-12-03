@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004222"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534074"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>生成映像
-运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口，导航到 *c:\temp\helloworldapp*。 运行以下命令：
+## <a name="login-to-docker-and-build-the-image"></a>登录到 Docker 并构建映像
 
-```bash
+接下来，我们将创建运行你的 web 应用程序的映像。 从 Docker (例如 `python:2.7-slim` ，在我们的 Dockerfile) 中提取公共映像时，最佳做法是使用 Docker 中心帐户进行身份验证，而不是发出匿名拉取请求。
+
+> [!NOTE]
+> 在频繁执行匿名拉取请求时，可能会看到类似于 `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` docker 中心或向 docker 中心进行身份验证的 docker 错误，以防出现这些错误。 有关详细信息，请参阅 [通过 Azure 容器注册表管理公共内容](../container-registry/buffer-gate-public-content.md) 。
+
+打开 PowerShell 窗口并导航到包含 Dockerfile 的目录。 然后运行以下命令：
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 

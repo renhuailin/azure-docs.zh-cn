@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 12/02/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301270"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533190"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -205,7 +205,7 @@ ms.locfileid: "96301270"
 - **解决方法**：数分钟后重新运行复制活动。
                   
 
-## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics（以前称为 SQL 数据仓库）/Azure SQL 数据库/SQL Server
+## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure Synapse Analytics/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>错误代码：SqlFailedToConnect
 
@@ -488,7 +488,28 @@ ms.locfileid: "96301270"
 
 - **建议**：重新运行管道。 如果仍旧失败，请尝试降低并行度。 如果还是失败，请联系 Dynamics 支持人员。
 
+## <a name="excel-format"></a>Excel 格式
 
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能降低
+
+- **症状**：
+
+    1. 当你创建 Excel 数据集并从连接/存储区导入架构、预览数据、列出或刷新工作表时，如果 Excel 文件的大小很大，则可能会遇到超时错误。
+    2. 使用复制活动将数据从大型 Excel 文件复制 ( # B0 = 100MB) 到其他数据存储时，可能会遇到性能下降或 OOM 问题。
+
+- **原因**： 
+
+    1. 对于导入架构、预览数据以及在 excel 数据集上列出工作表等操作，超时为数百和静态。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
+
+    2. ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格以读取数据。 此行为是由基础 SDK ADF 使用的。
+
+- **解决方法**： 
+
+    1. 对于导入架构，你可以生成一个较小的示例文件（它是原始文件的子集），然后选择 "从示例文件导入架构"，而不是 "从连接中导入架构"。
+
+    2. 对于列出 workseet，可以在 "工作表" 下拉列表中单击 "编辑"，并改为输入工作表名称/索引。
+
+    3. 若要将 ( # B0 100MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
 
 ## <a name="json-format"></a>JSON 格式
 

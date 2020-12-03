@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bfe077a99a3e89efe5fe4257a646484fb3810da
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016111"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96536999"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
@@ -27,13 +27,15 @@ ms.locfileid: "96016111"
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驱动程序
 
-Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 请仅在下表所列操作系统上的 Azure NV VM 上安装这些 GRID 驱动程序。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 不需要设置 NVIDIA vGPU 软件许可证服务器。
+Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 请仅在下表所列操作系统上的 Azure NV VM 上安装这些 GRID 驱动程序。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
 Azure 重新分发的网格驱动程序不适用于非 NV 系列 Vm，如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm。
 
-| 分发 | 驱动程序 |
+|分发|驱动程序|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 到7.8、8.0、8。1<br/><br/>基于 CentOS 的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.1、driver branch [bk-r450](https://go.microsoft.com/fwlink/?linkid=874272) ( .exe) |
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 到7.8、8.0、8。1<br/><br/>基于 CentOS 的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.2、driver branch [bk-r450](https://go.microsoft.com/fwlink/?linkid=874272) ( .exe) |
+
+请访问 [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) 获取所有以前的 Nvidia GRID 驱动程序链接的完整列表。
 
 > [!WARNING] 
 > 在 Red Hat 产品上安装第三方软件可能会影响 Red Hat 支持条款。 请参阅 [Red Hat 知识库文章](https://access.redhat.com/articles/1067)。

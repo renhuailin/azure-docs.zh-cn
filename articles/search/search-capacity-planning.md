@@ -8,24 +8,24 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660301"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533037"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>调整 Azure 认知搜索服务的容量
 
 [预配搜索服务](search-create-service-portal.md)并在特定定价层中锁定之前，需花费几分钟时间来了解容量的工作方式，以及如何调整副本和分区以适应工作负荷的波动。
 
-容量是[所选层](search-sku-tier.md)（层确定硬件特征）以及预期工作负荷所需的副本和分区组合的一个功能因素。 您可以单独增加或减少副本或分区数。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。
+容量是[所选层](search-sku-tier.md)（层确定硬件特征）以及预期工作负荷所需的副本和分区组合的一个功能因素。 创建服务后，可以单独增加或减少副本或分区数。 每增加一个物理资源就会产生成本，但一旦大型工作负荷完成，你可以减少规模以降低你的帐单。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。
 
 修改副本和分区的分配时，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于层的上限。 但是，如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](/rest/api/searchmanagement/services) 是替代的解决方案。
 
 ## <a name="concepts-search-units-replicas-partitions-shards"></a>概念：搜索单位、副本、分区、分片
 
-容量以可以使用*分区*和*副本*的组合进行分配的*搜索单位*表示，使用基础*分片*机制支持灵活的配置：
+容量以可以使用 *分区* 和 *副本* 的组合进行分配的 *搜索单位* 表示，使用基础 *分片* 机制支持灵活的配置：
 
 | 概念  | 定义|
 |----------|-----------|
@@ -36,7 +36,7 @@ ms.locfileid: "89660301"
 
 下图显示副本、分区、分片和搜索单位之间的关系。 其中显示了一个示例，说明如何在包含两个副本和两个分区的服务中跨四个搜索单元跨一个索引。 四个搜索单元中的每一个都仅存储索引的一半分片。 左栏中的搜索单位存储分片的前半部分，其中包含第一个分区，而右列中的第二部分存储分片的后半部分，其中包含第二个分区。 由于有两个副本，因此每个索引分片有两个副本。 顶部行中的搜索单位存储一个副本，其中包含第一个副本，而底部行中的搜索单位存储另一个副本，其中包含第二个副本。
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜索索引是跨分区分片的。&quot;:::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜索索引是跨分区分片的。":::
 
 上图只是一个示例。 可以使用多个分区和副本组合，最多可包含36个搜索单位。
 
@@ -44,7 +44,7 @@ ms.locfileid: "89660301"
 
 + 排名异常：在分片级别首先计算搜索评分，然后聚合到单个结果集中。 根据分片内容的特征，从一个分片的匹配可能排名高于另一个中的匹配项。 如果在搜索结果中注意到 unintuitive 排名，则很可能是因为分片的影响，尤其是当索引较小时。 您可以通过选择 [在整个索引中全局计算分数](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)来避免这些排名异常，但这样做会导致性能下降。
 
-+ 自动完成异常：自动完成查询（其中，在部分输入的单词的前几个字符上进行匹配）接受 forgives 小偏差的模糊参数。 对于自动完成，模糊匹配将被限制为当前分片中的字词。 例如，如果分片包含 &quot;Microsoft&quot;，并且输入了部分 &quot;micor&quot;，则搜索引擎将在该分片的 &quot;Microsoft" 中匹配，但不会在保留索引剩余部分的其他分片中匹配。
++ 自动完成异常：自动完成查询（其中，在部分输入的单词的前几个字符上进行匹配）接受 forgives 小偏差的模糊参数。 对于自动完成，模糊匹配将被限制为当前分片中的字词。 例如，如果分片包含 "Microsoft"，并且输入了部分 "micor"，则搜索引擎将在该分片的 "Microsoft" 中匹配，但不会在保留索引剩余部分的其他分片中匹配。
 
 ## <a name="when-to-add-nodes"></a>何时添加节点
 

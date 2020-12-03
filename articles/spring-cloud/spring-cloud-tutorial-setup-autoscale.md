@@ -1,20 +1,20 @@
 ---
-title: 教程 - 为微服务应用程序设置自动缩放功能
+title: 为微服务应用程序设置自动缩放功能
 description: 本文介绍如何适用 Microsoft Azure 门户或 Azure CLI 中为应用程序设置自动缩放设置。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742659"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533819"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教程：为微服务应用程序设置自动缩放功能
+# <a name="set-up-autoscale-for-microservice-applications"></a>为微服务应用程序设置自动缩放功能
 
 本文适用于：✔️ Java ✔️ C#
 

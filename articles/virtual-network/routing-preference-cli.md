@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6c4d0defbaeb484f66593e112587c16c46eed2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c3ce69dc9364d71a501f122a7150ad4a59869422
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491581"
+ms.locfileid: "96534006"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>使用 Azure CLI 配置公共 IP 地址的路由首选项
 
@@ -52,7 +52,7 @@ ms.locfileid: "96491581"
 ```
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-使用命令 [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 创建具有路由首选项“Internet”的公共 IP 地址，格式如下所示。
+使用命令 [az network 公共 ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)创建包含 **Internet** 类型首选项的公共 IP 地址，格式如下所示。
 
 以下命令在美国东部 Azure 区域创建具有“Internet”路由首选项的新公共 IP。
 

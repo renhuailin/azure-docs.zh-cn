@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492227"
+ms.locfileid: "96533853"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
 
@@ -164,9 +164,9 @@ ms.locfileid: "96492227"
 
 **指导**：默认情况下，不分配任何角色。 需要根据业务需求显式分配它们。 可以通过 PowerShell CLI 或 Azure Active Directory (Azure AD) 检查任何角色分配，以发现作为管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -431,7 +431,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 **指导**：使用 Azure Policy 为恢复服务保管库定义和实施标准安全配置。 
 
 在“Microsoft.RecoveryServices”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Site Recovery 服务的恢复服务保管库资源的配置。
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 **指导**：如果你对恢复服务保管库和相关资源使用自定义 Azure Policy 定义，请选择 Azure Repos 来安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文档](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -656,7 +656,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 这超出了客户职责，由 Site Recovery 团队在内部进行处理。 客户可以在 Azure 中备份 Key Vault 密钥。
 
-- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -666,7 +666,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 **指导**：对已备份的由客户管理的密钥定期进行还原测试。
 
-- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：不适用
 

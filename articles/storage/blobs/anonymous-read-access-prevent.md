@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913770"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533735"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 Blob 的匿名公共读取访问
 
@@ -166,6 +166,8 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 若要检查具有最佳性能的一组存储帐户的公共访问设置，可以使用 Azure 门户中的 Azure Resource Graph 资源管理器。 若要详细了解如何使用 Resource Graph 资源管理器，请参阅[快速入门：使用 Azure Resource Graph 资源管理器运行你的第一个 Resource Graph 查询](../../governance/resource-graph/first-query-portal.md)。
 
+默认情况下，默认情况下不会为存储帐户设置 **AllowBlobPublicAccess** 属性，并且在您显式设置之前，不会返回值。 当属性值为 **null** 或 **true** 时，存储帐户允许公共访问。
+
 在 Resource Graph 资源管理器中运行以下查询会返回存储帐户的列表，并显示每个帐户的公共访问设置：
 
 ```kusto
@@ -174,6 +176,10 @@ resources
 | extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
+
+下图显示了跨订阅的查询结果。 请注意，对于已显式设置 **AllowBlobPublicAccess** 属性的存储帐户，它将在结果中显示为 **true** 或 **false**。 如果尚未为存储帐户设置 **AllowBlobPublicAccess** 属性，该属性将在查询结果中显示为空白 (或 null) 。
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="显示跨存储帐户的公共访问设置的查询结果的屏幕截图":::
 
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>使用 Azure Policy 审核合规性
 

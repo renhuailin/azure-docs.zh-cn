@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: e00079190371b3ae0e318aaadd8cf724d9d339d0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512561"
+ms.locfileid: "96533989"
 ---
 # <a name="media-services-architectures"></a>媒体服务体系结构
 
@@ -30,12 +30,6 @@ ms.locfileid: "96512561"
 此解决方案基于 Azure 托管服务：媒体服务和内容交付网络。 这些服务在高可用性环境中运行，进行了修补和支持，使你可以专注于解决方案而不是运行它们的环境。
 
 请参阅 Azure 体系结构中心中的 [实时流式处理数字媒体](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) 。
-
-## <a name="instant-broadcasting-on-serverless-architecture"></a>无服务器体系结构的即时广播
-
-使用无服务器代码简化一对多实时通信和更新。 此体系结构使用 Azure Functions、SignalR 服务、存储帐户和 SQL 数据库。
-
-请参阅 Azure 体系结构中心的 [无服务器体系结构的即时广播](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/instant-broadcasting-on-serverless-architecture) 。
 
 ## <a name="video-on-demand-digital-media"></a>点播视频数字媒体
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538371"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533938"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -293,7 +293,7 @@ ms.locfileid: "95538371"
 公司的用户可以在合作伙伴中心为商业市场计划分配以下角色和权限：
 
 - **所有者**
-  - "这是首次创建帐户并拥有其完全访问权限的人员，包括创建和编辑所有帐户用户并更改所有财务和帐户设置的功能。 一个帐户通常只有一个所有者。 "
+  - 这是首次创建帐户并具有对其的完全访问权限的人员，包括创建和编辑所有帐户用户以及更改所有财务和帐户设置的功能。 一个帐户通常只有一个所有者。
 - 管理员
   - 可以访问除税务和付款设置之外的所有 Microsoft 帐户功能
   - 可以管理用户、角色和工作帐户（租户）

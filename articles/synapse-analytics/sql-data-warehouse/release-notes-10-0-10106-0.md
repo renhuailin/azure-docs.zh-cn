@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 18f8df90cd59a1fb32024ec93674fed7eb49519a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451976"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534040"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明 (以前的 sql DW) 专用 SQL DW
 
@@ -39,6 +39,13 @@ ms.locfileid: "96451976"
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="dec-2020"></a>Dec 2020
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|**(预览的列的存储过程 sp_rename)**|如果不使用 [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) 重命名列，就变得更加简单。 Azure Synapse SQL 现在已添加了对系统存储过程的支持 sp_rename (preview) 重命名用户表中的非分布列。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
+|**T-sql 预测的其他参数**|在这个新版本中，将为现有 T-sql PREDICT 语句添加一个名为 "运行时" 的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL 预测](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的示例。|
 
 ## <a name="oct-2020"></a>2020 年 10 月
 
