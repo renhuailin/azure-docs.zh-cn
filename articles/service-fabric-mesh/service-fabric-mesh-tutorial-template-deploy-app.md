@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145882"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499826"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -107,7 +107,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 >[!NOTE]
 > 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 
 > 
-> 这些命令使用 Docker Hub 中的公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)。
+> 这些命令使用 Docker Hub 中的公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
 
 拉取 Windows 映像：
 

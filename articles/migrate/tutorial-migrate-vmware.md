@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁�
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 202886bc0a7738f8211cfea6d90a380c7bac82b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310638"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492941"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -38,31 +38,15 @@ ms.locfileid: "92310638"
 
 1. [完成第一篇教程](./tutorial-discover-vmware.md)来准备 Azure 和 VMware，以便进行迁移。
 2. 建议先完成第二篇教程以[评估 VMware VM](./tutorial-assess-vmware-azure-vm.md)，然后再将它们迁移到 Azure，但不一定要这样做。 
-
-
-## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具
-
-如果尚未设置 Azure Migrate 项目，请在添加工具之前[执行该操作](how-to-add-tool-first-time.md)。 如果已设置项目，请如下所述添加工具：
-
-1. 在 Azure Migrate 项目中，单击“概述”。 
-2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。 
-
-     ![评估和迁移服务器](./media/tutorial-migrate-vmware/assess-migrate.png)
-
-3. 在“迁移工具”中，选择“准备好迁移时单击此处添加迁移工具”。 
-
-    ![选择工具](./media/tutorial-migrate-vmware/select-migration-tool.png)
-
-4. 在“工具”列表中，选择“Azure Migrate:服务器迁移” > “添加工具”
-
-    ![服务器迁移工具](./media/tutorial-migrate-vmware/server-migration-tool.png)
+3. 转到已创建的项目或[创建新项目](./create-manage-projects.md)
+4. 验证 Azure 帐户的权限 - Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
 Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用于 VMware VM 的发现、评估和无代理迁移。 如果按照[评估教程](./tutorial-assess-vmware-azure-vm.md)操作，则已将该设备设置为已启动。 如果尚未这样做，请使用以下方法之一立即进行设置：
 
 - OVA 模板：使用下载的 OVA 模板在 VMware VM 上进行[设置](how-to-set-up-appliance-vmware.md)。
-- **脚本**：使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行[设置](deploy-appliance-script.md)。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用此方法。
+- **脚本**：使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行 [设置](deploy-appliance-script.md)。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用此方法。
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 

@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317202"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451259"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表
 指标资源管理器是 Azure 门户中 Azure Monitor 的一项功能，通过它可以根据指标值创建图表，直观地关联趋势，以及调查指标值中的高峰和凹陷。 使用指标资源管理器调查 Azure 资源的运行状况和利用率，或根据自定义指标绘制图表。 
@@ -85,5 +85,5 @@ ms.locfileid: "91317202"
 现在，你已了解如何在 Azure Monitor 中使用指标，接下来了解如何使用指标来发送主动警报。
 
 > [!div class="nextstepaction"]
-> [使用 Azure Monitor 创建、查看和管理指标警报](../platform/alerts-metric.md)
+> [使用 Azure Monitor 创建、查看和管理指标警报](../platform/metrics-charts.md#create-alert-rules)
 

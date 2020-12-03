@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334083"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451573"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -160,7 +160,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![创建的函数应用](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   若要创建函数应用，也可以使用 [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) 或 [PowerShell 和资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)。
+   若要创建函数应用，也可以使用 [Azure CLI](../azure-functions/create-first-function-cli-csharp.md) 或 [PowerShell 和资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)。
 
 1. 在“函数应用”列表中展开函数（如果尚未展开）。 在你的函数应用下，选择“函数”。 在函数工具栏上选择“新建函数”。
 
@@ -363,7 +363,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 向自己发送一封满足以下条件的电子邮件：
 
-   * 电子邮件主题的文本是在触发器的**主题筛选器**中指定的：`Business Analyst 2 #423501`
+   * 电子邮件主题的文本是在触发器的 **主题筛选器** 中指定的：`Business Analyst 2 #423501`
 
    * 电子邮件有一个附件。 现在，请直接创建一个空的文本文件，然后将该文件附加到电子邮件。
 
@@ -470,7 +470,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 向自己发送一封满足以下条件的电子邮件：
 
-   * 电子邮件主题的文本是在触发器的**主题筛选器**中指定的：`Business Analyst 2 #423501`
+   * 电子邮件主题的文本是在触发器的 **主题筛选器** 中指定的：`Business Analyst 2 #423501`
 
    * 电子邮件至少有一个附件。 现在，请直接创建一个空的文本文件，然后将该文件附加到电子邮件。
 

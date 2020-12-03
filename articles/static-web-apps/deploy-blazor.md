@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024222"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350222"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教程：在 Azure Static Web Apps 中使用 Blazor 生成静态 Web 应用
 
@@ -64,7 +64,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 本文使用 GitHub 模板存储库，使你能够轻松入门。 该模板具有一个部署到 Azure Static Web Apps 的入门应用。
 
 1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. 将存储库命名为 my-first-static-blazor-app
 
 ## <a name="create-a-static-web-app"></a>创建静态 Web 应用

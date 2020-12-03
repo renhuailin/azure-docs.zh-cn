@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426994"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449339"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -66,7 +66,7 @@ ms.locfileid: "92426994"
 
 在开始之前，请确保：
 
-- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
+- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
     - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
@@ -74,7 +74,7 @@ ms.locfileid: "92426994"
         - 若要注册资源提供程序，请在 Azure 门户中转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 
         - 搜索特定资源提供程序（如 `Microsoft.DataBoxEdge`）并将其注册。 
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-- 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+- 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
@@ -126,7 +126,7 @@ ms.locfileid: "92426994"
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
-    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
+    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 7. 输入或选择以下“实例详细信息”。 
 
@@ -207,6 +207,3 @@ ms.locfileid: "92426994"
 
 > [!div class="nextstepaction"]
 > [安装 Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

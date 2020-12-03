@@ -2,8 +2,8 @@
 title: 使用 Azure 门户对管道中的活动进行分支和链接
 description: 了解如何使用 Azure 门户控制 Azure 数据工厂管道中的数据流。
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: dc82cfdc4e5a063e7c5cb833b617da58023d1ba6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568540"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497429"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -43,8 +43,8 @@ ms.locfileid: "91568540"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-* **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。
-* **Azure SQL 数据库**。 将数据库用作**接收器**数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[创建 Azure SQL 数据库中的数据库](../azure-sql/database/single-database-create-quickstart.md)一文了解创建步骤。
+* **Azure 存储帐户**。 可将 Blob 存储用作 **源** 数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。
+* **Azure SQL 数据库**。 将数据库用作 **接收器** 数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[创建 Azure SQL 数据库中的数据库](../azure-sql/database/single-database-create-quickstart.md)一文了解创建步骤。
 
 ### <a name="create-blob-table"></a>创建 Blob 表
 
@@ -133,7 +133,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。
+2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
 
      ![“新建数据工厂”页](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
@@ -142,14 +142,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    数据工厂名“ADFTutorialDataFactory”不可用。
 
 3. 选择要在其中创建数据工厂的 Azure **订阅**。
-4. 对于**资源组**，请执行以下步骤之一：
+4. 对于 **资源组**，请执行以下步骤之一：
 
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2”作为“版本”。
-5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。
@@ -188,7 +188,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 6. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。  
 
    ![选择“Azure Blob 存储”](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
-7. 此时会显示标题为“AzureBlob1”的新**选项卡**。 将数据集的名称更改为 **SourceBlobDataset**。
+7. 此时会显示标题为“AzureBlob1”的新 **选项卡**。 将数据集的名称更改为 **SourceBlobDataset**。
 
    ![数据集常规设置](./media/tutorial-control-flow-portal/dataset-general-page.png)
 8. 在“属性”窗口中切换到“连接”选项卡，然后针对“链接服务”单击“新建”。 此步骤创建一个链接服务，用于将 Azure 存储帐户链接到数据工厂。
@@ -196,8 +196,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![数据集连接 - 新建链接服务](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
 9. 在“新建链接服务”窗口中执行以下步骤：
 
-    1. 输入 **AzureStorageLinkedService** 作为**名称**。
-    2. 选择自己 Azure 存储帐户作为**存储帐户名称**。
+    1. 输入 **AzureStorageLinkedService** 作为 **名称**。
+    2. 选择自己 Azure 存储帐户作为 **存储帐户名称**。
     3. 单击“ **保存**”。
 
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
@@ -213,7 +213,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     ![“新建接收器数据集”按钮](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
 14. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。
-15. 在数据集的“常规”设置页中，输入 **SinkBlobDataset** 作为**名称**。
+15. 在数据集的“常规”设置页中，输入 **SinkBlobDataset** 作为 **名称**。
 16. 切换到“连接”选项卡，然后执行以下步骤：
 
     1. 为“LinkedService”选择“AzureStorageLinkedService”。
@@ -250,7 +250,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。
 
     ![将“复制”活动连接到第一个“Web”活动](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)
-20. 将“Web”活动从“活动”工具箱拖放到管道设计器图面，并将**名称**设置为 **SendFailureEmailActivity**。
+20. 将“Web”活动从“活动”工具箱拖放到管道设计器图面，并将 **名称** 设置为 **SendFailureEmailActivity**。
 
     ![第二个 Web 活动的名称](./media/tutorial-control-flow-portal/web-activity2-name.png)
 21. 切换到“设置”选项卡，然后执行以下步骤：
@@ -274,7 +274,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。  
 
     ![屏幕截图，显示如何在管道设计器的复制活动中选择“错误”。](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
-23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
+23. 将“复制”活动旁边的 **红色** 按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
 
     ![包含所有活动的完整管道](./media/tutorial-control-flow-portal/full-pipeline.png)
 24. 若要验证管道，请单击工具栏中的“验证”按钮。 单击 **>>** 按钮关闭“管道验证输出”窗口。
@@ -285,14 +285,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![发布](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>触发成功的管道运行
-1. 若要**触发**某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
+1. 若要 **触发** 某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
 
     ![触发管道运行](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. 在“管道运行”窗口中执行以下步骤：
 
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/adfv2branch/input**。
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/adfv2branch/output**。
-    3. 输入**接收方**的**电子邮件地址**。
+    3. 输入 **接收方** 的 **电子邮件地址**。
     4. 单击“完成”
 
         ![管道运行参数](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
@@ -302,18 +302,18 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 1. 若要监视管道运行，请切换到左侧的“监视”选项卡。 可以看到手动触发的管道运行。 使用“刷新”按钮刷新列表。
 
     ![成功的管道运行](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
-2. 若要**查看**与此管道运行关联的活动运行，请单击“操作”列中的第一个链接。 单击顶部的“管道”可以切换回到上一视图。 使用“刷新”按钮刷新列表。
+2. 若要 **查看** 与此管道运行关联的活动运行，请单击“操作”列中的第一个链接。 单击顶部的“管道”可以切换回到上一视图。 使用“刷新”按钮刷新列表。
 
     ![屏幕截图，显示如何查看活动运行的列表。](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>触发失败的管道运行
 1. 在左侧切换到“编辑”选项卡。
-2. 若要**触发**某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。
+2. 若要 **触发** 某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。
 3. 在“管道运行”窗口中执行以下步骤：
 
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/dummy/output**。
-    3. 输入**接收方**的**电子邮件地址**。
+    3. 输入 **接收方** 的 **电子邮件地址**。
     4. 单击“完成”。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>监视失败的管道运行
@@ -324,7 +324,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 2. 单击管道运行对应的“错误”链接可查看有关错误的详细信息。
 
     ![管道错误](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. 若要**查看**与此管道运行关联的活动运行，请单击“操作”列中的第一个链接。 使用“刷新”按钮刷新列表。 请注意，管道中的“复制”活动失败。 “Web”活动已成功将失败电子邮件发送到指定的接收方。
+2. 若要 **查看** 与此管道运行关联的活动运行，请单击“操作”列中的第一个链接。 使用“刷新”按钮刷新列表。 请注意，管道中的“复制”活动失败。 “Web”活动已成功将失败电子邮件发送到指定的接收方。
 
     ![活动运行](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. 在“操作”列中单击“错误”链接可查看有关错误的详细信息。

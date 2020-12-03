@@ -3,20 +3,20 @@ title: 构建第一个数据工厂（Azure 门户）
 description: 本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637439"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496613"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ ms.locfileid: "92637439"
 
    ![“创建”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-1. 在“新建数据工厂”边栏选项卡的“名称”下，输入 **GetStartedDF** 。 
+1. 在“新建数据工厂”边栏选项卡的“名称”下，输入 **GetStartedDF**。 
 
    ![“新建数据工厂”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "92637439"
 
     ![部署按钮](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   成功部署链接服务以后，“草稿-1”窗口会消失。 此时会在左侧的树状视图中看到 **AzureStorageLinkedService** 。
+   成功部署链接服务以后，“草稿-1”窗口会消失。 此时会在左侧的树状视图中看到 **AzureStorageLinkedService**。
 
     ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
 
@@ -159,9 +159,9 @@ ms.locfileid: "92637439"
 
      b. 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight 链接服务](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)。
 
-     c. HDInsight 群集在 Blob 存储中创建默认容器，该存储是在 JSON 属性 ( **linkedServiceName** ) 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 ( **timeToLive** )，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
+     c. HDInsight 群集在 Blob 存储中创建默认容器，该存储是在 JSON 属性 (**linkedServiceName**) 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (**timeToLive**)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
-     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf **yourdatafactoryname**-**linkedservicename** -datetimestamp”模式。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Blob 存储中的容器。
+     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf **yourdatafactoryname**-**linkedservicename**-datetimestamp”模式。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Blob 存储中的容器。
 
      有关详细信息，请参阅[按需 HDInsight 链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 
@@ -169,7 +169,7 @@ ms.locfileid: "92637439"
 
     ![“部署”选项](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-1. 确认左侧树视图中出现了 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService** 。
+1. 确认左侧树视图中出现了 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService**。
 
     ![显示 AzureStorageLinkedService 与 HDInsightOnDemandLinkedService 链接在一起的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -210,14 +210,14 @@ ms.locfileid: "92637439"
 
    | properties | 嵌套位置 | 说明 |
    |:--- |:--- |:--- |
-   | type | properties |type 属性设置为 **AzureBlob** ，因为数据位于 Blob 存储中。 |
+   | type | properties |type 属性设置为 **AzureBlob**，因为数据位于 Blob 存储中。 |
    | linkedServiceName | format |表示前面创建的 AzureStorageLinkedService。 |
    | folderPath | typeProperties | 指定 Blob 容器以及包含输入 Blob 的文件夹。 | 
    | fileName | typeProperties |此属性是可选的。 如果省略此属性，将选择 folderPath 中的所有文件。 在本教程中，只处理 input.log 文件。 |
-   | type | format |日志文件采用文本格式，因此这里使用 **TextFormat** 。 |
+   | type | format |日志文件采用文本格式，因此这里使用 **TextFormat**。 |
    | columnDelimiter | format |日志文件中的列以逗号 (`,`) 分隔。 |
-   | frequency/interval | availability |frequency 设置为 **Month** ，interval 为 **1** ，表示每月获取输入切片。 |
-   | external | properties | 如果输入数据不是由该管道生成的，此属性设置为 **true** 。 在本教程中，input.log 文件不是由该管道生成的，因此将此属性设置为 **true** 。 |
+   | frequency/interval | availability |frequency 设置为 **Month**，interval 为 **1**，表示每月获取输入切片。 |
+   | external | properties | 如果输入数据不是由该管道生成的，此属性设置为 **true**。 在本教程中，input.log 文件不是由该管道生成的，因此将此属性设置为 **true**。 |
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)。
 
@@ -325,7 +325,7 @@ ms.locfileid: "92637439"
 
     管道的 **start** 和 **end** 属性指定管道的活动期限。
 
-    在活动 JSON 中，指定 Hive 脚本要在通过 **linkedServiceName** : **HDInsightOnDemandLinkedService** 指定的计算资源上运行。
+    在活动 JSON 中，指定 Hive 脚本要在通过 **linkedServiceName**: **HDInsightOnDemandLinkedService** 指定的计算资源上运行。
 
    > [!NOTE]
    > 有关此示例中使用的 JSON 属性的详细信息，请参阅[数据工厂中的管道和活动](data-factory-create-pipelines.md)中的“管道 JSON”部分。
@@ -339,7 +339,7 @@ ms.locfileid: "92637439"
 
    c. 已在管道 JSON 中将 **storageaccountname** 替换为存储帐户名。
 
-1. 选择命令栏中的“部署”来部署管道。 由于 **start** 和 **end** 时间设置为过去的时间， **isPaused** 设置为 **false** ，因此管道（管道中的活动）在部署后立即运行。
+1. 选择命令栏中的“部署”来部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 **false**，因此管道（管道中的活动）在部署后立即运行。
 
 1. 确认树视图中显示了该管道。
 
@@ -367,13 +367,13 @@ ms.locfileid: "92637439"
 
     若要返回到上一视图，请选择顶部菜单中的“数据工厂”。
 
-1. 在“图示”视图中，双击数据集 **AzureBlobInput** 。 确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”。 如果一段时间后未显示此状态，请检查是否已将输入文件 ( **input.log** ) 放置在正确的容器 ( **adfgetstarted** ) 和文件夹 ( **inputdata** ) 中。
+1. 在“图示”视图中，双击数据集 **AzureBlobInput**。 确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”。 如果一段时间后未显示此状态，请检查是否已将输入文件 (**input.log**) 放置在正确的容器 (**adfgetstarted**) 和文件夹 (**inputdata**) 中。
 
    ![输入切片处于“就绪”状态](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
 1. 关闭“AzureBlobInput”边栏选项卡。
 
-1. 在“图示”视图中，双击数据集 **AzureBlobOutput** 。 此时会显示当前正在处理的切片。
+1. 在“图示”视图中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
    ![数据集处理正在进行](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
@@ -402,7 +402,7 @@ ms.locfileid: "92637439"
    有关详细信息，请参阅[使用 Azure 门户边栏选项卡监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 
 > [!IMPORTANT]
-> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 ( **input.log** ) 上传到 **adfgetstarted** 容器的 **inputdata** 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (**input.log**) 上传到 **adfgetstarted** 容器的 **inputdata** 文件夹中。
 >
 >
 

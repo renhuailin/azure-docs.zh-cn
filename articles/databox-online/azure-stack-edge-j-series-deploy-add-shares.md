@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447568"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过共享传输数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "91440278"
     a. 在“名称”框中，提供共享的唯一名称。   
     共享名称只能包含字母、数字和连字符。 它必须包含 3 到 63 个字符，并以字母或数字开头。 紧邻连字符的字符必须为字母或数字。
     
-    b. 选择共享的**类型**。  
+    b. 选择共享的 **类型**。  
     类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。  
     根据你选择 SMB 共享还是 NFS 共享，其余选项会略有不同。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "91440278"
     所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
 
    > [!IMPORTANT]
-   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
 
     e. 创建新的 Blob 容器，或使用下拉列表中的现有容器。 如果创建 Blob 容器，请提供容器名称。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。
    
@@ -104,7 +104,7 @@ ms.locfileid: "91440278"
 
 请在用于连接到设备的 Windows 客户端上执行以下步骤：
 
-1. 以管理员身份启动**记事本**，并打开位于 `C:\Windows\System32\Drivers\etc` 的 **hosts** 文件。
+1. 以管理员身份启动 **记事本**，并打开位于 `C:\Windows\System32\Drivers\etc` 的 **hosts** 文件。
 
     ![Windows 资源管理器 hosts 文件](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-1.png)
 
@@ -198,5 +198,3 @@ ms.locfileid: "91440278"
 
 > [!div class="nextstepaction"]
 > [使用 Azure Stack Edge Pro 转换数据](./azure-stack-edge-j-series-deploy-configure-compute.md)
-
-

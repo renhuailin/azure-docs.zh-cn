@@ -2,8 +2,8 @@
 title: Azure 数据工厂管道中的分支
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637694"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496936"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -58,7 +58,7 @@ ms.locfileid: "92637694"
 
 ### <a name="create-a-blob-table"></a>创建 Blob 表
 
-1. 打开文本编辑器。 复制以下文本，并在本地将其保存为 *input.txt* 。
+1. 打开文本编辑器。 复制以下文本，并在本地将其保存为 *input.txt*。
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ ms.locfileid: "92637694"
    ```
 
 1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。 
-1. 将新容器命名为 *adfv2branch* ，然后选择“上传”将 *input.txt* 文件添加到该容器。
+1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。
 
 ## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
 
@@ -74,7 +74,7 @@ ms.locfileid: "92637694"
 
 1. 启动 Visual Studio 并选择“创建新项目”。
 1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
-1. 将项目命名为 *ADFv2BranchTutorial* 。
+1. 将项目命名为 *ADFv2BranchTutorial*。
 1. 选择“.NET 版本 4.5.2”或更高版本，然后选择“创建”。 
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
@@ -211,7 +211,7 @@ ms.locfileid: "92637694"
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>为源 Azure Blob 创建数据集
 
-添加一个方法用于创建 *Azure Blob 数据集* 。 有关支持的属性和详细信息，请参阅 [Azure Blob 数据集属性](connector-azure-blob-storage.md#dataset-properties)。
+添加一个方法用于创建 *Azure Blob 数据集*。 有关支持的属性和详细信息，请参阅 [Azure Blob 数据集属性](connector-azure-blob-storage.md#dataset-properties)。
 
 将 `SourceBlobDatasetDefinition` 方法添加到 *Program.cs* 文件中：
 
@@ -234,7 +234,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步骤中支持的 Azure 存储链接服务。 Blob 数据集描述要从中复制 Blob 的位置： *FolderPath* 和 *FileName* 。
+在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步骤中支持的 Azure 存储链接服务。 Blob 数据集描述要从中复制 Blob 的位置：*FolderPath* 和 *FileName*。
 
 请注意 *FolderPath* 的参数用法。 `sourceBlobContainer` 是参数的名称，表达式已替换为在管道运行中传递的值。 用于定义参数的语法为 `@pipeline().parameters.<parameterName>`
 
@@ -597,7 +597,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 生成并启动应用程序，然后验证管道执行。
 
-应用程序将显示数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 Azure 存储资源管理器等工具检查 Blob 是否已根据变量中指定的 *inputBlobPath* 复制到 *outputBlobPath* 。
+应用程序将显示数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 Azure 存储资源管理器等工具检查 Blob 是否已根据变量中指定的 *inputBlobPath* 复制到 *outputBlobPath*。
 
 输出应类似于以下示例：
 

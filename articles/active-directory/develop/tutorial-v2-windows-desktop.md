@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974385"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518764"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教程：从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -115,7 +115,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
    1. 在“重定向 URI”部分的重定向 URI 列表中：
    1. 在“类型”列中选择“公共客户端/本机(移动和桌面)” 。
    1. 在“重定向 URI”列中输入 `https://login.microsoftonline.com/common/oauth2/nativeclient`
-1. 选择“注册”。
+1. 选择“注册”  。
 1. 转到 Visual Studio，打开 App.xaml.cs 文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
 
     ```csharp
@@ -259,6 +259,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
                 DisplayBasicTokenInfo(authResult);
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
+        }
         }
     ```
 

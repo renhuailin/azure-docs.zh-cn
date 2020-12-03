@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379547"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437042"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
 
@@ -82,7 +82,7 @@ ms.locfileid: "93379547"
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-完整的 *createUiDefinition.json* 示例可在[参考：用户界面元素项目](reference-createuidefinition-artifact.md)中找到。
+完整的 *createUiDefinition.json* 示例可在 [参考：用户界面元素项目](reference-createuidefinition-artifact.md)中找到。
 
 ## <a name="template-with-custom-provider"></a>带有自定义提供程序的模板
 
@@ -353,6 +353,6 @@ az managedapp create \
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
+若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](../../marketplace/create-new-azure-apps-offer.md)。
 
 详细了解 [Azure 自定义提供程序](../custom-providers/overview.md)。

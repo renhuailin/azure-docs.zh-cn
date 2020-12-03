@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014915"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453240"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>预览版教程：创建时序见解第 2 代并与其连接，以便存储、可视化和分析 IoT 即插即用设备遥测
 
-本教程将介绍如何创建 [Azure 时序见解第 2 代](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (TSI) 环境并对其正确配置，以便与 IoT 即插即用解决方案集成。 使用 TSI 在物联网 (IoT) 规模上收集、处理、存储、查询和可视化时序数据。
+本教程将介绍如何创建 [Azure 时序见解第 2 代](../time-series-insights/overview-what-is-tsi.md) (TSI) 环境并对其正确配置，以便与 IoT 即插即用解决方案集成。 使用 TSI 在物联网 (IoT) 规模上收集、处理、存储、查询和可视化时序数据。
 
 首先，预配一个 TSI 环境，并将 IoT 中心作为流式处理事件源进行连接。 然后，将根据用于温度控制器和恒温器设备的[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 示例模型文件，通过模型同步来创建[时序模型](../time-series-insights/concepts-model-overview.md)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "96014915"
 
 ## <a name="prepare-your-event-source"></a>准备事件源
 
-以前创建的 IoT 中心将是 TSI 环境的[事件源](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources)。
+以前创建的 IoT 中心将是 TSI 环境的[事件源](../time-series-insights/concepts-streaming-ingestion-event-sources.md)。
 
 > [!IMPORTANT]
 > 禁用任何现有的 IoT 中心路由。 将 IoT 中心用作配置了[路由](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints)的 TSI 事件源时，存在一个已知问题。 暂时禁用所有路由终结点，当 IoT 中心连接到 TSI 时，可以重新启用它们。
@@ -67,7 +67,7 @@ az iot hub consumer-group create --hub-name my-pnp-hub --name tsi-consumer-group
 
 以下命令：
 
-* 为环境的[冷存储](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store)创建一个 Azure 存储帐户，专用于历史数据的长期保留和分析。
+* 为环境的[冷存储](../time-series-insights/concepts-storage.md#cold-store)创建一个 Azure 存储帐户，专用于历史数据的长期保留和分析。
   * 将 `mytsicoldstore` 替换为冷存储帐户的唯一名称。
 * 创建 Azure 时序见解 Gen2 环境，包括七天保留期的热存储和无限保留期的冷存储。
   * 将 `my-tsi-env` 替换为 TSI 环境的唯一名称。

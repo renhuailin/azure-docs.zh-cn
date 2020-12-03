@@ -3,12 +3,12 @@ title: 将容器中的 .NET 应用部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器化并在 Service Fabric 中本地调试容器。 容器化后的应用程序会被推送给 Azure 容器注册表，并部署到 Service Fabric 群集。 部署到 Azure 时，应用程序使用 Azure SQL DB 保存数据。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: b7c841c1185cb2e289a230eb1078a13d4ccd48f8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889929"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485513"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -118,7 +118,7 @@ Write-Host "Server name is $servername"
 ```
 
 >[!NOTE]
->可以使用选择的任何 SQL Server 进行本地调试，只要可通过主机访问。 但是， **localdb** 不支持 `container -> host` 通信。 如果想要在生成 Web 应用程序的发布版本时使用其他 SQL 数据库，可将另一个连接字符串添加到 web.release.config 文件。
+>可以使用选择的任何 SQL Server 进行本地调试，只要可通过主机访问。 但是，**localdb** 不支持 `container -> host` 通信。 如果想要在生成 Web 应用程序的发布版本时使用其他 SQL 数据库，可将另一个连接字符串添加到 web.release.config 文件。
 
 ## <a name="run-the-containerized-application-locally"></a>本地运行已容器化的应用程序
 
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。  需在 Azure 中创建一个 Service Fabric 群集，然后才能将应用程序部署到 Azure。
 
-方法：
+可以：
 
 * 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。
 * [模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
@@ -169,7 +169,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
     d. 选择“VM 详细信息”选项卡。指定一个密码，以便将其用于构成群集的虚拟机 (VM)。 可以使用用户名和密码远程连接到 VM。 此外还必须选择 VM 大小，并可根据需要更改 VM 映像。
 
     > [!IMPORTANT]
-    > 选择一个支持运行容器的 SKU。 群集节点上的 Windows Server OS 必须与容器的 Windows Server OS 兼容。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 默认情况下，本教程将创建基于 Windows Server 2016 LTSC 的 Docker 映像。 基于此映像的容器将运行在使用带容器的 Windows Server 2016 Datacenter 创建的群集上。 但是，如果基于不同版本的 Windows Server 创建群集或使用现有群集，则必须更改容器所基于的 OS 映像。 打开 FabrikamFiber.Web 项目中的 dockerfile，注释掉基于以前版本的 Windows Server 的任何现有 `FROM` 语句，并根据所需版本的标记从 [Windows Server Core DockerHub](https://hub.docker.com/_/microsoft-windows-servercore) 页添加 `FROM` 术语 。 有关 Windows Server Core 版本、支持时间线和版本控制的其他信息，请参阅 [Windows Server Core 版本信息](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)。 
+    > 选择一个支持运行容器的 SKU。 群集节点上的 Windows Server OS 必须与容器的 Windows Server OS 兼容。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 默认情况下，本教程将创建基于 Windows Server 2016 LTSC 的 Docker 映像。 基于此映像的容器将运行在使用带容器的 Windows Server 2016 Datacenter 创建的群集上。 但是，如果基于不同版本的 Windows Server 创建群集或使用现有群集，则必须更改容器所基于的 OS 映像。 打开 FabrikamFiber.Web 项目中的 dockerfile，注释掉基于以前版本的 Windows Server 的任何现有 `FROM` 语句，并根据所需版本的标记从 [Windows Server Core DockerHub](https://hub.docker.com/_/microsoft-windows-servercore) 页添加 `FROM` 术语 。 有关 Windows Server Core 版本、支持时间线和版本控制的其他信息，请参阅 [Windows Server Core 版本信息](/windows-server/get-started/windows-server-release-info)。 
 
     e. 在“高级”选项卡中，列出群集部署时要在负载均衡器中打开的应用程序端口。 这是在开始创建群集之前记下的端口。 还可以添加现有的 Application Insights 密钥，用于路由应用程序日志文件。
 

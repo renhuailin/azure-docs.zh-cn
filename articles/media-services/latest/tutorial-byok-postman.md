@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686330"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498279"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>教程：将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用
 
@@ -43,8 +43,8 @@ ms.locfileid: "94686330"
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>注册具有所需权限的服务主体
 
-1. [创建服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-1. 转到[选项 2:创建新的应用程序机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options)以获取服务主体机密。
+1. [创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+1. 转到[选项 2:创建新的应用程序机密](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)以获取服务主体机密。
 
    > [!IMPORTANT]
    >复制并保存机密以供之后使用。 离开门户中的机密页面后，将无法访问该机密。

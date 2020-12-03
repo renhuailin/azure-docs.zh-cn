@@ -4,12 +4,12 @@ description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动�
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072037"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349242"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -27,13 +27,13 @@ ms.locfileid: "89072037"
 
 ## <a name="prerequisites"></a>先决条件
 
-请参阅[在 Azure 中使用 Visual Studio Code 创建你的第一个函数](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 扩展配合使用的先决条件。
+请参阅[在 Azure 中使用 Visual Studio Code 创建你的第一个函数](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 扩展配合使用的先决条件。
 
 本文中的其他步骤使用 Azure PowerShell。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell][azure-powershell-install] 和[登录到 Azure](/powershell/azure/get-started-azureps#sign-in-to-azure)。
 
 ## <a name="create-a-basic-powershell-function"></a>创建基本的 PowerShell 函数
 
-请按[在 Azure 中创建第一个 PowerShell 函数](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)中的步骤操作，使用“HTTP 触发器”模板创建 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
+请按[在 Azure 中创建第一个 PowerShell 函数](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell)中的步骤操作，使用“HTTP 触发器”模板创建 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
 
 本文假定你在一个 Azure 资源组中使用名称 *myfunctionapp* 发布项目，该资源组自动根据函数应用名称（也是 *myfunctionapp*）命名。 请在后面的步骤中将上述名称替换为自己的唯一函数应用名称和资源组名称。
 
