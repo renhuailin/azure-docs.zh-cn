@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953094"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171222"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在单页应用程序中启用身份验证
 
 本教程介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序 (SPA) 中通过以下任一方法进行用户登录和注册：
-* [OAuth 2.0 授权代码流](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow)（使用 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)）
-* [OAuth 2.0 隐式授予流](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application)（使用 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）
+* [OAuth 2.0 授权代码流](./authorization-code-flow.md)（使用 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)）
+* [OAuth 2.0 隐式授予流](./implicit-flow-single-page-application.md)（使用 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）
 
 本教程是由两个部分组成的教程系列的第一部分，将介绍以下操作：
 
@@ -51,7 +51,7 @@ ms.locfileid: "94953094"
 
 ## <a name="update-the-application"></a>更新应用程序
 
-在按照先决条件完成的[第二个教程](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa)中，你已在 Azure AD B2C 中注册了单页应用程序。 若要使用本教程中的代码示例实现通信，请将一个回复 URL（也称为重定向 URI）添加到应用程序注册。
+在按照先决条件完成的[第二个教程](./tutorial-register-spa.md)中，你已在 Azure AD B2C 中注册了单页应用程序。 若要使用本教程中的代码示例实现通信，请将一个回复 URL（也称为重定向 URI）添加到应用程序注册。
 
 要更新 Azure AD B2C 租户中的应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "94953094"
 
 #### <a name="applications-legacy"></a>[应用程序（旧版）](#tab/applications-legacy/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“应用程序(旧版)”，然后选择“spaapp1”应用程序。

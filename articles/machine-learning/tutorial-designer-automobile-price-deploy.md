@@ -2,20 +2,20 @@
 title: 教程：使用设计器部署 ML 模型
 titleSuffix: Azure Machine Learning
 description: 在 Azure 机器学习设计器中生成预测分析解决方案。 使用拖放式模块训练、评分和部署机器学习模型。
-author: peterclu
-ms.author: peterlu
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/13/2020
+ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030352"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -113,7 +113,7 @@ ms.locfileid: "94592543"
 
 1. 在“使用”选项卡中，可以找到安全密钥并设置身份验证方法。
 
-1. 在“部署日志”选项卡中，可以找到实时终结点的详细部署日志。 
+1. 在“部署日志”选项卡中，你可以找到实时终结点的详细部署日志。 
 
 有关使用 Web 服务的详细信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)
 
