@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/02/2020
 ms.author: jlian
-ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413388"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549101"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -36,7 +36,7 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>使用 Azure 专用链接实现到 IoT 中心的出口连接
 
-专用终结点是在客户拥有的 VNet 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过 Azure 专用链接，可以为 IoT 中心设置专用终结点，以允许 VNet 中的服务访问 IoT 中心，而无需将流量发送到 IoT 中心的公共终结点。 同样，本地设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 对等互连，通过其专用终结点，连接到 VNet 和 IoT 中心。 这样，便可以通过使用 [IoT 中心 IP 筛选器](./iot-hub-ip-filtering.md)和[将路由配置为不将任何数据发送到内置终结点](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)，来限制或完全阻止与 IoT 中心公共终结点的连接。 此方法使用设备的专用终结点来保持与中心的连接。 此设置主要适用于本地网络中的设备。 对于广域网中部署的设备，不建议使用此设置。
+专用终结点是在客户拥有的 VNet 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过 Azure 专用链接，可以为 IoT 中心设置专用终结点，以允许 VNet 中的服务访问 IoT 中心，而无需将流量发送到 IoT 中心的公共终结点。 同样，本地设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 对等互连，通过其专用终结点，连接到 VNet 和 IoT 中心。 因此，你可以使用 [IoT 中心 IP 筛选器](./iot-hub-ip-filtering.md) 或 [公共网络访问切换](iot-hub-public-network-access.md)功能限制或完全阻止与 iot 中心公共终结点的连接。 此方法使用设备的专用终结点来保持与中心的连接。 此设置主要适用于本地网络中的设备。 对于广域网中部署的设备，不建议使用此设置。
 
 ![IoT 中心虚拟网络 engress](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -64,17 +64,12 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 1. 单击“查看 + 创建”以创建专用链接资源。
 
-### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>内置的与事件中心兼容的终结点不支持通过专用终结点进行访问
+### <a name="built-in-event-hub-compatible-endpoint"></a>内置的与事件中心兼容的终结点 
 
-[内置的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md)不支持通过专用终结点进行访问。 如果配置了 IoT 中心的专用终结点，它仅用于入口连接。 只能通过公共 internet 使用内置的与事件中心兼容的终结点中的数据。 
+还可以通过专用终结点访问 [内置的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md) 。 配置 "专用" 链接后，你应该会看到内置终结点的其他专用终结点连接。 它 `servicebus.windows.net` 在 FQDN 中。
 
-IoT 中心的 [IP 筛选器](iot-hub-ip-filtering.md)也不会控制对内置终结点的公共访问。 若要完全阻止公共网络访问 IoT 中心，必须执行以下操作： 
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="显示每个 IoT 中心专用链接的两个专用终结点的图像":::
 
-1. 为 IoT 中心配置专用终结点访问
-1. [关闭公共网络访问](iot-hub-public-network-access.md) ，或使用 ip 筛选器阻止所有 IP
-1. 通过[将路由设置为不向其发送数据](iot-hub-devguide-messages-d2c.md)来停止使用内置的事件中心终结点
-1. 关闭[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)
-1. 使用[受信任的 Microsoft 服务](#egress-connectivity-from-iot-hub-to-other-azure-resources)来配置指向其他 Azure 资源的出口
 
 ### <a name="pricing-for-private-link"></a>专用链接定价
 
@@ -200,7 +195,7 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“事件中心”作为终结点类型。
 
-6. 在显示的页面上，为终结点提供名称，选择事件中心命名空间和实例。 选择 " **基于身份** " 作为 " **身份验证类型** "，然后单击 " **创建** " 按钮。
+6. 在显示的页面上，为终结点提供名称，选择事件中心命名空间和实例。 选择 " **基于身份** " 作为 " **身份验证类型**"，然后单击 " **创建** " 按钮。
 
 现在，已将自定义事件中心终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问事件中心资源。 现在可以使用此终结点来设置路由规则。
 
@@ -218,7 +213,7 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“服务总线队列”或“服务总线主题”（如果适用）作为终结点类型 。
 
-6. 在显示的页面上，为终结点提供名称，选择服务总线的命名空间和队列或主题（如果适用）。 选择 " **基于身份** " 作为 " **身份验证类型** "，然后单击 " **创建** " 按钮。
+6. 在显示的页面上，为终结点提供名称，选择服务总线的命名空间和队列或主题（如果适用）。 选择 " **基于身份** " 作为 " **身份验证类型**"，然后单击 " **创建** " 按钮。
 
 现在，已将自定义服务总线终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问服务总线资源。 现在可以使用此终结点来设置路由规则。
 

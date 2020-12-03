@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636803"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548862"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -160,7 +160,7 @@ Container image build failed
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>现有 Dockerfile 没有用于生成容器
 
-Azure Dev Spaces 可以配置为指向项目中的特定 _Dockerfile_ 。 如果 Azure Dev Spaces 看起来并未使用预期的 Dockerfile 来生成容器，可能需要显式指示 Azure Dev Spaces 要使用哪个 Dockerfile。 
+Azure Dev Spaces 可以配置为指向项目中的特定 _Dockerfile_。 如果 Azure Dev Spaces 看起来并未使用预期的 Dockerfile 来生成容器，可能需要显式指示 Azure Dev Spaces 要使用哪个 Dockerfile。 
 
 若要修复此问题，请打开 Azure Dev Spaces 在项目中生成的 azds.yaml 文件。 将 configurations: develop: build: dockerfile 更新为指向要使用的 Dockerfile。 例如：
 
@@ -379,6 +379,17 @@ spec:
       [...]
 ```
 
+### <a name="error-cannot-get-connection-details-for-azure-dev-spaces-controller-abc-because-it-is-in-the-failed-state-something-wrong-might-have-happened-with-your-controller"></a>错误 "无法获取 Azure Dev Spaces 控制器" ABC "的连接详细信息，因为它处于" 失败 "状态。 控制器出现错误。 "
+
+若要解决此问题，请尝试从群集中删除 Azure Dev Spaces 控制器，然后重新安装：
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+此外，在 Azure Dev Spaces 即将停用的情况下，请考虑 [迁移到 Kubernetes](migrate-to-bridge-to-kubernetes.md) ，从而提供更好的体验。
+
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>结合使用 Visual Studio 和 Visual Studio Code 与 Azure Dev Spaces 时遇到的常见问题
 
 ### <a name="error-required-tools-and-configurations-are-missing"></a>错误“缺少必需的工具和配置”
@@ -504,7 +515,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于“角色”，选择“参与者”或“所有者”。
     * 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体” 。
     * 对于“选择”，搜索要向其授予权限的用户。
-1. 单击“ *保存* ”。
+1. 单击“ *保存*”。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
@@ -530,7 +541,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 可能会在尝试访问服务时看到此错误。 例如，可能会在浏览器中访问服务的 URL 时看到此错误。 此错误表示容器端口不可用。 这可能是由于以下原因所致：
 
 * 容器仍在生成和部署过程中。 如果先运行 `azds up` 或启动调试器，然后在成功部署容器之前尝试访问容器，则会出现此问题。
-* 端口配置在 _Dockerfile_ 、Helm 图表以及任何用于打开端口的服务器代码中不一致。
+* 端口配置在 _Dockerfile_、Helm 图表以及任何用于打开端口的服务器代码中不一致。
 
 解决此问题：
 

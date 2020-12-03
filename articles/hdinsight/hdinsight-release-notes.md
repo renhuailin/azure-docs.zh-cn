@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350256"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548998"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -46,8 +46,9 @@ HDInsight 3.6 ML 服务群集类型将在12月 31 2020 结束支持。 31 2020 �
 ### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
 自 16 2020 年11月起，HDInsight 将阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的新客户。 过去三个月内使用这些 VM 大小的现有客户将不会受到影响。 从 9 2021 年1月开始，HDInsight 会阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的所有客户。 现有群集将按原样运行。 请考虑移动到 HDInsight 4.0，以避免潜在的系统/支持中断。
 
-### <a name="behavior-changes"></a>行为更改
-此版本没有行为变更。
+## <a name="behavior-changes"></a>行为更改
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>在缩放操作前添加 NSG 规则检查
+HDInsight 添加了网络安全组 (Nsg) 和用户定义的路由 (Udr) 检查缩放操作。 除了创建群集以外，对群集缩放执行相同的验证。 此验证可帮助防止不可预知的错误。 如果验证未通过，缩放会失败。 了解有关如何正确配置 Nsg 和 Udr 的详细信息，请参阅 [HDInsight 管理 IP 地址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。

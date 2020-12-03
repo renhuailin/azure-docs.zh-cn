@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b105c4c9ee0bd27af11fe09a0fd756467e30bb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466352"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548182"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>为专用 SQL 池启用 Synapse 工作区功能 (以前的 SQL DW) 
 
@@ -23,8 +23,8 @@ ms.locfileid: "96466352"
 
 ## <a name="prerequisites"></a>先决条件
 在数据仓库上启用 Synapse 工作区功能之前，必须确保已完成以下工作：
-- 用于创建和管理 SQL 逻辑服务器上托管的 SQL 资源的权限。
-- 用于创建 Synapse 资源的权限。
+- 用于创建和管理 SQL 逻辑服务器上承载的 SQL 资源的权限。
+- 创建 Azure Synapse 资源的权限。
 - 在逻辑服务器上标识的 Azure Active Directory 管理员
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户

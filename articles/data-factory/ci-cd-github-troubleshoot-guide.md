@@ -7,13 +7,13 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/27/2020
-ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/03/2020
+ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301957"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548199"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI CD、Azure DevOps 和 GitHub 问题 
 
@@ -58,7 +58,7 @@ CI/CD 管道失败，出现以下错误：
 
 #### <a name="recommendation"></a>建议
 
-之所以发生此错误，是因为我们经常删除已参数化的触发器，因此这些参数将无法在 ARM 模板 (中使用，因为该触发器不再存在) 。 由于参数不再位于 ARM 模板中，因此必须更新 DevOps 管道中的重写参数。 否则，每次更改 ARM 模板中的参数时，必须在部署任务) 中更新 DevOps 管道中的重写参数 (。
+之所以发生此错误，是因为我们经常删除已参数化的触发器，因此，这些参数将不会在 ARM 模板 (中提供，因为) 不再存在该触发器。 由于参数不再位于 ARM 模板中，因此必须更新 DevOps 管道中的重写参数。 否则，每次更改 ARM 模板中的参数时，必须在部署任务) 中更新 DevOps 管道中的重写参数 (。
 
 ### <a name="updating-property-type-is-not-supported"></a>不支持更新属性类型
 
@@ -107,7 +107,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 已断开 Git 配置，并再次使用选中的 "导入资源" 标志来进行设置，这会将数据工厂设置为 "同步"。 这意味着没有要发布的更改。
 
-**分辨率**
+#### <a name="resolution"></a>解决方法
 
 分离 Git 配置并再次进行设置，并确保不选中 "导入现有资源" 复选框。
 

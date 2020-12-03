@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 9/30/2020
+ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566480"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548233"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -85,7 +85,8 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Network/applicationGateways | 是 | 否 | [应用程序网关](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/azurefirewalls | 是 | 否 | [防火墙](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | 否 | 否 | [DNS 区域](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | 空值 | 否 |[Express Route 线路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | 是 | 否 |[ExpressRoute 线路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRoutePorts | 是 | 否 |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
 |Microsoft.Network/loadBalancers（仅限标准 SKU）| 是| 否 | [负载均衡器](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/natGateways| 否 | 否 | |
 |Microsoft.Network/privateEndpoints| 否 | 否 | |
@@ -107,6 +108,9 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.StorageCache/caches | 是 | 否 | |
 |Microsoft.StorageSync/storageSyncServices | 是 | 否 | [存储同步服务](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | 是 | 否 | [流分析](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft.Synapse/workspaces | 是 | 否 | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |
+|Microsoft.Synapse/workspaces/bigDataPools | 是 | 否 | [Synapse Analytics Apache Spark 池](./metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
+|Microsoft.Synapse/workspaces/sqlPools | 是 | 否 | [Synapse Analytics SQL 池](./metrics-supported.md#microsoftsynapseworkspacessqlpools) |
 |Microsoft.VMWareCloudSimple/virtualMachines | 是 | 否 | [CloudSimple 虚拟机](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [应用服务环境多角色池](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [应用服务环境工作线程池](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
@@ -114,7 +118,7 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Web/sites | 是 | 否 | [应用程序服务](./metrics-supported.md#microsoftwebsites-excluding-functions)和 [Functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [应用服务槽](./metrics-supported.md#microsoftwebsitesslots)|
 
-<sup>1</sup> 不支持虚拟机网络指标 (网络总数、网络传出总数、入站流、出站流、入站流最大创建速率、出站流) 和自定义指标的最大创建速率。
+<sup>1</sup> 不支持虚拟机网络指标（总网络流入量、总网络流出量、入站流数、出站流数、入站流最大创建速率、出站流最大创建速率）和自定义指标。
 
 ## <a name="payload-schema"></a>负载架构
 

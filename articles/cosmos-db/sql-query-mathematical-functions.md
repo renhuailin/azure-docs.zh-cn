@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338358"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549177"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数 (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,4 +69,4 @@ ms.locfileid: "93338358"
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 - [用户定义的函数](sql-query-udfs.md)
-- [聚合](sql-query-aggregates.md)
+- [聚合](sql-query-aggregate-functions.md)

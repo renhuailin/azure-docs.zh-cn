@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636089"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548828"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
 
@@ -20,7 +20,7 @@ ms.locfileid: "94636089"
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces 支持哪种版本的 Kubernetes？
 
-Azure Dev Spaces 支持 [AKS 中的所有当前受 (支持的公开) 版本的 Kubernetes][aks-supported-k8s]。
+Azure Dev Spaces 支持 [目前支持的正式发行版 (GA) 版本的 AKS，最高可达 1.18][aks-supported-k8s]。 AKS 上的 Kubernetes 1.19 及更高版本使用 ContainerD 作为容器运行时，该运行时不适用于 Azure Dev Spaces。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 区域当前提供 Azure Dev Spaces？
 
@@ -36,9 +36,9 @@ Azure Dev Spaces 支持 [AKS 中的所有当前受 (支持的公开) 版本的 K
 
 使用自己的 Dockerfile 或 Helm 图表时，有以下限制：
 * 如果只使用一个 Dockerfile，它必须包含启用开发方案所需的所有内容，例如语言 SDK，而不只是运行时。 如果对 Azure Dev Spaces 使用单独的 Dockerfile （如 Dockerfile），则必须在该 Dockerfile 中包含启用开发方案所需的所有内容。
-* Helm 图表必须支持将部分或整个图像标记作为值从 *yaml* 。
+* Helm 图表必须支持将部分或整个图像标记作为值从 *yaml*。
 * 如果你要使用入口来修改任何内容，则还可以更新 Helm 图表以使用 Azure Dev Spaces 提供的入口解决方案。
-* 如果要使用 [Azure Dev Spaces 提供的路由功能][dev-spaces-routing]，则单个项目的所有服务都必须在单个 Kubernetes 命名空间中，并且必须使用简单命名进行部署，例如 *服务-a* 。 在标准 Helm 的图表中，可以通过指定 *fullnameOverride* 属性的值来完成此命名更新。
+* 如果要使用 [Azure Dev Spaces 提供的路由功能][dev-spaces-routing]，则单个项目的所有服务都必须在单个 Kubernetes 命名空间中，并且必须使用简单命名进行部署，例如 *服务-a*。 在标准 Helm 的图表中，可以通过指定 *fullnameOverride* 属性的值来完成此命名更新。
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>能否修改 Azure Dev Spaces 生成的文件？
 

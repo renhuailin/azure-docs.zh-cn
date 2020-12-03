@@ -1,0 +1,216 @@
+---
+title: 连接到 Azure 数据工厂
+description: 本文介绍如何连接 Azure 数据工厂和 Azure 监控范围来跟踪数据沿袭。
+author: chanuengg
+ms.author: csugunan
+ms.service: purview
+ms.subservice: purview-data-catalog
+ms.topic: how-to
+ms.date: 11/22/2020
+ms.openlocfilehash: cb74a799efb6099b55c9da9650d9cca7358ecbed
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96551756"
+---
+# <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
+
+本文档介绍了使用 Azure 监控范围帐户连接 Azure 数据工厂帐户以跟踪数据沿袭所需的步骤。 该文档还介绍了覆盖率范围和支持的沿袭模式的详细信息。
+
+## <a name="view-existing-data-factory-connections"></a>查看现有的数据工厂连接
+
+多个 Azure 数据工厂可以连接到单个 Azure 监控范围数据目录来推送沿袭信息。 当前限制允许从监控范围管理中心一次连接10个数据工厂帐户。 若要显示连接到监控范围数据目录的数据工厂帐户的列表，请执行以下操作：
+
+1. 选择左侧导航窗格中的 " **管理中心** "。
+2. 在 " **外部连接**" 下，选择 " **数据工厂连接**"。
+3. 此时将显示 "数据工厂连接" 列表。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="显示数据工厂连接列表的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
+
+4. 请注意连接 **状态** 的各个值：
+
+    - **已连接**：数据工厂已连接到数据目录。
+    - **断开连接**：数据工厂有权访问该目录，但它已连接到另一个目录。 因此，不会自动向目录报告数据沿袭。
+    - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态为 "未知"。
+ >[!Note]
+ >若要查看数据工厂连接，需要为其分配 Azure 内置角色之一：
+ >- 参与者
+ >- 所有者
+ >- 读取器
+ >- 用户访问管理员
+
+## <a name="create-new-data-factory-connection"></a>创建新的数据工厂连接
+
+按照以下步骤将现有的数据工厂帐户连接到监控范围数据目录。
+
+1. 选择左侧导航窗格中的 " **管理中心** "。
+2. 在 " **外部连接**" 下，选择 " **数据工厂连接**"。
+3. 在 " **数据工厂连接** " 页上，选择 " **新建**"。
+
+4. 从列表中选择数据工厂帐户，然后选择 **"确定"**。 还可以按订阅名称进行筛选以限制列表。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/connect-data-factory.png" alt-text="显示如何连接 Azure 数据工厂的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/connect-data-factory.png":::
+
+    如果数据工厂已连接到当前监控范围帐户，或者数据工厂没有托管标识，则可能会禁用某些数据工厂实例。
+
+    如果任何所选数据工厂已连接到其他监控范围帐户，则将显示一条警告消息。 通过选择 "确定"，会断开与其他监控范围帐户的数据工厂连接。 不需要其他确认。
+
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="显示中断 Azure 数据工厂的警告的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+
+>[!Note]
+>现在支持一次添加不超过10个数据工厂。 如果要一次添加10个以上的数据工厂，请提交支持票证。
+
+
+### <a name="remove-data-factory-connections"></a>删除数据工厂连接
+若要删除数据工厂连接，请执行以下操作：
+
+1. 在 " **数据工厂连接** " 页上，选择一个或多个数据工厂连接旁边的 " **删除** " 按钮。
+1. 在弹出窗口中选择 " **确认** "，删除所选的数据工厂连接。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
+
+>[!Note]
+>若要添加或删除数据工厂连接，需要为其分配 Azure 内置角色之一：
+>- “所有者”
+>- 用户访问管理员
+
+## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>配置自承载 IR 以便从本地 SQL 中收集沿袭
+
+数据工厂复制活动的沿袭可用于本地 SQL 数据库。 如果运行自承载集成运行时与 Azure 数据工厂的数据移动，并且想要捕获 Azure 监控范围中的沿袭，请确保版本为4.8.7418.1 或更高版本。 有关自承载集成运行时的详细信息，请参阅 [创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
+
+## <a name="supported-azure-data-factory-activities"></a>支持的 Azure 数据工厂活动
+
+Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
+
+- 复制数据
+- 数据流
+- 执行 SSIS 包
+
+> [!IMPORTANT]
+> 如果源或目标使用不受支持的数据存储系统，Azure 监控范围会丢弃沿袭。
+
+数据工厂和监控范围之间的集成仅支持数据工厂支持的数据系统子集，如以下各节中所述。
+
+### <a name="data-factory-copy-data-support"></a>数据工厂复制数据支持
+
+| 数据存储系统 | 支持用作源 | 支持用作接收器 |
+| ------------------- | ------------------- | ----------------- |
+| ADLS Gen1 (不支持 JSON)  | 是 | 是 (仅限非二进制副本)  |
+| ADLS Gen2 (不支持 JSON)  | 是 | 是 |
+| Azure Blob (不支持 JSON)  | 是 | 是 |
+| Azure Cosmos DB (SQL API) | 是 | 是 |
+| Azure Cosmos DB (Mongo API)  | 是 | 是 |
+| Azure 认知搜索 | 是 | 是 |
+| Azure 数据资源管理器 | 是 | 是 |
+| 用于 Maria DB 的 Azure 数据库 \* | 是 | 是 |
+| 用于 MYSQL 的 Azure 数据库 \* | 是 | 是 |
+| Azure Database for PostgreSQL \* | 是 | 是 |
+| Azure 文件存储 | 是 | 是 |
+| Azure 表存储 | 是 | 是 |
+| Azure SQL 数据库 \* | 是 | 是 |
+| Azure SQL MI \* | 是 | 是 |
+| Azure Synapse Analytics (以前的 SQL DW) \* | 是 | 是 |
+| 需要 SQL Server 本地 (SHIR) \* | 是 | 是 |
+| Amazon S3 | 是 | 是 |
+| Teradata | 是 | 是 |
+| SAP s4 Hana | 是 | 是 |
+| SAP ECC | 是 | 是 |
+| Hive | 是 | 是 |
+
+> [!Note]
+> 沿袭功能在数据工厂复制活动中具有一定的性能开销。 对于在监控范围中设置数据工厂连接的用户，你可能会发现某些复制作业要花费更长时间才能完成。 大多数情况下，影响不会忽略。 如果复制作业的完成时间比平时长得多，请联系支持人员进行时间比较。
+
+### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
+
+| 数据存储系统 | 支持 |
+| ------------------- | ------------------- | ----------------- |
+| ADLS Gen1 | 是 |
+| ADLS Gen2 | 是 |
+| Azure Blob | 是 |
+| Azure SQL 数据库 \* | 是 |
+| Azure Synapse Analytics (以前的 SQL DW) \* | 是 |
+
+### <a name="data-factory-execute-ssis-package-support"></a>数据工厂执行 SSIS 包支持
+
+| 数据存储系统 | 支持 |
+| ------------------- | ------------------- | ----------------- |
+| Azure Blob | 是 |
+| ADLS Gen1 | 是 |
+| ADLS Gen2 | 是 |
+| Azure SQL 数据库 \* | 是 |
+| Azure SQL MI \*| 是 |
+| Azure Synapse Analytics (以前的 SQL DW) \* | 是 |
+| SQL Server 本地 \* | 是 |
+| Azure 文件存储 | 是 |
+
+*\* 对于在 Azure 和本地) 方案中 (SQL，Azure 监控范围不支持沿袭或扫描存储过程或脚本。沿袭仅限于表和视图源。*
+
+> [!Note]
+> Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)。
+
+## <a name="supported-lineage-patterns"></a>支持的沿袭模式
+
+Azure 监控范围支持多种沿袭模式。 生成的沿袭数据基于数据工厂活动中使用的源和接收器的类型。 尽管数据工厂支持80多个源和接收器，但 Azure 监控范围仅支持一个子集，如 [受支持的 Azure 数据工厂活动](#supported-azure-data-factory-activities)中所列。
+
+若要将数据工厂配置为发送沿袭信息，请参阅 [沿袭入门](catalog-lineage-user-guide.md#get-started-with-lineage)。
+
+在沿袭视图中查找信息的其他方法包括：
+
+- 在 " **沿袭** " 选项卡中，将鼠标悬停在形状上，以在工具提示中预览有关资产的其他信息。
+- 选择节点或边缘以查看其所属的资产类型或切换资产。
+- 数据集的列将显示在 " **沿袭** " 选项卡的左侧。有关列级沿袭的详细信息，请参阅 [列级沿袭](catalog-lineage-user-guide.md#column-level-lineage)。
+
+### <a name="data-lineage-for-11-operations"></a>1:1 操作的数据沿袭
+
+捕获数据沿袭的最常见的模式是将数据从单个输入数据集移到单个输出数据集，并在两者之间进行处理。
+
+下面是此模式的示例：
+
+- 1源/输入： *Customer* (SQL 表) 
+- 1接收器/输出： *Customer1.csv* (Azure Blob) 
+- 1进程： *CopyCustomerInfo1 \#Customer1.csv* (数据工厂复制活动) 
+
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="显示一到一个数据工厂复制操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+
+### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>支持1:1 沿袭和通配符的数据移动
+
+捕获沿袭的另一种常见情况是使用通配符将文件从单个输入数据集复制到单个输出数据集。 通配符允许复制活动匹配多个文件，以便使用文件名称的常见部分进行复制。 Azure 监控范围捕获相应复制活动复制的每个单独文件的文件级沿袭。
+
+下面是此模式的示例：
+
+* 源/输入： *CustomerCall \** (ADLS Gen2 路径) 
+* 接收器/输出： *CustomerCall \** (Azure blob 文件) 
+* 1进程： *CopyGen2ToBlob \#CustomerCall.csv* (数据工厂复制活动)   
+
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png" alt-text="显示支持通配符的一对复制操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png":::
+
+### <a name="data-movement-with-n1-lineage"></a>采用 n：1沿袭的数据移动
+
+您可以使用数据流活动执行合并、联接等数据操作。 可以使用多个源数据集生成目标数据集。 在此示例中，Azure 监控范围会将各个输入文件的文件级沿袭捕获到作为数据流活动一部分的 SQL 表。
+
+下面是此模式的示例：
+
+* 2源/输入： *Customer.csv*、 *Parquet* (ADLS Gen2 路径) 
+* 1接收器/输出： *公司数据* (Azure SQL 表) 
+* 1进程： *DataFlowBlobsToSQL* (数据工厂数据流活动) 
+
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png" alt-text="显示 n 到 A D F 数据流操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png":::
+
+### <a name="lineage-for-resource-sets"></a>资源集的沿袭
+
+资源集是目录中的一个逻辑对象，表示基础存储中的多个分区文件。 有关详细信息，请参阅 [了解资源集](concept-resource-sets.md)。 当 Azure 监控范围捕获 Azure 数据工厂中的沿袭时，它将应用这些规则以规范化单个分区文件并创建一个逻辑对象。
+
+在以下示例中，将从 Azure Blob 生成 Azure Data Lake Gen2 资源集：
+
+* 1源/输入： (Azure Blob 的 *员工 \_management.csv*) 
+* 1接收器/输出： *Employee \_management.csv* (Azure Data Lake 第2代) 
+* 1进程： *CopyBlobToAdlsGen2 \_ RS* (数据工厂复制活动) 
+
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="显示资源集的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
+
+## <a name="next-steps"></a>后续步骤
+
+- [目录沿袭用户指南](catalog-lineage-user-guide.md)
+- [链接到 Azure 数据共享进行沿袭](how-to-link-azure-data-share.md)

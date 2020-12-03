@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463142"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549015"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>在 IoT Central 应用程序中管理帐单
 
@@ -34,11 +34,11 @@ ms.locfileid: "96463142"
 
 1. 请在 "**管理**" 部分中转到 "**定价**" 页。
 
-    ![试用状态](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="试用状态":::
 
 1. 选择 " **转换为付费计划**"。
 
-    ![转换试用版](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="转换试用版":::
 
 1. 选择相应的 Azure Active Directory，然后选择要用于应用程序的 Azure 订阅，该应用程序使用付费计划。
 
@@ -55,7 +55,7 @@ ms.locfileid: "96463142"
 
 1. 请在 "**管理**" 部分中转到 "**定价**" 页。
 
-    ![升级 prcing 计划](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="升级定价计划":::
 
 1. 选择 **计划** ，然后选择 " **保存** " 以升级或降级。
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934848"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548845"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Defender
 
@@ -36,7 +36,7 @@ ms.locfileid: "90934848"
 
 ## <a name="how-does-event-aggregation-work"></a>事件聚合如何工作？
 
-当事件聚合保持 **开启**时，IoT 代理的 Defender 会聚合间隔时间段或时间范围内的事件。
+当事件聚合保持 **开启** 时，IoT 代理的 Defender 会聚合间隔时间段或时间范围内的事件。
 在间隔时间过后，代理会将聚合事件发送到 Azure 云进行进一步分析。
 聚合事件存储在内存中，直到将其发送到 Azure 云。
 
@@ -44,7 +44,7 @@ ms.locfileid: "90934848"
 
 仅当满足以下条件时，事件才被视为完全相同：
 
-* ProcessCreate 事件- **命令行**、 **可执行文件**、 **用户名**和 **用户 id** 相同
+* ProcessCreate 事件- **命令行**、 **可执行文件**、 **用户名** 和 **用户 id** 相同
 * ConnectionCreate 事件- **命令行**、 **userId**、 **direction**、 **local address**、 **remote address**、* * 协议和 **目标端口** 相同
 * ProcessTerminate 事件-当 **可执行文件** 和 **退出状态** 相同时
 
@@ -52,7 +52,7 @@ ms.locfileid: "90934848"
 
 在聚合期间，未聚合的事件属性将被丢弃，并显示在 log analytics 中，其值为0。
 
-* ProcessCreate events- **processId**和 **parentProcessId** 设置为0
+* ProcessCreate events- **processId** 和 **parentProcessId** 设置为0
 * ConnectionCreate events- **processId**， **源端口** 设置为0
 
 ## <a name="event-aggregation-based-alerts"></a>基于事件聚合的警报
@@ -65,9 +65,9 @@ ms.locfileid: "90934848"
 
 ## <a name="event-aggregation-twin-configuration"></a>事件聚合克隆配置
 
-更改**azureiotsecurity**模块的模块克隆标识的[代理配置对象](how-to-agent-configuration.md)内的 Defender for IoT 事件聚合配置。
+更改 **azureiotsecurity** 模块的模块克隆标识的 [代理配置对象](how-to-agent-configuration.md)内的 Defender for IoT 事件聚合配置。
 
-| 配置名称 | 可能的值 | 详细信息 | 备注 |
+| 配置名称 | 可能值 | 详细信息 | 备注 |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | 启用/禁用进程创建事件的事件聚合 |
 | aggregationIntervalProcessCreate | ISO8601 Timespan 字符串 | 进程创建事件的聚合间隔 |
@@ -82,11 +82,11 @@ ms.locfileid: "90934848"
 | 配置名称 | 默认值 |
 |:-----------|:---------------|
 | aggregationEnabledProcessCreate | true |
-| aggregationIntervalProcessCreate | PT1H.JSON|
+| aggregationIntervalProcessCreate | "PT1H"|
 | aggregationEnabledConnectionCreate | true |
-| aggregationIntervalConnectionCreate | PT1H.JSON|
+| aggregationIntervalConnectionCreate | "PT1H"|
 | aggregationEnabledProcessTerminate | true |
-| aggregationIntervalProcessTerminate | PT1H.JSON|
+| aggregationIntervalProcessTerminate | "PT1H"|
 |
 
 ## <a name="next-steps"></a>后续步骤

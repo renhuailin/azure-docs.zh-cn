@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542722"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548165"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Applicationinsights.config. Microsoft.applicationinsights.snapshotcollector 的发行说明
 
@@ -22,6 +22,11 @@ ms.locfileid: "94542722"
 
 ## <a name="release-notes"></a>发行说明
 
+## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
+用于解决在测试 Azure App Service 的无代码置备附加方案中发现的问题的点版本。
+### <a name="changes"></a>更改
+- 现在，netcoreapp 3.0 目标依赖于 AspNetCore >= 2.1.1 (以前 >= 2.1.2) 。
+
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 解决几个大影响问题的点版本。
 ### <a name="bug-fixes"></a>Bug 修复
@@ -30,9 +35,9 @@ ms.locfileid: "94542722"
 
 ## <a name="137"></a>[1.3.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7)
 ### <a name="changes"></a>更改
-Microsoft.applicationinsights.snapshotcollector 的 netcoreapp 2.0 目标依赖 Applicationinsights.config >= 2.1.1 () 。 这会将行为恢复为1.3.5 之前的行为。 我们尝试在1.3.6 中对其进行升级，但它破坏了某些 Azure App Service 方案。
+- Microsoft.applicationinsights.snapshotcollector 的 netcoreapp 2.0 目标依赖 Applicationinsights.config >= 2.1.1 () 。 这会将行为恢复为1.3.5 之前的行为。 我们尝试在1.3.6 中对其进行升级，但它破坏了某些 Azure App Service 方案。
 ### <a name="new-features"></a>新增功能
-Snapshot Collector 从 APPLICATIONINSIGHTS_CONNECTION_STRING 环境变量或从 TelemetryConfiguration 读取 ConnectionString 并对其进行分析。 这主要用于设置用于连接到快照服务的端点。 有关详细信息，请参阅 [连接字符串文档](./sdk-connection-string.md)。
+- Snapshot Collector 从 APPLICATIONINSIGHTS_CONNECTION_STRING 环境变量或从 TelemetryConfiguration 读取 ConnectionString 并对其进行分析。 这主要用于设置用于连接到快照服务的端点。 有关详细信息，请参阅 [连接字符串文档](./sdk-connection-string.md)。
 ### <a name="bug-fixes"></a>Bug 修复
 - 切换为对所有目标使用 HttpClient，但 net45 除外，因为由于不兼容的 SecurityProtocol (需要 TLS 1.2) ，WebRequest 在某些环境中失败。
 
@@ -60,20 +65,20 @@ Snapshot Collector 从 APPLICATIONINSIGHTS_CONNECTION_STRING 环境变量或从 
 - 通过使用 AddSnapshotCollector ( # A1，增加了快照收集器。 可在[此处](./snapshot-debugger-appservice.md)找到详细信息。
 - 使用 FISMA MD5 设置验证 blob 块。 这可以避免使用默认的 .NET MD5 加密算法，当 OS 设置为符合 FIPS 的模式时，该算法不可用。
 - Deoptimizing 函数调用时忽略 .NET Framework 的帧。 此行为可以通过 DeoptimizeIgnoredModules 配置设置来控制。
-- 添加 `DeoptimizeMethodCount` 允许 deoptimization 多个函数调用的配置设置。 此处提供详细信息
+- 添加 `DeoptimizeMethodCount` 允许 deoptimization 多个函数调用的配置设置。 详细信息请参见此处
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - 允许结构化检测密钥。
 - 提高 SnapshotUploader 稳定性-即使无法移动旧的上载程序日志也继续启动。
 - 如果在 1.3.3) 中禁用 SnapshotUploader.exe 立即退出 (，则重新启用报告其他遥测数据。
 - 简化内部遥测。
-- _实验性功能_ ：吸附点收集计划：添加 "snapshotOnFirstOccurence"。 请访问[此处](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)了解更多可用信息。
+- _实验性功能_：吸附点收集计划：添加 "snapshotOnFirstOccurence"。 请访问[此处](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)了解更多可用信息。
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
 - 修复了导致 SnapshotUploader.exe 停止响应的 bug，但未上载 .NET Core 应用的快照。
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
-- _实验性功能_ ：吸附点收集计划。 请访问[此处](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)了解更多可用信息。
+- _实验性功能_：吸附点收集计划。 请访问[此处](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)了解更多可用信息。
 - 当运行时卸载从中加载 Microsoft.applicationinsights.snapshotcollector 的 AppDomain 时，将退出 SnapshotUploader.exe，而不是等待进程退出。 这会在 IIS 中承载时改善收集器的可靠性。
 - 添加配置，以允许使用相同检测密钥的多个 Microsoft.applicationinsights.snapshotcollector 实例共享同一 SnapshotUploader 进程： ShareUploaderProcess (默认为 `true`) 。
 - SnapshotUploader.exe 立即退出时报告其他遥测数据。
@@ -135,7 +140,7 @@ Snapshot Collector 从 APPLICATIONINSIGHTS_CONNECTION_STRING 环境变量或从 
 - 使用收集计划的过期时间修复 bug，这可能会在24小时后阻止快照。
 
 ## <a name="120"></a>[1.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.2.0)
-此版本中的最大更改 (因此，移动到新的次要版本号) 会重写快照创建和处理管道。 在以前的版本中，此功能是在本机代码 (ProductionBreakpoints *和 SnapshotHolder* ) 中实现的。 新实现是带有 P/Invoke 的所有托管代码。 对于第一个使用新管道的版本，我们没有从原始行为 strayed。 新的实现提供了更好的错误报告功能，使我们能够进一步改进。
+此版本中的最大更改 (因此，移动到新的次要版本号) 会重写快照创建和处理管道。 在以前的版本中，此功能是在本机代码 (ProductionBreakpoints *和 SnapshotHolder*) 中实现的。 新实现是带有 P/Invoke 的所有托管代码。 对于第一个使用新管道的版本，我们没有从原始行为 strayed。 新的实现提供了更好的错误报告功能，使我们能够进一步改进。
 
 ### <a name="other-changes-in-this-version"></a>此版本中的其他更改
 - 已将 MinidumpUploader.exe 重命名为 SnapshotUploader.exe (或 SnapshotUploader64.exe) 。

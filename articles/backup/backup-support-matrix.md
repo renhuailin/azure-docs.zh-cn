@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555430"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548505"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -25,7 +25,7 @@ ms.locfileid: "94555430"
 
 ## <a name="vault-support"></a>保管库支持
 
-Azure 备份使用恢复服务保管库来安排和管理以下工作负荷类型的备份-azure vm、Azure Vm 中的 SQL SAP HANA、azure Vm、Azure 文件共享和本地工作负荷使用 Azure 备份代理、Azure 备份服务器和 System Center DPM。 它还使用恢复服务保管库来存储这些工作负荷的备份数据。
+Azure 备份使用恢复服务保管库来安排和管理以下工作负荷类型的备份-azure vm、Azure Vm 中的 SQL SAP HANA、azure Vm、Azure 文件共享和本地工作负荷使用 Azure 备份代理、Azure 备份服务器和 System Center DPM。 它还使用恢复服务保管库来存储这些工作负荷的已备份数据。
 
 下表介绍恢复服务保管库的功能：
 
@@ -109,7 +109,7 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 - 备份数据以加密格式存储在恢复服务保管库中。
 - 使用 MARS 代理从本地服务器备份数据时，在将数据上传到 Azure 备份之前，将使用密码对数据进行加密，并且仅在从 Azure 备份下载数据后才对其解密。
 - 备份 Azure VM 时，需要在虚拟机内部设置加密。
-- Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt** 。
+- Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
 **计算机** | **传输中** | **静态**
@@ -150,10 +150,10 @@ Azure 备份添加了跨区域还原功能来增强数据可用性和复原能�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域和主权云。  |
+| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域。  |
 | SQL/SAP HANA | 是                                                          | 除法国以外的所有公共区域 |
-| MARS 代理/本地  | 否                                                           | 空值               |
-|  (Azure 文件共享的 AFS)                  | 否                                                           | 空值               |
+| MARS 代理/本地  | 否                                                           | 不适用               |
+|  (Azure 文件共享的 AFS)                  | 否                                                           | 不适用               |
 
 ## <a name="next-steps"></a>后续步骤
 
