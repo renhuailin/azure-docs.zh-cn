@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791862"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487926"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 
@@ -31,9 +31,9 @@ ms.locfileid: "92791862"
 
 为了避免警报疲劳，安全中心限制了外发邮件的数量。 对于每个订阅，安全中心都会发送以下数量的电子邮件：
 
-- 每天最多四封电子邮件（适用于“高严重性”警报） 
-- 每天最多两封电子邮件（适用于“中等严重性”警报） 
-- 每天最多一封电子邮件（适用于“低严重性”警报） 
+- 对于“严重级别高”的警报，每 6 小时最多发送 1 封电子邮件（每天 4 封） 
+- 对于“严重级别中等”的警报，每 12 小时最多发送 1 封电子邮件（每天 2 封） 
+- 对于“严重级别低”的警报，每 24 小时最多发送 1 封电子邮件 
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="配置将接收有关安全警报的电子邮件的联系人的详细信息。" :::
  
@@ -62,10 +62,9 @@ ms.locfileid: "92791862"
 1. 若要将安全联系人信息应用到订阅，请选择“保存”。
 
 
-## <a name="next-steps"></a>后续步骤
-
+## <a name="see-also"></a>另请参阅
 若要了解有关安全警报的详细信息，请参阅以下页面：
 
 - [安全警报 - 参考指南](alerts-reference.md) -- 了解 Azure 安全中心的威胁防护模块中可能会显示的安全警报
 - [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报
-- [自动执行对安全中心触发器的响应](workflow-automation.md) - 使用自动化功能通过自定义通知逻辑响应安全中心触发器
+- [工作流自动化](workflow-automation.md) -- 通过自定义通知逻辑自动响应警报

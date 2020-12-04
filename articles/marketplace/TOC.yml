@@ -50,7 +50,7 @@
         - name: 联合销售合作伙伴参与
           href: marketplace-co-sell.md
         - name: 合作伙伴中心的联合销售选项
-          href: partner-center-portal/commercial-marketplace-co-sell.md
+          href: commercial-marketplace-co-sell.md
         - name: 通过 CSP 合作伙伴转售
           href: cloud-solution-providers.md
         - name: 连接计划加入指南
@@ -382,9 +382,9 @@
     - name: 支持的国家和地区
       href: sell-from-countries.md
     - name: 联合销售国家和地区代码
-      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+      href: commercial-marketplace-co-sell-countries.md
     - name: 联合销售状态代码
-      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+      href: commercial-marketplace-co-sell-states.md
     - name: 类别和子类别
       href: categories.md
     - name: 支持的 HTML 标记

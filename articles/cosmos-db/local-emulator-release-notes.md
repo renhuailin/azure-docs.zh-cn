@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos 模拟器下载和发行说明
-description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载信息。
+title: Azure Cosmos DB 模拟器下载和发行说明
+description: 获取不同版本的 Azure Cosmos DB 模拟器发行说明并下载信息。
 ms.service: cosmos-db
 ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: e9f28aeb2a47c2ce7b439cbe46dcc39df3011c33
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997148"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493060"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
+# <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-本文显示了 Azure Cosmos 模拟器发行说明，其中包含每个版本中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
+本文显示了 Azure Cosmos DB 模拟器发行说明，其中包含每个版本中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
 
 ## <a name="download"></a>下载
 
