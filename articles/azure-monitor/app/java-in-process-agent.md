@@ -3,12 +3,15 @@ title: Azure Monitor Application Insights Java
 description: Java 应用程序的应用程序性能监视，无需修改代码即可在任何环境中运行。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 7046e4a1aeeda5e537208c79858c95c79e188348
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437195"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601129"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights
 
@@ -239,7 +242,7 @@ try {
 telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-##### <a name="exceptions"></a>例外
+##### <a name="exceptions"></a>异常
 
 ```java
 try {

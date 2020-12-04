@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460739"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601605"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>了解 Azure 应用程序网关和 Web 应用程序防火墙的定价
 
@@ -254,9 +254,19 @@ V2 Sku 按使用情况计费，并由两部分组成：
 
 固定价格 = $0.246 * 730 (小时) = $179.58
 
-可变成本 = $0.008 * ( 3 (实例单位) * 10 (容量单位) + 5 (额外容量单位) ) * 730 (小时) = $204。4
+可变成本 = $0.008 * ( 3 (实例单位) * 10 (容量单位) + 10 (额外容量单位) ) * 730 (小时) = $233。6
 
-总费用 = $179.58 + $204.4 = $383.98
+总费用 = $179.58 + $233.6 = $413.18
+
+但是，如果处理容量等价于只假设有7个额外的 Cu 可在3个预订实例中使用。
+在此方案中，应用程序网关资源处于缩放下，可能会导致延迟或请求被丢弃。
+
+固定价格 = $0.246 * 730 (小时) = $179.58
+
+可变成本 = $0.008 * ( 3 (实例单位) * 10 (容量单位) + 7 (额外容量单位) ) * 730 (小时) = $216.08
+
+总费用 = $179.58 + $216.08 = $395.66
+
 
 ![手动缩放2的关系图。](./media/pricing/manual-scale-2.png)
 

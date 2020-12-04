@@ -3,12 +3,12 @@ title: Azure 实验室服务入门
 description: 本文介绍如何开始 Azure 实验室服务。
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434424"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602659"
 ---
 # <a name="get-started-with-lab-services"></a>实验室服务入门 
 
@@ -115,12 +115,8 @@ Azure 实验室服务中的 "实验室" 仪表板提供特定实验室的不同�
 
 1. 在 [Azure 实验室服务网站](https://labs.azure.com/) 中，单击窗口左侧的 " **用户** "。
 1. 在窗口顶部，单击 " **添加用户** "，然后选择 " **按电子邮件地址添加**"。 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="&quot;添加用户&quot; 按钮":::
 1. 在右侧显示的 " **添加用户** " 窗格中，在单独的行上或在单独的一行上输入学生的电子邮件地址，用分号分隔。
-1. 单击“保存”  。
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="将学生添加到实验室":::
+1. 单击 **“保存”** 。
 1. 现在，你的用户列表将更新为电子邮件、状态、邀请和配额时间。
 
     学生注册到实验室后，将使用 Azure Active Directory 中的名字和姓氏更新其名称。
@@ -138,7 +134,7 @@ Azure 实验室服务中的 "实验室" 仪表板提供特定实验室的不同�
 1. 选择包含学生电子邮件地址的 CSV 文件，然后单击 " **打开**"。
 
     :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="使用电子表格添加用户":::
-1. 电子邮件现在会显示在右侧的窗口中。 单击“保存”  。
+1. 电子邮件现在会显示在右侧的窗口中。 单击 **“保存”** 。
 
     :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="注册用户":::
 

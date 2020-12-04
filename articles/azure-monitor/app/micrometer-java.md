@@ -2,26 +2,26 @@
 title: 如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 description: 有关对 Application Insights Spring Boot 和非 Spring Boot 应用程序使用 Micrometer 的分步指导。
 ms.topic: conceptual
-author: lgayhardt
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
+ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: 30bd45cee962395ad6c6b87e393ea0f1b7329908
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a80684fbaa34f8906d321f56d3819039d3798ecb
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616835"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600976"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何将 Micrometer 与 Azure 应用程序 Insights Java SDK 一起使用 (不推荐使用) 
 
 > [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 Micrometer 遥测是通过 Application Insights Java 3.0 agent 自动收集的-遵循 [Application Insights java 3.0 代理](./java-in-process-agent.md)的准则。
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 Micrometer 遥测是通过 Application Insights Java 3.0 agent 自动收集的-遵循 [Application Insights java 3.0 代理](./java-in-process-agent.md)的准则。
 
 > [!NOTE]
 > Application Insights Java SDK 不支持弹簧 Webflux-请改用 [Application Insights Java 3.0 代理](./java-in-process-agent.md) 。 
 >
-> 不需要检测 [Application Insights Java 3.0 代理](./java-on-premises.md) 支持 Webflux 和 Micrometer。 
+> 无需检测的 [Application Insights Java 3.0 代理](./java-on-premises.md)支持 Webflux 和 Micrometer。 
 
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
 
@@ -280,5 +280,5 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关 Micrometer 的详细信息，请参阅官方 [Micrometer 文档](https://micrometer.io/docs)。
+* 若要详细了解 Micrometer，请参阅官方的 [Micrometer 文档](https://micrometer.io/docs)。
 * 若要了解有关 Azure 的弹簧，请参阅 [azure 上的官方春季文档](/java/azure/spring-framework/?view=azure-java-stable)。

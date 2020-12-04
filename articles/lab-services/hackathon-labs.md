@@ -3,12 +3,12 @@ title: 使用适用于 hackathon 的 Azure 实验室服务
 description: 本文介绍如何使用 Azure 实验室服务来创建可用于运行编程马拉松的实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434254"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602574"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>将 Azure 实验室服务用于下一 hackathon
 Azure 实验室服务设计为轻量级且易于使用，因此你可以为 hackathon 快速启动虚拟机 (Vm) 的新实验室。  使用以下清单可确保你的 hackathon 尽可能顺利地进行。 此清单应由负责创建和管理 hackathon 实验室的 IT 部门或教职员完成。 
@@ -39,7 +39,7 @@ Azure 实验室服务设计为轻量级且易于使用，因此你可以为 hack
 
 - **决定是否限制实验室访问权限**。 
 
-    向实验室添加用户时，默认情况下会启用 "限制访问" 选项。 此功能需要将所有 hackathon 参与者的电子邮件添加到列表中，然后才能使用注册链接注册和访问实验室。 如果你有一个 hackathon，其中你不知道参与者将在事件之前出现的位置，则可以选择禁用 "限制访问" 选项，这允许任何人使用注册链接注册到实验室。 有关详细信息，请参阅 [添加用户指南](how-to-configure-student-usage.md#add-users-to-a-lab)。
+    向实验室添加用户时，默认情况下会启用 "限制访问" 选项。 此功能需要将所有 hackathon 参与者的电子邮件添加到列表中，然后才能使用注册链接注册和访问实验室。 如果你有一个 hackathon，其中你不知道参与者将在事件之前出现的位置，则可以选择禁用 "限制访问" 选项，这允许任何人使用注册链接注册到实验室。 有关详细信息，请参阅 [添加用户指南](how-to-configure-student-usage.md)。
 
 - **验证计划、配额和自动关闭设置**。 
 

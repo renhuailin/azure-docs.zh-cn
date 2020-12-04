@@ -1,22 +1,22 @@
 ---
-title: 合作伙伴中心的共同销售选项 |Azure Marketplace
-description: Microsoft 销售团队将使用你在产品/服务的 "共同销售" 选项卡上提供的信息，在评估其是否适合客户需求时，详细了解你的产品/服务。
+title: 商业应用商店中的共同销售选项 |Azure Marketplace
+description: Microsoft 销售团队将使用你在产品/服务的与 Microsoft 共同销售选项卡上提供的信息，在评估其是否适合客户需求时，详细了解你的产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/03/2020
-ms.openlocfilehash: f424cd85e26511f8fe3d863b1f2c77bc1e5e7537
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/04/2020
+ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581652"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602727"
 ---
-# <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>商业应用商店中的共同销售选项
 
-提供有关共同销售选项卡的信息是完全可选的。 需要实现 [合作销售就绪和 IP 共同销售 Incentivized 状态](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status)。 Microsoft 销售团队将使用您提供的信息来了解有关您的产品/服务的详细信息。 它不会直接提供给客户。 有关详细信息，请参阅 [与 Microsoft 共同销售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
+提供有关 " **与 Microsoft 共同销售** " 选项卡的信息是完全可选的。 需要实现 [合作销售就绪和 IP 共同销售 Incentivized 状态](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 Microsoft 销售团队将使用您提供的信息来了解有关您的产品/服务的详细信息。 它不会直接提供给客户。 有关详细信息，请参阅 [与 Microsoft 共同销售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
 合作伙伴中心的共同销售选项目前提供了以下产品/服务类型。
 
@@ -41,7 +41,7 @@ ms.locfileid: "96581652"
 
 解决方案类型可帮助定义产品/服务的设计方案。
 
-| **解决方案类型**    | **描述**  |
+| **解决方案类型**    | **说明**  |
 | :------------------- | :-------------------|
 | 设备 (硬件)  | 一种包括从设备制造商处构建或销售硬件的产品/服务。 |
 | IP (应用程序)  | 授权客户使用的应用或其他 copyrightable 材料。 例如：可以在本地授权和安装的 CRM 计划。 |
@@ -58,7 +58,7 @@ ms.locfileid: "96581652"
 
 你可以选择提供 Microsoft 将用于了解你的产品/服务的详细信息，并评估它是否适合你的客户需求。
 
-| 文档    | **描述**  |
+| 文档    | **说明**  |
 | :------------------- | :-------------------|
 | *客户 1-寻呼 (必需)* | 客户对你的产品/服务的说明。 Microsoft 销售团队可能与客户共享此信息，以帮助确定你的产品/服务是否合适，以及确保客户已准备就绪。 <br> <br> 使用合作伙伴中心提供的相关模板之一： <br> <ul> <li> Microsoft Azure 单页导航模板 </li> <li> Microsoft Dynamics 365 1-寻呼程序模板 </li> <li> Microsoft 365 1-寻呼程序模板 </li> <li> Windows 10 1-寻呼程序模板 </li> </ul> |
 | *需要 (客户演示)* | 滑动纸牌来提供产品/服务和价值主张。 确保你的产品/服务可供客户使用后，Microsoft 销售团队可能与客户共享演示文稿，以清楚地说明你的公司和 Microsoft 在部署联合解决方案时带来的价值。 此演示文稿应涵盖你的产品/服务的功能、它可以如何帮助客户、该产品/服务的相关行业以及它如何与竞争性解决方案进行比较。 <br> <br> 使用合作伙伴中心提供的模板。|

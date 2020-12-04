@@ -3,18 +3,20 @@ title: 在 Azure Application Insights 中浏览 Java 跟踪日志
 description: 在 Application Insights 中搜索 Log4J 或 Logback 跟踪
 ms.topic: conceptual
 ms.date: 05/18/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d219f4fcfd22d25babd8c9f6564f8dcd11d3144
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: fb91662dfcdeb404f51f91c1fef893dc72dcac73
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377915"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601044"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 
 > [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的指南进行操作。
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409648"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601384"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "94409648"
 
 ## <a name="c-in-visual-studio"></a>Visual Studio 中的 C#
 
-以下示例描述如何在 Visual Studio 中创建 C# 函数应用，并使用 [xUnit](https://xunit.github.io) 运行和测试该应用。
+以下示例描述如何在 Visual Studio 中创建 C# 函数应用，并使用 [xUnit](https://github.com/xunit/xunit) 运行和测试该应用。
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "94409648"
 1. [创建新函数应用](./functions-create-first-azure-function.md)并将其命名为 **Functions**
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为“MyHttpTrigger”。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为“MyTimerTrigger”。
-4. 在解决方案中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)并将其命名为“Functions.Tests”。
+4. 在解决方案中[创建 xUnit 测试应用](https://xunit.net/docs/getting-started/netcore/cmdline)并将其命名为“Functions.Tests”。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
 6. [从 Functions.Tests 应用引用 Functions 应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope** ：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
+- **BeginScope**：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
 
-- **IsEnabled** ：提供 `false` 的默认值。
+- **IsEnabled**：提供 `false` 的默认值。
 
-- **Log** ：此方法使用提供的 `formatter` 函数来设置消息格式，然后将生成的文本添加到 `Logs` 集合。
+- **Log**：此方法使用提供的 `formatter` 函数来设置消息格式，然后将生成的文本添加到 `Logs` 集合。
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 `TestFactory` 类实现以下成员：
 
-- **Data** ：此属性返回示例数据的 [IEnumerable](/dotnet/api/system.collections.ienumerable) 集合。 键/值对表示传入查询字符串中的值。
+- **Data**：此属性返回示例数据的 [IEnumerable](/dotnet/api/system.collections.ienumerable) 集合。 键/值对表示传入查询字符串中的值。
 
-- **CreateDictionary** ：此方法接受键/值对作为参数，并返回新的 `Dictionary` 用于创建 `QueryCollection` 来表示查询字符串值。
+- **CreateDictionary**：此方法接受键/值对作为参数，并返回新的 `Dictionary` 用于创建 `QueryCollection` 来表示查询字符串值。
 
-- **CreateHttpRequest** ：此方法创建使用给定查询字符串参数初始化的 HTTP 请求。
+- **CreateHttpRequest**：此方法创建使用给定查询字符串参数初始化的 HTTP 请求。
 
-- **CreateLogger** ：此方法基于记录器类型返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
+- **CreateLogger**：此方法基于记录器类型返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
 最后，在 Functions.Tests 项目中创建一个名为“FunctionsTests.cs”的新类，并输入以下代码：
 
@@ -245,13 +245,13 @@ namespace Functions.Tests
 
 在此类中实现的成员包括：
 
-- **Http_trigger_should_return_known_string** ：此测试创建对 HTTP 函数发出的、其查询字符串值为 `name=Bill` 的请求，并检查是否返回了预期的响应。
+- **Http_trigger_should_return_known_string**：此测试创建对 HTTP 函数发出的、其查询字符串值为 `name=Bill` 的请求，并检查是否返回了预期的响应。
 
-- **Http_trigger_should_return_string_from_member_data** ：此测试使用 xUnit 属性为 HTTP 函数提供示例数据。
+- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性为 HTTP 函数提供示例数据。
 
-- **Timer_should_log_message** ：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
+- **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果要在测试中访问应用程序设置，可以将[inject](./functions-dotnet-dependency-injection.md) `IConfiguration` 具有模拟环境变量值的实例注入函数。
+如果要在测试中访问应用程序设置，可以将包含模拟环境变量值的 `IConfiguration` 实例[注入](./functions-dotnet-dependency-injection.md)到函数中。
 
 ### <a name="run-tests"></a>运行测试
 
@@ -295,7 +295,7 @@ npm i jest
 
 初始化项目后，可以创建用于运行自动测试的模块。 首先，创建名为 *testing* 的新文件夹用于保存支持模块。
 
-在 *testing* 文件夹中添加一个新文件，将其命名为 **defaultContext.js** ，然后添加以下代码：
+在 *testing* 文件夹中添加一个新文件，将其命名为 **defaultContext.js**，然后添加以下代码：
 
 ```javascript
 module.exports = {
@@ -305,7 +305,7 @@ module.exports = {
 
 此模块模拟 *log* 函数来表示默认的执行上下文。
 
-接下来，添加一个新文件，将其命名为 **defaultTimer.js** ，然后添加以下代码：
+接下来，添加一个新文件，将其命名为 **defaultTimer.js**，然后添加以下代码：
 
 ```javascript
 module.exports = {
@@ -315,7 +315,7 @@ module.exports = {
 
 此模块实现 `IsPastDue` 属性，表示该实例是一个虚构的计时器实例。 此处不需要计时器配置（如 NCRONTAB 表达式），因为测试工具只是直接调用函数以测试结果。
 
-接下来，使用 VS Code Functions 扩展 [创建新的 JavaScript HTTP 函数](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，并将其命名为 *HttpTrigger* 。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展 [创建新的 JavaScript HTTP 函数](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 模板中的 HTTP 函数返回与查询字符串中提供的名称连接在一起的“Hello”字符串。 此测试创建虚构的请求实例，并将其传递给 HTTP 函数。 此测试检查 *log* 方法是否调用了一次，并且返回的文本是否等于“Hello Bill”。
 
-接下来，使用 VS Code Functions 扩展创建新的 JavaScript 计时器函数，并将其命名为 *TimerTrigger* 。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展创建新的 JavaScript 计时器函数，并将其命名为 *TimerTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const timerFunction = require('./index');
@@ -379,7 +379,7 @@ npm test
 }
 ```
 
-接下来，在测试中设置一个断点并按 **F5** 。
+接下来，在测试中设置一个断点并按 **F5**。
 
 ## <a name="next-steps"></a>后续步骤
 

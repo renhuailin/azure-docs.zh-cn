@@ -3,13 +3,15 @@ title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
 ms.date: 01/10/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: jgol
+ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002011"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601282"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 

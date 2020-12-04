@@ -3,13 +3,15 @@ title: 配置选项-Azure Monitor Application Insights Java
 description: Azure Monitor Application Insights Java 的配置选项
 ms.topic: conceptual
 ms.date: 11/04/2020
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: f951048da753a0ba38d6c10dc65bdca5205727f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.author: jgol
+ms.openlocfilehash: e9240253b385a0b53868c5a8a79c751c2f7c09c0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577356"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601078"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java 的配置选项
 
@@ -115,7 +117,7 @@ ms.locfileid: "94577356"
 }
 ```
 
-还可以使用环境变量设置采样百分比 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 。
+还可以使用环境变量 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 设置采样百分比。
 
 > [!NOTE]
 > 对于采样百分比，请选择一个接近于 100/N 的百分比，其中 N 是整数。 当前采样不支持其他值。
@@ -147,10 +149,10 @@ ms.locfileid: "94577356"
 
 `attribute` 要收集的 JMX MBean 中的属性名称。
 
-支持数值和布尔 JMX 指标值。 `0`对于 false 和 true，布尔 JMX 指标将映射到 `1` 。
+支持数值和布尔 JMX 指标值。 False 表示布尔 JMX 指标映射到 `0`，true 表示映射到 `1`。
 
-[//]: # "注意：此处不记录 APPLICATIONINSIGHTS_JMX_METRICS"
-[//]: # "env var 中嵌入的 json 非常杂乱，只应记录无代码置备附加方案"
+[//]: # "注意：此处未记录 APPLICATIONINSIGHTS_JMX_METRICS"
+[//]: # "env var 中嵌入的 json 是比较凌乱的，应仅在无代码附加方案中进行记录"
 
 ## <a name="custom-dimensions"></a>自定义维度
 
@@ -204,13 +206,13 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 |-------------------|--------|---------|---------|
 | OFF               | OFF    | OFF     | OFF     |
 | FATAL             | FATAL  | ERROR   | SEVERE  |
-| 错误 (或严重)  | ERROR  | ERROR   | SEVERE  |
-| 警告 (或警告)  | WARN   | WARN    | WARNING |
+| ERROR（或 SEVERE） | ERROR  | ERROR   | SEVERE  |
+| WARN（或 WARNING） | WARN   | WARN    | WARNING |
 | INFO              | INFO   | INFO    | INFO    |
 | CONFIG            | DEBUG  | DEBUG   | CONFIG  |
-| 调试 (或精细)    | DEBUG  | DEBUG   | FINE    |
+| DEBUG（或 FINE）   | DEBUG  | DEBUG   | FINE    |
 | FINER             | DEBUG  | DEBUG   | FINER   |
-| 跟踪 (或最佳)  | TRACE  | TRACE   | FINEST  |
+| TRACE（或 FINEST） | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标 (包括弹簧 Boot 制动器指标) 

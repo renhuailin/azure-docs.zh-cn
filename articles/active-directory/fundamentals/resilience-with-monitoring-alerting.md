@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb63931f883c6061ded996621a09aacbacd14af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 766fd80ae5f7450c8e45d10afa4612a788a8d5fc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919329"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602150"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>通过监视和分析进行恢复
 
@@ -41,7 +41,7 @@ ms.locfileid: "95919329"
 
   - **成功率 (% )**：成功请求数/请求总数。
 
-  访问[application insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)中的[关键指标](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs)，其中存储了 Azure AD B2C 基于策略的日志、[审核日志](https://docs.microsoft.coms/azure/active-directory-b2c/analytics-with-application-insights)和登录日志。  
+  访问[application insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)中的[关键指标](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs)，其中存储了 Azure AD B2C 基于策略的日志、[审核日志](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)和登录日志。  
 
    - **可视化**：使用 Log analytics 构建面板直观地监视关键指示器。
 

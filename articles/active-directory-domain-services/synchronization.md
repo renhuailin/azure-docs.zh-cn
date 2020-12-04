@@ -11,18 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967658"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602234"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory 域服务托管域中同步对象和凭据
 
 可在域中本地创建 Azure Active Directory 域服务 (Azure AD DS) 托管域中的对象和凭据，或从 Azure Active Directory (Azure AD) 租户进行同步。 首次部署 Azure AD DS 时，将配置并启动自动单向同步，以从 Azure AD 中复制对象。 此单向同步将继续在后台运行，以使 Azure AD DS 托管域与 Azure AD 中的任何更改保持同步。 不会发生从 Azure AD DS 到 Azure AD 的逆向同步。
 
 在混合环境中，可使用 Azure AD Connect 将本地 AD DS 域中的对象和凭据同步到 Azure AD。 一旦这些对象成功同步到 Azure AD，自动后台同步就会将这些对象和凭据提供给使用托管域的应用程序。
+
+如果使用 ADFS 为联合身份验证配置了本地 AD DS 和 Azure AD，则 Azure DS 中没有可用的 (当前/有效) 密码哈希。 在实现进 Azure AD 之前创建的用户帐户可能具有旧密码哈希，但这可能不符合其本地密码的哈希。 因此 Azure AD DS 将无法验证用户凭据。
 
 下图演示了 Azure AD DS、Azure AD 和可选本地 AD DS 环境之间的同步原理：
 

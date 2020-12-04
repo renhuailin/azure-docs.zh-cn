@@ -4,18 +4,18 @@ description: Azure 存储空间清单是一种工具，可帮助你大致了解�
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 11/04/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 149fb9c888c54ea45d273890f3fe2cd59730fa01
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354944"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602676"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>使用 Azure 存储 blob 库存来管理 blob 数据 (预览) 
 
@@ -23,7 +23,7 @@ Azure 存储 blob 清单功能提供了存储帐户中 blob 数据的概述。 �
 
 ## <a name="availability"></a>可用性
 
-Blob 清单支持常规用途版本 2 (GPv2) 、高级块 blob 存储和 Azure DataLake Storage Gen2 (ADLS Gen2) 帐户。
+常规用途版本 2 (GPv2) 和高级块 blob 存储帐户支持 Blob 清单。 此功能在启用或不启用 [分层命名空间](data-lake-storage-namespace.md) 功能的情况下受支持。
 
 ### <a name="preview-regions"></a>预览区域
 
@@ -87,8 +87,8 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 
 | 参数名称 | 参数类型        | 注释 | 必需？ |
 |----------------|-----------------------|-------|-----------|
-| destination    | 字符串                | 将生成所有清单文件的目标容器。 目标容器必须已存在。 | 是 |
-| enabled        | 布尔               | 用于禁用整个策略。 如果设置为 **true**，则启用规则级别的字段将重写此参数。 禁用后，将禁用所有规则的清单。 | 是 |
+| destination    | String                | 将生成所有清单文件的目标容器。 目标容器必须已存在。 | 是 |
+| enabled        | Boolean               | 用于禁用整个策略。 如果设置为 **true**，则启用规则级别的字段将重写此参数。 禁用后，将禁用所有规则的清单。 | 是 |
 | 规则          | 规则对象的数组 | 一个策略至少需要包含一个规则。 最多支持10个规则。 | 是 |
 
 ## <a name="inventory-rules"></a>清单规则
@@ -99,8 +99,8 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 
 | 参数名称 | 参数类型                 | 注释 | 必需？ |
 |----------------|--------------------------------|-------|-----------|
-| name           | 字符串                         | 规则名称最多可以包含256个区分大小写的字母数字字符。 该名称在策略中必须是唯一的。 | 是 |
-| enabled        | 布尔                        | 允许启用或禁用规则的标志。 默认值为 **true**。 | 是 |
+| name           | String                         | 规则名称最多可以包含256个区分大小写的字母数字字符。 该名称在策略中必须是唯一的。 | 是 |
+| enabled        | Boolean                        | 允许启用或禁用规则的标志。 默认值为 **true**。 | 是 |
 | 定义     | JSON 清单规则定义 | 每个定义都由规则筛选器集组成。 | 是 |
 
 全局 **Blob 库存启用** 标志优先于规则中的 *enabled* 参数。
@@ -113,8 +113,8 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 |---------------------|---------------------------------|-------|-----------|
 | blobTypes           | 预定义枚举值的数组 | 有效值为 `blockBlob` 和 `appendBlob` ，适用于已启用分层命名空间的帐户，以及 `blockBlob` `appendBlob` 其他帐户的、和 `pageBlob` 。 | 是 |
 | prefixMatch         | 要匹配的前缀的数组，最多包含10个字符串。 前缀必须以容器名称开头，例如 "container1/foo" | 如果未定义 *prefixMatch* 或提供空前缀，则规则将应用于存储帐户中的所有 blob。 | 否 |
-| includeSnapshots    | 布尔                         | 指定清单是否应包含快照。 默认值为 **false**。 | 否 |
-| includeBlobVersions | 布尔                         | 指定清单是否应包含 blob 版本。 默认值为 **false**。 | 否 |
+| includeSnapshots    | Boolean                         | 指定清单是否应包含快照。 默认值为 **false**。 | 否 |
+| includeBlobVersions | Boolean                         | 指定清单是否应包含 blob 版本。 默认值为 **false**。 | 否 |
 
 通过选择 "Azure 门户的" **Blob 库存**"部分中的"**代码视图**"选项卡，查看库存规则的 JSON。 筛选器在规则定义中指定。
 

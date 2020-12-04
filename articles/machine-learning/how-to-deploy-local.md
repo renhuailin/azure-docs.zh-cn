@@ -10,14 +10,14 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 1d2e25f76d9a68eeb01a45c34651fe1537297980
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510567"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600347"
 ---
-# <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>在本地计算机上部署 Azure 机器学习培训的模型
+# <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>部署在本地计算机上通过 Azure 机器学习训练的模型 
 
 本文介绍如何使用本地计算机作为训练或部署在 Azure 机器学习中创建的模型的目标。 Azure 机器学习具有足够的灵活性，可与大多数 Python 机器学习框架一起使用。 机器学习解决方案通常具有复杂的依赖项，这可能比较困难。 本文将演示如何使用易用性来平衡总体控制。
 

@@ -2,15 +2,15 @@
 title: 测试工具包的测试用例
 description: 介绍由 ARM 模板测试工具包运行的测试。
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378111"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600898"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 模板测试工具包的默认测试用例
 
@@ -137,9 +137,11 @@ ms.locfileid: "89378111"
 
 测试名称：不应硬编码位置
 
-模板用户可访问的模板区域可能有限。 将资源位置设置为 `"[resourceGroup().location]"` 时，可能会在其他用户无法访问的区域中创建资源组。 这会导致这些用户无法使用模板。
+模板应具有名为 location 的参数。 使用此参数设置模板中资源的位置。 在) 上名为 azuredeploy.js的主模板 (或 mainTemplate.js上，此参数可以默认为资源组位置。 在链接模板或嵌套模板中，location 参数不应具有默认位置。
 
-定义每个资源的位置时，请使用默认为资源组位置的参数。 提供此参数后，用户可以在方便的情况下使用默认值，也可以指定其他位置。
+模板用户可访问的模板区域可能有限。 如果对资源位置进行硬编码，则可能会阻止用户在该区域中创建资源。 即使将资源位置设置为，用户也可能被阻止 `"[resourceGroup().location]"` 。 资源组可能是在其他用户无法访问的区域中创建的。 这会导致这些用户无法使用模板。
+
+通过提供默认为资源组位置的 location 参数，用户可以在方便的情况下使用默认值，但也可以指定其他位置。
 
 下面的示例未通过此测试，因为资源上的位置设置为 `resourceGroup().location`。
 
@@ -195,7 +197,7 @@ ms.locfileid: "89378111"
 }
 ```
 
-应创建一个默认为资源组位置但允许用户提供不同值的参数。 下面的示例通过了此测试。
+应创建一个默认为资源组位置但允许用户提供不同值的参数。 下面的示例在模板用作主模板时 **传递** 此测试。
 
 ```json
 {
@@ -227,6 +229,8 @@ ms.locfileid: "89378111"
     "outputs": {}
 }
 ```
+
+但是，如果前面的示例用作链接模板，则测试将 **失败**。 作为链接模板使用时，删除默认值。
 
 ## <a name="resources-should-have-location"></a>资源应具有位置
 

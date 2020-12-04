@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433251"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602023"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -32,7 +32,7 @@ ms.locfileid: "96433251"
 
 **区域** | **成员用户权限** | 默认来宾用户权限 | 受限来宾用户权限（预览）
 ------------ | --------- | ---------- | ----------
-用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>按显示名称、用户主体名称或 ObjectId（如果允许）搜索另一个用户<li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li></ul>
+用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>如果允许，则通过 ObjectId (搜索其他用户) <li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li></ul>
 组 | <ul><li>创建安全组<li>创建 Microsoft 365 组<li>枚举所有组的列表<li>读取组的所有属性<li>读取非隐藏的组成员身份<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>管理用户拥有的组的属性、所有权和成员身份<li>将来宾添加到拥有的组<li>管理动态成员身份设置<li>删除拥有的组<li>还原拥有的 Microsoft 365 组</li></ul> | <ul><li>读取非隐藏组的属性，包括成员身份和所有权（甚至是未加入的组）<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>按显示名称或 ObjectId（如果允许）搜索组</li></ul> | <ul><li>读取加入的组的对象 ID<li>在某些 Microsoft 365 应用中读取加入的组的成员身份和所有权（如果允许）</li></ul>
 应用程序 | <ul><li>注册（创建）新应用程序<li>枚举所有应用程序的列表<li>读取已注册的应用程序和企业应用程序的属性<li>管理拥有的应用程序的应用程序属性、分配和凭据<li>创建或删除用户的应用程序密码<li>删除拥有的应用程序<li>还原拥有的应用程序</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性
 设备</li></ul> | <ul><li>枚举所有设备的列表<li>读取设备的所有属性<li>管理拥有的设备的所有属性</li></ul> | 无权限 | 无权限

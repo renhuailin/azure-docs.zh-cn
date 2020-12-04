@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0e07dc42a45a697b293e2ebc90bdd92aa924f071
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302026"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601775"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -24,6 +24,7 @@ ms.locfileid: "96302026"
 * [How to configure your app to use Microsoft Account login](configure-authentication-provider-microsoft.md)
 * [如何将应用配置为使用 Twitter 登录](configure-authentication-provider-twitter.md)
 * [如何将应用配置为使用 OpenID Connect 提供程序（预览版）进行登录](configure-authentication-provider-openid-connect.md)
+* [如何将应用配置为使用 Apple (Preview 的登录名登录) ](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
@@ -41,6 +42,7 @@ ms.locfileid: "96302026"
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 当用户单击其中一个链接时，系统会打开相应的登录页让用户登录。
@@ -315,7 +317,6 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
@@ -349,13 +350,13 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
             }
         },
         "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
+        "allowedExternalRedirectUrls": [
             "https://uri1.azurewebsites.net/",
             "https://uri2.azurewebsites.net/",
             "url_scheme_of_your_app://easyauth.callback"
         ],
         "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
+            "convention": "FixedTime|IdentityDerived",
             "timeToExpiration": "<timespan>"
         },
         "nonce": {
@@ -437,13 +438,26 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
             "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -455,7 +469,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -486,7 +500,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 #### <a name="view-the-current-runtime-version"></a>查看当前运行时版本
 
-可以使用 Azure CLI 或应用中其中一个内置版本 HTTP 终结点来查看平台身份验证中间件的当前版本。
+你可以使用 Azure CLI 或通过应用中的一个内置版本 HTTP 终结点来查看平台身份验证中间件的当前版本。
 
 ##### <a name="from-the-azure-cli"></a>通过 Azure CLI
 

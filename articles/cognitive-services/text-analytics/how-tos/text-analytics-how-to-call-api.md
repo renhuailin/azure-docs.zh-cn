@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558991"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602778"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -260,6 +260,8 @@ example.json
 3. 将添加 `Operation-Location` 到请求。
 
 4. 响应将是一个 JSON 文档，其中包含请求中提供的每个文档 ID 的项。
+
+请注意，对于异步 `/analyze` 或 `/health` 操作，上述步骤2中的 GET 请求的结果可用于从创建作业的时间24小时。  此时间由 `expirationDateTime` GET 响应中的值指示。  在此时间段后，结果将被清除，并且不再可用于检索。    
 
 ## <a name="example-api-responses"></a>示例 API 响应
  

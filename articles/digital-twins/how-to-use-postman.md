@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187870"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600483"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 Api
 
@@ -130,7 +130,7 @@ Postman 中的请求保存在 (组) 的 **集合** 中。 当你创建集合以�
 
 若要继续执行示例查询，本文将使用查询 API (及其 [参考文档](/rest/api/digital-twins/dataplane/query/querytwins)) 来查询实例中的所有数字孪生。
 
-1. 获取参考文档中的请求 URL 和类型。 对于查询 API，这是 *POST https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31*。
+1. 获取参考文档中的请求 URL 和类型。 对于查询 API，这是 *POST `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`*。
 1. 在 Postman 中，设置请求的类型并输入请求 URL，并根据需要填写 URL 中的占位符。 这是你将在 [*先决条件*](#prerequisites)部分中使用实例的 **主机名** 的位置。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="在新请求的详细信息中，引用文档中的查询 URL 已填充到 &quot;请求 URL&quot; 框中。" lightbox="media/how-to-use-postman/postman-request-url.png":::

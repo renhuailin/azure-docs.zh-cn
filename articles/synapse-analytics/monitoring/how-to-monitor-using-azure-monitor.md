@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f495de13c20aa2953f55e2837fab15a6c62e1083
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466368"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602455"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>将 Azure Monitor 与 Azure Synapse Analytics 工作区配合使用
 
@@ -103,17 +103,16 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 
 下面是 Azure Synapse Analytics 工作区发出的日志：
 
-| Log Analytics 表名称 | 日志类别名称                 | 说明 |
+| Log Analytics 表名称 | 日志类别名称                 | 描述 |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse 网关 API 请求。 |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse 基于角色的访问控制 (SRBAC) 操作。 |
-| SynapseBuiltinSqlPoolRequestsEnded   | BuiltInSqlReqsEnded    | 已结束 Azure Synapse 内置无服务器 SQL 请求。 |
 
 ### <a name="dedicated-sql-pool-logs"></a>专用 SQL 池日志
 
 下面是由专用 SQL 池发出的日志：
 
-| Log Analytics 表名称        | 日志类别名称             | 说明 |
+| Log Analytics 表名称        | 日志类别名称             | 描述 |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Azure Synapse 专用 SQL 池中的 SQL 请求/查询的相关信息。
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | 有关在 Azure Synapse 专用 SQL 池中完成 DMS 步骤的工作线程的信息。
@@ -132,7 +131,7 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 
 下面是 Apache Spark 池发出的日志：
 
-| Log Analytics 表名称               | 日志类别名称              | 说明                 |
+| Log Analytics 表名称               | 日志类别名称              | 描述                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Apache Spark 应用程序已结束的相关信息 |
 

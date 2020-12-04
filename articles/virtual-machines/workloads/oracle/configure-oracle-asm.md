@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6f0b58374ae3eb972993b544117d8cbb98371ce5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999988"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602608"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -345,7 +345,7 @@ ssh <publicIpAddress>
 
 若要下载并准备 Oracle Grid Infrastructure 软件，请完成以下步骤：
 
-1. 从 [Oracle ASM 下载页](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)下载 Oracle Grid Infrastructure。 
+1. 从 [Oracle ASM 下载页](https://www.oracle.com/database/technologies/oracle19c-linux-downloads.html)下载 Oracle Grid Infrastructure。 
 
    在下载标题“Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64”的下面，下载这两个 .zip 文件。
 

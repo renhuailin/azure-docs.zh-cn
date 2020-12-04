@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452677"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602591"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "96452677"
 
 当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
 
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
+若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅下列文章：
 
 - [Linux 映像](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](azure-vm-create-using-approved-base.md)
@@ -140,7 +140,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|说明|
+|方案|测试用例|描述|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -169,7 +169,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|说明|
+|方案 |测试事例|描述|
 |---|---|---|---|
 |1|操作系统体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -201,9 +201,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|(OS)|推荐的 VHD 大小|
+|操作系统|推荐的 VHD 大小|
 |---|---|
-|Linux|30 GB 到 1023 GB|
+|Linux|1 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
 
 因为 Vm 允许访问基础操作系统，所以请确保 VHD 大小对于 VHD 而言足够大。 磁盘无需停机即可进行扩展。 使用磁盘大小从 30 GB 到 50 GB。
@@ -361,7 +361,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
    1. 查找你的 VHD 存储帐户。
    1. 选择 " **容器** "，然后选择 VHD。
-   1. 选择“确定”。
+   1. 选择“确定”  。
 
       !["附加非托管磁盘" 页的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-19.png)
 
@@ -428,7 +428,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
    1. 查找你的 VHD 存储帐户。
    1. 选择 " **容器** "，然后选择 VHD。
-   1. 选择“确定”。
+   1. 选择“确定”  。
 
       !["附加非托管磁盘" 页的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-19.png)
 

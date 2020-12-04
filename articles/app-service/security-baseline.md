@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3d84f0df44f17bdc7dd68aa9cae1f01b06d261b4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532782"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601635"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -71,7 +71,7 @@ ms.locfileid: "96532782"
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
-- [如何启用应用服务的监视和保护](/azure/security-center/defender-for-app-service-intro)
+- [如何启用应用服务的监视和保护](/azure/security-center/defender-for-app-service-introduction)
 
 **Azure 安全中心监视**：是
 

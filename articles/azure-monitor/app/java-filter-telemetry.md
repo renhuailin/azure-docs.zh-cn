@@ -3,18 +3,20 @@ title: 在 Java Web 应用中筛选 Azure Application Insights 遥测
 description: 筛选出无需监视的事件，减少遥测流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: 9a57874652fa5ee58f39483903be211305c683f2
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378187"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601231"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
 > [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的指南进行操作。
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 可通过筛选器选择 [Java Web 应用发送到 Application Insights](java-get-started.md) 的遥测。 可使用现成的筛选器，也可编写自己的自定义筛选器。
 
@@ -261,7 +263,7 @@ public TelemetryProcessor successFilter() {
 你将需要在 `application.properties` 中创建自己的筛选器参数，并利用 Spring Boot 的外部化配置框架将这些参数传递到自定义筛选器。 
 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 我的筛选器不能正常工作。
 

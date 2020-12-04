@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4075cb71cb4dae7ac506c16e3987070cfa10bb09
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919331"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602178"
 ---
 # <a name="build-resilience-with-device-states"></a>用设备状态生成复原能力
 
@@ -44,7 +44,7 @@ ms.locfileid: "95919331"
 
 * 对于个人或公司拥有的 iOS 和 Android 设备，请部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)。 除了多重身份验证和无密码的登录功能外，Microsoft Authenticator 应用还可通过对最终用户进行更少身份验证的 [中转身份验证](../develop/brokered-auth.md) 来跨本机应用程序进行单一登录。
 
-* 对于个人或公司拥有的 iOS 和 Android 设备，使用 [移动应用程序管理](https://docs.microsoft.com/mem/intune/apps/app-management.md) 来安全地访问具有较少身份验证请求的公司资源。 
+* 对于个人或公司拥有的 iOS 和 Android 设备，使用 [移动应用程序管理](https://docs.microsoft.com/mem/intune/apps/app-management) 来安全地访问具有较少身份验证请求的公司资源。 
 
 * [使用适用于 Apple 设备的 Microsoft 企业 SSO 插件 (预览版) ](../develop/apple-sso-plugin.md)。 这会注册设备，并跨浏览器和本机 Azure AD 应用程序提供 SSO。 
 

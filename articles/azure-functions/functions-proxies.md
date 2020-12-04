@@ -3,12 +3,12 @@ title: 在 Azure Functions 中使用代理
 description: 有关如何使用 Azure Functions 代理的概述
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020392"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601367"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -55,11 +55,11 @@ ms.locfileid: "96020392"
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>引用本地函数
 可以使用 `localhost` 直接引用同一函数应用内的函数，而无需往返代理请求。
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` 将引用路由 `/api/httptriggerC#1` 中的本地 HTTP 触发函数
+`"backendUri": "https://localhost/api/httptriggerC#1"` 将引用路由 `/api/httptriggerC#1` 中的本地 HTTP 触发函数
 
  
 >[!Note]  
->如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` 我们建议将这些密钥存储在[应用程序设置]中，并在代理中引用这些密钥。 这样可以避免在源代码中存储机密。 
+>如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` 我们建议将这些密钥存储在[应用程序设置]中，并在代理中引用这些密钥。 这样可以避免在源代码中存储机密。 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>引用请求参数
 

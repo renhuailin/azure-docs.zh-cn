@@ -3,12 +3,15 @@ title: " (预览版的遥测处理器) -Azure Monitor Application Insights Java"
 description: 适用于 Azure Monitor Application Insights Java 的遥测处理器
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425790"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601027"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>适用于 Azure Monitor Application Insights Java 的遥测处理器 (预览) 
 
@@ -56,10 +59,10 @@ ms.locfileid: "94425790"
 
 特性处理器和跨度处理器公开选项以提供一组要匹配的范围的属性，以确定是否应在处理器中包含或排除范围。 若要配置此选项，请在 `include` 和/下 `exclude` 至少 `matchType` 需要一个和一个 `spanNames` 或 `attributes` 。 支持包含/排除配置具有多个指定的条件。 所有指定的条件的计算结果都必须为 true，才能发生匹配。 
 
-**必填字段** ： 
+**必填字段**： 
 * `matchType` 控制如何 `spanNames` 解释和数组中的项 `attributes` 。 可能的值包括 `regexp` 或 `strict`。 
 
-**可选字段** ： 
+**可选字段**： 
 * `spanNames` 必须至少与一个项匹配。 
 * `attributes` 指定要匹配的属性的列表。 所有这些属性必须完全匹配才能出现匹配项。
 
