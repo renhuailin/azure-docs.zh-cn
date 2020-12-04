@@ -8,16 +8,19 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85052015"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608599"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
 出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.1、3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+
+> [!NOTE]
+> 本文包含对字词 *黑名单* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="core-rule-sets"></a>核心规则集
 
@@ -33,7 +36,7 @@ WAF 可针对以下 Web 漏洞提供保护：
 - 其他常见攻击，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含
 - HTTP 协议违规
 - HTTP 协议异常，例如缺少主机用户代理和接受标头
-- 机器人、爬网程序和扫描程序
+- 自动程序、爬网程序和扫描程序
 - 常见应用程序错误配置（例如 Apache 和 IIS）
 
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1

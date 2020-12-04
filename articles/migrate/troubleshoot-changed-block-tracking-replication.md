@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377190"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608327"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>排查无代理 VMware VM 迁移中的复制问题
 
@@ -139,7 +139,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令将尝试 TCP 连接，并将返回一个输出。
     
-     - 在输出中，选中 " _TcpTestSucceeded_ " 字段。 如果该值为 " _True_ "，则 Azure Migrate 设备与 Azure Key Vault 之间不存在连接问题。 如果该值为 "False"，则存在连接问题。
+     - 在输出中，选中 "_TcpTestSucceeded_" 字段。 如果该值为 "_True_"，则 Azure Migrate 设备与 Azure Key Vault 之间不存在连接问题。 如果该值为 "False"，则存在连接问题。
     
     **解决方法：** 如果此测试失败，则 Azure Migrate 设备与 Azure Key Vault 之间存在连接问题。 联系你的本地网络团队以检查连接问题。 通常，某些防火墙设置会导致失败。
     
@@ -225,7 +225,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令将尝试 TCP 连接，并将返回一个输出。
     
-    1. 在输出中，选中 " _TcpTestSucceeded_ " 字段。 如果该值为 " _True_ "，则 Azure Migrate 设备与 Azure Key Vault 之间不存在连接问题。 如果该值为 "False"，则存在连接问题。
+    1. 在输出中，选中 "_TcpTestSucceeded_" 字段。 如果该值为 "_True_"，则 Azure Migrate 设备与 Azure Key Vault 之间不存在连接问题。 如果该值为 "False"，则存在连接问题。
     
     **解决方法：** 如果此测试失败，则 Azure Migrate 设备与 Azure Key Vault 之间存在连接问题。 联系你的本地网络团队以检查连接问题。 通常，某些防火墙设置会导致失败。
     
@@ -242,7 +242,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
 
 [VMWARE KB 2048201](https://go.microsoft.com/fwlink/?linkid=2138888)中介绍了可能导致 VMware vSphere 5.5 上的虚拟机的 CBT 重置的一个此类问题：在 vSphere 1.x 中进行存储 vMotion 操作后，更改了阻止跟踪。 如果你使用的是 VMware vSphere 5.5，请确保使用此知识库中描述的更新。
 
-或者，你可以使用 VMware PowerCLI 在虚拟机上 [重置 VMware 更改的块跟踪]。
+或者，你可以使用 VMware PowerCLI 在虚拟机上重置 VMware 更改的块跟踪。
 
 ## <a name="an-internal-error-occurred"></a>发生了内部错误
 
@@ -276,7 +276,7 @@ _错误消息：出现内部错误。[错误消息]_
 
 当快照生成停止响应时，会出现此问题。 发生此问题时，可以看到创建快照任务在95% 或99% 停止。 请参阅此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) ，以解决此问题。
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>错误消息：出现内部错误。 [未能合并 VM 上的磁盘 _[原因]_ ]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>错误消息：出现内部错误。 [未能合并 VM 上的磁盘 _[原因]_]
 
 在复制周期结束时合并磁盘时，操作将失败。 按照 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138970) 中的说明进行操作 _，以解决_ 问题。
 

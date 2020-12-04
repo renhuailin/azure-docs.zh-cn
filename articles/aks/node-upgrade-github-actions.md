@@ -5,12 +5,12 @@ description: 了解如何使用 GitHub 操作更新 AKS 节点
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 7a24911fd771663c7edbbdf0c8d2d763a74fc586
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96535174"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607834"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub 操作自动将安全更新应用到 Azure Kubernetes Service (AKS) 节点
 
@@ -29,7 +29,7 @@ ms.locfileid: "96535174"
 
 本文介绍如何自动执行 AKS 节点的更新过程。 你将使用 GitHub 操作和 Azure CLI 来创建基于 `cron` 自动运行的更新任务。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -170,8 +170,8 @@ ms.locfileid: "96535174"
 
 > [!NOTE]
 > 若要升级单个节点池而不是群集上的所有节点池，请将 `--name` 参数添加到 `az aks nodepool upgrade` 命令以指定节点池名称。 例如：
-> ```
-> inlineScript: az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
+> ```azurecli-interactive
+> az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
 > ```
 
 ## <a name="run-the-github-action-manually"></a>手动运行 GitHub 操作

@@ -4,12 +4,12 @@ description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002372"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608276"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -17,7 +17,7 @@ ms.locfileid: "96002372"
 
 本文介绍了如何在 .NET 类库中使用 C# 开发 Azure Functions。
 
-作为 c # 开发人员，你可能还会对以下文章之一感兴趣：
+作为 C# 开发人员，你可能还会对以下文章之一感兴趣：
 
 | 入门 | 概念| 引导式学习/示例 |
 | -- | -- | -- | 
@@ -314,7 +314,7 @@ public static class CancellationTokenExample
 
 ## <a name="logging"></a>日志记录
 
-在函数代码中，可以将输出写入日志，这些日志在 Application Insights 中显示为跟踪。 若要将内容写入日志，建议的方法是包括一个 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数（通常名为 `log`）。 Functions 运行时的版本 1.x 使用了 `TraceWriter`，后者也将内容写入 Application Insights，但不支持结构化日志记录。 不要使用 `Console.Write` 编写日志，因为这些数据不是由 Application Insights 捕获的。 
+在函数代码中，可以将输出写入日志，这些日志在 Application Insights 中显示为跟踪。 若要将内容写入日志，建议的方法是包括一个 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数（通常名为 `log`）。 Functions 运行时的版本 1.x 使用了 `TraceWriter`，后者也将内容写入 Application Insights，但不支持结构化日志记录。 不要使用 `Console.Write` 来写入日志，因为 Application Insights 不会捕获此数据。 
 
 ### <a name="ilogger"></a>ILogger
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+若要了解有关函数如何实现 `ILogger` 的详细信息，请参阅 [收集遥测数据](functions-monitoring.md#collecting-telemetry-data)。 前缀为的类别 `Function` 假设你使用的是 `ILogger` 实例。 如果选择改为使用 `ILogger<T>` ，则类别名称可能基于 `T` 。  
 
 ### <a name="structured-logging"></a>结构化日志记录
 

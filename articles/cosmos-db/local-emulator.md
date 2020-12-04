@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 6fb1ef45ff4e77ab21480a1013a3cec6bcc7cfa1
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030894"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608616"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos DB 模拟器进行本地开发和测试
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Azure Cosmos DB 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 �
 安装模拟器之前，请确保满足以下硬件和软件要求：
 
 * 所需软件：
-  * 当前支持 Windows Server 2012 R2、Windows Server 2016、2019 或 Windows 8、10 主机操作系统。 当前不支持启用了 Active Directory 的主机操作系统。
+  * 目前支持 Windows Server 2016、2019或 Windows 10 主机操作系统。 当前不支持启用了 Active Directory 的主机操作系统。
   * 64 位操作系统
 
 * 最低硬件要求：
@@ -333,7 +333,7 @@ services:
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>使用模拟器时对连接进行身份验证
 
-与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos DB 模拟器发出的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器仅支持通过 TLS 进行安全通信。 Azure Cosmos DB 模拟器支持单一固定帐户和众所周知的身份验证密钥进行主密钥身份验证。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们分别是：
+与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos DB 模拟器发出的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器仅支持通过 TLS 进行安全通信。 Azure Cosmos DB 模拟器支持单一固定帐户和众所周知的身份验证密钥进行主密钥身份验证。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们是：
 
 ```bash
 Account name: localhost:<port>

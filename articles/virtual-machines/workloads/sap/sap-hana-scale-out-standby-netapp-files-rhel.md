@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958738"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608531"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958738"
 本文介绍了如何使用 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md) 作为共享存储卷，在 azure Red Hat Enterprise Linux 虚拟机 (vm 的虚拟机) 上，在扩展配置中部署高可用性 SAP HANA 系统。  
 
 在示例配置和安装命令等中，HANA 实例为 **03** ，HANA 系统 ID 为 **HN1**。 这些示例基于 HANA 2.0 SP4 和 SAP 7.6 Red Hat Enterprise Linux。 
+
+> [!NOTE]
+> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
+
 
 在开始之前，请参阅以下 SAP 说明和文章：
 
@@ -709,8 +713,8 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 6. 若要优化基础 Azure NetApp 文件存储的 SAP HANA，请设置以下 SAP HANA 参数：
 
    - `max_parallel_io_requests`**128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit`**开启**
+   - `async_write_submit_active`**开启**
    - `async_write_submit_blocks`**全部**
 
    有关详细信息，请参阅 [使用 Azure NetApp 文件 Microsoft Azure 上的 NETAPP SAP 应用程序][anf-sap-applications-azure]。 

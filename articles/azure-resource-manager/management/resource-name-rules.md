@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/04/2020
+ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347788"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608310"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -20,9 +20,9 @@ ms.locfileid: "93347788"
 
 在下表中，术语“字母数字”是指：
 
-* **a** 至 **z** （小写字母）
-* **A** 至 **Z** （大写字母）
-* **0** 至 **9** （数字）
+* **a** 至 **z**（小写字母）
+* **A** 至 **Z**（大写字母）
+* **0** 至 **9**（数字）
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
@@ -96,11 +96,11 @@ ms.locfileid: "93347788"
 > | automationAccounts / certificates | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。  |
 > | automationAccounts / connections | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 > | automationAccounts / credentials | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
-> | automationAccounts/runbooks | 自动化帐户 | 1-63 | 字母数字、下划线和连字符。<br><br>以字母开头。  |
+> | automationAccounts / runbooks | 自动化帐户 | 1-63 | 字母数字、下划线和连字符。<br><br>以字母开头。  |
 > | automationAccounts / schedules | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 > | automationAccounts / variables | 自动化帐户 | 1-128 | 不能使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 > | automationAccounts / watchers | 自动化帐户 | 1-63 |  字母数字、下划线和连字符。<br><br>以字母开头。 |
-> | automationAccounts/webhooks | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
+> | automationAccounts / webhooks | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -168,10 +168,10 @@ ms.locfileid: "93347788"
 > | diskEncryptionSets | 资源组 | 1-80 | 字母数字和下划线。 |
 > | disks | 资源组 | 1-80 | 字母数字和下划线。 |
 > | galleries | 资源组 | 1-80 | 字母数字和句点。<br><br>以字母数字开头和结尾。 |
-> | galleries/applications | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
+> | galleries / applications | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
 > | galleries / applications/versions | application | 32-bit integer | 数字和句点。 |
 > | galleries/images | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
-> | galleries/images/versions | 图像 | 32-bit integer | 数字和句点。 |
+> | galleries/images/versions | image | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows VM 不能包含句点或以连字符结尾。<br><br>Linux VM 不能以句点或连字符结尾。 |
@@ -193,12 +193,12 @@ ms.locfileid: "93347788"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | registries | 全局 | 5-50 | 字母数字。 |
-> | registries/buildTasks | 注册表 | 5-50 | 字母数字。 |
+> | registries / buildTasks | 注册表 | 5-50 | 字母数字。 |
 > | registries / buildTasks/steps | 生成任务 | 5-50 | 字母数字。 |
 > | registries/replications | 注册表 | 5-50 | 字母数字。 |
-> | registries/scopeMaps | 注册表 | 5-50 | 字母数字、连字符和下划线。 |
+> | registries / scopeMaps | 注册表 | 5-50 | 字母数字、连字符和下划线。 |
 > | registries/tasks | 注册表 | 5-50 | 字母数字、连字符和下划线。 |
-> | registries/tokens | 注册表 | 5-50 | 字母数字、连字符和下划线。 |
+> | registries / tokens | 注册表 | 5-50 | 字母数字、连字符和下划线。 |
 > | registries/webhooks | 注册表 | 5-50 | 字母数字。 |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -258,7 +258,7 @@ ms.locfileid: "93347788"
 > | factories | 全局 | 3-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
 > | factories / dataflows | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
 > | factories / datasets | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
-> | factories/integrationRuntimes | 工厂 | 3-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
+> | factories / integrationRuntimes | 工厂 | 3-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
 > | factories / linkedservices | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
 > | factories / pipelines | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
 > | factories / triggers | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
@@ -300,7 +300,7 @@ ms.locfileid: "93347788"
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
 > | servers / firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
-> | servers/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
+> | servers / virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -310,7 +310,7 @@ ms.locfileid: "93347788"
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
 > | servers / firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
-> | servers/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
+> | servers / virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -320,7 +320,7 @@ ms.locfileid: "93347788"
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
 > | servers / firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
-> | servers/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
+> | servers / virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -356,7 +356,7 @@ ms.locfileid: "93347788"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | domains | 资源组 | 3-50 | 字母数字和连字符。 |
-> | domains/topics | 域 | 3-50 | 字母数字和连字符。 |
+> | domains / topics | 域 | 3-50 | 字母数字和连字符。 |
 > | eventSubscriptions | 资源组 | 3-64 | 字母数字和连字符。 |
 > | topics | 资源组 | 3-50 | 字母数字和连字符。 |
 
@@ -369,9 +369,9 @@ ms.locfileid: "93347788"
 > | namespaces | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
 > | namespaces / disasterRecoveryConfigs | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
-> | namespaces/eventhubs | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
+> | namespaces / eventhubs | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
 > | namespaces / eventhubs / authorizationRules | 事件中心 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
-> | namespaces/eventhubs/consumergroups | 事件中心 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
+> | namespaces / eventhubs / consumergroups | 事件中心 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母或数字开头和结尾。 |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -482,14 +482,14 @@ ms.locfileid: "93347788"
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | 长度 | 有效的字符 |
+> | 实体 | 作用域 | Length | 有效的字符 |
 > | --- | --- | --- | --- |
 > | applicationGateways | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | applicationSecurityGroups | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | azureFirewalls | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | bastionHosts | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | connections | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | dnsZones | 资源组 | 1-63 个字符<br><br>2 到 34 个标签<br><br>每个标签是以句点分隔的一组字符。 例如， **contoso.com** 有 2 个标签。 | 每个标签可以包含字母数字、下划线和连字符。<br><br>每个标签以句点分隔。 |
+> | dnsZones | 资源组 | 1-63 个字符<br><br>2 到 34 个标签<br><br>每个标签是以句点分隔的一组字符。 例如，**contoso.com** 有 2 个标签。 | 每个标签可以包含字母数字、下划线和连字符。<br><br>每个标签以句点分隔。 |
 > | expressRouteCircuits | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | firewallPolicies | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | firewallPolicies / ruleGroups | 防火墙策略 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
@@ -502,7 +502,7 @@ ms.locfileid: "93347788"
 > | networkSecurityGroups | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | networkSecurityGroups / securityRules | 网络安全组 | 1-80 |  字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | networkWatchers | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | privateDnsZones | 资源组 | 1-63 个字符<br><br>2 到 34 个标签<br><br>每个标签是以句点分隔的一组字符。 例如， **contoso.com** 有 2 个标签。 | 每个标签可以包含字母数字、下划线和连字符。<br><br>每个标签以句点分隔。 |
+> | privateDnsZones | 资源组 | 1-63 个字符<br><br>2 到 34 个标签<br><br>每个标签是以句点分隔的一组字符。 例如，**contoso.com** 有 2 个标签。 | 每个标签可以包含字母数字、下划线和连字符。<br><br>每个标签以句点分隔。 |
 > | privateDnsZones / virtualNetworkLinks | 专用 DNS 区域 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | publicIPAddresses | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | publicIPPrefixes | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
@@ -596,6 +596,7 @@ ms.locfileid: "93347788"
 > | resourcegroups | 订阅 | 1-90 | 字母数字、下划线、括号、连字符、句点，以及与[正则表达式文档](/rest/api/resources/resourcegroups/createorupdate)匹配的 Unicode 字符。<br><br>不能以句点结尾。 |
 > | tagNames | resource | 1-512 | 不得使用：<br>`<>%&\?/` |
 > | tagNames / tagValues | 标记名称 | 1-256 | 所有字符。 |
+> | templateSpecs | 资源组 | 1-90 | 字母数字、下划线、括号、连字符和句点。 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -605,9 +606,9 @@ ms.locfileid: "93347788"
 > | namespaces | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。<br><br>有关详细信息，请参阅[创建命名空间](/rest/api/servicebus/create-namespace)。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / disasterRecoveryConfigs | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母数字结尾。 |
-> | namespaces / migrationConfigurations | 命名空间 |  | 应始终为 **$default** 。 |
+> | namespaces / migrationConfigurations | 命名空间 |  | 应始终为 **$default**。 |
 > | namespaces / queues | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
-> | namespaces / queues / authorizationRules | queue | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
+> | namespaces / queues / authorizationRules | 队列 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / authorizationRules | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / subscriptions | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
@@ -653,7 +654,7 @@ ms.locfileid: "93347788"
 > | storageAccounts / fileServices / shares | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | storageAccounts / managementPolicies | 存储帐户 |  | 必须是 `default`。 |
 > | blob | container | 1-1024 | 任何 URL 字符，区分大小写 |
-> | queue | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
+> | 队列 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | 表 | 存储帐户 | 3-63 | 字母数字。<br><br>以字母开头。 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync

@@ -3,18 +3,18 @@ title: GitHub 操作中的自定义容器 CI/CD
 description: 了解如何使用 GitHub 操作通过 CI/CD 管道将自定义 Linux 容器部署到应用服务。
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099022"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607800"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 将自定义容器部署到应用服务
 
 [GitHub 操作](https://help.github.com/en/articles/about-github-actions) 使你可以灵活地生成自动化软件开发工作流。 使用 [Azure Web 部署操作](https://github.com/Azure/webapps-deploy)，可以使用 GitHub 操作自动化工作流，将自定义容器部署到 [应用服务](overview.md) 。
 
@@ -31,15 +31,15 @@ ms.locfileid: "93099022"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
-- 容器的工作容器注册表和 Azure App Service 应用。 此示例使用 Azure 容器注册表。 
+- 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。 需要将 GitHub 存储库中的代码部署到 Azure App Service。 
+- 容器的工作容器注册表和 Azure App Service 应用。 此示例使用 Azure 容器注册表。 请确保完成对容器 Azure App Service 的完整部署。 与常规 web 应用不同，用于容器的 web 应用没有默认登录页。 发布容器以获得工作示例。
     - [了解如何使用 Docker 创建容器化的 Node.js 应用程序，将容器映像推送到注册表，然后将该映像部署到 Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 你还可以使用服务主体进行身份验证，但该过程需要更多步骤。 
+使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-保存你的发布配置文件凭据或服务主体作为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以便在 Azure 中进行身份验证。 你将可以访问工作流中的机密。 
+将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
 
@@ -47,10 +47,10 @@ ms.locfileid: "93099022"
 
 1. 在 Azure 门户中，请参阅应用服务。 
 
-1. 在 " **概述** " 页上，选择 " **获取发布配置文件** "。
+1. 在 " **概述** " 页上，选择 " **获取发布配置文件**"。
 
     > [!NOTE]
-    > 从2020年10月起，Linux web 应用在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下载文件之前** 需要将应用设置设置为。 此要求将在将来删除。
+    > 从2020年10月起，Linux web 应用在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下载文件之前** 需要将应用设置设置为。 此要求将在将来删除。 若要了解如何配置常见的 web 应用设置，请参阅 [在 Azure 门户中配置应用服务应用](/azure/app-service/configure-common)。  
 
 1. 保存下载的文件。 你将使用该文件的内容来创建 GitHub 机密。
 
@@ -64,7 +64,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在此示例中，将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个 JSON 对象，其中包含用于提供对应用服务应用的访问权限的角色分配凭据。 稍后复制此 JSON 对象。
+在此示例中，将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个 JSON 对象，其中包含用于提供对应用服务应用的访问权限的角色分配凭据。 复制此 JSON 对象供以后使用。
 
 ```output 
   {
@@ -80,26 +80,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 > 始终应授予最小访问权限。 上一示例中的范围限制为特定的应用服务应用，而不是整个资源组。
 
 ---
-
-## <a name="configure-the-github-secret"></a>配置 GitHub 机密
-
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密** 。
-
-将 JSON 输出的内容粘贴为机密变量的值。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
-
-以后配置工作流文件时，请使用该机密作为 Azure 登录操作的输入 `creds`。 例如：
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>配置用于身份验证的 GitHub 机密
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密** 。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
 若要使用 [应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 命名机密 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -113,7 +98,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服务主体](#tab/service-principal)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密** 。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
 要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
 
@@ -129,9 +114,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 ## <a name="configure-github-secrets-for-your-registry"></a>为注册表配置 GitHub 机密
 
-定义要用于 Docker 登录操作的机密。 
+定义要用于 Docker 登录操作的机密。 本文档中的示例使用容器注册表的 Azure 容器注册表。 
 
-1. 在 Azure 门户或 Docker 中转到容器，复制用户名和密码。 
+1. 在 Azure 门户或 Docker 中转到容器，复制用户名和密码。 你可以在注册表的 "**设置**" "  >  **访问密钥**" 下的 Azure 门户中找到 Azure 容器注册表用户名和密码。 
 
 2. 为名为的注册表用户名定义新机密 `REGISTRY_USERNAME` 。 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-你还可以使用 [Docker 登录名](https://github.com/azure/docker-login) 同时登录多个容器注册表。 此示例包括两个新的 GitHub 机密，用 docker.io 进行身份验证。
+你还可以使用 [Docker 登录名](https://github.com/azure/docker-login) 同时登录多个容器注册表。 此示例包括两个新的 GitHub 机密，用 docker.io 进行身份验证。 该示例假设注册表的根级别上存在 Dockerfile。 
 
 ```yml
 name: Linux Container Node Workflow
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1

@@ -4,12 +4,12 @@ description: 了解如何将函数应用连接到 Application Insights 以进行
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175740"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607120"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -38,6 +38,9 @@ Azure Functions 与 Application Insights 集成，从而使你能够更好地监
 | **`Host.Results`** | **requests** | 这些运行时生成的日志指示函数是成功还是失败。 所有这些日志均在 `Information` 级别编写。 如果在 `Warning` 或更高级别进行筛选，则不会看到任何这些数据。 |
 | **`Microsoft`** | **traces** | 反映主机调用的 .NET 运行时组件的完全限定的日志类别。  |
 | **`Worker`** | **traces** | 语言工作进程为非 .NET 语言生成的日志。 语言工作日志也可以记录在 `Microsoft.*` 类别中，例如 `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher`。 这些日志在 `Information` 级别写入。|
+
+> [!NOTE]
+> 对于 .NET 类库函数，这些类别假定您使用的是 `ILogger` 而不是 `ILogger<T>` 。 若要了解详细信息，请参阅 [函数 ILogger 文档](functions-dotnet-class-library.md#ilogger)。 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)
 

@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559110"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607868"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>为 Azure App Service 配置 PremiumV3 层
 
@@ -82,7 +82,7 @@ az appservice list-locations --sku P1V3
 如果你的应用在 **PremiumV3** 不可用的应用服务部署中运行，或者如果你的应用在当前不支持 **PremiumV3** 的区域中运行，则需要重新部署你的应用才能利用 **PremiumV3**。  可以使用两个选项：
 
 - 使用新的应用服务计划在新的资源组中创建应用。 创建应用服务计划时，请选择 **PremiumV3** 层。 此步骤可确保将应用服务计划部署到支持 **PremiumV3** 的部署单元。 然后，将应用程序代码重新部署到新创建的应用程序中。 即使将应用服务计划扩展到更低的层以便节省成本，你始终可以将备份扩展到 **PremiumV3** ，因为部署单元支持它。
-- 如果你的应用已在现有 **高级** 层中运行，则可以将应用的所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV3** 的新应用服务计划中。
+- 如果应用已在现有 **高级** 层中运行，则可以使用 **PremiumV3** 的新应用服务计划中的所有应用设置、连接字符串和部署配置，将应用克隆到新的资源组中。
 
     ![屏幕截图，显示如何克隆应用。](media/app-service-configure-premium-tier/clone-app.png)
 

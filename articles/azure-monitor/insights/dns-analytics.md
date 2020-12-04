@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994617"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607137"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -44,7 +44,7 @@ DNS Analytics 可帮助：
 
 解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Azure Monitor，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)中实时收集的。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 使用以下信息配置解决方案：
 
@@ -57,13 +57,13 @@ DNS Analytics 可帮助：
 
 在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
-- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
+- **Allowlisted 域名**。 解决方案不会处理所有查找查询。 它保留域名后缀的允许列表。 解析为与此允许列表中的域名后缀相匹配的域名的查找查询不会被解决方案处理。 不处理 allowlisted 域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用公共域名，如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
 - **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。 默认阈值为 1,000。 可以编辑该阈值。
 
-    ![列入允许列表的域名](./media/dns-analytics/dns-config.png)
+    ![Allowlisted 域名](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>管理包
 
@@ -110,7 +110,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 - 解析域名得到的 IP 地址。
 - 恶意 IP 地址。
 - 问题严重性。
-- 将恶意 IP 列入方块列表的原因。
+- 列入阻止列表恶意 IP 的原因。
 - 检测时间。
 
 **查询的域**。 提供环境中的 DNS 客户端正在查询的最常见域名。 可以查看所有查询的域名的列表。 还可以向下钻取日志搜索中特定域名的查找请求详细信息。

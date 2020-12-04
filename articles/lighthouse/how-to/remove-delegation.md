@@ -1,14 +1,14 @@
 ---
 title: 删除对委派的访问权限
 description: 了解如何删除已委派给 Azure Lighthouse 服务提供商的资源的访问权限。
-ms.date: 08/12/2020
+ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167214"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608446"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "88167214"
 
 如果管理租户中的用户为客户的资源授予了 [托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) ，则该用户可以删除对这些资源的访问权限。 如果未将此角色分配给任何服务提供商用户，则只能由客户租户中的用户删除委派。
 
-下面的示例演示了一个分配，该分配授予可在[载入过程](onboard-customer.md)中包含在参数文件中的**托管服务注册分配删除角色**：
+下面的示例演示了一个分配，该分配授予可在 [载入过程](onboard-customer.md)中包含在参数文件中的 **托管服务注册分配删除角色**：
 
 ```json
     "authorizations": [ 
@@ -41,7 +41,7 @@ ms.locfileid: "88167214"
     ] 
 ```
 
-[创建托管服务产品/服务](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)以发布到 Azure Marketplace 时，还可以在**授权**中选择此角色。
+[创建托管服务产品/服务](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)以发布到 Azure Marketplace 时，还可以在 **授权** 中选择此角色。
 
 具有此权限的用户可以通过以下的一种方法删除委托。
 
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - 了解 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。
+- 了解如何 [更新以前的委托](update-delegation.md)。

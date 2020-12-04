@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 13644872fca06ad8fc5806326736aea23e504520
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958745"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608650"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -636,8 +636,8 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 6. 若要优化基础 Azure NetApp 文件存储的 SAP HANA，请设置以下 SAP HANA 参数：
 
    - `max_parallel_io_requests`**128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit`**开启**
+   - `async_write_submit_active`**开启**
    - `async_write_submit_blocks`**全部**
 
    有关详细信息，请参阅 [使用 Azure NetApp 文件 Microsoft Azure 上的 NETAPP SAP 应用程序][anf-sap-applications-azure]。 
@@ -655,6 +655,9 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
    > 请注意 SAP 说明 [2631285](https://launchpad.support.sap.com/#/notes/2631285)。 
 
 ## <a name="test-sap-hana-failover"></a>测试 SAP HANA 故障转移 
+
+> [!NOTE]
+> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
 
 1. 模拟 SAP HANA 辅助节点上的节点崩溃。 执行以下操作： 
 
