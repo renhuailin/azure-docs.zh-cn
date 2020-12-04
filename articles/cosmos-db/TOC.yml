@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: 使用 Azure 存储资源管理器
           href: storage-explorer.md
-        - name: 使用 Azure Cosmos 资源管理器
+        - name: 使用 Azure Cosmos DB 资源管理器
           href: data-explorer.md
     - name: 使用 Azure Synapse Link 实现分析和 BI
       items:

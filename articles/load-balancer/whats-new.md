@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841027"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573147"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure 负载均衡器中的新增功能有哪些？
 
@@ -42,7 +42,7 @@ Azure 负载均衡器会定期更新。 随时了解最新公告。 本文提供
 
 |问题 |说明  |缓解操作  |
 | ---------- |---------|---------|
-| Log Analytics 导出 | Log Analytics 无法导出标准负载均衡器的指标，也无法导出基本负载均衡器的运行状况探测状态日志  | [使用 Azure Monitor 为标准负载均衡器提供多维度指标](load-balancer-standard-diagnostics.md)。 Azure Monitor 虽然不能使用 Log Analytics 进行监视，但可为一组丰富的多维指标提供可视化效果。 可通过负载均衡器的“见解”子边栏选项卡使用预配置的指标仪表板。 如果使用的是基本负载均衡器，请[升级到标准版](upgrade-basic-standard.md)来实现生产级别的指标监视。
+| 负载均衡器警报事件和运行状况探测状态日志 | 日志记录不适用于针对基本和标准负载均衡器的负载均衡器警报事件，也不适用于针对基本负载均衡器的运行状况探测状态日志  | [使用 Azure Monitor 为标准负载均衡器提供多维度指标](load-balancer-standard-diagnostics.md)。 Azure Monitor 可为一组丰富的多维指标提供可视化效果，该可视化效果可导出为日志。 可通过负载均衡器的“见解”子边栏选项卡使用预配置的指标仪表板。 如果使用的是基本负载均衡器，请[升级到标准版](upgrade-basic-standard.md)来实现生产级别的指标监视。
 
   
 

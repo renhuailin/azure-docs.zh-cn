@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122507"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573504"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>将 AWS 帐户连接到 Azure 安全中心
 
@@ -48,6 +48,8 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 
 ## <a name="connect-your-aws-account"></a>连接到你的 AWS 帐户
+
+按照以下步骤创建 AWS 云连接器。 
 
 ### <a name="step-1-set-up-aws-security-hub"></a>步骤 1。 设置 AWS 安全中心：
 
@@ -160,7 +162,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
         请参阅[使用标记整理 Azure 资源和管理层次结构](../azure-resource-manager/management/tag-resources.md)，详细了解 Azure 标记。
 
-### <a name="step-7-confirmation"></a>步骤 7. 确认
+### <a name="step-6-confirmation"></a>步骤 6。 确认
 
 成功创建连接器并正确配置 AWS 安全中心后：
 

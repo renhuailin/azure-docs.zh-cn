@@ -109,6 +109,10 @@
                   displayname: vnet
                 - name: Synapse 工作区托管专用终结点
                   href: ./security/synapse-workspace-managed-private-endpoints.md
+                - name: Synapse 工作区数据外泄保护
+                  href: ./security/workspace-data-exfiltration-protection.md
+                - name: 带专用链接中心的 Synapse 工作区
+                  href: ./security/synapse-private-link-hubs.md
             - name: 身份验证和直通
               items:
                 - name: Azure Active Directory
@@ -121,8 +125,13 @@
             - name: 访问控制
               items:
                 - name: 概述
-                  href: ./security/access-control.md
-                  displayname: 'access, control'
+                  href: ./security/synapse-workspace-access-control-overview.md
+                - name: Synapse RBAC
+                  href: ./security/synapse-workspace-synapse-rbac.md
+                - name: Synapse RBAC 角色
+                  href: ./security/synapse-workspace-synapse-rbac-roles.md
+                - name: 了解 Synapse RBAC 角色
+                  href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse 工作区托管标识
                   href: ./security/synapse-workspace-managed-identity.md
     - name: 操作指南
@@ -135,11 +144,19 @@
           items:
             - name: 管理访问控制
               items:
+                - name: 设置访问控制
+                  href: ./security/how-to-set-up-access-control.md
+                - name: 查看 Synapse 角色分配
+                  href: ./security/how-to-review-synapse-rbac-role-assignments.md
+                - name: 管理 Synapse 角色分配
+                  href: ./security/how-to-manage-synapse-rbac-role-assignments.md
                 - name: 设置 Azure Synapse 工作区托管标识的权限
                   href: security/how-to-grant-workspace-managed-identity-permissions.md
                   displayname: grant
-                - name: 设置访问控制
-                  href: security/how-to-set-up-access-control.md
+            - name: 数据外泄防护
+              items:
+                - name: 创建和管理带数据外泄保护功能的工作区
+                  href: security/how-to-create-a-workspace-with-data-exfiltration-protection.md
             - name: 管理专用终结点
               items:
                 - name: 设置用于访问数据源的托管专用终结点
@@ -709,7 +726,7 @@
               href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database
+            - name: Azure SQL 数据库
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

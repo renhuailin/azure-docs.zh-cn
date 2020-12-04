@@ -146,6 +146,8 @@
           href: reduce-latency-ppg.md
         - name: 升级节点映像
           href: node-image-upgrade.md
+        - name: 使用 GitHub Actions 自动升级节点映像
+          href: node-upgrade-github-actions.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
         - name: 配置 AKS 群集

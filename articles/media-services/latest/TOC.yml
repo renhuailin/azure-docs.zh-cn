@@ -240,6 +240,9 @@
         - name: 点播视频
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
+    - name: 媒体服务体系结构
+      displayName: architectures
+      href: architectures-concept.md
     - name: 疑难解答
       items:
         - name: 常见问题
