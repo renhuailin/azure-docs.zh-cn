@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531592"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572790"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "96531592"
 - 为多个角色引入了 **新的较低级别的作用域**。  这些作用域允许角色限制为特定的资源或对象。
 
 >[!Note]
->- **新角色和更低级别范围目前处于预览阶段**。  建议你使用这些新的角色和作用域（完全受支持），并提供有关使用的反馈。
+>**新的 SYNAPSE RBAC 角色和更低级别的作用域目前处于预览阶段**。  建议你使用这些新的角色和作用域（完全受支持），并提供有关使用的反馈。
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>内置 Synapse RBAC 角色和范围
 
@@ -58,7 +58,7 @@ ms.locfileid: "96531592"
 
 下表列出了内置角色以及每个角色支持的操作/权限。
 
-Role|操作
+角色|操作
 --|--
 Synapse 管理员|工作区/读取</br>工作区/roleAssignments/写入、删除</br>工作区/managedPrivateEndpoint/写入、删除</br>workspace/bigDataPools/useCompute/action</br>workspace/bigDataPools/viewLogs/action</br>workspace/integrationRuntimes/useCompute/action</br>工作区/项目/读取</br>工作区/笔记本/写入、删除</br>工作区/sparkJobDefinitions/写入、删除</br>工作区/sqlScripts/写入、删除</br>工作区/数据流/写入、删除</br>工作区/管道/写入、删除</br>工作区/触发器/写入，删除</br>工作区/数据集/写入、删除</br>工作区/库/写入、删除</br>工作区/Linkedservices.json/写入、删除</br>工作区/凭据/写入、删除</br>工作区/笔记本/viewOutputs/操作</br>工作区/管道/viewOutputs/操作</br>workspace/Linkedservices.json/useSecret/action</br>工作区/凭据/useSecret/操作|
 |Synapse Apache Spark 管理员|工作区/读取</br>workspace/bigDataPools/useCompute/action</br>workspace/bigDataPools/viewLogs/action</br>工作区/笔记本/viewOutputs/操作</br>工作区/项目/读取</br>工作区/笔记本/写入、删除</br>工作区/sparkJobDefinitions/写入、删除</br>工作区/库/写入、删除</br>工作区/Linkedservices.json/写入、删除</br>工作区/凭据/写入、删除|
@@ -75,7 +75,7 @@ Synapse 管理员|工作区/读取</br>工作区/roleAssignments/写入、删除
 
 下表列出了允许以下操作的 Synapse 操作和内置角色：
 
-操作|Role
+操作|角色
 --|--
 工作区/读取|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse SQL 管理员</br>Synapse 参与者</br>Synapse 项目发布服务器</br>Synapse 项目用户</br>Synapse 计算运算符 </br>Synapse 凭据用户</br>Synapse 链接数据管理器</br>Synapse 用户 
 工作区/roleAssignments/写入、删除|Synapse 管理员

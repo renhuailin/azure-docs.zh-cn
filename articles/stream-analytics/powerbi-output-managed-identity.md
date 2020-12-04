@@ -6,14 +6,14 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: dd667202a329148e498d0e25ee15110de5d7448a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489499"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573402"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>使用托管标识对 Azure 流分析作业进行身份验证，以 Power BI (预览版) 
 
 用于输出到 Power BI 的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)使流分析作业可以直接访问 Power BI 帐户中的工作区。 此功能允许完全自动部署流分析作业，因为用户不再需要通过 Azure 门户以交互方式登录到 Power BI。 此外，还可以更好地支持写入 Power BI 的长时间运行的作业，因为无需定期重新授权作业。
 
@@ -35,7 +35,7 @@ ms.locfileid: "94489499"
 
 2. 在配置输出之前，请按照本文中 " [向流分析作业授予对 Power BI 工作区的访问权限](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) " 部分中的说明，为流分析作业授予对 Power BI 工作区的访问权限。
 
-3. 导航到流分析作业的 " **输出** " 部分，选择 " **+ 添加** "，然后选择 " **Power BI** "。 然后，选择 " **授权** " 按钮，然后用您的 Power BI 帐户登录。
+3. 导航到流分析作业的 " **输出** " 部分，选择 " **+ 添加**"，然后选择 " **Power BI**"。 然后，选择 " **授权** " 按钮，然后用您的 Power BI 帐户登录。
 
    ![授权 Power BI 帐户](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 

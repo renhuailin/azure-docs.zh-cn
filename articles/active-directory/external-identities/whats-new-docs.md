@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部标识中的新增功能
 description: Azure Active Directory 外部标识的新文档和更新文档。
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f7c296b4a5bed0c3e599f59e9f0461295b86f197
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550054"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573895"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
 欢迎使用 Azure Active Directory 外部标识文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="updated-articles"></a>更新的文章
+- [Microsoft 365 外部共享与 Azure Active Directory (Azure AD) B2B 协作](o365-external-user.md)
+- [使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限](hybrid-on-premises-to-cloud.md)
+- [Azure Active Directory B2B 协作用户的属性](user-properties.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

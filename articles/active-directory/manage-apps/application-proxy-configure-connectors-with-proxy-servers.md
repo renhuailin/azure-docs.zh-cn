@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656320"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571787"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -167,6 +167,9 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 识别和排查连接器连接问题的最佳方法就是在启动连接器服务时，创建“网络”捕获。 以下是一些关于捕获和筛选网络跟踪的小技巧。
 
 可以使用自选的监视工具。 本文使用了 Microsoft 消息分析器。
+
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) 已停](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) 用，并且其下载包已从11月 25 2019 上的 microsoft.com 站点中删除。  目前，开发中目前不会替换 Microsoft Message Analyzer。  对于类似的功能，请考虑使用第三方网络协议分析器工具，例如 Wireshark。
 
 以下示例特定于消息分析器，但其原理适用于任何分析工具。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573878"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 应用程序活动报告 (预览版) 将应用程序迁移到 Azure AD
 
@@ -26,9 +26,10 @@ ms.locfileid: "94835503"
 
 Azure 门户中的 "AD FS 应用程序活动报表" (预览) ，可以快速确定哪些应用程序能够迁移到 Azure AD。 它会评估所有 AD FS 应用程序的兼容性 Azure AD、检查是否有任何问题，并提供有关准备要迁移的单个应用程序的指南。 通过 AD FS 应用程序活动报告，你可以：
 
-* **发现 AD FS 应用程序并确定迁移范围。** "AD FS 应用程序活动" 报表列出组织中的所有 AD FS 应用程序，并指示它们在迁移到 Azure AD 时的准备情况。
+* **发现 AD FS 应用程序并确定迁移范围。** "AD FS 应用程序活动" 报表列出了在过去30天内具有活动用户登录名的组织中的所有 AD FS 应用程序。 该报表指示用于迁移到 Azure AD 的应用准备情况。 报表不会在 AD FS 例如 Office 365）中显示 Microsoft 相关的信赖方。 例如，名为 "urn： federation： MicrosoftOnline" 的信赖方。
+
 * **确定要迁移的应用程序的优先级。** 获取过去1、7或30天内登录到应用程序的唯一用户数，以帮助确定迁移应用程序的关键程度或风险。
-* **运行迁移测试并解决问题。** 报表服务会自动运行测试，以确定应用程序是否已准备好进行迁移。 结果将显示在 "AD FS 应用程序活动报表" 中作为迁移状态。 如果发现潜在的迁移问题，则可以获取有关如何解决这些问题的具体指导。
+* **运行迁移测试并解决问题。** 报表服务会自动运行测试，以确定应用程序是否已准备好进行迁移。 结果将显示在 "AD FS 应用程序活动报表" 中作为迁移状态。 如果 AD FS 配置与 Azure AD 配置不兼容，你将获得有关如何处理 Azure AD 中的配置的特定指导。
 
 AD FS 应用程序活动数据适用于分配了下列任意管理角色的用户：全局管理员、报表读者、安全读者、应用程序管理员或云应用程序管理员。
 
@@ -39,6 +40,9 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 * 必须安装 AD FS 代理的 Azure AD Connect Health。
    * [详细了解 Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
    * [开始设置 Azure AD Connect Health 并安装 AD FS 代理](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>安装 Azure AD Connect Health 后，有几个原因不会看到所需的所有应用程序。 AD FS 应用程序活动报表仅显示在过去30天内具有用户登录名 AD FS 信赖方。 此外，此报表不会显示 Microsoft 相关的信赖方，如 Office 365。
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>发现可以迁移 AD FS 应用程序 
 
@@ -74,7 +78,7 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 
 下表列出了在 AD FS 应用程序上执行的所有配置测试。
 
-|结果  |通过/警告/失败  |说明  |
+|Result  |通过/警告/失败  |描述  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> 至少检测到 AdditionalAuthentication 的一个非可迁移规则。       | 通过/警告          | 依赖方包含用于提示进行多重身份验证 (MFA) 的规则。 若要移动到 Azure AD，请将这些规则转换为条件访问策略。 如果你使用的是本地 MFA，则建议移动到 Azure AD MFA。 [了解有关条件性访问的详细信息](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> 信赖方的 AdditionalWSFedEndpoint 设置为 true。       | 通过/失败          | AD FS 中的信赖方允许多个 WS-Fed 断言终结点。目前 Azure AD 仅支持一个。如果有这样的情况，该结果会阻止迁移，请 [告诉我们](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
@@ -110,7 +114,7 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 
 下表列出了对 AD FS 应用程序执行的所有声明规则测试。
 
-|属性  |说明  |
+|Property  |描述  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | Condition 语句使用正则表达式来计算声明是否与特定模式匹配。若要在 Azure AD 中实现类似的功能，可以使用预定义的转换，如 IfEmpty ( # A1，StartWith ( # A3，其中包含 ( # A5 以及其他内容。 有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。          |
 |UNSUPPORTED_CONDITION_CLASS      | Condition 语句包含多个需要在运行发出语句之前计算的条件。Azure AD 可以通过声明的转换函数（可在其中评估多个声明值）支持此功能。有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。          |
@@ -121,6 +125,17 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 |EXTERNAL_ATTRIBUTE_STORE      | 发出语句使用 Active Directory 不同的属性存储。 目前，Azure AD 不是 Active Directory 或 Azure AD 存储不同的源声明。 如果此结果阻止你将应用程序迁移到 Azure AD，请 [告知我们](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)。          |
 |UNSUPPORTED_ISSUANCE_CLASS      | 颁发语句使用 ADD 向传入声明集添加声明。 在 Azure AD 中，这可能配置为多个声明转换。有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-claims-mapping.md)。         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 此颁发语句使用正则表达式来转换要发出的声明的值。若要在 Azure AD 中实现类似的功能，可以使用预定义的转换，如提取 ( # A1、剪裁 ( # A3、ToLower 等。 有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。          |
+
+## <a name="troubleshooting"></a>疑难解答
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>看不到报表中的所有 AD FS 应用程序
+
+ 如果你已安装 Azure AD Connect 运行状况，但仍看到安装它的提示，或在报表中看不到所有 AD FS 应用程序，则可能是你没有活动 AD FS 应用程序，或者你的 AD FS 应用程序是 microsoft 应用程序。
+ 
+ "AD FS 应用程序活动" 报表列出了在过去30天内活动用户登录的组织中的所有 AD FS 应用程序。 此外，报表不会在 AD FS 例如 Office 365）中显示 microsoft 相关的信赖方。 例如，名为 "urn： federation： MicrosoftOnline"、"MicrosoftOnline"、"microsoft： winhello： cert： prov： server" 的信赖方不会显示在列表中。
+
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

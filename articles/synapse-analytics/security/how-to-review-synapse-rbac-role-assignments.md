@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6d6a0bdb9a6aaa2d9ca75ccd4a6d71e9046bee4a
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523417"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572178"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>如何查看 Synapse RBAC 角色分配
 
@@ -21,7 +21,10 @@ Synapse RBAC 角色用于将权限分配给用户、组和其他安全主体，�
 
 本文介绍如何查看工作区的当前角色分配。
 
-对于任何 Synapse RBAC 角色，你可以列出所有作用域的 Synapse RBAC 角色分配，包括你无权访问的对象的分配。 只有 Synapse 管理员才能授予 Synapse RBAC 访问权限。   
+对于任何 Synapse RBAC 角色，你可以列出所有作用域的 Synapse RBAC 角色分配，包括你无权访问的对象的分配。 只有 Synapse 管理员才能授予 Synapse RBAC 访问权限。  
+
+>[!Note]
+>来宾用户 (不同 AD 租户中的用户) 无法查看或管理角色分配，即使分配了 Synapse 管理员角色也是如此。    
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio  
 

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f2de6dbba2548f0c281df35edf2883d0c00af667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968734"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571907"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 
@@ -28,7 +28,7 @@ ms.locfileid: "94968734"
 
 |                           |StorSimple 8000   |Azure 文件同步   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|**概述**     |分层混合存储和存档|支持云分层和多站点同步的常规文件服务器存储。  |用于预处理数据并通过网络将其发送到 Azure 的存储解决方案。        |
+|概述     |分层混合存储和存档|支持云分层和多站点同步的常规文件服务器存储。  |用于预处理数据并通过网络将其发送到 Azure 的存储解决方案。        |
 |**方案**    |文件服务器、存档、备份目标 |文件服务器、存档（多站点）   |数据传输、数据预处理，包括机器学习推断、IoT、存档    |
 |**Edge 计算** |不可用 |不可用 |支持使用 Azure IoT Edge 运行容器    |
 |**外形规格**  |物理设备   |在 Windows Server 上安装的代理 |物理设备   |

@@ -3,15 +3,15 @@ title: 在 windows 虚拟桌面中的 Windows 10 虚拟机上安装语言包-Azu
 description: 如何在 Windows 虚拟桌面中安装适用于 Windows 10 多会话 Vm 的语言包。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354030"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573113"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
@@ -34,20 +34,24 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
      
      - 语言 ISO：
         - [Windows 10 版本1903或1909语言包 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10 版本2004语言包 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10 版本2004或20H2 语言包 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
      - FOD Disk 1 ISO：
         - [Windows 10 版本1903或 1909 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10，版本 2004 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10 版本2004或 20H2 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
      - 收件箱应用 ISO：
         - [Windows 10 版本1903或1909收件箱应用 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10 2004 版收件箱应用 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
         - [Windows 10 版本20H2 收件箱应用 ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
-     - 如果使用的是 Windows 10 版本2004或20H2，则可以使用本地 Experience Pack (LXP) Iso 下载新语言。 使用在 [Windows 10 中添加语言中的信息：已知问题](/windows-hardware/manufacture/desktop/language-packs-known-issue) ，确定是否应下载版本9B 或9C：
-        - [Windows 10 版本2004或 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-        - [Windows 10 版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
+     - 如果使用本地体验包 (LXP) ISO 文件来本地化映像，则还需要下载适当的 LXP ISO 以获得最佳语言体验
+        - 如果使用的是 Windows 10，版本1903或1909：
+          - [Windows 10 版本1903或 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
+        - 如果使用的是 Windows 10 版本2004或20H2，请使用在 [windows 10 中添加语言中的信息：已知问题](/windows-hardware/manufacture/desktop/language-packs-known-issue) ，了解以下哪一个 LXP iso 适合你：
+          - [Windows 10 版本2004或 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [Windows 10 版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [Windows 10 版本2004或 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
 
 - Windows 文件服务器虚拟机上的 Azure 文件共享或文件共享
 
@@ -64,7 +68,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
 
 3. 请访问语言包 ISO 并复制 **LocalExperiencePacks** 和 **x64 \\ langpacks** 文件夹中的内容，然后将内容粘贴到文件共享中。
 
-4. 请访问 **FOD ISO 文件** ，复制其所有内容，并将其粘贴到文件共享中。
+4. 请访问 **FOD ISO 文件**，复制其所有内容，并将其粘贴到文件共享中。
 5. 中转到收件箱应用 ISO 上的 **amd64fre** 文件夹，并将存储库中的内容复制到已准备的收件箱应用。
 
      >[!NOTE]
@@ -169,7 +173,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 该脚本可能需要一段时间，具体取决于安装所需的语言数量。
 
-脚本运行完毕后，请通过转到 " **开始**  >  **设置** " "  >  **& 语言** " 来确保正确安装了语言包  >  **Language** 。 如果语言文件在那里，则一切都已设置完毕。
+脚本运行完毕后，请通过转到 "**开始**  >  **设置**" "  >  **& 语言**" 来确保正确安装了语言包  >  **Language**。 如果语言文件在那里，则一切都已设置完毕。
 
 向 Windows 映像添加其他语言后，还需要更新收件箱应用以支持添加的语言。 这可以通过使用收件箱应用 ISO 中的内容刷新预安装的应用来完成。 若要在断开连接的环境中执行此刷新 (无法从 VM) Internet 访问，可以使用以下 PowerShell 脚本示例来自动执行此过程。
 

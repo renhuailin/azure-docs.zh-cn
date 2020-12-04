@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序设置中的新增功能
 description: Azure Active Directory 应用程序预配的新文档和更新的文档。
-ms.date: 11/05/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174656"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571753"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增功能
 
 欢迎使用 Azure Active Directory 应用程序预配文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="updated-articles"></a>更新的文章
+- [教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md)
+- [预配工作原理](how-provisioning-works.md)
+- [教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配](use-scim-to-provision-users-and-groups.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

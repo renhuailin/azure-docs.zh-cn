@@ -3,13 +3,12 @@ title: 保护 Azure Service Fabric 群集
 description: 了解有关 Azure Service Fabric 群集的安全性方案，以及用于实现它们的各种技术。
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.custom: sfrev
-ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682785"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573062"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -134,7 +133,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 ### <a name="client-authentication-certificates-optional"></a>客户端身份验证证书（可选）
 
-可以指定任意数量的其他证书用于管理员客户端操作或用户客户端操作。 当需要相互身份验证时，客户端可以使用这些证书。 客户端证书通常不由第三方 CA 颁发。 当前用户位置的“个人”存储通常包含由根证书颁发机构放置的客户端证书。 此证书的“预期目的”值应为“客户端身份验证” 。  
+可以指定任意数量的其他证书用于管理员客户端操作或用户客户端操作。 客户端可以在需要相互身份验证时使用这些证书。 客户端证书通常不由第三方 CA 颁发。 当前用户位置的“个人”存储通常包含由根证书颁发机构放置的客户端证书。 此证书的“预期目的”值应为“客户端身份验证” 。  
 
 默认情况下，群集证书具有管理客户端的特权。 这些其他客户端证书不应安装到集群中，而应被指定为允许在群集配置中使用。  但是，客户端证书需要安装在客户端计算机上，以便连接到群集并执行操作。
 

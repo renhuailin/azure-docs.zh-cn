@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917539"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571124"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -150,7 +150,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 6. 隐私策略
 7. 产品名称
 8. 总结
-9. 说明
+9. 描述
 10. 屏幕截图/视频
 11. 文档
 
@@ -160,8 +160,8 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 **调出说明**
 
-1. 标题
-1. 说明
+1. Title
+1. 描述
 1. 有用链接
 1. 屏幕截图
 
@@ -202,7 +202,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
   - .png 文件
   - 必须包含标题
 - **媒体-视频** (可选) ：最多可以添加四个具有以下要求的视频，其中演示了产品/服务：
-  - 名称
+  - “属性”
   - URL：必须仅托管在 YouTube 或 Vimeo 上。
   - 缩略图： 1280 x 720 .png 文件
 
@@ -258,7 +258,7 @@ SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费
 
 - **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅 [云解决方案提供商计划](cloud-solution-providers.md) 。
 
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 请参阅 [合作伙伴中心的共同销售选项](./partner-center-portal/commercial-marketplace-co-sell.md) ，详细了解如何准备产品/服务进行评估。
+- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md) ，详细了解如何准备产品/服务进行评估。
 
 ## <a name="next-steps"></a>后续步骤
 

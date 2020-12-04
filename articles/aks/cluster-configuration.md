@@ -2,16 +2,16 @@
 title: Azure Kubernetes 服务 (AKS) 中的群集配置
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置群集
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736522"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572569"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -302,7 +302,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何在群集中使用 `Kured` [将安全和内核更新应用到 Linux 节点](node-updates-kured.md)。
+- 了解如何 [升级群集中的节点映像](node-image-upgrade.md) 。
 - 若要了解如何将群集升级到最高版本的 Kubernetes，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集](upgrade-cluster.md)。
 - 详细了解[ `containerd` 和 Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - 若要查找有关一些常用 AKS 问题的答案，请参阅 [AKS 常见问题解答](faq.md)。

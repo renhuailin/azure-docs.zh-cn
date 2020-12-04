@@ -6,16 +6,16 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490706"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573657"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管标识在 Azure Blob 存储输出中对 Azure 流分析作业进行身份验证
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储输出的身份验证
 
-用于 Azure Blob 存储输出的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)允许流分析作业直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
+用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md) (预览) 使流分析作业能够直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
 
 本文介绍如何通过 Azure 门户以及通过 Azure 资源管理器部署，为流分析作业的 Blob 输出启用托管标识。
 
@@ -95,7 +95,7 @@ ms.locfileid: "94490706"
     }
     ```
 
-    可使用以下 Azure CLI 命令将上述作业部署到资源组 **ExampleGroup** ：
+    可使用以下 Azure CLI 命令将上述作业部署到资源组 **ExampleGroup**：
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
@@ -146,7 +146,7 @@ ms.locfileid: "94490706"
     }
     ```
 
-   请记下作业定义中的 **principalId** ，它用于在 Azure Active Directory 中标识该作业的托管标识，在下一步骤中，将使用它来为流分析作业授予对存储帐户的访问权限。
+   请记下作业定义中的 **principalId**，它用于在 Azure Active Directory 中标识该作业的托管标识，在下一步骤中，将使用它来为流分析作业授予对存储帐户的访问权限。
 
 3. 创建作业后，请参阅本文的[为流分析作业授予对存储帐户的访问权限](#give-the-stream-analytics-job-access-to-your-storage-account)部分。
 
@@ -155,8 +155,8 @@ ms.locfileid: "94490706"
 
 可以选择为流分析作业授予两种级别的访问权限：
 
-1. **容器级访问权限** ：使用此选项可为作业授予对现有特定容器的访问权限。
-2. **帐户级访问权限** ：使用此选项可为作业授予对存储帐户的一般访问权限，包括创建新容器的能力。
+1. **容器级访问权限**：使用此选项可为作业授予对现有特定容器的访问权限。
+2. **帐户级访问权限**：使用此选项可为作业授予对存储帐户的一般访问权限，包括创建新容器的能力。
 
 除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。  下面将会解释这两个选项在 Azure 门户和命令行中的用法。
 

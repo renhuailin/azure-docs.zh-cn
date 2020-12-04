@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832800"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571090"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure 通信服务的身份验证
 
@@ -58,9 +58,9 @@ Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signatur
     URLPathAndQuery + "\n"
     DateHeaderValue + ";" + HostHeaderValue + ";" + ContentHashHeaderValue
     ```
-1. 为在上一步中创建的 UTF-8 编码字符串生成 HMAC-256 签名。 接下来，将结果编码为 Base64。 请注意，还需要对存储帐户密钥进行 Base64 解码。 使用以下格式 (显示为伪代码) ：
+1. 为在上一步中创建的 UTF-8 编码字符串生成 HMAC-256 签名。 接下来，将结果编码为 Base64。 请注意，还需要对访问密钥进行 Base64 解码。 使用以下格式 (显示为伪代码) ：
     ```
-    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_azure_storage_account_shared_key>)))
+    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_access_key>)))
     ```
 1. 按如下所示指定授权标头：
     ```
@@ -192,5 +192,5 @@ CommunicationUserCredential credential = new CommunicationUserCredential(tokenRe
 > [!div class="nextstepaction"]
 > [创建用户访问令牌](../quickstarts/access-tokens.md)
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 - [了解客户端和服务器体系结构](../concepts/client-and-server-architecture.md)

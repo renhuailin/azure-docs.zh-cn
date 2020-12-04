@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123314"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573368"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -22,7 +22,7 @@ ms.locfileid: "93123314"
 
 以下功能以公共预览版提供。 现在可以使用这些功能，但请勿在生产环境中使用它们。
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>通过托管标识对 SQL 数据库输出进行身份验证
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>用托管标识对 SQL 数据库输出进行身份验证 (预览) 
 
 Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)。 托管标识消除了基于用户的身份验证方法的限制，例如由于密码更改需要重新进行身份验证。 
 

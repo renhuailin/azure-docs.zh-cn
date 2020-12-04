@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458502"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571379"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -93,8 +93,6 @@ ms.locfileid: "96458502"
 
 公司可以使用深度学习来执行文本分析，以检测内幕交易以及政府法规的合规性。 另一个常见示例是保险欺诈：人们经常使用文本分析来分析大量的文件，以识别欺诈性保险索赔的可能性。 
 
-了解如何在 Azure 机器学习中使用 TensorFlow 模型：[使用 TensorFlow 模型将手写数字分类](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>人工神经网络
 
 人工神经网络由连接的节点层构成。 深度学习模型使用包含大量层的神经网络。 
@@ -107,7 +105,7 @@ ms.locfileid: "96458502"
 
 ### <a name="recurrent-neural-network"></a>递归神经网络
 
-递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛应用于时序预测、学习手写文本和识别语言等复杂任务。
+递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛用于复杂任务，如时序预测、学习手写和识别语言。
 
 ### <a name="convolutional-neural-networks"></a>卷积神经网络
 
@@ -118,6 +116,9 @@ ms.locfileid: "96458502"
 ## <a name="next-steps"></a>后续步骤
 
 以下文章介绍了在 [Azure 机器学习](./index.yml?WT.mc_id=docs-article-lazzeri)中使用开源深度学习模型的更多选项：
+
+
+- [使用 TensorFlow 模型将手写数字分类](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [使用 TensorFlow 估算器和 Keras 将手写数字分类](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

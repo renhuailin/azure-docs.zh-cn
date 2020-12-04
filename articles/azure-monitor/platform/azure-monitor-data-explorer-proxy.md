@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8884fd56cfc1e18a0a358d6902f7f8bcbfc1f5d3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551689"
+ms.locfileid: "96572144"
 ---
 # <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
 Azure Monitor 支持 Azure 数据资源管理器之间的跨服务查询、 [Application Insights (AI) ](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics (LA) ](/azure/azure-monitor/platform/data-platform-logs)。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行交叉服务查询。
@@ -20,7 +20,7 @@ Azure Monitor 支持 Azure 数据资源管理器之间的跨服务查询、 [App
 Azure Monitor 跨服务流： :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="azure Monitor 和 azure 数据资源管理器跨服务流。":::
 
 >[!NOTE]
->* Azure Monitor proxy 处于专用预览中-AllowListing 是必需的。
+>* Azure Monitor 交叉服务查询是 AllowListing 所必需的。
 >* 如有任何疑问，请联系 [服务团队](mailto:ADXProxy@microsoft.com) 。
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>跨查询 Log Analytics 或 Application Insights 资源和 Azure 数据资源管理器
 
@@ -66,9 +66,3 @@ Kusto Explorer 会自动将你登录到用户帐户最初所属的租户。 若�
 * [写入查询](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [使用 Azure 数据资源管理器查询 Azure Monitor 中的数据](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [在 Azure Monitor 中执行跨资源日志查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
-
-
-
-
-
-
