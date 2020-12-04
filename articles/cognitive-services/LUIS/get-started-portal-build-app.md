@@ -4,13 +4,13 @@ description: 本快速入门将创建应用的基本组成部分以及意向和�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131443"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436668"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
 
@@ -20,13 +20,13 @@ ms.locfileid: "93131443"
 
 ## <a name="create-an-app"></a>创建应用
 
-若要创建应用程序，请单击“+ 新建应用”。 
+若要创建应用程序，请选择“+ 新建应用”。 
 
 在显示的窗口中，输入以下信息：
 
 |名称  |说明  |
 |---------|---------|
-|名称     | 应用的名称。 例如“home automation”。 必需。        |
+|名称     | 应用的名称， 例如“home automation”。 必需。        |
 |环境     | 应用能够理解和显示的语言。 必需。   |
 |说明 | 应用的说明。 可选。
 |预测资源 | 将接收查询的预测资源。 可选。 |
@@ -155,7 +155,7 @@ ms.locfileid: "93131443"
    > [!div class="mx-imgBorder"]
    > ![在测试窗格中测试新言语的屏幕截图](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   排名靠前的预测意向为 **FindForm** （正确），其置信度超过 90% (0.977)。 已提取“FormNumber”实体，其值为 hrf-234098。
+   排名靠前的预测意向为 **FindForm**（正确），其置信度超过 90% (0.977)。 已提取“FormNumber”实体，其值为 hrf-234098。
 
 ## <a name="clean-up-resources"></a>清理资源
 

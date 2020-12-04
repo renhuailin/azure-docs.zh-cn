@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358063"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187285"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入门 - 使用 ADT Explorer 探索示例 Azure 数字孪生方案
 
@@ -66,6 +66,7 @@ ms.locfileid: "94358063"
 1. 按照[此安装链接](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)上的过程进行操作，完成与你的操作系统相匹配的安装。
 1. 在计算机上打开控制台窗口。
 1. 运行 `az login` 并按照身份验证提示操作以登录到 Azure 帐户。
+1. 可能执行的最后一步：如果在此帐户下使用多个 Azure 订阅，请运行 `az account set --subscription "<your-subscription-name-or-ID>"` 来将身份验证上下文设置为包含 Azure 数字孪生实例的 Azure 订阅（订阅的名称或 ID 值也有效）。
 
 登录后，在下一部分中运行 ADT Explorer 时，它会自动获取 Azure 凭据。
 
@@ -90,7 +91,7 @@ ms.locfileid: "94358063"
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="在窗口顶部附近突出显示“登录”图标的 ADT 资源管理器。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. 输入先前在[先决条件](#prerequisites)部分中收集的 Azure 数字孪生实例 URL，格式为 https://{instance host name}。
+1. 输入之前在[设置 Azure 数字孪生实例](#set-up-an-azure-digital-twins-instance)部分中收集的 Azure 数字孪生实例 URL，格式为 https://{instance host name}。
 
 >[!NOTE]
 > 可随时重新访问或编辑此信息，方法是选择相同图标以再次打开“登录”框。 它将保留你传入的值。

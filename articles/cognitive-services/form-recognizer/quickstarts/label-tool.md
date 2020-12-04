@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360864"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009324"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -42,8 +42,17 @@ ms.locfileid: "93360864"
 
 若要在线试用表单识别器示例标记工具，请转到 [FOTT 网站](https://fott-preview.azurewebsites.net/)。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [表单识别器示例标记工具](https://fott-preview.azurewebsites.net/)
+> [试用预生成模型](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [试用预生成模型](https://fott-preview.azurewebsites.net/)
+
+---
+
+若要试用表单识别器服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具
@@ -68,8 +77,6 @@ ms.locfileid: "93360864"
 
 
 
-
-
 1. 通过 `docker pull` 命令获取示例标记工具容器。
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -78,7 +85,7 @@ ms.locfileid: "93360864"
     ```
     # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ ms.locfileid: "93360864"
     ```
     # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -193,7 +200,7 @@ ms.locfileid: "93360864"
    1. 单击 **+** 创建新标记。
    1. 输入标记名称。
    1. 按 Enter 保存标记。
-1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 预览版中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
+1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 preview.2 中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
 1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 标记窗体时，请记住以下提示。
