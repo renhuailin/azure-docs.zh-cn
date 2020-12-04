@@ -1,17 +1,15 @@
 ---
 title: 在 Azure Service Fabric 中与服务建立连接并与之通信
 description: 了解如何在 Service Fabric 中解析服务、建立连接以及与之通信。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093321"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576292"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -30,7 +28,7 @@ Service Fabric 可帮助管理服务的生命周期，但是它不会制定有�
 
 Service Fabric 提供一种服务发现和解析服务，称为“命名服务”。 命名服务维护一个表，它将命名服务实例映射到它们所侦听的终结点地址。 Service Fabric 中的所有命名服务实例都具有表示为 URI 的唯一名称，例如 `"fabric:/MyApplication/MyService"`。 服务的名称在服务的生存期内不会更改，只有终结点地址才能在服务移动时发生更改。 这与 URL 保持不变但 IP 地址可能会更改的网站类似。 与 Web 上的 DNS（将网站 URL 解析为 IP 地址）类似，Service Fabric 具有一个注册机构，它将服务名称映射到其终结点地址。
 
-![显示 Service Fabric 有一个将服务名称映射到其终结点地址的注册器。][2]
+![此图显示了 Service Fabric 具有将服务名称映射到其终结点地址的注册器。][2]
 
 解析服务以及连接到服务涉及循环运行的以下步骤：
 
@@ -47,14 +45,14 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 
 如下图所示，Service Fabric 群集中运行的 DNS 服务会将 DNS 名称映射到服务名称，服务名称随后会被命名服务解析，以返回要连接的终结点地址。 在创建时提供服务的 DNS 名称。 
 
-![显示 DNS 服务在 Service Fabric 群集中运行时如何将 DNS 名称映射到服务名称的关系图，该名称随后由命名服务解析，以返回要连接的终结点地址。][9]
+![此图显示了 DNS 服务在 Service Fabric 群集中运行时如何将 DNS 名称映射到服务名称，然后命名服务解析服务名称以返回要连接的终结点地址。][9]
 
 有关如何使用 DNS 服务的更多详细信息，请参阅 [Azure Service Fabric 中的 DNS 服务](service-fabric-dnsservice.md)一文。
 
 ### <a name="reverse-proxy-service"></a>反向代理服务
 反向代理处理群集中的服务，群集公开包括 HTTPS 在内的 HTTP 终结点。 反向代理具有特定的 URI 格式，能够极大地简化调用其他服务及其方法的操作，它能够处理一个服务使用命名服务与其他服务进行通信所需完成的解析、连接、重试步骤。 换而言之，它会在调用其他服务时对用户隐藏命名服务，并让这一操作和调用 URL 一样简单。
 
-![显示反向代理如何解决群集中公开 HTTP 终结点（包括 HTTPS）的服务的关系图。][10]
+![此图显示了反向代理如何处理群集中公开 HTTP 终结点（包括 HTTPS）的服务。][10]
 
 有关如何使用反向代理服务的更多详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)一文。
 
@@ -66,7 +64,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 
 ![Azure 负载均衡器和 Service Fabric 拓扑][3]
 
-例如，若要在端口 **80**上接受外部流量，必须配置以下项：
+例如，若要在端口 **80** 上接受外部流量，必须配置以下项：
 
 1. 编写侦听端口 80 的服务。 在服务的 ServiceManifest.xml 中配置端口 80，并在服务中打开一个侦听器，例如自托管的 Web 服务器。
 
@@ -153,7 +151,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
     ![在节点类型上打开端口][4]
 3. 创建了群集之后，在群集的资源组中配置 Azure 负载均衡器以在端口 80 上转发流量。 通过 Azure 门户创建群集时，会为每个已配置的自定义终结点端口自动设置此项。
 
-    ![突出显示 "负载均衡规则" 下的 "后端端口" 字段的屏幕截图。][5]
+    ![此屏幕截图突出显示了“负载均衡规则”下的“后端端口”字段。][5]
 4. Azure 负载均衡器使用探测确定是否要将流量发送到特定节点。 探测会定期检查每个节点上的终结点以确定节点是否正在进行响应。 如果探测未能在配置的次数之后收到响应，则负载均衡器会停止将流量发送到该节点。 通过 Azure 门户创建群集时，会为每个已配置的自定义终结点端口自动设置探测。
 
     ![在 Azure 负载均衡器中转发流量][8]

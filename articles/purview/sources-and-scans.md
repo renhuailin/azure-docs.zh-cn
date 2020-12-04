@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5c5be9089992104d27af3db84eb2c9a165f779f2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551761"
+ms.locfileid: "96576666"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure 监控范围中受支持的数据源和文件类型
 
@@ -32,7 +32,7 @@ Azure 监控范围支持以下源：
 | Azure 数据资源管理器                      | Service Principal                              | HP-UX            |
 | Azure Data Lake Storage Gen1 (ADLS Gen1)  | 服务主体，MSI                              | HP-UX            |
 | Azure Data Lake Storage Gen2 (ADLS Gen2) | 帐户密钥、服务主体、MSI            | HP-UX            |
-| Cosmos DB                                 | 帐户密钥                                    | HP-UX            |
+| Azure Cosmos DB                          | 帐户密钥                                    | HP-UX            |
 
 
 > [!Note]

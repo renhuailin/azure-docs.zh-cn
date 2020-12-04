@@ -3,13 +3,12 @@ title: Azure Service Fabric - 配置容器存储库凭据
 description: 配置存储库凭据以从容器注册表下载映像
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c6421fed88a3909db717c13a6b3faf51c4491cd
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978673"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574813"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>配置应用程序的存储库凭据以下载容器映像
 
@@ -98,7 +97,7 @@ Service Fabric 支持使用令牌作为凭据下载容器的映像。  此功能
     ![Azure 门户：创建虚拟机规模集标识选项](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
 > [!NOTE]
-> 对于用户分配的托管标识，请跳过此步骤。 如果规模集只与一个用户分配的托管标识相关联，则以下剩余步骤将起作用。
+> 对于用户分配的托管标识，请跳过此步骤。 如果规模集只与一个用户分配的托管标识相关联，则以下剩余步骤的作用相同。
 
 2. 向虚拟机规模集授予从注册表中拉取/读取映像的权限。 从 Azure 门户中 Azure 容器注册表的“访问控制(IAM)”边栏选项卡中，为虚拟机添加角色分配：
 

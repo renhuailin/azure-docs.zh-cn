@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ea12bf8a8d93f14c5364864b97d1173fe8602765
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 00f72e1de230cdc68f86010b7b25d86debaa5eb5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551770"
+ms.locfileid: "96575782"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>在 Azure 监控范围中扫描有关数据的见解
 
@@ -20,8 +20,9 @@ ms.locfileid: "96551770"
 
 在本操作方法指南中，你将学习如何执行以下操作：
 
-* 从你的监控范围帐户查看见解。
-* 获取扫描的鸟瞰视图。
+> [!div class="checklist"]
+> * 从你的监控范围帐户查看见解。
+> * 获取扫描的鸟瞰视图。
 
 ## <a name="prerequisites"></a>先决条件
 

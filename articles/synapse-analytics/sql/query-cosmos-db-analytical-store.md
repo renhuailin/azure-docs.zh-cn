@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462688"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576343"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -33,6 +33,12 @@ ms.locfileid: "96462688"
 
 ## <a name="overview"></a>概述
 
+无服务器 SQL 池可用于通过函数查询 Azure Cosmos DB 分析存储 `OPENROWSET` 。 
+- `OPENROWSET` 带内联键的。 此语法可用于查询 Azure Cosmos DB 集合，而无需准备凭据。
+- `OPENROWSET` 包含 Cosmos DB 帐户密钥的引用凭据。 此语法可用于在 Azure Cosmos DB 集合上创建视图。
+
+### <a name="openrowset-with-key"></a>[带有键的 OPENROWSET](#tab/openrowset-key)
+
 若要支持在 Azure Cosmos DB 分析存储中查询和分析数据，无服务器 SQL 池使用以下 `OPENROWSET` 语法：
 
 ```sql
@@ -45,17 +51,39 @@ OPENROWSET(
 
 Azure Cosmos DB 连接字符串指定 Azure Cosmos DB 帐户名称、数据库名称、数据库帐户主密钥和函数的可选区域名称 `OPENROWSET` 。
 
-> [!IMPORTANT]
-> 请确保使用某种 UTF-8 数据库排序规则（例如）， `Latin1_General_100_CI_AS_SC_UTF8` 因为 Azure Cosmos DB 分析存储中的字符串值将编码为 utf-8 文本。
-> 文件和排序规则中的文本编码之间的不匹配可能会导致意外的文本转换错误。
-> 您可以使用 T-sql 语句轻松更改当前数据库的默认排序规则 `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` 。
-
 连接字符串具有以下格式：
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 在语法中指定 Azure Cosmos DB 容器名称时不带引号 `OPENROWSET` 。 如果容器名称包含任何特殊字符（例如，短划线 (-) ），则应将名称括在方括号中 (`[]`) 中 `OPENROWSET` 。
+
+### <a name="openrowset-with-credential"></a>[带有 credential 的 OPENROWSET](#tab/openrowset-credential)
+
+你可以使用 `OPENROWSET` 引用 credential 的语法：
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+在这种情况下，Azure Cosmos DB 连接字符串不包含键。 连接字符串具有以下格式：
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+数据库帐户主密钥置于服务器级别凭据或数据库作用域凭据中。 
+
+---
+
+> [!IMPORTANT]
+> 请确保使用某种 UTF-8 数据库排序规则（例如）， `Latin1_General_100_CI_AS_SC_UTF8` 因为 Azure Cosmos DB 分析存储中的字符串值将编码为 utf-8 文本。
+> 文件和排序规则中的文本编码之间的不匹配可能会导致意外的文本转换错误。
+> 您可以使用 T-sql 语句轻松更改当前数据库的默认排序规则 `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` 。
 
 > [!NOTE]
 > 无服务器 SQL 池不支持查询 Azure Cosmos DB 事务存储。
@@ -76,6 +104,9 @@ Azure Cosmos DB 连接字符串指定 Azure Cosmos DB 帐户名称、数据库�
 
 在 Azure Cosmos DB 中浏览数据的最简单方法是使用自动架构推理功能。 通过 `WITH` 从语句中省略子句 `OPENROWSET` ，可以指示无服务器 SQL 池自动检测 (推断) Azure Cosmos DB 容器的分析存储的架构。
 
+
+### <a name="openrowset-with-key"></a>[带有键的 OPENROWSET](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
@@ -83,6 +114,25 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
+
+### <a name="openrowset-with-credential"></a>[带有 credential 的 OPENROWSET](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
 在前面的示例中，我们 `covid` `MyCosmosDbAccount` 通过使用 Azure Cosmos DB 密钥 (上述示例中的虚拟) 中所述，将无服务器 SQL 池连接到 Azure Cosmos DB 帐户中的数据库。 然后， `EcdcCases` 在该区域中访问容器的分析存储 `West US 2` 。 由于没有特定属性的投影，该 `OPENROWSET` 函数将返回 Azure Cosmos DB 项中的所有属性。
 
 假定 Azure Cosmos DB 容器中的项具有 `date_rep` 、 `cases` 和 `geo_id` 属性，下表显示了此查询的结果：
@@ -119,6 +169,7 @@ FROM OPENROWSET(
 
 Azure Cosmos DB 中的这些简单 JSON 文档可表示为 Synapse SQL 中的一组行和列。 使用 `OPENROWSET` 函数可以指定要读取的属性的子集和子句中的确切列类型 `WITH` ：
 
+### <a name="openrowset-with-key"></a>[带有键的 OPENROWSET](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -127,7 +178,21 @@ FROM OPENROWSET(
        EcdcCases
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[带有 credential 的 OPENROWSET](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 此查询的结果如下表所示：
 
 | date_rep | cases | geo_id |
@@ -137,6 +202,26 @@ FROM OPENROWSET(
 | 2020-08-11 | 163 | RS |
 
 有关应该用于 Azure Cosmos DB 值的 SQL 类型的详细信息，请参阅本文末尾的 [sql 类型映射规则](#azure-cosmos-db-to-sql-type-mappings) 。
+
+## <a name="create-view"></a>创建视图
+
+确定架构后，可以在 Azure Cosmos DB 数据的基础上准备视图。 应将 Azure Cosmos DB 帐户密钥置于单独的凭据中，并从函数引用此凭据 `OPENROWSET` 。 不要在视图定义中保留你的帐户密钥。
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+GO
+CREATE OR ALTER VIEW EcdcCases
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+不要使用 `OPENROWSET` 没有显式定义的架构，因为这可能会影响性能。 请确保使用列的最小可能大小 (例如 VARCHAR (100) ，而不是默认 VARCHAR (8000) # A5。 你应使用某种 UTF-8 排序规则作为默认数据库排序规则或将其设置为显式列排序规则，以避免 [utf-8 转换问题](/troubleshoot/reading-utf8-text)。 排序规则 `Latin1_General_100_BIN2_UTF8` 可以在使用某些字符串列筛选数据时提供最佳性能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查询嵌套对象和数组
 
@@ -264,7 +349,7 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、Boolean、null�
 | --- | --- |
 | 布尔 | bit |
 | Integer | bigint |
-| 小数 | FLOAT |
+| 小数 | float |
 | String | varchar (UTF-8 数据库排序规则)  |
 |  (ISO 格式的字符串的日期时间)  | varchar (30)  |
 | UNIX 时间戳 (日期时间)  | bigint |

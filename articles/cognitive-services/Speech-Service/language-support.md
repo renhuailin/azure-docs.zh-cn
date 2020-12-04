@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487263"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575527"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |阿拉伯语(巴林)，现代标准  |`ar-BH` | 语言模型                                   |
 |阿拉伯语（埃及）                     |`ar-EG` | 语言模型                                   |
 |阿拉伯语（伊拉克）                      |`ar-IQ` | 语言模型                                   |
+|阿拉伯语（以色列）                              |`ar-IL` | 语言模型                                                   |
 |阿拉伯语（约旦）                    |`ar-JO` | 语言模型                                   |
 |阿拉伯语(科威特)                    |`ar-KW` | 语言模型                                   |
 |阿拉伯语（黎巴嫩）                   |`ar-LB` | 语言模型                                   |
 |阿拉伯语（阿曼）                      |`ar-OM` | 语言模型                                   |
 |阿拉伯语（卡塔尔）                     |`ar-QA` | 语言模型                                   |
 |阿拉伯语（沙特阿拉伯）              |`ar-SA` | 语言模型                                   |
+|Palestine) 的阿拉伯语 (状态            |`ar-PS` | 语言模型                                   |
 |阿拉伯语（叙利亚）                     |`ar-SY` | 语言模型                                   |
 |阿拉伯语（阿拉伯联合酋长国）      |`ar-AE` | 语言模型                                   |
 |保加利亚语(保加利亚)               |`bg-BG` | 语言模型                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |英语（印度）                    |`en-IN` | 声学模型<br>语言模型                 |
 |英语（爱尔兰）                  |`en-IE` | 语言模型                                   |
 |英语（新西兰）              |`en-NZ` | 声学模型<br>语言模型                 |
+|英语 (尼日利亚)                           |`en-NG` | 语言模型                                                     |
 |英语（菲律宾）              |`en-PH` | 语言模型                                   |
 |英语（新加坡）                |`en-SG` | 语言模型                                   |
 |英语（南非）             |`en-ZA` | 语言模型                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |西班牙语（多米尼加共和国）       |`es-DO` | 语言模型                                   |
 |西班牙语（厄瓜多尔）                  |`es-EC` | 语言模型                                   |
 |西班牙语（萨尔瓦多）              |`es-SV` | 语言模型                                   |
+|西班牙语 (赤道几内亚)             |`es-GQ` | 语言模型                                   |
 |西班牙语（危地马拉）                |`es-GT` | 语言模型                                   |
 |西班牙语（洪都拉斯）                 |`es-HN` | 语言模型                                   |
 |西班牙语（墨西哥）                   |`es-MX` | 声学模型<br>语言模型                 |
@@ -152,13 +156,13 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 荷兰语（荷兰） | `nl-NL` | Female | `nl-NL-ColetteNeural` | 常规 |
 | 英语（澳大利亚） | `en-AU` | Female | `en-AU-NatashaNeural` | 常规 |
 | 英语（澳大利亚） | `en-AU` | 男   | `en-AU-WilliamNeural` <sup>新建</sup>  | 常规 |
-| 英语（加拿大） | `en-CA` | Female | `en-CA-ClaraNeural` | 常规 |
+| 英语（加拿大） | `en-CA` | 女 | `en-CA-ClaraNeural` | 常规 |
 | 英语（印度） | `en-IN` | Female | `en-IN-NeerjaNeural` | 常规 |
 | 英语（爱尔兰） | `en-IE` | Female | `en-IE-EmilyNeural` <sup>新建</sup> | 常规 |
 | 英语(英国) | `en-GB` | Female | `en-GB-LibbyNeural` | 常规 |
 | 英语(英国) | `en-GB` | Female | `en-GB-MiaNeural` | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-AriaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
+| 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
 | 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规 |
 | 英语（美国） | `en-US` | Female | `en-US-JennyNeural` <sup>新建</sup> | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
 | 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-NooraNeural` | 常规 |
@@ -170,11 +174,11 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 德语（奥地利） | `de-AT` | Female | `de-AT-IngridNeural` <sup>新建</sup> | 常规 |
 | 德语（德国） | `de-DE` | Female | `de-DE-KatjaNeural` | 常规 |
 | 德语（德国） | `de-DE` | 男 | `de-DE-ConradNeural` <sup>新建</sup> | 常规 |
-| 德语（瑞士） | `de-CH` | Female | `de-CH-LeniNeural` <sup>新建</sup> | 常规 |
-| 希腊语（希腊） | `el-GR` | Female | `el-GR-AthinaNeural` <sup>新建</sup> | 常规 |
-| 希伯来语(以色列) | `he-IL` | Female | `he-IL-HilaNeural` <sup>新建</sup> | 常规 |
-| 印地语（印度） | `hi-IN` | Female | `hi-IN-SwaraNeural` | 常规 |
-| 匈牙利语（匈牙利） | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>新建</sup> | 常规 |
+| 德语（瑞士） | `de-CH` | 女 | `de-CH-LeniNeural` <sup>新建</sup> | 常规 |
+| 希腊语(希腊) | `el-GR` | 女 | `el-GR-AthinaNeural` <sup>新建</sup> | 常规 |
+| 希伯来语(以色列) | `he-IL` | 女 | `he-IL-HilaNeural` <sup>新建</sup> | 常规 |
+| 印地语（印度） | `hi-IN` | 女 | `hi-IN-SwaraNeural` | 常规 |
+| 匈牙利语(匈牙利) | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>新建</sup> | 常规 |
 | 印度尼西亚语(印度尼西亚) | `id-ID` | 男 | `id-ID-ArdiNeural` <sup>新建</sup> | 常规 |
 | 意大利语（意大利） | `it-IT` | Female | `it-IT-ElsaNeural` | 常规 |
 | 意大利语（意大利） | `it-IT` | Female | `it-IT-IsabellaNeural` <sup>新建</sup> | 常规 |
@@ -183,12 +187,12 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 日语（日本） | `ja-JP` | 男 | `ja-JP-KeitaNeural` <sup>新建</sup> | 常规 |
 | 韩语(韩国) | `ko-KR` | Female | `ko-KR-SunHiNeural` | 常规 |
 | 韩语(韩国) | `ko-KR` | 男 | `ko-KR-InJoonNeural` <sup>新建</sup> | 常规 |
-| 马来语（马来西亚） | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>新建</sup> | 常规 |
+| 马来语（马来西亚） | `ms-MY` | 女 | `ms-MY-YasminNeural` <sup>新建</sup> | 常规 |
 | 挪威语（博克马尔语，挪威） | `nb-NO` | Female | `nb-NO-IselinNeural` | 常规 |
 | 波兰语（波兰） | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 常规 |
 | 葡萄牙语（巴西） | `pt-BR` | Female | `pt-BR-FranciscaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式 |
-| 葡萄牙语（巴西） | `pt-BR` | 男 | `pt-BR-AntonioNeural` <sup>新建</sup> | 常规 |
-| 葡萄牙语(葡萄牙) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 常规 |
+| 葡萄牙语(巴西) | `pt-BR` | 男 | `pt-BR-AntonioNeural` <sup>新建</sup> | 常规 |
+| 葡萄牙语(葡萄牙) | `pt-PT` | 女 | `pt-PT-FernandaNeural` | 常规 |
 | 罗马尼亚语(罗马尼亚) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>新建</sup> | 常规 |
 | 俄语（俄罗斯） | `ru-RU` | Female | `ru-RU-DariyaNeural` | 常规 |
 | 斯洛伐克语(斯洛伐克) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` <sup>新建</sup> | 常规 |
@@ -280,19 +284,19 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 法语（法国） | `fr-FR` | 男 | `fr-FR-Paul`|
 | 法语（瑞士） | `fr-CH` | 男 | `fr-CH-Guillaume`|
 | 德语（奥地利） | `de-AT` | 男 | `de-AT-Michael`|
-| 德语（德国） | `de-DE` | Female | `de-DE-HeddaRUS`|
+| 德语（德国） | `de-DE` | 女 | `de-DE-HeddaRUS`|
 | 德语（德国） | `de-DE` | 男 | `de-DE-Stefan`|
 | 德语（瑞士） | `de-CH` | 男 | `de-CH-Karsten`|
 | 希腊语(希腊) | `el-GR` | 男 | `el-GR-Stefanos`|
 | 希伯来语（以色列） | `he-IL` | 男 | `he-IL-Asaf`|
 | 印地语（印度） | `hi-IN` | 男 | `hi-IN-Hemant`|
-| 印地语（印度） | `hi-IN` | Female | `hi-IN-Kalpana`|
-| 匈牙利语（匈牙利） | `hu-HU` | 男 | `hu-HU-Szabolcs`|
+| 印地语（印度） | `hi-IN` | 女 | `hi-IN-Kalpana`|
+| 匈牙利语(匈牙利) | `hu-HU` | 男 | `hu-HU-Szabolcs`|
 | 印度尼西亚语(印度尼西亚) | `id-ID` | 男 | `id-ID-Andika`|
 | 意大利语（意大利） | `it-IT` | 男 | `it-IT-Cosimo`|
-| 意大利语（意大利） | `it-IT` | Female | `it-IT-LuciaRUS`|
+| 意大利语（意大利） | `it-IT` | 女 | `it-IT-LuciaRUS`|
 | 日语（日本） | `ja-JP` | Female | `ja-JP-Ayumi`|
-| 日语（日本） | `ja-JP` | Female | `ja-JP-HarukaRUS`|
+| 日语（日本） | `ja-JP` | 女 | `ja-JP-HarukaRUS`|
 | 日语（日本） | `ja-JP` | 男 | `ja-JP-Ichiro`|
 | 韩语(韩国) | `ko-KR` | Female | `ko-KR-HeamiRUS`|
 | 马来语（马来西亚） | `ms-MY` | 男 | `ms-MY-Rizwan`|
@@ -428,8 +432,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 |德语（德国）     | de-DE     | 不适用     | 是     | 是|
 |意大利语 | it-IT     |     不适用     | 是 |     是|
 |日语     | ja-JP | 不适用     | 是     | 是|
-|葡萄牙语（巴西） | pt-BR |     不适用 |     是 |     是|
-|西班牙语（墨西哥）     | es-MX     | 不适用 |     是 |     是|
+|葡萄牙语(巴西) | pt-BR |     不适用 |     是 |     是|
+|西班牙语(墨西哥)     | es-MX     | 不适用 |     是 |     是|
 |西班牙语(西班牙)     | es-ES | 不适用     | 是 |     是|
 
 ## <a name="next-steps"></a>后续步骤

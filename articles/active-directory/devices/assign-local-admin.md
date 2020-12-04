@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511111"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575816"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -81,7 +81,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 目前，Intune 中没有用于管理这些策略的 UI，需要使用 [自定义 Oma-uri 设置](/mem/intune/configuration/custom-settings-windows-10)进行配置。 使用以下任一策略时，需要注意以下事项： 
 
-- 通过策略添加 Azure AD 组需要可通过执行组 API 获取的组的 SID。 SID 由 `securityIdentifier` 组 API 中的属性定义。
+- 通过策略添加 Azure AD 组需要可通过 [对组执行 MICROSOFT GRAPH API](/graph/api/resources/group?view=graph-rest-beta)来获取的组的 SID。 SID 由 `securityIdentifier` API 响应中的属性定义。
 - 强制执行 "限制组" 策略时，将删除组中不在成员列表中的任何当前成员。 因此，对新成员或组强制实施此策略将删除加入设备的用户、设备管理员角色和设备的全局管理员角色的现有管理员。 若要避免删除现有成员，需要在受限制的组策略中将其配置为成员列表的一部分。 如果使用允许增量更新到组成员身份的本地用户和组策略，则会解决此限制
 - 使用这两种策略的管理员权限仅针对 Windows 10 设备管理员、用户、来宾、高级用户、远程桌面用户和远程管理用户上的以下已知组进行评估。 
 - 使用 Azure AD 组管理本地管理员不适用于已加入混合 Azure AD 或 Azure AD 注册设备。

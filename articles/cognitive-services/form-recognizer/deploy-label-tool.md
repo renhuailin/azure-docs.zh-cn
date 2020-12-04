@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913103"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576547"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -41,9 +41,9 @@ ms.locfileid: "92913103"
 
 按照以下步骤使用 Azure 门户创建新资源： 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/signin/index/)。
-2. 选择“创建资源”。 
-3. 接下来，选择 " **Web 应用** "。 
+1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
+2. 选择“创建资源”。  
+3. 接下来，选择 " **Web 应用**"。 
 
    > [!div class="mx-imgBorder"]
    > ![选择 web 应用](./media/quickstarts/formre-create-web-app.png)
@@ -95,7 +95,7 @@ ms.locfileid: "92913103"
    > [!div class="mx-imgBorder"]
    > ![配置 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 就是这样。 接下来，依次选择 " **查看** " 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
+7. 就是这样。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
 
 > [!NOTE]
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。 
@@ -136,7 +136,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

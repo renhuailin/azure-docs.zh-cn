@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: beaa231eddd57e29578a1d69ee30af05ce7c8d0f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551763"
+ms.locfileid: "96575748"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>有关 Azure 监控范围中的数据的敏感度标签见解
 
@@ -75,6 +75,7 @@ ms.locfileid: "96551763"
    |**表中应用的顶部标签**     | 显示应用于数据中的数据库表的顶部敏感度标签。 |   
    |  **标记活动**  |  显示文件和表的单独图形，每个图形显示在所选时间范围内标记的文件或表的数量。 <br>**默认值**：30天<br>选择图表上方的 **时间** 筛选器，以选择要显示的其他时间范围。    |
    |    |    |
+
 ## <a name="sensitivity-labeling-insights-drilldown"></a>敏感度标签 insights 深化
 
 在以下任何 **敏感度标记见解** 关系图中，选择 " **查看更多** " 链接以了解更多详细信息：
@@ -98,6 +99,7 @@ ms.locfileid: "96551763"
 |**进一步向下钻取**     | 若要向下钻取到特定标签，请在 " **敏感度标签** " 列中选择一个名称，以 **按源** 报表查看标签。 <br><br>此报表显示所选标签的数据，其中包括源名称、源类型、订阅 ID 以及已分类文件和表的数量。      |
 |**浏览资产**     |  若要浏览使用特定标签或源找到的资产，请选择一个或多个标签或源（具体取决于你正在查看的报表），然后选择 " **浏览** :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: " 筛选器之上的 "资产"。 <br><br>搜索结果将显示为所选筛选器找到的所有标记的资产。  有关详细信息，请参阅 [搜索 Azure 监控范围 Data Catalog](how-to-search-catalog.md)。       |
 | | |
+
 ## <a name="sensitivity-label-integration-with-microsoft-365-compliance"></a>敏感度标签与 Microsoft 365 相容性集成
 
 与在 Microsoft 365 中提供的 [Microsoft 信息保护](/microsoft-365/compliance/information-protection) 实现了集成，这意味着监控范围启用了直接的方式来扩展数据空间，并对数据进行分类和标记。
@@ -108,15 +110,9 @@ ms.locfileid: "96551763"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure 监控范围见解报表的详细信息
-> [!div class="nextstepaction"]
-> [词汇表见解](glossary-insights.md)
+了解有关这些 Azure 监控范围见解报表的详细信息：
 
-> [!div class="nextstepaction"]
-> [扫描见解](scan-insights.md)
-
-> [!div class="nextstepaction"]
-> [分类见解](./classification-insights.md)
-
-> [!div class="nextstepaction"]
-> [文件扩展见解](file-extension-insights.md)
+- [词汇表见解](glossary-insights.md)
+- [扫描见解](scan-insights.md)
+- [分类见解](./classification-insights.md)
+- [文件扩展见解](file-extension-insights.md)

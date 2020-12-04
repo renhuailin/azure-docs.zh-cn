@@ -3,13 +3,12 @@ title: Azure 的托管标识
 description: 了解如何通过 Service Fabric 使用 Azure 的托管标识。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257629"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574745"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>通过 Service Fabric 使用 Azure 的托管标识
 
@@ -24,16 +23,16 @@ ms.locfileid: "86257629"
 
 Azure 托管标识基于几个关键概念：
 
-- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定（另请参阅[应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。）
+- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定（另请参阅 [应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。）
 
 - **主体 ID** - 托管标识的服务主体对象的对象 ID，用于授予对 Azure 资源的基于角色的访问权限。
 
-- **服务主体** - 一个 Azure Active Directory 对象，表示给定租户中 AAD 应用程序的投影（另请参阅[服务主体](../active-directory/develop/developer-glossary.md#service-principal-object)。）
+- **服务主体** - 一个 Azure Active Directory 对象，表示给定租户中 AAD 应用程序的投影（另请参阅 [服务主体](../active-directory/develop/developer-glossary.md#service-principal-object)。）
 
 托管标识分为两种类型：
 
 - 系统分配托管标识直接在 Azure 服务实例上启用。  系统分配标识的生命周期对于启用它的 Azure 服务实例来说是独一无二的。
-- **用户分配托管标识**是作为独立的 Azure 资源创建的。 可以将该标识分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期对其进行管理。
+- **用户分配托管标识** 是作为独立的 Azure 资源创建的。 可以将该标识分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期对其进行管理。
 
 若要进一步了解托管标识类型之间的差异，请参阅 [Azure 资源托管标识如何工作](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 

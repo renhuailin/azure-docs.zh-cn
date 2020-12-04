@@ -3,20 +3,19 @@ title: 在现有 Service Fabric 群集中配置托管标识支持
 description: 下面介绍如何在现有 Azure Service Fabric 群集中启用托管标识支持
 ms.topic: article
 ms.date: 03/11/2019
-ms.custom: sfrev
-ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257623"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574694"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有 Service Fabric 群集中配置托管标识支持
 
 若要在 Service Fabric 应用程序中使用 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用“托管标识令牌服务”。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE]
-> 若要启用**托管标识令牌服务**，必须使用 Service Fabric 运行时 6.5.658.9590 或更高版本。  
+> 若要启用 **托管标识令牌服务**，必须使用 Service Fabric 运行时 6.5.658.9590 或更高版本。  
 >
 > 可以在 Azure 门户中查找 Service Fabric 版群集，方法是：打开群集资源，然后在“基本信息”部分查找“Service Fabric 版本”属性。 
 >

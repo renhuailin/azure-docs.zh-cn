@@ -3,13 +3,12 @@ title: 应用程序方案和设计
 description: Service Fabric 中云应用程序的类别概述。 介绍使用有状态服务和无状态服务的应用程序设计。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.custom: sfrev
-ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86248163"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575663"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 

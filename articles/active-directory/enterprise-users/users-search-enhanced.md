@@ -7,19 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8684b2af99eda00fbba47db444fcf6ee19117a1e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488515"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576258"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中 (预览) 的用户管理增强功能
 
@@ -145,7 +146,7 @@ ms.locfileid: "95488515"
 
 用户操作
 
-- [添加或更改个人资料信息](../fundamentals/active-directory-users-profile-azure-portal.md)
+- [添加或更改配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)
 - [添加或删除用户](../fundamentals/add-users-azure-active-directory.md)
 
 大容量操作

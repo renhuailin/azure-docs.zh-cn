@@ -4,13 +4,12 @@ description: 在规划 Service Fabric 群集时要考虑节点类型、持久性
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817732"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576326"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -40,21 +39,21 @@ ms.locfileid: "91817732"
 
 初始节点类型的数量取决于集群的目的以及集群上运行的应用程序和服务。 考虑以下问题：
 
-* ***应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？***
+* ***应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？** _
 
     典型的应用程序包括从客户端接收输入的前端网关服务，以及与前端服务进行通信的一个或多个后端服务，前端和后端服务之间单独联网。 这些情况通常需要三种节点类型：一个主节点类型和两个非主节点类型（分别用于前端和后端服务）。
 
-* ***构成应用程序的各项服务是否有不同的基础结构要求，例如更多的 RAM 或更高的 CPU 周期？***
+_ ***构成应用程序的各项服务是否有不同的基础结构要求，例如更多的 RAM 或更高的 CPU 周期？** _
 
-    前端服务通常可以在容量较小（如 D2 等 VM 大小）且向 Internet 开放了端口的 VM 上运行。  计算密集型后端服务可能需要在不面向 Internet 的大型 VM（D4、D6、D15 等 VM 大小）上运行。 为这些服务定义不同的节点类型，可以更有效、更安全地使用基础 Service Fabric VM，并使它们能够独立缩放。 有关估算所需资源量的详细信息，请参阅 [Service Fabric 应用程序的容量计划](service-fabric-capacity-planning.md)
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-* ***是否有应用程序服务需要扩展到 100 个节点以上？***
+_ ***是否有应用程序服务需要横向扩展到 100 个节点以上？** _
 
-    对于 Service Fabric 应用程序，单个节点类型无法可靠地扩展到每个虚拟机规模集 100 个节点以上。 运行超过 100 个节点需要额外的虚拟机规模集（因而还需要其他节点类型）。
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
 
-* ***你的群集是否跨越可用性区域？***
+_ ***群集是否跨越可用性区域？** _
 
-    Service Fabric 通过部署固定到特定区域的节点类型来支持跨 [可用性区域](../availability-zones/az-overview.md) 的群集，确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅 [跨可用性区域 Service Fabric 群集的主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 为集群的初始创建确定节点类型的数量和属性时，请记住，部署集群后，随时可以添加、修改或删除（非主要）节点类型。 也可以在正在运行的集群中[修改主节点类型](service-fabric-scale-up-primary-node-type.md)（尽管在生产环境中执行此类操作需要大量的计划和谨慎工作）。
 

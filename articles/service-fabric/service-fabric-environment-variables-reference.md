@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 环境变量
 description: 了解 Azure Service Fabric 中的环境变量。 包含变量及其用法的完整列表的引用。
-author: mikkelhegn
 ms.topic: reference
 ms.date: 12/07/2017
-ms.author: mikhegn
-ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75645678"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574575"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 

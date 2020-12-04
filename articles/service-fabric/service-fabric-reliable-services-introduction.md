@@ -5,13 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
-ms.custom: sfrev
-ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50b8cae11cef5ee8670e2e0270fd8506b1dad4d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253076"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576530"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 
@@ -74,7 +73,7 @@ Reliable Services 与你以前编写的服务不同，因为 Service Fabric 提�
 
 不存储任何内部状态让此示例计算器变得十分简单。 不过大多数服务并不是真正的无状态。 它们是将状态外部化到其他某个存储。 （例如，任何依赖在备份存储或缓存中保留会话状态的 Web 应用程序便不是无状态的。）
 
-Service Fabric 中常见的无状态服务使用示例是作为前端，它公开 Web 应用程序的面向公众的 API。 然后，前端服务指示有状态服务完成用户请求。 在这种情况下，来自客户端的调用将定向到无状态服务正在侦听的某个已知端口（如 80）。 此无状态服务将接收调用，并判断调用是否来自可信方以及其目标服务是哪一个。  然后，此无状态服务将调用转发到有状态服务的正确分区并等待响应。 无状态服务收到响应后，将回复原始客户端。 此类服务的示例是 *Service Fabric 入门*示例 ([C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started))，以及该存储库中的其他 Service Fabric 示例。
+Service Fabric 中常见的无状态服务使用示例是作为前端，它公开 Web 应用程序的面向公众的 API。 然后，前端服务指示有状态服务完成用户请求。 在这种情况下，来自客户端的调用将定向到无状态服务正在侦听的某个已知端口（如 80）。 此无状态服务将接收调用，并判断调用是否来自可信方以及其目标服务是哪一个。  然后，此无状态服务将调用转发到有状态服务的正确分区并等待响应。 无状态服务收到响应后，将回复原始客户端。 此类服务的示例是 *Service Fabric 入门* 示例 ([C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started))，以及该存储库中的其他 Service Fabric 示例。
 
 ### <a name="stateful-reliable-services"></a>有状态的 Reliable Services
 

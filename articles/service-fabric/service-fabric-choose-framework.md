@@ -1,16 +1,15 @@
 ---
 title: Service Fabric 编程模型概述
 description: Service Fabric 提供了两个框架用于生成服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260531"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575714"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 

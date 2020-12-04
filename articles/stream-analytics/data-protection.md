@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/03/2020
+ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011398"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576482"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -41,7 +41,7 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
 流分析自动在其基础结构中使用同类最佳的加密标准来加密和保护数据。 您可以简单地信任流分析来安全地存储所有数据，这样就无需担心如何管理基础结构。
 
-如果要使用客户管理的密钥 (CMK) 来加密数据，可以使用自己的存储帐户 (常规用途 V1 或 V2) 来存储流分析运行时所需的任何专用数据资产。 可以根据需要加密存储帐户。 流分析基础结构不会永久存储任何专用数据资产。 
+如果要使用客户管理的密钥来加密数据，可以使用自己的存储帐户 (常规用途 V1 或 V2) 来存储流分析运行时所需的任何专用数据资产。 可以根据需要加密存储帐户。 流分析基础结构不会永久存储任何专用数据资产。 
 
 此设置必须在流分析作业创建时配置，并且不能在作业的整个生命周期内修改。 不建议修改或删除流分析正在使用的存储。 如果删除存储帐户，则将永久删除所有专用数据资产，这将导致作业失败。 
 
@@ -50,12 +50,9 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
 ### <a name="configure-storage-account-for-private-data"></a>为专用数据配置存储帐户 
 
-
 加密存储帐户以保护所有数据，并明确选择专用数据的位置。 
 
 为了帮助你满足任何管控行业或环境中的符合性义务，你可以阅读有关 [Microsoft 的符合性产品/服务的](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)详细信息。 
-
-
 
 使用以下步骤配置专用数据资产的存储帐户。 此配置是从流分析作业而不是从存储帐户进行的。
 
@@ -69,9 +66,15 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
 1. 选中 " *保护我的存储帐户中此作业所需的所有专用数据资产*" 的复选框。
 
-1. 从订阅中选择一个存储帐户。 请注意，在作业的整个生命周期内不能修改此设置。 
+1. 从订阅中选择一个存储帐户。 请注意，在作业的整个生命周期内不能修改此设置。 创建作业后，也无法添加此选项。
+
+1. 若要使用连接字符串进行身份验证，请从 "身份验证模式" 下拉列表中选择 " **连接字符串** "。 存储帐户密钥会自动从你的订阅中填充。
 
    ![专用数据存储帐户设置](./media/data-protection/storage-account-create.png)
+
+1. 若要通过托管标识 (预览) 进行身份验证，请从 "身份验证模式" 下拉菜单中选择 " **托管标识** "。 如果选择托管标识，则需要将流分析作业添加到存储帐户的访问控制列表。 如果你没有为你的作业授予访问权限，则作业将无法执行任何操作。 有关如何授予访问权限的详细信息，请参阅 [使用 AZURE RBAC 向另一资源分配托管标识访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)。
+
+   :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="具有托管标识身份验证的专用数据存储帐户设置":::
 
 ## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>流分析存储的专用数据资产
 

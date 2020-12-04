@@ -2,13 +2,13 @@
 title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120086"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574900"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -72,7 +72,7 @@ ms.locfileid: "86120086"
 ]
 ```
 
-如果指定多个不同的筛选器，则将执行 **AND** 操作，因此必须满足每个筛选器条件。 以下是示例： 
+如果指定多个不同的筛选器，则执行 **和** 操作，因此必须满足每个筛选条件。 下面是一个示例： 
 
 ```json
 "advancedFilters": [
@@ -95,7 +95,7 @@ ms.locfileid: "86120086"
 
 ### <a name="operators"></a>运算符
 
-可用的数字**** 运算符为：
+可用的数字运算符为：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -104,10 +104,10 @@ ms.locfileid: "86120086"
 * NumberIn
 * NumberNotIn
 
-可用的布尔值**** 运算符为： 
+可用的布尔值运算符为： 
 - BoolEquals
 
-可用的字符串**** 运算符为：
+可用的字符串运算符为：
 
 * StringContains
 * StringBeginsWith
@@ -115,7 +115,24 @@ ms.locfileid: "86120086"
 * StringIn
 * StringNotIn
 
-所有字符串比较均不**** 区分大小写。
+所有字符串比较都 **不** 区分大小写。
+
+> [!NOTE]
+> 如果事件 JSON 不包含高级筛选键，则筛选器将 evaulated 为以下运算符的 " **不匹配** "： 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>对于以下运算符，筛选器与 evaulated **匹配** ：
+> - NumberNotIn
+> - StringNotIn
 
 ### <a name="key"></a>键
 
@@ -153,8 +170,8 @@ ms.locfileid: "86120086"
 
 * 每个事件网格订阅的所有筛选器都有 5 个高级筛选器和 25 个筛选器值
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值**** ****
-* 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
+* “in”和“not in”运算符有 5 个值 
+* 具有 `.`（点）字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前，密钥中不支持转义符。 
 
 可以在多个筛选器中使用相同的键。
 

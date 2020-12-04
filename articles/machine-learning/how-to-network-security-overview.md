@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325433"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576564"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -52,7 +52,7 @@ ms.locfileid: "93325433"
 * **关联的资源** -使用服务终结点或专用终结点连接到工作区资源，如 azure 存储、Azure Key Vault 和 Azure 容器服务。
     * **服务终结点** 为 Azure 服务提供虚拟网络的标识。 在虚拟网络中启用服务终结点后，可以添加虚拟网络规则，以在虚拟网络中保护 Azure 服务资源。 服务终结点使用公共 IP 地址。
     * **专用终结点** 是网络接口，可安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将服务引入 VNet。
-* 使用专用 IP 地址， **培训计算访问** -访问的培训计算目标，如 Azure 机器学习计算实例和 Azure 机器学习计算群集。 
+* 使用专用 IP 地址，**培训计算访问**-访问的培训计算目标，如 Azure 机器学习计算实例和 Azure 机器学习计算群集。 
 * **推断计算访问** -访问 Azure Kubernetes 服务 (AKS) 使用专用 IP 地址的计算群集。
 
 
@@ -145,10 +145,11 @@ ms.locfileid: "93325433"
 
 * 预览工作室中的数据。
 * 在设计器中将数据可视化。
+* 在设计器中部署模型。
 * 提交 AutoML 试验。
 * 启动标记项目。
 
-若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
+若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
 
 ### <a name="limitations"></a>限制
 - [ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支持虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 请注意，非默认存储帐户可在虚拟网络后受到保护。 
