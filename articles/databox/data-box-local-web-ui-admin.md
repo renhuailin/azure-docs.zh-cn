@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/01/2020
+ms.date: 12/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548934"
+ms.locfileid: "96576823"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
@@ -29,21 +29,25 @@ ms.locfileid: "96548934"
 
 要生成支持包，请执行以下步骤：
 
-1. 在本地 web UI 中，前往 " **联系支持** 人员"，然后选择 " **创建支持包**"。
+1. 在本地 web UI 中，前往 " **联系支持** 人员"。 还可以选择 " **包括内存转储**"。 然后选择 " **创建支持包**"。
+
+    内存转储是指在系统出现故障后保存的设备内存内容。
+
+    除非支持请求一个选项，否则不应选择 " **包括内存转储** " 选项。 收集包含内存转储的支持包需要很长时间，并包含敏感数据。
 
     ![创建支持包 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. 将收集到一个支持包。 此操作需要几分钟才能完成。
+    将收集到一个支持包。 如果只包含系统日志，此操作需要几分钟时间。 如果包含内存转储，则需要花费很长时间。
 
     ![创建支持包 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 支持包创建完成后，选择 " **下载支持包**"。
+2. 支持包创建完成后，选择 " **下载支持包**"。
+
+    ![创建支持包3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. 浏览并选择下载位置。 打开文件夹以查看内容。
 
     ![创建支持包 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
-
-4. 浏览并选择下载位置。 打开文件夹以查看内容。
-
-    ![创建支持包 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
 ## <a name="erase-local-data-from-your-device"></a>擦除设备上的本地数据
 
@@ -71,7 +75,8 @@ ms.locfileid: "96548934"
 
 若要关闭设备，请执行以下步骤。
 
-1. 在本地 Web UI 中，转到“关闭或重启”  。
+1. 在本地 Web UI 中，转到“关闭或重启”。
+
 2. 选择“关闭”。
 
     ![关闭 Data Box 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -107,7 +112,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. 在文件资源管理器中，会看到根据用于连接到设备的协议和使用的 Azure 存储类型来生成单独的文件列表。
+3. 在文件资源管理器中，将根据用于连接到设备的协议和使用的 Azure 存储类型来生成不同的文件列表。
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![根据存储类型和连接协议生成的文件](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -184,13 +189,13 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 准备发货期间的校验和计算仅适用于进口订单，不适用于出口订单。
 
-我们强烈建议仅在性能受到严重影响的情况下禁用校验和。
+我们强烈建议您不要禁用校验和，除非性能受到严重影响。
 
-1. 在设备本地 Web UI 的右上角，转到“设置”。 
+1. 在设备的本地 web UI 的右上角，单击 " **设置**"。
 
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
-2. 禁用校验和验证 
+2. 禁用校验和验证
 3. 选择“应用”。
 
 > [!NOTE]
@@ -263,7 +268,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 默认情况下，Azure Data Box 使用传输层安全性 (TLS) 1.2 进行加密，因为它比 TSL 1.1 更安全。 但是，如果你或你的客户端使用浏览器访问不支持 TLS 1.2 的数据，则可以启用 TLS 1.1。
 
-有关与 TLS 相关的详细信息，请参阅 [Azure Data Box Gateway 安全性](../databox-online/data-box-gateway-security.md)。
+有关与 TLS 相关的详细信息，请参阅 [Azure Data Box Gateway 安全性](../databox-gateway/data-box-gateway-security.md)。
 
 在 Azure 设备中启用 TLS 1.1：
 
