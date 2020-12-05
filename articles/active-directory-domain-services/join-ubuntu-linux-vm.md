@@ -2,7 +2,7 @@
 title: 将 Ubuntu VM 加入 Azure AD 域服务 | Microsoft Docs
 description: 了解如何将 Ubuntu Linux 虚拟机配置并加入 Azure AD 域服务托管域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac620ffa36bdeb35ef524ef2956db03c8edcb566
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962082"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619481"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入到 Azure Active Directory 域服务托管域
 

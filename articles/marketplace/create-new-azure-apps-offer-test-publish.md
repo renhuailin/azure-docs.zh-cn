@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369962"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620913"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>如何测试和发布 Azure 应用程序产品/服务
 
@@ -23,14 +23,14 @@ ms.locfileid: "94369962"
 
 1. 登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "商用 marketplace" 仪表板。
 1. 在 " **概述** " 页上，选择要发布的产品/服务。
-1. 在门户的右上角，选择 " **查看并发布** "。
-1. 请确保每个页面的 " **状态** " 列显示 " **完成** "。 三种可能的状态如下所示：
+1. 在门户的右上角，选择 " **查看并发布**"。
+1. 请确保每个页面的 " **状态** " 列显示 " **完成**"。 三种可能的状态如下所示：
     - **未启动** –页面不完整。
     - **不完整** –该页缺少必需的信息或有需要修复的错误。 需要返回到页面并对其进行更新。
     - **完成** –该页已完成。 提供所有所需的数据，并且没有错误。
-1. 如果任何页面的状态不是 " **完成** "，请选择页面名称，纠正问题，保存页面，然后选择 " **检查并再次发布** " 以返回到此页面。
+1. 如果任何页面的状态不是 " **完成**"，请选择页面名称，纠正问题，保存页面，然后选择 " **检查并再次发布** " 以返回到此页面。
 1. 完成所有页面后，请在 " **认证说明** " 框中，向认证团队提供测试说明，以确保正确测试应用。 提供任何有助于了解应用的补充说明。
-1. 若要启动产品/服务的发布过程，请选择 " **发布** "。 " **产品概述** " 页将出现，并显示产品/服务的 **发布状态** 。
+1. 若要启动产品/服务的发布过程，请选择 " **发布**"。 " **产品概述** " 页将出现，并显示产品/服务的 **发布状态**。
 
 在发布过程中，产品/服务的发布状态将发生变化。 有关此过程的详细信息，请参阅 [验证和发布步骤](review-publish-offer.md#validation-and-publishing-steps)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "94369962"
 
 如果产品/服务已准备就绪，则会向你发送一封电子邮件，请求你查看和批准产品/服务预览版。 您还可以在浏览器中刷新 " **产品/服务概述** " 页，以查看您的产品/服务是否已到达发布者签署阶段。 如果有，则会提供 " **上线** " 按钮和 "预览" 链接。 如果你选择通过 Microsoft 销售您的产品/服务，则已添加到预览版观众的任何人都可以测试您的产品/服务的购买和部署，以确保在此阶段满足您的要求。
 
-以下屏幕截图显示了产品/ **服务的 "** **产品/服务概述** " 页，其中包含两个预览链接。 你将在此页上看到的验证步骤因你创建产品/服务时所做的选择而异。
+以下屏幕截图显示了产品/**服务的 "** **产品/服务概述**" 页，其中包含两个预览链接。 你将在此页上看到的验证步骤因你创建产品/服务时所做的选择而异。
 
 [![说明合作伙伴中心提供的产品/服务概述页。显示 "上线" 按钮和预览链接。](media/create-new-azure-app-offer/azure-app-publish-status.png)](media/create-new-azure-app-offer/azure-app-publish-status.png#lightbox)
 
@@ -69,7 +69,7 @@ ms.locfileid: "94369962"
 
 如果在一个或多个发布步骤中遇到错误，请更正错误，然后重新发布产品/服务。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [访问合作伙伴中心的商业 marketplace 分析报表](partner-center-portal/analytics.md)
-- 了解如何通过与 Microsoft 共同销售并通过 Csp 计划转售 [Azure 应用程序产品/服务](create-new-azure-apps-offer-marketing.md) 。
+- 了解如何通过与 Microsoft 共同销售并转售通过 Csp 计划的 [方式销售 Azure 应用程序产品](create-new-azure-apps-offer-marketing.md) 。

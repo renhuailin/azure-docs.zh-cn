@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023627"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621089"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -49,7 +49,7 @@ ms.locfileid: "95023627"
 如果计划自定义模型，请按照[声音自定义](./how-to-custom-speech-train-model.md)和[语言自定义](./how-to-custom-speech-train-model.md)中的步骤操作。 若要在批量听录中使用所创建的模型，需要提供其模型位置。 可以在检查模型的详细信息（`self` 属性）时检索模型位置。 批量听录服务不需要已部署的自定义终结点。
 
 >[!NOTE]
-> 作为 REST API 的一部分，批处理脚本包含一组 [配额和限制](speech-services-quotas-and-limits.md#batch-transcription)，我们鼓励你进行查看。 若要充分利用批处理脚本有效转录大量音频文件的功能，建议始终按请求发送多个文件，或指向包含音频文件的 Blob 存储容器到转录。 该服务会转录文件同时减少周转时间。 在单个请求中使用多个文件非常简单且非常简单-请参阅 [配置](#configuration) 部分。 
+> 作为 REST API 的一部分，批量听录具有一组[配额和限制](speech-services-quotas-and-limits.md#batch-transcription)，建议你查看它们。 为了充分利用批处理听录功能来有效地听录大量音频文件，建议你始终根据每个请求发送多个文件，或指向包含要听录的音频文件的 Blob 存储容器。 该服务会以并发方式听录文件，减少周转时间。 可以直截了当地在单个请求中使用多个文件 - 请参阅[配置](#configuration)部分。 
 
 ## <a name="batch-transcription-api"></a>批量听录 API
 
@@ -68,7 +68,7 @@ ms.locfileid: "95023627"
 
 配置参数以 JSON 形式提供。
 
-**转录一个或多个单独的文件。** 如果有多个文件到转录，我们建议在一个请求中发送多个文件。 下面的示例使用三个文件：
+**听录一个或多个单独的文件。** 如果要听录的文件不止一个，建议在一个请求中发送多个文件。 下面的示例使用三个文件：
 
 ```json
 {
@@ -98,7 +98,7 @@ ms.locfileid: "95023627"
 }
 ```
 
-**在批脚本中使用自定义训练模型。** 该示例使用三个文件：
+**在批量听录中使用自定义训练模型。** 此示例使用三个文件：
 
 ```json
 {
@@ -163,14 +163,14 @@ ms.locfileid: "95023627"
       `channels`
    :::column-end:::
    :::column span="2":::
-      （可选）默认情况下转录 `0` 和 `1`。 待处理的声道编号数组。 可以在此处指定要处理的音频文件中的可用通道的子集 (例如 `0` 仅) 。
+      （可选）默认情况下转录 `0` 和 `1`。 待处理的声道编号数组。 可在这里指定待处理音频文件中提供的通道的子集（例如，仅 `0`）。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      （可选）默认情况下不删除。 完成听录后保留听录的持续时间，此持续时间之后会自动删除听录。 在 `timeToLive` 批量处理转录中非常有用，可确保最终将其删除 (例如， `PT12H` 12 小时) 。
+      （可选）默认情况下不删除。 完成听录后保留听录的持续时间，此持续时间之后会自动删除听录。 `timeToLive` 适用于批量处理听录，可确保最终删除这些听录（例如，`PT12H` 表示 12 小时）。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -214,7 +214,7 @@ ms.locfileid: "95023627"
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
-      
+
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
@@ -224,7 +224,7 @@ ms.locfileid: "95023627"
           "itn": "hello world",
           "maskedITN": "hello world",
           "display": "Hello world.",
-          
+
           // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
           "words": [
             {
@@ -245,7 +245,7 @@ ms.locfileid: "95023627"
             }
           ]
         }
-      ]    
+      ]
     }
   ]
 }
@@ -407,7 +407,7 @@ while (completed < 1)
 
 有关上述调用的完整详细信息，请参阅 [Swagger 文档](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。 有关此处所示的完整示例，请转到 `samples/batch` 子目录中的 [GitHub](https://aka.ms/csspeech/samples)。
 
-此示例使用异步设置来 post 音频和接收脚本状态。
+此示例使用异步设置来发布音频并接收听录状态。
 `PostTranscriptions` 方法发送音频文件详细信息，而 `GetTranscriptions` 方法接收状态。
 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602744"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621002"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中心中的传输层安全性 (TLS) 支持
 
@@ -22,7 +22,7 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT 中心的服务器 TLS 证书
 
-在 TLS 握手期间，IoT 中心会提供 RSA 加密的服务器证书以连接客户端。 其根是巴尔的摩 Cybertrust 根 CA。 最近，证书颁发机构通过新的中间证书颁发机构 (ICAs) 进行了更改。 有关详细信息，请参阅 [IoT 中心 TLS 证书更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)
+在 TLS 握手期间，IoT 中心会提供 RSA 加密的服务器证书以连接客户端。 其根是巴尔的摩 Cybertrust 根 CA。 最近，我们推出了对 TLS 服务器证书的更改，使其现在由新的中间证书颁发机构 (ICA) 颁发。 有关详细信息，请参阅 [IoT 中心 TLS 证书更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)。
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>椭圆曲线加密 (ECC) 服务器 TLS 证书 (预览) 
 
@@ -31,7 +31,7 @@ IoT 中心 ECC 服务器 TLS 证书提供公共预览版。 虽然为 RSA 证书
 预览 IoT 中心的 ECC 服务器证书：
 
 1. [使用上的预览模式创建新的 IoT 中心](iot-hub-preview-mode.md)。
-1. [将客户端配置](#tls-configuration-for-sdk-and-iot-edge) 为 *仅* 包含 ECDSA 密码套件并 *排除* 任何 RSA。 以下是 ECC 证书公共预览版的密码套件：
+1. [将客户端配置](#tls-configuration-for-sdk-and-iot-edge) 为 *仅* 包含 ECDSA 密码套件并 *排除* 任何 RSA。 以下是 ECC 证书公共预览版支持的密码套件：
     - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
     - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
     - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
@@ -133,7 +133,7 @@ IoT 中心还支持 TLS 最大片段长度协商，这有时称为 TLS 帧大小
 尚未提供对此公共预览版功能的官方 SDK 支持。 入门指南
 
 1. [使用上的预览模式创建新的 IoT 中心](iot-hub-preview-mode.md)。
-1. 将客户端配置为设置 `SSL_CTX_set_tlsext_max_fragment_length` 为以下值之一： 2 ^ 9、2 ^ 10、2 ^ 11 和 2 ^ 12。
+1. 使用 OpenSSL 时，请调用 [SSL_CTX_set_tlsext_max_fragment_length](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) 以指定片段大小。
 1. 将客户端连接到预览版 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤

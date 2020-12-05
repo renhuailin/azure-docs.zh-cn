@@ -1,20 +1,20 @@
 ---
 title: 将 Azure Monitor 工作簿与 Azure AD 域服务结合使用 | Microsoft Docs
 description: 了解如何使用 Azure Monitor 工作簿在 Azure Active Directory 域服务托管域中查看安全审核并了解问题。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175128"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618155"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 

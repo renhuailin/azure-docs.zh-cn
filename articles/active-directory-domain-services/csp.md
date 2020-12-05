@@ -2,20 +2,20 @@
 title: 适用于云解决方案提供商的 Azure AD 域服务 | Microsoft Docs
 description: 了解如何为 Azure 云解决方案提供商启用和管理 Azure Active Directory 域服务托管域
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: fae04d929be7ae6f266ff136b4fbd90f7d8a4e02
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960959"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619893"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>适用于 Azure 云解决方案提供商的 Azure Active Directory 域服务部署和管理
 
@@ -80,7 +80,7 @@ Azure AD DS 支持 Azure CSP 订阅。 你可以在关联到客户的 Azure AD �
 
 * **CSP 管理代理可以使用其凭据预配托管域：** Azure AD DS 支持 Azure CSP 订阅。 CSP 合作伙伴的管理代理组中的用户可以预配新的托管域。
 
-* **CSP 可以使用 PowerShell 为其客户编写新的托管域创建脚本：** 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD DS](powershell-create-instance.md)。
+* **CSP 可以使用 PowerShell 为其客户编写新的托管域创建脚本：** 有关详细信息，请参阅 [如何使用 PowerShell 启用 Azure AD DS](powershell-create-instance.md)。
 
 * **CSP 管理代理不能使用其凭据在托管域上执行日常管理任务：** CSP 管理员用户不能使用其凭据在托管域中执行日常管理任务。 这些用户不在客户的 Azure AD 租户中，并且其凭据在客户的 Azure AD 租户中不可用。 Azure AD DS 无权访问这些用户的 Kerberos 和 NTLM 密码哈希，因此无法在托管域上对这些用户进行身份验证。
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350868"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621087"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -103,6 +103,10 @@ Azure 数据工厂可以访问90多个 [本机连接器](connector-overview.md)�
 > 使用 [缓存的查找](./concepts-data-flow-expression-builder.md#cached-lookup)时，请确保接收器排序将缓存接收器设置为1、最低 (或首次) 排序。
 
 ![自定义接收器排序](media/data-flow/cache-2.png "自定义接收器排序")
+
+### <a name="sink-groups"></a>接收器组
+
+可以通过对一系列接收器应用相同的序号，将接收器组合在一起。 ADF 会将这些接收器视为可并行执行的组。 并行执行的选项将显示在 "管道数据流" 活动中。
 
 ## <a name="error-row-handling"></a>行处理时出错
 

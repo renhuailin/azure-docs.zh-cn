@@ -4,16 +4,16 @@ description: 了解如何创建可使用网络文件系统协议装载的 Azure 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629455"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620932"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>验证功能是否已注册
+## <a name="verify-feature-registration"></a>验证功能注册
 
 注册批准最多可能需要一小时。 若要验证注册是否完成，请使用以下命令：
 
@@ -80,16 +80,44 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>验证存储帐户类型
+
+目前，只有 FileStorage 帐户才能创建 NFS 共享。 
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+若要验证你的存储帐户类型，请在 Azure 门户中导航到该帐户。 然后，从存储帐户中选择 " **属性**"。 在 "属性" 边栏选项卡中，检查 " **帐户类型**" 下的值，该值应为 **FileStorage**。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+若要验证是否具有 FileStorage 帐户，可以使用以下命令：
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+输出应为 **FileStorage**，如果不是，则存储帐户的类型不正确。 若要创建 **FileStorage** 帐户，请参阅 [如何创建 Azure 高级文件共享](storage-how-to-create-premium-fileshare.md)。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+若要验证是否具有 FileStorage 帐户，可以使用以下命令：
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+输出应包含 **"kind"： "FileStorage"**，如果不是，则存储帐户的类型不正确。 若要创建 **FileStorage** 帐户，请参阅 [如何创建 Azure 高级文件共享](storage-how-to-create-premium-fileshare.md)。
+
+---
 ## <a name="create-an-nfs-share"></a>创建 NFS 共享
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 现在，你已创建 FileStorage 帐户并配置了网络，接下来可以创建一个 NFS 文件共享。 此过程类似于创建 SMB 共享，在创建共享时选择 **NFS** 而不是 **smb** 。
 
 1. 导航到存储帐户，然后选择“文件共享”。
 1. 选择“+ 文件共享”创建新的文件共享。
 1. 命名文件共享，选择预配的容量。
-1. 对于 **协议** ，请选择 " **NFS (预览")** 。
+1. 对于 **协议** ，请选择 " **NFS (预览")**。
 1. 对于 **Root Squash** 进行选择。
 
     - 根 squash (默认) -远程超级用户 (根) 的访问权限映射到 UID (65534) 和 GID (65534) 。
@@ -120,7 +148,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 1. 关闭 PowerShell 控制台，然后重新将其打开。
 
-1. 安装 **Az** 预览 module **2.5.2** 。
+1. 安装 **Az** 预览 module **2.5.2**。
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  

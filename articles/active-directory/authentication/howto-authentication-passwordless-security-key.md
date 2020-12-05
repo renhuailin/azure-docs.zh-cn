@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8530b74a63f4e5e2c04ff95a0106b896102dda2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994241"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618087"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
 
@@ -38,7 +38,7 @@ ms.locfileid: "95994241"
 
 ## <a name="prepare-devices-for-preview"></a>为预览版准备设备
 
-你试点的 Azure AD 联接的设备必须运行 Windows 10 版本1909或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+对于 Azure AD 联接的设备，最佳体验是在 Windows 10 版本1903或更高版本上。
 
 混合 Azure AD 联接的设备必须运行 Windows 10 版本2004或更高版本。
 
@@ -59,7 +59,7 @@ ms.locfileid: "95994241"
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全密钥的用户注册和管理
 
-1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
+1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
 1. 如果尚未登录，请登录。
 1. 单击 " **安全信息**"。
    1. 如果用户已注册至少一个 Azure AD 多重身份验证方法，则可以立即注册 FIDO2 安全密钥。
@@ -68,7 +68,7 @@ ms.locfileid: "95994241"
 1. 选择 " **USB 设备** " 或 " **NFC 设备**"。
 1. 准备好密钥，然后选择 " **下一步**"。
 1. 将显示一个框，要求用户为你的安全密钥创建/输入 PIN，然后为密钥（生物识别或触摸）执行所需的笔势。
-1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“配置目录分区”  。
+1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”  。
 1. 单击 " **完成** " 以完成该过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录

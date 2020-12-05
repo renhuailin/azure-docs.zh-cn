@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "84764259"
 ---
 # <a name="networking-limit-increase"></a>网络限制提高
@@ -27,7 +27,7 @@ ms.locfileid: "84764259"
 可以通过使用 " **帮助 + 支持** " 或门户中的 "使用情况 **+ 配额** " 来请求增加。
 
 > [!Note]
-> 若要更改 **公共 Ip 前缀**的默认大小，请从下拉列表中选择 " **最小公共 Ip 网际网络前缀长度** "。
+> 若要更改 **公共 Ip 前缀** 的默认大小，请从下拉列表中选择 " **最小公共 Ip 网际网络前缀长度** "。
 
 ## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>使用 "帮助 + 支持" 在订阅级别增加请求网络配额
 
@@ -41,7 +41,7 @@ ms.locfileid: "84764259"
 
     ![新建支持请求](./media/networking-quota-request/new-support-request.png)
 
-1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额 **。
+1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额**。
 
     ![从 "颁发类型" 下拉列表中选择订阅限制](./media/networking-quota-request/select-quota-issue-type.png)
 
@@ -77,11 +77,11 @@ ms.locfileid: "84764259"
 
     ![选择订阅](./media/networking-quota-request/select-subscription-change-quota.png)
 
-1. 选择 **使用情况 + 配额**
+1. 选择“使用情况 + 配额” 
 
     ![选择使用情况和配额](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-1. 在右上角，选择 " **请求增加**"。
+1. 在右上角选择“请求增加”  。
 
     ![请求增加](./media/networking-quota-request/request-increase-from-subscription.png)
 

@@ -2,7 +2,7 @@
 title: 检查 Azure Active Directory 域服务的运行状况 | Microsoft 文档
 description: 了解如何检查 Azure Active Directory 域服务 (Azure AD DS) 托管域的运行状况，以及如何使用 Azure 门户了解状态消息。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962728"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620318"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>检查 Azure Active Directory 域服务托管域的运行状况
 
@@ -76,9 +76,9 @@ Azure Active Directory 域服务 (Azure AD DS) 运行一些后台任务，以使
 
 运行状态警报分为以下严重性级别：
 
- * **严重警报**表示出现了对托管域造成严重影响的问题。 应该立即解决这些警报。 在解决问题之前，Azure 平台无法监视、管理、修补和同步托管域。
- * **警告警报**通知你持续下去可能影响托管域操作的问题。 这些警报还提供保护托管域的建议。
- * **信息性警报**是指不会对域造成负面影响的通知。 信息警报提供有关托管域中所发生状况的一些见解。
+ * **严重警报** 表示出现了对托管域造成严重影响的问题。 应该立即解决这些警报。 在解决问题之前，Azure 平台无法监视、管理、修补和同步托管域。
+ * **警告警报** 通知你持续下去可能影响托管域操作的问题。 这些警报还提供保护托管域的建议。
+ * **信息性警报** 是指不会对域造成负面影响的通知。 信息警报提供有关托管域中所发生状况的一些见解。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: Azure Active Directory 域服务故障排除 | Microsoft Docs
 description: 了解如何排查创建或管理 Azure Active Directory 域服务时的常见错误
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967369"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618444"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -132,7 +132,7 @@ if ($sp -ne $null)
 
     如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName，例如 AADDSCONTOSO\driley。 因此，帐户的 SAMAccountName 格式可能不同于你在本地域中所需的格式或使用的格式。
 
-* **密码同步** - 请确保已为[纯云用户][cloud-only-passwords]或[使用 Azure AD Connect 的混合环境][hybrid-phs]启用了密码同步。
+* **密码同步** - 请确保已为 [纯云用户][cloud-only-passwords]或 [使用 Azure AD Connect 的混合环境][hybrid-phs]启用了密码同步。
     * **混合同步帐户：** 如果受影响的用户帐户是从本地目录同步而来的，请验证以下方面：
     
       * 是否已部署或更新到[建议使用的最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
@@ -145,7 +145,7 @@ if ($sp -ne $null)
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **仅限云帐户**：如果受影响的用户帐户是纯云用户帐户，请确保[用户在你启用 Azure AD DS 后已更改其密码][cloud-only-passwords]。 此密码重置操作将生成托管域所需的凭据哈希。
+    * **仅限云帐户**：如果受影响的用户帐户是纯云用户帐户，请确保 [用户在你启用 Azure AD DS 后已更改其密码][cloud-only-passwords]。 此密码重置操作将生成托管域所需的凭据哈希。
 
 * **验证用户帐户是否处于活动状态**：默认情况下，在托管域上于 2 分钟内进行五次无效密码尝试会导致用户帐户被锁定 30 分钟。 当帐户被锁定时，用户无法登录。30 分钟后用户帐户将自动解锁。
   * 在托管域上尝试无效密码不会在 Azure AD 中锁定用户帐户， 只会在托管域中锁定用户帐户。 请使用[管理 VM][management-vm] 检查 Active Directory 管理控制台 (ADAC) 中的用户帐户状态，而不是在 Azure AD 中这样做。

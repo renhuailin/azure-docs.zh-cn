@@ -2,20 +2,20 @@
 title: 在 Azure AD 域服务中保护远程 VM 访问 | Microsoft Docs
 description: 了解如何使用网络策略服务器 (NPS 保护对 Vm 的远程访问，) 并使用 Azure Active Directory 域服务托管域中的远程桌面服务部署 Azure AD 多重身份验证。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.author: justinha
+ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840230"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618920"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中保护对虚拟机的远程访问
 

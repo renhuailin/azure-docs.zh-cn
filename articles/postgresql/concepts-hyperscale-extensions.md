@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487970"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620896"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展-超大规模 (Citus) 
 
-PostgreSQL 提供使用扩展来扩展数据库功能的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载后，扩展可以像内置功能那样运行。 有关 PostgreSQL 扩展的详细信息，请参阅 [将相关对象打包到扩展](https://www.postgresql.org/docs/current/static/extend-extensions.html)中。
+PostgreSQL 还支持使用扩展来扩展数据库功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载后，扩展可以像内置功能那样运行。 有关 PostgreSQL 扩展的详细信息，请参阅 [将相关对象打包到扩展](https://www.postgresql.org/docs/current/static/extend-extensions.html)中。
 
 ## <a name="use-postgresql-extensions"></a>使用 PostgreSQL 扩展
 
@@ -35,8 +35,8 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 |
 > | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用于存储键/值对集的数据类型。 |
 > | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 数据结构。 |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用于存储键/值对集的数据类型。 |
 > | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 提供用于国际产品编号标准的数据类型。 |
 > | [高低](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供用于分层树形结构的数据类型。 |
@@ -65,9 +65,9 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) |  (过时) 整数聚合器和枚举器。 |
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 |
 > | [pg \_ partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
 > | [pg \_ trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性 (过时) 的函数。 |
 > | 会话 \_ 分析 | 用于查询 hstore 数组的函数。 |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
@@ -81,7 +81,6 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | **扩展名** | **说明** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 |
-> | 分片 \_ rebalancer | 在添加或删除节点时，安全地重新平衡服务器组中的数据。 |
 
 ### <a name="index-types-extensions"></a>索引类型扩展
 
@@ -106,6 +105,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 一个支持从数据库会话中连接到其他 PostgreSQL 数据库的模块。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。 |
 > | [文件 \_ fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外数据包装。 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 |
 > | [pg \_ buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 |
@@ -120,8 +120,6 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | TLS/SSL 证书的相关信息。 |
 > | [tsm \_ 系统 \_ 行](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，它接受行数作为限制。 |
 > | [tsm \_ 系统 \_ 时间](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，以毫秒为单位接受时间（以毫秒为单位）。 |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | 提供了一种创建不耗费 CPU 或磁盘的假设索引的方法。 |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 一个支持从数据库会话中连接到其他 PostgreSQL 数据库的模块。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。 |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath 查询和 XSLT。 |
 
 
@@ -146,5 +144,5 @@ Pg_stat_statements 提供的查询执行信息和对服务器性能的影响，�
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 
-可以使用 dblink 和 postgres \_ fdw 从一个 PostgreSQL 服务器连接到另一个服务器，或连接到同一服务器中的其他数据库。  接收服务器需要允许来自发送服务器的连接通过其防火墙。  若要使用这些扩展在 Azure Database for PostgreSQL 服务器或超大规模 (Citus) 服务器组之间进行连接，请将 " **允许 Azure 服务和资源" 访问此服务器组 (或服务器) ** 设置为 "开"。  如果要使用这些扩展来循环回到同一服务器，还需要启用此设置。
-可以在 "**网络**" 下超大规模 (Citus) 服务器组的 "Azure 门户" 页中找到 "**允许 Azure 服务和资源访问此服务器" 组**设置。  目前，不支持来自 Azure Database for PostgreSQL 单服务器和超大规模 (Citus) 的出站连接，但与其他 Azure Database for PostgreSQL 服务器和超大规模 (Citus) 服务器组的连接除外。
+可以使用 dblink 和 postgres \_ fdw 从一个 PostgreSQL 服务器连接到另一个服务器，或连接到同一服务器中的其他数据库。  接收服务器需要允许来自发送服务器的连接通过其防火墙。  若要使用这些扩展在 Azure Database for PostgreSQL 服务器或超大规模 (Citus) 服务器组之间进行连接，请将 " **允许 Azure 服务和资源" 访问此服务器组 (或服务器)** 设置为 "开"。  如果要使用这些扩展来循环回到同一服务器，还需要启用此设置。
+可以在 "**网络**" 下超大规模 (Citus) 服务器组的 "Azure 门户" 页中找到 "**允许 Azure 服务和资源访问此服务器" 组** 设置。  目前，不支持来自 Azure Database for PostgreSQL 单服务器和超大规模 (Citus) 的出站连接，但与其他 Azure Database for PostgreSQL 服务器和超大规模 (Citus) 服务器组的连接除外。

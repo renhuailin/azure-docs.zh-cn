@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure PowerShell 创建 Azure AD 域服务资源林 | Microsoft Docs
 description: 在本文中，可了解如何使用 Azure PowerShell 创建和配置 Azure Active Directory 域服务资源林以及到本地 Active Directory 域服务环境的出站林。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: joflore
-ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.author: justinha
+ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041096"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619961"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Active Directory 域服务资源林以及到本地域的出站林信任
 
@@ -74,7 +74,7 @@ ms.locfileid: "93041096"
 
 Azure AD DS 需要一个服务主体从 Azure AD 同步数据。 必须先在 Azure AD 租户中创建此主体，然后再创建托管域资源林。
 
-创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用 ID 为 *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* 的命名 *域控制器服务* 的特定应用程序 ID。 请不要更改此应用程序 ID。
+创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 6ba9a5d4-8456-4118-b521-9c5ca10cdf84 。 请不要更改此应用程序 ID。
 
 使用 [Get-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建 Azure AD 服务主体：
 
@@ -86,7 +86,7 @@ New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 若要创建托管域资源林，请使用 `New-AzureAaddsForest` 脚本。 此脚本是一组更广泛的命令的一部分，这些命令支持创建和管理托管域资源林，包括在下一部分中创建单向绑定林。 这些脚本可从 [PowerShell 库](https://www.powershellgallery.com/)获取，由 Azure AD 工程团队进行数字签名。
 
-1. 首先，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 以下示例中，资源组名为 myResourceGroup，在 westus 区域中创建。  使用自己的名称和所需区域：
+1. 首先，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。  使用自己的名称和所需区域：
 
     ```azurepowershell
     New-AzResourceGroup `

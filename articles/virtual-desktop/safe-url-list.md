@@ -3,19 +3,22 @@ title: Windows 虚拟桌面必需的 URL 列表-Azure
 description: 必须取消阻止的 Url 的列表，以确保 Windows 虚拟桌面部署按预期工作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512335"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621070"
 ---
-# <a name="required-url-list"></a>必需的 URL 列表
+# <a name="required-url-list"></a>所需的 URL 列表
 
-若要部署和使用 Windows 虚拟桌面，必须取消阻止某些 Url，以便 (Vm) 的虚拟机可以随时访问。 本文列出了取消阻止所需的 Url。
+若要部署和使用 Windows 虚拟桌面，必须取消阻止某些 Url，以便 (Vm) 的虚拟机可以随时访问。 本文列出了需要取消阻止 Windows 虚拟桌面才能正常运行所需的 Url。 
+
+>[!IMPORTANT]
+>Windows 虚拟桌面不支持阻止本文中列出的 Url 的部署。
 
 ## <a name="virtual-machines"></a>虚拟机
 
@@ -33,8 +36,8 @@ ms.locfileid: "96512335"
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不可用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不可用 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -55,8 +58,8 @@ ms.locfileid: "96512335"
 |Kms.core.usgovcloudapi.net|1688|Windows 激活|Internet|
 |mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不可用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不可用 |
 
 下表列出了 Azure 虚拟机可以访问的可选 URL：
 

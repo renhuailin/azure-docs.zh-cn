@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372721"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620985"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "94372721"
 ### <a name="auditing-limitations"></a>审核限制
 
 - 目前不支持高级存储 。
-- **Azure Data Lake Storage Gen2 存储帐户** 的 **分层命名空间** 目前 **不受支持** 。
+- **Azure Data Lake Storage Gen2 存储帐户** 的 **分层命名空间** 目前 **不受支持**。
 - 不支持在已暂停的 Azure Synapse 上启用审核。 若要启用审核，请恢复运行 Azure Synapse。
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定义服务器级和数据库级审核策略
@@ -66,6 +66,18 @@ ms.locfileid: "94372721"
    >
    > 否则，建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
 
+#### <a name="remarks"></a>备注
+
+- 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
+- 审核日志的格式为 .xel，可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 打开。
+- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
+- 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
+- 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](./audit-log-format.md)。
+- 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
+- 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
+- 通过网关将登录名路由到数据库所在的特定实例。  对于 AAD 登录，在尝试使用该用户登录到请求的数据库之前，将验证凭据。  如果出现故障，则永远不会访问请求的数据库，因此不会进行审核。  对于 SQL 登录，将根据请求的数据对凭据进行验证，因此在这种情况下，可以对其进行审核。  在这两种情况下都会审核成功的登录，这显然是在数据库中找到的。
+- 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
+
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>为服务器设置审核
 
 默认审核策略包括所有操作和下列操作组集合，将用于审核针对数据库执行的所有查询和存储过程以及成功和失败的登录：
@@ -76,7 +88,7 @@ ms.locfileid: "94372721"
   
 可以按照[使用 Azure PowerShell 管理 SQL 数据库审核](#manage-auditing)部分中所述，使用 PowerShell 配置不同类型的操作和操作组的审核。
 
-Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的 **语句** 或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将 **被截去不进行审核** 。
+Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的 **语句** 或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将 **被截去不进行审核**。
 以下部分介绍如何使用 Azure 门户配置审核。
 
   > [!NOTE]
@@ -120,17 +132,6 @@ AzureDiagnostics
   - 如果将保留期从 0（无限期保留）更改为任何其他值，请注意：保留期仅应用于在保留期值更改后写入的日志（在保留期设置为“无限期”期间写入的日志会保留，即使在启用保留期后也是如此）。
 
   ![存储帐户](./media/auditing-overview/auditing_select_storage.png)
-
-#### <a name="remarks"></a>备注
-
-- 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
-- 审核日志的格式为 .xel，可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 打开。
-- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
-- 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
-- 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
-- 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](./audit-log-format.md)。
-- 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
-- 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>对 Log Analytics 目标的审核
   
@@ -259,7 +260,7 @@ AzureDiagnostics
 
 ### <a name="using-rest-api"></a>使用 REST API
 
-**REST API** ：
+**REST API**：
 
 - [创建或更新数据库审核策略](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [创建或更新服务器审核策略](/rest/api/sql/server%20auditing%20settings/createorupdate)

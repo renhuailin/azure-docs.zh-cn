@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4e256d97d055b56df8c917c841416e5c7eb52465
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573521"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620403"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -210,7 +210,7 @@ ms.locfileid: "96573521"
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
 - **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅 [云解决方案提供商计划](./cloud-solution-providers.md) 。
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md) ，详细了解如何准备产品/服务进行评估。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅 [云解决方案提供商](cloud-solution-providers.md)。
+- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅 [商业 marketplace 中的共同销售选项](commercial-marketplace-co-sell.md)。 有关 IP 共同销售要求的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅 [云解决方案提供商](cloud-solution-providers.md)。
 
 若要了解详细信息，请参阅 [通过 Azure Marketplace 拓展云业务](https://azuremarketplace.microsoft.com/sell)。
 

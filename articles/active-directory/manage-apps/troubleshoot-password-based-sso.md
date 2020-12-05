@@ -10,14 +10,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646230"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618070"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>排查 Azure AD 中基于密码的单一登录的问题
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>在 Azure AD 中排查基于密码的单一登录问题
 
 若要使用 "我的应用" 中的 "基于密码的单一登录 (SSO) ，必须安装浏览器扩展。 当你选择配置为基于密码的 SSO 的应用时，会自动下载此扩展。 若要了解如何从最终用户的角度使用我的应用，请参阅 [我的应用门户的帮助](../user-help/my-apps-portal-end-user-access.md)。
 
@@ -150,6 +150,13 @@ ms.locfileid: "94646230"
 - 确保用户在 *incognito*、 *inPrivate* 或 *私有模式下* 没有尝试从我的应用程序登录应用。
 - 再次尝试手动捕获进程。 请确保红色标记在正确的字段上。
 - 如果手动捕获进程似乎停止响应或登录页面未响应，请再次尝试手动捕获进程。 但这一次，在完成此过程后，按 F12 键即可打开浏览器的开发人员控制台。 选择 "**控制台**" 选项卡。键入 **window。 location = "*&lt; 配置应用 &gt; 时指定的登录 URL*"**，然后按 enter。 这会强制执行页面重定向，以结束捕获过程并存储已捕获的字段。
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>我无法将其他用户添加到基于密码的 SSO 应用程序
+
+基于密码的 SSO 应用的用户数限制为48。 因此，每个应用的用户名/密码对的密钥限制为48。
+如果要添加其他用户，可以：
+-   添加应用的其他实例
+-   删除不再使用应用的用户
 
 ## <a name="request-support"></a>请求支持 
 如果在设置 SSO 并分配用户时收到错误消息，请打开支持票证。 尽可能多地包含以下信息：

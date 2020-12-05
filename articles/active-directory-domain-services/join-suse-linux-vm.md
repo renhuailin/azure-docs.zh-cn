@@ -2,20 +2,20 @@
 title: 将 SLE VM 加入到 Azure AD 域服务 | Microsoft Docs
 description: 了解如何配置 SUSE Linux Enterprise 虚拟机并将其加入到 Azure AD 域服务托管域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275866"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619600"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 SUSE Linux Enterprise 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -165,7 +165,7 @@ sudo vi /etc/hosts
 
 1. 如果要更改 Samba 用户和组的 UID 和 GID 范围，请选择“专家设置”。
 
-1. 通过选择 " *Ntp 配置*" 为托管域配置网络时间协议 (NTP) 时间同步。 输入托管域的 IP 地址。 这些 IP 地址显示在 Azure 门户中你的托管域的“属性”窗口中，例如 10.0.2.4 和 10.0.2.5。
+1. 通过选择“NTP 配置”为托管域配置网络时间协议 (NTP) 时间同步。 输入托管域的 IP 地址。 这些 IP 地址显示在 Azure 门户中你的托管域的“属性”窗口中，例如 10.0.2.4 和 10.0.2.5。
 
 1. 在系统提示时选择“确定”以确认加入域。
 
@@ -175,9 +175,9 @@ sudo vi /etc/hosts
 
 加入托管域后，可以使用桌面的显示管理器或控制台从工作站登录到该托管域。
 
-## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>使用 Winbind 从 YaST 命令行接口将 VM 加入托管域
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>使用 Winbind 从 YaST 命令行界面将 VM 加入托管域
 
-使用 **winbind** 和 *YaST 命令行接口*加入托管域：
+若要使用 winbind 和 YaST 命令行界面来加入托管域，请执行以下代码：
 
 * 加入域：
 
@@ -185,9 +185,9 @@ sudo vi /etc/hosts
   sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
   ```
 
-## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>使用终端中的 Winbind 将 VM 加入托管域
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>从终端使用 Winbind 将 VM 加入托管域
 
-使用**winbind**和* `samba net` 命令*联接托管域：
+若要使用 winbind 和 `samba net` 命令加入托管域，请执行以下操作：
 
 1. 安装 kerberos 客户端和 samba-winbind：
 
@@ -240,7 +240,7 @@ sudo vi /etc/hosts
          }
      ```
 
-   * /etc/security/pam_winbind
+   * /etc/security/pam_winbind.conf
    
      ```ini
      [global]
@@ -259,13 +259,13 @@ sudo vi /etc/hosts
 
 3. 检查 Azure AD 和 Linux 中的日期和时间是否同步。可以通过将 Azure AD 服务器添加到 NTP 服务来实现此目的：
    
-   1. 将以下行添加到/etc/ntp.conf：
+   1. 将以下行添加到 /etc/ntp.conf：
      
       ```console
       server aaddscontoso.com
       ```
 
-   1. 重新启动 NTP 服务：
+   1. 重启 NTP 服务：
      
       ```console
       sudo systemctl restart ntpd
@@ -277,13 +277,13 @@ sudo vi /etc/hosts
    sudo net ads join -U Administrator%Mypassword
    ```
 
-5. 在 (PAM) 的 Linux 可插入身份验证模块中启用 winbind 作为登录源：
+5. 在 Linux 可插入身份验证模块 (PAM) 中启用 winbind 作为登录源：
 
    ```console
    pam-config --add --winbind
    ```
 
-6. 启用主目录的自动创建，使用户能够登录：
+6. 启用自动创建主目录功能，以便用户可以登录：
 
    ```console
    pam-config -a --mkhomedir

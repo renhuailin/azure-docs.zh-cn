@@ -2,20 +2,20 @@
 title: 使用 Azure AD 域服务对域加入进行故障排除 | Microsoft Docs
 description: 了解如何解决出现以下情况时遇到的常见问题：尝试将 VM 加入域或将应用程序连接到 Azure Active Directory 域服务，而无法连接到托管域或通过其身份验证。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 86d6ca79a12e4706f558e92c3c83c5bddaa99b3c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967505"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618597"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>使用 Azure Active Directory 域服务托管域对域加入问题进行故障排除
 
