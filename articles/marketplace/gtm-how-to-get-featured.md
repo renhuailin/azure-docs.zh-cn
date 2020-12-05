@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103562"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621359"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
 
-Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应用：****
+Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应用：
 
 * 首先，如果你有试用版或事务产品/服务，则可以通过 [商业 marketplace 权益](gtm-your-marketplace-benefits.md)来使用 "类别促销" 权益。
 * 其次，查看最佳做法列表和以下条件，以获得一个位置。
@@ -28,10 +28,10 @@ Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应
 可以执行以下操作项来提高评分：
 
 1. *确保对应用或服务进行适当的分类*：选择表示应用或服务功能的三个类别。
-2. Azure 市场应用：增加每月的 Azure 消费。** 如果每月能够使用 Azure 1,000 个小时，则获得推广的机会就会大大增加。
-3. AppSource 应用：增加套餐的购买量。** 如果每月能够实现 10 笔购买，则获得推广的机会就会大大增加。 
-4. 实现“联合销售就绪”状态：完成“联合销售就绪”的要求。**
-5. 改进套餐质量：有关如何修改套餐的信息，请参阅[内容列出准则](marketplace-criteria-content-validation.md)**
+2. Azure 市场应用：增加每月的 Azure 消费。 如果每月能够使用 Azure 1,000 个小时，则获得推广的机会就会大大增加。
+3. AppSource 应用：增加套餐的购买量。 如果每月能够实现 10 笔购买，则获得推广的机会就会大大增加。
+4. *实现 Co-Sell 就绪状态*：完成 [共同销售准备的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+5. 改进套餐质量：有关如何修改套餐的信息，请参阅[内容列出准则](marketplace-criteria-content-validation.md)
 6. 在市场中发布多个套餐：所有核心应用和服务是否都已列出？ 是否提供试用体验？
 7. 鼓励客户编写评论。
 

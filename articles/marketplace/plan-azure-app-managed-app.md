@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460978"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621410"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>规划 azure 托管应用程序的 Azure 应用程序产品/服务
 
@@ -90,7 +90,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。 有关详细信息，请参阅[对 Azure 托管应用程序启用和请求实时访问](../azure-resource-manager/managed-applications/request-just-in-time-access.md)。
 
 > [!NOTE]
-> 即使 skimmingBe 确保更新 `createUiDefinition.json` 文件以支持此功能，用户也应该注意的信息。
+> 请确保更新 `createUiDefinition.json` 文件，以便支持此功能。
 
 ## <a name="deployment-mode"></a>部署模式
 

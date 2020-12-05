@@ -8,17 +8,20 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 01f02efd36c51f3969ee53e9efc78fbe1664b187
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486532"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621376"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
 IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HADR) 配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) 包含一个节点，该节点运行一个主数据库实例，至少一个节点运行辅助数据库实例。 主数据库实例的更改将以同步或异步方式复制到辅助数据库实例，具体取决于你的配置。 
 
+> [!NOTE]
+> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
+   
 本文介绍如何部署和配置 Azure 虚拟机 (Vm) 、安装群集框架，以及安装具有 HADR 配置的 IBM Db2 LUW。 
 
 本文不介绍如何通过 HADR 或 SAP 软件安装来安装和配置 IBM Db2 LUW。 为了帮助你完成这些任务，我们提供了对 SAP 和 IBM 安装手册的参考。 本文重点介绍特定于 Azure 环境的部件。 
@@ -27,7 +30,7 @@ IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HAD
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 说明 |
+| SAP 说明 | 描述 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -422,7 +425,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定”。
+   f. 选择“确定”  。
 
 1. 创建运行状况探测：
 

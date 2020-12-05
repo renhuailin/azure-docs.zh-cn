@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571124"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621597"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -250,15 +250,15 @@ SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费
 | Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于合格的 SaaS 应用，Microsoft 将支付90% 的许可证成本| 80.00 美元/月<br>``*`` 90.00 美元/月 |
 |||
 
-**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 的工作日内才能接收该月的降低 Marketplace 服务费用。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 的工作日内才能接收该月的降低 Marketplace 服务费用。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ## <a name="additional-sales-opportunities"></a>其他销售商机
 
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
-- **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅 [云解决方案提供商计划](cloud-solution-providers.md) 。
+- **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关此计划的详细信息，请参阅 [云解决方案提供商计划](cloud-solution-providers.md)。
 
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md) ，详细了解如何准备产品/服务进行评估。
+- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 有关如何准备产品/服务进行评估的详细信息，请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

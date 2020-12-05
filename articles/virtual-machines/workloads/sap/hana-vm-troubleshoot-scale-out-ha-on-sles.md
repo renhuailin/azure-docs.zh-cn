@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010021"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621546"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -45,6 +45,9 @@ ms.locfileid: "96010021"
 SUSE 发布了[这项性能优化设置的详细说明][sles-hana-scale-out-ha-paper]。
 
 有关 SAP HANA 横向扩展支持的虚拟机类型，请查看 [SAP HANA 认证的 IaaS 目录][sap-hana-iaas-list]。
+
+> [!NOTE]
+> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
 
 结合多个子网和 vNIC 的SAP HANA 横向扩展以及 HSR 的设置存在一个技术问题。 必须使用其中已修复此问题的最新 SAP HANA 2.0 修补程序。 支持以下 SAP HANA 版本： 
 

@@ -1,14 +1,14 @@
 ---
 title: 通过 Azure Migrate 大规模管理迁移项目
 description: 了解如何在委派的客户资源上有效使用 Azure Migrate。
-ms.date: 12/3/2020
+ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 184307814bd3ceae6047734946f79b0ba5cb2e10
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603134"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621563"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>通过 Azure Migrate 大规模管理迁移项目
 
@@ -38,7 +38,7 @@ ms.locfileid: "96603134"
 
 此模型的工作流将如下所示：
 
-1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。
+1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。 有关使用此角色的示例，请参阅 [azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 示例模板。
 1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户 [创建一个 Azure Migrate 项目](/migrate/create-manage-projects.md)，并选择适当的委托客户订阅。
 1. 然后，用户 [执行发现和评估的步骤](../../migrate/tutorial-discover-vmware.md)。
 
@@ -60,13 +60,15 @@ ms.locfileid: "96603134"
 
 此模型的工作流将如下所示：
 
-1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。
+1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。 有关使用此角色的示例，请参阅 [azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 示例模板。
 1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户在属于管理租户的订阅中 [创建一个 Azure Migrate 项目](/migrate/create-manage-projects.md) 。
 1. 然后，用户 [执行发现和评估的步骤](../../migrate/tutorial-discover-vmware.md)。 本地 Vm 将在管理租户中创建的迁移项目内发现和评估，然后从此处迁移。
 
    如果在同一 Hyper-v 主机中管理多个客户，则可以同时发现所有工作负荷。 可以在同一个组中选择客户特定的 Vm，然后可以创建评估，还可以通过选择适当的客户订阅作为目标目标来执行迁移。 无需限制发现范围，你可以在一个迁移项目中维护所有客户工作负荷的完整概述。
 
 1. 准备就绪后，请选择委托的客户订阅作为复制和迁移工作负荷的目标目标，以继续进行迁移。 新创建的资源将存在于客户订阅中，而与迁移项目有关的评估数据和资源将保留在管理租户中。
+
+注意：在部署之前，必须修改参数文件以反映你的环境 https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate
 
 ## <a name="partner-recognition-for-customer-migrations"></a>用于客户迁移的合作伙伴识别
 

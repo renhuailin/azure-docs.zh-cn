@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450127"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621342"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -32,18 +32,17 @@ ms.locfileid: "96450127"
 ## <a name="eligibility-criteria"></a>资格条件
 
 * 参与合作伙伴必须具有 MPN ID。
-* 参与的服务提供商应准备好进行联合销售。
-* 参与的软件供应商应准备好进行 IP 联合销售。
+* 参与服务提供商应 [共同销售](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+* 参与的软件供应商应该是 [IP 联销售准备就绪](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
 * 至少一个参与合作伙伴必须具有以下某个领域的黄金资格：
-
-    * 应用程序开发
-    * 应用程序集成
-    * 应用程序生命周期管理
-    * 云平台
-    * 数据分析
-    * 数据中心
-    * 数据平台
-    * DevOps
+    - 应用程序开发
+    - 应用程序集成
+    - 应用程序生命周期管理
+    - 云平台
+    - 数据分析
+    - 数据中心
+    - 数据平台
+    - DevOps
 
 * 解决方案必须包含至少两个合作伙伴组织，将 IP 和服务组合在一起，以形成完整的客户解决方案和体验。
 * 必须在 Azure、Dynamics 365 或 Power Platform 上构建合作伙伴 IP。

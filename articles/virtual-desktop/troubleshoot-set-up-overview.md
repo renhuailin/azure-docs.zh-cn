@@ -3,15 +3,15 @@ title: Windows 虚拟桌面故障排除概述-Azure
 description: 有关在设置 Windows 虚拟桌面环境时解决问题的概述。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009352"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621308"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows 虚拟桌面的疑难解答概述、反馈和支持
 
@@ -45,7 +45,7 @@ ms.locfileid: "88009352"
 | 连接客户端                                                                    | 请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md) ，如果这不能解决你的问题，请参阅 [会话主机虚拟机配置](troubleshoot-vm-configuration.md)。 |
 | 远程应用程序或桌面的响应能力                                      | 如果问题与特定应用程序或产品相关，请联系负责该产品的团队。 |
 | 授权消息或错误                                                          | 如果问题与特定应用程序或产品相关，请联系负责该产品的团队。 |
-| 第三方身份验证方法的问题 | 验证第三方提供程序是否支持 Windows 虚拟桌面方案，并与任何已知问题相关。 |
+| 第三方身份验证方法或工具的问题 | 验证第三方提供程序是否支持 Windows 虚拟桌面方案，并与任何已知问题相关。 |
 | 使用 Windows 虚拟桌面 Log Analytics 的问题 | 有关诊断架构的问题，请 [提出 Azure 支持请求](https://azure.microsoft.com/support/create-ticket/)。<br><br>对于 Log Analytics 中的查询、可视化效果或其他问题，请在 "Log Analytics" 下选择适当的问题类型。 |
 | 使用 M365 应用时的问题 | 请联系 M365 管理中心，其中包含一个 [M365 管理中心帮助选项](/microsoft-365/admin/contact-support-for-business-products/)。 |
 

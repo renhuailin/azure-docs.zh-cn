@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532986"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621529"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
@@ -147,7 +147,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 读取操作当前支持纯文本形式提取手写文本。
 
 ## <a name="use-the-rest-api-and-sdk"></a>使用 REST API 和 SDK
-对于大多数客户而言， [读取 REST API](./QuickStarts/CSharp-hand-text.md) 是首选选项，因为它易于集成，并可实现快速工作效率。 当你集中精力满足客户需求时，Azure 和计算机视觉服务可处理规模、性能、数据安全和合规性需求。
+对于大多数客户而言， [读取 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 是首选选项，因为它易于集成，并可实现快速工作效率。 当你集中精力满足客户需求时，Azure 和计算机视觉服务可处理规模、性能、数据安全和合规性需求。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>在本地部署 Docker 容器
 利用 [读取 Docker 容器 (预览) ](./computer-vision-how-to-install-containers.md) ，你可以在自己的本地环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。

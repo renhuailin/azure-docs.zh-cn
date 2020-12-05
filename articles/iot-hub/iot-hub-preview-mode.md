@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
-ms.openlocfilehash: 5299a049ab2cc2246a861dd3fb81f466b56afad3
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603146"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621699"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>打开 IoT 中心的预览模式，尝试选择新功能
 
@@ -66,7 +66,7 @@ ms.locfileid: "96603146"
 
 不要 *将 IoT* 中心用于生产环境。 预览模式 *仅* 用于预览此页面顶部列出的选择功能。 IoT 中心预览模式有一些其他限制
 
-- 某些现有的 IoT 中心功能（如专用链接、托管标识、设备流和故障转移）可能会意外或根本不工作。
+- 某些现有的 IoT 中心功能（如 IP 筛选器、专用链接、托管标识、设备流和故障转移）可能会意外或根本不工作。
 - 处于预览模式的 IoT 中心无法更改或升级到普通 IoT 中心。
 - 我们无法保证普通 [IoT 中心 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/) -不能用于生产。
 

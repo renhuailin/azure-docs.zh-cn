@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13716210ae967c9d4a7f21fb5a6c4afdb9033be1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a345c2feaeea933af3fdce591283716443fbfda
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466341"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621665"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>在专用 SQL 池上启用 Synapse 工作区功能 (以前的 SQL DW) 在你的区域中。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96466341"
 | 印度南部 |2021 年 3 月 31 日 |
 | 印度西部 |2021 年 3 月 31 日 |
 | 瑞士西部 |2021 年 3 月 31 日 |
-| 阿拉伯联合酋长国北部 |2020 年 6 月 1 日 |2020 年 7 月 1 日 |
+| 阿拉伯联合酋长国北部 |2021 年 3 月 31 日 |
 
 ## <a name="next-steps"></a>后续步骤
 [Synapse 工作区和 Studio](../get-started.md)入门。
