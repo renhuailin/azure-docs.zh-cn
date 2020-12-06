@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964785"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743524"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>部署常见问题 (Azure AD () 预览版中的混合 FIDO2 安全密钥) 的常见问题
 
@@ -96,10 +96,10 @@ Internet 连接是启用此功能的先决条件。 用户首次使用 FIDO2 安
 * **。 msftauth.net*
 * **。 msftauthimages.net*
 * **。 phonefactor.net*
-* *enterpriseregistration.windows.net*
+* *enterpriseregistration。windows。net*
 * *management.azure.com*
 * *policykeyservice.dc.ad.msft.net*
-* *secure.aadcdn.microsoftonline-p.com*
+* *secure.aadcdn.microsoftonline p.com*
 
 有关使用 Microsoft online 产品所需的终结点的完整列表，请参阅 [Office 365 url 和 IP 地址范围](/microsoft-365/enterprise/urls-and-ip-address-ranges)。
 
@@ -164,7 +164,7 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 默认安全策略不授予 Azure AD 的权限对本地资源的高权限帐户进行签名。
 
-若要取消阻止帐户，请使用 **Active Directory 用户和计算机** 来修改 Azure AD Kerberos 计算机对象的 *msds-neverrevealgroup* 属性， * (CN = AzureADKerberos，OU = 域控制器， \<domain-DN>) *。
+若要取消阻止帐户，请使用 **Active Directory 用户和计算机** 来修改 Azure AD Kerberos 计算机对象的 *msds-neverrevealgroup* 属性， *(CN = AzureADKerberos，OU = 域控制器， \<domain-DN>)*。
 
 ## <a name="under-the-hood"></a>揭秘
 
@@ -179,7 +179,7 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 有两个部分-本地 AD DS 环境和 Azure AD 租户。
 
-**Active Directory 域服务 (AD DS) **
+**Active Directory 域服务 (AD DS)**
 
 Azure AD Kerberos 服务器在本地 AD DS 环境中表示为域控制器 (DC) 对象。 此 DC 对象由多个对象组成：
 
@@ -228,13 +228,13 @@ Azure AD Connect 不会将信息从 Azure AD 写回 AD DS。 实用工具包含�
 
 HTTP 请求是标准的主刷新令牌 (PRT) 请求。 此 PRT 请求包括一个声明，指出需要 (TGT) 的 Kerberos 票证授予票证。
 
-| 声明 | “值” | 说明                             |
+| 声明 | 值 | 描述                             |
 |-------|-------|-----------------------------------------|
 | tgt   | true  | 声明指示客户端需要 TGT。 |
 
 Azure AD 将加密的客户端密钥和消息缓冲区合并为 PRT 响应作为附加属性。 负载使用 Azure AD 设备会话密钥进行加密。
 
-| 字段              | 类型   | 说明  |
+| 字段              | 类型   | 描述  |
 |--------------------|--------|--------------|
 | tgt_client_key     | 字符串 | Base64 编码的客户端密钥 (密钥) 。 此密钥是用于保护 TGT 的客户端机密。 在此无密码方案中，客户端密码由服务器作为每个 TGT 请求的一部分生成，然后在响应中返回给客户端。 |
 | tgt_key_type       | int    | 本地 AD DS 密钥类型，用于客户端密钥和 KERB_MESSAGE_BUFFER 中包括的 Kerberos 会话密钥。 |

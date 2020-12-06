@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad3d76227e833f648070bd55469861dffe3d540
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839550"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743371"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -207,7 +207,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![创建共享机密来建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击 **“确定”** 关闭对话框。
+1. 单击“确定”  关闭对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 
@@ -306,7 +306,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击" **确定**"。 当系统提示查看相应帮助主题时，请单击“否”。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)

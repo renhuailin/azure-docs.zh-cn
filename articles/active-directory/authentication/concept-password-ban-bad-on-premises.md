@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4802c4faf245819f57f9885129fa876110407dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965227"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743915"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>为 Active Directory 域服务强制实施本地 Azure AD 密码保护
 
@@ -51,7 +51,7 @@ Azure AD 密码保护 DC 代理软件只能在其安装在 DC 上时验证密码
 
 * Azure AD 密码保护代理服务在当前 AD DS 林中的任何已加入域的计算机上运行。 服务的主要用途是将密码策略下载请求从 Dc 转发到 Azure AD，然后将 Azure AD 中的响应返回到 DC。
 * DC 代理的密码筛选器 DLL 接收来自操作系统的用户密码验证请求。 筛选器将它们转发到在 DC 上本地运行的 DC 代理服务。
-* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前 (本地可用) 密码策略处理它们，并返回 *通过* 或 *失败*的结果。
+* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前 (本地可用) 密码策略处理它们，并返回 *通过* 或 *失败* 的结果。
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD 密码保护的工作原理
 

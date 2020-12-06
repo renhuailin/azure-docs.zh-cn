@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/04/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c67f72a7f0d77284dbb34104754793b36bb8d4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 29a577b50a561cb5b829e453c523e0bd18a70e1a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838138"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741671"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure Active Directory 中启用合并安全信息注册
 
 在组合注册之前，用户会为 Azure AD 多重身份验证和自助服务密码重置 (SSPR) 单独注册身份验证方法。 人们搞糊涂，使用了类似的方法进行 Azure AD 多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次并获得 Azure AD 多重身份验证和 SSPR 的优势。
 
 > [!NOTE]
-> 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。
+> 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。 从2020年12月14日开始，将自动为组合注册启用所有 Azure AD 租户。
 
 若要在启用新体验之前确保了解功能和影响，请参阅 [组合的安全信息注册概念](concept-registration-mfa-sspr-combined.md)。
 

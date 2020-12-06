@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964751"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743473"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
 
@@ -109,7 +109,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| properties | 说明 |
+| Property | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |

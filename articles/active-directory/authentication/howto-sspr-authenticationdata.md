@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164987"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741569"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>为 Azure Active Directory 自助式密码重置 (SSPR) 预填用户身份验证联系信息
 
@@ -44,18 +44,18 @@ ms.locfileid: "92164987"
 | telephoneNumber              | 办公电话 |
 | mobile                       | 移动电话 |
 
-用户验证其移动电话号码后，Azure AD 中的“身份验证联系人信息”下的“电话”字段也将填充该号码。******
+用户验证其移动电话号码后，Azure AD 中的“身份验证联系人信息”下的“电话”字段也将填充该号码。
 
 ## <a name="authentication-contact-info"></a>身份验证联系人信息
 
-在 Azure 门户中 Azure AD 用户的 " **身份验证方法** " 页上，全局管理员可以手动设置身份验证联系信息。 您可以查看 " *可用身份验证方法* " 部分下的现有方法，或按以下示例屏幕截图中所示的 " **+ 添加身份验证方法**"：
+在 Azure 门户中 Azure AD 用户的“身份验证方法”页上，全局管理员可以手动设置身份验证联系人信息。 您可以查看 " *可用身份验证方法* " 部分下的现有方法，或按以下示例屏幕截图中所示的 " **+ 添加身份验证方法**"：
 
 :::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="从 Azure 门户管理身份验证方法":::
 
 以下注意事项适用于这些身份验证联系信息：
 
-* 如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户会在密码重置注册页和密码重置工作流中看到该号码。****
-* 如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户会在密码重置注册页和密码重置工作流中看到该电子邮件。****
+* 如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户会在密码重置注册页和密码重置工作流中看到该号码。
+* 如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户会在密码重置注册页和密码重置工作流中看到该电子邮件。
 
 ## <a name="security-questions-and-answers"></a>安全问题和答案
 
@@ -115,7 +115,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 #### <a name="read-the-authentication-phone-and-authentication-email-options"></a>读取“身份验证电话”和“身份验证电子邮件”选项
 
-若要在使用 PowerShell 版本 1 时读取**身份验证电话**和**身份验证电子邮件**，请使用以下命令：
+若要在使用 PowerShell 版本 1 时读取 **身份验证电话** 和 **身份验证电子邮件**，请使用以下命令：
 
 ```PowerShell
 Connect-MsolService

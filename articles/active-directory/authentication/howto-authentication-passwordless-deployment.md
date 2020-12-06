@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174130"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743609"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -51,7 +51,7 @@ Microsoft 提供了三种无密码的身份验证选项，涵盖了许多情况�
 
 Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你的组织需要、先决条件以及每种身份验证方法的功能，以选择你的无密码 authentication 战略。 建议使用 Windows 10 设备的每个组织都使用 Windows Hello for Business。 然后，将电话登录 (与 Microsoft Authenticator 应用) 或安全密钥一起添加到其他方案。
 
-| 场景 | 电话身份验证 | 安全密钥 | Windows Hello 企业版 |
+| 方案 | 电话身份验证 | 安全密钥 | Windows Hello 企业版 |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
 | **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | 否 |
@@ -93,7 +93,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 下表概述了要在此项目中实现的用例。
 
-| 领域 | 说明 |
+| 区域 | 说明 |
 | --- | --- |
 | **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
@@ -243,7 +243,7 @@ Azure AD 将条目添加到审核日志中：
 
 下面是 Microsoft Authenticator 应用进行无密码身份验证的示例测试案例：
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以注册 Microsoft Authenticator 应用 | 用户可以从 aka.ms/mysecurityinfo 注册应用程序 |
 | 用户可以启用手机登录 | 为工作帐户配置的电话登录 |
@@ -257,7 +257,7 @@ Azure AD 将条目添加到审核日志中：
 
 **无密码 FIDO 登录到 Azure Active Directory 加入 Windows 10 设备**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以将 FIDO2 设备注册 (1809)  | 用户可以使用 at > 帐户 > 登录选项 > 安全密钥注册 FIDO2 设备 |
 | 用户可以重置 FIDO2 设备 (1809)  | 用户可以使用制造商软件重置 FIDO2 设备 |
@@ -268,7 +268,7 @@ Azure AD 将条目添加到审核日志中：
 
 **无密码 FIDO 登录到 Azure AD web 应用**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以使用 Microsoft Edge 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
 | 用户可以使用 Firefox 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
@@ -292,11 +292,11 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-| Azure AD 角色 | 说明 |
+| Azure AD 角色 | 描述 |
 | --- | --- |
 | 全局管理员角色|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
-| User | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
+| 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>部署 Microsoft Authenticator 应用的手机登录
 
@@ -308,7 +308,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-phone-sign-in"></a>电话登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行合并注册。 | 确保启用了 [组合注册](concept-registration-mfa-sspr-combined.md) 。 |
 | 用户无法启用手机登录验证器应用。 | 确保用户处于部署范围。 |
@@ -316,7 +316,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>安全密钥登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行合并注册。 | 确保启用了 [组合注册](concept-registration-mfa-sspr-combined.md) 。 |
 | 用户无法在其 [安全设置](https://aka.ms/mysecurityinfo)中添加安全密钥。 | 确保启用 [安全密钥](howto-authentication-passwordless-security-key.md) 。 |

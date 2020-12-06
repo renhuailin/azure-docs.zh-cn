@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d72aa65f18896ebbecf651da32558059ba782cc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968389"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741773"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure Active Directory 密码保护
 
@@ -26,13 +26,13 @@ ms.locfileid: "91968389"
 
 有关 Azure AD 密码保护在本地环境中的工作原理的详细信息，请参阅 [如何为 Windows Server Active Directory 强制执行 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文说明如何为本地环境启用 Azure AD 密码保护。 在完成本文之前，请在本地 AD DS 环境中 [安装并注册 Azure AD 密码保护代理服务和 DC 代理](howto-password-ban-bad-on-premises-deploy.md) 。
 
 ## <a name="enable-on-premises-password-protection"></a>启用本地密码保护
 
-1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**  >  **安全**  >  **身份验证方法**"  >  **密码保护**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)并浏览到 **Azure Active Directory**  >  **安全**  >  **身份验证方法**"  >  **密码保护**"。
 1. 将 **Windows Server Active Directory 上的 "启用密码保护** " 选项设置为 *"是"*。
 
     如果此设置设置为 " *否*"，则所有部署 Azure AD 密码保护 DC 代理将进入静态模式，其中所有密码都按原样接受。 不执行任何验证活动，并且不生成审核事件。

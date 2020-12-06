@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9664518a7e8ec505a2823cdd5f17d6fa8a7db8b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6a3044127aacb5910a270d40d94d3255031a71a2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925792"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741297"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>排查 Azure Active Directory 中的自助式密码重置写回问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "92925792"
 若要解决该服务的连接性问题或其他暂时性问题，请完成以下步骤来重启 Azure AD Connect Sync 服务：
 
 1. 在运行 Azure AD Connect 的服务器上以管理员身份选择“启动”。
-1. 在搜索字段中输入 *services.msc* ，按 **Enter** 。
+1. 在搜索字段中输入 *services.msc*，按 **Enter**。
 1. 找到“Microsoft Azure AD Sync”条目。
 1. 右键单击该服务条目，选择“重启”，然后等待操作完成。
 
@@ -104,29 +104,29 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 1. 登录到 Azure AD Connect 服务器，并选择“开始” > “同步服务”启动“Synchronization Service Manager”。
 1. 在“连接器”选项卡下，选择本地“Active Directory 域服务器”连接器，并选择“属性”。  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="使用 GUI 重启 Azure AD Sync 服务" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="显示如何编辑属性的 Synchronization Service Manager" border="false":::
   
 1. 在弹出窗口中，选择“连接到 Active Directory 林”，并记下“用户名”属性 。 此属性是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。
 
     若要让 Azure AD Connect 执行密码写回，AD DS 帐户必须具有重置密码权限。 通过以下步骤检查对此用户帐户的权限。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="使用 GUI 重启 Azure AD Sync 服务" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="查找同步服务 Active Directory 用户帐户" border="false":::
   
 1. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序。
 1. 选择“视图”并确保已启用“高级功能”选项 。  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="使用 GUI 重启 Azure AD Sync 服务" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory 用户和计算机显示“高级功能”" border="false":::
   
 1. 查找要验证的 AD DS 用户帐户。 右键单击帐户名称并选择“属性”。  
 1. 在弹出窗口中，转到“安全”选项卡，并选择“高级” 。  
 1. 在“管理员的高级安全设置”弹出窗口中，转到“有效访问权限”选项卡 。
 1. 依次选择“选择用户”、Azure AD Connect 使用的 AD DS 帐户、“查看有效访问权限” 。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="使用 GUI 重启 Azure AD Sync 服务" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="显示同步帐户的“有效访问权限”选项卡" border="false":::
   
 1. 向下滚动并查找“重置密码”。 如果已选中该条目，则表示 AD DS 帐户有权重置所选 Active Directory 用户帐户的密码。  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="使用 GUI 重启 Azure AD Sync 服务" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="验证同步帐户是否具有重置密码权限" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>常见的密码写回错误
 
@@ -178,7 +178,7 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 | 31016| WriteBackServiceStopped| 此事件表示密码写回服务已停止。 来自云的任何密码管理请求都不会成功。|
 | 31017| AuthTokenSuccess| 此事件表示为启动卸载或登记过程，我们已成功检索到在设置 Azure AD Connect 期间指定的全局管理员的授权令牌。|
 | 31018| KeyPairCreationSuccess| 此事件表示已成功创建密码加密密钥。 此密钥用于对从云发送到本地环境的密码进行加密。|
-| 31034| ServiceBusListenerError| 此事件表示连接到租户的服务总线侦听器时出现错误。 如果错误消息包括 "远程证书无效"，请检查以确保 Azure AD Connect 服务器具有所有必需的根 Ca，如 [AZURE TLS 证书更改](../../security/fundamentals/tls-certificate-changes.md)中所述。 |
+| 31034| ServiceBusListenerError| 此事件指示连接到租户的服务总线侦听器时发生错误。 如果错误消息包括 "远程证书无效"，请检查以确保 Azure AD Connect 服务器具有所有必需的根 Ca，如 [AZURE TLS 证书更改](../../security/fundamentals/tls-certificate-changes.md)中所述。 |
 | 32000| UnknownError| 此事件表示在执行密码管理操作期间发生未知的错误。 有关更多详细信息，请查看事件中的异常文本。 如果有任何问题，请尝试禁用并重新启用密码写回。 如果这没有帮助，请在提交支持请求时提供事件日志的副本以及指定的跟踪 ID。|
 | 32001| ServiceError| 此事件表示连接到云密码重置服务时发生错误。 此错误通常在本地服务无法连接到密码重置 web 服务时发生。|
 | 32002| ServiceBusError| 此事件表示连接到租户的服务总线实例时发生错误。 发生此错误的原因可能是在本地环境中阻止了出站连接。 请检查防火墙，确保允许基于 TCP 443 的连接或者到 https://ssprdedicatedsbprodncu.servicebus.windows.net 的连接，并重试。 如果仍然出现问题，请尝试禁用并重新启用密码写回。|
@@ -213,22 +213,22 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 
 为了能够提供适当的帮助，我们希望你在建立支持案例时提供尽量多的详细信息。 这些详细信息包括：
 
-* **错误的一般描述** ：错误是什么？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
-* **页面** ：在哪个页面上看到了该错误？ 请附送页面的 URL（如果可以）和屏幕截图。
-* **支持代码** ：用户看到该错误时生成了哪个支持代码？
+* **错误的一般描述**：错误是什么？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
+* **页面**：在哪个页面上看到了该错误？ 请附送页面的 URL（如果可以）和屏幕截图。
+* **支持代码**：用户看到该错误时生成了哪个支持代码？
    * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="使用 GUI 重启 Azure AD Sync 服务":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="支持代码位于 Web 浏览器窗口的右下角。":::
 
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
-* **日期、时间和时区** ：包含发生错误时的确切日期和时间及“时区”。
-* **用户 ID** ：哪个用户看到了该错误？ 例如，user\@contoso.com。
+* **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”。
+* **用户 ID**：哪个用户看到了该错误？ 例如，user\@contoso.com。
    * 是否是联合用户？
    * 是否是直通身份验证用户？
    * 是否是密码哈希同步的用户？
    * 是否是仅限云的用户？
-* **许可** ：用户是否分配有 Azure AD 许可证？
-* **应用程序事件日志** ：如果你使用的是密码写回，并且错误发生在本地基础结构中，请包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
+* **许可**：用户是否分配有 Azure AD 许可证？
+* **应用程序事件日志**：如果你使用的是密码写回，并且错误发生在本地基础结构中，请包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
 
 ## <a name="next-steps"></a>后续步骤
 

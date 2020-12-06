@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baffe307a560f2668c2d93e36939a695cf963e89
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968372"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741722"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户
 
@@ -71,11 +71,11 @@ ms.locfileid: "91968372"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 " *Azure Active Directory*"，然后选择 "**安全**  >  **身份验证方法**  >  **密码保护**"。
-1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”****。
+1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”。
 
     默认值为 10。
 
-1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）****。
+1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）。
 
     默认值为 60 秒（一分钟）。
 

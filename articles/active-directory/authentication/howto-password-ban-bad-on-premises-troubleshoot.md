@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3508d3942626c319221f4b690aaf444e034195bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966621"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741739"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
@@ -217,8 +217,8 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 > [!IMPORTANT]
 > 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。
 
-1. 从所有计算机中卸载代理软件。 完成此步骤后**不需要**重新启动。
-2. 从所有域控制器中卸载 DC 代理软件。 完成此步骤后**需要**重新启动。
+1. 从所有计算机中卸载代理软件。 完成此步骤后 **不需要** 重新启动。
+2. 从所有域控制器中卸载 DC 代理软件。 完成此步骤后 **需要** 重新启动。
 3. 在每个域命名上下文中手动删除所有代理服务连接点。 可使用以下 Active Directory PowerShell 命令发现这些对象的位置：
 
    ```powershell

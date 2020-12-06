@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13cfed6bf378ff9dacc4b6446cdfc246a87949bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d144716dbc5636451405f1124d4c3949f585d6b2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994224"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742640"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -63,7 +63,7 @@ ms.locfileid: "95994224"
 
 12. 由于不可能将 AD FS 代理服务器加入到域，因此，可以使用 LDAP 连接到域控制器来进行用户导入和预身份验证。 在 "高级 Form-Based 网站" 对话框中，单击 " **主要身份验证** " 选项卡，然后为 "预身份验证" 身份验证类型选择 " **LDAP 绑定** "。
 13. 完成后，单击“确定”返回到“添加基于窗体的网站”对话框。
-14. 单击 **“确定”** 关闭对话框。
+14. 单击“确定”  关闭对话框。
 15. 检测到或输入 URL 和页面变量后，网站数据会显示在基于表单的面板中。
 16. 单击 " **本机模块** " 选项卡，然后选择服务器、AD FS 代理在 (（如 "默认网站" ) ）下运行的网站，或 AD FS 代理应用程序 (例如 "adfs" 下的 "ls"），以便在所需级别启用 IIS 插件。
 17. 单击屏幕顶部的“启用 IIS 身份验证”框。
@@ -112,7 +112,7 @@ ms.locfileid: "95994224"
 
    ![不带代理的 AD FS 2.0 直通](./media/howto-mfaserver-adfs-2/noproxy.png)
 
-8. 单击“确定”。
+8. 单击" **确定**"。
 9. 单击 " **本机模块** " 选项卡，然后选择服务器、网站 (如 "默认网站" ) 或 AD FS 应用程序 (例如 "adfs ) " 下的 "ls"），以便在所需级别启用 IIS 插件。
 10. 单击屏幕顶部的“启用 IIS 身份验证”框。
 

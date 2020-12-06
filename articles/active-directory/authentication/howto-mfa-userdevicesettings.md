@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a96f01d38fb41f64336d0a2b1d2aa33a96ca9f1a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838921"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742742"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>管理 Azure AD 多重身份验证的用户身份验证方法
 
@@ -44,7 +44,7 @@ Azure AD 中的用户有两组不同的联系信息：
 
 通过 Azure 门户添加用户的身份验证方法：  
 
-1. 登录到 **Azure 门户**。 
+1. 登录 **Azure 门户**。 
 1. 浏览到 **Azure Active Directory**"  >  **Users**  >  **所有用户**"。 
 1. 选择要为其添加身份验证方法的用户，然后选择 " **身份验证方法**"。  
 1. 在窗口顶部，选择 " **+ 添加身份验证方法**"。

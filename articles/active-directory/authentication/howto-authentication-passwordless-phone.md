@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/11/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839516"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743592"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用 (预览版启用无密码登录) 
 
@@ -67,7 +67,7 @@ Azure AD 允许选择在登录过程中可使用的身份验证方法。 然后�
 
 用户通过执行以下步骤，注册 Azure AD 的无密码 authentication 方法：
 
-1. 浏览到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。
+1. 浏览到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。
 1. 登录，然后通过选择 " **添加方法 > 验证器应用**" 添加验证器应用，然后选择 " **添加**"。
 1. 按照说明在设备上安装和配置 Microsoft Authenticator 应用。
 1. 选择 **"完成"** 以完成身份验证器配置。

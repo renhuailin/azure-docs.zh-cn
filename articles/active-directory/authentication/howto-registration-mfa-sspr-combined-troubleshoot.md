@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 04/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838172"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741688"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>结合安全信息注册疑难解答
 
@@ -30,16 +30,16 @@ ms.locfileid: "94838172"
 
 下表列出了通过组合注册生成的所有审核事件：
 
-| 活动 | 状态 | Reason | 说明 |
+| 活动 | 状态 | 原因 | 说明 |
 | --- | --- | --- | --- |
-| 用户已注册所有必需的安全信息 | Success | 用户已注册所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
+| 用户已注册所有必需的安全信息 | 成功 | 用户已注册所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
 | 用户已注册所有必需的安全信息 | 失败 | 用户取消了安全信息注册。 | 当用户取消注册中断模式时发生此事件。|
-| 用户已注册安全信息 | Success | 用户注册 *方法*。 | 当用户注册单个方法时发生此事件。 *方法* 可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
-| 用户审阅的安全信息 | Success | 用户已成功查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 " **良好** " 时，将发生此事件。|
+| 用户已注册安全信息 | 成功 | 用户注册 *方法*。 | 当用户注册单个方法时发生此事件。 *方法* 可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
+| 用户审阅的安全信息 | 成功 | 用户已成功查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 " **良好** " 时，将发生此事件。|
 | 用户审阅的安全信息 | 失败 | 用户无法查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 " **良好** " 但在后端失败时，将发生此事件。|
-| 用户删除的安全信息 | Success | 用户删除 *方法*。 | 当用户删除单个方法时发生此事件。 *方法* 可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
+| 用户删除的安全信息 | 成功 | 用户删除 *方法*。 | 当用户删除单个方法时发生此事件。 *方法* 可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
 | 用户删除的安全信息 | 失败 | 用户无法删除 *方法*。 | 当用户尝试删除某方法，但出于某种原因尝试失败时，将发生此事件。 *方法* 可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
-| 用户更改的默认安全信息 | Success | 用户更改了 *方法* 的默认安全信息。 | 当用户更改默认方法时发生此事件。 *方法* 可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
+| 用户更改的默认安全信息 | 成功 | 用户更改了 *方法* 的默认安全信息。 | 当用户更改默认方法时发生此事件。 *方法* 可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
 | 用户更改的默认安全信息 | 失败 | 用户无法更改 *方法* 的默认安全信息。 | 当用户尝试更改默认方法，但出于某种原因尝试失败时，将发生此事件。 *方法* 可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
 
 ## <a name="troubleshooting-interrupt-mode"></a>中断模式疑难解答

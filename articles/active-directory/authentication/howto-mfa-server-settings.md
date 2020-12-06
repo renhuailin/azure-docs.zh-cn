@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838955"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742691"
 ---
 # <a name="configure-mfa-server-settings"></a>配置 MFA 服务器设置
 
@@ -27,7 +27,7 @@ ms.locfileid: "94838955"
 
 以下 MFA 服务器设置可用：
 
-| 功能 | 说明 |
+| Feature | 说明 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 允许用户在有限时间无需执行多重身份验证的情况下进行身份验证。 |
