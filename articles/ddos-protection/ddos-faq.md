@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992397"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746482"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保护标准常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "94992397"
 Azure DDoS 保护标准与应用程序设计最佳做法相结合，提供增强的 DDoS 缓解功能，防范 DDoS 攻击。 它会自动进行优化，以帮助保护虚拟网络中的特定 Azure 资源。 可在任何新的或现有的虚拟网络上启用保护，且无需对应用程序或资源做出任何更改。 与基本服务相比，该服务具有多种优势，包括日志记录、警报和遥测。 有关更多详细信息，请参阅 [Azure DDoS 保护标准概述](ddos-protection-overview.md) 。 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a> (第7层) ，服务层上的保护是怎样的？
-客户可将 Azure DDoS 保护服务与 [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md) 结合使用，以实现 (第3层和第4层（由 Azure DDoS 保护) 服务提供）的网络层、 (第7层（由应用程序网关 WAF SKU) 提供）提供保护。
+客户可将 Azure DDoS 保护服务与 Web 应用程序防火墙结合使用 (WAF) ，以保护 (第3层和第4层提供的网络层，第3层和第4层 () 提供此功能。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 以及 [azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 web 应用程序防火墙产品。
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>Azure 中是否不包含服务的服务不安全？
 在 Azure 上运行的服务在本质上受 Azure DDoS 保护基本保护，并已准备好保护 Azure 的基础结构。 但是，保护基础结构的保护的阈值要高得多，但它并不提供遥测或警报，因此，在接收流量时，可能会对接收它的应用程序造成破坏。 
@@ -41,6 +41,9 @@ Azure DDoS 保护标准与应用程序设计最佳做法相结合，提供增强
 
 ## <a name="are-classicrdfe-protected-resources-supported"></a>是否支持经典/RDFE 受保护的资源？
 预览版仅支持基于 ARM 的受保护资源。 不支持经典/RDFE 部署中的 Vm。 目前尚不打算针对经典/RDFE 资源提供支持。 有关更多详细信息，请参阅 [Azure DDoS 保护标准参考体系结构](ddos-protection-reference-architectures.md) 。
+
+## <a name="can-i-protect-my-paas-resources-using-ddos-protection"></a>是否可以使用 DDoS 保护来保护 PaaS 资源？
+目前不支持附加到多租户、单 VIP PaaS 服务的公共 Ip。 不受支持的资源的示例包括存储 Vip、事件中心 Vip 和应用/云服务应用程序。 有关更多详细信息，请参阅 [Azure DDoS 保护标准参考体系结构](ddos-protection-reference-architectures.md) 。
 
 ## <a name="can-i-protect-my-on-premise-resources-using-ddos-protection"></a>能否使用 DDoS 保护来保护本地资源？
 需要将服务的公共终结点关联到 Azure 中的 VNet，才能启用 DDoS 保护。 示例设计包括：

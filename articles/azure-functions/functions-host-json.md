@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917233"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746074"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -164,7 +164,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 有关这些设置的详细信息，请参阅 [Application Insights 中的采样](../azure-monitor/app/sampling.md)。 
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
 | maxTelemetryItemsPerSecond | 20 | 每个服务器主机上每秒记录的遥测项的目标数目。 如果应用在多个主机上运行，请将此值降低至总体目标流量率的范围内。 | 
@@ -218,6 +218,28 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 ## <a name="cosmosdb"></a>CosmosDB
 
 可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
+
+## <a name="customhandler"></a>customHandler
+
+自定义处理程序的配置设置。 有关详细信息，请参阅 [Azure Functions 自定义处理程序](functions-custom-handlers.md#configuration)。
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|属性 | 默认 | 描述 |
+| --------- | --------- | --------- |
+| defaultExecutablePath | 不适用 | 要作为自定义处理程序进程启动的可执行文件。 当使用自定义处理程序，并且它的值相对于 function app root 时，它是必需的设置。 |
+| workingDirectory | *函数应用根* | 要在其中启动自定义处理程序进程的工作目录。 它是一个可选设置，它的值相对于 function app root。 |
+| 参数 | 不适用 | 要传递给自定义处理程序进程的命令行参数的数组。 |
+| enableForwardingHttpRequest | false | 如果设置，则仅包含 HTTP 触发器和 HTTP 输出的所有函数都将转发原始 HTTP 请求，而不是自定义处理程序 [请求负载](functions-custom-handlers.md#request-payload)。 |
 
 ## <a name="durabletask"></a>durableTask
 
@@ -343,7 +365,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="manageddependency"></a>managedDependency
 
-托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的 [托管依赖项](functions-reference-powershell.md#dependency-management) 。
+托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
 
 ```json
 {
@@ -359,7 +381,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="retry"></a>retry
 
-控制应用中所有执行的 [重试策略](./functions-bindings-error-pages.md#retry-policies-preview) 选项。
+控制应用中所有执行的[重试策略](./functions-bindings-error-pages.md#retry-policies-preview)选项。
 
 ```json
 {
@@ -371,13 +393,13 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|properties  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
-|制定|null|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
-|maxRetryCount|null|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限期重试。|
-|delayInterval|null|用于策略重试之间的延迟 `fixedDelay` 。|
-|minimumInterval|null|使用策略时的最小重试延迟时间 `exponentialBackoff` 。|
-|maximumInterval|null|使用策略时的最大重试延迟时间 `exponentialBackoff` 。| 
+|strategy|null|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
+|maxRetryCount|null|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限重试。|
+|delayInterval|null|使用 `fixedDelay` 策略时在重试之间使用的延迟。|
+|minimumInterval|null|使用 `exponentialBackoff` 策略时的最小重试延迟。|
+|maximumInterval|null|使用 `exponentialBackoff` 策略时的最大重试延迟。| 
 
 ## <a name="sendgrid"></a>SendGrid
 

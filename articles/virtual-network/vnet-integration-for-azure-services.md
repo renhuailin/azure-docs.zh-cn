@@ -12,18 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: b01ade25c6592e68e34eeb542a90cdd0124a0446
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4a6cd529511d4a2e71e1a31c1600f8a51f455a37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737980"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746125"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>将 Azure 服务与虚拟网络集成以实现网络隔离
 
-使用 Azure 服务的虚拟网络集成，可以将对服务的访问锁定到仅虚拟网络基础结构。 VNet 基础结构还包括对等互连的虚拟网络和本地网络。
+虚拟网络 (VNet) 使用 Azure 服务进行集成，你可以将对服务的访问仅锁定到你的虚拟网络基础结构。 VNet 基础结构还包括对等互连的虚拟网络和本地网络。
 
-Azure 服务通过以下一种或多种方法实现网络隔离：
+VNet 集成为 Azure 服务提供网络隔离的优点，可通过以下一种或多种方法实现：
 - 在[虚拟网络中部署服务的专用实例](virtual-network-service-endpoints-overview.md)。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
 - 使用 [私有终结点](../private-link/private-endpoint-overview.md) ，将你私下并安全地连接到由 [Azure 专用链接](../private-link/private-link-overview.md)提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址，从而将该服务有效地引入到虚拟网络。
 - 通过 [服务终结点](virtual-network-service-endpoints-overview.md)将虚拟网络扩展到服务，使用公共终结点来访问服务。 服务终结点可使服务资源在虚拟网络中得到保护。

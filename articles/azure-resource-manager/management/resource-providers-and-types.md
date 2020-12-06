@@ -2,14 +2,14 @@
 title: 资源提供程序和资源类型
 description: 介绍支持 Azure 资源管理器的资源提供程序。 它介绍其架构、可用 API 版本，以及可以承载资源的区域。
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452110"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745092"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -45,20 +45,28 @@ ms.locfileid: "96452110"
 
 ## <a name="azure-portal"></a>Azure 门户
 
+### <a name="register-resource-provider"></a>注册资源提供程序
+
 查看所有资源提供程序和订阅的注册状态：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户菜单中，选择“所有服务”  。
+1. 在 "Azure 门户" 菜单上，搜索 " **订阅**"。 从可用选项中选择它。
 
-    ![选择“订阅”](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="搜索订阅":::
 
-3. 在“所有服务”  框中，输入“订阅”  ，然后选择“订阅”  。
-4. 从订阅列表中选择订阅进行查看。
-5. 选择“资源提供程序”  并查看可用资源提供程序的列表。
+1. 选择要查看的订阅。
 
-    ![显示资源提供程序](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="选择订阅":::
 
-6. 若要注册资源提供程序，请选择“注册”  。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。 若要在订阅中维护最少特权，只需注册已准备好使用的资源提供程序即可。
+1. 在左侧菜单中的“设置”下，选择“资源提供程序”。  
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="选择资源提供程序":::
+
+6. 找到要注册的资源提供程序，然后选择 " **注册**"。 若要在订阅中维护最少特权，只需注册已准备好使用的资源提供程序即可。
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="注册资源提供程序":::
+
+### <a name="view-resource-provider"></a>查看资源提供程序
 
 查看特定资源提供程序的信息：
 

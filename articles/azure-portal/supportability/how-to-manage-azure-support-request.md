@@ -1,19 +1,16 @@
 ---
 title: 管理 Azure 支持请求
 description: 介绍如何查看支持请求，发送消息，更改请求严重性级别，与 Azure 支持共享诊断信息，重新打开已关闭的支持请求，并上传文件。
-author: mgblythe
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: mblythe
-ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85852224"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745564"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -45,13 +42,17 @@ ms.locfileid: "85852224"
 
 1. 在 " **支持请求** " 页上，选择 " **更改**"。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="所有支持请求" **更改**"。
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="更改支持请求严重性":::
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="所有支持请求":::
+1. Azure 门户显示了两个屏幕中的一个，具体取决于你的请求是否已分配给支持工程师：
+
+    - 如果未分配您的请求，您将看到类似于下面的屏幕。 选择新的严重性级别，然后选择 " **更改**"。
+
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="选择新的严重性级别":::
 
     - 如果你的请求已分配，你会看到如下所示的屏幕。 选择 **"确定"**，然后创建 [新消息](#send-a-message) 以请求严重性级别的更改。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="所有支持请求":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="无法选择新的严重性级别":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>与 Azure 支持共享诊断信息
 
@@ -65,7 +66,7 @@ ms.locfileid: "85852224"
     
     1. 在 " **支持请求** " 页上，选择 " **授予权限**"，然后选择 **"是** " 和 **"确定"**。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="所有支持请求":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="授予诊断信息的权限":::
 
 ## <a name="upload-files"></a>上传文件
 
@@ -75,7 +76,7 @@ ms.locfileid: "85852224"
 
 1. 在 " **支持请求** " 页上，浏览查找文件，然后选择 " **上传**"。 如果有多个文件，请重复该过程。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="所有支持请求":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="上传文件":::
 
 ### <a name="file-upload-guidelines"></a>文件上传指南
 

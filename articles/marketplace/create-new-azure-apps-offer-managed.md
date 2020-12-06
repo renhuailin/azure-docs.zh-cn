@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463094"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744629"
 ---
 # <a name="configure-a-managed-application-plan"></a>配置托管应用程序计划
 
@@ -114,7 +114,7 @@ ms.locfileid: "96463094"
 
 ### <a name="assign-a-version-number-for-the-package"></a>为包分配版本号
 
-在 " **版本** " 框中提供技术配置的当前版本。 每次将更改发布到此页时，都会递增此版本。 版本号的格式必须为：整数。 例如 `1.0.2`。
+在 " **版本** " 框中提供技术配置的当前版本。 每次将更改发布到此页时，都会递增此版本。 版本号的格式必须为：整数。 例如，`1.0.2`。
 
 ### <a name="upload-a-package-file"></a>上传包文件
 
@@ -188,4 +188,4 @@ ms.locfileid: "96463094"
 ## <a name="next-steps"></a>后续步骤
 
 - [如何测试和发布 Azure 应用程序产品/服务](create-new-azure-apps-offer-test-publish.md)。
-- 了解如何通过与 Microsoft 共同销售并通过 Csp 计划转售 [Azure 应用程序产品/服务](create-new-azure-apps-offer-marketing.md) 。
+- 了解如何通过与 Microsoft 共同销售并转售通过 Csp 计划的 [方式销售 Azure 应用程序产品](create-new-azure-apps-offer-marketing.md) 。

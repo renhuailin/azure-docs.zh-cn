@@ -1,26 +1,17 @@
 ---
-title: 使用 Azure 基于角色的访问控制共享 Azure 门户面板
+title: 使用 Azure 基于角色的访问控制来共享 Azure 门户仪表板
 description: 本文介绍如何使用 Azure 基于角色的访问控制在 Azure 门户中共享仪表板。
-services: azure-portal
-documentationcenter: ''
-author: mgblythe
-manager: mtillman
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092199"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745972"
 ---
-# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>使用 Azure 基于角色的访问控制来共享 Azure 仪表板
+# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>使用 Azure 基于角色的访问控制共享 Azure 仪表板
 
 配置仪表板后，可将其发布，并与组织中的其他用户共享。 使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 来允许其他人查看仪表板。 将某个用户或用户组分配到角色。 该角色定义这些用户是否可以查看或修改发布的仪表板。
 
@@ -33,7 +24,7 @@ ms.locfileid: "92092199"
 
 ## <a name="understanding-access-control-for-dashboards"></a>了解仪表板的访问控制
 
-使用 Azure RBAC)  (Azure 基于角色的访问控制，可以将用户分配到三个不同范围级别的角色：
+使用 Azure 基于角色的访问控制 (Azure RBAC)，可以将用户分配到处于三个不同范围级别的角色：
 
 * 订阅
 * 资源组
@@ -41,7 +32,7 @@ ms.locfileid: "92092199"
 
 分配的权限从订阅向下继承到资源。 已发布的仪表板是一个资源。 可能已将用户分配到订阅的角色，这些角色适用于已发布的仪表板。
 
-假设已有 Azure 订阅，并且团队中的各个成员都分配了订阅的*所有者*、*参与者*或*读取者*角色。 作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。 作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。 拥有读取者访问权限的用户能够对已发布的仪表板进行本地编辑（例如排查问题时），但不能将这些更改发布回到服务器。 他们可以自行创建仪表板的专用副本。
+假设已有 Azure 订阅，并且团队中的各个成员都分配了订阅的 *所有者*、*参与者* 或 *读取者* 角色。 作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。 作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。 拥有读取者访问权限的用户能够对已发布的仪表板进行本地编辑（例如排查问题时），但不能将这些更改发布回到服务器。 他们可以自行创建仪表板的专用副本。
 
 也可以将权限分配给包含若干个仪表板的资源组或单个仪表板。 例如，可以决定一组用户在整个订阅中应具有有限的权限，但对特定仪表板具有更高的访问权限。 将这些用户分配到该仪表板的角色。
 

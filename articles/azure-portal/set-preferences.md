@@ -1,20 +1,15 @@
 ---
-title: 管理 Azure 门户设置和首选项 | Microsoft Docs
+title: 管理 Azure 门户设置和首选项
 description: 你可以根据自己的偏好更改 Azure 门户的默认设置。 设置包括非活动会话超时、默认视图、菜单模式、对比度、主题、通知，以及语言和区域格式
-services: azure-portal
 keywords: 设置, 超时, 语言, 区域
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145933"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745632"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>管理 Azure 门户设置和首选项
 
@@ -33,7 +28,7 @@ ms.locfileid: "93145933"
 
 1. 选择要在启动门户时用作默认订阅的订阅。 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="按订阅筛选资源列表。"::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="选择要在启动门户时用作默认订阅的订阅。"::: 
 
 
 ## <a name="choose-your-default-view"></a>选择默认视图 
@@ -44,13 +39,13 @@ ms.locfileid: "93145933"
 
 - 无法自定义主页。  主页将显示热门 Azure 服务的快捷方式，并列出你最近使用的资源。 我们还会提供 Microsoft Learn 和 Azure 路线图等资源的有用链接。
 
-- 可以自定义仪表板，以创建专为你设计的工作区。 例如，可以生成一个以项目、任务或角色为中心的仪表板。 如果选择“仪表板”，则默认视图将切换到最近使用的仪表板。  有关详细信息，请参阅[在 Azure 门户中创建和共享仪表板](azure-portal-dashboards.md)。
+- 可以自定义仪表板，以创建专为你设计的工作区。 例如，可以生成一个以项目、任务或角色为中心的仪表板。 如果选择“仪表板”，则默认视图将切换到最近使用的仪表板。 有关详细信息，请参阅[在 Azure 门户中创建和共享仪表板](azure-portal-dashboards.md)。
 
 ## <a name="choose-a-portal-menu-mode"></a>选择门户菜单模式
 
 门户菜单的默认模式控制门户菜单在页面上占用的空间量。
 
-![显示如何设置门户菜单的默认模式的屏幕截图。](./media/set-preferences/menu-mode.png)
+![屏幕截图，显示如何设置门户菜单的默认模式。](./media/set-preferences/menu-mode.png)
 
 - 门户菜单处于“浮出控件”模式时，它会被隐藏，直到你需要使用它。 选择菜单图标可以打开或关闭菜单。
 
@@ -72,7 +67,7 @@ ms.locfileid: "93145933"
 
 ![显示 Azure 门户设置的屏幕截图，其中突出显示了弹出式通知](./media/set-preferences/popup-notifications.png)
 
-若要阅读在当前会话中收到的所有通知，请从全局页头中选择“通知”。 
+若要阅读在当前会话中收到的所有通知，请从全局页头中选择“通知”。
 
 ![显示 Azure 门户全局页头的屏幕截图，其中显示突出了“通知”](./media/set-preferences/read-notifications.png)
 
@@ -84,7 +79,7 @@ ms.locfileid: "93145933"
 
 ### <a name="change-your-individual-timeout-setting-user"></a>更改个人的超时设置（用户）
 
-选择“不活动时将我注销”下面的下拉列表。  选择在空闲多长时间后注销你的 Azure 门户会话。
+选择“不活动时将我注销”下面的下拉列表。 选择在空闲多长时间后注销你的 Azure 门户会话。
 
 ![显示门户设置的屏幕截图，其中突出显示了非活动超时设置](./media/set-preferences/inactive-signout-user.png)
 
@@ -100,19 +95,19 @@ ms.locfileid: "93145933"
 
 如果你是全局管理员，并且需要为 Azure 门户的所有用户强制执行空闲超时设置，请执行以下步骤：
 
-1. 选择链接文本“配置目录级别超时”  。
+1. 选择链接文本“配置目录级别超时”。
 
     ![显示门户设置的屏幕截图，其中突出显示了链接文本](./media/set-preferences/settings-admin.png)
 
-1. 在“配置目录级非活动超时”  页上，选择“为 Azure 门户启用目录级别的空闲超时”  以启用设置。
+1. 在“配置目录级非活动超时”页上，选择“为 Azure 门户启用目录级别的空闲超时”以启用设置。
 
-1. 接下来，输入 **小时数** 和 **分钟数** ，以便设置在会话自动注销之前用户可处于空闲状态的最长时间。
+1. 接下来，输入 **小时数** 和 **分钟数**，以便设置在会话自动注销之前用户可处于空闲状态的最长时间。
 
 1. 选择“应用”。
 
     ![屏幕截图，显示用于设置目录级别非活动超时的页面](./media/set-preferences/configure.png)
 
-若要确认是否正确设置了非活动超时策略，请从全局页眉中选择“通知”。  验证是否列出了成功通知。
+若要确认是否正确设置了非活动超时策略，请从全局页眉中选择“通知”。 验证是否列出了成功通知。
 
 ![屏幕截图，显示用于目录级别非活动超时的成功通知消息](./media/set-preferences/confirmation.png)
 
@@ -136,7 +131,7 @@ ms.locfileid: "93145933"
 
 ![显示如何导出设置的屏幕截图](./media/set-preferences/useful-links-export-settings.png)
 
-导出设置时会创建一个 .json 文件，其中包含你的用户设置（如颜色主题、收藏夹和专用仪表板）。 由于用户设置的动态性质和数据损坏风险，因此不能从 .json  文件导入设置。
+导出设置时会创建一个 .json 文件，其中包含你的用户设置（如颜色主题、收藏夹和专用仪表板）。 由于用户设置的动态性质和数据损坏风险，因此不能从 .json 文件导入设置。
 
 ## <a name="delete-user-settings-and-dashboards"></a>删除用户设置和仪表板
 
@@ -157,9 +152,9 @@ ms.locfileid: "93145933"
 ## <a name="change-language-and-regional-settings"></a>更改语言和区域设置
 
 有两项设置控制 Azure 门户中文本的显示方式： 
-- “语言”设置控制文本在 Azure 门户中的显示语言。  
+- “语言”设置控制文本在 Azure 门户中的显示语言。 
 
-- “区域格式”控制日期、时间、数字和货币的显示方式。 
+- “区域格式”控制日期、时间、数字和货币的显示方式。
 
 若要更改 Azure 门户中使用的语言，请使用下拉列表从可用语言列表中进行选择。
 
@@ -167,7 +162,7 @@ ms.locfileid: "93145933"
 
 例如，如果选择“英语”作为语言，然后选择“美国”作为区域格式，将以美元显示货币。 如果选择“英语”作为语言，然后选择“欧洲”作为区域格式，则以欧元显示货币。
 
-选择“应用”以更新语言和区域格式设置。 
+选择“应用”以更新语言和区域格式设置。
 
    ![显示语言和区域格式设置的屏幕截图](./media/set-preferences/language.png)
 

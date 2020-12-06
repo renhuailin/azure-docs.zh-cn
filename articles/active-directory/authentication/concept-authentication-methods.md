@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a166a451c405c2321453e02751baad91c2a14c60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840011"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744323"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -43,7 +43,7 @@ Azure AD 多重身份验证会在用户登录时添加更多的安全，而不�
 |  (预览版的 FIDO2 安全密钥)    | 高     | 高      | 高         |
 | OATH 硬件令牌（预览版） | 中   | 中    | 高         |
 | OATH 软件令牌           | 中   | 中    | 高         |
-| SMS                            | 中   | 高      | 中等       |
+| SMS                            | 中型   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
 | Password                       | 低      | 高      | 高         |
 
@@ -93,7 +93,7 @@ Azure AD 多重身份验证会在用户登录时添加更多的安全，而不�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅 [自助服务密码重置教程 (SSPR) ][tutorial-sspr] 和 [Azure AD 多重身份验证][tutorial-azure-mfa]。
+若要开始，请参阅[自助式密码重置 (SSPR) 的教程][tutorial-sspr]和 [Azure AD 多重身份验证][tutorial-azure-mfa]。
 
 要详细了解 SSPR 概念，请参阅[ Azure AD 自助式密码重置的工作原理][concept-sspr]。
 

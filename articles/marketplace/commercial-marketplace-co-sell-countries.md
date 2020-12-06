@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581646"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744697"
 ---
 # <a name="co-sell-country-and-region-codes"></a>联合销售国家和地区代码
 
@@ -277,4 +277,4 @@ ms.locfileid: "96581646"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。
+- 了解 [商用 marketplace 中的共同销售选项](./commercial-marketplace-co-sell.md)。

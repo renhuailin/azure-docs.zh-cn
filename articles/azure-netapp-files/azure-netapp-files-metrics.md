@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d653916c9b50d552825fcb03a860a2a2008b204d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578512"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745938"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -42,10 +42,8 @@ Azure NetApp 文件提供了有关已分配存储、实际存储使用情况、�
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>卷的使用情况指标
 
-<!-- ANF-5023: fixed version: 2020.08, 2020.09
-- *Percentage Volume Consumed Size*    
-    The percentage of the volume consumed, including snapshots.  
--->
+- *消耗的卷大小百分比*    
+    使用的卷的百分比，包括快照。  
 - *卷分配大小*   
     卷的预配大小
 - *卷配额大小*    

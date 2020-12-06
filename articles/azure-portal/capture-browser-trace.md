@@ -1,20 +1,14 @@
 ---
-title: 捕获浏览器跟踪以进行故障排除 | Microsoft Docs
+title: 捕获浏览器跟踪以进行故障排除
 description: 捕获浏览器跟踪中的网络信息，以帮助排查 Azure 门户的问题。
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 05/11/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145729"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745989"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>捕获浏览器跟踪以进行故障排除
 
@@ -30,17 +24,17 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 在门户中，导航到问题发生之前的那个步骤。
 
-1. 按 F12 或选择 ![ 显示浏览器设置图标的屏幕截图。](media/capture-browser-trace/chromium-icon-settings.png) > **更多工具**  > **开发人员工具** 。
+1. 按 F12 或选择 ![显示浏览器设置图标的屏幕截图。](media/capture-browser-trace/chromium-icon-settings.png) > **更多工具** > **开发人员工具**。
 
-1. 默认情况下，浏览器只为当前加载的页面保留跟踪信息。 设置以下选项，使浏览器保留所有跟踪信息，即使在重现过程中需要转到多个页面：
+1. 默认情况下，浏览器只为当前加载的页面保留跟踪信息。 设置以下选项，以便浏览器保留所有跟踪信息，即使重现需要转到多个页面：
 
     1. 依次选择“网络”选项卡、“保留日志”。 
 
-          ![突出显示 "网络" 选项卡上的保留日志选项的屏幕截图。](media/capture-browser-trace/chromium-network-preserve-log.png)
+          ![屏幕截图，突出显示了“网络”选项卡上的“保留日志”选项。](media/capture-browser-trace/chromium-network-preserve-log.png)
 
     1. 依次选择“控制台”选项卡、“控制台设置”、“保留日志”。   再次选择“控制台设置”关闭设置窗格。
 
-          ![突出显示 "控制台" 选项卡上的保留日志选项的屏幕截图。](media/capture-browser-trace/chromium-console-preserve-log.png)
+          ![屏幕截图，突出显示了“控制台”选项卡上的“保留日志”选项。](media/capture-browser-trace/chromium-console-preserve-log.png)
 
 1. 选择“网络”选项卡，然后依次选择“停止记录网络日志”、“清除”。  
 
@@ -48,7 +42,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 选择“记录网络日志”，然后在门户中重现问题。
 
-    ![显示如何录制网络日志的屏幕截图。](media/capture-browser-trace/chromium-start-session.png)
+    ![显示如何记录网络日志的屏幕截图。](media/capture-browser-trace/chromium-start-session.png)
 
     将会看到如下图所示的会话输出。
 
@@ -56,13 +50,13 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 重现意外的门户行为后，依次选择“停止记录网络日志”、“导出 HAR”并保存文件。 
 
-    ![显示如何在 "网络" 选项卡上导出 HAR 的屏幕截图。](media/capture-browser-trace/chromium-network-export-har.png)
+    ![显示如何在“网络”选项卡上导出 HAR 的屏幕截图。](media/capture-browser-trace/chromium-network-export-har.png)
 
 1. 停止步骤记录器，并保存记录。
 
 1. 在“浏览器开发人员工具”窗格中，选择“控制台”选项卡。右键单击其中一条消息，然后选择“另存为…”，并将控制台输出保存为文本文件。
 
-    ![突出显示 "控制台" 选项卡和 "另存为 ..." 的屏幕截图下拉菜单](media/capture-browser-trace/chromium-console-select.png)
+    ![此屏幕截图突出显示了“控制台”选项卡和“另存为...”菜单](media/capture-browser-trace/chromium-console-select.png)
 
 1. 以压缩格式（例如 .zip）打包 HAR 文件、控制台输出和屏幕录制内容，并将其与 Microsoft 支持人员共享。
 
@@ -76,9 +70,9 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 在门户中，导航到问题发生之前的那个步骤。
 
-1. 按 F12 或选择 ![ 浏览器设置图标的屏幕截图。](media/capture-browser-trace/edge-icon-settings.png) > **更多工具**  > **开发人员工具** 。
+1. 按 F12 或选择 ![浏览器设置图标的屏幕截图。](media/capture-browser-trace/edge-icon-settings.png) > **更多工具** > **开发人员工具**。
 
-1. 默认情况下，浏览器只为当前加载的页面保留跟踪信息。 设置以下选项，使浏览器保留所有跟踪信息，即使在重现过程中需要转到多个页面：
+1. 默认情况下，浏览器只为当前加载的页面保留跟踪信息。 设置以下选项，以便浏览器保留所有跟踪信息，即使重现需要转到多个页面：
 
     1. 选择“网络”选项卡，然后清除“清除浏览项”选项。 
 
@@ -108,7 +102,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 在“浏览器开发人员工具”窗格中，选择“控制台”选项卡，然后展开窗口。 将光标置于控制台输出的开头，然后拖动并选择输出的整个内容。 单击右键并选择“复制”，然后将控制台输出保存到文本文件中。
 
-    ![突出显示 "复制" 菜单选项的屏幕截图。](media/capture-browser-trace/edge-console-select.png)
+    ![突出显示“复制”菜单选项的屏幕截图。](media/capture-browser-trace/edge-console-select.png)
 
 1. 以压缩格式（例如 .zip）打包 HAR 文件、控制台输出和屏幕录制内容，并将其与 Microsoft 支持人员共享。
 
@@ -128,23 +122,23 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
 
-1. 开始录制在门户中执行的步骤。 有关详细信息，请参阅[如何在 Mac 上录制屏幕](https://support.apple.com/HT208721)。
+1. 开始记录在门户中执行的步骤。 有关详细信息，请参阅[如何在 Mac 上录制屏幕](https://support.apple.com/HT208721)。
 
-1. 在门户中，导航到问题发生之前的那个步骤。
+1. 在门户中，导航到问题发生之前的步骤。
 
 1. 依次选择“Develop”（开发）、“Show Web Inspector”（显示 Web 检查器）。 
 
     ![“Show Web Inspector”（显示 Web 检查器）的屏幕截图](media/capture-browser-trace/safari-show-web-inspector.png)
 
-1. 默认情况下，浏览器只为当前加载的页面保留跟踪信息。 设置以下选项，使浏览器保留所有跟踪信息，即使在重现过程中需要转到多个页面：
+1. 默认情况下，浏览器只保留当前加载页的跟踪信息。 设置以下选项，以便浏览器保留所有跟踪信息，即使重现需要转到多个页面：
 
     1. 依次选择“Network”（网络）选项卡、“Preserve Log”（保留日志）。 
 
-          ![显示 Preserve 日志选项的屏幕截图。](media/capture-browser-trace/safari-network-preserve-log.png)
+          ![显示“保留日志”选项的屏幕截图。](media/capture-browser-trace/safari-network-preserve-log.png)
 
     1. 依次选择“Console”（控制台）选项卡、“Preserve Log”（保留日志）。 
 
-          ![显示控制台选项卡上的保留日志的屏幕截图。](media/capture-browser-trace/safari-console-preserve-log.png)
+          ![屏幕截图，显示了“控制台”选项卡上的“保留日志”。](media/capture-browser-trace/safari-console-preserve-log.png)
 
 1. 依次选择“Network”（网络）选项卡、“Clear Network Items”（清除网络项）。 
 
@@ -152,7 +146,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 在门户中重现问题。 将会看到如下图所示的会话输出。
 
-    ![在重现问题后显示输出的屏幕截图。](media/capture-browser-trace/safari-browser-trace-results.png)
+    ![此屏幕截图显示了重现问题后的输出。](media/capture-browser-trace/safari-browser-trace-results.png)
 
 1. 重现意外的门户行为后，选择“Export”（导出）并保存文件。
 
@@ -162,7 +156,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 1. 在“浏览器开发人员工具”窗格中，选择“控制台”选项卡，然后展开窗口。 将光标置于控制台输出的开头，然后拖动并选择输出的整个内容。 按命令键+C 复制输出，并将其保存到文本文件中。
 
-    ![突出显示您可以查看和复制输出的屏幕截图。](media/capture-browser-trace/safari-console-select.png)
+    ![屏幕截图，突出显示你可以查看和复制输出。](media/capture-browser-trace/safari-console-select.png)
 
 1. 将 HAR 文件、控制台输出和屏幕录制打包为压缩格式（如 .zip），并与 Microsoft 支持人员共享。
 
@@ -182,7 +176,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
     1. 选择“网络”选项卡，然后选择“保留日志” 。
 
-          ![突出显示持久日志选项的屏幕截图。](media/capture-browser-trace/firefox-network-persist-logs.png)
+          ![突出显示“保留日志”选项的屏幕截图。](media/capture-browser-trace/firefox-network-persist-logs.png)
 
     1. 依次选择“控制台”选项卡、“控制台设置”、“保留日志”  。
 

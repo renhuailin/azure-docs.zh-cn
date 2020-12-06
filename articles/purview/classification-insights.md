@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 34accbf218a782b79579d2f9857c101cc8147ab8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551666"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745020"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中的数据的分类见解
 
@@ -42,6 +42,9 @@ ms.locfileid: "96551666"
 在 Azure 监控范围中，分类类似于使用者标记，用于标记和标识在扫描过程中在数据空间内找到的特定类型的数据。
 
 监控范围使用与 Microsoft 365 相同的敏感信息类型，使你能够在整个数据空间中延伸现有的安全策略和保护。
+
+> [!NOTE]
+> 在扫描源类型后，请在几个小时内为 **分类标记** 见解，以反映新资产。
 
 **查看分类见解：**
 

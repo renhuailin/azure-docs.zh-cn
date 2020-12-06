@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b5e8c11bfe164aaa3539742dac8c4d267c69e1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763901"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745598"
 ---
 # <a name="classic-deployment-model"></a>经典部署模型
 
@@ -38,7 +37,7 @@ ms.locfileid: "84763901"
 
    ![在 Azure 门户中创建新的支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 在 " **问题类型**" 中，选择 " **服务和订阅限制")  (配额 **。
+1. 在 " **问题类型**" 中，选择 " **服务和订阅限制")  (配额**。
 
    ![选择 "配额" 作为问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -50,7 +49,7 @@ ms.locfileid: "84763901"
 
    ![选择要增加的配额类型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 选择 " **下一步：** 用于打开 **问题详细信息**的解决方案"。 选择 " **提供详细** 信息" 以提供其他信息。
+1. 选择 " **下一步：** 用于打开 **问题详细信息** 的解决方案"。 选择 " **提供详细** 信息" 以提供其他信息。
 
    ![提供详细信息来帮助你的请求](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -82,7 +81,7 @@ ms.locfileid: "84763901"
 
    ![选择订阅的使用情况和配额](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
 
-1. 在右上角，选择 " **请求增加**"。
+1. 在右上角选择“请求增加”  。
 
    ![选择以增加配额](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
@@ -90,7 +89,7 @@ ms.locfileid: "84763901"
 
    ![选择配额类型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 选择 " **下一步：** 用于打开 **问题详细信息**的解决方案"。 选择 " **提供详细** 信息" 以提供其他信息。
+1. 选择 " **下一步：** 用于打开 **问题详细信息** 的解决方案"。 选择 " **提供详细** 信息" 以提供其他信息。
 
    ![提供请求的详细信息](./media/resource-manager-core-quotas-request/provide-details-link.png)
 

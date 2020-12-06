@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 12/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 674bb67018fcbf7df6285a66c2e0aeb37d24f409
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340186"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744874"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,13 +46,13 @@ ms.locfileid: "93340186"
 | 在处理更改源时跟踪当前位置 | 租赁（存储在 Azure Cosmos DB 容器中） | 继续标记（存储在内存中或手动进行保存） |
 | 能够重播过去的更改 | 是（在使用推送模型的情况下） | 是（在使用拉取模型的情况下）|
 | 轮询将来的更改 | 基于用户指定的 `WithPollInterval` 自动检查更改 | 手动 |
-| 没有新更改的行为 | 自动等待 `WithPollInterval` 并重新检查 | 必须捕获异常并手动重新检查 |
+| 未出现新变化的行为 | 自动等待 `WithPollInterval` 并重新检查 | 必须捕获异常并手动重新检查 |
 | 处理整个容器中的更改 | 是的，自动并行处理从同一容器使用更改的多个线程/机器| 是，使用 FeedToken 手动并行化 |
 | 仅处理单个分区键的更改 | 不支持 | 是|
 | 支持级别 | 正式发布 | 预览 |
 
 > [!NOTE]
-> 不同于使用更改源处理器进行读取时，必须显式处理不存在任何新更改的情况。 
+> 不同于使用更改源处理器进行读取时，必须显式处理不存在新更改的情况。 
 
 ## <a name="consuming-an-entire-containers-changes"></a>使用整个容器的更改
 
@@ -96,7 +96,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 }
 ```
 
-由于更改源实际上是包含所有将来写入和更新的项的无限列表，因此的值 `HasMoreResults` 始终为 true。 当你尝试读取更改源，但没有可用的新更改时，你将收到一个异常。 在上面的示例中，通过在重新检查更改前等待5秒来处理异常。
+由于更改源实际上是包含所有后续写入和更新的项的无穷列表，因此 `HasMoreResults` 的值始终为 true。 尝试读取更改源并且未出现新变化时，你将收到一个异常。 在上述示例中，通过先等待 5 秒再重新检查更改来处理异常。
 
 ## <a name="consuming-a-partition-keys-changes"></a>使用分区键的更改
 

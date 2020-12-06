@@ -1,24 +1,15 @@
 ---
 title: 在 Azure 门户中创建和共享仪表板
 description: 本文介绍如何在 Azure 门户中创建、自定义、发布和共享仪表板。
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089479"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745819"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 
@@ -106,7 +97,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 仪表板上的数据自动显示过去 24 小时的活动。 若要仅显示此磁贴的不同时间跨度，请执行以下步骤：
 
-1. 从上下文菜单中选择“自定义磁贴数据”，或者从磁贴左上角选择**筛选器图标**筛选器。![](./media/azure-portal-dashboards/dashboard-filter.png)
+1. 从上下文菜单中选择“自定义磁贴数据”，或者从磁贴左上角选择 **筛选器图标** 筛选器。![](./media/azure-portal-dashboards/dashboard-filter.png)
 
     ![磁贴上下文菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -142,7 +133,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 ## <a name="publish-and-share-a-dashboard"></a>发布和共享仪表板
 
-创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 要使仪表板可供其他人使用，可以发布和共享这些仪表板。 有关详细信息，请参阅 [通过使用 azure 基于角色的访问控制来共享 azure 仪表板](azure-portal-dashboard-share-access.md)。
+创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 要使仪表板可供其他人使用，可以发布和共享这些仪表板。 有关详细信息，请参阅[使用 Azure 基于角色的访问控制共享 Azure 仪表板](azure-portal-dashboard-share-access.md)。
 
 ### <a name="open-a-shared-dashboard"></a>打开共享的仪表板
 
@@ -178,5 +169,5 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 基于角色的访问控制来共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
+* [使用 Azure 基于角色的访问控制共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
 * [以编程方式创建 Azure 仪表板](azure-portal-dashboards-create-programmatically.md)

@@ -1,18 +1,18 @@
 ---
-title: Azure Functions 自定义处理程序（预览版）
+title: Azure Functions 自定义处理程序
 description: 了解如何在任何语言或运行时版本中使用 Azure Functions。
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164544"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746023"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
+# <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
 
 每个函数应用由特定于语言的处理程序执行。 尽管 Azure Functions 默认支持许多[语言处理程序](./supported-languages.md)，但在某些情况下，你可能需要使用其他语言或运行时。
 
@@ -20,10 +20,12 @@ ms.locfileid: "92164544"
 
 自定义处理程序最适合用于以下场合：
 
-- 使用当前不受支持的语言（如 Go 和 Rust）实现函数应用。
+- 使用目前不受支持的语言（如中转或 Rust）来实现函数应用。
 - 使用当前不受支持的运行时（如 Deno）实现函数应用。
 
 对于自定义处理程序，可以通过[扩展绑定](./functions-bindings-register.md)来使用[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
+
+开始处理 Azure Functions 自定义处理程序 [和 Rust 中的快速入门](create-first-function-vs-code-other.md)。
 
 ## <a name="overview"></a>概述
 
@@ -583,3 +585,7 @@ Functions 主机输出额外的日志消息，包括与自定义处理程序进�
 如果你需要有关包含自定义处理程序的函数应用的帮助，可通过常规支持渠道提交请求。 但是，由于用于生成自定义处理程序应用的语言多种多样，因此支持并不是无限的。
 
 如果 Functions 主机在启动自定义处理程序进程或与自定义处理程序进程通信时遇到问题，可以获取相关支持。 对于针对自定义处理程序进程的内部工作原理的问题（例如所选语言或框架的问题），我们的支持团队无法在此上下文中提供帮助。
+
+## <a name="next-steps"></a>后续步骤
+
+开始使用 [自定义处理程序快速入门](create-first-function-vs-code-other.md)或 Rust 中的自定义处理程序构建 Azure Functions 应用。

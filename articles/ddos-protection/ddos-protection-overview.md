@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 749d8d6edf9c94185c8363c5fec1b91e60ae9272
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992533"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746465"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -36,7 +36,7 @@ Azure DDoS 保护不存储客户数据。
 - **全包式保护：** 启用 DDoS 保护标准后，简化的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 - **Always on 流量监视：** 每周7天，你的应用程序流量模式每周监视24小时，寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 - **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
-- **多层保护**：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+- **多层保护：** 在与 web 应用程序防火墙一起使用时，提供完整的堆栈 DDoS 保护，同时在由 Azure DDoS 保护标准) 提供的网络 (层和 WAF) 提供的应用程序层 (第7层获取保护。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 以及 [azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 web 应用程序防火墙产品。
 - **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 - **攻击分析**：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将 SIEM) system 的流缓解流日志流式传输到 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 或脱机安全信息和事件管理 (在攻击期间进行近乎实时的监视。
 - **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。

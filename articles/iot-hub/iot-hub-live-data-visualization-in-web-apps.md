@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 8f7baca94d653d9851c506068ccf7ecf84063641
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832171"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746448"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -184,7 +184,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 5. 若要将代码部署到应用服务，需使用[用户级部署凭据](../app-service/deploy-configure-credentials.md)。 用户级部署凭据不同于 Azure 凭据，用于在 Web 应用中实现 Git 本地部署和 FTP 部署。 设置后，可对 Azure 帐户中所有订阅内的所有应用服务应用使用这些凭据。 如果以前设置了用户级部署凭据，则可以使用这些凭据。
 
-   如果以前未设置过用户级部署凭据或不记得密码，请运行以下命令。 部署用户名在 Azure 中必须唯一，并且不得包含用于本地 Git 推送的“@”符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
+   如果以前未设置过用户级部署凭据或不记得密码，请运行以下命令。 部署用户名在 Azure 中必须唯一，并且不能包含 \@ 本地 Git 推送的 "" 符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>

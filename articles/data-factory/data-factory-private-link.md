@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511468"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746333"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure 数据工厂的 azure 专用链接
 
@@ -96,20 +96,26 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 ## <a name="set-up-private-link-for-azure-data-factory"></a>为 Azure 数据工厂设置专用链接
 您可以使用 [Azure 门户](../private-link/create-private-endpoint-portal.md)创建专用终结点。
 
+可以选择是否通过公共终结点或专用终结点将自承载集成运行时连接到 Azure 数据工厂。 
+
+![阻止公开访问自承载 Integration Runtime 的屏幕截图。](./media/data-factory-private-link/disable-public-access-shir.png)
+
+
 你还可以在 Azure 门户中中转到 Azure 数据工厂，并创建专用终结点，如下所示：
 
 ![用于创建专用终结点的 "专用终结点连接" 窗格的屏幕截图。](./media/data-factory-private-link/create-private-endpoint.png)
 
+在 " **资源**" 步骤中，选择 " **Datafactory/工厂** " 作为 " **资源类型**"。 如果要在自承载集成运行时与 Azure 数据工厂服务之间创建命令通信的专用终结点，请选择 " **datafactory** " 作为 " **目标子资源**"。
 
-如果要阻止对 Azure 数据工厂的公共访问并只允许通过专用链接访问，请在 Azure 门户中禁用对 Azure 数据工厂的网络访问权限，如下所示：
-
-![用于创建专用终结点的 "网络访问" 窗格的屏幕截图。](./media/data-factory-private-link/disable-network-access.png)
+![用于选择资源的 "专用终结点连接" 窗格的屏幕截图。](./media/data-factory-private-link/private-endpoint-resource.png)
 
 > [!NOTE]
 > 禁用公共网络访问仅适用于自承载集成运行时，而不是 Azure Integration Runtime 和 SQL Server Integration Services) Integration Runtime 的 (SSIS。
 
+如果要在虚拟网络中创建用于创作和监视数据工厂的专用终结点，请选择 " **门户** " 作为 " **目标子资源**"。
+
 > [!NOTE]
-> 禁用公共网络访问后，仍可通过公共网络访问 Azure 数据工厂门户。
+> 在为门户创建专用终结点后，仍可通过公共网络访问 Azure 数据工厂门户。
 
 ## <a name="next-steps"></a>后续步骤
 

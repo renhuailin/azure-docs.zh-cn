@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 63bb235dcebc67b753e01dd8b193ef1a2b66787d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552283"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746278"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中数据的文件扩展见解 
 
@@ -39,6 +39,9 @@ ms.locfileid: "96552283"
 ## <a name="use-purview-file-extension-insights"></a>使用监控范围文件扩展 insights
 
 在扫描资产时，Azure 监控范围可以检测在数据空间中找到的文件类型，并提供有关每个文件类型的更多详细信息。 详细信息包括每种类型的文件数、这些文件所在的文件以及是否可浏览敏感数据。
+
+> [!NOTE]
+> 在扫描了源类型后，请在几个小时内为 **文件扩展名** 见解，以反映新资产。
 
 **查看文件扩展见解：**
 

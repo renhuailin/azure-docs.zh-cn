@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 96e22beb9f9b088e698f0db12104f526af2b936b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989447"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746261"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>配置 DDoS 攻击缓解报表和流日志 
 
@@ -74,7 +74,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel 数据连接器
 
-你可以连接到 Azure Sentinel，查看和分析工作簿中的数据，创建自定义警报，并将其纳入调查过程。 若要连接到 Azure Sentinel，请参阅 [连接到 Azure sentinel](../sentinel/connect-azure-ddos-protection.md)。 
+可以将攻击缓解流日志连接到 Azure Sentinel，查看和分析工作簿中的数据，创建自定义警报，并将其纳入调查过程。 若要连接到 Azure Sentinel，请参阅 [连接到 Azure sentinel](../sentinel/connect-azure-ddos-protection.md)。 
 
 ![Azure Sentinel DDoS 连接器](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 

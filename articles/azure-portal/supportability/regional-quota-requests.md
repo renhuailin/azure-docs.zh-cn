@@ -5,20 +5,19 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763850"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745411"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>标准配额：按区域增加限制
 
 Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
-* 即*用即付 vm*和*保留 vm 实例*受*标准 vCPU 配额*的限制。
+* 即 *用即付 vm* 和 *保留 vm 实例* 受 *标准 vCPU 配额* 的限制。
 * *污点 vm* 服从 *点 vCPU 配额*。
 
 对于每个区域中的每个订阅，在两个级别上强制实施即用即付和保留虚拟机实例的标准 vCPU 配额：
@@ -50,7 +49,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
     ![新建支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额 **。
+1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额**。
 
    ![选择问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -62,7 +61,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
    ![选择配额类型](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. 选择 " **下一步：** 用于打开 **问题详细信息**的解决方案"。 在 " **说明**" 中，提供以下信息：
+1. 选择 " **下一步：** 用于打开 **问题详细信息** 的解决方案"。 在 " **说明**" 中，提供以下信息：
 
     1. 对于 **部署模型**，请指定 **资源管理器**。  
     1. 对于 " **区域**"，请指定所需的区域，例如 " **美国东部 2**"。  
@@ -74,7 +73,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
 ## <a name="request-a-quota-increase-by-region-from-subscriptions"></a>请求按区域从订阅增加配额
 
-请求按区域从 **订阅**增加 vCPU 配额：
+请求按区域从 **订阅** 增加 vCPU 配额：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择 " **订阅**"。
 
@@ -96,7 +95,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
    ![选择配额类型](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. 选择 " **下一步：** 用于打开 **问题详细信息**的解决方案"。 在 " **描述** " 框中提供以下附加信息：
+1. 选择 " **下一步：** 用于打开 **问题详细信息** 的解决方案"。 在 " **描述** " 框中提供以下附加信息：
 
     1. 对于 **部署模型**，请指定 **资源管理器**。  
     1. 对于 " **区域**"，请指定所需的区域，例如 " **美国东部 2**"。  

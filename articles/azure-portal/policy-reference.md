@@ -3,16 +3,13 @@ title: Azure 门户的内置策略定义
 description: 列出 Azure 门户的 Azure 策略内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
 ms.date: 11/17/2020
 ms.topic: reference
-author: mblythe
-ms.author: mblythe
-ms.service: azure-portal
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ea42ba4cedff6e2113222ca1fe8aa745ab0ccff6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4b9664e7627074f62b2961b3867144965bea6d4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95002142"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745683"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>适用于 Azure 门户的 Azure 策略内置定义
 

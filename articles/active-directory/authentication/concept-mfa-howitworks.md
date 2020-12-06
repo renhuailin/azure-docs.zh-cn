@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9563ed283229eb6f43d036629cfe8b84fcde25fc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1cc5227cb4b5de02cba65a60dd469da93d3767e5
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839873"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744048"
 ---
 # <a name="how-it-works-azure-ad-multi-factor-authentication"></a>工作原理： Azure AD 多重身份验证
 
@@ -26,13 +26,13 @@ ms.locfileid: "94839873"
 
 ![不同形式的多重身份验证的概念图](./media/concept-mfa-howitworks/methods.png)
 
-Azure AD 多重身份验证的工作方式是需要以下两种或多种身份验证方法：
+至少需要采用下列身份验证方法中的两种，才能使 Azure AD 多重身份验证发挥作用：
 
 * 你知道的某样东西，通常为密码。
 * 你有的某样东西，例如无法轻易复制的可信设备，如电话或硬件密钥。
 * 自身的特征 - 生物识别，如指纹或面部扫描。
 
-用户可以为自助服务密码重置注册自己，并在一步中注册 Azure AD 多重身份验证，以简化提供的体验。 管理员可以定义能够使用的辅助身份验证形式。 当用户执行自助服务密码重置以进一步保护该过程时，也可能需要 Azure AD 多重身份验证。
+用户只需执行一个步骤即可自行注册自助式密码重置和 Azure AD 多重身份验证，这样可以简化加入体验。 管理员可以定义能够使用的辅助身份验证形式。 当用户执行自助式密码重置以进一步保护该过程时，也可能需要 Azure AD 多重身份验证。
 
 ![登录屏幕上使用的身份验证方法](media/concept-authentication-methods/overview-login.png)
 
