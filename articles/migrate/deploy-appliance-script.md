@@ -1,14 +1,17 @@
 ---
 title: 使用脚本设置 Azure Migrate 设备
 description: 了解如何使用脚本设置 Azure Migrate 设备
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317328"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753784"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
@@ -20,7 +23,7 @@ ms.locfileid: "92317328"
 - 若要为物理服务器设置设备，只能使用脚本。 请参阅 [此文](how-to-set-up-appliance-physical.md)。
 - 若要在 Azure 政府版云中设置设备，请遵循 [此文](deploy-appliance-script-government.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 此脚本在现有物理计算机或 VM 上设置 Azure Migrate 设备。
 
@@ -78,7 +81,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
    
 5. 脚本成功运行后，将启动设备 web 应用程序，以便你可以设置设备。 如果遇到任何问题，请查看 C:\ProgramData\Microsoft Azure\Logs\ 上的脚本日志 AzureMigrateScenarioInstaller_<em>时间戳</em>。
 
-### <a name="verify-access"></a>验证访问
+### <a name="verify-access"></a>验证访问权限
 
 确保设备可以连接到 [公有](migrate-appliance.md#public-cloud-urls) 云的 Azure url。
 
@@ -125,7 +128,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
    
 5. 脚本成功运行后，将启动设备 web 应用程序，以便你可以设置设备。 如果遇到任何问题，请查看 C:\ProgramData\Microsoft Azure\Logs\ 上的脚本日志 AzureMigrateScenarioInstaller_<em>时间戳</em>。
 
-### <a name="verify-access"></a>验证访问
+### <a name="verify-access"></a>验证访问权限
 
 确保设备可以连接到 [公有](migrate-appliance.md#public-cloud-urls) 云的 Azure url。
 

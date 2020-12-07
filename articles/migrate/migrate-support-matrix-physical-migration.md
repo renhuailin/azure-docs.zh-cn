@@ -1,15 +1,17 @@
 ---
 title: Azure Migrate 中的物理服务器迁移支持
 description: 了解 Azure Migrate 中对物理服务器迁移的支持。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
-ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318154"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754022"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理服务器迁移的支持矩阵
 
@@ -86,7 +88,7 @@ ms.locfileid: "91318154"
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为**公共**配置文件添加了 TCP 和 UDP 规则，并确保在**Windows 防火墙**"  >  **允许的应用**" 中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙**中  ->  的 rdp 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许 **Windows 防火墙** 中  ->  的 rdp 允许用于 **域和专用** 网络的 **应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 

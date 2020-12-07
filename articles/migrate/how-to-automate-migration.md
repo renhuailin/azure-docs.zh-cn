@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Migrate 中自动执行无代理 VMware 迁移
 description: 介绍如何使用脚本在 Azure Migrate 中迁移大量 VMware Vm
-author: rahulgup
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 10/30/2020
+author: rahulg1190
 ms.author: rahugup
-ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.manager: bsiva
+ms.topic: how-to
+ms.date: 10/30/2020
+ms.openlocfilehash: cdae1fe13f8e08cb6b817f8ec6431c77013020d7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500812"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754260"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware Vm 的规模迁移 
 
@@ -23,7 +23,7 @@ ms.locfileid: "96500812"
 - 这些脚本支持将 VMware Vm 迁移到所有磁盘。 如果要有选择地复制附加到 VMware VM 的磁盘，可以更新脚本。 
 - 脚本支持使用评估建议。 如果未使用评估建议，则附加到 VMware VM 的所有磁盘都将迁移到相同的托管磁盘类型 (标准 "或" 高级 ") 。 如果希望将多种类型的托管磁盘用于同一 VM，则可以更新脚本
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 - [完成发现教程](tutorial-discover-vmware.md)来准备 Azure 和 VMware，以便进行迁移。
 - 建议先完成第二篇教程以[评估 VMware VM](./tutorial-assess-vmware-azure-vm.md)，然后再将它们迁移到 Azure。

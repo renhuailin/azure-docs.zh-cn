@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 设备常见问题
 description: 获取有关 Azure Migrate 设备的常见问题的解答。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337585"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753869"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -66,9 +69,9 @@ Azure Migrate 设备会持续分析本地计算机上的性能数据。 此分�
 
 请参阅以下文章，了解 Azure Migrate 设备在 Vm 上收集的数据：
 
-- **VMWARE VM** ： [查看](migrate-appliance.md#collected-data---vmware) 收集的数据。
-- **HYPER-V VM** ： [查看](migrate-appliance.md#collected-data---hyper-v) 收集的数据。
-- **物理服务器或虚拟服务器** ： [查看](migrate-appliance.md#collected-data---physical) 收集的数据。
+- **VMWARE VM**： [查看](migrate-appliance.md#collected-data---vmware) 收集的数据。
+- **HYPER-V VM**： [查看](migrate-appliance.md#collected-data---hyper-v) 收集的数据。
+- **物理服务器或虚拟服务器**：[查看](migrate-appliance.md#collected-data---physical) 收集的数据。
 
 ## <a name="how-is-data-stored"></a>如何存储数据？
 
@@ -102,7 +105,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 设备是否可以连接到多个 vCenter 服务器？
 
-不是。 [Azure Migrate 设备](migrate-appliance.md)与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。 
+否。 [Azure Migrate 设备](migrate-appliance.md)与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 项目可以有多个设备吗？
 
@@ -132,11 +135,11 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>能否在 Azure VM 上设置设备？
 
-不是。 当前不支持此选项。 
+否。 当前不支持此选项。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>是否可以在 ESXi 主机上发现？
 
-不是。 若要发现 VMware Vm，你必须拥有 vCenter Server。
+否。 若要发现 VMware Vm，你必须拥有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何实现更新设备？
 

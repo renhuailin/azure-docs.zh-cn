@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 复制设备
 description: 了解基于代理的 VMWare 迁移的 Azure Migrate 复制设备。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532114"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754090"
 ---
 # <a name="replication-appliance"></a>复制设备
 
@@ -38,7 +41,7 @@ ms.locfileid: "90532114"
 
 当使用 Azure Migrate 中心提供的 .OVA 模板设置复制设备时，设备将运行 Windows Server 2016 并符合支持要求。 如果在物理服务器上手动设置复制设备，请确保它符合要求。
 
-**组件** | **要求**
+组件  | **要求**
 --- | ---
  | **VMware VM 设备**
 PowerCLI | 如果复制设备在 VMware VM 上运行，则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
@@ -54,7 +57,7 @@ RAM | 16 GB
 许可证 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 操作系统区域设置 | 英语 (en-us)
 TLS | 应启用 TLS 1.2。
-.NET Framework | .NET Framework 4.6 或更高版本应安装在启用了强密码的计算机上 (。
+.NET framework | .NET Framework 4.6 或更高版本应安装在启用了强密码的计算机上 (。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
@@ -136,7 +139,7 @@ VM | Vm 上运行的移动服务与本地复制设备通信， (配置) 服务�
 设备将从 Azure Migrate 中心手动升级。 建议始终运行最新版本。
 
 1. 在 Azure Migrate > 服务器 > Azure Migrate：服务器评估、基础结构服务器，请单击 " **配置服务器**"。
-2. 在 **配置服务器**中，当复制设备的新版本可用时， **代理版本** 中会出现一个链接。 
+2. 在 **配置服务器** 中，当复制设备的新版本可用时， **代理版本** 中会出现一个链接。 
 3. 将安装程序下载到复制设备计算机，然后安装升级。 安装程序将检测设备上当前正在运行的版本。
  
 ## <a name="next-steps"></a>后续步骤

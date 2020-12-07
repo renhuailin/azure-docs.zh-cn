@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 设备体系结构
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: d38796d4c4a1149d096f5bb06f7a11bc71b33cc5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428154"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754107"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
 
@@ -21,7 +24,7 @@ Azure Migrate 设备用于以下应用场景。
 **方案** | **工具** | **用于** 
 --- | --- | ---
 **VMware VM 评估** | Azure Migrate：服务器评估 | 发现 VMware Vm。<br/><br/> 发现计算机应用和依赖项。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
-**VMware VM 迁移 (无代理) ** | Azure Migrate：服务器迁移 | 发现 VMware VM<br/><br/>  复制 VMware Vm 和 [无代理迁移](server-migrate-overview.md)。
+**VMware VM 迁移 (无代理)** | Azure Migrate：服务器迁移 | 发现 VMware VM<br/><br/>  复制 VMware Vm 和 [无代理迁移](server-migrate-overview.md)。
 **Hyper-V VM 评估** | Azure Migrate：服务器评估 | 发现 Hyper-v Vm。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
 **物理机** |  Azure Migrate：服务器评估 |  发现物理服务器。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
 
@@ -29,12 +32,12 @@ Azure Migrate 设备用于以下应用场景。
 
 设备有多个组件。
 
-- **** 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。
-- **** 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。 
+- 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。
+- 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。 
 - **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。
-- **** DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
-- **** 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
-- **** 自动更新服务：更新设备组件（每 24 小时运行一次）。
+- DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
+- 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
+- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 
 
 

@@ -1,14 +1,17 @@
 ---
 title: 通过 Azure Migrate 评估要迁移到 Azure 的大量 VMware Vm
-description: 介绍如何使用 Azure Migrate 服务来评估大量要迁移到 Azure 的 VMware Vm
+description: 介绍如何使用 Azure Migrate 服务评估大量 VMware Vm 以便迁移到 Azure。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492924"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753665"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>评估要迁移到 Azure 的大量 VMware Vm
 
@@ -43,7 +46,7 @@ ms.locfileid: "96492924"
  
 使用此表中汇总的限制进行规划。
 
-**规划** | **限制**
+规划 | **限制**
 --- | --- 
 **Azure Migrate 项目** | 在项目中评估最多35000个 Vm。
 **Azure Migrate 设备** | 设备最多可以发现 vCenter Server 上的 10000 Vm。<br/> 设备只能连接到单个 vCenter Server。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/>  可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
@@ -81,7 +84,7 @@ ms.locfileid: "96492924"
 按照 [本教程](./tutorial-discover-vmware.md) 中的说明配置这些设置。
 
 
-## <a name="create-a-project"></a>创建项目
+## <a name="create-a-project"></a>创建一个项目
 
 按照规划要求，执行以下操作：
 

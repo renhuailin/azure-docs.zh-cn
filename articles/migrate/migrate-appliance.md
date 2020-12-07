@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 设备
 description: 提供 Azure Migrate 设备支持的摘要。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008695"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754124"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -215,10 +218,10 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 
 此设备从每个启用了应用程序发现的 VM 收集的已安装应用程序数据。 这些数据将发送到 Azure。
 
-**数据** | **注册表位置** | **Key**
+**数据** | **注册表位置** | **键**
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
 提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
@@ -235,12 +238,12 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 
 下面是此设备从运行 Microsoft SQL server 的 Vm 收集的用于应用程序发现的 SQL server 元数据。 这些数据将发送到 Azure。
 
-**数据**  | **注册表位置**  | **Key**
+**数据**  | **注册表位置**  | **键**
 --- | --- | ---
 名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
-版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
+Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Version 
 
 #### <a name="windows-vm-operating-system-data"></a>Windows VM 操作系统数据
 
@@ -249,7 +252,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
 名称  | Win32_operatingsystem  | 标题
-版本  | Win32_operatingsystem  | 版本
+Version  | Win32_operatingsystem  | Version
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-vm-apps-data"></a>Linux VM 应用数据
@@ -259,7 +262,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 数据  | 命令
 --- | --- 
 名称 | rpm，dpkg，对齐
-版本 | rpm，dpkg，对齐
+Version | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
 #### <a name="linux-vm-operating-system-data"></a>Linux VM 操作系统数据

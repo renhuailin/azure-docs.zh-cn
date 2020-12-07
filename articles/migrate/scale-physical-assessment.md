@@ -1,18 +1,17 @@
 ---
 title: 通过 Azure Migrate 评估用于迁移到 Azure 的大量物理服务器 |Microsoft Docs
 description: 介绍如何使用 Azure Migrate 服务评估大量物理服务器以迁移到 Azure。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 01/19/2020
-ms.author: hamusa
-ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494573"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753682"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>评估大量物理服务器以迁移到 Azure
 
@@ -44,7 +43,7 @@ ms.locfileid: "96494573"
  
 使用此表中汇总的限制进行规划。
 
-**规划** | **限制**
+规划 | **限制**
 --- | --- 
 **Azure Migrate 项目** | 在项目中评估最多35000服务器。
 **Azure Migrate 设备** | 设备最多可以发现1000服务器。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
@@ -66,7 +65,7 @@ ms.locfileid: "96494573"
 
 按照 [本教程](./tutorial-discover-physical.md) 中的说明配置这些设置。
 
-## <a name="create-a-project"></a>创建项目
+## <a name="create-a-project"></a>创建一个项目
 
 按照规划要求，执行以下操作：
 

@@ -1,14 +1,17 @@
 ---
 title: 准备 Azure Migrate 来使用 ISV 工具/Movere
 description: 本文介绍了如何准备 Azure Migrate 以使用 ISV 工具或 Movere，然后介绍如何开始使用该工具。
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369142"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753767"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>准备使用 ISV 工具或 Movere
 

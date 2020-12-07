@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030401"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753903"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -279,7 +279,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 ## <a name="error-0014"></a>错误 0014  
  如果列中唯一值计数大于允许值，将出现异常。  
 
- 当列包含的唯一值过多时，将出现此错误。  例如，如果你指定将某列作为分类数据进行处理，但由于列中的唯一值过多而难以完成处理，则可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
+ 当列包含太多唯一值（如 ID 列或文本列）时，会出现此错误。 如果您指定将某列作为分类数据进行处理，但列中的唯一值太多以允许处理完成，则您可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
 
 如果同时满足以下 **两个** 条件，将会出现唯一值的错误：
 
@@ -292,7 +292,9 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 对于打算用于分组或分类的列，请采取措施来减少列中的唯一值数目。 根据列的数据类型，可以通过不同的方式减小唯一值数目。 
 
-通常在这种情况下，命中错误的列不会成为训练模型的功能。 因此，您可以使用 " [编辑元数据](../algorithm-module-reference/edit-metadata.md) " 将该列标记为 **Clear 功能** ，而不会在训练模型时使用。 
+对于在定型模型期间不是有意义的功能的 ID 列，您可以使用 " [编辑元数据](../algorithm-module-reference/edit-metadata.md) " 将该列标记为 " **清除" 功能** ，而不会在训练模型时使用。 
+
+对于文本列，可以使用 " [功能哈希](../algorithm-module-reference/feature-hashing.md) " 或 " [从文本中提取 N 元语法特征" 功能](../algorithm-module-reference/extract-n-gram-features-from-text.md) 来预处理文本列。
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -1523,7 +1525,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此错误是为了捕获未通过其他方式处理的内部引擎错误。 因此，导致此错误的原因可能有所不同，具体取决于产生错误的模块。  
 
-若要获得更多帮助，建议你将错误附带的详细消息发布到 [Azure 机器学习论坛](/answers/topics/azure-machine-learning.html)，同时提供方案说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
+若要获得更多帮助，建议将错误附带的详细消息发布到 [Azure 机器学习论坛](/answers/topics/azure-machine-learning.html)，同时提供情况说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
 
 |异常消息|
 |------------------------|

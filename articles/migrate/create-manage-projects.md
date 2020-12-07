@@ -1,14 +1,17 @@
 ---
 title: 创建和管理 Azure Migrate 项目
 description: 在 Azure Migrate 中查找、创建、管理和删除项目。
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c352c06a5e5b798563b4543122f66a302017bc8a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500829"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753818"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
@@ -43,7 +46,7 @@ Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发
     - 地理位置仅用于存储从本地计算机收集的元数据。 你可以选择任何要迁移的目标区域。 
     - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
    ![页面到输入项目设置](./media/create-manage-projects/project-details.png)
 

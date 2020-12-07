@@ -1,17 +1,17 @@
 ---
 title: 排查 Azure Migrate 的设备部署和发现问题
-description: 获取有关部署 Azure Migrate 设备和发现计算机的帮助。
-author: musa-57
+description: 获取有关设备部署和计算机发现的帮助。
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
-ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494437"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753410"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -124,7 +124,7 @@ ms.locfileid: "96494437"
 - 确保从设备到服务器的连接
 - 如果它是 linux 服务器，请使用以下步骤确保启用基于密码的身份验证：
     1. 登录到 linux 计算机，并使用命令 "vi/etc/ssh/sshd_config" 打开 ssh 配置文件
-    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存该文件。
+    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存文件。
     3. 通过运行 "service sshd restart" 重新启动 ssh 服务
 - 如果它是 windows 服务器，请确保端口5985处于打开状态以允许进行远程 WMI 调用。
 - 如果要发现 GCP linux 服务器并使用根用户，请使用以下命令更改根登录的默认设置
@@ -136,7 +136,7 @@ ms.locfileid: "96494437"
 
 使用以下步骤确保已在 linux 服务器上启用基于密码的身份验证：
     1. 登录到 linux 计算机，并使用命令 "vi/etc/ssh/sshd_config" 打开 ssh 配置文件
-    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存该文件。
+    2. 将 "PasswordAuthentication" 选项设置为 "是"。 保存文件。
     3. 通过运行 "service sshd restart" 重新启动 ssh 服务
 
 
