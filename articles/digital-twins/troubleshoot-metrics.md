@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Monitor 查看指标
+title: 使用 Azure Monitor 查看指标
 titleSuffix: Azure Digital Twins
 description: 请参阅如何 Azure Monitor 查看 Azure 数字孪生指标。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616682"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763242"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
@@ -26,19 +26,19 @@ ms.locfileid: "94616682"
 
 2. 在 [Azure 门户](https://portal.azure.com) 中找到你的 Azure 数字孪生实例 (通过在门户搜索栏中键入其名称) 可以打开该实例的页面。 
 
-    从实例的菜单中，选择 " **指标** "。
+    从实例的菜单中，选择 " **指标**"。
    
     :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图":::
 
     此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
     
-3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置** "。
+3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 &quot;诊断设置&quot; 页和要添加的按钮的屏幕截图":::
 
     有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
-4. 通过从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则** "，可以选择为指标数据设置警报。
+4. 通过从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 &quot;警报&quot; 页和要添加的按钮的屏幕截图":::
 
     有关此过程的详细信息，请参阅 [*故障排除：设置警报*](troubleshoot-alerts.md)。
@@ -63,14 +63,13 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 与计费有关的指标：
 
->[!NOTE]
->尽管这些指标仍显示在可选列表中，但在该服务的新定价可用之前，它们将保持为零。 若要了解详细信息，请参阅 [*Azure 数字孪生定价*](https://azure.microsoft.com/pricing/details/digital-twins/)。
-
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | 计费 API 操作 | 计数 | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求计数的计费指标。 | 计量 Id |
 | BillingMessagesProcessed | 已处理计费消息 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数的计费指标。<br><br>若要将单个消息视为计费，则有效负载不得超过 1 KB。 大于该值的负载将被视为 1 KB 递增的附加消息 (因此，介于1和 2 KB 之间的消息将被视为2条消息，介于2到 3 KB 之间将为3条消息，依此类推) 。<br>此限制也适用于响应，因此，在响应正文中返回 1.5 KB 的调用将按2个操作计费。 | 计量 Id |
 | BillingQueryUnits | 计费查询单位 | 计数 | 总计 | 查询单位数，即，用于执行查询的服务资源使用情况的内部计算度量值。 还有一个帮助器 API 可用于测量查询单位： [QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 计量 Id |
+
+有关如何对 Azure 数字孪生计费的详细信息，请参阅 [*Azure 数字孪生定价*](https://azure.microsoft.com/pricing/details/digital-twins/)。
 
 #### <a name="ingress-metrics"></a>入口指标
 
@@ -82,7 +81,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 | IngressEventsFailureRate | 入口事件失败率 | 百分比 | 平均值 | 服务为其返回内部错误 (500) 响应代码的传入遥测事件的百分比。 | 结果 |
 | IngressEventsLatency | 入口事件滞后时间 | 毫秒 | 平均值 | 当某个事件已准备就绪，可供 Azure 数字孪生出口时的时间，服务将发送成功/失败结果。 | 结果 |
 
-#### <a name="routing-metrics"></a>路由度量值
+#### <a name="routing-metrics"></a>路由指标
 
 与路由有关的指标：
 
@@ -99,7 +98,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 | 维度 | 值 |
 | --- | --- |
 | 身份验证 | OAuth |
-| API 请求的操作 ()  | DigitalTwins/DigitalTwins/delete， <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read， <br>DigitalTwins/eventroutes/read， <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete， <br>DigitalTwins/模型/读取、 <br>DigitalTwins/模型/写入， <br>DigitalTwins/模型/删除， <br>DigitalTwins/查询/操作 |
+| API 请求的操作 ()  | DigitalTwins/DigitalTwins/delete， <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read， <br>DigitalTwins/eventroutes/read， <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete， <br>DigitalTwins/模型/读取、 <br>DigitalTwins/模型/写入， <br>DigitalTwins/模型/删除， <br>Microsoft.DigitalTwins/query/action |
 | 终结点类型 | 事件网格， <br>事件中心， <br>服务总线 |
 | 协议 | HTTPS |
 | 结果 | 辉煌 <br>失败 |

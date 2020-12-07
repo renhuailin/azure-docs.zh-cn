@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87e7f959dd932c874604df43fa61112d181ac581
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531694"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763921"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure 前门的 azure 安全基线
 
@@ -206,7 +206,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-**指南**： Azure 前端门不打算部署到虚拟网络中;由于此客户无法启用网络安全组流日志记录，因此请通过防火墙路由流量或执行数据包捕获。
+**指南**： Azure 前门不打算部署到虚拟网络中;由于此客户无法启用网络安全组流日志记录，因此请通过防火墙路由流量或执行数据包捕获。
 
 Azure 前门会记录它为客户访问处理的所有网络流量。 启用网络流日志功能，并将这些日志配置为发送到存储帐户，以便长期保留和审核。
 

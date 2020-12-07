@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910247"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762928"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -42,8 +42,8 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 身份验证方案涉及两个活动：
 
-- **获取受保护 Web API 的安全令牌** ：建议使用 [Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌。 具体而言，建议使用 Microsoft 身份验证库 (MSAL) 系列。
-- **保护 Web API 或 Web 应用** ：保护这些资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- **获取受保护 Web API 的安全令牌**：建议使用 [Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌。 具体而言，建议使用 Microsoft 身份验证库 (MSAL) 系列。
+- **保护 Web API 或 Web 应用**：保护这些资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>涉及或不涉及用户
 
@@ -59,14 +59,14 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 可通过多种类型的应用程序获取安全令牌。 这些应用程序往往划分为以下三种类别。 每种应用程序配合不同的库和对象使用。
 
-- **单页应用程序** ：简称为 SPA。它们是一些 Web 应用，其中的令牌是通过浏览器中运行的 JavaScript 或 TypeScript 应用获取的。 许多新式应用的前端都有一个单页应用程序（主要用 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
+- **单页应用程序**：简称为 SPA。它们是一些 Web 应用，其中的令牌是通过浏览器中运行的 JavaScript 或 TypeScript 应用获取的。 许多新式应用的前端都有一个单页应用程序（主要用 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
 
-- **公共客户端应用程序** ：此类别中的应用（例如以下类型）始终以用户身份登录：
+- **公共客户端应用程序**：此类别中的应用（例如以下类型）始终以用户身份登录：
   - 以登录的用户身份调用 Web API 的桌面应用
   - 移动应用
   - 在没有浏览器的设备上运行的应用，例如，在 IoT 上运行的应用
   
-- **机密客户端应用程序** ：此类别中的应用包括：
+- **机密客户端应用程序**：此类别中的应用包括：
   - 调用 Web API 的 Web 应用
   - 调用 Web API 的 Web API
   - 守护程序应用（即使实施为 Linux 守护程序或 Windows 服务等控制台服务）
@@ -243,7 +243,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
   <tr>
    <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">设备代码</a></td>
-   <td>工作或学校帐户</td>
+   <td>工作或学校帐户、个人帐户和 Azure AD B2C</td>
  </tr>
 
  <tr>

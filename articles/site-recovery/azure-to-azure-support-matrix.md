@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: f0aebd09c06677aeba7cddda246e3e37992e0d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8123dbc18ad2fc162b9b92ae40920417e6b874ce
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485274"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763275"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -84,9 +84,9 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 --- | ---
 Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 支持。
+Windows Server 2012 | 支持。
+Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。
@@ -102,7 +102,7 @@ Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4�
 CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 9.37 热修复程序**支持 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、[7.8](https://support.microsoft.com/help/4564347/)、[7.9 预正式发布版](https://support.microsoft.com/help/4578241/)、7.9 正式发布版 </br> 8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609)、 [8.3](https://support.microsoft.com/help/4597409/)
 Ubuntu 14.04 LTS Server | 支持所有 14.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)； 
 Ubuntu 16.04 LTS Server | 支持所有 16.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（位于 Azure 门户的故障转移 VM 中）重置密码，可以在虚拟机上重新启用基于密码的登录。
-Ubuntu 18.04 LTS Server | 支持所有 18.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
+Ubuntu 18.04 LTS Server | 支持所有 18.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（位于 Azure 门户的故障转移 VM 中）重置密码，可以在虚拟机上重新启用基于密码的登录。
 Ubuntu 20.04 LTS Server | 支持所有 20.04.x 版本；[支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | 包括对所有 7. x 版本的支持 [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | 包括对所有 8. x 版本的支持 [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)

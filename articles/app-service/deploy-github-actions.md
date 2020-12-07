@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833497"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763904"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -55,7 +55,7 @@ ms.locfileid: "94833497"
 
 这会将工作流文件提交到存储库。 用于生成和部署应用的工作流将立即启动。
 
-## <a name="set-up-a-work-manually"></a>手动设置工作
+## <a name="set-up-a-workflow-manually"></a>手动设置工作流
 
 你还可以在不使用部署中心的情况下部署工作流。 为此，需要首先生成部署凭据。 
 
@@ -88,7 +88,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在上面的示例中，将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个 JSON 对象，包含的角色分配凭据可提供对应用服务应用的访问权限，如下所示。 复制此 JSON 对象供以后使用。
+在上面的示例中，请将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个 JSON 对象，包含的角色分配凭据可提供对应用服务应用的访问权限，如下所示。 复制此 JSON 对象供以后使用。
 
 ```output 
   {
@@ -110,7 +110,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
 若要使用 [应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 命名机密 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -124,7 +124,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服务主体](#tab/userlevel)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
 要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称 `AZURE_CREDENTIALS`。
 
@@ -415,7 +415,7 @@ jobs:
         package: my/target/*.war
 ```
 
-### <a name="javascript"></a>JavaScript 
+### <a name="javascript"></a>Javascript 
 
 使用应用的发布配置文件构建 Node.js 应用并将其部署到 Azure。 `publish-profile`输入将引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
 
@@ -636,7 +636,7 @@ jobs:
         az logout
 ```
 
-### <a name="javascript"></a>JavaScript 
+### <a name="javascript"></a>Javascript 
 
 使用 Azure 服务主体构建 Node.js 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
 
