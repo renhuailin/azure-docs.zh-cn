@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975626"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751693"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -121,7 +121,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>是否可以使用 Exchange Server 作为应用程序网关的后端？
 
-不是。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
+否。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否提供了从 v1 SKU 迁移到 v2 SKU 的指南？
 
@@ -133,7 +133,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>应用程序网关 V2 是否支持使用 NTLM 身份验证的代理请求？
 
-不是。 应用程序网关 V2 尚不支持使用 NTLM 身份验证的代理请求。
+否。 应用程序网关 V2 尚不支持使用 NTLM 身份验证的代理请求。
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 Cookie 是否支持 SameSite 属性？
 是的，[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP Cookie 的强制要求，不会将 SameSite 属性视为 SameSite = Lax。 这意味着，浏览器不会将应用程序网关关联 Cookie 发送到第三方上下文中。 
@@ -158,7 +158,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动纵向扩展或缩减是否会导致停机？
 
-不是。 实例将分布在升级域和容错域上。
+否。 实例将分布在升级域和容错域上。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
@@ -180,7 +180,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在应用程序网关子网中部署其他任何组件？
 
-不是。 但可以在子网中部署其他应用程序网关。
+否。 但可以在子网中部署其他应用程序网关。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持网络安全组？
 
@@ -216,7 +216,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自定义探测是否支持对响应数据使用通配符或正则表达式？
 
-不是。 
+否。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>如何在应用程序网关中处理路由规则？
 
@@ -232,7 +232,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>能否同时对公共和专用侦听器使用同一个端口？
 
-不是。
+否。
 
 ### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
 
@@ -466,12 +466,9 @@ AGIC 会尝试自动将路由表资源关联到应用程序网关子网，但 AG
 
 通常，如果对后端的访问被应用程序网关子网中的网络安全组 (NSG)、自定义 DNS 或用户定义的路由 (UDR) 阻止，则会看到未知状态。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志记录和指标](application-gateway-diagnostics.md)。
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>是否有 NSG 流日志不显示允许的流量的情况？
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>与应用程序网关 v2 子网关联的 Nsg 是否支持 NSG 流日志？
 
-是的。 如果配置与以下情况匹配，则 NSG 流日志中不会显示允许的流量：
-- 已部署了应用程序网关 v2
-- 应用程序网关子网上有 NSG
-- 已在该 NSG 上启用 NSG 流日志
+由于当前平台的限制，如果应用程序网关 v2 上有 NSG (Standard_v2，WAF_v2) 子网，并且如果已在其上启用了 NSG 流日志，则会看到不确定性的行为，当前不支持此方案。
 
 ### <a name="does-application-gateway-store-customer-data"></a>应用程序网关是否存储客户数据？
 

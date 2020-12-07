@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182795"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751285"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>配置“在空闲时间启动/停止 VM”
 
@@ -48,7 +48,7 @@ ms.locfileid: "96182795"
 
 2. 添加一个逗号分隔的 Vm 列表，其中包含在 **VMList** 参数字段中不包含空格)  (。 示例列表是 `vm1,vm2,vm3` 。
 
-3. 将 " **WHATIF** 参数" 字段设置为 True。
+3. 将 " **WHATIF** 参数" 字段设置为 "True"，以预览所做的更改。
 
 4. 使用以 `External_ExcludeVMNames` 逗号分隔的 vm 列表配置变量， (VM1，VM2，VM3) ，逗号分隔值之间没有空格。
 
@@ -79,7 +79,7 @@ ms.locfileid: "96182795"
 
 3. 添加一个逗号分隔的 Vm 列表，其中包含在 **VMList** 参数字段中不包含空格)  (。 示例列表是 `vm1,vm2,vm3` 。
 
-4. 将 **WHATIF** 设置为 True。 
+4. 将 " **WHATIF** " 设置为 "True" 以预览所做的更改。 
 
 5. 使用以 `External_ExcludeVMNames` 逗号分隔的 vm 列表配置变量，逗号分隔值之间没有空格。
 

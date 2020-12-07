@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217212"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751251"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -18,6 +18,40 @@ ms.locfileid: "92217212"
 
 >[!NOTE]
 >如果在 Windows 计算机上部署更新管理功能时遇到问题，请打开 Windows 事件查看器，查看本地计算机上“应用程序和服务日志”下的 Operations Manager 事件日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>方案： Linux 更新显示为 "挂起"，并且安装的内容有所不同
+
+### <a name="issue"></a>问题
+
+对于 Linux 计算机，更新管理显示在分类 **安全性** 和 **其他** 级别下可用的特定更新。 但如果在计算机上运行更新计划（例如，仅安装与 **安全** 分类匹配的更新），则安装的更新将不同于或之前显示的与该分类匹配的一部分更新。
+
+### <a name="cause"></a>原因
+
+完成 Linux 计算机的 OS 更新的评估后， (的) [漏洞和评估语言](https://oval.mitre.org/) 将由 Linux 发行版供应商提供的文件更新管理用于分类。 基于表示更新解决安全问题或漏洞的 OVAL 文件，以 **安全** 或 **其他** 方式为 Linux 更新进行分类。 但当更新计划运行时，它将使用适当的包管理器（如 YUM、APT 或 ZYPPER）在 Linux 计算机上执行安装。 适用于 Linux 发行版的包管理器可能会有不同的机制来对更新进行分类，其中的结果可能不同于通过更新管理从 OVAL 文件获取的结果。
+
+### <a name="resolution"></a>解决方法
+
+你可以根据发行版的包管理器，手动检查 Linux 计算机、适用的更新及其分类。 若要了解包管理器将哪些更新归类为 **安全** 更新，请运行以下命令。
+
+对于 YUM，以下命令返回按 Red Hat 分类为 **安全性** 的非零更新列表。 请注意，对于 CentOS，它始终返回一个空列表，而不进行安全分类。
+
+```bash
+sudo yum -q --security check-update
+```
+
+对于 ZYPPER，以下命令将返回由 SUSE 归类为 **安全** 更新的非零列表。
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+对于 APT，下面的命令将返回一个非零的更新列表，该列表由 Ubuntu Linux 发行版的规范分类为 **安全** 更新。
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+在此列表中，你可以运行命令 `grep ^Inst` 来获取所有挂起的安全更新。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>场景：收到“无法启用更新解决方案”错误
 
@@ -57,23 +91,23 @@ Error details: Failed to enable the Update solution
 
 ### <a name="cause"></a>原因
 
-不会在 Windows Server Update Services (WSUS) 拒绝被取代的更新，因此可将其视为不适用。
+被取代的更新在 Windows Server Update Services (WSUS) 中不是“已拒绝”，因此无法将其视为“不适用”。
 
 ### <a name="resolution"></a>解决方法
 
-如果被取代的更新变为100%，则应在 WSUS 中将该更新的批准状态更改为 `Declined` 。 若要更改所有更新的审批状态，请执行以下操作：
+当被取代的更新完全不适用时，应在 WSUS 中将该更新的批准状态更改为 `Declined`。 若要更改所有更新的审批状态，请执行以下操作：
 
 1. 在自动化帐户中，选择“更新管理”来查看计算机的状态。 请参阅[查看更新评估](../update-management/view-update-assessments.md)。
 
 2. 检查被取代的更新，确保其 100% 不适用。
 
-3. 在 "计算机报告到的 WSUS 服务器" 上， [拒绝更新](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates)。
+3. 在计算机向其报告的 WSUS 服务器上，[拒绝更新](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates)。
 
 4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理 VM 的更新](../update-management/manage-updates-for-vm.md)。
 
 5. 对于其他被取代的更新，请重复上述步骤。
 
-6. 对于 Windows Server Update Services (WSUS) ，请清除所有被取代的更新，以使用 WSUS [服务器清理向导](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)刷新基础结构。
+6. 对于 Windows Server Update Services (WSUS)，请清除所有被取代的更新以使用 WSUS [清理向导](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)刷新基础结构。
 
 7. 定期重复此过程以更正显示问题，并最大程度地减少用于更新管理的磁盘空间量。
 
@@ -224,7 +258,7 @@ Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列�
 
 #### <a name="incorrect-access-on-selected-scopes"></a>对所选作用域的访问权限不正确
 
-Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果没有作用域的正确访问权限，请参阅 [教程：使用 Azure 门户向用户授予对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
+Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果你在某个范围内没有适当的访问权限，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG 查询未返回预期的计算机
 
@@ -487,7 +521,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="resolution"></a>解决方法
 
-若要了解在更新运行过程中发生此错误的原因，请在运行中检查受影响计算机的 [作业输出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) 。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。  
+若要了解更新成功启动后在运行期间发生此错误的原因，请[检查运行中受影响的计算机的作业输出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。  
 
 编辑任何失败的计划更新部署，并增加维护时段。
 

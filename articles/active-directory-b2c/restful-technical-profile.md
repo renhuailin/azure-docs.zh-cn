@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 11/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88041521"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750420"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -115,13 +115,13 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
-| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None`值指示 REST API 是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 `Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 |
+| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值： `None` 、 `Basic` 、 `Bearer` 、  `ClientCertificate` 或 `ApiKeyHeader` 。 <br /><ul><li>`None`值指示 REST API 是匿名的。 </li><li>`Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 </li><li>`ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 </li><li>`Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 </li><li>`ApiKeyHeader`值指示 REST API 受 API 密钥 HTTP 标头（例如 *x 函数-key*）的保护。 </li></ul> |
 | AllowInsecureAuthInProduction| 否| 指示是否可以在生产环境中将 `AuthenticationType` 设置为 `none`（将 [TrustFrameworkPolicy](trustframeworkpolicy.md) 的 `DeploymentMode` 设为 `Production` 或未指定）。 可能的值：true 或 false（默认值）。 |
 | SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header`、`Url` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `Url` 值是在 URL 中发送的输入声明，例如 https://{claim1}.example.com/{claim2}/{claim3}?{claim4}={claim5}。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个输入声明调用的 HTTP 谓词如下所示：<br /><ul><li>`Body`：POST</li><li>`Form`：POST</li><li>`Header`：GET</li><li>`Url`：GET</li><li>`QueryString`：GET</li></ul> |
 | ClaimsFormat | 否 | 当前未使用，可以忽略。 |
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
 | DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-validation-error-message)部分。 |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 | UseClaimAsBearerToken| 否| 包含持有者令牌的声明的名称。|
 
@@ -154,7 +154,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 |
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -215,6 +215,27 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
   </Metadata>
   <CryptographicKeys>
     <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
+如果身份验证类型设置为 `ApiKeyHeader`，则 **CryptographicKeys** 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| HTTP 标头的名称，如 `x-functions-key` 或 `x-api-key` 。 | 是 | 用于进行身份验证的密钥。 |
+
+```xml
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">ApiKeyHeader</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
   </CryptographicKeys>
 </TechnicalProfile>
 ```

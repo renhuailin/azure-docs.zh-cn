@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992669"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750690"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -225,7 +225,7 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 - `@type` 指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情况下，该类型包括一个语义类型，以使 IoT Central 可以做出有关如何处理该值的一些假设。
 - `name` 对于遥测值。
-- `schema` 指定遥测的数据类型或属性。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型、数组和映射。
+- `schema` 指定遥测的数据类型或属性。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型和映射。
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。
 

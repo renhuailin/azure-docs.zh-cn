@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e02323df3a12c4a74de1fb62b36762fc739e9e5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258959"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750433"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 会话
 
@@ -47,7 +47,7 @@ ms.locfileid: "91258959"
 
 社交或企业标识提供者需管理其自己的会话。 Cookie 存储在标识提供者的域名（例如 `https://login.salesforce.com`）下。 Azure AD B2C 不会控制联合标识提供者会话。 会话行为由联合标识提供者确定。 
 
-请考虑下列方案：
+假设出现了下面这种情景：
 
 1. 用户登录 Facebook 以检查其源。
 2. 稍后，用户将打开你的应用程序并启动登录过程。 应用程序将用户重定向到 Azure AD B2C 以完成登录过程。
@@ -72,7 +72,7 @@ ms.locfileid: "91258959"
 
 ### <a name="session-life-time"></a>会话生存时间
 
-**会话生存时间**是指成功完成身份验证后，将 Azure AD B2C 会话 Cookie 存储在用户浏览器中的时间量。 可将会话生存时间设置为 15 到 720 分钟的值。
+**会话生存时间** 是指成功完成身份验证后，将 Azure AD B2C 会话 Cookie 存储在用户浏览器中的时间量。 可将会话生存时间设置为 15 到 720 分钟的值。
 
 ### <a name="keep-me-signed-in"></a>使我保持登录状态
 
@@ -82,7 +82,7 @@ ms.locfileid: "91258959"
 
 ### <a name="session-expiry-type"></a>会话过期类型
 
-**会话过期类型**指示如何通过会话生存时间设置或“使我保持登录状态”设置来使会话延期。
+**会话过期类型** 指示如何通过会话生存时间设置或“使我保持登录状态”设置来使会话延期。
 
 - **滚动** - 指示每当用户执行基于 Cookie 的身份验证时都延长会话（默认值）。
 - **绝对** - 指示在指定的时间段后强制用户重新进行身份验证。
@@ -96,8 +96,12 @@ ms.locfileid: "91258959"
 1. 使 Azure AD B2C 基于 Cookie 的会话失效。
 1. 尝试从联合标识提供者注销：
    - OpenId Connect - 如果标识提供者的已知配置终结点指定了 `end_session_endpoint` 位置。
-   - SAML - 如果标识提供者元数据包含 `SingleLogoutService` 位置。
+   - OAuth2-如果 [标识提供程序元数据](oauth2-technical-profile.md#metadata) 包含位置，则为 `end_session_endpoint` 。
+   - SAML-如果 [标识提供程序元数据](saml-identity-provider-technical-profile.md#metadata) 包含 `SingleLogoutService` 位置。
 1. 选择性地从其他应用程序注销。 有关详细信息，请参阅[单一注销](#single-sign-out)部分。
+
+> [!NOTE]
+> 使用 [自定义策略](custom-policy-overview.md)，你可以通过将标识提供程序的技术配置文件元数据设置为来禁用从联合标识提供程序中注销 `SingleLogoutEnabled` `false` 。
 
 注销会清除用户在 Azure AD B2C 中的单一登录状态，但可能不会将用户从其社交标识提供者会话中注销。 如果用户在后续登录期间选择相同的标识提供者，那么他们可以重新进行身份验证，且无需输入其凭据。 如果用户想要从应用程序中注销，则不一定意味着他们要注销其 Facebook 帐户。 但是，如果使用了本地帐户，则用户的会话将正常结束。
 

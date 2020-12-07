@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345110"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750486"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -74,12 +74,13 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 如果指定了此项，Azure AD B2C 将检查标识提供者返回的令牌中的 `aud` 声明是否与 IdTokenAudience 元数据中指定的声明相同。  |
 | METADATA | 是 | 指向 OpenID Connect 标识提供者配置文档的 URL，也称为 OpenID 众所周知的配置终结点。 URL 可以包含 `{tenant}` 表达式，该表达式将替换为租户名称。  |
 | authorization_endpoint | 否 | 指向 OpenID Connect 标识提供者配置授权终结点的 URL。 authorization_endpoint 元数据的值优先于 OpenID 众所周知的配置终结点中指定的 `authorization_endpoint`。 URL 可以包含 `{tenant}` 表达式，该表达式将替换为租户名称。 |
+| end_session_endpoint | 否 | 结束会话终结点的 URL。 authorization_endpoint 元数据的值优先于 OpenID 众所周知的配置终结点中指定的 `end_session_endpoint`。 |
 | 颁发者 | 否 | OpenID Connect 标识提供者的唯一标识符。 颁发者元数据的值优先于 OpenID 众所周知的配置终结点中指定的 `issuer`。  如果指定了此项，Azure AD B2C 将检查标识提供者返回的令牌中的 `iss` 声明是否与颁发者元数据中指定的声明相同。 |
 | ProviderName | 否 | 标识提供者的名称。  |
 | response_types | 否 | 符合 OpenID Connect Core 1.0 规范的响应类型。 可能的值：`id_token`、`code` 或 `token`。 |
@@ -92,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 | DiscoverMetadataByTokenIssuer | 否 | 指示是否应使用 JWT 令牌中的颁发者来发现 OIDC 元数据。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
-
+|SingleLogoutEnabled| 否| 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-overview.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。|
 
 ```xml
 <Metadata>
@@ -129,7 +130,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 配置标识提供者的重定向 URI 时，请输入 `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 确保将 `{your-tenant-name}` 替换为你的租户名称。 重定向 URI 需要采用全小写形式。
 
-示例：
+示例:
 
 - [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](identity-provider-microsoft-account-custom.md)
 - [使用 Azure AD 帐户登录](identity-provider-azure-ad-single-tenant-custom.md)

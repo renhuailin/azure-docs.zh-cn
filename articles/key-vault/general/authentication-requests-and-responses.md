@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288465"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752271"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 
@@ -134,3 +134,6 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
 -   resource：要在授权请求中使用的资源 (`https://vault.azure.net`) 的名称。
+
+> [!NOTE]
+> 第一次调用时，Key Vault SDK 客户端提供密钥、证书和密钥 Key Vault 不提供访问令牌来检索租户信息。 应该会使用 Key Vault SDK 客户端接收 HTTP 401，其中 Key Vault 向应用程序显示包含资源的 WWW-Authenticate 标头和要求提供令牌的租户。 如果所有内容都已正确配置，则从应用程序到 Key Vault 的第二次调用将包含有效的令牌，并将成功。 

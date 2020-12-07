@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 以脱机方式将较大初始备份数据从 MARS 代理植入到恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180926"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752577"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
@@ -176,14 +176,14 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![选择“计划备份”](./media/offline-backup-azure-data-box/schedule-backup.png)
 
-1. 按照**计划备份向导**中的步骤操作。
+1. 按照 **计划备份向导** 中的步骤操作。
 
 1. 通过选择“添加项”按钮来添加项。 请将项的总大小保持在你订购并接收的 [Azure Data Box SKU 支持的大小限制](#backup-data-size-and-supported-data-box-skus)内。
 
     ![添加要备份的项](./media/offline-backup-azure-data-box/add-items.png)
 
 1. 选择与“文件和文件夹”和“系统状态”相对应的备份计划和保留策略。  系统状态仅适用于 Windows Server，不适用于 Windows 客户端。
-1. 在向导的 " **选择初始备份类型 (文件和文件夹) ** " 页上，选择 " **使用 Microsoft Azure Data Box 磁盘传输** " 选项，然后选择 " **下一步**"。
+1. 在向导的 " **选择初始备份类型 (文件和文件夹)** " 页上，选择 " **使用 Microsoft Azure Data Box 磁盘传输** " 选项，然后选择 " **下一步**"。
 
     ![选择初始备份类型](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
@@ -277,7 +277,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
 
 #### <a name="step-1-of-workaround"></a>解决方法的步骤 1
 
-使用在要创建导入或导出作业的订阅上具有管理员访问权限的另一个帐户，登录到 MAB UI 上显示的 PowerShell。
+使用具有创建的 Data Box 作业的订阅上的管理员访问权限登录到在 MAB UI 上出现的其他帐户。
 
 #### <a name="step-2-of-workaround"></a>解决方法的步骤 2
 

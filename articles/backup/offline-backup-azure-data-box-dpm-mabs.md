@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行 DPM 和 MABS 的脱机备份
 description: 可以使用 Azure Data Box 以脱机方式将初始备份数据从 DPM 和 MABS 植入。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172214"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752543"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 Azure Data Box 进行 DPM 和 MABS 的脱机植入（预览版）
 
@@ -201,7 +201,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
 
 - 在 DPM/MABS 服务器成功创建对应于初始备份的恢复点之后，你可以删除与 Azure Data Box 作业关联的存储帐户（或特定内容）。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为你创建 Azure AD 应用程序。 此应用程序需要使用在配置脱机植入策略时创建和上传的证书来进行身份验证。
 
@@ -230,7 +230,7 @@ DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为�
 
 若要解决此问题，请执行以下步骤，然后重试策略配置。
 
-1. 使用在要创建导入/导出作业的订阅上具有管理员访问权限的另一个帐户，登录到 DPM/MABS 服务器 UI 上显示的 Azure 登录页。
+1. 使用具有创建的 Data Box 作业的订阅上的管理员访问权限登录到 DPM/MABS 服务器 UI 上显示的 Azure 登录页。
 2. 如果没有其他服务器配置了脱机种子设定并且没有其他服务器依赖于 `AzureOfflineBackup_<Azure User Id>` 应用程序，则从“Azure 门户”>“Azure Active Directory”>“应用程序注册”删除此应用程序。
 
    > [!NOTE]

@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122587"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751421"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
@@ -44,7 +44,7 @@ ms.locfileid: "96122587"
 | 状态值    | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。                                                                                   |
 | 计价单位            | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 显示单位    | 仪表板和窗体上使用的显示单位。                                                                                                                                                                                    |
-| 注释         | 有关属性功能的任何注释。                                                                                                                                                                                        |
+| 评论         | 有关属性功能的任何注释。                                                                                                                                                                                        |
 | 说明     | 属性功能的说明。                                                                                                                                                                                          |
 
 属性还可以在设备模板中的接口中定义，如下所示：
@@ -79,7 +79,7 @@ ms.locfileid: "96122587"
 
 * `@type` 指定功能类型： `Property` 。 前面的示例还显示了 `Temperature` 这两个属性的语义类型。
 * `name` 属性的。
-* `schema` 指定属性的数据类型。 此值可以是基元类型，如 double、integer、Boolean 或 string。 还支持复杂的对象类型、数组和映射。
+* `schema` 指定属性的数据类型。 此值可以是基元类型，如 double、integer、Boolean 或 string。 还支持复杂的对象类型和映射。
 * `writable` 默认情况下，属性是只读的。 您可以使用此字段将属性标记为可写。
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。

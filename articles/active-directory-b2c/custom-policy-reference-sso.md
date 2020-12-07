@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/07/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e47eda29b0ad1c47edad08195b2ffd0fe3835af
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202562"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750468"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -110,9 +110,6 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  <Metadata>
-    <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
-  </Metadata>
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="AlternativeSecurityId" />
   </PersistedClaims>
@@ -121,7 +118,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明|
+| Attribute | 必须 | 说明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 当前未使用，可以忽略。 |
 
@@ -163,7 +160,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>Metadata
 
-| 属性 | 必须 | 说明|
+| Attribute | 必须 | 说明|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|

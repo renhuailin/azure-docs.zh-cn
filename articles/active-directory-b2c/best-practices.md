@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949711"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750214"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -28,7 +28,7 @@ ms.locfileid: "94949711"
 |--|--|
 | 选择大多数方案的用户流 | Azure AD B2C 的 Identity Experience Framework 是该服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 为了帮助你设置最常见的标识任务，Azure AD B2C 门户中提供了称作“用户流”的预定义可配置策略。 使用用户流，只需按几下鼠标就能快速创建极佳的用户体验。 [了解用户流与自定义策略的使用时机](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
 | 应用注册 | 必须在 Azure AD B2C 中注册每个要保护的应用程序（Web、本机）和 API。 如果应用具有 iOS 和 Android 的 Web 版与本机版，则你可以使用相同的客户端 ID 在 Azure AD B2C 中将其注册为一个应用程序。 了解如何[注册 OIDC、SAML、Web 和本机应用](./tutorial-register-applications.md?tabs=applications)。 详细了解[可在 Azure AD B2C 中使用的应用程序类型](./application-types.md)。 |
-| 转移到月度活跃用户计费模式 | Azure AD B2C 已从月度活跃身份验证计费模式转移到月度活跃用户 (MAU) 计费模式。 大多数客户会发现这种模式更具性价比。 [详细了解月度活跃用户计费](https://azure.microsoft.com/updates/mau-billing/)。 |
+| 转移到月度活跃用户计费模式 | Azure AD B2C 已从月度活跃身份验证计费模式转移到月度活跃用户 (MAU) 计费模式。 大多数客户会发现这种模式更具性价比。 [详细了解月度活跃用户计费](https://azure.microsoft.com/updates/mau-billing/)。 [保存此链接](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>规划和设计
 
@@ -84,7 +84,7 @@ ms.locfileid: "94949711"
 | 设置有效警报和监视 | 使用 Application Insights 跟踪 Azure AD B2C 中的[用户行为](./analytics-with-application-insights.md)。 |
 
 ## <a name="support-and-status-updates"></a>支持和状态更新
-
+## <a name="todays-support-and-status-updates"></a>今天的支持和状态更新
 随时关注服务状态并查找支持选项。
 
 | 最佳做法 | 说明 |

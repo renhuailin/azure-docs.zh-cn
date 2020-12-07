@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
 description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493119"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752737"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -105,8 +108,8 @@ ms.locfileid: "96493119"
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
 10. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。 
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
     ![目标设置](./media/tutorial-migrate-hyper-v/target-settings.png)
 

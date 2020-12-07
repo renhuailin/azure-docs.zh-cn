@@ -1,14 +1,17 @@
 ---
 title: 为 Hyper-v 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: a12785ea3791366badb907498796a73c2c993623
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5c5fdd1423d806bcc4d2f124310112a3e407e416
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008304"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751115"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -76,7 +79,7 @@ ms.locfileid: "96008304"
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
 3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。 然后单击“下一步”。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。

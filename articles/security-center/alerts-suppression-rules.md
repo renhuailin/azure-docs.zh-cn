@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436787"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751982"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "96436787"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|发布状态：| 正式发布 |
 |定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
 |所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|

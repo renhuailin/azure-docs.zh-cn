@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030690"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751931"
 ---
 # <a name="train-model-module"></a>“定型模型”模块
 
@@ -63,7 +63,9 @@ ms.locfileid: "96030690"
 1.  提交管道。 如果有大量数据，则可能需要一段时间。
 
     > [!IMPORTANT] 
-    > 如果 ID 列是每行的 ID，则 **定型模型** 可能会出现错误，如 "column_name 列中的唯一值的数目不超过允许的值。" 这是因为 ID 列达到了唯一值的阈值，并且可能会导致内存不足。 在定型期间，ID 列通常无意义。 您可以使用 " [编辑元数据](edit-metadata.md) " 将该列标记为 **Clear 功能** ，而不会在定型中使用。 有关更多错误详细信息，请参阅 [设计器错误代码](././designer-error-codes.md) 。
+    > 如果 ID 列是每行的 ID，或者是包含太多唯一值的文本列，则 **定型模型** 可能会出现错误，如 "列中的唯一值的数量： {column_name}" 大于允许值。
+    >
+    > 这是因为列达到了唯一值的阈值，并且可能会导致内存不足。 您可以使用 " [编辑元数据](edit-metadata.md) " 将该列标记为 " **清除" 功能** ，而不会在定型中使用，也可以从 "文本" 模块中 [提取 N 元语法特征](extract-n-gram-features-from-text.md) 来预处理文本列。 有关更多错误详细信息，请参阅 [设计器错误代码](././designer-error-codes.md) 。
 
 ## <a name="results"></a>结果
 

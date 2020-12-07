@@ -1,17 +1,17 @@
 ---
 title: 为 Azure Migrate Server 评估自定义评估 |Microsoft Docs
 description: 描述如何自定义 Azure Migrate Server 评估创建的评估
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de90cffe8760a55aafebf079678d139c6f6f99e1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997828"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751098"
 ---
 # <a name="customize-an-assessment"></a>自定义评估
 

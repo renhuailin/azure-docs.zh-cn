@@ -1,17 +1,17 @@
 ---
 title: Hyper-v 迁移如何在 Azure Migrate 中工作？
 description: 了解 Azure Migrate 的 Hyper-v 迁移
-author: rayne-wiselman
-ms.service: azure-migrate
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 239918cc19eefbef9e3c3f12d5ddd3bb5434b490
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751013"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-v 复制的工作原理
 
@@ -34,7 +34,7 @@ Azure Migrate Server 迁移是一种用于将本地工作负荷和基于云的 V
 
 
 
-**组件** | **部署** | 
+组件  | **部署** | 
 --- | --- 
 **复制提供程序** | Microsoft Azure Site Recovery 提供程序安装在 Hyper-v 主机上，并已注册到 Azure 迁移服务器迁移。<br/> 提供程序会协调 Hyper-v Vm 的复制。
 **恢复服务代理** | Microsoft Azure 恢复服务代理处理数据复制。 它与提供程序协同工作，以将数据从 Hyper-v Vm 复制到 Azure。<br/> 复制的数据将上传到 Azure 订阅中的存储帐户。 服务器迁移工具处理复制的数据，并将其应用于订阅中的副本磁盘。 在迁移时，将使用副本磁盘创建 Azure Vm。

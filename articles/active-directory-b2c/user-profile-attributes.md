@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/20/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952694"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750401"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -75,16 +75,22 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |streetAddress   |字符串|用户营业地点的街道地址。 最大长度为 1024。|是|是|持久化、输出|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|字符串|用户的次要电话号码，用于多重身份验证。|是|否|持久化、输出|
 |strongAuthenticationEmailAddress<sup>1</sup>|字符串|用户的 SMTP 地址。 示例：“bob@contoso.com”。此属性在通过用户名策略进行登录时用于存储用户电子邮件地址。 然后，该电子邮件地址将在密码重置流中使用。|是|否|持久化、输出|
-|strongAuthenticationPhoneNumber<sup>1</sup>|字符串|用户的主要电话号码，用于多重身份验证。|是|否|持久化、输出|
+|strongAuthenticationPhoneNumber<sup>2</sup>|字符串|用户的主要电话号码，用于多重身份验证。|是|否|持久化、输出|
 |surname         |字符串|用户的姓（家族名或姓氏）。 最大长度为 64。|是|是|持久化、输出|
 |telephoneNumber（businessPhones 的第一个条目）|字符串|用户营业地点的主要电话号码。|是|否|持久化、输出|
 |userPrincipalName    |字符串|用户的用户主体名称 (UPN)。 UPN 是用户的 Internet 样式登录名，基于 Internet 标准 RFC 822。 域必须存在于租户的已验证域集合中。 创建帐户时必须使用此属性。 不可变。|否|否|输入、持久化、输出|
 |usageLocation   |字符串|这对由于法律要求要向其分配许可证的用户而言为必填项，以检查服务在国家/地区中的可用性。 不可为 Null。 双字母国家/地区代码（ISO 标准 3166）。 示例：示例:“US”、“JP”和“GB”。|是|否|持久化、输出|
 |userType        |字符串|一个字符串值，可用于分类目录中的用户类型。 值必须为 Member。 只读。|只读|否|持久化、输出|
-|userState (externalUserState)<sup>2</sup>|字符串|仅适用于 Azure AD B2B 帐户，指示邀请是 PendingAcceptance 还是 Accepted。|否|否|持久化、输出|
+|userState (externalUserState) <sup>3</sup>|字符串|仅适用于 Azure AD B2B 帐户，指示邀请是 PendingAcceptance 还是 Accepted。|否|否|持久化、输出|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|显示 UserState 属性最新更改的时间戳。|否|否|持久化、输出|
-|<sup>1 </sup>不受 Microsoft Graph 支持<br><sup>2 </sup>不应该与 Azure AD B2C 一起使用||||||
 
+<sup>1 </sup>不受 Microsoft Graph 支持<br><sup>2 </sup>有关详细信息，请参阅 [MFA 电话号码属性](#mfa-phone-number-attribute)<br><sup>3 </sup>不应与 Azure AD B2C 一起使用
+
+## <a name="mfa-phone-number-attribute"></a>MFA 电话号码属性
+
+使用手机进行多重身份验证 (MFA) 时，移动电话用于验证用户标识。 若要以编程方式 [添加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) 新的电话号码、 [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、 [获取](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)或 [删除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) 电话号码，请使用 MS 图形 API [手机身份验证方法](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)。
+
+在 Azure AD B2C [自定义策略](custom-policy-overview.md)中，电话号码可通过 `strongAuthenticationPhoneNumber` 声明类型提供。
 
 ## <a name="extension-attributes"></a>扩展属性
 

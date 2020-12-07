@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 春季云中准备要部署的应用程序
-description: 了解如何准备应用程序以部署到 Azure 春季 Cloud。
+title: 如何准备要部署到 Azure Spring Cloud 中的应用程序
+description: 了解如何准备要部署到 Azure Spring Cloud 中的应用程序。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
@@ -8,14 +8,14 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337604"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750707"
 ---
-# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>在 Azure 春季云中准备要部署的应用程序
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
 ::: zone pivot="programming-language-csharp"
 Azure 春季云提供强大的服务来托管、监视、缩放和更新 Steeltoe 应用。 本文介绍如何准备现有的 Steeltoe 应用程序以部署到 Azure 春季 Cloud。 
@@ -127,7 +127,7 @@ using (var client = new HttpClient(discoveryHandler, false))
 在运行此示例之前，可以尝试[基础知识快速入门](spring-cloud-quickstart.md)。
 
 其他示例说明了在配置 POM 文件时，如何将应用程序部署到 Azure Spring Cloud。 
-* [启动你的第一个应用](spring-cloud-quickstart.md)
+* [启动第一个应用](spring-cloud-quickstart.md)
 * [生成并运行微服务](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文介绍所需的依赖项，以及如何将它们添加到 POM 文件。
@@ -149,6 +149,9 @@ Spring Boot 版本 | Spring Cloud 版本
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+
+> [!NOTE]
+> 我们确定了在应用与 Eureka 之间进行 TLS 身份验证时的弹簧 Boot 2.4 存在问题，当前正在与春季社区合作解决此问题。 有关解决方法，请参阅我们的 [常见问题解答](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 。
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 版本 2.1 的依赖项
 
@@ -201,9 +204,9 @@ Spring Boot 版本 | Spring Cloud 版本
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>弹簧 Boot 版本2.3 的依赖项
+### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot 版本 2.3 的依赖项
 
-对于春季 Boot 版本2.3，请将以下依赖项添加到应用程序 POM 文件。
+对于 Spring Boot 版本 2.3，请将以下依赖项添加到应用程序 POM 文件中。
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -228,17 +231,17 @@ Spring Boot 版本 | Spring Cloud 版本
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 客户端依赖项
 
-Azure Spring Cloud 将会托管和管理 Spring Cloud 组件。 组件包括 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 建议使用春季 Boot 2.2 或2.3。 对于春季 Boot 2.1，你将需要在依赖项中包含 Azure 春季云客户端库，以允许与 Azure 春季云服务实例通信。
+Azure Spring Cloud 将会托管和管理 Spring Cloud 组件。 组件包括 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 建议使用 Spring Boot 2.2 或 2.3。 对于 Spring Boot 2.1，需要在依赖项中包括 Azure Spring Cloud 客户端库，以便与 Azure Spring Cloud 服务实例通信。
 
 下表列出了正确的 Azure Spring Cloud 版本，针对使用 Spring Boot 和 Spring Cloud 的应用。
 
-Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud client 入门版
+Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 客户端入门版
 ---|---|---
 2.1.x | Greenwich.RELEASE | 2.1.2
-2.2. x | Hoxton.SR8 | 不需要
-2.3. x | Hoxton.SR8 | 不需要
+2.2.x | Hoxton.SR8 | 不需要
+2.3.x | Hoxton.SR8 | 不需要
 
-如果使用的是春季 Boot 2.1，请在 pom.xml 文件中包含以下 dependenciy。
+如果使用的是 Spring Boot 2.1，请在 pom.xml 文件中包括以下依赖项。
 
 ```xml
 <dependency>
@@ -248,7 +251,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud client 入门版
 </dependency>
 ```
 > [!WARNING]
-> 不要 `server.port` 在配置中指定。 Azure 春季 Cloud 会将此设置覆盖为固定端口号。 请考虑此设置，但不要在代码中指定服务器端口。
+> 请勿在配置中指定 `server.port`。 Azure Spring Cloud 会将此设置重写为固定端口号。 也请遵从此设置，不要在代码中指定服务器端口。
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>启用 Azure Spring Cloud 功能的其他推荐依赖项
 
@@ -322,7 +325,7 @@ public class GatewayApplication {
  指标会定期从 JMX 终结点拉取。 可以通过 Azure 门户将指标可视化。
 
  > [!WARNING]
- > 请 `spring.jmx.enabled=true` 在配置属性中指定。 否则，无法在 Azure 门户中可视化度量值。
+ > 请在配置属性中指定 `spring.jmx.enabled=true`。 否则，无法在 Azure 门户中直观显示指标。
 
 ### <a name="distributed-tracing"></a>分布式跟踪
 
@@ -339,7 +342,7 @@ public class GatewayApplication {
 </dependency>
 ```
 
- 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 有关如何将 Application Insights 与 Azure 春季云一起使用的信息，请参阅有关 [分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
+ 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="see-also"></a>另请参阅
 * [分析应用程序日志和指标](./diagnostic-services.md)
@@ -350,7 +353,7 @@ public class GatewayApplication {
 
 ## <a name="next-steps"></a>后续步骤
 
-本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅 [设置配置服务器实例](spring-cloud-tutorial-config-server.md)。
+本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅[设置配置服务器实例](spring-cloud-tutorial-config-server.md)。
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。
 ::: zone-end

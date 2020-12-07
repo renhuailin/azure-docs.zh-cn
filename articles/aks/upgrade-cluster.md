@@ -4,12 +4,12 @@ description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531337"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751489"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -93,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
-如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 会将一个新的缓冲区节点 (或任意数量的节点添加到运行指定 Kubernetes 版本的群集的 [最大浪涌](#customize-node-surge-upgrade)) 中。 然后，它将 [cordon 并排出][kubernetes-drain] 其中一个旧节点，以最大程度地降低运行应用程序的中断 (如果使用的是最大冲击，则它将 [cordon 并][kubernetes-drain] 与) 指定的缓冲区节点数量同时排出任意数量的节点。 完全排出旧节点后，将重置映像接收新版本，并将成为要升级的以下节点的缓冲节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。 在该过程结束时，将删除最后一个排出节点，并保留现有的代理节点计数。
+如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 会将一个新的缓冲区节点 (或任意数量的节点添加到运行指定 Kubernetes 版本的群集的 [最大浪涌](#customize-node-surge-upgrade)) 中。 然后，它将 [cordon 并排出][kubernetes-drain] 其中一个旧节点，以最大程度地降低运行应用程序的中断 (如果使用的是最大冲击，则它将 [cordon 并][kubernetes-drain] 与) 指定的缓冲区节点数量同时排出任意数量的节点。 完全排出旧节点后，将重置映像接收新版本，并将成为要升级的以下节点的缓冲节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。 在该过程结束时，最后一个缓冲区节点将被删除，从而维护现有的代理节点计数和区域平衡。
 
 ```azurecli-interactive
 az aks upgrade \
@@ -104,8 +104,9 @@ az aks upgrade \
 
 升级群集需要几分钟时间，具体取决于有多少节点。
 
-> [!NOTE]
-> 允许群集升级完成的总时间。 此时间是通过取 `10 minutes * total number of nodes in the cluster` 的乘积来计算的。 例如，在 20 节点群集中，升级操作必须在 200 分钟内成功，否则 AKS 将使操作失败，以避免出现无法恢复的群集状态。 若要在升级失败时恢复，请在达到超时值后重试升级操作。
+> [!IMPORTANT]
+> 确保任何 `PodDisruptionBudgets` (pdb) 至少允许一次移动至少1个 pod 副本，否则排出/逐出操作将失败。
+> 如果排出操作失败，则此升级操作将失败，并可确保应用程序不会中断。 请更正导致操作停止的原因 (不正确的 Pdb，缺少配额，依此类推) ，然后重试该操作。
 
 若要确认升级是否成功，请使用 [az aks show][az-aks-show] 命令：
 
