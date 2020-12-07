@@ -3,12 +3,12 @@ title: Application Insights 和 Log Analytics 使用的 IP 地址 | Microsoft Do
 description: Application Insights 所需的服务器防火墙例外
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: c1ccb40a9b8d8080da416aeb920ed016a231f697
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 10328efa9b8b9cdbe1e57e1e982653aea7e39574
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547927"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748869"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](./app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -46,6 +46,10 @@ ms.locfileid: "96547927"
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](./monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
+
+
+> [!NOTE]
+> 对于位于专用虚拟网络中的资源，这些资源无法允许与公共 Azure 中的可用性测试代理进行直接入站通信，唯一的选择是 [创建并托管你自己的自定义可用性测试](availability-azure-functions.md)。
 
 ### <a name="service-tag"></a>服务标记
 

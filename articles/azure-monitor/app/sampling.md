@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024409"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749039"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -54,7 +54,7 @@ ms.locfileid: "95024409"
 * **引入采样** 在 Application Insights 服务终结点上发生。 它会以设置的采样率丢弃一些来自应用的遥测数据。 它不会减少应用发送的遥测流量，但可帮助保持在每月配额内。 引入采样的大优点是，无需重新部署应用就可设置它。 引入采样统一适用于所有服务器和客户端，但在运行任何其他类型的采样时，不会应用引入采样。
 
 > [!IMPORTANT]
-> 如果自适应或固定速率采样方法正在运行，将禁用引入采样。
+> 如果为遥测类型启用了自适应或固定速率采样方法，则会为该遥测禁用引入采样。 但是，从 SDK 级别的采样中排除的遥测类型仍会按门户中设置的速率引入采样。
 
 ## <a name="adaptive-sampling"></a>自适应采样
 

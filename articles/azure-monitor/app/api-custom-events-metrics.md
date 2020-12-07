@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1ed05cd7337a7e82a02b25a2f29d54567b9f9a3
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011332"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748886"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -530,6 +530,9 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 ## <a name="trackdependency"></a>TrackDependency
 
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。 需要在进行依赖项调用的任何位置添加以下代码片段。
+
+> [!NOTE]
+> 对于 .NET 和 .NET Core，还可以使用 `TelemetryClient.StartOperation` (扩展) 方法来填充 `DependencyTelemetry` 关联所需的属性和某些其他属性（如开始时间和持续时间），这样就不需要像下面的示例一样创建自定义计时器。 有关详细信息，请参阅此文章 [关于传出依赖项跟踪的部分](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)。
 
 *C#*
 
