@@ -5,19 +5,15 @@ metadata:
   title: Azure 门户文档
   description: 了解如何使用基于 Web 的 Azure 门户控制台管理 Azure 订阅和资源。 Azure 门户是命令行工具的替代方法。
   services: Azure portal
-  ms.service: azure-portal
-  ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: mblythe
-  ms.author: mblythe
   ms.date: 08/05/2020
-  ms.openlocfilehash: 4a491a2924af90afc43ddb4aa097f9967c8f156a
-  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/15/2020
-  ms.locfileid: "92089275"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749005"
 landingContent:
 - title: 关于 Azure 门户
   linkLists:
