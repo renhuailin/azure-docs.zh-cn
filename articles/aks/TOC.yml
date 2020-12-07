@@ -65,7 +65,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: 配置 AKS 群集
           href: cluster-configuration.md
+        - name: 自定义节点配置（预览）
+          href: custom-node-configuration.md
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
         - name: 创建虚拟节点

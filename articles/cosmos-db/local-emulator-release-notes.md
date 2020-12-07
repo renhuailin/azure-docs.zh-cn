@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493060"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608429"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,12 @@ ms.locfileid: "96493060"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2119-3-december-2020"></a>2.11.9（2020 年 12 月 3 日）
+
+ - 除了反映 Azure Cosmos DB 中的最新功能和改进的常规内容更新，此版本还会处理 Azure Cosmos DB 模拟器功能的几个问题：
+ * 解决在使用直接模式和 Java 客户端应用程序时大型文档有效负载请求会失败的问题。
+ * 解决在由基于 .NET 的应用程序面向时 MongoDB 终结点版本 3.6 出现的连接性问题。
 
 ### <a name="2118-6-november-2020"></a>2.11.8（2020 年 11 月 6 日）
 

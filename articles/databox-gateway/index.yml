@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Azure Data Box Gateway 文档 - 联机传输
+summary: 使用 Azure Data Box Gateway 设备通过网络传输数据来进行云存档、灾难恢复或大规模处理数据。
+metadata:
+  title: Azure Data Box Gateway 文档 - 联机传输
+  description: 介绍如何通过网络向 Azure 进行高性能数据传输的 Data Box Gateway 文档。
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96579911"
+landingContent:
+- title: 关于 Data Box Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Data Box Gateway？
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: 选择数据传输选项
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: 使用网络或脱机传输
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 2007 版发行说明 - 最新
+      url: data-box-gateway-2007-release-notes.md
+- title: 要求和限制
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 要求
+      url: data-box-gateway-system-requirements.md
+    - text: 限制
+      url: data-box-gateway-limits.md
+- title: 部署
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 准备部署
+      url: data-box-gateway-deploy-prep.md
+    - text: 在 Hyper-V 中预配
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: 连接、设置和激活
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: 传输数据
+      url: data-box-gateway-deploy-add-shares.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理共享
+      url: data-box-gateway-manage-shares.md
+    - text: 通过 PowerShell 进行管理
+      url: data-box-gateway-connect-powershell-interface.md
+- title: 疑难解答
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 疑难解答
+      url: data-box-gateway-troubleshoot.md
+    - text: 监视
+      url: data-box-gateway-monitor.md
+    - text: 创建支持票证
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

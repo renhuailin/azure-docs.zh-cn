@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 加入虚拟网络
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 沿袭
+      items:
+        - name: 将数据工厂世系数据推送到 Azure Purview
+          href: turorial-push-lineage-to-purview.md
     - name: 端到端实验室
       items:
         - name: 使用数据工厂和数据共享实现数据集成
@@ -255,7 +259,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -688,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: 创建翻转窗口触发器依赖项
           href: tumbling-window-trigger-dependency.md
+    - name: 沿袭
+      items:
+        - name: 将数据工厂连接到 Azure Purview
+          href: connect-data-factory-to-azure-purview.md
     - name: 方案
       items:
         - name: Data Lake 与 EDW 的数据迁移

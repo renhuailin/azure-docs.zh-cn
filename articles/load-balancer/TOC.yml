@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: 标准负载均衡器指标和诊断
           href: load-balancer-standard-diagnostics.md
-        - name: 基本负载均衡器的 Azure Monitor 日志
+        - name: 负载均衡器的 Azure Monitor 日志
           href: load-balancer-monitor-log.md
         - name: 使用 REST 获取负载均衡器指标
           href: load-balancer-query-metrics-rest-api.md
@@ -113,7 +113,7 @@
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
     - name: 配置 TCP 重置和空闲超时

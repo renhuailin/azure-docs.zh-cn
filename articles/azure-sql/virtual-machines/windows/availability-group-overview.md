@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504384"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600857"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 的 Always On 可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,9 @@ Azure 虚拟机上的 Always On 可用性组类似于[本地的 Always On 可用
 
 要增加冗余和提高可用性，SQL Server VM 应位于相同的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)或不同的[可用性区域](../../../availability-zones/az-overview.md)中。
 
-可用性集是一组资源；根据这些资源的配置，同一可用性区域中没有两个地区。 这可防止在部署推出期间影响组中的多个资源。 
+通过将一组 VM 放在同一个可用性集，可保护免受由设备故障导致的数据中心内的中断影响（可用性集中的 VM 不会共享资源），或免受更新导致的影响（可用性集中的 VM 不会同时更新）。 可用性区域可保护免受整个数据中心故障的影响，其中每个区域表示一个地区内的一组数据中心。  通过确保资源放在不同的可用性区域，任何数据中心级别的中断都没法导致所有 VM 脱机。
+
+创建 Azure VM 时，必须选择配置可用性集还是配置可用性区域。  一个 Azure VM 不能同时加入这两者。
 
 
 ## <a name="connectivity"></a>连接 

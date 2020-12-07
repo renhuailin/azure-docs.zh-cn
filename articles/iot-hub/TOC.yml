@@ -167,6 +167,12 @@
           href: iot-hub-devguide-sdks.md
         - name: MQTT 支持
           href: iot-hub-mqtt-support.md
+        - name: MQTT 5 支持（预览）
+          items:
+            - name: MQTT 5 概述
+              href: iot-hub-mqtt-5.md
+            - name: MQTT 5 API 参考
+              href: iot-hub-mqtt-5-reference.md
         - name: AMQP 支持
           href: iot-hub-amqp-support.md
         - name: 术语表

@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: 统一应用程序数据资源
                   href: log-query/unify-app-resource-data.md
+                - name: 通过 Azure Monitor 查询 Azure 数据资源管理器
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: 数据导出
           items:
             - name: 工作区数据导出
@@ -441,7 +443,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -550,7 +552,7 @@
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: 创建 Service Manager Web 应用
               href: platform/itsmc-service-manager-script.md
-            - name: 修复 ServiceNow ITSM 同步问题
+            - name: 排查 ITSM 连接器中的问题
               href: platform/itsmc-resync-servicenow.md
         - name: 迁移经典警报规则
           items:
@@ -863,7 +865,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md

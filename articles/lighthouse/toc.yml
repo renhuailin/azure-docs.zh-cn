@@ -54,12 +54,18 @@
     - name: 链接你的合作伙伴 ID
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
+    - name: 更新委派
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
     - name: 删除对委派的访问权限
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
     - name: Azure Arc 集成
       displayName: 'server, kubernetes, hybrid, infrastructure'
       href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Azure Migrate 集成
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
     - name: Azure Monitor 集成
       items:
         - name: 大规模使用 Azure Monitor 日志
