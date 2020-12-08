@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751372"
+ms.locfileid: "96780342"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -215,7 +215,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ### <a name="bridge-mode"></a>桥模式
 
-顾名思义，桥模式 Azure CNI 在 "实时" 方式下将创建一个名为 "azure0" 的二级桥。 所有主机端 pod `veth` 配对接口都将连接到此桥。 因此，在 VM 内部通信中 Pod-Pod 通过此桥。 所涉及的桥是第2层虚拟设备，其自己无法接收或传输任何内容，除非你将一个或多个实际设备绑定到该设备。 出于此原因，Linux VM 的 eth0 必须转换为 "azure0" 桥。 这会在 Linux VM 中创建复杂的网络拓扑，作为 CNI，必须处理其他网络功能，例如 DNS 服务器更新等。
+顾名思义，桥模式 Azure CNI 在 "实时" 方式下将创建一个名为 "azure0" 的二级桥。 所有主机端 pod `veth` 配对接口都将连接到此桥。 因此 Pod-Pod VM 通信，其余流量将通过此桥。 所涉及的桥是第2层虚拟设备，其自己无法接收或传输任何内容，除非你将一个或多个实际设备绑定到该设备。 出于此原因，Linux VM 的 eth0 必须转换为 "azure0" 桥。 这会在 Linux VM 中创建复杂的网络拓扑，作为 CNI，必须处理其他网络功能，例如 DNS 服务器更新等。
 
 :::image type="content" source="media/faq/bridge-mode.png" alt-text="桥模式拓扑":::
 
@@ -229,19 +229,11 @@ root@k8s-agentpool1-20465682-1:/#
 ```
 
 ### <a name="transparent-mode"></a>透明模式
-透明模式使用一种方法来设置 Linux 网络。 在此模式下，Azure CNI 不会更改 Linux VM 中 eth0 接口的任何属性。 这种更改 Linux 网络属性的最小方法有助于减少群集可能会在 Bridge 模式下面临的复杂的极端情况问题。 在透明模式下，Azure CNI 将创建并添加主机端 pod `veth` 对接口，这些接口将添加到主机网络中。 VM 盒到 Pod 的通信是通过 CNI 将添加的 ip 路由完成的。 基本上，VM 中的 Pod 到 Pod 是低第3层的网络流量。
+透明模式使用一种方法来设置 Linux 网络。 在此模式下，Azure CNI 不会更改 Linux VM 中 eth0 接口的任何属性。 这种更改 Linux 网络属性的最小方法有助于减少群集可能会在 Bridge 模式下面临的复杂的极端情况问题。 在透明模式下，Azure CNI 将创建并添加主机端 pod `veth` 对接口，这些接口将添加到主机网络中。 VM 盒到 Pod 的通信是通过 CNI 将添加的 ip 路由完成的。 从本质上讲盒到 Pod 的通信的方式高于第3层，而 Pod 流量由 L3 路由规则路由。
 
 :::image type="content" source="media/faq/transparent-mode.png" alt-text="透明模式拓扑":::
 
 下面是透明模式的 ip 路由设置示例，每个 Pod 的接口都将连接一个静态路由，以便将具有目标 IP 的流量直接发送到 Pod 的主机端 `veth` 对接口。
-
-### <a name="benefits-of-transparent-mode"></a>透明模式的优点
-
-- 为 `conntrack` dns 并行争用情况提供缓解，并避免5秒 dns 延迟问题，而无需设置节点本地 dns (出于性能原因，你仍可以使用节点本地 dns) 。
-- 消除了今天由于 "实时" 桥接设置而导致的最初5秒 DNS 延迟 CNI 桥。
-- 网桥模式下的一个角落情况是，Azure CNI 不能继续更新自定义 DNS 服务器列表用户添加到 VNET 或 NIC 的列表。 这会导致 CNI 仅选取 DNS 服务器列表的第一个实例。 在透明模式下解决，因为 CNI 不会更改任何 eth0 属性。 [这里](https://github.com/Azure/azure-container-networking/issues/713)看起来更详细。
-- 更好地处理 UDP 流量，并在 ARP 超时时降低 UDP 淹没风暴。在桥接模式下，当桥不知道 VM 内盒到 Pod 通信中的目标 pod 的 MAC 地址时，设计时，这会导致将数据包风暴到所有端口。 在透明模式下解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
-- 与 bridge 模式相比，透明模式在吞吐量和延迟方面的 VM Pod 到 Pod 通信中性能更佳。
 
 ```bash
 10.240.0.216 dev azv79d05038592 proto static
@@ -254,6 +246,15 @@ root@k8s-agentpool1-20465682-1:/#
 169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 ```
+
+### <a name="benefits-of-transparent-mode"></a>透明模式的优点
+
+- 为 `conntrack` dns 并行争用情况提供缓解，并避免5秒 dns 延迟问题，而无需设置节点本地 dns (出于性能原因，你仍可以使用节点本地 dns) 。
+- 消除了今天由于 "实时" 桥接设置而导致的最初5秒 DNS 延迟 CNI 桥。
+- 网桥模式下的一个角落情况是，Azure CNI 不能继续更新自定义 DNS 服务器列表用户添加到 VNET 或 NIC 的列表。 这会导致 CNI 仅选取 DNS 服务器列表的第一个实例。 在透明模式下解决，因为 CNI 不会更改任何 eth0 属性。 在[此处](https://github.com/Azure/azure-container-networking/issues/713)了解详细信息。
+- 更好地处理 UDP 流量，并在 ARP 超时时降低 UDP 淹没风暴。在桥接模式下，当桥不知道 VM 内盒到 Pod 通信中的目标 pod 的 MAC 地址时，设计时，这会导致将数据包风暴到所有端口。 在透明模式下解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
+- 与 bridge 模式相比，透明模式在吞吐量和延迟方面的 VM Pod 到 Pod 通信中性能更佳。
+
 
 <!-- LINKS - internal -->
 

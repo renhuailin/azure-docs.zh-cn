@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/03/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b836c28443790466084b1840edcf08dc09dcf4cc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518271"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779696"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -311,7 +311,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 **服务类别：** 访问评审  
 **产品功能：** 标识调控
  
-在 Azure AD 访问评审中，创建评审的管理员现在可以将自定义消息写入评审者。 审阅者将在收到的电子邮件中看到该消息，提示他们完成审阅。 若要了解有关使用此功能的详细信息，请参阅 " [高级设置](../governance/create-access-review.md#advanced-settings) " 部分的步骤6。
+在 Azure AD 访问评审中，创建评审的管理员现在可以将自定义消息写入评审者。 审阅者将在收到的电子邮件中看到该消息，提示他们完成审阅。 若要了解有关使用此功能的详细信息，请参阅 [创建一个或多个访问评审](../governance/create-access-review.md#create-one-or-more-access-reviews) 部分的步骤14。
 
 ---
 

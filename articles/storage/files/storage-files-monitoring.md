@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c33771bc67a67d6b3b73769071126db6a913f702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a190120e969959807911503f4c2ccf99e7135dd4
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492142"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781175"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -52,7 +52,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 若要收集资源日志，必须创建一个诊断设置。 创建设置时，选择 " **文件** " 作为要为其启用日志的存储类型。 然后，指定要为其收集日志的下列操作之一。 
 
-| 类别 | 说明 |
+| Category | 说明 |
 |:---|:---|
 | StorageRead | 对象上的读取操作。 |
 | StorageWrite | 对象上的写入操作。 |
@@ -65,7 +65,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅 [存储帐户概述](../common/storage-account-overview.md)。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅 [存储帐户概述](../common/storage-account-overview.md)。
 
 有关一般指南，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
 
@@ -73,7 +73,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到存储帐户。
+2. 导航到自己的存储帐户。
 
 3. 在 " **监视** " 部分中，单击 " **诊断设置" (预览 ")**。
 
@@ -82,7 +82,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 4. 选择 " **文件** " 作为要为其启用日志的存储类型。
 
-5. 单击“添加诊断设置”。
+5. 单击“添加诊断设置”  。
 
    > [!div class="mx-imgBorder"]
    > ![门户-资源日志-添加诊断设置](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
@@ -459,13 +459,13 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 若要获取记录的 SMB 和 REST 操作的列表，请参阅 [存储记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 和 [Azure 文件监视数据引用](storage-files-monitoring-reference.md)。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
 
 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户在其文件终结点中具有活动，而在其表或队列终结点中没有活动，则只会创建与 Azure 文件服务相关的日志。 Azure 存储日志包含有关成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
 
 ### <a name="log-authenticated-requests"></a>记录经过身份验证的请求
 
- 将记录以下类型的经过身份验证的请求：
+ 将记录以下类型的已经过身份验证的请求：
 
 - 成功的请求
 - 失败的请求，包括超时、限制、网络、授权和其他错误
@@ -664,7 +664,7 @@ StorageFileLogs
 - [Azure 文件监视数据引用](storage-files-monitoring-reference.md)
 - [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure 存储指标迁移](../common/storage-metrics-migration.md)
-- [规划 Azure 文件部署](./storage-files-planning.md)
+- [规划 Azure 文件存储部署](./storage-files-planning.md)
 - [如何部署 Azure 文件](./storage-files-deployment-guide.md)
 - [排查 Windows 上的 Azure 文件问题](./storage-troubleshoot-windows-file-connection-problems.md)
 - [排查 Linux 上的 Azure 文件问题](./storage-troubleshoot-linux-file-connection-problems.md)

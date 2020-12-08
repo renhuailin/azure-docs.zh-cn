@@ -1,22 +1,22 @@
 ---
 title: 在 Azure 的租户之间共享库映像
-description: 了解如何参考 Windows 示例使用共享映像库跨 Azure 租户共享 VM 映像。
+description: 了解如何在 Azure 租户中使用共享映像库和 PowerShell 共享 VM 映像。
 author: axayjo
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 89987ccc975f5d473a493c48be61094de1177c1b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832409"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781039"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
+# <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>使用 PowerShell 在 Azure 租户之间共享库 VM 映像
 
 共享图像库允许使用 Azure RBAC 共享图像。 可以使用 Azure RBAC 共享租户中的映像，甚至共享租户之外的个人。 有关此简单共享选项的详细信息，请参阅[共享库](./shared-images-portal.md#share-the-gallery)。
 

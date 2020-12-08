@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452116"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780699"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何在商业应用商店中规划咨询服务产品/服务
 
@@ -27,10 +27,24 @@ ms.locfileid: "96452116"
 
 ## <a name="primary-products-and-online-stores"></a>主要产品和在线商店
 
-每个咨询服务产品/服务应侧重于称为 " **主要产品**" 的 Microsoft 产品。 你在合作伙伴中心选择的主要产品确定你的产品/服务是否将发布到 Microsoft AppSource 或 Azure Marketplace。
+每个咨询服务必须专注于其中一种 Microsoft 产品，称为产品/服务的 **主要产品** ：
+
+|主产品                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 Project Service Automation |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 Customer Service  |Power Apps |
+|Dynamics 365 Field Service     |Power Automate |
+|Dynamics 365 Finance           |Power BI |
+|Dynamics 365 Marketing         |Power Virtual Agents |
+|    |    |
+
+你在合作伙伴中心选择的主要产品确定你的产品/服务是否将发布到 Microsoft AppSource 或 Azure Marketplace。
 
 * 如果咨询服务的主要产品是 Azure，产品/服务将在 Azure Marketplace 中列出。
-* 如果主要产品不是 Azure，产品/服务将列在 AppSource 中。
+* 如果主要产品不是 Azure，产品/服务将列在 AppSource 上。
 
 若要详细了解 AppSource 和 Azure Marketplace 之间的差异，请参阅 [商业市场在线商店](./overview.md#commercial-marketplace-online-stores)。
 
@@ -75,7 +89,7 @@ ms.locfileid: "96452116"
 6. 国家/地区
 7. 产品名称
 8. 搜索结果摘要
-9. 说明
+9. 描述
 10. 屏幕截图/视频
 11. 支持性文档
 
@@ -91,6 +105,7 @@ ms.locfileid: "96452116"
 |Azure IoT 制造入门 |制造 IoT：2 日评估 |
 |智能烤面包机研讨会 |智能烤面包机：1周研讨会 |
 |按 Contoso SQL Server 迁移 PoC |SQL 迁移：3 周概念证明 |
+| | |
 
 **搜索结果摘要**：说明产品/服务的用途或目标，以200个字符或更少。 此摘要用于商业应用商店中列出的搜索结果。 它不应与标题完全相同。 请考虑包含 top SEO 关键字。
 
@@ -105,6 +120,7 @@ ms.locfileid: "96452116"
 |实现 |为实现提供一天的详细计划，并描述客户可在其结果中获得的工程变化、技术项目或其他项目。 |
 |概念证明 |描述客户可以作为订婚结果的工程变化、技术项目或其他项目。 |
 |研讨会 |包括详细的每日、每周或每月计划，具体取决于产品/服务的持续时间。 说明研讨会的学习目标或其他可交付结果。 |
+| | |
 
 下面是有关如何撰写描述的一些提示：
 
@@ -142,6 +158,11 @@ ms.locfileid: "96452116"
 **Marketplace 媒体–屏幕截图**：至少添加一个和五个图像，用于演示产品/服务。 所有图像的大小必须为 1280 x 720 像素。PNG 格式。
 
 **Marketplace 媒体–视频** (可选) ：最多可以添加四个视频来演示产品/服务。 视频必须托管在 YouTube 或 Vimeo 上，并且缩略图 (1280 x 720 PNG 文件) 。
+
+## <a name="pricing-and-availability"></a>定价和可用性
+
+你的咨询服务产品/服务可在一个或多个国家或地区提供。 在合作伙伴中心，你可以确定所选的每个市场的价格。 有关受支持市场和货币的完整列表，请参阅 [商业市场的地理可用性和货币支持](./marketplace-geo-availability-currencies.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

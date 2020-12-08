@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695514"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780937"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -66,7 +66,7 @@ ms.locfileid: "94695514"
 
 可以通过一个示例来进一步演示该行为。 如果将探测响应数设置为 2，将间隔设置为 5 秒，则意味着，必须在 10 秒间隔内观测到 2 次探测超时失败。  由于在应用程序更改状态时发送探测的时间未同步，因此我们可以分两种情况来界定检测时间：
 
-1. 如果应用程序在第一个探测抵达之前的那一刻开始生成超时探测响应，则这些事件的检测需要 10 秒（2 x 5 秒间隔），加上应用程序发出超时信号到第一个探测抵达时的持续时间。  可以假设此项检测花费的时间略微超过 10 秒。
+1. 如果你的应用程序在第一次探测到达之前开始生成超时探测响应，则这些事件的检测将需要10秒 (2 x 5 秒的时间间隔) 加上应用程序在第一次探测到达后开始向超时发出信号的时间。  可以假设此项检测花费的时间略微超过 10 秒。
 2. 如果应用程序在第一个探测抵达之后的那一刻开始生成超时的探测响应，则这些事件的检测只会在下一个探测（和超时）抵达时加上额外 10 秒（2 x 5 秒间隔）持续时间之后才开始。  可以假设此项检测花费的时间略少于 15 秒。
 
 对于此示例，一旦发生检测，平台就会花费少量的时间对此更改做出反应。  这意味着，根据以下条件 

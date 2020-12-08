@@ -4,15 +4,15 @@ description: 了解如何将共同销售解决方案从 OCP 转移到合作伙�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
-ms.date: 12/04/2020
-ms.openlocfilehash: 6af7095dbb57c5ceb17989b2d6106a42e1d23fb9
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+author: vamahtan
+ms.author: vamahtan
+ms.date: 12/07/2020
+ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96771963"
+ms.locfileid: "96781124"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将共同销售解决方案从 OCP 转移到商业应用商店
 
@@ -79,7 +79,8 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 1. 确定现有产品/服务。
     1. 选择 **"我想要合并此解决方案与商业应用商店中的类似产品/服务"** (参阅 [上面) 上](#beginmigration)的 "**所需操作**" 映像。
     1. " **操作 1** " 选项卡显示了可与你的 OCP 联系解决方案相关联的实时商业市场。 从列表中选择活动产品/服务（如果有）。 如果没有可供选择的产品/服务列表，请输入 Microsoft AppSource 或 Azure Marketplace (URL) 的面向客户的地址。
-        [![合并进程的 "操作 1" 选项卡。](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)    1. 选择“继续”。 
+        [![合并进程的 "操作 1" 选项卡。](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
+    1. 选择“继续”。 
 1. 请求合并。
     1. " **操作 2** " 选项卡显示了请求将 OCP 方向解决方案合并到所识别的解决方案的说明。 若要请求合并，请选择 " **保存 & 联系支持** 人员，这将在浏览器中打开合作伙伴支持页面。
     1. 选择 "**提供问题详细信息**"，然后输入以下内容： [ ![ 合并进程的 "操作 2" 选项卡。](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
@@ -93,7 +94,7 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 1. 选择 **"我想要将此解决方案从 OCP 转到" 迁移到商业 marketplace** (查看) [上方](#beginmigration)的 "**需要操作**" 映像，然后 **继续**。
 1. 在 " **操作 1** " 选项卡上，选择 " [产品类型](publisher-guide-by-offer-type.md)"，然后单击 " **继续**"。
 
-    [![迁移过程的 "操作 1" 选项卡。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)    1. 选择“继续”。 
+    [![迁移过程的 "操作 1" 选项卡。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
 1. 在 " **操作 2** " 选项卡上，从提供的列表中选择 [发布者配置文件](partner-center-portal/create-account.md) 。 如果没有发布服务器帐户，请在 [合作伙伴中心](https://partner.microsoft.com/solutions/migration)创建一个帐户，并在此处选择它。
 

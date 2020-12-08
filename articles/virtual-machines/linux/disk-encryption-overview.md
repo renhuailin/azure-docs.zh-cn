@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016295"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779764"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -67,7 +67,7 @@ Azure 磁盘加密不能用于没有 temp 磁盘 (Dv4、Dsv4、Ev4 和 Esv4) 的
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS 和数据磁盘 |
 | RedHat | RHEL 7。8 | 7.8 | RedHat： RHEL：7.8：最新 | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat： RHEL： 7-LVM：7.8.2020111201 | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | OS 和数据磁盘（请参阅下面的注释） |
@@ -77,7 +77,7 @@ Azure 磁盘加密不能用于没有 temp 磁盘 (Dv4、Dsv4、Ev4 和 Esv4) 的
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | 数据磁盘（请参阅下面的注释） |
 | OpenLogic | CentOS 7。8 | 7.8 | OpenLogic： CentOS：7_8：最新 | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS 和数据磁盘 |
-| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | OS 和数据磁盘 |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic： CentOS-LVM： 7-LVM：7.8.2020111100 | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic:CentOS:7.5:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | OS 和数据磁盘 |

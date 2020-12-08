@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014357"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779934"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
 
@@ -22,7 +22,7 @@ ms.locfileid: "96014357"
 专用终结点由 [Azure 专用链接](../private-link/private-link-overview.md)作为单独的服务提供。 有关成本的详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/private-link/)。
 
 > [!Important]
-> 可以使用 Azure 门户或 [管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。
+> 可以使用 Azure 门户或 [管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。 作为门户的替代方法，可以使用 [VS Code 扩展](https://aka.ms/vscode-search) 与服务中的各种组件进行交互。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>为什么使用私有终结点进行安全访问？
 
@@ -42,11 +42,11 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 订阅 | 选择订阅|
     | 资源组 | 选择 " **新建**"，输入 *myResourceGroup*，然后选择 **"确定"** |
-    | 名称 | 输入 *MyVirtualNetwork* |
+    | “属性” | 输入 *MyVirtualNetwork* |
     | 区域 | 选择所需的区域 |
     |||
 
@@ -81,7 +81,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建专用终结点”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|

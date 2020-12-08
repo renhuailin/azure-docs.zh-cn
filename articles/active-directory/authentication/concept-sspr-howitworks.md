@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762544"
+ms.locfileid: "96779356"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 >
 > 如果用户已登录，则用于注册 SSPR 的此中断不会中断用户的连接。
 
-## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>设置用户必须在几天后重新确认其身份验证信息
+## <a name="reconfirm-authentication-information"></a>重新确认身份验证信息
 
 为了在需要使用身份验证方法来重置或更改用户的密码时确保身份验证方法正确，你可以要求用户在某段时间过后确认其已注册的信息。 仅当你启用了“要求用户在登录时注册”选项时，此选项才可用。
 

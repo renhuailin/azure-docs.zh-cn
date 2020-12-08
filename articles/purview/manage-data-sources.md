@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: ef54c40715c874364beb188d8850a9ce953aa112
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 382c79cf77cb22d3cad1af41d6daa662fb00df4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551795"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781158"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>在 Azure 监控范围中管理数据源 (预览) 
 
@@ -28,6 +28,7 @@ ms.locfileid: "96551795"
 * Azure Synapse Analytics（以前称为 SQL DW）
 * Azure Cosmos DB
 * Power BI
+* Teradata（预览版）
 
 ## <a name="register-a-new-source"></a>注册新的源
 
@@ -45,7 +46,7 @@ ms.locfileid: "96551795"
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="数据源信息窗体":::
 
-1. 选择“完成”。
+1. 选择“完成”  。
 
 ## <a name="view-sources"></a>查看源
 

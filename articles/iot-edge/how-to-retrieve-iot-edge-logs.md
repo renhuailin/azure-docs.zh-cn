@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437127"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780733"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -33,7 +33,7 @@ ms.locfileid: "96437127"
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` 应遵循 [Syslog 严重性级别格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 格式应为 `yyyy-mm-dd hh:mm:ss.fff zzz` 。
+`{Log Level}` 应遵循 [Syslog 严重性级别格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 格式应为 `yyyy-MM-dd hh:mm:ss.fff zzz` 。
 
 [IoT Edge 中的记录器类](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)充当规范实现。
 
@@ -188,7 +188,7 @@ az iot hub invoke-module-method \
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -312,7 +312,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -370,7 +370,7 @@ az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 

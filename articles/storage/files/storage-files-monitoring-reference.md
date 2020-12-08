@@ -9,22 +9,22 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: f6dc523050fdcdbf54a6b9864f0a752698a85eed
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628928"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780920"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure 文件监视数据引用
 
 有关收集和分析 Azure 文件的监视数据的详细信息，请参阅 [监视 Azure 文件](storage-files-monitoring.md) 。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 下表列出了为 Azure 文件收集的平台指标。 
 
-### <a name="capacity-metrics"></a>容量度量值
+### <a name="capacity-metrics"></a>容量指标
 
 容量指标值每日刷新 (最多24小时) 。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
@@ -68,7 +68,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 ## <a name="resource-logs-preview"></a>资源日志（预览版）
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中用于预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。  此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中用于预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
 
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure 存储资源日志时这些资源日志的属性。 属性描述了操作、服务以及用来执行该操作的授权类型。
 

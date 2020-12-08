@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8e9013db93f5cd67448b5af8c415db0862e5d332
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842713"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778965"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -48,7 +48,12 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>分配可访问数据的 Azure 角色
 
-当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 Azure 角色，由该角色授权访问 Azure 存储中的 Blob 或队列数据。 有关通过 Azure RBAC 分配权限的信息，请参阅 [使用 Azure Active Directory 授予对 azure blob 和队列的访问](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)权限中的 "为 **访问权限分配 azure 角色**" 一节。
+当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 Azure 角色，由该角色授权访问 Azure 存储中的 Blob 或队列数据。 若要了解如何通过 Azure RBAC 分配权限，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)中的“分配 Azure 角色以授予访问权限”部分。
+
+> [!NOTE]
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+>
+> 在为自己分配数据访问角色之前，你可以通过 Azure 门户访问你的存储帐户中的数据，因为 Azure 门户还可以使用帐户密钥来访问数据。 有关详细信息，请参阅 [在 Azure 门户中选择如何授权访问 blob 数据](../blobs/authorize-data-operations-portal.md)。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
 
@@ -71,7 +76,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 ```azurecli-interactive
 az ad sp create-for-rbac \
     --name <service-principal> \
-    --role "Storage Blob Data Reader" \
+    --role "Storage Blob Data Contributor" \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
@@ -163,6 +168,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 AZURE RBAC 管理对存储数据的访问权限](./storage-auth-aad-rbac-portal.md)。
+- [使用 Azure RBAC 管理对存储数据的访问权限](./storage-auth-aad-rbac-portal.md)。
 - [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)。
 - [使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md)

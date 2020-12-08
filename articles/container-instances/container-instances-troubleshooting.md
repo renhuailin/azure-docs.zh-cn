@@ -4,12 +4,12 @@ description: 了解如何排查部署、运行或管理 Azure 容器实例时的
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746918"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779509"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -99,7 +99,7 @@ ms.locfileid: "92746918"
 ## <a name="issues-during-container-group-runtime"></a>容器组运行过程中的问题
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
-容器组的 [重启策略](container-instances-restart-policy.md)默认为 **Always** ，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never** 。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
+容器组的 [重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
 在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，请在容器组部署中包含如下所示的启动命令，以使容器保持运行。
 
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 对于 Windows 和 Linux 映像，请避免使用 `latest` 标记。 查看容器注册表的 [图像标记最佳实践](../container-registry/container-registry-image-tag-version.md) 以获得指导。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。

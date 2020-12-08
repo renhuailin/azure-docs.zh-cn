@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364223"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780988"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -1026,7 +1026,7 @@ ms.locfileid: "94364223"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | 否 | 否 |
-> | sapmonitors | 是 | 是 |
+> | sapmonitors | 否 | 否 |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 

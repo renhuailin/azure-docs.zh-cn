@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure CLI 分配可以进行数据访问的 Azure 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure CLI 通过 azure RBAC)  (azure RBAC 访问控制向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置的和 Azure 自定义的角色进行身份验证。
+description: 了解如何使用 Azure CLI 通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置的和 Azure 自定义的角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b818b8b46b6ac3af98ff5f25ef69335231744cc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715129"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779033"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配一个可以访问 blob 和队列数据的 Azure 角色
 
@@ -58,6 +58,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 若要向安全主体分配 Azure 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
+> [!NOTE]
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+
 ### <a name="container-scope"></a>容器范围
 
 若要分配容器范围的角色，请为 `--scope` 参数指定一个包含容器范围的字符串。 容器的范围采用以下格式：
@@ -66,7 +69,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
 ```
 
-以下示例为用户分配**存储 Blob 数据参与者**角色，其范围为容器级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
+以下示例为用户分配 **存储 Blob 数据参与者** 角色，其范围为容器级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \
@@ -83,7 +86,7 @@ az role assignment create \
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
 ```
 
-以下示例为用户分配**存储队列数据参与者**角色，其范围为队列级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
+以下示例为用户分配 **存储队列数据参与者** 角色，其范围为队列级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \

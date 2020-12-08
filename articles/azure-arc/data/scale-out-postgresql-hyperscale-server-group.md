@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285377"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779968"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>通过添加更多的工作节点向外扩展启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 本文档介绍如何横向扩展启用了 Azure Arc 的 PostgreSQL 超大规模服务器组。 它通过学习方案来实现此目的。 **如果你不希望通过此方案运行，并且只想了解如何横向扩展，请跳转到段落 [扩大](#scale-out)**。
@@ -31,7 +31,7 @@ ms.locfileid: "91285377"
 - [设计多租户数据库](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
 - [设计实时分析仪表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> \* 在上述文档中，跳过 **登录到 Azure 门户**的部分，& **创建 Azure Database for PostgreSQL (Citus) **。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
+> \* 在上述文档中，跳过 **登录到 Azure 门户** 的部分，& **创建 Azure Database for PostgreSQL (Citus)**。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
 
 ## <a name="scenario"></a>方案
 此方案是指在 [创建支持 Azure Arc 的 PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) 文档中作为示例创建的 PostgreSQL 超大规模服务器组。
@@ -249,8 +249,7 @@ SELECT COUNT(*) FROM github_events;
     * [设计多租户数据库](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [设计实时分析仪表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
- > \* 在上述文档中，跳过 **登录到 Azure 门户**的部分，& **创建 Azure Database for PostgreSQL (Citus) **。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
+ > \* 在上述文档中，跳过 **登录到 Azure 门户** 的部分，& **创建 Azure Database for PostgreSQL (Citus)**。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
 
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)
-- [扩展永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 资源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d2c9d810fb3bd86d68518e1ad20088a57d538bbe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 70ebe8ede75935bcc8d8db8729fef165a5616fe7
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500574"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779798"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -416,6 +416,7 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 将 ADE 应用到一个 VM，此 VM 使用[服务器端加密和客户管理的密钥](../disk-encryption.md) (SSE + CMK) 加密磁盘。 将 SSE+CMK 应用于使用 ADE 加密的 VM 上的数据磁盘，这种方案也不受支持。
 - 将使用 ADE 加密的 VM，或者曾经使用 ADE 加密的 VM 迁移到[使用客户管理的密钥的服务器端加密](../disk-encryption.md)。
 - [不带本地临时磁盘的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具体而言，Dv4、Dsv4、Ev4 和 Esv4。
+- 加密故障转移群集中的 Vm。
 
 ## <a name="next-steps"></a>后续步骤
 

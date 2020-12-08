@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 9714dd49e06dabf9fb4669475f96089fcfc97d73
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146733"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778748"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -53,27 +53,28 @@ ms.locfileid: "93146733"
 3. 选择“虚拟网络”。
 4. 配置要在虚拟网络内部署的 API 管理实例。
 
-    ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="在 Azure 门户中选择 &quot;虚拟网络&quot;。":::
+    
 5. 选择所需的访问类型：
 
-    * **OFF** ：这是默认值。 API 管理未部署到虚拟网络中。
+    * **OFF**：这是默认值。 API 管理未部署到虚拟网络中。
 
-    * **外部** ：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
+    * **外部**：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
 
         ![公共对等互连][api-management-vnet-public]
 
-    * **内部** ：只能通过内部负载均衡器从虚拟网络内部访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
+    * **内部**：只能通过内部负载均衡器从虚拟网络内部访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
 
         ![专用对等互连][api-management-vnet-private]
 
-6. 如果选择了“外部”或“内部”，则会看到一个列表，其中包含预配了 API 管理服务的所有区域。  选择一个 **位置** ，然后选取其 **虚拟网络** 和 **子网** 。 虚拟网络列表中填充了所配置区域中设置的 Azure 订阅中可用的经典虚拟网络和资源管理器虚拟网络。
+6. 如果选择了“外部”或“内部”，则会看到一个列表，其中包含预配了 API 管理服务的所有区域。  选择一个 **位置**，然后选取其 **虚拟网络** 和 **子网**。 虚拟网络列表中填充了所配置区域中设置的 Azure 订阅中可用的经典虚拟网络和资源管理器虚拟网络。
 
     > [!IMPORTANT]
     > 将 Azure API 管理实例部署到 资源管理器 VNET 时，该服务必须位于一个除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的资源管理器 VNET 子网，则部署会失败。
 
     然后，选择“应用”。 API 管理实例的“虚拟网络”页通过新的虚拟网络和子网选项进行更新。
 
-    ![选择 VPN][api-management-setup-vpn-select]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="门户中的虚拟网络设置。":::
 
 7. 在顶部导航栏中选择“保存”，然后选择“应用网络配置”。
 
@@ -89,9 +90,9 @@ ms.locfileid: "93146733"
 
 [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
 
-* **在 VNET 内创建 API 管理服务** ：使用 cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) 在 VNET 内创建 Azure API 管理服务。
+* **在 VNET 内创建 API 管理服务**：使用 cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) 在 VNET 内创建 Azure API 管理服务。
 
-* **在 VNET 内部署现有 API 管理服务** ：使用 cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 Azure API 管理服务移到虚拟网络内。
+* **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 Azure API 管理服务移到虚拟网络内。
 
 ## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>连接到虚拟网络中托管的 Web 服务
 将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入到“Web 服务 URL”字段。
@@ -101,12 +102,12 @@ ms.locfileid: "93146733"
 ## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"></a>常见网络配置问题
 下面是将 API 管理服务部署到虚拟网络时可能会发生的常见错误配置问题的列表。
 
-* **自定义 DNS 服务器设置** ：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
+* **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
 > [!IMPORTANT]
 > 如果计划对 VNET 使用自定义 DNS 服务器，应在向其部署 API 管理服务 **之前** 完成该设置。 否则，需要在每次通过运行[应用网络配置操作](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates)更改 DNS 服务器时更新 API 管理服务
 
-* **API 管理所需的端口** ：可以使用 [网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 将 API 管理与 VNET 配合使用时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
+* **API 管理所需的端口**：可以使用 [网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 将 API 管理与 VNET 配合使用时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
 <a name="required-ports"> </a>在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
@@ -129,11 +130,11 @@ ms.locfileid: "93146733"
 >[!IMPORTANT]
 > “用途”为 **粗体** 的端口是成功部署 API 管理服务所必需的。 不过，如果阻止其他端口，将导致使用和监视运行中服务以及提供承诺的 SLA 的能力降级。
 
-+ **TLS 功能** ：若要启用 TLS/SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖项不是必需的。
++ **TLS 功能**：若要启用 TLS/SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖项不是必需的。
 
-+ **DNS 访问** ：需要端口 53 上的出站访问权限才能与 DNS 服务器通信。 如果 VPN 网关的另一端存在自定义 DNS 服务器，则该 DNS 服务器必须可从承载 API 管理的子网访问。
++ **DNS 访问**：需要端口 53 上的出站访问权限才能与 DNS 服务器通信。 如果 VPN 网关的另一端存在自定义 DNS 服务器，则该 DNS 服务器必须可从承载 API 管理的子网访问。
 
-+ **指标和运行状况监视** ：到 Azure 监视终结点的出站网络连接，可在以下域中解析。 如表所示，这些 URL 在 AzureMonitor 服务标记下表示，用于网络安全组。
++ **指标和运行状况监视**：到 Azure 监视终结点的出站网络连接，可在以下域中解析。 如表所示，这些 URL 在 AzureMonitor 服务标记下表示，用于网络安全组。
 
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -144,19 +145,19 @@ ms.locfileid: "93146733"
   >[!IMPORTANT]
   > 以上群集中 dns 区域从 .nsatc.net 到 .microsoftmetrics.com 的更改主要是 DNS 更改 。 群集的 IP 地址将不会更改。
 
-+ **区域服务标记** ：允许与存储、SQL 和事件中心服务标记建立出站连接的 NSG 规则可以使用与包含 API 管理实例的区域对应的这些标记的区域版本（例如，美国西部区域中 API 管理实例对应 Storage.WestUS）。 在多区域部署中，每个区域中的 NSG 应该允许流量进入该区域和主要区域的服务标记。
++ **区域服务标记**：允许与存储、SQL 和事件中心服务标记建立出站连接的 NSG 规则可以使用与包含 API 管理实例的区域对应的这些标记的区域版本（例如，美国西部区域中 API 管理实例对应 Storage.WestUS）。 在多区域部署中，每个区域中的 NSG 应该允许流量进入该区域和主要区域的服务标记。
 
-+ **SMTP 中继** ：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
++ **SMTP 中继**：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
 
-+ **开发人员门户 CAPTCHA** ：在主机 `client.hip.live.com` 和 `partner.hip.live.com` 下解析的开发人员门户 CAPTCHA 的出站网络连接。
++ **开发人员门户 CAPTCHA**：在主机 `client.hip.live.com` 和 `partner.hip.live.com` 下解析的开发人员门户 CAPTCHA 的出站网络连接。
 
-+ **Azure 门户诊断** ：若要在从虚拟网络内部使用 API 管理扩展时从 Azure 门户启用诊断日志流，需要允许在端口 443 上对 `dc.services.visualstudio.com` 进行出站访问。 这有助于排查使用扩展时可能遇到的问题。
++ **Azure 门户诊断**：若要在从虚拟网络内部使用 API 管理扩展时从 Azure 门户启用诊断日志流，需要允许在端口 443 上对 `dc.services.visualstudio.com` 进行出站访问。 这有助于排查使用扩展时可能遇到的问题。
 
-+ **Azure 负载均衡器** ：`Developer` SKU 不要求允许来自服务标记 `AZURE_LOAD_BALANCER` 的入站请求，因为我们只在其后部署一个计算单元。 但当扩展到更高级的 SKU（如 `Premium`）时，来自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的入站请求变得至关重要，因为负载均衡器的运行状况探测失败将导致部署失败。
++ **Azure 负载均衡器**：`Developer` SKU 不要求允许来自服务标记 `AZURE_LOAD_BALANCER` 的入站请求，因为我们只在其后部署一个计算单元。 但当扩展到更高级的 SKU（如 `Premium`）时，来自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的入站请求变得至关重要，因为负载均衡器的运行状况探测失败将导致部署失败。
 
-+ **Application Insights** ：如果在 API 管理上启用了 [Azure Application Insights](api-management-howto-app-insights.md) 监视，则需要允许从虚拟网络到 [遥测终结点](../azure-monitor/app/ip-addresses.md#outgoing-ports)的出站连接。 
++ **Application Insights**：如果在 API 管理上启用了 [Azure Application Insights](api-management-howto-app-insights.md) 监视，则需要允许从虚拟网络到 [遥测终结点](../azure-monitor/app/ip-addresses.md#outgoing-ports)的出站连接。 
 
-+ **使用 Express Route 或网络虚拟设备强制隧道流量发往本地防火墙** ：客户的常用配置是定义自己的默认路由 (0.0.0.0/0)，强制来自 API 管理所委托子网的所有流量流经本地防火墙或流向网络虚拟设备。 此流量流一定会中断与 Azure API 管理的连接，因为出站流量会在本地被阻止，或者通过“网络地址转换”功能发送到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 此解决方案要求你执行多项操作：
++ **使用 Express Route 或网络虚拟设备强制隧道流量发往本地防火墙**：客户的常用配置是定义自己的默认路由 (0.0.0.0/0)，强制来自 API 管理所委托子网的所有流量流经本地防火墙或流向网络虚拟设备。 此流量流一定会中断与 Azure API 管理的连接，因为出站流量会在本地被阻止，或者通过“网络地址转换”功能发送到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 此解决方案要求你执行多项操作：
 
   * 在部署 API 管理服务的子网上启用服务终结点。 需要为 Azure SQL、Azure 存储、Azure EventHub 和 Azure ServiceBus 启用[服务终结点][ServiceEndpoints]。 直接启用从 API 管理委托子网到这项服务的终结点，使它们可以使用 Microsoft Azure 主干网络，从而为服务通信提供最佳路由。 如果将服务终结点与被强制进行隧道传输的 API 管理配合使用，则不会强制隧道传输以上 Azure 服务流量。 其他 API 管理服务依赖项流量会通过强制隧道重定向，不能丢失，否则 API 管理服务会功能失常。
     
@@ -169,17 +170,26 @@ ms.locfileid: "93146733"
       - 开发人员门户验证码
 
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑难解答
-* **初始设置** ：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否与 Azure 订阅中的以下每个资源建立了连接
+* **初始设置**：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否与 Azure 订阅中的以下每个资源建立了连接
     * Azure 存储 Blob
-    * Azure SQL 数据库
+    * Azure SQL Database
     * Azure 存储表
 
   > [!IMPORTANT]
   > 在验证连接后，在将 API 管理部署到子网中之前，请确保删除子网中部署的所有资源。
 
-* **增量更新** ：对网络进行更改时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus)，验证 API 管理服务是否尚未丧失对所依赖的任何关键资源的访问权限。 连接状态应每 15 分钟更新一次。
+* **验证网络连接状态**：将 API 管理部署到子网后，请使用门户检查实例与 Azure 存储等依赖项的连接。 在门户的左侧菜单中的 " **部署和基础结构**" 下，选择 " **网络连接状态**"。
 
-* **资源导航链接** ：部署到资源管理器样式的 VNET 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将 **失败** 。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
+   :::image type="content" source="media/api-management-using-with-vnet/verify-network-connectivity-status.png" alt-text="验证门户中的网络连接状态":::
+
+    * 选择 " **必需** " 以查看与所需 Azure 服务的连接以进行 API 管理。 如果失败，则表示实例无法执行核心操作来管理 Api。
+    * 选择 " **可选** " 以查看与可选服务的连接。 任何故障仅指示特定功能将无法正常工作 (例如，SMTP) 。 故障可能会导致使用和监视 API 管理实例的能力降低，并提供承诺的 SLA。
+
+若要解决连接问题，请查看 [常见网络配置问题](#network-configuration-issues) 并修复所需的网络设置。
+
+* **增量更新**：对网络进行更改时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus)，验证 API 管理服务是否尚未丧失对所依赖的任何关键资源的访问权限。 连接状态应每 15 分钟更新一次。
+
+* **资源导航链接**：部署到资源管理器样式的 VNET 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将 **失败**。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
 
 ## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> 子网大小要求
 Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -204,7 +214,7 @@ API 管理的每个额外缩放单元都需要另外两个 IP 地址。
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> 控制平面 IP 地址
 
-IP 地址由 **Azure 环境** 划分。 如果允许入站请求使用 **Global** 标记的 ip 地址，则必须与 **区域** 特定的 ip 地址一起使用。
+IP 地址由 **Azure 环境** 划分。 允许入站请求时，标记为 Global 的 IP 地址必须与区域特定的 IP 地址一起获得允许。
 
 | **Azure 环境**|   **区域**|  IP 地址|
 |-----------------|-------------------------|---------------|

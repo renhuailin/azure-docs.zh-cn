@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444539"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779407"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>用于 Python 的 Azure 机器学习 SDK 1.19。0
++ **Bug 修复与改进**
+  + **azureml-automl-core**
+    + 向 AutoMLStep 添加了对测试数据的实验性支持。
+    + 添加了测试集引入功能的初始核心实现。
+    + 已将引用移动到 spark-sklearn，以直接依赖 joblib。
+    + 引入新的 AutoML 任务类型 "映像-实例-分段"。
+  + **azureml-automl-runtime**
+    + 添加了测试集引入功能的初始核心实现。
+    + 如果文本列中的所有字符串的长度正好为1个字符，则 TfIdf word 语法特征化器将不起作用，因为它的标记器忽略少于2个字符的字符串。 当前代码更改将允许 AutoML 处理此用例。
+    + 引入新的 AutoML 任务类型 "映像-实例-分段"。
+  + **contrib-automl-dnn-nlp**
+    + 新 dnn-nlp 包的初始 PR
+  + **azureml-contrib-automl-dnn-vision**
+    + 引入新的 AutoML 任务类型 "映像-实例-分段"。
+  + **contrib-automl-管道-步骤**
+    + 此新包负责创建许多模型定型/推理方案所需的步骤。 -它还将定型/推理代码移到 automl 包中，以便将来可以通过特选环境版本自动获得任何修补程序。
+  + **azureml-contrib-dataset**
+    + 引入新的 AutoML 任务类型 "映像-实例-分段"。
+  + **azureml-core**
+    + 添加了测试集引入功能的初始核心实现。
+    + 修复 azureml 核心包中文档的 x 警告
+    + SDK 中命令支持功能的文档字符串修复
+    + 向 RunConfiguration 添加命令属性。 此功能使用户能够通过 AzureML SDK 在计算上运行实际的命令或可执行文件。
+    + 用户可以在给定实验 id 的情况删除一个空试验。
+  + **azureml-dataprep**
+    + 添加了对用 Scala 2.12 生成的 Spark 的数据集支持。 这将添加到现有的2.11 支持。
+  + **azureml-mlflow**
+    + AzureML-MLflow 在远程脚本中添加了安全的保护，以避免在提前终止提交的运行。
+  + **azureml-pipeline-core**
+    + 修复了设置通过 UI 创建的管道终结点的默认管道时的错误
+  + **azureml-pipeline-steps**
+    + 向 AutoMLStep 添加了对测试数据的实验性支持。
+  + **azureml-tensorboard**
+    + 修复 azureml 核心包中文档的 x 警告
+  + **azureml-train-automl-client**
+    + 向 AutoMLStep 添加了对测试数据的实验性支持。
+    + 添加了测试集引入功能的初始核心实现。
+    + 引入新的 AutoML 任务类型 "映像-实例-分段"。
+  + **azureml-train-automl-runtime**
+    + 添加了测试集引入功能的初始核心实现。
+    + 如果使用 validation_size 设置训练了 AutoML 模型，则修复最佳 AutoML 模型的原始说明的计算。
+    + 已将引用移动到 spark-sklearn，以直接依赖 joblib。
+  + **azureml-train-core**
+    + 现在 HyperDriveRun.get_children_sorted_by_primary_metric ( # A1 应能更快地完成
+    + 改进了 HyperDrive SDK 中的错误处理。
+    +  不推荐使用 ScriptRunConfig 来配置试验运行的所有估计器类。 弃用的类包括：
+        + MMLBaseEstimator
+        + 估算器
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + 不推荐使用 Nccl 和 Gloo 作为估计器类的有效输入类型，而是使用 PyTorchConfiguration 和 ScriptRunConfig。
+    + 不推荐使用 Mpi 作为估计器类的有效输入类型，以便使用 MpiConfiguration 和 ScriptRunConfig。
+    + 向 runconfiguration 添加命令属性。 此功能使用户能够通过 AzureML SDK 在计算上运行实际的命令或可执行文件。
+
+    +  不推荐使用 ScriptRunConfig 来配置试验运行的所有估计器类。 弃用的类包括： + MMLBaseEstimator + 估计器 + PyTorch + TensorFlow + Chainer + Spark-sklearn
+    + 不推荐使用 Nccl 和 Gloo 作为估计器类的有效输入类型，以便于将 PyTorchConfiguration 与 ScriptRunConfig 结合使用。 
+    + 不推荐使用 Mpi 作为估计器类的有效输入类型，以便使用 MpiConfiguration 和 ScriptRunConfig。
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ ms.locfileid: "96444539"
     + 已优化链接服务 API。 我们没有提供资源 Id，而是在配置中定义了 3 个独立的参数 sub_id、rg 和 name。
     + 为了使客户能够自行解决令牌损坏问题，可使工作区令牌同步成作为一种公共方法。
     + 此更改允许将空字符串用作 script_param 的值
-  + **azureml-pipeline-core**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
-  + **azureml-pipeline-steps**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
-  + azureml-synapse
-    + 添加 Synapse magic 和 SparkMonitor，允许用户提交 Syanpse 作业并在笔记本中查看作业进度。
   + **azureml-train-automl-client**
     +  通过允许使用高斯噪声填充短时序来改进其处理。
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ ms.locfileid: "96444539"
     + 修复了在重新拟合模型后 VotingRegressor 预测可能不准确的问题。
   + **azureml-core**
     + 添加了有关 AKS 部署配置和 Azure Kubernetes 服务概念之间关系的其他详细信息。
-    + 客户可以使用链接服务 SDK 将 synapse 工作区链接到 AML 工作区。 支持 CRUD。
     + 环境客户端标签支持。 用户可以标记环境并通过标签引用它们。
   + **azureml-dataprep**
     + 完善了在 Scala 2.12 中使用当前不受支持的 Spark 时出现的错误消息。
