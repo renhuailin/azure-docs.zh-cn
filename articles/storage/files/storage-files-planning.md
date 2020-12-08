@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492108"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842694"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -114,23 +114,6 @@ Azure[文件共享的 Azure 备份](../../backup/azure-file-share-backup-overvie
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-通常，Azure 文件存储功能以及与其他服务的互操作性在高级文件共享和标准文件共享（包括事务优化文件共享、热文件共享和冷文件共享）之间是相同的，但有几个重要区别：
-- **计费模式**
-    - 高级文件共享使用预配的计费模式进行计费，这意味着你预配了多少存储空间，而不是使用的存储量。 静态事务和元数据不会产生额外的费用。
-    - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 如果使用标准文件共享，则在 Azure 文件共享) 使用 (读/写/装载时，计费将会增加。
-- **冗余选项**
-    - 高级文件共享仅适用于本地冗余 (LRS) 和区域冗余 (ZRS) 存储。
-    - 标准文件共享可用于本地冗余、区域冗余、异地冗余 (GRS) 和地理区域冗余 (GZRS) 存储。
-- **文件共享的最大大小**
-    - 高级文件共享最多可预配 100 TiB，无需任何额外的操作。
-    - 默认情况下，标准文件共享的上限是 5 TiB，但可以通过选择“大文件共享”存储帐户功能标志将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享的上限是 100 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大文件共享](./storage-files-how-to-create-large-file-share.md)。
-- **区域可用性**
-    - 大多数 Azure 区域中都提供高级文件共享，但有几个区域除外。 区域冗余支持在区域的一个子集内提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出支持 ZRS 的区域，请参阅 [区域冗余存储](../common/storage-redundancy.md#zone-redundant-storage)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此 [调查](https://aka.ms/pfsfeedback)。
-    - 标准文件共享在每个 Azure 区域中可用。
-- Azure Kubernetes 服务 (AKS) 在 1.13 及更高版本中支持高级文件共享。
-
-将文件共享创建为高级文件共享或标准文件共享后，便无法自动将其转换为其他层。 若要切换到其他层，必须在该层中创建新的文件共享，并手动将原始共享中的数据复制到所创建的新共享。 建议使用 `robocopy`（适用于 Windows）或 `rsync`（适用于 macOS 和 Linux）来执行该复制。
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>了解高级文件共享的预配
 高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 所有共享大小均提供最小基线/吞吐量并允许突发。 对于每个预配的 GiB，将会向共享颁发最小 IOPS/吞吐量和一个 IOPS 和 0.1 MiB/秒的吞吐量，最大限制为每个共享。 允许的最低预配为 100 GiB，具有最小 IOPS/吞吐量。 
