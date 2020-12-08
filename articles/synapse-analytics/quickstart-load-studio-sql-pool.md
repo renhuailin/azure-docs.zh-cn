@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237470"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484636"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入门：使用 Synapse SQL 进行大容量加载
 
-使用 Synapse Studio 中的“大容量加载”向导时，加载数据相当简单。 此向导将引导你使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)创建 T-SQL 脚本以大容量加载数据。 
+使用 Synapse Studio 中的“大容量加载”向导可轻松加载数据。 “大容量加载”向导将引导你使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)创建 T-SQL 脚本以大容量加载数据。 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>“大容量加载”向导的入口点
 
-现在，只需在 Synapse Studio 中的以下区域单击鼠标右键，即可轻松使用专用 SQL 池大容量加载数据：
+只需在 Synapse Studio 中的以下区域单击鼠标右键，即可轻松使用专用 SQL 池大容量加载数据：
 
 - 已连接到工作区的 Azure 存储帐户中的文件或文件夹 ![右键单击存储帐户中的文件或文件夹](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 

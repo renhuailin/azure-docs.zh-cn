@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/01/2020
 ms.author: banders
-ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408016"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444449"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -38,6 +38,9 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
     ![显示“取消”按钮的屏幕截图](./media/cancel-azure-subscription/cancel_ibiza.png)
 1. 按照提示进行操作并完成取消。
 
+> [!NOTE]
+> 如果客户提出请求或发生未付款或欺诈的情况，合作伙伴可以暂停或取消订阅。 有关详细信息，请参阅[暂停或取消订阅](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)。
+
 ## <a name="who-can-cancel-a-subscription"></a>谁可以取消订阅？
 
 下表说明了取消订阅所需的权限。
@@ -48,7 +51,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 |[Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)和 [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  订阅的帐户所有者和所有者       |
 |[Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [Azure 开发测试计划](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  订阅的所有者      |
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>取消订阅之后会发生什么情况？
+## <a name="what-happens-after-subscription-cancellation"></a>取消订阅之后会发生什么情况？
 
 取消后，会立即停止计费。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。 如果在计费周期中途取消订阅，我们会在周期结束后于标准发票日期发送最终账单。
 
@@ -65,7 +68,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 1. 选择要删除的订阅。
 1. 选择“概述”，然后选择“删除订阅” 。
 
-## <a name="reactivate-subscription"></a>重新激活订阅
+## <a name="reactivate-a-subscription"></a>重新激活订阅
 
 如果意外取消了采用即用即付费率的订阅，可[在帐户中心重新激活订阅](subscription-disabled.md)。
 
@@ -73,7 +76,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>为什么在 Azure 门户上看不到“取消订阅”选项？ 
 
-你可能没有取消订阅所需的权限。 有关谁可以取消各种类型的订阅的说明，请参阅[谁可以取消订阅？](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription)。
+你可能没有取消订阅所需的权限。 有关谁可以取消各种类型的订阅的说明，请参阅[谁可以取消订阅？](#who-can-cancel-a-subscription)。
 
 ## <a name="how-do-i-delete-my-azure-account"></a>如何删除 Azure 帐户？
 
@@ -85,7 +88,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>如何取消 Visual Studio Professional 帐户？
 
-请参阅[续订和取消](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation)一文。 如果有任何 Visual Studio Azure 订阅，也需要取消和删除它们。
+请参阅[续订和取消](/visualstudio/subscriptions/faq/admin/renewal-cancellation)一文。 如果有任何 Visual Studio Azure 订阅，也需要取消和删除它们。
 
 ## <a name="next-steps"></a>后续步骤
 

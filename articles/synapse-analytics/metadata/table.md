@@ -1,6 +1,6 @@
 ---
 title: 共享元数据表
-description: Azure Synapse Analytics 提供了一个共享的元数据模型，如果使用该模型在无服务器 Apache Spark 池中创建一个表，则可以从无服务器 SQL 池（预览版）和专用 SQL 池访问该表，而无需复制数据。
+description: Azure Synapse Analytics 提供了一个共享的元数据模型，如果使用该模型在无服务器 Apache Spark 池中创建一个表，则可以从无服务器 SQL 池和专用 SQL 池访问该表，而无需复制数据。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314542"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461382"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池（预览版）和无服务器 SQL 池（预览版）之间共享数据库和 Parquet 支持的表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池和无服务器 SQL 池之间共享数据库和 Parquet 支持的表。
 
 Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
 

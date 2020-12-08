@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: 统一应用程序数据资源
                   href: log-query/unify-app-resource-data.md
+                - name: Azure Monitor 和 Azure 数据资源管理器之间的跨服务查询概述
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
                 - name: 通过 Azure Monitor 查询 Azure 数据资源管理器
                   href: platform/azure-monitor-data-explorer-proxy.md
         - name: 数据导出
@@ -351,7 +353,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:

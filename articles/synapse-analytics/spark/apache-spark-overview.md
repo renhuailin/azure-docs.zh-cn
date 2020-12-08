@@ -9,20 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0ea46122cffe03ffe2e6a4e07afc6995d88a3acb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b31fe5daaa0882dc0927c1340902b20df56eb6b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306992"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450443"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark
 
-Apache Spark 是并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 Azure Synapse Analytics 中的 Apache Spark 是 Apache Spark 在云中的一种 Microsoft 实现。 使用 Azure Synapse 可以在 Azure 中轻松创建和配置无服务器 Apache Spark 池（预览版）。 Azure Synapse 中的 Spark 池与 Azure 存储和 Azure Data Lake Generation 2 存储兼容。 因此，可以使用 Spark 池来处理 Azure 中存储的数据。
+Apache Spark 是并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 Azure Synapse Analytics 中的 Apache Spark 是 Apache Spark 在云中的一种 Microsoft 实现。 使用 Azure Synapse 可以在 Azure 中轻松创建和配置无服务器 Apache Spark 池。 Azure Synapse 中的 Spark 池与 Azure 存储和 Azure Data Lake Generation 2 存储兼容。 因此，可以使用 Spark 池来处理 Azure 中存储的数据。
 
 ![Spark：一种统一框架](./media/apache-spark-overview/spark-overview.png)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="what-is-apache-spark"></a>什么是 Apache Spark
 
@@ -30,14 +28,14 @@ Apache Spark 提供用于内存中群集计算的基元。 Spark 作业可以将
 
 ![传统 MapReduce 与Spark](./media/apache-spark-overview/map-reduce-vs-spark.png)
 
-Azure Synapse 中的 Spark 池提供完全托管的 Spark 服务。 下面列出了在 Synapse Analytics 中创建 Spark 池的优势。
+Azure Synapse 中的 Spark 池提供完全托管的 Spark 服务。 下面列出了在 Azure Synapse Analytics 中创建 Spark 池的优势。
 
-| Feature | 说明 |
+| 功能 | 说明 |
 | --- | --- |
 | 速度和效率 |当节点数少于 60 个时，Spark 实例的启动时间大约为 2 分钟；当节点数超过 60 个时，启动时间大约为 5 分钟。 默认情况下，将在执行最后一个作业后的 5 分钟后关闭实例，除非笔记本连接使该实例保持活动状态。 |
-| 容易创建 |可以使用 Azure 门户、Azure PowerShell 或 Synapse Analytics .NET SDK，在 Azure Synapse 中快速创建新的 Spark 池。 请参阅 [Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool-studio.md)。 |
+| 容易创建 |可以使用 Azure 门户、Azure PowerShell 或 Synapse Analytics .NET SDK，在 Azure Synapse 中快速创建新的 Spark 池。 请参阅 [Azure Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool-studio.md)。 |
 | 易于使用 |Synapse Analytics 包含派生自 [Nteract](https://nteract.io/) 的自定义笔记本。 可以使用这些笔记本执行交互式数据处理和可视化。|
-| REST API |Synapse Analytics 中的 Spark 包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)（基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业）。 |
+| REST API |Azure Synapse Analytics 中的 Spark 包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)（基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业）。 |
 | 支持 Azure Data Lake Storage Generation 2| Azure Synapse 中的 Spark 池可以使用 Azure Data Lake Storage Generation 2 和 BLOB 存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
 | 与第三方 IDE 集成 | Azure Synapse 为 [JetBrains 的 IntelliJ IDEA](https://www.jetbrains.com/idea/) 提供一个 IDE 插件，该插件可用于创建应用程序并将其提交到 Spark 池。 |
 | 预先加载的 Anaconda 库 |Azure Synapse 中的 Spark 池预装了 Anaconda 库。 [Anaconda](https://docs.continuum.io/anaconda/) 提供将近 200 个用于机器学习、数据分析、可视化等的库。 |
@@ -52,7 +50,7 @@ Azure Synapse 中的 Spark 池默认包含可在这些池中使用的以下组�
 
 ## <a name="spark-pool-architecture"></a>Spark 池体系结构
 
-了解 Spark 在 Synapse Analytics 上的运行方式后，即可轻松了解 Spark 的组件。
+了解 Spark 在 Azure Synapse Analytics 上的运行方式后，即可轻松了解 Spark 的组件。
 
 Spark 应用程序在池中作为一组独立的进程运行，由主程序（称为驱动程序）中的 SparkContext 对象进行协调。
 
@@ -62,21 +60,21 @@ SparkContext 在节点上运行用户的主函数，并执行各种并行操作�
 
 SparkContext 连接到 Spark 池，并负责将应用程序转换为有向无环图 (DAG)。 该图由在节点上的执行程序进程内执行的各个任务构成。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
 
-## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics 中的 Apache Spark 用例
+## <a name="apache-spark-in-azure-synapse-analytics-use-cases"></a>Azure Synapse Analytics 中的 Apache Spark 用例
 
-Synapse Analytics 中的 Spark 池可实现以下重要方案：
+Azure Synapse Analytics 中的 Spark 池可实现以下重要方案：
 
 ### <a name="data-engineeringdata-preparation"></a>数据工程/数据准备
 
-Apache Spark 包含许多语言功能，用于支持准备和处理大量数据的工作，使这些数据能够创造更大的价值并可由 Synapse Analytics 中的其他服务使用。 这是通过多种语言（C#、Scala、PySpark、Spark SQL）以及为处理和连接而提供的库实现的。
+Apache Spark 包含许多语言功能，用于支持准备和处理大量数据的工作，使这些数据能够创造更大的价值并可由 Azure Synapse Analytics 中的其他服务使用。 这是通过多种语言（C#、Scala、PySpark、Spark SQL）以及为处理和连接而提供的库实现的。
 
 ### <a name="machine-learning"></a>机器学习
 
-Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark 基础之上的、可从 Synapse Analytics 中的 Spark 池使用的机器学习库。 Synapse Analytics 中的 Spark 池还包含 Anaconda - 一种 Python 分发版，带有用于数据科学（包括机器学习）的各种包。 当这些与内置的笔记本支持相结合时，你将获得一个用于创建机器学习应用程序的环境。
+Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark 基础之上的、可从 Azure Synapse Analytics 中的 Spark 池使用的机器学习库。 Azure Synapse Analytics 中的 Spark 池还包含 Anaconda - 一种 Python 分发版，带有用于数据科学（包括机器学习）的各种包。 当这些与内置的笔记本支持相结合时，你将获得一个用于创建机器学习应用程序的环境。
 
 ## <a name="where-do-i-start"></a>从哪里开始
 
-请通过以下文章来详细了解 Synapse Analytics 中的 Apache Spark：
+请通过以下文章来详细了解 Azure Synapse Analytics 中的 Apache Spark：
 
 - [快速入门：在 Azure Synapse 中创建 Spark 池](../quickstart-create-apache-spark-pool-portal.md)
 - [快速入门：创建 Apache Spark 笔记本](../quickstart-apache-spark-notebook.md)

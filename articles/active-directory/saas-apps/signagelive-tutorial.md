@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516097"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教程：Azure Active Directory 与 Signagelive 集成
 
@@ -60,7 +60,7 @@ ms.locfileid: "92516097"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中输入 **Signagelive** 。 
+4. 在搜索框中输入 **Signagelive**。 
 
      ![结果列表中的 Signagelive](common/search-new-app.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 在无服务器 SQL 池（预览版）中访问存储中的文件
-description: 介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池（预览版）查询存储文件。
+title: 在无服务器 SQL 池中访问存储中的文件
+description: 介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685675"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446578"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池（预览版）访问外部存储
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池访问外部存储
 
 本文档介绍用户如何从无服务器 SQL 池的 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
 

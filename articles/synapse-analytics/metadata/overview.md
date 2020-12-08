@@ -1,6 +1,6 @@
 ---
 title: 共享元数据模型
-description: Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池（预览版）、无服务器 SQL 池（预览版）与专用 SQL 池之间共享数据库和表。
+description: Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池、无服务器 SQL 池与专用 SQL 池之间共享数据库和表。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,18 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324672"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460353"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共享元数据
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池（预览版）与无服务器 SQL 池（预览版）之间共享数据库和表。
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池与无服务器 SQL 池之间共享数据库和表。
 
 共享支持所谓的新式数据仓库模式，可使工作区 SQL 引擎能够访问通过 Spark 创建的数据库和表。 它还允许 SQL 引擎创建自身的不与其他引擎共享的对象。
 

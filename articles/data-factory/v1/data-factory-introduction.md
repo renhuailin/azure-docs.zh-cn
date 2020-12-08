@@ -3,8 +3,8 @@ title: 数据工厂（数据集成服务）简介
 description: 了解什么是 Azure 数据工厂：协调和自动执行数据移动和转换的云数据集成服务。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 101de32aea47bb3dd3c8a04434993c8614939c37
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89436250"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495559"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -35,7 +35,7 @@ ms.locfileid: "89436250"
 
 为了分析这些日志，该公司需要使用参考数据，例如位于本地数据存储中的客户信息、游戏信息和市场营销活动信息。 因此，该公司希望引入云数据存储中的日志数据以及本地数据存储中的参考数据， 
 
-接下来，则需使用云中的 Hadoop (Azure HDInsight) 来处理数据。 需将结果数据发布到云数据仓库（例如 Azure Synapse Analytics，以前称为 SQL 数据仓库）或本地数据存储（例如 SQL Server）。 该公司希望此工作流每周运行一次。 
+接下来，则需使用云中的 Hadoop (Azure HDInsight) 来处理数据。 他们想将结果数据发布到云数据仓库（例如 Azure Synapse Analytics）或本地数据存储（例如 SQL Server）。 该公司希望此工作流每周运行一次。 
 
 该公司需要一个平台，用于创建能够从本地数据存储和云数据存储引入数据的工作流。 该公司还需要能够使用现有的计算服务（例如 Hadoop）来转换或处理数据，以及将结果发布到本地数据存储或云数据存储供 BI 应用程序使用。 
 
@@ -114,7 +114,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 * 代表数据存储，此类存储包括但不限于 SQL Server 数据库、Oracle 数据库、文件共享或 Azure blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
 
-* 代表可托管活动执行的*计算资源*。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关支持的计算环境的列表，请参阅[数据转换活动](#data-transformation-activities)部分。
+* 代表可托管活动执行的 *计算资源*。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关支持的计算环境的列表，请参阅[数据转换活动](#data-transformation-activities)部分。
 
 ### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 

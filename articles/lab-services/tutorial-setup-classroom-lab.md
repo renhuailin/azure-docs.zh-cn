@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置课堂实验室 | Microsoft Docs
 description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟机的课堂实验室，供学生在课堂上使用。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336728"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434849"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -39,10 +39,10 @@ ms.locfileid: "91336728"
     
     ![此屏幕截图显示了选中“新建实验室”按钮的“Azure 实验室服务”。](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. 在“新建实验室”窗口中，执行以下操作：： 
-    1. 指定实验室的**名称**，然后选择“下一步”。  
+    1. 指定实验室的 **名称**，然后选择“下一步”。  
 
         ![创建课堂实验室](./media/tutorial-setup-classroom-lab/new-lab-window.png)
-    2. 在“虚拟机凭据”页上，指定实验室中所有 VM 的默认凭据。 指定用户的**名称**和**密码**，然后选择“下一步”。  
+    2. 在“虚拟机凭据”页上，指定实验室中所有 VM 的默认凭据。 指定用户的 **名称** 和 **密码**，然后选择“下一步”。  
 
         ![“新建实验室”窗口](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
@@ -54,11 +54,11 @@ ms.locfileid: "91336728"
 5. 此时会看到以下屏幕，显示模板 VM 的创建状态。 此操作最多需要 20 分钟。 
 
     ![模板 VM 的创建状态](./media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
-8. 在“模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
+8. 在“模板”页上执行以下步骤：对于此教程来说，这些步骤是 **可选** 的。
 
     1. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
     3. 在模板 VM 上安装并配置课堂所需软件。 
-    4. **停止**模板 VM。  
+    4. **停止** 模板 VM。  
 
     > [!NOTE]
     > 模板 VM 在运行时会产生成本，因此，请确保在不需要运行模板 VM 时将它关闭。 
@@ -75,7 +75,7 @@ ms.locfileid: "91336728"
 2. 在“发布模板”页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。 
 
     ![发布模板 - VM 数](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-3. 可以在页面上查看模板的**发布状态**。 此过程最长可能需要花费一小时。 
+3. 可以在页面上查看模板的 **发布状态**。 此过程最长可能需要花费一小时。 
 
     ![发布模板 - 进度](./media/tutorial-setup-classroom-lab/publish-template-progress.png)
 4. 等待发布完成，然后选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。   确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
@@ -103,7 +103,7 @@ ms.locfileid: "91336728"
 5. 在“重复”对话框中，执行以下步骤：
     1. 对于“重复”字段，请确认已设置“每周” 。 
     2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一”至“星期五”。 
-    3. 选择计划的**结束日期**。
+    3. 选择计划的 **结束日期**。
     8. 选择“保存”。 
 
         ![设置重复计划](./media/how-to-create-schedules/set-repeat-schedule.png)
@@ -116,7 +116,7 @@ ms.locfileid: "91336728"
     
     ![日历中的计划](./media/how-to-create-schedules/schedule-calendar.png)
 
-    有关创建和管理课堂计划的详细信息，请参阅[创建和管理课堂实验室的计划](how-to-create-schedules.md)。
+    有关创建和管理课堂计划的详细信息，请参阅[创建和管理实验室的计划](how-to-create-schedules.md)。
 
 
 ## <a name="add-users-to-the-lab"></a>将用户添加到实验室
@@ -143,7 +143,7 @@ ms.locfileid: "91336728"
 1. 在“通过电子邮件发送邀请”页上，输入可选的消息，然后选择“发送”。  电子邮件自动包含注册链接。 若要获取此注册链接，可以选择工具栏上的“... (省略号)”，然后选择“注册链接”。  
 
     ![通过电子邮件发送注册链接](./media/tutorial-setup-classroom-lab/send-email.png)
-4. 可以在“用户”列表中查看**邀请**状态。 状态应更改为“正在发送”，然后更改为“已在 &lt;日期&gt; 发送”。  
+4. 可以在“用户”列表中查看 **邀请** 状态。 状态应更改为“正在发送”，然后更改为“已在 &lt;日期&gt; 发送”。  
 
     若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
 

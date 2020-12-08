@@ -3,8 +3,8 @@ title: 快速入门：使用 Python 创建 Azure 数据工厂
 description: 使用数据工厂将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1ebeae8e16acf4ca2b82270cc6ec40151794ad58
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013320"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497327"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -32,7 +32,7 @@ ms.locfileid: "96013320"
 
 Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道）。
 
-管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure Synapse Analytics [旧称 SQL 数据仓库]），供商业智能 (BI) 应用程序使用。
+管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure Synapse Analytics），供商业智能 (BI) 应用程序使用。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：利用无服务器 Synapse SQL 探索和分析数据湖
-description: 本教程介绍如何在 Synapse Studio for Azure Synapse Analytics 中使用无服务器 SQL 池（预览版）来组合不同的 Azure 开放数据集，从而轻松执行探索性数据分析，然后将结果可视化。
+title: 教程：在 Azure Synapse Studio 中使用无服务器 SQL 池分析 Azure 开放数据集
+description: 本教程介绍如何在 Azure Synapse Studio 中使用无服务器 SQL 池来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6fc75b5de22fc77313932ca17ce695e889dad3
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b2d4953b3a42c5d66fca4a67b4a6d0f13700a35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237936"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459119"
 ---
-# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool-preview"></a>教程：利用无服务器 SQL 池探索和分析数据湖（预览版）
+# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>教程：利用无服务器 SQL 池探索和分析数据湖
 
 本教程介绍如何执行探索性数据分析。 你将使用无服务器 SQL 池组合不同的 Azure 开放数据集。 然后，在 Synapse Studio for Azure Synapse Analytics 中将结果可视化。
 

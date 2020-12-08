@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Studio（预览版）连接到 Synapse SQL
-description: 使用 Azure Data Studio（预览版）连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。
+title: 使用 Azure Data Studio 连接到 Synapse SQL
+description: 使用 Azure Data Studio 连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451665"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>使用 Azure Data Studio（预览版）连接到 Synapse SQL
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>使用 Azure Data Studio 连接到 Synapse SQL
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "94685743"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-可以使用 [Azure Data Studio（预览版）](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。 
+可以使用 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。 
 
 ## <a name="connect"></a>连接
 
@@ -42,7 +42,7 @@ ms.locfileid: "94685743"
 * **数据库：** 数据库名称
 
 > [!NOTE]
-> 若要使用无服务器 SQL 池（预览版），则 URL 应如下所示：
+> 若要使用无服务器 SQL 池，则 URL 应如下所示：
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net。
 >

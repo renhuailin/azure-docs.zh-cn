@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490119"
+ms.locfileid: "96511757"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -30,6 +30,44 @@ ms.locfileid: "96490119"
 > [!TIP]
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
+
+## <a name="december-2020"></a>2020 年 12 月
+
+12 月的更新包括：
+
+- [适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布](#azure-defender-for-sql-servers-on-machines-is-generally-available)
+- [针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+
+### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布
+
+Azure 安全中心为 SQL 服务器提供两个 Azure Defender 计划：
+
+- 适用于 Azure SQL 数据库服务器的 Azure Defender - 保护 Azure 原生 SQL 服务器 
+- 适用于计算机上的 SQL 服务器的 Azure Defender - 将相同的保护扩展到混合、多云和本地环境中的 SQL 服务器
+
+根据此公告，适用于 SQL 的 Azure Defender 现在可以保护位于任何位置的数据库及其数据。
+
+适用于 SQL 的 Azure Defender 包括漏洞评估功能。 漏洞评估工具包括以下高级功能：
+
+- 基线配置（新功能！），可以智能地将漏洞扫描的结果细化为可能表示实际安全问题的结果。 建立基线安全状态后，漏洞评估工具仅报告与该基线状态的偏差。 与基线匹配的结果被视为通过后续扫描。 这样，你和你的分析师就可以将注意力集中在重要的方面。
+- 详细的基准信息有助于了解已发现的结果，以及这些结果为何与资源相关。
+- 修正脚本有助于减轻已确定的风险。
+
+详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
+
+
+### <a name="azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available"></a>针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布
+
+Azure Synapse Analytics（以前称为 SQL DW）是一种分析服务，它将企业数据仓库和大数据分析合并在一起。 专用 SQL 池是 Azure Synapse 的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure Synapse Analytics（以前称为 SQL DW）？](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。
+
+适用于 SQL 的 Azure Defender 可通过以下方式保护专用 SQL 池：
+
+- 用于检测威胁和攻击的高级威胁防护 
+- 用于识别和修正安全错误配置的漏洞评估功能
+
+针对 Azure Synapse Analytics SQL 池的 Azure Defender for SQL 支持会自动添加到 Azure 安全中心中的 Azure SQL 数据库捆绑中。 你可以在 Azure 门户的 Synapse 工作区页面中找到新的“适用于 SQL 的 Azure Defender”选项卡。
+
+详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -740,119 +778,3 @@ Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动�
 - 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
 
 了解有关[内置策略](./policy-reference.md)的详细信息。
-
-
-
-
-
-## <a name="june-2020"></a>2020 年 6 月
-
-6 月的更新包括以下内容：
-- [安全分数 API（预览）](#secure-score-api-preview)
-- [SQL 计算机（Azure、其他云和本地）的高级数据安全（预览）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
-- [将 Log Analytics 代理部署到 Azure Arc 计算机的两条新建议（预览）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
-- [大规模创建连续导出和工作流自动化配置的新策略](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
-- [使用 NSG 保护非面向 Internet 的虚拟机的新建议](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
-- [启用威胁防护和高级数据安全性的新策略](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
-
-
-
-### <a name="secure-score-api-preview"></a>安全功能分数 API（预览）
-
-可以通过[安全功能分数 API](/rest/api/securitycenter/securescores/)（当前处于预览阶段）立即访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，可以使用安全功能分数 API 来获取特定订阅的分数。 此外，还可以使用安全功能分数控件 API 列出安全控件和订阅的当前分数。
-
-有关使用安全功能分数 API 实现的外部工具的示例，请参阅 [GitHub 社区的安全功能分数区域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
-
-详细了解 [Azure 安全中心的安全分数和安全控件](secure-score-security-controls.md)。
-
-
-
-### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 计算机（Azure、其他云和本地）的高级数据安全（预览）
-
-Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure 中、其他云环境，甚至本地计算机上的 SQL Server。 这会扩展 Azure 原生 SQL Server 的保护，以完全支持混合环境。
-
-高级数据安全可为任何位置的 SQL 计算机提供漏洞评估和高级威胁防护。
-
-设置包含两个步骤：
-
-1. 将 Log Analytics 代理部署到 SQL Server 的主机计算机，以提供与 Azure 帐户的连接。
-
-1. 在安全中心的“定价和设置”页中启用可选捆绑。
-
-详细了解 [SQL 计算机的高级数据安全](defender-for-sql-usage.md)。
-
-
-
-### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>将 Log Analytics 代理部署到 Azure Arc 计算机的两条新建议（预览）
-
-添加了两条新建议，以帮助将 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)部署到 Azure Arc 计算机，并确保其受 Azure 安全中心的保护：
-
-- Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上(预览)
-- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上(预览)
-
-这些新建议将出现在“应在计算机上安装监视代理”这一现有（相关）建议所在的四个安全控制中：修正安全配置、应用自适应应用程序控制、应用系统更新，以及启用 Endpoint Protection。
-
-建议还包括快速修复功能，以帮助加快部署过程。 
-
-有关这两项新建议的详细信息，请参阅[计算和应用建议](recommendations-reference.md#recs-computeapp)。
-
-若要详细了解 Azure 安全中心如何使用代理，请参阅[什么是 Log Analytics 代理？](faq-data-collection-agents.md#what-is-the-log-analytics-agent)
-
-详细了解 [Azure Arc 计算机的扩展](../azure-arc/servers/manage-vm-extensions.md)。
-
-
-### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>大规模创建连续导出和工作流自动化配置的新策略
-
-自动执行组织的监视和事件响应流程可以显著缩短调查和缓解安全事件所需的时间。
-
-若要在整个组织中部署自动化配置，请使用以下内置的“DeployIfdNotExist”Azure 策略来创建和配置[连续导出](continuous-export.md)和[工作流自动化](workflow-automation.md)过程：
-
-可在 Azure 策略中找到这些策略：
-
-
-|目标  |策略  |策略 ID  |
-|---------|---------|---------|
-|将内容连续导出到事件中心|[为 Azure 安全中心警报和建议部署“导出到事件中心”配置](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-|将内容连续导出到 Log Analytics 工作区|[为 Azure 安全中心警报和建议配置“导出到 Log Analytics 工作区”配置](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
-|安全警报的工作流自动化|[为 Azure 安全中心警报部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
-|安全建议的工作流自动化|[为 Azure 安全中心建议部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
-||||
-
-开始使用[工作流自动化模板](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
-
-请参阅[使用提供的策略大规模地配置工作流自动化](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies)以及[设置连续导出](continuous-export.md#set-up-a-continuous-export)，了解关于如何使用两种导出策略的详细信息。
-
-
-### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>使用 NSG 保护非面向 Internet 的虚拟机的新建议
-
-“实现安全最佳做法”安全控制现包括以下新建议：
-
-- **应使用网络安全组来保护非面向 Internet 的虚拟机**
-
-“应使用网络安全组保护面向 Internet 的虚拟机”这一现有建议不区分面向 Internet 的虚拟机和面向非 Internet 的虚拟机。 对于这两种情况，如果未将 VM 分配给网络安全组，则会生成高严重性建议。 这一新建议将区分面向非 Internet 的计算机，以减少误报并避免出现不必要的高严重性警报。
-
-有关详细详细，请参阅[网络建议](recommendations-reference.md#recs-network)表。
-
-
-
-
-### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>启用威胁防护和高级数据安全性的新策略
-
-以下新策略已添加到 ASC Default 计划，旨在帮助为相关资源类型启用威胁防护或高级数据安全性。
-
-可在 Azure 策略中找到这些策略：
-
-
-| 策略                                                                                                                                                                                                                                                                | 策略 ID                            |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
-| [应在 Azure SQL 数据库服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
-| [应在计算机的 SQL 服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [应对 Azure 存储帐户启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
-| [应对 Azure Key Vault 的保管库启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [应在 Azure 应用服务计划上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
-| [应对 Azure 容器注册表的注册表启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
-| [应对 Azure Kubernetes 服务的群集启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
-| [应在虚拟机上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
-|                                                                                                                                                                                                                                                                       |                                      |
-
-详细了解 [Azure 安全中心的威胁防护](azure-defender.md)。

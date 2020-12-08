@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb08d5430f13ad9a339b2cdd072fce9c196d05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92451474"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成
 
@@ -92,7 +92,7 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
     d. 在“注销 URL”框中，输入采用 `https://<FQDN>/remote/saml/logout` 模式的 URL。
 
     > [!NOTE]
-    > 这些值只是模式。 你需要使用实际的登录 URL、标识符、回复 URL 和注销 URL   。 要获取实际值，请联系 [FortiGate SSL VPN 客户端支持团队](mailto:tac_amer@fortinet.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些值只是模式。 你需要使用实际的登录 URL、标识符、回复 URL 和注销 URL   。 请联系 [Fortinet 支持部门](https://support.fortinet.com)获取指南。 另请参阅 Fortinet 文档和 Azure 门户中的“基本 SAML 配置”部分中显示的示例模式。
 
 1. FortiGate SSL VPN 应用程序需要特定格式的 SAML 断言，这要求向配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -133,10 +133,10 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
 1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中，完成以下步骤：
-   1. 在“名称”框中，输入 **B.Simon** 。  
+   1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 #### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 

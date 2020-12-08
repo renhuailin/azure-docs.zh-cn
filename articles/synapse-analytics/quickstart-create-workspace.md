@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322723"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450648"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入门：创建 Synapse 工作区
 本快速入门介绍了使用 Azure 门户创建 Azure Synapse 工作区的步骤。
@@ -22,7 +22,7 @@ ms.locfileid: "93322723"
 ## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
-1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 。
+1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics” 。
 1. 选择“添加”以创建工作区。
 1. 在“基础”选项卡中，为工作区指定唯一的名称。 在本文档中，我们将使用 myworkspace
 1. 需要 ADLSGEN2 帐户才能创建工作区。 最简单的选择是创建一个新工作区。 如果要重复使用现有工作区，需要执行一些其他配置。 
@@ -33,6 +33,9 @@ ms.locfileid: "93322723"
 1. Azure Synapse 工作区将此存储帐户用作“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在 Apache Spark 表中。 它将 Spark 应用程序日志存储在名为 /synapse/workspacename 的文件夹下。
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
 
+> [!NOTE]
+> 创建 Azure Synapse 工作区后，将无法将工作区移动到另一个 Azure Active Directory 租户。 如果通过订阅迁移或其他操作执行此过程，可能会失去对工作区中项目的访问权限。  
+
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio
 
 创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
@@ -40,7 +43,7 @@ ms.locfileid: "93322723"
 * 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区。 在“概述”部分的顶部，选择“启动 Synapse Studio” 。
 * 转到 `https://web.azuresynapse.net`，然后登录到工作区。
 
-## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>准备与 Synapse Analytics 配合使用的现有存储帐户
+## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>准备与 Azure Synapse Analytics 配合使用的现有存储帐户
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
 1. 导航到现有的 ADLSGEN2 存储帐户

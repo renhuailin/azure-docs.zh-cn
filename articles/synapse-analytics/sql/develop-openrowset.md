@@ -1,6 +1,6 @@
 ---
-title: 如何在无服务器 SQL 池（预览版）中使用 OPENROWSET
-description: 本文介绍无服务器 SQL 池（预览版）中 OPENROWSET 的语法，并说明如何使用参数。
+title: 如何在无服务器 SQL 池中使用 OPENROWSET
+description: 本文介绍无服务器 SQL 池中 OPENROWSET 的语法，并说明如何使用参数。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888583"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446682"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池（预览版）使用 OPENROWSET
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
-`OPENROWSET(BULK...)` 函数可用于访问 Azure 存储中的文件。 `OPENROWSET` 函数读取远程数据源（例如文件）的内容，并将内容作为行集返回。 在无服务器 SQL 池（预览版）资源中，可以通过调用 OPENROWSET 函数并指定 BULK 选项来访问 OPENROWSET BULK 行集提供程序。  
+`OPENROWSET(BULK...)` 函数可用于访问 Azure 存储中的文件。 `OPENROWSET` 函数读取远程数据源（例如文件）的内容，并将内容作为行集返回。 在无服务器 SQL 池资源中，可以通过调用 OPENROWSET 函数并指定 BULK 选项来访问 OPENROWSET BULK 行集提供程序。  
 
 `OPENROWSET` 函数可以在查询的 `FROM` 子句中引用，就好象它是表名 `OPENROWSET` 一样。 该函数通过内置的 BULK 提供程序（用于从文件中读取数据并将数据作为行集返回）支持批量操作。
 
@@ -147,7 +147,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 
 使用 WITH 子句可以指定要从文件中读取的列。
 
-- 对于 CSV 数据文件，若要读取所有列，请提供列名及其数据类型。 如果需要列的子集，请使用序号按顺序从来源数据文件中选取列。 列将按序号指定值绑定。 
+- 对于 CSV 数据文件，若要读取所有列，请提供列名及其数据类型。 如果需要列的子集，请使用序号按顺序从来源数据文件中选取列。 列将按序号指定值绑定。 如果使用 HEADER_ROW = TRUE，则列绑定是按列名而不是按顺序位置来完成的。
     > [!TIP]
     > 对于 CSV 文件，你也可以省略 WITH 子句。 将从文件内容自动推断数据类型。 可以使用 HEADER_ROW 参数来指定是否存在标题行，在这种情况下，将从标题行中读取列名称。 有关详细信息，请查看[自动架构发现](#automatic-schema-discovery)。
     
@@ -231,7 +231,7 @@ CSV 分析器版本 2.0 详细信息：
 
 HEADER_ROW = { TRUE | FALSE }
 
-指定 CSV 文件是否包含标题行。 默认值为 FALSE。 在 PARSER_VERSION='2.0' 时受支持。 如果为 TRUE，则根据 FIRSTROW 参数从第一行读取列名称。
+指定 CSV 文件是否包含标题行。 默认值为 FALSE。 在 PARSER_VERSION='2.0' 时受支持。 如果为 TRUE，则根据 FIRSTROW 参数从第一行读取列名称。 如果为 TRUE 且使用 WITH 指定了架构，则列名的绑定将按列名而不是按顺序位置来完成。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 

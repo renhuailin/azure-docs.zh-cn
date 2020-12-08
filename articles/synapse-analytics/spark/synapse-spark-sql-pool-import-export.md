@@ -1,30 +1,33 @@
 ---
-title: 在无服务器 Apache Spark 池（预览版）与 SQL 池之间导入和导出数据
-description: 本文介绍如何使用自定义连接器在专用 SQL 池与无服务器 Apache Spark 池（预览版）之间移动数据。
+title: 在无服务器 Apache Spark 池与 SQL 池之间导入和导出数据
+description: 本文介绍如何使用自定义连接器在专用 SQL 池与无服务器 Apache Spark 池之间移动数据。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323901"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511077"
 ---
 # <a name="introduction"></a>简介
 
-Azure Synapse Apache Spark 到 Synapse SQL 的连接器设计用来高效地在 Azure Synapse 中的无服务器 Apache Spark 池（预览版）与 SQL 池之间传输数据。 Azure Synapse Apache Spark 到 Synapse SQL 的连接器仅适用于专用 SQL 池，不适用于无服务器 SQL 池。
+Azure Synapse Apache Spark 到 Synapse SQL 的连接器设计用来高效地在 Azure Synapse 中的无服务器 Apache Spark 池与专用 SQL 池之间传输数据。 Azure Synapse Apache Spark 到 Synapse SQL 的连接器仅适用于专用 SQL 池，不适用于无服务器 SQL 池。
+
+> [!WARNING]
+> sqlanalytics() 函数名称已更改为 synapsesql()。  sqlanalytics 函数将继续有效，但后期将被弃用。  请将对 sqlanalytics() 的任何引用更改为 synapsesql()，以防将来发生任何中断。 
 
 ## <a name="design"></a>设计
 
 可以使用 JDBC 来执行 Spark 池与 SQL 池之间的数据传输。 但是，假设有两个分布式系统（例如 Spark 池和 SQL 池），则 JDBC 往往会成为串行数据传输的瓶颈。
 
-Azure Synapse Apache Spark 池到 Synapse SQL 的连接器是适用于 Apache Spark 的一个数据源实现。 它使用 Azure Data Lake Storage Gen2 以及专用 SQL 池中的 Polybase 高效地在 Spark 群集与 Synapse SQL 实例之间传输数据。
+Azure Synapse Apache Spark 池到 Synapse SQL 的连接器是适用于 Apache Spark 的一个数据源实现。 它使用 Azure Data Lake Storage Gen2 以及专用 SQL 池中的 Polybase 高效地在 Spark 群集与 Synapse 专用 SQL 实例之间传输数据。
 
 ![连接器体系结构](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,6 +40,8 @@ Azure Synapse Apache Spark 池到 Synapse SQL 的连接器是适用于 Apache Sp
 ## <a name="constraints"></a>约束
 
 - 此连接器仅适用于 Scala。
+- 有关 pySpark 的详细信息，请参阅[使用 Python](#use-pyspark-with-the-connector) 部分。
+- 此连接器不支持查询 SQL 视图。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,7 +85,7 @@ import 语句不是必需的，它们已预先导入，目的是提供笔记本�
 #### <a name="read-api"></a>读取 API
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 上述 API 适用于 SQL 池中的内部（托管）表以及外部表。
@@ -88,7 +93,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 #### <a name="write-api"></a>写入 API
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 写入 API 会在专用 SQL 池中创建表，然后调用 Polybase 来加载数据。  该表不得存在于专用 SQL 池中，否则会返回一个错误，指出“已存在名为…的对象”
@@ -101,7 +106,7 @@ TableType 值
 SQL 池托管表
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 SQL 池外部表
@@ -130,7 +135,7 @@ WITH (
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>写入 API
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>使用 SQL 身份验证而非 Azure AD
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>写入 API
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>使用 PySpark 连接器
+### <a name="use-pyspark-with-the-connector"></a>将 PySpark 用于连接器
 
 > [!NOTE]
 > 在给出此示例时，只考虑了笔记本体验。
@@ -203,7 +208,7 @@ pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 同样，在读取方案中，使用 Scala 读取数据并将其写入到一个临时表中，在 PySpark 中使用 Spark SQL 查询该临时表并将结果写入一个数据帧。
@@ -234,6 +239,7 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 > [!IMPORTANT]
 > 如果不打算这样做，请勿选择“默认”。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004749"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -25,6 +25,8 @@ ms.locfileid: "96004749"
 * 在 Azure AD 中控制谁有权访问 ServiceNow。
 * 让用户使用其 Azure AD 帐户自动登录到 ServiceNow。
 * 在一个中心位置（Azure 门户）管理帐户。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Jao6]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,8 +128,8 @@ ms.locfileid: "96004749"
 在本部分，将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
    1. 对于“名称”，请输入 `B.Simon`。  
    1. 对于“用户名”，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值   。
@@ -137,7 +139,7 @@ ms.locfileid: "96004749"
 
 在本部分中，通过授予 B.Simon 访问 ServiceNow 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。  
 1. 在应用程序列表中，选择“ServiceNow”  。
 1. 在应用的概述页中找到“管理”部分，然后选择“用户和组”   。
 1. 选择“添加用户”。 在“添加分配”对话框中选择“用户和组”。
@@ -478,5 +480,4 @@ ms.locfileid: "96004749"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 ServiceNow 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
+配置 ServiceNow 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

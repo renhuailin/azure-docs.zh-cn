@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532964"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326248"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教程：在 Jupyter Notebook 中开始使用 Azure 机器学习
 
@@ -80,7 +80,7 @@ Azure 机器学习在你的工作区中提供了一个云笔记本服务器，�
     > [!IMPORTANT]
     > 可以查看“示例”文件夹中的笔记本，但无法从此文件夹运行笔记本。 若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。
     
-1. 在 **tutorials/image-classification-mnist-data** 文件夹中选择 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
+1. 选择 tutorials/image-classification-mnist-data 文件夹中的 img-classification-part1-training.ipynb 文件。 
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="显示“打开”教程文件夹的屏幕截图。":::
 

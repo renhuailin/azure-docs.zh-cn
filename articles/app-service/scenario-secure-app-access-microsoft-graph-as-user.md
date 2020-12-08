@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999648"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434985"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教程：以用户身份从安全的应用访问 Microsoft Graph
 
@@ -75,10 +76,12 @@ Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的�
 
 Web 应用现在具有所需的权限，并且还将 Microsoft Graph 的客户端 ID 添加到登录参数中。 使用 [Microsoft.Identity.Web 库](https://github.com/AzureAD/microsoft-identity-web/)，Web 应用将获取一个访问令牌，用于向 Microsoft Graph 进行身份验证。 在 1.2.0 版和更高版本中，Microsoft.Identity.Web 库与应用服务身份验证/授权模块集成，且可与之一起运行。 Microsoft.Identity.Web 检测到该 Web 应用托管在应用服务中，并从应用服务身份验证/授权模块获取访问令牌。 然后，使用 Microsoft Graph API 将访问令牌传递给经过身份验证的请求。
 
+若要查看作为示例应用程序一部分的代码，请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)。
+
 > [!NOTE]
 > Web 应用无需 Microsoft.Identity.Web 库即可进行基础身份验证/授权或向 Microsoft Graph 验证请求。 只有启用了应用服务身份验证/授权模块才能[安全地调用下游 API](tutorial-auth-aad.md#call-api-securely-from-server-code)。
 > 
-> 但是，应用服务身份验证/授权旨在用于更基本的身份验证场景。 对于更复杂的场景（例如处理自定义声明），需要 Microsoft.Identity.Web 库或 [Microsoft 身份验证库](/azure/active-directory/develop/msal-overview)。 在一开始就有更多的设置和配置工作，但 Microsoft.Identity.Web 库可与应用服务身份验证/授权模块同时运行。 当 Web 应用以后需要处理更复杂的场景时，你可以禁用应用服务身份验证/授权模块，而 Microsoft.Identity.Web 将已是应用的一部分。
+> 但是，应用服务身份验证/授权旨在用于更基本的身份验证场景。 对于更复杂的场景（例如处理自定义声明），需要 Microsoft.Identity.Web 库或 [Microsoft 身份验证库](../active-directory/develop/msal-overview.md)。 在一开始就有更多的设置和配置工作，但 Microsoft.Identity.Web 库可与应用服务身份验证/授权模块同时运行。 当 Web 应用以后需要处理更复杂的场景时，你可以禁用应用服务身份验证/授权模块，而 Microsoft.Identity.Web 将已是应用的一部分。
 
 ### <a name="install-client-library-packages"></a>安装客户端库包
 

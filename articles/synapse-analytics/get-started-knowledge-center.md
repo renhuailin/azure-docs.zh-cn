@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254232"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460255"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
@@ -55,6 +55,9 @@ ms.locfileid: "95254232"
 1. 此时会显示一个新的 SQL 脚本。
 1. 单击“**运行**”
 1. 这将为所有 NYC 出租车数据创建多个表，并使用 T-SQL COPY 命令加载它们。
+
+    > [!NOTE] 
+    > 在专用 SQL 池（之前称为 SQL DW）中使用 SQL 脚本的示例库时，只能使用现有的专用 SQL 池（之前称为 SQL DW）。
 
 ## <a name="next-steps"></a>后续步骤
 

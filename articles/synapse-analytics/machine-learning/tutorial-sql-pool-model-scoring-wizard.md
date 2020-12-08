@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314046"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450886"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>教程：用于专用 SQL 池的机器学习模型评分向导
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>教程：用于专用 SQL 池的机器学习模型评分向导（预览版）
 
 了解如何借助预测性机器学习模型轻松扩充专用 SQL 池中的数据。  数据专业人员现在可以轻松使用数据科学家创建的模型进行预测分析。 Synapse 中的数据专业人员可以直接从 Azure 机器学习模型注册表中选择一个模型，以便在 Synapse SQL 池中进行部署，并启动预测来扩充数据。
 
@@ -31,8 +31,8 @@ ms.locfileid: "93314046"
 ## <a name="prerequisites"></a>先决条件
 
 - [Synapse Analytics 工作区](../get-started-create-workspace.md)，其中 ADLS Gen2 存储帐户配置为默认存储。 你必须是所用 ADLS Gen2 文件系统的存储 Blob 数据参与者。
-- Synapse Analytics 工作区中的专用 SQL 池。 有关详细信息，请参阅[创建专用 SQL 池](../quickstart-create-sql-pool-studio.md)。
-- Synapse Analytics 工作区中的 Azure 机器学习链接服务。 有关详细信息，请参阅[在 Synapse 中创建 Azure 机器学习链接服务](quickstart-integrate-azure-machine-learning.md)。
+- Azure Synapse Analytics 工作区中的专用 SQL 池。 有关详细信息，请参阅[创建专用 SQL 池](../quickstart-create-sql-pool-studio.md)。
+- Azure Synapse Analytics 工作区中的 Azure 机器学习链接服务。 有关详细信息，请参阅[在 Synapse 中创建 Azure 机器学习链接服务](quickstart-integrate-azure-machine-learning.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -149,4 +149,4 @@ ms.locfileid: "93314046"
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：在 Synapse 中创建新的 Azure 机器学习链接服务](quickstart-integrate-azure-machine-learning.md)
-- [Azure Synapse Analytics 中的机器学习功能（工作区预览版）](what-is-machine-learning.md)
+- [Azure Synapse Analytics 中的机器学习功能](what-is-machine-learning.md)

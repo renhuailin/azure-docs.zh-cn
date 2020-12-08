@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686202"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451624"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "94686202"
 > 
 > 
 
-可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 通过无服务器 SQL 池（预览版）或专用 SQL 池资源在 Azure Synapse Analytics 中连接并查询 Synapse SQL。 
+可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 通过无服务器 SQL 池或专用 SQL 池资源在 Azure Synapse Analytics 中连接并查询 Synapse SQL。 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>无服务器 SQL 池（预览版）支持的工具
+### <a name="supported-tools-for-serverless-sql-pool"></a>无服务器 SQL 池支持的工具
 
 从版本 1.18.0 开始，完全支持 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)。 从版本 18.5 开始，部分支持 SSMS，仅可以使用其进行连接和查询。
 
@@ -63,7 +63,7 @@ ms.locfileid: "94686202"
     ![浏览 AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>无服务器 SQL 池（预览版）
+### <a name="serverless-sql-pool"></a>无服务器 SQL 池
 
 若要使用无服务器 SQL 池连接到 Synapse SQL，请执行以下步骤： 
 
@@ -75,7 +75,7 @@ ms.locfileid: "94686202"
    * **服务器名称**：输入前面标识的 **服务器名称** 。
    * **身份验证**：选择一个身份验证类型，例如“SQL Server 身份验证”或“Active Directory 集成身份验证”：
    * **用户名** 和 **密码**：如果在上面选择了“SQL Server 身份验证”，请输入用户名和密码。
-   * 选择“连接” 。
+   * 选择“连接”  。
 
 4. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开“demo”以查看示例数据库中的内容。
    

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990748"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122259"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central 设备开发概述
 
@@ -135,7 +135,7 @@ DTDL 模型可以是非组件或多组件模型 ：
 
 有关设备模板的角色的详细信息，请参阅[什么是设备模板？](./concepts-device-templates.md)。
 
-有关一些示例代码，请参阅[创建并连接 Node.js 客户端应用程序](./tutorial-connect-device-nodejs.md)或[创建并连接 Python 客户端应用程序](./tutorial-connect-device-python.md)。
+有关一些示例代码，请参阅[创建和连接客户端应用程序](./tutorial-connect-device.md)。
 
 ### <a name="languages-and-sdks"></a>语言和 SDK
 
@@ -143,6 +143,6 @@ DTDL 模型可以是非组件或多组件模型 ：
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员并想深入了解某种代码，建议执行的下一步骤是[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)。
+如果你是设备开发人员并想深入了解某种代码，建议执行的下一步骤是[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device.md)。
 
 如果希望了解有关使用 IoT Central 的详细信息，建议的后续步骤是尝试快速入门，从[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)开始。

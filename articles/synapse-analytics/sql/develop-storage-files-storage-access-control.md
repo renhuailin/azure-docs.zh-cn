@@ -1,6 +1,6 @@
 ---
-title: 控制无服务器 SQL 池（预览版）对存储帐户的访问
-description: 介绍无服务器 SQL 池（预览版）如何访问 Azure 存储，以及如何在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储的访问。
+title: 控制无服务器 SQL 池对存储帐户的访问
+description: 介绍无服务器 SQL 池如何访问 Azure 存储，以及如何在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储的访问。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315721"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446615"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池（预览版）对存储帐户的访问
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
 无服务器 SQL 池查询直接从 Azure 存储中读取文件。 对 Azure 存储中文件的访问权限是在以下两个级别控制的：
 - **存储级别** - 用户应具有访问基础存储文件的权限。 你的存储管理员应当允许 Azure AD 主体读取/写入文件，或者生成将用来访问存储的 SAS 密钥。

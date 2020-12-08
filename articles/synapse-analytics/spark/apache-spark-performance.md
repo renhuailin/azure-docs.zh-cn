@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368598"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450937"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化 Apache Spark 作业（预览版）
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化 Apache Spark 作业
 
 了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常面临的难题是内存压力，这归因于不正确的配置（尤其是大小不合的执行程序）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
 
@@ -103,7 +103,7 @@ Bucket 存储类似于数据分区，但每个 Bucket 都可以保存一组列�
 
 ## <a name="optimize-joins-and-shuffles"></a>优化联接和数据重组
 
-如果某个联接和数据重组操作上有速度较慢的作业，可能是由 *数据倾斜* 引起的，即作业数据不对称。 例如，运行映射作业可能需要 20 秒，但运行对数据进行联接或重组的作业则需数小时。 若要解决数据倾斜问题，应对整个键进行加盐加密，或对仅仅一部分键使用 *独立的加密盐* 。 如果使用独立的加密盐，应进一步进行筛选，将映射联接中已进行加盐加密的键的子集隔离出来。 另一种做法是引入 Bucket 列，先在 Bucket 中进行预聚合。
+如果某个联接和数据重组操作上有速度较慢的作业，可能是由 *数据倾斜* 引起的，即作业数据不对称。 例如，运行映射作业可能需要 20 秒，但运行对数据进行联接或重组的作业则需数小时。 若要解决数据倾斜问题，应对整个键进行加盐加密，或对仅仅一部分键使用 *独立的加密盐*。 如果使用独立的加密盐，应进一步进行筛选，将映射联接中已进行加盐加密的键的子集隔离出来。 另一种做法是引入 Bucket 列，先在 Bucket 中进行预聚合。
 
 导致联接变慢的另一个因素可能是联接类型。 默认情况下，Spark 使用 `SortMerge` 联接类型。 这种联接最适合大型数据集，但另一方面又会占用大量计算资源，因为它必须先对数据的左右两侧进行排序，然后才进行合并。
 

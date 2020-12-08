@@ -1,6 +1,6 @@
 ---
 title: 通过 Power BI Professional 连接到 Synapse SQL
-description: 在本教程中，我们将完成将 Power BI Desktop 连接到无服务器 SQL 池（预览版）的步骤。
+description: 在本教程中，我们将完成将 Power BI Desktop 连接到无服务器 SQL 池的步骤。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682082"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451606"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>通过 Power BI Professional 连接到无服务器 SQL 池
 
@@ -26,7 +26,7 @@ ms.locfileid: "94682082"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-在本教程中，我们将完成将 Power BI Desktop 连接到无服务器 SQL 池（预览版）的步骤。
+在本教程中，我们将完成将 Power BI Desktop 连接到无服务器 SQL 池的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 

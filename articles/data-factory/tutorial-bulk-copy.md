@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a9a5f6a4644717227d0b659407e9ba0bc56675
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490252"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452407"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本教程演示如何将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics（旧称 SQL 数据仓库）。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
+本教程演示如何 **将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 从较高层面讲，本教程涉及以下步骤：
 
@@ -263,7 +263,7 @@ ms.locfileid: "89490252"
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-synapse-analytics"></a>为接收器 Synapse Analytics 创建数据集
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>为接收器 Azure Synapse Analytics 创建数据集
 
 1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDWDataset.json** 的 JSON 文件：将“tableName”设置为参数，稍后引用此数据集的复制活动会将实际值传递给数据集。
 

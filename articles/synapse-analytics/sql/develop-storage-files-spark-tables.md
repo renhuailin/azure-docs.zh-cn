@@ -1,6 +1,6 @@
 ---
-title: 在无服务器 SQL 池（预览版）中同步 Apache Spark 外部表定义
-description: 概述如何使用无服务器 SQL 池（预览版）查询 Spark 表
+title: 在无服务器 SQL 池中同步 Apache Spark 外部表定义
+description: 概述如何使用无服务器 SQL 池查询 Spark 表
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315829"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446490"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>在无服务器 SQL 池（预览版）中同步 Apache Spark for Azure Synapse 外部表定义
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>在无服务器 SQL 池中同步 Apache Spark for Azure Synapse 外部表定义
 
-无服务器 SQL 池（预览版）可以自动从 Apache Spark 同步元数据。 将为无服务器 Apache Spark 池（预览版）中存在的每个数据库创建无服务器 SQL 池数据库。 
+无服务器 SQL 池可以自动从 Apache Spark 同步元数据。 将为无服务器 Apache Spark 池中存在的每个数据库创建无服务器 SQL 池数据库。 
 
 对于每个基于 Parquet 且位于 Azure 存储的 Spark 外部表，都将在无服务器 SQL 池数据库中创建一个外部表。 因此，在关闭 Spark 池的情况下，仍可从无服务器 SQL 池查询 Spark 外部表。
 

@@ -1,20 +1,20 @@
 ---
 title: 部署模板 - Azure 门户
-description: 了解如何使用 Azure 门户创建第一个 Azure 资源管理器模板，以及如何部署该模板。
+description: 了解如何使用 Azure 门户创建第一个 Azure 资源管理器模板（ARM 模板），以及如何部署该模板。
 author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978550"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349616"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
 
-了解如何使用 Azure 门户生成 Azure 资源管理器 (ARM) 模板，以及从门户编辑和部署该模板的过程。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
+了解如何使用 Azure 门户生成 Azure 资源管理器模板（ARM 模板），以及从门户编辑和部署该模板的过程。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
 
 ![资源管理器模板快速入门门户图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 

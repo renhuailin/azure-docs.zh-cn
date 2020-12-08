@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL（预览版）的连接字符串
-description: Synapse SQL（预览版）的连接字符串
+title: Synapse SQL 的连接字符串
+description: Synapse SQL 的连接字符串
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e34563a312c5a248e97c4aac72d06030a836727b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6859d0582997ee861713090ccb4c22ed58ec4ca7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684826"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462329"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL（预览版）的连接字符串
+# <a name="connection-strings-for-synapse-sql"></a>Synapse SQL 的连接字符串
 
-可以使用几种不同的应用程序协议（例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)）连接到 Synapse SQL（预览版）。 下面是每个协议的连接字符串的一些示例。 
+可以使用几种不同的应用程序协议（例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)）连接到 Synapse SQL。 下面是每个协议的连接字符串的一些示例。 
 
 可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下选择“显示数据库连接字符串”。
 

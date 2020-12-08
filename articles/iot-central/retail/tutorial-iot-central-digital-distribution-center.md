@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980750"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463281"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
 
@@ -34,8 +34,7 @@ ms.locfileid: "90980750"
 
 1. 导航到 Azure IoT Central 应用程序管理器网站。 从左侧导航栏中选择“生成”，然后单击“零售”选项卡   。
 
-    > [!div class="mx-imgBorder"]
-    > ![显示如何选择数字分发中心应用程序模板的屏幕截图](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="数字分发中心应用程序模板":::
 
 2. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   
 
@@ -45,11 +44,9 @@ ms.locfileid: "90980750"
    **计费信息**：必须提供目录、Azure 订阅和区域详细信息才能配置资源。
    **创建**：选择页面底部的“创建”以部署应用程序。
 
-    > [!div class="mx-imgBorder"]
-    > ![显示如何从数字分发中心应用程序模板创建应用的屏幕截图](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="显示如何从数字分发中心应用程序模板创建应用的屏幕截图":::
 
-    > [!div class="mx-imgBorder"]
-    > ![显示创建应用程序时的计费选项的屏幕截图](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="显示创建应用程序时的计费选项的屏幕截图":::
 
 ## <a name="walk-through-the-application-dashboard"></a>演练应用程序仪表板 
 

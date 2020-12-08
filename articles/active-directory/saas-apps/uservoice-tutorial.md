@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e9739b705848edd721c9ebe0d36c25dd5b8d80c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517767"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>教程：Azure Active Directory 与 UserVoice 集成
 
@@ -61,7 +61,7 @@ ms.locfileid: "92517767"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **UserVoice** ，在结果面板中选择“UserVoice”，并单击“添加”按钮添加该应用程序   。
+4. 在搜索框中键入 **UserVoice**，在结果面板中选择“UserVoice”，并单击“添加”按钮添加该应用程序   。
 
      ![结果列表中的 UserVoice](common/search-new-app.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92517767"
 
     c. 将从 Azure 门户复制的“注销 URL”值粘贴到“SSO 远程注销”文本框中。  
  
-    d. 在“当前证书 SHA1 指纹”文本框中，粘贴从 Azure 门户复制的“指纹”值。  
+    d. 将从 Azure 门户复制的“指纹”值粘贴到“当前证书 SHA1 指纹”文本框中 。
     
     e. 单击“保存身份验证设置”  。
 

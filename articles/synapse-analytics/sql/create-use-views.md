@@ -1,6 +1,6 @@
 ---
-title: 在无服务器 SQL 池（预览版）中创建和使用视图
-description: 本部分介绍了如何创建和使用视图，以便包装无服务器 SQL 池（预览版）查询。 可以通过视图重复使用这些查询。 如果希望将 Power BI 之类的工具与无服务器 SQL 池结合使用，也需使用视图。
+title: 在无服务器 SQL 池中创建和使用视图
+description: 本部分介绍了如何创建和使用视图，以便包装无服务器 SQL 池查询。 可以通过视图重复使用这些查询。 如果希望将 Power BI 之类的工具与无服务器 SQL 池结合使用，也需使用视图。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685556"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462283"
 ---
-# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池（预览版）创建和使用视图
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 
-本部分介绍了如何创建和使用视图，以便包装无服务器 SQL 池（预览版）查询。 可以通过视图重复使用这些查询。 如果希望将 Power BI 之类的工具与无服务器 SQL 池结合使用，也需使用视图。
+本部分介绍了如何创建和使用视图，以便包装无服务器 SQL 池查询。 可以通过视图重复使用这些查询。 如果希望将 Power BI 之类的工具与无服务器 SQL 池结合使用，也需使用视图。
 
 ## <a name="prerequisites"></a>先决条件
 

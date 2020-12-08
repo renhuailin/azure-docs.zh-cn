@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建并查询 Synapse SQL 池（Azure 门户）
-description: 使用 Azure 门户创建并查询 Synapse SQL 池
+title: 快速入门：创建并查询专用 SQL 池（Azure 门户）
+description: 使用 Azure 门户创建并查询专用 SQL 池
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023780"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456741"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Synapse Analytics 中创建和查询专用 SQL 池
 
-使用 Azure 门户在 Azure Synapse Analytics（以前称为 SQL DW）中快速创建和查询 Synapse SQL 池（数据仓库）。
+使用 Azure 门户在 Azure Synapse Analytics 中快速创建和查询 Synapse SQL 池（数据仓库）。
 
 ## <a name="prerequisites"></a>先决条件
 

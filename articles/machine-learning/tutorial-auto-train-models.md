@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886322"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511026"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 
@@ -210,7 +210,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 |属性| 本教程中的值 |说明|
 |----|----|---|
-|**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
+|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）。 对于每次迭代需要更多时间的更大数据集，增加此值。|
 |**experiment_timeout_hours**|0.3|在试验结束之前，所有合并的迭代所花费的最大时间量（以小时为单位）。|
 |**enable_early_stopping**|True|如果分数在短期内没有提高，则进行标记，以提前终止。|
 |**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
@@ -222,7 +222,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',

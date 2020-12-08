@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用无服务器 SQL 池
-description: 本快速入门介绍如何使用无服务器 SQL 池（预览版）轻松查询各种类型的文件。
+description: 本快速入门介绍如何使用无服务器 SQL 池轻松查询各种类型的文件。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682970"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450505"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>快速入门：使用无服务器 SQL 池
 
-Synapse 无服务器 SQL 池（预览版）是一个无服务器查询服务，可用于针对 Azure 存储中放置的文件运行 SQL 查询。 本快速入门介绍如何使用无服务器 SQL 池查询各种类型的文件。 [OPENROWSET](sql/develop-openrowset.md) 中列出了支持的格式。
+Synapse 无服务器 SQL 池是一个无服务器查询服务，可用于针对 Azure 存储中放置的文件运行 SQL 查询。 本快速入门介绍如何使用无服务器 SQL 池查询各种类型的文件。 [OPENROWSET](sql/develop-openrowset.md) 中列出了支持的格式。
 
 本快速入门展示如何查询：CSV、Apache Parquet 和 JSON 文件。
 

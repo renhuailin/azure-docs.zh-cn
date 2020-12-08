@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747096"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327094"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "92747096"
 
 在自定义 Linux 容器中部署函数代码需要[高级计划](functions-premium-plan.md#features)或[专用（应用服务）计划](functions-scale.md#app-service-plan)托管。 完成本教程后，你的 Azure 帐户中会产生几美元的成本，你可以在完成后[清理资源](#clean-up-resources)来最大程度地降低该成本。
 
-也可以根据[创建托管在 Linux 上的第一个函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)中所述，使用默认的 Azure 应用服务容器。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
+也可以根据[创建托管在 Linux 上的第一个函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)中所述，使用默认的 Azure 应用服务容器。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -54,34 +54,34 @@ ms.locfileid: "92747096"
 在终端或命令提示符中，根据所选的语言运行以下命令，在名为 `LocalFunctionsProject` 的文件夹中创建一个函数应用项目。  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime dotnet --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
@@ -118,41 +118,41 @@ Maven 在名为 artifactId 的新文件夹（在此示例中为 `fabrikam-functi
 
 导航到项目文件夹：
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-```
+```console
 cd LocalFunctionsProject
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的、包含项目所选语言适用的代码文件的子文件夹，以及一个名为 *function.json* 的配置文件。
 
-```
+```console
 func new --name HttpExample --template "HTTP trigger"
 ```
 ::: zone-end  
 若要在本地测试函数，请启动项目文件夹的根目录中的本地 Azure Functions 运行时主机： 
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func start --build  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
-```
+```console
 func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 npm install
 npm start
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 mvn clean package  
 mvn azure-functions:run
 ```
@@ -167,7 +167,7 @@ mvn azure-functions:run
     
 在项目根文件夹中运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，并提供名称 `azurefunctionsimage` 和标记 `v1.0.0`。 将 `<DOCKER_ID>` 替换为 Docker 中心帐户 ID。 此命令为容器生成 Docker 映像。
 
-```
+```console
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
@@ -175,7 +175,7 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
     
 若要测试生成，请使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行本地容器中的映像，并再次将 `<DOCKER_ID` 替换为 Docker ID，同时添加端口参数 `-p 8080:80`：
 
-```
+```console
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
@@ -197,13 +197,13 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
 
 1. 如果尚未登录到 Docker，请使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令登录（将 `<docker_id>` 替换为你的 Docker ID）。 此命令会提示输入用户名和密码。 如果出现“登录成功”消息，则表示已登录。
 
-    ```
+    ```console
     docker login
     ```
     
 1. 登录后，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 命令将映像推送到 Docker Hub（同样，请将 `<docker_id>` 替换为你的 Docker ID）。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
@@ -279,7 +279,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 1. 该函数现在可以使用此连接字符串来访问存储帐户。
 
     > [!TIP]
-    > 在 bash 中，可以使用 shell 变量来捕获连接字符串，而无需使用剪贴板。 首先，使用以下命令创建包含连接字符串的变量：
+    > 在 Bash 中，可以使用 shell 变量来捕获连接字符串，而无需使用剪贴板。 首先，使用以下命令创建包含连接字符串的变量：
     > 
     > ```bash
     > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
@@ -375,7 +375,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 1. 将部署 Webhook URL 复制到剪贴板。
 
-1. 打开 [Docker Hub](https://hub.docker.com/) 并登录，然后在导航栏上选择“存储库”。 找到并选择映像，选择“Webhook”选项卡，指定一个 **Webhook 名称** ，将 URL 粘贴到“Webhook URL”中，然后选择“创建”：
+1. 打开 [Docker Hub](https://hub.docker.com/) 并登录，然后在导航栏上选择“存储库”。 找到并选择映像，选择“Webhook”选项卡，指定一个 **Webhook 名称**，将 URL 粘贴到“Webhook URL”中，然后选择“创建”：
 
     ![将 Webhook 添加到 DockerHub 存储库中](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -419,13 +419,13 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
     
 1. 使用 `docker build` 命令重新生成映像（同样，请将 `<docker_id>` 替换为你的 Docker ID）：
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
 1. 将更新的映像推送到 Docker Hub。此过程所需的时间远远少于首次推送，因为它只需上传更新的映像段。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
@@ -492,13 +492,13 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 1. 在根文件夹中再次运行 `docker build`，但这次请将标记中的版本更新为 `v1.0.1`。 如前所述，将 `<docker_id>` 替换为你的 Docker Hub 帐户 ID：
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. 使用 `docker push` 将更新的映像推回到存储库：
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 

@@ -1,6 +1,6 @@
 ---
-title: 无服务器 SQL 池（预览版）自助服务
-description: 本部分包含的信息可帮助你排查无服务器 SQL 池（预览版）的问题。
+title: 无服务器 SQL 池自助
+description: 本部分包含的信息可帮助你排查无服务器 SQL 池的问题。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682615"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457185"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>无服务器 SQL 池（预览版）自助服务
+# <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
-本文介绍如何排查 Azure Synapse Analytics 中的无服务器 SQL 池（预览版）的最常见问题。
+本文介绍如何排查 Azure Synapse Analytics 中的无服务器 SQL 池的最常见问题。
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>无服务器 SQL 池在 Synapse Studio 中灰显
 
@@ -37,7 +37,7 @@ ms.locfileid: "94682615"
 
 - 请确保使用大小合理的数据类型。 另外，请为字符串列指定 Parquet 文件的架构，因为它们在默认情况下将是 VARCHAR(8000)。 
 
-- 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)。 
+- 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-serverless-sql-pool)。 
 
 - 请访问[适用于无服务器 SQL 池的性能最佳做法](best-practices-sql-on-demand.md)以优化查询。  
 

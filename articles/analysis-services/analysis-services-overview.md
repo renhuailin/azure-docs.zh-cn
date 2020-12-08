@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201505"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487348"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -145,7 +145,7 @@ Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition �
 
 分区可以实现增量加载、提高并行度，并减少内存消耗。 其他高级数据建模功能（例如计算表）和所有 DAX 函数均受支持。 必须刷新（处理）内存中模型才能更新数据源中的缓存数据。 借助 Azure 服务主体支持，使用 PowerShell、TOM、TMSL 和 REST 的无人参与刷新操作可灵活确保模型数据始终保持最新。 
 
-DirectQuery 模式* 利用后端关系数据库进行存储和查询执行。 支持单个 SQL Server、SQL Server 数据仓库、Azure SQL 数据库、Azure Synapse Analytics（旧称为 SQL 数据仓库）、Oracle 和 Teradata 数据源中的极大型数据集。 后端数据集可以超出可用的服务器资源内存。 不需要复杂的数据模型刷新方案。 此外还存在一些限制（例如，受限的数据源类型、DAX 公式限制），并且某些高级数据建模功能不受支持。 在确定最合适的模式之前，请参阅[直接查询模式](/analysis-services/tabular-models/directquery-mode-ssas-tabular)。
+DirectQuery 模式* 利用后端关系数据库进行存储和查询执行。 支持单个 SQL Server、SQL Server 数据仓库、Azure SQL 数据库、Azure Synapse Analytics、Oracle 和 Teradata 数据源中的极大型数据集。 后端数据集可以超出可用的服务器资源内存。 不需要复杂的数据模型刷新方案。 此外还存在一些限制（例如，受限的数据源类型、DAX 公式限制），并且某些高级数据建模功能不受支持。 在确定最合适的模式之前，请参阅[直接查询模式](/analysis-services/tabular-models/directquery-mode-ssas-tabular)。
 
 \* 功能是否可用取决于层。
 
@@ -160,7 +160,7 @@ Azure Analysis Services 中的表格模型支持各种数据源：从简单的�
 
 ## <a name="your-data-is-secure"></a>你的数据是安全的
 
-Azure Analysis Services 为多个级别的敏感数据提供安全性。 作为一种 Azure 服务，Analysis Services 提供“基本”级别的分布式拒绝服务 (DDoS) 攻击保护，该保护已在 Azure 平台中自动启用。 若要了解详细信息，请参阅 [Azure DDoS 保护标准概述](../virtual-network/ddos-protection-overview.md)。 
+Azure Analysis Services 为多个级别的敏感数据提供安全性。 作为一种 Azure 服务，Analysis Services 提供“基本”级别的分布式拒绝服务 (DDoS) 攻击保护，该保护已在 Azure 平台中自动启用。 若要了解详细信息，请参阅 [Azure DDoS 保护标准概述](../ddos-protection/ddos-protection-overview.md)。 
 
 在服务器级别：Analysis Services 提供防火墙、Azure 身份验证、服务器管理员角色和服务器端加密。 在数据模型级别，用户角色、行级和对象级安全性可确保数据的安全，只有有权的用户才能查看你的数据。
 
@@ -172,7 +172,7 @@ Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定�
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
-### <a name="data-security"></a>数据安全
+### <a name="data-security"></a>数据安全性
 
 Azure Analysis Services 使用 Azure Blob 存储来持久保留 Analysis Services 数据库的存储和元数据。 使用 [Azure Blob 服务器端加密 (SSE)](../storage/common/storage-service-encryption.md) 加密 Blob 中的数据文件。 使用“直接查询”模式时，仅存储元数据。 查询时通过加密的协议从数据源访问实际数据。
 
@@ -243,7 +243,7 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](/analysis-serv
 
 本部分列出了特定于 Azure Analysis Services 的文档。 使用浏览器屏幕左侧的目录可查找文章。 
 
-由于 Azure Analysis Services 中的表格模型在很大程度上与 SQL Server Analysis Services 和 Power BI Premium 数据集中的表格模型相同，因此可以参考 [Analysis Services 文档](/analysis-services/?view=azure-analysis-services-current)中分享的大量数据建模教程、概念、过程、开发人员和参考文章。 共享的 Analysis Services 文档中的文章在标题下方的“适用于”段落中说明了它们是否也适用于 Azure Analysis Services。 还可以使用“目录”上方的“版本”选择器，但只能查看适用于你所用的平台的文章。
+由于 Azure Analysis Services 中的表格模型在很大程度上与 SQL Server Analysis Services 和 Power BI Premium 数据集中的表格模型相同，因此可以参考 [Analysis Services 文档](/analysis-services/?view=azure-analysis-services-current&preserve-view=true)中分享的大量数据建模教程、概念、过程、开发人员和参考文章。 共享的 Analysis Services 文档中的文章在标题下方的“适用于”段落中说明了它们是否也适用于 Azure Analysis Services。 还可以使用“目录”上方的“版本”选择器，但只能查看适用于你所用的平台的文章。
 
 ![分享的文档](./media/analysis-services-overview/aas-overview-applies-to.png)
 

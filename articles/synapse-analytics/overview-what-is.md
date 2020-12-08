@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380923"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445785"
 ---
-# <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什么是 Azure Synapse Analytics（工作区预览版）？
-
-[!INCLUDE [preview](includes/note-preview.md)]
+# <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
 企业分析需要大规模地处理任何类型的数据（无论是原始数据、提炼的数据还是特选程度很高的数据）。 这通常要求企业将大数据和数据仓库技术结合到可以对关系存储区和数据湖中的数据进行处理的复杂数据管道中。 很难构建、维护和保护这类解决方案。 这种复杂性会延迟企业所需见解的交付。
 
-Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据系统中进行见解提取所需的时间。 Azure Synapse 汇集了企业数据仓库中所用 SQL 技术的精华、用于大数据的 Spark 技术，以及用于数据集成和 ETL/ELT 的 Pipelines  。 Synapse Studio 提供了进行管理、监视、编码和保护的统一体验。 Synapse 与其他 Azure 服务（例如 PowerBI、CosmosDB 和 AzureML）深度集成  。
+Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据系统中进行见解提取所需的时间。 Azure Synapse 汇集了企业数据仓库中所用 SQL 技术的精华、用于大数据的 Spark 技术，以及用于数据集成和 ETL/ELT 的 Pipelines  。 Synapse Studio 提供了进行管理、监视、编码和保护的统一体验。 Synapse 与其他 Azure 服务（例如 Power BI、CosmosDB 和 AzureML）深度集成  。
 
 ## <a name="key-features--benefits"></a>重要功能和优势
 
@@ -53,7 +51,7 @@ Azure Synapse 消除了结合使用 SQL 和 Spark 时存在的传统技术阻碍
 
 ### <a name="built-in-data-integration-via-pipelines"></a>通过管道内置的数据集成
 
-Azure Synapse 内置了与 Azure 数据工厂相同的数据集成引擎和体验，使你可以创建丰富的大规模 ETL 管道，而无需离开 Synapse Analytics。
+Azure Synapse 内置了与 Azure 数据工厂相同的数据集成引擎和体验，使你可以创建丰富的大规模 ETL 管道，而无需离开 Azure Synapse Analytics。
 
 * 从 90 多个数据源引入数据
 * 使用数据流活动的无代码 ETL

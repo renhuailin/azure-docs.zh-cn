@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322588"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458941"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>使用 Azure Synapse Link 中的 Apache Spark（预览版）与 Azure Cosmos DB 进行交互
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 
 本文将介绍如何使用 Synapse Apache Spark 与 Azure Cosmos DB 进行交互。 由于提供全面的 Scala、Python、SparkSQL 和 C# 支持，Synapse Apache Spark 对于 [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的分析、数据工程、数据科学和数据探索方案至关重要。
 

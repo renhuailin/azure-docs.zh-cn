@@ -9,19 +9,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325680"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325258"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第二部分** 。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第二部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
@@ -82,9 +81,9 @@ ms.locfileid: "93325680"
 
 现在，需要告诉[训练模型][train-model]模块我们希望它预测信用风险值。
 
-1. 选择[训练模型][train-model]模块。 在 **属性** 窗格中，单击 **启动列选择器** 。
+1. 选择[训练模型][train-model]模块。 在 **属性** 窗格中，单击 **启动列选择器**。
 
-1. 在 **选择单个列** 对话框中，在 **可用列** 下的搜索字段中键入“信用风险”，在下方选择“信用风险”，并单击向右箭头按钮 ( **>** ) 将“信用风险”移动到 **选定列** 。 
+1. 在 **选择单个列** 对话框中，在 **可用列** 下的搜索字段中键入“信用风险”，在下方选择“信用风险”，并单击向右箭头按钮 ( **>** ) 将“信用风险”移动到 **选定列**。 
 
     ![选择“训练模型”模块的“信用风险”列](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 

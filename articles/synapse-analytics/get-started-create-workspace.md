@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241924"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445424"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -28,7 +28,7 @@ ms.locfileid: "95241924"
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Synapse 工作区
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
-1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 。
+1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics” 。
 1. 选择“添加”以创建工作区。
 1. 在“基本信息”中，输入首选的“订阅”、“资源组”和“区域”，然后选择工作区名称   。 在本教程中，我们将使用 myworkspace。
 1. 导航到“选择 Data Lake Storage Gen 2”。 
@@ -36,6 +36,10 @@ ms.locfileid: "95241924"
 1. 单击“文件系统”并将其命名为 users 。 这将创建一个名为 users 的容器
 1. 工作区将使用此存储帐户作为 Spark 表和 Spark 应用程序日志的“主要”存储帐户。
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
+
+> [!NOTE]
+> 若要从现有的专用 SQL 池（之前称为 SQL DW）启用工作区功能，请参阅[如何为专用 SQL 池（之前称为 SQL DW）启用工作区](./sql-data-warehouse/workspace-connected-create.md)。
+
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio
 
@@ -53,6 +57,9 @@ ms.locfileid: "95241924"
 1. 选择“查看 + 创建” > “创建”。 你的专用 SQL 池将在几分钟内准备就绪。 你的专用 SQL 池与另一个名称也为 SQLPOOL1 的专用 SQL 池数据库相关联。
 
 只要专用 SQL 池处于活动状态，就会使用计费资源。 你可以在稍后暂停池以降低成本。
+
+> [!NOTE] 
+> 在工作区中新建专用 SQL 池（之前称为 SQL DW）时，将打开专用 SQL 池预配页面。 预配将在逻辑 SQL 服务器上进行。
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>创建无服务器 Apache Spark 池
 

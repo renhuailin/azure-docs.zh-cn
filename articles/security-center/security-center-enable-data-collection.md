@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638761"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490051"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心自动预配代理和扩展
 
@@ -138,7 +138,7 @@ ms.locfileid: "94638761"
 在 Log Analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ### <a name="information-for-azure-sentinel-users"></a>Azure Sentinel 用户的信息 
-Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sentinel 配置单个工作区上下文中的安全事件集合，但不能同时从这两者进行配置。 如果你计划将 Azure Sentinel 添加到已从 Azure 安全中心获得 Azure Defender 警报并设置为收集安全事件的工作区，你有两种选择：
+Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sentinel 配置单个工作区上下文中的安全事件集合，但不能同时从这两者进行配置。 如果你计划将 Azure Sentinel 添加到已从 Azure 安全中心获得警报并设置为收集安全事件的工作区，你有两种选择：
 - 保留 Azure 安全中心的安全事件集合不变。 你将能够在 Azure Sentinel 以及 Azure Defender 中查询和分析这些事件。 但是，你将不能监视连接器的连接状态或在 Azure Sentinel 中更改其配置。 如果这对你很重要，请考虑第二种选择。
 - 禁用 Azure 安全中心中的安全事件集合（在 Log Analytics 代理的配置中将“Windows 安全事件”设置为“无”） 。 然后在 Azure Sentinel 中添加安全事件连接器。 与第一种选择一样，你将能够在 Azure Sentinel 和 Azure Defender/ASC 中查询和分析事件，但现在你将能够监视连接器的连接状态或在且仅在 Azure Sentinel 中更改其配置。
 
@@ -156,7 +156,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 | 数据层 | 收集的事件指示器 |
 | --- | --- |
-| 最少 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| 轻微 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
 | 通用 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
@@ -211,8 +211,8 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 1. 若要使用 PowerShell 部署代理，请按照虚拟机文档中的说明进行操作：
 
-    - [对于 Windows 计算机](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
-    - [对于 Linux 计算机](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
+    - [对于 Windows 计算机](../virtual-machines/extensions/oms-windows.md?toc=%2fazure%2fazure-monitor%2ftoc.json#powershell-deployment)
+    - [对于 Linux 计算机](../virtual-machines/extensions/oms-linux.md?toc=%2fazure%2fazure-monitor%2ftoc.json#azure-cli-deployment)
 
 > [!TIP]
 > 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。

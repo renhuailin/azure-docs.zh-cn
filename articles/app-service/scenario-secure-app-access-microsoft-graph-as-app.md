@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999665"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436532"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>教程：以应用身份从安全的应用访问 Microsoft Graph
 
@@ -23,7 +24,7 @@ ms.locfileid: "95999665"
 
 :::image type="content" alt-text="显示如何访问 Microsoft Graph 流的示意图。" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-你希望为 Web 应用调用 Microsoft Graph。 向 Web 应用授予数据访问权限的安全方法是使用[系统分配的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。 Azure Active Directory 中的托管标识允许应用服务通过基于角色的访问控制 (RBAC) 访问资源，而不要求使用应用凭据。 向 Web 应用分配托管标识之后，Azure 会负责创建和分发证书。 你无需费心管理机密或应用凭据。
+你希望为 Web 应用调用 Microsoft Graph。 向 Web 应用授予数据访问权限的安全方法是使用[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 Azure Active Directory 中的托管标识允许应用服务通过基于角色的访问控制 (RBAC) 访问资源，而不要求使用应用凭据。 向 Web 应用分配托管标识之后，Azure 会负责创建和分发证书。 你无需费心管理机密或应用凭据。
 
 在本教程中，你将了解：
 
@@ -120,6 +121,8 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 ## <a name="call-microsoft-graph-net"></a>调用 Microsoft Graph (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类用于获取代码的令牌凭据，以对 Microsoft Graph 的请求进行授权。 创建 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类的实例，该类使用托管标识提取令牌并将其附加到服务客户端。 下面的代码示例获取经过身份验证的令牌凭据，并使用它创建服务客户端对象，该对象将获取组中的用户。
+
+若要查看作为示例应用程序一部分的代码，请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)。
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>安装 Microsoft.Graph 客户端库包
 

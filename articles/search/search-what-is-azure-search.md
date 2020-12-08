@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030758"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511842"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -23,9 +23,10 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 创建认知搜索服务时，将获得：
 
 + 执行索引和查询执行的搜索引擎
-+ 索引过程中以 AI 为中心的图像和无差异文本的分析和转换
 + 创建和管理的搜索索引的持久存储
 + 用于编写简单到复杂查询的查询语言
++ 以 AI 为中心的分析，可从图像、原始文本、应用程序文件中创建可搜索的内容
++ 通过搜索索引器与 Azure 数据的集成，可自动执行数据导入和刷新
 
 从体系结构方面来讲，搜索服务位于外部数据存储（包含未索引数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 
@@ -70,7 +71,7 @@ Azure 认知搜索非常适合以下应用程序方案：
 1. 使用门户 [REST API](search-get-started-rest.md)、[.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) 或其他 SDK 中的[搜索资源管理器](search-explorer.md)[查询索引](search-query-overview.md)。
 
 > [!TIP]
-> 从[导入数据向导](search-get-started-portal.md)和 Azure 数据源开始整合步骤，以在几分钟内创建、加载和查询索引。
+> 从[导入数据向导](search-get-started-portal.md)和 Azure 数据源开始最大程度地减少步骤，以在几分钟内创建、加载和查询索引。
 
 ## <a name="how-it-compares"></a>它如何进行比较
 
@@ -78,7 +79,7 @@ Azure 认知搜索非常适合以下应用程序方案：
 
 | 比较对象 | 主要区别 |
 |-------------|-----------------|
-| Microsoft Search | [Microsoft 搜索](https://docs.microsoft.com/microsoftsearch/overview-microsoft-search)适用于需要在 SharePoint 中查询内容的经过 Microsoft 365 身份验证的用户。 它作为现成可用的搜索体验提供，由管理员进行启用和配置，能够通过连接器接受来自 Microsoft 和其他来源的外部内容。 如果这与你的场景一致，则 Microsoft 365 的 Microsoft 搜索是一个值得探索的诱人选项。<br/><br/>相对地，Azure 认知搜索对你定义的索引执行查询，填充你拥有的数据和文档（常常来自多个不同的源）。 Azure 认知搜索具有通过[索引器](search-indexer-overview.md)爬取一些 Azure 数据源的功能，但你也可将符合你的索引架构的所有 JSON 文档推送到单个统一的可搜索资源。 你还可自定义索引管道，将机器学习和词法分析器纳入其中。 由于认知搜索被构建为更大型的解决方案中的一个插件组件，因此你可通过任意平台在几乎任意应用中集成搜索功能。|
+| Microsoft Search | [Microsoft 搜索](/microsoftsearch/overview-microsoft-search)适用于需要在 SharePoint 中查询内容的经过 Microsoft 365 身份验证的用户。 它作为现成可用的搜索体验提供，由管理员进行启用和配置，能够通过连接器接受来自 Microsoft 和其他来源的外部内容。 如果这与你的场景一致，则 Microsoft 365 的 Microsoft 搜索是一个值得探索的诱人选项。<br/><br/>相对地，Azure 认知搜索对你定义的索引执行查询，填充你拥有的数据和文档（常常来自多个不同的源）。 Azure 认知搜索具有通过[索引器](search-indexer-overview.md)爬取一些 Azure 数据源的功能，但你也可将符合你的索引架构的所有 JSON 文档推送到单个统一的可搜索资源。 你还可自定义索引管道，将机器学习和词法分析器纳入其中。 由于认知搜索被构建为更大型的解决方案中的一个插件组件，因此你可通过任意平台在几乎任意应用中集成搜索功能。|
 |必应 | [必应 Web 搜索 API](../cognitive-services/bing-web-search/index.yml) 在 Bing.com 上搜索索引以匹配提交的搜索词。 索引从 HTML、XML 和公共网站上的其他 Web 内容生成。 [必应自定义搜索](/azure/cognitive-services/bing-custom-search/)构建于同一基础之上，针对 Web 内容类型提供相同的爬网技术，范围覆盖单个网站。<br/><br/>在认知搜索中，可定义并填充索引。 可使用[索引器](search-indexer-overview.md)在 Azure 数据源上爬取数据，或者将所有与索引一致的 JSON 文档推送到搜索服务。 |
 |数据库搜索 | 许多数据库平台都包含内置的搜索体验。 SQL Server 具有[全文搜索](/sql/relational-databases/search/full-text-search)。 Cosmos DB 及类似技术具有可查询的索引。 在评估结合使用搜索和存储的产品时，确定要采用哪种方式可能颇具挑战性。 许多解决方案同时使用两种：使用 DBMS 进行存储，使用 Azure 认知搜索获取专业搜索功能。<br/><br/>与 DBMS 搜索相比，Azure 认知搜索存储来自不同来源的内容，并提供专用文本处理功能，例如 [56 种语言](/rest/api/searchservice/language-support)中的语言感知文本处理（词干化、词元化、词形式）。 它还支持拼写错误单词的自动更正、[同义词](/rest/api/searchservice/synonym-map-operations)、[建议](/rest/api/searchservice/suggestions)、[评分控制](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)，[Facet](./search-filters-facets.md) 和[自定义词汇切分](/rest/api/searchservice/custom-analyzers-in-azure-search)。 Azure 认知搜索中的[全文搜索引擎](search-lucene-query-architecture.md)基于 Apache Lucene，它是信息检索方面的行业标准。 虽然 Azure 认知搜索以倒排索引的形式持久存储数据，但它不能替代真正的数据存储，建议不要在该容量中使用它。 有关详细信息，请参阅此[论坛帖子](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)。 <br/><br/>资源利用是这个类别的另一个转折点。 索引和一些查询操作通常是计算密集型的。 将搜索从 DBMS 卸载到云中的专用解决方案可以节省用于事务处理的系统资源。 此外，通过将搜索外部化，可以根据查询量轻松调整规模。|
 |专用搜索解决方案 | 假设已决定使用全频谱功能进行专用搜索，则需要在本地解决方案或云服务之间进行最终的分类比较。 许多搜索技术提供对索引和查询管道的控制、对更丰富查询和筛选语法的访问、对设置级别和相关性的控制以及自导智能搜索功能。 <br/><br/>如果想要获得一个开销和维护工作量极少且规模可调的统包解决方案，则云服务是适当的选择。 <br/><br/>在云的范式中，许多提供程序提供相当的基线功能，以及全文搜索、地理搜索，并且能够处理搜索输入中一定程度的模糊性。 通常，它是一项[专用功能](search-features-list.md)，或者是 API、工具以及用于确定最匹配项的管理功能的易化和总体简化。 |

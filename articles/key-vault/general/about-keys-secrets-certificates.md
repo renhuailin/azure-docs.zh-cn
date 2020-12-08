@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357770"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327077"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
@@ -46,10 +46,10 @@ HSM 保护的密钥|/keys|支持|支持
 证书|/certificates|支持|不支持
 存储帐户密钥|/storageaccount|支持|不支持
 |||
-- **加密密钥** ：支持多种密钥类型和算法，并支持使用受软件保护的密钥和受 HSM 保护的密钥。 有关详细信息，请参阅[关于密钥](../keys/about-keys.md)。
-- **机密** ：提供机密（例如密码和数据库连接字符串）的安全存储。 有关详细信息，请参阅[关于机密](../secrets/about-secrets.md)。
-- **证书** ：支持基于密钥和机密并且添加了自动续订功能的证书。 有关详细信息，请参阅[关于证书](../certificates/about-certificates.md)。
-- **Azure 存储帐户密钥** ：可以管理 Azure 存储帐户的密钥。 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥，并定期重新生成（轮换）密钥。 有关详细信息，请参阅[使用 Key Vault 管理存储帐户密钥](../secrets/overview-storage-keys.md)。
+- **加密密钥**：支持多种密钥类型和算法，并支持使用受软件保护的密钥和受 HSM 保护的密钥。 有关详细信息，请参阅[关于密钥](../keys/about-keys.md)。
+- **机密**：提供机密（例如密码和数据库连接字符串）的安全存储。 有关详细信息，请参阅[关于机密](../secrets/about-secrets.md)。
+- **证书**：支持基于密钥和机密并且添加了自动续订功能的证书。 有关详细信息，请参阅[关于证书](../certificates/about-certificates.md)。
+- **Azure 存储帐户密钥**：可以管理 Azure 存储帐户的密钥。 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥，并定期重新生成（轮换）密钥。 有关详细信息，请参阅[使用 Key Vault 管理存储帐户密钥](../secrets/overview-storage-keys.md)。
 
 有关 Key Vault 的更多常规信息，请参阅[关于 Azure Key Vault](overview.md)。 有关托管 HSM 池的详细信息，请参阅什么是 [Azure Key Vault 托管 HSM？](../managed-hsm/overview.md)
 
@@ -75,22 +75,23 @@ HSM 保护的密钥|/keys|支持|支持
 
 可以通过指定版本对 Key Vault 中的对象进行寻址，或者通过忽略版本对对象的当前版本进行操作。 例如，给定名称为 `MasterKey` 的密钥，执行操作而不指定版本会导致系统使用最新的可用版本。 使用特定于版本的标识符执行操作会导致系统使用该特定版本的对象。  
 
+### <a name="vault-name-and-object-name"></a>保管库名和对象名
 Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系统中都不存在两个具有相同 URL 的对象。 对象的完整 URL 称为对象标识符。 URL 由标识 Key Vault 的前缀、对象类型、用户提供的对象名称和对象版本组成。 对象名称不区分大小写且不可变。 不包括对象版本的标识符称为基本标识符。  
 
 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
 
 对象标识符具有以下常规格式（具体取决于容器类型）：  
 
-- **对于保管库** ：`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **对于保管库**：`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **对于托管 HSM 池** ：`https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **对于托管 HSM 池**：`https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > 请参阅[对象类型支持](#object-types)以了解每种容器类型支持的对象类型。
 
 其中：  
 
-| 元素 | 说明 |  
+| 元素 | 描述 |  
 |-|-|  
 |`vault-name` 或 `hsm-name`|Microsoft Azure Key Vault 服务中的保管库或托管 HSM 池的名称。<br /><br />保管库名称和托管 HSM 池名称由用户选择，并且是全局唯一的。<br /><br />保管库名称和托管 HSM 池名称必须是 3-24 个字符的字符串，且仅包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|对象的类型（“密钥”、“机密”或“证书”）。|  

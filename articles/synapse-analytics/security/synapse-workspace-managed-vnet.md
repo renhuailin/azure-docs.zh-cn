@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313698"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501067"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics 托管虚拟网络（预览版）
+# <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics 托管虚拟网络
 
 本文将介绍 Azure Synapse Analytics 中的托管虚拟网络。
 
@@ -52,8 +52,6 @@ ms.locfileid: "93313698"
 
 ![启用托管工作区虚拟网络](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->未来，将阻止来自托管工作区虚拟网络的所有出站流量（通过托管专用终结点的出站流量除外）。 建议创建托管专用终结点来连接到工作区外部的所有 Azure 数据源。 
 
 可以通过在 Azure 门户中选择“概览”来检查 Azure Synapse 工作区是否关联到某个托管工作区虚拟网络。
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Services@SoSafe 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 Services@SoSafe 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 SoSafe 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 SoSafe 之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3fe42dd37bda3bef549570c32018179b88d06957
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ef0c1b95e89916c8fd71d5e0b6c60370e95d8417
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93364890"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296967"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicessosafe"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Services@SoSafe 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sosafe"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SoSafe 集成
 
-本教程介绍如何将 Services@SoSafe 与 Azure Active Directory (Azure AD) 集成。 将 Services@SoSafe 与 Azure AD 集成后，可以：
+本教程介绍如何将 SoSafe 与 Azure Active Directory (Azure AD) 集成。 将 SoSafe 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 Services@SoSafe。
-* 让用户使用其 Azure AD 帐户自动登录到 Services@SoSafe。
+* 在 Azure AD 中控制谁有权访问 SoSafe。
+* 让用户使用其 Azure AD 帐户自动登录到 SoSafe。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,49 +31,49 @@ ms.locfileid: "93364890"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Services@SoSafe 单一登录 (SSO) 的订阅。
+* 启用了 SoSafe 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Services@SoSafe 支持 SP 和 IDP 发起的 SSO
-* Services@SoSafe 支持实时用户预配
+* SoSafe 支持 SP 和 IDP 发起的 SSO
+* SoSafe 支持“实时”用户预配
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 
-## <a name="adding-servicessosafe-from-the-gallery"></a>从库中添加 Services@SoSafe
+## <a name="adding-sosafe-from-the-gallery"></a>从库中添加 SoSafe
 
-要配置 Services@SoSafe 与 Azure AD 的集成，需要将库中的 Services@SoSafe 添加到托管的 SaaS 应用列表。
+若要配置 SoSafe 与 Azure AD 的集成，需要从库中将 SoSafe 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Services@SoSafe”。
-1. 从结果面板中选择 Services@SoSafe，然后添加该应用。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“SoSafe”。
+1. 从结果面板中选择 SoSafe，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-sso-for-servicessosafe"></a>配置并测试 Services@SoSafe 的 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-sosafe"></a>配置并测试 SoSafe 的 Azure AD SSO
 
-使用名为 B.Simon 的测试用户配置并测试 Services@SoSafe 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Services@SoSafe 中的相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置并测试 SoSafe 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 SoSafe 中的相关用户之间建立链接关系。
 
-若要配置并测试 Services@SoSafe 的 Azure AD SSO，请执行以下步骤：
+若要配置并测试 SoSafe 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 ServicesSoSafe SSO](#configure-servicessosafe-sso)** - 在应用程序端配置单一登录。
-    1. **[创建 ServicesSoSafe 测试用户](#create-servicessosafe-test-user)** - 在 Services@SoSafe 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[配置 SoSafe SSO](#configure-sosafe-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 SoSafe 测试用户](#create-sosafe-test-user)** - 在 SoSafe 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户的 Services@SoSafe 应用程序集成页上，找到“管理”部分并选择“单一登录” 。
+1. 在 Azure 门户的 SoSafe 应用程序集成页上，找到“管理”部分并选择“单一登录” 。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -83,16 +83,16 @@ ms.locfileid: "93364890"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://api.sosafe.de/v1/auth/saml/login/<TENANT_ID>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://api.sosafe.de/v1/auth/saml/login/<TENANT_ID>`
 
     > [!NOTE]
-    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Services@SoSafe 客户端支持团队](mailto:support@sosafe.de)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取这些值，请联系 [SoSafe 客户端支持团队](mailto:support@sosafe.de)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Services@SoSafe”部分，根据要求复制相应的 URL。
+1. 在“设置 SoSafe”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -109,19 +109,19 @@ ms.locfileid: "93364890"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过向 B.Simon 授予对 Services@SoSafe 的访问权限，允许其使用 Azure 单一登录。
+本部分将通过授予 B.Simon 访问 SoSafe的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择 Services@SoSafe。
+1. 在应用程序列表中，选择 SoSafe。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-servicessosafe-sso"></a>配置 ServicesSoSafe SSO
+## <a name="configure-sosafe-sso"></a>配置 SoSafe SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Services@SoSafe 网站。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 SoSafe 网站。
 
 1. 单击“扩展数据”，在下面的页中执行以下步骤。
 
@@ -139,9 +139,9 @@ ms.locfileid: "93364890"
 
     f. 单击“保存”
 
-### <a name="create-servicessosafe-test-user"></a>创建 ServicesSoSafe 测试用户
+### <a name="create-sosafe-test-user"></a>创建 SoSafe 测试用户
 
-在本部分中，将在 Services@SoSafe 中创建名为 Britta Simon 的用户。 Services@SoSafe 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Services@SoSafe 中尚不存在用户，身份验证后会创建一个新用户。
+本部分将在 SoSafe 中创建一个名为 Britta Simon 的用户。 SoSafe 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 SoSafe 中不存在用户，则会在身份验证后创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -149,18 +149,16 @@ ms.locfileid: "93364890"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Services@SoSafe 登录 URL，可以从那里启动登录流。  
+1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 SoSafe 登录 URL，可以从那里启动登录流。  
 
-1. 直接转到 Services@SoSafe 登录 URL，并从那里启动登录流。
+1. 直接转到 SoSafe 登录 URL，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Services@SoSafe 
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 SoSafe 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Services@SoSafe 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Services@SoSafe。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在单击访问面板中的 SoSafe 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 SoSafe。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Services@SoSafe 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 SoSafe 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

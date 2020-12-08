@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457987"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
@@ -36,7 +36,7 @@ Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure
 
 1. 创建并填充 Azure AD。
 2. 创建一个 Azure Active Directory 标识
-3. 在 Synapse 工作区（预览版）中为所创建的 Azure Active Directory 标识分配角色
+3. 在 Synapse 工作区中为所创建的 Azure Active Directory 标识分配角色
 4. 使用 Azure AD 标识连接到 Synapse Studio。
 
 ## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 AAD 直通身份验证
@@ -65,7 +65,7 @@ Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure
 
 Azure AD 管理员登录名可以是 Azure AD 用户，也可以是 Azure AD 组。 当管理员为组帐户时，可以由任何组成员使用，因此可以为 Synapse SQL 实例启用多个 Azure AD 管理员。 
 
-以管理员身份使用组帐户时，可以在 Azure AD 中集中添加和删除组成员，无需在 Synapse Analytics 工作区中更改用户或权限，从而提高可管理性。 无论何时都仅可配置一个 Azure AD 管理员（一个用户或组）。
+以管理员身份使用组帐户时，可以在 Azure AD 中集中添加和删除组成员，无需在 Azure Synapse Analytics 工作区中更改用户或权限，从而提高可管理性。 无论何时都仅可配置一个 Azure AD 管理员（一个用户或组）。
 
 ![管理结构](./media/aad-authentication/3-admin-structure.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 - 采用了 MFA 的通用 Azure Active Directory
 - 使用应用程序令牌身份验证
 
-Azure AD 服务器主体（登录名）（ **公共预览版** ）支持以下身份验证方法：
+Azure AD 服务器主体（登录名）支持以下身份验证方法：
 
 - Azure Active Directory 密码
 - 集成式 Azure Active Directory
@@ -119,10 +119,10 @@ Azure AD 服务器主体（登录名）（ **公共预览版** ）支持以下�
 
 - 为了增强可管理性，建议将一个专用 Azure AD 组预配为管理员。
 - 任何时候都只能为 Synapse SQL 池配置一个 Azure AD 管理员（一个用户或组）。
-  - 为 Synapse SQL（预览版）添加 Azure AD 服务器主体（登录名）之后，即可创建能够添加到 `sysadmin` 角色的多个 Azure AD 服务器主体（登录名）。
+  - 为 Synapse SQL 添加 Azure AD 服务器主体（登录名）之后，即可创建能够添加到 `sysadmin` 角色的多个 Azure AD 服务器主体（登录名）。
 - 只有 Synapse SQL 的 Azure AD 管理员最初可以使用 Azure Active Directory 帐户连接到 Synapse SQL。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。
 - 我们建议将连接超时值设置为 30 秒。
-- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （ **用于 SqlServer 的 .NET Framework 数据提供程序** （.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 .BACPAC）的最新版本可以使用 Azure AD 身份验证。
+- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （**用于 SqlServer 的 .NET Framework 数据提供程序**（.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 .BACPAC）的最新版本可以使用 Azure AD 身份验证。
 - 从版本 15.0.1 开始，[sqlcmd 实用工具](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和 [bcp 实用工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)支持采用了 MFA 的 Active Directory 交互式身份验证。
 - SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版的 Data Tools（版本 14.0.60311.1）。 目前，Azure AD 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支持 Azure AD 身份验证。 另外，请参阅[设置连接属性](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427405"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444409"
 ---
 # <a name="monitor-your-synapse-workspace"></a>监视 Synapse 工作区
 
@@ -47,6 +47,9 @@ ms.locfileid: "94427405"
 1. 选择要监视的池。 现在，你可以查看正在池的工作区中运行或已经在池的工作区中运行的所有 SQL 请求。
 1. 查找特定的 SQL 请求，并将鼠标悬停在该项上。 悬停后，将看到“SQL 脚本”图标出现。
 1. 单击“SQL 脚本”图标以查看 SQL 请求全文。
+
+    > [!NOTE] 
+    > 可以在监视器中心中查看通过 Synapse Studio 在启用工作区的专用 SQL 池（以前的 SQL DW）中提交的 SQL 请求。 对于所有其他监视活动，你可以转到 Azure 门户专用 SQL 池（以前的 SQL DW）监视。
 
 ## <a name="next-steps"></a>后续步骤
 

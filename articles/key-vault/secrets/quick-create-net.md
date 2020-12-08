@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 适用于 .NET 的 Azure Key Vault 客户端库 (v4)
-description: 了解如何使用 .NET 客户端库 (v4) 在 Azure 密钥保管库中创建、检索和删除机密
+title: 快速入门 - 适用于 .NET 的 Azure Key Vault 机密客户端库（版本 4）
+description: 了解如何使用 .NET 客户端库（版本 4）在 Azure 密钥保管库中创建、检索和删除机密
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
@@ -8,30 +8,37 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 20974367b9d4b75bb9746cd065bc7490011f37ad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ecd5fd4f5af883d26f904181796a78f61669b37a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786150"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187351"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 机密客户端库 (SDK v4)
 
-开始使用适用于 .NET 的 Azure Key Vault 机密客户端库。 请遵循以下步骤安装包并试用基本任务的示例代码。
+开始使用适用于 .NET 的 Azure Key Vault 机密客户端库。 [Azure Key Vault](../general/overview.md) 是一项云服务，它为机密提供了安全的存储。 可以安全地存储密钥、密码、证书和其他机密。 可以通过 Azure 门户创建和管理 Azure Key Vault。 本快速入门介绍如何使用 .NET 客户端库在 Azure 密钥保管库中创建、检索和删除机密
+
+Key Vault 客户端库资源：
 
 [API 参考文档](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+
+有关 Key Vault 和机密的详细信息，请参阅：
+- [Key Vault 概述](../general/overview.md)
+- [机密概述](about-secrets.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault - 可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 进行创建。
 
 本快速入门使用 `dotnet` 和 Azure CLI
 
 ## <a name="setup"></a>设置
 
-本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](/dotnet/api/overview/azure/identity-readme#authenticate-the-client&preserve-view=true)。
+本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -84,16 +91,12 @@ dotnet add package Azure.Security.KeyVault.Secrets
 dotnet add package Azure.Identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
-
-[!INCLUDE[Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
-
 #### <a name="grant-access-to-your-key-vault"></a>授予对 Key Vault 的访问权限
 
 针对 Key Vault 创建一个访问策略，以便为用户帐户授予密码权限
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
 ```
 
 #### <a name="set-environment-variables"></a>设置环境变量
@@ -140,17 +143,11 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ```csharp
 await client.SetSecretAsync(secretName, secretValue);
-``````
-
-可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) 命令来验证是否设置了机密：
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
-```
+> [!NOTE]
+> 如果机密名已存在，则上面的代码将创建该机密的新版本。
+
 
 ### <a name="retrieve-a-secret"></a>检索机密
 
@@ -168,17 +165,81 @@ var secret = await client.GetSecretAsync(secretName);
 
 ```csharp
 await client.StartDeleteSecretAsync(secretName);
-``````
-
-可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) 命令来验证是否已删除机密：
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
-```
+## <a name="sample-code"></a>示例代码
+
+通过完成以下步骤，将 .NET Core 控制台应用修改为与 Key Vault 交互：
+
+1. 将 Program.cs 中的代码替换为以下代码：
+
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Azure.Identity;
+    using Azure.Security.KeyVault.Secrets;
+    
+    namespace key_vault_console_app
+    {
+        class Program
+        {
+            static async Task Main(string[] args)
+            {
+                const string secretName = "mySecret";
+                var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+                var kvUri = $"https://{keyVaultName}.vault.azure.net";
+    
+                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+    
+                Console.Write("Input the value of your secret > ");
+                var secretValue = Console.ReadLine();
+    
+                Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
+                await client.SetSecretAsync(secretName, secretValue);
+                Console.WriteLine(" done.");
+    
+                Console.WriteLine("Forgetting your secret.");
+                secretValue = string.Empty;
+                Console.WriteLine($"Your secret is '{secretValue}'.");
+    
+                Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
+                var secret = await client.GetSecretAsync(secretName);
+                Console.WriteLine($"Your secret is '{secret.Value}'.");
+    
+                Console.Write($"Deleting your secret from {keyVaultName} ...");
+                DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);
+                // You only need to wait for completion if you want to purge or recover the secret.
+                await operation.WaitForCompletionAsync();
+                Console.WriteLine(" done.");
+                
+                Console.Write($"Purging your secret from {keyVaultName} ...");
+                await client.PurgeDeletedSecretAsync(secretName);
+                Console.WriteLine(" done.");
+            }
+        }
+    }
+    ```
+### <a name="test-and-verify"></a>测试和验证
+
+1. 执行以下命令来运行应用。
+
+    ```dotnetcli
+    dotnet run
+    ```
+
+1. 出现提示时，输入一个密码值。 例如，mySecretPassword。
+
+    随即显示以下输出的变体：
+
+    ```console
+    Input the value of your secret > mySecretPassword
+    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
+    Forgetting your secret.
+    Your secret is ''.
+    Retrieving your secret from <your-unique-keyvault-name>.
+    Your secret is 'mySecretPassword'.
+    Deleting your secret from <your-unique-keyvault-name> ... done.    
+    ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -214,79 +275,8 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>示例代码
-
-通过完成以下步骤，将 .NET Core 控制台应用修改为与 Key Vault 交互：
-
-1. 将 Program.cs 中的代码替换为以下代码：
-
-    ```csharp
-    using System;
-    using Azure.Identity;
-    using Azure.Security.KeyVault.Secrets;
-    
-    namespace key_vault_console_app
-    {
-        class Program
-        {
-            static async Task Main(string[] args)
-            {
-                const string secretName = "mySecret";
-                var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
-                var kvUri = $"https://{keyVaultName}.vault.azure.net";
-    
-                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-    
-                Console.Write("Input the value of your secret > ");
-                var secretValue = Console.ReadLine();
-    
-                Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
-                await client.SetSecretAsync(secretName, secretValue);
-                Console.WriteLine(" done.");
-    
-                Console.WriteLine("Forgetting your secret.");
-                secretValue = string.Empty;
-                Console.WriteLine($"Your secret is '{secretValue}'.");
-    
-                Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
-                var secret = await client.GetSecretAsync(secretName);
-                Console.WriteLine($"Your secret is '{secret.Value}'.");
-    
-                Console.Write($"Deleting your secret from {keyVaultName} ...");
-                DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);
-                // You only need to wait for completion if you want to purge or recover the secret.
-                await operation.WaitForCompletionAsync();
-
-                await client.PurgeDeletedSecret(secretName);
-                Console.WriteLine(" done.");
-            }
-        }
-    }
-    ```
-
-1. 执行以下命令来运行应用。
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. 出现提示时，输入一个密码值。 例如，mySecretPassword。
-
-    随即显示以下输出的变体：
-
-    ```console
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.    
-    ```
 
 ## <a name="next-steps"></a>后续步骤
-
-在本快速入门中，你创建了一个密钥保管库、存储了一个机密，然后检索了该机密。 请查看 [GitHub 中的整个控制台应用](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app)。
 
 若要详细了解 Key Vault 以及如何将其与应用集成，请参阅以下文章：
 

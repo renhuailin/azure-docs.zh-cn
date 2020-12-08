@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307964"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455499"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>快速入门：在 Synapse 中创建新的 Azure 机器学习链接服务
 
-在本快速入门中，你需要将 Synapse Analytics 工作区链接到 Azure 机器学习工作区。 通过链接这些工作区，可以利用 Synapse 中的各种体验来使用 Azure 机器学习。
+在本快速入门中，你需要将 Azure Synapse Analytics 工作区链接到 Azure 机器学习工作区。 通过链接这些工作区，可以利用 Synapse 中的各种体验来使用 Azure 机器学习。
 
 例如，链接到 Azure 机器学习工作区可获得以下体验：
 
@@ -80,4 +80,4 @@ ms.locfileid: "93307964"
 ## <a name="next-steps"></a>后续步骤
 
 - [教程：机器学习模型评分向导 - 专用 SQL 池](tutorial-sql-pool-model-scoring-wizard.md)
-- [Azure Synapse Analytics 中的机器学习功能（工作区预览版）](what-is-machine-learning.md)
+- [Azure Synapse Analytics 中的机器学习功能](what-is-machine-learning.md)

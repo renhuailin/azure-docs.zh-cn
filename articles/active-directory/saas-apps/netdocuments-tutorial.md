@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: f07aaa3b1d133d8011b7e98df5c36a8bac1b5f29
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b9a85c7093d0f42ac97c4a548ba6f0feebae8b89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92506881"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350715"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NetDocuments 集成
 

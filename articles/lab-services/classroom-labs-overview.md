@@ -1,19 +1,19 @@
 ---
-title: 关于 Azure 实验室服务中的教室实验室 | Microsoft Docs
+title: 关于 Azure 实验室服务中的实验室 | Microsoft Docs
 description: 了解如何在云中快速设置课堂实验室环境，使用班级需要的软件配置模板 VM 和实验室，并为班级中的每位学生提供 VM 副本。
 ms.topic: overview
 ms.date: 06/26/2020
-ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85445621"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434798"
 ---
-# <a name="introduction-to-classroom-labs"></a>教室实验室简介
+# <a name="introduction-to-labs"></a>实验室简介
 使用 Azure 实验室服务，可在云中快速设置教室实验室环境。 教师创建教室实验室、预配 Windows 或 Linux 虚拟机、在课堂上安装必要的软件和工具实验室，并将其提供给学生使用。 课堂上的学生连接到实验室中的虚拟机 (VM)，并使用虚拟机完成项目、作业和课堂练习。 
 
-教室实验室是由 Azure 管理的托管实验室类型。 从运行虚拟机 (VM) 到处理错误及扩展基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 可以指定所需的基础结构类型，并安装课程所需的任何工具或软件。 
+实验室是由 Azure 管理的托管实验室类型。 从运行虚拟机 (VM) 到处理错误及扩展基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 可以指定所需的基础结构类型，并安装课程所需的任何工具或软件。 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Azure 基础结构和规模的自动管理 
 Azure 实验室服务是一项托管服务，这意味着该服务可自动处理实验室底层基础结构的预配和管理。 你可以只专注于为用户准备适当的实验室体验。 让服务处理其余部分，并向受众推广实验室虚拟机。 只需单击一下，即可将实验室扩展到数百个虚拟机。

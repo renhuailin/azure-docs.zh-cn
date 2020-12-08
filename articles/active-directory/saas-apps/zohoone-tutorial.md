@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: fa63cc2c76d8bd47ca80050a369bda7211f5db24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896712"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
 
@@ -106,7 +106,7 @@ ms.locfileid: "92896712"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > 上面的“回复 URL”值不是实际值。  执行本教程稍后所述的“配置 Zoho One 单一登录”部分的步骤 4 时，我们将获取 `<saml-identifier>` 值。 
+    > 上面的“回复 URL”值不是实际值。  将从“配置 Zoho One 单一登录”部分的步骤 4 获取 `<saml-identifier>` 值，本教程后面部分介绍此内容。
 
     c. 单击“设置其他 URL”  。
 

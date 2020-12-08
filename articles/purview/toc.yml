@@ -28,6 +28,8 @@ items:
             href: tutorial-import-create-glossary-terms.md
       - name: 注册和扫描本地 SQL Server
         href: register-scan-on-premises-sql-server.md
+      - name: 调用目录的 REST API
+        href: tutorial-using-rest-apis.md
   - name: 概念
     items:
       - name: 使用 Purview Studio
@@ -88,7 +90,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: 使用防火墙的 Azure SQL DB
@@ -133,6 +135,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share 世袭
             href: how-to-link-azure-data-share.md
+      - name: 监视
+        items:
+          - name: 使用 Azure Monitor 进行监视
+            href: how-to-monitor-with-azure-monitor.md
       - name: 洞察力
         items:
           - name: 查看资产见解

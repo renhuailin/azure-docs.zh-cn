@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板创建 SQL 池
+title: 使用 Azure 资源管理器模板创建专用 SQL 池（之前称为 SQL DW）
 description: 了解如何使用 Azure 资源管理器模板创建 Azure Synapse Analytics SQL 池。
 services: azure-resource-manager
 author: julieMSFT
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 29d4e4d696b34aa493714c870ebb466f491c47fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88641868"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460744"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse Analytics SQL 池
+# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse Analytics 专用 SQL 池（之前称为 SQL DW）
 
-使用此 Azure 资源管理器模板（ARM 模板）创建 Azure Synapse Analytics SQL 池，并启用透明数据加密。 Synapse SQL 池是指 Azure Synapse 中正式发布的企业数据仓库功能。
+使用此 Azure 资源管理器模板（ARM 模板）创建专用 SQL 池（之前称为 SQL DW），并启用透明数据加密。 专用 SQL 池（之前称为 SQL DW）是指 Azure Synapse 中正式发布的企业数据仓库功能。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "88641868"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 选择下图登录到 Azure 并打开模板。 使用此模板创建 Synapse SQL 池。
+1. 选择下图登录到 Azure 并打开模板。 此模板可创建专用 SQL 池（之前称为 SQL DW）。
    
    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
@@ -53,7 +53,7 @@ ms.locfileid: "88641868"
    * SQL Server 名称：接受默认名称，或为 SQL Server 名称输入新名称。
    * SQL 管理员登录：输入 SQL Server 的管理员用户名。
    * SQL 管理员密码：输入 SQL Server 的管理员密码。
-   * 数据仓库名称：输入 SQL 池名称。
+   * 数据仓库名称：输入专用 SQL 池名称。
    * 透明数据加密：接受默认值“已启用”。 
    * 服务级别目标：接受默认值“DW400c”。
    * 位置：接受资源组的默认位置。
@@ -67,7 +67,7 @@ ms.locfileid: "88641868"
 # <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
-echo "Enter the resource group where your Synapse SQL pool exists:" &&
+echo "Enter the resource group where your dedicated SQL pool (formerly SQL DW) exists:" &&
 read resourcegroupName &&
 az resource list --resource-group $resourcegroupName 
 ```
@@ -75,7 +75,7 @@ az resource list --resource-group $resourcegroupName
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your SQL pool account exists"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your dedicated SQL pool (formerly SQL DW) account exists"
 (Get-AzResource -ResourceType "Microsoft.Sql/servers/databases" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
@@ -107,7 +107,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你使用 ARM 模板创建了 Azure Synapse Analytics SQL 池，并验证了部署。 若要详细了解 Azure Synapse Analytics 和 Azure 资源管理器，请继续阅读以下文章。
+在本快速入门中，你使用 ARM 模板创建了专用 SQL 池（之前称为 SQL DW），并验证了部署。 若要详细了解 Azure Synapse Analytics 和 Azure 资源管理器，请参阅以下文章。
 
 - 阅读 [Azure Synapse Analytics 概述](sql-data-warehouse-overview-what-is.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984441"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324714"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
@@ -119,7 +119,7 @@ ms.locfileid: "94984441"
 
 默认情况下，可以编辑现有的边界框。 “锁定/解锁区域”工具 ![锁定/解锁区域工具](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或“L”可切换该行为。 如果区域已锁定，则只能更改新边界框的形状或位置。
 
-使用“区域操作”工具 ![区域操作工具](./media/how-to-label-images/regions-tool.png) 或“M”来调整现有的边界框。 拖动边或角来调整形状。 在内部单击即可拖动整个边界框。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
+使用区域操作工具 ![这是区域操作工具图标 - 从中心指向上、下、左、右的四个箭头。](./media/how-to-label-images/regions-tool.png) 或“M”调整现有边界框。 拖动边或角来调整形状。 在内部单击即可拖动整个边界框。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
 
 使用“基于模板的框”工具 ![模板的框工具](./media/how-to-label-images/template-box-tool.png) 或“T”来创建大小相同的多个边界框。 如果图像没有边界框，并且你激活基于模板的框，则该工具将生成 50x50 像素框。 如果创建边界框，然后激活基于模板的框，任何新边界框将采用上次创建的框的大小。 可以在放置后调整基于模板的框的大小。 调整基于模板的框的大小只会调整该特定框的大小。
 
@@ -143,7 +143,7 @@ ms.locfileid: "94984441"
 
 你可以编辑现有多边形。 “锁定/解锁区域”工具![使用“锁定/解锁区域”工具编辑多边形](./media/how-to-label-images/lock-bounding-boxes-tool.png)或“L”可切换该行为。 如果区域已锁定，则只能更改新多边形的形状或位置。
 
-使用“添加或删除多边形点”工具![“添加或删除多边形点”工具](./media/how-to-label-images/add-remove-points-tool.png)或“U”调整现有多边形。 单击多边形以添加或删除点。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
+使用“添加或删除多边形顶点”工具![这是“添加或删除多边形顶点”工具图标。](./media/how-to-label-images/add-remove-points-tool.png) 或“U”调整现有多边形。 单击多边形以添加或删除点。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
 
 若要删除当前图像中的所有多边形，请选择“删除所有区域”工具![“删除所有区域”工具](./media/how-to-label-images/delete-regions-tool.png)。
 

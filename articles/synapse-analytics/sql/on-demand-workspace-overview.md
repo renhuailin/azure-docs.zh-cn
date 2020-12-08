@@ -1,5 +1,5 @@
 ---
-title: 无服务器 SQL 池（预览版）
+title: 无服务器 SQL 池
 description: 了解 Azure Synapse Analytics 中的无服务器 SQL 池。
 services: synapse analytics
 author: filippopovic
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306869"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463174"
 ---
-# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的无服务器 SQL 池（预览版） 
+# <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的无服务器 SQL 池 
 
-每个 Azure Synapse Analytics 工作区（预览版）都随附了可用于在 Lake 中查询数据的无服务器 SQL 池（预览版）终结点。
+每个 Azure Synapse Analytics 工作区都随附了可用于在 Lake 中查询数据的无服务器 SQL 池终结点。
 
 无服务器 SQL 池是针对数据湖中的数据运行的查询服务。 它可让你通过以下功能访问数据：
  
@@ -123,7 +123,7 @@ ms.locfileid: "93306869"
 
   此身份验证方法使用用户名和密码。
 
-- **Azure Active Directory 身份验证** ：
+- **Azure Active Directory 身份验证**：
 
   此身份验证方法使用 Azure Active Directory 管理的标识。 对于 Azure AD 用户，可以启用多重身份验证。 请[尽可能](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)使用 Active Directory 身份验证（集成安全性）。
 

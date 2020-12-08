@@ -1,6 +1,6 @@
 ---
 title: 共享数据库
-description: Azure Synapse Analytics 提供一个共享的元数据模型，通过该模型在无服务器 Apache Spark 池中创建一个数据库后，可以从该数据库的无服务器 SQL 池（预览版）和 SQL 池引擎访问该数据库。
+description: Azure Synapse Analytics 提供一个共享的元数据模型，通过该模型在无服务器 Apache Spark 池中创建一个数据库后，可以从该数据库的无服务器 SQL 池和 SQL 池引擎访问该数据库。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317844"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451821"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共享数据库
 
-Azure Synapse Analytics 允许不同的计算工作区引擎在其无服务器 Apache Spark 池（预览版）与无服务器 SQL 池（预览版）引擎之间共享数据库和表。
+Azure Synapse Analytics 允许不同的计算工作区引擎在其无服务器 Apache Spark 池与无服务器 SQL 池引擎之间共享数据库和表。
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（预览版，包括无服务器 SQL 池引擎）变得可见。
+使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（包括无服务器 SQL 池引擎）变得可见。
 
 Spark 默认数据库（名为 `default`）还会在无服务器 SQL 池上下文中显示为名为 `default` 的数据库。
 

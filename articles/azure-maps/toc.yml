@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: 缩放级别和磁贴网格
       href: zoom-levels-and-tile-grid.md
-    - name: 出行服务数据结构
+    - name: 移动服务
       href: mobility-service-data-structure.md
     - name: 天气服务概念
       href: weather-services-concepts.md
+    - name: 天气服务常见问题解答
+      href: weather-services-faq.md
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户

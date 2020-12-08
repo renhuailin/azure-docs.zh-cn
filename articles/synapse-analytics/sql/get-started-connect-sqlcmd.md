@@ -1,6 +1,6 @@
 ---
 title: 使用 sqlcmd 连接到 Synapse SQL
-description: 使用 sqlcmd 命令行实用程序连接并查询无服务器 SQL 池（预览版）和专用 SQL 池。
+description: 使用 sqlcmd 命令行实用程序连接并查询无服务器 SQL 池和专用 SQL 池。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686134"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451640"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL
 
 > [!div class="op_single_selector"]
-> * [Azure Data Studio（预览版）](get-started-azure-data-studio.md)
+> * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-在 Synapse SQL 中，可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令行实用程序连接并查询无服务器 SQL 池（预览版）和专用 SQL 池。  
+在 Synapse SQL 中，可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令行实用程序连接并查询无服务器 SQL 池和专用 SQL 池。  
 
 ## <a name="1-connect"></a>1.连接
 若要开始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，请打开命令提示符并输入 **sqlcmd**，后跟 Synapse SQL 数据库的连接字符串。 连接字符串需要以下参数：

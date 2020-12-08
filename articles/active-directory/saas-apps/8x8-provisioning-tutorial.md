@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181146"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532666"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教程：为 8x8 配置自动用户预配
 
@@ -50,17 +50,17 @@ ms.locfileid: "96181146"
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>要在 8x8 Configuration Manager 中配置用户预配访问令牌，请执行以下操作：
 
-1. 登录到 [Configuration Manager](https://vo-cm.8x8.com)。 选择“标识管理”。
+1. 登录到[管理控制台](https://admin.8x8.com)。 选择“标识管理”。
 
-   ![标识管理](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![管理员](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. 单击“显示用户预配信息”链接以生成令牌。
 
-   ![显示用户预配](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![显示](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. 复制 8x8 URL 和 8x8 API 令牌值 。 在 Azure 门户的 8x8 应用程序的“预配”选项卡中，将这些值分别输入“租户 URL”和“机密令牌”字段 。
 
-   ![复制 URL 和令牌](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![令牌](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 8x8
 

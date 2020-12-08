@@ -5,12 +5,12 @@ author: emaher
 ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334032"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437314"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure 实验室服务中的体系结构基础知识
 
@@ -20,7 +20,7 @@ Azure 实验室服务确实提供了几个区域，可让你将自己的资源�
 
 下面是教室实验室的基本体系结构。  实验室帐户托管在你的订阅中。 学生 VM 以及支持这些 VM 所需的资源托管在实验室服务拥有的订阅中。 让我们更详细地讨论实验室服务的订阅中的内容。
 
-![教室实验室基本体系结构](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![实验室基本体系结构](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>托管资源
 

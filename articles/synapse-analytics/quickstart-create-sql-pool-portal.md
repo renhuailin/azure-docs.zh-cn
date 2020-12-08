@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure 门户创建专用 SQL 池（预览版）
+title: 快速入门：使用 Azure 门户创建专用 SQL 池
 description: 遵循本指南中的步骤，使用 Azure 门户新建专用 SQL 池。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541005"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462011"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用 SQL 池（预览版）
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用 SQL 池
 
 Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转换和分析数据，以及对数据建模。 专用 SQL 池提供基于 T-SQL 的计算和存储功能。 在 Synapse 工作区中创建专用 SQL 池后，可以加载、处理和提供数据以及为数据建模，更快地获取分析见解。
 

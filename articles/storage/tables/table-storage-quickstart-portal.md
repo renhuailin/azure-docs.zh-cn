@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
-ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236261"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326754"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 存储表 
 
@@ -31,15 +31,15 @@ ms.locfileid: "88236261"
 
 1. 单击“概述”>“表”。
 
-   ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![在存储帐户 vmamcgestorage 中，突出显示了“概述”选项卡。 在“概述”窗格中的“服务”下，突出显示了“表”。](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
-2. 单击“+ 表”****。
+2. 单击“+ 表”。
 
-   ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![在 vmamcgestorage 的“表服务”中，突出显示了“+ 表”选项。](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
-3. 在“表名”**** 框中键入表名，然后单击“确定”****。 
+3. 在“表名”框中键入表名，然后单击“确定”。 
 
-   ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![在表服务的“添加表”选项卡上，“表名”中输入了“我的表”并突出显示。 选中并突出显示了“确定”按钮。](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>后续步骤
 

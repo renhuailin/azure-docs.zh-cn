@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 69a0272061d8518119114e8fe7b023c889639844
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369250"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171551"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>托管 HSM 灾难恢复
 
@@ -35,7 +35,7 @@ ms.locfileid: "94369250"
 1. 获取新 HSM 的备份。 进行任何还原之前都需要备份（即使 HSM 为空）。 使用备份能够轻松地实现回滚。
 1. 从源 HSM 还原最近的 HSM 备份
 
-密钥保管库的内容会在区域中复制，并且会复制到至少 150 英里以外（但位于同一个地理位置）的次要区域。 此功能可以保持密钥和机密的高持久性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)一文。
+通过执行这些步骤，你能够手动将 HSM 的内容复制到另一个区域。 HSM 名称（以及服务终结点 URI）将有所不同，因此可能必须更改应用程序配置才能从其他位置使用这些密钥。
 
 ## <a name="create-a-new-managed-hsm"></a>新建托管 HSM
 
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 此命令的输出会显示创建的托管 HSM 的属性。 两个最重要的属性是：
 
-* **名称** ：在本示例中，名称为 ContosoMHSM。 将在其他 Key Vault 命令中使用此名称。
-* **hsmUri** ：在本示例中，URI 为“https://contosohsm.managedhsm.azure.net”。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
+* **名称**：在本示例中，名称为 ContosoMHSM。 将在其他 Key Vault 命令中使用此名称。
+* **hsmUri**：在本示例中，URI 为“https://contosohsm.managedhsm.azure.net”。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
 
 Azure 帐户现已获得授权，可在此托管 HSM 上执行任何作业。 到目前为止，尚未授权其他任何人。
 

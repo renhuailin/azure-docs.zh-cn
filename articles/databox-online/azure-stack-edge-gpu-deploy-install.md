@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743397"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449370"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 安装 Azure Stack Edge Pro
 
@@ -228,7 +228,7 @@ ms.locfileid: "91743397"
 7. 将一个或多个端口 2、端口 3、端口 4、端口 5 或端口 6 连接到数据中心网络/Internet。
 
     - 如果连接端口 2，请使用 1-GbE RJ-45 网线。
-    - 对于 10/25-GbE 网络接口，请使用 SFP+ 铜缆。
+    - 对于 10/25-GbE 网络接口，请使用 SFP+ 铜缆或光纤。 如果使用光纤，请为 SFP 适配器使用光纤接口。
 
 ## <a name="next-steps"></a>后续步骤
 

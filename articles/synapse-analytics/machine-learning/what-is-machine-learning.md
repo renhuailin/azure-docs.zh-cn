@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448270"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics 中的机器学习功能（工作区预览版）
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的机器学习功能
 
 Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如何在 Azure Synapse 的上下文中应用机器学习。
 
@@ -48,11 +46,11 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 机器学习过程中的一个重要部分是通过浏览和可视化来了解数据。
 
-根据数据的存储位置，Synapse 提供了一组不同的工具来浏览和准备用于分析和机器学习的数据。 若要开始使用数据浏览，最快速的方法之一是直接对数据湖中的数据使用 Apache Spark 或 Synapse SQL 无服务器池。
+根据数据的存储位置，Synapse 提供了一组不同的工具来浏览和准备用于分析和机器学习的数据。 若要开始使用数据浏览，最快速的方法之一是直接对数据湖中的数据使用 Apache Spark 或无服务器 SQL 池。
 
 * [Apache Spark for Azure Synapse](../spark/apache-spark-overview.md) 提供了大规模转换、准备和浏览数据的功能。 这些 Spark 池提供了用于大规模数据处理的 PySpark/Python、Scala 和 .NET 等工具。 使用功能强大的可视化效果库，可以增强数据浏览体验，以便更好地了解数据。 [详细了解如何使用 Spark 浏览和可视化 Synapse 中的数据](../get-started-analyze-spark.md)。
 
-* [Synapse SQL 无服务器池](../sql/on-demand-workspace-overview.md)提供了一种直接通过数据湖使用 TSQL 浏览数据的方法。 Synapse SQL 无服务器池还在 Synapse Studio 中提供了一些内置的可视化效果。 [详细了解如何使用 Synapse SQL 无服务器池来浏览数据](../get-started-analyze-sql-on-demand.md)。
+* [无服务器 SQL 池](../sql/on-demand-workspace-overview.md)提供了一种直接通过数据湖使用 TSQL 浏览数据的方法。 无服务器 SQL 池还在 Synapse Studio 中提供了一些内置的可视化效果。 [详细了解如何使用无服务器 SQL 池来浏览数据](../get-started-analyze-sql-on-demand.md)。
 
 ### <a name="modeling"></a>建模
 

@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0897ca35dd5ae1b7209a36aee4bd5335d4ea4d25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681525"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462359"
 ---
 # <a name="connect-to-synapse-sql"></a>连接到 Synapse SQL
 连接到 Azure Synapse Analytics 中的 Synapse SQL 功能。
 
-## <a name="supported-tools-for-serverless-sql-pool-preview"></a>无服务器 SQL 池（预览版）支持的工具
+## <a name="supported-tools-for-serverless-sql-pool"></a>无服务器 SQL 池支持的工具
 
 从版本 1.18.0 开始，完全支持 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)。 从版本 18.5 开始，部分支持 SSMS，仅可以使用其进行连接和查询。
 

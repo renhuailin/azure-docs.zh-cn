@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure PowerShell 创建 Synapse SQL 池
-description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建 Synapse SQL 池。
+title: 快速入门：使用 Azure PowerShell 创建专用 SQL 池（之前称为 SQL DW）
+description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建专用 SQL 池（之前称为 SQL DW）。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456579"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Synapse SQL 池
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用 SQL 池（之前称为 SQL DW）
 
-使用 Azure PowerShell 在 Azure Synapse Analytics 中创建 Synapse SQL 池（数据仓库）。
+使用 Azure PowerShell 在 Azure Synapse Analytics 中创建专用 SQL 池（之前称为 SQL DW）。
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 > [!IMPORTANT]
-> 创建 SQL 池可能会产生新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 创建专用 SQL 池（之前称为 SQL DW）可能会产生新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
-使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过 SQL 池服务防火墙连接到 SQL 池。
+使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过专用 SQL 池服务防火墙连接到专用 SQL 池（之前称为 SQL DW）。
 
 在以下示例中，防火墙仅对其他 Azure 资源开放。 要启用外部连接，请将 IP 地址更改为适合你环境的地址。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL 终结点通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。
 >
 
-## <a name="create-a-sql-pool"></a>创建 SQL 池
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>创建专用 SQL 池（之前称为 SQL DW）
 
-以下示例使用以前定义的变量创建 SQL 池。  它将服务目标指定为 DW100c，这是针对 SQL 池的低成本起点。
+以下示例使用以前定义的变量创建专用 SQL 池（之前称为 SQL DW）。  它将服务目标指定为 DW100c，这是针对专用 SQL 池（之前称为 SQL DW）的低成本起点。
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,11 +124,11 @@ New-AzSqlDatabase `
 
 所需的参数有：
 
-* **RequestedServiceObjectiveName**：请求的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)的数量。 增加此数量会增加计算成本。 有关支持值的列表，请参阅[内存和并发限制](memory-concurrency-limits.md)。
-* **DatabaseName**：要创建的 SQL 池的名称。
+* **RequestedServiceObjectiveName**：请求的 [数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)的数量。 增加此数量会增加计算成本。 有关支持值的列表，请参阅[内存和并发限制](memory-concurrency-limits.md)。
+* **DatabaseName**：正在创建的专用 SQL 池（之前称为 SQL DW）的名称。
 * **ServerName**：用于创建过程的服务器名称。
 * **ResourceGroupName**：要使用的资源组。 若要查找订阅中可用的资源，请使用 Get-AzureResource。
-* **Edition**：必须是“DataWarehouse”才能创建 SQL 池。
+* **Edition**：必须是“DataWarehouse”才能创建专用 SQL 池（之前称为 SQL DW）。
 
 可选参数有：
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建 SQL 池，创建防火墙规则并连接到 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。
+现已创建专用 SQL 池（之前称为 SQL DW），创建防火墙规则并连接到专用 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到专用 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。

@@ -9,21 +9,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325799"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325343"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第一部分** 。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第一部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
@@ -75,7 +74,7 @@ ms.locfileid: "93325799"
 
 使用名为 **german.data** 的文件。 将此文件下载到本地硬盘驱动器。  
 
-**german.data** 数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的特征集（ *特征向量* ），此特征集提供每个信贷申请人的标识特征。 每行增加一列表示申请人经计算的信贷风险，其中700 个申请人标识为低信贷风险，300 个申请人标识为高信贷风险。
+**german.data** 数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的特征集（*特征向量*），此特征集提供每个信贷申请人的标识特征。 每行增加一列表示申请人经计算的信贷风险，其中700 个申请人标识为低信贷风险，300 个申请人标识为高信贷风险。
 
 UCI 网站提供此数据的功能向量的属性说明。 此数据包括财务信息、信用历史记录、就业状态和个人信息。 每个申请人都将提供二进制分级，指示他们的信贷风险是高还是低。 
 
@@ -119,7 +118,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 打开机器学习工作室（经典版）主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”，选择“工作室”，并登录。
+2. 单击窗口左上角的菜单 ![这是菜单图标 - 三条堆叠线。](./media/tutorial-part1-credit-risk/menu.png)， 单击“Azure 机器学习”，选择“工作室”，并登录 。
 
 3. 单击窗口底部的“+ 新建”。
 

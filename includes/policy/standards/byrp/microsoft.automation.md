@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d6b8fe031b863b84f9bb3ce6bd926bcfffe6a8f7
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c2385d07ccb81041bd340a8bec0412a8f14cef56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698694"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96477928"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -22,3 +22,5 @@ ms.locfileid: "94698694"
 |---|---|---|---|---|
 |数据保护 |4.8 |加密静态的敏感信息 |[自动化帐户变量应加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 
+> [!NOTE]
+> 创建自动化帐户变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../../../articles/security-center/recommendations-reference.md#recs-computeapp)中所述。 如果你希望从该安全建议中排除未加密的变量，请参阅[从建议和安全分数中排除资源](../../../../articles/security-center/exempt-resource.md)以创建排除规则。

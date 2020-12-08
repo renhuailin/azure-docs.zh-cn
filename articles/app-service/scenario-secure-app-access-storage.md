@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020205"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435835"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>教程：从 Web 应用访问 Azure 存储
 
@@ -23,7 +24,7 @@ ms.locfileid: "96020205"
 
 :::image type="content" alt-text="关系图展示如何访问存储。" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-你要从 Web 应用添加对 Azure 数据平面（Azure 存储、Azure SQL 数据库、Azure Key Vault 或其他服务）的访问权限。 你可以使用共享密钥，但之后需要考虑操作安全性：谁可以创建、部署和管理机密。 还可能会将此密钥签入 GitHub，黑客知道如何扫描它。 向 Web 应用授予数据访问权限的更安全方法是使用[托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。
+你要从 Web 应用添加对 Azure 数据平面（Azure 存储、Azure SQL 数据库、Azure Key Vault 或其他服务）的访问权限。 你可以使用共享密钥，但之后需要考虑操作安全性：谁可以创建、部署和管理机密。 还可能会将此密钥签入 GitHub，黑客知道如何扫描它。 向 Web 应用授予数据访问权限的更安全方法是使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 Azure Active Directory (Azure AD) 中的托管标识允许应用程序服务通过基于角色的访问控制 (RBAC) 访问资源，而不要求使用应用凭据。 向 Web 应用分配托管标识之后，Azure 会负责创建和分发证书。 用户无需费心管理机密或应用凭据。
 
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>访问 Blob 存储 (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类用于获取代码的令牌凭据，以授权对 Azure 存储的请求。 创建 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类的实例，该类使用托管标识提取令牌并将其附加到服务客户端。 下面的代码示例获取经过身份验证的令牌凭据，并使用它创建服务客户端对象，该对象将上传新的 Blob。
+
+若要查看作为示例应用程序一部分的代码，请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)。
 
 ### <a name="install-client-library-packages"></a>安装客户端库包
 

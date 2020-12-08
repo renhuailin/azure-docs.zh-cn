@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918906"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450892"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>教程：使用 Apache Spark 和 Azure Synapse Analytics 创建 Power BI 报表
 
@@ -69,9 +69,12 @@ ms.locfileid: "95918906"
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. 最后，我们将使用 Apache Spark ```saveAsTable``` 方法保存数据帧。 这样，你之后就可以使用无服务器 SQL 池来查询并连接到同一个表。
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>使用无服务器 SQL 池查询数据
-Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池（预览版）与无服务器 SQL 池（预览版）之间共享数据库和表。 这是通过 Synapse [共享元数据管理](../metadata/overview.md)功能实现的。 因此，Spark 创建的数据库及其基于 Parquet 的表将显示在工作区无服务器 SQL 池。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其无服务器 Apache Spark 池与无服务器 SQL 池之间共享数据库和表。 这是通过 Synapse [共享元数据管理](../metadata/overview.md)功能实现的。 因此，Spark 创建的数据库及其基于 Parquet 的表将显示在工作区无服务器 SQL 池。
 
 使用无服务器 SQL 池查询 Apache Spark 表：
    1. 保存 Apache Spark 表后，切换到“数据”选项卡。

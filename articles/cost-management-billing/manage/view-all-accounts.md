@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132119"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344328"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 门户中的计费帐户和范围
 
@@ -23,7 +23,7 @@ Azure 门户支持以下类型的计费帐户：
 
 - **Microsoft Online Services 计划**：Microsoft Online Services 计划的计费帐户是通过 Azure 网站注册 Azure 时创建的。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。
 
-- **企业协议**：当组织签署使用 Azure 的[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 时，将为企业协议创建一个计费帐户。 在企业协议中，最多可以有 2000 个订阅。
+- **企业协议**：当组织签署使用 Azure 的 [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 时，将为企业协议创建一个计费帐户。 在企业协议中，最多可以有 2000 个订阅。
 
 - **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。 在 Microsoft 客户协议中，最多可以有 20 个订阅。 有关详细信息，请参阅 [Microsoft 客户协议的计费帐户入门](../understand/mca-overview.md)。
 
@@ -33,6 +33,12 @@ Azure 门户支持以下类型的计费帐户：
 
 ## <a name="scopes-for-billing-accounts"></a>计费帐户的范围
 范围是计费帐户中的一个节点，可使用该节点查看和管理计费。 可以在其中管理计费数据、付款、发票，以及执行常规的帐户管理。
+
+如果没有查看或管理计费帐户的权限，则可能没有访问权限。 你可以要求你的计费帐户管理员向你授予访问权限。 有关详细信息，请参阅下列文章：
+
+- [Microsoft Online Services 计划访问权限](manage-billing-access.md)
+- [Microsoft 客户协议访问权限](understand-mca-roles.md)
+- [企业协议访问权限](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services 计划
 
