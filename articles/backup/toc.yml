@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure 文件共享备份支持矩阵
           href: azure-file-share-support-matrix.md
+        - name: Active Directory 域控制器
+          href: active-directory-backup-restore.md
         - name: Azure Policy 支持的 VM SKU
           href: backup-azure-policy-supported-skus.md
     - name: 常见问题 (FAQ)
@@ -128,7 +130,7 @@
       items:
         - name: 概述
           href: backup-azure-vms-introduction.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
               href: backup-instant-restore-capability.md
@@ -190,7 +192,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -226,7 +228,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -244,7 +246,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: Backup
+        - name: 备份
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
@@ -417,7 +419,7 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
