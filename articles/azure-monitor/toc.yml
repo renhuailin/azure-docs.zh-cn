@@ -867,7 +867,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -890,8 +890,6 @@
               items:
                 - name: 对 Web 应用和服务进行深度诊断
                   href: app/devops.md
-                - name: 在 Web 应用程序中监视性能
-                  href: app/web-monitor-performance.md
                 - name: 将开发、测试和生产隔开
                   href: app/separate-resources.md
                 - name: 如何在 Application Insights 中执行...？
