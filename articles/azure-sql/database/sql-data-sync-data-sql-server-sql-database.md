@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531133"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922287"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -81,6 +81,14 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | **优点** | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>\- Azure SQL 托管实例支持 |
 | **缺点** | - 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
 
+## <a name="private-link-for-data-sync-preview"></a>数据同步 (预览的专用链接) 
+使用新的私有链接 (预览版) 功能，你可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的 [一般要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements) 。 
+
+![数据同步的专用链接](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> 在同步组部署过程中或使用 PowerShell 时，必须在 Azure 门户的 " **专用终结点连接** " 页中手动批准服务托管的专用终结点。
+
 ## <a name="get-started"></a>入门 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>在 Azure 门户中设置数据同步
@@ -126,6 +134,8 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 - 必须同时为同步成员和中心启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
+- 若要将专用链接与数据同步结合使用，成员和中心数据库都必须托管在 Azure (相同或不同的区域) 在同一云类型中 (例如，在公有云中或同时在政府云) 中。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册网络资源提供程序。 最后，必须在同步配置期间，在 "Azure 门户" 或 "通过 PowerShell" 的 "专用终结点连接" 部分中手动批准 "数据同步" 专用链接。 有关如何批准专用链接的详细信息，请参阅 [Set up SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
+
 ### <a name="general-limitations"></a>一般限制
 
 - 表不能包含非主键标识列。
@@ -169,6 +179,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 > 如果只有一个同步组，则单个同步组中最多可能有 30 个终结点。 如果有多个同步组，则所有同步组中的终结点总数不能超过 30。 如果数据库属于多个同步组，则该数据库计算为多个终结点，而不是一个。
 
 ### <a name="network-requirements"></a>网络要求
+
+> [!NOTE]
+> 如果使用专用链接，则这些网络要求不适用。 
 
 在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL server 的设置中必须具有以下配置 `Firewalls and virtual networks` ：
 

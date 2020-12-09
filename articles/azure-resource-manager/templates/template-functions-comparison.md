@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 比较
-description: 介绍可在 Azure 资源管理器模板中使用的用于比较值的函数。
+description: 介绍在 Azure 资源管理器模板中使用的用于比较值的 (ARM 模板) 的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004596"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920537"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
-资源管理器提供了多个用于在 Azure 资源管理器 (ARM) 模板中进行比较的函数。
+资源管理器提供了几个用于在 Azure 资源管理器模板中进行比较的函数 (ARM 模板) ：
 
 * [coalesce](#coalesce)
 * [equals](#equals)
@@ -133,7 +133,7 @@ output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
@@ -317,7 +317,7 @@ output checkNotEquals bool = ! (1 == 2)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
@@ -398,7 +398,7 @@ output checkStrings bool = firstString > secondString
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
@@ -479,7 +479,7 @@ output checkStrings bool = firstString >= secondString
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
@@ -560,7 +560,7 @@ output checkStrings bool = firstString < secondString
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
@@ -635,4 +635,4 @@ output checkStrings bool = firstString <= secondString
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461221"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921813"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
 
@@ -45,7 +45,7 @@ ms.locfileid: "96461221"
 - *Data_Source_WaterMarkColumn* 是源表中的用于识别新行或已更新行的列名。 此列的类型通常为 *datetime*、*INT* 等。
 - *Data_Destination_Container* 是在目标存储中将数据复制到的位置的根路径。
 - *Data_Destination_Directory* 是在目标存储中将数据复制到的位置的根下的目录路径。
-- *Data_Destination_Table_Name* 是目标存储中要将数据复制到的位置（在选择“Azure Synapse Analytics (以前称为 SQL DW)”作为“数据目标”时适用）。
+- *Data_Destination_Table_Name* 是将数据复制到目标存储中的位置 (适用于选择 "Azure Synapse Analytics" 作为数据目标) 时。
 - *Data_Destination_Folder_Path* 是将数据复制到目标存储中的位置 (适用于选择 "文件系统" 或 "Azure Data Lake Storage Gen1" 作为数据目标) 的情况。
 - *Control_Table_Table_Name* 是用于存储高水印值的外部控制表。
 - *Control_Table_Table_Name* 是外部控制表中要将高水印值存储到的列。

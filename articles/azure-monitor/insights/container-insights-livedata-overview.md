@@ -2,14 +2,14 @@
 title: 使用适用于容器的 Azure Monitor 查看实时数据（预览版）| Microsoft Docs
 description: 本文介绍在适用于容器的 Azure Monitor 中，如何在不使用 kubectl 的情况下实时查看 Kubernetes 日志、事件和 Pod 指标。
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9c431cebddb210add496dcca20a0334cc5b12bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337960"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920737"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
@@ -22,25 +22,20 @@ ms.locfileid: "85337960"
 
 有关设置实时数据（预览版）功能或对其进行故障排除的帮助，请参阅[安装指南](container-insights-livedata-setup.md)。 该功能直接访问 Kubernetes API，有关身份验证模型的其他信息可以在[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到。
 
-## <a name="live-data-preview-functionality-overview"></a>实时数据（预览版）功能概述
+## <a name="view-deployment-live-logs-preview"></a> (预览查看部署实时日志) 
+使用以下过程来查看 AKS 群集中不受容器 Azure Monitor 监视的部署的实时日志。 如果群集使用 Azure Monitor 容器，请使用以下过程查看节点、控制器、容器和部署的实时数据。
 
-### <a name="search"></a>搜索
+1. 在 Azure 门户中，浏览到 AKS 群集资源组，然后选择 AKS 资源。
 
-![实时数据控制台窗格筛选器示例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+2. 在菜单的 " **Kubernetes 资源**" 部分中选择 **工作负荷**。
 
-实时数据（预览版）功能包括搜索功能。 在“搜索”字段中，可以通过键入关键字或字词来筛选结果，并突出显示任何匹配结果以允许快速查看。 在查看事件时，可以进一步对结果进行限制，只需使用在搜索栏右侧发现的“筛选器”药丸图标即可。 根据所选资源，药丸图标会列出可供选择的 Pod、命名空间或群集。
+3. 从 " **部署** " 选项卡中选择一个部署。
 
-### <a name="scroll-lock-and-pause"></a>滚动锁定和暂停
+4. 从部署的菜单中选择 " **实时日志 (预览")** 。
 
-若要暂停自动滚动并控制窗格的行为，以便通过手动方式滚动浏览读取的新数据，可使用“滚动”选项。 若要重新启用自动滚动，只需再次选择“滚动”选项。 也可通过选择“暂停”选项暂停对日志或事件数据的检索，并在准备好继续时，只需选择“开始”即可 。
+5. 选择要开始收集实时数据的 pod。
 
-![实时数据控制台窗格的暂停实时视图](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
-
->[!IMPORTANT]
->在对问题进行故障排除时，建议只短暂地挂起或暂停自动滚动。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。
-
->[!IMPORTANT]
->此功能运行期间不会永久存储任何数据。 当你关闭或离开浏览器时，将删除在此会话期间捕获的所有信息。 数据只在指标功能的五分钟窗口内显示，任何超过五分钟的指标也将删除。 实时数据（预览版）在合理内存使用量限制内缓冲查询。
+    ![部署实时日志](./media/container-insights-livedata-overview/live-data-deployment.png)
 
 ## <a name="view-logs"></a>查看日志
 
@@ -108,6 +103,26 @@ ms.locfileid: "85337960"
 成功进行身份验证后，实时数据（预览版）控制台窗格将显示在性能数据网格下。 检索指标数据并开始流式传输到控制台，以便在两个图表中显示。 窗格标题会显示进行容器分组时所使用的 Pod 的名称。
 
 ![查看 Pod 指标示例](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
+
+## <a name="using-live-data-views"></a>使用实时数据视图
+以下各节介绍了可在不同的实时数据视图中使用的功能。
+
+### <a name="search"></a>搜索
+实时数据（预览版）功能包括搜索功能。 在“搜索”字段中，可以通过键入关键字或字词来筛选结果，并突出显示任何匹配结果以允许快速查看。 在查看事件时，可以进一步对结果进行限制，只需使用在搜索栏右侧发现的“筛选器”药丸图标即可。 根据所选资源，药丸图标会列出可供选择的 Pod、命名空间或群集。
+
+![实时数据控制台窗格筛选器示例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+### <a name="scroll-lock-and-pause"></a>滚动锁定和暂停
+
+若要暂停自动滚动并控制窗格的行为，以便通过手动方式滚动浏览读取的新数据，可使用“滚动”选项。 若要重新启用自动滚动，只需再次选择“滚动”选项。 也可通过选择“暂停”选项暂停对日志或事件数据的检索，并在准备好继续时，只需选择“开始”即可 。
+
+![实时数据控制台窗格的暂停实时视图](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+>[!IMPORTANT]
+>在对问题进行故障排除时，建议只短暂地挂起或暂停自动滚动。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。
+
+>[!IMPORTANT]
+>此功能运行期间不会永久存储任何数据。 当你关闭或离开浏览器时，将删除在此会话期间捕获的所有信息。 数据只在指标功能的五分钟窗口内显示，任何超过五分钟的指标也将删除。 实时数据（预览版）在合理内存使用量限制内缓冲查询。
 
 ## <a name="next-steps"></a>后续步骤
 

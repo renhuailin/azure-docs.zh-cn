@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876203"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921866"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -19,8 +19,11 @@ ms.locfileid: "91876203"
 
 ## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=js) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
-2. 从你要将 JavaScript 遥测数据发送到的资源（从步骤 1 中得到的）复制检测密钥（也称为“iKey”）。你需要将该密钥添加到 Application Insights JavaScript SDK 的 `instrumentationKey` 设置。
+2. 在步骤1中，将 _检测密钥_ （ (也称为 "iKey" ) 或用于要向其 (发送 JavaScript 遥测的资源的 [连接字符串](#connection-string-setup) 复制到该资源。 ) ，需将其添加到 `instrumentationKey` `connectionString` Application Insights JavaScript SDK 的或设置。
 3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
     * [npm 设置](#npm-based-setup)
     * [JavaScript 代码片段](#snippet-based-setup)
@@ -40,7 +43,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **Typings 包含在此包**中，因此你 **不** 需要安装单独的 Typings 包。
+> Typings 已包含在此包中，因此无需安装单独的 typings 包 。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -102,27 +105,41 @@ IE 8（或更低版本）尤其不支持报告 SDK 加载失败。 假设大多�
 
 每个配置选项都会显示在一个新行上，如果不希望覆盖作为 [可选] 列出的项的默认值，则可以删除该行以最大程度地减小所返回页面的大小。
 
-可用配置有： 
+可用配置有：
 
 | 名称 | 类型 | 说明
 |------|------|----------------
 | src | 字符串 [必需] | 要从中加载 SDK 的完整 URL。 此值用于动态添加的 &lt;script /&gt; 标记的“src”属性。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
-| name | 字符串 [可选] | 已初始化的 SDK 的全局名称，默认值为 `appInsights` 。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供一个名称值或上一个实例似乎是通过全局名称 appInsightsSDK 分配的，则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>```，SDK 初始化代码需要此名称，以确保它正在初始化和更新的代码片段主干和代理方法正确。
+| name | 字符串 [可选] | 已初始化的 SDK 的全局名称，默认值为 `appInsights`。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供一个名称值或上一个实例似乎是通过全局名称 appInsightsSDK 分配的，则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>```，SDK 初始化代码需要此名称，以确保它正在初始化和更新的代码片段主干和代理方法正确。
 | ld | 毫秒数 [可选] | 定义在尝试加载 SDK 之前要等待的加载延迟。 默认值为 0 毫秒，任何负值都表示将立即向页面的 &lt;head&gt; 区域添加脚本标记，然后在加载脚本（或失败）之前阻止页面加载事件。
 | useXhr | 布尔 [可选] | 此设置仅用于报告 SDK 加载失败。 报告将首先尝试使用 fetch()（如果可用），然后回退到 XHR，将此值设置为 true 即可绕过提取检查。 仅当在提取将无法发送失败事件的环境中使用应用程序时，才需要使用此值。
-| crossOrigin | 字符串 [可选] | 通过包含此设置，添加以下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 默认)  (不定义建议值;"";或 "anonymous" (适用于所有有效值，请参阅[HTML `crossorigin` 特性：](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)文档) 
+| crossOrigin | 字符串 [可选] | 通过包含此设置，添加以下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 未定义建议的值（默认值）;""; 或“anonymous”（如需了解所有有效值，请参阅 [HTML 属性：`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) 文档）
 | cfg | 对象 [必需] | 初始化期间传递到 Application Insights SDK 的配置。
+
+### <a name="connection-string-setup"></a>连接字符串设置
+
+对于 NPM 或片段设置，还可以使用连接字符串配置 Application Insights 的实例。 只需 `instrumentationKey` 将字段替换为 `connectionString` 字段。
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
 
 默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 其中包括：
 
-- 应用中**未捕获到的异常**，包括以下相关信息
+- 应用中 **未捕获到的异常**，包括以下相关信息
     - 堆栈跟踪
     - 异常详细信息和错误随附的消息
     - 错误的行号与列号
     - 引发错误的 URL
-- 应用发出的**网络依赖项请求**：**XHR** 和 **FETCH**（默认已禁用提取集合）请求，包括以下相关信息
+- 应用发出的 **网络依赖项请求**：**XHR** 和 **FETCH**（默认已禁用提取集合）请求，包括以下相关信息
     - 依赖项源的 URL
     - 用于请求依赖项的命令和方法
     - 请求持续时间
@@ -163,9 +180,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 发送前要批处理遥测数据的时间长短（毫秒） |
 | disableExceptionTracking | false | 如果为 true，则不自动收集异常。 默认值为 false。 |
 | disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
-| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部**调试数据都将引发为异常，**而不是**记录这些数据。 默认值为 false。 <br>***注意：*** 如果启用此设置，每当发生内部错误时，都会导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
-| loggingLevelConsole | 0 | 将**内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
-| loggingLevelTelemetry | 1 | 将**内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
+| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部** 调试数据都将引发为异常，**而不是** 记录这些数据。 默认值为 false。 <br>*注意：如果启用此设置，每当发生内部错误时，都会导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
+| loggingLevelConsole | 0 | 将内部 Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
+| loggingLevelTelemetry | 1 | 将 **内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
 | diagnosticLogInterval | 10000 | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） |
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
@@ -195,20 +212,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
 | distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
 | enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。
-| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找和包含其他浏览器窗口的标记。报告的 (XHR 中的性能计时 `ajax` ，并提取) 报告的指标。
+| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。
 | maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。
-| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 在重新尝试查找 windows 之前需要等待的时间量。请求的性能计时 `ajax` ，时间以毫秒为单位，并直接传递到 setTimeout ( # A1。
+| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 重新尝试为 `ajax` 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。
 | enableUnhandledPromiseRejectionTracking | false | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。
 
-## <a name="enable-time-on-page-tracking"></a>启用页面时跟踪
+## <a name="enable-time-on-page-tracking"></a>启用“页面访问时间”跟踪
 
 通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
 
 ## <a name="enable-correlation"></a>启用关联
 
-相关生成并发送启用分布式跟踪的数据，并为 [应用程序映射](../app/app-map.md)、 [端到端事务视图](../app/app-map.md#go-to-details)和其他诊断工具提供支持。
+关联功能会生成并发送启用分布式跟踪的数据，并为[应用程序映射](../app/app-map.md)、[端到端事务查看](../app/app-map.md#go-to-details)和其他诊断工具提供支持。
 
-下面的示例演示启用关联所需的所有可能配置，其中包含以下特定于方案的说明：
+下面的示例展示了启用关联功能所需的所有可能的配置，并且下方提供了特定于方案的说明：
 
 ```javascript
 // excerpt of the config section of the JavaScript SDK snippet with correlation
@@ -226,18 +243,18 @@ cfg: { // Application Insights Configuration
 
 ``` 
 
-如果客户端与之通信的任何第三方服务器都无法接受 `Request-Id` 和 `Request-Context` 标头，并且无法更新其配置，则需要通过配置属性将其放入排除列表中 `correlationHeaderExcludeDomains` 。 此属性支持通配符。
+如果与客户端通信的任何第三方服务器都不接受 `Request-Id` 和 `Request-Context` 标头，并且你无法更新其配置，则需要通过 `correlationHeaderExcludeDomains` 配置属性将其放入排除列表中。 此属性支持通配符。
 
-服务器端需要能够接受与这些标头相关的连接。 根据 `Access-Control-Allow-Headers` 服务器端的配置，通常需要通过手动添加和扩展服务器端列表 `Request-Id` `Request-Context` 。
+服务器端需要能够接受与所示的这些标头的连接。 根据服务器端的 `Access-Control-Allow-Headers` 配置，通常你需要通过手动添加 `Request-Id` 和 `Request-Context` 来扩展服务器端列表。
 
-访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、 `<your header>`
+Access-Control-Allow-Headers：`Request-Id`、`Request-Context`、`<your header>`
 
 > [!NOTE]
-> 如果使用的是2020或更高版本中发布的 OpenTelemtry 或 Application Insights Sdk，我们建议使用 [WC3 TraceContext](https://www.w3.org/TR/trace-context/)。 请参阅 [此处](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的配置指南。
+> 如果使用的是 2020 年发布的 OpenTelemtry 或 Application Insights SAK 或更高版本，我们建议使用 [WC3 TraceContext](https://www.w3.org/TR/trace-context/)。 请参阅[此处](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的配置指南。
 
 ## <a name="single-page-applications"></a>单页应用程序
 
-默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
+默认情况下，此 SDK **不会** 处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
 
 目前，我们提供了一个单独的 [React 插件](javascript-react-plugin.md)（可以使用此 SDK 对其进行初始化）。 该插件也能为你实现路由更改跟踪，并可收集其他特定于 React 的遥测数据。
 > [!NOTE]
@@ -255,21 +272,21 @@ cfg: { // Application Insights Configuration
 
 可以转到“指标”并添加你感兴趣的各个指标，来查看浏览器/客户端数据：
 
-!["指标" 页的屏幕截图，Application Insights 显示 web 应用程序的指标数据的图形显示。](./media/javascript/page-view-load-time.png)
+![Application Insights“指标”页的屏幕截图，其中显示了 Web 应用程序指标数据的图形显示。](./media/javascript/page-view-load-time.png)
 
 还可以通过门户中的“浏览器”体验查看 JavaScript SDK 中的数据。
 
 选择“浏览器”，然后选择“失败”或“性能”。
 
-![Application Insights 中的 "浏览器" 页的屏幕截图，显示如何将浏览器故障或浏览器性能添加到可以为 web 应用程序查看的指标。](./media/javascript/browser.png)
+![Application Insights“浏览器”页的屏幕截图，其中显示了如何将浏览器故障或浏览器性能添加到可以为 Web 应用程序查看的指标中。](./media/javascript/browser.png)
 
 ### <a name="performance"></a>性能
 
-![Application Insights 中的 "性能" 页的屏幕截图，显示了 web 应用程序的操作指标的图形显示。](./media/javascript/performance-operations.png)
+![Application Insights“性能”页的屏幕截图，其中显示了 Web 应用程序操作指标的图形显示。](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>依赖项
 
-![显示 web 应用程序的依赖项指标图形显示的 "性能" 页面的屏幕截图 Application Insights。](./media/javascript/performance-dependencies.png)
+![Application Insights“性能”页的屏幕截图，其中显示了 Web 应用程序依赖项指标的图形显示。](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>分析
 
@@ -302,7 +319,7 @@ dataset
 
 1. 请在 Azure 门户中选择一个异常遥测项，以查看其“端到端事务详细信息”
 2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件相匹配，但后缀为 `.map`
-3. 将源映射拖放到 Azure 门户中的调用堆栈上，该 ![ 图像显示了如何将源映射文件从生成文件夹拖放到 Azure 门户中的 "调用堆栈" 窗口。](https://i.imgur.com/Efue9nU.gif)
+3. 将源映射拖放到 Azure 门户 中的调用堆栈上 ![该动画图像显示了如何将源映射文件从生成文件夹拖放到 Azure 门户的“调用堆栈”窗口中。](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web 基本版
 
@@ -314,7 +331,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>示例
 
-有关可运行的示例，请参阅 [Application Insights JAVASCRIPT SDK 示例](https://github.com/Azure-Samples?q=applicationinsights-js-demo)。
+如需查看可运行的示例，请参阅 [Application Insights JavaScript SDK 示例](https://github.com/Azure-Samples?q=applicationinsights-js-demo)。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版 Application Insights 升级
 
@@ -354,7 +371,7 @@ SDK V2 版本中的重大更改：
 > - ![npm 版本](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
 > - ![gzip 压缩大小](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - 总初始化时间为 **15 毫秒**
-> - 在页面的整个生命周期内都**不会**失去跟踪
+> - 在页面的整个生命周期内都 **不会** 失去跟踪
 
 ## <a name="browser-support"></a>浏览器支持
 
@@ -374,7 +391,7 @@ Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br
 
 Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。 
 
-有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
+有关最新的更新和 bug 修复，请[参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)

@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 部署
-description: 介绍可在 Azure Resource Manager 模板中使用的用于检索部署信息的函数。
+description: 描述在 Azure 资源管理器模板中使用的用于检索部署信息 (ARM 模板) 的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004562"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920517"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
-资源管理器提供了以下函数，用于获取与 Azure 资源管理器 (ARM) 模板的当前部署相关的值：
+资源管理器提供了以下功能，用于获取与 Azure 资源管理器模板的当前部署有关的值 (ARM 模板) ：
 
 * [部署](#deployment)
 * [环境](#environment)
@@ -295,7 +295,7 @@ output environmentOutput object = environment()
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -434,7 +434,7 @@ output crossOutput string = crossParameter
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 选项 1 |
 
-如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
+有关使用参数的详细信息，请参阅 [ARM 模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -444,7 +444,7 @@ output crossOutput string = crossParameter
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -571,8 +571,8 @@ output exampleOutput4 object = var4
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
+有关使用变量的详细信息，请参阅 [ARM 模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。

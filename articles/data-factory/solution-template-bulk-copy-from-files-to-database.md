@@ -7,13 +7,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461272"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920435"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
 
@@ -55,7 +55,7 @@ ms.locfileid: "96461272"
     ![查看管道](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果在上述 **步骤 2** 中选择 " **Azure Synapse Analytics (以前的 SQL DW)** 作为数据目标，则必须根据 azure Synapse Analytics Polybase 的要求，输入与 azure Blob 存储的连接进行过渡。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
+    > 如果在上述 **步骤 2** 中选择 " **Azure Synapse Analytics** " 作为数据目标，则必须根据 azure Synapse Analytics Polybase 的要求，为过渡输入连接到 azure Blob 存储的连接。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
         
     ![Polybase 设置](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

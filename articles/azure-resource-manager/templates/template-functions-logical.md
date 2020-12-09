@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 逻辑
-description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
+description: 描述在 Azure 资源管理器模板中使用的函数 (ARM 模板) 来确定逻辑值。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004545"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920478"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
-资源管理器提供了多个用于在 Azure 资源管理器 (ARM) 模板中进行比较的函数。
+资源管理器提供了几个用于在 Azure 资源管理器模板中进行比较的函数 (ARM 模板) ：
 
 * [and](#and)
 * [bool](#bool)
@@ -32,7 +32,7 @@ ms.locfileid: "96004545"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -96,7 +96,7 @@ output notExampleOutput bool = !(bool('true'))
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -215,7 +215,7 @@ output falseOutput bool = false
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -227,7 +227,7 @@ output falseOutput bool = false
 
 ### <a name="remarks"></a>备注
 
-条件为 **True** 时，仅评估 true 值。 条件为 **False** 时，仅评估 false 值。 使用 **if** 函数时，可以包含仅在特定条件下有效的表达式。 例如，可以引用一个资源，该资源在某个条件下存在，在另一个条件下不存在。 以下部分显示了一个条件性评估表达式的示例。
+条件为 **True** 时，仅评估 true 值。 条件为 **False** 时，仅评估 false 值。 在 `if` 函数中，您可以包含仅有条件地有效的表达式。 例如，可以引用一个资源，该资源在某个条件下存在，在另一个条件下不存在。 以下部分显示了一个条件性评估表达式的示例。
 
 ### <a name="examples"></a>示例
 
@@ -341,7 +341,7 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
@@ -436,7 +436,7 @@ output checkNotEquals bool = !(1 == 2)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -542,4 +542,4 @@ output trueOutput bool = true
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。

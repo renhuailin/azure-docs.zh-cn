@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844670"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921720"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -34,7 +34,7 @@ Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用�
 
 此外：
 - 如果你打算使用 Azure PowerShell，请[安装最新版本](/powershell/azure/install-az-ps)。
-- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="create-the-private-endpoints"></a>创建专用终结点
 为 Azure 资源创建专用终结点时，将部署以下资源：
@@ -588,7 +588,7 @@ done
 Azure 文件同步让你可限制为，仅通过专用终结点访问特定的虚拟网络；Azure 文件同步不支持通过服务终结点限制为从特定的虚拟网络访问公共终结点。 这意味着存储同步服务的公共终结点的两个状态为“已启用”和“已禁用”。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-这不能通过 Azure 门户来完成。 请选择 Azure PowerShell 或 Azure CLI 选项卡说明，获取有关如何禁用存储同步服务公共终结点的说明。 
+这不能通过 Azure 门户来完成。 请选择 "Azure PowerShell" 选项卡，以获取有关如何禁用存储同步服务公共终结点的说明。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要禁止对存储同步服务的公共终结点的访问，请将存储同步服务上的 `incomingTrafficPolicy` 属性设置为 `AllowVirtualNetworksOnly`。 若要启用对存储同步服务的公共终结点的访问，请将 `incomingTrafficPolicy` 设置为 `AllowAllTraffic`。 记得替换 `<storage-sync-service-resource-group>` 和 `<storage-sync-service>`。
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要禁止对存储同步服务的公共终结点的访问，请将存储同步服务上的 `incomingTrafficPolicy` 属性设置为 `AllowVirtualNetworksOnly`。 若要启用对存储同步服务的公共终结点的访问，请将 `incomingTrafficPolicy` 设置为 `AllowAllTraffic`。 记得替换 `<storage-sync-service-resource-group>` 和 `<storage-sync-service>`。
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI 不支持在 `incomingTrafficPolicy` 存储同步服务上设置属性。 请选择 "Azure PowerShell" 选项卡，以获取有关如何禁用存储同步服务公共终结点的说明。
 ---
 
 ## <a name="see-also"></a>另请参阅

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435478"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920641"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -138,7 +138,7 @@ ms.locfileid: "96435478"
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中的现有 HTTP 触发器终结点。
 
-一个操作组中可以存在有限数量的 Function 操作。
+操作组中的函数操作数可能有限。
 
 ### <a name="itsm"></a>ITSM
 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overview.md)。
@@ -250,7 +250,9 @@ Write-Host $myApp.AppRoles
 > 如果在 Azure 门户操作组用户界面无法选择你的国家/地区代码，则表示你所在的国家/地区不支持短信。  如果你的国家/地区代码不可用，则可以在[用户之声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)投票以请求添加你的国家/地区。 此时，一个解决办法是使操作组向你所在国家/地区支持的第三方短信提供商调用 Webhook。  
 
 受支持国家/地区的定价在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出。
-  
+
+支持 SMS 通知 **的国家/地区列表** 
+|**国家/地区代码**  | **国家/地区名称**| | 61 |澳大利亚 | | 43 |奥地利 | | 32 |华南 | | 55 |巴西 | | 1 |加拿大 | | 56 |智利 | | 86 |中国 | | 420 |捷克共和国 | | 45 |丹麦 | | 372 |爱沙尼亚 | | 358 |芬兰 | | 33 |法国 | | 49 |德国 | | 852 |香港特别行政区 | | 91 |印度 | | 353 |爱尔兰 | | 972 |以色列 | | 39 |意大利 | | 81 |日本 | | 352 |卢森堡 | | 60 |马来西亚 | | 52 |墨西哥 | | 31 |荷兰 | | 64 |新西兰 | | 47 |挪威 | | 351 |葡萄牙 | | 1 |波多黎各 | | 40 |罗马尼亚 | | 65 |新加坡 | | 27 |南非 | | 82 |韩国 | | 34 |西班牙 | | 41 |瑞士 | | 886 |台湾 | | 44 | 英国 | | 1 |美国 |
 
 ### <a name="voice"></a>语音
 有关其他重要行为，请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
@@ -259,6 +261,7 @@ Write-Host $myApp.AppRoles
 
 > [!NOTE]
 > 如果在 Azure 门户操作组用户界面无法选择你的国家/地区代码，则表示你所在的国家/地区不支持语音呼叫。 如果你的国家/地区代码不可用，则可以在[用户之声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)投票以请求添加你的国家/地区。  此时，一个解决办法是使操作组向你所在国家/地区支持的第三方语音呼叫提供商调用 Webhook。  
+> 在语音通知 Azure 门户操作组中仅支持的国家/地区代码为 + 1 (美国) 。 
 
 受支持国家/地区的定价在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出。
 

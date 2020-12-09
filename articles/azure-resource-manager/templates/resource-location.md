@@ -1,19 +1,19 @@
 ---
 title: 模板资源位置
-description: 介绍如何在 Azure 资源管理器模板中设置资源位置。
+description: 介绍如何在 Azure 资源管理器模板中设置资源位置 (ARM 模板) 。
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
-ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613690"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922398"
 ---
 # <a name="set-resource-location-in-arm-template"></a>在 ARM 模板中设置资源位置
 
-部署 Azure 资源管理器 (ARM) 模板时，必须提供每个资源的位置。 该位置不必与资源组位置相同。
+ (ARM 模板) 部署 Azure 资源管理器模板时，必须提供每个资源的位置。 该位置不必与资源组位置相同。
 
 ## <a name="get-available-locations"></a>获取可用位置
 
@@ -96,5 +96,5 @@ az provider show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板函数的完整列表，请参阅 [Azure Resource Manager 模板函数](template-functions.md)。
+* 有关模板函数的完整列表，请参阅 [ARM 模板函数](template-functions.md)。
 * 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

@@ -1,23 +1,21 @@
 ---
-title: '访问 Azure 门户 (预览版中的 Kubernetes 资源) '
+title: 从 Azure 门户访问 Kubernetes 资源
 description: 了解如何与 Kubernetes 资源交互，以从 Azure 门户管理 Azure Kubernetes Service (AKS) 群集。
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571617"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921590"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>访问 Azure 门户 (预览版中的 Kubernetes 资源) 
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>从 Azure 门户访问 Kubernetes 资源
 
-Azure 门户包括 Kubernetes 资源查看器 (预览版) ，以便轻松访问 Azure Kubernetes Service (AKS) 群集中的 Kubernetes 资源。 从 Azure 门户查看 Kubernetes 资源可减少 Azure 门户和命令行工具之间的上下文切换 `kubectl` ，从而简化了查看和编辑 Kubernetes 资源的体验。 资源查看器当前包括多个资源类型，例如部署、箱和副本集。
+Azure 门户包含 Kubernetes 资源视图，可轻松访问 Azure Kubernetes 服务 (AKS) 群集中的 Kubernetes 资源。 从 Azure 门户查看 Kubernetes 资源可减少 Azure 门户和命令行工具之间的上下文切换 `kubectl` ，从而简化了查看和编辑 Kubernetes 资源的体验。 资源查看器当前包括多个资源类型，例如部署、箱和副本集。
 
 Azure 门户中的 Kubernetes 资源视图取代了 [AKS 面板外接程序][kubernetes-dashboard]，这是不推荐使用的。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

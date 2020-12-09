@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a176bfa5e3861dbc4ad5c03ea54fc847d3f56b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654797"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922542"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>高级页 blob 存储帐户的可伸缩性和性能目标
 
@@ -37,7 +37,7 @@ ms.locfileid: "88654797"
 
 <sup>2</sup> 从存储帐户接收的所有数据（响应）
 
-高级页 blob 帐户是针对高级性能配置的通用帐户。 建议使用常规用途 v2 存储帐户。
+高级页 blob 帐户是配置为高级版的通用帐户。 建议使用常规用途 v2 存储帐户。
 
 如果对非托管磁盘使用高级页 blob 存储帐户并且应用程序超过了单个存储帐户的可伸缩性目标，则 Microsoft 建议迁移到托管磁盘。 有关托管磁盘的详细信息，请参阅[用于 VM 的 Azure 磁盘存储概述](../../virtual-machines/managed-disks-overview.md)。
 

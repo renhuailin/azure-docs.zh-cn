@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551788"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920256"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>注册并扫描 Azure Synapse Analytics
 
@@ -21,6 +21,10 @@ ms.locfileid: "96551788"
 ## <a name="supported-capabilities"></a>支持的功能
 
 Azure Synapse Analytics (以前的 SQL DW) 支持完整和增量扫描，以捕获元数据和架构。 扫描还会根据系统和自定义分类规则自动对数据进行分类。
+
+### <a name="known-limitations"></a>已知的限制
+
+Azure 监控范围不支持扫描 Azure Synapse Analytics 中的[视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)
 
 ## <a name="prerequisites"></a>先决条件
 

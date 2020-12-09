@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 89f7a4a23f4d1b62fe5a76fbd4625bae8bb3018f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 12/09/2020
+ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634754"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921925"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -37,14 +37,14 @@ ms.locfileid: "92634754"
 
 | Category              | 性能优化提示                                      |
 | --------------------- | ------------------------------------------------------------ |
-| 特定于数据存储   | 将数据载入 **Azure Synpase Analytics（前称为 SQL 数据仓库）** ：建议使用 PolyBase；如果 PolyBase 不可用，则使用 COPY 语句。 |
+| 特定于数据存储   | 将数据加载到 **Azure Synapse Analytics**：建议使用 POLYBASE 或 COPY 语句（如果未使用）。 |
 | &nbsp;                | 从/向 **Azure SQL 数据库** 复制数据：当 DTU 的利用率较高时，建议升级到更高的层。 |
 | &nbsp;                | 从/向 **Azure Cosmos DB** 复制数据：当 RU 的利用率较高时，建议升级到更大的 RU。 |
-|                       | 从 **SAP 表** 复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
+|                       | 从 SAP 表复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
 | &nbsp;                | 从 **Amazon Redshift** 引入数据：如果未使用 UNLOAD，建议使用它。 |
 | 数据存储限制 | 如果在复制期间数据存储限制了一些读/写操作，则建议检查并增大数据存储允许的请求速率，或减小并发工作负荷。 |
 | 集成运行时  | 如果使用了 **自承载集成运行时 (IR)** ，而复制活动在队列中长时间等待，直到 IR 提供了用于执行该活动的资源，则建议横向/纵向扩展 IR。 |
-| &nbsp;                | 如果使用了非最佳区域中的 **Azure Integration Runtime** ，导致读/写速度缓慢，则建议配置为使用另一区域中的 IR。 |
+| &nbsp;                | 如果使用了非最佳区域中的 **Azure Integration Runtime**，导致读/写速度缓慢，则建议配置为使用另一区域中的 IR。 |
 | 容错       | 如果配置了容错并跳过不兼容的行，导致性能变慢，则建议确保源和接收器数据兼容。 |
 | 暂存复制           | 如果配置了分阶段复制，但此方法对于源-接收器对不起作用，则建议删除此方法。 |
 | 恢复                | 如果复制活动已从上一故障点恢复，但你在完成原始运行后正好更改了 DIU 设置，请注意，新的 DIU 设置不会生效。 |
@@ -63,18 +63,18 @@ ms.locfileid: "92634754"
 
 遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划并执行性能测试。 
 
-当复制活动性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请 [了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间 **最长** ，并应用以下指导以提升复制性能：
+当复制活动性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请 [了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间 **最长**，并应用以下指导以提升复制性能：
 
 - **“复制前脚本”的持续时间较长：** 表示接收器数据库中运行的复制前脚本花费了较长时间来完成。 优化指定的复制前脚本逻辑，以增强性能。 如果在改进脚本方面需要更多的帮助，请与数据库团队联系。
 
 - **“传输 - 距第一字节的时间”的工作持续时间较长：** 表示源查询花费了较长时间来返回任何数据。 检查并优化查询或服务器。 如需更多帮助，请与数据存储团队联系。
 
 - **“传输 - 列出源”的工作持续时间较长：** 表示枚举源文件或源数据库数据分区的速度缓慢。
-  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用 **通配符筛选器** （`wildcardFolderPath` 或 `wildcardFileName`），或使用 **文件上次修改时间筛选器** （`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
+  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用 **通配符筛选器**（`wildcardFolderPath` 或 `wildcardFileName`），或使用 **文件上次修改时间筛选器**（`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以使用数据存储的本机筛选器，尤其是 " **前缀** " 用于 Amazon S3/azure Blob/Azure 文件存储，" **listAfter/listBefore** " 用于 ADLS Gen1。 这些筛选器是数据存储服务器端筛选器，并且具有更好的性能。
+    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
@@ -98,7 +98,7 @@ ms.locfileid: "92634754"
 
 - **“传输 - 写入接收器”的工作持续时间较长：**
 
-  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)（前称为 SQL 数据仓库）时，请使用 PolyBase 或 COPY 语句。 
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)时，请使用 POLYBASE 或 COPY 语句。 
 
   - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
@@ -114,7 +114,7 @@ ms.locfileid: "92634754"
 
 遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划并执行性能测试。 
 
-当复制性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请 [了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间 **最长** ，并应用以下指导以提升复制性能：
+当复制性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请 [了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间 **最长**，并应用以下指导以提升复制性能：
 
 - **“队列”持续时间较长：** 表示复制活动在队列中长时间等待，直到自承载 IR 提供了用于执行该活动的资源。 检查 IR 容量和使用率，并根据工作负荷进行[纵向或横向扩展](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
@@ -124,11 +124,11 @@ ms.locfileid: "92634754"
 
   - 检查自承载 IR 计算机是否以较低的延迟连接到源数据存储。 如果源位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
 
-  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用 **通配符筛选器** （`wildcardFolderPath` 或 `wildcardFileName`），或使用 **文件上次修改时间筛选器** （`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
+  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用 **通配符筛选器**（`wildcardFolderPath` 或 `wildcardFileName`），或使用 **文件上次修改时间筛选器**（`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以使用数据存储的本机筛选器，尤其是 " **前缀** " 用于 Amazon S3/azure Blob/Azure 文件存储，" **listAfter/listBefore** " 用于 ADLS Gen1。 这些筛选器是数据存储服务器端筛选器，并且具有更好的性能。
+    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
@@ -160,7 +160,7 @@ ms.locfileid: "92634754"
 
 - **“传输 - 写入接收器”的工作持续时间较长：**
 
-  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)（前称为 SQL 数据仓库）时，请使用 PolyBase 或 COPY 语句。 
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)时，请使用 POLYBASE 或 COPY 语句。 
 
   - 检查自承载 IR 计算机是否以较低的延迟连接到接收器数据存储。 如果接收器位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
 
@@ -179,7 +179,7 @@ ms.locfileid: "92634754"
 * Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
 * Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../azure-sql/database/monitor-tune-overview.md)并检查数据库事务单位 (DTU) 百分比。
-* Azure Synapse Analytics（以前称为 SQL 数据仓库）：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure Synapse Analytics 中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure Synapse Analytics：其功能以数据仓库单位 (Dwu) 来度量。 请参阅[管理 Azure Synapse Analytics 中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
 * SQL Server：[性能监视和优化](/sql/relational-databases/performance/monitor-and-tune-for-performance)。
 * 本地文件服务器：[文件服务器性能优化](/previous-versions//dn567661(v=vs.85))。

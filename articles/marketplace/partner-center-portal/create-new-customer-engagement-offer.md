@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 96bdfc513023cafb2d94a68c06f1065cf20c3ba8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f20405add698c64ecedfd7375063ba934a98e158
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130164"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922426"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "93130164"
 
 - 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
 - 与发布者 ID 组合的产品 ID 的长度必须为40个字符。
-- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 是 "testpublisherid"，并且你输入了 " **测试/服务-1** "，则 "产品/服务" 网址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 是 "testpublisherid"，并且你输入了 " **测试/服务-1**"，则 "产品/服务" 网址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 在选择“创建”后，就无法更改产品/服务 ID 了。
 
 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。
@@ -95,7 +95,7 @@ ms.locfileid: "93130164"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用** "。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
@@ -138,7 +138,7 @@ ms.locfileid: "93130164"
 4. 支持地址 (链接) 
 5. 使用条款地址 (链接) 
 6. 产品名称
-7. 描述
+7. 说明
 8. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -260,7 +260,7 @@ ms.locfileid: "93130164"
 
 ### <a name="application-configuration-url"></a>应用程序配置 URL
 
-提供配置网页的 URL，客户可以通过该网页配置你的应用。
+确保该字段保留为空。 它将用于将来使用。 
 
 ### <a name="crm-package"></a>CRM 包
 

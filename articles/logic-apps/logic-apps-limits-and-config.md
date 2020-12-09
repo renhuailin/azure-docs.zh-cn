@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/19/2020
-ms.openlocfilehash: dc09edee08e97e354ef006416e2d5c0a333a3980
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/07/2020
+ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917811"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921508"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -19,7 +19,7 @@ ms.locfileid: "94917811"
 
 <a name="definition-limits"></a>
 
-## <a name="definition-limits"></a>定义限制
+## <a name="logic-app-definition-limits"></a>逻辑应用定义限制
 
 下面是针对单个逻辑应用定义的限制：
 
@@ -37,7 +37,9 @@ ms.locfileid: "94917811"
 | 最大 `parameters` 数 | 50 | |
 | 最大 `outputs` 数 | 10 | |
 | `trackedProperties` 的最大大小 | 16,000 个字符 |
-| 内联代码操作 - 最大代码字符数 | 1,024 个字符 <p>对于100000字符限制，请使用 Visual Studio Code 和 [预览版 **Azure 逻辑应用** 扩展](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)创建逻辑应用。 |
+| 内联代码操作 - 最大代码字符数 | 1,024 个字符 | 若要将此限制扩展为100000个字符，使用逻辑应用创建逻辑应用 **(预览)** 资源类型， [方法是使用 Azure 门户](create-stateful-stateless-workflows-azure-portal.md) ，或者 [使用 Visual Studio Code，使用 **Azure 逻辑应用 (预览版)** 扩展](create-stateful-stateless-workflows-visual-studio-code.md)。 |
+| 内联代码操作-运行代码的最长持续时间 | 5 秒 | 若要将此限制延长到15秒，请 [使用 Azure 门户](create-stateful-stateless-workflows-azure-portal.md)或通过 [使用 Visual Studio Code 和 **Azure 逻辑应用 (预览版)** 扩展](create-stateful-stateless-workflows-visual-studio-code.md)，通过 **逻辑应用 () 预览** 创建逻辑应用。 |
+||||
 
 <a name="run-duration-retention-limits"></a>
 
@@ -135,7 +137,7 @@ ms.locfileid: "94917811"
 
 ### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| 名称 | 限制 | 说明 |
+| 名称 | 限制 | 注释 |
 | ---- | ----- | ----- |
 | 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要将默认限制提高到逻辑应用的最大值，请参阅在 [高吞吐量模式下运行](#run-high-throughput-mode)，该模式处于预览状态。 或者，你可以根据需要 [将工作负荷分散到多个逻辑应用](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) 中。 |
 | 操作：并发出站调用 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
@@ -211,21 +213,23 @@ ms.locfileid: "94917811"
 
 Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新）。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
-<a name="request-limits"></a>
+<a name="http-limits"></a>
 
 ## <a name="http-limits"></a>HTTP 限制
 
-下面是单个传出或传入 HTTP 调用的限制：
+下面是单个入站或出站呼叫的限制：
 
-#### <a name="timeout"></a>超时
+<a name="http-timeout-limits"></a>
+
+#### <a name="timeout-duration"></a>超时持续时间
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
-|------|--------------------|---------------------------------------|-------|
-| 出站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | HTTP 触发器发出的调用就是出站请求。 <p><p>**提示**：对于运行时间较长的操作，请使用 [异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 在调用其他具有[可调用终结点](logic-apps-http-endpoint.md)的逻辑应用时，若要绕过超时限制，可改用内置的 Azure 逻辑应用操作（可在“内置”下的连接器连接器中找到）。 |
-| 入站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | 请求触发器和 Webhook 触发器接收的调用就是入站请求。 <p><p>**注意**：要使原始调用方能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
-|||||
+| 名称 | 逻辑应用 (多租户)  |  (预览的逻辑应用)  | Integration service 环境 | 说明 |
+|------|---------------------------|----------------------|---------------------------------|-------|
+| 出站请求 | 120 秒 <br>（2 分钟） | 230 秒 <br> (3.9 分钟)  | 240 秒 <br>（4 分钟） | 出站请求的示例包括 HTTP 触发器或操作发出的调用。 有关预览版本的详细信息，请参阅 [Azure 逻辑应用预览](logic-apps-overview-preview.md)。 <p><p>**提示**：对于运行时间较长的操作，请使用 [异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 在调用其他具有[可调用终结点](logic-apps-http-endpoint.md)的逻辑应用时，若要绕过超时限制，可改用内置的 Azure 逻辑应用操作（可在“内置”下的连接器连接器中找到）。 |
+| 入站请求 | 120 秒 <br>（2 分钟） | 230 秒 <br> (3.9 分钟)  | 240 秒 <br>（4 分钟） | 入站请求的示例包括请求触发器收到的调用、HTTP Webhook 触发器和 HTTP Webhook 操作。 有关预览版本的详细信息，请参阅 [Azure 逻辑应用预览](logic-apps-overview-preview.md)。 <p><p>**注意**：要使原始调用方能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
+||||||
 
 <a name="message-size-limits"></a>
 
@@ -266,6 +270,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 | ---- | ----- | ----- |
 | Azure AD 授权策略 | 5 | |
 | 每个授权策略的声明 | 10 | |
+| 声明值-最大字符数 | 150 |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -338,7 +343,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 | 项目 | 限制 | 说明 |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
-| 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#request-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
+| 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#http-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
 | 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 ||||
 
@@ -379,7 +384,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>防火墙配置：IP 地址和服务标记
 
-Azure 逻辑应用用于传入和传出调用的 IP 地址由逻辑应用所在的区域决定。 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 某些 [Power Automate](/power-automate/getting-started) 调用（例如 HTTP 和 HTTP + OpenAPI 请求）直接通过 Azure 逻辑应用服务执行并来自此处列出的 IP 地址。 要详细了解 Power Automate 使用的 IP 地址，请参阅 [Power Automate 中的限制和配置](/flow/limits-and-config#ip-address-configuration)。
+Azure 逻辑应用用于入站和出站调用的 IP 地址取决于逻辑应用所在的区域。 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 某些 [Power Automate](/power-automate/getting-started) 调用（例如 HTTP 和 HTTP + OpenAPI 请求）直接通过 Azure 逻辑应用服务执行并来自此处列出的 IP 地址。 要详细了解 Power Automate 使用的 IP 地址，请参阅 [Power Automate 中的限制和配置](/flow/limits-and-config#ip-address-configuration)。
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md)，而不是为每个区域指定逻辑应用 IP 地址，如此部分中稍后所述。
@@ -398,7 +403,7 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址由逻辑应用所在�
 
 * 如果你的逻辑应用在访问使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户时遇到问题，可采用[多种方式来实现访问](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
-  例如，逻辑应用不能直接访问使用防火墙规则的存储帐户，因此存在于同一区域中。 但是，如果允许[区域中托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问其他区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，则可改用 HTTP 触发器和操作。 有关其他选项，请参阅[访问受防火墙保护的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
+  例如，逻辑应用不能直接访问使用防火墙规则的存储帐户，因此存在于同一区域中。 但是，如果允许[区域中托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问其他区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，则可改用 HTTP 触发器和操作。 有关其他选项，请参阅[访问防火墙后的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
 <a name="inbound"></a>
 
@@ -472,7 +477,7 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址由逻辑应用所在�
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicApps，而不是为每个区域指定出站逻辑应用 IP 地址前缀。
-> 对于托管连接器，可以选择使用 **AzureConnectors** 服务标记，而不是为每个区域指定出站托管连接器 IP 地址前缀。 这些标记适用于逻辑应用服务可用的区域。 
+> 对于托管连接器，可以选择使用 **AzureConnectors** 服务标记，而不是为每个区域指定出站托管连接器 IP 地址前缀。 这些标记适用于可使用逻辑应用服务的区域。 
 
 <a name="multi-tenant-outbound"></a>
 

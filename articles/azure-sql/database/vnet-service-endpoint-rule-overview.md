@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 96030f0e74c29848f675ae2e0867eefa2e79a8a7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905870"
+ms.locfileid: "96920415"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,8 +52,8 @@ ms.locfileid: "96905870"
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
-- **网络管理员：** &nbsp; 启用终结点。
-- **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到服务器。
+- **网络管理员 ([网络参与者](../../role-based-access-control/built-in-roles.md#network-contributor) 角色) ：** &nbsp; 启用终结点。
+- **数据库管理员 ([SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor) 角色) ：** &nbsp; 更新 ACL)  (的访问控制列表，将给定子网添加到服务器。
 
 Azure RBAC 备用：
 

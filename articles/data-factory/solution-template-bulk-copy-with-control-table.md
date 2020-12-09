@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461239"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920887"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
 
@@ -44,7 +44,7 @@ ms.locfileid: "96461239"
 - *Data_Destination_Container* 是将数据复制到目标存储时使用的根文件夹路径。 
 - *Data_Destination_Directory* 是将数据复制到目标存储中时使用的根下的目录路径。 
 
-仅当所选目标是基于文件的存储时，最后三个参数（定义目标存储中的路径）才可见。 如果选择“Azure Synapse Analytics (以前称为 SQL DW)”作为目标存储，则不需要这些参数。 但 Azure Synapse Analytics 中的表名和架构必须与源数据库中的表名和架构相同。
+仅当所选目标是基于文件的存储时，最后三个参数（定义目标存储中的路径）才可见。 如果选择 "Azure Synapse Analytics" 作为目标存储，则不需要这些参数。 但 Azure Synapse Analytics 中的表名和架构必须与源数据库中的表名和架构相同。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
@@ -94,7 +94,7 @@ ms.locfileid: "96461239"
 
     ![查看结果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. （可选）如果选择“Azure Synapse Analytics（以前称为 SQL DW）”作为数据目标，必须按 Azure Synapse Analytics Polybase 的要求输入用于暂存的 Azure Blob 存储的连接。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
+9.  (可选) 如果选择了 "Azure Synapse Analytics" 作为数据目标，则必须根据 Azure Synapse Analytics Polybase 的要求，为过渡输入连接到 Azure Blob 存储。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
     
     ![Polybase 设置](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
