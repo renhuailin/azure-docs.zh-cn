@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bb134a2fb784e02f5e00c9e88ab0df1794489e0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441872"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860586"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -51,7 +51,7 @@ ms.locfileid: "92441872"
 
 ### <a name="inviters-information-and-invitation-message"></a>邀请者的信息和邀请消息
 
-电子邮件包括与发送邀请的组织关联的名称和主域。 此信息应有助于被邀请者做出有关接受邀请的明智决策。 如果邀请方在[邀请来宾用户访问目录、组或应用](add-users-administrator.md)时或者[使用邀请 API](customize-invitation-api.md) 时在其邀请中包含了一条消息，该消息会在电子邮件的主要部分突出显示。 另外，还会包括邀请方的姓名和个人资料图像（如果邀请方已进行此方面的设置）。 消息本身是一个文本区域，因此出于安全原因，它不会处理 HTML 标记。
+电子邮件中包含与发送邀请的组织关联的名称和主域。 这些信息应有助于受邀方在是否接受邀请方面做出明智决策。 如果邀请方在[邀请来宾用户访问目录、组或应用](add-users-administrator.md)时或者[使用邀请 API](customize-invitation-api.md) 时在其邀请中包含了一条消息，该消息会在电子邮件的主要部分突出显示。 另外，还会包括邀请方的姓名和个人资料图像（如果邀请方已进行此方面的设置）。 消息本身是一个文本区域，因此出于安全原因，它不会处理 HTML 标记。
 
 ![电子邮件中邀请消息的图像](media/invitation-email-elements/invitation-message-inviters-info.png)
 
@@ -67,9 +67,9 @@ ms.locfileid: "92441872"
 
 ![电子邮件中页脚部分的图像](media/invitation-email-elements/footer-section.png)
 
-### <a name="blocking-an-organization-unsubscribing"></a>阻止组织 (取消订阅) 
+### <a name="blocking-an-organization-unsubscribing"></a>阻止组织（取消订阅）
 
-在来自组织的邀请中，页脚包含用于 **阻止未来邀请**的选项。 来宾用户可以选择此链接来阻止来自组织的任何未来邀请。 此操作还会将组织添加到用户的取消订阅列表 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) 。
+在来自组织的邀请中，页脚包含“阻止未来邀请”的选项。 来宾用户可以选择此链接以阻止来自组织的任何未来邀请。 此操作还会将组织添加到 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) 中该用户的取消订阅列表。
 
 ### <a name="viewing-organizations-youve-blocked"></a>查看已阻止的组织
 
@@ -79,16 +79,16 @@ ms.locfileid: "92441872"
 2. 输入电子邮件并按照电子邮件一次性密码身份验证的登录步骤进行操作。
 3. 查看已阻止的组织，或使用复制和粘贴导出名称。
    > [!NOTE]
-   > 如果希望允许组织再次邀请你，可以选择组织，然后选择 " **下一步**"。
+   > 如果你想允许已阻止的组织再次邀请你，则可以选择该组织，然后选择“下一步”。
 
 ## <a name="how-the-language-is-determined"></a>语言是如何确定的
 
 邀请电子邮件中呈现给来宾用户的语言是由以下设置确定的。 这些设置是按优先级顺序列出的。 如果某个设置未配置，则将由列表中的下一设置来确定语言。
 
-- [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) 对象的 **messageLanguage** 属性（如果使用了“创建邀请 API”）
--   在来宾的[用户对象](/graph/api/resources/user?view=graph-rest-1.0)中指定的 **preferredLanguage** 属性
--   在来宾用户的主租户的属性中设置的**通知语言**（仅仅适用于 Azure AD 租户）
--   在资源租户的属性中设置的**通知语言**
+- [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo) 对象的 **messageLanguage** 属性（如果使用了“创建邀请 API”）
+-   在来宾的 [用户对象](/graph/api/resources/user)中指定的 **preferredLanguage** 属性
+-   在来宾用户的主租户的属性中设置的 **通知语言**（仅仅适用于 Azure AD 租户）
+-   在资源租户的属性中设置的 **通知语言**
 
 如果这些设置全都没有配置，则语言默认为“英语(美国)”。
 

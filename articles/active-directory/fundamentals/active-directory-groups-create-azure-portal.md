@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8198feca2956f81e397ddee447057c1a5af99a4a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973909"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859498"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 可以使用 Azure Active Directory (Azure AD) 门户创建基本组。 对于本文而言，将由资源所有者（管理员）向单个资源中添加一个基本组，该组中将包括需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../enterprise-users/index.yml)。
@@ -63,7 +63,7 @@ ms.locfileid: "95973909"
 
 1. 选择预定义的 **成员身份类型（必填）** 。 有关成员身份类型的详细信息，请参阅[组和成员身份类型](#membership-types)。
 
-1. 选择“创建” 。 随即将创建组，该组将准备就绪，可供添加成员。
+1. 选择“创建”。 随即将创建组，该组将准备就绪，可供添加成员。
 
 1. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员  。
 
@@ -77,7 +77,7 @@ ms.locfileid: "95973909"
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>打开或关闭组欢迎电子邮件
 
-如果创建了任何新的 Microsoft 365 组（无论使用动态成员身份还是静态成员资格），欢迎通知将发送到添加到该组的所有用户。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中关闭此行为。 
+如果创建了任何新的 Microsoft 365 组（无论使用动态成员身份还是静态成员资格），欢迎通知将发送到添加到该组的所有用户。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) 中关闭此行为。 
 
 ## <a name="next-steps"></a>后续步骤
 

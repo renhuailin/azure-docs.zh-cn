@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779696"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858954"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -279,7 +279,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 
 受影响的环境包括：
 - Azure US Gov
-- [Office 365 GCC 高 & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 GCC 高 & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
  
 ---
 
@@ -354,7 +354,7 @@ Azure Active Directory 将在2021年3月31日前弃用以下协议：
 
 你现在可以在 Azure 门户中查看每个 Azure AD 角色的模板 ID。 在 Azure AD 中，选择所选角色的 "  **说明** "。 
 
-建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](/graph/api/resources/directoryrole?view=graph-rest-1.0) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [角色模板 id](../roles/permissions-reference.md#role-template-ids)。
+建议客户在其 PowerShell 脚本和代码中使用角色模板 Id，而不是显示名称。 角色模板 ID 支持用于 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 Id 的详细信息，请参阅 [角色模板 id](../roles/permissions-reference.md#role-template-ids)。
 
 ---
 
@@ -678,7 +678,7 @@ Azure AD Connect 云预配公共预览版刷新功能通过客户反馈开发了
 **类型：** 更改计划  
 **服务类别：** 标识保护 **产品功能：** 标识安全 & 保护
 
-我们正在更新标识安全分数门户，使之与 Microsoft Secure 评分的 [新版本](/microsoft-365/security/mtp/microsoft-secure-score-whats-new?view=o365-worldwide)中引入的更改一致。 
+我们正在更新标识安全分数门户，使之与 Microsoft Secure 评分的 [新版本](/microsoft-365/security/mtp/microsoft-secure-score-whats-new)中引入的更改一致。 
 
 带有更改的预览版本将在9月开始时可用。 预览版本中的更改包括：
 - "标识安全分数" 已重命名为 "标识的安全评分"，以实现与 Microsoft 安全分数的品牌一致
@@ -1057,7 +1057,7 @@ Azure AD 条件性访问策略中的用户风险支持，可创建多个基于�
 **产品功能：** B2B/B2C
  
 
-"ExternalUserState" 和 "externalUserStateChangedDateTime" 属性可用于查找未接受其邀请的受邀 B2B 来宾，还可用于生成自动化，如删除在数天后未接受其邀请的用户。 现在，MS Graph v1 中提供了这些属性。 有关使用这些属性的指南，请参阅 [用户资源类型](/graph/api/resources/user?view=graph-rest-1.0)。
+"ExternalUserState" 和 "externalUserStateChangedDateTime" 属性可用于查找未接受其邀请的受邀 B2B 来宾，还可用于生成自动化，如删除在数天后未接受其邀请的用户。 现在，MS Graph v1 中提供了这些属性。 有关使用这些属性的指南，请参阅 [用户资源类型](/graph/api/resources/user)。
  
 ---
 
@@ -1131,7 +1131,7 @@ Azure AD 预配服务当前以循环方式进行操作。 此服务每40分钟�
 **服务类别：** 标识保护  
 **产品功能：** 标识安全和保护
  
-RiskyUsers 和 riskDetections Microsoft Graph Api 现已正式发布。 现在，在 v1.0 终结点上提供了它们，我们邀请你在生产环境中使用它们。 有关详细信息，请查看 [Microsoft Graph 文档](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)。
+RiskyUsers 和 riskDetections Microsoft Graph Api 现已正式发布。 现在，在 v1.0 终结点上提供了它们，我们邀请你在生产环境中使用它们。 有关详细信息，请查看 [Microsoft Graph 文档](/graph/api/resources/identityprotectionroot)。
  
 ---
 

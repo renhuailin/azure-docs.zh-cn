@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172338"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858767"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -42,7 +42,7 @@ ms.locfileid: "96172338"
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
 * Active Directory 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。 只要符合架构版本和林级别的要求，域控制器就能运行任何版本。
-* 如果计划使用 *密码写回* 功能，则域控制器必须在 Windows Server 2012 或更高版本上。
+* 若打算使用密码写回功能，必须在 Windows Server 2012 或更高版本上安装域控制器。
 * Azure AD 使用的域控制器必须可写。 不支持使用只读域控制器 (RODC)，Azure AD Connect 不遵循任何写入重定向。
 * 不支持通过“以点分隔的”（名称包含句点“.”）NetBIOS 名称来使用本地林或域。
 * 建议[启用 Active Directory 回收站](how-to-connect-sync-recycle-bin.md)。
@@ -52,7 +52,7 @@ Azure Active Directory Connect 在安装过程中运行已签名的 PowerShell �
 
 安装期间建议的执行策略为“RemoteSigned”。
 
-有关设置 PowerShell 执行策略的详细信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7)。
+有关设置 PowerShell 执行策略的详细信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)。
 
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
@@ -102,7 +102,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 ### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
 * 如果 Intranet 有防火墙，且需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](reference-connect-ports.md)，了解详细信息。
-* 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。 另请参阅 [防火墙或代理服务器上的 Azure 门户 url 的安全安全](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)。
+* 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。 另请参阅[在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)。
   * 如果使用的是德国或 Microsoft Azure 政府云中的 Microsoft 云，请参阅 Url 的 [Azure AD Connect 同步服务实例注意事项](reference-connect-instances.md) 。
 * Azure AD Connect（1.1.614.0 版及更高版本）默认情况下使用 TLS 1.2 对同步引擎和 Azure AD 之间的通信进行加密。 如果 TLS 1.2 在基础操作系统上不可用，Azure AD Connect 会递增地回退到较旧的协议（TLS 1.1 和 TLS 1.0）。
 * 在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎和 Azure AD 之间的通信进行加密。 若要更改为 TLS 1.2，请按照[为 Azure AD connect 启用 TLS 1.2](#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。

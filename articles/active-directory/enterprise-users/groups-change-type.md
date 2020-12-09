@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c5762e54faa7721973136408e14bd8d17d81
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1a46cc3f4a0f2fb25fc693103a64a319dcec0324
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547655"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860875"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中将静态组成员资格更改为动态
 
@@ -57,7 +57,7 @@ ms.locfileid: "96547655"
 ## <a name="change-membership-type-for-a-group-powershell"></a>更改组的成员资格类型 (PowerShell)
 
 > [!NOTE]
-> 若要更改动态组属性，需要使用 [Azure AD PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)的 **预览版本中的** cmdlet。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview)安装预览版。
+> 若要更改动态组属性，需要使用 [Azure AD PowerShell 版本 2](/powershell/azure/active-directory/install-adv2)的 **预览版本中的** cmdlet。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview)安装预览版。
 
 下面是在现有组中切换成员身份管理的函数示例。 在此示例中，必须小心正确地操作 GroupTypes 属性，并保留与动态成员身份无关的任何值。
 

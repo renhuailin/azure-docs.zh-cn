@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371862"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860416"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -130,7 +130,7 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 对于 Azure AD 帐户，管理员可以使用以下选项之一重置密码：
 
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
-- [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword)
 
 
 ---

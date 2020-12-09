@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168859"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859515"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -288,7 +288,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 
 #### <a name="legacy-authentication-recommended-reading"></a>旧身份验证建议读取
 
-- [启用或禁用对 Exchange Server 中的邮箱的 POP3 或 IMAP4 访问](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [启用或禁用对 Exchange Server 中的邮箱的 POP3 或 IMAP4 访问](/exchange/clients/pop3-and-imap4/configure-mailbox-access)
 
 ### <a name="consent-grants"></a>同意授权
 
@@ -372,7 +372,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 - [Office 365 管理活动 API 参考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

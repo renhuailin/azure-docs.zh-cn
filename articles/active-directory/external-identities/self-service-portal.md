@@ -1,6 +1,6 @@
 ---
 title: B2B 协作的自助注册门户 - Azure AD
-description: 了解如何为 Azure Active Directory B2B 用户自定义载入工作流，以满足组织的需求。
+description: 了解如何根据你组织的需求为 Azure Active Directory B2B 用户自定义载入工作流。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896100"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860501"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>用于 Azure AD B2B 协作注册的自助服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "92896100"
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B 邀请 API
 
-组织可以使用 [Microsoft Graph 邀请管理器 API](/graph/api/resources/invitation?view=graph-rest-1.0) 为 B2B 来宾用户构建自己的加入体验。 若要为 B2B 来宾用户提供自助服务注册，我们建议使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)。 但是，若要构建自己的体验，可以使用类似于[创建邀请 API](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) 的 API 自动将自定义的邀请电子邮件直接发送给 B2B 用户。 或者，应用可以使用创建响应中返回的 inviteRedeemUrl，将你自己的邀请（通过所选的通信机制）发送给受邀用户。
+组织可以使用 [Microsoft Graph 邀请管理器 API](/graph/api/resources/invitation) 为 B2B 来宾用户构建自己的加入体验。 若要为 B2B 来宾用户提供自助服务注册，我们建议使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)。 但是，若要构建自己的体验，可以使用类似于[创建邀请 API](/graph/api/invitation-post?tabs=http) 的 API 自动将自定义的邀请电子邮件直接发送给 B2B 用户。 或者，应用可以使用创建响应中返回的 inviteRedeemUrl，将你自己的邀请（通过所选的通信机制）发送给受邀用户。
 
 ## <a name="next-steps"></a>后续步骤
 

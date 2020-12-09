@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4750de0b9b0d44dbe30571e308227d2123b5e447
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4cd6aa8c1936d9f07421f6508755a5b6d4852813
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602081"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859175"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -424,7 +424,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 开发人员体验
 
-组织联系人的增量查询已正式发布！ 你现在可以跟踪生产应用中的更改，而不必持续轮询 Microsoft Graph。 替换任何通过增量查询持续轮询 orgContact 数据的现有代码，以显著提高性能。 [了解详细信息。](/graph/api/orgcontact-delta?tabs=http&view=graph-rest-1.0)
+组织联系人的增量查询已正式发布！ 你现在可以跟踪生产应用中的更改，而不必持续轮询 Microsoft Graph。 替换任何通过增量查询持续轮询 orgContact 数据的现有代码，以显著提高性能。 [了解详细信息。](/graph/api/orgcontact-delta?tabs=http)
 
 ---
 
@@ -436,7 +436,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 开发人员体验
 
-应用程序的增量查询已公开发布！ 你现在可以跟踪生产应用中的更改，而不必持续轮询 Microsoft Graph。 替换任何现有代码，该代码通过增量查询不断轮询应用程序数据，以显著提高性能。 [了解详细信息。](/graph/api/application-delta?view=graph-rest-1.0)
+应用程序的增量查询已公开发布！ 你现在可以跟踪生产应用中的更改，而不必持续轮询 Microsoft Graph。 替换任何现有代码，该代码通过增量查询不断轮询应用程序数据，以显著提高性能。 [了解详细信息。](/graph/api/application-delta)
 
 ---
 
@@ -654,7 +654,7 @@ Azure Active Directory (Azure AD) 现在提供了验证动态组规则的方法�
 - 确保所有用户都可以完成多重身份验证以实现安全访问
 - 需要对管理角色进行 MFA
 
-这些新的改进操作要求向你的用户或管理员注册多重身份验证 (MFA) 在你的目录中，并建立适合你的组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这可以采用具有多个策略的形式，这些策略应用作用域内的决策，或设置安全默认值 (于3月16日) ，让 Microsoft 决定何时为 MFA 质询用户。 [阅读有关 Microsoft 安全分数中的新增功能的详细信息](/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new)。
+这些新的改进操作要求向你的用户或管理员注册多重身份验证 (MFA) 在你的目录中，并建立适合你的组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这可以采用具有多个策略的形式，这些策略应用作用域内的决策，或设置安全默认值 (于3月16日) ，让 Microsoft 决定何时为 MFA 质询用户。 [阅读有关 Microsoft 安全分数中的新增功能的详细信息](/microsoft-365/security/mtp/microsoft-secure-score#whats-new)。
 
 ---
 
@@ -844,7 +844,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 - 确保所有用户都可以完成 MFA 以实现安全访问
 - 需要对管理角色进行 MFA
 
-这些新的改进操作要求在目录中注册用户或管理员，并建立符合组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这可以采用设置安全性默认值的形式，此默认设置允许 Microsoft 决定何时质询用户进行 MFA，或具有多个应用范围决定的策略。 作为这些改进操作的一部分，将不再在评分计算中包含基线保护策略。 [详细了解 Microsoft 安全分数中的内容](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide)。
+这些新的改进操作要求在目录中注册用户或管理员，并建立符合组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这可以采用设置安全性默认值的形式，此默认设置允许 Microsoft 决定何时质询用户进行 MFA，或具有多个应用范围决定的策略。 作为这些改进操作的一部分，将不再在评分计算中包含基线保护策略。 [详细了解 Microsoft 安全分数中的内容](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming)。
 
 ---
 
@@ -2164,7 +2164,7 @@ Azure AD 客户现在可以设置策略来管理其组织的用户和组的 FIDO
 
 我们非常高兴地宣布 Microsoft Graph API 终结点支持 Azure AD 活动日志已正式发布。 在此版本中，现在可以同时使用 Azure AD 审核日志和登录日志 API 的 1.0 版。
 
-有关详细信息，请参阅 [Azure AD 审核日志 API 概述](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0)。
+有关详细信息，请参阅 [Azure AD 审核日志 API 概述](/graph/api/resources/azure-ad-auditlog-overview)。
 
 ---
 
@@ -3783,7 +3783,7 @@ Azure AD 使用条款已从公共预览版过渡到正式版。
 
 PowerShell GA 模块现已提供对应用程序代理 cmdlet 的支持！ 这需要随时更新 PowerShell 模块 - 如果超过一年未更新，某些 cmdlet 可能会停止工作。
 
-有关详细信息，请参阅 [AzureAD](/powershell/module/Azuread/?view=azureadps-2.0)。
+有关详细信息，请参阅 [AzureAD](/powershell/module/Azuread/)。
 
 ---
 

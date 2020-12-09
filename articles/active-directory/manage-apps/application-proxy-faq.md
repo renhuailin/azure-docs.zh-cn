@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e9a03c82fd4bd79e7a47fa34ff7a69870c52f018
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658122"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858376"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -204,5 +204,5 @@ Windows 管理中心中 (事件日志、PowerShell 和远程桌面服务) 的功
 1. 使用通配符将 HTTP 和 HTTPS Url 发布为单独的应用程序，但为每个 Url 提供不同的自定义域。 此配置将起作用，因为它们具有不同的外部 URL。
 
 2. 通过通配符应用程序发布 HTTPS URL。 使用以下应用程序代理 PowerShell cmdlet 单独发布 HTTP 应用程序：
-   - [应用程序代理应用程序管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [应用程序代理连接器管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [应用程序代理应用程序管理](/powershell/module/azuread/#application_proxy_application_management&preserve-view=true)
+   - [应用程序代理连接器管理](/powershell/module/azuread/#application_proxy_connector_management&preserve-view=true)

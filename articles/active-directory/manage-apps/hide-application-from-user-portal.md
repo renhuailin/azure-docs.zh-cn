@@ -12,18 +12,18 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ef1abd1d72e4435aa59bbb9a99f3cc423f11268e
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659057"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858292"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中隐藏最终用户的企业应用程序
 
 有关如何从最终用户的 MyApps 面板或 Microsoft 365 启动器中隐藏应用程序的说明。 当应用程序隐藏后，用户仍然拥有对应用程序的权限。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要使用应用程序管理员权限才能通过 MyApps 面板和 Microsoft 365 启动器隐藏应用程序。
 
@@ -40,14 +40,14 @@ ms.locfileid: "94659057"
 5.  搜索要隐藏的应用程序，然后单击该应用程序。  此时会打开应用程序的概述。
 6.  单击 **“属性”**。 
 7.  对于“对用户可见?”问题，单击“否”。
-8.  单击“ **保存**”。
+8.  单击“保存”  。
 
 > [!NOTE]
 > 这些说明仅适用于企业应用程序。
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>使用 Azure AD PowerShell 隐藏应用程序
 
-若要从 MyApps 面板中隐藏应用程序，可以手动将 HideApp 标记添加到应用程序的服务主体。 运行以下 [AzureAD PowerShell](/powershell/module/azuread/?view=azureadps-2.0#service_principals) 命令，将应用程序的 **"对用户可见"** 属性设置为 " **否**"。 
+若要从 MyApps 面板中隐藏应用程序，可以手动将 HideApp 标记添加到应用程序的服务主体。 运行以下 [AzureAD PowerShell](/powershell/module/azuread/#service_principals) 命令，将应用程序的 **"对用户可见"** 属性设置为 " **否**"。 
 
 ```PowerShell
 Connect-AzureAD

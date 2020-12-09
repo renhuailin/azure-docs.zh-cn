@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339466"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860620"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
 
@@ -66,7 +66,7 @@ ms.locfileid: "96339466"
 如果在标识提供者设置中指定元数据 URL，Azure AD 将在签名证书过期时自动续订该证书。 但是，如果出于任何原因在过期之前轮换证书，或未提供元数据 URL，Azure AD 将无法续订该证书。 在这种情况下，你将需要手动更新签名证书。
 
 ### <a name="limit-on-federation-relationships"></a>联合关系限制
-目前最多支持 1000 个联合关系。 此限制包括[内部联合](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接联合。
+目前最多支持 1000 个联合关系。 此限制包括[内部联合](/powershell/module/msonline/set-msoldomainfederationsettings)和直接联合。
 
 ### <a name="limit-on-multiple-domains"></a>多个域限制
 目前，我们不支持同一个租户中多个域的直接联合。

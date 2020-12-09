@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d808b920ddc6ff6f1d44252c27d67edd9c0dc353
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575510"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860569"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>在 Azure Active Directory 中撤销用户访问
 
@@ -60,13 +60,13 @@ ms.locfileid: "96575510"
 
 作为 Active Directory 中的管理员，请连接到本地网络，打开 PowerShell，然后执行以下操作：
 
-1. 禁用 Active Directory 中的用户。 请参阅 [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)。
+1. 禁用 Active Directory 中的用户。 请参阅 [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount)。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. 在 Active Directory 中重置用户密码两次。 请参阅 [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)。
+1. 在 Active Directory 中重置用户密码两次。 请参阅 [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword)。
 
     > [!NOTE]
     > 更改用户密码两次的原因是为了降低传递哈希的风险，尤其是在本地密码复制出现延迟的情况下。 如果你可以安全地假设此帐户没有遭到泄露，则只能重置密码一次。
@@ -83,18 +83,18 @@ ms.locfileid: "96575510"
 
 作为 Azure Active Directory 中的管理员，打开 PowerShell，运行 ``Connect-AzureAD``，然后执行以下操作：
 
-1. 禁用 Azure AD 中的用户。 请参阅 [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)。
+1. 禁用 Azure AD 中的用户。 请参阅 [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser)。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. 撤消用户的 Azure AD 刷新令牌。 请参阅 [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。
+1. 撤消用户的 Azure AD 刷新令牌。 请参阅 [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. 禁用用户的设备。 请参阅 [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)。
+1. 禁用用户的设备。 请参阅 [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice)。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false

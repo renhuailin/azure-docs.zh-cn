@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73210420f873729a10381b3cea0005d895c5163b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547451"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861024"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中删除一个租户
 
@@ -85,7 +85,7 @@ ms.locfileid: "96547451"
 
    ![删除用于删除订阅的链接](./media/directory-delete-howto/delete-command.png)
 
-6. 选择“删除订阅”以删除该订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变了主意，可在这三天时间内[重新激活订阅](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide)。
+6. 选择“删除订阅”以删除该订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变了主意，可在这三天时间内[重新激活订阅](/office365/admin/subscriptions-and-billing/reactivate-your-subscription)。
   
    ![仔细阅读条款和条件](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "96547451"
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>我有一个影响删除的试用订阅
 
-有一些 [自助注册产品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) ，如 Microsoft Power BI、Rights Management 服务、Microsoft Power Apps 或 Dynamics 365，单独的用户可以通过 Microsoft 365 注册，后者还会在你的 Azure AD 组织中创建一个用于身份验证的来宾用户。 这些自助服务产品会阻止删除目录，直到这些产品从组织中完全删除，以避免数据丢失。 它们只能由 Azure AD 管理员删除，无论用户是单独注册还是分配了产品。
+有一些 [自助注册产品](/office365/admin/misc/self-service-sign-up) ，如 Microsoft Power BI、Rights Management 服务、Microsoft Power Apps 或 Dynamics 365，单独的用户可以通过 Microsoft 365 注册，后者还会在你的 Azure AD 组织中创建一个用于身份验证的来宾用户。 这些自助服务产品会阻止删除目录，直到这些产品从组织中完全删除，以避免数据丢失。 它们只能由 Azure AD 管理员删除，无论用户是单独注册还是分配了产品。
 
 自助服务注册产品的分配方式有两种： 
 
@@ -106,9 +106,9 @@ ms.locfileid: "96547451"
 
 开始删除自助服务注册产品时，该操作将永久删除数据并删除用户对该服务的所有访问权限。 然后，将阻止任何已单独分配产品/服务或组织级别的用户登录或访问任何现有数据。 如果想要防止自助服务注册产品（如 [Microsoft Power BI 仪表板](/power-bi/service-export-to-pbix)或[权限管理服务策略配置](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)）中的数据丢失，请确保将数据备份并保存到其他位置。
 
-若要详细了解当前可用的自助服务注册产品和服务，请参阅[可用的自助服务计划](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)。
+若要详细了解当前可用的自助服务注册产品和服务，请参阅[可用的自助服务计划](/office365/admin/misc/self-service-sign-up#available-self-service-programs)。
 
-有关 Microsoft 365 订阅试用到期后需执行的操作（不包括付费合作伙伴/CSP、企业协议或批量许可），请参阅下表。 如需深入了解 Microsoft 365 数据保留期和订阅生命周期，请参阅 [Microsoft 365 商业版订阅结束后我的数据和访问会出现什么情况？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)。
+有关 Microsoft 365 订阅试用到期后需执行的操作（不包括付费合作伙伴/CSP、企业协议或批量许可），请参阅下表。 如需深入了解 Microsoft 365 数据保留期和订阅生命周期，请参阅 [Microsoft 365 商业版订阅结束后我的数据和访问会出现什么情况？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires)。
 
 产品状态 | 数据 | 对数据的访问
 ------------- | ---- | --------------

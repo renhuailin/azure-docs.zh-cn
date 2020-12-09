@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602251"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860297"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -105,7 +105,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 1. 支持 CAE 的客户端向 Azure AD 提供凭据或刷新令牌，要求获得某个资源的访问令牌。
 1. 访问令牌与其他项目一起返回到客户端。
-1. 管理员显式地[撤销用户的所有刷新令牌](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 吊销事件将从 Azure AD 发送到资源提供程序。
+1. 管理员显式地[撤销用户的所有刷新令牌](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)。 吊销事件将从 Azure AD 发送到资源提供程序。
 1. 向资源提供程序提供访问令牌。 资源提供程序评估令牌的有效性，并检查用户是否存在任何吊销事件。 资源提供程序使用此信息来决定是否授予对资源的访问权限。
 1. 在这种情况下，资源提供程序会拒绝访问，并将 401+ 声明质询发送回客户端。
 1. 支持 CAE 的客户端理解 401+ 声明质询。 它绕过缓存并返回到步骤 1，将其刷新令牌和声明质询一起发送回 Azure AD。 然后在此情况下，Azure AD 将重新评估所有条件，并提示用户重新进行身份验证。

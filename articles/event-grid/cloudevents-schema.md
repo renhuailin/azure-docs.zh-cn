@@ -4,12 +4,12 @@ description: 说明如何对 Azure 事件网格中的事件使用 CloudEvents �
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d794996a699bdd1bb63e7a894346128aa108e95c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: baac7311a23bb4de032a8ab8b2e99a5ad9cae786
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504367"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858274"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 架构](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
@@ -62,16 +62,20 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 ## <a name="configure-event-grid-for-cloudevents"></a>为 CloudEvents 配置事件网格
 
-可以将事件网格用于 CloudEvents 架构的事件的输入和输出。 可以将 CloudEvents 用于系统事件（例如 Blob 存储事件和 IoT 中心事件）和自定义事件。 它还可以将网络上的这些事件来回转换。
+在 CloudEvents 架构中，可以将事件网格用于事件的输入和输出。 下表描述了可能的转换：
+
+ 事件网格资源 | 输入架构       | 传递架构
+|---------------------|-------------------|---------------------
+| 系统主题       | 事件网格架构 | 事件网格架构或 CloudEvent 架构
+| 用户主题/域 | 事件网格架构 | 事件网格架构
+| 用户主题/域 | CloudEvent 架构 | CloudEvent 架构
+| 用户主题/域 | 自定义架构     | 自定义架构或事件网格架构或 CloudEvent 架构
+| PartnerTopics       | CloudEvent 架构 | CloudEvent 架构
 
 
-| 输入架构       | 输出架构
-|--------------------|---------------------
-| CloudEvents 格式 | CloudEvents 格式
-| 事件网格格式  | CloudEvents 格式
-| 事件网格格式  | 事件网格格式
+对于所有事件架构，在发布到事件网格主题以及创建事件订阅时，事件网格都需要验证。
 
-对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
+有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 
 ### <a name="input-schema"></a>输入架构
 

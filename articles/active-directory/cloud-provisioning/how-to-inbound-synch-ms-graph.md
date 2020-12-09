@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797bf5c7e69990a29f0d14c31586d0e85b42426
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737959"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860349"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>使用 MS 图形 API 进行云设置的入站同步
 
@@ -30,7 +30,7 @@ ms.locfileid: "96737959"
 - [启动同步作业](#start-sync-job)
 - [查看状态](#review-status)
 
-使用这些 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0) 命令可为生产租户启用同步，这是为该租户调用管理 Web 服务的先决条件。
+使用这些 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://docs.microsoft.com/powershell/module/msonline/) 命令可为生产租户启用同步，这是为该租户调用管理 Web 服务的先决条件。
 
 ## <a name="basic-setup"></a>基本设置
 
