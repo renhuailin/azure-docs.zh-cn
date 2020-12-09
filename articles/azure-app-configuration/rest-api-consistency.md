@@ -1,21 +1,21 @@
 ---
 title: Azure 应用配置 REST API-一致性
 description: 使用 Azure 应用配置确保实时一致性的参考页面 REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: db9553c2c9c79a6beb9c66d0cb1a1a60435b2abd
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: b324d23ce9abc1eb3893f316365aff828de2063d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253331"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932619"
 ---
 # <a name="real-time-consistency"></a>实时一致性
 
-由于某些分布式系统的性质，请求之间的实时一致性难以隐式强制执行。 解决方法是允许以多个同步令牌的形式提供协议支持。 同步令牌是可选的。
+由于某些分布式系统的性质，很难隐式强制实施请求之间的实时一致性。 解决方案是以多个同步令牌的形式提供协议支持。 同步令牌是可选的。
 
 ## <a name="initial-request"></a>初始请求
 
@@ -27,15 +27,15 @@ ms.locfileid: "95253331"
 Sync-Token: <id>=<value>;sn=<sn>
 ```
 
-|参数|说明|
+|参数|描述|
 |--|--|
-| `<id>` | 标记 ID (不透明)  |
-| `<value>` | 标记值 (不透明) 。 允许 base64 编码的字符串。 |
-| `<sn>` | 版本)  (的令牌序列号。 "高" 表示相同令牌的较新版本。 允许更好地进行并发和客户端缓存。 由于令牌版本是包含的，因此客户端可以选择仅使用令牌的最后一个版本。 请求不需要此参数。 |
+| `<id>` | 令牌 ID（不透明） |
+| `<value>` | 令牌值（不透明）。 允许 base64 编码的字符串。 |
+| `<sn>` | 令牌序列号（版本）。 "高" 表示相同令牌的较新版本。 可提供更好的并发性和客户端缓存。 由于令牌版本是包含的，因此客户端可以选择仅使用令牌的最后一个版本。 请求不需要此参数。 |
 
 ## <a name="response"></a>响应
 
-服务为 `Sync-Token` 每个响应提供标头。
+服务为每个响应提供一个 `Sync-Token` 标头。
 
 ```http
 Sync-Token: jtqGc1I4=MDoyOA==;sn=28
@@ -43,7 +43,7 @@ Sync-Token: jtqGc1I4=MDoyOA==;sn=28
 
 ## <a name="subsequent-requests"></a>后续请求
 
-任何后续请求都保证与提供的进行实时一致的响应 `Sync-Token` 。
+任何后续请求都获得与提供的 `Sync-Token` 相关的实时一致响应保证。
 
 ```http
 Sync-Token: <id>=<value>

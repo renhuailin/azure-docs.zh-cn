@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183237"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931803"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>适用于 Azure Kubernetes 服务的 Azure 安全基线
 
@@ -22,7 +22,7 @@ Azure Kubernetes 服务的 Azure 安全基线包含有助于你改进部署安�
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 [有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -178,7 +178,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 使用网络策略，可以选择基于命名空间和标签选择器来允许或拒绝群集中的特定网络路径。 使用这些命名空间和标记作为流量配置规则的描述符。 使用 Azure PowerShell 或 Azure 命令行接口 (CLI) 根据资源的标记查找资源或对其执行操作。
 
-- [具有 CLI 的 Azure Policy](/cli/azure/policy?view=azure-cli-latest)
+- [具有 CLI 的 Azure Policy](/cli/azure/policy)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -382,7 +382,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何将 AKS 与 Azure AD 集成](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -735,7 +735,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 使用 PowerShell cmdlet“Get-AzSecurityTask”自动检索安全中心建议执行的安全任务，以加强安全状况并修复漏洞扫描结果。
 
-- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](/powershell/module/az.security/get-azsecuritytask)
 
 **Azure 安全中心监视**：是
 
@@ -763,7 +763,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -925,17 +925,17 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 使用 Azure AD 集成，可授权用户或组访问一个命名空间或多个群集内的 Kubernetes 资源。 
 
-使用 Azure AD PowerShell 模块执行即席查询，以发现作为 AKS 管理组成员的帐户，并使用它来定期协调访问权限。 使用 Azure CLI 来执行 "获取托管 Kubernetes 群集的访问凭据" 等操作。 实现安全中心标识和访问管理建议。
+使用 Azure AD PowerShell 模块执行即席查询，以发现属于 AKS 管理组成员的帐户，并使用它来定期协调访问。 使用 Azure CLI 来执行 "获取托管 Kubernetes 群集的访问凭据" 等操作。 实现安全中心标识和访问管理建议。
 
-- [使用 Azure CLI 管理 AKS](/cli/azure/aks?view=azure-cli-latest)
+- [使用 Azure CLI 管理 AKS](/cli/azure/aks)
 
 - [了解 AKS 与 Azure AD 的集成](concepts-identity.md)
 
 - [如何将 AKS 与 Azure AD 集成](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -949,7 +949,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 在 Kubernetes 中实现命名空间以创建逻辑隔离边界。 使用“Microsoft.ContainerService”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Kubernetes 服务 (AKS) 实例的配置。 
 
-查看并实现用于隔离和多租户的其他 Kubernetes 功能和注意事项，包括以下内容：计划、网络、身份验证/授权和容器。 还可以使用单独的订阅和/或管理组进行开发、测试和生产。 将 AKS 群集与虚拟网络、适当标记的子网分开，并使用 Web 应用程序防火墙 (WAF) 进行保护。
+检查并为隔离和多租户实现附加的 Kubernetes 功能和注意事项，包括以下内容：计划、网络、身份验证/授权和容器。 还可以使用单独的订阅和/或管理组进行开发、测试和生产。 将 AKS 群集与虚拟网络、适当标记的子网分开，并使用 Web 应用程序防火墙 (WAF) 进行保护。
 
 - [了解 AKS 中群集隔离的最佳做法](operator-best-practices-cluster-isolation.md)
 
@@ -1055,7 +1055,7 @@ AKS 代理节点主机 OS 的安全强化
 
 security-hardened-vm-host-image.md
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
 **Azure 安全中心监视**：不适用
 
@@ -1322,9 +1322,9 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能。 请参阅 NIST 的发布，确定薄弱点和缺口，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 请参阅 NIST 的刊物，识别弱点和差距，并按需修改计划。
 
-- [适用于 IT 计划和功能的测试、培训和试验计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
+- [IT 计划和功能的测试、培训与演练计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Azure 安全中心监视**：不适用
 

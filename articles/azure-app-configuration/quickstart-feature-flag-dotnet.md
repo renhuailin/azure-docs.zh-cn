@@ -3,8 +3,7 @@ title: 将功能标志添加到 .NET Framework 应用的快速入门 | Microsoft
 description: 有关将功能标志添加到 .NET Framework 应用以及在 Azure 应用程序配置中管理这些标志的快速入门
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -14,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: c379d3f99628c2d3fb32ae34ca0214f608d365c7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: alkemper
+ms.openlocfilehash: 513c826e11ff9dfe6ea94349c67620da9d1bba48
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012691"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932041"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 

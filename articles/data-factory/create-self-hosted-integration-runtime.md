@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350460"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932585"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -102,29 +102,28 @@ ms.locfileid: "96350460"
 按如下所示使用该应用程序：
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-下面是应用程序参数和属性的详细信息： 
+下面是应用程序的操作和参数的详细信息： 
 
-| 属性                                                    | 说明                                                  | 必须 |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问以设置高可用性群集。 或者直接对自承载 IR 启用凭据设置，而无需使用 Azure 数据工厂。 如果采用后一种做法，可以在同一网络中的远程计算机上使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet。 | 否       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | 启用当节点在容器中运行时以远程方式访问当前节点。 | 否       |
-| **DisableRemoteAccess**                                         | 禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问，也仍可正常运行 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet。 只要在自承载 IR 节点所在的同一台计算机上执行该 cmdlet，就可以实现此行为。 | 否       |
-| **Key** "`<AuthenticationKey>`"                                 | 覆盖或更新以前的身份验证密钥。 请谨慎执行此操作。 如果密钥属于新的集成运行时，以前的自承载 IR 节点可能会脱机。 | 否       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 为当前节点生成备份文件。 备份文件包含节点密钥和数据存储凭据。 | 否       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | 从备份文件还原节点。                          | 否       |
-| **重启**                                                     | 重启自承载集成运行时主机服务。   | 否       |
-| **启动**                                                       | 启动自承载集成运行时主机服务。     | 否       |
-| **停止**                                                        | 停止自承载集成运行时主机服务。        | 否       |
-| **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | 否       |
-| **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | 否       |
-| **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | 否       |
-| **TurnOffAutoUpdate**                                           | 禁用自承载集成运行时自动更新。       | 否       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | 将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户和虚拟帐户使用空密码 ""。 | 否       |
+|ACTION|args|说明|
+|------|----|-----------|
+|rn<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。|
+|时期<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|在当前节点上启用远程访问以设置高可用性群集。 或者直接对自承载 IR 启用凭据设置，而无需使用 Azure 数据工厂。 如果采用后一种做法，可以在同一网络中的远程计算机上使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet。|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|启用当节点在容器中运行时以远程方式访问当前节点。|
+|dra<br/>-DisableRemoteAccess||禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问，也仍可正常运行 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet。 只要在自承载 IR 节点所在的同一台计算机上执行该 cmdlet，就可以实现此行为。|
+|温度<br/>-Key|"`<AuthenticationKey>`"|覆盖或更新以前的身份验证密钥。 请谨慎执行此操作。 如果密钥属于新的集成运行时，以前的自承载 IR 节点可能会脱机。|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|为当前节点生成备份文件。 备份文件包含节点密钥和数据存储凭据。|
+|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|从备份文件还原节点。|
+|迅驰<br/>-Restart||重启自承载集成运行时主机服务。|
+|些<br/>-Start||启动自承载集成运行时主机服务。|
+|关心<br/>-Stop||停止自承载集成运行时主机服务。|
+|sus<br/>-StartUpgradeService||启动自承载集成运行时升级服务。|
+|tu<br/>-StopUpgradeService||停止自承载集成运行时升级服务。|
+|-tonau,<br/>-TurnOnAutoUpdate||启用自承载集成运行时自动更新。|
+|-toffau,<br/>-TurnOffAutoUpdate||禁用自承载集成运行时自动更新。|
+|ssa<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户和虚拟帐户使用空密码 ""。|
 
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
@@ -331,7 +330,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 确保在企业防火墙、自承载集成运行时计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让自承载集成运行时成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
-例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure Synapse Analytics（以前为 SQL 数据仓库）接收器，请执行以下步骤：
+例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure Synapse Analytics 接收器，请执行以下步骤：
 
 1. 对于 Windows 防火墙和企业防火墙，允许 1433 端口上的出站 TCP 通信。
 1. 配置 SQL 数据库的防火墙设置，将自承载集成运行时计算机的 IP 地址添加到允许的 IP 地址列表。

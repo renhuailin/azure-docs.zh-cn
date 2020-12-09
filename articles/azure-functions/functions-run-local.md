@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020330"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932449"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行�
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+函数项目目录包含 [host.js打开](functions-host-json.md) 和 [local.settings.js上](#local-settings-file)的文件，以及包含各个函数的代码的子文件夹。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
 版本 3.x/2.x 要求在初始化项目时为项目选择默认语言。 在版本 3.x/2.x 中，添加的所有函数均使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 

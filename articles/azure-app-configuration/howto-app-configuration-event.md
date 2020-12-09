@@ -2,20 +2,20 @@
 title: 使用 Azure 应用程序配置将事件发送到 Web 终结点
 description: 了解如何设置 Azure 应用程序配置事件订阅，以将键值修改事件发送到 Web 终结点
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 02/25/2020
-ms.author: lcozzens
+ms.date: 03/04/2020
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d05b8a2d309cb8d50197a1714f34e1eaa92630cf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498304"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932738"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
 

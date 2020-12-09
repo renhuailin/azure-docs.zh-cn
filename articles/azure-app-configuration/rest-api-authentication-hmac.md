@@ -1,37 +1,37 @@
 ---
-title: Azure 应用配置 REST API-HMAC 身份验证
+title: Azure 应用配置 REST API - HMAC 身份验证
 description: 使用 HMAC 通过使用 REST API 对 Azure 应用配置进行身份验证
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182625"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932704"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 身份验证-REST API 引用
 
 可以使用 HMAC-SHA256 身份验证方案对 HTTP 请求进行身份验证。  (HMAC 是指基于哈希的消息身份验证代码。 ) 必须通过 TLS 传输这些请求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- **Credential** - \<Access Key ID\>
-- **密码** -base64 解码的访问密钥值。 ``base64_decode(<Access Key Value>)``
+- 凭据 - \<Access Key ID\>
+- 机密 - base64 解码的访问密钥值。 ``base64_decode(<Access Key Value>)``
 
 凭据 (的值也称为 `id`) 和机密 (也称为 `value`) ，必须从 Azure 应用配置的实例获取。 可以通过使用 [Azure 门户](https://portal.azure.com) 或 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest)来实现此目的。
 
-为每个请求提供身份验证所需的所有 HTTP 标头。 要求的最小值为：
+为每个请求提供身份验证所需的所有 HTTP 标头。 至少需要以下标头：
 
 |  请求标头 | 说明  |
 | --------------- | ------------ |
 | **主机** | Internet 主机和端口号。 有关详细信息，请参阅  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2)部分。 |
 | **日期** | 发出请求的日期和时间。 从当前协调世界时开始，该时间不能超过15分钟 (格林尼治标准时间) 。 此值为 HTTP 日期，如 [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)部分中所述。
-| **x-ms-date** | 与 ```Date``` 上面相同。 如果代理无法直接访问 ```Date``` 请求标头，则可以使用它，否则代理会修改它。 如果 ```x-ms-date``` ```Date``` 提供了和，则 ```x-ms-date``` 优先使用。 |
-| **x-ms-内容-sha256** | 请求正文的 base64 编码 SHA256 哈希。 即使没有正文，也必须提供它。 ```base64_encode(SHA256(body))```|
+| **x-ms-date** | 与上述 ```Date``` 相同。 如果代理无法直接访问 ```Date``` 请求标头，则可以使用它，否则代理会修改它。 如果同时提供了 ```x-ms-date``` 和 ```Date```，则 ```x-ms-date``` 优先。 |
+| **x-ms-content-sha256** | 请求正文的 base64 编码的 SHA256 哈希。 即使没有正文，也必须提供它。 ```base64_encode(SHA256(body))```|
 | **授权** | HMAC-SHA256 方案所需的身份验证信息。 格式和详细信息将在本文的后面部分进行说明。 |
 
 **示例：**
@@ -47,14 +47,14 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ### <a name="syntax"></a>语法
 
-``Authorization``： **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
+``Authorization``：**HMAC-SHA256** ```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  参数 | 说明  |
+|  参数 | 描述  |
 | ------ | ------ |
-| **HMAC-SHA256** | 授权方案。 _需要 ()_ |
-| **凭据** | 用于计算签名的访问密钥的 ID。 _需要 ()_ |
-| **SignedHeaders** | 添加到签名的 HTTP 请求标头。 _需要 ()_ |
-| **信号** | HMACSHA256 的 base64 编码的字符串。 _需要 ()_|
+| **HMAC-SHA256** | 授权方案。 （必需） |
+| **凭据** | 用于计算签名的访问密钥的 ID。 （必需） |
+| **SignedHeaders** | 添加到签名的 HTTP 请求标头。 （必需） |
+| **Signature** | String-To-Sign 的 base64 编码的 HMACSHA256。 （必需）|
 
 ### <a name="credential"></a>凭据
 
@@ -64,33 +64,33 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 为请求签名所需的 HTTP 请求标头名称（用分号分隔）。 这些 HTTP 标头必须与请求一起正确提供。 不要使用空格。
 
-### <a name="required-http-request-headers"></a>必需的 HTTP 请求标头
+### <a name="required-http-request-headers"></a>所需的 HTTP 请求标头
 
-```x-ms-date```[or ```Date``` ]; ```host``` ;```x-ms-content-sha256```
+```x-ms-date```[或 ```Date```];```host```;```x-ms-content-sha256```
 
-任何其他 HTTP 请求标头也可添加到签名。 只需将它们追加到 ```SignedHeaders``` 自变量。
+任何其他 HTTP 请求标头也可添加到签名。 只需将它们追加到 ```SignedHeaders``` 参数中即可。
 
 **示例：**
 
-x 毫秒; 主机; x-ms-内容-sha256; ```Content-Type``` ;```Accept```
+x-ms-date;host;x-ms-content-sha256;```Content-Type```;```Accept```
 
 ### <a name="signature"></a>签名
 
 字符串到签名的 Base64 编码的 HMACSHA256 哈希。 它使用标识的访问密钥 `Credential` 。
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
-### <a name="string-to-sign"></a>字符串到符号
+### <a name="string-to-sign"></a>String-To-Sign
 
 它是请求的规范表示形式：
 
-_字符串到符号 =_
+_String-To-Sign=_
 
-**HTTP_METHOD** + "\n" + **path_and_query** + "\n" + **signed_headers_values**
+**HTTP_METHOD** + '\n' + **path_and_query** + '\n' + **signed_headers_values**
 
-|  参数 | 说明  |
+|  参数 | 描述  |
 | ------ | ------ |
 | **HTTP_METHOD** | 与请求一起使用的大写 HTTP 方法名称。 有关详细信息，请参阅 [第9部分](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 |
-|**path_and_query** | 请求的连接绝对 URI 路径和查询字符串。 有关详细信息，请参阅 [3.3 节](https://tools.ietf.org/html/rfc3986#section-3.3)。
+|**path_and_query** | 串联在一起的请求绝对 URI 路径和查询字符串。 有关详细信息，请参阅 [3.3 节](https://tools.ietf.org/html/rfc3986#section-3.3)。
 | **signed_headers_values** | 中列出的所有 HTTP 请求标头的以分号分隔的值 `SignedHeaders` 。 格式遵循 `SignedHeaders` 语义。 |
 
 **示例：**
@@ -152,9 +152,9 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid Signature", Bearer
 ```
 
-**原因：**```Signature```提供的与服务器预期的不匹配。
+原因：提供的 ```Signature``` 与服务器需要的内容不匹配。
 
-**解决方案：** 请确保 ```String-To-Sign``` 是正确的。 请确保在 ```Secret``` 使用) 之前，正确并正确使用 (base64 解码。
+**解决方案：** 请确保 ```String-To-Sign``` 正确无误。 请确保 ```Secret``` 正确无误且其使用方式正确（在使用之前已进行 base64 解码）。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -170,15 +170,15 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is required as a signed header", Bearer
 ```
 
-**原因：** 中缺少参数 ```SignedHeaders``` 。
+原因：```SignedHeaders``` 中缺少参数。
 
-**解决方案：** 检查已签名标头的最低要求。
+**解决方案：** 查看“签名标头”最低要求。
 
 ## <a name="code-snippets"></a>代码片段
 
 ### <a name="javascript"></a>JavaScript
 
-*先决条件*： [加密-JS](https://code.google.com/archive/p/crypto-js/)
+*先决条件*：[Crypto-JS](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -545,13 +545,13 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 *先决条件*：
 
-| 先决条件 | 命令 | 测试的版本 |
+| 先决条件 | 命令 | 经过测试的版本 |
 | ------------ | ------- | --------------- |
-| [Bash](https://www.gnu.org/software/bash/) | bash | 3.5.27, 4.4.23 |
+| [Bash](https://www.gnu.org/software/bash/) | bash | 3.5.27、4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | tr | 8.28 |
-| [curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
-| [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0 g，1.1.1 a |
-| [util-linux](https://github.com/karelzak/util-linux/) | hexdump | v2.14.1、2.31。1 |
+| [curl](https://curl.haxx.se/) | curl | 7.55.1、7.58.0 |
+| [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0g、1.1.1a |
+| [util-linux](https://github.com/karelzak/util-linux/) | hexdump | 2.14.1、2.31.1 |
 
 ```bash
 #!/bin/bash

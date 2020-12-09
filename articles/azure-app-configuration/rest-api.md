@@ -1,28 +1,28 @@
 ---
 title: Azure 应用配置 REST API
-description: Azure 应用配置的参考页面 REST API
-author: lisaguthrie
-ms.author: lcozzens
+description: Azure 应用配置 REST API 的参考页
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: e2753f0f8926ac15f5d32020c8891d1b612d2bb3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 27befc2417444c62493548acbcdacd9f7db28a65
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182591"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931990"
 ---
 # <a name="azure-app-configuration-rest-api"></a>Azure 应用配置 REST API
 
-有关 Azure 应用配置 REST API 的高级文档可在 [AZURE REST 主要文档](/rest/api/appconfiguration/)中找到。 本部分包含有关使用应用配置 REST API 开发人员的更多详细信息。
+有关 Azure 应用配置 REST API 的高级文档可在 [Azure REST 主要文档](/rest/api/appconfiguration/)中找到。 本部分为使用应用配置 REST API 的开发人员提供了更多详细信息。
 
-以下参考页面可用于详细描述 Azure 应用配置 API 图面。
+以下参考页可用于详细描述 Azure 应用配置 API 图面。
 
 ## <a name="resources"></a>资源
 
 - [“键”](./rest-api-keys.md)
-- [键-值](./rest-api-key-value.md)
+- [键/值](./rest-api-key-value.md)
 - [标签](./rest-api-labels.md)
 - [锁](./rest-api-locks.md)
 - [修订](./rest-api-revisions.md)

@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: 了解如何使用功能筛选器启用条件功能标志
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554730"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931871"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能筛选器启用条件功能标志
 
@@ -21,11 +21,11 @@ ms.locfileid: "94554730"
 
 相比之下，使用“条件功能标志”可以动态启用或禁用功能标志。 应用程序的行为可能会有所不同，具体取决于功能标志条件。 假设要首先向小部分用户显示新功能。 使用条件功能标志可以为某些用户启用功能标志，同时为其他用户禁用该标志。 功能筛选器在每次计算出其结果时确定功能标志的状态。
 
-`Microsoft.FeatureManagement`库包括三个功能筛选器：
+`Microsoft.FeatureManagement` 库包括三个功能筛选器：
 
 - `PercentageFilter` 基于百分比启用功能标志。
 - `TimeWindowFilter` 在指定时间段内启用功能标志。
-- `TargetingFilter` 启用指定用户和组的功能标志。
+- `TargetingFilter` 为指定的用户和组启用功能标志。
 
 还可以创建自己的功能筛选器来实现 [Microsoft.FeatureManagement.IFeatureFilter 接口](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)。
 
@@ -49,7 +49,7 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 遵循[快速入门：将功能标志添加到 ASP.NET Core 应用](./quickstart-feature-flag-aspnet-core.md)中的说明，以创建具有功能标志的 Web 应用。
 
-1. 在 Azure 门户中，请切换到配置存储，并单击 " **功能管理器** "。
+1. 在 Azure 门户中，请切换到配置存储，并单击 " **功能管理器**"。
 
 1. 单击在快速入门中创建的 Beta 功能标志的上下文菜单。 单击 **“编辑”** 。
 
@@ -85,9 +85,9 @@ public void ConfigureServices(IServiceCollection services)
 若要查看此功能标志的效果，请在浏览器中启动该应用程序，并多次点击“刷新”按钮。 你会看到 Beta 项在大约 50% 的时间中出现在工具栏上。 它在其余时间隐藏，因为 `PercentageFilter` 会为一部分请求停用 Beta 功能。 以下视频显示了正在起作用的这一行为。
 
 > [!div class="mx-imgBorder"]
-> ![操作中的 TargetingFilter](./media/feature-flags-percentagefilter.gif)
+> ![TargetingFilter 的实际运用](./media/feature-flags-percentagefilter.gif)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为目标受众启用功能的分步推出](./howto-targetingfilter-aspnet-core.md)
+> [为目标受众启用分阶段推出功能](./howto-targetingfilter-aspnet-core.md)
