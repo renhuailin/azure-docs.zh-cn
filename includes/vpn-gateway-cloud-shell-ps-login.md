@@ -15,9 +15,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061585"
 ---
-如果在本地运行 PowerShell，请用提升的权限打开 PowerShell 控制台，并连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据  。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。
+如果在本地运行 PowerShell，请用提升的权限打开 PowerShell 控制台，并连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。
 
-如果使用 Azure Cloud Shell 而不是在本地运行 PowerShell，则会注意到不需要运行 *AzAccount* 。 选择 " **试用** " 后，Azure Cloud Shell 自动连接到 Azure 帐户。
+如果使用 Azure Cloud Shell 而不是在本地运行 PowerShell，则会注意到不需要运行 *AzAccount*。 选择 " **试用**" 后，Azure Cloud Shell 自动连接到 Azure 帐户。
 
 1. 如果在本地运行 PowerShell，请登录。
 
