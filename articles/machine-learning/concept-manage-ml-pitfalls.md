@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012716"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922627"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动化机器学习防止过度拟合和不均衡数据
 
@@ -52,11 +52,11 @@ ms.locfileid: "87012716"
 * **模型复杂性限制**
 * **交叉验证**
 
-在自动化 ML 的上下文中，上面所述的前三项是**你要实施的最佳做法**。 带粗体格式的后三项是**自动化 ML 为了防止过度拟合而默认实施的最佳做法**。 在除自动化 ML 以外的设置中，为了避免过度拟合模型，值得遵循所有六项最佳做法。
+在自动化 ML 的上下文中，上面所述的前三项是 **你要实施的最佳做法**。 带粗体格式的后三项是 **自动化 ML 为了防止过度拟合而默认实施的最佳做法**。 在除自动化 ML 以外的设置中，为了避免过度拟合模型，值得遵循所有六项最佳做法。
 
 ### <a name="best-practices-you-implement"></a>你要实施的最佳做法
 
-使用**更多的数据**是防止过度拟合的最简单且最可行的方法，通常，这种做法带来的额外好处就是提高准确度。 使用更多数据时，模型将更难以记住确切的模式，因此它被迫达成可以更灵活地适应更多条件的解决方案。 此外，必须识别**统计偏差**，以确保训练数据不包含实时预测数据中不存在的隔离模式。 这种情况很难解决，因为定型集和测试集之间可能没有过度拟合，但与实时测试数据相比，可能会存在过度拟合。
+使用 **更多的数据** 是防止过度拟合的最简单且最可行的方法，通常，这种做法带来的额外好处就是提高准确度。 使用更多数据时，模型将更难以记住确切的模式，因此它被迫达成可以更灵活地适应更多条件的解决方案。 此外，必须识别 **统计偏差**，以确保训练数据不包含实时预测数据中不存在的隔离模式。 这种情况很难解决，因为定型集和测试集之间可能没有过度拟合，但与实时测试数据相比，可能会存在过度拟合。
 
 目标泄露是一个类似问题；在此情况下，你可能不会在定型/测试集之间发现过度拟合，但它却会在预测时出现。 当你的模型在定型期间“作弊”，访问在预测时不应有的数据时，就会发生目标泄漏。 例如，如果你的问题是在星期一预测星期五的商品价格，但某个功能意外包含星期四的数据，这就是模型在预测时不会有的数据，因为它不能预知未来。 目标泄漏是一个很容易疏忽的错误，但问题的准确度异常高，则往往可以体现此错误。 如果你正在尝试预测股票价格，并且定型模型的准确度为 95%，则功能中可能存在目标泄漏。
 
@@ -84,8 +84,8 @@ ms.locfileid: "87012716"
 图表| 说明
 ---|---
 [混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签评估正确分类的标签。 
-[精准率-召回率](how-to-understand-automated-ml.md#precision-recall-chart)| 根据发现的数据标签实例比评估正确的标签比 
-[ROC 曲线](how-to-understand-automated-ml.md#roc)| 根据误报标签比评估正确的标签比。
+[精准率-召回率](how-to-understand-automated-ml.md#precision-recall-curve)| 根据发现的数据标签实例比评估正确的标签比 
+[ROC 曲线](how-to-understand-automated-ml.md#roc-curve)| 根据误报标签比评估正确的标签比。
 
 ## <a name="handle-imbalanced-data"></a>处理不平衡的数据 
 

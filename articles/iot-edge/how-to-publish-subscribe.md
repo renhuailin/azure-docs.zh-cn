@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461423"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922579"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>发布和订阅 Azure IoT Edge
 
@@ -177,7 +177,6 @@ ms.locfileid: "96461423"
 
 - Azure IoT 设备或模块需要显式授权规则才能连接到 IoT Edge hub MQTT broker。 下面提供了默认连接授权策略。
 - 默认情况下，Azure IoT 设备或模块可以访问自己的 IoT 中心主题，无需任何显式授权规则。 但是，在这种情况下，授权源自父/子关系，必须设置这些关系。 IoT Edge 模块会自动设置为其 IoT Edge 设备的子级，但设备需要显式设置为其 IoT Edge 网关的子网。
-- Azure IoT 设备或模块可以访问其他设备或模块的主题，这些主题提供了相应的显式授权规则。
 
 下面是可用于启用所有 Azure IoT 设备或模块 **连接** 到 broker 的默认授权策略：
 
@@ -275,7 +274,7 @@ ms.locfileid: "96461423"
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ ms.locfileid: "96461423"
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ ms.locfileid: "96461423"
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }
