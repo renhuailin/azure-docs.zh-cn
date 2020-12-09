@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912848"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853526"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
 
@@ -29,7 +29,7 @@ ms.locfileid: "92912848"
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
 
-内容审查器的视频审查功能可以在 Azure 媒体服务 (AMS) 中免费提供公共预览版的 **媒体处理器** 。 Azure 媒体服务是用于存储和流式传输视频内容的专业 Azure 服务。 
+内容审查器的视频审查功能可以在 Azure 媒体服务 (AMS) 中免费提供公共预览版的 **媒体处理器**。 Azure 媒体服务是用于存储和流式传输视频内容的专业 Azure 服务。 
 
 ### <a name="create-an-azure-media-services-account"></a>创建 Azure 媒体服务帐户
 
@@ -55,7 +55,7 @@ Azure 媒体服务资源管理器是 AMS 的用户友好前端。 使用它可�
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目并将其命名为 **VideoModeration** 。 
+1. 在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目并将其命名为 **VideoModeration**。 
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
 1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
     - windowsazure.mediaservices
@@ -430,9 +430,5 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 ## <a name="next-steps"></a>后续步骤
 
 了解如何从你的审查输出生成[视频评论](video-reviews-quickstart-dotnet.md)。
-
-将[脚本审查](video-transcript-moderation-review-tutorial-dotnet.md)添加到你的视频评论中。
-
-了解有关如何生成[完整视频和脚本审查解决方案](video-transcript-moderation-review-tutorial-dotnet.md)的详细教程。
 
 为适用于 .NET 的此内容审查器快速入门以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。

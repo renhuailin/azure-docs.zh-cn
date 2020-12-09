@@ -8,24 +8,24 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076243"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854557"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 
 通过设备模拟解决方案加速器，可以从模拟设备生成遥测数据以对 IoT 解决方案进行测试。 本操作指南演示如何使用时序见解环境可视化和分析模拟的遥测数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本操作指南中的步骤，需要拥有一个有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本操作指南中的步骤假定你已向 Azure 订阅部署了设备模拟解决方案加速器。 如果尚未部署解决方案加速器，请执行[部署并运行基于云的设备模拟解决方案](quickstart-device-simulation-deploy.md)快速入门中的步骤。
+本操作指南中的步骤假定你已向 Azure 订阅部署了设备模拟解决方案加速器。 如果尚未部署设备模拟，请参阅 GitHub 上的 [设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
 
-本文假设解决方案加速器的名称为 contoso-simulatio****。 在完成以下步骤时，将 contoso-simulatio 替换为解决方案加速器的名称****。
+本文假设解决方案加速器的名称为 contoso-simulatio。 在完成以下步骤时，将 contoso-simulatio 替换为解决方案加速器的名称。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -41,9 +41,9 @@ ms.locfileid: "92076243"
     az resource list --resource-group contoso-simulation -o table
     ```
 
-    IoT 中心是 Microsoft.Devices/IotHubs**** 类型的资源。
+    IoT 中心是 Microsoft.Devices/IotHubs 类型的资源。
 
-1. 向中心添加名为 devicesimulationtsi**** 的使用者组。 在以下命令中，使用中心和解决方案加速器的名称：
+1. 向中心添加名为 devicesimulationtsi 的使用者组。 在以下命令中，使用中心和解决方案加速器的名称：
 
     ```azurecli-interactive
     az iot hub consumer-group create --hub-name contoso-simulation7d894 --name devicesimulationtsi --resource-group contoso-simulation
@@ -65,10 +65,10 @@ ms.locfileid: "92076243"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI****。 完成此步骤后，请选择自己的唯一名称。 |
+    | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
-    | 资源组 | contoso-simulation****。 使用解决方案加速器的名称。 |
-    | 位置 | 此示例使用美国东部****。 在设备模拟加速器所在的同一区域中创建环境。 |
+    | 资源组 | contoso-simulation。 使用解决方案加速器的名称。 |
+    | 位置 | 此示例使用美国东部。 在设备模拟加速器所在的同一区域中创建环境。 |
     | SKU |**S1** |
     | 容量 | **1** |
 
@@ -85,7 +85,7 @@ ms.locfileid: "92076243"
 
 1. 在 Azure 门户中，导航到新的时序环境。
 
-1. 在左侧单击“事件源”****：
+1. 在左侧单击“事件源”：
 
     ![查看事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
@@ -97,14 +97,14 @@ ms.locfileid: "92076243"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub****。 完成此步骤后，请使用自己的唯一名称。 |
-    | 源 | **IoT 中心** |
+    | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub。 完成此步骤后，请使用自己的唯一名称。 |
+    | Source | **IoT 中心** |
     | 导入选项 | **从可用的订阅使用 IoT 中心** |
     | 订阅 ID | 在下拉列表中选择自己的 Azure 订阅。 |
-    | IoT 中心名称 | contoso-simulation7d894****。 从设备模拟解决方案加速器中使用 IoT 中心的名称。 |
+    | IoT 中心名称 | contoso-simulation7d894。 从设备模拟解决方案加速器中使用 IoT 中心的名称。 |
     | IoT 中心策略名称 | **iothubowner** |
     | IoT 中心策略密钥 | 此字段会自动填充。 |
-    | IoT 中心使用者组 | devicesimulationtsi**** |
+    | IoT 中心使用者组 | devicesimulationtsi |
     | 事件序列化格式 | **JSON** |
     | 时间戳属性名称 | 留空 |
 
@@ -125,17 +125,17 @@ ms.locfileid: "92076243"
 
 时序见解资源管理器是一个 Web 应用，可用于可视化遥测数据。
 
-1. 在 Azure 门户中，选择时序见解“概述”选项卡****。
+1. 在 Azure 门户中，选择时序见解“概述”选项卡。
 
-1. 若要打开时序见解资源管理器 Web 应用，请单击“转到环境”****：
+1. 若要打开时序见解资源管理器 Web 应用，请单击“转到环境”：
 
     ![时序见解资源管理器](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-environment.png)
 
-1. 在时间选择面板上，从快速时间菜单中选择“过去 30 分钟”，然后单击“搜索”********：
+1. 在时间选择面板上，从快速时间菜单中选择“过去 30 分钟”，然后单击“搜索”：
 
     ![时序见解资源管理器中的搜索](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
 
-1. 在左侧的条件面板中，选择“温度”作为“度量”值，并且选择“iothub-connection-device-id”作为“拆分依据”值****************：
+1. 在左侧的条件面板中，选择“温度”作为“度量”值，并且选择“iothub-connection-device-id”作为“拆分依据”值：
 
     ![显示时序见解 "术语" 面板的屏幕截图，其中突出显示了 "度量值" 和 "拆分方式" 值。](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92076243"
 
     ![时序见解资源管理器中的“添加查询”](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. 选择“过去 30 分钟”作为时间跨度值，选择“湿度”作为“度量值”，并且选择“iothub-connection-device-id”作为“拆分依据”值********************：
+1. 选择“过去 30 分钟”作为时间跨度值，选择“湿度”作为“度量值”，并且选择“iothub-connection-device-id”作为“拆分依据”值：
 
     ![时序见解资源管理器中的查询](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 

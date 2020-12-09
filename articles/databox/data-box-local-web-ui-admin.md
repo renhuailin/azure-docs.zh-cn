@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576823"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854999"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
@@ -33,11 +33,11 @@ ms.locfileid: "96576823"
 
     内存转储是指在系统出现故障后保存的设备内存内容。
 
-    除非支持请求一个选项，否则不应选择 " **包括内存转储** " 选项。 收集包含内存转储的支持包需要很长时间，并包含敏感数据。
+    不应选择 " **包括内存转储** " 选项，除非支持人员请求一个选项。 需要很长时间来收集包含内存转储的支持包，并包含敏感数据。
 
     ![创建支持包 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-    将收集到一个支持包。 如果只包含系统日志，此操作需要几分钟时间。 如果包含内存转储，则需要花费很长时间。
+    将收集到一个支持包。 如果只包含系统日志，此操作需要几分钟时间。 如果包括内存转储，则需要花费很长时间。
 
     ![创建支持包 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 

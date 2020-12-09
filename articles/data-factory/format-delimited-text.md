@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/07/2020
 ms.author: jingwang
-ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0fa68a8dbdcb1f2c0cc4af1b4df751fd81c0de14
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348879"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854625"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
 
@@ -78,7 +78,7 @@ ms.locfileid: "96348879"
 
 复制活动的 **_\_source\*** * 节支持以下属性。
 
-| 属性       | 描述                                                  | 必须 |
+| 属性       | 说明                                                  | 必选 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本读取设置”表。 |  否       |
@@ -86,7 +86,7 @@ ms.locfileid: "96348879"
 
 `formatSettings` 下支持的 **带分隔符的文本读取设置**：
 
-| 属性      | 描述                                                  | 必须 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 | 否       |
@@ -126,7 +126,7 @@ ms.locfileid: "96348879"
 
 复制活动的 **\_sink\*** 节支持以下属性。
 
-| properties       | 描述                                                  | 必须 |
+| 属性       | 说明                                                  | 必选 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本写入设置”表。 |    否      |
@@ -134,7 +134,7 @@ ms.locfileid: "96348879"
 
 `formatSettings` 下支持的 **带分隔符的文本写入设置**：
 
-| 属性      | 描述                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必选                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
@@ -149,7 +149,7 @@ ms.locfileid: "96348879"
 
 下表列出了由分隔文本源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
@@ -157,7 +157,7 @@ ms.locfileid: "96348879"
 | 多行行 | 源文件是否包含跨多行的行。 多行值必须用引号引起来。 | 否 `true` 或 `false` | multiLineRow |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
@@ -176,11 +176,14 @@ source(
     wildcardPaths:['*.csv']) ~> CSVSource
 ```
 
+> [!NOTE]
+> 数据流源支持 Hadoop 文件系统支持的一组有限的 Linux 组合
+
 ### <a name="sink-properties"></a>接收器属性
 
 下表列出了由分隔的文本接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

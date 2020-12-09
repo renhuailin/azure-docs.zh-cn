@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410481"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854608"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -159,7 +159,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 文本翻译                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 是，RSA 4096 位  | -                  |
 | **分析**                    |                    |                    |                    |
-| Azure 流分析           | 是                | 暂无\*              | -                  |
+| Azure 流分析           | 是                | 是\*\*            | -                  |
 | 事件中心                       | 是                | 是                | -                  |
 | 函数                        | 是                | 是                | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
@@ -215,7 +215,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure Site Recovery              | 是                | -                  | -                  |
 | Azure Migrate                    | 是                | 是                | -                  |
 | **介质**                        |                    |                    |                    |
-| 媒体服务                   | 是                | -                  | 是                |
+| 媒体服务                   | 是                | 是                | 是                |
 | **安全性**                     |                    |                    |                    |
 | 适用于 IoT 的 Azure 安全中心    | 是                | 是                | -                  |
 | Azure Sentinel                   | 是                | 是                | -                  |

@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015165"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853998"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015165"
 通用数据模型 (CDM) 元数据系统使数据及其含义能够在应用程序和业务流程之间轻松共享。 若要了解详细信息，请参阅 [通用数据模型](/common-data-model/) 概述。
 
 在 Azure 数据工厂中，用户可以使用映射数据流从存储在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中的 model.js和清单窗体上转换 CDM 实体中的数据。 你还可以使用 CDM 实体引用来传入 CDM 格式的数据，这些实体引用将以 CSV 或 Parquet 格式将数据置于分区文件夹中。 
-
-> [!NOTE]
-> 用于 ADF 数据流 (CDM) 格式连接器的通用数据模型目前作为公共预览版提供。
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
@@ -35,7 +32,7 @@ ms.locfileid: "95015165"
 
 下表列出了 CDM 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
@@ -43,7 +40,7 @@ ms.locfileid: "95015165"
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
 | 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore | 
 | 架构链接的服务 | 语料库所在的链接服务 | 是，如果使用清单 | `'adlsgen2'` 或 `'github'` | corpusStore | 
 | 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | 字符串 | adlsgen2_fileSystem |
 | 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 | github_repository |
@@ -88,7 +85,6 @@ CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构�
 2. 查找分区。Location 属性 
 3. 将 "blob.core.windows.net" 更改为 "dfs.core.windows.net"
 4. 将 URL 中的任何 "% 2F" 编码修复为 "/"
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 源数据流脚本示例
 
@@ -118,7 +114,7 @@ source(output(
 
 下表列出了 CDM 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |

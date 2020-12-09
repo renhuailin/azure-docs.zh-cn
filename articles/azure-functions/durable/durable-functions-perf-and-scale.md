@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 56a9861f0e25e1dcdf741cfdf5c8830dd9b6fc1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325804"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854982"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -20,13 +20,13 @@ ms.locfileid: "91325804"
 
 ## <a name="history-table"></a>历史记录表
 
-“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。 此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
+“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。 此表的名称采用 *TaskHubName* History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
 
 需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。 以这种方式使用执行历史记录来重新生成状态不受[事件溯源模式](/azure/architecture/patterns/event-sourcing)的影响。
 
 ## <a name="instances-table"></a>实例表
 
-“实例”表是另一个 Azure 存储表，包含任务中心内所有业务流程和实体实例的状态。 创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID 或实体键，行键是固定的常量。 每个业务流程或实体实例对应一行。
+“实例”表是另一个 Azure 存储表，包含任务中心内所有业务流程和实体实例的状态。 创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID 或实体键，行键是空字符串。 每个业务流程或实体实例对应一行。
 
 使用此表可以满足来自 `GetStatusAsync` (.NET) 和 `getStatus` (JavaScript) API 以及[状态查询 HTTP API](durable-functions-http-api.md#get-instance-status) 的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。 以这种方式使用单独的 Azure 存储表有效满足实例查询操作不受[命令和查询责任分离 (CQRS) 模式](/azure/architecture/patterns/cqrs)的影响。
 
@@ -254,10 +254,10 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 规划对生产应用程序使用 Durable Functions 时，必须在规划过程中提前考虑性能要求。 本部分介绍一些基本的使用方案和预期的最大吞吐量数字。
 
 * **顺序活动执行**：此方案描述的业务流程协调程序函数逐个运行一系列活动函数。 它与[函数链接](durable-functions-sequence.md)示例非常类似。
-* **并行活动执行**：此方案描述的业务流程协调程序函数使用[扇出扇入](durable-functions-cloud-backup.md)模式并行执行多个活动函数。
-* **并行响应处理**：此方案是[扇出扇入](durable-functions-cloud-backup.md)模式的后半部分。 它侧重于扇入性能。 必须注意，与扇出不同，扇入是由单个业务流程协调程序函数实例执行的，因此只能在单个 VM 上运行。
-* **外部事件处理**：此方案表示一次等待一个[外部事件](durable-functions-external-events.md)的单个业务流程协调程序函数实例。
-* **实体操作处理**：此方案测试单个[计数器实体](durable-functions-entities.md)处理恒定操作流的速度。
+* **并行活动执行**：此方案描述的业务流程协调程序函数使用 [扇出扇入](durable-functions-cloud-backup.md)模式并行执行多个活动函数。
+* **并行响应处理**：此方案是 [扇出扇入](durable-functions-cloud-backup.md)模式的后半部分。 它侧重于扇入性能。 必须注意，与扇出不同，扇入是由单个业务流程协调程序函数实例执行的，因此只能在单个 VM 上运行。
+* **外部事件处理**：此方案表示一次等待一个 [外部事件](durable-functions-external-events.md)的单个业务流程协调程序函数实例。
+* **实体操作处理**：此方案测试单个 [计数器实体](durable-functions-entities.md)处理恒定操作流的速度。
 
 > [!TIP]
 > 与扇出不同，扇入操作限制为单个 VM。 如果应用程序使用扇出扇入模式，并且你关注扇入性能，请考虑在多个[子业务流程](durable-functions-sub-orchestrations.md)之间分割活动函数扇出。

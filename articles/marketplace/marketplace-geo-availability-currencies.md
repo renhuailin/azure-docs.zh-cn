@@ -1,18 +1,18 @@
 ---
-title: Microsoft 商业市场的地域可用性和货币支持
+title: Microsoft 商业应用商店的地理可用性和币种支持
 description: 商业市场中交易的地域可用性和货币支持
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 07/29/2020
-ms.openlocfilehash: bdb746c75a175d906301bcfca0b1472383fceff9
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/07/2020
+ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778064"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853741"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>适用于商业市场的地理可用性和币种支持
 
@@ -46,22 +46,22 @@ ms.locfileid: "96778064"
 | 文莱                              | BN        | USD          | BND，EUR，SGD，USD |
 | 保加利亚                            | BG        | EUR          | BGN，EUR，USD |
 | 佛得角                          | CV        | USD          | CVE、EUR、USD |
-| 喀麦隆                            | CM        | USD          | XAF、EUR、USD |
-| Canada                              | CA        | CAD          | CAD、EUR、USD  |
-| 开曼群岛                      | KY        | USD          | KYD、EUR、USD |
+| 喀麦隆                            | CM        | USD          | EUR、USD、XAF |
+| Canada                              | CA        | CAD          | CAD、EUR、USD |
+| 开曼群岛                      | KY        | USD          | EUR、KYD、USD |
 | 智利                               | CL        | USD          | CLP，EUR，USD |
 | 中国\**                            | CN        | 空值          | 空值 |
 | 哥伦比亚                            | CO        | USD          | COP、EUR、USD |
 | 哥斯达黎加                          | CR        | USD          | CRC、EUR、USD |
-| 科特迪瓦                       | CI        | USD          | XOF、EUR、USD |
-| 克罗地亚                             | HR        | EUR          | HRK、EUR、USD |
+| 科特迪瓦                       | CI        | USD          | EUR、USD、XOF |
+| 克罗地亚                             | HR        | EUR          | EUR、HRK、USD |
 | 库拉索岛                             | CW        | USD          | ANG，EUR，USD |
 | 塞浦路斯                              | CY        | EUR          | EUR、USD  |
-| 捷克                             | CZ        | EUR          | EUR、USD、CZK |
+| 捷克                             | CZ        | EUR          | CZK、EUR、USD |
 | 丹麦                             | DK        | DKK          | 克朗、EUR、USD |
 | 多米尼加共和国                  | DO        | USD          | DOP、EUR、USD |
 | 厄瓜多尔                             | EC        | USD          | EUR、USD |
-| 埃及                               | EG        | USD          | EUR、USD EGP |
+| 埃及                               | EG        | USD          | EGP、EUR、USD |
 | 萨尔瓦多                         | SV        | USD          | EUR、USD |
 | 爱沙尼亚                             | EE        | EUR          | EUR、USD |
 | 埃塞俄比亚                            | ET        | USD          | ETB、EUR、USD |
@@ -91,7 +91,7 @@ ms.locfileid: "96778064"
 | 肯尼亚                               | KE        | USD          | EUR、KES、USD |
 | 韩国（南部）                       | KR        | KRW          | EUR、韩元、USD |
 | 科威特                              | KW        | USD          | EUR、KWD、USD |
-| 吉尔吉斯斯坦                          | KG        | USD          | USD、EUR、公斤之间 |
+| 吉尔吉斯斯坦                          | KG        | USD          | EUR、公斤之间、USD |
 | 拉脱维亚                              | LV        | EUR          | EUR、USD |
 | 黎巴嫩                             | LB        | USD          | EUR、LBP、USD |
 | 利比亚                               | LY        | USD          | EUR、LYD、USD |
@@ -139,8 +139,8 @@ ms.locfileid: "96778064"
 | 斯洛文尼亚                            | SI        | EUR          | EUR、USD |
 | 南非                        | ZA        | USD          | EUR、USD、ZAR |
 | 西班牙                               | ES        | EUR          | EUR、USD |
-| 斯里兰卡                           | LK        | USD          | EUR、USD、LKR |
-| 瑞典                              | SE        | SEK          | EUR、USD、SEK |
+| 斯里兰卡                           | LK        | USD          | EUR、LKR、USD |
+| 瑞典                              | SE        | SEK          | EUR、SEK、USD  |
 | 瑞士                         | CH        | CHF          | CHF、EUR、USD |
 | 中国台湾                              | TW        | TWD          | EUR、台币、USD |
 | 塔吉克斯坦                          | TJ        | USD          | EUR、TJS、USD |
@@ -151,7 +151,7 @@ ms.locfileid: "96778064"
 | 土耳其                              | TR        | USD          | EUR，TRY，美元 |
 | 土库曼斯坦                        | TM        | USD          | EUR、TMT、USD |
 | 乌干达                              | UG        | USD          | EUR、UGX、USD |
-| 乌克兰                             | UA        | USD          | EUR、UAH、卢布、USD |
+| 乌克兰                             | UA        | USD          | EUR、卢布、UAH、USD |
 | 阿拉伯联合酋长国                | AE        | USD          | AED、EUR、USD |
 | United Kingdom                      | GB        | GBP          | EUR、GBP、USD |
 | United States                       | 美国        | USD          | EUR、USD |

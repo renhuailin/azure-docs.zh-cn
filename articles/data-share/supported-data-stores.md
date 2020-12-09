@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/7/2020
+ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592424"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853130"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
@@ -30,7 +30,7 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL 数据库 |✓ | | |
 | Azure Synapse Analytics (以前的 Azure SQL DW)  |✓ | | |
-| Azure Synapse Analytics (工作区) SQL 池 | 公共预览版 | | |
+| Azure Synapse Analytics (工作区) 专用 SQL 池 |✓ | | |
 | Azure 数据资源管理器 | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>数据存储支持矩阵
@@ -39,14 +39,14 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 
 下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅 [如何配置数据集映射](how-to-configure-mapping.md)。
 
-| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics (以前的 Azure SQL DW)  | Azure Synapse Analytics (工作区) SQL 池 | Azure 数据资源管理器
+| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics (以前的 Azure SQL DW)  | Azure Synapse Analytics (工作区) 专用 SQL 池 | Azure 数据资源管理器
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Azure Blob 存储 | ✓ || ✓ |||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
 | Azure SQL 数据库 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Synapse Analytics (以前的 Azure SQL DW)  | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (工作区) SQL 池 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (工作区) 专用 SQL 池 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure 数据资源管理器 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享

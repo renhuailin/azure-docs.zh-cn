@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449916"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854786"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -37,14 +37,20 @@ Azure Monitor 提供了以下用于监视网络的解决方案：
 
 有关详细信息，请参阅[网络性能监视器](../../networking/network-monitoring-overview.md)。
 
-## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure 应用程序网关和网络安全组分析
-若要使用解决方案，请执行以下操作：
+## <a name="network-security-group-analytics"></a>网络安全组分析
+
 1. 将管理解决方案添加到 Azure Monitor；并且
 2. 启用诊断以将诊断信息定向到 Azure Monitor 中的 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
-可为应用程序网关和/或网络安全组启用诊断和相应的解决方案。
+如果未启用诊断日志，该资源的仪表板边栏选项卡将为空，并显示一条错误消息。
 
-如果你没有为特定资源类型启用诊断资源日志记录，但安装了解决方案，相应资源的仪表板边栏选项卡为空白，并显示错误消息。
+## <a name="azure-application-gateway-analytics"></a>Azure 应用程序网关分析
+
+1. 启用诊断以将诊断信息定向到 Azure Monitor 中的 Log Analytics 工作区。
+2. 使用应用程序网关的工作簿模板来使用资源的详细摘要。
+
+如果未对应用程序网关启用诊断日志，则仅在工作簿中填充默认的指标数据。
+
 
 > [!NOTE]
 > 2017 年 1 月，将应用程序网关和网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。
@@ -61,37 +67,15 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 | Azure |  |  |&#8226; |  |  |登录时 |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure 应用程序网关分析解决方案
-
-![“Azure 应用程序网关分析”符号](media/azure-networking-analytics/azure-analytics-symbol.png)
-
-应用程序网关支持以下日志：
-
-* ApplicationGatewayAccessLog
-* ApplicationGatewayPerformanceLog
-* ApplicationGatewayFirewallLog
-
-应用程序网关支持以下指标：
-
-
-* 5 分钟吞吐量
-
-### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
-使用以下说明安装并配置 Azure 应用程序网关分析解决方案：
-
-1. 在 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview)中或使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的流程，启用 Azure 应用程序网关分析解决方案。
-2. 为需要监视的[应用程序网关](../../application-gateway/application-gateway-diagnostics.md)启用诊断日志记录。
-
-#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
+### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
 
 1. 在 Azure 门户中，转到要监视的应用程序网关资源。
-2. 选择“诊断日志”，以打开下面的页面。
+2. 选择 " *诊断设置* " 打开以下页面。
 
-   ![应用程序网关资源的 "诊断日志" 页的屏幕截图，其中显示了启用诊断的选项。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. 单击“启用诊断”，以打开下面的页面。
+   ![应用程序网关资源的诊断设置配置屏幕截图。](media/azure-networking-analytics/diagnostic-settings-1.png)
 
-   ![用于配置诊断设置的页的屏幕截图。 "发送到 Log Analytics" 选项被选为三种日志类型和指标。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 若要启用诊断，请单击“状态”下面的“开”。
+   [![用于配置诊断设置的页的屏幕截图。](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
+
 5. 单击选中“发送到 Log Analytics”复选框。
 6. 选择现有 Log Analytics 工作区，或创建一个工作区。
 7. 在“日志”下，单击选中要收集的每种类型日志的复选框。
@@ -109,28 +93,33 @@ $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-application-gateway-analytics"></a>使用 Azure 应用程序网关分析
-![Azure 应用程序网关分析磁贴图像](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
+#### <a name="accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights"></a>通过 Azure Monitor 网络见解访问 Azure 应用程序网关分析
 
-在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
+可以通过应用程序网关资源中的 "见解" 选项卡访问 application insights。
 
-* 应用程序网关访问日志
-  * 应用程序网关访问日志的客户端和服务器错误
-  * 每个应用程序网关每小时请求数
-  * 每个应用程序网关每小时失败请求数
-  * 应用程序网关的用户代理引起的错误
-* 应用程序网关性能
-  * 应用程序网关的主机运行状况
-  * 最大和 95% 应用程序网关失败请求
+![应用程序网关见解的屏幕截图 ](media/azure-networking-analytics/azure-appgw-insights.png
+)
 
-![应用程序网关访问日志仪表板的屏幕截图，显示磁贴，其中包含用于网关错误、请求和失败请求的数据。](media/azure-networking-analytics/log-analytics-appgateway01.png)
+"查看详细指标" 选项卡将打开预填充的工作簿，并汇总应用程序网关上的数据。
 
-![应用程序网关访问日志仪表板的屏幕截图，显示由用户代理、主机运行状况和失败的请求显示的包含错误数据的磁贴。](media/azure-networking-analytics/log-analytics-appgateway02.png)
+[![应用程序网关工作簿的屏幕截图](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
-在“Azure 应用程序网关分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
+## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>从 Azure 网关分析解决方案迁移到 Azure Monitor 工作簿
 
-在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
+> [!NOTE]
+> Azure 应用程序网关分析解决方案已过时，但使用分析的建议方法是通过应用程序网关资源 Azure Monitor 网络见解公开的工作簿。
 
+* 如果已启用诊断设置以将日志存储到 Log Analytics 工作区中，Azure Monitor 网络见解工作簿可以使用来自同一位置的数据。 不需要任何新配置。
+
+* 已启用点诊断设置后，工作簿中已有所有过去的数据可用。 不需要数据传输。
+
+* 切换到工作簿时，无需活动切换。 分析解决方案和网络见解工作簿都可以并行工作。
+
+* Azure Monitor 工作簿不会产生额外的费用。 根据使用情况，Log Analytics 工作区将继续计费。
+
+* 若要从工作区清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
+
+[![Azure 应用程序网关分析解决方案的删除选项的屏幕截图。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络安全组分析解决方案
 
