@@ -3,17 +3,17 @@ title: Azure Blob 存储的访问层 - 热、冷和存档
 description: 了解 Azure Blob 存储的热、冷和存档访问层。 查看支持分层的存储帐户。 比较块 Blob 存储选项。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007318"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923975"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -112,6 +112,11 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 移到冷层（仅限 GPv2 帐户）中的 Blob 会有一个 30 天的冷层提前删除期限。 移到存档层中的 Blob 会有一个 180 天的存档提前删除期限。 此项费用按比例计算。 例如，如果将某个 Blob 移到存档层，然后在 45 天后将其删除或移到热层，则需支付相当于将该 Blob 存储在存档层中 135（180 减 45）天的提前删除费用。
 
+在 "冷" 和 "存档" 层之间移动时，有一些详细信息：
+
+1. 如果根据存储帐户的默认访问层将 blob 推断为 "冷"，并将 blob 移到 "存档"，则不会收取早期删除费用。
+1. 如果将 blob 显式移动到 "冷" 层，然后将其移动到 "存档"，则会应用早期删除费用。
+
 如果未发生访问层更改，可以使用 Blob 属性 **Last-Modified** 来计算提前删除费用。 否则，可以通过查看 Blob 属性（即“access-tier-change-time”）来使用最后一次将访问层修改为“冷”或“存档”的时间。 有关 Blob 属性的详细信息，请参阅[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)。
 
 ## <a name="comparing-block-blob-storage-options"></a>比较块 Blob 存储选项
@@ -123,7 +128,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
 | **可用性** <br> （RA-GRS 读取）  | 空值                       | 99.99%       | 99.9%               | Offline           |
 | 使用费                         | 存储费用较高，访问和事务费用较低 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| 最小对象大小                   | 不适用                       | 空值          | 不适用                 | 空值               |
+| 最小对象大小                   | 空值                       | 空值          | 空值                 | 空值               |
 | 最短存储持续时间              | 空值                       | 空值          | 30 天<sup>1</sup> | 180 天
 | **延迟** <br> （距第一字节时间） | 一位数的毫秒数 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
 
