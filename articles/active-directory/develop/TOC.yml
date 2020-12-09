@@ -280,7 +280,7 @@
     - name: 使用 Microsoft 身份验证库
       displayName: MSAL
       items:
-        - Name: 所有平台
+        - name: 所有平台
           items:
             - name: 支持的身份验证流
               href: msal-authentication-flows.md

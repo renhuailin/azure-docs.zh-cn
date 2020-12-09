@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/12/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c6b5406728817c3dd700ec285d9af77c9d3cf60
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2ed8bdd167814ea21fced89042bdcf80fd3a73df
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96009307"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602642"
 ---
 # <a name="quickstart-extract-invoice-data-using-the-form-recognizer-rest-api-with-python"></a>快速入门：将表单识别器 REST API 与 Python 结合使用来提取账单数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "96009307"
 - 一个账单文档。 在本快速入门中，可使用[示例账单](../media/sample-invoice.jpg)。
 
 > [!NOTE]
-> 此快速入门使用本地文件。 若要改用通过 URL 访问的账单文档，请查看[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeInvoiceAsync)。
+> 此快速入门使用本地文件。 若要改用通过 URL 访问的账单文档，请查看[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -290,6 +290,6 @@ if __name__ == '__main__':
 在本快速入门中，你将表单识别器 REST API 和 Python 结合使用来提取了账单的内容。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeInvoiceAsync)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)
 
    

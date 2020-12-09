@@ -73,7 +73,7 @@
     - name: 自定义内容模型
       items:
         - name: 动画字符
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: 人员
           items:
             - name: 使用视频索引器网站

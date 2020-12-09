@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/24/2020
+ms.date: 12/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487943"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754363"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -37,7 +37,9 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
     - 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自多个源（包括防火墙和其他合作伙伴解决方案）的安全数据。
     - **威胁防护警报** - 高级行为分析和 Microsoft Intelligent Security Graph 针对不断演变的网络攻击提供防护边界。 内置行为分析和机器学习可识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
     - **访问和应用程序控件** (AAC) - 通过应用适合特定工作负载且由机器学习提供支持的建议来创建允许和拒绝列表，阻止恶意软件和其他不需要的应用程序。 实时减小网络受攻击面，控制对 Azure VM 上的管理端口的访问。 AAC 显著降低了遭受暴力攻击和其他网络攻击的风险。
-    - **容器安全功能** - 获得在容器化环境中进行漏洞管理和实时威胁保护的好处。 启用适用于容器注册表的 Azure Defender 时，等待全部功能启用完毕可能需要最多 12 个小时。 根据推送到已连接注册表的唯一容器映像的数量收费。 一个映像经过一次扫描后，不会再对其收取相关费用，除非再次对其进行了修改和推送。 
+    - **容器安全功能** - 获得在容器化环境中进行漏洞管理和实时威胁保护的好处。 启用适用于容器注册表的 Azure Defender 时，等待全部功能启用完毕可能需要最多 12 个小时。 根据推送到已连接注册表的唯一容器映像的数量收费。 一个映像经过一次扫描后，不会再对其收取相关费用，除非再次对其进行了修改和推送。
+    - 适用于连接到 Azure 环境的资源的广度威胁防护 - Azure Defender 包括对所有资源通用的 Azure 服务的 Azure 本机广度威胁防护：Azure 资源管理器、Azure DNS、Azure 网络层和 Azure Key Vault。 Azure Defender 对 Azure 管理层和 Azure DNS 层具有独特的可见性，因此可以保护连接到这些层的云资源。
+
 
 ## <a name="try-azure-defender-free-for-30-days"></a>免费试用 Azure Defender 30 天
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。

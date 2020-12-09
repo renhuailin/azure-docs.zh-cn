@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436753"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750979"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -39,6 +39,8 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 - [适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
 - [适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)
 - [适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
+- [适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md)
+- [适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)
 
 安全中心的文档对其中每个计划单独进行了介绍。
 
@@ -61,9 +63,9 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 
 
 
-## <a name="security-alerts"></a>安全警报 
+## <a name="azure-defender-security-alerts"></a>Azure Defender 安全警报 
 
-当 Azure Defender 检测到环境中的任何区域遭到威胁时，会生成警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。
+当 Azure Defender 检测到环境中的任何区域遭到威胁时，会生成安全警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。
 
 无论警报是由安全中心生成，还是由安全中心从集成的安全产品接收，你都可以导出该警报。 若要将警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报流式传输到 SIEM、SOAR，或 IT 服务管理解决方案](export-to-siem.md)中的说明操作。
 

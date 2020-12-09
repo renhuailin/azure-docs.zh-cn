@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 455caf0b80d82b03f8d00929addeab15a1af6d7e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445534"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754209"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
@@ -102,6 +102,9 @@ ms.locfileid: "94445534"
 下面的关系图说明应用程序调用密钥保管库“获取机密”API 的过程：
 
 ![Azure 密钥保管库身份验证流](../media/authentication/authentication-flow.png)
+
+> [!NOTE]
+> Key Vault SDK 用于机密、证书和密钥的客户端在没有访问令牌的情况下对 Key Vault 进行了额外的调用，这导致 401 响应来检索租户信息。 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
 
 ## <a name="code-examples"></a>代码示例
 
