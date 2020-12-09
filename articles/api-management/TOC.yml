@@ -58,6 +58,8 @@
           href: api-management-howto-policies.md
         - name: 策略参考索引
           href: api-management-policies.md
+        - name: 错误处理
+          href: api-management-error-handling-policies.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -70,8 +72,6 @@
       href: api-management-revisions.md
     - name: 使用自动化进行管理
       href: automation-manage-api-management.md
-    - name: 错误处理。
-      href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
     - name: 自托管网关概述
@@ -240,6 +240,8 @@
           href: api-management-howto-create-groups.md
         - name: 检索 IP 地址
           href: api-management-howto-ip-addresses.md
+        - name: 获取 API 分析
+          href: howto-use-analytics.md
         - name: 将事件记录到 Azure 事件中心
           href: api-management-howto-log-event-hubs.md
         - name: 使用 Azure Application Insights 记录请求
@@ -305,5 +307,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 实现指南
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: 排查“未能更新主机名”错误
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: 疑难解答
+      items:
+        - name: 排查“未能更新主机名”错误
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: 排查响应超时和错误
+          href: troubleshoot-response-timeout-and-errors.md

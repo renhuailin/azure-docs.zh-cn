@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511757"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751863"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -37,6 +37,7 @@ ms.locfileid: "96511757"
 
 - [适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布
 
@@ -68,6 +69,24 @@ Azure Synapse Analytics（以前称为 SQL DW）是一种分析服务，它将�
 针对 Azure Synapse Analytics SQL 池的 Azure Defender for SQL 支持会自动添加到 Azure 安全中心中的 Azure SQL 数据库捆绑中。 你可以在 Azure 门户的 Synapse 工作区页面中找到新的“适用于 SQL 的 Azure Defender”选项卡。
 
 详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）
+
+我们为你的 Azure 环境添加了两项新的云原生广度威胁防护功能。
+
+这些新的防护极大增强了你在遭到威胁行为体攻击后的复原能力，还大大增加了受 Azure Defender 保护的 Azure 资源数量。
+
+- **适用于资源管理器的 Azure Defender** - 自动监视在你的组织中执行的所有资源管理操作。 有关详细信息，请参阅：
+    - [适用于资源管理器的 Azure Defender 简介](defender-for-resource-manager-introduction.md)
+    - [响应适用于资源管理器的 Azure Defender 警报](defender-for-resource-manager-usage.md)
+    - [适用于资源管理器的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-resourcemanager)
+
+- **适用于 DNS 的 Azure Defender** - 持续监视来自你的 Azure 资源的所有 DNS 查询。 有关详细信息，请参阅：
+    - [适用于 DNS 的 Azure Defender 简介](defender-for-dns-introduction.md)
+    - [响应适用于 DNS 的 Azure Defender 警报](defender-for-dns-usage.md)
+    - [适用于 DNS 的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -124,7 +143,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 现在，你可以根据一系列条件筛选安全建议列表。 在以下示例中，已筛选建议列表，用于显示满足以下条件的建议：
 
-- 正式发布（即非预览）
+- 已正式发布（即不是预览版）
 - 适用于存储帐户
 - 支持快速修复修正
 
@@ -226,7 +245,7 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 
 “应在 Kubernetes 服务上定义已授权的 IP 范围”建议现提供一个快速修复选项。
 
-要详细了解此建议和所有其他安全中心建议，请参阅[安全建议 - 参考指南](recommendations-reference.md)。
+要详细了解此建议以及其他各项安全中心建议，请参阅[安全建议 - 参考指南](recommendations-reference.md)。
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="具有快速修复选项的“应在 Kubernetes 服务上定义已授权的 IP 范围”建议":::
 

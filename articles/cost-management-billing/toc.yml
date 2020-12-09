@@ -188,15 +188,15 @@
               href: manage/pay-by-invoice.md
             - name: 创建其他订阅
               href: manage/create-subscription.md
-            - name: 使用最新的 API 以编程方式创建 EA 订阅
+            - name: 创建 EA 订阅 - REST
               href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: 使用最新的 API 以编程方式创建 MCA 订阅
+            - name: 创建 MCA 订阅 - REST
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: 使用最新的 API 以编程方式创建 MPA 订阅
+            - name: 创建 MPA 订阅 - REST
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 使用 ARM 模板以编程方式创建订阅
+            - name: 创建订阅 - ARM 模板
               href: manage/create-subscription-template.md
-            - name: 使用旧的预览 API 以编程方式创建订阅
+            - name: 创建订阅 - 预览 REST
               href: manage/programmatically-create-subscription-preview.md
             - name: 授予访问权限以创建 EA 订阅
               href: manage/grant-access-to-create-subscription.md

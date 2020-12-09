@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: cb74a799efb6099b55c9da9650d9cca7358ecbed
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551756"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852126"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -34,7 +34,7 @@ ms.locfileid: "96551756"
     - **断开连接**：数据工厂有权访问该目录，但它已连接到另一个目录。 因此，不会自动向目录报告数据沿袭。
     - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态为 "未知"。
  >[!Note]
- >若要查看数据工厂连接，需要为其分配 Azure 内置角色之一：
+ >若要查看数据工厂连接，需要为其分配监控范围角色之一：
  >- 参与者
  >- 所有者
  >- 读取器
@@ -72,9 +72,9 @@ ms.locfileid: "96551756"
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
 >[!Note]
->若要添加或删除数据工厂连接，需要为其分配 Azure 内置角色之一：
->- “所有者”
->- 用户访问管理员
+>若要添加或删除数据工厂连接，需要为其分配监控范围角色之一：
+>- 所有者
+>- 除外，用户访问管理员还要求用户是数据工厂的 "所有者"、"参与者" 或 "数据工厂参与者"。 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>配置自承载 IR 以便从本地 SQL 中收集沿袭
 

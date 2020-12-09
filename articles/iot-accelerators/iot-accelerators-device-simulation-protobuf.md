@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018522"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852143"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -277,4 +277,4 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将设备模拟自定义为使用 Protobuf 发送遥测数据之后，接下来请了解如何[将自定义映像部署到云中](iot-accelerators-device-simulation-deploy-image.md)。
+现在，你已了解如何自定义设备模拟以使用 Protobuf 发送遥测数据，下一步是访问 GitHub 存储库以了解更多 [设备模拟](https://github.com/Azure/device-simulation-dotnet)。

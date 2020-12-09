@@ -125,10 +125,12 @@
       items:
         - name: 创建流
           items:
-            - name: 注册或登录
-              href: tutorial-create-user-flows.md
+            - name: 创建用户流
+              href: create-user-flow.md
             - name: 资源所有者密码凭据
               href: configure-ropc.md
+            - name: 设置电话身份验证
+              href: phone-authentication-user-flows.md
             - name: 设置自助密码重置
               href: user-flow-self-service-password-reset.md
         - name: 添加条件访问
@@ -310,7 +312,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -326,7 +328,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md

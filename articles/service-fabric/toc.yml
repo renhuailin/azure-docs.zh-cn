@@ -687,7 +687,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: 升级
               items:
-                - name: 将 VM 规模集扩展添加到托管群集节点类型
+                - name: 将虚拟机规模集扩展添加到托管群集节点类型
                   href: how-to-managed-cluster-vmss-extension.md
                 - name: 升级 Service Fabric 版本
                   href: service-fabric-cluster-upgrade-version-azure.md
@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: 将新 Azure Service Fabric 群集配置为启用托管标识
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: 将 Service Fabric 托管群集配置为启用托管标识
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 应用程序设置
           items:
             - name: 如何部署具有托管标识的应用程序

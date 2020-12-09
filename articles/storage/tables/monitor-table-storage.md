@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d6dbba96160cad36d79c4641861161448f81a49a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9b68ba9a19b02c754fdb4c2dfaed022095d4ed0e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781141"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852721"
 ---
 # <a name="monitoring-azure-table-storage"></a>监视 Azure 表存储
 
@@ -56,7 +56,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 若要收集资源日志，必须创建一个诊断设置。 创建设置时，请选择 " **表** " 作为要为其启用日志的存储类型。 然后，指定要为其收集日志的下列操作之一。 
 
-| Category | 说明 |
+| 类别 | 说明 |
 |:---|:---|
 | StorageRead | 对象上的读取操作。 |
 | StorageWrite | 对象上的写入操作。 |
@@ -98,6 +98,8 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
+如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+
 1. 选中 " **存档到存储帐户** " 复选框，然后单击 " **配置** " 按钮。
 
    > [!div class="mx-imgBorder"]   
@@ -109,6 +111,8 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
    > 选择存储帐户作为导出目标之前，请参阅将 [Azure 资源日志存档](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 以了解存储帐户的先决条件。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>将日志流式传输到 Azure 事件中心
+
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
 
 1. 选中 " **到事件中心的流** " 复选框，然后单击 " **配置** " 按钮。
 
@@ -142,6 +146,8 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
+如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+
 使用 [AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和参数来启用日志 `StorageAccountId` 。
 
 ```powershell
@@ -159,6 +165,8 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 有关将资源日志存档到 Azure 存储的详细信息，请参阅 [azure 资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
+
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
 
 通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `EventHubAuthorizationRuleId` 。
 
@@ -200,6 +208,8 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
+如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+
 使用 [az monitor 诊断设置 create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
 
 ```azurecli-interactive
@@ -215,6 +225,8 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/tableServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
+
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
 
 使用 [az monitor 诊断设置 create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
 
@@ -576,11 +588,11 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
     | sort by count_ desc 
     | render piechart
     ```
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

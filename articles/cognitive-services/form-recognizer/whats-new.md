@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172123"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852840"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -37,7 +37,7 @@ ms.locfileid: "96172123"
  
   > [了解有关布局提取的详细信息](concept-layout.md)
 
-- **客户端库更新** -适用于 .Net、Python、Java 和 JavaScript 的 [客户端库](quickstarts/client-library.md) 已输入公开上市。
+- **客户端库更新** -适用于 .Net、Python、Java 和 JavaScript 的 [客户端库](quickstarts/client-library.md) 的最新版本支持窗体识别器 2.1 API。
 - **支持的新语言：日语** -现在支持以下新语言：适用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日语 (`ja`) 。 [语言支持](language-support.md)
 - **文本行样式指示 (手写/其他)  (拉丁语仅)** 格式识别器现在会输出一个 `appearance` 对象，该对象会分类每个文本行是否为手写样式，以及置信度分数。 此功能仅支持拉丁语。
 - **质量改进** -提取改进（包括单个数字提取改进）。

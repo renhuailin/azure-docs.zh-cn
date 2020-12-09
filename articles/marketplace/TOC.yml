@@ -51,6 +51,8 @@
           href: marketplace-co-sell.md
         - name: 合作伙伴中心的联合销售选项
           href: commercial-marketplace-co-sell.md
+        - name: 从 OCP GTM 迁移联合销售解决方案
+          href: co-sell-solution-migration.md
         - name: 通过 CSP 合作伙伴转售
           href: cloud-solution-providers.md
         - name: 连接计划加入指南

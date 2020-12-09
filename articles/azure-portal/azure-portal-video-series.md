@@ -4,12 +4,12 @@ description: 查找视频演示，了解如何在门户中使用 Azure 服务。
 keywords: ''
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0762174a3207c0620d3b6413d14c817014fc49a0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745853"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852602"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 门户“操作说明”视频系列
 
@@ -17,17 +17,17 @@ Azure 门户操作方法视频系列展示了如何在 Azure 门户中使用 Azu
 
 ## <a name="featured-video"></a>特色视频
 
-在此特色视频中，我们将向你演示如何创建和管理应用服务域。
+在此特色视频中，我们将向你展示如何使用 Azure 快速入门中心开始使用 Azure。
 
-> [!VIDEO https://www.youtube.com/embed/b1kDT8-6a3g]
+> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
 
-[如何创建和管理应用服务域](https://www.youtube.com/watch?v=b1kDT8-6a3g)
+[如何使用 Azure 快速入门中心实现 Azure 入门](https://www.youtube.com/watch?v=mb5k9nXMtBM)
 
 了解你可能会错过的这一最近的视频：
 
-| [如何在应用服务 web 应用上添加和保护自定义域](https://www.youtube.com/watch?v=bXP6IvNYISw)  | [对 Linux 虚拟机体验的改进](https://www.youtube.com/watch?v=obg6Fq2T898)  | [如何使用 blob 版本控制](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [如何在 Azure Kubernetes 服务中管理应用程序](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [如何使用日志和参数生成 Azure 工作簿](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [如何在应用服务 web 应用上添加和保护自定义域](https://www.youtube.com/watch?v=bXP6IvNYISw) |
 | ------| ------ | ------ |
-| [![有关如何在应用服务 web 应用中添加和保护自定义域的 YouTube 视频图像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=bXP6IvNYISw) | [![有关 Linux 虚拟机体验改进的 YouTube 视频图像](https://i.ytimg.com/vi/obg6Fq2T898/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?obg6Fq2T898) | [![有关如何使用 blob 版本控制的 YouTube 视频图像](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) |
+| [![有关如何管理 Azure Kubernetes 服务中的应用程序的 YouTube 视频图像](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![有关如何使用日志和参数生成 Azure 工作簿的 YouTube 视频图像](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![有关如何在应用服务 web 应用中添加和保护自定义域的 YouTube 视频图像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
 
 ## <a name="video-playlist"></a>视频播放列表
 

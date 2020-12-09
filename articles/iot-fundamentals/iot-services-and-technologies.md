@@ -7,20 +7,19 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206078"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852806"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>可使用哪些 Azure 技术和服务来创建 IoT 解决方案？
 
 Azure IoT 技术和服务提供的选项可以用来创建范围广泛的各种 IoT 解决方案，支持组织进行数字转型。 例如，你能够：
 
-- 使用 [Azure IoT Central](https://apps.azureiotcentral.com)（一种托管的 IoT 应用程序平台）来构建并部署安全的企业级 IoT 解决方案。 IoT Central 提供一组特定于行业的应用程序模板（例如零售和医疗保健），用于加速解决方案开发过程。
-- 扩展 Azure IoT [解决方案加速器](https://www.azureiotsolutions.com)的开源代码库，以便实现常见的 IoT 方案，例如远程监视或预测性维护。
-- 使用 Azure IoT 平台服务（例如 [Azure IoT 中心](../iot-hub/about-iot-hub.md)和 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)），以便从头开始构建自定义 IoT 解决方案。
+* 使用 [Azure IoT Central](https://apps.azureiotcentral.com)（一种托管的 IoT 应用程序平台）来构建并部署安全的企业级 IoT 解决方案。 IoT Central 提供一组特定于行业的应用程序模板（例如零售和医疗保健），用于加速解决方案开发过程。
+* 使用 Azure IoT 平台服务（例如 [Azure IoT 中心](../iot-hub/about-iot-hub.md)和 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)），以便从头开始构建自定义 IoT 解决方案。
 
 ![Azure IoT 技术、服务和解决方案](./media/iot-services-and-technologies/iot-technologies-services.png)
 
@@ -40,10 +39,8 @@ Azure IoT Central 是完全托管的应用程序平台，可以用来创建自�
 
 Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 解决方案加速器包含预生成的用于常见 IoT 方案的解决方案，可以在数分钟内将其部署到 Azure 订阅。 这些方案包括：
 
-  - 远程监视
-  - 连接工厂
-  - 预见性维护
-  - 设备模拟
+* 连接工厂
+* 设备模拟
 
 所有解决方案加速器的开源代码库都在 GitHub 上提供。 下载代码即可根据具体的 IoT 要求来自定义解决方案加速器。
 
@@ -92,4 +89,3 @@ IoT 设备通常生成大量时序数据，例如从传感器读取的温度数�
 
 - [创建 Azure IoT Central 应用程序](../iot-central/core/quick-deploy-iot-central.md)
 - [将遥测数据从设备发送到 IoT 中心](../iot-hub/quickstart-send-telemetry-cli.md)
-- [尝试基于云的远程监视解决方案](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

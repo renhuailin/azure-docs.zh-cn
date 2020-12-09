@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286837"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852246"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -48,7 +48,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="enable-local-cache-in-app-service"></a>在应用服务中启用本地缓存 
 
 > [!NOTE]
-> **F1** 或 **D1** 层不支持本地缓存。 
+> F1 或 D1 层不支持本地缓存 。 
 
 组合使用保留的应用设置即可配置本地缓存。 可以通过以下方法配置这些应用设置：
 
@@ -87,7 +87,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>更改本地缓存中的大小设置
-本地缓存大小默认为 **1 GB** ， 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。 请注意，当此大小增加时，加载本地缓存需要的时间会变长。
+本地缓存大小默认为 **1 GB**， 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。 请注意，当此大小增加时，加载本地缓存需要的时间会变长。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
@@ -120,3 +120,6 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>本地缓存是否会阻止某些目录被复制到更快的本地驱动器？
 在复制存储内容过程中，将排除任何名为存储库的文件夹。 如果站点内容包含应用日常操作中可能不必要的源控件存储库，则此方法非常有用。 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>如何在站点管理操作之后刷新本地缓存日志？
+若要刷新本地缓存日志，请停止并重新启动应用。 此操作清除旧缓存。 

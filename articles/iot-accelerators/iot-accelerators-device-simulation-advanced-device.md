@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076039"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852551"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -30,15 +30,11 @@ ms.locfileid: "92076039"
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，则应完成[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门。
+如果尚未部署设备模拟，请参阅 GitHub 上的 [设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
 
 ### <a name="open-device-simulation"></a>打开设备模拟
 
-若要在浏览器中运行设备模拟，请先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)。
-
-可能会要求使用 Azure 订阅凭据登录。
-
-然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。
+如果尚未部署设备模拟，请参阅 GitHub 上的 [设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
 
 ## <a name="device-models"></a>设备模型
 
