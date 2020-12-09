@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565964"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559127"
 ---
 # <a name="tutorial-manipulating-models"></a>教程：操作模型
 
@@ -176,7 +176,7 @@ ms.locfileid: "94565964"
 1. 按下 Unity 的播放按钮以播放场景，并打开 AppMenu 中的“模型工具”菜单 。
 ![视图控制器](./media/model-with-view-controller.png)
 
-AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定的视图控制器 。 当 GameObject 包含 RemoteBounds 组件时，视图控制器将添加 [BoundingBox](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) 组件，该组件是一个 MRTK 组件，使用 BoxCollider 渲染围绕对象的边界框  。 [ObjectManipulator](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator)，负责手势交互。 通过组合运用这些脚本，我们可以移动、旋转和缩放远程渲染的模型。
+AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定的视图控制器 。 当 GameObject 包含 RemoteBounds 组件时，视图控制器将添加 [BoundingBox](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) 组件，该组件是一个 MRTK 组件，使用 BoxCollider 渲染围绕对象的边界框  。 [ObjectManipulator](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html)，负责手势交互。 通过组合运用这些脚本，我们可以移动、旋转和缩放远程渲染的模型。
 
 1. 将鼠标移到游戏面板，然后单击游戏面板内部使其拥有焦点。
 1. 使用 [MRTK 的手势模拟](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)，按住左 Shift 键。

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653666"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574728"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -76,7 +76,7 @@ ms.locfileid: "91653666"
 
 修改并保存清单后，Unity 将自动刷新。 在“项目”窗口中确认包已加载：
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="新的 Unity 项目":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="确认包导入":::
 
 如果包未加载，检查 Unity 控制台中是否存在错误。 如果没有任何错误，但在 Packages 文件夹下仍然看不到任何包，请检查包可见性切换按钮。
 ![屏幕截图，其中箭头指向“包可见性”切换按钮。](./media/unity-package-visibility.png)
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
