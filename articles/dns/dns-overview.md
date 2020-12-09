@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965640"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608480"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
-不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用[应用服务域](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+不能使用 Azure DNS 来购买域名。 对于年度费用，可以使用[应用服务域](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain)或第三方域名注册机构购买域名。 然后，可以将域托管在 Azure DNS 中来管理记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
 
 Azure DNS 附带了以下功能。
 

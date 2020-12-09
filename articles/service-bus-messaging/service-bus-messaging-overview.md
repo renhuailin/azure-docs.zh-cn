@@ -3,12 +3,12 @@ title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 本文粗略概述了 Azure 服务总线（一个完全托管的企业集成消息代理）。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489473"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602710"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中包含消息队列和公用订阅主题。 服务总线用于分离应用程序和服务，提供以下优势：
@@ -32,7 +32,7 @@ Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中�
     2. 将处理结果发布到一个或多个不同的队列。
     3. 从原始队列移动输入消息。 
     
-    仅在成功时才对下游使用者显示结果，包括成功处置输入消息，允许使用一次性处理语义。 对于更大的解决方案上下文中的[补偿事务](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md)模式，此事务模型是一个可靠的基础。 
+    仅在成功时才对下游使用者显示结果，包括成功处置输入消息，允许使用一次性处理语义。 对于更大的解决方案上下文中的[补偿事务](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction)模式，此事务模型是一个可靠的基础。 
 * *消息会话*。 对于需要严格消息排序或消息延迟的工作流和多路复用传输，实现大规模协调。
 
 如果熟悉 Apache ActiveMQ 等其他消息代理，服务总线的概念与你已知的概念相似。 服务总线是一个平台即服务 (PaaS) 产品，一个关键区别在于你不用担心以下操作。 Azure 会为你完成这些琐事。 

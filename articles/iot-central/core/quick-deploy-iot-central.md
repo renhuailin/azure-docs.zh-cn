@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457319"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548522"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>快速入门 - 创建 Azure IoT Central 应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "96457319"
 
 1. 导航到“生成”  页：
 
-    ![生成 IoT 应用程序页面](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="生成 IoT 应用程序页面":::
 
 1. 选择“自定义应用程序”  并确保选择了“自定义应用程序”  模板。
 
@@ -37,9 +37,9 @@ ms.locfileid: "96457319"
 
 1. Azure IoT Central 还会根据应用程序名称为你生成唯一的应用程序 URL 前缀  。 使用此 URL 访问应用程序。 如果你愿意，可以将此 URL 前缀更改为更令人难忘的内容。
 
-    ![Azure IoT Central 的“创建应用程序”页](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central 的“创建应用程序”页":::
 
-    ![Azure IoT Central 计费信息](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Azure IoT Central 计费信息":::
 
     > [!NOTE]
     > 如果你在上一页中选择了“自定义应用”，则会看到一个“应用程序模板”下拉列表。 该下拉列表可能会显示你的组织提供给你的其他模板。
@@ -57,7 +57,7 @@ ms.locfileid: "96457319"
 
 1. 查看“条款和条件”，并选择页面底部的“创建”  。 几分钟后，IoT Central 应用程序便就绪可用：
 
-    ![Azure IoT Central 应用程序](media/quick-deploy-iot-central/iotcentral-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central 应用程序":::
 
 ## <a name="next-steps"></a>后续步骤
 

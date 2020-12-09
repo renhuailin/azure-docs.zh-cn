@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5a06cf906084e3f87d5f56748476a26587ff17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95490725"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860807"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -340,7 +341,7 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持扩展属性和自定义扩展属性作为动态成员身份规则中的字符串属性。 [扩展属性](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持扩展属性和自定义扩展属性作为动态成员身份规则中的字符串属性。 [扩展属性](/graph/api/resources/onpremisesextensionattributes)从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")

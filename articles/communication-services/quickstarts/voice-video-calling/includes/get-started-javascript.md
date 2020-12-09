@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347136"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584607"
 ---
 本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务呼叫客户端库开始呼叫。
 
@@ -62,7 +62,7 @@ npm install @azure/communication-calling --save
 此快速入门使用 webpack 捆绑应用程序资产。 运行以下命令以安装 webpack、 webpack-cli 和 webpack-dev-server npm 包，并将它们作为 package.json 中的开发依赖项列出：
 
 ```console
-npm install webpack webpack-cli webpack-dev-server --save-dev
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
 ```
 
 在项目的根目录中创建一个 index.html 文件。 我们将使用此文件来配置基本布局，该布局允许用户呼叫 Azure 通信机器人。
