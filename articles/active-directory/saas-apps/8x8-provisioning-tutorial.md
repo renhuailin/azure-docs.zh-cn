@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532666"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558855"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教程：为 8x8 配置自动用户预配
 
-本教程介绍了在 8x8 Configuration Manager 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [8x8](https://www.8x8.com) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍了在 8x8 管理控制台和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [8x8](https://www.8x8.com) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ ms.locfileid: "96532666"
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
 * 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
 * 任何级别的 8x8 X 系列订阅。
-* 在 [Configuration Manager](https://vo-cm.8x8.com) 中具有管理员权限的 8x8 用户帐户。
+* 在[管理控制台](https://vo-cm.8x8.com) 中具有管理员权限的 8x8 用户帐户。
 * 已配置[使用 Azure AD 进行单一登录](./8x8virtualoffice-tutorial.md)。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
@@ -48,7 +48,7 @@ ms.locfileid: "96532666"
 
 本部分中的步骤将指导你配置 8x8 以支持通过 Azure AD 进行预配。
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>要在 8x8 Configuration Manager 中配置用户预配访问令牌，请执行以下操作：
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>若要在 8x8 管理控制台中配置用户预配访问令牌：
 
 1. 登录到[管理控制台](https://admin.8x8.com)。 选择“标识管理”。
 
@@ -60,11 +60,11 @@ ms.locfileid: "96532666"
 
 3. 复制 8x8 URL 和 8x8 API 令牌值 。 在 Azure 门户的 8x8 应用程序的“预配”选项卡中，将这些值分别输入“租户 URL”和“机密令牌”字段 。
 
-   ![令牌](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 8x8
 
-从 Azure AD 应用程序库添加 8x8，开始管理到 8x8 的预配。 如果以前为 SSO 设置过 8x8，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。
+从 Azure AD 应用程序库添加 8x8，开始管理到 8x8 的预配。 如果之前为 8x8 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中
 
@@ -102,7 +102,7 @@ ms.locfileid: "96532666"
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下，将 8x8 URL 从 Configuration Manager 复制到“租户 URL”  。 将 8x8 API 令牌从 Configuration Manager 复制到“机密令牌” 。 单击“测试连接”以确保 Azure AD 可以连接到 8x8。 如果连接失败，请确保 8x8 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，将 8x8 URL 从管理控制台复制到“租户 URL”  。 将 8x8 API 令牌从管理控制台复制到“机密令牌” 。 单击“测试连接”以确保 Azure AD 可以连接到 8x8。 如果连接失败，请确保 8x8 帐户具有管理员权限，然后重试。
 
     ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/8x8-provisioning-tutorial/provisioning.png)
 
