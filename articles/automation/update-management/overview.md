@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327485"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928420"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -224,7 +224,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 >
 > 没有 Linux 更新分类，它们在 " **其他更新** " 类别下进行报告。 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 internet 访问受限于这些国家云，因此更新管理无法访问和使用这些文件。
 
-对于 Linux，由于云中的数据扩充，更新管理可以区分云中的关键更新和安全更新，同时显示评估数据。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
+对于 Linux，更新管理可以在分类 **安全性** 和 **其他** 情况下区分云中的关键更新和安全更新，同时显示评估数据，因为云中的数据扩充。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 当前没有受支持的方法可用来在 CentOS 上提供原生分类数据。 目前，仅向可能已自行启用此功能的客户提供有限的支持。
 
 若要对 Red Hat Enterprise 版本 6 上的更新进行分类，需要安装 yum 安全插件。 在 Red Hat Enterprise Linux 7 上，yum 本身已包含该插件，无需安装任何内容。 有关详细信息，请参阅以下 Red Hat [知识文章](https://access.redhat.com/solutions/10021)。
+
+当你计划要在 Linux 计算机上运行的更新时，该更新将配置为仅安装与 **安全** 分类匹配的更新，安装的更新可能不同于，或者是与此分类匹配的更新的子集。 如果执行了适用于 Linux 计算机的 OS 更新的评估，则 [ () ](https://oval.mitre.org/) 在 linux 发行版供应商提供的操作系统更新的更新管理用于分类。
+
+针对 Linux 更新进行的分类是基于 OVAL 文件进行的 **安全** 或 **其他** ，其中包括用于解决安全问题的更新。 但当更新计划运行时，它将使用适当的包管理器（如 YUM、APT 或 ZYPPER）在 Linux 计算机上执行安装。 适用于 Linux 发行版的包管理器可能会有不同的机制来对更新进行分类，其中的结果可能不同于通过更新管理从 OVAL 文件获取的结果。 若要手动检查计算机并了解程序包管理器与安全相关的更新，请参阅 [排查 Linux 更新部署问题](../troubleshoot/update-management.md#updates-linux-installed-different)。
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>将更新管理与 Configuration Manager 集成
 

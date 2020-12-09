@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949439"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928709"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
 
@@ -31,7 +31,7 @@ Azure PowerShell 提供了多个 cmdlet 来基于命令行和脚本对 Azure AD 
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的用户的凭据
 * 已上传到租户的[自定义策略](custom-policy-get-started.md)
-* [用于 Graph 的 Azure AD PowerShell **预览版模块**](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [用于 Graph 的 Azure AD PowerShell **预览版模块**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>将 PowerShell 会话连接到 B2C 租户
 

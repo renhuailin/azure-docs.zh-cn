@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929167"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -22,7 +22,7 @@ ms.locfileid: "96006638"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
-* [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [已安装 Azure CLI](/cli/azure/install-azure-cli)。
 * [已安装 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表

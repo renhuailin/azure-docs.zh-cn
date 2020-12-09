@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953655"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928658"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>有关配置 Jumio 与 Azure Active Directory B2C 的教程
 
@@ -65,7 +65,7 @@ Jumio 集成包括以下组件：
 
 ### <a name="deploy-the-api"></a>部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署到 Azure 服务。 可以按照 [这些说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署到 Azure 服务。 可以按照 [这些说明](/visualstudio/deployment/quickstart-deploy-to-azure)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
@@ -91,7 +91,7 @@ Jumio 集成包括以下组件：
 
 创建长度超过64个字符且仅包含字母和数字的随机字符串。
 
-例如： ``C9CB44D98642A7062A0D39B94B6CDC1E54276F2E7CFFBF44288CEE73C08A8A65``
+例如：``C9CB44D98642A7062A0D39B94B6CDC1E54276F2E7CFFBF44288CEE73C08A8A65``
 
 使用以下 PowerShell 脚本创建字符串：
 

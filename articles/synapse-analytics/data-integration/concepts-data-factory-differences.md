@@ -2,18 +2,18 @@
 title: 与 Azure 数据工厂的区别
 description: 了解 Azure Synapse Analytics 的数据集成功能与 Azure 数据工厂的不同之处
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357643"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930205"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 与 Azure 数据工厂中的数据集成
 
@@ -42,7 +42,6 @@ ms.locfileid: "94357643"
 
 * **整理数据流：** 整理数据流活动目前仅适用于 Azure 数据工厂。
 * **解决方案模板库：** 在 Azure 数据工厂中，用户可以在解决方案模板库中找到管道模板。 在 Synapse 工作区中，知识中心包含一组不同的模板以及其他数据集和 SQL 脚本。 
-* **Git 集成和本机 CI/CD 解决方案：** 目前，Synapse 工作区无法连接到 Git 存储库，也不会按照与 Azure 数据工厂相同的持续集成和交付过程进行操作。
 * **与 Azure Monitor 集成：** 与 Azure 数据工厂一样，Synapse 工作区不会与 Azure Monitor 集成。
 * **混合集成运行时配置：** 在 Synapse 工作区中，用户不能同时具有托管 VNet IR 和 Azure IR。 Azure 数据工厂支持此功能。
 * **Integration runtime 共享：** 不能在 Synapse 工作区之间共享自承载集成运行时。 Azure 数据工厂支持此功能。

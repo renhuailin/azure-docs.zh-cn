@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751251"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929270"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -19,7 +19,7 @@ ms.locfileid: "96751251"
 >[!NOTE]
 >如果在 Windows 计算机上部署更新管理功能时遇到问题，请打开 Windows 事件查看器，查看本地计算机上“应用程序和服务日志”下的 Operations Manager 事件日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>方案： Linux 更新显示为 "挂起"，并且安装的内容有所不同
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>方案： Linux 更新显示为 "挂起"，并且安装的内容有所不同
 
 ### <a name="issue"></a>问题
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522338"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928505"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -28,7 +28,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
 |专用链接资源    |   用于通过可用类型列表中的资源 ID 或别名建立连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标子资源   |      要连接的子资源。 每个专用链接资源类型具有不同的选项，可根据偏好做出选择。    |
-|连接批准方法    |  自动或手动。 基于 Azure 基于角色的访问控制 (Azure RBAC) 权限，可以自动批准专用终结点。 如果尝试在不使用 Aure RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
+|连接批准方法    |  自动或手动。 基于 Azure 基于角色的访问控制 (Azure RBAC) 权限，可以自动批准专用终结点。 如果尝试在不使用 Azure RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
 |请求消息     |  可为请求手动批准的连接指定消息。 此消息可用于标识特定的请求。        |
 |连接状态   |   一个只读属性，指定专用终结点是否处于活动状态。 只能使用处于已批准状态的专用终结点发送流量。 可用的其他状态： <br>-**已批准**：连接已自动或手动批准，随时可供使用。</br><br>-**等待中**：连接是手动创建的，正等待由专用链接资源所有者批准。</br><br>-**已拒绝**：连接已被专用链接资源所有者拒绝。</br><br>-**已断开连接**：连接已被专用链接资源所有者删除。 专用终结点已变为参考性终结点，应将其删除以清理资源。 </br>|
 

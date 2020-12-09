@@ -1,20 +1,20 @@
 ---
 title: ARM 模板测试工具包
-description: 描述如何在模板上运行 ARM 模板测试工具包。 使用该工具包可以查看是否已实现了建议的做法。
+description: 描述如何在模板上运行 Azure 资源管理器模板 (ARM 模板) 测试工具包。 使用该工具包可以查看是否已实现了建议的做法。
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439554"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928182"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 模板测试工具包
 
-[Azure 资源管理器 (ARM) 模板测试工具包](https://aka.ms/arm-ttk)检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 通过使用测试工具包，可以了解如何避免模板开发中的常见问题。
+[Azure 资源管理器模板 (ARM 模板) 测试工具包](https://aka.ms/arm-ttk)检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 通过使用测试工具包，可以了解如何避免模板开发中的常见问题。
 
 测试工具包提供[一组默认测试](test-cases.md)。 这些测试是建议，而不是要求。 你可以确定哪些测试与目标相关，并自定义要运行哪些测试。
 
@@ -282,4 +282,4 @@ param(
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解默认测试，请参阅[工具包的测试用例](test-cases.md)。
+若要了解默认测试，请参阅 [ARM 模板测试工具包的默认测试用例](test-cases.md)。

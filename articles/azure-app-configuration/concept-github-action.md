@@ -1,17 +1,17 @@
 ---
 title: 将 GitHub 存储库同步到应用程序配置
 description: 使用 GitHub Actions 在更新 GitHub 存储库后自动更新应用程序配置实例。
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371815"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930273"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>将 GitHub 存储库同步到应用程序配置
 
@@ -35,7 +35,7 @@ GitHub Actions [工作流](https://help.github.com/articles/about-github-actions
 ## <a name="sync-configuration-files-after-a-push"></a>在推送后同步配置文件
 此操作在有更改推送到 `appsettings.json` 后同步 Azure 应用程序配置文件。 在开发人员将更改推送到 `appsettings.json` 后，“应用程序配置同步”操作使用新值来更新应用程序配置实例。
 
-此工作流的第一部分指定，这一操作在包含 `appsettings.json` 的推送推送到主分支后触发。 第二部分列出了在此操作触发后立即运行的作业。 此操作使用作为机密存储在存储库中的连接字符串来签出相关文件，并更新应用程序配置实例。  若要详细了解如何在 GitHub 中使用机密，请参阅这篇关于如何创建和使用加密机密的 [GitHub 文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)。
+此工作流的第一部分指定操作 *在* 包含到 main 分支的 *推送* 上触发 `appsettings.json` 。 *main* 第二部分列出了在此操作触发后立即运行的作业。 此操作使用作为机密存储在存储库中的连接字符串来签出相关文件，并更新应用程序配置实例。  若要详细了解如何在 GitHub 中使用机密，请参阅这篇关于如何创建和使用加密机密的 [GitHub 文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)。
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>使用动态标签同步
 下面的操作在每个同步中插入一个动态标签，以确保每个同步都能被唯一标识，并可便于代码更改映射到配置更改。
 
-此工作流的第一部分指定，这一操作在包含 `appsettings.json` 的推送推送到主分支后触发。 第二部分运行作业，以根据提交哈希为配置更新创建唯一标签。 然后，此作业使用新值和此更新的唯一标签来更新应用程序配置实例。
+此工作流的第一部分指定操作 *在* 包含到 main 分支的 *推送* 上触发 `appsettings.json` 。 *main* 第二部分运行作业，以根据提交哈希为配置更新创建唯一标签。 然后，此作业使用新值和此更新的唯一标签来更新应用程序配置实例。
 
 ```json
 on: 

@@ -2,17 +2,17 @@
 title: 为 Azure 应用配置使用专用终结点
 description: 使用专用终结点保护你的应用配置存储
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: a29c8c02093f47807ec71ffcc01e26514976ce79
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 07/15/2020
+ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071704"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929837"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>为 Azure 应用配置使用专用终结点
 
@@ -27,7 +27,7 @@ ms.locfileid: "92071704"
 
 专用终结点是用于[虚拟网络](../virtual-network/virtual-networks-overview.md) (VNet) 中的 Azure 服务的特殊网络接口。 为应用配置存储创建专用终结点时，它会在 VNet 上的客户端与配置存储之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与配置存储之间的连接使用安全的专用链接。
 
-VNet 中的应用程序可以**使用通过其他方式连接时所用的相同连接字符串和授权机制**通过专用终结点连接到配置存储。 专用终结点可以与应用配置存储支持的所有协议一起使用。
+VNet 中的应用程序可以 **使用通过其他方式连接时所用的相同连接字符串和授权机制** 通过专用终结点连接到配置存储。 专用终结点可以与应用配置存储支持的所有协议一起使用。
 
 虽然应用配置不支持服务终结点，但你可以在使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 子网中的客户端可以使用专用终结点安全地连接到应用配置存储，而使用服务终结点来访问其他位置。  
 

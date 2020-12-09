@@ -3,13 +3,13 @@ title: Azure Monitor 资源日志支持的服务和类别
 description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920835"
+ms.locfileid: "96931222"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
@@ -23,7 +23,7 @@ ms.locfileid: "96920835"
 
 ## <a name="costs"></a>成本
 
- 在 Log Analytics 和/或事件中心中发送和存储任何数据都有相关的成本。 资源日志是可以发送到这些位置的一种数据类型。 [导出某些类别的资源日志](https://azure.microsoft.com/pricing/details/monitor/)会产生额外的费用。 其他人则不收取出口费用。 下表列出了具体的详细信息。
+将任何数据发送到 Log Analytics、Azure 存储和/或事件中心时，会产生相关的费用。 你可能需要支付费用，以便将数据导入到这些位置，并将其保留在那里。  资源日志是可以发送到这些位置的一种数据类型。 将 [某些类别的资源日志导出](https://azure.microsoft.com/pricing/details/monitor/) 到这些位置需要额外的费用，而其他人则不收取出口费用。 下表列出了导出成本细节。
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852126"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928760"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -42,6 +42,13 @@ ms.locfileid: "96852126"
 
 ## <a name="create-new-data-factory-connection"></a>创建新的数据工厂连接
 
+>[!Note]
+>若要添加或删除数据工厂连接，需要为其分配监控范围角色之一：
+>- “所有者”
+>- 用户访问管理员
+>
+> 除此之外，它还要求用户成为数据工厂的 "所有者" 或 "参与者"。 
+
 按照以下步骤将现有的数据工厂帐户连接到监控范围数据目录。
 
 1. 选择左侧导航窗格中的 " **管理中心** "。
@@ -70,11 +77,6 @@ ms.locfileid: "96852126"
 1. 在弹出窗口中选择 " **确认** "，删除所选的数据工厂连接。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->若要添加或删除数据工厂连接，需要为其分配监控范围角色之一：
->- 所有者
->- 除外，用户访问管理员还要求用户是数据工厂的 "所有者"、"参与者" 或 "数据工厂参与者"。 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>配置自承载 IR 以便从本地 SQL 中收集沿袭
 

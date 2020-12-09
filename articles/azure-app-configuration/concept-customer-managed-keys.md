@@ -1,17 +1,17 @@
 ---
 title: 使用客户管理的密钥加密配置数据
 description: 使用客户管理的密钥加密配置数据
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87384865"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930494"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户管理的密钥加密应用程序配置数据
 Azure 应用程序配置[对敏感信息进行静态加密](../security/fundamentals/encryption-atrest.md)。 通过使用客户管理的密钥，可以管理加密密钥，从而提供增强的数据保护。  使用托管密钥加密时，将使用用户提供的 Azure Key Vault 密钥对应用程序配置中的所有敏感信息进行加密。  这样就可以根据需要轮换加密密钥。  还可以通过撤消应用程序配置实例对密钥的访问权限，来撤消 Azure 应用程序配置对敏感信息的访问权限。

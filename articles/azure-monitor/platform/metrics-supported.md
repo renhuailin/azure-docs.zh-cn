@@ -4,26 +4,26 @@ description: 可在 Azure 监视器中为每种资源类型使用的指标的列
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 12/09/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921491"
+ms.locfileid: "96929100"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
 > [!NOTE]
-> 此列表主要通过 Azure Monitor Metrics REST API 自动生成。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
+> 此列表主要是自动生成的。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
 Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 
 
-本文列出了当前可用于 Azure Monitor 的合并指标管道的所有平台（即自动收集的）指标。 此列表上次更新时间为 2020 年 3 月 27 日。 此日期之后更改或添加的指标不会出现在下表。 要以编程方式查询和访问指标列表，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 未在此列表列出的其他指标可在门户或旧版 API 中使用。
+本文列出了当前可用于 Azure Monitor 的合并指标管道的所有平台（即自动收集的）指标。 在本文顶部的日期之后更改或添加的指标可能尚未出现在下面。 要以编程方式查询和访问指标列表，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 未在此列表列出的其他指标可在门户或旧版 API 中使用。
 
-指标按资源提供程序和资源类型进行了组织。 有关服务和属于它们的资源提供程序的列表，请参阅 [Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
+指标按资源提供程序和资源类型进行了组织。 有关服务以及属于它们的资源提供程序和类型的列表，请参阅 [Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>将平台指标导出到其他位置
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902249"
+ms.locfileid: "96931293"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 REST 终结点复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "96902249"
 
 REST 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
@@ -172,7 +172,7 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
@@ -208,7 +208,7 @@ REST 链接服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 **GET** (默认) 和 **POST**。 | 否 |
@@ -297,18 +297,25 @@ REST 链接服务支持以下属性：
 
 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **RestSink**。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 **POST** (默认值) 、 **PUT** 和 **PATCH**。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应的超时值，而不是写入数据的超时值。 默认值为 00:01:40  。  | 否 |
-| requestInterval | Milisecond 中不同请求之间的间隔时间。 请求间隔值应为 [10，60000] 之间的数字。 |  否 |
+| requestInterval | 不同请求之间的间隔时间（以毫秒为单位）。 请求间隔值应为 [10，60000] 之间的数字。 |  否 |
 | httpCompressionType | 使用最佳压缩级别发送数据时要使用的 HTTP 压缩类型。 允许的值为 **none** 和 **gzip**。 | 否 |
 | writeBatchSize | 每批向 REST 接收器写入的记录数。 默认值为 10000。 | 否 |
 
->[!NOTE]
->REST 连接器 as sink 适用于接受 JSON 的 REST 终结点。 数据只会在 JSON 中发送。
+REST 连接器 as sink 适用于接受 JSON 的 REST Api。 数据将在 JSON 中以下列模式发送。 根据需要，可以使用复制活动 [架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping) 来改变源数据的形状，以符合 REST API 的预期负载。
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
 
 **示例：**
 
@@ -348,7 +355,7 @@ REST 链接服务支持以下属性：
 
 ## <a name="pagination-support"></a>分页支持
 
-通常，REST API 将单个请求的响应有效负载大小限制在合理的数字以下；返回大量的数据时，它会将结果拆分到多个页面，并要求调用方发送连续的请求来获取下一页结果。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
+通常，在从 REST Api 复制数据时，REST API 会根据合理的数目限制单个请求的响应负载大小;在返回大量数据时，它会将结果拆分为多个页面，并要求调用方发送连续请求以获取结果的下一页。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
 
 此泛型 REST 连接器支持以下分页模式： 
 

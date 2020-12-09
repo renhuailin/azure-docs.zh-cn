@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928726"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>利用 Azure Pipelines 部署自定义策略
 
@@ -46,7 +46,7 @@ ms.locfileid: "96170151"
 
 如 [先决条件](#prerequisites)中所述，你需要一个应用程序注册，你的 PowerShell 脚本（由 Azure Pipelines 执行）可用于访问租户中的资源。
 
-如果你已有一个用于自动化任务的应用程序注册，请确保已向其授予 **Microsoft Graph**  >  **Policy**  >  应用注册的 **API 权限** 中的 Microsoft Graph 策略 **TrustFramework** 权限。
+如果你已有一个用于自动化任务的应用程序注册，请确保已向其授予  >    >  应用注册的 **API 权限** 中的 Microsoft Graph 策略 **TrustFramework** 权限。
 
 有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
@@ -212,9 +212,9 @@ PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 了解有关以下方面的详细信息：
 
 * [使用客户端凭据的服务到服务调用](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
-* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
+* [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->
-[devops]: /azure/devops/?view=azure-devops
-[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops]: /azure/devops/
+[devops-create-project]:  /azure/devops/organizations/projects/create-project
 [devops-pipelines]: /azure/devops/pipelines

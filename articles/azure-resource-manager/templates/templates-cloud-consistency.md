@@ -1,23 +1,23 @@
 ---
 title: 跨云重用模板
-description: 开发可针对不同的云环境一致地工作的 Azure 资源管理器模板。 创建适用于 Azure Stack 的新模板或更新现有模板。
+description: 开发 Azure 资源管理器模板 (ARM 模板) ，适用于不同的云环境。 创建适用于 Azure Stack 的新模板或更新现有模板。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744758"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928352"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器 (ARM) 模板可确保部署在全球 Azure、Azure 主权云和 Azure Stack 等环境中保持一致性和可重复性。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器模板 (ARM 模板) 使你的部署在不同的环境（包括全球 Azure、Azure 主权云和 Azure Stack）之间保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Microsoft 在很多位置提供了面向企业的智能云服务，其中包括：
 
@@ -443,8 +443,8 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net。
-* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn。
+* `mystorageaccount1.blob.core.windows.net` 在全局 Azure 云上创建时。
+* `mystorageaccount1.blob.core.chinacloudapi.cn` 在 Azure 中国世纪互联云中创建的。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 

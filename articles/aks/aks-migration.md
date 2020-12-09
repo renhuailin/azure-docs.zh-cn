@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280216"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929729"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -132,7 +132,7 @@ az aks create \
 * 将实时流量指向新的 AKS 群集。
 * 断开旧群集的连接。
 
-若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
+若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](/cli/azure/storage/file/copy) 命令迁移数据。
 
 
 #### <a name="migrating-persistent-volumes"></a>迁移永久性卷。
@@ -159,7 +159,7 @@ az aks create \
 
 ### <a name="deployment-of-your-cluster-configuration"></a>群集配置的部署
 
-建议使用现有的持续集成 (CI) 和持续交付 (CD) 管道将已知正常的配置部署到 AKS。 可以使用 Azure Pipelines [生成应用程序并将其部署到 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
+建议使用现有的持续集成 (CI) 和持续交付 (CD) 管道将已知正常的配置部署到 AKS。 可以使用 Azure Pipelines [生成应用程序并将其部署到 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
 
 如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用到 AKS。 可以使用 `kubectl` 导出对象。
 

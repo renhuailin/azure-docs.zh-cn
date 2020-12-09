@@ -10,10 +10,10 @@ ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
 ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "91371960"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
@@ -37,11 +37,11 @@ ms.locfileid: "91371960"
 | **范围** | **定义位置** | **查看数据所需的访问权限** | **先决条件 EA 设置** | **将数据合并到** |
 | --- | --- | --- | --- | --- |
 | 计费帐户<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | 企业管理员 | 无 | 企业协议中的所有订阅 |
-| 部门 | [https://ea.azure.com](https://ea.azure.com/) | 部门管理员 | **DA 视图费用**已启用 | 属于一个合约帐户的所有订阅，该帐户已关联到部门 |
-| 合约帐户<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | 帐户所有者 | **AO 视图费用**已启用 | 注册帐户的所有订阅 |
-| 管理组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 管理组下的所有订阅 |
-| 订阅 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 订阅中的所有资源/资源组 |
-| 资源组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 资源组中的所有资源 |
+| 部门 | [https://ea.azure.com](https://ea.azure.com/) | 部门管理员 | **DA 视图费用** 已启用 | 属于一个合约帐户的所有订阅，该帐户已关联到部门 |
+| 合约帐户<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | 帐户所有者 | **AO 视图费用** 已启用 | 注册帐户的所有订阅 |
+| 管理组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 管理组下的所有订阅 |
+| 订阅 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 订阅中的所有资源/资源组 |
+| 资源组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 资源组中的所有资源 |
 
 <sup>1</sup> 计费帐户还称为“企业协议”或“合约”。
 
@@ -67,7 +67,7 @@ ms.locfileid: "91371960"
 1. 使用企业管理员帐户通过 https://portal.azure.com 登录到 Azure 门户。
 1. 选择“成本管理 + 计费”菜单项。 
 1. 选择“计费范围”查看可用计费范围和计费帐户的列表。 
-1. 从可用计费帐户列表中选择你的**计费帐户**。
+1. 从可用计费帐户列表中选择你的 **计费帐户**。
 1. 在“设置”下选择“策略”菜单项，然后配置设置。    
     ![显示“查看费用”选项的计费范围策略](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 

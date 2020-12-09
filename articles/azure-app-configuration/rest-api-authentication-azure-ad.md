@@ -1,17 +1,17 @@
 ---
 title: Azure Active Directory REST API 身份验证
 description: 使用 Azure Active Directory 通过使用来进行 Azure 应用配置的身份验证 REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 73d951b3e85c170cf068693bb9b374349516ca8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183475"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930511"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory 身份验证
 
@@ -42,8 +42,8 @@ Authorization: Bearer {{AadToken}}
 
 使用适当的受众请求 Azure AD 令牌。 对于 Azure 应用配置，请使用以下访问群体之一。 还可以将受众称为请求令牌的 *资源* 。
 
-- {configurationStoreName}. azconfig
-- *. azconfig.io
+- {configurationStoreName}.azconfig.io
+- *.azconfig.io
 
 > [!IMPORTANT]
 > 当请求的受众为时 `{configurationStoreName}.azconfig.io` ，它必须与 `Host` 请求标头完全匹配 (区分大小写) 用于发送请求。

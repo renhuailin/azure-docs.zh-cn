@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953673"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928641"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>有关配置 LexisNexis 与 Azure Active Directory B2C 的教程
 
@@ -73,7 +73,7 @@ ThreatMetrix 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。

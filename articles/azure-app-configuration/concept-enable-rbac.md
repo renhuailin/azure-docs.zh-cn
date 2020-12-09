@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限
 description: 启用 Azure RBAC 以授权访问你的 Azure 应用配置实例
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/13/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4768dbe292b7c71770ded1e8ad27025bc9944608
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862133"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930256"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限
 除了使用基于哈希的消息验证码 (HMAC)，Azure 应用程序配置还支持使用 Azure Active Directory (Azure AD) 授权对应用程序配置实例的请求。  Azure AD 允许使用 azure RBAC)  (Azure 基于角色的访问控制向安全主体授予权限。  安全主体可以是用户、[托管标识](../active-directory/managed-identities-azure-resources/overview.md)或[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md)。  若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。

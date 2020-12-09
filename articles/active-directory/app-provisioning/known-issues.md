@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174826"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928743"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -56,6 +56,10 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 **特性映射表达式的最大字符数**
 
 特性映射表达式最多可以有10000个字符。 
+
+**范围筛选器不受支持**
+
+不支持将目录扩展、appRoleAssignments、userType 和 accountExpires 作为范围筛选器。
 
 
 ## <a name="service-issues"></a>服务问题 
