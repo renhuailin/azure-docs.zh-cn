@@ -1,26 +1,30 @@
 ---
-title: 使用 Azure Maps 提升服务请求提升数据
-description: 了解如何使用 Azure Maps 提升服务请求提升数据。
+title: '使用 Azure Maps 提升服务 (预览版请求提升数据) '
+description: 了解如何使用 Azure Maps 提升服务 (预览版) 请求提升数据。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/02/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9937d72b44eb33df8027eddb9a9f500a372c9037
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551747"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906057"
 ---
-# <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>使用 Azure Maps 提升服务请求提升数据
+# <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure Maps 提升服务 (预览版请求提升数据) 
 
-Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) 提供 api 来查询地球上位置的提升数据。 您可以请求沿着路径、在定义的范围框中或在特定坐标内进行抽样提升数据。 此外，还可以使用 [呈现 V2-获取地图磁贴 API](https://docs.microsoft.com/rest/api/maps/renderv2) 来检索以磁贴格式的提升数据。 磁贴以 GeoTIFF 光栅格式提供。 本文介绍如何使用 Azure Maps 提升服务和获取地图磁贴 API 来请求提升数据。 可以通过 GeoJSON 和 GeoTiff 格式请求提升数据。
+> [!IMPORTANT]
+> Azure Maps 提升服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) 提供了 api，用于查询地球表面任意位置的提升数据。 您可以请求沿着路径、在定义的范围框中或在特定坐标内进行抽样提升数据。 此外，还可以使用 [呈现 V2-获取地图磁贴 API](https://docs.microsoft.com/rest/api/maps/renderv2) 来检索以磁贴格式的提升数据。 磁贴以 GeoTIFF 光栅格式提供。 本文介绍如何使用 Azure Maps 提升服务和获取地图磁贴 API 来请求提升数据。 可以通过 GeoJSON 和 GeoTiff 格式请求提升数据。
+
+## <a name="prerequisites"></a>必备条件
 
 1. [在 S1 定价层中创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
@@ -50,7 +54,7 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 ## <a name="request-elevation-data-in-geojson-format"></a>以 GeoJSON 格式请求提升数据
 
-使用提升服务 Api 以 GeoJSON 格式请求提升数据。 本部分将显示三个 Api 中的每一个：
+使用提升服务 (预览) Api 以 GeoJSON 格式请求提升数据。 本部分将显示三个 Api 中的每一个：
 
 * [获取点数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 * [为点发布数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
@@ -443,7 +447,7 @@ URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
     }
     ```
 
-## <a name="samples-use-elevation-service-apis-in-azure-maps-control"></a>示例：在 Azure Maps 控件中使用提升服务 Api
+## <a name="samples-use-elevation-service-preview-apis-in-azure-maps-control"></a>示例：使用提升服务 (预览) Azure Maps 控件中的 Api
 
 ### <a name="get-elevation-data-by-coordinate-position"></a>按坐标位置获取提升数据
 
@@ -478,16 +482,16 @@ Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步了解 Azure Maps 提升 Api，请参阅：
+若要进一步了解 Azure Maps 提升 (预览版) Api，请参阅：
 
 > [!div class="nextstepaction"]
-> [提升-获取 Lat 长坐标的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [提升 (预览) -获取 Lat 长坐标的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 
 > [!div class="nextstepaction"]
-> [提升-获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [提升 (预览) -获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [提升-获取折线的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [提升 (预览) -获取折线数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
 > [Render V2 –获取地图磁贴](https://docs.microsoft.com/rest/api/maps/renderv2)

@@ -3,17 +3,17 @@ title: Azure Maps 绘图转换错误和警告
 description: 了解在使用 Azure Maps 转换服务时可能会看到的转换错误和警告。 阅读关于如何解决这些错误和警告的建议，以及一些示例。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895930"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906210"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告
 
@@ -330,7 +330,7 @@ ms.locfileid: "92895930"
 若要修复 invalidUserData 错误，请验证：
 
 * 是否为已上传包提供了正确的 `udid`。
-* 是否为用于上传绘图包的 Azure Maps 帐户启用了 Azure Maps Creator。
+* 已为用于上载绘图包的 Azure Maps 帐户启用 Azure Maps Creator (预览版) 。
 * 对转换服务的 API 请求是否包含用于上传绘图包的 Azure Maps 帐户的订阅密钥。
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -506,4 +506,4 @@ manifest.json 文件因 JSON 格式或语法错误而无法读取。 若要详�
 > [如何使用 Azure Maps 绘图错误可视化工具](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [适用于室内定位的 Creator](creator-indoor-maps.md)
+> [室内地图的 Creator (预览) ](creator-indoor-maps.md)

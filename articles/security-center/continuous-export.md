@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 12/08/2020
 ms.author: memildin
-ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122322"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862456"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -72,6 +72,7 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
     - 应修正关于计算机上的 SQL 服务器的漏洞评估结果（预览版）
     - 应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供技术支持）
     - 应修正虚拟机中的漏洞
+    - 应在计算机上安装系统更新
 
     若要将结果与这些建议包括在一起，请启用“包括安全结果”选项。
 

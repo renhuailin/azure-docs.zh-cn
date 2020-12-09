@@ -4,15 +4,15 @@ description: 使用 AzCopy 和文件存储传输数据。 AzCopy 是一个命令
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a19cca515bafa1d06f93d71b4868011a7c922354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 087af322240322e44e70a9b5279eb7d251e735be
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792831"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901858"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -207,7 +207,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 | **语法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **示例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-在此示例中，AzCopy 将传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录和 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` 文件。 需要包含 `--recursive` 选项才能传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录中的所有文件。
+在此示例中，AzCopy 将传输 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目录和 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` 文件。 包含 `--recursive` 用于传输目录中的所有文件的选项 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 。
 
 还可以使用 `--exclude-path` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
@@ -292,14 +292,14 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 ## <a name="synchronize-files"></a>同步文件
 
-可将一个文件共享的内容与另一个文件共享同步。 还可将一个文件共享中的目录内容，与位于另一个文件共享中的目录内容同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。
+可将一个文件共享的内容与另一个文件共享同步。 还可将一个文件共享中的目录内容，与位于另一个文件共享中的目录内容同步。 同步是一种方法。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。
 
 > [!NOTE]
 > 目前，只有不使用分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不会在 Azure 文件存储与 Blob 存储之间同步。
 
 [sync](storage-ref-azcopy-sync.md) 命令比较文件名和上次修改时间戳。 如果将 `--delete-destination` 可选标志设置为 `true` 或 `prompt` 值，当目标目录中的文件不在源目录中存在时，会删除这些文件。
 
-如果将 `--delete-destination` 标志设置为 `true`，AzCopy 将删除文件且不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
+如果将标志设置 `--delete-destination` 为 `true` ，则 AzCopy 将删除文件而不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
 > [!TIP]
 > 可以通过使用可选标志来调整同步操作。 下面是几个示例。
@@ -348,8 +348,6 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
-
-- [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
+- [传输数据](storage-use-azcopy-v10.md#transfer-data)
 
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

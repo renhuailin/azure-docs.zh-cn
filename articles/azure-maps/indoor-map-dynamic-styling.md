@@ -1,21 +1,25 @@
 ---
-title: 实现 Azure Maps Creator 室内定位的动态样式
-description: 了解如何实现 Creator 室内定位的动态样式
+title: 为 Azure Maps 创建者 (预览) 室内地图实现动态样式
+description: 了解如何为 Creator (预览) 室内地图实现动态样式
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895369"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903439"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>实现 Creator 室内定位的动态样式
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>实现) 室内地图的 Creator (预览的动态样式
+
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 借助 Azure Maps Creator [特征状态服务](/rest/api/maps/featurestate)，可以根据室内定位数据特征的动态属性来应用样式。  例如，可以使用特定颜色来渲染设施会议室，以反映占用状态。 本文将介绍如何使用[特征状态服务](/rest/api/maps/featurestate)和[室内 Web 模块](how-to-use-indoor-module.md)来动态渲染室内定位特征。
 
@@ -23,7 +27,7 @@ ms.locfileid: "92895369"
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. [创建 Creator 资源](how-to-manage-creator.md)
+3. [ (预览创建创建者) 资源](how-to-manage-creator.md)
 4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 5. [创建室内定位](tutorial-creator-indoor-maps.md)，以获取 `tilesetId` 和 `statesetId`。
 6. 按照[如何使用“室内定位”模块](how-to-use-indoor-module.md)中的步骤操作，以生成 Web 应用。
@@ -113,7 +117,7 @@ map.events.add("click", function(e){
 若要了解详细信息，请阅读以下文章：
 
 > [!div class="nextstepaction"]
-> [适用于室内定位的 Creator](creator-indoor-maps.md)
+> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
 
 有关本文中提到的 API，请参阅以下参考资料：
 

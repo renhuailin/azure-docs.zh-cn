@@ -3,12 +3,12 @@ title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b7bb726250c6d1ef8a597481b5f7e95f024a56d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3b5a2642ebbabac61e46f4d9b0a2dfec9610a673
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183985"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902657"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -37,7 +37,7 @@ ms.locfileid: "96183985"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | ResourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -179,11 +179,11 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
 | apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd** 格式。 |
-| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -205,7 +205,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
 | Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
-| Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
+| Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -438,7 +438,7 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | 是 | 字符串 | 用于检查区域支持的资源类型的资源提供程序命名空间。 |
 | resourceType | 是 | 字符串 | 要检查区域支持的资源类型。 |
@@ -547,7 +547,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |字符串 |提供程序的命名空间 |
 | resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
@@ -635,7 +635,7 @@ output providerOutput array = providers(providerNamespace, resourceType)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
@@ -1107,7 +1107,7 @@ output resourceGroupOutput object = resourceGroup()
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
 | resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
@@ -1410,7 +1410,7 @@ output subscriptionOutput object = subscription()
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -1542,7 +1542,7 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |

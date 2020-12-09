@@ -1,6 +1,6 @@
 ---
 title: 分配给云组的角色疑难解答常见问题解答- Azure Active Directory | Microsoft Docs
-description: 了解在 Azure Active Directory 中将角色分配给组的一些常见问题和故障排除提示。
+description: 了解有关在 Azure Active Directory 中将角色分配给组的一些常见问题和疑难解答提示。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377728"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861929"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>分配给云组的角色疑难解答
 
@@ -32,16 +32,16 @@ ms.locfileid: "93377728"
 
 **答:** 默认情况下，只有特权角色管理员和全局管理员管理可分配角色组的成员资格，但你可以通过添加组所有者来委派对可分配角色的组的管理。
 
-**问** ：我是组织中的帮助台管理员，但无法更新目录读取器用户的密码。 为何发生这种情况？
+**问**：我是组织中的帮助台管理员，但无法更新目录读取器用户的密码。 为何发生这种情况？
 
-**答** ：用户可能通过可分配角色的组获取目录读取器。 可分配角色的组的所有成员和所有者都受到保护。 只有具有特权身份验证管理员或全局管理员角色的用户才能重置受保护用户的凭据。
+**答**：用户可能通过可分配角色的组获取目录读取器。 可分配角色的组的所有成员和所有者都受到保护。 只有具有特权身份验证管理员或全局管理员角色的用户才能重置受保护用户的凭据。
 
 **问：** 无法更新用户的密码。 它们未分配任何更高权限的特权角色。 为何会发生这种情况？
 
 **答:** 用户可以是可分配角色的组的所有者。 我们保护可分配角色的组的所有者，以避免特权提升。 例如，如果将组 Contoso_Security_Admins 分配给安全管理员角色，其中 Bob 是组所有者，Alice 是组织中的密码管理员，则可能会出现这种情况。 如果没有这种保护措施，Alice 可以重置 Bob 的凭据并接管其身份。 之后，Alice 可以将自己或任何人添加到 Contoso_Security_Admins 组，成为组织中的安全管理员。 若要查明用户是否为组所有者，请获取该用户拥有的对象列表，并查看是否有组将 isAssignableToRole 设置为 true。 如果是，则用户是受保护的，并且该行为是设计的行为。 请参阅以下文档，了解如何获取拥有的对象：
 
-- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [列出 ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  
+- [列出 ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)
 
 **问：** 是否可以对可分配给 Azure AD 角色的组（特别是 isAssignableToRole 属性设置为 true 的组）创建访问评审？  
 

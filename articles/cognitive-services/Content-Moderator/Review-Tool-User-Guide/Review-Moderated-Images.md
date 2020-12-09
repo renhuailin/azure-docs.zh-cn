@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cfda4d7970c734d92c9f2355d553721ef6165e43
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911845"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903881"
 ---
 # <a name="create-human-reviews"></a>创建人工审阅
 
@@ -56,4 +56,4 @@ ms.locfileid: "92911845"
 
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审阅。 接下来，请参阅 [REST API 指南](../try-review-api-review.md)或 [.NET SDK 快速入门](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)，了解如何以编程方式创建审阅。
+本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审阅。 接下来，请参阅 [API 控制台指南](../try-review-api-review.md) 或 [.net SDK 快速入门](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) ，了解如何以编程方式创建评论。

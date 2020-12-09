@@ -1,23 +1,28 @@
 ---
-title: 移动性 (传输) 覆盖率
-description: 了解 Azure Maps 移动服务在哪些区域提供公共传输功能，如路由和服务警报。
+title: 'Microsoft Azure 地图移动服务 (预览版中的移动性 (传输) 覆盖率) '
+description: 了解 Azure Maps 移动服务 (预览版) 为哪些区域提供公共传输功能，如路由和服务警报。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/23/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10a0f9b1b21b060d7c33aeb52fb72f950cedf0e6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779144"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904748"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖范围
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps 移动服务 (预览版) 覆盖率
 
-Azure Maps [移动服务](/rest/api/maps/mobility) 可提高具有公共传输功能的应用程序的开发时间，如中转路由和搜索附近的公共传输停止。 用户可以检索有关公交站点、线路和时刻表的详细信息。 通过出行服务，用户还可以检索停靠站点和线路的几何形状，停靠站点、线路和服务区的警报以及实时的公交到达时间和服务警报。 此外，出行服务还提供具有多式联运行程规划选项的路线规划功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。 
+> [!IMPORTANT]
+> Azure Maps 移动服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
+Azure Maps [移动服务](/rest/api/maps/mobility) 可提高具有公共传输功能的应用程序的开发时间，如中转路由和搜索附近的公共传输停止。 用户可以检索有关公交站点、线路和时刻表的详细信息。 移动服务还允许用户检索停止和行几何、停止、行和服务区域的警报，以及实时公共传输到达和服务警报。 此外，移动服务还提供了具有多种模行程计划选项的路由功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
 
 Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性。 调用公共传输数据的能力取决于大都市区。 此外，地图数据可能不包括为地铁区域提供服务的所有公共传输选项和机构。
 
@@ -54,7 +59,7 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 | + 美属维尔京群岛 | 美属维尔京群岛 * |
 | 委内瑞拉 | 加拉加斯 |
 
-## <a name="asia-pacific"></a>亚太
+## <a name="asia-pacific"></a>亚太区
 
 | 国家/地区 |  城市 (地铁区域)  |
 |--------|---------|
@@ -149,17 +154,17 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用移动服务请求传输数据：
+了解如何使用移动服务 (预览) 请求传输数据：
 
 > [!div class="nextstepaction"]
 > [如何请求传输数据](how-to-request-transit-data.md)
 
-了解如何使用移动服务请求实时数据：
+了解如何使用移动服务 (预览) 请求实时数据：
 
 > [!div class="nextstepaction"]
 > [如何请求实时数据](how-to-request-real-time-data.md)
 
-浏览 Azure Maps 移动服务 API 文档
+浏览 Azure Maps 移动服务 (预览版) API 文档
 
 > [!div class="nextstepaction"]
 > [移动服务 API 文档](/rest/api/maps/mobility)

@@ -4,16 +4,16 @@ description: AzCopy 是一个命令行实用工具，可用于向/从存储帐�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperfq2
-ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410260"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901766"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -33,7 +33,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 - [Windows 64 位](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32 位](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip) 
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 这些文件压缩成 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。 要在 Linux 上下载并解压缩 tar 文件，请参阅 Linux 分发文档。
 
@@ -81,13 +81,13 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > [!NOTE]
 > 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](storage-use-azcopy-blobs.md)。
 
-若要使用 Azure AD 授予访问权限，请参阅使用 [AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限 ](storage-use-azcopy-authorize-azure-active-directory.md)。
+若要使用 Azure AD 进行访问授权，请参阅[使用 AzCopy 和 Azure Active Directory (Azure AD) 授权访问 Blob](storage-use-azcopy-authorize-azure-active-directory.md)。
 
 #### <a name="option-2-use-a-sas-token"></a>选项 2：使用 SAS 令牌
 
 可将 SAS 令牌追加到在 AzCopy 命令中使用的每个源或目标 URL。
 
-此示例命令以递归方式将本地目录中的数据复制到 Blob 容器。 将一个虚构的 SAS 令牌追加到容器 URL 的末尾。
+此示例命令以递归方式将本地目录中的数据复制到 Blob 容器。 一个虚构的 SAS 令牌将追加到容器 URL 的末尾。
 
 ```azcopy
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
@@ -95,19 +95,20 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要详细了解 SAS 令牌及其获取方式，请参阅[使用共享访问签名 (SAS)](./storage-sas-overview.md)。
 
+<a id="transfer-data"></a>
+
 ## <a name="transfer-data"></a>传输数据
 
-授权身份或获取 SAS 令牌后，可以开始传输数据。
+对标识授权或获取 SAS 令牌后，即可开始传输数据。
 
 若要查找示例命令，请参阅以下文章中的任何一篇。
 
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
-
-- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-
-- [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
-
-- [使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)
+| 服务 | 项目 |
+|--------|-----------|
+|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[下载 Azure Blob 存储中的 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 blob](storage-use-azcopy-blobs-download.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-download.md)|
+|Azure 文件 |[使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)|
+|Amazon S3|[使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)|
+|Azure Stack 存储|[使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>在脚本中使用
 
@@ -115,7 +116,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 在一段时间后，AzCopy [下载链接](#download-and-install-azcopy)将指向新版 AzCopy。 如果脚本会下载 AzCopy，而更高版本的 AzCopy 会修改该脚本所依赖的功能，则该脚本可能会停止工作。
 
-若要避免这些问题，请) 链接到 AzCopy 的当前版本来获取静态 (。 这样，每次运行脚本时，它都会下载相同的 AzCopy 版本。
+若要避免这些问题，请获取当前 AzCopy 版本的静态（不会更改）链接。 这样，每次运行脚本时，它都会下载相同的 AzCopy 版本。
 
 若要获取该链接，请运行以下命令：
 

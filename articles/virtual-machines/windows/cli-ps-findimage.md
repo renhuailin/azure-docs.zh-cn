@@ -1,48 +1,86 @@
 ---
-title: 查找并使用 Azure 市场映像
-description: 使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
+title: 查找并使用 Azure Marketplace 映像和计划
+description: 使用 Azure PowerShell 查找并使用适用于 Marketplace VM 映像的发布者、产品/服务、SKU、版本和计划信息。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288348"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906261"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找并使用 VM 映像
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>使用 Azure Marketplace VM 映像查找并使用 Azure PowerShell     
 
-本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，可以在创建 VM 时指定市场映像。
+本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，你可以在创建 VM 时指定 Marketplace 映像和计划信息。
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>常用 Windows 映像表
 
-此表显示了指示的发布者和产品/服务可用的 SKU 的子集。
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>使用计划信息从 VHD 创建 VM
 
-| 发布者 | 产品/服务 | SKU |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+如果现有的 VHD 是使用 Azure Marketplace 映像创建的，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。
 
-## <a name="navigate-the-images"></a>浏览映像
+如果仍有原始 VM，或从同一映像创建了另一个 VM，则可以使用 New-azvm 从其获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
+
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+如果在删除原始 VM 之前未获得计划信息，可以 [发出支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 它们将需要 VM 名称、订阅 Id 和删除操作的时间戳。
+
+若要使用 VHD 创建 VM，请参阅此文章 [从专用 Vhd 创建 vm](create-vm-specialized.md) ，并添加一行，使用 [AzVMPlan](/powershell/module/az.compute/set-azvmplan) ，将计划信息添加到 vm 配置：
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>从 marketplace 映像创建新 VM
+
+如果你已有要使用的映像的相关信息，可以将该信息传递到 [AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) cmdlet，以便将映像信息添加到 VM 配置。 请参阅下一节，了解如何搜索和列出 marketplace 中提供的映像。
+
+某些付费图像还要求使用 [AzVMPlan](/powershell/module/az.compute/set-azvmplan)提供购买计划信息。 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+然后，将 VM 配置与其他配置对象一起传递给 `New-AzVM` cmdlet。 有关将 VM 配置与 PowerShell 配合使用的详细示例，请参阅此 [脚本](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1)。
+
+如果收到有关接受映像的条款的消息，请参阅本文后面的 [接受条款](#accept-the-terms) 部分。
+
+## <a name="list-images"></a>列出映像
 
 在某个位置查找映像的一种方法是按顺序运行 [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher)、[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) 和 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) cmdlet：
 
@@ -276,41 +314,7 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>使用购买计划参数进行部署
 
-接受映像的条款后，可以在该订阅中部署 VM。 如以下代码片段中所示，使用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) cmdlet 为 VM 对象设置市场计划信息。 如需为 VM 创建网络设置和完成部署的完整脚本，请参阅 [PowerShell 脚本示例](powershell-samples.md)。
-
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-然后将 VM 配置与网络配置对象一起传递给 `New-AzVM` cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

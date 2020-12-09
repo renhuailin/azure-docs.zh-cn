@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 门户中查看自定义角色分配 |Microsoft Docs
-description: 你现在可以在 "Azure Active Directory 管理中心" 中查看和管理 Azure Active Directory 管理员角色的成员。
+title: 在 Azure Active Directory 门户中查看自定义角色分配 | Microsoft Docs
+description: 现在，你可以在 Azure Active Directory 管理中心查看和管理 Azure Active Directory 管理员角色的成员。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579022"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862082"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>使用 Azure Active Directory 查看自定义角色分配
 
@@ -39,11 +39,11 @@ ms.locfileid: "94579022"
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 查看角色分配
 
-此部分介绍如何查看组织范围的角色分配。 本文使用 [Azure Active Directory PowerShell 版本 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模块。 若要使用 PowerShell 查看单应用程序范围的分配，可以使用[通过 PowerShell 分配自定义角色](custom-assign-powershell.md)中的 cmdlet。
+此部分介绍如何查看组织范围的角色分配。 本文使用 [Azure Active Directory PowerShell 版本 2](/powershell/module/azuread/#directory_roles) 模块。 若要使用 PowerShell 查看单应用程序范围的分配，可以使用[通过 PowerShell 分配自定义角色](custom-assign-powershell.md)中的 cmdlet。
 
 ### <a name="prepare-powershell"></a>准备 PowerShell
 
-首先，必须 [下载 Azure AD 预览版 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
+首先，必须[下载 Azure AD 预览版 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
 
 若要安装 Azure AD PowerShell 模块，请使用以下命令：
 

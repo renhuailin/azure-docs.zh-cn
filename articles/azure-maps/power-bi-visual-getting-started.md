@@ -3,22 +3,22 @@ title: Azure Maps Power BI visual | 入门 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Power BI 的 Microsoft Azure 地图视觉对象。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 06/26/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896236"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904697"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI visual 入门
 
-<Token>**适用于：** ![绿色复选标记。 ](media/power-bi-visual/yes.png) Power BI 服务 * *_使用者_* _ ![ 绿色复选标记。 ](media/power-bi-visual/yes.png) 面向开发人员的 Power BI 服务 & 开发人员 ![ 绿色复选标记。 ](media/power-bi-visual/yes.png) Power BI Desktop ![ X，指示 no。 ](media/power-bi-visual/no.png) 需要 Pro 或 Premium 许可证</Token>
+<Token>**适用于：** ![绿色复选标记。 ](media/power-bi-visual/yes.png) Power BI 服务 **_使用者_* _ ![ 绿色复选标记。 ](media/power-bi-visual/yes.png) 面向开发人员的 Power BI 服务 & 开发人员 ![ 绿色复选标记。 ](media/power-bi-visual/yes.png) Power BI Desktop ![ X，指示 no。 ](media/power-bi-visual/no.png) 需要 Pro 或 Premium 许可证</Token>
 
 本文说明如何使用 Power BI 的 Microsoft Azure 映射视觉对象。
 
@@ -45,17 +45,17 @@ Azure Maps 视觉对象连接到在 Azure 中托管的云服务，以检索位�
 
 若要了解详细信息，请参阅 [Microsoft Azure 法律信息](https://azure.microsoft.com/support/legal/)，了解与 Azure Maps 视觉对象相关的隐私和使用条款。
 
-## <a name="preview-behavior-and-requirements"></a>预览版行为和要求
+## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure Maps visual (预览版) 行为和要求
 
-此预览版本的 _ * Azure Maps * * 有一些注意事项和要求：
+对于 _ *Azure Maps** 视觉对象有一些注意事项和要求。 :
 
--   **Azure Maps** 视觉对象处于预览状态，必须在 Power BI Desktop 中启用。 若要启用 **Azure Maps** ，请选择 " **文件** &gt; **选项" 和 "设置** &gt; **Options** &gt; " " **预览功能** "，然后选择 " **Azure Maps" 视觉对象** 。 如果在执行此操作后 Azure Maps 视觉对象不可用，则可能需要启用管理门户中的租户管理交换机。
+-   **Azure Maps** Visual (Preview) 必须在 Power BI Desktop 中启用。 若要启用 **Azure Maps** 视觉对象，请选择 "**文件** &gt; **选项" 和 "设置** &gt; **Options** &gt; " "**预览功能**"，然后选择 " **Azure Maps" 视觉对象**。 如果在执行此操作后 Azure Maps 视觉对象不可用，则可能需要启用管理门户中的租户管理交换机。
 -   数据集必须具有包含 **纬度** 和 **经度** 信息的字段。 将来的更新中将添加 "位置" 字段地理编码。
 -   此预览中当前未显示 Power BI 的内置图例控件。 它将添加到将来的更新中。
 
-## <a name="use-the-azure-maps-visual"></a>使用 Azure Maps 视觉对象
+## <a name="use-the-azure-maps-visual-preview"></a>使用 Azure Maps visual (预览版) 
 
-启用 **Azure Maps** 视觉对象后，在 " **可视化效果** " 窗格中选择 " **Azure Maps** " 图标。
+启用 **Azure Maps** 视觉对象后，在 "**可视化效果**" 窗格中选择 " **Azure Maps** " 图标。
 
 !["可视化效果" 窗格中的 Azure Maps 视觉按钮](media/power-bi-visual/azure-maps-in-visualizations-pane.png)
 
@@ -70,7 +70,7 @@ Power BI 创建一个空 Azure Maps 可视化设计画布。 在预览中，会�
     > [!div class="mx-imgBorder"]
     > ![Azure Maps 视觉对象在提供的纬度和经度字段之后显示为气泡](media/power-bi-visual/bubble-layer.png)
 
-2.  若要基于分类为数据着色，请将分类字段拖到 " **字段** " 窗格的 " **图例** " 存储桶中。 在此示例中，我们使用的是 **AdminDistrict** 列 (也称为州或省) 。  
+2.  若要基于分类为数据着色，请将分类字段拖到 "**字段**" 窗格的 "**图例**" 存储桶中。 在此示例中，我们使用的是 **AdminDistrict** 列 (也称为州或省) 。  
     
     > [!div class="mx-imgBorder"]
     > ![Azure Maps 视觉对象在提供的 "图例后" 字段中显示为彩色气泡](media/power-bi-visual/bubble-layer-with-legend-color.png)
@@ -78,7 +78,7 @@ Power BI 创建一个空 Azure Maps 可视化设计画布。 在预览中，会�
     > [!NOTE]
     > 此预览中当前未显示 Power BI 的内置图例控件。 它将添加到将来的更新中。
 
-3.  若要对数据进行相对缩放，请将度量值拖到 " **字段** " 窗格的 **大小** 存储桶中。 在此示例中，我们使用的是 **Sales** 列。  
+3.  若要对数据进行相对缩放，请将度量值拖到 "**字段**" 窗格的 **大小** 存储桶中。 在此示例中，我们使用的是 **Sales** 列。  
     
     > [!div class="mx-imgBorder"]
     > ![Azure Maps 视觉对象在提供的 "大小" 字段中显示为彩色和缩放气泡。](media/power-bi-visual/bubble-layer-with-legend-color-and-size.png)

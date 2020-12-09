@@ -1,21 +1,26 @@
 ---
-title: Azure Maps Creator 中的绘图包要求
+title: 'Microsoft Azure Map Creator (预览版中的绘图包要求) '
 description: 了解将设备设计文件转换为映射数据的绘图包要求
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013116"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903456"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
+
+
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以使用 [Azure Maps 转换服务](/rest/api/maps/conversion)将上载的绘图包转换为映射数据。 本文介绍了适用于转换 API 的绘图包要求。 若要查看示例包，可以下载示例[绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 
@@ -188,7 +193,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `directoryInfo`
 
-| 属性  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必选 | 说明 |
 |-----------|------|----------|-------------|
 | `name`      | 字符串 | true   |  建筑物名称。 |
 | `streetAddress`|    字符串 |    false    | 建筑物地址。 |
@@ -407,10 +412,10 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 当你的绘图包满足要求时，你可以使用 [Azure Maps 转换服务](/rest/api/maps/conversion) 将包转换为地图数据集。 然后，可以使用该数据集，通过使用室内地图模块来生成室内地图。
 
 > [!div class="nextstepaction"]
->[适用于室内定位的 Creator](creator-indoor-maps.md)
+>[室内地图的 Creator (预览) ](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [教程：创建 Creator 室内定位](tutorial-creator-indoor-maps.md)
+> [教程：创建 Creator (预览) 室内地图](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [室内地图动态样式](indoor-map-dynamic-styling.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993986"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861385"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -94,7 +94,7 @@ ms.locfileid: "95993986"
    
    j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
+   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains)所述。 
 
 
 >[!IMPORTANT] 
@@ -105,7 +105,7 @@ ms.locfileid: "95993986"
 
 10. 在“范围筛选器标题”中，为范围筛选器添加名称。
 
-11. 选择“确定”。
+11. 选择“确定”  。
 
 12. 在“范围筛选器”屏幕上再次选择“确定”。 （可选）重复步骤 6-11 添加另一范围筛选器。
 

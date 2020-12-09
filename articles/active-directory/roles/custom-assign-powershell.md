@@ -13,18 +13,18 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd9148f1084727141f725d76f7ae756f44e210e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379513"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861946"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 分配具有资源范围的自定义角色
 
-本文介绍如何在 Azure Active Directory (Azure AD) 中创建组织范围的角色分配。 在组织范围分配角色会跨 Azure AD 组织授予访问权限。 若要创建范围为单一 Azure AD 资源的角色分配，请参阅[如何创建自定义角色并在资源范围内进行分配](custom-create.md)。本文使用 [Azure Active Directory PowerShell 版本 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模块。
+本文介绍如何在 Azure Active Directory (Azure AD) 中创建组织范围的角色分配。 在组织范围分配角色会跨 Azure AD 组织授予访问权限。 若要创建范围为单一 Azure AD 资源的角色分配，请参阅[如何创建自定义角色并在资源范围内进行分配](custom-create.md)。本文使用 [Azure Active Directory PowerShell 版本 2](/powershell/module/azuread/#directory_roles) 模块。
 
-有关 Azure AD 管理员角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](permissions-reference.md)。
+有关 Azure AD 管理员角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](permissions-reference.md)。
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-若要将角色分配给服务主体而不是用户，请使用 [Get-AzureADMSServicePrincipal cmdlet](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0)。
+若要将角色分配给服务主体而不是用户，请使用 [Get-AzureADMSServicePrincipal cmdlet](/powershell/module/azuread/get-azureadserviceprincipal)。
 
 ## <a name="operations-on-roledefinition"></a>在 RoleDefinition 上的操作
 
@@ -162,6 +162,6 @@ Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享
-- 有关角色和 azure AD 管理员角色分配的详细信息，请参阅 [分配管理员角色](permissions-reference.md)
-- 有关默认用户权限，请参阅 [默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)
+- 在 [Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享你的观点
+- 有关角色以及 Azure AD 管理员角色分配的详细信息，请参阅[分配管理员角色](permissions-reference.md)
+- 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)

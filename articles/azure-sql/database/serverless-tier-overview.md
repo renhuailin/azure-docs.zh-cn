@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743165"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902504"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -135,9 +135,10 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 |数据发现和分类|添加、修改、删除或查看敏感度标签|
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
-|透明数据加密|查看透明数据加密的状况或状态|
+|透明数据加密|查看透明数据加密的状态或状态|
 |漏洞评估|如果启用，则为临时扫描和定期扫描|
 |查询（性能）数据存储|修改或查看查询存储设置|
+|性能建议|查看或应用性能建议|
 |自动优化|自动优化建议的应用和验证，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
@@ -314,17 +315,17 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 计费的计算量是每秒使用的最大 CPU 和内存量。 如果所用的 CPU 和内存量分别少于最小预配量，则对预配量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。
 
-- **计费的资源** ：CPU 和内存
-- **计费量** ：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
-- **计费频率** ：每秒
+- **计费的资源**：CPU 和内存
+- **计费量**：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
+- **计费频率**：每秒
 
 vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)，获取给定区域的特定单位价格。
 
 计费的计算量按以下指标进行公开：
 
-- **指标** ：app_cpu_billed（vCore 秒）
-- **定义** ：最大值（最小 vCore 数、使用的 vCore 数、最小内存量(GB) * 1/3、使用的内存量 * 1/3）
-- **报告频率** ：每分钟
+- **指标**：app_cpu_billed（vCore 秒）
+- **定义**：最大值（最小 vCore 数、使用的 vCore 数、最小内存量(GB) * 1/3、使用的内存量 * 1/3）
+- **报告频率**：每分钟
 
 此数量每秒计算一次，按 1 分钟进行汇总。
 

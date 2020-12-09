@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748926"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904459"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -39,6 +39,10 @@ ms.locfileid: "96748926"
 
 * 请参阅[排查状态监视器问题](./monitor-performance-live-website-now.md#troubleshoot)。
 
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+
+
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>System.io.filenotfoundexception：无法加载文件或程序集 "TelemetryCorrelation"
 
 有关此错误的详细信息，请参阅 [GitHub 问题 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) 。
@@ -64,7 +68,7 @@ ms.locfileid: "96748926"
     </TelemetryModules>
     ```
 
-***如果未能正确升级，可能会导致意外的异常或未收集遥测数据。** _
+**_如果未能正确升级，可能会导致意外的异常或未收集遥测数据。_* _
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
@@ -212,7 +216,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 按照这些说明来捕获框架的故障排除日志。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 063ebc40fd845fe6300b008e7ca048357a2fce49
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d2e5996da5a1fe3f5b154d57ee509f25e54e30ac
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95806674"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862354"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "95806674"
 
 如果在2017年11月15日之前注册了 "即用即付" 订阅，则无需更改技术功能即可进行出站电子邮件传递。 将能够继续尝试从这些订阅中的 Azure VM 直接向外部电子邮件提供商发送出站电子邮件，且没有任何 Azure 平台限制。 同样，不保证电子邮件提供商会接受来自任何给定用户的传入电子邮件，用户需要直接与电子邮件提供商协作，以处理涉及特定提供商的所有邮件发送或垃圾邮件筛选问题。
 
-对于在2017年11月15日之后创建的即用即付订阅，将出现直接从这些订阅中的 Vm 发送的电子邮件的技术限制。 如果你希望能够直接从 Azure Vm 向外部电子邮件提供商发送电子邮件 (未使用经过身份验证的 SMTP 中继) ，你可以在 Azure 门户中发出请求以删除 Azure 虚拟网络资源的 "**诊断和解决**" 边栏选项卡的 "**连接**" 部分中的限制。 如果有资格，将启用你的订阅，或者你将收到有关后续步骤的说明。
+对于在2017年11月15日之后创建的即用即付订阅，将出现直接从这些订阅中的 Vm 发送的电子邮件的技术限制。 如果你希望能够直接从 Azure Vm 向外部电子邮件提供商发送电子邮件 (未使用经过身份验证的 SMTP 中继) 并且具有良好的付款历史记录，则可以在 Azure 门户中发出请求以删除 Azure 虚拟网络资源的 "**诊断和解决**" 边栏选项卡的 "**连接**" 部分中的限制。 如果有资格，将启用你的订阅，或者你将收到有关后续步骤的说明。 
 
 免除即用即付订阅并在 Azure 门户中停止并启动 Vm 后，将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅，并且仅适用于直接路由到 internet 的 VM 通信。
 
@@ -54,13 +54,13 @@ ms.locfileid: "95806674"
 
 ## <a name="cloud-service-provider-csp"></a>云服务提供商 (CSP)
 
-如果通过 CSP 使用 Azure 资源，则可以在 Azure 门户中发出请求以删除虚拟网络资源的 "诊断和解决" 边栏选项卡的 "连接" 部分中的限制。 如果有资格，将启用你的订阅，或者你将收到有关后续步骤的说明。
+如果通过 CSP 使用 Azure 资源，可以在 Azure 门户中发出请求以删除虚拟网络资源的 "**诊断和解决**" 边栏选项卡的 "**连接**" 部分中的限制。 如果有资格，将启用你的订阅，或者你将收到有关后续步骤的说明。
 
 ## <a name="microsoft-partner-network-mpn-bizspark-plus-or-azure-sponsorship"></a>Microsoft 合作伙伴网络 (MPN) 、BizSpark Plus 或 Azure 赞助
 
 对于在2017年11月15日之后创建的 Microsoft 合作伙伴网络 (MPN) 、BizSpark Plus 或 Azure 赞助订阅，将会阻止从这些订阅中的 Vm 直接发送的电子邮件。 如果你希望能够直接从 Azure vm 向外部电子邮件提供商发送电子邮件 (未使用经过身份验证的 SMTP 中继) ，你可以通过使用以下问题类型打开支持案例来发出请求：**技术**  >  **虚拟网络**  >  **连接**  >  **无法发送电子邮件 (SMTP/端口 25)**。 请确保添加详细信息，解释为什么要直接向电子邮件提供商发送邮件而不是使用经身份验证的中继。 请求将由 Microsoft 自行批准和批准。 只有在完成了其他反欺诈检查后，才可授予请求。 
 
-免除即用即付订阅并在 Azure 门户中停止并启动 Vm 后，将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅，并且仅适用于直接路由到 internet 的 VM 通信。
+在免除了某个订阅并在 Azure 门户中停止并启动了 Vm 后，将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅，并且仅适用于直接路由到 internet 的 VM 通信。
 
 ## <a name="restrictions-and-limitations"></a>限制和局限
 
@@ -68,4 +68,4 @@ ms.locfileid: "95806674"
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需帮助，请使用以下问题类型 [联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。“订阅管理”问题类型：**请求启用端口 25 电子邮件流**。
+如果仍需要帮助，请 [联系支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人员以快速解决你的问题，方法是使用以下问题类型：**技术**  >  **虚拟网络**  >  **连接**  >  **无法 (SMTP/端口 25) 发送电子邮件**。

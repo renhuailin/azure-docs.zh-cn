@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335800"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903014"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,11 +28,11 @@ ms.locfileid: "93335800"
 
 Azure Cosmos DB 支持两种索引模式：
 
-- **一致** ：创建、更新或删除项时，索引将以同步方式更新。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
-- **无** ：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
+- **一致**：创建、更新或删除项时，索引将以同步方式更新。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
+- **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
 
 > [!NOTE]
-> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果 **不一致或不完整** 。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 新容器不能选择延迟索引。 如果在[无服务器](serverless.md)模式下使用不支持延迟索引) 的 azure Cosmos 帐户，可以通过联系[azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求豁免 (。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果 **不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 新容器不能选择延迟索引。 如果在[无服务器](serverless.md)模式下使用不支持延迟索引) 的 azure Cosmos 帐户，可以通过联系[azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求豁免 (。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
 
@@ -105,9 +105,9 @@ Azure Cosmos DB 支持两种索引模式：
 
 下面是一个示例：
 
-**包含的路径** ：`/food/ingredients/nutrition/*`
+**包含的路径**：`/food/ingredients/nutrition/*`
 
-**排除的路径** ：`/food/ingredients/*`
+**排除的路径**：`/food/ingredients/*`
 
 在这种情况下，包含路径优先于排除路径，因为它更精确。 根据这些路径，位于或嵌套在 `food/ingredients` 路径中的任何数据都将从索引中排除。 异常是包含的路径 `/food/ingredients/nutrition/*` 中的数据，该路径将被索引。
 
@@ -201,6 +201,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 - 创建组合索引来优化包含多个筛选器的查询时，组合索引的 `ORDER` 不会对结果造成任何影响。 此属性是可选的。
 - 如果没有为包含针对多个属性的筛选器的查询定义组合索引，该查询仍会成功。 但是，使用组合索引可以减少查询的 RU 开销。
 - 具有两个聚合 (的查询（例如，计数或总和) 和筛选器）也受益于复合索引。
+- 筛选器表达式可以使用多个复合索引。
 
 考虑以下示例，其中针对属性 name、age 和 timestamp 定义了组合索引：
 
@@ -213,6 +214,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>包含筛选器和 ORDER BY 子句的查询
 
@@ -278,7 +280,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 添加新索引时，对读取可用性没有影响。 索引转换完成之后，查询将只利用新索引。 在索引转换过程中，查询引擎将继续使用现有的索引，因此，在索引转换过程中，你将观察到，读取性能类似于在启动索引更改之前观察到的情况。 添加新索引时，也不会有查询结果不完整或不一致的风险。
 
-在删除索引并立即运行对已删除索引进行筛选的查询时，无法保证查询结果一致或完整。 如果删除多个索引，并且在单个索引策略更改中执行此操作，则查询引擎将在整个索引转换中提供一致和完整的结果。 但是，如果通过多个索引策略更改来删除索引，则在所有索引转换完成之前，查询引擎将不提供一致或完整的结果。 大多数开发人员都不会在删除索引之后立即尝试运行利用这些索引的查询，所以，这种情况实际上不太可能发生。
+在删除索引并立即运行对已删除索引进行筛选的查询时，无法保证查询结果一致或完整。 如果删除多个索引，并且是在一次索引策略更改中执行此操作，则查询引擎会在整个索引转换中提供一致且完整的结果。 但是，如果通过多个索引策略更改来删除索引，则在所有索引转换完成之前，查询引擎将无法提供一致或完整的结果。 大多数开发人员都不会在删除索引之后立即尝试运行利用这些索引的查询，所以，这种情况实际上不太可能发生。
 
 > [!NOTE]
 > 如果可能，应始终尝试将多个索引更改组合成一次索引策略修改

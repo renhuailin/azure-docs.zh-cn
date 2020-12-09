@@ -1,19 +1,19 @@
 ---
-title: 本地化支持 | Microsoft Azure Maps
+title: Microsoft Azure 地图的本地化支持
 description: 查看哪些区域 Azure Maps 支持地图、搜索、路由、天气和流量事件等服务。 了解如何设置 View 参数。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037688"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904510"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
 
@@ -22,7 +22,7 @@ Azure Maps 支持多种语言和视图，具体取决于国家/地区。 本文�
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps 支持的语言
 
-Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供了每项服务支持的语言代码。  
+Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供了每项服务支持的语言代码。  
   
 
 | ID         | 名称                   |  地图 | 搜索 | 路由 | 天气 | 交通事故 | JS 地图控件 |
@@ -129,10 +129,10 @@ Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供�
  * 获取反向地址搜索
  * 获取交叉路口反向地址搜索
  * 发布在几何图形中的搜索
- * 发布地址搜索批量预览
- * 发布反向地址搜索批量预览
+ * Post 搜索地址批处理
+ * 后期搜索地址反向批处理
  * 发布沿路线搜索
- * 发布模糊搜索批量预览
+ * 帖子搜索模糊批处理
 
  
 ### <a name="sdks"></a>SDK

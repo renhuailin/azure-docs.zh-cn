@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836370"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861810"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
@@ -115,7 +115,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 有关详细信息，请参阅以下文章：
 
 * [AD FS prompt=login 参数支持](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > 如果 **SupportsMfa** 设置为 **True**，则表示你正在使用本地多重身份验证解决方案将第二因素质询注入到用户身份验证流。 将此域转换为托管身份验证后，此设置不再适用于 Azure AD 身份验证方案。 禁用联合后，会将关系加入本地联合身份验证，这包括本地 MFA 适配器。 

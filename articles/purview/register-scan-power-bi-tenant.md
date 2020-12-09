@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: af394b68a943f4c89358a719c155606c264b9dc4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551780"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904986"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -49,16 +49,12 @@ ms.locfileid: "96551780"
 
 ## <a name="associate-the-security-group-with-the-tenant"></a>将安全组与租户关联
 
-1. 登录到 [Power BI 管理门户](https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1)。 将此功能标志追加到 URI：  `allowServicePrincipalsUseReadAdminAPIsUI=1` 。 此标志启用允许你关联安全组的功能。 例如，
-
-    ```http
-    https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1
-    ```
+1. 登录到 [Power BI 管理门户](https://app.powerbi.com/admin-portal/tenantSettings)。
 
     > [!Important]
     > 你需要成为 Power BI 管理员才能看到 "租户设置" 页。
 
-1. 选择 "**开发人员设置**" "  >  **允许服务主体使用只读 Power BI api (预览版)**"。
+1. 选择 "**开发人员设置**" "  >  **允许服务主体使用只读 Power BI 管理 api (预览版)**"。
 1. 选择 " **特定安全组**"。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="显示如何允许服务主体获得只读 Power BI 管理 API 权限的图像":::

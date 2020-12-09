@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9638d4f8a44b044bb02d3f77d259860128d2e9db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462238"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905360"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -262,7 +262,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-如果是在本地使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 对于 Microsoft 对等互连，所用 NAT IP 地址要么由客户提供，要么由服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
+如果是在本地使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在此类情况下，可以使用“允许受信任的 Microsoft 服务...”设置来允许此类服务访问数据、日志或分析。
 
@@ -390,6 +390,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API 管理           | Microsoft.ApiManagement/service        | 使用策略允许 API 管理服务访问防火墙后的存储帐户。 [了解详细信息](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
 | Azure 认知搜索         | Microsoft.Search/searchServices        | 使认知搜索服务能够访问存储帐户，以进行索引编制、处理和查询。 |
+| Azure 认知服务       | CognitiveService             | 使认知服务能够访问存储帐户。 |
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | ACR 任务可以在生成容器映像时访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 允许通过 ADF 运行时访问存储帐户。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | 允许通过数据共享访问存储帐户。 |

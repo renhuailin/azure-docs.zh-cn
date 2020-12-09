@@ -3,24 +3,24 @@ title: 向 Azure Maps 提供数据反馈 |Microsoft Azure 映射
 description: 使用 Microsoft Azure 地图反馈工具提供数据反馈。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895505"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905326"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>向 Azure Maps 提供数据反馈
 
 自2018年5月起，Azure Maps 已可用。 Azure Maps 提供了新的映射数据、易于使用的 REST Api 和强大的 Sdk，以支持具有不同种类的业务用例的企业客户。 现实世界每秒都在发生变化，为我们的客户提供事实数字表示形式，这一点非常重要。 计划打开或关闭设施的客户需要我们的地图才能及时更新。 因此，他们可以在适当的设施有效地计划交付、维护或客户服务。 我们创建了 Azure Maps 数据反馈网站，以使我们的客户能够提供直接的数据反馈。 客户的数据反馈直接发送到我们的数据提供程序及其地图编辑器。 他们可以快速评估并将反馈纳入我们的地图产品。  
 
-[Azure Maps 数据反馈网站](https://feedback.azuremaps.com) 为我们的客户提供了一种简单的方法来提供地图数据反馈，尤其是在相关业务点和居民地址上。 本文将指导你了解如何使用 Azure Maps 反馈网站提供不同类型的反馈。
+[Azure Maps 数据 (预览版) 反馈网站](https://feedback.azuremaps.com) 为我们的客户提供了一种简单的方法来提供地图数据反馈，尤其是在相关业务点和居民地址上。 本文将指导你了解如何使用 Azure Maps 反馈网站提供不同类型的反馈。
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>添加办公地点或住宅地址 
 

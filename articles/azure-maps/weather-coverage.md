@@ -1,22 +1,27 @@
 ---
-title: Microsoft Azure 地图中的天气覆盖面
-description: 了解 Microsoft Azure 地图中的天气覆盖面。
+title: Microsoft Azure 将天气服务 (预览版地图) 覆盖率
+description: 了解 Microsoft Azure Map 天气服务 (预览版) 范围
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/17/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896610"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905479"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure Maps 天气范围
+# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps 天气服务 (预览版) 范围
+
+> [!IMPORTANT]
+> Azure Maps 天气服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本文提供 Azure Maps [天气服务](/rest/api/maps/weather)的覆盖范围信息。 Azure Maps 天气数据服务将返回详细信息，如雷达图、当前天气情况、天气预测和沿着路线的天气。
 

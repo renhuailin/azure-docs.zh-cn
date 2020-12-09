@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651271"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861671"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理应用的用户分配
 
@@ -81,11 +81,11 @@ ms.locfileid: "94651271"
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-有关如何将用户分配到应用程序角色的详细信息，请参阅 [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) 的文档。
+有关如何将用户分配到应用程序角色的详细信息，请参阅 [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment) 的文档。
 
 若要将组分配到企业应用，必须将 `Get-AzureADUser` 替换为 `Get-AzureADGroup`，并将 `New-AzureADUserAppRoleAssignment` 替换为 `New-AzureADGroupAppRoleAssignment`。
 
-有关如何将组分配到应用程序角色的详细信息，请参阅 [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0) 的文档。
+有关如何将组分配到应用程序角色的详细信息，请参阅 [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment) 的文档。
 
 ### <a name="example"></a>示例
 

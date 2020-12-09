@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 中的天气服务概念
-description: 了解适用于 Microsoft Azure 映射天气服务的概念。
+title: 天气服务 (Microsoft Azure 地图中预览) 概念
+description: 了解适用于 Microsoft Azure 将天气服务 (预览版) 地图的概念。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,20 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896721"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904731"
 ---
-# <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
+# <a name="weather-services-preview-in-azure-maps"></a>Azure Maps 的天气服务 (预览) 
 
-本文介绍适用于 [Azure Maps 天气服务](/rest/api/maps/weather)的概念。 建议在开始使用天气 Api 之前完成本文。
+> [!IMPORTANT]
+> Azure Maps 天气服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文介绍适用于 Azure Maps [天气服务](/rest/api/maps/weather)的概念。 建议在开始使用天气 Api 之前完成本文。
 
 ## <a name="unit-types"></a>单位类型
 
-某些天气服务 Api 允许用户指定是以公制单位还是以英制单位返回数据。 这些 Api 返回的响应包括 Unittype.pixel 度量和可用于单位转换的数值。 请参阅下表以解释这些值。
+某些天气服务 (预览版) Api 允许用户指定是以公制单位还是以英制单位返回数据。 这些 Api 返回的响应包括 Unittype.pixel 度量和可用于单位转换的数值。 请参阅下表以解释这些值。
 
 |Unittype.pixel 度量|说明         |
 |--------|--------------------|
@@ -52,7 +56,7 @@ ms.locfileid: "92896721"
 
 ## <a name="weather-icons"></a>天气图标
 
-某些天气服务 Api `iconCode` 在响应中返回。 `iconCode`是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
+某些天气服务 (预览版) Api `iconCode` 在响应中返回。 `iconCode`是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
 
 | 图标编号 |图标| 天 | 高枕无忧 | 文本 |
 |-------------|:----:|-----|-------|------|
@@ -515,7 +519,7 @@ Via [获取地图磁贴 V2 API](/rest/api/maps/renderv2/getmaptilepreview) 用�
   户外活动           |29| [不良-优秀1](#poor-excellent-1)
   户外 Barbecue           |24| [不良-优秀1](#poor-excellent-1)
   户外音乐会            |8| [不良-优秀1](#poor-excellent-1)
-  运行                    |1|  [不良-优秀1](#poor-excellent-1)
+  正在运行                    |1|  [不良-优秀1](#poor-excellent-1)
   搭档                     |6| [不良-优秀1](#poor-excellent-1)
   Thirst                     |41| [低-至尊2](#low-extreme-2)
   航海                    |11| [不良-优秀1](#poor-excellent-1)
@@ -531,11 +535,11 @@ Via [获取地图磁贴 V2 API](/rest/api/maps/renderv2/getmaptilepreview) 用�
 
   ID   | 组名 | 此组中的索引 |
   -------- | ------------------|------
-  1       |All | All
+  1       |全部 | 全部
   2       |Aches 和难题 | Arthritis 难点 (21)  </br> Migraine 难题 (27)  </br> Sinus 的麻烦 (30) 
   3       |Respiratory | Asthma (23)  </br> 常见冷 (25)  </br> 流感预测 (26) 
   4       |园 | 现场就绪 (32)  </br> 草地 Mowing (28)  </br> 土潮湿 (34) </br>
-  5       |保护 | 合成 (38)  </br> 家庭能源效率 (36)  </br> 37 (燃料经济) 
+  5       |环境 | 合成 (38)  </br> 家庭能源效率 (36)  </br> 37 (燃料经济) 
   6       |户外生活 | 户外 Barbecue (24)  </br> Mosquito 活动 (17) 
   7       |海滩和海军 | 海滩 & 池 (10)  </br> 钓鱼 (13)  </br> 航海 (11) 
   8       |Sportsman | 钓鱼 (13)  </br> 搜寻 (20)  </br> 户外活动 (29) </br>

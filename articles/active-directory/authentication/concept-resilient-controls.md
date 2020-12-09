@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994275"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861283"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -266,7 +266,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
 5. 继续会审发生可疑活动中断后 [报告的所有风险检测](../reports-monitoring/concept-sign-ins.md) 。
-6. 撤销[使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
+6. 撤销[使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
 
@@ -287,7 +287,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [Azure AD 身份验证文档](./howto-mfaserver-iis.md)
 * [在 Azure AD 中管理紧急访问管理账户](../roles/security-emergency-access.md)
 * [在 Azure Active Directory 中配置命名位置](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [如何配置联接到混合 Azure Active Directory 的设备](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business 部署指南](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

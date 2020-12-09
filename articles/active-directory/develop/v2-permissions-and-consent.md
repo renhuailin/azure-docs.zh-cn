@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b8b7b16a354fba482fcefe8f306f949f9a952ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974147"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902640"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -304,7 +304,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 ### <a name="client-credentials-grant-flow-and-default"></a>客户端凭据授权流和“/.default”
 
-`./default` 的另一种用法是在非交互式应用程序（例如，使用[客户端凭据](v2-oauth2-client-creds-grant-flow.md)授权流来调用 Web API 的守护程序应用）中请求应用程序权限（或角色）时使用。
+`/.default` 的另一种用法是在非交互式应用程序（例如，使用[客户端凭据](v2-oauth2-client-creds-grant-flow.md)授权流来调用 Web API 的守护程序应用）中请求应用程序权限（或角色）时使用。
 
 若要为 Web API 创建应用程序权限（角色），请参阅[如何：在应用程序中添加应用角色](howto-add-app-roles-in-azure-ad-apps.md)。
 

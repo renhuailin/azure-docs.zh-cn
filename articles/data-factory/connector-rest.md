@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂从 REST 源复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到支持的接收器数据存储。
+title: 使用 Azure 数据工厂从/向 REST 终结点复制数据
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到支持的接收器数据存储，或者从支持的源数据存储复制到 REST 接收器。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,36 +9,36 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360763"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902249"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
+# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 REST 终结点复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从 REST 终结点复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 REST 终结点。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
-- **REST 连接器**专门支持从 RESTful API 复制数据； 
+- **REST 连接器** 专门支持从 RESTful API 复制数据； 
 - “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
-- **Web 表连接器**用于从 HTML 网页中提取表内容。
+- **Web 表连接器** 用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可将数据从 REST 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+可将数据从 REST 源复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 REST 接收器。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 具体而言，此泛型 REST 连接器支持：
 
-- 使用 **GET** 或 **POST** 方法从 REST 终结点检索数据。
-- 使用以下身份验证方法之一检索数据：“匿名”、“基本”、“AAD 服务主体”和“Azure 资源的托管标识”。    
+- 使用 **GET** 或 **POST** 方法从 rest 终结点复制数据并使用 **POST**、 **PUT** 或 **PATCH** 方法将数据复制到 rest 终结点。
+- 使用以下一种身份验证复制数据： **匿名**、 **基本**、 **AAD 服务主体** 和 **Azure 资源的托管标识**。
 - REST API 中的 **[分页](#pagination-support)** 。
-- [按原样](#export-json-response-as-is)复制 REST JSON 响应，或使用[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
+- 对于 REST 为源，按原样复制 REST JSON [响应或](#export-json-response-as-is) 使用 [架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
 
 > [!TIP]
 > 若要在数据工厂中配置 REST 连接器之前测试数据检索请求，请了解标头和正文的 API 规范要求。 可以使用 Postman 或 Web 浏览器等工具进行验证。
@@ -57,7 +57,7 @@ ms.locfileid: "91360763"
 
 REST 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
@@ -69,7 +69,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -102,13 +102,13 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
-| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
-| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
 
 **示例**
 
@@ -177,7 +177,7 @@ REST 链接服务支持以下属性：
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
 
-如果在数据集中设置了 `requestMethod`、`additionalHeaders`、`requestBody` 和 `paginationRules`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
+如果在 `requestMethod` 数据集中设置、和，则 `additionalHeaders` `requestBody` `paginationRules` 仍支持原样，但建议在活动中使用新模型。
 
 **示例：**
 
@@ -200,18 +200,18 @@ REST 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-本部分提供 REST 源支持的属性列表。
+本部分提供 REST 源和接收器支持的属性列表。
 
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
 
 ### <a name="rest-as-source"></a>REST 作为源
 
-复制活动**source**部分支持以下属性：
+复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 **GET** (默认) 和 **POST**。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
@@ -293,6 +293,59 @@ REST 链接服务支持以下属性：
 ]
 ```
 
+### <a name="rest-as-sink"></a>REST 用作接收器
+
+复制活动接收器部分中支持以下属性：
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| type | 复制活动接收器的 **type** 属性必须设置为 **RestSink**。 | 是 |
+| requestMethod | HTTP 方法。 允许的值为 **POST** (默认值) 、 **PUT** 和 **PATCH**。 | 否 |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应的超时值，而不是写入数据的超时值。 默认值为 00:01:40  。  | 否 |
+| requestInterval | Milisecond 中不同请求之间的间隔时间。 请求间隔值应为 [10，60000] 之间的数字。 |  否 |
+| httpCompressionType | 使用最佳压缩级别发送数据时要使用的 HTTP 压缩类型。 允许的值为 **none** 和 **gzip**。 | 否 |
+| writeBatchSize | 每批向 REST 接收器写入的记录数。 默认值为 10000。 | 否 |
+
+>[!NOTE]
+>REST 连接器 as sink 适用于接受 JSON 的 REST 终结点。 数据只会在 JSON 中发送。
+
+**示例：**
+
+```json
+"activities":[
+    {
+        "name": "CopyToREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<REST output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "RestSink",
+                "requestMethod": "POST",
+                "httpRequestTimeout": "00:01:40",
+                "requestInterval": 10,
+                "writeBatchSize": 10000,
+                "httpCompressionType": "none",
+            },
+        }
+    }
+]
+```
+
 ## <a name="pagination-support"></a>分页支持
 
 通常，REST API 将单个请求的响应有效负载大小限制在合理的数字以下；返回大量的数据时，它会将结果拆分到多个页面，并要求调用方发送连续的请求来获取下一页结果。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
@@ -308,15 +361,15 @@ REST 链接服务支持以下属性：
 
 “分页规则”定义为包含一个或多个区分大小写的键值对的数据集中的字典。 该配置将用于从第二页开始生成请求。 当连接器收到 HTTP 状态代码 204（无内容），或者“paginationRules”中的任意 JSONPath 表达式返回 null 时，连接器将停止迭代。
 
-分页规则中**支持的键**：
+分页规则中 **支持的键**：
 
 | 键 | 说明 |
 |:--- |:--- |
-| AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是**绝对 URL 或相对 URL**。 |
+| AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是 **绝对 URL 或相对 URL**。 |
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 |
 | Headers.*request_header* 或 Headers['request_header'] | “request_header”由用户定义，引用下一个 HTTP 请求中的一个标头名称。 |
 
-分页规则中**支持的值**：
+分页规则中 **支持的值**：
 
 | Value | 说明 |
 |:--- |:--- |
@@ -325,7 +378,7 @@ REST 链接服务支持以下属性：
 
 **示例：**
 
-Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 ***paging.next*** 中表示：
+Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 *_paging.next_* 中表示：
 
 ```json
 {
@@ -380,7 +433,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- “Web”活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动  。
+- Web 活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动。
 - “复制”活动将数据从 REST 复制到 Azure Data Lake Storage  。
 
 该模板定义两个参数：
@@ -404,7 +457,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 3. 选择“使用此模板”  。
     ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 你会看到创建的管道，如以下示例中所示：  ![ 屏幕截图显示了从模板创建的管道。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 此时会看到创建的管道，如以下示例所示：![屏幕截图显示通过模板创建的管道。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以便从要从其中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
 
@@ -426,7 +479,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 
    ![复制源身份验证](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. 选择“调试”，输入**参数**，然后选择“完成”。  
+7. 选择“调试”，输入 **参数**，然后选择“完成”。  
    ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
 8. 管道运行成功完成后，会看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 

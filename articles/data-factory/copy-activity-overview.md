@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592050"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902148"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -199,7 +199,7 @@ ms.locfileid: "94592050"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>-  **`$$COLUMN:<source_column_name>`** - 保留变量模式指示将指定的源列复制为另一个列<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -254,7 +254,7 @@ ms.locfileid: "94592050"
 
 - [Azure SQL 数据库](connector-azure-sql-database.md)
 - [Azure SQL 数据库托管实例](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics（以前称为 SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![创建接收器表](media/copy-activity-overview/create-sink-table.png)
@@ -265,10 +265,10 @@ ms.locfileid: "94592050"
 
 ## <a name="data-consistency-verification"></a>数据一致性验证
 
-当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关详细信息，请参阅 [复制活动中的数据一致性验证](copy-activity-data-consistency.md) 。
+当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关详细信息，请参阅[复制活动中的数据一致性验证](copy-activity-data-consistency.md)。
 
 ## <a name="session-log"></a>会话日志
-你可以记录复制的文件名，这有助于进一步确保数据不仅能从源复制到目标存储，还可以在源和目标存储之间保持一致，方法是查看复制活动会话日志。 有关详细信息，请参阅 [复制活动中的会话日志](copy-activity-log.md) 。
+你可以记录复制的文件名，这样就可以通过检查复制活动会话日志来进一步确保数据不仅成功地从源存储复制到目标存储，而且在源存储和目标存储之间一致。 有关详细信息，请参阅[复制活动中的会话日志](copy-activity-log.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：
