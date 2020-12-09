@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2a02ae7bd89e99dc2eee013394a1f85139c1c00
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742770"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861232"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用 "登录" 报告查看 Azure AD 多重身份验证事件
 
@@ -91,7 +91,7 @@ ms.locfileid: "96742770"
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>针对已注册 MFA 用户的 PowerShell 报告
 
-首先，请确保已安装 [MSOnline V1 PowerShell 模块](/powershell/azure/active-directory/overview?view=azureadps-1.0)。
+首先，请确保已安装 [MSOnline V1 PowerShell 模块](/powershell/azure/active-directory/overview)。
 
 使用后面的 PowerShell 标识已注册 MFA 的用户。 这一组命令会排除已禁用的用户，因为这些帐户无法针对 Azure AD 进行身份验证：
 

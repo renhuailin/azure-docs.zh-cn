@@ -1,22 +1,26 @@
 ---
-title: 使用 Azure Maps 天气服务请求实时和预测天气数据
-description: 了解如何使用 Microsoft Azure 映射天气服务，请求实时 (当前) 和预测 (分钟、每小时、每日) 天气数据
+title: '使用 Azure Maps 天气服务 (预览版来请求实时和预测天气数据) '
+description: '了解如何使用 Microsoft Azure 地图天气服务 (预览版，请求实时 (当前) 和预测 (分钟、每小时、每日) 天气数据) '
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186331"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906006"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>使用 Azure Maps 天气服务请求实时和预测天气数据
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>使用 Azure Maps 天气服务 (预览版来请求实时和预测天气数据)  
+
+> [!IMPORTANT]
+> Azure Maps 天气服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开发人员能够将高度动态的历史、实时和预测天气数据和可视化效果集成到其解决方案中。 在本文中，我们将向您展示如何请求实时和预测天气数据。
 
@@ -28,7 +32,7 @@ Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开
 * 使用 [获取每小时预测 API](/rest/api/maps/weather/gethourlyforecastpreview)请求每小时预测。
 * 使用 [获取分钟预测 API](/rest/api/maps/weather/getminuteforecastpreview)请求每分钟预测的预测。
 
-此视频概述了 Azure Maps 中的天气服务与 REST 调用示例。
+此视频提供了 Azure Maps 天气服务进行 REST 调用的示例。
 
 <br/>
 
@@ -751,8 +755,7 @@ Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Maps 天气服务概念](./weather-services-concepts.md)
+> [Azure Maps 天气服务 (预览版) 概念](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps 天气服务 REST API](/rest/api/maps/weather
-)
+> [Azure Maps 天气服务 (预览版) REST API](/rest/api/maps/weather)

@@ -1,39 +1,39 @@
 ---
 title: ARM 模板常见问题解答
-description: 有关 Azure 资源管理器模板的常见问题解答 (FAQ)。
+description: 常见问题 (常见问题) 有关 Azure 资源管理器模板 (ARM 模板) 。
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184002"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902997"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
-本文解答有关 Azure 资源管理器 (ARM) 模板的常见问题。
+本文解答了有关 Azure 资源管理器模板 (ARM 模板) 的常见问题。
 
 ## <a name="getting-started"></a>入门
 
 * **什么是 ARM 模板，为什么要使用它们？**
 
   ARM 模板是 JSON 文件，可在其中定义要部署到 Azure 的内容。 模板可帮助你实现 Azure 的基础结构即代码解决方案。 组织可以重复并可靠地将所需基础结构部署到不同的环境。
-  
+
   若要详细了解 ARM 模板如何帮助管理 Azure 基础结构，请参阅[什么是 ARM 模板？](overview.md)
 
 * **如何开始使用模板？**
 
-  若要简化 ARM 模板的创作，需要合适的工具。 我们建议安装 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。 有关这些工具的简要介绍，请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+  若要简化 ARM 模板的创作，需要合适的工具。 我们建议安装 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。 有关这些工具的快速介绍，请参阅 [快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
   准备好学习如何创建 ARM 模板时，请开始学习[有关 ARM 模板的初学者教程系列](template-tutorial-create-first-template.md)。 这些教程指导你逐步完成构造 ARM 模板的过程。 你将了解模板的不同部分以及它们的协作方式。 此内容也作为 [Microsoft Learn 模块](/learn/modules/authoring-arm-templates/)提供。
 
 * **我应使用 ARM 模板还是 Terraform 部署到 Azure？**
 
   可使用你最喜欢的选项。 这两项服务都可帮助你自动部署到 Azure。
-  
+
   我们认为，使用 ARM 模板比使用其他基础结构即代码服务更加有益。 若要了解这些优势，请参阅[为什么选择 ARM 模板？](overview.md#why-choose-arm-templates)
 
 ## <a name="build-2020"></a>Build 2020
@@ -59,7 +59,7 @@ ms.locfileid: "96184002"
 * **我已通过门户设置我的环境。是否有某种方法可从现有资源组获取模板？**
 
   是的，你可以从资源组[导出模板](export-template-portal.md)。 导出的模板是了解模板的良好起点，但你可能想要在将其用于生产环境之前对其进行修订。
-  
+
   导出模板时，可以选择要包含在模板中的资源。
 
 * **是否可以在 ARM 模板中创建资源组并向其部署资源？**
@@ -182,11 +182,11 @@ ms.locfileid: "96184002"
 
 * **是否可以将 ARM 模板集成到 Azure Pipelines 中？**
 
-  是的。 有关使用模板和管道的说明，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](deployment-tutorial-pipeline.md)和[将 ARM 模板与 Azure Pipelines 集成](add-template-to-azure-pipelines.md)。
+  是的。 有关如何使用模板和管道的说明，请参阅 [教程：使用 Azure Pipelines 持续集成 arm 模板](deployment-tutorial-pipeline.md) 并将 [arm 模板与 Azure Pipelines 集成](add-template-to-azure-pipelines.md)。
 
 * **是否可以使用 GitHub 操作来部署模板？**
 
-  可以，请参阅[使用 GitHub Actions 部署 Azure 资源管理器模板](deploy-github-actions.md)。
+  是，请参阅 [使用 GitHub 操作部署 ARM 模板](deploy-github-actions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

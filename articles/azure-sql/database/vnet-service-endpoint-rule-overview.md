@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450239"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905870"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -95,7 +95,7 @@ Azure RBAC 备用：
 ### <a name="expressroute"></a>ExpressRoute
 
 如果是在本地使用 [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
-  
+
 若要允许从线路到 Azure SQL 数据库的通信，则必须为 NAT 的公共 IP 地址创建 IP 网络规则。
 
 <!--
@@ -122,7 +122,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
 
 #### <a name="steps"></a>步骤
 
-1. 在 PowerShell 中，将托管 Azure Synapse 的服务器注册到 Azure Active Directory (AAD)：
+1. 如果有独立的专用 SQL 池，请使用 PowerShell 将 SQL server 注册到 Azure Active Directory (AAD) ： 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   在 Synapse 工作区中，专用 SQL 池不需要执行此步骤。
+
+1. 如果有 Synapse 工作区，请注册工作区的系统管理的标识：
+
+   1. 在 Azure 门户中中转到你的 Synapse 工作区
+   2. 中转到 "托管标识" 边栏选项卡 
+   3. 请确保已启用 "允许管道" 选项
+   
 1. 按照此 [指南](../../storage/common/storage-account-create.md)创建 **常规用途 v2 存储帐户**。
 
    > [!NOTE]
@@ -137,7 +145,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此 [指南](../../storage/common/storage-account-upgrade.md)将该帐户 **升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](../../storage/blobs/data-lake-storage-known-issues.md)。
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将“存储 Blob 数据参与者”Azure 角色分配给托管 Azure Synapse Analytics 的服务器，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配到托管专用 SQL 池的服务器或工作区，该工作区已注册到 AZURE ACTIVE DIRECTORY (AAD) 。
 
    > [!NOTE]
    > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md)。

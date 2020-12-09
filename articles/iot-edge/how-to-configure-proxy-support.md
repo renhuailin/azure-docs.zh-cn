@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045952"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862388"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -25,7 +25,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 1. [**在设备上安装 IoT Edge 运行时**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还提供脱机安装选项。
+   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还会提供脱机安装选项。
 
    此步骤是首次设置 IoT Edge 设备时对其进行配置的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
 
@@ -65,7 +65,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 ### <a name="linux-devices"></a>Linux 设备
 
-若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置程序包管理器后，请按照照常 [安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md) 中的说明进行操作。
+若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的说明照常进行操作。
 
 ### <a name="windows-devices"></a>Windows 设备
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-有关代理参数的详细信息，请参阅 [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装参数的详细信息，请参阅 [适用于 windows 上的 IoT Edge 的 PowerShell 脚本](reference-windows-scripts.md)。
+有关代理参数的详细信息，请参阅 [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装参数的详细信息，请参阅 [Windows 上 IoT Edge 的 PowerShell 脚本](reference-windows-scripts.md)。
 
 ## <a name="configure-the-daemons"></a>配置守护程序
 
@@ -270,6 +270,12 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>使用流量检查代理
+
+如果你尝试使用的代理对受 TLS 保护的连接执行流量检查，请务必注意，使用 x.509 证书进行的身份验证不起作用。 IoT Edge 建立使用提供的证书和密钥以端为端加密的 TLS 通道。 如果该通道对于流量检查断开，则代理无法使用正确的凭据重新建立通道，并且 IoT 中心和 IoT 中心设备预配服务将返回 `Unauthorized` 错误。
+
+若要使用执行流量检查的代理，必须使用共享访问签名身份验证，或者将 IoT 中心和 IoT 中心设备预配服务添加到允许列表，以避免检查。
 
 ## <a name="next-steps"></a>后续步骤
 

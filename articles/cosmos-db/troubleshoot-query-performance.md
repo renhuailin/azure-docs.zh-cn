@@ -8,24 +8,24 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411348"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905105"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文逐步说明排查 Azure Cosmos DB 中的查询问题的一般建议方法。 虽然不应将本文中所述的步骤视为针对潜在查询问题的完全防御方法，但我们在其中包含了最常见的性能提示。 应将本文用作起点，以排查 Azure Cosmos DB 核心 (SQL) API 中查询速度缓慢或费用较高的问题。 还可以使用[诊断日志](cosmosdb-monitor-resource-logs.md)来识别速度缓慢或消耗大量吞吐量的查询。 如果使用的是 MongoDB Azure Cosmos DB API，应使用 [Azure Cosmos DB 的 api 进行 mongodb 查询疑难解答指南](mongodb-troubleshoot-query.md)
+本文逐步说明排查 Azure Cosmos DB 中的查询问题的一般建议方法。 虽然不应将本文中所述的步骤视为针对潜在查询问题的完全防御方法，但我们在其中包含了最常见的性能提示。 应将本文用作起点，以排查 Azure Cosmos DB 核心 (SQL) API 中查询速度缓慢或费用较高的问题。 还可以使用[诊断日志](cosmosdb-monitor-resource-logs.md)来识别速度缓慢或消耗大量吞吐量的查询。 如果使用的是 Azure Cosmos DB API for MongoDB，则应使用 [Azure Cosmos DB API for MongoDB 查询故障排除指南](mongodb-troubleshoot-query.md)
 
-Azure Cosmos DB 中的查询优化广泛分类，如下所示：
+Azure Cosmos DB 中的查询优化大致分为以下类别：
 
 - 可降低查询请求单位 (RU) 费用的优化
 - 仅降低延迟的优化
 
-如果减少查询的 RU 费用，通常还会降低延迟。
+如果降低查询的 RU 费用，通常还会降低延迟。
 
 本文提供可使用 [nutrition 数据集](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)重新创建的示例。
 
@@ -192,13 +192,11 @@ RU 费用：409.51 RU
 
 RU 费用：2.98 RU
 
-你可以随时将属性添加到索引策略，而不会影响写入或读取可用性。 你可以[跟踪索引转换进度](./how-to-manage-indexing-policy.md#dotnet-sdk)。
+可以随时将属性添加到索引策略，而不会影响写入或读取可用性。 你可以[跟踪索引转换进度](./how-to-manage-indexing-policy.md#dotnet-sdk)。
 
 ### <a name="understand-which-system-functions-use-the-index"></a>了解哪些系统函数使用索引
 
-如果表达式可以被转换为一系列字符串值，则该表达式可以使用索引， 否则不可使用索引。
-
-下面是一些可使用索引的常用字符串函数的列表：
+大多数系统函数使用索引。 下面列出了使用索引的一些常用字符串函数：
 
 - STARTSWITH(str_expr1, str_expr2, bool_expr)  
 - CONTAINS(str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ RU 费用：2.98 RU
 
 ------
 
-即使系统函数不使用索引，查询的其他部分也仍可以使用索引。
+如果系统函数使用索引，并且仍有较高的 RU 费用，则可以尝试将添加 `ORDER BY` 到查询中。 在某些情况下，添加 `ORDER BY` 可以提高系统的函数索引使用率，特别是当查询长时间运行或跨多页时。
+
+例如，请考虑下面的查询 `CONTAINS` 。 `CONTAINS` 应使用索引，但我们假设在添加相关索引后，运行以下查询时，你仍会看到非常高的 RU 费用：
+
+原始查询：
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+已更新查询，其中包含 `ORDER BY` ：
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>了解哪些聚合查询使用索引
 
@@ -470,7 +487,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="optimizations-that-reduce-query-latency"></a>可降低查询延迟的优化
 
-在许多情况下，当查询延迟仍然过高时，RU 费用是可接受的。 以下部分概述了降低查询延迟的提示。 如果在同一数据集上多次运行相同的查询，则每次都将具有相同的 RU 费用。 但是，每次执行查询时，查询延迟可能各不相同。
+在许多情况下，当查询延迟仍然过高时，RU 费用是可接受的。 以下部分概述了降低查询延迟的提示。 如果对同一个数据集多次运行同一个查询，该查询通常每次都会产生相同的 RU 开销。 但是，每次执行查询时，查询延迟可能各不相同。
 
 ### <a name="improve-proximity"></a>提高邻近度
 

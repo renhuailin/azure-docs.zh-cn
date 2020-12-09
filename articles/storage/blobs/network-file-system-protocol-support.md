@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4146f11804dd11f7dd0f5536bc040cb30e25b03
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908806"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902725"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) 
 
 Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，Windows 或 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中的 Azure 虚拟机装载容器。 
 
 > [!NOTE]
-> Azure Blob 存储中的 NFS 3.0 协议支持是公共预览版，在以下区域提供：美国东部、美国中部、美国西部中部、澳大利亚东南部、北欧、英国西部、韩国中部、韩国南部和加拿大中部。
+> Azure Blob 存储中的 NFS 3.0 协议支持提供公共预览版。 它支持在以下区域中具有标准层性能的 GPV2 存储帐户：澳大利亚东部、韩国中部和美国中南部。 预览版还支持在所有公共区域中具有高级性能层的块 blob。
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>常规工作流：装载存储帐户容器
 
@@ -46,7 +46,7 @@ Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，
 > [!IMPORTANT]
 > 务必按顺序完成这些任务。 你无法在你的帐户上启用 NFS 3.0 协议之前装入你创建的容器。 此外，在你的帐户上启用了 NFS 3.0 协议后，你将无法禁用它。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory (AD) 安全性和访问控制列表 () Acl）在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
 

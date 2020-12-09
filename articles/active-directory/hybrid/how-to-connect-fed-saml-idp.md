@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295030"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861793"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -250,7 +250,7 @@ SAML 2.0 标识提供者需遵循有关 Azure AD 信赖方的信息要求。 Azu
 
 可以使用 Azure AD Connect 从本地 Active Directory 预配 Azure AD 目录中域的主体。 如需更多详细信息，请参阅[将本地目录与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
 
-也可使用 Windows PowerShell 自动将新用户添加到 Azure AD 并同步本地目录中的更改。 若要使用 Windows PowerShell cmdlet，必须下载 [Azure Active Directory 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
+也可使用 Windows PowerShell 自动将新用户添加到 Azure AD 并同步本地目录中的更改。 若要使用 Windows PowerShell cmdlet，必须下载 [Azure Active Directory 模块](/powershell/azure/active-directory/install-adv2)。
 
 此过程演示如何向 Azure AD 添加单个用户。
 
@@ -306,7 +306,7 @@ Microsoft 提供了一种工具，用于测试基于 SAML 2.0 的标识提供者
 2.  单击“立即安装”开始下载并安装工具。
 3.  选择“我不能通过 Office 365、Azure 或其他使用 Azure Active Directory 的服务设置联合身份验证”。
 4.  下载并运行该工具后，即可看到“连接性诊断”窗口。 该工具将逐步引导你测试联合身份验证连接。
-5.  连接分析器将打开你的 SAML 2.0 IDP 以供你登录，输入你要测试的用户主体的凭据： ![ 屏幕截图，显示 SAML 2.0 IDP 的登录窗口。](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Connectivity Analyzer 将开启 SAML 2.0 IDP 用以登录，请输入进行测试的用户主体凭据：![显示 SAML 2.0 IDP 登录窗口的屏幕截图。](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  在联合测试登录窗口，应为配置为与 SAML 2.0 标识提供者联合的 Azure AD 租户输入帐户名和密码。 该工具会尝试使用这些凭据登录，并会提供在登录尝试期间执行的测试的详细结果作为输出。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. 此窗口显示失败的测试结果。 单击“查看详细结果”会显示所执行的每次测试的结果的相关信息。 也可将结果保存到磁盘，以便进行共享。

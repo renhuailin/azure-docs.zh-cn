@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743133"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861300"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>规划 Azure AD 多重身份验证部署
 
@@ -165,7 +165,7 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 2. 使用条件访问，对此组强制执行多重身份验证以访问所有资源。
 3. 定期重新评估组成员身份，并从组中删除已注册的用户。
 
-可以通过依赖 [MSOnline powershell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)的 powershell 命令标识注册和非注册 Azure AD MFA 用户。
+可以通过依赖 [MSOnline powershell 模块](/powershell/azure/active-directory/install-msonlinev1)的 powershell 命令标识注册和非注册 Azure AD MFA 用户。
 
 #### <a name="identify-registered-users"></a>标识已注册用户
 

@@ -3,22 +3,26 @@ title: Azure Maps 长时间运行的操作 API
 description: 了解 Azure Maps 中长时间运行的异步后台处理
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895862"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906193"
 ---
-# <a name="creator-long-running-operation-api"></a>创建者长时间运行的操作 API
+# <a name="creator-preview-long-running-operation-api"></a>Long-Running 操作 API) Creator (预览
 
-Azure Maps 中的某些 API 使用[异步请求-答复模式](/azure/architecture/patterns/async-request-reply)。 此模式允许 Azure Maps 提供高度可用且响应迅速的服务。 本文介绍了 Azure Map 长时间运行的异步后台处理的特定实现。
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Maps 中的某些 Api 使用 [异步 Request-Reply 模式](/azure/architecture/patterns/async-request-reply)。 此模式允许 Azure Maps 提供高度可用且响应迅速的服务。 本文介绍了 Azure Map 长时间运行的异步后台处理的特定实现。
 
 ## <a name="submitting-a-request"></a>提交请求
 

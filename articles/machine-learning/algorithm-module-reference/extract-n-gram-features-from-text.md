@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420795"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861439"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>“从文本中提取 N 元语法特征”模块参考
 
@@ -28,7 +28,7 @@ ms.locfileid: "93420795"
 
 * [使用一组现有文本特征](#use-an-existing-n-gram-dictionary)抽取自由文本列的特征。
 
-* [对使用 N 元语法的模型进行评分或发布](#score-or-publish-a-model-that-uses-n-grams)。
+* [评分或部署](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint) 使用 n 元语法的模型。
 
 ### <a name="create-a-new-n-gram-dictionary"></a>创建新的 N 元语法字典
 
@@ -44,15 +44,15 @@ ms.locfileid: "93420795"
 
 1. 加权函数指定如何构建文档特征向量以及如何从文档中提取词汇。
 
-    * **二进制权重** ：将二进制状态值分配给提取的 N 元语法。 如果文档中存在 N 元语法，则其值为 1；否则为 0。
+    * **二进制权重**：将二进制状态值分配给提取的 N 元语法。 如果文档中存在 N 元语法，则其值为 1；否则为 0。
 
-    * **TF 权重** ：将词频 (TF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是其在文档中的出现频率。
+    * **TF 权重**：将词频 (TF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是其在文档中的出现频率。
 
-    * **IDF 权重** ：将反转文件频率 (IDF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是语料库大小的对数除以其在整个语料库中的出现频率。
+    * **IDF 权重**：将反转文件频率 (IDF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是语料库大小的对数除以其在整个语料库中的出现频率。
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF 权重** ：将词频/反转文件频率 (TF/IDF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是其 TF 分数乘以其 IDF 分数。
+    *  **TF-IDF 权重**：将词频/反转文件频率 (TF/IDF) 分数分配给提取的 N 元语法。 每个 N 元语法的值是其 TF 分数乘以其 IDF 分数。
 
 1. 将“最小字长”设置为可以在 N 元语法的任意单字中使用的最小字符数。
 
@@ -94,36 +94,42 @@ ms.locfileid: "93420795"
 
 1.  提交管道。
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>对使用 N 元语法的模型进行评分或发布
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>使用 n 元语法部署实时终结点的生成推理管道
 
-1.  将“从文本中提取 N 元语法特征”模块从训练数据流中复制到评分数据流。
+一个训练管道，其中包含从文本和 **评分模型** 中 **提取 N 元语法功能** 以对测试数据集进行预测，采用以下结构：
 
-1.  将来自训练数据流的“结果词汇”输出连接到评分数据流上的“输入词汇” 。
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="提取 N 语法定型管道示例" border="true":::
 
-1.  在评分工作流中，修改“从文本中提取 N 元语法特征”模块，并将“词汇模式”参数设置为“只读” 。 将所有其他内容保留原样。
+带圆圈的 "**从文本中提取 N 元语法" 功能** 的 **词汇模式** 是 "**创建**"，连接到 **评分模型** 模块的模块的 **词汇模式** 为 **ReadOnly**。
 
-1.  若要发布管道，请将“结果词汇”另存为数据集。
+成功提交上述定型管道后，可以将带圆圈的模块的输出注册为数据集。
 
-1.  在评分图中将已保存的数据集连接到“从文本中提取 N 元语法特征”模块。
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="注册数据集" border="true":::
+
+然后，你可以创建实时推理管道。 创建推理管道后，需要手动调整推理管道，如下所示：
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="推理管道" border="true":::
+
+然后，提交推理管道并部署实时终结点。
 
 ## <a name="results"></a>结果
 
 “从文本中提取 N 元语法特征”模块会创建两种类型的输出： 
 
-* **结果数据集** ：此输出总结了与提取的 N 元语法结合的经分析文本。 未在“文本列”选项中选择的列选项将传递到输出。 对于分析的每个文本列，该模块将生成以下列：
+* **结果数据集**：此输出总结了与提取的 N 元语法结合的经分析文本。 未在“文本列”选项中选择的列选项将传递到输出。 对于分析的每个文本列，该模块将生成以下列：
 
-  * **N 元语法出现次数的矩阵** ：该模块为总语料库中找到的每个 N 元语法生成一个列，并在每个列中添加一个分数，以指示该行的 N 元语法的权重。 
+  * **N 元语法出现次数的矩阵**：该模块为总语料库中找到的每个 N 元语法生成一个列，并在每个列中添加一个分数，以指示该行的 N 元语法的权重。 
 
-* **结果词汇** ：词汇包含实际的 N 元语法字典，以及在分析过程中生成的词频分数。 可保存数据集，以便重用于另一组输入，或用于稍后更新。 还可以重用词汇进行建模和评分。
+* **结果词汇**：词汇包含实际的 N 元语法字典，以及在分析过程中生成的词频分数。 可保存数据集，以便重用于另一组输入，或用于稍后更新。 还可以重用词汇进行建模和评分。
 
 ### <a name="result-vocabulary"></a>结果词汇
 
 词汇包含 N 元语法字典，还包含在分析过程中生成的词频分数。 无论其他选项如何，都将生成 DF 和 IDF 分数。
 
-+ **ID** ：为每个唯一 N 元语法生成的标识符。
-+ **nGram** ：N 元语法。 空格或其他断字符将替换为下划线字符。
-+ **DF** ：原始语料库中 N 元语法的词频分数。
-+ **IDF** ：原始语料库中 N 元语法的反转文件频率分数。
++ **ID**：为每个唯一 N 元语法生成的标识符。
++ **nGram**：N 元语法。 空格或其他断字符将替换为下划线字符。
++ **DF**：原始语料库中 N 元语法的词频分数。
++ **IDF**：原始语料库中 N 元语法的反转文件频率分数。
 
 可以手动更新此数据集，但可能会引入错误。 例如：
 

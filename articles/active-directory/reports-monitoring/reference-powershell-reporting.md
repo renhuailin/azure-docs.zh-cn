@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123126"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862031"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
 
@@ -36,7 +36,7 @@ ms.locfileid: "93123126"
 Install-module AzureADPreview
 ```
 
-有关如何使用 PowerShell 连接到 Azure AD 的详细信息，请参阅 [Azure AD PowerShell for Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 一文。  
+有关如何使用 PowerShell 连接到 Azure AD 的详细信息，请参阅 [Azure AD PowerShell for Graph](/powershell/azure/active-directory/install-adv2) 一文。  
 
 通过 Azure Active Directory (Azure AD) 报告，可以详细了解在说明（审核日志）和身份验证数据（登录日志）中围绕所有写入操作进行的活动。 虽然可以使用 MS Graph API 来获取信息，但现在可以使用用于报告的 Azure AD PowerShell cmdlet 来检索相同的数据。
 
@@ -59,7 +59,7 @@ Install-module AzureADPreview
 
 下图显示了此命令的一个示例。 
 
-![屏幕截图显示 Get-Azure D Audit 目录日志命令的结果。](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![屏幕截图显示了 Get-AzureADAuditDirectoryLogs 命令的结果。](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -81,7 +81,7 @@ Install-module AzureADPreview
 
 下图显示了此命令的一个示例。 
 
-![屏幕截图显示 Get-Azure D Audit 登录日志命令的结果。](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![屏幕截图显示了 Get-AzureADAuditSignInLogs 命令的结果。](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

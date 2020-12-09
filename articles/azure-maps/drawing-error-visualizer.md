@@ -1,21 +1,26 @@
 ---
 title: 使用 Azure Maps 绘图错误可视化工具
-description: 本文介绍了如何可视化由 Creator 转换 API 返回的警告和错误。
+description: 在本文中，你将了解如何可视化 Creator (预览) 转换 API 返回的警告和错误。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895845"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903575"
 ---
-# <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure Maps 绘图错误可视化工具
+# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>将 Azure Maps 绘图错误可视化工具与创建者 (预览一起使用) 
+
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 绘图错误可视化工具是一款独立 Web 应用，用于显示在转换过程中检测到的[绘图包警告和错误](drawing-conversion-error-codes.md)。 错误可视化工具 Web 应用由一个静态页组成，可以在不连接到 Internet 的情况下使用此页。  可以使用错误可视化工具来根据[绘图包要求](drawing-requirements.md)修复错误和警告。 只有在检测到错误时，[Azure Maps 转换 API](/rest/api/maps/conversion) 才会返回包含错误可视化工具链接的响应。
 
@@ -25,13 +30,13 @@ ms.locfileid: "92895845"
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. [创建 Creator 资源](how-to-manage-creator.md)
+3. [ (预览创建创建者) 资源](how-to-manage-creator.md)
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
 ## <a name="download"></a>下载
 
-1. 将绘图包上传到 Azure Maps Creator 服务，以获取已上传包的 `udid`。 有关如何上传包的步骤，请参阅[上传绘图包](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
+1. 将您的绘图包上传到 Azure Maps 创建者服务 (预览版) 获取已 `udid` 上传的包的。 有关如何上传包的步骤，请参阅[上传绘图包](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
 
 2. 至此，绘图包已上传，现在我们将使用已上传包的 `udid` 将此包转换为定位数据。 有关如何转换包的步骤，请参阅[转换绘图包](tutorial-creator-indoor-maps.md#convert-a-drawing-package)。
 
@@ -82,9 +87,11 @@ ms.locfileid: "92895845"
 
 ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下。 若要加载 ConversionWarningsAndErrors.json，可以将此文件拖放到框中，也可以单击拖放框，在“文件资源管理器”对话框中查找此文件，然后上传此文件。
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘图错误可视化工具应用 - 起始页" 链接。 然后，棘手将显示在列表下方。 现在可以转到每个错误，以详细了解如何解决相应错误。
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘制错误可视化工具应用 - 拖放以加载数据":::
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="绘图错误可视化工具应用 - 起始页":::
+在 ConversionWarningsAndErrors.json 文件加载后，你就会看到绘图包错误和警告的列表。 每个错误或警告都由图层、楼层和详细消息指定。 若要查看有关错误或警告的详细信息，请单击 " **详细** 信息" 链接。 然后，棘手将显示在列表下方。 现在可以转到每个错误，以详细了解如何解决相应错误。
+
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="绘制错误可视化工具应用 - 错误和警告":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -94,7 +101,7 @@ ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下�
 > [绘图转换错误代码](drawing-conversion-error-codes.md)
 
 > [!div class="nextstepaction"]
-> [适用于室内定位的 Creator](creator-indoor-maps.md)
+> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [使用“室内定位”模块](how-to-use-indoor-module.md)

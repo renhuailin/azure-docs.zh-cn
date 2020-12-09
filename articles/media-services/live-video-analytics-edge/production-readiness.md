@@ -3,12 +3,12 @@ title: 生产就绪情况和最佳做法 - Azure
 description: 本文提供如何在生产环境中配置和部署 IoT Edge 上的实时视频分析模块的指南。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071942"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906329"
 ---
 # <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
 
@@ -62,9 +62,9 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 
 IoT Edge 上的实时视频分析模块需要能在执行以下操作时将文件写入本地文件系统：
 
-* 使用模块孪生属性 [[applicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)] 时，你应通过此属性指定本地文件系统上用于存储配置数据的目录。
+* 使用模块克隆属性 [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) ，应在其中指定用于存储配置数据的本地文件系统上的目录。
 * 使用媒体图将视频录制到云中时，此模块需要将边缘设备上的目录用作缓存（有关详细信息，请参阅[连续视频录制](continuous-video-recording-concept.md)一文）。
-* [录制到本地文件](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)，你应该为录制的视频指定文件路径。
+* [记录到本地文件](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)，您应该在其中指定所录制视频的文件路径。
 
 如果你打算使用上述任何操作，应确保上述用户帐户有权访问相关目录。 例如 applicationDataDirectory。 你可以在边缘设备上创建目录，并将设备存储链接到模块存储。 
 
@@ -115,7 +115,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
 ```
 
-对于基于事件的视频录制生成的资产，建议的命名模式是 "&lt;anytext&gt;-${System.DateTime}"。 系统变量可确保当事件同时发生时，资产不会被覆盖。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
+对于基于事件的视频录制生成的资产，建议的命名模式是 "&lt;anytext&gt;-${System.DateTime}"。 如果事件同时发生，系统变量可确保不会覆盖资产。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
 
 ```
 "assetNamePattern": "sampleAssetFromEVR-LVAEdge-${System.DateTime}"
@@ -124,7 +124,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 如果运行同一图形的多个实例，可以使用图形拓扑名称和实例名称来加起区分。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 对于边缘上基于事件的视频录制生成的 mp4 视频剪辑，建议的命名模式应包括 DateTime，对于同一图形的多个实例，建议使用系统变量 GraphTopologyName 和 GraphInstanceName。 例如，可以对文件接收器设置 filePathPattern，如下所示： 

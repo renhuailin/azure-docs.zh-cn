@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834449"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861980"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 * Exchange 管理员
 * SharePoint 管理员
 
-如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为全局管理员在组织订阅的所有云服务中拥有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
+如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember)。 请从全局管理员角色开始，因为全局管理员在组织订阅的所有云服务中拥有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
 
 删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 

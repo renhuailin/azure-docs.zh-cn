@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Maps 室内定位模块
+title: '将 Azure Maps 室内地图模块与 Microsoft Creator 服务 (预览版一起使用) '
 description: 了解如何使用 Microsoft Azure Maps 室内定位模块，通过嵌入模块的 JavaScript 库来呈现定位。
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,21 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895454"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905275"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure Maps 室内定位模块
 
-Azure Maps Web SDK 包括“Azure Maps 室内”模块。 通过“Azure Maps 室内”模块，可以呈现在 Azure Maps Creator 中创建的室内定位。
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Maps Web SDK 包括“Azure Maps 室内”模块。 *Azure Maps 室内* 模块可用于呈现在 Azure Maps Creator 服务 (预览中创建的室内地图)  
 
 ## <a name="prerequisites"></a>先决条件
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [创建 Creator 资源](how-to-manage-creator.md)
+2. [ (预览创建创建者) 资源](how-to-manage-creator.md)
 3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 4. 通过完成[创建室内定位教程](tutorial-creator-indoor-maps.md)获取 `tilesetId` 和 `statesetId`。
  需要使用这些标识符通过“Azure Maps 室内定位”模块来呈现室内定位。
@@ -249,7 +253,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 > [绘图包要求](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [室内定位 Creator](creator-indoor-maps.md)
+> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
 
 详细了解如何将更多数据添加到定位：
 

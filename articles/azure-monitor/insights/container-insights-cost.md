@@ -3,14 +3,14 @@ title: 容器 Azure Monitor 的监视开销 |Microsoft Docs
 description: 本文介绍 Azure Monitor 为容器收集的指标 & 清单数据的监视开销，以帮助客户管理其使用情况和相关成本。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204644"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903203"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>了解容器 Azure Monitor 的监视成本
+# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>了解用于容器的 Azure Monitor 的监视成本
 
 本文提供了有关容器 Azure Monitor 的定价指导，帮助你了解以下各项：
 
@@ -37,7 +37,7 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中引入的数据
 
 - Active 抓取 of Prometheus 指标
 
-- AKS 群集中的 Kubernetes 主节点日志的[诊断日志集合](../../aks/view-master-logs.md)，用于分析由主组件（例如*kube-apiserver*和*kube-manager*）生成的日志数据。
+- AKS 群集中的 Kubernetes 主节点日志的 [诊断日志集合](../../aks/view-master-logs.md)，用于分析由主组件（例如 *kube-apiserver* 和 *kube-manager*）生成的日志数据。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>从 Kubernetes 群集收集的内容
 
@@ -127,19 +127,21 @@ Total = 31 MB/小时 = 23.1 GB/月 (一个月 = 31 天)
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>控制引入以降低成本
 
-假设你的组织的不同业务部门共享 Kubernetes 基础结构和 Log Analytics 工作区的情况。 每个业务单位由 Kubernetes 命名空间分隔。 可以使用最近发布的工作簿直观显示每个工作区中引入的数据量。 使用[工作簿库](../platform/workbooks-overview.md#getting-started)中的**Container Insights 使用情况**工作簿，可帮助你直观显示数据源，而无需构建你自己的文档中共享的查询库。 在此工作簿中，有一些可供查看的图表，如以下所示：
+假设你的组织的不同业务部门共享 Kubernetes 基础结构和 Log Analytics 工作区的情况。 每个业务单位由 Kubernetes 命名空间分隔。 可以使用 "**查看工作簿**" 下拉列表中提供的 "**数据使用情况**" runbook，直观显示每个工作区中引入的数据量。
+
+[![查看工作簿下拉列表](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+此工作簿可帮助你直观显示数据源，而无需构建你自己的文档中共享的查询库。 在此工作簿中，有一些可供查看的图表，如以下所示：
 
 - 按解决方案引入的计费数据总计（GB）
-
 - 按容器 (应用程序日志的计费数据引入) 
-
 - 按 Kubernetes 命名空间的计费容器日志数据引入
-
 - 按群集名称隔离的可计费容器日志数据引入
-
 - 按 logsource 条目的可计费容器日志数据引入
-
 - 可计费诊断数据引入按诊断主节点日志
+
+[![数据使用情况工作簿](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 若要了解如何管理工作簿的权限和权限，请查看 [访问控制](../platform/workbooks-access-control.md)。
 

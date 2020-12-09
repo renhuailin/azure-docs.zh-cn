@@ -3,21 +3,25 @@ title: 动态 Azure Maps 的 StylesObject 架构参考指南
 description: 动态 Azure Maps StylesObject 架构和语法的参考指南。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536942"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903337"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>动态映射的 StylesObject 架构参考指南
 
- `StylesObject`是 `StyleObject` 表示 stateset 样式的数组。 使用 Azure Maps 创建者 [功能状态服务](/rest/api/maps/featurestate) 将 stateset 样式应用到室内地图数据功能。 创建 stateset 样式，并将其与室内地图功能关联后，可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅 [实现 Creator 室内地图的动态样式](indoor-map-dynamic-styling.md)。
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+ `StylesObject`是 `StyleObject` 表示 stateset 样式的数组。 使用 Azure Maps Creator (预览版) [功能状态服务](/rest/api/maps/featurestate) 将 stateset 样式应用到室内地图数据功能。 创建 stateset 样式，并将其与室内地图功能关联后，可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅 [实现 Creator 室内地图的动态样式](indoor-map-dynamic-styling.md)。
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -85,7 +89,7 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string | *状态* 或动态属性名称。 在 `keyName` 数组中应是唯一的 `StyleObject` 。| 是 |
-| `type` | string | 值为 "数值"。 | 是 |
+| `type` | 字符串 | 值为 "数值"。 | 是 |
 | `rules` | [`NumberRuleObject`](#numberruleobject)[]| 具有关联颜色的数字样式范围的数组。 每个范围都定义一个颜色，当 *状态值* 满足此范围时，将使用该颜色。| 是 |
 
 ### <a name="numberruleobject"></a>NumberRuleObject
@@ -122,7 +126,7 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必需 |
 |-----------|----------|-------------|-------------|
 | `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject)定义一组逻辑范围条件，如果为 `true` ，则将 *状态* 的显示颜色更改为属性中指定的颜色 `color` 。 如果未 `range` 指定， `color` 将始终使用在属性中定义的颜色。   | 否 |
-| `color` | string | 状态值落到范围中时要使用的颜色。 `color`属性是采用以下任意一种格式的 JSON 字符串： <ul><li> HTML 样式的十六进制值 </li><li> RGB ( "#ff0"、"#ffff00"、"rgb (255、255、0) " ) </li><li> RGBA ( "rgba (255、255、0、1) " ) </li><li> HSL ( "hsl (100、50%、50% ) " ) </li><li> HSLA ( "HSLA (100，50%，50%，1) " ) </li><li> 预定义的 HTML 颜色名称，如黄色和蓝色。</li></ul> | 是 |
+| `color` | 字符串 | 状态值落到范围中时要使用的颜色。 `color`属性是采用以下任意一种格式的 JSON 字符串： <ul><li> HTML 样式的十六进制值 </li><li> RGB ( "#ff0"、"#ffff00"、"rgb (255、255、0) " ) </li><li> RGBA ( "rgba (255、255、0、1) " ) </li><li> HSL ( "hsl (100、50%、50% ) " ) </li><li> HSLA ( "HSLA (100，50%，50%，1) " ) </li><li> 预定义的 HTML 颜色名称，如黄色和蓝色。</li></ul> | 是 |
 
 ### <a name="rangeobject"></a>RangeObject
 
@@ -130,10 +134,10 @@ ms.locfileid: "95536942"
 
 | 属性 | 类型 | 说明 | 必需 |
 |-----------|----------|-------------|-------------|
-| `minimum` | Double | X ≥的所有数字 x `minimum` 。| 否 |
-| `maximum` | Double | X ≤的所有数字 x `maximum` 。 | 否 |
-| `exclusiveMinimum` | Double | X > 的所有数字 x `exclusiveMinimum` 。| 否 |
-| `exclusiveMaximum` | Double | X < 的所有数字 x `exclusiveMaximum` 。| 否 |
+| `minimum` | double | X ≥的所有数字 x `minimum` 。| 否 |
+| `maximum` | double | X ≤的所有数字 x `maximum` 。 | 否 |
+| `exclusiveMinimum` | double | X > 的所有数字 x `exclusiveMinimum` 。| 否 |
+| `exclusiveMaximum` | double | X < 的所有数字 x `exclusiveMaximum` 。| 否 |
 
 ### <a name="example-of-numerictypestylerule"></a>NumericTypeStyleRule 的示例
 
@@ -169,7 +173,7 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string |  *状态* 或动态属性名称。  在 `keyName` 数组中应是唯一的  `StyleObject` 。| 是 |
-| `type` | string |值为 "string"。 | 是 |
+| `type` | 字符串 |值为 "string"。 | 是 |
 | `rules` | [`StringRuleObject`](#stringruleobject)[]| N 个 *状态值* 的数组。| 是 |
 
 ### <a name="stringruleobject"></a>StringRuleObject
@@ -181,8 +185,8 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `stateValue1` | string | 值字符串为 stateValue1 时的颜色。 | 否 |
-| `stateValue2` | string | 值字符串为 stateValue 时的颜色。 | 否 |
-| `stateValueN` | string | 值字符串为 stateValueN 时的颜色。 | 否 |
+| `stateValue2` | 字符串 | 值字符串为 stateValue 时的颜色。 | 否 |
+| `stateValueN` | 字符串 | 值字符串为 stateValueN 时的颜色。 | 否 |
 
 ### <a name="example-of-stringtypestylerule"></a>StringTypeStyleRule 的示例
 
@@ -211,7 +215,7 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string |  *状态* 或动态属性名称。  在 `keyName` 数组中应是唯一的 `StyleObject`  。| 是 |
-| `type` | string |值为 "boolean"。 | 是 |
+| `type` | 字符串 |值为 "boolean"。 | 是 |
 | `rules` | [`BooleanRuleObject`](#booleanruleobject)2| 具有和状态值的颜色的布尔对 `true` `false` *state* 。| 是 |
 
 ### <a name="booleanruleobject"></a>BooleanRuleObject
@@ -221,7 +225,7 @@ ms.locfileid: "95536942"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `true` | string | *状态* 值为时要使用的颜色 `true` 。 `color`属性是采用以下任意一种格式的 JSON 字符串： <ul><li> HTML 样式的十六进制值 </li><li> RGB ( "#ff0"、"#ffff00"、"rgb (255、255、0) " ) </li><li> RGBA ( "rgba (255、255、0、1) " ) </li><li> HSL ( "hsl (100、50%、50% ) " ) </li><li> HSLA ( "HSLA (100，50%，50%，1) " ) </li><li> 预定义的 HTML 颜色名称，如黄色和蓝色。</li></ul>| 是 |
-| `false` | string | *状态* 值为时要使用的颜色 `false` 。 | 是 |
+| `false` | 字符串 | *状态* 值为时要使用的颜色 `false` 。 | 是 |
 
 ### <a name="example-of-booleantypestylerule"></a>BooleanTypeStyleRule 的示例
 

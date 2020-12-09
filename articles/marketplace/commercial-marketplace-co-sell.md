@@ -6,27 +6,31 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/04/2020
-ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621614"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904902"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>商业应用商店中的共同销售选项
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>商业市场中的联合销售选项
 
 提供有关 " **与 Microsoft 共同销售** " 选项卡的信息是完全可选的。 需要实现 [合作销售就绪和 IP 共同销售 Incentivized 状态](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 Microsoft 销售团队将使用您提供的信息来了解有关您的产品/服务的详细信息。 它不会直接提供给客户。 有关详细信息，请参阅 [与 Microsoft 共同销售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
-合作伙伴中心的共同销售选项目前提供了以下产品/服务类型。
+合作伙伴中心的共同销售选项可用于以下产品/服务类型。
 
 - Azure 应用程序
+- Azure 容器
+- Azure 虚拟机
+- 咨询服务
 - Dynamics 365 for Customer Engagement & PowerApps
-- Dynamics 365 for Operations
-- Dynamics 365 Business Central
+- 用于操作的 Dynamics 365
+- Dynamics 365 business central
+- IoT Edge 模块
+- 托管服务
+- Power BI 应用
 - 服务型软件 (SaaS)
-
-随着时间的推移，将提供对其他产品/服务类型的支持。
 
 ## <a name="listing"></a>正在列出
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003645"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902079"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
@@ -159,7 +159,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 如果接收器数据存储和格式符合此部分所述条件，则可使用复制活动将数据从 Snowflake 直接复制到接收器。 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。
+- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式将数据直接复制到 Azure Data Lake Storage Gen2，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用 [来自雪花的暂存副本](#staged-copy-from-snowflake)。
 
 - 接收器数据格式为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -173,7 +173,6 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为 **utf-8**。
         - `filePattern` 在复制活动接收器中保留为默认值或设置为“setOfObjects”。
-
 - 在复制活动源中，`additionalColumns` 未指定。
 - 列映射未指定。
 
@@ -290,7 +289,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 如果源数据存储和格式符合此部分所述条件，则可使用复制活动将数据从源直接复制到 Snowflake。 Azure 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。
+- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式直接复制 Azure Data Lake Storage Gen2 的数据，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用  [暂存复制到雪花](#staged-copy-to-snowflake)。
 
 - “源数据格式”为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -411,8 +410,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | String | *仅限内联数据集的 ()*<br>tableName<br>schemaName |
-| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | String | query |
+| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | *仅限内联数据集的 ()*<br>tableName<br>schemaName |
+| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | 字符串 | query |
 
 #### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
 

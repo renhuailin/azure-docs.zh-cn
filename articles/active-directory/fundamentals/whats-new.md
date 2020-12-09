@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 710e31c18338243f9405a071b8fa544fe44044be
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858954"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903150"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -57,6 +57,8 @@ Azure Active Directory 将在2021年6月30日之前 Azure Active Directory 全�
 - Office 365 GCC 和 WW
 
 相关公告所有客户端-服务器和浏览器-服务器组合应使用 TLS 1.2 和新式密码套件来维护与 Azure Active Directory 的 Azure、Office 365 和 Microsoft 365 服务的安全连接。 这种更改与 [US Gov 云中 AZURE ACTIVE DIRECTORY TLS 1.0 & 1.1 和3Des 密码套件弃用](whats-new.md#azure-active-directory-tls-10-tls-11-and-3des-deprecation-in-us-gov-cloud)相关。
+
+---
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---november-2020"></a>Azure AD 应用程序库中提供了新的联合应用-2020 年11月
 
