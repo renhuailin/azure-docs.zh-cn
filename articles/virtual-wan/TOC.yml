@@ -157,7 +157,7 @@
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: virtual-wan-faq.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
