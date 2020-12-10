@@ -121,16 +121,48 @@
           href: signin-appauth-ios.md
         - name: 使用 App Auth 的 Android
           href: signin-appauth-android.md
+    - name: 标识提供者
+      items:
+        - name: 添加标识提供程序
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD（单租户）
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD（多租户）
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: 一般标识提供者
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft 帐户
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: 微信
+          href: identity-provider-wechat.md
+        - name: 微博
+          href: identity-provider-weibo.md
     - name: 用户流
       items:
         - name: 创建流
           items:
-            - name: 创建用户流
-              href: create-user-flow.md
+            - name: 注册或登录
+              href: tutorial-create-user-flows.md
             - name: 资源所有者密码凭据
               href: configure-ropc.md
-            - name: 设置电话身份验证
-              href: phone-authentication-user-flows.md
             - name: 设置自助密码重置
               href: user-flow-self-service-password-reset.md
         - name: 添加条件访问
@@ -150,32 +182,6 @@
             - name: 启用 MFA
               href: custom-policy-multi-factor-authentication.md
               displayName: multi-factor auth
-        - name: 外部标识提供者
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD（单租户）
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft 帐户
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: 微信
-              href: identity-provider-wechat.md
-            - name: 微博
-              href: identity-provider-weibo.md
-            - name: 一般标识提供者
-              href: identity-provider-generic-openid-connect.md
         - name: 令牌和会话管理
           items:
             - name: 配置令牌
@@ -236,32 +242,6 @@
               href: javascript-samples.md
             - name: 密码复杂性
               href: custom-policy-password-complexity.md
-        - name: 外部标识提供者
-          items:
-            - name: OIDC/OAuth 提供程序
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD（单租户）
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD（多租户）
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft 帐户
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML 提供程序
-              items:
-                - name: AD FS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
         - name: 令牌和会话管理
           items:
             - name: 自定义令牌
@@ -312,7 +292,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: 布尔
+                    - name: Boolean
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -328,7 +308,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
