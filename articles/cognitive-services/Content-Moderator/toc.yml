@@ -12,7 +12,7 @@
   items:
     - name: 尝试在 Web 上使用内容审查器
       href: quick-start.md
-    - name: 使用客户端库
+    - name: 使用客户端库或 REST API
       href: client-libraries.md
 - name: 教程
   items:
@@ -20,8 +20,6 @@
       href: ecommerce-retail-catalog-moderation.md
     - name: 审查 Facebook 内容
       href: facebook-post-moderation.md
-    - name: 视频和脚本审查
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
     - name: 图像审查
@@ -38,7 +36,7 @@
   items:
     - name: 审查内容
       items:
-        - name: REST API
+        - name: API 控制台
           items:
             - name: 图像 - API 控制台
               href: try-image-api.md
@@ -60,7 +58,7 @@
       items:
         - name: 审阅工具（浏览器）
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST API
+        - name: API 控制台
           href: try-review-api-review.md
         - name: 视频审阅 (.NET)
           href: video-reviews-quickstart-dotnet.md
@@ -70,11 +68,11 @@
       items:
         - name: 审阅工具（浏览器）
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST API
+        - name: API 控制台
           href: try-review-api-workflow.md
     - name: 定义和使用作业
       items:
-        - name: REST API
+        - name: API 控制台
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md

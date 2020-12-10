@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6011bf90d5a97dcc027f8a9a0916c28226c5c354
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546891"
+ms.locfileid: "96584604"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -97,13 +97,12 @@ pwd
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
-在 Linux 或 macOS 上，命令会以下方的方式启动：
-```shell   
-sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
-```
+在 Linux 或 macOS 中，你的命令将如下例所示。 将 `ABSOLUTE_PATH` 替换为已装载的目录的绝对路径。 上一部分中的 `pwd` 命令返回了此路径。 
 
-> [!NOTE]
-> 将 `/ABSOLUTE_PATH` 替换为上一节中 `pwd` 命令显示的绝对路径。
+如果在设置密钥和区域之前运行此命令，则将收到一条错误消息，提示你设置密钥和区域：
+```shell   
+sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 若要使用安装在容器中的 `spx` 命令，请始终输入上面所示的完整命令，然后输入请求的参数。
 例如，在 Windows 上，此命令将设置密钥：
@@ -115,26 +114,28 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
 > [!WARNING]
 > 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
 
-### <a name="optional-create-a-command-line-shortcut"></a>可选：创建命令行快捷方式
+<!-- Need to troubleshoot issues with docker pull image
 
-如果是在 Linux 或 macOS 上的 Docker 容器中运行语音 CLI，则可以创建快捷方式。 
+### Optional: Create a command line shortcut
 
-请按照以下说明创建一个快捷方式：
-1. 在你喜欢的文本编辑器中打开 `.bash_profile`。 例如：
+If you're running the the Speech CLI from a Docker container on Linux or macOS you can create a shortcut. 
+
+Follow these instructions to create a shortcut:
+1. Open `.bash_profile` with your favorite text editor. For example:
    ```shell
    nano ~/.bash_profile
    ```
-2. 然后，将此函数添加到 `.bash_profile`。 请确保使用已装载目录的正确路径更新此函数：
+2. Next, add this function to your `.bash_profile`. Make sure you update this function with the correct path to your mounted directory:
    ```shell   
    spx(){
-       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+       sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
    }
    ```
-3. 寻找配置文件的来源：
+3. Source your profile:
    ```shell
    source ~/.bash_profile
    ```
-4. 现在，只需键入 `spx`，然后再键入参数即可，而不是运行 `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`。 例如： 
+4. Now instead of running `sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx`, you can just type `spx` followed by arguments. For example: 
    ```shell
    // Get some help
    spx help recognize
@@ -144,8 +145,8 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
    ```
 
 > [!WARNING]
-> 如果更改了 Docker 引用的已装载目录，则需要在 `.bash_profile`中更新函数。
-
+> If you change the mounted directory that Docker is referencing, you need to update the function in `.bash_profile`.
+--->
 ***
 
 ## <a name="create-subscription-config"></a>创建订阅配置

@@ -95,6 +95,8 @@
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB 安全基线
       href: ../../mariadb/security-baseline.md
+    - name: Azure 数据库迁移服务安全基线
+      href: ../../dms/security-baseline.md
     - name: Azure Database for PostgreSQL - 超大规模服务器安全基线
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Database for PostgreSQL - 单一服务器安全基线

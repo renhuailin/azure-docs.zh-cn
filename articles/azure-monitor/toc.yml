@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: 监视应用程序
       items:
-        - name: .NET 应用程序
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core 应用程序
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js 应用程序
           href: learn/nodejs-quick-start.md
         - name: 移动应用程序
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 参数设置
                       href: app/java-standalone-arguments.md
-                    - name: 从 2.x 升级
+                    - name: 从 2.x SDK 升级
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: 疑难解答
+                      href: app/java-standalone-troubleshoot.md
             - name: 本地服务器
               items:
                 - name: ASP.NET
@@ -867,7 +865,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: 监视永久性卷 (PV)
           href: insights/container-insights-persistent-volumes.md
+        - name: “报表”选项卡
+          href: insights/container-insights-reports.md
         - name: 查看实时数据
           items:
             - name: 实时数据（预览版）概述
