@@ -2,19 +2,19 @@
 title: .NET Framework 教程：Azure 应用程序配置中的动态配置
 description: 本教程介绍如何使用 Azure 应用程序配置动态更新 .NET Framework 应用的配置数据。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ms.topic: tutorial
-ms.date: 10/21/2019
-ms.author: lcozzens
-ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 07/24/2020
+ms.author: alkemper
+ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767595"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932755"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教程：在 .NET Framework 应用中使用动态配置
 
@@ -53,9 +53,9 @@ ms.locfileid: "91767595"
 
 1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
-1. 在**创建新项目**中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
+1. 在 **创建新项目** 中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
 
-1. 在**配置新项目**中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 单击“创建”。 
+1. 在 **配置新项目** 中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 单击“创建”。 
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡上，搜索“Microsoft.Extensions.Configuration.AzureAppConfiguration”NuGet 包，并将其添加到你的项目中   。 如果找不到，请选择“包含预发行版”复选框  。

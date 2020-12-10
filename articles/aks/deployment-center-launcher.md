@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360831"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932211"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>适用于 Azure Kubernetes 的部署中心
 
@@ -56,7 +56,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
    ![屏幕截图显示了 Azure 门户，其中有一个指向部署中心的箭头。](media/deployment-center-launcher/settings.png)
 
-1. 选择代码位置并选择“下一步”。  然后选择当前支持的存储库之一： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
+1. 选择代码位置并选择“下一步”。  然后选择当前支持的存储库之一： **[Azure Repos](/azure/devops/repos/index)** 或 **GitHub**。
 
     Azure Repos 是可以帮助管理代码的一组版本控制工具。 不管软件项目是大还是小，都应尽早使用版本控制。
 
@@ -77,7 +77,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
     ![屏幕截图显示了部署中心，其中显示了消息“在存储库中找不到 Dockerfile”。](media/deployment-center-launcher/dockerfile.png)
 
-1. 选择现有的或新建一个容器注册表，然后选择“完成”。  管道会自动创建，并会在 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 中将某个生成排入队列。
+1. 选择现有的或新建一个容器注册表，然后选择“完成”。  管道会自动创建，并会在 [Azure Pipelines](/azure/devops/pipelines/index) 中将某个生成排入队列。
 
     Azure Pipelines 是一项云服务，你可以用它来自动生成并测试代码项目，然后将该项目提供给其他用户。 Azure Pipelines 将持续集成和持续交付组合在一起，可以持续且一致地测试并生成代码，并将代码发送给任何目标。
 

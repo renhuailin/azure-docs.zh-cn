@@ -3,19 +3,19 @@ title: Azure CLI 脚本示例 - 从 Azure 应用配置存储区导出
 titleSuffix: Azure App Configuration
 description: 使用 Azure CLI 脚本从 Azure 应用配置中导出配置
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c386652ed0b026c29cb202274daba9ee6deb4cf0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: be3fac17ba99194a76b27c78040a76cce43405a0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566855"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931106"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>从 Azure 应用配置存储区导出
 
