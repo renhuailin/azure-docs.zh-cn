@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 890f9c3d5c3a250bc13270ac685b93349f18fcff
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743707"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862253"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
 
@@ -45,8 +45,10 @@ ms.locfileid: "92743707"
 
 完成本教程：
 
-* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
+- <a href="https://git-scm.com/" target="_blank">安装 Git</a>
+- <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
@@ -80,8 +82,6 @@ dotnet run
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
 在终端按 `Ctrl+C`，随时停止 .NET Core。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
 
@@ -286,7 +286,7 @@ Compressing objects: 100% (171/171), done.
 Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
 Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
 remote: Resolving deltas: 100% (95/95), done.
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '64821c3558'.
 remote: Generating deployment script.
@@ -303,7 +303,7 @@ remote: Running post deployment command(s)...
 remote: Triggering recycle (preview mode disabled).
 remote: App container will begin restart within 10 seconds.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -321,7 +321,7 @@ Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
 Total 273 (delta 96), reused 259 (delta 88)
 remote: Resolving deltas: 100% (96/96), done.
 remote: Deploy Async
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'cccecf86c5'.
 remote: Repository path is /home/site/repository
@@ -337,7 +337,7 @@ remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
 remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -446,7 +446,7 @@ dotnet run
 ```bash
 git add .
 git commit -m "added done field"
-git push azure master
+git push azure main
 ```
 
 `git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”。
@@ -467,12 +467,11 @@ git push azure master
 若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
+az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
 ```
 
 > [!NOTE]
 > 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
-> 
 
 若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
 

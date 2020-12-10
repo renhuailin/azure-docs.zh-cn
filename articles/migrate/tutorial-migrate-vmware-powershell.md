@@ -1,18 +1,17 @@
 ---
 title: 将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 description: 了解如何通过 PowerShell 使用 Azure Migrate 运行 VMware VM 的无代理迁移。
-services: ''
-author: rahugup
+author: rahulg1190
+ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
-ms.author: rahugup
-ms.openlocfilehash: 3cd8d29a498a6a00fa8fff679afc969b339934b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 187e17bcf385ba6b3c17566fc00e5ee77cf009fe
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494335"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752475"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004919"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862218"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -47,7 +47,9 @@ ms.locfileid: "96004919"
 
 若要使用 SQL 数据库作为后端调试应用程序，请确保已经允许从计算机连接客户端。 否则，请遵循[使用 Azure 门户管理服务器级 IP 防火墙规则](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)中的步骤添加客户端 IP。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>向 Azure AD 用户授予数据库访问权限
 
@@ -87,7 +89,7 @@ Visual Studio for Mac 未集成 Azure AD 身份验证。 不过，稍后将使�
 
 在本地计算机上安装 Azure CLI 后，请使用 Azure AD 用户通过以下命令登录 Azure CLI：
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 现已准备好将 SQL 数据库作为后端，使用 Azure AD 身份验证来开发和调试应用程序。
@@ -206,7 +208,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 在 Cloud Shell 中，使用 SQLCMD 命令登录到 SQL 数据库。 将 \<server-name> 替换为你的服务器名称，将 \<db-name> 替换为应用使用的数据库的名称，并将 \<aad-user-name> 和 \<aad-password> 替换为 Azure AD 用户的凭据   。
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
@@ -249,7 +251,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 当新网页显示待办事项列表时，表明应用使用了托管标识连接到数据库。

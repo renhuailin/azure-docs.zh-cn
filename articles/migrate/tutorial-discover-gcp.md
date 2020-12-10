@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估发现 GCP VM 实例
 description: 了解如何使用 Azure Migrate 服务器评估发现 GCP VM 实例。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c445bc06983aeb72d13f2bea5e2f39e73374d93a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9053246ef747236d9efbc9239ced46b0c421f5bb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716327"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753087"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>教程：使用服务器评估发现 Google Cloud Platform (GCP) 实例
 
@@ -235,7 +238,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 现在，从设备连接到要发现的 GCP 服务器，并启动发现。
 
-1. 在**步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据**中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
+1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据** 中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
 2. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 
 3. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。
 4. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供服务器详细信息。
@@ -258,7 +261,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 发现完成后，可以验证服务器是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了 **已发现服务器** 计数的图标。
 
 ## <a name="next-steps"></a>后续步骤
 

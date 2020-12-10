@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268411"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861045"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -180,11 +180,11 @@ ms.locfileid: "89268411"
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
+使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1)中包含此 cmdlet。
 
 使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 
-- 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
+- 必须存在其 **设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
 - **DeviceTrustType** 的值为 **Domain Joined**。 此设置相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态 。
 - 对于条件访问中使用的设备，**Enabled** 的值为 **True**，**DeviceTrustLevel** 的值为 **Managed**。
 

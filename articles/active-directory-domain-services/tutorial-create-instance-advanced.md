@@ -1,20 +1,20 @@
 ---
 title: 教程 - 创建自定义的 Azure Active Directory 域服务托管域 | Microsoft Docs
 description: 本教程介绍如何使用 Azure 门户创建和配置自定义的 Azure Active Directory 域服务托管域并指定高级配置选项。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 4d03edac98329d7c47b8bfafbf4d30cfca18863c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967336"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618223"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务托管域
 
@@ -100,7 +100,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     对于本教程，请选择“标准”SKU。
 1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。
 
-    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 创建资源林时，本地用户的密码哈希从不同步到托管域中。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+    *资源* 林仅同步直接在 Azure AD 中创建的用户和组。 创建资源林时，本地用户的密码哈希从不同步到托管域中。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
 
     对于本教程，请选择创建用户林。
 
@@ -161,11 +161,11 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 现在可以更改同步范围，或在部署托管域后更改。 有关详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
 
-1. 本教程选择了同步**所有**用户和组。 这是默认的同步选项。
+1. 本教程选择了同步 **所有** 用户和组。 这是默认的同步选项。
 
     ![对 Azure AD 中的用户和组执行完全同步](./media/tutorial-create-instance-advanced/sync-all.png)
 
-1. 选择“查看 + 创建”  。
+1. 选择“查看 + 创建”。
 
 ## <a name="deploy-the-managed-domain"></a>部署托管域
 

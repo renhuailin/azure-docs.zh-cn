@@ -1,14 +1,17 @@
 ---
 title: 使用导入的 CSV 文件通过 Azure Migrate 服务器评估来评估本地服务器
 description: 描述如何在 Azure Migrate 服务器评估中使用导入的 CSV 文件来发现要迁移到 Azure 的本地服务器
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308395"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753102"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教程：使用导入的 CSV 文件评估服务器
 
@@ -184,7 +187,7 @@ IP 地址 | 否 | 服务器地址。
 在发现完成后，若要验证服务器是否出现在 Azure 门户中，请执行以下操作：
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了 **已发现服务器** 计数的图标。
 3. 选择“基于导入”选项卡。
 
 

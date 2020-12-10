@@ -1,20 +1,20 @@
 ---
 title: 教程 - 为 Azure AD 域服务配置虚拟网络 | Microsoft Docs
 description: 本教程介绍如何使用 Azure 门户为 Azure Active Directory 域服务托管域创建和配置 Azure 虚拟网络子网或网络对等互连。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: ddb8f360304bdb41ae359f293af4d10b0afc6558
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967403"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618410"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置虚拟网络
 

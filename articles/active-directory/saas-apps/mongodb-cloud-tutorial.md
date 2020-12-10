@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f76f6bc77a26a8574218a07321ab72acc9280569
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517984"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602166"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 MongoDB Cloud 的集成
 
@@ -162,7 +162,7 @@ MongoDB Cloud 支持默认启用的实时用户预配。 无需执行其他操�
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [在 Azure 上注册 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
+- [在 Azure 上注册 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mdb_atlas_oct2020?tab=Overview)
 
 - [尝试通过 Azure AD 使用 MongoDB Cloud](https://aad.portal.azure.com/)
 

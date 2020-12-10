@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估发现 AWS 实例
 description: 了解如何使用 Azure Migrate 服务器评估发现 AWS 实例。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dda6f6e37a42d4ee55a32fc8e1c05916c6be4367
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311280"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753121"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>教程：使用服务器评估发现 AWS 实例
 
@@ -153,13 +156,13 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 3.  验证最新的设备版本和哈希值：
     - 对于公有云：
 
-        **方案** | **下载*** | **哈希值**
+        **方案** | **下载** _ | _ *哈希值**
         --- | --- | ---
         物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
 
     - 对于 Azure 政府：
 
-        **方案** | **下载*** | **哈希值**
+        **方案** | **下载** _ | _ *哈希值**
         --- | --- | ---
         物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
@@ -232,7 +235,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
-1. 在**步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据**中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
+1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据** 中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
 1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 物理服务器发现支持多个凭据。
 1. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。
 1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供服务器详细信息。
@@ -256,7 +259,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 发现完成后，可以验证服务器是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了 **已发现服务器** 计数的图标。
 
 ## <a name="next-steps"></a>后续步骤
 

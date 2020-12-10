@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093253"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860008"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -169,7 +169,7 @@ cmdlet：
 
 若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。
 
-若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet。
+若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) cmdlet。
 
 ![公司域的列表](./media/hybrid-azuread-join-manual/01.png)
 
@@ -328,7 +328,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。  
 
-若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet。
+若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain) cmdlet。
 
 ![公司域的列表](./media/hybrid-azuread-join-manual/01.png)
 
@@ -570,11 +570,11 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
+使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1)中包含此 cmdlet。
 
 使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 
-- 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
+- 必须存在其 **设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
 - **DeviceTrustType** 的值为 **Domain Joined**。 此设置相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态 。
 - 对于条件访问中使用的设备，**Enabled** 的值为 **True**，**DeviceTrustLevel** 的值为 **Managed**。
 

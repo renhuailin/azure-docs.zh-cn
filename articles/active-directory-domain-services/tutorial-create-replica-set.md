@@ -2,20 +2,20 @@
 title: 教程 - 在 Azure AD 域服务中创建副本集 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建和使用副本集以实现 Azure AD 域服务的服务复原
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 8cd78a98e47468f103459fd7aa40b145d53db4fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967029"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618104"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建和使用针对复原能力或地理位置的副本集
 

@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的 GCP VM 实例
 description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的 GCP VM 实例。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: adf936d6d1b99bf81a8c055237ca597020452bd7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ba72754362d5a0d9e1b6c95dcc2e1ff7f452207
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716314"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753308"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>教程：评估迁移到 Azure 的 Google Cloud Platform (GCP) VM 实例
 

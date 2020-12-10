@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 中的服务器评估来评估要迁移到 Azure VM 的 Hyper-V VM
 description: 了解如何使用服务器评估来评估要迁移到 Azure VM 的 Hyper-V VM。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: be5099aa515a2331cb05fa8bf6ea76c7544ec1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04570785d80e494134bc50cefe3381277d6440a4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089137"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753274"
 ---
 # <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>教程：评估要迁移到 Azure 的 Hyper-V VM
 

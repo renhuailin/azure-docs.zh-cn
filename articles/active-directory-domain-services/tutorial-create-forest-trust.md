@@ -2,20 +2,20 @@
 title: 教程 - 在 Azure AD 域服务中创建林信任 | Microsoft Docs
 description: 了解如何在 Azure 门户中为 Azure AD 域服务创建到本地 AD DS 域的单向出站林
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967250"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618325"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教程：在 Azure Active Directory 域服务中创建到本地域的出站林信任
 

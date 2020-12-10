@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4854e61b646c0ca2a2070d676e3efc5cfbac6b9b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044575"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621274"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -449,9 +449,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你训练了一个自定义视觉模型并将其作为模块部署到了 IoT Edge 设备中。 然后，你生成了一个模块，该模块可以查询图像分类服务并将其结果报告回 IoT 中心。 
-
-若要尝试此方案的更深入的版本（带实时摄像头源），请参阅 GitHub 项目：[Custom Vision and Azure IoT Edge on a Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)（Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge）。 
+在本教程中，你训练了一个自定义视觉模型并将其作为模块部署到了 IoT Edge 设备中。 然后，你生成了一个模块，该模块可以查询图像分类服务并将其结果报告回 IoT 中心。
 
 继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 

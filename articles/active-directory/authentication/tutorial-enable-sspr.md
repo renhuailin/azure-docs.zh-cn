@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837815"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741059"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -141,7 +141,7 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何执行以下操作：
+在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 为一组 Azure AD 用户启用自助式密码重置

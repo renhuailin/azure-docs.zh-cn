@@ -2,7 +2,7 @@
 title: 使用 PowerShell 启用 Azure DS 域服务 | Microsoft Docs
 description: 了解如何使用 Azure AD PowerShell 与 Azure PowerShell 来配置和启用 Azure Active Directory 域服务。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 10/02/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 89061af04147d7cfaa0fdb3a6b1a8fb1cd8c8da7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041953"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619141"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -44,7 +44,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使 Azure AD DS 托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
 
-首先创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 6ba9a5d4-8456-4118-b521-9c5ca10cdf84。  请不要更改此应用程序 ID。
+首先创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 6ba9a5d4-8456-4118-b521-9c5ca10cdf84 。 请不要更改此应用程序 ID。
 
 使用 [Get-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建 Azure AD 服务主体：
 

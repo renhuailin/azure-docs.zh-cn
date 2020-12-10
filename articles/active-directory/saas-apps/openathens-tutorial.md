@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 7754da168465c58c1481f355f3597a621a99609e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522302"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621461"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpenAthens 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "92522302"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，上传 **服务提供程序元数据文件** ，本教程下文中介绍了相关的步骤。
+1. 在“基本 SAML 配置”  部分中，上传 **服务提供程序元数据文件**，本教程下文中介绍了相关的步骤。
 
     a. 单击“上传元数据文件”  。
 
@@ -86,7 +86,7 @@ ms.locfileid: "92522302"
 
     ![Openathens 浏览上传元数据](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后， **标识符** 值会自动填充在“基本 SAML 配置”  部分的文本框中：
+    c. 成功上传元数据文件后，**标识符** 值会自动填充在“基本 SAML 配置”  部分的文本框中：
 
     ![OpenAthens 域和 URL 单一登录信息](common/idp-identifier.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "92522302"
 
     a. 在“显示名称映射”中，选择“使用属性”。
 
-    b. 在“显示名称属性”文本框中，输入值 `http://schema.microsoft.com/identity/claims/displayname`。
+    b. 在“显示名称属性”文本框中，输入值 `http://schemas.microsoft.com/identity/claims/displayname`。
 
     c. 在“唯一用户映射”中，选择“使用属性”。
 
@@ -168,7 +168,7 @@ ms.locfileid: "92522302"
 
 ### <a name="create-openathens-test-user"></a>创建 OpenAthens 测试用户
 
-在本部分中，我们将在 OpenAthens 中创建一个名为 Britta Simon 的用户。 OpenAthens 支持默认情况下启用的 **实时用户预配** 。 此部分不存在任何操作项。 如果 OpenAthens 中尚不存在用户，则会在身份验证后创建一个新用户。
+在本部分中，我们将在 OpenAthens 中创建一个名为 Britta Simon 的用户。 OpenAthens 支持默认情况下启用的 **实时用户预配**。 此部分不存在任何操作项。 如果 OpenAthens 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO
 

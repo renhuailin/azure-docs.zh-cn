@@ -1,20 +1,20 @@
 ---
 title: 将 Windows Server VM 加入 Azure AD 域服务托管域 | Microsoft Docs
 description: 在此教程中，会了解如何将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 5481dbfe1f7b185e87ee13f26f23ea563350b0fa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171783"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619566"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>教程：将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 

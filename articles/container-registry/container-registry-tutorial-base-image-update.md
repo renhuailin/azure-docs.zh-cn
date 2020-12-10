@@ -4,12 +4,12 @@ description: 本教程介绍在更新同一注册表中的基础映像时，如�
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030639"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559144"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
@@ -32,10 +32,10 @@ ms.locfileid: "96030639"
 
 本教程假定你已配置环境并完成本系列前两个教程中的步骤，其中包括：
 
-* 创建 Azure 容器注册表
-* 创建示例存储库分支
-* 克隆示例存储库
-* 创建 GitHub 个人访问令牌
+- 创建 Azure 容器注册表
+- 创建示例存储库分支
+- 克隆示例存储库
+- 创建 GitHub 个人访问令牌
 
 在继续之前，请先完成以下教程（如果尚未完成）：
 
@@ -44,6 +44,9 @@ ms.locfileid: "96030639"
 [使用 Azure 容器注册表任务自动化容器映像生成](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>配置环境
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- 本文需要 Azure CLI 版本 2.0.46 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 

@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95986525"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608242"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -206,7 +206,7 @@ ms.locfileid: "95986525"
 > | 记录类型 | 主机 | 值 |
 > | - | - | - |
 > | A | `www` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
-> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
+> | TXT | `asuid.www` | [之前获得的验证 ID](#get-a-domain-verification-id) |
 >
 
 添加记录后，DNS 记录页与以下示例相似：

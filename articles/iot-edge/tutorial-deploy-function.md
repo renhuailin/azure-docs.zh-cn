@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534834"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621240"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -237,7 +237,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建一个 Azure 函数模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 做好生成自己的模块的准备以后，即可详细了解如何[使用用于 Visual Studio Code 的 Azure IoT Edge 进行开发](how-to-vs-code-develop-module.md)。
+在本教程中，你已创建一个 Azure 函数模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。
 
 继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: f208752f13848f0f54648d934d1dfb518e2ea1fd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 72541b8d8f8d8865c680c36f7f84cd91a4ce8ba2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500333"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903320"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -158,7 +158,7 @@ az storage account keys list -n akvrotationstorage
 
 1. 选择 Azure 模板部署链接： 
 
-   [![Azure 模板部署链接。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
+   [![Azure 模板部署链接。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
 
 1. 在“资源组”列表中选择“akvrotation” 。
 1. 在“存储帐户名称”框中，输入包含要轮换的访问密钥的存储帐户名称。

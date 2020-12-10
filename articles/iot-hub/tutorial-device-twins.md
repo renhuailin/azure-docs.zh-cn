@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748550"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572518"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -39,11 +39,9 @@ ms.locfileid: "92748550"
 > * 使用所需属性将状态信息发送到模拟设备。
 > * 使用报告属性从模拟设备接收状态信息。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
@@ -136,7 +134,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="handlers-for-multiple-properties"></a>多个属性的处理程序
 
-在前面显示的所需属性 JSON 示例中， **components** 下的 **climate** 节点包含两个属性： **minTemperature** 和 **maxTemperature** 。
+在前面显示的所需属性 JSON 示例中，**components** 下的 **climate** 节点包含两个属性：**minTemperature** 和 **maxTemperature**。
 
 设备的本地 **twin** 对象存储一组完整的所需属性和报告属性。 从后端发送的 **delta** 可能只会更新所需属性的某个子集。 在以下代码片段中，如果模拟设备只是收到了对某个 **minTemperature** 和 **maxTemperature** 的更新，则它会使用另一个值的本地孪生中的值来配置设备：
 

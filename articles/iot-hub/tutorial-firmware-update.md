@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748531"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572331"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
@@ -38,11 +38,9 @@ ms.locfileid: "92748531"
 > * 模拟设备上的固件更新过程。
 > * 在固件更新进行过程中从设备接收状态更新。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
