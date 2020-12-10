@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974169"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005080"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
 
@@ -51,12 +51,8 @@ $hostGroup = New-AzHostGroup `
 ```
 
 
-添加 `-SupportAutomaticPlacement true` 参数，将 vm 和规模集实例自动放置在主机组中的主机上。 有关详细信息，请参阅 [手动放置 ](../dedicated-hosts.md#manual-vs-automatic-placement)。
+添加 `-SupportAutomaticPlacement true` 参数，将 VM 和规模集实例自动放置在主机组中的主机上。 如需了解详情，请参阅[手动放置与自动放置](../dedicated-hosts.md#manual-vs-automatic-placement)。
 
-> [!IMPORTANT]
-> 自动放置当前为公共预览版。
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-a-host"></a>创建主机
 
@@ -173,12 +169,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="create-a-scale-set-preview"></a> (预览创建规模集) 
-
-> [!IMPORTANT]
-> 专用主机上的虚拟机规模集目前为公共预览版。
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="create-a-scale-set"></a>创建规模集 
 
 部署规模集时，需要指定主机组。
 
@@ -195,7 +186,7 @@ New-AzVmss `
   -HostGroupId $hostGroup.Id
 ```
 
-如果要手动选择要将规模集部署到的主机，请添加 `--host` 和主机的名称。
+如果要手动选择要将规模集部署到哪个主机，请添加 `--host` 和主机名称。
 
 
 

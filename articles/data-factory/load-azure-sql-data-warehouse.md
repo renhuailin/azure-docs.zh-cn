@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/09/2020
+ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000073"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005408"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -102,7 +102,7 @@ ms.locfileid: "96000073"
 
     a. 单击“+ 创建新连接”来添加连接
 
-    b. 从库中选择“Azure Synapse Analytics (以前称为 SQL 数据仓库)”，然后选择“继续” 。 可以在搜索框中键入“SQL”以筛选连接器。
+    b. 从库中选择 " **Azure Synapse Analytics** "，并选择 " **继续**"。
 
     ![选择 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
@@ -145,9 +145,9 @@ ms.locfileid: "96000073"
     ![监视活动运行](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
 14. 若要监视每个复制活动的执行详情，请在活动运行视图中选择“活动名称”下的“详细信息”链接（眼镜图标） 。 可以监视详细信息，例如，从源复制到接收器的数据量、吞吐量、执行步骤以及相应的持续时间和使用的配置。
-    ![首先监视活动运行详细信息](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
+    ![首次监视活动运行详细信息](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![监视活动运行详细信息的第二个](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
+    ![第二次监视活动运行详细信息](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339585"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007885"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
@@ -33,7 +33,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 ![专用主机的新资源的视图。](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
-主机组  是表示专用主机集合的资源。 可在区域和可用性区域中创建主机组，并向其添加主机。
+主机组是表示专用主机集合的资源。 可在区域和可用性区域中创建主机组，并向其添加主机。
 
 主机  是映射到 Azure 数据中心内的物理服务器的资源。 创建主机时，将分配物理服务器。 主机是在主机组中创建的。 主机提供一个 SKU，用于描述可创建哪些 VM 大小。 每个主机可以托管多个不同大小的 VM，前提是这些 VM 来自相同的大小系列。
 
@@ -67,11 +67,6 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 ## <a name="manual-vs-automatic-placement"></a>手动放置与自动放置 
 
-> [!IMPORTANT]
-> 自动放置目前以公共预览版提供。
-> 若要参与使用该预览版，请在 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 上完成关于加入预览的调查。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 在 Azure 中创建 VM 时，可以选择要使用哪个专用主机。 还可以使用相应的选项将 VM 自动放置在主机组中的现有主机上。 
 
 在创建新主机组时，请确保选择用于自动 VM 放置的设置。 在创建 VM 时，请选择该主机组，并让 Azure 为 VM 选择最佳主机。 
@@ -91,11 +86,6 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 利用虚拟机规模集，可以将一组虚拟机视为单一资源，并可以将其作为一个组来应用可用性、管理、缩放和业务流程策略。 现有的专用主机也可以用于虚拟机规模集。 
 
-> [!IMPORTANT]
-> 专用主机上的虚拟机规模集目前以公共预览版提供。
-> 若要参与使用该预览版，请在 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 上完成关于加入预览的调查。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 在创建虚拟机规模集时，可以指定现有主机组，以便在专用主机上创建所有的 VM 实例。
 
 在专用主机组中创建虚拟机规模集时，需要满足以下要求：
@@ -109,7 +99,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 - 专用主机支持的 VM 大小应当与用于规模集的 VM 大小相匹配。
 
 专用主机并非支持所有的规模集业务流程和优化设置。 请将以下设置应用于规模集： 
-- 禁用过度预配。
+- 不建议使用过度预配，它在默认情况下处于禁用状态。 你可以启用过度预配，但如果主机组没有适用于所有 Vm 的容量（包括过度预配实例），规模集分配将会失败。 
 - 使用 ScaleSetVM 业务流程模式 
 - 请勿将邻近放置组用于归置
 

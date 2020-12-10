@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697248"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007868"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
@@ -22,6 +22,14 @@ ms.locfileid: "94697248"
 在本文中，我们将使用示例来阐释简单语法，并填写[搜索文档](/rest/api/searchservice/search-documents)操作的 `search=` 参数。
 
 备选的查询语法是[完整的 Lucene](query-lucene-syntax.md)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
+
+从以下工具和 Api 中进行选择，以提交查询。
+
+| 方法 | 说明 |
+|-------------|-------------|
+| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 建议用于浏览、测试和验证。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
+| [Postman 或 Visual Studio Code](search-get-started-rest.md) | Web 测试工具是 [用于表述 REST](/rest/api/searchservice/search-documents) 调用的最佳选择。 REST API 支持 Azure 认知搜索中的每个编程操作，因此你可以通过交互方式发出请求，以将你的探索集中于特定任务。  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | 可用于查询 Azure 认知搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
@@ -37,13 +45,13 @@ ms.locfileid: "94697248"
 
 指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Postman 请求标头设置参数" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Postman 请求头设置参数" border="false":::
 
 ### <a name="set-the-request-url"></a>设置请求 URL
 
 请求是一个与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 请求标头获取" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 请求头 GET" border="false":::
 
 URL 组合具备以下元素：
 

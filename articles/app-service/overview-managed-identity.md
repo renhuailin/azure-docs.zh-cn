@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929304"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007205"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -109,7 +109,7 @@ ms.locfileid: "96929304"
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/#functions)：
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
 
     ```azurepowershell-interactive
     # Create a resource group.

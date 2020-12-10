@@ -4,12 +4,12 @@ description: 了解如何在 Azure App Service 中配置自定义容器。 本�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557920"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007630"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -218,7 +218,7 @@ Docker 日志显示在门户中应用程序的 " **容器设置** " 页上。 �
 
 ## <a name="customize-container-memory"></a>自定义容器内存
 
-默认情况下，部署在 Azure App Service 中的所有 Windows 容器均限制为 1 GB RAM。 可以通过 Cloud Shell 提供应用设置来更改此值 `WEBSITE_MEMORY_LIMIT_MB` 。 [Cloud Shell](https://shell.azure.com) 在 Bash 中：
+默认情况下，部署在 Azure App Service 中的所有 Windows 容器均限制为 1 GB RAM。 可以通过 Cloud Shell 提供应用设置来更改此值 `WEBSITE_MEMORY_LIMIT_MB` 。 [](https://shell.azure.com) 在 Bash 中：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_MEMORY_LIMIT_MB=2000
@@ -345,7 +345,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
 
 多容器应用（如 WordPress）需要持久存储才能正常工作。 若要启用它，你的 Docker Compose 配置必须指向容器 *外部* 的存储位置。 在应用重新启动后，容器中的存储位置不会保存更改。
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

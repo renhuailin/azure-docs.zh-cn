@@ -3,15 +3,15 @@ title: 创建不具有公共 IP 地址的 Azure Batch 池
 description: 了解如何创建不带公共 IP 地址的池
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842129"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007664"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -25,11 +25,12 @@ ms.locfileid: "94842129"
 
 > [!IMPORTANT]
 > 对在 Azure Batch 中没有公共 IP 地址的池的支持目前处于公共预览版中的以下区域：美国西部、东亚、美国西部、美国中南部、美国西部2、美国东部、北欧、美国东部2、美国中部、西欧、美国中北部、美国西部、澳大利亚东部、日本东部、日本西部。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- “身份验证”。 若要在 [虚拟网络](./batch-virtual-network.md)中使用没有公共 IP 地址的池，Batch 客户端 API 必须使用 AZURE ACTIVE DIRECTORY (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 如果不是在虚拟网络中创建池，则可以使用 Azure AD 身份验证，也可以使用基于密钥的身份验证。
+- **身份验证**。 若要在 [虚拟网络](./batch-virtual-network.md)中使用没有公共 IP 地址的池，Batch 客户端 API 必须使用 AZURE ACTIVE DIRECTORY (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 如果不是在虚拟网络中创建池，则可以使用 Azure AD 身份验证，也可以使用基于密钥的身份验证。
 
 - **一个 Azure VNet**。 如果要在 [虚拟网络](batch-virtual-network.md)中创建池，请遵循以下要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。
   - VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。

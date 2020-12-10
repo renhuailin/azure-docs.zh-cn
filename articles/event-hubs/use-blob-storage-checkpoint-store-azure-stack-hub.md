@@ -1,25 +1,22 @@
 ---
-title: 使用 Blob 存储作为 Azure Stack Hub（预览版）上的检查点存储
-description: 本文介绍如何使用 Blob 存储作为 Azure Stack Hub（预览版）上事件中心的检查点存储。
+title: 使用 Blob 存储作为 Azure Stack Hub 上的检查点存储
+description: 本文介绍如何将 Blob 存储用作 Azure Stack 集线器上的事件中心中的检查点存储。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 9da525decfb7b972f05af17c259836d0b17bb21e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/09/2020
+ms.openlocfilehash: 07d7cf844480a9a88468c17cecc7ca38cca5d176
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021229"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007817"
 ---
-# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>使用 Blob 存储作为检查点存储 - Azure Stack Hub（预览版）上的事件中心
+# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>使用 Blob 存储作为 Azure Stack 集线器上的检查点存储-事件中心
 如果你在一个环境中使用 Azure Blob 存储作为检查点存储，该环境支持与 Azure 上通常可用的存储 Blob SDK 版本不同的版本，那么你需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果运行[基于 Azure Stack Hub 版本 2002 的事件中心](/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为 2017-11-09。 在这种情况下，需要使用代码将存储服务 API 版本设定为 2017-11-09。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python - [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
-
-> [!IMPORTANT]
-> Azure Stack 集线器上的事件中心目前处于 [预览阶段](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，并且是免费的。 
 
 如果不针对 Azure Stack Hub 支持的版本运行使用 Blob 存储作为检查点存储的事件中心接收器，则会收到以下错误消息：
 

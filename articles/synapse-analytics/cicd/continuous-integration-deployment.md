@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317111"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008073"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -25,7 +25,7 @@ ms.locfileid: "96317111"
 
 本文概述如何使用 Azure release 管道将 Synapse 工作区自动部署到多个环境。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 -   用于开发的工作区已在 Studio 中使用 Git 存储库进行配置，请参阅 [Synapse Studio 中的源代码管理](source-control.md)。
 -   Azure DevOps 项目已准备好运行发布管道。
@@ -107,7 +107,13 @@ ms.locfileid: "96317111"
 
      ![添加扩展](media/add-extension-task.png)
 
-1.  在任务中，提供 **workspace_publish** 的相关 git 存储库信息，并选择 "资源组"、"区域"、"名称" 和 "目标" 工作区的云环境。 根据需要提供参数和值。
+1.  在任务中，选择 " **...** " 选择模板文件旁边的 " **模板** " 框。
+
+1. 选择“模板参数”框旁边 的“…”，以便选择参数文件。
+
+1. 选择目标工作区的 "连接"、"资源组" 和 "名称"。 
+
+1. 在“替代模板参数”框旁边 在 " **替代模板参数** " 框旁边，为目标工作区输入所需的参数值。 
 
     ![Synapse 工作区部署](media/create-release-artifacts-deployment.png)
 

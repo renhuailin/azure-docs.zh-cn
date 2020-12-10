@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621495"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007579"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>使用 Azure 专用链接的 Azure Cache for Redis（公共预览版）
 在本文中，你将了解如何通过 Azure 门户创建虚拟网络、Azure Cache for Redis 实例和专用终结点。 你还将学习如何向现有的 Azure Cache for Redis 实例添加专用终结点。
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>是否对专用终结点启用了网络安全组 (NSG)？
-否，已对专用终结点禁用了 NSG。 但是，如果子网上还有其他资源，则 NSG 强制将应用于这些资源。
+否，已对专用终结点禁用了 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](../private-link/disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR。 
+
+对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>能否对专用终结点使用防火墙规则？
+不是，这是专用终结点的当前限制。 如果在缓存上配置了防火墙规则，则专用终结点将无法正常工作。
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>如何连接到群集缓存？
 需要将 `publicNetworkAccess` 设置为 `Disabled`，并且只能有一个专用终结点连接。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558668"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007511"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -45,7 +45,7 @@ ms.locfileid: "96558668"
 
 ### <a name="get-the-deployment-url"></a>获取部署 URL
 
-若要获取 URL 以对现有应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。 \<app-name>将和替换 \<group-name> 为你的应用及其 Azure 资源组的名称。
+若要获取 URL 以对现有应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。 \<app-name>将和替换 \<group-name> 为你的应用及其 Azure 资源组的名称。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > 如果你使用的是 linux 应用服务计划，则需要添加此参数：--运行时 python | 3。7
 
 
-或者，若要创建新的启用 Git 的应用，请 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 在 Cloud Shell 中使用 `--deployment-local-git` 参数运行。 \<app-name>将、 \<group-name> 和替换为 \<plan-name> 新 Git 应用的名称、其 Azure 资源组及其 Azure App Service 计划。
+或者，若要创建新的启用 Git 的应用，请 [`az webapp create`](/cli/azure/webapp#az-webapp-create) 在 Cloud Shell 中使用 `--deployment-local-git` 参数运行。 \<app-name>将、 \<group-name> 和替换为 \<plan-name> 新 Git 应用的名称、其 Azure 资源组及其 Azure App Service 计划。
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -145,7 +145,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 使用 Git 发布到 Azure 中的应用服务应用时，你可能会看到以下常见错误消息：
 
-|消息|原因|解决方法
+|Message|原因|解决方法
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|应用未正常运行。|在 Azure 门户中启动应用。 如果 Web 应用已停止，Git 部署将不可用。|
 |`Couldn't resolve host 'hostname'`|“azure”远程实例的地址信息不正确。|使用 `git remote -v` 命令列出所有远程网站以及关联的 URL。 确认“azure”远程网站的 URL 正确。 如果需要，请删除此远程网站并使用正确的 URL 重新创建它。|
@@ -157,6 +157,6 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 ## <a name="additional-resources"></a>其他资源
 
 - [项目 Kudu 文档](https://github.com/projectkudu/kudu/wiki)
-- [持续部署到 Azure App Service](deploy-continuous-deployment.md)
+- [持续部署到 Azure 应用服务](deploy-continuous-deployment.md)
 - [示例：从本地 Git 存储库创建 web 应用并部署代码 (Azure CLI) ](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
 - [示例：从本地 Git 存储库创建 web 应用并部署代码 (PowerShell) ](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

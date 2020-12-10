@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185851"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005199"
 ---
 # <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
 
@@ -25,7 +25,7 @@ ms.locfileid: "86185851"
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
-可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的**试运行**按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Az 模块](/powershell/azure/install-az-ps)。
+可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的 **试运行** 按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Az 模块](/powershell/azure/install-az-ps)。
 
 > [!NOTE]
 > 若要检索 API 密钥，请使用[查找 SendGrid API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)中的步骤。
@@ -100,7 +100,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
     $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")

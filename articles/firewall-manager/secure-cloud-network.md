@@ -199,7 +199,7 @@ ms.locfileid: "89535996"
 2. 在完成时选择“下一步:中心”。
 3. 在“中心”选项卡上，选择“关联虚拟中心”。
 4. 选择“Hub-01”，然后选择“添加”。
-5. 选择“查看 + 创建”  。
+5. 选择“查看 + 创建”。
 6. 选择“创建”  。
 
 这可能需要 5 分钟或更长时间才能完成。
@@ -228,11 +228,11 @@ ms.locfileid: "89535996"
 1. 将远程桌面连接到防火墙公共 IP 地址，然后进行登录。
 
 3. 打开 Internet Explorer 并浏览到 https://www.microsoft.com 。
-4. 出现 Internet Explorer 安全警报时，请选择“确定” > “关闭”。
+4. 出现 Internet Explorer 安全警报时，请选择“确定” > “关闭”。  
 
    应会看到 Microsoft 主页。
 
-5. 浏览到 https://www.google.com。
+5. 浏览到 https://www.google.com 。
 
    防火墙应会阻止你访问。
 

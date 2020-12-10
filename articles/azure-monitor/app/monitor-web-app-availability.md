@@ -4,12 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075137"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007919"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -47,14 +47,14 @@ ms.locfileid: "93075137"
 |----|----|----|
 |**URL** |  URL 可以是要测试的任何网页，但必须在公共 Internet 中可见。 该 URL 可以包括查询字符串。 因此，例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。|
 |**分析从属请求**| 测试会请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载这些资源中的任一个，则表明测试失败。 如果不选中此选项，则测试只请求指定 URL 的文件。 启用此选项会导致更严格的检查。 测试有时候可能会失败，在手动浏览站点时，可能注意不到这一点。
-|**启用重试**|测试失败时，会在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 **建议使用此选项** 。 平均大约有 80% 的失败可在重试后消除。|
+|**启用重试**|测试失败时，会在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 **建议使用此选项**。 平均大约有 80% 的失败可在重试后消除。|
 |**测试频率**| 设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。|
-|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议最低测试位置数目为 5** ，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
+|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议最低测试位置数目为 5**，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
-**如果 URL 在公共 Internet 中不可见，可以选择性地打开防火墙，只允许测试事务通过** 。 若要详细了解可用性测试代理的防火墙例外，请参阅 [IP 地址指南](./ip-addresses.md#availability-tests)。
+**如果 URL 在公共 Internet 中不可见，可以选择性地打开防火墙，只允许测试事务通过**。 若要详细了解可用性测试代理的防火墙例外，请参阅 [IP 地址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
-> 强烈建议从多个位置进行测试， **至少为 5 个位置** 。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使 **测试位置的数目等于警报位置阈值 + 2** 。
+> 强烈建议从多个位置进行测试，**至少为 5 个位置**。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使 **测试位置的数目等于警报位置阈值 + 2**。
 
 ### <a name="success-criteria"></a>成功标准
 
@@ -86,36 +86,22 @@ ms.locfileid: "93075137"
 | USDoD 东部     | usgov-ddeast-bc-op-nt-azr    |
 | USDoD 中部  | usgov-ddcentral-bc-op-nt-azr |
 
-#### <a name="us-sec"></a>每秒
-
-| 显示名称 | 总体名称 |
-|--------------|-----------------|
-| USSec 西   | ussec-bc-op-nt-azr  |
-| USSec 东部   | ussec-bc-op-nt-azr  |
-
-#### <a name="us-nat"></a>US Nat
-
-| 显示名称 | 总体名称 |
-|--------------|-----------------|
-| USNat 东部   | usnat-bc-op-nt-azr  |
-| USNat 西部   | usnat-bc-op-nt-azr  |
-
 #### <a name="azure"></a>Azure
 
 | 显示名称                           | 总体名称   |
 |----------------------------------------|-------------------|
 | 澳大利亚东部                         | emea-au-syd  |
-| 巴西南部                           | latam-gru-边缘 |
-| Central US                             | 美国 mia-边缘    |
+| Brazil South                           | latam-gru-边缘 |
+| 美国中部                             | 美国 mia-边缘    |
 | 东亚                              | apac-hkn-bc-op-nt-azr   |
 | 美国东部                                | us-va-圣 bc-op-nt-azr     |
 | 法国南部 (以前的华北)  | emea-ch-zrh  |
 | 法国中部                         | emea-pra-边缘  |
-| 日本东部                             | apac-jp-kaw-ft-85h  |
+| Japan East                             | apac-jp-kaw-ft-85h  |
 | 北欧                           | emea-db3-bc-op-nt-azr   |
 | 美国中北部                       | us-ch1-bc-op-nt-azr     |
 | 美国中南部                       | us-sn1-bc-op-nt-azr     |
-| 东南亚                         | apac-sin-bc-op-nt-azr   |
+| Southeast Asia                         | apac-sin-bc-op-nt-azr   |
 | 英国西部                                | emea-停止-边缘  |
 | 西欧                            | emea-nl-bc-op-nt-azr   |
 | 美国西部                                | us-sjc-dp1-bc-op-nt-azr     |
@@ -127,7 +113,7 @@ ms.locfileid: "93075137"
 
 几分钟之后，单击“刷新”  即可查看测试结果。
 
-![屏幕截图显示 "刷新" 按钮突出显示的 "可用性" 页。](./media/monitor-web-app-availability/availability-refresh-002.png)
+![屏幕截图显示突出显示了“刷新”按钮的“可用性”页。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散点图视图显示其中有诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试、测试名称和位置。
 
@@ -174,7 +160,7 @@ ms.locfileid: "93075137"
 
 ## <a name="troubleshooting"></a>故障排除
 
-请参阅[疑难解答文章](troubleshoot-availability.md)。
+专用[故障排除文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

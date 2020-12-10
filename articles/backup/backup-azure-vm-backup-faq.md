@@ -1,15 +1,14 @@
 ---
 title: 常见问题解答 - 备份 Azure VM
 description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324782"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008344"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -163,11 +162,20 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
-可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)
+可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)。
+
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>能否取消正在进行的还原作业？
+不能，无法取消正在进行的还原作业。
 
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作需要很长时间才能完成？
 
 总还原时间取决于存储帐户的每秒输入/输出操作次数 (IOPS) 和吞吐量。 如果目标存储帐户加载了其他应用程序读写操作，则总还原时间可能会受到影响。 若要改进还原操作，请选择未加载其他应用程序数据的存储帐户。
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>如何处理 "创建新的虚拟机"-还原类型与调控策略冲突？
+
+Azure 备份使用从恢复点 "附加" 磁盘，而不查看映像引用或库。 因此，在策略中，可以选中 "osDisk 作为附加"，脚本条件将为：
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 

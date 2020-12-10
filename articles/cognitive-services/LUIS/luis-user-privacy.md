@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/02/2019
-ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541000"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007732"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
 
@@ -50,7 +50,7 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 ## <a name="location-of-active-learning"></a>主动学习的位置
 
-若要启用 [活动学习](luis-how-to-review-endpoint-utterances.md#enable-active-learning)，在已发布的 LUIS 终结点上收到的用户的已记录最谈话存储在以下 Azure 地理区域中：
+若要启用 [活动学习](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)，在已发布的 LUIS 终结点上收到的用户的已记录最谈话存储在以下 Azure 地理区域中：
 
 * [欧洲](#europe)
 * [澳大利亚](#australia)

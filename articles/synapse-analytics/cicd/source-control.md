@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350732"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008143"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
 
@@ -138,6 +138,24 @@ GitHub 与 Synapse Studio 的集成支持 [https://github.com](https://github.co
 
 执行这些步骤后，工作区将能够连接到组织中的公共和专用存储库。 如果无法连接，请尝试清除浏览器缓存，然后重试。
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>已使用个人帐户连接到 GitHub
+
+如果你已连接到 GitHub 并且仅授予了访问个人帐户的权限，请按照以下步骤向组织授予权限。
+
+1. 请参阅 GitHub 并打开 " **设置**"。
+
+    ![打开 GitHub 设置](media/github-settings.png)
+
+1. 选择“应用程序”。 在 " **授权的 OAuth 应用** " 选项卡中，应会看到 " *Azure Synapse*"。
+
+    ![授权 OAuth 应用](media/authorize-app.png)
+
+1. 选择 *Azure Synapse* 并授予对组织的访问权限。
+
+    ![授予组织权限](media/grant-organization-permission.png)
+
+完成这些步骤后，工作区将能够连接到组织中的公共和专用存储库。
+
 ## <a name="version-control"></a>版本控制
 
 版本控制系统 (也称为 _源代码管理_) 允许开发人员协作处理代码并跟踪更改。源代码管理是多开发人员项目的重要工具。
@@ -163,6 +181,7 @@ GitHub 与 Synapse Studio 的集成支持 [https://github.com](https://github.co
 ```
 
 Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分支时，不会删除以前的发布分支。 如果想要远程删除以前的发布分支，请手动将其删除。
+
 
 ### <a name="publish-code-changes"></a>发布代码更改
 
@@ -192,7 +211,7 @@ Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分�
 
 ## <a name="best-practices-for-git-integration"></a>Git 集成的最佳做法
 
--   **权限**。 将 git 存储库连接到你的工作区之后，有权访问你的工作区中任何角色的 git 存储库的任何人都能够在 git 模式下更新项目，如 sql 脚本、笔记本、spark 作业定义、数据集、数据流和管道。 通常不需要每个团队成员都有权更新工作区。 仅授予 Synapse 工作区项目作者的 git 存储库权限。 
+-   **权限**。 将 git 存储库连接到工作区后，任何能够访问你的 git 存储库中任何角色的 git 存储库的用户都可以在 git 模式下更新项目，如 sql 脚本、笔记本、spark 作业定义、数据集、数据流和管道。 通常不需要每个团队成员都有权更新工作区。 仅授予 Synapse 工作区项目作者的 git 存储库权限。 
 -   **协作**。 建议不要允许直接签入到协作分支。 此限制有助于防止出现 bug，因为每个签入都将经历[创建功能分支](source-control.md#creating-feature-branches)中描述的拉取请求审阅过程。
 -   **Synapse 实时模式**。 在 git 模式下发布后，所有更改将反映在 Synapse 实时模式下。 在 Synapse 实时模式下，已禁用发布。 如果你已被授予正确的权限，则可以查看在实时模式下运行项目。 
 -   **在工作室中编辑项目**。 仅可通过 Synapse studio 启用工作区源控件并自动将更改同步到 git。 通过 SDK、PowerShell 进行的任何更改都不会同步到 git。 建议你始终在启用 git 后在 Studio 中编辑项目。
