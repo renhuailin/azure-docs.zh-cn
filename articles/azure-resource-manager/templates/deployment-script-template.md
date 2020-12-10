@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902423"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030444"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览版）
 
-了解如何使用 Azure 资源模板中的部署脚本。 使用名为 `Microsoft.Resources/deploymentScripts` 的新资源类型，用户可以在模板部署中执行部署脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
+了解如何使用 Azure 资源模板中的部署脚本。 使用名为的新资源类型 `Microsoft.Resources/deploymentScripts` ，用户可以在模板部署中执行脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
 
 - 将用户添加到目录
 - 执行数据平面操作，例如，复制 blob 或种子数据库
@@ -29,7 +29,6 @@ ms.locfileid: "95902423"
 
 - 易于编码、使用和调试。 你可以在最喜欢的开发环境中开发部署脚本。 脚本可以嵌入模板或外部脚本文件中。
 - 可以指定脚本语言和平台。 当前，支持 Linux 环境上的 Azure PowerShell 和 Azure CLI 部署脚本。
-- 允许指定用于执行脚本的标识。 当前，仅支持 [Azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允许将命令行参数传递给脚本。
 - 可以指定脚本输出，并将其传递回部署。
 
@@ -38,12 +37,13 @@ ms.locfileid: "95902423"
 > [!IMPORTANT]
 > 脚本执行和故障排除需要一个存储帐户和一个容器实例。 可以选择指定现有存储帐户，如果不指定，脚本服务会自动创建存储帐户和容器实例。 当部署脚本执行达到某个最终状态时，脚本服务通常会删除这两个自动创建的资源。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
+> [!IMPORTANT]
+> DeploymentScripts 资源 API 版本2020-10-01 支持 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务将使用部署主体的令牌来创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
+> Azure 登录名的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。  部署脚本服务将每10分钟重试一次登录，时间间隔为10秒，直到复制托管标识角色分配。
+
 ## <a name="prerequisites"></a>先决条件
 
-- 具有目标资源组的参与者角色的用户分配的托管标识。 此标识用来执行部署脚本。 若要在资源组之外执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请在订阅级别分配标识。
-
-  > [!NOTE]
-  > 脚本服务将在后台创建一个存储帐户（除非指定一个现有的存储帐户）和一个容器实例。  如果订阅尚未注册 Azure 存储帐户 (Microsoft.Storage) 和 Azure 容器实例 (Microsoft.ContainerInstance) 资源提供程序，则需要在订阅级别具有参与者角色的用户分配的托管标识。
+- **(可选) 用户分配的托管标识，具有在脚本中执行操作所需的权限**。 对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建基础资源。 如果脚本需要对 Azure 进行身份验证并执行 Azure 特定操作，建议使用用户分配的托管标识来提供脚本。 托管标识在目标资源组中必须具有所需的访问权限才能完成脚本中的操作。 你还可以在部署脚本中登录到 Azure。 若要在资源组之外执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请在订阅级别分配标识。 
 
   若要创建标识，请参阅[使用 Azure 门户创建用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) 或[使用 Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -135,7 +135,7 @@ ms.locfileid: "95902423"
 
 属性值详细信息：
 
-- **标识**：部署脚本服务使用用户分配的托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
+- **标识**：对于部署脚本 API 版本2020-10-01 或更高版本，用户分配的托管标识是可选的，除非你需要在脚本中执行任何特定于 Azure 的操作。  对于 API 版本 2019-10-01-preview，需要使用托管标识，因为部署脚本服务使用它来执行脚本。 当前，仅支持用户分配的托管标识。
 - **kind**：指定脚本类型。 目前支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
 - **forceUpdateTag**：在模板部署之间更改此值将强制重新执行部署脚本。 如果使用 newGuid ( # A1 或 utcNow ( # A3 函数，则这两个函数只能在参数的默认值中使用。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
 - **containerSettings**：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称。  如果未指定，将自动生成组名。
@@ -161,7 +161,7 @@ ms.locfileid: "95902423"
 - **supportingScriptUris**：指定一个可公开访问的 Url 数组，它们指向在 `ScriptContent` 或 `PrimaryScriptUri` 中调用的支持性文件。
 - **timeout**：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D**。
 - **cleanupPreference**。 指定在脚本执行达到最终状态时清理部署资源的首选项。 默认设置为 Always，这意味着不管最终状态如何（成功、失败、已取消），都会删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
-- **retentionInterval**：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留间隔介于1到26小时 (PT26H) 。 当 cleanupPreference 设置为 OnExpiration 时使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+- **retentionInterval**：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留时间间隔为 1 到 26 小时 (PT26H)。 当 cleanupPreference 设置为 OnExpiration 时使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他示例
 
@@ -169,14 +169,11 @@ ms.locfileid: "95902423"
 - [示例 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json)：在订阅级别创建一个资源组，在该资源组中创建一个密钥保管库，然后使用部署脚本将证书分配给该保管库。
 - [示例 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)：创建一个用户分配的托管标识，在资源组级别将参与者角色分配给该标识，创建一个密钥保管库，然后使用部署脚本将证书分配给该保管库。
 
-> [!NOTE]
-> 建议提前创建用户分配的标识并授予权限。 如果在运行部署脚本的同一模板中创建标识并授予权限，则可能会出现与登录和权限相关的错误。 权限生效需要一段时间。
-
 ## <a name="use-inline-scripts"></a>使用内联脚本
 
 以下模板具有一个使用 `Microsoft.Resources/deploymentScripts` 类型定义的资源。 突出显示的部分是内联脚本。
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
 > 由于内联部署脚本是用双引号括起来的，因此部署脚本内的字符串需要使用 **&#92;** 进行转义或者使用单引号括起来。 还可以考虑使用字符串替换，如先前的 JSON 示例所示。
@@ -188,11 +185,10 @@ ms.locfileid: "95902423"
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -239,7 +235,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 以下模板显示了如何在两个 DeploymentScripts 资源之间传递值：
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
 在第一个资源中，定义一个名为 $DeploymentScriptOutputs 的变量，并使用它来存储输出值。 若要访问模板内另一个资源的输出值，请使用：
 
@@ -276,7 +272,7 @@ reference('<ResourceName>').output.text
 
     这些组合支持文件共享。  有关详细信息，请参阅[创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)和[存储帐户类型](../../storage/common/storage-account-overview.md)。
 - 尚不支持存储帐户防火墙规则。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md)。
-- 部署脚本的用户分配的托管标识必须具有管理存储帐户的权限，包括读取、创建和删除文件共享。
+- 部署主体必须有权管理存储帐户，其中包括读取、创建和删除文件共享。
 
 若要指定现有存储帐户，请将以下 json 添加到 `Microsoft.Resources/deploymentScripts` 的属性元素中：
 
@@ -539,6 +535,8 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 > [!NOTE]
 > 不建议将脚本服务生成的存储帐户和容器实例用于其他目的。 根据脚本的生命周期，可能会删除这两个资源。
+
+若要保留容器实例和存储帐户以进行故障排除，可以将睡眠命令添加到脚本中。  例如 " [启动-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)"。
 
 ## <a name="run-script-more-than-once"></a>多次运行脚本
 

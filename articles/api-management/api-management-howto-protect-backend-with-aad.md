@@ -1,24 +1,24 @@
 ---
 title: 使用 OAuth 2.0 和 Azure AD 在 API 管理中保护 API 后端
 titleSuffix: Azure API Management
-description: 了解如何在 Azure API 管理中使用 OAuth 2.0 用户授权和 Azure Active Directory 保护对 web API 后端的访问
+description: 了解如何在 Azure API 管理中使用 OAuth 2.0 用户授权和 Azure Active Directory 保护对 Web API 后端的访问
 services: api-management
 author: miaojiang
 ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.custom: contperfq1
-ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618771"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027911"
 ---
-# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>在 Azure API 管理中使用 OAuth 2.0 授权保护 web API 后端 Azure AD 
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>在 Azure API 管理中使用 OAuth 2.0 授权和 Azure AD 保护 Web API 后端 
 
-本指南演示如何使用[Azure Active Directory (Azure AD) 中的 OAuth 2.0 协议](../active-directory/develop/active-directory-v2-protocols.md)，将[Azure api 管理](api-management-key-concepts.md)实例配置为保护 API。 
+本指南介绍如何[结合 Azure Active Directory (Azure AD) 使用 OAuth 2.0 协议](../active-directory/develop/active-directory-v2-protocols.md)配置 [Azure API 管理](api-management-key-concepts.md)实例，以保护 API。 
 
 > [!NOTE]
 > 此功能可在“开发人员”、“基本”、“标准”和“高级”层中使用   。
@@ -43,9 +43,9 @@ ms.locfileid: "91618771"
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>在 Azure AD 中注册一个应用程序用于表示 API
 
-若要使用 Azure AD 保护 API，请首先在 Azure AD 中注册一个表示该 API 的应用程序。 以下步骤使用 Azure 门户来注册应用程序。 有关应用注册的详细信息，请参阅 [快速入门：将应用程序配置为公开 WEB API](../active-directory/develop/quickstart-configure-app-expose-web-apis.md)。
+若要使用 Azure AD 保护 API，请首先在 Azure AD 中注册一个表示该 API 的应用程序。 以下步骤使用 Azure 门户来注册应用程序。 有关应用注册的详细信息，请参阅[快速入门：配置应用程序以公开 Web API](../active-directory/develop/quickstart-configure-app-expose-web-apis.md)。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来注册应用程序。 搜索并选择 **应用注册**。
+1. 转到 [Azure 门户](https://portal.azure.com)来注册应用程序。 搜索并选择“应用注册”。
 
 1. 选择“新注册”。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "91618771"
 
 1. 转到 [Azure 门户](https://portal.azure.com)来注册应用程序。
 
-1. 搜索并选择 **应用注册**。
+1. 搜索并选择“应用注册”。
 
 1. 选择“新注册”。
 
@@ -95,7 +95,7 @@ ms.locfileid: "91618771"
 
    1. 从客户端应用的页面列表中，选择“证书和机密”，然后选择“新建客户端密码”。
 
-   1. 在“添加客户端密码”下，提供**说明**。 选择密钥过期时间，然后选择“添加”。
+   1. 在“添加客户端密码”下，提供 **说明**。 选择密钥过期时间，然后选择“添加”。
 
 创建机密后，请记下密钥值，以便在后续步骤中使用。 
 
@@ -103,7 +103,7 @@ ms.locfileid: "91618771"
 
 注册了用于表示 API 和开发人员控制台的两个应用程序之后，请授予权限以允许客户端应用调用后端应用。  
 
-1. 转到 [Azure 门户](https://portal.azure.com)来向客户端应用程序授予权限。 搜索并选择 **应用注册**。
+1. 转到 [Azure 门户](https://portal.azure.com)来向客户端应用程序授予权限。 搜索并选择“应用注册”。
 
 1. 选择你的客户端应用程序。 然后，在应用的页面列表中，选择“API 权限”。
 

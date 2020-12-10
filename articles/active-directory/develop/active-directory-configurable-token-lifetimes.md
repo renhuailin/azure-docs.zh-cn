@@ -1,7 +1,7 @@
 ---
 title: 可配置的令牌生存期
 titleSuffix: Microsoft identity platform
-description: 了解如何设置 Microsoft 标识平台颁发的令牌的生存期。
+description: 了解如何设置由 Microsoft 标识平台颁发的令牌的生存期。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4dab75a4e95a7561bc86176816cb402c10de781e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077415"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030138"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "93077415"
 
 若要开始，请执行以下步骤：
 
-1. 下载最新的 [PowerShell 模块公共预览版 Azure AD](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
 1. 运行 `Connect` 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
     ```powershell
@@ -117,7 +117,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 ### <a name="single-sign-on-session-tokens"></a>单一登录会话令牌
 当用户使用 Microsoft 标识平台进行身份验证时， (SSO) 的单一登录会话将与用户的浏览器和 Microsoft 标识平台建立在一起。 SSO 令牌采用 Cookie 形式，代表此会话。 SSO 会话令牌未绑定到特定的资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
 
-Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 关闭浏览器时， (会话 cookie 会被销毁。 ) 通常会存储非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌  。
+Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 关闭浏览器时， (会话 cookie 会被销毁。 ) 通常会存储非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌。
 
 非持久性会话令牌的生存期为 24 小时。 持久性令牌的生存期为90天。 只要在其有效期内使用 SSO 会话令牌，有效期就会延长24小时或90天，具体取决于标记类型。 如果 SSO 会话令牌在其有效期内未被使用，则将它视为过期，不再被系统接受。
 

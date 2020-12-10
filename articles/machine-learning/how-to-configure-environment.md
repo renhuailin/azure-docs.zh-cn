@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018777"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031753"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置 Python 开发环境
 
@@ -86,9 +86,9 @@ ms.locfileid: "96018777"
 
 ## <a name="local-computer-or-remote-vm-environment"></a><a id="local"></a>本地计算机或远程 VM 环境
 
-你可以在本地计算机或远程虚拟机上设置环境，如 Azure 机器学习计算实例或 Data Science VM。 
+你可以在本地计算机或远程虚拟机上设置环境，例如 Azure 机器学习计算实例或 Data Science VM。 
 
-若要配置本地开发环境或远程 VM：
+若要配置本地开发环境或远程 VM，请执行以下操作：
 
 1. 创建 Python 虚拟环境（virtualenv，conda）。
 
@@ -144,7 +144,7 @@ Azure 机器学习[计算实例](concept-compute-instance.md)是一个安全的�
 
 随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-若要了解有关计算实例的详细信息（包括如何安装包），请参阅 [创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
+若要详细了解计算实例（包括如何安装包），请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
 
 > [!TIP]
 > 若要防止未使用的计算实例产生费用，请[停止计算实例](how-to-create-manage-compute-instance.md#manage)。
@@ -155,7 +155,7 @@ Azure 机器学习[计算实例](concept-compute-instance.md)是一个安全的�
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
-Data Science VM 是 (VM) 映像的自定义虚拟机，你可以将其用作开发环境。 它专为数据科学工作而设计，其中预配置了工具和软件，例如：
+Data Science VM 是一种可用作开发环境的自定义虚拟机 (VM) 映像。 它专为数据科学工作而设计，其中预配置了工具和软件，例如：
 
   - TensorFlow、PyTorch、Scikit-learn、XGBoost 和 Azure 机器学习 SDK 等包
   - Spark Standalone 和 Drill 等常用数据科学工具
@@ -166,11 +166,11 @@ Data Science VM 是 (VM) 映像的自定义虚拟机，你可以将其用作开�
 有关更全面的工具列表，请参阅 [Data Science VM 工具指南](data-science-virtual-machine/tools-included.md)。
 
 > [!IMPORTANT]
-> 如果你计划将 Data Science VM 用作定型或推断作业的 [计算目标](concept-compute-target.md) ，则仅支持 Ubuntu。
+> 如果你计划将 Data Science VM 用作训练或推理作业的[计算目标](concept-compute-target.md)，则仅 Ubuntu 受支持。
 
-使用 Data Science VM 作为开发环境：
+若要使用 Data Science VM 作为开发环境，请执行以下操作：
 
-1. 使用以下方法之一创建 Data Science VM：
+1. 使用下列方法之一创建一个 Data Science VM：
 
     * 使用 Azure 门户创建一个 [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) 或 [Windows](data-science-virtual-machine/provision-vm.md) DSVM。
     * [使用 ARM 模板创建 Data Science VM](data-science-virtual-machine/dsvm-tutorial-resource-manager.md)。
@@ -207,7 +207,7 @@ Data Science VM 是 (VM) 映像的自定义虚拟机，你可以将其用作开�
         conda activate AzureML
         ```
 
-1. 若要将 Data Science VM 配置为使用 Azure 机器学习工作区，请 [创建一个工作区配置文件](#workspace) 或使用现有的。
+1. 若要将 Data Science VM 配置为使用你的 Azure 机器学习工作区，请[创建一个工作区配置文件](#workspace)或使用现有的工作区配置文件。
 
 你可以使用 Visual Studio Code 和 [Azure 机器学习 Visual Studio Code 扩展](#vscode)（与本地环境类似）与 Azure 机器学习进行交互。
 
@@ -216,5 +216,5 @@ Data Science VM 是 (VM) 映像的自定义虚拟机，你可以将其用作开�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 MNIST 数据集对 Azure 机器学习上的[模型定型](tutorial-train-models-with-aml.md)。
-- 请参阅 [用于 Python 参考的 AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。 
+- 在 Azure 机器学习中使用 MNIST 数据集来[训练模型](tutorial-train-models-with-aml.md)。
+- 请参阅[适用于 Python 的 Azure 机器学习 SDK 参考](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。 

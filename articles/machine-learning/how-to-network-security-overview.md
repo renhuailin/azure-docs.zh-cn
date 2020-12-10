@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
+ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576564"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029594"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -43,7 +43,7 @@ ms.locfileid: "96576564"
 
 下表比较了服务如何使用 VNet 而不使用 VNet 访问 Azure 机器学习网络的不同部分。
 
-| 方案 | 工作区 |  关联的资源 | 训练计算环境 | 推断计算环境 |
+| 场景 | 工作区 |  关联的资源 | 训练计算环境 | 推断计算环境 |
 |-|-|-|-|-|-|
 |**无虚拟网络**| 公共 IP | 公共 IP | 公共 IP | 公共 IP |
 |**保护虚拟网络中的资源**| 专用 IP (专用终结点)  | 公共 IP (服务终结点)  <br> **或** <br> 专用 IP (专用终结点)  | 专用 IP | 专用 IP  | 

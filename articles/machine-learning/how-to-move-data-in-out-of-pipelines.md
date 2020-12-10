@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python, data4ml
-ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359759"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027571"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -102,7 +102,7 @@ train_step = PythonScriptStep(
 ```
 
 > [!NOTE]
-> 需要将所有这些参数的值替换为 (的、 `"train_data"` 、、 `"train.py"` `cluster` 和 `iris_dataset`) 。 上面的代码片段只显示呼叫的形式，并且不是 Microsoft 示例的一部分。 
+> 你需要将所有这些参数（即，`"train_data"`、`"train.py"`、`cluster` 和 `iris_dataset`）的值替换为自己的数据。 上面的代码片段仅演示了调用的形式，不是 Microsoft 示例的一部分。 
 
 你还可以使用 `random_split()` 和 `take_sample()` 等方法来创建多个输入或减少传递给管道步骤的数据量：
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
 > [!NOTE]
-> 前面的代码段显示调用的形式，并且不是 Microsoft 示例的一部分。 您必须将各种参数替换为您自己的项目中的值。
+> 前面的代码片段演示了调用的形式，不是 Microsoft 示例的一部分。 你必须将各种参数替换为自己项目中的值。
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>将 `PipelineData` 用于中间数据
 
@@ -183,7 +183,7 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 ```
 
 > [!NOTE]
-> 前面的代码段显示调用的形式，并且不是 Microsoft 示例的一部分。 您必须将各种参数替换为您自己的项目中的值。
+> 前面的代码片段演示了调用的形式，不是 Microsoft 示例的一部分。 你必须将各种参数替换为自己项目中的值。
 
 > [!TIP]
 > 公共预览版类 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 改进了在管道步骤之间传递中间数据的体验。 有关使用 `OutputFileDatasetConfig` 的代码示例，请参阅[如何生成两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
@@ -237,7 +237,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 `PipelineData` 输入的值是上一输出的路径。 
 
 > [!NOTE]
-> 前面的代码段显示调用的形式，并且不是 Microsoft 示例的一部分。 您必须将各种参数替换为您自己的项目中的值。
+> 前面的代码片段演示了调用的形式，不是 Microsoft 示例的一部分。 你必须将各种参数替换为自己项目中的值。
 
 > [!TIP]
 > 公共预览版类 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 改进了在管道步骤之间传递中间数据的体验。 有关使用 `OutputFileDatasetConfig` 的代码示例，请参阅[如何生成两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。

@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314166"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029560"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -60,8 +60,8 @@ ms.locfileid: "93314166"
 > * 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 如果你打算通过限制流量来保护虚拟网络，请为计算服务保持打开某些端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
 > * 若要将多个计算实例或群集放入一个虚拟网络，可能需要请求提高一个或多个资源的配额。
 > * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
-> * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许 websocket 连接到 *. instances.azureml.net 和 instances.azureml.ms。 
-> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果你使用的是自定义 DNS 或主机文件，请添加 `<instance-name>.<region>.instances.azureml.ms` 具有工作区专用终结点专用 IP 地址的条目。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 文章。
+> * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
+> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
     
 > [!TIP]
 > 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
@@ -111,9 +111,9 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 - 使用 NSG 规则来拒绝出站 Internet 连接。
 
-- 对于 __计算实例__ 或 __计算群集__ ，请将出站流量限制为以下各项：
-   - Azure 存储 - 使用 __服务标记__ __Storage.RegionName__ 。 其中 `{RegionName}` 是 Azure 区域的名称。
-   - Azure 容器注册表 - 使用 __服务标记__ __AzureContainerRegistry.RegionName__ 。 其中 `{RegionName}` 是 Azure 区域的名称。
+- 对于 __计算实例__ 或 __计算群集__，请将出站流量限制为以下各项：
+   - Azure 存储 - 使用 __服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
+   - Azure 容器注册表 - 使用 __服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 机器学习，通过使用服务标记 AzureMachineLearning
    - Azure 资源管理器，通过使用服务标记 AzureResourceManager
    - Azure Active Directory - 使用 __服务标记__ __AzureActiveDirectory__

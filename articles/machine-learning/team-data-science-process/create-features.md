@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322019"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031855"
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 
 在本文中，你将了解特征工程及其在机器学习增强数据中的作用。 从在 [Azure 机器学习工作室（经典）](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)试验中提取的说明性示例中学习。 
 
-* **特征工程** ：基于原始数据中创建新特征来提高学习算法的预测能力的过程。 工程特征应捕获原始特征集中不易发现的附加信息。
-* **特征选择** ：选择部分关键特征来降低训练问题的维度的过程。
+* **特征工程**：基于原始数据中创建新特征来提高学习算法的预测能力的过程。 工程特征应捕获原始特征集中不易发现的附加信息。
+* **特征选择**：选择部分关键特征来降低训练问题的维度的过程。
 
 通常，先应用特征工程来生成其他特征，然后执行特征选择来消除不相关、冗余或高度相关的特征 。
 

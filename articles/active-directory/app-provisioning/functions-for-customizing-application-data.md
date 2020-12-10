@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.custom: contperfq2
-ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: fe18513bbfc69fb63f8b1b248b7cf02ad55b467d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344923"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027367"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>用于在 Azure AD 中编写属性映射的表达式的参考
 
@@ -38,7 +38,7 @@ ms.locfileid: "96344923"
 
 ## <a name="list-of-functions"></a>函数列表
 
-[Append](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[Coalesce](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[Count](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[Guid](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[Item](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[Join](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[Left](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word) StripSpaces ToLower ToUpper Word
+[](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [](#word) StripSpaces ToLower ToUpper Word
 
 ---
 ### <a name="append"></a>附加
@@ -69,8 +69,8 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **value1** |必须 |num |应与 value2 一起个的数值|
-| **value2** |必须 |num |应为 value1 个的数字值|
+| **value1** |必需 |num |应与 value2 一起个的数值|
+| **value2** |必需 |num |应为 value1 个的数字值|
 
 **实例**
 `BitAnd(&HF, &HF7)`
@@ -89,7 +89,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必须 | 表达式 | 任何有效的表达式 |
+| **expression** |必需 | 表达式 | 任何有效的表达式 |
 
 示例：  
 `CBool([attribute1] = [attribute2])`                                                                    
@@ -152,7 +152,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必须 |attribute |将计算元素的多值属性|
+| **attribute** |必需 |attribute |将计算元素的多值属性|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -181,7 +181,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| value  |必须 | Date | 要转换为 DateTime 类型的广告日期 |
+| value  |必须 | 日期 | 要转换为 DateTime 类型的广告日期 |
 
 **实例**
 `DateFromNum([lastLogonTimestamp])`
@@ -220,9 +220,9 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **状态** |必须 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
-| **valueIfTrue** |必须 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
-| **valueIfFalse** |必须 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
+| **状态** |必需 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
+| **valueIfTrue** |必需 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
+| **valueIfFalse** |必需 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
 
 **实例**
 `IIF([country]="USA",[country],[department])`
@@ -240,7 +240,7 @@ ms.locfileid: "96344923"
 | **value1** |必须 |String |要搜索的字符串 |
 | **value2** |必须 |String |要查找的字符串 |
 | **start** |可选 |整数 |用于查找子字符串的起始位置|
-| **compareType** |可选 |Enum |可以是 vbTextCompare 或 vbBinaryCompare |
+| **compareType** |可选 |枚举 |可以是 vbTextCompare 或 vbBinaryCompare |
 
 **实例**
 `InStr("The quick brown fox","quick")`
@@ -261,7 +261,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必须 |表达式 |要计算的表达式 |
+| **expression** |必需 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNull([displayName])`
@@ -279,7 +279,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必须 |表达式 |要计算的表达式 |
+| **expression** |必需 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNullOrEmpty([displayName])`
@@ -296,7 +296,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必须 |表达式 |要计算的表达式 |
+| **expression** |必需 |表达式 |要计算的表达式 |
 
 **实例**
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -311,10 +311,10 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必须 |表达式 |要计算的表达式 |
+| **expression** |必需 |表达式 |要计算的表达式 |
 
 ---
-### <a name="item"></a>项目
+### <a name="item"></a>项
 **函数：** Item (属性，index) 
 
 **说明：** Item 函数返回多值字符串/属性中的一个项。
@@ -323,8 +323,8 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必须 |特性 |要搜索的多值属性 |
-| **index** |必需 |整数 | 多值字符串中的项的索引|
+| **attribute** |必需 |Attribute |要搜索的多值属性 |
+| **索引** |必需 |整数 | 多值字符串中的项的索引|
 
 **实例**
 `Item([proxyAddresses], 1)`
@@ -357,7 +357,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必须 |特性 | 要从其返回字符的字符串 |
+| **字符串** |必需 |Attribute | 要从其返回字符的字符串 |
 | **NumChars** |必需 |整数 | 标识从字符串的开头开始)  (的字符数的数字|
 
 **实例**
@@ -376,8 +376,8 @@ ms.locfileid: "96344923"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是属性的名称。 |
-| **start** |必须 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |必须 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **start** |必需 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必需 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -392,7 +392,7 @@ ms.locfileid: "96344923"
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
 ---
-### <a name="not"></a>非
+### <a name="not"></a>Not
 **函数：** 不 (源) 
 
 **说明：** 翻转 **源** 的布尔值。 如果 **source** 值为 True，则返回 False。 否则，返回 True。
@@ -401,7 +401,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -416,7 +416,7 @@ ms.locfileid: "96344923"
 | value  |必须 | String | 支持的格式的日期时间字符串。 有关支持的格式，请参阅 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
 **示例：**
-* Workday 示例假设你想要将 *ContractEndDate* 中的属性（格式为 *2020-12-31-08:00* 到 accountExpires 字段）映射到 AD 中的 *accountExpires* 字段，则可以使用此函数并更改时区偏移量以匹配你的区域设置。 
+* Workday 示例假设你想要将 *ContractEndDate* 中的属性（格式为 *2020-12-31-08:00* 到 accountExpires 字段）映射到 AD 中的字段，则可以使用此函数并更改时区偏移量以匹配你的区域设置。 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors 示例假设你想要将属性 *结束* 时间从 SuccessFactors （格式为 *M/d/yyyy hh： mm： ss tt* ）映射到 AD 中的 *accountExpires* 字段，以下是你如何使用此函数并更改时区偏移量以匹配你的区域设置。
@@ -433,7 +433,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必须 |多值属性 |将删除重复项的多值属性|
+| **attribute** |必需 |多值属性 |将删除重复项的多值属性|
 
 **示例：** 
  `RemoveDuplicates([proxyAddresses])`返回净化的 proxyAddress 属性，其中所有重复值均已删除。
@@ -585,7 +585,7 @@ ms.locfileid: "96344923"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必须 |多值属性 |要从中返回单词的字符串。|
+| **字符串** |必需 |多值属性 |要从中返回单词的字符串。|
 | **WordNumber** |必需 | 整数 | 标识应返回的单词编号的数字|
 | **限定符** |必须 |String| 一个字符串，表示应用于标识单词的分隔符 (s) |
 

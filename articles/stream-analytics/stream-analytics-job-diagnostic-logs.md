@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006466"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029135"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 
@@ -54,29 +54,29 @@ ms.locfileid: "96006466"
 
 5. 可以根据 JSON 中的错误消息采取纠正措施。 在本示例中，检查以确保纬度值介于 -90 度到 90 度之间，并需要将其添加到查询中。
 
-6. 如果活动日志中的错误消息对于识别根本原因没有帮助，请启用资源日志并使用 Azure Monitor 日志。
+6. 如果活动日志中的错误消息对于确定根本原因没有帮助，请启用资源日志并使用 Azure Monitor 日志。
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>将诊断发送到 Azure Monitor 日志
 
 强烈建议打开资源日志并将它们发送到 Azure Monitor 日志。 默认情况下，它们处于“关闭”状态。 若要打开它们，请完成以下步骤：
 
-1.  如果还没有 Log Analytics 工作区，请创建一个。 建议将 Log Analytics 工作区置于流分析作业所在的同一区域。
+1.  如果你还没有 Log Analytics 工作区，请创建一个。 建议将 Log Analytics 工作区与流分析作业位于同一区域中。
 
 2.  登录 Azure 门户，导航到流分析作业。 在“监视”下，选择“诊断日志”。 然后选择“启用诊断”。
 
     ![在边栏选项卡中导航到资源日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 "**诊断设置**" "名称" 中提供一个 **名称**，并在 "**日志**" 下选中 "**执行** 和 **创作**" 框，然后 **在 "** **AllMetrics** " 然后选择 " **发送到 Log Analytics** " 并选择工作区。 单击“保存”  。
+2.  在“诊断设置名称”中提供“名称”，并选中“日志”下的“执行”和“授权”复选框，以及“指标”下的“AllMetrics”复选框      。 然后选择“发送到 Log Analytics”并选择工作区。 单击“ **保存**”。
 
     ![资源日志设置](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. 流分析作业开始时，资源日志会被路由到 Log Analytics 工作区。 若要查看作业的资源日志，请在“监视”部分下选择“日志” 。
 
-   ![屏幕截图显示选定了日志的 "常规" 菜单。](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![显示“常规”菜单的屏幕截图，其中已选择“日志”](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 您可以在左窗格中选择任意预定义的查询，然后选择 " **运行**"。 你将在底部窗格中看到查询结果。 
+4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 可以在左侧窗格中选择任意预定义的查询，然后选择“运行”。 底部窗格将显示查询结果。 
 
-   ![屏幕截图显示流分析作业的日志。](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
+   ![显示流分析作业的“日志”的屏幕截图。](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>资源日志类别
 

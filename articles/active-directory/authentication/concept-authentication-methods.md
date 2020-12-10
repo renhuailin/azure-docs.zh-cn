@@ -10,13 +10,13 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744323"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027316"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -45,7 +45,7 @@ Azure AD 多重身份验证会在用户登录时添加更多的安全，而不�
 | OATH 软件令牌           | 中   | 中    | 高         |
 | SMS                            | 中型   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
-| Password                       | 低      | 高      | 高         |
+| 密码                       | 低      | 高      | 高         |
 
 有关安全性的详细信息，请参阅 [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
 
@@ -80,7 +80,7 @@ Azure AD 多重身份验证会在用户登录时添加更多的安全，而不�
 * [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [登录 (预览) ](howto-authentication-sms-signin.md) 和 [验证](concept-authentication-phone-options.md#mobile-phone-verification)
 * [语音呼叫验证](concept-authentication-phone-options.md)
-* Password
+* 密码
 
 > [!NOTE]
 > 在 Azure AD 中，密码通常是主要身份验证方法之一。 不能禁用密码身份验证方法。 如果使用密码作为主要身份验证因素，请使用 Azure AD 多重身份验证提高登录事件的安全性。

@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852076"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028098"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
 页面布局包会定期更新，其中包括页面元素的修复和改进。 以下更改日志详述了在每个版本中引入的更改。
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
+
+**2.1.1**
+
+- 除了之外，还添加了一个 UXString `heading` `intro` ，以作为标题显示在该页上。 默认情况下隐藏此值。
+- 添加了对将密码保存到 iCloud 密钥链的支持。
+- 添加了对使用 policy 或 QueryString 参数 `pageFlavor` 选择布局 (经典、oceanBlue 或石板灰) 的支持。
+- 添加了自断言页上的免责声明。
+- 当页面加载时，焦点现在置于第一个可编辑字段。
+- 如果有多个字段出现错误，焦点将置于第一个错误字段。
+- 验证电子邮件验证码后，焦点会置于 "更改" 按钮上。
 
 **2.1.0**
 
@@ -38,12 +46,16 @@ ms.locfileid: "88852076"
 
 - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
 - 添加了可配置的用户输入验证延迟，以改善用户体验。
-- 辅助功能修复
+- 修复了一个可访问性问题，使讲述人现在可以阅读错误消息。 
+- 电子邮件经过验证后，焦点会置于密码字段。
+- `autofocus`从 checkbox 控件中删除。 
+- 添加了对电话号码验证的显示小组件的支持。
 - 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
-- 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
-- 对 Chrome 转换的支持
+- 现在，电子邮件字段 `type=email` 将提供正确的建议。
+- 支持 Chrome 翻译。
+- 在用户流页中添加了对租户品牌的支持。
 
 **1.1.0**
 
@@ -58,6 +70,15 @@ ms.locfileid: "88852076"
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>带有密码重置链接的统一登录注册页面 (unifiedssp)
 
+**2.1.1**
+- 除了之外，还添加了一个 UXString `heading` `intro` ，以作为标题显示在该页上。 默认情况下隐藏此值。
+- 添加了对使用 policy 或 QueryString 参数 `pageFlavor` 选择布局 (经典、oceanBlue 或石板灰) 的支持。
+- 添加了对将密码保存到 iCloud 密钥链的支持。
+- 如果有多个字段出现错误，焦点将置于第一个错误字段。
+- 当页面加载时，焦点现在置于第一个可编辑字段。
+- 为声明提供程序选择链接添加了一个新位置 `bottomUnderFormClaimsProviderSelections` 。
+- 删除不再使用的 UXStrings。
+
 **2.1.0**
 
 - 添加了对多个注册链接的支持。
@@ -66,12 +87,13 @@ ms.locfileid: "88852076"
 **1.2.0**
 
 - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
-- 辅助功能修复
+- 辅助功能修补程序。
 - 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
-- 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
-- 对 Chrome 转换的支持
+- 现在，电子邮件字段 `type=email` 将提供正确的建议。
+- 支持 Chrome 翻译。
+- 在用户流页中添加了对租户品牌的支持。
 
 **1.1.0**
 
@@ -82,6 +104,12 @@ ms.locfileid: "88852076"
 - 初始版本
 
 ## <a name="mfa-page-multifactor"></a>MFA 页面 (multifactor)
+
+**1.2.2**
+- 修复了使用 iOS 时自动填充验证代码的问题。
+- 修复了从 Android Web 视图将令牌重定向到信赖方的问题。 
+- 除了之外，还添加了一个 UXString `heading` `intro` ，以作为标题显示在该页上。 默认情况下隐藏此值。  
+- 添加了对使用 policy 或 QueryString 参数 `pageFlavor` 选择布局 (经典、oceanBlue 或石板灰) 的支持。
 
 **1.2.1**
 
@@ -94,7 +122,8 @@ ms.locfileid: "88852076"
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
-- 对 Chrome 转换的支持
+- 支持 Chrome 翻译。
+- 在用户流页中添加了对租户品牌的支持。
 
 **1.1.0**
 

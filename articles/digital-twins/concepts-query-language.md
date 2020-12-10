@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: 89e95b0c56ce5603096fb1ac9af74cb0ad53ee6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955219"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028353"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
@@ -54,7 +54,7 @@ ms.locfileid: "94955219"
 
 支持以下类型检查和强制转换函数：
 
-| 函数 | 说明 |
+| 函数 | 描述 |
 | -------- | ----------- |
 | `IS_DEFINED` | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 `DateTime`不支持、对象类型和数组。 |
 | `IS_OF_MODEL` | 返回一个布尔值，该值指示指定的上值是否与指定的模型类型匹配 |
@@ -67,7 +67,7 @@ ms.locfileid: "94955219"
 
 支持以下字符串函数：
 
-| 函数 | 说明 |
+| 函数 | 描述 |
 | -------- | ----------- |
 | `STARTSWITH(x, y)` | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
 | `ENDSWITH(x, y)` | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
