@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/9/2020
+ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107889"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008582"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
    ![适用于池的单一数据库](./media/elastic-pool-overview/one-database.png)
 
-此图表演示1小时内的 DTU 使用情况，范围为12:00 到1:00，其中每个数据点的精度为1分钟。 12:10 DB1 最高可达90个 Dtu，但其整体平均使用量低于五个 Dtu。 在单一数据库中运行此工作负荷需要 S3 计算大小，但在低活动期间，这可使大多数资源处于未使用状态。
+该图显示了从 12:00 到 1:00 的 1 小时内的 DTU 使用情况，其中每个数据点的粒度为 1 分钟。 在 12:10，DB1 使用的 DTU 个数达到峰值（90 个 DTU），但其整体平均使用量低于五个 DTU。 在单一数据库中运行此工作负荷需要 S3 计算大小，但在低活动期间，这可使大多数资源处于未使用状态。
 
 池可让这些未使用的 DTU 跨多个数据库共享，因此减少了所需的 DTU 数和总体成本。
 
@@ -74,38 +74,18 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 每个数据库的高峰使用量在不同时间点发生。
 - eDTU 会在多个数据库之间共享。
 
-池的价格取决于池的 eDTU。 尽管池的 eDTU 单位价格比单一数据库的 DTU 单位价格多 1.5 倍，但 **池 eDTU 可由多个数据库共享，因而所需的 eDTU 总数更少**。 定价方面和 eDTU 共享的这些差异是池可以提供成本节省可能性的基础。
+在 DTU 购买模型中，池的价格是池 Edtu 的一项功能。 尽管池的 eDTU 单位价格比单一数据库的 DTU 单位价格多 1.5 倍，但 **池 eDTU 可由多个数据库共享，因而所需的 eDTU 总数更少**。 定价方面和 eDTU 共享的这些差异是池可以提供成本节省可能性的基础。
 
-以下与数据库计数和数据库使用率相关的经验法则可帮助确保池提供相比于使用单一数据库计算大小降低的成本。
-
-### <a name="minimum-number-of-databases"></a>数据库的最小数目
-
-如果单一数据库的资源聚合量比池所需的资源多 1.5 倍，那么弹性池更具成本效益。
-
-***基于 DTU 的购买模型示例*** 至少需要 2 个 S3 数据库或 15 个 S0 数据库，才能使 100 个 eDTU 池比使用单一数据库计算大小更具成本效益。
-
-### <a name="maximum-number-of-concurrently-peaking-databases"></a>并发高峰数据库的最大数目
-
-通过共享资源，并非池中的所有数据库都能同时达到使用单一数据库可用资源的最大限制。 并发高峰的数据库越少，可以设置的池资源就越低，也就能实现池更大的成本效益。 一般而言，池中不能有 2/3（或 67%）以上的数据库的高峰同时达到其资源限制。
-
-***基于 DTU 的购买模型示例*** 为了降低 200 个 eDTU 池内 3 个 S3 数据库的成本，在使用过程中最多可使其中两个数据库同时处于高峰。 否则，如果四个 S3 数据库中超过两个同时高峰，则必须将池缩放为超过 200 个 eDTU。 如果将池重设大小为超过 200 个 eDTU，则需要加入更多的 S3 数据库到池，才能使成本低于单一数据库的计算大小。
-
-请注意，此示例未考虑池中其他数据库的使用率。 如果在任何给定时间点，所有数据库都有一些使用量，则可以同时处于高峰的数据库应少于 2/3（或 67%）。
-
-### <a name="resource-utilization-per-database"></a>每个数据库的资源使用率
-
-数据库的高峰和平均使用率之间的差异为，长时间的低使用率和短时间的高使用率。 这个使用模式非常适合在数据库之间共享资源。 当数据库的高峰使用率比平均使用率大 1.5 倍左右时，应考虑将数据库用作池。
-
-***基于 DTU 的购买模型示例*** 高峰为 100 个 DTU 且平均使用 67 个或更少 DTU 的 S3 数据库是在池中共享 eDTU 的良好候选项。 或者，高峰为 20 个 DTU 且平均使用 13 个或更少 DTU 的 S1 数据库是池的良好候选项。
+在 vCore 购买模型中，弹性池的 vCore 单位价格与单一数据库的 vCore 单位价格相同。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>如何选择正确的池大小
 
 池的最佳大小取决于聚合池中所有数据库所需的资源。 这涉及到决定以下项：
 
-- 池中所有数据库使用的最大资源（最大 DTU 数或最大 vCore 数，具体取决于所选的购买模型）。
+- 池中所有数据库使用的最大计算资源。  计算资源按 Edtu 或 Vcore 索引，具体取决于你选择的购买模型。
 - 池中所有数据库使用的最大存储字节。
 
-有关每个资源模型的可用服务层级和限制，请参阅[基于 DTU 的购买模型](service-tiers-dtu.md)或[基于 vCore 的购买模型](service-tiers-vcore.md)。
+对于每个购买模型中的服务层和资源限制，请参阅 [基于 DTU 的购买模型](service-tiers-dtu.md) 或 [基于 vCore 的购买模型](service-tiers-vcore.md)。
 
 以下步骤可帮助你评估池是否比单一数据库更具成本效益：
 
@@ -119,10 +99,10 @@ MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>, <并发峰
 
 MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 vCore 使用率>)   
 
-2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。
+2. 通过添加池中所有数据库所需的数据大小来估算池所需的总存储空间。 对于 DTU 购买模型，确定提供此存储量的 eDTU 池大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。
-5. 将步骤 5 的池价格与使用单一数据库适当计算大小的价格相比较。
+5. 将步骤4中的池价格与单一数据库的适当计算大小进行比较。
 
 > [!IMPORTANT]
 > 如果池中数据库的数量接近支持的最大值，请确保 [在密集弹性池中考虑资源管理](elastic-pool-resource-management.md)。
@@ -156,7 +136,7 @@ MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发�
 在 Azure 门户中可以通过两种方法创建弹性池。
 
 1. 请参阅 [Azure 门户](https://portal.azure.com) ，创建弹性池。 搜索并选择 " **AZURE SQL**"。
-2. 选择“+添加”以打开“选择 SQL 部署选项”页。 通过选择 "**数据库**" 磁贴上的 "**显示详细**信息"，可以查看有关弹性池的其他信息。
+2. 选择“+添加”以打开“选择 SQL 部署选项”页。 通过选择 "**数据库**" 磁贴上的 "**显示详细** 信息"，可以查看有关弹性池的其他信息。
 3. 在 "**数据库**" 磁贴上的 "**资源类型**" 下拉列表中选择 "**弹性池**"，然后选择 "**创建**"：
 
    ![创建弹性池](./media/elastic-pool-overview/create-elastic-pool.png)
@@ -176,34 +156,7 @@ MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发�
 
 在 Azure 门户中，可以监视弹性池和该池中的数据库的利用率。 还可以对弹性池进行一组更改，并同时提交所有更改。 这些更改包括添加或删除数据库、更改弹性池设置或更改数据库设置。
 
-若要开始监视弹性池，请在门户中找到并打开该弹性池。 首先会出现一个屏幕，其中概述了该弹性池的状态。 这包括：
-
-- 显示弹性池资源使用情况的监视图表
-- 针对弹性池的最近警报和建议（如果有）
-
-下图显示一个示例弹性池：
-
-![池视图](./media/elastic-pool-overview/basic.png)
-
-如需有关池的详细信息，可在此概述中单击任何可用信息。 单击“资源利用率”图表会转到“Azure 监视”视图，在其中可以自定义图表中显示的指标和时间段。 单击任何显示的通知会转到一个边栏选项卡，其中显示了该警报或建议的完整详细信息。
-
-若要监视池中的数据库，可在左侧资源菜单“监视”部分中单击“数据库资源利用率”。 
-
-![数据库资源利用率页](./media/elastic-pool-overview/db-utilization.png)
-
-### <a name="to-customize-the-chart-display"></a>自定义图表显示
-
-可以编辑图表和指标页以显示其他指标，如 CPU 百分比、数据 IO 百分比和已用日志 IO 百分比。
-
-在“编辑图表”窗体中，可选择固定时间范围，或单击“自定义”选择过去两周内的任何 24 小时时间段，然后选择要监视的资源 。
-
-### <a name="to-select-databases-to-monitor"></a>选择要监视的数据库
-
-默认情况下，“数据库资源利用率”边栏选项卡中的图表按 DTU 或 CPU（取决于服务层级）显示排名靠前的 5 个数据库。 可以在图表下面的列表中，通过选中和取消选中左侧的复选框，在此图表中显示或隐藏相应的数据库。
-
-还可以选择在此数据库表中并列查看更多的指标，以获取更完整的数据库性能视图。
-
-有关详细信息，请参阅[在 Azure 门户中创建 SQL 数据库警报](alerts-insights-configure-portal.md)。
+你可以使用内置 [性能监视](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) 和 [警报工具](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)与性能等级结合使用。  此外，SQL 数据库可[发出指标和资源日志](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)，以方便进行监视。
 
 ## <a name="customer-case-studies"></a>客户案例研究
 

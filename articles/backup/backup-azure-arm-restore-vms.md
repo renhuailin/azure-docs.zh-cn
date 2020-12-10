@@ -4,12 +4,12 @@ description: 使用 Azure 门户（包括跨区域还原功能）从恢复点还
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327179"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008497"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -201,7 +201,7 @@ Azure 备份提供多种方法用于还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)或[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
 **NIC/子网上的网络安全组 (NSG)** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-**区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解详细信息](../availability-zones/az-overview.md)
+**区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解更多信息](../availability-zones/az-overview.md)
 **还原任何可用性集中的 VM** | 从门户还原 VM 时，没有选择可用性集的选项。 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
 **还原特殊 Vm，如 SQL Vm** | 如果要使用 Azure VM 备份来备份 SQL VM，然后使用 "还原 VM" 选项或在还原磁盘后创建 VM，则必须向 SQL 提供程序注册新创建的 VM [，如下所述。](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) 这会将还原的 VM 转换为 SQL VM。
 
@@ -213,6 +213,8 @@ Azure 备份提供多种方法用于还原 VM。
 **还原单个域中的多个域控制器 VM** | 如果可以通过网络访问同一个域中的其他域控制器，则可以像还原任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **在多个域配置中还原单个域控制器 VM** |  [使用 PowerShell](backup-azure-vms-automation.md#restore-the-disks) 还原磁盘并创建 VM  
 **还原一个林中的多个域** | 建议使用[林恢复](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
+
+有关详细信息，请参阅 [备份和还原 Active Directory 域控制器](active-directory-backup-restore.md)。
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 

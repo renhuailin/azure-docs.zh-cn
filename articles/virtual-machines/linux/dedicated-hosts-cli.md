@@ -1,19 +1,19 @@
 ---
-title: 使用 CLI 将 Vm 和规模集实例部署到专用主机
-description: 使用 Azure CLI 将 Vm 和规模集实例部署到专用主机。
+title: 使用 CLI 将 VM 和规模集实例部署到专用主机
+description: 使用 Azure CLI 将 VM 和规模集实例部署到专用主机。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975275"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008412"
 ---
-# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署到专用主机
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 到专用主机
  
 
 本文介绍如何创建 Azure [专用主机](../dedicated-hosts.md)来托管虚拟机 (VM)。 
@@ -63,16 +63,8 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
-添加 `--automatic-placement true` 参数，将 vm 和规模集实例自动放置在主机组中的主机上。 有关详细信息，请参阅 [手动放置 ](../dedicated-hosts.md#manual-vs-automatic-placement)。
+添加 `--automatic-placement true` 参数，将 VM 和规模集实例自动放置在主机组中的主机上。 如需了解详情，请参阅[手动放置与自动放置](../dedicated-hosts.md#manual-vs-automatic-placement)。
 
-> [!IMPORTANT]
-> 自动放置当前为公共预览版。
->
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
->
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
->
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ### <a name="other-examples"></a>其他示例
 
@@ -128,21 +120,12 @@ az vm create \
    --zone 1
 ```
 
-若要将 VM 放置在特定主机上，请使用， `--host` 而不是使用指定主机组 `--host-group` 。
+若要将 VM 放置在特定主机上，请使用 `--host`，而不是使用 `--host-group` 指定主机组。
  
 > [!WARNING]
 > 如果在没有足够资源的主机上创建虚拟机，则虚拟机将创建为“失败”状态。 
 
-## <a name="create-a-scale-set-preview"></a> (预览创建规模集) 
-
-> [!IMPORTANT]
-> 专用主机上的虚拟机规模集目前为公共预览版。
->
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
->
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
->
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="create-a-scale-set"></a>创建规模集 
 
 部署规模集时，需要指定主机组。
 
@@ -160,7 +143,7 @@ az vmss create \
   --zone 1
 ```
 
-如果要手动选择要将规模集部署到的主机，请添加 `--host` 和主机的名称。
+如果要手动选择要将规模集部署到哪个主机，请添加 `--host` 和主机名称。
 
 
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
@@ -289,7 +272,7 @@ az group deployment create \
 ```
 
 
-## <a name="clean-up"></a>清除 
+## <a name="clean-up"></a>清理 
 
 即使没有部署虚拟机，也会对专用主机收费。 你应删除当前未使用的任何主机以节省成本。  
 

@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019205"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008446"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
-LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。 此数据将存储 30 天。 
+
+LUIS 存储在 Azure 数据存储中加密的数据，该数据存储对应于密钥指定 [的区域](luis-reference-regions.md) 。 
+
+* 用于训练模型的数据（如实体、意向和最谈话）将在应用程序的生存期内保存在 LUIS 中。 如果所有者或参与者删除了该应用，则会将此数据随其一起删除。 如果应用程序在90天内未被使用，则会将其删除。 
+
+* 应用程序作者可以选择在发送到已发布应用程序的最谈话上 [启用日志记录](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) 。 如果启用，最谈话将保存30天，并可由应用程序作者查看。 如果在发布应用程序时未启用日志记录，则不存储此数据。
 
 ## <a name="export-and-delete-app"></a>导出和删除应用
 用户对于[导出](luis-how-to-start-new-app.md#export-app)和[删除](luis-how-to-start-new-app.md#delete-app)应用拥有完全的控制权。 

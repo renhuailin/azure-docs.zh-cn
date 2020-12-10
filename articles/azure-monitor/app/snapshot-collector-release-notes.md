@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548165"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008565"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Applicationinsights.config. Microsoft.applicationinsights.snapshotcollector 的发行说明
 
@@ -21,6 +21,11 @@ ms.locfileid: "96548165"
 对于 bug 报告和反馈，请在 GitHub 上打开一个问题 https://github.com/microsoft/ApplicationInsights-dotnet
 
 ## <a name="release-notes"></a>发行说明
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+用于向后移植修复的单点版本（1.4.0）。
+### <a name="bug-fixes"></a>Bug 修复
+- [关闭时修复 ObjectDisposedException](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097)。
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 用于解决在测试 Azure App Service 的无代码置备附加方案中发现的问题的点版本。

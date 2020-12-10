@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961714"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008548"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "88961714"
 
 ## <a name="built-in-images"></a>内置映像
 
-**我想要分叉平台提供的内置 Docker 容器。在哪里可以找到这些文件？**
+**我想对平台提供的内置 Docker 容器进行分叉。在哪里可以找到这些文件？**
 
 可以在 [GitHub](https://github.com/azure-app-service) 上找到所有 Docker 文件。 可以在 [Docker Hub](https://hub.docker.com/u/appsvc/) 上找到所有 Docker 容器。
 
@@ -32,13 +32,13 @@ ms.locfileid: "88961714"
 
 | 堆栈           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用于启动 JAR 应用的命令 (例如， `java -jar /home/site/wwwroot/app.jar --server.port=80`)  |
-| Tomcat          | 用于执行任何所需配置的脚本的位置 (例如， `/home/site/deployments/tools/startup_script.sh`)           |
+| Java SE         | 用于启动 JAR 应用的命令（例如 `java -jar /home/site/wwwroot/app.jar --server.port=80`） |
+| Tomcat          | 用于执行任何所需配置的脚本的位置（例如 `/home/site/deployments/tools/startup_script.sh`）          |
 | Node.js         | PM2 配置文件或脚本文件                                |
-| .NET Core       | 已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
-| Ruby            | 要用于初始化应用的 Ruby 脚本                     |
+| .NET Core       | 编译后的 DLL 名称为 `dotnet <myapp>.dll`                                 |
+| Ruby            | 要用于初始化你的应用的 Ruby 脚本                     |
 
-这些命令或脚本在内置 Docker 容器启动后，但在启动应用程序代码之前执行。
+这些命令或脚本会在内置 Docker 容器启动之后但在应用程序代码启动之前执行。
 
 ## <a name="management"></a>管理
 
@@ -60,7 +60,7 @@ ms.locfileid: "88961714"
 
 ## <a name="continuous-integration-and-deployment"></a>持续集成和持续部署
 
-**更新 Docker Hub 上的映像后，我的 web 应用仍使用旧的 Docker 容器映像。是否支持自定义容器的持续集成和部署？**
+**更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。是否支持对自定义容器的持续集成和部署？**
 
 支持，若要设置 Azure 容器注册表或 DockerHub 的持续集成/部署，请查阅以下文章：[使用用于容器的 Web 应用进行持续部署](./deploy-ci-cd-custom-container.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88961714"
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -108,9 +108,9 @@ const io = require('socket.io')(server,{
 
 ## <a name="custom-containers"></a>自定义容器
 
-**我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录中。**
+**我使用的是自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录。**
 
-如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定** 设置或将其设置为 *true*，则 `/home/` 将跨缩放实例 **共享** 该目录，并且写入的文件将在重新启动后 **保持** 。 显式设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 *false* 将禁用装入。
+如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置未指定，或者设为 true，则 `/home/` 目录会在缩放实例之间共享，且写入的文件会在重启后保留 。 将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为 false 会禁用装载。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -122,11 +122,11 @@ const io = require('socket.io')(server,{
 
 **专用注册表选项中的映像名称的格式是什么？**
 
-添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要设置 `docker-custom-image-name` ，请使用[ `az` 命令行工具](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要设置 `docker-custom-image-name`，请使用 [`az` 命令行工具](/cli/azure/webapp/config/container#az-webapp-config-container-set)。
 
 **是否可以在自定义容器映像上公开多个端口？**
 
-我们不支持公开多个端口。
+不支持公开多个端口。
 
 **可以自带存储吗？**
 
@@ -136,7 +136,7 @@ const io = require('socket.io')(server,{
 
 SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件系统或正在运行的进程。
 
-**自定义容器侦听端口80以外的端口。如何将应用配置为将请求路由到该端口？**
+**我的自定义容器侦听端口 80 之外的其他端口。如何将应用配置为向该端口路由流量？**
 
 我们提供自动端口检测。 也可以指定名为 *WEBSITES_PORT* 的应用设置，并为其提供所需的端口号值。 以前，平台使用 *PORT* 应用设置。 我们计划弃用此应用设置，改为独占使用 *WEBSITES_PORT*。
 
@@ -144,16 +144,16 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
 
-## <a name="multi-container-with-docker-compose"></a>多容器与 Docker Compose
+## <a name="multi-container-with-docker-compose"></a>多容器与 Docker Compose 结合使用
 
-**如何将 Azure 容器注册表 (ACR) 配置为用于多容器？ **
+**如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上，你将需要创建应用程序设置，然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像** 都必须托管在同一台 ACR 注册表服务器上。 在将它们托管在同一台注册表服务器上之后，需要创建应用程序设置，然后更新 Docker Compose 配置文件，使之包含 ACR 映像名称。
 
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (完整 URL，例如： `https://<server-name>.azurecr.io`) 
+- DOCKER_REGISTRY_SERVER_URL（完整 URL，例如：`https://<server-name>.azurecr.io`）
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：
