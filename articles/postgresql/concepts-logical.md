@@ -5,18 +5,15 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591523"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938896"
 ---
 # <a name="logical-decoding"></a>逻辑解码
- 
-> [!NOTE]
-> Azure Database for PostgreSQL - 单一服务器上的逻辑解码目前为公共预览版。
 
 使用 [PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/logicaldecoding.html)可将数据更改流式传输到外部使用者。 逻辑解码广泛用于事件流和变更数据捕获方案。
 
@@ -49,7 +46,7 @@ ms.locfileid: "94591523"
    ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
-3. 如果运行的是 Postgres 9.5 或9.6，并使用公共网络访问权限，请添加防火墙规则，以包含将从中运行逻辑复制的客户端的公共 IP 地址。 防火墙规则名称必须包括 **_replrule** 。 例如， *test_replrule* 。 若要在服务器上创建新的防火墙规则，请运行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
+3. 如果运行的是 Postgres 9.5 或9.6，并使用公共网络访问权限，请添加防火墙规则，以包含将从中运行逻辑复制的客户端的公共 IP 地址。 防火墙规则名称必须包括 **_replrule**。 例如， *test_replrule*。 若要在服务器上创建新的防火墙规则，请运行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
@@ -61,7 +58,7 @@ ms.locfileid: "94591523"
 
    :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL - 复制 - 确认重启":::
 
-3. 如果运行的是 Postgres 9.5 或9.6，并使用公共网络访问权限，请添加防火墙规则，以包含将从中运行逻辑复制的客户端的公共 IP 地址。 防火墙规则名称必须包括 **_replrule** 。 例如， *test_replrule* 。 然后单击“保存”  。
+3. 如果运行的是 Postgres 9.5 或9.6，并使用公共网络访问权限，请添加防火墙规则，以包含将从中运行逻辑复制的客户端的公共 IP 地址。 防火墙规则名称必须包括 **_replrule**。 例如， *test_replrule*。 然后单击“保存”  。
 
    :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL 复制-添加防火墙规则":::
 

@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651612"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937162"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查 Azure AD 我的应用登录应用程序时遇到的问题
 
@@ -61,6 +61,7 @@ ms.locfileid: "94651612"
 -   [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
 -   [检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 -   [检查用户的组成员身份](#check-a-users-group-memberships)
+-   [检查用户是否具有超过999个应用角色分配](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [检查用户的已分配许可证](#check-a-users-assigned-licenses)
 -   [为用户分配许可证](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ ms.locfileid: "94651612"
 6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
 7.  选择 **组** 以查看用户所属的组。
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>检查用户是否具有超过999个应用角色分配
+如果为用户分配了999以上的应用角色分配，则他们可能不会在我的应用中看到其所有应用。
+
+这是因为 "我的应用程序" 当前最多可读取999个应用角色分配，以确定向其分配用户的应用。 如果向用户分配的应用超过999个，则无法控制将在 "我的应用" 门户中显示的应用。
+
+若要检查授予用户的应用角色分配数，请执行以下步骤：
+1. 安装 [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell 模块。
+2. 以 `Connect-MgGraph -Scopes "Directory.Read.All"` **全局管理员** 身份运行和身份验证。
+3. 运行 `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` 确定用户当前已授予的应用角色分配的数量。
+
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 若要检查用户的已分配许可证，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
@@ -172,13 +183,13 @@ ms.locfileid: "94651612"
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 2. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4. 从 Azure Active Directory 左侧导航菜单中选择 " **企业应用程序** "。
+4. 在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 5. 选择“所有应用程序”，查看所有应用程序的列表。
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 6. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 7. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
 8. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-9. 从 Azure Active Directory 左侧导航菜单中选择 " **企业应用程序** "。
+9. 在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 10. 选择“所有应用程序”，查看所有应用程序的列表。
     * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 11. 选择要检查其深层链接的应用程序。

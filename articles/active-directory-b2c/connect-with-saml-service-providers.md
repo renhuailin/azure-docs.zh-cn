@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309641"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936431"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -39,7 +39,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 | 场景 | Azure AD B2C 角色 | 操作说明 |
 | -------- | ----------------- | ------- |
 | 我的应用程序需要 SAML 断言才能完成身份验证。 | **Azure AD B2C 充当标识提供者 (IdP)**<br />Azure AD B2C 充当应用程序的 SAML IdP。 | 本文。 |
-| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供程序 (SP)**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[通过自定义策略将使用 ADFS 登录设置为 SAML IdP](identity-provider-adfs2016-custom.md)</li><li>[通过自定义策略设置使用 Salesforce SAML 提供程序进行的登录](identity-provider-salesforce-custom.md)</li></ul> |
+| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供程序 (SP)**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[通过自定义策略将使用 ADFS 登录设置为 SAML IdP](identity-provider-adfs.md)</li><li>[通过自定义策略设置使用 Salesforce SAML 提供程序进行的登录](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -270,7 +270,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中注册应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -393,9 +393,9 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>启用标识提供者启动的流 (可选) 
 
-在标识提供程序启动的流中，由标识提供程序启动的登录进程 (Azure AD B2C) ，后者将未经请求的 SAML 响应发送到的信赖方应用) 程序的服务提供 (商。 目前，我们不支持初始标识提供者是外部标识提供者（例如 [AD FS](identity-provider-adfs2016-custom.md)或 [Salesforce](identity-provider-salesforce-custom.md)）的方案。
+在标识提供程序启动的流中，由标识提供程序启动的登录进程 (Azure AD B2C) ，后者将未经请求的 SAML 响应发送到的信赖方应用) 程序的服务提供 (商。 目前，我们不支持初始标识提供者是外部标识提供者（例如 [AD FS](identity-provider-adfs.md)或 [Salesforce](identity-provider-salesforce.md)）的方案。
 
-若要启用标识提供程序 (Azure AD B2C) 启动的流 **IdpInitiatedProfileEnabled** ，请 `true` 在 [信赖方技术配置文件](relyingparty.md#technicalprofile)中将 IdpInitiatedProfileEnabled metadata 项设置为。
+若要启用标识提供程序 (Azure AD B2C) 启动的流 ，请 `true` 在[信赖方技术配置文件](relyingparty.md#technicalprofile)中将 IdpInitiatedProfileEnabled metadata 项设置为。
 
 ```xml
 <RelyingParty>

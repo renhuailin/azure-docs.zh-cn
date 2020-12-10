@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905360"
+ms.locfileid: "96938386"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -64,7 +64,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为 " **网络**" 的 "设置" 菜单。
 
 1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问。
 
@@ -148,7 +148,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为 " **网络**" 的 "设置" 菜单。
 
 1. 检查并确保已选择允许从“所选网络”进行访问。
 
@@ -272,7 +272,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为 " **网络**" 的 "设置" 菜单。
 
 1. 检查并确保已选择允许从“所选网络”进行访问。
 
@@ -415,7 +415,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为 " **网络**" 的 "设置" 菜单。
 
 1. 检查并确保已选择允许从“所选网络”进行访问。
 

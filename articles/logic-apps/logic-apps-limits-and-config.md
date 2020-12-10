@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921508"
+ms.locfileid: "96937621"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -305,15 +305,15 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 * 共 1,000 个集成帐户，包括[开发人员和高级 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)中任何[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内的集成帐户。
 
-* 每个 ISE （无论 [开发人员或高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)）是否限制为总共20个集成帐户：
+* 每个 ISE，无论是 [开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，都限制为集成帐户总数，但 [您可以提高此限制，增加成本](logic-apps-pricing.md#fixed-pricing)：
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
-  | **高级** | 仅限20个 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户，包括免费的一个标准帐户。 不允许使用免费帐户或基本帐户。 |
-  | **开发人员** | 总共20个 [可用](../logic-apps/logic-apps-pricing.md#integration-accounts) (限制为1个帐户) 和 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 合并或所有标准帐户。 不允许使用基本帐户。 [开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 仅可用于试验、开发和测试，不可用于生产和性能测试。 |
+  | **高级** | 仅限20个 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户，包括免费的一个标准帐户。 你可以使用 [更多的集成帐户来额外收费](logic-apps-pricing.md#fixed-pricing)。 不允许使用免费帐户或基本帐户。 |
+  | **开发人员** | 总共20个 [可用](../logic-apps/logic-apps-pricing.md#integration-accounts) (限制为1个帐户) 和 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 合并或所有标准帐户。 你可以使用 [更多的集成帐户来额外收费](logic-apps-pricing.md#fixed-pricing)。 不允许使用基本帐户。 [开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 仅可用于试验、开发和测试，不可用于生产和性能测试。 |
   |||
 
-超出 ISE 附带的限额添加的集成帐户需支付额外费用。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 <a name="artifact-number-limits"></a>
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484883"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936720"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>阻止对 Azure 存储帐户进行共享密钥授权 (预览) 
 
@@ -23,13 +23,11 @@ ms.locfileid: "96484883"
 如果你不允许对存储帐户进行共享密钥授权，Azure 存储将拒绝对该帐户的所有后续请求，这些请求使用帐户访问密钥获得授权。 仅授权有 Azure AD 的安全请求将会成功。 有关使用 Azure AD 的详细信息，请参阅 [使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
 
 > [!WARNING]
-> Azure 存储支持 Azure AD 仅向 Blob 和队列存储请求授权。 如果你不允许对存储帐户使用共享密钥授权，则使用共享密钥授权的 Azure 文件或表存储的请求将失败。
->
-> 在预览期间，不允许使用共享密钥授权时，对使用共享访问签名的 Azure 文件或表存储的请求 (SAS) 使用帐户访问密钥生成的令牌将会成功。 有关详细信息，请参阅 [关于预览](#about-the-preview)。
->
-> 禁止对存储帐户进行共享密钥访问不会影响与 Azure 文件的 SMB 连接。
+> Azure 存储支持 Azure AD 仅向 Blob 和队列存储请求授权。 如果你不允许对存储帐户使用共享密钥授权，则使用共享密钥授权的 Azure 文件或表存储的请求将失败。 由于 Azure 门户始终使用共享密钥授权来访问文件和表数据，因此，如果你不允许对存储帐户使用共享密钥进行授权，则将无法访问 Azure 门户中的文件或表数据。
 >
 > Microsoft 建议你在禁止通过共享密钥访问帐户之前将任何 Azure 文件或表存储数据迁移到单独的存储帐户，或者不将此设置应用于支持 Azure 文件或表存储工作负荷的存储帐户。
+>
+> 禁止对存储帐户进行共享密钥访问不会影响与 Azure 文件的 SMB 连接。
 
 本文介绍如何检测通过共享密钥授权发送的请求，以及如何修正存储帐户的共享密钥授权。 若要了解如何注册预览版，请参阅 [关于预览](#about-the-preview)。
 
@@ -193,15 +191,32 @@ resources
 | project subscriptionId, resourceGroup, name, allowSharedKeyAccess
 ```
 
+## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>允许或禁止共享密钥访问的权限
+
+若要设置存储帐户的 **AllowSharedKeyAccess** 属性，用户必须有权创建和管理存储帐户。 Azure RBAC) 角色提供这些权限的基于角色的访问控制 (，其中包括 storageAccounts/ **/write** 或 **\* storageAccounts/* _ 操作。 具有此操作的内置角色包括：
+
+- Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
+- Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
+- [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+
+这些角色不提供对存储帐户中数据的访问，Azure Active Directory (Azure AD) 。 但是，它们包括 _ * storageAccounts/listkeys/action * *，后者授予对帐户访问密钥的访问权限。 使用此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
+
+角色分配的作用域必须为存储帐户或更高级别，以允许用户允许或禁止访问存储帐户的共享密钥。 有关角色作用域的详细信息，请参阅 [了解 AZURE RBAC 的作用域](../../role-based-access-control/scope-overview.md)。
+
+请注意，仅将这些角色分配给需要创建存储帐户或更新其属性的用户。 使用最小特权原则确保用户拥有完成任务所需的最少权限。 有关使用 Azure RBAC 管理访问权限的详细信息，请参阅 [AZURE rbac 的最佳实践](../../role-based-access-control/best-practices.md)。
+
+> [!NOTE]
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 **所有者** 角色包含所有操作，因此具有以下管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>了解禁止共享密钥如何影响 SAS 令牌
 
-如果存储帐户不允许使用共享密钥，Azure 存储会根据 SAS 类型和请求的目标服务来处理 SAS 令牌。 下表显示了每种类型的 SAS 的授权方式，以及当存储帐户的 **AllowSharedKeyAccess** 属性为 **False** 时，Azure 存储将如何处理该 sas。
+当存储帐户不允许使用共享密钥访问时，Azure 存储会根据 SAS 类型和请求的目标服务来处理 SAS 令牌。 下表显示了每种类型的 SAS 的授权方式，以及当存储帐户的 **AllowSharedKeyAccess** 属性为 **False** 时，Azure 存储将如何处理该 sas。
 
 | SAS 类型 | 授权类型 | AllowSharedKeyAccess 为 false 时的行为 |
 |-|-|-|
 | 用户委托 SAS（仅限 Blob 存储） | Azure AD | 允许请求。 Microsoft 建议尽可能使用用户委托 SAS，以实现高级安全性。 |
-| 服务 SAS | 共享密钥 | 拒绝对 Blob 存储的请求。 请求允许用于队列和表存储以及 Azure 文件。 有关详细信息，请参阅 **关于预览** 部分中的 [AllowSharedKeyAccess 为 false 中的队列、表和文件允许使用 SAS 令牌的请求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
-| 帐户 SAS | 共享密钥 | 拒绝对 Blob 存储的请求。 请求允许用于队列和表存储以及 Azure 文件。 有关详细信息，请参阅 **关于预览** 部分中的 [AllowSharedKeyAccess 为 false 中的队列、表和文件允许使用 SAS 令牌的请求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
+| 服务 SAS | 共享密钥 | 拒绝了所有 Azure 存储服务的请求。 |
+| 帐户 SAS | 共享密钥 | 拒绝了所有 Azure 存储服务的请求。 |
 
 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
@@ -213,13 +228,13 @@ resources
 
 | Azure 工具 | 向 Azure 存储 Azure AD 授权 |
 |-|-|
-| Azure 门户 | 。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
+| Azure 门户 | 支持。 有关使用 Azure AD 帐户从 Azure 门户进行授权的信息，请参阅 [选择如何授予对 Azure 门户中 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。 |
 | AzCopy | 支持 Blob 存储。 有关授权 AzCopy 操作的信息，请参阅 AzCopy 文档中的 [选择如何提供授权凭据](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 存储资源管理器 | 仅支持 Blob 存储和 Azure Data Lake Storage Gen2。 Azure AD 不支持对队列存储的访问。 请确保选择正确的 Azure AD 租户。 有关详细信息，请参阅 [存储资源管理器入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
-| Azure PowerShell | 。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
-| Azure CLI | 。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](../blobs/authorize-data-operations-cli.md)。 |
-| Azure IoT 中心 | 。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
-| Azure Cloud Shell | Azure Cloud Shell 是 Azure 门户中的集成外壳。 Azure Cloud Shell 在存储帐户中的 Azure 文件共享中保存持久性的文件。 如果该存储帐户不允许进行共享密钥授权，则这些文件将无法访问。 有关详细信息，请参阅 [连接 Microsoft Azure 文件存储](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要运行 Azure Cloud Shell 中的命令以管理不允许进行共享密钥访问的存储帐户，请先确保已通过 Azure 基于角色的访问控制向你授予这些帐户所需的权限 (Azure RBAC) 。 有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。 |
+| Azure PowerShell | 支持。 有关如何使用 Azure AD 为 blob 或队列操作授权 PowerShell 命令的信息，请参阅 [使用 Azure AD 凭据运行 powershell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md) 或 [使用 Azure AD 凭据运行 powershell 命令以访问队列数据](../queues/authorize-data-operations-powershell.md)。 |
+| Azure CLI | 支持。 有关如何使用 Azure AD Azure CLI 命令来访问 blob 和队列数据的信息，请参阅 [使用 Azure AD 凭据运行 Azure CLI 命令以访问 blob 或队列数据](../blobs/authorize-data-operations-cli.md)。 |
+| Azure IoT 中心 | 支持。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
+| Azure Cloud Shell | Azure Cloud Shell 是 Azure 门户中的集成外壳。 Azure Cloud Shell 在存储帐户中的 Azure 文件共享中保存持久性的文件。 如果该存储帐户不允许进行共享密钥授权，则这些文件将无法访问。 有关详细信息，请参阅 [连接 Microsoft Azure 文件存储](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要运行 Azure Cloud Shell 中的命令以管理不允许进行共享密钥访问的存储帐户，请首先确保已通过 Azure RBAC 向你授予这些帐户所需的权限。 有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。 |
 
 ## <a name="about-the-preview"></a>关于此预览版
 
@@ -240,10 +255,6 @@ Azure 指标和日志记录 Azure Monitor 不区分预览版中不同类型的�
 - 向 **AllowSharedKeyAccess** 属性设置为 **false** 时，向 Blob 存储的请求 Azure AD 授予了用户委托 SAS。
 
 评估到存储帐户的流量时，请记住 " [检测客户端应用程序使用的授权类型"](#detect-the-type-of-authorization-used-by-client-applications) 中所述的指标和日志可能包括使用用户委托 SAS 发出的请求。 有关在 **AllowSharedKeyAccess** 属性设置为 **False** 时 AZURE 存储如何响应 sas 的详细信息，请参阅 [了解如何禁用共享密钥会影响 sas 令牌](#understand-how-disallowing-shared-key-affects-sas-tokens)。
-
-### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>当 AllowSharedKeyAccess 为 false 时，允许对包含 SAS 令牌的请求使用队列、表和文件
-
-如果在预览期间不允许对存储帐户进行共享密钥访问，则会继续允许目标为 "队列"、"表" 或 "Azure 文件" 资源的共享访问签名。 此限制适用于服务 SAS 令牌和帐户 SAS 令牌。 这两种类型的 SAS 都是通过共享密钥授权的。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922073"
+ms.locfileid: "96937706"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -81,7 +81,7 @@ balanced_accuracy|平衡准确度是每个类的召回率算术平均值。<br> 
 f1_score|F1 评分是精度和召回率的调和平均值。 这是对误报和漏报的合理平衡。 但是，它不会考虑真正的否定。 <br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、<li>  `f1_score_macro`：每个类的 F1 分数的算术平均值。 <li> `f1_score_micro`：通过计算总真实正值、假负值和假正值计算得出。 <li> `f1_score_weighted`：每个类的每类 F1 分数的加权平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 <br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf) |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| 规范化的宏召回是回调宏的平均和规范化，因此，随机性能的分数为0，理想的性能为1的分数。 <br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>其中， `R` 是用于随机预测的的预期值 `recall_score_macro` 。<br><br>`R = 0.5`&nbsp;对于 &nbsp; 二元 &nbsp; 分类。 <br>`R = (1 / C)` 对于 C 类分类问题。|
-Matthews 相关系数 | Matthews 相关系数是精确度的均衡度量值，即使一个类有比另一个类更多的示例，也可以使用该度量值。 系数1表示完美预测，0随机预测，-1 反转预测。<br><br> **目标：** 越接近1越好 <br> **范围：** [-1，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | Matthews 相关系数是精确度的均衡度量值，即使一个类有比另一个类更多的示例，也可以使用该度量值。 系数1表示完美预测，0随机预测，-1 反转预测。<br><br> **目标：** 越接近1越好 <br> **范围：** [-1，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 精准率|精度是指模型避免将负样本标记为正值的能力。 <br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、 <li> `precision_score_macro`，每个类的精度算术平均值。 <li> `precision_score_micro`，通过计算总的实际正值和假正值来全局计算。 <li> `precision_score_weighted`，每个类的精度的算术平均值，按每个类中的真实实例数为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 召回率| 回想一下，模型能够检测所有正的样本。 <br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、 <li>`recall_score_macro`：每个类的算术平均值。 <li> `recall_score_micro`：通过计算总真实正值、假负值和假正值来全局计算。<li> `recall_score_weighted`：对每个类的回调算术平均值，按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|加权准确性是精确的，其中每个样本都按属于同一类的样本总数加权。 <br><br>**目标：** 越接近1越好 <br>**范围：** [0，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ weighted_accuracy|加权准确性是精确的，其中每个样本都按属于�
 
 ## <a name="regressionforecasting-metrics"></a>回归/预测指标
 
-对于每个生成的模型，自动 ML 会计算相同的性能指标，而不考虑它是回归试验还是预测试验。 这些度量值还会经过规范化，以便在使用不同范围的数据进行定型的模型之间进行比较。 若要了解详细信息，请参阅 [指标规范化](#metric-normalization)  
+对于每个生成的模型，自动 ML 会计算相同的性能指标，而不考虑它是回归试验还是预测试验。 这些度量值还会经过规范化，以便在使用不同范围的数据进行定型的模型之间进行比较。 若要了解详细信息，请参阅 [指标规范化](#metric-normalization)。  
 
 下表总结了为回归和预测试验而生成的模型性能指标。 与分类指标一样，这些指标也基于 scikit-learn 学习实现。 相应的 scikit-learn 学习文档在 **计算** 字段中进行了相应的链接。
 

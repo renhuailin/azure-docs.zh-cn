@@ -7,15 +7,15 @@ ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836150"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938097"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -30,9 +30,9 @@ ms.locfileid: "87836150"
 
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019：最新（版本 16.5）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.5.4    |
-| Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.13    |
-| Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.22   |
+| [Visual Studio 2019：最新（版本 16.8）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.8.0    |
+| Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.20    |
+| Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.29   |
 | Visual Studio 2017：RTW                             | Enterprise、Community | 版本 15.0.28  |
 | Visual Studio 2015：最新 (Update 3)               | Enterprise、Community | 版本 14.0.25431.01 |
 
@@ -94,7 +94,7 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *（图 1）通过 Azure 门户 UI 捕获映像。* </center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *（图 1）通过 Azure 门户 UI 捕获映像。*</center>
 
 有关详细信息，请参阅[在 Azure 中创建通用 VM 的托管映像](./capture-image-resource.md)。
 

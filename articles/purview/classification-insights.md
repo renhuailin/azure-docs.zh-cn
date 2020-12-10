@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745020"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938879"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中的数据的分类见解
 
@@ -44,7 +44,7 @@ ms.locfileid: "96745020"
 监控范围使用与 Microsoft 365 相同的敏感信息类型，使你能够在整个数据空间中延伸现有的安全策略和保护。
 
 > [!NOTE]
-> 在扫描源类型后，请在几个小时内为 **分类标记** 见解，以反映新资产。
+> 扫描源类型后，请在几个小时内给予 **分类** 见解，以反映新资产。
 
 **查看分类见解：**
 
@@ -85,7 +85,7 @@ ms.locfileid: "96745020"
 
 若要了解详细信息，请执行以下任一操作：
 
-|选项  |描述  |
+|选项  |说明  |
 |---------|---------|
 |**筛选数据**     |  使用网格上方的筛选器筛选显示的数据，包括分类名称、订阅名称或源类型。 <br><br>如果你不确定确切的分类名称，则可以在 " **按关键字筛选** " 框中输入部分或全部名称。       |
 |**对网格排序** |选择列标题可按该列对网格进行排序。 | 

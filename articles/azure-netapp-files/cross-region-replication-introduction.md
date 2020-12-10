@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245868"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937468"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -38,14 +38,15 @@ Azure NetApp 文件卷复制当前提供以下固定区域对：
 * 美国中南部和美国东部
 * 美国中南部和美国东部2 
 * 美国东部2和美国中部 
-* 欧洲北部和欧洲西部
-* 英国南部和英国西部
 * 澳大利亚东部和澳大利亚东南部
 * 加拿大中部和加拿大东部
-* 日本东部和日本西部
-* 英国南部和德国中西部
-* 东南亚和澳大利亚东部
 * 印度中部和印度南部
+* 德国中西部和德国北部
+* 日本东部和日本西部
+* 欧洲北部和欧洲西部
+* 东南亚和澳大利亚东部
+* 英国南部和德国中西部
+* 英国南部和英国西部
 
 ## <a name="service-level-objectives"></a>服务级别目标
 

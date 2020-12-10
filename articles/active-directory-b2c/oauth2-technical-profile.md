@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 486622b37f02ab8b2a53a273a6eaea4cb5add3a5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f9bb53f62c5edf055e17f198b7adb45a36bcb2f8
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750419"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936618"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -106,7 +106,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据设置为 `id_token` ，则可以省略加密密钥。 |
 
@@ -114,6 +114,6 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如 contosob2c) 。 重定向 URI 需要采用全小写形式。
 
-示例:
+例如：
 
-- [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google-custom.md)
+- [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google.md)

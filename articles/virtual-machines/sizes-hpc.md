@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/03/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5559e491be15f8f848329405736fc977267c70cc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571039"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938590"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -29,6 +29,9 @@ HBv2 Vm 功能 200 Gb/秒，而 HB-ACCT-WC 和 HC 系列 Vm 功能 100 Gb/秒，
 [HC 系列](hc-series.md) Vm 针对密集计算驱动的应用程序进行了优化，如隐式有限元素分析、分子 dynamics 和计算化学。 HC Vm 功能 44 Intel 至强白金8168处理器核心，每 CPU 内核 8 GB RAM，无超线程。 Intel 强白金平台支持 Intel 丰富的软件工具生态系统，如 Intel 数学内核库。
 
 [H 系列](h-series.md) Vm 针对按 CPU 频率高的应用程序或每个核心要求提供较大内存的应用程序进行了优化。 H 系列 Vm 的功能8或 16 Intel 至强 E5 2667 v3 处理器核心、7或 14 GB 的 RAM/CPU 核心，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 支持 Intel MPI 1.x 和 MS-CHAP。
+
+> [!NOTE]
+> 所有 HBv2、HB-ACCT-WC 和 HC 系列 Vm 都具有对物理服务器的独占访问权限。 每个物理服务器仅有1个 VM，对于这些 VM 大小，没有任何其他 Vm 共享多租户。
 
 > [!NOTE]
 > [A8 – A11 vm](./sizes-previous-gen.md#a-series---compute-intensive-instances)计划于3/2021 停用。 有关详细信息，请参阅 [HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。

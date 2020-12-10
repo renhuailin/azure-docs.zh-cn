@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171409"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936686"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>本教程介绍如何使用阶层扩展 Azure AD B2C 以保护本地应用程序
 
@@ -83,7 +83,7 @@ Maverics Identity Orchestrator 扩展 Azure AD B2C 以保护本地应用程序�
 
    c. 添加应用程序的重定向 URI。 此 URI 将匹配 `oauthRedirectURL` Orchestrator 的 Azure AD B2C 连接器配置的参数，例如 `https://example.com/oidc-endpoint` 。
 
-2. **创建用户流**：创建 [签名和登录用户流](./tutorial-create-user-flows.md)。
+2. **创建用户流**：创建 [注册和登录用户流](./tutorial-create-user-flows.md)。
 
 3. **添加 IdP**：选择使用本地帐户或社交或企业 [IdP](./tutorial-add-identity-providers.md)登录用户。
 
@@ -259,7 +259,7 @@ appgateways:
 
 务必保护 Orchestrator 用于连接到 Azure AD B2C 和任何其他标识系统的机密。 默认情况下，Maverics 将以纯文本格式加载机密 `maverics.yaml` ，但在本教程中，你将使用 Azure Key Vault 作为机密提供程序。
 
-按照说明 [创建一个新的 Key Vault](../key-vault/secrets/quick-create-portal.md) ，Orchestrator 实例会将其用作机密提供程序。 将你的机密添加到保管库，并记下 `SECRET NAME` 为每个机密提供的。 例如，`AzureADB2CClientSecret`。
+按照说明 [创建一个新的 Key Vault](../key-vault/secrets/quick-create-portal.md) ，Orchestrator 实例会将其用作机密提供程序。 将你的机密添加到保管库，并记下 `SECRET NAME` 为每个机密提供的。 例如 `AzureADB2CClientSecret`。
 
 若要在 `maverics.yaml` 配置文件中将值声明为机密，请用尖括号将机密括起来：
 

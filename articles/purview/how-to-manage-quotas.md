@@ -8,22 +8,22 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551660"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938828"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>利用 Azure 监控范围管理和提高资源配额
  
 Azure 监控范围是供数据用户使用的云服务。 使用 Azure 监控范围跨数据中心集中管理跨云和本地环境的数据管理。 该服务使业务分析人员能够使用有意义的业务术语搜索相关数据。 若要将限制提高到订阅的最高限制，请联系支持部门。
  
-## <a name="azure-purview-limits"></a>Azure 监控范围限制
+## <a name="azure-purview-limits"></a>Azure Purview 限制
  
 |**资源**|  **默认限制**  |**最大限制**|
 |---|---|---|
-|每个租户的监控范围帐户 (所有订阅合并) |3|联系支持人员|
+|每个区域的监控范围帐户，每个租户 (合并所有订阅) |3|联系支持人员|
 |Vcore 可用于扫描，每个帐户 *|160|160|
 |并发扫描，在给定点按帐户。 此限制基于所扫描的数据源类型 *|5 | 10 |
 |扫描可运行的最长时间|7 天|7 天|

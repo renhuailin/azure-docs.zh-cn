@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780988"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937519"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -1423,7 +1423,7 @@ ms.locfileid: "96780988"
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
-> | networkwatchers | 是 | 否 |
+> | networkwatchers | 否 | 否 |
 > | networkwatchers/connectionmonitors | 是 | 否 |
 > | networkwatchers/flowlogs | 是 | 否 |
 > | networkwatchers/pingmeshes | 是 | 否 |

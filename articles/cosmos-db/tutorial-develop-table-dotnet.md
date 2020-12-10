@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a3eefdb742d847950819fccfd87b9b5501cbefd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f43a890185fcd69967fd2a035c27e1cf92798f04
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079234"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548148"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -149,7 +149,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 上述代码会创建以“demo”开头的表并将生成的 GUID 追加到表名。 然后，它会添加姓名为“Harp Walter”的客户实体，并稍后更新此用户的电话号码。 
 
-在本教程中，你生成了对表 API 帐户中存储的数据执行基本 CRUD 操作的代码。 还可以执行高级操作，例如批量插入数据、查询分区中的所有数据、查询分区中的一系列数据、列出名称以指定前缀开头的帐户中的表。 可以从 [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub 存储库中下载完整的示例。 [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) 类具有可对数据执行的更多操作。  
+在本教程中，你生成了对表 API 帐户中存储的数据执行基本 CRUD 操作的代码。 还可以执行高级操作，例如批量插入数据、查询分区中的所有数据、查询分区中的一系列数据、列出名称以指定前缀开头的帐户中的表。 可以从 [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub 存储库中下载完整的示例。 [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/main/CosmosTableSamples/AdvancedSamples.cs) 类具有可对数据执行的更多操作。  
 
 ## <a name="run-the-project"></a>运行项目
 

@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498177"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936533"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -76,6 +76,9 @@ Azure 存储支持三种类型的共享访问签名：
 ## <a name="how-a-shared-access-signature-works"></a>共享访问签名的工作方式
 
 共享访问签名是一个指向一个或多个存储资源的已签名 URI。 该 URI 包含包含一组特殊查询参数的令牌。 该令牌指示客户端可以如何访问资源。 作为一个查询参数，签名是基于 SAS 参数构造的，已通过用来创建该 SAS 的密钥签名。 Azure 存储使用该签名授予对存储资源的访问权限。
+
+> [!NOTE]
+> 不能审核 SAS 令牌的生成。 有权通过使用帐户密钥或通过 Azure RBAC 角色分配来生成 SAS 令牌的任何用户均可执行此操作，而无需知道存储帐户的所有者。 请小心限制允许用户生成 SAS 令牌的权限。 若要防止用户生成使用 blob 和队列工作负荷的帐户密钥进行签名的 SAS，你可以禁止对存储帐户进行共享密钥访问。 有关详细信息，请参阅 [阻止授权与共享密钥](shared-key-authorization-prevent.md)。
 
 ### <a name="sas-signature-and-authorization"></a>SAS 签名和授权
 

@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/07/2020
+ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098478"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937587"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -65,7 +65,7 @@ ms.locfileid: "93098478"
 
   * **开发人员** ISE SKU：单一 [免费层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 集成帐户
 
-  每个 ISE SKU 限制为5个集成帐户的总数。 为实现额外的成本，可以根据 ISE SKU 创建更多的集成帐户：
+  不管 SKU 如何，每个 ISE 都可以有 [有限数量的集成帐户](logic-apps-limits-and-config.md#integration-account-limits)。 你可以提高此限制，增加成本：
 
   * **高级** ISE SKU：最多4个标准帐户。 无免费帐户或基本帐户。
 
@@ -85,13 +85,13 @@ Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#ac
 
 触发器始终是逻辑应用工作流中的第一步，是在满足特定条件或发生特定事件时创建并运行逻辑应用实例的特殊操作。 触发器以不同方式起作用，从而影响逻辑应用的计量方式。 下面是 Azure 逻辑应用中存在的各种触发器：
 
-* **定期触发器** ：你可以使用不特定于任何服务或系统的此泛型触发器来启动任何逻辑应用工作流，并创建一个基于在触发器中设置的重复间隔运行的逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+* **定期触发器**：你可以使用不特定于任何服务或系统的此泛型触发器来启动任何逻辑应用工作流，并创建一个基于在触发器中设置的重复间隔运行的逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
 
-* **轮询触发器** ：你可以使用这种更为专用的重复触发器，该触发器通常与特定服务或系统的托管连接器相关联，以根据在触发器中设置的重复间隔来检查符合用于创建和运行逻辑应用实例的条件的事件或消息。 即使未创建任何逻辑应用实例，例如，跳过触发器时，逻辑应用服务会将每个轮询请求作为一个执行。 若要指定轮询间隔，请通过逻辑应用程序设计器设置触发器。
+* **轮询触发器**：你可以使用这种更为专用的重复触发器，该触发器通常与特定服务或系统的托管连接器相关联，以根据在触发器中设置的重复间隔来检查符合用于创建和运行逻辑应用实例的条件的事件或消息。 即使未创建任何逻辑应用实例，例如，跳过触发器时，逻辑应用服务会将每个轮询请求作为一个执行。 若要指定轮询间隔，请通过逻辑应用程序设计器设置触发器。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook 触发器** ：可使用 webhook 触发器等待客户端将请求发送到特定终结点 URL 中的逻辑应用，而不使用轮询触发器。 发送到 webhook 终结点的每个请求计为一个操作执行。 例如，请求和 HTTP Webhook 触发器都是泛型 Webhook 触发器。 某些服务或系统连接器还具有 webhook 触发器。
+* **Webhook 触发器**：可使用 webhook 触发器等待客户端将请求发送到特定终结点 URL 中的逻辑应用，而不使用轮询触发器。 发送到 webhook 终结点的每个请求计为一个操作执行。 例如，请求和 HTTP Webhook 触发器都是泛型 Webhook 触发器。 某些服务或系统连接器还具有 webhook 触发器。
 
 <a name="actions"></a>
 
@@ -114,19 +114,19 @@ Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量�
 
 ## <a name="integration-accounts"></a>集成帐户
 
-[固定定价模型](https://azure.microsoft.com/pricing/details/logic-apps)适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，此类帐户可用于免费浏览、开发和测试 Azure 逻辑应用中的 [B2B 和 EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能。 每个 Azure 订阅最多可以有一项[集成帐户的特定限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 每个集成帐户的存储受到特定的[项目限制](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)，其中包含贸易合作伙伴、协议、映射、架构、程序集、证书、批处理配置等。
+[固定定价模型](https://azure.microsoft.com/pricing/details/logic-apps)适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，此类帐户可用于免费浏览、开发和测试 Azure 逻辑应用中的 [B2B 和 EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能。 每个 Azure 订阅最多可以有一项[集成帐户的特定限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 每个集成帐户最多可存储项目的特定 [限制](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)，包括贸易合作伙伴、协议、地图、架构、程序集、证书、批配置等。
 
 Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服务级别协议 (SLA) 支持“基本”和“标准”层级，而“免费”层级则不受 SLA 支持并有区域可用性、吞吐量和使用方面的限制。 每个 Azure 区域中可以有多个集成帐户，“免费”层级集成帐户除外。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
-如果你的 [ *integration service 环境* (Ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)（ [高级或开发人员](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)），ise 可以有5个集成帐户。 若要了解如何为 ISE 使用固定定价模型，请参阅本主题前面的 [固定定价模型](#fixed-pricing) 部分。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+如果你的 [ *integration service 环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，无论使用哪种 [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，你的 ise 都可以有 [有限数量的集成帐户](logic-apps-limits-and-config.md#integration-account-limits)，但你可以 [提高此限制以增加成本](#fixed-pricing)。 若要了解如何为 ISE 使用固定定价模型，请参阅本主题前面的 [固定定价模型](#fixed-pricing) 部分。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要在免费、基本或标准集成帐户之间进行选择，请查看这些用例说明：
 
-* **免费** ：要尝试探索方案，而不是生产方案。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于 [Azure 中国世纪互联](/azure/china/overview-operations) 或 [azure 政府](../azure-government/documentation-government-welcome.md)版。
+* **免费**：要尝试探索方案，而不是生产方案。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于 [Azure 中国世纪互联](/azure/china/overview-operations) 或 [azure 政府](../azure-government/documentation-government-welcome.md)版。
 
-* **基本** ：适用于只需处理消息或充当与大型企业实体建立贸易合作关系的小型企业合作伙伴的情况
+* **基本**：适用于只需处理消息或充当与大型企业实体建立贸易合作关系的小型企业合作伙伴的情况
 
-* **标准** ：适用于 B2B 关系更复杂且需要管理的实体数增加的情况
+* **标准**：适用于 B2B 关系更复杂且需要管理的实体数增加的情况
 
 <a name="data-retention"></a>
 
@@ -169,7 +169,7 @@ Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服�
 
 1. 在“逻辑应用运行详细信息”窗格的“操作表”中（其中列出了每个操作的状态和持续时间），选择要查看的操作。
 
-1. 在 " **逻辑应用操作** " 窗格中，查找该操作的输入和输出的大小。 在 " **输入链接** 和 **输出链接** " 下，找到这些输入和输出的链接。
+1. 在 " **逻辑应用操作** " 窗格中，查找该操作的输入和输出的大小。 在 " **输入链接** 和 **输出链接**" 下，找到这些输入和输出的链接。
 
    > [!NOTE]
    > 对于循环，仅顶级操作显示其输入和输出的大小。 对于嵌套循环内的操作，输入和输出显示零大小和无链接。

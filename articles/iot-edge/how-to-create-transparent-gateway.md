@@ -11,16 +11,19 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147842"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938777"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
-本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 本文使用术语 *IoT Edge 网关*来指代配置为透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
+本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 本文使用术语 *IoT Edge 网关* 来指代配置为透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
 >当前：
@@ -28,11 +31,23 @@ ms.locfileid: "92147842"
 > * 支持 Edge 的设备无法连接到 IoT Edge 网关。
 > * 下游设备不能使用文件上传。
 
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>当前：
+>
+> * 下游设备不能使用文件上传。
+
+::: moniker-end
+
 成功设置透明网关连接需要完成三个常规步骤。 本文介绍其中的第一个步骤：
 
 1. **将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。设置网关以接收来自下游设备的消息，并将其路由到适当的目标。**
-2. 为下游设备创建设备标识，以便它可以通过 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关这些步骤，请参阅对 [Azure IoT 中心的下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
-3. 将下游设备连接到网关设备并开始发送消息。 有关这些步骤，请参阅 [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
+2. 为下游设备创建设备标识，以便它可以通过 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关这些步骤，请参阅[向 Azure IoT 中心验证下游设备](how-to-authenticate-downstream-device.md)。
+3. 将下游设备连接到网关设备并开始发送消息。 有关这些步骤，请参阅[将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
 
 充当网关的设备需要安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认网关设备的标识。 此标识检查可防止设备连接到潜在的恶意网关。
 
@@ -49,7 +64,7 @@ ms.locfileid: "92147842"
 
 安装了 IoT Edge 的 Linux 或 Windows 设备。
 
-如果没有准备好设备，可以在 Azure 虚拟机中创建一个。 按照将 [第一个 IoT Edge 模块部署到虚拟 Linux 设备](quickstart-linux.md) 中的步骤创建 IoT 中心、创建虚拟机并配置 IoT Edge 运行时。 
+如果设备均未就绪，可在 Azure 虚拟机中创建一个。 按照[将第一个 IoT Edge 模块部署到虚拟 Linux 设备](quickstart-linux.md)中的步骤，创建一个 IoT 中心、创建一个虚拟机并配置 IoT Edge 运行时。 
 
 ## <a name="set-up-the-device-ca-certificate"></a>安装设备 CA 证书
 
@@ -70,27 +85,27 @@ ms.locfileid: "92147842"
 
 对于生产方案，你应该通过自己的证书颁发机构生成这些文件。 对于开发和测试方案，可以使用演示证书。
 
-1. 如果使用的是演示证书，请使用 [创建演示证书中的说明来测试 IoT Edge 设备功能](how-to-create-test-certificates.md) ，以创建文件。 在该页上，需要执行以下步骤：
+1. 如果使用的是演示证书，请使用[创建演示证书用于测试 IoT Edge 设备功能](how-to-create-test-certificates.md)中的说明来创建文件。 在该页上，需要执行以下步骤：
 
-   1. 若要开始，请设置脚本以在设备上生成证书。
-   2. 创建根 CA 证书。 在这些说明结束时，你将拥有一个根 CA 证书文件：
+   1. 首先在设备上设置生成证书的脚本。
+   2. 创建根 CA 证书。 在完成这些说明后，你将有一个根 CA 证书文件：
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
-   3. 创建 IoT Edge 设备 CA 证书。 在这些说明结束时，你将拥有一个设备 CA 证书及其私钥：
+   3. 创建 IoT Edge 设备 CA 证书。 完成这些说明后，你将有一个设备 CA 证书及其私钥：
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` 和
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. 如果在其他计算机上创建了证书，请将它们复制到 IoT Edge 设备上。
+2. 如果在另一计算机上创建了这些证书，请将它们复制到 IoT Edge 设备上。
 
 3. 在 IoT Edge 设备上，打开安全守护程序配置文件。
    * Windows： `C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-4. 查找文件的 " **证书设置** " 部分。 取消注释从证书开始的四行 **：** 并提供三个文件的文件 uri 作为以下属性的值：
+4. 找到文件的“证书设置”部分。 取消评论以“certificates:”开头的四行，并将你的三个文件的文件 URI 作为以下属性的值来提供：
    * **device_ca_cert**：设备 CA 证书
    * **device_ca_pk**：设备 CA 私钥
    * **trusted_ca_certs**：根 CA 证书
 
-   请确保证书上没有前面的空白 **：** 行，并将其他行缩进两个空格。
+   确保“certificates:”行前面没有空格，并且其它行缩进了两个空格。
 
 5. 保存并关闭该文件。
 

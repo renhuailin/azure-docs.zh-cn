@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029755"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938709"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
 
@@ -35,7 +35,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 * 在无学习曲线的[现有负载均衡器解决方案上构建](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> 跨区域负载均衡器目前处于预览状态，并隐藏在预览门户中。 登录以 **https://preview.portal.azure.com/?feature.globallb=true** 查看和部署功能。 </br> </br>
+> 跨区域负载均衡器目前处于预览状态，并隐藏在预览门户中。 登录以 **https://preview.portal.azure.com** 查看和部署功能。 </br> </br>
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 跨区域负载均衡提供与区域标准负载均衡器相同的高性能和低延迟的优点。 
@@ -51,7 +51,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 
 通过将全局前端公共 IP 地址添加到现有负载均衡器来配置区域冗余。 
 
-如果一个区域出现故障，则会将流量路由到下一个最近的最接近正常的区域负载均衡器。  
+如果一个区域出现故障，则会将流量路由到下一个最近的正常运行的区域负载均衡器。  
 
 跨区域负载均衡器的运行状况探测每隔20秒收集有关可用性的信息。 如果一个区域负载均衡器将其可用性降到0，则跨区域负载均衡器将检测到失败。 然后，区域负载均衡器会脱离旋转。 
 

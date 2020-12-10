@@ -9,17 +9,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965878"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936941"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虚拟机扩展和功能
 扩展是小型应用程序，用于在 Azure VM 上提供部署后配置和自动化。 Azure 平台可承载许多扩展，涵盖 VM 配置、监视、安全性和实用工具应用程序。 发布服务器采用某个应用程序，将其包装到扩展中，对安装进行简化。 你只需提供必需的参数。 
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>如何了解哪些扩展可用？
+## <a name="how-can-i-find-what-extensions-are-available"></a>如何查找可用的扩展？
 若要查看可用扩展，可以先在左侧菜单中选择 VM，然后选择“扩展”。 若要拉取扩展的完整列表，请参阅[了解适用于 Linux 的 VM 扩展](features-linux.md)和[了解适用于 Windows 的 VM 扩展](features-windows.md)。
 
 ## <a name="how-can-i-install-an-extension"></a>如何安装扩展？

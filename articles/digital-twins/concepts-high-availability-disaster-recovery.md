@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763157"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938525"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -38,6 +38,29 @@ Microsoft 在少数情况下执行的 **故障转移** 会将受影响区域的�
 
 >[!NOTE]
 > 某些 Azure 服务还提供了一个名为 " **客户启动的故障转移**" 的附加选项，使客户只需为其实例启动故障转移，如运行 DR 演练。 Azure 数字孪生目前 **不支持** 此机制。 
+
+## <a name="monitor-service-health"></a>监视服务运行状况
+
+当 Azure 数字孪生实例进行故障转移和恢复时，可以使用 [Azure 服务运行状况](https://docs.microsoft.com/azure/service-health/service-health-overview) 工具监视此过程。 服务运行状况跨不同的区域和订阅跟踪 Azure 服务的运行状况，并共享服务影响有关中断和停机时间的通信。
+
+在故障转移事件期间，服务运行状况可提供服务关闭的时间和备份时间。
+
+查看服务运行状况事件 .。。
+1. 在 Azure 门户中导航到 " [服务运行状况](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) " (你可以使用此链接或使用门户搜索栏) 搜索它。
+1. 使用左侧菜单切换到 *运行状况历史记录* 页。
+1. 查找从 **Azure 数字孪生** 开始的 *问题名称*，并选择它。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="显示运行状况历史记录页的 Azure 门户屏幕截图。过去几天有几个问题列表，其中突出显示了一个名为 &quot;Azure 数字孪生-西欧降低&quot; 的问题。" lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. 有关中断的一般信息，请查看 " *摘要* " 选项卡。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="在 &quot;运行状况历史记录&quot; 页上，突出显示 &quot;摘要&quot; 选项卡。选项卡将显示常规信息，例如受影响的资源、其区域及其订阅。" lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. 有关随时间推移的问题的详细信息和更新，请查看 " *问题更新* " 选项卡。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="在 &quot;运行状况历史记录&quot; 页上，突出显示 &quot;问题更新&quot; 选项卡。该选项卡显示了几个显示一天前状态的条目。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+请注意，此工具中显示的信息并不特定于一个 Azure 数字实例。 使用服务运行状况了解在某个区域或订阅中使用 Azure 数字孪生服务时，你可以通过使用 [资源运行状况工具](troubleshoot-resource-health.md) 向下钻取到特定实例并查看这些实例是否受影响，进一步监视某个步骤。
 
 ## <a name="best-practices"></a>最佳做法
 

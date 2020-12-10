@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 95f94bd1e80c05658d9033047950d4b49fca4643
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920661"
+ms.locfileid: "96938301"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -136,9 +136,11 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 > [!NOTE]
 > 请记住，你的应用服务计划必须扩展到2个或更多个实例，并且必须是 **基本层或更高级别** ，才能排除负载均衡器。 如果只有1个实例，则它不会从负载均衡器中删除，即使它不正常。 
 
-其余正常运行的实例的负载可能会增大。 为避免其余实例不堪重负，排除的实例不得过半。 例如，如果应用服务计划横向扩展到 4 个实例，且其中 3 个运行不正常，则负载均衡器轮换最多排除 2 个。 其他 2 个实例（1 个运行正常的实例和 1 个运行不正常的实例）将继续接收请求。 在所有实例均不正常的最坏情况下，不排除任何实例。如果要替代此行为，可以将 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 应用设置设置为介于 `0` 和 `100` 之间的值。 将此值设置为较高值意味着将删除更多运行不正常的实例（默认值为 50）。
+此外，在添加或重新启动实例时，会对运行状况检查路径进行 ping 操作，例如在 scale out 操作期间，手动重新启动，或通过 SCM 站点部署代码。 如果在执行这些操作期间运行状况检查失败，则不会将失败的实例添加到负载均衡器。 这可以防止这些操作对应用程序的可用性产生负面影响。
 
-如果实例在一小时内仍无法正常运行，则将其更换为新实例。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
+当使用 healthcheck 时，剩余的正常实例可能会提高负载。 为避免其余实例不堪重负，排除的实例不得过半。 例如，如果应用服务计划横向扩展到 4 个实例，且其中 3 个运行不正常，则负载均衡器轮换最多排除 2 个。 其他 2 个实例（1 个运行正常的实例和 1 个运行不正常的实例）将继续接收请求。 在所有实例均不正常的最坏情况下，不排除任何实例。如果要替代此行为，可以将 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 应用设置设置为介于 `0` 和 `100` 之间的值。 将此值设置为较高值意味着将删除更多运行不正常的实例（默认值为 50）。
+
+如果针对实例的所有应用的运行状况检查失败一小时，则将替换该实例。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
 
 ### <a name="monitoring"></a>监视
 

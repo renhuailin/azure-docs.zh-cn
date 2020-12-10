@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30f110c3955315f560eef9972b1e3e4a956bdd8a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 572d6964384c711a7d2b98b0fa27852a7d28951f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750520"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936703"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 为 SAML 2.0 标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的标识提供者（例如 [ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce-custom.md)）联合， 这样用户就可以使用其现有的社交或企业标识登录。
+Azure Active Directory B2C (Azure AD B2C) 为 SAML 2.0 标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的标识提供者（例如 [ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce.md)）联合， 这样用户就可以使用其现有的社交或企业标识登录。
 
 ## <a name="metadata-exchange"></a>元数据交换
 
@@ -154,7 +154,7 @@ SAML 断言：
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning 加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中的 **WantsSignedRequests** 的值设置为 `false` 且标识提供者元数据 **WantAuthnRequestsSigned** 设置为 `false` 或未指定，则 Azure AD B2C 不会对请求签名。 |
@@ -174,7 +174,7 @@ SAML 断言：
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必选 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |否 | X509 证书（RSA 密钥集）。 SAML 标识提供程序使用证书的公共部分来加密 SAML 响应的断言。 Azure AD B2C 使用证书的专用部分来解密断言。 |
@@ -216,5 +216,5 @@ SAML 断言：
 
 请参阅以下文章，了解在 Azure AD B2C 中使用 SAML 标识提供者的示例：
 
-- [使用自定义策略将 ADFS 添加为 SAML 身份提供程序](identity-provider-adfs2016-custom.md)
-- [通过 SAML 使用 Salesforce 帐户登录](identity-provider-salesforce-custom.md)
+- [使用自定义策略将 ADFS 添加为 SAML 身份提供程序](identity-provider-adfs.md)
+- [通过 SAML 使用 Salesforce 帐户登录](identity-provider-salesforce.md)

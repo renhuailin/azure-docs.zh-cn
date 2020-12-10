@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317463"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938233"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高身份验证和授权在你开发的客户端应用程序中的复原能力
 
@@ -26,11 +26,13 @@ ms.locfileid: "96317463"
 
 [ (MSAL) 的 Microsoft 身份验证库](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)是[microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop)的重要组成部分。 它简化和管理获取、管理、缓存和刷新令牌的操作，并使用最佳做法来实现复原。 MSAL 旨在实现安全的解决方案，使开发人员无需担心实现细节。
 
-MSAL 缓存令牌并使用静默令牌采集模式。 它还会自动序列化本机提供安全存储（如 Windows UWP、iOS 和 Android）的平台上的令牌缓存。 当使用[MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-token-cache-serialization)、 [MSAL For Java](https://docs.microsoft.com/azure/active-directory/develop/msal-java-token-cache-serialization)和[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization) [MSAL for Python](https://docs.microsoft.com/azure/active-directory/develop/msal-python-token-cache-serialization)时，开发人员可以自定义序列化行为。
+MSAL 缓存令牌并使用静默令牌采集模式。 它还会自动序列化本机提供安全存储（如 Windows UWP、iOS 和 Android）的平台上的令牌缓存。 当使用[MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-token-cache-serialization)、 [MSAL For Java](https://docs.microsoft.com/azure/active-directory/develop/msal-java-token-cache-serialization)和[](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization) [MSAL for Python](https://docs.microsoft.com/azure/active-directory/develop/msal-python-token-cache-serialization)时，开发人员可以自定义序列化行为。
 
 ![使用 MSAL 的设备和应用程序的映像来调用 Microsoft 标识](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-当使用 MSAL 时，可以使用以下模式获取令牌缓存、刷新和无提示令牌采集。
+使用 MSAL 时，会自动支持令牌缓存、刷新和无提示采集。 可以使用简单模式获取新式身份验证所需的令牌。 我们支持多种语言，你可以在 [示例](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) 页上找到一个与你的语言和方案相匹配的示例。
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[Javascript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 在某些情况下，MSAL 可以主动刷新令牌。 当 Microsoft 标识发出长时间的令牌时，它可以将信息发送到客户端，以获取刷新令牌 ( "refresh \_ in" ) 的最佳时间。 MSAL 将根据此信息主动刷新令牌。 该应用程序将继续运行，而旧的令牌有效，但会有更长的时间范围，以便进行另一个成功的令牌采集。
 
@@ -65,7 +89,9 @@ catch(MsalUiRequiredException ex)
 
 [查看最新的 Microsoft System.web 版本和发行说明](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>如果不使用 MSAL，请将这些复原模式用于标记处理
+## <a name="use-resilient-patterns-for-token-handling"></a>使用弹性模式进行令牌处理
+
+如果未使用 MSAL，则可以使用这些复原模式进行标记处理。 这些最佳实践由 MSAL 库自动实现。 
 
 通常，使用新式身份验证的应用程序将调用一个终结点来检索对用户进行身份验证或授权应用程序调用受保护的 Api 的令牌。 MSAL 旨在处理身份验证的详细信息并实现多种模式，从而提高此过程的复原能力。 如果选择使用 MSAL 以外的库，请使用本部分中的指南来实施最佳实践。 如果你使用 MSAL，则会免费获取所有这些最佳实践，因为 MSAL 会自动实现它们。
 

@@ -9,12 +9,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab7749c93f39d0c7b630b63e0b0e68589b61ede2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a12fc991734fe74e450aa14a477f3a4500ba659c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090941"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937247"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
 
@@ -40,11 +40,11 @@ ms.locfileid: "92090941"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
 
-默认情况下，列出操作每次最多返回 5000 个结果。 若要返回较小的结果集，请为要返回的结果页的大小提供一个非零值。
+默认情况下，列出操作每次最多返回 5000 个结果。 若要返回更小的结果集，请为要返回的结果页的大小提供非零值。
 
-如果你的存储帐户包含5000个以上的容器，或者，如果你指定了一个页面大小，以使列表操作在存储帐户中返回容器的一个子集，则 Azure 存储将返回一个 *继续标记* ，其中包含容器的列表。 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
+如果存储帐户包含 5000 个以上的容器，或者你指定了页面大小，以便列表操作返回存储帐户中的容器子集，则 Azure 存储将返回一个包含容器列表的延续令牌。 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
 
-在代码中检查继续标记的值，以确定它是否为适用于 .net v12) 的空 (或 .NET v11 和更早) 的 null (。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为空，则再次调用该列表方法，并传入继续标记以检索下一组结果，直到继续标记为 null。
+在代码中检查延续令牌的值，以确定它是为空（适用于 .NET v12）还是为 NULL（适用于 .NET v11 及更低版本）。 如果继续标记为 null，则表示结果集是完整的。 如果延续令牌不为 NULL，则再次调用列出方法，并传入延续令牌以检索下一组结果，直到延续令牌为 NULL。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前缀筛选结果
 
@@ -52,15 +52,15 @@ ms.locfileid: "92090941"
 
 ### <a name="return-metadata"></a>返回元数据
 
-若要在结果中返回容器元数据，请为 .net v12) 指定[BlobContainerTraits](/dotnet/api/azure.storage.blobs.models.blobcontainertraits)枚举 (的**元数据**值，并为 .net v11 和更早的) 指定[ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) (enum。 Azure 存储包括每个容器返回的元数据，因此你无需获取容器元数据。
+若要将容器元数据与结果一起返回，请为 [BlobContainerTraits](/dotnet/api/azure.storage.blobs.models.blobcontainertraits) 枚举（适用于 .NET v12）或 [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 枚举（适用于 .NET v11 及更低版本）指定“Metadata”值）。 Azure 存储包含返回的每个容器的元数据，因此你也不需要提取容器元数据。
 
 ## <a name="example-list-containers"></a>示例：列出容器
 
-以下示例以异步方式列出存储帐户中以指定的前缀开头的容器。 该示例列出了以指定的前缀开头的容器，并为每次调用列表操作返回指定数目的结果。 然后，它使用继续标记获取下一段结果。 该示例还会连同结果一起返回容器元数据。
+以下示例以异步方式列出存储帐户中以指定的前缀开头的容器。 该示例列出了以指定前缀开头的容器，并且每次对列表操作的调用均返回指定数量的结果。 然后，它使用延续令牌获取下一段结果。 该示例还会连同结果一起返回容器元数据。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="ListContainers":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="Snippet_ListContainers":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -119,7 +119,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [列出容器](/rest/api/storageservices/list-containers2)
 - [枚举 Blob 资源](/rest/api/storageservices/enumerating-blob-resources)

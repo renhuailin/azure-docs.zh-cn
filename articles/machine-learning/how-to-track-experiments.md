@@ -1,7 +1,7 @@
 ---
 title: 记录 ML 试验和指标
 titleSuffix: Azure Machine Learning
-description: 启用 ML 培训运行日志记录，以监视实时运行指标，并帮助诊断错误和警告。
+description: 在 ML 训练运行上启用日志记录，以便监视实时运行指标并帮助诊断错误和警告。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c193249ee8cef38650a8a188a59c26a0eab17506
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361057"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938390"
 ---
-# <a name="enable-logging-in-ml-training-runs"></a>在 ML 定型运行中启用日志记录
+# <a name="enable-logging-in-ml-training-runs"></a>在 ML 训练运行中启用日志记录
 
 
 Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特定于 SDK 的功能记录实时信息。 你可以在本地进行记录，并将日志发送到门户中的工作区。
@@ -51,12 +51,12 @@ Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特
 
 1. 创建包含日志记录逻辑的训练脚本 `train.py`。
 
-   [!code-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交，以便进行训练。
 
-   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     `show_output` 参数会启用详细日志记录，让你可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 请使用以下代码在提交试验时启用详细日志记录。
 
@@ -91,7 +91,7 @@ Azure 机器学习还可以在训练期间记录其他来源的信息，例如�
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+[!INCLUDE[aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

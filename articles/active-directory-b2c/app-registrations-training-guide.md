@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952074"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936465"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
 
@@ -63,7 +63,7 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 > [!NOTE]
 > 若要对此应用程序的用户进行身份验证，需要此选项才能运行 Azure AD B2C 用户流。 了解[如何注册应用程序以便能使用用户流。](tutorial-register-applications.md)
 
-还可以使用此选项，以便使用 Azure AD B2C 作为 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs2016-custom.md)。
+还可以使用此选项，以便使用 Azure AD B2C 作为 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>适用于 DevOps 方案的应用程序
 可使用其他帐户类型来创建用于管理 DevOps 方案（如使用 Microsoft Graph 上传 Identity Experience Framework 策略或预配用户）的应用。 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
@@ -116,5 +116,5 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 * 了解[如何注册 Web API](add-web-api-application.md)。
 * 了解[如何注册本机客户端应用程序](add-native-application.md)。
 * 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
-* 了解 [如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs2016-custom.md)
+* 了解 [如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs.md)
 * 了解[应用程序类型](application-types.md)。

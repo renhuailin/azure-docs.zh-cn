@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173662"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936788"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -60,7 +60,6 @@ ms.locfileid: "96173662"
 | **Persistent** | Microsoft 标识平台将使用永久性格式作为 NameID 格式。 |
 | **EmailAddress** | Microsoft 标识平台将使用 EmailAddress 作为 NameID 格式。 |
 | **Unspecified** | Microsoft 标识平台将使用未指定的作为 NameID 格式。 |
-| **Windows 域限定名** | Microsoft 标识平台将使用 WindowsDomainQualifiedName 作为 NameID 格式。 |
 
 还支持临时 NameID，但在下拉列表中不可用，并且不能在 Azure 端进行配置。 若要了解有关 NameIDPolicy 属性的详细信息，请参阅 [单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 

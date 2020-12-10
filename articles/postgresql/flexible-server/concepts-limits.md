@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366632"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937655"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器的限制
 
@@ -116,6 +116,7 @@ PostgreSQL 连接（即使处于空闲状态）可能占用大约 10 MB 内存�
 
 * 目前尚不支持 Azure AD 身份验证。 如果需要 Azure AD 身份验证，我们建议使用 " [单一服务器](../overview-single-server.md) " 选项。
 * 尚不支持读取副本。 如果需要读取副本，我们建议使用 " [单一服务器](../overview-single-server.md) " 选项。
+* 不支持将资源移动到另一个订阅。 
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015963"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938794"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -44,7 +44,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>要使用哪些工具创建 VNet？
 可以使用以下工具创建或配置 VNet：
@@ -229,7 +229,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 是的。 有关详细信息，请参阅 [Azure 网络安全概述](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="do-virtual-networks-store-customer-data"></a>虚拟网络是否存储客户数据？
-不是。 虚拟网络不存储任何客户数据。 
+错误。 虚拟网络不会存储客户数据。 
 
 ## <a name="apis-schemas-and-tools"></a>API、架构和工具
 
@@ -268,7 +268,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>如果虚拟网络所属的订阅位于不同的 Azure Active Directory 租户中，能否启用 VNet 对等互连？
-是的。 如果订阅属于不同的 Azure Active Directory 租户，则可以建立 VNet 对等互连（无论是本地还是全球）。 可以通过门户、PowerShell 或 CLI 实现此目的。
+是。 如果订阅属于不同的 Azure Active Directory 租户，则可以建立 VNet 对等互连（无论是本地还是全球）。 可以通过门户、PowerShell 或 CLI 实现此目的。
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>我的 VNet 对等互连连接处于“已启动”状态，为什么我不能连接？
 如果对等互连连接处于“已启动”状态，则意味着只创建了一个链路。 必须创建双向链接才能成功建立连接。 例如，若要从 VNet A 对等互连到 VNet B，必须创建从 VNetA 到 VNetB 以及从 VNetB 到 VNetA 的链接。 创建这两个链路后，状态会更改为“已连接”。
@@ -283,7 +283,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 否。 要启用 VNet 对等互连，地址空间不得重叠。
 
 ### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>是否可以对两个不同的 Vnet 使用 "使用远程网关" 选项启用 VNet，同时在对等互连上启用 "使用远程网关" 选项？
-不是。 仅可对某个对等互连的 Vnet 启用 "使用远程网关" 选项。
+不能。 仅可对某个对等互连的 Vnet 启用 "使用远程网关" 选项。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet 对等互连链接的费用如何？
 创建 VNet 对等互连连接不收费。 跨对等互连连接进行数据传输收费。 请[参阅此文](https://azure.microsoft.com/pricing/details/virtual-network/)。
@@ -315,7 +315,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 受监视的网络接口仅能拥有一个 TAP 配置。 请咨询各个 [合作伙伴解决方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) ，以便能够将多个分流流量副本流式传输到所选的分析工具。
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>同一虚拟网络 TAP 资源是否可以聚合多个虚拟网络中来自受监视的网络接口的流量？
-是的。 同一虚拟网络 TAP 资源可用于聚合同一订阅或不同订阅中的对等虚拟网络中来自受监视的网络接口的镜像流量。 虚拟网络 TAP 资源和目标负载均衡器或目标网络接口必须位于同一订阅中。 所有订阅必须在同一 Azure Active Directory 租户下。
+是。 同一虚拟网络 TAP 资源可用于聚合同一订阅或不同订阅中的对等虚拟网络中来自受监视的网络接口的镜像流量。 虚拟网络 TAP 资源和目标负载均衡器或目标网络接口必须位于同一订阅中。 所有订阅必须在同一 Azure Active Directory 租户下。
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>如果我在网络接口上启用虚拟网络 TAP 配置，是否需要考虑生产流量的性能问题？
 
@@ -332,7 +332,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 1. 启用 Azure 服务的服务终结点。
 2. 在 Azure 服务上设置 VNet Acl。
 
-第一步是网络端操作，第二步是服务资源端操作。 这两个步骤可由相同的管理员或不同的管理员执行，具体取决于授予管理员角色的 Azure RBAC 权限。 建议首先在 Azure 服务端设置 VNet ACL 之前打开虚拟网络的服务终结点。 因此，必须按照上面列出的顺序执行这些步骤以设置 VNet 服务终结点。
+第一步是网络端操作，第二步是服务资源端操作。 这两个步骤可以由同一管理员或不同的管理员根据授予管理员角色的 Azure RBAC 权限执行。 建议首先在 Azure 服务端设置 VNet ACL 之前打开虚拟网络的服务终结点。 因此，必须按照上面列出的顺序执行这些步骤以设置 VNet 服务终结点。
 
 >[!NOTE]
 > 必须先完成上述两个操作，然后才能限制 Azure 服务对允许的 VNet 和子网的访问。 只有打开网络端 Azure 服务的服务终结点才能提供有限的访问权限。 此外，还必须在 Azure 服务端设置 VNet acl。

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: ad9d3adacf36f0d224e2915836356c5a24e6256a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750486"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936669"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 如果指定了此项，Azure AD B2C 将检查标识提供者返回的令牌中的 `aud` 声明是否与 IdTokenAudience 元数据中指定的声明相同。  |
@@ -112,7 +112,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
  
 以下设置可用于配置失败时显示的错误消息。 元数据应在 OpenID Connect 技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#sign-up-or-sign-in-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 在目录中找不到具有所提供用户名的帐户时要向用户显示的消息。 |
 | UserMessageIfInvalidPassword | 否 | 密码不正确时要向用户显示的消息。 |
@@ -122,7 +122,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |
 
@@ -130,8 +130,8 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 配置标识提供者的重定向 URI 时，请输入 `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 确保将 `{your-tenant-name}` 替换为你的租户名称。 重定向 URI 需要采用全小写形式。
 
-示例:
+例如：
 
-- [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](identity-provider-microsoft-account-custom.md)
-- [使用 Azure AD 帐户登录](identity-provider-azure-ad-single-tenant-custom.md)
-- [让用户使用自定义策略登录到多租户 Azure AD 标识提供者](identity-provider-azure-ad-multi-tenant-custom.md)
+- [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](identity-provider-microsoft-account.md)
+- [使用 Azure AD 帐户登录](identity-provider-azure-ad-single-tenant.md)
+- [让用户使用自定义策略登录到多租户 Azure AD 标识提供者](identity-provider-azure-ad-multi-tenant.md)

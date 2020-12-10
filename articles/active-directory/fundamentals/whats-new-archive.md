@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd6aa8c1936d9f07421f6508755a5b6d4852813
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e949501172dc0a156f5ecf450052f43f33a84daf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859175"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938148"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -1625,7 +1625,7 @@ Office 365 组过期策略已得到增强，可以自动续订其成员正在使
 
 **类型：** 已修复 **服务类别：** 身份验证（登录）**产品功能：** 用户身份验证
 
-从 Azure AD 身份验证库 (ADAL.NET) 5.0.0 预览版开始，应用开发人员必须[针对 Web 应用和 Web API 序列化每个帐户的一个缓存](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)。 否则，对于 Java 使用代理 [流](../develop/scenario-web-api-call-api-app-configuration.md?tabs=java) 的某些方案以及某些特定用例， `UserAssertion` 可能会导致权限提升。 为避免出现此漏洞，ADAL.NET 现在会忽略针对代表方案的用于 dotnet 的 Microsoft 身份验证库 (MSAL.NET) 共享缓存。
+从 Azure AD 身份验证库 (ADAL.NET) 5.0.0 预览版开始，应用开发人员必须[针对 Web 应用和 Web API 序列化每个帐户的一个缓存](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)。 否则，对于 Java 使用代理 [流](../develop/scenario-web-api-call-api-app-configuration.md?tabs=java) 的某些方案以及某些特定用例， `UserAssertion` 可能会导致权限提升。 为避免出现这种情况，ADAL.NET 会为代表方案忽略 dotnet (MSAL.NET) 共享缓存的 Microsoft 身份验证库。
 
 有关此问题的详细信息，请参阅 [Azure Active Directory 身份验证库特权提升漏洞](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)。
 
@@ -3465,7 +3465,7 @@ Azure AD Connect 的最新版本包括：
 
 **类型：** 新功能 **服务类别：** B2C - 使用者标识管理 **产品功能：** B2B/B2C
 
-现在可以使用自定义策略在 Azure AD B2C 中将 Azure AD 常用终结点添加为标识提供者。 这样就可以为登录到应用程序的所有 Azure AD 用户提供单个入口点。 有关详细信息，请参阅 [Azure Active Directory B2C：让用户使用自定义策略登录到多租户 Azure AD 标识提供者](../../active-directory-b2c/identity-provider-azure-ad-multi-tenant-custom.md)。
+现在可以使用自定义策略在 Azure AD B2C 中将 Azure AD 常用终结点添加为标识提供者。 这样就可以为登录到应用程序的所有 Azure AD 用户提供单个入口点。 有关详细信息，请参阅 [Azure Active Directory B2C：让用户使用自定义策略登录到多租户 Azure AD 标识提供者](../../active-directory-b2c/identity-provider-azure-ad-multi-tenant.md)。
 
 ---
 

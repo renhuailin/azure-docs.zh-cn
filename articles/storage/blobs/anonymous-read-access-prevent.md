@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533735"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937281"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 Blob 的匿名公共读取访问
 
@@ -166,7 +166,7 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 若要检查具有最佳性能的一组存储帐户的公共访问设置，可以使用 Azure 门户中的 Azure Resource Graph 资源管理器。 若要详细了解如何使用 Resource Graph 资源管理器，请参阅[快速入门：使用 Azure Resource Graph 资源管理器运行你的第一个 Resource Graph 查询](../../governance/resource-graph/first-query-portal.md)。
 
-默认情况下，默认情况下不会为存储帐户设置 **AllowBlobPublicAccess** 属性，并且在您显式设置之前，不会返回值。 当属性值为 **null** 或 **true** 时，存储帐户允许公共访问。
+默认情况下，默认情况下不会为存储帐户设置 **AllowBlobPublicAccess** 属性，并且在您显式设置之前，不会返回值。 当此属性值为 null 或为 true 时，存储帐户允许公共访问。
 
 在 Resource Graph 资源管理器中运行以下查询会返回存储帐户的列表，并显示每个帐户的公共访问设置：
 
@@ -287,6 +287,23 @@ Azure Policy 可以确保 Azure 资源符合要求和标准，从而为云治理
 下图显示了在以下情况下发生的错误：当具有“拒绝”效果的策略要求禁止公共访问时，你尝试创建允许公共访问（针对新帐户的默认设置）的存储帐户。
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="屏幕截图显示了在违反策略的情况下创建存储帐户时出现的错误":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>允许或禁止公共访问的权限
+
+若要设置存储帐户的 **AllowBlobPublicAccess** 属性，用户必须有权创建和管理存储帐户。 Azure RBAC) 角色提供这些权限的基于角色的访问控制 (，其中包括 storageAccounts/ **/write** 或 **\* storageAccounts/* _ 操作。 具有此操作的内置角色包括：
+
+- Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
+- Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
+- [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+
+这些角色不提供对存储帐户中数据的访问，Azure Active Directory (Azure AD) 。 但是，它们包括 _ * storageAccounts/listkeys/action * *，后者授予对帐户访问密钥的访问权限。 使用此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
+
+角色分配的作用域必须为存储帐户或更高级别，以允许用户允许或禁止访问存储帐户的公共访问权限。 有关角色作用域的详细信息，请参阅 [了解 AZURE RBAC 的作用域](../../role-based-access-control/scope-overview.md)。
+
+请注意，仅将这些角色分配给需要创建存储帐户或更新其属性的用户。 使用最小特权原则确保用户拥有完成任务所需的最少权限。 有关使用 Azure RBAC 管理访问权限的详细信息，请参阅 [AZURE rbac 的最佳实践](../../role-based-access-control/best-practices.md)。
+
+> [!NOTE]
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 **所有者** 角色包含所有操作，因此具有以下管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ## <a name="next-steps"></a>后续步骤
 

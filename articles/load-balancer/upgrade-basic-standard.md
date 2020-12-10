@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746295"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938505"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。
@@ -26,7 +26,7 @@ ms.locfileid: "96746295"
 
 我们提供了一个用于执行以下操作的 Azure PowerShell 脚本：
 
-* 在指定的资源组和位置中创建标准 SKU 负载均衡器。
+* 使用在基本标准负载均衡器的同一资源组中指定的位置创建标准 SKU 负载均衡器。
 * 将公共 IP 地址从基本 SKU 升级到标准 SKU。
 * 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
 * 创建允许出站连接的默认出站规则。
@@ -58,7 +58,7 @@ ms.locfileid: "96746295"
 
 ## <a name="download-the-script"></a>下载脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)下载迁移脚本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)下载迁移脚本。
 ## <a name="use-the-script"></a>使用脚本
 
 根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：
@@ -92,14 +92,13 @@ ms.locfileid: "96746295"
 
    * **oldRgName: [String]:必需** – 这是要升级的现有基本负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。 资源组位于该页上。
    * **oldLBName: [String]:必需** – 这是要升级的现有基本负载均衡器的名称。 
-   * **newrgName: [String]:必需** – 这是要在其中创建标准负载均衡器的资源组。 它可以是新资源组，也可以是现有资源组。 如果选择现有资源组，请注意，负载均衡器的名称在资源组中必须是唯一的。 
    * **newLBName: [String]:必需** – 这是要创建的标准负载均衡器的名称。
 1. 使用相应的参数运行脚本。 完成该脚本可能需要 5 到 7 分钟时间。
 
     **示例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>为出站连接创建出站规则
