@@ -65,7 +65,7 @@ ms.locfileid: "92457480"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Autotask Workplace** ，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Autotask Workplace**，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的 Autotask Workplace](common/search-new-app.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "92457480"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/loginsso`
 
@@ -149,7 +149,7 @@ ms.locfileid: "92457480"
 
     ![Autotask 单一登录批准配置](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
-    c. 选中“我确认此信息正确，并且我信任此 IdP”  复选框。
+    c. 选中“我确认此信息正确，并且我信任此 IdP”复选框。
 
     d. 单击“批准”  。
 

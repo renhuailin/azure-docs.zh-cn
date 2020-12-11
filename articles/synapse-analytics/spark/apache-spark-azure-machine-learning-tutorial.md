@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 自动化 ML 运行试验
-description: 该教程介绍如何使用 Apache Spark 和 Azure 自动化 ML 运行机器学习试验
+title: 教程：通过自动化 ML 以 Python 训练模型
+description: 本教程介绍如何使用 Apache Spark 和自动化 ML 在 Azure Synapse 中以 Python 训练机器学习模型。
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458835"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093326"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>教程：使用 Azure 自动化 ML 和 Apache Spark 运行试验
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>教程：通过 Apache Spark 和自动化 ML 在 Azure Synapse 中以 Python 训练机器学习模型
 
 Azure 机器学习是一种基于云的环境，可以对机器学习模型进行训练、部署、自动化、管理和跟踪。 
 
@@ -155,11 +155,11 @@ ws = Workspace(workspace_name = workspace_name,
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![上传的数据集的图片。](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>提交 AutoML 试验
+## <a name="submit-an-automated-ml-experiment"></a>提交自动化 ML 试验
 
 #### <a name="define-training-settings"></a>定义训练设置
 1. 若要提交试验，需要定义用于训练的试验参数和模型设置。 可以在[此处](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)查看完整的设置列表。
@@ -221,7 +221,7 @@ run_details = local_run.get_details()
 ![模型输出的屏幕截图。](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> 提交后，AutoML 实验将运行各种迭代和模型类型。 此运行通常需要 1 到 1.5 个小时。 
+> 提交后，自动化 ML 实验将运行各种迭代和模型类型。 此运行通常需要 1 到 1.5 个小时。 
 
 #### <a name="retrieve-the-best-model"></a>检索最佳模型
 为了从迭代中选择最佳模型，使用 ```get_output``` 函数返回最佳运行和拟合模型。 以下代码针对任何记录的指标或特定的迭代来检索最佳运行和拟合的模型。
@@ -325,7 +325,7 @@ plt.show()
 验证完最佳模型后，可将模型注册到 Azure 机器学习。 注册模型后，可下载或部署注册的模型，然后就能收到注册的所有文件。
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,7 +336,7 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>查看 Azure 机器学习中的结果
 最后，还可以通过导航到 Azure 机器学习工作区中的试验来访问迭代的结果。 在这里，可以了解有关运行状态、尝试的模型和其他模型指标的更多详细信息。 
 
-![AML 工作区的屏幕截图。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Azure 机器学习工作区的屏幕截图。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

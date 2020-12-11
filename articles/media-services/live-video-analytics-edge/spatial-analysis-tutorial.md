@@ -44,7 +44,7 @@ ms.locfileid: "92015679"
 * 带 GPU 加速的 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)。  
     虽然建议你使用带 GPU 加速的 Azure Stack Edge，但该容器可以在带 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) 的任何其他设备上运行。 
 * 用于空间分析的 [Azure 认知服务计算机视觉容器](https://azure.microsoft.com/services/cognitive-services/computer-vision/)。  
-    若要使用此容器，你必须有一个计算机视觉资源，以获取关联的 **API 密钥**和**终结点 URI**。 可以从 Azure 门户的计算机视觉“概览”页和“密钥”页获取 API 密钥。 密钥和终结点是启动容器所必需的。
+    若要使用此容器，你必须有一个计算机视觉资源，以获取关联的 **API 密钥** 和 **终结点 URI**。 可以从 Azure 门户的计算机视觉“概览”页和“密钥”页获取 API 密钥。 密钥和终结点是启动容器所必需的。
 
 ## <a name="overview"></a>概述
 
@@ -53,7 +53,7 @@ ms.locfileid: "92015679"
  
 此图显示了本教程中的信号如何流动。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到[帧速率筛选器处理器](media-graph-concept.md#frame-rate-filter-processor)节点。 该处理器会限制到达 MediaGraphCognitiveServicesVisionExtension 处理器节点的视频流的帧速率。
 
-MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过**共享内存**中继到另一个 Edge 模块，该模块在 gRPC 终结点后运行 AI 操作。 在此示例中，该 Edge 模块是空间分析模块。 MediaGraphCognitiveServicesVisionExtension 处理器节点执行两项操作：
+MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过 **共享内存** 中继到另一个 Edge 模块，该模块在 gRPC 终结点后运行 AI 操作。 在此示例中，该 Edge 模块是空间分析模块。 MediaGraphCognitiveServicesVisionExtension 处理器节点执行两项操作：
 
 * 它收集结果，并将事件发布到 [IoT 中心接收器](media-graph-concept.md#iot-hub-message-sink)节点。 然后该节点将这些事件发送到 [IoT Edge 中心](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。 
 * 它还通过使用[信号入口处理器](media-graph-concept.md#signal-gate-processor)从 RTSP 源捕获 30 秒视频剪辑，并将其存储为媒体服务资产。
@@ -71,7 +71,7 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 此密钥用于启动空间分析容器，在相应认知服务资源的 Azure 门户的 `Keys and Endpoint` 页上提供。 导航到该页并找到密钥和终结点 URI。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="空间分析概述":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="终结点 URI":::
 
 ## <a name="set-up-azure-stack-edge"></a>设置 Azure Stack Edge
 
@@ -169,17 +169,17 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 1. 在“AZURE IOT 中心”窗格旁，选择“更多操作”图标以设置 IoT 中心连接字符串 。 可以复制 src/cloud-to-device-console-app/appsettings.json 文件中的字符串。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空间分析概述":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空间分析：连接字符串":::
 1. 右键单击 `src/edge/deployment.spatialAnalysis.template.json` 并选择“生成 IoT Edge 部署清单”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空间分析概述":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空间分析：部署 amd64 json":::
     
     此操作应在 src/edge/config 文件夹中创建一个名为“deployment.amd64.json”的清单文件 。
 1. 右键单击 `src/edge/config/deployment.spatialAnalysis.amd64.json`，选择“为单个设备创建部署”，然后选择边缘设备的名称。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空间分析概述":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空间分析：部署模板 json":::   
 1. 如果系统提示你选择 IoT 中心设备，请从下拉菜单中选择你的 Azure Stack Edge 名称。
 1. 大约 30 秒后，在该窗口的左下角刷新 Azure IoT 中心。 边缘设备现在显示以下已部署的模块：
     
@@ -204,17 +204,17 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 1. 右键单击并选择“扩展设置”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="空间分析概述":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="扩展设置":::
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="空间分析概述":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
 1. 打开“资源管理器”窗格，然后在左下角查找“Azure IoT 中心”。
 1. 展开“设备”节点。
 1. 右键单击你的 Azure Stack Edge，然后选择“开始监视内置事件终结点”。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空间分析概述":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空间分析：启动监视":::
      
 ## <a name="run-the-program"></a>运行程序
 
