@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: e383ac260a67c7334b806612325ed0b6a9fbbef9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030971"
+ms.locfileid: "97094431"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -358,7 +358,14 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
- 
+
+* **部署失败**：对于 SDK 的版本 <= 1.18.0，为部署创建的基本映像可能会失败，并出现以下错误： "ImportError：无法从导入名称 `cached_property` `werkzeug` "。 
+
+  以下步骤可解决此问题：
+  1. 下载模型包
+  2. 取消压缩包
+  3. 使用未压缩的资产进行部署
+
 * **预测 R2 评分始终为零**：如果提供的训练数据的时间序列包含的值与上一个 `n_cv_splits` + `forecasting_horizon` 数据点相同，则会出现此问题。 如果该模式在你的时间序列中是预期的，可将主要指标切换为标准均方根误差。
  
 * **TensorFlow**：从 SDK 1.5.0 版开始，自动化机器学习默认不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其用于自动化 ML 试验，请通过 CondaDependecies 安装 tensorflow==1.12.0。 

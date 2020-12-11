@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456296"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093955"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池加载数据的最佳做法
 
@@ -71,6 +71,9 @@ ms.locfileid: "96456296"
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>这是将 SQL 池的100% 资源分配给单个负载的极端示例。 这将为你最大并发为1。 请注意，这应该只用于初始加载，在这种情况下，需要使用自己的配置来创建额外的工作负荷组，以便在工作负荷中权衡资源。 
 
 若要使用加载工作负荷组的资源运行加载，请以 loader 身份登录并运行该加载。
 

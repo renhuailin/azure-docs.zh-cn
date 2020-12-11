@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: 使用自我托管交付
               href: data-box-portal-customer-managed-shipping.md
+            - name: 使用自己的证书
+              href: data-box-bring-your-own-certificates.md
             - name: 启用客户管理的密钥
               href: data-box-customer-managed-encryption-key-portal.md
             - name: 使用客户密码箱
@@ -148,7 +150,7 @@
               href: data-box-disk-limits.md
             - name: 检查安全性
               href: data-box-disk-security.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: data-box-disk-faq.md
         - name: 如何
           items:

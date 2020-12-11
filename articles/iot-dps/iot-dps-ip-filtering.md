@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000362"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094346"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 连接筛选器
 
@@ -135,7 +135,7 @@ Azure CLI 或 Azure PowerShell 当前不支持更新 DPS IP 筛选器规则，�
 
 | 属性                | 说明 |
 | ------------------------ | ----------- |
-| **FilterName**           | 提供 IP 筛选器规则的名称。 此项必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 仅接受 ASCII 7 位字母数字字符和 {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}。 |
+| **FilterName**           | 提供 IP 筛选器规则的名称。 此项必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 只接受 ASCII 7 位字母数字字符加上  `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`   。 |
 | **操作**               | 接收的值为 **Accept** 或  **Reject** （充当 IP 筛选器规则的操作）。 |
 | **ipMask**               | 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。 |
 

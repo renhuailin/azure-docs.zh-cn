@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 6c1b19927207e1accb4ae6c47625eed41a6b0b92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967782"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093904"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 SAP HANA
 ## <a name="introduction"></a>简介
@@ -88,7 +88,7 @@ ms.locfileid: "94967782"
 -  [SAP NetWeaver 的 Azure 虚拟机部署](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA 安装
-部署 Azure 虚拟机并注册并配置操作系统后，你可以根据 SAP 安装 SAP HANA 安装。 若要获取此文档，请从此 SAP 网站[HANA 资源](https://www.sap.com/products/hana/implementation/resources.html)着手
+部署 Azure 虚拟机并注册并配置操作系统后，你可以根据 SAP 安装 SAP HANA 安装。 若要获取此文档，请从此 SAP 网站[HANA 资源](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd)着手
 
 有关使用 Azure 高级存储或超磁盘的直接附加磁盘的 SAP HANA 横向扩展配置，请参阅文档中的详细信息 [SAP HANA azure 上的基础结构配置和操作](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out)
 

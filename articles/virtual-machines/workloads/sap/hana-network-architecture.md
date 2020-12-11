@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006279"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093972"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -149,7 +149,7 @@ Azure 中 SAP 部署的差别如下：
 在这些情况下，可通过三种方式启用可传递路由：
 
 - 来回路由数据的反向代理。 例如，在连接到 HANA 大型实例并连接到本地作为虚拟防火墙/流量路由解决方案的 Azure 虚拟网络中，F5 大 IP、带有流量管理器的 NGINX。
-- 在 Linux VM 中使用 [IPTables 规则](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)在本地位置与 HANA 大型实例单元之间，或者在不同区域中的 HANA 大型实例单元之间实现路由。 需要将运行 IPTables 的 VM 部署到连接到 HANA 大型实例和本地的 Azure 虚拟网络中。 VM 需要相应调整大小，因此，VM 的网络吞吐量足以满足预期的网络流量。 有关 VM 网络带宽的详细信息，请参阅 [Azure 中 Linux 虚拟机的大小一](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)文。
+- 在 Linux VM 中使用 IPTables 规则在本地位置与 HANA 大型实例单元之间，或者在不同区域中的 HANA 大型实例单元之间实现路由。 需要将运行 IPTables 的 VM 部署到连接到 HANA 大型实例和本地的 Azure 虚拟网络中。 VM 需要相应调整大小，因此，VM 的网络吞吐量足以满足预期的网络流量。 有关 VM 网络带宽的详细信息，请参阅 [Azure 中 Linux 虚拟机的大小一](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)文。
 - [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/) 将是另一种解决方案，用于在本地与 HANA 大型实例单元之间实现直接通信。 
 
 这些解决方案的所有流量都将通过 Azure 虚拟网络进行路由，因此流量可能会被使用或由 Azure 网络安全组使用的软设备额外限制，因此，可能会阻止本地的某些 IP 地址或 IP 地址范围，也无法显式允许访问 HANA 大型实例。 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906057"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094193"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure Maps 提升服务 (预览版请求提升数据) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "96906057"
 
 Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) 提供了 api，用于查询地球表面任意位置的提升数据。 您可以请求沿着路径、在定义的范围框中或在特定坐标内进行抽样提升数据。 此外，还可以使用 [呈现 V2-获取地图磁贴 API](https://docs.microsoft.com/rest/api/maps/renderv2) 来检索以磁贴格式的提升数据。 磁贴以 GeoTIFF 光栅格式提供。 本文介绍如何使用 Azure Maps 提升服务和获取地图磁贴 API 来请求提升数据。 可以通过 GeoJSON 和 GeoTiff 格式请求提升数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. [在 S1 定价层中创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
@@ -56,8 +56,8 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 使用提升服务 (预览) Api 以 GeoJSON 格式请求提升数据。 本部分将显示三个 Api 中的每一个：
 
-* [获取点数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [为点发布数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [获取点数据](/rest/api/maps/elevation/getdataforpoints)
+* [为点发布数据](/rest/api/maps/elevation/postdataforpoints)
 * [获取折线的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [为折线发布数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 ### <a name="request-elevation-data-for-points"></a>请求提升点数据
 
-在此示例中，我们将使用 " [获取点数据" API](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) 在 Mt 请求提升数据。 他和 Chamlang 山上。 接下来，我们将使用 [点的 Post 数据 API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) 请求使用相同的两点来请求提升数据。 URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
+在此示例中，我们将使用 " [获取点数据" API](/rest/api/maps/elevation/getdataforpoints) 在 Mt 请求提升数据。 他和 Chamlang 山上。 接下来，我们将使用 [点的 Post 数据 API](/rest/api/maps/elevation/postdataforpoints) 请求使用相同的两点来请求提升数据。 URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
 
  >[!IMPORTANT]
  >由于 URL 字符长度限制为2048，因此不能将超过100个坐标作为 URL GET 请求中的管道分隔字符串传递。 如果打算将超过100的坐标作为管道分隔字符串传递，请使用 POST 数据来表示点。
@@ -103,7 +103,7 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
     }
     ```
 
-4. 现在，我们将为 [点 API 调用 Post 数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) ，以获取相同两点的提升数据。 在 "生成器" 选项卡中选择 **POST** HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
+4. 现在，我们将为 [点 API 调用 Post 数据](/rest/api/maps/elevation/postdataforpoints) ，以获取相同两点的提升数据。 在 "生成器" 选项卡中选择 **POST** HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -456,7 +456,7 @@ URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
 <br/>
 
 <iframe height="500" style="width:100%;" scrolling="no" title="获取提升位置" src="https://codepen.io/azuremaps/embed/c840b510e113ba7cb32809591d5f96a2?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "通过 Azure Maps () 按<a href='https://codepen.io/azuremaps/pen/c840b510e113ba7cb32809591d5f96a2'>位置获取提升</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的 "通过 Azure Maps () 按<a href='https://codepen.io/azuremaps/pen/c840b510e113ba7cb32809591d5f96a2'>位置获取提升</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>。
 </iframe>
 
 ### <a name="get-elevation-data-by-bounding-box"></a>按边界框获取提升数据
@@ -466,7 +466,7 @@ URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="通过边界框提升" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>边界框</a>查看笔提升 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>边界框</a>查看笔提升 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="get-elevation-data-by-polyline-path"></a>按折线路径获取提升数据
@@ -476,7 +476,7 @@ Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="提升路径渐变" src="https://codepen.io/azuremaps/embed/7bee08e5cb13d05cb0a11636b60f14ca?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>提升路径 Azure Maps 梯度</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>提升路径 Azure Maps 梯度</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 
@@ -485,7 +485,7 @@ Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/
 若要进一步了解 Azure Maps 提升 (预览版) Api，请参阅：
 
 > [!div class="nextstepaction"]
-> [提升 (预览) -获取 Lat 长坐标的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [提升 (预览) -获取 Lat 长坐标的数据](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [提升 (预览) -获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

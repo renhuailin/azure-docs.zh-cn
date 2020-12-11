@@ -192,9 +192,9 @@
     - name: 逻辑应用安全基线
       href: ../../logic-apps/security-baseline.md
     - name: Microsoft Cloud App Security 基线
-      href: /cloud-app-security/security-baseline.md
+      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
     - name: Microsoft Defender for Identity 安全基线
-      href: /defender-for-identity/security-baseline.md
+      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
     - name: Power BI 基线

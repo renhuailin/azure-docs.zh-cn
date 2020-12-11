@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: f514e158e0914475bfe0b7b7ee2c1bf6a63396fe
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: e24c0aacd1b10615e645c14ceb2b8d31f1f75e40
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008395"
+ms.locfileid: "97093887"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -51,7 +51,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **韩国** | 韩国中部、韩国南部 |釜山、首尔|
 | **阿联酋** | 阿联酋中部、阿联酋北部 | 迪拜、迪拜 2 |
 | **南非** | 南非西部、南非北部 |开普敦、约翰内斯堡 |
-| **南美洲** | 巴西南部 |圣保罗 |
+| **南美洲** | 巴西南部 |波哥大，圣保罗 |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的 Azure 区域和地缘政治边界
 下表提供了国家/地区云的区域和地缘政治边界的信息。
@@ -83,6 +83,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **奥克兰** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 不适用 | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **曼谷** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | 不适用 | 10G | AIS，UIH |
 | **柏林** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | 德国北部 | 10G | Equinix，NTT 全球数据中心 EMEA|
+| **波哥大** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 3 | 不适用 | 10G | |
 | **釜山** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | 韩国南部 | 不适用 | LG CNS |
 | **堪培拉** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亚中部 | 10G，100G | CDC |
 | **堪培拉 2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亚中部 2| 10G，100G | CDC、Equinix |
