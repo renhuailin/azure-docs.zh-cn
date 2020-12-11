@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003934"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095077"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -55,14 +55,14 @@ ms.locfileid: "96003934"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
 integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时。 | IntegrationRuntimeReference | 否
 coreCount | Spark 群集中使用的内核数。 仅当使用自动解析 Azure 集成运行时，才能指定 | 8、16、32、48、80、144、272 | 否
 computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 Azure 集成运行时，才能指定 | "常规"、"ComputeOptimized"、"MemoryOptimized" | 否
-暂存。 linkedService | 如果使用的是 Azure Synapse Analytics 源或接收器，请指定用于 PolyBase 暂存的存储帐户。<br/><br/>如果 Azure 存储配置了 VNet 服务终结点，则必须在存储帐户上使用启用了 "允许受信任的 Microsoft 服务" 的托管标识身份验证，请参阅将 [VNet 服务终结点与 Azure 存储配合使用的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 还分别了解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 的所需配置。<br/> | LinkedServiceReference | 仅当数据流读取或写入 Azure Synapse 分析时
-暂存。 folderPath | 如果你使用的是 Azure Synapse Analytics 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | String | 仅当数据流读取或写入到 Azure Synapse Analytics 时
+暂存。 linkedService | 如果使用的是 Azure Synapse Analytics 源或接收器，请指定用于 PolyBase 暂存的存储帐户。<br/><br/>如果 Azure 存储配置了 VNet 服务终结点，则必须在存储帐户上启用“允许受信任的 Microsoft 服务”并使用托管标识身份验证，详见[将 VNet 服务终结点与 Azure 存储配合使用的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)。 还分别了解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 的所需配置。<br/> | LinkedServiceReference | 仅当数据流读取或写入 Azure Synapse 分析时
+暂存。 folderPath | 如果你使用的是 Azure Synapse Analytics 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | 字符串 | 仅当数据流读取或写入到 Azure Synapse Analytics 时
 traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗、无 | 否
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
@@ -88,7 +88,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗、�
 
 ### <a name="polybase"></a>PolyBase
 
-如果使用 Azure Synapse Analytics (以前的 SQL 数据仓库) 作为接收器或源，则必须为 PolyBase 批处理负载选择一个暂存位置。 PolyBase 允许批量加载，而不是逐行加载数据。 PolyBase 大大降低了 Azure Synapse 分析的加载时间。
+如果使用 Azure Synapse 分析作为接收器或源，则必须为 PolyBase 批处理负载选择一个暂存位置。 PolyBase 允许批量加载，而不是逐行加载数据。 PolyBase 大大降低了 Azure Synapse 分析的加载时间。
 
 ## <a name="logging-level"></a>日志记录级别
 
@@ -102,7 +102,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗、�
 
 如果数据流使用参数化数据集，则在 " **设置** " 选项卡中设置参数值。
 
-![执行数据流参数](media/data-flow/params.png "参数")
+![执行数据流参数](media/data-flow/params.png "parameters")
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701443"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094856"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -34,8 +34,6 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 访问 ACL 和默认 ACL 具有相同的结构。
 
-
-
 > [!NOTE]
 > 更改父级的默认 ACL 不影响现有子项的访问 ACL 或默认 ACL。
 >
@@ -45,7 +43,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：
 
-|            |    文件     |   文件夹 |
+|            |    文件     |   Folder |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需要 " **读取** " 和 " **执行** " 来列出文件夹的内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项 |
@@ -74,7 +72,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 | 操作 | 对象              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | 删除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |

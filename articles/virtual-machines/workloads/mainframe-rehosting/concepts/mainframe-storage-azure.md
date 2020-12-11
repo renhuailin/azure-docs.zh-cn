@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977266"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095349"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
 
@@ -51,7 +51,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 
 <table>
 <thead>
-    <tr><th>类型</th><th>说明</th><th>要执行以下操作时使用：</th></tr>
+    <tr><th>类型</th><th>描述</th><th>要执行以下操作时使用：</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure 文件
@@ -127,4 +127,4 @@ Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，A
 ### <a name="more-migration-resources"></a>更多迁移资源
 
 - [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)（Azure 虚拟数据中心提升和迁移指南）
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

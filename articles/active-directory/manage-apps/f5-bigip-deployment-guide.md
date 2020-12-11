@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317883"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095179"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>在 Azure IaaS 中部署 F5 大 IP 虚拟版 VM 以实现安全混合访问的教程
 
@@ -44,7 +44,7 @@ ms.locfileid: "96317883"
 
 -  (SAN) 证书的通配符或使用者备用名称，用于通过安全套接字层 (SSL) 发布 web 应用程序。 [我们的加密](https://letsencrypt.org/) 提供免费的90天证书用于测试。
 
-- 用于保护 BIG-IPs 管理界面的 SSL 证书。 如果证书使用者与大 IP 的完全限定域名相对应 (FQDN) ，则可以使用用于发布 web 应用的证书。 例如，使用 subject *. contoso.com 定义的通配符证书适用于 https://big-ip-vm.contoso.com:8443
+- 用于保护 BIG-IPs 管理界面的 SSL 证书。 如果证书使用者与大 IP 的完全限定域名相对应 (FQDN) ，则可以使用用于发布 web 应用的证书。 例如，使用 subject *. contoso.com 定义的通配符证书适用于 `https://big-ip-vm.contoso.com:8443`
 
 VM 部署和基本系统配置需要大约30分钟，此时你的大 IP 平台将准备好实现 [此处](f5-aad-integration.md)列出的任何 SHA 方案。
 
@@ -85,7 +85,7 @@ VM 部署和基本系统配置需要大约30分钟，此时你的大 IP 平台�
  |VM 名称| 大 IP VM 示例 |
  |区域 | 大型 IP 的目标 Azure 地域-VM |
  |可用性选项| 仅在生产中使用 VM 时启用|
- |映像| F5 大 IP VE-ALL (BYOL，2 Boot 位置) |
+ |图像| F5 大 IP VE-ALL (BYOL，2 Boot 位置) |
  |Azure Spot 实例| 不能，但可以根据需要启用 |
  |大小| 最低规格应为2个 vcpu 和 8 Gb 内存|
  |**管理员帐户**|  |
@@ -99,7 +99,7 @@ VM 部署和基本系统配置需要大约30分钟，此时你的大 IP 平台�
 
 9. 在 " **网络** " 菜单上，完成这些设置。
 
- |Linux|      值 |
+ |网络接口|      值 |
  |:--------------|:----------------|
  |虚拟网络|DC 和 IIS Vm 使用相同的 Azure VNet，或创建一个|
  |子网| 与 DC 和 IIS Vm 相同的 Azure 内部子网，或创建一个|
@@ -125,7 +125,7 @@ VM 部署和基本系统配置需要大约30分钟，此时你的大 IP 平台�
 
 12. 选择 " **下一步"：** 在选择 " **创建** " 开始部署之前，查看 "+ 创建" 查看你的大 IP VM 配置。
 
-13. 完全部署大 IP VM 的时间通常为5分钟。 完成后，请选择 " **转到资源**"，而不是展开 Azure 门户的左侧菜单，并选择 " **资源组** "，导航到新的大 IP VM。 如果 VM 创建失败，请选择 **Back** "上 **一步" 和 "下一步**"。
+13. 完全部署大 IP VM 的时间通常为5分钟。 完成后，请选择 " **转到资源**"，而不是展开 Azure 门户的左侧菜单，并选择 " **资源组** "，导航到新的大 IP VM。 如果 VM 创建失败，请选择 "上 **一步" 和 "下一步**"。
 
 ## <a name="network-configuration"></a>网络配置
 
@@ -243,13 +243,13 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
  |     字段   |   值        |
  |:------------|:------------|
- |源| Any|
+ |Source| 任意|
  |源端口范围| *|
  |目标 IP 地址|所有大 IP VM 辅助专用 Ip 的逗号分隔列表|
  |目标端口| 80,443|
  |协议| TCP |
  |操作| Allow|
- |优先级|最小可用值介于 100-4096 之间|
+ |优先度|最小可用值介于 100-4096 之间|
  |名称 | 一个描述性名称，例如： `BIG-IP-VM_Web_Services_80_443`|
 
 3. 选择 " **添加** " 以提交更改，并关闭 " **网络** " 菜单。
@@ -270,7 +270,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
 准备就绪后，确认可以连接到大 IP VM 的 web 配置，并通过在 VM 部署过程中指定的凭据登录：
 
-- 如果要从其内部网络上的 VM 或通过 VPN 进行连接，请直接连接到 BIG-IPs 主 IP 和 web 配置端口。 例如 `https://<BIG-IP-VM_Primary_IP:8443`。 你的浏览器将提示连接不安全，但你可以忽略此提示，直到配置了大 IP。 如果浏览器一定阻止访问，请清除其缓存，然后重试。
+- 如果要从其内部网络上的 VM 或通过 VPN 进行连接，请直接连接到 BIG-IPs 主 IP 和 web 配置端口。 例如，`https://<BIG-IP-VM_Primary_IP:8443`。 你的浏览器将提示连接不安全，但你可以忽略此提示，直到配置了大 IP。 如果浏览器一定阻止访问，请清除其缓存，然后重试。
 
 - 如果是通过应用程序代理发布的 web 配置，则使用定义的 URL 来访问 web 配置，而无需追加端口，例如 `https://big-ip-vm.contoso.com` 。 内部 URL 必须使用 web 配置端口进行定义，例如 `https://big-ip-vm.contoso.com:8443` 
 
@@ -309,7 +309,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 9. 准备好后，选择 " **继续** "，然后从 " **关于** " 选项卡中选择 " **运行安装程序**
 
 >[!IMPORTANT]
->F5 许可证被限制为在任一时间由单个大 IP VE 实例使用。 可能有理由将许可证从一个实例迁移到另一个实例，如果这样做，请务必在解除活动实例[revoke](https://support.f5.com/csp/article/K41458656)的试用版许可证后将其取消，否则许可证会永久丢失。
+>F5 许可证被限制为在任一时间由单个大 IP VE 实例使用。 可能有理由将许可证从一个实例迁移到另一个实例，如果这样做，请务必在解除活动实例[](https://support.f5.com/csp/article/K41458656)的试用版许可证后将其取消，否则许可证会永久丢失。
 
 ## <a name="provision-big-ip"></a>设置大 IP
 
@@ -329,7 +329,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
 6. 从左侧导航栏中转到 "**系统**  >  **配置**  >  **设备**  >  **NTP** "
 
-7. 指定可靠的 NTP 源并选择 " **添加**"，然后选择 " **更新**"。 例如 `time.windows.com`
+7. 指定可靠的 NTP 源并选择 " **添加**"，然后选择 " **更新**"。 例如： `time.windows.com`
 
 你现在需要一条 DNS 记录，以将之前步骤中指定的 BIG-IPs FQDN 解析到其主专用 IP。 应将一条记录添加到你的环境的内部 DNS，或添加到将用于连接到大 IP web 配置的 PC 的 localhost 文件中。无论采用哪种方式，在直接连接到 web 配置时，都不会再出现浏览器警告。 也就是说，不通过应用程序代理或其他反向代理。
 

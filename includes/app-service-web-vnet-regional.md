@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999413"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096447"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -96,7 +96,17 @@ Windows 和 Linux 应用程序（包括 [自定义容器](../articles/app-servic
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS 专用区域 
 
-在应用程序与 VNet 集成后，它将使用与 VNet 相同的 DNS 服务器。 可以通过将应用设置 WEBSITE_DNS_SERVER 配置为所需 DNS 服务器的地址，来覆盖应用上的此行为。 如果已使用 VNet 配置了自定义 DNS 服务器，但希望应用使用 Azure DNS 专用区域，则应将 WEBSITE_DNS_SERVER 设置为168.63.129.16 值。 
+在应用程序与 VNet 集成后，它将使用与 VNet 相同的 DNS 服务器。 默认情况下，你的应用程序将不能使用 Azure DNS 专用区域。 若要使用 Azure DNS 专用区域，需要添加以下应用设置：
+
+
+1. 值为 168.63.129.16 1 的 WEBSITE_DNS_SERVER。 168.63.129.16 值的 WEBSITE_DNS_SERVER
+1. WEBSITE_VNET_ROUTE_ALL 值为 1 1。 值为1的 WEBSITE_VNET_ROUTE_ALL
+
+
+除了允许应用使用 Azure DNS 专用区域外，这些设置还会将你的应用中的所有出站呼叫发送到 VNet。   这些设置会将应用中的所有出站呼叫发送到 VNet。 此外，它还会使应用程序能够通过在辅助角色级别查询专用 DNS 区域来使用 Azure DNS。 当正在运行的应用程序访问专用 DNS 区域时，将使用此功能。
+
+> [!NOTE]
+>不 VNET 集成能使用专用 DNS 区域尝试将自定义域添加到 Web 应用。 自定义域验证在控制器级别上完成，而不是在辅助角色级别进行，这会阻止显示 DNS 记录。 若要使用专用 DNS 区域中的自定义域，需要使用应用程序网关或 ILB 应用服务环境绕过验证。
 
 ### <a name="private-endpoints"></a>专用终结点
 

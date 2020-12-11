@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187215"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095264"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -687,7 +687,7 @@ ms.locfileid: "96187215"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -877,7 +877,7 @@ ms.locfileid: "96187215"
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|时间跨度，默认值是 Common::TimeSpan::FromSeconds(60)|静态|指定以秒为单位的时间范围。 正在传入和正在接收的端（包括安全模式下的安全协商）上连接设置的超时时间 |
 |FrameHeaderErrorCheckingEnabled|bool，默认值为 TRUE|静态|有关对非安全模式下的帧标头执行错误检查的默认设置；组件设置会重写此值。 |
-|MessageErrorCheckingEnabled|bool，默认值为 FALSE|静态|有关对非安全模式下的消息标头和正文执行错误检查的默认设置；组件设置会重写此值。 |
+|MessageErrorCheckingEnabled|布尔值，默认为 TRUE|静态|有关对非安全模式下的消息标头和正文执行错误检查的默认设置；组件设置会重写此值。 |
 |ResolveOption|string，默认值为“unspecified”|静态|确定解析 FQDN 的方法。  有效值为 "unspecified/ipv4/ipv6"。 |
 |SendTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(300)|动态|指定以秒为单位的时间范围。 检测停滞连接时的发送超时。 某个环境中的 TCP 故障报告不可靠。 可能需要根据可用网络带宽和出站数据大小 (\*MaxMessageSize\/\*SendQueueSizeLimit) 调整此值。 |
 

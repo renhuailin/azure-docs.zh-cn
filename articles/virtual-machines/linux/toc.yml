@@ -332,7 +332,7 @@
           href: ../migration-classic-resource-manager-errors.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 用于迁移的社区工具
           href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -682,7 +682,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 常见问题解答
+            - name: 常见问题
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 对磁盘进行基准检验
               href: disks-benchmarks.md
-            - name: 优化性能
-              href: optimization.md
         - name: 查找未附加的磁盘 - CLI
           href: find-unattached-disks.md
         - name: 查找未附加的磁盘 - 门户
@@ -1108,7 +1106,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
 - name: 疑难解答
   href: ../troubleshooting/index.yml

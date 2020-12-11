@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648236"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095417"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -53,7 +53,12 @@ ms.locfileid: "94648236"
 - 部分业务已拆分为一个独立的公司，你需要将一些资源转移到其他 Azure AD 目录中。
 - 出于安全隔离目的，你希望在不同的 Azure AD 目录中管理某些资源。
 
-转移订阅的过程需要停机才能完成。 根据你的方案，最好重新创建资源并将数据复制到目标目录和订阅中。
+### <a name="alternate-approaches"></a>备用方法
+
+传输订阅需要停机才能完成此过程。 根据你的方案，你可以考虑以下替代方法：
+
+- 重新创建资源，并将数据复制到目标目录和订阅。
+- 采用多目录体系结构，并将订阅保留在源目录中。 使用 Azure Lighthouse 委托资源，以便目标目录中的用户可以访问源目录中的订阅。 有关详细信息，请参阅 [Azure Lighthouse in 企业方案](../lighthouse/concepts/enterprise.md)。
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>了解转移订阅的影响
 
@@ -70,13 +75,13 @@ ms.locfileid: "94648236"
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-key-vaults) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
 | 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure 存储和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 必须重新创建任何 ACL。 |
-| Azure Data Lake Storage Gen1 | “是” | “是” |  | 必须重新创建任何 ACL。 |
+| Azure 存储和 Azure Data Lake Storage Gen2 | “是” | 是 |  | 必须重新创建任何 ACL。 |
+| Azure Data Lake Storage Gen1 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
-| Azure 文件同步 | 是 | 是 |  |  |
+| Azure 文件同步 | “是” | 是 |  |  |
 | Azure 托管磁盘 | 是 | 是 |  |  如果使用磁盘加密集通过客户管理的密钥对托管磁盘进行加密，则必须先禁用再重新启用与磁盘加密集关联的系统分配标识。 你必须重新创建角色分配，即，向密钥保管库中的磁盘加密集再次授予所需权限。 |
-| Azure Kubernetes 服务 | 是 | 是 |  |  |
-| Azure Policy | 是 | 否 | 所有 Azure Policy 对象，包括自定义定义、分配、豁免和符合性数据。 | 必须 [导出](../governance/policy/how-to/export-resources.md)、导入和重新分配定义。 然后，创建新的策略分配以及所需的任何 [策略例外](../governance/policy/concepts/exemption-structure.md)。 |
+| Azure Kubernetes 服务 | “是” | 是 |  |  |
+| Azure Policy | “是” | 否 | 所有 Azure Policy 对象，包括自定义定义、分配、豁免和符合性数据。 | 必须 [导出](../governance/policy/how-to/export-resources.md)、导入和重新分配定义。 然后，创建新的策略分配以及所需的任何 [策略例外](../governance/policy/concepts/exemption-structure.md)。 |
 | Azure Active Directory 域服务 | 是 | 否 |  |  |
 | 应用注册 | “是” | 是 |  |  |
 
@@ -383,3 +388,4 @@ ms.locfileid: "94648236"
 - [将 Azure 订阅的计费所有权转移到另一帐户](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在订阅者与 CSP 之间转移 Azure 订阅](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [将 Azure 订阅关联或添加到 Azure Active Directory 租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [企业应用场景中的 Azure Lighthouse](../lighthouse/concepts/enterprise.md)

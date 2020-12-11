@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 66efc02990c958ba056b6e678cdbf2815f10078c
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3d3fb983f5e55f8b262be0925c2138b465413fc3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600381"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095400"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -44,7 +44,7 @@ ms.locfileid: "96600381"
 |Azure 数据资源管理器|正式发布|是|是|[使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据](/azure/data-explorer/data-lake-query-data)|
 |Azure 认知搜索|预览|是|是|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure 内容分发网络|尚不支持|不适用|不适用|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../cdn/cdn-overview.md)|
-|Azure SQL 数据库|尚不支持|不适用|不适用|[什么是 Azure SQL 数据库？](/azure/azure-sql/database/sql-database-paas-overview.md)|
+|Azure SQL Database|尚不支持|不适用|不适用|[什么是 Azure SQL 数据库？](/azure/azure-sql/database/sql-database-paas-overview)|
 
 ## <a name="see-also"></a>另请参阅
 

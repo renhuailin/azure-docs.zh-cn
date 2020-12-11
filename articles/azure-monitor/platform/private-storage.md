@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184087"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095298"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics 依赖于各种情况下的 Azure 存储。 此使用通常会自�
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>引入 Azure 诊断扩展日志 (WAD/LAD) 
 Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LAD，) 收集各种操作系统日志，并将它们存储在客户管理的存储帐户上。 然后，可以将这些日志引入 Log Analytics 来查看和分析这些日志。
-如何从存储帐户收集 Azure 诊断扩展日志使用 [Azure 门户](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 将存储帐户作为存储数据源连接到 Log Analytics 工作区，或者通过调用 [存储见解 API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)将存储帐户连接到工作区。
+如何从存储帐户收集 Azure 诊断扩展日志使用 [Azure 门户](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 将存储帐户作为存储数据源连接到 Log Analytics 工作区，或者通过调用 [存储见解 API](/rest/api/loganalytics/storage%20insights/createorupdate)将存储帐户连接到工作区。
 
 支持的数据类型：
 * Syslog
@@ -64,7 +64,7 @@ Azure 存储会对存储帐户中的所有静态数据进行加密。 默认情�
 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure 存储加密和密钥管理的详细信息，请参阅[静态数据的 Azure 存储加密](../../storage/common/storage-service-encryption.md)。
 
 ##### <a name="apply-cmk-to-your-storage-accounts"></a>将 CMK 应用于你的存储帐户
-若要将 Azure 存储帐户配置为使用客户管理的密钥与 Azure Key Vault，请[Azure portal](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)使用 Azure 门户[PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)或[CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+若要将 Azure 存储帐户配置为使用客户管理的密钥与 Azure Key Vault，请[](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)使用 Azure 门户[PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)或[CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 ## <a name="managing-linked-storage-accounts"></a>管理链接存储帐户
 

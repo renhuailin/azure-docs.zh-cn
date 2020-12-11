@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744459"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095094"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-不要使用 `OPENROWSET` 没有显式定义的架构，因为这可能会影响性能。 请确保使用列的最小可能大小 (例如 VARCHAR (100) ，而不是默认 VARCHAR (8000) # A5。 你应使用某种 UTF-8 排序规则作为默认数据库排序规则或将其设置为显式列排序规则，以避免 [utf-8 转换问题](/troubleshoot/reading-utf8-text)。 排序规则 `Latin1_General_100_BIN2_UTF8` 可以在使用某些字符串列筛选数据时提供最佳性能。
+不要使用 `OPENROWSET` 没有显式定义的架构，因为这可能会影响性能。 请确保使用列的最小可能大小 (例如 VARCHAR (100) ，而不是默认 VARCHAR (8000) # A5。 你应使用某种 UTF-8 排序规则作为默认数据库排序规则或将其设置为显式列排序规则，以避免 [utf-8 转换问题](/azure/synapse-analytics/troubleshoot/reading-utf8-text)。 排序规则 `Latin1_General_100_BIN2_UTF8` 可以在使用某些字符串列筛选数据时提供最佳性能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查询嵌套对象和数组
 
@@ -338,7 +338,7 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、Boolean、null�
 | 布尔 | bit |
 | Integer | bigint |
 | 小数 | float |
-| String | varchar (UTF-8 数据库排序规则)  |
+| 字符串 | varchar (UTF-8 数据库排序规则)  |
 |  (ISO 格式的字符串的日期时间)  | varchar (30)  |
 | UNIX 时间戳 (日期时间)  | bigint |
 | Null | `any SQL type` 
