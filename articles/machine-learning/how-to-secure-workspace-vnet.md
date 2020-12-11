@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316701"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029526"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -57,9 +57,9 @@ Azure Private Link 允许使用专用终结点连接到工作区。 专用终结
 
 有关设置专用链接工作区的详细信息，请参阅 how [to Configure Private link](how-to-configure-private-link.md)。
 
-## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>保护具有服务终结点的 Azure 存储帐户
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>使用服务终结点保护 Azure 存储帐户
 
-Azure 机器学习支持配置为使用服务终结点或专用终结点的存储帐户。 本部分介绍如何使用服务终结点保护 Azure 存储帐户。 对于专用终结点，请参阅下一节。
+Azure 机器学习支持将存储帐户配置为使用服务终结点或专用终结点。 本部分介绍如何使用服务终结点保护 Azure 存储帐户。 对于专用终结点，请参阅下一部分。
 
 > [!IMPORTANT]
 > 可将 Azure 机器学习的默认存储帐户或者将非默认存储帐户放在虚拟网络中。 
@@ -85,9 +85,9 @@ Azure 机器学习支持配置为使用服务终结点或专用终结点的存�
         > [!IMPORTANT]
         > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
 
-    1. 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。 这不会向所有 Azure 服务授予对你的存储帐户的访问权限。
+    1. 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。 这不会使所有 Azure 服务获得对你的存储帐户的访问权限。
     
-        * 在 **订阅中注册** 的某些服务的资源可以访问用于选择操作的 **同一订阅中** 的存储帐户。 例如，写入日志或创建备份。
+        * 某些服务的资源在注册到订阅后，可在同一订阅中访问存储帐户以便执行选择操作 。 例如，写入日志或创建备份。
         * 可通过向其系统分配的托管标识分配 Azure 角色，向某些服务的资源授予对存储帐户的显式访问权限。
 
         有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md#trusted-microsoft-services)。
@@ -101,9 +101,9 @@ Azure 机器学习支持配置为使用服务终结点或专用终结点的存�
 
 ## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>保护具有专用终结点的 Azure 存储帐户
 
-Azure 机器学习支持配置为使用服务终结点或专用终结点的存储帐户。 如果存储帐户使用专用终结点，则必须为默认存储帐户配置两个专用终结点：
+Azure 机器学习支持将存储帐户配置为使用服务终结点或专用终结点。 如果存储帐户使用专用终结点，则必须为默认存储帐户配置两个专用终结点：
 1. 具有 **blob** 目标子资源的专用终结点。
-1. 具有文件目标子资源 ( **文件** 共享) 的专用终结点。
+1. 具有文件目标子资源 (**文件** 共享) 的专用终结点。
 
 ![显示具有 blob 和文件选项的专用终结点配置页的屏幕截图](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
@@ -113,7 +113,7 @@ Azure 机器学习支持配置为使用服务终结点或专用终结点的存�
 
 ## <a name="secure-datastores-and-datasets"></a>保护数据存储和数据集
 
-本部分介绍如何在虚拟网络中使用 SDK 体验中的数据存储和数据集。 有关工作室体验的详细信息，请参阅[在 Azure 虚拟网络中使用机器学习工作室](how-to-enable-studio-virtual-network.md)。
+本部分介绍如何通过虚拟网络在 SDK 体验中使用数据存储和数据集。 有关工作室体验的详细信息，请参阅[在 Azure 虚拟网络中使用机器学习工作室](how-to-enable-studio-virtual-network.md)。
 
 若要使用 SDK 访问数据，必须使用存储数据的单个服务所需的身份验证方法。 例如，如果注册数据存储区以访问 Azure Data Lake Store Gen2，则仍必须使用[连接到 Azure 存储服务](how-to-access-data.md#azure-data-lake-storage-generation-2)中所述的服务主体。
 
@@ -287,12 +287,12 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
     }
     ```
 
-    此模板创建一个 _专用终结点_ ，用于从工作区到 ACR 的网络访问。 下面的屏幕截图显示了此专用终结点的示例。
+    此模板创建一个专用终结点用于通过网络从工作区访问你的 ACR。 下面的屏幕截图显示该专用终结点的示例。
 
     :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR 专用终结点设置":::
 
     > [!IMPORTANT]
-    > 请勿删除此终结点！ 如果意外删除该模板，可以在此步骤中重新应用模板以创建新模板。
+    > 不要删除此终结点！ 如果意外删除此终结点，可以重新应用本步骤中的模板创建新终结点。
 
 ## <a name="next-steps"></a>后续步骤
 

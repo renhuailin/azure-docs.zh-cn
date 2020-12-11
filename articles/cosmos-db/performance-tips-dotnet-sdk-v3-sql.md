@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341733"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032008"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,13 +41,13 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 此处列出的四个应用程序类型默认使用 32 位主机处理。 若要将你的应用程序类型的主机处理更改为 64 位处理，请执行以下步骤：
 
-- **对于可执行应用程序** ：在“项目属性”窗口的“生成”窗格上，将 [平台目标](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)设置为“x64”。
+- **对于可执行应用程序**：在“项目属性”窗口的“生成”窗格上，将 [平台目标](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)设置为“x64”。
 
-- **对于基于 VSTest 的测试项目** ：在 Visual Studio“测试”菜单上，选择“测试” > “测试设置”，然后将“默认处理器体系结构”设置为“X64”。  
+- **对于基于 VSTest 的测试项目**：在 Visual Studio“测试”菜单上，选择“测试” > “测试设置”，然后将“默认处理器体系结构”设置为“X64”。  
 
-- **对于本地部署的 ASP.NET Web 应用程序** ：选择“工具” > “选项” > “项目和解决方案” > “Web 项目”，然后选择“为网站和项目使用 64 位版本的 IIS Express”。    
+- **对于本地部署的 ASP.NET Web 应用程序**：选择“工具” > “选项” > “项目和解决方案” > “Web 项目”，然后选择“为网站和项目使用 64 位版本的 IIS Express”。    
 
-- **对于在 Azure 上部署的 ASP.NET Web 应用程序** ：在 Azure 门户的“应用程序设置”中，选择“64 位”平台。
+- **对于在 Azure 上部署的 ASP.NET Web 应用程序**：在 Azure 门户的“应用程序设置”中，选择“64 位”平台。
 
 > [!NOTE] 
 > 新的 Visual Studio 项目默认设置为“任何 CPU”。 我们建议将项目设置为“x64”，使其不会切换到“x86”。  如果添加了仅限 x86 的依赖项，则设置为“任何 CPU”的项目可以轻松切换到“x86”。 <br/>
@@ -69,7 +69,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 **连接策略：使用直接连接模式**
 
-.NET V3 SDK 默认连接模式为直接。 在中创建实例时，将配置连接模式 `CosmosClient` `CosmosClientOptions` 。  若要了解有关不同连接选项的详细信息，请参阅 [连接模式](sql-sdk-connection-modes.md) 一文。
+.NET V3 SDK 的默认连接模式是“直接”。 在 `CosmosClientOptions` 中创建 `CosmosClient` 实例时，可以配置连接模式。  若要详细了解不同的连接性选项，请参阅[连接性模式](sql-sdk-connection-modes.md)一文。
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -156,13 +156,13 @@ SQL .NET SDK 支持并行查询，使你能够并行查询分区的容器。 有
 
 并行查询提供两个参数，你可以根据要求优化这些参数： 
 
-- **MaxConcurrency** ：控制可以并行查询的最大分区数。
+- **MaxConcurrency**：控制可以并行查询的最大分区数。
 
    并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 [SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 中的 `MaxConcurrency` 设置为分区数最有可能实现最高性能的查询，前提是所有其他的系统条件保持不变。 如果不知道分区数，可将并行度设置为较大的数字。 系统会选择最小值（分区数、用户提供的输入）作为并行度。
 
     如果查询时数据均衡分布在所有分区之间，则并行查询的优势最大。 如果对已分区的集合进行分区，使查询返回的全部或大部分数据集中于几个分区（最坏的情况为一个分区），则这些分区会使查询性能出现瓶颈。
    
-- **MaxBufferedItemCount** ：控制预提取的结果数。
+- **MaxBufferedItemCount**：控制预提取的结果数。
 
    并行查询设计为当客户端正在处理当前结果批时预提取结果。 这种预提取可帮助改善查询的总体延迟。 `MaxBufferedItemCount` 参数限制预提取的结果数。 将 `MaxBufferedItemCount` 设置为预期返回的结果数（或更大的数字）可让查询通过预提取获得最大优势。
 

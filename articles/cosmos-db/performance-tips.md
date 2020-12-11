@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: 962b95307b440c3bafde019b5b2b630461718073
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339676"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028999"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>适用于 Azure Cosmos DB 和 .NET SDK v2 的性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 我们建议使用 Windows 64 位主机处理来改善性能。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 ServiceInterop.dll 仅在 Windows x64 平台上受支持。 对于不支持 ServiceInterop.dll 的 Linux 和其他平台，将对网关发出附加的网络调用以获取优化的查询。 以下类型的应用程序默认使用 32 位主机处理。 若要将主机处理更改为 64 位处理，请根据应用程序的类型执行以下步骤：
 
-- 对于可执行应用程序，可以通过在 " **生成** " 选项卡上的 " **项目属性** " 窗口中将 " [平台目标](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)" 设置为 " **x64** " 来更改主机处理。
+- 对于可执行应用程序，可以通过在 "**生成**" 选项卡上的 "**项目属性**" 窗口中将 "[平台目标](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)" 设置为 " **x64** " 来更改主机处理。
 
 - 对于基于 VSTest 的测试项目，可以通过在 Visual Studio“测试”菜单中选择“测试” > “测试设置” > “默认处理器体系结构为 X64”，来更改主机处理。   
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 **连接策略：使用直接连接模式**
 
-.NET V2 SDK 默认连接模式为 gateway。 使用参数在构造实例的过程中配置连接模式 `DocumentClient` `ConnectionPolicy` 。 如果使用直接模式，则还需要使用参数来设置 `Protocol` `ConnectionPolicy` 。 若要了解有关不同连接选项的详细信息，请参阅 [连接模式](sql-sdk-connection-modes.md) 一文。
+.NET V2 SDK 默认连接模式为“网关”。 在构造 `DocumentClient` 实例期间使用 `ConnectionPolicy` 参数配置连接模式。 如果使用直接模式，还需要使用 `ConnectionPolicy` 参数设置 `Protocol`。 若要详细了解不同的连接性选项，请参阅[连接性模式](sql-sdk-connection-modes.md)一文。
 
 ```csharp
 Uri serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -149,7 +149,7 @@ _*_优化 MaxBufferedItemCount_*_
 
 预提取的工作方式与并行度无关，使用一个单独的缓冲区来存储所有分区的数据。  
 
-_ *按 RetryAfter 时间间隔实现回退**
+_ *按 RetryAfter 间隔实现退让**
 
 在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果请求受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 允许退让可确保最大程度地减少等待重试的时间。 
 

@@ -3,12 +3,12 @@ title: Azure 资源运行状况常见问题解答
 description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536488"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032858"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -46,13 +46,12 @@ ms.locfileid: "91536488"
 在门户中，用户启动的操作用蓝色通知图标显示，而计划内和计划外事件则用红色警告图标显示。 [资源运行状况概述](Resource-health-overview.md)中提供了更多详细信息。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>能否将资源运行状况与监视工具集成？
-资源运行状况 [支持](resource-health-alert-arm-template-guide.md) 基于活动日志的警报。 活动日志警报使用[操作组](../azure-monitor/platform/action-groups.md)来通知用户已触发警报。 操作组支持各种通知通道，例如电子邮件、短信、Webhook 和 ITSM 操作。
+资源运行状况为基于活动日志的警报提供[支持](resource-health-alert-arm-template-guide.md)。 活动日志警报使用[操作组](../azure-monitor/platform/action-groups.md)来通知用户已触发警报。 操作组支持各种通知通道，例如电子邮件、短信、Webhook 和 ITSM 操作。
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
 - 导航到资源。 在左侧导航栏中，选择“资源运行状况”
 - 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”。
-- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。  该边栏选项卡打开后，选择“资源运行状况”
 
 也可使用资源运行状况 API，获取资源运行状况的相关信息。
 
@@ -69,8 +68,6 @@ ms.locfileid: "91536488"
 资源运行状况提供的信息比 Azure 状态或服务运行状况仪表板提供的更具体。
 
 [Azure 状态](https://status.azure.com)和服务运行状况仪表板会告知影响大量客户（例如某个 Azure 区域的客户）的服务问题，而资源运行状况则会公开更细致的事件，这些事件仅与特定的资源相关。 例如，如果某个主机意外重启，资源运行状况仅提醒其虚拟机在该主机上运行的那些客户。
-
-必须注意的是，为了让你全面了解影响资源的事件，资源运行状况还会呈现在服务运行状况仪表板中发布的事件。
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>是否需要激活每个资源的资源运行状况？
 否。运行状况信息适用于可以通过资源运行状况获取的所有资源类型。 

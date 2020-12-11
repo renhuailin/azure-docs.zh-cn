@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548998"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032552"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "96548998"
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一。
 
-如果要订阅发行说明，请观看 [此 GitHub 存储库](https://github.com/hdinsight/release-notes/releases)中的发布。
+如果要订阅发行说明，请查看[此 GitHub 存储库](https://github.com/hdinsight/release-notes/releases)上的版本。
 
 ## <a name="release-date-11182020"></a>发布日期：11/18/2020
 
@@ -41,10 +41,10 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，�
 
 ## <a name="deprecation"></a>弃用
 ### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
-HDInsight 3.6 ML 服务群集类型将在12月 31 2020 结束支持。 31 2020 年12月之后，客户不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
 
 ### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
-自 16 2020 年11月起，HDInsight 将阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的新客户。 过去三个月内使用这些 VM 大小的现有客户将不会受到影响。 从 9 2021 年1月开始，HDInsight 会阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的所有客户。 现有群集将按原样运行。 请考虑移动到 HDInsight 4.0，以避免潜在的系统/支持中断。
+自 2020 年 11 月 16 日起，HDInsight 将阻止新客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 过去三个月内使用过这些 VM 大小的现有客户将不会受到影响。 自 2021 年 1 月 9 日起，HDInsight 将阻止所有客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 现有群集将照常运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
 
 ## <a name="behavior-changes"></a>行为更改
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>在缩放操作前添加 NSG 规则检查
@@ -53,14 +53,29 @@ HDInsight 添加了网络安全组 (Nsg) 和用户定义的路由 (Udr) 检查�
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。
 
-### <a name="default-cluster-version-will-be-changed-to-40"></a>默认群集版本将更改为4。0
-从2021年2月开始，HDInsight 群集的默认版本将从3.6 更改为4.0。 有关可用版本的详细信息，请参阅 [可用版本](./hdinsight-component-versioning.md#available-versions)。 详细了解[HDInsight 4.0](./hdinsight-version-release.md)中的新增功能
+### <a name="default-cluster-version-will-be-changed-to-40"></a>默认群集版本将更改为 4.0
+自 2021 年 2 月起，HDInsight 群集的默认版本将从 3.6 更改为 4.0。 有关可用版本的详细信息，请参阅[可用版本](./hdinsight-component-versioning.md#available-versions)。 详细了解 [HDInsight 4.0](./hdinsight-version-release.md) 中的新增功能
 
-### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>3.6 年 6 30 2021 月的 HDInsight 结束支持
-HDInsight 3.6 将提供支持。 启动窗体6月 30 2021，客户无法创建新的 HDInsight 3.6 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑移动到 HDInsight 4.0，以避免潜在的系统/支持中断。
+### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>将于 2021 年 6 月 30 日终止支持 HDInsight 3.6
+将终止支持 HDInsight 3.6。 自 2021 年 6 月 30 日起，客户无法创建新的 HDInsight 3.6 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
 
 ## <a name="bug-fixes"></a>Bug 修复
 HDInsight 会持续改善群集的可靠性和性能。 
 
 ## <a name="component-version-change"></a>组件版本更改
 此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+
+## <a name="known-issues"></a>已知问题
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>阻止 HDInsight 群集 Vm 定期重新启动
+
+从2020年11月开始，你可能已注意到 HDInsight 群集 Vm 需要定期重新启动。 这可能是由以下原因引起的：
+
+1.  群集上已启用 Clamav。 新的 azsec clamav 包会消耗大量的内存来触发节点重新启动。 
+2.  每日计划一个 CRON 作业，该作业监视 Azure 服务所使用) 证书颁发机构 (Ca 列表的更改。 当新的 CA 证书可用时，该脚本会将证书添加到 JDK 信任存储区，并计划重新启动。
+
+对于这两个问题，HDInsight 正在为所有正在运行的群集部署修补程序并应用修补程序。 若要立即应用修复并避免意外的 Vm 重新启动，可以在所有群集节点上以持久性脚本操作的形式运行以下脚本操作。 修补和修补完成后，HDInsight 会发布另一个通知。
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

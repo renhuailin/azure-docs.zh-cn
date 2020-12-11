@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937706"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032926"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -190,6 +190,7 @@ weighted_accuracy|加权准确性是精确的，其中每个样本都按属于�
 --|--|--|
 explained_variance|解释的方差用于测量目标变量中的一个模型帐户的变化程度。 它是原始数据方差与误差方差之间的递减百分比。 当误差的平均值为 0 时，它等于确定系数（请参见下面的 r2_score）。 <br> <br> **目标：** 越接近1越好 <br> **范围：** (-inf，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
 mean_absolute_error|平均绝对误差是目标和预测的绝对值的绝对值值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf)  <br><br> 各种 <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据的范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值与实际值之间的平均差值的度量值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf)  ||
 median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf) <br><br>各种 <br> `median_absolute_error`<br> `normalized_median_absolute_error`： median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
 r2_score|R^2 是确定系数或平方误差与输出平均值的基线模型相比减少的百分比。 <br> <br> **目标：** 越接近1越好 <br> **范围：** (-inf，1]|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |根平均方形错误 (RMSE) 是目标与预测的预期平方差的平方根。 对于无偏差估计器，RMSE 等于标准偏差。<br> <br> **目标：** 越接近0越好 <br> **范围：** [0，inf) <br><br>各种<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`： root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|

@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 3587beaeb788665c68c1fcb6376af40566b6c35e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659040"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032773"
 ---
 # <a name="manage-app-consent-policies"></a>管理应用同意策略
 
 利用 Azure AD PowerShell，你可以查看和管理应用同意策略。
 
-应用同意策略由一个或一个以上的“包括”条件集和零个或零个以上的“排除”条件集构成。 对于要在应用许可策略中考虑的事件，该事件必须与 *至少* 一个 "包含" 条件集匹配，并且不得与 *任何* "排除" 条件集匹配。
+应用同意策略由一个或一个以上的“包括”条件集和零个或零个以上的“排除”条件集构成。 对于要在应用同意策略中考虑的事件，它必须与至少一个“包括”条件集匹配，并且不得与任何“排除”条件集匹配。
 
 每个条件集包含多个条件。 若要让事件与条件集匹配，条件集中的所有条件都必须得到满足。
 

@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145950"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031889"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
-本文介绍如何使用命令行 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 客户端通过 SSH 连接来创建和执行 Apache Hive 查询。
+本文介绍如何使用命令行 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 客户端通过 SSH 连接创建和执行 Apache Hive 查询。
 
 ## <a name="background"></a>背景
 
@@ -29,7 +29,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 * 请记下群集主存储的 URI 方案。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用了安全传输，则 URI 将为 `wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
-* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假设使用的是从 SSH 会话到群集的 Beeline。 你还可以使用本地 Beeline 客户端，但本文未介绍这些步骤。
+* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假定你从连接到群集的 SSH 会话使用 Beeline。 还可以使用本地 Beeline 客户端，但本文未介绍这些步骤。
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
@@ -56,7 +56,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
     show tables;
     ```
 
-    在新群集上，只会列出一个表： **hivesampletable** 。
+    在新群集上，只会列出一个表：**hivesampletable**。
 
 4. 使用以下命令显示 hivesampletable 的架构：
 
@@ -113,7 +113,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
     |CREATE EXTERNAL TABLE|在 Hive 中创建一个 **外部** 表。 外部表只会在 Hive 中存储表定义。 数据保留在原始位置。|
     |ROW FORMAT|如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。|
     |STORED AS TEXTFILE LOCATION|数据存储的位置和文件格式。|
-    |SELECT|选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3** ，因为有三行包含此值。|
+    |SELECT|选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3**，因为有三行包含此值。|
     |INPUT__FILE__NAME LIKE '%.log'|Hive 会尝试对目录中的所有文件应用架构。 在此示例中，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
 
    > [!NOTE]  

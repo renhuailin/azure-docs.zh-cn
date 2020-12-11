@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台的应用程序类型 | Azure
-description: Microsoft 标识平台终结点支持的应用和方案的类型。
+description: Microsoft 标识平台终结点支持的应用类型和方案。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, fasttrack-edit, contperfq2
-ms.openlocfilehash: 4c72d1b4b78c0b7ca9e7fa1f6468beb6fdd4b247
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
+ms.openlocfilehash: fd1fc59fd1ade6036c57f15415afccfc693f7bff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628078"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029747"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
-Microsoft 标识平台终结点支持各种新式应用体系结构的身份验证，所有这些体系结构都基于行业标准协议 [OAuth 2.0 或 OpenID connect](active-directory-v2-protocols.md)。 本指南介绍可以通过 Microsoft 标识平台生成的应用的类型，而不考虑首选语言或平台。 此信息旨在帮助你在开始在 [应用程序方案](authentication-flows-app-scenarios.md#application-scenarios)中使用代码之前了解高级方案。
+Microsoft 标识平台终结点支持各种现代应用体系结构的身份验证，所有这些体系结构都基于行业标准协议 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md)。 本指南介绍可以通过 Microsoft 标识平台生成的应用的类型，而不考虑首选语言或平台。 该信息旨在帮助你在开始处理[应用程序方案](authentication-flows-app-scenarios.md#application-scenarios)中的代码之前了解高级方案。
 
 ## <a name="the-basics"></a>基础知识
 
@@ -81,7 +81,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 可以通过使用从 Microsoft 标识平台终结点接收到的公用签名密钥来验证 ID 令牌，从而确定用户的身份。 设置会话 Cookie，在后续页面请求中将其用于识别用户。
 
-若要查看此方案的实际运行情况，请尝试 [Web 应用中登录用户方案的](scenario-web-app-sign-user-overview.md)代码示例。
+若要查看此方案的实际运行情况，请尝试[可将用户登录的 Web 应用的方案](scenario-web-app-sign-user-overview.md)中的代码示例。
 
 除了简单登录，Web 服务器应用可能还需要访问其他 Web 服务，例如 REST API。 在这种情况下，Web 服务器应用可以使用 [OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)参与合并的 OpenID Connect 和 OAuth 2.0 流。 有关此方案的详细信息，请阅读 [Web 应用和 Web API 入门](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)。
 
@@ -105,7 +105,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 ![显示 Web API 身份验证流](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-若要了解如何使用 OAuth2 访问令牌保护 web API，请查看 [受保护的 WEB api 方案](scenario-protected-web-api-overview.md)中的 web api 代码示例。
+若要了解如何使用 OAuth2 访问令牌来保护 Web API，请查看[受保护的 Web API 方案](scenario-protected-web-api-overview.md)中提供的 Web API 代码示例。
 
 在许多情况下，Web API 还需要对由 Microsoft 标识平台保护的其他下游 Web API 发出出站请求。 为执行此操作，Web API 可以利用代理流，它允许 Web API 将传入的访问令牌替换为要在出站请求中使用的另一个访问令牌。 有关详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](v2-oauth2-on-behalf-of-flow.md)。
 

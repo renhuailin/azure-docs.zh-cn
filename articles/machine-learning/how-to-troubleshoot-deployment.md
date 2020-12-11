@@ -1,7 +1,7 @@
 ---
 title: 远程 Web 服务部署故障排除
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure Kubernetes 服务和 Azure 容器实例解决和解决常见的 Docker 部署错误。
+description: 了解如何规避、解决及排查 Azure Kubernetes 服务和 Azure 容器实例的常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.author: gopalv
 ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
-ms.custom: contperfq4, devx-track-python, deploy, contperfq2
-ms.openlocfilehash: 0b8da0be16adc79b606b59f394b223b001453607
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
+ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185056"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031498"
 ---
 # <a name="troubleshoot-model-deployment"></a>排查模型部署问题
 
@@ -33,24 +33,24 @@ ms.locfileid: "96185056"
 
 在 Azure 机器学习中将模型部署到非本地计算时，会发生以下情况：
 
-1. 在 InferenceConfig 中的环境对象中指定的 Dockerfile 将发送到云，以及源目录的内容
-1. 如果容器注册表中不存在以前生成的映像，则会在云中生成新的 Docker 映像，并将其存储在工作区的默认容器注册表中。
-1. 容器注册表中的 Docker 映像会下载到你的计算目标。
-1. 你的工作区的默认 Blob 存储区将装载到你的计算目标，从而使你可以访问已注册的模型
-1. 你的 web 服务器通过运行输入脚本的函数进行初始化 `init()`
-1. 当已部署的模型收到请求时，你 `run()` 的函数将处理该请求
+1. 你在 InferenceConfig 的 Environments 对象中指定的 Dockerfile 将与源目录的内容一起发送到云
+1. 如果以前生成的映像在容器注册表中不可用，则云中会生成新的 Docker 映像，该映像会存储在工作区的默认容器注册表中。
+1. 容器注册表中的 Docker 映像将下载到计算目标。
+1. 工作区的默认 Blob 存储会装载到计算目标，使你可以访问已注册的模型
+1. Web 服务器通过运行入口脚本的 `init()` 函数进行初始化
+1. 已部署的模型收到请求时，`run()` 函数会处理该请求
 
-使用本地部署时的主要区别在于，容器映像是在本地计算机上构建的，因此需要为本地部署安装 Docker。
+使用本地部署时的主要区别是，容器映像在本地计算机上生成，因此需要为本地部署安装 Docker。
 
-了解这些高级步骤应有助于了解发生错误的位置。
+了解这些高级步骤会有助于了解发生错误的位置。
 
 ## <a name="get-deployment-logs"></a>获取部署日志
 
-调试错误的第一步是获取部署日志。 首先，请按照 [此处的说明](how-to-deploy-and-where.md#connect-to-your-workspace) 连接到你的工作区。
+调试错误的第一步是获取部署日志。 首先，请按照[此处的说明](how-to-deploy-and-where.md#connect-to-your-workspace)连接到工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-若要从已部署的 webservice 获取日志，请执行以下操作：
+若要从已部署的 Web 服务获取日志，请执行以下命令：
 
 ```bash
 az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
@@ -59,7 +59,7 @@ az ml service get-logs --verbose --workspace-name <my workspace name> --name <se
 # <a name="python"></a>[Python](#tab/python)
 
 
-假设你有一个名为的 `azureml.core.Workspace` 对象 `ws` ，则可以执行以下操作：
+假设有一个名为 `ws` 的 `azureml.core.Workspace` 类型的对象，可以执行以下操作：
 
 ```python
 print(ws.webservices)

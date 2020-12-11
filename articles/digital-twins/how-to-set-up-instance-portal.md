@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280589"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032314"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "93280589"
 
 ## <a name="create-the-azure-digital-twins-instance"></a>创建 Azure 数字孪生实例
 
-在本部分中，将使用 [Azure 门户](https://ms.portal.azure.com/)**创建 Azure 数字孪生的新实例** 。 导航到门户，然后用你的凭据登录。
+在本部分中，将使用 [Azure 门户](https://ms.portal.azure.com/)**创建 Azure 数字孪生的新实例**。 导航到门户，然后用你的凭据登录。
 
 进入门户后，首先在 Azure 服务的 "主页" 菜单中选择 " _创建资源_ "。
 
@@ -41,14 +41,14 @@ ms.locfileid: "93280589"
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="从 Azure 数字孪生服务页中选择 &quot;创建&quot;":::
 
 在下面的 " *创建资源* " 页上，填写以下给定值：
-* **订阅** ：要使用的 Azure 订阅
-  - **资源组** ：要在其中部署实例的资源组。 如果尚未记住现有的资源组，可通过选择 "新建" 链接并输入新资源组 *的名称* 来创建一个资源组。
-* **位置** ：用于部署的支持 Azure 数字孪生的区域。 有关区域支持的更多详细信息，请访问 azure [*孪生) 提供 (的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* **资源名称** ： Azure 数字孪生实例的名称。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
+* **订阅**：要使用的 Azure 订阅
+  - **资源组**：要在其中部署实例的资源组。 如果尚未记住现有的资源组，可通过选择 "新建" 链接并输入新资源组 *的名称* 来创建一个资源组。
+* **位置**：用于部署的支持 Azure 数字孪生的区域。 有关区域支持的更多详细信息，请访问 azure [*孪生) 提供 (的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
+* **资源名称**： Azure 数字孪生实例的名称。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填写所述的值以创建 Azure 数字孪生资源":::
 
-完成后，选择“查看 + 创建”。 这会转到 "摘要" 页，您可以在其中查看所输入的实例详细信息，然后单击 " _创建_ "。 
+完成后，选择“查看 + 创建”。 这会转到 "摘要" 页，您可以在其中查看所输入的实例详细信息，然后单击 " _创建_"。 
 
 ### <a name="verify-success-and-collect-important-values"></a>验证成功并收集重要值
 
@@ -61,7 +61,7 @@ ms.locfileid: "93280589"
 >[!TIP]
 >创建实例后，可以通过在 Azure 门户搜索栏中搜索实例的名称，随时返回到此页。
 
-在实例的 " *概述* " 页上，记下其 *名称* 、 *资源组* 和 *主机名* 。 这些是你在继续使用 Azure 数字孪生实例时可能需要的所有重要值。 如果其他用户将对该实例进行编程，则应该与它们共享这些值。
+在实例的 " *概述* " 页上，记下其 *名称*、 *资源组* 和 *主机名*。 这些是你在继续使用 Azure 数字孪生实例时可能需要的所有重要值。 如果其他用户将对该实例进行编程，则应该与它们共享这些值。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 &quot;概述&quot; 页中的重要值":::
 
@@ -71,14 +71,14 @@ ms.locfileid: "93280589"
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-首先，在 Azure 门户中打开 Azure 数字孪生实例的页面。 从实例的菜单中，选择 " *访问控制 (IAM)* 。 选择 " *添加角色分配* " 下的 " *添加* " 按钮。
+首先，在 Azure 门户中打开 Azure 数字孪生实例的页面。 从实例的菜单中，选择 " *访问控制 (IAM)*。 选择 "*添加角色分配*" 下的 "*添加*" 按钮。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="选择从 &quot;访问控制 (IAM) &quot; 页添加角色分配":::
 
 在 " *添加角色分配* " 页上，填写值 (必须由在 Azure 订阅中具有 [足够权限](#prerequisites-permission-requirements) 的用户完成) ：
-* **角色** ：从下拉菜单中选择 " *Azure 数字孪生数据所有者* "
-* **将访问权限分配给** ：从下拉菜单中选择 *Azure AD 用户、组或服务主体*
-* **选择** ：搜索要分配的用户的名称或电子邮件地址。 选择结果后，用户将显示在 " *所选成员* " 部分中。
+* **角色**：从下拉菜单中选择 " *Azure 数字孪生数据所有者* "
+* **将访问权限分配给**：从下拉菜单中选择 *Azure AD 用户、组或服务主体*
+* **选择**：搜索要分配的用户的名称或电子邮件地址。 选择结果后，用户将显示在 " *所选成员* " 部分中。
 
 :::row:::
     :::column:::
@@ -92,7 +92,7 @@ ms.locfileid: "93280589"
 
 ### <a name="verify-success"></a>验证是否成功
 
-你可以在 " *访问控制" (IAM) > 角色分配* "下查看已设置的角色分配。 用户应显示在列表中，其中包含 *Azure 数字孪生数据所有者* 的角色。 
+你可以在 " *访问控制" (IAM) > 角色分配*"下查看已设置的角色分配。 用户应显示在列表中，其中包含 *Azure 数字孪生数据所有者* 的角色。 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="在 Azure 门户中查看 Azure 数字孪生实例的角色分配":::
 
