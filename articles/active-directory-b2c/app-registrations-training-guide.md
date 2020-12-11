@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936465"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109090"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
 
@@ -97,7 +97,7 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>不适用于 Azure AD B2C 租户的功能
 以下 Azure AD 应用注册功能不适用或不可用于 Azure AD B2C 租户：
 - **角色和管理员** - 当前不可用于 Azure AD B2C。
-- **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-overview.md)。
+- **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-with-html.md)。
 - **发布服务器域验证** -你的应用程序在 *onmicrosoft.com* 上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **令牌配置** - 令牌配置为用户流而不是应用的一部分。
 - **快速入门** 体验目前不适用于 Azure AD B2C 租户。

@@ -3,16 +3,15 @@ title: 什么是 Microsoft 商业市场？
 description: 概述在 Microsoft 商业市场中列出解决方案的 Microsoft 合作伙伴的权益和选项。
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739762"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780308"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
@@ -46,7 +45,7 @@ Microsoft AppSource 适用于业务解决方案（例如软件即服务 [SaaS] �
 
 ### <a name="azure-marketplace"></a>Azure 市场
 
-Azure 市场适用于基于 Azure 或为 Azure 生成并适用于 IT 专业人员和开发人员的解决方案。 这包括咨询服务和托管服务列表。 Azure 市场咨询服务是专业服务套餐，可以帮助客户开始使用或加速使用 Azure。
+[Azure 市场](https://azuremarketplace.microsoft.com/)AppSource适用于基于 Azure 或为 Azure 生成并适用于 IT 专业人员和开发人员的解决方案。 这包括咨询服务和托管服务列表。 Azure 市场咨询服务是专业服务套餐，可以帮助客户开始使用或加速使用 Azure。
 
 以下是 Azure 市场中的产品/服务列表页的示例：
 

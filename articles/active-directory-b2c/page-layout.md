@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028098"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108495"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -46,16 +46,17 @@ ms.locfileid: "97028098"
 
 - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
 - 添加了可配置的用户输入验证延迟，以改善用户体验。
+- 辅助功能修复
 - 修复了一个可访问性问题，使讲述人现在可以阅读错误消息。 
 - 电子邮件经过验证后，焦点会置于密码字段。
 - `autofocus`从 checkbox 控件中删除。 
-- 添加了对电话号码验证的显示小组件的支持。
-- 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
+- 添加了对电话号码验证的显示控件的支持。
+- 现在，你可以 `data-preload="true"` 在 html 标记中添加特性 [在 html 标记] 中 (自定义-ui 的
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 现在，电子邮件字段 `type=email` 将提供正确的建议。
 - 支持 Chrome 翻译。
-- 在用户流页中添加了对租户品牌的支持。
+- 添加了对用户流页面中公司品牌的支持。
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ ms.locfileid: "97028098"
 **1.2.0**
 
 - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
-- 辅助功能修补程序。
-- 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
+- 辅助功能修复
+- 你现在可以 `data-preload="true"` [在 HTML 标记中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 现在，电子邮件字段 `type=email` 将提供正确的建议。
@@ -118,7 +119,7 @@ ms.locfileid: "97028098"
 **1.2.0**
 
 - 辅助功能修复
-- 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
+- 你现在可以 `data-preload="true"` [在 HTML 标记中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
@@ -144,7 +145,7 @@ ms.locfileid: "97028098"
 **1.2.0**
 
 - 辅助功能修复
-- 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
+- 你现在可以 `data-preload="true"` [在 HTML 标记中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
@@ -165,7 +166,7 @@ ms.locfileid: "97028098"
 **1.2.0**
 
 - 辅助功能修复
-- 你现在可以 `data-preload="true"` [在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
+- 你现在可以 `data-preload="true"` [在 HTML 标记中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 添加特性来控制 CSS 和 JavaScript 的加载顺序。
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
@@ -177,4 +178,4 @@ ms.locfileid: "97028098"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何在自定义策略中自定义应用程序的用户界面的详细信息，请参阅 [使用自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)。
+有关如何在自定义策略中自定义应用程序的用户界面的详细信息，请参阅 [使用自定义策略自定义应用程序的用户界面](customize-ui-with-html.md)。

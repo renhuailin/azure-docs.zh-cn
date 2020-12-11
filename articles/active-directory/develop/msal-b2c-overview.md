@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673500"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107866"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
 
@@ -56,9 +56,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>步骤 3：配置身份验证
 
-1. 打开示例中文件的 *config.js* 。
+1. 打开示例中的 config.json 文件。
 
-2. 注册应用程序时，请使用前面获取的应用程序凭据配置示例。 通过将值替换为你的租户名称、客户端 ID 和策略名称来更改以下代码行。
+2. 注册应用程序时，请使用前面获取的应用程序凭据配置示例。 更改以下代码行：将值替换为你的租户名称、客户端 ID 和策略名称。
 
     ```json
          "credentials": {
@@ -207,9 +207,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     重置密码后，用户返回应用程序并重新登录。
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 显示的登录屏幕" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 显示的密码重置流屏幕" border="false":::
 
-    有关错误代码和异常处理的详细信息，请参阅 [MSAL 错误和异常代码](msal-handling-exceptions.md)。
+    有关错误代码和异常处理的详细信息，请参阅 [MSAL 错误和异常代码](msal-error-handling-js.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -217,4 +217,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 - [用户流](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [自定义策略](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX 自定义](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX 自定义](../../active-directory-b2c/configure-user-input.md)

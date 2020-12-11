@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f50a380f2c794d26903e44c0bd1b1569d77a127
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a8e9841c71a6f5bc2e12887f41c62b43a17203a6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093309"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107578"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -2536,7 +2536,7 @@ Azure AD Connect 正在转换电子邮件警报系统，系统可能会向某些
 
 现在可为最终用户设置组织的密码复杂性，而不必使用本机 Azure AD 密码策略。 从用户流（以前称为内置策略）的“属性”边栏选项卡中，对于密码复杂性，可以选择“简单”或“强”，也可以创建一组“自定义”要求   。
 
-有关密码复杂性要求配置的详细信息，请参阅[在 Azure Active Directory B2C 中配置密码的复杂性要求](../../active-directory-b2c/user-flow-password-complexity.md)。
+有关密码复杂性要求配置的详细信息，请参阅[在 Azure Active Directory B2C 中配置密码的复杂性要求](../../active-directory-b2c/password-complexity.md)。
 
 ---
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628654"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108971"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -90,7 +90,7 @@ ms.locfileid: "92628654"
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 
-在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
+在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-and-page-layout.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ ms.locfileid: "92628654"
 
 #### <a name="migrating-to-page-layout"></a>迁移到页面布局
 
-值的格式必须包含单词 `contract`： _urn:com:microsoft:aad:b2c:elements: **contract** :page-name:version_ 。 若要在使用旧 **DataUri** 值的自定义策略中指定页面布局，请根据下表迁移到新格式。
+值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 若要在使用旧 **DataUri** 值的自定义策略中指定页面布局，请根据下表迁移到新格式。
 
 | 旧 DataUri 值 | 新 DataUri 值 |
 | ----------------- | ----------------- |
@@ -126,7 +126,7 @@ ms.locfileid: "92628654"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
-下面的示例显示了内容定义标识符以及具有页面协定的对应 **DataUri** ： 
+以下示例显示了内容定义标识符以及对应的包含页面协定的 DataUri： 
 
 ```xml
 <ContentDefinitions>
@@ -166,21 +166,21 @@ ms.locfileid: "92628654"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项目 | 0:n | 与内容定义相关的元数据。 |
+| Item | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 密钥 | 是 | 元数据密钥。  |
 
-#### <a name="metadata-keys"></a>元数据密钥
+#### <a name="metadata-keys"></a>元数据键
 
 内容定义支持以下元数据项：
 
-| 密钥 | 必填 | 说明 |
+| Key | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| DisplayName | 否 | 一个字符串，其中包含内容定义的名称。 |
+| DisplayName | 否 | 一个包含内容定义名称的字符串。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -192,7 +192,7 @@ ms.locfileid: "92628654"
 
 **LocalizedResourcesReference** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
@@ -238,4 +238,4 @@ ms.locfileid: "92628654"
 
 有关使用内容定义自定义用户界面的示例，请参阅：
 
-[使用自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)
+[使用自定义策略自定义应用程序的用户界面](customize-ui-with-html.md)

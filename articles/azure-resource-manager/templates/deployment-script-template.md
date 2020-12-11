@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092748"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107135"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>使用 ARM 模板中的部署脚本 (预览版) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "97092748"
 > DeploymentScripts 资源 API 版本2020-10-01 支持 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务将使用部署主体的令牌来创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
 > Azure 登录的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。  部署脚本服务将以10秒的时间间隔重试登录10分钟，直到复制托管标识角色分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - **(可选) 用户分配的托管标识，具有在脚本中执行操作所需的权限**。 对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建基础资源。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，我们建议使用用户分配的托管标识提供该脚本。 托管标识在目标资源组中必须具有所需的访问权限才能完成脚本中的操作。 你还可以在部署脚本中登录到 Azure。 若要在资源组之外执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请在订阅级别分配标识。 
 
@@ -529,14 +529,14 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
   - **Always**：脚本执行达到最终状态后，将删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除在存储帐户中创建的文件共享。 由于在清理资源后，deploymentScripts 资源可能仍然存在，因此在删除资源之前，脚本服务将保留脚本执行结果，例如 stdout、输出、返回值等。
   - **OnSuccess**：仅当脚本执行成功时才删除自动创建的资源。 如果使用现有存储帐户，则脚本服务仅在脚本执行成功时才删除文件共享。 你仍可以访问资源来查找调试信息。
-  - **OnExpiration**：仅当 retentionInterval 设置过期时，才删除自动创建的资源。 如果使用现有存储帐户，脚本服务将删除文件共享，但保留存储帐户。
+  - **OnExpiration**：仅当 retentionInterval 设置过期时，才删除自动创建的资源。 如果使用现有的存储帐户，则脚本服务将删除文件共享，但将保留存储帐户。
 
 - **retentionInterval**：指定将保留脚本资源的时间间隔，超过此时间间隔后，脚本资源将过期并被删除。
 
 > [!NOTE]
 > 不建议将脚本服务生成的存储帐户和容器实例用于其他目的。 根据脚本的生命周期，可能会删除这两个资源。
 
-若要保留容器实例和存储帐户以进行故障排除，可以将睡眠命令添加到脚本中。  例如，使用 " [启动-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)"。
+根据 **cleanupPreference** 删除容器实例和存储帐户。 但是，如果脚本失败，并且 **cleanupPreference** 未设置为 " **始终**"，则部署过程会自动使容器运行一小时。 您可以使用此小时来对脚本进行故障排除。 如果要在成功部署后让容器保持运行状态，请将睡眠步骤添加到脚本。 例如，将 [开始-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) 添加到脚本的末尾。 如果未添加 "睡眠" 步骤，则会将该容器设置为终端状态，并且即使还没有删除，也不能对其进行访问。
 
 ## <a name="run-script-more-than-once"></a>多次运行脚本
 

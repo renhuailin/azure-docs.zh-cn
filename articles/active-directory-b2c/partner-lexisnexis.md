@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928641"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108427"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>有关配置 LexisNexis 与 Azure Active Directory B2C 的教程
 
@@ -27,7 +27,7 @@ ms.locfileid: "96928641"
 - 电话号码
 - 从用户的计算机收集的分析信息
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -95,7 +95,7 @@ ThreatMetrix 集成包括以下组件：
 
 此解决方案使用由 Azure AD B2C 加载的自定义 UI 模板。 这些 UI 模板会执行直接发送到 ThreatMetrix 服务的分析。
 
-请参阅这些 [说明](./custom-policy-ui-customization.md#custom-page-content-walkthrough) ，将包括的 [UI 文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 部署到 blob 存储帐户。 说明包括设置 blob 存储帐户、配置 CORS 和启用公共访问。
+请参阅这些 [说明](./customize-ui-with-html.md#custom-page-content-walkthrough) ，将包括的 [UI 文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 部署到 blob 存储帐户。 说明包括设置 blob 存储帐户、配置 CORS 和启用公共访问。
 
 UI 基于 [海蓝色模板](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)。 UI 中的所有链接都应更新以引用部署的位置。 在 UI 文件夹中，查找并 https://yourblobstorage/blobcontainer 将替换为部署位置。
 

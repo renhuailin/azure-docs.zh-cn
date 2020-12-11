@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519172"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109260"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何为 Synapse 工作区设置访问控制 
 
@@ -54,7 +54,7 @@ ms.locfileid: "96519172"
 ## <a name="step-1-set-up-security-groups"></a>步骤 1：创建安全组
 
 >[!Note] 
->预览期间，建议创建映射到 Synapse **SYNAPSE SQL 管理员** 和 **Synapse Apache Spark 管理员** 角色的安全组。  由于引入了新的细化 Synapse RBAC 角色和范围，现在建议你使用这些新功能来控制对工作区的访问。  这些新角色和作用域可提供更大的配置灵活性，并可让开发人员在创建分析应用程序时通常会结合使用 SQL 和 Spark，并可能需要获得对工作区中特定资源的访问权限。 [了解详细信息](./synapse-workspace-synapse-rbac.md)。
+>预览期间，建议创建映射到 Synapse **SYNAPSE SQL 管理员** 和 **Synapse Apache Spark 管理员** 角色的安全组。  由于引入了新的细化 Synapse RBAC 角色和范围，现在建议你使用这些新功能来控制对工作区的访问。  这些新角色和作用域可提供更大的配置灵活性，并可让开发人员在创建分析应用程序时经常混合使用 SQL 和 Spark，并可能需要授予对特定资源（而不是整个工作区）的访问权限。 [详细了解](./synapse-workspace-synapse-rbac.md) Synapse RBAC。
 
 为工作区创建以下安全组：
 
@@ -66,9 +66,9 @@ ms.locfileid: "96519172"
 你将在工作区范围内将 Synapse 角色分配给这些组。  
 
 同时创建此安全组： 
-- **`workspace1_SQLAdministrators`**，适用于需要在工作区中的 SQL 池中 Active Directory 管理员权限的用户的组。 
+- **`workspace1_SQLAdmins`**，在工作区的 SQL 池中需要 SQL Active Directory 管理员权限的用户组。 
 
-在 `workspace1_SynapseSQLAdministrators` 创建 sql 池中的 sql 权限时，将使用该组。 
+在 `workspace1_SQLAdmins` 创建 sql 池中的 sql 权限时，将使用该组。 
 
 对于基本设置，这五个组就足够了。 稍后，你可以添加安全组来处理需要更专业访问权限的用户，或仅向用户提供对特定资源的访问权限。
 
@@ -84,6 +84,7 @@ ms.locfileid: "96519172"
 Synapse 工作区使用的默认存储容器：
   - 存储 Spark 表的备份数据文件
   - Spark 作业的执行日志
+  - 管理你选择安装的库
 
 确定有关存储的下列信息：
 
@@ -94,7 +95,7 @@ Synapse 工作区使用的默认存储容器：
 
   - 将 **存储 Blob 数据参与者** 角色分配给 `workspace1_SynapseAdmins` 
   - 将 **存储 Blob 数据参与者** 角色分配给 `workspace1_SynapseContributors`
-  - 将 **存储 Blob 数据参与者** 角色分配到 `workspace1_SynapseComputeOperators` **<< 验证**  
+  - 将 **存储 Blob 数据参与者** 角色分配给 `workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>第 3 步：创建和配置 Synapse 工作区
 
@@ -106,10 +107,10 @@ Synapse 工作区使用的默认存储容器：
 - 选择 `storage1` 存储帐户
 - 选择用作 `container1` "filesystem" 的容器。
 - 在 Synapse Studio 中打开 WS1
-- 导航到 "**管理**  >  **访问控制**"，并将 *工作区范围内* 的以下 Synapse 角色分配给安全组。
+- 导航到 "**管理**  >  **访问控制**"，并在 *工作区范围内* 将 Synapse 角色分配给安全组，如下所示：
   - 将 **Synapse 管理员** 角色分配给 `workspace1_SynapseAdministrators` 
   - 将 **Synapse 参与者** 角色分配给 `workspace1_SynapseContributors` 
-  - 将 **SYNAPSE SQL 计算操作员** 角色分配给 `workspace1_SynapseComputeOperators`
+  - 将 **Synapse 计算操作员** 角色分配给 `workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>步骤4：向工作区 MSI 授予对默认存储容器的访问权限
 
@@ -121,9 +122,9 @@ Synapse 工作区使用的默认存储容器：
   - 如果未分配，则分配。
   - MSI 与工作区同名。 本文将是 `workspace1` 。
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>步骤5：向 Synapse 管理员授予工作区上的 Azure 参与者角色 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>步骤5：向 Synapse 管理员授予工作区上的 Azure 参与者角色 
 
-若要创建 SQL 池、Apache Spark 池和集成运行时，用户必须在工作区上至少具有 Azure 参与者访问权限。 参与者角色还允许这些用户管理资源，包括暂停和缩放。
+若要创建 SQL 池、Apache Spark 池和集成运行时，用户必须至少具有 Azure 参与者对工作区的访问权限。 参与者角色还允许这些用户管理资源，包括暂停和缩放。
 
 - 打开 Azure 门户
 - 找到工作区， `workspace1`
@@ -131,44 +132,44 @@ Synapse 工作区使用的默认存储容器：
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>步骤6：分配 SQL Active Directory 管理员角色
 
-工作站创建者会自动设置为工作区 Active Directory 管理员。  只能为单个用户或组授予此角色。 在此步骤中，将工作区中的 Active Directory 管理员分配到 `workspace1_SynapseSQLAdministrators` 安全组。  分配此角色向此组授予了对所有 SQL 池的权限很高的管理员访问权限。   
+工作站创建者会自动设置为工作区的 SQL Active Directory 管理员。  只能为单个用户或组授予此角色。 在此步骤中，将工作区中的 SQL Active Directory 管理员分配给 `workspace1_SQLAdmins` 安全组。  分配此角色向此组授予了对工作区中所有 SQL 池和数据库的特权管理权限。   
 
 - 打开 Azure 门户
 - 导航到 `workspace1`
 - 在 " **设置**" 下，选择 **SQL Active Directory 管理**
-- 选择 " **设置管理员** " 并选择 **`workspace1_SynapseSQLAdministrators`**
+- 选择 " **设置管理员** " 并选择 **`workspace1_SQLAdmins`**
 
 >[!Note]
->此步骤是可选的。  你可以选择向 SQL 管理员组授予更少的特权角色。 若要分配 `db_owner` 或其他 sql 角色，必须在每个 sql 数据库上运行脚本。 
+>步骤6是可选的。  你可以选择向组授予 `workspace1_SQLAdmins` 更低权限的角色。 若要分配 `db_owner` 或其他 sql 角色，必须在每个 sql 数据库上运行脚本。 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>步骤7：授予对 SQL 池的访问权限
 
-默认情况下，分配了 Synapse 管理员角色的所有用户也将在 `db_owner` 无服务器 sql 池 "内置" 上分配 SQL 角色。
+默认情况下，分配了 Synapse 管理员角色的所有用户也将在 `db_owner` 无服务器 sql 池 "内置" 及其所有数据库上分配 SQL 角色。
 
-对于其他用户和工作区 MSI，可以使用 SQL 权限来控制对 SQL 池的访问。  分配 SQL 权限要求在创建后在每个 SQL 池上运行 SQL 脚本。  有三种情况需要你运行这些脚本：
-1. 向其他用户授予对无服务器 SQL 池 "内置" 的访问权限
-2. 向任何用户授予对专用池的访问权限
-3. 向工作区提供对 SQL 池的 MSI 访问权限以启用需要 SQL 池访问的管道才能成功运行。
+对于其他用户和工作区 MSI，可以使用 SQL 权限来控制对 SQL 池的访问。  分配 SQL 权限要求在创建后在每个 SQL 数据库上运行 SQL 脚本。  有三种情况需要你运行这些脚本：
+1. 向其他用户授予对无服务器 SQL 池 "内置" 和它的数据库的访问权限
+2. 授予对专用池数据库的任何用户访问权限
+3. 向工作区提供对 SQL 池数据库的 MSI 访问权限，以便能够成功运行需要 SQL 池访问的管道。
 
 下面包含了示例 SQL 脚本。
 
-若要授予对专用 SQL 池的访问权限，则工作区创建者或组的任何成员都可以运行脚本 `workspace1_SynapseSQL Administrators` 。  
+若要授予对专用 SQL 池数据库的访问权限，则工作区创建者或组的任何成员都可以运行脚本 `workspace1_SQLAdmins` 。  
 
-若要授予对无服务器 SQL 池 "内置" 的访问权限，这些脚本还可以由组的任何成员运行  `workspace1_SynapseAdministrators` 。 
+若要授予对无服务器 SQL 池 "内置" 的访问权限，可通过组或组的任何成员运行脚本 `workspace1_SQLAdmins`  `workspace1_SynapseAdministrators` 。 
 
 > [!TIP]
-> 需要为 **每个** sql 池运行以下步骤，以便向用户授予对所有 sql 数据库的访问权限，但在部分 [工作区范围权限](#workspace-scoped-permission) 中，你可以向用户分配 sysadmin 角色。
+> 需要为 **每个** sql 池运行以下步骤，以便向用户授予对所有 sql 数据库的访问权限，但在部分 [工作区范围权限](#workspace-scoped-permission) 中，你可以在工作区级别向用户分配 sysadmin 角色。
 
-### <a name="step-71-serverless-sql-pools"></a>步骤7.1：无服务器 SQL 池
+### <a name="step-71-serverless-sql-pool-built-in"></a>步骤7.1：内置的无服务器 SQL 池
 
-在本部分中，可以找到有关如何向用户授予对特定数据库的权限或完全服务器权限的示例。
+本部分提供了一些脚本示例，说明如何向用户授予访问特定数据库或无服务器 SQL 池中 "内置" 的所有数据库的权限。
 
 > [!NOTE]
 > 在脚本示例中，将 *alias* 替换为要授予访问权限的用户或组的别名，并将 domain 替换为你正在使用的公司域的 *域* 。
 
-#### <a name="pool-scoped-permission"></a>池范围的权限
+#### <a name="database-scoped-permission"></a>数据库范围的权限
 
-若要向 **单一** 无服务器 SQL 池授予对用户的访问权限，请执行此示例中的步骤：
+若要向用户授予 **单一** 无服务器 SQL 数据库的访问权限，请执行此示例中的步骤：
 
 1. 创建登录名
 
@@ -182,7 +183,7 @@ Synapse 工作区使用的默认存储容器：
 2. 创建用户
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Synapse 工作区使用的默认存储容器：
 3. 将用户添加到指定角色的成员
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Synapse 工作区使用的默认存储容器：
 若要授予对工作区中 **所有** 无服务器 SQL 池的完全访问权限，请使用本示例中的脚本：
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>步骤7.2：专用 SQL 池
 
-若要授予对 **单个** 专用 SQL 池的访问权限，请在 Synapse SQL 脚本编辑器中执行以下步骤：
+若要授予访问 **单个** 专用 SQL 池数据库的权限，请在 Synapse SQL 脚本编辑器中执行以下步骤：
 
 1. 在数据库中创建用户，方法是在目标数据库上运行以下命令，并使用 " *连接到* " 下拉列表进行选择：
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. 向用户授予有权访问数据库的角色：
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > 如果不需要授予 *db_owner* 权限， *db_datareader* 和 *db_datawriter* 可用于读取/写入权限。
 > 要使 Spark 用户能够直接从 Spark 读入或从 SQL 池中写入 Spark，需要 *db_owner* 权限。
 
-创建用户后，验证无服务器 SQL 池是否可以查询存储帐户。
+创建用户后，运行查询以验证无服务器 SQL 池是否可以查询存储帐户。
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>步骤7.3：对工作区管道运行的 SL 访问控制
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>步骤7.3： Synapse 管道运行的 SQL 访问控制
 
 ### <a name="workspace-managed-identity"></a>工作区托管标识
 
 > [!IMPORTANT]
 > 若要成功运行包含引用 SQL 池的数据集或活动的管道，需要向工作区标识授予对 SQL 池的访问权限。
 
-针对每个 SQL 池运行以下命令，以允许工作区托管标识对 SQL 池数据库运行管道：
+在每个 SQL 池上运行以下命令，以允许工作区托管系统标识在 SQL 池数据库上运行管道 (s) ：  
+
+>[!note]
+>在下面的脚本中，对于专用的 SQL 池数据库，databasename 与池名称相同。  对于无服务器 SQL 池中的数据库，databasename 是数据库的名称。
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 针对同一个 SQL 池运行以下脚本可以删除此权限：
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433306"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108138"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -49,7 +49,7 @@ ms.locfileid: "96433306"
 
 **表 2：v1.0 和 v2.0 可选声明集**
 
-| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 注释  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -76,7 +76,7 @@ ms.locfileid: "96433306"
 
 **表 3：仅限 v2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 说明                                | 说明 |
+| JWT 声明     | 名称                            | 说明                                | 注释 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
@@ -139,7 +139,7 @@ ms.locfileid: "96433306"
 1. 选择 **添加** 。
 
 > [!NOTE]
-> 当前在 Azure AD B2C 租户中注册的应用程序的 UI 选项 **标记配置** 边栏选项卡不可用。 对于在 B2C 租户中注册的应用程序，可以通过修改应用程序清单来配置可选声明。 有关详细信息，请参阅 [在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](../../active-directory-b2c/custom-policy-configure-user-input.md) 
+> 当前在 Azure AD B2C 租户中注册的应用程序的 UI 选项 **标记配置** 边栏选项卡不可用。 对于在 B2C 租户中注册的应用程序，可以通过修改应用程序清单来配置可选声明。 有关详细信息，请参阅 [在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](../../active-directory-b2c/configure-user-input.md) 
 
 **通过应用程序清单配置可选声明：**
 

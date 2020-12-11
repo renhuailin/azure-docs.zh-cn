@@ -3,12 +3,12 @@ title: 管理启用了 Azure Arc 的服务器代理
 description: 本文介绍了在支持 Azure Arc 的服务器连接的计算机代理的生命周期中通常会执行的不同管理任务。
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130963"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107186"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -160,14 +160,14 @@ Azcmagent 工具 ( # A0) 用于在安装期间配置启用了 Azure Arc 的服�
 
 * **-h or --help** - 显示可用的命令行参数
 
-    例如，若要查看 Reconnect 参数的详细帮助，请键入 `azcmagent reconnect -h`。 
+    例如，若要查看 **Connect** 参数的详细帮助，请键入 `azcmagent connect -h` 。 
 
 * **-v or --verbose** - 启用详细日志记录
 
-可以在交互式登录时手动执行连接和 **断开****连接** ，也可以使用用于集成多个代理的相同服务主体或使用 Microsoft 标识平台 [访问令牌](../../active-directory/develop/access-tokens.md)来自动完成。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
+可以在交互式登录时手动执行连接和 **断开****连接**，也可以使用用于集成多个代理的相同服务主体或使用 Microsoft 标识平台 [访问令牌](../../active-directory/develop/access-tokens.md)来自动完成。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
 
 >[!NOTE]
->若要运行 **azcmagent** ，必须具有 Linux 计算机上的 *根* 访问权限。
+>若要运行 **azcmagent**，必须具有 Linux 计算机上的 *根* 访问权限。
 
 ### <a name="connect"></a>连接
 

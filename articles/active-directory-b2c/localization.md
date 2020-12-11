@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095892"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108614"
 ---
 # <a name="localization-element"></a>本地化元素
 
@@ -335,14 +335,14 @@ UxElement 值用于本地化某个用户界面元素。 以下示例演示如何
 
 ### <a name="displaycontrol"></a>DisplayControl
 
-显示控件值用于本地化某个 [显示控件](display-controls.md) 用户界面元素。 下面的示例演示如何本地化 "发送" 和 "验证" 按钮。 
+DisplayControl 值用于本地化某个[显示控件](display-controls.md)用户界面元素。 以下示例演示如何本地化发送和验证按钮。 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
 ```
 
-在自断言技术配置文件的 "元数据" 部分中，引用的 ContentDefinition 需要将 DataUri 设置为 [页面布局版本](page-layout.md) 2.1.0 或更高版本。 例如：
+在自断言技术配置文件的元数据部分，引用的 ContentDefinition 需要将 DataUri 设置为[页面布局版本](page-layout.md) 2.1.0 或更高版本。 例如：
 
 ```xml
 <ContentDefinition Id="api.selfasserted">
@@ -354,5 +354,5 @@ UxElement 值用于本地化某个用户界面元素。 以下示例演示如何
 
 有关本地化示例，请参阅以下文章：
 
-- [在 Azure Active Directory B2C 中使用自定义策略进行语言自定义](custom-policy-localization.md)
-- [在 Azure Active Directory B2C 中使用用户流进行语言自定义](user-flow-language-customization.md)
+- [在 Azure Active Directory B2C 中使用自定义策略进行语言自定义](language-customization.md)
+- [在 Azure Active Directory B2C 中使用用户流进行语言自定义](language-customization.md)

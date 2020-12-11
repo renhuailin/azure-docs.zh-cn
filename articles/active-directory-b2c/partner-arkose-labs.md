@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994054"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108546"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
 
 在本教程中，了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -72,7 +72,7 @@ ms.locfileid: "95994054"
 
 7. 选择存储帐户的位置或接受默认位置。
 
-8. 接受其他所有默认值，选择 "  **查看 &" 创建**"  >  **Create**。
+8. 接受其他所有默认值，选择 "  **查看 &" 创建**"  >  。
 
 9. 创建存储帐户后，选择“转到资源”。
 
@@ -108,7 +108,7 @@ ms.locfileid: "95994054"
 
 1. 按照说明 [创建一个 web 应用](../app-service/quickstart-php.md)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
 
-2. 打开本地文件夹，然后将该 verify-token 文件重命名为 " **verify-token.php** **"。**
+2. 打开本地文件夹，然后将该 verify-token 文件重命名为 "  **"。**
 
 3. 打开新重命名的文件 verify-token 文件和：
 
@@ -147,7 +147,7 @@ ms.locfileid: "95994054"
 
 1. 基于 [此处](tutorial-create-user-flows.md)的信息创建用户流。 进入 **测试用户流** 部分时停止。
 
-2. 在 [用户流](user-flow-javascript-overview.md)中启用 JavaScript。
+2. 在 [用户流](javascript-and-page-layout.md)中启用 JavaScript。
 
 3. 在同一 "用户流" 页上，启用 "自定义页面 URL：中转到 **用户流**  >  **页面布局**  >  "**使用自定义页面内容**  =  **yes**  >  **insert 自定义页面 URL**。
 此自定义页面 URL 从 blob 存储中 index.html 文件的位置获取  

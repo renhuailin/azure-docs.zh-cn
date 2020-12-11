@@ -11,20 +11,20 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec99558f3a168b770ad19fb4f6c811a31c44f08
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389320"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108870"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C：启用自定义配置文件策略中的自定义属性
 
-在 [添加声明和使用自定义策略自定义用户输入](custom-policy-configure-user-input.md) 一文中，你将了解如何使用内置 [用户配置文件属性](user-profile-attributes.md)。 在本文中，将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用自定义属性。 稍后，你可以将新属性同时用作 [用户流](user-flow-overview.md) 或 [自定义策略](custom-policy-get-started.md) 中的自定义声明。
+在 [添加声明和使用自定义策略自定义用户输入](configure-user-input.md) 一文中，你将了解如何使用内置 [用户配置文件属性](user-profile-attributes.md)。 在本文中，将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用自定义属性。 稍后，你可以将新属性同时用作 [用户流](user-flow-overview.md) 或 [自定义策略](custom-policy-get-started.md) 中的自定义声明。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 遵循文章 [Azure Active Directory B2C：自定义策略入门](custom-policy-get-started.md)中的步骤进行操作。
 
@@ -42,7 +42,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 
 扩展属性只能在应用程序对象上注册，即使它们可能包含用户的数据也是如此。 扩展属性附加到名为 b2c-extensions-app 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可以在 Azure AD B2C 应用注册下找到此应用程序。
 
-术语扩展属性、自定义属性和自定义声明在本文的上下文中引用相同的内容******。 名称会因上下文（应用程序、对象、策略）而异。
+术语扩展属性、自定义属性和自定义声明在本文的上下文中引用相同的内容。 名称会因上下文（应用程序、对象、策略）而异。
 
 ## <a name="get-the-application-properties"></a>获取应用程序属性
 
@@ -57,7 +57,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 
 ## <a name="modify-your-custom-policy"></a>修改自定义策略
 
-若要在策略中启用自定义属性，请在 AAD-Common 技术配置文件元数据中提供 **应用程序 id** 和应用程序 **对象 id** 。 *AAD 通用*技术配置文件位于基本[Azure Active Directory](active-directory-technical-profile.md)技术配置文件中，并提供对 Azure AD 用户管理的支持。 其他 Azure AD 技术配置文件包含 AAD-Common 利用其配置。 覆盖扩展文件中的 AAD-Common 技术配置文件。
+若要在策略中启用自定义属性，请在 AAD-Common 技术配置文件元数据中提供 **应用程序 id** 和应用程序 **对象 id** 。 *AAD 通用* 技术配置文件位于基本 [Azure Active Directory](active-directory-technical-profile.md)技术配置文件中，并提供对 Azure AD 用户管理的支持。 其他 Azure AD 技术配置文件包含 AAD-Common 利用其配置。 覆盖扩展文件中的 AAD-Common 技术配置文件。
 
 1. 打开策略的扩展文件， 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。
 1. 找到 ClaimsProviders 元素。 将新的 ClaimsProvider 添加到 ClaimsProviders 元素。
@@ -88,7 +88,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 5. 选择 " **上载自定义策略**"，然后上传所更改的 TrustFrameworkExtensions.xml 策略文件。
 
 > [!NOTE]
-> 第一次 Azure AD 技术配置文件将声明保留在目录中时，它会检查自定义属性是否存在。 如果不是，则创建自定义属性。  
+> 第一次 Azure AD 技术配置文件将声明保留在目录中时，它会检查自定义属性是否存在。 如果不是，则创建自定义属性。  
 
 ## <a name="create-a-custom-attribute-through-azure-portal"></a>通过 Azure 门户创建自定义属性
 
@@ -132,7 +132,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 
 ## <a name="use-a-custom-attribute-in-a-policy"></a>在策略中使用自定义属性
 
-按照有关如何 [使用自定义策略添加声明和自定义用户输入](custom-policy-configure-user-input.md)的指导进行操作。 此示例使用内置声明 "city"。 若要使用自定义属性，请将 "city" 替换为你自己的自定义属性。
+按照有关如何 [使用自定义策略添加声明和自定义用户输入](configure-user-input.md)的指导进行操作。 此示例使用内置声明 "city"。 若要使用自定义属性，请将 "city" 替换为你自己的自定义属性。
 
 
 ## <a name="next-steps"></a>后续步骤

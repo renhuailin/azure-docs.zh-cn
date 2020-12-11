@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119923"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107913"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
@@ -136,7 +136,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 
 [`MSALError` 列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误的处理是可选的。 可以使用这些错误中的信息来改善用户体验。
 
-有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-handling-exceptions.md)。
+有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-error-handling-ios.md)。
 
 ### <a name="broker-support"></a>中介支持
 
@@ -230,7 +230,7 @@ iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 建议所有应用注册这两个重定向 URI。
 
-若要添加对增量许可的支持，请在“API 权限”选项卡下的应用注册中，选择应用配置为请求访问的 API 和权限。****
+若要添加对增量许可的支持，请在“API 权限”选项卡下的应用注册中，选择应用配置为请求访问的 API 和权限。
 
 如果从 ADAL 迁移并希望同时支持 AAD 和 MSA 帐户，则需要更新现有的应用程序注册才能支持这两种帐户。 我们目前不建议更新现有的生产应用来支持 AAD 和 MSA。 应该创建支持 AAD 和 MSA 的另一个客户端 ID 用于测试，在确认所有方案正常后，再更新现有应用。
 

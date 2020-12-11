@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 321669457c479f7f59ccbb9b7950457b7f9a1af5
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023782"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108291"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -117,7 +117,7 @@ UserJourneyBehaviors 元素包含下列元素：
 | SessionExpiryInSeconds | 0:1 | 身份验证成功后，存储在用户浏览器上指定为整数的 Azure AD B2C 会话 Cookie 的生存期。 |
 | JourneyInsights | 0:1 | 要使用的 Azure Application Insights 检测密钥。 |
 | ContentDefinitionParameters | 0:1 | 要追加到内容定义负载 URI 的键值对列表。 |
-|ScriptExecution| 0:1| 支持的 [JavaScript](javascript-samples.md) 执行模式。 可能的值：`Allow` 或 `Disallow`（默认值）。
+|ScriptExecution| 0:1| 支持的 [JavaScript](javascript-and-page-layout.md) 执行模式。 可能的值：`Allow` 或 `Disallow`（默认值）。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -134,7 +134,7 @@ SingleSignOn 元素包含在以下属性中：
 
 JourneyInsights 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -161,17 +161,17 @@ ContentDefinitionParameters 元素包含以下元素：
 
 ContentDefinitionParameters 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
-有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
+有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -188,7 +188,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 Protocol 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
@@ -196,7 +196,7 @@ Protocol 元素包含以下属性：
 
 如果协议是 `SAML`，则元数据元素包含以下元素。
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | IdpInitiatedProfileEnabled | 否 | 指示是否支持 IDP 发起的流。 可能的值：`true` 或 `false`（默认值）。 | 
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 响应进行签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 断言，请参阅 [SAML 颁发者技术配置文件元数据](saml-issuer-technical-profile.md#metadata)。 |
@@ -207,7 +207,7 @@ Protocol 元素包含以下属性：
 
 ### <a name="outputclaims"></a>OutputClaims
 
-OutputClaims 元素包含以下元素：
+OutputClaims  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -215,7 +215,7 @@ OutputClaims 元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -229,7 +229,7 @@ OutputClaim 元素包含以下属性：
 
 SubjectNamingInfo 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
 | 格式 | 否 | 用于 SAML 依赖方，以设置 SAML 断言中返回的 NameId 格式。 |
