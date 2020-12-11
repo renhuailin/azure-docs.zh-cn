@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012708"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093632"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
 
@@ -47,7 +47,7 @@ ms.locfileid: "96012708"
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
 
-如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 升级到高级许可证后，如果没有任何数据，则需要在一到两天后，数据才会显示在报告中。
+如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 如果你没有任何数据，则在升级到高级版许可证后，将需要长达三天的时间，数据才会显示在报表中。
 
 ---
 
@@ -80,6 +80,6 @@ ms.locfileid: "96012708"
 
 ### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>获得 Azure AD Premium 许可证后是否能查看上个月的数据？
 
-**不**，不可以。 对于免费版本，Azure 最多可存储7天的活动数据。 这意味着，当你从免费版切换到高级版时，最多只能看到7天的数据。
+否，不能。 对于免费版本，Azure 最多可存储 7 天的活动数据。 这意味着，从免费版切换到高级版时，最多只能看到 7 天的数据。
 
 ---

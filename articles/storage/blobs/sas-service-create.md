@@ -1,7 +1,7 @@
 ---
 title: 为容器或 blob 创建服务 SAS
 titleSuffix: Azure Storage
-description: 了解如何使用用于 Blob 存储的 Azure 存储库创建容器或 blob (SAS) 的服务共享访问签名。
+description: 了解如何使用适用于 Blob 存储的 Azure 存储库为容器或 blob 创建服务共享访问签名 (SAS)。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0b2d18165bf2c5a4f70f1cbc555db79020ce988f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: f55cfcf6d6ec369cdf871e8ba38bd81774dacd8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95250611"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092306"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>为容器或 blob 创建服务 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用存储帐户密钥为包含用于 Blob 存储的 Azure 存储客户端库的容器或 blob 创建服务 SAS。
+本文介绍如何使用存储帐户密钥通过用于 Blob 存储的 Azure 存储客户端库为容器或 blob 创建服务 SAS。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>为 blob 容器创建服务 SAS
 
@@ -30,9 +30,9 @@ ms.locfileid: "95250611"
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-使用帐户访问密钥对服务 SAS 进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，创建一个新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
+服务 SAS 将使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于为 SAS 签名的凭据。 接下来，新建 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以获取 SAS 令牌字符串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForContainer":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -85,7 +85,7 @@ private static string GetContainerSasUri(CloudBlobContainer container,
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-使用帐户访问密钥对服务 SAS 进行签名。 使用 [StorageSharedKeyCredential](/javascript/api/@azure/storage-blob/storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，请调用提供所需选项的 [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) 函数，以获取 SAS 令牌字符串。
+服务 SAS 将使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/javascript/api/@azure/storage-blob/storagesharedkeycredential) 类创建用于为 SAS 签名的凭据。 接下来，调用 [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) 函数并提供所需选项，以获取 SAS 令牌字符串。
 
 ```javascript
 function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyName) {
@@ -116,9 +116,9 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-使用帐户访问密钥对服务 SAS 进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于对 SAS 进行签名的凭据。 接下来，创建一个新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。
+服务 SAS 将使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于为 SAS 签名的凭据。 接下来，新建 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 对象，并调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以获取 SAS 令牌字符串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForBlob":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForBlob":::
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -178,7 +178,7 @@ private static string GetBlobSasUri(CloudBlobContainer container,
 
 若要为 blob 创建服务 SAS，请调用 [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) 方法。
 
-若要为 blob 创建服务 SAS，请调用提供所需选项的 [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) 函数。
+若要为 blob 创建服务 SAS，请调用 [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) 函数，提供所需选项。
 
 ```javascript
 function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPolicyName) {
@@ -210,7 +210,7 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 
 下面的示例演示如何使用适用于 .NET 的 v12 客户端库为目录创建服务 SAS：
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForDirectory":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForDirectory":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

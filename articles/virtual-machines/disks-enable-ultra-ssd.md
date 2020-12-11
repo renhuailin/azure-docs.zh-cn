@@ -4,16 +4,16 @@ description: 了解 Azure Vm 的 ultra 磁盘
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: aa1c681d4b34199456f3447bcac5587005a044ce
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96016619"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093479"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 
@@ -129,7 +129,7 @@ UltraSSDAvailable                            True
 
 ## <a name="deploy-an-ultra-disk"></a>部署超磁盘
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 本部分介绍如何部署一个虚拟机，并将其作为数据磁盘。 本教程假定你已熟悉如何部署虚拟机，如果不这样做，请参阅 [快速入门：在 Azure 门户中创建 Windows 虚拟机](./windows/quick-create-portal.md)。
 
@@ -170,9 +170,6 @@ UltraSSDAvailable                            True
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
-
-#create an ultra disk with 512 sector size
-az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -225,8 +222,59 @@ $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 $disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 
-# Example for creating a disk with 512 sector size
+---
+
+## <a name="deploy-an-ultra-disk---512-byte-sector-size"></a>部署超高磁盘-512 字节扇区大小
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+Azure 门户当前不支持创建512字节扇区大小的超磁盘。 您可以使用 Azure PowerShell 模块或 Azure CLI 来创建具有512字节扇区大小的超磁盘。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅 [GA 范围和限制](#ga-scope-and-limitations) 部分。
+
+必须创建能够使用 ultra 磁盘的 VM，才能附加超磁盘。
+
+将 **$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user** 变量替换为你自己的值。 将 **$zone**  设置为从 [本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下 CLI 命令，以创建具有512字节扇区大小的超磁盘的 VM：
+
+```azurecli
+#create an ultra disk with 512 sector size
+az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅 [GA 范围和限制](#ga-scope-and-limitations) 部分。
+
+若要使用超磁盘，必须创建能够使用超磁盘的 VM。 将 **$resourcegroup** 和 **$vmName** 变量替换为自己的值。 将 **$zone** 设置为从 [本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下 [new-azvm](/powershell/module/az.compute/new-azvm) 命令，以创建支持 HYPER-V 的 VM：
+
+```powershell
+New-AzVm `
+    -ResourceGroupName $resourcegroup `
+    -Name $vmName `
+    -Location "eastus2" `
+    -Image "Win2016Datacenter" `
+    -EnableUltraSSD `
+    -size "Standard_D4s_v3" `
+    -zone $zone
+```
+
+若要创建并附加具有512字节扇区大小的 ultra 磁盘，可以使用以下脚本：
+
+```powershell
+# Set parameters and select subscription
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Connect-AzAccount -SubscriptionId $subscription
+
+# Create the disk
 $diskconfig = New-AzDiskConfig `
 -Location 'EastUS2' `
 -DiskSizeGB 8 `
@@ -237,12 +285,21 @@ $diskconfig = New-AzDiskConfig `
 -CreateOption Empty `
 -zone $zone;
 
-```
+New-AzDisk `
+-ResourceGroupName $resourceGroup `
+-DiskName $diskName `
+-Disk $diskconfig;
 
+# add disk to VM
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 ---
 ## <a name="attach-an-ultra-disk"></a>附加超磁盘
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。 在现有 VM 上启用 ultra 磁盘，并将其附加为数据磁盘。 若要启用超高磁盘兼容性，必须停止 VM。 停止 VM 后，你可以启用兼容性，然后重启 VM。 启用兼容性后，可以附加一个超磁盘：
 
@@ -383,7 +440,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ---
 ## <a name="adjust-the-performance-of-an-ultra-disk"></a>调整超磁盘的性能
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 超磁盘提供了独特的功能，使你能够调整其性能。 你可以在磁盘本身上从 Azure 门户进行这些调整。
 

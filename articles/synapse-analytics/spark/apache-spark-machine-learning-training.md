@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 8250f7154cfb2739d065980284da67a200680d89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919486"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97091983"
 ---
 # <a name="train-machine-learning-models"></a>训练机器学习模型
 Azure Synapse Analytics 中的 Apache Spark 支持具有大数据的机器学习，从而能够从大量结构化、非结构化和快速移动的数据中获取有价值的见解。 使用 azure Synapse 分析中的 Azure Spark 训练机器学习模型时，有几个选项可供使用： Apache Spark MLlib、Azure 机器学习和其他各种开源库。 
@@ -44,20 +44,20 @@ Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和
 MMLSpark 在生成可缩放 ML 模型（例如编制字符串的索引、强制数据进入机器学习算法预期的布局中、组合特征矢量）时，可以在 SparkML 的低级别 API 基础上提供一个层。 MMLSpark 库简化了可在 PySpark 中生成模型的这些任务以及其他常见任务。
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Azure 机器学习中的自动 ML 
-Azure 机器学习是一种基于云的环境，可以对机器学习模型进行训练、部署、自动化、管理和跟踪。 自动 ML (AutoML) 在 Azure 机器学习接受定型数据和配置设置，并自动循环访问不同功能标准化/标准化方法、模型和超参数设置，以达到最佳模型。 
+Azure 机器学习是一种基于云的环境，可以对机器学习模型进行训练、部署、自动化、管理和跟踪。 Azure 机器学习中的自动 ML 接受定型数据和配置设置，并自动循环访问不同功能标准化/标准化方法、模型和超参数设置，以获得最佳模型。 
 
-使用 Azure Synapse Analytics 中的 AutoML 时，可以利用不同服务之间的深度集成，简化 & 模型定型的身份验证。 
+在 Azure Synapse Analytics 中使用自动 ML 时，可以利用不同服务之间的深度集成来简化身份验证 & 模型定型。 
 
 > [!NOTE]
 > 
-> 若要详细了解如何创建 Azure 机器学习 AutoML 试验，请遵循本 [教程](./spark/../apache-spark-azure-machine-learning-tutorial.md)。
+> 若要详细了解如何创建 Azure 机器学习自动 ML 试验，请遵循本 [教程](./spark/../apache-spark-azure-machine-learning-tutorial.md)。
 
 ## <a name="azure-cognitive-services"></a>Azure 认知服务
-[Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) 提供了机器学习功能，可解决一般问题，例如分析激动人心的情绪的文本或分析图像以识别对象或面部。 无需机器学习或数据科学方面的专业知识就能使用这些服务。 认知服务提供机器学习解决方案中的部分或全部组件：数据、算法和训练模型。 这些服务旨在要求对数据的一般知识，而不需要机器学习或数据科学方面的经验。 可以在 Azure Synapse 分析中自动利用这些预先训练的认知服务。
+[Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) 提供了机器学习功能，可解决一般问题，例如分析激动人心的情绪的文本或分析图像以识别对象或面部。 无需机器学习或数据科学方面的专业知识就能使用这些服务。 认知服务提供了机器学习解决方案中的部分或全部组件：数据、算法和训练模型。 这些服务旨在要求你具备有关数据的一般知识，而无需具备机器学习或数据科学方面的经验。 可以在 Azure Synapse 分析中自动利用这些预先训练的认知服务。
 
 ## <a name="next-steps"></a>后续步骤
 本文概述了用于在 Azure Synapse 分析中的 Apache Spark 池内训练机器学习模型的各种选项。 可以按照以下教程了解有关模型定型的详细信息：
 
-- 使用 Azure 机器学习和 Azure Synapse Analytics 运行自动 ML 试验： [AutoML 教程](./spark/../apache-spark-autoscale.md) 
+- 使用 Azure 机器学习和 Azure Synapse Analytics 运行自动 ML 试验： [自动 Ml 教程](./spark/../apache-spark-autoscale.md) 
 - 运行 SparkML 试验： [Apache SparkML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)
 - 查看默认库： [Azure Synapse Analytics 运行时](../spark/apache-spark-version-support.md)

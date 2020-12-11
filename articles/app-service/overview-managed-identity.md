@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007205"
+ms.locfileid: "97092731"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -37,7 +37,7 @@ ms.locfileid: "97007205"
 
 3. 选择“标识”。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存”  。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“ **保存**”。
 
     ![屏幕截图，显示要将状态切换到的位置，然后选择 "保存"。](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+- [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+- [使用托管标识安全访问 Azure 存储](scenario-secure-app-access-storage.md)
+- [使用托管标识安全调用 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
 [Microsoft.Azure.Services.AppAuthentication 参考]: ../key-vault/general/service-to-service-authentication.md

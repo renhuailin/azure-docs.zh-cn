@@ -10,13 +10,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960014"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034082"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
 
@@ -98,9 +98,9 @@ response = requests.post(published_pipeline1.endpoint,
 | `DataSetDefinitionValueAssignments` | 用于在不重新训练的情况下更改数据集的字典（请参阅以下讨论） | 
 | `DataPathAssignments` | 用于在不重新训练的情况下更改数据路径的字典（请参阅以下讨论） | 
 
-### <a name="run-a-published-pipeline-using-c"></a>使用 C 运行已发布的管道# 
+### <a name="run-a-published-pipeline-using-c"></a>使用 C# 运行已发布的管道 
 
-下面的代码演示如何从 c # 异步调用管道。 部分代码段只显示调用结构，而不是 Microsoft 示例的一部分。 它不会显示完整的类或错误处理。 
+下面的代码演示如何从 C# 异步调用管道。 部分代码段只显示调用结构，而不是 Microsoft 示例的一部分。 它不会显示完整的类或错误处理。 
 
 ```csharp
 [DataContract]
@@ -155,7 +155,7 @@ using (HttpClient client = new HttpClient())
 
 ### <a name="run-a-published-pipeline-using-java"></a>使用 Java 运行已发布的管道
 
-下面的代码演示对要求身份验证的管道的调用 (参阅 [为 Azure 机器学习资源和工作流) 设置身份验证](how-to-setup-authentication.md) 。 如果管道是公开部署的，则不需要生成的调用 `authKey` 。 部分代码段不显示 Java 类和异常处理样板。 代码使用将 `Optional.flatMap` 可能返回空的函数链接在一起 `Optional` 。 使用 `flatMap` 缩短和阐明代码，但要注意的是， `getRequestBody()` 吞并异常。
+下面的代码演示对需要身份验证的管道的调用（请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)）。 如果管道是公开部署的，则不需要产生 `authKey` 的调用。 部分代码片段不显示 Java 类和异常处理样板。 代码使用 `Optional.flatMap` 将可能返回空 `Optional` 的函数链接在一起。 使用 `flatMap` 可以缩短和阐明代码，但请注意，`getRequestBody()` 会吞并异常。
 
 ```java
 import java.net.URI;
@@ -239,7 +239,7 @@ class AuthenticationBody {
 
 ### <a name="changing-datasets-and-datapaths-without-retraining"></a>在不重新训练的情况下更改数据集和数据路径
 
-你可能想要对其他数据集和数据路径进行训练和推理。 例如，你可能想要在一个较小的数据集上定型，但要对整个数据集进行推断。 可使用请求的 `json` 参数中的 `DataSetDefinitionValueAssignments` 键切换数据集。 可使用 `DataPathAssignments` 切换数据路径。 两者的方法类似：
+你可能想要对其他数据集和数据路径进行训练和推理。 例如，你可能想要对较小的数据集进行训练，对完整数据集进行推理。 可使用请求的 `json` 参数中的 `DataSetDefinitionValueAssignments` 键切换数据集。 可使用 `DataPathAssignments` 切换数据路径。 两者的方法类似：
 
 1. 在管道定义脚本中，为数据集创建 `PipelineParameter`。 在 `PipelineParameter` 中创建 `DatasetConsumptionConfig` 或 `DataPath`：
 
@@ -297,7 +297,7 @@ class AuthenticationBody {
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>创建版本受控的管道终结点
 
-可以创建包含多个已发布管道的管道终结点。 此方法提供了一个固定 REST 终结点，可在循环访问和更新 ML 管道时使用。
+可以创建包含多个已发布管道的管道终结点。 在迭代和更新 ML 管道时，这种方法提供了一个固定的 REST 终结点。
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint

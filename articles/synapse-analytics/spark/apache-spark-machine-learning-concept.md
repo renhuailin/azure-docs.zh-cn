@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919322"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092000"
 ---
 # <a name="machine-learning-with-apache-spark"></a>计算机学习与 Apache Spark
 
@@ -43,8 +43,8 @@ Synapse 运行时是针对数据科学和机器学习进行优化的特选环境
 ### <a name="sparkml-and-mllib"></a>SparkML 和 MLlib
 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 ```spark.ml``` 提供了一组统一的高级 Api，可帮助用户创建和优化机器学习管道。若要了解有关 ```spark.ml``` 的详细信息，可以访问 [Apache Spark ML 编程指南](https://spark.apache.org/docs/1.2.2/ml-guide.html)。
 
-### <a name="azure-machine-learning-automl"></a>Azure 机器学习 AutoML
-[Azure 机器学习 AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (自动机器学习) 有助于自动执行开发机器学习模型的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 用于运行 Azure 机器学习 AutoML SDK 的组件将直接内置于 Synapse 运行时中。
+### <a name="azure-machine-learning-automated-ml"></a>Azure 机器学习自动 ML
+自动机器学习 ([Azure 机器学习自动 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)) 有助于自动执行计算机学习模型的开发过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 运行 Azure 机器学习自动 ML SDK 的组件将直接内置到 Synapse 运行时中。
 
 ### <a name="open-source-libraries"></a>开源库
 Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和热门的机器学习库。  默认情况下包含的一些相关机器学习库包括：
@@ -68,7 +68,7 @@ Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和
 若要开始在 Azure Synapse Analytics 中进行机器学习，请务必查看以下教程：
 - [用 Azure Synapse 笔记本分析数据](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [使用 AutoML 训练机器学习模型](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [使用自动 ML 训练机器学习模型](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [使用 Apache Spark MLlib 训练机器学习模型](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

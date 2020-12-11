@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: 3d02210559e3da0d42f7de96157cbbe886b16082
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 07af7f7f716a83ee9fa47619c1334a29786818d7
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558580"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033079"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "92558580"
 
 翻转窗口具有以下触发器类型属性：
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,7 +47,7 @@ ms.locfileid: "92558580"
             "frequency": <<Minute/Hour>>,
             "interval": <<int>>,
             "startTime": "<<datetime>>",
-            "endTime: <<datetime – optional>>,
+            "endTime": <<datetime – optional>>,
             "delay": <<timespan – optional>>,
             "maxConcurrency": <<int>> (required, max allowed: 50),
             "retryPolicy": {
@@ -97,12 +97,12 @@ ms.locfileid: "92558580"
 | JSON 元素 | 说明 | 类型 | 允许的值 | 必须 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
-| **runtimeState** | 触发器运行时的当前状态。<br/>**注意** ：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
-| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时， **startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
-| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3， **frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意** ：最小窗口间隔为 5 分钟。 | Integer | 正整数。 | 是 |
-| **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 ( **startTime** , **startTime** + **interval** )。 | DateTime | 一个日期时间值。 | 是 |
+| **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
+| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
+| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意**：最小窗口间隔为 5 分钟。 | Integer | 正整数。 | 是 |
+| **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | 是 |
 | **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | 是 |
-| **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime** 。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | 否 |
+| **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime**。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | 否 |
 | **maxConcurrency** | 同时针对已就绪窗口触发的触发器运行数。 例如，若要每小时回填，昨天的运行会产生 24 个 windows。 如果 **maxConcurrency** = 10，则仅针对头 10 个窗口 (00:00-01:00 - 09:00-10:00) 触发触发器事件。 在头 10 个触发的管道运行完成后，将针对接下来的 10 个窗口 (10:00-11:00 - 19:00-20:00) 触发触发器运行。 继续进行 **maxConcurrency** = 10 的此示例，如果有 10 个窗口就绪，则总共有 10 个管道运行。 如果只有 1 个窗口就绪，则只有 1 管道运行。 | Integer | 一个介于 1 到 50 之间的整数。 | 是 |
 | **retryPolicy: Count** | 将管道运行标记为“失败”之前的重试次数。  | Integer | 一个整数，其默认值为 0（不重试）。 | 否 |
 | **retryPolicy: intervalInSeconds** | 重试之间的延迟（以秒为单位指定）。 | Integer | 秒数，其默认值为 30。 | 否 |
@@ -117,7 +117,7 @@ ms.locfileid: "92558580"
 
 可以在 **管道** 定义中（即，作为查询的一部分），使用翻转窗口触发器的 **WindowStart** 和 **WindowEnd** 系统变量。 **触发器** 定义中将系统变量作为参数传递给管道。 下面的示例演示如何将这些变量作为参数传递：
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -147,7 +147,7 @@ ms.locfileid: "92558580"
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>回填方案中的窗口执行顺序
 
-如果触发器的 startTime 过去，则基于此公式，M = (CurrentTime-TriggerStartTime) /TumblingWindowSize，触发器将生成 {M} 回填 (过去) 并行运行，从而在执行将来的运行之前执行触发器并发。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
+如果触发器的 startTime 为过去时间，那么根据公式 M=(CurrentTime- TriggerStartTime)/TumblingWindowSize，触发器将在执行未来运行之前生成 {M} backfill(past) 次并行运行，以保证触发器并发性。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
 
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
 
@@ -166,14 +166,14 @@ ms.locfileid: "92558580"
 
 ### <a name="cancel-tumbling-window-run"></a>取消翻转窗口运行
 
-如果特定窗口正在 _等待_ 、 _正在等待依赖项_ 或 _运行_ 状态，则可以取消翻转窗口触发器的运行
+如果特定窗口处于“正在等待”、“正在等待依赖项”或“正在运行”状态，则可以取消翻转窗口触发器的运行。
 
-* 如果窗口处于 " **正在运行** " 状态，则取消关联的 _管道运行_ ，触发器运行将被标记为 _已取消_
-* 如果该窗口正在 **等待** 或 **等待依赖项** 状态，则可以取消监视该窗口：
+* 如果窗口处于“正在运行”状态，则取消关联的“管道运行”，然后触发器运行会被标记为“已取消”
+* 如果窗口处于“正在等待”或“正在等待依赖项”状态，则可以取消该窗口的监视：
 
-![从 "监视" 页取消翻转窗口触发器](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+![从“监视”页取消翻转窗口触发器](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
 
-还可以重新运行已取消的窗口。 重新运行将获取触发器的 _最新_ 发布定义，并在重新运行时 _重新计算_ 指定窗口的依赖项
+还可以重新运行已取消的窗口。 重新运行会采用触发器的最新发布定义，并且指定窗口的依赖项会在重新运行时重新进行评估
 
 ![为之前取消的运行重新运行翻转窗口触发器](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
 
@@ -225,7 +225,7 @@ ms.locfileid: "92558580"
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
     
-3. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped** ：
+3. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
@@ -237,7 +237,7 @@ ms.locfileid: "92558580"
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started** ：
+5. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"

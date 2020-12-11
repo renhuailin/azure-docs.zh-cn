@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998929"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092663"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>将大型机计算移到 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "86998929"
 
 ## <a name="mainframe-compute-at-a-glance"></a>大型机计算一览
 
-在 z14 大型机中，处理器最多排列为四个 *抽屉*。 *抽屉*只是处理器和芯片组的群集。 每个抽屉可以有六个处于活动状态的中心处理器 (CP) 芯片，每个 CP 有10个系统控制器 (SC) 芯片。 在 Intel x86 术语中，每个银箱有六个插槽，每个插槽10个核心，四个抽屉。 此体系结构为 z14 提供了相当于24个套接字和240个内核的最大值。
+在 z14 大型机中，处理器最多排列为四个 *抽屉*。 *抽屉* 只是处理器和芯片组的群集。 每个抽屉可以有六个处于活动状态的中心处理器 (CP) 芯片，每个 CP 有10个系统控制器 (SC) 芯片。 在 Intel x86 术语中，每个银箱有六个插槽，每个插槽10个核心，四个抽屉。 此体系结构为 z14 提供了相当于24个套接字和240个内核的最大值。
 
 Fast z14 CP 具有 5.2 GHz 的时钟速度。 通常情况下，z14 提供了框中的所有 CPs。 它们会根据需要激活。 不管实际使用情况如何，客户通常每月至少收取四个小时的计算时间。
 
@@ -135,4 +135,4 @@ Z14 大型机最多可以有240个核心。 但是，z14 大型机几乎不会�
 ### <a name="more-migration-resources"></a>更多迁移资源
 
 - [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)（Azure 虚拟数据中心提升和迁移指南）
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

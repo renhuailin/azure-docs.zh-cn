@@ -1,7 +1,7 @@
 ---
-title: 设置定型 & 推理计算目标
+title: 设置训练和推理计算目标
 titleSuffix: Azure Machine Learning
-description: 向工作区)  (计算目标添加计算资源，以便用于机器学习培训和推理
+description: 将计算资源（计算目标）添加到工作区，用于机器学习训练和推理
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -10,17 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320835"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033708"
 ---
-# <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型定型和部署的计算目标
+# <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
-了解如何将 Azure 计算资源附加到 Azure 机器学习工作区。  然后，你可以在机器学习任务中将这些资源用作定型和推理 [计算目标](concept-compute-target.md) 。
+了解如何将 Azure 计算资源附加到 Azure 机器学习工作区。  然后，可以将这些资源用作机器学习任务中的训练和推理[计算目标](concept-compute-target.md)。
 
 本文介绍如何将工作区设置为使用这些计算资源：
 
@@ -49,11 +49,11 @@ ms.locfileid: "93320835"
 
 * 请勿在工作区中为同一计算创建多个同步附件。 例如，使用两个不同的名称将一个 Azure Kubernetes 服务群集附加到工作区。 每个新附件都会破坏先前存在的附件。
 
-    如果要重新连接计算目标，例如更改 TLS 或其他群集配置设置，则必须先删除现有的附件。
+    如果要重新附加计算目标来实现某个目的（例如，更改 TLS 或其他群集配置设置），则必须先删除现有附件。
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？
 
-使用 Azure 机器学习可以在不同的资源或环境（统称为 [__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  你还可以使用模型部署的计算目标，如 ["部署模型的位置和方式"](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习可以在不同的资源或环境（统称为 [__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以使用计算目标进行模型部署，如[部署模型的位置和方式](how-to-deploy-and-where.md)中所述。
 
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
@@ -70,14 +70,14 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](./how-to-configure-environment.md#dsvm)。
 
-1. **创建** ：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
+1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
 
     > [!WARNING]
     > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。 创建 VM 或选择现有 VM 时，必须选择使用 Ubuntu 的 VM。
     > 
     > Azure 机器学习还要求虚拟机具有公共 IP 地址。
 
-1. **附加** ：若要附加现有虚拟机作为计算目标，必须提供虚拟机的资源 ID、用户名和密码。 可以使用订阅 ID、资源组名称和 VM 名称按以下字符串格式构造 VM 的资源 ID：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **附加**：若要附加现有虚拟机作为计算目标，必须提供虚拟机的资源 ID、用户名和密码。 可以使用订阅 ID、资源组名称和 VM 名称按以下字符串格式构造 VM 的资源 ID：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
     > [!WARNING]
     > 请勿在工作区中为同一 DSVM 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
-1. **配置** ：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
+1. **配置**：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Apache Spark 可用于训练模型。
 
-1. **创建** ：先创建 HDInsight 群集，然后使用它来训练模型。 若要在 HDInsight 群集中创建 Spark，请参阅[在 HDInsight 中创建 Spark 群集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
+1. **创建**：先创建 HDInsight 群集，然后使用它来训练模型。 若要在 HDInsight 群集中创建 Spark，请参阅[在 HDInsight 中创建 Spark 群集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
 
     > [!WARNING]
     > Azure 机器学习要求 HDInsight 群集具有公共 IP 地址。
@@ -137,7 +137,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
     
     创建群集后，使用主机名 \<clustername>-ssh.azurehdinsight.net 连接到该群集，其中，\<clustername> 是为该群集提供的名称。 
 
-1. **附加** ：若要将 HDInsight 群集附加为计算目标，必须提供该 HDInsight 群集的资源 ID、用户名和密码。 可以使用订阅 ID、资源组名称和 HDInsight 群集名称按以下字符串格式构造 HDInsight 群集的资源 ID：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **附加**：若要将 HDInsight 群集附加为计算目标，必须提供该 HDInsight 群集的资源 ID、用户名和密码。 可以使用订阅 ID、资源组名称和 HDInsight 群集名称按以下字符串格式构造 HDInsight 群集的资源 ID：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
     > [!WARNING]
     > 请勿在工作区中为同一 HDInsight 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
-1. **配置** ：为 HDI 计算目标创建运行配置。 
+1. **配置**：为 HDI 计算目标创建运行配置。 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch 用于在云中高效运行大规模并行高性能计算 (HPC) 应�
 
 若要将 Azure Batch 附加为计算目标，必须使用 Azure 机器学习 SDK 并提供以下信息：
 
--    **Azure Batch 计算名称** ：在工作区中用于计算的易记名称
--    **Azure Batch 帐户名称** ：Azure Batch 帐户的名称
--    **资源组** ：包含 Azure Batch 帐户的资源组。
+-    **Azure Batch 计算名称**：在工作区中用于计算的易记名称
+-    **Azure Batch 帐户名称**：Azure Batch 帐户的名称
+-    **资源组**：包含 Azure Batch 帐户的资源组。
 
 以下代码演示如何将 Azure Batch 附加为计算目标：
 
@@ -223,9 +223,9 @@ Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用�
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
-* __Databricks 计算名称__ ：要分配给此计算资源的名称。
-* __Databricks 工作区名称__ ：Azure Databricks 工作区的名称。
-* __Databricks 访问令牌__ ：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文档。
+* __Databricks 计算名称__：要分配给此计算资源的名称。
+* __Databricks 工作区名称__：Azure Databricks 工作区的名称。
+* __Databricks 访问令牌__：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文档。
 
 以下代码演示如何使用 Azure 机器学习 SDK 将 Azure Databricks 附加为计算目标（Databricks 工作区需要与 AML 工作区位于同一个订阅中）：
 
@@ -279,9 +279,9 @@ Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以�
 
 若要将 Data Lake Analytics 附加为计算目标，必须使用 Azure 机器学习 SDK 并提供以下信息：
 
-* __计算名称__ ：要分配给此计算资源的名称。
-* __资源组__ ：包含 Data Lake Analytics 帐户的资源组。
-* __帐户名称__ ：Data Lake Analytics 帐户名。
+* __计算名称__：要分配给此计算资源的名称。
+* __资源组__：包含 Data Lake Analytics 帐户的资源组。
+* __帐户名称__：Data Lake Analytics 帐户名。
 
 以下代码演示如何将 Data Lake Analytics 附加为计算目标：
 

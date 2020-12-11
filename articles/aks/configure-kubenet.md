@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 82745d4f86a440c671e73ac3c74702a4a0c56b2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348196"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034048"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -38,7 +38,7 @@ ms.locfileid: "93348196"
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>使用自有子网的 kubenet 网络概述
 
-在许多环境中，你已定义了具有分配的 IP 地址范围的虚拟网络和子网。 这些虚拟网络资源用于支持多个服务和应用程序。 若要提供网络连接，AKS 群集可以使用 *kubenet* （基本网络）或 Azure CNI（高级网络）。
+在许多环境中，你已定义了具有分配的 IP 地址范围的虚拟网络和子网。 这些虚拟网络资源用于支持多个服务和应用程序。 若要提供网络连接，AKS 群集可以使用 *kubenet*（基本网络）或 Azure CNI（高级网络）。
 
 使用 *kubenet* 时，只有节点接收虚拟网络子网中的 IP 地址。 Pod 无法直接相互通信。 用户定义的路由 (UDR) 和 IP 转发用于不同节点中 Pod 之间的连接。 默认情况下，UDR 和 IP 转发配置由 AKS 服务进行创建和维护，但你可以选择[自带路由表以进行自定义路由管理][byo-subnet-route-table]。 此外，可以在接收分配的 IP 地址的服务后面部署 Pod，并对应用程序的流量进行负载均衡。 下图显示了 AKS 节点（不是 Pod）如何接收虚拟网络子网中的 IP 地址：
 
@@ -79,19 +79,19 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>虚拟网络对等互连和 ExpressRoute 连接
 
-若要提供本地连接， *kubenet* 和 *Azure CNI* 网络方法都可以使用 [Azure 虚拟网络对等互连][vnet-peering]或 [ExpressRoute 连接][express-route]。 精心规划 IP 地址范围，以防止地址重叠和流量路由错误。 例如，许多本地网络使用通过 ExpressRoute 连接播发的 *10.0.0.0/8* 地址范围。 建议在此地址范围（例如 *172.16.0.0/16* ）外部的 Azure 虚拟网络子网中创建 AKS 群集。
+若要提供本地连接，*kubenet* 和 *Azure CNI* 网络方法都可以使用 [Azure 虚拟网络对等互连][vnet-peering]或 [ExpressRoute 连接][express-route]。 精心规划 IP 地址范围，以防止地址重叠和流量路由错误。 例如，许多本地网络使用通过 ExpressRoute 连接播发的 *10.0.0.0/8* 地址范围。 建议在此地址范围（例如 *172.16.0.0/16*）外部的 Azure 虚拟网络子网中创建 AKS 群集。
 
 ### <a name="choose-a-network-model-to-use"></a>选择要使用的网络模型
 
 选择用于 AKS 群集的网络插件通常需要在灵活性与高级配置需求之间进行平衡。 如果每种网络模型似乎都很合适，以下考虑因素可帮助你做出决策：
 
-对于以下情况，可使用 *kubenet* ：
+对于以下情况，可使用 *kubenet*：
 
 - IP 地址空间有限。
 - 大部分 Pod 通信在群集中进行。
 - 不需要虚拟节点或 Azure 网络策略等高级 AKS 功能。  使用 [Calico 网络策略][calico-network-policies]。
 
-对于以下情况，可使用 *Azure CNI* ：
+对于以下情况，可使用 *Azure CNI*：
 
 - 有可用的 IP 地址空间。
 - 大部分 Pod 通信是与群集外部的资源进行的。
@@ -108,7 +108,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 az group create --name myResourceGroup --location eastus
 ```
 
-如果没有可用的现有虚拟网络和子网，请使用 [az network vnet create][az-network-vnet-create] 命令创建这些网络资源。 在以下示例中，虚拟网络名为 *myVnet* ，其地址前缀为 *192.168.0.0/16* 。 创建了名为 *myAKSSubnet* 、地址前缀为 *192.168.1.0/24* 的子网。
+如果没有可用的现有虚拟网络和子网，请使用 [az network vnet create][az-network-vnet-create] 命令创建这些网络资源。 在以下示例中，虚拟网络名为 *myVnet*，其地址前缀为 *192.168.0.0/16*。 创建了名为 *myAKSSubnet*、地址前缀为 *192.168.1.0/24* 的子网。
 
 ```azurecli-interactive
 az network vnet create \
@@ -168,7 +168,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 * *--pod-cidr* 应该是未在网络环境中的其他位置使用的较大地址空间。 如果你需要或者打算使用 Express Route 或站点到站点 VPN 连接来连接 Azure 虚拟网络，则此范围可包括任何本地网络范围。
     * 此地址范围必须足够大，可以容纳预期要扩展到的节点数。 部署群集后，如果需要为更多的节点提供更多的地址，你无法更改此地址范围。
-    * Pod IP 地址范围用于将 */24* 地址空间分配到群集中的每个节点。 在以下示例中， *--pod cidr* *10.244.0.0/16* 为第一个节点分配 *10.244.0.0/24* ，为第二个节点分配 *10.244.1.0/24* ，为第三节点分配 *10.244.2.0/24* 。
+    * Pod IP 地址范围用于将 */24* 地址空间分配到群集中的每个节点。 在以下示例中， *--pod cidr* *10.244.0.0/16* 为第一个节点分配 *10.244.0.0/24*，为第二个节点分配 *10.244.1.0/24*，为第三节点分配 *10.244.2.0/24*。
     * 群集扩展或升级时，Azure 平台会继续向每个新节点分配 Pod IP 地址范围。
     
 * *--docker-bridge-address* 允许 AKS 节点与基础管理平台进行通信。 此 IP 地址不能在群集的虚拟网络 IP 地址范围内，并且不应当与网络上使用的其他地址范围重叠。
@@ -224,7 +224,6 @@ Kubenet 网络需要使用经过规划和组织的路由表规则才能成功路
 的限制：
 
 * 必须在创建群集之前分配权限，请确保使用的服务主体具有对自定义子网和自定义路由表的写入权限。
-* kubenet 中的自定义路由表当前不支持托管标识。
 * 在创建 AKS 群集之前，需要将自定义路由表与子网关联。
 * 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
 * 每个 AKS 群集必须为与群集关联的所有子网使用同一个唯一的路由表。 由于可能存在重叠的 Pod CIDR 和发生路由规则冲突，无法对多个群集重复使用同一个路由表。

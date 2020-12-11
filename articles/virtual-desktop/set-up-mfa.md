@@ -3,15 +3,15 @@ title: 为 Windows 虚拟桌面设置 Azure 多重身份验证-Azure
 description: 如何设置 Azure 多重身份验证，提高 Windows 虚拟桌面的安全性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312652"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092374"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
@@ -45,7 +45,7 @@ ms.locfileid: "92312652"
 4. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 5. 在“分配”  下，选择“用户和组”  。
 6. 在 "**包括**" 下，选择 "**选择用户和组**  >  **用户和组**" > 选择你在 "[先决条件](#prerequisites)" 阶段创建的组。
-7. 选择“完成”  。
+7. 选择“完成”。
 8. 在 "**云应用或操作**  >  **包括**" 下，选择 "**选择应用**"。
 9. 根据所使用的 Windows 虚拟桌面版本选择以下应用之一。
    
@@ -84,10 +84,13 @@ ms.locfileid: "92312652"
     >[!NOTE]
     >若要查找要选择的应用的应用 ID，请在 "应用程序类型" 下拉菜单中，单击 " **企业应用程序** "，然后选择 " **Microsoft 应用程序** "。
 
-12. 在 "**访问控制**" "  >  **授权**" 下，选择 "**授予访问权限**，**需要多重身份验证**"，然后**选择**。
-13. 在 "**访问控制**"  >  **会话**下，选择 "**登录频率**"，将 "值" 设置为所需的提示时间，然后选择 "**选择**"。 例如，如果将值设置为 **1** ，将单位设置为 **小时**，则在连接启动一小时后，将需要多重身份验证。
-14. 确认设置，然后将“启用策略”设置为“打开”。 
+12. 在 "**访问控制**" "  >  **授权**" 下，选择 "**授予访问权限**，**需要多重身份验证**"，然后 **选择**。
+13. 在 "**访问控制**"  >  **会话** 下，选择 "**登录频率**"，将 "值" 设置为所需的提示时间，然后选择 "**选择**"。 例如，如果将值设置为 **1** ，将单位设置为 **小时**，则在连接启动一小时后，将需要多重身份验证。
+14. 确认设置，然后将“启用策略”设置为“打开”。  
 15. 选择 " **创建** " 以启用策略。
+
+>[!NOTE]
+>当你通过浏览器使用 web 客户端登录到 Windows 虚拟桌面时，该日志会将客户端应用 ID 列出为 a85cf173-4192-42f8-81fa-777a763e6e2c (Windows 虚拟桌面客户端) 。 这是因为客户端应用程序在内部链接到设置了条件性访问策略的服务器应用 ID。 
 
 ## <a name="next-steps"></a>后续步骤
 

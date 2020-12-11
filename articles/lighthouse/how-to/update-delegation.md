@@ -3,12 +3,12 @@ title: 更新委派
 description: 了解如何为以前载入到 Azure Lighthouse 的客户更新委派。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610889"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093411"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -17,7 +17,7 @@ ms.locfileid: "96610889"
 > [!TIP]
 > 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
 
-如果 [通过 Azure 资源管理器 (ARM) 模板将客户载入](onboard-customer.md)，则必须为该客户执行新的部署。 根据你要更改的内容，你可能需要更新原始产品/服务，或者删除原始产品/服务并创建一个新产品/服务。
+如果 [通过 Azure 资源管理器模板将客户载入 (ARM 模板) ](onboard-customer.md)，则必须为该客户执行新的部署。 根据你要更改的内容，你可能需要更新原始产品/服务，或者删除原始产品/服务并创建一个新产品/服务。
 
 - **如果只更改授权**：可以通过仅更改 ARM 模板的 " **授权** " 部分来更新委托。
 - **如果要更改管理租户**：必须使用与以前的产品/服务不同的 **mspOfferName** 创建新的 ARM 模板。

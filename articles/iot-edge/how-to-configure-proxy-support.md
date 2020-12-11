@@ -9,13 +9,13 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
-- contperfq1
-ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+- contperf-fy21q1
+ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862388"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032977"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 

@@ -1,7 +1,7 @@
 ---
 title: 调试 ML 管道并排查其问题
 titleSuffix: Azure Machine Learning
-description: 使用 Python 调试 Azure 机器学习管道。 了解常见的缺陷和技巧，以帮助在远程执行前后调试脚本。
+description: 使用 Python 调试 Azure 机器学习管道。 了解常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ author: lobrien
 ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: a150a0745911a70fc71db6b9c05fe6610cd960bf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630101"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033249"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 
@@ -34,9 +34,9 @@ ms.locfileid: "94630101"
 | 管道不必要地重新运行 | 为了确保步骤只在其基础数据或脚本发生更改时才重新运行，请分离每个步骤的源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
 | 在训练时期或其他循环行为中逐步减速 | 尝试将任何文件写入操作（包括日志记录）从 `as_mount()` 切换到 `as_upload()`。 “装载”模式使用远程虚拟化文件系统，在每次将文件追加到该系统时上传整个文件。 |
 
-## <a name="troubleshooting-parallelrunstep"></a>有关 `ParallelRunStep` 
+## <a name="troubleshooting-parallelrunstep"></a>对 `ParallelRunStep` 进行故障排除 
 
-的脚本 `ParallelRunStep` *必须包含* 两个函数：
+`ParallelRunStep` 的脚本必须包含两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
     -  `mini_batch``ParallelRunStep` 将调用 run 方法，并将列表或 pandas `DataFrame` 作为参数传递给该方法。 如果输入是 `FileDataset`，则 mini_batch 中的每个条目都将是文件路径；如果输入是 `TabularDataset`，则是 pandas `DataFrame`。
@@ -220,7 +220,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>为实时终结点启用日志记录
 
-若要在设计器中排除和调试实时终结点，必须使用 SDK 启用应用程序见解日志记录。 使用日志记录可排查和调试模型部署和使用问题。 有关详细信息，请参阅[对部署的模型进行日志记录](./how-to-enable-app-insights.md)。 
+若要在设计器中排查和调试实时终结点问题，必须使用 SDK 启用 Application Insight 日志记录。 使用日志记录可排查和调试模型部署和使用问题。 有关详细信息，请参阅[对部署的模型进行日志记录](./how-to-enable-app-insights.md)。 
 
 ### <a name="get-logs-from-the-authoring-page"></a>从创作页获取日志
 
@@ -256,9 +256,9 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用的完整教程 `ParallelRunStep` ，请参阅 [教程：生成用于批处理评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md)。
+* 有关使用 `ParallelRunStep` 的完整教程，请参阅[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。
 
-* 有关显示 ML 管道中自动机器学习的完整示例，请参阅在 [Python 中的 Azure 机器学习管道中使用自动 ML](how-to-use-automlstep-in-pipelines.md)。
+* 有关显示 ML 管道中自动化机器学习的完整示例，请参阅[在 Python 的 Azure 机器学习管道中使用自动化 ML](how-to-use-automlstep-in-pipelines.md)。
 
 * 有关 [azureml-pipelines-core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) 包和 [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) 包的帮助信息，请参阅 SDK 参考。
 

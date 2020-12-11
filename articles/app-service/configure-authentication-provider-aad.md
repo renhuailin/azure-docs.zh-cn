@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2968fd84febdd3b98aa5d8b42cbf3fb66cad2036
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289790"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092221"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -44,15 +44,17 @@ ms.locfileid: "93289790"
    1. 选择“选择现有 AD 应用”，然后单击“Azure AD 应用”。
    2. 选择现有应用注册，然后单击“确定”。
 
-3. 选择“确定”，在 Azure Active Directory 中注册应用服务应用。 此时会新建一个应用注册。
+4. 选择“确定”，在 Azure Active Directory 中注册应用服务应用。 此时会新建一个应用注册。
 
     ![Azure Active Directory 中的快速设置](./media/configure-authentication-provider-aad/express-settings.png)
 
-4. （可选）默认情况下，应用服务提供身份验证，但不限制对站点内容和 API 的授权访问。 必须在应用代码中为用户授权。 若要限制为只有经过 Azure Active Directory 身份验证的用户才能访问应用，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 如果你设置此功能，应用会要求对所有请求进行身份验证。 它还将所有未经身份验证的请求都重定向到 Azure Active Directory 进行身份验证。
+5. （可选）默认情况下，应用服务提供身份验证，但不限制对站点内容和 API 的授权访问。 必须在应用代码中为用户授权。 若要限制为只有经过 Azure Active Directory 身份验证的用户才能访问应用，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 如果你设置此功能，应用会要求对所有请求进行身份验证。 它还将所有未经身份验证的请求都重定向到 Azure Active Directory 进行身份验证。
 
     > [!CAUTION]
     > 以这种方式限制访问权限适用于对应用的所有调用，但这对于有可公开访问的主页的应用（如许多单页应用）可能并不可取。 对于此类应用，“允许匿名请求(无操作)”可能是首选，因为应用是手动启动登录本身。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
-5. 选择“保存”。
+6. 选择“保存”。
+
+有关配置访问 Azure 存储和 Microsoft Graph 的 web 应用 Azure AD 登录名的示例，请参阅 [此教程](scenario-secure-app-authentication-app-service.md)。
 
 ## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>使用高级设置进行配置
 
@@ -75,8 +77,8 @@ ms.locfileid: "93289790"
 1. 登录到 [Azure 门户]，搜索并选择“应用服务”，然后选择应用。 记下应用的 URL。 稍后要使用此 URL 来配置 Azure Active Directory 应用注册。
 1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
-1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
-1. 选择“创建”。
+1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
+1. 选择“创建”  。
 1. 在应用注册创建后，复制“应用(客户端) ID”和“目录(租户) ID”，以供稍后使用。
 1. 选择“身份验证”。 在“隐式授权”下，启用“ID 令牌”以允许 OpenID Connect 用户从应用服务登录。
 1. （可选）选择“品牌”。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。
@@ -85,8 +87,8 @@ ms.locfileid: "93289790"
    > [!NOTE]
    > 此值是应用注册的应用 ID URI。 如果 Web 应用需要访问云中的 API，则在配置云应用服务资源时，需要提供该 Web 应用的“应用程序 ID URI”。 例如，如果你希望云服务显式向该 Web 应用授予访问权限，则可以使用此 URI。
 
-1. 选择“添加范围”。
-   1. 在“范围名称”中输入 *user_impersonation* 。
+1. 选择“添加范围”。 
+   1. 在“范围名称”中输入 *user_impersonation*。
    1. 在文本框中，输入许可范围名称，以及希望在许可页上向用户显示的说明。 例如，输入“访问我的应用”。
    1. 选择“添加范围”。
 1. （可选）若要创建客户端机密，请选择“证书和机密” > “新建客户端机密” > “添加”。   复制页面中显示的客户端机密值。 它不会再次显示。
@@ -117,11 +119,11 @@ ms.locfileid: "93289790"
 
 1. 在 [Azure 门户]中，选择“Active Directory” > “应用注册” > “新建注册”。
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
-1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
+1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在 [在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。
@@ -157,6 +159,7 @@ ms.locfileid: "93289790"
 ## <a name="next-steps"></a><a name="related-content"> </a>后续步骤
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
+* [教程：在访问 Azure 存储和 Microsoft Graph 的 web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
 * [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)
 <!-- URLs. -->
 

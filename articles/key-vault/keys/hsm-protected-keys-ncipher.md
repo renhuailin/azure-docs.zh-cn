@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784654"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092323"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>导入 Key Vault 的受 HSM 保护的密钥 (nCipher)
 
@@ -61,8 +61,8 @@ Microsoft 已与 nCipher Security 联手增强 HSM 的技术开发水平。 这�
 | --- | --- |
 | Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库“高级”服务层级 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
-| nCipher nShield HSM、智能卡和支持软件 |必须具有 nCipher 硬件安全模块的访问权限并掌握 nCipher nShield HSM 的基本操作知识。 请参阅 [nCipher nShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，nCipher nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 </li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| nCipher nShield HSM、智能卡和支持软件 |必须具有 nCipher 硬件安全模块的访问权限并掌握 nCipher nShield HSM 的基本操作知识。 请参阅 [nCipher nShield 硬件安全模块](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，nCipher nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell 安装版本为 1.1.0。](/powershell/azure/?view=azps-1.2.0) </li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -173,7 +173,7 @@ KeyVault-BYOK-Tools-USGovCloud.zip
 F8DB2FC914A7360650922391D9AA79FF030FD3048B5795EC83ADC59DB018621A
 
 ---
-美国政府国防部： 
+美国政府国防部：
 
 KeyVault-BYOK-Tools-USGovernmentDoD.zip
 
@@ -241,7 +241,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 * 名称以 **BYOK-KEK-pkg-** 开头的密钥交换密钥 (KEK) 包。
 * 名称以 **BYOK-SecurityWorld-pkg-** 开头的的安全体系包。
-* 名称为 verifykeypackage.py 的 Python 脚本。 
+* 名称为 verifykeypackage.py 的 Python 脚本。
 * 名为 **KeyTransferRemote.exe** 的命令行可执行文件，以及相关的 DLL。
 * 名称为 **vcredist_x64.exe** 的 Visual c + + 可再发行组件包。
 
@@ -287,7 +287,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-此程序可在 %NFAST_KMDATA%\local\world（与 C:\ProgramData\nCipher\Key Management Data\local 文件夹对应）下创建一个 **安全体系** 文件。 可以使用不同的值进行仲裁，但在本例中，系统会提示为每个值输入三个空白卡和 pin。 然后，任何两个卡都会提供对安全体系的完全访问权限。 这些卡变成新安全体系的 **管理员卡集** 。
+此程序可在 %NFAST_KMDATA%\local\world（与 C:\ProgramData\nCipher\Key Management Data\local 文件夹对应）下创建一个 **安全体系** 文件。 可以使用不同的值进行仲裁，但在本例中，系统会提示为每个值输入三个空白卡和 pin。 然后，任何两个卡都会提供对安全体系的完全访问权限。 这些卡变成新安全体系的 **管理员卡集**。
 
 > [!NOTE]
 > 如果 HSM 不支持较新的密码套件 DLf3072s256mRijndael，则可以将 --cipher-suite=DLf3072s256mRijndael 替换为 --cipher-suite=DLf1024s160mRijndael
@@ -414,9 +414,9 @@ KeyVault-BYOK-Tools-Switzerland.zip
      > nCipher nShield 软件包含位于 %NFAST_HOME%\python\bin 中的 python
      >
      >
-2. 确认看到以下指示验证成功的消息： **Result: SUCCESS**
+2. 确认看到以下指示验证成功的消息：**Result: SUCCESS**
 
-此脚本会验证直到 nShield 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** 。 还可以通过访问 [nCipher 网站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)单独确认此值。
+此脚本会验证直到 nShield 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问 [nCipher 网站](https://www.ncipher.com)单独确认此值。
 
 现在已准备好创建新密钥。
 
@@ -432,11 +432,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 运行此命令时，请使用以下说明︰
 
-* 参数 *protect* 必须设置为值 **module** ，如上所示。 这会创建一个受模块保护的密钥。 BYOK 工具集不支持受 OCS 保护的密钥。
+* 参数 *protect* 必须设置为值 **module**，如上所示。 这会创建一个受模块保护的密钥。 BYOK 工具集不支持受 OCS 保护的密钥。
 * 将 **ident** 和 **plainname** 的 *contosokey* 值替换为任何字符串值。 为了最大程度减少管理开销并降低错误风险，建议对这两个参数使用相同的值。 **Ident** 值只能包含数字、短划线和小写字母。
-* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅 [nCipher 文档。](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅 [nCipher 文档。](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
-此命令在 %NFAST_KMDATA%\local 文件夹中创建一个标记化密钥文件，文件名以 **key_simple_** 开头，后跟在命令中指定的 **ident** 。 例如： **key_simple_contosokey** 。 此文件包含已加密的密钥。
+此命令在 %NFAST_KMDATA%\local 文件夹中创建一个标记化密钥文件，文件名以 **key_simple_** 开头，后跟在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此文件包含已加密的密钥。
 
 在安全位置备份这个标记化密钥文件。
 
@@ -546,11 +546,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
    ```
 
-运行此命令时，请将 contosokey 替换为在 
+运行此命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 系统会要求插入安全体系的管理员卡。
 
-此命令完成后，会看到 **Result: SUCCESS** ，同时权限减少的密钥副本位于名为 key_xferacId_\<contosokey> 的文件中。
+此命令完成后，会看到 **Result: SUCCESS**，同时权限减少的密钥副本位于名为 key_xferacId_\<contosokey> 的文件中。
 
 可使用 nCipher nShield 实用程序通过以下命令检查 ACLS：
 
@@ -564,7 +564,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```cmd
    "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
    ```
-  运行这些命令时，将 contosokey 替换为在 
+  运行这些命令时，将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
 
@@ -664,11 +664,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 运行此命令时，请使用以下说明︰
 
-* 将 contosokey 替换为用于在 
+* 将 contosokey 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
 * 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在 [准备连接到 Internet 的工作站](#step-1-prepare-your-internet-connected-workstation)步骤的 **步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
-此操作成功完成后，会显示“结果: 成功”，并且包含 KeyTransferPackage-ContosoFirstHSMkey.byok 的当前文件夹中会出现一个新文件 
+此操作成功完成后，会显示“结果: 成功”，并且包含 KeyTransferPackage-ContosoFirstHSMkey.byok 的当前文件夹中会出现一个新文件
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>步骤 4.3：将密钥传输包复制到连接 Internet 的工作站
 

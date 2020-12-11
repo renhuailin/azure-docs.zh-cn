@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501417"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092136"
 ---
 # <a name="api-management-soft-delete-preview"></a>API 管理软删除 (预览) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "96501417"
 
 | 操作 | 说明 | API 管理命名空间 | 最小 API 版本 |
 |--|--|--|--|
-| [创建或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | 创建或更新 API 管理服务。  | API 管理服务 | Any |
+| [创建或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | 创建或更新 API 管理服务。  | API 管理服务 | 任意 |
 | [创建或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` 属性设置为 **true** 的 | Undeletes API 管理服务（如果以前已软删除）。 如果 `restore` 已指定，并且设置为 `true` 所有其他属性，则将被忽略。  | API 管理服务 |  2020-06-01-预览 |
 | [删除](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | 删除现有的 API 管理服务。 | API 管理服务 | 2020-01-01-预览|
 | [按名称获取](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | 按名称获取软删除的 Api 管理服务。 | 删除的服务 | 2020-06-01-预览 |
@@ -48,7 +48,7 @@ ms.locfileid: "96501417"
 
 ## <a name="list-deleted-apim-instances"></a>列出已删除的 APIM 实例
 
-你可以使用已删除的服务通过名称或[列表按订阅](/deletedservices/listbysubscription)操作[获取](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname)，来验证软删除的 APIM 实例是否可用于还原 (取消删除) 。
+你可以使用已删除的服务通过名称或[列表按订阅](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription)操作[获取](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname)，来验证软删除的 APIM 实例是否可用于还原 (取消删除) 。
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>按名称获取软删除实例
 
@@ -76,7 +76,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>列出给定订阅的所有软删除实例
 
-[按订阅](/deletedservices/listbysubscription)操作使用 API 管理列表，将替换 `{subscriptionId}` 为你的订阅 ID：
+[按订阅](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription)操作使用 API 管理列表，将替换 `{subscriptionId}` 为你的订阅 ID：
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

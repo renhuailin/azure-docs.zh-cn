@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008565"
+ms.locfileid: "97093254"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Applicationinsights.config. Microsoft.applicationinsights.snapshotcollector 的发行说明
 
@@ -18,7 +18,7 @@ ms.locfileid: "97008565"
 
 详细[了解](./snapshot-debugger.md).net 应用程序的 Application Insights Snapshot Debugger。
 
-对于 bug 报告和反馈，请在 GitHub 上打开一个问题 https://github.com/microsoft/ApplicationInsights-dotnet
+对于 bug 报告和反馈，请在 GitHub 上打开一个问题 https://github.com/microsoft/ApplicationInsights-SnapshotCollector
 
 ## <a name="release-notes"></a>发行说明
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0d1c2304f68f5e24c45390dca2cc0deb6e8dede2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931939"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033011"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -28,13 +28,6 @@ ms.locfileid: "96931939"
 运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
 
 ## <a name="limitations"></a>限制
-
-仅在以下区域支持专用群集：
- *  美国东部
- *  美国西部
- *  美国西部 2
- *  美国中北部
- *  美国中西部
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 

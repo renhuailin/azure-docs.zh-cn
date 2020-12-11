@@ -11,12 +11,12 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510822"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093649"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>通过预测对机器学习模型进行评分
 
@@ -35,7 +35,7 @@ ms.locfileid: "96510822"
 
 - 专用 SQL 池仅支持 ONNX 格式模型。 ONNX 是一种开源模型格式，可用于在不同框架之间交换模型以实现互操作性。 你可以使用框架将现有模型转换为 ONNX 格式，这种框架既支持本机支持，也可用来转换可用的包。 例如， [spark-sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 将 scikit-learn-了解模型转换为 onnx。 [ONNX GitHub 存储库](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支持的框架和示例的列表。
 
-   如果使用 [自动 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 进行培训，请确保将 *enable_onnx_compatible_models* 参数设置为 TRUE，以生成 onnx 格式模型。 [自动机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 显示了如何使用 AUTOML 创建 ONNX 格式的机器学习模型的示例。
+   如果使用 [自动 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 进行培训，请确保将 *enable_onnx_compatible_models* 参数设置为 TRUE，以生成 onnx 格式模型。 [自动机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 显示了如何使用自动 ML 创建 ONNX 格式的机器学习模型的示例。
 
 - 输入数据支持以下数据类型：
     - int、bigint、real、float

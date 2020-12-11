@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 5c6ed106462d7dcac3f31a2ab157e5b634391006
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860349"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093445"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>使用 MS 图形 API 进行云设置的入站同步
 
@@ -43,7 +43,7 @@ ms.locfileid: "96860349"
 这两个命令中的第一个命令需要 Azure Active Directory 凭据。 这些 commandlet 隐式标识租户并使其可用于同步。
 
 ## <a name="create-service-principals"></a>创建服务主体
-接下来，我们需要创建 [AD2AAD 应用程序/服务主体](https://docs.microsoft.com/graph/apiapplicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+接下来，我们需要创建 [AD2AAD 应用程序/服务主体](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
 
 需要使用此应用程序 ID 1a4721b3-e57f-4451-ae87-ef078703ec94。 DisplayName 是 AD 域 url，如果在门户中使用 (例如 contoso.com) ，但它可以命名为其他内容。
 

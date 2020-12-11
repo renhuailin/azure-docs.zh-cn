@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558158"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092680"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 监控范围中自动标记数据
 
@@ -139,7 +139,7 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 
 1. 创建完所有标签后，请确保查看标签顺序，并根据需要对其重新排序。 
 
-    若要更改标签的顺序，**请选择** **> 更多操作**  >  **上移** 或下移。 **Move down.** 
+    若要更改标签的顺序，**请选择** **> 更多操作**  >  **上移** 或下移。  
 
     有关详细信息，请参阅 Microsoft 365 文档中的 [标签优先级 (订单重要) ](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) 。
 
@@ -185,12 +185,11 @@ Autolabeling 规则是你指定的条件，用于说明何时应应用特定标�
 
 有关如何在 Azure 监控范围中的各种资产上设置扫描的详细信息，请参阅：
 
-|源  |参考  |
+|Source  |参考  |
 |---------|---------|
 |**Azure Blob 存储**     |[注册并扫描 Azure Blob 存储](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake 存储**     |[注册和扫描 Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[注册和扫描 Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
 |**Azure SQL 数据库**|[注册并扫描 Azure SQL 数据库](register-scan-azure-sql-database.md) </br>[注册并扫描 Azure SQL 数据库托管实例](register-scan-azure-sql-database-managed-instance.md)|
-|**防火墙之后的存储帐户**     |[在 Azure 监控范围中扫描防火墙之后的存储帐户](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>查看资产上的标签

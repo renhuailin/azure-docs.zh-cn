@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121818"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033166"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -178,11 +178,21 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
 ## <a name="associate-a-device-with-a-device-template"></a>将设备与设备模板关联
 
-当设备连接时，IoT Central 会自动将设备与设备模板关联。 设备连接时，它会发送模型 ID。 IoT Central 使用模型 ID 标识特定设备型号的设备模板。 发现过程的工作方式如下：
+当设备连接时，IoT Central 会自动将设备与设备模板关联。 设备连接时，它会发送 [模型 ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) 。 IoT Central 使用模型 ID 标识特定设备型号的设备模板。 发现过程的工作方式如下：
 
 1. 如果设备模板已在 IoT Central 应用程序中发布，则设备将与设备模板关联。
-1. 如果未在 IoT Central 应用程序中发布设备模板，IoT Central 会在公共模型存储库中查找设备型号。 如果 IoT Central 找到模型，它将使用它来生成基本设备模板。
+1. 如果未在 IoT Central 应用程序中发布设备模板，IoT Central 会在 [公共模型存储库](https://github.com/Azure/iot-plugandplay-models)中查找设备型号。 如果 IoT Central 找到模型，它将使用它来生成基本设备模板。
 1. 如果 IoT Central 在公共模型存储库中找不到该模型，则该设备将被标记为未 **关联**。 操作员可以为设备创建设备模板，然后将未关联的设备迁移到新设备模板。
+
+以下屏幕截图演示了如何在 IoT Central 中查看设备模板的模型 ID。 在设备模板中，选择一个组件，然后选择 " **查看标识**：
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="显示恒温器设备模板中的模型 ID 的屏幕截图。":::
+
+您可以在公共模型存储库中查看 [恒温器模型](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) 。 模型 ID 定义如下所示：
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>设备状态值
 
@@ -205,7 +215,7 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则设备软件面临具有陈旧连接字符串的风险。 如果 IoT Central 更新其使用的基础 Azure IoT 中心，则具有陈旧连接字符串的设备将无法连接。
 
@@ -230,8 +240,8 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 遥测技术 | 设备到云的消息传送 |
-| properties | 设备孪生报告属性 |
+| 遥测 | 设备到云的消息传送 |
+| 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | 命令 | 直接方法 |
 

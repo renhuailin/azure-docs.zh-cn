@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 677ab3327f2357ce7b242c314b44702370779def
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351667"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092051"
 ---
 # <a name="access-your-security-data"></a>访问安全数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "96351667"
 1. 选择用于 IoT 的警报或建议。
 1. 单击 " **进一步调查**"，然后单击 **查看具有此警报的设备单击此处并查看 DeviceId 列**。
 
-有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](//azure/log-analytics/query-language/get-started-queries)。
+有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](/azure/azure-monitor/log-query/get-started-queries)。
 
 ## <a name="security-alerts"></a>安全警报
 
@@ -146,8 +146,8 @@ SecurityRecommendation
 
 | TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
-| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
+| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
+| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
 
 ### <a name="device-summary"></a>设备摘要
 
