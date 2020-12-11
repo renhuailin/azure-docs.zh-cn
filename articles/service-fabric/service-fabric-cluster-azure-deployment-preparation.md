@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281321"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109617"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -51,7 +51,7 @@ ms.locfileid: "87281321"
 
 临时 OS 磁盘不是特定的 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure“虚拟机规模集”的功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
 
-1. 确保你的节点类型为临时 OS 磁盘指定[支持的 Azure VM 大小](../virtual-machines/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的*注释*。）例如：
+1. 确保你的节点类型为临时 OS 磁盘指定 [支持的 Azure VM 大小](../virtual-machines/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的 *注释*。）例如：
 
     ```xml
     "vmNodeType1Size": {
@@ -89,8 +89,6 @@ ms.locfileid: "87281321"
 
 > [!NOTE]
 > 用户应用程序不应在 OS 磁盘上有任何依赖项/文件/项目，因为 OS 升级时 OS 磁盘会丢失。
-> 因此，建议不要在临时磁盘上使用 [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA)。
->
 
 > [!NOTE]
 > 现有的非临时 VMSS 无法就地升级，因此无法使用临时磁盘。

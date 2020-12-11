@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803732"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109805"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -332,4 +332,96 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a> (预览) 在单个虚拟机规模集中启用多个可用性区域
+
+前面提到的解决方案使用每 AZ 一个 nodeType。 以下解决方案允许用户在同一个 nodeType 中部署 3 AZ。
+
+[此处](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)提供了完整的示例模板。
+
+![Azure Service Fabric 可用性区域体系结构][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>在虚拟机规模集上配置区域
+若要在虚拟机规模集上启用区域，必须在虚拟机规模集资源中包含以下三个值。
+
+* 第一个值为 **zones** 属性，该属性指定虚拟机规模集中存在的可用性区域。
+* 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。
+* 第三个值是 "zoneBalance"，它是可选的，如果设置为 true，这将确保严格区域平衡。 阅读有关 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)的信息。
+* 不需要配置 FaultDomain 和 UpgradeDomain 重写。
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": false
+    }
+}
+```
+
+>[!NOTE]
+> * **SF 群集应该至少有一个主节点。主要 nodeTypes 的 DurabilityLevel 应为银或更高版本。**
+> * AZ 跨虚拟机规模集应配置至少3个可用性区域，而不考虑 durabilityLevel。
+> * AZ 跨虚拟机规模集 (或更高) ，应至少具有15个 Vm。
+> * AZ 跨虚拟机规模集，具有铜牌持久性，应至少包含6个 Vm。
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>在 Service Fabric nodeType 中启用多个区域的支持
+必须启用 Service Fabric nodeType 才能支持多个可用性区域。
+
+* 第一个值为 **multipleAvailabilityZones** ，它应设置为适用于 nodeType 的 true。
+* 第二个值为 **sfZonalUpgradeMode** ，它是可选的。 如果群集中已存在具有多个 AZ 的 nodetype，则无法修改此属性。
+      属性控制升级域中 Vm 的逻辑分组。
+          如果 value 设置为 false (平面模式) ：节点类型下的 Vm 将按 UD 分组，忽略5个 UDs 中的区域信息。
+          如果省略值或将值设置为 true (分层模式) ： Vm 将分组，以反映最多15个 UDs 的区域性分布。 3个区域中的每一个都有5个 UDs。
+          此属性仅定义 ServiceFabric 应用程序和代码升级的升级行为。 底层虚拟机规模集升级仍将在所有 AZ 的中并行进行。
+      对于未启用多个区域的节点类型，此属性不会产生任何影响。
+* 第三个值为 **vmssZonalUpgradeMode = Parallel**。 如果添加了具有多个 AZs 的 nodeType，则这是在群集中配置的 *必需* 属性。 此属性定义虚拟机规模集更新的升级模式，这将同时在所有 AZ 中并行发生。
+      现在，此属性只能设置为 "并行"。
+* Service Fabric 群集资源 apiVersion 应为 "2020-12-01-preview" 或更高版本。
+* 群集代码版本应为 "7.2.445" 或更高版本。
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * 公共 IP 和负载均衡器资源应使用标准 SKU，如本文前面所述。
+> * 节点上的 "multipleAvailabilityZones" 属性只能在创建 nodeType 时定义，以后不能修改。 因此，无法用此属性配置现有的 nodeTypes。
+> * 如果省略 "hierarchicalUpgradeDomain" 或将其设置为 true，则群集和应用程序部署将会变慢，因为群集中存在更多的升级域。 必须正确调整升级策略的超时，以合并15个升级域的升级时间持续时间，这一点非常重要。
+> * 建议将群集的可靠性级别设置为 "白金"，确保群集置。
+
+>[!NOTE]
+> 为获得最佳实践，建议将 hierarchicalUpgradeDomain 设置为 true 或省略。 部署将遵循影响少量副本和/或实例的 Vm 的区域分发，使其更安全。
+> 如果在具有多个 AZ 的节点类型上运行部署速度是优先级或仅有无状态工作负荷，请使用 hierarchicalUpgradeDomain 设置为 false。 这将导致 UD 遍历全部在 AZ 的中发生。
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>迁移到具有多个可用性区域的节点类型
+对于所有迁移方案，需要添加新的 nodeType，这将支持多个可用性区域。 无法迁移现有 nodeType 以支持多个区域。
+[此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type )的文章将介绍添加新的 nodetype 的详细步骤，还会添加新节点（如 IP 和 LB 资源）所需的其他资源。 本文还介绍了如何在将具有多个可用性区域的 nodeType 添加到群集后停用现有 nodeType。
+
+* 从使用基本 LB 和 IP 资源的 nodeType 进行迁移：此项已在 [此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) 针对每 AZ 具有一种节点类型的解决方案进行了说明。 
+    对于新的节点类型，唯一的区别在于，对于所有 AZ，每个 AZ 都只有1个虚拟机规模集和1个 nodetype，而不是每个 AZ 都有1个。
+* 从将标准 SKU LB 和 IP 资源与 NSG 结合使用的 nodeType 进行迁移：按照前面所述的相同过程操作，但不需要添加新的 LB、IP 和 NSG 资源，也可以在新的 nodeType 中重复使用相同的资源。
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
