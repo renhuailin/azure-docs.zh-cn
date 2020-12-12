@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837118"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347432"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -157,6 +157,9 @@ az vm extension set \
 - 使用 Azure AD 门户体验
 - 使用 Azure Cloud Shell 体验
 
+> [!NOTE]
+> 虚拟机管理员登录名和虚拟机用户登录角色使用 dataActions，因此不能在管理组范围内进行分配。 目前，只能在订阅范围内分配这些角色。
+
 ### <a name="using-azure-ad-portal-experience"></a>使用 Azure AD 门户体验
 
 为启用了 Windows Server 2019 Datacenter Vm 的 Azure AD 配置角色分配：
@@ -177,8 +180,8 @@ az vm extension set \
 以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 scope 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机](../../virtual-machines/linux/login-using-aad.md)。
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \

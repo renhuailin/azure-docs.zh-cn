@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763242"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347891"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
@@ -48,6 +48,17 @@ ms.locfileid: "96763242"
 Azure 数字孪生提供了多个指标，可让你概括了解实例及其关联资源的运行状况。 你还可以将来自多个度量值的信息组合在一起，以便更好地了解实例的状态。 
 
 下表描述了每个 Azure 数字孪生实例跟踪的指标，以及每个指标如何与实例的总体状态相关。
+
+#### <a name="metrics-for-tracking-service-limits"></a>跟踪服务限制的指标
+
+您可以配置这些度量值，以跟踪您的解决方案的某个方面接近 [发布的服务限制](reference-service-limits.md#functional-limits) 的时间。 
+
+若要进行此设置，请使用 Azure Monitor 中的 [警报](troubleshoot-alerts.md) 功能。 你可以为这些指标定义阈值，以便在指标达到一定百分比的已发布限制时接收警报。
+
+| 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount |  (预览的克隆计数)  | 计数 | 总计 | Azure 数字孪生实例中的孪生总数。 使用此指标来确定是否接近每个实例允许的最大孪生数的 [服务限制](reference-service-limits.md#functional-limits) 。 |  无 |
+| ModelCount |  (预览的模型计数)  | 计数 | 总计 | Azure 数字孪生实例中的总模型数。 使用此指标来确定是否接近每个实例允许的最大模型数的 [服务限制](reference-service-limits.md#functional-limits) 。 | 无 |
 
 #### <a name="api-request-metrics"></a>API 请求度量值
 

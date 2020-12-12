@@ -1,19 +1,19 @@
 ---
-title: 适用于 Azure Functions 的 Azure 表存储输入绑定
+title: Azure Functions 的 Azure 表存储输入绑定
 description: 了解如何在 Azure Functions 中使用 Azure 表存储输入绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7f5db2a2df7314c89f2ebba8e7e54ebe24126386
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098220"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347670"
 ---
-# <a name="azure-table-storage-input-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 表存储输入绑定
+# <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储输入绑定
 
 使用 Azure 表存储输入绑定读取 Azure 存储帐户中的表。
 
@@ -50,7 +50,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-`CloudTable` 仅在 [函数 v2 和更高版本的运行](functions-versions.md)时中支持。
+`CloudTable` 仅在 [Functions v2 及更高版本的运行时](functions-versions.md)中受支持。
 
 使用 `CloudTable` 方法参数通过 Azure 存储 SDK 来读取表。 下面是一个查询 Azure Functions 日志表的函数示例：
 
@@ -492,7 +492,7 @@ public Person[] get(
   }
   ```
 
-  有关完整示例，请参阅 c # 示例。
+  有关完整示例，请参阅 C# 示例。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -538,11 +538,11 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `Table` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
 |**tableName** | **TableName** | 表的名称。| 
@@ -598,4 +598,4 @@ Python 不支持特性。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [从函数中写入表存储数据](./functions-bindings-storage-table-output.md)
+* [通过函数写入表存储数据](./functions-bindings-storage-table-output.md)

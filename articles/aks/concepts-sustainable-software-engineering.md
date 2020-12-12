@@ -4,16 +4,16 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的可持续软件工程。
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984972"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346888"
 ---
-# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的可持续软件工程原则 (AKS) 
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的可持续软件工程原则
 
-可持续的软件工程原则是一组可帮助您定义、构建和运行可持续应用程序的能力。 总体目标是降低应用程序每个方面的碳足迹。 " [原则][principles-green] " 这一项目概述了可持续软件工程的原则。
+可持续软件工程原则是一组可帮助你定义、构建和运行可持续应用程序的能力。 总体目标是降低应用程序每个方面的碳足迹。 [可持续软件工程的原则][principles-sse] 概括介绍了可持续软件工程的原则。
 
 关于可持续软件工程，需要了解的一个重要理念是：它是优先事项和重点的转移。 在许多情况下，软件的设计和运行方式侧重于快速性能和低延迟。 可持续软件工程侧重于尽可能多地降低碳排放量。 在某些情况下，应用可持续的软件工程原则可以提高性能或降低延迟，例如降低总网络行程。 在其他情况下，减少碳排放可能会导致性能降低或延迟增加，如延迟低优先级工作负荷。 考虑将可持续的软件工程原则应用于应用程序之前，请查看应用程序的优先级、需求和利弊。
 
@@ -74,4 +74,4 @@ ms.locfileid: "90984972"
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

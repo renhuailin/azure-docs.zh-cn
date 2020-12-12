@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340550"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347551"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>使用 .NET SDK Azure Cosmos DB 中的事务批处理操作
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-事务性批处理描述了一组需要在容器中成功或故障转移到同一个分区键的点操作。 在 .NET SDK 中， `TranscationalBatch` 类用于定义此批处理操作。 如果所有操作都按照事务批处理操作中的顺序成功完成，则将提交事务。 但是，如果有任何操作失败，则将回滚整个事务。
+事务性批处理描述了一组需要在容器中成功或故障转移到同一个分区键的点操作。 在 .NET SDK 中， `TransactionalBatch` 类用于定义此批处理操作。 如果所有操作都按照事务批处理操作中的顺序成功完成，则将提交事务。 但是，如果有任何操作失败，则将回滚整个事务。
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Azure Cosmos DB 中的事务
 
@@ -35,7 +35,7 @@ Azure Cosmos DB 当前支持存储过程，这些存储过程也提供操作上�
 
 * **语言选项** –事务批支持已在使用的 SDK 和语言，而需要使用 JavaScript 编写存储过程。
 * **代码版本控制** –对应用程序代码进行版本控制，并将其加入到 CI/CD 管道上比协调存储过程的更新和确保在正确的时间进行滚动更新更为自然。 它还使回滚更改变得更容易。
-* **性能** -与存储过程执行相比，将等效操作的延迟减少到最多30%。
+* **性能** -与存储过程执行相比，最多可减少30% 的等效操作延迟。
 * **内容序列化** –事务批处理中的每个操作都可以对其有效负载使用自定义序列化选项。
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>如何创建事务批处理操作
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-接下来，需要调用 `ExecuteAsync` ：
+接下来，需要对该批调用 `ExecuteAsync` ：
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-收到响应后，需要检查其是否成功，并提取结果：
+收到响应后，检查其是否成功，并提取结果：
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-如果失败，则失败的操作将具有其相应错误的状态代码。 而其他所有操作都将有424的状态代码 (失败的依赖项) 。 在下面的示例中，操作失败，因为它尝试创建 (409 HttpStatusCode) 的项。 利用状态代码，可以更容易地识别导致事务失败的原因。
+如果失败，则失败的操作将具有其相应错误的状态代码。 所有其他操作都将具有424状态代码 (失败的依赖项) 。 在下面的示例中，操作失败，因为它尝试创建 (409 HttpStatusCode) 的项。 状态代码可用于识别事务失败的原因。
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 `ExecuteAsync`调用方法时，会将对象中的所有操作 `TransactionalBatch` 分组、序列化为单个有效负载，并作为单个请求发送到 Azure Cosmos DB 服务。
 
-服务接收请求并执行事务范围内的所有操作，并使用相同的序列化协议返回响应。 此响应是成功或失败，并在内部包含所有单个操作响应。
+服务接收请求并执行事务范围内的所有操作，并使用相同的序列化协议返回响应。 此响应是成功或失败，并为每个操作提供各个操作响应。
 
 SDK 公开响应以验证结果，并根据需要提取每个内部操作结果。
 
@@ -108,8 +108,8 @@ SDK 公开响应以验证结果，并根据需要提取每个内部操作结果�
 
 目前有两个已知限制：
 
-* Azure Cosmos DB 请求大小限制指定负载的大小 `TransactionalBatch` 不能超过 2 MB，最大执行时间为5秒。
-* 当前限制为每个的100操作， `TransactionalBatch` 以确保性能符合预期并在 sla 中。
+* Azure Cosmos DB 请求大小限制将有效负载的大小限制 `TransactionalBatch` 为不超过 2 MB，最大执行时间为5秒。
+* 当前限制为每个，最大值为100， `TransactionalBatch` 以确保按预期的性能和 sla 内的性能。
 
 ## <a name="next-steps"></a>后续步骤
 

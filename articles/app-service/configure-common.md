@@ -1,21 +1,21 @@
 ---
 title: 在门户中配置应用
-description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。 应用设置、连接字符串、平台、语言堆栈、容器等
+description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。 应用设置、应用配置、连接字符串、平台、语言堆栈、容器等。
 keywords: azure 应用服务, web 应用, 应用设置, 环境变量
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854642"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346746"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
-本主题介绍如何使用 [Azure 门户]配置 Web 应用、移动后端或 API 应用的常用设置。
+本文介绍如何使用 [Azure 门户]配置 web 应用、移动后端或 API 应用的常见设置。
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
@@ -118,7 +118,10 @@ ms.locfileid: "96854642"
 
 对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置连接字符串类似于在 *Web.config* 中的 `<connectionStrings>` 内进行设置，但应用服务中设置的值会替代 *Web.config* 中的值。可将开发设置（例如，数据库文件）保留在 Web.config  中，并将生产机密（例如，SQL 数据库凭据）安全保留在应用服务中。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
-对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 但以下情况例外：如果在应用中配置了相应的连接字符串，则某些 Azure 数据库类型会连同应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
+对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 
+
+> [!NOTE]
+> 在这种情况下，你可能想要对 non-.NET 语言使用连接字符串而不是应用设置：仅当你在应用服务应用中为数据库配置连接字符串时， _才_ 会将某些 Azure 数据库类型与应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
@@ -228,21 +231,27 @@ ms.locfileid: "96854642"
 
 ![路径映射](./media/configure-common/open-path.png)
 
-“路径映射”页根据 OS 类型显示不同的内容。 
+> [!NOTE] 
+> " **路径映射** " 选项卡可能显示特定于操作系统的设置，这些设置与此处显示的示例不同。
 
 ### <a name="windows-apps-uncontainerized"></a>Windows 应用（未容器化）
 
 对于 Windows 应用，可以自定义 IIS 处理程序映射和虚拟应用程序与目录。
 
-使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击“新建处理程序”。  按如下所述配置处理程序：
+使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击 " **新建处理程序映射**"。 按如下所述配置处理程序：
 
 - **扩展名**。 要处理的扩展名，例如 *\*.php* 或 *handler.fcgi*。
 - **脚本处理程序**。 脚本处理程序的绝对路径。 与文件扩展名匹配的文件请求由脚本处理程序处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
 - **参数**。 脚本处理程序的可选命令行参数
 
-每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 单击“新建虚拟应用程序或目录”。 
+每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 
 
-若要配置虚拟应用程序和目录，请指定每个虚拟目录及其相对于网站根目录 (`D:\home`) 的物理路径。 还可选中“应用程序”  复选框，将虚拟目录标记为应用程序。
+从 " **路径映射** " 选项卡中，单击 " **新建虚拟应用程序或目录**"。 
+
+- 若要将虚拟目录映射到物理路径，请将 " **目录** " 复选框保持选中状态。 指定虚拟目录，并将相应的相对 (物理) 路径指定为网站根目录 (`D:\home`) 。
+- 若要将虚拟目录标记为 web 应用程序，请清除 " **目录** " 复选框。
+  
+  ![目录 "复选框](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>容器化应用
 

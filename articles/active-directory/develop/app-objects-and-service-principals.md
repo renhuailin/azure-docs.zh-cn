@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861096"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347139"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -47,9 +47,9 @@ Microsoft Graph [Application 实体][MS-Graph-App-Entity]定义应用程序对�
 ## <a name="service-principal-object"></a>服务主体对象
 若要访问受 Azure AD 租户保护的资源，需要访问的实体必须由安全主体来表示。 此要求同时适用于用户（用户主体）和应用程序（服务主体）。 安全主体定义 Azure AD 租户中用户/应用程序的访问策略和权限。 这样便可实现核心功能，如在登录时对用户/应用程序进行身份验证，在访问资源时进行授权。
 
-服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。  服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
+服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。 服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
 
-当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 还可使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http) 和 [Azure 门户][AZURE-Portal]以及其他工具在租户中创建服务主体对象。  如果使用门户，会在注册应用程序时自动创建服务主体。
+当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 你还可以使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、 [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、 [Azure 门户][AZURE-Portal]和其他工具在租户中创建服务主体对象。 如果使用门户，会在注册应用程序时自动创建服务主体。
 
 门户中的“企业应用程序”边栏选项卡用于在租户中列出和管理服务主体。 可查看服务主体的权限、用户已同意的权限、提供了相应同意的用户、登录信息等等。
 

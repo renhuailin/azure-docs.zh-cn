@@ -12,12 +12,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518124"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347449"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
@@ -43,7 +43,7 @@ ms.locfileid: "86518124"
 某些帐户类型不能与某些身份验证流程一起使用。 例如，在桌面、UWP 或守护程序应用程序中：
 
 - 守护程序应用程序只能与 Azure AD 组织配合使用。 尝试使用守护程序应用程序来处理 Microsoft 个人帐户并无意义。 将永远不会授予管理员许可。
-- 只能将集成身份验证流用于工作或学校帐户（在你的组织或任何组织中均可）。 集成 Windows 身份验证适用于域帐户，并且需要将计算机加入域或加入 Azure AD。 对于个人 Microsoft 帐户，此流程并无意义。
+- 只能将集成身份验证流用于工作或学校帐户（在你的组织或任何组织中均可）。 集成的 Windows 身份验证适用于域帐户，它要求计算机加入域或 Azure AD 加入。 对于个人 Microsoft 帐户，此流程并无意义。
 - [资源所有者密码凭据 grant](./v2-oauth-ropc.md) (用户名/密码) 不能与个人 Microsoft 帐户一起使用。 个人 Microsoft 帐户要求用户在每次登录时都同意访问个人资源。 这就是此行为与非交互式流不兼容的原因。
 
 ## <a name="account-types-in-national-clouds"></a>国家/地区云中的帐户类型

@@ -3,12 +3,12 @@ title: 如何启用 Azure VMware 解决方案资源
 description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325071"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346531"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
 了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
@@ -18,7 +18,7 @@ ms.locfileid: "96325071"
 需要 Azure 订阅中的 Azure 帐户。 Azure 订阅必须符合下列条件之一：
 
 * Azure 企业协议中的订阅 [ (EA ](../cost-management-billing/manage/ea-portal-agreements.md) 与 Microsoft) 。
-* 云解决方案提供商 (CSP) Azure 计划下的托管订阅。
+* 云解决方案提供商 (CSP) 在现有 CSP 下托管订阅 Azure 提供合同或 Azure 计划。
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>为 EA 客户启用 Azure VMware 解决方案
@@ -61,7 +61,7 @@ ms.locfileid: "96325071"
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>为 CSP 客户启用 Azure VMware 解决方案 
 
-Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) 为其客户启用 Azure VMware 解决方案。 
+Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) 为其客户启用 Azure VMware 解决方案。 本文使用 [CSP Azure 计划](/partner-center/azure-plan-lp.md) 作为示例来说明合作伙伴的购买过程。
 
    >[!IMPORTANT] 
    >Azure VMware 解决方案服务不提供所需的多租户。 不支持承载需要它的合作伙伴。 
@@ -76,9 +76,9 @@ Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) �
 
 1. 选择 " **Azure 计划** "，然后选择 " **添加到购物车**"。 
 
-1. 查看并完成客户的 Azure 计划订阅的常规设置。 有关详细信息，请参阅 [Microsoft 合作伙伴中心文档](/partner-center/azure-plan-manage)。
+1. 查看并完成客户的 Azure 计划订阅的常规设置。 有关详细信息，请参阅 [Microsoft 合作伙伴中心文档](/partner-center/azure-plan-manage.md)。
 
-配置 Azure 计划并将所需的 vSphere RBAC 权限设置为 CSP 后，你将与 Microsoft 合作，以便为 Azure 计划订阅启用配额。 请代表 (AOBO) 过程，使用 **管理员** 访问合作伙伴中心的 Azure 门户。
+在配置 Azure 计划并将所需的 [AZURE RBAC 权限](/partner-center/azure-plan-manage.md) 部署到订阅后，你将与 Microsoft 合作，以便为 Azure 计划订阅启用配额。 使用 **管理员代表** (AOBO) 过程从 [Microsoft 合作伙伴中心](https://partner.microsoft.com)访问 Azure 门户。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com)。
 

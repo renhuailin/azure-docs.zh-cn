@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a916da121c8ffee1729ede6dd700ca4f6872fbf7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 258b4cbb187290c293caf10d14dbb624cb7d6b89
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043487"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347262"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 
@@ -47,11 +47,11 @@ Google 云存储帐户需要进行以下设置：
 
 ## <a name="required-permissions"></a>所需的权限
 
-若要从 Google 云存储中复制数据，请确保你已被授予以下对象操作权限： ` storage.objects.get` 和 ` storage.objects.list` 。
+若要从 Google 云存储复制数据，请确保你已被授予以下对象操作权限：` storage.objects.get` 和 ` storage.objects.list`。
 
-如果使用数据工厂 UI 创作， ` storage.buckets.list` 则操作需要额外的权限，如测试与链接服务的连接和从根目录进行浏览。 如果不想要授予此权限，则可以选择 UI 中的 "测试与文件路径的连接" 或 "从指定路径浏览" 选项。
+如果使用数据工厂 UI 进行创作，则需要额外的 ` storage.buckets.list` 权限，才能执行诸如测试与链接服务的连接、从根目录浏览之类的操作。 如果不想授予此权限，则可以选择 UI 中的“测试与文件路径的连接”或“从指定路径浏览”选项。
 
-有关 Google Cloud 存储角色和相关权限的完整列表，请参阅 Google Cloud 网站上 [的云存储的 IAM 角色](https://cloud.google.com/storage/docs/access-control/iam-roles) 。
+有关 Google 云存储角色和相关权限的完整列表，请参阅 Google 云站点上的[云存储的 IAM 角色](https://cloud.google.com/storage/docs/access-control/iam-roles)。
 
 ## <a name="getting-started"></a>入门
 
@@ -63,7 +63,7 @@ Google 云存储帐户需要进行以下设置：
 
 Google 云存储链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 GoogleCloudStorage。 | 是 |
 | accessKeyId | 机密访问键 ID。 若要查找访问密钥和机密，请参阅[先决条件](#prerequisites)。 |是 |
@@ -100,7 +100,7 @@ Google 云存储链接服务支持以下属性：
 
 Google 云存储支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必需 |
+| 属性   | 描述                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 GoogleCloudStorageLocation。 | 是      |
 | bucketName | GCS 桶名称。                                          | 是      |
@@ -144,22 +144,22 @@ Google 云存储支持基于格式的数据集中 `location` 设置下的以下�
 
 Google 云存储支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必需                                                    |
+| 属性                 | 描述                                                  | 必需                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 GoogleCloudStorageReadSettings。 | 是                                                         |
-| 找到要复制的文件： |  |  |
-| 选项 1：静态路径<br> | 从数据集中指定的给定存储桶或文件夹/文件路径复制。 若要复制 Bucket 或文件夹中的所有文件，请另外将 `wildcardFileName` 指定为 `*`。 |  |
+| **_找到要复制的文件：_* _ |  |  |
+| 选项 1：静态路径<br> | 从数据集中指定的给定存储桶或文件夹/文件路径复制。 若要复制 Bucket 或文件夹中的所有文件，请另外将 `wildcardFileName` 指定为 `_`。 |  |
 | 选项 2：GCS 前缀<br>- prefix | 数据集中配置的给定 Bucket 下的 GCS 密钥名称的前缀，用于筛选源 GCS 文件。 选择名称以 `bucket_in_dataset/this_prefix` 开头的 GCS 密钥。 它利用 GCS 的服务端筛选器，相较于通配符筛选器，该筛选器可提供更好的性能。 | 否 |
 | 选项 3：通配符<br>- wildcardFolderPath | 数据集中配置的给定 Bucket 下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件夹名内包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
-| 选项 3：通配符<br>- wildcardFileName | 给定 Bucket 和文件夹路径（或通配符文件夹路径）下包含通配符的文件名，用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件夹名内包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是 |
+| 选项 3：通配符<br>- wildcardFileName | 给定 Bucket 和文件夹路径（或通配符文件夹路径）下包含通配符的文件名，用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果文件名包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是 |
 | 选项 3：文件列表<br>- fileListPath | 指明复制给定文件集。 指向包含要复制的文件列表的文本文件，每行一个文件（即数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 请参阅[文件列表示例](#file-list-examples)中的更多示例。 |否 |
-| 其他设置： |  | |
+| ***其他设置：** _ |  | |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 **true**（默认值）和 **false**。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
 | deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制文件复制方案中有效。 默认值：false。 |否 |
 | modifiedDatetimeStart    | 文件根据“上次修改时间”属性进行筛选。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 **NULL**，这意味着不向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则会选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则会选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
-| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认值）和 true 。 | 否                                            |
-| partitionRootPath | 启用了分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，则默认情况下，<br/>- 在源的数据集或文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则复制活动除了生成文件内的列外，还会分别生成另外两个列，即“`month`”和“`day`”，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
+| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
+| partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，默认情况下，<br/>- 在数据集或源的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则除了文件内的列外，复制活动还将生成另外两个列 `month` 和 `day`，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
 | maxConcurrentConnections | 到存储的并发连接数。 仅在要限制到数据存储的并发连接数时指定。 | 否                                                          |
 
 **示例：**

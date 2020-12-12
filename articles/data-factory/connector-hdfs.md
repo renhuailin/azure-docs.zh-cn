@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405077"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346225"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "91405077"
 
 HDFS 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | *type* 属性必须设置为 *Hdfs*。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -120,7 +120,7 @@ HDFS 链接服务支持以下属性：
 
 HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 描述                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 HdfsLocation。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符来筛选文件夹，请跳过此设置并在活动源设置中指定路径。 | 否       |
@@ -162,29 +162,29 @@ HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
 HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须                                      |
+| 属性                 | 描述                                                  | 必需                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 *type* 属性必须设置为 **HdfsReadSettings**。 | 是                                           |
-| 找到要复制的文件 |  |  |
-| 选项 1：静态路径<br> | 从数据集中指定的文件夹或文件路径复制。 若要复制文件夹中的所有文件，请另外将 `wildcardFileName` 指定为 `*`。 |  |
+| **_找到要复制的文件_* _ |  |  |
+| 选项 1：静态路径<br> | 从数据集中指定的文件夹或文件路径复制。 若要复制文件夹中的所有文件，请另外将 `wildcardFileName` 指定为 `_`。 |  |
 | 选项 2：通配符<br>- wildcardFolderPath | 带有通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果实际文件夹名内具有通配符或此转义字符，请使用 `^` 进行转义。 <br>如需更多示例，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)。 | 否                                            |
-| 选项 2：通配符<br>- wildcardFileName | 指定的 folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  如需更多示例，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)。 | 是 |
+| 选项 2：通配符<br>- wildcardFileName | 指定的 folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为： `*` (匹配零个或多个字符) 并且 `?` (匹配零个或单个字符) ; `^` 如果你的实际文件名中包含通配符或此转义符，则使用进行转义。  如需更多示例，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)。 | 是 |
 | 选项 3：文件列表<br>- fileListPath | 表示要复制指定文件集。 指向一个文本文件，其中包含要复制的文件列表（每行一个文件，带有数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 如需更多示例，请参阅[文件列表示例](#file-list-examples)。 |否 |
-| ***其他设置*** |  | |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 `recursive` 设置为 *true* 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
+| ***其他设置** _ |  | |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 `recursive` 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
 | deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制文件复制方案中有效。 默认值：false。 |否 |
 | modifiedDatetimeStart    | 文件根据“上次修改时间”属性进行筛选。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 到 `modifiedDatetimeEnd` 之间的范围内，则会选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。  
-| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认值）和 true 。 | 否                                            |
-| partitionRootPath | 启用了分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，则默认情况下，<br/>- 在源的数据集或文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则复制活动除了生成文件内的列外，还会分别生成另外两个列，即“`month`”和“`day`”，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
+| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
+| partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，默认情况下，<br/>- 在数据集或源的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则除了文件内的列外，复制活动还将生成另外两个列 `month` 和 `day`，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
 | maxConcurrentConnections | 可以同时连接到存储区存储的连接数。 仅在要限制与数据存储的并发连接时指定一个值。 | 否                                            |
-| DistCp 设置 |  | |
+| **_DistCp 设置_* _ |  | |
 | distcpSettings | 使用 HDFS DistCp 时将使用的属性组。 | 否 |
 | resourceManagerEndpoint | YARN (Yet Another Resource Negotiator) 终结点 | 是（如果使用 DistCp） |
 | tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，将在复制作业完成后删除。 | 是（如果使用 DistCp） |
 | distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
 
-**示例：**
+_ *示例：* *
 
 ```json
 "activities":[
@@ -232,7 +232,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 本部分介绍了对文件夹路径和文件名使用通配符筛选器时产生的行为。
 
-| folderPath | fileName             | recursive | 源文件夹结构和筛选器结果（用**粗体**表示的文件已检索） |
+| folderPath | fileName             | recursive | 源文件夹结构和筛选器结果（用 **粗体** 表示的文件已检索） |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | （为空，使用默认值） | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | （为空，使用默认值） | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
@@ -259,7 +259,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 * 启用了 MapReduce 和 YARN 服务。  
 * YARN 版本为 2.5 或更高版本。  
-* HDFS 服务器与目标数据存储集成： **Azure Blob 存储** 或 **Azure Data Lake Store (ADLS Gen1) **： 
+* HDFS 服务器与目标数据存储集成： **Azure Blob 存储** 或 **Azure Data Lake Store (ADLS Gen1)**： 
 
     - 从 Hadoop 2.7 起，为 Azure Blob FileSystem 提供本机支持。 只需在 Hadoop 环境配置中指定 JAR 路径即可。
     - 从 Hadoop 3.0.0-alpha1 开始，包中附含 Azure Data Lake Store FileSystem。 如果你的 Hadoop 群集版本早于该版本，则需要手动将 Azure Data Lake Store 相关 JAR)  (包从 [此处](https://hadoop.apache.org/releases.html)导入到群集中，并在 Hadoop 环境配置中指定 jar 文件路径。
@@ -279,19 +279,19 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 * 选项 1：[在 Kerberos 领域中加入自承载集成运行时计算机](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
-对于任一选项，请确保为 Hadoop 群集启用 webhdfs：
+对于任一选项，确保为 Hadoop 群集打开 webhdfs：
 
-1. 为 webhdfs 创建 HTTP 主体和 keytab。
+1. 为 webhdfs 创建 HTTP 主体和密钥表。
 
     > [!IMPORTANT]
-    > HTTP Kerberos 主体必须按照 Kerberos HTTP SPNEGO 规范以 "**HTTP/**" 开头。
+    > 根据 Kerberos HTTP SPNEGO 规范，HTTP Kerberos 主体必须以“HTTP/”开头。
 
     ```bash
     Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
     Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
     ```
 
-2. HDFS 配置选项：在中添加以下三个属性 `hdfs-site.xml` 。
+2. HDFS 配置选项：在 `hdfs-site.xml` 中添加以下三个属性。
     ```xml
     <property>
         <name>dfs.webhdfs.enabled</name>
@@ -317,10 +317,10 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 **在 KDC 服务器上：**
 
-创建要使用的 Azure 数据工厂的主体，并指定密码。
+创建供 Azure 数据工厂使用的主体，然后指定密码。
 
 > [!IMPORTANT]
-> 用户名不应包含主机名。
+> 用户名应不包含主机名。
 
 ```bash
 Kadmin> addprinc <username>@<REALM.COM>
@@ -485,7 +485,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -530,7 +530,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 HdfsSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 *true*（默认值）和 *false*。 | 否 |

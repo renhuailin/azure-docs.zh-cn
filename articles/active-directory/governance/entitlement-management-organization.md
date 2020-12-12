@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029364"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347483"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中添加连接的组织
 
@@ -29,7 +29,13 @@ ms.locfileid: "96029364"
 
 ## <a name="what-is-a-connected-organization"></a>什么是连接的组织？
 
-连接的组织是与你有关系的外部 Azure AD 目录或域。
+连接的组织是您与之有关系的另一个组织。  为了使该组织中的用户能够访问你的资源（例如 SharePoint Online 站点或应用程序），你需要在该目录中表示该组织的用户。  因为在大多数情况下，该组织中的用户不在您的 Azure AD 目录中，因此您可以根据需要使用权利管理将它们引入您的 Azure AD 目录。  
+
+有三种方法可让你指定形成连接的组织的用户。  它可以是
+
+* 其他 Azure AD 目录中的用户，
+* 已配置为直接联合的另一个非 Azure AD 目录中的用户，或者
+* 其他非 Azure AD 目录中的用户，其电子邮件地址都具有相同的共同域名。
 
 例如，假设你在 Woodgrove Bank 工作，想要与两个外部组织协作。 这两个组织具有不同的配置：
 

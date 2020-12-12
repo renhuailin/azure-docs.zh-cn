@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032705"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347874"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -47,7 +47,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 下表列出了每个受支持的操作系统上使用的本地工具。 对于内置内容，来宾配置会自动处理这些工具的加载。
 
-|操作系统|验证工具|说明|
+|操作系统|验证工具|注释|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 侧加载到仅由 Azure Policy 使用的文件夹。 不会与 Windows PowerShell DSC 冲突。 PowerShell Core 不会添加到系统路径。|
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在默认位置安装 Chef InSpec 版本 2.2.61，并将其添加到系统路径。 还会安装 InSpec 包的依赖项，包括 Ruby 和 Python。 |
@@ -84,7 +84,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ### <a name="communicate-over-private-link-in-azure"></a>通过 Azure 中的专用链接进行通信
 
-虚拟机可以使用 [专用链接](../../../private-link/private-link-overview.md) 来与来宾配置服务通信。 将标记应用到名称 `EnablePrivateNetworkGC` 和值 `TRUE` 以启用此功能。 在将来宾配置策略定义应用到计算机之前或之后，可以应用标记。
+虚拟机可以使用 [专用链接](../../../private-link/private-link-overview.md) 来与来宾配置服务通信。 `EnablePrivateNeworkGC`在网络) 和值中将名称为 (的标记应用为 "t"， `TRUE` 以启用此功能。 在将来宾配置策略定义应用到计算机之前或之后，可以应用标记。
 
 流量使用 Azure [虚拟公共 IP 地址](../../../virtual-network/what-is-ip-address-168-63-129-16.md) 进行路由，用 azure 平台资源建立经过身份验证的安全通道。
 

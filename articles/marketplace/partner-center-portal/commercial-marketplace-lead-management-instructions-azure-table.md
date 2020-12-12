@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489346"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347857"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -55,7 +55,7 @@ ms.locfileid: "94489346"
 
     ![Azure 表](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    可以使用 [Azure 存储资源管理器](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。
+    可以使用 [Azure 存储资源管理器](https://www.storageexplorer.com)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>（可选）使用 Power Automate 获取潜在顾客通知
 
@@ -100,19 +100,19 @@ ms.locfileid: "94489346"
 1. 在“操作”下，选择“获取实体(Azure 表存储)” 。
 1. 在“Azure 表存储”窗口中，提供以下框的信息并选择“创建” ：
 
-    * **连接名称** ：为要在此流和表之间建立的连接提供有意义的名称。
-    * **存储帐户名称** ：提供表的存储帐户名称。 可以在存储帐户的“访问密钥”页上找到此名称。
-    * **共享存储密钥** ：为表的存储帐户提供密钥值。 可以在存储帐户的“访问密钥”页上找到此值。
+    * **连接名称**：为要在此流和表之间建立的连接提供有意义的名称。
+    * **存储帐户名称**：提供表的存储帐户名称。 可以在存储帐户的“访问密钥”页上找到此名称。
+    * **共享存储密钥**：为表的存储帐户提供密钥值。 可以在存储帐户的“访问密钥”页上找到此值。
 
       ![Azure 表存储窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    选择“创建”后，“获取实体”窗口随即显示 。 在此处，选择“显示高级选项”，并提供以下框的信息：
 
-   * **Table** ：选择表的名称（从 [创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
+   * **Table**：选择表的名称（从 [创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
 
      ![获取实体窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **筛选查询** ：选择此框，并将以下函数粘贴到框中：`Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **筛选查询**：选择此框，并将以下函数粘贴到框中：`Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![获取实体，筛选查询框](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "94489346"
    在接下来的几个步骤中，将根据条件的结果设置要采取的操作：
 
    * 如果条件解析为“如果否”，则不执行任何操作。
-   * 如果为 **"是"** ，则会触发连接工作或学校帐户以发送电子邮件的操作。 
+   * 如果为 **"是"**，则会触发连接工作或学校帐户以发送电子邮件的操作。 
 
 1. 选择“如果是”下的“添加操作” 。
 
@@ -150,9 +150,9 @@ ms.locfileid: "94489346"
 
 1. 在 Office 365 Outlook 窗口中，提供以下框的信息：
 
-    1. **收件人** ：输入将收到此通知的所有人的电子邮件地址。
-    1. **使用者** ：提供电子邮件的主题。 例如，新潜在顾客！
-    1. **正文** ：添加要包含在每封电子邮件中的文本（可选），然后粘贴到 `body('Get_entities')?['value']` 中。
+    1. **收件人**：输入将收到此通知的所有人的电子邮件地址。
+    1. **使用者**：提供电子邮件的主题。 例如，新潜在顾客！
+    1. **正文**：添加要包含在每封电子邮件中的文本（可选），然后粘贴到 `body('Get_entities')?['value']` 中。
 
     >[!NOTE]
     >可将其他静态或动态数据点插入此电子邮件的正文中。
@@ -193,7 +193,7 @@ ms.locfileid: "94489346"
 1. 在“存储帐户连接字符串”框中，粘贴按照之前的步骤创建的 Azure 存储帐户的连接字符串。
      ![潜在顾客管理，连接详细信息存储帐户](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **联系人电子邮件** ：为公司中应在收到新潜在顾客时收到电子邮件通知的人员提供邮件。 可以提供多个电子邮件，用分号分隔。
+1. **联系人电子邮件**：为公司中应在收到新潜在顾客时收到电子邮件通知的人员提供邮件。 可以提供多个电子邮件，用分号分隔。
 
 1. 选择“确定”。
 

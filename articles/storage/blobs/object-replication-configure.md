@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427592"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347942"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>为块 blob 配置对象复制
 
@@ -52,8 +52,8 @@ ms.locfileid: "94427592"
 若要在 Azure 门户中创建复制策略，请按照以下步骤操作：
 
 1. 在 Azure 门户中，转到源存储帐户。
-1. 在 **Blob 服务** 下，选择 **对象复制** 。
-1. 选择 " **设置复制规则** "。
+1. 在 **Blob 服务** 下，选择 **对象复制**。
+1. 选择 " **设置复制规则**"。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。
 
@@ -281,7 +281,7 @@ az storage account or-policy show \
     若要创建定义复制策略的 JSON 文件，一种简单的方法是先在 Azure 门户中的两个存储帐户之间创建测试复制策略。 然后，你可以下载复制规则并根据需要修改 JSON 文件。
 
 1. 在 Azure 门户中导航到目标帐户的 **对象复制** 设置。
-1. 选择 " **上载复制规则** "。
+1. 选择 " **上载复制规则**"。
 1. 上传 JSON 文件。 Azure 门户显示要创建的策略和规则，如下图所示。
 
     :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="显示如何上传 JSON 文件以定义复制策略的屏幕截图":::
@@ -291,7 +291,7 @@ az storage account or-policy show \
 然后，你可以下载包含策略定义的 JSON 文件，你可以向其他用户提供该文件来配置源帐户。 若要下载此 JSON 文件，请执行以下步骤：
 
 1. 在 Azure 门户中导航到目标帐户的 **对象复制** 设置。
-1. 选择要下载的策略旁边的 " **更多** " 按钮，然后选择 " **下载规则** "，如下图所示。
+1. 选择要下载的策略旁边的 " **更多** " 按钮，然后选择 " **下载规则**"，如下图所示。
 
     :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="显示如何将复制规则下载到 JSON 文件的屏幕截图":::
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-若要在 PowerShell 中使用 JSON 文件配置源帐户的复制策略，请检索本地文件，并将 JSON 转换为对象。 然后，调用 [AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 命令在源帐户上配置策略，如以下示例中所示。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
+若要在 PowerShell 中使用 JSON 文件定义源帐户的复制策略，请检索本地文件，并将 JSON 转换为对象。 然后，调用 [AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 命令在源帐户上配置策略，如以下示例中所示。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -359,7 +359,7 @@ az storage account or-policy create \
 
 1. 导航到 Azure 门户中的源帐户。
 1. 找到包含源 blob 的容器。
-1. 选择要显示其属性的 blob。 如果 blob 已成功复制，则会在 " **对象复制** " 部分看到状态设置为 "已 *完成* "。 还列出了用于管理此容器的对象复制的规则的复制策略 ID 和 ID。
+1. 选择要显示其属性的 blob。 如果 blob 已成功复制，则会在 " **对象复制** " 部分看到状态设置为 "已 *完成*"。 还列出了用于管理此容器的对象复制的规则的复制策略 ID 和 ID。
 
 :::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="显示源帐户中 blob 的复制状态的屏幕截图":::
 

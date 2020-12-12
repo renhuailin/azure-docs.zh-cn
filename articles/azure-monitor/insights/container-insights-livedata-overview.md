@@ -4,12 +4,12 @@ description: 本文介绍在适用于容器的 Azure Monitor 中，如何在不�
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920737"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346791"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
@@ -35,7 +35,7 @@ ms.locfileid: "96920737"
 
 5. 选择要开始收集实时数据的 pod。
 
-    ![部署实时日志](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![部署实时日志](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>查看日志
 
@@ -112,11 +112,17 @@ ms.locfileid: "96920737"
 
 ![实时数据控制台窗格筛选器示例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
+![用于部署的实时数据控制台窗格筛选器示例](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
 ### <a name="scroll-lock-and-pause"></a>滚动锁定和暂停
 
 若要暂停自动滚动并控制窗格的行为，以便通过手动方式滚动浏览读取的新数据，可使用“滚动”选项。 若要重新启用自动滚动，只需再次选择“滚动”选项。 也可通过选择“暂停”选项暂停对日志或事件数据的检索，并在准备好继续时，只需选择“开始”即可 。
 
 ![实时数据控制台窗格的暂停实时视图](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![实时数据控制台窗格暂停部署的实时视图](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >在对问题进行故障排除时，建议只短暂地挂起或暂停自动滚动。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。

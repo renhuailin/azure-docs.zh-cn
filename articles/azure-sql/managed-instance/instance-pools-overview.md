@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782648"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347058"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什么是 Azure SQL 托管实例池 (预览版) ？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 实例池具有以下优势：
 
-1. 承载2个 vCore 实例的能力。 *\* 仅适用于实例池中的实例* 。
+1. 承载2个 vCore 实例的能力。 *\* 仅适用于实例池中的实例*。
 2. 可预测且快速的实例部署时间 (最多5分钟) 。
 3. 最小 IP 地址分配。
 
@@ -59,7 +59,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 ## <a name="architecture"></a>体系结构
 
-实例池具有类似于常规 ( *单个* ) 托管实例的体系结构。 为了支持 [Azure 虚拟网络中的部署](../../virtual-network/virtual-network-for-azure-services.md) 并为客户提供隔离和安全性，实例池还依赖于 [虚拟群集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虚拟群集表示在客户的虚拟网络子网中部署的一组专用虚拟机。
+实例池具有类似于常规 (*单个*) 托管实例的体系结构。 为了支持 [Azure 虚拟网络中的部署](../../virtual-network/virtual-network-for-azure-services.md) 并为客户提供隔离和安全性，实例池还依赖于 [虚拟群集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虚拟群集表示在客户的虚拟网络子网中部署的一组专用虚拟机。
 
 这两个部署模型之间的主要区别在于，实例池允许多个 SQL Server 进程部署在同一虚拟机节点上（这是使用 [Windows 作业对象](/windows/desktop/ProcThread/job-objects)管理的资源），而单个实例在虚拟机节点上始终是唯一的。
 
@@ -78,7 +78,10 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 所有 [实例级别的限制](resource-limits.md#service-tier-characteristics) 都适用于在池中创建的实例。
 - 除了实例级别限制之外，还在 *实例池级别* 施加了两个限制：
   - 每个池的总存储大小 (8 TB) 。
-  - 每个池 (100) 的数据库总数。
+  - 每个池的用户数据库总数。 此限制取决于 pool Vcore 值：
+    - 8 Vcore 池最多支持200个数据库，
+    - 16 Vcore 池最多支持400个数据库，
+    - 24和更大的 Vcore 池最多支持500个数据库。
 - 无法为实例池中部署的实例设置 AAD 管理员，因此无法使用 AAD 身份验证。
 
 存储分配总数和所有实例中的数据库数量必须小于或等于实例池公开的限制。
@@ -86,8 +89,9 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 实例池支持8、16、24、32、40、64和 80 Vcore。
 - 池中的托管实例支持2、4、8、16、24、32、40、64和 80 Vcore。
 - 池内的托管实例支持 32 GB 到 8 TB 的存储大小，只不过：
-  - 2 vCore 实例支持 32 GB 到 640 GB 的大小
-  - 4 vCore 实例支持 32 GB 和 2 TB 的大小
+  - 2 vCore 实例支持 32 GB 到 640 GB 的大小。
+  - 4 vCore 实例支持 32 GB 和 2 TB 的大小。
+- 对于每个实例，池中的托管实例的最大限制为100个用户数据库，除了2个 vCore 实例，每个实例最多支持50个用户数据库。
 
 [服务层属性](resource-limits.md#service-tier-characteristics)与实例池资源关联，因此池中的所有实例必须与池的服务层相同。 目前，只有常规用途的服务层可用 (请参阅以下部分，了解当前预览) 中的限制。
 
@@ -121,7 +125,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 为 [Azure 门户](https://portal.azure.com)中的实例池创建和管理支持请求。
 
-如果遇到与 (创建或删除) 相关的实例池部署的问题，请确保在 " **问题子类型** " 字段中指定 **实例池** 。
+如果遇到与 (创建或删除) 相关的实例池部署的问题，请确保在 "**问题子类型**" 字段中指定 **实例池**。
 
 ![实例池支持请求](./media/instance-pools-overview/support-request.png)
 
@@ -137,8 +141,8 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 对于计算价格 (在 Vcore) 中测量，提供两个定价选项：
 
-  1. *包含许可证* ：包含 SQL Server 许可证的价格。 这适用于选择不应用现有 SQL Server 许可证和软件保障的客户。
-  2. *Azure 混合权益* ：为 SQL Server 提供 Azure 混合权益的减少价格。 客户可以通过使用具有软件保障的现有 SQL Server 许可证来选择此价格。 有关资格和其他详细信息，请参阅 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
+  1. *包含许可证*：包含 SQL Server 许可证的价格。 这适用于选择不应用现有 SQL Server 许可证和软件保障的客户。
+  2. *Azure 混合权益*：为 SQL Server 提供 Azure 混合权益的减少价格。 客户可以通过使用具有软件保障的现有 SQL Server 许可证来选择此价格。 有关资格和其他详细信息，请参阅 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 对于池中的单个实例，不能设置不同的定价选项。 父池中的所有实例都必须是许可证附带价格或 Azure 混合权益价格。 创建池后，可以更改池的许可证模型。
 
