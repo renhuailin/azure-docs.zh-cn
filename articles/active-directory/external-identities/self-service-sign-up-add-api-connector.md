@@ -11,16 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351753"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355386"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
 若要使用 [api 连接器](api-connectors-overview.md)，首先要创建 api 连接器，然后在用户流中启用它。
+
+> [!IMPORTANT]
+>**从2021年1月4日开始**，Google 是 [弃用 web 视图登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果你使用 Google federation 或使用 Gmail 进行自助注册，则应 [测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
@@ -244,7 +247,7 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必需 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
@@ -266,7 +269,7 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必须 | 说明                                                                |
+| 参数   | 类型   | 必需 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
 | action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
@@ -292,11 +295,11 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必须 | 说明                                                                |
+| 参数   | 类型    | 必需 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
 | action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
-| 状态      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
+| status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
@@ -310,7 +313,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
 无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，你可以使用无服务器云功能来执行验证逻辑，并限制对特定域的登录。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 请确保：
 * API 遵循上述 API 请求和响应约定。 
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。

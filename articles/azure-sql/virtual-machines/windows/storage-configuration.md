@@ -7,17 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146716"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356696"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,20 +55,20 @@ ms.locfileid: "93146716"
 
 此外，还可以设置磁盘的缓存。 与[高级磁盘](../../../virtual-machines/disks-types.md#premium-ssd)一起使用时，Azure VM 具有一种称为 [Blob 缓存的多层缓存技术](../../../virtual-machines/premium-storage-performance.md#disk-caching)。 Blob Cache 使用虚拟机 RAM 和本地 SSD 的组合进行缓存。 
 
-高级 SSD 的磁盘缓存可以是 *ReadOnly* 、 *ReadWrite* 或 *None* 。 
+高级 SSD 的磁盘缓存可以是 *ReadOnly*、*ReadWrite* 或 *None*。 
 
-- 对于存储在高级存储上的 SQL Server 数据文件， *ReadOnly* 缓存非常有用。 *ReadOnly* 缓存提供较低的读取延迟、较高的读取 IOPS 和吞吐量，因为从缓存（位于 VM 内存和本地 SSD 内）执行读取。 与从 Azure Blob 存储读取数据磁盘相比，这些读取速度要快得多。 高级存储不将从缓存提供的读取操作计入磁盘 IOPS 和吞吐量。 因此，应用程序能够实现更高的总 IOPS 和吞吐量。 
+- 对于存储在高级存储上的 SQL Server 数据文件，*ReadOnly* 缓存非常有用。 *ReadOnly* 缓存提供较低的读取延迟、较高的读取 IOPS 和吞吐量，因为从缓存（位于 VM 内存和本地 SSD 内）执行读取。 与从 Azure Blob 存储读取数据磁盘相比，这些读取速度要快得多。 高级存储不将从缓存提供的读取操作计入磁盘 IOPS 和吞吐量。 因此，应用程序能够实现更高的总 IOPS 和吞吐量。 
 - *None* 缓存配置应用于承载 SQL Server 日志文件的磁盘，因为日志文件是按顺序写入的，不能从 *ReadOnly* 缓存中获益。 
 - 不应使用 *ReadWrite* 缓存来承载 SQL Server 文件，因为 SQL Server 不支持与 *ReadWrite* 缓存的数据一致性。 如果写入操作通过 *ReadOnly* blob 缓存层，则写入会浪费 *ReadOnly* blob 缓存的容量并且延迟略微增加。 
 
 
    > [!TIP]
-   > 请确保存储配置与所选 VM 大小施加的限制相匹配。 选择超出 VM 大小的性能上限的存储参数将导致错误：`The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 可以通过更改磁盘类型来减少 IOPs，或增加 VM 大小以提高性能上限。 
+   > 请确保存储配置与所选 VM 大小施加的限制相匹配。 选择超出 VM 大小的性能上限的存储参数将导致警告： `The desired performance might not be reached due to the maximum virtual machine disk performance cap` 。 可以通过更改磁盘类型来减少 IOPs，或增加 VM 大小以提高性能上限。 这不会停止预配。 
 
 
 根据所做的选择，Azure 会在创建 VM 后执行以下存储配置任务：
 
-* 创建高级 SSD 盘并将其连接到虚拟机。
+* 创建高级 Ssd 并将其附加到虚拟机。
 * 配置 SQL Server 可访问的数据磁盘。
 * 根据指定的大小和性能（IOPS 和吞吐量）要求，在存储池中配置数据磁盘。
 * 将存储池与虚拟机上的新驱动器相关联。
@@ -94,7 +95,7 @@ ms.locfileid: "93146716"
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)，并选择 **概述** 。 “SQL Server 概述”页面显示了 VM 当前的存储用量。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
+对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)，并选择 **概述**。 “SQL Server 概述”页面显示了 VM 当前的存储用量。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
 
 * SQL 数据
 * SQL 日志

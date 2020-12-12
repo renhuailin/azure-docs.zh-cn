@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168788"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358310"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>为故障转移群集实例配置 DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,14 +132,14 @@ Start-ClusterResource -Name dnn-demo
 
 1. 清除不参与故障转移群集实例的任何节点的复选框。 DNN 资源的可能所有者列表应与 SQL Server 实例资源的可能所有者列表匹配。 例如，假设 Data3 不参与 FCI，下图是从 DNN 资源的可能所有者列表中删除 Data3 的示例： 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN 资源的快捷菜单，其中突出显示了 &quot;属性&quot; 命令。":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="对于 DNN 资源的可能所有者，清除不参与 FCI 的节点旁边的复选框":::
 
-1. 选择“确定”保存设置****。 
+1. 选择“确定”保存设置。 
 
 
 ## <a name="restart-sql-server-instance"></a>重新启动 SQL Server 实例 
 
-使用故障转移群集管理器重启 SQL Server 实例。 请执行下列步骤：
+使用故障转移群集管理器重启 SQL Server 实例。 请执行以下步骤：
 
 1. 在故障转移群集管理器中转到 SQL Server 资源。
 1. 右键单击 SQL Server 资源，并使其脱机。 

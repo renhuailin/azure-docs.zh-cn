@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556312"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357800"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上使用存储空间直通 (SQL Server 创建 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,7 +70,7 @@ ms.locfileid: "94556312"
    若要从 UI 安装故障转移群集，请在两个虚拟机上执行以下操作：
 
    1. 在“服务器管理器”中选择“管理”，然后选择“添加角色和功能”。  
-   1. 在 " **添加角色和功能** 向导" 中，选择 " **下一步** "，直到你 **选择 "功能** "。
+   1. 在 " **添加角色和功能** 向导" 中，选择 " **下一步** "，直到你 **选择 "功能**"。
    1. 在“选择功能”中，选择“故障转移群集”。  请包含所有所需的功能和管理工具。 
    1. 选择“添加功能”。
    1. 选择“下一步”，然后选择“完成”安装这些功能。 
@@ -92,15 +93,15 @@ ms.locfileid: "94556312"
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“测试选择”下，选择除“存储”以外的所有测试，如下所示： 
 
    ![选择群集验证测试](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“确认”下，选择“下一步”。 
 
     " **验证配置** 向导" 将运行验证测试。
@@ -180,7 +181,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
-测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 " **更多操作** " "  >  **移动核心群集资源**  >  " " **选择节点** "，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
+测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 

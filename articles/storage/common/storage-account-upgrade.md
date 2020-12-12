@@ -1,20 +1,20 @@
 ---
 title: 升级到常规用途 v2 存储帐户
 titleSuffix: Azure Storage
-description: 使用 Azure 门户、PowerShell 或 Azure CLI 升级到常规用途 v2 存储帐户。 指定 blob 数据的访问层。
+description: 使用 Azure 门户、PowerShell 或 Azure CLI 升级到常规用途 v2 存储帐户。 指定 Blob 数据的访问层。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/25/2019
+ms.date: 12/11/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694539"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357358"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -168,4 +168,7 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 ## <a name="next-steps"></a>后续步骤
 
+* [存储帐户概述](storage-account-overview.md)
 * [创建存储帐户](storage-account-create.md)
+* [将 Azure 存储帐户移到另一个区域](storage-account-move.md)
+* [恢复删除的存储帐户](storage-account-recover.md)

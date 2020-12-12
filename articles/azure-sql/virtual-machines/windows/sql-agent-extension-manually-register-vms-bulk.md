@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 208df7ad53049598255ce358f2db128ba84fea9a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557520"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357206"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>将 Azure 中的多个 SQL Vm 注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +40,7 @@ ms.locfileid: "94557520"
 若要向扩展注册 SQL Server VM，需要以下各项： 
 
 - 已 [向 **SqlVirtualMachine** 提供商注册](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)并包含未注册 SQL Server 虚拟机的 [Azure 订阅](https://azure.microsoft.com/free/)。 
-- 用于注册虚拟机的客户端凭据位于以下任何 Azure 角色中： " **虚拟机参与者** "、" **参与者** " 或 " **所有者** "。 
+- 用于注册虚拟机的客户端凭据位于以下任何 Azure 角色中： " **虚拟机参与者**"、" **参与者**" 或 " **所有者**"。 
 - Az PowerShell 的最新版本 [ (5.0) 最小值 ](/powershell/azure/new-azureps-module-az)。 
 
 

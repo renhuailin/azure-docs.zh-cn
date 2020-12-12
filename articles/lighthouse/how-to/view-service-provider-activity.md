@@ -1,14 +1,14 @@
 ---
 title: 查看服务提供商活动
 description: 客户可以查看记录的活动，查看服务提供商通过 Azure 委派的资源管理执行的操作。
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371080"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356372"
 ---
 # <a name="view-service-provider-activity"></a>查看服务提供商活动
 
@@ -29,7 +29,7 @@ ms.locfileid: "92371080"
 记录的活动在过去90天的 Azure 门户中可用。 若要了解如何存储超过90天的此数据，请参阅 [在 Log Analytics 工作区中收集和分析 Azure 活动日志](../../azure-monitor/platform/activity-log.md)。
 
 > [!NOTE]
-> 服务提供商提供的用户出现在活动日志中，但这些用户及其角色分配不会显示在 ** (IAM) 的访问控制 ** 中或通过 api 检索角色分配信息。
+> 服务提供商提供的用户出现在活动日志中，但这些用户及其角色分配不会显示在 **(IAM) 的访问控制** 中或通过 api 检索角色分配信息。
 
 ## <a name="set-alerts-for-critical-operations"></a>为关键操作设置警报
 
@@ -42,6 +42,12 @@ ms.locfileid: "92371080"
 你可以创建查询来分析你记录的活动或关注特定的项目。 例如，可能审核要求您报告对订阅执行的所有管理级别的操作。 您可以创建一个查询来仅筛选这些操作并按用户、日期或其他值对结果进行排序。
 
 有关详细信息，请参阅 [Azure Monitor 中的日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。
+
+## <a name="view-user-activity-across-domains"></a>跨域查看用户活动
+
+可以通过使用 " [按域显示的活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) " 示例工作簿，查看跨多个域的单个用户的活动。
+
+可以按域名筛选结果。 还可以应用其他筛选器，例如类别、级别或资源组。
 
 ## <a name="next-steps"></a>后续步骤
 

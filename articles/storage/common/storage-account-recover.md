@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c37e4aeb9b9af1c4f792d0827fec39750a1b1c2a
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095930"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357339"
 ---
 # <a name="recover-a-deleted-storage-account"></a>恢复删除的存储帐户
 
@@ -73,3 +73,5 @@ ms.locfileid: "97095930"
 
 - [存储帐户概述](storage-account-overview.md)
 - [创建存储帐户](storage-account-create.md)
+- [升级到常规用途 v2 存储帐户](storage-account-upgrade.md)
+- [将 Azure 存储帐户移到另一个区域](storage-account-move.md)

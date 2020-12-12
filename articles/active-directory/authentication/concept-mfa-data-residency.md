@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744102"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355858"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证的数据驻留和客户数据
 
@@ -57,7 +57,7 @@ Azure AD 多重身份验证不会记录个人数据（例如用户名、电话�
 | Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
 
 > [!NOTE]
-> 无论是哪个区域负责处理身份验证请求，所有云中的多重身份验证活动报告数据都存储在美国。 Microsoft Azure 德国、由世纪互联运营的 Microsoft Azure 以及 Microsoft 政府都有自己的数据存储，它们独立于公有云区域数据存储，但是这些数据始终存储在美国。
+> 无论是哪个区域负责处理身份验证请求，所有云中的多重身份验证活动报告数据都存储在美国。 Microsoft Azure 德国、由世纪互联运营的 Microsoft Azure 以及 Microsoft 政府都有自己的数据存储，它们独立于公有云区域数据存储，但是这些数据始终存储在美国。 这些数据存储包含个人身份信息 (PII) 例如用户主体名称 (UPN) 和完整的电话号码。 
 
 对于 Microsoft Azure 政府、Microsoft Azure 德国、由世纪互联运营的 Microsoft Azure、Azure B2C 身份验证、NPS 扩展，以及 Windows Server 2016 或 2019 AD FS 适配器，将存储以下个人数据：
 

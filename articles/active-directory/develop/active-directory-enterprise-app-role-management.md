@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2019
+ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 376086d0fc84e04645215b26ba896cf22f3f9c57
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 46a676f90eb9b628551c50f9c3bf664056dd6ca7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647879"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355930"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -93,7 +93,7 @@ ms.locfileid: "94647879"
       
       如果使用自定义应用（而不是 Azure 市场应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
 
-    h.如果该值不存在，请单击“添加行”。 为应用程序生成新角色。
+    h. 为应用程序生成新角色。
 
       以下 JSON 是 **appRoles** 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
 

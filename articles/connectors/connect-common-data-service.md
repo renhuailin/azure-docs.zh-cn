@@ -1,22 +1,25 @@
 ---
-title: 连接到 Common Data Service
-description: 使用 Azure 逻辑应用创建和管理 Common Data Service 记录
+title: '连接到 Common Data Service (Microsoft Dataverse) '
+description: 使用 Azure 逻辑应用创建和管理 Common Data Service (Microsoft Dataverse) 记录
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334576"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355109"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service 中的记录
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service (Microsoft Dataverse) 中的记录
 
-通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [Common Data Service 连接器](/connectors/commondataservice/)，你可以构建管理 [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) 数据库中的记录的自动化工作流。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
+> [!NOTE]
+> 2020年11月，Common Data Service 已重命名为 Microsoft Dataverse。
+
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [Common Data Service 连接器](/connectors/commondataservice/)，你可以生成自动化工作流，以便在 [Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) 数据库中管理 Common Data Service 中的记录。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
 
 本文介绍如何构建逻辑应用，以便在每次创建新的潜在客户记录时创建任务记录。
 
@@ -39,7 +42,7 @@ ms.locfileid: "91334576"
 
 1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开空白逻辑应用（如果尚未打开）。
 
-1. 在搜索框中输入 `common data service`。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”****
+1. 在搜索框中输入 `common data service`。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”
 
    ![选择 "创建记录时" 触发器](./media/connect-common-data-service/select-when-record-created-trigger.png)
 
@@ -49,7 +52,7 @@ ms.locfileid: "91334576"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 描述 |
    |----------|----------|-------------|
    | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅 [Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
@@ -62,7 +65,7 @@ ms.locfileid: "91334576"
 
 1. 在 " **创建记录时** " 触发器下，选择 " **新建步骤**"。
 
-1. 在搜索框中输入 `common data service`。 在操作列表中选择以下操作：“创建新记录”****
+1. 在搜索框中输入 `common data service`。 在操作列表中选择以下操作：“创建新记录”
 
    ![选择 "创建新记录" 操作](./media/connect-common-data-service/select-create-new-record-action.png)
 
@@ -70,7 +73,7 @@ ms.locfileid: "91334576"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -87,18 +90,18 @@ ms.locfileid: "91334576"
 
       ![选择要在任务记录中使用的触发器输出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 触发器输出 | 说明 |
+      | 触发器输出 | 描述 |
       |----------------|-------------|
       | **名字** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
       | **姓氏** | 要用作任务记录中主要联系人的潜在客户记录的姓氏 |
-      | **描述** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
+      | **说明** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
       |||
 
    完成操作后，该操作可能类似于以下示例：
 
    ![已完成 "创建新记录" 操作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 1. 若要手动启动逻辑应用，请在设计器工具栏上选择 " **运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
 

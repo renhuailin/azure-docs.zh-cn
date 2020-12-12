@@ -1,14 +1,14 @@
 ---
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336592"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356406"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -175,9 +175,10 @@ else {
 1. 导航到 " **我的客户** " 页，然后从左侧导航菜单中选择 " **活动日志** "。
 1. 确保在屏幕顶部附近的筛选器中选择 " **目录活动** "。
 
-将显示委托更改列表。 你可以选择 **"编辑列** " 以显示或隐藏 **状态**、 **事件类别**、 **时间**、 **时间戳**、 **订阅**、 **事件启动者**、 **资源组**、 **资源类型**和 **资源** 值。
+将显示委托更改列表。 你可以选择 **"编辑列** " 以显示或隐藏 **状态**、 **事件类别**、 **时间**、 **时间戳**、 **订阅**、 **事件启动者**、 **资源组**、 **资源类型** 和 **资源** 值。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将客户加入 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)。
 - 了解 [Azure Monitor](../../azure-monitor/index.yml) 和 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)。
+- 查看 " [按域显示的活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) " 示例工作簿以了解如何在订阅中显示 Azure 活动日志，并提供按域名筛选的选项。

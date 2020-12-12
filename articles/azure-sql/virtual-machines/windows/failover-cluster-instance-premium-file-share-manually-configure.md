@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556397"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358065"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上使用高级文件共享 (SQL Server 创建 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +43,7 @@ ms.locfileid: "94556397"
 ## <a name="mount-premium-file-share"></a>装载高级文件共享
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 并中转到你的存储帐户。
-1. 在 " **文件服务** " 下，单击 " **文件共享** "，然后选择要用于 SQL 存储的高级文件共享。
+1. 在 "**文件服务**" 下，单击 "**文件共享**"，然后选择要用于 SQL 存储的高级文件共享。
 1. 选择“连接”使系统显示文件共享的连接字符串。
 1. 在下拉列表中，选择要使用的驱动器号，然后将这两个代码块复制到记事本。
 
@@ -70,7 +71,7 @@ ms.locfileid: "94556397"
 
    若要从 UI 安装故障转移群集，请在两个虚拟机上执行以下操作：
    1. 在“服务器管理器”中选择“管理”，然后选择“添加角色和功能”。  
-   1. 在 " **添加角色和功能** 向导" 中，选择 " **下一步** "，直到你 **选择 "功能** "。
+   1. 在 " **添加角色和功能** 向导" 中，选择 " **下一步** "，直到你 **选择 "功能**"。
    1. 在“选择功能”中，选择“故障转移群集”。  请包含所有所需的功能和管理工具。 
    1. 选择“添加功能”。
    1. 选择“下一步”，然后选择“完成”安装这些功能。 
@@ -90,15 +91,15 @@ ms.locfileid: "94556397"
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“测试选择”下，选择除“存储”和“存储空间直通”以外的所有测试，如下所示  ：
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="选择群集验证测试":::
 
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“确认”下，选择“下一步”。 
 
 " **验证配置** 向导" 将运行验证测试。
@@ -149,7 +150,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
-测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 " **更多操作** " "  >  **移动核心群集资源**  >  " " **选择节点** "，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
+测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 
@@ -168,7 +169,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在“SQL Server 安装中心”中选择“安装” 。
 
-1. 选择 "新建" " **SQL Server 故障转移群集安装** "，然后按照向导中的说明安装 SQL Server FCI。
+1. 选择 "新建" " **SQL Server 故障转移群集安装**"，然后按照向导中的说明安装 SQL Server FCI。
 
    FCI 数据目录需位于高级文件共享上。 按以下格式输入共享的完整路径： `\\storageaccountname.file.core.windows.net\filesharename\foldername` 。 系统将显示一条警告，提示你已将文件服务器指定为数据目录。 预计会出现此警告。 确保保存文件共享时用于通过 RDP 访问 VM 的用户帐户与 SQL Server 服务用来避免可能出现的故障的帐户相同。
 
@@ -178,7 +179,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 安装程序在第一个节点上安装 FCI 后，请使用 RDP 连接到第二个节点。
 
-1. 打开 **SQL Server 安装中心** ，然后选择 " **安装** "。
+1. 打开 **SQL Server 安装中心**，然后选择 " **安装**"。
 
 1. 选择“将节点添加到 SQL Server 故障转移群集”。 按照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
 

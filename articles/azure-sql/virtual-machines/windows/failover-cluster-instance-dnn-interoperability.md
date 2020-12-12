@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272610"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358208"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>功能与 SQL Server FCI & DNN 的互操作性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,9 +72,9 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 复制具有三个组件：发布服务器、分发服务器、订阅服务器。 这些组件中的任何一个都可以是故障转移群集实例。 由于 FCI VNN 在复制配置中广泛使用，这两个都是显式和隐式的，因此，可能需要将 VNN 映射到 DNN，以便复制能够正常工作。 
 
-继续在复制中使用 VNN 名称作为 FCI 名称，但在 *配置复制之前*在以下远程情况下创建网络别名：
+继续在复制中使用 VNN 名称作为 FCI 名称，但在 *配置复制之前* 在以下远程情况下创建网络别名：
 
-| **复制组件 (FCI 与 DNN) ** | **远程组件** | **网络别名映射** | **带有网络映射的服务器**| 
+| **复制组件 (FCI 与 DNN)** | **远程组件** | **网络别名映射** | **带有网络映射的服务器**| 
 |---------|---------|---------|-------- | 
 |发布者 | 分发服务器 | 发布服务器 VNN 到发布服务器 DNN| 分发服务器| 
 |分发服务器|订阅者 |分发服务器到分发服务器的 VNN DNN| 订阅者 | 
@@ -86,7 +87,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 使用命名实例的完整实例名称，如下图所示： 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="使用 SQL Server 配置管理器将 DNN DNS 名称配置为网络别名。" :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="为命名实例配置网络别名时，请使用完整的实例名称。" :::
 
 ## <a name="database-mirroring"></a>数据库镜像
 
@@ -147,7 +148,7 @@ GO
 
 
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 
 - 哪个 SQL Server 版本引入了 DNN 支持？ 

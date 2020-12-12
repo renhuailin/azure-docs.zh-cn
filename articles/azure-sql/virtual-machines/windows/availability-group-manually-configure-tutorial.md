@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: feab48f32396bcc89621433930c9a9f4689d8286
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790060"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355437"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>教程：手动配置可用性组（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "92790060"
 尽管本文手动配置可用性组环境，但也可使用 [Azure 门户](availability-group-azure-portal-configure.md)、[PowerShell 或 Azure CLI](availability-group-az-commandline-configure.md)，或者 [Azure 快速入门模板](availability-group-quickstart-template-configure.md)进行配置。 
 
 
-**时间估计** ：如果满足 [先决条件](availability-group-manually-configure-prerequisites-tutorial.md)，完成本教程大约需要 30 分钟。
+**时间估计**：如果满足 [先决条件](availability-group-manually-configure-prerequisites-tutorial.md)，完成本教程大约需要 30 分钟。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -85,7 +86,7 @@ ms.locfileid: "92790060"
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>设置 Windows Server 故障转移群集 IP 地址
 
   > [!NOTE]
-  > 在 Windows Server 2019 上，群集创建一个 **分布式服务器名称** ，而不是 **群集网络名称** 。 如果使用的是 Windows Server 2019，请跳过本教程中引用群集核心名称的任何步骤。 可以使用 [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) 创建群集网络名称。 查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)，了解更多信息。 
+  > 在 Windows Server 2019 上，群集创建一个 **分布式服务器名称**，而不是 **群集网络名称**。 如果使用的是 Windows Server 2019，请跳过本教程中引用群集核心名称的任何步骤。 可以使用 [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) 创建群集网络名称。 查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)，了解更多信息。 
 
 1. 在“故障转移群集管理器”中，向下滚动到“群集核心资源”，并展开群集详细信息。 应会看到“名称”和“IP 地址”资源都处于“已失败”状态。   不能将 IP 地址资源联机，因为向该群集分配的 IP 地址与计算机本身的地址相同，因此该地址为重复地址。
 
@@ -117,7 +118,7 @@ ms.locfileid: "92790060"
    >如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”，Windows 将在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间会将多个磁盘分组到存储池。 有关详细信息，请参阅[存储空间](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))。
    >
 
-1. 选择“ **下一步** ”。
+1. 选择“**下一步**”。
 
 1. 选择“完成”。
 
@@ -141,9 +142,9 @@ ms.locfileid: "92790060"
 
    使用“创建共享文件夹向导”创建共享。
 
-1. 在“文件夹路径”上，选择“浏览”并找到或创建一个共享文件夹路径 。 选择“ **下一步** ”。
+1. 在“文件夹路径”上，选择“浏览”并找到或创建一个共享文件夹路径 。 选择“**下一步**”。
 
-1. 在“名称、说明和设置”中核对共享名称和路径。 选择“ **下一步** ”。
+1. 在“名称、说明和设置”中核对共享名称和路径。 选择“**下一步**”。
 
 1. 在“共享文件夹权限”上设置“自定义权限”。 选择“自定义…”。
 
@@ -179,9 +180,9 @@ ms.locfileid: "92790060"
    >Windows Server 2016 支持云见证。 如果选择此类见证，则不需要文件共享见证。 有关详细信息，请参阅 [Deploy a cloud witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness)（为故障转移群集部署云见证）。 本教程使用早期操作系统也支持的文件共享见证。
    >
 
-1. 在“配置文件共享见证”上键入所创建的共享的路径。 选择“ **下一步** ”。
+1. 在“配置文件共享见证”上键入所创建的共享的路径。 选择“**下一步**”。
 
-1. 在“确认”上核对设置。 选择“ **下一步** ”。
+1. 在“确认”上核对设置。 选择“**下一步**”。
 
 1. 选择“完成”。
 
@@ -244,9 +245,9 @@ Repeat these steps on the second SQL Server.
 
    使用“创建共享文件夹向导”创建共享。
 
-1. 在“文件夹路径”上，选择“浏览”并找到或创建一个数据库备份共享文件夹路径 。 选择“ **下一步** ”。
+1. 在“文件夹路径”上，选择“浏览”并找到或创建一个数据库备份共享文件夹路径 。 选择“**下一步**”。
 
-1. 在“名称、说明和设置”中核对共享名称和路径。 选择“ **下一步** ”。
+1. 在“名称、说明和设置”中核对共享名称和路径。 选择“**下一步**”。
 
 1. 在“共享文件夹权限”上设置“自定义权限”。 选择“自定义…”。
 
@@ -275,7 +276,7 @@ Repeat these steps on the second SQL Server.
 * 在第一个 SQL Server 上创建数据库。
 * 获取数据库的完整备份和事务日志备份。
 * 使用 NORECOVERY 选项将完整备份和日志备份还原到第二个 SQL Server。
-* 通过同步提交、自动故障转移和可读辅助副本来创建可用性组 ( **AG1** )。
+* 通过同步提交、自动故障转移和可读辅助副本来创建可用性组 (**AG1**)。
 
 ### <a name="create-the-availability-group"></a>创建可用性组：
 
@@ -283,7 +284,7 @@ Repeat these steps on the second SQL Server.
 
     ![启动“新建可用性组”向导](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. 在“简介”页上，选择“下一步” 。 在“指定可用性组名称”页面的“可用性组名称”中，键入可用性组的名称 ， 例如 AG1。 选择“ **下一步** ”。
+2. 在“简介”页上，选择“下一步” 。 在“指定可用性组名称”页面的“可用性组名称”中，键入可用性组的名称 ， 例如 AG1。 选择“**下一步**”。
 
     ![“新建可用性组”向导中的“指定可用性组名称”](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -309,7 +310,7 @@ Repeat these steps on the second SQL Server.
 
     ![“新建可用性组”向导中的“选择初始数据同步”](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 \\\\<第一个 SQL Server\>\Backup\\。 选择“ **下一步** ”。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 \\\\<第一个 SQL Server\>\Backup\\。 选择“**下一步**”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能需要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。
@@ -372,7 +373,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
    | 设置 | 字段 |
    | --- | --- |
-   | **名称** |为负载均衡器使用文本名称，例如 **sqlLB** 。 |
+   | **名称** |为负载均衡器使用文本名称，例如 **sqlLB**。 |
    | **类型** |内部 |
    | **虚拟网络** |使用虚拟网络的名称。 |
    | **子网** |使用虚拟机所在的子网的名称。  |

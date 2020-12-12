@@ -1,27 +1,27 @@
 ---
-title: 在商业市场中创建 Dynamics 365 for Operations 产品/服务
-description: 如何使用 Microsoft 合作伙伴中心内的商业市场门户来新建 Dynamics 365 for Operations 产品/服务，以供在 Azure 市场、AppSource 中或通过云解决方案提供商 (CSP) 计划列出或销售。
+title: 在 Microsoft AppSource 中创建适用于操作的 Dynamics 365
+description: 如何在 Microsoft AppSource 中创建适用于操作的 Dynamics 365。 在 AppSource 中或通过云解决方案提供商 (CSP) 计划中列出或销售产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 1c28b4edab1e1033bf9ac7df6b1249b549bb4fe1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/02/2020
+ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131507"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355133"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
-本主题介绍了如何新建 Dynamics 365 for Operations 产品/服务。 [Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) 是一项企业资源计划 (ERP) 服务，支持高级财务、运营、制造和供应链管理。 Dynamics 365 for Operations 的所有产品/服务都必须通过我们的认证流程。
+本文介绍如何为操作提供新的 Dynamics 365。 [Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) 是一项企业资源计划 (ERP) 服务，支持高级财务、运营、制造和供应链管理。 Dynamics 365 for Operations 的所有产品/服务都必须通过我们的认证流程。
 
-开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 请确保你的帐户已注册加入商业市场计划。
+开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 确保你的帐户已注册加入商业市场计划。
 
 >[!NOTE]
-> 发布产品/服务后，在重新提交产品/服务进行发布之后，将仅在合作伙伴中心和在线商店中更新对产品/服务的编辑。
+> 发布产品/服务后，在重新提交产品/服务进行发布后，对产品/服务的编辑将仅在合作伙伴中心和在线商店中更新。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
@@ -31,44 +31,39 @@ ms.locfileid: "93131507"
 
     ![展示了左侧导航菜单。](./media/new-offer-dynamics-365-operations.png)
 
-> [!NOTE]
-> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
-
 ## <a name="new-offer"></a>新产品/服务
 
 输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
 
 - 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
 - 与发布者 ID 组合的产品 ID 的长度必须为40个字符。
-- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 是 "testpublisherid"，并且你在此处输入了 " **测试/服务-1** "，则 "产品/服务" 网址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
-- 在选择“创建”后，就无法更改产品/服务 ID 了。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 为， `testpublisherid` 并且你输入了 " **测试/服务-1**"，则 "产品/服务" web 地址将为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
+- 选择 " **创建**" 后，不能更改此 ID。
 
 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。
 
 - 此名称没有用于市场，与向客户显示的产品/服务名称和其他值不同。
+- 选择 " **创建**" 后，不能更改此名称。
 
 选择“创建”，以生成产品/服务，并继续操作。
 
 ## <a name="offer-setup"></a>产品/服务设置
 
-### <a name="how-do-you-want-potential-customers-to-interact-with-this-listing-offer"></a>你希望潜在客户如何与此产品/服务一览进行交互？
+### <a name="alias"></a>Alias
 
-选择要用于此产品/服务的选项。
+输入一个描述性名称，此名称将用于在合作伙伴中心内单独引用此产品/服务。 此名称 (使用在创建产品/服务时输入的内容预填充的，) 不会在 marketplace 中使用，并且与向客户显示的产品/服务名称不同。 如果以后要更新产品/服务名称，请参阅产品/ [服务列表](#offer-listing) 页。
 
-#### <a name="get-it-now-free"></a>立即获取(免费)
+### <a name="setup-details"></a>设置详细信息
 
-免费向客户列出你的产品/服务。
+**要了解潜在客户如何与此列表产品/服务进行交互**，请选择要用于此产品/服务的选项。
 
-#### <a name="free-trial-listing"></a>免费试用版（列出）
+- **立即获取 (免费)** –向客户免费列出你的产品/服务。
+- **免费试用 (列出)** -向客户列出你的产品/服务，其中包含免费试用版的链接。 产品/服务一览免费试用版是由你的服务创建、管理和配置，不包含由 Microsoft 管理的订阅。
 
-向客户列出你的产品/服务，其中包含免费试用版的链接。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+    > [!NOTE]
+    > 应用通过试用版链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 不支持使用此令牌对 Microsoft 帐户进行身份验证。
 
-> [!NOTE]
-> 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。
-
-#### <a name="contact-me"></a>与我联系
-
-通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 有关如何配置 CRM 的详细信息，请参阅[潜在顾客](#customer-leads)。
+- **与我联系** -通过将客户关系管理连接 (CRM) 系统，收集客户联系信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 有关如何配置 CRM 的详细信息，请参阅[潜在顾客](#customer-leads)。
 
 ### <a name="test-drive"></a>体验版
 
@@ -88,18 +83,18 @@ ms.locfileid: "93131507"
 
 可使用此页定义用于对市场上的产品/服务进行分组的类别和行业、应用版本以及支持产品/服务的法律合同。
 
-### <a name="category"></a>类别
+### <a name="categories"></a>类别
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用** "。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
-### <a name="industry"></a>行业
+### <a name="industries"></a>行业
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+[!INCLUDE [Industry Taxonomy](includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>应用版本
 
@@ -107,21 +102,21 @@ ms.locfileid: "93131507"
 
 ### <a name="terms-and-conditions"></a>条款和条件
 
-在“条款和条件”字段中，提供你自己的法律条款和条件。 还可以提供能够在其中找到条款和条件的 URL。 客户必须接受这些条款，才能试用产品/服务。
+在此处提供你自己的法律条款和条件。 还可以提供可在其中找到条款和条件的地址。 客户必须接受这些条款才能试用产品/服务。
 
 选择“保存草稿”，然后继续操作。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-此页显示用于列出产品/服务的语言。 目前，“英语(美国)”是唯一的可用选项。
+<!--This page displays the languages in which your offer will be listed. Currently, **English (United States)** is the only available option.
 
-需要为每种语言/市场定义市场详细信息（产品/服务名称、说明、图像等）。 请选择语言/市场名称，以提供此类信息。
+Define marketplace details such as offer name, description, and images for each language/market. Select the language/market name to provide this info.-->This page lets you define offer details such as offer name, description, links, and contacts.
 
 > [!NOTE]
-> 只要产品/服务说明的开头短语是“此应用只提供[非英语语言]版本”，那么产品/服务一览内容（如说明、文档、屏幕截图、使用条款等）就不要求是英语的。 提供实用链接 URL 来提供产品/服务一览内容中使用的语言以外的语言内容，也是可以接受的。
+> 仅提供一种语言的优惠列表详细信息。 如果不要求用英语，则只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”就可以。 还可以提供一个 *有用的链接 URL* 来提供与产品/服务列表内容中所用语言不同的内容。
 
-下面是如何在 Microsoft AppSource 中显示产品/服务的示例：
-
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
+<!-- update screen? -->
 :::image type="content" source="media/example-azure-marketplace-d365-operations.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
@@ -134,18 +129,14 @@ ms.locfileid: "93131507"
 6. 使用条款
 7. 隐私策略
 8. 产品名称
-9. 屏幕截图/视频
-10. 描述
+9. 描述
+10. 屏幕截图/视频
 
-### <a name="name"></a>名称
+### <a name="marketplace-details"></a>市场详细信息
 
-在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预先填充了创建产品/服务时为“产品/服务别名”输入的文本，但可更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
+你在此处输入的 **名称** 将作为产品/服务列表的标题向客户显示。 此字段预先填充了创建产品/服务时为“产品/服务别名”输入的文本，但可更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
 
-### <a name="short-description"></a>简短说明
-
-提供产品/服务的简短说明（最多 100 个字符）。 此说明可在市场搜索结果中使用。
-
-### <a name="description"></a>说明
+提供有关 **搜索结果摘要** 的产品/服务的简短描述，最多100个字符。 此说明可在市场搜索结果中使用。
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -153,51 +144,38 @@ ms.locfileid: "93131507"
 
 [!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
-### <a name="search-keywords"></a>搜索关键字
+你可以根据需要输入最多三个 **搜索关键字** ，帮助客户在 marketplace 中找到你的产品/服务。 为了获得最佳结果，请在说明中也使用这些关键字。
 
-可以视需要选择输入最多三个搜索关键字，以帮助客户在市场中查找你的产品/服务。 为了达到最佳效果，请尝试也在说明中使用这些关键字。
+如果要让客户知道 **应用使用的产品**，请输入最多三个产品名称。
 
-### <a name="products-your-app-works-with"></a>可与应用配合使用的产品
+### <a name="helpprivacy-urls"></a>帮助/隐私 URL
 
-如果你想让客户知道你的应用适用于特定产品，请在此处输入最多三个产品名称。
+输入 **应用的帮助链接** (URL) 客户可以在其中了解有关产品/服务的详细信息。 你的帮助 URL 不能与你的支持 URL 相同。
 
-### <a name="support-urls"></a>支持 URL
+输入 (URL) 到你的组织的隐私策略的 " **隐私策略" 链接** 。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略。
 
-可在此部分提供链接，帮助客户详细了解你的产品/服务。
+### <a name="contact-information"></a>联系信息
 
-#### <a name="help-link"></a>帮助链接
+提供“支持联系人”和“工程联系人”的姓名、电子邮箱和电话号码。 此信息不会向客户显示，但会提供给 Microsoft，并可提供给 CSP 合作伙伴。
 
-输入客户可以在其中详细了解你的产品/服务的 URL。
-
-#### <a name="privacy-policy-url"></a>隐私策略 URL
-
-输入组织的隐私策略的 URL。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略。
-
-### <a name="contacts"></a>联系人
-
-在此部分中，提供“支持联系人”和“工程联系人”的姓名、电子邮件地址和电话号码。 此信息不会向客户显示，但可供 Microsoft 使用，并可能会提供给 CSP 合作伙伴。
-
-在“支持联系人”部分中的“支持 URL”内，提供 CSP 合作伙伴可以在其中找到你产品/服务的支持的 URL。
+在“支持联系人”部分中的“支持 URL”内，提供 CSP 合作伙伴可以在其中找到你产品/服务的支持的 URL。 支持 URL 不能与帮助 URL 相同。
 
 ### <a name="supporting-documents"></a>支持性文档
 
-在此处提供至少一个（最多三个）相关的市场营销文档，如白皮书、小册子、清单或演示文稿。 这些文档必须采用 PDF 格式。
+在此处提供至少一个（最多三个）相关的 PDF 格式的营销文档，如白皮书、小册子、清单或演示文稿。
 
-### <a name="marketplace-images"></a>市场映像
+### <a name="marketplace-media"></a>市场媒体
 
-在此部分中，可以提供在向客户展示你的产品/服务时使用的徽标和图像。 所有图像都必须采用 .png 格式。
+提供向客户显示产品/服务时将使用的徽标和图像。 所有图像都必须为 PNG 格式。
 
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>应用商店徽标
+#### <a name="logos"></a>徽标
 
-提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
-
-- **大型** (从 216 x 216 到 350 x 350 px，必需) 
-- **小写** (48 x 48 px，可选) 
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建其他所需的大小。 稍后，可以选择将此替换为其他映像。
 
 在列表中的不同位置使用这些徽标：
 
@@ -207,36 +185,32 @@ ms.locfileid: "93131507"
 
 #### <a name="screenshots"></a>屏幕截图
 
-添加屏幕截图来展示产品/服务的工作方式。 至少需要一个屏幕截图，最多可添加五个屏幕截图。 所有屏幕截图的大小都必须为 1280 x 720 像素。
+添加屏幕截图来展示产品/服务的工作方式。 至少需要一个屏幕截图，最多可添加五个屏幕截图。 所有屏幕截图都必须为 1280 x 720 像素和 PNG 格式。
 
 #### <a name="videos"></a>视频
 
-可以选择添加最多四个演示产品/服务的视频。 这些视频应在 YouTube 和/或 Vimeo 上托管。 对于每个视频，请输入视频的名称、URL 和视频的缩略图（1280 x 720 像素）
+可以选择添加最多四个演示产品/服务的视频。 视频必须托管在外部站点上。 对于每个名称，请输入视频的名称、地址和视频 (1280 x 720 像素) 视频的缩略图。
 
-#### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
-
-[市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
+有关其他市场列表资源，请参阅[市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)。
 
 选择“保存草稿”，然后继续操作。
 
 ## <a name="availability"></a>可用性
 
-通过此页，可以设置在哪里以及如何提供产品/服务。
+可使用此页定义在何处以及如何提供产品/服务。
 
 ### <a name="markets"></a>市场
 
-使用此部分，可以指定应在其中提供产品/服务的市场。 为此，请选择“编辑市场”，这会显示“市场选择”弹出窗口。
+若要指定提供产品/服务的市场，请选择 " **编辑市场** " 以显示 **市场选择** 弹出窗口。
 
-默认情况下，没有选中任何市场。 请选中至少一个市场来发布产品/服务。 单击“全选”以在每个可能的市场中都提供产品/服务，或选中要添加的特定市场。 完成后，选择“保存”。
+选择至少一个市场。 选择 "全 **选** " 以使你的产品/服务可用于每个市场，或者仅选择所需的特定市场。 完成后，选择“保存”。
 
-你在此处所做的选择仅适用于新的获取；如果某人已在特定市场中获取了你的应用，而你后来又删除了此市场，那么已经在此市场中获取了你的产品/服务的人可以继续使用它，但此市场中的任何新客户都无法获取你的产品/服务。
+此处的选择仅适用于新的收购;如果有人在某个市场上已经有了您的应用程序，后来又删除了该市场，则该市场上已有该产品/服务的人员可以继续使用该产品/服务，但该市场上的新客户都无法获得您的产品/服务。
 
 > [!IMPORTANT]
-> 你有责任满足所有本地法律要求，即使这些要求并没有在此处或合作伙伴中心内列出。
+> 你需要负责满足任何本地法律要求，即使这些要求未在此处或合作伙伴中心列出。 即使选择了所有市场，本地法律、限制或其他因素也可能会阻止某些国家和地区中列出某些产品。
 
-请注意，即使你选中了所有市场，当地的法律和限制或其他因素也可能会阻止特定产品/服务在一些国家和地区列出。
-
-### <a name="preview-audience"></a>预览受众
+### <a name="preview-audience"></a>预览版受众
 
 在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览版。
 
@@ -263,17 +237,17 @@ ms.locfileid: "93131507"
 
 选择“保存草稿”，然后继续操作。
 
-## <a name="test-drive-technical-configuration"></a>体验版技术配置
+<!-- ## Test drive technical configuration
 
-可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
 
-若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
+To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
 
-完成设置测试驱动器后，请选择 " **保存草稿** "，然后继续。
-
+When you've finished setting up your test drive, select **Save draft** before continuing.
+-->
 ## <a name="supplemental-content"></a>补充内容
 
-可使用此页提供有关产品/服务的其他信息，以帮助我们验证你的产品/服务。 此信息不显示给客户，也不在市场上发布。
+此页面允许你提供其他信息以帮助我们验证你的产品/服务。 此信息不显示给客户，也不在市场上发布。
 
 ### <a name="validation-assets"></a>验证资产
 
@@ -285,7 +259,7 @@ ms.locfileid: "93131507"
 
 如果解决方案允许使用本地标准和策略（例如，如果它适应不同国家/地区所需的不同工资规则），请选择“是”。 否则请选择“否”。
 
-### <a name="does-solution-enable-translations"></a>解决方案是否支持翻译？
+### <a name="does-solution-enable-translations"></a>解决方案是否支持翻译?
 
 如果解决方案中的文本可以翻译为其他语言，请回答“是”。 否则请选择“否”。
 
@@ -293,19 +267,19 @@ ms.locfileid: "93131507"
 
 ## <a name="publish"></a>发布
 
-### <a name="submit-offer-to-preview"></a>提交产品/服务以供预览
+### <a name="submit-offer-to-preview"></a>提交产品/服务进行预览
 
-完成产品/服务的所有必需部分后，请选择门户右上角的“审阅和发布”。
+完成产品/服务的所有必需部分后，选择门户右上角的 " **查看并发布** "。
 
-如果你是第一次发布此产品/服务，则可以：
+如果这是第一次发布此产品/服务，则可以：
 
 - 查看产品/服务各个部分的完成状态。
-    - 未开始 - 尚未涉及此部分，应完成。
-    - 未完成 - 此部分包含需要修复的错误或需要提供详细信息。 返回到一个或多个相应部分并进行更新。
-    - 完成 - 此部分已完成，已提供所有必需的数据，并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
+    - **尚未开始** –部分尚未接触，需要完成。
+    - **不完整** –节包含需要修复的错误，或者需要详细信息。 返回相应部分并进行更新。
+    - **Complete** –部分已完成，所有必需的数据都已提供，且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
 - 在“认证说明”部分，除了有助于理解应用的任何补充说明之外，还可以向认证团队提供测试说明，以确保应用得到正确测试。 有关测试说明和完成首次发布的详细信息，请参阅 [AppSource Dynamics 365 财务和操作功能验证](../dynamics-365-finance-operations-functional-validation.md)。
-- 通过选择“提交”来提交要发布的产品/服务。 我们将向你发送一封电子邮件，告知你产品/服务的预览版本可供评审和审批。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务"，将产品/服务发布到公共产品/服务。
+- 通过选择“提交”来提交要发布的产品/服务。 当提供预览版的预览版本时，我们将向你发送电子邮件。 返回到合作伙伴中心，并选择 " **上线** " 将产品/服务发布到公共。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 - [在商业市场中更新现有的套餐](./update-existing-offer.md)

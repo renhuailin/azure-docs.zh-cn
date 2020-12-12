@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005533"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357443"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -74,9 +74,9 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -286,3 +286,4 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 - [存储帐户概述](storage-account-overview.md)
 - [升级到常规用途 v2 存储帐户](storage-account-upgrade.md)
 - [将 Azure 存储帐户移到另一个区域](storage-account-move.md)
+- [恢复删除的存储帐户](storage-account-recover.md)

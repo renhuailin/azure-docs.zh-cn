@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f31cf22ae8814975dcee92c33026d223275cf121
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375213"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356542"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>将指标上载到 Azure Monitor
 
@@ -26,7 +26,7 @@ ms.locfileid: "92375213"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在继续操作之前，请确保已创建了所需的服务主体，并已将其分配到适当的角色。 有关详细信息，请参阅：
 * [创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)。
@@ -47,7 +47,7 @@ ms.locfileid: "92375213"
 ::: zone pivot="client-operating-system-windows-command"
 
 ```console
-SET SPN_AUTHORITY='https://login.microsoftonline.com'
+SET SPN_AUTHORITY=https://login.microsoftonline.com
 ```
 
 ::: zone-end

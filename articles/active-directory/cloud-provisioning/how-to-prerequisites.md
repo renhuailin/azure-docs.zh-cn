@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173696"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355850"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云预配并将其作为标识解决方案。
@@ -51,11 +51,23 @@ ms.locfileid: "96173696"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 指定一台已加入域的、运行 Windows Server 2012 R2 或更高版本、至少有 4-GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器。
+ 1. 指定一台已加入域的、运行 Windows Server 2012 R2 或更高版本、至少有 4-GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器。
 
-1. 本地服务器上的 PowerShell 执行策略必须设置为 Undefined 或 RemoteSigned。
+ >[!NOTE]
+ > 请注意，定义范围筛选器会导致主机服务器上的内存开销。  如果未使用范围筛选器，则不会产生额外的内存开销。 最小4GB 最多支持在范围筛选器中定义的最多12个组织单位的同步。 如果需要同步其他 Ou，则需要增加最小内存量。 使用下表作为指南：
+ >
+ >  
+ >  | 范围筛选器中的 Ou 数| 所需的最低内存|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5.5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
+ 2. 本地服务器上的 PowerShell 执行策略必须设置为 Undefined 或 RemoteSigned。
+
+ 3. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保代理可以通过以下端口向 Azure AD 发出出站请求：
 
         | 端口号 | 用途 |
@@ -100,7 +112,20 @@ ms.locfileid: "96173696"
 
 1. 重新启动服务器。
 
+## <a name="known-limitations"></a>已知的限制
+下面是已知的限制：
 
+### <a name="delta-synchronization"></a>增量同步
+
+- 增量同步的组作用域筛选不支持超过1500个成员。
+- 如果删除用作组范围筛选器一部分的组，则不会删除作为组成员的用户。 
+- 重命名作用域内的 OU 或组时，delta sync 不会删除用户。
+
+### <a name="provisioning-logs"></a>“预配”日志
+- 预配日志并不清楚地区分创建和更新操作。  你可能会看到用于执行更新的创建操作和用于创建的更新操作。
+
+### <a name="group-re-naming-or-ou-re-naming"></a>组重新命名或 OU 重新命名
+- 如果重命名 AD 中某个给定配置范围内的组或 OU，云预配作业将无法识别 AD 中的名称更改。 该作业不会进入隔离状态，并且将保持正常运行。
 
 
 ## <a name="next-steps"></a>后续步骤 

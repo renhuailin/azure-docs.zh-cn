@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339502"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357596"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB 是一种可扩展、全球分布式、完全托管的数据库�
 
 * 在 Azure Cosmos DB 中，顶级层次结构无需表示集合，因为集合名称已存在。 此功能大幅简化了 JSON 结构。 以下示例展示了 Couchbase 与 Azure Cosmos DB 之间的数据模型差别：
 
-   **Couchbase** ：文档 ID = "99FF4444"
+   **Couchbase**：文档 ID = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Azure Cosmos DB 是一种可扩展、全球分布式、完全托管的数据库�
     }
    ```
 
-   **Azure Cosmos DB** ：引用文档中的“ID”，如下所示
+   **Azure Cosmos DB**：引用文档中的“ID”，如下所示
 
     ```json
     {
@@ -181,7 +181,7 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-就这么简单，你现在可以将应用程序用于 Azure Cosmos DB。 本文档中所述示例的完整代码示例已在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub 存储库中提供。
+就这么简单，你现在可以将应用程序用于 Azure Cosmos DB。 本文档中所述示例的完整代码示例已在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub 存储库中提供。
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>用作文档存储库的 Couchbase，使用 N1QL 查询
 
@@ -222,9 +222,9 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub 存储库中提供了完整的代码示例。
+然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) GitHub 存储库中提供了完整的代码示例。
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>用作键/值对的 Couchbase
 
@@ -313,7 +313,7 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 
 1. 考虑使用“/ID”作为主键，以确保可以直接在特定的分区中执行查找操作。 创建一个集合，并指定“/ID”作为分区键。
 
-1. 完全关闭索引功能。 由于执行的是查找操作，因此不会带来任何索引开销。 若要禁用索引功能，请登录到 Azure 门户并转到“Azure Cosmos DB 帐户”。 打开“数据资源管理器”，选择你的 **数据库** 和 **容器** 。 打开“规模和设置”选项卡，然后选择“索引策略”。  索引策略目前如下所示：
+1. 完全关闭索引功能。 由于执行的是查找操作，因此不会带来任何索引开销。 若要禁用索引功能，请登录到 Azure 门户并转到“Azure Cosmos DB 帐户”。 打开“数据资源管理器”，选择你的 **数据库** 和 **容器**。 打开“规模和设置”选项卡，然后选择“索引策略”。  索引策略目前如下所示：
     
    ```json
    {
@@ -351,9 +351,9 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub 存储库中提供了完整的代码示例。
+然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) GitHub 存储库中提供了完整的代码示例。
 
 ## <a name="data-migration"></a>数据迁移
 
