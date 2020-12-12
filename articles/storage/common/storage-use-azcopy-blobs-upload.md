@@ -4,16 +4,16 @@ description: 本文包含可帮助你将文件上传到 Azure Blob 存储的 AzC
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 11d40805cda2ea2e3693c6c93034ae19f1f0fcc0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907462"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358752"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 将文件上传到 Azure Blob 存储
 
@@ -135,9 +135,11 @@ ms.locfileid: "96907462"
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在某个日期和时间之后修改的文件 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>上传在日期和时间之前或之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或选项一起使用 `--include-after` 。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+
+以下示例上传在指定日期或指定日期之后修改的文件。
 
 |    |     |
 |--------|-----------|
@@ -189,7 +191,7 @@ ms.locfileid: "96907462"
 - [示例：下载](storage-use-azcopy-blobs-download.md)
 - [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
 - [示例：同步](storage-use-azcopy-blobs-synchronize.md)
-- [示例： Amazon S3 存储桶](storage-use-azcopy-s3.md)
+- [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
 - [示例： Azure 文件](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

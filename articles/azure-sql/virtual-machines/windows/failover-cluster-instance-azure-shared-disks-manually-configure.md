@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556380"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359347"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上创建 FCI 和 Azure 共享磁盘 (SQL Server) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "94556380"
 在完成本文中的说明之前，你应该已经：
 
 - Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
-- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 [可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md) 和 [邻近组](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (支持 PPGs) 。 如果使用 PPG，则所有节点必须位于同一个组中。
+- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 对于超磁盘，支持高级 SSD 和[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) (PPGs) 支持的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近位置组](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)。 如果使用 PPG，则所有节点必须位于同一个组中。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 
@@ -153,15 +153,15 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“ **下一步** ”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“ **下一步** ”。
-1. 在 " **测试选择** " 下，选择 " **存储** " *以外* 的所有测试
+1. 选择“**下一页**”。
+1. 在 "**测试选择**" 下，选择 "**存储**"*以外* 的所有测试
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
-测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 " **更多操作** " "  >  **移动核心群集资源**  >  " " **选择节点** "，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
+测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 
@@ -187,7 +187,7 @@ FCI 数据目录需位于 Azure 共享磁盘上。
 
 1. 安装程序在第一个节点上安装 FCI 后，请使用 RDP 连接到第二个节点。
 
-1. 打开 **SQL Server 安装中心** ，然后选择 " **安装** "。
+1. 打开 **SQL Server 安装中心**，然后选择 " **安装**"。
 
 1. 选择“将节点添加到 SQL Server 故障转移群集”。 按照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
 

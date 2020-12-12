@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020086"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359194"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
-将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
+如果你有非 Microsoft 帐户（例如适用于 Google、Facebook 或 GitHub），可以将它们添加到 Microsoft Authenticator 应用进行双重验证。 Microsoft Authenticator 应用适用于使用双重验证的任何应用，以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。
@@ -130,7 +130,7 @@ ms.locfileid: "96020086"
 
 1. 在电脑上，选择“双因素身份验证”页中的“使用应用进行设置” 。
 
-2. 保存可便于在失去访问权限时恢复帐户的恢复代码，再选择“下一步”。 
+2. 保存可便于在失去访问权限时恢复帐户的恢复代码，再选择“下一步”。
 
     若要保存代码，可以将代码下载到设备、打印打印件，或将代码复制到密码管理器工具中。
 

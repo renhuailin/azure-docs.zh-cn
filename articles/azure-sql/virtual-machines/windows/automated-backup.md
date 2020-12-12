@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556550"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358412"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>用于 Azure 虚拟机（资源管理器）的自动备份 v2
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,18 +35,18 @@ ms.locfileid: "94556550"
 ## <a name="prerequisites"></a>先决条件
 若要使用自动备份 v2，请查看以下先决条件：
 
-**操作系统** ：
+**操作系统**：
 
 - Windows Server 2012 R2 或更高版本
 
-**SQL Server 版本** ：
+**SQL Server 版本**：
 
 - SQL Server 2016 或更高版本：Developer、Standard 或 Enterprise
 
 > [!NOTE]
 > 有关 SQL Server 2014，请参阅[适用于 SQL Server 2014 的自动备份](automated-backup-sql-2014.md)。
 
-**数据库配置** ：
+**数据库配置**：
 
 - 目标用户数据库必须使用完整恢复模式。 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅[使用完整恢复模型的备份](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))。 
 - 已向 [完全管理模式下](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)的 SQL IaaS 代理扩展注册 SQL Server VM。 
@@ -83,8 +84,8 @@ ms.locfileid: "94556550"
 
 在星期一，用户使用以下设置启用了自动备份 v2：
 
-- 备份计划： **手动**
-- 完整备份频率： **每周**
+- 备份计划：**手动**
+- 完整备份频率：**每周**
 - 完整备份开始时间：01:00
 - 完整备份时段：1 小时
 
@@ -158,7 +159,7 @@ $resourcegroupname = "resourcegroupname"
 
 如果已安装 SQL Server IaaS 代理扩展，应会看到其列为“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的“ProvisioningState”应显示“成功”。 
 
-如果未安装或未能预配该扩展，可使用以下命令进行安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region** )。
+如果未安装或未能预配该扩展，可使用以下命令进行安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region**)。
 
 ```powershell
 $region = "EASTUS2"

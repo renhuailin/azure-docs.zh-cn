@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a07f0416f26f81e8a2b6d22c79047dc8651bb78c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168786"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359874"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>为 AG VNN 侦听器配置负载均衡器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -86,7 +87,7 @@ ms.locfileid: "92168786"
 
 1. 选择 **添加** 。
 
-1. 在 "**添加运行状况探测**" <span id="probe"> </span>窗格上，设置以下运行状况探测参数：
+1. 在 "**添加运行状况探测**" <span id="probe"></span>窗格上，设置以下运行状况探测参数：
 
    - 名称：运行状况探测的名称。
    - **协议**：TCP。
@@ -94,7 +95,7 @@ ms.locfileid: "92168786"
    - **时间间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
 ## <a name="set-load-balancing-rules"></a>设置负载均衡规则
 
@@ -107,14 +108,14 @@ ms.locfileid: "92168786"
    - **名称**：负载均衡规则的名称。
    - **前端 IP 地址**： SQL Server FCI 或 AG 侦听器的群集网络资源的 ip 地址。
    - **端口**： SQL Server TCP 端口。 默认实例端口为 1433。
-   - **后端端口**：启用**浮动 IP (直接服务器返回) **时，**端口值与端口值**相同。
+   - **后端端口**：启用 **浮动 IP (直接服务器返回)** 时，**端口值与端口值** 相同。
    - **后端池**：前面配置的后端池名称。
    - **运行状况探测**：前面配置的运行状况探测。
    - **会话持久性**：无。
    - **空闲超时(分钟)** ：4.
    - **浮动 IP (直接服务器返回)** ：已启用。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
 ## <a name="configure-cluster-probe"></a>配置群集探测
 
@@ -158,10 +159,10 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 测试群集资源的故障转移以验证群集功能。 
 
 
-请执行以下步骤：
+执行以下步骤：
 
 1. 打开 [SQL Server Management Studio) ](/sql/ssms/download-sql-server-management-studio-ssms) 并连接到可用性组侦听器。 
-1. 在**对象资源管理器**中展开**Always On 可用性组**。 
+1. 在 **对象资源管理器** 中展开 **Always On 可用性组**。 
 1. 右键单击该可用性组，然后选择 " **故障转移**"。 
 1. 按照向导提示操作，将可用性组故障转移到辅助副本。 
 

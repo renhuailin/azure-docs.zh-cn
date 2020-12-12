@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: bb7331747db301be5db00d550eec211f75257e29
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545632"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360027"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +45,7 @@ ms.locfileid: "96545632"
 
 若要向扩展注册 SQL Server VM，需要： 
 
-- 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
+- [Azure 订阅](https://azure.microsoft.com/free/)。
 - Azure 资源模型 [Windows Server 2008 (或更高版本) ](../../../virtual-machines/windows/quick-create-portal.md) 具有 [SQL Server 2008 (或更高) 版本 ](https://www.microsoft.com/sql-server/sql-server-downloads) 的虚拟机部署到公共或 Azure 政府云。 
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell)  (5.0 ](/powershell/azure/install-az-ps)。 
 
@@ -236,7 +237,7 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户验证注册状态，请执行以下步骤： 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果你的 SQL Server VM 未在此处列出，则它可能尚未注册到 SQL IaaS 代理扩展。 
 1. 查看“状态”下的值。 如果 **状态** 为 " **成功**"，则 SQL Server VM 已成功注册到 SQL IaaS 代理扩展。 

@@ -3,12 +3,12 @@ title: 模板函数 - 数值
 description: 描述要在 Azure 资源管理器模板中使用的函数 (ARM 模板) 使用数字。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1484826b2377fe2adb2ac6ae2ab3ee6243b26c2c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920451"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359704"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 模板的数值函数
 
@@ -33,9 +33,9 @@ ms.locfileid: "96920451"
 
 返回提供的两个整数的总和。 `add`Bicep 中不支持此函数。 请改用 `+` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 |operand1 |是 |int |被加数。 |
 |operand2 |是 |int |加数。 |
@@ -106,7 +106,7 @@ output addResult int = first + second
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | string | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到的从零开始的迭代值的数字。 |
@@ -178,9 +178,9 @@ output addResult int = first + second
 
 返回提供的两个整数在整除后的商。 `div`Bicep 中不支持此函数。 请改用 `/` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
@@ -247,11 +247,11 @@ output addResult int = first / second
 
 `float(arg1)`
 
-将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。 `float`Becip 中不支持此函数。  请参阅 [支持32位整数以外的数值类型](https://github.com/Azure/bicep/issues/486)。
+将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。 `float`Bicep 中不支持此函数。  请参阅 [支持32位整数以外的数值类型](https://github.com/Azure/bicep/issues/486)。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
@@ -294,7 +294,7 @@ output addResult int = first / second
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
@@ -353,7 +353,7 @@ output inResult int = int(stringToConvert)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -423,7 +423,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -562,9 +562,9 @@ output modResult int = first % second
 
 返回提供的两个整数的积。 `mul`Bicep 中不支持此函数。 请改用 `*` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被乘数。 |
 | operand2 |是 |int |乘数。 |
@@ -633,9 +633,9 @@ output mulResult int = first * second
 
 返回提供的两个整数在相减后的结果。 `sub`Bicep 中不支持此函数。 请改用 `-` 运算符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |

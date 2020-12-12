@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553520"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359245"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>通过 SQL Server IaaS 代理扩展自动进行管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,13 +36,13 @@ SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上的 SQL Se
 
 SQL Server IaaS 代理扩展为 Azure Vm 上的 SQL Server 提供了很多好处： 
 
-- **功能优势** ：扩展功能使你能够更好地利用一些自动化功能权益，例如门户管理、许可证灵活性、自动备份、自动修补等。 有关详细信息，请参阅本文后面的 [功能权益](#feature-benefits) 。 
+- **功能优势**：扩展功能使你能够更好地利用一些自动化功能权益，例如门户管理、许可证灵活性、自动备份、自动修补等。 有关详细信息，请参阅本文后面的 [功能权益](#feature-benefits) 。 
 
-- **符合性** ：该扩展提供了一种简化的方法，使您能够在产品条款中指定 Azure 混合权益已启用。 此过程无需为每个资源管理许可注册表单。  
+- **符合性**：该扩展提供了一种简化的方法，使您能够在产品条款中指定 Azure 混合权益已启用。 此过程无需为每个资源管理许可注册表单。  
 
-- **免费** ：所有三个可管理性模式中的扩展都是完全免费的。 扩展或更改管理模式不会产生额外的费用。 
+- **免费**：所有三个可管理性模式中的扩展都是完全免费的。 扩展或更改管理模式不会产生额外的费用。 
 
-- **简化的许可证管理** ：扩展可简化 SQL Server 许可证管理，并使你能够使用 [Azure 门户](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell，使用 Azure 混合权益来快速确定 SQL Server vm： 
+- **简化的许可证管理**：扩展可简化 SQL Server 许可证管理，并使你能够使用 [Azure 门户](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell，使用 Azure 混合权益来快速确定 SQL Server vm： 
 
    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -70,7 +71,7 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 下表详细说明了这些优点： 
 
 
-| 功能 | 说明 |
+| 功能 | 描述 |
 | --- | --- |
 | **门户管理** | 在 [门户](manage-sql-vm-portal.md)中取消锁定管理，以便你可以在一个位置查看所有 SQL Server vm，以便可以直接从门户中启用和禁用 SQL 特定功能。 
 | **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](frequently-asked-questions-faq.md#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 |
@@ -100,7 +101,7 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 
 ## <a name="installation"></a>安装
 
-向 SQL Server IaaS 代理扩展注册 SQL Server VM，以在订阅中创建 **SQL 虚拟机**_资源_ ，该资源与虚拟机资源是 _单独_ 的资源。 从扩展中取消注册 SQL Server VM 将删除 **SQL 虚拟机**_资源_ ，但不会删除实际的虚拟机。
+向 SQL Server IaaS 代理扩展注册 SQL Server VM，以在订阅中创建 **SQL 虚拟机**_资源_，该资源与虚拟机资源是 _单独_ 的资源。 从扩展中取消注册 SQL Server VM 将删除 **SQL 虚拟机**_资源_，但不会删除实际的虚拟机。
 
 通过 Azure 门户部署 SQL Server VM Azure Marketplace 映像会自动向该扩展注册 SQL Server VM。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则必须使用 SQL IaaS 扩展注册 SQL Server VM，以解锁功能权益。 
 
@@ -133,7 +134,7 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 
 验证是否已在 Azure 门户中安装了该扩展。 
 
-在 "虚拟机" 窗格中选择 " **所有设置** "，然后选择 " **扩展** "。 应看到列出“SqlIaasExtension”扩展。
+在 "虚拟机" 窗格中选择 " **所有设置** "，然后选择 " **扩展**"。 应看到列出“SqlIaasExtension”扩展。
 
 ![Azure 门户中 SQL Server IaaS 代理扩展的状态](./media/sql-server-iaas-agent-extension-automate-management/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -175,7 +176,7 @@ SQL IaaS 代理扩展仅支持：
 
 **在 SQL IaaS 代理扩展中注册时，默认的管理模式是什么？**
 
-在 SQL IaaS 代理扩展中注册时，默认管理模式为 *轻型* 。 如果在向扩展注册时未设置 "SQL Server 管理" 属性，则该模式将设置为轻型，你的 SQL Server 服务将不会重新启动。 建议先向轻型模式下的 SQL IaaS 代理扩展注册，然后在维护时段内升级到完整。 同样，使用 [自动注册功能](sql-agent-extension-automatic-registration-all-vms.md)时，默认管理也是轻型。
+在 SQL IaaS 代理扩展中注册时，默认管理模式为 *轻型*。 如果在向扩展注册时未设置 "SQL Server 管理" 属性，则该模式将设置为轻型，你的 SQL Server 服务将不会重新启动。 建议先向轻型模式下的 SQL IaaS 代理扩展注册，然后在维护时段内升级到完整。 同样，使用 [自动注册功能](sql-agent-extension-automatic-registration-all-vms.md)时，默认管理也是轻型。
 
 **向 SQL IaaS 代理扩展注册需要满足哪些先决条件？**
 

@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556499"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359908"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +53,7 @@ ms.locfileid: "94556499"
 
 
 ## <a name="create-cluster"></a>创建群集
-将 SQL Server Vm 注册到 SQL IaaS 代理扩展后，可以将 SQL Server Vm 加入 *SqlVirtualMachineGroups* 。 此资源定义 Windows 故障转移群集的元数据。 元数据包括版本、完全限定的域名、用于管理群集和 SQL 服务的 Active Directory 帐户，以及用作云见证的存储帐户。 
+将 SQL Server Vm 注册到 SQL IaaS 代理扩展后，可以将 SQL Server Vm 加入 *SqlVirtualMachineGroups*。 此资源定义 Windows 故障转移群集的元数据。 元数据包括版本、完全限定的域名、用于管理群集和 SQL 服务的 Active Directory 帐户，以及用作云见证的存储帐户。 
 
 将 SQL Server VM 添加到 *SqlVirtualMachineGroups* 资源组会启动 Windows 故障转移群集服务，以便创建群集并将这些 SQL Server VM 加入该群集。 此步骤通过“101-sql-vm-ag-setup”快速启动模板自动执行。 可通过执行以下步骤实现它：
 
@@ -123,7 +124,7 @@ Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 �
    | 设置 | 值 |
    | --- | --- |
    | **名称** |输入用于表示负载均衡器的文本名称。 例如，输入“sqlLB”。 |
-   | 类型 |**内部** ：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部** ：可让应用程序通过公共 Internet 连接连接到可用性组。 |
+   | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
    | **虚拟网络** | 选择 SQL Server 实例所在的虚拟网络。 |
    | **子网** | 选择 SQL Server 实例所在的子网。 |
    | IP 地址分配 |**静态** |
@@ -192,7 +193,7 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>常见错误
 本部分讨论一些已知问题及其可能的解决方法。 
 
-可用性 **组 "" 的可用性组侦听器 \<AG-Name> 已存在** ：用于可用性组侦听器的 Azure 快速入门模板中所选的可用性组已包含一个侦听器。 它在物理上位于可用性组内，或者其元数据仍位于 SQL IaaS 代理扩展中。 使用 [PowerShell](#remove-listener) 删除该侦听程序，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
+可用性 **组 "" 的可用性组侦听器 \<AG-Name> 已存在**：用于可用性组侦听器的 Azure 快速入门模板中所选的可用性组已包含一个侦听器。 它在物理上位于可用性组内，或者其元数据仍位于 SQL IaaS 代理扩展中。 使用 [PowerShell](#remove-listener) 删除该侦听程序，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
 
 **连接仅适用于主副本** 此行为可能来自已导致内部负载均衡器配置处于不一致状态的失败的 **101-aglistener** 模板部署。 验证后端池是否列出可用性集，并且是否存在运行状况探测规则和负载均衡规则。 如果缺少任何内容，则内部负载均衡器的配置将处于不一致状态。 
 

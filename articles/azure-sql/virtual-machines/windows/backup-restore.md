@@ -8,17 +8,18 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: f3723c792dfe962f2cbf16e3b167faf66c50a92e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4a102fc805750f7dd460c1878a730b9ca4ce1c37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327451"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359364"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +36,7 @@ ms.locfileid: "96327451"
 |---|---|---|
 | [自动备份](#automated) | 2014<br/> 2016<br/> 2017 | 使用自动备份可以针对 SQL Server VM 上的所有数据库计划定期备份。 备份在 Azure 存储中最多存储 30 天。 从 SQL Server 2016 开始，自动备份 v2 提供更多选项，例如，配置手动计划，以及完整备份和日志备份的频率。 |
 | [适用于 SQL VM 的 Azure 备份](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure 备份为 Azure VM 上的 SQL Server 提供企业级备份功能。 使用此服务，可以集中管理多个服务器和数千个数据库的备份。 可在门户中将数据库还原到特定的时间点。 此服务提供可将备份保留数年之久的可自定义保留策略。 |
-| [手动备份](#manual) | All | 根据所用的 SQL Server 版本，可通过不同的方法手动备份和还原 Azure VM 上的 SQL Server。 在这种情况下，你需要负责指定数据库的备份方式和存储位置，并管理这些备份。 |
+| [手动备份](#manual) | 全部 | 根据所用的 SQL Server 版本，可通过不同的方法手动备份和还原 Azure VM 上的 SQL Server。 在这种情况下，你需要负责指定数据库的备份方式和存储位置，并管理这些备份。 |
 
 以下部分更详细地介绍了每个选项。 本文的最后一个部分以功能矩阵的形式提供了摘要。
 

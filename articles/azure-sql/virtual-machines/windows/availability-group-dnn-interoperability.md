@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
-ms.openlocfilehash: 567e1696bb06b3237c30c45384b8049ff82b5848
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168789"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359398"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>功能与 AG 和 DNN 侦听器的互操作性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,7 +119,7 @@ Filestream 是支持的，但不适用于用户通过使用 Windows 文件 API �
 
 - DNN 是否支持多子网群集？
 
-   是的。 群集会将 DNS 中的 DNN 绑定到可用性中所有副本的物理 IP 地址，而不考虑子网。 SQL 客户端尝试 DNS 名称的所有 IP 地址，而不考虑子网。 
+   是。 群集会将 DNS 中的 DNN 绑定到可用性中所有副本的物理 IP 地址，而不考虑子网。 SQL 客户端尝试 DNS 名称的所有 IP 地址，而不考虑子网。 
 
 
 

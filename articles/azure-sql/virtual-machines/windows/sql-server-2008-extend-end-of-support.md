@@ -6,6 +6,7 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553516"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359160"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,9 +67,9 @@ SQL Server 需要使用应用一致的 Azure Site Recovery 快照来保证成功
 
 适用于 Azure VM 上的 EOS SQL Server 的灾难恢复解决方案如下：
 
-- **SQL Server 备份** ：使用 Azure 备份，通过 15 分钟的 RPO 和时点恢复，帮助保护 EOS SQL Server 2008 和 2008 R2 不受勒索软件侵害、不遭到意外删除和损坏。 有关详细信息，请参阅[本文](../../../backup/sql-support-matrix.md#scenario-support)。
-- **日志传送** ：你可以在另一个区域或 Azure 区域中创建一个日志传送副本，并通过连续还原来减少 RTO。 需要手动配置日志传送。
-- **Azure Site Recovery** ：你可以通过 Azure Site Recovery 复制在区域和区域之间复制 VM。 SQL Server 需要使用应用一致的快照来保证在发生灾难时成功恢复。 对于 EOS SQL Server 灾难恢复，Azure Site Recovery 提供最小 1 小时的 RPO，以及 2 小时（加上 SQL Server 恢复时间）的 RTO。
+- **SQL Server 备份**：使用 Azure 备份，通过 15 分钟的 RPO 和时点恢复，帮助保护 EOS SQL Server 2008 和 2008 R2 不受勒索软件侵害、不遭到意外删除和损坏。 有关详细信息，请参阅[本文](../../../backup/sql-support-matrix.md#scenario-support)。
+- **日志传送**：你可以在另一个区域或 Azure 区域中创建一个日志传送副本，并通过连续还原来减少 RTO。 需要手动配置日志传送。
+- **Azure Site Recovery**：你可以通过 Azure Site Recovery 复制在区域和区域之间复制 VM。 SQL Server 需要使用应用一致的快照来保证在发生灾难时成功恢复。 对于 EOS SQL Server 灾难恢复，Azure Site Recovery 提供最小 1 小时的 RPO，以及 2 小时（加上 SQL Server 恢复时间）的 RTO。
 
 ## <a name="security-patching"></a>安全修补
 

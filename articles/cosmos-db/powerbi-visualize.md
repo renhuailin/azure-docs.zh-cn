@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339727"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359857"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "93339727"
 
 * [下载最新版本的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
-* 从 GitHub 下载[示例火山数据](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
+* 从 GitHub 下载[示例火山数据](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json)。
 
 * [创建一个 Azure Cosmos 数据库帐户](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)并使用 [Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。 导入数据时，请考虑数据迁移工具中源和目标的以下设置：
 
@@ -92,13 +92,13 @@ ms.locfileid: "93339727"
    
 7. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的“只读密钥”  边栏选项卡中的“主密钥”  框中取得密钥。 输入相应的密钥，然后单击“连接”  。
    
-   我们建议在生成报表时使用只读密钥。 这可以防止不必要地泄露主键来潜在安全风险。 可以从 Azure 门户的 **密钥** 边栏选项卡获取只读密钥。 
+   我们建议在生成报表时使用只读密钥。 这可防止主密钥不必要地暴露于潜在的安全风险中。 可以从 Azure 门户的 **密钥** 边栏选项卡获取只读密钥。 
     
 8. 帐户成功连接后，将出现“导航器”窗格  。 “导航器”  会在帐户下显示数据库的列表。
 
-9. 单击并展开作为报表数据来源的数据库，并选择 **volcanodb** （你的数据库名称可能不同）。   
+9. 单击并展开作为报表数据来源的数据库，并选择 **volcanodb**（你的数据库名称可能不同）。   
 
-10. 现在，选择包含要检索的数据的集合，选择 **volcano1** （你的集合名称可能不同）。
+10. 现在，选择包含要检索的数据的集合，选择 **volcano1**（你的集合名称可能不同）。
     
     预览窗格显示“记录”  项的列表。  文档在 Power BI 中表示为一种“记录”  类型。 同样，文档内部的嵌套 JSON 块也是“记录”  。
     
@@ -131,7 +131,7 @@ ms.locfileid: "93339727"
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表":::
 
-1. 若要平展坐标数组，请创建一个名为 LatLong 的 **自定义列** 。  选择“添加列”  功能区并单击“自定义列”  。  此时将显示“自定义列”  窗口。
+1. 若要平展坐标数组，请创建一个名为 LatLong 的 **自定义列**。  选择“添加列”  功能区并单击“自定义列”  。  此时将显示“自定义列”  窗口。
 
 1. 为新列提供一个名称，例如 LatLong。
 
@@ -160,7 +160,7 @@ ms.locfileid: "93339727"
 
 可以在 Power BI Desktop 报表视图中开始创建报表来将数据可视化。  可以通过将字段拖放到“报表”  画布中来创建报表。
 
-:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop 报表视图-拖放必填字段":::
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop 报表视图 - 拖放必填字段":::
 
 在“报表”视图中，应找到：
 
@@ -199,7 +199,7 @@ ms.locfileid: "93339727"
 
 若要创建可共享的仪表板，请单击 PowerBI 报表上的“固定活动页”按钮。
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="如何将报表固定到 PowerBI.com 的屏幕截图":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="演示如何将报表固定到 PowerBI.com 的屏幕截图":::
 
 然后按照[从报表固定磁贴](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)中的说明创建新仪表板。 
 

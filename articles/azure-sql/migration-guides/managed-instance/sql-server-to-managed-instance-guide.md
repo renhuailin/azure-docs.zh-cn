@@ -1,5 +1,5 @@
 ---
-title: SQL Server SQL 托管实例-迁移指南
+title: SQL Server SQL 托管实例：迁移指南
 description: 按照此指南将 SQL Server 数据库迁移到 Azure SQL 托管实例。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326890"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358888"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>迁移指南： SQL 托管实例 SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -117,7 +117,7 @@ ms.locfileid: "96326890"
 1. 如果你是第一次执行此项，请在订阅中注册 **microsoft.datamigration** 资源提供程序。
 1. 在所选的所需位置创建 Azure 数据库迁移服务实例 (最好与目标 Azure SQL 托管实例在同一区域中) 并选择现有虚拟网络，或创建新的虚拟网络来托管 DMS 实例。
 1. 创建 DMS 实例后，创建新的迁移项目，并将源服务器类型指定为 **SQL Server** ，将目标服务器类型指定为 **Azure SQL 数据库托管实例**。 选择 "项目创建" 边栏选项卡-"联机" 或 "脱机数据迁移" 中的活动类型。 
-1.  在 "迁移 **源** 详细信息" 页上指定源 SQL Server 详细信息，并在 " **迁移目标** 详细信息" 页上指定目标 Azure SQL 托管实例详细信息。 选择“**下一页**”。
+1.  在 "迁移 **源** 详细信息" 页上指定源 SQL Server 详细信息，并在 " **迁移目标** 详细信息" 页上指定目标 Azure SQL 托管实例详细信息。 选择“下一步”  。
 1. 选择要迁移的数据库。 
 1. 提供配置设置以指定包含数据库备份文件的 **SMB 网络共享** 。 通过 DMS 使用 Windows 用户凭据来访问网络共享。 提供 **Azure 存储帐户的详细信息**。 
 1. 查看迁移摘要，然后选择 " **运行迁移**"。 然后，你可以监视迁移活动，并检查数据库迁移的进度。
@@ -130,7 +130,7 @@ ms.locfileid: "96326890"
 
 ### <a name="backup-and-restore"></a>备份和还原 
 
-Azure SQL 托管实例的主要功能之一是在 Azure 存储上存储的数据库备份 () 文件的本机还原 `.bak` 。 [Azure Storage](https://azure.microsoft.com/services/storage/) 备份和还原是基于数据库大小的异步操作。 
+Azure SQL 托管实例的主要功能之一是在 Azure 存储上存储的数据库备份 () 文件的本机还原 `.bak` 。 [](https://azure.microsoft.com/services/storage/) 备份和还原是基于数据库大小的异步操作。 
 
 下图高度概括了该过程：
 

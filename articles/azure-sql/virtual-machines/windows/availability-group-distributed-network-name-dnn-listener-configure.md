@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: abfcd6a13bc5e8ad262fe47111eb680ad00a34df
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168819"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359432"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>为可用性组配置 DNN 侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +37,7 @@ DNN 侦听器功能当前仅在 Windows Server 2016 和更高版本上从 SQL Se
 
 当与 Always On 可用性组 [vm 上的 SQL Server](availability-group-overview.md)一起使用时，分布式网络名称 (DNN) 侦听器将替换传统虚拟网络名称 (VNN) 可用性组侦听器。 这无需使用 Azure 负载均衡器来路由流量，从而简化了部署、维护和改进故障转移。 
 
-使用 DNN 侦听器来替换现有的 VNN 侦听器，或将其与现有的 VNN 侦听器结合使用，以便可用性组具有两个不同的连接点：一个使用 VNN 侦听器名称，一个使用侦听器 (名称，在非默认) ，另一个使用 DNN 侦听器名称和端口。 
+请使用 DNN 侦听器来替代现有的 VNN 侦听器，或者将它与现有的 VNN 侦听器一起使用，使你的可用性组有两个不同的连接点 - 一个使用 VNN 侦听器名称（如果非默认，则还使用 VNN 侦听器端口），而另一个使用 DNN 侦听器名称和端口。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,7 +123,7 @@ DNN 侦听器功能当前仅在 Windows Server 2016 和更高版本上从 SQL Se
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-展开 " **可用性组侦听器** " [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms) ，查看 DNN 侦听器： 
+展开 " **可用性组侦听器** " [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) ，查看 DNN 侦听器： 
 
 :::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-in-ssms.png" alt-text="查看 SQL Server Management Studio (SSMS 的可用性组侦听器下的 DNN 侦听器) ":::
 
@@ -136,7 +137,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 的值 `1` `is_distributed_network_name` 指示侦听器是 (DNN) 侦听器的分布式网络名称： 
 
-:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="查看 SQL Server Management Studio (SSMS 的可用性组侦听器下的 DNN 侦听器) ":::
+:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="使用 sys.availability_group_listeners 标识值为1的 DNN 侦听器 is_distributed_network_name":::
 
 
 ## <a name="update-connection-string"></a>更新连接字符串
@@ -150,7 +151,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 若要测试故障转移，请执行以下步骤： 
 
 1. 使用 [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms)连接到 DNN 侦听器或某个副本。 
-1. 在**对象资源管理器**中展开**Always On 可用性组**。 
+1. 在 **对象资源管理器** 中展开 **Always On 可用性组**。 
 1. 右键单击可用性组，然后选择 " **故障转移** " 以打开 " **故障转移向导**"。 
 1. 按照提示选择故障转移目标，将可用性组故障转移到辅助副本。 
 1. 确认新的主副本上的数据库处于同步状态。 

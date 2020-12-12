@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008412"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360061"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 到专用主机
  
 
 本文介绍如何创建 Azure [专用主机](../dedicated-hosts.md)来托管虚拟机 (VM)。 
 
-确保已安装了 Azure CLI 版本 2.0.70 或更高版本，并已使用 `az login` 登录 Azure 帐户。 
+请确保已安装 Azure CLI 版本2.16.0 或更高版本，并使用登录到 Azure 帐户 `az login` 。 
 
 
 ## <a name="limitations"></a>限制

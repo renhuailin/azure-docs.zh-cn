@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486511"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359806"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "95486511"
 
 如果你的应用程序或企业依赖于窗体识别器自定义模型的使用，我们建议你将模型复制到另一个区域中的另一个窗体识别器帐户。 如果发生区域性中断，你可以在复制模型的区域中访问模型。
 
-##  <a name="prerequisites"></a>必备条件
+##  <a name="prerequisites"></a>先决条件
 
 1. 两个窗体识别不同 Azure 区域中的 Azure 资源。 如果没有这些资源，请参阅 Azure 门户，并 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" 创建新的窗体识别器资源 " target="_blank"> 创建新的窗体识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 。
 1. 你的窗体识别器资源的订阅密钥、终结点 URL 和订阅 ID。 可以在 Azure 门户上资源的 " **概述** " 选项卡中找到这些值。
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-请求正文需要采用以下格式。 需要输入目标资源的资源 ID 和区域名称。 你还需要从上一步骤中复制的 "模型 ID"、"访问令牌" 和 "过期" 值。
+请求正文需要采用以下格式。 需要输入目标资源的资源 ID 和区域名称。 你可以在资源的 " **属性** " 选项卡上找到你的资源 ID Azure 门户中，你可以在 " **密钥和终结点** " 选项卡上找到区域名称。你还需要从上一步骤中复制的 "模型 ID"、"访问令牌" 和 "过期" 值。
 
 ```json
 {

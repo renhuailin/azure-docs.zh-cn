@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449004"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359143"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -22,9 +22,14 @@ ms.locfileid: "96449004"
 本文中所述的过程是使用不同版本的软件执行的，但该过程对于当前软件版本保持不变。
 
 > [!IMPORTANT]
-> - 更新 **2011** 为当前更新。 <!--and corresponds to **2.1.1377.2170** software version on your device.--> 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2011-release-notes.md)。
->
-> - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，并且你的设备在更新时遇到最多30分钟的停机时间。
+> - 更新 **2012** 是当前更新并且对应于：
+>   - 设备软件版本- **2.2.1438.2470**
+>   - Kubernetes 服务器版本- **v 1.17.3**
+>   - IoT Edge 版本： **0.1.0-beta10**
+>    
+>    有关此更新中的新增功能的信息，请参阅 [发行说明](azure-stack-edge-gpu-2012-release-notes.md)。
+> - 若要应用2012更新，设备必须运行2010。
+> - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，并且你的设备在更新时遇到长达1.5 小时的停机时间。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 web UI 应用更新。
 
@@ -161,7 +166,7 @@ ms.locfileid: "96449004"
 
 2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 **Azure Stack Edge Pro**"，然后单击" **搜索**"。
    
-    更新列表显示为 **Azure Stack Edge 更新 2011**。
+    更新列表显示为 **Azure Stack Edge 更新 2012**。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -186,7 +191,7 @@ ms.locfileid: "96449004"
 
    ![更新设备3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
 
-3. 选择“应用”。  
+3. 选择“应用”。 
 
    ![更新设备4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
@@ -196,7 +201,7 @@ ms.locfileid: "96449004"
 
 5. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-6. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新**。 对于当前版本，显示的软件版本应 **Azure Stack 缘 2011**。
+6. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新**。 对于当前版本，显示的软件版本应 **Azure Stack 缘 2012**。
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
@@ -204,7 +209,7 @@ ms.locfileid: "96449004"
 
    <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
 
-8. 选择“应用”。  
+8. 选择“应用”。 
 
    ![更新设备7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 

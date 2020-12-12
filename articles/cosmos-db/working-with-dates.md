@@ -8,12 +8,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b74a403cef8474ae32d98a20899437c2124f3abf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340373"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359517"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,6 +94,6 @@ SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)
 * 详细了解 [SQL 查询](sql-query-getting-started.md)
 * 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016669"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358735"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -350,12 +350,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - 如果 singlePlacementGroup 为 true，则可将其修改为 false。 但是，如果 singlePlacementGroup 为 false，则 **不可** 将其修改为 true。
 - **subnet** - 修改规模集的子网的前提是，原始子网和新子网在同一虚拟网络中。
+- **imageReferenceSku** -可以针对认可的 [Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows server/客户端映像和无 [计划信息](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)的映像更新映像参考 SKU。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>需要解除分配才能更改的属性
 某些属性只有在规模集中的 VM 已解除分配的情况下，才能更改为特定值。 这些属性包括：
 
-- **SKU 名称** - 如果新 VM SKU 在规模集当前所在的硬件上不受支持，则需先将规模集中的 VM 解除分配，然后才能修改 SKU 名称。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/windows/resize-vm.md)。
-
+- **SKU 名称**-如果新的 VM SKU 在规模集当前所在的硬件上不受支持，则需要在修改 SKU 名称之前解除分配规模集中的 vm。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/windows/resize-vm.md)。 
 
 ## <a name="vm-specific-updates"></a>特定于 VM 的更新
 某些修改可以应用于特定的 VM，但不能应用于全局规模集属性。 目前，唯一受支持的特定于 VM 的更新是将数据磁盘附加到规模集中的 VM 或者从其分离数据磁盘。 此功能为预览版。 有关详细信息，请参阅[预览版文档](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)。

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937485"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360214"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>针对发送到存储帐户的请求强制实施必需的最低版本的传输层安全性 (TLS)
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>使用最低版本的 TLS 修正安全风险
 
 如果你确信来自使用较旧版 TLS 的客户端的流量很小，或者允许使用较旧版 TLS 发出的请求失败，则可开始在存储帐户上实施最低版本的 TLS。 要求客户端使用最低版本的 TLS 对存储帐户发出请求是将数据的安全风险降至最低的策略的一部分。
+
+> [!IMPORTANT]
+> 如果你正在使用连接到 Azure 存储的服务，请确保在为存储帐户设置所需的最低版本之前，该服务使用适当的 TLS 版本将请求发送到 Azure 存储。
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>为存储帐户配置最低 TLS 版本
 

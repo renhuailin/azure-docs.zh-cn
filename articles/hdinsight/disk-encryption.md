@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005650"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359753"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据双重加密
 
@@ -119,15 +119,24 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 现在已准备好新建 HDInsight 群集。 客户管理的密钥只能在群集创建期间应用于新群集。 无法从客户管理的密钥群集中删除加密，无法将客户管理的密钥添加到现有群集。
 
+从 [2020 年11月版](hdinsight-release-notes.md#release-date-11182020)开始，HDInsight 支持使用版本更高的密钥 uri 创建群集。 如果使用版本较少的密钥 URI 创建群集，则在 Azure Key Vault 中更新密钥时，HDInsight 群集将尝试执行密钥自动轮替。 如果使用版本控制的密钥 URI 创建群集，则必须执行手动密钥轮换，如 [旋转加密密钥](#rotating-the-encryption-key)中所述。
+
+对于11月2020版之前创建的群集，必须使用版本控制密钥 URI 手动执行密钥轮换。
+
 #### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-在群集创建期间，提供完整的“密钥标识符”，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
+在群集创建过程中，可以按以下方式使用版本控制的密钥或 versionless 密钥：
+
+- **版本控制** -在群集创建期间，提供完整 **密钥标识符**，包括密钥版本。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。
+- **Versionless** -在群集创建过程中，仅提供 **密钥标识符**。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey`。
+
+还需要将托管标识分配给群集。
 
 ![创建新群集](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-以下示例演示如何使用 Azure CLI 来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。
+以下示例演示如何使用 Azure CLI 来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。 此参数 `encryption-key-version` 是可选的。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-以下示例演示如何使用 Azure 资源管理器模板来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅[什么是 ARM 模板？](../azure-resource-manager/templates/overview.md)。
+以下示例演示如何使用 Azure 资源管理器模板来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅[什么是 ARM 模板？](../azure-resource-manager/templates/overview.md)。 Resource manager 模板属性 `diskEncryptionKeyVersion` 是可选的。
 
 此示例使用 PowerShell 调用模板。
 
@@ -355,7 +364,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="rotating-the-encryption-key"></a>转换加密密钥
 
-在某些情况下，在创建 HDInsight 群集后，你可能想要更改它使用的加密密钥。 可以通过门户轻松实现此目的。 对于此操作，群集必须有权访问当前密钥和所需的新密钥，否则轮换密钥操作将会失败。
+你可以使用 Azure 门户或 Azure CLI 更改正在运行的群集上使用的加密密钥。 对于此操作，群集必须有权访问当前密钥和所需的新密钥，否则轮换密钥操作将会失败。 对于在11月2020版之后创建的群集，可以选择是否要将版本设置为新密钥。 对于11月2020版之前创建的群集，必须在旋转加密密钥时使用版本控制密钥。
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 门户
 

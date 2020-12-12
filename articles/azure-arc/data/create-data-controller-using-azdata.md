@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f00cd1ec9c2900998596df3baded562059012658
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107288"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358990"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用创建 Azure Arc 数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -116,6 +116,7 @@ az ad sp create-for-rbac --name azure-arc-metrics
 SET SPN_CLIENT_ID=<appId>
 SET SPN_CLIENT_SECRET=<password>
 SET SPN_TENANT_ID=<tenant>
+SET SPN_AUTHORITY=https://login.microsoftonline.com
 ```
 
 #### <a name="save-environment-variables-in-linux-or-macos"></a>在 Linux 或 macOS 中保存环境变量
@@ -124,6 +125,7 @@ SET SPN_TENANT_ID=<tenant>
 export SPN_CLIENT_ID='<appId>'
 export SPN_CLIENT_SECRET='<password>'
 export SPN_TENANT_ID='<tenant>'
+export SPN_AUTHORITY='https://login.microsoftonline.com'
 ```
 
 #### <a name="save-environment-variables-in-powershell"></a>在 PowerShell 中保存环境变量
@@ -132,6 +134,7 @@ export SPN_TENANT_ID='<tenant>'
 $Env:SPN_CLIENT_ID="<appId>"
 $Env:SPN_CLIENT_SECRET="<password>"
 $Env:SPN_TENANT_ID="<tenant>"
+$Env:SPN_AUTHORITY="https://login.microsoftonline.com"
 ```
 
 在创建服务主体后，将服务主体分配给相应的角色。 

@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553550"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360146"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,7 +127,7 @@ ms.locfileid: "94553550"
    ![启动故障转移](./media/move-sql-vm-different-region/initiate-failover.png)
 
 1. 在“恢复点”下选择“最新的应用一致”恢复点 。 
-1. 选中 " **在开始故障转移之前关闭计算机** " 旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
+1. 选中 " **在开始故障转移之前关闭计算机**" 旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
 1. 选择“确定”以启动故障转移。
 1. 可以从上一节中监视故障转移测试时查看的同一“Site Recovery 作业”页监视故障转移过程。 
 1. 该作业完成后，检查 SQL Server VM 是否按预期显示在目标区域中。 

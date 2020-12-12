@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: d4257e5ade1e32ec971bb77f9d5a686d30195735
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111207"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360316"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>为用户 VPN 客户端管理对轮辐 Vnet 中资源的安全访问
 
@@ -23,7 +23,7 @@ ms.locfileid: "97111207"
 
 :::image type="content" source="./media/manage-secure-access-resources-spoke-p2s/diagram.png" alt-text="关系图：受保护的虚拟中心" :::
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Prerequisites](../../includes/virtual-wan-before-include.md)]
 
@@ -41,7 +41,11 @@ ms.locfileid: "97111207"
 
 选择身份验证方法时，有三种选择。 每种方法都有特定的要求。 选择以下方法之一，然后完成这些步骤。
 
-* **Azure Active Directory 身份验证：** 获取在 Azure AD 租户、 [颁发者](https://sts.windows.net/your-Directory-ID/)和 [Azure AD 租户](https://login.microsoftonline.com/your-Directory-ID)中注册的 Azure VPN 企业应用程序的应用程序 ID。
+* **Azure Active Directory 身份验证：** 获取以下内容：
+
+   * 在 Azure AD 租户中注册的 Azure VPN 企业应用程序的 **应用程序 ID** 。
+   * **颁发者**。 示例：`https://sts.windows.net/your-Directory-ID`。
+   * **Azure AD 租户**。 示例：`https://login.microsoftonline.com/your-Directory-ID`。
 
 * **基于 Radius 的身份验证：** 获取 Radius 服务器 IP、Radius 服务器机密和证书信息。
 
@@ -112,7 +116,7 @@ ms.locfileid: "97111207"
 1. 在“中心”选项卡上，选择“关联虚拟中心”。
 1. 选择前面创建的虚拟中心，然后选择 " **添加**"。
 1. 选择“查看 + 创建”。
-1. 选择“创建”  。
+1. 选择“创建”。
 
 完成此过程可能需要5分钟或更长时间。
 

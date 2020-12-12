@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852517"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359840"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -41,7 +41,7 @@ ms.locfileid: "96852517"
 
 按照以下步骤使用 Azure 门户创建新资源： 
 
-1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/signin/index/)。
 2. 选择“创建资源”。  
 3. 接下来，选择 " **Web 应用**"。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "96852517"
    * 服务器 URL-将此项设置为 `https://mcr.microsoft.com`
    * 用户名 (可选) -创建用户名。 
    * 密码 (可选) -创建要记住的安全密码。
-   * Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
    * 启动命令-将此项设置为 `./run.sh eula=accept`
     
