@@ -9,14 +9,16 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 3235f6285edb99776b42014678cd2b6c60d17f62
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763821"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368166"
 ---
 # <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 使用本文开始使用 LUIS 门户，并创建创作资源。 完成本文中的步骤后，你将能够创建并发布 LUIS 应用。
 
@@ -49,7 +51,7 @@ ms.locfileid: "96763821"
     * **定价层** -默认情况下，将选择 F0 创作定价层，因为这是推荐的设置。 如果要寻找额外的安全层，请从 Azure 门户创建 [客户管理的密钥](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) 。
 8. 现在，你已成功登录到 LUIS。 你现在可以开始创建应用程序。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * 创建新资源时，请确保资源名称只包含字母数字字符 "-"，并且不能以 "-" 开头或结尾。 否则，操作将失败。
 * 请确保对 [订阅拥有适当的权限来创建 Azure 资源](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。 如果你没有适当的权限，请与你的订阅管理员联系，以获得足够的权限。

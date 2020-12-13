@@ -2,16 +2,16 @@
 title: 自定义 Azure Kubernetes 服务 (AKS) 的 CoreDNS
 description: 了解如何使用 Azure Kubernetes 服务 (AKS) 自定义 CoreDNS，以便添加子域或扩展自定义 DNS 终结点
 services: container-service
-author: jnoller
+author: palma21
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jenoller
-ms.openlocfilehash: e99d841dcfb18b41df128283c37f46682e3fa129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: jpalma
+ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257128"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368675"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -22,7 +22,7 @@ Azure Kubernetes 服务 (AKS) 可将适用于管理和解决群集 DNS 问题的
 本文介绍如何在 AKS 中将 ConfigMap 用于 CoreDNS 的基本自定义选项。 此方法不同于在其他上下文中配置 CoreDNS，例如使用 CoreFile。 验证正在运行的 CoreDNS 的版本，因为配置值可能会在不同版本之间发生变化。
 
 > [!NOTE]
-> `kube-dns` 通过 Kubernetes 配置映射提供不同的[自定义选项][kubednsblog]。 CoreDNS **不**后向兼容 kube-dns。 以前使用的任何自定义项都必须在更新后才能与 CoreDNS 配合使用。
+> `kube-dns` 通过 Kubernetes 配置映射提供不同的[自定义选项][kubednsblog]。 CoreDNS **不** 后向兼容 kube-dns。 以前使用的任何自定义项都必须在更新后才能与 CoreDNS 配合使用。
 
 ## <a name="before-you-begin"></a>开始之前
 

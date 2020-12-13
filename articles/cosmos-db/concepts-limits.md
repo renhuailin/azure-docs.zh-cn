@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349123"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368730"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -70,7 +70,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 * 在数据库上预配的最高 RU/秒/100
 * 400 + MAX (容器计数-25，0) * 100 RU/秒
 
-示例：假设你的数据库预配了 400 RU/s、15 GB 的存储空间和10个容器。 最小 RU/秒为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s。 如果数据库中有30个容器，则最小 RU/秒应为 `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s。 
+示例：假设你的数据库预配了 400 RU/s、15 GB 的存储空间和10个容器。 最小 RU/秒为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s。 如果数据库中有30个容器，则最小 RU/秒应为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s。 
 
 **注意：** 如果容器或数据库包含的数据超过 1 TB，你的帐户可能符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)。
 

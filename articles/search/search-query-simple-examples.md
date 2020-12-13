@@ -1,5 +1,5 @@
 ---
-title: 创建简单查询
+title: 使用简单的 Lucene 查询语法
 titleSuffix: Azure Cognitive Search
 description: 通过示例了解如何运行基于简单语法的查询，以便对 Azure 认知搜索索引进行全文搜索、筛选搜索、地理搜索、分面搜索。
 manager: nitinme
@@ -7,135 +7,115 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 12/12/2020
+ms.openlocfilehash: 51d36211c7ffa0507a186c9a1e1f2b52d478fe4e
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007868"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369084"
 ---
-# <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
+# <a name="use-the-simple-search-syntax-in-azure-cognitive-search"></a>使用 Azure 中的 "简单" 搜索语法认知搜索
 
-在 Azure 认知搜索中，[简单查询语法](query-simple-syntax.md)调用默认查询分析器，用于对索引执行全文搜索查询。 此分析程序速度快，处理对象是全文搜索、筛选及分面搜索和地理搜索等常见方案。 
+在 Azure 认知搜索中， [简单查询语法](query-simple-syntax.md) 调用默认查询分析器进行全文搜索。 分析器非常快捷，并处理常见方案，包括全文搜索、筛选和分面搜索，以及前缀搜索。 本文使用示例来阐释搜索文档中的简单语法用法 [ (REST API) ](/rest/api/searchservice/search-documents) 请求。
 
-在本文中，我们将使用示例来阐释简单语法，并填写[搜索文档](/rest/api/searchservice/search-documents)操作的 `search=` 参数。
+> [!NOTE]
+> 可选的查询语法是 [完整的 Lucene](query-lucene-syntax.md)，支持更复杂的查询结构，如模糊和通配符搜索。 有关详细信息和示例，请参阅 [使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
-备选的查询语法是[完整的 Lucene](query-lucene-syntax.md)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
+## <a name="nyc-jobs-examples"></a>NYC 作业示例
 
-从以下工具和 Api 中进行选择，以提交查询。
+下面的示例使用 [NYC 作业搜索索引](https://azjobsdemo.azurewebsites.net/) ，其中包含基于 [纽约 OpenData 计划的城市](https://nycopendata.socrata.com/)提供的数据集的可用作业。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 认知搜索即可试用这些查询。
 
-| 方法 | 说明 |
-|-------------|-------------|
-| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 建议用于浏览、测试和验证。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
-| [Postman 或 Visual Studio Code](search-get-started-rest.md) | Web 测试工具是 [用于表述 REST](/rest/api/searchservice/search-documents) 调用的最佳选择。 REST API 支持 Azure 认知搜索中的每个编程操作，因此你可以通过交互方式发出请求，以将你的探索集中于特定任务。  |
-| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | 可用于查询 Azure 认知搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md)  |
+您所需要的是 Postman 或用于在 GET 或 POST 上发出 HTTP 请求的等效工具。 如果你不熟悉这些工具，请参阅 [快速入门：浏览 Azure 认知搜索 REST API](search-get-started-rest.md)。
 
-## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
+## <a name="set-up-the-request"></a>设置请求
 
-下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 认知搜索即可试用这些查询。
+1. 请求标头必须具有以下值：
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅 [快速入门：浏览 Azure 认知搜索 REST API](search-get-started-rest.md)。
+   | Key | 值 |
+   |-----|-------|
+   | Content-Type | `application/json`|
+   | api-key  | `252044BE3886FE4A8E3BAA4F595114BB` </br>  (这是沙盒搜索服务的实际查询 API 密钥，它托管 NYC 作业索引)  |
 
-### <a name="set-the-request-header"></a>设置请求标头
+1. 将谓词设置为 **`GET`** 。
 
-1. 在请求标头中，将“Content-Type”设为 `application/json` 。
+1. 将 URL 设置为 **`https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=*&$count=true`** 。 
 
-2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB` 。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
+   + 索引上的文档集合包含所有可搜索的内容。 请求标头中提供的查询 api 密钥仅适用于针对文档集合的读取操作。
 
-指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
+   + **`$count=true`** 返回与搜索条件匹配的文档的计数。 在空搜索字符串中，计数将是索引中的所有文档 (大约 2558) NYC 作业的情况。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Postman 请求头设置参数" border="false":::
+   + **`search=*`** 是一个未指定的查询，等效于 null 或空搜索。 这并不是特别有用，但它是您可以执行的最简单的搜索，它显示索引中所有可检索的字段，所有值均为。
 
-### <a name="set-the-request-url"></a>设置请求 URL
+1. 进行验证，将以下请求粘贴至 GET 并单击“发送”  。 结果以详细的 JSON 文档形式返回。
 
-请求是一个与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
+   ```http
+   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*&queryType=full
+   ```
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 请求头 GET" border="false":::
+### <a name="how-to-invoke-simple-query-parsing"></a>如何调用简单查询分析
 
-URL 组合具备以下元素：
-
-+ `https://azs-playground.search.windows.net/` 是由 Azure 认知搜索开发团队维护的沙盒搜索服务  。 
-+ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引  。 请求中需同时具备服务名称和索引。
-+ `docs` 是包含所有可搜索内容的文档集合  。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
-+ `api-version=2020-06-30` 设置了 api-version（每个请求都需具备此参数）  。
-+ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）  。
-
-## <a name="send-your-first-query"></a>发送自己的第一个查询
-
-进行验证，将以下请求粘贴至 GET 并单击“发送”  。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
-
-将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
-
-  ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
-  ```
-
-查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效  。 它的用处不大，但却是你能执行的最简单的搜索。
-
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数  。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
-
-## <a name="how-to-invoke-simple-query-parsing"></a>如何调用简单查询分析
-
-如果是交互式查询，无需指定任何内容：默认为简单查询。 在代码中，如果之前调用过 **queryType=full** 以选择完整查询语法，可以使用 **queryType=simple** 重置默认值。
-
-## <a name="example-1-field-scoped-query"></a>示例 1：字段范围查询
-
-第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
-
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位  。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段   。
-
-### <a name="partial-query-string"></a>部分查询字符串
+如果是交互式查询，无需指定任何内容：默认为简单查询。 在代码中，如果之前调用 **`queryType=full`** 了，则可以通过重置默认值 **`queryType=simple`** 。
 
 ```http
-searchFields=business_title&$select=business_title&search=*
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "simple",
+    "search": "*"
+}
 ```
 
-下面是同一查询，在逗号分隔列表中具有多个字段。
+## <a name="example-1-full-text-search-on-specific-fields"></a>示例1：针对特定字段的全文搜索
+
+第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 此示例将查询执行和响应限制为仅有几个特定字段。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
+
+此查询仅针对中的 *business_title* **`searchFields`** ，并通过 **`select`** 参数指定响应中的同一字段。
 
 ```http
-search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
-```
-
-### <a name="full-url"></a>完整 URL
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchFields=business_title&$select=business_title&search=*
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "simple",
+    "search": "*",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
 此查询的响应应与以下屏幕截图类似。
 
   :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman 示例响应" border="false":::
 
-你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
+你可能已经注意到响应中的搜索分数。 如果未进行全文搜索，或者未提供任何条件，则在没有级别的情况下，将出现均匀分数 **1** 。 对于空搜索，行将按任意顺序返回。 包括实际条件时，能看到搜索分数变成有意义的值。
 
 ## <a name="example-2-look-up-by-id"></a>示例 2：按 ID 查找
 
-本示例不太典型，但在评估搜索行为时，可以检查特定文档的整个内容，以理解它为何包含或不包含在结果中。 若要返回整个文档，请使用[查找操作](/rest/api/searchservice/lookup-document)传入文档 ID。
+在查询中返回搜索结果时，逻辑后续步骤是提供包含文档中的更多字段的详细信息页。 此示例演示如何使用 [查找操作](/rest/api/searchservice/lookup-document) 来返回单个文档，以传入文档 ID。
 
 所有文档都有一个唯一标识符。 要在查找查询中试用此语法，请先返回一个文档 ID 列表，以便找到要使用的文档。 对于纽约工作岗位，标识符存储在 `id` 字段中。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchFields=id&$select=id&search=*
+GET /indexes/nycjobs/docs?api-version=2020-06-30&search=*&$select=id&$count=true
 ```
 
-下面的示例是基于 `id`“9E1E3AF9-0660-4E00-AF51-9B654925A2D5”返回特定文档的查找查询，最早出现在前面的响应中。 以下查询返回整个文档，而不仅是所选字段。 
+接下来，根据上一次 `id` 响应中首先出现的 "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" 检索集合中的文档。 下面的查询将返回整个文档的所有可检索字段。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2020-06-30&$count=true&search=*
+GET /indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2020-06-30
 ```
 
 ## <a name="example-3-filter-queries"></a>示例 3：筛选器查询
 
-[筛选器语法](./search-query-odata-filter.md)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
+[筛选器语法](./search-query-odata-filter.md) 是一种可单独使用或与一起使用的 OData 表达式 **`search`** 。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     {
+      "count": true,
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "job_id, business_title, agency, salary_range_from",
-      "count": "true"
+      "select": "job_id, business_title, agency, salary_range_from"
     }
 ```
 
@@ -143,16 +123,16 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
   :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="筛选器查询响应" border="false":::
 
-若要使用 GET 在 Postman 中尝试此查询，可以粘贴以下字符串：
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
-```
-
 另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`** ，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "",
+      "filter": "search.ismatch('plan*', 'business_title', 'full', 'any')",
+      "select": "job_id, business_title, agency, salary_range_from"
+    }
 ```
 
 有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](./search-query-odata-full-text-search-functions.md#examples)。
@@ -161,148 +141,201 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 通过任何数据类型的 **`$filter`** 表达式支持范围筛选。 以下示例搜索数字和字符串字段。 
 
-数据类型在范围筛选器中很重要，当数字数据位于数字字段且字符串数据位于字符串字段中时效果最佳。 由于 Azure 认知搜索中的数字字符串不可比较，因此字符串字段中的数字数据不适用于范围。 
+数据类型在范围筛选器中很重要，当数字数据位于数字字段且字符串数据位于字符串字段中时效果最佳。 由于 Azure 认知搜索中的数字字符串不可比较，因此字符串字段中的数字数据不适用于范围。
 
-为方便阅读，以下示例采用 POST 格式（数字范围后接文本范围）：
+下面的查询是一个数字范围：
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     {
+      "count": true,
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
       "select": "job_id, business_title, num_of_positions, agency",
-      "orderby": "agency",
-      "count": "true"
+      "orderby": "agency"
     }
 ```
+此查询的响应应与以下屏幕截图类似。
+
   :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="数字范围的范围筛选器" border="false":::
 
+在此查询中，范围位于字符串字段 (business_title) ：
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     {
+      "count": true,
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
       "select": "job_id, business_title, agency",
-      "orderby": "business_title",
-      "count": "true"
+      "orderby": "business_title"
     }
 ```
 
+此查询的响应应与以下屏幕截图类似。
+
   :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="文本范围的范围筛选器" border="false":::
 
-也可以使用 GET 在 Postman 中尝试这些查询：
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
-```
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
-```
-
 > [!NOTE]
-> 基于值的范围分面是常见的搜索应用程序要求。 有关为分面导航结构生成筛选器的详细信息和示例，请参阅 [*如何实现分面导航* 中的“基于范围的筛选器”](search-faceted-navigation.md#filter-based-on-a-range)。
+> 基于值的范围分面是常见的搜索应用程序要求。 有关详细信息和示例，请参阅 [如何构建分面筛选器](search-filters-facets.md)。
 
 ## <a name="example-5-geo-search"></a>示例 5：地理搜索
 
-示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](./search-query-odata-geo-spatial-functions.md#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
-
-为方便阅读，以下示例采用 POST 格式：
+示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](search-query-odata-geo-spatial-functions.md#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     {
+      "count": true,
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
-      "select": "job_id, business_title, work_location",
-      "count": "true"
+      "select": "business_title, work_location"
     }
 ```
-为方便阅读结果，搜索结果已剪裁，只包含职位 ID、职务和工位。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
 
-也可以使用 GET 在 Postman 中尝试此查询：
+为了获得更具可读性的结果，搜索结果会被剪裁为包含职务和工作位置。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
-```
+  :::image type="content" source="media/search-query-simple-examples/geo-search.png" alt-text="Staten 岛地图" border="false":::
 
 ## <a name="example-6-search-precision"></a>示例 6：搜索精度
 
 字词查询是独立评估的单个字词（可能很多是这样）。 短语查询用引号括起来，作为逐字字符串进行评估。 匹配精度由运算符和 searchMode 控制。
 
-示例 1：`&search=fire` 返回 150 个结果，即整个文档中包含“fire”一词的所有匹配项  。
+示例1： `search=fire`  在140结果中匹配，其中所有匹配项都包含文档中某个位置的单词。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "fire"
+    }
 ```
 
-示例 2：`&search=fire department` 返回 2002 个结果  。 针对此文档返回了包含“fire”或“department”的匹配项。
+示例 2：`search=fire department` 返回 2002 个结果  。 针对此文档返回了包含“fire”或“department”的匹配项。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire department
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "fire department"
+    }
 ```
 
-示例 3：`&search="fire department"` 返回 82 个结果  。 将该字符串用引号引起来，构成对这两个词的逐字搜索，在索引中包含该组合词的已标记化的字词中查找匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的  。 需具备两个字词，但独立扫描它们。 
+示例3： `search="fire department"` 返回77结果。 用引号将字符串括起来会创建由这两个词组成的短语搜索，并在索引中包含组合字词的标记化字词上找到匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的  。 需具备两个字词，但独立扫描它们。 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search="fire department"
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+    "count": true,
+    "search": "\"fire department\""
+    }
 ```
+
+> [!Note]
+> 由于短语查询是通过引号指定的，因此，此示例将 () 中添加一个转义字符 `\` 以保留语法。
 
 ## <a name="example-7-booleans-with-searchmode"></a>示例 7：使用 searchMode 的布尔值
 
-简单语法支持字符形式的布尔运算符 (`+, -, |`) 。 searchMode 参数用于在精准率和召回率之间做出权衡，其中 `searchMode=any` 倾向于召回率（符合任何条件的文档都能进入结果集），而 `searchMode=all` 倾向于精准率（符合所有条件的文档才能进入结果集）。 默认为 `searchMode=any`；在使用多个运算符堆叠查询并获取更广泛而不是更窄的结果时，这可能会产生混淆。 在使用 NOT 时尤为如此，该运算符导致结果包括所有“不含”特定字词的文档。
+简单语法支持字符形式的布尔运算符 (`+, -, |`) 。 SearchMode 参数会将精度与撤回之间的权衡进行判断，使用 **`searchMode=any`** favoring 回调 (匹配) 的结果集的文档，并且 **`searchMode=all`** favoring 精度 (必须) 匹配所有条件。 
 
-使用默认的 searchMode (any) 时，返回了 2800 个文档：其中有包含多部分字词“fire department”的文档，以及所有不带有字词“Metrotech Center”的文档。
+默认情况下 **`searchMode=any`** ，如果使用多个运算符堆叠查询并获得更广泛的结果，则可能会造成混淆。 在使用 NOT 时尤为如此，该运算符导致结果包括所有“不含”特定字词的文档。
+
+如果使用默认的 searchMode (任何) ，2800文档将返回：其中包含短语 "灭火器部门"，以及不含短语 "Metrotech Center" 的所有文档。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"-\"Metrotech Center\"",
+      "searchMode": "any"
+    }
 ```
+
+此查询的响应应与以下屏幕截图类似。
 
   :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="搜索模式 - any" border="false":::
 
-若将 searchMode 更改为 `all`，会强制累积条件并返回一个较小的结果集，它只有 21 个文档，其文档数是包含完整短语“fire department”的文档减去 Metrotech Center 工作岗位数之差。
+更改以对 **`searchMode=all`** 条件强制执行累积影响，并返回一个较小的结果集-21 个文档-由包含整个短语 "灭火器部门" 的文档组成，减去 Metrotech 中心地址的那些作业。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"-\"Metrotech Center\"",
+      "searchMode": "all"
+    }
 ```
+
   :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="搜索模式 - all" border="false":::
 
 ## <a name="example-8-structuring-results"></a>示例 8：构建结果
 
-有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例重新设置了上述几个示例，使用 $select 语句和逐字搜索条件将结果限制为仅包含特定字段，返回了 82 个匹配项  
+有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例 resurfaces 了几个前面的示例，使用语句和逐字搜索条件将结果限制为特定字段 **`$select`** ，并返回82匹配项。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"",
+      "searchMode": "any",
+      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description"
+    }
 ```
+
 将此改动追加到上一示例，即可按职位排序。 这种排序是可行的，因为在该索引中 civil_service_title 是可排序的  。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"",
+      "searchMode": "any",
+      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
+      "orderby": "civil_service_title"
+    }
 ```
 
-使用 $top 参数可实现结果分页，本例中返回了前 5 个文档  ：
+使用参数实现分页结果 **`$top`** ，在本例中，返回前5个文档：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"",
+      "searchMode": "any",
+      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
+      "orderby": "civil_service_title",
+      "top": "5"
+    }
 ```
 
 要获取后续 5 个文档，请跳过第一批：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+    {
+      "count": true,
+      "search": "\"fire department\"",
+      "searchMode": "any",
+      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
+      "orderby": "civil_service_title",
+      "top": "5",
+      "skip": "5"
+    }
 ```
 
 ## <a name="next-steps"></a>后续步骤
-尝试在代码中指定查询。 以下链接介绍如何使用默认的简单语法为 .NET 和 REST API 设置搜索查询。
 
-* [使用 .NET SDK 查询索引](./search-get-started-dotnet.md)
-* [使用 REST API 查询索引](./search-get-started-powershell.md)
+尝试在代码中指定查询。 下面的链接说明如何使用 Azure Sdk 设置搜索查询。
+
++ [使用 .NET SDK 查询索引](search-get-started-dotnet.md)
++ [使用 Python SDK 查询索引](search-get-started-python.md)
++ [使用 JavaScript SDK 查询索引](search-get-started-javascript.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 
 + [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
 + [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
-+ [简单的查询语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [完整 Lucene 查询](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [筛选器和 Orderby 语法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [简单的查询语法](query-simple-syntax.md)
++ [完整 Lucene 查询语法](query-lucene-syntax.md)
++ [筛选器语法](search-query-odata-filter.md)

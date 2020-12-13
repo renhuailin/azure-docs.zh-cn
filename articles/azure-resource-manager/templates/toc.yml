@@ -323,7 +323,7 @@
           href: template-syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
-        - name: 参数
+        - name: parameters
           href: template-parameters.md
         - name: 变量
           href: template-variables.md
@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: 资源
   items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure 快速入门模板
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure 路线图

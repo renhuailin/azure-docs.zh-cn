@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701042"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368862"
 ---
 # <a name="security-control-v2-data-protection"></a>安全控制 V2：数据保护
 
@@ -20,7 +20,7 @@ ms.locfileid: "94701042"
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1：对敏感数据进行发现、分类和标记
 
-| Azure ID | CIS 控制 v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | DP-1 | 13.1、14.5、14.7 | SC-28 |
 
@@ -30,7 +30,7 @@ ms.locfileid: "94701042"
 
 使用 Azure SQL 信息保护有助于对 Azure SQL 数据库中存储的信息进行分类和标记。
 
-- [使用 Azure 信息保护标记敏感信息](/azure/information-protection/what-is-information-protection) 
+- [使用 Azure 信息服务标记敏感信息](/azure/information-protection/what-is-information-protection) 
 
 - [如何实现 Azure SQL 数据发现](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "94701042"
 
 ## <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | DP-2 | 13.2、2.10 | SC-7、AC-4 |
 
@@ -72,7 +72,7 @@ ms.locfileid: "94701042"
 
 ## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3：监视未经授权的敏感数据传输
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | DP-3 | 13.3 | AC-4、SI-4 |
 
@@ -100,7 +100,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
@@ -130,7 +130,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5：加密静态敏感数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | DP-5 | 14.8 | SC-28、SC-12 |
 

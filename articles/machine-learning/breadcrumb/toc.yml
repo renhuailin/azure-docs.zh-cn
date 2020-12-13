@@ -69,3 +69,10 @@
             - name: 管道
               tocHref: /azure/devops/pipelines/languages/
               topicHref: /azure/devops/pipelines/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 机器学习
+      tocHref: /power-bi/connect-data/
+      topicHref: /azure/machine-learning/index

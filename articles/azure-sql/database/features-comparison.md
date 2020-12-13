@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 11/10/2020
-ms.openlocfilehash: 65ef118fde57a7b72903d502a06644024939923f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506016"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368454"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -85,9 +85,9 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [OPENQUERY](/sql/t-sql/functions/openquery-transact-sql)|否|是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|是，只是为了从 Azure Blob 存储导入。 |是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server，以及从 Azure Blob 存储进行导入的操作。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [运算符](/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 可以使用 `OPENROWSET` 函数查询 Azure Blob 存储上的文件中的数据。 | 否。 可以使用 `OPENROWSET` 函数查询 Azure Blob 存储上的文件中的数据。 |
+| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 错误。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
 | [查询通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
-| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning) ( _以前的 R Services_ ) | 是，在[公共预览版](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | 否 |
+| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前的 R Services_) | 是，在[公共预览版](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | 否 |
 | [恢复模型](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 |
 | [资源调控器](/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是，对 Azure Blob 存储上的备份文件使用必需的 `FROM URL` 选项。 请参阅[还原差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
@@ -175,9 +175,9 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 
 | **Source** | **Azure SQL 数据库** | **Azure SQL 托管实例** |
 | --- | --- | --- |
-| SQL Server（本地、Azure VM、Amazon RDS） | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、 [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、 [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 本机备份/还原、 [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、 [快照复制](../managed-instance/replication-transactional-overview.md) |
+| SQL Server（本地、Azure VM、Amazon RDS） | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、[事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、[事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 本机备份/还原、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) |
 | 单一数据库 | **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP |
-| SQL 托管实例 | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、 [快照复制](../managed-instance/replication-transactional-overview.md) | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 跨实例时间点还原（ [Azure PowerShell](/powershell/module/az.sql/restore-azsqlinstancedatabase#examples) 或 [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)）、 [本机备份/还原](../managed-instance/restore-sample-database-quickstart.md)、 [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、 [快照复制](../managed-instance/replication-transactional-overview.md) |
+| SQL 托管实例 | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 跨实例时间点还原（[Azure PowerShell](/powershell/module/az.sql/restore-azsqlinstancedatabase#examples) 或 [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)）、[本机备份/还原](../managed-instance/restore-sample-database-quickstart.md)、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) |
 
 ## <a name="next-steps"></a>后续步骤
 

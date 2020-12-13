@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: keithp
-ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095145"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369032"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -277,8 +277,8 @@ HSM 具有命令行重启选项，但是，在重新启动时，我们遇到的�
   * RC5
   * CAST
   * 哈希/消息摘要/HMAC：SHA-1、SHA-2、SM3
-  * 密钥派生：SP800-108 计数器模式
-  * 密钥包装：SP800-38F
+  * 密钥派生： SP 800-108 计数器模式
+  * 密钥包装： SP 800-38F
   * 随机数生成：FIPS 140-2 批准的 DRBG（SP 800-90 CTR 模式），符合 BSI DRG.4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>问：专用 HSM 是否已通过 FIPS 140-2 级别 3 验证？

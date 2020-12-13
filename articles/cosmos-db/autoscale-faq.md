@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092681"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368573"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,12 +38,12 @@ ms.locfileid: "93092681"
 每小时将向你收取系统在该小时内扩展到的最高吞吐量 `T` 的费用。 如果你的资源在这个小时内没有请求，或者缩放的范围未超出 `0.1 * Tmax`，则将向你收取最低 `0.1 * Tmax` 的费用。 请参考 Azure Cosmos DB [定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)了解详细信息。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>自动缩放如何显示在我的帐单上？
-在单个写入区域帐户中，每 100 RU/s 的自动缩放速率为 1.5 x 标准 (手动) 预配吞吐量的比率。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
+在单写入区域帐户中，每 100 RU/s 的自动缩放速率是标准（手动）预配吞吐量速率的 1.5 倍。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
 
-在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准 (手动) 设置多个写入区域吞吐量的速率相同。 在帐单上，你将看到现有的多写入区域计量器。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
+在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准（手动）预配的多写入区域吞吐量速率相同。 在帐单上，你可看到现有的多写入区域计量。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自动缩放是否可用于预留容量？
-是的。 为具有多个写入区域的帐户购买保留容量时，自动缩放资源的预订折扣将按 1.5 * [的比率应用](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)到计量器的比率。 
+是的。 当你为具有单个写入区域的帐户购买预留容量时，自动缩放资源的预订折扣将按 1.5 * 的比率应用到计量器的[比率。](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region) 
 
 对于自动缩放和标准 (手动) 预配的吞吐量，多写入区域保留容量相同。 请参阅 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
 

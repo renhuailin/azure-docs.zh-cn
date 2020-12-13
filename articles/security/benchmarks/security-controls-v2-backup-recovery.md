@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698795"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368879"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全控制 V2：备份和恢复
 
@@ -20,7 +20,7 @@ ms.locfileid: "94698795"
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "94698795"
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2：加密备份数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "94698795"
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：验证所有备份，包括客户管理的密钥
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4、CP-9 |
 
@@ -100,7 +100,7 @@ ms.locfileid: "94698795"
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 

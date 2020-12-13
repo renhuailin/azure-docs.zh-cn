@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408731"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368845"
 ---
 # <a name="security-control-v2-identity-management"></a>安全控制 V2：标识管理
 
 标识管理涵盖了使用 Azure Active Directory 建立安全标识和访问控制的控件。 这包括将单一登录、强身份验证、托管标识（和服务主体）用于应用程序、条件访问和帐户异常监视。
 
-## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：标准化 Azure Active Directory 作为中心标识和身份验证系统
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-| Azure ID | CIS 控制 v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-1 | 16.1、16.2、16.4、16.5 | IA-2、IA-8、AC-2、AC-3 |
 
 Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务。 你应该在 Azure AD 上标准化，以便控制你的组织在以下方面的标识和访问管理：
-- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
+- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 - [定义 Azure AD 租户](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [为应用程序使用外部标识提供程序](../../active-directory/external-identities/identity-providers.md)
+- [对应用程序使用外部标识提供者](../../active-directory/external-identities/identity-providers.md)
 
-- [Azure AD 中的标识安全分数是什么](../../active-directory/fundamentals/identity-secure-score.md)
+- [Azure AD 中的标识安全评分是什么](../../active-directory/fundamentals/identity-secure-score.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -55,9 +55,9 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全自动地管理应用程序标识
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-2 | 空值 | AC-2、AC-3、IA-2、IA-4、IA-9 |
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 使用 Azure Key Vault 进行安全主体注册：authentication#authorize-a-security-principal-to-access-key-vault
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -83,9 +83,9 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 用于应用程序访问
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-3 | 4.4 | IA-2、IA-4 |
 
@@ -95,7 +95,7 @@ Azure AD 提供对 Azure 资源、云应用程序和本地应用程序的标识�
 
 - [了解 Azure AD 的应用程序 SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -105,9 +105,9 @@ Azure AD 提供对 Azure 资源、云应用程序和本地应用程序的标识�
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对基于 Azure Active Directory 的所有访问使用强身份验证控制
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-4 | 4.2、4.4、4.5、11.5、12.11、16.3 | AC-2、AC-3、IA-2、IA-4 |
 
@@ -124,13 +124,13 @@ Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身�
 
 - [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Active Directory 的无密码 authentication 选项简介](../../active-directory/authentication/concept-authentication-passwordless.md)
+- [Azure Active Directory 的无密码身份验证选项简介](../../active-directory/authentication/concept-authentication-passwordless.md)
 
 - [Azure AD 默认密码策略](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
 
-- [使用 Azure AD 密码保护消除错误密码](../../active-directory/authentication/concept-password-ban-bad.md)
+- [使用 Azure AD 密码保护来消除错误密码](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -142,12 +142,12 @@ Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身�
 
 ## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
 
 Azure AD 提供了以下数据源： 
--   登录– "登录" 报表提供有关托管应用程序和用户登录活动的使用情况的信息。
+-   登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 
 -   审核日志 - 对于通过 Azure AD 中的各种功能所做的所有更改，可以通过日志为其提供可跟踪性。 所记录的更改审核日志的示例包括添加或删除用户、应用、组、角色和策略。
 
@@ -155,7 +155,7 @@ Azure AD 提供了以下数据源：
 
 -   已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 Azure 安全中心还可针对某些可疑活动（例如失败的身份验证尝试次数太多，以及帐户已在订阅中遭到弃用）发出警报。 
 
@@ -177,7 +177,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [Azure 高级威胁防护](/azure-advanced-threat-protection/what-is-atp)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -185,9 +185,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：根据条件限制 Azure 资源访问
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-6 | 空值 | AC-2、AC-3 |
 
@@ -199,7 +199,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [使用条件访问配置身份验证会话管理](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -211,9 +211,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [威胁情报](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据公开
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-7 | 18.1, 18.7 | IA-5 |
 
@@ -225,7 +225,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [GitHub 机密扫描](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -233,9 +233,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8：保证用户对旧应用程序的访问权限
+## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8：保护用户对旧版应用程序的访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | IM-8 | 14.6 | AC-2、AC-3、SC-11 |
 
@@ -249,7 +249,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [Microsoft Cloud App 安全最佳做法](/cloud-app-security/best-practices)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408696"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369066"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408696"
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -38,7 +38,7 @@ ms.locfileid: "94408696"
 
 - [利用 Azure Sentinel 进行网络威胁智能](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -54,12 +54,12 @@ ms.locfileid: "94408696"
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3、AU-6、AU-12、SI-4 |
 
 Azure AD 提供了以下用户日志，可以在报表中查看 Azure AD 报告或与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具进行集成，以实现更复杂的监视和分析用例： 
--   登录– "登录" 报表提供有关托管应用程序和用户登录活动的使用情况的信息。
+-   登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 
 -   审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 
@@ -71,11 +71,11 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [Azure AD 中的审核活动报告](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [启用 Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
+- [启用 Azure 标识保护](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure 安全中心的威胁防护](../../security-center/azure-defender.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -91,7 +91,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -109,7 +109,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [通过 DNS Analytics 解决方案收集有关 DNS 基础结构的见解](../../azure-monitor/insights/dns-analytics.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -125,7 +125,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8.8 | AU-3、AU-12 |
 
@@ -137,7 +137,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [了解 Azure 安全中心数据收集](../../security-center/security-center-enable-data-collection.md)
 
-**责任** ：共享
+**责任**：共享
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -151,7 +151,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-5 | 6.5、6.6 | AU-3、SI-4 |
 
@@ -167,7 +167,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -179,7 +179,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3、AU-11 |
 
@@ -193,7 +193,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 - [Azure 安全中心警报和建议导出](../../security-center/continuous-export.md)
 
-**责任** ：客户
+**责任**：客户
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
@@ -207,7 +207,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7：使用批准的时间同步源
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,7 +221,7 @@ Azure 中资源生成的所有日志都提供了时间戳，且默认指定时�
 
 - [如何对 Azure 服务禁用入站 UDP](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**责任** ：共享
+**责任**：共享
 
 客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 

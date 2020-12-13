@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 分享的文档
   items:
+    - name: 数据库部署
+      items:
+        - name: GitHub 操作
+          href: quickstart-mysql-github-actions.md
     - name: 迁移
       items:
         - name: 通过 mysqldump 或 phpmyadmin 迁移数据
@@ -88,8 +92,6 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
-            - name: GitHub 操作
-              href: quickstart-mysql-github-actions.md
     - name: 教程
       items:
         - name: 设计数据库

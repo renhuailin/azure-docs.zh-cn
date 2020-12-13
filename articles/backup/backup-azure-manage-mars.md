@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145563"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368590"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -67,7 +67,7 @@ ms.locfileid: "89145563"
 
     ![选择要排除的项](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. 默认会排除所选文件夹中的所有**子文件夹**。 可以选择“是”或“否”对此进行更改。  可按如下所示编辑并指定要排除的文件类型：
+4. 默认会排除所选文件夹中的所有 **子文件夹**。 可以选择“是”或“否”对此进行更改。  可按如下所示编辑并指定要排除的文件类型：
 
     ![选择子文件夹类型](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -189,6 +189,19 @@ ms.locfileid: "89145563"
   1. 安装代理，并使用相同的密码重新注册到同一保管库
   1. 启动 MARS 客户端，以根据要求延长保留期
 - 最近还原并受 MARS 保护的计算机将继续进行备份。  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>为 MARS 代理配置防病毒软件
+
+建议为防病毒软件配置以下配置，以避免与 MARS 代理的操作发生冲突。
+
+1. **添加路径排除**：若要避免性能下降和可能的冲突，请从防病毒软件的实时监视中排除以下路径：
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` 和子文件夹
+    1. **暂存文件夹**：如果草稿文件夹不在标准位置，请将其添加到排除项。  [请参阅此处，了解](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) 确定暂存文件夹位置的步骤。
+1. **添加二进制排除**：若要避免备份和控制台活动降低，请从防病毒软件的实时监视中排除以下二进制文件的进程：
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>尽管排除这些路径足以应对大多数防病毒软件，但某些路径可能仍会继续干扰 MARS 代理操作。 如果出现意外故障，请暂时卸载防病毒软件，并进行监视以查看问题是否消失。 如果这解决了问题，请与防病毒软件供应商联系，以获得正确配置其产品的帮助。
 
 ## <a name="next-steps"></a>后续步骤
 

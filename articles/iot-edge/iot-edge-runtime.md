@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444264"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368490"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
@@ -81,7 +81,7 @@ IoT Edge 中心不是在本地运行的完整版本的 IoT 中心。 IoT Edge �
 
 为减少 IoT Edge 解决方案使用的带宽，IoT Edge 中心优化了对云的实际连接数量。 IoT Edge 中心采用来自模块或下游设备的逻辑连接，并将它们组合为连接到云的单个物理连接。 此过程的详细信息对解决方案的其他部分透明。 即使客户端都通过相同连接进行发送，它们也会认为具有自己的云连接。 IoT Edge 集线器可以使用 AMQP 或 MQTT 协议，而与下游设备使用的协议无关。 不过，IoT Edge 集线器目前仅支持使用 AMQP 作为上游协议及其多路复用功能，将逻辑连接合并为单个物理连接。 AMQP 是默认的上游协议。
 
-![IoT Edge 中心是物理设备和 IoT 中心之间的网关](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge 中心是物理设备和 IoT 中心之间的网关](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge 中心可以确定其是否连接到了 IoT 中心。 如果连接丢失，IoT Edge 中心将在本地保存消息或孪生更新。 一旦重新建立连接，将同步所有数据。 用于此临时缓存的位置由 IoT Edge 中心的模块孪生的属性决定。 只要设备具有存储容量，缓存的大小就没有限制并且会增加。  有关详细信息，请参阅[脱机功能](offline-capabilities.md)。
 
@@ -112,7 +112,7 @@ IoT Edge 中心促进模块间通信。 使用 IoT Edge 中心作为消息中转
 
 解决方案开发者负责指定用于确定 IoT Edge 中心如何在模块间传递消息的规则。 路由规则在云中定义，并向下推送到其模块孪生中的 IoT Edge 中心。 使用 IoT 中心路由的同一语法定义在 Azure IoT Edge 中的模块之间的路由。 有关详细信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
 
-![模块之间的路由通过 IoT Edge 中心](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![模块之间的路由通过 IoT Edge 中心](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ IoT Edge 中心支持两种协调机制：
 
 第一种协调机制利用与 IoT 中心相同的路由功能来指定如何在设备或模块之间传递消息。 第一个设备或模块指定了其接受消息的输入和它们写入消息的输出。 然后，解决方案开发人员可以使用潜在的筛选器在源（例如输出）和目标（如输入）之间路由消息。
 
-![模块之间的路由通过 IoT Edge 中心](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![模块之间的路由通过 IoT Edge 中心](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 可以通过 AMQP 或 MQTT 协议使用 Azure IoT 设备 Sdk 生成的设备或模块使用路由。 支持所有消息传递 IoT 中心基元（如遥测、直接方法、C2D、孪生），但不支持通过用户定义的主题进行通信。
 
@@ -167,7 +167,7 @@ IoT Edge 中心支持两种协调机制：
 |双子     |    &#10004;     |    &#10004;     |
 |设备的 C2D     |   &#10004;      |         |
 |中间件排序     |    &#10004;     |         |
-|筛选     |     &#10004;    |         |
+|Filtering     |     &#10004;    |         |
 |用户定义的主题     |         |    &#10004;     |
 |设备到设备     |         |    &#10004;     |
 |本地广播     |         |    &#10004;     |
@@ -225,22 +225,22 @@ IoT Edge 中心由云完全控制。 它通过其 [模块](iot-edge-modules.md#m
 
 ## <a name="runtime-quality-telemetry"></a>运行时质量遥测
 
-IoT Edge 从主机运行时和系统模块收集匿名遥测以提高产品质量。 此信息称为运行时质量遥测。 收集的遥测数据从 IoT Edge 代理定期作为设备到云的消息发送到 IoT 中心。 这些消息不会显示在客户的常规遥测中，也不会消耗任何消息配额。
+IoT Edge 从主机运行时和系统模块收集匿名遥测以提高产品质量。 此信息称为运行时质量遥测。 收集的遥测数据作为设备到云的消息从 IoT Edge 代理定期发送到 IoT 中心。 这些消息不会显示在客户的常规遥测中，也不会消耗任何消息配额。
 
-IoT Edge 代理和中心生成指标，你可以收集这些指标来了解设备性能。 在运行时质量遥测过程中，IoT Edge 代理收集这些度量值的子集。 为运行时质量遥测收集的指标标有标记 `ms_telemetry` 。 有关所有可用指标的信息，请参阅 [访问内置指标](how-to-access-built-in-metrics.md)。
+IoT Edge 代理和中心生成指标，你可以收集这些指标来了解设备性能。 IoT Edge 代理收集这些指标的子集，作为运行时质量遥测的一部分。 为运行时质量遥测收集的指标标有 `ms_telemetry` 标志。 有关所有可用指标的信息，请参阅 [Access 内置指标](how-to-access-built-in-metrics.md)。
 
-任何个人或组织的标识信息（如设备和模块名称）都将在上传之前删除，以确保运行时质量遥测的匿名特性。
+任何个人身份信息或组织识别信息（如设备和模块名称）都将在上传之前删除，以确保运行时质量遥测的匿名特性。
 
-IoT Edge 代理每小时收集一次遥测数据，每24小时向 IoT 中心发送一条消息。
+IoT Edge 代理每小时收集一次遥测数据，每 24 小时向 IoT 中心发送一条消息。
 
-如果要选择不从设备发送运行时遥测数据，可通过两种方式实现此目的：
+如果要选择不从设备发送运行时遥测数据，可通过以下两种方式实现此目的：
 
-* 将 `SendRuntimeQualityTelemetry` 环境变量设置为 `false` for **edgeAgent** ，或
-* 在部署过程中取消选中 "Azure 门户中的选项。
+* 将 `SendRuntimeQualityTelemetry` 环境变量的 edgeAgent 设置为 `false`，或者
+* 在部署过程中取消选中 Azure 门户中的选项。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure IoT Edge 模块](iot-edge-modules.md)
 * [了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)
 * [了解如何发布和订阅 IoT Edge](how-to-publish-subscribe.md)
-* [了解 IoT Edge 运行时度量值](how-to-access-built-in-metrics.md)
+* [了解 IoT Edge 运行时指标](how-to-access-built-in-metrics.md)

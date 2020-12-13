@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487790"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368896"
 ---
 # <a name="security-control-v2-asset-management"></a>安全控制 V2：资产管理
 
@@ -20,7 +20,7 @@ ms.locfileid: "96487790"
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-1 | 1.1、1.2 | CM-8、PM-5 |
 
@@ -38,7 +38,7 @@ ms.locfileid: "96487790"
 
 **责任**：客户
 
-客户安全利益干系人（[了解更多](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
+客户安全利益干系人（[了解详细信息](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -46,7 +46,7 @@ ms.locfileid: "96487790"
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-2 | 1.1、1.2、1.4、1.5、9.1、12.1 | CM-8、PM-5 |
 
@@ -72,7 +72,7 @@ Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订�
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-3 | 2.3、2.4 | CM-7、CM-8 |
 
@@ -94,7 +94,7 @@ Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订�
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4：确保资产生命周期管理的安全
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-4 | 2.3、2.4、2.5 | CM-7、CM-8、CM-10、CM-11 |
 
@@ -116,7 +116,7 @@ Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订�
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Azure 安全中心清单功能和 Azure Resource Graph 可以查询和发现订�
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>AM-6：仅使用计算资源中经过批准的应用程序
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID (s)  |
 |--|--|--|--|
 | AM-6 | 2.6、2.7 | AC-3、CM-7、CM-8、CM-10、CM-11 |
 

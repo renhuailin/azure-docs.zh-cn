@@ -87,8 +87,6 @@
     - name: 监视诊断日志
       href: firewall-diagnostics.md
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
-    - name: Azure Monitor 日志
-      href: log-analytics-samples.md
     - name: Azure 防火墙工作簿
       href: firewall-workbook.md
 - name: 参考
