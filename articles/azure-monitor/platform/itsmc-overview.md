@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932262"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371979"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -42,9 +42,12 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 可以通过完成以下步骤开始使用 ITSMC：
 
 1.  [添加 ITSMC。](#add-it-service-management-connector)
-2.  [创建 ITSM 连接。](#create-an-itsm-connection)
-3.  [使用连接。](#use-itsmc)
-
+2. [将 ITSM 产品/服务与 IT 服务管理连接器相连接](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
+3.  [创建 ITSM 连接。](#create-an-itsm-connection)
+4.  [使用连接。](#use-itsmc)
+   
+   >[!NOTE]
+> 必须按照此顺序执行步骤，否则会出现错误。
 
 ##  <a name="add-it-service-management-connector"></a>添加 IT 服务管理连接器
 
@@ -70,7 +73,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
    >[!NOTE]
    >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
 
-5. 选择“确定”  。
+5. 选择“确定”。
 
 部署 ITSMC 资源后，窗口右上角会出现一个通知。
 
@@ -156,7 +159,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
    * 在 "工作项" 下拉列表中选择 "事件" 时：如果为单选按钮选择中的 **每个日志项选择 "创建单独的工作项** "，则每个警报都将创建一个新的工作项。 如果为单选按钮选择中的 **每个配置项目选择 "创建单独的工作项** "，则每个配置项都将有自己的工作项。
    ![显示 ITSM 票证窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. 选择“确定”  。
+10. 选择“确定”。
 
 当你创建或编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 当警报触发时，会在 ITSM 工具中创建或更新工作项。
 

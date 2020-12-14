@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309828"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371962"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -58,7 +58,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 数据导出功能当前不收取额外费用。 数据导出的定价将在以后公布，在开始计费之前将提供相关通知。 如果你选择在通知期后继续使用数据导出，则将按照适用的费率缴费。
 
 ## <a name="export-destinations"></a>导出目标
@@ -122,6 +122,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 空值
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下 CLI 命令查看工作区中的表。 它可帮助复制所需的表并将其包含在数据导出规则中。
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 使用以下命令通过 CLI 创建有关导出到存储帐户的数据导出规则。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-使用以下命令通过 CLI 创建有关导出到事件中心的数据导出规则。
+使用以下命令通过 CLI 创建有关导出到事件中心的数据导出规则。 为每个表创建一个单独的事件中心。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+使用以下命令，使用 CLI 创建到特定事件中心的数据导出规则。 所有表都导出到提供的事件中心名称。 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>查看数据导出配置
+## <a name="view-data-export-rule-configuration"></a>查看数据导出规则配置
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 空值
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>禁用导出规则
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+空值
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 空值
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 空值
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下命令通过 CLI 删除数据导出规则。
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 空值
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+空值
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用以下命令通过 CLI 查看工作区中的所有数据导出规则。
@@ -315,7 +344,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>不受支持的表
 如果数据导出规则包含不受支持的表，配置不会失败，但不会导出该表的任何数据。 如果该表在之后得到支持，则将在那时导出其数据。
 
-如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace.```
+如果数据导出规则包含不存在的表，它将失败，并出现错误 " <tableName> 工作区中不存在表"。
 
 
 ## <a name="supported-tables"></a>受支持的表

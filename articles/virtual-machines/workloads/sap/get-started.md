@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486464"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371928"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -47,6 +47,8 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 - 不同的 Azure 区域提供哪些 Azure 服务、Azure VM 类型和 Azure 存储服务，请查看站点[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 
 - 第三方 HA 帧是否适用于 Windows 和 Pacemaker 以外的支持？ 查看[SAP 支持说明](https://launchpad.support.sap.com/#/notes/1928533)的底部部分 #1928533
 - 哪种 Azure 存储最适合我的方案？ 读取 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md)
+- SAP 支持的 Oracle Enterprise Linux 中的 Red Hat 内核？ 阅读 SAP [sap 支持说明 #1565179](https://launchpad.support.sap.com/#/notes/1565179)
+- 为什么 Azure [Da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [Ea (s) ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) VM 家族未经过 SAP HANA 认证？ Azure Das/Eas VM 系列基于 AMD 处理器驱动的硬件。 SAP HANA 不支持 AMD 处理器，甚至不支持虚拟化方案。
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）
@@ -74,12 +76,13 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>有关将 Azure 服务集成到 SAP 组件的文档
-在本部分中，你将了解有关 PowerBI 集成到 SAP 数据源以及 Azure 数据工厂集成到 SAP BW 的文档。
+本部分介绍有关 Microsoft Power BI 集成到 SAP 数据源以及 Azure 数据工厂集成到 SAP BW 中的文档。
 
 
 
 ## <a name="change-log"></a>更改日志
 
+- 12/12/2020：添加了指向 SAP 的指针备注阐明 SAP 的 Oracle Enterprise Linux 支持的详细信息 [Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020：将[SAP 工作负荷的](./planning-guide-storage.md) [azure 虚拟机存储配置](./hana-vm-operations-storage.md)和 azure 存储类型 SAP HANA 改编为更改了单一[VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：更改[Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中有关 HANA 支持的文件系统类型的新 SAP 说明 SAP HANA 的更改链接 
 - 10/26/2020：更改 Azure 高级存储配置的某些表，以明确预配与突发吞吐量 [SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)
@@ -148,7 +151,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 - 2020年2月27日：对于 Azure 上的 SAP NW，适用于 sap [应用程序的高可用性](./high-availability-guide-suse.md)，适用于 sap 的 azure vm 上的 sap nw 的高可用性， [和 for sap 应用程序](./high-availability-guide-suse-netapp-files.md) 的高可用性和 [Azure vm](./high-availability-guide-suse-multi-sid.md) 上的 sap NetWeaver 的高可用性
 - 2020年2月26日：在 [SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md) 中进行更改，以便在 azure 上阐明 HANA 的文件系统选择
 - 2020年2月26日：对 [高可用性体系结构和方案进行更改，](./sap-high-availability-architecture-scenarios.md) 以便在 RHEL 多 SID 指南
-- 2020年2月26日：对于 Azure 上的 SAP NW，适用于 sap 应用程序的[高可用性](./high-availability-guide-suse.md)，适用于 sap 应用程序的 azure vm 上的 sap nw 的高可用性，适用于 sap 应用程序的 azure vm [Azure VMs high availability for SAP NetWeaver on RHEL with Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)上的 sap nw 具有高可用性，在 rhel[上，azure](./high-availability-guide-rhel.md) vm 高可用性适用于[和 for](./high-availability-guide-suse-netapp-files.md)sap
+- 2020年2月26日：对于 Azure 上的 SAP NW，适用于 sap 应用程序的[高可用性](./high-availability-guide-suse.md)，适用于 sap 应用程序的 azure vm 上的 sap nw 的高可用性，适用于 sap 应用程序的 azure vm [](./high-availability-guide-rhel-netapp-files.md)上的 sap nw 具有高可用性，在 rhel[上，azure](./high-availability-guide-rhel.md) vm 高可用性适用于[和 for](./high-availability-guide-suse-netapp-files.md)sap
 - 2020年2月26日，  [Azure vm 上的 SAP NetWeaver 的高可用性发布在 RHEL 多 sid 指南](./high-availability-guide-rhel-multi-sid.md) 中，添加指向 SUSE 多 sid 群集指南的链接
 - 2020/02/25：更改[适用于 SAP 的高可用性体系结构和方案](./sap-high-availability-architecture-scenarios.md)中的内容，以添加指向较新 HA 文章的链接
 - 2020年2月25日：在 [使用 Pacemaker 的 SUSE Linux Enterprise Server 上的 Azure vm 上使用 IBM DB2 LUW 的高可用性，通过](./dbms-guide-ha-ibm.md) 标准 Azure 负载均衡器指向介绍访问公共终结点的文档

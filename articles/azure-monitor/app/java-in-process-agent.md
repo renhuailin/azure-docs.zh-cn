@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601129"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371877"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights
 
@@ -186,17 +186,17 @@ Log4j、Logback 和 util。日志记录是自动检测的，通过这些日志�
 默认情况下，仅当在信息级别或更高版本中执行日志记录时，才会收集日志记录。
 有关如何更改此级别的详细说明，请参阅 [配置选项](./java-standalone-config.md#auto-collected-logging) 。
 
-如果要将自定义维度附加到日志，可使用 [Log4j 1 mdc](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback MDC](http://logback.qos.ch/manual/mdc.html)，Application Insights Java 3.0 会在跟踪和异常遥测上自动捕获这些 MDC 属性作为自定义维度。
+如果要将自定义维度附加到日志，可以使用 [Log4j 1.2 mdc](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback MDC](http://logback.qos.ch/manual/mdc.html)，Application Insights JAVA 3.0 会自动捕获这些 MDC 属性作为跟踪和异常遥测的自定义维度。
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>使用 Application Insights Java 2.x SDK 发送自定义遥测数据
 
-将 `applicationinsights-core-2.6.0.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-core-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 
@@ -242,7 +242,7 @@ try {
 telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-##### <a name="exceptions"></a>异常
+##### <a name="exceptions"></a>例外
 
 ```java
 try {
