@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685930"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358140"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 故障转移群集实例 (FCI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 |---------|---------|---------|---------|
 |**最低操作系统版本**| All |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|All|SQL Server 2012|SQL Server 2016|
-|**受支持的 VM 可用性** |具有邻近放置组的可用组集 |可用性集和可用性区域|可用性集 |
+|**受支持的 VM 可用性** |具有邻近放置组的可用性集（适用于高级 SSD） </br> 同一可用性区域（适用于超级 SSD） |可用性集和可用性区域|可用性集 |
 |**支持文件流**|是|否|是 |
 |**Azure Blob 缓存**|否|否|是|
 
@@ -69,12 +70,16 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 - 支持共享的 Azure 高级 SSD 和 Azure 超级磁盘存储。
 - 可使用单个共享磁盘或对多个共享磁盘设置带区来创建共享存储池。 
 - 支持文件流。
+- 高级 SSD 支持可用性集。 
 
 
 **限制**： 
-- 虚拟机必须位于同一可用性集和邻近放置组中。
-- 不支持可用性区域。
+- 建议将虚拟机放置在同一可用性集和邻近放置组中。
+- Ultra Disks 不支持可用性集。 
+- Ultra Disks 支持可用性区域，但 VM 必须位于同一可用性区域中，这会降低虚拟机的可用性。 
+- 无论选择哪种硬件可用性解决方案，在使用 Azure 共享磁盘时，故障转移群集的可用性始终为 99.9%。 
 - 不支持高级 SSD 磁盘缓存。
+
  
 首先，请参阅 [SQL Server 故障转移群集实例与 Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 
 

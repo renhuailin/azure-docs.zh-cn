@@ -74,7 +74,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -153,7 +153,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -203,7 +203,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -248,7 +248,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
@@ -319,7 +319,7 @@
                     - name: Java
                       displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                       href: /java/api/com.microsoft.cognitiveservices.speech
-                    - name: JavaScript
+                    - name: Javascript
                       displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                       href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
                     - name: Objective-C
@@ -475,7 +475,7 @@
               href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: JavaScript
+            - name: Javascript
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
               href: /objectivec/cognitive-services/speech/
@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: 跟踪内存使用情况
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: 启用专用终结点
+      href: speech-services-private-link.md
     - name: 为 Linux 配置 OpenSSL
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

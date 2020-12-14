@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422393"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546892"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解语音 CLI 的基础知识
 
-本文介绍了语音 CLI 的基本用法模式，这是一种无需编写代码即可使用语音服务的命令行工具。 无需创建开发环境或编写任何代码，你可以快速测试语音服务的主要功能，以了解它能否充分满足你的用例的要求。 此外，语音 CLI 随时可投入生产，可用通过 `.bat` 或 shell 脚本，使用它自动化语音服务中的简单工作流。
+本文介绍了语音 CLI 的基本用法模式，这是一种无需编写代码即可使用语音服务的命令行工具。 无需创建开发环境或编写任何代码，你可以快速测试语音服务的主要功能，以了解它能否充分满足你的用例的要求。 语音 CLI 随时可投入生产，可用通过 `.bat` 或 shell 脚本，使用它自动化语音服务中的简单工作流。
+
+本文假定你具有命令提示符、终端或 PowerShell 的相关工作知识。
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ spx help find --topics "examples"
 spx help recognize
 ```
 
-现在，通过运行以下命令，使用语音服务通过默认麦克风执行一些语音识别。
+现在利用语音 CLI，使用系统的默认麦克风来进行语音识别。 
+
+>[!WARNING]
+> 如果使用的是 Docker 容器，则此命令不起作用。
+
+运行以下命令：
 
 ```shell
 spx recognize --microphone
 ```
+
+使用语音 CLI，还可以识别音频文件中的语音。
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> 如果要识别 Docker 容器中音频文件的语音，请确保音频文件位于上一步中安装的目录中。
 
 SPX 将在输入命令后开始侦听当前活动输入设备上的音频，并在你按下 `ENTER` 后停止。 然后，识别所录制的语音，并将其转换为控制台输出中的文本。 使用语音 CLI，还可以轻松地进行文本转语音合成。 
 

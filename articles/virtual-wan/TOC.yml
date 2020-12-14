@@ -141,6 +141,8 @@
           href: howto-firewall.md
         - name: 配置专用链接连接
           href: howto-private-link.md
+        - name: 管理对资源的访问 - Spoke VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: 监视
       items:
         - name: 日志和指标
@@ -157,7 +159,7 @@
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: virtual-wan-faq.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'

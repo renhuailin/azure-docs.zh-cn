@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169092"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347706"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
 
-若要为应用服务应用创建自定义安全绑定或启用客户端证书，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”  、“标准”  、“高级”  或“独立”  层级。 在此步骤中，请确保 Web 应用位于受支持的定价层。
+若要为应用服务应用创建自定义 TLS/SSL 绑定或启用客户端证书，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”、“标准”、“高级”或“独立”层级   。 在此步骤中，请确保 Web 应用位于受支持的定价层。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -49,7 +49,7 @@ ms.locfileid: "92169092"
 
 ### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
 
-选择任何非免费层（ **B1** 、 **B2** 、 **B3** ，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
+选择任何非免费层（**B1**、**B2**、**B3**，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
 
 单击“应用”  。
 

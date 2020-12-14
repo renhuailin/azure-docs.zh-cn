@@ -285,8 +285,8 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共享发行说明
       items:
-        - name: 2011 - 当前
-          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2012 - 最新版
+          href: azure-stack-edge-gpu-2012-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
         - name: 2008

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968259"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558753"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
-文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
+文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。 
 
 API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析。
 
@@ -51,13 +51,14 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-观点挖掘是情绪分析的一项功能，从版本 3.1-preview.1 开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
+观点挖掘是情绪分析的一项功能，从版本 3.1-preview.1 开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。 
 
 例如，如果客户评论某家酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的各个方面及其相关的观点和情绪。 情绪分析可能只报告消极情绪。
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="观点挖掘示例图" lightbox="../media/how-tos/opinion-mining.png":::
 
-若要在结果中获取观点挖掘，必须在情绪分析请求中包含 `opinionMining=true` 标志。 观点挖掘结果将包含在情绪分析响应中。
+若要在结果中获取观点挖掘，必须在情绪分析请求中包含 `opinionMining=true` 标志。 观点挖掘结果将包含在情绪分析响应中。 观点挖掘是情绪分析的扩展，包含在你当前的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
+
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求 
 

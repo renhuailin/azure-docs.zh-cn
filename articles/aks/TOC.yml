@@ -333,8 +333,10 @@
           href: spark-job.md
         - name: 使用 GPU
           href: gpu-cluster.md
-        - name: 使用 Azure Database for PostgreSQL
-          href: ../postgresql/concepts-aks.md
+        - name: 使用 PostgreSQL 生成应用
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: 使用 MySQL 生成应用
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
         - name: 使用 Azure API 管理
           href: ../api-management/api-management-kubernetes.md
