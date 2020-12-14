@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c8f4c91070d87e9e6e3cdbb5534b988063eaba14
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109107"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387170"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -64,13 +64,13 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 若要新建用户帐户，输入声明是唯一标识本地帐户或联合帐户的键。 例如，对于本地帐户，为：**signInNames.emailAddress** 或 **signInNames.userName**。 对于联合帐户，为：**alternativeSecurityId**。
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) 元素可以包含一组输入声明转换元素，这些元素用于修改输入声明或生成新的声明。
+[InputClaimsTransformations](technicalprofiles.md#input-claims-transformations) 元素可以包含一组输入声明转换元素，这些元素用于修改输入声明或生成新的声明。
 
 ## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含 Azure AD 技术配置文件返回的声明列表。 可能需要将策略中定义的声明名称映射到 Azure Active Directory 中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含 Azure Active Directory 不会返回的声明。
 
-[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
+[OutputClaimsTransformations](technicalprofiles.md#output-claims-transformations) 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
 例如，**AAD-UserWriteUsingLogonEmail** 技术配置文件可创建本地帐户并返回以下声明：
 
@@ -259,7 +259,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
  
 以下设置可用于配置失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization.md)。
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 |

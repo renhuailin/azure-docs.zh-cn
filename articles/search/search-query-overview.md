@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368114"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387660"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>在 Azure 中查询认知搜索
 
-Azure 认知搜索提供丰富的查询语言，支持从自由格式搜索到高度指定的查询模式的各种方案。 本文总结了您可以创建的查询类型。
+Azure 认知搜索提供丰富的查询语言，支持从自由文本搜索到高度指定的查询模式的各种方案。 本文总结了您可以创建的查询类型。
 
 在认知搜索中，查询是指往返操作的完整规范 **`search`** ，其参数既用于通知查询执行，也可用于返回响应。 参数和分析器确定查询请求的类型。 下面的查询示例使用 [搜索文档 (REST API 的) ](/rest/api/searchservice/search-documents)，目标为 [宾馆演示索引](search-get-started-portal.md)。
 
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 + **`queryType`** 设置分析器，该分析器可以是 [默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是 [完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
-+ **`search`** 提供包含或不含运算符的匹配条件，通常为整个词或短语。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。 
++ **`search`** 提供包含或不含运算符的匹配条件，通常为整个词或短语。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。
 
 + **`searchFields`** 将查询执行限制为特定的可搜索字段。
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 您可能还需要筛选器来调用专用查询窗体，如下表中所述。 您可以使用具有未指定搜索 (**`search=*`**) 或包含术语、短语、运算符和模式的查询字符串的筛选器。
 
-| 筛选方案 | 描述 |
+| 筛选方案 | 说明 |
 |-----------------|-------------|
 | 范围筛选器 | 在 Azure 认知搜索中，范围查询是使用筛选器参数生成的。 有关详细信息和示例，请参阅 [范围筛选器示例](search-query-simple-examples.md#example-4-range-filters)。 |
 | 地理位置搜索 | 如果可搜索字段为 [GeographyPoint 类型](/rest/api/searchservice/supported-data-types)，则可以为 "查找附近的用户" 或基于地图的搜索控件创建筛选器表达式。 驱动器异地搜索包含坐标的字段。 有关详细信息和示例，请参阅 [异地搜索示例](search-query-simple-examples.md#example-5-geo-search)。 |
@@ -110,10 +110,8 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="next-steps"></a>后续步骤
 
-使用门户或其他工具（如 Postman 或 Visual Studio Code）或 Sdk 之一来更深入地浏览查询。 以下链接将帮助你入门。
+有关查询实现的详细说明，请查看每个语法的示例。 如果你不熟悉全文搜索，则更详细地了解查询引擎的功能可能是一个相当不错的选择。
 
-+ [搜索资源管理器](search-explorer.md)
-+ [如何在 REST 中进行查询](search-get-started-rest.md)
-+ [如何在 .NET 中进行查询](search-get-started-dotnet.md)
-+ [如何在 Python 中查询](search-get-started-python.md)
-+ [如何在 JavaScript 中查询](search-get-started-javascript.md)
++ [简单查询示例](search-query-simple-examples.md)
++ [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)

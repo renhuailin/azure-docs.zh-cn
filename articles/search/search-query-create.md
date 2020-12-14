@@ -7,43 +7,61 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/12/2020
-ms.openlocfilehash: ace887396bacf264f0ffbd186ef1349e96496786
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 12/14/2020
+ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371097"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387422"
 ---
-# <a name="create-a-basic-query-in-azure-cognitive-search"></a>在 Azure 中创建基本查询认知搜索
+# <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 中创建查询认知搜索
 
-本文逐步介绍查询构造。 示例在 REST 中，以便你可以将字符串复制到门户中的 **搜索资源管理器** ，或者使用 Postman 或 Visual Studio code 以交互方式生成查询。 对于本文中的示例，你可以使用任何层或认知搜索版本。
+了解用于生成查询的工具和 Api、用于创建查询的方法以及索引结构和内容如何影响查询结果。 有关查询请求的外观介绍，请从 [查询类型和组合](search-query-overview.md)开始。
 
-## <a name="choose-a-tool-or-api"></a>选择工具或 API
+## <a name="choose-tools-and-apis"></a>选择工具和 Api
 
-从以下工具和 Api 中进行选择，以创建用于测试或生产工作负荷的查询。
+你可以使用以下任意工具和 Api 来创建用于测试或生产工作负荷的查询。
 
 | 方法 | 说明 |
 |-------------|-------------|
-| 门户| [搜索资源管理器 (门户) ](search-explorer.md) 提供搜索栏和用于选择索引和 api 版本的选项。 结果会以 JSON 文档的形式返回。 建议用于早期调查、测试和验证。 <br/>[了解详细信息。](search-explorer.md) |
-| Web 测试工具| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用于表述 [搜索文档](/rest/api/searchservice/search-documents) REST 调用的强大选项。 REST API 支持 Azure 认知搜索中的每个编程操作，因此你可以通过交互方式发出请求，以了解在投入使用代码之前，如何工作。  |
-| Azure SDK | [SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 c # 中查询搜索索引。  [了解详细信息。](search-howto-dotnet-sdk.md) <br/><br/>可以使用[python) 的 SearchClient (](/dotnet/api/azure.search.documents.searchclient)在 python 中查询搜索索引。 [了解详细信息。](search-get-started-python.md) <br/><br/> [SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 javascript 中查询搜索索引。 [了解详细信息。](search-get-started-javascript.md)  |
+| 门户| [搜索资源管理器 (门户) ](search-explorer.md) 是 Azure 门户中的查询接口，可用于对基础搜索服务上的索引运行查询。 门户会在后台进行 REST API 调用。 您可以选择任何索引和任何受支持的 REST API 版本，包括预览版本。 查询字符串可以采用简单语法和完整语法，并且可以包含筛选表达式、facet、select 和 searchField 语句以及 searchMode。 在门户中，打开索引时，可以在并排选项卡中使用 "搜索资源管理器" 和 "索引 JSON 定义" 来轻松访问字段属性。 在测试查询时，可以检查哪些字段可搜索、可排序、可筛选和可查找。 建议用于早期调查、测试和验证。 <br/>[了解详细信息。](search-explorer.md) |
+| Web 测试工具| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用于在 REST 上表述 [搜索文档](/rest/api/searchservice/search-documents) 请求的强选项。 REST API 支持 Azure 认知搜索中的每个编程操作，并且当你使用 Postman 或 Visual Studio Code 之类的工具时，你可以通过交互方式发出请求，以便在投入代码之前了解工作方式。 如果在 Azure 门户中没有参与者或管理权限，则 web 测试工具是一个不错的选择。 只要有搜索 URL 和查询 API 密钥，就可以使用这些工具对现有索引运行查询。 |
+| Azure SDK | 准备好编写代码时，可以在适用于 .NET、Python、JavaScript 或 Java 的 Azure Sdk 中使用 Azure.Search.Docargumentable 客户端库。 每个 SDK 都具有自己的发布计划，但你可以在其中创建和查询索引。 <br/><br/>[SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 c # 中查询搜索索引。  [了解详细信息。](search-howto-dotnet-sdk.md)<br/><br/>可以使用[python) 的 SearchClient (](/dotnet/api/azure.search.documents.searchclient)在 python 中查询搜索索引。 [了解详细信息。](search-get-started-python.md) <br/><br/> [SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 javascript 中查询搜索索引。 [了解详细信息。](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>设置搜索客户端
 
-搜索客户端向搜索服务进行身份验证，发送请求并处理响应。 查询始终定向到单个索引的文档集合。 不能联接索引或者创建自定义或临时数据结构作为查询目标。
+搜索客户端向搜索服务进行身份验证，发送请求并处理响应。 无论使用哪个工具或 API，搜索客户端都必须具有以下各项：
+
+| 属性 | 说明 |
+|------------|-------------|
+| 端点 | 搜索服务是按以下格式寻址的 URL： `https://[service-name].search.windows.net` 。 |
+| API 访问密钥 (管理或查询)  | 对搜索服务的请求进行身份验证。 |
+| 索引名称 | 查询始终定向到单个索引的文档集合。 不能联接索引或者创建自定义或临时数据结构作为查询目标。 |
+| API 版本 | REST 调用显式要求 `api-version` 请求中的。 与此相反，Azure SDK 中的客户端库是针对特定的 REST API 版本进行版本控制的。 对于 Sdk， `api-version` 是隐式的。 |
 
 ### <a name="in-the-portal"></a>在门户中
 
-搜索资源管理器和其他门户工具具有到服务的内置客户端连接，其中包含来自门户页面的直接访问索引和其他对象。 访问 "工具"、"向导" 和 "对象" 时，会假设您拥有服务的管理权限。 借助搜索资源管理器，您可以集中指定搜索字符串和其他参数。 
+搜索资源管理器和其他门户工具具有到服务的内置客户端连接，其中包含来自门户页面的直接访问索引和其他对象。 访问工具、向导和对象需要服务上的 "参与者" 角色的成员身份或更高权限。 
 
 ### <a name="using-rest"></a>使用 REST
 
-对于 REST 调用，你可以使用 [Postman 或类似的工具](search-get-started-rest.md) 作为客户端来指定 [搜索文档](/rest/api/searchservice/search-documents) 请求。 每个请求都是独立的，因此，必须提供终结点 (URL 到服务) ，以及访问管理员或查询 API 密钥。 根据请求，URL 可能还包括索引名称、文档集合和其他属性。 在请求标头上传递几个属性，如 Content 类型和 API 密钥。 可以在 URL 或请求正文中传递其他参数。 所有 REST 调用都需要用于身份验证的 API 密钥和 api 版本。
+对于 REST 调用，你可以使用 [Postman 或类似的工具](search-get-started-rest.md) 作为客户端来指定 [搜索文档](/rest/api/searchservice/search-documents) 请求。 每个请求都是独立的，因此你必须提供每个请求的终结点、索引名称和 API 版本。 其他属性、内容类型和 API 密钥在请求标头上传递。 
+
+您可以使用 POST 或 GET 来查询索引。 POST，其中包含请求正文中指定的参数，更易于使用。 如果你使用 POST，请确保包含 `docs/search` 在 URL 中：
+
+```http
+POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "simple",
+    "search": "*"
+}
+```
 
 ### <a name="using-azure-sdks"></a>使用 Azure Sdk
 
-Azure Sdk 提供可以保持状态的搜索客户端，从而允许进行连接重用。 对于查询操作，你将实例化一个 SearchClient 并为以下属性提供值： Endpoint、Key、Index。 然后，你可以调用搜索方法来提供查询字符串。 
+如果使用的是 Azure SDK，请在代码中创建客户端。 所有 Sdk 都提供可保持状态的搜索客户端，从而允许进行连接重用。 对于查询操作，你将实例化 **`SearchClient`** 并为以下属性指定值： Endpoint、Key、Index。 然后，可以调用 **`Search method`** 来传入查询字符串。 
 
 | 语言 | 客户端 | 示例 |
 |----------|--------|---------|
@@ -54,11 +72,11 @@ Azure Sdk 提供可以保持状态的搜索客户端，从而允许进行连接�
 
 ## <a name="choose-a-parser-simple--full"></a>选择一个分析器：简单 | 完整
 
-Azure 认知搜索提供了两个查询分析器之间的选择，用于处理典型查询和专用查询。 使用简单分析器的请求通常是全文搜索查询，使用 [简单的查询语法](query-simple-syntax.md)进行了表述，并将其选择为默认值，以便其在自由格式文本查询中的速度和有效性。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
+如果查询是全文搜索，则将使用分析器来处理搜索参数的内容。 Azure 认知搜索提供两个查询分析。 简单分析器理解 [简单查询语法](query-simple-syntax.md)。 此分析器被选为默认值，以便其在自由格式文本查询中的速度和有效性。 语法支持 (AND、OR、NOT) 用于术语和短语搜索，并为 `*` 西雅图和 Seaside (的 "海平面 *") 搜索) 提供 (前缀。 一般的建议是先尝试简单分析器，然后在应用程序要求调用更强大的查询时继续使用完整分析器。
 
-在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
+在添加到请求时启用的 [完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax) `queryType=full` 基于 [Apache Lucene 分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。
 
-下面的示例说明了 point：相同的查询，但具有不同的 **`queryType`** 设置，这会产生不同的结果。 在第一个查询中，`historic` 后面的 `^3` 被视为搜索字词的一部分。 此查询的排名靠前的结果是 "Marquis Plaza & 套件"，其说明中有 *海洋* 。
+Full 语法是简单语法的扩展，具有更多运算符，以便您可以构造高级查询，如模糊搜索、通配符搜索、邻近搜索和正则表达式。 下面的示例说明了 point：相同的查询，但具有不同的 **`queryType`** 设置，这会产生不同的结果。 在第一个简单查询中，将 " `^3` 后" `historic` 作为搜索词的一部分处理。 此查询的排名靠前的结果是 "Marquis Plaza & 套件"，其说明中有 *海洋* 。
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -84,20 +102,40 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-## <a name="enable-query-behaviors-in-an-index"></a>在索引中启用查询行为
+## <a name="choose-query-methods"></a>选择查询方法
 
-索引设计和查询设计在 Azure 认知搜索中紧密耦合。 具有每个字段的属性的 *索引架构* 确定了您可以生成的查询类型。
+搜索本质上是用户驱动的练习，其中的词或短语是从搜索框中收集的，或者是从某个页面上的单击事件中收集的。 下表总结了可用于收集用户输入的机制以及预期的搜索体验。
 
-字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询中， `"$orderby": "Rating desc"` 只是因为 "分级" 字段在索引架构中标记为可 *排序* 。
+| 输入 | 体验 |
+|-------|---------|
+| [搜索方法](/rest/api/searchservice/search-documents) | 用户在搜索框中键入字词或短语（带有或不带运算符），然后单击 "搜索" 以发送请求。 搜索可与筛选器一起用于相同请求，但不能与自动完成或建议一起使用。 |
+| [自动完成方法](/rest/api/searchservice/autocomplete) | 用户键入几个字符，并在键入每个新字符后启动查询。 响应是索引中的已完成字符串。 如果提供的字符串有效，用户可单击 "搜索" 将该查询发送到服务。 |
+| [建议方法](/rest/api/searchservice/suggestions) | 与 "自动完成" 一样，用户键入几个字符，而增量查询会生成。 响应是匹配文档的下拉列表，通常由几个唯一或描述性字段表示。 如果选择有效，则用户单击其中一个，然后返回匹配的文档。 |
+| [多面导航](/rest/api/searchservice/search-documents#query-parameters) | 页面将显示可点击的导航链接或可缩小搜索范围的痕迹导航。 分面导航结构根据初始查询动态组合。 例如， `search=*` 要填充分面导航树，其中包含每个可能的类别。 分面导航结构由查询响应创建，但它也是用于表示下一查询的机制。 n REST API 引用， `facets` 记录为搜索文档操作的查询参数，但它可以在没有参数的情况下使用 `search` 。|
+| [筛选器方法](/rest/api/searchservice/search-documents#query-parameters) | 筛选器与方面一起用于缩小结果范围。 您还可以实现页面后的筛选器，例如，使用特定于语言的字段初始化页面。 在 REST API 引用中， `$filter` 记录为搜索文档操作的查询参数，但它可以在没有参数的情况下使用 `search` 。|
+
+## <a name="know-your-field-attributes"></a>了解字段特性
+
+如果你以前查看过 [查询请求的基础知识](search-query-overview.md)，你可能会注意到，查询请求上的参数取决于字段在索引中的特性。 例如，若要在查询、筛选或排序顺序中使用，字段必须是可 *搜索*、可 *筛选* 和可 *排序* 的字段。 同样，只有标记为可 *检索* 的字段才能出现在结果中。 当你开始 `search` `filter` 在请求中指定、和 `orderby` 参数时，请确保在执行时检查属性，以避免意外结果。
+
+在门户的 " [酒店示例" 索引](search-get-started-portal.md)下面的屏幕截图中，只可在唯一的子句中使用最后两个字段 "LastRenovationDate" 和 "分级" `"$orderby"` 。
 
 ![酒店示例的索引定义](./media/search-query-overview/hotel-sample-index-definition.png "酒店示例的索引定义")
 
-以上屏幕截图是 [酒店示例索引](search-get-started-portal.md)的索引属性的部分列表。 您可以在门户中创建和查看整个索引架构。 有关索引属性的详细信息，请参阅 [创建索引 (REST API) ](/rest/api/searchservice/create-index)。
+有关字段属性的说明，请参阅 [创建索引 (REST API) ](/rest/api/searchservice/create-index)。
+
+## <a name="know-your-tokens"></a>了解令牌
+
+在编制索引期间，查询引擎使用分析器来对字符串执行文本分析，从而最大程度地提高查询时的匹配可能性。 字符串至少采用小写，但可能还会经历词形还原并停止单词删除。 较大的字符串或组合词通常由空格、连字符或短划线分割，并索引为单独的标记。 
+
+接下来，需要注意的是，您的索引包含的内容以及其中的实际内容可能不同。 如果查询未返回预期的结果，则可以通过 " [分析文本" (REST API) ](/rest/api/searchservice/test-analyzer)检查分析器创建的令牌。 有关标记化和对查询的影响的详细信息，请参阅 [包含特殊字符的部分术语搜索和模式](search-query-partial-matching.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何构造请求，请尝试使用简单语法和完整语法的示例。
+既然您已经更好地了解了查询请求的构造方式，接下来请尝试以下快速入门教程。
 
-+ [简单查询示例](search-query-simple-examples.md)
-+ [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
-+ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [搜索资源管理器](search-explorer.md)
++ [如何在 REST 中进行查询](search-get-started-rest.md)
++ [如何在 .NET 中进行查询](search-get-started-dotnet.md)
++ [如何在 Python 中查询](search-get-started-python.md)
++ [如何在 JavaScript 中查询](search-get-started-javascript.md)

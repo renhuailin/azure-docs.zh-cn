@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904986"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387575"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
 本文介绍如何使用 Azure 监控范围门户注册和扫描 Power BI 租户。
 
 > [!Note]
-> 如果监控范围实例和 Power BI 租户位于同一 Azure 租户中，则只能使用托管标识 (MSI) 身份验证来设置 Power BI 租户的扫描。 如果监控范围实例和 Power BI 租户位于不同的 Azure 租户中，则必须使用委派的身份验证进行身份验证，并且必须使用 PowerShell 来设置扫描。 请参阅 [使用 PowerShell 注册和扫描 Power BI](powershell-register-scan-power-bi.md)。
+> 如果监控范围实例和 Power BI 租户位于同一 Azure 租户中，则只能使用托管标识 (MSI) 身份验证来设置 Power BI 租户的扫描。 
 
 ## <a name="create-a-security-group-for-permissions"></a>创建权限的安全组
 

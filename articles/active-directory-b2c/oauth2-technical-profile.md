@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9bb53f62c5edf055e17f198b7adb45a36bcb2f8
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 83b8755ea8e629e0f5c3f16d2a38e62882373a7f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936618"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386896"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必选 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -98,7 +98,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 | ExtraParamsInAccessTokenEndpointResponse | 否 | 包含可在某些标识提供者的 **AccessTokenEndpoint** 响应中返回的附加参数。 例如，**AccessTokenEndpoint** 的响应包含 `openid` 等附加参数，在 **ClaimsEndpoint** 请求查询字符串中，除 access_token 以外，此参数也是必需的参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
 | ExtraParamsInClaimsEndpointRequest | 否 | 包含可在某些标识提供者的 **ClaimsEndpoint** 请求中返回的附加参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
-| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
+| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#output-claims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
 |SingleLogoutEnabled| 否| 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-overview.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。|
 
@@ -106,7 +106,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据设置为 `id_token` ，则可以省略加密密钥。 |
 
@@ -114,6 +114,6 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如 contosob2c) 。 重定向 URI 需要采用全小写形式。
 
-例如：
+示例:
 
 - [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google.md)

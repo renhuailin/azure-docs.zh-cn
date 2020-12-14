@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485785"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387711"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,6 +26,9 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 > [!NOTE]
 > 使用自承载集成运行时，还支持 Web 活动调用专用虚拟网络中托管的 URL。 该集成运行时应可以看到 URL 终结点。 
+
+> [!NOTE]
+> 支持的最大输出响应负载大小为 4 MB。  
 
 ## <a name="syntax"></a>语法
 
@@ -70,7 +73,7 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是

@@ -3,12 +3,12 @@ title: 使用 Azure PowerShell 启用 VM 扩展
 description: 本文介绍如何使用 Azure PowerShell 将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40f3d6ab98411d5b8e42f4f79817c66f56fdaaef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029024"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387403"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure VM 扩展
 
@@ -35,7 +35,7 @@ ms.locfileid: "96029024"
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
 ```
 
 下面的示例在启用 Arc 的服务器上启用自定义脚本扩展：
@@ -80,7 +80,7 @@ PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResour
 
 若要获取启用了 Arc 的服务器上的 VM 扩展列表，请将 [AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) 与 `-MachineName` 和参数一起使用 `-ResourceGroupName` 。
 
-示例：
+例如：
 
 ```powershell
 Get-AzConnectedMachineExtension -ResourceGroupName myResourceGroup -MachineName myMachineName
@@ -92,7 +92,7 @@ custom  westus2   CustomScriptExtension Succeeded
 
 ## <a name="remove-an-installed-extension"></a>删除已安装的扩展
 
-若要在启用了 Arc 的服务器上删除已安装的[Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) VM 扩展，请使用带有 `-Name` 、 `-MachineName` 和参数的 AzConnectedMachineExtension `-ResourceGroupName` 。
+若要在启用了 Arc 的服务器上删除已安装的[](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) VM 扩展，请使用带有 `-Name` 、 `-MachineName` 和参数的 AzConnectedMachineExtension `-ResourceGroupName` 。
 
 例如，若要删除适用于 Linux 的 Log Analytics VM 扩展，请运行以下命令：
 

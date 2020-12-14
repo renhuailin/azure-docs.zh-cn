@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4d62619fe2641ec1aded39650b47b53cf4269d8b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368870"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387535"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "92368870"
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
 - Azure SQL 数据库
-- Azure Synapse Analytics（以前称为 SQL 数据仓库）
+- Azure Synapse Analytics
 - SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装自托管集成运行时。 自托管集成运行时是一种以安全托管方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[自托管集成运行时](create-self-hosted-integration-runtime.md)一文。
 
 > [!IMPORTANT]
@@ -68,7 +68,7 @@ ms.locfileid: "92368870"
 
 下表描述了其中的 JSON 属性：
 
-| 属性                  | 描述                              | 必须 |
+| 属性                  | 说明                              | 必须 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
 | description               | 描述活动用途的文本 | 否       |
@@ -83,14 +83,12 @@ ms.locfileid: "92368870"
 | 数据源          | 数据类型映射 |
 | ---------------------|-------------------|
 | Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL 数据库   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
-## <a name="error-info"></a>错误信息
 
-当存储过程失败并返回错误详细信息时，你无法直接在活动输出中捕获错误信息。 但是，数据工厂会将其所有活动运行事件抽取到 Azure Monitor。 在数据工厂抽取到 Azure Monitor 的事件中，它会在那里推送错误详细信息。 例如，可以通过这些事件设置电子邮件警报。 有关详细信息，请参阅[使用 Azure Monitor 发警报和监视数据工厂](monitor-using-azure-monitor.md)。
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 
@@ -102,5 +100,5 @@ ms.locfileid: "92368870"
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

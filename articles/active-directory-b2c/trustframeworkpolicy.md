@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203089"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386878"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -62,27 +62,15 @@ ms.locfileid: "85203089"
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>继承模型
+**TrustFrameworkPolicy** 元素包含以下元素：
 
-用户旅程中通常使用以下类型的策略文件：
-
-- **基本**文件：包含大多数定义。 为了帮助进行故障排除和长期维护策略，我们建议对此文件进行极少量的更改。
-- **扩展**文件：保存租户的独特配置更改。 此策略文件派生自“基本”文件。 使用此文件可以添加新功能或替代现有功能。 例如，使用此文件可与新的标识提供者联合。
-- **信赖方 (RP)** 文件：注重单个任务的文件，由信赖方应用程序（例如 Web、移动或桌面应用程序）直接调用。 每个独特的任务（例如注册或登录、密码重置或配置文件编辑）都需要自身的 RP 策略文件。 此策略文件派生自“扩展”文件。
-
-信赖方应用程序调用 RP 策略文件来执行特定的任务。 例如，启动登录流。 Azure AD B2C 中的标识体验框架依次从“基本”文件、“扩展”文件和“RP”策略文件中添加所有元素，以组合当前生效的策略。 “RP”文件中具有相同类型和名称的元素将替代“扩展”中的这些元素，“扩展”替代“基本”。 下图显示了策略文件与信赖方应用程序之间的关系。
-
-![显示信任框架策略继承模型的示意图](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
-
-继承模型如下所示：
-
-- 父策略和子策略的架构相同。
-- 任何级别的子策略可以继承自父策略，并通过添加新元素来扩展父策略。
-- 级别数没有限制。
-
-有关详细信息，请参阅[自定义策略入门](custom-policy-get-started.md)。
-
-## <a name="base-policy"></a>基本策略
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| BasePolicy| 0:1| 基本策略的标识符。 |
+| [BuildingBlocks](buildingblocks.md) | 0:1 | 策略的构建基块。 |
+| [ClaimsProviders](claimsproviders.md) | 0:1 | 声明提供程序的集合。 |
+| [UserJourneys](userjourneys.md) | 0:1 | 用户旅程的集合。 |
+| [RelyingParty](relyingparty.md) | 0:1 | 信赖方策略的定义。 |
 
 若要从另一个策略继承某个策略，必须在策略文件的 **TrustFrameworkPolicy** 元素下声明 **BasePolicy** 元素。 **BasePolicy** 元素是对从中派生此策略的基本策略的引用。
 
@@ -114,46 +102,3 @@ ms.locfileid: "85203089"
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>策略执行
-
-信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都会收到包含声明的相同令牌，用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
-
-在 RP 策略文件中，指定指向 [UserJourney](userjourneys.md) 的 **DefaultUserJourney** 元素。 用户旅程通常在基本或扩展策略中定义。
-
-B2C_1A_signup_signin 策略：
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn">
-  ...
-```
-
-B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
-
-```xml
-<UserJourneys>
-  <UserJourney Id="SignUpOrSignIn">
-  ...
-```
-
-用户旅程定义用户所要经历的业务逻辑。 每个用户旅程是按顺序执行一系列操作，以进行身份验证和收集信息的一组业务流程步骤。
-
-[初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。
-
-业务流程步骤可以调用[技术配置文件](technicalprofiles.md)。 技术配置文件提供带有内置机制的框架来与不同类型的参与方通信。 例如，技术配置文件可执行以下操作：
-
-- 呈现用户体验。
-- 允许用户使用 Facebook、Microsoft 帐户、Google、Salesforce 等社交或企业帐户或者其他任何标识提供者登录。
-- 设置 MFA 的电话验证。
-- 在 Azure AD B2C 标识存储中读取和写入数据。
-- 调用自定义 Restful API 服务。
-
-![显示策略执行流的示意图](./media/trustframeworkpolicy/custom-policy-execution.png)
-
- **TrustFrameworkPolicy** 元素包含以下元素：
-
-- 前面指定的 BasePolicy
-- [BuildingBlocks](buildingblocks.md)
-- [ClaimsProviders](claimsproviders.md)
-- [UserJourneys](userjourneys.md)
-- [RelyingParty](relyingparty.md)

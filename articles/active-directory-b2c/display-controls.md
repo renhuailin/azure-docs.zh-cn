@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532369"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387048"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -53,14 +53,14 @@ ms.locfileid: "94532369"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 有关详细信息，请参阅 [InputClaims](technicalprofiles.md#inputclaims) 元素。 |
+| InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 有关详细信息，请参阅 [InputClaims](technicalprofiles.md#input-claims) 元素。 |
 | DisplayClaims | 0:1 | **DisplayClaims** 用于表示要从用户那里收集的声明。 有关详细信息，请参阅 [DisplayClaim](technicalprofiles.md#displayclaim) 元素。|
-| OutputClaims | 0:1 | **OutputClaims** 用于表示要暂时为此 **DisplayControl** 保存的声明。 有关详细信息，请参阅 [OutputClaims](technicalprofiles.md#outputclaims) 元素。|
+| OutputClaims | 0:1 | **OutputClaims** 用于表示要暂时为此 **DisplayControl** 保存的声明。 有关详细信息，请参阅 [OutputClaims](technicalprofiles.md#output-claims) 元素。|
 | 操作 | 0:1 | **Actions** 用于列出要针对在前端发生的用户操作调用的验证技术配置文件。 |
 
 ### <a name="input-claims"></a>输入声明
 
-在显示控件中，可以使用 **InputClaims** 元素预填充要在页面上从用户那里收集的声明的值。 可在引用此显示控件的自断言技术配置文件中定义任何 **InputClaimsTransformations** 。
+在显示控件中，可以使用 **InputClaims** 元素预填充要在页面上从用户那里收集的声明的值。 可在引用此显示控件的自断言技术配置文件中定义任何 **InputClaimsTransformations**。
 
 以下示例使用已存在的地址预填充要验证的电子邮件地址。
 
@@ -78,7 +78,7 @@ ms.locfileid: "94532369"
 
 与在 [自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的 **显示声明** 类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个 **操作** 所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
 
-某些显示声明是某些类型的显示控件所必需的。 例如， **VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如： 。
+某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如： 。
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -88,13 +88,13 @@ ms.locfileid: "94532369"
 
 显示控件的 **输出声明** 不会发送到下一个业务流程步骤。 它们仅暂时保存以用于当前显示控件会话。 这些暂时声明可在同一显示控件的不同操作之间共享。
 
-若要将输出声明传播到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的 **OutputClaims** 。
+若要将输出声明传播到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的 **OutputClaims**。
 
 ### <a name="display-control-actions"></a>显示控件操作
 
 显示控件的 **操作** 是用户在客户端（浏览器）执行特定操作时在 Azure AD B2C 后端发生的过程。 例如，当用户选择页面上的某个按钮时要执行的验证。
 
-操作定义 **验证技术配置文件** 的列表。 它们用于验证显示控件的部分或全部显示声明。 验证技术配置文件将验证用户输入，并可能向用户返回错误。 可以在显示控件操作中使用 **ContinueOnError** 、 **ContinueOnSuccess** 和 **Preconditions** ，使用方式类似于在自断言技术配置文件中的 [验证技术配置文件](validation-technical-profile.md)中使用它们的方式。
+操作定义 **验证技术配置文件** 的列表。 它们用于验证显示控件的部分或全部显示声明。 验证技术配置文件将验证用户输入，并可能向用户返回错误。 可以在显示控件操作中使用 **ContinueOnError**、**ContinueOnSuccess** 和 **Preconditions**，使用方式类似于在自断言技术配置文件中的 [验证技术配置文件](validation-technical-profile.md)中使用它们的方式。
 
 #### <a name="actions"></a>操作
 

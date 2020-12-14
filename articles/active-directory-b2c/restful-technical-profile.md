@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750420"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386844"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -122,14 +122,14 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
 | DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-validation-error-message)部分。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
-| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
+| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#output-claims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 | UseClaimAsBearerToken| 否| 包含持有者令牌的声明的名称。|
 
 ## <a name="error-handling"></a>错误处理。
 
 以下元数据可用于配置 REST API 失败时显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#restful-service-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultUserMessageIfRequestFailed | 否 | 所有 REST API 异常的默认自定义错误消息。|
 | UserMessageIfCircuitOpen | 否 | 无法访问 REST API 时的错误消息。 如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 |

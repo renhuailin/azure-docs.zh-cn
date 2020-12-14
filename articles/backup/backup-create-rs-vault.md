@@ -4,12 +4,12 @@ description: 本文介绍如何创建和配置用于存储备份和恢复点的�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548420"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387728"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -77,8 +77,9 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
  ![“备份配置”横幅](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. 在门户中，转到“恢复服务保管库”>“设置”>“属性”。
-2. 选择 " **在此保管库中启用跨区域还原** " 以启用该功能。
+1. 在门户中，在 "**设置**") 下，中转到 "恢复服务保管库" >**属性**" (。
+1. 在 " **备份配置**" 下，选择 " **更新**"。
+1. 选择 " **在此保管库中启用跨区域还原** " 以启用该功能。
 
    ![启用跨区域还原](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
