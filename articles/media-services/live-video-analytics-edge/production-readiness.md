@@ -3,12 +3,12 @@ title: 生产就绪情况和最佳做法 - Azure
 description: 本文提供如何在生产环境中配置和部署 IoT Edge 上的实时视频分析模块的指南。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906329"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400550"
 ---
 # <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
 
@@ -109,7 +109,11 @@ sudo chown -R edgeuser /var/local/mediaservices
 
 ### <a name="naming-video-assets-or-files"></a>命名视频资产或文件
 
-通过媒体图，可以在云中创建资产或在边缘上创建 mp4 文件。 媒体资产可以由[连续视频录制](continuous-video-recording-tutorial.md)或[基于事件的视频录制](event-based-video-recording-tutorial.md)生成。 虽然可以根据需要对这些资产和文件命名，但对于基于连续视频录制的媒体资产，建议的命名结构是 "&lt;anytext&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}"。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
+通过媒体图，可以在云中创建资产或在边缘上创建 mp4 文件。 媒体资产可以由[连续视频录制](continuous-video-recording-tutorial.md)或[基于事件的视频录制](event-based-video-recording-tutorial.md)生成。 虽然可以根据需要对这些资产和文件命名，但对于基于连续视频录制的媒体资产，建议的命名结构是 "&lt;anytext&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}"。   
+
+替换模式由 $ 符号后跟大括号： **$ {variableName}** 定义。  
+
+例如，可以对资产接收器设置 assetNamePattern，如下所示：
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ sudo chown -R edgeuser /var/local/mediaservices
 对于边缘上基于事件的视频录制生成的 mp4 视频剪辑，建议的命名模式应包括 DateTime，对于同一图形的多个实例，建议使用系统变量 GraphTopologyName 和 GraphInstanceName。 例如，可以对文件接收器设置 filePathPattern，如下所示： 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 或 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> 在上面的示例中，变量 **fileSinkOutputName** 是在图形拓扑中定义的示例变量名称。 这 **不** 是系统变量。 
 
+#### <a name="system-variables"></a>系统变量
+您可以使用的一些系统定义变量是：
+
+|系统变量|说明|示例|
+|-----------|-----------|-----------|
+|System.DateTime|ISO8601 file 相容格式的 UTC 日期时间 (基本表示 YYYYMMDDThhmmss) 。|20200222T173200Z|
+|PreciseDateTime|ISO8601 file 相容格式的 UTC 日期时间，以毫秒为单位 (基本表示 YYYYMMDDThhmmss) 。|20200222T 173200.123 Z|
+|System.GraphTopologyName|用户提供的执行图形拓扑的名称。|IngestAndRecord|
+|System.GraphInstanceName|用户提供的执行图形实例的名称。|camera001|
+
+>[!TIP]
+> 命名资产时，PreciseDateTime 不能使用。 名称中
 ### <a name="keeping-your-vm-clean"></a>保持 VM 清洁
 
 如果不定期对用作边缘设备的 Linux VM 进行管理，它可能会变得无响应。 因此，务必要保持缓存的清洁、清除不必要的包，并且从 VM 中删除未使用的容器。 为此，可以在边缘 VM 上使用下面一组建议的命令。
@@ -153,7 +171,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 
     自动删除选项将删除自动安装的包，因为其他的一些包需要这些自动安装的包，但在那些需要它们的包被删除后，将不再需要它们了
 1. `sudo docker image ls` - 提供边缘系统上的 Docker 映像列表
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker 采用保守的方法来清理未使用的对象 (通常称为 "垃圾回收" ) ，如映像、容器、卷和网络：这些对象通常不会被删除，除非明确要求 Docker 这样做。 这可能导致 Docker 会使用额外的磁盘空间。 对于每种类型的对象，Docker 都提供了 prune 命令。 此外，还可以使用 docker system prune 一次性清理多种类型的对象。 有关详细信息，请参阅[删除未使用的 Docker 对象](https://docs.docker.com/config/pruning/)。
 1. `sudo docker rmi REPOSITORY:TAG`

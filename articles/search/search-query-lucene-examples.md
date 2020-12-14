@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 406233fd93ca76a683cf9f9a9e857de9099705ef
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: df26cfc3b220f40a7e73ff1c750d2b2ae37e7625
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368539"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401451"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用“完整的”Lucene 搜索语法（Azure 认知搜索中的高级查询）
 
@@ -36,7 +36,7 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 1. 请求标头必须具有以下值：
 
-   | Key | 值 |
+   | 密钥 | 值 |
    |-----|-------|
    | Content-Type | `application/json`|
    | api-key  | `252044BE3886FE4A8E3BAA4F595114BB` </br>  (这是沙盒搜索服务的实际查询 API 密钥，它托管 NYC 作业索引)  |
@@ -66,9 +66,7 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "full",
-    "search": "*"
+    "queryType": "full"
 }
 ```
 

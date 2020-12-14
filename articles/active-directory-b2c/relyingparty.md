@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/11/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 321669457c479f7f59ccbb9b7950457b7f9a1af5
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8b33c7f76cc2ac7a2012dc9d8c854a1dde46c3ea
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108291"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399122"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -77,8 +77,35 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | 信赖方应用的默认用户旅程。 |
+| 终结点 | 0:1 | 终结点的列表。 有关详细信息，请参阅 [用户信息终结点](userinfo-endpoint.md)。 |
 | UserJourneyBehaviors | 0:1 | 用户旅程行为的范围。 |
 | TechnicalProfile | 1:1 | 信赖方应用支持的技术配置文件。 该技术配置文件提供了信赖方应用与 Azure AD B2C 联系的协定。 |
+
+## <a name="endpoints"></a>终结点
+
+**终结点** 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| 端点 | 1:1 | 对终结点的引用。|
+
+**终结点** 元素包含以下属性：
+
+| Attribute | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| ID | 是 | 终结点的唯一标识符。|
+| UserJourneyReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md)  | 
+
+以下示例显示了一个具有 [用户信息终结点](userinfo-endpoint.md)的信赖方：
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
@@ -134,7 +161,7 @@ SingleSignOn 元素包含在以下属性中：
 
 JourneyInsights 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -161,7 +188,7 @@ ContentDefinitionParameters 元素包含以下元素：
 
 ContentDefinitionParameters 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
@@ -171,7 +198,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -188,7 +215,7 @@ ContentDefinitionParameters 元素包含以下属性：
 
 Protocol 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
@@ -196,7 +223,7 @@ Protocol 元素包含以下属性：
 
 如果协议是 `SAML`，则元数据元素包含以下元素。
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | IdpInitiatedProfileEnabled | 否 | 指示是否支持 IDP 发起的流。 可能的值：`true` 或 `false`（默认值）。 | 
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 响应进行签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 断言，请参阅 [SAML 颁发者技术配置文件元数据](saml-issuer-technical-profile.md#metadata)。 |
@@ -215,7 +242,7 @@ OutputClaims  元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -229,7 +256,7 @@ OutputClaim 元素包含以下属性：
 
 SubjectNamingInfo 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
 | 格式 | 否 | 用于 SAML 依赖方，以设置 SAML 断言中返回的 NameId 格式。 |

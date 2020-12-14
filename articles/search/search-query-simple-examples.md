@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/12/2020
-ms.openlocfilehash: 51d36211c7ffa0507a186c9a1e1f2b52d478fe4e
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: ff9495e37a499b5502d8f8ced79b69608fa9552a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369084"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401740"
 ---
 # <a name="use-the-simple-search-syntax-in-azure-cognitive-search"></a>使用 Azure 中的 "简单" 搜索语法认知搜索
 
@@ -32,7 +32,7 @@ ms.locfileid: "97369084"
 
 1. 请求标头必须具有以下值：
 
-   | Key | 值 |
+   | 密钥 | 值 |
    |-----|-------|
    | Content-Type | `application/json`|
    | api-key  | `252044BE3886FE4A8E3BAA4F595114BB` </br>  (这是沙盒搜索服务的实际查询 API 密钥，它托管 NYC 作业索引)  |
@@ -60,9 +60,7 @@ ms.locfileid: "97369084"
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "simple",
-    "search": "*"
+    "queryType": "simple"
 }
 ```
 

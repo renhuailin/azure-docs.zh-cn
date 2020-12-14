@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387660"
+ms.locfileid: "97400805"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>在 Azure 中查询认知搜索
 
-Azure 认知搜索提供丰富的查询语言，支持从自由文本搜索到高度指定的查询模式的各种方案。 本文总结了您可以创建的查询类型。
+Azure 认知搜索提供丰富的查询语言，支持从自由文本搜索到高度指定的查询模式的各种方案。 本文介绍查询请求，以及可创建的查询类型。
 
-在认知搜索中，查询是指往返操作的完整规范 **`search`** ，其参数既用于通知查询执行，也可用于返回响应。 参数和分析器确定查询请求的类型。 下面的查询示例使用 [搜索文档 (REST API 的) ](/rest/api/searchservice/search-documents)，目标为 [宾馆演示索引](search-get-started-portal.md)。
+在认知搜索中，查询是指往返操作的完整规范 **`search`** ，其参数既用于通知查询执行，也可用于返回响应。 参数和分析器确定查询请求的类型。 下面的查询示例是一个带有布尔运算符的自由文本查询，它使用 [搜索文档 (REST API) ](/rest/api/searchservice/search-documents)，以目标为 [宾馆索引](search-get-started-portal.md) 文档集合为目标。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-查询执行过程中使用的参数：
+查询执行过程中使用的参数包括：
 
 + **`queryType`** 设置分析器，该分析器可以是 [默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是 [完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
@@ -66,7 +66,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 在认知搜索中，全文搜索基于 Apache Lucene 查询引擎构建。 全文搜索中的查询字符串经过词法分析以提高扫描效率。 分析包含小写的所有术语，删除诸如 "the" 之类的停止词，并将字词减为基元根窗体。 默认分析器为标准 Lucene。
 
-当找到匹配的字词时，查询引擎会重构包含匹配项的搜索文档，按相关性顺序对文档进行排名，并在响应中默认) 返回前 50 (。
+当找到匹配的字词时，查询引擎会重构一个包含匹配项的搜索文档，该文档包含使用文档键或 ID 组合字段值的匹配项，按照相关性顺序对文档进行排名，并在默认情况下返回前 50 (，如果指定了，则返回其他数字) **`top`** 。
 
 如果要实现全文搜索，则了解内容如何进行标记会有助于调试任何查询异常。 如果使用默认的 standard Lucene 以外的分析器查询，则可能需要使用默认标准 Lucene 以外的分析器，以确保索引包含正确的标记。 可以用 [语言分析器](index-add-language-analyzers.md#language-analyzer-list) 或用于修改词法分析的 [专用分析器](index-add-custom-analyzers.md#AnalyzerTable) 来覆盖默认值。 一个示例是将字段的全部内容视为单个标记的 [关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) 。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 有关详细信息，请参阅 [部分术语搜索和带有特殊字符的模式](search-query-partial-matching.md)。
 
@@ -78,7 +78,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="filter-search"></a>筛选器搜索
 
-筛选器广泛用于包括认知搜索的应用。 在应用程序页上，筛选器通常作为 "用户定向筛选" 的链接导航结构中的方面进行可视化。 筛选器还可以在内部用于公开索引内容的切片。 例如，如果索引包含英语和法语字段，则可以使用一种语言进行筛选。 
+筛选器广泛用于包括认知搜索的应用。 在应用程序页上，筛选器通常作为 "用户定向筛选" 的链接导航结构中的方面进行可视化。 筛选器还可以在内部用于公开索引内容的切片。 例如，您可以使用产品类别的筛选器来初始化搜索页，或者如果索引包含英语和法语字段，则使用一种语言。
 
 您可能还需要筛选器来调用专用查询窗体，如下表中所述。 您可以使用具有未指定搜索 (**`search=*`**) 或包含术语、短语、运算符和模式的查询字符串的筛选器。
 

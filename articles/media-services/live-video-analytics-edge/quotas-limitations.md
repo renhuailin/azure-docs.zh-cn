@@ -1,14 +1,14 @@
 ---
-title: 实时视频分析 IoT Edge 配额和限制-Azure
+title: IoT Edge 上的实时视频分析配额和限制 - Azure
 description: 本文介绍 IoT Edge 上的实时视频分析配额和限制。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529224"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400518"
 ---
 # <a name="quotas-and-limitations"></a>配额和限制
 
@@ -16,17 +16,17 @@ ms.locfileid: "90529224"
 
 ## <a name="maximum-period-of-disconnected-use"></a>在已断开连接的情况下使用的最长期限
 
-边缘模块可以承受网络连接的临时丢失。 如果模块保持已断开连接的状态超过了 36 小时，它将停用任何正在运行的图形实例，并将阻止进一步的直接方法调用。
+边缘模块可维持 internet 连接暂时断开。 如果模块的断开连接超过36小时，则会停用任何正在运行的图形实例。 将阻止所有进一步的直接方法调用。
 
-若要将边缘模块恢复到操作状态，必须还原网络连接，使此模块需要能够与 Azure 媒体服务帐户进行成功通信。
+若要将边缘模块恢复到操作状态，必须还原 internet 连接，使模块能够与 Azure 媒体服务帐户成功通信。
 
 ## <a name="maximum-number-of-graph-instances"></a>图形实例的最大数量
 
-每个模块最多可以有 1000 个图形实例（通过 GraphInstanceSet 创建）。
+ (通过 GraphInstanceSet) 创建的每个模块最多支持1000个图形实例。
 
 ## <a name="maximum-number-of-graph-topologies"></a>图形拓扑的最大数量
 
-每个模块最多可以有 50 个图形拓扑（通过 GraphTopologySet 创建）。
+ (通过 GraphTopologySet) 创建的每个模块最多支持50个图形拓扑。
 
 ## <a name="limitations-on-graph-topologies-at-preview"></a>预览版图形拓扑的限制
 
@@ -34,18 +34,9 @@ ms.locfileid: "90529224"
 
 * RTSP 源
    * 每个图形拓扑仅允许有一个 RTSP 源。
-* 帧速率筛选器处理器
-   * 必须立即成为 RTSP 源或运动检测处理器中的下游。
-   * 不能是 HTTP 或 gRPC 扩展处理器使用的下游。
-   * 不能是运动检测处理器中的上游。
-* HTTP 扩展处理器
-   * 每个图形拓扑最多可以有一个此类处理器。
-* gRPC 扩展处理器
-   * 每个图形拓扑最多可以有一个此类处理器。
 * 运动检测处理器
    * 必须立即成为 RTSP 源中的下游。
-   * 每个图形拓扑最多可以有一个此类处理器。
-   * 不能是 HTTP 或 gRPC 扩展处理器使用的下游。
+   * 不能用于 HTTP 或 gRPC 扩展处理器的下游。
 * 信号门处理器
    * 必须立即成为 RTSP 源中的下游。
 * 资产接收器 
@@ -55,8 +46,6 @@ ms.locfileid: "90529224"
    * 不能立即成为 HTTP 或 gRPC 扩展处理器或运动检测处理器的下游
 * IoT 中心接收器
    * 不能立即成为 IoT 中心源的下游。
-
-如果同时使用了运动检测和筛选器速率处理器节点，它们应位于通向 RTSP 源节点的相同节点链中。
 
 ## <a name="limitations-on-media-service-operations-at-preview"></a>预览版中媒体服务操作的限制
 
@@ -68,7 +57,7 @@ ms.locfileid: "90529224"
 
 只能使用支持 RTSP 协议的 IP 相机。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
 
-此外，还应将这些相机配置为使用 AAC 视频和音频。 当前不支持其他编解码器。 
+此外，还应将这些相机配置为使用 H.264 视频和 AAC 音频。 当前不支持其他编解码器。 
 
 ## <a name="next-steps"></a>后续步骤
 

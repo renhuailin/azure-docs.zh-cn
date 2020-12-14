@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387422"
+ms.locfileid: "97400210"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 中创建查询认知搜索
 
-了解用于生成查询的工具和 Api、用于创建查询的方法以及索引结构和内容如何影响查询结果。 有关查询请求的外观介绍，请从 [查询类型和组合](search-query-overview.md)开始。
+如果是第一次生成查询，本文将介绍所需的工具和 Api、用于创建查询的方法，以及索引结构和内容如何影响查询结果。 有关查询请求的外观介绍，请从 [查询类型和组合](search-query-overview.md)开始。
 
 ## <a name="choose-tools-and-apis"></a>选择工具和 Api
 
-你可以使用以下任意工具和 Api 来创建用于测试或生产工作负荷的查询。
+需要使用工具或 API 来创建查询。 以下任意建议可用于测试和生产工作负荷。
 
 | 方法 | 说明 |
 |-------------|-------------|
-| 门户| [搜索资源管理器 (门户) ](search-explorer.md) 是 Azure 门户中的查询接口，可用于对基础搜索服务上的索引运行查询。 门户会在后台进行 REST API 调用。 您可以选择任何索引和任何受支持的 REST API 版本，包括预览版本。 查询字符串可以采用简单语法和完整语法，并且可以包含筛选表达式、facet、select 和 searchField 语句以及 searchMode。 在门户中，打开索引时，可以在并排选项卡中使用 "搜索资源管理器" 和 "索引 JSON 定义" 来轻松访问字段属性。 在测试查询时，可以检查哪些字段可搜索、可排序、可筛选和可查找。 建议用于早期调查、测试和验证。 <br/>[了解详细信息。](search-explorer.md) |
-| Web 测试工具| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用于在 REST 上表述 [搜索文档](/rest/api/searchservice/search-documents) 请求的强选项。 REST API 支持 Azure 认知搜索中的每个编程操作，并且当你使用 Postman 或 Visual Studio Code 之类的工具时，你可以通过交互方式发出请求，以便在投入代码之前了解工作方式。 如果在 Azure 门户中没有参与者或管理权限，则 web 测试工具是一个不错的选择。 只要有搜索 URL 和查询 API 密钥，就可以使用这些工具对现有索引运行查询。 |
-| Azure SDK | 准备好编写代码时，可以在适用于 .NET、Python、JavaScript 或 Java 的 Azure Sdk 中使用 Azure.Search.Docargumentable 客户端库。 每个 SDK 都具有自己的发布计划，但你可以在其中创建和查询索引。 <br/><br/>[SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 c # 中查询搜索索引。  [了解详细信息。](search-howto-dotnet-sdk.md)<br/><br/>可以使用[python) 的 SearchClient (](/dotnet/api/azure.search.documents.searchclient)在 python 中查询搜索索引。 [了解详细信息。](search-get-started-python.md) <br/><br/> [SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 javascript 中查询搜索索引。 [了解详细信息。](search-get-started-javascript.md) |
+| 门户| [搜索资源管理器 (门户) ](search-explorer.md) 是 Azure 门户中的查询接口，用于对基础搜索服务中的索引运行查询。 门户会在后台对 [搜索文档](/rest/api/searchservice/search-documents) 操作进行 REST API 调用，但无法调用自动完成、建议或文档查找。<br/><br/> 您可以选择任何索引和 REST API 版本，包括预览。 查询字符串可以使用简单或完整语法，并支持所有查询参数 (filter、select、searchFields 等) 。 在门户中，打开索引时，可以在并排选项卡中使用 "搜索资源管理器" 和 "索引 JSON 定义" 来轻松访问字段属性。 在测试查询时检查哪些字段可搜索、可排序、可筛选和可查找。 <br/>建议用于早期调查、测试和验证。 [了解详细信息。](search-explorer.md) |
+| Web 测试工具| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用于在 REST 上构建 [搜索文档](/rest/api/searchservice/search-documents) 请求和任何其他请求的强选项。 REST Api 支持 Azure 认知搜索中每个可能的编程操作，并且当你使用 Postman 或 Visual Studio Code 之类的工具时，你可以通过交互方式发出请求，以了解该功能在投入使用之前的工作方式。 如果在 Azure 门户中没有参与者或管理权限，则 web 测试工具是一个不错的选择。 只要有搜索 URL 和查询 API 密钥，就可以使用这些工具对现有索引运行查询。 |
+| Azure SDK | 准备好编写代码时，可以在适用于 .NET、Python、JavaScript 或 Java 的 Azure Sdk 中使用 Azure.Search.Docargumentable 客户端库。 每个 SDK 都具有自己的发布计划，但你可以在其中创建和查询索引。 <br/><br/>[SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 c # 中查询搜索索引。  [了解详细信息。](search-howto-dotnet-sdk.md)<br/><br/>可以使用[python) 的 SearchClient (](/dotnet/api/azure.search.documents.searchclient)在 python 中查询搜索索引。 [了解详细信息。](search-get-started-python.md)<br/><br/>[SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 javascript 中查询搜索索引。 [了解详细信息。](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>设置搜索客户端
 

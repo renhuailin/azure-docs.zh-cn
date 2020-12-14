@@ -1,200 +1,33 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加 - Azure
-description: 如何为 Windows 虚拟桌面设置 MSIX 应用附加。
+title: 配置 Windows 虚拟桌面 .MSIX 应用附加 PowerShell 脚本-Azure
+description: 如何为 Windows 虚拟桌面创建适用于 .MSIX 应用程序的 PowerShell 脚本。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816326"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400822"
 ---
-# <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
+# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>创建 PowerShell 脚本以 .MSIX 应用附加 (预览) 
 
 > [!IMPORTANT]
 > .MSIX 应用附加当前为公共预览版。
 > 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本主题将引导你了解如何在 Windows 虚拟桌面环境中设置 MSIX 应用附加。
+本主题将指导你完成设置 .MSIX 应用附加的 PowerShell 脚本的步骤。
 
-## <a name="requirements"></a>要求
-
-在开始之前，需要配置 MSIX 应用附加：
-
-- 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅 [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅 [使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
-- .MSIX 打包工具。
-- Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
-
-## <a name="get-the-os-image"></a>获取 OS 映像
-
-首先，需要获取 OS 映像。 可以通过 Azure 门户获取 OS 映像。 但是，如果您是 Windows 预览体验计划的成员，则可以选择使用 Windows 预览体验门户。
-
-### <a name="get-the-os-image-from-the-azure-portal"></a>获取 Azure 门户中的 OS 映像
-
-若要从 Azure 门户获取 OS 映像：
-
-1. 打开 [Azure 门户](https://portal.azure.com) 并登录。
-
-2. 请参阅 **创建虚拟机**。
-
-3. 在 " **基本** " 选项卡中，选择 **"Windows 10 企业多会话，版本 2004"**。
-
-4. 按照说明的其余部分操作来完成虚拟机的创建。
-
-     >[!NOTE]
-     >可以使用此 VM 直接测试 .MSIX 应用附加。 若要了解详细信息，请跳到 [生成用于 .msix 的 VHD 或 VHDX 包](#generate-a-vhd-or-vhdx-package-for-msix)。 否则，请继续阅读本部分。
-
-### <a name="get-the-os-image-from-the-windows-insider-portal"></a>从 Windows 预览体验门户获取 OS 映像
-
-若要从 Windows 预览体验门户获取 OS 映像，请执行以下操作：
-
-1. 打开 [Windows 预览体验成员门户](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)并登录。
-
-     >[!NOTE]
-     >你必须是 Windows 预览体验成员计划的成员才能访问 Windows 预览体验成员门户。 若要了解有关 Windows 预览成员体验计划的更多信息，请查看 [Windows 预览体验成员文档](/windows-insider/at-home/)。
-
-2. 向下滚动到“选择版本”部分，然后选择“Windows 10 预览体验预览企业(快速) - 版本 19041”或更高版本 。
-
-3. 选择“确认”，然后选择要使用的语言，然后再次选择“确认” 。
-
-     >[!NOTE]
-     >目前仅对该项功能执行了英文测试。 你可以选择其他语言，但是其他语言的显示情况可能与预期不符。
-
-4. 生成下载链接后，选择“64 位下载”并将其保存到本地硬盘。
-
-## <a name="prepare-the-vhd-image-for-azure"></a>准备 Azure 的 VHD 映像
-
-接下来，需要创建一个主 VHD 映像。 如果尚未创建主 VHD 映像，请转到[准备和自定义主 VHD 映像](set-up-customize-master-image.md)，然后按照此处的说明进行操作。
-
-创建主 VHD 映像后，必须禁用 MSIX 应用附加应用程序的自动更新。 若要禁用自动更新，需要在提升的命令提示符中运行以下命令：
-
-```cmd
-rem Disable Store auto update:
-
-reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Automatic app update" /Disable
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
-
-rem Disable Content Delivery auto download apps that they want to promote to users:
-
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
-
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-禁用自动更新后，你必须启用 Hyper-v，因为你将使用装入 VHD 命令来暂存和卸载 VHD 到 "转储"。
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
->[!NOTE]
->此更改将需要你重新启动虚拟机。
-
-接下来，为 Azure 准备 VM VHD 并将生成的 VHD 磁盘上载到 Azure。 若要了解更多详细信息，请参阅[准备和自定义主 VHD 映像](set-up-customize-master-image.md)。
-
-将 VHD 上传到 Azure 后，请按照[通过使用 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)教程中的说明创建基于此新映像的主机池。
-
-## <a name="prepare-the-application-for-msix-app-attach"></a>准备 MSIX 应用附加的应用程序
-
-如果已经有 MSIX 包，请跳到[配置 Windows 虚拟桌面基础结构](#configure-windows-virtual-desktop-infrastructure)。 如果要测试旧版应用程序，请按照[通过 VM 上的桌面安装程序创建 MSIX 包](/windows/msix/packaging-tool/create-app-package-msi-vm/)中的说明将旧版应用程序转换为 MSIX 包。
-
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>为 MSIX 生成 VHD 或 VHDX 包
-
-包采用 VHD 或 VHDX 格式以优化性能。 MSIX 需要使用 VHD 或 VHDX 包才能正常工作。
-
-为 MSIX 生成 VHD 或 VHDX 包：
-
-1. [下载 msixmgr 工具](https://aka.ms/msixmgr)，并将 .zip 文件夹保存到会话主机 VM 中的文件夹中。
-
-2. 解压缩 msixmgr 工具 .zip 文件夹。
-
-3. 将源 MSIX 包放入解压缩的 msixmgr 工具的同一文件夹中。
-
-4. 在 PowerShell 中运行以下 cmdlet 以创建 VHD：
-
-    ```powershell
-    New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
-    ```
-
-    >[!NOTE]
-    >确保 VHD 的大小足够容纳扩展的 MSIX。*
-
-5. 运行以下 cmdlet 以装载新创建的 VHD：
-
-    ```powershell
-    $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
-    ```
-
-6. 运行此 cmdlet 初始化 VHD：
-
-    ```powershell
-    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-    ```
-
-7. 运行此 cmdlet 可创建新分区：
-
-    ```powershell
-    $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-    ```
-
-8. 运行此 cmdlet 可设置分区的格式：
-
-    ```powershell
-    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-    ```
-
-9. 在装载的 VHD 上创建父文件夹。 此步骤是必需的，因为 MSIX 应用附加需要父文件夹。 你可以按照自己的喜好为父文件夹命名。
-
-### <a name="expand-msix"></a>展开 MSIX
-
-在那之后，你需要通过解压缩包来“扩展”MSIX 映像。 解压缩 MSIX 映像：
-
-1. 以管理员身份打开命令提示符并导航到下载并解压缩 msixmgr 工具的文件夹。
-
-2. 运行以下 cmdlet 将 MSIX 解压到上一部分中创建并装载的 VHD 中。
-
-    ```powershell
-    msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
-    ```
-
-    解包完成后，应显示以下消息：
-
-    `Successfully unpacked and applied ACLs for package: <package name>.msix`
-
-    >[!NOTE]
-    > 若通过自己的网络或未连接到 Internet 的设备使用适用于企业（或教育）的 Microsoft Store，则需要从 Store 获取包许可证并安装它们才能成功运行应用。 请参阅[脱机使用包](#use-packages-offline)。
-
-3. 导航到已装载的 VHD 并打开应用文件夹，确认存在包内容。
-
-4. 卸载 VHD。
-
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>配置 Windows 虚拟桌面基础结构
-
-从设计上讲，可以在多个会话主机 VM 之间共享单个 MSIX 扩展包（在上一节中创建的 VHD），因为 VHD 是以只读模式附加的。
-
-开始之前，请确保自己的网络共享满足以下要求：
-
-- 共享与 SMB 兼容。
-- 作为会话主机池一部分，VM 对共享具有 NTFS 权限。
-
-### <a name="set-up-an-msix-app-attach-share"></a>设置 MSIX 应用附加共享
-
-在 Windows 虚拟桌面环境中，创建网络共享并将包移到该处。
-
->[!NOTE]
-> 创建 MSIX 网络共享的最佳做法是设置具有 NTFS 只读权限的网络共享。
+>[!IMPORTANT]
+>在开始之前，请确保填写并提交 [此表单](https://aka.ms/enablemsixappattach) ，以便在你的订阅中启用 .msix 应用附件。 如果没有已批准的请求，.MSIX 应用附加将不起作用。 在工作日内批准请求可能需要长达24小时。 请求被接受并完成后，会收到一封电子邮件。
 
 ## <a name="install-certificates"></a>安装证书
+
+你必须在主机池中的所有会话主机上安装证书，该主机将从 .MSIX 应用附加包托管 ap。
 
 如果你的应用使用的证书不是受公共信任的或是自签名的，请按以下方法安装证书：
 
@@ -243,7 +76,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    *** NO MOUNT POINTS ***
+    **_ NO MOUNT POINTS _*_
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -254,7 +87,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     ```
 
 
-6.  用刚才复制的卷 GUID 更新“$volumeGuid”变量。
+6.  将 _ *$volumeGuid** 变量更新为刚复制的卷 GUID。
 
 7. 打开管理员 PowerShell 提示符并使用应用于环境的变量更新以下 PowerShell 脚本。
 

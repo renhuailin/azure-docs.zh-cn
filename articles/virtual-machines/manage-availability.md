@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dd15df0e745a5c6e3130233e693bbdb22655775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500438"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401179"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 
@@ -70,7 +70,7 @@ Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 通过�
    ![更新域和容错域配置的概念图](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>为可用性集中的 VM 使用托管磁盘
-如果当前使用的 VM 没有托管磁盘，我们强烈建议将非托管磁盘转换为适用于 [Linux](./linux/convert-unmanaged-to-managed-disks.md) 和 [Windows](./windows/convert-unmanaged-to-managed-disks.md) 的托管磁盘。
+如果你当前正在使用包含非托管磁盘的 Vm，我们强烈建议你从非托管磁盘转换为适用于 [Linux](./linux/convert-unmanaged-to-managed-disks.md) 和 [Windows](./windows/convert-unmanaged-to-managed-disks.md)的托管磁盘。
 
 通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](./managed-disks-overview.md)为可用性集提供了更佳的可靠性。 为此，会自动将磁盘放置在不同的存储容错域（存储群集）中，并使它们与 VM 容错域一致。 如果某个存储容错域因硬件或软件故障而失败，则只有其磁盘在该存储容错域上的 VM 实例会失败。
 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)

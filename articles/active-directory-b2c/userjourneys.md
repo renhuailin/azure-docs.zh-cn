@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344991"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400007"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -43,7 +43,38 @@ UserJourney 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfiles | 0:1 | 授权技术配置文件的列表。 | 
 | OrchestrationSteps | 1:n | 成功事务必须遵循的业务流程序列。 每个用户旅程都包含按顺序执行的业务流程步骤的有序列表。 如果任何步骤失败，则事务将失败。 |
+
+## <a name="authorizationtechnicalprofiles"></a>AuthorizationTechnicalProfiles
+
+假设用户已完成 UserJourney 并获取访问权限或 ID 令牌。 若要管理其他资源（如用户 [信息终结点](userinfo-endpoint.md)），必须标识该用户。 若要开始此过程，用户必须提供先前颁发的访问令牌，证明它们最初由有效的 Azure AD B2C 策略进行身份验证。 在此过程中，用户的有效令牌必须始终存在，以确保允许用户发出此请求。 身份验证技术配置文件验证传入令牌并从令牌中提取声明。
+
+**AuthorizationTechnicalProfiles** 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfile | 0:1 | 授权技术配置文件的列表。 | 
+
+**AuthorizationTechnicalProfile** 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
+
+下面的示例演示具有授权技术配置文件的用户旅程元素：
+
+```xml
+<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+  <Authorization>
+    <AuthorizationTechnicalProfiles>
+      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+    </AuthorizationTechnicalProfiles>
+  </Authorization>
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsExchange">
+     ...
+```
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -90,7 +121,7 @@ Preconditions 元素包含以下元素：
 
 Precondition 元素包含以下属性：
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
 | `ExecuteActionsIf` | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 |
@@ -143,7 +174,7 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 ```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
-  <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+    <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
       <Value>objectId</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
@@ -170,13 +201,13 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 **ClaimsProviderSelections** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| DisplayOption| 否 | 控制单个声明提供程序选择可用时的行为。 可能的值： `DoNotShowSingleProvider` (默认) ，用户将立即重定向到联合身份提供程序。 或 `ShowSingleProvider`，Azure AD B2C 会显示选择了单个标识提供者的登录页。 若要使用此属性，[内容定义版本](page-layout.md)必须为 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 及更高版本。|
+| DisplayOption| 否 | 控制单个声明提供程序选择可用时的行为。 可能的值：`DoNotShowSingleProvider`（默认值），用户将立即被重定向到联合标识提供者。 或 `ShowSingleProvider`，Azure AD B2C 会显示选择了单个标识提供者的登录页。 若要使用此属性，[内容定义版本](page-layout.md)必须为 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 及更高版本。|
 
 ClaimsProviderSelection 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 声明交换的标识符，在声明提供程序选择的下一个业务流程步骤中执行。 必须指定此属性或 ValidationClaimsExchangeId 属性，但不能同时指定这两个属性。 |
 | ValidationClaimsExchangeId | 否 | 声明交换的标识符，在当前业务流程步骤中执行以验证声明提供程序选择。 必须指定此属性或 TargetClaimsExchangeId 属性，但不能同时指定这两个属性。 |
@@ -187,17 +218,17 @@ ClaimsProviderSelection 元素包含以下属性：
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
-    <ClaimsProviderSelections>
+  <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-    </ClaimsProviderSelections>
-    <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
-                    TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-    </ClaimsExchanges>
+  </ClaimsProviderSelections>
+  <ClaimsExchanges>
+  <ClaimsExchange Id="LocalAccountSigninEmailExchange"
+        TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 
 
@@ -211,7 +242,7 @@ ClaimsProviderSelection 元素包含以下属性：
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>
@@ -228,7 +259,7 @@ ClaimsExchanges 元素包含以下元素：
 
 ClaimsExchange 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 声明交换步骤的标识符。 该标识符用于从策略中的声明提供程序选择步骤引用声明交换。 |
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
@@ -245,6 +276,6 @@ JourneyList 元素包含以下元素：
 
 Candidate 元素包含以下属性：
 
-| Attribute | 必需 | 描述 |
+| Attribute | 必须 | 描述 |
 | --------- | -------- | ----------- |
 | SubJourneyReferenceId | 是 | 要执行的[子历程](subjourneys.md)的标识符。 |

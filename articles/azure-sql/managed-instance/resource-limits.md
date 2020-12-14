@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077364"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400567"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL 托管实例的某些特征和资源限制取决于底层基础结构和体�
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| **硬件** | Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器，附加 SSD vCore = 1 PP (物理内核)  | Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL 2.5 () GHz 处理器，fast NVMe SSD，vCore = 1 LP (超线程)  |
+| **硬件** | Intel® E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL (Cascade Lake) 2.5 GHz 处理器、快速 NVMe SSD、vCore = 1 LP（超线程） |
 | **vCore 数目** | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | **最大内存（内存/核心比）** | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | **最大内存中 OLTP 存储** | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
@@ -63,7 +63,7 @@ SQL 托管实例的某些特征和资源限制取决于底层基础结构和体�
 SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-general-purpose.md)和[业务关键](../database/service-tier-business-critical.md)。 这些层级提供[不同的功能](../database/service-tiers-general-purpose-business-critical.md)，如下表中所述。
 
 > [!Important]
-> 业务关键服务层提供了 SQL 托管实例的附加内置副本（次要副本），可用于只读工作负载。 如果可以隔离读写查询和只读/分析/报告查询，则能够以相同的价格获得两倍的 vCore 和内存。 次要副本可能滞后于主要实例几秒，因此它旨在卸载不需要确切的当前数据状态的报告/分析工作负荷。 在下表中， **只读查询** 是在次要副本上执行的查询。
+> 业务关键服务层提供了 SQL 托管实例的附加内置副本（次要副本），可用于只读工作负载。 如果可以隔离读写查询和只读/分析/报告查询，则能够以相同的价格获得两倍的 vCore 和内存。 次要副本可能滞后于主要实例几秒，因此它旨在卸载不需要确切的当前数据状态的报告/分析工作负荷。 在下表中，**只读查询** 是在次要副本上执行的查询。
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
@@ -108,7 +108,7 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 
 如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量即将达到限制，可以通过[增大文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
 
-最大日志写入吞吐量也存在实例级别的限制（即 22 MB/秒），因此，你可能无法达到日志文件的最大文件吞吐量，因为你即将达到实例吞吐量限制。
+在最大日志写入吞吐量上还有一个实例级别限制 (参见上文中的值，例如 22 MB/s) ，因此您可能无法在整个日志文件中到达最大文件，因为您已达到实例吞吐量限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -132,13 +132,13 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 
 支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，SQL 托管实例有两个默认的限制 (根据订阅类型的类型，可以通过在 Azure 门户中创建特殊的 [支持请求](../database/quota-increase-request.md) 来提高按需增加的数量：
 
-- **子网限制** ：在单个区域中部署 SQL 托管实例的实例的子网数目上限。
-- **vCore 单元限制** ：可跨单一区域的所有实例部署的 vCore 单元数上限。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用 4 个 vCore 单位。 实例总数不受限制，只要在 vCore 单元限制内即可。
+- **子网限制**：在单个区域中部署 SQL 托管实例的实例的子网数目上限。
+- **vCore 单元限制**：可跨单一区域的所有实例部署的 vCore 单元数上限。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用 4 个 vCore 单位。 实例总数不受限制，只要在 vCore 单元限制内即可。
 
 > [!Note]
 > 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多实例，则可以通过在 [Azure 门户中创建特殊支持请求](../database/quota-increase-request.md) 来提高限制。 或者，可以在另一个 Azure 区域中创建 SQL 托管实例的新实例，而无需发送支持请求。
 
-下表显示了支持的订阅类型的 **默认区域限制** （可以使用下面所述的支持请求扩展默认限制）：
+下表显示了支持的订阅类型的 **默认区域限制**（可以使用下面所述的支持请求扩展默认限制）：
 
 |订阅类型| SQL 托管实例子网的最大数目 | vCore 单元数目上限* |
 | :---| :--- | :--- |
@@ -150,7 +150,7 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\* 在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量** 适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于 **vCore 单元的最大数目** 。
+\* 在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量** 适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于 **vCore 单元的最大数目**。
 
 \*\* 以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 

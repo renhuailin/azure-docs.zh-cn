@@ -1,20 +1,20 @@
 ---
 title: 如何扫描 Azure 存储 blob
 description: 了解如何在 Azure 监控范围数据目录中扫描 Azure blob 存储。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6d2e2316525465c1ef9f58e7b83b8d0e99d46bd4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552234"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400703"
 ---
-# <a name="register-and-scan-azure-blob-storage"></a>注册并扫描 Azure Blob 存储
+# <a name="register-and-scan-azure-blob-storage"></a>注册和扫描 Azure Blob 存储
 
 本文概述了如何在监控范围中注册 Azure Blob 存储帐户并设置扫描。
 
@@ -69,7 +69,7 @@ Azure Blob 存储支持完整和增量扫描来捕获元数据和架构。 它�
 > 如果必须创建新的服务主体，请执行以下步骤：
 > 1. 导航到 [Azure 门户](https://portal.azure.com)。
 > 1. 从左侧菜单中选择 " **Azure Active Directory** "。
-> 1. 选择 **“应用注册”**。
+> 1. 选择“应用注册” 。
 > 1. 选择“+ 新建应用程序注册”。
 > 1. 输入 **应用程序** 的名称 (服务主体名称) 。
 > 1. 选择“仅此组织目录中的帐户”。

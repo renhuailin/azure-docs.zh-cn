@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ece6dfb5277e7ca363548c8d90021835a96a61ba
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937349"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401553"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "96937349"
 默认情况下，服务标记反映了整个云的范围。 某些服务标记还可以通过将相应 IP 范围限制为指定的区域，来实现更精细的控制。 例如，服务标记“Storage”表示整个云的 Azure 存储，而“Storage.WestUS”则将范围缩小到来自美国西部区域的存储 IP 地址范围 。 下表指示每个服务标记是否支持此区域范围。  
 
 | 标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | -------- |:---:|:---:|:---:|
 | **ActionGroup** | 操作组。 | 入站 | 否 | 否 |
 | **ApiManagement** | 专用于 Azure API 管理的部署的管理流量。 <br/><br/>*注意：* 此标记表示每个区域的控制平面的 Azure API 管理服务终结点。 这使得客户可以对在 API 管理服务中配置的 API、操作、策略和 NamedValues 执行管理操作。  | 入站 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 否 | 否 |

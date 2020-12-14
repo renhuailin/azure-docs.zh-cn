@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530743"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399360"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -95,8 +95,8 @@ ms.locfileid: "96530743"
 | 基于 Web 的单一注销| √| √ |
 | 基于移动设备的单一登录| √| √* |
 | 基于移动的单一登录| √| √* |
-| 移动应用程序的条件性访问策略| √| X |
-| 移动应用程序的无缝 MFA 体验| √| X |
+| 移动应用程序的条件性访问策略| √| √* |
+| 移动应用程序的无缝 MFA 体验| √| √* |
 | SCIM 预配| √| √ |
 | 访问 Microsoft Graph| √| X |
 
@@ -178,7 +178,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 若要了解有关 Azure AD SCIM 实现的详细信息，请参阅 [生成 SCIM 终结点和使用 Azure AD 配置用户预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
 
 ### <a name="implement-scim"></a>实现 SCIM
-Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您生成 SCIM 终结点。 在 github 上还可以找到许多第三方库/参考。  
+Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您生成 SCIM 终结点。 在 GitHub 上还可以找到许多第三方库/参考。  
 
 ## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>步骤 4-创建 Azure 租户并测试应用程序
 

@@ -4,12 +4,12 @@ description: 本文演练如何创建一个可使用最新 Azure.Messaging.Event
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7962e28ecdc7e2c04fefeb0faf6feb5b730d979c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1f626eb6cc21fdf9097a49381de8c973ad290392
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024528"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401349"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 
@@ -34,12 +34,12 @@ ms.locfileid: "95024528"
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio 2019。 
-1. 选择“创建新项目”。 
+1. 选择“创建新项目”。  
 1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
     1. 选择“C#”作为编程语言。
     1. 选择“控制台”作为应用程序类型。 
     1. 从结果列表中选择“控制台应用(.NET Core)”。 
-    1. 然后，选择“下一步”。 
+    1. 然后，选择“下一步”  。 
 
         ![“新建项目”对话框](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. 输入 EventHubsSender 作为项目名称，输入 EventHubsQuickStart 作为解决方案名称，然后选择“确定”以创建项目。 
@@ -201,7 +201,7 @@ ms.locfileid: "95024528"
         static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
         {
             // Write the body of the event to the console window
-            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
 
             // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);

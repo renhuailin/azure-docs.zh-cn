@@ -6,13 +6,13 @@ ms.author: wesmc
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/14/2020
+ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094346"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400246"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 连接筛选器
 
@@ -58,7 +58,7 @@ ms.locfileid: "97094346"
 
 ![关于保存 IP 筛选规则的通知](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-当存在的 IP 筛选规则达到最大数目 10 时，“添加”  选项被禁用。
+达到最大值 100 IP 筛选器规则时，将禁用 " **添加** " 选项。
 
 若要编辑现有规则，请选择要更改的数据，进行更改，然后选择“保存”以保存所做的编辑。 
 

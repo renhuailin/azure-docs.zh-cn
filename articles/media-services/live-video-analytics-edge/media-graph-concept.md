@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007834"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401094"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -87,6 +87,8 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 #### <a name="frame-rate-filter-processor"></a>帧速率筛选器处理器  
 
 通过帧速率筛选器处理器节点，你可以采用指定的速率从传入的视频流中采样帧。 这使你能够减少发送到下游组件（例如 HTTP 扩展处理器节点）以进行进一步处理的帧数。
+>[!WARNING]
+> IoT Edge 模块上的最新版本的实时视频分析中 **弃用** 了此处理器。 图形扩展处理器本身现在支持帧速率管理。
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
@@ -108,8 +110,9 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="file-sink"></a>文件接收器  
 
-通过文件接收器节点，你可以将媒体（视频和/或音频）数据写入 IoT Edge 设备本地文件系统上的位置。 媒体图中只能有一个文件接收器节点，并且它必须是信号门处理器节点的下游。 这会将输出文件的持续时间限制为信号门处理器节点属性中指定的值。
-
+通过文件接收器节点，你可以将媒体（视频和/或音频）数据写入 IoT Edge 设备本地文件系统上的位置。 媒体图中只能有一个文件接收器节点，并且它必须是信号门处理器节点的下游。 这会将输出文件的持续时间限制为信号门处理器节点属性中指定的值。 若要确保边缘设备不会用尽磁盘空间，还可以设置 IoT Edge 模块上的实时视频分析可用于存储数据的最大大小。  
+> [!NOTE]
+如果文件接收器已满，则 IoT Edge 模块上的实时视频分析将开始删除最旧的数据，并将其替换为新数据。
 #### <a name="iot-hub-message-sink"></a>IoT 中心消息接收器  
 
 通过 IoT 中心消息接收器节点，你可以将事件发布到 IoT Edge 中心。 IoT Edge 中心随后可以将数据路由到其他模块或边缘设备上的应用，或路由到云中的 IoT 中心（根据部署清单中指定的路由）。 IoT 中心消息接收器节点可以接受来自上游处理器（例如运动检测处理器节点）的事件，或通过 HTTP 扩展处理器节点接受来自外部推理服务的事件。

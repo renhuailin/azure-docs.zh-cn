@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652104"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401638"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>教程：创建自定义分析规则以检测威胁
 
@@ -145,7 +145,13 @@ ms.locfileid: "94652104"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>计划的规则无法执行，或显示已将自动禁用添加到名称中
+### <a name="issue-no-events-appear-in-query-results"></a>问题：查询结果中未显示任何事件
+
+如果 **事件分组** 设置为为 **每个事件触发一个警报**，则在某些情况下，当稍后查看查询结果时 (例如，当透视回) 事件的警报时，可能不会显示任何查询结果。 这是因为，事件通过哈希处理特定事件的信息，并在查询中包含哈希来实现的。 如果自生成警报以来，查询结果发生了更改，则哈希将不再有效，且不会显示任何结果。 
+
+若要查看这些事件，请从规则查询的哈希中手动删除该行，并运行查询。
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>问题：计划的规则无法执行，或显示已将自动禁用添加到名称中
 
 计划的查询规则无法运行，但可能会发生这种情况。 Azure Sentinel 根据故障的具体类型和发生故障的情况，将故障提前设置为暂时性或永久性。
 

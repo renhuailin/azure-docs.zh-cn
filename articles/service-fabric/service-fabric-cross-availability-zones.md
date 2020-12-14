@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109805"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401723"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -407,12 +407,12 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 >[!NOTE]
 > * 公共 IP 和负载均衡器资源应使用标准 SKU，如本文前面所述。
 > * 节点上的 "multipleAvailabilityZones" 属性只能在创建 nodeType 时定义，以后不能修改。 因此，无法用此属性配置现有的 nodeTypes。
-> * 如果省略 "hierarchicalUpgradeDomain" 或将其设置为 true，则群集和应用程序部署将会变慢，因为群集中存在更多的升级域。 必须正确调整升级策略的超时，以合并15个升级域的升级时间持续时间，这一点非常重要。
+> * 如果省略 "sfZonalUpgradeMode" 或将其设置为 "分层"，则群集和应用程序部署将会变慢，因为群集中存在更多的升级域。 必须正确调整升级策略的超时，以合并15个升级域的升级时间持续时间，这一点非常重要。
 > * 建议将群集的可靠性级别设置为 "白金"，确保群集置。
 
 >[!NOTE]
-> 为获得最佳实践，建议将 hierarchicalUpgradeDomain 设置为 true 或省略。 部署将遵循影响少量副本和/或实例的 Vm 的区域分发，使其更安全。
-> 如果在具有多个 AZ 的节点类型上运行部署速度是优先级或仅有无状态工作负荷，请使用 hierarchicalUpgradeDomain 设置为 false。 这将导致 UD 遍历全部在 AZ 的中发生。
+> 为获得最佳实践，建议将 sfZonalUpgradeMode 设置为 "分层" 或 "省略"。 部署将遵循影响少量副本和/或实例的 Vm 的区域分发，使其更安全。
+> 如果在具有多个 AZ 的节点类型上运行部署速度是优先级别或只运行无状态工作负荷，请使用 sfZonalUpgradeMode 设置为 "并行"。 这将导致 UD 遍历全部在 AZ 的中发生。
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>迁移到具有多个可用性区域的节点类型
 对于所有迁移方案，需要添加新的 nodeType，这将支持多个可用性区域。 无法迁移现有 nodeType 以支持多个区域。

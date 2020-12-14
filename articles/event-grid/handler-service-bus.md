@@ -3,12 +3,12 @@ title: 服务总线队列和主题作为 Azure 事件网格事件的事件处理
 description: 介绍如何将服务总线队列和主题用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96024208"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399853"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 服务总线是其中之一。 
@@ -40,7 +40,7 @@ az eventgrid event-subscription create \
 
 ### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>使用 CLI 添加服务总线主题处理程序
 
-在 Azure CLI 中，以下示例可订阅事件网格主题并将其连接到服务总线队列：
+对于 Azure CLI，以下示例将事件网格主题订阅和连接到服务总线主题：
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
