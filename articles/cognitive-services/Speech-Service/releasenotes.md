@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483948"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401145"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
+
+## <a name="text-to-speech-2020-december-release"></a>文本到语音转换 2020-12 月发行版
+
+**GA 和预览版中的新神经语音**
+
+在54语言/区域设置中发布了51的新语音，共129个神经语音：
+
+- **46 GA 区域设置中的新语音**： `ar-EG` 阿拉伯 (埃及) 中的 Shakir， `ar-SA` 阿拉伯语 (沙特阿拉伯，阿拉伯沙特阿拉伯) ，Hamed 中的 Borislav，，，在捷克 (西班牙) ，Antonin In 捷克 `bg-BG` 捷克共和国 (，Jeppe in 捷克) `ca-ES` `cs-CZ` `da-DK` `de-AT` `de-CH` `el-GR` 希腊语 (希腊语) ，Liam in `en-CA` 英语 (加拿大) ，简体中文中的 Connor， (爱尔兰) ，印度 (印度) ， `en-IE` Mohan， `en-IN` `en-IN` 泰卢固语 `en-IN` `en-IN` `es-ES` `et-EE` `fi-FI` `fi-FI` (印度) ，Prabhat in 英语 (印度) ，Valluvar in 泰米尔 (西班牙) ，Enric in 加泰罗尼亚 (芬兰) ，Kert in 芬兰 (芬兰) ，Fabrice in `fr-CH` 法语 (瑞士) ，Colm in `ga-IE` 爱尔兰 (爱尔兰) ， `he-IL` 希伯来语 (以色列) ，Srecko In 克罗地亚 (克罗地亚) ，Tamas in 匈牙利语 (匈牙利) ，Gadis In 印度尼西亚 (印度尼西亚) ，在马耳他 (立陶宛) ，Leonas 在马耳他 (，Nils， `hr-HR` `hu-HU` `id-ID` `lt-LT` `lv-LV` `ms-MY` `mt-MT` `nb-NO` 挪威 (挪威) ，博克马尔语，博克马尔语，博克马尔语，博克马尔语，博克马尔 `nb-NO` 语 (挪威) ， `nl-NL` 德语 `nl-NL` `pl-PL` `pl-PL` `pt-BR` `pt-PT` `ro-RO` `ru-RU` 中的 Fenna，德语 (荷兰) ，德语 (荷兰) ，德语 in 波兰 (波兰) ，Agnieszka in 波兰 (波兰) ，Marek in 葡萄牙语 (俄罗斯) ， `ru-RU` (俄罗斯) ， `sk-SK` 斯洛伐克语 (斯洛伐克) ， `sl-SI` 斯洛文尼亚 (斯洛文尼亚) ，Mattias in `sv-SE` 瑞典语 (瑞典) ， `sv-SE` 瑞典语 (瑞典) ，Niwat in 泰国 (，Ahmet in 土耳其语) 土耳其 (，NamMinh in 越南语) ，HsiaoChen in 台湾 (，普通话，YunJhe，普通话，HiuMaan，粤语，WanLung，粤语，， `th-TH` ，，，， `tr-TR` `vi-VN` `zh-TW` `zh-TW` `zh-HK` ， `zh-HK` 中文) 香港 (
+
+- **5 个全新语音预览区域设置**： `et-EE` 爱沙尼亚语 (爱沙尼亚) 中的 Kert、Colm In 爱尔兰 `ga-IE` (爱尔兰) 、 `lv-LV` 拉脱维亚语 Nils 拉脱维亚 (、 `lt-LT` 立陶宛语) 立陶宛 `mt-MT` (马耳他) 
+
+在此版本中，我们现在支持跨54语言/区域设置的129神经语音。 此外，49语言/区域设置中提供超过70标准的声音。 有关完整列表，请访问 [语言支持](language-support.md#text-to-speech) 。
+
+**音频内容创建的更新**
+- 通过语音类别和详细的语音说明改善了语音选择 UI。 
+- 针对不同语言的所有神经语音启用了 intonation 优化。
+- 基于浏览器的语言自动执行 UI localizaiton。
+- 已 `StyleDegree` 为所有 `zh-CN` 神经语音启用控件。
+若要查看新功能，请访问 [音频内容创建工具](https://speech.microsoft.com/audiocontentcreation) 。 
+
+**Zh-chs 的更新-CN 语音**
+- 更新了所有 `zh-CN` 神经声音以支持英语。
+- 已启用所有 `zh-CN` 神经声音以支持 intonation 调整。 可以使用 SSML 或音频内容创建工具调整最佳 intonation。
+- 更新了所有 `zh-CN` 多样式神经语音以支持 `StyleDegree` 控制。 表情强度 (软或强) 是可调整的。
+- 更新 `zh-CN-YunyeNeural` 以支持多个可执行不同情感的样式。
+
+## <a name="text-to-speech-2020-november-release"></a>文本到语音转换 2020-11 月发行版
+
+**预览版中的新区域设置和语音**
+- 神经 TTS 组合引入了 **五种新的语音和语言**。 它们分别是：马耳他 (马耳他) 、立陶宛语 (立陶宛) 中的 Anu、爱沙尼亚语 (爱沙尼亚) 、Orla in 爱尔兰 (爱尔兰) 和拉脱维亚 (拉脱维亚) 中的 Everita。
+- **`zh-CN` 具有多个样式和角色的五个新语音支持**： Xiaohan、Xiaomo、Xiaorui、Xiaoxuan 和 Yunxi。
+
+> 以下三个 Azure 区域中提供了这些语音的公共预览版： EastUS、SouthEastAsia 和 WestEurope。
+
+**神经 TTS 容器 GA**
+- 利用神经 TTS 容器，开发人员可以在自己的环境中以最自然的数字语音运行语音合成，以满足特定的安全和数据管理要求。 查看 [如何安装语音容器](speech-container-howto.md)。 
+
+**新功能**
+- **自定义语音**： enabed 用户将语音模型从一个区域复制到另一个区域;支持的终结点暂停和恢复。 在此处中转到 [门户](https://speech.microsoft.com/customvoice) 。
+- [SSML 无声标记](speech-synthesis-markup.md#add-silence) 支持。 
+- 一般 TTS 语音质量改进：在 nb 中改进了单词级别的发音准确度-否。 减少了53% 的发音错误。
+
+> 有关详细信息，请参阅 [此技术博客](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)。
 
 ## <a name="text-to-speech-2020-october-release"></a>文本到语音转换 2020-10 月发行版
 
@@ -180,7 +223,7 @@ SPX 是命令行接口，无需编写代码即可使用 Azure 语音服务。 �
 | `es-US` | 西班牙语（美国）                     | 
 | `es-UY` | 西班牙语（乌拉圭）                 | 
 | `es-VE` | 西班牙语（委内瑞拉）               | 
-| `hu-HU` | 匈牙利语（匈牙利）               | 
+| `hu-HU` | 匈牙利语(匈牙利)               | 
 
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>语音 SDK 1.13.0：2020 年 7 月发行版

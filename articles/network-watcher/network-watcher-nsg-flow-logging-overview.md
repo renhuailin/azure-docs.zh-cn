@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033419"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399241"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -371,9 +371,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **在关键的 VNET/子网上启用**：作为审核和安全方面的最佳做法，应在订阅中的所有关键 VNET/子网上启用流日志。 
 
-**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用了多个 NSG，我们建议在应用了 NSG 的所有资源子网或网络接口中启用 NSG 流日志，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/network-security-group-how-it-works.md)。
+**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 在使用多个 Nsg 的情况下，我们建议在资源的子网或网络接口上应用的所有 Nsg 上启用 NSG 流日志，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/network-security-group-how-it-works.md)。 
 
-同时 **在 nic 和子网级别具有 NSG**：如果 NSG 是在 Nic 和子网级别配置的，则必须在 nsg 同时启用 flow 日志记录。 
+常见方案如下：
+1. **Nic 上的多个 NSG**：若要将多个 nsg 附加到 nic，必须在所有这些上启用流日志记录
+1. 同时 **在 nic 和子网级别具有 NSG**：如果 NSG 是在 Nic 和子网级别配置的，则必须在 nsg 同时启用 flow 日志记录。 
 
 **存储预配**：应该根据预期的流日志量预配存储。
 

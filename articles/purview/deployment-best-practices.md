@@ -1,18 +1,18 @@
 ---
 title: 部署最佳做法
 description: 本文提供了有关部署 Azure 监控范围的最佳实践。 Azure 监控范围允许任何用户注册、发现、了解和使用数据源。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551734"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400686"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure 监控范围部署最佳实践
 
@@ -49,7 +49,7 @@ ms.locfileid: "96551734"
 
 常见的方法是将这些首要目标分解为不同的类别和目标。 下面是一些示例：
 
-|类别|目标|
+|Category|目标|
 |---------|---------|
 |发现|管理员用户应能够扫描 Azure 和非 Azure 数据源 (包括本地源) 以便自动收集有关数据资产的信息。|
 |分类|平台应基于数据采样自动对数据进行分类，并允许使用自定义分类进行手动重写。|
