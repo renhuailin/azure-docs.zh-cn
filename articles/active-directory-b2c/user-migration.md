@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383965"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509608"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
@@ -79,10 +79,10 @@ ms.locfileid: "85383965"
 
 并非要将旧标识提供者中的所有信息都迁移到 Azure AD B2C 目录。 在迁移之前，请确定要存储在 Azure AD B2C 中的适当用户属性集。
 
-- **要**存储在 Azure AD B2C 中
+- **要** 存储在 Azure AD B2C 中
   - 用户名、密码、电子邮件地址、电话号码、会员号/标识符。
   - 隐私策略和最终用户许可协议的同意标记。
-- **不要**存储在 Azure AD B2C 中
+- **不要** 存储在 Azure AD B2C 中
   - 敏感数据，例如信用卡号、社会安全号码 (SSN)、医疗记录，或其他由政府或行业法规实体管制的数据。
   - 营销或沟通偏好、用户行为和见解。
 
@@ -90,7 +90,7 @@ ms.locfileid: "85383965"
 
 在启动迁移过程之前，请借机清理目录。
 
-- 确定要存储在 Azure AD B2C 中的用户属性集，仅迁移所需的属性。 如有必要，您可以创建 [自定义属性](custom-policy-custom-attributes.md) 以存储有关用户的更多数据。
+- 确定要存储在 Azure AD B2C 中的用户属性集，仅迁移所需的属性。 如有必要，您可以创建 [自定义属性](user-flow-custom-attributes.md) 以存储有关用户的更多数据。
 - 如果从包含多个身份验证源的环境迁移（例如，每个应用程序具有自身的用户目录），请迁移到 Azure AD B2C 中的统一帐户。
 - 如果多个应用程序具有不同的用户名，可以使用标识集合将其全部存储在 Azure AD B2C 用户帐户中。 对于密码，请让用户选择密码，并在目录中设置该密码。 例如，使用无缝迁移时，只应在 Azure AD B2C 帐户中存储所选的密码。
 - 在迁移之前删除未使用的用户帐户，或者不迁移已过时的帐户。

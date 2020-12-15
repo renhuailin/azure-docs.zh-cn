@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750401"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509591"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -52,8 +52,8 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |facsimileTelephoneNumber<sup>1</sup>|字符串|用户的业务传真号码。|是|否|持久化、输出|
 |givenName       |字符串|用户的名字（名）。 最大长度为 64。|是|是|持久化、输出|
 |jobTitle        |字符串|用户的职务。 最大长度为 128。|是|是|持久化、输出|
-|immutableId     |字符串|从本地 Active Directory 迁移的用户通常使用的标识符。|否|否|持久化、输出|
-|legalAgeGroupClassification|字符串|法定年龄组分类。 基于 ageGroup 和 consentProvidedForMinor 属性计算的只读属性。 允许的值：null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult 和 adult。|是|否|持久化、输出|
+|immutableId     |字符串|通常用于从本地 Active Directory 迁移的用户的标识符。|否|否|持久化、输出|
+|legalAgeGroupClassification|字符串|法定年龄组分类。 基于 ageGroup 和 consentProvidedForMinor 属性计算的只读属性。 允许的值： null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult 和成人。|是|否|持久化、输出|
 |legalCountry<sup>1</sup>  |字符串|用于法律目的的国家/地区。|否|否|持久化、输出|
 |mail            |字符串|用户的 SMTP 地址，例如“bob@contoso.com”。 只读。|否|否|持久化、输出|
 |mailNickName    |字符串|用户的邮件别名。 最大长度为 64。|否|否|持久化、输出|
@@ -62,15 +62,15 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |objectId        |字符串|全局唯一标识符 (GUID)（用户的唯一标识符）。 示例：12345678-9abc-def0-1234-56789abcde。 只读，不可变。|只读|是|输入、持久化、输出|
 |otherMails      |字符串集合|用户的其他电子邮件地址列表。 示例：[“bob@contoso.com”、“Robert@fabrikam.com”]。|是（备用电子邮件）|否|持久化、输出|
 |password        |字符串|创建用户期间用于本地帐户的密码。|否|否|持久化|
-|passwordPolicies     |字符串|密码策略。 它是由逗号分隔的不同策略名称构成的字符串。 例如“DisablePasswordExpiration, DisableStrongPassword”。|否|否|持久化、输出|
+|passwordPolicies     |字符串|密码策略。 它是由逗号分隔的不同策略名称构成的字符串。 例如，"DisablePasswordExpiration，DisableStrongPassword"。|否|否|持久化、输出|
 |physicalDeliveryOfficeName (officeLocation)|字符串|用户营业地点的办公室位置。 最大长度为 128。|是|否|持久化、输出|
 |postalCode      |字符串|用户邮政地址的邮政编码。 该邮政编码特定于用户所在的国家/地区。 在美国，此属性包含邮政编码。 最大长度为 40。|是|否|持久化、输出|
 |preferredLanguage    |字符串|用户的首选语言。 应遵循 ISO 639-1 代码。 示例：“en-US”。|否|否|持久化、输出|
 |refreshTokensValidFromDateTime|DateTime|在此时间之前颁发的所有刷新令牌无效，使用无效刷新令牌获取新的访问令牌时，应用程序会收到错误。 如果发生这种情况，应用程序需要通过向授权终结点发出请求来获取新的刷新令牌。 只读。|否|否|输出|
-|signInNames（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中任何类型的本地帐户用户的唯一登录名。 使用此属性可以获取具有登录值的用户，而无需指定本地帐户类型。|否|否|输入|
-|signInNames.userName（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中本地帐户用户的唯一用户名。 使用此属性可以创建或获取具有特定登录用户名的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
-|signInNames.phoneNumber（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中本地帐户用户的唯一电话号码。 使用此属性可以创建或获取具有特定登录电话号码的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
-|signInNames.emailAddress（[标识](manage-user-accounts-graph-api.md#identities-property)）|字符串|目录中本地帐户用户的唯一电子邮件地址。 使用此属性可以创建或获取具有特定登录电子邮件地址的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
+|signInNames（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中任何类型的本地帐户用户的唯一登录名。 使用此属性来获取具有登录值的用户，而无需指定本地帐户类型。|否|否|输入|
+|signInNames.userName（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中本地帐户用户的唯一用户名。 使用此属性创建或获取具有特定登录用户名的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
+|signInNames.phoneNumber（[标识](manage-user-accounts-graph-api.md#identities-property)） |字符串|目录中本地帐户用户的唯一电话号码。 使用此属性创建或获取具有特定登录电话号码的用户。 在 Patch 操作期间单独指定 PersistedClaims 中的此属性将删除其他类型的 signInNames。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
+|signInNames.emailAddress（[标识](manage-user-accounts-graph-api.md#identities-property)）|字符串|目录中本地帐户用户的唯一电子邮件地址。 使用此属性可以创建或获取具有特定登录电子邮件地址的用户。 在 Patch 操作期间单独指定 PersistedClaims 中的此属性将删除其他类型的 signInNames。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
 |state           |字符串|用户地址中的省/自治区/直辖市。 最大长度为 128。|是|是|持久化、输出|
 |streetAddress   |字符串|用户营业地点的街道地址。 最大长度为 1024。|是|是|持久化、输出|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|字符串|用户的次要电话号码，用于多重身份验证。|是|否|持久化、输出|
@@ -120,5 +120,4 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 扩展属性[�
 ## <a name="next-steps"></a>后续步骤
 了解有关扩展属性的详细信息：
 - [架构扩展](/graph/extensibility-overview#schema-extensions)
-- [使用用户流定义自定义属性](user-flow-custom-attributes.md)
-- [使用自定义策略定义自定义属性](custom-policy-custom-attributes.md)
+- [定义自定义属性](user-flow-custom-attributes.md)

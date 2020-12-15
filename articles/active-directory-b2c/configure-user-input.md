@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111140"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508112"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>添加用户属性和自定义 Azure Active Directory B2C 中的用户输入
 
@@ -31,7 +31,7 @@ ms.locfileid: "97111140"
 
 本文介绍如何在注册旅程 Azure Active Directory B2C (Azure AD B2C) 中收集新属性。 你将获得用户的 "城市"，将其配置为下拉箭头，并定义是否需要提供此项。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -129,7 +129,7 @@ ms.locfileid: "97111140"
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> 此示例使用内置声明 "city"。 相反，您可以选择一个受支持的 [Azure AD B2C 内置属性](user-profile-attributes.md) 或自定义属性。 若要使用自定义属性，请 [在策略中启用自定义属性](custom-policy-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将 "city" 替换为所选的属性，例如内置属性 *jobTitle* 或 *extension_loyaltyId* 之类的自定义属性。  
+> 此示例使用内置声明 "city"。 相反，您可以选择一个受支持的 [Azure AD B2C 内置属性](user-profile-attributes.md) 或自定义属性。 若要使用自定义属性，请 [启用自定义属性](user-flow-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将 "city" 替换为所选的属性，例如内置属性 *jobTitle* 或 *extension_loyaltyId* 之类的自定义属性。  
 
 你可以使用注册或登录用户旅程收集用户的初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 Azure AD B2C 以交互方式直接从用户那里收集信息，标识体验框架将使用其 [自断言技术配置文件](self-asserted-technical-profile.md)。 在此示例中，你：
 
@@ -342,6 +342,6 @@ ms.locfileid: "97111140"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 IEF 参考中的 [ClaimsSchema](claimsschema.md) 元素。
-- 了解如何 [使用自定义配置文件编辑策略中的自定义属性](custom-policy-custom-attributes.md)。
+- 了解如何 [在 Azure AD B2C 中使用自定义属性](user-flow-custom-attributes.md)。
 
 ::: zone-end

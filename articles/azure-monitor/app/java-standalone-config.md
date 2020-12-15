@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387745"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507653"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
 
@@ -184,9 +184,9 @@ ms.locfileid: "97387745"
 
 Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通过这些日志记录框架执行的日志记录。
 
-默认情况下，仅当在 `INFO` 级别或更高级别执行日志记录时，才会收集日志记录。
+仅在第一次满足日志记录框架配置的阈值时才捕获日志记录，另一种方法还满足 Application Insights 配置的阈值。
 
-如果要更改此集合级别：
+默认 Application Insights 阈值为 `INFO` 。 如果要更改此级别，请执行以下操作：
 
 ```json
 {

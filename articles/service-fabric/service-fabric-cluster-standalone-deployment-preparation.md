@@ -3,12 +3,12 @@ title: 独立群集部署准备
 description: 在部署专用于处理生产工作负荷的群集之前要考虑的与准备环境和创建群集配置相关的文档。
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509166"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -60,7 +60,7 @@ ms.locfileid: "91842948"
 * [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
 * 应在所有计算机上运行 [RemoteRegistry 服务](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))
 * **Service Fabric 安装驱动器必须是 NTFS 文件系统**
-* **Windows 服务*性能日志和警报*以及 *Windows 事件日志*必须[启用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))** 。
+* **Windows 服务 *性能日志和警报* 以及 *Windows 事件日志* 必须 [启用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))** 。
 
 > [!IMPORTANT]
 > 部署和配置群集的群集管理员必须拥有每台计算机的 [管理员权限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) 。 不能在域控制器上安装 Service Fabric。
@@ -103,7 +103,7 @@ ms.locfileid: "91842948"
 5. 如果群集计算机无法访问 Internet，请在群集配置中设置以下项：
    * 禁用遥测：在 " *属性* " 下，设置 *"enableTelemetry"： false*
    * 禁用自动构造版本下载 & 通知当前群集版本已接近支持：在 " *属性* " 下，设置 *"fabricClusterAutoupgradeEnabled"： false*
-   * 或者，如果网络 Internet 访问仅限于允许列表中的域，则需要自动升级以下域：go.microsoft.com download.microsoft.com
+   * 或者，如果网络 internet 访问仅限于 allowlisted 域，则需要使用以下域进行自动升级： go.microsoft.com download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：
 

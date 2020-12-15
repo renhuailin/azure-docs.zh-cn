@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345076"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509694"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -197,7 +197,7 @@ ms.locfileid: "96345076"
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | setting.operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 否| 允许生成值为 NULL 的声明。 例如，在用户未选中复选框的情况下。|
@@ -209,7 +209,7 @@ ms.locfileid: "96345076"
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。|
-| setting.enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](custom-policy-keep-me-signed-in.md) " 复选框。 可能的值：`true` 或 `false`（默认）。 |
+| setting.enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) " 复选框。 可能的值：`true` 或 `false`（默认）。 |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 通过等待用户停止键入后再验证该值来改善用户体验。 默认值为 2000 毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 

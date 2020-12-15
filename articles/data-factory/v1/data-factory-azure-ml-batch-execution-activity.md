@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496513"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508466"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure 机器学习 Studio (经典) 和 Azure 数据工厂创建预测管道
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496513"
 ## <a name="introduction"></a>介绍
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用机器学习转换数据](../transform-data-using-machine-learning.md)。
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）
 [Azure 机器学习 Studio (经典) ](https://azure.microsoft.com/documentation/services/machine-learning/) 使你能够生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
@@ -80,13 +79,13 @@ ms.locfileid: "96496513"
 > [!IMPORTANT]
 > 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 有关使用 webServiceInputs 属性的示例，请参阅 [Web 服务需要多个输入](#web-service-requires-multiple-inputs)部分。
 >
-> TypeProperties) 中的 **webServiceInput** / **webServiceInputs** 和 **webServiceOutputs** (属性引用的数据 **typeProperties** 集也必须包括在活动 **输入** 和 **输出** 中。
+> TypeProperties) 中的 **webServiceInput** / **webServiceInputs** 和 **webServiceOutputs** (属性引用的数据集也必须包括在活动 **输入** 和 **输出** 中。
 >
 > 在 Studio (经典) 试验中，web 服务输入和输出端口和全局参数具有可自定义的默认名称 ( "input1" 和 "input2" ) 。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可以在 Studio (经典) 终结点的 "批处理执行" 帮助页上查看示例请求负载，以验证预期的映射。
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ ms.locfileid: "96496513"
   }
 }
 ```
+
 > [!NOTE]
 > 仅 AzureMLBatchExecution 活动的输入和输出可作为参数传递给 Web 服务。 例如，在上面的 JSON 片段中，DecisionTreeInputBlob 是作为输入通过 webServiceInput 参数传递给 Web 服务的 AzureMLBatchExecution 活动的输入。
 >
@@ -139,115 +139,119 @@ ms.locfileid: "96496513"
 
 1. 为 **Azure 存储** 创建 **链接服务**。 如果输入和输出文件位于不同的存储帐户，需使用两个链接服务。 下面是 JSON 示例：
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. 创建 **输入** Azure 数据工厂 **数据集**。 与某些其他数据工厂数据集不同，这些数据集必须同时包含 **folderPath** 和 **fileName** 值。 可使用分区，使每个批处理执行（每个数据切片）进行处理或生成唯一的输入和输出文件。 可能需要包括某个上游活动才能将输入转换为 CSV 文件格式，并将其置于每个切片的存储帐户中。 在这种情况下，不会包括下方示例显示的 **external** 和 **externalData** 设置，DecisionTreeInputBlob 会成为不同活动的输出数据集。
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    输入 csv 文件必须包含列标题行。 如果使用 **复制活动** 创建 csv 或将其移动到 Blob 存储，应将接收器属性 **blobWriterAddHeader** 设置为 **true**。 例如：
+   输入 csv 文件必须包含列标题行。 如果使用 **复制活动** 创建 csv 或将其移动到 Blob 存储，应将接收器属性 **blobWriterAddHeader** 设置为 **true**。 例如：
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    如果 csv 文件没有标题行，你可能会看到以下错误： " **活动中出错：读取字符串时出错"。意外的令牌： StartObject。路径 ""，第1行，位置 1**。
+   如果 csv 文件没有标题行，你可能会看到以下错误： " **活动中出错：读取字符串时出错"。意外的令牌： StartObject。路径 ""，第1行，位置 1**。
+
 3. 创建 **输出** Azure 数据工厂 **数据集**。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. 创建类型为 **AzureMLLinkedService** 的 **链接服务**，提供 API 密钥和模型批处理执行 URL。
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. 最后，创建包含 **AzureMLBatchExecution** 活动的管道。 在运行时，管道执行以下步骤：
 
    1. 从输入数据集获取输入文件的位置。
@@ -259,45 +263,45 @@ ms.locfileid: "96496513"
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ ms.locfileid: "96496513"
 
 我们来看看使用 Web 服务参数的情况。 你有一个已部署的 Studio (经典) web 服务，该服务使用 "读取器" 模块从 Studio 支持的一个数据源中读取数据 (经典)  (例如： Azure SQL 数据库) 。 完成批处理执行后，使用读取器模块（Azure SQL 数据库）写入结果。  实验中未定义任何 Web 服务输入和输出。 在此情况下，建议为读取器和编写器模块配置相关的 Web 服务参数。 此配置允许在使用 AzureMLBatchExecution 活动时配置读取器/编写器模块。 在活动 JSON 中的 **globalParameters** 部分指定 Web 服务参数，如下所示。
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ ms.locfileid: "96496513"
 
 还可使用[数据工厂函数](data-factory-functions-variables.md)传递 Web 服务参数的值，如下方示例所示：
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

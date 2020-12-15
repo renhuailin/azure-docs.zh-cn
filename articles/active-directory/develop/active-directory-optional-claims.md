@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108138"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509557"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -49,7 +49,7 @@ ms.locfileid: "97108138"
 
 **表 2：v1.0 和 v2.0 可选声明集**
 
-| 名称                       |  说明   | 令牌类型 | 用户类型 | 注释  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -76,7 +76,7 @@ ms.locfileid: "97108138"
 
 **表 3：仅限 v2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 说明                                | 注释 |
+| JWT 声明     | 名称                            | 说明                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
@@ -124,15 +124,16 @@ ms.locfileid: "97108138"
 
 可以通过 UI 或应用程序清单来配置应用程序的可选声明。
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
-1. 从“管理”部分中选择“应用注册” 。
+1. 转到 [Azure 门户](https://portal.azure.com)。 
+1. 搜索并选择“Azure Active Directory”。
+1. 在“管理”下，选择“应用注册”。 
 1. 在列表中选择要为其配置可选声明的应用程序。
 
 **通过 UI 配置可选声明：**
 
 [![在 UI 中配置可选声明](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. 从“管理”部分中选择“令牌配置” 。
+1. 在 " **管理**" 下，选择 " **令牌配置**"。
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
@@ -145,7 +146,7 @@ ms.locfileid: "97108138"
 
 [![演示如何使用应用清单配置可选声明](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. 在“管理”部分，选择“清单”。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑清单。 （可选）可以选择“下载”并在本地编辑清单，然后使用“上传”将清单重新应用到应用程序。  有关应用程序清单的详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)一文。
+1. 在 " **管理**" 下，选择 " **清单**"。 此时会打开一个基于 Web 的清单编辑器，可在其中编辑清单。 （可选）可以选择“下载”并在本地编辑清单，然后使用“上传”将清单重新应用到应用程序。  有关应用程序清单的详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)一文。
 
     以下应用程序清单条目将 auth_time、ipaddr 和 upn 可选声明添加到 ID、访问和 SAML 令牌。
 
@@ -203,7 +204,7 @@ ms.locfileid: "97108138"
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
-| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值是 False。                                                                                                                 |
+| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                                 |
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                                   |
 
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
@@ -225,22 +226,19 @@ ms.locfileid: "97108138"
 
 ## <a name="configuring-groups-optional-claims"></a>配置组可选声明
 
-   > [!NOTE]
-   > 为从本地同步的用户和组发出组名的功能目前为公共预览版。
-
-本部分介绍可选声明下的配置选项，这些选项可将组声明中使用的组特性从默认的组 objectID 更改为从本地 Windows Active Directory 同步的特性。 可以通过 UI 或应用程序清单来配置应用程序的组可选声明。
+本部分介绍可选声明下的配置选项，这些选项可将组声明中使用的组特性从默认的组 objectID 更改为从本地 Windows Active Directory 同步的特性。 可以通过 UI 或应用程序清单为应用程序配置组可选声明。
 
 > [!IMPORTANT]
-> 有关更多详细信息，包括有关本地属性中组声明的公共预览版的重要注意事项，请参阅[通过 Azure AD 配置应用程序的组声明](../hybrid/how-to-connect-fed-group-claims.md)。
+> 有关更多详细信息，包括本地属性中的组声明的重要注意事项，请参阅为 [应用程序配置组声明 Azure AD](../hybrid/how-to-connect-fed-group-claims.md)。
 
 **通过 UI 配置组可选声明：**
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 从左侧菜单中选择“Azure Active Directory”。
-1. 在“管理”部分下选择“应用注册” 。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册”。 
 1. 在列表中选择要为其配置可选声明的应用程序。
-1. 在“管理”部分下，选择“令牌配置” 。
+1. 在 " **管理**" 下，选择 " **令牌配置**"。
 1. 选择 " **添加组声明**"。
 1. 选择要返回的组类型（“安全组”或“目录角色”、“所有组”和/或“分配给应用程序的组”）。 “分配给应用程序的组”选项仅包括分配给应用程序的组。 “所有组”选项包括“SecurityGroup”、“DirectoryRole”和“DistributionList”，但不包括“分配给应用程序的组”    。 
 1. 可选：选择特定的令牌类型属性以修改组声明值以包含本地组属性，或将声明类型更改为角色。
@@ -250,9 +248,9 @@ ms.locfileid: "97108138"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 从左侧菜单中选择“Azure Active Directory”。
+1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中选择要为其配置可选声明的应用程序。
-1. 在 " **管理** " 部分下，选择 " **清单**"。
+1. 在 " **管理**" 下，选择 " **清单**"。
 1. 使用清单编辑器添加以下条目：
 
    有效值为：
@@ -382,13 +380,13 @@ ms.locfileid: "97108138"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
-1. 从左侧菜单中选择“Azure Active Directory”。
+1. 搜索并选择“Azure Active Directory”  。
 
-1. 在“管理”部分下选择“应用注册” 。
+1. 在“管理”下，选择“应用注册”。 
 
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。
 
-1. 在“管理”部分下，选择“令牌配置” 。
+1. 在 " **管理**" 下，选择 " **令牌配置**"。
 
 1. 选择“添加可选声明”，选择 ID 令牌类型，从声明列表中选择 upn，然后选择“添加”   。
 
@@ -404,9 +402,9 @@ ms.locfileid: "97108138"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 从左侧菜单中选择“Azure Active Directory”。
+1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。
-1. 在“管理”部分下，选择“清单”打开内联的清单编辑器 。
+1. 在 " **管理**" 下，选择 " **清单** " 打开内联清单编辑器。
 1. 可使用此编辑器直接编辑清单。 该清单遵循 [Application 实体](./reference-app-manifest.md)的架构，保存后会自动设置格式。 新元素将添加到 `OptionalClaims` 属性。
 
     ```json

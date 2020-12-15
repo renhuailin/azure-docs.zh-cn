@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371979"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507365"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -73,7 +73,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
    >[!NOTE]
    >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
 
-5. 选择“确定”。
+5. 选择“确定”  。
 
 部署 ITSMC 资源后，窗口右上角会出现一个通知。
 
@@ -152,14 +152,14 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 9. 如果 **为每个配置项目选择 "创建单独的工作项**"，则每个配置项都将有自己的工作项。 每个配置项目都有一个工作项。 它将根据将要创建的警报进行更新。
 
-   * 在工作项下拉列表中选择 "事件" 或 "警报"：如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报都将创建一个新的工作项。 每个配置项目可能有多个警报。
+    * 在工作项下拉列表中选择 "事件" 或 "警报"：如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报都将创建一个新的工作项。 每个配置项目可能有多个警报。
 
-   ![显示 ITSM 票证窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
-   
-   * 在 "工作项" 下拉列表中选择 "事件" 时：如果为单选按钮选择中的 **每个日志项选择 "创建单独的工作项** "，则每个警报都将创建一个新的工作项。 如果为单选按钮选择中的 **每个配置项目选择 "创建单独的工作项** "，则每个配置项都将有自己的工作项。
-   ![显示 ITSM 票证窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
+       ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
 
-10. 选择“确定”。
+    * 在 "工作项" 下拉列表中选择 "事件" 时：如果为单选按钮选择中的 **每个日志项选择 "创建单独的工作项** "，则每个警报都将创建一个新的工作项。 如果为单选按钮选择中的 **每个配置项目选择 "创建单独的工作项** "，则每个配置项都将有自己的工作项。
+   ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
+
+10. 选择“确定”  。
 
 当你创建或编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 当警报触发时，会在 ITSM 工具中创建或更新工作项。
 
@@ -169,26 +169,6 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 >
 >
 >- 当使用 ITSM 操作发送警报规则时，警报规则定义中的简短说明字段限制为40个字符。
-
-
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>可视化和分析事件与更改请求数据
-
-根据设置连接时的配置，ITSMC 可以同步最多120天的事件和更改请求数据。 本文的 [下一部分](#additional-information) 提供了此数据的日志记录架构。
-
-可以使用 ITSMC 仪表板可视化事件和更改请求数据：
-
-![显示 ITSMC 仪表板的屏幕截图。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
-
-该仪表板还提供有关连接器状态的信息，可将其用作分析连接问题的起点。
-
-你还可以在服务映射中将与受影响计算机同步的事件可视化。
-
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你查看服务器，就像你想象的那样：作为提供重要服务的互连系统。 服务映射显示在任何 TCP 连接的体系结构中服务器、进程和端口之间的连接。 除了安装代理以外，无需进行任何配置。 有关详细信息，请参阅 [使用服务映射](../insights/service-map.md)。
-
-如果你使用服务映射，则可以查看在 ITSM 解决方案中创建的服务台项，如下所示：
-
-![显示 Log Analytics 屏幕的屏幕截图。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
 
 ## <a name="additional-information"></a>其他信息
 
@@ -299,32 +279,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s| 影响|
 | RequestedDate_t  | 请求日期 |
 | ClosedDate_t | 关闭日期 |
-| PlannedStartDate_t  |     计划开始日期 |
-| PlannedEndDate_t  |   计划结束日期 |
+| PlannedStartDate_t  | 计划开始日期 |
+| PlannedEndDate_t  | 计划结束日期 |
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
 | Description_s | 说明 |
 | Computer  | 配置项 |
-
-
-## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
-- 如果连接源的 UI 连接失败，并且在 **保存连接消息时出现错误** ，请执行以下步骤：
-   - 对于 ServiceNow、Cherwell 和 Provance 连接：  
-     - 确保为每个连接正确输入了用户名、密码、客户端 ID 和客户端密码。  
-     - 确保在相应的 ITSM 产品中具有足够的权限来建立连接。  
-   - 对于 Service Manager 连接：  
-     - 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
-
-- 如果 ServiceNow 中的数据未同步到 Log Analytics，请确保 ServiceNow 实例未处于睡眠状态。 当 ServiceNow 开发实例长时间处于空闲状态时，有时会进入睡眠状态。 如果不是这样，请报告问题。
-- 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，如果不创建或链接到工作项的配置项目或其他信息，请参阅以下资源：
-   -  ITSMC：此解决方案显示连接、工作项和计算机等的摘要。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
-   - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
--   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
--   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
--   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections.md#configure-the-hybrid-connection) 时，还可以创建它。
-
 
 ## <a name="contact-us"></a>联系我们
 

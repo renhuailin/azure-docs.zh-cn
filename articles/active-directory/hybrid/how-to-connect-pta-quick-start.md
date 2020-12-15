@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973195"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507670"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 传递身份验证：快速入门
 
@@ -72,7 +72,7 @@ ms.locfileid: "95973195"
      | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果你的防火墙或代理允许 DNS 允许列表，请添加 **\* msappproxy.net** 和 **\* servicebus.windows.net** 的连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果你的防火墙或代理允许向允许列表添加 DNS 条目，请添加 **\* msappproxy.net** 和 **\* servicebus.windows.net** 的连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
     - 对于证书验证，请取消阻止以下 Url： **crl3.digicert.com:80**、 **crl4.digicert.com:80**、 **ocsp.digicert.com:80**、 **www \. d-trust.net:80**、 **root-c3-ca2-2009.ocsp.d-trust.net:80**、 **crl.microsoft.com:80**、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 

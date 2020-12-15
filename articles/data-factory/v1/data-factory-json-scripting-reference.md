@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3b4795a47f0e6dbf945bd4a1f9aaaa0df2137f91
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 41ba08aef7aed761c3c6063f97768f22bffe3a36
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495576"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508486"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -337,7 +337,7 @@ structure:
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
-| minimumRows |验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
+| minimumRows |验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 **示例：**
 
@@ -929,7 +929,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#copy-activity-properties)一文。
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL 数据库
 
 ### <a name="linked-service"></a>链接服务
 要定义 Azure SQL 数据库链接服务，请将链接服务的 **类型** 设置为 **AzureSqlDatabase**，并在 **typeProperties** 节中指定以下属性：
@@ -1340,7 +1340,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | properties | 说明 | 允许的值 | 必须 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上传| 否 |
+| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 | 1 到 1,000。 默认值为 1000。 | 否 |
 
 #### <a name="example"></a>示例
@@ -1444,7 +1444,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | properties | 说明 | 必须 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
 #### <a name="example"></a>示例
 
@@ -1706,7 +1706,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- |
 | server |DB2 服务器的名称。 |是 |
 | database |DB2 数据库的名称。 |是 |
-| 架构 |数据库中架构的名称。 架构名称区分大小写。 |否 |
+| schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -1822,7 +1822,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- |
 | server |MySQL 服务器的名称。 |是 |
 | database |MySQL 数据库的名称。 |是 |
-| 架构 |数据库中架构的名称。 |否 |
+| schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 MySQL 数据库的身份验证类型。 可能的值为：`Basic` |是 |
 | userName |指定用于连接到 MySQL 数据库的用户名。 |是 |
 | password |指定该用户帐户的密码。 |是 |
@@ -2005,7 +2005,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable` <br/><br/>如果未指定，则执行的 SQL 语句为：`select * from MyTable` |否（如果指定了 **数据集** 的 **tableName**） |
+| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable` <br/><br/>如果未指定，则执行的 SQL 语句为：`select * from MyTable` |否（如果指定了 **数据集** 的 **tableName**） |
 
 #### <a name="example"></a>示例
 
@@ -2113,7 +2113,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- |
 | server |PostgreSQL 服务器的名称。 |是 |
 | database |PostgreSQL 数据库的名称。 |是 |
-| 架构 |数据库中架构的名称。 架构名称区分大小写。 |否 |
+| schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -2671,7 +2671,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 | --- | --- | --- |
 | server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
-| 架构 |数据库中架构的名称。 |否 |
+| schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -3175,10 +3175,10 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 | properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| bucketName |S3 存储桶的名称。 |String |是 |
-| key |S3 对象键。 |String |否 |
-| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
-| 版本 |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
+| bucketName |S3 存储桶的名称。 |字符串 |是 |
+| key |S3 对象键。 |字符串 |否 |
+| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |字符串 |否 |
+| 版本 |启用 S3 版本控制时 S3 对象的版本。 |字符串 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
 | compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳** 和 **最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
 
@@ -3324,7 +3324,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 #### <a name="sample-folder-path-definitions"></a>示例文件夹路径定义
 
-| 方案 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
+| 场景 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
 | 数据管理网关计算机上的本地文件夹： <br/><br/>示例:D:\\\* 或 D:\folder\subfolder\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
 | 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
@@ -3778,7 +3778,7 @@ auto-
 
 | properties | 说明 | 必须 |
 | --- | --- | --- |
-| folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
@@ -5062,7 +5062,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 [HDInsight Hive 活动](#hdinsight-hive-activity) | 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。
 [HDInsight Pig 活动](#hdinsight-pig-activity) | 数据工厂管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。
 [HDInsight MapReduce 活动](#hdinsight-mapreduce-activity) | 数据工厂管道中的 HDInsight MapReduce 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 MapReduce 程序。
-[HDInsight 流式处理活动](#hdinsight-streaming-activity) | 数据工厂管道中的 HDInsight Streaming 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 HDInsight Streaming 程序。
+[HDInsight Streaming 活动](#hdinsight-streaming-activity) | 数据工厂管道中的 HDInsight Streaming 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 HDInsight Streaming 程序。
 [HDInsight Spark 活动](#hdinsight-spark-activity) | 数据工厂管道中的 HDInsight Spark 活动在自己的 HDInsight 群集上执行 Spark 程序。
 [Azure 机器学习工作室（经典）批处理执行活动](#azure-machine-learning-studio-classic-batch-execution-activity) | 使用 Azure 数据工厂，可轻松创建使用已发布的 Studio (经典) web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的批处理执行活动，可以调用 Studio (经典) web 服务对批处理中的数据进行预测。
 [Azure 机器学习工作室（经典）更新资源活动](#azure-machine-learning-studio-classic-update-resource-activity) | 随着时间的推移，Azure 机器学习 Studio 中的预测模型 (经典) 计分试验需要使用新的输入数据集来重新训练。 完成重新训练后，需要用重新训练机器学习模型更新评分 web 服务。 可以使用更新资源活动，通过新的训练模型更新 Web 服务。

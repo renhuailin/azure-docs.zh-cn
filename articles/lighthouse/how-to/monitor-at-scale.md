@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托的资源
 description: 了解如何在你管理的客户租户之间以可伸缩方式有效地使用 Azure Monitor 日志。
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461515"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509268"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托的资源
 
@@ -40,7 +40,25 @@ ms.locfileid: "96461515"
 
 ## <a name="analyze-the-gathered-data"></a>分析收集的数据
 
-部署策略后，数据将记录在每个客户租户中创建的 Log Analytics 工作区中。 若要深入了解所有托管客户，可以使用 [Azure Monitor 工作簿](../../azure-monitor/platform/workbooks-overview.md) 之类的工具从多个数据源收集和分析信息。 
+部署策略后，数据将记录在每个客户租户中创建的 Log Analytics 工作区中。 若要深入了解所有托管客户，可以使用 [Azure Monitor 工作簿](../../azure-monitor/platform/workbooks-overview.md) 之类的工具从多个数据源收集和分析信息。
+
+## <a name="view-alerts-across-customers"></a>查看客户之间的警报
+
+您可以在您的管理的客户租户中查看委派的订阅的 [警报](../../azure-monitor/platform/alerts-overview.md) 。
+
+若要跨多个客户自动刷新警报，请使用 [Azure 资源关系图](../../governance/resource-graph/overview.md) 查询来筛选警报。 可以将查询固定到仪表板，并选择所有合适的客户和订阅。
+
+下面的示例查询将显示严重性为0和1的警报，每60分钟刷新一次。
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

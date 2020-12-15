@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949405"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507772"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -115,7 +115,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 ### <a name="extension-properties"></a>扩展属性
 
-每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅 [ (用户流中的自定义属性) ](user-flow-custom-attributes.md) 和自定义 [属性 (自定义策略) ](custom-policy-custom-attributes.md)。
+每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅 [自定义属性](user-flow-custom-attributes.md)。
 
 Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性使用约定 `extension_ApplicationClientID_attributename` 命名，其中 `ApplicationClientID` 是 `b2c-extensions-app` 应用程序的应用程序（客户端）ID（可在 Azure 门户中的“应用注册” > “所有应用”中找到）  。 请注意，应用程序（客户端）ID 以扩展属性名称表示时不包含连字符。 例如：
 

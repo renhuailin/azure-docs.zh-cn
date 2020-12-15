@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6c9e5b6466d3da675975dbf2c532602561e820c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 417306e09a9424b302bb226aea5dd2c1debe96f5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495066"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508418"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -118,13 +118,13 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 编辑器中，执行以下步骤：
 
-    a. 指定 HDInsight Spark 群集的 URI。 例如： `https://<sparkclustername>.azurehdinsight.net/`。
+    1. 指定 HDInsight Spark 群集的 URI。 例如：`https://<sparkclustername>.azurehdinsight.net/`。
 
-    b. 指定有权访问 Spark 群集的用户的名称。
+    1. 指定有权访问 Spark 群集的用户的名称。
 
-    c. 指定该用户的密码。
+    1. 指定该用户的密码。
 
-    d. 指定与 HDInsight Spark 群集关联的存储链接服务。 在此示例中，链接服务为 AzureStorageLinkedService。
+    1. 指定与 HDInsight Spark 群集关联的存储链接服务。 在此示例中，链接服务为 AzureStorageLinkedService。
 
     ```json
     {
@@ -213,20 +213,21 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
         }
     }
     ```
+
     请注意以下几点：
 
-    a. **type** 属性设置为 **HDInsightSpark**。
+    1. **type** 属性设置为 **HDInsightSpark**。
 
-    b. **rootPath** 属性设置为 **adfspark\\pyFiles**，其中，adfspark 是 Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的存储帐户。 如果这样做，请创建存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 有关 Spark 活动支持的此属性及其他属性的详细信息，请参阅 [Spark 活动属性](#spark-activity-properties)。
+    1. **rootPath** 属性设置为 **adfspark\\pyFiles**，其中，adfspark 是 Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的存储帐户。 如果这样做，请创建存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 有关 Spark 活动支持的此属性及其他属性的详细信息，请参阅 [Spark 活动属性](#spark-activity-properties)。
 
-    c. **entryFilePath** 属性设置为 **test.py**，这是 Python 文件。
+    1. **entryFilePath** 属性设置为 **test.py**，这是 Python 文件。
 
-    d. **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
+    1. **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
 
-    > [!IMPORTANT]
-    > 在生产环境中，除非要排查问题，否则我们不建议将此属性设置为 `Always`。
+       > [!IMPORTANT]
+       > `Always`除非您对问题进行故障排除，否则我们建议不要在生产环境中将此属性设置为。
 
-    e. **outputs** 节包含一个输出数据集。 必须指定一个输出数据集，即使 Spark 程序不会生成任何输出。 输出数据集驱动管道的计划（每小时、每日）。
+    1. **outputs** 节包含一个输出数据集。 必须指定一个输出数据集，即使 Spark 程序不会生成任何输出。 输出数据集驱动管道的计划（每小时、每日）。
 
     有关 Spark 活动支持的属性的详细信息，请参阅 [Spark 活动属性](#spark-activity-properties)。
 

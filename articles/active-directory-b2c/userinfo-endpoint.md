@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425733"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509574"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo 终结点
 
@@ -103,7 +103,7 @@ ms.locfileid: "97425733"
 
 1. UserInfoIssuer 技术配置文件中的 outputClaims 部分指定要返回的属性。 在用户旅程结束时，将调用 UserInfoIssuer 技术配置文件。 
 1. UserInfoAuthorization 技术配置文件验证签名、颁发者名称和令牌受众，并从入站令牌中提取声明。 更改以下元数据以反映你的环境：
-    1. **颁发者** -此值必须与 `iss` 访问令牌声明中的声明完全相同。 Azure AD B2C 颁发的令牌使用格式的颁发者 `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` 。 了解有关 [令牌自定义](configure-tokens-custom-policy.md)的详细信息。
+    1. **颁发者** -此值必须与 `iss` 访问令牌声明中的声明完全相同。 Azure AD B2C 颁发的令牌使用格式的颁发者 `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` 。 了解有关 [令牌自定义](configure-tokens.md)的详细信息。
     1. **IdTokenAudience** -必须与 `aud` 访问令牌声明中的声明完全相同。 在 Azure AD B2C `aud` 声明是信赖方应用程序的 ID。 此值为集合，并使用逗号分隔符支持多个值。
 
 在以下访问令牌中， `iss` 声明值为 `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` 。 `aud`声明值为 `22222222-2222-2222-2222-222222222222` 。

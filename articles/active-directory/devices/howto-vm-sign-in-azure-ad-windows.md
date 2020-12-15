@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347432"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509302"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -158,7 +158,7 @@ az vm extension set \
 - 使用 Azure Cloud Shell 体验
 
 > [!NOTE]
-> 虚拟机管理员登录名和虚拟机用户登录角色使用 dataActions，因此不能在管理组范围内进行分配。 目前，只能在订阅范围内分配这些角色。
+> 虚拟机管理员登录名和虚拟机用户登录角色使用 dataActions，因此不能在管理组范围内进行分配。 目前只能在订阅、资源组或资源范围内分配这些角色。
 
 ### <a name="using-azure-ad-portal-experience"></a>使用 Azure AD 门户体验
 

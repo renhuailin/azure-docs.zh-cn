@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928743"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509540"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -64,11 +64,12 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 ## <a name="service-issues"></a>服务问题 
 
-**不受支持的方案**
+**不支持的方案**
 
 - 不支持预配密码。 
 - 不支持预配嵌套组。 
-- 由于租户规模的原因，不支持预配到 B2C 租户。 
+- 由于租户规模的原因，不支持预配到 B2C 租户。
+- 并非所有云都提供所有预配应用。 例如，Atlassian 在政府版中尚不可用。 我们正与应用程序开发人员合作，将其应用程序载入所有云。
 
 **基于 OIDC 的应用程序无法使用自动预配**
 

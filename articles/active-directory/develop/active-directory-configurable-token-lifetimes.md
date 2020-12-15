@@ -9,30 +9,30 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030138"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507789"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
 > [!IMPORTANT]
-> 2021年1月30日之后，租户将无法再配置刷新和会话令牌生存期，Azure Active Directory 将在该日期后停止遵循策略中的刷新和会话令牌配置。
+> 在5月 2020 5 日后，租户将无法再配置刷新和会话令牌生存期。  在2021年1月30日后，Azure Active Directory 将停止在策略中遵守现有的刷新和会话令牌配置。 在弃用之后，你仍然可以配置访问令牌生存期。
 >
-> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请访问 [Azure AD 定价页](https://azure.microsoft.com/en-us/pricing/details/active-directory/)。
+> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
 >
 > 对于不希望在停用日期后使用条件性访问的租户，他们可以预计 Azure AD 将遵循下一节中所述的默认配置。
 
 ## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>停用后的可配置令牌生存期属性
 刷新和会话令牌配置受以下属性及其各自的设置值影响。 停用刷新和会话令牌配置后，无论策略是否具有自定义值配置的自定义值，Azure AD 将仅服从下面所述的默认值。 你仍可以在停用后配置访问令牌生存期。 
 
-|属性   |策略属性字符串    |影响 |默认 |
+|properties   |策略属性字符串    |影响 |默认 |
 |----------|-----------|------------|------------|
 |刷新令牌最大非活动时间 |MaxInactiveTime  |刷新令牌 |90 天  |
 |单因素刷新令牌最大期限  |MaxAgeSingleFactor  |刷新令牌（适用于任何用户）  |直到吊销  |
@@ -127,7 +127,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 令牌生存期策略是一种策略对象，其中包含令牌生存期规则。 使用策略的属性控制指定的令牌生存期。 如果未设置策略，系统将强制实施默认生存期值。
 
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
-| 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
+| properties | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
@@ -140,7 +140,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
 ### <a name="exceptions"></a>例外
-| 属性 | 影响 | 默认 |
+| properties | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |

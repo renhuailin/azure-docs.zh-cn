@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637252"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507517"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -452,10 +452,10 @@ ms.locfileid: "92637252"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Azure Cosmos DB API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性            | 说明                                                  | 必选 |
+| 属性            | 说明                                                  | 必须 |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| type                | 复制活动转换器的 type 属性必须设置为： **TabularTranslator** | 是      |
-| schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源** ，指定数据集结构中定义的列名称；对于 **分层源** ，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器** ，指定数据集结构中定义的列名称；对于 **分层接收器** ，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |
+| type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
+| schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |
 | collectionReference | 若要进行迭代操作，以同一模式从 **数组字段中** 的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否       |
 
 **示例：从 MongoDB 复制到 Oracle：**

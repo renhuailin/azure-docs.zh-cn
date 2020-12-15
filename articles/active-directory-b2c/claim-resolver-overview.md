@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e55bb9ba49cfcaf07e8d3dc17dc13e30036e100f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109039"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508010"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-| {Context:KMSI} | 指示是否选中 ["使我保持登录状态"](custom-policy-keep-me-signed-in.md) 复选框。 |  是 |
+| {Context:KMSI} | 指示是否选中 ["使我保持登录状态"](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) 复选框。 |  是 |
 
 ### <a name="claims"></a>声明 
 

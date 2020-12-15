@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019576"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508282"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,7 +61,7 @@ ms.locfileid: "96019576"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
@@ -84,7 +84,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
@@ -277,8 +277,6 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
     }
 }
 ```
-
-
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW 的类型映射
 如 [数据移动活动](data-factory-data-movement-activities.md) 一文中所述，复制活动通过以下两步方法执行从源类型到接收器类型的自动类型转换：

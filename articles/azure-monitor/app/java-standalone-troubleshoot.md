@@ -4,12 +4,12 @@ description: 了解如何排查 Azure Monitor 的 Java agent Application Insight
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347824"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507636"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南： Azure Monitor Java Application Insights
 
@@ -34,6 +34,14 @@ ms.locfileid: "97347824"
 -  配置文件名称已从更改 `ApplicationInsights.json` 为 `applicationinsights.json` 。
 -  `instrumentationSettings`节点不再存在。 中的所有内容 `instrumentationSettings` 都将移动到根级别。 
 -  诸如、、和之类的配置节点 `sampling` `jmxMetrics` `instrumentation` `heartbeat` 移出 `preview` 到根级别。
+
+## <a name="some-logging-is-not-auto-collected"></a>某些日志记录不是自动收集的
+
+仅在第一次满足日志记录框架配置的阈值时才捕获日志记录，另一种方法还满足 Application Insights 配置的阈值。
+
+了解特定记录语句是否满足日志记录框架的配置阈值的最佳方式是确认它显示在普通的应用程序日志中 (例如文件或控制台) 。
+
+有关更多详细信息，请参阅 [自动收集的日志记录配置](./java-standalone-config.md#auto-collected-logging) 。
 
 ## <a name="import-ssl-certificates"></a>导入 SSL 证书
 
