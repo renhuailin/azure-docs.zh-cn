@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170933"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509812"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C 的 Microsoft Graph 操作
 
@@ -107,7 +107,7 @@ Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](
 
 - [列出扩展属性](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，将 [使用 Azure 门户管理](custom-policy-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 会为你创建属性，这是首次向扩展属性写入值。
+Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，将 [使用 Azure 门户管理](user-flow-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 会为你创建属性，这是首次向扩展属性写入值。
 
 ## <a name="audit-logs"></a>审核日志
 

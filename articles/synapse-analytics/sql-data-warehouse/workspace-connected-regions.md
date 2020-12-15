@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: d46f8b518476cdf2f68b51ed93498cf822f8d8a5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504145"
+ms.locfileid: "97511699"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>在专用 SQL 池上启用 Synapse 工作区功能 (以前的 SQL DW) 在你的区域中。
 
@@ -39,7 +39,7 @@ ms.locfileid: "97504145"
  
  
 > [!NOTE]
-> 上述区域列表仅与启用 Synapse 工作区功能的区域在当前不可用时相关。 
+> 上述区域列表仅与启用 Synapse 工作区功能的区域当前不可用相关。 
 
 ## <a name="next-steps"></a>后续步骤
 [Synapse 工作区和 Studio](../get-started.md)入门。

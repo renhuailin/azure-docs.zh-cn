@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340877"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510883"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -45,9 +45,9 @@ ms.locfileid: "96340877"
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE Leap 42.3 |
+| OpenSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux 7 | RHEL 6 和 RHEL 7 | 
-| SUSE Linux Enterprise Server | SLES 12 |
+| SUSE Linux 企业服务器 | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
 
@@ -119,7 +119,7 @@ Azure RBAC) 策略的 azure 基于角色的访问控制 (确定可登录到 VM �
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
 
 > [!NOTE]
-> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
+> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 虚拟机管理员登录名和虚拟机用户登录角色使用 dataActions，因此不能在管理组范围内进行分配。 目前只能在订阅、资源组或资源范围内分配这些角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。 
 
 以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅 [AZURE RBAC](../../role-based-access-control/overview.md)
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅使用 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
-也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅 [在云中 Azure AD 多重身份验证入门](../../active-directory/authentication/howto-mfa-getstarted.md)。
+## <a name="using-conditional-access"></a>使用条件性访问
+
+在授权访问通过 Azure AD 登录启用的 Azure 中的 Linux Vm 之前，可以强制实施条件访问策略（如多重身份验证或用户登录风险检查）。 若要应用条件性访问策略，你必须从 "云应用" 或 "操作" 分配选项中选择 "Azure Linux VM 登录" 应用，然后将登录风险用作条件，并/或需要多重身份验证作为授权访问控制。 
+
+> [!WARNING]
+> 虚拟机登录不支持按用户启用/强制执行的 Azure AD 多重身份验证。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>登录到 Linux 虚拟机
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> 如果遇到有关 Azure 角色分配的问题，请参阅 [AZURE RBAC 故障排除](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
 
 ### <a name="continued-ssh-sign-in-prompts"></a>持续的 SSH 登录提示
 

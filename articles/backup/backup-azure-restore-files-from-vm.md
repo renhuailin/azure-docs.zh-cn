@@ -2,14 +2,14 @@
 title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841150"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511648"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -105,7 +105,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| openSUSE | 42.2 及更高版本 |
+| OpenSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -135,7 +135,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 > [!NOTE]
 >
 > 在 [上面](#step-1-generate-and-download-script-to-browse-and-recover-files) 的步骤1中下载的脚本文件将在该文件的名称中包含 **地理名称** 。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
-> 例如，如果脚本文件名为 " *ContosoVM_wcus_12345678*"，则 wcus **为，** URL 将 *wcus* 为：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> 例如，如果脚本文件名为 " *ContosoVM_wcus_12345678*"，则 wcus **为，** URL 将为：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
@@ -156,7 +156,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
    ![已附加恢复卷](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**对于具有大型磁盘的已备份 Vm (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>对于具有大型磁盘的已备份 Vm (Windows) 
 
 如果文件恢复过程在运行文件还原脚本后挂起 (例如，如果从未装载磁盘，或装载了卷但) 不显示卷，请执行以下步骤：
   
@@ -182,7 +182,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**对于具有大型磁盘的已备份 Vm (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>对于具有大型磁盘的已备份 Vm (Linux) * *
 
 如果文件恢复过程在运行文件还原脚本后挂起 (例如，如果从未装载磁盘，或装载了卷但) 不显示卷，请执行以下步骤：
 
@@ -352,7 +352,7 @@ mount [RAID Disk Path] [/mountpath]
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>选择恢复点（谁可以生成脚本）
 
-此脚本可以访问 VM 数据，必须控制谁可以首先生成它，这很重要。 需要登录到 Azure 门户，并 [获得 AZURE RBAC 授权](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) ，以便生成脚本。
+此脚本可以访问 VM 数据，必须控制谁可以首先生成它，这很重要。 你需要登录到 Azure 门户，并且需要[获得 Azure RBAC 授权](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)才能生成脚本。
 
 文件恢复所需的授权级别与 VM 还原和磁盘还原相同。 换句话说，只有经过授权的用户才能查看 VM 数据和生成脚本。
 

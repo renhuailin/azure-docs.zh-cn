@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517081"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511274"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -48,15 +48,15 @@ Azure 市场提供[开发人员工具](https://azuremarketplace.microsoft.com/ma
 
 在数据流的早期阶段验证输入可确保仅格式正确的数据才能进入工作流。 你不会希望格式不正确的数据保留在数据库中或在下游组件中触发故障。
 
-黑名单和白名单是执行输入语法验证的两种常规方法：
+列入阻止列表和 allowlisting 是执行输入语法验证的两种常规方法：
 
-  - 黑名单尝试检查给定用户输入是否包含“已知恶意”的内容。
+  - 列入阻止列表尝试检查给定的用户输入是否未包含 "已知为恶意" 内容。
 
-  - 白名单尝试检查给定用户输入是否与一组“已知良好”的输入匹配。 基于字符的白名单是白名单的一种形式，其中应用程序会检查用户输入是否仅包含“已知良好”的字符或输入是否与已知格式匹配。
+  - Allowlisting 尝试检查给定的用户输入是否与一组 "已知良好" 的输入匹配。 基于字符的 allowlisting 是 allowlisting 的一种形式，其中，应用程序检查用户输入是否只包含 "已知良好" 字符，或输入是否与已知的格式匹配。
     例如，这可能会涉及检查用户名是否仅包含字母数字字符或是否仅包含两个数字。
 
-白名单是用于生成安全软件的首选方法。
-黑名单容易出错，因为无法想到潜在错误输入的完整列表。
+Allowlisting 是构建安全软件的首选方法。
+列入阻止列表很容易出现错误，因为不可能考虑可能不正确的输入的完整列表。
 
 在服务器上而不是在客户端（或在服务器上和客户端）执行此任务。
 

@@ -3,19 +3,19 @@ title: 在 Azure 开发测试实验室中添加所有者和用户 | Microsoft Do
 description: 使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330183"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511971"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)来控制。 使用 Azure RBAC，你可以将你的团队中的职责划分为 *角色* ，以便仅向用户授予执行作业所需的访问权限量。 其中三个 Azure 角色是 *所有者*、 *开发测试实验室用户*和 *参与者*。 本文介绍三种主要 Azure 角色中的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
+Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)来控制。 使用 Azure RBAC，你可以将你的团队中的职责划分为 *角色* ，以便仅向用户授予执行作业所需的访问权限量。 其中三个 Azure 角色是 *所有者*、 *开发测试实验室用户* 和 *参与者*。 本文介绍三种主要 Azure 角色中的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
@@ -34,7 +34,7 @@ Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角�
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| 将 Azure 市场映像加入允许列表 |否 |是 |是 |
+| 启用 Marketplace 映像 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -45,7 +45,7 @@ Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角�
 | 应用项目 |是 |是 |是 |
 
 > [!NOTE]
-> 用户创建 VM 时，会自动为该用户分配创建该 VM 的**所有者**角色。
+> 用户创建 VM 时，会自动为该用户分配创建该 VM 的 **所有者** 角色。
 > 
 > 
 
@@ -57,19 +57,19 @@ Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角�
 2. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 3. 从实验室列表，选择所需的实验室。
 4. 在实验室的边栏选项卡中，选择 " **配置和策略**"。 
-5. 在“配置和策略”**** 页面，选择左侧菜单中的“访问控制 (IAM)”****。 
-6. 选择工具栏上的“添加角色分配”**** 以将用户添加到角色。
-1. 在“添加权限”**** 窗口中，执行以下操作： 
+5. 在“配置和策略”页面，选择左侧菜单中的“访问控制 (IAM)”。 
+6. 选择工具栏上的“添加角色分配”以将用户添加到角色。
+1. 在“添加权限”窗口中，执行以下操作： 
     1. 选择一个角色（例如：DevTest Labs 用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
     2. 选择要被添加到角色的用户。 
     3. 选择“保存”。 
-11. 返回到“用户”**** 边栏选项卡时，已添加该用户。  
+11. 返回到“用户”边栏选项卡时，已添加该用户。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 将外部用户添加到实验室
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下例中，修改“要更改的值”**** 注释下的参数值。
+除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下例中，修改“要更改的值”注释下的参数值。
 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
 > [!NOTE]
@@ -111,19 +111,19 @@ Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验
 要将所有者添加到 Azure 订阅，请按照下列步骤操作：
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“所有服务”****，并从列表中选择“订阅”****。
+2. 选择“所有服务”，并从列表中选择“订阅”。
 3. 选择所需的订阅。
-4. 选择“访问”**** 图标。 
+4. 选择“访问”图标。 
    
     ![访问用户](./media/devtest-lab-add-devtest-user/access-users.png)
 5. 在 " **用户** " 边栏选项卡中，选择 " **添加**"。
    
     ![添加用户](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-6. 在“选择角色”**** 边栏选项卡上，选择“所有者”****。
-7. 在“添加用户”**** 边栏选项卡上，输入要作为所有者添加的用户的电子邮件地址或名称。 如果找不到用户，则会显示一条错误消息来解释此问题。 如果找到该用户，则会在“用户”**** 文本框中列出该用户。
+6. 在“选择角色”边栏选项卡上，选择“所有者”。
+7. 在“添加用户”边栏选项卡上，输入要作为所有者添加的用户的电子邮件地址或名称。 如果找不到用户，则会显示一条错误消息来解释此问题。 如果找到该用户，则会在“用户”文本框中列出该用户。
 8. 选择找到的用户名。
-9. 选择“选择”  。
-10. 选择“确定”**** 关闭“添加访问”**** 边栏选项卡。
-11. 返回到“用户”**** 边栏选项卡时，已添加该用户为所有者。 现在，该用户是此订阅下创建的所有实验室的所有者，因此能够执行所有者任务。 
+9. 选择“选择”。
+10. 选择“确定”关闭“添加访问”边栏选项卡。
+11. 返回到“用户”边栏选项卡时，已添加该用户为所有者。 现在，该用户是此订阅下创建的所有实验室的所有者，因此能够执行所有者任务。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

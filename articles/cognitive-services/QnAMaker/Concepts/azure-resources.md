@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351889"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512039"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -104,11 +104,11 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 |目标 QPS | 应用服务 | Azure 认知搜索 |
 | -------------------- | ----------- | ------------ |
-| 3             | S1，1实例   | S1，1实例    |
-| 50         | S3，10个实例       | S1、12个实例         |
-| 80         | S3，10个实例      |  S3、12个实例  |
-| 100         | P3V2，10个实例  | S3、12个实例、3个分区   |
-| 200至250         | P3V2，20个实例 | S3、12个实例、3个分区    |
+| 3             | S1，1个副本   | S1，1个副本    |
+| 50         | S3，10个副本       | S1、12个副本         |
+| 80         | S3，10个副本      |  S3、12个副本  |
+| 100         | P3V2，10个副本  | S3，12个副本，3个分区   |
+| 200至250         | P3V2，20个副本 | S3，12个副本，3个分区    |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -120,7 +120,7 @@ QnA Maker 托管是一项免费服务，吞吐量当前每秒上限为10个事�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-|升级|Reason|
+|升级|原因|
 |--|--|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker 管理 SKU|你需要在知识库中具有更多的 QnA 对或文档源。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) 应用服务 SKU 和检查认知搜索层并 [创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
@@ -210,7 +210,7 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处�
 
 QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
 
-|服务|共享|Reason|
+|服务|共享|原因|
 |--|--|--|
 |认知服务|X|不能通过设计|
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
@@ -238,7 +238,7 @@ QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应�
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名称|位置|目标|
+|名称|位置|目的|
 |--|--|--|
 |创作密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
@@ -315,7 +315,7 @@ QnA Maker 托管 (预览版) 服务处理两种密钥： **创作密钥** 和 **
 
 ![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
 
-|名称|位置|目标|
+|名称|位置|目的|
 |--|--|--|
 |创作密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用于与在用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管 (预览版) 服务相关联时，管理密钥会自动传递到 QnA Maker 服务。 <br><br>可以在 "**密钥**" 页上的 " **Azure 认知搜索** 资源上找到这些密钥。|

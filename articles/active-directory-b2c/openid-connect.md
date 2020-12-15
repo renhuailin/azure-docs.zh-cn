@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840400"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509795"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -124,7 +124,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 
 - 确保用户/组织已注册应用程序。
 - 确保用户拥有正确的授权/权限。
-- 确保发生了特定强度的身份验证，例如 Azure AD 多重身份验证。
+- 确保执行了一定强度的身份验证，例如 Azure AD 多重身份验证。
 
 验证 ID 令牌后，可以开始与用户的会话。 在应用程序中，可以使用 ID 令牌中的声明来获取用户的相关信息。 此信息的用途包括显示、记录和授权。
 
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 
-如果想要从应用程序中注销用户，只是清除应用程序的 Cookie 或者结束与用户的会话是不够的。 需将用户重定向到 Azure AD B2C 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 有关详细信息，请参阅 [Azure AD B2C 会话](session-overview.md)。
+如果想要从应用程序中注销用户，只是清除应用程序的 Cookie 或者结束与用户的会话是不够的。 需将用户重定向到 Azure AD B2C 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 有关详细信息，请参阅 [Azure AD B2C 会话](session-behavior.md)。
 
 若要将用户注销，请将用户重定向到前面所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
 
@@ -283,8 +283,8 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 注销后，用户将重定向到 `post_logout_redirect_uri` 参数中指定的 URI，而不管为应用程序指定的回复 URL 为何。 但是，如果传递了有效的 `id_token_hint` 并启用了“注销请求中需要 ID 令牌”，则在执行重定向之前，Azure AD B2C 将验证 `post_logout_redirect_uri` 的值是否与应用程序的某个已配置重定向 URI 相匹配。 如果没有为应用程序配置匹配的回复 URL，则会显示一条错误消息，而用户不会重定向。
 
-若要在注销请求中设置所需的 ID 令牌，请参阅[在 Azure Active Directory B2C 中配置会话行为](session-behavior-custom-policy.md#secure-your-logout-redirect)和[在 Azure Active Directory B2C 中使用自定义策略配置会话行为](session-behavior-custom-policy.md#secure-your-logout-redirect)。
+若要在注销请求中设置所需的 ID 令牌，请参阅 [在 Azure Active Directory B2C 中配置会话行为](session-behavior.md#secure-your-logout-redirect)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure AD B2C 会话](session-overview.md)。
+- 详细了解 [Azure AD B2C 会话](session-behavior.md)。

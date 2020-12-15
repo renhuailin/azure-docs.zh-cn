@@ -3,15 +3,15 @@ title: Windows 虚拟桌面安全性最佳做法-Azure
 description: 保持 Windows 虚拟桌面环境安全的最佳做法。
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023150"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511529"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -98,6 +98,25 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 ## <a name="session-host-security-best-practices"></a>会话主机安全最佳做法
 
 会话主机是在 Azure 订阅和虚拟网络中运行的虚拟机。 Windows 虚拟桌面部署的总体安全性取决于你在会话主机上进行的安全控制。 本部分介绍使你的会话托管安全的最佳做法。
+
+### <a name="enable-screen-capture-protection-preview"></a> (预览启用屏幕捕获保护) 
+
+屏幕捕获保护功能可防止在客户端终结点上捕获敏感信息。 启用此功能后，会在屏幕截图和屏幕共享中自动阻止或隐藏远程内容。 它还将对可能持续捕获屏幕内容的恶意软件隐藏。
+
+此策略是在主机级别通过配置注册表项强制实施的。 若要启用此策略，请打开 PowerShell，并通过运行以下 cmdlet 来设置 **fEnableScreenCaptureProtection** 注册表项：
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+若要测试此新功能：
+
+- 请确保在验证环境中设置了主机池。
+- 请确保已下载并安装 Windows 桌面客户端版本1.2.1526 或更高版本。
+
+>[!NOTE]
+>在预览期间，仅 Windows 10 终结点的完全桌面连接支持此功能。
+
 
 ### <a name="enable-endpoint-protection"></a>启用终结点保护
 

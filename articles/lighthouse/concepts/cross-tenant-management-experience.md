@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905117"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510645"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -90,7 +90,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure Monitor](../../azure-monitor/index.yml)：
 
-- 查看委派订阅的警报，并能够查看所有订阅的警报
+- 查看委派的订阅的警报，能够查看和刷新所有订阅中的警报
 - 查看委派订阅的活动日志详细信息
 - Log analytics：从多个租户中的远程工作区查询数据
 - 在通过 webhook 管理租户中触发自动化的客户租户（如 Azure 自动化 runbook 或 Azure Functions）中创建警报
@@ -158,7 +158,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 支持请求：
 
-- 在委派资源的 Azure 门户中 [打开支持请求 **Help + support**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) ， (选择可用于委派的作用域的支持计划) 
+- 在委派资源的 Azure 门户中[打开支持请求 ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) ， (选择可用于委派的作用域的支持计划) 
 
 ## <a name="current-limitations"></a>当前限制
 

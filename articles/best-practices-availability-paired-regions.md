@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 配对区域确保业务连续性和灾难恢复
 description: 使用 Azure 区域配对确保应用程序复原能力
-author: barbkess
-manager: barbkess
+author: martinekuan
+manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.author: barbkess
+ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539050"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511223"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927917"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510985"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -34,7 +34,7 @@ ms.locfileid: "92927917"
 
 |                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 有关 **GiB 中的缓存大小** ，请 [参阅 DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和 [GS](sizes-previous-gen.md#gs-series)              |
+| **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 有关 **GiB 中的缓存大小**，请 [参阅 DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和 [GS](sizes-previous-gen.md#gs-series)              |
 | **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | **磁盘类型支持**           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | **区域支持**              | 所有区域                                                                                  | 所有区域                              |
@@ -43,7 +43,7 @@ ms.locfileid: "92927917"
 | **专用 OS 磁盘支持** | 是                                                                                          | 否                                                                                 |
 | **OS 磁盘重设大小**              | 在 VM 创建期间以及将 VM 停止-解除分配后均受支持                                | 仅在 VM 创建期间受支持                                                  |
 | **将大小重设为新的 VM 大小**   | 保留 OS 磁盘数据                                                                    | 删除 OS 磁盘上的数据并重新预配 OS       
-| **页面文件放置**   | 对于 Windows，页面文件存储在资源磁盘上                                              | 对于 Windows，页面文件存储在 OS 磁盘上   |
+| **页面文件位置**   | 对于 Windows，页面文件存储在资源磁盘上                                              | 对于 Windows，页面文件存储在操作系统磁盘上   |
 
 ## <a name="size-requirements"></a>大小要求
 
@@ -51,8 +51,8 @@ ms.locfileid: "92927917"
 
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](sizes.md)，其中详述了哪些大小支持高级存储。
 
-## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>预览-暂时的 OS 磁盘现在可以存储在临时磁盘上
-暂时的 OS 磁盘除了 VM 缓存外，还可以存储在 VM temp/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 具有足够的缓存和临时空间，你现在还可以使用名为 [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement)的新属性指定要存储临时 OS 磁盘的位置。 使用此功能时，如果设置了 Windows VM，我们将配置要放置在 OS 磁盘上的页面文件。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 若要开始，请 [请求访问](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>预览版 - 临时 OS 磁盘现在可以存储在临时磁盘上
+除了可以存储在 VM 缓存上之外，临时 OS 磁盘现在还可以存储在 VM 临时/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 有足够的缓存和临时空间，那么现在还可以通过使用名为 [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) 的新属性来指定要存储临时 OS 磁盘的位置。 利用此特性，我们在预配 Windows VM 时将页面文件配置为位于OS 磁盘上。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 首先，[请求访问权限](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -86,7 +86,7 @@ az vm create \
 
 对于规模集，请对 [az-vmss-create](/cli/azure/vmss#az-vmss-create) 使用相同的 `--ephemeral-os-disk true` 参数，并将 `--os-disk-caching` 参数设置为 `ReadOnly`。
 
-## <a name="portal"></a>门户   
+## <a name="portal"></a>门户
 
 在 Azure 门户中，可以选择在部署 VM 时使用临时磁盘，方法是：打开“磁盘”选项卡的“高级”部分。   对于“使用临时 OS 磁盘”选项，请选择“是”。  
 
@@ -120,7 +120,7 @@ az vm create \
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Power BI 租户 - 门户
                 href: register-scan-power-bi-tenant.md
-              - name: Power BI 租户 - PowerShell
-                href: powershell-register-scan-power-bi.md
       - name: 业务术语表
         items:
           - name: 创建、导入和导出术语表术语

@@ -1,18 +1,18 @@
 ---
 title: 最佳做法
-description: 了解用于开发 Azure Batch 解决方案的最佳做法和有用的技巧。
+description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254657"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511206"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
-本文介绍了一系列最佳实践和有用的技巧，可帮助你有效地使用 Azure Batch 服务，具体取决于批处理的真实经验。 这些提示有助于提高性能，并避免在 Azure Batch 解决方案中设计缺陷。
+本文介绍了有效使用 Azure Batch 服务的最佳做法和有用技巧集合，这些做法基于使用 Batch 的实际体验。 这些技巧有助于增强性能，并避免 Azure Batch 解决方案中出现设计缺陷。
 
 ## <a name="pools"></a>池
 
@@ -38,10 +38,10 @@ ms.locfileid: "95254657"
 
 ### <a name="pool-lifetime-and-billing"></a>池生存期和计费
 
-池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，池中的计算节点数可能会变化。 你负责显式管理池中的计算节点，或者通过服务提供的功能 ([自动缩放](nodes-and-pools.md#automatic-scaling-policy) 或 [autopool](nodes-and-pools.md#autopools)) 。
+池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，池中的计算节点数可能会变化。 你需要负责显式管理池中的计算节点，或者通过服务提供的功能（[自动缩放](nodes-and-pools.md#automatic-scaling-policy)或[自动池](nodes-and-pools.md#autopools)）进行管理。
 
 - **使池保持最新状态。**
-    每隔几个月将池的大小调整为零，以确保获取 [最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
+    每隔几个月将池的大小调整为零，以确保获得[最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
 
 - **重新创建池** 同样需要注意的是，不建议每天删除再重新创建池。 应该创建新池，并将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
 
@@ -93,7 +93,7 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ### <a name="save-task-data"></a>保存任务数据
 
-计算节点具有瞬态性。 批处理中有许多功能，如 [autopool](nodes-and-pools.md#autopools) 和 [自动缩放](nodes-and-pools.md#automatic-scaling-policy) ，它们可使节点变得轻松消失。 当节点由于大小调整或池删除而使池 (时) 也将删除这些节点上的所有文件。 因此，在某个任务完成之前，它应将其自身的输出从运行它的节点移到持久存储。 同样，如果任务失败，则应将诊断失败问题所需的日志移到持久存储。
+计算节点具有瞬态性。 Batch 中的许多功能（例如[自动池](nodes-and-pools.md#autopools)和[自动缩放](nodes-and-pools.md#automatic-scaling-policy)）很容易使节点消失。 当节点离开池时（由于重设大小或删除池），这些节点上的所有文件也会一并删除。 因此，在某个任务完成之前，它应将其自身的输出从运行它的节点移到持久存储。 同样，如果任务失败，则应将诊断失败问题所需的日志移到持久存储。
 
 Batch 中集成了用于通过 [OutputFiles](batch-task-output-files.md) 上传数据的支持 Azure 存储以及各种共享文件系统，你也可以在任务中自行执行上传。
 
@@ -141,6 +141,10 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 就像其他任务一样，节点[启动任务](jobs-and-tasks.md#start-task)应该是幂等的，因为每次节点启动时，都要重新运行该任务。 幂等任务就是在多次运行时生成一致结果的任务。
 
+### <a name="isolated-nodes"></a>独立节点
+
+考虑对具有符合性或法规要求的工作负荷使用隔离的 VM 大小。 虚拟机配置模式下支持的隔离大小包括 `Standard_E64i_v3` 、、、、 `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` 和 `Standard_M128ms` 。 有关独立 VM 大小的详细信息，请参阅 [Azure 中的虚拟机隔离](https://docs.microsoft.com/azure/virtual-machines/isolation)。
+
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>通过操作系统服务接口管理长时间运行的服务
 
 有时，需要在节点中将 Batch 代理与另一代理一起运行。 例如，你可能想要从节点收集数据并生成相关报告。 建议将这些代理部署为 OS 服务，例如 Windows 服务或 Linux `systemd` 服务。
@@ -175,7 +179,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ## <a name="connectivity"></a>连接
 
-查看以下与 Batch 解决方案中的连接相关的指南。
+查看以下有关 Batch 解决方案中的连接性的指导。
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>网络安全组 (NSG) 和用户定义的路由 (UDR)
 
@@ -200,7 +204,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ### <a name="testing-connectivity-with-cloud-services-configuration"></a>测试与云服务配置的连接
 
-不能将正常的 "ping"/ICMP 协议与云服务一起使用，因为不允许通过 Azure 负载均衡器使用 ICMP 协议。 有关详细信息，请参阅 [Azure 云服务的连接和网络](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)。
+无法将正常的“ping”/ICMP 协议与云服务结合使用，因为不允许通过 Azure 负载均衡器使用 ICMP 协议。 有关详细信息，请参阅 [Azure 云服务的连接和网络](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch 节点的基本依赖项
 
@@ -210,7 +214,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 Azure Batch 在 VM 上创建和管理一组用户和组，这些不应受到更改。 这些限制如下：
 
-Windows：
+Windows:
 
 - 名为“PoolNonAdmin”的用户
 - 名为“WATaskCommon”的用户组
@@ -229,4 +233,4 @@ Linux：
 
 - [使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)。
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
-- 了解 [默认 Azure Batch 配额、限制和约束，以及如何请求提高配额](batch-quota-limit.md)。
+- 了解[默认的 Azure Batch 配额、限制和约束，以及如何请求增加配额](batch-quota-limit.md)。

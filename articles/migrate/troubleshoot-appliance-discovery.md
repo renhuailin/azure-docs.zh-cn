@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753410"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511580"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -41,6 +41,13 @@ ms.locfileid: "96753410"
 - 请确保提供代理所需的授权凭据。
 - 如果使用基于 URL 的防火墙代理控制出站连接，请将 [这些 url](migrate-appliance.md#url-access) 添加到允许列表中。
 - 如果使用截取代理连接到 internet，请使用 [以下步骤](./migrate-appliance.md)将代理证书导入到设备 VM。
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>单击 "Login" 按钮将打开一个没有设备代码的新选项卡
+
+如果单击设备配置管理器上的 "Login"，则会打开一个无代码的新选项卡，返回到 "设备配置管理器" 选项卡，可以在 "Login" 按钮下以粗体显示设备代码，如以下屏幕截图所示。 复制代码并将其粘贴到 "登录" 选项卡上，以通过 Azure 进行身份验证。
+
+![设备代码](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>无法从设备 web 应用登录 Azure
 

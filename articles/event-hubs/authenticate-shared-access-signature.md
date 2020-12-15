@@ -4,12 +4,12 @@ description: 本文介绍如何使用共享访问签名对事件中心资源访�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332427"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510084"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -20,7 +20,7 @@ ms.locfileid: "92332427"
 - 一个客户端无法模拟另一个客户端。
 - 可以阻止恶意客户端向事件中心发送数据。
 
-本文介绍如何使用 SAS 对事件中心资源访问进行身份验证。 若要了解如何使用 SAS **授权**对事件中心资源的访问，请参阅[此文](authorize-access-shared-access-signature.md)。 
+本文介绍如何使用 SAS 对事件中心资源访问进行身份验证。 若要了解如何使用 SAS **授权** 对事件中心资源的访问，请参阅 [此文](authorize-access-shared-access-signature.md)。 
 
 > [!NOTE]
 > 作为安全最佳做法，Microsoft 建议尽可能地使用 Azure AD 凭据，而不要使用更容易泄密的共享访问签名。 尽管你可以继续使用共享访问签名 (SAS) 授予对事件中心资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄密的 SAS。
@@ -185,7 +185,7 @@ private static string createToken(string resourceUri, string keyName, string key
 
 例如，若要定义范围限定为向事件中心发送/发布消息的授权规则，需要定义发送授权规则。 可以在命名空间级别执行此操作，或者为特定的实体（事件中心实例或主题）分配更精细的范围。 具有此类粒度访问范围的客户端或应用程序称为“事件中心发布者”。 为此，请执行以下步骤：
 
-1. 在要发布的实体中创建一个 SAS 密钥，以在其上分配**发送**范围。 有关详细信息，请参阅[共享访问授权策略](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。
+1. 在要发布的实体中创建一个 SAS 密钥，以在其上分配 **发送** 范围。 有关详细信息，请参阅[共享访问授权策略](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。
 2. 使用在步骤 1 中生成的密钥为特定的发布者生成具有过期时间的 SAS 令牌。
 
     ```csharp
@@ -212,17 +212,17 @@ private static string createToken(string resourceUri, string keyName, string key
 >
 > 当客户端向事件中心发送数据时，客户端会使用令牌标记其请求。 为了防止攻击者窃听和盗取令牌，客户端与事件中心之间的通信必须通过加密通道进行。
 > 
-> 如果令牌被攻击者盗取，攻击者可能会模拟令牌已被盗的客户端。 将发布者列入方块列表会导致客户端不可用，直至该客户端收到使用其他发布者的新令牌。
+> 如果令牌被攻击者盗取，攻击者可能会模拟令牌已被盗的客户端。 列入阻止列表发布服务器后，将使该客户端无法使用，直到收到使用其他发布者的新令牌。
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>使用 SAS 对事件中心使用者进行身份验证 
-若要对使用事件中心生成者生成的数据的后端应用程序进行身份验证，事件中心令牌身份验证要求其客户端对其事件中心命名空间或者事件中心实例或主题拥有**管理**权限或**侦听**权限。 通过使用者组使用事件中心内的数据。 尽管 SAS 策略可以提供精细范围，但此范围仅仅是在实体级别定义的，而不是在使用者级别定义的。 这意味着，在命名空间级别或者事件中心实例或主题级别定义的特权将应用到该实体的使用者组。
+若要对使用事件中心生成者生成的数据的后端应用程序进行身份验证，事件中心令牌身份验证要求其客户端对其事件中心命名空间或者事件中心实例或主题拥有 **管理** 权限或 **侦听** 权限。 通过使用者组使用事件中心内的数据。 尽管 SAS 策略可以提供精细范围，但此范围仅仅是在实体级别定义的，而不是在使用者级别定义的。 这意味着，在命名空间级别或者事件中心实例或主题级别定义的特权将应用到该实体的使用者组。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
 - [使用 SAS 授权](authenticate-shared-access-signature.md)
-- [使用 azure RBAC)  (基于角色的访问控制授权 ](authenticate-shared-access-signature.md)
+- [使用 Azure 基于角色的访问控制 (Azure RBAC) 进行授权](authenticate-shared-access-signature.md)
 - [详细了解事件中心](event-hubs-about.md)
 
 请参阅以下相关文章：

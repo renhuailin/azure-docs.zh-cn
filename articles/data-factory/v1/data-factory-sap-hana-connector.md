@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c08aeca8e7aaa71e5a2a80cbdece762b989e28c2
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019559"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510135"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -57,7 +57,7 @@ ms.locfileid: "96019559"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP HANA 链接服务专属 JSON 元素的说明。
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 字符串 | 是
 authenticationType | 身份验证的类型。 | 字符串。 “基本”或“Windows” | 是 
@@ -79,7 +79,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP HANA）时，以下属性在 typeProperties 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
 

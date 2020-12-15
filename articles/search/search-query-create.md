@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400210"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510458"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 中创建查询认知搜索
 
@@ -76,31 +76,7 @@ POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/searc
 
 在添加到请求时启用的 [完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax) `queryType=full` 基于 [Apache Lucene 分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。
 
-Full 语法是简单语法的扩展，具有更多运算符，以便您可以构造高级查询，如模糊搜索、通配符搜索、邻近搜索和正则表达式。 下面的示例说明了 point：相同的查询，但具有不同的 **`queryType`** 设置，这会产生不同的结果。 在第一个简单查询中，将 " `^3` 后" `historic` 作为搜索词的一部分处理。 此查询的排名靠前的结果是 "Marquis Plaza & 套件"，其说明中有 *海洋* 。
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "simple",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
-
-使用完整 Lucene 分析器的同一查询会将 `^3` 解释为字段内字词提升器。 切换分析器会更改排名，并将包含 *historic* 一词的结果移到最前面。
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
+完全语法和简单语法与支持相同的前缀和布尔运算的范围重叠，但完整语法提供了更多运算符。 完全地而言，有更多运算符用于布尔表达式，还有更多运算符用于查找模糊搜索、通配符搜索、邻近搜索和正则表达式等高级查询。
 
 ## <a name="choose-query-methods"></a>选择查询方法
 
