@@ -503,7 +503,7 @@
       displayName: pipelines
       items:
         - name: 创建 ML 管道 (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: 将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
         - name: 部署 ML 管道 (Python)

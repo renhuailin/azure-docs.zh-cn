@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 6011bf90d5a97dcc027f8a9a0916c28226c5c354
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96584604"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96992985"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -109,6 +109,12 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 
 ```shell
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```
+
+若要使用命令行工具进行更扩展的交互，可以通过添加入口点参数启动具有交互式 bash shell 的容器。
+在 Windows 上，输入以下命令以启动一个容器，该容器会公开可输入多个 `spx` 命令的交互式命令行接口：
+```shell
+docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 > [!WARNING]

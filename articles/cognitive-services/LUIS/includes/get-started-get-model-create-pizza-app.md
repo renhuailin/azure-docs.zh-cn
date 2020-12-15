@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 081b9288d091e26d0e6d30aa849ced18a3c2ffb6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84466910"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938454"
 ---
 创建披萨应用。
 
@@ -59,7 +59,7 @@ Pizza 应用中应会显示“意向”页面，其中显示了一个意向列�
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>记录 Pizza 应用的访问值
 
-若要使用新的披萨应用，你需要该披萨应用的应用 ID、授权密钥和授权终结点。
+若要使用新的披萨应用，你需要该披萨应用的应用 ID、授权密钥和授权终结点。 若要获取预测，需要单独的预测终结点和预测密钥。
 
 若要查找这些值：
 
@@ -67,5 +67,5 @@ Pizza 应用中应会显示“意向”页面，其中显示了一个意向列�
 1. 在“应用程序设置”页面，记录“应用 ID” 。
 1. 选择“Azure 资源”。
 1. 选择“创作资源”。
-1. 从“创作资源”选项卡上，记录主密钥。 此值是你的创作密钥。
+1. 从“创作资源”和“预测资源”选项卡，记录“主键”  。 此值是你的创作密钥。
 1. 记录“终结点 URL”。 此值是你的创作终结点。
