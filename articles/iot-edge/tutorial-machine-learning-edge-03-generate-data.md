@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959673"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932398"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教程：生成模拟设备数据
 
@@ -42,6 +42,14 @@ DeviceHarness 项目是一个以 C# 编写的 .NET Core 项目，包含四个类
 本文中所述的任务大约需要约 20 分钟才能完成。
 
 与在此步骤中的工作等效的实际操作可能会由设备开发人员和云开发人员执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 将外部项目纳入开发环境。
+> * 使用示例 DeviceHarness 项目生成模拟的 IoT 设备数据。
+> * 在 IoT 中心查看生成的数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -157,6 +165,10 @@ DeviceHarness 发送的数据将进入 IoT 中心，在其中可以通过 Azure 
 1. 这些文件是以 [Avro](https://avro.apache.org/) 格式编写的。 双击其中一个文件打开另一个浏览器标签页，其中会呈现部分数据。 如果系统提示在程序中打开该文件，可以选择 VS Code，该文件将正确呈现。
 
 1. 现在无需尝试读取或解释数据，我们将在下一篇文章中来执行此操作。
+
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

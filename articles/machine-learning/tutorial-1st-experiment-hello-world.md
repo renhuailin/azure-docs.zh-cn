@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393212"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570954"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello world!” Python 脚本（第 2 部分，共 4 部分）
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>在本地测试你的脚本
+
+### <a name="test-your-script-locally"></a><a name="test"></a>在本地测试你的脚本
 
 你可以通过使用你常用的 IDE 或终端在本地运行代码。 在本地运行代码具有可对代码进行交互式调试的好处。
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>创建控制脚本
+> [!div class="nextstepaction"]
+> [我在本地运行脚本](?success=run-local#control-script) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
 使用控制脚本，你可以在云中运行 `hello.py` 脚本。 可以使用控制脚本来控制如何运行以及在何处运行机器学习代码。  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>了解代码
 
@@ -135,7 +141,10 @@ print(aml_url)
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>在云中提交并运行代码
+> [!div class="nextstepaction"]
+> [我创建了控制脚本](?success=create-control-script#submit) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在云中提交并运行代码
 
 运行你的控制脚本，该脚本继而会在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集上运行 `hello.py`。
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > 如果运行此代码返回错误“你没有访问订阅的权限”，请参阅[连接到工作区](how-to-manage-workspace.md?tab=python#connect-multi-tenant)，以获取有关身份验证选项的信息。
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>通过使用工作室在云中监视代码
+> [!div class="nextstepaction"]
+> [我在云中提交了代码](?success=submit-to-cloud#monitor) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>通过使用工作室在云中监视代码
 
 输出中将会包含一个指向工作室的链接，该链接类似于：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
 
@@ -185,6 +197,9 @@ python 03-run-hello.py
 在第 8 行，你会看到“Hello world!” 输出。
 
 `70_driver_log.txt` 文件包含来自运行的标准输出。 当你在云中调试远程运行时，此文件会很有用。
+
+> [!div class="nextstepaction"]
+> [我在工作室看到了该日志](?success=monitor-in-studio#next-steps) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>后续步骤
 

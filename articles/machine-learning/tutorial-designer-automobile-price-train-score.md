@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555250"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575969"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
 
@@ -48,7 +48,10 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 ### <a name="create-a-new-workspace"></a>创建新的工作区
 
-若要使用设计器，首先需要一个 Azure 机器学习工作区。 工作区是 Azure 机器学习的顶级资源，提供一个中心位置用于处理 Azure 机器学习中创建的所有项目。
+需要一个 Azure 机器学习工作区来使用设计器。 工作区是 Azure 机器学习的顶级资源，提供一个中心位置用于处理 Azure 机器学习中创建的所有项目。 有关创建工作区的说明，请参阅[创建和管理 Azure 机器学习工作区](how-to-manage-workspace.md)。
+
+> [!NOTE]
+> 如果工作区使用虚拟网络，则必须执行其他配置步骤才能使用设计器。 有关详细信息，请参阅[在 Azure 虚拟网络中使用 Azure 机器学习工作室](how-to-enable-studio-virtual-network.md)
 
 ### <a name="create-the-pipeline"></a>创建管道
 
@@ -275,7 +278,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     
     可以在画布的右上角查看运行状态和详细信息。
     
-    如果是第一次运行，则管道可能需要长达 20 分钟的时间才能完成运行。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
+    如果这是第一次运行，则管道可能需要长达 20 分钟的时间才能完成运行。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
 
 ### <a name="view-scored-labels"></a>查看评分标签
 

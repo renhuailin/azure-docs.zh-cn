@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354734"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780087"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教程：使用注册组预配多个 X.509 设备
 
@@ -26,7 +26,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 本教程与前面演示如何使用注册组预配设备集的教程类似。 但是，本教程将使用 X.509 证书而不是对称密钥。 查看本部分前面的教程，了解使用[对称密钥](./concepts-symmetric-key-attestation.md)的简单方法。
 
-本教程将演示[自定义 HSM 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)，该示例提供了用于与基于硬件的安全存储连接的存根实现。 [硬件安全模块 (HSM)](./concepts-service.md#hardware-security-module) 用于安全、基于硬件的设备机密存储。 HSM 可以与对称密钥、X.509 证书或 TPM 证明配合使用，为机密提供安全存储。 强烈建议使用基于硬件的设备机密存储。
+本教程将演示[自定义 HSM 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)，该示例提供了用于与基于硬件的安全存储连接的存根实现。 [硬件安全模块 (HSM)](./concepts-service.md#hardware-security-module) 用于安全、基于硬件的设备机密存储。 HSM 可以与对称密钥、X.509 证书或 TPM 证明配合使用，为机密提供安全存储。 虽然不要求对设备机密进行基于硬件的存储，但强烈建议使用它来帮助保护敏感信息，如设备证书的私钥。
 
 如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续学习本教程之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)中的步骤。 
 
@@ -225,7 +225,9 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>配置自定义 HSM 存根代码
 
-与实际的基于硬件的安全存储交互的细节因硬件而异。 因此，本教程中设备使用的证书链将硬编码到自定义 HSM 存根代码中。 在实际情况中，证书链将存储在实际的 HSM 硬件中，以便为敏感信息提供更好的安全性。 然后将实现与此示例中显示的存根方法类似的方法，以从基于硬件的存储中读取机密。
+与实际的基于硬件的安全存储交互的细节因硬件而异。 因此，本教程中设备使用的证书链将硬编码到自定义 HSM 存根代码中。 在实际情况中，证书链将存储在实际的 HSM 硬件中，以便为敏感信息提供更好的安全性。 然后将实现与此示例中显示的存根方法类似的方法，以从基于硬件的存储中读取机密。 
+
+尽管并未要求使用 HSM 硬件，但建议不要将敏感信息（如证书的私钥）签入到源代码中。 这样做会将密钥公开给可以查看代码的任何人。 本文中这样做只是为了帮助学习。
 
 若要更新本教程的自定义 HSM 存根代码，请执行以下操作：
 
@@ -287,7 +289,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>验证根证书的所有权
 
-1. 使用[注册 X.509 证书的公共部分并获取验证码](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)中的说明，上传根证书并从 DPS 获取验证码。
+1. 使用[注册 X.509 证书的公共部分并获取验证码](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)中的说明，上传根证书 (`./certs/azure-iot-test-only.root.ca.cert.pem`) 并从 DPS 获取验证码。
 
 2. 从 DPS 获取根证书的验证码后，从证书脚本工作目录运行以下命令以生成验证证书。
  
@@ -297,7 +299,7 @@ Azure IoT 设备预配服务支持两类注册：
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    此脚本将创建由根证书签名的证书，并将使用者名称设置为验证码。 此证书允许 DPS 验证你是否有权访问根证书的私钥。 请注意验证证书在脚本输出中的位置。
+    此脚本将创建由根证书签名的证书，并将使用者名称设置为验证码。 此证书允许 DPS 验证你是否有权访问根证书的私钥。 请注意验证证书在脚本输出中的位置。 此证书以 `.pfx` 格式生成。
 
     ```output
     Leaf Device PFX Certificate Generated At:

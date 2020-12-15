@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327196"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862150"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
 
@@ -30,17 +30,14 @@ ms.locfileid: "96327196"
 
 若要完成本教程，必须安装以下各项：
 
-* [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
-* [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
-* [Azure CLI](/cli/azure/install-azure-cli)（如果不想使用 Cloud Shell）
-* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 版本 2.6.666 或更高版本
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
+- [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
+- [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 版本 2.6.666 或更高版本 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 > [!IMPORTANT]
 > `JAVA_HOME` 环境变量必须设置为 JDK 的安装位置才能完成本教程。
 
 如果你更愿意直接使用本教程的代码，请参阅 [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) 示例存储库。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>创建 Azure 资源
 
@@ -53,17 +50,13 @@ ms.locfileid: "96327196"
 
 以下部分说明了如何使用 Azure CLI 创建这些资源。
 
-### <a name="log-in-to-azure"></a>登录 Azure
-
-如果你使用的不是 Cloud Shell，则需要在本地使用 Azure CLI 来访问你的帐户。 使用 Bash 提示符下的 `az login` 命令启动基于浏览器的登录体验。 如果有权访问多个 Azure 订阅，则使用 `az account set --subscription` 后跟订阅 ID 来设置默认值。
-
 ### <a name="set-environment-variables"></a>设置环境变量
 
 接下来，为要创建的资源的名称和位置创建一些环境变量。 使用以下命令，将 `<value>` 占位符替换为你选择的值。 值应当符合 [Azure 资源的命名规则和限制](/azure/architecture/best-practices/resource-naming)。 对于 `LOCATION` 变量，使用 `az functionapp list-consumption-locations` 命令生成的值之一。
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -350,7 +343,7 @@ az functionapp config appsettings set ^
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
@@ -370,7 +363,7 @@ set FUNCTION_APP=<value>
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn archetype:generate --batch-mode \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype \
@@ -406,7 +399,7 @@ mvn archetype:generate --batch-mode ^
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 cd telemetry-functions
 rm -r src/test
 ```
@@ -426,7 +419,7 @@ rmdir /s /q src\test
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
@@ -584,7 +577,7 @@ public class TelemetryItem {
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn clean package
 mvn azure-functions:run
 ```
@@ -623,7 +616,7 @@ mvn azure-functions:run
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn azure-functions:deploy
 ```
 

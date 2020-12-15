@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187028"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904884"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 服务
 
@@ -40,19 +40,19 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 
 | Google Maps 服务 API | Azure Maps 服务 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [Route](/rest/api/maps/route)                                     |
-| 距离矩阵         | [路线矩阵](/rest/api/maps/route/postroutematrixpreview)       |
-| 地理编码               | [搜索](/rest/api/maps/search)                                   |
-| 地点搜索           | [搜索](/rest/api/maps/search)                                   |
-| 地点自动完成      | [搜索](/rest/api/maps/search)                                   |
-| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            |
-| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  |
-| 静态地图              | [Render](/rest/api/maps/render/getmapimage)                       |
-| 时区               | [时区](/rest/api/maps/timezone)                              |
+| 方向              | [Route](/rest/api/maps/route)                                     |                         
+| 距离矩阵         | [路线矩阵](/rest/api/maps/route/postroutematrixpreview)       |                         
+| 地理编码               | [搜索](/rest/api/maps/search)                                   |                         
+| 地点搜索           | [搜索](/rest/api/maps/search)                                   |                         
+| 地点自动完成      | [搜索](/rest/api/maps/search)                                   |                         
+| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            
+| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  
+| 静态地图              | [Render](/rest/api/maps/render/getmapimage)                       |                         
+| 时区               | [时区](/rest/api/maps/timezone)                              |                         
+| Elevation               | [高程（预览版）](/rest/api/maps/elevation)                   |                         |
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
-- Elevation
 - 地理位置
 - 位置详细信息和照片 - 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
 - 地图 URL
@@ -203,7 +203,7 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 
 - [**计算路线**](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
 - [**批处理路线**](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
-- [**移动服务**](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
+- [**出行服务（预览）**](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -221,8 +221,8 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 | `origin`                       | `query`                            |
 | `region`                       | *不适用* – 此功能与地理编码相关。 使用 Azure Maps 地理编码 API 时，请使用 *countrySet* 参数。  |
 | `traffic_model`               | *不适用* – 仅当交通数据应与 *traffic* 参数结合使用时才能指定。 |
-| `transit_mode`                | 请参阅[移动服务文档](/rest/api/maps/mobility) |
-| `transit_routing_preference` | 请参阅[移动服务文档](/rest/api/maps/mobility) |
+| `transit_mode`                | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
+| `transit_routing_preference` | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
 | `units`                        | *不适用* – Azure Maps 仅使用指标系统。  |
 | `waypoints`                    | `query`                            |
 

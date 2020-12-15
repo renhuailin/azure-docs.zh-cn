@@ -7,19 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c15b3a64b4a0017c5c352e08cebc796537255479
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447042"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859576"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
-必须先在你管理的租户中注册应用程序，然后这些应用程序才能与 Azure Active Directory B2C (Azure AD B2C) 交互。
+必须先在你管理的租户中注册应用程序，然后这些应用程序才能与 Azure Active Directory B2C (Azure AD B2C) 交互。 
+
+> [!NOTE]
+> 每个订阅最多可创建 20 个租户。 此限制有助于防范对资源的威胁（例如拒绝服务攻击），并在 Azure 门户和基础租户创建 API 中强制实施。 如果需要创建超过 20 个租户，请联系 [Microsoft 支持部门](support-options.md)。
 
 在本文中，学习如何：
 
@@ -46,8 +49,11 @@ ms.locfileid: "96447042"
     ![订阅租户，“目录”+“订阅”筛选器，订阅租户为选中状态](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
+
+   ![选择“创建资源”按钮](media/tutorial-create-tenant/create-a-resource.png)
+
 1. 搜索“Azure Active Directory B2C”，然后选择“创建” 。
-1. 选择“创建新的 Azure AD B2C 租户”。
+2. 选择“创建新的 Azure AD B2C 租户”。
 
     ![创建在 Azure 门户中选择的新 Azure AD B2C 租户](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
@@ -57,7 +63,7 @@ ms.locfileid: "96447042"
    - **初始域名** - 输入 Azure AD B2C 租户的域名。
    - **国家或地区**：从列表中选择你的国家或地区。 此选择以后无法更改。
    - **订阅** - 从列表中选择你的订阅。
-   - **资源组** - 选择将包含租户的资源组。 或者选择“新建”，为资源组输入“名称”，选择“资源组位置”，然后选择“确定”   。
+   - **资源组** - 选择或搜索将包含租户的资源组。
 
     ![在 Azure 门户中创建包含示例值的租户窗体](media/tutorial-create-tenant/review-and-create-tenant.png)
 

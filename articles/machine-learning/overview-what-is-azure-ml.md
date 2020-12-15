@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541277"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620471"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -49,7 +49,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + + [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
-+ [Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)
++ [面向 Visual Studio Code 用户的机器学习扩展](tutorial-setup-vscode-extension.md)
 
 + [机器学习 CLI](reference-azure-machine-learning-cli.md)
 

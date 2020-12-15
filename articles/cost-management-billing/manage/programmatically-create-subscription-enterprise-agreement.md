@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34fe909c7fca3c91845c58b41abb0d8885e156e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94850871"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780597"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>通过最新的 API 以编程方式创建 Azure 企业协议订阅
 
@@ -89,7 +89,7 @@ API 响应列出你有权访问的所有注册帐户：
 
 ```
 
-请注意其中一个 `enrollmentAccounts` 的 `id`。 这是启动订阅创建请求的计费范围。 
+计费范围的值和 `id` 是相同的。 注册帐户的 `id` 是在发起订阅请求的计费范围。 了解该 ID 很重要，因为它是稍后要在本文中创建订阅时使用的必需参数。
 
 <!-- 
 ### [PowerShell](#tab/azure-powershell-getEnrollments)
@@ -130,6 +130,8 @@ PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampl
   }
 }
 ```
+
+`Workload` 的允许值为 `Production` 和 `DevTest`。
 
 #### <a name="response"></a>响应
 

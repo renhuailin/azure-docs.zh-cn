@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：训练模型
 titleSuffix: Azure Machine Learning
-description: 通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 训练图像分类模型。 本教程是第一部分（共两部分）。
+description: 通过 Azure 机器学习在 Python Jupyter Notebook 中使用 scikit-learn 训练图像分类模型。 本教程是第一部分（共两部分）。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321295"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862422"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 
 
-在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
+在本教程中，你将在远程计算资源上训练一个机器学习模型。 你将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
 本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习配合使用来训练简单的逻辑回归。 MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28 x 28 像素的手写数字，代表一个从零到九的数字。 目标是创建多类分类器，以确定给定图像代表的数字。
 
@@ -54,8 +54,8 @@ ms.locfileid: "93321295"
 > [!Important]
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
 >
-> 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。 
-> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter** 。 或者，通过从顶部工具栏中选择“全部运行”来运行整个笔记本。
+> 如果要在运行代码时继续阅读，请立即切换到 Jupyter Notebook。 
+> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”来运行整个笔记本。
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>设置开发环境
 
@@ -368,15 +368,15 @@ run
 
 等待时会发生以下情况：
 
-- **映像创建** ：将创建与 Azure ML 环境指定的 Python 环境匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约五分钟。
+- **映像创建**：将创建与 Azure ML 环境指定的 Python 环境匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约五分钟。
 
   此阶段针对每个 Python 环境发生一次，因为已缓存容器用于后续运行。 映像创建期间，日志将流式传输到运行历史记录。 可以使用这些日志监视映像创建进度。
 
-- **缩放** ：如果远程群集需要比当前可用节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约五分钟。
+- **缩放**：如果远程群集需要比当前可用节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约五分钟。
 
-- **正在运行** ：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录 。 可以使用这些日志监视运行进度。
+- **正在运行**：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录 。 可以使用这些日志监视运行进度。
 
-- **后期处理** ：运行的 ./outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果。
+- **后期处理**：运行的 ./outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果。
 
 可以通过多种方式查看正在运行的作业的进度。 本教程使用 Jupyter 小组件和 `wait_for_completion` 方法。
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: c67d4dbb68048d273b1f9acd83a8460447e5abe4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2920aad07ac54a19962f552debb8cfa809e17294
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748899"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558345"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
@@ -21,13 +21,13 @@ ms.locfileid: "92748899"
 
 在[用于容器的 Web 应用](overview.md#app-service-on-linux)中可以灵活使用 Docker 映像。 本快速入门介绍如何在 [Cloud Shell](../cloud-shell/overview.md) 中使用 Docker Compose 配置将多容器应用（预览）部署到用于容器的 Web 应用。
 
-你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
-
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+本文需要 Azure CLI 版本 2.0.32 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -129,7 +129,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
-**祝贺你** ，现已在用于容器的 Web 应用中创建了多容器应用。
+**祝贺你**，现已在用于容器的 Web 应用中创建了多容器应用。
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 

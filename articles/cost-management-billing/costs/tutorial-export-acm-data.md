@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007216"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929253"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -58,20 +58,20 @@ ms.locfileid: "96007216"
 > - 除了订阅之外，还可以针对资源组、管理组、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 >- 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
 
-1. 选择“添加”，然后键入导出的名称。 
+1. 选择“添加”，然后键入导出的名称。
 1. 对于“指标”，请选择：
     - **实际成本（使用量和购买量）** - 选择此项可导出标准使用量和购买量
     - **摊销成本（使用量和购买量）** - 选择此项可针对购买量（如 Azure 预留）导出摊销成本
 1. 对于“导出类型”，请选择：
     - **每日导出本月累计成本** - 每日提供一个新的本月累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
-    - **每周导出过去七天的成本** - 创建自选定的导出开始日期起过去七天的每周成本导出文件。  
-    - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 并且，计划在每月的第五天运行导出，其中包含以前的月份成本。  
-    - **一次性导出** - 允许你选择要导出到 Azure blob 存储的历史数据的日期范围。 你可以导出从所选的那一天起最多 90 天的历史成本。 此导出会立即运行，最多 2 小时后便可在存储帐户中获取它。  
+    - **每周导出过去七天的成本** - 创建自选定的导出开始日期起过去七天的每周成本导出文件。
+    - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 并且，计划在每月的第五天运行导出，其中包含以前的月份成本。
+    - **一次性导出** - 允许你选择要导出到 Azure blob 存储的历史数据的日期范围。 你可以导出从所选的那一天起最多 90 天的历史成本。 此导出会立即运行，最多 2 小时后便可在存储帐户中获取它。
         根据你的导出类型，请选择“开始日期”，或选择“从”和“到”日期 。
-1. 指定 Azure 存储帐户的订阅，然后选择一个资源组，或者创建一个新的资源组。 
-1. 选择存储帐户名称或新建一个。 
+1. 指定 Azure 存储帐户的订阅，然后选择一个资源组，或者创建一个新的资源组。
+1. 选择存储帐户名称或新建一个。
 1. 选择位置（Azure 区域）。
-1. 指定要将导出文件放置到其中的存储容器和目录路径。 
+1. 指定要将导出文件放置到其中的存储容器和目录路径。
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="新导出示例" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. 检查导出详细信息，然后选择“创建”。
 
@@ -132,7 +132,7 @@ ms.locfileid: "96007216"
 1. 使用 [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) 命令更新导出：
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ ms.locfileid: "96007216"
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+首先为 Azure PowerShell 准备环境：
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > 尽管 Az.CostManagement PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中默认提供。
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. 登录后，若要查看当前导出，请使用 [Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport) cmdlet：
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* 除了订阅之外，还可以针对资源组和管理组创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+   >* 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
+
+1. 创建一个资源组或使用现有资源组。 若要创建资源组，请使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet：
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. 可以创建一个存储帐户或使用现有存储账户来接收导出。 若要创建存储帐户，请使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet：
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. 运行 [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport) cmdlet 以创建导出：
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   对于 DefinitionType 参数，可以选择 `ActualCost`、`AmortizedCost` 或 `Usage`。
+
+   本示例使用 `MonthToDate`。 导出会每天为你的本月至今成本创建一个导出文件。 最新数据是根据本月的以前每日导出聚合的。
+
+1. 若要查看导出操作的详细信息，请使用 `Get-AzCostManagementExport` cmdlet：
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. 使用 [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport) cmdlet 更新导出：
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   此示例更改导出目录。
+
+>[!NOTE]
+>最初，在导出运行之前，可能需要 12 到 24 个小时。 但是，可能需要更长时间才能在导出的文件中显示数据。
+
+可以使用 [Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport) cmdlet 删除导出：
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 不支持导出其他订阅类型的管理组。
 
 1. 如果尚未创建管理组，请创建一个，并为其分配订阅。
-1. 在成本分析中，将范围设置为管理组，并选择“选择此管理组”。  
+1. 在成本分析中，将范围设置为管理组，并选择“选择此管理组”。
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="显示“选择此管理组”选项的示例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. 在范围内创建导出，获取管理组中订阅的成本管理数据。  
+1. 在范围内创建导出，获取管理组中订阅的成本管理数据。
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="显示具有管理组范围的“新建导出”选项的示例":::
 
 ## <a name="verify-that-data-is-collected"></a>验证是否已收集数据
@@ -196,7 +279,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 [![示例导出下载](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>查看导出运行历史记录  
+## <a name="view-export-run-history"></a>查看导出运行历史记录
 
 你可以通过在导出列表页中选择单个导出来查看计划导出的运行历史记录。 导出列表页还提供了快速访问，可查看先前、下次以及将来导出的运行时间。 下面是显示运行历史记录的示例。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896843"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905768"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -76,18 +76,18 @@ ms.locfileid: "92896843"
 
 在数据屏幕截图中，我们可以发现：
 
-* 位置信息是使用 **AddressLine** 、 **City** 、 **Municipality** （国家）、 **AdminDivision** （州/省）、 **PostCode** （邮政编码）和 **Country** 列存储的。  
+* 位置信息是使用 **AddressLine**、**City**、**Municipality**（国家）、**AdminDivision**（州/省）、**PostCode**（邮政编码）和 **Country** 列存储的。  
 * **Latitude** 和 **Longitude** 列包含每个 Contoso Coffee 咖啡厅位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
 * 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!NOTE]
-> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。
+> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4326”中读取数据。
 
 可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt* 。
+若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt*。
 
 ![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92896843"
 
 ## <a name="set-up-the-project"></a>设置项目
 
-若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件： *index.html* 、 *index.css* 和 *index.js* 。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
+若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件：*index.html*、*index.css* 和 *index.js*。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
 
 ![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>创建用户界面
 
-若要创建用户界面，请将代码添加到 *index.html* ：
+若要创建用户界面，请将代码添加到 *index.html*：
 
 1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 `charset` 标记定义字符集 (UTF-8)。 `http-equiv` 的值告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本。 最后一个 `meta` 标记指定适用于响应式布局的视区。
 
@@ -158,7 +158,7 @@ ms.locfileid: "92896843"
     </main>
     ```
 
-完成后， *index.html* 应类似于 [此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
+完成后，*index.html* 应类似于 [此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
 
 下一步是定义 CSS 样式。 CSS 样式定义应用程序组件的布局和应用程序的外观。 打开 *index.css* 并在其中添加以下代码。 `@media` 样式定义当屏幕宽度小于 700 像素时要使用的备用样式选项。  
 
@@ -369,7 +369,7 @@ ms.locfileid: "92896843"
 
 ## <a name="wire-the-application-with-javascript"></a>使用 JavaScript 统合应用程序
 
-现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js* ，并按以下步骤中所述将代码添加到该文件。
+现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
 
 1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层和 HTML 标记定义变量。 将 HTML 标记设置为表示搜索区域的中心。 定义 Azure Maps 搜索服务客户端的实例。
 
@@ -385,7 +385,7 @@ ms.locfileid: "92896843"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 将代码添加到 *index.js* 。 以下代码初始化地图。 我们添加了一个[事件侦听器](/javascript/api/azure-maps-control/atlas.map#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
+1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](/javascript/api/azure-maps-control/atlas.map#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
 
    当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
   
@@ -432,7 +432,7 @@ ms.locfileid: "92896843"
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ ms.locfileid: "92896843"
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

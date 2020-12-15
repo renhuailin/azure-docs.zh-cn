@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124775"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780835"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
-Azure 流分析支持以 JavaScript 编写的用户定义的函数。 利用 JavaScript 提供的丰富 **String** 、 **RegExp** 、 **Math** 、 **Array** 和 **Date** 方法，可以更轻松地创建包含流分析作业的复杂数据转换。
+Azure 流分析支持以 JavaScript 编写的用户定义的函数。 利用 JavaScript 提供的丰富 **String**、**RegExp**、**Math**、**Array** 和 **Date** 方法，可以更轻松地创建包含流分析作业的复杂数据转换。
 
 ## <a name="overview"></a>概述
 
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString()
+JavaScript 中的 toLocaleString 方法可用于返回一个区分语言的字符串，该字符串表示调用此方法的日期时间数据。
+尽管 Azure 流分析只接受 UTC 日期时间作为系统时间戳，但此方法可用于将系统时间戳转换为其他区域设置和时区。
+此方法遵循的实现行为与 Internet Explorer 中提供的行为相同。
+
+**JavaScript 用户定义的函数定义：**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+示例查询：将日期/时间作为输入值传递
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+此查询的输出将是 de-DE 中的输入日期时间，其中包含提供的选项。
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>后续步骤

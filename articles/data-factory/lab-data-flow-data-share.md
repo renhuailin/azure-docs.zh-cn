@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489014"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921030"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "96489014"
 
 * **Azure Data Lake Storage Gen2 存储帐户**：如果没有 ADLS Gen2 的存储帐户，请了解如何 [创建 ADLS Gen2 存储帐户](../storage/common/storage-account-create.md)。
 
-* **Azure Synapse Analytics（前称为 SQL 数据仓库）** ：如果没有 Azure Synapse Analytics（前称为 SQL 数据仓库），请参阅如何 [创建 Azure Synapse Analytics 实例](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
+* Azure Synapse Analytics：如果没有 Azure Synapse Analytics，请参阅如何[创建 Azure Synapse Analytics 实例](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
 * **Azure 数据工厂**：如果尚未创建数据工厂，请参阅如何 [创建数据工厂](./quickstart-create-data-factory-portal.md)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "96489014"
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>创建 Azure Synapse Analytics 链接服务
 
-1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics (前称为 SQL 数据仓库)”磁贴，然后单击“继续”。
+1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
     ![门户配置 6](media/lab-data-flow-data-share/configure6.png)
 1. 在链接服务配置窗格中，输入“SQLDW”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
@@ -274,7 +274,7 @@ ms.locfileid: "96489014"
 
     ![门户接收器 2](media/lab-data-flow-data-share/sink2.png)
 
-1. 选择“Azure Synapse Analytics (前称为 SQL 数据仓库)”磁贴，然后单击“继续”。
+1. 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
     ![门户接收器 3](media/lab-data-flow-data-share/sink3.png)
 1. 将数据集命名为“AggregatedTaxiData”。 选择“SQLDW”作为链接服务。 选择“创建新表”，并将新表命名为 dbo.AggregateTaxiData。 完成后，单击“确定”

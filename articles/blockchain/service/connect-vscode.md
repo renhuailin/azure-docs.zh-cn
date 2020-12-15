@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 连接到 Azure 区块链服务
 description: 在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展连接到 Azure 区块链服务联盟网络
-ms.date: 04/22/2020
+ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82084832"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763292"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>快速入门：使用 Visual Studio Code 连接到 Azure 区块链服务联盟网络
 
@@ -24,7 +24,6 @@ ms.locfileid: "82084832"
 * [适用于 Ethereum 的 Azure 区块链开发工具包扩展](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x 或更高版本](https://nodejs.org)
 * [Git 2.10.x 或更高版本](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) 将 python.exe 添加到路径中。 Azure 区块链开发工具包需要在路径中安装 Python 版本 2.7.15。
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -32,7 +31,7 @@ ms.locfileid: "82084832"
 
 * 如果安装了 Visual Studio 2017，则将 npm 配置为通过命令 `npm config set msvs_version 2017 -g` 使用 MSBuild 工具
 * 如果安装了 Visual Studio 2019，则为 npm 设置 MSBuild 工具路径。 例如： `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* 如果都不是，则在提升的*以管理员身份运行*命令外壳中，使用 `npm install --global windows-build-tools` 安装独立的 VS Build 工具。
+* 如果都不是，则在提升的 *以管理员身份运行* 命令外壳中，使用 `npm install --global windows-build-tools` 安装独立的 VS Build 工具。
 
 有关 node-gyp 的详细信息，请参阅 [GitHub 上的 node-gyp 存储库](https://github.com/nodejs/node-gyp)。
 
@@ -40,7 +39,7 @@ ms.locfileid: "82084832"
 
 Azure 区块链开发工具包将验证你的开发环境是否符合先决条件。 若要验证开发环境：
 
-在 VS Code 命令面板中选择“Azure 区块链:  显示欢迎页”。
+从 VS Code 命令面板选择“区块链:显示欢迎页”。
 
 Azure 区块链开发工具包将运行一个验证脚本，完成验证大约需要一分钟时间。 可以选择“终端”>“新建终端”来查看输出。  在终端菜单栏中选择“输出”选项卡，并从下拉列表中选择“Azure 区块链”。   如果验证成功，将出现下图所示的信息：
 

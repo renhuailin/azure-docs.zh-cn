@@ -1,21 +1,21 @@
 ---
 title: 教程 - 将输出添加到模板
-description: 将输出添加到 Azure 资源管理器模板以简化语法。
+description: 将输出添加到 Azure 资源管理器模板（ARM 模板）以简化语法。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613860"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931735"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>教程：将输出添加到 ARM 模板
 
-本教程介绍如何从 Azure 资源管理器 (ARM) 模板返回值。 需要已部署资源提供的值时，请使用输出。 完成本教程需要 **7 分钟**。
+本教程介绍如何从 Azure 资源管理器模板（ARM 模板）返回值。 需要已部署资源提供的值时，请使用输出。 完成本教程需要 **7 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ ms.locfileid: "91613860"
 
 现在可以部署模板并查看返回的值了。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

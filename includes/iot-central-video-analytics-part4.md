@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426717"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763387"
 ---
 ### <a name="publish-the-device-template"></a>发布设备模板
 
@@ -40,6 +40,12 @@ LVA Edge 网关 v2 现在可作为设备类型在应用程序的“设备”页�
 1. 在“迁移”对话框的列表中，选择“LVA Edge 网关 v2”，然后选择“迁移”  。
 
 几秒钟后，迁移完成。 你的设备现在使用带有自定义的部署清单的 LVA Edge 网关 v2 设备模板。
+
+目前没有设备使用原始的“LVA Edge 网关”设备模板。 删除此设备模板：
+
+1. 导航到“设备模板”页，然后选择“LVA Edge 网关”设备模板 。
+
+1. 选择“删除”以删除设备模板。
 
 ### <a name="get-the-device-credentials"></a>获取设备凭据
 

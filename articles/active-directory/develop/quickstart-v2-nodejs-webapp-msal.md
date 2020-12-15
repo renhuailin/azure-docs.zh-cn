@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: ac400efe66ab740f5fb87977ac531cbe465e3f91
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995143"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762561"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Node Web 应用中让用户登录并获取访问令牌
 
@@ -42,15 +42,14 @@ ms.locfileid: "95995143"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
 > 1. 登录 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
-> 1. 选择[“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页显示后，请输入应用程序的名称。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 > 1. 将“重定向 URI”值设为 `http://localhost:3000/redirect`
 > 1. 选择“注册”。 
 > 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
-> 1. 在“证书和机密”下，选择“新建客户端密码” 。  将说明留空并保留默认过期时间，然后单击“添加”。
+> 1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。  将说明留空并保留默认过期时间，然后选择“添加”。
 > 1. 记下“客户端密码”的值以供稍后使用 。
 
 #### <a name="step-2-download-the-project"></a>步骤 2：下载项目

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 12/04/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656439"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928460"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -51,8 +51,12 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp] "EnableDefaultHttp2"=dword:00000000
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
 > ```
+>
+> 可以通过 PowerShell 使用以下命令设置密钥。
+> ```
+> Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
 >
 
 #### <a name="recommendations-for-the-connector-server"></a>有关连接器服务器的建议
@@ -87,6 +91,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 1. 重新启动服务器。
 
+> [!Note]
+> Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。 请参阅 [Azure TLS 证书更改](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)获取详细信息。
+
 ## <a name="prepare-your-on-premises-environment"></a>准备本地环境
 
 要为 Azure AD 应用程序代理准备环境，请首先启用与 Azure 数据中心的通信。 如果路径中有防火墙，请确保它已打开。 打开的防火墙允许连接器向应用程序代理发出 HTTPS (TCP) 请求。
@@ -113,7 +120,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | --- | --- | --- |
 | &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | 连接器与应用程序代理云服务之间的通信 |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |连接器使用这些 URL 来验证证书。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |在注册过程中，连接器将使用这些 URL。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |在注册过程中，连接器将使用这些 URL。 |
 | ctldl.windowsupdate.com | 80/HTTP |在注册过程中，连接器将使用此 URL。 |
 
 如果防火墙或代理允许配置 DNS 允许列表，则可将与 &ast;.msappproxy.net、&ast;.servicebus.windows.net 和上述其他 URL 的连接加入允许列表。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
@@ -184,7 +191,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。
 2. 在左侧导航面板中选择“Azure Active Directory”  。
 3. 依次选择“企业应用程序”、“新建应用程序”   。
-4. 在“本地应用程序”  部分中，选择“添加本地应用程序”  。
+4. 在“创建自己的应用程序”部分中，选择“配置应用程序代理以安全地远程访问本地应用程序” 。
 5. 在“添加自己的本地应用程序”部分中，提供有关应用程序的以下信息  ：
 
     | 字段 | 说明 |

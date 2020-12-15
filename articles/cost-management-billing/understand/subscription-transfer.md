@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 82b33a7a9403993ec883090559884a45d04b7aa2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149384"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932194"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>关于转移 Azure 订阅的计费所有权
 
@@ -36,7 +36,7 @@ ms.locfileid: "92149384"
 
 计费管理员是有权管理帐户计费的人员。 他们有权在 [Azure 门户](https://portal.azure.com)中访问计费，并可执行各种计费任务，例如创建订阅、查看和支付发票，或更新付款方式。
 
-若要确定你是哪些帐户的计费管理员，请访问 [Azure 门户中的“成本管理 + 计费”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然后，在左窗格中选择“所有计费范围”。 订阅页面显示了你是其中的计费管理员的全部三个订阅。
+若要确定你是哪些帐户的计费管理员，请访问 [Azure 门户中的“成本管理 + 计费”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然后，在左窗格中选择“所有计费范围”。 订阅页显示了你是其中的计费管理员的所有订阅。
 
 如果不确定谁是订阅的帐户管理员，请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 然后，选择要检查的订阅，并查看“设置”下的信息。 选择“属性”，“帐户管理员”框中会显示订阅的帐户管理员 。
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350885"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545598"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议预留成本和使用情况
 
@@ -140,9 +140,11 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 2. 获取预留成本。 将 _Cost_ 值求和可以得出为预留实例支付的货币价值。 这包括预留项的已用和未用成本。
 3. 从估计的即用即付成本中减去预留成本可以得出估计的节省额。
 
+请记住，如果你的预留未充分利用，ChargeType 的 UnusedReservation 项将成为需要考虑的因素 。 当你的预留被充分利用时，你将实现最大程度的费用节省。 任何 UnusedReservation 数量都将节省费用。
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>成本分析中的预留项购买和摊销
 
-[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。  若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”： 
+[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。 若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”：
 
 ![该示例显示可在成本分析中的哪个位置选择摊销成本](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 

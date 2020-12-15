@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558671"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904054"
 ---
 ## <a name="configure-your-local-environment"></a>配置本地环境
 
@@ -17,8 +17,8 @@ ms.locfileid: "95558671"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
-+ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 或更高的 2.x 版本。
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java,programming-language-other"  
++ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 版本 2.7.1846 或更高版本。
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + 对应于已安装的 Python 版本的 Azure Functions Core Tools 版本：
@@ -46,4 +46,7 @@ ms.locfileid: "95558671"
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 
+::: zone-end
+::: zone pivot="programming-language-other"
++ 所用语言的开发工具。 本教程使用 [R 编程语言](https://www.r-project.org/)作为示例。
 ::: zone-end

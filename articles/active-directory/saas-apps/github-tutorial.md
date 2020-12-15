@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 GitHub 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 GitHub 之间配置单一登录。
+title: 教程：Azure Active Directory 与 GitHub Enterprise Cloud 组织集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 GitHub Enterprise Cloud 组织之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: cb5ef751a3fc2241924eaee1c5da9507006389cc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 67a17aaa647d9aa6943b37d54fc0e3308ad8955f
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449245"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558532"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Cloud 组织的集成
 
-本教程介绍如何将 GitHub 与 Azure Active Directory (Azure AD) 集成。 将 GitHub 与 Azure AD 集成后，可以：
+本教程介绍如何将 GitHub Enterprise Cloud 组织与 Azure Active Directory (Azure AD) 集成。 将 GitHub Enterprise Cloud 组织与 Azure AD 集成，可以实现以下目的：
 
 * 在 Azure AD 中控制谁有权访问 GitHub Enterprise Cloud Organization。
 * 在一个中心位置管理对 GitHub Enterprise Cloud Organization 的访问 - Azure 门户。
@@ -29,7 +29,7 @@ ms.locfileid: "92449245"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 GitHub 的集成，需要以下项：
+若要配置 Azure AD 与 GitHub Enterprise Cloud 组织的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
@@ -52,7 +52,7 @@ ms.locfileid: "92449245"
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分中，在搜索框中键入“GitHub” 。
-1. 从结果面板中选择“GitHub”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
+1. 从结果面板中选择“GitHub Enterprise Cloud - 组织”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>配置并测试 GitHub 的 Azure AD 单一登录
 
@@ -169,7 +169,7 @@ ms.locfileid: "92449245"
 
     c. 在记事本中打开从 Azure 门户下载的证书，将内容粘贴到“公共证书”文本框中。
 
-    d. 单击“编辑”图标，将“签名方法”和“摘要方法”从 **RSA-SHA1** 和 **SHA1** 编辑为 **RSA-SHA256** 和 **SHA256** ，如下所示  。
+    d. 单击“编辑”图标，将“签名方法”和“摘要方法”从 **RSA-SHA1** 和 **SHA1** 编辑为 **RSA-SHA256** 和 **SHA256**，如下所示  。
     
     e. 从默认 URL 更新“断言使用者服务 URL (回复 URL)”，以便 GitHub 中的 URL 与 Azure 应用注册中的 URL 匹配。
 

@@ -1,6 +1,6 @@
 ---
-title: 快速入门：缩放 Synapse SQL 池的计算 (Azure PowerShell)
-description: 可以使用 Azure PowerShell 缩放 Synapse SQL 池（数据仓库）的计算。
+title: 快速入门：缩放专用 SQL 池（之前称为 SQL DW）的计算 (Azure PowerShell)
+description: 可以使用 Azure PowerShell 缩放专用 SQL 池（之前称为 SQL DW）的计算。
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91566136"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921901"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 缩放 Synapse SQL 池的计算
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 缩放专用 SQL 池（之前称为 SQL DW）的计算
 
-可以使用 Azure PowerShell 缩放 Synapse SQL 池（数据仓库）的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。
+可以使用 Azure PowerShell 缩放专用 SQL 池（之前称为 SQL DW）的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91566136"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本快速入门假设已有一个可以缩放的 SQL 池。 如果需要创建一个 SQL 池，请参考[创建和连接 - 门户](create-data-warehouse-portal.md)创建名为 **mySampleDataWarehouse** 的 SQL 池。
+本快速入门假设已有一个可以缩放的专用 SQL 池（之前称为 SQL DW）。 如果需要创建一个专用 SQL 池，请参考[创建和连接 - 门户](create-data-warehouse-portal.md)创建名为 mySampleDataWarehouse 的专用 SQL 池（之前称为 SQL DW）。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -67,7 +67,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 ## <a name="scale-compute"></a>缩放计算
 
-在 SQL 池中，可以通过调整数据仓库单位来增加或减少计算资源。 [创建和 Connect - 门户](create-data-warehouse-portal.md)创建 **mySampleDataWarehouse** 并初始化 400 DWU。 以下步骤调整为 DWU **mySampleDataWarehouse**。
+在专用 SQL 池（之前称为 SQL DW）中，可以通过调整数据仓库单位来增加或减少计算资源。 [创建和 Connect - 门户](create-data-warehouse-portal.md)创建 **mySampleDataWarehouse** 并初始化 400 DWU。 以下步骤调整为 DWU **mySampleDataWarehouse**。
 
 若要更改数据仓库单位，请使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。 以下示例将数据库 **mySampleDataWarehouse**（托管在服务器 **sqlpoolservername** 上的资源组 **resourcegroupname** 中）的数据仓库单位设置为 DW300c。
 
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>后续步骤
 
-现已了解如何缩放 SQL 池的计算。 若要详细了解 SQL 池，请继续阅读有关加载数据的教程。
+你现在已了解了如何缩放专用 SQL 池（之前称为 SQL DW）的计算。 若要详细了解专用 SQL 池（之前称为 SQL DW），请继续阅读有关加载数据的教程。
 
 > [!div class="nextstepaction"]
->[将数据载入 SQL 池中](load-data-from-azure-blob-storage-using-polybase.md)
+>[将数据加载到专用 SQL 池中](load-data-from-azure-blob-storage-using-copy.md)

@@ -2,15 +2,15 @@
 title: 创建和部署模板规格
 description: 了解如何通过 ARM 模板创建模板规格。 然后，将模板规格部署到订阅中的资源组。
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747496"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518951"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入门：创建和部署模板规格（预览）
 
@@ -21,15 +21,37 @@ ms.locfileid: "94747496"
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要使用，必须安装最新版本的 PowerShell 或 Azure CLI。 对于 Azure PowerShell，请使用[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 对于 Azure CLI，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-template-spec"></a>创建模板规格
 
-模板规格是名为 Microsoft.Resources/templateSpecs 的资源类型。 若要创建模板规格，可以使用 Azure PowerShell、Azure CLI 或 ARM 模板。 在所有选项中，你都需要打包在模板规格中的 ARM 模板。
+模板规格是名为 Microsoft.Resources/templateSpecs 的资源类型。 若要创建模板规格，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 ARM 模板。 在所有选项中，你都需要打包在模板规格中的 ARM 模板。
 
 使用 PowerShell 和 CLI 时，ARM 模板作为参数传递给命令。 对于 ARM 模板，要打包在模板规格中的 ARM 模板嵌入在模板规格定义中。
 
 这些选项如下所示。
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在屏幕顶部的“搜索资源、服务和文档”中，输入“模板规格”，然后选择“模板规格”  。
+1. 选择“创建模板规格”。
+1. 选择或输入以下值：
+
+    - **名称**：输入模板规格的名称。例如 storageSpec
+    - **订阅**：选择用于创建模板规格的 Azure 订阅。
+    - **资源组**：选择“新建”，然后输入新的资源组名称。  例如 templateSpecRG。
+    - **位置**：选择资源组的位置。 例如美国西部 2。
+    - **版本**：输入模板规格的版本。例如 1.0 或 v1.0 。
+
+1. 在完成时选择“下一步:编辑模板”。
+1. 将模板内容替换为以下 JSON：
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    这是将在模板规格中打包的模板。
+1. 选择“查看 + 创建”  。
+1. 选择“创建”  。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ ms.locfileid: "94747496"
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-现在即可部署模板规格。部署模板规格就像部署它包含的模板一样，只不过你传入了模板规格的资源 ID。使用相同的部署命令，并在需要时为模板规格传递参数值。
+现在即可部署模板规格。部署模板规格就像部署它包含的模板一样，只不过你在 Azure PowerShell 或 Azure CLI 中传入了模板规格的资源 ID。 使用相同的部署命令，并在需要时为模板规格传递参数值。
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. 从 Azure 门户中打开在上一个过程中创建的资源组。  例如 templateSpecRG。
+1. 选择已创建的模板规格。 例如 storageSpec。
+1. 选择“部署”。
+1. 选择或输入以下值：
+
+    - **订阅**：选择用于创建资源的 Azure 订阅。
+    - **资源组**：选择“新建”，然后输入“storageRG” 。
+    - **存储帐户类型**：选择“Standard_GRS”。
+
+    创建新的资源组，并将模板规格中的模板部署到新的资源组。
+
+1. 选择“查看 + 创建”。
+1. 选择“创建”  。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

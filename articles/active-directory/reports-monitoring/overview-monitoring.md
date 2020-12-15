@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228641"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778489"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什么是 Azure Active Directory 监视？
 
@@ -39,6 +39,22 @@ ms.locfileid: "89228641"
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD 报告和监视的许可和先决条件
+
+需要 Azure AD Premium 许可证才能访问 Azure AD 登录日志。
+
+[Azure Active Directory 定价指南](https://azure.microsoft.com/pricing/details/active-directory/)中介绍了详细功能和许可信息。
+
+若要部署Azure AD 监视和报告，需要一个用户身份，该用户需要是 Azure AD 租户的全局管理员或安全管理员。
+
+根据日志数据的最终目标，你将需要以下某个帐户：
+
+* 你对其拥有 ListKeys 权限的 Azure 存储帐户。 建议使用常规存储帐户而非 Blob 存储帐户。 有关存储定价信息，请参阅 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)。
+
+* 用于与第三方 SIEM 解决方案集成的 Azure 事件中心命名空间。
+
+* 用于将日志发送到 Azure Monitor 日志的 Azure Log Analytics 工作区。
 
 ## <a name="diagnostic-settings-configuration"></a>诊断设置配置
 

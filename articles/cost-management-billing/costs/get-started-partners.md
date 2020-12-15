@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657306"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905666"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -262,7 +262,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 ## <a name="export-cost-data-to-azure-storage"></a>将成本数据导出到 Azure 存储
 
-有权访问合作伙伴租户中的计费范围的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 Blob。 该 Blob 必须位于合作伙伴租户的某个订阅中，且该订阅不是共享的服务订阅或客户的订阅。 若要启用成本数据导出，我们建议在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 导出存储帐户将在即用即付订阅中托管的 Azure 存储 Blob 上创建。 根据伙伴创建导出时所在的范围，会定期自动将关联的数据导出到存储帐户。
+有权访问合作伙伴租户中的计费范围的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 Blob。 该 Blob 必须位于合作伙伴租户的某个订阅中，且该订阅不是[共享的服务订阅](/partner-center/shared-services)或客户的订阅。 若要启用成本数据导出，我们建议在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 导出存储帐户将在即用即付订阅中托管的 Azure 存储 Blob 上创建。 根据伙伴创建导出时所在的范围，会定期自动将关联的数据导出到存储帐户。
 
 对订阅拥有 Azure RBAC 访问权限的用户还可将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 Blob。
 

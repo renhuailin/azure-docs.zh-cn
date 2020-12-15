@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a4ab8372e23e3621f7d73f8dbc38957c809acc9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89236822"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921614"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -30,7 +30,7 @@ ms.locfileid: "89236822"
 
 证明提供程序属于名为 Microsoft.Attestation 的 Azure 资源提供程序。 资源提供程序是提供 Azure 证明 REST 协定的服务终结点，并使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)进行部署。 每个证明提供程序都遵循特定的可发现策略。 
 
-证明提供程序是通过使用每种 TEE 类型的默认策略创建的（请注意，VBS enclave 没有默认策略）。 有关 SGX 的默认策略的更多详细信息，请参阅[证明策略的示例](policy-examples.md)。
+证明提供程序是使用每种证明类型的默认策略创建的（请注意，VBS enclave 没有默认策略）。 有关 SGX 的默认策略的更多详细信息，请参阅[证明策略的示例](policy-examples.md)。
 
 ### <a name="regional-default-provider"></a>区域默认提供程序
 
@@ -38,11 +38,11 @@ Azure 证明在每个区域中提供了默认提供程序。 客户可以选择�
 
 | 区域 | 证明 Uri | 
 |--|--|
-| 英国南部 | https://shareduks.uks.attest.azure.net | 
-| 美国东部 2 | https://sharedeus2.eus2.attest.azure.net | 
-| 美国中部 | https://sharedcus.cus.attest.azure.net | 
-| 美国东部| https://sharedeus.eus.attest.azure.net | 
-| 加拿大中部 | https://sharedcac.cac.attest.azure.net | 
+| 英国南部 | `https://shareduks.uks.attest.azure.net` | 
+| 美国东部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
+| 美国中部 | `https://sharedcus.cus.attest.azure.net` | 
+| 美国东部| `https://sharedeus.eus.attest.azure.net` | 
+| 加拿大中部 | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>证明请求
 
@@ -50,13 +50,13 @@ Azure 证明在每个区域中提供了默认提供程序。 客户可以选择�
 - “Quote”-“Quote”属性的值是一个字符串，包含经 Base64URL 编码的证明引用的表示形式
 - “EnclaveHeldData”-“EnclaveHeldData”属性的值是一个字符串，包含经 Base64URL 编码的 Enclave Held Data 的表示形式。
 
-Azure 证明将验证 TEE 提供的“Quote”，然后确保所提供的 Enclave Held Data 的 SHA256 哈希以引用中 reportData 字段的前 32 个字节表示。 
+Azure 证明将验证提供的“Quote”，然后确保所提供的 Enclave Held Data 的 SHA256 哈希以引用中 reportData 字段的前 32 个字节表示。 
 
 ## <a name="attestation-policy"></a>证明策略
 
 证明策略用于处理证明证据，并可由客户进行配置。 Azure 证明的核心是一个策略引擎，可处理构成证据的声明。 策略用于确定 Azure 证明是否应基于证据（或不基于证据）颁发证明令牌，从而对该证明者予以认可（或不认可）。 因此，如果未通过所有策略，将不颁发 JWT 令牌。
 
-如果证明提供程序中的默认 TEE 策略不能满足需要，客户将能够在 Azure 证明支持的任何区域创建自定义策略。 策略管理是 Azure 证明向客户提供的一项重要功能。 策略特定于 TEE，可用于标识 enclave，或将声明添加到输出令牌或修改输出令牌中的声明。 
+如果证明提供程序中的默认策略不能满足需要，客户将能够在 Azure 证明支持的任何区域创建自定义策略。 策略管理是 Azure 证明向客户提供的一项重要功能。 策略特定于证明类型，可用于标识 enclave，或将声明添加到输出令牌或修改输出令牌中的声明。 
 
 有关默认策略内容和示例，请参阅[证明策略的示例](policy-examples.md)。
 
@@ -99,6 +99,15 @@ Get OpenID Metadata API 返回 [OpenID Connect 发现协议](https://openid.net/
 }.[Signature]
 ```
 “exp”、“iat”、“iss”、“nbf”之类的声明由 [JWT RFC](https://tools.ietf.org/html/rfc7517) 定义，其余由 Azure 证明生成。 有关详细信息，请参阅[由 Azure 证明颁发的声明](claim-sets.md)。
+
+## <a name="encryption-of-data-at-rest"></a>静态数据加密
+
+为了保护客户数据，Azure 证明在 Azure 存储中保留其数据。 Azure 存储在静态数据写入数据中心时对其进行加密，并对其进行解密以供客户访问。 使用 Microsoft 管理的加密密钥进行加密。 
+
+除了保护 Azure 存储中的数据外，Azure 证明还利用 Azure 磁盘加密 (ADE) 对服务 VM 进行加密。 对于在 Azure 机密计算环境的 enclave 中运行的 Azure 证明，当前不支持 ADE 扩展。 在这种情况下，为了防止数据存储在内存中，将禁用页面文件。 
+
+在 Azure 证明实例本地硬盘驱动器上不会保留任何客户数据。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992312"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558719"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -109,7 +109,7 @@ ms.locfileid: "94992312"
 
 若要将更多图像添加到项目中，请使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)上载到 blob 存储中的相应文件夹。 
 
-如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。
+如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。 启用后，此数据将每天一次提取到你的项目中。
 
 如果不希望数据存储中的新图像添加到项目，请取消选中此框。
 
@@ -159,7 +159,7 @@ ms.locfileid: "94992312"
 > [!NOTE]
 > ML 辅助数据标记不支持在[虚拟网络](how-to-network-security-overview.md)后面受保护的默认存储帐户。 对于 ML 辅助数据标记，必须使用非默认存储帐户。 可在虚拟网络后面保护非默认存储帐户。 
 
-### <a name="clustering"></a>群集
+### <a name="clustering"></a>群集功能
 
 提交一定数量的标签后，用于图像分类的机器学习模型开始将类似的图像分组到一起。  这些类似的图像在同一个屏幕上向标记人员显示，以加速完成手动标记。 当标记人员查看包含 4、6 或 9 个图像的网格时，聚类将特别有用。 
 

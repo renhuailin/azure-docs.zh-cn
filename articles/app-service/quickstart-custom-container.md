@@ -7,23 +7,23 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925741"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745071"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
 ::: zone pivot="container-windows"
-[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 容器（预览版）环境锁定了操作系统，使其无法进行管理访问、软件安装、全局程序集缓存更改等操作。 有关详细信息，请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。
+[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 容器环境锁定了操作系统，使其无法进行管理访问、软件安装、全局程序集缓存更改等操作。 有关详细信息，请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。
 
 本快速入门介绍如何通过 Visual Studio 将 Windows 映像中的 ASP.NET 应用部署到 [Docker Hub](https://hub.docker.com/)。 你将在 Azure 应用服务中的某个自定义容器内运行该应用。
 
 > [!NOTE]
-> Windows 上的应用服务容器提供预览版。
->
+> Windows 容器仅限于 Azure 文件存储，当前不支持 Azure Blob。
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,9 +93,9 @@ ms.locfileid: "92925741"
 
 1. 在 Azure 市场资源列表上方的搜索框中，搜索“用于容器的 Web 应用”并选择“创建” 。
 
-1. 在“Web 应用创建”中，选择你的订阅和一个 **资源组** 。 如果需要，可以创建新的资源组。
+1. 在“Web 应用创建”中，选择你的订阅和一个 **资源组**。 如果需要，可以创建新的资源组。
 
-1. 提供应用名称（例如 *win-container-demo* ），然后选择“Windows”作为 **操作系统** 。 在完成时选择“下一步:Docker”以继续。
+1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为 **操作系统**。 在完成时选择“下一步:Docker”以继续。
 
    ![创建用于容器的 Web 应用。](media/quickstart-custom-container/create-web-app-continer.png)
 

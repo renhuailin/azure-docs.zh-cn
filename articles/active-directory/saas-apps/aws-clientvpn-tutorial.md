@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 557d2eb636e51f4259bc525fe39f8c95303774cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9a2c52674bafeb170efd41afa9c395aeecda9df8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181020"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS ClientVPN 的集成
 
@@ -78,9 +78,15 @@ ms.locfileid: "96181020"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<LOCALHOST>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<LOCALHOST>`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<LOCALHOST>`
+    b. 在“回复 URL”文本框中，使用以下模式之一键入 URL：
+
+    | 回复 URL |
+    |------------|
+    | `https://<LOCALHOST>` |
+    | `https://self-service.clientvpn.amazonaws.com/api/auth/sso/saml` |
+    |
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [AWS ClientVPN 客户端支持团队](https://aws.amazon.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -115,7 +121,7 @@ ms.locfileid: "96181020"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
@@ -146,11 +152,11 @@ ms.locfileid: "96181020"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AWS ClientVPN 登录 URL，可在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AWS ClientVPN 登录 URL，可在其中启动登录流。 
 
-2. 直接转到 AWS ClientVPN 登录 URL，并从那里启动登录流。
+* 直接转到 AWS ClientVPN 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 AWS ClientVPN 磁贴时，将会重定向到 AWS ClientVPN 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 AWS ClientVPN 磁贴时，将会重定向到 AWS ClientVPN 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 
 ## <a name="next-steps"></a>后续步骤

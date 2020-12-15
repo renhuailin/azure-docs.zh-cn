@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489941"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861997"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -195,7 +195,9 @@ ms.locfileid: "94489941"
 如果在将事件发送到 Azure Functions 时失败，流分析会重试大多数操作。 将会重试所有 http 异常，直至成功，但 http 错误 413（实体太大）除外。 实体太大错误被视为数据错误，遵循[重试或删除策略](stream-analytics-output-error-policy.md)。
 
 > [!NOTE]
-> 从流分析到 Azure Functions 的 HTTP 请求的超时设置为 100 秒。 如果 Azure Functions 应用处理批处理所用的时间超过100 秒，则流分析会出错。
+> 从流分析到 Azure Functions 的 HTTP 请求的超时设置为 100 秒。 如果 Azure Functions 应用处理批处理所用的时间超过 100 秒，则流分析会出错并重试批处理。
+
+重试超时可能会导致向输出接收器写入重复事件。 流分析重试失败的批处理时，会重试批处理中的所有事件。 例如，假设从流分析发送一批事件（20 个）到 Azure Functions。 假定 Azure Functions 需要 100 秒来处理该批次中的前 10 个事件。 经过 100 秒后，流分析会暂停该请求，因为它尚未收到来自 Azure Functions 的肯定响应，并且另一个请求针对同一批次发送。 Azure Functions 会再次处理该批次中的前 10 个事件，这会导致重复。 
 
 ## <a name="known-issues"></a>已知问题
 
@@ -210,7 +212,7 @@ ms.locfileid: "94489941"
 若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
+2. 在资源组页上单击“删除”  ，在文本框中键入要删除的资源的名称，并单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751863"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922935"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -37,6 +37,7 @@ ms.locfileid: "96751863"
 
 - [适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [全局管理员现在可以授予自己的租户级别权限](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布
@@ -69,6 +70,13 @@ Azure Synapse Analytics（以前称为 SQL DW）是一种分析服务，它将�
 针对 Azure Synapse Analytics SQL 池的 Azure Defender for SQL 支持会自动添加到 Azure 安全中心中的 Azure SQL 数据库捆绑中。 你可以在 Azure 门户的 Synapse 工作区页面中找到新的“适用于 SQL 的 Azure Defender”选项卡。
 
 详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
+
+
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>全局管理员现在可以授予自己的租户级别权限
+
+具有 Azure Active Directory“全局管理员”角色的用户可能要承担租户范围内的责任，但缺乏 Azure 权限，无法在 Azure 安全中心查看组织范围内的信息。 
+
+若要向你自己分配租户级别的权限，请按照[授予自己租户范围的权限](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)中的说明操作。
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）

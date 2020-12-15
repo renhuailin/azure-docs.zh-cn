@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: fe335b00df23ff132ad61b27efd733d195ee3bfb
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030919"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762323"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -28,6 +28,10 @@ ms.locfileid: "96030919"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+> [!IMPORTANT]
+> 跨区域的 Azure 负载均衡器目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。
@@ -37,8 +41,7 @@ ms.locfileid: "96030919"
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 
-> [!IMPORTANT]
-> 跨区域负载均衡器目前处于预览状态，并隐藏在预览门户中。  登录到 https://preview.portal.azure.com/?feature.globallb=true 以查看和部署此功能。
+[登录](https://preview.portal.azure.com)到 Azure 预览门户。
 
 ## <a name="create-cross-region-load-balancer"></a>创建跨区域负载均衡器
 

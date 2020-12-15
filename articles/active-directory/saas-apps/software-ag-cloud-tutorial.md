@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182325"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Software AG Cloud 集成
 
@@ -77,9 +77,9 @@ ms.locfileid: "96182325"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Software AG Cloud 客户端支持团队](mailto:support@softwareag.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -96,7 +96,7 @@ ms.locfileid: "96182325"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
@@ -121,19 +121,19 @@ ms.locfileid: "96182325"
 
 1.  单击“管理”
 
-    ![配置 Software AG Cloud1](./media/software-ag-cloud-tutorial/admin.png)
+    ![配置 Software AG Cloud 管理](./media/software-ag-cloud-tutorial/admin.png)
 
 1. 请转到“单一登录”>“添加标识提供者”
 
-    ![配置 Software AG Cloud2](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![配置 Software AG Cloud 标识提供者](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. 在下面的页中执行以下步骤。
 
-    ![配置 Software AG Cloud3](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![配置 Software AG Cloud 执行步骤](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. 在“标识提供者显示名称”文本框中，提供名称（例如 `azure ad`）。
 
-    b. 在“用于 Software AG Cloud 重定向 URI 的标识提供者唯一标识符”文本框中，粘贴从 Azure 门户复制的“实体 ID”值 。
+    b. 在“用于 Software AG Cloud 重定向 URI 的标识提供者唯一标识符”文本框中，输入标识提供者的唯一名称。 “Software AG Cloud 重定向 URI”字段将刷新并使用 URI 进行填充。 复制此 URI，并使用它根据定义的模式在 Azure 门户中配置实体 ID 和其他信息。
 
     c. 在“标识提供者配置”中导入“联合元数据 XML”文件，然后单击“下一步”  。
 
@@ -147,11 +147,12 @@ ms.locfileid: "96182325"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Software AG Cloud 登录 URL，可以从那里启动登录流。 
+* 假设已将 Microsoft Azure 配置为 Software AG Cloud 中的提供者，请导航至 `www.softwareag.cloud` 并单击“登录”按钮，然后输入环境名称。 在下一个屏幕中，单击“使用 <IDP NAME> 登录”链接并输入凭据。 经过身份验证后，你将登录并转到 Software AG Cloud 主页。
 
-2. 直接转到 Software AG Cloud 登录 URL，并从那里启动登录流。
+* 直接转到 Software AG Cloud 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Software AG Cloud 磁贴时，将会重定向到 Software AG Cloud 登录 URL。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Software AG Cloud 磁贴时，将会重定向到 Software AG Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+
 
 ## <a name="next-steps"></a>后续步骤
 

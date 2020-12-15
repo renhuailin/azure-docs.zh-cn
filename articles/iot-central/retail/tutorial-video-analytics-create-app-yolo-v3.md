@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 3994b05f613cbebcf6daa05cf8db3ef429b52407
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428052"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763386"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>教程：在 Azure IoT Central 中创建视频分析 - 对象和运动检测应用程序 (YOLO v3)
 
@@ -24,10 +24,10 @@ ms.locfileid: "94428052"
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) - 此文件可帮助你在浏览这些教程时，记录所需的各种配置选项。
 - [deployment.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
 - [LvaEdgeGatewayDcm.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) - 当你打算在第二个教程中使用 Intel NUC 设备时，只需下载此文件。
 
 > [!NOTE]
 > GitHub 存储库还包括 LvaEdgeGatewayModule 和 lvaYolov3 IoT Edge 模块的源代码 。 有关使用源代码的详细信息，请参阅[生成 LVA Gateway 模块](tutorial-video-analytics-build-module.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "94428052"
 
 1. 使用文本编辑器打开保存在 lva-configuration 文件夹中的 deployment.amd64.json 文件 。
 
-1. 找到 `LvaEdgeGatewayModule` 设置并更改映像名称，如以下代码片段所示：
+1. 找到 `LvaEdgeGatewayModule` 设置，并确保映像名称如以下代码片段所示：
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -50,7 +50,7 @@ ms.locfileid: "94428052"
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. 在 `LvaEdgeGatewayModule` 部分的 `env` 节点中添加媒体服务帐户的名称。 你已在 cratchpad.txt 文件中记下该帐户名称：
+1. 在 `LvaEdgeGatewayModule` 部分的 `env` 节点中添加媒体服务帐户的名称。 你已在 scratchpad.txt 文件中记下了该媒体服务帐户名称：
 
     ```json
     "env": {
@@ -58,7 +58,7 @@ ms.locfileid: "94428052"
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -67,7 +67,16 @@ ms.locfileid: "94428052"
 
     `azureMediaServicesArmId` 是在创建媒体服务帐户时在 scratchpad.txt 文件中记下的资源 ID。
 
-    你已在创建媒体服务帐户的服务主体时在 scratchpad.txt 文件中记下 `aadTenantId`、`aadServicePrincipalAppId` 和 `aadServicePrincipalSecret`：
+    下表显示了应在部署清单中使用的 scratchpad.txt 文件中的“连接到媒体服务 API (JSON)”的值：
+
+    | 部署清单       | 面板  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > 使用上表以确保在部署清单中添加了正确的值，否则设备将无法工作。
 
     ```json
     {

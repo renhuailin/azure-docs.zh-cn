@@ -2,13 +2,13 @@
 title: 使用 Azure 实验室服务设置课堂实验室 | Microsoft Docs
 description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟机的课堂实验室，供学生在课堂上使用。
 ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/03/2020
+ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434849"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602475"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -121,19 +121,71 @@ ms.locfileid: "96434849"
 
 ## <a name="add-users-to-the-lab"></a>将用户添加到实验室
 
-1. 选择左侧菜单上的“用户”。 默认情况下，“限制访问”选项处于启用状态。 当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。 
-2. 选择工具栏中的“添加用户”，然后选择“通过电子邮件地址添加”。  
+添加用户时，默认情况下，“限制访问”选项处于打开状态，除非他们在用户列表中，否则即使学生有注册链接，他们也无法注册到实验室。 只有列出的用户可以使用你发送的注册链接注册到实验室。 你可以关闭“限制访问”，这样一来，学生只要有注册链接就可以注册到实验室。 
 
-    ![“添加用户”按钮](./media/how-to-configure-student-usage/add-users-button.png)
-1. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
+### <a name="add-users-from-an-azure-ad-group"></a>从 Azure AD 组添加用户
 
-    ![添加用户电子邮件地址](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
+可以将实验室用户列表同步到现有 Azure Active Directory (Azure AD) 组，这样就无需手动添加或删除用户。 
 
-    ![用户列表](./media/how-to-configure-student-usage/users-list-new.png)
+可以在组织的 Azure Active Directory 中创建 Azure AD 组，以管理对组织资源和基于云的应用的访问。 若要了解详细信息，请参阅 [Azure AD 组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果组织使用 Microsoft Office 365 或 Azure 服务，则组织已有管理 Azure Active Directory 的管理员。 
 
-    将用户注册到实验室后，列表中会显示其姓名。 
+> [!IMPORTANT]
+> 确保用户列表为空。 如果实验室中存在手动添加或通过导入 CSV 文件添加的现有用户，则不会显示用于将实验室同步到现有组的选项。 
+
+1. 在左窗格中，选择“用户”。 
+1. 单击“从组同步”。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="通过从 Azure AD 组同步来添加用户":::
     
+1. 系统将提示你选择要将实验室同步到的现有 Azure AD 组。 
+    
+    如果在列表中看不到 Azure AD 组，可能是由于以下原因造成的：
+
+    -   如果你是 Azure Active Directory 的来宾用户（通常是在拥有 Azure AD 的组织之外），你将无法在 Azure AD 内搜索组。 在这种情况下，你将无法向实验室添加 Azure AD 组。 
+    -   通过 Teams 创建 Azure AD 组不会显示在此列表中。 你可以在 Teams 内添加 Azure 实验室服务应用，以便直接从中创建和管理实验室。 请参阅有关[从 Teams 内部管理实验室用户列表](how-to-manage-user-lists-within-teams.md)的详细信息。 
+1. 选择要将实验室同步到 Azure AD 组后，单击“添加”。
+1. 同步实验室后，它会将 Azure AD 组内的所有人作为用户拉入实验室，你将看到更新的用户列表。 只有此 Azure AD 组中的人员才能访问你的实验室。 用户列表将每 24 小时刷新一次，以与 Azure AD 组的最新成员身份匹配。 还可以单击“用户”选项卡中的“同步”按钮，手动同步到 Azure AD 组中的最新更改。
+1. 单击“全部邀请”按钮邀请用户加入实验室，这将向所有用户发送一封电子邮件，其中包含实验室的注册链接。 
+
+### <a name="add-users-manually-from-emails-or-csv-file"></a>从电子邮件或 CSV 文件中手动添加用户
+
+在本部分中，你将手动添加学生（通过电子邮件地址或上传 CSV 文件）。 
+
+#### <a name="add-users-by-email-address"></a>按电子邮件地址添加用户
+
+1. 在左窗格中，选择“用户”。 
+1. 单击“手动添加用户”。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="手动添加用户":::
+1. 选择“按电子邮件地址添加”（默认），在单独的行或用分号分隔的单个行上输入学生的电子邮件地址。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="添加用户的电子邮件地址":::
+1. 选择“保存”。 
+
+    该列表显示当前用户的电子邮件地址和状态，无论他们是否已注册到实验室。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="用户列表":::
+
+    > [!NOTE]
+    > 学生注册到实验室后，列表将显示其名称。 列表中显示的名称是按 Azure Active Directory 中学生的名字和姓氏构造的。 
+
+#### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
+
+还可以通过上载包含其电子邮件地址的 CSV 文件来添加用户。 
+
+CSV 文本文件用于存储以逗号分隔 (CSV) 的表格数据（数字和文本）。 CSV 文件存储以逗号分隔的信息，而不是将信息存储在列字段中（如电子表格中）。 CSV 文件中的每一行都相同数量的以逗号分隔的“字段”。 可以使用 Excel 轻松创建和编辑 CSV 文件。
+
+1. 在 Microsoft Excel 中，创建一个在一列中列出学生电子邮件地址的 CSV 文件。
+
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV 文件中的用户列表":::
+1. 在“用户”窗格的顶部，选择“添加用户”，然后选择“上传 CSV”  。
+1. 选择包含学生电子邮件地址的 CSV 文件，然后选择“打开”。
+
+    “添加用户”窗口显示 CSV 文件中的电子邮件地址列表。 
+1. 选择“保存”。 
+1. 在“用户”窗格中，查看添加的学生列表。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="用户”窗格中已添加用户的列表"::: 
 
 ## <a name="send-invitation-emails-to-users"></a>向用户发送邀请电子邮件
 
@@ -145,7 +197,7 @@ ms.locfileid: "96434849"
     ![通过电子邮件发送注册链接](./media/tutorial-setup-classroom-lab/send-email.png)
 4. 可以在“用户”列表中查看 **邀请** 状态。 状态应更改为“正在发送”，然后更改为“已在 &lt;日期&gt; 发送”。  
 
-    若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
+若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你在 Azure 中创建了一个课堂实验室。 若要了解学生如何使用注册链接访问实验室中的 VM，请转到下一教程：

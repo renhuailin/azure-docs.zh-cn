@@ -2,20 +2,20 @@
 title: Azure 中基于 Active Directory 的服务的比较 | Microsoft Docs
 description: 本概述文章对 Active Directory 域服务、Azure Active Directory 和 Azure Active Directory 域服务的标识产品/服务做了比较。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962660"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620182"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -114,6 +114,9 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 | 管理                      | Intune 等移动设备管理 (MDM) 软件 | 组策略                                                              |
 | 网络                      | 通过 Internet 工作                             | 必须连接到部署管理域的虚拟网络或与其对等互连 |
 | 非常适合用于...                    | 最终用户移动设备或台式机设备                  | 在 Azure 中部署的服务器 VM                                              |
+
+
+如果使用 ADFS 将本地 AD DS 和 Azure AD 配置为联合身份验证，则 Azure DS 中没有可用的（当前/有效）密码哈希。 在实施联合身份验证之前创建的 Azure AD 用户帐户可能有旧密码哈希，但这可能与其本地密码的哈希不匹配。 因此，Azure AD DS 将无法验证用户凭据
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130096"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558600"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
@@ -228,31 +228,16 @@ Azure 应用服务使用 Docker 容器技术同时托管内置映像和自定义
 
 ## <a name="set-up-your-initial-environment"></a>设置初始环境
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* 安装 [Docker](https://docs.docker.com/get-started/#setup)，用于构建 Docker 映像。 安装 Docker 可能需要重新启动计算机。
-* 安装 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本，使用它可以在任何 shell 中运行命令来预配和配置 Azure 资源。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 安装 [Docker](https://docs.docker.com/get-started/#setup)，用于构建 Docker 映像。 安装 Docker 可能需要重新启动计算机。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- 本教程需要 2.0.80 或更高版本 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-安装 Docker 和 Azure CLI 后，打开终端窗口，验证是否已安装 docker：
+安装 Docker 或运行 Azure Cloud Shell 后，打开终端窗口，验证是否已安装 docker：
 
 ```bash
 docker --version
 ```
-
-同时，验证 Azure CLI 版本是否为 2.0.80 或更高版本：
-
-```azurecli
-az --version
-```
-
-然后通过 CLI 登录到 Azure：
-
-```azurecli
-az login
-```
-
-`az login` 命令打开浏览器以收集凭据。 当命令完成时，会显示包含订阅相关信息的 JSON 输出。
-
-登录后，可以使用 Azure CLI 运行 Azure 命令，处理订阅中的资源。
 
 ## <a name="clone-or-download-the-sample-app"></a>克隆或下载示例应用
 
@@ -343,8 +328,6 @@ ENTRYPOINT ["init.sh"]
 1. 浏览到 `http://localhost:8000`，验证 Web 应用和容器是否正常运行。
 
     ![在本地测试 Web 应用](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896739"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905343"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -24,7 +24,7 @@ ms.locfileid: "92896739"
 
 > [!div class="checklist"]
 > * 创建 Azure 存储帐户用于记录汽车跟踪数据。
-> * 使用数据上传 API 将地理围栏上传到 Azure Maps 数据服务。
+> * 使用数据上传 API 将地理围栏上传到 Azure Maps 数据服务（预览版）。
 > * 在 Azure IoT 中心创建中心并注册设备。
 > * 在 Azure Functions 中创建一个函数，基于 Azure Maps 空间分析实现业务逻辑。
 > * 通过 Azure 事件网格订阅 Azure 函数发出的 IoT 设备遥测事件。
@@ -91,7 +91,7 @@ ms.locfileid: "92896739"
 
 下图以蓝色突出显示地理围栏区域。 出租汽车的路线以绿线表示。
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="系统概述图。":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="显示地理围栏路线的图。":::
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -103,15 +103,15 @@ ms.locfileid: "92896739"
 
 1. 转到新创建的存储帐户。 在“概要”部分中，选择“容器”连接 。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="用于 blob 存储的容器的屏幕截图。":::
 
 2. 在左上角，选择“+ 容器”。 浏览器右侧将显示一个面板。 将容器命名为 contoso-rental-logs，然后选择“创建”。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="系统概述图。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="创建 blob 容器的屏幕截图。":::
 
 3. 转到存储帐户中的“访问密钥”窗格，然后复制“key1”部分中的“存储帐户名称”和“密钥”值   。 你将在“创建 Azure 函数并添加事件网格订阅”部分中用到这两个值。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="复制存储帐户名称和密钥的屏幕截图。":::
 
 ## <a name="upload-a-geofence"></a>上传地理围栏
 
@@ -178,45 +178,45 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 1. 在 Azure 门户仪表板中，选择“创建资源”。 在搜索文本框中键入“函数应用”。 选择“函数应用” > “创建” 。
 
-1. 在“函数应用”创建页上为函数应用命名。  在“资源组”下，从下拉列表中选择“ContosoRental”。 选择“.NET Core”作为“运行时堆栈”。 在页面底部，选择“下一页:托管 >”。
+1. 在“函数应用”创建页上为函数应用命名。 在“资源组”下，从下拉列表中选择“ContosoRental”。 选择“.NET Core”作为“运行时堆栈”。 在页面底部，选择“下一页:托管 >”。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="创建函数应用的屏幕截图。":::
 
 1. 对于“存储帐户”，选择在[创建 Azure 存储帐户](#create-an-azure-storage-account)中创建的存储帐户。 选择“查看 + 创建”。
 
 1. 查看函数应用详细信息，然后选择“创建”。
 
-1. 创建应用后，请向其添加一个函数。 转到函数应用。 选择“函数”窗格。 在页面顶部，选择“+ 添加”。  随即将显示函数模板面板。 向下滚动面板，然后选择“Azure 事件网格触发器”。
+1. 创建应用后，请向其添加一个函数。 转到函数应用。 选择“函数”窗格。 在页面顶部，选择“+ 添加”。 随即将显示函数模板面板。 向下滚动面板，然后选择“Azure 事件网格触发器”。
 
      >[!IMPORTANT]
     > “Azure 事件中心触发器”模板和“Azure 事件网格触发器”模板具有相似的名称。 请确保选择“Azure 事件网格触发器”模板。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="创建函数的屏幕截图。":::
 
 1. 为函数指定一个名称。 在本教程中，你将使用 GetGeoFunction 这一名称，但通常你可以使用任何喜欢的名称。 选择“创建函数”。
 
 1. 在左侧菜单中，选择“代码 + 测试”窗格。 将 [C# 脚本](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)复制并粘贴到代码窗口中。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="系统概述图。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="将代码粘贴到函数窗口中的副本/屏幕截图。":::
 
 1. 在 C# 代码中，替换以下参数：
     * 将“SUBSCRIPTION_KEY”替换为 Azure Maps 帐户主要订阅密钥。
     * 将“UDID”替换为在[上传地理围栏](#upload-a-geofence)中上传的地理围栏的 `udid`。
-    * 脚本中的 `CreateBlobAsync` 函数将为数据存储帐户中的每个事件创建一个 Blob。 将 **ACCESS_KEY** 、 **ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 替换为存储帐户的访问密钥、帐户名称和数据存储容器。 这些值在[创建 Azure 存储帐户](#create-an-azure-storage-account)中创建存储帐户时生成。
+    * 脚本中的 `CreateBlobAsync` 函数将为数据存储帐户中的每个事件创建一个 Blob。 将 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 替换为存储帐户的访问密钥、帐户名称和数据存储容器。 这些值在[创建 Azure 存储帐户](#create-an-azure-storage-account)中创建存储帐户时生成。
 
 1. 在左侧菜单中，选择“集成”窗格。 选择关系图中的“事件网格触发器”。 键入触发器的名称 eventGridEvent，然后单击“创建事件网格订阅”。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="系统概述图。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="添加事件订阅的屏幕截图。":::
 
 1. 填写订阅详细信息。 为事件订阅指定一个名称。 对于“事件架构”，请选择“事件网格架构” 。 对于“主题类型”，请选择“Azure IoT 中心帐户”。 对于“资源组”，请选择在本教程开始时创建的资源组。 对于“资源”，请选择在“创建 Azure IoT 中心”中创建的 IoT 中心。 对于“筛选事件类型”，请选择“设备遥测”。
 
    选择这些选项后，你将看到“主题类型”更改为“IoT 中心”。 对于“系统主题名称”，可以使用与资源相同的名称。 最后，在“终结点详细信息”部分中，选择“选择终结点” 。 接受所有设置，然后选择“确认选择”。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="创建事件订阅的屏幕截图。":::
 
 1. 复查你的设置。 确保终结点指定在本部分开始时创建的函数。 选择“创建”。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="系统概述图。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="创建事件订阅确认的屏幕截图。":::
 
 1. 现在，你回到了“编辑触发器”面板。 选择“保存”。
 
@@ -224,11 +224,11 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 将事件网格订阅添加到 Azure 函数时，系统会在指定的 IoT 中心自动创建消息路由。 借助消息路由，你能够将不同的数据类型路由到各个终结点。 例如，可以路由设备遥测消息、设备生命周期事件和设备孪生更改事件。 有关详细信息，请参阅[使用 IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="系统概述图。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT 中心内消息路由的屏幕截图。":::
 
 在你的示例场景中，你只希望在出租汽车移动时接收消息。 创建一个路由查询，以筛选 `Engine` 属性等于“ON”的事件。 创建路由查询时，请选择 RouteToEventGrid 路由，将 Routing query 替换为“Engine=‘ON’”  。 再选择“保存”。 现在，IoT 中心只会发布引擎处于打开状态时的设备遥测数据。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="系统概述图。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="筛选路由消息的屏幕截图。":::
 
 >[!TIP]
 >可以通过多种方法查询 IoT 设备到云的消息。 若要详细了解消息路由语法，请参阅 [IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)。
@@ -256,15 +256,15 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
   本地终端应如下所示。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="系统概述图。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="终端输出的屏幕截图。":::
 
 如果现在打开 blob 存储容器，则可以看到四个 blob，它们对应于车辆位于地理围栏以外时所处的位置。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="系统概述图。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="查看容器中的 blob 的屏幕截图。":::
 
 以下地图显示地理围栏之外的四个车辆位置点。 每个位置均按固定时间间隔进行记录。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="系统概述图。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="违规地图的屏幕截图。":::
 
 ## <a name="explore-azure-maps-and-iot"></a>探索 Azure Maps 和 IoT
 

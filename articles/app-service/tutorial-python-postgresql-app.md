@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506101"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852959"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -35,7 +35,7 @@ ms.locfileid: "94506101"
 你还可以使用[本教程的 Azure 门户版本](/azure/developer/python/tutorial-python-postgresql-app-portal)。
 
 
-## <a name="set-up-your-initial-environment"></a>设置初始环境
+## <a name="1-set-up-your-initial-environment"></a>1.设置初始环境
 
 1. 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. 安装 <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 或更高版本</a>。
@@ -81,7 +81,7 @@ az login
 
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="clone-or-download-the-sample-app"></a>克隆或下载示例应用
+## <a name="2-clone-or-download-the-sample-app"></a>2.克隆或下载示例应用
 
 # <a name="git-clone"></a>[Git 克隆](#tab/clone)
 
@@ -118,7 +118,7 @@ Djangoapp 示例包含数据驱动的 Django 投票应用，该应用是根据 D
 
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="create-postgres-database-in-azure"></a>在 Azure 中创建 Postgres 数据库
+## <a name="3-create-postgres-database-in-azure"></a>3.在 Azure 中创建 Postgres 数据库
 
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
@@ -129,7 +129,7 @@ Djangoapp 示例包含数据驱动的 Django 投票应用，该应用是根据 D
 az extension add --name db-up
 ```
 
-如果无法识别 `az` 命令，请确保按照[设置初始环境](#set-up-your-initial-environment)中所述安装 Azure CLI。
+如果无法识别 `az` 命令，请确保按照[设置初始环境](#1-set-up-your-initial-environment)中所述安装 Azure CLI。
 
 然后使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令在 Azure 中创建 Postgres 数据库：
 
@@ -138,7 +138,8 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - 将 \<postgres-server-name> 替换为在整个 Azure 中唯一的名称（服务器终结点将变为 `https://<postgres-server-name>.postgres.database.azure.com`）。 良好的模式是结合使用公司名称和其他唯一值。
-- 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。 请勿在用户名或密码中使用 `$` 字符。 稍后，将使用这些值创建环境变量，其中 `$` 字符在用于运行 Python 应用的 Linux 容器中具有特殊含义。
+- 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。 管理员用户名不能是 azure_superuser、azure_pg_admin、admin、administrator、root、guest 或 public      。 不能以 *pg_* 开头。 密码必须包含以下三个类别的 8 到 128 个字符：英文大写字母、英文小写字母、数字（0 到 9）和非字母数字字符（例如 !、#、%）。 该密码不能包含用户名。
+- 请勿在用户名或密码中使用 `$` 字符。 稍后，将使用这些值创建环境变量，其中 `$` 字符在用于运行 Python 应用的 Linux 容器中具有特殊含义。
 - 此处使用的 B_Gen5_1（基本，第 5 代，1 核）[定价层](../postgresql/concepts-pricing-tiers.md)成本最低。 对于生产数据库，请省略 `--sku-name` 参数以改用 GP_Gen5_2（常规用途，第 5 代，2 核）层。
 
 此命令将执行以下操作，可能需要花几分钟的时间：
@@ -153,7 +154,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 可以使用其他 `az postgres` 和 `psql` 命令单独执行每个步骤，但 `az postgres up` 可以完成所有这些操作。
 
-当该命令完成时，它会输出一个 JSON 对象，其中包含数据库的不同连接字符串以及服务器 URL、生成的用户名（例如“joyfulKoala@msdocs-djangodb-12345”）和 GUID 密码。 将短用户名（@ 之前的内容）和密码复制到临时文本文件中，你需要在本教程稍后的内容中使用它们。
+当该命令完成时，它会输出一个 JSON 对象，其中包含数据库的不同连接字符串以及服务器 URL、生成的用户名（例如“joyfulKoala@msdocs-djangodb-12345”）和 GUID 密码。 将用户名和密码复制到临时文本文件，你需要在本教程稍后的内容中使用它们。
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -161,11 +162,11 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="deploy-the-code-to-azure-app-service"></a>将代码部署到 Azure 应用服务
+## <a name="4-deploy-the-code-to-azure-app-service"></a>4.将代码部署到 Azure 应用服务
 
 在本部分中，你将在应用服务应用中创建应用主机，将此应用连接到 Postgres 数据库，然后将代码部署到该主机。
 
-### <a name="create-the-app-service-app"></a>创建应用服务应用
+### <a name="41-create-the-app-service-app"></a>4.1 创建应用服务应用
 
 在终端中，请确保位于包含应用代码的“djangoapp”存储库文件夹中。
 
@@ -177,7 +178,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - 对于 `--location` 参数，请使用与上一部分中数据库相同的位置。
-- 将 *\<app-name>* 替换为在整个 Azure 中唯一的名称（服务器终结点是 `https://<app-name>.azurewebsites.net`）。 \<app-name> 允许的字符为 `A`-`Z`、`0`-`9` 和 `-`。 良好的模式是结合使用公司名称和应用标识符。
+- 将 \<app-name> 替换为在整个 Azure 中唯一的名称（服务器终结点是 `https://<app-name>.azurewebsites.net`）。 \<app-name> 允许的字符为 `A`-`Z`、`0`-`9` 和 `-`。 良好的模式是结合使用公司名称和应用标识符。
 
 此命令将执行以下操作，可能需要花几分钟的时间：
 
@@ -196,7 +197,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="configure-environment-variables-to-connect-the-database"></a>配置环境变量以连接数据库
+### <a name="42-configure-environment-variables-to-connect-the-database"></a>4.2 配置环境变量以连接数据库
 
 将代码部署到应用服务后，下一步是将应用连接到 Azure 中的 Postgres 数据库。
 
@@ -216,11 +217,11 @@ az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNA
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="run-django-database-migrations"></a>运行 Django 数据库迁移
+### <a name="43-run-django-database-migrations"></a>4.3 运行 Django 数据库迁移
 
 Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与代码中描述的架构相匹配。
 
-1. 通过在浏览器中导航至以下 URL 并使用 Azure 帐户凭据（而不是数据库服务器凭据）登录来建立 SSH 会话。
+1. 通过导航至以下 URL 并使用 Azure 帐户凭据（而不是数据库服务器凭据）登录来在浏览器中建立 SSH 会话。
 
     ```
     https://<app-name>.scm.azurewebsites.net/webssh/host
@@ -230,7 +231,7 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 
     在 macOS 和 Linux 上，可以使用 [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。
 
-    如果你无法连接到 SSH 会话，则表示应用本身已启动失败。 [请查看诊断日志](#stream-diagnostic-logs)以了解详细信息。 例如，如果你没有在上一部分中创建必要的应用设置，则日志将指示 `KeyError: 'DBNAME'`。
+    如果你无法连接到 SSH 会话，则表示应用本身已启动失败。 [请查看诊断日志](#6-stream-diagnostic-logs)以了解详细信息。 例如，如果你没有在上一部分中创建必要的应用设置，则日志将指示 `KeyError: 'DBNAME'`。
 
 1. 在 SSH 会话中运行以下命令（可以使用 Ctrl+Shift+V 粘贴命令）  ：
 
@@ -257,11 +258,11 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
     
-### <a name="create-a-poll-question-in-the-app"></a>在应用中创建投票问题
+### <a name="44-create-a-poll-question-in-the-app"></a>4.4 在应用中创建投票问题
 
 1. 在浏览器中打开 URL `http://<app-name>.azurewebsites.net`。 应用应显示消息“无可用投票”，因为数据库中尚没有特定的投票。
 
-    如果看到“应用程序错误”，可能是由于你没有在上一步（[配置环境变量以连接数据库](#configure-environment-variables-to-connect-the-database)）中创建所需的设置，或者这些值包含错误。 运行命令 `az webapp config appsettings list` 以检查设置。 还可以[检查诊断日志](#stream-diagnostic-logs)以查看应用启动过程中的特定错误。 例如，如果你未创建设置，则日志将显示错误 `KeyError: 'DBNAME'`。
+    如果看到“应用程序错误”，可能是由于你没有在上一步（[配置环境变量以连接数据库](#42-configure-environment-variables-to-connect-the-database)）中创建所需的设置，或者这些值包含错误。 运行命令 `az webapp config appsettings list` 以检查设置。 还可以[检查诊断日志](#6-stream-diagnostic-logs)以查看应用启动过程中的特定错误。 例如，如果你未创建设置，则日志将显示错误 `KeyError: 'DBNAME'`。
 
     更新设置以更正所有错误后，请等待应用重启，然后刷新浏览器。
 
@@ -276,11 +277,11 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 > [!NOTE]
 > 应用服务将通过在每个 `manage.py startproject` 默认创建的子文件夹中查找“wsgi.py”文件来检测 Django 项目。 应用服务找到该文件后，就会加载 Django Web 应用。 有关详细信息，请参阅[配置内置的 Python 映像](configure-language-python.md)。
 
-## <a name="make-code-changes-and-redeploy"></a>进行代码更改并重新部署
+## <a name="5-make-code-changes-and-redeploy"></a>5.进行代码更改并重新部署
 
 在本部分中，你将对应用进行本地更改，并将代码重新部署到应用服务。 在此过程中，你将设置支持正在进行的工作的 Python 虚拟环境。
 
-### <a name="run-the-app-locally"></a>在本地运行应用
+### <a name="51-run-the-app-locally"></a>5.1 在本地运行应用
 
 在终端窗口中运行以下命令。 创建超级用户时，请确保遵循以下提示：
 
@@ -355,7 +356,7 @@ python manage.py runserver
 
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="update-the-app"></a>更新应用
+### <a name="52-update-the-app"></a>5.2 更新应用
 
 在 `polls/models.py` 中，找到以 `choice_text` 开头的行，并将 `max_length` 参数更改为 100：
 
@@ -377,7 +378,7 @@ python manage.py migrate
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="redeploy-the-code-to-azure"></a>将代码重新部署到 Azure
+### <a name="53-redeploy-the-code-to-azure"></a>5.3 将代码重新部署到 Azure
 
 在存储库根目录中运行以下命令：
 
@@ -389,7 +390,7 @@ az webapp up
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="rerun-migrations-in-azure"></a>在 Azure 中重新运行迁移
+### <a name="54-rerun-migrations-in-azure"></a>5.4 在 Azure 中重新运行迁移
 
 由于对数据模型进行了更改，因此需要在应用服务中重新运行数据库迁移。
 
@@ -406,13 +407,13 @@ python manage.py migrate
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-### <a name="review-app-in-production"></a>在生产环境中查看应用
+### <a name="55-review-app-in-production"></a>5.5 在生产环境中查看应用
 
 浏览到“`http://<app-name>.azurewebsites.net`”并再次在生产中测试应用。 （因为你仅更改了数据库字段的长度，所以仅在创建问题时尝试输入较长的响应时，更改才会比较明显。）
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
+## <a name="6-stream-diagnostic-logs"></a>6.流式传输诊断日志
 
 可以访问在 Azure 上托管应用的容器内部生成的控制台日志。
 
@@ -437,7 +438,7 @@ az webapp log tail
 > az webapp log config --docker-container-logging filesystem
 > ```
 
-## <a name="manage-your-app-in-the-azure-portal"></a>在 Azure 门户中管理应用
+## <a name="7-manage-your-app-in-the-azure-portal"></a>7.在 Azure 门户中管理应用
 
 在 [Azure 门户](https://portal.azure.com)中，搜索应用名称并在结果中选择应用。
 
@@ -449,7 +450,7 @@ az webapp log tail
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
-## <a name="clean-up-resources"></a>清理资源
+## <a name="8-clean-up-resources"></a>8.清理资源
 
 如果想要保留应用或者继续查看其他教程，请直接跳转到[后续步骤](#next-steps)。 否则，若要避免产生持续的费用，你可以删除为本教程创建的资源组：
 

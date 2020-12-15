@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505285"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750894"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -220,8 +220,8 @@ az extension add --name spring-cloud
 
    * 订阅：选择要在其中收取此资源费用的订阅。
    * 资源组：创建新的资源组。 此处输入的名称将在后面的步骤中用作 \<resource group name\>。
-   * **服务详细信息/名称** ：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
-   * **区域** ：为服务实例选择区域。
+   * **服务详细信息/名称**：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
+   * **区域**：为服务实例选择区域。
 
    ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -352,6 +352,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 
   ![Initializr 页](media/spring-cloud-quickstart-java/initializr-page.png)
 
+> [!NOTE]
+> 我们已经确认，Spring Boot 2.4 在应用与 Eureka 之间进行 TLS 身份验证时出现问题，我们目前正在与 Spring 社区协作，以解决此问题。 请参阅我们的[常见问题解答](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)以获取解决方法。
+
 1. 设置好所有依赖项后，单击“生成”。 下载包并将其解压缩，然后按照如下所示添加 `src/main/java/com/example/hellospring/HelloController.java`，以便为简单的 Web 应用程序创建 Web 控制器：
 
     ```java
@@ -389,7 +392,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 5. 在 Azure Spring Cloud“创建”页中填写表单。  遵循以下指南：
     - 订阅：选择要在其中收取此资源费用的订阅。
     - 资源组：最佳做法是为新资源创建新的资源组。 后面的步骤会将其用作 \<resource group name\>。
-    - **服务详细信息/名称** ：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
+    - **服务详细信息/名称**：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
     - 位置：为服务实例选择区域。
 
     ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)

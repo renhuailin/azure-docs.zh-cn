@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754363"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387464"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -68,12 +68,24 @@ Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，
 
 ## <a name="faq---pricing-and-billing"></a>常见问题解答 - 定价和计费 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>如何跟踪哪个组织用户在 Azure 安全中心启用了 Azure Defender 更改
+- [如何跟踪我的组织中谁已在 Azure 安全中心启用 Azure Defender 更改？](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [安全中心提供了哪些计划？](#what-are-the-plans-offered-by-security-center)
+- 如何为订阅启用 Azure Defender？
+- 能否在我的订阅中为服务器子集上的服务器启用 Azure Defender？
+- [我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [是否需要为未安装 Log Analytics 代理的计算机付费？](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [如果 Log Analytics 代理向多个工作区报告，是否需要重复付费？](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [如果 Log Analytics 代理向多个工作区报告，是否所有工作区上均提供 500-MB 的免费数据引入？](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [500 MB 免费数据引入量是针对整个工作区计算还是严格按每台计算机计算得出的？](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>如何跟踪我的组织中谁已在安全中心启用 Azure Defender 更改？
 Azure 订阅可能具有多个管理员，这些管理员有权更改定价设置。 若要找到做出更改的用户，请使用 Azure 活动日志。
 
-如果“事件发起者”列中未列出用户信息，请了解事件以获取相关详细信息。
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="显示定价更改事件的 Azure 活动日志":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Azure 事件日志显示了定价更改事件":::
+如果“事件发起者”列中未列出用户信息，请查看事件的 JSON 了解相关详细信息。
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure 活动日志 JSON 资源管理器":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>安全中心提供了哪些计划？ 
@@ -115,6 +127,10 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>如果 Log Analytics 代理向多个工作区报告，是否所有工作区上均提供 500-MB 的免费数据引入？
 是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或多个不同的 Log Analytics 工作区（多宿主），则将获得 500-MB 的免费数据引入。 它是按每个节点、每个报告的工作空间、每一天来计算的，并且适用于安装了“安全”或“反恶意软件”解决方案的所有工作空间。 你将需要为超出 500 MB 的引入数据付费。
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>500 MB 免费数据引入量是针对整个工作区计算还是严格按每台计算机计算得出的？
+对于连接到工作区的每台计算机，你每天都可免费引入 500 MB 的数据。 专用于直接由 Azure 安全中心收集的安全数据类型。
+
+此数据在所有节点中按每日费率平摊。 因此，即使某些计算机发送 100 MB 的数据，另一些发送 800 MB 的数据，只要总量不超过免费限额（[计算机数量] x 500 MB），我们就不会对你额外收费。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了安全中心的定价选项。 如需查看相关材料，请参阅：

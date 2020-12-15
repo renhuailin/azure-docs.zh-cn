@@ -1,20 +1,20 @@
 ---
-title: 教程：使用 Azure Notebooks (Python) 规划电动车路线 | Microsoft Azure Maps
+title: 教程：通过 Microsoft Azure Maps 使用 Azure Notebooks (Python) 规划电动车路线
 description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905734"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务（预览版）
 
-你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务。 可使用[数据上传 API](/rest/api/maps/data/uploadpreview)。 
+你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 可使用[数据上传 API](/rest/api/maps/data/uploadpreview)。 
 
 若要将边界和充电站数据上传到 Azure Maps 数据服务，请运行以下两个单元：
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>直观显示路线
 
-为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务。 为此，可使用 Azure Maps 的[数据上传 API](/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
+为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 为此，可使用 Azure Maps 的[数据上传 API](/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
 
 若要获取地图上呈现的路线图像，请运行以下脚本：
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的 AWS 实例
-description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的 AWS 实例。
+description: 了解如何使用 Azure Migrate 服务器评估来访问要迁移到 Azure 的 AWS 实例。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d64d239eeb3be5bf94830a425c6e097a69a64b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90107969"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753345"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>教程：评估 AWS 实例以便迁移到 Azure
 

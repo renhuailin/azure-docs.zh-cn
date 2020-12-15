@@ -3,18 +3,18 @@ title: 教程：从必应地图迁移 Web 服务 | Microsoft Azure Maps
 description: 有关如何将 Web 服务从必应地图迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897018"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904952"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>教程 - 从必应地图迁移 Web 服务
 
@@ -37,21 +37,21 @@ Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问
 | 空间数据服务 (SDS)           | [搜索](/rest/api/maps/search) + [路线](/rest/api/maps/route) + 其他 Azure 服务 |
 | 时区                             | [时区](/rest/api/maps/timezone)  |
 | 交通事故                     | [交通事件详细信息](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Elevation                             | [高程（预览版）](/rest/api/maps/elevation)
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
--   高程 - 已计划
 -   优化的路线 - 已计划。 Azure Maps 路由 API 支持单个车辆的旅行推销员优化。
 -   图像元数据 - 主要用于在必应地图中获取图块 URL。 Azure Maps 具有用于直接访问地图图块的独立服务。
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务；
 
--   [Azure Maps Creator](./creator-indoor-maps.md) - 创建建筑和空间的自定义专有数字孪生。
+-   [Azure Maps Creator（预览版）](./creator-indoor-maps.md) - 创建建筑和空间的自定义专有数字孪生。
 -   [空间操作](/rest/api/maps/spatial) - 将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
 -   [地图图块](/rest/api/maps/render/getmaptile) - 通过 Azure Maps 访问光栅和矢量图块形式的道路和图像图块。
 -   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview) - 支持在一段时间内在单个批处理中发出多达 1,000 个路线请求。 路线在服务器上并行计算，以提高处理速度。
 -   [交通](/rest/api/maps/traffic)流量 - 访问光栅和矢量图块形式的实时交通流量数据。
--   [地理位置 API](/rest/api/maps/geolocation/getiptolocationpreview) - 获取 IP 地址的位置。
+-   [地理位置 API（预览版）](/rest/api/maps/geolocation/getiptolocationpreview) - 获取 IP 地址的位置。
 -   [天气服务](/rest/api/maps/weather) - 获取实时和预报天气数据。
 
 请务必查看以下最佳做法指南：
@@ -186,7 +186,7 @@ Azure Maps 路线服务提供以下 API 来计算路线；
 
 -   [计算路线](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。
 -   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
--   [移动服务](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
+-   [出行服务（预览版）](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 

@@ -2,21 +2,21 @@
 title: Azure Active Directory 域服务概述 | Microsoft 文档
 description: 在本概述中，了解 Azure Active Directory 域服务提供的内容，以及如何在组织中用其向云中的应用程序和服务提供标识服务。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
-ms.author: joflore
+ms.date: 12/03/2020
+ms.author: justinha
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 141b59e400154ef40ebced25c69eaf162ac1787a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967981"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619107"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
@@ -33,7 +33,7 @@ Azure AD DS 与现有的 Azure AD 租户集成。 通过此集成，用户可以
 
 创建 Azure AD DS 托管域时，需定义唯一的命名空间。 该命名空间为域名，例如“aaddscontoso.com”。 两个 Windows Server 域控制器 (DC) 随即部署到选定的 Azure 区域中。 DC 的这种部署称为副本集。
 
-你不需要管理、配置或更新这些 DC。 Azure 平台将 DC 作为托管域的一部分进行处理，包括备份。
+你不需要管理、配置或更新这些 DC。 Azure 平台将这些 DC 作为托管域的一部分进行处理，包括使用 Azure 磁盘加密的静态备份和静态加密。
 
 托管域配置为从 Azure AD 执行单向同步，以提供对一组集中用户、组和凭据的访问。 你可以直接在托管域中创建资源，但它们不会同步回 Azure AD。 然后，Azure 中连接到该托管域的应用程序、服务和 VM 便可使用常见 AD DS 功能，如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
 

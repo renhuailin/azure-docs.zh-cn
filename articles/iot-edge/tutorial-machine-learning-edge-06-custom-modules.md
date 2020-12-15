@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959435"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932330"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -51,6 +51,15 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 ![IoT Edge 三模块架构图](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 本文的步骤通常由云开发人员执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 通过自定义代码创建 IoT Edge 模块。
+> * 从自定义模块生成 Docker 映像。
+> * 重新配置 IoT 中心路由以支持你的自定义模块。
+> * 生成、发布和部署自定义模块。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -804,6 +813,10 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    ```bash
    sudo docker exec -it avroFileWriter bash
    ```
+
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

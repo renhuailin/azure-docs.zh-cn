@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449941"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852636"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -44,8 +44,10 @@ Azure 安全中心支持基于不同类型的混合环境的虚拟机和服务�
 
 还要确保 Log Analytics 代理已[正确配置为将数据发送到安全中心](security-center-enable-data-collection.md#manual-agent)
 
-> [!TIP]
-> 若要详细了解 Windows 和 Linux 上提供的特定安全中心功能，请参阅[适用于计算机的功能覆盖范围](security-center-services.md)。
+若要详细了解 Windows 和 Linux 上提供的特定安全中心功能，请参阅[适用于计算机的功能覆盖范围](security-center-services.md)。
+
+> [!NOTE]
+> 即使 Azure Defender 旨在保护服务器，Windows 10 计算机仍支持适用于服务器的 Azure Defender 的大多数功能。 当前不支持的功能是[安全中心的集成 EDR 解决方案：用于终结点的 Microsoft Defender](security-center-wdatp.md)。
 
 ## <a name="managed-virtual-machine-services"></a>托管的虚拟机服务 <a name="virtual-machine"></a>
 

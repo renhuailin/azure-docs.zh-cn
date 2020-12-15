@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心
-description: 本快速入门将使用 C 设备 SDK 创建一个将对称密钥与 Azure IoT 中心设备预配服务 (DPS) 结合使用的模拟设备
+title: 快速入门 - 通过 C 使用对称密钥将设备预配到 Azure IoT 中心
+description: 本快速入门将使用 C 设备 SDK 预配设备，使其将对称密钥与 Azure IoT 中心设备预配服务 (DPS) 结合使用
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/14/2020
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ab998756f219cd7bc155f98c2d29454be8018825
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968207"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746499"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
+# <a name="quickstart-provision-a-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配设备
 
-本快速入门介绍如何在 Windows 开发计算机上创建和运行设备模拟器。 你将配置此模拟设备，以使用对称密钥对设备预配服务实例进行身份验证，并将此模拟设备分配到 IoT 中心。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的示例代码来模拟启动预配的设备的启动序列。 将根据预配服务实例的单个注册来识别该设备，然后将其分配到 IoT 中心。
+在本快速入门中，将了解如何在 Windows 开发计算机上运行设备预配代码，将其作为 IoT 设备连接到 IoT 中心。 你将配置此设备，以使用对称密钥对设备预配服务实例进行身份验证，并将此设备分配到 IoT 中心。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的示例代码将用于预配设备。 将根据预配服务实例的单个注册来识别该设备，然后将其分配到 IoT 中心。
 
 虽然本文演示了使用单个注册进行预配，但你也可以使用注册组。 使用注册组时有一些不同之处。 例如，必须将派生的设备密钥与设备的唯一注册 ID 一起使用。 虽然对称密钥注册组不限于旧设备，但[如何使用对称密钥证明预配旧设备](how-to-legacy-device-symm-key.md)提供了注册组示例。 有关详细信息，请参阅[对称密钥证明的组注册](concepts-symmetric-key-attestation.md#group-enrollments)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "94968207"
 
 在本部分，你将准备一个用于生成 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的开发环境。 
 
-SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动顺序期间进行预配。
+SDK 包含设备的预配示例代码。 此代码将尝试在设备启动顺序期间进行预配。
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
@@ -73,7 +73,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     cd cmake
     ```
 
-5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
+5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中为设备预配代码生成 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -123,7 +123,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-first-boot-sequence-for-the-device"></a>模拟设备的首次启动顺序
+## <a name="run-the-provisioning-code-for-the-device"></a>运行设备的预配代码
 
 在本部分更新向设备预配服务实例发送设备启动序列的示例代码。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
 
@@ -158,7 +158,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 在 **prov\_dev\_client\_sample.c** 中，找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
+6. 在 prov\_dev\_client\_sample.c 中，找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -176,9 +176,9 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目提示中，选择“是”，以便在运行项目之前重新生成项目。
 
-    以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
+    以下输出是设备成功连接到要分配到 IoT 中心的预配服务实例的示例：
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -194,7 +194,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     Press enter key to exit:
     ```
 
-9. 在门户中，导航到模拟设备分配到的 IoT 中心，然后选择“IoT 设备”选项卡  。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”  边栏选项卡上，“状态”为“已启用”   。 你可能需要按顶部的“刷新”按钮  。 
+9. 在门户中，导航到设备分配到的 IoT 中心，然后选择“IoT 设备”选项卡。将设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”。 你可能需要按顶部的“刷新”按钮  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
@@ -209,7 +209,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何在 Windows 计算机上创建模拟设备，以及如何在门户中通过 Azure IoT 中心设备预配服务使用对称密钥将其预配到 IoT 中心。 若要了解如何以编程方式注册设备，请继续学习快速入门中关于 X.509 设备的编程注册部分的内容。 
+在本快速入门中，你在 Windows 计算机上运行了设备预配代码。  已使用对称密钥对设备进行身份验证并将其预配到 IoT 中心。 若要了解如何预配 X.509 证书设备，请继续阅读 X.509 设备快速入门。 
 
 > [!div class="nextstepaction"]
-> [Azure 快速入门 - 将 X.509 设备注册到 Azure IoT 中心设备预配服务](quick-enroll-device-x509-java.md)
+> [Azure 快速入门 - 使用 Azure IoT C SDK 预配 X.509 设备](quick-create-simulated-device-x509.md)

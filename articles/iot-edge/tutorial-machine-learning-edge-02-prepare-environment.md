@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433483"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932364"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
 本文将帮助你准备好用于开发和部署的环境。 首先，在开发计算机上设置好所有必需工具。 然后，在 Azure 中创建必要的云资源。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 设置用于开发的虚拟机。
+> * 设置 IoT 中心和云存储以供开发环境使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -210,15 +217,13 @@ Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和
 
 1. 由于我们未进行任何编辑，因此请直接关闭此页。
 
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，我们创建了 IoT 中心，并配置了 Azure 存储帐户的路由。 接下来，我们将通过 IoT 中心将来自一组模拟设备的数据发送到存储帐户。 在本教程的后面部分，在配置 IoT Edge 设备和模块之后，我们将再次关注路由并详细了解路由查询。
-
-有关 IoT Edge 上的机器学习教程这部分所涵盖的步骤详细信息，请参阅：
-
-* [Azure IoT 基础](../iot-fundamentals/index.yml)
-* [使用 IoT 中心配置消息路由](../iot-hub/tutorial-routing.md)
-* [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
 
 继续阅读下一篇文章，创建模拟设备以进行监视。
 

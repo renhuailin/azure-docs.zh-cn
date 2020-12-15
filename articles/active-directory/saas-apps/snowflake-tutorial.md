@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514837"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "92514837"
 * 可让用户使用其 Azure AD 帐户自动登录到 Snowflake（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -39,16 +39,16 @@ ms.locfileid: "92514837"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程会在测试环境中配置和测试 Azure AD 单一登录。
+本教程在测试环境中配置并测试 Azure AD 单一登录。
 
-* Snowflake 支持 **SP 和 IDP** 发起的 SSO
-* Snowflake 支持[自动用户预配和取消预配](snowflake-provisioning-tutorial.md)（推荐）
+- Snowflake 支持 **SP 和 IDP** 发起的 SSO
+- Snowflake 支持[自动用户预配和取消预配](snowflake-provisioning-tutorial.md)（推荐）
 
 ## <a name="adding-snowflake-from-the-gallery"></a>从库中添加 Snowflake
 
 要配置 Snowflake 与 Azure AD 的集成，需要从库中将 Snowflake 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Snowflake，请执行以下步骤：**
+**从库中添加 Snowflake：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -64,11 +64,11 @@ ms.locfileid: "92514837"
 
 4. 在搜索框中，键入“Snowflake”，在结果面板中选择“Snowflake”，然后单击“添加”按钮添加应用程序    。
 
-     ![结果列表中的 Snowflake](common/search-new-app.png)
+     ![结果列表中的 Snowflake](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”  的测试用户配置和测试 Snowflake 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Snowflake 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Snowflake 相关用户之间建立链接关系。
 
 若要配置和测试 Snowflake 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -98,9 +98,9 @@ ms.locfileid: "92514837"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤   ：
+4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤 ：
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
@@ -142,7 +142,7 @@ ms.locfileid: "92514837"
     
     ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-1. 在记事本中打开 **下载的 Base 64 证书** 。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面 **证书** 旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值  。 选择“所有查询”  ，然后单击“运行”  。
+1. 在记事本中打开 **下载的 Base 64 证书**。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面 **证书** 旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值  。 选择“所有查询”  ，然后单击“运行”  。
 
    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 

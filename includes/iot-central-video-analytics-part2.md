@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876617"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763384"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>部署和配置 Azure 媒体服务
 
@@ -34,7 +34,15 @@ ms.locfileid: "91876617"
 
 在 scratchpad.txt 文件中记下媒体服务帐户名称。
 
-部署完成后，导航到媒体服务帐户的“属性”页 。 在 scratchpad.txt 文件中记下资源 ID，稍后在配置 IoT Edge 模块时要使用此值。
+部署完成后，打开 Cloud Shell，并运行以下命令来检索媒体服务帐户的“资源 ID”：
+
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="使用 Cloud Shell 获取资源 ID":::
+
+在 scratchpad.txt 文件中记下资源 ID，稍后在配置 IoT Edge 模块时要使用此值。
 
 接下来，为媒体服务资源配置 Azure Active Directory 服务主体。 依次选择“API 访问”和“服务主体身份验证” 。 创建一个新的 Azure Active Directory 应用，名称与媒体服务资源相同，然后创建一个机密并附加 IoT Edge 访问权限说明。
 
@@ -74,7 +82,7 @@ ms.locfileid: "91876617"
 
 1. 选择“创建”。
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="为 Azure 媒体服务配置 Azure AD 应用":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure IoT Central 的“创建应用程序”页":::
 
 ### <a name="retrieve-the-configuration-data"></a>检索配置数据
 
@@ -82,11 +90,11 @@ ms.locfileid: "91876617"
 
 在“管理”部分中，选择“你的应用程序”并在 scratchpad.txt 文件中记下应用程序 URL 和应用程序 ID   ：
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="为 Azure 媒体服务配置 Azure AD 应用":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="屏幕截图显示了一个视频分析页的“管理”窗格，其中突出显示了“应用程序 URL”和“应用程序 ID”。":::
 
 选择“API 令牌”，并为“操作员”角色生成名为 LVAEdgeToken 的新令牌  ：
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="为 Azure 媒体服务配置 Azure AD 应用":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="生成令牌":::
 
 在 scratchpad.txt 文件中记下令牌供稍后使用。 对话框关闭后，不能再次查看令牌。
 

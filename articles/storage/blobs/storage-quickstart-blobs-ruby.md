@@ -1,22 +1,22 @@
 ---
-title: Azure 快速入门 - 使用 Ruby 在对象存储中创建 blob | Microsoft Docs
-description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Ruby 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: 快速入门：Azure Blob 存储客户端库 - Ruby
+description: 在Azure Blob 存储中创建存储帐户和容器。 使用适用于 Ruby 的存储客户端库创建、下载 Blob 并列出容器中的 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2018
+ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523257"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781090"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入门：使用 Ruby 上传、下载和列出 Blob
+# <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>快速入门：适用于 Ruby 的 Azure Blob 存储客户端库
 
-本快速入门介绍如何使用 Ruby 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
+了解如何使用 Ruby 创建、下载和列出 Microsoft Azure Blob 存储的容器中的 Blob。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -24,172 +24,181 @@ ms.locfileid: "95523257"
 
 请确保已安装下述额外的必备组件：
 
-* [Ruby](https://www.ruby-lang.org/en/downloads/)
-* 使用 rubygem 包安装[用于 Ruby 的 Azure 存储库]()： 
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- 使用 [RubyGem 包](https://rubygems.org/gems/azure-storage-blob)安装[用于 Ruby 的 Azure 存储库](https://github.com/azure/azure-storage-ruby)：
 
-    ```
+    ```console
     gem install azure-storage-blob
     ```
-    
+
 ## <a name="download-the-sample-application"></a>下载示例应用程序
-本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git)是基本的 Ruby 应用程序。  
 
-使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 
+本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git)是基本的 Ruby 应用程序。
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git 
+使用 [Git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 此命令会将存储库克隆到本地计算机：
+
+```console
+git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Ruby 示例应用程序，请查找 storage-blobs-ruby-quickstart 文件夹，然后打开 example.rb 文件。  
+导航到 storage-blobs-ruby-quickstart 文件夹，然后在代码编辑器中打开 example.rb 文件 。
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 `BlobService` 实例。 从 IDE 中的解决方案资源管理器打开 `example.rb` 文件。 将 accountname  和 accountkey  值分别替换为帐户名称和密钥。 
 
-```ruby 
-blob_client = Azure::Storage::Blob::BlobService.create(
-            storage_account_name: account_name,
-            storage_access_key: account_key
-          )
-```
+提供存储帐户名称和帐户密钥，以创建应用程序的 [BlobService](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) 实例。
 
-## <a name="run-the-sample"></a>运行示例
-此示例将在“文档”文件夹中创建一个测试文件。 示例程序会将该测试文件上传到 Blob 存储，列出容器中的 blob，并使用新名称下载此文件。 
+example.rb 文件中的以下代码将新的 [BlobService](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) 对象实例化。 将 accountname  和 accountkey  值分别替换为帐户名称和密钥。
 
-运行该示例。 以下输出是运行应用程序时返回的输出的示例：
-  
-```
-Creating a container: quickstartblobs7b278be3-a0dd-438b-b9cc-473401f0c0e8
-
-Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-List blobs in the container
-         Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
-```
-按任意键继续时，示例程序会删除存储容器和文件。 继续前，请在“文档”文件夹中查看这两个文件。 可以打开它们，并看到它们完全相同。
-
-还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
-
-验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途以后，即可打开 example.rb 文件来查看代码。 
-
-## <a name="understand-the-sample-code"></a>了解示例代码
-
-接下来逐步介绍示例代码，以便展示其工作方式。
-
-### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
-首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
-
-* 创建 Azure 存储 **BlobService** 对象的实例，用于设置连接凭据。 
-* 创建 **容器** 对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
-
-有了云 Blob 容器后，可以创建 **块** Blob 对象，使之指向你感兴趣的特定 Blob，然后执行上传、下载、复制等操作。
-
-> [!IMPORTANT]
-> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
-
-此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs  。 
-
-```ruby 
+```ruby
 # Create a BlobService object
+account_name = "accountname"
+account_key = "accountkey"
+
 blob_client = Azure::Storage::Blob::BlobService.create(
     storage_account_name: account_name,
     storage_access_key: account_key
-    )
+)
+```
 
-# Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs' + SecureRandom.uuid
-container = blob_client.create_container(container_name)   
+## <a name="run-the-sample"></a>运行示例
 
-# Set the permission so the blobs are public.
+此示例在 Blob 存储中创建一个容器，在容器中创建新的 Blob、列出容器中的 Blob 并将 Blob 下载到本地文件。
+
+运行该示例。 下面是运行应用程序的输出示例：
+
+```console
+C:\azure-samples\storage-blobs-ruby-quickstart> ruby example.rb
+
+Creating a container: quickstartblobs18cd9ec0-f4ac-4688-a979-75c31a70503e
+
+Creating blob: QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+List blobs in the container following continuation token
+        Blob name: QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+Downloading blob to C:/Users/azureuser/Documents/QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+Paused, press the Enter key to delete resources created by the sample and exit the application
+```
+
+按 Enter 继续时，示例程序会删除存储容器和本地文件。 继续前，请在“文档”文件夹中检查下载的文件。
+
+还可以使用 [Azure 存储资源管理器](https://storageexplorer.com)查看存储帐户中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
+
+验证文件后，按 Enter 键删除测试文件并结束演示。 打开 example.rb 文件查看代码。
+
+## <a name="understand-the-sample-code"></a>了解示例代码
+
+接下来逐步介绍示例代码，以便你可以了解其工作方式。
+
+### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
+
+首先创建用于访问和管理 Blob 存储的对象的实例。 这些对象相互关联， 每个对象被列表中的下一个对象使用。
+
+- 创建 Azure 存储 [BlobService](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) 对象的实例，用于设置连接凭据。
+- 创建[容器](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container/Container)对象，该对象代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+
+获得容器对象后，可以创建[块](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Block) Blob 对象，使之指向你感兴趣的特定 Blob。 使用[块](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Block)对象创建、下载和复制 Blob。
+
+> [!IMPORTANT]
+> 容器名称必须为小写。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
+
+下面的示例代码：
+
+- 创建新容器
+- 设置容器的权限，使 Blob 成为公共 Blob。 容器名为 quickstartblobs，追加了唯一 ID。
+
+```ruby
+# Create a container
+container_name = "quickstartblobs" + SecureRandom.uuid
+puts "\nCreating a container: " + container_name
+container = blob_client.create_container(container_name)
+
+# Set the permission so the blobs are public
 blob_client.set_container_acl(container_name, "container")
 ```
 
-### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
+### <a name="create-a-blob-in-the-container"></a>在容器中创建 Blob
 
-Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 blob，此快速入门中使用的便是它。  
+Blob 存储支持块 Blob、追加 Blob 和页 Blob。 若要创建 Blob，请调用 [create_block_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#create_block_blob-instance_method) 方法传入 Blob 的数据。
 
-若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **create\_block\_blob()** 方法将文件上传到指定的路径。 
-
-示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file\_path\_to\_file，将 blob 的名称存储为 local\_file\_name。 以下示例将文件上传到名为“quickstartblobs”的容器  。
+以下示例在前面创建的容器中创建一个名为 QuickStart_ 的 Blob，其具有唯一 ID 和 .txt 文件扩展名 。
 
 ```ruby
-# Create a file in Documents to test the upload and download.
-local_path=File.expand_path("~/Documents")
-local_file_name ="QuickStart_" + SecureRandom.uuid + ".txt"
-full_path_to_file =File.join(local_path, local_file_name)
-
-# Write text to the file.
-file = File.open(full_path_to_file,  'w')
-file.write("Hello, World!")
-file.close()
-
-puts "Temp file = " + full_path_to_file
-puts "\nUploading to Blob storage as blob" + local_file_name
-
-# Upload the created file, using local_file_name for the blob name
-blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
+# Create a new block blob containing 'Hello, World!'
+blob_name = "QuickStart_" + SecureRandom.uuid + ".txt"
+blob_data = "Hello, World!"
+puts "\nCreating blob: " + blob_name
+blob_client.create_block_blob(container.name, blob_name, blob_data)
 ```
 
-若要对块 Blob 进行部分更新，请使用 **create\_block\_list()** 方法。 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 追加 Blob 应在单编写器模型中使用。 存储在 Blob 存储中的大多数对象都是块 blob。
+块 Blob 最大可以为 4.7 TB，并且可以是从电子表格到大视频文件的任何内容。 页 Blob 主要用于支持 IaaS 虚拟机的 VHD 文件。 追加 Blob 通常用于日志记录，例如有时需要写入到文件，再继续添加更多信息。
 
-### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
+### <a name="list-the-blobs-in-a-container"></a>列出容器中的 blob
 
-可以使用 **list\_blobs()** 方法获取容器中文件的列表。 下面的代码检索 blob 列表，然后循环访问它们，显示在容器中找到的 blob 的名称。  
+使用 list_blobs[](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container#list_blobs-instance_method) 方法获取容器中的文件的列表。 下面的代码检索 Blob 列表，然后显示它们的名称。
 
 ```ruby
 # List the blobs in the container
+puts "\nList blobs in the container following continuation token"
 nextMarker = nil
 loop do
     blobs = blob_client.list_blobs(container_name, { marker: nextMarker })
     blobs.each do |blob|
-        puts "\tBlob name #{blob.name}"
+        puts "\tBlob name: #{blob.name}"
     end
     nextMarker = blobs.continuation_token
     break unless nextMarker && !nextMarker.empty?
 end
 ```
 
-### <a name="download-the-blobs"></a>下载 Blob
+### <a name="download-a-blob"></a>下载 blob
 
-使用 **get\_blob()** 方法将 Blob 下载到本地磁盘。 以下代码将下载前面部分所上传的 blob。 会将“_DOWNLOADED”添加为 blob 名称的前缀，以便可以在本地磁盘上同时看到这两个文件。 
+使用 [get_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#get_blob-instance_method) 方法将 Blob 下载到本地磁盘。 以下代码将下载前面部分所创建的 Blob。
 
 ```ruby
-# Download the blob(s).
-# Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = File.join(local_path, local_file_name.gsub('.txt', '_DOWNLOADED.txt'))
+# Download the blob
 
-puts "\n Downloading blob to " + full_path_to_file2
-blob, content = blob_client.get_blob(container_name,local_file_name)
-File.open(full_path_to_file2,"wb") {|f| f.write(content)}
+# Set the path to the local folder for downloading
+if(is_windows)
+    local_path = File.expand_path("~/Documents")
+else 
+    local_path = File.expand_path("~/")
+end
+
+# Create the full path to the downloaded file
+full_path_to_file = File.join(local_path, blob_name)
+
+puts "\nDownloading blob to " + full_path_to_file
+blob, content = blob_client.get_blob(container_name, blob_name)
+File.open(full_path_to_file,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>清理资源
-如果不再需要本快速入门中上传的 Blob，可使用 **delete\_container()** 方法删除整个容器。 如果不再需要已创建的文件，请使用 **delete\_blob()** 方法将文件删除。
+
+如果不再需要 Blob，请使用 [delete_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#delete_blob-instance_method) 将其删除。 使用 [delete_container](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container#delete_container-instance_method) 方法删除整个容器。 删除容器还会删除容器中存储的所有 Blob。
 
 ```ruby
-# Clean up resources. This includes the container and the temp files
+# Clean up resources, including the container and the downloaded file
 blob_client.delete_container(container_name)
 File.delete(full_path_to_file)
-File.delete(full_path_to_file2)    
 ```
+
 ## <a name="resources-for-developing-ruby-applications-with-blobs"></a>用于开发包含 Blob 的 Ruby 应用程序的资源
 
-查看以下附加资源，了解如何使用 Blob 存储进行 Ruby 开发：
+查看以下附加资源，了解如何进行 Ruby 开发：
 
 - 在 GitHub 上查看并下载 Azure 存储的 [Ruby 客户端库源代码](https://github.com/Azure/azure-storage-ruby)。
-- 浏览使用 Ruby 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob)。
+- 浏览使用 Ruby 客户端库编写的 [ 示例](/samples/browse/?products=azure&languages=ruby)。
+- [示例：Ruby 中的 Azure 存储入门](https://github.com/Azure-Samples/storage-blob-ruby-getting-started)
 
 ## <a name="next-steps"></a>后续步骤
- 
-本快速入门介绍了如何使用 Ruby 在本地磁盘和 Azure Blob 存储之间转移文件。 要深入了解如何使用 Blob 存储，请继续学习 Blob 存储操作说明。
+
+本快速入门介绍了如何使用 Ruby 在 Azure Blob 存储和本地磁盘之间传输文件。 若要了解有关如何使用 Blob 存储的详细信息，请继续阅读存储帐户概述。
 
 > [!div class="nextstepaction"]
-> [Blob 存储操作说明]()
-
+> [存储帐户概述](../common/storage-account-overview.md)
 
 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

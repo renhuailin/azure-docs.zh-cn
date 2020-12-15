@@ -96,8 +96,6 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: 安全性
           items:
-            - name: 安全基线
-              href: security-baseline.md
             - name: 加密
               href: ./security/workspaces-encryption.md
             - name: 网络安全
@@ -566,7 +564,7 @@
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: 管理库
           href: ./spark/apache-spark-azure-portal-add-libraries.md
-        - name: 使用笔记本
+        - name: 使用笔记本和 IDE 工具
           items:
             - name: 管理笔记本
               href: ./spark/apache-spark-development-using-notebooks.md
@@ -726,7 +724,7 @@
               href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database
+            - name: Azure SQL 数据库
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

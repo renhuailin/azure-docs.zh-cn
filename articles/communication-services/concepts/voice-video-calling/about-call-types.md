@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 97a90284ad8d195751eb5dd90675822d00243ea8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665202"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572705"
 ---
 # <a name="voice-and-video-concepts"></a>语音和视频概念
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-你可以使用 Azure 通信服务启动和接收语音和视频呼叫、分析呼叫元数据、记录呼叫，甚至构建呼叫树。 你可以对其他连接到 Internet 的设备和旧式电话进行呼叫。 你可以使用通信服务 JavaScript、Android 或 iOS 客户端库来构建允许用户在私人对话或小组讨论中彼此交谈的应用程序。 Azure 通信服务支持与服务或机器人之间的呼叫。
+可以使用 Azure 通信服务进行和接收一对一或群组语音和视频通话。 你可以对其他连接到 Internet 的设备和旧式电话进行呼叫。 你可以使用通信服务 JavaScript、Android 或 iOS 客户端库来构建允许用户在私人对话或小组讨论中彼此交谈的应用程序。 Azure 通信服务支持与服务或机器人之间的呼叫。
 
 ## <a name="call-types-in-azure-communication-services"></a>Azure 通信服务中的呼叫类型
 

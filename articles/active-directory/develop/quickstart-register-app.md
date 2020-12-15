@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1, contentperfq2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: ed4e3c54bd4aa6be314fe7ec12d6ba6e7cf949d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 860cd24c623cb6db407c82aa81e2c3662da289ed
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083314"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762969"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -37,10 +37,10 @@ ms.locfileid: "93083314"
 按照以下步骤创建应用注册：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
-1. 在“管理”下，选择“应用注册”，然后选择“新建注册”  。
-1. 输入应用程序的 **名称** 。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 指定可使用该应用程序的人员，这有时称为“登录访问者”。
 
     | 支持的帐户类型 | 说明 |

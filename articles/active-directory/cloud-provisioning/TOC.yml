@@ -48,6 +48,8 @@
       items:
         - name: 代理自动升级
           href: how-to-automatic-upgrade.md
+        - name: 代理注册表选项
+          href: how-to-manage-registry-options.md
     - name: 开发
       items:
         - name: 转换

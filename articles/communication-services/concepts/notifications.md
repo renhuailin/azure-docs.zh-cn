@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519347"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608496"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -48,13 +48,10 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 若要使用通知中心将推送通知传递到客户端设备，请在与通信服务资源相同的订阅中[创建通知中心](../../notification-hubs/create-notification-hub-portal.md)。 必须为想要使用的平台通知服务配置 Azure 通知中心。 若要了解如何从通知中心获取客户端应用程序中的推送通知，请参阅[通知中心入门](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，并从页面顶部附近的下拉列表中选择目标客户端平台。
 
 > [!NOTE]
-> 目前支持 APN 和 FCM 平台。
+> 目前支持 APN 和 FCM 平台。  
+APN 平台需要使用令牌身份验证模式进行配置。 目前不支持证书身份验证模式。 
 
 通知中心配置完成后，便可以使用 Azure 资源管理器客户端或通过 Azure 门户为中心提供连接字符串，从而将它关联到通信服务资源。 连接字符串应包含“发送”权限。 建议专门为中心创建另一个仅具有“发送”权限的访问策略。 详细了解[通知中心安全和访问策略](../../notification-hubs/notification-hubs-push-notification-security.md)
-
-> [!IMPORTANT]
-> 这仅适用于令牌身份验证模式。 目前不支持证书身份验证模式。  
-若要启用 APNS VOIP 通知，需要在将通知中心配置为具有 `.voip` 后缀的应用程序捆绑 ID 时设置捆绑 ID 的值。 有关更多详细信息，请参阅[通过通知中心使用 APNS VOIP](../../notification-hubs/voip-apns.md)。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure 资源管理器客户端配置通知中心
 

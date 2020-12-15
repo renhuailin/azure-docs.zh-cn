@@ -1,20 +1,20 @@
 ---
 title: 使用模板导入 SQL BACPAC 文件
-description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
+description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板（ARM 模板）导入 SQL BACPAC 文件。
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101879"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931395"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
-了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
+了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板（ARM 模板）导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
 在本教程中，你将创建一个模板来部署[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)、单个数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "86101879"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](./quickstart-create-templates-use-visual-studio-code.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](./quickstart-create-templates-use-visual-studio-code.md)。
 * 若要增强安全性，请使用为服务器管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
     ```console
@@ -252,7 +252,7 @@ Write-Host "Press [ENTER] to continue ..."
 1. 在 Azure 门户上的左侧菜单中选择“资源组”。
 1. 在“按名称筛选”字段中输入资源组名称。
 1. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
-1. 在顶部菜单中选择“删除资源组”。 
+1. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

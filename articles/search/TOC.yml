@@ -32,7 +32,7 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: JavaScript
+    - name: Javascript
       href: search-get-started-javascript.md
     - name: REST
       href: search-get-started-rest.md
@@ -256,9 +256,11 @@
       items:
         - name: 查询类型和组合
           href: search-query-overview.md
-        - name: 创建简单查询
+        - name: 创建基本查询
+          href: search-query-create.md
+        - name: 使用简单语法（示例）
           href: search-query-simple-examples.md
-        - name: 使用完整的 Lucene 语法
+        - name: 使用完整的 Lucene（示例）
           href: search-query-lucene-examples.md
         - name: 部分词和特殊字符
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 文件演示
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC 作业演示
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: 培训
       items:
         - name: 简介 (Microsoft Learn)

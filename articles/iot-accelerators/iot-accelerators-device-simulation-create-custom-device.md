@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165564"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852381"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>教程：创建自定义模拟设备
 
@@ -34,15 +34,7 @@ ms.locfileid: "92165564"
 
 若要按本教程操作，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，则应完成[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门。
-
-## <a name="open-device-simulation"></a>打开设备模拟
-
-若要在浏览器中运行设备模拟，请先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)。
-
-可能会要求使用 Azure 订阅凭据登录。
-
-然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 ## <a name="view-your-device-models"></a>查看设备模型
 

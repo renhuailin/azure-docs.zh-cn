@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: 数据见解
         href: concept-insights.md
+      - name: 支持的浏览器
+        href: supported-browsers.md
       - name: 常见问题
         href: frequently-asked-questions.md
   - name: 操作指南
@@ -90,7 +92,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: 管理术语模板
             href: how-to-manage-term-templates.md
+          - name: 批量编辑资产以配置术语表术语
+            href: how-to-bulk-edit-assets.md
       - name: 分类
         items:
           - name: 创建自定义分类和分类规则

@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506186"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780767"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -74,23 +74,11 @@ az login
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-然后导航到该文件夹：
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-然后导航到该文件夹：
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ cd python-docs-hello-django
 ## <a name="run-the-sample"></a>运行示例
 
 ::: zone pivot="python-framework-flask"
-1. 确保位于 python-docs-hello-world 文件夹中。 
+1. 导航到 python-docs-hello-world 文件夹：
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. 创建虚拟环境并安装依赖项：
 
@@ -115,7 +107,11 @@ cd python-docs-hello-django
     flask run
     ```
     
-    默认情况下，该服务器假定应用的条目模块位于示例使用的 app.py 中。 （如果使用其他模块名称，请将 `FLASK_APP` 环境变量设置为该名称。）
+    默认情况下，该服务器假定应用的条目模块位于示例使用的 app.py 中。
+
+    如果使用其他模块名称，请将 `FLASK_APP` 环境变量设置为该名称。
+
+    如果遇到错误“找不到 Flask 应用程序。 未提供‘FLASK_APP’环境变量，在当前目录中找不到 wsgi.py 或 app.py 模块。”，请确保你位于包含示例的 `python-docs-hello-world` 文件夹中。
 
 1. 打开 Web 浏览器并转到 `http://localhost:5000/` 处的示例应用。 该应用显示“Hello, World!”消息。
 
@@ -125,7 +121,11 @@ cd python-docs-hello-django
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. 确保位于 python-docs-hello-django 文件夹中。 
+1. 导航到 python-docs-hello-django 文件夹：
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. 创建虚拟环境并安装依赖项：
 

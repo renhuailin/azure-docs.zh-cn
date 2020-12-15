@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426539"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763870"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教程：创建用于视频分析的 IoT Edge 实例 (Linux VM)
 
@@ -51,15 +51,15 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 | 订阅 | 选择 Azure 订阅。 |
 | 资源组 | *lva-rg* - 在上一教程中创建的资源组。 |
 | 区域       | *美国东部* |
-| DNS 标签前缀 | 为 VM 选择唯一 DNS 前缀。 |
+| DNS 标签前缀 | 为 VM 选择唯一 DNS 前缀。 必须全部是字母字符，不含数字或特殊字符。 |
 | 管理员用户名 | *AzureUser* |
 | 管理员密码 | 输入密码。 记下 scratchpad.txt 文件中的密码，以便后续使用。 |
 | 作用域 ID | 在上一教程中添加网关设备时在 scratchpad.txt 文件中记下的作用域 ID。 |
 | 设备 ID | gateway-001 - 在上一教程中创建的网关设备。 |
 | 设备密钥 | 在上一教程中添加网关设备时在 scratchpad.txt 文件中记下的设备主密钥。 |
 | IoT Central 应用主机 | 在上一教程的 scratchpad.txt 文件中记下的应用程序 URL。 例如：traders.azureiotcentral.com。 |
-| IoT Central 应用 API 令牌 | 在上一教程中记下的运算符 API 令牌。 |
-| IoT Central 设备预配密钥 | 在上一教程的 scratchpad.txt 文件中记下的主要组共享访问签名令牌。 |
+| IoT Central 应用 API 令牌 | 在上一教程的 scratchpad.txt 文件中记下的运算符 API 令牌。 |
+| IoT Central 设备预配密钥 | 在上一教程的 scratchpad.txt 文件中记下的 SAS-IoT-Devices 组主密钥。 |
 | VM 大小 | *Standard_DS1_v2* |
 | Ubuntu OS 版本 | *18.04-LTS* |
 | 位置 | *[resourceGroup().location]* |

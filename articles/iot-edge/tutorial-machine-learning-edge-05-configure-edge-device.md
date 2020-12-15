@@ -9,18 +9,26 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959571"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932347"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
 在本文中，我们会将一个运行 Linux 的 Azure 虚拟机配置为充当透明网关的 IoT Edge 设备。 借助透明网关配置，设备在不知道网关存在的情况下就能通过网关连接到 Azure IoT 中心。 同时，与 Azure IoT 中心内的设备交互的用户也察觉不到中间网关设备。 最后，我们将通过向透明网关添加 IoT Edge 模块，向我们的系统添加边缘分析功能。
 
 本文的步骤通常由云开发人员执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 创建证书，以允许网关设备安全地连接到下游设备。
+> * 创建 IoT Edge 设备。
+> * 创建 Azure 虚拟机以模拟 IoT Edge 设备。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -295,6 +303,10 @@ IoT Edge 运行时使用 `/etc/iotedge/config.yaml` 文件来保留其配置。 
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 我们刚才完成了将 Azure VM 配置为 Azure IoT Edge 透明网关的操作。 我们首先创建了测试证书并将它们上传到 Azure Key Vault。 接下来，我们使用了脚本和资源管理器模板，通过 Azure 市场中的“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”映像部署了 VM。 在 VM 启动并运行后，我们通过 SSH 进行了连接，登录到 Azure 并从 Key Vault 下载了证书。 我们通过更新 config.yaml 文件对 IoT Edge 运行时的配置进行了多处更新。

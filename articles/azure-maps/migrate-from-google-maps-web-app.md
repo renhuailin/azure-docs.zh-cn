@@ -1,20 +1,20 @@
 ---
-title: 教程 - 从 Google Maps 迁移 Web 应用 | Microsoft Azure Maps
+title: 教程 - 将 Web 应用从 Google Maps 迁移到 Microsoft Azure Maps
 description: 有关如何将 Web 应用从 Google Maps 迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896440"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905054"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 应用
 
@@ -75,7 +75,7 @@ ms.locfileid: "92896440"
 | 地理编码器服务        | ✓                          |
 | 方向服务      | ✓                          |
 | 距离矩阵服务 | ✓                          |
-| 高度服务       | 已计划                     |
+| 高度服务       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Web SDK 中的显著差异
 
@@ -1032,7 +1032,7 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 
 启用聚类后，数据源会将已聚类和未聚类的数据点发送到层进行呈现。 数据源能够聚类数十万个数据点。 聚类的数据点包含以下属性：
 
-| 属性名称             | 类型    | 描述   |
+| 属性名称             | 类型    | 说明   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | 指示特征是否表示聚类。 |
 | `cluster_id`              | 字符串  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |

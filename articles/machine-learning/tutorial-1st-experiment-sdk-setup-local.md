@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349063"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574150"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教程：在你的开发环境中开始使用 Azure 机器学习（第 1 部分，共 4 部分）
 
@@ -52,7 +52,10 @@ ms.locfileid: "93349063"
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>创建代码的目录结构
+> [!div class="nextstepaction"]
+> [我安装了 SDK](?success=install-sdk#dir) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>创建代码的目录结构
 建议为本教程设置以下简单目录结构：
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`：项目的顶级目录。
 - `.azureml`：用于存储 Azure 机器学习配置文件的隐藏子目录。
 
-## <a name="create-an-azure-machine-learning-workspace"></a>创建 Azure 机器学习工作区
+
+> [!div class="nextstepaction"]
+> [我创建了目录](?success=create-dir#workspace) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-dir)
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>创建 Azure 机器学习工作区
 
 工作区是 Azure 机器学习的顶级资源，可集中执行以下操作：
 
@@ -119,7 +126,10 @@ tutorial
 >
 > 与 Azure 机器学习工作区交互仍需要进行身份验证。
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
+> [!div class="nextstepaction"]
+> [我创建了工作区](?success=create-workspace#cluster) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a>创建 Azure 机器学习计算群集
 
 在顶级目录 `tutorial` 中创建名为“`02-create-compute.py`”的 Python 脚本。 使用以下代码填充该脚本，以创建 Azure 机器学习计算群集，该群集将会在 0 到 4 个节点之间自动缩放：
 
@@ -167,6 +177,9 @@ tutorial
 └──01-create-workspace.py
 └──02-create-compute.py
 ```
+
+> [!div class="nextstepaction"]
+> [我创建了计算群集](?success=create-compute-cluster#next-steps) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="next-steps"></a>后续步骤
 

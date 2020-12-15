@@ -1,21 +1,21 @@
 ---
 title: 使用模板参考
-description: 使用 Azure 资源管理器模板参考来创建模板。
+description: 使用 Azure 资源管理器模板（ARM 模板）参考来创建模板。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118505"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931412"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教程：利用资源管理器模板参考
+# <a name="tutorial-utilize-the-arm-template-reference"></a>教程：利用 ARM 模板参考
 
-了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器 (ARM) 模板。
+了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器模板（ARM 模板）。
 
 在本教程中，请使用 Azure 快速入门模板中提供的基础模板。 可以使用模板参考文档来自定义模板。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86118505"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
@@ -143,10 +143,10 @@ ms.locfileid: "86118505"
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,21 +1,27 @@
 ---
-title: 教程：使用 Creator 创建室内定位
-description: 介绍如何使用 Azure Maps Creator 创建室内地图的教程
+title: 教程：使用 Microsoft Azure Maps Creator（预览版）创建室内地图
+description: 有关如何使用 Microsoft Azure Maps Creator（预览版）创建室内地图的教程
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/22/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896773"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905717"
 ---
-# <a name="tutorial-use-creator-to-create-indoor-maps"></a>教程：使用 Creator 创建室内定位
+# <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>教程：使用 Creator（预览版）创建室内地图
+
+> [!IMPORTANT]
+> Azure Maps Creator 服务目前处于公共预览状态。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
 
 本教程介绍了如何创建室内定位。 本教程将介绍如何使用 API 完成以下操作：
 
@@ -34,7 +40,7 @@ ms.locfileid: "92896773"
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. [创建 Creator 资源](how-to-manage-creator.md)
+3. [创建 Creator（预览版）资源](how-to-manage-creator.md)
 4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)。
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
@@ -102,7 +108,7 @@ ms.locfileid: "92896773"
 
  至此，绘图包已上传，现在我们将使用已上传包的 `udid` 将此包转换为定位数据。 转换 API 使用一项长期事务，用于实现[此处](creator-long-running-operation.md)定义的模式。 在此操作完成后，我们就会使用 `conversionId` 来访问转换后的数据。 若要获取 `conversionId`，请按照下面的步骤操作。
 
-1. 选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中输入名称，然后选择一个集合。 单击“ **保存** ”。
+1. 选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中输入名称，然后选择一个集合。 单击“ **保存**”。
 
 2. 在生成器选项卡中选择“POST”HTTP 方法，然后输入下面的 URL，以将已上传绘图包转换为定位数据。 使用已上传包的 `udid`。
 
@@ -111,7 +117,7 @@ ms.locfileid: "92896773"
     ```
 
     >[!IMPORTANT]
-    > 本文档中的 API URL 可能会根据你的 Creator 资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
+    > 本文档中的 API URL 可能会根据你的 Creator 资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务（预览版）](how-to-manage-creator.md#access-to-creator-services)。
 
 3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。 你将下一步骤中使用此内容。
 
@@ -404,7 +410,7 @@ ms.locfileid: "92896773"
 
 使用[特征状态获取 API](/rest/api/maps/featurestate/getstatespreview)，可以通过特征 `ID` 检索特征的状态。 还可以使用[特征状态删除 API](/rest/api/maps/featurestate/deletestatesetpreview) 来删除状态集及其资源。
 
-要详细了解本文中讨论的各种 Azure Maps Creator 服务，请参阅 [Creator 室内地图](creator-indoor-maps.md)。
+要详细了解本文中讨论的各种 Azure Maps Creator 服务（预览版），请参阅 [Creator 室内地图](creator-indoor-maps.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

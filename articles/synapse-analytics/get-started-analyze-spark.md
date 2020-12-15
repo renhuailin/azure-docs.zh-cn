@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: d7b198790b1ecc884321ad42c97eb5cf0c239b7e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ee4dc945f63180fd06f13287b22949d0ac1e3873
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241975"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862014"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "95241975"
 
 本教程介绍使用 Apache Spark for Azure Synapse 加载和分析数据的基本步骤。
 
-1. 在“数据”中心，单击“添加新资源”（“已链接”的上方的加号按钮）>“浏览示例”   。 
+1. 在“数据”中心，单击“添加新资源”（“已链接”的上方的加号按钮）>“浏览库”   。 
 1. 找到“纽约市出租车和豪华轿车委员会 - 黄色出租车行程记录”，然后单击它。 
 1. 在页面底部按“继续”，然后按“添加数据集” 。 
 1. 现在，在“数据”中心的“已链接”下，右键单击“Azure Blob 存储”>>“示例数据集”>>“nyc_tlc_yellow”，然后选择“新建笔记本”   

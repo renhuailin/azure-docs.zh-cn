@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959622"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932381"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
@@ -26,6 +26,14 @@ ms.locfileid: "94959622"
 Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验、训练和部署机器学习模型的基块。
 
 本文中的步骤通常由数据科学家执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 创建 Azure Notebooks 项目以训练机器学习模型。
+> * 容器化经过训练的机器学习模型。
+> * 从容器化机器学习模型创建 Azure IoT Edge 模块。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -179,6 +187,10 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 可以在用于调试的 Notebook 中插入 Python 语句（例如 `print()` 命令）来显示值。 如果发现存在未定义的变量或对象，请运行首次声明或实例化它们的单元。
 
 如果需要重做笔记本，则你可能必须删除以前创建的文件和 Azure 资源。
+
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

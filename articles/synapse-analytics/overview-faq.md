@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511260"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576020"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 常见问题解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "96511260"
 
 ## <a name="general"></a>常规
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>问：有哪些 RBAC 角色，如何使用它们来保护 Synapse 工作区？
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>问：如何使用 RBAC 角色来保护我的工作区？
 
 答：Azure Synapse 引入了很多角色及用于分配角色的范围，可以简化保护工作区这一任务。
 
@@ -36,8 +36,8 @@ Synapse RBAC 角色：
 * Synapse 计算操作员（预览）
 * Synapse 凭据用户（预览）
 
-Synapse RBAC 范围：
-* 工作区 
+若要保护 Synapse 工作区，请将 RBAC 角色分配给这些 RBAC 范围：
+* 工作区
 * Spark 池
 * 集成运行时
 * 链接服务
@@ -45,7 +45,7 @@ Synapse RBAC 范围：
 
 此外，对于专用 SQL 池，你可以使用你熟悉和喜爱的所有安全功能。
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>问：如何对 Synapse 工作区内的功能进行成本控制，例如专用 SQL 池、无服务器 Spark 池和无服务器 SQL 池？
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>问：如何控制专用 SQL 池、无服务器 SQL 池和无服务器 Spark 池？
 
 答：可从将 Azure Synapse 与 Azure 订阅级别提供的内置成本分析和成本警报结合开始使用。
 
@@ -83,7 +83,7 @@ Synapse RBAC 范围：
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>问：如何将现有管道从 Azure 数据工厂迁移到 Azure Synapse 工作区？
 
-答：目前，必须手动重新创建 Azure 数据工厂管道和相关项目。 
+答：此时，必须通过从原始管道导出 JSON 并将其导入 Synapse 工作区来手动重新创建 Azure 数据工厂管道和相关项目。
 
 ## <a name="apache-spark"></a>Apache Spark
 
