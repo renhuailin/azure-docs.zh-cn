@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -100,7 +100,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -176,7 +176,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -411,7 +411,7 @@
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
@@ -533,7 +533,16 @@
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
         - name: RabbitMQ
-          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
+          items:
+            - name: 概述
+              href: functions-bindings-rabbitmq.md
+              displayName: RabbitMQ
+            - name: 触发器
+              href: functions-bindings-rabbitmq-trigger.md
+              displayName: RabbitMQ
+            - name: 输出
+              href: functions-bindings-rabbitmq-output.md
+              displayName: RabbitMQ
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服务总线

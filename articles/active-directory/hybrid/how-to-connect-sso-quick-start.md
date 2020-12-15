@@ -16,18 +16,21 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500200"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504383"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署无缝单一登录
 
 Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录连接到企业网络的企业台式机的用户自动登录。 无缝 SSO 可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 要部署无缝 SSO，需要遵循以下步骤。
 

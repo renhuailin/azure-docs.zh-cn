@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518203"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504349"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure 政府云的混合标识注意事项
 
@@ -24,6 +24,9 @@ ms.locfileid: "96518203"
 
 > [!NOTE]
 > 若要将 Microsoft Active Directory 环境集成 (本地或托管到作为使用 Azure 政府云的同一个云) 实例一部分的 IaaS 中，则需要升级到 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)的最新版本。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 有关美国政府国防部终结点的完整列表，请参阅此[文档](/office365/enterprise/office-365-u-s-government-dod-endpoints)。
 

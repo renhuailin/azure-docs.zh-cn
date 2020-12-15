@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180874"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504570"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -31,6 +31,9 @@ ms.locfileid: "96180874"
 > * 添加了对其他 G Suite 用户和组属性的支持。
 > * 更新了 G Suite 目标属性名称，以匹配[此处](https://developers.google.com/admin-sdk/directory)定义的内容。
 > * 更新了默认属性映射。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]

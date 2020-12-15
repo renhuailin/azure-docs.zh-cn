@@ -4,13 +4,13 @@ description: 介绍如何查看支持请求，发送消息，更改请求严重�
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 12/14/2020
+ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359058"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504808"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -119,9 +119,17 @@ ms.locfileid: "97359058"
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | .zzz    |
 
+## <a name="close-a-support-request"></a>关闭支持请求
+
+如果需要关闭支持请求，请 [发送一条消息](#send-a-message) ，询问是否关闭请求。
+
 ## <a name="reopen-a-closed-request"></a>重新打开已关闭的请求
 
 如果需要重新打开已关闭的支持请求，请创建一 [条新消息](#send-a-message)，该消息将自动重新打开请求。
+
+## <a name="cancel-a-support-plan"></a>取消支持计划
+
+如果需要取消支持计划，请参阅 [取消支持计划](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)。
 
 ## <a name="next-steps"></a>后续步骤
 

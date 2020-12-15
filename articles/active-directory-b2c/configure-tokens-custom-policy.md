@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 6bfabd13c43501f7539eb3756ffbd06802cee823
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340285"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503465"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -89,17 +89,17 @@ ms.locfileid: "92340285"
     ```
 
 > [!NOTE]
-> 使用授权代码流和 PKCE 的单页面应用程序的刷新令牌生存期始终为24小时。 [详细了解浏览器中刷新令牌的安全隐患](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
+> 使用授权代码流和 PKCE 的单页应用程序的刷新令牌生存期始终为 24 小时。 [详细了解浏览器中的刷新令牌的安全影响](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
 
-## <a name="provide-optional-claims-to-your-app"></a>向应用程序提供可选声明
+## <a name="provide-optional-claims-to-your-app"></a>向应用提供可选声明
 
-[信赖方策略技术配置文件](relyingparty.md#technicalprofile)输出声明是返回到应用程序的值。 添加输出声明会在用户成功旅程后向令牌发出声明，并将其发送到应用程序。 修改 "信赖方" 部分中的 "技术配置文件" 元素，以将所需声明添加为输出声明。
+[信赖方策略技术配置文件](relyingparty.md#technicalprofile)输出声明是返回到应用程序的值。 添加输出声明时，会在用户旅程成功后向令牌发出声明，然后声明就会被发送到应用程序。 修改信赖方部分中的技术配置文件元素，以将所需声明添加为输出声明。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
 1. 查找 OutputClaims 元素。 添加要包含在令牌中的 OutputClaim。 
-1. 设置输出声明特性。 
+1. 设置输出声明属性。 
 
-下面的示例添加 `accountBalance` 声明。 AccountBalance 声明将作为平衡发送到应用程序。 
+下面的示例将添加 `accountBalance` 声明。 accountBalance 声明将作为余额发送到应用程序。 
 
 ```xml
 <RelyingParty>
@@ -123,12 +123,12 @@ ms.locfileid: "92340285"
 </RelyingParty>
 ```
 
-OutputClaim 元素包含以下属性：
+OutputClaim  元素包含以下属性：
 
-  - **ClaimTypeReferenceId** -策略文件或父策略文件中 [ClaimsSchema](claimsschema.md) 部分定义的声明类型的标识符。
-  - **PartnerClaimType** -允许在令牌中更改声明的名称。 
-  - **DefaultValue** -默认值。 你还可以将默认值设置为 [声明解析程序](claim-resolver-overview.md)，如租户 ID。
-  - **AlwaysUseDefaultValue** -强制使用默认值。
+  - **ClaimTypeReferenceId** - 已在策略文件或父策略文件的 [ClaimsSchema](claimsschema.md) 节中定义的声明类型的标识符。
+  - **PartnerClaimType** - 允许你更改令牌中的声明的名称。 
+  - **DefaultValue** - 默认值。 还可以将默认值设置为[声明解析程序](claim-resolver-overview.md)，如租户 ID。
+  - **AlwaysUseDefaultValue** - 强制使用默认值。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602778"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505250"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -48,7 +48,7 @@ ms.locfileid: "96602778"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 
 > [!NOTE]
@@ -71,8 +71,8 @@ ms.locfileid: "96602778"
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必选 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
-|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必选 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../language-support.md)。 |
+|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必须 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
+|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必须 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../language-support.md)。 |
 |`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 多种多样 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
 
 下面是同步文本分析终结点的 API 请求的示例。 
@@ -104,16 +104,16 @@ ms.locfileid: "96602778"
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`displayName` | String | 可选 | 用作作业的唯一标识符的显示名称。|
-|`analysisInput` | 包括 `documents` 以下字段 | 必选 | 包含要发送的文档的信息。 |
-|`documents` | 包括 `id` 以下和 `text` 字段 | 必选 | 包含要发送的每个文档的信息以及文档的原始文本。 |
+|`displayName` | 字符串 | 可选 | 用作作业的唯一标识符的显示名称。|
+|`analysisInput` | 包括 `documents` 以下字段 | 必须 | 包含要发送的文档的信息。 |
+|`documents` | 包括 `id` 以下和 `text` 字段 | 必须 | 包含要发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 Id 用于构建输出的结构。 |
-|`text` | 非结构化原始文本，最多125000个字符。 | 必选 | 必须采用英语语言，这是当前唯一支持的语言。 |
-|`tasks` | 包括以下文本分析功能： `entityRecognitionTasks` 、 `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必选 | 要使用的一个或多个文本分析功能。 请注意， `entityRecognitionPiiTasks` 有一个可选 `domain` 参数，可将其设置为 `pii` 或 `phi` 。 如果未指定，则系统默认为 `pii` 。 |
-|`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必选 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
+|`text` | 非结构化原始文本，最多125000个字符。 | 必须 | 必须采用英语语言，这是当前唯一支持的语言。 |
+|`tasks` | 包括以下文本分析功能： `entityRecognitionTasks` 、 `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必须 | 要使用的一个或多个文本分析功能。 请注意， `entityRecognitionPiiTasks` 有一个可选 `domain` 参数，可将其设置为 `pii` 或 `phi` 。 如果未指定，则系统默认为 `pii` 。 |
+|`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必须 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
 |`model-version` | String | 必须 | 指定要使用的模型的版本。  |
 |`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型 `textElement_v8` (默认值) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 有关详细信息，请参阅 [文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
-|`domain` | String | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
+|`domain` | 字符串 | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
 
 ```json
 {
@@ -160,9 +160,9 @@ ms.locfileid: "96602778"
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必选 | 系统使用你提供的 ID 来构建输出。 |
-|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必选 | 请注意，目前仅支持英文文本。 |
-|`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 必选 | `en`目前仅支持。 |
+|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必须 | 系统使用你提供的 ID 来构建输出。 |
+|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必须 | 请注意，目前仅支持英文文本。 |
+|`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 必须 | `en`目前仅支持。 |
 
 下面是运行状况终结点的文本分析 API 请求的示例。 
 
@@ -346,5 +346,5 @@ example.json
 * [文本分析概述](../overview.md)
 * [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
 * [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712)
-* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
+* [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)

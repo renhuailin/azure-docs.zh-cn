@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358908"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504128"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 
 如果具有 [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，则可以使用 SQL Server 实现混合灾难恢复 (DR) 计划，而不会为被动灾难恢复实例带来额外的许可成本。
 
-例如，你可以在本地使用一个活动的主站点，并在 Azure 中为 DR 提供一个免费的被动辅助数据库： 
-
-![Azure 中的免费辅助数据库](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-在上图中，安装程序使用在 Azure 虚拟机上运行的 SQL Server，该虚拟机使用12核作为使用12个内核的本地 SQL Server 部署的灾难恢复副本。 过去，需要为本地部署和 Azure 虚拟机部署 SQL Server 12 核的。 新权益提供了在 Azure 虚拟机上运行的被动副本权益。 现在，只要满足 Azure 虚拟机上被动副本的灾难恢复条件，就只需为本地运行的 SQL Server 12 个核心提供许可。
-
-在 Azure 中托管所有三个副本时，还可以有两个免费的被动辅助副本： 
+例如，在 Azure 中托管所有三个副本时，可以有两个免费的被动辅助副本： 
 
 ![Azure 中的所有内容时，有两个免费 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-或者，你可以配置混合故障转移环境，其中包含本地许可的主站点，一个免费的被动用于 HA，另外两个免费的 passives 用于 DR： 
+或者，你可以配置混合故障转移环境，其中包含本地许可的主本地、一种免费被动的 HA、本地灾难恢复以及 Azure 中的一个免费的被动恢复：
 
 ![当环境与一个主本地副本混合时，三个免费 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 有关详细信息，请参阅[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)。 
 

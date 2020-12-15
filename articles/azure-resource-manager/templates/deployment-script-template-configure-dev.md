@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294003"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503550"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>为模板中的部署脚本配置开发环境（预览版）
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>为模板中的部署脚本配置开发环境
 
 了解如何通过部署脚本映像创建用于开发和测试部署脚本的开发环境。 你可以创建 [Azure 容器实例](../../container-instances/container-instances-overview.md)或使用 [Docker](https://docs.docker.com/get-docker/)。 本文介绍了这两种方法。
 
@@ -237,7 +237,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    将“&lt;主机驱动器号>”和“&lt;主机目录名>”替换为共享驱动器上的现有文件夹**** ****。  它将文件夹映射到容器中的/data 文件夹****。 例如，要映射 D:\docker：
+    将“&lt;主机驱动器号>”和“&lt;主机目录名>”替换为共享驱动器上的现有文件夹 。  它将文件夹映射到容器中的/data 文件夹。 例如，要映射 D:\docker：
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3

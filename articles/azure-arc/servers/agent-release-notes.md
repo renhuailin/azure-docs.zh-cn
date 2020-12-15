@@ -2,13 +2,13 @@
 title: 启用 Azure Arc 服务器代理的新增功能
 description: 本文提供了适用于 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，还提供了其他详细信息的链接。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445279"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505641"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>启用 Azure Arc 服务器代理的新增功能
 
@@ -17,6 +17,16 @@ ms.locfileid: "94445279"
 - 最新版本
 - 已知问题
 - Bug 修复
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-feature"></a>新功能
+
+添加了对 Windows Server 2008 R2 的支持
+
+### <a name="fixed"></a>固定
+
+已解决的问题导致无法成功安装 Linux 上的自定义脚本扩展。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -71,7 +81,7 @@ ms.locfileid: "94445279"
 
 ### <a name="known-issues"></a>已知问题
 
-如果使用的是较旧版本的 Linux 代理并将其配置为使用代理服务器，则需要在升级后重新配置代理服务器设置。 要执行此操作，请运行 `sudo azcmagent_proxy add http://proxyserver.local:83`。
+如果你使用的是较旧版本的 Linux 代理并且其配置为使用代理服务器，则需要在升级后重新配置代理服务器设置。 要执行此操作，请运行 `sudo azcmagent_proxy add http://proxyserver.local:83`。
 
 ## <a name="next-steps"></a>后续步骤
 

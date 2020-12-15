@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 68da6a134f2410ca81ae16b8e00c40d0a9c8f22c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 39823792a438e533134f38c04e72f2c314c57678
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965011"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505182"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
@@ -88,7 +88,7 @@ ms.locfileid: "94965011"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 有关每分钟或每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
+在收到请求时执行分析。 有关每分钟或每秒可以发送的请求的大小和数量的信息，请参阅概述中的 " [数据限制](../overview.md#data-limits) " 部分。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
@@ -177,5 +177,5 @@ ms.locfileid: "94965011"
 ## <a name="next-steps"></a>后续步骤
 
 * [文本分析概述](../overview.md)
-* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
+* [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)

@@ -3,12 +3,12 @@ title: 使用 Apache Kafka MirrorMaker - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用 Kafka MirrorMaker 来创建 Azure 事件中心中 Kafka 群集的镜像。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: d1ec20a32ef27856483492212608e20e82725f58
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369516"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503193"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>将 Kafka MirrorMaker 与适用于 Apache Kafka 的事件中心配合使用
 
@@ -19,8 +19,10 @@ ms.locfileid: "92369516"
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 上提供了此示例
 
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
@@ -102,7 +104,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 > [!IMPORTANT]
-> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅 [获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个示例配置： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个配置示例：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 ## <a name="run-kafka-mirrormaker"></a>运行 Kafka MirrorMaker
 

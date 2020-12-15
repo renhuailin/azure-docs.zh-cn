@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371962"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505437"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -120,7 +120,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-空值
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -131,7 +131,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 使用以下 CLI 命令查看工作区中的表。 它可帮助复制所需的表并将其包含在数据导出规则中。
 
 ```azurecli
-az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
 
 使用以下命令通过 CLI 创建有关导出到存储帐户的数据导出规则。
@@ -222,7 +222,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-空值
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -249,7 +249,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-空值
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -291,7 +291,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-空值
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -318,7 +318,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-空值
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -480,7 +480,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorTestResult | |
 | NWConnectionMonitorTestResult | |
 | OfficeActivity | 部分支持。 某些数据通过 Webhook 从 Office 365 引入到 Log Analytics。 当前不导出此数据。 |
-| 操作 | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
+| Operation | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
 | 性能 | 部分支持。 当前仅支持 Windows 性能数据。 当前未导出 Linux 性能数据。 |
 | ProtectionStatus | |
 | SCCMAssessmentRecommendation | |

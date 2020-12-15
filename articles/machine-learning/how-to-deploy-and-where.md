@@ -1,22 +1,22 @@
 ---
 title: 部署模型的方式和位置
 titleSuffix: Azure Machine Learning
-description: 了解部署 Azure 机器学习模型的方式和位置，包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA。
+description: 了解部署 Azure 机器学习模型（包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA）的方式和位置。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 11/02/2020
+ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: fa8d40e4817b6adb42da6daa3035bd1c4a67c5d8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325286"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505131"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 
@@ -87,7 +87,7 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 > 注册模型时，请提供云位置（来自训练运行）或本地目录的路径。 此路径仅用于在注册过程中查找要上传的文件。 它不需要与入口脚本中使用的路径匹配。 有关详细信息，请参阅[在入口脚本中查找模型文件](./how-to-deploy-advanced-entry-script.md#load-registered-models)。
 
 > [!IMPORTANT]
-> 使用 `Tags` Azure 机器学习 Studio 的 "模型" 页上的 "筛选依据" 选项时，不使用 `TagName : TagValue` 客户应使用 `TagName=TagValue` (而不使用空间) 
+> 在 Azure 机器学习工作室的“模型”页上使用“按 `Tags` 筛选”选项时，客户应该使用 `TagName=TagValue`（无空格），而不是使用 `TagName : TagValue`
 
 以下示例演示如何注册模型。
 

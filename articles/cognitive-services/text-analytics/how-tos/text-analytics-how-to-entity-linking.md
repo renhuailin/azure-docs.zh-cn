@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558974"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505233"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -23,7 +23,7 @@ ms.locfileid: "96558974"
 
 ## <a name="entity-linking"></a>实体链接
 
-实体链接是指识别并消除文本 (中找到的实体标识的能力，例如，确定单词 "Mars" 的出现是指行星，还是) 的罗马上帝。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用 [维基百科](https://www.wikipedia.org/) 作为此知识库。
+实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定出现的“Mars”一词是指行星还是指罗马战神）。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用 [维基百科](https://www.wikipedia.org/) 作为此知识库。
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
@@ -309,5 +309,5 @@ PII 响应的示例：
 ## <a name="next-steps"></a>后续步骤
 
 * [文本分析概述](../overview.md)
-* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
+* [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)

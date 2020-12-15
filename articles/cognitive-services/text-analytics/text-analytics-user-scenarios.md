@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505352"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -29,7 +29,7 @@ ms.locfileid: "91823948"
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>分析录制的客户来电
 
-使用语音到文本、情绪分析和关键短语提取从客户服务呼叫中提取见解。 在 Power BI 仪表板或门户中显示结果，以便更好地了解客户，突出显示客户服务趋势，并提升客户参与度。 以批的形式发送 API 请求以生成报告，或者进行实时干预。 请参阅 [GitHub 上的](https://github.com/rlagh2/callcenteranalytics)示例代码。
+使用语音转文本、情绪分析和关键短语提取从客户服务通话中提取见解。 在 Power BI 仪表板或门户中显示结果，以便更好地了解客户，突出显示客户服务趋势，并提升客户参与度。 以批的形式发送 API 请求以生成报告，或者进行实时干预。 请参阅 [GitHub 上的](https://github.com/rlagh2/callcenteranalytics)示例代码。
 
 ![描述如何使用情绪分析从客户服务通话中自动获取见解的插图](media/use-cases/azure-inbound.svg)
 
@@ -41,7 +41,7 @@ ms.locfileid: "91823948"
 
 ## <a name="monitor-your-products-social-media-feeds"></a>监视产品的社交媒体源
 
-在产品的 Twitter 或 Facebook 页监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Power 自动化模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
+在产品的 Twitter 或 Facebook 页监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Power Automate 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 
@@ -61,4 +61,4 @@ ms.locfileid: "91823948"
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是文本分析 API？](overview.md)
-* [使用客户端库将请求发送到文本分析 API](quickstarts/text-analytics-sdk.md)
+* [使用客户端库将请求发送到文本分析 API](quickstarts/client-libraries-rest-api.md)

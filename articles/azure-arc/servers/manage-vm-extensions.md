@@ -1,20 +1,20 @@
 ---
 title: 启用了 Azure Arc 的服务器的 VM 扩展管理
 description: 启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务和非 Azure Vm。
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358025"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504502"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>启用了 Azure Arc 服务器的虚拟机扩展管理
 
-虚拟机 (VM) 扩展是小型应用程序，用于在 Azure Vm 上提供部署后配置和自动化任务。 例如，如果某个虚拟机需要安装软件、防病毒保护或运行脚本，便可以使用 VM 扩展。
+虚拟机 (VM) 扩展是小型应用程序，用于在 Azure Vm 上提供部署后配置和自动化任务。 例如，如果虚拟机要求安装软件、防病毒保护或运行其中的脚本，则可以使用 VM 扩展。
 
-使用启用了 azure Arc 的服务器，可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux Vm，从而简化混合计算机在本地、边缘和其他云环境中的生命周期管理。 可以在混合计算机上或通过启用了 Arc 的服务器管理的服务器上使用以下方法来管理 VM 扩展：
+使用启用了 azure Arc 的服务器，可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux Vm，从而简化混合计算机在其生命周期中的管理。 可以在混合计算机上或通过启用了 Arc 的服务器管理的服务器上使用以下方法来管理 VM 扩展：
 
 - [Azure 门户](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ ms.locfileid: "94358025"
 
 - 使用 [Azure 自动化状态配置](../../automation/automation-dsc-overview.md) 集中存储配置，并通过 DSC VM 扩展维护启用混合连接的计算机的所需状态。
 
-- 收集日志数据以便通过 Log Analytics 代理 VM 扩展启用 [Azure Monitor 中的日志](../../azure-monitor/platform/data-platform-logs.md) 进行分析。 这对于跨各种源中的数据执行复杂分析非常有用。
+- 收集日志数据以便通过 Log Analytics 代理 VM 扩展启用 [Azure Monitor 中的日志](../../azure-monitor/platform/data-platform-logs.md) 进行分析。 这对于跨不同类型的源中的数据进行复杂分析非常有用。
 
 - 在 [用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md)中，会分析 Windows 和 Linux vm 的性能，并监视其进程和其他资源和外部进程的依赖项。 这是通过同时启用 Log Analytics 代理和依赖项代理 VM 扩展来实现的。
 
@@ -43,7 +43,7 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 
 在此版本中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
-|扩展 |OS |Publisher |其他信息 |
+|扩展 |OS |发布者 |其他信息 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-windows.md)|
@@ -58,7 +58,7 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 
 若要了解有关 Azure 连接的计算机代理包以及有关扩展代理组件的详细信息，请参阅 [代理概述](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 
@@ -67,9 +67,11 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 
 如果尚未注册，请按照 [注册 Azure 资源提供程序](agent-overview.md#register-azure-resource-providers)中的步骤进行操作。
 
+务必查看上表中引用的每个 VM 扩展的文档，以了解它是否有任何网络或系统要求。 这可以帮助你避免在依赖于 VM 扩展的 Azure 服务或功能中遇到任何连接问题。
+
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 扩展
 
-适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。
+适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 扩展 (预览版) 
 
@@ -83,7 +85,7 @@ Key Vault VM 扩展 (预览版) 不支持以下 Linux 操作系统：
 
 - Azure CLI
 - Azure PowerShell
-- Azure 资源管理器模板
+- Azure Resource Manager 模板
 
 在部署扩展之前，需要完成以下操作：
 

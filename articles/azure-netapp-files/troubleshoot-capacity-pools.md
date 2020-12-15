@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369233"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505454"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>排查容量池问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "94369233"
 | 删除容量池时出现问题  |  请确保在尝试删除容量池的订阅中删除所有 Azure NetApp 文件的卷和快照。 <br> 如果已删除所有卷和快照并且仍无法删除容量池，则对资源的引用可能仍然存在，而不会在门户中显示。 在这种情况下，请提交支持票证，并指定已执行上述建议步骤。 |
 | 卷创建或修改失败，出现 `Requested throughput not available` 错误 | 卷的可用吞吐量取决于容量池的大小和服务级别。 如果没有足够的吞吐量，则应增加池大小或调整现有的卷吞吐量。 | 
 
-## <a name="issues-moving-a-capacity-pool"></a>移动容量池时出现问题 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>更改卷的容量池时遇到的问题 
 
 > [!IMPORTANT] 
 > [动态更改卷](dynamic-change-volume-service-level.md)公共预览注册的服务级别，直到进一步通知。

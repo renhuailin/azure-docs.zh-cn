@@ -14,13 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bb7331747db301be5db00d550eec211f75257e29
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
+ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360027"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505624"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "97360027"
 > [!IMPORTANT]
 > SQL IaaS 代理扩展收集数据，以便在 Azure 虚拟机中使用 SQL Server 时，为客户提供可选的权益。 在未经客户的事先同意的情况下，Microsoft 不会将此数据用于许可审核。 有关详细信息，请参阅 [SQL Server 隐私补充](/sql/sql-server/sql-server-privacy#non-personal-data) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要向扩展注册 SQL Server VM，需要： 
 
@@ -237,7 +237,7 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户验证注册状态，请执行以下步骤： 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果你的 SQL Server VM 未在此处列出，则它可能尚未注册到 SQL IaaS 代理扩展。 
 1. 查看“状态”下的值。 如果 **状态** 为 " **成功**"，则 SQL Server VM 已成功注册到 SQL IaaS 代理扩展。 
@@ -279,7 +279,7 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户从扩展中注销 SQL Server VM，请执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到 SQL VM 资源。 
   
    ![SQL 虚拟机资源](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503927"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升级公共 IP 地址
 
@@ -32,9 +32,6 @@ ms.locfileid: "96905785"
 * 如何将经典 Azure 保留 IP 迁移到 Azure 资源管理器基本 SKU 公共 IP
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>从基本 SKU 升级到标准 SKU 的公共 IP 地址
-
->[!NOTE]
->无法将公共 Ip 从 "基本" 升级到 "标准"。  有关更多详细信息，请参阅 [**限制**](#limitations) 。
 
 若要升级公共 IP，它不得与任何资源相关联 (参阅 [此页](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以了解有关如何取消关联公共 ip) 的详细信息。
 
@@ -147,15 +144,6 @@ Azure 资源管理器中的新资源组是使用以上示例中的已迁移保�
 ---
 
 ## <a name="limitations"></a>限制
-
-* 此功能当前在以下区域中不可用：<br>
-US Gov 弗吉尼亚州<br>
-US DoD 东部<br>
-US DoD 中部<br>
-中国东部<br>
-中国东部 2<br>
-中国北部<br>
-中国北部 2
 
 * 为了升级基本的公共 IP，它无法与任何 Azure 资源关联。  请查看 [此页](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以了解有关如何解除公共 ip 关联的详细信息。  同样，为了迁移保留 IP，它不能与任何云服务关联。  请查看 [此页](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) ，以了解有关如何解除保留 ip 关联的详细信息。  
 * 从基本 SKU 升级到标准 SKU 的公共 Ip 将继续没有 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) ，因此不能与区域冗余或区域性的 Azure 资源关联。  请注意，这仅适用于提供可用性区域的区域。

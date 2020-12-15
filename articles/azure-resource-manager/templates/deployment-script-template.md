@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c6d171717865fe4bdf3dfb30a6d24badd4fe29ca
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107135"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505556"
 ---
-# <a name="use-deployment-scripts-in-arm-templates-preview"></a>使用 ARM 模板中的部署脚本 (预览版) 
+# <a name="use-deployment-scripts-in-arm-templates"></a>使用 ARM 模板中的部署脚本
 
 了解如何在 (ARM 模板) 使用 Azure 资源模板中的部署脚本。 使用名为的新资源类型 `Microsoft.Resources/deploymentScripts` ，用户可以在模板部署中执行脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
 
@@ -88,7 +88,7 @@ ms.locfileid: "97107135"
 ```json
 {
   "type": "Microsoft.Resources/deploymentScripts",
-  "apiVersion": "2019-10-01-preview",
+  "apiVersion": "2020-10-01",
   "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
   "kind": "AzurePowerShell", // or "AzureCLI"
@@ -441,18 +441,18 @@ list 命令输出如下所示：
 可以使用 REST API 在资源组级别和订阅级别获取部署脚本资源部署信息：
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2020-10-01
 ```
 
 ```rest
-/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2020-10-01
 ```
 
 下面的示例使用 [ARMClient](https://github.com/projectkudu/ARMClient)：
 
 ```azurepowershell
 armclient login
-armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
+armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2020-10-01
 ```
 
 输出类似于：
@@ -510,7 +510,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 以下 REST API 返回日志：
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2020-10-01
 ```
 
 它仅在删除部署脚本资源之前有效。

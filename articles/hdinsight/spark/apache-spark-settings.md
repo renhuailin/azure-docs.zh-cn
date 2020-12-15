@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545933"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504927"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -121,7 +121,7 @@ YARN 控制每个 Spark 节点上的容器使用的最大内存量总计。 下�
 
 ![YARN Spark 内存管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter Notebook 中运行的应用程序的参数
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>更改中运行的应用程序的参数 Jupyter Notebook
 
 HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包含可按需替代的默认配置值。
 
@@ -133,12 +133,12 @@ HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包�
 |Jupyter 和 Apache Zeppelin 笔记本|用来与 Spark 群集交互的基于浏览器的交互式 UI。|
 |ODBC 驱动程序|将 HDInsight 中的 Spark 群集连接到 Microsoft Power BI 和 Tableau 等商业智能 (BI) 工具。|
 
-对于 Jupyter Notebook 中运行的应用程序，可以使用 `%%configure` 命令从 Notebook 本身内部进行配置更改。 这些配置更改将应用到从 Notebook 实例运行的 Spark 作业。 先在应用程序的开头进行此类更改，然后再运行第一个代码单元。 创建 Livy 会话时，会将更改的配置应用到该会话。
+对于在 Jupyter Notebook 中运行的应用程序，请使用 `%%configure` 命令从笔记本自身中进行配置更改。 这些配置更改将应用到从 Notebook 实例运行的 Spark 作业。 先在应用程序的开头进行此类更改，然后再运行第一个代码单元。 创建 Livy 会话时，会将更改的配置应用到该会话。
 
 > [!NOTE]  
 > 若要更改处于应用程序中后面某个阶段的配置，请使用 `-f` (force) 参数。 但是，应用程序中的所有进度将会丢失。
 
-以下代码演示如何更改 Jupyter Notebook 中运行的应用程序的配置。
+下面的代码演示如何更改 Jupyter Notebook 中运行的应用程序的配置。
 
 ```
 %%configure
