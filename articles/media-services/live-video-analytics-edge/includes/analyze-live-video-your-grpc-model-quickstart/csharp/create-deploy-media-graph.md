@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ebefd5ccec321e8c3d580109c3b3c9dc8ba310c3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829267"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532041"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -26,7 +26,7 @@ ms.locfileid: "91829267"
 1. 编辑 operations.json 文件：
  
     * 将链接更改为图拓扑：
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
     * 在 GraphInstanceSet 下，编辑图形拓扑的名称以匹配前面链接中的值：
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * 在 GraphTopologyDelete 下，编辑名称：
@@ -119,7 +119,7 @@ ms.locfileid: "91829267"
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="扩展设置":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
 1. 右键单击实时视频分析设备，并选择“开始监视内置事件终结点”。 需要执行此步骤，以在 Visual Studio Code 的“输出”窗口中监视 IoT 中心事件。
 
    ![开始监视](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
@@ -133,7 +133,7 @@ ms.locfileid: "91829267"
     -------------------------------Executing operation GraphTopologyList-----------------------  
     Request: GraphTopologyList  --------------------------------------------------
     {
-    "@apiVersion": "1.0"
+    "@apiVersion": "2.0"
     }
     ---------------  
     Response: GraphTopologyList - Status: 200  ---------------
@@ -152,7 +152,7 @@ ms.locfileid: "91829267"
     
     ```
     {
-      "@apiVersion": "1.0",
+      "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
         "topologyName": "InferencingWithGrpcExtension",

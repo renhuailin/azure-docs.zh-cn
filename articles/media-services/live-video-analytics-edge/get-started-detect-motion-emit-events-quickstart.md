@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498262"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511869"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -115,7 +115,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -141,7 +141,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -304,7 +304,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -402,7 +402,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -462,7 +462,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -486,7 +486,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -619,7 +619,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -645,7 +645,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -669,7 +669,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```

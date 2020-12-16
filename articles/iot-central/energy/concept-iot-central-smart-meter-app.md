@@ -3,21 +3,19 @@ title: Azure IoT Central 中的体系结构概念 - 智能仪表 | Microsoft Doc
 description: 本文介绍与 Azure IoT Central 能源应用模板的体系结构相关的重要概念
 author: op-ravi
 ms.author: omravi
-ms.date: 10/22/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f9167df3ce56116e02addec411d5f720ea366ea0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125605"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516676"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - 智能仪表应用体系结构
-
-
 
 本文概述了监视应用模板体系结构的智能仪表。 下图显示了 Azure 中使用 IoT Central 平台的智能仪表应用的常用体系结构。
 
@@ -30,11 +28,9 @@ ms.locfileid: "92125605"
 
 智能仪表是所有能源资产中最重要的设备之一。 它记录能源消耗数据并将其传输到用于监视和其他用例（如计费和需求响应）的实用程序。 根据仪表类型，它可以通过网关或其他中间设备或系统（例如边缘设备和前端系统）连接到 IoT Central。 构建 IoT Central 设备网桥以连接无法直接连接的设备。 IoT Central 设备桥是一种开放源代码解决方案，你可以在[此处](../core/howto-build-iotc-device-bridge.md)找到完整的详细信息。 
 
-
 ## <a name="iot-central-platform"></a>IoT Central 平台
 
 Azure IoT Central 是一个平台，可简化 IoT 解决方案的构建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 借助 IoT Central，可以轻松地大规模连接、监视和管理物联网 (IoT) 资产。 将智能仪表连接到 IoT Central 之后，应用模板使用设备模型、命令和仪表板等内置功能。 该应用模板还将 IoT Central 存储用于暖路径方案，例如近实时仪表数据监视、分析、规则和可视化效果。 
-
 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>使用 IoT Central 进行构建的可扩展性选项
 IoT Central 平台提供了两个扩展选项：连续数据导出 (CDE) 和 API。 客户和合作伙伴可以在这些选项之间进行选择，以针对特定需求自定义其解决方案。 例如我们的某个合作伙伴为 Azure Data Lake Storage (ADLS) 配置了 CDE。 他们将 ADLS 用于长期数据保留和其他冷路径存储方案（例如批处理、审核和报告目的）。 

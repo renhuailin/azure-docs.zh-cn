@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485257"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587808"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -131,6 +131,7 @@ RDM | 不可用 | 不可用
 本地冗余存储 | 是 | 是
 异地冗余存储 | 是 | 是
 读取访问异地冗余存储 | 是 | 是
+区域冗余存储 | 否 | 否
 冷存储 | 否 | 否
 热存储| 否 | 否
 块 Blob | 否 | 否

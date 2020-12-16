@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152216"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588754"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
@@ -34,7 +34,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 
 对于列出的每个 SDK，Microsoft 将会：
 
-* 在多个流行平台上，针对 GitHub 中的相关 SDK 的主分支持续构建并运行端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
+* 在多个常用平台上持续构建并运行针对相关 SDK 的主要分支的端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
 
 * 在适用的情况下提供安装指南或安装包。
 
@@ -120,7 +120,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 
-如果无法使用其中一个 IoT 中心设备 Sdk，可以使用受支持的通信协议直接连接到 IoT 中心。 若要了解详细信息，请参阅 [不使用 Azure IOT SDK 进行开发](iot-hub-devguide-no-sdk.md)。
+如果无法使用其中一个 IoT 中心设备 SDK，可以使用受支持的通信协议直接连接到 IoT 中心。 若要了解详细信息，请参阅[在不使用 Azure IoT SDK 的情况下进行开发](iot-hub-devguide-no-sdk.md)。
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 
@@ -138,9 +138,9 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * [Azure IoT 中心 Python SDK 问题](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技术问题**–可以使用标记*azure iot sdk* [&](/answers/topics/azure-iot-sdk.html)和[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
+**技术问题**–可以使用标记 *azure iot sdk* [&](/answers/topics/azure-iot-sdk.html)和 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
 
-**Microsoft 客户支持团队** – 拥有[支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
+**Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
 
 **功能请求** – 我们会通过产品的 [User Voice 页](https://feedback.azure.com/forums/321918-azure-iot)跟踪 Azure IoT 功能请求。
 

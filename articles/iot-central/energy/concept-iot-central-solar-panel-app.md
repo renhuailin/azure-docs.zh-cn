@@ -3,22 +3,19 @@ title: Azure IoT Central 中的体系结构概念 - 太阳能板 | Microsoft Doc
 description: 本文介绍与 Azure IoT Central 太阳能板监视应用的体系结构相关的重要概念。
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cd35381e4c2cdb849662ad134cfbef8229707eed
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127500"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516638"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太阳能板应用体系结构
-
-
-
 
 本文提供了太阳能电池板监视应用模板体系结构的概述。 下图显示了在 Azure 中使用 IoT Central 平台的太阳能电池板应用的常用体系结构。
 
@@ -27,11 +24,9 @@ ms.locfileid: "92127500"
 
 该体系结构包括以下组件。 某些应用程序可能不需要此处列出的每个组件。
 
-## <a name="solar-panels-and-connectivity"></a>太阳能电池板和连接 
+## <a name="solar-panels-and-connectivity"></a>太阳能电池板和连接
 
 太阳能板是可再生能源的重要来源之一。 根据太阳能电池板的类型和设置，可以使用网关或其他中间设备和专用系统来连接它。 可能需要构建 IoT Central 设备网桥以连接无法直接连接的设备。 IoT Central 设备桥是一种开放源代码解决方案，你可以在[此处](../core/howto-build-iotc-device-bridge.md)找到完整的详细信息。 
-
-
 
 ## <a name="iot-central-platform"></a>IoT Central 平台
 Azure IoT Central 是一个平台，可简化 IoT 解决方案的构建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 借助 IoT Central，可以轻松地大规模连接、监视和管理物联网 (IoT) 资产。 将太阳能电池板连接到 IoT Central 之后，应用模板将使用设备模型、命令和仪表板等内置功能。 该应用模板还将 IoT Central 存储用于暖路径方案，例如近实时仪表数据监视、分析、规则和可视化效果。

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f2bbc39b9c9c4770775bf49a7775ab8980a1f3b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462811"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589893"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中对专用 SQL 池进行持续集成和部署
 
@@ -42,7 +42,7 @@ ms.locfileid: "96462811"
 
       ![YAML](./media/sql-data-warehouse-continuous-integration-and-deployment/3-yaml-file.png "YAML")
 
-现已创建一个简单的环境，在其中，只要签入到源代码管理存储库主分支，就会自动触发数据库项目的成功 Visual Studio 生成。 通过在本地数据库项目中做出更改并将该项更改签入到主分支，来验证自动化是否能够自始至终正常运行。
+此时，您有一个简单的环境，在该环境中，您的源代码管理存储库主分支的任何签入都会自动触发您的数据库项目的成功 Visual Studio 生成。 通过在本地数据库项目中进行更改并将更改签入到主分支，验证自动化是否正在进行。
 
 ## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>使用 Azure Synapse Analytics（或数据库）部署任务实现持续部署
 

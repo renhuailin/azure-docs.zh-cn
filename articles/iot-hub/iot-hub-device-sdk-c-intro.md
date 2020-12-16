@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501186"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588822"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -43,7 +43,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 可在 GitHub 存储库中找到 [**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
 
-在此存储库的 **master** 分支中可找到最新版本的库：
+可在存储库的 **主** 分支中找到最新版本的库：
 
   ![存储库主分支的屏幕截图](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
@@ -72,7 +72,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 为常用平台提供了包（例如适用于 Windows 的 NuGet 包或者适用于 Debian 和 Ubuntu 的 apt_get），示例将使用这些包（如果适用）。 在某些情况下，需要为设备编译 SDK，或者在设备上编译 SDK。 如果需要编译 SDK，请参阅 GitHub 存储库中的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)。
 
-若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **master** 分支获取源的副本。
+若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **主** 分支获取源的副本。
 
 
 ### <a name="obtain-the-device-credentials"></a>获取设备凭据

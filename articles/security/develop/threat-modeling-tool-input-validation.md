@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515670"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589536"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
-| 产品/服务 | 项目 |
+| 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Web 应用程序** | <ul><li>[使用不受信任样式表针对所有转换禁用 XSLT 脚本](#disable-xslt)</li><li>[确保可能包含用户可控内容的每个页面能够选择不使用自动 MIME 探查](#out-sniffing)</li><li>[强化或禁用 XML 实体解析](#xml-resolution)</li><li>[使用 http.sys 的应用程序执行 URL 规范化验证](#app-verification)</li><li>[确保接受用户的文件时实施适当的控制](#controls-users)</li><li>[确保在 Web 应用程序中使用类型安全的参数进行数据访问](#typesafe)</li><li>[使用单独的模型绑定类或绑定筛选列表来防止 MVC 大规模分配漏洞](#binding-mvc)</li><li>[在呈现之前为不受信任的 Web 输出编码](#rendering)</li><li>[针对所有字符串类型的 Model 属性执行输入验证和筛选](#typemodel)</li><li>[应该针对接受所有字符的表单域（例如 RTF 编辑器）应用净化](#richtext)</li><li>[不要将 DOM 元素分配到没有内置编码的接收器](#inbuilt-encode)</li><li>[验证应用程序中的所有重定向是否闭合且安全](#redirect-safe)</li><li>[针对 Controller 方法接受的所有字符串类型参数实施输入验证](#string-method)</li><li>[针对正则表达式处理设置超时上限，防止由于正则表达式错误而出现 DoS](#dos-expression)</li><li>[避免在 Razor 视图中使用 Html.Raw](#html-razor)</li></ul> | 
 | **Database** | <ul><li>[不要在存储过程中使用动态查询](#stored-proc)</li></ul> |
@@ -73,7 +73,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
 | **参考**              | [IE8 安全性第五部分 - 全面保护](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **步骤** | <p>对于可能包含用户可控内容的每个页面，必须使用 HTTP 标头 `X-Content-Type-Options:nosniff`。 为了符合此要求，可以仅针对可能包含用户可控内容的页面逐页设置所需的标头，或者针对应用程序中的所有页面全局设置该标头。</p><p>从 Web 服务器传送的每种类型的文件都有一个关联的 [MIME 类型](https://en.wikipedia.org/wiki/Mime_type)（也称为 *content-type* ），该类型描述内容的性质（即，图像、文本、应用程序，等等）</p><p>X-Content-Type-Options 标头是一个 HTTP 标头，可让开发人员指定不应该对其内容使用 MIME 探查。 此标头旨在缓解 MIME 探查攻击。 Internet Explorer 8 (IE8) 中已添加对此标头的支持</p><p>只有 Internet Explorer 8 (IE8) 的用户才能受益于 X-Content-Type-Options。 以前的 Internet Explorer 版本目前不支持 X-Content-Type-Options 标头</p><p>Internet Explorer 8（和更高版本）是能够实现 MIME 探查选择退出功能的唯一主流浏览器。 如果其他主流浏览器（Firefox、Safari、Chrome）可实现类似功能，此项建议会更新，以包括这些浏览器的语法</p>|
+| **步骤** | <p>对于可能包含用户可控内容的每个页面，必须使用 HTTP 标头 `X-Content-Type-Options:nosniff`。 为了符合此要求，可以仅针对可能包含用户可控内容的页面逐页设置所需的标头，或者针对应用程序中的所有页面全局设置该标头。</p><p>从 Web 服务器传送的每种类型的文件都有一个关联的 [MIME 类型](https://en.wikipedia.org/wiki/Mime_type)（也称为 *content-type*），该类型描述内容的性质（即，图像、文本、应用程序，等等）</p><p>X-Content-Type-Options 标头是一个 HTTP 标头，可让开发人员指定不应该对其内容使用 MIME 探查。 此标头旨在缓解 MIME 探查攻击。 Internet Explorer 8 (IE8) 中已添加对此标头的支持</p><p>只有 Internet Explorer 8 (IE8) 的用户才能受益于 X-Content-Type-Options。 以前的 Internet Explorer 版本目前不支持 X-Content-Type-Options 标头</p><p>Internet Explorer 8（和更高版本）是能够实现 MIME 探查选择退出功能的唯一主流浏览器。 如果其他主流浏览器（Firefox、Safari、Chrome）可实现类似功能，此项建议会更新，以包括这些浏览器的语法</p>|
 
 ### <a name="example"></a>示例
 若要针对应用程序中的所有页面全局启用所需的标头，可执行以下操作之一： 

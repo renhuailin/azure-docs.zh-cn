@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090206"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588703"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
@@ -39,7 +39,7 @@ ms.locfileid: "87090206"
 git checkout -b <new branch name> <base branch name>
 
 ```
-如果未指定，则 \<base branch name> 新的分支将基于 `master` 。 
+如果未指定 \<base branch name>，则新分支将基于 `main`。 
 
 若要切换到工作分支，请运行以下命令： 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-切换到工作分支后，可以开始开发完成该工作项所需的代码或文档项目。 运行 `git checkout master` 会切换回 `master` 分支。
+切换到工作分支后，可以开始开发完成该工作项所需的代码或文档项目。 运行 `git checkout main` 会切换回 `main` 分支。
 
 一个好的做法是分别为每个用户情景工作项创建一个 Git 分支。 然后，根据用户情景分支分别为每个“任务”工作项创建一个分支。 如果安排了多个人员在处理同一项目的不同用户情景，或处理同一用户情景的不同任务，应按与“用户情景-任务”关系相应的层次结构来组织分支。 可以通过使每个团队成员处理不同的分支，或在处理同一分支时处理不同的代码或其他项目，从而最大程度地减少冲突。 
 
@@ -80,7 +80,7 @@ git push origin script
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-如有必要，请在“新建拉取请求”  屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在 " **审阅者**" 下，添加审阅者的姓名，然后选择 " **创建**"。 
+如有必要，请在“新建拉取请求”  屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在“审阅者”下，添加审阅者的姓名，然后选择“创建”。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -98,14 +98,14 @@ git push origin script
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-返回到左侧导航栏中的 " **存储库** " 时，可以看到已切换到主分支，因为 `script` 已删除该分支。
+返回到左侧导航栏中的“存储库”时，可以看到已切换到主分支，因为 `script` 分支已被删除。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
 也可以使用以下 Git bash 命令将 `script` 工作分支合并到它的基分支并在合并后将工作分支删除：
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

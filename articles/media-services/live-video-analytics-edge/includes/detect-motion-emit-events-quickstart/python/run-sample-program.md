@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2349939d4997ddc57d0c0c56a21eeec0357bf0ec
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 766dd13f58268c044435a22fb30c1de816d4d151
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828844"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532068"
 ---
 若要运行该示例代码，请按照以下步骤执行：
 
@@ -16,7 +16,57 @@ ms.locfileid: "91828844"
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="扩展设置"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
+1. 在 Visual Studio Code 中，转到 src/cloud-to-device-console-app/operations.json。
+1. 在 GraphTopologySet 节点上，确保你看到以下值：
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/2.0/topology.json"`
+1. 在节点 GraphInstanceSet 和 GraphTopologyDelete 节点上，确保 `topologyName` 的值与图形拓扑中 `name` 属性的值匹配 ：
+
+    `"topologyName" : "MotionDetection"`
+    
+1. 通过选择 F5 键启动调试会话。 “终端”窗口将显示一些消息。
+1. operations.json 文件首先调用 `GraphTopologyList` 和 `GraphInstanceList`。 如果在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+        "@apiVersion": "2.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+        "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+    
+    “终端”窗口将显示下一组直接方法调用：
+     * 对 `GraphTopologySet` 的调用，该调用使用前面的 `topologyUrl`
+     * 对 `GraphInstanceSet` 的调用，该调用使用以下正文：
+         
+    ```
+    {
+      "@apiVersion": "2.0",
+      "name": "Sample-Graph",
+      "properties": {
+        "topologyName": "MotionDetection",
+        "description": "Sample graph description",
+        "parameters": [
+          {
+            "name": "rtspUrl",
+            "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+          },
+          {
+            "name": "rtspUserName",
+            "value": "testuser"
+          },
+          {
+            "name": "rtspPassword",
+            "value": "testpassword"
           }
         ]
       }

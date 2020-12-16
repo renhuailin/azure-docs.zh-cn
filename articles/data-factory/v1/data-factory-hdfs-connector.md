@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f22d5ddd35d5d0cba48f0d236b28fabae02a966a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631591"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589604"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -40,16 +40,16 @@ ms.locfileid: "92631591"
 数据工厂服务支持通过数据管理网关连接到本地 HDFS。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 使用网关连接到 HDFS，即使它托管于 Azure IaaS VM 中也是如此。
 
 > [!NOTE]
-> 请确保数据管理网关可以访问 **所有** [名称节点服务器]:[名称节点端口]和 Hadoop 群集的[数据节点服务器]:[数据节点端口]。 默认[名称节点端口]为 50070，默认[数据节点端口]为 50075。
+> 请确保数据管理网关可以访问 **所有**[名称节点服务器]:[名称节点端口]和 Hadoop 群集的[数据节点服务器]:[数据节点端口]。 默认[名称节点端口]为 50070，默认[数据节点端口]为 50075。
 
 虽然可在同一台本地计算机或 Azure VM 上将网关安装为 HDFS，但是我们建议在单独的计算机/Azure IaaS VM 上安装网关。 在单独的计算机上安装网关可减少资源争用和提高性能。 在单独的计算机上安装网关时，该计算机应能访问具有 HDFS 的计算机。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 可以使用不同的工具/API 创建包含复制活动的管道，以从 HDFS 源移动数据。
 
-创建管道的最简单方法是使用  复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -64,11 +64,11 @@ ms.locfileid: "92631591"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 可创建 **Hdfs** 类型的链接服务，以便将本地 HDFS 链接到数据工厂。 下表提供 HDFS 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **Hdfs** |是 |
 | url |HDFS 的 URL |是 |
-| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证** ，请参阅 [此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
+| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅 [此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
 | userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，指定 `<username>@<domain>.com`。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 |是（对于 Windows 身份验证） |
 | gatewayName |数据工厂服务用于连接到 HDFS 的网关的名称。 |是 |
@@ -115,21 +115,21 @@ ms.locfileid: "92631591"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
-| format | 支持以下格式类型： **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 和 **ParquetFormat** 。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括： **GZip** 、 **Deflate** 、 **BZip2** 和 **ZipDeflate** 。 支持的级别为：“最佳”和“最快” 。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快” 。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 > [!NOTE]
 > filename 和 fileFilter 不能同时使用。
 
 ### <a name="using-partionedby-property"></a>使用 partionedBy 属性
-如上一部分所述，可以使用 **partitionedBy** 属性、 [数据工厂函数和系统变量](data-factory-functions-variables.md)指定时序数据的动态 folderPath 和 filename。
+如上一部分所述，可以使用 **partitionedBy** 属性、[数据工厂函数和系统变量](data-factory-functions-variables.md)指定时序数据的动态 folderPath 和 filename。
 
 若要了解有关时序数据集、计划和切片的详细信息，请参阅文章[创建数据集](data-factory-create-datasets.md)、[计划和执行](data-factory-scheduling-and-execution.md)和[创建管道](data-factory-create-pipelines.md)。
 
@@ -164,7 +164,7 @@ ms.locfileid: "92631591"
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
-对于复制活动，如果源的类型为 **FileSystemSource** ，则可以在 typeProperties 节中使用以下属性：
+对于复制活动，如果源的类型为 **FileSystemSource**，则可以在 typeProperties 节中使用以下属性：
 
 **FileSystemSource** 支持以下属性：
 
@@ -176,7 +176,7 @@ ms.locfileid: "92631591"
 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON 示例：将数据从本地 HDFS 复制到 Azure Blob
-此示例演示如何将数据从本地 HDFS 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动， **直接** 将数据复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
+此示例演示如何将数据从本地 HDFS 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接** 将数据复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
 此示例提供了以下数据工厂实体的 JSON 定义。 可以使用这些定义创建管道，通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)将数据从 HDFS 复制到 Azure Blob 存储。
 
@@ -308,7 +308,7 @@ ms.locfileid: "92631591"
 
 **管道中具有文件系统源和 Blob 接收器的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **FileSystemSource** ，将 **sink** 类型设置为 **BlobSink** 。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **FileSystemSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```JSON
 {
@@ -372,7 +372,7 @@ ms.locfileid: "92631591"
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
 
-    执行这 2 个命令后， **重启** 计算机。
+    执行这 2 个命令后，**重启** 计算机。
 
 2.  使用 Ksetup 命令验证配置。 输出应如下所示：
 
@@ -381,26 +381,26 @@ ms.locfileid: "92631591"
     default realm = REALM.COM (external)
     REALM.com:
         kdc = <your_kdc_server_address>
-        ```
+    ```
 
-**In Azure Data Factory:**
+**在 Azure 数据工厂中：**
 
-* Configure the HDFS connector using **Windows authentication** together with your Kerberos principal name and password to connect to the HDFS data source. Check [HDFS Linked Service properties](#linked-service-properties) section on configuration details.
+* 使用 **Windows 身份验证** 配置 HDFS 连接器，以及用于连接到 HDFS 数据源的 Kerberos 主体名称和密码。 查看配置详细信息中的 [HDFS 链接服务属性](#linked-service-properties)部分。
 
-### <a name="kerberos-mutual-trust"></a>Option 2: Enable mutual trust between Windows domain and Kerberos realm
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>方法 2：启用 Windows 域和 Kerberos 领域之间的相互信任
 
-#### Requirement:
-*   The gateway machine must join a Windows domain.
-*   You need permission to update the domain controller's settings.
+#### <a name="requirement"></a>要求：
+*   网关计算机必须加入 Windows 域。
+*   需要用于更新域控制器设置的权限。
 
-#### How to configure:
+#### <a name="how-to-configure"></a>配置方式：
 
 > [!NOTE]
-> Replace REALM.COM and AD.COM in the following tutorial with your own respective realm and domain controller as needed.
+> 根据需要，将下面教程中的 REALM.COM 和 AD.COM 替换为各自的领域和域控制器。
 
-**On KDC server:**
+**在 KDC 服务器上：**
 
-1. Edit the KDC configuration in **krb5.conf** file to let KDC trust Windows Domain referring to the following configuration template. By default, the configuration is located at **/etc/krb5.conf**.
+1. 编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，配置位于 /etc/krb5.conf。
 
    ```config
    [logging]

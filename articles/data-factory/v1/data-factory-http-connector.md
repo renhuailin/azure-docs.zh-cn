@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80991563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589570"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "80991563"
 
 ## <a name="supported-scenarios-and-authentication-types"></a>支持的方案和身份验证类型
 
-可以使用此 HTTP 连接器通过 HTTP **GET** 或 **POST** 方法从*云和本地 HTTP/S 终结点*中检索数据。 支持以下身份验证类型：**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 请注意此连接器与 [Web 表连接器](data-factory-web-table-connector.md)之间的区别。 Web 表连接器用于从 HTML 网页中提取表内容。
+可以使用此 HTTP 连接器通过 HTTP **GET** 或 **POST** 方法从 *云和本地 HTTP/S 终结点* 中检索数据。 支持以下身份验证类型：**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 请注意此连接器与 [Web 表连接器](data-factory-web-table-connector.md)之间的区别。 Web 表连接器用于从 HTML 网页中提取表内容。
 
 从本地 HTTP 终结点复制数据时，必须在本地环境或 Azure VM 中安装数据管理网关。 若要了解数据管理网关以及有关如何设置网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -44,13 +44,13 @@ ms.locfileid: "80991563"
 
 - 创建管道最简单的方法是使用复制数据向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
 下表描述了特定于 HTTP 链接服务的 JSON 元素：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | type | **type** 属性必须设置为 **Http**。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
@@ -63,9 +63,9 @@ ms.locfileid: "80991563"
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 身份验证
 
-将“authenticationType”设置为“基本”、“摘要式”或“Windows”****************。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
+将“authenticationType”设置为“基本”、“摘要式”或“Windows”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (**用户名**) 的密码。 | 是 |
@@ -91,7 +91,7 @@ ms.locfileid: "80991563"
 
 ### <a name="using-clientcertificate-authentication"></a>使用 ClientCertificate 身份验证
 
-若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”********。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
+若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
 | properties | 说明 | 必须 |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ ms.locfileid: "80991563"
 1. 打开 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。  
 2. 展开“证书” > “个人”，然后选择“证书”    。
 3. 右键单击个人存储中的证书，并选择“所有任务” >“管理私钥”   。
-3. 在“安全性”选项卡上，添加运行数据管理网关主机服务并对证书具有读取访问权限的用户帐户****。  
+3. 在“安全性”选项卡上，添加运行数据管理网关主机服务并对证书具有读取访问权限的用户帐户。  
 
 **示例：使用客户端证书**
 
@@ -120,8 +120,8 @@ ms.locfileid: "80991563"
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "certThumbprint": "thumbprint of certificate",
-            "gatewayName": "gateway name"
+        "certThumbprint": "thumbprint of certificate",
+        "gatewayName": "gateway name"
 
         }
     }
@@ -142,8 +142,8 @@ ms.locfileid: "80991563"
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "embeddedCertData": "Base64-encoded cert data",
-            "password": "password of cert"
+        "embeddedCertData": "Base64-encoded cert data",
+        "password": "password of cert"
         }
     }
 }
@@ -157,28 +157,28 @@ ms.locfileid: "80991563"
 
 每个数据集类型的 **typeProperties** 节都不同。 **typeProperties** 节提供有关数据在数据存储中的位置的信息。 **Http** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 必须设置为 **Http**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)。 示例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | 否 |
 | requestMethod | HTTP 方法。 允许的值为 **GET** 和 **POST**。 | 否 <br />（默认值为 **GET**） |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| format | 如果要*从 HTTP 终结点按原样检索数据*而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| format | 如果要 *从 HTTP 终结点按原样检索数据* 而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别： **最佳** 和 **最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 **示例：使用 GET（默认）方法**
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-            "relativeUrl": "XXX/test.xml",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        },
+      "relativeUrl": "XXX/test.xml",
+        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+    },
         "external": true,
         "availability": {
             "frequency": "Hour",
@@ -198,7 +198,7 @@ ms.locfileid: "80991563"
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "/XXX/test.xml",
-           "requestMethod": "Post",
+       "requestMethod": "Post",
             "requestBody": "body for POST HTTP request"
         },
         "external": true,
@@ -220,7 +220,7 @@ ms.locfileid: "80991563"
 
 目前，如果复制活动中的源为 **HttpSource** 类型，则支持以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 这是获取响应而不是读取响应数据的超时。 | 否<br /> (默认值： **00:01:40**)  |
 
@@ -230,7 +230,7 @@ ms.locfileid: "80991563"
 
 ## <a name="json-examples"></a>JSON 示例
 
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 这些示例展示如何将数据从 HTTP 源复制到 Azure Blob 存储。 但是，使用 Azure 数据工厂中的复制活动，可以将数据*直接*从任何源复制到任何[受支持](data-factory-data-movement-activities.md#supported-data-stores-and-formats)的接收器。
+下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 这些示例展示如何将数据从 HTTP 源复制到 Azure Blob 存储。 但是，使用 Azure 数据工厂中的复制活动，可以将数据 *直接* 从任何源复制到任何 [受支持](data-factory-data-movement-activities.md#supported-data-stores-and-formats)的接收器。
 
 **示例：将数据从 HTTP 源复制到 Azure Blob 存储**
 
@@ -283,14 +283,14 @@ ms.locfileid: "80991563"
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        },
+        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+    },
         "external": true,
         "availability": {
             "frequency": "Hour",

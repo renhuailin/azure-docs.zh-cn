@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780699"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588465"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何在商业应用商店中规划咨询服务产品/服务
 
@@ -29,17 +29,42 @@ ms.locfileid: "96780699"
 
 每个咨询服务必须专注于其中一种 Microsoft 产品，称为产品/服务的 **主要产品** ：
 
-|主产品                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Dynamics 365 Project Service Automation |
-|Dynamics 365 Business Central  |Dynamics 365 Sales |
-|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Dynamics 365 Customer Service  |Power Apps |
-|Dynamics 365 Field Service     |Power Automate |
-|Dynamics 365 Finance           |Power BI |
-|Dynamics 365 Marketing         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365 Commerce
+
+        Dynamics 365 Customer Insights
+
+        Dynamics 365 Customer Service
+
+        Dynamics 365 Field Service
+
+        Dynamics 365 Finance
+
+        Dynamics 365 Marketing
+    :::column-end:::
+    :::column:::
+        Dynamics 365 Project Service Automation
+
+        Dynamics 365 Sales
+
+        Dynamics 365 Supply Chain Management
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 你在合作伙伴中心选择的主要产品确定你的产品/服务是否将发布到 Microsoft AppSource 或 Azure Marketplace。
 
@@ -89,7 +114,7 @@ ms.locfileid: "96780699"
 6. 国家/地区
 7. 产品名称
 8. 搜索结果摘要
-9. 描述
+9. 说明
 10. 屏幕截图/视频
 11. 支持性文档
 
@@ -117,7 +142,7 @@ ms.locfileid: "96780699"
 |---|---|
 |评估 |为评估提供一天时间内的详细计划，并清楚地说明客户可以预期的可交付结果。 |
 |简报 |说明客户可以预期的可交付结果。|
-|实现 |为实现提供一天的详细计划，并描述客户可在其结果中获得的工程变化、技术项目或其他项目。 |
+|实施 |为实现提供一天的详细计划，并描述客户可在其结果中获得的工程变化、技术项目或其他项目。 |
 |概念证明 |描述客户可以作为订婚结果的工程变化、技术项目或其他项目。 |
 |研讨会 |包括详细的每日、每周或每月计划，具体取决于产品/服务的持续时间。 说明研讨会的学习目标或其他可交付结果。 |
 | | |

@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746448"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588788"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "96746448"
 
 ## <a name="what-you-need"></a>所需条件
 
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如，[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
   * 一个有效的 Azure 订阅
   * 已在订阅中创建一个 IoT 中心
@@ -196,16 +196,16 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. 将远程库添加到克隆中，该克隆引用了应用服务中 Web 应用的 Git 存储库。 对于 \<Git clone URL\> ，请使用上一步中返回的 URL。 在命令窗口中运行以下命令。
+7. 将远程库添加到克隆中，该克隆引用了应用服务中 Web 应用的 Git 存储库。 对于 \<Git clone URL\>，请使用上一步骤返回的 URL。 在命令窗口中运行以下命令。
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 确保推送到应用服务远程库的主分支。
+8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 请确保推送到应用服务远程的主要分支。
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. 命令窗口中的部署进度将会更新。 如果部署成功，将返回类似于以下输出的行：
@@ -216,7 +216,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. 运行以下命令，以查询 Web 应用的状态并确保它正在运行：

@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934821"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589213"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>支持 Azure Arc 的特性和功能 SQL 托管实例
 
@@ -31,7 +31,7 @@ ms.locfileid: "90934821"
 
 ## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>启用了 Azure Arc 的 SQL 托管实例功能
 
-###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS 高可用性  
+###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
   
 |Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
@@ -57,80 +57,80 @@ ms.locfileid: "90934821"
 
 <sup>2</sup> 未来版本将提供 AG 功能 
 
-###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS 可伸缩性和性能  
+###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
-|Feature|已启用 Azure Arc 的 SQL 托管实例|
-|-------------|----------------|
-|列存储|   是|
-|聚集列存储索引中的大型对象二进制文件|    是|
-|联机非聚集列存储索引重新生成| 是|
-|内存中 OLTP|    是|
-|永久性主内存|    是|
-|表和索引分区|  是
-|数据压缩|  是|
-|Resource Governor| 是|
-|已分区表并行度| 是|
-|NUMA 感知、大型页内存和缓冲区数组分配|  是|
-|IO 资源调控|    是|
-|延迟持续性|    是|
-|自动优化|  是|
-|批处理模式自适应联接| 是|
-|批处理模式内存授予反馈|  是|
-|多语句表值函数的交错执行|  是|
-|大容量插入改进   |是|
+| Feature | 已启用 Azure Arc 的 SQL 托管实例 |
+|--|--|
+| 列存储 | 是 |
+| 聚集列存储索引中的大型对象二进制文件 | 是 |
+| 联机非聚集列存储索引重新生成 | 是 |
+| 内存中 OLTP | 是 |
+| 永久性主内存 | 是 |
+| 表和索引分区 | 是 |
+| 数据压缩 | 是 |
+| Resource Governor | 是 |
+| 已分区表并行度 | 是 |
+| NUMA 感知、大型页内存和缓冲区数组分配 | 是 |
+| IO 资源调控 | 是 |
+| 延迟持续性 | 是 |
+| 自动优化 | 是 |
+| 批处理模式自适应联接 | 是 |
+| 批处理模式内存授予反馈 | 是 |
+| 多语句表值函数的交错执行 | 是 |
+| 大容量插入改进 | 是 |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS 安全性  
-|Feature|已启用 Azure Arc 的 SQL 托管实例|
-|-------------|----------------|
-|行级安全性|    是|
-|Always Encrypted|  是|
-|具有安全 enclave 的 Always Encrypted| 否|
-|动态数据掩码|  是|
-|基本审核|    是|
-|精细审核| 是|
-|透明数据库加密|   是|
-|用户定义的角色|    是|
-|包含的数据库|   是|
-|备份加密|    是|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
 
-###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS 可管理性  
+| Feature | 已启用 Azure Arc 的 SQL 托管实例 |
+|--|--|
+| 行级安全性 | 是 |
+| Always Encrypted | 是 |
+| 具有安全 enclave 的 Always Encrypted | 否 |
+| 动态数据掩码 | 是 |
+| 基本审核 | 是 |
+| 精细审核 | 是 |
+| 透明数据库加密 | 是 |
+| 用户定义的角色 | 是 |
+| 包含的数据库 | 是 |
+| 备份加密 | 是 |
 
-|Feature|已启用 Azure Arc 的 SQL 托管实例|
-|-------------|----------------|
-|专用管理连接|    是|
-|PowerShell 脚本支持|  是|
-|支持数据层应用程序组件操作 - 提取、部署、升级、删除| 是
-|策略自动执行（检查计划和更改）   |是|
-|性能数据收集器|    是|
-|标准性能报表   |是|
-|计划指南和计划指南的计划冻结| 是|
-|使用 NOEXPAND 提示的索引视图的直接查询|   是|
-|自动索引视图维护    |是|
-|分布式分区视图| 是|
-|并行索引操作    |是|
-|查询优化器自动使用索引视图|  是|
-|并行一致性检查 |是|
+###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
+| Feature | 已启用 Azure Arc 的 SQL 托管实例 |
+|--|--|
+| 专用管理连接 | 是 |
+| PowerShell 脚本支持 | 是 |
+| 支持数据层应用程序组件操作 - 提取、部署、升级、删除 | 是 |
+| 策略自动执行（检查计划和更改） | 是 |
+| 性能数据收集器 | 是 |
+| 标准性能报表 | 是 |
+| 计划指南和计划指南的计划冻结 | 是 |
+| 使用 NOEXPAND 提示的索引视图的直接查询 | 是 |
+| 自动索引视图维护 | 是 |
+| 分布式分区视图 | 是 |
+| 并行索引操作 | 是 |
+| 查询优化器自动使用索引视图 | 是 |
+| 并行一致性检查 | 是 |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-|Feature|已启用 Azure Arc 的 SQL 托管实例|
-|-------------|----------------|
-|JSON|  是 |       |
-|查询存储    |是    |       
-|临时|  是 |       
-|本机 XML 支持|    是 |       
-|XML 索引   |是    |       
-|MERGE 和 UPSERT 功能|   是 |       
-|日期和时间数据类型    |是    |       
-|国际化支持|  是 |       
-|全文和语义搜索 |    否      |
-|查询中的语言规范 |是        |   
-|Service Broker（消息传递）|    是     |   
-|Transact-SQL 端点|    是 |       
-|图形| 是 |   
-|机器学习服务| 否  |   
-|PolyBase| 否   |
+| Feature | 已启用 Azure Arc 的 SQL 托管实例 |
+|--|--|
+| JSON | 是 |
+| 查询存储 | 是 |  |
+| 临时 | 是 |  |
+| 本机 XML 支持 | 是 |  |
+| XML 索引 | 是 |  |
+| MERGE 和 UPSERT 功能 | 是 |  |
+| 日期和时间数据类型 | 是 |  |
+| 国际化支持 | 是 |  |
+| 全文和语义搜索 | 否 |
+| 查询中的语言规范 | 是 |  |
+| Service Broker（消息传递） | 是 |  |
+| Transact-SQL 端点 | 是 |  |
+| 图形 | 是 |  |
+| 机器学习服务 | 否 |  |
+| PolyBase | 否 |
 
 
 ### <a name="tools"></a>工具

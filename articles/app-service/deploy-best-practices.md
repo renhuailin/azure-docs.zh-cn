@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708146"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589230"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
 
@@ -30,7 +30,7 @@ ms.locfileid: "91708146"
 
 ### <a name="deployment-mechanism"></a>部署机制
 
-部署机制是用于将生成的应用程序放入 web 应用程序的 */home/site/wwwroot 中* 目录的操作。 */Wwwroot*目录是由 web 应用的所有实例共享的已装载存储位置。 当部署机制将应用程序放在此目录中时，实例会收到同步新文件的通知。 应用服务支持以下部署机制：
+部署机制是用于将生成的应用程序放入 web 应用程序的 */home/site/wwwroot 中* 目录的操作。 */Wwwroot* 目录是由 web 应用的所有实例共享的已装载存储位置。 当部署机制将应用程序放在此目录中时，实例会收到同步新文件的通知。 应用服务支持以下部署机制：
 
 - Kudu 终结点： [Kudu](https://github.com/projectkudu/kudu/wiki) 是一种开源开发人员生产力工具，它作为 Windows 应用服务中的单独进程运行，并作为 Linux 应用服务中的第二个容器运行。 Kudu 处理连续部署并提供用于部署的 HTTP 终结点，如 zipdeploy。
 - FTP 和 WebDeploy：使用您的 [站点或用户凭据](deploy-configure-credentials.md)，可以 [通过 FTP](deploy-ftp.md) 或 WebDeploy 上传文件。 这些机制不会经过 Kudu。  
@@ -45,9 +45,9 @@ ms.locfileid: "91708146"
 
 如果你的项目已指定用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽。  (这称为 [Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。 ) 这使您的利益干系人可以轻松地评估和测试已部署的分支。 
 
-永远不应为生产槽启用持续部署。 相反，生产分支 (经常) 应部署到非生产槽上。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
+永远不应为生产槽启用持续部署。 相反，应将生产分支 (主要) 应部署到非生产槽。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
 
-![此图显示了开发、过渡和主分支之间的流，以及要将它们部署到的槽。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![此图显示了开发、过渡和主分支与它们所部署到的槽之间的流动。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>连续部署容器
 
@@ -65,7 +65,7 @@ ms.locfileid: "91708146"
 
 ### <a name="use-azure-devops"></a>使用 Azure DevOps
 
-应用服务通过部署中心为容器 [提供内置持续交付](deploy-continuous-deployment.md) 。 导航到[Azure 门户](https://portal.azure.com/)中的应用，然后在 "**部署**" 下选择 "**部署中心**"。 按照说明选择存储库和分支。 这会配置 DevOps 生成和发布管道，以便在将新提交推送到所选分支时自动生成、标记和部署容器。
+应用服务通过部署中心为容器 [提供内置持续交付](deploy-continuous-deployment.md) 。 导航到 [Azure 门户](https://portal.azure.com/)中的应用，然后在 "**部署**" 下选择 "**部署中心**"。 按照说明选择存储库和分支。 这会配置 DevOps 生成和发布管道，以便在将新提交推送到所选分支时自动生成、标记和部署容器。
 
 ### <a name="use-github-actions"></a>使用 GitHub 操作
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1

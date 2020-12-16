@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994649"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589791"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -135,7 +135,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 > [!IMPORTANT]
 > 如果你要显式定义托管计划，则 dependsOn 数组中可能将需要一个额外的项：`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
-函数应用必须包括以下应用程序设置：
+函数应用必须包含以下应用程序设置：
 
 | 设置名                 | 说明                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
@@ -299,8 +299,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-
-
 <a name="premium"></a>
 
 ## <a name="deploy-on-premium-plan"></a>在高级计划上部署
@@ -380,7 +378,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
     }
 }
 ```
-
 
 <a name="app-service-plan"></a>
 
@@ -475,7 +472,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
+| Javascript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
 | .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
 
 ```json

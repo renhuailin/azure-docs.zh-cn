@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: fd474a32b4a517230a82615065d7815c04140045
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432962"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589451"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 应用程序防火墙和 Azure 策略
 
@@ -47,7 +47,7 @@ Azure Web 应用程序防火墙 (WAF) 与 Azure 策略结合，可帮助强制�
     2.  **排除**：从策略分配中选择要排除的作用域中的任何资源。
     3.  **策略定义**：选择要应用于包含排除项的作用域的策略定义。 在搜索栏中键入 "Web 应用程序防火墙"，选择相关的 Web 应用程序防火墙 "Azure 策略"。
 
-:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="&quot;分配策略&quot; 页上的 &quot;基本信息&quot; 选项卡":::
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="显示 &quot;可用定义&quot; 页上的 &quot;策略定义&quot; 选项卡的屏幕截图。":::
 
 5.  选择 " **参数** " 选项卡，并更新策略分配参数。 若要进一步阐明参数的作用，请将鼠标悬停在参数名称旁边的信息图标上，以便进一步澄清。
 

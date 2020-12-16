@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 99f2c690360167626566b2ea45aef172e1e832ab
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6aeded077c20e59b3f9b3863a9956596382d3a82
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828865"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531803"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -16,11 +16,11 @@ ms.locfileid: "91828865"
 
 1. 转到 src/cloud-to-device-console-app 文件夹。 你可在此处看到 appsettings.json 文件和一些其他文件：
 
-    * c2d-console-app.csproj - Visual Studio Code 的项目文件。
-    * operations.json - 希望程序运行的操作的列表。
-    * Program.cs - 示例程序代码。 此代码：
+    * c2d-console-app.csproj - Visual Studio Code 的项目文件*_。
+    _ operations.json - 希望程序运行的操作的列表。*_
+    _ Program.cs - 示例程序代码*_。 此代码：
 
-        * 加载应用设置。
+        _ 加载应用设置。
         * 调用 IoT Edge 模块上的实时视频分析公开的直接方法。 可以通过调用模块的[直接方法](../../../direct-methods.md)来使用该模块分析实时视频流。
         * 暂停以检查“终端”窗口中程序的输出，并检查“输出”窗口中模块生成的事件 。
         * 调用直接方法以清理资源。
@@ -29,7 +29,7 @@ ms.locfileid: "91828865"
 1. 编辑 operations.json 文件：
     * 将链接更改为图拓扑：
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * 在 `GraphInstanceSet` 下，编辑图拓扑的名称，使其与上一个链接中的值匹配：
 
@@ -76,7 +76,7 @@ ms.locfileid: "91828865"
 1. 搜索并启用“显示详细消息”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="扩展设置":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
 1. 右键单击实时视频分析设备，并选择“开始监视内置事件终结点”。 需要执行此步骤，以在 Visual Studio Code 的“输出”窗口中监视 IoT 中心事件。 
 
    ![开始监视](../../../media/quickstarts/start-monitoring-iothub-events.png) 
@@ -91,7 +91,7 @@ ms.locfileid: "91828865"
    Executing operation GraphTopologyList
    -----------------------  Request: GraphTopologyList  --------------------------------------------------
    {
-   "@apiVersion": "1.0"
+   "@apiVersion": "2.0"
    }
    ---------------  Response: GraphTopologyList - Status: 200  ---------------
    {
@@ -109,7 +109,7 @@ ms.locfileid: "91828865"
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithHttpExtension",

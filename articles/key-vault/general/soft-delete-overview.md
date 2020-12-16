@@ -4,20 +4,20 @@ description: 使用 Azure Key Vault 软删除可恢复已删除的密钥保管�
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452187"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589978"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
 > [!IMPORTANT]
-> 必须立即对密钥保管库启用软删除。 选择退出软删除的功能将于今年年底被弃用，之后所有密钥保管库的软删除保护都将会自动启用。  请参阅[此处](soft-delete-change.md)的完整详细信息。
+> 必须立即对密钥保管库启用软删除。 即将弃用禁用软删除功能的功能即将弃用。 请参阅[此处](soft-delete-change.md)的完整详细信息。
 
 Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的密钥保管库对象（例如，密钥、机密、证书），因而被称为软删除。 本文将具体探讨以下方案：这项保护措施提供以下保护：
 

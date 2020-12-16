@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033096"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588584"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -80,10 +80,12 @@ ms.locfileid: "97033096"
 连接器不需要位于同一子网中。 但是，它需要 (DNS 的名称解析，将文件) 托管到资源，并 (路由到资源、在资源上打开的端口，等等 ) 。 有关建议，请参阅 [使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology.md)。
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>可以在什么版本的 Windows Server 上安装连接器？
+
 应用程序代理需要 Windows Server 2012 R2 或更高版本。 目前，Windows Server 2019 的 HTTP2 有限制。 为了成功地在 Windows Server 2019 上使用连接器，你将需要添加以下注册表项并重新启动服务器：
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>应用程序配置
 
@@ -131,7 +133,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 在这种情况下，将回退到 "用户主体名称"。 有关 B2B 方案的更多详细信息，请阅读 [向 B2B 用户授予 Azure AD 访问本地应用程序的权限](../external-identities/hybrid-cloud-to-on-premises.md)。
 
-## <a name="pass-through-authentication"></a>传递身份验证
+## <a name="pass-through-authentication"></a>直通身份验证
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>能否对使用传递身份验证发布的应用程序使用条件性访问策略？
 
@@ -177,7 +179,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>是否可以使用 Azure AD 应用程序代理作为 AD FS 代理 (，例如 Web 应用程序代理) ？
 
-错误。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不是。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
