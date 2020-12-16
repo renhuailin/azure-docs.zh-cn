@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932050"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608487"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -22,9 +22,9 @@ ms.locfileid: "91932050"
 
 它提供以下功能：
 
-* 在单一位置为你的所有订阅中的 Azure Cosmos DB 资源提供**规模化视角**，并且能够有选择地将评估范围限定于你感兴趣的那些订阅和资源。
+* 在单一位置为你的所有订阅中的 Azure Cosmos DB 资源提供 **规模化视角**，并且能够有选择地将评估范围限定于你感兴趣的那些订阅和资源。
 
-* 对特定的 Azure CosmosDB 资源进行**深化分析**，以便诊断问题或按类别（利用率、故障、容量和操作）进行详细分析。 选择这些选项中的任何一个即可深入了解相关的 Azure Cosmos DB 指标。  
+* 对特定的 Azure CosmosDB 资源进行 **深化分析**，以便诊断问题或按类别（利用率、故障、容量和操作）进行详细分析。 选择这些选项中的任何一个即可深入了解相关的 Azure Cosmos DB 指标。  
 
 * **可自定义** - 此体验是基于 Azure Monitor 工作簿模板构建的，允许你更改要显示的指标，修改或设置与你的限制相符的阈值，然后将其保存到自定义工作簿中。 然后，可以将工作簿中的图表固定到 Azure 仪表板。  
 
@@ -71,7 +71,7 @@ ms.locfileid: "91932050"
 
 ![按 HTTP 请求类型细分的故障的屏幕截图](./media/cosmosdb-insights-overview/failures.png)
 
-| 代码      |  说明       | 
+| 代码 |  说明       | 
 |-----------|:--------------------|
 | `200 OK`  | 下列 REST 操作之一成功： </br>- 对资源执行 GET。 </br> - 对资源执行 PUT。 </br> - 对资源执行 POST。 </br> - 对某个存储过程资源执行 POST 以执行该存储过程。|
 | `201 Created` | 用于创建资源的 POST 操作成功。 |

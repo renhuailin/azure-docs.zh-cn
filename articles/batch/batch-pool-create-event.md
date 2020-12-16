@@ -3,12 +3,12 @@ title: Azure Batch 池创建事件
 description: 有关 Batch 池创建事件的参考，在池创建后会发出此事件。 日志内容将公开有关池的常规信息。
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: 03c656ea2698ee0e61c1ddb903fcc10df9d3044b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352382"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608997"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -95,7 +95,7 @@ ms.locfileid: "96352382"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`enableAutomaticUpdates`|布尔|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
+|`enableAutomaticUpdates`|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 

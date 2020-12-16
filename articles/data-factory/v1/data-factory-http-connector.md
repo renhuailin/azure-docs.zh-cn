@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589570"
+ms.locfileid: "97608572"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
@@ -26,7 +26,6 @@ ms.locfileid: "97589570"
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本的 Azure 数据工厂服务，请参阅 [V2 中的 HTTP 连接器](../connector-http.md)。
-
 
 本文概述如何使用 Azure 数据工厂中的复制活动将数据从本地或云 HTTP 终结点移至受支持的接收器数据存储。 本文基于[使用复制活动移动数据](data-factory-data-movement-activities.md)一文，后者总体概述了如何使用复制活动移动数据。 本文还列出了复制活动支持用作源和接收器的数据存储。
 
@@ -120,9 +119,8 @@ ms.locfileid: "97589570"
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "certThumbprint": "thumbprint of certificate",
-        "gatewayName": "gateway name"
-
+            "certThumbprint": "thumbprint of certificate",
+            "gatewayName": "gateway name"
         }
     }
 }
@@ -142,8 +140,8 @@ ms.locfileid: "97589570"
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "embeddedCertData": "Base64-encoded cert data",
-        "password": "password of cert"
+            "embeddedCertData": "Base64-encoded cert data",
+            "password": "password of cert"
         }
     }
 }
@@ -176,9 +174,9 @@ ms.locfileid: "97589570"
     "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-      "relativeUrl": "XXX/test.xml",
-        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-    },
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        },
         "external": true,
         "availability": {
             "frequency": "Hour",

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new, devx-track-js
-ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676017"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609116"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>通过 OAuth 2.0、Azure Active Directory B2C 和 Azure API 管理保护 SPA 后端
 
@@ -396,7 +396,8 @@ ms.locfileid: "92676017"
                     // Make the api call here
                 $.ajax({
                     type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},                   url: applicationConfig.webApi
+                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
+                    url: applicationConfig.webApi
                 }
                 ).done(function (body) {
                     document.getElementById("message").innerHTML = "The API Said " + body;

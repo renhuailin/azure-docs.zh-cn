@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413218"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608776"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -36,7 +36,7 @@ ms.locfileid: "94413218"
 - 通常使用 kubeadm 部署的开源上游 Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes 支持的最低版本为 v 1.17。
+> * Kubernetes 支持的最低版本为 v 1.17。 有关其他信息，请参阅 [已知问题](./release-notes.md#known-issues) 。 
 > * 最小支持的 OCP 版本为4.3。
 > * 请参阅 [连接要求](connectivity.md) ，了解你的环境和 Azure 之间需要哪些连接。
 > * 请参阅 [存储配置指南](storage-configuration.md) 以了解有关如何配置永久性存储的详细信息。
@@ -64,10 +64,10 @@ ms.locfileid: "94413218"
 有多个选项可用于创建 Azure Arc 数据控制器：
 
 > 想尝试一下吗？  
-> 在 azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes 服务 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM！
+> 在 azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) (AKS) 、AWS 弹性 Kubernetes 服务 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM！
 > 
 - [使用创建数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [使用 Azure Data Studio 创建数据控制器](create-data-controller-azure-data-studio.md)
 - [通过 Azure Data Studio 中的 Jupyter 笔记本创建 Azure 门户的数据控制器](create-data-controller-resource-in-azure-portal.md)
 - [使用 Kubernetes 工具（如 kubectl 或 oc）创建数据控制器](create-data-controller-using-kubernetes-native-tools.md)
-- [使用 Azure Arc Jumpstart 创建数据控制器以加速测试部署的体验](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [使用 Azure Arc Jumpstart 创建数据控制器以加速测试部署的体验](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

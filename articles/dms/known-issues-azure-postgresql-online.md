@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: db2f6e95153610e0a1b79cf5d30cea3c917333d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609031"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制
 
@@ -38,8 +38,8 @@ ms.locfileid: "94962563"
   2. 向 pg_hba.conf 文件添加 IP 地址，如下所示：
 
       ```
-          host  all     172.16.136.18/10    md5
-          host  replication postgres    172.16.136.18/10    md5
+          host    all    172.16.136.18/10    md5
+          host    replication postgres    172.16.136.18/10     md5
       ```
 
 - 用户必须在托管源数据库的服务器上具有“复制”角色。
@@ -47,7 +47,7 @@ ms.locfileid: "94962563"
 - 目标 Azure Database for PostgreSQL 单一服务器中的架构不能包含外键。 使用以下查询来删除外键：
 
     ```
-                                SELECT Queries.tablename
+                  SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
                 ,concat('alter table ', Queries.tablename, ' ', 
                                                 STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery
