@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 企业到客户 (B2C) 的新增功能
 description: Azure Active Directory 企业到客户 (B2C) 的新的和更新的文档。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571073"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559721"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新增功能
 
 欢迎使用 Azure Active Directory B2C 文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解 B2C 服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../active-directory/fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-articles"></a>新文章
+
+- [在 Azure Active Directory B2C 中创建用户流](create-user-flow.md)
+- [为用户流 (预览设置电话注册和登录) ](phone-authentication-user-flows.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)
+- [Azure Active Directory B2C 代码示例](code-samples.md)
+- [页面布局版本](page-layout.md)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

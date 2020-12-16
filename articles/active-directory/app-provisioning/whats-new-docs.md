@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序设置中的新增功能
 description: Azure Active Directory 应用程序预配的新文档和更新的文档。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571753"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562202"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增功能
 
 欢迎使用 Azure Active Directory 应用程序预配文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新的文章
+- [已知问题：应用程序预配](known-issues.md)
+- [什么是 Azure AD 中的自动 SaaS 应用用户预配？](user-provisioning.md)
+- [教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -52,7 +60,7 @@ ms.locfileid: "96571753"
 
 ### <a name="new-articles"></a>新文章
 
-- [Docs 中的新增内容](whats-new-docs.md)
+- [文档有哪些新功能？](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>更新的文章
 - [隔离状态的应用程序设置](application-provisioning-quarantine-status.md)

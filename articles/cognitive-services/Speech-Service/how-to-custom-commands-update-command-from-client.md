@@ -3,19 +3,19 @@ title: 更新客户端应用程序中的命令
 titleSuffix: Azure Cognitive Services
 description: 了解如何从客户端应用程序更新命令。
 services: cognitive-services
-author: encorona-ms
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: encorona
-ms.openlocfilehash: 765bcbd0521f93bacb0799595e6fbef565d0f313
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.author: nitinme
+ms.openlocfilehash: 08c674a7a7ec060a4273836064cb1c21e979e725
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963617"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560281"
 ---
 # <a name="update-a-command-from-a-client-app"></a>更新客户端应用程序中的命令
 
@@ -53,7 +53,7 @@ ms.locfileid: "94963617"
 
 | Attribute | 说明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| type | 该活动的类型为 `"event"` ，并且该事件的名称需要为 `"RemoteUpdate"` 。 |
+| **type** | 该活动的类型为 `"event"` ，并且该事件的名称需要为 `"RemoteUpdate"` 。 |
 | **value** | 属性 `"value"` 包含更新当前命令所需的属性。 |
 | **updatedCommand** | 属性 `"updatedCommand"` 包含命令的名称。 在该属性中， `"updatedParameters"` 是一个映射，其中包含参数的名称及其更新的值。 |
 | **cancel** | 如果需要取消正在进行的命令，请将属性设置 `"cancel"` 为 `true` 。 |

@@ -1,23 +1,20 @@
 ---
-title: 模板部署 what-if（预览版）
+title: 模板部署假设
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810065"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563086"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署 what-if 操作（预览版）
+# <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
  (ARM 模板) 部署 Azure 资源管理器模板之前，可以预览将发生的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
-
-> [!NOTE]
-> what-if 操作目前以预览版提供。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告这些问题。
 
 可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组、订阅、管理组和租户级别部署支持的假设。
 
@@ -36,31 +33,6 @@ Install-Module -Name Az -Force
 ```
 
 若要详细了解如何安装模块，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
-
-### <a name="uninstall-alpha-version"></a>卸载 alpha 版本
-
-如果以前安装了 alpha 版本的 what-if 模块，请卸载该模块。 alpha 版本仅适用于注册了抢鲜预览版的用户。 如果未安装该预览版，则可跳过此部分。
-
-1. 以管理员身份运行 PowerShell
-1. 检查安装的 Az.Resources 模块版本。
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. 如果已安装版本的版本号格式为 2.x.x-alpha，请卸载该版本。
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. 取消注册用于安装预览版的 what-if 存储库。
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-现在可以使用 what-if 了。
 
 ## <a name="install-azure-cli-module"></a>安装 Azure CLI 模块
 
@@ -129,8 +101,8 @@ Resource changes: 1 to modify.
 
 * [az 部署组假设](/cli/azure/deployment/group#az-deployment-group-what-if) 资源组部署
 * [az deployment sub if](/cli/azure/deployment/sub#az-deployment-sub-what-if) for 订阅级别部署
-* [az deployment mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) 对于管理组部署
-* [az deployment 租户](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) ，适用于租户部署
+* [az deployment mg](/cli/azure/deployment/mg#az-deployment-mg-what-if) 对于管理组部署
+* [az deployment 租户](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) ，适用于租户部署
 
 可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到：
 
@@ -160,7 +132,7 @@ what-if 操作列出六种不同的更改类型：
 
 - **创建**：资源当前不存在，但已在模板中定义。 将创建该资源。
 
-- **删除**：仅当为部署使用[完整模式](deployment-modes.md)时，此更改类型才适用。 资源存在，但未在模板中定义。 使用完整模式时，将删除该资源。 此更改类型仅包括[支持完整模式删除](complete-mode-deletion.md)的资源。
+- **删除**：仅当为部署使用 [完整模式](deployment-modes.md)时，此更改类型才适用。 资源存在，但未在模板中定义。 使用完整模式时，将删除该资源。 此更改类型仅包括[支持完整模式删除](complete-mode-deletion.md)的资源。
 
 - **忽略**：资源存在，但未在模板中定义。 不会部署或修改资源。
 
@@ -415,15 +387,15 @@ Are you sure you want to execute the deployment?
 
 可以通过 Azure Sdk 使用假设操作。
 
-* 对于 Python，请使用 [假设](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
+* 对于 Python，请使用 [假设](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
 
-* 对于 Java，请使用 [DeploymentWhatIf 类](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)。
+* 对于 Java，请使用 [DeploymentWhatIf 类](/java/api/com.microsoft.azure.management.resources.deploymentwhatif)。
 
-* 对于 .NET，请使用 [DeploymentWhatIf 类](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)。
+* 对于 .NET，请使用 [DeploymentWhatIf 类](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果发现 what-if 预览版提供了错误的结果，请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告问题。
+- 如果你注意到了假设操作的结果不正确，请在处报告问题 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
 - 若要使用 Azure PowerShell 来部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
 - 若要使用 Azure CLI 部署模板，请参阅[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。
 - 若要使用 REST 来部署模板，请参阅[使用 ARM 模板和资源管理器 REST API 来部署资源](deploy-rest.md)。

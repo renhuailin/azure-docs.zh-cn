@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852840"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563154"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -23,6 +23,8 @@ ms.locfileid: "96852840"
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="new-features"></a>新增功能
+
+**窗体识别器2.1 版公共预览版2现已推出。** 2.1 版-预览版已发布，其中包括以下功能： 
 
 - **新预生成的发票模型** -新的预建发票模型使客户能够以各种格式拍摄发票，并返回结构化数据来自动完成发票处理。 它结合了强大的光学字符识别 (OCR) 功能与发票了解深度学习模型，以便从发票中提取重要信息（英语）。 它提取文本、表和信息，如客户、供应商、发票 ID、发票截止日期、总计、应付金额、税金、发货到、帐单到，等等。
 
@@ -59,7 +61,7 @@ ms.locfileid: "96852840"
 
 - **REST API 引用可用** -请参阅 ws [2.1-preview. 1 引用](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **除了英语以外**，还支持以下 [语言](language-support.md) ：对于 `Layout` 和 `Train Custom Model` ：英语 (`en`) ，中文 (简化)  () `zh-Hans` 、荷兰语 (`nl`) 、法语 () `fr` 、德语 (`de`) 、意大利语 (`it`) 、葡萄牙语 (`pt`) 和西班牙语 (`es`) 。
-- **复选框/选择标记检测** -窗体识别器支持检测和提取选中标记（如复选框和单选按钮）。 选择标记是在中提取的 `Layout` ，你现在还可以在 "带标签的定型" 中标记和定型， `Train Custom Model`  -  _Train with Labels_ 以便提取选择标记的键值对。 
+- **复选框/选择标记检测** -窗体识别器支持检测和提取选中标记（如复选框和单选按钮）。 选择标记是在中提取的 `Layout` ，你现在还可以在 "带标签的定型" 中标记和定型， `Train Custom Model`  -  以便提取选择标记的键值对。 
 - **模型撰写** -允许使用单个模型 ID 编写和调用多个模型。 提交要使用组合模型 ID 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型撰写可用于对 `Train Custom Model`  -  _标签进行定型_。
 - **模型名称** -将友好名称添加到自定义模型，以便更轻松地进行管理和跟踪。
 - **[新的智能卡预建模型](concept-business-cards.md)** ，用于提取英语、语言名片中的公共字段。

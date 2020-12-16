@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027316"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562117"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -26,9 +26,11 @@ ms.locfileid: "97027316"
 
 无密码身份验证方法（例如 Windows Hello、FIDO2 安全密钥和 Microsoft Authenticator 应用）提供最安全的登录事件。
 
-Azure AD 多重身份验证会在用户登录时添加更多的安全，而不是使用密码。 系统可能会提示用户提供其他形式的身份验证，例如响应推送通知、输入软件或硬件令牌中的代码或响应短信或电话呼叫。
+Azure AD 多重身份验证 (MFA) 只在用户登录时使用密码添加了额外的安全性。 系统可能会提示用户提供其他形式的身份验证，例如响应推送通知、输入软件或硬件令牌中的代码或响应短信或电话呼叫。
 
-为了简化用户的登录体验并注册 MFA 和 SSPR，我们建议你 [启用组合的安全信息注册](howto-registration-mfa-sspr-combined.md)。 对于复原功能，建议您要求用户注册多个身份验证方法。 如果在登录或 SSPR 期间一个方法不可用于用户，则他们可以选择使用其他方法进行身份验证。 有关详细信息，请参阅 [在 Azure AD 中创建弹性访问控制管理策略](concept-resilient-controls.md)。
+若要简化用户的登录体验并注册 MFA 和自助服务密码重置 (SSPR) ，建议 [启用组合的安全信息注册](howto-registration-mfa-sspr-combined.md)。 对于复原功能，建议您要求用户注册多个身份验证方法。 如果在登录或 SSPR 期间一个方法不可用于用户，则他们可以选择使用其他方法进行身份验证。 有关详细信息，请参阅 [在 Azure AD 中创建弹性访问控制管理策略](concept-resilient-controls.md)。
+
+下面是我们创建的 [视频](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) ，旨在帮助你选择最佳的身份验证方法来保护组织的安全。
 
 ## <a name="authentication-method-strength-and-security"></a>身份验证方法强度和安全性
 
@@ -43,11 +45,14 @@ Azure AD 多重身份验证会在用户登录时添加更多的安全，而不�
 |  (预览版的 FIDO2 安全密钥)    | 高     | 高      | 高         |
 | OATH 硬件令牌（预览版） | 中   | 中    | 高         |
 | OATH 软件令牌           | 中   | 中    | 高         |
-| SMS                            | 中型   | 高      | 中等       |
+| SMS                            | 中   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
 | 密码                       | 低      | 高      | 高         |
 
-有关安全性的详细信息，请参阅 [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
+有关安全性的最新信息，请查看我们的博客文章：
+
+- [需要在电话传输上挂起身份验证](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > 为实现灵活性和可用性，我们建议使用 Microsoft Authenticator 应用。 此身份验证方法提供最佳用户体验和多种模式，如无密码、MFA 推送通知和 OATH 代码。

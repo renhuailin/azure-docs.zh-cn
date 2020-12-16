@@ -2,14 +2,14 @@
 title: 请求限制
 description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239365"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563120"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
@@ -25,7 +25,7 @@ ms.locfileid: "80239365"
 
 下表显示了每小时的默认限制。
 
-| 作用域 | 操作 | 限制 |
+| 范围 | 操作 | 限制 |
 | ----- | ---------- | ------- |
 | 订阅 | reads | 12000 |
 | 订阅 | 删除 | 15000 |
@@ -51,7 +51,7 @@ ms.locfileid: "80239365"
 
 Microsoft.Network 资源提供程序应用以下限制：
 
-| 操作 | 限制 |
+| Operation | 限制 |
 | --------- | ----- |
 | 写入/删除 (PUT) | 每 5 分钟 1000 次 |
 | 读取 (GET) | 每 5 分钟 10000 次 |
@@ -64,11 +64,18 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph 限制
 
-[Azure 资源图](../../governance/resource-graph/overview.md) 限制对其操作的请求数。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
+[Azure Resource Graph](../../governance/resource-graph/overview.md) 会限制对其操作发出的请求数。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
+
+### <a name="other-resource-providers"></a>其他资源提供程序
+
+有关其他资源提供程序中的限制的信息，请参阅：
+
+* [Azure Key Vault 限制指南](../../key-vault/general/overview-throttling.md)
+* [AKS 疑难解答](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
 
 ## <a name="error-code"></a>错误代码
 
-达到限制时，会收到 HTTP 状态代码“429 请求过多”。**** 响应包含 **Retry-After** 值，该值指定在发送下一个请求之前应用程序应该等待（或休眠）的秒数。 如果在尚未达到重试时间值的情况下发送请求，该请求不会得到处理，并会返回一个新的重试时间值。
+达到限制时，会收到 HTTP 状态代码“429 请求过多”。 响应包含 **Retry-After** 值，该值指定在发送下一个请求之前应用程序应该等待（或休眠）的秒数。 如果在尚未达到重试时间值的情况下发送请求，该请求不会得到处理，并会返回一个新的重试时间值。
 
 等待指定的时间后，还可以关闭再重新打开与 Azure 的连接。 通过重置连接，可以连接到 Azure 资源管理器的其他实例。
 
@@ -110,9 +117,9 @@ $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/re
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-有关完整的 PowerShell 示例，请参阅 [检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+有关完整的 PowerShell 示例，请参阅[查看订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
-如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数********。
+如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数。
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -191,6 +198,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关完整的 PowerShell 示例，请参阅 [检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+* 有关完整的 PowerShell 示例，请参阅[查看订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 * 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
-* 若要了解如何处理异步 REST 请求，请参阅 [跟踪异步 Azure 操作](async-operations.md)。
+* 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。

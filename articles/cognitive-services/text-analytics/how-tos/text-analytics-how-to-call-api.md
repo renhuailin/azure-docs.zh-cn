@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505250"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562559"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
 本文介绍如何使用文本分析 REST API 和 [Postman](https://www.postman.com/downloads/) 来演示关键概念。 API 提供若干同步和异步终结点，以便使用服务的功能。 
+
+## <a name="create-a-text-analytics-resource"></a>创建文本分析资源
+
+> [!NOTE]
+> * 如果要使用或终结点，你将需要使用标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 的文本分析资源 `/analyze` `/health` 。 此 `/analyze` 终结点包含在 [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
+
+使用文本分析 API 之前，需要创建一个 Azure 资源，其中包含应用程序的密钥和终结点。 
+
+1.  首先，请前往 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 并新建一个文本分析资源（如果没有）。 选择 [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
+
+2.  选择要用于终结点的区域。  请注意 `/analyze` ，和 `/health` 终结点仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。
+
+3.  创建文本分析资源，并前往页面左侧的 "密钥和终结点" 边栏选项卡。 复制稍后在调用 Api 时使用的密钥。 稍后会将此添加为标头的值 `Ocp-Apim-Subscription-Key` 。
+
+## <a name="using-the-api-synchronously"></a>同步使用 API
+
+你可以) 文本分析同步调用 (低延迟方案。 使用同步 API 时，必须单独调用每个 API (功能) 。 如果需要调用多个功能，请查看以下部分，了解如何以异步方式调用文本分析。 
 
 ## <a name="using-the-api-asynchronously"></a>以异步方式使用 API
 
@@ -31,7 +49,7 @@ ms.locfileid: "97505250"
 
 请参阅下表，了解可以异步使用哪些功能。 请注意，只能从终结点调用几个功能 `/analyze` 。 
 
-| Feature | Synchronous | 异步 |
+| 功能 | Synchronous | 异步 |
 |--|--|--|
 | 语言检测 | ✔ |  |
 | 情绪分析 | ✔ |  |
@@ -48,24 +66,16 @@ ms.locfileid: "97505250"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>必备条件
-
-
-> [!NOTE]
-> * 如果要使用或终结点，你将需要使用标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 的文本分析资源 `/analyze` `/health` 。
-
-1.  首先，请前往 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 并新建一个文本分析资源（如果没有）。 如果要使用或终结点，请选择 " **标准 (") 定价层** `/analyze` `/health` 。 此 `/analyze` 终结点包含在 [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
-
-2.  选择要用于终结点的区域。  请注意 `/analyze` ，和 `/health` 终结点仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。
-
-3.  创建文本分析资源，并前往页面左侧的 "密钥和终结点" 边栏选项卡。 复制稍后在调用 Api 时使用的密钥。 稍后会将此添加为标头的值 `Ocp-Apim-Subscription-Key` 。
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API 请求格式
+## <a name="api-request-formats"></a>API 请求格式
+
+可以同时将同步调用和异步调用发送到文本分析 API。
 
 #### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>同步请求
 
 对于所有同步操作，API 请求的格式都是相同的。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。
 
@@ -89,7 +99,9 @@ ms.locfileid: "97505250"
 }
 ```
 
-#### <a name="analyze"></a>[分析](#tab/analyze)
+#### <a name="asynchronous"></a>[异步](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>对终结点的异步请求 `/analyze`
 
 > [!NOTE]
 > 文本分析客户端库的最新预发行版使你能够使用客户端对象来调用异步分析操作。 可在 GitHub 上找到示例：
@@ -154,7 +166,7 @@ ms.locfileid: "97505250"
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[运行状况文本分析](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>对终结点的异步请求 `/health`
 
 针对运行状况托管 API 的文本分析的 API 请求的格式与它的容器的格式相同。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。  请填写并提交 [认知服务请求表单](https://aka.ms/csgate) ，请求访问运行状况公共预览版文本分析。 不会向你收取文本分析的健康状况。 
 
@@ -194,7 +206,9 @@ example.json
 
 #### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
 
-| Feature | 请求类型 | 资源终结点 |
+### <a name="endpoints-for-sending-synchronous-requests"></a>用于发送同步请求的终结点
+
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -204,16 +218,18 @@ example.json
 | 命名实体识别-PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | 命名实体识别-PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[分析](#tab/analyze)
+#### <a name="asynchronous"></a>[异步](#tab/asynchronous)
 
-| Feature | 请求类型 | 资源终结点 |
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>用于将异步请求发送到终结点的终结点 `/analyze`
+
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[运行状况文本分析](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>用于将异步请求发送到终结点的终结点 `/health`
 
-| Feature | 请求类型 | 资源终结点 |
+| 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交运行状况作业文本分析  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
@@ -267,6 +283,8 @@ example.json
  
 # <a name="synchronous"></a>[Synchronous](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>同步操作的示例响应
+
 同步终结点响应将根据你使用的终结点而有所不同。 有关示例响应，请参阅以下文章。
 
 + [语言检测](text-analytics-how-to-language-detection.md#step-3-view-the-results)
@@ -274,70 +292,15 @@ example.json
 + [情绪分析](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [实体识别](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[分析](#tab/analyze)
+# <a name="asynchronous"></a>[异步](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>异步操作的示例响应
 
 如果成功，对终结点的 GET 请求 `/analyze` 将返回一个对象，其中包含所分配的任务。 例如，`keyPhraseExtractionTasks`。 这些任务包含来自适当文本分析功能的响应对象。 有关详细信息，请参阅以下文章。
 
 + [关键短语提取](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [实体识别](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[运行状况文本分析](#tab/health)
-
-请参阅以下文章，详细了解文本分析的运行状况异步 API 响应：
-
 + [运行状况文本分析](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 

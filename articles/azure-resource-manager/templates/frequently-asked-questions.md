@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902997"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561896"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -154,7 +154,7 @@ ms.locfileid: "96902997"
 
 * **使用 what-if 时，我看到了不属于模板的属性更改。这是预期的“干扰信息”吗？**
 
-  What-if 功能处于预览阶段。 我们正在努力减少干扰信息。 请在此处的 GitHub 存储库中提交问题，以帮助我们改进： https://aka.ms/WhatIfIssues
+  我们正在努力减少干扰信息。 请在此处的 GitHub 存储库中提交问题，以帮助我们改进： https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>模板可视化工具
 

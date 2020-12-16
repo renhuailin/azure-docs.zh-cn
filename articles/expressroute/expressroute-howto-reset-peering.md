@@ -1,26 +1,26 @@
 ---
 title: Azure ExpressRoute：重置线路对等互连
-description: 了解如何使用 Azure PowerShell 禁用和启用 Azure ExpressRoute 线路的对等互连。 配置对等互连时，默认情况下会启用它们。
+description: 了解如何使用 Azure PowerShell 启用和禁用 Azure ExpressRoute 线路的对等互连。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/13/2018
+ms.date: 12/15/2020
 ms.author: duau
-ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bde96ae5f4a9aff6f4a16a4f1544d9b39e5cb66
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395734"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559567"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 
-本文介绍如何使用 PowerShell 禁用和启用 ExpressRoute 线路的对等互连。 禁用对等互连后，ExpressRoute 线路的主连接和辅助连接上的 BGP 会话都将关闭。 你将无法通过此对等互连连接到 Microsoft。 启用对等互连后，ExpressRoute 线路的主连接和辅助连接上的 BGP 会话都将启动。 你将能够通过此对等互连再次连接到 Microsoft。 可单独对 ExpressRoute 线路启用和禁用 Microsoft 对等互连和 Azure 专用对等互连。 在 ExpressRoute 线路上初次配置对等互连时，将默认启用对等互连。
+本文介绍如何使用 PowerShell 启用和禁用 ExpressRoute 线路的对等互连。 默认情况下，对等互连在创建时处于启用状态。 禁用对等互连时，将关闭 ExpressRoute 线路的主连接和辅助连接上的 BGP 会话。 此对等互连将失去与 Microsoft 的连接。 启用对等互连时，将建立 ExpressRoute 线路的主连接和辅助连接上的 BGP 会话。 将为此对等互连还原与 Microsoft 的连接。 你可以独立于 ExpressRoute 线路为 Microsoft 对等互连和 Azure 专用对等互连启用和禁用对等互连。
 
-存在几个有助于重置 ExpressRoute 对等互连的方案。
-* 测试灾难恢复设计和实现。 例如，你有两条 ExpressRoute 线路。 可以禁用一条线路的对等互连，并强制网络流量故障转移到另一条线路。
-* 对 ExpressRoute 线路的 Azure 专用对等互连或 Microsoft 对等互连启用双向转发检测 (BFD)。 如果在 1 2018 年8月之后创建了 ExpressRoute 线路 10 2020，则在 Azure 专用对等互连上默认启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 
+在这两种情况下，你可能会发现重置 ExpressRoute 对等互连非常有用。
+* 如果要测试灾难恢复设计和实现。 例如，你有两条 ExpressRoute 线路。 可以在一条线路上禁用对等互连并强制网络流量故障转移到另一条线路。
+* 在 Azure 专用对等互连或 ExpressRoute 线路的 Microsoft 对等互连上，启用双向转发检测 (BFD) 。 如果在2018年1月1日之后创建了 ExpressRoute 线路，在年 2020 1 月1日之后创建了 ExpressRoute 线路，则默认情况下，BFD 在 Azure 专用对等互连上启用。 如果你的线路是在列出的日期之前创建的，则你需要重置对等互连以启用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -30,7 +30,7 @@ ms.locfileid: "89395734"
 
 ## <a name="reset-a-peering"></a>重置对等互连
 
-1. 如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，然后连接到帐户。 使用下面的示例来帮助连接：
+1. 如果在本地运行 PowerShell，请用提升的权限打开 PowerShell 控制台，并连接到你的帐户。 使用下面的示例来帮助连接：
 
    ```azurepowershell
    Connect-AzAccount
@@ -50,7 +50,7 @@ ms.locfileid: "89395734"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 标识要禁用或启用的对等互连。 对等互连是一个数组  。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
+5. 标识要禁用或启用的对等互连。 对等互连是一个数组。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -142,6 +142,6 @@ ms.locfileid: "89395734"
    对等互连应处于设定的某种状态。 
 
 ## <a name="next-steps"></a>后续步骤
-如果需要帮助排查 ExpressRoute 问题，请查看以下文章：
+如果需要帮助排查 ExpressRoute 问题，请参阅以下文章：
 * [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
 * [网络性能故障排除](expressroute-troubleshooting-network-performance.md)

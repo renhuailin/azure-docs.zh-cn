@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516796"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563018"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -80,9 +80,9 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="networking-configuration"></a>网络配置
 
-适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器建立连接以通过 Internet 进行通信，请查看下文了解网络配置要求。
+适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器进行连接以通过 Internet 进行通信，则请查看以下各项以了解网络配置要求。
 
-如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则还必须允许访问以下服务标记和 URL。
+如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则需要允许访问以下服务标记和 Url。
 
 服务标记：
 
@@ -181,8 +181,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合实例元数据服务 |himds.exe |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
-    |DscService |来宾配置服务 |dsc_service.exe |在 Azure 中使用的所需状态配置 (用于实现 In-Guest 策略的) 基本代码。|
+    |himds |Azure 混合实例元数据服务 |himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
+    |GCArcService |来宾配置 Arc 服务 |gc_service |监视计算机所需的状态配置。|
+    |ExtensionService |来宾配置扩展服务 | gc_service |安装以计算机为目标的所需扩展。|
 
 * 安装代理期间，将创建以下环境变量。
 
@@ -232,8 +233,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 混合实例元数据服务 |/opt/azcmagent/bin/himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
-    |dscd.service |来宾配置服务 |/opt/DSC/dsc_linux_service |这是 Azure 中用于实现来宾内策略的 Desired State Configuration (DSC v2) 代码库。|
+    |himdsd.service |Azure 连接的计算机代理服务 |himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
+    |gcad. 服务 |GC Arc 服务 |gc_linux_service |监视计算机所需的状态配置。 |
+    |extd。服务 |扩展服务 |gc_linux_service | 安装以计算机为目标的所需扩展。|
 
 * 有几个日志文件可用于故障排除。 下表对它们进行了说明。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c193249ee8cef38650a8a188a59c26a0eab17506
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0b91869e59109550910712b9386056c23843cecd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938390"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559585"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>在 ML 训练运行中启用日志记录
 
@@ -51,12 +51,13 @@ Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特
 
 1. 创建包含日志记录逻辑的训练脚本 `train.py`。
 
-   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [！代码-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)
 
 
 1. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交，以便进行训练。
 
-   [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [！笔记本-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src) 
+   [！笔记本-python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)
 
     `show_output` 参数会启用详细日志记录，让你可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 请使用以下代码在提交试验时启用详细日志记录。
 
@@ -91,7 +92,7 @@ Azure 机器学习还可以在训练期间记录其他来源的信息，例如�
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE[aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+[!包括 aml-azure 笔记本](/includes/aml-clone-for-examples.md)
 
 ## <a name="next-steps"></a>后续步骤
 

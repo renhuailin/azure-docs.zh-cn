@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部标识中的新增功能
 description: Azure Active Directory 外部标识的新文档和更新文档。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573895"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562372"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
 欢迎使用 Azure Active Directory 外部标识文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Azure Active Directory B2B 协作常见问题解答](faq.md)
+- [将 Google 添加为 B2B 来宾用户的标识提供者](google-federation.md)
+- [外部标识的标识提供者](identity-providers.md)
+- [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)
+- [向用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
+- [将自定义审批工作流添加到自助注册](self-service-sign-up-add-approvals.md)
+- [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)
+- [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](what-is-b2b.md)
+- [Azure Active Directory B2B 最佳实践](b2b-fundamentals.md)
+- [启用 B2B 外部协作并管理可以邀请来宾的人员](delegate-invitations.md)
+- [电子邮件一次性密码身份验证](one-time-passcode.md)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

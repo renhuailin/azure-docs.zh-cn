@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032161"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563103"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -107,19 +107,31 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>从 Azure 网关分析解决方案迁移到 Azure Monitor 工作簿
 
 > [!NOTE]
-> Azure 应用程序网关分析解决方案已过时，但使用分析的建议方法是通过应用程序网关资源 Azure Monitor 网络见解公开的工作簿。
+> Azure Monitor 网络见解工作簿是用于访问应用程序网关资源的指标和 log analytics 的推荐解决方案。
 
-* 如果已启用诊断设置以将日志存储到 Log Analytics 工作区中，Azure Monitor 网络见解工作簿可以使用来自同一位置的数据。 不需要任何新配置。
+1. 确保 [启用诊断设置](#enable-azure-application-gateway-diagnostics-in-the-portal) ，以便将日志存储到 Log Analytics 工作区中。 如果已配置，则 Azure Monitor Network Insights 工作簿将能够使用同一位置中的数据，并且不需要进行其他更改。
 
-* 已启用点诊断设置后，工作簿中已有所有过去的数据可用。 不需要数据传输。
+> [!NOTE]
+> 所有过去的数据都已在工作簿中从初始启用点诊断设置中可用。 不需要数据传输。
 
-* 切换到工作簿时，无需活动切换。 分析解决方案和网络见解工作簿都可以并行工作。
+2. 访问应用程序网关资源的 [默认见解工作簿](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) 。 应用程序网关分析解决方案支持的所有现有见解都将存在于工作簿中。 可以通过添加基于指标 & 日志数据的自定义 [可视化效果](../platform/workbooks-overview.md#visualizations) 来扩展此功能。
 
-* Azure Monitor 工作簿不会产生额外的费用。 根据使用情况，Log Analytics 工作区将继续计费。
-
-* 若要从工作区清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
+3. 查看所有指标和日志见解后，若要从工作区清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
 
 [![Azure 应用程序网关分析解决方案的删除选项的屏幕截图。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Monitor 网络见解工作簿的新功能
+
+> [!NOTE]
+> Azure Monitor Insights 工作簿不会产生额外的费用。 根据使用情况，Log Analytics 工作区将继续计费。
+
+网络见解工作簿允许您充分利用 Azure Monitor 和 Log Analytics 的最新功能，包括：
+
+* 集中式控制台，用于监视和故障排除 [指标](../insights/network-insights-overview.md#resource-health-and-metrics) 和日志数据。
+
+* 用于支持创建自定义丰富 [可视化效果](../platform/workbooks-overview.md#visualizations)的灵活画布。
+
+* 能够通过更广泛的社区使用和 [共享工作簿模板](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) 。
 
 若要了解有关新工作簿解决方案的功能的详细信息，请参阅 [工作簿-概述](../platform/workbooks-overview.md)
 

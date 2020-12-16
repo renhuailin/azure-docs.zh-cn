@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032535"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562831"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -57,6 +57,16 @@ ms.locfileid: "97032535"
 |  **执行时间** | 花费几秒到几小时的相对较少时间进行训练。 | 通常需要很长的时间才能完成训练，因为深度学习算法涉及到许多层。 |
 |  **输出** | 输出通常是一个数值，例如评分或分类。 | 输出可以采用多种格式，例如文本、评分或声音。 |
 
+## <a name="transfer-learning"></a>迁移学习
+
+训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "传输学习" 的技术来为训练过程提供快捷方式。
+
+传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。
+
+由于神经网络的结构，第一组层通常包含较低级别的功能，而最后一组层包含较高级别的功能，更接近于相关领域。 通过重新调整最终层的大小以在新域或问题中使用，可以显著减少训练新模型所需的时间、数据和计算资源。 例如，如果您已有识别汽车的模型，则可以使用传输学习来重新调整该模型的用途，从而识别卡车、摩托车和其他类型的汽车。
+
+了解如何使用 Azure 机器学习： [使用 Pytorch 模型对图像进行分类](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)，以使用开源框架对图像分类应用传输学习。
+
 ## <a name="deep-learning-use-cases"></a>深度学习用例
 
 由于采用人工神经网络结构，在识别图像、声音、视频和文本等非结构化数据中的模式时，深度学习具有卓越的性能。 出于此原因，深度学习正在快速变革许多行业，包括医疗保健、能源、金融和运输。 这些行业正在反思传统的业务流程。 
@@ -72,8 +82,6 @@ ms.locfileid: "97032535"
 深度学习已应用于许多对象检测用例。 对象检测包括两个组成部分：图像分类和图像定位。 图像分类识别图像的对象，例如汽车或人。 图像定位提供这些对象的具体位置。 
 
 对象检测已在游戏、零售、旅游和自动驾驶汽车等行业中使用。
-
-了解如何在 Azure 机器学习中使用基于开源框架的图像分类模型：[使用 Pytorch 模型将图像分类](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>图像说明生成
 
@@ -107,7 +115,7 @@ ms.locfileid: "97032535"
 
 递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛用于复杂任务，如时序预测、学习手写和识别语言。
 
-### <a name="convolutional-neural-networks"></a>卷积神经网络
+### <a name="convolutional-neural-network"></a>卷积神经网络
 
 卷积神经网络是特别高效的人工神经网络，它提供独特的体系结构。 层组织成三个维度：宽度、高度和深度。 一个层中的神经元不会连接到下一层中的所有神经元，而只连接到下一层神经元的较小区域。 最终输出化简为沿深度维组织的单个概率评分向量。 
 

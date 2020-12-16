@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ffae02a11f2857e72cf7c5d2bbc84d8ab6174e17
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425745"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562270"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>设置 .MSIX 应用附加 Azure 门户
 
@@ -31,6 +31,7 @@ ms.locfileid: "97425745"
 
 - 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅 [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅 [使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
+- 此主机池必须在验证环境中。 
 - .MSIX 打包工具。
 - 扩展到已上载到文件共享中的 .MSIX 映像的 .MSIX 封装应用程序。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的文件共享。

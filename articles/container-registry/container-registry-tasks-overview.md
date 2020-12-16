@@ -3,12 +3,12 @@ title: ACR 任务概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027660"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562848"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -105,7 +105,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
-| GitHub 主分支 | 公共或专用 GitHub 存储库的主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub main 分支 | 公共或专用 GitHub 存储库的主 (或其他默认) 分支中的文件。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公共或专用 GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子文件夹 | 公共或专用 GitHub 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了提交哈希 (SHA) 和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

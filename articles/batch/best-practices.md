@@ -3,12 +3,12 @@ title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511206"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563171"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -143,7 +143,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="isolated-nodes"></a>独立节点
 
-考虑对具有符合性或法规要求的工作负荷使用隔离的 VM 大小。 虚拟机配置模式下支持的隔离大小包括 `Standard_E64i_v3` 、、、、 `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` 和 `Standard_M128ms` 。 有关独立 VM 大小的详细信息，请参阅 [Azure 中的虚拟机隔离](https://docs.microsoft.com/azure/virtual-machines/isolation)。
+考虑对具有符合性或法规要求的工作负荷使用独立的 VM 大小。 虚拟机配置模式下支持的隔离大小包括 `Standard_E80ids_v4` 、、、、 `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` 和 `Standard_E64i_v3` 。 有关独立 VM 大小的详细信息，请参阅 [Azure 中的虚拟机隔离](https://docs.microsoft.com/azure/virtual-machines/isolation)。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>通过操作系统服务接口管理长时间运行的服务
 

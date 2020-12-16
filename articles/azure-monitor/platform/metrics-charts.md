@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168556"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562797"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -46,7 +46,7 @@ ms.locfileid: "92168556"
 
 ### <a name="order-or-delete-multiple-charts"></a>将多个图表排序或将其删除
 
-若要将多个图表排序或将其删除，请单击省略号 ( **...** )，以便打开图表菜单并选择适当的菜单项：**向上移动**、**向下移动**或**删除**。
+若要将多个图表排序或将其删除，请单击省略号 ( **...** )，以便打开图表菜单并选择适当的菜单项：**向上移动**、**向下移动** 或 **删除**。
 
 ## <a name="changing-aggregation"></a>更改聚合
 
@@ -77,15 +77,15 @@ ms.locfileid: "92168556"
 
 2. 选择想要筛选的维度（属性）
 
-   ![屏幕截图，显示可筛选)  (属性的尺寸。](./media/metrics-charts/00006.png)
+   ![该屏幕截图显示了可筛选的维度（属性）。](./media/metrics-charts/028.png)
 
 3. 选择想要在绘制图表时包含的维度值（此示例将显示筛选出了成功的存储事务）：
 
-   ![显示筛选出成功存储事务的屏幕截图。](./media/metrics-charts/00007.png)
+   ![该屏幕截图显示筛选成功的存储事务。](./media/metrics-charts/029.png)
 
 4. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 
-   ![显示失败的存储事务数的屏幕截图](./media/metrics-charts/00008.png)
+   ![该屏幕截图显示了已失败的存储交易数](./media/metrics-charts/030.png)
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
@@ -104,11 +104,11 @@ ms.locfileid: "92168556"
 
 2. 选择想要用于分割图表的维度：
 
-   ![屏幕截图，显示在其上划分图表的选定维度。](./media/metrics-charts/00010.png)
+   ![该屏幕截图显示了细分图表所基于的选定维度。](./media/metrics-charts/031.png)
 
    现在图表将显示多个折线图，每个维度部分均有一个：
 
-   ![显示多个行的屏幕截图，每个维度段一个行。](./media/metrics-charts/00012.png)
+   ![该屏幕截图显示了多个折线图，每个维度部分均有一个。](./media/metrics-charts/032.png)
 
 3. 在“分组选择器”之外单击以将其关闭。
 
@@ -123,9 +123,13 @@ ms.locfileid: "92168556"
 
 另一个示例是可用内存的波动，其中的值在技术上永远不会达到 0。 将范围固定到一个较高的值可以使可用内存的降低更容易被发现。 
 
-若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”按钮恢复为默认值。
+若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“图表设置”以访问高级图表设置。
 
-![突出显示 "编辑图表" 选项的屏幕截图。](./media/metrics-charts/00014-manually-set-granularity.png)
+![突出显示 "图表设置" 选项的屏幕截图。](./media/metrics-charts/033.png)
+
+ 修改“Y 轴范围”部分中的值，或者使用“自动”按钮恢复为默认值。
+ 
+ ![突出显示 Y 轴范围部分的屏幕截图。](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > 如果图表用于跟踪一段时间内的各种计数或合计（并因此使用计数、求和、最小值或最大值聚合），要锁定这类图表的 y 轴边界，通常需要指定一个固定的时间粒度，而不是依赖于自动默认值。 这是必要的，因为当用户通过调整浏览器窗口大小或者通过更改屏幕分辨率来自动修改时间粒度时，图表上的值也会发生更改。 时间粒度发生的更改会影响图表的外观，导致当前选择的 y 轴范围失效。
@@ -136,9 +140,9 @@ ms.locfileid: "92168556"
 
 若要更改图表线条的颜色，请单击与图表相对应的图例中的彩色条。 这将打开“颜色选取器”对话框。 使用颜色选取器配置线条的颜色。
 
-配置图表颜色后，将图表固定到仪表板时，它们将保持此配置。 以下部分说明如何固定图表。
+![显示如何更改颜色的屏幕截图](./media/metrics-charts/035.png)
 
-![显示如何固定图表的屏幕截图。](./media/metrics-charts/018.png)
+配置图表颜色后，将图表固定到仪表板时，它们将保持此配置。 以下部分说明如何固定图表。
 
 ## <a name="pin-charts-to-dashboards"></a>将图表固定到仪表板
 
@@ -146,9 +150,9 @@ ms.locfileid: "92168556"
 
 将配置的图表固定到仪表板：
 
-配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
+配置图表后，单击图表右上角的 " **固定到仪表板** "。
 
-![图表上的](./media/metrics-charts/00013.png)
+![显示如何固定到图表的屏幕截图](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>创建警报规则
 
@@ -156,11 +160,11 @@ ms.locfileid: "92168556"
 
 ### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则
 
-![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
+![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/042.png)
 
 则会转到警报规则创建窗格，其中预先填充了来自你的图表的底层指标维度，以便更轻松地生成自定义警报规则。
 
-![创建警报规则](./media/metrics-charts/016.png)
+![创建警报规则](./media/metrics-charts/041.png)
 
 若要详细了解如何设置指标警报，请查看此[文章](alerts-metric.md)。
 

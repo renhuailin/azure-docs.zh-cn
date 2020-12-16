@@ -5,22 +5,43 @@ description: Microsoft 标识平台的新文档和更新的文档。
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457154"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563035"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 标识平台文档：新增功能
 
 欢迎查看 Microsoft 标识平台文档中的新内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-articles"></a>新文章
+
+- [快速入门：登录用户并代表他们调用 Microsoft Graph ASP.NET Core web 应用](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [处理 MSAL.NET 中的错误和异常](msal-error-handling-dotnet.md)
+- [处理 MSAL for iOS/macOS 中的错误和异常](msal-error-handling-ios.md)
+- [处理 MSAL for Java 中的错误和异常](msal-error-handling-java.md)
+- [处理 MSAL.js 中的错误和异常](msal-error-handling-js.md)
+- [处理 MSAL for Python 中的错误和异常](msal-error-handling-python.md)
+- [具有 SAML 和 OIDC/OAuth 的 Microsoft 标识平台令牌交换方案](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [教程：生成使用 Microsoft 标识平台的多租户守护程序](tutorial-v2-aspnet-daemon-web-app.md)
+- [用于登录用户的 Web 应用：应用注册](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft 标识平台和隐式授权流](v2-oauth2-implicit-grant-flow.md)
+- [Microsoft 标识平台访问令牌](access-tokens.md)
+- [调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -34,7 +55,7 @@ ms.locfileid: "96457154"
 - [ (MSAL) 的应用程序配置选项 ](msal-client-application-configuration.md)
 - [如何：向应用提供可选声明](active-directory-optional-claims.md)
 - [将应用发布到 Azure AD 应用库](v2-howto-app-gallery-listing.md)
-- [如何：向应用程序添加应用程序角色并在令牌中接收这些角色](howto-add-app-roles-in-azure-ad-apps.md)
+- [如何：在应用程序中添加应用角色并在令牌中接收它们](howto-add-app-roles-in-azure-ad-apps.md)
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -43,7 +64,7 @@ ms.locfileid: "96457154"
 - [快速入门：使用授权代码流在 Node Web 应用中让用户登录并获取访问令牌](quickstart-v2-nodejs-webapp-msal.md)
 - [如何：使用 MSAL 在 Android 上启用跨应用 SSO](msal-android-single-sign-on.md)
 - [支持你开发的移动应用中的单一登录和应用保护策略](mobile-sso-support-overview.md)
-- Microsoft 标识平台文档：本文 (的新增功能) 
+- Microsoft 标识平台文档：新增功能（本文）
 - [教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API](tutorial-blazor-webassembly.md)
 - [Microsoft 标识 Web 身份验证库](microsoft-identity-web.md)
 

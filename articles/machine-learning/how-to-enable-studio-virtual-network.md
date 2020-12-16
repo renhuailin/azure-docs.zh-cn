@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 8dc8446ecbc203622ce7c2163136c1c26aac1cc7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032722"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559533"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -89,7 +89,9 @@ Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存�
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>为默认存储帐户启用托管标识身份验证
 
-每个 Azure 机器学习工作区都附带了两个默认存储帐户，这些帐户是在创建工作区时定义的。 Studio 使用默认存储帐户来存储实验和模型项目，这对于 studio 中的某些功能至关重要。
+每个 Azure 机器学习工作区都有两个默认的存储帐户：默认的 blob 存储帐户和默认的文件存储帐户（在创建工作区时定义）。 你还可以在 " **数据存储** 管理" 页中设置新的默认值。
+
+![显示可在何处查找默认数据存储的屏幕截图](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 下表描述了必须为工作区默认存储帐户启用托管标识身份验证的原因。
 
@@ -98,8 +100,12 @@ Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存�
 |工作区默认 blob 存储| 从设计器存储模型资源。 必须在此存储帐户上启用托管标识身份验证才能在设计器中部署模型。 <br> <br> 如果设计器管道使用已配置为使用托管标识的非默认数据存储，则可以对其进行可视化和运行。 但是，如果你尝试在默认数据存储上部署未启用托管标识的定型模型，则无论是否使用任何其他数据存储，部署都会失败。|
 |工作区默认文件存储| 存储 AutoML 试验资产。 必须在此存储帐户上启用托管标识身份验证才能提交 AutoML 试验。 |
 
-
-![显示可在何处查找默认数据存储的屏幕截图](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> 存在一个已知问题，即默认文件存储不会自动创建 `azureml-filestore` 文件夹，这是提交 AutoML 实验所必需的。 当用户在创建工作区期间将现有的运行方式设置为默认的默认值时，会发生这种情况。
+> 
+> 若要避免此问题，可以使用两个选项： 1) 使用自动创建的默认的默认值，即创建工作区。 2) 若要引入自己的运行空间，请确保在创建工作区期间，该用户在 VNet 外。 创建工作区后，将存储帐户添加到虚拟网络。
+>
+> 若要解决此问题，请从虚拟网络中删除 "
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>授予工作区托管标识对存储专用链接的 __读取者__ 访问权限

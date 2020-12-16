@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861793"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563205"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -273,7 +273,7 @@ SAML 2.0 标识提供者需遵循有关 Azure AD 信赖方的信息要求。 Azu
 有关 "Set-msoluser" 结帐的详细信息，请 [/previous-versions/azure/dn194096 (v = azure) ](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
->“UserPrinciplName”值必须与将在 SAML 2.0 声明中为“IDPEmail”发送的值匹配，“ImmutableID”值必须与在“NameID”断言语句中发送的值匹配。
+>"UserPrincipalName" 值必须与将为 SAML 2.0 声明中的 "IDPEmail" 发送的值匹配，"ImmutableID" 值必须与在 "NameID" 断言中发送的值匹配。
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>通过 SAML 2.0 IDP 验证单一登录
 在以管理员身份验证和管理单一登录（也称联合身份验证）之前，请查看以下文章中的信息并执行相关步骤，以便通过基于 SAML 2.0 SP-Lite 的标识提供者设置单一登录：

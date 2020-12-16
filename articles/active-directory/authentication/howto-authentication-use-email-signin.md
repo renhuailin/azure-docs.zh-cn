@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743167"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559834"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
 
@@ -36,6 +36,9 @@ ms.locfileid: "96743167"
 
 > [!NOTE]
 > 此功能仅适用于通过云身份验证的 Azure AD 用户。
+
+> [!NOTE]
+> 目前，在通过云身份验证的租户 Azure AD 加入的 Windows 10 设备上不支持此功能。 此功能不适用于混合 Azure AD 联接的设备。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登录方法概述
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 混合权益和 Linux Vm
-description: Azure 混合权益允许在 Azure 上运行的 Linux 虚拟机上节省资金。
+description: 了解 Azure 混合权益如何帮助你在 Azure 上运行的 Linux 虚拟机上节省资金。
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
@@ -10,63 +10,67 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b565a3e653d05ffcecfbc5718c74d07d8f45373
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109158"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560010"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
+# <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>如何将 Azure 混合权益适用于 Linux 虚拟机
 
-## <a name="overview"></a>概述
+Azure 混合权益是一种授权权益，可帮助你大大降低 Red Hat Enterprise Linux 云中运行 (RHEL) 和 SUSE Linux Enterprise Server (SLES) 虚拟机 (虚拟机的成本。 利用此权益，只需支付 VM 的基础结构成本，因为 RHEL 或 SLES 订阅涵盖软件费用。 该权益适用于所有 RHEL 和 SLES Marketplace 即用即付 (PAYG) 映像。
 
-Azure 混合权益是一种授权权益，可帮助你大大降低在云中运行 Red Hat Enterprise Linux (RHEL) 并 SUSE Linux Enterprise Server (SLES) 虚拟机的成本。 利用此权益，你只需为 VM 的基础结构成本付费，因为你的 RHEL 或 SLES 订阅会涵盖软件费用。 该权益适用于所有 RHEL 和 SLES Marketplace 即用即付 (PAYG) 映像。
-
-> [!IMPORTANT]
-> 适用于 Linux Vm 的 Azure 混合权益现已公开发布
-
+适用于 Linux Vm 的 Azure 混合权益现已公开发布。
 
 ## <a name="benefit-description"></a>权益说明
 
-通过 Azure 混合权益，你可以更轻松地将本地 RHEL 和 SLES 服务器迁移到 Azure，方法是将 Azure 上的现有 RHEL 和 SLES PAYG Vm 转换为自带订阅 (BYOS) 计费。 通常，从 Azure 上的 PAYG 映像部署的 Vm 将同时收取基础结构费用和软件费用。 使用 Azure 混合权益，可以在不重新部署的情况下将 PAYG Vm 转换为 BYOS 计费模型，以避免任何停机风险。
+通过 Azure 混合权益，你可以通过将 Azure 上的现有 RHEL 和 SLES PAYG Vm 转换为 Azure 来将本地 RHEL 和 SLES 服务器迁移到 Azure，从而 (BYOS) 计费。 通常，从 Azure 上的 PAYG 映像部署的 Vm 将对基础结构费用和软件费用收费。 使用 Azure 混合权益，可以在不重新部署的情况下将 PAYG Vm 转换为 BYOS 计费模型，因此可以避免任何停机风险。
 
 :::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Azure 混合权益 Linux Vm 的成本可视化。":::
 
-启用 RHEL 或 SLES VM 权益后，你将不再需要支付 PAYG VM 上通常产生的额外软件费用。 相反，你的 VM 会开始发出 BYOS 费用，这只包括计算硬件费用和不收取软件费用。
+在 RHEL 或 SLES VM 上启用权益后，你将不再需要支付 PAYG VM 上通常产生的额外软件费用。 相反，你的 VM 会开始支付 BYOS 费用，其中只包括计算硬件费用和不收取软件费用。
 
-如果需要，还可以将已启用权益的 VM 转换回 PAYG 计费模型。
+还可以选择将启用了权益的 VM 转换回 PAYG 计费模型。
 
 ## <a name="scope-of-azure-hybrid-benefit-eligibility-for-linux-vms"></a>适用于 Linux Vm 的 Azure 混合权益资格范围
 
-Azure 混合权益适用于所有 RHEL 和 SLES Marketplace PAYG 映像。 此权益尚不适用于 RHEL 或 SLES Marketplace BYOS 映像或自定义映像。
+Azure 混合权益适用于 Azure Marketplace 中的所有 RHEL 和 SLES PAYG 映像。 此权益尚不适用于 RHEL 或 SLES BYOS 映像或 Azure Marketplace 中的自定义映像。
 
-如果已在使用 Linux Vm 的权益，则保留实例、专用主机和 SQL 混合权益不符合 Azure 混合权益。
+如果已在 Linux Vm 中使用了权益，则保留实例、Azure 专用主机实例和 SQL 混合权益不适用于 Azure 混合权益。
 
-## <a name="how-to-get-started"></a>如何开始使用
+## <a name="get-started"></a>入门
 
 ### <a name="red-hat-customers"></a>Red Hat 客户
 
-适用于 RHEL 的 Azure 混合权益适用于具有以下条件的客户：有资格在 Azure 中使用，并且已启用了一个或多个订阅，以便在 Azure 中使用 [Red Hat 云访问](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 计划。 
+RHEL Azure 混合权益适用于满足这两个条件的 Red Hat 客户：
 
-1.  启用一个或多个合格的 RHEL 订阅，以便在 Azure 中使用 [Red Hat 云访问客户界面](https://access.redhat.com/management/cloud)。
-1.  在 Red Hat 云访问启用过程中提供的 Azure 订阅 () 将被允许使用 Azure 混合权益功能。
-1.  将 Azure 混合权益应用到现有的 RHEL PAYG Vm 以及从 Azure Marketplace PAYG 映像部署的任何新 RHEL Vm。
-1.  按照建议的 [后续步骤](https://access.redhat.com/articles/5419341) 配置 rhel vm 的更新源和 rhel 订阅符合性指南。
+- 具有可在 Azure 中使用的有效或未使用的 RHEL 订阅
+- 已在 Azure 中启用了一个或多个使用 [Red Hat 云访问](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 计划的订阅
+
+开始使用 Red Hat 权益：
+
+1. 启用一个或多个合格的 RHEL 订阅，以便在 Azure 中使用 [Red Hat 云访问客户界面](https://access.redhat.com/management/cloud)。
+
+   然后，你在 Red Hat 云访问支持过程中提供的 Azure 订阅将允许使用 Azure 混合权益功能。
+1. 将 Azure 混合权益应用到现有的 RHEL PAYG Vm 以及从 Azure Marketplace PAYG 映像部署的任何新 RHEL Vm。
+1. 按照建议的 [后续步骤](https://access.redhat.com/articles/5419341) 配置 rhel vm 的更新源和 rhel 订阅符合性指南。
 
 
 ### <a name="suse-customers"></a>SUSE 客户
 
-1.    向 SUSE 公有云计划注册
-1.    通过 Azure CLI 将权益应用于现有 Vm
-1.    使用单独的更新源注册 Vm，接收权益
+开始使用 SUSE 权益：
+
+1. 向 SUSE 公有云计划注册。
+1. 通过 Azure CLI 将权益应用到现有 Vm。
+1. 使用单独的更新源注册接收权益的 Vm。
 
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>在 Azure CLI 中启用和禁用权益
+## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>在 Azure CLI 中启用和禁用权益
 
-你可以使用 "az vm update" 命令来更新现有的 Vm。 对于 RHEL Vm，请使用--license 类型参数 "RHEL_BYOS" 运行该命令。 对于 SLES Vm，请使用--license 类型参数 "SLES_BYOS" 运行该命令。
+你可以使用 `az vm update` 命令来更新现有的 vm。 对于 RHEL Vm，请使用的参数运行命令 `--license-type` `RHEL_BYOS` 。 对于 SLES Vm，请使用的参数运行命令 `--license-type` `SLES_BYOS` 。
 
-#### <a name="cli-example-to-enable-the-benefit"></a>启用此权益的 CLI 示例：
+### <a name="cli-example-to-enable-the-benefit"></a>启用权益的 CLI 示例
 ```azurecli
 # This will enable the benefit on a RHEL VM
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
@@ -74,24 +78,26 @@ az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
 # This will enable the benefit on a SLES VM
 az vm update -g myResourceGroup -n myVmName --license-type SLES_BYOS
 ```
-#### <a name="cli-example-to-disable-the-benefit"></a>用于禁用权益的 CLI 示例：
-若要禁用权益，请使用许可证类型值 "None"
+### <a name="cli-example-to-disable-the-benefit"></a>用于禁用权益的 CLI 示例
+若要禁用权益，请使用 `--license-type` 值 `None` ：
+
 ```azurecli
 # This will disable the benefit on a VM
 az vm update -g myResourceGroup -n myVmName --license-type None
 ```
 
-#### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>启用大量 Vm 权益的 CLI 示例
-若要在大量 Vm 上启用权益，可以使用 `--ids` Azure CLI 中的参数。
+### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>启用大量 Vm 权益的 CLI 示例
+若要在大量 Vm 上启用权益，可以使用 `--ids` Azure CLI 中的参数：
 
 ```azurecli
 # This will enable the benefit on a RHEL VM. In this example, ids.txt is an
-# existing text file containing a delimited list of resource IDs corresponding
+# existing text file that contains a delimited list of resource IDs corresponding
 # to the VMs using the benefit
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS --ids $(cat ids.txt)
 ```
 
-下面的示例演示了两种获取资源 Id 列表的方法-一个在资源组级别（一个在订阅级别）。
+下面的示例演示了两种获取资源 Id 列表的方法：一个在资源组级别，另一个在订阅级别。
+
 ```azurecli
 # To get a list of all the resource IDs in a resource group:
 $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
@@ -100,13 +106,18 @@ $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
-## <a name="check-ahb-status-of-a-vm"></a>检查 VM 的 AHB 状态
-可以通过两种方式查看 VM 的 AHB 状态：使用 Azure CLI 或使用 Azure IMDS)  (azure 实例元数据服务。
+## <a name="apply-the-azure-hybrid-benefit-at-vm-create-time"></a>在 VM 创建时应用 Azure 混合权益
+除了将 Azure 混合权益应用到现有的即用即付 Vm，你还可以在创建 VM 时调用它。 这样做的好处是 threefold：
+- 可以通过使用相同的映像和过程来预配 PAYG 和 BYOS Vm。
+- 它支持未来的授权模式更改，不能用于 BYOS 映像或自带 VM。
+- 默认情况下，VM 将连接到 Red Hat 更新基础结构 (RHUI) ，以确保其保持最新和安全。 可以在部署后随时更改更新的机制。
 
+## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>检查 VM 的 Azure 混合权益状态
+可以通过使用 Azure CLI 或使用 Azure 实例元数据服务查看 VM 的 Azure 混合权益状态。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`az vm get-instance-view`此命令可用于实现此目的。 在响应中查找 licenseType 字段。 如果 licenseType 字段存在并且值为 "RHEL_BYOS" 或 "SLES_BYOS"，则 VM 启用了权益。
+你可以使用 `az vm get-instance-view` 命令来实现此目的。 查找 `licenseType` 响应中的字段。 如果该 `licenseType` 字段存在并且值为 `RHEL_BYOS` 或 `SLES_BYOS` ，则 VM 启用了权益。
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVm
@@ -114,7 +125,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
-可以从 VM 本身中查询 IMDS 证明元数据，以确定 VM 的 licenseType。 "RHEL_BYOS" 或 "SLES_BYOS" 的 licenseType 值将指示 VM 启用了权益。 [在此处](./instance-metadata-service.md#attested-data)了解有关证明元数据的详细信息
+可以从 VM 本身中查询 Azure 实例元数据服务中的证明元数据，以确定 VM 的 `licenseType` 值。 `licenseType`或的值 `RHEL_BYOS` `SLES_BYOS` 将指示 VM 启用了权益。 [详细了解证明元数据](./instance-metadata-service.md#attested-data)。
 
 ## <a name="compliance"></a>合规性
 
@@ -124,68 +135,64 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 使用 RHEL Azure 混合权益的客户有三个选项可用于向这些 Vm 提供软件更新和修补程序：
 
-1.  [Red Hat 更新基础结构 (RHUI) ](../workloads/redhat/redhat-rhui.md) (默认选项) 
-1.  Red Hat 卫星服务器
-1.  Red Hat 订阅管理器
+- [Red Hat 更新基础结构](../workloads/redhat/redhat-rhui.md) (默认选项) 
+- Red Hat 卫星服务器
+- Red Hat 订阅管理器
 
-选择 RHUI 选项的客户可以继续使用 RHUI 作为其 AHB RHEL Vm 的主要更新源，而无需将 RHEL 订阅附加到这些 Vm。  选择 RHUI 选项的客户负责确保 RHEL 订阅符合性。
+选择 RHUI 选项的客户可以继续使用 RHUI 作为 Azure 混合权益 RHEL Vm 的主要更新源，而无需将 RHEL 订阅附加到这些 Vm。 选择 RHUI 选项的客户负责确保 RHEL 订阅符合性。
 
-选择 Red Hat 卫星 Server 或 Red Hat 订阅管理器的客户应该删除 RHUI 配置，然后将已启用云访问权限的 RHEL 订阅附加到其 AHB RHEL VM (s) 。  
+选择 Red Hat 卫星 Server 或 Red Hat 订阅管理器的客户应删除 RHUI 配置，然后将已启用云访问权限的 RHEL 订阅附加到其 Azure 混合权益 RHEL Vm。  
 
-可在 [此处](https://access.redhat.com/articles/5419341)找到有关 Red Hat 订阅相容性、软件更新和 AHB RHEL vm 的源的详细信息。
+有关 Azure 混合权益 RHEL Vm 的 Red Hat 订阅相容性、软件更新和源的详细信息，请参阅 [关于将 RHEL 订阅与 Azure 混合权益配合使用的 Red hat 文章](https://access.redhat.com/articles/5419341)。
 
 ### <a name="suse"></a>SUSE
 
-若要将 Azure 混合权益用于 SLES Vm，必须先向 SUSE 公有云计划注册。 在此处了解有关程序的详细信息。 购买 SUSE 订阅后，必须使用 SUSE 客户中心、订阅管理工具服务器或 SUSE 管理器将这些订阅的 Vm 注册到自己的更新源。
+若要将 Azure 混合权益用于 SLES Vm，必须先向 [SUSE 公有云计划](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf)注册。 购买 SUSE 订阅后，必须将使用这些订阅的 Vm 注册到自己的更新源。 使用 SUSE 客户中心、订阅管理工具服务器或 SUSE 管理器进行此注册。
 
 ## <a name="frequently-asked-questions"></a>常见问题
-*问：我是否可以将 "RHEL_BYOS" 的许可证类型用于 SLES 映像，反之亦然？*
+*问：我能否将许可证类型用于 `RHEL_BYOS` SLES 映像，反之亦然？*
 
-答：不能。 尝试输入不正确匹配 VM 上运行的发行版的许可证类型将不会更新任何计费元数据。 但是，如果意外输入错误的许可证类型，则再次将 VM 更新为正确的许可证类型将仍会启用此权益。
+答：不可以。 尝试输入不正确地匹配 VM 上运行的分发的许可证类型将不会更新任何计费元数据。 但如果你意外地输入了错误的许可证类型，则再次将 VM 更新为正确的许可证类型将仍然会启用此权益。
 
-*问：我已注册 Red Hat 云访问权限，但仍无法启用我的 RHEL Vm 权益。我该怎么办？*
+*问：我已注册 Red Hat 云访问，但仍无法启用我的 RHEL Vm 权益。我该怎么办？*
 
 答： Red Hat 云访问订阅注册可能需要一些时间才能从 Red Hat 传播到 Azure。 如果在一个工作日内仍看到此错误，请联系 Microsoft 支持部门。
 
 *问：我已使用 RHEL BYOS "黄金映像" 部署了 VM。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
 
-答：不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
+答：不可以。 Azure 混合权益仅支持在即用即付映像上进行转换。
 
-*问：我已使用 RHEL BYOS "黄金映像" 部署了 VM。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+*问：我通过 Azure Migrate、Azure Site Recovery 或) 到 Azure 从本地 (上传了我自己的 RHEL 映像。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
 
-答：不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
+答：不可以。 Azure 混合权益功能目前仅适用于 Azure Marketplace 中的 RHEL 和 SLES 映像。 
 
-*问：我已通过 Azure Migrate、ASR 或) 到 Azure 从本地 (上传我自己的 RHEL 映像。是否可以将这些映像的帐单从 BYOS 转换为 PAYG？*
+*问：我通过 Azure Migrate、Azure Site Recovery 或) 到 Azure 从本地 (上传了我自己的 RHEL 映像。是否需要执行任何操作才能受益于 Azure 混合权益？*
 
-答：不能。 目前，Azure 混合权益功能仅适用于 RHEL 和 SLES Marketplace 映像。 
+答：不可以。 你上载的 RHEL 映像已被视为 BYOS，你只需为 Azure 基础结构成本付费。 你需要负责 RHEL 订阅费用，就像在本地环境中一样。 
 
-*问：我已通过 Azure Migrate、ASR 或) 到 Azure 从本地 (上传我自己的 RHEL 映像。是否需要执行任何操作才能受益于 Azure 混合权益？*
+*问：是否可以在从 Azure Marketplace RHEL 和 SLES SAP 映像部署的 Vm 上使用 Azure 混合权益？*
 
-答：不可以。 你上载的 RHEL 映像已被视为 BYOS，你只需为 Azure 基础结构成本付费。 你需要负责 RHEL 订阅费用，就像对本地环境执行的操作一样。 
+答：可以。 你可以使用 RHEL Vm 的许可证类型 `RHEL_BYOS` ，并 `SLES_BYOS` 为从 AZURE Marketplace RHEL 和 SLES SAP 映像部署的 vm 转换。
 
-*问：是否可以在从 Marketplace RHEL 和 SLES SAP 映像部署的 Vm 上使用 Azure 混合权益？*
+*问：是否可以在 RHEL 和 SLES 的虚拟机规模集上使用 Azure 混合权益？*
 
-答：可以。 可以使用 RHEL Vm 的 "RHEL_BYOS" 的许可证类型，使用 "SLES_BYOS" 执行从 Marketplace RHEL 和 SLES SAP 映像部署的 Vm 的转换。
+答：不可以。 虚拟机规模集目前不在 RHEL 和 SLES Azure 混合权益范围内。
 
-*问：是否可以在 RHEL 和 SLES (VMSS) 上使用虚拟机规模集 Azure 混合权益？*
+*问：我是否可以在 RHEL 和 SLES 的预订实例上使用 Azure 混合权益？*
 
-答：不可以。 VMSS 目前不在 RHEL 和 SLES 的 Azure 混合权益范围内。
-
-*问：是否可以在 RHEL 和 SLES (的 RIs) 上使用 Azure 混合权益保留实例？*
-
-答：不可以。 目前尚不在 RHEL 和 SLES Azure 混合权益范围内的 RIs。
+答：不可以。 保留实例目前不在 RHEL 和 SLES Azure 混合权益范围内。
 
 *问：是否可以在部署用于 SQL Server RHEL 映像的虚拟机上使用 Azure 混合权益？*
 
 答：不可以。 无计划支持这些。
  
 
-## <a name="common-issues"></a>常见问题
-本部分包含可能遇到的常见问题的列表以及缓解步骤。
+## <a name="common-problems"></a>常见问题
+本部分列出了你可能会遇到的常见问题和缓解措施。
 
 | 错误 | 缓解措施 |
 | ----- | ---------- |
-| "该操作无法完成，因为我们的记录显示你尚未在 Azure 订阅上成功启用 Red Hat 云访问 ..." | 若要将权益与 RHEL Vm 一起使用，必须先将 Azure 订阅注册 () ，并使用 Red Hat 云访问权限。 访问此链接，了解有关如何注册适用于 Red Hat 云访问的 Azure 订阅的详细信息
+| "该操作无法完成，因为我们的记录显示你尚未在 Azure 订阅上成功启用 Red Hat 云访问 ..." | 若要将此权益用于 RHEL Vm，必须先 [使用 Red Hat 云访问权限注册 Azure 订阅](https://access.redhat.com/management/cloud)。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何创建和更新 Vm，并 (RHEL_BYOS 中添加许可证类型，SLES_BYOS[在此处使用 Azure 混合权益](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)) Azure CLI。
+* [了解如何使用 Azure 混合权益创建和更新 Vm，并 (RHEL_BYOS，SLES_BYOS) Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

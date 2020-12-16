@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511529"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562610"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -101,7 +101,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="enable-screen-capture-protection-preview"></a> (预览启用屏幕捕获保护) 
 
-屏幕捕获保护功能可防止在客户端终结点上捕获敏感信息。 启用此功能后，会在屏幕截图和屏幕共享中自动阻止或隐藏远程内容。 它还将对可能持续捕获屏幕内容的恶意软件隐藏。
+屏幕捕获保护功能可防止在客户端终结点上捕获敏感信息。 启用此功能后，会在屏幕截图和屏幕共享中自动阻止或隐藏远程内容。 它还将对可能持续捕获屏幕内容的恶意软件隐藏。 建议在使用此功能时禁用剪贴板重定向，阻止将远程内容复制到终结点。
 
 此策略是在主机级别通过配置注册表项强制实施的。 若要启用此策略，请打开 PowerShell，并通过运行以下 cmdlet 来设置 **fEnableScreenCaptureProtection** 注册表项：
 

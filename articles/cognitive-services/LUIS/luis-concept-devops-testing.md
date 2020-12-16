@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025936"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561216"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps 测试
 
@@ -18,7 +18,7 @@ ms.locfileid: "95025936"
 
 在敏捷软件开发方法中，测试在生成优质软件方面扮演着重要的角色。 对 LUIS 应用的每个重大更改都应附带测试，旨在测试开发人员在应用中生成的新功能。 这些测试将与 LUIS 应用的 `.lu` 源一起签入到源代码存储库中。 当应用满足测试条件时，将完成更改的实现。
 
-测试是 [CI/CD 工作流](luis-concept-devops-automation.md)的关键部分。 当拉取请求 (PR) 建议对 LUIS 应用进行更改时，或者在将更改合并到主分支后，CI 工作流应运行测试，以验证更新是否未导致任何回归。
+测试是 [CI/CD 工作流](luis-concept-devops-automation.md)的关键部分。 当拉取请求中 (PR) 或更改合并到主分支后，在拉取请求中建议对 LUIS 应用的更改时，CI 工作流应运行测试，以验证更新是否未引发任何退化。
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>如何进行单元测试和批处理测试
 
@@ -123,7 +123,7 @@ LUIS 门户中可用的测试功能不需要已发布的终结点，并且属于
 还可以使用 NLU.DevOps 包，用于在命令行运行批处理测试。
 
 * 使用 NLU.DevOps [测试命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md)将测试文件中的测试提交到终结点，并在文件中捕获实际的预测结果，与单元测试相同。
-* 在[性能测试模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)下使用 NLU.DevOps [比较命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)衡量应用的性能，还可以将应用的性能与基线性能基准进行比较，例如最新提交到主版本或当前版本的结果。 在性能测试模式中，`compare` 命令生成 NUnit 测试输出，并以 JSON 格式生成[批处理测试结果](./luis-glossary.md#batch-test)。
+* 请使用 NLU。DevOps "[性能测试模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)" 中的 "[比较" 命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)来测量应用程序的性能，还可以将应用程序的性能与基线性能基准进行比较，例如，从最新的 commit 到 main 或当前版本的结果。 在性能测试模式中，`compare` 命令生成 NUnit 测试输出，并以 JSON 格式生成[批处理测试结果](./luis-glossary.md#batch-test)。
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS 非确定性训练和对测试的影响
 
