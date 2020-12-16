@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 70ab0b5c70e94c4784a7ab260b3304107bcb1175
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7458f6868d7fbee72b55ad002148691a113c269d
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096297"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531896"
 ---
 从另一个部署槽克隆配置时，可以编辑克隆的配置。 某些配置元素在交换时遵循内容（不特定于槽），而其他配置元素会在交换之后保留在同一个槽（特定于槽）。 以下列表显示交换槽时会更改的设置。
 
@@ -41,5 +41,7 @@ ms.locfileid: "97096297"
 * 虚拟网络集成
 
 > [!NOTE]
+> 若要使这些设置可交换，请 `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` 在应用的每个槽中添加应用设置，并将其值设置为 `0` 或 `false` 。 这些设置要么都是可交换的，要么根本不是。 不能仅使某些设置可交换，而不是其他设置。
+
 > 应用于不交换的设置的某些应用设置也不交换。 例如，由于诊断设置不会交换，因此相关的应用设置（如 `WEBSITE_HTTPLOGGING_RETENTION_DAYS` 和 `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS`）也不会交换，即使它们未显示为槽设置也是如此。
 >
