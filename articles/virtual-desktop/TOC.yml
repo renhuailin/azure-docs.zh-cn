@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: 发布内置应用
       href: publish-apps.md
-    - name: 设置 MSIX 应用附加
-      href: app-attach.md
+    - name: 使用 MSIX 应用附加
+      items:
+        - name: 通过 Azure 门户设置 MSIX 应用附加
+          href: app-attach-azure-portal.md
+        - name: 通过 PowerShell 设置 MSIX 应用附加
+          href: app-attach-powershell.md
+        - name: 创建 PowerShell 脚本
+          href: app-attach.md
+        - name: 准备 MSIX 映像
+          href: app-attach-image-prep.md
+        - name: 设置文件共享
+          href: app-attach-file-share.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
     - name: 设置 Azure AD 多重身份验证
@@ -112,6 +122,8 @@
       href: disaster-recovery.md
 - name: 概念
   items:
+    - name: 内置角色
+      href: rbac.md
     - name: 身份验证
       href: authentication.md
     - name: Windows 虚拟桌面环境

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021239"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582670"
 ---
 本指南提供说明和示例代码，以帮助你开始使用适用于 Go 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -274,6 +274,8 @@ go run sample.go
 ```
 
 应用程序的输出应显示在控制台中。 然后，可以验证测试图像（在 **samples/vision/images/Test** 中找到）是否已正确标记，并验证检测区域是否正确。
+
+## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
