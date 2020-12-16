@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012861"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606940"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure 数据工厂第1版管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -98,8 +98,10 @@ public IDictionary<string, string> Execute(
 该方法返回一个字典，此字典可在以后将自定义活动链接在一起。 此功能尚未实现，因此该方法将返回空字典。
 
 ### <a name="procedure"></a>过程
+
 1. 创建 **.NET 类库** 项目。
-   <ol type="a">
+   
+    <ol type="a">
      <li>启动 Visual Studio。</li>
      <li>单击“文件”，指向“新建”并单击“项目”。  </li>
      <li>展开“模板”，并选择“Visual C#”。  此演练中使用的是 C#，但也可使用任何 .NET 语言开发自定义活动。</li>
@@ -116,6 +118,7 @@ public IDictionary<string, string> Execute(
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. 将 **Azure 存储**  NuGet 包导入项目。
 
     ```powershell
@@ -149,16 +152,19 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. 将 **命名空间** 的名称更改为 **mydotnetactivityns.mydotnetactivity**。
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. 将类名称更改为 **MyDotNetActivity**，并从 **IDotNetActivity** 接口派生，如以下代码片段所示：
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. 将 **IDotNetActivity** 接口的 **执行** 方法实现（添加）到 **MyDotNetActivity** 类并将以下示例代码复制到该方法。
 
     以下示例计算与数据切片关联的每个 blob 中搜索词（“Microsoft”）的出现次数。
@@ -279,6 +285,7 @@ public IDictionary<string, string> Execute(
         return new Dictionary<string, string>();
     }
     ```
+
 9. 添加以下帮助器方法：
 
     ```csharp
@@ -367,25 +374,30 @@ public IDictionary<string, string> Execute(
     ```
 
     Calculate 方法计算输入文件（文件夹中的 blob ）中关键字 Microsoft 的实例数。 搜索词（“Microsoft”）在代码中是硬编码。
+
 10. 编译该项目。 在菜单中单击“生成”，并单击“生成解决方案”。
 
     > [!IMPORTANT]
     > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
 11. 启动 **Windows 资源管理器**，然后导航到 **bin\debug** 或 **bin\release** 文件夹，具体取决于生成的类型。
+
 12. 创建一个 zip 文件 **MyDotNetActivity.zip** ，其中包含 \bin\Debug 文件夹中的所有二进制文件 \<project folder\> 。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的 **顶级** 目录中。
 
     ![二进制输出文件](./media/data-factory-use-custom-activities/Binaries.png)
-14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。
-15. 将 MyDotNetActivity.zip 作为 Blob 上传到 AzureStorageLinkedService 引用的通用 Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。
+
+13. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。
+
+14. 将 MyDotNetActivity.zip 作为 Blob 上传到 AzureStorageLinkedService 引用的通用 Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。
 
 > [!IMPORTANT]
 > 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上传到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程会自动完成这些步骤。 有关详细信息，请参阅 [Visual Studio 中的数据工厂项目](#data-factory-project-in-visual-studio)部分。
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>创建包含自定义活动的管道
+
 现已创建自定义活动并将包含二进制的 zip 文件上传到 **通用** Azure 存储帐户中的 Blob 容器。 在本部分，我们将创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
 
 自定义活动的输入数据集表示 Blob 存储中 adftutorial 容器的 customactivityinput 文件夹中的 Blob（文件）。 活动的输出数据集表示 Blob 存储中 adftutorial 容器的 customactivityoutput 文件夹中的输出 Blob。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353113"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605053"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 资源和知识库的语言支持
 
@@ -83,61 +83,61 @@ ms.locfileid: "96353113"
 
 以下列表包含 QnA Maker 资源支持的语言。 
 
-|语言|
+| 语言 |
 |--|
-|阿拉伯语|
-|亚美尼亚语|
-|Bangla|
-|巴斯克语|
-|保加利亚语|
-|加泰罗尼亚语|
-|中文_简体|
-|中文_繁体|
-|克罗地亚语|
-|捷克语|
-|丹麦语|
-|荷兰语|
-|英语|
-|爱沙尼亚语|
-|芬兰语|
-|法语|
-|加利西亚语|
-|德语|
-|希腊语|
-|古吉拉特语|
-|希伯来语|
-|Hindi|
-|匈牙利语|
-|冰岛语|
-|印度尼西亚语|
-|爱尔兰语|
-|意大利语|
-|日语|
-|卡纳达语|
-|韩语|
-|拉脱维亚语|
-|立陶宛语|
-|马拉雅拉姆语|
-|马来语|
-|挪威语|
-|波兰语|
-|葡萄牙语|
-|旁遮普语|
-|罗马尼亚语|
-|俄语|
-|塞尔维亚语_西里尔文|
-|塞尔维亚语_拉丁语|
-|斯洛伐克语|
-|斯洛文尼亚语|
-|西班牙语|
-|瑞典语|
-|泰米尔语|
-|泰卢固语|
-|泰语|
-|土耳其语|
-|乌克兰语|
-|乌尔都语|
-|越南语|
+| 阿拉伯语 |
+| 亚美尼亚语 |
+| Bangla |
+| 巴斯克语 |
+| 保加利亚语 |
+| 加泰罗尼亚语 |
+| 中文_简体 |
+| 中文_繁体 |
+| 克罗地亚语 |
+| 捷克语 |
+| 丹麦语 |
+| 荷兰语 |
+| 英语 |
+| 爱沙尼亚语 |
+| 芬兰语 |
+| 法语 |
+| 加利西亚语 |
+| 德语 |
+| 希腊语 |
+| 古吉拉特语 |
+| 希伯来语 |
+| Hindi |
+| 匈牙利语 |
+| 冰岛语 |
+| 印度尼西亚语 |
+| 爱尔兰语 |
+| 意大利语 |
+| 日语 |
+| 卡纳达语 |
+| 韩语 |
+| 拉脱维亚语 |
+| 立陶宛语 |
+| 马拉雅拉姆语 |
+| 马来语 |
+| 挪威语 |
+| 波兰语 |
+| 葡萄牙语 |
+| 旁遮普语 |
+| 罗马尼亚语 |
+| 俄语 |
+| 塞尔维亚语_西里尔文 |
+| 塞尔维亚语_拉丁语 |
+| 斯洛伐克语 |
+| 斯洛文尼亚语 |
+| 西班牙语 |
+| 瑞典语 |
+| 泰米尔语 |
+| 泰卢固语 |
+| 泰语 |
+| 土耳其语 |
+| 乌克兰语 |
+| 乌尔都语 |
+| 越南语 |
 
 ## <a name="query-matching-and-relevance"></a>查询匹配和相关性
 QnA Maker 依赖于 [Azure 认知搜索语言分析器](/rest/api/searchservice/language-support) 来提供结果。
@@ -155,7 +155,7 @@ QnA Maker 依赖于 [Azure 认知搜索语言分析器](/rest/api/searchservice/
 |匈牙利语|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |波兰语|
 |葡萄牙语|
 |西班牙语|

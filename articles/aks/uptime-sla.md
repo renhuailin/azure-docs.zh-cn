@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033011"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607333"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -25,9 +25,8 @@ ms.locfileid: "97033011"
 
 ## <a name="region-availability"></a>上市区域
 
-运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
-
-## <a name="limitations"></a>限制
+* 运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
+* 运行时间 SLA 适用于支持 AKS 的所有区域中的 [专用 AKS 群集][private-clusters] 。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
@@ -138,3 +137,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

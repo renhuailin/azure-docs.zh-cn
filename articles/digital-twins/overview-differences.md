@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099073"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604990"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>新版 Azure 数字孪生是指什么？ 它与之前的版本 (2018) 有何区别？
 
 Azure 数字孪生的第一个公共预览版已于 2018 年 10 月发布。 尽管第一版中的核心概念已转到新服务，但许多接口和实现细节都已更改，使该服务更灵活和更易于访问。 这些更改是由客户反馈推动的。
 
 > [!IMPORTANT]
-> 鉴于新服务的扩展功能，以前的 Azure 数字孪生服务将于 2020 年结束后停用。
+> 在新服务的扩展功能中，以前的 Azure 数字孪生服务将停用，其 Api 和关联的数据从2021年1月18日开始不再可用。
 
 如果在首次公开预览期间使用第一版的 Azure 数字孪生，请使用本文中的信息和最佳做法，了解如何使用新的服务并利用其功能。
 
@@ -38,7 +38,7 @@ Azure 数字孪生的第一个公共预览版已于 2018 年 10 月发布。 尽
 
 ## <a name="service-limits"></a>服务限制
 
-有关 Azure 数字孪生限制的列表，请参阅 [*参考：服务限制*](reference-service-limits.md)。
+有关 Azure 数字孪生限制的列表，请参阅[参考：服务限制](reference-service-limits.md)
 
 ## <a name="next-steps"></a>后续步骤
 

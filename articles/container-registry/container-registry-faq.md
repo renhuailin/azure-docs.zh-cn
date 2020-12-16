@@ -5,18 +5,18 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346989"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606277"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
 本文解答有关 Azure 容器注册表的常见问题和已知问题。
 
-有关注册表疑难解答指南，请参阅：
+有关注册表故障排除指南，请参阅：
 * [注册表登录故障排除](container-registry-troubleshoot-login.md)
 * [排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)
 * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
@@ -111,6 +111,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [如何启用匿名拉取访问？](#how-do-i-enable-anonymous-pull-access)
+- [如何实现向注册表推送不可分发的层？](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
@@ -259,11 +260,38 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
-为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你在注册表中有任何 [范围映射 (用户) 或令牌资源](./container-registry-repository-scoped-permissions.md) ，请先删除它们，然后再 (系统范围映射) 。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你的注册表中有任何[范围映射（用户）或令牌资源](./container-registry-repository-scoped-permissions.md)，请在提交支持票证之前删除它们（可以忽略系统范围映射）。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 > [!NOTE]
-> * 仅可匿名访问请求已知映像所需的 Api。 不能匿名访问标记列表或存储库列表等操作的其他 Api。
-> * 尝试匿名拉取操作之前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。
+> * 仅可匿名访问拉取已知映像所需的 API。 不能匿名访问可以执行标记列表或存储库列表等操作的其他 API。
+> * 尝试匿名拉取操作前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>如何实现向注册表推送不可分发的层？
+
+清单中的不可分发层包含 URL 参数，可以从该 URL 参数获取内容。 启用不可分发的层推送的一些可能用例包括：网络受限制的注册表、具有受限访问权限的气流注册表，或不带 internet 连接的注册表。
+
+例如，如果已设置 NSG 规则，以便 VM 只能从 Azure 容器注册表中提取映像，则 Docker 将会请求外部/非可分发层的故障。 例如，Windows Server Core 映像会在其清单中包含对 Azure 容器注册表的外部层引用，因此无法提取此方案。
+
+若要启用无法再分发的层：
+
+1. 编辑 `daemon.json` 位于 `/etc/docker/` Linux 主机上和 `C:\ProgramData\docker\config\daemon.json` Windows Server 上的文件。 假设文件之前为空，请添加以下内容：
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > 值是注册表地址的数组，用逗号分隔。
+
+2. 保存并退出该文件。
+
+3. 重新启动 Docker。
+
+将映像推送到列表中的注册表时，它们的非可分发层将被推送到注册表。
+
+> [!WARNING]
+> 不可分发的项目通常会限制如何以及在何处分发和共享这些项目。 仅将此功能用于将项目推送到专用注册表。 请确保符合任何涵盖重新分发非分发项目的条款。
 
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 

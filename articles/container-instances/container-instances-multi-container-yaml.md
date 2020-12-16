@@ -3,12 +3,12 @@ title: 教程 - 部署多容器组 - YAML
 description: 本教程介绍如何使用 YAML 文件和 Azure CLI 在 Azure 容器实例中部署包含多个容器的容器组。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091287"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605155"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教程：使用 YAML 文件部署多容器组
 
@@ -178,7 +178,6 @@ Connection: keep-alive
 还可以使用[资源管理器模板](container-instances-multi-container-group.md)指定多容器组。 当你需要使用容器组部署其他 Azure 服务资源时，可以很容易地根据场景调整资源管理器模板。
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

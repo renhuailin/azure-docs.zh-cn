@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3c2f90403afbc581f80312be2271d802f4d719a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584232"
+ms.locfileid: "97604917"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
-通过 [Github 操作](https://help.github.com/en/articles/about-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
+通过 [Github 操作](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -63,7 +63,7 @@ ms.locfileid: "97584232"
 
 使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
+将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
@@ -746,7 +746,7 @@ jobs:
 
 - [Docker 登录/注销](https://github.com/Azure/docker-login)
 
-- [触发工作流的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [触发工作流的事件](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 

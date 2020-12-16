@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604968"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 将自定义容器部署到应用服务
 
-[GitHub 操作](https://help.github.com/en/articles/about-github-actions) 使你可以灵活地生成自动化软件开发工作流。 使用 [Azure Web 部署操作](https://github.com/Azure/webapps-deploy)，可以使用 GitHub 操作自动化工作流，将自定义容器部署到 [应用服务](overview.md) 。
+[GitHub 操作](https://docs.github.com/en/free-pro-team@latest/actions) 使你可以灵活地生成自动化软件开发工作流。 使用 [Azure Web 部署操作](https://github.com/Azure/webapps-deploy)，可以使用 GitHub 操作自动化工作流，将自定义容器部署到 [应用服务](overview.md) 。
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含工作流中的各个步骤和参数。
 
@@ -39,7 +39,7 @@ ms.locfileid: "97008021"
 
 使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
+将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ jobs:
 
 - [Docker 登录/注销](https://github.com/Azure/docker-login)
 
-- [触发工作流的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [触发工作流的事件](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 

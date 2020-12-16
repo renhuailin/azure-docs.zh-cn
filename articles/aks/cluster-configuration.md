@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928777"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606906"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -173,7 +173,7 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 * 你不能再访问 docker 引擎， `/var/run/docker.sock` 或使用 docker (DinD) 。
   * 如果当前从 Docker 引擎提取应用程序日志或监视数据，请改用 [容器 Azure Monitor](../azure-monitor/insights/container-insights-enable-new-cluster.md) 。 此外，AKS 不支持在可能导致不稳定的代理节点上运行任何带外命令。
   * 即使使用小鲸鱼/docker，也强烈建议不要通过上述方法构建映像并直接利用 docker 引擎。 Kubernetes 并不完全了解那些已使用的资源，这些方法会提供 [本文](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) 详细介绍的许多 [问题，例如](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)。
-* 生成图像-建议使用 [ACR 任务](../container-registry/container-registry-quickstart-task-cli.md)来生成映像。 另一种方法是使用 [docker buildx](https://github.com/docker/buildx)等更安全的群集内选项。
+* 生成映像-您可以继续使用当前的 docker 生成工作流，除非在 AKS 群集中构建 imagages。 在这种情况下，请考虑切换到建议的方法，以便使用 [ACR 任务](../container-registry/container-registry-quickstart-task-cli.md)构建映像，或者使用更安全的群集选项（如 [docker buildx](https://github.com/docker/buildx)）。
 
 ## <a name="generation-2-virtual-machines-preview"></a>第2代虚拟机 (预览) 
 

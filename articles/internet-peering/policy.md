@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 20f25e0add5d05bb2dcf7f3ebdc86ccd5ae889d0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510781"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592323"
 ---
 # <a name="peering-policy"></a>对等互连策略
 Microsoft 维护了一个选择性的对等互连策略，旨在确保获得最佳的客户体验（由行业标准和最佳实践支持）、针对未来需求进行缩放以及对等互连的战略定位。 因此，Microsoft 保留在必要时对策略进行例外的权利。 Microsoft 对网络的一般要求在以下各节中进行了介绍。 它们适用于直接对等互连请求和 Exchange 对等互连请求。 

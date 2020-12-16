@@ -3,12 +3,12 @@ title: Azure 开发测试实验室资源的分布式协作开发
 description: 提供设置分布式开发环境以开发开发测试实验室资源的最佳实践。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483799"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592358"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure 开发测试实验室资源的分布式开发和协作开发的最佳实践
 分布式协作开发允许不同的团队或人员开发和维护基本代码。 若要成功，开发过程取决于创建、共享和集成信息的能力。 此密钥开发原则可在 Azure 开发测试实验室中使用。 实验室中有多种类型的资源，这些资源通常分布于企业中的不同实验室。 不同类型的资源集中在两个方面：
@@ -39,7 +39,7 @@ ms.locfileid: "85483799"
 - 业务单元/部门范围资源
 - 团队特定资源。
 
-其中每个级别都链接到不同的存储库，其中，主分支需要具有生产质量。 每个存储库中的 [分支](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) 将用于开发这些特定资源 (项目或模板) 。 此结构与开发测试实验室非常一致，因为可以轻松地将多个存储库和多个分支同时连接到组织的实验室。 存储库名称包含在用户界面中 (UI) ，以避免在名称、说明和发布者相同时产生混淆。
+其中每个级别都链接到一个不同的存储库，其中，主分支需要具有生产质量。 每个存储库中的 [分支](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) 将用于开发这些特定资源 (项目或模板) 。 此结构与开发测试实验室非常一致，因为可以轻松地将多个存储库和多个分支同时连接到组织的实验室。 存储库名称包含在用户界面中 (UI) ，以避免在名称、说明和发布者相同时产生混淆。
      
 下图显示了两个存储库：由 IT 部门维护的公司存储库，以及 R&D 部门维护的部门存储库。
 

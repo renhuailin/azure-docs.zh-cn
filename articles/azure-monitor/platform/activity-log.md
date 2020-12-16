@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186076"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592460"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
 活动日志是 Azure 中的一种[平台日志](platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
@@ -56,7 +56,8 @@ ms.locfileid: "96186076"
 - 使用日志查询来执行复杂分析，并深入了解活动日志条目。
 - 将日志警报与活动条目配合使用，从而可以使用更复杂的警报逻辑。
 - 将活动日志条目存储 90 天以上。
-- Log Analytics 工作区中存储的活动日志数据不产生数据引入或数据保留费用。
+- Log Analytics 工作区中存储的活动日志数据不收取数据引入费用。
+- 对于存储在 Log Analytics 工作区中的活动日志数据，在90天之前，不会产生任何数据保留费用。
 
 [创建诊断设置](diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要 [Azure Lighthouse](../../lighthouse/index.yml)。
 

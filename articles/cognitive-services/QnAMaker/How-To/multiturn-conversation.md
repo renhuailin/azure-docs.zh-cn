@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: b04a5535ada9532d62d395f7070d9bcd8aa4380c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591772"
+ms.locfileid: "97605138"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -38,7 +38,6 @@ ms.locfileid: "97591772"
 在上图中，用户通过输入 **我的帐户** 开始了一个会话。 该知识库具有三个链接的问题和答案对。 若要优化答案，用户需要选择知识库中的三个选项之一。  ( # 1) 的问题有三个后续提示，这些提示在聊天机器人中显示为3个选项 ( 第 2) 。
 
 当用户选择选项 ( # 3) 时，会显示下一个优化选项 ( # 4) 的列表。 此顺序将继续 ( # 5) ，直到用户确定正确的最后答案 ( # 6) 。
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>在机器人中使用多个
 
@@ -79,7 +78,6 @@ ms.locfileid: "97591772"
 > [!Caution]
 > 不支持使用导出的 TSV 或 XLS 多转换知识库文件作为新的或空知识库的数据源。 你需要在 QnA Maker 门户的 "**设置**" 页中 **导入** 该文件类型，以便将导出的 "多提示" 提示添加到知识库中。
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>通过创建 API 创建包含多个提示的知识库
 
 您可以使用 [QnA Maker 创建 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)创建包含多个提示的知识案例。 将在 `context` 属性的数组中添加提示 `prompts` 。
@@ -116,7 +114,6 @@ ms.locfileid: "97591772"
     |仅限上下文| 选中此复选框。 仅当问题指定上下文时，才返回答案。|
     |链接到答案|输入 " **使用登录屏幕** 查找现有的问题和答案对"。|
 
-
 1.  返回一个匹配项。 选择此应答作为跟进，然后选择 " **保存**"。
 
     !["后续提示 (预览) " 页](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ ms.locfileid: "97591772"
 1. 编辑完显示文本后，请选择 " **保存**"。
 1. 在顶部导航栏中， **保存并训练**。
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>添加新的问题和答案对作为跟进提示
 
 在将新的问题与答案对添加到知识库中时，每个对都应链接到一个现有问题作为跟进提示。
@@ -155,7 +151,6 @@ ms.locfileid: "97591772"
     |||
 
     ![创建新的提示问题和答案](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. 选择 " **新建**"，然后选择 " **保存**"。
 
@@ -353,7 +348,6 @@ QnA Maker _GenerateAnswer_ JSON 响应包括 `context` 对象中第一项的属�
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>查询具有 QnA Maker ID 的知识库
 
 如果要使用多项功能构建自定义应用程序。 在初始问题的响应中，会返回任何后续提示及其关联 `qnaId` 的。 使用 ID 后，可以在后续提示的请求正文中传递此 ID。 如果请求正文包含 `qnaId` ，并且上下文对象 (包含以前的 QnA Maker 属性) ，则 GenerateAnswer 将按 ID 返回准确的问题，而不是使用排名算法查找问题文本的答案。
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API 支持显示顺序
 
