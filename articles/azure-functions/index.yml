@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions 文档
-summary: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。
+summary: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。 其“按需计算”可实现轻量级集成和一次性支持功能。 还可用它来提供 Web API、响应数据库更改、处理 IoT 数据流和管理消息队列。
 metadata:
   title: Azure Functions 文档
-  description: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。
+  description: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。 其“按需计算”可实现轻量级集成和一次性支持功能。 还可用它来提供 Web API、响应数据库更改、处理 IoT 数据流和管理消息队列。
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: c2271970fb9a8b500e78687547030d39c5f241e3
-  ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96751702"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97505284"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:

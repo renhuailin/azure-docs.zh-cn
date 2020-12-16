@@ -605,7 +605,7 @@
           href: service-fabric-how-to-specify-environment-variables.md
         - name: 部署或删除应用程序
           items:
-            - name: Azure 资源管理器
+            - name: Azure Resource Manager
               href: service-fabric-application-arm-resource.md
             - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md
@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: 跨可用性区域部署 Azure Service Fabric 群集
                   href: service-fabric-cross-availability-zones.md
+                - name: 通过无状态节点类型部署 Azure Service Fabric 群集
+                  href: service-fabric-stateless-node-types.md
                 - name: 设置 Azure Active Directory 身份验证
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: 创建自定义群集模板

@@ -61,7 +61,7 @@
               href: database/threat-detection-overview.md
             - name: 数据发现和分类
               href: database/data-discovery-and-classification-overview.md
-            - name: 动态数据掩码
+            - name: 动态数据屏蔽
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
               items:
@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: 漏洞评估规则
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: 漏洞评估规则更改日志
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: 在存储中存储漏洞扫描结果
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 登录名、用户帐户、角色和权限
@@ -643,7 +645,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -968,7 +970,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -1278,7 +1280,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

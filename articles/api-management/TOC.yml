@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 - 自定义开发人员门户
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 - 在 Visual Studio Code 中管理 API
+      href: visual-studio-code-tutorial.md
 - name: 示例
   items:
     - name: 策略
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: 使用外部服务
           href: api-management-sample-send-request.md
-        - name: 使用属性管理密码
+        - name: 使用命名值管理机密
           href: api-management-howto-properties.md
         - name: 访问限制策略
           href: api-management-access-restriction-policies.md

@@ -66,6 +66,7 @@
     - name: 媒体图
       href: media-graph-concept.md
     - name: 媒体图扩展
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: 视频录制
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: 疑难解答
       href: troubleshoot-how-to.md
+    - name: 正在升级
+      href: upgrading-lva-module.md
+    - name: 开发和部署 gRPC 推理服务器
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: 参考
   items:
     - name: HTTP 扩展协议
