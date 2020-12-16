@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507976"
+ms.locfileid: "97516101"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -116,7 +116,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | 查询字符串参数 `login_hint` |  |  | X | 作为声明提供时，可以传递给 IDP。 |
 | 通过 `client_assertion` 将 JSON 插入用户历程 | X |  |  | 即将弃用。 |
 | 将 JSON 作为 `id_token_hint` 插入用户历程 |  | X |  | 用于传递 JSON 的前向方法。 |
-| [向应用程序传递标识提供者令牌](idp-pass-through-custom.md) |  | X |  | 例如，从 Facebook 到应用。 |
+| [向应用程序传递标识提供者令牌](idp-pass-through-user-flow.md) |  | X |  | 例如，从 Facebook 到应用。 |
 
 
 ### <a name="session-management"></a>会话管理

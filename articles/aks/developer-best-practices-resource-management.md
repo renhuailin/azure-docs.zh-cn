@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900367"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516729"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -34,21 +34,21 @@ ms.locfileid: "92900367"
 * **Pod CPU/内存请求** 定义 Pod 定期需要的固定 CPU 和内存量。
     * 当 Kubernetes 计划程序尝试在节点上放置 Pod 时，将使用 Pod 请求来确定哪个节点有足够的可用资源进行计划。
     * 如果未设置 Pod 请求，则默认情况下会将其设置为定义的限制。
-    * 必须监视应用程序的性能并调整这些请求，这很重要。 如果发出的请求不足，应用程序可能会因节点计划过度而导致性能下降。 如果估算的请求数过高，则应用程序可能会更加难以进行计划。
+    * 必须监视应用程序的性能并调整这些请求，这很重要。 如果没有足够的 pod 资源请求，你的应用程序可能会因计划节点而导致性能下降。 如果估算的请求数过高，则应用程序可能会更加难以进行计划。
 * **Pod CPU/内存限制** 是 Pod 可以使用的最大 CPU 和内存量。 内存限制有助于定义因资源不足而导致节点不稳定时应终止的 Pod。 如果没有适当的限制，则会终止固定的 Pod，直到解除资源压力。 Pod 在一段时间内不一定能够超过 CPU 限制，但是 Pod 不会因超过 CPU 限制而被终止。 
     * Pod 限制有助于定义 Pod 何时失去对资源消耗的控制。 超出限制时，会首先终止该 Pod 来维护节点运行状况，最大程度地减少对共享节点的 Pod 的影响。
     * 如果未设置 Pod 限制，则会将其默认设置为给定节点上的最高可用值。
     * 设置的 pod 限制不应超过节点可以支持的限制。 每个 AKS 节点将为核心 Kubernetes 组件保留一定的 CPU 和内存量。 应用程序可能会尝试消耗节点上的大量资源，使其他 pod 能够成功运行。
     * 同样，请在一天或一周的不同时间监视应用程序的性能，这很重要。 确定峰值需求在何时，并根据满足应用程序的最大需求所需的资源来调整 Pod 限制。
 
-在 Pod 规范中，必须根据上述信息定义这些请求和限制，这是 **最佳做法且很重要** 。 如果不包含这些值，则 Kubernetes 计划程序无法考虑应用程序在制定决策时所需的资源。
+在 Pod 规范中，必须根据上述信息定义这些请求和限制，这是 **最佳做法且很重要**。 如果不包含这些值，则 Kubernetes 计划程序无法考虑应用程序在制定决策时所需的资源。
 
 如果计划程序在资源不足的节点上放置一个 Pod，则应用程序性能会下降。 强烈建议群集管理员针对需要你设置资源请求和限制的命名空间设置资源配额。 有关详细信息，请参阅 [AKS 群集上的资源配额][resource-quotas]。
 
 定义 CPU 请求或限制时，值以 CPU 单位计量。 
 * *1.0* CPU 相当于节点上的一个基础虚拟 CPU 核心。 
 * GPU 使用与此相同的计量方法。
-* 可以定义以毫核心数度量的分数。 例如， *100m* 表示 *0.1* 个基础 vCPU 核心。
+* 可以定义以毫核心数度量的分数。 例如，*100m* 表示 *0.1* 个基础 vCPU 核心。
 
 在以下单个 NGINX pod 的基本示例中，pod 请求 *100m* 的 CPU 时间和 *128 Mi* 的内存。 pod 的资源限制设置为 *250m* CPU 和 *256Mi* 内存：
 

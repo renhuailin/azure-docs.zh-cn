@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173560"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516492"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -28,7 +28,7 @@ ms.locfileid: "96173560"
 使用以下查检表确保应用程序与 [Microsoft 标识平台](./index.yml)有效集成。
 
 > [!TIP]
-> Azure 门户中的集成助手可帮助你应用其中许多最佳做法和建议。 选择 Azure 门户中的任何[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然后选择“集成助手(预览版)”菜单项，开始使用助手。
+> Azure 门户中的集成助手可帮助你应用其中许多最佳做法和建议。 在 Azure 门户中选择任意 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然后选择 " **集成助手** " 菜单项以开始助手。
 
 ## <a name="basics"></a>基础知识
 

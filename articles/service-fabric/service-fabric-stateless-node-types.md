@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: d3ce6e888c937676027f2b71578c38b56f3bd6af
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97388014"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516618"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>使用无状态节点类型部署 Azure Service Fabric 群集 (预览版) 
 Service Fabric 节点类型随附固有假设，在某个时间点，可能会在节点上放置有状态服务。 无状态节点类型使此假设适用于节点类型，因此允许节点类型使用其他功能，例如更快的 scale out 操作、支持在青铜耐用性上进行自动 OS 升级以及在单个虚拟机规模集中横向扩展到超过100个节点。
@@ -24,6 +24,8 @@ Service Fabric 节点类型随附固有假设，在某个时间点，可能会�
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>在 Service Fabric 群集中启用无状态节点类型
 若要将一个或多个节点类型设置为群集资源中的无状态节点类型，请将 **isStateless** 属性设置为 "true"。 在部署具有无状态节点类型的 Service Fabric 群集时，请记住在群集资源中使用至少一个主节点类型。
+
+* Service Fabric 群集资源 apiVersion 应为 "2020-12-01-preview" 或更高版本。
 
 ```json
 {
@@ -238,6 +240,8 @@ Service Fabric 节点类型随附固有假设，在某个时间点，可能会�
 
 
 ### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>使用基本 SKU 负载均衡器和基本 SKU IP 从群集迁移到使用无状态节点类型
+对于所有迁移方案，都需要添加一个新的无状态节点类型。 现有节点类型不能迁移为仅有状态。
+
 若要迁移将负载均衡器和 IP 与基本 SKU 一起使用的群集，必须先使用标准 SKU 创建全新的负载均衡器和 IP 资源。 不能就地更新这些资源。
 
 应在要使用的新的无状态节点类型中引用新的 LB 和 IP。 在上面的示例中，添加了一个新的虚拟机规模集资源，用于无状态节点类型。 这些虚拟机规模集引用新创建的 LB 和 IP，并将其标记为 Service Fabric 群集资源中的无状态节点类型。
@@ -247,28 +251,8 @@ Service Fabric 节点类型随附固有假设，在某个时间点，可能会�
 * 使用标准 SKU 的负载均衡器资源。
 * 用于部署虚拟机规模集的子网所引用的 NSG。
 
-
-可在 [示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)中找到这些资源的示例。
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
-
 资源完成部署后，可以开始禁用要从原始群集中删除的节点类型中的节点。
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-```
 
 ## <a name="next-steps"></a>后续步骤 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700216"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516415"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>创建和管理 Azure 认知搜索服务的 API 密钥
 
-对搜索服务的所有请求都需要一个 `api-key` 专为你的服务生成的只读。 `api-key`是对搜索服务终结点的访问进行身份验证的唯一机制，必须包含在每个请求上。 
+对搜索服务的所有请求都需要专为服务生成的只读 `api-key`。 `api-key` 是用于验证搜索服务终结点的访问的唯一机制，必须包含在每个请求中。 
 
-+ 在 [REST 解决方案](search-get-started-rest.md)中，api 密钥通常在请求标头中指定
++ 在 [REST 解决方案](search-get-started-rest.md)中，api-key 通常在请求头中指定
 
-+ 在[.net 解决方案](search-howto-dotnet-sdk.md)中，密钥通常指定为配置设置，然后作为[AzureKeyCredential](/dotnet/api/azure.azurekeycredential)传递
++ 在 [.NET 解决方案](search-howto-dotnet-sdk.md)中，通常将密钥指定为配置设置，然后将其作为 [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) 进行传递。
 
 在服务预配期间，将使用搜索服务创建密钥。 可以在 [Azure 门户](https://portal.azure.com)中查看和获取密钥值。
 
-:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="门户页，检索设置，键部分" border="false":::
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="门户页上的“检索设置”>“密钥”部分" border="false":::
 
-## <a name="what-is-an-api-key"></a>什么是 API 密钥？
+## <a name="what-is-an-api-key"></a>什么是 api 密钥？
 
 API 密钥是随机生成的数字和字母所组成的字符串。 通过[基于角色的权限](search-security-rbac.md)，可以删除或读取密钥，但无法将密钥替换为用户定义的密码或使用 Active Directory 作为访问搜索操作的主要身份验证方法。 
 
@@ -51,7 +51,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 2. 列出订阅的[搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 3. 选择该服务，在“概述”页上，单击“设置” >“密钥”以查看管理密钥和查询密钥。
 
-   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="门户页，&quot;查看设置，密钥&quot; 部分" border="false":::
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="门户页上的“查看设置”>“密钥”部分" border="false":::
 
 ## <a name="create-query-keys"></a>创建查询密钥
 
@@ -88,6 +88,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 通过门户或管理层创建新的密钥后，只要在请求中提供这些新密钥，就会恢复对内容（索引、索引器、数据源、同义词映射）的访问权限。
 
 ## <a name="secure-api-keys"></a>保护 API 密钥
+
 通过门户或 Resource Manager 界面（PowerShell 或命令行接口）以限制访问，从而保护密钥安全。 如前所述，订阅管理员可以查看和重新生成所有 API 密钥。 作为预防措施，查看角色分配以了解谁有权访问管理密钥。
 
 + 在服务仪表板中，依次单击“访问控制(IAM)”和“角色分配”选项卡可查看服务的角色分配。
@@ -99,6 +100,6 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 ## <a name="see-also"></a>另请参阅
 
-+ [Azure 中基于角色的访问控制认知搜索](search-security-rbac.md)
++ [Azure 认知搜索中 Azure 基于角色的访问控制](search-security-rbac.md)
 + [使用 PowerShell 进行管理](search-manage-powershell.md) 
 + [性能和优化文章](search-performance-optimization.md)

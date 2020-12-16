@@ -7,65 +7,38 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/14/2020
+ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923443"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516607"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
-可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 认知搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 认知搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 认知搜索中完整实现](search-lucene-query-architecture.md)  。 
+在创建查询时，可以选择用于专用查询窗体的 [Lucene 查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 语法：通配符、模糊搜索、邻近搜索、正则表达式。 很多 Lucene 查询分析器语法 [在 Azure 认知搜索中](search-lucene-query-architecture.md)都是完整的，但 *范围搜索* 例外，通过 **`$filter`** 表达式构造。 
 
-> [!NOTE]
-> 完整 Lucene 语法用于在[搜索文档](/rest/api/searchservice/search-documents) API 的**搜索**参数中传递的查询表达式，不要与用于该 API 的 [$filter](search-filters.md) 参数的 [OData 语法](query-odata-filter-orderby-syntax.md)相混淆。 这两个不同的语法有各自的用于构造查询、转义字符串等操作的规则。
+完整的 Lucene 语法用于在搜索文档的参数中传递的查询表达式 **`search`** [ (REST API)](/rest/api/searchservice/search-documents) 请求，而不会与同一请求中用于和表达式的 [OData 语法](query-odata-filter-orderby-syntax.md) 混淆 [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) 。 OData 参数具有不同的语法和规则，用于构造查询、转义字符串等。
 
-## <a name="invoke-full-parsing"></a>调用完整分析
+## <a name="example-full-syntax"></a>完整语法 (示例) 
 
-设置 `queryType` 搜索参数来指定要使用的分析。 有效值包括 `simple|full`，其中默认值为 `simple`，`full` 则用于 Lucene。 
+设置 **`queryType`** 参数以指定完整的 Lucene。 下面的示例调用现场搜索和字词提升。 此查询将查找 category 字段包含 "预算" 这一术语的酒店。 包含短语 "最近的翻新" 的所有文档都将作为术语提升值 (3) 的结果排名更高。  
 
-<a name="bkmk_example"></a> 
-
-### <a name="example-showing-full-syntax"></a>显示完整语法的示例
-
-下面的示例使用 Lucene 查询语法在索引中查找文档，其在 `queryType=full` 参数中清晰易见。 此查询返回酒店，其中类别字段包含字词“budget”和所有包含短语“recently renovated”的可搜索字段。 作为字词提升值 (3)，包含短语“最近更新”的文档排名会更高。  
-
-`searchMode=all` 参数是在此示例中是相关的。 无论运算符何时出现在查询上，通常都应该设置 `searchMode=all` 以确保匹配所有条件  。
-
-```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
-```
-
- 或者使用 POST：  
-
-```
-POST /indexes/hotels/docs/search?api-version=2020-06-30
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-  "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
+  "search": "category:budget AND \"recently renovated\"^3",
   "searchMode": "all"
 }
 ```
 
-有关其他示例，请参阅[在 Azure 认知搜索中生成查询的 Lucene 查询语法示例](search-query-lucene-examples.md)。 有关指定查询参数的完整条件的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)。
+**`searchMode`** 在此示例中，参数是相关的。 无论运算符何时出现在查询上，通常都应该设置 `searchMode=all` 以确保匹配所有条件  。  
 
-> [!NOTE]  
->  Azure 认知搜索还支持[简单查询语法](query-simple-syntax.md)，即可用于简单关键字搜索的简易可靠的查询语言。  
+有关其他示例，请参阅 [Lucene 查询语法示例](search-query-lucene-examples.md)。 有关查询请求和参数的详细信息，请参阅 [搜索文档 (REST API) ](/rest/api/searchservice/Search-Documents)。
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 语法基础  
+## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 语法基础  
 
 下面的语法基础适用于所有使用 Lucene 语法的查询。  
 
@@ -95,39 +68,15 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 不安全字符为 ``" ` < > # % { } | \ ^ ~ [ ]``。 保留字符为 `; / ? : @ = + &`。
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> 查询大小限制
+## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> 布尔运算符
 
- 存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
+可以在查询字符串中嵌入布尔运算符以提高匹配的精度。 除了字符运算符之外，完整语法还支持文本运算符。 始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。
 
-### <a name="precedence-operators-grouping"></a>优先运算符（分组）
-
- 可以使用圆括号创建子查询，其包括附加说明语句中的运算符。 例如，`motel+(wifi||luxury)` 将搜索包含“motel”术语以及“wifi”或“luxury”（或两者）的文档。
-
-字段分组与之类似，但将分组范围限定为单个字段。 例如，`hotelAmenities:(gym+(wifi||pool))` 在“hotelAmenities”字段中搜索“gym”和“wifi”，或者“gym”和“pool”。  
-
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> 布尔值搜索
-
- 始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。  
-
-### <a name="or-operator-or-or-"></a>OR 运算符 `OR` 或 `||`
-
-OR 运算符是一个竖条或管状字符。 例如：`wifi || luxury` 将搜索包含"wifi"或"luxury"（或两者）的文档。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi || luxury`。
-
-### <a name="and-operator-and--or-"></a>AND 运算符 `AND`、`&&` 或 `+`
-
-AND 运算符为 & 号或加号。 例如：`wifi && luxury` 将搜索包含“wifi”和“luxury”的文档。 加号字符 (+) 用于所需术语。 例如，`+wifi +luxury` 规定两个术语必须出现在单个文档的某个字段中。
-
-### <a name="not-operator-not--or--"></a>NOT 运算符 `NOT`、`!` 或 `-`
-
-NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi` 词语且/或不包含 `luxury` 的文档。
-
-查询请求中的 searchMode  参数控制具有 NOT 运算符的词语是通过 AND 运算符还是通过 OR 运算符与查询中的其他词语组合到一起（假定其他词语中没有 `+` 或 `|` 运算符）。 有效值包括 `any` 或 `all`。
-
-`searchMode=any` 通过包含更多结果来提高查询的查全率，且默认情况下 `-` 会被解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。
-
-`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且  用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。
-
-在决定 searchMode  设置时，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。
+|文本运算符 | 字符 | 示例 | 使用情况 |
+|--------------|----------- |--------|-------|
+| AND | `&`, `+` | `wifi + luxury` | 指定匹配项必须包含的字词。 在此示例中，查询引擎将查找同时包含和的 `wifi` 文档 `luxury` 。 加号字符 (`+`) 用于所需的字词。 例如，`+wifi +luxury` 规定两个术语必须出现在单个文档的某个字段中。|
+| OR | `|` | `wifi | luxury` | 找到任一字词时找到匹配项。 在此示例中，查询引擎将在包含 `wifi` 或两个文档的文档上返回 match `luxury` 。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi | luxury`。|
+| NOT | `!`, `-` | `wifi –luxury` | 返回排除字词的文档的匹配项。 例如， `wifi –luxury` 将搜索术语为但不是的文档 `wifi` `luxury` 。 <br/><br/>`searchMode`查询请求上的参数将控制具有 NOT 运算符的字词是 and 还是运算与查询中的其他字词一起使用 (假设 `+` `|` 其他术语) 。 有效值包括 `any` 或 `all`。  <br/><br/>`searchMode=any` 通过包含更多结果来提高查询的查全率，且默认情况下 `-` 会被解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。  <br/><br/>`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且  用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。<br/><br/>在决定设置时 `searchMode` ，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。 |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a> 字段化搜索
 
@@ -148,14 +97,13 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 模糊搜索查找字词中具有类似构造的匹配项，将一个字词最多扩展为符合距离条件（2 或更低）的 50 个字词。 有关详细信息，请参阅[模糊搜索](search-query-fuzzy.md)。
 
- 若要进行模糊搜索，请在单个词末尾使用“~”波形符，另附带指定编辑距离的可选参数（0 到 2 [默认] 之间的值）。 例如“blue~”或“blue~1”会返回“blue”、“blues”和“glue”。
+若要进行模糊搜索，请在单个词末尾使用“~”波形符，另附带指定编辑距离的可选参数（0 到 2 [默认] 之间的值）。 例如“blue~”或“blue~1”会返回“blue”、“blues”和“glue”。
 
- 模糊搜索只能应用于术语，不能应用于短语，但是你可以在包含多个部分的名称或短语中将波形符单独追加到每个术语。 例如，“Unviersty~ of~ "Wshington~”会与“University of Washington”匹配。
+模糊搜索只能应用于术语，不能应用于短语，但是你可以在包含多个部分的名称或短语中将波形符单独追加到每个术语。 例如，“Unviersty~ of~ "Wshington~”会与“University of Washington”匹配。
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> 邻近搜索
 
 邻近搜索用于搜索文档中彼此邻近的术语。 在短语末尾插入波形符“~”，后跟创建邻近边界的词数。 例如 `"hotel airport"~5` 将查找文档中彼此相距 5 个字以内的术语“酒店”和“机场”。  
-
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> 术语提升
 
@@ -194,9 +142,27 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 另一方面，Microsoft 分析器（在本例中是 en.microsoft 分析器）更高级一些，使用词形还原而不是词干提取。 这意味着所有生成的标记都应该是有效的英语单词。 例如，“terminate”、“terminates”和“termination”在索引中几乎保持完整，对于严重依赖于通配符和模糊搜索的场景，这是更好的选择。
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
+## <a name="scoring-wildcard-and-regex-queries"></a> 对通配符和正则表达式查询评分
 
 Azure 认知搜索使用基于频率的计分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
+
+## <a name="special-characters"></a>特殊字符
+
+在某些情况下，可能需要搜索特殊字符，如 "❤" 表情符号或 "€" 号。 在这种情况下，请确保使用的分析器不会过滤这些字符。标准分析器会跳过许多特殊字符，不包括索引。
+
+将标记特殊字符的分析器包含 "空白" 分析器，该分析器会将空格分隔的任何字符序列视为标记 (以便将 "❤" 字符串视为令牌) 。 此外，语言分析器（如 Microsoft 英语 analyzer ( "en-us" ) ）会将 "€" 字符串作为标记。 可以[测试分析器](/rest/api/searchservice/test-analyzer)，看它为给定的查询生成什么标记。
+
+使用 Unicode 字符时，请确保在查询 URL 中正确转义了符号（例如，对于“❤”，将使用转义序列 `%E2%9D%A4+`）。 Postman 会自动执行此转换。  
+
+## <a name="precedence-grouping"></a>优先 (分组) 
+
+可以使用圆括号创建子查询，其包括附加说明语句中的运算符。 例如，`motel+(wifi|luxury)` 将搜索包含“motel”术语以及“wifi”或“luxury”（或两者）的文档。
+
+字段分组与之类似，但将分组范围限定为单个字段。 例如，`hotelAmenities:(gym+(wifi|pool))` 在“hotelAmenities”字段中搜索“gym”和“wifi”，或者“gym”和“pool”。  
+
+## <a name="query-size-limits"></a> 查询大小限制
+
+存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
 
 ## <a name="see-also"></a>另请参阅
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 483ae81f22358e41f252dd8090c01d5b4cad7fb1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344158"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516453"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答
 
@@ -62,27 +62,56 @@ A. 美国、加拿大、澳大利亚、西欧和北欧、韩国及日本的所�
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. 如何将在一个国家/地区的位置存在的源数据导入到不同国家/地区的 Azure 区域？
 A. Data Box Disk 仅支持在与目标相同的国家/地区内进行数据引入，并且不会跨越任何国际界限。 唯一的例外情况是欧盟 (欧盟) 中的订单，其中 Data Box 个磁盘可以与任何欧盟国家/地区一起发运。
 
-例如，如果你想要将加拿大位置的数据移到 Azure WestUS 存储帐户，则可以通过以下方式实现此目的：
+例如，如果你想要将加拿大地区的数据移到 Azure 美国西部存储帐户，你可以通过以下方式实现此目的：
 
 ### <a name="option-1"></a>选项 1： 
 
-使用[Azure 导入/导出服务](../storage/common/storage-import-export-service.md)将包含数据的[受支持磁盘](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)从加拿大的源位置传输到 Azure WestUS datacenter。
+使用[Azure 导入/导出服务](../storage/common/storage-import-export-service.md)将包含数据的[受支持磁盘](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)从加拿大的源位置传输到 Azure 美国西部数据中心。
 
 ### <a name="option-2"></a>选项 2：
 
-1. 通过选择 Cananda Central 中的存储帐户，定购加拿大 Data Box Disk。 SSD 磁盘 () 将从加拿大中部的 Azure 数据中心发运到在订单创建期间提供的加拿大)  (。
+1. 通过选择 "加拿大中部" 中所示的存储帐户，订购加拿大 Data Box Disk。 SSD 磁盘 () 将从加拿大中部的 Azure 数据中心发运到在订单创建期间提供的加拿大)  (。
 
 2. 将本地服务器中的数据复制到磁盘后，请使用 Microsoft 提供的返回标签将这些数据返回到加拿大的 Azure 数据中心。 然后，Data Box Disk (s) 上的数据上传到在创建订单时选择的加拿大 Azure 区域中的目标存储帐户。
 
-3. 然后，可以使用 AzCopy 之类的工具将数据复制到 WestUS 中的存储帐户。 此步骤将产生 Data Box Disk 计费中未包含的 [标准存储](https://azure.microsoft.com/pricing/details/storage/) 和 [带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
+3. 然后，可以使用 AzCopy 之类的工具将数据复制到美国西部的存储帐户。 此步骤将产生 Data Box Disk 计费中未包含的 [标准存储](https://azure.microsoft.com/pricing/details/storage/) 和 [带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
-A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](./data-box-disk-contact-microsoft-support.md)。
+A. 如果 Data Box 磁盘遇到任何问题，请 [联系 Microsoft 支持部门](./data-box-disk-contact-microsoft-support.md)。
+
+## <a name="order-device"></a>订购设备
+
+### <a name="q-how-do-i-get-data-box-disk"></a>问： 如何实现获取 Data Box Disk？ 
+A.  若要获取 Azure Data Box Disk，请登录到 Azure 门户并创建 Data Box Disk 订单。 提供联系信息和通知详细信息。 按照可用性订购后，Data Box Disk 会在10天内寄给你。 有关详细信息，请转到[订购 Data Box](data-box-disk-deploy-ordered.md)。
+
+### <a name="q-i-couldnt-create-a-data-box-disk-order-in-the-azure-portal-why"></a>问： 我无法在 Azure 门户中创建 Data Box Disk 顺序。 为什么？
+A. 如果无法创建 Data Box Disk 订单，则你的订阅类型或访问有问题。
+
+请查看你的订阅。 Data Box Disk 仅适用于企业协议 (EA) 和云解决方案提供商 (CSP) 订阅产品/服务。 如果你没有任何这些订阅类型，请联系 Microsoft 支持部门升级订阅。
+
+如果具有受支持的订阅产品/服务类型，请查看订阅访问级别。 只有订阅的参与者或所有者才能创建订单。
+
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>问： 订单创建到上传到 Azure 的数据需要多长时间？
+
+A. 以下针对每个订单处理阶段的预计提前时间将让你充分了解预期的情况。  
+
+这些提前期为 *估算值*。 数据中心上的负载、并发订单和其他环境条件会影响每个订单处理阶段的时间。
+
+**Data Box Disk 订单的预计提前期：**
+
+1. 订单 Data Box Disk：在门户中按几分钟
+2. 磁盘分配和准备：1-2 工作日内
+3. 寄送：2-3 个工作日
+4. 客户站点上的数据复制：取决于数据的性质、大小和文件数
+5. 退货：2-3 个工作日
+6. 在数据中心处理磁盘：1-2 工作日
+7. 将数据上传到 Azure：完成处理并连接磁盘后开始。 上传时间取决于数据的性质、大小和文件数。
+
 
 ## <a name="configure-and-connect"></a>配置和连接
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>问： 是否可在订单中指定 Data Box 磁盘的数目？
-A.  否。 根据数据大小和磁盘的供货情况，你最多会收到 5 个 8 TB 磁盘。  
+A.  不是。 您可以获得 8 TB 的磁盘， (最多5个磁盘，) 具体取决于您的数据大小和磁盘的可用性。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>问： 如何解锁 Data Box 磁盘？ 
 A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。 复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
@@ -116,7 +145,7 @@ A. 是的。 Microsoft 还仅在 US Gov 区域提供自我管理的发货。 在
 数据复制和验证完成后，请执行以下步骤来退回磁盘：
 
 1. 数据验证完成后，请取出磁盘。 拔下连接线。
-2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。 如果缺少附件，我们可能会收取费用。
+2. 使用气泡包装将所有磁盘和电缆连接起来，并将其放入包装盒。 如果缺少附件，我们可能会收取费用。
 
     - 重复使用最初的发货包装。 我们建议使用加固的气泡袋包装磁盘。
     - 确保填塞物贴合，以避免磁盘在包装箱中发生移动。
@@ -139,16 +168,16 @@ A. 对通过 USB 3.0 连接的磁盘进行测试时，磁盘性能最高为 430 
 A.  Data Box 磁盘已使用 BitLocker AES-128 位加密进行加密，支持密钥只在 Azure 门户中提供。 使用帐户凭据登录到 Azure 门户即可获取支持密钥。 运行 Data Box 磁盘解锁工具时，请提供此支持密钥。
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>问： 如何将数据复制到 Data Box 磁盘？ 
-A.  使用 Robocopy、Diskboss 等 SMB 复制工具，甚至是 Windows 文件资源管理器的拖放式操作，即可将数据复制到磁盘。
+A.  使用 SMB 复制工具（如 `Robocopy` 、 `Diskboss` 甚至 Windows 文件资源管理器拖放）将数据复制到磁盘。
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>问： 在加快数据复制方面你们是否有诀窍？
 A.  若要加快复制过程：
 
-- 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md#copy-data-to-disks)。
+- 使用多个数据复制流。 例如，使用 `Robocopy` ，使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md#copy-data-to-disks)。
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保使数据驻留在磁盘所连接到计算机本地。
-- 在整个复制过程中，确保使用 USB 3.0 或更高版本。 下载并使用 [USBView 工具](/windows-hardware/drivers/debugger/usbview)，以识别已连接到计算机的 USB 控制器和 USB 设备。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”选项卡，然后下载 MSI。
+- 在整个复制过程中，确保使用 USB 3.0 或更高版本。 下载并使用该[ `USBView` 工具](/windows-hardware/drivers/debugger/usbview)来识别连接到计算机的 USB 控制器和 usb 设备。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop `FIO` 工具](https://ci.appveyor.com/project/axboe/fio) 来基准服务器硬件的性能。 选择最新的 x86 或 x64 版本，选择“项目”选项卡，然后下载 MSI。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>问： 如果源数据包含小型文件（几个 KB 或 MB），如何加速数据复制？
 A.  若要加快复制过程：
@@ -158,12 +187,12 @@ A.  若要加快复制过程：
 - 将文件复制到 VM 的磁盘。
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>问： 是否可对 Data Box 磁盘使用多个存储帐户？
-A.  否。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。 目前仅支持美国、西欧和北欧的 Azure 公有云中的存储帐户。
+A.  不是。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。 目前仅支持美国、西欧和北欧的 Azure 公有云中的存储帐户。
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. Data Box Disk 提供了用于处理数据的什么工具集？
 A. 随 Data Box Disk 提供的工具集包含三个工具：
  - **Data Box Disk 解锁工具**：可以使用此工具来解锁 Microsoft 寄送的已加密磁盘。 使用此工具解锁磁盘时，需要提供从 Azure 门户中的 Data Box Disk 订单中获得的密钥。 
- - **Data Box Disk 验证工具**：可以使用此工具根据 Azure 命名约定来验证大小、格式和 Blob 名称。 它还生成复制的数据的校验和，然后使用校验和来验证上传到 Azure 的数据。
+ - **Data Box Disk 验证工具**：可以使用此工具根据 Azure 命名约定来验证大小、格式和 Blob 名称。 它还会为复制的数据生成校验和，然后使用这些校验和来验证上传到 Azure 的数据。
  - **Data Box Disk 拆分复制工具**：如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，请使用此工具。 此工具当前可用于 Windows。 托管磁盘不支持此工具。 此工具还会在复制数据时进行验证，因此可以在使用此工具时跳过验证步骤。
 
 此工具集可用于 Windows 和 Linux。 可以从以下位置下载此工具集：
@@ -180,10 +209,10 @@ A. Azure 文件可以与 Data Box Disk 配合使用，但不能与 Azure 文件�
 A.  一旦“数据复制”的订单状态显示为已完成，应该立即就能访问数据。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>问： 上传后，我的数据位于 Azure 中的哪个位置？
-A.  复制磁盘中 *BlockBlob* 和 *PageBlob* 文件夹下的数据时，系统会针对 *BlockBlob* 和 *PageBlob* 文件夹下的每个子文件夹，在 Azure 存储帐户中创建一个容器。 如果直接复制了 *BlockBlob* 和 *PageBlob* 文件夹下的文件，则这些文件将位于 Azure 存储帐户下的默认容器 *$root* 中。 将数据复制到 *AzureFile* 文件夹下的某个文件夹时，会创建文件共享。
+A.  复制磁盘中 *BlockBlob* 和 *PageBlob* 文件夹下的数据时，系统会针对 *BlockBlob* 和 *PageBlob* 文件夹下的每个子文件夹，在 Azure 存储帐户中创建一个容器。 如果直接复制了 " *BlockBlob* " 和 " *PageBlob* " 文件夹下的文件，则这些文件位于 Azure 存储帐户下 *$root* 的默认容器中。 将数据复制到 *AzureFile* 文件夹下的某个文件夹时，会创建文件共享。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>问： 我刚刚发现，我并未遵循容器的 Azure 命名要求。 我的数据是否无法上传到 Azure？
-A. 如果容器名称包含大写字母，这些字母会自动转换为小写。 如果名称存在其他方面的不合规情况（包含特殊字符、采用其他语言，等等），则上传将会失败。 有关详细信息，请转到 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。
+A. 容器名称中的所有大写字母会自动转换为小写字母。 如果名称不以其他方式兼容（例如，它们包含特殊字符或其他语言），则上传将会失败。 有关详细信息，请转到 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>问： 如何验证已复制到多个 Data Box 磁盘的数据？
 A.  数据复制完成后，可以运行 *DataBoxDiskImport* 文件夹中提供的 `DataBoxDiskValidation.cmd` 来生成校验和，以用于验证。 如果有多个磁盘，则需要针对每个磁盘打开命令窗口，并运行此命令。 请注意，根据具体的数据大小，此操作可能需要花费很长时间（大约数小时数）。
@@ -192,7 +221,7 @@ A.  数据复制完成后，可以运行 *DataBoxDiskImport* 文件夹中提供�
 A.  完成将数据复制到 Azure 的过程后，会根据 NIST SP 800-88 修订版 1 中的指导原则，安全擦除磁盘中的数据。  
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>问： 在传输期间我的数据会受到怎样的保护？ 
-A.  Data Box 磁盘已使用 AES-128 Microsoft BitLocker 加密进行加密。 这种加密要求使用单个支持密钥来解锁所有磁盘和访问数据。
+A.  使用 AES-128 Microsoft BitLocker 加密对 Data Box 磁盘进行加密，并需要使用单个密钥来解锁所有磁盘和访问数据。
 
 ### <a name="q-do-i-need-to-rerun-checksum-validation-if-i-add-more-data-to-the-data-box-disks"></a>问： 如果将更多数据添加到 Data Box 磁盘，是否需要重新运行校验和验证？
 A. 是的。 将更多数据添加到 Data Box 磁盘后，如果你确定要验证数据（我们不建议这样做！），则需要重新运行验证。
@@ -200,11 +229,11 @@ A. 是的。 将更多数据添加到 Data Box 磁盘后，如果你确定要验
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>问： 我已将所有的磁盘用于传输数据，现在需要订购更多的磁盘。 是否有某种方法可让我快速下单？
 A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单，并允许编辑订单详细信息（仅限这些信息），而无需键入地址、联系人和通知详细信息。
 
-### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>问： 我将数据复制到了 ManagedDisk 文件夹。 我没有看到任何指定了资源组的托管磁盘。 我的数据是否已上传到 Azure？如何才能找到它？
-A. 是的。 你的数据已上传到 Azure，但如果你看不到任何指定了资源组的托管磁盘，则可能是因为该数据无效。 如果页 Blob、块 Blob、Azure 文件存储以及托管磁盘无效，系统会将它们置于以下文件夹中：
- - 页 Blob 会进入以 *databoxdisk-invalid-pb-* 开头的块 Blob 容器。
- - Azure 文件存储会进入以 *databoxdisk-invalid-af-* 开头的块 Blob 容器。
- - 托管磁盘会进入以 *databoxdisk-invalid-md-* 开头的块 Blob 容器。
+### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>问： 我已将数据复制到 ManagedDisk 文件夹。 我没有看到任何指定了资源组的托管磁盘。 我的数据是否已上传到 Azure？ 如何找到它？
+A. 是的。 你的数据已上传到 Azure，但如果你看不到具有指定资源组的任何托管磁盘，则很可能是因为数据无效。 如果页 blob、块 blob、Azure 文件或托管磁盘无效，它们将会跳到以下文件夹：
+ - 页 blob 将发送到块 blob 容器，该容器以 databoxdisk-- *pb* 为起点。
+ - Azure 文件将发送到块 blob 容器，以 *databoxdisk-af* 开头。
+ - 托管磁盘将发送到块 blob 容器，以 databoxdisk-- *md* 开头。
 
 ## <a name="next-steps"></a>后续步骤
 

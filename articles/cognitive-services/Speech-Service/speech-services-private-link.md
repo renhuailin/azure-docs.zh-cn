@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: c88a7820518d0a73bfb0e93d3b364190207b8f90
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97051202"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516530"
 ---
 # <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>将语音服务用于 Azure 专用链接提供的专用终结点
 
@@ -53,11 +53,11 @@ ms.locfileid: "97051202"
 - 将显示一个新面板，其中包含为资源创建唯一自定义子域的说明
 > [!WARNING]
 > 创建自定义域名后，将 **无法** 更改该域名。 请参阅上述警告中的详细信息。
-- 操作完成后，你可能需要选择 " *密钥和终结点* " (*资源管理* 组 ") 并验证资源的新终结点名称，格式为 `{your custom name}.cognitiveservices.azure.com`
+- 操作完成后，你可能需要选择 " *密钥和终结点* " (*资源管理* 组 ") 并验证资源的新终结点名称，格式为 <p />`{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-本部分需要本地运行 PowerShell 版本 7. x 或更高版本的 Azure PowerShell 模块版本5.1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要安装或升级，请参阅 [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps) 。
+本部分需要本地运行 PowerShell 版本 7. x 或更高版本的 Azure PowerShell 模块版本5.1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 继续运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
@@ -275,10 +275,10 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 语音到文本具有两个不同的 REST Api。 每个 API 的用途不同，并使用不同的终结点，并在启用私有终结点方案时需要不同的方法。
 
 语音到文本 REST Api 包括：
-- [1.0](rest-speech-to-text.md) 版用于在线脚本
-- 3.0 用于 [批处理](batch-transcription.md) 脚本和 [自定义语音](custom-speech-overview.md)。  (参阅 [完整参考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)) 
+- [语音到文本 REST API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) 用于 [批处理](batch-transcription.md) 脚本和 [自定义语音](custom-speech-overview.md)。 3.0 是 v2.0 [的后继版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)。
+- [短音频的语音到文本 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 用于在线脚本。 
 
-在私有终结点方案中使用语音到文本1.0 版和文本到语音 REST API 的情况与本文后面所述的 [语音 SDK 案例](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) 相同。 
+在专用终结点方案中，对短音频和文本到语音 REST API 使用语音到文本 REST API 的情况与本文后面介绍的 [语音 SDK 案例](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) 相同。 
 
 语音到文本 REST API 3.0 使用一组不同的终结点，因此需要为启用专用终结点的方案使用不同的方法。
 
@@ -287,7 +287,7 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 ##### <a name="speech-to-text-rest-api-v30"></a>从语音到文本 REST API 3。0
 
-通常，语音资源使用 [认知服务区域终结点](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 与 [语音到文本 REST API 3.0](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)通信。 这些资源的命名格式如下： <p/>`{region}.api.cognitive.microsoft.com`
+通常，语音资源使用 [认知服务区域终结点](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 与 [语音到文本 REST API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)通信。 这些资源的命名格式如下： <p/>`{region}.api.cognitive.microsoft.com`
 
 下面是一个示例请求 URL：
 
@@ -311,15 +311,18 @@ https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/tra
 >
 > 语音资源自定义域名 **不** 包含有关在其中部署资源的区域的信息。 因此，以上所述的应用程序逻辑将 **不** 起作用，需要更改。
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>REST API 1.0 和文本到语音转换的语音到文本 REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>短音频和文本到语音转换的语音到文本 REST API REST API
 
-[语音到文本 REST API](rest-speech-to-text.md) V1.0 和 [文本到语音 REST API](rest-text-to-speech.md) 使用两种类型的终结点：
+用于短音频和[文本到语音转换](rest-text-to-speech.md)[的语音到文本 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) REST API 使用两种类型的终结点：
 - [认知服务区域终结点](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) ，用于与认知服务进行通信 REST API 获取授权令牌
 - 所有其他操作的特殊终结点
 
 下面的 "使用语音 SDK 的用法" [部分中提供](#general-principle) 了特殊终结点以及如何为启用了专用终结点的语音资源转换其 URL 的详细说明。 SDK 所述的同一原则适用于语音到文本1.0 版和文本到语音 REST API。
 
-熟悉上一段落中提到的子节中的材料，并查看以下示例。  (示例说明文本到语音转换 REST API;使用语音到文本1.0 版 REST API 完全等效) 
+熟悉上一段落中提到的子节中的材料，并查看以下示例。  (示例说明文本到语音转换 REST API;对于短音频，使用语音到文本 REST API 完全等效) 
+
+> [!NOTE]
+> 使用 **语音到文本 REST API** 专用终结点方案中的短音频时，需要使用 [通过](rest-speech-to-text.md#request-headers) `Authorization` [标头](rest-speech-to-text.md#request-headers)传递的授权令牌; 通过标头将语音订阅密钥传递到专用终结点 `Ocp-Apim-Subscription-Key` 将 **不** 起作用，并将生成错误401。
 
 **文本到语音 REST API 用法示例。**
 
@@ -369,7 +372,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices
 | `convai`       | [对话听录](conversation-transcription.md) |
 | `s2s`          | [语音翻译](speech-translation.md)                 |
 | `stt`          | [语音转文本](speech-to-text.md)                         |
-| `tts`          | [文本转语音](text-to-speech.md)                         |
+| `tts`          | [文本到语音转换](text-to-speech.md)                         |
 | `voice`        | [自定义语音](how-to-custom-voice.md)                      |
 
 因此，上面 (的示例 `westeurope.stt.speech.microsoft.com`) 在西欧中代表语音到文本终结点。
@@ -497,14 +500,16 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 语音到文本 REST API 3.0 使用完全等同于 [启用了专用终结点的语音资源](#speech-to-text-rest-api-v30)的情况。
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>REST API 1.0 和文本到语音转换的语音到文本 REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>短音频和文本到语音转换的语音到文本 REST API REST API
 
-在这种情况下，语音到文本 REST API v1.0 和文本到语音转换 REST API 使用与常规情况没有差别，应按照 [语音到文本 REST API](rest-speech-to-text.md) V1.0 和 [文本到语音 REST API 转换](rest-text-to-speech.md) 文档中所述的方式使用。
+在这种情况下，对于短音频和文本到语音 REST API 使用的语音到文本 REST API 与常规情况没有任何差异，对于短 (音频的语音到文本 REST API，请参阅下面的 ") "。 对于短音频和[文本到语音 REST API](rest-text-to-speech.md)文档，应按[语音到文本 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio)中所述使用这两个 api。
 
+> [!NOTE]
+> 在自定义域中 **为短音频使用语音到文本 REST API** 时，需要使用 [通过](rest-speech-to-text.md#request-headers) `Authorization` [标头](rest-speech-to-text.md#request-headers)传递的授权令牌; 通过标头将语音订阅密钥传递到专用终结点 `Ocp-Apim-Subscription-Key` 将 **不** 起作用，并将生成错误401。
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>带有自定义域名的语音资源，无需专用终结点。 使用语音 SDK
 
-将语音 SDK 与自定义域名一起使用启用了 **无需** 专用终结点的语音资源需要检查和更改应用程序代码。 请注意，与 [启用专用终结点的语音资源](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)的情况相比，这些更改是 **不同** 的。 我们正在致力于对专用终结点/自定义域进行更多的无缝支持。
+将语音 SDK 与自定义域名一起使用启用了 **无需** 专用终结点的语音资源需要检查和更改应用程序代码。 请注意，与 [启用专用终结点的语音资源](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)的情况相比，这些更改是 **不同** 的。 我们正在致力于对专用终结点/自定义域方案进行更多的无缝支持。
 
 `my-private-link-speech.cognitiveservices.azure.com`本部分将使用作为语音资源 DNS 名称 (自定义域) 的示例。
 

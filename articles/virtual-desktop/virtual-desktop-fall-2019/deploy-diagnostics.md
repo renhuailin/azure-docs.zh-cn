@@ -3,25 +3,20 @@ title: 部署适用于 Windows 虚拟桌面 (经典) 的诊断工具-Azure
 description: 如何为 Windows 虚拟桌面 (经典) 部署诊断 UX 工具。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023065"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515631"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
-
->[!IMPORTANT]
->从2020年3月16日起，我们暂时禁用了影响用户体验的诊断查询，这是因为增加了对服务的需求。 这将导致工具停止工作，因为它依赖于这些查询才能运行。 当诊断查询再次可用时，我们将更新本文。
->
->在此之前，我们强烈建议你 [使用 Log Analytics](diagnostics-log-analytics-2019.md) 进行持续监视。
 
 Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
@@ -43,8 +38,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在开始之前，还需要安装这两个 PowerShell 模块：
 
-- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 请确保在登录时已准备好订阅 ID。
 

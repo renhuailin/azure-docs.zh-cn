@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4c6252b31b4be05ea3c0bcf160a28bf335239b23
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 893a04f5acd48cf1e6f34033c06a758492e70abf
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324847"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516724"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a> (预览版安装 Azure Monitor 代理) 
 本文提供了当前可用于在 Azure 虚拟机和启用了 Azure Arc 的服务器上安装 [Azure Monitor 代理](azure-monitor-agent-overview.md) 的不同选项，还提供了用于创建 [与数据收集规则关联](data-collection-rule-azure-monitor-agent.md) 的选项，这些规则定义了代理应收集的数据。
@@ -25,9 +25,9 @@ ms.locfileid: "95324847"
 ## <a name="virtual-machine-extension-details"></a>虚拟机扩展详细信息
 使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 可以使用任何方法安装虚拟机扩展，其中包括本文中所述的虚拟机扩展。
 
-| Property | Windows | Linux |
+| properties | Windows | Linux |
 |:---|:---|:---|
-| Publisher | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
+| 发布者 | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
 | TypeHandlerVersion  | 1.0 | 1.5 |
 
@@ -75,11 +75,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 使用以下 PowerShell 命令安装 Azure Monitor 代理依赖 Arc 启用的服务器。
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI

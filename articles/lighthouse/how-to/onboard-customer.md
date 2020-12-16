@@ -1,18 +1,18 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608463"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516128"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
-本文介绍你作为服务提供商如何将客户加入 Azure Lighthouse。 当你执行此操作时，可以使用 [Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)通过你自己的 Azure Active Directory (Azure AD) 租户来访问和管理客户的委托资源 (订阅和/或资源组) 。
+本文介绍你作为服务提供商如何将客户加入 Azure Lighthouse。 当你执行此操作时，可以使用 Azure 委派的资源管理，通过你自己 Azure AD (Azure Active Directory 的租户，使用 [Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)，通过你自己的租户管理 (的订阅和/或资源组) 中的委派资源。
 
 > [!TIP]
 > 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
@@ -22,7 +22,7 @@ ms.locfileid: "96608463"
 若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并在每次加入客户时包含该服务主体。 有关详细信息，请参阅将 [合作伙伴 ID 链接到委托资源的合作伙伴获得的信用额度](partner-earned-credit.md)。
 
 > [!NOTE]
-> 当客户购买托管服务产品) /服务时，也可以载入 Azure Lighthouse， (公开 [发布到 Azure Marketplace](publish-managed-services-offers.md)。 你还可以在发布到 Azure Marketplace 的产品/服务中使用此处所述的载入过程。
+> 当客户购买托管服务产品) /服务时，客户可以载入到 Azure Lighthouse， (公开 [发布到 Azure Marketplace](publish-managed-services-offers.md)。 你还可以使用此处所述的载入流程以及发布到 Azure Marketplace 的产品/服务。
 
 载入过程要求从服务提供商的租户和客户的租户中执行操作。 上述所有步骤均可参见本文。
 
@@ -303,7 +303,19 @@ az account list
 
 如果在载入客户后需要进行更改，则可以 [更新委派](update-delegation.md)。 你还可以完全 [删除对委派的访问权限](remove-delegation.md) 。
 
+## <a name="troubleshooting"></a>疑难解答
+
+如果无法成功加入你的客户，或者如果你的用户访问委派的资源时遇到问题，请查看以下提示和要求，然后重试。
+
+- `managedbyTenantId`该值不能与正在载入的订阅的租户 ID 相同。
+- 在同一范围内，不能具有相同的多个分配 `mspOfferName` 。 
+- 必须为委派的订阅注册 **ManagedServices** 资源提供程序。 这应该在部署期间自动发生，但如果不是，则可以 [手动注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
+- 授权不得包含具有 [所有者](../../role-based-access-control/built-in-roles.md#owner) 内置角色的任何用户或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions)的任何内置角色。
+- 必须创建组，将 [**组类型**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) 设置为 **安全** 组，而不是 **Microsoft 365**。
+- 需要在 Azure 门户中查看资源的用户必须具有 (的 " [读取](../../role-based-access-control/built-in-roles.md#reader) 者" 角色或其他包含读者访问) 的内置角色。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。
+- 了解如何 [更新](update-delegation.md) 或 [删除](remove-delegation.md) 委派。

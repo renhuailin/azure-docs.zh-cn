@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452946"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516796"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -56,6 +56,9 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
+> [!WARNING]
+> Linux 主机名或 Windows 计算机名不能使用名称中的保留字或商标之一，否则尝试将连接的计算机注册到 Azure 会失败。 有关保留字的列表，请参阅 [解决保留资源名称错误](../../azure-resource-manager/templates/error-reserved-resource-name.md) 。
+
 ### <a name="required-permissions"></a>所需的权限
 
 * 若要将计算机加入，你必须是 **Azure Connected Machine 加入** 角色的成员。
@@ -92,7 +95,7 @@ URL：
 
 | 代理资源 | 说明 |
 |---------|---------|
-|`management.azure.com`|Azure 资源管理器|
+|`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |来宾配置|

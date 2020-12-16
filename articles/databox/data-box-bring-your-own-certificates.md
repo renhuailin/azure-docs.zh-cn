@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: dab34b26d8237d743e22149ed0da2dd9471d7431
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: deb52c8716f97874beae4accbf6f34f72e20ca04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095964"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516469"
 ---
 # <a name="use-your-own-certificates-with-data-box-and-data-box-heavy-devices"></a>在 Data Box 和 Data Box Heavy 设备上使用你自己的证书
 
@@ -95,11 +95,12 @@ ms.locfileid: "97095964"
 
    ![Error after a new Local web UI certificate is added to a Data Box device](media/data-box-bring-your-own-certificates/certificates-unable-to-communicate-error.png) TEST. RESTORE IF ERROR IS REPRODUCED.-->
 
-6. 在用于访问本地 web UI 的客户端计算机上安装新证书。 有关说明，请参阅下面的 [将证书导入到客户端](#import-certificates-to-client)。
-
-7. 如果更改了本地 Web UI 的证书，则需要重新启动浏览器，然后重新启动本地 web UI。 若要避免任何 SSL 缓存问题，需要执行此步骤。
+6. 如果更改了本地 Web UI 的证书，则需要重新启动浏览器，然后重新启动本地 web UI。 若要避免任何 SSL 缓存问题，需要执行此步骤。
 
   <!-- TESTING THIS - The communication error should be gone from the **Certificates** screen.-->
+
+7. 在用于访问本地 web UI 的客户端计算机上安装新证书。 有关说明，请参阅下面的 [将证书导入到客户端](#import-certificates-to-client)。
+
 
 ## <a name="import-certificates-to-client"></a>将证书导入到客户端
 

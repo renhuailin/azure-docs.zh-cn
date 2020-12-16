@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551616"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516681"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>用于 Azure 监控范围中的源身份验证的凭据
 
@@ -20,7 +20,7 @@ ms.locfileid: "96551616"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 密钥保管库。 如果你还没有 (插入 KV 创建项目的链接) 创建一个。
+* Azure 密钥保管库。 若要了解如何创建一个 [密钥保管库，请参阅快速入门：使用 Azure 门户创建密钥保管库](../key-vault/general/quick-create-portal.md)。
 
 ## <a name="introduction"></a>简介
 凭据是 Azure 监控范围可用于向已注册的数据源进行身份验证的身份验证信息。 可以为各种类型的身份验证方案创建凭据对象 (如需要用户名/密码) 的基本身份验证，并将根据所选的身份验证方法类型捕获所需的特定信息。 凭据使用现有的 Azure 密钥保管库机密来检索凭据创建过程中的敏感身份验证信息。

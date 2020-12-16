@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750503"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516373"
 ---
 # <a name="secure-your-restful-services"></a>保护 RESTful 服务 
 
@@ -230,7 +230,7 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>获取访问令牌 
 
-可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-custom.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](../active-directory/develop/v2-oauth-ropc.md)、或者使用[客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。  
+可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-user-flow.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](../active-directory/develop/v2-oauth-ropc.md)、或者使用[客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。  
 
 下面的示例使用 REST API 技术配置文件和作为 HTTP 基本身份验证传递的客户端凭据向 Azure AD 令牌终结点发出请求。 要在 Azure AD 中配置此设置，请参阅 [Microsoft 标识平台和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 可能需要修改此设置才能与标识提供程序交互。 
 
@@ -314,7 +314,7 @@ Authorization: Bearer <token>
 
 若要使用 OAuth2 持有者令牌配置 REST API 技术配置文件，请从 REST API 所有者处获取访问令牌。 然后，创建以下加密密钥来存储持有者令牌。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
@@ -373,7 +373,7 @@ API 密钥是用于对用户进行身份验证以访问 REST API 终结点的唯
 
 若要使用 API 密钥身份验证配置 REST API 技术配置文件，请创建以下加密密钥来存储 API 密钥：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
