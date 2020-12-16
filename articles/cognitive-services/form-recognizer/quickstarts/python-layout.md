@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e9368b5c6c90fe7ce65fc066e0b19523e07ece51
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899434"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504332"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入门：使用表单识别器 REST API 和 Python 提取文本和布局信息
 
@@ -90,7 +90,7 @@ ms.locfileid: "92899434"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -118,7 +118,7 @@ ms.locfileid: "92899434"
       ---
 
 
-1. 将代码保存在以 .py 为扩展名的文件中。 例如， *form-recognizer-layout.py* 。
+1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognizer-layout.py*。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-layout.py`。
 
@@ -130,7 +130,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 ``` 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)  
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```  
 
 ---

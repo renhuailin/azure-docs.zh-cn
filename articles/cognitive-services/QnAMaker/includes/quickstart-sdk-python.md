@@ -3,12 +3,12 @@ title: 快速入门：适用于 Python 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 Python 的 QnA Maker 客户端库。
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 8a9796b0378e6e0bfc04a6e54aafb3001637cac6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61c67b66e85e1d8d03cbe07b0c8d2053151e3513
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615879"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096352"
 ---
 可以使用适用于 Python 的 QnA Maker 客户端库执行以下操作：
 
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 创作 QnA Maker 客户端是 [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) 对象，使用包含密钥的 Microsoft.Rest.ServiceClientCredentials 向 Azure 进行身份验证。
 
-创建客户端以后，使用[知识库](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebaseoperations?view=azure-python)属性创建、管理和发布知识库。
+创建客户端以后，使用[知识库](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python)属性创建、管理和发布知识库。
 
 通过发送 JSON 对象来管理知识库。 对于即时操作，方法通常返回一个指示状态的 JSON 对象。 对于长时间运行的操作，响应是操作 ID。 使用操作 ID 调用 [operations.get_details](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) 方法，确定[请求状态](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python)。
 
@@ -121,7 +121,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 ## <a name="publish-a-knowledge-base"></a>发布知识库
 
-使用 [publish](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) 方法发布知识库。 这样会通过知识库 ID 获取当前保存的已训练模型，并在某个终结点上将其发布。
+使用 [publish](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) 方法发布知识库。 这样会通过知识库 ID 获取当前保存的已训练模型，并在某个终结点上将其发布。
 
 [!code-python[Publish a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=PublishKB&highlight=2)]
 
@@ -154,7 +154,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 ## <a name="delete-a-knowledge-base"></a>删除知识库
 
-使用 [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) 方法与知识库 ID 参数删除知识库。
+使用 [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) 方法与知识库 ID 参数删除知识库。
 
 [!code-python[Delete a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=DeleteKB&highlight=2)]
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561488"
 ---
 适用于 .NET 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 NuGet 包并试用基本任务的示例代码。 
 
@@ -24,9 +24,9 @@ ms.locfileid: "92918675"
 
 使用适用于 .NET 的内容审查器客户端库可以：
 
-* [审查文本](#moderate-text)
-* [审查图像](#moderate-images)
-* [创建评审](#create-a-review)
+* 审查文本
+* 审查图像
+* 创建评审
 
 [参考文档](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [示例](../../samples-dotnet.md)
 
@@ -52,7 +52,7 @@ ms.locfileid: "92918675"
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `content-moderator-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目： *Program.cs* 。
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `content-moderator-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -288,7 +288,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

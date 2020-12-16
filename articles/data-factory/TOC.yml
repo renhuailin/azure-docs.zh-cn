@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: 连接器
           href: connector-troubleshoot-guide.md
+        - name: 管道触发器
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: 数据流
           href: data-flow-troubleshoot-guide.md
         - name: 持续集成和部署

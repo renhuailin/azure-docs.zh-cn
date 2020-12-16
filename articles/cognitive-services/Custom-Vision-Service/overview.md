@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 09/14/2020
+ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像标识符, 图像识别应用, 自定义视觉
-ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616903"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562984"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
 

@@ -12,18 +12,18 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 0f5e6a2327f5d952f92009b0c9e408ab8188d6d7
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558770"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563222"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
+该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/client-libraries-rest-api.md)一起使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -64,7 +64,7 @@ ms.locfileid: "96558770"
 
 工作流非常简单：在代码中提交分析数据和处理输出。 分析器按原样使用，无需额外的配置或自定义。
 
-1. 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)。 然后，[获取生成的密钥](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，以便对请求进行身份验证。
+1. 为文本分析[创建 Azure 资源](how-tos/text-analytics-how-to-call-api.md)。 然后，[获取生成的密钥](how-tos/text-analytics-how-to-call-api.md)，以便对请求进行身份验证。
 
 2. [规划请求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含原始非结构化文本形式的 JSON 数据。
 
@@ -109,7 +109,7 @@ ms.locfileid: "96558770"
 
 + 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)，以获取应用程序的密钥和终结点。
 
-+ 使用[快速入门](quickstarts/text-analytics-sdk.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
++ 使用[快速入门](quickstarts/client-libraries-rest-api.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
 
 + 有关新版本和功能的信息，请参阅[文本分析 API 中的新增功能](whats-new.md)。
 

@@ -95,7 +95,7 @@
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
 - name: 概念
   items:
-    - name: Azure 资源管理器
+    - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: 区域
@@ -118,31 +118,31 @@
       items:
         - name: 常规用途
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: B 系列可突增
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: 计算优化
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: 内存优化
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: 约束的 vCPU
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: 存储优化
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU 优化
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: 安装 NVIDIA GPU 驱动程序
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: 高性能计算
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +165,6 @@
     - name: 维护和更新
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: 业务流程模式
-      href: orchestration-modes.md
     - name: 磁盘存储
       items:
         - name: 托管磁盘

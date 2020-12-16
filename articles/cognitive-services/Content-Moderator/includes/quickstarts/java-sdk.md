@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356488"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561505"
 ---
 适用于 Java 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 Maven 包并试用基本任务的示例代码。 
 
@@ -24,8 +24,8 @@ ms.locfileid: "96356488"
 
 使用适用于 Java 的内容审查器客户端库可以：
 
-* 审查图像
 * 审查文本
+* 审查图像
 
 [参考文档](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[项目 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [示例](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ mkdir -p src/main/java
 这些代码片段演示如何使用适用于 Java 的内容审查器客户端库执行以下任务：
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [审查图像](#moderate-images)
 * [审查文本](#moderate-text)
+* [审查图像](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
 在应用程序的 `main` 方法中，使用订阅终结点值和订阅密钥创建一个 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 对象。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>审查文本
+
+### <a name="set-up-sample-text"></a>设置示例文本
+
+在 ContentModeratorQuickstart 类的顶部，定义对本地文本文件的引用。 在项目目录中添加一个 .txt 文件，然后输入要分析的文本。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>分析文本
+
+创建一个新方法，读取 .txt 文件并在每一行调用 screenText 方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>打印文本审查结果
+
+添加以下代码，将审查结果打印到项目目录中的 .json 文件中。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+结束 `try` 和 `catch` 语句以完成该方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>审查图像
 
@@ -181,31 +209,6 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
-## <a name="moderate-text"></a>审查文本
-
-### <a name="set-up-sample-text"></a>设置示例文本
-
-在 ContentModeratorQuickstart 类的顶部，定义对本地文本文件的引用。 在项目目录中添加一个 .txt 文件，然后输入要分析的文本。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>分析文本
-
-创建一个新方法，读取 .txt 文件并在每一行调用 screenText 方法。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>打印文本审查结果
-
-添加以下代码，将审查结果打印到项目目录中的 .json 文件中。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-结束 `try` 和 `catch` 语句以完成该方法。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
-
 ## <a name="run-the-application"></a>运行应用程序
 
 可使用以下命令生成应用：
@@ -226,7 +229,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

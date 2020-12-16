@@ -198,7 +198,7 @@
           href: powershell-samples.md
         - name: Azure CLI
           href: cli-samples.md
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: templates-samples-sql.md
     - name: 概念
       items:
@@ -978,6 +978,8 @@
           href: find-request-unit-charge-cassandra.md
         - name: 存储和管理 Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+        - name: 排查常见问题
+          href: cassandra-troubleshoot.md
         - name: Cassandra 和 Spark
           items:
             - name: 简介
