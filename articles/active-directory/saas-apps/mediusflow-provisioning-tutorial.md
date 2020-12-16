@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182037"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607875"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -172,11 +172,11 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 11. 在“特性映射”部分中，审阅从 Azure AD 同步到 MediusFlow 的组特性。 选为“匹配”属性的特性是用于匹配 MediusFlow 中用于更新操作的组。 选择“保存”按钮以提交任何更改。
 
-      |Attribute|类型|
-      |---|---|
-      |displayName|字符串|
-      |externalID|字符串|
-      |members|参考|
+    | Attribute | 类型 |
+    |--|--|
+    | displayName | 字符串 |
+    | externalID | 字符串 |
+    | members | 参考 |
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

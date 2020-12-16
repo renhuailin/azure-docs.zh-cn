@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853316"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607909"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -79,7 +79,6 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
 | `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | 此范围的父范围的 [parent-id](https://w3c.github.io/trace-context/#parent-id)。 如果这是根范围，此字段必须为空。     |
 
-
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>启用对 .NET 应用的 W3C 分布式跟踪支持
@@ -103,7 +102,7 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - 对于 Spring Boot 应用，请添加以下属性：
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[基于代码片段的设置](./javascript.md#snippet-based-setup)**
 
 添加以下配置：

@@ -6,54 +6,52 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b44279f31aea8fc02130f1c3d7520f42c648bd4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168573"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607943"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
 Azure Functions 提供与 Application Insights 的[内置集成](../../azure-functions/functions-monitoring.md)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](../../azure-functions/configure-monitoring.md#enable-application-insights-integration)信息，请参阅 Azure Functions 指南。
 
-有关函数运行时版本的详细信息，请参阅 [此处](../../azure-functions/functions-versions.md)。
+有关 Functions 运行时版本的详细信息，请参阅[此处](../../azure-functions/functions-versions.md)。
 
-有关 Application Insights 的兼容版本的详细信息，请参阅 [依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+有关 Application Insights 的兼容版本的详细信息，请参阅[依赖项](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 
 ## <a name="supported-features"></a>支持的功能
 
-| Azure Functions                       | V1                | V2 和 V3   | 
-|-----------------------------------    |---------------    |------------------ |
+| Azure Functions                   | V1            | V2 和 V3 | 
+|-----------------------------------|---------------|------------------|
 | | | | 
-| **自动集合**        |                 |                   |               
-| &bull; 请求                     | 是             | 是               | 
-| &bull; 异常                   | 是             | 是               | 
-| &bull; 性能计数器         | 是             | 是               |
-| &bull; 依赖项                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
+| **自动集合**        |               |                  |
+| &bull; 请求                     | 是           | 是              |
+| &bull; 异常                   | 是           | 是              |
+| &bull; 性能计数器         | 是           | 是              |
+| &bull; 依赖项                 |               |                  |
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |               | 是              |
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|               | 是              |
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |               | 是              |
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |               | 是              |
 | | | | 
-| **受支持的功能**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; 安全控制通道|                 | 是               | 
-| &bull; 采样                     | 是             | 是               | 
-| &bull; 检测信号                   |                 | 是               | 
+| **受支持的功能**              |               |                  |
+| &bull; QuickPulse/LiveMetrics       | 是           | 是              | 
+| &nbsp;&nbsp;&nbsp;&mdash; 安全控制通道 |               | 是 | 
+| &bull; 采样                     | 是           | 是              | 
+| &bull; 检测信号                   | | 是              | 
+| | | |
+| **相关性**                    |               |                  |
+| &bull; ServiceBus                  |               | 是              |
+| &bull; EventHub                    |               | 是              |
 | | | | 
-| **关联**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | 是               | 
-| &bull; EventHub                       |                   | 是               | 
-| | | | 
-| **可配置**                      |                   |                   |           
-| &bull; 完全可配置。<br/>请参阅 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) 了解相应说明。<br/>请参阅所有选项的 [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 。               |                   | 是                   | 
-
+| **可配置**                  |               |                  |           
+| &bull; 完全可配置。<br/>请参阅 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) 了解相应说明。<br/>请参阅 [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 了解所有选项。           |               | 是                 | 
 
 ## <a name="performance-counters"></a>性能计数器
 
 性能计数器的自动收集仅适用于 Windows 计算器。
-
 
 ## <a name="live-metrics--secure-control-channel"></a>实时指标和安全控制通道
 

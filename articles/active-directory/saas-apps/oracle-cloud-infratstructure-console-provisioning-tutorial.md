@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938930"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607994"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为 Oracle Cloud Infrastructure Console 配置自动用户预配
 
@@ -120,40 +120,40 @@ ms.locfileid: "96938930"
 
 9. 在“属性映射”部分中，查看从 Azure AD 同步到 Oracle Cloud Infrastructure Console 的用户属性。 选为“匹配”属性的特性用于匹配 Oracle Cloud Infrastructure Console 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Oracle Cloud Infrastructure Console API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-      |Attribute|类型|
-      |---|---|
-      |displayName|字符串|
-      |userName|字符串|
-      |活动|Boolean|
-      |title|字符串|
-      |emails[type eq "work"].value|字符串|
-      |preferredLanguage|字符串|
-      |name.givenName|字符串|
-      |name.familyName|字符串|
-      |addresses[type eq "work"].formatted|字符串|
-      |addresses[type eq "work"].locality|字符串|
-      |addresses[type eq "work"].region|字符串|
-      |addresses[type eq "work"].postalCode|字符串|
-      |addresses[type eq "work"].country|字符串|
-      |addresses[type eq "work"].streetAddress|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-      |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User:bypassNotification|布尔|
-      |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User:isFederatedUser|布尔|
+    |Attribute|类型|
+    |---|---|
+    |displayName|字符串|
+    |userName|字符串|
+    |活动|Boolean|
+    |title|字符串|
+    |emails[type eq "work"].value|字符串|
+    |preferredLanguage|字符串|
+    |name.givenName|字符串|
+    |name.familyName|字符串|
+    |addresses[type eq "work"].formatted|字符串|
+    |addresses[type eq "work"].locality|字符串|
+    |addresses[type eq "work"].region|字符串|
+    |addresses[type eq "work"].postalCode|字符串|
+    |addresses[type eq "work"].country|字符串|
+    |addresses[type eq "work"].streetAddress|字符串|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
+    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
+    |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User:bypassNotification|布尔|
+    |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User:isFederatedUser|布尔|
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Oracle Cloud Infrastructure Console” 。
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Oracle Cloud Infrastructure Console 的组属性。 选为“匹配”属性的特性用于匹配 Oracle Cloud Infrastructure Console 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-      |Attribute|类型|
-      |---|---|
-      |displayName|字符串|
-      |externalId|字符串|
-      |members|参考|
+    | Attribute | 类型 |
+    |--|--|
+    | displayName | 字符串 |
+    | externalId | 字符串 |
+    | members | 参考 |
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780880"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607705"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ ms.locfileid: "92780880"
 
     * 在目录中将租户数据库标记为联机后，应用程序可立即访问这些数据库。
 
-    * 租户数据库中 rowversion 值的总和存储在目录中。 此总和充当一个指纹，可让遣返进程确定恢复区域中是否已更新数据库。       
+    * 租户数据库中 rowversion 值的总和存储在目录中。 此总和充当一个指纹，可让遣返进程确定恢复区域中是否已更新数据库。
 
 ## <a name="run-the-recovery-script"></a>运行恢复脚本
 

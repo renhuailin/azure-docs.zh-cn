@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601010"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607892"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK Application Insights 疑难解答和问答
 
@@ -63,7 +63,6 @@ ms.locfileid: "96601010"
 或者，如果客户端是[手机或其他设备][platforms]中的应用，可以从该处发送遥测数据。
 
 使用相同的检测密钥来设置客户端和服务器遥测。 数据将出现在相同的 Application Insights 资源中，可以将来自客户端和服务器的事件相关联。
-
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 **如何禁用遥测数据收集？**
@@ -183,7 +182,6 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 
 >[!NOTE]
 >如果为应用中的所有命名空间启用了调试级别日志记录，则所有执行中模块（包括重命名为 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`）都将遵循它。 Application Insights 将无法为这些调用应用筛选，因为进行日志调用的是 Apache 库。 调试级别日志记录将生成大量日志数据，因此不建议在实时生产实例中使用。
-
 
 ## <a name="next-steps"></a>后续步骤
 **我为 Java 服务器应用设置了 Application Insights。接下来还可以做些什么？**
