@@ -2,19 +2,19 @@
 title: 将 Azure 应用配置与 ASP.NET Core 结合使用的快速入门| Microsoft Docs
 description: 使用 Azure 应用程序配置创建 ASP.NET Core 应用，集中存储和管理 ASP.NET Core 应用程序的应用程序设置。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-csharp, contperfq1
+ms.custom: devx-track-csharp, contperf-fy21q1
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: d1582cda4b083623daf7bb756d0bc8aa3e74eae8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075835"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033640"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "92075835"
 
 7. 选择“操作” > “配置资源管理器” > “创建” > “键-值”来添加以下键值对   ：
 
-    | Key                                | Value                               |
+    | 密钥                                | 值                               |
     |------------------------------------|-------------------------------------|
     | `TestApp:Settings:BackgroundColor` | #FFF                              |
     | `TestApp:Settings:FontColor`       | #000                              |

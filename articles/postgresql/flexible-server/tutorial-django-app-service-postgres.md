@@ -270,11 +270,11 @@ python manage.py migrate
 
 在 [Azure 门户](https://portal.azure.com)中，搜索应用名称并在结果中选择应用。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="示例 Django 开发服务器输出":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="在 Azure 门户中导航到 Python Django 应用":::
 
 默认情况下，门户会显示应用的“概述”页，该页面提供一般的性能视图。 也可在此处执行基本的管理任务，例如浏览、停止、重启和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="示例 Django 开发服务器输出":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="在 Azure 门户的“概述”页中管理 Python Django 应用":::
 
 
 ## <a name="clean-up-resources"></a>清理资源

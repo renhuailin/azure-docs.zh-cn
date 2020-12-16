@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341444"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360265"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 .NET (C#) 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -28,11 +28,11 @@ ms.locfileid: "93341444"
 
   |操作| 连接方法|操作指南|
   |:--------- |:--------- |:--------- |
-  | **配置防火墙规则** | 公用 | [门户](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
-  | **配置服务终结点** | 公用 | [门户](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
-  | **配置专用链接** | Private | [门户](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
+  | **配置防火墙规则** | 公用 | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+  | 配置服务终结点 | 公用 | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+  | 配置专用链接 | Private | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- 安装适用于平台（Windows、Ubuntu Linux 或 macOS）的 [.NET Framework](https://www.microsoft.com/net/download)。 
+- 安装适用于平台（Windows、Ubuntu Linux 或 macOS）的 [.NET Framework](https://www.microsoft.com/net/download)。
 - 安装 [Visual Studio](https://www.visualstudio.com/downloads/) 以生成项目。
 - 在 Visual Studio 中安装 [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet 包。
 
@@ -46,13 +46,13 @@ ms.locfileid: "93341444"
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Azure Database for PostgreSQL 服务器名称":::
 
 ## <a name="step-1-connect-and-insert-data"></a>步骤 1：连接并插入数据
-通过以下代码进行连接，然后使用 **CREATE TABLE** 和 **INSERT INTO** SQL 语句加载数据。 代码使用 NpgsqlCommand 类和以下方法： 
+通过以下代码进行连接，然后使用 **CREATE TABLE** 和 **INSERT INTO** SQL 语句加载数据。 代码使用 NpgsqlCommand 类和以下方法：
 - [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)，用于与 PostgreSQL 数据库建立连接。
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)，用于设置 CommandText 属性。
-- [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法，用于运行数据库命令。 
+- [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法，用于运行数据库命令。
 
 > [!IMPORTANT]
-> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
+> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。
 
 ```csharp
 using System;
@@ -91,7 +91,7 @@ namespace Driver
                 conn.Open();
 
                 using (var command = new NpgsqlCommand("DROP TABLE IF EXISTS inventory", conn))
-                { 
+                {
                     command.ExecuteNonQuery();
                     Console.Out.WriteLine("Finished dropping table (if existed)");
 
@@ -111,7 +111,7 @@ namespace Driver
                     command.Parameters.AddWithValue("q2", 154);
                     command.Parameters.AddWithValue("n3", "apple");
                     command.Parameters.AddWithValue("q3", 100);
-                    
+
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
                 }
@@ -134,7 +134,7 @@ namespace Driver
 - [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) 和 [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_)，用于分析记录中的值。
 
 > [!IMPORTANT]
-> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
+> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。
 
 ```csharp
 using System;
@@ -187,6 +187,7 @@ namespace Driver
                                 )
                             );
                     }
+                    reader.Close();
                 }
             }
 
@@ -201,12 +202,12 @@ namespace Driver
 
 ## <a name="step-3-update-data"></a>步骤 3：更新数据
 使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据。 代码使用 NpgsqlCommand 类和以下方法：
-- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)，用于与 PostgreSQL 建立连接。 
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)，用于与 PostgreSQL 建立连接。
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)，用于设置 CommandText 属性。
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法，用于运行数据库命令。
 
 > [!IMPORTANT]
-> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
+> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。
 
 ```csharp
 using System;
@@ -247,7 +248,6 @@ namespace Driver
                 {
                     command.Parameters.AddWithValue("n", "banana");
                     command.Parameters.AddWithValue("q", 200);
-                    
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows updated={0}", nRows));
                 }
@@ -265,12 +265,12 @@ namespace Driver
 [存在问题？请告诉我们。](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-4-delete-data"></a>步骤 4：删除数据
-使用以下代码进行连接，并使用 DELETE SQL 语句删除数据。 
+使用以下代码进行连接，并使用 DELETE SQL 语句删除数据。
 
 代码使用 NpgsqlCommand 类，通过 [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 方法建立与 PostgreSQL 数据库的连接。 然后，代码使用 [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) 方法，设置 CommandText 属性，再调用 [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法来运行数据库命令。
 
 > [!IMPORTANT]
-> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。 
+> 将 Host、DBName、User 和 Password 参数替换为创建服务器和数据库时指定的值。
 
 ```csharp
 using System;

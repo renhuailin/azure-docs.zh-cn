@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e876ddc9b4df32cad5bbf15215da5ce2f912bba1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322439"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109719"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入门：设置适用于 Windows 的 Data Science Virtual Machine
 
@@ -36,14 +36,14 @@ ms.locfileid: "93322439"
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
 
 1. 填写“基本信息”选项卡：
-      * **订阅** ：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
-      * **资源组** ：新建资源组，或使用现有资源组。
-      * **虚拟机名称** ：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
-      * **位置** ：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
-      * **映像** ：保留默认值。
-      * **大小** ：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Windows VM 大小](../../virtual-machines/sizes.md)。
-      * **用户名** ：输入管理员用户名。 这是你将用于登录到虚拟机的用户名，无需与 Azure 用户名相同。
-      * **密码** ：输入将用于登录到虚拟机的密码。    
+      * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
+      * **资源组**：新建资源组，或使用现有资源组。
+      * **虚拟机名称**：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
+      * **位置**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
+      * **映像**：保留默认值。
+      * **大小**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Windows VM 大小](../../virtual-machines/sizes.md)。
+      * **用户名**：输入管理员用户名。 这是你将用于登录到虚拟机的用户名，无需与 Azure 用户名相同。
+      * **密码**：输入将用于登录到虚拟机的密码。    
 1. 选择“查看 + 创建”。
 1. **查看 + 创建**
    * 验证输入的所有信息是否正确。 
@@ -59,8 +59,6 @@ ms.locfileid: "93322439"
 创建并预配 VM 后，请按照列出的步骤[连接到基于 Azure 的虚拟机](../../marketplace/azure-vm-create-using-approved-base.md)。 请使用创建虚拟机时在“基本信息”步骤中配置的管理员帐户凭据。 
 
 现在，可以开始使用 VM 上安装并配置的工具。 可以通过“开始”菜单磁贴和桌面图标访问许多工具。
-
-还可以将 DSVM 附加到 Azure Notebooks，以在 VM 上运行 Jupyter Notebook，并绕过免费服务层的限制。 有关详细信息，请参阅[管理和配置 Notebooks 项目](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects)。
 
 <a name="tools"></a>
 

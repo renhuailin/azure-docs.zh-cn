@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a69a9fa712aaa9d4c02243d28dcae8b72c3db73
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348273"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106115"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>快速入门：使用必应自动建议 REST API 和 Node.js 建议搜索查询
 
@@ -86,14 +86,13 @@ ms.locfileid: "96348273"
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
-## Create a search handler
+## <a name="create-a-search-handler"></a>创建搜索处理程序
 
-1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
-Do the following steps within this function:
+1. 定义一个名为 `response_handler` 的函数，该函数使用 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
     
-    1. Define a variable to contain the body of the JSON response.  
+    1. 定义一个包含 JSON 响应的正文的变量。  
 
         ```javascript
         let response_handler = function (response) {
@@ -101,7 +100,7 @@ Do the following steps within this function:
         };
         ```
 
-    2. Store the body of the response when the `data` flag is called
+    2. 调用 `data` 标志时，存储响应的正文
         
         ```javascript
         response.on ('data', function (d) {
@@ -109,7 +108,7 @@ Do the following steps within this function:
         });
         ```
 
-    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
+    3. 指示 `end` 标志时，使用 `JSON.parse()` 和 `JSON.stringify()` 输出响应。
     
         ```javascript
         response.on ('end', function () {
@@ -122,11 +121,11 @@ Do the following steps within this function:
         });
         ```
 
-2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
+2. 调用 `get_suggestions()` 将请求发送到必应自动建议 API。
 
-## Example JSON response
+## <a name="example-json-response"></a>示例 JSON 响应
 
-A successful response is returned in JSON, as shown in the following example: 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {

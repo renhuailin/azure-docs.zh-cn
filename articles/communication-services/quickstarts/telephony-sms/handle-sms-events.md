@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e8decbe22f869573bf7a2221099d2bc30c00fc8a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888838"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936263"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入门：处理短信事件
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 通过 Azure 事件网格处理通信服务短信事件，开始使用 Azure 通信服务。 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 0398056c3182ec50a1ec170f64ff079633f70c68
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995108"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030546"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -40,20 +40,19 @@ ms.locfileid: "95995108"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称，然后单击“注册”。
+> 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
-> 1. 选择“新注册”。
-> 1. 在“注册应用程序”页中，输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
->      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。 
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的名称（例如 `UWP-App-calling-MsGraph`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。 
 > 1. 选择“注册”创建应用程序，然后记录“应用程序(客户端) ID”，以供在后面的步骤中使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 选择“添加平台” > “移动和桌面应用程序” 。

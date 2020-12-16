@@ -3,18 +3,18 @@ title: 将 Azure 应用配置与 .NET Framework 结合使用的快速入门| Mic
 description: 在本文中，使用 Azure 应用程序配置创建 .NET Framework 应用，集中存储和管理与代码分离的应用程序设置。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: d338ca5cf2c794f15d3eb535b5280208236d1e34
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767762"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932084"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
@@ -44,9 +44,9 @@ ms.locfileid: "91767762"
 
 1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
-1. 在**创建新项目**中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 选择“**下一页**”。
+1. 在 **创建新项目** 中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 选择“**下一页**”。
 
-1. 在**配置新项目**中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 选择“创建”  。
+1. 在 **配置新项目** 中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 选择“创建”  。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 

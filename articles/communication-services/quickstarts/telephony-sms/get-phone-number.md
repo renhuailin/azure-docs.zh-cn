@@ -9,16 +9,17 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3c7f171a2b4957b687831ec2777ecc40b5913a15
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148184"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938641"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>快速入门：使用 Azure 门户获取电话号码
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 通过 Azure 门户开始使用 Azure 通信服务来购买电话号码。
 
@@ -37,13 +38,13 @@ ms.locfileid: "92148184"
 
 导航到资源菜单中的“电话号码”边栏选项卡。
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="显示通信服务资源的电话页的屏幕截图。":::
 
 按“获取”按钮启动向导。 “电话号码”边栏选项卡上的向导将引导你完成一系列问题，以帮助你选择最适合你的情况的电话号码。 
 
 首先需要选择要在哪个“国家/地区”预配电话号码。 选择国家/地区后，需要选择最符合你需求的“用例”。 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="显示“获取电话号码”视图的屏幕截图。":::
 
 ### <a name="select-your-phone-number-features"></a>选择电话号码功能
 
@@ -56,7 +57,7 @@ ms.locfileid: "92148184"
 
 在我们的示例中，我们选择了具有“出站呼叫”和“入站和出站 SMS”功能的“免费”号码类型  。
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="显示“选择功能”视图的屏幕截图。":::
 
 在此处单击页面底部的“下一步:号码”按钮，以自定义要预配的电话号码。
 
@@ -64,14 +65,14 @@ ms.locfileid: "92148184"
 
 在“号码”页上，你将自定义要预配的电话号码。
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="显示号码选择页的屏幕截图。":::
 
 > [!NOTE]
 > 本快速入门显示的是“免费”号码类型自定义流。 如果选择了“地理”号码类型，则体验可能会略有不同，但最终结果是一样的。
 
 从可用区号列表中选择“区号”，输入要预配的数量，然后单击“搜索”查找符合所选要求的号码 。 系统将显示符合你需求的电话号码及其每月费用。
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="显示包含预留号码的号码选择页的屏幕截图。":::
 
 > [!NOTE]
 > 号码可用性取决于所选的号码类型、位置和功能。
@@ -88,7 +89,7 @@ ms.locfileid: "92148184"
 
 最后，单击页面底部的“下单”进行确认。
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="显示摘要页的屏幕截图，该页面显示了号码类型、功能、电话号码和每月总费用。":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>在 Azure 门户上查找电话号码
 
@@ -98,7 +99,7 @@ ms.locfileid: "92148184"
 
 在菜单中选择“电话号码”边栏选项卡来管理电话号码。
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="显示通信服务资源的电话号码页的屏幕截图。":::
 
 > [!NOTE]
 > 在此页面上显示预配号码可能需要几分钟时间。
@@ -108,7 +109,7 @@ ms.locfileid: "92148184"
 
 在“号码”页上，你可以选择一个电话号码进行配置。
 
-:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="显示通信服务资源主页的屏幕截图。":::
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="显示“更新功能”页面的屏幕截图。":::
 
 从可用选项中选择功能，然后单击“确认”以应用你的选择。
 

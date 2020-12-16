@@ -10,21 +10,22 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070344"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937230"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>规划电话服务和短信解决方案
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 借助 Azure 通信服务，可以使用电话号码通过公用电话交换网 (PSTN) 进行语音呼叫和发送短信。 在本文档中，我们将使用通信服务查看电话号码类型、配置选项和区域可用性，以规划电话服务和短信解决方案。
 
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+
 
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
@@ -52,6 +53,8 @@ ms.locfileid: "92070344"
 
 
 ## <a name="phone-number-features-in-azure-communication-services"></a>Azure 通信服务中的电话号码功能 
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 对于大多数电话号码，我们允许配置“按菜单点菜”功能。 你可以在 Azure 通信服务中租赁电话号码时选择这些功能。
 

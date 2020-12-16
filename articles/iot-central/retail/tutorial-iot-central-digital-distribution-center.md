@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463281"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346191"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
 
@@ -35,10 +35,9 @@ ms.locfileid: "96463281"
 1. 导航到 Azure IoT Central 应用程序管理器网站。 从左侧导航栏中选择“生成”，然后单击“零售”选项卡   。
 
     :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="数字分发中心应用程序模板":::
+1. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   
 
-2. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   
-
-3. “创建应用”将打开“新建应用程序”窗体，并按如下所示填写所需的详细信息  。
+1. “创建应用”将打开“新建应用程序”窗体，并按如下所示填写所需的详细信息  。
    **应用程序名称**：可以使用默认的建议名称，也可以输入易记的应用程序名称。
    **URL**：可以使用建议的默认 URL，也可以输入唯一且容易记住的 URL。 接下来，如果已经具有 Azure 订阅，则建议使用默认设置。 你可以从 7 天免费试用定价计划开始，然后选择在免费试用过期之前随时转换为标准定价计划。
    **计费信息**：必须提供目录、Azure 订阅和区域详细信息才能配置资源。

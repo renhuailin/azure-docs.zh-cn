@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145848"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356950"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：通过 Azure 门户在 Windows 虚拟机上创建 SQL Server 2017
 
@@ -62,15 +63,15 @@ ms.locfileid: "93145848"
    ![订阅](./media/sql-vm-create-portal-quickstart/basics-project-details.png)
 
 1. 在“实例详细信息”下：
-    1. 键入 _SQLVM_ 作为 **虚拟机名称** 。 
+    1. 键入 _SQLVM_ 作为 **虚拟机名称**。 
     1. 为“区域”选择一个位置。 
     1. 本快速入门将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅[可用性](../../../virtual-machines/availability.md)。 
     1. 在“映像”列表中，选择“免费 SQL Server 许可证:Windows Server 2016 上的 SQL Server 2017 Developer”的映像。 
-    1. 对于虚拟机 **大小** ，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 
+    1. 对于虚拟机 **大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 
 
    ![实例详细信息](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. 在“管理员帐户”下提供用户名（例如 _azureuser_ ）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“管理员帐户”下提供用户名（例如 _azureuser_）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
    ![管理员帐户](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 

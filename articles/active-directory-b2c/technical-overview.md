@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840543"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108377"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -162,7 +162,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ![按品牌自定义的注册/登录页的屏幕截图](media/technical-overview/seamless-ux.png)
 
-有关 UI 自定义的信息，请参阅[关于 Azure Active Directory B2C 中的用户界面自定义](customize-ui-overview.md)。
+有关 UI 自定义的信息，请参阅[关于 Azure Active Directory B2C 中的用户界面自定义](customize-ui-with-html.md)。
 
 ## <a name="localization"></a>本地化
 
@@ -170,7 +170,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ![以不同语言显示 UI 文本的三个注册/登录页](media/technical-overview/localization.png)
 
-在 [Azure Active Directory B2C 中的语言自定义](user-flow-language-customization.md)中了解本地化的工作原理。
+在 [Azure Active Directory B2C 中的语言自定义](language-customization.md)中了解本地化的工作原理。
 
 ## <a name="add-your-own-business-logic"></a>添加自己的业务逻辑
 
@@ -221,7 +221,7 @@ Azure AD B2C 租户与用于员工和合作伙伴的企业 Azure Active Director
 
 Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
 
-有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](custom-policy-multi-factor-authentication.md)。
+有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](multi-factor-authentication.md)。
 
 ### <a name="smart-account-lockout"></a>智能帐户锁定
 
@@ -235,7 +235,7 @@ Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的
 
 在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
 
-可以在[用户流](user-flow-password-complexity.md)和[自定义策略](custom-policy-password-complexity.md)中配置密码复杂性要求。
+可以在[用户流](password-complexity.md)和[自定义策略](password-complexity.md)中配置密码复杂性要求。
 
 ## <a name="auditing-and-logs"></a>审核和日志
 

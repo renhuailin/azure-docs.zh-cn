@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349046"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109838"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 
@@ -74,8 +74,6 @@ ms.locfileid: "93349046"
   * X2Go 图形会话
   * Jupyter 笔记本的 JupyterHub 和 JupyterLab
 
-还可以将 Data Science Virtual Machine 附加到 Azure Notebooks，以在 VM 上运行 Jupyter Notebook，并绕过免费服务层的限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
-
 ### <a name="ssh"></a>SSH
 
 如果使用 SSH 身份验证配置了 VM，可以使用在步骤 3 的“基本信息”部分中为文本 shell 接口创建的帐户凭据进行登录。 可在 Windows 上下载 [PuTTY](https://www.putty.org) 之类的 SSH 客户端工具。 如果你偏好图形桌面（X Window 系统），可以在 PuTTY 上使用 X11 转发。
@@ -104,10 +102,10 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
    * **共享文件夹**：使用此选项卡添加要装载到 VM 上的客户端计算机目录。 
 
    ![X2go 配置](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. 选择“确定”。
+1. 选择“确定” 。
 1. 单击 X2Go 窗口右窗格中的框以调出 VM 的登录屏幕。
 1. 输入 VM 的密码。
-1. 选择“确定”。
+1. 选择“确定” 。
 1. 可能必须授予 X2Go 绕过防火墙的权限才能完成连接。
 1. 现在应会看到 Ubuntu DSVM 的图形界面。 
 
