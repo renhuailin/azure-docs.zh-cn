@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: de0f4824cb23a37f37d3834dce67eb0b7edf0b15
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503213"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584504"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -28,7 +29,7 @@ ms.locfileid: "97503213"
 
 当用户最初登录到应用程序时，Azure AD B2C 会保留一个基于 Cookie 的会话。 收到后续的身份验证请求后，Azure AD B2C 会读取并验证该基于 Cookie 的会话，然后颁发访问令牌，且不提示用户重新登录。 如果基于 Cookie 的会话过期或失效，则系统会提示用户重新登录。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -96,7 +97,7 @@ ms.locfileid: "97503213"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 根据需要配置 **Web 应用会话生存期（分钟）** 、**Web 应用会话超时**、**单一登录配置** 和 **在注销请求中需要 ID 令牌**。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 ::: zone-end
 

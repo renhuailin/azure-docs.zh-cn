@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0ee5b6784885476c93a93f05c9225dfd11c53a9a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509778"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584572"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
@@ -110,8 +110,8 @@ SAML 断言：
 ```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
-    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+  <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+    <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
     </SubjectConfirmation>
   </saml:SubjectConfirmation>
 </saml:Subject>
@@ -154,7 +154,7 @@ SAML 断言：
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning 加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中的 **WantsSignedRequests** 的值设置为 `false` 且标识提供者元数据 **WantAuthnRequestsSigned** 设置为 `false` 或未指定，则 Azure AD B2C 不会对请求签名。 |
@@ -174,7 +174,7 @@ SAML 断言：
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必需 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |否 | X509 证书（RSA 密钥集）。 SAML 标识提供程序使用证书的公共部分来加密 SAML 响应的断言。 Azure AD B2C 使用证书的专用部分来解密断言。 |

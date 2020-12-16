@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 2c7eea87101a36edb0d77026489ea351b601158b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108546"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584589"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
 
 在本教程中，了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
@@ -120,7 +120,7 @@ ms.locfileid: "97108546"
 
    ``git commit -am "updated output"``
 
-   ``git push azure master``  
+   ``git push azure main``  
 
 ### <a name="part-3---final-setup"></a>第3部分–最终设置
 

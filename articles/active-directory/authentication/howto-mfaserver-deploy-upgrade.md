@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742317"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584385"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
@@ -33,14 +33,14 @@ ms.locfileid: "96742317"
 
 升级步骤速览：
 
-* 升级 Azure MFA 服务器（先从属服务器然后主服务器）
+* 将 Azure MFA 服务器 (从属服务器升级到主要) 
 * 升级用户门户实例
 * 升级 AD FS 适配器实例
 
 ## <a name="upgrade-azure-mfa-server"></a>升级 Azure MFA 服务器
 
 1. 参照[下载 Azure 多重身份验证服务器](howto-mfaserver-deploy.md#download-the-mfa-server)中的说明，获取最新版本的 Azure MFA 服务器安装程序。
-2. 在主 MFA 服务器上备份位于 C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata（假定为默认安装位置）中的 MFA 服务器数据文件。
+2. 在 C:\Program Files\multi-factor authentication Authentication Server\Data\PhoneFactor.pfdata 上创建 MFA 服务器数据文件的备份， (假设你的主 MFA 服务器上) 默认安装位置。
 3. 如果运行多个服务器以实现高可用性，请将验证 MFA 服务器的客户端系统更改为停止向要升级的服务器发送流量。 如果使用负载均衡器，请从负载均衡器中删除从属 MFA 服务器，完成升级后再将服务器添加回场中。
 4. 在每个 MFA 服务器上运行新的安装程序。 首先升级从属服务器，因为它们可以读取主服务器复制的旧数据文件。
 
