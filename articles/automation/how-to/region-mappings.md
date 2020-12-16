@@ -1,16 +1,16 @@
 ---
 title: 链接的 Log Analytics 工作区支持的区域
 description: 本文介绍自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95537bd54ecb476055608c89ac68a46d410288b6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446970"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590879"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
@@ -44,12 +44,16 @@ ms.locfileid: "96446970"
 |ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**欧洲**||
+|NorthEurope|NorthEurope|
+|FranceCentral|FranceCentral|
 |UKSouth|UKSouth|
 |西欧|西欧|
 |SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
+
+
 
 <sup>1</sup> Log Analytics 工作区到自动化帐户的 EastUS 映射不是精确的区域到区域的映射，但它是正确的映射。
 

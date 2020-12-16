@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5ce5b3eebb2f784469680cf7614df6ca750b55
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658258"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591049"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -37,7 +37,7 @@ ms.locfileid: "94658258"
 在安装应用程序代理连接器之前，Windows Server 需要启用 TLS 1.2。 若要在服务器上启用 TLS 1.2：
 
 1. 设置以下注册表项：
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -45,7 +45,7 @@ ms.locfileid: "94658258"
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
     ```
 
-1. 重新启动服务器
+1. 重启服务器
 
 有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](application-proxy-add-on-premises-application.md)。
 

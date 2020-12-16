@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 12/15/2020
+ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887189"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561199"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>对“没有符合条件的订阅”进行故障排除
 
@@ -94,8 +94,8 @@ You can only purchase reservations using subscriptions on which you have owner o
 1. 键入要添加为“所有者”的用户的电子邮件地址。
 1. 选择用户，再选择“保存”。
 
-有关详细信息，请参阅[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+有关详细信息，请参阅[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果需要预留所有者向你授予访问权限，请查看[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 如果需要预留所有者向你授予访问权限，请查看[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。

@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591168"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -55,7 +55,7 @@ ms.locfileid: "95997675"
 
 ![Azure Active Directory 管理中心：登录报告](./media/tshoot-connect-sso/sso9.png)
 
-浏览到 **Azure Active Directory**  >  [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中 Azure Active Directory **登录**，然后选择特定用户的登录活动。 查找“登录错误代码”字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
+浏览到  >  [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中 Azure Active Directory **登录**，然后选择特定用户的登录活动。 查找“登录错误代码”字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -94,11 +94,11 @@ ms.locfileid: "95997675"
 如果在域控制器上成功启用审核，则每当用户通过无缝 SSO 登录时，将在事件日志中记录一个安全条目。 你可以使用以下查询来查找这些安全事件。 （查找与计算机帐户 AzureADSSOAcc$ 相关联的事件 4769。）
 
 ```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
+  <QueryList>
+    <Query Id="0" Path="Security">
+      <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
+    </Query>
+  </QueryList>
 ```
 
 ## <a name="manual-reset-of-the-feature"></a>手动重置功能

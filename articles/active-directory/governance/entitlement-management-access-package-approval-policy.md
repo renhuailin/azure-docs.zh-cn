@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 授权管理-Azure Active Directory 中更改访问包的批准设置
-description: 了解如何在 Azure Active Directory 权限管理中更改访问包的批准和请求者信息设置。
+title: 在 Azure AD 权利管理中更改访问包的审批设置 - Azure Active Directory
+description: 了解如何在 Azure Active Directory 权利管理中更改访问包的审批和请求者信息设置。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,18 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994600"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591288"
 ---
-# <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>更改审批和请求者信息 (预览版中的访问包) 设置 Azure AD 授权管理
+# <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的审批和请求者信息（预览）设置。
 
-作为访问包管理器，你可以通过编辑现有策略或添加新策略，随时更改访问包的批准和请求方信息设置。
+作为访问包管理者，你可以随时通过编辑现有策略或添加新策略来更改访问包的审批和请求者信息设置。
 
-本文介绍如何更改现有访问包的批准和请求方信息设置。
+本文介绍如何更改现有访问包的审批和请求者信息设置。
 
 ## <a name="approval"></a>审批
 
@@ -56,15 +56,15 @@ ms.locfileid: "90994600"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
 1. 选择要编辑的策略，或向访问包添加新策略
-    1. 如果要创建新策略，请单击 " **策略** "，然后单击 " **添加策略** "。
-    1. 单击要编辑的策略，然后单击 " **编辑**"。
+    1. 若要创建新策略，请依次单击“策略”、“添加策略”。
+    1. 单击要编辑的策略，然后单击“编辑”。
 
-1. 请参阅 **请求** 选项卡。
+1. 转到“请求”选项卡。
 
-1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。******** 或者，若要自动审批请求，请将切换开关设置为“否”。
+1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。 或者，若要自动审批请求，请将切换开关设置为“否”。
 
 1. 如果需要用户提供对请求访问包的论证，请将“需要请求者论证”切换开关设置为“是”。 。
     
@@ -132,13 +132,15 @@ ms.locfileid: "90994600"
 
 1. 在“第一位审批者”和/或“第二位审批者”下，单击“显示高级请求设置”。
 
-    ![访问包 - 策略 - 显示高级请求设置](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="访问包 - 策略 - 显示高级请求设置":::
 
 1. 将“若没有采取任何行动，转发给后备审批者们？”切换开关设置为“是” 。
 
 1. 单击“添加后备审批者”，然后从列表中选择后备审批者。
 
     ![访问包 - 策略 - 添加后备审批者](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即 **第二级经理作为备用审批者**，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到第二层管理器的情况下将请求转发到。
 
 1. 在“多少天后转发给后备审批者？”框中，输入审批者批准或拒绝请求的允许天数。 如果在请求持续期间没有审批者批准或拒绝请求，则请求将过期（超时），用户必须再提交一个访问包请求。 
 
@@ -156,39 +158,39 @@ ms.locfileid: "90994600"
 
 1. 单击“下一步”  。
 
-## <a name="collect-additional-requestor-information-for-approval-preview"></a>收集其他请求程序信息以供审批 (预览) 
+## <a name="collect-additional-requestor-information-for-approval-preview"></a>收集要审批的其他请求者信息（预览）
 
-为了确保用户能够访问正确的访问包，你可以要求请求者在请求时应答自定义文本字段或多个选择问题。 每个策略限制为20个问题，多个选择问题的答案限制为25个。 然后，会向审批者显示问题，以帮助他们做出决定。
+为了确保用户能够访问正确的访问包，你可以要求请求者在请求时回答自定义文本字段或多选题。 每个策略限制为 20 个问题，多选题的限制为 25 个答案。 然后，会向审批者显示这些问题，让他们做出决定。
 
-1. 请参阅 " **请求者信息** " 选项卡，并单击 " **问题** " 子选项卡。
+1. 转到“请求者信息”选项卡并单击“问题”子选项卡。
  
-1. 在 " **问题** " 框中键入要向请求者请求的内容，也称为 "显示字符串"。
+1. 在“问题”框中键入要向请求者提问的内容，也称为“显示字符串”。
 
-    ![访问包-策略-启用请求程序信息设置](./media/entitlement-management-access-package-approval-policy/add-requestor-info-question.png)
+    ![访问包 - 策略 - 启用请求者信息设置](./media/entitlement-management-access-package-approval-policy/add-requestor-info-question.png)
 
-1. 如果将需要访问该访问包的用户社区没有共同的首选语言，则可以改善在 myaccess.microsoft.com 上请求访问权限的用户体验。 若要改善体验，可以为不同的语言提供备用的显示字符串。 例如，如果用户的 web 浏览器设置为西班牙语，并且已配置西班牙语显示字符串，则这些字符串将显示给请求用户。 若要为请求配置本地化，请单击 " **添加本地化**"。
-    1. 进入 " **添加本地化 for 试题** " 窗格后，选择要在其中本地化问题的语言的 **语言代码** 。
-    1. 在配置的语言中，在 " **本地化" 文本框** 中键入问题。
-    1. 添加完所需的所有本地化后，单击 " **保存**"。
+1. 如果需要访问该访问包的用户的社区没有共同的首选语言，则你可以改善在 myaccess.microsoft.com 上请求访问权限的用户的体验。 若要改善体验，可以为不同的语言提供备用的显示字符串。 例如，如果用户的 Web 浏览器设置为西班牙语，而你配置了西班牙语显示字符串，则会向发出请求的用户显示这些字符串。 若要为请求配置本地化，请单击“添加本地化文本”。
+    1. 进入“添加问题的本地化文本”窗格后，为用于将问题本地化的语言选择“语言代码”。
+    1. 使用配置的语言，在“本地化文本”框中键入问题。
+    1. 添加完所需的所有本地化文本后，请单击“保存”。
 
-    ![访问包-策略-配置本地化文本](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
+    ![访问包 - 策略 - 配置本地化文本](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. 选择要在其中回答请求方的 **答案格式** 。 答案格式包括： *短文本*、 *多选*和 *长文本*。
+1. 选择你希望请求者回答时使用的“答案格式”。 答案格式包括：短文本、多选和长文本。
  
-    ![访问包-策略-选择 "查看和编辑多个选择答案格式"](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
+    ![访问包 - 策略 - 选择“查看和编辑多选答案格式”](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
-1. 如果选择多个选项，请单击 " **视图" 和 "编辑** " 按钮以配置答案选项。
-    1. 选择 "查看和编辑" 后，将打开 " **查看/编辑问题** " 窗格。
-    1. 键入 **回答 "答案值** " 框中的问题时要为请求者指定的响应选项。
-    1. 键入所需的任意多个响应，并单击 " **保存**"。
+1. 如果选择“多选”，请单击“查看和编辑”按钮来配置答案选项。
+    1. 选择“查看和编辑”后，“查看/编辑问题”窗格会打开。
+    1. 在“答案值”框中键入你希望在请求者回答问题时向请求者提供的响应选项。
+    1. 键入所需的任意多个响应，然后单击“保存”。
     
-    ![访问包-策略-输入多个选择选项](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
+    ![访问包 - 策略 - 输入多选选项](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
   
-1. 若要要求请求者在请求访问访问包时回答此问题，请单击 " **必需**" 下的复选框。
+1. 若要要求请求者在请求访问访问包时回答此问题，请单击“必需”下的复选框。
 
-1. 根据需要填写剩余的选项卡 (例如，生命周期) 。
+1. 根据需要填写剩余的选项卡（例如“生命周期”）。
 
-在访问包策略中配置请求程序信息后，可以查看请求方对问题的响应。 有关查看请求方信息的指导，请参阅 [查看请求者的问题答案 (预览) ](entitlement-management-request-approve.md#view-requestors-answers-to-questions-preview)。
+在访问包策略中配置请求者信息后，可以查看请求者对问题的响应。 有关查看请求者信息的指导，请参阅[查看请求者的问题答案（预览）](entitlement-management-request-approve.md#view-requestors-answers-to-questions-preview)。
 
 ## <a name="next-steps"></a>后续步骤
 - [更改访问包的生命周期设置](entitlement-management-access-package-lifecycle-policy.md)

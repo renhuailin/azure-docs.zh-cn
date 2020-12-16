@@ -3,12 +3,12 @@ title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
 description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328379"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590267"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -86,7 +86,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 ### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何实现为我的开发测试实验室环境定义 Azure 基于角色的访问控制，以确保它可以在开发人员/测试可以执行其工作时进行控制？
 可以使用一种广泛的模式，但具体细节取决于你的组织。
 
-中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有所需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
+中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有所需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的 **所有者** 集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
 
 部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
 
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可以，可将多个磁盘附加到 VM 中。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室支持第 2 代映像吗？
-是的。 开发测试实验室服务支持 [第2代映像](../virtual-machines/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
+是。 开发测试实验室服务支持 [第2代映像](../virtual-machines/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：
@@ -318,7 +318,7 @@ foreach($labVM in $labVMs)
 - 将 Azure Repos 与 Azure 订阅用于身份验证和授权的同一 Azure Active Directory 租户相关联。
 - 在 Azure Active Directory 中创建名为 `All DevTest Labs Developers` 的集中管理的组。 应将参与项目开发的任何开发人员置于此组中。
 - 可使用同一个 Azure Active Directory 组来提供对 Azure Repos 存储库和实验室的访问。
-- 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 在正确完成代码评审后，使用拉取请求将内容仅添加到主分支。 代码评审员批准更改后，负责主分支维护工作的开发人员主管合并更新的代码。
+- 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 仅在进行适当的代码评审后，才会使用拉取请求将内容添加到 main 分支。 代码审阅者批准此更改后，负责维护 main 分支的主管开发人员将合并更新的代码。
 
 ## <a name="cicd-integration"></a>CI/CD 集成
 

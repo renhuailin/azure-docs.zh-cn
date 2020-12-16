@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929253"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400346"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -153,7 +153,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
-* > [!IMPORTANT]
+  > [!IMPORTANT]
   > 尽管 Az.CostManagement PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中默认提供。
 
   ```azurepowershell-interactive

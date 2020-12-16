@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contentperfq2
-ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668870"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027962"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 门户中的帐户管理员任务
 
@@ -63,7 +63,7 @@ ms.locfileid: "92668870"
 
     ![显示用于将卡设置为有效付款方式的复选框的屏幕截图。](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 
-1. 选择“ **下一页** ”。
+1. 选择“**下一页**”。
 
 将有效付款方式更改为已保存的信用卡：
 

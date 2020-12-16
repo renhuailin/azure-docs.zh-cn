@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518679"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591189"
 ---
 # <a name="msix-app-attach-faq"></a>.MSIX 应用附加常见问题解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "96518679"
 
 .MSIX 应用附加不使用 FSLogix。 不过，.MSIX 应用附加和 FSLogix 旨在提供无缝的用户体验。
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>能否在 Windows 虚拟桌面之外使用 .MSIX 应用连接？
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>能否在 Windows 虚拟桌面之外使用 .MSIX 应用附加功能？
 
 适用于 power .MSIX 应用附加的 Api 适用于 Windows 10 企业版。 这些 Api 可在 Windows 虚拟桌面之外使用。 但是，在 Windows 虚拟桌面外，.MSIX 应用附加的管理平面不存在。
 
@@ -53,7 +53,7 @@ Windows 10 企业版和 Windows 10 企业版多会话版本2004或更高版本�
 
 ## <a name="should-i-disable-auto-update-when-using-msix-app-attach"></a>使用 .MSIX 应用附加时，是否应禁用自动更新？
 
-是的。 .MSIX 应用附加不支持 .MSIX 应用程序的自动更新。
+是。 .MSIX 应用附加不支持 .MSIX 应用程序的自动更新。
 
 ## <a name="how-do-permissions-work-with-msix-app-attach"></a>如何对 .MSIX 应用附加功能使用权限？
 
@@ -65,7 +65,7 @@ Windows 10 企业版和 Windows 10 企业版多会话版本2004或更高版本�
 
 ## <a name="can-i-restage-the-same-msix-application"></a>我能 restage 同一个 .MSIX 应用程序吗？
 
-是的。 您可以 restage 已预留的应用程序，这不会导致任何错误。
+是。 您可以 restage 已预留的应用程序，这不会导致任何错误。
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>.MSIX 应用附加是否支持自签名证书？
 

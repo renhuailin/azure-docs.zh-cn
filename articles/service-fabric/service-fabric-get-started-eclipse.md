@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374229"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590862"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -42,7 +42,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
    ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
 3. 选择 Service Fabric 插件，并单击“下一步”。
 4. 完成安装步骤，并接受 Microsoft 软件许可条款。
-  
+
 如果已安装 Service Fabric 插件，请安装最新版本。 
 1. 若要检查可用的更新，请转到“帮助” > “关于 Eclipse” > “安装详细信息”。   
 2. 在已安装插件的列表中选择“Service Fabric”，然后单击“更新”。 随后会安装可用的更新。
@@ -91,7 +91,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
     -   若要生成应用程序但不清理，请单击“生成应用程序”。
     -   若要生成已清理的应用程序，请单击“重新生成应用程序”。
     -   若要清理已生成项目的应用程序，请单击“清理应用程序”。
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>在 Eclipse 中将 Service Fabric 应用程序部署到本地群集
 
 生成 Service Fabric 应用程序后，请遵循以下步骤将其部署到本地群集。

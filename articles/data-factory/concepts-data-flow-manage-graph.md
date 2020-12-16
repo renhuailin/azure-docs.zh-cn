@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026966"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590454"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>管理映射数据流图表
 
@@ -21,13 +21,13 @@ ms.locfileid: "93026966"
 
 映射数据流是使用设计图面来编写的，它被视为数据流图表。 在图形中，转换逻辑是从左向右构建的，而其他数据流则自上而下地添加。 若要添加新的转换，请选择现有转换右下方的加号。
 
-![画布](media/data-flow/canvas2.png "画布")
+![画布](media/data-flow/canvas-2.png)
 
 随着您的数据流变得更加复杂，使用以下机制来有效地浏览和管理数据流图表。 
 
 ## <a name="moving-transformations"></a>移动转换
 
-在映射数据流时，一组已连接的转换逻辑称为 " **流** "。 **传入流** 字段规定哪个数据流正在传输当前转换。 每个转换都有一个或两个传入流，具体取决于其函数并表示一个输出流。 传入流的输出架构确定哪些列元数据可由当前转换引用。
+在映射数据流时，一组已连接的转换逻辑称为 " **流**"。 **传入流** 字段规定哪个数据流正在传输当前转换。 每个转换都有一个或两个传入流，具体取决于其函数并表示一个输出流。 传入流的输出架构确定哪些列元数据可由当前转换引用。
 
 ![移动节点](media/data-flow/move-nodes.png "移动节点")
 
@@ -55,7 +55,7 @@ ms.locfileid: "93026966"
 
 ## <a name="hide-reference-nodes"></a>隐藏引用节点
 
-如果数据流有任何联接、查找、存在或联合转换，则数据流会向所有传入流显示引用节点。 如果要最大程度地减少所用的垂直空间量，可以最小化引用节点。 为此，请在画布上单击右键，然后选择 " **隐藏引用节点** "。
+如果数据流有任何联接、查找、存在或联合转换，则数据流会向所有传入流显示引用节点。 如果要最大程度地减少所用的垂直空间量，可以最小化引用节点。 为此，请在画布上单击右键，然后选择 " **隐藏引用节点**"。
 
 ![隐藏引用节点](media/data-flow/hide-reference-nodes.png "隐藏引用节点")
 

@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b73146302c740dfd8d97d275bad003a6d8a9a23c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852772"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590760"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
@@ -25,7 +25,7 @@ ms.locfileid: "96852772"
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
-每个 Blob 存储资源的 Azure 门户中的 " **概述** " 页包括资源使用情况的简要视图，例如请求和每小时计费。 这些信息非常有用，但只提供少量监视数据。 其中的某些数据是自动收集的，并且可在创建资源后立即进行分析。 你可以使用某些配置启用其他数据收集类型。
+每个 Blob 存储资源的 Azure 门户中的 " **概述** " 页包括资源使用情况的简要视图，例如请求和每小时计费。 这些信息非常有用，但只提供少量监视数据。 创建资源后，其中的某些数据会自动收集，并可供分析。 你可以使用某些配置启用其他数据收集类型。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md)，这是 Azure 中的一种完整的堆栈监视服务来创建监视数据。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
@@ -154,7 +154,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 使用 [AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和参数来启用日志 `StorageAccountId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 将 `<storage-service-resource--id>` 此代码段中的占位符替换为 blob 服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
@@ -174,7 +174,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `EventHubAuthorizationRuleId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 下面是一个示例：
@@ -188,7 +188,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `WorkspaceId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 下面是一个示例：
@@ -597,7 +597,7 @@ Blob 存储服务本身发出的请求，如日志创建或删除，则不记录
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

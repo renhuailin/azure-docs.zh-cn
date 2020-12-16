@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344277"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560536"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -21,7 +21,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 美国政府企业协议客户不能使用自助交换和取消功能。 可以使用其他美国政府订阅类型，包括即用即付和云解决方案提供商 (CSP)。
 
 > [!NOTE]
-> - 若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。 可[添加或更改可以管理预留的用户](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+> - 若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。 可[添加或更改可以管理预留的用户](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 > - Microsoft 目前不会对预留退款收取提前终止费。 但我们可能会对将来的退款收取该费用。 目前尚未确定收取此费用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何对现有预留进行交换或退款
@@ -66,7 +66,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 **交换策略**
 
 - 可以退回多个现有的预留，以便购买同一类型的新预留。 不能使用一种类型的预留来交换另一种类型的预留。 例如，不能通过退回 VM 预留的方式来购买 SQL 预留。 可以通过交换更改预留属性，例如家族、系列、版本、SKU、区域、数量以及期限。
-- 只有预留所有者可以处理交换。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 只有预留所有者可以处理交换。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 - 交换以退款和重新购买的形式处理 - 将为取消和新的预留购买创建不同的交易。 针对折价的预留按比例退回预留金额。 新的购买按全价收费。 按比例计价的预留金额是要返回的预留的每日按比例计价的剩余价值。
 - 即使用于购买预留的企业协议过期且已作为新协议续订，你也可以请求进行预留交换或退款。
 - 新预留的生存期承诺应等于或大于退回的预留的剩余承诺。 示例：对于一个为期三年的预留，每月支付 100 美元，在第 18 次付款后交换，则新预留的生存期承诺应为 1,800 美元或更高（每月支付或提前支付）。
@@ -79,7 +79,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - 对于计费对象信息或单个注册，取消的承诺总额在 12 个月滚动范围内不得超过 50,000 美元。 例如，对于三年的预留，每月支付 100 美元并在第 18 个月退款，则取消的承诺为 1,800 美元。 退款后，新的可用退款限额为 48,200 美元。 此退款的 365 天后，48,200 美元限额将增加 1800 美元，而新的池将为 50,000 美元。 计费对象信息或 EA 注册的所有其他预留取消将消耗同一池中的额度，并且适用于同一补充逻辑。
 - 对于计费对象信息或 EA 注册在 12 个月的时间段内超过 50,000 美元限额的任何退款，Azure 将不予处理。
 - 退款根据购买价格和当前预留价格中的最低者计算。
-- 只有预留订单所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 只有预留订单所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 29a693ac8ff0b170abf59c9671d4b411b456b540
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 02c0ecfc24b65afd46d75464b5411cfd5cf61857
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346972"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591525"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 的根 CA 更改中的更改
 
@@ -129,8 +129,12 @@ Azure Database for MariaDB 使用的这些证书是由受信任的证书颁发�
 由于此更新是客户端更改，因此，如果客户端过去从副本服务器读取数据，则还需要对这些客户端应用更改。
 
 ###    <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12.如果我使用的是数据传入复制，是否需要执行任何操作？
+
 如果你使用[数据传入复制](concepts-data-in-replication.md)来连接到 Azure Database for MySQL，则需要考虑以下两个事项：
-*   如果数据复制是从虚拟机（本地或 Azure 虚拟机）到 Azure Database for MySQL，则需要检查是否使用了 SSL 来创建副本。 运行 **SHOW SLAVE STATUS** 并检查以下设置。  
+
+> [!NOTE]
+>  本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+*   如果数据复制是从虚拟机（本地或 Azure 虚拟机）到 Azure Database for MySQL，则需要检查是否使用了 SSL 来创建副本。 运行 **SHOW SLAVE STATUS** 并检查以下设置。 
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -149,7 +153,7 @@ Azure Database for MariaDB 使用的这些证书是由受信任的证书颁发�
 若要验证是否正在使用 SSL 连接来连接到服务器，请参阅 [SSL 验证](howto-configure-ssl.md#verify-the-ssl-connection)。
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14.如果我的证书文件中已有 DigiCertGlobalRootG2，是否需要执行任何操作？
-否。 如果你的证书文件已经有 **DigiCertGlobalRootG2** ，则无需执行任何操作。
+否。 如果你的证书文件已经有 **DigiCertGlobalRootG2**，则无需执行任何操作。
 
 ###    <a name="15-what-if-i-have-further-questions"></a>15.如果我有其他问题，该怎么办？
 如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseformariadb@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术帮助，请[联系我们](mailto:AzureDatabaseformariadb@service.microsoft.com)。

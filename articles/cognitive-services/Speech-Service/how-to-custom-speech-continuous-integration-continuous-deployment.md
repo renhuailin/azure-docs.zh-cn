@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025661"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591610"
 ---
 # <a name="cicd-for-custom-speech"></a>自定义语音识别的 CI/CD
 
@@ -31,7 +31,7 @@ ms.locfileid: "95025661"
 
 这些工作流的目的是确保每个自定义语音识别模型具有比上一个版本更好的识别准确性。 如果对测试数据和/或定型数据的更新提高了准确性，则这些工作流将创建新的自定义语音识别终结点。
 
-GitHub 和 Azure DevOps 等 Git 服务器可在发生特定 Git 事件（例如合并或拉取请求）时运行自动工作流。 例如，测试数据的更新被推送到主分支时，可触发 CI 工作流。 不同的 Git 服务器具有不同的工具，但允许使用脚本命令行接口 (CLI) 命令，使命令可在生成服务器上执行。
+GitHub 和 Azure DevOps 等 Git 服务器可在发生特定 Git 事件（例如合并或拉取请求）时运行自动工作流。 例如，将测试数据的更新推送到 *主* 分支时，可以触发 CI 工作流。 不同的 Git 服务器具有不同的工具，但允许使用脚本命令行接口 (CLI) 命令，使命令可在生成服务器上执行。
 
 在此过程中，工作流应存储数据、测试、测试文件、模型和终结点并对它们命名，以便可以追溯到它们的源提交或源版本。 对这些资产命名也很有帮助，这样便可轻松地查看哪些资产是在更新测试数据和定型数据之后创建的。
 
@@ -84,7 +84,7 @@ CI/CD 工作流的主要目的是使用定型数据生成一个新模型，并�
 
 - 将模板存储库复制到 GitHub 帐户，然后为 GitHub Actions CI/CD 工作流创建 Azure 资源和[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 - 演练[开发内部循环](https://mitchdenny.com/the-inner-loop/)。 从功能分支更新定型数据和测试数据，使用临时开发模型测试更改，并提出拉取请求以提出更改意见并对此进行审查。
-- 在对主分支的拉取请求中更新定型数据后，使用 GitHub Actions CI 工作流定型模型。
+- 在向 *main* 的拉取请求中更新定型数据时，使用 GITHUB 操作 CI 工作流训练模型。
 - 执行自动准确性测试，确定模型的 [字词错误率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER)。 将测试结果存储在 Azure Blob 中。
 - 若 WER 得到改进，则执行 CD 工作流以创建一个终结点。
 

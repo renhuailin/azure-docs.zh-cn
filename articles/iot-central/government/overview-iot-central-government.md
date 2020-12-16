@@ -3,22 +3,20 @@ title: 使用 Azure IoT Central 生成政府解决方案
 description: 了解如何使用 Azure IoT Central 应用程序模板构建智能城市解决方案。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126560"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590811"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成政府解决方案
 
-
-
-使用 Azure IoT Central 应用程序模板开始构建智能城市解决方案。 立即开始体验**水质监测**、**用水量监测**和**联网废弃物管理**解决方案。
+使用 Azure IoT Central 应用程序模板开始构建智能城市解决方案。 立即开始体验 **水质监测**、**用水量监测** 和 **联网废弃物管理** 解决方案。
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>什么是水质监测应用程序模板？   
 
@@ -41,7 +39,6 @@ ms.locfileid: "92126560"
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>什么是用水量监测应用程序模板？ 
 
 传统的用水量跟踪依赖于水务操作员在计量现场人工读取用水量仪表。 越来越多的城市正在将传统的计量表更换为先进的智能计量表，这样可以远程监测用水量，并可以远程控制阀门来控制水流量。 对用水量进行监测并将数字反馈消息发送给居民可以提高他们的节水意识并降低水的消耗量。 
-
 
 用水量监测应用是一个 IoT Central 应用模板，可帮助你立即开始进行 IoT 解决方案开发，使自来水公司和市政部门能够远程监控水流量，以降低消耗。 
 

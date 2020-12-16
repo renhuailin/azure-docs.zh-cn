@@ -4,12 +4,12 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0068b9869e5ef7a3b6c0fd21c1b69cdae1d4ab4b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454826"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591627"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
@@ -141,7 +141,7 @@ jobs:
         steps:
         # checkout the repo
         - name: 'Checkout GitHub Action'
-          uses: actions/checkout@master
+          uses: actions/checkout@main
           
         - name: 'Login via Azure CLI'
           uses: azure/login@v1

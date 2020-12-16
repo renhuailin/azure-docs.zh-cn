@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501376"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590554"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>创建启用了数据渗透保护的工作区
 本文介绍如何创建启用了 data 渗透 protection 的工作区，以及如何为此工作区管理已批准的 Azure AD 租户。
@@ -33,7 +33,7 @@ ms.locfileid: "96501376"
 1. 对于 "仅允许出站数据流量到已批准目标" 选项，选择 "是"。
 1. 为此工作区选择已批准的 Azure AD 租户。
 1. 查看配置并创建工作区。
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="使用 data 渗透 protection 创建工作区":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="显示 &quot;创建 Synapse&quot; 工作区的屏幕截图，其中选择了 &quot;启用管理虚拟网络&quot;。":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>管理工作区的已批准 Azure Active Directory 租户
 1. 从工作区的 Azure 门户中，导航到 "批准的 Azure AD 租户"。 此工作区的已批准 Azure AD 租户列表将在此处列出。 默认情况下，工作区的租户包含并且未列出。
