@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序管理的新增功能
 description: Azure Active Directory 的应用程序管理的新文档和更新的文档。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,30 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571005"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563392"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增功能
 
 欢迎使用 Azure Active Directory 应用程序管理文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)](add-application-portal-setup-oidc-sso.md)
+- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
+- [了解基于 OIDC 的单一登录](configure-oidc-single-sign-on.md)
+- [将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory 应用程序管理：新增功能](whats-new-docs.md)
+- [使用 AD FS 应用程序活动报告 (预览版) 将应用程序迁移到 Azure AD](migrate-adfs-application-activity.md)
+- [使用 Azure AD 应用程序代理发布远程桌面](application-proxy-integrate-with-remote-desktop-services.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -53,7 +67,7 @@ ms.locfileid: "96571005"
 ### <a name="new-articles"></a>新文章
 - [快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)](add-application-portal-setup-oidc-sso.md)
 - [快速入门：将用户分配到使用 Azure AD 作为标识提供者的应用](add-application-portal-assign-users.md)
-- [Docs 中的新增内容](whats-new-docs.md)
+- [文档有哪些新功能？](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>更新的文章

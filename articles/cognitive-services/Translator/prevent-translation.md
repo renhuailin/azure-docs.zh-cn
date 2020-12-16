@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8923c1090669caa46ef51a26418933b1cda023
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742054"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563426"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何使用翻译器防止翻译内容
 
@@ -37,7 +37,7 @@ ms.locfileid: "91742054"
    <div>This will be translated. </div>
    ```
 
-2. 使用 `translate="no"` 标记内容。 这仅适用于将输入 textType 设置为 HTML 的情况
+2. 使用 `translate="no"` 标记内容。 这仅适用于以 HTML 形式设置输入 textType 的情况
 
    示例：
 
@@ -49,14 +49,15 @@ ms.locfileid: "91742054"
    ```html
    <div translate="no">This will not be translated.</div>
    <div>This will be translated. </div>
+   ```
+   
+3. 使用[动态词典](dynamic-dictionary.md)给出特定翻译。
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+4. 不要将字符串传递到翻译器进行翻译。
 
-4. Don't pass the string to the Translator for translation.
-
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. 自定义转换器： [在自定义转换器中使用字典](custom-translator/what-is-dictionary.md) ，以规定短语的翻译的概率为100%。
 
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [Use the Translate operation to translate text](reference/v3-0-translate.md)
+> [使用“翻译”操作来转换文本](reference/v3-0-translate.md)
