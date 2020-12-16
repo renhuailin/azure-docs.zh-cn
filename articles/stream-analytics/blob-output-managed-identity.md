@@ -5,15 +5,15 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/15/2020
+ms.openlocfilehash: 62651e9ea4e1b02b276e7870163453bfa55c3909
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573657"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587564"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储输出的身份验证
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储的身份验证
 
 用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md) (预览) 使流分析作业能够直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
 

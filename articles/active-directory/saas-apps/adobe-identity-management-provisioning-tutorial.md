@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181114"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586584"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Adobe Identity Management
 
@@ -61,7 +61,7 @@ ms.locfileid: "96181114"
 
 3. 选择 " **同步用户 Microsoft Azure** "，然后单击 " **下一步**"。
 
-      ![同步](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+      ![显示选定的 "从 Microsoft Azure Active Directory 同步用户" 的屏幕截图。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. 复制并保存 **租户 URL** 和 **机密令牌**。 这些值将输入到 " **租户 URL** " 和 " **机密令牌** " 字段中的 "设置" 选项卡上的 "Azure 门户中。
 
@@ -104,7 +104,7 @@ ms.locfileid: "96181114"
 
 5. 在 " **管理员凭据** " 部分下，输入你在步骤2之前检索到的 Adobe Identity MANAGEMENT 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Adobe Identity Management。 如果连接失败，请确保你的 Adobe 标识管理帐户具有管理员权限，然后重试。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -114,7 +114,7 @@ ms.locfileid: "96181114"
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Adobe 标识管理**"。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Adobe Identity Management 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Adobe Identity Management 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 Adobe 标识管理 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Adobe Identity Management 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Adobe Identity Management 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 Adobe 标识管理 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "96181114"
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Adobe 标识管理**"。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Adobe Identity Management 的组属性。 选为 " **匹配** " 属性的属性用于匹配 Adobe Identity Management 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Adobe Identity Management 的组属性。 选为 " **匹配** " 属性的属性用于匹配 Adobe Identity Management 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|
@@ -145,7 +145,7 @@ ms.locfileid: "96181114"
 
     ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”  。
+15. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

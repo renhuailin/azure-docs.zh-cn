@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028268"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586340"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登录到基于 SAML 的单一登录配置的应用时出现问题
 若要解决下面的登录问题，建议执行以下操作来更好地诊断和自动执行解决步骤：
@@ -33,7 +33,9 @@ ms.locfileid: "97028268"
 1.  在筛选器搜索框中键入 **"Azure Active Directory"** ，并选择 **Azure Active Directory** 项目。
 1.  在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 1.  选择“所有应用程序”，查看所有应用程序的列表。
+
     如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+
 1.  选择要配置为单一登录的应用程序。
 1. 加载应用程序后，在应用程序的左侧导航菜单中选择 " **单一登录** "。
 1. 选择“基于 SAML 的 SSO”。
@@ -45,7 +47,7 @@ ms.locfileid: "97028268"
 
 `Issuer`从应用程序发送到 SAML 请求中 Azure AD 的属性与为 Azure AD 中的应用程序配置的标识符值不匹配。
 
-**解决方法**
+**分辨率**
 
 确保 `Issuer` SAML 请求中的属性与 Azure AD 中配置的标识符值匹配。
 
@@ -58,12 +60,12 @@ ms.locfileid: "97028268"
 
 `AssertionConsumerServiceURL`SAML 请求中的值与 Azure AD 中配置的 "回复 URL" 值或模式不匹配。 `AssertionConsumerServiceURL`SAML 请求中的值是在错误中看到的 URL。
 
-**解决方法**
+**分辨率**
 
 确保 `AssertionConsumerServiceURL` SAML 请求中的值与 Azure AD 中配置的 "回复 URL" 值匹配。 
 
 验证或更新 "回复 URL" 文本框中的值，使其与 `AssertionConsumerServiceURL` SAML 请求中的值匹配。   
-    
+
 在 Azure AD 中更新 "答复 URL" 值并将它与应用程序在 SAML 请求中发送的值匹配后，应该可以登录到应用程序。
 
 ## <a name="user-not-assigned-a-role"></a>未为用户分配角色
@@ -73,7 +75,7 @@ ms.locfileid: "97028268"
 
 未在 Azure AD 中授予用户访问应用程序的权限。
 
-**解决方法**
+**分辨率**
 
 若要直接将一个或多个用户分配到应用程序，请参阅 [快速入门：将用户分配到应用](add-application-portal-assign-users.md)。
 
@@ -86,7 +88,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 - SAML 请求中缺少必填字段
 - SAML 请求编码方法
 
-**解决方法**
+**分辨率**
 
 1. 捕获 SAML 请求。 按照教程 [如何在 Azure AD 中调试基于 SAML 的单一登录应用程序](./debug-saml-sso-issues.md) ，了解如何捕获 saml 请求。
 1. 联系应用程序供应商并共享以下信息：
@@ -102,7 +104,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 `Issuer`从应用程序发送到 SAML 请求中 Azure AD 的属性与为 Azure AD 中的应用程序配置的标识符值不匹配。
 
-**解决方法**
+**分辨率**
 
 确保 `Issuer` SAML 请求中的属性与 Azure AD 中配置的标识符值匹配。 
 
@@ -115,7 +117,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 应用程序对象已损坏，Azure AD 无法识别为应用程序配置的证书。
 
-**解决方法**
+**分辨率**
 
 若要删除并创建新证书，请按照以下步骤操作：
 1. 在 "基于 SAML 的 SSO 配置" 屏幕上，选择 " **saml 签名证书**" 部分下的 "**创建新证书**"。
@@ -130,7 +132,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果在将 SAML 请求发送到 Azure AD 时，应用程序未使用 HTTP 重定向绑定，则可能会发生这种情况。
 
-**解决方法**
+**分辨率**
 
 应用程序需要使用 HTTP 重定向绑定将编码的 SAML 请求发送到位置标头。 有关如何实现它的详细信息，请阅读 [SAML 协议规范文档](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)中的“HTTP 重定向绑定”部分。
 
@@ -141,7 +143,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 当应用程序被添加为非库应用时，Azure Active Directory 将此回复 URL 创建为默认值。 此行为已更改，Azure Active Directory 默认情况下不再添加此 URL。 
 
-**解决方法**
+**分辨率**
 
 删除为应用程序配置的未使用的答复 Url。
 
@@ -155,7 +157,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 `RequestedAuthnContext`属于 SAML 请求。 这意味着应用程序应为 `AuthnContext` 指定的 `AuthnContextClassRef` 。 但是，用户在访问应用程序之前已经过身份验证， `AuthnContext` (身份验证方法) 用于以前的身份验证，这与请求的身份验证不同。 例如，对 myapps 和 WIA 的联合用户进行了访问。 `AuthnContextClassRef`将为 `urn:federation:authentication:windows` 。 AAD 不会执行全新的身份验证请求，它将使用通过 IdP (ADFS 或任何其他联合身份验证服务传递的身份验证上下文) 。 因此，如果应用程序请求的不是，则会出现不匹配 `urn:federation:authentication:windows` 。 另一种情况是使用多因素时： `'X509, MultiFactor` 。
 
-**解决方法**
+**分辨率**
 
 
 `RequestedAuthnContext` 可选值。 如果可能，请询问应用程序是否可以删除。

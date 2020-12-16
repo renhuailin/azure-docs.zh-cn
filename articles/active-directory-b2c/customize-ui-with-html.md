@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111142"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585184"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -29,9 +29,7 @@ ms.locfileid: "97111142"
 > [!TIP]
 > 如果只希望修改用户流页面的标题徽标、背景图像和背景色，则可以尝试 [公司品牌](company-branding.md) 功能。
 
-
 ## <a name="custom-html-and-css-overview"></a>自定义 HTML 和 CSS 概述
-
 
 Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在客户的浏览器中运行代码。 在运行时，将从你在用户流或自定义策略中指定的 URL 加载内容。 用户体验中的每个页面从你为该页面指定的 URL 加载其内容。 从 URL 加载内容后，该内容将与 Azure AD B2C 插入的 HTML 片段合并，然后向客户显示页面。
 
@@ -118,10 +116,9 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. 为 Web 应用设置跨源资源共享 (CORS)。
 1. 将策略指向自定义策略内容 URI。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. 创建 HTML 内容
 
@@ -236,7 +233,6 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
     结果应为 `XHR status: 200` 。 
     如果收到错误，请确保 CORS 设置正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
 
-
 ::: zone pivot="b2c-user-flow"
 
 ### <a name="4-update-the-user-flow"></a>4. 更新用户流
@@ -270,7 +266,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴复制为 **BuildingBlocks** 元素的子元素的 **ContentDefinitions** 元素的全部内容。
 1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如 `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     自定义策略应类似于以下代码片段：
 
@@ -383,7 +379,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
 
-    功能
+    目标
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -391,10 +387,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. 现在，如前文所述，修改策略，指向 HTML 文件。
 1. 如果发现缺少字体、图像或 CSS，请检查扩展策略和 .html 文件中的引用 \* 。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 了解如何启用 [客户端 JavaScript 代码](javascript-and-page-layout.md)。
-
-
 

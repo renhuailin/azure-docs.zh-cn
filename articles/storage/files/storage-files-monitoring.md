@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d756567e471fe4b29590f8a3efbaf49b56edd4f4
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853044"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585728"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "96853044"
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
-每个 Azure 文件资源的 Azure 门户中的 " **概述** " 页包括资源使用情况的简要视图，例如请求和每小时计费。 这些信息非常有用，但只提供少量监视数据。 其中的某些数据是自动收集的，并且可在创建资源后立即进行分析。 你可以使用某些配置启用其他数据收集类型。
+每个 Azure 文件资源的 Azure 门户中的 " **概述** " 页包括资源使用情况的简要视图，例如请求和每小时计费。 这些信息非常有用，但只提供少量监视数据。 创建资源后，其中的某些数据会自动收集，并可供分析。 你可以使用某些配置启用其他数据收集类型。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 Azure 文件使用 [Azure Monitor](../../azure-monitor/overview.md)，这是 azure 中的一个完整的堆栈监视服务来创建监视数据。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
@@ -149,7 +149,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 使用 [AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和参数来启用日志 `StorageAccountId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 将 `<storage-service-resource--id>` 此代码段中的占位符替换为 Azure 文件服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
@@ -169,7 +169,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `EventHubAuthorizationRuleId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 下面是一个示例：
@@ -183,7 +183,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `WorkspaceId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 下面是一个示例：

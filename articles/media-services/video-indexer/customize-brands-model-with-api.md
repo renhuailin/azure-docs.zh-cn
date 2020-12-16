@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020460"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586051"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
-在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果 Microsoft 是在视频或音频内容中提到的，或者如果显示在视频的视频文本中，则视频索引器会将其作为内容中的品牌来检测。 使用自定义品牌模型时，可以排除某些品牌，不让其检测到；还可以添加一些品牌，这些品牌应该在你的模型中，但可能不在必应的品牌数据库中。
+在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果 Microsoft 是在视频或音频内容中提到的，或者如果显示在视频的视频文本中，则视频索引器会将其作为内容中的品牌来检测。 使用自定义品牌模型时，可以排除某些品牌，不让其检测到；还可以添加一些品牌，这些品牌应该在你的模型中，但可能不在必应的品牌数据库中。 有关详细信息，请参阅[概述](customize-brands-model-overview.md)。
 
-如需详细的概述，请参阅[概述](customize-brands-model-overview.md)。
+> [!NOTE]
+> 如果在添加品牌之前对视频编制了索引，则需要对其重新编制索引。
 
 可以使用视频索引器 API 来创建、使用和编辑视频中检测到的自定义品牌模型，如本主题所述。 也可使用视频索引器网站，如[使用视频索引器网站自定义品牌模型](customize-brands-model-with-api.md)中所述。
 

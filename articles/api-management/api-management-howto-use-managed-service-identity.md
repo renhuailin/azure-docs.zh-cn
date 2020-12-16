@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686219"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585779"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
 
@@ -361,7 +361,7 @@ ms.locfileid: "94686219"
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]

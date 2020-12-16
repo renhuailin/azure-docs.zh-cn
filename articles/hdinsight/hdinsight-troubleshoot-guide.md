@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 5ffd688a60f793ffa497cd0d23ed88437e56a07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec19497f8e718eaf081d0fd8e2a4012e3ee24bf7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022677"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587377"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Azure HDInsight 故障排除
 
 | Apache 工作负荷 | 最常见的问题 |
 |---|---|
-|![hdinsight apache HBase 图标图标](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase 故障排除]()|<br>[未分配区域](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight 中的“hbase hbck”命令超时](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Azure HDInsight 中的 Apache Phoenix 连接问题](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[哪些因素会导致主服务器无法启动？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException - 地址已在使用](hbase/hbase-troubleshoot-bindexception-address-use.md)|
+|![hdinsight apache HBase 图标图标](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase 故障排除]()|<br>[未分配区域](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight 中的“hbase hbck”命令超时](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Azure HDInsight 中的 Apache Phoenix 连接问题](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[导致主服务器无法启动的原因是什么？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException - 地址已在使用](hbase/hbase-troubleshoot-bindexception-address-use.md)|
 |![hdinsight apache hdfs 图标图标](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hdfs.png)<br>[Apache Hadoop HDFS 故障排除](hdinsight-troubleshoot-hdfs.md)|<br>[如何从群集内访问本地 HDFS？](hdinsight-troubleshoot-hdfs.md#how-do-i-access-local-hdfs-from-inside-a-cluster)<br><br>[本地 HDFS 在 Azure HDInsight 群集上的安全模式下停止响应](hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md)|
 |![hdinsight apache Hive 图标图标](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hive.png)<br>[Apache Hive 故障排除](hdinsight-troubleshoot-hive.md)|<br>[如何导出 Hive 元存储并将其导入另一个群集？](hdinsight-troubleshoot-hive.md#how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster)<br><br>[如何在群集上查找 Apache Hive 日志？](hdinsight-troubleshoot-hive.md#how-do-i-locate-hive-logs-on-a-cluster)<br><br>[如何在群集上使用特定配置启动 Apache Hive shell？](hdinsight-troubleshoot-hive.md#how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster)<br><br>[如何在群集关键路径上分析 Apache Tez DAG 数据？](hdinsight-troubleshoot-hive.md#how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path)<br><br>[如何从群集下载 Apache Tez DAG 数据？](hdinsight-troubleshoot-hive.md#how-do-i-download-tez-dag-data-from-a-cluster)|
 |![hdinsight apache Spark 图标图标](./media/hdinsight-troubleshoot-guide/hdinsight-apache-spark.png)<br>[Apache Spark 故障排除](./spark/apache-troubleshoot-spark.md)|<br>[如何在群集上使用 Apache Ambari 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters)<br><br>[如何在群集上使用 Jupyter Notebook 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters)<br><br>[如何在群集上使用 Apache Livy 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters)<br><br>[如何在群集上使用 spark-submit 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters)<br><br>[如何使用 IntelliJ 配置 Apache Spark 应用程序？](spark/apache-spark-intellij-tool-plugin.md)<br><br>[如何使用 Eclipse 配置 Apache Spark 应用程序？](spark/apache-spark-eclipse-tool-plugin.md)<br><br>[如何使用 VSCode 配置 Apache Spark 应用程序？](hdinsight-for-vscode.md)<br><br>[Apache Spark 的 OutOfMemoryError 异常](spark/apache-spark-troubleshoot-outofmemory.md#scenario-outofmemoryerror-exception-for-apache-spark)|

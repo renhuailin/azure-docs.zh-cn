@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356376"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587275"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -144,7 +144,7 @@ ms.locfileid: "94356376"
 
 如果设备未列在设备管理器中，原因可能是将它插入到了不受支持的 USB3 控制器。 
 
-Windows 上的 Azure Kinect DK 仅支持 **Intel** 、 **Texas Instruments (TI)** 和 **Renesas** 的 *主控制器* 。 Windows 平台上的 Azure Kinect SDK 依赖于统一的容器 ID，它必须与 USB 2.0 和 3.0 设备兼容，这样，该 SDK 才能找到实际定位在同一设备上的深度、颜色和音频设备。 在 Linux 上，可能会支持更多的主控制器，因为该平台对容器 ID 的依赖性较小，而更多地依赖于设备序列号。 
+Windows 上的 Azure Kinect DK 仅支持 **Intel**、**Texas Instruments (TI)** 和 **Renesas** 的 *主控制器*。 Windows 平台上的 Azure Kinect SDK 依赖于统一的容器 ID，它必须与 USB 2.0 和 3.0 设备兼容，这样，该 SDK 才能找到实际定位在同一设备上的深度、颜色和音频设备。 在 Linux 上，可能会支持更多的主控制器，因为该平台对容器 ID 的依赖性较小，而更多地依赖于设备序列号。 
 
 当电脑上安装了多个主控制器时，USB 主控制器的话题就会变得更复杂。 如果混合使用主控制器，用户可能会遇到问题，有些端口可以正常工作，而其他一些端口则根本无法工作。 根据端口在机箱上的布线方式，在使用 Azure Kinect 时，你可能会发现所有（机箱）正面端口都出现问题。
 
@@ -165,6 +165,21 @@ Windows 上的 Azure Kinect DK 仅支持 **Intel** 、 **Texas Instruments (TI)*
 ## <a name="using-body-tracking-sdk-with-unreal"></a>将人体跟踪 SDK 与 Unreal 配合使用
 
 若要将人体跟踪 SDK 与 Unreal 配合使用，请确保已将 `<SDK Installation Path>\tools` 添加到环境变量 `PATH`，并已将 `dnn_model_2_0.onnx` 和 `cudnn64_7.dll` 复制到 `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64`。
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>在无外设 Linux 系统上使用 Azure Kinect
+
+Linux 上的 Azure Kinect 深度引擎使用 OpenGL。 OpenGL 需要一个窗口实例，该实例需要将监视器连接到系统。 此问题的解决方法是：
+
+1. 为计划使用的用户帐户启用自动登录。 有关启用自动登录的说明，请参阅 [此](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) 文。
+2. 关闭系统电源，断开显示器的连接并启动系统。 自动登录将强制创建 x 服务器会话。
+2. 通过 ssh 连接并设置显示环境变量 `export DISPLAY=:0`
+3. 启动 Azure Kinect 应用程序。
+
+## <a name="missing-c-documentation"></a>缺少 c # 文档
+
+传感器 SDK c # 文档位于 [此处](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)。
+
+正文跟踪 SDK c # 文档位于 [此处](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

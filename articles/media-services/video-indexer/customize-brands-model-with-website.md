@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361228"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586088"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义品牌模型
 
@@ -31,20 +31,23 @@ ms.locfileid: "91361228"
 
 可以使用视频索引器网站来创建、使用和编辑视频中检测到的自定义品牌模型，如本主题所述。 也可使用 API，如[使用 API 自定义品牌模型](customize-brands-model-with-api.md)中所述。
 
+> [!NOTE]
+> 如果在添加品牌之前对视频编制了索引，则需要对其重新编制索引。 你会在下拉菜单中找到与视频关联的 **索引** 项。 选择 "**高级选项**"  ->  **品牌类别**，并选中 "**所有品牌**"。
+
 ## <a name="edit-brands-model-settings"></a>编辑品牌模型设置
 
 可以选择设置是否需要检测必应品牌数据库中的品牌。 若要设置此选项，需要编辑品牌模型的设置。 执行以下步骤:
 
 1. 请参阅 [视频索引器](https://www.videoindexer.ai/) 网站并登录。
-2. 若要在帐户中自定义模型，请在页面的右上角选择 " **内容模型自定义** " 按钮。
+1. 若要在帐户中自定义模型，请在页面左侧选择 " **内容模型自定义** " 按钮。
 
-   ![自定义视频索引器中的内容模型](./media/content-model-customization/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="自定义视频索引器中的内容模型":::
+1. 若要编辑品牌，请选择“品牌”选项卡。
 
-3. 若要编辑品牌，请选择“品牌”选项卡。****
-
-    ![屏幕截图显示 "内容模型自定义" 对话框的 "品牌" 选项卡。](./media/customize-brand-model/customize-brand-model.png)
-
-4. 如果希望视频索引器检测 Bing 建议的品牌，请选中 " **显示按 bing 推荐的品牌** " 选项，如果不是，则将该选项保持未选中状态。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="屏幕截图显示 &quot;内容模型自定义&quot; 对话框的 &quot;品牌&quot; 选项卡":::
+1. 如果希望视频索引器检测 Bing 建议的品牌，请选中 " **显示按 bing 推荐的品牌** " 选项，如果不是，则将该选项保持未选中状态。
 
 ## <a name="include-brands-in-the-model"></a>在模型中包括品牌
 
@@ -52,16 +55,14 @@ ms.locfileid: "91361228"
 
 ### <a name="add-a-brand-to-include-list"></a>将品牌添加到包含列表
 
-1. 选择 " **+ 添加品牌**"。
-
-    ![屏幕截图显示 "包含品牌" 对话框，你可以在其中添加品牌。](./media/customize-brand-model/add-brand.png)
+1. 选择 " **+ 创建新品牌**"。
 
     提供名称（必填）、类别（可选）、说明（可选）和引用 URL（可选）。
-    类别字段用于对品牌进行标记。 在使用视频索引器 API 时，此字段显示为品牌的标记。** 例如，品牌“Azure”可以标记或归类为“云”。
+    类别字段用于对品牌进行标记。 在使用视频索引器 API 时，此字段显示为品牌的标记。 例如，品牌“Azure”可以标记或归类为“云”。
 
     "引用 URL" 字段可以是品牌 (的任何参考网站，如) 的维基百科页面的链接。
 
-2. 选择 " **添加品牌** "，你会看到已将品牌添加到 " **包含品牌** " 列表。
+2. 选择 " **保存** "，你会看到已将品牌添加到 " **包含品牌** " 列表。
 
 ### <a name="edit-a-brand-on-the-include-list"></a>编辑 "包含列表" 上的品牌
 
@@ -82,11 +83,11 @@ ms.locfileid: "91361228"
 
 ### <a name="add-a-brand-to-exclude-list"></a>向排除列表添加品牌
 
-1. 选择 " **+ 添加品牌"。**
+1. 选择 " **+ 创建新品牌"。**
 
     提供名称（必填）、类别（可选）。
 
-2. 选择 " **添加品牌** "，你会看到已将品牌添加到 " *排除品牌* " 列表中。
+2. 选择 " **保存** "，你会看到已将品牌添加到 " *排除品牌* " 列表中。
 
 ### <a name="edit-a-brand-on-the-exclude-list"></a>编辑排除列表上的品牌
 

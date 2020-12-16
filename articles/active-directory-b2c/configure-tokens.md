@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9b5782df01cad260852fb6ee5c00e3d7669acf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503517"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585201"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
@@ -57,7 +58,7 @@ ms.locfileid: "97503517"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在 " **令牌生存期**" 下，调整属性，以满足应用程序的需求。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 ::: zone-end
 
@@ -113,7 +114,7 @@ ms.locfileid: "97503517"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在 " **令牌兼容性设置**" 下，根据应用程序的需要调整属性。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 ::: zone-end
 

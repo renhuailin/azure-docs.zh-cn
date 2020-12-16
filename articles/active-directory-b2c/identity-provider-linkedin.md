@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1abc0f075098768d3823b6ce916d7c44711c0567
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1ade28af1094694d2cb6dffaecec4e4131630535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516186"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584854"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -70,7 +71,7 @@ ms.locfileid: "97516186"
 1. 输入“名称”。 例如 *LinkedIn*。
 1. 对于“客户端 ID”，请输入前面创建的 LinkedIn 应用程序的客户端 ID。
 1. 对于 **客户端密码**，请输入你记录的客户端密码。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ::: zone-end
 
@@ -245,7 +246,7 @@ LinkedIn 技术配置文件需要将 **ExtractGivenNameFromLinkedInResponse** �
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要访问 LinkedIn 标识提供者的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **LinkedIn**"。
-1. 选择“保存”。 
+1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"
@@ -279,7 +280,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-到:
+更改为：
 
 ```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -305,7 +306,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-到:
+更改为：
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

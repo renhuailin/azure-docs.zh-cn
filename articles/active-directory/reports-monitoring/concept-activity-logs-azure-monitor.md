@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229848"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586187"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 Azure AD 活动日志
 
@@ -41,8 +41,8 @@ ms.locfileid: "89229848"
 
 可以使用此功能将 Azure AD 活动日志和登录日志路由到 Azure 存储帐户、事件中心、Azure Monitor 日志或自定义解决方案。 
 
-* **审核日志**：可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
-* **登录日志**：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* **审核日志**：可以通过 [审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* **登录日志**：可以通过 [登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
 > [!NOTE]
 > 目前不支持 B2C 相关的审核和登录活动日志。
@@ -111,11 +111,11 @@ ms.locfileid: "89229848"
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月事件 (30 天)  | USD (est 中每月的成本 )  |
-| :--                | ---             | ---            | ---                        | --:                          |
-| 审核和登录 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
-| 审核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
-| 登录           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+| 日志类别 | 用户数 | 每日事件数 | 每月事件 (30 天)  | USD (est 中每月的成本 )  |
+|:-|--|--|--|-:|
+| 审核和登录 | 100,000 | 16500000 | 495000000 | $1093.00 |
+| 审核 | 100,000 | 1500000 | 45,000,000 | $246.66 |
+| 登录 | 100,000 | 15,000,000 | 450,000,000 | $847.28 |
 
 
 
@@ -186,13 +186,13 @@ ms.locfileid: "89229848"
 
 **问: 如何将 Azure AD 活动日志与 Splunk 实例集成？**
 
-**答**：首先，[将 Azure AD 活动日志路由到事件中心](./tutorial-azure-monitor-stream-logs-to-event-hub.md)，然后按照步骤[将活动日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
+**答**：首先，[将 Azure AD 活动日志路由到事件中心](./tutorial-azure-monitor-stream-logs-to-event-hub.md)，然后按照步骤 [将活动日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
 
 ---
 
 **问: 如何将 Azure AD 活动日志与 Sumo Logic 集成？** 
 
-**答**：首先，[将 Azure AD 活动日志路由到事件中心](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然后按照步骤[安装 Azure AD 应用程序并查看 SumoLogic 中的仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
+**答**：首先，[将 Azure AD 活动日志路由到事件中心](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然后按照步骤 [安装 Azure AD 应用程序并查看 SumoLogic 中的仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
 
 ---
 

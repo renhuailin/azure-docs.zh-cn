@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载, 人体, 跟踪, 支持
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357039"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587088"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支持选项和资源
 
@@ -56,6 +56,8 @@ Azure 订阅者可在 Azure 门户中创建和管理支持请求。 Azure 订阅
 获取有关设备或传感器功能、固件更新或购买选项的[帮助](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813)。
 
 有关支持产品/服务的详细信息，请参阅[面向企业的 Microsoft 支持](https://support.microsoft.com/help/4341255/support-for-business)。
+
+[此处列出](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3)了 Microsoft 硬件产品的欧盟符合性声明
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517438"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587173"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 
-| 产品/服务 | 项目 |
+| 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Web 应用程序** | <ul><li>[只使用批准的对称块加密法和密钥长度](#cipher-length)</li><li>[为对称加密法使用批准的块加密法模式和初始化向量](#vector-ciphers)</li><li>[使用批准的非对称算法、密钥长度和填充](#padding)</li><li>[使用批准的随机数生成器](#numgen)</li><li>[不要使用对称流加密法](#stream-ciphers)</li><li>[使用批准的 MAC/HMAC/键控哈希算法](#mac-hash)</li><li>[只使用批准的加密哈希函数](#hash-functions)</li></ul> |
 | **Database** | <ul><li>[使用强加密算法来加密数据库中的数据](#strong-db)</li><li>[应该对 SSIS 包加密和数字签名](#ssis-signed)</li><li>[将数字签名添加到关键的数据库安全对象](#securables-db)</li><li>[使用 SQL Server EKM 保护加密密钥](#ekm-keys)</li><li>[如果不应向数据库引擎透露加密密钥，请使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |

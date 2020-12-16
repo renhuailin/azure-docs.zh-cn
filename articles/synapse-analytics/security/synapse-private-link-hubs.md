@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501419"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586969"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>使用 Azure 专用链接中心连接到 Azure Synapse Studio 
 
@@ -35,9 +35,9 @@ ms.locfileid: "96501419"
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure 专用链接中心和 Azure 虚拟网络
 必须将 Azure 虚拟网络连接到 Synapse 专用链接中心资源，才能确保端到端连接到 Synapse Studio。 为此，必须创建从虚拟网络到你创建的专用链接中心的专用终结点。 你可以使用专用链接中心的 Azure 门户，并中转到 "专用终结点" 部分。 选择 "+ 专用终结点" 创建连接到专用链接中心的新专用终结点。
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="创建专用终结点到专用链接中心":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="显示 &quot;专用终结点连接&quot; 页的屏幕截图。":::
 
-请确保在 "资源" 选项卡上选择 "Synapse/privateLinkHubs" 资源类型。 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="创建专用终结点到专用链接中心":::
+请确保在 "资源" 选项卡上选择 "Synapse/privateLinkHubs" 资源类型。 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="屏幕截图显示 &quot;创建专用终结点&quot; 页，其中突出显示了 &quot;资源类型&quot;。":::
 
 在 "配置" 选项卡上，在与虚拟网络和专用 DNS 区域集成时为专用 DNS 区域选择 "privatelink.azuresynapse.net"。
 

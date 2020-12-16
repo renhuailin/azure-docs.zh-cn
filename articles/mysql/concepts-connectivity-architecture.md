@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 02919c8e31e556ab7b5e7e04fcbde27dcf981736
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586000"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
 本文介绍 Azure Database for MySQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MySQL 实例。
@@ -29,7 +29,7 @@ ms.locfileid: "97511563"
 
 在日常服务维护过程中，我们会定期刷新托管网关的计算硬件，以确保我们提供最安全和高性能的体验。 刷新网关硬件后，将首先生成计算节点的新环。 这一新环为所有新创建的 Azure Database for MySQL 服务器提供了流量，在同一区域中，它将具有不同的 IP 地址，以使流量区分开来。 新环完全正常运行后，为现有服务器提供服务的较旧的网关硬件将计划解除授权。 在解除网关硬件的授权之前，运行其服务器并连接到较旧网关环的客户将通过电子邮件和 Azure 门户中的三个月提前通知。 网关的解除授权可能会影响服务器与服务器的连接 
 
-* 在应用程序的连接字符串中对网关 IP 地址进行硬编码。 **不建议使用** 此方法。 
+* 在应用程序的连接字符串中对网关 IP 地址进行硬编码。 **不建议使用** 此方法。 你应在 <servername> 应用程序的连接字符串中使用 mysql.database.azure.com 的完全限定域名 (FQDN) 。 
 * 不会在客户端防火墙中更新更新的网关 IP 地址，以允许出站流量到达新的网关环。
 
 下表列出了适用于所有数据区域的 Azure Database for MySQL 网关的网关 IP 地址。 下表中保留了每个区域的网关 IP 地址的最新信息。 在下表中，列表示以下内容：

@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5b04613a74755f8515d967b8dd28397b36816fec
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516224"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584878"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录
 
@@ -61,7 +62,7 @@ ms.locfileid: "97516224"
 1. 输入“名称”。 例如， *Google*。
 1. 对于 " **客户端 id**"，请输入之前创建的 Google 应用程序的客户端 id。
 1. 对于 **客户端密码**，请输入你记录的客户端密码。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ::: zone-end
 
@@ -190,7 +191,7 @@ ms.locfileid: "97516224"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要传递给 Google 标识提供者的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **Google**"。
-1. 选择“保存”。 
+1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

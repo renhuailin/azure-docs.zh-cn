@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544505"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585762"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 开发的常见问题解答
 
@@ -55,7 +55,7 @@ StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有�
 
 * **重试**
   * 对于 ConnectRetry 和 ConnectTimeout，一般指导原则是快速失败并重试。 该指导原则取决于工作负荷，以及客户端发出 Redis 命令和接收响应平均花费的时间。
-  * 让 StackExchange.Redis 自动重新连接，而不是检查连接状态，并由用户自己重新连接。 **避免使用 ConnectionMultiplexer.IsConnected 属性** 。
+  * 让 StackExchange.Redis 自动重新连接，而不是检查连接状态，并由用户自己重新连接。 **避免使用 ConnectionMultiplexer.IsConnected 属性**。
   * 雪球效应 - 有时，可能会遇到这样的问题：不断地重试解决，但重试不断累积而永远无法恢复。 如果发生雪球效应，应该根据 Microsoft 模式和实践小组发布的[一般重试指导原则](/azure/architecture/best-practices/transient-faults)中所述，考虑使用指数退让重试算法。
   
 * **超时值**
@@ -64,12 +64,12 @@ StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有�
   * 使用应用程序的单个 ConnectionMultiplexer 实例。 可以使用 LazyConnection 创建 Connection 属性返回的单个实例，如[使用 ConnectionMultiplexer 类连接到缓存](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)中所示。
   * 将 `ConnectionMultiplexer.ClientName` 属性设置为应用程序实例的唯一名称以进行诊断。
   * 对自定义工作负载使用多个 `ConnectionMultiplexer` 实例。
-      * 如果应用程序中的负载不同，可以遵循此模型。 例如：
-      * 可以使用一个多路复用器来处理大键。
-      * 可以使用一个多路复用器来处理小键。
-      * 可为连接超时设置不同的值，并为使用的每个 ConnectionMultiplexer 设置重试逻辑。
-      * 在每个多路复用器上设置 `ClientName` 属性以帮助进行诊断。
-      * 该指导原则可以更好地改进每个 `ConnectionMultiplexer`的延迟。
+    * 如果应用程序中的负载不同，可以遵循此模型。 例如：
+    * 可以使用一个多路复用器来处理大键。
+    * 可以使用一个多路复用器来处理小键。
+    * 可为连接超时设置不同的值，并为使用的每个 ConnectionMultiplexer 设置重试逻辑。
+    * 在每个多路复用器上设置 `ClientName` 属性以帮助进行诊断。
+    * 该指导原则可以更好地改进每个 `ConnectionMultiplexer`的延迟。
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>可以使用哪些 Azure Redis 缓存客户端？
 Redis 的一大优势是有许多客户端，支持许多不同的开发语言。 如需最新的客户端列表，请参阅 [Redis 客户端](https://redis.io/clients)。 有关介绍多种不同语言和客户端的教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
