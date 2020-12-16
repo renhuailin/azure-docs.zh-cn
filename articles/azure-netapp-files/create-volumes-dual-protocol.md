@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854047"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591816"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
@@ -49,8 +49,8 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
     
     | 安全样式    | 可以修改权限的客户端   | 客户端可以使用的权限  | 生成的有效安全样式    | 可以访问文件的客户端     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
-    | NTFS  | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
+    | `Unix`    | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
+    | `Ntfs`    | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
 * 使用 NFS 安装 NTFS 安全样式卷的 UNIX 用户将作为 Windows 用户 `root` FOR unix `root` 和 `pcuser` 所有其他用户进行身份验证。 使用 NFS 时，请确保这些用户帐户存在于你的 Active Directory 中。 
 
 

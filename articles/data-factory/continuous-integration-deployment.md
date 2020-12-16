@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902288"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591889"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -41,9 +41,9 @@ ms.locfileid: "96902288"
 
 1.  开发人员[创建功能分支](source-control.md#creating-feature-branches)以进行更改。 他们使用最近的更改来调试其管道运行。 若要详细了解如何调试管道运行，请参阅[使用 Azure 数据工厂进行迭代开发和调试](iterative-development-debugging.md)。
 
-1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其功能分支拉取到主分支或协作分支，让同行来评审他们的更改。
+1.  当开发人员对更改感到满意后，他们会创建一个从其功能分支到主分支或协作分支的拉取请求，以获取对等方所做的更改。
 
-1.  在拉取请求获得批准并已将更改合并到主分支后，更改将发布到开发工厂。
+1.  在拉取请求获得批准并将更改合并到主分支后，更改将发布到开发工厂。
 
 1.  当团队准备好将更改部署到测试或 UAT (用户验收测试) 工厂时，团队会转到其 Azure Pipelines 版本，并将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
 
@@ -668,7 +668,7 @@ ms.locfileid: "96902288"
     - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
     - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅 [修补程序生产环境](#hotfix-production-environment)。
 
-- Azure 数据工厂团队不建议将 Azure RBAC 控件分配给数据工厂中 (管道、数据集等) 的单独实体。 例如，如果开发人员可以访问管道或数据集，则他们应该能够访问数据工厂中的所有管道或数据集。 如果你认为需要在数据工厂中实现许多 Azure 角色，请查看部署第二个数据工厂。
+- Azure 数据工厂团队不建议将 Azure RBAC 控件分配给数据工厂中 (管道、数据集等 ) 的单独实体。 例如，如果开发人员可以访问管道或数据集，则他们应该能够访问数据工厂中的所有管道或数据集。 如果你认为需要在数据工厂中实现许多 Azure 角色，请查看部署第二个数据工厂。
 
 -   无法从专用分支发布。
 
