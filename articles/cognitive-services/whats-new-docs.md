@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 12/07/2020
-ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862184"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631493"
 ---
 # <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>认知服务文档：2020年11月1日（年11月30日2020）的新增功能
 
@@ -33,35 +33,35 @@ ms.locfileid: "96862184"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>表单识别器
 
 ### <a name="new-articles"></a>新文章
 
-- [窗体识别器预生成发票型号](/azure/cognitive-services/form-recognizer/concept-invoices.md)
-- [表单识别器布局服务](/azure/cognitive-services/form-recognizer/concept-layout.md)
-- [快速入门：将表单识别器 REST API 与 Python 结合使用来提取账单数据](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
+- [窗体识别器预生成发票型号](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [表单识别器布局服务](/azure/cognitive-services/form-recognizer/concept-layout)
+- [快速入门：将表单识别器 REST API 与 Python 结合使用来提取账单数据](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [回执概念](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview.md)
-- [使用示例标记工具通过标签来训练表单识别器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
-- [快速入门：通过 Python 使用表单识别器 REST API 以提取名片数据](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
-- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [回执概念](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview)
+- [使用示例标记工具通过标签来训练表单识别器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [快速入门：通过 Python 使用表单识别器 REST API 以提取名片数据](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>指标顾问
 
 ### <a name="new-articles"></a>新文章
 
-- [指标顾问：文档中的新增内容](/azure/cognitive-services/metrics-advisor/whats-new.md)
+- [指标顾问：文档中的新增内容](/azure/cognitive-services/metrics-advisor/whats-new)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [提供异常反馈](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
-- [指标顾问常见问题解答](/azure/cognitive-services/metrics-advisor/faq.md)
-- [快速入门：使用客户端库或 REST API 自定义解决方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
+- [提供异常反馈](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [指标顾问常见问题解答](/azure/cognitive-services/metrics-advisor/faq)
+- [快速入门：使用客户端库或 REST API 自定义解决方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
 
 ## <a name="qna-maker"></a>QnA Maker 
 
@@ -75,12 +75,12 @@ ms.locfileid: "96862184"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [文本分析 API 的数据和速率限制](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
-- [如何：使用健康状况文本分析（预览）](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
-- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [如何：情绪分析和观点挖掘](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
-- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new.md)
-- [示例：通过文本分析检测语言](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
+- [文本分析 API 的数据和速率限制](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [如何：使用健康状况文本分析（预览）](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [如何：情绪分析和观点挖掘](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new)
+- [示例：通过文本分析检测语言](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

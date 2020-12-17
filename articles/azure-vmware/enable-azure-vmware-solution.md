@@ -3,12 +3,12 @@ title: 如何启用 Azure VMware 解决方案资源
 description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346531"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630881"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
 了解如何提交支持请求以启用 [Azure VMware 解决方案](introduction.md) 资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多主机。
@@ -61,7 +61,7 @@ ms.locfileid: "97346531"
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>为 CSP 客户启用 Azure VMware 解决方案 
 
-Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) 为其客户启用 Azure VMware 解决方案。 本文使用 [CSP Azure 计划](/partner-center/azure-plan-lp.md) 作为示例来说明合作伙伴的购买过程。
+Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) 为其客户启用 Azure VMware 解决方案。 本文使用 [CSP Azure 计划](/partner-center/azure-plan-lp) 作为示例来说明合作伙伴的购买过程。
 
    >[!IMPORTANT] 
    >Azure VMware 解决方案服务不提供所需的多租户。 不支持承载需要它的合作伙伴。 
@@ -76,9 +76,9 @@ Csp 必须使用 [Microsoft 合作伙伴中心](https://partner.microsoft.com) �
 
 1. 选择 " **Azure 计划** "，然后选择 " **添加到购物车**"。 
 
-1. 查看并完成客户的 Azure 计划订阅的常规设置。 有关详细信息，请参阅 [Microsoft 合作伙伴中心文档](/partner-center/azure-plan-manage.md)。
+1. 查看并完成客户的 Azure 计划订阅的常规设置。 有关详细信息，请参阅 [Microsoft 合作伙伴中心文档](/partner-center/azure-plan-manage)。
 
-在配置 Azure 计划并将所需的 [AZURE RBAC 权限](/partner-center/azure-plan-manage.md) 部署到订阅后，你将与 Microsoft 合作，以便为 Azure 计划订阅启用配额。 使用 **管理员代表** (AOBO) 过程从 [Microsoft 合作伙伴中心](https://partner.microsoft.com)访问 Azure 门户。
+在配置 Azure 计划并将所需的 [AZURE RBAC 权限](/partner-center/azure-plan-manage) 部署到订阅后，你将与 Microsoft 合作，以便为 Azure 计划订阅启用配额。 使用 **管理员代表** (AOBO) 过程从 [Microsoft 合作伙伴中心](https://partner.microsoft.com)访问 Azure 门户。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com)。
 

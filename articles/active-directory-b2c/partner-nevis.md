@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 470dc146d1658b97a707be8cb7ad868d943a8e60
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170884"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629385"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>用于配置无密码 authentication Azure Active Directory B2C 的尼维斯的教程
 
@@ -92,7 +92,7 @@ ms.locfileid: "96170884"
 >[!NOTE]
 >稍后需要使用尼维斯访问令牌。
 
-11. 选择“完成”  。
+11. 选择“完成”。
 
 ### <a name="install-the-nevis-access-app-on-your-phone"></a>在手机上安装尼维斯访问应用
 
@@ -134,9 +134,9 @@ ms.locfileid: "96170884"
 
 4. **保存** 对文件所做的更改。
 
-5. 按照 [说明](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account) 将 **nevis.html** 文件上传到 Azure blob 存储。
+5. 按照 [说明](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) 将 **nevis.html** 文件上传到 Azure blob 存储。
 
-6. 按照 [说明进行操作](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) ，并为此文件启用跨域资源共享 (CORS) 。
+6. 按照 [说明进行操作](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) ，并为此文件启用跨域资源共享 (CORS) 。
 
 7. 上传完成并且 CORS 启用后，选择列表中的 **nevis.html** 文件。
 
@@ -228,11 +228,11 @@ ms.locfileid: "96170884"
 
 8. 从电子邮件复制验证代码。
 
-9. 选择“验证”  。
+9. 选择“验证”。
 
 10. 在表单中填写新密码和显示名称。
 
-11. 选择“创建”  。
+11. 选择“创建”。
 
 12. 你将转到 QR 代码扫描页面。
 

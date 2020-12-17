@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007165"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629028"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -226,12 +226,15 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | CRM Online\*\*\*\* |12076:5040 |
 | Azure 全局服务\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| Azure 资源管理器 |12076:5070 |
+| Azure Resource Manager |12076:5070 |
 | 其他 Office 365 联机服务 * * | 12076:5100 |
 
 \* Azure 全局服务目前仅包含 Azure DevOps。
-\*\* Microsoft 要求的授权，请参阅 [为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
+
+\*\* Microsoft 要求的授权，请参阅 [为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)
+
 \*\*\* 此社区还发布了 Microsoft 团队服务所需的路由。
+
 \*\*\*\* CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
 
 > [!NOTE]

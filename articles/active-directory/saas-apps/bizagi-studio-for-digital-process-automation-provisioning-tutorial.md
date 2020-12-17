@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008038"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632021"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Bizagi Studio 以实现数字流程自动化
 
@@ -123,7 +123,7 @@ ms.locfileid: "97008038"
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Bizagi Studio 以实现数字流程自动化的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Bizagi Studio 中的用户帐户以执行更新操作。 如果更改了 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则必须确保适用于数字流程自动化 API 的 Bizagi Studio 支持基于该属性筛选用户。 选择“保存”，提交所有更改。
 
-   |Attribute|类型|支持筛选|
+   |属性|类型|支持筛选|
    |---|---|---|
    |userName|字符串|&check;|
    |活动|Boolean|
@@ -132,7 +132,14 @@ ms.locfileid: "97008038"
    |name.familyName|字符串|
    |name.formatted|字符串|
    |phoneNumbers[type eq "mobile"].value|字符串|
+
+   可以通过导航到 " **显示高级选项" > 编辑 Bizagi 的属性列表** 来添加自定义扩展属性。 自定义扩展属性必须带有 **urn： ietf： params： scim：架构： extension： bizagi：2.0： UserProperties：**。 例如，如果自定义扩展属性为 **IdentificationNumber**，则必须将属性添加为 **urn： ietf： params： scim：架构： extension： bizagi：2.0： UserProperties： IdentificationNumber**。 选择“保存”，提交所有更改。
    
+    ![编辑属性列表。](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   有关如何添加自定义属性的详细信息，请参阅 [自定义应用程序属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+
+
 10. 若要配置范围筛选器，请参阅 [范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 11. 若要为 Bizagi Studio 启用适用于数字流程自动化的 Azure AD 预配服务，请在 " **设置** " 部分中将 " **预配状态** " 更改为 **"开**"。

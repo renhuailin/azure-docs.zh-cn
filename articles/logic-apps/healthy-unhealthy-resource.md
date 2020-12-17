@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 9c22e7cbc71c2b29c4b3e50319c6b6d256856bb3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855599"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629589"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>设置日志记录，以便在 Azure 安全中心监视逻辑应用
 
@@ -20,11 +20,11 @@ ms.locfileid: "96855599"
 > [!TIP]
 > 若要查找逻辑应用服务的当前状态，请查看 " [Azure 状态" 页](https://status.azure.com/)，其中列出了每个可用区域中不同产品和服务的状态。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，请在开始之前 [创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/) 。
 * [已启用诊断日志记录](#enable-diagnostic-logging)的现有逻辑应用。
-* 为逻辑应用启用日志记录所需的 Log Analytics 工作区。 如果没有工作区，请首先 [创建工作区](/learn/quick-create-workspace.md)。
+* 为逻辑应用启用日志记录所需的 Log Analytics 工作区。 如果没有工作区，请首先 [创建工作区](/azure/azure-monitor/learn/quick-create-workspace)。
 
 ## <a name="enable-diagnostic-logging"></a>启用诊断记录
 

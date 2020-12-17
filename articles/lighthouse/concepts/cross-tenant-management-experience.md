@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616569"
+ms.locfileid: "97630082"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -99,7 +99,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 - 查看委派订阅的活动日志详细信息
 - Log analytics：从多个租户中的远程工作区查询数据
 - 在通过 webhook 管理租户中触发自动化的客户租户（如 Azure 自动化 runbook 或 Azure Functions）中创建警报
-- 在客户租户中创建诊断设置，以将资源日志发送到管理租户中的工作区
+- 在客户租户中创建 [诊断设置](../..//azure-monitor/platform/diagnostic-settings.md) ，以将资源日志发送到管理租户中的工作区
 - 对于 SAP 工作负荷，请 [使用跨客户租户的聚合视图监视 Sap 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure 网络](../../networking/networking-overview.md)：

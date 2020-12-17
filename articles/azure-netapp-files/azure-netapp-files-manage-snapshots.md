@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253552"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629657"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -44,7 +44,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![新建快照](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 单击“确定”。 
+4. 单击“确定”  。 
 
 ## <a name="manage-snapshot-policies"></a>管理快照策略
 
@@ -63,7 +63,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 2. 检查功能注册的状态： 
 
     > [!NOTE]
-    > 在 **RegistrationState** 将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+    > 在将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
@@ -177,7 +177,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![还原到新卷](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 单击 " **查看 + 创建**"。  单击“创建”。    
+4. 单击 " **查看 + 创建**"。  单击“创建”。   
     新卷使用的协议与快照使用的协议相同。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
 
@@ -269,3 +269,4 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 * [快照策略问题故障排除](troubleshoot-snapshot-policies.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp 文件快照101视频](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
+* [什么是 Azure 应用程序一致性快照工具](azacsnap-introduction.md)

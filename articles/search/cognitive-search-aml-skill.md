@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445449"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630269"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的 AML 技能
 
@@ -33,7 +33,7 @@ ms.locfileid: "94445449"
 
 * [AML 工作区](../machine-learning/concept-workspace.md)
 * 此工作区中具有已[部署模型](../machine-learning/how-to-deploy-azure-kubernetes-service.md)的[AZURE Kubernetes Service AML 计算目标](../machine-learning/concept-compute-target.md)
-  * [计算目标应启用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga)。 Azure 认知搜索仅允许访问 **https** 终结点
+  * [计算目标应启用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service)。 Azure 认知搜索仅允许访问 **https** 终结点
   * 不能使用自签名证书。
 
 ## <a name="odatatype"></a>@odata.type  

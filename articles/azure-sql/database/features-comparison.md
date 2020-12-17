@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 11/10/2020
-ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c30cecf0b480a1765f04ee48a0fd66f4ddd52708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368454"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630320"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -64,6 +64,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [分布式事务 - MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | 否 - 请参阅[弹性事务](elastic-transactions-overview.md) |  否 - 请参阅[链接服务器的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)。 尝试在迁移过程中将多个分布式 SQL Server 实例中的数据库整合到一个 SQL 托管实例中。 |
 | [DML 触发器](/sql/relational-databases/triggers/create-dml-triggers) | 大多数 - 请参阅单个语句 |  是 |
 | [DMV](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | 大多数 - 请参阅单个 DMV |  是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| 公共预览版中的[弹性查询](elastic-query-overview.md) ()  | 是，具有所需的 RDBMS 类型。 | 是，具有所需的 RDBMS 类型。 |
 | [事件通知](/sql/relational-databases/service-broker/event-notifications) | 否 - 请参阅[警报](alerts-insights-configure-portal.md) | 否 |
 | [表达式](/sql/t-sql/language-elements/expressions-transact-sql) |是 | 是 |
 | [扩展事件 (XEvent)](/sql/relational-databases/extended-events/extended-events) | 部分 - 请参阅 [SQL 数据库中的扩展事件](xevent-db-diff-from-svr.md) | 是 - 请参阅[扩展事件的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events) |
@@ -85,7 +86,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [OPENQUERY](/sql/t-sql/functions/openquery-transact-sql)|否|是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|是，只是为了从 Azure Blob 存储导入。 |是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server，以及从 Azure Blob 存储进行导入的操作。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [运算符](/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 错误。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
+| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 不能。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
 | [查询通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
 | [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前的 R Services_) | 是，在[公共预览版](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | 否 |
 | [恢复模型](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 |

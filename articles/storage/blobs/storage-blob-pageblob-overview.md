@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545952"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629351"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -27,7 +27,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ## <a name="restrictions"></a>限制
 
-页 blob 只能使用 **热** 访问层，它们不能使用 " **冷** " 或 " **存档** " 层。 有关访问层的详细信息，请参阅 [Azure Blob 存储的访问层-热、冷和存档](storage-blob-storage-tiers.md)。
+页 blob 只能使用“热”访问层，不能使用“冷”或“存档”层。 有关访问层的详细信息，请参阅 [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)。
 
 ## <a name="sample-use-cases"></a>示例用例
 
@@ -41,7 +41,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ## <a name="pricing"></a>定价
 
-页 blob 提供的这两种存储类型都有自己的定价模型。 高级页 blob 遵循托管磁盘定价模型，而标准页 blob 按使用大小和每个事务进行计费。 有关详细信息，请参阅 [Azure 页 blob 定价页](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
+页 Blob 提供的两种类型的存储都有其自己的定价模型。 高级页 blob 遵循托管磁盘定价模型，而标准页 blob 按使用的大小和单个事务计费。 有关详细信息，请参阅 [Azure 页 Blob 定价页](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
 ## <a name="page-blob-features"></a>页 Blob 功能
 
@@ -57,7 +57,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-首先，获取对容器的引用。 若要创建页 blob，请调用 [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) 方法，然后调用 [PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 传入要创建的 blob 的最大大小。 该大小必须是 512 字节的倍数。
+首先，获取对容器的引用。 若要创建页 blob，请调用 GetPageBlobClient 方法，然后调用 [PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 传入要创建的 blob 的最大大小。 该大小必须是 512 字节的倍数。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

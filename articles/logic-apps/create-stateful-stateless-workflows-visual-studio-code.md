@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922994"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632054"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Azure 逻辑应用 Visual Studio Code 中创建有状态和无状态工作流 (预览版) 扩展
 
@@ -175,7 +175,7 @@ ms.locfileid: "96922994"
 
    1. 在 " **文件** " 菜单上，中转到 " **首选项**" " **>** **设置**"。
 
-   1. 在 "**用户**" 选项卡上，中转到 " **>** **Extensions** **>** **Azure 逻辑应用 (预览")**。
+   1. 在 "**用户**" 选项卡上，中转到 " **>**  **>** **Azure 逻辑应用 (预览")**。
 
    1. 确认以下扩展设置：
 
@@ -627,7 +627,7 @@ ms.locfileid: "96922994"
    | Aborted | !["中止" 操作状态的图标][aborted-icon] | 操作已停止或未完成，原因是外部问题，例如，系统中断或过期的 Azure 订阅。 |
    | 已取消 | !["已取消" 操作状态的图标][cancelled-icon] | 操作正在运行，但收到了取消请求。 |
    | 失败 | !["失败" 操作状态的图标][failed-icon] | 操作失败。 |
-   | 正在运行 | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
+   | 运行 | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
    | 已跳过 | !["跳过" 操作状态的图标][skipped-icon] | 此操作已被跳过，因为前一个操作失败。 操作具有要求在 `runAfter` 当前操作运行之前成功完成前面的操作的条件。 |
    | 成功 | !["成功" 操作状态的图标][succeeded-icon] | 操作成功。 |
    | 已成功重试 | !["已成功重试" 操作状态的图标][succeeded-with-retries-icon] | 操作成功，但仅在一个或多个重试后。 若要查看重试历史记录，请在 "运行历史记录详细信息" 视图中选择该操作，以便可以查看输入和输出。 |
@@ -769,7 +769,7 @@ ms.locfileid: "96922994"
 
       1. 选择现有 Application Insights 资源或 **创建新 Application Insights 资源**。
 
-      1. 在 [Azure 门户](htpps://portal.azure.com)中转到 Application Insights 资源。
+      1. 在 [Azure 门户](https://portal.azure.com)中转到 Application Insights 资源。
 
       1. 在 "资源" 菜单中，选择 " **概述**"。 查找并复制 **检测密钥** 值。
 
@@ -1047,7 +1047,7 @@ ms.locfileid: "96922994"
 
 ## <a name="enable-or-open-application-insights-after-deployment"></a>部署后启用或打开 Application Insights
 
-在工作流执行过程中，逻辑应用会随其他事件一起发出遥测数据。 使用此遥测可以更好地了解工作流的运行情况以及逻辑应用运行时如何以各种方式工作。 你可以使用 Application Insights 来监视工作流，该[Application Insights](../azure-monitor/app/app-insights-overview.md)提供近实时遥测 (实时指标) 。 使用此数据诊断问题、设置警报和构建图表时，此功能可帮助您更轻松地调查故障和性能问题。
+在工作流执行过程中，逻辑应用会随其他事件一起发出遥测数据。 使用此遥测可以更好地了解工作流的运行情况以及逻辑应用运行时如何以各种方式工作。 你可以使用 Application Insights 来监视工作流，该[](../azure-monitor/app/app-insights-overview.md)提供近实时遥测 (实时指标) 。 使用此数据诊断问题、设置警报和构建图表时，此功能可帮助您更轻松地调查故障和性能问题。
 
 如果逻辑应用的创建和部署设置支持使用 [Application Insights](../azure-monitor/app/app-insights-overview.md)，则可以选择为逻辑应用启用诊断日志记录和跟踪。 在部署逻辑应用时，可以从 Visual Studio Code 或部署后执行此操作。 你需要有一个 Application Insights 实例，但你可以在部署逻辑应用时或部署后 [提前](../azure-monitor/app/create-workspace-resource.md)创建此资源。
 
@@ -1156,7 +1156,7 @@ Application Insights 打开后，可以查看逻辑应用的各种指标。 有�
 
 `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-在 Azure *master-key* 存储帐户（在中为文件中的 " `AzureWebJobsStorage` **azure web 作业-密码/{部署名称}/host.js**" 设置）中定义 <主密钥> 值，可在其中找到此部分中的值：
+在 Azure 存储帐户（在中为文件中的 " `AzureWebJobsStorage` **azure web 作业-密码/{部署名称}/host.js**" 设置）中定义 <主密钥> 值，可在其中找到此部分中的值：
 
 ```json
 {

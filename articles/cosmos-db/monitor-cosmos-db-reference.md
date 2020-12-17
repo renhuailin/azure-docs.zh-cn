@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 1b1ff2649f54005eff139b1ed1d4d0b4ea152b1f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855016"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632003"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>监视 Azure Cosmos DB 数据引用
 
@@ -104,7 +104,7 @@ ms.locfileid: "96855016"
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor 日志表
 
-Azure Cosmos DB 使用 Azure Monitor 日志中的 Kusto 表。 可以通过 Log analytics 查询这些表。 有关 Kusto 应变使用的列表，请参阅 [Azure Monitor 日志表参考](/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) 文章。
+Azure Cosmos DB 使用 Azure Monitor 日志中的 Kusto 表。 可以通过 Log analytics 查询这些表。 有关 Kusto 应变使用的列表，请参阅 [Azure Monitor 日志表参考](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) 文章。
 
 ## <a name="see-also"></a>另请参阅
 

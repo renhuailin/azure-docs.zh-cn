@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095933"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629368"
 ---
 # <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>有关使用 Azure Active Directory B2C 配置安全混合访问的 Zscaler 专用访问的教程
 
@@ -125,7 +125,7 @@ ZPA 集成包括以下组件：
 
 其中 `<tenant-name>` ，是 Azure AD B2C 租户的名称， `<policy-name>` 是你在上一步中创建的自定义 SAML 策略的名称。
 
-例如： https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+例如，" https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
 
 打开 web 浏览器并导航到 "SAML 元数据 URL"。 加载页面时，右键单击页面上的任意位置。 选择 " **将页另存为** "，并将文件保存在计算机上;你将在下一部分中使用此项。
 

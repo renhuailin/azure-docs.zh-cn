@@ -1,5 +1,5 @@
 ---
-title: 为 Active Directory 集成配置群集
+title: 为 Azure Active Directory 集成配置群集
 titleSuffix: Azure HDInsight
 description: 了解如何使用 Azure Active Directory 域服务和企业安全性套餐功能设置和配置与 Active Directory 集成的 HDInsight 群集。
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031476"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631544"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>为 Active Directory 与企业安全性套餐的集成配置 HDInsight 群集
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>为与企业安全性套餐 Azure Active Directory 集成配置 HDInsight 群集
 
-本文介绍如何使用称为“企业安全性套餐 (ESP)”的功能、Azure Active Directory 域服务 (Azure AD-DS) 和现有的本地 Active Directory 来创建和配置与 Active Directory 集成的 HDInsight 群集。
+本文概述了创建和配置与 Azure Active Directory 集成的 HDInsight 群集的过程。 此集成依赖于名为企业安全性套餐的 HDInsight 功能 (ESP) ，Azure Active Directory 域服务 (Azure AD-DS) 和预先存在的本地 Active Directory。
 
-有关在 Azure 中设置和配置域以及创建已启用 ESP 的群集的教程，请参阅[在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
+若要详细了解如何在 Azure 中设置和配置域并创建已启用 ESP 的群集，然后同步本地用户，请参阅 [在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
 
 ## <a name="background"></a>背景
 
@@ -33,12 +33,13 @@ ms.locfileid: "97031476"
 
 在创建已启用 ESP 的 HDInsight 群集之前，需要满足以下几个先决条件：
 
+- 现有的本地 Active Directory 和 Azure Active Directory。
 - 启用 Azure AD-DS。
 - 检查 Azure AD-DS 运行状况以确保同步已完成。
 - 创建托管标识并为其授权。
 - 针对 DNS 和相关问题完成网络设置。
 
-下面将详细讨论其中的每一项。
+下面将详细讨论其中的每一项。 有关完成所有这些步骤的演练，请参阅 [在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
 
 ### <a name="enable-azure-ad-ds"></a>启用 Azure AD DS
 

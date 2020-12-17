@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356699"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631986"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>用于语音容器的批处理工具包
 
@@ -25,7 +25,7 @@ ms.locfileid: "93356699"
 
 可在 [GitHub](https://github.com/microsoft/batch-processing-kit) 和   [Docker 中心](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)免费使用 batch 工具包容器。 你只需要为你使用的语音容器 [付费](speech-container-howto.md#billing) 。
 
-| 功能  | 描述  |
+| 功能  | 说明  |
 |---------|---------|
 | 批处理音频文件分发     | 自动将大量文件分发到本地或基于云的语音容器终结点。 文件可以位于任何 POSIX 兼容卷上，包括网络文件系统。       |
 | 语音 SDK 集成 | 将常见标志传递到语音 SDK，包括：假设、diarization、language、猥亵屏蔽。  |
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 运行 batch 客户端：  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 若要在单个命令中运行 batch 客户端和容器：
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -114,7 +114,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 4. 文件将被调度到步骤1中的容器终结点。
 5. 日志和语音容器输出将返回到指定的输出目录。 
 
-#### <a name="daemon"></a>[守护程序](#tab/daemon)
+#### <a name="daemon"></a>[后台程序](#tab/daemon)
 
 > [!TIP]
 > 如果同时向输入目录添加了多个文件，则可以通过定期添加它们来提高性能。
@@ -156,7 +156,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 > [!NOTE]
 > 如果批处理客户端变得太大，则可能会定期覆盖 *该文件。*
 
-客户端在 *run.log* `-log_folder` docker 命令中由自变量指定的目录中创建运行文件。 `run` 默认情况下，在调试级别捕获日志。 相同的日志会发送到 `stdout/stderr` ，并根据参数进行筛选 `-log_level` 。 此日志只是调试所必需的，或者，如果需要发送支持的跟踪，则为。 日志记录文件夹还包含每个音频文件的语音 SDK 日志。
+客户端在 `-log_folder` docker 命令中由自变量指定的目录中创建运行文件。 `run` 默认情况下，在调试级别捕获日志。 相同的日志会发送到 `stdout/stderr` ，并根据或参数进行筛选 `-file_log_level` `console_log_level` 。 此日志只是调试所必需的，或者，如果需要发送支持的跟踪，则为。 日志记录文件夹还包含每个音频文件的语音 SDK 日志。
 
 指定的输出目录 `-output_folder` 将包含一个 *run_summary.js*   文件，该文件将在每30秒或完成新转录时定期重写。 您可以使用此文件在批处理过程中检查进度。 它还将在批处理完成后包含每个文件的最终运行统计信息和最终状态。 当进程有干净退出时，批处理即已完成。 
 

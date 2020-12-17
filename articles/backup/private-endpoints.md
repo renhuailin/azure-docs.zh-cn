@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184735"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629708"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -26,6 +26,7 @@ ms.locfileid: "96184735"
 - Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要禁用网络策略。
 - 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
+- 如果保管库启用了专用终结点，则不支持 SQL 和 SAP HANA 数据库备份的[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
 
 ## <a name="recommended-and-supported-scenarios"></a>推荐和支持的方案
 
@@ -68,7 +69,7 @@ ms.locfileid: "96184735"
 
 - 包含目标 VNet 的资源组
 - 要在其中创建专用终结点的资源组
-- 包含专用 DNS 区域的资源组，如[此处](#creating-private-endpoints-for-backup)所述
+- 包含专用 DNS 区域的资源组，如[此处](#creating-private-endpoints-for-backup)详细讨论的那样
 
 建议向保管库（托管标识）授予这三个资源组的“参与者”角色。 以下步骤介绍了如何针对特定的资源组执行此操作（需要为三个资源组中的每个资源组执行此操作）：
 
@@ -111,7 +112,7 @@ ms.locfileid: "96184735"
 
         ![填写“配置”选项卡](./media/private-endpoints/configuration-tab.png)
 
-        如果要使用自定义 DNS 服务器，而不是与 Azure 专用 DNS 区域集成，请参阅 [此部分](#dns-changes-for-custom-dns-servers) 。  
+        如果要使用自定义 DNS 服务器，而不与 Azure 专用 DNS 区域集成，请参阅[此部分](#dns-changes-for-custom-dns-servers)。  
 
     1. （可选）可以为专用终结点添加标记。
 

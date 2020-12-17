@@ -4,20 +4,20 @@ description: 了解如何在创建 RabbitMQ 消息时运行 Azure Function。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617215"
+ms.locfileid: "97630728"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 触发器
 
 > [!NOTE]
-> 只有 **Windows 高级版** 计划完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
+> 只有 **Windows 高级版和专用** 计划才完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
 
 使用 RabbitMQ 触发器来响应来自 RabbitMQ 队列的消息。
 
@@ -275,7 +275,7 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |prefetchCount|30|获取或设置消息接收方可以同时请求并缓存的消息数。|
 |queueName|不适用| 要从中接收消息的队列的名称。 |
@@ -303,7 +303,7 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |hostName|不适用|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
 |userName|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的名称 |

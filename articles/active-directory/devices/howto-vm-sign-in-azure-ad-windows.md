@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509302"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629793"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -333,6 +333,9 @@ az role assignment create \
 ![你的帐户已配置为阻止你使用此设备。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
 验证是否已为 VM [配置 AZURE RBAC 策略](../../virtual-machines/linux/login-using-aad.md) ，该策略向用户授予 "虚拟机管理员登录名" 或 "虚拟机用户登录" 角色：
+
+> [!NOTE]
+> 如果遇到有关 Azure 角色分配的问题，请参阅 [AZURE RBAC 故障排除](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
  
 #### <a name="unauthorized-client"></a>未经授权的客户端
 

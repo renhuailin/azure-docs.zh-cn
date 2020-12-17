@@ -252,9 +252,9 @@
             - name: 从 azure-eventhubs 迁移到 azure-messaging-eventhubs
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
             - name: azure-messaging-eventhubs（最新）
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-eventhubs/5.0.0-beta.6/index.html'
+              href: /java/api/overview/azure/messaging-eventhubs-readme?view=azure-java-stable
             - name: azure-eventhubs（旧版）
-              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-legacy
         - name: 管理库
           href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
@@ -269,7 +269,7 @@
               href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: 管理库
           href: /python/api/overview/azure/event-hub?view=azure-python
-    - name: Javascript
+    - name: JavaScript
       items:
         - name: 从 azure/eventhubs 版本 2 迁移到版本 5
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'

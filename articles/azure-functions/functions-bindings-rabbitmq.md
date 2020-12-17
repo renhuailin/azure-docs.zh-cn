@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617181"
+ms.locfileid: "97629623"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 绑定
 
 > [!NOTE]
-> 只有 **Windows 高级版** 计划完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
+> 只有 **Windows 高级版和专用** 计划才完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
 
 Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[RabbitMQ](https://www.rabbitmq.com/)集成。 Azure Functions RabbitMQ 绑定扩展允许使用 RabbitMQ API 和函数发送和接收消息。
 

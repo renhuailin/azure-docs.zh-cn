@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559635"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631034"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
@@ -199,7 +199,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 有关通过 ScriptRunConfig 配置作业的详细信息，请参阅[配置并提交训练运行](how-to-set-up-training-targets.md)。
 
 > [!WARNING]
-> 如果你以前使用 PyTorch 估算器来配置 PyTorch 训练作业，请注意，在 Azure ML SDK 的未来版本中将会弃用估算器。 对于不低于 1.15.0 版本的 Azure ML SDK，建议使用 ScriptRunConfig 作为配置训练作业（包括使用 DL 框架的作业）的方法。
+> 如果你以前使用 PyTorch 估计器来配置 PyTorch 培训作业，请注意，在 1.19.0 SDK 版本中，估算已弃用。 使用 Azure ML SDK >= 1.15.0，建议使用 ScriptRunConfig 方法配置训练作业，包括使用深度学习框架的培训。 有关常见的迁移问题，请参阅 [估计器 To ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
 
 ## <a name="submit-your-run"></a>提交运行
 
