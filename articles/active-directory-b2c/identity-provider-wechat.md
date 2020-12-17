@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 308cbc1e2a9d6e0fbce91b1fac5748af909cc2c1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584623"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654228"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微信帐户注册与登录
 
@@ -27,33 +27,31 @@ ms.locfileid: "97584623"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-::: zone pivot="b2c-custom-policy"
+## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-wechat-application"></a>创建 WeChat 应用程序
 
-要将微信帐户用作 Azure Active Directory B2C (Azure AD B2C) 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有微信帐户，可以在 [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) 处获取信息。
+要将微信帐户用作 Azure Active Directory B2C (Azure AD B2C) 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 WeChat 帐户，可以在获取信息 [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) 。
 
 ### <a name="register-a-wechat-application"></a>注册微信应用程序
 
-1. 使用微信凭据登录 [https://open.weixin.qq.com/](https://open.weixin.qq.com/)。
-1. 选择“管理中心”  (management center)。
+1. 以 [https://open.weixin.qq.com/](https://open.weixin.qq.com/) 你的 WeChat 凭据登录。
+1. 选择“管理中心”(management center)。
 1. 按照步骤注册新应用程序。
 1. 在“授权回调域”(callback URL) 中输入 `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
-1. 复制“应用 ID”  和“应用密钥”  。 将标识提供者添加到租户时需要这两项。
+1. 复制“应用 ID”和“应用密钥”。 将标识提供者添加到租户时需要这两项。
 
 ::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>将微信配置为租户中的标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
-1. 选择“标识提供者”  ，然后选择“微信(预览)”  。
-1. 输入“名称”  。 例如，WeChat  。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
+1. 选择“标识提供者”，然后选择“微信(预览)”。
+1. 输入“名称”。 例如，WeChat。
 1. 对于 **客户端 ID**，输入你之前创建的 WeChat 应用程序的应用 ID。
 1. 对于 **客户端密码**，输入你记录的应用密钥。
 1. 选择“保存”。 
@@ -187,7 +185,7 @@ ms.locfileid: "97584623"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要 WeChat 标识提供程序的用户流。
 1. 在 **社交标识提供者** 下，选择 " **WeChat**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

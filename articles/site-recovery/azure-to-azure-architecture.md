@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370417"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652239"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务为 Azure 虚拟机 (VM) 部署灾难恢复时所用的体系结构、组件和过程。 设置灾难恢复后，Azure Vm 将持续复制到其他目标区域。 如果发生服务中断，可将 VM 故障转移到次要区域，然后在次要区域中对其进行访问。 一切恢复正常后，可以执行故障回复，继续在主要位置操作。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务为 Azure 虚拟机 (VM) 部署灾难恢复时所用的体系结构、组件和过程。 设置好灾难恢复以后，Azure VM 就可以持续复制到不同的目标区域。 如果发生服务中断，可将 VM 故障转移到次要区域，然后在次要区域中对其进行访问。 一切恢复正常后，可以执行故障回复，继续在主要位置操作。
 
 
 
@@ -104,7 +104,7 @@ Site Recovery 按如下所述创建快照：
 
 **说明** | **详细信息** | 建议
 --- | --- | ---
-应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 在卷上执行写入时复制 (牛) 操作。<br/><br/>   3) 在执行牛之前，VSS 会通知计算机上的每个应用程序需要将内存驻留数据刷新到磁盘。<br/><br/>   4) VSS 之后，在这种情况下，备份/灾难恢复应用程序 (Site Recovery) 读取快照数据并继续操作。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
+应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
 ## <a name="replication-process"></a>复制过程
 
@@ -130,7 +130,7 @@ Site Recovery 按如下所述创建快照：
 
 | **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | 允许 VM 与 Site Recovery 服务进行通信。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |

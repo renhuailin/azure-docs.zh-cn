@@ -2,19 +2,19 @@
 title: 模板结构和语法
 description: 介绍使用声明性 JSON 语法) 的 Azure 资源管理器模板 (ARM 模板的结构和属性。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497871"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653123"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
 本文介绍了 Azure 资源管理器模板 (ARM 模板) 的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
 
-本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
+本文面向对 ARM 模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。 若要通过 Microsoft Learn 上的一组指导性模板了解 ARM 模板，请参阅 [使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 
 ## <a name="template-format"></a>模板格式
 
@@ -50,7 +50,7 @@ ms.locfileid: "96497871"
 
 在 ARM 模板中，可以使用以下数据类型：
 
-* 字符串
+* string
 * securestring
 * int
 * bool
@@ -288,7 +288,7 @@ ms.locfileid: "96497871"
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
 | dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅 [定义在 ARM 模板中部署资源的顺序](define-resource-dependency.md)。 |
-| tags |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
+| 标记 |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
 | copy |否 |如果需要多个实例，则为要创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。 |

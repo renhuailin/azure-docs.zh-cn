@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516403"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655469"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -97,11 +97,11 @@ A. 以下针对每个订单处理阶段的预计提前时间将让你充分了�
 **Data Box 订单的预计提前期：**
 
 1. 订单 Data Box：在门户中按几分钟
-2. 设备分配和准备：1-2 个工作日
+2. 设备分配和准备：1-2 工作日，受库存可用性和其他订单等待履单的限制
 3. 寄送：2-3 个工作日
 4. 客户站点上的数据复制：取决于数据的性质、大小和文件数
 5. 退货：2-3 个工作日
-6. 在数据中心处理设备：1-2 工作日
+6. 在数据中心处理设备：1-2 工作日，受其他订单等待处理
 7. 将数据上传到 Azure：完成处理并连接设备后立即开始。 上传时间取决于数据的性质、大小和文件数。
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>问： 我订购了多台 Data Box 设备。 我无法创建任何其他订单。 为什么？

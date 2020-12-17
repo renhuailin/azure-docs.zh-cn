@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ade28af1094694d2cb6dffaecec4e4131630535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584854"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654364"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -32,19 +32,7 @@ ms.locfileid: "97584854"
 
 ## <a name="prerequisites"></a>先决条件
 
-::: zone pivot="b2c-user-flow"
-
-* [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
 
@@ -54,7 +42,7 @@ ms.locfileid: "97584854"
 1. 选择 **"我的应用**"，然后单击 " **创建应用**"。
 1. 输入 **应用名称**、 **LinkedIn 页**、 **隐私策略 URL** 和 **应用徽标**。
 1. 同意 LinkedIn **API 使用条款** ，并单击 " **创建应用**"。
-1. 选择 " **身份验证** " 选项卡。在 " **身份验证密钥**" 下，复制 " **客户端 ID** " 和 " **客户端密码**" 值。 你将需要这两个将 LinkedIn 配置为租户中的标识提供者。 “客户端密钥”是一个很重要的安全凭据。
+1. 选择 " **身份验证** " 选项卡。在 " **身份验证密钥**" 下，复制 " **客户端 ID** " 和 " **客户端密码**" 值。 你将需要这两个将 LinkedIn 配置为租户中的标识提供者。 “客户端密钥”  是一个重要的安全凭据。
 1. 选择 **应用的授权重定向 url** 旁边的 "编辑铅笔"，然后选择 " **添加重定向 URL**"。 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ，将替换 `your-tenant-name` 为你的租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“更新”。
 2. 默认情况下，LinkedIn 应用未批准与登录相关的作用域。 若要请求复查，请选择 " **产品** " 选项卡，然后选择 " **使用 LinkedIn 登录**"。 评审完成后，所需范围将添加到你的应用程序。
    > [!NOTE]
@@ -71,7 +59,7 @@ ms.locfileid: "97584854"
 1. 输入“名称”。 例如 *LinkedIn*。
 1. 对于“客户端 ID”，请输入前面创建的 LinkedIn 应用程序的客户端 ID。
 1. 对于 **客户端密码**，请输入你记录的客户端密码。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ::: zone-end
 
@@ -246,7 +234,7 @@ LinkedIn 技术配置文件需要将 **ExtractGivenNameFromLinkedInResponse** �
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要访问 LinkedIn 标识提供者的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **LinkedIn**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

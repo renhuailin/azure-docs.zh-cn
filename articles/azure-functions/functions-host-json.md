@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746074"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654806"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -129,7 +129,8 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -234,7 +235,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|属性 | 默认 | 描述 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- |
 | defaultExecutablePath | 不适用 | 要作为自定义处理程序进程启动的可执行文件。 当使用自定义处理程序，并且它的值相对于 function app root 时，它是必需的设置。 |
 | workingDirectory | *函数应用根* | 要在其中启动自定义处理程序进程的工作目录。 它是一个可选设置，它的值相对于 function app root。 |
@@ -425,7 +426,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -444,6 +445,16 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+一个或多个文件名称的数组，这些文件将监视需要重新启动应用的更改。  这可保证当这些文件中的代码更改时，这些更新会由函数选取。
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0b6e8b165dc8663d253ebd2ed2314195341142e0
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584988"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654381"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -34,19 +34,7 @@ ms.locfileid: "97584988"
 
 ## <a name="prerequisites"></a>先决条件
 
-::: zone pivot="b2c-user-flow"
-
-* [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>注册 Azure AD 应用
 
@@ -113,7 +101,7 @@ ms.locfileid: "97584988"
     - 姓氏：family_name
     - **电子邮件**： *preferred_username*
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ::: zone-end
 
@@ -252,7 +240,7 @@ ms.locfileid: "97584988"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要 Azure AD 标识提供者的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **Contoso Azure AD**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

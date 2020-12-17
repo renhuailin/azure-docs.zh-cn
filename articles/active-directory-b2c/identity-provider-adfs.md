@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e9cf9a7c2556a1f0710b2bf646d83ffbf84ea97
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585048"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653837"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略将 AD FS 添加为 SAML 标识提供者
 
@@ -39,7 +39,7 @@ ms.locfileid: "97585048"
 ## <a name="prerequisites"></a>先决条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-- 请确保你有权访问包含私钥的证书 .pfx 文件。 可以生成自己的签名证书并将其上传到 Azure AD B2C。 Azure AD B2C 使用此证书对发送到 SAML 标识提供者的 SAML 请求进行签名。 有关如何生成证书的详细信息，请参阅 [生成签名证书](identity-provider-salesforce.md#generate-a-signing-certificate)。
+- 请确保你有权访问包含私钥的证书 .pfx 文件。 可以生成自己的签名证书并将其上传到 Azure AD B2C。 Azure AD B2C 使用此证书对发送到 SAML 标识提供者的 SAML 请求进行签名。 有关如何生成证书的详细信息，请参阅 [生成签名证书](identity-provider-salesforce-saml.md#generate-a-signing-certificate)。
 - 为了使 Azure 接受 .pfx 文件密码，必须通过 Windows 证书存储导出实用工具中的 TripleDES-SHA1 选项（而不是 AES256-SHA256）对密码进行加密。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥

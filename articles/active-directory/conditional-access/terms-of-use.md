@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509982"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653718"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -238,8 +238,8 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 2.  选择要编辑的使用条款。
 3.  单击“编辑条款”。
 4.  对于要更新新版本的语言，请单击 "操作" 列下的 " **更新** "
- 
-     ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-terms-use.png)
+
+    ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-terms-use.png)
 
 5.  在右侧窗格中，上传新版本的 pdf
 6.  如果希望要求用户在下次登录时接受此新版本，还 **需要面向** 的切换选项。 如果你需要用户面向，则在下次尝试访问你的条件访问策略中定义的资源时，系统将提示他们接受此新版本。 如果不需要用户进行面向，则其先前同意将保持最新，并且只有或其同意过期的新用户才会看到新版本。

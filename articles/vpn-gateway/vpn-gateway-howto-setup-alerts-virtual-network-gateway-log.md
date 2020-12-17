@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
-ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006995"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656608"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>针对来自 VPN 网关的资源日志事件设置警报
 
@@ -21,7 +21,7 @@ ms.locfileid: "96006995"
 Azure 中提供以下资源日志：
 
 |***名称** _ | _*_说明_*_ |
-|---        | ---               |
+|--- | --- |
 |GatewayDiagnosticLog | 包含网关配置事件、主要更改和维护事件的资源日志 |
 |TunnelDiagnosticLog | 包含隧道状态更改事件。 在适用的情况下，隧道连接/断开连接事件将汇总有关状态更改的原因 |
 |RouteDiagnosticLog | 记录网关上的静态路由和 BGP 事件发生的更改 |

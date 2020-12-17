@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ed36948faf6fe12467128a57af634e52ee457180
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584980"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653803"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -32,19 +32,7 @@ ms.locfileid: "97584980"
 
 ## <a name="prerequisites"></a>先决条件
 
-::: zone pivot="b2c-user-flow"
-
-* [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 本文说明如何使用多租户终结点为用户登录，以便 Azure Active Directory (Azure AD) 。 这允许多个 Azure AD 租户中的用户使用 Azure AD B2C 登录，无需为每个租户配置标识提供者。 但是，任何这些租户中的来宾成员都将无法登录。 为此，你需要[单独配置每个租户](identity-provider-azure-ad-single-tenant.md)。
 
@@ -113,7 +101,7 @@ ms.locfileid: "97584980"
     - 姓氏：family_name
     - **电子邮件**： *preferred_username*
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ::: zone-end
 
@@ -265,7 +253,7 @@ ms.locfileid: "97584980"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要 Azure AD 标识提供者的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **Contoso Azure AD**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

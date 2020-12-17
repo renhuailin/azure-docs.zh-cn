@@ -4,12 +4,12 @@ description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167791"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655809"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -29,7 +29,7 @@ Visual Studio 在开发函数时具有以下优势：
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure Functions Tools。 若要添加 Azure Functions Tools，请确保在 Visual Studio 安装中包括 **Azure 开发**工作负荷。 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Azure 开发工作负荷中。
+- Azure Functions Tools。 若要添加 Azure Functions Tools，请确保在 Visual Studio 安装中包括 **Azure 开发** 工作负荷。 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Azure 开发工作负荷中。
 
 - 所需的其他资源（例如 Azure 存储帐户）将在发布过程中在订阅中创建。
 
@@ -46,7 +46,7 @@ Visual Studio 在开发函数时具有以下优势：
 
     ![验证 Functions 工具版本](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. 记下已安装**版本**并将此版本与[发行说明](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)中列出的最新版本进行比较。 
+1. 记下已安装 **版本** 并将此版本与 [发行说明](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)中列出的最新版本进行比较。 
 
 1. 如果你的版本较旧，可以在 Visual Studio 中更新工具，如以下部分中所示。
 
@@ -86,6 +86,18 @@ Visual Studio 在开发函数时具有以下优势：
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅[环境变量](functions-dotnet-class-library.md#environment-variables)。
 
+## <a name="configure-your-build-output-settings"></a>配置生成输出设置
+
+生成 Azure Functions 项目时，生成工具会优化输出，以便保留与函数运行时共享的任何程序集的一个副本。 结果就是一个经过优化的生成，它可节省尽可能多的空间。 但是，当你移动到任何项目程序集的较新版本时，生成工具可能不知道必须保留这些程序集。 若要确保在优化过程中保留这些程序集，你可以使用 `FunctionsPreservedDependencies` 项目中的元素指定它们 ( .csproj) 文件：
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
 Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 之外的所有触发器类型，请将 `Values.AzureWebJobsStorage` 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 `AzureWebJobsStorage` 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 `AzureWebJobsStorage` 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
@@ -106,7 +118,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 1. 在“解决方案资源管理器”中，右键单击你的项目节点，然后选择“添加” > “新建项”。 
 
-2. 选择“Azure 函数”，输入类的**名称**，然后选择“添加”。 
+2. 选择“Azure 函数”，输入类的 **名称**，然后选择“添加”。 
 
 3. 选择你的触发器，设置绑定属性，然后选择“确定”。 以下示例显示了用于创建队列存储触发器函数的设置。 
 
@@ -229,9 +241,9 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="monitoring-functions"></a>监视函数
 
-监视函数执行的建议方法是将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。 若要了解如何将 Application Insights 连接到函数应用，请参阅 [启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。
+监视函数执行的建议方法是将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。 若要了解如何将 Application Insights 连接到函数应用，请参阅[启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。
 
-若要了解有关使用 Application Insights 进行监视的详细信息，请参阅 [监视 Azure Functions](functions-monitoring.md)。
+若要了解有关使用 Application Insights 进行监视的详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

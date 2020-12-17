@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074662"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651967"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -64,11 +64,11 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 不需更改现有应用注册即可使用 MSAL。 若要利用增量/渐进式许可，可能需要查看注册，以识别要增量请求的特定范围。 下面是有关范围和增量许可的详细信息。
 
-在门户中的应用注册中，你将看到 " **API 权限** " 选项卡。这会提供 Api 和权限列表 (范围) 应用当前配置为请求访问。 其中还显示与每个 API 权限关联的范围名称列表。
+在门户上的应用注册中，将会看到“API 权限”选项卡。  其中提供了应用当前配置为请求访问的 API 和权限（范围）的列表。 其中还显示与每个 API 权限关联的范围名称列表。
 
 ### <a name="user-consent"></a>用户同意
 
-使用 ADAL 和 Azure AD v1 终结点，用户同意其拥有的资源是在首次使用时授予的。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
+首次使用 ADAL 和 Azure AD v1 终结点时，就会授予用户对其拥有的资源的许可。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
 
 > [!TIP]
 > 如果需要向用户提供额外的上下文来解释为何应用需要某个权限，我们建议使用增量许可。
@@ -87,9 +87,9 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 如果目前使用的是 ADAL 且不需要使用增量许可，则开始使用 MSAL 的最简单方法是使用新的 `AcquireTokenParameter` 对象并设置资源 ID 值来发出 `acquireToken` 请求。
 
 > [!CAUTION]
-> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致 `IllegalArgumentException` 。
+> 不能同时设置范围和资源 ID。尝试同时设置两者会导致 `IllegalArgumentException`。
 
- 这与使用 v1 时的行为相同。 在应用注册中请求的所有权限是用户首次交互期间从用户请求的。
+这与使用 v1 时的行为相同。 在应用注册中请求的所有权限是用户首次交互期间从用户请求的。
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>仅在有需要时才进行身份验证并请求权限
 
@@ -102,8 +102,8 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 用于向 MSAL 发出请求的参数对象支持：
 
-- `Scope`：你要为其请求授权的作用域的列表，并收到访问令牌。
-- `ExtraScopesToConsent`：你希望在请求其他资源的访问令牌时请求授权的作用域的其他列表。 使用此范围列表可以最大程度地减少请求用户授权的次数。 这意味着可以减少用户授权或许可提示的次数。
+- `Scope`：要请求其授权并接收其访问令牌的范围列表。
+- `ExtraScopesToConsent`：在请求另一资源的访问令牌时要请求其授权的范围的附加列表。 使用此范围列表可以最大程度地减少请求用户授权的次数。 这意味着可以减少用户授权或许可提示的次数。
 
 ## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>从 AuthenticationContext 迁移到 PublicClientApplications
 
@@ -128,16 +128,16 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 如果尝试使用 Microsoft 未知的颁发机构，并且未在配置中包含该颁发机构，将会收到 `UnknownAuthorityException`。
 
-### <a name="logging"></a>Logging
+### <a name="logging"></a>日志记录
 现在可在配置中以声明方式配置日志记录，如下所示：
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>从 UserInfo 迁移到帐户
 
@@ -147,7 +147,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 与金融机构的帐户一样，Microsoft 标识平台中的帐户也是使用凭据访问的。 这些凭据是在 Microsoft 注册的、由 Microsoft 颁发， 或者由 Microsoft 代表某家组织颁发。
 
-相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面的示例说明：
+相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面是一个示例：
 
 Sam 在 Contoso.com 任职，同时管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 能够管理 Fabrikam 的虚拟机，他需要获取访问这些虚拟机的授权。 要向 Sam 授予此访问权限，可将其帐户添加到 Fabrikam.com，并向其帐户授予一个可以管理虚拟机的角色。 也可以使用 Azure 门户进行这种授权。
 
@@ -248,18 +248,18 @@ MSAL 中提供异常层次结构，每个异常具有自身的一组关联的特
 | `MsalUiRequiredException`                        | 当令牌无法以静默方式刷新时引发。                    |
 | `MsalUserCancelException`                        | 当用户取消了身份验证流时引发。                |
 
-### <a name="adalerror-to-msalexception-translation"></a>ADALError MsalException 转换
+### <a name="adalerror-to-msalexception-translation"></a>ADALError 到 MsalException 转换
 
-| 如果要在 ADAL 中捕获这些错误 .。。  | ...捕获以下 MSAL 异常：                                                         |
+| 如果你在 ADAL 中发现这些错误  | 捕获到以下 MSAL 异常：                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| *无等效 ADALError* | `MsalArgumentException`                          |
+| 无等效 ADALError | `MsalArgumentException`                          |
 | <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
-| *无等效 ADALError* | `MsalDeclinedScopeException`                     |
+| 无等效 ADALError | `MsalDeclinedScopeException`                     |
 | <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
-| *无等效 ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| 无等效 ADALError | `MsalIntuneAppProtectionPolicyRequiredException` |
 | <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
 | <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
-| *无等效 ADALError* | `MsalUserCancelException`                        |
+| 无等效 ADALError | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL 日志记录到 MSAL 日志记录
 

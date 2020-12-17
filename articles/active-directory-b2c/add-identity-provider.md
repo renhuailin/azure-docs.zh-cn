@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7d694ec97f6dac93b7bc20908e0a7c29f7f23661
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 92dd45b5aa6ca720e73baae8287e5d70e03bbe4c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939061"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653939"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>将标识提供者添加到 Azure Active Directory B2C 租户
 
@@ -40,7 +40,8 @@ ms.locfileid: "96939061"
 * [Facebook](identity-provider-facebook.md)
 * [一般标识提供者](identity-provider-generic-openid-connect.md)
 * [GitHub](identity-provider-github.md)
-* [Google](identity-provider-google.md)
+* [ID.me](identity-provider-github.md)
+* [Google](identity-provider-id-me.md)
 * [LinkedIn](identity-provider-linkedin.md)
 * [Microsoft 帐户](identity-provider-microsoft-account.md)
 * [QQ](identity-provider-qq.md)

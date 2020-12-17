@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320449"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652839"
 ---
 # <a name="system-tables-and-views"></a>系统表和视图
 
@@ -38,7 +38,7 @@ Pg \_ dist \_ 分区表存储有关数据库中的哪些表分布的元数据。
 | logicalrelid | regclass | 该行对应的分布式表。 此值引用 pg_class 系统目录表中的 relfilenode 列。                                                                                                                   |
 | partmethod   | char     | 用于分区/分布的方法。 此列的值与不同的分布方法相对应： "a"，哈希： "h"，引用表： "n"                                                                          |
 | partkey      | text     | 有关分布列的详细信息，包括列号、类型和其他相关信息。                                                                                                                                      |
-| colocationid | 整型  | 此表所属的归置组。 同一组中的表允许在其他优化之间进行分散联接和分布式汇总。 此值引用 pg_dist_colocation 表中的 colocationid 列。                      |
+| colocationid | integer  | 此表所属的归置组。 同一组中的表允许在其他优化之间进行分散联接和分布式汇总。 此值引用 pg_dist_colocation 表中的 colocationid 列。                      |
 | repmodel     | char     | 用于数据复制的方法。 此列的值与不同的复制方法相对应： Citus 基于语句的复制： "c"、"postgresql 流式复制："、两阶段提交 (用于引用表) ： "t" |
 
 ```
@@ -153,12 +153,12 @@ Citus.pg \_ dist \_ 对象表包含一个对象列表，这些对象（如类型
 |-----------------------------|---------|------------------------------------------------------|
 | classid                     | oid     | Distributed 对象的类                      |
 | objid                       | oid     | 分布式对象的对象 ID                  |
-| objsubid                    | 整型 | 分布式对象的对象子 ID，例如，attnum |
+| objsubid                    | integer | 分布式对象的对象子 ID，例如，attnum |
 | type                        | text    | 在 pg 升级过程中使用的稳定地址的一部分   |
 | object_names                | 文本 []  | 在 pg 升级过程中使用的稳定地址的一部分   |
 | object_args                 | 文本 []  | 在 pg 升级过程中使用的稳定地址的一部分   |
-| distribution_argument_index | 整型 | 仅对分布式函数/过程有效      |
-| colocationid                | 整型 | 仅对分布式函数/过程有效      |
+| distribution_argument_index | integer | 仅对分布式函数/过程有效      |
+| colocationid                | integer | 仅对分布式函数/过程有效      |
 
 \"稳定地址 \" 唯一标识独立于特定服务器的对象。 超大规模 (Citus) 使用使用 [pg 将 \_ \_ 对象标识 \_ 为 \_ address ( # B3 ](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-OBJECT-TABLE) 函数创建的稳定地址在 PostgreSQL 升级期间跟踪对象。
 
@@ -208,7 +208,7 @@ colocationid                |
 
 ### <a name="colocation-group-table"></a>归置组表
 
-Pg \_ dist \_ 归置表包含有关 \' 应将分片放在一起或定位在一起的[colocated](concepts-hyperscale-colocation.md)表的信息。
+Pg \_ dist \_ 归置表包含有关 \' 应将分片放在一起或定位在一起的[](concepts-hyperscale-colocation.md)表的信息。
 当两个表位于同一个归置组中时，超大规模 (Citus) 确保将具有相同分区值的分片放在同一工作节点上。
 归置支持联接优化、某些分布式汇总和外键支持。 在两个表之间的分片计数、复制因子和分区列类型均匹配时，将推断分片归置;但是，如果需要，可以在创建分布式表时指定自定义归置组。
 

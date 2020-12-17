@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546715"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657084"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>还原已删除的 Azure Database for MySQL 服务器
 
@@ -45,15 +45,15 @@ ms.locfileid: "92546715"
  6. 滚动到 "请求正文" 部分，并粘贴以下内容替换 "删除的服务器位置"、"submissionTimestamp" 和 "resourceId"。 对于 "restorePointInTime"，请将 "submissionTimestamp" 值指定为减 **15 分钟** ，以确保命令不会出错。
  
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
+    {
+        "location": "Dropped Server Location",  
+        "properties": 
+            {
+                "restorePointInTime": "submissionTimestamp - 15 minutes",
+                "createMode": "PointInTimeRestore",
+                "sourceServerId": "resourceId"
             }
-        }
+    }
     ```
 
 7. 如果看到响应代码201或202，则已成功提交还原请求。 

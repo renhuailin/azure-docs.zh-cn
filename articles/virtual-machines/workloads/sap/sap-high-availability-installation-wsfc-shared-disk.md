@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81721cb52035a51cffa2667568914c780b4c397b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1324afb38560afeb43b5be9191b6e2e7afc5c81d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588652"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654891"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -66,8 +66,6 @@ ms.locfileid: "97588652"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-
-
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
@@ -173,7 +171,6 @@ ms.locfileid: "97588652"
 > [!IMPORTANT]
 > 如果使用 SIOS 显示共享磁盘，请不要将页面文件放置在 DataKeeper 镜像卷上。 可将页面文件保留在 Azure 虚拟机的临时驱动器 D 上，这是默认值。 如果它尚未在该位置，请将 Windows 页面文件移到 Azure 虚拟机的驱动器 D。  
 
-
 安装包含高可用性 ASCS/SCS 实例的 SAP 系统的过程包括以下任务：
 
 * 为群集 SAP ASCS/SCS 实例创建虚拟主机名。
@@ -189,7 +186,6 @@ ms.locfileid: "97588652"
    > [!IMPORTANT]
    > 分配给 ASCS/SCS 实例的虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器的 IP 地址相同。  
 
-
    ![图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046]
 
    _定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目_
@@ -199,11 +195,9 @@ ms.locfileid: "97588652"
    > [!IMPORTANT]
    > 分配给 ERS2 实例虚拟主机名的 IP 地址必须是分配给 Azure 负载均衡器的 IP 地址的第二个 ip 地址。    
 
-
    ![图1A：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046-ers2]
 
    _为 SAP ERS2 群集虚拟名称和 TCP/IP 地址定义 DNS 条目_
-
 
 3. 若要定义分配给虚拟主机名的 IP 地址，请选择 " **DNS 管理器**  >  **域**"。
 
@@ -219,7 +213,6 @@ ms.locfileid: "97588652"
    * **Java 系统**：**SCS** 实例编号 **01**
    * **ABAP+Java 系统**：**ASCS** 实例编号 **00** 和 **SCS** 实例编号 **01**
 
-
    > [!IMPORTANT]
    > 请记住，Azure 内部负载均衡器的配置负载均衡规则 (如果使用基本 SKU) 并且所选 SAP 实例编号必须匹配。
 
@@ -227,8 +220,6 @@ ms.locfileid: "97588652"
 
 > [!TIP]
 > SAP 安装文档介绍如何安装第一个 ASCS/SCS 群集节点。
-
-
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>修改 ASCS/SCS 实例的 SAP 配置文件
 
@@ -295,7 +286,6 @@ ms.locfileid: "97588652"
     .PARAMETER IsSAPERSClusteredInstance 
     Optional parameter.Default value is '$False'.
     If set to $True , then handle clsutered new SAP ERS2 instance.
-
 
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562559"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654823"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -49,7 +49,7 @@ ms.locfileid: "97562559"
 
 请参阅下表，了解可以异步使用哪些功能。 请注意，只能从终结点调用几个功能 `/analyze` 。 
 
-| 功能 | Synchronous | 异步 |
+| Feature | Synchronous | 异步 |
 |--|--|--|
 | 语言检测 | ✔ |  |
 | 情绪分析 | ✔ |  |
@@ -64,9 +64,6 @@ ms.locfileid: "97562559"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
-
 <a name="json-schema"></a>
 
 ## <a name="api-request-formats"></a>API 请求格式
@@ -79,10 +76,10 @@ ms.locfileid: "97562559"
 
 对于所有同步操作，API 请求的格式都是相同的。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。
 
-| 元素 | 有效值 | 必需？ | 使用情况 |
+| 元素 | 有效值 | 是否必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必须 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
-|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必须 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../language-support.md)。 |
+|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必需 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
+|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必需 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../language-support.md)。 |
 |`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 多种多样 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
 
 下面是同步文本分析终结点的 API 请求的示例。 
@@ -114,15 +111,15 @@ ms.locfileid: "97562559"
 * 关键短语提取 
 * 命名实体识别 (包括 PII 和 PHI) 
 
-| 元素 | 有效值 | 必需？ | 使用情况 |
+| 元素 | 有效值 | 是否必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
 |`displayName` | 字符串 | 可选 | 用作作业的唯一标识符的显示名称。|
-|`analysisInput` | 包括 `documents` 以下字段 | 必须 | 包含要发送的文档的信息。 |
-|`documents` | 包括 `id` 以下和 `text` 字段 | 必须 | 包含要发送的每个文档的信息以及文档的原始文本。 |
+|`analysisInput` | 包括 `documents` 以下字段 | 必需 | 包含要发送的文档的信息。 |
+|`documents` | 包括 `id` 以下和 `text` 字段 | 必需 | 包含要发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 Id 用于构建输出的结构。 |
-|`text` | 非结构化原始文本，最多125000个字符。 | 必须 | 必须采用英语语言，这是当前唯一支持的语言。 |
-|`tasks` | 包括以下文本分析功能： `entityRecognitionTasks` 、 `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必须 | 要使用的一个或多个文本分析功能。 请注意， `entityRecognitionPiiTasks` 有一个可选 `domain` 参数，可将其设置为 `pii` 或 `phi` 。 如果未指定，则系统默认为 `pii` 。 |
-|`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必须 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
+|`text` | 非结构化原始文本，最多125000个字符。 | 必需 | 必须采用英语语言，这是当前唯一支持的语言。 |
+|`tasks` | 包括以下文本分析功能： `entityRecognitionTasks` 、 `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必需 | 要使用的一个或多个文本分析功能。 请注意， `entityRecognitionPiiTasks` 有一个可选 `domain` 参数，可将其设置为 `pii` 或 `phi` 。 如果未指定，则系统默认为 `pii` 。 |
+|`parameters` | 包括 `model-version` 以下和 `stringIndexType` 字段 | 必需 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本的信息和索引类型。 |
 |`model-version` | String | 必须 | 指定要使用的模型的版本。  |
 |`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型 `textElement_v8` (默认值) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 有关详细信息，请参阅 [文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
 |`domain` | 字符串 | 可选 | 仅适用于任务的参数 `entityRecognitionPiiTasks` ，可以设置为 `pii` 或 `phi` 。 如果未指定，则默认为 `pii` 。  |
@@ -170,11 +167,11 @@ ms.locfileid: "97562559"
 
 针对运行状况托管 API 的文本分析的 API 请求的格式与它的容器的格式相同。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由以下描述的元素组成。  请填写并提交 [认知服务请求表单](https://aka.ms/csgate) ，请求访问运行状况公共预览版文本分析。 不会向你收取文本分析的健康状况。 
 
-| 元素 | 有效值 | 必需？ | 使用情况 |
+| 元素 | 有效值 | 是否必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
-|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必须 | 系统使用你提供的 ID 来构建输出。 |
-|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必须 | 请注意，目前仅支持英文文本。 |
-|`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 必须 | `en`目前仅支持。 |
+|`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必需 | 系统使用你提供的 ID 来构建输出。 |
+|`text` | 非结构化原始文本，最多 5,120 个字符。 | 必需 | 请注意，目前仅支持英文文本。 |
+|`language` | [支持语言](../language-support.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 必需 | `en`目前仅支持。 |
 
 下面是运行状况终结点的文本分析 API 请求的示例。 
 
@@ -208,7 +205,7 @@ example.json
 
 ### <a name="endpoints-for-sending-synchronous-requests"></a>用于发送同步请求的终结点
 
-| 功能 | 请求类型 | 资源终结点 |
+| Feature | 请求类型 | 资源终结点 |
 |--|--|--|
 | 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -222,14 +219,14 @@ example.json
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>用于将异步请求发送到终结点的终结点 `/analyze`
 
-| 功能 | 请求类型 | 资源终结点 |
+| Feature | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>用于将异步请求发送到终结点的终结点 `/health`
 
-| 功能 | 请求类型 | 资源终结点 |
+| Feature | 请求类型 | 资源终结点 |
 |--|--|--|
 | 提交运行状况作业文本分析  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |

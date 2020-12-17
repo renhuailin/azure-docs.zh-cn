@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187232"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656931"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -20,13 +20,13 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 * 控制平面 Api 是 [Azure 资源管理器 (ARM) ](../azure-resource-manager/management/overview.md) api，涵盖创建和删除实例等资源管理操作。 
 * 数据平面 Api 是 Azure 数字孪生 Api，可用于管理模型、孪生和图形等数据管理操作。
 
-本文概述了可用的 Api 以及与它们进行交互的方法。 可以通过 Postman 等工具（如) [Postman](how-to-use-postman.md) ）或 SDK 直接将 REST api 与关联的 swagger (一起使用。
+本文概述了可用的 Api 以及与它们进行交互的方法。 可以通过 Postman 等工具（如) [](how-to-use-postman.md) ）或 SDK 直接将 REST api 与关联的 swagger (一起使用。
 
 ## <a name="overview-control-plane-apis"></a>概述：控制平面 Api
 
 控制平面 Api 是用于将 Azure 数字孪生实例作为一个整体进行管理的 [ARM](../azure-resource-manager/management/overview.md) api，因此它们涵盖了创建或删除整个实例等操作。 你还将使用这些终结点来创建和删除终结点。
 
-最新的控制平面 API 版本为 _**2020-10-31**_。
+最新的控制平面 API 版本为 _**2020-12-01**_。
 
 使用控制平面 Api：
 * 您可以通过在 [控制平面 Swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中引用最新 Swagger 直接调用 api。 此存储库还包含演示使用情况的示例文件夹。

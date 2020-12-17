@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 46b1a7845a0da1ede30ed450f1e673f40e450105
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4407ddb80b00c847e14643be816bc681718dcb8b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905377"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652205"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -85,7 +85,7 @@ ms.locfileid: "96905377"
 | 5.5 CU1 | 5.5.216.0    | 不可用 |
 | 5.5 CU2 | 5.5.219.0    | 不可用 |
 | 5.5 CU3 | 5.5.227.0    | 不可用 |
-| 5.5 CU4 | 5.5.232.0    | 不可用 |
+| 5.5 CU4 | 5.5.232.0 | 不可用 |
 | 5.6 RTO | 5.6.204.9494 | 不可用 |
 | 5.6 CU2 | 5.6.210.9494 | 不可用 |
 | 5.6 CU3 | 5.6.220.9494 | 不可用 |

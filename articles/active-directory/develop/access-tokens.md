@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518237"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653276"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -37,7 +37,7 @@ ms.locfileid: "96518237"
 
 ### <a name="v10-and-v20"></a>v1.0 和 v2。0 
 
-Microsoft 标识平台提供了两个版本的访问令牌：1.0 版和 v2.0 版。  这些版本控制令牌中的声明，确保 web API 可以控制其标记的外观。 在仅限 Azure AD 的应用的注册-1.0 版和支持使用者帐户的应用程序的 v2.0 中，Web Api 将其中一种选为默认值。  这可通过应用程序清单中的设置对应用程序进行控制 `accessTokenAcceptedVersion` ，其中[app manifest](reference-app-manifest.md#manifest-reference)和将 `null` `1` 生成1.0 版令牌，并生成 v2.0 `2` 令牌。
+Microsoft 标识平台提供了两个版本的访问令牌：1.0 版和 v2.0 版。  这些版本控制令牌中的声明，确保 web API 可以控制其标记的外观。 在仅限 Azure AD 的应用的注册-1.0 版和支持使用者帐户的应用程序的 v2.0 中，Web Api 将其中一种选为默认值。  这可通过应用程序清单中的设置对应用程序进行控制 `accessTokenAcceptedVersion` ，其中[](reference-app-manifest.md#manifest-reference)和将 `null` `1` 生成1.0 版令牌，并生成 v2.0 `2` 令牌。
 
 ### <a name="what-app-is-a-token-for"></a>什么是 "for" 标记？
 
@@ -91,7 +91,7 @@ JWT（JSON Web 令牌）拆分成三个部分：
 
 ### <a name="payload-claims"></a>有效负载声明
 
-| 声明 | 格式 | 描述 |
+| 声明 | 格式 | 说明 |
 |-----|--------|-------------|
 | `aud` | String，应用 ID URI 或 GUID | 标识令牌的目标接收方。  如果值不匹配，API 应该验证此值并拒绝令牌。 在 v2.0 令牌中，这始终是 API 的客户端 ID，而在1.0 版令牌中，它可以是客户端 ID 或请求中使用的资源 URI，具体取决于客户端请求令牌的方式。|
 | `iss` | 字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果颁发的令牌是 v2.0 令牌（请参阅 `ver` 声明），则 URI 将以 `/v2.0` 结尾。 表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 如果适用，你的应用可以使用声明的 GUID 部分限制可登录到应用的租户集。 |
@@ -140,8 +140,8 @@ JWT（JSON Web 令牌）拆分成三个部分：
        }
      }
   ...
- }
- ```
+}
+```
 
 可使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts)文件夹中提供的 `BulkCreateGroups.ps1` 来帮助测试超额方案。
 
@@ -186,7 +186,7 @@ Microsoft 标识可以通过与应用程序相关的不同方式进行身份验�
 
 如果上述方案均不适用，则您的应用程序将不能从验证令牌中获益，如果根据令牌的有效性做出决策，则可能会带来安全和可靠性方面的风险。  公共客户端（例如本机应用或 Spa）不会从验证令牌中获益，应用会直接与 IDP 进行通信，因此 SSL 保护可确保令牌的有效性。
 
- Api 和 web 应用只能验证具有 `aud` 与应用程序匹配的声明的令牌; 其他资源可能具有自定义令牌验证规则。 例如，Microsoft Graph 的令牌不会根据这些规则进行验证，因为其专用格式。 验证和接受用于另一资源的令牌就是 [deputy](https://cwe.mitre.org/data/definitions/441.html) 问题的一个示例。
+Api 和 web 应用只能验证具有 `aud` 与应用程序匹配的声明的令牌; 其他资源可能具有自定义令牌验证规则。 例如，Microsoft Graph 的令牌不会根据这些规则进行验证，因为其专用格式。 验证和接受用于另一资源的令牌就是 [deputy](https://cwe.mitre.org/data/definitions/441.html) 问题的一个示例。
 
 如果你的应用程序需要根据以上说明验证 id_token 或 access_token，你的应用程序应首先根据 OpenID 发现文档中的值验证令牌的签名和颁发者。 例如，文档的租户独立版本位于 [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。
 
