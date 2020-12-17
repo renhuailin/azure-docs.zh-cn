@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 85fabb540180adb1848285f4c40f944225db2760
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541741"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508571"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -52,7 +52,7 @@ ms.locfileid: "91541741"
     3. 将完整数据从源数据库加载到 Azure Blob 存储中。
 2. **以增量方式按计划加载增量数据**（在首次加载数据后定期运行）：
     1. 获取旧的和新的 SYS_CHANGE_VERSION 值。
-    2. 将 **sys.change_tracking_tables** 中已更改行（两个 SYS_CHANGE_VERSION 值之间）的主键与**源表**中的数据联接，以便加载增量数据，然后将增量数据移到目标位置。
+    2. 将 **sys.change_tracking_tables** 中已更改行（两个 SYS_CHANGE_VERSION 值之间）的主键与 **源表** 中的数据联接，以便加载增量数据，然后将增量数据移到目标位置。
     3. 更新 SYS_CHANGE_VERSION，以便下次进行增量加载。
 
 ## <a name="high-level-solution"></a>高级解决方案
@@ -62,9 +62,9 @@ ms.locfileid: "91541741"
 
     ![完整地加载数据](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png)
 1.  **增量加载：** 创建一个包含以下活动的管道并定期运行。
-    1. 创建**两项查找活动**，从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。
-    2. 创建**一项复制活动**，将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。
-    3. 创建**一项存储过程活动**，更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
+    1. 创建 **两项查找活动**，从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。
+    2. 创建 **一项复制活动**，将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。
+    3. 创建 **一项存储过程活动**，更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
 
     ![增量加载流程图](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
@@ -74,13 +74,13 @@ ms.locfileid: "91541741"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
-* **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)一文获取创建步骤。
-* **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
+* **Azure SQL 数据库**。 将数据库用作 **源** 数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)一文获取创建步骤。
+* **Azure 存储帐户**。 将 Blob 存储用作 **接收器** 数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-database"></a>在数据库中创建数据源表
 
 1. 启动 SQL Server Management Studio，连接到 SQL 数据库。
-2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
+2. 在“服务器资源管理器”中，右键单击你的 **数据库**，然后选择“新建查询”。
 3. 针对数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
 
     ```sql
@@ -102,7 +102,7 @@ ms.locfileid: "91541741"
         (5, 'eeee', 22);
 
     ```
-4. 通过运行以下 SQL 查询，在数据库和源表 (data_source_table) 上启用**更改跟踪**机制：
+4. 通过运行以下 SQL 查询，在数据库和源表 (data_source_table) 上启用 **更改跟踪** 机制：
 
     > [!NOTE]
     > - 将 &lt;your database name&gt; 替换为你的数据库的名称，其中包含 data_source_table。
@@ -143,8 +143,8 @@ ms.locfileid: "91541741"
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -193,7 +193,7 @@ ms.locfileid: "91541741"
     ```
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
-* 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
+* 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
 * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
@@ -225,7 +225,7 @@ ms.locfileid: "91541741"
 
     下面是示例输出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -256,7 +256,7 @@ ms.locfileid: "91541741"
 
     下面是示例输出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -424,7 +424,7 @@ ms.locfileid: "91541741"
 
    下面是示例输出：
 
-   ```json
+   ```console
     PipelineName      : FullCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -445,13 +445,13 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
 
     ![数据工厂菜单](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
-3. 在数据工厂列表中搜索**你的数据工厂**，然后选择它来启动“数据工厂”页。
+3. 在数据工厂列表中搜索 **你的数据工厂**，然后选择它来启动“数据工厂”页。
 
     ![搜索你的数据工厂](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
 4. 在“数据工厂”页中，单击“监视和管理”磁贴。
 
     ![“监视和管理”磁贴](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。
+5. **数据集成应用程序** 在单独的选项卡中启动。可以看到所有 **管道运行** 及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。
 
     ![屏幕截图显示了数据工厂的管道运行。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
@@ -492,119 +492,116 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ```
 
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>创建用于增量复制的管道
-在此步骤中，请创建一个包含以下活动的管道并定期运行。 **查找活动**从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。 **复制活动**将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。 **存储过程活动**更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
+在此步骤中，请创建一个包含以下活动的管道并定期运行。 **查找活动** 从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。 **复制活动** 将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。 **存储过程活动** 更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
 
 1. 创建一个 JSON 文件：在同一文件夹中，创建包含以下内容的 IncrementalCopyPipeline.json：
 
     ```json
     {
-            "name": "IncrementalCopyPipeline",
-            "properties": {
-                "activities": [
+        "name": "IncrementalCopyPipeline",
+        "properties": {
+            "activities": [
                 {
-                        "name": "LookupLastChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
+                    "name": "LookupLastChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
                         "source": {
                             "type": "SqlSource",
                             "sqlReaderQuery": "select * from table_store_ChangeTracking_version"
-                            },
-
-                            "dataset": {
+                        },
+                        "dataset": {
                             "referenceName": "ChangeTrackingDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-                    {
-                        "name": "LookupCurrentChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
+                    }
+                },
+                {
+                    "name": "LookupCurrentChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
                         },
-
-                            "dataset": {
+                        "dataset": {
                             "referenceName": "SourceDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-
-                    {
-                        "name": "IncrementalCopyActivity",
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
-                            }
-                        },
-                        "dependsOn": [
-                            {
-                                "activity": "LookupLastChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            },
-                            {
-                                "activity": "LookupCurrentChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                        }
-                        ],
-
-                        "inputs": [
-                            {
-                            "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                        }
-                        ],
-                        "outputs": [
-                            {
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference"
-                            }
-                        ]
-                    },
-
-                {
-                        "name": "StoredProceduretoUpdateChangeTrackingActivity",
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-
-                            "storedProcedureName": "Update_ChangeTracking_Version",
-                            "storedProcedureParameters": {
-                            "CurrentTrackingVersion": {"value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}", "type": "INT64" },
-                                "TableName":  { "value":"@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}", "type":"String"}
-                            }
-                    },
-
-                        "linkedServiceName": {
-                        "referenceName": "AzureSQLDatabaseLinkedService",
-                            "type": "LinkedServiceReference"
-                        },
-
-                        "dependsOn": [
-                        {
-                                "activity": "IncrementalCopyActivity",
-                            "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            }
-                        ]
                     }
-                ]
-
-            }
+                },
+                {
+                    "name": "IncrementalCopyActivity",
+                    "type": "Copy",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
+                        },
+                        "sink": {
+                            "type": "BlobSink"
+                        }
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "LookupLastChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        },
+                        {
+                            "activity": "LookupCurrentChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ],
+                    "inputs": [
+                        {
+                            "referenceName": "SourceDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "SinkDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                },
+                {
+                    "name": "StoredProceduretoUpdateChangeTrackingActivity",
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "Update_ChangeTracking_Version",
+                        "storedProcedureParameters": {
+                            "CurrentTrackingVersion": {
+                                "value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}",
+                                "type": "INT64"
+                            },
+                            "TableName": {
+                                "value": "@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}",
+                                "type": "String"
+                            }
+                        }
+                    },
+                    "linkedServiceName": {
+                        "referenceName": "AzureSQLDatabaseLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "IncrementalCopyActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
-
     ```
+
 2. 运行 Set-AzDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
 
    ```powershell
@@ -613,7 +610,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
    下面是示例输出：
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -630,7 +627,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
-1. 在**数据集成应用程序**中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
+1. 在 **数据集成应用程序** 中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
 
     ![屏幕截图显示了数据工厂的管道运行，包括你的管道。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
@@ -655,8 +652,8 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
 

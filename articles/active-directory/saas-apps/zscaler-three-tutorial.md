@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 12bc1de62217a598a478d8d7e4d71a4b60e000b9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ad88f2a469fb89145c39990fe55e92abf0f2a4c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896627"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608878"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler Three 集成
 
@@ -89,10 +89,10 @@ ms.locfileid: "92896627"
     ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 6. 除了上述属性，Zscaler Three 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
+
     | 名称 | 源属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
@@ -148,7 +148,7 @@ ms.locfileid: "92896627"
 3. 若要手动设置 Zscaler Three，请打开新的 Web 浏览器窗口，以管理员身份登录 Zscaler Three 公司网站，并执行以下步骤：
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
-   
+
     ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-three-tutorial/ic800206.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。 
@@ -156,24 +156,24 @@ ms.locfileid: "92896627"
     b. 单击“配置 SAML”。 
 
 5. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
-            
+
     ![管理用户和身份验证](./media/zscaler-three-tutorial/ic800208.png "管理用户和身份验证")
-    
+
     a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID** 。 
+    b. 在“登录名属性”文本框中，输入 **NameID**。 
 
     c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
 
     d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName** 。 
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。 
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf** 。 
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。 
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department** 。 
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。 
 
-    h. 单击“ **保存** ”。
+    h. 单击“ **保存**”。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
@@ -186,27 +186,27 @@ ms.locfileid: "92896627"
 ## <a name="configuring-proxy-settings"></a>配置代理设置
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
 
-1. 启动 **Internet Explorer** 。
+1. 启动 **Internet Explorer**。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。      
-    
+
      ![Internet 选项](./media/zscaler-three-tutorial/ic769492.png "Internet 选项")
 
 3. 单击“连接”  选项卡。   
-  
+
      ![连接](./media/zscaler-three-tutorial/ic769493.png "连接")
 
 4. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
 
 5. 在“代理服务器”部分中，执行以下步骤：   
-   
+
     ![代理服务器](./media/zscaler-three-tutorial/ic769494.png "代理服务器")
 
     a. 选择“为 LAN 使用代理服务器”。 
 
-    b. 在“地址”文本框中，键入 **gateway.Zscaler Three.net** 。
+    b. 在“地址”文本框中，键入 **gateway.Zscaler Three.net**。
 
-    c. 在“端口”文本框中，键入 **80** 。
+    c. 在“端口”文本框中，键入 **80**。
 
     d. 选择“对本地地址不使用代理服务器”  。
 
@@ -231,7 +231,7 @@ ms.locfileid: "92896627"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 

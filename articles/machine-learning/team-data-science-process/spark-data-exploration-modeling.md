@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314852"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028081"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
@@ -697,7 +697,7 @@ F1 分数 = 0.984304060189
 
 **绘制 ROC 曲线。**
 
-在上一个单元格中， *predictionAndLabelsDF* 注册为表 *tmp_results* 。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
+在上一个单元格中，*predictionAndLabelsDF* 注册为表 *tmp_results*。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
 
 ```python
 # QUERY RESULTS                              
@@ -1119,4 +1119,4 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 **使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅 [评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 
-**交叉验证和超参数扫描** ：请参阅 [使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
+**交叉验证和超参数扫描**：请参阅 [使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型

@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 7246bb3453f6e4863faf15dbcbfdf8534481ddad
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561401"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006100"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并部署专用终结点
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
 需要创建应用服务计划来托管 Web 应用。
-使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 创建应用服务计划。
+使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 创建应用服务计划。
 此示例在 francecentral 位置创建名为 myAppServicePlan 的应用服务计划，该计划包含 P1V2 SKU 并仅有一个辅助角色  ： 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>配置子网 
 
-需要更新子网以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+需要更新子网以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053903"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608742"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 资源管理器模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "87053903"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
+* 通读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
 * （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
@@ -341,46 +341,58 @@ ms.locfileid: "87053903"
 ## <a name="monitor-pipeline"></a>监视管道
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“数据工厂”；或者单击“所有服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。   
+
+1. 在左侧菜单中单击“数据工厂”；或者单击“所有服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。   
    
     ![数据工厂菜单](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。 
+
+1. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。 
    
     ![搜索数据工厂](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. 单击 Azure 数据工厂。 随后会显示该数据工厂的主页。
+
+1. 单击 Azure 数据工厂。 随后会显示该数据工厂的主页。
    
     ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
-7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。 
 
+1. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
+
+1. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。 
 
 若要详细了解如何使用 Azure 门户边栏选项卡监视本教程中创建的管道和数据集，请参阅[监视数据集和管道](data-factory-monitor-manage-pipelines.md)。
 
 若要详细了解如何使用“监视和管理”应用程序来监视数据管道，请参阅[使用监视应用监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
 ## <a name="data-factory-entities-in-the-template"></a>模板中的数据工厂实体
+
 ### <a name="define-data-factory"></a>定义数据工厂
-如以下示例中所示，在 Resource Manager 模板中定义数据工厂：  
+
+如以下示例中所示，在 Resource Manager 模板中定义数据工厂：
 
 ```json
-"resources": [
 {
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
+  "resources": [
+    {
+      "name": "[variables('dataFactoryName')]",
+      "apiVersion": "2015-10-01",
+      "type": "Microsoft.DataFactory/datafactories",
+      "location": "West US"
+    }
+  ]
 }
 ```
 
 dataFactoryName 定义为： 
 
 ```json
-"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+{
+    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+}
 ```
 
-它是基于资源组 ID 的唯一字符串。  
+它是基于资源组 ID 的唯一字符串。
 
 ### <a name="defining-data-factory-entities"></a>定义数据工厂实体
+
 JSON 模板中定义了以下数据工厂实体： 
 
 1. [Azure 存储链接服务](#azure-storage-linked-service)
@@ -390,6 +402,7 @@ JSON 模板中定义了以下数据工厂实体：
 5. [包含复制活动的数据管道](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
+
 AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)创建了一个容器并将数据上传到该存储帐户。 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
 
 ```json
@@ -413,6 +426,7 @@ AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 �
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStorageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
+
 AzureSqlLinkedService 将 Azure SQL 数据库中你的数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。 在本部分中指定逻辑 SQL Server 名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
 
 ```json
@@ -424,11 +438,11 @@ AzureSqlLinkedService 将 Azure SQL 数据库中你的数据库链接到数据�
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureSqlDatabase",
-          "description": "Azure SQL linked service",
-          "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-          }
+      "type": "AzureSqlDatabase",
+      "description": "Azure SQL linked service",
+      "typeProperties": {
+        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+      }
     }
 }
 ```

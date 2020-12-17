@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9ca6d91be95bfb1a47f85b20f3775a57518ffcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 036e9e6bf58d837c698a6092770ef581f77bc20c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922126"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108240"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
 
-对于更常见的用户体验，例如注册、登录和配置文件编辑，可在 Azure Active Directory B2C (Azure AD B2C) 中使用[用户流](user-flow-overview.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
+对于更常见的用户体验，例如注册、登录和配置文件编辑，可在 Azure Active Directory B2C (Azure AD B2C) 中使用[用户流](user-flow-overview.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-with-html.md)。
 
 在本文中，学习如何：
 
@@ -64,7 +64,7 @@ ms.locfileid: "87922126"
 
 1. 在菜单中，选择“CORS”。
 2. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
-3. 对于**允许的方法**，请选择 `GET`、`PUT` 和 `OPTIONS`。
+3. 对于 **允许的方法**，请选择 `GET`、`PUT` 和 `OPTIONS`。
 4. 对于“允许的标头”，请输入一个星号 (*)。
 5. 对于“公开的标头”，请输入一个星号 (*)。
 6. 对于“最大期限”，请输入 200。
@@ -166,4 +166,4 @@ ms.locfileid: "87922126"
 > * 测试自定义 UI
 
 > [!div class="nextstepaction"]
-> [在 Azure Active Directory B2C 中自定义 UI](customize-ui-overview.md)
+> [在 Azure Active Directory B2C 中自定义 UI](customize-ui-with-html.md)

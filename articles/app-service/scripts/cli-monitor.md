@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 995ca98a21e5ec392182bb48932765cca35acf3a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9881a5f37c32849fc4f10acda8346510977e6b7b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562451"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005777"
 ---
 # <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>使用 Azure CLI 通过 Web 服务器日志监视应用服务应用
 
@@ -36,13 +36,13 @@ ms.locfileid: "94562451"
 
 此脚本使用以下命令创建资源组、应用服务应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
-| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | 配置应用服务应用将持久保留的日志。 |
-| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | 将应用服务应用的日志下载到本地计算机。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
+| [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) | 配置应用服务应用将持久保留的日志。 |
+| [`az webapp log download`](/cli/azure/webapp/log#az-webapp-log-download) | 将应用服务应用的日志下载到本地计算机。 |
 
 ## <a name="next-steps"></a>后续步骤
 

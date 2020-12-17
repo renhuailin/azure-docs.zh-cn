@@ -6,16 +6,16 @@ ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8a214deb0cde5ffd6dee6d31377c3c898a363b27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c4a30243569c07e1a70ad46c8b2f7e70d493b2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073839"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005573"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>使用 FTP 将文件上传到 Web 应用
 
-此示例脚本使用其相关资源，在应用服务中创建 Web 应用，并使用 FTP（通过 [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile?view=netcore-3.1)）部署 Web 应用代码。
+此示例脚本使用其相关资源，在应用服务中创建 Web 应用，并使用 FTP（通过 [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile)）部署 Web 应用代码。
 
 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
 

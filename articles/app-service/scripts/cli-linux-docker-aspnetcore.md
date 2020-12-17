@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: devx-track-dotnet, mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: dbb5751e27d02c0fc531a5527a19b1c6a96301f5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 7e2400d42798dddf33a0431938e7f13ff29b64f9
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561412"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005845"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>使用 Azure CLI 从 Docker 中心在 Docker 容器中创建 ASP.NET Core 应用
 
@@ -36,12 +36,12 @@ ms.locfileid: "94561412"
 
 此脚本使用以下命令创建资源组、应用服务应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
-| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | 为应用服务应用设置 Docker 容器。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
+| [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) | 为应用服务应用设置 Docker 容器。 |
 
 ## <a name="next-steps"></a>后续步骤
 

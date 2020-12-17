@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579141"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617232"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>排查 Azure Data Share 中的常见问题 
 
@@ -67,6 +67,10 @@ ms.locfileid: "94579141"
 * 与源或目标数据存储的数据共享连接已被防火墙阻止。
 * 共享数据集，或源或目标数据存储已删除。
 
+对于存储帐户，以下是快照失败的其他原因。
+
+* 正在源中更新文件，但发生了快照。 这可能会导致目标为0字节的文件。 在源中完成更新后，后续快照应该会成功。
+
 对于 SQL 源，以下是快照失败的其他原因。 
 
 * 不运行用于授予数据共享权限的源或目标 SQL 脚本。 或者对于 Azure SQL 数据库或 Azure Synapse Analytics (以前称为 Azure SQL DW) ，它是使用 SQL 身份验证而不是 Azure Active Directory 身份验证运行的。  
@@ -75,6 +79,9 @@ ms.locfileid: "94579141"
 * 源或目标 SQL 数据存储区已被其他进程锁定。 Azure 数据共享不会将锁应用于源和目标 SQL 数据存储区。 但是，源和目标 SQL 数据存储上的现有锁将导致快照失败。
 * 目标 SQL 表被 foreign key 约束引用。 在快照过程中，如果存在具有相同名称的目标表，则 Azure 数据共享会删除表并创建新表。 如果目标 SQL 表被 foreign key 约束引用，则无法删除此表。
 * 生成目标 CSV 文件，但无法在 Excel 中读取数据。 如果源 SQL 表包含非英语字符的数据，则可能会发生这种情况。 在 Excel 中，选择 "获取数据" 选项卡并选择 CSV 文件，选择 "文件源" 作为65001： Unicode (UTF-8) 并加载数据。
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>更新快照计划后出现快照问题
+在数据访问接口为已发送共享更新快照计划后，数据使用者需要禁用以前的快照计划，并为接收的共享重新启用更新后的快照计划。 
 
 ## <a name="next-steps"></a>后续步骤
 

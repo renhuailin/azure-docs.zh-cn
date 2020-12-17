@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111125"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614245"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -26,7 +26,7 @@ ms.locfileid: "97111125"
 
 Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建帐户时提供的密码复杂性要求。 默认情况下，Azure AD B2C 使用 **强** 密码。 此外，Azure AD B2C 还支持用于控制客户可以使用的密码复杂性的配置选项。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 3. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 4. 选择“用户流”。
 2. 选择一个用户流，然后单击“属性”  。
@@ -218,7 +218,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[在 Azure Active Directory B2C 中使用自定义策略配置密码更改](custom-policy-password-change.md)。
+- 了解如何 [在 Azure Active Directory B2C 中配置密码更改](add-password-change-policy.md)。
 - 了解有关 IEF 引用中的 [谓词](predicates.md) 和 [PredicateValidations](predicates.md#predicatevalidations) 元素的详细信息。
 
 

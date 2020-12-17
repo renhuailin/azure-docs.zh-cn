@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3ea231258f7a60ce90ec119803b5abc8b6e525fe
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561125"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510611"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -140,8 +140,8 @@ ms.locfileid: "94561125"
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -466,13 +466,12 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 继续查看以下教程，了解如何仅基于 LastModifiedDate 来复制新的和更改的文件：
 
 > [!div class="nextstepaction"]
->[按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+> [按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

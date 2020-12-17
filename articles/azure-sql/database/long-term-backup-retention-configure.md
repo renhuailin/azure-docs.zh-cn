@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984424"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617300"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -203,6 +203,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>限制
 - 从 LTR 备份进行还原时，"读取缩放" 属性处于禁用状态。 若要启用，请对还原的数据库进行读取缩放，并在创建数据库后对其进行更新。
+- 从 LTR 备份进行还原时，需要指定目标服务级别目标，该备份是在数据库位于弹性池中时创建的。 
 
 ## <a name="next-steps"></a>后续步骤
 

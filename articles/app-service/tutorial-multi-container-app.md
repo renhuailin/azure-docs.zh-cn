@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: f2f1713866eb06b4b514ff988ef3e010491e1efc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e73d681cadaddd32290cec40ae7a9c8f6e8ac758
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131337"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005641"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。  若要查看 **标准** 层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。  若要查看 **标准** 层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -75,7 +75,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 ## <a name="create-an-azure-app-service-plan"></a>创建 Azure 应用服务计划
 
-在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令在资源组中创建应用服务计划。
+在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) 命令在资源组中创建应用服务计划。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
@@ -109,7 +109,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-docker-compose-app"></a>创建 Docker Compose 应用
 
-在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
+在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -138,7 +138,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
-**祝贺你** ，现已在用于容器的 Web 应用中创建了多容器应用。 接下来，请将应用配置为使用 Azure Database for MySQL。 暂时不要安装 WordPress。
+**祝贺你**，现已在用于容器的 Web 应用中创建了多容器应用。 接下来，请将应用配置为使用 Azure Database for MySQL。 暂时不要安装 WordPress。
 
 ## <a name="connect-to-production-database"></a>连接到生产数据库
 
@@ -146,7 +146,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器
 
-使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) 命令创建 Azure Database for MySQL 服务器。
+使用 [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) 命令创建 Azure Database for MySQL 服务器。
 
 在以下命令中，请将 &lt;mysql-server-name> 占位符替换为你的 MySQL 服务器名称（有效字符是 `a-z`、`0-9` 和 `-`）  。 此名称是 MySQL 服务器主机名 (`<mysql-server-name>.database.windows.net`) 的一部分，必须全局唯一。
 
@@ -171,7 +171,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql-server-nam
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。
+使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -205,7 +205,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql-server-
 
 若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量，包括 `MYSQL_SSL_CA` 定义的 SSL CA 路径。 以下[自定义映像](#use-a-custom-image-for-mysql-ssl-and-other-configurations)中提供了来自 [DigiCert](https://www.digicert.com/) 的 [Baltimore 网络信任根证书](https://www.digicert.com/digicert-root-certificates.htm)。
 
-若要进行这些更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
+若要进行这些更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -279,7 +279,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>使用新配置更新应用
 
-在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为前面创建的 Web 应用的名称。
+在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为前面创建的 Web 应用的名称。
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -308,7 +308,7 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 ### <a name="configure-environment-variables"></a>配置环境变量
 
-若要使用持久性存储，请在应用服务中启用此设置。 若要进行此项更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
+若要使用持久性存储，请在应用服务中启用此设置。 若要进行此项更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -355,7 +355,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>使用新配置更新应用
 
-在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
+在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -415,7 +415,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>配置环境变量
 
-若要使用 Redis，请在应用服务中启用 `WP_REDIS_HOST` 设置。 WordPress 在与 Redis 主机通信时必须使用此设置。  若要进行此项更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
+若要使用 Redis，请在应用服务中启用 `WP_REDIS_HOST` 设置。 WordPress 在与 Redis 主机通信时必须使用此设置。  若要进行此项更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -441,7 +441,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 ### <a name="update-app-with-new-configuration"></a>使用新配置更新应用
 
-在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
+在 Cloud Shell 中，使用 [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) 命令重新配置多容器 [Web 应用](overview.md)。 不要忘记将 \<app-name> 替换为唯一的应用名称。
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -484,11 +484,11 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 ![单击“启用对象缓存”按钮][5]
 
-WordPress 将连接到 Redis 服务器。 同一页面上会显示连接 **状态** 。
+WordPress 将连接到 Redis 服务器。 同一页面上会显示连接 **状态**。
 
 ![WordPress 将连接到 Redis 服务器。 同一页面上会显示连接**状态**。][6]
 
-**祝贺你** ，现已将 WordPress 连接到 Redis。 生产就绪的应用正在使用 **Azure Database for MySQL、持久性存储和 Redis** 。 现在可以扩展应用服务计划以包含多个实例。
+**祝贺你**，现已将 WordPress 连接到 Redis。 生产就绪的应用正在使用 **Azure Database for MySQL、持久性存储和 Redis**。 现在可以扩展应用服务计划以包含多个实例。
 
 ## <a name="find-docker-container-logs"></a>查找 Docker 容器日志
 

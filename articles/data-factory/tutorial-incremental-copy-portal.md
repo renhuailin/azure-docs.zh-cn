@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 6dba148f0cde81905bc66f7750ff5e04edc948aa
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566381"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508520"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -143,8 +143,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -287,7 +287,7 @@ END
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 1. 单击工具栏中的“添加触发器”，然后单击“立即触发”。 
 
-2. 在“管道运行”窗口中选择“完成”。 
+2. 在“管道运行”窗口中选择“完成”。
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 

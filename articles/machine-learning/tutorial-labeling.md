@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913256"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347500"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 
@@ -128,7 +129,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 1. 还可以直接在窗体中添加任务的简短说明。  键入“标记教程 - 猫和狗”。
 
-1. 选择“ **下一步** ”。
+1. 选择“**下一步**”。
 
 1. 在“ML 辅助标记”部分中，让复选框保留未选中状态。 ML 辅助标记所需的数据比在本教程中使用的数据更多。
 

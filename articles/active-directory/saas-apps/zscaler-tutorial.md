@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a9d16f8cbb3da98a96f97a85d65672cc7ef70f65
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 438537efc9922e681c6dd253c2f41a44c5f2fb92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893568"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608895"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler 集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "92893568"
 
     | 名称 | 源属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
@@ -103,7 +103,7 @@ ms.locfileid: "92893568"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“ **保存** ”。
+    f. 单击“ **保存**”。
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
@@ -183,22 +183,22 @@ ms.locfileid: "92893568"
 1. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
 
     ![管理用户和身份验证](./media/zscaler-tutorial/ic800208.png "管理用户和身份验证")
-    
+
     a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID** 。 
+    b. 在“登录名属性”文本框中，输入 **NameID**。 
 
     c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
 
     d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName** 。 
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。 
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf** 。 
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。 
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department** 。 
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。 
 
-    h. 单击“ **保存** ”。
+    h. 单击“ **保存**”。
 
 1. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
@@ -212,14 +212,14 @@ ms.locfileid: "92893568"
 
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
 
-1. 启动 **Internet Explorer** 。
+1. 启动 **Internet Explorer**。
 
 1. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
 
     ![Internet 选项](./media/zscaler-tutorial/ic769492.png "Internet 选项")
 
 1. 单击“连接”  选项卡。
-  
+
     ![连接](./media/zscaler-tutorial/ic769493.png "连接")
 
 1. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
@@ -232,7 +232,7 @@ ms.locfileid: "92893568"
 
     b. 在“地址”文本框中，键入 gateway.zscaler.net  。
 
-    c. 在“端口”文本框中，键入 **80** 。
+    c. 在“端口”文本框中，键入 **80**。
 
     d. 选择“对本地地址不使用代理服务器”  。
 
@@ -257,7 +257,7 @@ ms.locfileid: "92893568"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 

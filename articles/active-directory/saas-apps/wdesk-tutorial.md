@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7eac2ed58608ac5814e1f907b863a2977df830d4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636708"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wdesk 集成
 
@@ -170,11 +170,11 @@ ms.locfileid: "92636708"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Wdesk。
 
-2. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
+1. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
  
-     ![显示从“管理员”菜单选择了“帐户管理员”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![显示从“管理员”菜单选择了“帐户管理员”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
+1. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
 
     ![显示从“SAML”选项卡选择了“SAML 设置”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -190,19 +190,19 @@ ms.locfileid: "92636708"
 
     ![显示“服务提供程序详细信息”的屏幕截图，你可以在其中输入所述值。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
-   
-      b. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
-       
-      c. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
-   
-      d. 单击 Azure 门户的“保存”以保存更改  。      
+    1. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
 
-6. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
+    1. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
+
+    1. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
+
+    1. 单击 Azure 门户的“保存”以保存更改  。      
+
+1. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
     
     ![显示“编辑 IdP 设置”的屏幕截图，可在其中上传元数据。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. 单击“保存更改”。 
+1. 单击“保存更改”。 
 
     ![显示“保存更改”按钮的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 

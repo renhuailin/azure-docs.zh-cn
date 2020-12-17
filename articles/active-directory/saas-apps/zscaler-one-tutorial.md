@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: d55e02bd981a220fee55a0abd540206a2701850a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3a9279189e3767b035256726a1da53b9edc8392f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896810"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>教程：Azure Active Directory 与 Zscaler One 的集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "92896810"
     
     | 名称 | 源属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
@@ -177,17 +177,17 @@ ms.locfileid: "92896810"
     
     a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID** 。
+    b. 在“登录名属性”文本框中，输入 **NameID**。
 
     c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
 
     d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName** 。
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf** 。
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department** 。
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
     h. 单击“保存”  。
 
@@ -202,15 +202,15 @@ ms.locfileid: "92896810"
 ## <a name="configuring-proxy-settings"></a>配置代理设置
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
 
-1. 启动 **Internet Explorer** 。
+1. 启动 **Internet Explorer**。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。      
-    
-     ![Internet 选项](./media/zscaler-one-tutorial/ic769492.png "Internet 选项")
+
+    ![Internet 选项](./media/zscaler-one-tutorial/ic769492.png "Internet 选项")
 
 3. 单击“连接”  选项卡。   
-  
-     ![连接](./media/zscaler-one-tutorial/ic769493.png "连接")
+
+    ![连接](./media/zscaler-one-tutorial/ic769493.png "连接")
 
 4. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
 
@@ -220,9 +220,9 @@ ms.locfileid: "92896810"
 
     a. 选择“为 LAN 使用代理服务器”。 
 
-    b. 在“地址”文本框中，键入 **gateway.Zscaler One.net** 。
+    b. 在“地址”文本框中，键入 **gateway.Zscaler One.net**。
 
-    c. 在“端口”文本框中，键入 **80** 。
+    c. 在“端口”文本框中，键入 **80**。
 
     d. 选择“对本地地址不使用代理服务器”  。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620250"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615641"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的网络配置警报
 
@@ -40,19 +40,19 @@ Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上
 
 | 优先级 | 名称 | 端口 | 协议 | Source | 目标 | 操作 |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | 任意 | 允许 |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | 允许 |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | 任意 | 允许 |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | 拒绝<sup>1</sup> |
 | 65000    | AllVnetInBound | 任意 | 任意 | VirtualNetwork | VirtualNetwork | 允许 |
 | 65001    | AllowAzureLoadBalancerInBound | 任意 | 任意 | AzureLoadBalancer | 任意 | 允许 |
 | 65500    | DenyAllInBound | 任意 | 任意 | 任意 | 任意 | 拒绝 |
+<sup>1</sup>可选，用于调试。 当需要进行高级故障排除时，允许。
 
 > [!NOTE]
 > 如果[配置安全 LDAP][configure-ldaps]，还可使用其他规则来允许入站流量。 此附加规则是进行正确 LDAPS 通信的必需条件。
 
 ### <a name="outbound-security-rules"></a>入站安全规则
 
-| 优先级 | 名称 | 端口 | 协议 | Source | 目标 | 操作 |
+| 优先级 | 名称 | 端口 | 协议 | 源 | 目标 | 操作 |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | 任意 | 任意 | VirtualNetwork | VirtualNetwork | 允许 |
 | 65001    | AllowAzureLoadBalancerOutBound | 任意 | 任意 |  任意 | Internet | 允许 |

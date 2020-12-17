@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d74057e32b6f16bdb6dae3d96ac46c5cc93571aa
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896758"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -64,7 +64,7 @@ ms.locfileid: "92896758"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Zscaler Internet Access Administrator** ，从结果面板中选择“Zscaler Internet Access Administrator”，然后单击“添加”按钮以添加该应用程序。 
+4. 在搜索框中键入 **Zscaler Internet Access Administrator**，从结果面板中选择“Zscaler Internet Access Administrator”，然后单击“添加”按钮以添加该应用程序。 
 
      ![结果列表中的 Zscaler Internet Access Administrator](common/search-new-app.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92896758"
 
     | 名称  | 源属性  |
     | ---------| ------------ |
-    | 角色     | user.assignedroles |
+    | 角色 | user.assignedroles |
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
@@ -146,7 +146,7 @@ ms.locfileid: "92896758"
 
     c. 单击“确定” 。
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)

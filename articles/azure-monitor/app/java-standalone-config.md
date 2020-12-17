@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7c5cac0b52fb0a224595ca7e328b551fd48d6661
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507653"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614228"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
 
@@ -168,6 +168,9 @@ ms.locfileid: "97507653"
 ```
 
 `${...}` 可用于在启动时从指定的环境变量中读取值。
+
+> [!NOTE]
+> 从3.0.1 版版开始，如果添加一个名为的自定义维度 `service.version` ，该值将存储在 `application_Version` Application Insights 日志 "表的列中，而不是作为自定义维度。
 
 ## <a name="telemetry-processors-preview"></a> (预览版的遥测处理器) 
 
