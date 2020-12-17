@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387575"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615842"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -50,6 +50,7 @@ ms.locfileid: "97387575"
 ## <a name="associate-the-security-group-with-the-tenant"></a>将安全组与租户关联
 
 1. 登录到 [Power BI 管理门户](https://app.powerbi.com/admin-portal/tenantSettings)。
+1. 选择 " **租户设置** " 页。
 
     > [!Important]
     > 你需要成为 Power BI 管理员才能看到 "租户设置" 页。

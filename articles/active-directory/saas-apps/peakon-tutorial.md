@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515614"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教程：Azure Active Directory 与 Peakon 集成
 
@@ -229,17 +229,17 @@ Peakon 与 Azure AD 集成提供以下优势：
 
 3. 单击页面右上角的“添加员工”。
 
-      ![添加员工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![添加员工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. 在“新增员工”对话框页上，执行以下步骤：
 
-     ![新增员工](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![新增员工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon” 。
+    1. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon” 。
 
-    b. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon\@contoso.com** 。
+    1. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon\@contoso.com**。
 
-    c. 单击“创建员工”。
+    1. 单击“创建员工”。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

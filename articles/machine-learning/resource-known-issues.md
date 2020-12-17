@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094431"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616994"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -428,6 +428,16 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
   2. 输入 `pip freeze` 并查找 `tensorflow`，如果找到，则列出的版本应 <1.13
   3. 如果列出的版本不是受支持的版本，请在命令 shell 中使用 `pip uninstall tensorflow` 并输入 y 进行确认。
+
+## <a name="model-explanations"></a>模型说明
+
+* **不支持稀疏数据**：模型说明仪表板显著中断/减速，因为有大量的功能，因此我们目前不支持稀疏数据格式。 此外，对于大型数据集和大量功能，还会出现一般内存问题。 
+
+* **模型说明不支持的预测模型**： Interpretability，最佳模型说明不适用于建议以下算法作为最佳模型的 AutoML 预测试验： TCNForecaster、AutoArima、ExponentialSmoothing、Average、Naive、季节性 Average 和季节性 Naive。 AutoML 预测具有支持解释的回归模型。 但是，在说明 dashbord 中，不支持将 "单个特征重要性" 选项卡用于预测，这是因为其数据管道中的复杂性。
+
+* **数据索引的本地说明**：如果该数据集大于5000数据点（因为仪表板随机 downsamples 数据），说明仪表板不支持将本地重要性值与原始验证数据集中的行标识符相关联。 但是，仪表板会在 "每个特征重要性" 选项卡下的每个要传递到仪表板的工作中显示原始数据集功能值。用户可以通过匹配原始数据集功能值将本地 importances 映射回原始数据集。 如果验证数据集的大小小于5000个样本，则 `index` AzureML studio 中的功能将对应于验证数据集中的索引。
+
+* **AML studio 中不支持的假设/ICE 图形**： What-If 和单个条件期望值 (ICE studio 中不支持 ICE) 绘图，因为上传的说明需要使用活动计算才能重新计算预测和 perturbed 功能的概率。 当使用 SDK 作为小组件运行时，当前支持在 Jupyter 笔记本中使用。
 
 ## <a name="deploy--serve-models"></a>部署和提供模型
 

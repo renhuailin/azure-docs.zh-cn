@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371877"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616637"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights
 
@@ -139,7 +139,7 @@ Application Insights Java 3.0 自动捕获通过这些 Api 发送的遥测数据
 
 ### <a name="supported-custom-telemetry"></a>支持的自定义遥测
 
-下表显示了当前支持的自定义遥测类型，你可以使用它们来对 Java 3.0 代理进行补充。 总而言之，通过 Micrometer 可以支持自定义指标，通过记录框架可以启用自定义异常和跟踪，通过 [Application Insights Java 2.x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk) 可以支持任何类型的自定义遥测。
+下表显示了当前支持的自定义遥测类型，你可以使用它们来对 Java 3.0 代理进行补充。 总而言之，通过 Micrometer 可以支持自定义指标，通过记录框架可以启用自定义异常和跟踪，通过 [Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) 可以支持任何类型的自定义遥测。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
@@ -188,7 +188,7 @@ Log4j、Logback 和 util。日志记录是自动检测的，通过这些日志�
 
 如果要将自定义维度附加到日志，可以使用 [Log4j 1.2 mdc](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback MDC](http://logback.qos.ch/manual/mdc.html)，Application Insights JAVA 3.0 会自动捕获这些 MDC 属性作为跟踪和异常遥测的自定义维度。
 
-### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>使用 Application Insights Java 2.x SDK 发送自定义遥测数据
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>使用 2.x SDK 发送自定义遥测数据
 
 将 `applicationinsights-core-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
@@ -251,3 +251,80 @@ try {
     telemetryClient.trackException(e);
 }
 ```
+
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>使用 2.x SDK 添加请求自定义维度
+
+> [!NOTE]
+> 此功能仅在3.0.1 版和更高版本中
+
+将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+并在代码中添加自定义维度：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>使用 2.x SDK 设置请求遥测 user_Id
+
+> [!NOTE]
+> 此功能仅在3.0.1 版和更高版本中
+
+将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+并 `user_Id` 在代码中设置：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>使用 2.x SDK 替代请求遥测名称
+
+> [!NOTE]
+> 此功能仅在3.0.1 版和更高版本中
+
+将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+并在代码中设置名称：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```
+
+> [!NOTE]
+> 除了上面所述的之外，对的检索到的所有其他操作 `RequestTelemetry` `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` 都将失败，并引发异常，以使你知道在3.0 代理下未定义的行为。
+>
+> 如果需要对任何其他方法执行互操作， `RequestTelemetry` 请通过提出问题告诉我们 https://github.com/microsoft/ApplicationInsights-Java/issues 。

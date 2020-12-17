@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510645"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616569"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -77,6 +77,11 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 [Azure 成本管理 + 计费](../../cost-management-billing/index.yml)：
 
 - 从管理租户中，CSP 合作伙伴可以查看、管理和分析预计费的消耗成本 (不包含在 Azure 计划下的客户) 购买。 费用将基于零售价和 Azure 基于角色的访问控制， (合作伙伴对客户订阅的 Azure RBAC) 访问权限。
+
+[Azure Key Vault](../../key-vault/general/index.yml)：
+
+- 在客户租户中创建密钥保管库
+- 使用托管标识在客户租户中创建密钥保管库
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443086"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614891"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
 
@@ -72,16 +72,21 @@ ms.locfileid: "94443086"
 
 如果你偏向于手动配置重定向 URI，可以通过应用程序清单进行配置。 下面是清单的建议格式：
 
-- **iOS** ：`msauth.<BUNDLE_ID>://auth`
+- **iOS**：`msauth.<BUNDLE_ID>://auth`
   - 例如，输入 `msauth.com.yourcompany.appName://auth`
-- **Android** ：`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android**：`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - 可以通过 KeyTool 命令使用发布密钥或调试密钥来生成 Android 签名哈希。
 
 ### <a name="username-password-authentication"></a>用户名-密码身份验证
 
 如果应用仅使用用户名-密码身份验证，则无需为应用程序注册重定向 URI。 此流将往返访问 Microsoft 标识平台版本 2.0 终结点。 不会在任何特定 URI 上调用你的应用程序。
 
-但是，需要将应用程序标识为公共客户端应用程序。 为此，请从应用程序的“身份验证”部分开始。  在“高级设置”子部分的“默认客户端类型”段落中，对于“将应用程序视为公共客户端”问题，请选择“是”。    
+但是，需要将应用程序标识为公共客户端应用程序。 为此，请执行以下操作：
+
+1. 在 [Azure 门户](https://portal.azure.com)中，选择你的应用程序， **应用注册**"，然后选择" **身份验证**"。
+1. 在 "**高级设置**  >  " "**允许公用客户端流**  >  **"** 中，选择 **"是"**。
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 门户中的“身份验证”窗格上启用公共客户端设置":::
 
 ## <a name="api-permissions"></a>API 权限
 
@@ -91,4 +96,4 @@ ms.locfileid: "94443086"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 [应用代码配置](scenario-mobile-app-configuration.md)。
+转到此方案中的下一篇文章：[应用代码配置](scenario-mobile-app-configuration.md)。

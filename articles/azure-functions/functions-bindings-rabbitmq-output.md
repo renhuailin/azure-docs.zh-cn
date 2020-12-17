@@ -4,15 +4,15 @@ description: 了解如何从 Azure Functions 发送 RabbitMQ 消息。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505699"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616654"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 输出绑定
 
@@ -193,8 +193,6 @@ module.exports = function (context, input) {
 }
 ```
 
-在 *_\__ \_ py* 中，通过将值传递给方法，可以将消息写入队列 `set` 。
-
 ```python
 import azure.functions as func
 
@@ -271,11 +269,13 @@ Python 不支持特性。
 |**direction** | 不适用 | 必须设置为“out”。 |
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 |
 |**queueName**|**QueueName**| 要向其发送消息的队列的名称。 |
-|**段**|**HostName**|如果使用 ConnectStringSetting) ，则 (可选 <br>队列的主机名 (Ex： 10.26.45.210) |
-|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的名称 |
-|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的密码|
+|**段**|**HostName**|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
+|**userName**|**UserName**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的用户名。 例如： UserNameSetting： "< UserNameFromSettings >"|
+|**password**|**密码**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的密码。 例如： UserNameSetting： "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 消息队列连接字符串的应用设置的名称。 请注意，如果直接指定连接字符串而不是通过 local.settings.json 中的应用设置，则触发器将不起作用。  (Ex： In *function.json*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.js*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**端口**|获取或设置所使用的端口。 默认值为 0。|
+|**port**|**端口**|如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为 0。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用情况
 
@@ -297,7 +297,7 @@ Python 不支持特性。
 
 * `byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `string` - 如果函数退出时参数值为 null，Functions 不创建消息。
-* `POCO` -如果参数值未格式化为 c # 对象，则会收到错误。
+* `POCO` -如果参数值未格式化为 c # 对象，则会收到错误。 有关完整示例，请参阅 c # 脚本 [示例](#example)。
 
 使用 c # 脚本函数时：
 
@@ -305,11 +305,11 @@ Python 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ 消息是通过字符串发送的。
+队列消息可通过上下文绑定获得。<NAME> 其中 <NAME> 与 function.js上的中定义的名称匹配。 如果有效负载为 JSON，该值将反序列化为对象。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ 消息是通过字符串发送的。
+请参阅 Python [示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 

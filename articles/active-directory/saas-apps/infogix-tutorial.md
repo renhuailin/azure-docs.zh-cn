@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460217"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
 
@@ -64,7 +64,7 @@ ms.locfileid: "92460217"
 
 4. 在搜索框中，键入“Infogix Data3Sixty Govern”，在结果面板中选择“Infogix Data3Sixty Govern”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Infogix Data3Sixty Govern](common/search-new-app.png)
+    ![结果列表中的 Infogix Data3Sixty Govern](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -108,7 +108,7 @@ ms.locfileid: "92460217"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.data3sixty.com`
 
@@ -124,8 +124,8 @@ ms.locfileid: "92460217"
     | 名称 | 源属性|
     | -----------| -------------- |
     | 名  | user.givenname |
-    | 姓   | user.surname |
-    | username   | user.mail    |
+    | 姓 | user.surname |
+    | username | user.mail |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92460217"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
 
@@ -180,7 +180,7 @@ ms.locfileid: "92460217"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

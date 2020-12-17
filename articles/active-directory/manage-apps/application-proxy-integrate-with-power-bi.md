@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658105"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616892"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
@@ -133,7 +133,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
    ![带外部 URL 的 Power BI 移动应用](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. 选择“连接” 。 你将被定向到 Azure Active Directory 登录页。
+2. 选择“连接”。 你将被定向到 Azure Active Directory 登录页。
 
 3. 输入用户的有效凭据，然后选择“登录”。 你将看到 Reporting Services 服务器中的元素。
 
@@ -153,6 +153,8 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 ## <a name="troubleshooting"></a>疑难解答
 
 如果应用程序在尝试加载超过几分钟的报表后返回错误页面，则可能需要更改超时设置。 默认情况下，应用程序代理支持长达85秒的应用程序来响应请求。 若要将此设置加长为180秒，请在应用程序的 "应用代理设置" **页中选择** "后端超时"。 有关如何创建快速可靠的报表的提示，请参阅 [Power BI 报表最佳实践](/power-bi/power-bi-reports-performance)。
+
+使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到本地 Power BI 报表服务器，这种条件访问策略不支持将 Microsoft Power BI 应用作为批准的客户端应用。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504586"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607663"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TextMagic 的集成
 
@@ -93,9 +93,9 @@ ms.locfileid: "92504586"
     | 名称 |   源属性| 命名空间  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -137,7 +137,7 @@ ms.locfileid: "92504586"
 
 ### <a name="configure-textmagic-sso"></a>配置 TextMagic SSO
 
-1. 若要在 TextMagic 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展** 。
+1. 若要在 TextMagic 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展**。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "92504586"
 
     d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后粘贴到“公用 x509 证书:”文本框   。
 
-    e. 单击“ **保存** ”。
+    e. 单击“ **保存**”。
 
 ### <a name="create-textmagic-test-user"></a>创建 TextMagic 测试用户
 

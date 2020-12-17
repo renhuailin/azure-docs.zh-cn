@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: e0cbbb3fd6cea962008218b5e695f119d211a909
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f4975c0e8d8b23a7c107b9704b0e0825702a0010
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033691"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617011"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -168,6 +168,7 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                                forecast_horizon=50,
                                                time_series_id_column_names=["store"],
+                                               freq='W',
                                                target_lags='auto',
                                                target_rolling_window_size=10)
                                               
@@ -303,7 +304,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 ```
 下表汇总了的可用设置 `short_series_handling_config` 。
  
-|设置|描述
+|设置|说明
 |---|---
 |`auto`| 下面是用于进行短序列处理的默认行为 <li> *如果所有序列都较短*，则填充数据。 <br> <li> *如果并非所有序列都简短*，请删除短序列。 
 |`pad`| 如果 `short_series_handling_config = pad` 为，则自动 ML 会为找到的每个短序列添加随机值。 下面列出了列类型及其填充内容： <li>带有 Nan 的对象列 <li> 带有0的数字列 <li> 带有 False 的布尔/逻辑列 <li> 目标列填充的随机值的平均值为零，标准偏差为1。 

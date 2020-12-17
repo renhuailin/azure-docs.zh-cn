@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0adb8d62d02325f92c77d2171eaafd6c2de16f0c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TimeOffManager 集成
 
@@ -168,7 +168,7 @@ ms.locfileid: "92516331"
 
 4. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分下的“回复 URL”文本框中。     
 
-      ![屏幕截图显示了“断言使用者服务 URL”链接。](./media/timeoffmanager-tutorial/ic795915.png "单一登录设置")
+    ![屏幕截图显示了“断言使用者服务 URL”链接。](./media/timeoffmanager-tutorial/ic795915.png "单一登录设置")
 
 ### <a name="create-timeoffmanager-test-user"></a>创建 TimeOffManager 测试用户
 

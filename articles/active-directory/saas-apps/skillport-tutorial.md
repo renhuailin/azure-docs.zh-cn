@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed71311125229a7575c675dd3338b4908ea1be95
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518426"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 的集成
 
@@ -101,29 +101,29 @@ ms.locfileid: "92518426"
 
     ![Skillport 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，键入 URL： 
+    1. 在“登录 URL”文本框中，键入 URL：
 
-    欧盟数据中心：`https://adfs.skillport.eu`
+        欧盟数据中心：`https://adfs.skillport.eu`
 
-    美国数据中心：`https://sso.skillport.com`
+        美国数据中心：`https://sso.skillport.com`
 
-    b. 在“标识符”框中键入 URL  ：
+    1. 在“标识符”框中键入 URL ：
 
-    欧盟数据中心：`http://adfs.skillport.eu/adfs/services/trust`
+        欧盟数据中心：`http://adfs.skillport.eu/adfs/services/trust`
 
-    美国数据中心：`https://sso.skillport.com`
+        美国数据中心：`https://sso.skillport.com`
 
-    c. 在“回复 URL”文本框中键入 URL： 
+    1. 在“回复 URL”文本框中键入 URL：
 
-    欧盟数据中心：`https://adfs.skillport.eu/adfs/ls/`
+        欧盟数据中心：`https://adfs.skillport.eu/adfs/ls/`
 
-      美国数据中心：`https://sso.skillport.com/sp/ACS.saml2`
+        美国数据中心：`https://sso.skillport.com/sp/ACS.saml2`
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Skillport”部分，根据要求复制相应 URL  。
+6. 在“设置 Skillport”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "92518426"
 
 ### <a name="configure-skillport-single-sign-on"></a>配置 Skillport 单一登录
 
-若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -160,17 +160,17 @@ ms.locfileid: "92518426"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 对 Skillport 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Skillport”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Skillport”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Skillport”  。
+2. 在应用程序列表中，选择“Skillport”。
 
     ![应用程序列表中的 Skillport 链接](common/all-applications.png)
 

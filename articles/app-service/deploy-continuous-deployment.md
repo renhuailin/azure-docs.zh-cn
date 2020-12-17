@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004327"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616309"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
@@ -96,7 +96,7 @@ ms.locfileid: "96004327"
 
 若要 Azure App Service 使用 Azure Pipelines 创建持续交付，Azure DevOps 组织应具有以下权限： 
 
-- 你的 Azure 帐户必须具有写入 Azure Active Directory 和创建服务的权限。 
+- 你的 Azure 帐户必须具有写入 Azure Active Directory 和创建应用注册的权限。 
   
 - 你的 Azure 帐户必须拥有 Azure 订阅中的 " **所有者** " 角色。
 

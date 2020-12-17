@@ -5,23 +5,24 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973402"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616620"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>创建 Azure Database for PostgreSQL - 超大规模 (Citus)
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+### <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录 [Azure 门户](https://portal.azure.com)。
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>创建 Azure Database for PostgreSQL - 超大规模 (Citus)
 
 可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
 1. 在 Azure 门户的左上角单击“创建资源”。 
@@ -53,7 +54,7 @@ ms.locfileid: "74973402"
 10. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项    。
 11. 输出页将包含协调器主机名，主机名旁边有一个按钮，用于将值复制到剪贴板。 记录此信息以供将来使用。
 
-## <a name="connect-to-the-database-using-psql"></a>使用 psql 连接到数据库
+### <a name="connect-to-the-database-using-psql"></a>使用 psql 连接到数据库
 
 创建 Azure Database for PostgreSQL 服务器时，会创建名为 **citus** 的默认数据库。 若要连接到你的数据库服务器，需要具有连接字符串和管理员密码。
 

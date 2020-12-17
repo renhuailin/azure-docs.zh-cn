@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3cca568245dfce01fb96d7a46590cb72349213ac
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353555"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Web Cargo Air 的集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "96353555"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com`
 
@@ -88,7 +88,7 @@ ms.locfileid: "96353555"
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上。   
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![证书下载链接](common/certificatebase64.png)
 
 1. 在“设置 Web Cargo Air”部分，根据需要复制相应的 URL。
 
@@ -99,7 +99,7 @@ ms.locfileid: "96353555"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。

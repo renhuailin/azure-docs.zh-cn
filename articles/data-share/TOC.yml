@@ -27,6 +27,8 @@
   items:
     - name: 安全性
       items:
+        - name: 安全概述
+          href: security.md
         - name: 安全基线
           href: security-baseline.md
     - name: Azure Data Share 术语
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: 监视
       href: how-to-monitor.md
-    - name: 安全性
-      href: security.md
     - name: 灾难恢复
       href: disaster-recovery.md
     - name: 疑难解答

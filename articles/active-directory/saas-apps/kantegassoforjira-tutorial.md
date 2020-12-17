@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459163"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>教程：Azure Active Directory 与 Kantega SSO for JIRA 集成
 
@@ -148,71 +148,71 @@ ms.locfileid: "92459163"
 
     ![屏幕截图显示选择了“关闭”操作的 “已安装并准备就绪!”对话框。](./media/kantegassoforjira-tutorial/addon33.png)
 
-1.  单击“管理”。 
+1.  单击“管理”。
 
     ![屏幕截图显示选择了“管理”按钮的“Kantega SSO”应用页。](./media/kantegassoforjira-tutorial/addon34.png)
     
-1. “集成”  下面列出了新插件。 单击“配置”配置新的插件。
+1. “集成”下面列出了新插件。 单击“配置”配置新的插件。
 
     ![屏幕截图突出显示了左侧导航菜单中的“集成”，并且已选择“管理加载项”部分的“配置”按钮。](./media/kantegassoforjira-tutorial/addon35.png)
 
-1. 在“SAML”部分中  。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”  。
+1. 在“SAML”部分中。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”。
 
     ![屏幕截图显示选择了“Azure Active Directory (Azure AD)”的“添加标识提供者”的下拉列表。](./media/kantegassoforjira-tutorial/addon4.png)
 
-1. 选择订阅级别为“基本”  。
+1. 选择订阅级别为“基本”。
 
-    ![屏幕截图显示选择了“基本”的“准备 Azure AD”部分。](./media/kantegassoforjira-tutorial/addon5.png)     
+    ![屏幕截图显示选择了“基本”的“准备 Azure AD”部分。](./media/kantegassoforjira-tutorial/addon5.png)
 
-1. 在“应用属性”部分，执行以下步骤  ： 
+1. 在“应用属性”部分，执行以下步骤： 
 
     ![屏幕截图显示突出显示了“App ID URL”文本框和“复制”按钮，以及选择了“下一步”按钮的“应用属性”部分。](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”  值并将其用作 Azure 门户中“基本 SAML 配置”  部分中的“标识符、回复 URL 和登录 URL”  。
+    1. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
-    b. 单击“下一步”。 
+    1. 单击“下一步”。 
 
-1. 在“元数据导入”部分，执行以下步骤  ： 
+1. 在“元数据导入”部分，执行以下步骤： 
 
     ![屏幕截图显示选择了“电脑上的元数据文件”的“元数据导入”部分。](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
+    1. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
-    b. 单击“下一步”。 
+    1. 单击“下一步”。 
 
-1. 在“名称和 SSO 位置”部分，执行以下步骤  ：
+1. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![屏幕截图显示突出显示了“标识提供者名称”文本框并选择了“下一步”按钮的“名称和 SSO 位置”。](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
+    1. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
-    b. 单击“下一步”。 
+    1. 单击“下一步”。 
 
-1. 验证签名证书，然后单击“下一步”  。
+1. 验证签名证书，然后单击“下一步”。
 
     ![屏幕截图显示选择了“下一步”按钮的“签名验证”部分。](./media/kantegassoforjira-tutorial/addon9.png)
 
-1. 在“JIRA 用户帐户”  部分，执行以下步骤：
+1. 在“JIRA 用户帐户”部分，执行以下步骤：
 
     ![屏幕截图显示“JIRA 用户帐户”，其中突出显示了“根据需要在 JIRA 的内部目录中创建用户”选项并选择了“下一步”按钮。](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. 选择“根据需要在 JIRA 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
+    1. 选择“根据需要在 JIRA 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“下一步”。
+    1. 单击“下一步”。
 
 1. 单击“完成”。
 
     ![屏幕截图显示已选择“完成”按钮的“摘要”部分。](./media/kantegassoforjira-tutorial/addon11.png)
 
-1. 在“Azure AD 的已知域”部分，执行以下步骤  ：
+1. 在“Azure AD 的已知域”部分，执行以下步骤：
 
     ![配置单一登录](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”  。
+    1. 从页的左侧面板中选择“已知域”。
 
-    b. 在“已知域”文本框中输入域名  。
+    2. 在“已知域”文本框中输入域名。
 
-    c. 单击“保存”  。
+    3. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -230,23 +230,23 @@ ms.locfileid: "92459163"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    1. 在“名称”  字段中，输入 BrittaSimon  。
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+    1. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
-    d. 单击“创建”。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+
+    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Kantega SSO for JIRA 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Kantega SSO for JIRA”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Kantega SSO for JIRA”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Kantega SSO for JIRA”  。
+2. 在应用程序列表中，选择“Kantega SSO for JIRA”。
 
     ![应用程序列表中的 Kantega SSO for JIRA 链接](common/all-applications.png)
 
@@ -284,15 +284,15 @@ ms.locfileid: "92459163"
 
     ![添加员工](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    1. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
+    2. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
-    c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    3. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d. 在“密码”文本框中，键入用户的密码。 
+    4. 在“密码”文本框中，键入用户的密码。 
 
-    e. 单击“创建用户”  。
+    5. 单击“创建用户”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

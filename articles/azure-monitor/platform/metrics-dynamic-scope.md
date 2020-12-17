@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577616"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614636"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>在指标资源管理器中查看多个资源
 
@@ -71,7 +71,7 @@ ms.locfileid: "97577616"
 
 ![屏幕截图，显示如何使用拆分来查看每个 VM 的 CPU 百分比](./media/metrics-charts/026.png)
 
-除了进行拆分，您还可以使用筛选功能，只显示您要查看的资源组。  例如，如果想要查看特定资源组的 Vm 的 CPU 百分比，可以使用 "添加筛选器" 工具按资源组进行筛选。 在此示例中，我们按 Azure-tailspintoys 进行筛选，这会删除与 TailspinToysDemo 中的资源关联的度量值。 
+除了进行拆分，您还可以使用筛选功能，只显示您要查看的资源组。  例如，如果想要查看特定资源组的 Vm 的 CPU 百分比，可以使用 "添加筛选器" 工具按资源组进行筛选。 在此示例中，我们按 TailspinToysDemo 进行筛选，这会删除与 Azure-tailspintoys 中的资源关联的度量值。 
 
 ![显示如何按资源组进行筛选的屏幕截图](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "97577616"
 > [!WARNING] 
 > 你必须在订阅级别具有监视读者权限，才能可视化多个资源、资源组或订阅的指标。 为此，请按照 [本文档](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)中的说明进行操作。 
 
-若要固定多资源图表，请按照 [此处](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)的说明进行操作。 
+若要固定多资源图表，请按照 [此处](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)的说明进行操作。 
 
 ## <a name="next-steps"></a>后续步骤
 

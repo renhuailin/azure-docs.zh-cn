@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587736"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616603"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -109,7 +109,7 @@ ms.locfileid: "97587736"
 - 已完成百分比-表示虚拟机的初始复制完成百分比
 - 传输的总数据量-从 VM 传输到 Azure 的数据量
 
-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="复制状态" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="复制状态" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
 
 - 同步进度 (跟踪磁盘级别的详细信息) 
     - 复制状态

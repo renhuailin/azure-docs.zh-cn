@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860960"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614908"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
@@ -134,7 +134,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 配置 ROPC 流
 
-在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](../../active-directory-b2c/configure-ropc.md)。
+在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](../../active-directory-b2c/add-ropc-policy.md)。
 
 `IPublicClientApplication` 包含 `AcquireTokenByUsernamePassword` 方法：
 

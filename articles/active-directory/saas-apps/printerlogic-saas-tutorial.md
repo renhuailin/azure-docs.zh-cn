@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cb946bc889d37b37f3330b07b18dd3ef3423af28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 683f765b898d485f74652386025ac7e3556f8477
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515298"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607926"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PrinterLogic SaaS 集成
 
@@ -39,11 +39,8 @@ ms.locfileid: "92515298"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-
-
 * PrinterLogic SaaS 支持 SP 和 IDP 发起的 SSO 
 * PrinterLogic SaaS 支持实时用户预配 
-
 
 ## <a name="adding-printerlogic-saas-from-the-gallery"></a>从库中添加 PrinterLogic SaaS
 
@@ -55,7 +52,6 @@ ms.locfileid: "92515298"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 PrinterLogic SaaS   。
 1. 从结果面板中选择 PrinterLogic SaaS，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-printerlogic-saas"></a>配置并测试 PrinterLogic SaaS 的 Azure AD 单一登录
 
@@ -101,7 +97,7 @@ ms.locfileid: "92515298"
 
     | 名称 | 源属性 |
     | ---------| ------------ |
-    | 角色     | user.assignedroles |
+    | 角色 | user.assignedroles |
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
@@ -162,7 +158,7 @@ ms.locfileid: "92515298"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 

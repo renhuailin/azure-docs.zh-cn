@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029398"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615761"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -110,6 +110,7 @@ ms.locfileid: "96029398"
    - 仅支持 iOS 和 Android 作为设备平台条件。
    - 注册设备需要代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
+- 使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到本地 Power BI 报表服务器，这种条件访问策略不支持将 Microsoft Power BI 应用作为批准的客户端应用。
 
 请参阅文章[如何：使用条件访问要求使用批准的设备应用访问云应用](app-based-conditional-access.md)，以获取配置示例。
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa97fd2ac12ca73d1a317fb09e03e49d0056ceb1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254355"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608623"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]
@@ -56,19 +56,19 @@ ms.locfileid: "85254355"
 
 1. 创建 Azure“数据工厂”。 本步骤创建名为 ADFTutorialDataFactoryPSH 的数据工厂。 
 1. 在数据工厂中创建“链接服务”。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
-    
+
     AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)创建了一个容器并将数据上传到该存储帐户。   
 
     AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了一个 SQL 表。   
-1. 在数据工厂中创建输入和输出**数据集**。  
-    
+1. 在数据工厂中创建输入和输出 **数据集**。  
+
     Azure 存储链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure 存储帐户。 输入 Blob 数据集指定容器以及包含输入数据的文件夹。  
 
     类似地，Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到数据库。 输出 SQL 表数据集在数据库中指定一个表，数据将从 Blob 存储复制到该表中。
-1. 在数据工厂中创建**管道**。 本步骤创建包含复制活动的管道。   
-    
+1. 在数据工厂中创建 **管道**。 本步骤创建包含复制活动的管道。   
+
     复制活动将数据从 Azure Blob 存储中的 Blob 复制到 Azure SQL 数据库中的表。 可以通过管道中的复制活动，将数据从任何支持的源复制到任何支持的目标。 有关支持的数据存储的列表，请参阅[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文。 
-1. 监视管道。 本步骤使用 PowerShell **监视**输入和输出数据集的切片。
+1. 监视管道。 本步骤使用 PowerShell **监视** 输入和输出数据集的切片。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 > [!IMPORTANT]
@@ -83,7 +83,7 @@ ms.locfileid: "85254355"
     ```powershell
     Connect-AzAccount
     ```   
-   
+
     运行以下命令查看此帐户的所有订阅：
 
     ```powershell
@@ -100,8 +100,8 @@ ms.locfileid: "85254355"
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
-    
-    本教程中的某些步骤假设使用名为 **ADFTutorialResourceGroup**的资源组。 如果使用不同的资源组，需使用该资源组取代本教程中的 ADFTutorialResourceGroup。
+
+    本教程中的某些步骤假设使用名为 **ADFTutorialResourceGroup** 的资源组。 如果使用不同的资源组，需使用该资源组取代本教程中的 ADFTutorialResourceGroup。
 1. 运行 **New-AzDataFactory** cmdlet，创建名为 **ADFTutorialDataFactoryPSH** 的数据工厂：  
 
     ```powershell
@@ -190,7 +190,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 
     > [!IMPORTANT]
     > 将 &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt; 和 &lt;password&gt; 分别替换为服务器名称、数据库名称、用户帐户名和密码。
-    
+
     ```json
     {
         "name": "AzureSqlLinkedService",
@@ -207,7 +207,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
-    
+
     下面是示例输出：
 
     ```
@@ -278,11 +278,11 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     |:--- |:--- |
     | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
-    | folderPath | 指定 Blob **容器**以及包含输入 Blob 的**文件夹**。 在本教程中，adftutorial 是 Blob 容器，文件夹是根文件夹。 | 
+    | folderPath | 指定 Blob **容器** 以及包含输入 Blob 的 **文件夹**。 在本教程中，adftutorial 是 Blob 容器，文件夹是根文件夹。 | 
     | fileName | 此属性是可选的。 如果省略此属性，将选取 folderPath 中的所有文件。 在本教程中，为 fileName 指定了 **emp.txt**，因此仅选取该文件进行处理。 |
     | format -> type |输入文件为文本格式，因此我们使用 **TextFormat**。 |
-    | columnDelimiter | 输入文件中的列以**逗号字符 (`,`)** 分隔。 |
-    | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示**每小时**获取一次输入切片。 换言之，数据工厂服务每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 它会查找管道开始和结束时间范围内的数据，而不是范围外的数据。  |
+    | columnDelimiter | 输入文件中的列以 **逗号字符 (`,`)** 分隔。 |
+    | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示 **每小时** 获取一次输入切片。 换言之，数据工厂服务每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 它会查找管道开始和结束时间范围内的数据，而不是范围外的数据。  |
     | external | 如果数据不是由该管道生成的，此属性设置为 **true**。 本教程中的输入数据位于 emp.txt 文件中，此文件不是由该管道生成的，因此将此属性设置为 true。 |
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。
@@ -306,7 +306,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```
 
 ### <a name="create-an-output-dataset"></a>创建输出数据集
-本步骤的此部分创建名为 **OutputDataset**的输出数据集。 此数据集指向 Azure SQL 数据库中 AzureSqlLinkedService 所代表的 SQL 表。 
+本步骤的此部分创建名为 **OutputDataset** 的输出数据集。 此数据集指向 Azure SQL 数据库中 AzureSqlLinkedService 所代表的 SQL 表。 
 
 1. 在 **C:\ADFGetStartedPSH** 文件夹中，创建包含以下内容的名为 **OutputDataset.json** 的 JSON 文件：
 
@@ -343,8 +343,8 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     |:--- |:--- |
     | type | type 属性设置为 AzureSqlTable，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-    | tableName | 指定一个**表**，以便将数据复制到其中。 | 
-    | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
+    | tableName | 指定一个 **表**，以便将数据复制到其中。 | 
+    | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时** 生成一次。  |
 
     数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
 
@@ -373,7 +373,6 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
 
 目前，输出数据集驱动计划。 在本教程中，输出数据集配置为每小时生成一个切片。 管道的开始时间和结束时间相差一天，即 24 小时。 因此，管道会生成 24 个输出数据集切片。 
-
 
 1. 在 **C:\ADFGetStartedPSH** 文件夹中，创建包含以下内容的名为 **ADFTutorialPipeline.json** 的 JSON 文件：
 
@@ -420,17 +419,17 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     } 
     ```
     请注意以下几点：
-   
+
    - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
    - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
    - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。  
-     
+
      将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
-     
+
      开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
-     
+
      如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
-     
+
      在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
      有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
@@ -465,12 +464,12 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
-    
+
     然后运行“输出 $df 的内容”，会看到以下输出： 
-    
+
     ```
     PS C:\ADFGetStartedPSH> $df
-    
+
     DataFactoryName   : ADFTutorialDataFactoryPSH0516
     DataFactoryId     : 6f194b34-03b3-49ab-8f03-9f8a7b9d3e30
     ResourceGroupName : ADFTutorialResourceGroup
@@ -510,7 +509,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     State             : InProgress
     SubState          :
     LatencyStatus     :
-    LongRetryCount    : 0   
+    LongRetryCount    : 0
 
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : ADFTutorialDataFactoryPSH0516
@@ -523,7 +522,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-1. 运行 **Get-AzDataFactoryRun**，获取**特定**切片的活动运行详细信息。 从前一命令的输出复制日期时间值，以便指定 StartDateTime 参数的值。 
+1. 运行 **Get-AzDataFactoryRun**，获取 **特定** 切片的活动运行详细信息。 从前一命令的输出复制日期时间值，以便指定 StartDateTime 参数的值。 
 
     ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
@@ -559,10 +558,10 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 创建了 Azure **数据工厂**。
 1. 创建 **链接服务**：
 
-   a. 一个 **Azure 存储**链接服务，用于链接保存输入数据的 Azure 存储帐户。     
+   a. 一个 **Azure 存储** 链接服务，用于链接保存输入数据的 Azure 存储帐户。     
    b. 一个 **Azure SQL** 链接服务，用于链接保存输出数据的 SQL 数据库。
 1. 创建了 **数据集** ，用于描述管道的输入和输出数据。
-1. 创建了包含**复制活动**的**管道**，其中 **BlobSource** 为源，**SqlSink** 为接收器。
+1. 创建了包含 **复制活动** 的 **管道**，其中 **BlobSource** 为源，**SqlSink** 为接收器。
 
 ## <a name="next-steps"></a>后续步骤
 本教程中，你在复制操作中使用 Azure Blob 存储作为源数据存储，并使用 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 

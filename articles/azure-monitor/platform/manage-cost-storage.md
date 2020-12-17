@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592426"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616138"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -266,7 +266,7 @@ Usage
 - 警报规则名称：达到每日数据限制
 - 严重性：警告（严重性 1）
 
-定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
+定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>排查使用量超出预期的原因
 

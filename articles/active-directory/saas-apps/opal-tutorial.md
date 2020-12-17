@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: acd0206f45d714685cc3e01d968491049d3bb36f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522336"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608334"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Opal 集成
 
@@ -39,12 +39,10 @@ ms.locfileid: "92522336"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-
 * Opal 支持 IDP 发起的 SSO 
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
-
 
 ## <a name="adding-opal-from-the-gallery"></a>从库中添加 Opal
 
@@ -56,7 +54,6 @@ ms.locfileid: "92522336"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Opal”   。
 1. 从结果面板中选择“Opal”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-opal"></a>配置并测试 Opal 的 Azure AD 单一登录
 
@@ -83,12 +80,14 @@ ms.locfileid: "92522336"
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”文本框中键入 URL：`Opal` 
+    1. 在“标识符”文本框中键入 URL：`Opal`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.ouropal.com/auth/saml/callback`
+    1. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    > [!NOTE]
-    > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Opal 客户端支持团队](mailto:support@workwithopal.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+        `https://<subdomain>.ouropal.com/auth/saml/callback`
+
+        > [!NOTE]
+        > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Opal 客户端支持团队](mailto:support@workwithopal.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. Opal 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -98,14 +97,14 @@ ms.locfileid: "92522336"
 
     | 名称 | 源属性|
     | ---------------| --------------- |
-    | 名           | user.givenname |
-    | 姓        | user.surname |
+    | 名 | user.givenname |
+    | 姓 | user.surname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Opal”部分中，根据要求复制相应的 URL  。
+1. 在“设置 Opal”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -113,35 +112,35 @@ ms.locfileid: "92522336"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Opal 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Opal”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Opal”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-opal-sso"></a>配置 Opal SSO
 
-若要在 Opal 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Opal 支持团队](mailto:support@workwithopal.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Opal 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Opal 支持团队](mailto:support@workwithopal.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-opal-test-user"></a>创建 Opal 测试用户
 
@@ -157,7 +156,7 @@ ms.locfileid: "92522336"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 

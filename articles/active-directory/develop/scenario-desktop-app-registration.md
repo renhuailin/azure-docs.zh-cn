@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443137"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614859"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -49,7 +49,7 @@ ms.locfileid: "94443137"
 - 若要使用[守护程序应用程序](scenario-daemon-overview.md)中使用的客户端凭据流将[设备代码流](scenario-desktop-acquire-token.md#device-code-flow)、[集成 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication)以及[用户名和密码](scenario-desktop-acquire-token.md#username-and-password)与机密的客户端应用程序（它们都不要求重定向 URI）区分开来，需要将应用程序配置为公共客户端应用程序。 为了实现该配置：
 
     1. 在 [Azure 门户](https://portal.azure.com)中，选择“应用注册”中的应用，然后选择“身份验证” 。
-    1. 在“高级设置” > “默认客户端类型” > “将应用程序视为公共客户端”中，选择“是”   。
+    1. 在 "**高级设置**  >  " "**允许公用客户端流**  >  **"** 中，选择 **"是"**。
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 门户中的“身份验证”窗格上启用公共客户端设置":::
 
@@ -59,4 +59,4 @@ ms.locfileid: "94443137"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 [应用代码配置](scenario-desktop-app-configuration.md)。
+转到此方案中的下一篇文章：[应用代码配置](scenario-desktop-app-configuration.md)。

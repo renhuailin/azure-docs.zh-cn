@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026443"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614501"
 ---
 | **资源** | **默认限制** | **最大限制** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96026443"
 | 每个批处理帐户的池数 | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup>若要请求超过此限制的增加，请与 Azure 支持联系。
-
-> [!IMPORTANT]
-> 我们正在更改专用配额的请求和管理方式。  专用 vCPU 总数是当前强制实施的值，但很快就会强制实施每 VM 系列的专用配额。 低优先级配额将继续基于总限额强制实施；它不会按 VM 系列强制实施。
 
 > [!NOTE]
 > 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。 [查看 Batch 帐户中的配额](../articles/batch/batch-quota-limit.md#view-batch-quotas)。

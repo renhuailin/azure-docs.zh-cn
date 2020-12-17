@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671840"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608827"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教程：将 SAP Analytics Cloud 与 Azure Active Directory 集成
 
@@ -49,7 +49,7 @@ ms.locfileid: "92671840"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **SAP Analytics Cloud** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **SAP Analytics Cloud**。 
 1. 从结果面板中选择“SAP Analytics Cloud”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -183,21 +183,21 @@ ms.locfileid: "92671840"
 
     然后完成以下步骤：
 
-    a. 在“用户 ID”框中，输入用户的用户 ID，例如 **B** 。 
+    1. 在“用户 ID”框中，输入用户的用户 ID，例如 **B**。
 
-    b. 在“名字”框中，输入用户的名字，例如 **B** 。 
+    1. 在“名字”框中，输入用户的名字，例如 **B**。
 
-    c. 在“姓氏”  框中，输入用户的姓氏，如 Simon  。
+    1. 在“姓氏”框中，输入用户的姓氏，如 Simon。
 
-    d. 在“显示名称”框中，输入用户的全名，例如 **B.Simon** 。 
+    1. 在“显示名称”框中，输入用户的全名，例如 **B.Simon**。
 
-    e. 在“电子邮件”  框中，输入用户的电子邮件地址，例如 `b.simon@contoso.com`。
+    1. 在“电子邮件”框中，输入用户的电子邮件地址，如 `b.simon@contoso.com`。
 
-    f. 在“选择角色”  页上，选择适当的用户角色，然后选择“确定”  。
+    1. 在“选择角色”页上，选择适当的用户角色，然后选择“确定”。
 
-      ![选择角色](./media/sapboc-tutorial/user3.png)
+        ![选择角色](./media/sapboc-tutorial/user3.png)
 
-    g. 选择“保存”  图标。
+    1. 选择“保存”图标。
 
 ### <a name="test-sso"></a>测试 SSO 
 

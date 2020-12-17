@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
 ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563018"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616155"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -49,7 +49,7 @@ Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑�
 
 Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统：
 
-- Windows Server 2012 R2 及更高版本（包括 Windows Server Core）
+- Windows Server 2008 R2、Windows Server 2012 R2 及更高版本 (包括服务器核心) 
 - Ubuntu 16.04 和 18.04 LTS (x64) 
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)

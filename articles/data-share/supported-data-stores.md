@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/7/2020
-ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.date: 12/16/2020
+ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853130"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616739"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
@@ -50,7 +50,7 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 | Azure 数据资源管理器 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享
-Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 将覆盖具有相同名称的现有文件。
+Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源删除的文件。 
 
 有关详细信息 [，请参阅共享和接收来自 Azure Blob 存储的数据和 Azure Data Lake Storage](how-to-share-from-storage.md) 。
 
