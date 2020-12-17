@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460057"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592290"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -53,7 +53,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 在“网络”选项卡中选中“专用终结点”单选按钮。
 1. 单击“+ 添加”按钮添加专用终结点。
 
-    ![映像](../media/private-link-service-1.png)
+    ![屏幕截图显示了“创建密钥保管库”页上的“网络”选项卡。](../media/private-link-service-1.png)
  
 1. 在“创建专用终结点”边栏选项卡的“位置”字段中，选择虚拟网络所在的区域。 
 1. 在“名称”字段中创建一个描述性的名称，用于标识此专用终结点。 
@@ -61,7 +61,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 将“与专用区域 DNS 集成”选项保留不变。  
 1. 选择“确定”。
 
-    ![映像](../media/private-link-service-8.png)
+    ![屏幕截图显示了“创建专用终结点”页，其中选中了一些设置。](../media/private-link-service-8.png)
  
 现在可以看到配置的专用终结点。 可以使用相应的选项来删除和编辑此专用终结点。 选择“查看 + 创建”按钮并创建 Key Vault。 完成部署需要 5-10 分钟。 
 
@@ -76,12 +76,13 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 选择页面顶部的“专用终结点连接”选项卡
 1. 选择页面顶部的“+ 专用终结点”按钮。
 
-    ![插图](../media/private-link-service-3.png) ![插图](../media/private-link-service-4.png)
+    ![屏幕截图显示了“网络”页上的“+ 专用终结点”按钮。](../media/private-link-service-3.png)
+    ![屏幕截图显示了“创建专用终结点(预览)”页上的“基本信息”选项卡。](../media/private-link-service-4.png)
 
 可以使用此边栏选项卡选择为任何 Azure 资源创建专用终结点。 可以使用下拉菜单选择资源类型并在目录中选择资源，或者使用资源 ID 连接到任何 Azure 资源。 将“与专用区域 DNS 集成”选项保留不变。  
 
-![插图](../media/private-link-service-3.png)
-![插图](../media/private-link-service-4.png)
+![屏幕截图显示了使用当前边栏选项卡添加专用终结点的情况。](../media/private-link-service-3.png)
+![屏幕截图显示了“创建专用终结点(预览)”页的示例。](../media/private-link-service-4.png)
 
 创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，则你可以批准连接请求（前提是你有足够的权限）；如果连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准连接请求。
 

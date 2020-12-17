@@ -306,10 +306,12 @@
       items:
         - name: 选择层
           href: search-sku-tier.md
-        - name: 服务限制
-          href: search-limits-quotas-capacity.md
+        - name: 估计容量和成本
+          href: search-sku-manage-costs.md
         - name: 调整容量
           href: search-capacity-planning.md
+        - name: 服务限制
+          href: search-limits-quotas-capacity.md
         - name: 性能规模
           href: search-performance-optimization.md
         - name: 多租户体系结构
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: 创建专用终结点
               href: service-create-private-endpoint.md
-        - name: 基于标识的访问
-          items:
-            - name: 安全筛选器
-              href: search-security-trimming-for-azure-search.md
-            - name: 筛选用户标识
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: 出站安全（索引器）
           items:
             - name: 通过 IP 范围访问
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: 通过专用终结点访问
               href: search-indexer-howto-access-private.md
+        - name: 基于标识的访问
+          items:
+            - name: 安全筛选器
+              href: search-security-trimming-for-azure-search.md
+            - name: 筛选用户标识
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:
         - name: 门户

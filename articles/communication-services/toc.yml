@@ -16,6 +16,8 @@
       items:
         - name: 向应用添加聊天
           href: quickstarts/chat/get-started.md
+        - name: 将你的聊天应用连接到 Teams 会议
+          href: quickstarts/chat/meeting-interop.md
     - name: 电话服务和短信
       items:
         - name: 获取电话号码

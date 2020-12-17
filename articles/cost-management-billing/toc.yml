@@ -384,6 +384,8 @@
       href: /azure/templates/microsoft.consumption/budgets
     - name: 成本管理 REST API 示例
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: 成本管理 - Azure PowerShell
+      href: /powershell/module/Az.CostManagement
     - name: 计费自动化方案
       href: manage/cost-management-automation-scenarios.md
     - name: Azure 计费 API 概述

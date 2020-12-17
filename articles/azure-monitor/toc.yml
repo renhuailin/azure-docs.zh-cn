@@ -190,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: 指标资源管理器的高级功能
               href: platform/metrics-charts.md
+            - name: 在指标资源管理器中查看多个资源
+              href: platform/metrics-dynamic-scope.md
             - name: 指标图表示例
               href: platform/metric-chart-samples.md
             - name: 排查指标图表问题
@@ -441,7 +443,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -544,14 +546,14 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
-            - name: IT Service Management 连接
+            - name: IT 服务管理连接
               href: platform/itsmc-connections.md
-            - name: 与安全导出集成
-              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: 创建 Service Manager Web 应用
               href: platform/itsmc-service-manager-script.md
             - name: 排查 ITSM 连接器中的问题
               href: platform/itsmc-resync-servicenow.md
+            - name: 与安全导出集成
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: 迁移经典警报规则
           items:
             - name: 关于经典警报
@@ -752,6 +754,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: 基于日志的指标定义
               href: platform/app-insights-metrics.md
+            - name: 标准指标
+              href: app/standard-metrics.md
         - name: 搜索
           href: app/diagnostic-search.md
         - name: 探查器

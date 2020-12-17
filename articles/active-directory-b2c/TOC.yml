@@ -95,8 +95,6 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
-    - name: SSO 会话
-      href: session-overview.md
     - name: 标识保护和条件访问
       href: conditional-access-identity-protection-overview.md
 - name: 操作指南
@@ -155,6 +153,8 @@
           href: identity-provider-wechat.md
         - name: 微博
           href: identity-provider-weibo.md
+        - name: 传递标识提供者令牌
+          href: idp-pass-through-user-flow.md
     - name: UX 自定义
       items:
         - name: 配置用户输入
@@ -174,6 +174,24 @@
         - name: 启用 MFA
           href: multi-factor-authentication.md
           displayName: multi-factor auth
+        - name: 设置直接登录
+          href: direct-signin.md
+    - name: 令牌和会话管理
+      items:
+        - name: 配置会话行为
+          href: session-behavior.md
+        - name: 配置令牌
+          href: configure-tokens.md
+    - name: 定义自定义属性
+      href: user-flow-custom-attributes.md
+    - name: 标识保护和条件访问
+      items:
+        - name: 设置标识保护和条件访问
+          href: conditional-access-identity-protection-setup.md
+        - name: 添加条件访问
+          href: conditional-access-user-flow.md
+    - name: 配置年龄限制
+      href: basic-age-gating.md
     - name: 用户流
       items:
         - name: 创建流
@@ -184,40 +202,23 @@
               href: configure-ropc.md
             - name: 设置自助密码重置
               href: user-flow-self-service-password-reset.md
-        - name: 添加条件访问
-          href: conditional-access-user-flow.md
-        - name: 令牌和会话管理
-          items:
-            - name: 配置令牌
-              href: configure-tokens.md
-            - name: 配置会话行为
-              href: session-behavior.md
-        - name: 配置年龄限制
-          href: basic-age-gating.md
-        - name: 定义自定义属性
-          href: user-flow-custom-attributes.md
         - name: API 连接器（预览版）
           items:
             - name: 概述
               href: api-connectors-overview.md
             - name: 添加 API 连接器
               href: add-api-connector.md
-        - name: 传递外部 IdP 令牌
-          href: idp-pass-through-user-flow.md
-    - name: 标识保护和条件访问
-      href: conditional-access-identity-protection-setup.md
     - name: 自定义策略
       items:
+        - name: 自定义策略概述
+          href: custom-policy-trust-frameworks.md
+        - name: 自定义策略入门
+          href: custom-policy-get-started.md
         - name: 创建策略
           items:
-            - name: 自定义策略入门
-              href: custom-policy-get-started.md
             - name: 资源所有者密码凭据
               href: ropc-custom.md
               displayName: ropc
-            - name: 启用“使我保持登录状态”
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
             - name: 密码更改
               href: custom-policy-password-change.md
             - name: 手机注册和登录
@@ -230,18 +231,6 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: 令牌和会话管理
-          items:
-            - name: 自定义令牌
-              href: configure-tokens-custom-policy.md
-            - name: 配置会话行为
-              href: session-behavior-custom-policy.md
-        - name: 传递外部 IdP 令牌
-          href: idp-pass-through-custom.md
-        - name: 自适应体验
-          items:
-            - name: 设置直接登录
-              href: direct-signin.md
         - name: 添加自己的业务逻辑
           items:
             - name: 集成 REST API
@@ -254,8 +243,6 @@
               displayName: rest claims exchange
             - name: 保护 REST API
               href: secure-rest-api.md
-        - name: 定义自定义属性
-          href: custom-policy-custom-attributes.md
         - name: 疑难解答
           items:
             - name: 使用 Application Insights 收集日志
@@ -268,8 +255,6 @@
           href: analytics-with-application-insights.md
         - name: 参考
           items:
-            - name: 信任框架定义
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,11 +300,9 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: 技术配置文件
                   href: technicalprofiles.md
                   items:
-                    - name: 关于技术配置文件
-                      href: technical-profiles-overview.md
                     - name: 关于验证技术配置文件
                       href: validation-technical-profile.md
                     - name: Application Insights
@@ -370,6 +353,8 @@
               href: relyingparty.md
             - name: 声明解析程序
               href: claim-resolver-overview.md
+    - name: UserInfo 终结点
+      href: userinfo-endpoint.md
     - name: 合作伙伴集成
       items:
         - name: Azure AD B2C 合作伙伴库

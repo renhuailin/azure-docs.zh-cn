@@ -419,10 +419,12 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Azure VM 文件恢复
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Azure 备份代理或 VM 扩展超时
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure 备份代理

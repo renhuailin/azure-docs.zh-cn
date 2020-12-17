@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457429"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成（旧教程）
 
@@ -70,7 +70,7 @@ ms.locfileid: "92457429"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **Amazon Web Services (AWS)** 。
 1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -122,14 +122,14 @@ ms.locfileid: "92457429"
     | 名称  | 源属性  | 命名空间 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  `https://aws.amazon.com/SAML/Attributes` |
+    | 角色 | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    1. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![显示“用户声明”部分的屏幕截图，其中标出了“添加新声明”和“保存”。](common/new-save-attribute.png)
+        ![显示“用户声明”部分的屏幕截图，其中标出了“添加新声明”和“保存”。](common/new-save-attribute.png)
 
-    ![显示“管理用户声明”对话框的屏幕截图，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
+        ![显示“管理用户声明”对话框的屏幕截图，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "92457429"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”并将其保存在计算机上。
 
@@ -169,9 +169,9 @@ ms.locfileid: "92457429"
 
     a. 对于“提供者类型”，请选择“SAML”。
 
-    b. 在“提供者名称”文本框中，键入提供者名称（例如： *WAAD* ）。
+    b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
-    c. 若要上传从 Azure 门户下载的 **元数据文件** ，请单击“选择文件”。
+    c. 若要上传从 Azure 门户下载的 **元数据文件**，请单击“选择文件”。
 
     d. 单击“下一步”。
 
@@ -192,10 +192,10 @@ ms.locfileid: "92457429"
 
     a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
 
-    b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如： *WAAD* ）
+    b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
 
     c. 选择“允许以编程方式和通过 AWS 管理控制台进行访问”。
-  
+
     d. 单击“下一步: 权限”。
 
 1. 在搜索栏中搜索“管理员访问”，选择“AdministratorAccess”复选框，然后单击“下一步:  **标记”** 。
@@ -253,39 +253,35 @@ ms.locfileid: "92457429"
 
 1. 在另一个窗口中打开 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
-    a. 使用租户的全局管理员/共同管理员凭据登录到 Microsoft Graph 浏览器站点。
+    1. 使用租户的全局管理员/共同管理员凭据登录到 Microsoft Graph 浏览器站点。
 
-    b. 需要拥有足够的权限才能创建角色。 单击“修改权限”以获取所需的权限。
+    1. 需要拥有足够的权限才能创建角色。 单击“修改权限”以获取所需的权限。
 
-    ![Microsoft Graph 浏览器对话框 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph 浏览器对话框 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. 从列表中选择以下权限（如果尚未这样做），然后单击“修改权限” 
+    1. 从列表中选择以下权限（如果尚未这样做），然后单击“修改权限” 
 
-    ![Microsoft Graph 浏览器对话框 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph 浏览器对话框 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. 系统会要求重新登录并接受许可。 接受许可后，再次登录到 Microsoft Graph 浏览器。
+    1. 系统会要求重新登录并接受许可。 接受许可后，再次登录到 Microsoft Graph 浏览器。
 
-    e. 在下拉列表中将版本更改为 **beta** 。 若要从租户提取所有服务主体，请使用以下查询：
+    1. 在下拉列表中将版本更改为 **beta**。 若要从租户提取所有服务主体，请使用以下查询：`https://graph.microsoft.com/beta/servicePrincipals`。 如果使用多个目录，则可以使用包含主域的以下模式：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`。
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph 浏览器对话框 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    如果使用多个目录，则可以使用包含主域的以下模式：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 可使用从“Azure AD 属性”页面复制的服务主体对象 ID 运行以下查询，转到相应的服务主体。
 
-    ![Microsoft Graph 浏览器对话框 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 可使用从“Azure AD 属性”页面复制的服务主体对象 ID 运行以下查询，转到相应的服务主体。
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph 浏览器对话框 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph 浏览器对话框 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. 从服务主体对象中提取 appRoles 属性。
 
-    g. 从服务主体对象中提取 appRoles 属性。
+        ![Microsoft Graph 浏览器对话框 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph 浏览器对话框 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. 现在需要为应用程序生成新角色。 
 
-    h. 现在需要为应用程序生成新角色。 
-
-    i. 下面 JSON 是 appRoles 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
+    1. 下面 JSON 是 appRoles 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
 
     ```
     {
@@ -329,9 +325,9 @@ ms.locfileid: "92457429"
     > [!Note]
     > 对于修补操作，只能在 **msiam_access** 之后添加新角色。 此外，可以根据组织的需要添加任意数量的角色。 Azure AD 将在 SAML 响应中将这些角色的 **值** 作为声明值进行发送。
 
-    j. 返回到 Microsoft Graph 浏览器，将方法从 GET 更改为 PATCH 。 通过更新 appRoles 属性（类似于上面示例中所示的属性）来修补服务主体对象以获取所需的角色。 单击“运行查询”执行此修补操作。 随后会显示一条成功消息，确认已创建 Amazon Web Services 应用程序的角色。
+    1. 返回到 Microsoft Graph 浏览器，将方法从 GET 更改为 PATCH 。 通过更新 appRoles 属性（类似于上面示例中所示的属性）来修补服务主体对象以获取所需的角色。 单击“运行查询”执行此修补操作。 随后会显示一条成功消息，确认已创建 Amazon Web Services 应用程序的角色。
 
-    ![Microsoft Graph 浏览器对话框 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph 浏览器对话框 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. 使用更多角色修补服务主体后，可将用户/组分配到相应的角色。 可通过转到门户并导航到 Amazon Web Services 应用程序来完成此操作。 在顶部单击“用户和组”选项卡。
 
