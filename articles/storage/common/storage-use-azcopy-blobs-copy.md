@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907460"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617283"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>使用 AzCopy v10 在 Azure 存储帐户之间复制 blob
 
@@ -28,6 +28,8 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 ## <a name="guidelines"></a>指南
 
 将以下准则应用于 AzCopy 命令。 
+
+- 客户端必须对源和目标存储帐户具有网络访问权限。 若要了解如何配置每个存储帐户的网络设置，请参阅 [配置 Azure 存储防火墙和虚拟网络](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。
 
 - 向每个源 URL 追加一个 SAS 令牌。 
 
@@ -146,10 +148,10 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 在以下文章中查找更多示例：
 
-- [示例：上传](storage-use-azcopy-blobs-upload.md)
+- [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：下载](storage-use-azcopy-blobs-download.md)
 - [示例：同步](storage-use-azcopy-blobs-synchronize.md)
-- [示例： Amazon S3 存储桶](storage-use-azcopy-s3.md)
+- [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
 - [示例： Azure 文件](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

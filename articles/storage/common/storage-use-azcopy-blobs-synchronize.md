@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6d1e9e8eeddaaa2ce8c891888935faad12d40295
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907461"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617266"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 与 Azure Blob 存储同步
 
@@ -79,7 +79,7 @@ ms.locfileid: "96907461"
 | **语法** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **示例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-## <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>使用对另一个文件共享中的目录所做的更改来更新某个目录
+## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>使用对其他容器中的目录的更改更新目录
 
 此命令中显示的第一个目录是源。 第二个是目标。
 
@@ -107,10 +107,10 @@ ms.locfileid: "96907461"
 
 在以下文章中查找更多示例：
 
-- [示例：上传](storage-use-azcopy-blobs-upload.md)
+- [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：下载](storage-use-azcopy-blobs-download.md)
 - [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
-- [示例： Amazon S3 存储桶](storage-use-azcopy-s3.md)
+- [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
 - [示例： Azure 文件](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

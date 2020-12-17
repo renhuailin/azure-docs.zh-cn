@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491666"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617419"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -25,7 +25,13 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ### <a name="partition-key-options"></a>分区键选项
 
-用于分区输入数据的分区键或列名称可能包含带有连字符、下划线和空格的字母数字字符。 除非与别名一起使用，否则无法将嵌套字段用作分区键。 分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
+用于对输入数据进行分区的分区键或列名称可能包含对 [blob 名称](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)接受的任何字符。 不能使用嵌套字段作为分区键，除非将其与别名结合使用，但你可以使用特定字符创建文件层次结构。 例如，您可以使用以下查询来创建一个列，该列将两个其他列中的数据合并为一个唯一的分区键。
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和记录类型，但如果将其转换为字符串，则可以将其用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>示例
 

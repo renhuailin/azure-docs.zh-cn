@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360282"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617402"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限
 
@@ -183,9 +183,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。 
 
-## <a name="authorize-without-a-keyring-linux"></a>在不使用 keyring 的情况下授权 (Linux) 
+## <a name="authorize-without-a-secret-store"></a>不使用机密存储授权
 
-如果操作系统没有密钥存储（如 *keyring*），则该 `azcopy login` 命令将不起作用。 相反，你可以在运行每个操作之前设置内存环境变量。 操作完成后，这些值将从内存中消失，因此，每次运行 azcopy 命令时，都必须设置这些变量。
+如果操作系统没有密钥存储（如 Linux *keyring*），则该 `azcopy login` 命令将不起作用。 相反，你可以在运行每个操作之前设置内存环境变量。 
 
 ### <a name="authorize-a-user-identity"></a>授权用户标识
 

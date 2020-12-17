@@ -1,7 +1,7 @@
 ---
-title: 分析和监视数据集中的数据偏移（预览版）
+title: '检测数据集上的数据偏差 (预览) '
 titleSuffix: Azure Machine Learning
-description: 创建 Azure 机器学习数据集监视器（预览版）、监视数据集中的数据偏移并设置警报。
+description: 了解如何在 Azure 学习中设置数据偏移检测。 创建数据集监视 (预览) 、监视数据偏移以及设置警报。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,28 +11,28 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1622f8ce988c5592ac96cec798617ca6ac37aa8d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359589"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617164"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 
 
 > [!IMPORTANT]
-> “检测数据集中的数据偏移”功能目前为公共预览版。
+> 数据集的数据偏移检测目前以公共预览版提供。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 了解如何监视数据偏移并设置偏移幅度很大时的警报。  
 
 Azure 机器学习数据集监视器（预览版）具有以下功能：
-* **分析数据的偏移** ，以了解数据在一段时间内的变化。
-* **监视模型数据** ，以了解训练数据集与服务数据集之间的差异。  首先[从部署的模型收集模型数据](how-to-enable-data-collection.md)。
-* **监视新数据** ，以了解任何基线与目标数据集之间的差异。
-* **分析数据中的特征** ，以跟踪统计属性在一段时间内的变化。
-* **针对数据偏移设置警报** ，以便针对潜在问题提前发出警告。 
+* **分析数据的偏移**，以了解数据在一段时间内的变化。
+* **监视模型数据**，以了解训练数据集与服务数据集之间的差异。  首先[从部署的模型收集模型数据](how-to-enable-data-collection.md)。
+* **监视新数据**，以了解任何基线与目标数据集之间的差异。
+* **分析数据中的特征**，以跟踪统计属性在一段时间内的变化。
+* **针对数据偏移设置警报**，以便针对潜在问题提前发出警告。 
 
 使用 [Azure 机器学习数据集](how-to-create-register-datasets.md)来创建监视器。 此数据集必须包含一个时间戳列。
 
@@ -215,11 +215,11 @@ monitor = monitor.enable_schedule()
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="创建监视器向导":::
 
-* **选择目标数据集** 。  目标数据集是一个表格数据集，在其中指定的时间戳列将用于分析数据偏移。 目标数据集必须包含与基线数据集共有的特征，并且应该是要将新数据追加到的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。
+* **选择目标数据集**。  目标数据集是一个表格数据集，在其中指定的时间戳列将用于分析数据偏移。 目标数据集必须包含与基线数据集共有的特征，并且应该是要将新数据追加到的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。
 
 * **选择基线数据集。**  选择在比较一段时间内的目标数据集时用作基线的表格数据集。  基线数据集必须包含与目标数据集共有的特征。  选择一个使用目标数据集切片的时间范围，或指定一个可用作基线的单独数据集。
 
-* **监视器设置** 。  这些设置适用于要创建的计划数据集监视管道。 
+* **监视器设置**。  这些设置适用于要创建的计划数据集监视管道。 
 
     | 设置 | 说明 | 提示 | 可变 | 
     | ------- | ----------- | ---- | ------- |
@@ -286,7 +286,7 @@ monitor = monitor.enable_schedule()
 
 * 分类特征
     
-    | 指标 | 说明 |  
+    | 指标 | 描述 |  
     | ------ | ----------- |  
     | Euclidian 距离     |  针对分类列进行的计算。  欧氏距离基于两个矢量进行计算，这两个矢量是根据两个数据集中同一分类列的经验分布生成的。  0 表示经验分布没有差别。    与 0 的偏差越大，该列的偏移程度越大。  对此指标进行时序绘图即可观察相关趋势，并可利用这些趋势来发现偏移特征。  |
     | 唯一值 | 特征的唯一值（基数）数目。 |

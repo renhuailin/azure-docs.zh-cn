@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562831"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617113"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -59,7 +59,7 @@ ms.locfileid: "97562831"
 
 ## <a name="transfer-learning"></a>迁移学习
 
-训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "传输学习" 的技术来为训练过程提供快捷方式。
+训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "*传输学习*" 的技术来为训练过程提供快捷方式。
 
 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。
 

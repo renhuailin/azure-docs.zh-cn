@@ -4,15 +4,15 @@ description: 了解如何在 Azure Functions 中发送 Azure RabbitMQ 触发器�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505697"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617181"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 绑定
 
@@ -30,7 +30,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[
 
 若要开始使用此扩展进行开发，请确保先 [设置 RabbitMQ 终结点](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint)。 若要了解有关 RabbitMQ 的详细信息，请参阅 " [入门" 页](https://www.rabbitmq.com/getstarted.html)。
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
+### <a name="functions-3x-and-higher"></a>函数1.x 和更高版本
 
 使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
@@ -46,9 +46,9 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[
 [更新扩展]: ./functions-bindings-register.md
 [Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>函数1.x 和2。x
 
-函数1.x 不支持 RabbitMQ 绑定扩展。 请使用函数1.x 和更高版本。
+函数1.x 和2.x 不支持 RabbitMQ 绑定扩展。 请使用函数1.x 和更高版本。
 
 ## <a name="next-steps"></a>后续步骤
 

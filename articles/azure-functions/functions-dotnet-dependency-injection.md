@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167689"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617062"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -118,8 +118,8 @@ namespace MyNamespace
 
 Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
-- **暂时性**：每次请求此服务时，都会创建暂时性服务。
-- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域服务在每次执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
+- **暂时性**：在每个服务解析时创建暂时性服务。
+- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域内服务在每次函数执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
 - **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `DocumentClient` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
 在 GitHub 上查看或下载[不同服务生存期的示例](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
@@ -131,8 +131,8 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundament
 Azure Functions 会自动添加 Application Insights。
 
 > [!WARNING]
-> - 不要添加 `AddApplicationInsightsTelemetry()` 到服务集合，后者将注册与环境提供的服务冲突的服务。
-> - `TelemetryConfiguration` `TelemetryClient` 如果你使用的是内置 Application Insights 功能，请不要注册自己的或。 如果需要配置自己 `TelemetryClient` 的实例，请通过插入的实例创建一个实例， `TelemetryConfiguration` 如在 [c # 函数中记录自定义遥测](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)中所示。
+> - 请勿将 `AddApplicationInsightsTelemetry()` 添加到服务集合，因为它注册的服务与环境提供的服务发生冲突。
+> - 如果使用内置 Application Insights 功能，请勿注册自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果需要配置自己的 `TelemetryClient` 实例，请通过插入的 `TelemetryConfiguration` 创建一个实例，如[在 C# 函数中记录自定义遥测](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)中所示。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
 
@@ -181,6 +181,8 @@ namespace MyNamespace
     }
 }
 ```
+
+有关日志级别的详细信息，请参阅 [配置日志级别](configure-monitoring.md#configure-log-levels)。
 
 ## <a name="function-app-provided-services"></a>函数应用提供的服务
 

@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369117"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617317"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -155,7 +155,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
 下表说明了自定义角色属性的含义。
 
-| 属性 | 必选 | 类型 | 描述 |
+| 属性 | 必选 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | 是 | String | 自定义角色的显示名称。 虽然角色定义是管理组或订阅级资源，但角色定义可以在共享同一 Azure AD 目录的多个订阅中使用。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
 | `Id`</br>`name` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
@@ -208,6 +208,7 @@ Microsoft.CostManagement/*/query/*
 - 每个目录最多可以有 **5000** 个自定义角色。
 - Azure 德国和 Azure 中国世纪互联的每个目录最多可以有 2000 个自定义角色。
 - 不能将 `AssignableScopes` 设置为根范围 (`"/"`)。
+- 不能 `*` 在中使用 () 通配符 `AssignableScopes` 。 此通配符限制有助于确保用户不可能通过更新角色定义来获取对某个范围的访问权限。
 - 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。

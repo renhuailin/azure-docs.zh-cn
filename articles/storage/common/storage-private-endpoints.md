@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905547"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617249"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>为 Azure 存储使用专用终结点
 
@@ -45,6 +45,9 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 > 如果要仅通过专用终结点限制对存储帐户的访问，请将存储防火墙配置为拒绝或控制通过公用终结点进行的访问。
 
 通过[配置存储防火墙](storage-network-security.md#change-the-default-network-access-rule)，使其默认拒绝通过其公共终结点进行的访问，可以保护存储帐户，使其仅接受来自 VNet 的连接。 无需防火墙规则来允许来自具有专用终结点的 VNet 的流量，因为存储防火墙只控制通过公共终结点进行的访问。 专用终结点则是依赖于“同意流”来授予子网对存储服务的访问权限。
+
+> [!NOTE]
+> 在存储帐户之间复制 blob 时，您的客户端必须具有对这两个帐户的网络访问权限。 因此，如果您选择只为一个帐户使用一个专用链接 (源或目标) ，请确保您的客户端具有对其他帐户的网络访问权限。 若要了解配置网络访问的其他方式，请参阅 [配置 Azure 存储防火墙和虚拟网络](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Azure 存储的专用终结点
 

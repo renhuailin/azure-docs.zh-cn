@@ -4,15 +4,15 @@ description: 了解如何在创建 RabbitMQ 消息时运行 Azure Function。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505698"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617215"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 触发器
 
@@ -133,14 +133,12 @@ module.exports = async function (context, myQueueItem) {
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-*_\__ \_ Py* 中的代码将参数声明为 `func.RabbitMQMessage` ，这允许您在函数中读取消息。
 
 ```python
 import logging
@@ -214,11 +212,11 @@ Python 不支持特性。
 |**direction** | 不适用 | 必须设置为“in”。|
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 |
 |**queueName**|**QueueName**| 要从中接收消息的队列的名称。 |
-|**段**|**HostName**|如果使用 ConnectStringSetting) ，则 (可选 <br>队列的主机名 (Ex： 10.26.45.210) |
-|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的名称 |
-|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的密码|
+|**段**|**HostName**|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
+|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的用户名。 例如： UserNameSetting： "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的密码。 例如： PasswordSetting： "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 消息队列连接字符串的应用设置的名称。 请注意，如果直接指定连接字符串而不是通过 local.settings.json 中的应用设置，则触发器将不起作用。  (Ex： In *function.json*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.js*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**端口**|获取或设置所使用的端口。 默认值为 0。|
+|**port**|**端口**|如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为 0。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ Python 不支持特性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下参数类型可用于以下消息：
+默认消息类型为 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)， `Body` RabbitMQ 事件的属性可作为下面列出的类型读取：
 
-* [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -RabbitMQ 消息的默认格式。
-  * `byte[]`-通过 RabbitMQ 事件的 "Body" 属性。
-* `string` -消息为文本。
 * `An object serializable as JSON` -消息以有效的 JSON 字符串形式传递。
+* `string`
+* `byte[]`
 * `POCO` -该消息的格式为 c # 对象。 有关完整示例，请参阅 c # [示例](#example)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下参数类型可用于以下消息：
+默认消息类型为 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)， `Body` RabbitMQ 事件的属性可作为下面列出的类型读取：
 
-* [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -RabbitMQ 消息的默认格式。
-  * `byte[]`-通过 RabbitMQ 事件的 "Body" 属性。
-* `string` -消息为文本。
 * `An object serializable as JSON` -消息以有效的 JSON 字符串形式传递。
-* `POCO` -该消息的格式为 c # 对象。
+* `string`
+* `byte[]`
+* `POCO` -该消息的格式为 c # 对象。 有关完整示例，请参阅 c # 脚本 [示例](#example)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ 消息将作为字符串或 JSON 对象传递到函数中。
+队列消息可通过上下文绑定获得。<NAME> 其中 <NAME> 与 function.js上的中定义的名称匹配。 如果有效负载为 JSON，该值将反序列化为对象。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ 消息将作为字符串或 JSON 对象传递到函数中。
+请参阅 Python [示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -284,7 +280,7 @@ RabbitMQ 消息将作为字符串或 JSON 对象传递到函数中。
 |prefetchCount|30|获取或设置消息接收方可以同时请求并缓存的消息数。|
 |queueName|不适用| 要从中接收消息的队列的名称。 |
 |connectionString|不适用|包含 RabbitMQ 消息队列连接字符串的应用设置的名称。 请注意，如果直接指定连接字符串而不是通过 local.settings.json 中的应用设置，则触发器将不起作用。|
-|port|0|每个缩放实例可以并发处理的最大会话数。|
+|port|0|如果使用 connectionString) 可对每个缩放实例同时处理的最大会话数，则 (被忽略。|
 
 ## <a name="local-testing"></a>本地测试
 
@@ -300,8 +296,8 @@ RabbitMQ 消息将作为字符串或 JSON 对象传递到函数中。
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +305,9 @@ RabbitMQ 消息将作为字符串或 JSON 对象传递到函数中。
 
 |properties  |默认 | 说明 |
 |---------|---------|---------|
-|hostName|不适用|如果使用 ConnectStringSetting) ，则 (可选 <br>队列的主机名 (Ex： 10.26.45.210) |
-|userName|不适用|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的名称 |
-|password|不适用|如果使用 ConnectionStringSetting) ，则 (可选 <br>用于访问队列的密码|
+|hostName|不适用|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
+|userName|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的名称 |
+|password|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的密码|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>监视 RabbitMQ 终结点
 监视特定 RabbitMQ 终结点的队列和交换的步骤：

@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219898"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617079"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 
@@ -21,7 +21,7 @@ Azure 数据共享支持从存储帐户进行基于快照的共享。 本文介�
 
 Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 可以将从这些源共享的数据接收到 Azure Data Lake Gen2 或 Azure Blob 存储。
 
-在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 将覆盖具有相同名称的现有文件。
+在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源删除的文件。 源中的空子文件夹不会复制到目标。 
 
 ## <a name="share-data"></a>共享数据
 
@@ -73,7 +73,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 1. 选择“开始共享数据”  。
 
-1. 选择“创建”。   
+1. 选择“创建”  。   
 
 1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
@@ -161,7 +161,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
    这会转到数据共享帐户中的已接收共享。 
 
-   如果不想接受邀请，请选择“拒绝”。** 
+   如果不想接受邀请，请选择“拒绝”。 
 
 ### <a name="configure-received-share"></a>配置已接收共享
 按照以下步骤配置要接收数据的位置。
@@ -185,7 +185,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
    ![触发快照](./media/trigger-snapshot.png "触发快照") 
 
-1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。** 选择“数据集”，然后单击“目标路径”中的链接。**** 
+1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。 选择“数据集”，然后单击“目标路径”中的链接。 
 
    ![使用者数据集](./media/consumer-datasets.png "使用者数据集映射") 
 

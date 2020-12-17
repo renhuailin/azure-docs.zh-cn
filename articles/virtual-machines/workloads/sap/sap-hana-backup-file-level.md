@@ -13,22 +13,22 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950255"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617130"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>文件级别的 SAP HANA Azure 备份
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 本文是有关 [Azure 虚拟机上 SAP HANA 的备份指南](./sap-hana-backup-guide.md)的相关文章，其中提供了有关 azure 备份服务和存储快照的入门和详细信息。 
 
 Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细信息记录在 [Azure 中 Linux 虚拟机的大小](../../sizes.md)中。 对于本文档中所述的测试，我们使用了 GS5 Azure VM，这允许使用64附加的数据磁盘。 在大型 SAP HANA 系统中，可能已经为数据和日志文件准备了大量的磁盘，这些磁盘可能与软件条带化相结合，目的是提供最佳的磁盘 IO 吞吐量。 有关 Azure Vm 上 SAP HANA 部署的建议磁盘配置的详细信息，请参阅 [SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)一文。 提供的建议还包括本地备份的磁盘空间建议。
 
-管理文件级备份/还原的标准方法是通过 SAP HANA Studio 或 SAP HANA SQL 语句使用基于文件的备份。 有关详细信息，请参阅 [SQL 和系统视图参考 SAP HANA](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)一文。
+管理文件级备份/还原的标准方法是通过 SAP HANA Studio 或 SAP HANA SQL 语句使用基于文件的备份。 有关详细信息，请参阅 [SQL 和系统视图参考 SAP HANA](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html)一文。
 
 ![此图显示 SAP HANA Studio 中备份菜单项的对话框](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

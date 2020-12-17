@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606872"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617045"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -144,8 +144,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 阿拉伯语（埃及） | `ar-EG` | 男 | `ar-EG-ShakirNeural` <sup>新建</sup> | 常规 |
 | 阿拉伯语（沙特阿拉伯） | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 常规 |
 | 阿拉伯语（沙特阿拉伯） | `ar-SA` | 男 | `ar-SA-HamedNeural` <sup>新建</sup> | 常规 |
-| 保加利亚语（保加利亚） | `bg-BG` | Female | `bg-BG-KalinaNeural` | 常规 |
-| 保加利亚语（保加利亚） | `bg-BG` | 男 | `bg-BG-BorislavNeural` <sup>新建</sup> | 常规 |
+| 保加利亚语(保加利亚) | `bg-BG` | Female | `bg-BG-KalinaNeural` | 常规 |
+| 保加利亚语(保加利亚) | `bg-BG` | 男 | `bg-BG-BorislavNeural` <sup>新建</sup> | 常规 |
 | 加泰罗尼亚语(西班牙) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 常规 |
 | 加泰罗尼亚语(西班牙) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>新建</sup> | 常规 |
 | 加泰罗尼亚语(西班牙) | `ca-ES` | 男 | `ca-ES-EnricNeural` <sup>新建</sup> | 常规 |
