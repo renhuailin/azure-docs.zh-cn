@@ -60,7 +60,7 @@ ms.locfileid: "92459673"
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在搜索框中输入 **ITRP** 。 在搜索结果中选择“ITRP”，然后选择“添加”。  
+4. 在搜索框中输入 **ITRP**。 在搜索结果中选择“ITRP”，然后选择“添加”。  
 
      ![搜索结果](common/search-new-app.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "92459673"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 ### <a name="configure-itrp-single-sign-on"></a>配置 ITRP 单一登录
 
@@ -135,11 +135,11 @@ ms.locfileid: "92459673"
 
 1. 在窗口顶部，选择“设置”图标： 
 
-    ![“设置”图标](./media/itrp-tutorial/ic775570.png "“设置”图标")
+    ![设置”图标](./media/itrp-tutorial/ic775570.png "“设置”图标")
 
 1. 在左窗格中，选择“单一登录”  ：
 
-    ![选择“单一登录”](./media/itrp-tutorial/ic775571.png "选择“单一登录”")
+    ![选择“单一登录](./media/itrp-tutorial/ic775571.png "选择“单一登录”")
 
 1. 在“单一登录”配置部分中，执行以下步骤。 
 
@@ -173,7 +173,7 @@ ms.locfileid: "92459673"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 

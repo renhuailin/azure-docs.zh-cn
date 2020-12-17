@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1fe1ad14dc1cc8f5ff5171ef517d23363969be4d
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346132"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387779"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -48,7 +48,7 @@ ms.locfileid: "96346132"
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**多回合默认文本**| 选择和选项|
-    |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ 添加 URL**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**聊天内容**|选择“专业”|
 
 7. 在“步骤 5”中，选择“创建 KB” 。
@@ -83,7 +83,7 @@ ms.locfileid: "96346132"
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**多回合默认文本**| 选择和选项|
-    |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ 添加文件**| 从“https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf”下载 Surface 笔记本电脑手册 
     |**聊天内容**|选择“专业”|
 
 8. 在“步骤 5”中，选择“创建 KB” 。
@@ -122,9 +122,9 @@ ms.locfileid: "96346132"
 1. 在 QnA Maker 门户的右上角，选择“测试”以测试所做的更改是否已生效。
 2. 在文本框中输入示例用户查询。
 
-    `How many Azure services are used by a knowledge base?`
+    `I want to know the difference between 32 bit and 64 bit Windows`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="在文本框中输入示例用户查询。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/query-dialogue.png" alt-text="在文本框中输入示例用户查询。":::
 
 3. 选择“检查”，更详细地检查响应。 测试窗口用于测试对知识库所做的更改，然后会发布知识库。
 

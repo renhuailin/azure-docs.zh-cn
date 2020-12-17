@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 3fb4085ba275bda1fe784f368eb5d92ac0c668f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448513"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937060"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -51,7 +51,7 @@ Azure Stack Edge Pro 具有以下功能：
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
-<!--|ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。-->
+<!--|ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。|-->
 
 ## <a name="components"></a>组件
 

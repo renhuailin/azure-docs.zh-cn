@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558753"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505216"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
@@ -51,7 +51,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-观点挖掘是情绪分析的一项功能，从版本 3.1-preview.1 开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。 
+观点挖掘是情绪分析的一项功能，从版本 3.1 的预览版开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
 
 例如，如果客户评论某家酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的各个方面及其相关的观点和情绪。 情绪分析可能只报告消极情绪。
 
@@ -74,7 +74,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求。 
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 [情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 > [!NOTE]
 > 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 **情绪分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **观点挖掘**
 
 若要获取观点挖掘结果，必须包含 `opinionMining=true` 参数。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 默认情况下，此参数设置为 `false`。 
 
@@ -144,7 +144,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理偏移](../concepts/text-offsets.md)。
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>情绪分析和观点挖掘示例响应
 
@@ -302,5 +302,5 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 ## <a name="see-also"></a>另请参阅
 
 * [文本分析概述](../overview.md)
-* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
+* [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)

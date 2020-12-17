@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546892"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507568"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解语音 CLI 的基础知识
 
@@ -87,7 +87,7 @@ spx translate --microphone --source en-US --target ru-RU --output file C:\some\f
 
 ### <a name="configuration-files-in-the-datastore"></a>数据存储中的配置文件
 
-语音 CLI 的行为可依赖于配置文件中的设置，可以使用 @ 符号在语音 CLI 调用中引用这些设置。
+语音 CLI 的行为可依赖于配置文件中的设置，可以使用 \@ 符号在语音 CLI 调用中引用这些设置。
 语音 CLI 在当前工作目录下它创建的新 `./spx/data` 子目录中保存新设置。
 查找配置值时，语音 CLI 将在当前工作目录中查找，再在 `./spx/data` 的数据存储中查找，然后在其他数据存储（包括 `spx` 二进制文件中的最终只读数据存储）中查找。
 以前，你使用了数据存储来保存 `@key` 和 `@region` 值，因此无需通过每个命令行调用来指定它们。

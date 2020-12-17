@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508826"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631969"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -32,6 +32,11 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 从标准和神经语音中选择，或创建自己产品或品牌特有的自定义语音。 75多个标准语音在45多种语言和区域设置中提供，5个神经声音提供四种语言和区域设置。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
 若要详细了解标准、神经和自定义语音，请参阅[文本转语音概述](text-to-speech.md)。
+
+
+> [!NOTE]
+> 您可以使用 ["文本转语音" 页](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)，收听不同样式的声音，并 pitches 阅读示例文本。
+
 
 ## <a name="special-characters"></a>特殊字符
 
@@ -56,7 +61,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
 | `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
@@ -76,7 +81,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -99,7 +104,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -198,6 +203,7 @@ speechConfig!.setPropertyTo(
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
@@ -257,6 +263,7 @@ speechConfig!.setPropertyTo(
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
 |                         | `style="newscast"`        | 以通用、随意的语气发布一般新闻   |
 | `en-US-GuyNeural`       | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
@@ -427,8 +434,8 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `type` | 指定添加无声的位置： <ul><li>前导–在文本开头 </li><li>月初和月末–在文本末尾 </li><li>Sentenceboundary –相邻句子之间 </li></ul> | 必须 |
-| `Value` | 指定暂停的绝对持续时间（以秒或毫秒为单位），此值应设置为小于 5000 ms。 例如，`2s` 和 `500ms` 是有效值 | 必须 |
+| `type` | 指定添加无声的位置： <ul><li>前导–在文本开头 </li><li>月初和月末–在文本末尾 </li><li>Sentenceboundary –相邻句子之间 </li></ul> | 必需 |
+| `Value` | 指定暂停的绝对持续时间（以秒或毫秒为单位），此值应设置为小于 5000 ms。 例如，`2s` 和 `500ms` 是有效值 | 必需 |
 
 **示例** 在此示例中， `mtts:silence` 用于在两个句子之间添加200毫秒的静音。
 ```xml

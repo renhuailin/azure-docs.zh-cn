@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: b35b383eb93b0c451fcb98c66538a4335480a649
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51b1af81e37008a7e959719846039c5470705760
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021241"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582701"
 ---
 适用于 Python 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成对象检测模型的示例代码。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -59,7 +59,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 
 > [!IMPORTANT]
-> 转到 Azure 门户。 如果在“先决条件”部分中创建自定义视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 你需要获取训练和预测密钥。
+> 转到 Azure 门户。 如果在“先决条件”部分中创建自定义视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 需要获取培训和预测密钥，以及培训资源的终结点。
 >
 > 可以在资源的“概览”选项卡上找到列为“订阅 ID”的预测资源 ID 值 。
 >
@@ -160,6 +160,8 @@ python CustomVisionQuickstart.py
 ```
 
 应用程序的输出应显示在控制台中。 然后，可以验证测试图像（在 <base_image_location>/images/Test 中）是否已正确标记，并验证检测区域是否正确。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
+
+## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

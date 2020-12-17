@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631595"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ ms.locfileid: "97401553"
 | **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory 域服务专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
+| **AzureArcInfrastructure** | 启用了 azure Arc 的服务器、启用了 Azure Arc 的 Kubernetes 和来宾配置流量。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory**、**AzureTrafficManager** 和 **AzureResourceManager** 标记。 *此标记当前不可通过 Azure 门户进行配置*。| 出站 | 否 | 是 |
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于 **存储** 和 **AzureActiveDirectory** 标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |

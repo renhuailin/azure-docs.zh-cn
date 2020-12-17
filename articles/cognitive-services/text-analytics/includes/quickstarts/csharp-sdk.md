@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 35d5940fbc001d1806711afb14aa4a549bcb1826
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8ed768d7bb47db6f102dbb48b438f9f4a2987f1e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615945"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366344"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3.1 参考文档](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 参考文档](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -39,6 +39,7 @@ ms.locfileid: "96615945"
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。  部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 若要使用“分析”功能，需要标准 (S) 定价层的“文本分析”资源。
 
 ## <a name="setting-up"></a>设置
 
@@ -48,7 +49,7 @@ ms.locfileid: "96615945"
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Azure.AI.TextAnalytics`。 选中“包括预发行版”框，选择版本 `5.1.0-beta.1`，然后选择“安装”。 也可使用[包管理器控制台](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Azure.AI.TextAnalytics`。 选中“包括预发行版”框，选择版本 `5.1.0-beta.3`，然后选择“安装”。 也可使用[包管理器控制台](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -804,5 +805,103 @@ Key phrases:
     cat
     veterinarian
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+
+> [!CAUTION]
+> 若要使用“分析”操作，请确保 Azure 资源使用标准定价层。
+
+创建一个名为 `AnalyzeOperationExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `StartAnalyzeOperationBatch()` 函数。 返回的 `AnalyzeOperation` 对象将包含 `AnalyzeOperationResult` 的 `Operation` 接口对象。 由于它是一个长期操作，因此请在 `operation.WaitForCompletionAsync()` 上使用 `await` 以便更新值。 `WaitForCompletionAsync()` 完成后，应会在 `operation.Value` 中更新集合。 如果发生错误，则会引发 `RequestFailedException`。
+
+
+```csharp
+static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+{
+    string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+
+    var batchDocuments = new List<string> { inputText };
+
+    AnalyzeOperationOptions operationOptions = new AnalyzeOperationOptions()
+    {
+        EntitiesTaskParameters = new EntitiesTaskParameters(),
+        DisplayName = "Analyze Operation Quick Start Example"
+    };
+
+    AnalyzeOperation operation = client.StartAnalyzeOperationBatch(batchDocuments, operationOptions, "en");
+
+    await operation.WaitForCompletionAsync();
+
+    AnalyzeOperationResult resultCollection = operation.Value;
+
+    RecognizeEntitiesResultCollection entitiesResult = resultCollection.Tasks.EntityRecognitionTasks[0].Results;
+
+    Console.WriteLine("Analyze Operation Request Details");
+    Console.WriteLine($"    Status: {resultCollection.Status}");
+    Console.WriteLine($"    DisplayName: {resultCollection.DisplayName}");
+    Console.WriteLine("");
+
+    Console.WriteLine("Recognized Entities");
+
+    foreach (RecognizeEntitiesResult result in entitiesResult)
+    {
+        Console.WriteLine($"    Recognized the following {result.Entities.Count} entities:");
+
+        foreach (CategorizedEntity entity in result.Entities)
+        {
+            Console.WriteLine($"    Entity: {entity.Text}");
+            Console.WriteLine($"    Category: {entity.Category}");
+            Console.WriteLine($"    Offset: {entity.Offset}");
+            Console.WriteLine($"    ConfidenceScore: {entity.ConfidenceScore}");
+            Console.WriteLine($"    SubCategory: {entity.SubCategory}");
+        }
+        Console.WriteLine("");
+    }
+}
+```
+
+将此示例添加到应用程序后，请使用 `await` 在 `main()` 方法中调用。
+
+```csharp
+await AnalyzeOperationExample(client).ConfigureAwait(false);
+```
+### <a name="output"></a>Output
+
+```console
+Analyze Operation Request Details
+    Status: succeeded
+    DisplayName: Analyze Operation Quick Start Example
+
+Recognized Entities
+    Recognized the following 3 entities:
+    Entity: Microsoft
+    Category: Organization
+    Offset: 0
+    ConfidenceScore: 0.83
+    SubCategory: 
+    Entity: Bill Gates
+    Category: Person
+    Offset: 25
+    ConfidenceScore: 0.85
+    SubCategory: 
+    Entity: Paul Allen
+    Category: Person
+    Offset: 40
+    ConfidenceScore: 0.9
+    SubCategory: 
+```
+
+还可以使用“分析”操作来检测 PII 和关键短语提取。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md)。
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+# <a name="version-21"></a>[版本 2.1](#tab/version-2)
+
+此功能在版本 2.1 中不可用。
 
 ---

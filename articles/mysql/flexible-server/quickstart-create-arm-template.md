@@ -242,7 +242,7 @@ echo "Press [ENTER] to continue ..."
 有关引导你完成 ARM 模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> 创建和部署你的第一个 ARM 模板[
+> [创建并部署第一个 ARM 模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 有关使用 MySQL 通过应用服务生成应用的分步教程，请参阅：
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099107"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400601"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -32,17 +32,17 @@ Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境�
 
 在 Azure 数字孪生中，可以使用称为 [**模型**](concepts-models.md)的自定义孪生类型来定义表示物理环境中的人物、位置和事物的数字实体。 
 
-可以将这些模型定义视为描述业务的专门词汇。 例如，对于建筑物管理解决方案，可以定义诸如“建筑物”、“地板”和“电梯”之类的模型。 然后，可以根据这些模型创建 **数字孪生** ，以表示你的特定环境。
+可以将这些模型定义视为描述业务的专门词汇。 例如，对于建筑物管理解决方案，可以定义诸如“建筑物”、“地板”和“电梯”之类的模型。 然后，可以根据这些模型创建 **数字孪生**，以表示你的特定环境。
 
 模型是采用类似 JSON 语言（称为[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)）进行定义的，它们根据状态属性、遥测事件、命令、组件和关系描述孪生。
-* 模型定义实体之间的语义 **关系** ，以便可以将孪生连接到反映其交互的知识图。 可以将模型视为描述你世界的名词，将关系视为动词。
+* 模型定义实体之间的语义 **关系**，以便可以将孪生连接到反映其交互的知识图。 可以将模型视为描述你世界的名词，将关系视为动词。
 * 还可以使用模型继承来专用化孪生。 一个模型可以继承自另一个模型。
 
 DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 这有助于使 Azure 数字孪生解决方案与 Azure 生态系统的其他部分保持连接并兼容。
 
 ### <a name="live-execution-environment"></a>实时执行环境
 
-Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使用自定义 DTDL 模型中的关系，可以将孪生连接到表示你环境的 **实时图形** 。
+Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使用自定义 DTDL 模型中的关系，可以将孪生连接到表示你环境的 **实时图形**。
 
 可借助示例应用程序 [Azure 数字孪生资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)查看 Azure 数字孪生图的可视化效果。
 
@@ -50,9 +50,9 @@ Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使�
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Azure 数字孪生资源管理器示例应用程序的屏幕截图，显示表示数字孪生的节点图" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
-Azure 数字孪生提供了丰富的 **事件系统** ，以使该图形跟上数据处理和业务逻辑的变化。 可以连接外部计算资源（例如 [Azure Functions](../azure-functions/functions-overview.md)），以灵活的自定义方式来驱动此数据处理。
+Azure 数字孪生提供了丰富的 **事件系统**，以使该图形跟上数据处理和业务逻辑的变化。 可以连接外部计算资源（例如 [Azure Functions](../azure-functions/functions-overview.md)），以灵活的自定义方式来驱动此数据处理。
 
-还可以使用 Azure 数字孪生的功能强大 **查询 API** ，从实时执行环境中提取见解。 API 让你可以使用丰富的搜索条件进行查询，包括属性值、关系、关系属性、模型信息等。 还可以组合查询，以便收集有关你环境的广泛见解，并回答对你很重要的自定义问题。
+还可以使用 Azure 数字孪生的功能强大 **查询 API**，从实时执行环境中提取见解。 API 让你可以使用丰富的搜索条件进行查询，包括属性值、关系、关系属性、模型信息等。 还可以组合查询，以便收集有关你环境的广泛见解，并回答对你很重要的自定义问题。
 
 ### <a name="input-from-iot-and-business-systems"></a>来 IoT 和业务系统的输入
 
@@ -64,7 +64,7 @@ Azure 数字孪生提供了丰富的 **事件系统** ，以使该图形跟上�
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>输出到 TSI、存储和分析
 
-可以将 Azure 数字孪生模型中的数据路由到下游 Azure 服务，以进行其他分析或存储。 这是通过 **事件路由** 提供的，该事件路由使用 [事件中心](../event-hubs/event-hubs-about.md)、 [事件网格](../event-grid/overview.md)或 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)来驱动所需的数据流。
+可以将 Azure 数字孪生模型中的数据路由到下游 Azure 服务，以进行其他分析或存储。 这是通过 **事件路由** 提供的，该事件路由使用 [事件中心](../event-hubs/event-hubs-about.md)、[事件网格](../event-grid/overview.md)或 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)来驱动所需的数据流。
 
 可以使用事件路由执行的操作包括：
 * 在 [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) 中存储 Azure 数字孪生数据
@@ -96,9 +96,6 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你使用过首个预览版的 Azure 数字孪生（2018 年 10 月），请了解已发生的更改：
-* [概述： *与第一版的差异*](overview-differences.md)
+如果你使用过首个预览版的 Azure 数字孪生（2018 年 10 月），请了解已发生的更改：[概述：*与第一版的差异*](overview-differences.md)。
 
-或者，通过第一个教程深入研究如何使用 Azure 数字孪生：
-
-[*教程：* 为客户端应用编写代码](tutorial-code.md)
+或者，通过快速入门深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-adt-explorer.md)。
