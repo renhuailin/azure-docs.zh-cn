@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562525"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656285"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -34,8 +34,6 @@ ms.locfileid: "97562525"
 PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如电话号码、电子邮件地址、电子邮件地址、passport 号码）中识别和标记敏感实体。
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | 功能                                                         | NER v3.0 | NER 3.1-预览版3 |
 |-----------------------------------------------------------------|--------|----------|
@@ -74,7 +72,7 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 
 ### <a name="request-endpoints"></a>请求终结点
 
-#### <a name="version-31-preview3"></a>[版本 3.1-预览版3](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-preview)
 
 命名实体识别 `v3.1-preview.3` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式。
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的物理服务器灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地物理服务器灾难恢复到 Azure 的过程中使用的组件和体系结构。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87422651"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654721"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -42,7 +42,7 @@ ms.locfileid: "87422651"
 
 | **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |

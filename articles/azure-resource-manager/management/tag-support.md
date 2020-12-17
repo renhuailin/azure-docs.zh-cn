@@ -3,12 +3,12 @@ title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005718"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656965"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/group-filter.md)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。
@@ -285,8 +285,8 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | configurationStores | 是 | 否 |
-> | configurationStores / eventGridFilters | 否 | 否 |
-> | configurationStores/架构 | 否 | 否 |
+> | configurationStores/eventGridFilters | 否 | 否 |
+> | configurationStores/keyValues | 否 | 否 |
 
 ## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
 
@@ -294,8 +294,8 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | Spring | 是 | 是 |
-> | 春季/apps | 否 | 否 |
-> | 春季/应用/部署 | 否 | 否 |
+> | Spring/apps | 否 | 否 |
+> | Spring/apps/deployments | 否 | 否 |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -984,8 +984,8 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
-> | 工作区/dbWorkspaces | 否 | 否 |
-> | 工作区/virtualNetworkPeerings | 否 | 否 |
+> | workspaces/dbWorkspaces | 否 | 否 |
+> | workspaces/virtualNetworkPeerings | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -1551,20 +1551,20 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
-> | 工作区/batchEndpoints | 是 | 是 |
-> | 工作区/batchEndpoints/部署 | 是 | 是 |
-> | 工作区/代码 | 否 | 否 |
-> | 工作区/代码/版本 | 否 | 否 |
+> | workspaces/batchEndpoints | 是 | 是 |
+> | workspaces/batchEndpoints/deployments | 是 | 是 |
+> | workspaces/codes | 否 | 否 |
+> | workspaces/codes/versions | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
-> | 工作区/数据存储 | 否 | 否 |
+> | workspaces/datastores | 否 | 否 |
 > | workspaces / eventGridFilters | 否 | 否 |
-> | 工作区/作业 | 否 | 否 |
-> | 工作区/labelingJobs | 否 | 否 |
+> | workspaces/jobs | 否 | 否 |
+> | workspaces/labelingJobs | 否 | 否 |
 > | workspaces / linkedServices | 否 | 否 |
-> | 工作区/模型 | 否 | 否 |
-> | 工作区/模型/版本 | 否 | 否 |
-> | 工作区/onlineEndpoints | 是 | 是 |
-> | 工作区/onlineEndpoints/部署 | 是 | 是 |
+> | workspaces/models | 否 | 否 |
+> | workspaces/models/versions | 否 | 否 |
+> | workspaces/onlineEndpoints | 是 | 是 |
+> | workspaces/onlineEndpoints/deployments | 是 | 是 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2253,7 +2253,7 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances / databases | 是（请参见[下面的注释](#sqlnote)） | 是 |
+> | managedInstances / databases | 否 | 否 |
 > | managedInstances / databases / backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances / databases / schemas / tables / columns / sensitivityLabels | 否 | 否 |
 > | managedInstances / databases / vulnerabilityAssessments | 否 | 否 |
@@ -2368,7 +2368,7 @@ ms.locfileid: "96005718"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
-> | 群集/privateEndpoints | 否 | 否 |
+> | clusters/privateEndpoints | 否 | 否 |
 > | streamingjobs | 是（见下方备注） | 是 |
 
 > [!NOTE]
@@ -2398,10 +2398,10 @@ ms.locfileid: "96005718"
 > | ------------- | ----------- | ----------- |
 > | privateLinkHubs | 是 | 是 |
 > | workspaces | 是 | 是 |
-> | 工作区/bigDataPools | 是 | 是 |
-> | 工作区/operationStatuses | 否 | 否 |
-> | 工作区/sqlDatabases | 是 | 是 |
-> | 工作区/sqlPools | 是 | 是 |
+> | workspaces/bigDataPools | 是 | 是 |
+> | workspaces / operationStatuses | 否 | 否 |
+> | workspaces / sqlDatabases | 是 | 是 |
+> | workspaces / sqlPools | 是 | 是 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2506,8 +2506,8 @@ ms.locfileid: "96005718"
 > | runtimes | 否 | 否 |
 > | serverFarms | 是 | 是 |
 > | serverFarms / eventGridFilters | 否 | 否 |
-> | serverFarms/firstPartyApps | 否 | 否 |
-> | serverFarms/firstPartyApps/keyVaultSettings | 否 | 否 |
+> | serverFarms / firstPartyApps | 否 | 否 |
+> | serverFarms / firstPartyApps / keyVaultSettings | 否 | 否 |
 > | sites | 是 | 是 |
 > | sites / config  | 否 | 否 |
 > | sites / eventGridFilters | 否 | 否 |
