@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.openlocfilehash: f7348cc2559e73c83ea4c65bc67efebcfe2b031d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520517"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -125,22 +125,22 @@ ms.locfileid: "92520517"
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SpringCM** 公司站点。
 
 1. 在顶部菜单中，单击“转到”，单击“首选项”，并在“帐户首选项”部分中，单击“SAML SSO”。
-   
+
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. 在“标识提供者配置”部分执行以下步骤：
-   
+
     ![标识提供者配置](./media/spring-cm-tutorial/ic797052.png "标识提供者配置")
-    
+
     a. 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。 
-    
+
     b. 在“证书颁发者”文本框中，粘贴从 Azure 门户复制的 Azure AD 标识符值 。
-    
+
     c. 在“服务提供商(SP)启动的终结点”文本框中，粘贴从 Azure 门户复制的登录 URL 值 。
-            
+
     d. 将“已启用 SAML”选择为“启用”。 
 
-    e. 单击“ **保存** ”。
+    e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -159,7 +159,7 @@ ms.locfileid: "92520517"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
-  
+
     b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -204,20 +204,20 @@ ms.locfileid: "92520517"
 1. 以管理员身份登录到 SpringCM 公司站点。
 
 1. 单击“转到”，然后单击“通讯簿”。
-   
+
     ![创建用户](./media/spring-cm-tutorial/ic797054.png "创建用户")
 
 1. 单击“创建用户”。
 
-1. 选择 **用户角色** 。
+1. 选择 **用户角色**。
 
 1. 选择“发送激活电子邮件”。
 
 1. 在相关文本框中键入要预配的有效 Azure Active Directory 用户帐户的名字、姓氏和电子邮件地址。
 
-1. 将用户添加到某个 **安全组** 。
+1. 将用户添加到某个 **安全组**。
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
    > [!NOTE]
    > 可以使用 SpringCM 提供的任何其他 SpringCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

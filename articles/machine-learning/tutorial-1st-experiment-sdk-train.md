@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574116"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093547"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>教程：训练你的第一个机器学习模型（第 3 部分，共 4 部分）
 
@@ -133,7 +133,7 @@ python src/train.py                             # train model
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [我创建了控制脚本](?success=control-script#submit) [我遇到了一个问题](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [我创建了控制脚本](?success=control-script#submit) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 将该运行提交到 Azure 机器学习
@@ -186,7 +186,7 @@ Azure 机器学习还维护特选环境的集合。 这些环境涵盖了常见�
 简而言之，使用注册的环境可以节省时间！ 有关详细信息，请阅读[如何使用环境](./how-to-use-environments.md)。
 
 > [!div class="nextstepaction"]
-> [我提交了运行](?success=test-w-environment#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [我提交了运行](?success=test-w-environment#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> 记录训练指标
 
@@ -221,7 +221,7 @@ Azure 机器学习中的指标具有以下特点：
 - 设计用于进行扩展，因此即使在运行数百个试验的情况下，你也始终有这些优势。
 
 > [!div class="nextstepaction"]
-> [我修改了 train.py](?success=modify-train#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [我修改了 train.py](?success=modify-train#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>更新 Conda 环境文件
 
@@ -230,7 +230,7 @@ Azure 机器学习中的指标具有以下特点：
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [我更新了环境文件](?success=update-environment#submit-again) [我遇到了一个问题](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [我更新了环境文件](?success=update-environment#submit-again) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> 将该运行提交到 Azure 机器学习
 再次提交此脚本：
@@ -244,7 +244,7 @@ python 04-run-pytorch.py
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="“指标”选项卡中的训练损失图。":::
 
 > [!div class="nextstepaction"]
-> [我重新提交了运行](?success=resubmit-with-logging#next-steps) [我遇到了一个问题](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [我重新提交了运行](?success=resubmit-with-logging#next-steps) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>后续步骤
 

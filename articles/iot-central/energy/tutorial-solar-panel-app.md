@@ -3,21 +3,19 @@ title: 教程：使用 IoT Central 创建太阳能板监视应用
 description: 教程：了解如何使用 Azure IoT Central 应用程序模板创建太阳能板应用程序。
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 145aefbe5a31d71ae614826c63d285c37ac03571
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123919"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516750"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>教程：创建并演练太阳能板监视应用模板 
-
-
 
 本教程将指导你完成创建太阳能板监视应用程序的过程，其中包括具有模拟数据的示例设备模型。 在本教程中，学习：
 
@@ -31,8 +29,8 @@ ms.locfileid: "92123919"
 如果没有订阅，请[创建免费试用帐户](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>先决条件
-- 无
-- 建议使用 Azure 订阅，但不是试用所必需的
+* 无
+* 建议使用 Azure 订阅，但不是试用所必需的
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>创建太阳能板监视应用 
@@ -41,12 +39,12 @@ ms.locfileid: "92123919"
 
 1. 打开 [Azure IoT Central 主页](https://apps.azureiotcentral.com)，然后单击“构建”以创建新应用程序。 
 
-2. 选择“能源”选项卡，然后在“太阳能板监视”应用程序磁贴下单击“创建应用”。 
+1. 选择“能源”选项卡，然后在“太阳能板监视”应用程序磁贴下单击“创建应用”。 
 
     > [!div class="mx-imgBorder"]
     > ![构建应用](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-3. 创建应用将打开新应用程序窗体 。 填写所需的详细信息，如下图所示：
+1. 创建应用将打开新应用程序窗体 。 填写所需的详细信息，如下图所示：
     * **应用程序名称**：为 IoT Central 应用程序选择一个名称。 
     * **URL**：选择 IoT Central URL，平台将验证其唯一性。
     * **7 天免费试用版**：如果已有 Azure 订阅，则建议使用默认设置。 如果没有 Azure 订阅，请从免费试用版入手。
@@ -100,7 +98,7 @@ Adatum 是一家虚构的能源公司，负责监视和管理太阳能板。 在
 如果决定不继续使用此应用程序，请使用以下步骤删除应用程序：
 
 1. 在左侧窗格中，打开“管理”选项卡
-2. 选择“应用程序设置”，然后单击页面底部的“删除”按钮。 
+1. 选择“应用程序设置”，然后单击页面底部的“删除”按钮。 
 
     > [!div class="mx-imgBorder"]
     > ![删除应用程序](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)

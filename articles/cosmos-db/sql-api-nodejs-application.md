@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097271"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359534"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -191,7 +191,7 @@ ms.locfileid: "93097271"
 
 1. 在项目的 **routes** 目录中，创建一个名为 **tasklist.js** 的新文件。  
 
-2. 将以下代码添加到 **tasklist.js** 。 此代码会加载 **tasklist.js** 使用的 CosmosClient 和 async 模块， 并定义 **TaskList** 类，该类作为我们之前定义的 **TaskDao** 对象的一个实例来传递：
+2. 将以下代码添加到 **tasklist.js**。 此代码会加载 **tasklist.js** 使用的 CosmosClient 和 async 模块， 并定义 **TaskList** 类，该类作为我们之前定义的 **TaskDao** 对象的一个实例来传递：
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -382,7 +382,7 @@ ms.locfileid: "93097271"
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    此代码会告知 **Jade** 引擎为应用程序呈现某些 HTML，并创建名为 **content** 的 **块** ，这样我们就可以在其中提供内容页面的布局。 保存并关闭 **layout.jade** 文件。
+    此代码会告知 **Jade** 引擎为应用程序呈现某些 HTML，并创建名为 **content** 的 **块**，这样我们就可以在其中提供内容页面的布局。 保存并关闭 **layout.jade** 文件。
 
 3. 现在打开 **index.jade** 文件（应用程序将要使用的视图），并将文件内容替换为以下代码：
 
@@ -470,7 +470,7 @@ ms.locfileid: "93097271"
 3. 通过将应用程序推送到远程群集来部署应用程序。
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. 几秒钟后，Web 应用程序就会发布完毕并在浏览器中启动。

@@ -3,17 +3,17 @@ title: 教程：使用 Azure IoT Central 创建水消耗量监测应用
 description: 教程：了解如何使用 Azure IoT Central 应用程序模板创建水消耗量监测应用程序。
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972404"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587190"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序
 
@@ -100,7 +100,7 @@ ms.locfileid: "90972404"
 
     ![水消耗量监测仪表板地图](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
-* **平均水流量折线图**和**环境条件折线图**：可以可视化绘制为所需时间范围内的折线图的一个或多个设备遥测。
+* **平均水流量折线图** 和 **环境条件折线图**：可以可视化绘制为所需时间范围内的折线图的一个或多个设备遥测。
 * **平均阀门压力热度地图图表**：对于你想要通过颜色索引查看在一定时间范围内的分布情况的设备遥测数据，可以选择这些数据的热度地图可视化类型。
 * **重置警报阈值内容磁贴**：可以包含调用操作内容磁贴，并嵌入操作页的链接。 在此情况下，重置警报阈值会转到应用程序的“作业”，可在其中运行设备属性的更新  。 稍后我们将在本教程的“配置作业”部分对此探讨此选项。
 * **属性磁贴**：仪表板显示“阀门操作信息”、“流量警报阈值”和“维护信息”磁贴    。
@@ -156,7 +156,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 ### <a name="publish"></a>发布
 
-如果进行了任何更改，请确保**发布**设备模板。
+如果进行了任何更改，请确保 **发布** 设备模板。
 
 ### <a name="create-a-new-device-template"></a>创建新设备模板
 

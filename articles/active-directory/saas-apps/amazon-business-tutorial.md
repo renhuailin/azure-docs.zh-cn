@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f2ad0cb67a41c0a5c59f6428a4912bd91a00e56
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318808"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589886"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教程：将 Amazon Business 与 Azure Active Directory 集成
 
@@ -40,7 +40,7 @@ ms.locfileid: "92318808"
 在本教程中，你将在现有的 Amazon Business 帐户中配置并测试 Azure AD SSO。
 
 * Amazon Business 支持 **SP 和 IDP** 发起的 SSO
-* Amazon Business 支持**实时**用户预配
+* Amazon Business 支持 **实时** 用户预配
 
 ## <a name="adding-amazon-business-from-the-gallery"></a>从库中添加 Amazon Business
 
@@ -109,19 +109,19 @@ ms.locfileid: "92318808"
 
 1. 除了上述属性以外，Amazon Business 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明”对话框中的“用户属性和声明”部分执行以下步骤： 
 
-    a. 单击“声明中返回的组”旁边的**笔**。
+    1. 单击“声明中返回的组”旁边的 **笔**。
 
-    ![屏幕截图显示“用户属性和声明”，其中“声明中返回的组”的图标处于选中状态。](./media/amazon-business-tutorial/config04.png)
+        ![屏幕截图显示“用户属性和声明”，其中“声明中返回的组”的图标处于选中状态。](./media/amazon-business-tutorial/config04.png)
 
-    ![屏幕截图显示具有此过程中所述值的“组声明”。](./media/amazon-business-tutorial/config05.png)
+        ![屏幕截图显示具有此过程中所述值的“组声明”。](./media/amazon-business-tutorial/config05.png)
 
-    b. 从单选列表中选择“所有组”。
+    1. 从单选列表中选择“所有组”。 
 
-    c. 选择“组 ID”作为“源属性”。 
+    1. 选择“组 ID”作为“源属性”。 
 
-    d. 选中“自定义组声明的名称”复选框，并根据组织的要求输入组名称。
+    1. 选中“自定义组声明的名称”复选框，并根据组织的要求输入组名称。
 
-    e. 单击“ **保存**”。
+    1. 单击“ **保存**”。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中找到“元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
@@ -207,11 +207,11 @@ ms.locfileid: "92318808"
 > 管理员需要根据情况在其租户中创建测试用户。 以下步骤说明如何创建测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 门户中创建 Azure AD 安全组
@@ -243,7 +243,7 @@ ms.locfileid: "92318808"
     ![屏幕截图显示“添加用户”按钮。](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
     >[!NOTE]

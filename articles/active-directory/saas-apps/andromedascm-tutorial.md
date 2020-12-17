@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318775"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "92318775"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Andromeda 支持 **SP 和 IDP** 发起的 SSO
-* Andromeda 支持**实时**用户预配
+* Andromeda 支持 **实时** 用户预配
 
 ## <a name="adding-andromeda-from-the-gallery"></a>从库中添加 Andromeda
 
@@ -90,7 +90,7 @@ ms.locfileid: "92318775"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "92318775"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
@@ -126,32 +126,32 @@ ms.locfileid: "92318775"
 
     | 名称 | 源属性|
     | ------ | -----------|
-    | 角色 (role)        | 应用特定的角色 |
-    | type        | 应用类型 |
-    | company       | CompanyName |
+    | 角色 (role) | 应用特定的角色 |
+    | type | 应用类型 |
+    | company | CompanyName |
 
     > [!NOTE]
     > 这些不是实际值。 这些值仅用于演示，请使用组织角色。
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    1. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![屏幕截图显示具有“添加新声明”和“保存”选项的“用户声明”。](common/new-save-attribute.png)
+        ![屏幕截图显示具有“添加新声明”和“保存”选项的“用户声明”。](common/new-save-attribute.png)
 
-    ![屏幕截图显示“管理用户声明”对话框，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
+        ![屏幕截图显示“管理用户声明”对话框，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
+    1. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空  。
+    1. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”  。
+    1. 选择“源”作为“属性”  。
 
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
+    1. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    1. 单击“确定” 
 
-    g. 单击“保存”  。
+    1. 单击“ **保存**”。
 
-8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -159,11 +159,11 @@ ms.locfileid: "92318775"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+    1. 登录 URL
 
-    b. Azure AD 标识符
+    1. Azure AD 标识符
 
-    c. 注销 URL
+    1. 注销 URL
 
 ### <a name="configure-andromeda-single-sign-on"></a>配置 Andromeda 单一登录
 
@@ -181,25 +181,25 @@ ms.locfileid: "92318775"
 
     ![Andromeda 配置](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. 选中“使用 SAML 启用 SSO”。 
+    1. 选中“使用 SAML 启用 SSO”。 
 
-    b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“基本 SAML 配置”部分的“标识符”文本框中。    
+    1. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“基本 SAML 配置”部分的“标识符”文本框中。    
 
-    c. 复制“使用者 URL”值，并将其粘贴到“基本 SAML 配置”部分的“回复 URL”文本框中。   
+    1. 复制“使用者 URL”值，并将其粘贴到“基本 SAML 配置”部分的“回复 URL”文本框中。   
 
-    d. 复制“登录 URL”值，并将其粘贴到“基本 SAML 配置”部分的“登录 URL”文本框中。   
+    1. 复制“登录 URL”值，并将其粘贴到“基本 SAML 配置”部分的“登录 URL”文本框中。   
 
-    e. 在“SAML 标识提供者”部分下，键入 IDP 名称。 
+    1. 在“SAML 标识提供者”部分下，键入 IDP 名称。 
 
-    f. 在“单一登录终结点”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
+    1. 在“单一登录终结点”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
 
-    g. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。 
-    
-    h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
+    1. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。 
 
-    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
 
-    i. 单击“保存”  。
+        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -218,12 +218,12 @@ ms.locfileid: "92318775"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

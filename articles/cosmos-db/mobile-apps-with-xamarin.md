@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec5888ba596579c6bbbf6891ca5e578e80003d80
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d1164c14b406fb66638e6a5333fe38180272aa14
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333267"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359319"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教程：使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93333267"
 
 大多数移动应用需要在云中存储数据，而 Azure Cosmos DB 正是适用于移动应用的云数据库。 该产品提供移动开发人员所需的一切功能。 它是一个完全托管的数据库即服务，可按需缩放。 它能够以应用程序完全可见的方式存放全球各地用户的数据。 使用 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)，可让 Xamarin 移动应用直接与 Azure Cosmos DB 交互，而无需任何中间层。
 
-本文提供有关使用 Xamarin 和 Azure Cosmos DB 构建移动应用的教程。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到本教程的完整源代码，包括如何管理用户和权限。
+本文提供有关使用 Xamarin 和 Azure Cosmos DB 构建移动应用的教程。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin) 中找到本教程的完整源代码，包括如何管理用户和权限。
 
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>移动应用的 Azure Cosmos DB 功能
 Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
@@ -40,12 +40,12 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 * 快速吞吐量。 使用 Azure Cosmos DB 时，只需几毫秒就能读取和写入文档。 开发人员可以指定所需的吞吐量，Azure Cosmos DB 对所有单区域帐户和具有松散一致性的所有多区域帐户采用 99.99% 的可用性 SLA，对所有多区域数据库帐户采用 99.999% 的读取可用性。
 * 无限规模。 Azure Cosmos 容器[随着应用的增长而增长](partitioning-overview.md)。 一开始可以处理较小规模的数据和每秒几百个请求的吞吐量。 集合或数据库可以增长到 PB 量级的数据和每秒几亿个请求的任意大的吞吐量。
 * 全球分布。 移动应用的用户特点是经常在全球不同的地点漫游。 Azure Cosmos DB 是[全球分布的数据库](distribute-data-globally.md)。 单击地图即可让用户访问数据。
-* 内置丰富授权。 有了 Azure Cosmos DB，无需使用复杂的自定义授权代码，就能轻松实现常用的模式，例如，[每个用户的数据](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)，或者多个用户共享的数据。
+* 内置丰富授权。 有了 Azure Cosmos DB，无需使用复杂的自定义授权代码，就能轻松实现常用的模式，例如，[每个用户的数据](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems)，或者多个用户共享的数据。
 * 地理空间查询。 许多移动应用现在可以提供区分地理环境的体验。 凭借对[地理空间类型](./sql-query-geospatial-intro.md)的一流支持，Azure Cosmos DB 可轻松创建这些体验。
 * 二进制附件。 应用数据通常包含二进制 Blob。 Azure Cosmos DB 原生支持附件，因此可以更轻松地将它用作应用数据的一站式存储库。
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB 和 Xamarin 教程
-以下教程介绍如何使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到该教程的完整源代码。
+以下教程介绍如何使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin) 中找到该教程的完整源代码。
 
 ### <a name="get-started"></a>入门
 入门 Azure Cosmos DB 非常简单。 转到 Azure 门户，并创建新的 Azure Cosmos DB 帐户。 单击“快速入门”选项卡。下载已连接到 Azure Cosmos DB 帐户的 Xamarin Forms 待办事项列表示例。 
@@ -86,7 +86,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 
   4. 将应用修改为使用 Facebook 对资源令牌代理进行身份验证，请求已登录的 Facebook 用户的资源令牌。 然后，可在 UserItems 集合中访问其数据。  
 
-可在 [GitHub 上的资源令牌代理](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)中找到此模式的完整代码示例。 下图演示了该解决方案：
+可在 [GitHub 上的资源令牌代理](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems)中找到此模式的完整代码示例。 下图演示了该解决方案：
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure Cosmos DB 用户和权限中转站" border="false":::
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 是托管型数据库即服务。 随着用户群体的扩大，
 祝贺。 现已完成本解决方案，并使用 Xamarin 和 Azure Cosmos DB 构建了一个移动应用。 遵循类似的步骤使用 Azure Cosmos DB JavaScript SDK 构建 Cordova 应用，或者使用 Azure Cosmos DB REST API 构建本机 iOS/Android 应用。
 
 ## <a name="next-steps"></a>后续步骤
-* 查看 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 的源代码。
+* 查看 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin) 的源代码。
 * 下载 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)。
 * 查找 [.NET 应用程序](sql-api-dotnet-samples.md)的更多代码示例。
 * 了解 [Azure Cosmos DB 的丰富查询功能](./sql-query-getting-started.md)。

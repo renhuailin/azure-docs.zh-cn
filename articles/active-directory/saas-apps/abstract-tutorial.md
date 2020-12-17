@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: baae0f89165e292408150dd419c6de8dc41a320c
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335513"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587802"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>教程：将 Abstract 与 Azure Active Directory 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "94335513"
 
 1. 打开 [Abstract Web 应用](https://app.abstract.com/)。
 2. 转到左侧栏中的“权限”页。 
-3. 在“配置 SSO”部分，  输入 **元数据 URL** 和 **实体 ID** 。
+3. 在“配置 SSO”部分，  输入 **元数据 URL** 和 **实体 ID**。
 4. 输入你可能有的任何手动例外。 列在手动例外部分的电子邮件会绕过 SSO，能够使用电子邮件和密码登录。 
 5. 单击 **“保存更改”** 。
 
@@ -130,7 +130,7 @@ ms.locfileid: "94335513"
 1. 在应用程序列表中，选择“Abstract”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
-   ![“用户和组”链接](common/users-groups-blade.png)
+    ![“用户和组”链接](common/users-groups-blade.png)
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 

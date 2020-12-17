@@ -3,12 +3,12 @@ title: 教程 - 部署和配置 VMware HCX
 description: 了解如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 解决方案。
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352451"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357885"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署和配置 VMware HCX
 
@@ -163,7 +163,7 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="具有绿色 vCenter 状态的仪表板的屏幕截图。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-有关此过程的端到端概述，请观看 [Azure VMware 解决方案：激活 HCX](https://www.youtube.com/embed/jzQZawslF8w) 视频。
+有关此过程的端到端概述，请观看 [Azure VMware 解决方案：激活 HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) 视频。
 
    > [!IMPORTANT]
    > 无论你使用的是 VMware HCX Advanced 还是 VMware HCX Enterprise，你都需要安装 VMware [知识库文章 81558](https://kb.vmware.com/s/article/81558) 中的补丁。 
@@ -192,7 +192,7 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="显示 Azure VMware 解决方案和 VMware HCX 连接器中 HCX 管理器配对的屏幕截图。":::
 
-有关此过程的端到端概述，请观看 [Azure VMware 解决方案：HCX 站点配对](https://www.youtube.com/embed/iTJtjbiwvsw)视频。
+有关此过程的端到端概述，请观看 [Azure VMware 解决方案：HCX 站点配对](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720)视频。
 
 ### <a name="create-network-profiles"></a>创建网络配置文件
 

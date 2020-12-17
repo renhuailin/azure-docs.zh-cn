@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512353"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093513"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) 的网络概念
 
@@ -60,7 +60,7 @@ ms.locfileid: "96512353"
 
 * **流入量**：流入量网络策略作为 [OpenShift SDN](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) 的一部分受到支持。 默认启用此网络策略，由用户执行。 尽管流入量网络策略符合 V1 NetworkPolicy，但不支持 Egress 和 IPBlock 类型。
 
-* **流出量**：通过使用 OpenShift 中的[出口防火墙](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能来支持流出量网络策略。 每个命名空间/项目只有一个流出量策略。 “默认”命名空间不支持流出量策略，并按顺序（从第一个到最后一个）对其进行评估。
+* **流出量**：通过使用 OpenShift 中的 [出口防火墙](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能来支持流出量网络策略。 每个命名空间/项目只有一个流出量策略。 “默认”命名空间不支持流出量策略，并按顺序（从第一个到最后一个）对其进行评估。
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift 中的网络基础知识
 
@@ -76,7 +76,7 @@ OpenShift 软件定义的网络 [(SDN)](https://docs.openshift.com/container-pla
 * Pod CIDR 的最小值应设为 /18（Pod 网络是不可路由的 IP，并且仅在 OpenShift SDN 内使用）。
 * 每个节点都为其 Pod 分配 /23 子网 （512 个 IP）。 此值不能更改。
 * 不能将 Pod 附加到多个网络。
-* 不能配置出口静态 IP。 （这是一种 OpenShift 功能。 有关信息，请参阅[配置出口 IP](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html)）。
+* 不能配置出口静态 IP。 （这是一种 OpenShift 功能。 有关信息，请参阅[配置出口 IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)）。
 
 ## <a name="network-settings"></a>网络设置
 

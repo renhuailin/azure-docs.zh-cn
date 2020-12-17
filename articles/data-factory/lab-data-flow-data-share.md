@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921030"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006125"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -72,7 +72,7 @@ ms.locfileid: "96921030"
     ![门户配置 3](media/lab-data-flow-data-share/configure3.png)
 1. 要配置的第一个链接服务是 Azure SQL 数据库。 可以使用搜索栏来筛选数据存储列表。 单击“Azure SQL 数据库”磁贴，然后单击“继续”。
 
-    ![门户配置 4](media/lab-data-flow-data-share/configure4.png)
+    ![门户配置 4](media/lab-data-flow-data-share/configure-4.png)
 1. 在 SQL 数据库配置窗格中，输入“SQLDB”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
     ![门户配置 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ ms.locfileid: "96921030"
 
 1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户配置 6](media/lab-data-flow-data-share/configure6.png)
+    ![门户配置 6](media/lab-data-flow-data-share/configure-6.png)
 1. 在链接服务配置窗格中，输入“SQLDW”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
-    ![门户配置 7](media/lab-data-flow-data-share/configure7.png)
+    ![门户配置 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>创建 Azure Data Lake Storage Gen2 链接服务
 
@@ -128,7 +128,7 @@ ms.locfileid: "96921030"
     ![门户副本 4](media/lab-data-flow-data-share/copy4.png)
 1. 搜索“Azure SQL 数据库”并单击“继续”。
 
-    ![门户副本 5](media/lab-data-flow-data-share/copy5.png)
+    ![门户副本 5](media/lab-data-flow-data-share/copy-5.png)
 1. 将数据集命名为“TripData”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripData”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
     ![门户副本 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ ms.locfileid: "96921030"
     ![门户数据流 9](media/lab-data-flow-data-share/dataflow9.png)
 1. 选择“Azure SQL 数据库”磁贴，然后单击“继续”。 *注意：你可能注意到，数据工厂中的许多连接器在映射数据流中不受支持。若要从其中的某个源转换数据，请使用复制活动将数据引入受支持的源*。
 
-    ![门户数据流 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![门户数据流 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. 将数据集命名为“TripFares”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripFares”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
     ![门户数据流 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ ms.locfileid: "96921030"
 
 1. 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户接收器 3](media/lab-data-flow-data-share/sink3.png)
+    ![门户接收器 3](media/lab-data-flow-data-share/sink-3.png)
 1. 将数据集命名为“AggregatedTaxiData”。 选择“SQLDW”作为链接服务。 选择“创建新表”，并将新表命名为 dbo.AggregateTaxiData。 完成后，单击“确定”
 
     ![门户接收器 4](media/lab-data-flow-data-share/sink4.png)

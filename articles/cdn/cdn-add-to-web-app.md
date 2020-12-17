@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779538"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562236"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -135,7 +135,7 @@ CDN 定期根据生存时间 (TTL) 配置刷新其在源 Web 应用中的资源�
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 完成部署后，浏览到 Web 应用 URL 并查看更改。
@@ -230,7 +230,7 @@ Azure CDN 返回当前的 Web 应用内容，其在标题中包含“V2”。
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3” 。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”。

@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187266"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346361"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
-
 
 
 在前面的两个教程中，你使用“店内分析 - 结帐”  应用程序模板创建并自定义了 IoT Central 应用程序。 本教程将介绍如何配置 IoT Central 应用程序以导出从设备收集的遥测数据。 然后，可以使用 Power BI 创建用于存储管理器的自定义仪表板，以可视化从遥测数据派生的见解。

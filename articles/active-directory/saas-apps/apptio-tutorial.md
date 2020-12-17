@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d7baba3db9a25d697d57382a28939426eac4a6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d24fecad109809bb3a2d18fc724e5d438cb813
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457812"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成
 

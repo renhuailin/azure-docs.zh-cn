@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a23cebed18965781f9ce52ae0efeee07128c01d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d8c785295380d3a90fde41f52b002f4686decad6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319043"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587292"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abintegro"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Abintegro 集成
 
@@ -41,7 +41,7 @@ ms.locfileid: "92319043"
 
 * Abintegro 支持 SP 发起的 SSO 
 
-* Abintegro 支持**恰时**用户预配
+* Abintegro 支持 **恰时** 用户预配
 
 ## <a name="adding-abintegro-from-the-gallery"></a>从库添加 Abintegro
 
