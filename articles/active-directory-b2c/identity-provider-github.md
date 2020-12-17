@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a890a72773392ec179c3565954c3136d47db1dc4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584912"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653735"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录
 
@@ -34,19 +34,7 @@ ms.locfileid: "97584912"
 
 ## <a name="prerequisites"></a>先决条件
 
-::: zone pivot="b2c-user-flow"
-
-* [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>创建 GitHub OAuth 应用程序
 
@@ -70,7 +58,7 @@ ms.locfileid: "97584912"
 1. 输入“名称”。 例如，GitHub。
 1. 对于 **客户端 ID**，输入你之前创建的 GitHub 应用程序的客户端 ID。
 1. 对于 **客户端密码**，请输入你记录的客户端密码。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ::: zone-end
 
@@ -232,7 +220,7 @@ GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击你想要用于 GitHub 标识提供者的用户流。
 1. 在 **社交标识提供者** 下，选择 " **GitHub**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

@@ -1,7 +1,7 @@
 ---
-title: 通过自定义策略设置使用 Salesforce SAML 提供程序进行的登录
+title: 设置使用 Salesforce 帐户的注册和登录
 titleSuffix: Azure AD B2C
-description: 在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录。
+description: 使用 Azure Active Directory B2C 向应用程序中的 Salesforce 帐户提供注册和登录。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,171 +13,148 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8214cbd7bb517f0bdcfde14e93790238bd1e354b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584708"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654279"
 ---
-# <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录
+# <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置使用 Salesforce 帐户的注册和登录
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
-
-::: zone pivot="b2c-user-flow"
-[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
-
-::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure Active Directory B2C (Azure AD B2C) 中使用[自定义策略](custom-policy-overview.md)为来自 Salesforce 组织的用户实现登录。 可通过将 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)添加到自定义策略来实现登录。
+::: zone-end
 
 ## <a name="prerequisites"></a>先决条件
 
-- 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-- 如果尚未注册，请注册一个[免费的 Developer Edition 帐户](https://developer.salesforce.com/signup)。 本文使用 [Salesforce Lightning Experience](https://developer.salesforce.com/page/Lightning_Experience_FAQ)。
-- 为 Salesforce 组织[设置“我的域”](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)。
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-### <a name="set-up-salesforce-as-an-identity-provider"></a>将 Salesforce 设置为标识提供者
 
-1. [登录到 Salesforce](https://login.salesforce.com/)。
-2. 在左侧菜单中的“设置”下面，展开“标识”，然后选择“标识提供者”。
-3. 选择“启用标识提供者”。
-4. 在“选择证书”下，选择希望 Salesforce 用于与 Azure AD B2C 进行通信的证书。 可以使用默认证书。
-5. 单击“ **保存**”。
+## <a name="create-a-salesforce-application"></a>创建 Salesforce 应用程序
 
-### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中创建连接的应用
+若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 Salesforce 帐户，需要在 Salesforce **应用管理器** 中创建应用程序。 有关详细信息，请参阅 [配置基本连接的应用设置](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)和 [启用适用于 API 集成的 OAuth 设置](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. 在“标识提供者”页面上，选择“现在通过已连接应用创建服务提供程序”。请单击此处”。
-2. 在“基本信息”下，为连接的应用输入所需值。
-3. 在“Web 应用设置”下，选中“启用 SAML”复选框。
-4. 在“实体 ID”字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
+1. 从 **安装程序** 的 "**快速查找**" 框中输入 **应用** 程序，然后选择 "**应用程序管理器**"。
+1. 选择 "新建" " **连接的应用**"。
+1. 在 " **基本信息**" 下，输入：
+    1. **连接的应用名称** -连接的应用名称显示在应用管理器和其应用启动器磁贴上。 该名称在您的组织内必须是唯一的。 
+    1. **API 名称** 
+    1. **联系人电子邮件** -Salesforce 的联系人电子邮件
+1. 在 " **API () 启用 Oauth 设置**" 下，选择 "**启用 oauth 设置**"
+1. 在 " **回调 URL**" 中，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+1. 在 " **所选 OAuth 作用域**" 中，选择 " **(id、配置文件、电子邮件、地址、电话) 访问你的基本信息**，并 **允许 (openid) 访问你的唯一标识符**。
+1. 选择 " **需要 Web 服务器流的机密**"。
+1. 选择 " **配置 ID 标记**"，然后选择 " **包括标准声明**"。
+1. 单击“ **保存**”。
+1. 复制 " **使用者密钥** " 和 " **使用者机密**" 的值。 需要将 Salesforce 配置为租户中的标识提供者。 **客户端密钥** 是重要的安全凭据。
 
-      ```
-      https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
-      ```
+::: zone pivot="b2c-user-flow"
 
-6. 在“ACS URL”字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
+## <a name="configure-a-salesforce-account-as-an-identity-provider"></a>将 Salesforce 帐户配置为标识提供者
 
-      ```
-      https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
-      ```
-7. 滚动到列表底部，然后单击“保存”。
+1. 确保你正在使用包含 Azure AD B2C 租户的目录。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
+1. 输入“名称”。 例如，输入 *Salesforce*。
+1. 对于 " **元数据 url**"，请输入以下 url， `{org}` 并将其替换为 Salesforce 组织：
 
-### <a name="get-the-metadata-url"></a>获取元数据 URL
+    ```
+    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    ```
 
-1. 在连接的应用的概述页上，单击“管理”。
-2. 复制“元数据发现终结点”的值，然后保存它。 在本文后面部分将使用它。
+1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
+1. 对于“客户端机密”，请输入之前记录的客户端机密。
+1. 对于“范围”，请输入 `openid id profile email`。
+1. 对于“响应类型”和“响应模式” ，请保留默认值。
+1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
+1. 在“标识提供者声明映射”下，选择以下声明：
 
-### <a name="set-up-salesforce-users-to-federate"></a>设置 Salesforce 用户以进行联合
+    - **用户 ID**： *sub*
+    - 显示名称：name
+    - 给定名称：given_name
+    - 姓氏：family_name
+    - **电子邮件**： *preferred_username*
 
-1. 在连接的应用的“管理”页上，单击“管理配置文件”。
-2. 选择要与 Azure AD B2C 联合的配置文件（或用户组）。 以系统管理员身份，选中“系统管理员”复选框，以便可以使用 Salesforce 帐户进行联合。
+1. 选择“保存”。 
+::: zone-end
 
-## <a name="generate-a-signing-certificate"></a>生成签名证书
-
-发送到 Salesforce 的请求需要由 Azure AD B2C 进行签名。 若要生成签名证书，请打开 Azure PowerShell，然后运行以下命令。
-
-> [!NOTE]
-> 确保在前两行中更新租户名称和密码。
-
-```powershell
-$tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
-$pwdText = "<YOUR PASSWORD HERE>"
-
-$Cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName "SamlIdp.$tenantName" -Subject "B2C SAML Signing Cert" -HashAlgorithm SHA256 -KeySpec Signature -KeyLength 2048
-
-$pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
-
-Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
-```
+::: zone pivot="b2c-custom-policy"
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
-你需要将已创建的证书存储在 Azure AD B2C 租户中。
+你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Upload`。
-7. 输入策略的 **名称**。 例如，SAMLSigningCert。 前缀 `B2C_1A_` 将自动添加到你的密钥的名称中。
-8. 浏览找到并选择你创建的 B2CSigningCert.pfx 证书。
-9. 输入证书的密码。
-3. 单击“创建”。
+6. 对于“选项”，请选择 `Manual`。
+7. 输入策略密钥的 **名称**。 例如，`SalesforceSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+8. 在“机密”中，输入前面记录的应用程序机密。
+9. 在“密钥用法”处选择 `Signature`。
+10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
-如果希望用户使用 Salesforce 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+如果希望用户使用 Salesforce 帐户登录，则需要将该帐户定义为声明提供程序，该提供程序 Azure AD B2C 可以通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)。
+可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
-1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
-1. 如下所示添加新的 **ClaimsProvider**：
+2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
+3. 如下所示添加新的 **ClaimsProvider**：
 
     ```xml
     <ClaimsProvider>
-      <Domain>salesforce</Domain>
+      <Domain>salesforce.com</Domain>
       <DisplayName>Salesforce</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="salesforce">
+        <TechnicalProfile Id="Salesforce-OIDC">
           <DisplayName>Salesforce</DisplayName>
-          <Description>Login with your Salesforce account</Description>
-          <Protocol Name="SAML2"/>
+          <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <Item Key="WantsEncryptedAssertions">false</Item>
-            <Item Key="WantsSignedAssertions">false</Item>
-            <Item Key="PartnerEntity">https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp.xml</Item>
+            <!-- Update the {org} below to your Salesforce organization -->
+            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="scope">openid id profile email</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">Your Salesforce application ID</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_SalesforceSecret"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userId"/>
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="username"/>
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="SAMLIdp" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="salesforce.com" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-1. 将 **PartnerEntity** 的值更新为前面复制的 Salesforce 元数据 URL。
-1. 将 **StorageReferenceId** 的两个实例的值更新为你的签名证书的密钥。 例如，B2C_1A_SAMLSigningCert。
-1. 找到 `<ClaimsProviders>` 部分并添加以下 XML 片段。 如果策略已包含 `SM-Saml-idp` 技术配置文件，请跳到下一步。 有关详细信息，请参阅[单一登录会话管理](custom-policy-reference-sso.md)。
-
-    ```xml
-    <ClaimsProvider>
-      <DisplayName>Session Management</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SM-Saml-idp">
-          <DisplayName>Session Management Provider</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IncludeSessionIndex">false</Item>
-            <Item Key="RegisterServiceProviders">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    ```
-1. 保存文件。
+4. 设置 Salesforce 组织的 **元数据** URI `{org}` 。
+5. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
+6. 保存文件。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
@@ -189,7 +166,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
-此时，标识提供者已设置，但不会出现在任何注册或登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 Salesforce 标识提供者。
+此时，标识提供者已设置，但不会出现在任何注册/登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 Salesforce 标识提供者。
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
@@ -199,9 +176,9 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 ### <a name="display-the-button"></a>显示按钮
 
-**ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 LinkedIn 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
+**ClaimsProviderSelection** 元素类似于注册/登录屏幕上的标识提供者按钮。 如果为 Salesforce 帐户添加 **claimsexchange** 元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在刚才创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
 2. 在 **ClaimsProviderSelects** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `SalesforceExchange`：
 
     ```xml
@@ -213,25 +190,49 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Salesforce 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 ClaimsExchange 元素，确保在 ID 和 TargetClaimsExchangeId 使用相同的值  ：
+2. 添加以下 **ClaimsExchange** 元素，以确保为用于 **TargetClaimsExchangeId** 的 ID 使用相同的值：
 
     ```xml
-    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
+    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-OIDC" />
     ```
 
-    将 TechnicalProfileReferenceId 的值更新为先前创建的技术配置文件的 ID 。 例如，`salesforce` 或 `LinkedIn-OAUTH`。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Salesforce-OIDC`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
-## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
+::: zone-end
 
-更新用于启动刚才创建的用户旅程的信赖方 (RP) 文件。
+::: zone pivot="b2c-user-flow"
 
-1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInSalesforce.xml*。
-2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInSalesforce`。
-3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_salesforce`
-4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignInSalesforce)。
-5. 保存更改并上传文件，然后选择列表中的新策略。
-6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试 。
+## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>将 Salesforce 标识提供者添加到用户流 
+
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
+1. 单击要传递给 Salesforce 标识提供者的用户流。
+1. 在 **社交标识提供者** 下，选择 " **Salesforce**"。
+1. 选择“保存”。 
+1. 若要测试策略，请选择 " **运行用户流**"。
+1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 单击 "**运行用户流**"
 
 ::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
+
+更新用于启动创建的用户旅程的信赖方 (RP) 文件。
+
+1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInSalesforce.xml*。
+1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInSalesforce`。
+1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_Salesforce`
+1. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，使其与你 (SignUpSignSalesforce) 创建的新用户旅程的 ID 匹配。
+1. 保存更改，并上传文件。
+1. 在“自定义策略”下，选择“B2C_1A_signup_signin” 。
+1. 对于 " **选择应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择 " **立即运行** "，然后选择 "salesforce" 以通过 Salesforce 登录并测试自定义策略。
+
+::: zone-end
+
+## <a name="next-steps"></a>后续步骤
+
+了解如何将 [Salesforce 令牌传递给应用程序](idp-pass-through-user-flow.md)。

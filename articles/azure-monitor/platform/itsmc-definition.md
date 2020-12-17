@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 568243c6fecf26510f6e9988907d1ccad103cdc2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618741"
+ms.locfileid: "97657152"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -44,7 +44,7 @@ ms.locfileid: "97618741"
    >[!NOTE]
    >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
 
-5. 选择“确定”  。
+5. 选择“确定”。
 
 部署 ITSMC 资源后，窗口右上角会出现一个通知。
 
@@ -130,7 +130,7 @@ ms.locfileid: "97618741"
     * 在 "工作项" 下拉列表中选择 "事件" 时：如果为单选按钮选择中的 **每个日志项选择 "创建单独的工作项** "，则每个警报都将创建一个新的工作项。 如果为单选按钮选择中的 **每个配置项目选择 "创建单独的工作项** "，则每个配置项都将有自己的工作项。
    ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. 选择“确定”  。
+10. 选择“确定”。
 
 当你创建或编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 当警报触发时，会在 ITSM 工具中创建或更新工作项。
 
@@ -259,4 +259,6 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="next-steps"></a>后续步骤
 
-[将 ITSM 产品/服务添加到 IT 服务管理连接器](./itsmc-connections.md)
+[ITSM 连接器概述](./itsmc-overview.md) 
+[将 ITSM 产品/服务添加到 IT 服务管理连接器](./itsmc-connections.md) 
+[解决 ITSM 连接器中的问题](./itsmc-resync-servicenow.md)

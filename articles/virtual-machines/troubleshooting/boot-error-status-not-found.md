@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088659"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657118"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>排查 Windows 启动管理器错误 - 0xC0000225“找不到状态”
  
@@ -126,7 +126,7 @@ ms.locfileid: "87088659"
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       此命令将列出计算机拥有的该文件的所有版本，并提供该组件的路径历史记录。
-      
+
       例如，dir cng.sys 将重命名为 dir cng.sys /s
 
    1. 在列表中选择该文件的最新版本（或你喜欢的任何版本），然后使用先前的路径和以下命令将该文件复制到 windows\system32 文件夹中：

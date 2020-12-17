@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832936"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655852"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
-本文介绍了如何在 Azure Functions 中使用预热触发器。 只有在[高级计划](functions-premium-plan.md)中运行的函数应用支持预热触发器。 当添加实例来缩放正在运行的函数应用时，将调用预热触发器。 你可以在[预热过程](./functions-premium-plan.md#pre-warmed-instances)中使用预热触发器来预加载自定义依赖项，使你的函数能够准备就绪，以便立即开始处理请求。 
+本文介绍了如何在 Azure Functions 中使用预热触发器。 添加实例以缩放正在运行的函数应用时，将调用预热触发器。 你可以在[预热过程](./functions-premium-plan.md#pre-warmed-instances)中使用预热触发器来预加载自定义依赖项，使你的函数能够准备就绪，以便立即开始处理请求。 
+
+> [!NOTE]
+> 在消耗计划中运行的函数应用不支持预热触发器。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -223,11 +226,11 @@ Java 中不支持将预热触发器用作属性。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| **type** | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
 | **name** | 不适用| 必需 - 函数代码中使用的变量名称。|
 

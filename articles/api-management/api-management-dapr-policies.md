@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335479"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653531"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
@@ -83,13 +83,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必须 |
+| 元素             | 说明  | 必须 |
 |---------------------|--------------|----------|
 | set-backend-service | Root 元素 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 描述                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
 | dapr-app-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
@@ -151,16 +151,16 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必需 |
+| 元素             | 说明  | 必需 |
 |---------------------|--------------|----------|
 | publish-to-dapr     | Root 元素 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 描述                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| pubsub-名称      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 __主题__ 属性值必须为形式 `pubsub-name/topic-name` 。    | 否       | 无    |
-| 主题            | 主题的名称。 映射到 Dapr 中的 [主题](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
+| pubsub-name      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 topic 属性值必须采用 `pubsub-name/topic-name` 形式。    | 否       | 无    |
+| 主题            | 主题的名称。 映射到 Dapr 中的 [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
 | ignore-error     | 如果设置为 `true`，则指示策略在收到来自 Dapr 运行时的错误时不触发[“on error”](api-management-error-handling-policies.md)部分 | 否 | `false` |
 | response-variable-name | 用于存储来自 Dapr 运行时的响应的[变量](api-management-policy-expressions.md#ContextVariables)集合项的名称 | 否 | 无 |
 | timeout | 等待 Dapr 运行时做出响应的时间（以秒为单位）。 范围为 1 到 240 秒。 | 否 | 5 |

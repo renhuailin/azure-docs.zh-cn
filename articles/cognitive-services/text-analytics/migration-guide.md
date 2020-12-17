@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980892"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656948"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>迁移到文本分析 API 的版本1。x
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 如果使用文本分析 API 版本2.1，本文将帮助你将应用程序升级为使用版本2.x。 版本3.0 已正式发布，并引入了新功能，例如扩展的 [命名实体识别 (NER) ](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) 和 [模型版本控制](concepts/model-versioning.md)。 此外，还提供了版本 3.1)  (的版本3.1 预览版本，它可添加 [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)等功能。 V2 中使用的模型将不会收到将来的更新。 
 

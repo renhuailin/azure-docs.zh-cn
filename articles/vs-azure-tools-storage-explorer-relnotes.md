@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499656"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653038"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -567,7 +567,7 @@ ms.locfileid: "96499656"
   * 创建新文件夹
   * 上传、下载、重命名并删除文件和文件夹
   * 管理文件和文件夹属性和权限（右侧）。
-    
+
     当前不提供其他典型的 Blob 功能，例如软删除和快照。 管理权限仅在登录时可用。 此外，使用 ADLS Gen2 存储帐户时，存储资源管理器会使用 AzCopy 进行所有上传和下载操作，并且默认使用名称和密钥凭据进行所有操作（若可用）。
 * 在经过强烈的用户反馈之后，中断租用可再次用于同时中断多个 Blob 上的租用。
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2a557bb436b3bc10cf83beb450761465b43f621f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586000"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655350"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
 本文介绍 Azure Database for MySQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MySQL 实例。
@@ -48,7 +48,7 @@ ms.locfileid: "97586000"
 | Brazil South |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | 加拿大中部 |40.85.224.249  | | |
 | 加拿大东部 | 40.86.226.166    | | |
-| 美国中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| 美国中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | 中国东部 | 139.219.130.35    | | |
 | 中国东部 2 | 40.73.82.1  | | |
 | 中国北部 | 139.219.15.17    | | |

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342933"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652919"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>还原已删除的 Azure Database for PostgreSQL 服务器
 
@@ -24,7 +24,7 @@ ms.locfileid: "93342933"
 
 ## <a name="steps-to-restore"></a>要还原的步骤
 
-1. 浏览到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)。 选择 **Azure Monitor** 服务，然后选择 " **活动日志** "。
+1. 浏览到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)。 选择 **Azure Monitor** 服务，然后选择 " **活动日志**"。
 
 2. 在活动日志中，单击 " **添加筛选器** " （如下所示），并设置以下筛选器：
 
@@ -34,28 +34,31 @@ ms.locfileid: "93342933"
  
     ![已筛选用于删除 PostgreSQL 服务器操作的活动日志](./media/howto-restore-dropped-server/activity-log-azure.png)
 
-3. 选择 " **删除 PostgreSQL 服务器** " 事件，然后选择 " **JSON" 选项卡** 。 `resourceId` `submissionTimestamp` 在 JSON 输出中复制和特性。 ResourceId 的格式如下： `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver` 。
+3. 选择 " **删除 PostgreSQL 服务器** " 事件，然后选择 " **JSON" 选项卡**。 `resourceId` `submissionTimestamp` 在 JSON 输出中复制和特性。 ResourceId 的格式如下： `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver` 。
 
 
  4. 浏览到 "PostgreSQL [创建服务器 REST API" 页](/rest/api/PostgreSQL/servers/create) ，然后选择 " **试用** " 选项卡以绿色突出显示。 使用 Azure 帐户登录。
 
- 5. 基于前面步骤3中捕获的 resourceId 属性 JSON 值，提供 **resourceGroupName** ， **serverName** (删除的服务器名称) ， **subscriptionId** 属性。 Api 版本属性是预先填充的，可以按原样保留，如下图所示。
+ 5. 基于前面步骤3中捕获的 resourceId 属性 JSON 值，提供 **resourceGroupName**， **serverName** (删除的服务器名称) ， **subscriptionId** 属性。 Api 版本属性是预先填充的，可以按原样保留，如下图所示。
 
     ![使用 REST API 创建服务器](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. 滚动到 "请求正文" 部分，并粘贴以下内容替换 "删除的服务器位置"、"submissionTimestamp" 和 "resourceId"。 对于 "restorePointInTime"，请将 "submissionTimestamp" 值指定为减 **15 分钟** ，以确保命令不会出错。
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     例如，如果当前时间为 2020-11-02T23：59： 59.0000000 Z，则建议在最早15分钟的时间为 2020-11-02T23：44： 59.0000000 Z 的还原点之前。
+
     > [!Important]
     > 删除服务器后5天的时间限制。 5天后，会出现错误，因为找不到备份文件。
     

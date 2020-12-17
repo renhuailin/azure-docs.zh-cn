@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a05c987299a8a4967c81b7eb9cc481f253ac5b09
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584844"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653701"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 
@@ -32,19 +32,7 @@ ms.locfileid: "97584844"
 
 ## <a name="prerequisites"></a>先决条件
 
-::: zone pivot="b2c-user-flow"
-
-* [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-* 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
 
@@ -224,7 +212,7 @@ ms.locfileid: "97584844"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击你想要的 Microsoft 标识提供者的用户流。
 1. 在 **社交标识提供者** 下，选择 " **Microsoft 帐户**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

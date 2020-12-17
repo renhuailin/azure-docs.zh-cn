@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516453"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654619"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答
 
@@ -100,13 +100,11 @@ A. 以下针对每个订单处理阶段的预计提前时间将让你充分了�
 **Data Box Disk 订单的预计提前期：**
 
 1. 订单 Data Box Disk：在门户中按几分钟
-2. 磁盘分配和准备：1-2 工作日内
+2. 磁盘分配和准备：最多5个工作日，具体取决于库存可用性和待处理的待处理订单数。
 3. 寄送：2-3 个工作日
-4. 客户站点上的数据复制：取决于数据的性质、大小和文件数
+4. 客户站点上的数据复制：取决于数据的性质、大小和文件数。
 5. 退货：2-3 个工作日
-6. 在数据中心处理磁盘：1-2 工作日
-7. 将数据上传到 Azure：完成处理并连接磁盘后开始。 上传时间取决于数据的性质、大小和文件数。
-
+6. 在数据中心进行处理并上传到 Azure：当操作处理完成并且磁盘已连接时，数据上传将从数据中心开始。 上传时间取决于数据的性质、大小和文件数。
 
 ## <a name="configure-and-connect"></a>配置和连接
  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 20403b8c45120a53ea38fbbed60c8f96fd9d55e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812839"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654449"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -56,7 +56,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
 
 ### <a name="ubuntu-for-new-deployments"></a>用于新部署的 Ubuntu
 
-Ubuntu Azure 内核最适用于 Azure 上的网络性能。 若要获取最新的优化功能，请首先安装 18.04-LTS 的最新支持版本，如下所示：
+Ubuntu Azure 内核对于 Azure 上的网络性能是最优的。 若要获得此内核，请首先安装 18.04-LTS 的最新支持版本，如下所述：
 
 ```json
 "Publisher": "Canonical",
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>现有 VM 的 Ubuntu Azure 内核升级
 
-重要的吞吐量性能可通过升级到 Azure Linux 内核来实现。 若要验证是否具有此内核，请检查你的内核版本。 它应与示例相同或晚。
+重要的吞吐量性能可通过升级到 Azure Linux 内核来实现。 若要验证是否具有此内核，请检查你的内核版本。 该版本应与示例版本相同或更新。
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -152,7 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 查看[下载页](https://www.microsoft.com/download/details.aspx?id=55106)，详细了解适用于 Hyper-V 的 Linux Integration Services 版本 4.2。
 
 ## <a name="next-steps"></a>后续步骤
-* 将 Vm 彼此接近，以实现较低的延迟，以实现 [邻近性放置组](../virtual-machines/windows/co-location.md)
+* 使用[邻近放置组](../virtual-machines/windows/co-location.md)将各个 VM 部署在相近的位置，以缩短延迟
 * 请参阅[带宽/吞吐量测试 Azure VM](virtual-network-bandwidth-testing.md)，查阅方案的优化结果。
 * 阅读有关如何[为虚拟机分配带宽](virtual-machine-network-throughput.md)的信息
 * 通过 [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md) 了解详细信息

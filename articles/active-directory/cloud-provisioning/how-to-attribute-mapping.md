@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7fabad618233e8866c545e1c5ccbcc8cb7508ebf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348797"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652090"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect 云预配属性映射
 
@@ -52,45 +52,51 @@ Azure AD Connect 云预配引入了一项新功能，可让你轻松地在本地
 > 本文档介绍如何使用 Azure 门户映射属性。  有关使用关系图的信息，请参阅 [转换](how-to-transformation.md)
 
 ## <a name="using-attribute-mapping"></a>使用属性映射
+
 若要使用新功能，请执行以下步骤。
-
- 1.  在 Azure 门户中，选择“Azure Active Directory”。 
- 2.  选择“Azure AD Connect”。
- 3.  选择 " **管理设置**"。
-
-   ![管理预配](media/how-to-configure/manage1.png)
- 
- 4. 在 " **配置**" 下，选择您的配置。
- 5. 选择 **单击 "编辑映射"**。  此时将打开 "属性映射" 屏幕。
-
- ![添加属性](media/how-to-attribute-mapping/mapping6.png)
- 6.  单击 " **添加属性**"。
-
- ![映射类型](media/how-to-attribute-mapping/mapping1.png)
- 
- 7. 选择 **映射类型**。  在此示例中，我们使用 Expression。
- 8.  在框中输入表达式。  在此示例中，我们使用： `Replace([mail], "@contoso.com", , ,"", ,).`
- 9.  输入目标属性。  在此示例中，我们使用 ExtensionAttribute15。
- 10. 选择要应用的时间，然后单击 "**应用**"
-   
-   ![编辑映射](media/how-to-attribute-mapping/mapping2a.png)
- 11. 返回 "属性映射" 屏幕时，应会看到新的属性映射。  
- 12. 单击 " **保存架构**"。
-
- ![保存架构](media/how-to-attribute-mapping/mapping3.png)
-
-## <a name="test-your-attribute-mapping"></a>测试您的属性映射
-若要测试您的属性映射，可以使用 [按需设置](how-to-on-demand-provision.md)。  从 
 
 1.  在 Azure 门户中，选择“Azure Active Directory”。 
 2.  选择“Azure AD Connect”。
 3.  选择 " **管理设置**"。
+
+    ![管理预配](media/how-to-configure/manage1.png)
+
+4. 在 " **配置**" 下，选择您的配置。
+5. 选择 **单击 "编辑映射"**。  此时将打开 "属性映射" 屏幕。
+
+    ![添加属性](media/how-to-attribute-mapping/mapping6.png)
+
+6.  单击 " **添加属性**"。
+
+    ![映射类型](media/how-to-attribute-mapping/mapping1.png)
+
+7. 选择 **映射类型**。  在此示例中，我们使用 Expression。
+8.  在框中输入表达式。  在此示例中，我们使用： `Replace([mail], "@contoso.com", , ,"", ,).`
+9.  输入目标属性。  在此示例中，我们使用 ExtensionAttribute15。
+10. 选择要应用的时间，然后单击 "**应用**"
+
+    ![编辑映射](media/how-to-attribute-mapping/mapping2a.png)
+
+11. 返回 "属性映射" 屏幕时，应会看到新的属性映射。  
+12. 单击 " **保存架构**"。
+
+    ![保存架构](media/how-to-attribute-mapping/mapping3.png)
+
+## <a name="test-your-attribute-mapping"></a>测试您的属性映射
+
+若要测试您的属性映射，可以使用 [按需设置](how-to-on-demand-provision.md)。  从 
+
+1. 在 Azure 门户中，选择“Azure Active Directory”。 
+2. 选择“Azure AD Connect”。
+3. 选择 " **管理设置**"。
 4. 在 " **配置**" 下，选择您的配置。
 5. 在 " **验证** " 下单击 " **设置用户** " 按钮。 
 6. 在 "按需设置" 屏幕上。  输入用户或组的 **可分辨名称** ，然后单击 " **设置** " 按钮。  
 7. 完成后，应会看到 "成功" 屏幕和4个绿色复选框，指示已成功设置。  
-  ![预配成功](media/how-to-attribute-mapping/mapping4.png)
-1. 在 " **执行操作** " 下，单击 " **查看详细信息**"。  在右侧，应会看到新属性 syncrhonized 和应用的表达式。
+
+    ![预配成功](media/how-to-attribute-mapping/mapping4.png)
+
+8. 在 " **执行操作** " 下，单击 " **查看详细信息**"。  在右侧，应会看到新属性 syncrhonized 和应用的表达式。
 
   ![执行操作](media/how-to-attribute-mapping/mapping5.png)
 

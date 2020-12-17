@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710526"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657016"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -29,11 +29,11 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
 2. 在菜单的“设置”部分中选择“服务器参数” 。
 3. 搜索 `pg_qs.query_capture_mode` 参数。
-4. 将值设置为 `TOP` 并**保存**。
+4. 将值设置为 `TOP` 并 **保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作： 
 1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
-1. 将值设置为 `ALL` 并**保存**。
+1. 将值设置为 `ALL` 并 **保存**。
 
 
 或者，可使用 Azure CLI 设置这些参数。
@@ -149,25 +149,25 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
-|**名称**|  **类型**|   **说明**|
-|---|---|---|
-|query_text_id  |bigint     |query_texts 表的 ID|
-|query_sql_text |Varchar(10000)     |代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
+| **名称** | **类型** | **说明** |
+|--|--|--|
+| query_text_id | bigint | query_texts 表的 ID |
+| query_sql_text | Varchar(10000) | 代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。 |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-|**名称**|  **类型**|   **参考**| **说明**|
-|---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
-|db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
-|query_id   |bigint     ||根据语句的分析树计算的内部哈希代码|
-|event_type |text       ||后端正在等待的事件类型|
-|event  |text       ||后端当前正在等待的等待事件名称|
-|calls  |Integer        ||捕获的相同事件的数量|
-
+| **名称** | **类型** | **参考** | **说明** |
+|--|--|--|--|
+| user_id | oid | pg_authid.oid | 执行此语句的用户的 OID |
+| db_id | oid | pg_database.oid | 在其中执行语句的数据库的 OID |
+| query_id | bigint |  | 根据语句的分析树计算的内部哈希代码 |
+| event_type | text |  | 后端正在等待的事件类型 |
+| event | text |  | 后端当前正在等待的等待事件名称 |
+| calls | Integer |  | 捕获的相同事件的数量 |
 
 ### <a name="functions"></a>函数
+
 Query_store.qs_reset() 返回无效值
 
 `qs_reset` 丢弃查询存储迄今收集的所有统计信息。 只能由服务器管理员角色执行此函数。
@@ -250,7 +250,7 @@ Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-mo
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 - 如果 PostgreSQL 服务器具有参数 default_transaction_read_only，则查询存储无法捕获数据。
 - 如果遇到较长的 Unicode 查询（> = 6000 个字节），查询存储功能可能会中断。
-- [读取副本](concepts-read-replicas.md) 从主服务器查询存储的数据复制。 这意味着只读副本的查询存储不提供有关在只读副本上运行的查询的统计信息。
+- [只读副本](concepts-read-replicas.md)从主服务器复制查询存储数据。 这意味着只读副本的查询存储不提供有关在只读副本上运行的查询的统计信息。
 
 
 ## <a name="next-steps"></a>后续步骤

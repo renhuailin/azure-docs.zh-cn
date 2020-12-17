@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973569"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655095"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中批准或拒绝访问请求
 
@@ -57,11 +57,11 @@ ms.locfileid: "95973569"
 
 1. 单击“请求详细信息”。
 
-     ![“我的访问权限”门户 - 访问请求 - 单击“请求详细信息”](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+    ![“我的访问权限”门户 - 访问请求 - 单击“请求详细信息”](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. 请求者提供的信息将位于面板的底部。
 
-     ![屏幕截图显示请求的详细信息](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+    ![屏幕截图显示请求的详细信息](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. 你可以随后根据请求者提供的信息批准或拒绝该请求。 请参阅“批准或拒绝请求”中的步骤以获得指导。
 

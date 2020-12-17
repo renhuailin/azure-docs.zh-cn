@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262101"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652936"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
 
@@ -88,9 +88,9 @@ ms.locfileid: "89262101"
 - 媒体服务（本机）应用程序客户端 ID。
 - 媒体服务（本机）应用程序重定向 URI。
 
-这些参数的值可在 AzureEnvironments.AzureCloudEnvironment **** 中找到。 AzureEnvironments.AzureCloudEnvironment **** 常量是 .NET SDK 中的一个帮助程序，可以为公共 Azure 数据中心获取正确的环境变量设置。
+这些参数的值可在 AzureEnvironments.AzureCloudEnvironment 中找到。 AzureEnvironments.AzureCloudEnvironment 常量是 .NET SDK 中的一个帮助程序，可以为公共 Azure 数据中心获取正确的环境变量设置。
 
-它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用“AzureChinaCloudEnvironment”、“AzureUsGovernmentEnvironment”或“AzureGermanCloudEnvironment”************。
+它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用“AzureChinaCloudEnvironment”、“AzureUsGovernmentEnvironment”或“AzureGermanCloudEnvironment”。
 
 以下示例代码创建一个令牌：
 
@@ -153,8 +153,8 @@ namespace AzureADAuthSample
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,8 +165,8 @@ var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
 若要开始针对媒体服务编程，需要创建一个代表服务器上下文的 CloudMediaContext  实例。 此外，还需要将媒体 REST 服务的资源 URI  传递到 CloudMediaContext  构造函数。 你也可以从 Azure 门户获取媒体 REST 服务的资源 URI 值  。

@@ -2,13 +2,13 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板 (ARM 模板) 部署资源的优点。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497990"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657305"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -54,7 +54,7 @@ ms.locfileid: "96497990"
 
 * **可导出的代码**：可以通过导出资源组的当前状态或查看特定部署所用的模板，来获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
 
-* **创作工具**：可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和模板工具扩展来创作模板。 你将获得 Intellisense、语法突出显示、内联帮助以及其他许多语言功能。 除了 Visual Studio Code 之外，还可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
+* **创作工具**：可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和模板工具扩展来创作模板。 你将获得 Intellisense、语法突出显示、内联帮助以及其他许多语言功能。 除了 Visual Studio Code 以外，还可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
 
 ## <a name="template-file"></a>模板文件
 
@@ -129,6 +129,7 @@ REQUEST BODY
 ## <a name="next-steps"></a>后续步骤
 
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
+* 若要通过 Microsoft Learn 上的一组指导性模板了解 ARM 模板，请参阅 [使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
 * 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495263"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654602"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 即插即用数字孪生
 
@@ -26,7 +26,7 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 本文中用作示例的 IoT 即插即用设备使用[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)组件实现[温度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
 
-以下代码片段显示对 " **获取数字** 克隆" 请求进行格式化以作为 JSON 对象的响应。 若要了解有关数字输出格式的详细信息，请参阅 [了解 IoT 即插即用数字孪生](./concepts-digital-twin.md#digital-twin-json-format)：
+以下代码片段显示对 " **获取数字** 克隆" 请求进行格式化以作为 JSON 对象的响应。 若要了解有关数字输出格式的详细信息，请参阅 [了解 IoT 即插即用数字孪生](./concepts-digital-twin.md#digital-twin-example)：
 
 ```json
 {
@@ -155,7 +155,7 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 ### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>用于设置数字克隆属性的所需值的规则
 
-**Name**
+**名称**
 
 组件或属性的名称必须是有效的 DTDL v2 name。
 
