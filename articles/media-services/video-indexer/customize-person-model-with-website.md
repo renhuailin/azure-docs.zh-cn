@@ -3,19 +3,19 @@ title: 使用视频索引器网站自定义人员模型
 titleSuffix: Azure Media Services
 description: 了解如何使用视频索引器网站自定义人员模型。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/06/2020
-ms.author: kumud
-ms.openlocfilehash: 9f5a18cc51aa92b53a5391404b1e9d3fc800bb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.author: juliako
+ms.openlocfilehash: 890f8c159c3e8e8d0b4164cf218f320551ea63ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356615"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628913"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义人员模型
 
@@ -26,34 +26,27 @@ ms.locfileid: "91356615"
 ## <a name="central-management-of-person-models-in-your-account"></a>帐户中人员模型的集中管理
 
 1. 若要查看、编辑和删除帐户中的人员模型，请浏览到视频索引器网站并登录。
+1. 选择页面左侧的 "内容模型自定义" 按钮。
 
-2. 在页面的右上角选择 "内容模型自定义" 按钮。
-
-    ![屏幕截图显示具有选定 "内容模型自定义" 按钮的视频索引器。](./media/customize-face-model/content-model-customization.png)
-
-3. 选择 "人员" 选项卡。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="自定义内容模型":::
+1. 选择 "人员" 选项卡。
 
     你将在帐户中看到默认的 "人员" 模型。 默认人员模型包含你在创建索引期间未指定自定义人员模型的视频见解中可能已编辑或更改的任何人脸。
 
     如果创建了其他人员模型，则这些模型也将在此页上列出。
 
-    ![屏幕截图显示 "内容模型自定义" 对话框。](./media/customize-face-model/content-model-customization-people-tab.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/content-model-customization-people-tab.png" alt-text="自定义人员":::
 
 ## <a name="create-a-new-person-model"></a>创建新的人员模型
 
-1. 选择 " **+ 添加模型** " 按钮。
+1. 选择右侧的 " **+ 添加模型** " 按钮。
+1. 输入模型的名称。 现在，您可以将新人员和人脸添加到新人员模型中。
+1. 选择 "列表" 菜单按钮，然后选择 " **+ 添加人员**"。
 
-    ![屏幕截图显示选中 "人员" 选项卡的 "内容模型自定义" 对话框。](./media/customize-face-model/add-new-person.png)
-
-2. 输入模型的名称，并选中该名称旁边的复选按钮。
-
-    ![屏幕截图显示了 "内容模型自定义" 对话框，其中包含为模型输入的名称。](./media/customize-face-model/add-new-person2.png)
-
-    您已经创建了一个新的人员模型。 你现在可以将人脸添加到新人员模型中。
-
-3. 选择 "列表" 菜单按钮，然后选择 " **+ 添加人员**"。
-
-    ![屏幕截图显示 "内容模型自定义" 对话框，其中包含一个新模型的上下文菜单，其中包含 "添加人员" 选项。](./media/customize-face-model/add-new-person3.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/add-new-person.png" alt-text="添加 peron":::
 
 ## <a name="add-a-new-person-to-a-person-model"></a>向人员模型添加新人员
 
@@ -61,14 +54,9 @@ ms.locfileid: "91356615"
 > 视频索引器允许您在人员模型中添加具有相同名称的多个用户。 但建议为模型中的每个人员提供唯一的名称，以实现可用性和清晰性。
 
 1. 若要将新的人脸添加到人员模型，请选择要向其添加人脸的人员模型旁边的 "列表" 菜单按钮。
-
 1. 从菜单中选择 " **+ 添加人员** "。
 
-    ![屏幕截图显示 "内容模型自定义" 对话框，可以使用上下文菜单添加用户。](./media/customize-face-model/add-new-face.png)
-
     弹出窗口会提示填写用户的详细信息。 键入人员姓名，并选中 "检查" 按钮。
-
-    ![屏幕截图显示人员的详细信息。](./media/customize-face-model/add-new-face2.png)
 
     然后，你可以从文件资源管理器中进行选择，或者拖放人脸图像。 视频索引器将采用所有标准图像文件类型， (例如： JPG、PNG 等) 。
 
@@ -79,15 +67,9 @@ ms.locfileid: "91356615"
 您可以重命名帐户中的任何人员模型，包括默认人员模型。 即使重命名默认的人员模型，它仍将作为帐户中的默认人员模型。
 
 1. 选择要重命名的人员模型旁边的 "列表" 菜单按钮。
-2. 从菜单中选择“重命名”****。
-
-    ![屏幕截图显示 "内容模型自定义" 对话框，其中包含一个带有用于重命名人员模型的选项的上下文菜单。 ](./media/customize-face-model/rename-person.png)
-
-3. 选择模型的当前名称，然后键入新名称。
-
-    ![屏幕截图显示重命名的人员模型。](./media/customize-face-model/rename-person2.png)
-
-4. 选择要重命名的模型的复选按钮。
+1. 从菜单中选择“重命名”。
+1. 选择模型的当前名称，然后键入新名称。
+1. 选择要重命名的模型的复选按钮。
 
 ## <a name="delete-a-person-model"></a>删除人员模型
 
@@ -95,12 +77,7 @@ ms.locfileid: "91356615"
 
 1. 从菜单中选择“删除”。
 
-    ![屏幕截图显示 "内容模型自定义" 对话框，其中包含带有删除人员模型选项的上下文菜单。](./media/customize-face-model/delete-person.png)
-
     此时将显示一个弹出窗口，通知您此操作将删除该人员模型以及它所包含的所有用户和文件。 此操作无法撤消。
-
-    ![屏幕截图显示用于删除人员模型的 "确认" 对话框。](./media/customize-face-model/delete-person2.png)
-
 1. 如果确定，请再次选择 "删除"。
 
 > [!NOTE]
@@ -129,7 +106,7 @@ ms.locfileid: "91356615"
 如果选择 " **管理**"，则会看到该人员的 **详细信息** 窗口，其中包含此人员模型正在进行训练的所有人脸。 这些人脸是在使用此人员模型的视频中或从手动上载的图像中出现的。
 
 > [!TIP]
-> 通过单击人员的名称或单击 "**管理**"，可以转到该**人员的详细信息**窗口，如上所示。
+> 通过单击人员的名称或单击 "**管理**"，可以转到该 **人员的详细信息** 窗口，如上所示。
 
 #### <a name="add-a-face"></a>添加人脸
 
@@ -149,19 +126,10 @@ ms.locfileid: "91356615"
 
 若要在新视频上使用人员模型，请执行以下步骤：
 
-1. 选择页面顶部的 " **上传** " 按钮。
-
-    ![屏幕截图显示 "上传" 按钮。](./media/customize-face-model/upload.png)
-
-1. 将视频文件放在圆圈中或浏览文件。
+1. 选择页面右侧的 " **上传** " 按钮。
+1. 删除视频文件或浏览文件。
 1. 选择 " **高级选项** " 箭头。
-
-    ![屏幕截图显示 "上传媒体文件" 对话框。](./media/customize-face-model/upload2.png)
-
 1. 选择下拉箭头，然后选择所创建的人员模型。
-
-    ![屏幕截图显示 "上传媒体文件" 对话框，其中默认为 "高级选项" 中的 "人员" 模型选择了默认值。](./media/customize-face-model/upload3.png)
-
 1. 选择页面底部的 " **上传** " 选项，将使用人员模型为新视频编制索引。
 
 如果在上传过程中未指定人员模型，则视频索引器将使用帐户中的默认人员模型为视频编制索引。
@@ -178,9 +146,6 @@ ms.locfileid: "91356615"
 
     你现在可以选择要为其重新编制视频索引的人员模型。
 1. 选择下拉箭头，然后选择要使用的人员模型。
-
-    ![屏幕截图显示视频的选项，包括选择人员模型。](./media/customize-face-model/reindex2.png)
-
 1. 选择 " **重建索引** " 按钮，您的视频将使用您的个人型号重新编制索引。
 
 你刚重新编制索引的视频中检测并识别的面部的任何新编辑都将保存在用于对视频重新建立索引的人员模型中。
@@ -211,15 +176,11 @@ ms.locfileid: "91356615"
 
 如果使用视频所使用的人员模型中的现有人员姓名来命名人脸，则此人视频中检测到的人脸图像将与模型中已存在的内容合并。 如果使用新名称命名人脸，则会在视频使用的人员模型中创建一个新的 Person 条目。
 
-![屏幕截图显示已添加名称的人脸。](./media/customize-face-model/edit-face2.png)
-
 ### <a name="delete-a-face"></a>删除人脸
 
 若要删除视频中检测到的人脸，请前往 Insights 窗格，并选择窗格右上角的铅笔图标。 选择面部名称下面的 " **删除** " 选项。 此操作将从视频中删除检测到的人脸。 在显示该人的其他视频中，还会检测该人的人脸，但你也可以从这些视频中删除该人脸并将其编入索引。
 
 如果用户已命名为，则还会继续存在于人员模型中，该模型用于为你删除人脸的视频编制索引，除非你明确地从 Person 模型中删除该人。
-
-![删除视频中的人脸](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>后续步骤
 
