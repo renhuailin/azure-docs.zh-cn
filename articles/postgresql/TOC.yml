@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: 教程
       items:
+        - name: 创建服务器组
+          href: tutorial-hyperscale-server-group.md
+        - name: 数据建模和加载
+          items:
+            - name: 工作器节点上的数据分片
+              href: tutorial-hyperscale-shard.md
         - name: 设计多租户数据库
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

@@ -17,7 +17,7 @@ ms.locfileid: "92746929"
 ---
 ## <a name="create-azure-container-registry"></a>创建 Azure 容器注册表
 
-在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。  资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
+在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。 资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
 
 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
 

@@ -1,246 +1,120 @@
 ---
-title: 显示 android 地图上的流量数据 |Microsoft Azure 映射
+title: 显示 Android 地图上的流量数据 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Microsoft Azure map Android SDK 来显示地图上的流量数据。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/25/2020
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/04/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532748"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680458"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
+# <a name="show-traffic-data-on-the-map-android-sdk"></a>Android SDK (显示地图上的流量数据) 
 
 流数据和事件数据是可以在地图上显示的两种类型的流量数据。 本指南演示如何显示这两种类型的流量数据。 事件数据包含基于点的数据和基于行的数据，如构造、闭包和意外等。 流数据显示有关路上流量的指标。
 
 ## <a name="prerequisites"></a>先决条件
 
-1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. 下载并安装 [Azure Maps Android SDK](./how-to-use-android-map-control-library.md)。
+请确保完成 [快速入门：创建 Android 应用](quick-android-map.md) 文档中的步骤。 本文中的代码块可以插入到 maps `onReady` 事件处理程序中。
 
-## <a name="incidents-traffic-data"></a>事件流量数据
+## <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
-需要导入以下库来调用 `setTraffic` 和 `incidents` ：
+Azure Maps 中提供了两种类型的交通数据：
+
+- 事件数据 - 由基于点和线的数据组成，针对诸如施工、道路封闭和事故等事项。
+- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 有四个可传递到映射的流量选项的值 `flow` 。
+
+    |流值 | 说明|
+    | :-- | :-- |
+    | TrafficFlow | 不显示地图上的流量数据 |
+    | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |
+    | TrafficFlow.RELATIVE_DELAY | 显示比平均预计延迟慢的区域 |
+    | TrafficFlow | 显示路上的所有车辆的绝对速度 |
+
+下面的代码演示如何在地图上显示交通数据。
 
 ```java
-import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
+//Show traffic on the map using the traffic options.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
 ```
 
- 下面的代码段演示如何在地图上显示流量数据。 我们会将一个布尔值传递给 `incidents` 方法，并将其传递给 `setTraffic` 方法。 
+以下屏幕截图显示了上面的代码呈现地图上的实时流量信息。
+
+![显示实时流量信息的地图](media/how-to-show-traffic-android/android-show-traffic.png)
+
+## <a name="get-traffic-incident-details"></a>获取流量事件详细信息
+
+有关流量事件的详细信息可在用于在地图上显示事件的功能的属性中找到。 使用 Azure Maps 流量事件向量磁贴服务将流量事件添加到映射。 这些矢量磁贴中的数据格式（如 [此处所述](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)）。 以下代码将单击事件添加到地图中，并检索已单击的流量事件功能，并显示带有一些详细信息的 toast 消息。
 
 ```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map - > {
-        map.setTraffic(incidents(true));
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
+
+//Add a click event to the map.
+map.events.add((OnFeatureClick) (features) -> {
+
+    if (features != null && features.size() > 0) {
+        Feature incident = features.get(0);
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+
+            StringBuilder sb = new StringBuilder();
+            String incidentType = incident.getStringProperty("incidentType");
+
+            if (incidentType != null) {
+                sb.append(incidentType);
+            }
+
+            if (sb.length() > 0) {
+                sb.append("\n");
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed".equals(incidentType)) {
+                String from = incident.getStringProperty("from");
+
+                if (from != null) {
+                    sb.append(from);
+                }
+            } else {
+                //Get the description of the traffic incident.
+                String description = incident.getStringProperty("description");
+
+                if (description != null) {
+                    sb.append(description);
+                }
+            }
+
+            String message = sb.toString();
+
+            if (message.length() > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
     }
-}
+});
 ```
 
-## <a name="flow-traffic-data"></a>流流量数据
+以下屏幕截图显示了上面的代码呈现地图上的实时流量信息，以及显示事件详细信息的 toast 消息。
 
-首先需要导入以下库来调用 `setTraffic` 和 `flow` ：
-
-```java
-import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-```
-
-使用以下代码片段设置流量流数据。 与上一节中的代码类似，我们将方法的返回值传递 `flow` 给 `setTraffic` 方法。 有四个可传递到的值 `flow` ，每个值都将触发 `flow` 以返回各自的值。 然后，将的返回值 `flow` 作为参数传递给 `setTraffic` 。 请参阅下表中的以下四个值：
-
-|流值 | 描述|
-| :-- | :-- |
-| TrafficFlow | 不显示地图上的流量数据 |
-| TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |
-| TrafficFlow.RELATIVE_DELAY | 显示比平均预计延迟慢的区域 |
-| TrafficFlow | 显示路上的所有车辆的绝对速度 |
-
-```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> {
-        map.setTraffic(flow(TrafficFlow.RELATIVE)));
-    }
-}
-```
-
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>通过单击功能显示事件流量数据
-
-若要获取特定功能的事件，可以使用以下代码。 单击某项功能后，代码逻辑将检查事件，并生成有关事件的消息。 屏幕底部将显示一条消息，其中包含详细信息。
-
-1. 首先，需要对进行编辑 `res > layout > activity_main.xml` ，使其如下所示。 可以将 `mapcontrol_centerLat` 、和替换 `mapcontrol_centerLng` `mapcontrol_zoom` 为所需的值。 请记住，缩放级别是0到22之间的值。 在缩放级别为0时，整个世界适用于单个磁贴。
-
-   ```XML
-   <?xml version="1.0" encoding="utf-8"?>
-   <FrameLayout
-       xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       >
-    
-       <com.microsoft.azure.maps.mapcontrol.MapControl
-           android:id="@+id/mapcontrol"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:mapcontrol_centerLat="47.6050"
-           app:mapcontrol_centerLng="-122.3344"
-           app:mapcontrol_zoom="12"
-           />
-
-   </FrameLayout>
-   ```
-
-2. 将以下代码添加到 **MainActivity** 文件。 默认情况下包含包，因此请确保将包置于顶部。
-
-   ```java
-   package <yourpackagename>;
-   import androidx.appcompat.app.AppCompatActivity;
-
-   import android.os.Bundle;
-   import android.widget.Toast;
-
-   import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-   import com.microsoft.azure.maps.mapcontrol.MapControl;
-   import com.mapbox.geojson.Feature;
-   import com.microsoft.azure.maps.mapcontrol.events.OnFeatureClick;
-
-   import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.incidents;
-
-   public class MainActivity extends AppCompatActivity {
-
-       static {
-           AzureMaps.setSubscriptionKey("Your Azure Maps Subscription Key");
-       }
-
-       MapControl mapControl;
-
-       @Override
-       protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-
-           mapControl = findViewById(R.id.mapcontrol);
-
-           mapControl.onCreate(savedInstanceState);
-
-           //Wait until the map resources are ready.
-           mapControl.getMapAsync(map -> {
-
-               map.setTraffic(flow(TrafficFlow.RELATIVE));
-               map.setTraffic(incidents(true));
-
-               map.events.add((OnFeatureClick) (features) -> {
-
-                   if (features != null && features.size() > 0) {
-                       Feature incident = features.get(0);
-                       if (incident.properties() != null) {
-
-
-                           StringBuilder sb = new StringBuilder();
-                           String incidentType = incident.getStringProperty("incidentType");
-                           if (incidentType != null) {
-                               sb.append(incidentType);
-                           }
-                           if (sb.length() > 0) sb.append("\n");
-                           if ("Road Closed".equals(incidentType)) {
-                               sb.append(incident.getStringProperty("from"));
-                           } else {
-                               String description = incident.getStringProperty("description");
-                               if (description != null) {
-                                   for (String word : description.split(" ")) {
-                                       if (word.length() > 0) {
-                                           sb.append(word.substring(0, 1).toUpperCase());
-                                           if (word.length() > 1) {
-                                               sb.append(word.substring(1));
-                                           }
-                                           sb.append(" ");
-                                       }
-                                   }
-                               }
-                           }
-                           String message = sb.toString();
-
-                           if (message.length() > 0) {
-                               Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-                           }
-                       }
-                   }
-               });
-           });
-       }
-
-       @Override
-       public void onResume() {
-           super.onResume();
-           mapControl.onResume();
-       }
-
-       @Override
-       protected void onStart(){
-           super.onStart();
-           mapControl.onStart();
-       }
-
-       @Override
-       public void onPause() {
-           super.onPause();
-           mapControl.onPause();
-       }
-
-       @Override
-       public void onStop() {
-           super.onStop();
-           mapControl.onStop();
-       }
-
-       @Override
-       public void onLowMemory() {
-           super.onLowMemory();
-           mapControl.onLowMemory();
-       }
-
-       @Override
-       protected void onDestroy() {
-           super.onDestroy();
-           mapControl.onDestroy();
-       }
-
-       @Override
-       protected void onSaveInstanceState(Bundle outState) {
-           super.onSaveInstanceState(outState);
-           mapControl.onSaveInstanceState(outState);
-       }
-   }
-   ```
-
-3. 在应用程序中合并上述代码后，你将能够单击功能并查看流量事件的详细信息。 根据你在 **activity_main.xml** 文件中使用的纬度、经度和缩放级别值，你将看到类似于下图的结果：
-
-
-    ![事件-地图上的流量](./media/how-to-show-traffic-android/android-traffic.png)
-
+![显示实时流量信息以及显示事件详细信息的 toast 消息的地图](media/how-to-show-traffic-android/android-traffic-details.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 查看以下指南以了解如何将更多数据添加到地图：
 
 > [!div class="nextstepaction"]
-> [添加符号层](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
 > [添加图块层](how-to-add-tile-layer-android-map.md)
-
-> [!div class="nextstepaction"]
-> [将形状添加到 android 地图](how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [显示功能信息](display-feature-information-android.md)

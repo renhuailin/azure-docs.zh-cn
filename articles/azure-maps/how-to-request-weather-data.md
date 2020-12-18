@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fe1b337fe3e1dcf499f9a7428f66543108d0c050
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906006"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680423"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>使用 Azure Maps 天气服务 (预览版来请求实时和预测天气数据)  
 
 > [!IMPORTANT]
-> Azure Maps 天气服务目前为公共预览版。
+> Azure Maps 天气服务目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开发人员能够将高度动态的历史、实时和预测天气数据和可视化效果集成到其解决方案中。 在本文中，我们将向您展示如何请求实时和预测天气数据。
@@ -34,9 +34,9 @@ Azure Maps [天气服务](/rest/api/maps/weather) 是一组 RESTful api，使开
 
 此视频提供了 Azure Maps 天气服务进行 REST 调用的示例。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="为开发人员 Azure Maps 天气服务-Microsoft 第9频道视频"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player?format=ny]
 
 ## <a name="prerequisites"></a>先决条件
 
