@@ -13,17 +13,21 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 12/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 36f6638614d5c0b55b2adc202e8f8d6f9450aaf3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967748"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674406"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
+
+>[!NOTE]
+>对于 Rev 4.2，请按照 [通过 Azure 门户主题管理 BareMetal 实例](baremetal-infrastructure-portal.md) 中的说明进行操作。
+
 本文档介绍了如何在[Azure 门户](https://portal.azure.com)中提供[HANA 大型实例](./hana-overview-architecture.md)，以及可通过部署的 hana 大型实例单元 Azure 门户进行哪些活动。 Azure 门户中 HANA 大型实例的可见性是通过适用于 HANA 大型实例的 Azure 资源提供程序提供的，当前正在公开预览
 
 ## <a name="register-hana-large-instance-resource-provider"></a>注册 HANA 大型实例资源提供程序
@@ -84,7 +88,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 - [对 HLI 可用的 SKU](./hana-available-skus.md)
 - [SAP HANA（大型实例）存储体系结构](./hana-storage-architecture.md) 
 
-右侧的其他数据是 HANA 大型实例标记的修订版本。 可能的值为：
+右侧的其他数据是 HANA 大型实例标记的修订版本。 可能的值包括：
 
 - 修订版3
 - 修订版4

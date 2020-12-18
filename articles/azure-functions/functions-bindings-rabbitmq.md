@@ -4,22 +4,22 @@ description: 了解如何在 Azure Functions 中发送 Azure RabbitMQ 触发器�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629623"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672502"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 绑定
 
 > [!NOTE]
 > 只有 **Windows 高级版和专用** 计划才完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
 
-Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[RabbitMQ](https://www.rabbitmq.com/)集成。 Azure Functions RabbitMQ 绑定扩展允许使用 RabbitMQ API 和函数发送和接收消息。
+Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[RabbitMQ](https://www.rabbitmq.com/)集成。 Azure Functions RabbitMQ extension 允许使用 RabbitMQ API 和函数来发送和接收消息。
 
 | 操作 | 类型 |
 |---------|---------|

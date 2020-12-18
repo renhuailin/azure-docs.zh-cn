@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081689"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673641"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -196,11 +196,15 @@ main = df.Orchestrator.create(orchestrator_function)
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
 * **最大重试间隔**：尝试重试之间需要等待的最长时间。
 * **重试超时**：执行重试所花费的最长时间。 默认行为是可无限期重试。
-* **处理**：可以指定用户定义的回叫来确定是否应该重试函数。
+* **处理**：可以指定用户定义的回叫来确定是否应该重试函数。 
+
+> [!NOTE]
+> JavaScript () 中 Durable Functions 当前不支持用户定义的回调 `context.df.RetryOptions` 。
+
 
 ## <a name="function-timeouts"></a>函数超时
 
-如果业务流程协调程序函数内的函数调用耗时太长才能完成，建议放弃该函数调用。 今天执行此操作的正确方法是使用[durable timer](durable-functions-timers.md) `context.CreateTimer` ( .net) 、 `context.df.createTimer` (JavaScript) 或 `context.create_timer` (python) 以及 ( `Task.WhenAny` .net) 、 `context.df.Task.any` (JavaScript) 或 `context.task_any` (python) 创建持久计时器，如以下示例中所示：
+如果业务流程协调程序函数内的函数调用耗时太长才能完成，建议放弃该函数调用。 今天执行此操作的正确方法是使用[](durable-functions-timers.md) `context.CreateTimer` ( .net) 、 `context.df.createTimer` (JavaScript) 或 `context.create_timer` (python) 以及 ( `Task.WhenAny` .net) 、 `context.df.Task.any` (JavaScript) 或 `context.task_any` (python) 创建持久计时器，如以下示例中所示：
 
 # <a name="c"></a>[C#](#tab/csharp)
 

@@ -1,6 +1,6 @@
 ---
 title: 定价和计费模型
-description: 概述 Azure 逻辑应用的定价和计费模型的工作原理
+description: 有关 Azure 逻辑应用的定价和计费方式的概述
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937587"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673104"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -65,11 +65,11 @@ ms.locfileid: "96937587"
 
   * **开发人员** ISE SKU：单一 [免费层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 集成帐户
 
-  不管 SKU 如何，每个 ISE 都可以有 [有限数量的集成帐户](logic-apps-limits-and-config.md#integration-account-limits)。 你可以提高此限制，增加成本：
+  为实现额外的成本，你可以为 ISE 创建更多的集成帐户， [直到总限制](logic-apps-limits-and-config.md#integration-account-limits)。 
 
-  * **高级** ISE SKU：最多4个标准帐户。 无免费帐户或基本帐户。
+  * **高级** ISE SKU：多达19个更标准的帐户。 不允许使用免费帐户或基本帐户。
 
-  * **开发人员** ISE SKU：最多4个标准帐户或最多5个标准帐户。 无基本帐户。
+  * **开发人员** ISE SKU：如果你已有一个免费帐户，则最多可以有19个更标准的帐户; 如果你没有免费帐户，则还可以有20个标准帐户。 不允许使用基本帐户。
 
   有关集成帐户限制的详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关 [集成帐户层及其定价模型](#integration-accounts) 的详细信息。
 
@@ -118,7 +118,7 @@ Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量�
 
 Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服务级别协议 (SLA) 支持“基本”和“标准”层级，而“免费”层级则不受 SLA 支持并有区域可用性、吞吐量和使用方面的限制。 每个 Azure 区域中可以有多个集成帐户，“免费”层级集成帐户除外。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
-如果你的 [ *integration service 环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，无论使用哪种 [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，你的 ise 都可以有 [有限数量的集成帐户](logic-apps-limits-and-config.md#integration-account-limits)，但你可以 [提高此限制以增加成本](#fixed-pricing)。 若要了解如何为 ISE 使用固定定价模型，请参阅本主题前面的 [固定定价模型](#fixed-pricing) 部分。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+如果你的 [ *integration service 环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，你的 ise 可以使用单个集成帐户，而无需额外付费，尽管包括的帐户类型因 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)而异。 为实现 [额外的成本](#fixed-pricing)，你可以为 ISE 创建更多的集成帐户，最大 [限制为集成帐户的总数](logic-apps-limits-and-config.md#integration-account-limits)。 若要了解如何为 ISE 使用固定定价模型，请参阅本主题前面的 [固定定价模型](#fixed-pricing) 部分。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要在免费、基本或标准集成帐户之间进行选择，请查看这些用例说明：
 

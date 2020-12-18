@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: c6d171717865fe4bdf3dfb30a6d24badd4fe29ca
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: fbbccfb21f136d926ac0e3e701ad686d2a42e715
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505556"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674219"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>使用 ARM 模板中的部署脚本
 
@@ -41,7 +41,7 @@ ms.locfileid: "97505556"
 > DeploymentScripts 资源 API 版本2020-10-01 支持 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务将使用部署主体的令牌来创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
 > Azure 登录的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。  部署脚本服务将以10秒的时间间隔重试登录10分钟，直到复制托管标识角色分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **(可选) 用户分配的托管标识，具有在脚本中执行操作所需的权限**。 对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建基础资源。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，我们建议使用用户分配的托管标识提供该脚本。 托管标识在目标资源组中必须具有所需的访问权限才能完成脚本中的操作。 你还可以在部署脚本中登录到 Azure。 若要在资源组之外执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请在订阅级别分配标识。 
 
@@ -592,3 +592,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure 资源管理器模板中的部署脚本](./template-tutorial-deployment-script.md)
+
+> [!div class="nextstepaction"]
+> [了解模块：使用部署脚本扩展 ARM 模板](/learn/modules/extend-resource-manager-template-deployment-scripts/)
+

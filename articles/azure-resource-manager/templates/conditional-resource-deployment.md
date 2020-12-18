@@ -2,13 +2,13 @@
 title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中有条件地部署资源。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905989"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672842"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
@@ -90,5 +90,6 @@ ms.locfileid: "96905989"
 
 ## <a name="next-steps"></a>后续步骤
 
+* 有关涵盖条件部署的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
 * 要创建资源的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

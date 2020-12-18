@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179686"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673658"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>教程：为 Clarizen One 配置自动用户预配
 
@@ -78,19 +78,19 @@ ms.locfileid: "96179686"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 选择“企业应用程序” > “所有应用程序”   。
 
-    ![显示“企业应用程序”窗格的屏幕截图。](common/enterprise-applications.png)
+      ![显示“企业应用程序”窗格的屏幕截图。](common/enterprise-applications.png)
 
 1. 在应用程序列表中，选择“Clarizen One”。
 
-    ![显示应用程序列表中的 Clarizen One 链接的屏幕截图。](common/all-applications.png)
+      ![显示应用程序列表中的 Clarizen One 链接的屏幕截图。](common/all-applications.png)
 
 1. 选择“预配”  选项卡。
 
-    ![显示“预配”选项卡的屏幕截图。](common/provisioning.png)
+      ![显示“预配”选项卡的屏幕截图。](common/provisioning.png)
 
 1. 将“预配模式”设置为“自动”。
 
-    ![显示“预配”选项卡“自动”选项的屏幕截图。](common/provisioning-automatic.png)
+      ![显示“预配”选项卡“自动”选项的屏幕截图。](common/provisioning-automatic.png)
 
 1. 在“管理员凭据”部分，输入 Clarizen One 租户 URL 和机密令牌  。 选择“测试连接”以确保 Azure AD 可以连接到 Clarizen One。 如果连接失败，请确保 Clarizen One 帐户具有管理员权限，然后重试。
 
@@ -135,7 +135,7 @@ ms.locfileid: "96179686"
    |phoneNumbers[type eq "other"].value|字符串|
    |phoneNumbers[type eq "pager"].value|字符串|
    |externalId|字符串|
-   |nickName|String|
+   |nickName|字符串|
    |区域设置|字符串|
    |roles[primary eq"True".type]|字符串|
    |roles[primary eq"True".value]|字符串|
@@ -162,15 +162,15 @@ ms.locfileid: "96179686"
 
 1. 若要为 Clarizen One 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。  
 
-    ![显示“预配状态”切换为“启用”的屏幕截图。](common/provisioning-toggle-on.png)
+      ![显示“预配状态”切换为“启用”的屏幕截图。](common/provisioning-toggle-on.png)
 
 1. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Clarizen One 的用户或组 。
 
-    ![显示预配范围的屏幕截图。](common/provisioning-scope.png)
+      ![显示预配范围的屏幕截图。](common/provisioning-scope.png)
 
 1. 准备好预配时，选择“保存”。
 
-    ![显示保存预配配置的屏幕截图。](common/provisioning-configuration-save.png)
+      ![显示保存预配配置的屏幕截图。](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。
 
