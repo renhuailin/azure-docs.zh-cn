@@ -4,37 +4,36 @@ description: 本文介绍如何在 Azure 自动化帐户中创建观察程序任
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: ca4c4013e0044811a5bac8786996761b8a5c45f1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185647"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682748"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>通过观察程序任务跟踪更新的文件
 
-Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并触发操作。 观察程序任务包含两个部分：观察程序和操作。 观察程序 runbook 以观察程序任务中定义的间隔时间并将数据输出到操作 runbook。 
+Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并触发操作。 观察程序任务包含两个部分：观察程序和操作。 观察程序 runbook 以观察程序任务中定义的间隔时间并将数据输出到操作 runbook。
 
 > [!NOTE]
 > Azure 中国世纪互联不支持观察程序任务。
 
 > [!IMPORTANT]
-> 从 2020 年 5 月开始，支持使用 Azure 逻辑应用监视事件，计划定期任务和触发操作。 请参阅[使用 Azure 逻辑应用计划和运行反复出现的自动化任务、流程和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+> 从5月2020开始，建议使用 Azure 逻辑应用来监视事件、计划定期任务和触发操作。 请参阅[使用 Azure 逻辑应用计划和运行反复出现的自动化任务、流程和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
-本教程引导你创建一个观察程序任务来监视何时向目录中添加了新文件。 学习如何：
+本文逐步讲解如何创建观察程序任务，以便在将新文件添加到目录时进行监视。 学习如何：
 
-> [!div class="checklist"]
-> * 导入观察程序 runbook
-> * 创建自动化变量
-> * 创建操作 runbook
-> * 创建观察程序任务
-> * 触发观察程序
-> * 检查输出
+* 导入观察程序 runbook
+* 创建自动化变量
+* 创建操作 runbook
+* 创建观察程序任务
+* 触发观察程序
+* 检查输出
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程需要以下各项：
+若要完成本文，需要满足以下要求：
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自动化帐户](./index.yml)，用于保存观察程序、操作 runbook 和观察程序任务。
@@ -43,46 +42,46 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并
 
 ## <a name="import-a-watcher-runbook"></a>导入观察程序 runbook
 
-本教程使用名为 **Watch-NewFile** 的观察程序 runbook 查找某个目录中的新文件。 该观察程序 runbook 检索文件夹中的文件的最后已知写入时间，并查找比该水印更新的任何文件。
+本文使用称为 " **监视-NewFile** " 的观察程序 runbook 查找目录中的新文件。 该观察程序 runbook 检索文件夹中的文件的最后已知写入时间，并查找比该水印更新的任何文件。
 
-可使用 [PowerShell 库](https://www.powershellgallery.com)完成这一导入过程。
+你可以从 [Azure Automation GitHub 组织](https://github.com/azureautomation)下载 runbook。
 
-1. 导航到 [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd) 的库页面。
-2. 在“Azure 自动化”选项卡下单击“部署到 Azure 自动化” 。
+1. 导航到 "Azure Automation GitHub 组织" 页，了解 [Watch-NewFile.ps1](https://github.com/azureautomation/watcher-action-that-processes-events-triggerd-by-a-watcher-runbook)。
+2. 若要从 GitHub 下载 runbook，请选择页面右侧的 " **代码** "，然后选择 " **下载 zip** " 以下载 zip 文件中的所有代码。
+3. 提取内容并 [导入 runbook](manage-runbooks.md#import-a-runbook-from-the-azure-portal)。
 
 还可以使用以下步骤将此 runbook 从门户导入到自动化帐户中。
 
 1. 打开你的自动化帐户，然后单击“Runbook”页。
-2. 单击“浏览库”。
+2. 单击 " **浏览库** "，然后在 " **源** " 下拉列表中选择 " **GitHub**"。
 3. 搜索“观察程序 runbook”，选择“用于在目录中查找新文件的观察程序 runbook”，然后单击“导入”  。
-  ![从 UI 导入自动化 runbook](media/automation-watchers-tutorial/importsourcewatcher.png)
 4. 为该 runbook 提供名称和说明，然后单击“确定”以将该 runbook 导入到自动化帐户中。
 5. 选择“编辑”，然后单击“发布”。 收到提示时，单击“是”以发布该 runbook。
 
 ## <a name="create-an-automation-variable"></a>创建自动化变量
 
-使用一个[自动化变量](./shared-resources/variables.md)来存储前面的 runbook 从每个文件读取和存储的时间戳。
+[自动化变量](./shared-resources/variables.md)用于存储前面的 runbook 从每个文件读取和存储的时间戳。
 
 1. 在“共享资源”下选择“变量”，并单击“+ 添加变量”  。
-1. 输入“Watch-NewFileTimestamp”作为名称。
+1. 输入 " **watch-newfiletimestamp** " 作为 "名称"。
 1. 选择“日期时间”作为类型。
 1. 单击“创建”以创建自动化变量。
 
 ## <a name="create-an-action-runbook"></a>创建操作 runbook
 
-在观察程序任务中，操作 runbook 用来对从观察程序 runbook 传递给它的数据执行操作。 务必从 [PowerShell 库](https://www.powershellgallery.com)导入名为 Process-NewFile 的预定义操作 runbook。 
+在观察程序任务中，操作 runbook 用来对从观察程序 runbook 传递给它的数据执行操作。 必须从 [Azure Automation GitHub 组织](https://github.com/azureautomation)中导入名为 **Process-NewFile** 的预定义操作 runbook。
 
 创建操作 runbook：
 
-1. 导航到 [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf) 的库页面。
-2. 在“Azure 自动化”选项卡下单击“部署到 Azure 自动化” 。
+1. 导航到 "Azure Automation GitHub 组织" 页，了解 [Process-NewFile.ps1](https://github.com/azureautomation/watcher-action-that-processes-events-triggerd-by-a-watcher-runbook)。
+2. 若要从 GitHub 下载 runbook，请选择页面右侧的 " **代码** "，然后选择 " **下载 zip** " 以下载 zip 文件中的所有代码。
+3. 提取内容并 [导入 runbook](manage-runbooks.md#import-a-runbook-from-the-azure-portal)。
 
 还可以将此 runbook 从 Azure 门户导入到自动化帐户中：
 
 1. 导航到自动化帐户，在“流程自动化”下选择“Runbook” 。
-1. 单击“浏览库”。
+1. 单击 " **浏览库** "，然后在 " **源** " 下拉列表中选择 " **GitHub**"。
 1. 搜索“观察程序操作”，在目录中选择“处理由观察程序 runbook 触发的事件的监视操作”，然后选择“导入”  。
-  ![从 UI 中导入操作 runbook](media/automation-watchers-tutorial/importsourceaction.png)
 1. 为该 runbook 提供名称和说明，然后单击“确定”以将该 runbook 导入到自动化帐户中。
 1. 选择“编辑”，然后单击“发布”。 收到提示时，单击“是”以发布该 runbook。
 
@@ -113,13 +112,13 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并
 1. 单击“确定”，然后单击“选择”以返回到观察程序页 。
 1. 单击“确定”创建观察程序任务。
 
-![从 UI 配置观察程序操作](media/automation-watchers-tutorial/watchertaskcreation.png)
+    ![从 UI 配置观察程序操作](media/automation-watchers-tutorial/watchertaskcreation.png)
 
 ## <a name="trigger-a-watcher"></a>触发观察程序
 
 必须按照下面描述的方式运行测试，以确保观察程序任务按预期工作。 
 
-1. 远程登录到混合 Runbook 辅助角色。 
+1. 远程登录到混合 Runbook 辅助角色。
 2. 打开 **PowerShell** 并在文件夹中创建一个测试文件。
 
 ```azurepowerShell-interactive
@@ -156,17 +155,4 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 导入观察程序 runbook
-> * 创建自动化变量
-> * 创建操作 runbook
-> * 创建观察程序任务
-> * 触发观察程序
-> * 检查输出
-
-单击以下链接可了解有关撰写 runbook 的详细信息。
-
-> [!div class="nextstepaction"]
-> [创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)
+若要了解有关创作自己的 runbook 的详细信息，请参阅 [创建 PowerShell runbook](learn/automation-tutorial-runbook-textual-powershell.md)。

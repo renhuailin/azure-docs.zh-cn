@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656285"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683355"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -52,7 +52,7 @@ PII 功能是 NER 的一部分，它可以在与个人相关的文本（例如�
 * `domain=phi`用于检测 () 机密健康信息的可选参数 `PHI` 。
 * 使用终结点的[异步操作](text-analytics-how-to-call-api.md) `/analyze` 。
 
-有关详细信息，请参阅下面的 [实体类别](../named-entity-types.md) 文章和 [请求终结点](#request-endpoints) 部分。 
+有关详细信息，请参阅下面的 [实体类别](../named-entity-types.md) 文章和 [请求终结点](#request-endpoints) 部分。 有关置信度分数的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017570"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683130"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Azure Cosmos DB Java SDK v4 提供客户端逻辑表示用于访问 Azure Cosmos
 * 查看 Azure Cosmos DB 中心存储库中的 Java SDK，它以 [GitHub 上的开放源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)的形式提供。 该 SDK 拥有受到主动监视的[问题部分](https://github.com/Azure/azure-sdk-for-java/issues)。 检查是否已提交包含解决方法的任何类似问题。 一个有用的提示是通过 cosmos:v4-item 标签来筛选问题。
 * 查看适用于 Azure Cosmos DB Java SDK v4 的[性能提示](performance-tips-java-sdk-v4-sql.md)并按照建议的做法进行操作。
 * 阅读本文的其余部分，如果找不到解决方案， 则提交 [GitHub 问题](https://github.com/Azure/azure-sdk-for-java/issues)。 如果有向 GitHub 问题添加标签的选项，请添加 cosmos:v4-item 标签。
+
+### <a name="retry-logic"></a>重试逻辑 <a id="retry-logics"></a>
+如果 SDK 中的 "重试" 可行，则任何 IO 故障 Cosmos DB SDK 都将尝试重试失败的操作。 对任何失败进行重试是一种很好的做法，但具体来说，处理/重试写入失败是必须的。 建议使用最新的 SDK，因为重试逻辑不断提高。
+
+1. 读取和查询 IO 故障将由 SDK 重试，而不会将其呈现给最终用户。
+2. 写入 (Create、Upsert、Replace、Delete) 为 "not" 幂等，因此，SDK 无法始终盲目地重试失败的写入操作。 需要用户的应用程序逻辑来处理失败，然后重试。
+3. [疑难解答 sdk 可用性](troubleshoot-sdk-availability.md) 解释多区域 Cosmos DB 帐户的重试。
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常见问题和解决方法
 
@@ -73,7 +80,7 @@ ulimit -a
 * 将公共 IP 分配给 Azure VM。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
-``ConnectTimeoutException`` 指示 SDK 不能访问服务。
+``ConnectTimeoutException`` 表示 SDK 无法访问服务。
 使用直接模式时，可能会出现如下所示的故障：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
@@ -120,9 +127,9 @@ Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Nett
 
     在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔退让。 遵循退让可确保最大程度地减少等待重试的时间。
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>未能连接到 Azure Cosmos DB 模拟器
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>连接到 Azure Cosmos DB 模拟器时出现故障
 
-Azure Cosmos DB 模拟器 HTTPS 证书是自签名的。 若要将 SDK 与仿真器配合使用，请将仿真器证书导入 Java TrustStore。 有关详细信息，请参阅 [Export Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)。
+Azure Cosmos DB 模拟器 HTTPS 证书是自签名证书。 若要将 SDK 与仿真器配合使用，请将仿真器证书导入 Java TrustStore。 有关详细信息，请参阅[导出 Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)。
 
 ### <a name="dependency-conflict-issues"></a>依赖项冲突问题
 

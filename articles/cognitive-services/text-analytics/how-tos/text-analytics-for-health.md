@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559008"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683528"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -31,7 +31,7 @@ ms.locfileid: "96559008"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
-## <a name="features"></a>特征
+## <a name="features"></a>功能
 
 用于运行状况文本分析 (NER) 、关系提取、实体求反和实体链接，以在非结构化临床和生物医学文本中发现见解。
 
@@ -68,7 +68,7 @@ ms.locfileid: "96559008"
 
 ---
 
-请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。
+请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。 有关置信度的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ### <a name="supported-languages-and-regions"></a>支持的语言和区域
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461538"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682720"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 
@@ -20,7 +20,7 @@ ms.locfileid: "89461538"
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>创建流分析作业以驱动实时仪表板体验
 
-使用 Azure 流分析可以快速创建实时仪表板和警报。 一个简单的解决方案就能从事件中心或 IoT 中心引入事件，并[在 Power BI 仪表板中馈送流数据集](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细教程[使用流分析来分析通话数据以及在 Power BI 仪表板中可视化结果](stream-analytics-manage-job.md)。
+使用 Azure 流分析可以快速创建实时仪表板和警报。 一个简单的解决方案就能从事件中心或 IoT 中心引入事件，并[在 Power BI 仪表板中馈送流数据集](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细教程 [利用流分析分析欺诈性呼叫数据和 Power BI 仪表板中的可视化效果](stream-analytics-real-time-fraud-detection.md)。
 
 ![ASA Power BI 仪表板](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
@@ -102,7 +102,7 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 ## <a name="use-reference-data-for-enrichment"></a>使用引用数据进行扩充
 
-ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库和 Azure Blob 存储中的[参考数据](stream-analytics-use-reference-data.md)扩充数据。 可以在 Azure Data Lake 和 Azure Synapse 分析中为数据登陆完成数据扩充。
+ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库和 Azure Blob 存储中的[参考数据](stream-analytics-use-reference-data.md)扩充数据。 可以扩充进入 Azure Data Lake 和 Azure Synapse Analytics 的数据。
 
 
 ![使用数据扩充进行 ASA 脱机分析](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)

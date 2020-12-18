@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 78e705812609fc6feef3d162b7716871f579a5cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: bb1c29f292cc099eaa7a84094f6f4a2674ae02aa
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675811"
+ms.locfileid: "97682729"
 ---
 # <a name="partner-solutions"></a>合作伙伴解决方案
 
@@ -23,4 +23,4 @@ ms.locfileid: "97675811"
 |---------|-------------|----------------------|
 | ![OrangeNXT](media/resource-partners/orangenxt-beldmerk-boven-160px.png "公司徽标") | [**OrangeNXT**](https://orangenxt.com/) 提供了数据整合、数据建模和构建技能集的专业技能，其中包含为特定用例开发的自定义逻辑。<br/><br/>[**DigitalNXT 搜索**](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/) 是一种 OrangeNXT 解决方案，它将 AI、光学字符识别 (OCR) 和 Azure 认知搜索管道中的自然语言处理结合起来，帮助你从多个结构化和非结构化数据源中提取搜索结果。 **DigitalNXT 搜索** 的一部分是对所选数据进行解释和关联的高级自定义认知技巧。<br/><br/>| [产品页面](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/)|
 
-查看 [ **digitalNXT** 案例研究](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/problems-causes-solutions/)，详细了解具体解决方案。
+<!-- Review [**digitalNXT** case studies](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/problems-causes-solutions/) for a closer look at specific solutions. -->

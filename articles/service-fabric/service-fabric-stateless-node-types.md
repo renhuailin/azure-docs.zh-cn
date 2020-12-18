@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605490"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683186"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>使用无状态节点类型部署 Azure Service Fabric 群集 (预览版) 
 Service Fabric 节点类型随附固有假设，在某个时间点，可能会在节点上放置有状态服务。 无状态节点类型使此假设适用于节点类型，因此允许节点类型使用其他功能，例如更快的 scale out 操作、支持在青铜耐用性上进行自动 OS 升级以及在单个虚拟机规模集中横向扩展到超过100个节点。
@@ -44,7 +44,7 @@ Service Fabric 节点类型随附固有假设，在某个时间点，可能会�
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -71,9 +71,9 @@ Service Fabric 节点类型随附固有假设，在某个时间点，可能会�
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>为无状态节点类型配置虚拟机规模集
 若要启用无状态节点类型，应按以下方式配置底层虚拟机规模集资源：
 
-* 值  **singlePlacementGroup** 属性，该属性应设置为 true/false，具体取决于需要扩展到超过 100 vm 的要求。
-* 应设置为滚动的规模集的 **upgradeMode** 。
-* 滚动升级模式需要配置应用程序运行状况扩展或运行状况探测。 如下所示，为无状态节点类型的默认配置配置运行状况探测。 将应用程序部署到 nodetype 后，可以更改运行状况探测/运行状况扩展端口来监视应用程序运行状况。
+* 值  **singlePlacementGroup** 属性，如果需要扩展到超过100的 vm，该值应设置为 **false** 。
+* 规模集的 **upgradePolicy** **应设置** 为 " **滚动**"。
+* 滚动升级模式需要配置应用程序运行状况扩展或运行状况探测。 如下所示，为无状态节点类型的默认配置配置运行状况探测。 将应用程序部署到节点类型后，可以更改运行状况探测/运行状况扩展端口来监视应用程序运行状况。
 
 ```json
 {

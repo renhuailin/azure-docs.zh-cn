@@ -3,18 +3,21 @@ title: 在 PowerShell 库中使用 Azure 自动化 Runbook 和模块
 description: 本文介绍如何在 PowerShell 库中使用来自 Microsoft 和社区的 Runbook 和模块。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/20/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087854"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682758"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 库中的 Runbook 和模块
 
-无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。 可以从 PowerShell 库获取 PowerShell Runbook 和[模块](#modules-in-powershell-gallery)，从脚本中心库获取 [Python Runbook](#use-python-runbooks)。 还可以通过共享[开发的方案](#add-a-powershell-runbook-to-the-gallery)来为社区做出贡献。 
+无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。 你可以从 Azure Automation GitHub 组织的 PowerShell 库和[Python runbook](#use-python-runbooks)获取 PowerShell runbook 和[模块](#modules-in-powershell-gallery)。 还可以通过共享[开发的方案](#add-a-powershell-runbook-to-the-gallery)来为社区做出贡献。
+
+> [!NOTE]
+> TechNet 脚本中心正在停用。 Runbook 库中脚本中心的所有 runbook 都已移至 [自动化 GitHub 组织](https://github.com/azureautomation)。
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell 库中的 Runbook
 
@@ -50,7 +53,7 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 
    ![浏览库](media/automation-runbook-gallery/browse-gallery.png)
 
-5. 单击“查看源项目”以在 [TechNet 脚本中心](https://gallery.technet.microsoft.com/)查看该项。
+5. 单击 " **查看源项目** " 以查看 [Azure Automation GitHub 组织](https://github.com/azureautomation)中的项目。
 6. 若要导入项，请单击项以查看其详细信息，然后单击“导入”。
 
    ![“导入”按钮](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -94,10 +97,7 @@ Microsoft 建议将 Runbook 添加到你认为对其他客户有用的 PowerShel
 
 ## <a name="use-python-runbooks"></a>使用 Python Runbook
 
-可在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)中找到 Python Runbook。 可以单击“上传贡献”，将 Python Runbook 贡献至脚本中心库。 执行此操作时，请确保在上传贡献时添加标签 `Python`。
-
-> [!NOTE]
-> 若要将内容上载到[脚本中心](https://gallery.technet.microsoft.com/scriptcenter)，需要至少 100 点。
+可在 [Azure 自动化 GitHub 组织](https://github.com/azureautomation)中使用 Python runbook。 当你参与我们的 GitHub 存储库时，请在上传你的 Python3 时，添加标记 **(GitHub 主题) ：** "。
 
 ## <a name="request-a-runbook-or-module"></a>请求 Runbook 或模块
 
@@ -108,4 +108,4 @@ Microsoft 建议将 Runbook 添加到你认为对其他客户有用的 PowerShel
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要使用 Runbook，请参阅[在 Azure 自动化中管理 Runbook](manage-runbooks.md)。
 * 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](/powershell/scripting/overview)。
-* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

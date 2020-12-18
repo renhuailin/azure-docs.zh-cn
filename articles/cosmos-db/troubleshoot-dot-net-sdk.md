@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545921"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683107"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,6 +54,13 @@ ms.locfileid: "96545921"
 ### <a name="check-the-portal-metrics"></a>检查门户指标
 检查[门户指标](./monitor-cosmos-db.md)有助于确定问题是否与客户端相关，或者服务是否有问题。 例如，如果指标中包含较高比率的速率受限请求（HTTP 状态代码 429，表示请求受到限制），请查看[请求速率过大](troubleshoot-request-rate-too-large.md)部分。 
 
+## <a name="retry-logic"></a>重试逻辑 <a id="retry-logics"></a>
+如果 SDK 中的 "重试" 可行，则任何 IO 故障 Cosmos DB SDK 都将尝试重试失败的操作。 对任何失败进行重试是一种很好的做法，但具体来说，处理/重试写入失败是必须的。 建议使用最新的 SDK，因为重试逻辑不断提高。
+
+1. 读取和查询 IO 故障将由 SDK 重试，而不会将其呈现给最终用户。
+2. 写入 (Create、Upsert、Replace、Delete) 为 "not" 幂等，因此，SDK 无法始终盲目地重试失败的写入操作。 需要用户的应用程序逻辑来处理失败，然后重试。
+3. [疑难解答 sdk 可用性](troubleshoot-sdk-availability.md) 解释多区域 Cosmos DB 帐户的重试。
+
 ## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
 
 | 状态代码 | 说明 | 
@@ -64,7 +71,7 @@ ms.locfileid: "96545921"
 | 408 | [请求已超时](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
 | 410 | 消失异常（不应违反 SLA 的瞬间失败） |
-| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
+| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是一个开放式并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
 | 413 | [请求实体太大](concepts-limits.md#per-item-limits) |
 | 429 | [请求过多](troubleshoot-request-rate-too-large.md) |
 | 449 | 仅在进行写入操作时才发生的暂时性错误，可安全重试 |
@@ -73,7 +80,7 @@ ms.locfileid: "96545921"
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
-如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](troubleshoot-dot-net-sdk-request-timeout.md)。
+如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)将与 VM 外部的任何终结点建立连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](troubleshoot-dot-net-sdk-request-timeout.md)。
 
  仅当 VM 具有专用 IP 地址且连接到公共 IP 地址时，才会使用 Azure SNAT 端口。 有两种解决方法可以避免 Azure SNAT 限制（前提是已在整个应用程序中使用单个客户端实例）：
 
@@ -83,7 +90,7 @@ ms.locfileid: "96545921"
 * [将公共 IP 分配给 Azure VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>高网络延迟
-可以使用 V2 SDK 中的 [diagnosticsstring](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) 或 V3 SDK 中的 [diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) 来识别网络延迟过高的情况。
+可以使用 V2 SDK 中的[诊断字符串](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet)或 V3 SDK 中的[诊断](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)来识别高网络延迟。
 
 如果未发生[超时](troubleshoot-dot-net-sdk-request-timeout.md)，并且诊断根据 `ResponseTime` 和 `RequestStartTime`之差显示单个请求的延迟明显较高（在本示例中超过 300 毫秒），如下所示：
 
