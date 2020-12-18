@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: 主刷新令牌
       href: concept-primary-refresh-token.md
-    - name: Azure 托管工作站
-      href: concept-azure-managed-workstation.md
 - name: 操作指南
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 虚拟桌面基础结构
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: 部署 Azure 托管工作站
-      href: howto-azure-managed-workstation.md
     - name: 排查设备标识问题
       items:
         - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
