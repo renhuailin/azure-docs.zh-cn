@@ -124,13 +124,17 @@
           href: how-to-view-managed-identity-service-principal-cli.md
         - name: PowerShell
           href: how-to-view-managed-identity-service-principal-powershell.md
+    - name: 为应用角色分配托管标识
+      items:
+        - name: PowerShell
+          href: how-to-assign-app-role-managed-identity-powershell.md
 - name: 参考
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/identity-readme?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/identity-readme?view=azure-java-stable
-    - name: JavaScript
+    - name: Javascript
       href: /javascript/api/overview/azure/identity-readme?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/identity-readme?view=azure-python

@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591889"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680293"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -28,7 +28,7 @@ ms.locfileid: "97591889"
 
 在 Azure 数据工厂中，持续集成和交付 (CI/CD) 是指将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 Azure 数据工厂利用 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)存储各种 ADF 实体（管道、数据集、数据流等）的配置。 可通过两种建议的方式将数据工厂提升到另一个环境：
 
--    使用数据工厂与 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的集成进行自动化部署
+-    使用数据工厂与 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 的集成进行自动化部署
 -    使用数据工厂 UX 与 Azure 资源管理器的集成手动上传资源管理器模板。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ ms.locfileid: "97591889"
 
 1.  保存发布管道。
 
-1. 若要触发发布，请选择“创建发布”。 若要自动创建发布，请参阅 [Azure DevOps 发布触发器](/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. 若要触发发布，请选择“创建发布”。 若要自动创建发布，请参阅 [Azure DevOps 发布触发器](/azure/devops/pipelines/release/triggers)
 
    ![选择“创建发布”](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ ms.locfileid: "97591889"
 
 * 你使用自动化 CI/CD，想要在部署资源管理器期间更改某些属性，但这些属性在默认情况下不会参数化。
 * 工厂太大，包含的参数数目超过了允许的最大数目 (256)，以致默认的资源管理器模板无效。
+
+    若要处理自定义参数256限制，有3个选项：    
+  
+    * 使用自定义参数文件，并删除不需要参数化的属性（即，可以保留默认值并因此减少参数计数的属性）。
+    * 重构数据流中的逻辑以减少参数（例如，管道参数均具有相同的值），只需使用全局参数即可。
+    * 将一个数据工厂拆分为多个数据流。
 
 若要重写默认参数化模板，请在 "源代码管理" 部分中转到管理中心，并选择 " **参数化模板** "。 选择 " **编辑模板** "，打开参数化模板代码编辑器。 
 
@@ -639,7 +645,7 @@ ms.locfileid: "97591889"
 
 ## <a name="exposure-control-and-feature-flags"></a>公开控制和功能标志
 
-在团队中工作时，可以在某些情况下合并更改，但不希望在生产和 QA 等提升的环境中运行这些更改。 为了应对这种情况，ADF 团队建议 [使用功能标志的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)。 在 ADF 中，可以组合 [global parameters](author-global-parameters.md) 和 [if condition 活动](control-flow-if-condition-activity.md) ，以根据这些环境标志隐藏逻辑集。
+在团队中工作时，可以在某些情况下合并更改，但不希望在生产和 QA 等提升的环境中运行这些更改。 为了应对这种情况，ADF 团队建议 [使用功能标志的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags)。 在 ADF 中，可以组合 [global parameters](author-global-parameters.md) 和 [if condition 活动](control-flow-if-condition-activity.md) ，以根据这些环境标志隐藏逻辑集。
 
 若要了解如何设置功能标志，请参阅以下视频教程：
 

@@ -443,7 +443,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -546,6 +546,8 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
+            - name: IT 服务管理连接器定义
+              href: platform/itsmc-definition.md
             - name: IT 服务管理连接
               href: platform/itsmc-connections.md
             - name: 创建 Service Manager Web 应用

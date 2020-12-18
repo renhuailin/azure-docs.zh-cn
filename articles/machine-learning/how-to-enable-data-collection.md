@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000447"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680964"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 
@@ -115,6 +115,12 @@ Blob 中输出数据的路径遵循以下语法：
     ```
 
 1. 若要创建新映像并部署机器学习模型，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
+
+1. 将 "Azure 监视" pip 包添加到 web 服务环境的 conda 依赖项：
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
 
 
 ## <a name="disable-data-collection"></a>禁用数据收集

@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903609"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678857"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
 Azure Maps Web SDK 将数据存储在数据源中。 使用数据源优化用于查询和呈现的数据操作。 目前有两种类型的数据源：
 
-- **GeoJSON source**：在本地管理 GeoJSON 格式的原始位置数据。 适用于小型到中型数据集， (的) 的数量为几十万个形状。
-- **矢量图块源**：基于地图平铺系统，为当前地图视图加载格式为矢量图块的数据。 适用于大到大数据集 (数百万或数十亿个形状) 。
+* **GeoJSON source**：在本地管理 GeoJSON 格式的原始位置数据。 适用于小型到中型数据集， (的) 的数量为几十万个形状。
+* **矢量图块源**：基于地图平铺系统，为当前地图视图加载格式为矢量图块的数据。 适用于大到大数据集 (数百万或数十亿个形状) 。
 
 ## <a name="geojson-data-source"></a>GeoJSON 数据源
 
@@ -50,8 +50,8 @@ var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 下面的代码演示 GeoJSON 数据可添加到的不同方式 `DataSource` 。
@@ -60,13 +60,13 @@ map.sources.add(dataSource);
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,10 +76,10 @@ dataSource.setShapes(geoJsonData);
 
 矢量图块源介绍如何访问矢量图块层。 使用 [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) 类实例化矢量图块源。 矢量图块层类似于图块层，但它们不同。 图块层是光栅图像。 矢量图块层是压缩文件，采用 **PBF** 格式。 此压缩文件包含向量映射数据以及一个或多个层。 基于每个层的样式，可以在客户端上呈现并设计文件样式。 矢量磁贴中的数据包含点、线条和多边形格式的地理功能。 使用矢量图块层（而不是光栅图块层）有多种优点：
 
- - 矢量磁贴的文件大小通常比等效的光栅磁贴小得多。 因此，使用的带宽更少。 这意味着延迟较低、更快的地图和更好的用户体验。
- - 由于矢量磁贴是在客户端上呈现的，因此它们会适应其所显示的设备的分辨率。 因此，呈现的地图的定义更清晰，并显示 crystal 清晰标签。
- - 更改向量图中的数据样式不需要再次下载数据，因为新样式可应用于客户端。 与此相反，更改光栅图块层的样式通常需要从服务器加载磁贴，然后应用新样式。
- - 由于数据是以矢量形式传递的，因此，进行数据准备需要的服务器端处理就越少。 因此，可以更快地提供较新的数据。
+* 矢量磁贴的文件大小通常比等效的光栅磁贴小得多。 因此，使用的带宽更少。 这意味着延迟较低、更快的地图和更好的用户体验。
+* 由于矢量磁贴是在客户端上呈现的，因此它们会适应其所显示的设备的分辨率。 因此，呈现的地图的定义更清晰，并显示 crystal 清晰标签。
+* 更改向量图中的数据样式不需要再次下载数据，因为新样式可应用于客户端。 与此相反，更改光栅图块层的样式通常需要从服务器加载磁贴，然后应用新样式。
+* 由于数据是以矢量形式传递的，因此，进行数据准备需要的服务器端处理就越少。 因此，可以更快地提供较新的数据。
 
 Azure Maps 遵循 [Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。 Azure Maps 在平台中提供以下矢量图块服务：
 
@@ -95,14 +95,14 @@ Azure Maps 遵循 [Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -133,7 +133,7 @@ map.layers.add(flowLayer, 'labels');
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="矢量磁贴线条层" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () Azure Maps "笔<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>矢量平铺线层</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () Azure Maps "笔<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>矢量平铺线层</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 <br/>
@@ -142,30 +142,30 @@ map.layers.add(flowLayer, 'labels');
 
 使用呈现层在地图上呈现数据。 一个或多个呈现层可以引用单个数据源。 以下呈现层需要数据源：
 
-- [气泡图层](map-add-bubble-layer.md) -将点数据呈现为地图上的缩放圆圈。
-- [符号层](map-add-pin.md) -将点数据呈现为图标或文本。
-- [热度地图层](map-add-heat-map-layer.md) -将点数据呈现为密度热度地图。
-- [线条层](map-add-shape.md) -呈现线条并呈现多边形的轮廓。 
-- [多边形层](map-add-shape.md) -使用纯色或图像图案填充多边形的面积。
+* [气泡图层](map-add-bubble-layer.md) -将点数据呈现为地图上的缩放圆圈。
+* [符号层](map-add-pin.md) -将点数据呈现为图标或文本。
+* [热度地图层](map-add-heat-map-layer.md) -将点数据呈现为密度热度地图。
+* [线条层](map-add-shape.md) -呈现线条并呈现多边形的轮廓。 
+* [多边形层](map-add-shape.md) -使用纯色或图像图案填充多边形的面积。
 
 下面的代码演示如何创建数据源，将其添加到地图中，然后将其连接到气泡图层。 然后，将 GeoJSON 点数据从远程位置导入到数据源中。 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 还有其他呈现层不连接到这些数据源，但它们直接加载要呈现的数据。 
 
-- [图像层](map-add-image-layer.md) -将单个图像叠加到地图的顶部，并将其角部绑定到一组指定坐标。
-- 图[块层](map-add-tile-layer.md)-superimposes 在地图的顶部。
+* [图像层](map-add-image-layer.md) -将单个图像叠加到地图的顶部，并将其角部绑定到一组指定坐标。
+* 图[块层](map-add-tile-layer.md)-superimposes 在地图的顶部。
 
 ## <a name="one-data-source-with-multiple-layers"></a>一个具有多个层的数据源
 
@@ -179,34 +179,40 @@ datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> 使用函数向地图添加层时 `map.layers.add` ，可以将现有层的 ID 或实例作为第二个参数传入。 这会告知映射将插入要添加到现有层下方的新层。 除了传递层 ID 外，此方法还支持以下值。
+>
+> * `"labels"` -将新层插入到地图标签层之下。
+> * `"transit"` -将新层插入到地图道路和中转层下方。
 
 ## <a name="next-steps"></a>后续步骤
 

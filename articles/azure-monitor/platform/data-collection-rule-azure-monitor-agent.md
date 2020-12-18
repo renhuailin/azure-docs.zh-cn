@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315696"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680396"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>配置 Azure Monitor agent (预览版的数据收集) 
 
@@ -35,6 +35,9 @@ ms.locfileid: "95315696"
 
 你可以使用 Azure 门户来创建数据收集规则并将你的订阅中的虚拟机关联到该规则。 将自动安装 Azure Monitor 代理，并为尚未安装的任何虚拟机创建托管标识。
 
+> [!IMPORTANT]
+> 目前存在一个已知问题，即，如果数据收集规则在已具有用户分配的托管标识的虚拟机上创建托管标识，则将禁用用户分配的标识。
+
 在 Azure 门户的 " **Azure Monitor** " 菜单中，从 "**设置**" 部分中选择 "**数据收集规则**"。 单击 " **添加** " 以添加新的数据收集规则和分配。
 
 [![数据收集规则](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ ms.locfileid: "95315696"
 [![数据源基本](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-若要指定其他日志和性能计数器，请选择 " **自定义**"。 然后，您可以指定要收集的任何特定值的 [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) 。 有关示例，请参阅 [示例 DCR](data-collection-rule-overview.md#sample-data-collection-rule) 。
+若要从 [当前支持的数据源](azure-monitor-agent-overview.md#data-sources-and-destinations) 中指定其他日志和性能计数器，或使用 XPath 查询来筛选事件，请选择 " **自定义**"。 然后，您可以指定要收集的任何特定值的 [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) 。 有关示例，请参阅 [示例 DCR](data-collection-rule-overview.md#sample-data-collection-rule) 。
 
 [![数据源自定义](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

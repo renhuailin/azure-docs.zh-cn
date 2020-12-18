@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889793"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680017"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
 
@@ -29,9 +29,9 @@ ms.locfileid: "92889793"
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -50,7 +50,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地图样式选项" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>映射样式 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>映射样式 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="set-a-base-map-style"></a>设置基本地图样式
@@ -101,7 +101,10 @@ map.setStyle({ style: 'satellite' });
 
 下图显示了布局中显示的样式选取器控件 `list` 。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="样式选取器图标布局" 控件列出 Azure Maps 的 S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到 `mapStyle` 样式选取器的选项中。 如果使用的是 S1 并想要显示所有可用样式，请将 `mapStyles` 样式选取器的选项设置为 `"all"` 。
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="样式选取器列表布局":::
+
+> [!IMPORTANT]
+> 默认情况下，"样式选取器" 控件列出 Azure Maps 的 S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到 `mapStyle` 样式选取器的选项中。 如果使用的是 S1 并想要显示所有可用样式，请将 `mapStyles` 样式选取器的选项设置为 `"all"` 。
 
 下面的代码演示如何重写默认 `mapStyles` 基样式列表。 在此示例中，我们将设置 `mapStyles` 选项以列出要由样式选取器控件显示的基本样式。
 
@@ -126,10 +129,13 @@ map.setStyle({ style: 'satellite' });
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-将控件添加到地图：
+有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [添加地图控件](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [添加图钉](map-add-pin.md)
+> [添加符号层](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [添加气泡层](map-add-bubble-layer.md)

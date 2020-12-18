@@ -1,7 +1,7 @@
 ---
-title: 本地 web 服务部署故障排除
+title: 在本地排查 Web 服务部署问题
 titleSuffix: Azure Machine Learning
-description: 了解如何在本地解决和解决常见的 Azure 机器学习 Docker 部署错误。
+description: 了解如何在本地规避、解决和排查常见的 Azure 机器学习 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4f70978e7b7c2315aff4c51d8b019933df78e7e8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028795"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680493"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>本地排查模型部署问题
+# <a name="troubleshoot-model-deployment-locally"></a>在本地排查模型部署问题
 
-了解如何在本地排查和解决常见的 Azure 机器学习 Docker web 服务部署错误。
+了解如何在本地排查和解决或规避常见的 Azure 机器学习 Docker Web 服务部署错误。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "97028795"
 * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
-* 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
+* 若要在本地调试，可以将模型部署到 [Azure 机器学习计算实例](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm) ，或在本地系统上具有工作的 Docker 安装。
 
     若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 

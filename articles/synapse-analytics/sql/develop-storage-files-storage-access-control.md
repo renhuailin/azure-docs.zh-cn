@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446615"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400669"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
 无服务器 SQL 池查询直接从 Azure 存储中读取文件。 对 Azure 存储中文件的访问权限是在以下两个级别控制的：
 - **存储级别** - 用户应具有访问基础存储文件的权限。 你的存储管理员应当允许 Azure AD 主体读取/写入文件，或者生成将用来访问存储的 SAS 密钥。
-- **SQL 服务级别** - 用户应当具有从 [外部表](develop-tables-external-tables.md)中读取数据的 `SELECT` 权限或者具有执行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 权限，还应当有权使用将用来访问存储的凭据。
+- **SQL 服务级别** - 用户应已被授予使用[外部表](develop-tables-external-tables.md)读取数据或执行 `OPENROWSET` 函数的权限。 在此部分中详细了解[所需权限](develop-storage-files-overview.md#permissions)。
 
 本文介绍可用的凭据类型，以及为 SQL 和 Azure AD 用户进行的凭据查找是如何执行的。
 
@@ -83,7 +83,7 @@ ms.locfileid: "96446615"
 
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支持\*      | 不支持   | 支持\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支持\*      | 不支持   | 支持\*     |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
 

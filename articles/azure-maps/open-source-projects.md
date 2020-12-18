@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904544"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680761"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -38,13 +38,20 @@ ms.locfileid: "96904544"
 | 项目名称 | 说明 |
 |-|-|
 | [Azure Maps 动画模块](https://github.com/Azure-Samples/azure-maps-animations) | 用于 Azure Maps Web SDK 的丰富动画库。 |
+| [Azure Maps 将数据引入视图控制模块](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | 一个 Azure Maps 的 Web SDK 模块，它提供了一个控件，使您可以轻松地将映射上加载的任何数据引入视图中。 |
 | [Azure Maps 地理位置控制模块](https://github.com/Azure-Samples/azure-maps-geolocation-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，该控件使用浏览器的地理位置 API 在地图上查找用户。 |
 | [Azure Maps 网格数据源模块](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Azure Maps Web SDK 的一个模块，它提供将数据点分类到网格区域单元的数据源。 此操作也由许多名称（如分割方案、data 装箱或 hex 箱）识别。  |
 | [Azure Maps 全屏控制模块](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，用于在全屏模式下显示地图。 |
+| [Azure Maps HTML 标记层模块](https://github.com/Azure-Samples/azure-maps-html-marker-layer) | 一个 Azure Maps Web SDK 模块，该模块提供将数据源中的点数据呈现为地图上的 HTML 元素的层。 |
+| [Azure Maps 图像导出程序模块](https://github.com/Azure-Samples/azure-maps-image-exporter) | 用于生成地图屏幕截图的 Azure Maps Web SDK 的模块。 |
+| [Azure Maps 概述地图模块](https://github.com/Azure-Samples/azure-maps-overview-map) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，该控件显示主地图所关注的区域的概述图。 |
+| [Azure Maps 刻度条控制模块](https://github.com/Azure-Samples/azure-maps-scale-bar-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，该控件显示相对于地图中心的像素分辨率的刻度条。 |
 | [Azure Maps 选择控件模块](https://github.com/Azure-Samples/azure-maps-selection-control) | 一个 Azure Maps Web SDK 模块，它提供用于在数据源中使用绘图工具或请求路由范围多边形选择数据的控件。 |
+| [Azure Maps Services UI 模块](https://github.com/Azure-Samples/azure-maps-services-ui) | 包装 Azure Maps REST 服务的一组 web UI 控件。 |
+| [Azure Maps 蜘蛛群集模块](https://github.com/Azure-Samples/azure-maps-spider-clusters) | Azure Maps Web SDK 的一个模块，它向地图添加一个可视化效果，将分类展开为螺旋蜘蛛布局。 |
+| [Azure Maps Spyglass 控制模块](https://github.com/Azure-Samples/azure-maps-spyglass-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个窗口，该窗口在地图上的 spyglass 中显示一个数据集。  |
 | [Azure Maps 刷卡器地图模块](https://github.com/Azure-Samples/azure-maps-swipe-map) | 用于在两个重叠映射之间进行轻扫的 Azure Maps Web SDK 的模块，这是比较两个重叠数据集的理想之选。 |
 | [Azure Maps 同步映射模块](https://github.com/Azure-Samples/azure-maps-sync-maps) | 同步两个或多个地图的照相机的 Azure Maps Web SDK 模块。 |
-| [Azure Maps Services UI 模块](https://github.com/Azure-Samples/azure-maps-services-ui) | 包装 Azure Maps REST 服务的一组 web UI 控件。 |
 
 **示例**
 
@@ -53,6 +60,7 @@ ms.locfileid: "96904544"
 | [Azure Maps 代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于在基于 web 的应用中使用 Azure Maps 的代码示例的集合。 |
 | [Azure Maps Gov 云代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于通过 Azure 政府云使用 Azure Maps 的代码示例的集合。 |
 | [Azure Maps & Azure Active Directory 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | 演示如何将 Azure Active Directory 与 Azure Maps 结合使用的示例的集合。 | 
+| [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | 使用 Azure Maps 创建者在 Azure Maps 上提供 IoT 数据可视化的示例应用程序 |
 | [Azure Maps Jupyter Notebook 示例](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | 使用 Azure Maps REST 服务的 python 示例的集合。 |
 | [Azure Maps .NET UWP IoT 远程控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 这是一个示例应用程序，演示如何使用 Azure Maps 和 IoT 中心服务构建远程控制的映射。 |
 | [使用 Azure Maps 实现 IoT 空间分析](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 跟踪和捕获时空中发生的相关事件是一个常见的 IoT 应用场景。 |

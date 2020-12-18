@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896372"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680143"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -24,16 +24,16 @@ ms.locfileid: "92896372"
 
 可以在许多不同的方案中使用热度地图，其中包括：
 
-- **温度数据** ：提供两个数据点之间温度的近似值。
-- **噪音传感器的数据** ：不仅显示传感器的噪音强度，而且还可以提供距离内的散热。 任何一个站点的噪音级别可能不是高。 如果多个传感器的噪音范围区域重叠，则此重叠区域可能会出现更高的干扰级别。 因此，重叠区域将显示在热度地图中。
-- **GPS 跟踪** ：将速度作为加权高度地图，其中每个数据点的强度基于速度。 例如，使用此功能可以查看车辆的加速位置。
+- **温度数据**：提供两个数据点之间温度的近似值。
+- **噪音传感器的数据**：不仅显示传感器的噪音强度，而且还可以提供距离内的散热。 任何一个站点的噪音级别可能不是高。 如果多个传感器的噪音范围区域重叠，则此重叠区域可能会出现更高的干扰级别。 因此，重叠区域将显示在热度地图中。
+- **GPS 跟踪**：将速度作为加权高度地图，其中每个数据点的强度基于速度。 例如，使用此功能可以查看车辆的加速位置。
 
 > [!TIP]
 > 默认情况下，热度地图层会呈现数据源中所有几何的坐标。 若要将该层限制为仅呈现点几何特征，请将 `filter` 层的属性设置为 `['==', ['geometry-type'], 'Point']` 。 如果还需要包含 MultiPoint 功能，请将 `filter` 层的属性设置为 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` 。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -103,7 +103,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="一致的 zoomable 热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致 zoomable 热度地图</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致 zoomable 热度地图</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'></a>
 </iframe>
 
 > [!TIP]

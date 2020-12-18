@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131422"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679142"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
 
@@ -33,7 +33,7 @@ ms.locfileid: "93131422"
 
 下面是重要的发布步骤：
 
-1. 在 Power BI 中创建应用程序。 你将收到包安装链接，这是产品/服务的主要技术资产。 在合作伙伴中心创建产品/服务之前，将测试包发送到预生产。 有关详细信息，请参阅 [什么是 Power BI 应用？](/power-bi/service-template-apps-overview)。
+1. 在 Power BI 中创建应用程序。 你将收到包安装链接，这是产品/服务的主要技术资产。 在合作伙伴中心创建产品/服务之前，将测试包发送到预生产。 有关详细信息，请参阅 [什么是 Power BI 应用？](/power-bi/service-template-apps-overview)
 2. 添加市场营销材料，如官方名称、说明和徽标。
 3. 包括产品/服务的法律和支持文档，如使用条款、隐私策略、支持策略以及用户帮助。
 4. 创建产品/服务–使用合作伙伴中心编辑详细信息，包括产品/服务说明、营销资料、法律信息、支持信息和资产规范。
@@ -42,7 +42,7 @@ ms.locfileid: "93131422"
 7. 经过认证后，请在其测试环境中查看应用并将其发布。 这会在 AppSource (其 "上线" ) 上列出。
 8. 在 Power BI 中，将包发送到生产。 有关详细信息，请参阅 [管理 Power BI 应用版本](/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 查看下面的链接，这些链接提供了模板、提示和示例。
 
@@ -76,6 +76,6 @@ ms.locfileid: "93131422"
 - 提供满足在 AppSource 上列出的产品/服务的条件的内容。 有关详细信息，请参阅 [AppSource 上的应用程序列表？下面是操作方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)。
 - 同意并遵循 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [在合作伙伴中心创建 Power BI 应用产品/服务](create-power-bi-app-offer.md)

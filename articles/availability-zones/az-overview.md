@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182727"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678551"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -181,6 +181,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [入门用于 Redis 的 Azure 缓存可用性区域](https://aka.ms/redis/az/getstarted)
 - [创建 Azure Active Directory 域服务实例](../active-directory-domain-services/tutorial-create-instance.md)
 - [使用可用性区域 (AKS) 群集创建 Azure Kubernetes 服务](../aks/availability-zones.md)
+- [启用 Azure 容器注册表中的区域冗余](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>后续步骤
 

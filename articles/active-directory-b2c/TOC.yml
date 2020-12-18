@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: 使用 App Auth 的 Android
           href: signin-appauth-android.md
+    - name: 创建流
+      items:
+        - name: 注册或登录策略
+          href: add-sign-up-and-sign-in-policy.md
+        - name: 密码重置策略
+          href: add-password-reset-policy.md
+        - name: 密码更改策略
+          href: add-password-change-policy.md
+        - name: 个人资料编辑策略
+          href: add-profile-editing-policy.md
+        - name: 资源所有者密码凭据策略
+          href: add-ropc-policy.md
+        - name: 设置自助密码重置策略（已弃用）
+          href: user-flow-self-service-password-reset.md
+        - name: 手机注册和登录
+          href: phone-authentication-user-flows.md
     - name: 标识提供者
       items:
         - name: 添加标识提供程序
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: 配置年龄限制
       href: basic-age-gating.md
-    - name: 用户流
+    - name: API 连接器（预览版）
       items:
-        - name: 创建流
-          items:
-            - name: 注册或登录
-              href: tutorial-create-user-flows.md
-            - name: 资源所有者密码凭据
-              href: configure-ropc.md
-            - name: 设置自助密码重置
-              href: user-flow-self-service-password-reset.md
-        - name: API 连接器（预览版）
-          items:
-            - name: 概述
-              href: api-connectors-overview.md
-            - name: 添加 API 连接器
-              href: add-api-connector.md
+        - name: 概述
+          href: api-connectors-overview.md
+        - name: 添加 API 连接器
+          href: add-api-connector.md
     - name: 自定义策略
       items:
         - name: 自定义策略概述
           href: custom-policy-trust-frameworks.md
         - name: 自定义策略入门
           href: custom-policy-get-started.md
-        - name: 创建策略
-          items:
-            - name: 资源所有者密码凭据
-              href: ropc-custom.md
-              displayName: ropc
-            - name: 密码更改
-              href: custom-policy-password-change.md
-            - name: 手机注册和登录
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: 自定义电子邮件验证
           items:
             - name: Mailjet

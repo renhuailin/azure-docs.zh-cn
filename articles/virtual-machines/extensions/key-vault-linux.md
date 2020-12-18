@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499724"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680650"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -96,7 +96,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
-| requiredInitialSync | 是 | boolean |
+| requireInitialSync | 是 | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | 字符串数组
 | msiEndpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
@@ -109,7 +109,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体来说是嵌套在虚拟机模板的 `"resources": []` 对象中，对于虚拟机规模集而言，是嵌套在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下。
 
  > [!NOTE]
-> VM 扩展需要分配有系统或用户托管标识，才能向密钥保管库进行身份验证。  请参阅[如何向 Key Vault 进行身份验证和分配 Key Vault 访问策略。](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+> VM 扩展需要分配有系统或用户托管标识，才能向 Key Vault 进行身份验证。  请参阅[如何向 Key Vault 进行身份验证和分配 Key Vault 访问策略。](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 > 
 
 ```json

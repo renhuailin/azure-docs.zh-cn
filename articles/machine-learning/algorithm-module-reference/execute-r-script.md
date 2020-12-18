@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 12/17/2020
+ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510584"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679105"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
@@ -50,6 +50,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 > [!NOTE]
 > 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
+
+> [!WARNING]
+> Excute R 脚本模块不支持安装需要本机编译的包，如 `qdap` 需要 JAVA 和需要 `drc` c + + 的包的包。 这是因为此模块是在预安装的环境中使用非管理员权限执行的。
 
 此示例演示如何安装 Zoo：
 ```R

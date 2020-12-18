@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638000"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678907"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>计划和管理 Azure 数据工厂的成本
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性数据集成服务。  也就是不需要为固定大小的计算规划峰值负载；可以指定每个操作按需分配的资源量，从而以可缩放性更强的方式设计 ETL 进程。 此外，ADF 基于消耗计费，即仅为所用的部分付费。
 

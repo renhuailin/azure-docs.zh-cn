@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511910"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679193"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -156,7 +156,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     1. 将脚本和其他自定义资源捆绑到一个 zip 文件中。
     1. 将 zip 文件作为“文件数据集”上传到工作室。 
     1. 从设计器创作页面左侧模块窗格的“数据集”列表中拖取数据集模块。 
-    1. 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
+    1. 将数据集模块连接到 **执行 Python 脚本** 模块的 **脚本捆绑** 端口。
     
     在管道执行期间，可以使用已上传的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留结构。
  

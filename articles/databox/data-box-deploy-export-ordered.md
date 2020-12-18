@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003107"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680792"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教程：创建 Azure Data Box (预览版的出口订单) 
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的出口订单
 
 Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移到你的位置。 本教程介绍如何创建 Azure Data Box 的出口订单。 创建导出顺序的主要原因是为了进行灾难恢复，并且在本地存储区被泄露并且需要还原备份。
 
-本教程的介绍内容包括：
+在本教程中，你将学习：
 
 > [!div class="checklist"]
 >
@@ -27,8 +27,6 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 > * 为导出 Data Box 排序
 > * 跟踪导出顺序
 > * 取消导出顺序
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -82,7 +80,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 6. 在 " **顺序**" 中，指定 **基本** 订单详细信息。 输入或选择以下信息。
 
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |订阅     | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组 | 之前选择的资源组。 |
@@ -125,49 +123,49 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     ![Data Box 导入订单向导的“安全性”屏幕](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
 
-10. 如果要使用自己的客户托管密钥来保护新资源的解锁密钥，请展开 " **加密类型**"。
+10. 如果要使用自己的客户管理的密钥来保护新资源的解锁密钥，请展开“加密类型”。
 
-    为 Azure Data Box 配置客户托管的密钥是可选的。 默认情况下，Data Box 使用 Microsoft 托管密钥来保护解锁密钥。
+    可选择性地为 Azure Data Box 配置客户管理的密钥。 默认情况下，Data Box 使用 Microsoft 管理的密钥来保护解锁密钥。
 
-    客户托管的密钥不会影响设备上数据的加密方式。 密钥仅用于加密设备解锁密钥。
+    客户管理的密钥不影响设备上数据的加密方式。 该密钥仅用于加密设备解锁密钥。
 
     如果不想使用客户托管的密钥，请跳到步骤16。
 
-    ![显示加密类型设置的安全屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+    ![显示加密类型设置的“安全性”屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
 
-11. 选择 " **客户托管密钥** " 作为密钥类型。 然后选择 " **选择密钥保管库" 和 "密钥**"。
+11. 选择“客户管理的密钥”作为密钥类型。 然后，选中“选择密钥保管库和密钥”。
    
-    ![安全屏幕，客户托管密钥的设置](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+    ![安全屏幕，客户管理的密钥的设置](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
 
 12. 在 " **从 Azure Key Vault 中选择密钥** " 屏幕上，将自动填充订阅。
 
     - 对于“密钥保管库”，可以从下拉列表中选择现有的密钥保管库。
 
-      ![从 Azure Key Vault 屏幕选择密钥](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+      ![从 Azure Key Vault 屏幕上选择密钥](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
 
-    - 还可以选择“新建”来创建新的密钥保管库。 在 " **创建密钥保管库** " 屏幕上，输入资源组和密钥保管库名称。 确保已启用 **软删除** 和 **清除保护** 。 接受所有其他默认值，然后选择 " **查看 + 创建**"。
+    - 还可以选择“新建”来创建新的密钥保管库。 在“创建密钥保管库”屏幕上，输入资源组和密钥保管库名称。 确保已启用软删除和清除保护 。 接受其他所有默认值，然后选择“查看 + 创建”。
 
       ![创建新的 Azure Key Vault 设置](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
 
-      查看密钥保管库的信息，并选择 " **创建**"。 等待几分钟，以便完成密钥保管库的创建。
+      查看密钥保管库的信息，然后选择“创建”。 等待几分钟，直到密钥保管库创建完成。
 
-      ![新建 Azure Key Vault 查看屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+      ![新的 Azure Key Vault 查看屏幕](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
 
 13. 在 " **从 Azure Key Vault 中选择密钥** " 屏幕上，可以选择密钥保管库中的现有密钥。
 
     ![从 Azure Key Vault 中选择现有密钥](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
 
-    如果要创建新密钥，请选择 " **新建**"。 必须使用 RSA 密钥。 大小可以是2048或更高。 输入新密钥的名称，接受其他默认值，然后选择 " **创建**"。
+    如果要创建新的密钥，请选择“新建”。 必须使用 RSA 密钥。 大小可以是 2048 或更大。 输入新密钥的名称，接受其他默认值，然后选择“创建”。
 
       ![创建新的密钥选项](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
 
-      在密钥保管库中创建密钥后，会收到通知。
+      在密钥保管库中创建密钥后，你将收到通知。
 
-14. 选择要使用的密钥 **版本** ，然后选择 " **选择**"。
+14. 选择要使用的密钥的版本，然后选中“选择” 。
 
       ![在密钥保管库中创建的新密钥](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
 
-    如果要创建新的密钥版本，请选择 " **新建**"。
+    如果要创建新的密钥版本，请选择“新建”。
 
     ![打开用于创建新密钥版本的对话框](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
 
@@ -175,23 +173,23 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     ![创建新的密钥版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
 
-    "**安全**" 屏幕上的 "**加密类型**" 设置会显示密钥保管库和密钥。
+    “安全性”屏幕上的“加密类型”设置将显示密钥保管库和密钥 。
 
-    ![客户托管密钥的密钥和密钥保管库](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+    ![用于客户管理的密钥的密钥和密钥保管库](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
 
-15. 选择将用于管理对此资源的访问权限的用户标识。 选择 " **选择用户标识**"。 在右侧面板中，选择要使用的订阅和托管标识。 然后选择“选择”。
+15. 选择将用于管理对此资源的访问权限的用户标识。 选中“选择用户标识”。 在右侧面板中，选择要使用的订阅和托管标识。 然后选取“选择”  。
 
-    用户分配的托管标识是一个独立的 Azure 资源，可用于管理多个资源。 有关详细信息，请参阅 [托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
 
-    如果需要创建新的托管标识，请遵循 [使用 Azure 门户创建、列出、删除或向用户分配的托管标识分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)的指南。
+    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
     
     ![选择用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
-    用户标识显示在 " **加密类型** " 设置中。
+    用户标识显示在“加密类型”设置中。
 
     你现在可以折叠 **加密类型** 设置。
 
-    !["加密类型" 设置中所示的选定用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+    ![加密类型设置中显示的所选用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
 
 16. 如果要启用基于软件的双加密，请展开 " **双加密 (以) 高安全环境**"，然后选择 **"为订单启用双加密**"。 
 
@@ -208,7 +206,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     ![添加送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-12. 在 " **添加送货地址**" 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
+12. 在 " **添加送货地址**" 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。  服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
     ![验证送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
