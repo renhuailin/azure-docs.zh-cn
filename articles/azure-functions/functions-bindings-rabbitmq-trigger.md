@@ -4,15 +4,15 @@ description: 了解如何在创建 RabbitMQ 消息时运行 Azure Function。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630728"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673981"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 触发器
 
@@ -32,7 +32,7 @@ ms.locfileid: "97630728"
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ public static void Run(string myQueueItem, ILogger log)
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ module.exports = async function (context, myQueueItem) {
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ def main(myQueueItem) -> None:
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-有关完整示例，请参阅 C# 示例。
+有关完整示例，请参阅 c # [示例](#example)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -275,12 +275,12 @@ Python 不支持特性。
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |prefetchCount|30|获取或设置消息接收方可以同时请求并缓存的消息数。|
-|queueName|不适用| 要从中接收消息的队列的名称。 |
-|connectionString|不适用|包含 RabbitMQ 消息队列连接字符串的应用设置的名称。 请注意，如果直接指定连接字符串而不是通过 local.settings.json 中的应用设置，则触发器将不起作用。|
-|port|0|如果使用 connectionString) 可对每个缩放实例同时处理的最大会话数，则 (被忽略。|
+|queueName|不适用| 要从中接收消息的队列的名称。|
+|connectionString|不适用|RabbitMQ 消息队列连接字符串。 请注意，在此处直接指定连接字符串，而不通过应用设置。|
+|port|0|如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为 0。|
 
 ## <a name="local-testing"></a>本地测试
 
@@ -303,7 +303,7 @@ Python 不支持特性。
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |hostName|不适用|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
 |userName|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的名称 |

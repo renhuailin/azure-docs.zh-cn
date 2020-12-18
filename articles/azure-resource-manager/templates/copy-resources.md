@@ -2,13 +2,13 @@
 title: 部署资源的多个实例
 description: 使用 Azure 资源管理器模板中的复制操作和数组 (ARM 模板) 部署资源类型多次。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905904"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672825"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
@@ -292,10 +292,9 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要学习教程，请参阅 [教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 有关涵盖资源复制的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关 copy 元素的其他用法，请参阅：
   * [ARM 模板中的属性迭代](copy-properties.md)
   * [ARM 模板中的变量迭代](copy-variables.md)
   * [ARM 模板中的输出迭代](copy-outputs.md)
 * 有关将副本与嵌套的模板配合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。
-* 如果要了解有关模板的各个部分的信息，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
-* 若要了解如何部署模板，请参阅 [利用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。

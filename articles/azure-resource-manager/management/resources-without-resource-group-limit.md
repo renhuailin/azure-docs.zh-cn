@@ -3,12 +3,12 @@ title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913494"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672358"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -81,7 +81,7 @@ ms.locfileid: "92913494"
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* 实验室/virtualMachines-默认情况下，限于800实例。 可以通过联系支持人员来提高该限制。
+* 实验室/virtualMachines-默认情况下，限于800实例。 
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -176,7 +176,7 @@ ms.locfileid: "92913494"
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
-* 容量-默认情况下，限于800实例。 可以通过联系支持人员来提高该限制。
+* capacities - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 

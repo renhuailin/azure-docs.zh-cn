@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586584"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673292"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Adobe Identity Management
 
@@ -57,17 +57,17 @@ ms.locfileid: "97586584"
 
 2. 单击 " **添加同步**"。
 
-      ![添加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![添加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. 选择 " **同步用户 Microsoft Azure** "，然后单击 " **下一步**"。
 
-      ![显示选定的 "从 Microsoft Azure Active Directory 同步用户" 的屏幕截图。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![显示选定的 "从 Microsoft Azure Active Directory 同步用户" 的屏幕截图。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. 复制并保存 **租户 URL** 和 **机密令牌**。 这些值将输入到 " **租户 URL** " 和 " **机密令牌** " 字段中的 "设置" 选项卡上的 "Azure 门户中。
 
-      ![同步](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![同步](media/adobe-identity-management-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Adobe Identity Management
+## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Adobe Identity Management
 
 从 "Azure AD" 应用程序库中添加 Adobe Identity Management，开始管理预配到 Adobe 标识管理。 如果你以前为 SSO 设置了 Adobe 标识管理，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
 

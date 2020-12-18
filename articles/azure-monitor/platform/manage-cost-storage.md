@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616138"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671159"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -78,7 +78,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>查看 Azure 账单上的 Log Analytics 使用情况 
 
-Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 首先，按“资源类型”添加筛选器（对于 Log Analytics，将其添加到 microsoft.operationalinsights/workspace，对于Log Analytics 群集，将其添加到 microsoft.operationalinsights/workspace），你可以跟踪自己的 Log Analytics 支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  请注意，其他服务（例如 Azure 安全中心和 Azure Sentinel）还会根据 Log Analytics 工作区资源对其使用情况进行计费。 若要查看服务名称映射，可以选择表视图而不是图表。 
+Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 首先，将 "资源类型" (的筛选器添加到 Log Analytics 的 microsoft.operationalinsights/工作区，并将 Log Analytics 群集的 microsoft.operationalinsights/群集添加到群集) 将允许你跟踪 Log Analytics 支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  请注意，其他服务（例如 Azure 安全中心和 Azure Sentinel）还会根据 Log Analytics 工作区资源对其使用情况进行计费。 若要查看服务名称映射，可以选择表视图而不是图表。 
 
 通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源（例如 Log Analytics 工作区）的使用情况。 在此 Excel 电子表格中，可以首先基于“计量类别”列进行筛选以显示“Log Analytics”、“Insights and Analytics”（由某些旧定价层使用）和“Azure Monitor”（由“产能预留”定价层使用），借此查找 Log Analytics 工作区中的使用情况，然后在“实例 ID”列上添加一个筛选器：“包含工作区”或“包含群集”（后者包括 Log Analytics 群集的使用情况）。 使用情况显示在“已耗用数量”列中，每个条目的单位显示在“度量单位”列中。  还有更多详细信息可帮助你[了解 Microsoft Azure 账单](../../cost-management-billing/understand/review-individual-bill.md)。 
 
@@ -150,7 +150,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 保留期为 30 天的工作区实际上可能会保留 31 天的数据。 如果要求只保留 30 天的数据，请使用 Azure 资源管理器将保留期设置为 30 天，并使用 `immediatePurgeDataOn30Days` 参数。  
 
-默认情况下，两种数据类型-- `Usage` 和 `AzureActivity` --默认保留至少90天，此90天保留期不收取任何费用。 如果工作区的保留期超过 90 天，则这些数据类型的保留期也将增加。  这些数据类型也不收取数据引入费用。 
+默认情况下，两种数据类型（`Usage` 和 `AzureActivity`）将保留至少 90 天，并且对于这 90 天的保留期，不收取任何费用。 如果工作区的保留期超过 90 天，则这些数据类型的保留期也将增加。  这些数据类型也不收取数据引入费用。 
 
 默认情况下，基于工作区的 Application Insights 资源（`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`）中的数据类型也保留 90 天，并且对于这 90 天的保留期，不收取任何费用。 可以使用按数据类型保留功能调整其保留期。 
 
@@ -216,7 +216,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 每日上限无法以精确到指定的每日上限的级别停止数据收集，且可能出现某些多余的数据，尤其是在工作区接收大量数据的情况下。 请参阅 [下面](#view-the-effect-of-the-daily-cap) 的查询，该查询有助于研究每日上限行为。 
 
 > [!WARNING]
-> 除了在2017年6月19日之前安装了 Azure 安全中心的工作区之外，每日上限不会停止从 Azure 前哨或 Azure 安全中心收集数据。 
+> 每日上限不会停止 [Azure 安全中心每日每个 (节点](#log-analytics-and-security-center) 的 WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火墙、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary) 包含在 Azure 安全中心中的数据类型集合，但在2017年6月19日之前安装了 Azure 安全中心的工作区除外。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 
@@ -266,7 +266,7 @@ Usage
 - 警报规则名称：达到每日数据限制
 - 严重性：警告（严重性 1）
 
-定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
+定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>排查使用量超出预期的原因
 

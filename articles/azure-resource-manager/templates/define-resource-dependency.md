@@ -2,13 +2,13 @@
 title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255205"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672808"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>在 ARM 模板中定义部署资源的顺序
 
@@ -40,7 +40,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-在前面的示例中，通过复制名为 **storageLoop**的循环创建的资源包含依赖关系。 有关示例，请参阅 [在 Azure Resource Manager 中创建多个资源实例](copy-resources.md)。
+在前面的示例中，通过复制名为 **storageLoop** 的循环创建的资源包含依赖关系。 有关示例，请参阅 [在 Azure Resource Manager 中创建多个资源实例](copy-resources.md)。
 
 定义依赖关系时，可以包含资源提供程序命名空间和资源类型，以避免多义性。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
 
@@ -150,6 +150,7 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果收�
 ## <a name="next-steps"></a>后续步骤
 
 * 相关教程，请参阅[教程：使用从属资源创建 Azure 资源管理器模板](template-tutorial-create-templates-with-dependent-resources.md)。
+* 有关涵盖资源依赖项的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关设置依赖项的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
 * 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
 * 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。

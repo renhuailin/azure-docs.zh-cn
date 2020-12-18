@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179685"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673218"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教程：为 Coda 配置自动用户预配
 
@@ -87,13 +87,13 @@ ms.locfileid: "96179685"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分，输入之前在步骤 2 中检索的 Coda 租户 URL 和机密令牌。 单击“测试连接”以确保 Azure AD 可以连接到 Coda。 如果连接失败，请确保 Coda 帐户具有管理员权限，然后重试。
 
-    ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/coda-provisioning-tutorial/provisioning.png)
+     ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -123,7 +123,7 @@ ms.locfileid: "96179685"
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”  。
+13. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

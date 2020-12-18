@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653718"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672394"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -74,11 +74,11 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure。
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 导航到“使用条款”。
 
-   ![条件访问 -“使用条款”边栏选项卡](./media/terms-of-use/tou-blade.png)
+    ![条件访问 -“使用条款”边栏选项卡](./media/terms-of-use/tou-blade.png)
 
 1. 单击“新建条款”。
 
-   ![用于指定使用条款设置的新使用条款窗格](./media/terms-of-use/new-tou.png)
+    ![用于指定使用条款设置的新使用条款窗格](./media/terms-of-use/new-tou.png)
 
 1. 在 " **名称** " 框中，输入将在 Azure 门户中使用的使用条款的名称。
 1. 在“显示名称”框中，输入用户登录时看到的标题。
@@ -88,7 +88,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 1. 若要要求最终用户接受从其访问的每个设备上使用的条款，请设置 "**要求用户在每台设备上同意** **"。** 如果启用此选项，则用户可能需要安装其他应用程序。 有关详细信息，请参阅 [按设备使用条款](#per-device-terms-of-use)。
 1. 如果要按计划使使用条款同意过期，请将 **同意过期** 为 **"开"**。 设置为“打开”时，会显示另外两项计划设置。
 
-   ![用于设置开始日期、频率和持续时间的“使同意状态过期”设置](./media/terms-of-use/expire-consents.png)
+    ![用于设置开始日期、频率和持续时间的“使同意状态过期”设置](./media/terms-of-use/expire-consents.png)
 
 1. 使用 **过期开始时间** 和 **频率** 设置来指定使用期限的计划。 下表显示了几项示例设置的结果：
 
@@ -115,7 +115,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 1. 在 " **条件性访问**" 下，使用 " **使用条件性访问策略模板** " 列表选择模板以强制使用使用条款。
 
-   ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
+    ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
 
    | 模板 | 说明 |
    | --- | --- |
@@ -131,7 +131,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 1. 单击“创建”。
 
-   选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
+    选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
 
    ![选择自定义条件访问策略模板时显示的新条件访问窗格](./media/terms-of-use/custom-policy.png)
 
@@ -145,15 +145,15 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 
-   ![列出已接受和拒绝条款的用户数的使用条款边栏选项卡](./media/terms-of-use/view-tou.png)
+    ![列出已接受和拒绝条款的用户数的使用条款边栏选项卡](./media/terms-of-use/view-tou.png)
 
 1. 对于 "使用条款"，请单击 " **被接受** " 或 "已 **拒绝** " 下的数字查看用户的当前状态。
 
-   ![列出已接受条款的用户的使用条款同意窗格](./media/terms-of-use/accepted-tou.png)
+    ![列出已接受条款的用户的使用条款同意窗格](./media/terms-of-use/accepted-tou.png)
 
 1. 若要查看单个用户的历史记录，请依次单击省略号 (**...**)、“查看历史记录”。
 
-   ![用户的“查看历史记录”上下文菜单](./media/terms-of-use/view-history-menu.png)
+    ![用户的“查看历史记录”上下文菜单](./media/terms-of-use/view-history-menu.png)
 
    在“查看历史记录”窗格中，可以看到所有接受、拒绝和过期操作状态的历史记录。
 
@@ -169,11 +169,11 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 1. 选择一个使用条款。
 1. 单击“查看审核日志”。
 
-   ![使用条款边栏选项卡，其中突出显示了“查看审核日志”选项](./media/terms-of-use/audit-tou.png)
+    ![使用条款边栏选项卡，其中突出显示了“查看审核日志”选项](./media/terms-of-use/audit-tou.png)
 
 1. 在 Azure AD 审核日志屏幕上，可以使用提供的列表筛选信息，将特定审核日志信息作为目标。
 
-   还可以单击“下载”，将信息下载到可以在本地使用的 .csv 文件中。
+    还可以单击“下载”，将信息下载到可以在本地使用的 .csv 文件中。
 
    ![Azure AD 审核日志屏幕，其中列出了日期、目标策略、发起者和活动](./media/terms-of-use/audit-logs-tou.png)
 
@@ -204,11 +204,11 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 1. 在右上角单击自己的姓名，然后选择“个人资料”。
 
-   ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
+    ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
 
 1. 在“个人资料”页中单击“查看使用条款”。
 
-   ![用户的个人资料页，其中显示了“查看使用条款”链接](./media/terms-of-use/tou13a.png)
+    ![用户的个人资料页，其中显示了“查看使用条款”链接](./media/terms-of-use/tou13a.png)
 
 1. 可以在其中查看已接受的使用条款。
 
@@ -220,11 +220,11 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 1. 选择要编辑的使用条款。
 1. 单击“编辑条款”。
 1. 在 "编辑使用条款" 窗格中，可以更改以下各项：
-     - **Name** –这是不与最终用户共享的 ToU 的内部名称
-     - **显示名称** –这是最终用户查看 ToU 时可以看到的名称。
-     - **要求用户扩展使用条款** –如果将此项设置为 **"开** "，则会强制最终用户在接受使用条款文档之前先将其展开。
-     -  (预览) 你可以 **更新现有的使用条款** 文档
-     - 可以将语言添加到现有 ToU
+    - **Name** –这是不与最终用户共享的 ToU 的内部名称
+    - **显示名称** –这是最终用户查看 ToU 时可以看到的名称。
+    - **要求用户扩展使用条款** –如果将此项设置为 **"开** "，则会强制最终用户在接受使用条款文档之前先将其展开。
+    -  (预览) 你可以 **更新现有的使用条款** 文档
+    - 可以将语言添加到现有 ToU
 
    若要更改其他设置（例如，PDF 文档、要求用户在每台设备上同意使用条款、使同意状态过期、重新接受使用条款之前的持续时间，或条件访问策略），必须创建新的使用条款。
 
@@ -279,7 +279,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 1. 单击页面底部的 " **添加语言** "。
 1. 在“添加使用条款语言”窗格中，上传已本地化的 PDF 并选择语言。
 
-   ![选定的使用条款，显示了详细信息窗格中的“语言”选项卡](./media/terms-of-use/select-language.png)
+    ![选定的使用条款，显示了详细信息窗格中的“语言”选项卡](./media/terms-of-use/select-language.png)
 
 1. 单击“添加语言”。
 1. 单击“保存”
@@ -340,7 +340,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 1. 单击“删除条款”。
 1. 在出现的询问是否需要继续的消息中，单击“是”。
 
-   ![要求确认删除使用条款的消息](./media/terms-of-use/delete-tou.png)
+    ![要求确认删除使用条款的消息](./media/terms-of-use/delete-tou.png)
 
    你再也看不到自己的使用条款。
 

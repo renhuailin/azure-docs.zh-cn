@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302940"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>教程：Azure Active Directory 与 Carlson Wagonlit Travel 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "96302940"
 
 4. 在搜索框中，键入“Carlson Wagonlit Travel”，在结果面板中选择“Carlson Wagonlit Travel”，然后单击“添加”按钮添加该应用程序。   
 
-     ![结果列表中的 Carlson Wagonlit Travel](common/search-new-app.png)
+    ![结果列表中的 Carlson Wagonlit Travel](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -138,7 +138,7 @@ ms.locfileid: "96302940"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

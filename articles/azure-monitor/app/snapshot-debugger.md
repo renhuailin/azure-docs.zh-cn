@@ -4,13 +4,15 @@ description: 生产 .NET 应用中出现异常时会自动收集调试快照
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
+author: cweining
+ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5913f5fa8d45e6bf92d6132468e0e3bf7a121c65
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530227"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673512"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](./app-insights-overview.md) 中的 Snapshot Debugger 可以监视来自 Web 应用的异常遥测。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](./asp-net-exceptions.md)区域中。

@@ -4,15 +4,15 @@ description: 可以通过使用 Azure Active Directory (Azure AD) 为 AzCopy 操
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617402"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672485"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限
 
@@ -185,7 +185,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ## <a name="authorize-without-a-secret-store"></a>不使用机密存储授权
 
-如果操作系统没有密钥存储（如 Linux *keyring*），则该 `azcopy login` 命令将不起作用。 相反，你可以在运行每个操作之前设置内存环境变量。 
+此 `azcopy login` 命令检索 OAuth 令牌，然后将该令牌放入系统中的密钥存储。 如果操作系统没有密钥存储（如 Linux *keyring*），则该 `azcopy login` 命令将不起作用，因为存在用于放置令牌的位置。 
+
+可以不使用 `azcopy login` 命令设置内存环境变量。 然后运行 AzCopy 命令。 AzCopy 将检索完成此操作所需的身份验证令牌。 操作完成后，标记将从内存中消失。 
 
 ### <a name="authorize-a-user-identity"></a>授权用户标识
 
@@ -248,8 +250,6 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 设置这些变量后，可以运行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
 
 ### <a name="authorize-a-service-principal"></a>授权服务主体
-
-在运行脚本之前，必须至少以交互方式登录一次，以便能够向 AzCopy 提供服务主体凭据。  这些凭据存储在受保护的已加密文件中，因此，脚本无需提供敏感信息。
 
 可以使用客户端机密或使用与服务主体应用注册关联的证书的密码登录到帐户。
 

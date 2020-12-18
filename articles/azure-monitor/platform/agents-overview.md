@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: 9c453219638b9586d4ad2cc2a89311b1f2bdeefe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8b9a79ee32d7a81fee64e40b85272877b7d87589
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450091"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674192"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -169,6 +169,7 @@ Azure 诊断扩展的限制包括：
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1+                                           |   |   |   | X |
+| Oracle Linux 8                                           |   | X |   |   |
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           |   | X |   |   |
 | Oracle Linux 6.4+                                        |   | X |   | X |

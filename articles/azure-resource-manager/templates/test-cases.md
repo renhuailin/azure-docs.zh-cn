@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600898"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674036"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 模板测试工具包的默认测试用例
 
@@ -693,4 +693,5 @@ ms.locfileid: "96600898"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
+- 若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
+- 有关使用测试工具包的 Microsoft Learn 模块，请参阅 [使用假设和 ARM 模板测试工具包预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。

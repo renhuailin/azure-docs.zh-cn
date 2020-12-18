@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178919"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673369"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>教程：为 CybSafe 配置自动用户预配
 
@@ -54,7 +54,7 @@ ms.locfileid: "96178919"
 3. 导航到 " [设置->身份管理](https://app.cybsafe.com/settings/identity-management)"。 
 4. 在 "用户预配" 部分中单击 " **生成令牌** "。 此值将在 Azure 门户中的 CybSafe 应用程序的 "预配" 选项卡中输入。
 
-## <a name="step-3-add-cybsafe-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 CybSafe
+## <a name="step-3-add-cybsafe-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 CybSafe
 
 从 Azure AD 应用程序库中添加 CybSafe，开始管理预配到 CybSafe。 如果以前为 SSO 设置了 CybSafe，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "96178919"
 
 5. 在 " **管理员凭据** " 部分中，输入你的 CYBSAFE 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 CybSafe。 如果连接失败，请确保 CybSafe 帐户具有管理员权限，然后重试。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -101,7 +101,7 @@ ms.locfileid: "96178919"
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 CybSafe**"。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 CybSafe 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 CybSafe 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 CybSafe API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 CybSafe 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 CybSafe 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 CybSafe API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -124,7 +124,7 @@ ms.locfileid: "96178919"
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 CybSafe**"。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 CybSafe 的组属性。 选为 " **匹配** " 属性的特性用于匹配 CybSafe 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 CybSafe 的组属性。 选为 " **匹配** " 属性的特性用于匹配 CybSafe 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|
@@ -135,15 +135,15 @@ ms.locfileid: "96178919"
 
 13. 若要为 CybSafe 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-    ![预配状态已打开](common/provisioning-toggle-on.png)
+      ![预配状态已打开](common/provisioning-toggle-on.png)
 
 14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 CybSafe 的用户和/或组。
 
-    ![预配范围](common/provisioning-scope.png)
+      ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”  。
+15. 已准备好预配时，单击“保存”。
 
-    ![保存预配配置](common/provisioning-configuration-save.png)
+      ![保存预配配置](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 

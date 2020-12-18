@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651984"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671006"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云预配并将其作为标识解决方案。
@@ -62,14 +62,11 @@ ms.locfileid: "97651984"
     > | 12 | 4 GB |
     > | 18 | 5.5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. 本地服务器上的 PowerShell 执行策略必须设置为 Undefined 或 RemoteSigned。
 
 3. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
-
-   - 确保代理可以通过以下端口向 Azure AD 发出出站请求：
+    - 确保代理可以通过以下端口向 Azure AD 发出出站请求：
 
       | 端口号 | 用途 |
       | --- | --- |
@@ -78,13 +75,13 @@ ms.locfileid: "97651984"
       |**8082**|如果要配置其管理 API，则需要安装。  如果安装了代理，则可以删除此端口，如果不打算使用 API，则可以将其删除。   |
       | **8080**（可选） | 如果端口 443 不可用，代理将每隔 10 分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 |
 
-   - 如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果防火墙或代理允许指定安全后缀，请将连接添加到 \*.msappproxy.net 和 \*.servicebus.windows.net。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
-   - 代理需要访问 login.windows.net 和 login.microsoftonline.com 来完成初始注册。 另外，还请为这些 URL 打开防火墙。
-   - 为了进行证书验证，请取消阻止以下 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www\.microsoft.com:80。 这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+    - 如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
+    - 如果防火墙或代理允许指定安全后缀，请将连接添加到 \*.msappproxy.net 和 \*.servicebus.windows.net。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+    - 代理需要访问 login.windows.net 和 login.microsoftonline.com 来完成初始注册。 另外，还请为这些 URL 打开防火墙。
+    - 为了进行证书验证，请取消阻止以下 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www\.microsoft.com:80。 这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
->[!NOTE]
-> 不支持在 Windows Server Core 上安装云预配代理。
+    >[!NOTE]
+    > 不支持在 Windows Server Core 上安装云预配代理。
 
 ### <a name="additional-requirements"></a>其他需求
 
@@ -92,8 +89,8 @@ ms.locfileid: "97651984"
 
 #### <a name="tls-requirements"></a>TLS 要求
 
->[!NOTE]
->传输层安全性 (TLS) 是为进行安全通信提供的协议。 更改 TLS 设置会影响整个林。 有关详细信息，请参阅[启用 TLS 1.1 和 TLS 1.2 作为 Windows 的 WinHTTP 中的默认安全协议的更新](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)。
+> [!NOTE]
+> 传输层安全性 (TLS) 是为进行安全通信提供的协议。 更改 TLS 设置会影响整个林。 有关详细信息，请参阅[启用 TLS 1.1 和 TLS 1.2 作为 Windows 的 WinHTTP 中的默认安全协议的更新](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)。
 
 托管 Azure AD Connect 云预配代理的 Windows 服务器必须先启用 TLS 1.2，然后才能安装它。
 
@@ -111,6 +108,7 @@ ms.locfileid: "97651984"
 1. 重新启动服务器。
 
 ## <a name="known-limitations"></a>已知的限制
+
 下面是已知的限制：
 
 ### <a name="delta-synchronization"></a>增量同步

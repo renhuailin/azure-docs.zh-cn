@@ -7,36 +7,41 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572144"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674423"
 ---
-# <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
-Azure Monitor 支持 Azure 数据资源管理器之间的跨服务查询、 [Application Insights (AI) ](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics (LA) ](/azure/azure-monitor/platform/data-platform-logs)。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行交叉服务查询。
+# <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
+Azure Monitor 支持 Azure 数据资源管理器、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之间的跨服务查询。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行跨服务查询。
 
-Azure Monitor 跨服务流： :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="azure Monitor 和 azure 数据资源管理器跨服务流。":::
+下图显示了 Azure Monitor 跨服务流：
+
+:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="显示用户、Azure Monitor、代理和 Azure 数据资源管理器之间的查询流的关系图。":::
 
 >[!NOTE]
->* Azure Monitor 交叉服务查询是 AllowListing 所必需的。
->* 如有任何疑问，请联系 [服务团队](mailto:ADXProxy@microsoft.com) 。
+> Azure Monitor 在个人预览版中进行跨服务查询。 Allowlisting 是必需的。 如有任何疑问，请联系 [服务团队](mailto:ADXProxy@microsoft.com) 。
+
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>跨查询 Log Analytics 或 Application Insights 资源和 Azure 数据资源管理器
 
-你可以使用支持 Kusto 查询的客户端工具（例如 Log Analytics web UI、工作簿、PowerShell、REST API 等）来运行跨资源查询。
+你可以使用支持 Kusto 查询的客户端工具运行跨资源查询。 这些工具的示例包括 Log Analytics web UI、工作簿、PowerShell 和 REST API。
 
-* 在 "adx" 模式的查询中输入 Azure 数据资源管理器群集的标识符，后跟数据库名称和表。
+在模式中的查询中输入 Azure 数据资源管理器群集的标识符 `adx` ，后跟数据库名称和表。
 
 ```kusto
 adx('https://help.kusto.windows.net/Samples').StormEvents
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="跨服务查询示例。":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="显示跨服务查询示例的屏幕截图。":::
 
 > [!NOTE]
 >* 数据库名称区分大小写。
->* 不支持将跨资源查询作为警报。
-## <a name="combining-azure-data-explorer-cluster-tables-using-union-and-join-with-la-workspace"></a>结合使用 union 和 join) 与 LA 工作区结合使用 Azure 数据资源管理器群集表格 (。
+>* 不支持使用跨资源查询作为警报。
+
+## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>将 Azure 数据资源管理器群集表与 Log Analytics 工作区结合使用
+
+使用 `union` 命令将分类表与 Log Analytics 工作区组合在一起。
 
 ```kusto
 union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
@@ -46,23 +51,27 @@ union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
 let CL1 = adx('https://help.kusto.windows.net/Samples').StormEvents;
 union customEvents, CL1 | take 10
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="联合的跨服务查询示例。":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="使用 union 命令显示跨服务查询示例的屏幕截图。":::
 
->[!Tip]
->* 允许使用速记格式-ClusterName/InitialCatalog。 例如，adx ( "help/Samples" ) 转换为 adx ( "kusto/Samples" ) 
+> [!Tip]
+> 允许使用速记格式： *ClusterName* / *InitialCatalog*。 例如， `adx('help/Samples')` 转换为 `adx('help.kusto.windows.net/Samples')` 。
+
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>将一个租户的 Azure 数据资源管理器群集中的数据与另一个租户的 Azure Monitor 资源联接
 
-不支持服务之间的跨租户查询。 你已登录到单个租户，以跨两个资源运行查询。
+不支持服务之间的跨租户查询。 你已登录到单个租户，用于运行跨两个资源的查询。
 
-如果 Azure 数据资源管理器资源位于租户 "A"，并且 Log Analytics 工作区位于租户 "B" 中，请使用以下两种方法之一：
+如果 Azure 数据资源管理器资源在租户 A 中，而 Log Analytics 工作区在租户 B 中，则使用以下方法之一：
 
-*  通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 在 Azure 数据资源管理器群集上将用户 ID 作为授权用户添加到租户“B”中。 验证 Azure 数据资源管理器群集上的[“TrustedExternalTenant”](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)属性是否包含租户“B”。 在租户“B”中完全运行交叉查询。
-*  使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 将 Azure Monitor 资源投影到租户 "A"。
+*  通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 将租户 B 中的用户 ID 添加为 Azure 数据资源管理器群集上的授权用户。 验证 Azure 数据资源管理器群集上的 [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) 属性包含租户 b. 完全在租户 b 中运行交叉查询。
+*  使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 将 Azure Monitor 资源投影到租户 A。
+
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>从不同租户连接到 Azure 数据资源管理器群集
 
-Kusto Explorer 会自动将你登录到用户帐户最初所属的租户。 若要使用同一用户帐户访问其他租户中的资源，必须在以下连接字符串中显式指定 `tenantId`：`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`TenantId
+Kusto 资源管理器会自动登录到用户帐户最初所属的租户。 若要访问具有相同用户帐户的其他租户中的资源，必须 `TenantId` 在连接字符串中显式指定：
+
+`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>后续步骤
-* [写入查询](https://docs.microsoft.com/azure/data-explorer/write-queries)
+* [编写查询](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [使用 Azure 数据资源管理器查询 Azure Monitor 中的数据](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [在 Azure Monitor 中执行跨资源日志查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)

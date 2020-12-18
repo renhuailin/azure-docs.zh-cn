@@ -2,23 +2,20 @@
 title: 使用适用于容器的 Azure Monitor 查看实时数据（预览版）| Microsoft Docs
 description: 本文介绍在适用于容器的 Azure Monitor 中，如何在不使用 kubectl 的情况下实时查看 Kubernetes 日志、事件和 Pod 指标。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346791"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672862"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
 适用于容器的 Azure Monitor 包括实时数据（预览版）功能，这是一项高级诊断功能，可通过它直接访问 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror)、事件和 Pod 指标。 它公开对 `kubectl logs -c`、`kubectl get` 事件和 `kubectl top pods` 的直接访问。 控制台窗格显示由容器引擎生成的日志、事件和指标，可以进一步协助实时排查问题。
 
 本文详细介绍了此功能，并帮助你了解如何使用此功能。
-
->[!NOTE]
->此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止来自此代理的 Kubernetes API 阻止此流量。
 
 有关设置实时数据（预览版）功能或对其进行故障排除的帮助，请参阅[安装指南](container-insights-livedata-setup.md)。 该功能直接访问 Kubernetes API，有关身份验证模型的其他信息可以在[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到。
 

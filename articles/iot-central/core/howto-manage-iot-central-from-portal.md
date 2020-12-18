@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653326"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674440"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
@@ -41,16 +41,16 @@ ms.locfileid: "91653326"
 
 ![创建 IoT Central 窗体](media/howto-manage-iot-central-from-portal/image6a.png)
 
-“位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国**和 **日本** 地区提供 Azure IoT Central。 选择一个位置后，之后便不能将应用程序移到其他位置。
+“位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国** 和 **日本** 地区提供 Azure IoT Central。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
-填写所有字段后，选择“创建”****。
+填写所有字段后，选择“创建”。
 
 ## <a name="manage-existing-iot-central-applications"></a>管理现有 IoT Central 应用程序
 
 如果已有 Azure IoT Central 应用程序，可将其删除或移动到 Azure 门户中的其他订阅或资源组。
 
 > [!NOTE]
-> 无法查看 Azure 门户中的免费定价计划创建的应用程序，因为它们不与你的订阅相关联。
+> 使用 *免费* 计划创建的应用程序不需要 Azure 订阅，因此，不会在 Azure 门户的 azure 订阅中找到它们列出。 只能从 IoT Central 门户查看和管理免费应用。
 
 若要开始，请在门户中选择 " **所有资源** "。 选择 " **显示隐藏的类型** "，并开始在 " **按名称筛选** " 中键入应用程序的名称以找到它。 然后选择想要管理的 IoT Central 应用程序。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91653326"
 
 ![显示 "概述" 页的屏幕截图，其中突出显示了 "IoT Central 应用程序 URL"。](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要将应用程序移动到其他资源组，请选择资源组旁边的“更改”****。 在 " **移动资源** " 页上，选择要将此应用程序移动到的资源组：
+若要将应用程序移动到其他资源组，请选择资源组旁边的“更改”。 在 " **移动资源** " 页上，选择要将此应用程序移动到的资源组：
 
 ![显示 "概述" 页的屏幕截图，其中突出显示了 "资源组 (更改) "。](media/howto-manage-iot-central-from-portal/image4a.png)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937621"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673352"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -305,12 +305,12 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 * 共 1,000 个集成帐户，包括[开发人员和高级 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)中任何[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内的集成帐户。
 
-* 每个 ISE，无论是 [开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，都限制为集成帐户总数，但 [您可以提高此限制，增加成本](logic-apps-pricing.md#fixed-pricing)：
+* 无论是 [开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，每个 ISE 都可以使用单个集成帐户，而无需额外付费，尽管包括的帐户类型因 ISE SKU 而异。 你可以为 ISE 创建更多的集成帐户，直到达到总限制， [增加成本](logic-apps-pricing.md#fixed-pricing)：
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
-  | **高级** | 仅限20个 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户，包括免费的一个标准帐户。 你可以使用 [更多的集成帐户来额外收费](logic-apps-pricing.md#fixed-pricing)。 不允许使用免费帐户或基本帐户。 |
-  | **开发人员** | 总共20个 [可用](../logic-apps/logic-apps-pricing.md#integration-accounts) (限制为1个帐户) 和 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 合并或所有标准帐户。 你可以使用 [更多的集成帐户来额外收费](logic-apps-pricing.md#fixed-pricing)。 不允许使用基本帐户。 [开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 仅可用于试验、开发和测试，不可用于生产和性能测试。 |
+  | **高级** | 共20个帐户，包括一个标准帐户，无需额外付费。 使用此 SKU，只能拥有 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户。 不允许使用免费帐户或基本帐户。 |
+  | **开发人员** | 共20个帐户，包括一个 [免费](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户 (限制为 1) 。 使用此 SKU 时，可以使用以下两种方法之一： <p>-一个免费帐户和最多19个 [标准](../logic-apps/logic-apps-pricing.md#integration-accounts) 帐户。 <br>-无免费帐户和最多20个标准帐户。 <p>不允许使用基本或其他免费帐户。 <p><p>**重要提示**：使用 [开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 进行试验、开发和测试，但不适用于生产或性能测试。 |
   |||
 
 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
@@ -319,13 +319,12 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="artifact-limits-per-integration-account"></a>每个集成帐户的项目限制
 
-下面介绍对每个集成帐户层的项目数量限制。
-有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
+下面介绍对每个集成帐户层的项目数量限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
 
 > [!NOTE]
 > 免费层仅用于探索场景，不用于生产场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | 基本 | 标准 |
+| 项目 | 免费 | 基本 | Standard |
 |----------|------|-------|----------|
 | EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
@@ -351,7 +350,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
+| 运行时终结点 | 免费 | 基本 | Standard | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟读取调用 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |

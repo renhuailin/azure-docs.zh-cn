@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1a6ddde80ca554aea25d24694aff76e61e47d928
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653412"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672451"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中激活 Azure 资源角色
 
@@ -42,7 +42,7 @@ ms.locfileid: "97653412"
 
 1. 选择“Azure 资源角色”  查看符合条件的 Azure 资源角色列表。
 
-   ![“我的角色 - Azure 资源角色”页](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
+    ![“我的角色 - Azure 资源角色”页](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. 在“Azure 资源角色”列表中，找到要激活的角色。 
 

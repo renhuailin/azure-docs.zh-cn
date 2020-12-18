@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632021"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673429"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Bizagi Studio 以实现数字流程自动化
 
@@ -117,13 +117,13 @@ ms.locfileid: "97632021"
 
     ![通知电子邮件选项的屏幕截图。](common/provisioning-notification-email.png)
 
-7. 选择“保存”。
+7. 选择“保存”。 
 
 8. 在 " **映射** " 部分中，选择 " **将 Azure Active Directory 用户同步到 Bizagi Studio 以实现数字流程自动化**"。
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Bizagi Studio 以实现数字流程自动化的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Bizagi Studio 中的用户帐户以执行更新操作。 如果更改了 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则必须确保适用于数字流程自动化 API 的 Bizagi Studio 支持基于该属性筛选用户。 选择“保存”，提交所有更改。
 
-   |属性|类型|支持筛选|
+   |Attribute|类型|支持筛选|
    |---|---|---|
    |userName|字符串|&check;|
    |活动|Boolean|
@@ -139,6 +139,8 @@ ms.locfileid: "97632021"
 
    有关如何添加自定义属性的详细信息，请参阅 [自定义应用程序属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
 
+> [!NOTE]
+> 仅支持基本类型属性 (例如，String、Integer、Boolean、DateTime 等) 。 尚不支持链接到参数表或多个类型的属性。
 
 10. 若要配置范围筛选器，请参阅 [范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)。
 

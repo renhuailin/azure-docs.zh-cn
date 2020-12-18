@@ -2,20 +2,20 @@
 title: 在 Azure 应用服务中为 .NET 应用启用 Snapshot Debugger | Microsoft Docs
 description: 在 Azure 应用服务中为 .NET 应用启用快照调试器
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560927"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673568"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
-快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。 建议在使用快照调试程序时，在基本服务层或更高级别上运行应用程序。 对于大多数应用程序，免费和共享服务层没有足够的内存来保存快照。
+快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。 建议在使用快照调试程序时，在基本服务层或更高级别上运行应用程序。 对于大多数应用程序，免费和共享服务层没有足够的内存或磁盘空间来保存快照。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 启用 Snapshot Debugger
 若要为应用启用快照调试器，请遵循下面的说明。

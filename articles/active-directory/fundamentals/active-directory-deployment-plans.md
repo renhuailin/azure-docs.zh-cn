@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498075"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672375"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在寻找有关部署 Azure Active Directory (Azure AD) 功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -29,7 +29,7 @@ ms.locfileid: "96498075"
 
 | 功能 | 说明|
 | -| -|
-| [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure AD 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure AD MFA 可使用管理员批准的身份验证方法帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 |
+| [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure AD 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure AD MFA 可使用管理员批准的身份验证方法帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 观看此视频， [了解如何在租户中配置和强制实施多重身份验证](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。 |
 | [自助式密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
 | [无密码](../authentication/howto-authentication-passwordless-deployment.md) | 使用组织中的 Microsoft Authenticator 应用或 FIDO2 安全密钥实现无密码 authentication |
