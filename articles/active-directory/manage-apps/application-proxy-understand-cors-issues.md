@@ -18,7 +18,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/17/2020
 ms.locfileid: "94651849"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解和解决 Azure Active Directory 应用程序代理 CORS 问题
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解并解决 Azure Active Directory 应用程序代理 CORS 问题
 
 [ (CORS) 跨域资源共享 ](https://www.w3.org/TR/cors/) 有时会对通过 Azure Active Directory 应用程序代理发布的应用和 api 提出挑战。 本文讨论 Azure AD 应用程序代理 CORS 问题和解决方案。
 
@@ -42,9 +42,9 @@ ms.locfileid: "94651849"
 
 可以使用浏览器调试工具来确定 CORS 问题：
 
-1. 启动浏览器并浏览到 web 应用。
-1. 按 **F12** 打开调试控制台。
-1. 尝试重现该事务，并查看控制台消息。 CORS 冲突产生了有关源的控制台错误。
+1. 启动浏览器并浏览到 Web 应用。
+1. 按 F12 以打开调试控制台。
+1. 尝试重现事务，并查看控制台消息。 CORS 冲突会产生有关原点的控制台错误。
 
 在下面的屏幕截图中，选择 "试用" 按钮 **会** 导致 CORS 错误消息：在 \/ 访问控制-允许源标头中找不到 https：/corswebclient-contoso.msappproxy.net。
 
@@ -112,7 +112,7 @@ Content-length：17
 
 ### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>选项5：延长访问令牌的生存期
 
-无法解决某些 CORS 问题，例如当应用重定向到 *login.microsoftonline.com* 进行身份验证时，访问令牌过期。 否则，CORS 调用将失败。 此方案的一种解决方法是扩展访问令牌的生存期，以防止它在用户会话期间过期。 有关如何执行此操作的详细信息，请参阅 [Azure AD 中的可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)。
+无法解决某些 CORS 问题，例如当应用重定向到 *login.microsoftonline.com* 进行身份验证时，访问令牌过期。 否则，CORS 调用将失败。 这种场景的一种解决方法是延长访问令牌的生存期，防止其在用户会话期间过期。 有关如何执行此操作的详细信息，请参阅 [Azure AD 中的可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)。
 
 ## <a name="see-also"></a>另请参阅
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md) 
