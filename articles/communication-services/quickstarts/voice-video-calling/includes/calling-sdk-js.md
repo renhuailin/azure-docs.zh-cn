@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482721"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691945"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +53,7 @@ npm install @azure/communication-calling --save
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > 当前可以有一个以上的传出本地视频流。
 若要进行视频呼叫，必须使用 deviceManager API 枚举本地相机 `getCameraList` 。
 选择所需的照相机后，使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传入 `localVideoStream` 到 `call` 方法。
-呼叫连接后，会自动开始将视频流从所选照相机发送到其他 (的参与者) 
+呼叫连接后，它会自动开始将视频流从所选照相机发送到其他 () 的参与者。
+
+这也适用于调用。接受 ( # A1 视频选项和 CallAgent ( # A3 视频选项。
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
+### <a name="receiving-an-incoming-call"></a>接收传入呼叫
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
 ### <a name="join-a-group-call"></a>加入群组通话
 若要启动新组调用或加入正在进行的组调用，请使用 "join" 方法并向属性传递对象 `groupId` 。 该值必须是 GUID。
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>加入团队会议
+若要加入团队会议，请使用 "联接" 方法并传递会议链接或会议的坐标
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>呼叫管理
@@ -162,6 +192,11 @@ const callEndReason = call.callEndReason;
 * 若要了解当前调用是否为传入调用，请检查 `isIncoming` 属性，返回 `Boolean` 。
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* 若要检查是否正在记录调用，请检查 `isRecordingActive` 属性，返回 `Boolean` 。
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  若要检查当前麦克风是否静音，请检查 `muted` 属性，返回 `Boolean` 。
